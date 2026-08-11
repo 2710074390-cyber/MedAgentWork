@@ -1,80 +1,112 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="classic">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>医学复习资料库</title>
+<title>MedAgentWork · 医学复习资料库</title>
 <style>
 /* ============================================================
-   医药典籍 · 编辑风  v2
-   羊皮纸 + 墨绿/赭红 + 宋体标题 + 噪点纹理
+   MedAgentWork — 三主题系统
+   classic  古典（羊皮纸 + 墨绿/赭红 + 宋体）
+   modern   现代（纯白 + 医蓝 + 无衬线）
+   night    暗夜（深炭 + 青绿/琥珀）
+   打印继承当前主题变量
    零外部依赖，GFW 友好
    ============================================================ */
-:root {
-  --paper: #f4ede0;
-  --paper-2: #ece2cf;
-  --paper-edge: #ddd0b8;
-  --ink: #1c2b22;
-  --ink-soft: #4a574e;
-  --ink-faint: #8a8576;
-  --moss: #2d5a3d;
-  --moss-deep: #1a3a2a;
-  --oxblood: #8b2635;
-  --ochre: #b8862e;
-  --rule: rgba(28,43,34,0.18);
-  --rule-soft: rgba(28,43,34,0.09);
-  --f-display: "Songti SC","STSong","Source Han Serif SC","Noto Serif SC",SimSun,Georgia,serif;
-  --f-body: "PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
-  --f-mono: "Cascadia Code","SF Mono",Consolas,monospace;
+
+/* ---------- 主题变量 ---------- */
+:root[data-theme="classic"] {
+  --paper:#f4ede0; --paper-2:#ece2cf; --paper-edge:#ddd0b8;
+  --ink:#1c2b22; --ink-soft:#4a574e; --ink-faint:#8a8576;
+  --moss:#2d5a3d; --moss-deep:#1a3a2a; --oxblood:#8b2635; --ochre:#b8862e;
+  --rule:rgba(28,43,34,0.18); --rule-soft:rgba(28,43,34,0.09);
+  --card-bg:rgba(255,253,247,0.55); --card-hover-bg:rgba(255,253,247,0.85);
+  --accent:#8b2635; --hero:#1a3a2a;
+  --f-display:"Songti SC","STSong","Source Han Serif SC",SimSun,Georgia,serif;
+  --f-body:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"Cascadia Code","SF Mono",Consolas,monospace;
+  --noise:0.35;
 }
+:root[data-theme="modern"] {
+  --paper:#ffffff; --paper-2:#f6f8fa; --paper-edge:#e1e4e8;
+  --ink:#24292e; --ink-soft:#586069; --ink-faint:#959da5;
+  --moss:#0969da; --moss-deep:#0550ae; --oxblood:#cf222e; --ochre:#d29922;
+  --rule:rgba(36,41,46,0.15); --rule-soft:rgba(36,41,46,0.08);
+  --card-bg:#ffffff; --card-hover-bg:#ffffff;
+  --accent:#0969da; --hero:#24292e;
+  --f-display:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --f-body:"PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --f-mono:"SF Mono","Cascadia Code",Consolas,monospace;
+  --noise:0;
+}
+:root[data-theme="night"] {
+  --paper:#15171c; --paper-2:#1e2128; --paper-edge:#2d3139;
+  --ink:#e6edf3; --ink-soft:#9da7b3; --ink-faint:#6a7480;
+  --moss:#39d99c; --moss-deep:#22a878; --oxblood:#ff7b72; --ochre:#e3b341;
+  --rule:rgba(230,237,243,0.14); --rule-soft:rgba(230,237,243,0.07);
+  --card-bg:rgba(30,33,40,0.6); --card-hover-bg:rgba(40,44,52,0.9);
+  --accent:#39d99c; --hero:#e6edf3;
+  --f-display:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-body:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"SF Mono","Cascadia Code",Consolas,monospace;
+  --noise:0;
+}
+
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body {
-  font-family: var(--f-body);
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.7;
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
+  font-family:var(--f-body);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  min-height:100vh;
+  position:relative;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
 }
 body::before {
-  content:""; position: fixed; inset:0; z-index:0; pointer-events:none;
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
   background:
     radial-gradient(ellipse 80% 60% at 15% 0%, rgba(184,134,46,0.10), transparent 60%),
     radial-gradient(ellipse 70% 50% at 90% 100%, rgba(45,90,61,0.08), transparent 60%);
 }
+:root[data-theme="modern"] body::before { background:linear-gradient(180deg,#f6f8fa 0%,#fff 180px); }
+:root[data-theme="night"] body::before { background:radial-gradient(ellipse 60% 50% at 50% 0%, rgba(57,217,156,0.06), transparent 70%); }
 body::after {
-  content:""; position: fixed; inset:0; z-index:0; pointer-events:none;
-  opacity:0.35;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.17 0 0 0 0 0.13 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  opacity:var(--noise);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.17 0 0 0 0 0.13 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
 }
 .wrap { position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 32px; }
 
-/* ============================================================
-   学期切换 Tab
-   ============================================================ */
-.term-tabs {
-  display:flex; gap:0; margin:0 0 0 auto;
-  border-bottom:1px solid var(--rule);
-  width:fit-content;
-}
+/* ---------- 主题切换器 ---------- */
+.toolbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin:28px 0 0; flex-wrap:wrap; }
+.term-tabs { display:flex; gap:0; border-bottom:1px solid var(--rule); width:fit-content; }
 .term-tab {
   font-family:var(--f-display); font-weight:900; font-size:15px;
-  padding:10px 24px; cursor:pointer;
-  background:transparent; border:none; color:var(--ink-faint);
-  border-bottom:3px solid transparent;
+  padding:10px 24px; cursor:pointer; background:transparent; border:none;
+  color:var(--ink-faint); border-bottom:3px solid transparent;
   transition:all .25s; letter-spacing:0.02em;
 }
 .term-tab:hover { color:var(--ink-soft); }
 .term-tab.active { color:var(--moss-deep); border-bottom-color:var(--oxblood); }
+:root[data-theme="night"] .term-tab.active { color:var(--moss); }
 .term-tab .lock { font-size:11px; opacity:0.6; margin-left:4px; }
 
-/* ============================================================
-   页眉
-   ============================================================ */
+.theme-switch { display:flex; gap:6px; align-items:center; }
+.theme-switch .label { font-family:var(--f-mono); font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--ink-faint); margin-right:4px; }
+.theme-btn {
+  width:30px; height:30px; border-radius:50%; border:2px solid var(--rule);
+  cursor:pointer; transition:all .2s; position:relative; background:var(--paper-2);
+}
+.theme-btn:hover { transform:scale(1.1); }
+.theme-btn.active { border-color:var(--accent); transform:scale(1.12); box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--accent); }
+.theme-btn[data-t="classic"] { background:linear-gradient(135deg,#f4ede0,#8b2635); }
+.theme-btn[data-t="modern"]  { background:linear-gradient(135deg,#ffffff,#0969da); }
+.theme-btn[data-t="night"]   { background:linear-gradient(135deg,#15171c,#39d99c); }
+
+/* ---------- 页眉 ---------- */
 .masthead { padding:48px 0 40px; border-bottom:1px solid var(--ink); position:relative; }
 .masthead::after { content:""; position:absolute; left:0; right:0; bottom:-4px; height:1px; background:var(--ink); }
 .masthead-top {
@@ -87,13 +119,16 @@ body::after {
 .masthead h1 {
   font-family:var(--f-display); font-weight:900;
   font-size:clamp(40px,7vw,76px); line-height:0.98; letter-spacing:-0.01em;
-  color:var(--moss-deep);
+  color:var(--hero);
 }
 .masthead h1 .red { color:var(--oxblood); font-style:italic; }
+:root[data-theme="modern"] .masthead h1 .red { font-style:normal; }
 .masthead .tagline {
   font-family:var(--f-display); font-size:clamp(15px,1.8vw,19px); font-style:italic;
   color:var(--ink-soft); margin-top:14px; max-width:620px;
 }
+:root[data-theme="modern"] .masthead .tagline,
+:root[data-theme="night"] .masthead .tagline { font-style:normal; }
 .masthead .vol {
   position:absolute; right:0; top:48px; text-align:right;
   font-family:var(--f-mono); font-size:11px; letter-spacing:0.15em;
@@ -104,32 +139,30 @@ body::after {
   color:var(--oxblood); font-style:normal; letter-spacing:0; margin-top:4px;
 }
 
-/* ============================================================
-   分区
-   ============================================================ */
+/* ---------- 分区 ---------- */
 .section { padding:60px 0 24px; }
 .section-head {
   display:flex; align-items:flex-end; gap:18px; margin-bottom:36px;
   border-bottom:1px solid var(--rule); padding-bottom:16px;
 }
 .section-num { font-family:var(--f-display); font-weight:900; font-size:44px; line-height:1; color:var(--oxblood); font-style:italic; }
-.section-head h2 { font-family:var(--f-display); font-weight:900; font-size:clamp(24px,3vw,32px); color:var(--moss-deep); letter-spacing:-0.01em; }
+:root[data-theme="modern"] .section-num { font-style:normal; }
+.section-head h2 { font-family:var(--f-display); font-weight:900; font-size:clamp(24px,3vw,32px); color:var(--hero); letter-spacing:-0.01em; }
 .section-head .desc { font-size:13px; color:var(--ink-faint); margin-left:auto; text-align:right; font-family:var(--f-mono); letter-spacing:0.08em; max-width:280px; }
 
-/* ============================================================
-   卡片
-   ============================================================ */
+/* ---------- 卡片 ---------- */
 .grid { display:grid; gap:22px; }
 .grid.cols { grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); }
 .card {
-  position:relative; background:rgba(255,253,247,0.55); backdrop-filter:blur(4px);
+  position:relative; background:var(--card-bg); backdrop-filter:blur(4px);
   border:1px solid var(--rule); padding:26px 26px 22px;
-  transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s, background .35s;
   overflow:hidden;
 }
+:root[data-theme="modern"] .card { box-shadow:0 1px 3px rgba(0,0,0,0.04); }
 .card::before { content:""; position:absolute; left:0; top:0; bottom:0; width:3px; background:var(--moss); transform:scaleY(0); transform-origin:top; transition:transform .4s cubic-bezier(.2,.7,.2,1); }
-.card:hover { transform:translateY(-4px); box-shadow:0 18px 40px -18px rgba(28,43,34,0.35); border-color:var(--moss); background:rgba(255,253,247,0.85); }
-.card:hover::before { transform:scaleY(1); }
+.card:hover { transform:translateY(-4px); box-shadow:0 18px 40px -18px rgba(28,43,34,0.35); border-color:var(--moss); background:var(--card-hover-bg); }
+:root[data-theme="night"] .card:hover { box-shadow:0 18px 40px -18px rgba(0,0,0,0.6); }
 .card .idx { position:absolute; top:18px; right:22px; font-family:var(--f-mono); font-size:11px; color:var(--ink-faint); letter-spacing:0.1em; }
 .card-head { display:flex; align-items:center; gap:14px; margin-bottom:14px; padding-right:36px; }
 .glyph { width:42px; height:42px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:22px; border:1px solid var(--rule); border-radius:50%; background:var(--paper-2); }
@@ -146,12 +179,12 @@ body::after {
 .btn:hover { background:var(--ink); color:var(--paper); }
 .btn.primary { background:var(--moss-deep); color:var(--paper); border-color:var(--moss-deep); }
 .btn.primary:hover { background:var(--oxblood); border-color:var(--oxblood); }
+:root[data-theme="modern"] .btn.primary { background:var(--moss); border-color:var(--moss); }
+:root[data-theme="night"] .btn.primary { background:var(--moss-deep); border-color:var(--moss-deep); }
 .btn.accent { border-color:var(--oxblood); color:var(--oxblood); }
 .btn.accent:hover { background:var(--oxblood); color:var(--paper); }
 
-/* ============================================================
-   大四上 · 敬请期待
-   ============================================================ */
+/* ---------- 大四上 ---------- */
 .coming { text-align:center; padding:120px 20px 80px; }
 .coming .seal {
   width:140px; height:140px; margin:0 auto 40px;
@@ -162,32 +195,34 @@ body::after {
 }
 .coming .seal::before { content:""; position:absolute; inset:8px; border:1px solid var(--oxblood); border-radius:50%; opacity:0.4; }
 @keyframes breathe { 0%,100%{transform:scale(1); opacity:1} 50%{transform:scale(1.04); opacity:0.85} }
-.coming h2 { font-family:var(--f-display); font-weight:900; font-size:clamp(32px,5vw,52px); color:var(--moss-deep); margin-bottom:16px; letter-spacing:0.05em; }
+.coming h2 { font-family:var(--f-display); font-weight:900; font-size:clamp(32px,5vw,52px); color:var(--hero); margin-bottom:16px; letter-spacing:0.05em; }
 .coming h2 .red { color:var(--oxblood); font-style:italic; }
 .coming p { font-family:var(--f-display); font-style:italic; font-size:18px; color:var(--ink-soft); max-width:480px; margin:0 auto; line-height:1.8; }
+:root[data-theme="modern"] .coming p,
+:root[data-theme="night"] .coming p { font-style:normal; }
 .coming .back { display:inline-block; margin-top:40px; padding:10px 28px; border:1px solid var(--ink); background:transparent; color:var(--ink); font-family:var(--f-body); font-weight:600; font-size:13px; cursor:pointer; transition:all .2s; }
 .coming .back:hover { background:var(--ink); color:var(--paper); }
 
-/* ============================================================
-   页脚
-   ============================================================ */
+/* ---------- 页脚 ---------- */
 .colophon {
   margin-top:80px; padding:40px 0 56px; border-top:1px solid var(--ink);
   display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
   font-family:var(--f-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-soft);
 }
 .colophon a { color:var(--moss-deep); text-decoration:none; border-bottom:1px solid var(--rule); }
+:root[data-theme="night"] .colophon a { color:var(--moss); }
 .colophon a:hover { color:var(--oxblood); border-color:var(--oxblood); }
 .colophon .mark { font-family:var(--f-display); font-style:italic; font-size:15px; text-transform:none; letter-spacing:0; color:var(--ink-faint); }
+:root[data-theme="modern"] .colophon .mark,
+:root[data-theme="night"] .colophon .mark { font-style:normal; }
 
-/* ============================================================
-   模态层 · MD 阅读器 / PDF 预览
-   ============================================================ */
+/* ---------- 模态层 ---------- */
 #modal { position:fixed; inset:0; z-index:1000; display:none; background:rgba(28,43,34,0.55); backdrop-filter:blur(6px); animation:fadeIn .25s ease; }
+:root[data-theme="night"] #modal { background:rgba(0,0,0,0.7); }
 #modal.open { display:block; }
 .modal-card { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:min(860px,94vw); height:min(88vh,1000px); background:var(--paper); display:flex; flex-direction:column; box-shadow:0 40px 80px -20px rgba(0,0,0,0.5); border:1px solid var(--paper-edge); animation:rise .35s cubic-bezier(.2,.7,.2,1); }
 .modal-bar { display:flex; align-items:center; gap:14px; padding:16px 24px; border-bottom:1px solid var(--rule); background:var(--paper-2); flex-shrink:0; }
-.modal-bar .m-title { font-family:var(--f-display); font-weight:900; font-size:18px; color:var(--moss-deep); flex:1; }
+.modal-bar .m-title { font-family:var(--f-display); font-weight:900; font-size:18px; color:var(--hero); flex:1; }
 .modal-bar .m-actions { display:flex; gap:8px; }
 .modal-bar .m-btn { padding:7px 14px; font-size:12px; font-weight:600; border:1px solid var(--ink); background:transparent; color:var(--ink); cursor:pointer; font-family:var(--f-body); transition:all .2s; }
 .modal-bar .m-btn:hover { background:var(--ink); color:var(--paper); }
@@ -196,13 +231,11 @@ body::after {
 .modal-body { flex:1; overflow:hidden; }
 .modal-body.loading { display:flex; align-items:center; justify-content:center; overflow:auto; }
 .modal-body .spinner { width:36px; height:36px; border:3px solid var(--rule); border-top-color:var(--moss); border-radius:50%; animation:spin .8s linear infinite; }
-
-/* PDF iframe */
 .modal-body iframe { width:100%; height:100%; border:0; background:#fff; }
 
 /* MD 排版 */
 .md { padding:36px 48px 56px; overflow-y:auto; height:100%; font-family:var(--f-body); font-size:15px; line-height:1.85; color:var(--ink); }
-.md h1,.md h2,.md h3,.md h4,.md h5,.md h6 { font-family:var(--f-display); font-weight:900; color:var(--moss-deep); margin:1.4em 0 .5em; line-height:1.25; }
+.md h1,.md h2,.md h3,.md h4,.md h5,.md h6 { font-family:var(--f-display); font-weight:900; color:var(--hero); margin:1.4em 0 .5em; line-height:1.25; }
 .md h1 { font-size:26px; border-bottom:2px solid var(--rule); padding-bottom:8px; }
 .md h2 { font-size:22px; border-bottom:1px solid var(--rule); padding-bottom:6px; }
 .md h3 { font-size:18px; }
@@ -218,20 +251,20 @@ body::after {
 .md blockquote { border-left:3px solid var(--ochre); padding-left:1em; margin:1em 0; color:var(--ink-soft); font-style:italic; }
 .md table { border-collapse:collapse; width:100%; margin:1em 0; font-size:13.5px; }
 .md th,.md td { border:1px solid var(--rule); padding:8px 12px; text-align:left; }
-.md th { background:var(--paper-2); font-weight:700; color:var(--moss-deep); }
-.md tr:nth-child(even) td { background:rgba(236,226,207,0.4); }
+.md th { background:var(--paper-2); font-weight:700; color:var(--hero); }
+.md tr:nth-child(even) td { background:var(--rule-soft); }
 .md hr { border:none; border-top:1px solid var(--rule); margin:2em 0; }
 .md a { color:var(--moss); border-bottom:1px solid var(--rule); }
 
 /* Toast */
 #toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--moss-deep); color:var(--paper); padding:12px 22px; border-radius:2px; font-size:13px; font-weight:600; letter-spacing:0.04em; opacity:0; transition:all .3s; z-index:2000; pointer-events:none; border-left:3px solid var(--ochre); }
+:root[data-theme="modern"] #toast { background:var(--moss); }
+:root[data-theme="night"] #toast { background:var(--moss-deep); }
 #toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
 
-/* 视图切换 */
 .view { display:none; }
 .view.active { display:block; }
 
-/* 入场动画 */
 .reveal { opacity:0; transform:translateY(20px); animation:reveal .6s cubic-bezier(.2,.7,.2,1) forwards; }
 @keyframes reveal { to { opacity:1; transform:translateY(0); } }
 @keyframes fadeIn { from{opacity:0} to{opacity:1} }
@@ -242,74 +275,95 @@ body::after {
   .wrap { padding:0 20px; }
   .masthead { padding:36px 0 28px; }
   .masthead .vol { display:none; }
+  .toolbar { flex-direction:column; align-items:stretch; }
   .term-tabs { width:100%; }
   .term-tab { flex:1; padding:10px 12px; font-size:14px; }
+  .theme-switch { justify-content:flex-end; }
   .section-head { flex-wrap:wrap; }
   .section-head .desc { margin-left:0; text-align:left; }
   .grid.cols { grid-template-columns:1fr; }
   .md { padding:24px 22px 40px; }
   .colophon { flex-direction:column; text-align:center; }
 }
+
+/* ---------- 打印样式：继承当前主题 ---------- */
+@media print {
+  body::before, body::after { display:none; }
+  #modal, #toast, .toolbar, .colophon { display:none !important; }
+  .card { break-inside:avoid; box-shadow:none !important; }
+}
+.print-root { font-family:var(--f-body); font-size:15px; line-height:1.85; color:var(--ink); background:var(--paper); padding:40px 48px; }
+.print-root h1,.print-root h2,.print-root h3,.print-root h4 { font-family:var(--f-display); font-weight:900; color:var(--hero); margin:1.4em 0 .5em; line-height:1.25; }
+.print-root h1 { font-size:26px; border-bottom:2px solid var(--rule); padding-bottom:8px; }
+.print-root h2 { font-size:22px; border-bottom:1px solid var(--rule); padding-bottom:6px; }
+.print-root strong { color:var(--oxblood); }
+.print-root em { color:var(--moss); }
+.print-root table { border-collapse:collapse; width:100%; margin:1em 0; font-size:13.5px; }
+.print-root th,.print-root td { border:1px solid var(--rule); padding:8px 12px; text-align:left; }
+.print-root th { background:var(--paper-2); color:var(--hero); }
+.print-root pre { background:var(--moss-deep); color:#e8e2d4; padding:16px 20px; border-radius:6px; overflow-x:auto; }
+.print-root pre code { background:none; color:inherit; }
+.print-root code { font-family:var(--f-mono); background:var(--paper-2); padding:2px 6px; border-radius:3px; color:var(--oxblood); }
+.print-root blockquote { border-left:3px solid var(--ochre); padding-left:1em; color:var(--ink-soft); }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <!-- 学期切换 -->
-  <div class="term-tabs" style="margin:32px 0 0;">
-    <button class="term-tab active" data-term="junior2">大三下</button>
-    <button class="term-tab" data-term="senior1">大四上<span class="lock">🔒</span></button>
+  <!-- 工具栏：学期切换 + 主题切换 -->
+  <div class="toolbar">
+    <div class="term-tabs">
+      <button class="term-tab active" data-term="junior2">大三下</button>
+      <button class="term-tab" data-term="senior1">大四上<span class="lock">🔒</span></button>
+    </div>
+    <div class="theme-switch">
+      <span class="label">主题</span>
+      <button class="theme-btn active" data-t="classic" title="古典 · 羊皮纸"></button>
+      <button class="theme-btn" data-t="modern" title="现代 · 医蓝"></button>
+      <button class="theme-btn" data-t="night" title="暗夜 · 深炭"></button>
+    </div>
   </div>
 
   <!-- 报头 -->
   <header class="masthead reveal">
     <div class="masthead-top">
       <div class="crest">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20" stroke="#2d5a3d"/><circle cx="12" cy="12" r="9" stroke="#8b2635"/></svg>
-        <span id="term-label">医学复习资料库 · EST. 2026</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20" stroke="var(--moss)"/><circle cx="12" cy="12" r="9" stroke="var(--oxblood)"/></svg>
+        <span id="term-label">MedAgentWork · 医学复习资料库</span>
       </div>
       <span id="term-sub">大三下学期 · Spring Term</span>
     </div>
-    <h1 id="hero-title">医道<span class="red">典籍</span><br>复习资料库</h1>
+    <h1 id="hero-title">Med<span class="red">Agent</span>Work</h1>
     <p class="tagline" id="hero-tag">押题卷、题库与复习手册，为同窗备考而辑。在线答题、预览研读、一键打印 PDF。</p>
     <div class="vol">Vol.<br><b id="hero-vol">Ⅲ</b></div>
   </header>
 
-  <!-- ============ 大三下视图 ============ -->
+  <!-- ============ 大三下 ============ -->
   <div class="view active" id="view-junior2">
-
-    <!-- 押题卷 -->
     <section class="section">
       <div class="section-head reveal" style="animation-delay:.05s">
-        <span class="section-num">Ⅰ</span>
-        <h2>押题卷 · 交互式答题</h2>
+        <span class="section-num">Ⅰ</span><h2>押题卷 · 交互式答题</h2>
         <span class="desc">点击选项即时判分 · 进度追踪 · 错题高亮</span>
       </div>
       <div class="grid cols" id="grid-exam"></div>
     </section>
-
-    <!-- 题库 -->
     <section class="section">
       <div class="section-head reveal" style="animation-delay:.1s">
-        <span class="section-num">Ⅱ</span>
-        <h2>题库 · PDF 精选</h2>
-        <span class="desc">在线预览 · 下载 PDF · 打印</span>
+        <span class="section-num">Ⅱ</span><h2>题库 · PDF 精选</h2>
+        <span class="desc">在线预览 · 下载 PDF</span>
       </div>
       <div class="grid cols" id="grid-bank"></div>
     </section>
-
-    <!-- 复习资料 -->
     <section class="section">
       <div class="section-head reveal" style="animation-delay:.15s">
-        <span class="section-num">Ⅲ</span>
-        <h2>复习手册 · 系统研读</h2>
+        <span class="section-num">Ⅲ</span><h2>复习手册 · 系统研读</h2>
         <span class="desc">在线预览 · 下载源文件 · 打印 PDF</span>
       </div>
       <div class="grid cols" id="grid-review"></div>
     </section>
   </div>
 
-  <!-- ============ 大四上视图 ============ -->
+  <!-- ============ 大四上 ============ -->
   <div class="view" id="view-senior1">
     <div class="coming reveal">
       <div class="seal">待</div>
@@ -319,15 +373,13 @@ body::after {
     </div>
   </div>
 
-  <!-- 版权页 -->
   <footer class="colophon">
-    <span>© 2026 · 仅供学习交流</span>
+    <span>© 2026 MedAgentWork · 仅供学习交流</span>
     <span class="mark">— 文以载道，医以济世 —</span>
-    <a href="https://github.com/2710074390-cyber/med-review-site" target="_blank">GitHub 源码 ↗</a>
+    <a href="https://github.com/2710074390-cyber/MedAgentWork" target="_blank">GitHub ↗</a>
   </footer>
 </div>
 
-<!-- 预览模态层 -->
 <div id="modal">
   <div class="modal-card">
     <div class="modal-bar">
@@ -337,204 +389,168 @@ body::after {
     <div class="modal-body loading" id="m-body"><div class="spinner"></div></div>
   </div>
 </div>
-
 <div id="toast"></div>
 
 <script>
-/* ============================================================
-   数据
-   ============================================================ */
-const BASE = '大三下';
-
-const EXAMS = [
-  { name:'内科学',   icon:'🫀', html:'押题卷/内科学押题卷_2026.html',   desc:'心血管 · 呼吸 · 消化 · 泌尿系统全真模拟', meta:'全真模拟' },
-  { name:'精神病学', icon:'🧠', html:'押题卷/精神病学押题卷_2026.html', desc:'精神分裂 · 情感障碍 · 神经症 331 题',     meta:'331 题' },
-  { name:'神经病学', icon:'⚡', html:'押题卷/神经病学押题卷_2026.html', desc:'脑血管病 · 癫痫 · 周围神经病变',           meta:'全真模拟' },
-  { name:'医患沟通', icon:'💬', html:'押题卷/医患沟通押题卷_2026.html', desc:'沟通技巧 · 医学伦理 · 知情同意情景题',     meta:'情景题' },
-  { name:'外科学',   icon:'🔪', html:'押题卷/外科学押题卷_108题.html',  desc:'普外 · 骨科 · 泌尿 108 题精练',             meta:'108 题' },
+const BASE='大三下';
+const EXAMS=[
+  {name:'内科学',icon:'🫀',html:'押题卷/内科学押题卷_2026.html',desc:'心血管 · 呼吸 · 消化 · 泌尿系统全真模拟',meta:'全真模拟'},
+  {name:'精神病学',icon:'🧠',html:'押题卷/精神病学押题卷_2026.html',desc:'精神分裂 · 情感障碍 · 神经症 331 题',meta:'331 题'},
+  {name:'神经病学',icon:'⚡',html:'押题卷/神经病学押题卷_2026.html',desc:'脑血管病 · 癫痫 · 周围神经病变',meta:'全真模拟'},
+  {name:'医患沟通',icon:'💬',html:'押题卷/医患沟通押题卷_2026.html',desc:'沟通技巧 · 医学伦理 · 知情同意情景题',meta:'情景题'},
+  {name:'外科学',icon:'🔪',html:'押题卷/外科学押题卷_108题.html',desc:'普外 · 骨科 · 泌尿 108 题精练',meta:'108 题'},
+];
+const BANKS=[
+  {name:'内科学',icon:'🫀',pdf:'题库/内科学题库_364题.pdf',desc:'内科学 364 题精选题库',meta:'364 题 · PDF'},
+  {name:'外科学',icon:'🔪',pdf:'题库/外科学题库.pdf',desc:'外科学修订版重点题库',meta:'PDF · 重点修订'},
+  {name:'精神病学',icon:'🧠',pdf:'题库/精神病学题库_242题.pdf',desc:'精神病学 242 题 v3 题库',meta:'242 题 · v3'},
+  {name:'神经病学',icon:'⚡',pdf:'题库/神经病学题库_259题.pdf',desc:'神经病学 259 题 v3 题库',meta:'259 题 · v3'},
+  {name:'医患沟通',icon:'💬',pdf:'题库/医患沟通题库.pdf',desc:'医患沟通学题库',meta:'PDF'},
+  {name:'中医学',icon:'🌿',pdf:'题库/中医学题库.pdf',desc:'中医学 batch010 题库',meta:'PDF · batch010'},
+];
+const REVIEWS=[
+  {name:'内科学',icon:'🫀',md:'复习资料/内科学_主复习资料.md',desc:'心血管/呼吸/消化/泌尿，考点分级标注',meta:'v5 · 214K'},
+  {name:'外科学',icon:'🔪',md:'复习资料/外科学_主复习资料.md',html:'复习资料/外科学_主复习资料.html',desc:'普外/骨科/泌尿，手术指征与术式要点',meta:'v5 · 232K'},
+  {name:'精神病学',icon:'🧠',md:'复习资料/精神病学_主复习资料.md',html:'复习资料/精神病学_主复习资料.html',desc:'掌握/熟悉/理解三级标注，侧栏导航',meta:'v5.1 · 134K'},
+  {name:'神经病学',icon:'⚡',md:'复习资料/神经病学_主复习资料.md',desc:'脑血管/癫痫/运动障碍定位诊断',meta:'v5 · 164K'},
+  {name:'医患沟通',icon:'💬',md:'复习资料/医患沟通_主复习资料.md',desc:'沟通模型 · 伦理原则 · 知情同意',meta:'v5.1 · 131K'},
+  {name:'中医学',icon:'🌿',md:'复习资料/中医学_主复习资料.md',html:'复习资料/中医学_主复习资料.html',desc:'基础理论 · 方剂 · 诊断辨证',meta:'v5 · 115K'},
+  {name:'中医心理学',icon:'🧘',md:'复习资料/中医心理学_主复习资料.md',html:'复习资料/中医心理学_主复习资料.html',desc:'情志 · 脏腑 · 治法，心身同治',meta:'86K'},
 ];
 
-const BANKS = [
-  { name:'内科学',     icon:'🫀', pdf:'题库/内科学题库_364题.pdf',   desc:'内科学 364 题精选题库',         meta:'364 题 · PDF' },
-  { name:'外科学',     icon:'🔪', pdf:'题库/外科学题库.pdf',         desc:'外科学修订版重点题库',           meta:'PDF · 重点修订' },
-  { name:'精神病学',   icon:'🧠', pdf:'题库/精神病学题库_242题.pdf', desc:'精神病学 242 题 v3 题库',       meta:'242 题 · v3' },
-  { name:'神经病学',   icon:'⚡', pdf:'题库/神经病学题库_259题.pdf', desc:'神经病学 259 题 v3 题库',       meta:'259 题 · v3' },
-  { name:'医患沟通',   icon:'💬', pdf:'题库/医患沟通题库.pdf',       desc:'医患沟通学题库',                 meta:'PDF' },
-  { name:'中医学',     icon:'🌿', pdf:'题库/中医学题库.pdf',         desc:'中医学 batch010 题库',          meta:'PDF · batch010' },
-];
+const $=s=>document.querySelector(s);
+const toast=msg=>{const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove('show'),2200);};
 
-const REVIEWS = [
-  { name:'内科学',     icon:'🫀', md:'复习资料/内科学_主复习资料.md',                               desc:'心血管/呼吸/消化/泌尿，考点分级标注', meta:'v5 · 214K' },
-  { name:'外科学',     icon:'🔪', md:'复习资料/外科学_主复习资料.md',     html:'复习资料/外科学_主复习资料.html',     desc:'普外/骨科/泌尿，手术指征与术式要点', meta:'v5 · 232K' },
-  { name:'精神病学',   icon:'🧠', md:'复习资料/精神病学_主复习资料.md',   html:'复习资料/精神病学_主复习资料.html',   desc:'掌握/熟悉/理解三级标注，侧栏导航',   meta:'v5.1 · 134K' },
-  { name:'神经病学',   icon:'⚡', md:'复习资料/神经病学_主复习资料.md',                               desc:'脑血管/癫痫/运动障碍定位诊断',       meta:'v5 · 164K' },
-  { name:'医患沟通',   icon:'💬', md:'复习资料/医患沟通_主复习资料.md',                               desc:'沟通模型 · 伦理原则 · 知情同意',     meta:'v5.1 · 131K' },
-  { name:'中医学',     icon:'🌿', md:'复习资料/中医学_主复习资料.md',     html:'复习资料/中医学_主复习资料.html',     desc:'基础理论 · 方剂 · 诊断辨证',         meta:'v5 · 115K' },
-  { name:'中医心理学', icon:'🧘', md:'复习资料/中医心理学_主复习资料.md', html:'复习资料/中医心理学_主复习资料.html', desc:'情志 · 脏腑 · 治法，心身同治',       meta:'86K' },
-];
-
-/* ============================================================
-   工具
-   ============================================================ */
-const $ = s => document.querySelector(s);
-const toast = msg => { const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._tm); t._tm=setTimeout(()=>t.classList.remove('show'),2200); };
-
-function viewOnline(path){ window.open(BASE+'/'+path,'_blank'); }
-
-function downloadFile(path, filename){
-  fetch(BASE+'/'+path).then(r=>{ if(!r.ok) throw 0; return r.blob(); })
-    .then(b=>{
-      const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=filename;
-      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
-      toast('⬇ 已下载：'+filename);
-    }).catch(()=>toast('❌ 下载失败：文件不存在'));
+function viewOnline(path){window.open(BASE+'/'+path,'_blank');}
+function downloadFile(path,filename){
+  fetch(BASE+'/'+path).then(r=>{if(!r.ok)throw 0;return r.blob();})
+    .then(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=filename;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href);toast('⬇ 已下载：'+filename);})
+    .catch(()=>toast('❌ 下载失败：文件不存在'));
 }
-
 function printHTML(path){
   const w=window.open(BASE+'/'+path,'_blank');
-  if(!w){ toast('❌ 弹窗被拦截，请允许'); return; }
+  if(!w){toast('❌ 弹窗被拦截，请允许');return;}
   toast('🖨 正在准备打印…');
-  const ck=setInterval(()=>{ try{ if(w.document.readyState==='complete'){ clearInterval(ck); setTimeout(()=>{w.focus();w.print();},300);} }catch(e){clearInterval(ck);} },200);
+  const ck=setInterval(()=>{try{if(w.document.readyState==='complete'){clearInterval(ck);setTimeout(()=>{w.focus();w.print();},300);}}catch(e){clearInterval(ck);}},200);
 }
 
-/* ---- Markdown 渲染 ---- */
 function mdToHtml(md){
-  let h = md.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  h = h.replace(/```([\s\S]*?)```/g, (m,c)=>'<pre><code>'+c.replace(/^\n/,'')+'</code></pre>');
-  h = h.replace(/(^\|.+\|\s*\n)(^\|[\s:|-]+\|\s*\n)((?:^\|.+\|\s*\n)+)/gm, (m,hdr,sep,body)=>{
-    const heads = hdr.split('|').map(s=>s.trim()).filter(Boolean);
-    const rows = body.trim().split('\n').map(r=>r.split('|').map(s=>s.trim()).filter(Boolean));
+  let h=md.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  h=h.replace(/```([\s\S]*?)```/g,(m,c)=>'<pre><code>'+c.replace(/^\n/,'')+'</code></pre>');
+  h=h.replace(/(^\|.+\|\s*\n)(^\|[\s:|-]+\|\s*\n)((?:^\|.+\|\s*\n)+)/gm,(m,hdr,sep,body)=>{
+    const heads=hdr.split('|').map(s=>s.trim()).filter(Boolean);
+    const rows=body.trim().split('\n').map(r=>r.split('|').map(s=>s.trim()).filter(Boolean));
     let t='<table><thead><tr>'+heads.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>';
-    rows.forEach(r=>{ t+='<tr>'+r.map(x=>'<td>'+x+'</td>').join('')+'</tr>'; });
+    rows.forEach(r=>{t+='<tr>'+r.map(x=>'<td>'+x+'</td>').join('')+'</tr>';});
     return t+'</tbody></table>';
   });
-  h = h.replace(/^######\s+(.*)$/gm,'<h6>$1</h6>').replace(/^#####\s+(.*)$/gm,'<h5>$1</h5>')
-       .replace(/^####\s+(.*)$/gm,'<h4>$1</h4>').replace(/^###\s+(.*)$/gm,'<h3>$1</h3>')
-       .replace(/^##\s+(.*)$/gm,'<h2>$1</h2>').replace(/^#\s+(.*)$/gm,'<h1>$1</h1>');
-  h = h.replace(/^&gt;\s?(.*)$/gm,'<blockquote>$1</blockquote>');
-  h = h.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
-       .replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g,'<em>$1</em>')
-       .replace(/`([^`]+)`/g,'<code>$1</code>');
-  h = h.replace(/^[-*+]\s+(.*)$/gm,'<li>$1</li>');
-  h = h.replace(/(<li>[\s\S]*?<\/li>)/g, m=>'<ul>'+m+'</ul>').replace(/<\/ul>\s*<ul>/g,'');
-  h = h.replace(/^\d+\.\s+(.*)$/gm,'<li>$1</li>');
-  h = h.replace(/^---+$/gm,'<hr>');
-  h = h.split(/\n\n+/).map(p=>{
-    const t=p.trim(); if(!t) return '';
-    if(/^<(h\d|ul|ol|pre|table|blockquote|hr)/.test(t)) return t;
-    return '<p>'+t.replace(/\n/g,'<br>')+'</p>';
-  }).join('\n');
+  h=h.replace(/^######\s+(.*)$/gm,'<h6>$1</h6>').replace(/^#####\s+(.*)$/gm,'<h5>$1</h5>')
+     .replace(/^####\s+(.*)$/gm,'<h4>$1</h4>').replace(/^###\s+(.*)$/gm,'<h3>$1</h3>')
+     .replace(/^##\s+(.*)$/gm,'<h2>$1</h2>').replace(/^#\s+(.*)$/gm,'<h1>$1</h1>');
+  h=h.replace(/^&gt;\s?(.*)$/gm,'<blockquote>$1</blockquote>');
+  h=h.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>');
+  h=h.replace(/^[-*+]\s+(.*)$/gm,'<li>$1</li>');
+  h=h.replace(/(<li>[\s\S]*?<\/li>)/g,m=>'<ul>'+m+'</ul>').replace(/<\/ul>\s*<ul>/g,'');
+  h=h.replace(/^\d+\.\s+(.*)$/gm,'<li>$1</li>');
+  h=h.replace(/^---+$/gm,'<hr>');
+  h=h.split(/\n\n+/).map(p=>{const t=p.trim();if(!t)return'';if(/^<(h\d|ul|ol|pre|table|blockquote|hr)/.test(t))return t;return '<p>'+t.replace(/\n/g,'<br>')+'</p>';}).join('\n');
   return h;
 }
 
-/* ---- 模态：MD 预览 ---- */
-let currentMD=null, currentName=null;
-function previewMD(path, name){
-  currentMD=path; currentName=name; currentPDF=null;
-  $('#m-title').textContent = name + ' · 复习手册';
+/* 生成主题打印样式（注入打印窗口，继承当前主题配色） */
+function themePrintCSS(){
+  // 读取当前活动主题的 CSS 变量
+  const cs=getComputedStyle(document.documentElement);
+  const vars=['--paper','--paper-2','--ink','--ink-soft','--hero','--moss','--moss-deep','--oxblood','--ochre','--rule','--rule-soft','--f-display','--f-body','--f-mono'];
+  let root=':root{';
+  vars.forEach(v=>{root+=v+':'+cs.getPropertyValue(v)+';';});
+  root+='}';
+  return root+`
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:var(--f-body);background:var(--paper);color:var(--ink);line-height:1.85;padding:40px 48px;}
+    .print-root{font-family:var(--f-body);color:var(--ink);}
+    h1,h2,h3,h4{font-family:var(--f-display);font-weight:900;color:var(--hero);margin:1.4em 0 .5em;line-height:1.25;}
+    h1{font-size:26px;border-bottom:2px solid var(--rule);padding-bottom:8px;}
+    h2{font-size:22px;border-bottom:1px solid var(--rule);padding-bottom:6px;}
+    h3{font-size:18px;}
+    strong{color:var(--oxblood);}em{color:var(--moss);}
+    code{font-family:var(--f-mono);background:var(--paper-2);padding:2px 6px;border-radius:3px;color:var(--oxblood);}
+    pre{background:var(--moss-deep);color:#e8e2d4;padding:16px 20px;border-radius:6px;overflow-x:auto;}
+    pre code{background:none;color:inherit;}
+    blockquote{border-left:3px solid var(--ochre);padding-left:1em;color:var(--ink-soft);}
+    table{border-collapse:collapse;width:100%;margin:1em 0;font-size:13.5px;}
+    th,td{border:1px solid var(--rule);padding:8px 12px;text-align:left;}
+    th{background:var(--paper-2);color:var(--hero);}
+    tr:nth-child(even) td{background:var(--rule-soft);}
+    @page{margin:1.5cm;}
+  `;
+}
+
+let currentMD=null,currentPDF=null;
+function previewMD(path,name){
+  currentMD=path;currentPDF=null;
+  $('#m-title').textContent=name+' · 复习手册';
   $('#modal').classList.add('open');
-  const body=$('#m-body'); body.className='modal-body loading'; body.innerHTML='<div class="spinner"></div>';
-  $('#m-actions').innerHTML = '<button class="m-btn" onclick="downloadFile(currentMD,currentMD.split(\'/\').pop())">⬇ 下载 MD</button><button class="m-btn" id="m-print">🖨 打印</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
-  fetch(BASE+'/'+path).then(r=>{ if(!r.ok) throw 0; return r.text(); })
-    .then(md=>{ body.className='modal-body'; body.innerHTML='<div class="md">'+mdToHtml(md)+'</div>'; body.scrollTop=0; })
-    .catch(()=>{ body.className='modal-body'; body.innerHTML='<p style="padding:40px;text-align:center">❌ 读取失败</p>'; });
-  $('#m-print').onclick = ()=>{
-    const w=window.open('','_blank'); if(!w){ toast('❌ 弹窗被拦截'); return; }
-    const css=document.querySelector('style').textContent;
-    w.document.write('<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><style>'+css+'body{background:#fff}.modal-body{padding:40px 48px;overflow:visible;height:auto}@media print{.modal-body{padding:0}}</style></head><body><div class="modal-body">'+$('#m-body').innerHTML+'</div></body></html>');
-    w.document.close(); setTimeout(()=>{ w.focus(); w.print(); },400);
+  const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
+  $('#m-actions').innerHTML='<button class="m-btn" onclick="downloadFile(currentMD,currentMD.split(\'/\').pop())">⬇ 下载 MD</button><button class="m-btn" id="m-print">🖨 打印</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
+  fetch(BASE+'/'+path).then(r=>{if(!r.ok)throw 0;return r.text();})
+    .then(md=>{body.className='modal-body';body.innerHTML='<div class="md">'+mdToHtml(md)+'</div>';body.scrollTop=0;})
+    .catch(()=>{body.className='modal-body';body.innerHTML='<p style="padding:40px;text-align:center">❌ 读取失败</p>';});
+  $('#m-print').onclick=()=>{
+    const w=window.open('','_blank');if(!w){toast('❌ 弹窗被拦截');return;}
+    w.document.write('<!DOCTYPE html><html lang="zh-CN" data-theme="'+currentTheme()+'"><head><meta charset="UTF-8"><style>'+themePrintCSS()+'</style></head><body><div class="print-root">'+$('#m-body').innerHTML+'</div></body></html>');
+    w.document.close();setTimeout(()=>{w.focus();w.print();},400);
   };
 }
-
-/* ---- 模态：PDF 预览 ---- */
-let currentPDF=null;
-function previewPDF(path, name){
-  currentPDF=path; currentMD=null;
-  $('#m-title').textContent = name + ' · 题库';
+function previewPDF(path,name){
+  currentPDF=path;currentMD=null;
+  $('#m-title').textContent=name+' · 题库';
   $('#modal').classList.add('open');
-  const body=$('#m-body'); body.className='modal-body loading'; body.innerHTML='<div class="spinner"></div>';
-  $('#m-actions').innerHTML = '<button class="m-btn" onclick="downloadFile(currentPDF,currentPDF.split(\'/\').pop())">⬇ 下载 PDF</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
-  // iframe 加载 PDF（浏览器内置 PDF 阅读器）
-  const ifr = document.createElement('iframe');
-  ifr.src = BASE+'/'+path;
-  ifr.onload = ()=>{ body.className='modal-body'; body.innerHTML=''; body.appendChild(ifr); };
-  ifr.onerror = ()=>{ body.className='modal-body'; body.innerHTML='<p style="padding:40px;text-align:center">❌ PDF 加载失败，请用「下载」按钮。</p>'; };
-  // 兜底：3 秒后若仍在 loading 直接展示 iframe
-  setTimeout(()=>{ if(body.classList.contains('loading')){ body.className='modal-body'; body.innerHTML=''; body.appendChild(ifr); } }, 3000);
+  const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
+  $('#m-actions').innerHTML='<button class="m-btn" onclick="downloadFile(currentPDF,currentPDF.split(\'/\').pop())">⬇ 下载 PDF</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
+  const ifr=document.createElement('iframe');
+  ifr.src=BASE+'/'+path;
+  ifr.onload=()=>{body.className='modal-body';body.innerHTML='';body.appendChild(ifr);};
+  ifr.onerror=()=>{body.className='modal-body';body.innerHTML='<p style="padding:40px;text-align:center">❌ PDF 加载失败，请用「下载」按钮。</p>';};
+  setTimeout(()=>{if(body.classList.contains('loading')){body.className='modal-body';body.innerHTML='';body.appendChild(ifr);}},3000);
 }
+function closeModal(){$('#modal').classList.remove('open');$('#m-body').innerHTML='<div class="spinner"></div>';}
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
-function closeModal(){ $('#modal').classList.remove('open'); $('#m-body').innerHTML='<div class="spinner"></div>'; }
-$('#modal').addEventListener('click', e=>{ if(e.target.id==='modal') closeModal(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
-
-/* ============================================================
-   渲染卡片
-   ============================================================ */
-function examCard(it,i){
-  return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s">
-    <span class="idx">№ ${String(i+1).padStart(2,'0')}</span>
-    <div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div>
-    <p class="card-desc">${it.desc}</p>
-    <div class="btns">
-      <button class="btn primary" onclick="viewOnline('${it.html}')">👁 在线答题</button>
-      <button class="btn accent" onclick="printHTML('${it.html}')">🖨 打印 PDF</button>
-    </div></div>`;
-}
-function bankCard(it,i){
-  const fname=it.pdf.split('/').pop();
-  return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s">
-    <span class="idx">№ ${String(i+1).padStart(2,'0')}</span>
-    <div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div>
-    <p class="card-desc">${it.desc}</p>
-    <div class="btns">
-      <button class="btn primary" onclick="previewPDF('${it.pdf}','${it.name}')">👁 预览</button>
-      <button class="btn accent" onclick="downloadFile('${it.pdf}','${fname}')">⬇ 下载</button>
-    </div></div>`;
-}
+function examCard(it,i){return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn primary" onclick="viewOnline('${it.html}')">👁 在线答题</button><button class="btn accent" onclick="printHTML('${it.html}')">🖨 打印 PDF</button></div></div>`;}
+function bankCard(it,i){const fname=it.pdf.split('/').pop();return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn primary" onclick="previewPDF('${it.pdf}','${it.name}')">👁 预览</button><button class="btn accent" onclick="downloadFile('${it.pdf}','${fname}')">⬇ 下载</button></div></div>`;}
 function reviewCard(it,i){
   const mdName=it.md.split('/').pop();
-  let btns=`<button class="btn primary" onclick="previewMD('${it.md}','${it.name}')">👁 预览</button>`;
-  btns+=`<button class="btn" onclick="downloadFile('${it.md}','${mdName}')">⬇ MD</button>`;
-  if(it.html){
-    btns+=`<button class="btn" onclick="viewOnline('${it.html}')">↗ HTML</button>`;
-    btns+=`<button class="btn accent" onclick="printHTML('${it.html}')">🖨 PDF</button>`;
-  } else {
-    btns+=`<button class="btn accent" onclick="previewMD('${it.md}','${it.name}')">🖨 PDF</button>`;
-  }
-  return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s">
-    <span class="idx">№ ${String(i+1).padStart(2,'0')}</span>
-    <div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div>
-    <p class="card-desc">${it.desc}</p>
-    <div class="btns">${btns}</div></div>`;
+  let btns=`<button class="btn primary" onclick="previewMD('${it.md}','${it.name}')">👁 预览</button><button class="btn" onclick="downloadFile('${it.md}','${mdName}')">⬇ MD</button>`;
+  if(it.html){btns+=`<button class="btn" onclick="viewOnline('${it.html}')">↗ HTML</button><button class="btn accent" onclick="printHTML('${it.html}')">🖨 PDF</button>`;}
+  else{btns+=`<button class="btn accent" onclick="previewMD('${it.md}','${it.name}')">🖨 PDF</button>`;}
+  return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns">${btns}</div></div>`;
 }
+$('#grid-exam').innerHTML=EXAMS.map(examCard).join('');
+$('#grid-bank').innerHTML=BANKS.map(bankCard).join('');
+$('#grid-review').innerHTML=REVIEWS.map(reviewCard).join('');
 
-$('#grid-exam').innerHTML = EXAMS.map(examCard).join('');
-$('#grid-bank').innerHTML = BANKS.map(bankCard).join('');
-$('#grid-review').innerHTML = REVIEWS.map(reviewCard).join('');
+/* 主题切换 */
+function currentTheme(){return document.documentElement.getAttribute('data-theme');}
+function setTheme(t){
+  document.documentElement.setAttribute('data-theme',t);
+  document.querySelectorAll('.theme-btn').forEach(b=>b.classList.toggle('active',b.dataset.t===t));
+  try{localStorage.setItem('maw-theme',t);}catch(e){}
+}
+document.querySelectorAll('.theme-btn').forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.t)));
+try{const saved=localStorage.getItem('maw-theme');if(saved)setTheme(saved);}catch(e){}
 
-/* ============================================================
-   学期切换
-   ============================================================ */
+/* 学期切换 */
 function switchTerm(term){
-  document.querySelectorAll('.term-tab').forEach(t=>t.classList.toggle('active', t.dataset.term===term));
+  document.querySelectorAll('.term-tab').forEach(t=>t.classList.toggle('active',t.dataset.term===term));
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   $('#view-'+term).classList.add('active');
-  if(term==='junior2'){
-    $('#term-label').textContent='医学复习资料库 · EST. 2026';
-    $('#term-sub').textContent='大三下学期 · Spring Term';
-    $('#hero-title').innerHTML='医道<span class="red">典籍</span><br>复习资料库';
-    $('#hero-tag').textContent='押题卷、题库与复习手册，为同窗备考而辑。在线答题、预览研读、一键打印 PDF。';
-    $('#hero-vol').textContent='Ⅲ';
-  } else {
-    $('#term-label').textContent='医学复习资料库 · EST. 2026';
-    $('#term-sub').textContent='大四上学期 · Autumn Term';
-    $('#hero-title').innerHTML='医道<span class="red">典籍</span><br>复习资料库';
-    $('#hero-tag').textContent='大四上学期资料编纂中，敬请期待。';
-    $('#hero-vol').textContent='Ⅳ';
-  }
-  window.scrollTo({top:0, behavior:'smooth'});
+  if(term==='junior2'){$('#term-sub').textContent='大三下学期 · Spring Term';$('#hero-vol').textContent='Ⅲ';$('#hero-tag').textContent='押题卷、题库与复习手册，为同窗备考而辑。在线答题、预览研读、一键打印 PDF。';}
+  else{$('#term-sub').textContent='大四上学期 · Autumn Term';$('#hero-vol').textContent='Ⅳ';$('#hero-tag').textContent='大四上学期资料编纂中，敬请期待。';}
+  window.scrollTo({top:0,behavior:'smooth'});
 }
-document.querySelectorAll('.term-tab').forEach(t=>t.addEventListener('click', ()=>switchTerm(t.dataset.term)));
+document.querySelectorAll('.term-tab').forEach(t=>t.addEventListener('click',()=>switchTerm(t.dataset.term)));
 </script>
 </body>
 </html>
