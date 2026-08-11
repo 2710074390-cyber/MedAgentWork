@@ -376,7 +376,7 @@ body::after {
     <section class="section">
       <div class="section-head reveal" style="animation-delay:.1s">
         <span class="section-num">Ⅱ</span><h2>题库 · PDF 精选</h2>
-        <span class="desc">在线预览 · 下载 PDF</span>
+        <span class="desc">一键下载 PDF · 本地阅读</span>
       </div>
       <div class="grid cols" id="grid-bank"></div>
     </section>
@@ -434,7 +434,6 @@ const BANKS=[
   {name:'医患沟通',icon:'💬',pdf:'题库/医患沟通题库.pdf',desc:'医患沟通学题库',meta:'PDF'},
   {name:'中医学',icon:'🌿',pdf:'题库/中医学题库.pdf',desc:'中医学 batch010 题库',meta:'PDF · batch010'},
 ];
-const PREVIEW_MANIFEST={"内科学题库_364题": {"total": 119, "preview_pages": ["preview/neike_p1.png", "preview/neike_p2.png", "preview/neike_p3.png", "preview/neike_p4.png", "preview/neike_p5.png"]}, "外科学题库": {"total": 95, "preview_pages": ["preview/waike_p1.png", "preview/waike_p2.png", "preview/waike_p3.png", "preview/waike_p4.png", "preview/waike_p5.png"]}, "精神病学题库_242题": {"total": 78, "preview_pages": ["preview/jingshen_p1.png", "preview/jingshen_p2.png", "preview/jingshen_p3.png", "preview/jingshen_p4.png", "preview/jingshen_p5.png"]}, "神经病学题库_259题": {"total": 92, "preview_pages": ["preview/shenjing_p1.png", "preview/shenjing_p2.png", "preview/shenjing_p3.png", "preview/shenjing_p4.png", "preview/shenjing_p5.png"]}, "医患沟通题库": {"total": 105, "preview_pages": ["preview/yihuan_p1.png", "preview/yihuan_p2.png", "preview/yihuan_p3.png", "preview/yihuan_p4.png", "preview/yihuan_p5.png"]}, "中医学题库": {"total": 101, "preview_pages": ["preview/zhongyi_p1.png", "preview/zhongyi_p2.png", "preview/zhongyi_p3.png", "preview/zhongyi_p4.png", "preview/zhongyi_p5.png"]}};
 const REVIEWS=[
   {name:'内科学',icon:'🫀',md:'复习资料/内科学_主复习资料.md',desc:'心血管/呼吸/消化/泌尿，考点分级标注',meta:'v5 · 214K'},
   {name:'外科学',icon:'🔪',md:'复习资料/外科学_主复习资料.md',html:'复习资料/外科学_主复习资料.html',desc:'普外/骨科/泌尿，手术指征与术式要点',meta:'v5 · 232K'},
@@ -545,42 +544,12 @@ function previewMD(path,name){
     w.document.close();setTimeout(()=>{w.focus();w.print();},400);
   };
 }
-function previewPDF(path,name){
-  currentPDF=path;currentMD=null;
-  $('#m-title').textContent=name+' · 题库';
-  $('#modal').classList.add('open');
-  const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
-  $('#m-actions').innerHTML='<button class="m-btn" onclick="window.open(url(currentPDF),\'_blank\')"> 新标签</button><button class="m-btn" onclick="downloadFile(currentPDF,currentPDF.split(\'/\').pop())">⬇ 下载 PDF</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
-  /* 图片预览：加载前 5 页 PNG，避免浏览器 PDF 渲染问题 */
-  const key=path.replace('.pdf','').replace('题库/','');
-  const meta=PREVIEW_MANIFEST[key]||{total:0,preview_pages:[]};
-  const pages=meta.preview_pages||[];
-  if(!pages.length){
-    body.className='modal-body';
-    body.innerHTML='<div style="padding:60px 40px;text-align:center;color:var(--ink-soft)"><p style="font-size:16px;margin-bottom:8px">📄 暂无预览图</p><p style="font-size:13px">请点击「⬇ 下载 PDF」查看完整内容。</p></div>';
-    return;
-  }
-  body.className='modal-body';
-  body.style.overflow='auto';
-  let html='<div style="padding:20px 32px 32px;text-align:center">';
-  pages.forEach((p,i)=>{
-    html+='<figure style="margin:0 0 14px">'
-      +'<img src="'+url(p)+'" alt="第'+(i+1)+'页" loading="lazy" '
-      +'style="max-width:100%;border:1px solid var(--rule);border-radius:4px;background:#fff">'
-      +'<figcaption style="font-size:11px;color:var(--ink-faint);font-family:var(--f-mono);margin-top:4px">第 '+(i+1)+' / '+(meta.total||'')+' 页（预览）</figcaption>'
-      +'</figure>';
-  });
-  html+='<div style="margin-top:16px;padding:14px 20px;border:1px dashed var(--rule);border-radius:6px;color:var(--ink-soft);font-size:13px">'
-    +'仅展示前 '+pages.length+' 页。完整 '+(meta.total||'')+' 页内容请点击右上角「⬇ 下载 PDF」或「 新标签」。'
-    +'</div></div>';
-  body.innerHTML=html;
-}
 function closeModal(){$('#modal').classList.remove('open');$('#m-body').innerHTML='<div class="spinner"></div>';}
 $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 function examCard(it,i){return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn primary" onclick="viewOnline('${it.html}')">👁 在线答题</button><button class="btn accent" onclick="printHTML('${it.html}')">🖨 打印 PDF</button></div></div>`;}
-function bankCard(it,i){const fname=it.pdf.split('/').pop();return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn primary" onclick="previewPDF('${it.pdf}','${it.name}')">👁 预览</button><button class="btn accent" onclick="downloadFile('${it.pdf}','${fname}')">⬇ 下载</button></div></div>`;}
+function bankCard(it,i){const fname=it.pdf.split('/').pop();return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn primary" onclick="downloadFile('${it.pdf}','${fname}')">⬇ 下载 PDF</button></div></div>`;}
 function reviewCard(it,i){
   const mdName=it.md.split('/').pop();
   let btns=`<button class="btn primary" onclick="previewMD('${it.md}','${it.name}')">👁 预览</button><button class="btn" onclick="downloadFile('${it.md}','${mdName}')">⬇ MD</button>`;
