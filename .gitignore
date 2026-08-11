@@ -1,0 +1,31 @@
+# 依赖和构建产物
+node_modules/
+dist/
+.cache/
+
+# 日志
+*.log
+npm-debug.log*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 环境变量（敏感信息）
+.env
+.env.local
+.env.*.local
+
+# 临时文件
+tmp/
+temp/
+*.tmp
+
+# 脚本（不上传）
+deploy.sh
