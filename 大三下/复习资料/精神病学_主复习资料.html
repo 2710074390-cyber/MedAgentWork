@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精神病学高效复习手册 · 高效复习手册</title>
+<style>
+/* ============================================================
+   MedAgentWork — 主复习资料 HTML 渲染模板
+   设计理念：专业医学教材 + 现代网页阅读体验
+   零外部依赖，离线可用
+   ============================================================ */
+
+/* ----- CSS Custom Properties ----- */
+:root {
+  --bg-primary: #fafbfc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f2f5;
+  --bg-callout: #f8f9fb;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
+  --border: #e2e8f0;
+  --border-light: #edf2f7;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+  --color-master: #dc2626;
+  --color-master-bg: #fef2f2;
+  --color-master-border: #fecaca;
+  --color-familiar: #d97706;
+  --color-familiar-bg: #fffbeb;
+  --color-familiar-border: #fde68a;
+  --color-understand: #059669;
+  --color-understand-bg: #ecfdf5;
+  --color-understand-border: #a7f3d0;
+  --color-warning: #d97706;
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fcd34d;
+  --color-tip: #7c3aed;
+  --color-tip-bg: #f5f3ff;
+  --color-tip-border: #c4b5fd;
+  --color-info: #2563eb;
+  --color-info-bg: #eff6ff;
+  --color-info-border: #93c5fd;
+  --color-success: #059669;
+  --color-success-bg: #ecfdf5;
+  --color-success-border: #6ee7b7;
+  --accent: #2563eb;
+  --accent-light: #dbeafe;
+  --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  --font-mono: "SF Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
+  --line-height: 1.8;
+  --content-width: 720px;
+  --sidebar-width: 260px;
+  --header-height: 56px;
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f1117;
+  --bg-secondary: #161822;
+  --bg-tertiary: #1e2030;
+  --bg-callout: #1a1c2a;
+  --text-primary: #e2e4e9;
+  --text-secondary: #a0a6b5;
+  --text-tertiary: #6b7280;
+  --border: #2a2d3a;
+  --border-light: #222433;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+  --color-master-bg: #3b1219;
+  --color-master-border: #5c1f24;
+  --color-familiar-bg: #3b2f0a;
+  --color-familiar-border: #5c4a1a;
+  --color-understand-bg: #0a2e1f;
+  --color-understand-border: #1a4a30;
+  --color-warning-bg: #3b2f0a;
+  --color-warning-border: #5c4a1a;
+  --color-tip-bg: #1e123b;
+  --color-tip-border: #3a2560;
+  --color-info-bg: #0a1e3b;
+  --color-info-border: #1a3a5c;
+  --color-success-bg: #0a2e1f;
+  --color-success-border: #1a4a30;
+  --accent-light: #1a2e4a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: var(--line-height);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--color-master), var(--accent), var(--color-understand));
+  z-index: 1000;
+  transition: width 100ms linear;
+}
+
+#top-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 900;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+#top-header .title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#top-header .actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.theme-toggle {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+}
+.theme-toggle:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+#sidebar-toggle {
+  display: none;
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+#sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--header-height));
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 800;
+  padding: 16px 0;
+  transition: transform var(--transition-normal);
+}
+
+#sidebar::-webkit-scrollbar { width: 4px; }
+#sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.sidebar-section {
+  padding: 8px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+}
+
+.sidebar-link {
+  display: block;
+  padding: 8px 20px 8px 24px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all var(--transition-fast);
+  line-height: 1.5;
+}
+.sidebar-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border-left-color: var(--border);
+}
+.sidebar-link.active {
+  color: var(--accent);
+  background: var(--accent-light);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+.sidebar-link .badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.badge-master { background: var(--color-master-bg); color: var(--color-master); }
+.badge-familiar { background: var(--color-familiar-bg); color: var(--color-familiar); }
+.badge-understand { background: var(--color-understand-bg); color: var(--color-understand); }
+
+#main-content {
+  margin-left: var(--sidebar-width);
+  margin-top: var(--header-height);
+  padding: 40px 48px 80px;
+  max-width: calc(var(--content-width) + 96px);
+}
+
+/* Hero Banner */
+.hero-banner {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
+  border-radius: 16px;
+  padding: 36px 40px;
+  margin-bottom: 40px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 400px; height: 400px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.hero-banner h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.hero-banner .meta {
+  font-size: 14px;
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+}
+.hero-banner .meta-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.hero-banner .meta-tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  font-size: 12px;
+  backdrop-filter: blur(4px);
+}
+
+/* Section Title */
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 48px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title:first-of-type {
+  margin-top: 0;
+}
+
+/* Module Card */
+.module-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-normal);
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}
+.module-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.module-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.module-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.module-stats {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.module-stat {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.stat-master { background: var(--color-master-bg); color: var(--color-master); }
+.stat-familiar { background: var(--color-familiar-bg); color: var(--color-familiar); }
+.stat-understand { background: var(--color-understand-bg); color: var(--color-understand); }
+
+.module-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.module-meta span { display: flex; align-items: center; gap: 4px; }
+
+/* Importance Badge */
+.importance-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+  letter-spacing: 0.02em;
+}
+.imp-master { background: var(--color-master-bg); color: var(--color-master); border: 1px solid var(--color-master-border); }
+.imp-familiar { background: var(--color-familiar-bg); color: var(--color-familiar); border: 1px solid var(--color-familiar-border); }
+.imp-understand { background: var(--color-understand-bg); color: var(--color-understand); border: 1px solid var(--color-understand-border); }
+
+/* Callout Blocks */
+.callout {
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  border-left: 4px solid;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.callout-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.callout-warning {
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning);
+}
+.callout-warning .callout-title { color: var(--color-warning); }
+
+.callout-tip {
+  background: var(--color-tip-bg);
+  border-color: var(--color-tip);
+}
+.callout-tip .callout-title { color: var(--color-tip); }
+
+.callout-info {
+  background: var(--color-info-bg);
+  border-color: var(--color-info);
+}
+.callout-info .callout-title { color: var(--color-info); }
+
+.callout-success {
+  background: var(--color-success-bg);
+  border-color: var(--color-success);
+}
+.callout-success .callout-title { color: var(--color-success); }
+
+/* Accordion */
+.accordion {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 12px 0;
+  overflow: hidden;
+}
+.accordion summary {
+  padding: 14px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+  transition: background var(--transition-fast);
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary::before {
+  content: '▸';
+  display: inline-block;
+  transition: transform var(--transition-fast);
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+.accordion[open] summary::before {
+  transform: rotate(90deg);
+}
+.accordion summary:hover {
+  background: var(--accent-light);
+}
+.accordion .accordion-body {
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 16px 0;
+  padding: 12px 20px;
+  background: var(--accent-light);
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Code */
+code {
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--color-tip);
+}
+
+/* Tables */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+thead {
+  background: var(--bg-tertiary);
+}
+th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+  text-transform: none;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+  vertical-align: top;
+}
+tr:nth-child(even) td {
+  background: var(--bg-callout);
+}
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Fill-in-blank */
+.fill-blank {
+  display: inline-block;
+  min-width: 60px;
+  border-bottom: 2px dashed var(--accent);
+  padding: 0 4px;
+  margin: 0 2px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: transparent;
+  position: relative;
+}
+.fill-blank.revealed {
+  color: var(--color-understand);
+  border-bottom-color: var(--color-understand);
+  font-weight: 600;
+}
+.fill-blank::after {
+  content: '（点击显示）';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  color: var(--text-tertiary);
+  font-size: 12px;
+  pointer-events: none;
+}
+.fill-blank.revealed::after {
+  display: none;
+}
+
+/* Back to Top */
+#back-to-top {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: var(--shadow-md);
+  z-index: 700;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#back-to-top:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* Sidebar overlay */
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 790;
+}
+
+/* Print */
+@media print {
+  #progress-bar, #top-header, #sidebar, #sidebar-overlay, #sidebar-toggle, #back-to-top, .theme-toggle {
+    display: none !important;
+  }
+  #main-content {
+    margin-left: 0;
+    margin-top: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+  .module-card, .hero-banner {
+    box-shadow: none;
+    break-inside: avoid;
+    border: 1px solid #ddd;
+  }
+  .hero-banner {
+    background: #f0f4ff !important;
+    color: #1a1a2e !important;
+  }
+  .hero-banner .meta-tag {
+    background: #e2e8f0;
+    color: #1a1a2e;
+  }
+  body { font-size: 12px; background: #fff; }
+  .accordion[open] .accordion-body { display: block !important; }
+  .accordion:not([open]) .accordion-body { display: none !important; }
+  .fill-blank { color: var(--color-understand); border-bottom: 1px solid #999; }
+  .fill-blank::after { display: none; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  #main-content {
+    padding: 24px 20px 60px;
+  }
+  .hero-banner {
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+  .hero-banner h1 { font-size: 22px; }
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+  #sidebar.open {
+    transform: translateX(0);
+  }
+  #sidebar-overlay.show {
+    display: block;
+  }
+  #sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #main-content {
+    margin-left: 0;
+    padding: 16px 12px 60px;
+    max-width: 100%;
+  }
+  .module-card {
+    padding: 20px 16px;
+  }
+  .hero-banner {
+    border-radius: 10px;
+    padding: 20px 16px;
+  }
+  .hero-banner h1 { font-size: 20px; }
+  #back-to-top { bottom: 16px; right: 16px; }
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
+</style>
+</head>
+<body>
+<div id="progress-bar" style="width:0%"></div>
+<header id="top-header">
+<button id="sidebar-toggle" aria-label="目录">☰</button>
+<span class="title">📖 精神病学高效复习手册 · 高效复习手册</span>
+<div class="actions">
+<button class="theme-toggle" id="theme-toggle" aria-label="切换暗色模式" title="切换暗色/亮色模式">🌙</button>
+</div>
+</header>
+<div id="sidebar-overlay"></div>
+<nav id="sidebar">
+<div class="sidebar-section">📋 导航</div>
+<a href="#nav" class="sidebar-link active">科目导航</a>
+<div class="sidebar-section">📋 导航</div>
+<a href="#guide" class="sidebar-link">使用指南</a>
+<div class="sidebar-section">📋 导航</div>
+<a href="#overview" class="sidebar-link">模块速览</a>
+<div class="sidebar-section" style="margin-top:12px">📚 模块</div>
+<a href="#m1" class="sidebar-link">M1 绪论 <span class="badge badge-understand">了解</span></a>
+<a href="#m2" class="sidebar-link">M2 精神障碍的症状学 <span class="badge badge-understand">了解</span></a>
+<a href="#m3" class="sidebar-link">M3 神经认知障碍 <span class="badge badge-understand">了解</span></a>
+<a href="#m4" class="sidebar-link">M4 精神活性物质所致精神障碍 <span class="badge badge-understand">了解</span></a>
+<a href="#m5" class="sidebar-link">M5 精神分裂症及其他精神病性 <span class="badge badge-understand">了解</span></a>
+<a href="#m6" class="sidebar-link">M6 抑郁障碍 <span class="badge badge-understand">了解</span></a>
+<a href="#m7" class="sidebar-link">M7 双相及相关障碍 <span class="badge badge-understand">了解</span></a>
+<a href="#m8" class="sidebar-link">M8 强迫及相关障碍 <span class="badge badge-understand">了解</span></a>
+<a href="#m9" class="sidebar-link">M9 躯体忧虑障碍及疑病障碍 <span class="badge badge-understand">了解</span></a>
+<a href="#m10" class="sidebar-link">M10 应激相关障碍 <span class="badge badge-understand">了解</span></a>
+<a href="#m11" class="sidebar-link">M11 睡眠障碍 <span class="badge badge-understand">了解</span></a>
+<a href="#m12" class="sidebar-link">M12 躯体治疗 <span class="badge badge-understand">了解</span></a>
+<div class="sidebar-section" style="margin-top:12px">📎 附录</div>
+<a href="#附录一教材知识点页码索引" class="sidebar-link">附录一：教材知识点页码索引</a>
+<a href="#附录二术语同意异名对照表" class="sidebar-link">附录二：术语同意异名对照表</a>
+<a href="#附录三必背记忆口诀汇总" class="sidebar-link">附录三：必背记忆口诀汇总</a>
+</nav>
+<main id="main-content">
+<div class="hero-banner">
+<h1>🧠 精神病学高效复习手册 高效复习手册</h1>
+<p class="meta">MedAgentWork 自动生成 | 教材浓缩型 | 分层阅读</p>
+<div class="meta-tags"><span class="meta-tag">📦 batch007</span><span class="meta-tag">📘 医学复习手册</span><span class="meta-tag">🎯 期末考试</span></div>
+</div>
+<h2 id="科目导航精神病学怎么学" style="font-size:22px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">科目导航：精神病学怎么学？</h2>
+<h3 id="科目特点" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">科目特点</h3>
+<p style="margin:8px 0;line-height:1.8">精神病学是临床医学中概念边界最需要精确掌握的学科之一：</p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li><strong>症状学是基础语言</strong>：六大维度（感知觉/思维/情感/意志/行为/认知）是所有诊断的底层词汇</li><li><strong>诊断高度依赖时间轴</strong>：三个关键时间窗——2周（抑郁）/1月（分裂症症状/急性应激→PTSD分界）/6月（慢性病程）</li><li><strong>药物机制-副作用一体两面</strong>：D2→EPS+泌乳素↑、M1→口干便秘、α1→低血压、H1→镇静发胖——每个受体阻断既是机制也是副作用来源</li><li><strong>四种疾病占半壁江山</strong>：M5(31题)+M6(29题)+M7(24题)+M12(19题)=103/221题(47%)</li>
+</ol>
+<h3 id="命题规律" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">命题规律</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>题型</th>
+<th>占比</th>
+<th>出题方向</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>A1（单句型）</td>
+<td>59%</td>
+<td>定义/诊断标准/药物分类/数值记忆</td>
+</tr>
+<tr>
+<td>A2（病例摘要）</td>
+<td>16%</td>
+<td>典型症状→诊断/分型/药物选择</td>
+</tr>
+<tr>
+<td>A3/A4（病例组）</td>
+<td>7%</td>
+<td>精神分裂症/抑郁/双相的连续病例决策</td>
+</tr>
+<tr>
+<td>X型（多选题）</td>
+<td>16%</td>
+<td>诊断标准组合/并发症/治疗原则</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="建议复习路径" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">建议复习路径</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>阶段</th>
+<th>时间</th>
+<th>策略</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>一阶·通识</td>
+<td>第1天</td>
+<td>M1绪论(30min)→M2症状学(2h)→M8-M11速览</td>
+</tr>
+<tr>
+<td>二阶·核心</td>
+<td>第2-3天</td>
+<td>M5(2h)+M6(2h)+M7(1.5h)+M12(1.5h)</td>
+</tr>
+<tr>
+<td>三阶·冲刺</td>
+<td>第4天</td>
+<td>对比速查+221题刷题+主动回忆区+口诀汇总</td>
+</tr>
+</tbody>
+</table></div>
+<div class="callout callout-warning"><div class="callout-title">避坑提示</div><p>- ❌ 幻觉vs错觉区分关键=有无客观刺激物（不是能否被他人感知！）<br>- ❌ 双相抑郁不能单用抗抑郁药——这是用药禁忌型必考题<br>- ❌ 锂盐治疗窗0.6-1.2mmol/L、中毒>1.4mmol/L——数值记错=临床决策失误<br>- ❌ 谵妄≠痴呆早期——谵妄急性波动可逆，痴呆隐袭进行不可逆</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<h2 id="使用指南" style="font-size:22px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">使用指南</h2>
+<div class="callout callout-success"><div class="callout-title">🟢 基础薄弱</div><p>先读M2症状学→再读M5精神分裂症（典型疾病）→建立诊断框架</p></div>
+<div class="callout callout-info"><div class="callout-title">🟡 标准复习</div><p>核心模块(M5/M6/M7/M12)「📋 结构化笔记」→主动回忆区→对比速查</p></div>
+<div class="callout callout-warning"><div class="callout-title">🔴 冲刺高分</div><p>标准路径+展开所有折叠区+M3的谵妄/痴呆/AD/VD四维鉴别+M12受体-副作用全表</p></div>
+<div class="callout callout-tip"><div class="callout-title">⚡ 考前速刷</div><p>「高收益摘要」+「对比速查」+「口诀汇总」+易错陷阱</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<h2 id="模块速览地图" style="font-size:22px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">模块速览地图</h2>
+<pre style="background:var(--bg-tertiary);padding:16px;border-radius:8px;overflow-x:auto;font-size:13px;line-height:1.7;font-family:var(--font-mono)"><code>精神病学 12大模块
+|
++- 🟢 M1 绪论 (7题)
++- 🟡 M2 症状学 (18题) ⭐重要  六大维度
++- 🟡 M3 神经认知障碍 (15题) ⭐重要  谵妄/痴呆/AD/VD
++- 🟡 M4 物质所致障碍 (10题) ⭐重要  酒精戒断时间窗
++- 🔴 M5 精神分裂症 (31题) ⭐核心  DA假说/四亚型/抗精神病药
++- 🔴 M6 抑郁障碍 (29题) ⭐核心  三低/SSRI/三阶段
++- 🔴 M7 双相障碍 (24题) ⭐核心  I型vsII型/锂盐/心境稳定剂
++- 🟢 M8 强迫症 (8题)
++- 🟢 M9 躯体忧虑/疑病 (8题)
++- 🟡 M10 应激相关 (14题) ⭐重要  PTSD四大症状群
++- 🟢 M11 睡眠障碍 (8题)
++- 🔴 M12 躯体治疗 (19题) ⭐核心  受体-副作用/MECT/rTMS</code></pre>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m1">📘 模块1：绪论</h2>
+<div class="module-card">
+<div class="module-header"><h2>M1 · 绪论</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🟢了解级（7题）| <strong>预计题型</strong>：A1<br><strong>关联模块</strong>：全科基础 | <strong>预计阅读</strong>：约2分钟</p></div>
+<h3 id="前置知识检查基础补丁" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🧩 前置知识检查（基础补丁）</h3>
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>⚡ 精神病学是研究精神障碍的<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">病因、发病机制、临床表现、诊断、治疗和预防</span>的临床医学二级学科（教材P1）</li><li>⚡ 精神障碍采用<strong>生物-心理-社会</strong>综合模型解释病因（教材P5-9）</li>
+</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 3件事<br>> 1. 精神病学=临床医学二级学科（诊断/治疗/预防）（教材P1）<br>> 2. 精神卫生=维护促进心理健康（广义概念）（教材P1）<br>> 3. 病因模型=生物-心理-社会三维交互（教材P5-9）</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> 【了解级】四大概念辨析 + 亚专科（教材P1-9）</p>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>概念</th>
+<th>定义</th>
+<th>范畴</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>精神病学</td>
+<td>研究精神障碍的临床医学二级学科</td>
+<td>诊断+治疗+预防</td>
+</tr>
+<tr>
+<td>精神卫生</td>
+<td>维护促进心理健康的活动和状态</td>
+<td>预防保健为主</td>
+</tr>
+<tr>
+<td>精神医学</td>
+<td>广义概念</td>
+<td>精神病学+精神卫生</td>
+</tr>
+<tr>
+<td>精神障碍</td>
+<td>认知/情绪/行为出现临床意义紊乱</td>
+<td>疾病实体</td>
+</tr>
+</tbody>
+</table></div>
+<p style="margin:8px 0;line-height:1.8"><strong>亚专科</strong>：儿童/老年/成瘾/司法/心身医学/联络会诊精神病学。<strong>三大基础支柱</strong>：神经科学(生理)+心理学(心理)+社会学(社会)。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>「精神病学=精神医学」→不精确！精神医学是广义概念。</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>> [!INFO] 本章小结<br>> - 精神病学≠精神医学（后者更广）；病因=生物-心理-社会综合模型<br><br>> [!TIP] 记忆口诀<br>> <strong>「精神是学科，卫生是保健，医学是广义」</strong> → 三个概念递进关系</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m2">📘 模块2：精神障碍的症状学</h2>
+<div class="module-card">
+<div class="module-header"><h2>M2 · 精神障碍的症状学</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🟡重要级（18题）| <strong>预计题型</strong>：A1/A2/B1/X型<br><strong>关联模块</strong>：症状学是所有诊断的基础语言 | <strong>预计阅读</strong>：约10分钟</p></div>
+<h3 id="前置知识检查基础补丁" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🧩 前置知识检查（基础补丁）</h3>
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>✅ 需掌握：<strong>精神症状</strong>=异常精神活动的外显表现，是精神障碍诊断的客观依据（教材P10）</li><li>✅ 需掌握：<strong>六大症状维度</strong>=感知觉障碍→思维障碍→情感障碍→意志障碍→行为障碍→认知障碍</li><li>⚡ 快速补课：<strong>自知力</strong>=患者对自身精神障碍的认识能力——自知力缺乏是精神病性障碍的重要特征，自知力恢复是病情好转的关键指标（教材P23-24）</li>
+</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住8件事<br>> 1. 幻觉=无客观刺激的虚幻知觉；错觉=对客观事物歪曲的知觉（关键鉴别：有无客观刺激物）（教材P12）<br>> 2. 评论性/议论性/命令性幻听→精神分裂症特征性症状（教材P12-13）<br>> 3. 妄想=病理性歪曲信念（被害/关系/夸大/罪恶/疑病/钟情/嫉妒/物理影响/被洞悉）（教材P17-20）<br>> 4. 原发性妄想=突发、不可理解→精神分裂症诊断价值高（教材P17）<br>> 5. 思维形式障碍12种：奔逸/迟缓/贫乏/散漫/破裂/不连贯/中断/插入/被夺/扩散/病理性赘述/象征性思维（教材P14-17）<br>> 6. 紧张症=木僵与兴奋交替+蜡样屈曲+违拗+缄默（教材P23）<br>> 7. 定向力障碍是意识障碍的重要标志：时间→地点→人物的定向依次丧失（教材P24）<br>> 8. 真性幻觉vs假性幻觉鉴别：空间定位（客观空间 vs 主观空间）（教材P12）</p></div>
+<h3 id="结构化笔记教材浓缩型深度展开" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（教材浓缩型，深度展开）</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】感知觉障碍：幻觉 vs 错觉 + 幻听分类（教材P10-14）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>感觉障碍</strong>：感觉过敏/减退/倒错/内感性不适。<strong>知觉障碍</strong>分两类：</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li><strong>错觉</strong>：有客观刺激物存在，但被<strong>歪曲</strong>的知觉（如「杯弓蛇影」）</li><li><strong>幻觉</strong>：<strong>无</strong>客观刺激物，凭空产生的虚幻知觉</li>
+</ul>
+<details class="accordion" open>
+<summary>🔬 展开：幻觉6大类型及其临床意义</summary>
+<div class="accordion-body">
+| 幻觉类型 | 临床意义 | 常见疾病 |
+|----------|----------|----------|
+| **幻听**（最常见） | 言语性→评论性/议论性/命令性=精神分裂症特征 | 精神分裂症 |
+| 幻视 | 谵妄常见（小动物/小人国幻觉） | 谵妄/物质中毒 |
+| 幻嗅/幻味 | 颞叶癫痫特征 | 颞叶癫痫 |
+| 幻触 | 可卡因依赖（蚁走感） | 物质依赖 |
+| 内脏幻觉 | 内脏被牵拉/扭转/虫子爬 | 精神分裂症/抑郁 |
+</div>
+</details>
+<p style="margin:8px 0;line-height:1.8"><strong>真性幻觉 vs 假性幻觉</strong>：真性→空间定位在客观空间（「窗外有人说话」）；假性→定位在主观空间（「脑子里有人说话」）。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>评论性/议论性/命令性幻听=精神分裂症<strong>特征性</strong>症状（非唯一！其他精神病也可有幻听）。错觉≠幻觉——关键区别在于有无客观刺激物。</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】思维障碍：形式障碍 vs 内容障碍（妄想）（教材P14-20）</p>
+<details class="accordion" open>
+<summary>🔬 展开：思维形式障碍12种速查</summary>
+<div class="accordion-body">
+| 障碍 | 特征 | 常见疾病 |
+|------|------|----------|
+| 思维奔逸 | 语速快/联想快/音联意联 | 躁狂发作 |
+| 思维迟缓 | 语速慢/思考困难 | 抑郁发作 |
+| 思维贫乏 | 言语量少/内容空洞 | 精神分裂症（阴性） |
+| 思维散漫 | 答不切题/但句间有联系 | 精神分裂症早期 |
+| 思维破裂 | 句间无逻辑联系/词语杂拌 | 精神分裂症特征 |
+| 思维不连贯 | 意识障碍下出现 | 谵妄 |
+| 思维中断/插入/被夺 | 被动体验，思维受外力控制 | 精神分裂症（Schneider一级） |
+| 病理性赘述 | 过多细节但最终回到主题 | 癫痫 |
+| 象征性思维 | 具体事物赋予特殊含义 | 精神分裂症 |
+| 语词新作 | 自创词语 | 精神分裂症 |
+</div>
+</details>
+<p style="margin:8px 0;line-height:1.8"><strong>妄想分类</strong>：①被害妄想（最常见）②关系妄想③夸大妄想④罪恶妄想⑤疑病妄想⑥钟情妄想⑦嫉妒妄想⑧物理影响妄想⑨被洞悉感。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>原发性妄想</strong>：突然发生/不可理解/不能用其他心理过程解释→精神分裂症<strong>诊断价值极高</strong>。<strong>继发性妄想</strong>：在幻觉/情感障碍/人格障碍基础上产生。</p>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><strong>「奔躁迟抑贫阴性，散裂分裂不连谵」</strong>→思维形式障碍与疾病对应：奔逸=躁狂/迟缓=抑郁/贫乏=精神分裂阴性/散漫+破裂=精神分裂/不连贯=谵妄</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】情感障碍 + 意志障碍 + 行为障碍 + 紧张症（教材P20-24）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>情感障碍</strong>：高涨(躁狂)/低落(抑郁)/焦虑/恐惧/淡漠(精神分裂症)/倒错(情感与思维环境不协调)/不稳/矛盾。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>紧张症</strong>：精神运动性兴奋+木僵交替。木僵状态表现：<strong>蜡样屈曲</strong>(肢体被随意摆成姿势维持不变)+<strong>违拗</strong>(拒绝指令)+<strong>缄默</strong>(不说话)。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>行为障碍</strong>：精神运动性兴奋（协调性/不协调性）→ 不协调性兴奋=精神分裂症；协调性兴奋=躁狂。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>紧张症「不包括」何项常考反选题。不协调性精神运动性兴奋→精神分裂症青春型；协调性→躁狂发作。两者必须区分！</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】认知障碍：定向力/自知力/注意/记忆/智能（教材P23-24）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>定向力障碍</strong>是意识障碍的重要标志——定向力丧失顺序：<strong>时间→地点→人物</strong>（从精细到笼统）。<strong>自知力</strong>=对自身精神障碍的认识能力，缺乏自知力是精神病性障碍的重要特征。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>记忆障碍</strong>：遗忘(顺行/逆行/进行性)/<strong>错构</strong>(时间歪曲)/<strong>虚构</strong>(内容填充)。错构vs虚构：前者是对真实事件的<strong>时间错位</strong>，后者是<strong>完全编造</strong>来填补记忆空白。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>智能障碍</strong>：精神发育迟滞(18岁前)+痴呆(获得性/持续性智能下降)。假性痴呆=抑郁等可逆原因所致。</p>
+<h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
+<h4 id="幻觉-vs-错觉" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">幻觉 vs 错觉</h4>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>维度</th>
+<th>幻觉</th>
+<th>错觉</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>客观刺激物</td>
+<td>无</td>
+<td>有</td>
+</tr>
+<tr>
+<td>本质</td>
+<td>虚幻知觉</td>
+<td>歪曲知觉</td>
+</tr>
+<tr>
+<td>能否被他人感知</td>
+<td>否</td>
+<td>可能</td>
+</tr>
+<tr>
+<td>临床意义</td>
+<td>精神病性障碍</td>
+<td>可出现在正常人</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="原发性妄想-vs-继发性妄想" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">原发性妄想 vs 继发性妄想</h4>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>维度</th>
+<th>原发性</th>
+<th>继发性</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>发生方式</td>
+<td>突然/不可理解</td>
+<td>可理解的心理基础上</td>
+</tr>
+<tr>
+<td>诊断价值</td>
+<td>高（精神分裂症）</td>
+<td>相对较低</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="真性幻觉-vs-假性幻觉" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">真性幻觉 vs 假性幻觉</h4>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>维度</th>
+<th>真性幻觉</th>
+<th>假性幻觉</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>空间定位</td>
+<td>客观空间</td>
+<td>主观空间（脑内）</td>
+</tr>
+<tr>
+<td>来源感知</td>
+<td>感觉器官</td>
+<td>「脑子里」</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
+<p style="margin:8px 0;line-height:1.8"><strong>基础级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>幻觉是无<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">客观刺激物</span>的虚幻知觉；错觉是对<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">客观事物歪曲</span>的知觉。</li><li>精神分裂症特征性幻听类型：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">评论性/议论性/命令性</span>。</li><li>最常见的妄想类型：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">被害妄想</span>。诊断价值最高的妄想：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">原发性妄想</span>。</li><li>紧张症核心表现：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">木僵</span>与<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">兴奋</span>交替、蜡样屈曲、违拗、缄默。</li><li>定向力丧失顺序：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">时间</span>→<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">地点</span>→<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">人物</span>。</li><li>错构是对真实事件的<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">时间歪曲</span>；虚构是<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">完全编造</span>填补记忆空白。</li>
+</ol>
+<p style="margin:8px 0;line-height:1.8"><strong>进阶级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>思维破裂vs思维散漫的区别？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">散漫=句间有联系但答不切题；破裂=句间无逻辑联系，是更重的形式障碍</span></li><li>不协调性vs协调性精神运动性兴奋的疾病指向？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">不协调→精神分裂症青春型；协调→躁狂发作</span></li>
+</ol>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>> [!WARNING] 易错陷阱<br>> - ⚠️ 思维不连贯≠思维破裂——前者在<strong>意识障碍</strong>背景下出现（谵妄），后者意识清楚（分裂症）<br>> - ⚠️ 紧张症「不包括」常考——需记牢蜡样屈曲/违拗/缄默/木僵/刻板动作全属于紧张症<br>> - ⚠️ 错构=时间歪曲（真实事件记错时间）；虚构=内容填充（无中生有）<br>> - ⚠️ 自知力缺乏≠智力问题——自知力是判断精神病性障碍病情的重要指标</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>> [!TIP] 记忆口诀<br>> <strong>「奔躁迟抑贫阴性，散裂分裂不连谵」</strong>→思维形式障碍与疾病对应<br>> <strong>「真外假内」</strong>→真性幻觉在客观空间，假性幻觉在主观空间<br>> <strong>「定时地人」</strong>→定向力丧失顺序：时间→地点→人物</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>> [!INFO] 本章小结<br>> - 幻觉vs错觉=有无客观刺激物；三大特征性幻听=评论性/议论性/命令性<br>> - 思维破裂=精神分裂症特征；思维不连贯=谵妄（意识障碍下）<br>> - 原发性妄想=精神分裂症诊断价值最高；自知力缺乏=精神病性障碍标志<br>> - 紧张症=蜡样屈曲+违拗+缄默+木僵交替兴奋</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接（拔高延伸）</div><p><br>> [!SUCCESS] 🏥 临床推理链<br>> <strong>症状→综合征→疾病诊断的推理</strong>：评论性幻听+被害妄想+情感淡漠+自知力缺乏→精神分裂症偏执型；心境低落+早醒+晨重暮轻+自杀观念→抑郁发作。症状学是诊断的「单词」，诊断是症状组合成的「句子」。</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m3">📘 模块3：神经认知障碍</h2>
+<div class="module-card">
+<div class="module-header"><h2>M3 · 神经认知障碍</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🟡重要级（15题）| <strong>预计题型</strong>：A1/A2/A3/B1/X型<br><strong>关联模块</strong>：与M2症状学（意识/记忆/定向力）、M4物质（酒精相关痴呆/Wernicke）相关<br><strong>预计阅读</strong>：约6分钟</p></div>
+<h3 id="前置知识检查基础补丁" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🧩 前置知识检查（基础补丁）</h3>
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>✅ 需掌握：<strong>意识</strong>=对自身和环境的感知能力。意识清晰度障碍程度从轻到重：嗜睡→昏睡→昏迷</li><li>⚡ 快速补课：<strong>MMSE</strong>=简易精神状态检查（30分）→筛查认知障碍。<strong>NPI</strong>=神经精神问卷→评估痴呆精神行为症状</li>
+</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住7件事<br>> 1. 谵妄=急性+波动性意识障碍+认知损害（教材P222）<br>> 2. 谵妄分三型：高活动型/低活动型/混合型（教材P223）<br>> 3. 痴呆=获得性+持续性智能障碍综合征（教材P86）<br>> 4. AD=隐袭起病+缓慢进展+早期近记忆↓+老年斑/神经原纤维缠结（教材P87-90）<br>> 5. VD=阶梯样恶化+局灶神经体征+Hachinski≥7（教材P90-91）<br>> 6. 遗忘综合征=近记忆严重受损+虚构+定向障碍→维生素B1缺乏（教材P85）<br>> 7. 谵妄病因治疗第一，氟哌啶醇低剂量对症；低活动型易漏诊（教材P222-223）</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】谵妄：急性、波动性意识障碍+认知损害（教材P222-228）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>核心特征</strong>：①<strong>急性起病</strong>（小时-天）②<strong>波动性意识障碍</strong>（意识清晰度↓，日轻夜重）③<strong>注意力严重障碍</strong>④认知损害（记忆/定向/言语）⑤精神运动紊乱⑥睡眠-觉醒障碍。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>三型</strong>：高活动型（激越/幻觉/易识别）、低活动型（安静/嗜睡/<strong>易漏诊</strong>）、混合型。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>病因假说</strong>：胆碱能低下-多巴胺能过度活动。<strong>治疗</strong>：病因治疗第一→对症（氟哌啶醇低剂量，非苯二氮䓬类）→环境管理（安静/光线/定向线索/家属陪伴）。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>谵妄是<strong>急性</strong>起病（小时-天），不是隐袭起病。低活动型谵妄易被误认为抑郁——关键鉴别=意识水平波动。</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】AD vs VD 全面鉴别（教材P87-91）</p>
+<details class="accordion" open>
+<summary>🔬 展开：AD vs VD 九维对比</summary>
+<div class="accordion-body">
+| 维度 | 阿尔茨海默病(AD) | 血管性痴呆(VD) |
+|------|-----------------|---------------|
+| 起病 | 隐袭（月-年） | 突然或阶梯样 |
+| 病程 | 缓慢进行性 | 阶梯样恶化 |
+| 早期记忆 | 近记忆↓突出 | 近记忆↓但不一定最突出 |
+| 局灶神经体征 | 早期无 | 常见（偏瘫/偏盲/构音障碍） |
+| 高血压/卒中史 | 不一定 | 常伴随 |
+| 影像学 | 弥漫脑萎缩（海马显著↓） | 多发梗死灶/白质病变 |
+| Hachinski评分 | ≤4 | ≥7 |
+| 病理 | 老年斑+神经原纤维缠结 | 脑缺血/梗死 |
+| 治疗 | 胆碱酯酶抑制剂(多奈哌齐)+NMDA拮抗剂(美金刚) | 控制血管危险因素 |
+</div>
+</details>
+<p style="margin:8px 0;line-height:1.8"><strong>AD临床表现分期</strong>：轻度(近记忆↓)→中度(失语失用失认+行为紊乱)→重度(完全依赖/失禁/缄默)。<strong>认知损害核心</strong>：记忆→语言→视空间→执行功能的进行性损害。</p>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><strong>「AD隐袭无局灶、老年斑缠结海马小；VD阶梯有局灶、梗死灶白质评分高」</strong>→AD vs VD一句话鉴别</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】遗忘综合征（教材P85）</p>
+<p style="margin:8px 0;line-height:1.8">近记忆严重受损+虚构+定向障碍+其他认知功能相对完好。最常见原因：<strong>维生素B1缺乏</strong>（慢性酒精中毒/Wernicke脑病）。柯萨可夫综合征=遗忘综合征的典型形式。</p>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】躯体疾病所致精神障碍（教材P92-93）</p>
+<p style="margin:8px 0;line-height:1.8">原发躯体病在前，精神症状在后→明确因果关系。治疗以原发病为主+精神症状对症处理。</p>
+<h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
+<h4 id="谵妄-vs-痴呆快速鉴别" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">谵妄 vs 痴呆快速鉴别</h4>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>特征</th>
+<th>谵妄</th>
+<th>痴呆</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>起病</td>
+<td>急（小时-天）</td>
+<td>隐（月-年）</td>
+</tr>
+<tr>
+<td>意识</td>
+<td>↓（波动）</td>
+<td>清晰（早期）</td>
+</tr>
+<tr>
+<td>注意力</td>
+<td>严重障碍</td>
+<td>正常（早期）</td>
+</tr>
+<tr>
+<td>幻觉</td>
+<td>常见视幻觉</td>
+<td>少见（早期）</td>
+</tr>
+<tr>
+<td>可逆性</td>
+<td>通常可逆</td>
+<td>通常不可逆</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
+<p style="margin:8px 0;line-height:1.8"><strong>基础级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>谵妄核心特征：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">急性</span>起病+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">波动性</span>意识障碍+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">注意力</span>严重障碍。</li><li>谵妄三型：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">高活动型/低活动型/混合型</span>。最易漏诊：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">低活动型</span>。</li><li>AD核心病理：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">老年斑</span>+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">神经原纤维缠结</span>。</li><li>AD vs VD：AD<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">隐袭</span>起病、VD<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">阶梯样</span>恶化。Hachinski评分AD≤<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">4</span>、VD≥<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">7</span>。</li><li>遗忘综合征最常见原因：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">维生素B1缺乏</span>（慢性酒精中毒）。</li>
+</ol>
+<p style="margin:8px 0;line-height:1.8"><strong>进阶级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>低活动型谵妄为什么易误诊为抑郁？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">安静嗜睡表现类似抑郁迟滞，但谵妄有波动性意识障碍+注意力不集中，抑郁无意识障碍</span></li><li>VD为什么是阶梯样恶化？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">每次脑血管事件→新的梗死灶→认知功能突然下降→平台期→下次事件再下降——形成阶梯状</span></li>
+</ol>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>> [!WARNING] 易错陷阱<br>> - ⚠️ 谵妄是急性波动性，痴呆是慢性持续性——时间+意识两个核心区别<br>> - ⚠️ 「谵妄的临床类型不包括」→答案选项常有「假性痴呆型」——假性痴呆是抑郁相关概念<br>> - ⚠️ AD早期记忆力下降以近记忆为主，远记忆保留相对好——早期患者不记得早饭但记得童年</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>> [!INFO] 本章小结<br>> - 谵妄=急波注（急性+波动+注意力↓），痴呆=慢持智（慢性+持续性+智能↓）<br>> - AD=隐袭+无局灶+老年斑缠结；VD=阶梯+局灶+梗死灶<br>> - 遗忘综合征→B1缺乏→Wernicke脑病→紧急补充B1</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接（拔高延伸）</div><p><br>> [!NOTE] 🧠 机制深挖<br>> <strong>为什么谵妄患者禁用苯二氮䓬类（除非酒精戒断性谵妄）？</strong> 谵妄时中枢胆碱能功能低下，苯二氮䓬类增强GABA→进一步抑制中枢→加重意识障碍和认知损害。氟哌啶醇(D2拮抗)不加重意识障碍。酒精戒断性谵妄需BZD替代递减——因为酒精长期抑制GABA→BZD交叉耐受。</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m4">📘 模块4：精神活性物质所致精神障碍</h2>
+<div class="module-card">
+<div class="module-header"><h2>M4 · 精神活性物质所致精神障碍</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🟡重要级（10题）| <strong>预计题型</strong>：A1/A2<br><strong>关联模块</strong>：与M3（Wernicke→遗忘综合征）、M12（苯二氮䓬类治疗）相关<br><strong>预计阅读</strong>：约4分钟</p></div>
+<h3 id="前置知识检查基础补丁" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🧩 前置知识检查（基础补丁）</h3>
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>✅ 需掌握：<strong>依赖</strong>=强制使用+失控+戒断症状，分心理依赖（渴求）和躯体依赖（戒断症状）</li><li>⚡ 快速补课：<strong>耐受性</strong>=重复使用后效应降低，需加量才能获得原有效应。<strong>滥用</strong>=反复使用导致不良后果，无明显耐受性或戒断</li>
+</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住7件事<br>> 1. 依赖分心理依赖（渴求）+躯体依赖（戒断症状）（教材P180）<br>> 2. 酒精戒断时间线：6-12h戒断症状→24-48h癫痫（30%）→48-96h震颤谵妄（死亡率5%）（教材P190-191）<br>> 3. 震颤谵妄=意识障碍+粗大震颤+自主神经亢进+幻觉（教材P191）<br>> 4. Wernicke脑病=维生素B1缺乏→眼肌麻痹+共济失调+意识障碍三联征（教材P191）<br>> 5. 酒精戒断治疗=苯二氮䓬类替代递减+维生素B1+支持（教材P191）<br>> 6. 苯丙胺→中枢兴奋（DA↑）；阿片→欣快/镇痛（μ受体）；可卡因→强烈精神依赖（DA再摄取抑制）<br>> 7. 物质使用障碍治疗=脱毒→康复→防复发三阶段</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】酒精戒断时间窗（教材P190-191）</p>
+<details class="accordion" open>
+<summary>🔬 展开：戒断时间线</summary>
+<div class="accordion-body">
+| 时间 | 表现 | 关键特征 |
+|------|------|----------|
+| 6-12h | 单纯戒断症状 | 手抖/出汗/心慌/焦虑/恶心呕吐 |
+| 12-24h | 酒精性幻觉症 | 幻视/幻听（意识清楚） |
+| 24-48h | 酒精性癫痫 | 约30%患者，5-15分钟意识恢复 |
+| 48-96h(2-3天) | **震颤谵妄** | 意识障碍+粗大震颤+自主神经亢进+幻觉→死亡率~5% |
+</div>
+</details>
+<p style="margin:8px 0;line-height:1.8"><strong>Wernicke脑病</strong>：维生素B1(硫胺素)缺乏→眼肌麻痹+共济失调+意识障碍三联征。需紧急静脉补充B1（先B1后葡萄糖，避免诱发/加重Wernicke）。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>震颤谵妄是戒酒后2-3天（48-96h）出现，不是立即出现！死亡率~5%需牢记。酒精戒断治疗先用BZD替代递减，不是直接停药。</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】依赖 vs 滥用概念辨析（教材P180）</p>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>概念</th>
+<th>核心特征</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>依赖</td>
+<td>强制使用+失控+戒断症状——分心理依赖和躯体依赖</td>
+</tr>
+<tr>
+<td>滥用</td>
+<td>反复使用→不良后果，<strong>无明显</strong>耐受或戒断</td>
+</tr>
+<tr>
+<td>耐受</td>
+<td>重复使用→效应↓→需加量</td>
+</tr>
+</tbody>
+</table></div>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>酒精依赖「不包括」何项常考反选。成瘾=心理依赖+躯体依赖+失控使用=依赖的完整形式。</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】阿片/苯丙胺/可卡因三类物质鉴别</p>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>物质</th>
+<th>机制</th>
+<th>核心效应</th>
+<th>戒断特征</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>阿片类</td>
+<td>μ受体激动</td>
+<td>欣快/镇痛/镇静</td>
+<td>流泪/流涕/哈欠/鸡皮疙瘩/腹泻</td>
+</tr>
+<tr>
+<td>苯丙胺</td>
+<td>DA↑↑/NE↑</td>
+<td>精力↑/警觉↑/欣快</td>
+<td>抑郁/疲劳/嗜睡（崩溃）</td>
+</tr>
+<tr>
+<td>可卡因</td>
+<td>DA再摄取抑制</td>
+<td>强烈欣快（短暂）</td>
+<td>强烈心理渴求（无显著躯体戒断）</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
+<p style="margin:8px 0;line-height:1.8"><strong>基础级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>震颤谵妄发生时间：戒酒后<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">2-3天(48-96h)</span>。死亡率：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">约5%</span>。</li><li>Wernicke脑病三联征：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">眼肌麻痹</span>+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">共济失调</span>+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">意识障碍</span>。病因：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">维生素B1缺乏</span>。</li><li>酒精戒断治疗首选：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">苯二氮䓬类替代递减</span>。</li><li>依赖分两类：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">心理依赖</span>（渴求）+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">躯体依赖</span>（戒断症状）。</li>
+</ol>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>> [!WARNING] 易错陷阱<br>> - ⚠️ 酒精依赖不包括——需记牢依赖核心=强制+失控+戒断<br>> - ⚠️ Wernicke脑病先给B1再给葡萄糖！先糖后B1→消耗残余B1→诱发/加重Wernicke<br><br>> [!TIP] 记忆口诀<br>> <strong>「酒戒6-12-24-48，震颤谵妄2-3天达」</strong>→酒精戒断时间窗</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>> [!INFO] 本章小结<br>> - 酒精戒断时间窗6-12h→24-48h→48-96h，震颤谵妄=最严重阶段（死亡率~5%）<br>> - Wernicke三联征+先B1后糖=临床铁律</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m5">📘 模块5：精神分裂症及其他精神病性障碍</h2>
+<div class="module-card">
+<div class="module-header"><h2>M5 · 精神分裂症及其他精神病性障碍</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🔴核心级（31题，占14%）| <strong>预计题型</strong>：A1/A2/A3/A4/B1/X<br><strong>关联模块</strong>：与M2（症状学→阳性/阴性症状）、M12（抗精神病药）紧密衔接<br><strong>预计阅读</strong>：约10分钟</p></div>
+<h3 id="前置知识检查基础补丁" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🧩 前置知识检查（基础补丁）</h3>
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>✅ 需掌握：<strong>DA四大通路</strong>=中脑边缘(阳性症状)/中脑皮质(阴性/认知)/黑质纹状体(EPS)/结节漏斗(泌乳素)</li><li>✅ 需掌握：<strong>PANSS量表</strong>=阳性和阴性症状量表，30项，1-7分7级评分，同时评估阳性/阴性/一般精神病理（教材P31）</li><li>⚡ 快速补课：<strong>抗精神病药物分类</strong>=一代(D2拮抗)→EPS多；二代(5-HT2A+D2双重阻断)→EPS少/代谢副作用（教材P291-293）</li>
+</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住12件事<br>> 1. DA假说：中脑边缘DA↑→阳性症状；中脑皮质DA↓→阴性/认知症状（教材P72）<br>> 2. 阳性症状=幻觉/妄想/思维紊乱/行为紊乱；阴性症状=情感平淡/思维贫乏/意志减退/社交退缩（教材P73）<br>> 3. Schneider一级症状：思维化声/争论性幻听/评论性幻听/被动体验/妄想知觉等（教材P74）<br>> 4. 四亚型：偏执型(最常见/妄想幻听)→青春型(行为怪异)→紧张型(木僵交替)→单纯型(阴性/最差)（教材P76-77）<br>> 5. 病程标准：症状≥1月(ICD-11)/总病程≥6月(DSM-5)（教材P74-76）<br>> 6. 一代抗精神病药=主要D2阻断→EPS；二代=5-HT2A+D2双重阻断→EPS少（教材P76/P291-293）<br>> 7. 氯氮平=难治性首选（≥2种无效），粒细胞缺乏风险1-2%，前18周每周血象（教材P76/P293）<br>> 8. EPS四型：急性肌张力障碍/静坐不能/帕金森综合征/迟发性运动障碍（教材P292）<br>> 9. 维持时间：首发≥1-2年，复发≥5年或终身，最低有效剂量（教材P76）<br>> 10. 预后良好：急性起病/治疗及时/依从性好/病前功能好（教材P76）<br>> 11. 妄想性障碍：持久妄想≥3月，无幻觉或偶有（教材P78）<br>> 12. 急性短暂性精神病：急性起病≤2周，病程≤1-3月，完全缓解（教材P79）</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】多巴胺假说与三组核心症状（教材P71-73）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>DA假说</strong>是精神分裂症的核心生化假说：①<strong>中脑边缘DA亢进</strong>→阳性症状（D2拮抗剂有效的基础）②<strong>中脑皮质DA低下</strong>→阴性+认知症状（二代药物5-HT2A阻断→前额叶DA释放↑→改善）。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>三组症状</strong>：</p>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>症状群</th>
+<th>表现</th>
+<th>药物反应</th>
+<th>预后意义</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><strong>阳性症状</strong></td>
+<td>幻觉(听)/妄想(被害/关系)/思维紊乱/行为紊乱</td>
+<td>D2拮抗有效</td>
+<td>相对较好</td>
+</tr>
+<tr>
+<td><strong>阴性症状</strong></td>
+<td>情感平淡/思维贫乏/意志减退/社交退缩/兴趣缺乏</td>
+<td>二代部分有效</td>
+<td><strong>预后较差</strong></td>
+</tr>
+<tr>
+<td><strong>认知症状</strong></td>
+<td>注意/记忆/执行功能损害</td>
+<td>改善有限</td>
+<td>判断预后的<strong>重要指标</strong></td>
+</tr>
+</tbody>
+</table></div>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>阴性症状「不包括」常考反选题→幻觉/妄想/行为紊乱=阳性！情感平淡/思维贫乏=阴性。DA假说中<strong>前额叶DA低下</strong>导致阴性/认知症状（不是亢进！）。</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】诊断标准+DSM/ICD+四亚型+Schneider症状（教材P74-77）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>病程标准</strong>：症状≥1月(ICD-11)或总病程≥6月(DSM-5)+社会功能损害。≥2项特征性症状（必须有幻听/妄想/思维紊乱之一）。</p>
+<details class="accordion" open>
+<summary>🔬 展开：四亚型完整对比</summary>
+<div class="accordion-body">
+| 亚型 | 起病年龄 | 核心特征 | 预后 |
+|------|----------|----------|------|
+| **偏执型** | 青壮年(最常见) | 妄想+幻听为主，情感/意志相对完好 | 相对较好 |
+| **青春型** | 青少年 | 思维破裂+情感倒错+行为怪异 | 较差 |
+| **紧张型** | 青壮年 | 紧张性木僵与兴奋交替 | 较好 |
+| **单纯型** | 青少年 | 阴性症状为主，无阳性症状，缓慢进展 | **最差** |
+</div>
+</details>
+<p style="margin:8px 0;line-height:1.8"><strong>Schneider一级症状</strong>（精神分裂症特征性症状）：思维化声/争论性幻听/评论性幻听/躯体被动体验/思维被夺/思维插入/思维扩散/妄想知觉/被强加的意志/被强加的情感/被强加的冲动。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>Schneider一级症状「不包括」常考反选——需记牢一级症状均为<strong>自我边界丧失/被动体验/特征性幻听</strong>。单纯型=无阳性症状！不是亚型中起病最急的。</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】抗精神病药物治疗+氯氮平+EPS+维持治疗（教材P76/P291-293）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>药物选择阶梯</strong>：首发→第二代抗精神病药（利培酮/奥氮平/阿立哌唑/喹硫平等）→效果不佳换另一种第二代→仍无效→<strong>氯氮平</strong>（难治性，需≥2种足量足疗程无效）。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>氯氮平特点</strong>：唯一被证实对难治性精神分裂症有效的药物。特殊风险：<strong>粒细胞缺乏1-2%</strong>→前18周<strong>每周</strong>监测血象，之后每2-4周。其他：心肌炎/癫痫/代谢综合征/流涎。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>EPS四型</strong>：急性肌张力障碍(面颈舌肌痉挛)→<strong>抗胆碱药</strong>(苯海索)；静坐不能(主观不安/来回走动)→减药+β阻滞剂；帕金森综合征(震颤/肌强直/运动迟缓)→抗胆碱药；迟发性运动障碍(口舌颊不自主运动)→换氯氮平。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>维持治疗原则</strong>：首发≥1-2年，复发≥5年或<strong>终身</strong>→最低有效剂量。停药需缓慢减量（4-8周以上），突然停药→撤药综合征+复发风险。</p>
+<div class="callout callout-note"><div class="callout-title">🔗 跨模块串联</div><p>EPS与M12受体-副作用对应关系完全一致：D2→EPS+泌乳素↑；M1→口干便秘；α1→低血压；H1→镇静发胖。抗精神病药副作用=受体阻断效应的延伸。</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】妄想性障碍 vs 急性短暂性精神病 vs 精神分裂症（教材P78-79）</p>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>障碍</th>
+<th>核心特征</th>
+<th>病程</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>妄想性障碍</td>
+<td>持久妄想(≥3月)，无幻觉或偶有</td>
+<td>≥3月</td>
+</tr>
+<tr>
+<td>急性短暂性精神病</td>
+<td>急性起病(≤2周)，完全缓解</td>
+<td>≤1-3月</td>
+</tr>
+<tr>
+<td>精神分裂症</td>
+<td>≥2项特征性症状+功能损害</td>
+<td>症状≥1月/总≥6月</td>
+</tr>
+</tbody>
+</table></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】前驱期表现+预后因素+心境障碍鉴别（教材P80-82）</p>
+<p style="margin:8px 0;line-height:1.8">前驱期(非特异性)：社交退缩/兴趣下降/古怪行为/多疑/个人卫生变差→持续数周至数年。<strong>预后良好</strong>=急性起病/治疗及时/依从好/病前功能好/已婚有家庭支持。<strong>预后不良</strong>=缓慢起病/阴性症状为主/病前功能差/家族史阳性。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>与心境障碍鉴别核心</strong>：精神分裂症症状在情感症状之前/独立于情感症状→分裂症；若精神症状仅在心境发作期出现→心境障碍伴精神病性特征。间歇期功能：分裂症持续受损，心境障碍通常恢复。</p>
+<h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
+<p style="margin:8px 0;line-height:1.8"><strong>基础级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>DA假说：中脑边缘DA<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">亢进</span>→阳性症状；中脑皮质DA<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">低下</span>→阴性/认知症状。</li><li>阳性症状=<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">幻觉/妄想/思维紊乱/行为紊乱</span>；阴性=<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">情感平淡/思维贫乏/意志减退</span>。</li><li>精神分裂症最常见亚型：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">偏执型</span>。预后最差亚型：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">单纯型</span>。</li><li>氯氮平特殊风险：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">粒细胞缺乏1-2%</span>，前18周<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">每周</span>监测血象。</li><li>首发维持治疗≥<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">1-2年</span>，复发≥<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">5年</span>或终身。</li><li>妄想性障碍：妄想持续≥<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">3月</span>。急性短暂性精神病：起病≤<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">2周</span>，病程≤<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">1-3月</span>。</li>
+</ol>
+<p style="margin:8px 0;line-height:1.8"><strong>进阶级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>为什么单纯型预后最差？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">无阳性症状→不易被识别→就诊晚→阴性症状对抗精神病药反应差→社会功能进行性衰退</span></li><li>为什么氯氮平只用于难治性而非一线？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">粒细胞缺乏风险1-2%需频繁监测血象→风险收益比不适用于首发。其他药物无效时才用</span></li><li>精神分裂症与双相障碍伴精神病性特征的鉴别要点？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">时间关系+间歇期功能。分裂症症状独立于情感症状且间歇期功能受损；双相精神症状仅在心境发作期出现，间歇期恢复</span></li>
+</ol>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>> [!WARNING] 易错陷阱<br>> - ⚠️ 阴性症状「不包括」=幻觉/妄想/行为紊乱——这些是阳性症状！<br>> - ⚠️ Schneider一级症状「不包括」→需知道不是所有幻听都是一级症状（只有评论性/议论性/思维化声）<br>> - ⚠️ 氯氮平「不正确」=一线首选/无需监测血象/无粒细胞缺乏风险→全错<br>> - ⚠️ 单纯型=阴性症状为主/缓慢进展/预后最差/无阳性症状</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>> [!TIP] 记忆口诀<br>> <strong>「边亢皮低」</strong>→DA假说：中脑<strong>边</strong>缘亢进=阳性，中脑<strong>皮</strong>质低下=阴性/认知<br>> <strong>「偏妄青乱紧交替，单纯阴性最不好」</strong>→四亚型：偏执(妄想)、青春(紊乱)、紧张(交替)、单纯(阴性/最差)<br>> <strong>「首发1-2复发5-终身」</strong>→维持治疗年限</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>> [!INFO] 本章小结<br>> - DA假说是理解精神分裂症治疗的基础：阳性=D2亢进→拮抗D2有效；阴性=DA低下→5-HT2A阻断改善<br>> - 四亚型中偏执型最常见，单纯型预后最差<br>> - 氯氮平=难治性唯一有效药，但粒细胞缺乏风险→血象监测=生命线<br>> - 首发≥1-2年、复发≥5年维持——剂量最低有效</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接</div><p><br>> [!SUCCESS] 🏥 临床推理链<br>> <strong>首发精神分裂症治疗决策</strong>：确认诊断→排除物质/躯体原因→第二代抗精神病药（奥氮平/利培酮/阿立哌唑）→4-6周评估→有效=继续+维持；无效=换另一种二代→仍无效→氯氮平。同时心理社会干预贯穿全程。EPS出现→苯海索/减量/换药。</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m6">📘 模块6：抑郁障碍</h2>
+<div class="module-card">
+<div class="module-header"><h2>M6 · 抑郁障碍</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🔴核心级（29题，占13%）| <strong>预计题型</strong>：A1/A2/A3/A4/B1/X<br><strong>关联模块</strong>：与M7（双相抑郁鉴别→禁单用抗抑郁药）、M12（抗抑郁药分类/SSRI/MECT）紧密衔接<br><strong>预计阅读</strong>：约8分钟</p></div>
+<h3 id="前置知识检查基础补丁" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🧩 前置知识检查（基础补丁）</h3>
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>✅ 需掌握：<strong>单胺假说</strong>=5-HT/NE/DA功能低下→抑郁。抗抑郁药通过增加突触间隙单胺递质水平发挥作用（教材P105）</li><li>✅ 需掌握：<strong>PHQ-9</strong>=患者健康问卷，9项自评，0-3分4级评分→筛查工具。<strong>HAMD</strong>=汉密尔顿抑郁量表，他评，17/21/24项（教材P31/P105）</li><li>⚡ 快速补课：<strong>SSRI</strong>=选择性5-HT再摄取抑制剂，一线抗抑郁药。SNRI=5-HT+NE双通道再摄取抑制（教材P107）</li>
+</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住10件事<br>> 1. 核心症状三低：心境低落+兴趣减退+快感缺失（教材P103）<br>> 2. 诊断标准：核心≥2+附加≥2+持续≥<strong>2周</strong>+功能损害（教材P104-105）<br>> 3. 特征性生物节律：晨重暮轻+早醒（教材P104）<br>> 4. 三阶段治疗：急性8-12周→巩固4-9月→维持≥6月-1年（复发≥2-3年）（教材P108）<br>> 5. SSRI六药：氟西汀/舍曲林/帕罗西汀/氟伏沙明/西酞普兰/艾司西酞普兰（教材P107）<br>> 6. SNRI=文拉法辛/度洛西汀（双通道）；NaSSA=米氮平（增食欲/适合失眠+体重减轻）（教材P107）<br>> 7. 抗抑郁药2-4周起效，足量足疗程（教材P107）<br>> 8. 难治性抑郁=≥2种不同机制抗抑郁药足量足疗程无效（教材P109）<br>> 9. MECT适应证：严重自杀/拒食/木僵/药物无效（教材P110）<br>> 10. SSRI+MAOI联用禁忌→5-HT综合征（意识+自主神经+神经肌肉异常三联征）（教材P299）</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】核心症状+诊断标准（教材P103-105）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>三低核心</strong>：①心境低落（几乎每天大部分时间）②兴趣减退（对几乎所有活动）③快感缺失。<strong>心理症状群</strong>：思维迟缓/认知损害/负性认知三联征(对自身/世界/未来的消极看法)/自责自罪/自杀观念。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>躯体症状群</strong>：睡眠障碍(早醒最常见/最具特征)、食欲↓体重↓、性欲↓、精力↓、<strong>晨重暮轻</strong>(昼夜节律紊乱特征)。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>诊断公式</strong>：核心≥2(必须有低落)+附加≥2+≥2周+功能损害。严重度：轻度(2核心+2附加)→中度(2核心+3-4附加)→重度(3核心+4+附加)。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>抑郁核心症状「不包括」常考→思维奔逸/夸大/随境转移=躁狂症状！早醒不是入睡困难——早醒=比平时早醒≥2h且不能再入睡。</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】三阶段治疗+药物选择（教材P107-110）</p>
+<details class="accordion" open>
+<summary>🔬 展开：抗抑郁药物选择策略</summary>
+<div class="accordion-body">
+| 患者特征 | 推荐 | 代表药物 |
+|----------|------|----------|
+| 典型抑郁 | SSRI | 氟西汀/舍曲林/帕罗西汀/西酞普兰/艾司西酞普兰 |
+| 伴疼痛 | SNRI | 文拉法辛/度洛西汀 |
+| 伴失眠+体重减轻 | NaSSA | 米氮平 |
+| 伴疲劳/快感缺失 | NDRI | 安非他酮 |
+| 强迫症 | SSRI（高剂量长疗程） | 氟伏沙明/舍曲林 |
+| 难治性 | 换药/联合/MECT | 多种方案 |
+</div>
+</details>
+<p style="margin:8px 0;line-height:1.8"><strong>三阶段</strong>：急性期8-12周(症状缓解)→巩固期4-9月(原剂量防复燃)→维持期首次≥6月-1年/复发≥2-3年(防复发)。<strong>抗抑郁药2-4周起效</strong>，不能马上换药！停药需缓慢减量≥4周→避免撤药综合征(头晕/恶心/感觉异常/焦虑)。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>5-HT综合征</strong>：SSRI+MAOI联用→意识障碍+自主神经不稳(高热/出汗/心慌)+神经肌肉异常(肌阵挛/反射亢进/震颤)。致死性！SSRI与MAOI间须有<strong>洗脱期</strong>（氟西汀≥5周）。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>自杀风险：SSRI治疗初期可能增加青少年自杀风险（有精力但抑郁未缓解→有能力实施自杀）→初期密切监测。MECT适应证=严重自杀/拒食/木僵/药物无效。电抽搐≠电击惩罚！</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】持续性抑郁障碍(恶劣心境)+季节性+围产期抑郁（教材P104-106）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>恶劣心境</strong>=慢性抑郁≥2年，症状较轻但持久。<strong>季节性</strong>=秋冬发作/春夏缓解，非典型症状（多食多睡），<strong>光照治疗</strong>有效。<strong>围产期抑郁</strong>=孕期或产后4周内发作，产后抑郁最常见。<strong>女性患病率≈男性2倍</strong>。</p>
+<h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
+<p style="margin:8px 0;line-height:1.8"><strong>基础级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>抑郁三低核心：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">心境低落</span>+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">兴趣减退</span>+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">快感缺失</span>。</li><li>诊断要求症状持续≥<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">2周</span>。特征性睡眠障碍：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">早醒</span>。生物节律：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">晨重暮轻</span>。</li><li>SSRI代表药物(五朵金花)：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">氟西汀/舍曲林/帕罗西汀/氟伏沙明/西酞普兰</span>+艾司西酞普兰。</li><li>急性期治疗：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">8-12周</span>；巩固期：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">4-9月</span>；维持期首次≥<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">6月-1年</span>。</li><li>MECT适应证：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">严重自杀/拒食/木僵/药物无效</span>。</li><li>5-HT综合征三联征：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">意识障碍</span>+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">自主神经不稳</span>+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">神经肌肉异常</span>。</li>
+</ol>
+<p style="margin:8px 0;line-height:1.8"><strong>进阶级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>为什么双相抑郁不能单用抗抑郁药？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">无心境稳定剂保护→可能诱发转躁/快速循环→加重病情</span></li><li>SSRI为什么2-4周才起效？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">突触间隙5-HT升高后→需要时间下调突触前5-HT1A自受体→才能持续释放5-HT→下游BDNF/CREB信号激活→神经可塑性改变</span></li>
+</ol>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>> [!WARNING] 易错陷阱<br>> - ⚠️ 核心症状不包括思维奔逸/夸大——那是躁狂症状<br>> - ⚠️ 抑郁不是必须≥6月——是≥2周（双相/分裂症才是长期标准）<br>> - ⚠️ MECT「不正确」→电抽搐治疗认知损害是永久的（错：大多可逆！）；电抽搐是惩罚手段（错！）<br>> - ⚠️ SSRI停药不能骤停——减量≥4周，避免撤药综合征</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>> [!TIP] 记忆口诀<br>> <strong>「三低二周早醒重，晨重暮轻昼波动」</strong>→抑郁核心特征<br>> <strong>「急8-12固4-9，首次半年复发久」</strong>→三阶段治疗时间<br>> <strong>「氟舍帕氟西艾，文度SN米氮平」</strong>→常用抗抑郁药速记</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>> [!INFO] 本章小结<br>> - 三低+2周+早醒+晨重暮轻=抑郁障碍的DNA<br>> - SSRI一线→2-4周起效→足量足疗程→三阶段时间要精确背诵<br>> - 双相抑郁禁单用抗抑郁药、SSRI+MAOI禁联用——两条红线<br>> - MECT=严重自杀/拒食/木僵/药物无效四指征</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接</div><p><br>> [!NOTE] 🧠 机制深挖<br>> <strong>神经可塑性假说</strong>：抑郁不仅是单胺不足→更是海马神经元萎缩+BDNF↓。抗抑郁药→增加BDNF→促进海马神经再生→这解释了为什么抗抑郁药需要2-4周才起效（神经再生需要时间）→而氯胺酮（NMDA拮抗）可数小时内起效（mTOR通路快速激活）。<br><br>> [!SUCCESS] 🏥 临床推理链<br>> <strong>抑郁障碍诊治路径</strong>：情绪低≥2周→PHQ-9/HAMD评估→排除双相(有无躁狂史！)→排除躯体(甲减/贫血/B12)→轻=CBT±SSRI；中重=SSRI+心理治疗→4周无效换药→仍无效联合/增效→严重/自杀=MECT。</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m7">📘 模块7：双相及相关障碍</h2>
+<div class="module-card">
+<div class="module-header"><h2>M7 · 双相及相关障碍</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🔴核心级（24题，占11%）| <strong>预计题型</strong>：A1/A2/A3/X<br><strong>关联模块</strong>：与M6（抑郁鉴别→禁单用抗抑郁药）、M12（心境稳定剂/锂盐/MECT）紧密衔接<br><strong>预计阅读</strong>：约7分钟</p></div>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住9件事<br>> 1. 躁狂三高：情感高涨+思维奔逸+活动增多（教材P95）<br>> 2. 轻躁狂≥4天/功能轻度受损；躁狂≥1周/功能严重受损（教材P96）<br>> 3. I型=≥1次躁狂；II型=轻躁狂+抑郁史（无躁狂）（教材P97）<br>> 4. 锂盐=经典心境稳定剂，治疗窗0.6-1.2mmol/L，中毒>1.4mmol/L（教材P301）<br>> 5. 丙戊酸钠=快速循环/混合发作优于锂盐（教材P98）<br>> 6. 抑郁相禁单用抗抑郁药→转躁风险（教材P95）<br>> 7. 急性躁狂=心境稳定剂+第二代抗精神病药联合（教材P95）<br>> 8. 锂盐中毒信号=粗大震颤+意识障碍（教材P301）<br>> 9. 快速循环=1年内≥4次心境发作（教材P97）</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】I型vsII型+躁狂诊断标准（教材P94-98）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>分型核心</strong>：I型=≥1次<strong>躁狂发作</strong>（抑郁可有可无）；II型=≥1次<strong>轻躁狂</strong>+≥1次<strong>抑郁发作</strong>，无躁狂史。环性心境=反复轻躁狂+轻度抑郁≥2年。快速循环=1年内≥4次发作。混合发作=躁狂+抑郁症状同时存在≥2周。</p>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>特征</th>
+<th>轻躁狂</th>
+<th>躁狂</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>持续时间</td>
+<td>≥4天</td>
+<td>≥1周</td>
+</tr>
+<tr>
+<td>功能损害</td>
+<td>轻度</td>
+<td>严重</td>
+</tr>
+<tr>
+<td>精神病性症状</td>
+<td>无</td>
+<td>可有</td>
+</tr>
+<tr>
+<td>住院需求</td>
+<td>通常无</td>
+<td>常需要</td>
+</tr>
+</tbody>
+</table></div>
+<p style="margin:8px 0;line-height:1.8"><strong>躁狂核心三高+伴随症状</strong>：情感高涨/易激惹/夸大+睡眠需求↓(只睡2-3h仍精力旺盛)+多语/思维奔逸(音联意联)+随境转移+活动增多/挥霍/性欲亢进+冒险行为。≥1周+功能严重损害→躁狂发作诊断。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>I型≠必须有抑郁！I型=有躁狂即可。II型≠有躁狂！II型只有轻躁狂。混合发作=躁狂+抑郁症状同时存在（不是快速交替！）。</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】心境稳定剂+锂盐管理（教材P98-102/P301）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>锂盐(碳酸锂)</strong>：经典心境稳定剂。治疗窗0.6-1.2mmol/L(急性)、0.4-0.8mmol/L(维持)。<strong>中毒>1.4mmol/L</strong>：粗大震颤→意识障碍→昏迷。中毒诱因：肾清除率↓/钠摄入↓/过量/脱水。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>其他心境稳定剂</strong>：丙戊酸钠(快速循环/混合发作优于锂盐)、卡马西平(需监测血象和肝功)、拉莫三嗪(抑郁相预防/缓慢加量防皮疹)。第二代抗精神病药(奥氮平/喹硫平/利培酮/阿立哌唑)具有心境稳定作用。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>用药铁律</strong>：①抑郁相→心境稳定剂基础上谨慎用抗抑郁药，<strong>严禁单用抗抑郁药</strong>（转躁！）②急性躁狂→心境稳定剂+二代抗精神病药联合。③维持期→锂盐首选，长期维持。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>锂盐中毒早期「不包括」→需记牢粗大震颤+意识障碍是中毒信号，手抖(细颤)是常见副作用非中毒。锂盐中毒诱因「不包括」→需记牢钠摄入减少是诱因之一！</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】女性特殊考虑+预后（教材P98-100）</p>
+<p style="margin:8px 0;line-height:1.8">丙戊酸钠/卡马西平有致畸性→妊娠期权衡锂盐（孕早期心脏风险）或非药物干预。发作次数↑→间歇期缩短，约15-20%慢性化。</p>
+<h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
+<p style="margin:8px 0;line-height:1.8"><strong>基础级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>躁狂三高：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">情感高涨</span>+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">思维奔逸</span>+<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">活动增多</span>。轻躁狂≥<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">4天</span>，躁狂≥<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">1周</span>。</li><li>双相I型=≥1次<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">躁狂</span>发作；II型=≥1次<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">轻躁狂</span>+≥1次<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">抑郁</span>发作。</li><li>锂盐治疗窗：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">0.6-1.2</span>mmol/L；中毒><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">1.4</span>mmol/L。</li><li>快速循环=1年内≥<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">4</span>次心境发作。</li><li>抑郁相用药禁忌：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">不可单用抗抑郁药</span>（转躁风险）。</li>
+</ol>
+<p style="margin:8px 0;line-height:1.8"><strong>进阶级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>为什么丙戊酸钠对快速循环/混合发作优于锂盐？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">丙戊酸钠增强GABA→膜稳定作用更广谱→对情绪转换频繁效果更好</span></li><li>II型为什么经常被漏诊？<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">轻躁狂不造成严重功能损害+患者常不主诉（甚至觉得良好）→临床更容易看到抑郁→误诊为单相抑郁</span></li>
+</ol>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>> [!WARNING] 易错陷阱<br>> - ⚠️ I型必须有躁狂，II型只有轻躁狂（不能有躁狂史）。区分关键=躁狂vs轻躁狂<br>> - ⚠️ 锂盐中毒早期不包括——细颤是治疗副作用（不是中毒！）粗颤+意识障碍=中毒<br>> - ⚠️ 拉莫三嗪需缓慢加量→防Steven-Johnson综合征（皮疹）</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>> [!INFO] 本章小结<br>> - I型=有躁狂→II型=只有轻躁狂+必须抑郁；躁狂≥1周，轻躁狂≥4天<br>> - 锂盐=经典心境稳定剂→治疗窗精确→中毒信号(粗颤+意识障碍)<br>> - 抑郁相禁单用抗抑郁药；急性躁狂=稳定剂+二代抗精神病药联合<br><br>> [!TIP] 记忆口诀<br>> <strong>「I狂II轻躁+抑郁，锂窗06-12记心里」</strong>→双相分型和锂盐治疗窗</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m8">📘 模块8：强迫及相关障碍</h2>
+<div class="module-card">
+<div class="module-header"><h2>M8 · 强迫及相关障碍</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🟢了解级（8题）| <strong>预计题型</strong>：A1/A2<br><strong>预计阅读</strong>：约2分钟</p></div>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 5件事<br>> 1. 强迫症=强迫思维+强迫行为，耗时≥1小时/天，自知力存在（教材P124）<br>> 2. SSRI首选，需高剂量长疗程（有效65-70%）（教材P128）<br>> 3. 氯米帕明=非选择性SRI，疗效好但副作用多（教材P128）<br>> 4. 躯体变形障碍=坚信外貌缺陷，SSRI一线（教材P130）<br>> 5. 难治性=SSRI无效→联合非典型抗精神病药（利培酮/阿立哌唑）（教材P128）</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> 【了解级】强迫症核心+治疗</p>
+<p style="margin:8px 0;line-height:1.8"><strong>强迫思维</strong>：闯入性/重复性/不受欢迎的想法冲动→引起焦虑。<strong>强迫行为</strong>：为中和强迫思维而执行的重复行为（洗涤/检查/计数/排序）。自知力存在（与精神病性障碍的根本区别）。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>治疗</strong>：SSRI高剂量长疗程（剂量常需达到抗抑郁剂量的上限甚至超说明书）→有效率65-70%。CBT（暴露反应预防）联合药物治疗。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>强迫症预后良好「不包括」→自知力缺乏=预后不良因素！强迫症自知力存在，若丧失→病情严重。</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><strong>「强迫思行≥1h，SSRI高剂量长疗程」</strong>→强迫症诊断和治疗核心</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m9">📘 模块9：躯体忧虑障碍及疑病障碍</h2>
+<div class="module-card">
+<div class="module-header"><h2>M9 · 躯体忧虑障碍及疑病障碍</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🟢了解级（8题）| <strong>预计题型</strong>：A1/B1<br><strong>预计阅读</strong>：约2分钟</p></div>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 核心鉴别<br>> 躯体忧虑障碍=关注<strong>已有</strong>躯体症状≥6月；疑病障碍=恐惧<strong>患病</strong>（健康焦虑）→检查阴性仍坚信（教材P162-168）</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> 【了解级】躯体忧虑 vs 疑病障碍核心鉴别</p>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>维度</th>
+<th>躯体忧虑障碍</th>
+<th>疑病障碍</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>核心</td>
+<td>关注已有躯体症状</td>
+<td>恐惧患严重疾病</td>
+</tr>
+<tr>
+<td>病程≥</td>
+<td>6月</td>
+<td>6月</td>
+</tr>
+<tr>
+<td>反复就医</td>
+<td>是（检查阴性）</td>
+<td>是（检查阴性仍不消疑虑）</td>
+</tr>
+<tr>
+<td>治疗</td>
+<td>SSRI/SNRI+CBT</td>
+<td>SSRI+CBT 避免不必要检查</td>
+</tr>
+</tbody>
+</table></div>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>躯体忧虑=关注「已有」症状；疑病=恐惧「将要」患病——核心差异在关注对象的时间维度！</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><strong>「躯忧已有疑恐将，不必要检查要抵挡」</strong>→两类障碍核心鉴别</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m10">📘 模块10：应激相关障碍</h2>
+<div class="module-card">
+<div class="module-header"><h2>M10 · 应激相关障碍</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🟡重要级（14题）| <strong>预计题型</strong>：A1/A2/A3/B1/X<br><strong>关联模块</strong>：与M6（PTSD常共病抑郁）、M12（SSRI用于PTSD）相关<br><strong>预计阅读</strong>：约5分钟</p></div>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住7件事<br>> 1. 急性应激障碍：创伤后立即发生，持续3天-1月（教材P136）<br>> 2. PTSD：症状持续>1月 → 核心鉴别=时间窗（教材P135-136）<br>> 3. PTSD四大症状群：闯入+回避+认知情绪负性改变+警觉性增高（教材P135-136）<br>> 4. 闯入性：闪回/噩梦/闯入性回忆/心理痛苦/生理反应（教材P135）<br>> 5. 回避：回避创伤相关刺激/情景/人物/回忆（教材P138）<br>> 6. 适应障碍：应激后1-3月起病，应激源消除后≤6月缓解（教材P139）<br>> 7. PTSD治疗：心理治疗(CBT/EMDR)首选，SSRI辅助（教材P140）</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】急性应激障碍 vs PTSD：时间窗是核心鉴别（教材P136）</p>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>特征</th>
+<th>急性应激障碍</th>
+<th>PTSD</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>起病</td>
+<td>创伤后立即（数分钟-数天）</td>
+<td>可能在创伤后数周/数月</td>
+</tr>
+<tr>
+<td>病程</td>
+<td>3天-1月</td>
+<td>>1月</td>
+</tr>
+<tr>
+<td>核心表现</td>
+<td>茫然/注意狭窄/定向障碍/分离</td>
+<td>闯入+回避+高警觉+认知改变</td>
+</tr>
+</tbody>
+</table></div>
+<p style="margin:8px 0;line-height:1.8"><1月=急性应激障碍；>1月=PTSD。这是纯时间鉴别，没有例外。</p>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】PTSD四大症状群（教材P135-136）</p>
+<p style="margin:8px 0;line-height:1.8">①<strong>闯入性</strong>（再体验）：闪回/噩梦/闯入性回忆/接触创伤提示物时心理痛苦和生理反应。②<strong>回避</strong>：回避创伤相关刺激/情景/人物/回忆/情绪。③<strong>认知和情绪负性改变</strong>：遗忘/负性信念/歪曲归因/持续负性情绪/兴趣减退/疏远/不能体验正性情感。④<strong>警觉性增高</strong>：易激惹/冒险行为/过度警觉/惊跳反应/注意力/睡眠问题。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>PTSD症状群「不包括」常考反选→PTSD无「幻觉」作为核心症状群（虽然严重病例可有短暂再体验性幻觉）。适应障碍症状较轻/应激源消除≤6月缓解。</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><strong>「急应<1月PTSD>1月，闯入回避高警觉」</strong>→应激障碍时间窗+症状群</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m11">📘 模块11：睡眠障碍</h2>
+<div class="module-card">
+<div class="module-header"><h2>M11 · 睡眠障碍</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🟢了解级（8题）| <strong>预计题型</strong>：A1/A2<br><strong>预计阅读</strong>：约2分钟</p></div>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 5件事<br>> 1. 慢性失眠=≥3次/周+≥3月（教材P249）<br>> 2. CBT-I=失眠首选治疗（非药物）（教材P251）<br>> 3. 觉醒障碍：DSWPD(延迟型)/ASWPD(提前型)→光照+褪黑素（教材P258）<br>> 4. 嗜睡障碍：日间过度思睡≥3次/周≥3月→排除OSA（教材P252）<br>> 5. OSA=打鼾+肥胖+呼吸暂停+日间嗜睡→PSG确诊→CPAP治疗<br><br>> [!WARNING] 易错陷阱<br>> 失眠首选CBT-I（非药物！）→不是苯二氮䓬类/安眠药。慢性失眠诊断需≥3次/周+≥3月——两个条件都满足。<br><br>> [!TIP] 记忆口诀<br>> <strong>「失眠首选CBT-I，慢3月+周3次」</strong>→失眠诊断和治疗关键</p></div>
+</div> <!-- close module-card -->
+<h2 class="section-title" id="m12">📘 模块12：躯体治疗</h2>
+<div class="module-card">
+<div class="module-header"><h2>M12 · 躯体治疗</h2></div>
+
+<div class="callout callout-info"><div class="callout-title">模块信息</div><p><strong>重点等级</strong>：🔴核心级（19题，占9%）| <strong>预计题型</strong>：A1/A2/B1/X<br><strong>关联模块</strong>：整合M5-M7所有药物治疗知识 | <strong>预计阅读</strong>：约8分钟</p></div>
+<div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住10件事<br>> 1. 受体-副作用对应：D2→EPS/泌乳素↑；M1→口干便秘视物模糊；α1→低血压；H1→镇静发胖（教材P292）<br>> 2. 五大类药物：抗精神病药/抗抑郁药/心境稳定剂/抗焦虑药/精神激活药（教材P290）<br>> 3. 一代=D2拮抗→EPS多；二代=5-HT2A+D2双重阻断→EPS少/代谢多（教材P291-293）<br>> 4. EPS四型：急性肌张力障碍/静坐不能/帕金森综合征/迟发性运动障碍（教材P292）<br>> 5. NMS=高热+肌强直+CPK↑+意识障碍+自主神经不稳（教材P293）<br>> 6. 5-HT综合征=意识+自主神经+神经肌肉异常三联征→SSRI+MAOI禁忌（教材P299）<br>> 7. MECT适应证：严重抑郁自杀/木僵/拒食/药物无效/紧张症（教材P304）<br>> 8. rTMS=无创/不需麻醉/对抑郁有效（教材P305）<br>> 9. 苯二氮䓬类=增强GABA/抗焦虑镇静肌松抗惊厥/长期依赖（教材P303）<br>> 10. 锂盐治疗窗0.6-1.2，中毒>1.4（教材P301）</p></div>
+<h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】受体-副作用对应关系（必考核心）（教材P292）</p>
+<details class="accordion" open>
+<summary>🔬 展开：受体阻断→副作用全表</summary>
+<div class="accordion-body">
+| 受体 | 阻断效应 | 副作用 | 代表药物 |
+|------|----------|--------|----------|
+| **D2** | 抗精神病/抗躁狂 | EPS、高催乳素血症(泌乳/闭经/性功能↓) | 一代药、利培酮(剂量依赖) |
+| **5-HT2A** | 改善阴性/认知症状 | — | 二代药共同机制 |
+| **M1**（胆碱） | — | 口干、便秘、排尿困难、视物模糊、记忆障碍 | 氯氮平/奥氮平 |
+| **α1**（肾上腺素） | — | 直立性低血压、心动过速、射精延迟 | 氯氮平/利培酮 |
+| **H1**（组胺） | — | 镇静、嗜睡、体重增加 | 奥氮平/氯氮平/喹硫平 |
+</div>
+</details>
+<p style="margin:8px 0;line-height:1.8"><strong>EPS风险排序</strong>：氟哌啶醇(最高)>氯丙嗪(高)>利培酮(中低)>奥氮平/喹硫平(低)>氯氮平(最低)。<strong>代谢副作用风险排序</strong>：奥氮平/氯氮平(最高)>喹硫平>利培酮>阿立哌唑/齐拉西酮(最低)。</p>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><strong>「D动泌乳，M干便视，α低血压，H胖嗜睡」</strong>→四大受体副作用对应</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】NMS + 5-HT综合征 + MECT适应证（教材P293/P299/P304）</p>
+<p style="margin:8px 0;line-height:1.8"><strong>恶性综合征(NMS)</strong>：<strong>高热+肌强直+CPK↑+意识障碍+自主神经不稳</strong>。诱因：抗精神病药(尤其高效价D2拮抗剂)。处理：立即停药+支持(降温/补液)+丹曲林/溴隐亭。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>5-HT综合征</strong>：意识障碍+自主神经不稳(高热/出汗)+神经肌肉异常(肌阵挛/反射亢进)。诱因：SSRI+MAOI联合→禁忌！氟西汀洗脱期≥5周。</p>
+<p style="margin:8px 0;line-height:1.8"><strong>MECT</strong>：全麻下肌松后进行，适应证=严重抑郁自杀/木僵/拒食/药物无效/紧张症。记忆和认知副作用大多可逆。rTMS=无创/不需麻醉/适合轻中度抑郁。</p>
+<div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>NMS临床表现「不包括」常考→需记牢高热+肌强直+CPK↑+意识+自主神经=5项核心。MECT适应证「不包括」→焦虑障碍/人格障碍/失眠不是MECT适应证！</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】苯二氮䓬类+药物相互作用（教材P296/P303）</p>
+<p style="margin:8px 0;line-height:1.8">苯二氮䓬类增强GABA-A受体→抗焦虑/镇静/肌松/抗惊厥四效。长期使用→依赖风险→撤药需缓慢递减。精神药物联用主要风险：TCA血药浓度↑/癫痫阈值↓/抗胆碱作用加剧/肾上腺素升压作用逆转。</p>
+<h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
+<p style="margin:8px 0;line-height:1.8"><strong>基础级</strong></p>
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>D2阻断→<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">EPS+高催乳素血症</span>；M1阻断→<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">口干/便秘/视物模糊</span>；α1阻断→<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">低血压</span>；H1阻断→<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">镇静/体重增加</span>。</li><li>五大类药物：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">抗精神病药/抗抑郁药/心境稳定剂/抗焦虑药/精神激活药</span>。</li><li>NMS五联征：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">高热+肌强直+CPK↑+意识障碍+自主神经不稳</span>。</li><li>MECT适应证：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">严重自杀/木僵/拒食/药物无效/紧张症</span>。</li><li>5-HT综合征三联征：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">意识障碍+自主神经不稳+神经肌肉异常</span>。</li>
+</ol>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>> [!WARNING] 易错陷阱<br>> - ⚠️ D2阻断副作用「不包括」→抗胆碱能副作用是M1阻断（不是D2！）<br>> - ⚠️ NMS「不包括」→需牢记五联征完整内容<br>> - ⚠️ MECT适应证「不包括」→不是所有精神障碍都适合电抽搐<br>> - ⚠️ 抗精神病药联用风险「不包括」→需记牢四项主要风险</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>> [!TIP] 记忆口诀<br>> <strong>「D动泌乳，M干便视，α低血压，H胖嗜睡」</strong>→受体副作用</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>> [!INFO] 本章小结<br>> - 受体-副作用对应关系=精神药理学核心，四个受体四种副作用<br>> - NMS vs 5-HT综合征：NMS=抗精神病药+D2阻断；5-HT=SSRI+MAOI联用<br>> - MECT=严重抑郁自杀/木僵/拒食/药物无效/紧张症→全麻下安全有效</p></div>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<h2 id="附录一教材知识点页码索引" style="font-size:22px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">附录一：教材知识点页码索引</h2>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>序号</th>
+<th>知识点</th>
+<th>教材页码</th>
+<th>模块</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>精神病学/精神卫生/精神医学概念</td>
+<td>P1-3</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>精神障碍病因学/生物-心理-社会模型</td>
+<td>P5-9</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>精神症状定义/感觉障碍/知觉障碍</td>
+<td>P10-14</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>4</td>
+<td>思维障碍（形式障碍/内容障碍/妄想）</td>
+<td>P14-20</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>5</td>
+<td>情感/意志/行为/紧张症</td>
+<td>P20-23</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>6</td>
+<td>自知力/定向力/注意/记忆/智能</td>
+<td>P23-24</td>
+<td>M2</td>
+</tr>
+<tr>
+<td>7</td>
+<td>PANSS量表（30项/1-7分）</td>
+<td>P31</td>
+<td>M5</td>
+</tr>
+<tr>
+<td>8</td>
+<td>谵妄（定义/病因/分型/管理）</td>
+<td>P222-228</td>
+<td>M3</td>
+</tr>
+<tr>
+<td>9</td>
+<td>痴呆/AD/VD/遗忘综合征</td>
+<td>P85-93</td>
+<td>M3</td>
+</tr>
+<tr>
+<td>10</td>
+<td>精神活性物质/依赖/滥用/耐受</td>
+<td>P180</td>
+<td>M4</td>
+</tr>
+<tr>
+<td>11</td>
+<td>酒精戒断/震颤谵妄/Wernicke脑病</td>
+<td>P190-191</td>
+<td>M4</td>
+</tr>
+<tr>
+<td>12</td>
+<td>精神分裂症（病因/DA假说/DSM-ICD标准）</td>
+<td>P71-76</td>
+<td>M5</td>
+</tr>
+<tr>
+<td>13</td>
+<td>精神分裂症亚型/Schneider一级症状</td>
+<td>P76-77</td>
+<td>M5</td>
+</tr>
+<tr>
+<td>14</td>
+<td>妄想性障碍/急性短暂性精神病</td>
+<td>P78-79</td>
+<td>M5</td>
+</tr>
+<tr>
+<td>15</td>
+<td>精神分裂症治疗/维持/预后</td>
+<td>P76/P82</td>
+<td>M5</td>
+</tr>
+<tr>
+<td>16</td>
+<td>抑郁障碍（核心症状/诊断/治疗分期）</td>
+<td>P103-110</td>
+<td>M6</td>
+</tr>
+<tr>
+<td>17</td>
+<td>持续性抑郁障碍/季节性/围产期</td>
+<td>P104-106</td>
+<td>M6</td>
+</tr>
+<tr>
+<td>18</td>
+<td>PHQ-9/HAMD量表</td>
+<td>P31/P105</td>
+<td>M6</td>
+</tr>
+<tr>
+<td>19</td>
+<td>双相障碍（分型/躁狂诊断/鉴别）</td>
+<td>P94-100</td>
+<td>M7</td>
+</tr>
+<tr>
+<td>20</td>
+<td>心境稳定剂/锂盐</td>
+<td>P98/P301</td>
+<td>M7/M12</td>
+</tr>
+<tr>
+<td>21</td>
+<td>强迫症/躯体变形障碍</td>
+<td>P124-133</td>
+<td>M8</td>
+</tr>
+<tr>
+<td>22</td>
+<td>躯体忧虑障碍/疑病障碍</td>
+<td>P162-175</td>
+<td>M9</td>
+</tr>
+<tr>
+<td>23</td>
+<td>应激相关障碍/PTSD/适应障碍</td>
+<td>P134-143</td>
+<td>M10</td>
+</tr>
+<tr>
+<td>24</td>
+<td>睡眠障碍/失眠/嗜睡/节律障碍</td>
+<td>P249-261</td>
+<td>M11</td>
+</tr>
+<tr>
+<td>25</td>
+<td>精神药物五大分类</td>
+<td>P290</td>
+<td>M12</td>
+</tr>
+<tr>
+<td>26</td>
+<td>抗精神病药/一代vs二代/EPS/NMS</td>
+<td>P291-293</td>
+<td>M12</td>
+</tr>
+<tr>
+<td>27</td>
+<td>药物相互作用/受体-副作用对应</td>
+<td>P292/P296</td>
+<td>M12</td>
+</tr>
+<tr>
+<td>28</td>
+<td>抗抑郁药分类/SSRI/SNRI</td>
+<td>P298-299</td>
+<td>M12</td>
+</tr>
+<tr>
+<td>29</td>
+<td>锂盐管理/苯二氮䓬类</td>
+<td>P301/P303</td>
+<td>M12</td>
+</tr>
+<tr>
+<td>30</td>
+<td>MECT/rTMS物理治疗</td>
+<td>P304-305</td>
+<td>M12</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>页码来自RAG教材检索验证，全部为真实页码，无占位符。</blockquote>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<h2 id="附录二术语同意异名对照表" style="font-size:22px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">附录二：术语同意异名对照表</h2>
+<h3 id="1-药物与受体" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">1. 药物与受体</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>标准名</th>
+<th>异名/缩写</th>
+<th>说明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>选择性5-HT再摄取抑制剂</td>
+<td>SSRI</td>
+<td>一线抗抑郁药：氟西汀/舍曲林/帕罗西汀/氟伏沙明/西酞普兰/艾司西酞普兰</td>
+</tr>
+<tr>
+<td>5-HT和NE再摄取抑制剂</td>
+<td>SNRI</td>
+<td>双通道抗抑郁药：文拉法辛/度洛西汀</td>
+</tr>
+<tr>
+<td>去甲肾上腺素和特异性5-HT能抗抑郁药</td>
+<td>NaSSA</td>
+<td>米氮平：增食欲/适合失眠+体重减轻</td>
+</tr>
+<tr>
+<td>去甲肾上腺素和多巴胺再摄取抑制剂</td>
+<td>NDRI</td>
+<td>安非他酮：无性功能副作用</td>
+</tr>
+<tr>
+<td>单胺氧化酶抑制剂</td>
+<td>MAOI</td>
+<td>苯乙肼/反苯环丙胺，与SSRI联用禁忌</td>
+</tr>
+<tr>
+<td>三环类抗抑郁药</td>
+<td>TCA</td>
+<td>阿米替林/丙米嗪/氯米帕明，副作用多</td>
+</tr>
+<tr>
+<td>改良电抽搐治疗</td>
+<td>MECT/ECT</td>
+<td>全麻下进行，严重抑郁自杀/木僵/拒食</td>
+</tr>
+<tr>
+<td>重复经颅磁刺激</td>
+<td>rTMS</td>
+<td>无创物理治疗，对抑郁有效</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="2-疾病与综合征" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">2. 疾病与综合征</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>标准名</th>
+<th>异名/缩写</th>
+<th>说明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>创伤后应激障碍</td>
+<td>PTSD</td>
+<td>闯入+回避+高警觉+认知负性改变>1月</td>
+</tr>
+<tr>
+<td>急性应激障碍</td>
+<td>ASD</td>
+<td>创伤后立即发生，3天-1月</td>
+</tr>
+<tr>
+<td>恶劣心境</td>
+<td>持续性抑郁障碍</td>
+<td>慢性抑郁≥2年</td>
+</tr>
+<tr>
+<td>阿尔茨海默病</td>
+<td>AD</td>
+<td>老年斑+神经原纤维缠结</td>
+</tr>
+<tr>
+<td>血管性痴呆</td>
+<td>VD</td>
+<td>阶梯样恶化+Hachinski≥7</td>
+</tr>
+<tr>
+<td>震颤谵妄</td>
+<td>DT</td>
+<td>戒酒后2-3天，死亡率~5%</td>
+</tr>
+<tr>
+<td>Wernicke脑病</td>
+<td>WE</td>
+<td>B1缺乏→眼肌麻痹+共济失调+意识障碍</td>
+</tr>
+<tr>
+<td>恶性综合征</td>
+<td>NMS</td>
+<td>高热+肌强直+CPK↑+意识+自主神经不稳</td>
+</tr>
+<tr>
+<td>5-羟色胺综合征</td>
+<td>5-HT综合征</td>
+<td>SSRI+MAOI联用→致死性</td>
+</tr>
+<tr>
+<td>快速循环型</td>
+<td>RC</td>
+<td>双相1年内≥4次发作</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="3-量表与评分" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">3. 量表与评分</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>标准名</th>
+<th>异名/缩写</th>
+<th>说明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>阳性和阴性症状量表</td>
+<td>PANSS</td>
+<td>30项/1-7分7级评分</td>
+</tr>
+<tr>
+<td>汉密尔顿抑郁量表</td>
+<td>HAMD</td>
+<td>他评，17/21/24项版本</td>
+</tr>
+<tr>
+<td>患者健康问卷抑郁自评</td>
+<td>PHQ-9</td>
+<td>9项自评/0-3分4级/筛查工具</td>
+</tr>
+<tr>
+<td>简易精神状态检查</td>
+<td>MMSE</td>
+<td>30分/筛查认知障碍</td>
+</tr>
+<tr>
+<td>神经精神问卷</td>
+<td>NPI</td>
+<td>评估痴呆精神行为症状</td>
+</tr>
+<tr>
+<td>CIWA-Ar量表</td>
+<td>CIWA-Ar</td>
+<td>酒精戒断评估量表</td>
+</tr>
+<tr>
+<td>Hachinski缺血评分</td>
+<td>HIS</td>
+<td>AD≤4 vs VD≥7</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="4-神经递质与受体" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">4. 神经递质与受体</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>标准名</th>
+<th>异名/缩写</th>
+<th>说明</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>多巴胺</td>
+<td>DA</td>
+<td>精神分裂症核心递质</td>
+</tr>
+<tr>
+<td>5-羟色胺</td>
+<td>5-HT/血清素</td>
+<td>抑郁障碍核心递质</td>
+</tr>
+<tr>
+<td>去甲肾上腺素</td>
+<td>NE</td>
+<td>抑郁+焦虑相关</td>
+</tr>
+<tr>
+<td>γ-氨基丁酸</td>
+<td>GABA</td>
+<td>抑制性神经递质</td>
+</tr>
+<tr>
+<td>乙酰胆碱</td>
+<td>ACh</td>
+<td>M1受体→抗胆碱副作用</td>
+</tr>
+<tr>
+<td>脑源性神经营养因子</td>
+<td>BDNF</td>
+<td>抗抑郁药促进神经再生</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>术语对照共计29条标准术语，覆盖药物/综合征/量表/神经递质四大类别。</blockquote>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<h2 id="附录三必背记忆口诀汇总" style="font-size:22px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">附录三：必背记忆口诀汇总</h2>
+<h3 id="症状学" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">症状学</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>序号</th>
+<th>口诀</th>
+<th>含义</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>「真外假内」</strong></td>
+<td>真性幻觉在客观空间，假性在主观空间</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>「定时地人」</strong></td>
+<td>定向力丧失顺序：时间→地点→人物</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>「奔躁迟抑贫阴性，散裂分裂不连谵」</strong></td>
+<td>思维形式障碍与疾病对应</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="精神分裂症" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">精神分裂症</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>4</th>
+<th><strong>「边亢皮低」</strong></th>
+<th>DA假说：中脑边缘亢进(阳性)/中脑皮质低下(阴性+认知)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>5</td>
+<td><strong>「偏妄青乱紧交替，单纯阴性最不好」</strong></td>
+<td>四亚型特征</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>「首发1-2复发5-终身」</strong></td>
+<td>维持治疗年限</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="抑郁与双相" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">抑郁与双相</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>7</th>
+<th><strong>「三低二周早醒重，晨重暮轻昼波动」</strong></th>
+<th>抑郁核心特征</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>8</td>
+<td><strong>「急8-12固4-9，首次半年复发久」</strong></td>
+<td>抑郁三阶段治疗时间</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>「锂窗06到12，中毒14要出事」</strong></td>
+<td>锂盐治疗窗0.6-1.2，中毒>1.4</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="神经认知" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">神经认知</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>10</th>
+<th><strong>「AD隐袭无局灶、VD阶梯有局灶」</strong></th>
+<th>AD vs VD核心鉴别</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>11</td>
+<td><strong>「急波注，慢持智」</strong></td>
+<td>谵妄(急性波动注意力) vs 痴呆(慢性持续智能)</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="躯体治疗" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">躯体治疗</h3>
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>12</th>
+<th><strong>「D动泌乳，M干便视，α低血压，H胖嗜睡」</strong></th>
+<th>四大受体副作用对应</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>13</td>
+<td><strong>「酒精戒断苯二氮，Wernicke B1快补充」</strong></td>
+<td>物质所致障碍治疗</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>「氟舍帕氟西艾，文度SN米氮平」</strong></td>
+<td>常用抗抑郁药速记</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>共计14条必背口诀，覆盖全部核心模块考点。考前速刷可用。</blockquote>
+<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
+<blockquote><strong>生成信息</strong>：Agent 5 (MedReview) v4 | batch007 | 精神病学期末复习 | 2026-06-21<br><strong>素材来源</strong>：精神病学考纲 + 第9版教材 + RAG知识库 + 221题题库<br><strong>渲染输出</strong>：运行 <code>python 知识库素材/render_review.py "复习资料/精神病学_主复习资料.md"</code> 生成HTML版<br><strong>版本</strong>：v4 视觉强化版（三色编码 + Obsidian Callout + 视觉呼吸 + 《》主动回忆 + 折叠区全部展开）</blockquote>
+</main>
+<button id="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>
+<script>
+// Theme Toggle
+const html = document.documentElement;
+const themeToggle = document.getElementById('theme-toggle');
+
+function setTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  themeToggle.textContent = theme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  localStorage.setItem('med-review-theme', theme);
+}
+
+const savedTheme = localStorage.getItem('med-review-theme');
+if (savedTheme) {
+  setTheme(savedTheme);
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  setTheme('dark');
+}
+
+themeToggle.addEventListener('click', () => {
+  setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+// Progress Bar
+const progressBar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = Math.min(progress, 100) + '%';
+});
+
+// Back to Top
+const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 400);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Sidebar Active Link
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+const sections = [];
+sidebarLinks.forEach(link => {
+  const href = link.getAttribute('href');
+  if (href && href.startsWith('#')) {
+    const target = document.getElementById(href.slice(1));
+    if (target) sections.push({ link, target });
+  }
+});
+
+function updateActiveLink() {
+  const scrollPos = window.scrollY + 100;
+  let activeLink = null;
+  for (let i = sections.length - 1; i >= 0; i--) {
+    if (sections[i].target.offsetTop <= scrollPos) {
+      activeLink = sections[i].link;
+      break;
+    }
+  }
+  sidebarLinks.forEach(l => l.classList.remove('active'));
+  if (activeLink) activeLink.classList.add('active');
+}
+window.addEventListener('scroll', updateActiveLink);
+updateActiveLink();
+
+// Mobile Sidebar
+const sidebar = document.getElementById('sidebar');
+const sidebarToggle = document.getElementById('sidebar-toggle');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+function openSidebar() {
+  sidebar.classList.add('open');
+  sidebarOverlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  sidebarOverlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+sidebarToggle.addEventListener('click', openSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+sidebar.querySelectorAll('.sidebar-link').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) setTimeout(closeSidebar, 200);
+  });
+});
+
+// Fill-in-blank: reveal all buttons
+document.querySelectorAll('.module-card').forEach(card => {
+  card.querySelectorAll('.reveal-all-btn').forEach(b => b.remove());
+  const blanks = card.querySelectorAll('.fill-blank');
+  if (blanks.length === 0) return;
+  const btn = document.createElement('button');
+  btn.className = 'reveal-all-btn';
+  btn.textContent = '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+  btn.style.cssText = 'display:inline-block;margin:12px 0 0 0;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all var(--transition-fast);';
+  btn.addEventListener('mouseenter',()=>{btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';});
+  btn.addEventListener('mouseleave',()=>{btn.style.background='var(--bg-tertiary)';btn.style.color='var(--text-secondary)';});
+  let revealed = false;
+  btn.addEventListener('click',()=>{
+    revealed = !revealed;
+    blanks.forEach(b => { if(revealed) b.classList.add('revealed'); else b.classList.remove('revealed'); });
+    btn.textContent = revealed ? '\uD83D\uDE48 \u9690\u85CF\u5168\u90E8\u7B54\u6848' : '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+  });
+  const recallH = Array.from(card.querySelectorAll('h3')).filter(h=>h.textContent.includes('\u4E3B\u52A8\u56DE\u5FC6'));
+  recallH.forEach(h=>{ let el=h.nextElementSibling; if(el&&el.tagName==='DIV') el.appendChild(btn.cloneNode(true)); });
+});
+
+// Keyboard shortcuts
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='t'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body)
+    setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
+  if(e.key==='m'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body&&window.innerWidth<=768)
+    sidebar.classList.contains('open')?closeSidebar():openSidebar();
+});
+</script>
+</body>
+</html>

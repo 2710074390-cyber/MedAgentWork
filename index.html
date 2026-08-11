@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>医学复习资料库 · 大三下</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    --card-bg: rgba(255,255,255,0.06);
+    --card-hover: rgba(255,255,255,0.12);
+    --border: rgba(255,255,255,0.1);
+    --border-hover: rgba(255,255,255,0.25);
+    --text: #fff;
+    --text-dim: rgba(255,255,255,0.5);
+    --accent: #4facfe;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding: 40px 20px 60px;
+    color: var(--text);
+  }
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* 头部 */
+  .header { text-align: center; margin-bottom: 40px; }
+  .header h1 { font-size: 34px; letter-spacing: 2px; margin-bottom: 8px; }
+  .header .subtitle { color: var(--text-dim); font-size: 14px; }
+  .badge {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 4px 14px;
+    background: rgba(79,172,254,0.15);
+    border: 1px solid rgba(79,172,254,0.3);
+    border-radius: 16px;
+    font-size: 12px;
+    color: var(--accent);
+  }
+
+  /* 分区标题 */
+  .section-title {
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 40px 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  /* 卡片网格 */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+  .card {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    transition: all 0.25s ease;
+  }
+  .card:hover {
+    background: var(--card-hover);
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+  .card-icon {
+    width: 44px; height: 44px;
+    border-radius: 11px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .card-icon.exam    { background: linear-gradient(135deg, #667eea, #764ba2); }
+  .card-icon.review  { background: linear-gradient(135deg, #f093fb, #f5576c); }
+  .card-icon.kb      { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+  .card-title { font-size: 16px; font-weight: 600; }
+  .card-meta  { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+  /* 按钮 */
+  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .btn {
+    flex: 1;
+    min-width: 70px;
+    padding: 8px 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 9px;
+    background: rgba(255,255,255,0.05);
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    text-align: center;
+    font-family: inherit;
+  }
+  .btn:hover {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.35);
+    transform: translateY(-1px);
+  }
+  .btn.primary {
+    background: rgba(79,172,254,0.18);
+    border-color: rgba(79,172,254,0.4);
+    color: var(--accent);
+  }
+  .btn.primary:hover { background: rgba(79,172,254,0.3); }
+  .btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn:disabled:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); }
+
+  /* 页脚 */
+  .footer {
+    text-align: center;
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+  }
+  .footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  .footer a:hover { color: rgba(255,255,255,0.8); }
+
+  /* Toast 提示 */
+  #toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: rgba(0,0,0,0.85);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.3s;
+    z-index: 9999;
+    pointer-events: none;
+  }
+  #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  @media (max-width: 600px) {
+    .header h1 { font-size: 26px; }
+    .grid { grid-template-columns: 1fr; }
+    .btn-row .btn { min-width: 60px; font-size: 11px; padding: 7px 6px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🏥 医学复习资料库</h1>
+    <p class="subtitle">押题卷 · 复习手册 · 题库</p>
+    <span class="badge">📂 大三下学期</span>
+  </div>
+
+  <div id="app"></div>
+
+  <div class="footer">
+    <p>© 2026 医学复习资料库 · 仅供学习交流</p>
+    <p style="margin-top:8px;">
+      <a href="https://github.com/2710074390-cyber/med-review-site" target="_blank">GitHub 源码</a>
+    </p>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ============================================================
+   数据：每个科目的产物路径
+   ============================================================ */
+const BASE = '大三下';
+
+const SECTIONS = [
+  {
+    title: '📝 押题卷 · 交互式答题',
+    type: 'exam',
+    items: [
+      { name: '内科学',     icon: '🫀', html: '押题卷/内科学押题卷_2026.html',       meta: '全真模拟' },
+      { name: '精神病学',   icon: '🧠', html: '押题卷/精神病学押题卷_2026.html',     meta: '331 题' },
+      { name: '神经病学',   icon: '⚡', html: '押题卷/神经病学押题卷_2026.html',     meta: '全真模拟' },
+      { name: '医患沟通',   icon: '💬', html: '押题卷/医患沟通押题卷_2026.html',     meta: '情景题' },
+      { name: '外科学',     icon: '🔪', html: '押题卷/外科学押题卷_108题.html',      meta: '108 题' },
+    ]
+  },
+  {
+    title: '📚 复习手册 · 系统学习',
+    type: 'review',
+    items: [
+      { name: '内科学',     icon: '🫀', md: '复习资料/内科学_主复习资料.md',                                 meta: 'v5 · 214K' },
+      { name: '外科学',     icon: '🔪', md: '复习资料/外科学_主复习资料.md',     html: '复习资料/外科学_主复习资料.html',     meta: 'v5 · 232K' },
+      { name: '精神病学',   icon: '🧠', md: '复习资料/精神病学_主复习资料.md',   html: '复习资料/精神病学_主复习资料.html',   meta: 'v5.1 · 134K' },
+      { name: '神经病学',   icon: '⚡', md: '复习资料/神经病学_主复习资料.md',                               meta: 'v5 · 164K' },
+      { name: '医患沟通',   icon: '💬', md: '复习资料/医患沟通_主复习资料.md',                               meta: 'v5.1 · 131K' },
+      { name: '中医学',     icon: '🌿', md: '复习资料/中医学_主复习资料.md',     html: '复习资料/中医学_主复习资料.html',     meta: 'v5 · 115K' },
+      { name: '中医心理学', icon: '🧘', md: '复习资料/中医心理学_主复习资料.md', html: '复习资料/中医心理学_主复习资料.html', meta: '86K' },
+    ]
+  },
+  {
+    title: '📋 题库 · JSON 数据',
+    type: 'kb',
+    items: [
+      { name: '精神病学题库', icon: '🧠', json: '题库/精神病学_统一题库_331题.json', meta: '331 题 · JSON' },
+    ]
+  }
+];
+
+/* ============================================================
+   工具函数
+   ============================================================ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// 在线查看：新标签打开 HTML
+function viewOnline(path) {
+  window.open(BASE + '/' + path, '_blank');
+}
+
+// 下载文件：fetch + blob（保证 download 属性生效）
+function downloadFile(path, filename) {
+  fetch(BASE + '/' + path)
+    .then(r => {
+      if (!r.ok) throw new Error('文件未找到');
+      return r.blob();
+    })
+    .then(blob => {
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('⬇️ 已下载：' + filename);
+    })
+    .catch(() => showToast('❌ 下载失败：文件不存在'));
+}
+
+// 打印 PDF：打开 HTML，加载完成后调用 print
+function printHTML(path) {
+  const w = window.open(BASE + '/' + path, '_blank');
+  if (!w) { showToast('❌ 弹窗被拦截，请允许弹窗'); return; }
+  showToast('🖨️ 正在准备打印…');
+  const check = setInterval(() => {
+    try {
+      if (w.document.readyState === 'complete') {
+        clearInterval(check);
+        setTimeout(() => { w.focus(); w.print(); }, 300);
+      }
+    } catch (e) { clearInterval(check); }
+  }, 200);
+}
+
+// 轻量 Markdown → HTML 渲染（用于只有 MD 没有 HTML 的打印场景）
+function mdToHtml(md) {
+  let html = md
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  // 代码块
+  html = html.replace(/```([\s\S]*?)```/g, (m, c) => '<pre><code>' + c + '</code></pre>');
+  // 标题
+  html = html.replace(/^######\s+(.*)$/gm, '<h6>$1</h6>')
+             .replace(/^#####\s+(.*)$/gm, '<h5>$1</h5>')
+             .replace(/^####\s+(.*)$/gm, '<h4>$1</h4>')
+             .replace(/^###\s+(.*)$/gm, '<h3>$1</h3>')
+             .replace(/^##\s+(.*)$/gm, '<h2>$1</h2>')
+             .replace(/^#\s+(.*)$/gm, '<h1>$1</h1>');
+  // 加粗 / 斜体 / 行内代码
+  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+             .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+             .replace(/`([^`]+)`/g, '<code>$1</code>');
+  // 表格（简易处理）
+  html = html.replace(/^\|(.+)\|\s*$/gm, (m, c) => {
+    if (c.includes('---')) return ''; // 分隔行
+    const cells = c.split('|').map(x => x.trim()).filter(x => x !== '');
+    return '<tr>' + cells.map(x => '<td>' + x + '</td>').join('') + '</tr>';
+  });
+  html = html.replace(/(<tr>[\s\S]*?<\/tr>)/g, '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%">$1</table>');
+  // 列表
+  html = html.replace(/^[-*]\s+(.*)$/gm, '<li>$1</li>');
+  html = html.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
+  // 段落（连续空行分段）
+  html = html.split(/\n\n+/).map(p => {
+    if (/^<(h\d|ul|ol|pre|table|tr|li)/.test(p.trim())) return p;
+    return p.trim() ? '<p>' + p.replace(/\n/g, '<br>') + '</p>' : '';
+  }).join('\n');
+  return html;
+}
+
+// 打印 MD（无 HTML 时）：fetch MD → 渲染 → 新窗口打印
+function printMD(path, title) {
+  showToast('🖨️ 正在渲染并准备打印…');
+  fetch(BASE + '/' + path)
+    .then(r => { if (!r.ok) throw new Error(); return r.text(); })
+    .then(md => {
+      const w = window.open('', '_blank');
+      if (!w) { showToast('❌ 弹窗被拦截，请允许弹窗'); return; }
+      w.document.write(`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+        <title>${title}</title>
+        <style>
+          body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+               line-height:1.8;max-width:780px;margin:40px auto;padding:0 24px;color:#222;}
+          h1,h2,h3,h4,h5{color:#1a1a2e;margin:1.4em 0 0.6em;}
+          h1{font-size:24px;border-bottom:2px solid #e2e8f0;padding-bottom:8px;}
+          h2{font-size:20px;border-bottom:1px solid #e2e8f0;padding-bottom:6px;}
+          table{margin:12px 0;font-size:13px;}
+          th,td{border:1px solid #cbd5e1;padding:6px 10px;}
+          code{background:#f0f4f8;padding:2px 6px;border-radius:4px;font-size:13px;}
+          pre{background:#f8f9fb;padding:14px;border-radius:8px;overflow-x:auto;}
+          pre code{background:none;padding:0;}
+          ul{padding-left:24px;} li{margin:4px 0;}
+          @media print{body{margin:0;max-width:none;}}
+        </style></head><body>`);
+      w.document.write(mdToHtml(md));
+      w.document.write('</body></html>');
+      w.document.close();
+      setTimeout(() => { w.focus(); w.print(); }, 400);
+    })
+    .catch(() => showToast('❌ 读取文件失败'));
+}
+
+/* ============================================================
+   渲染卡片
+   ============================================================ */
+function renderCard(item, type) {
+  const iconClass = type === 'exam' ? 'exam' : type === 'review' ? 'review' : 'kb';
+  let buttons = '';
+
+  if (type === 'exam') {
+    // 押题卷：在线查看 + 打印 PDF
+    buttons += `<button class="btn primary" onclick="viewOnline('${item.html}')">👁️ 在线答题</button>`;
+    buttons += `<button class="btn" onclick="printHTML('${item.html}')">🖨️ 打印PDF</button>`;
+  } else if (type === 'review') {
+    // 复习手册：下载 MD + 在线查看(有HTML) + 打印 PDF
+    const mdName = item.md.split('/').pop();
+    buttons += `<button class="btn primary" onclick="downloadFile('${item.md}','${mdName}')">⬇️ 下载MD</button>`;
+    if (item.html) {
+      buttons += `<button class="btn" onclick="viewOnline('${item.html}')">👁️ 在线查看</button>`;
+      buttons += `<button class="btn" onclick="printHTML('${item.html}')">🖨️ 打印PDF</button>`;
+    } else {
+      buttons += `<button class="btn" onclick="printMD('${item.md}','${item.name} 复习手册')">🖨️ 打印PDF</button>`;
+    }
+  } else if (type === 'kb') {
+    // 题库：下载 JSON
+    const fileName = item.json.split('/').pop();
+    buttons += `<button class="btn primary" onclick="downloadFile('${item.json}','${fileName}')">⬇️ 下载题库</button>`;
+  }
+
+  return `
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon ${iconClass}">${item.icon}</div>
+        <div>
+          <div class="card-title">${item.name}</div>
+          <div class="card-meta">${item.meta || ''}</div>
+        </div>
+      </div>
+      <div class="btn-row">${buttons}</div>
+    </div>`;
+}
+
+function render() {
+  const app = document.getElementById('app');
+  let html = '';
+  for (const sec of SECTIONS) {
+    html += `<div class="section-title">${sec.title}</div>`;
+    html += `<div class="grid">${sec.items.map(it => renderCard(it, sec.type)).join('')}</div>`;
+  }
+  app.innerHTML = html;
+}
+
+render();
+</script>
+</body>
+</html>
