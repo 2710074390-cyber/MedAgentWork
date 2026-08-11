@@ -408,6 +408,7 @@ const BANKS=[
   {name:'医患沟通',icon:'💬',pdf:'题库/医患沟通题库.pdf',desc:'医患沟通学题库',meta:'PDF'},
   {name:'中医学',icon:'🌿',pdf:'题库/中医学题库.pdf',desc:'中医学 batch010 题库',meta:'PDF · batch010'},
 ];
+const PREVIEW_MANIFEST={"内科学题库_364题":{"total":119,"preview_pages":["预览/内科学题库_364题_p1.png","预览/内科学题库_364题_p2.png","预览/内科学题库_364题_p3.png","预览/内科学题库_364题_p4.png","预览/内科学题库_364题_p5.png"]},"外科学题库":{"total":95,"preview_pages":["预览/外科学题库_p1.png","预览/外科学题库_p2.png","预览/外科学题库_p3.png","预览/外科学题库_p4.png","预览/外科学题库_p5.png"]},"精神病学题库_242题":{"total":78,"preview_pages":["预览/精神病学题库_242题_p1.png","预览/精神病学题库_242题_p2.png","预览/精神病学题库_242题_p3.png","预览/精神病学题库_242题_p4.png","预览/精神病学题库_242题_p5.png"]},"神经病学题库_259题":{"total":92,"preview_pages":["预览/神经病学题库_259题_p1.png","预览/神经病学题库_259题_p2.png","预览/神经病学题库_259题_p3.png","预览/神经病学题库_259题_p4.png","预览/神经病学题库_259题_p5.png"]},"医患沟通题库":{"total":105,"preview_pages":["预览/医患沟通题库_p1.png","预览/医患沟通题库_p2.png","预览/医患沟通题库_p3.png","预览/医患沟通题库_p4.png","预览/医患沟通题库_p5.png"]},"中医学题库":{"total":101,"preview_pages":["预览/中医学题库_p1.png","预览/中医学题库_p2.png","预览/中医学题库_p3.png","预览/中医学题库_p4.png","预览/中医学题库_p5.png"]}};
 const REVIEWS=[
   {name:'内科学',icon:'🫀',md:'复习资料/内科学_主复习资料.md',desc:'心血管/呼吸/消化/泌尿，考点分级标注',meta:'v5 · 214K'},
   {name:'外科学',icon:'🔪',md:'复习资料/外科学_主复习资料.md',html:'复习资料/外科学_主复习资料.html',desc:'普外/骨科/泌尿，手术指征与术式要点',meta:'v5 · 232K'},
@@ -524,19 +525,29 @@ function previewPDF(path,name){
   $('#modal').classList.add('open');
   const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
   $('#m-actions').innerHTML='<button class="m-btn" onclick="window.open(url(currentPDF),\'_blank\')"> 新标签</button><button class="m-btn" onclick="downloadFile(currentPDF,currentPDF.split(\'/\').pop())">⬇ 下载 PDF</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
-  const fullUrl=url(path);
-  /* 直接渲染，不预检 HEAD（某些 CDN 节点 HEAD 响应慢） */
+  /* 图片预览：加载前 5 页 PNG，避免浏览器 PDF 渲染问题 */
+  const key=path.replace('.pdf','').replace('题库/','');
+  const meta=PREVIEW_MANIFEST[key]||{total:0,preview_pages:[]};
+  const pages=meta.preview_pages||[];
+  if(!pages.length){
+    body.className='modal-body';
+    body.innerHTML='<div style="padding:60px 40px;text-align:center;color:var(--ink-soft)"><p style="font-size:16px;margin-bottom:8px">📄 暂无预览图</p><p style="font-size:13px">请点击「⬇ 下载 PDF」查看完整内容。</p></div>';
+    return;
+  }
   body.className='modal-body';
-  body.innerHTML=
-    '<object data="'+fullUrl+'" type="application/pdf" style="width:100%;height:100%;display:block">'
-    +'<iframe src="'+fullUrl+'" style="width:100%;height:100%;border:0"></iframe>'
-    +'</object>';
-  /* 3 秒后若仍在 loading（<object> 加载失败），显示降级提示 */
-  setTimeout(()=>{
-    if(body.querySelector('.spinner')){
-      body.innerHTML='<div style="padding:60px 40px;text-align:center;color:var(--ink-soft)"><p style="font-size:16px;margin-bottom:8px">📄 PDF 预览加载缓慢</p><p style="font-size:13px;margin-bottom:16px">请点击右上角「↗ 新标签」或「 下载 PDF」查看完整内容。</p></div>';
-    }
-  },3000);
+  body.style.overflow='auto';
+  let html='<div style="padding:20px 32px 32px;text-align:center">';
+  pages.forEach((p,i)=>{
+    html+='<figure style="margin:0 0 14px">'
+      +'<img src="'+url(p)+'" alt="第'+(i+1)+'页" loading="lazy" '
+      +'style="max-width:100%;border:1px solid var(--rule);border-radius:4px;background:#fff">'
+      +'<figcaption style="font-size:11px;color:var(--ink-faint);font-family:var(--f-mono);margin-top:4px">第 '+(i+1)+' / '+(meta.total||'')+' 页（预览）</figcaption>'
+      +'</figure>';
+  });
+  html+='<div style="margin-top:16px;padding:14px 20px;border:1px dashed var(--rule);border-radius:6px;color:var(--ink-soft);font-size:13px">'
+    +'仅展示前 '+pages.length+' 页。完整 '+(meta.total||'')+' 页内容请点击右上角「⬇ 下载 PDF」或「 新标签」。'
+    +'</div></div>';
+  body.innerHTML=html;
 }
 function closeModal(){$('#modal').classList.remove('open');$('#m-body').innerHTML='<div class="spinner"></div>';}
 $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
