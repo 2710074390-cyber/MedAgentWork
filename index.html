@@ -5,183 +5,408 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>医学复习资料库 · 大三下</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    --card-bg: rgba(255,255,255,0.06);
-    --card-hover: rgba(255,255,255,0.12);
-    --border: rgba(255,255,255,0.1);
-    --border-hover: rgba(255,255,255,0.25);
-    --text: #fff;
-    --text-dim: rgba(255,255,255,0.5);
-    --accent: #4facfe;
-  }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: var(--bg);
-    background-attachment: fixed;
-    min-height: 100vh;
-    padding: 40px 20px 60px;
-    color: var(--text);
-  }
-  .container { max-width: 960px; margin: 0 auto; }
+/* ============================================================
+   医药典籍 · 编辑风
+   暖羊皮纸 + 墨绿/赭红 + 宋体标题 + 噪点纹理
+   零外部依赖，离线可用（无 Google Fonts，GFW 友好）
+   ============================================================ */
 
-  /* 头部 */
-  .header { text-align: center; margin-bottom: 40px; }
-  .header h1 { font-size: 34px; letter-spacing: 2px; margin-bottom: 8px; }
-  .header .subtitle { color: var(--text-dim); font-size: 14px; }
-  .badge {
-    display: inline-block;
-    margin-top: 14px;
-    padding: 4px 14px;
-    background: rgba(79,172,254,0.15);
-    border: 1px solid rgba(79,172,254,0.3);
-    border-radius: 16px;
-    font-size: 12px;
-    color: var(--accent);
-  }
+:root {
+  /* 纸张与墨色 */
+  --paper: #f4ede0;
+  --paper-2: #ece2cf;
+  --paper-edge: #ddd0b8;
+  --ink: #1c2b22;
+  --ink-soft: #4a574e;
+  --ink-faint: #8a8576;
 
-  /* 分区标题 */
-  .section-title {
-    color: rgba(255,255,255,0.6);
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin: 40px 0 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(255,255,255,0.12);
-  }
+  /* 双色点缀 */
+  --moss: #2d5a3d;       /* 墨绿 — 主色 */
+  --moss-deep: #1a3a2a;
+  --oxblood: #8b2635;    /* 赭红 — 强调 */
+  --ochre: #b8862e;      /* 赭黄 — 次强调 */
 
-  /* 卡片网格 */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 14px;
-  }
-  .card {
-    background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 20px 22px;
-    transition: all 0.25s ease;
-  }
-  .card:hover {
-    background: var(--card-hover);
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  }
-  .card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
-  .card-icon {
-    width: 44px; height: 44px;
-    border-radius: 11px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 22px;
-    flex-shrink: 0;
-  }
-  .card-icon.exam    { background: linear-gradient(135deg, #667eea, #764ba2); }
-  .card-icon.review  { background: linear-gradient(135deg, #f093fb, #f5576c); }
-  .card-icon.kb      { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-  .card-title { font-size: 16px; font-weight: 600; }
-  .card-meta  { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+  --rule: rgba(28,43,34,0.18);
+  --rule-soft: rgba(28,43,34,0.09);
 
-  /* 按钮 */
-  .btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
-  .btn {
-    flex: 1;
-    min-width: 70px;
-    padding: 8px 10px;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 9px;
-    background: rgba(255,255,255,0.05);
-    color: var(--text);
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-    text-align: center;
-    font-family: inherit;
-  }
-  .btn:hover {
-    background: rgba(255,255,255,0.15);
-    border-color: rgba(255,255,255,0.35);
-    transform: translateY(-1px);
-  }
-  .btn.primary {
-    background: rgba(79,172,254,0.18);
-    border-color: rgba(79,172,254,0.4);
-    color: var(--accent);
-  }
-  .btn.primary:hover { background: rgba(79,172,254,0.3); }
-  .btn:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-    transform: none;
-  }
-  .btn:disabled:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); }
+  /* 字体栈（系统自带，规避 GFW） */
+  --f-display: "Songti SC","STSong","Source Han Serif SC","Noto Serif SC",SimSun,Georgia,serif;
+  --f-body: "PingFang SC","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  --f-mono: "Cascadia Code","SF Mono",Consolas,monospace;
+}
 
-  /* 页脚 */
-  .footer {
-    text-align: center;
-    margin-top: 56px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: rgba(255,255,255,0.3);
-    font-size: 12px;
-  }
-  .footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
-  .footer a:hover { color: rgba(255,255,255,0.8); }
+* { margin:0; padding:0; box-sizing:border-box; }
 
-  /* Toast 提示 */
-  #toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(80px);
-    background: rgba(0,0,0,0.85);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 10px;
-    font-size: 14px;
-    opacity: 0;
-    transition: all 0.3s;
-    z-index: 9999;
-    pointer-events: none;
-  }
-  #toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+html { scroll-behavior:smooth; }
 
-  @media (max-width: 600px) {
-    .header h1 { font-size: 26px; }
-    .grid { grid-template-columns: 1fr; }
-    .btn-row .btn { min-width: 60px; font-size: 11px; padding: 7px 6px; }
-  }
+body {
+  font-family: var(--f-body);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 羊皮纸噪点纹理 + 暖光 */
+body::before {
+  content:"";
+  position: fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 0%, rgba(184,134,46,0.10), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 100%, rgba(45,90,61,0.08), transparent 60%);
+}
+body::after {
+  content:"";
+  position: fixed; inset:0; z-index:0; pointer-events:none;
+  opacity:0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.11 0 0 0 0 0.17 0 0 0 0 0.13 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.wrap { position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 32px; }
+
+/* ============================================================
+   页眉 · 期刊报头
+   ============================================================ */
+.masthead {
+  padding: 56px 0 40px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+.masthead::after {
+  content:""; position:absolute; left:0; right:0; bottom:-4px;
+  height:1px; background: var(--ink);
+}
+.masthead-top {
+  display:flex; justify-content:space-between; align-items:baseline;
+  font-family: var(--f-mono);
+  font-size: 11px; letter-spacing: 0.18em; text-transform:uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+}
+.masthead-top .crest { display:flex; align-items:center; gap:10px; }
+.masthead-top .crest svg { width:18px; height:18px; }
+
+.masthead h1 {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(40px, 7vw, 76px);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  color: var(--moss-deep);
+}
+.masthead h1 .red { color: var(--oxblood); font-style: italic; }
+.masthead .tagline {
+  font-family: var(--f-display);
+  font-size: clamp(15px, 1.8vw, 19px);
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-top: 14px;
+  max-width: 620px;
+}
+.masthead .vol {
+  position:absolute; right:0; top:56px;
+  text-align:right;
+  font-family: var(--f-mono); font-size:11px; letter-spacing:0.15em;
+  color: var(--ink-faint); text-transform:uppercase;
+}
+.masthead .vol b {
+  display:block; font-family:var(--f-display); font-size:34px; font-weight:900;
+  color: var(--oxblood); font-style:normal; letter-spacing:0; margin-top:4px;
+}
+
+/* ============================================================
+   分区 · 期刊栏目
+   ============================================================ */
+.section { padding: 64px 0 24px; }
+.section-head {
+  display:flex; align-items:flex-end; gap:18px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 16px;
+}
+.section-num {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--oxblood);
+  font-style: italic;
+}
+.section-head h2 {
+  font-family: var(--f-display);
+  font-weight: 900;
+  font-size: clamp(24px, 3vw, 32px);
+  color: var(--moss-deep);
+  letter-spacing: -0.01em;
+}
+.section-head .desc {
+  font-size: 13px; color: var(--ink-faint);
+  margin-left:auto; text-align:right;
+  font-family: var(--f-mono); letter-spacing:0.08em;
+  max-width: 280px;
+}
+
+/* ============================================================
+   卡片网格 · 不对称
+   ============================================================ */
+.grid { display:grid; gap:22px; }
+.grid.exam { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.grid.review { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+
+.card {
+  position:relative;
+  background: rgba(255,253,247,0.55);
+  backdrop-filter: blur(4px);
+  border: 1px solid var(--rule);
+  padding: 26px 26px 22px;
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-color .35s;
+  overflow: hidden;
+}
+/* 顶部色条 */
+.card::before {
+  content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+  background: var(--moss);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -18px rgba(28,43,34,0.35);
+  border-color: var(--moss);
+  background: rgba(255,253,247,0.85);
+}
+.card:hover::before { transform: scaleY(1); }
+
+/* 卡片角标编号 */
+.card .idx {
+  position:absolute; top:18px; right:22px;
+  font-family: var(--f-mono); font-size:11px; color:var(--ink-faint);
+  letter-spacing:0.1em;
+}
+
+.card-head { display:flex; align-items:center; gap:14px; margin-bottom:14px; padding-right:36px; }
+.glyph {
+  width:42px; height:42px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px;
+  border:1px solid var(--rule);
+  border-radius:50%;
+  background: var(--paper-2);
+}
+.card-title {
+  font-family: var(--f-display);
+  font-weight:900; font-size:21px; color:var(--ink);
+  letter-spacing:-0.005em;
+}
+.card-meta { font-size:12px; color:var(--ink-faint); margin-top:2px; font-family:var(--f-mono); letter-spacing:0.05em; }
+
+.card-desc {
+  font-size:13.5px; color:var(--ink-soft);
+  margin-bottom:18px; min-height:38px;
+  line-height:1.6;
+}
+
+/* 按钮 */
+.btns { display:flex; flex-wrap:wrap; gap:8px; }
+.btn {
+  flex:1; min-width:0;
+  padding:9px 8px;
+  font-family: var(--f-body);
+  font-size:12.5px; font-weight:600;
+  letter-spacing:0.02em;
+  border:1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor:pointer;
+  transition: all .2s;
+  text-decoration:none;
+  text-align:center;
+  white-space:nowrap;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn.primary { background: var(--moss-deep); color: var(--paper); border-color: var(--moss-deep); }
+.btn.primary:hover { background: var(--oxblood); border-color: var(--oxblood); }
+.btn.accent { border-color: var(--oxblood); color: var(--oxblood); }
+.btn.accent:hover { background: var(--oxblood); color: var(--paper); }
+
+/* ============================================================
+   页脚
+   ============================================================ */
+.colophon {
+  margin-top:80px; padding:40px 0 56px;
+  border-top: 1px solid var(--ink);
+  display:flex; justify-content:space-between; align-items:center;
+  font-family: var(--f-mono); font-size:11px; letter-spacing:0.12em;
+  text-transform:uppercase; color:var(--ink-soft);
+}
+.colophon a { color:var(--moss-deep); text-decoration:none; border-bottom:1px solid var(--rule); }
+.colophon a:hover { color:var(--oxblood); border-color:var(--oxblood); }
+.colophon .mark { font-family:var(--f-display); font-style:italic; font-size:15px; text-transform:none; letter-spacing:0; color:var(--ink-faint); }
+
+/* ============================================================
+   MD 预览模态层 · 阅读器
+   ============================================================ */
+#modal {
+  position:fixed; inset:0; z-index:1000;
+  display:none;
+  background: rgba(28,43,34,0.55);
+  backdrop-filter: blur(6px);
+  animation: fadeIn .25s ease;
+}
+#modal.open { display:block; }
+.modal-card {
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:min(820px, 92vw); height:min(88vh, 1000px);
+  background: var(--paper);
+  display:flex; flex-direction:column;
+  box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5);
+  border:1px solid var(--paper-edge);
+  animation: rise .35s cubic-bezier(.2,.7,.2,1);
+}
+.modal-bar {
+  display:flex; align-items:center; gap:14px;
+  padding:16px 24px;
+  border-bottom:1px solid var(--rule);
+  background: var(--paper-2);
+  flex-shrink:0;
+}
+.modal-bar .m-title {
+  font-family:var(--f-display); font-weight:900; font-size:18px; color:var(--moss-deep);
+  flex:1;
+}
+.modal-bar .m-actions { display:flex; gap:8px; }
+.modal-bar .m-btn {
+  padding:7px 14px; font-size:12px; font-weight:600;
+  border:1px solid var(--ink); background:transparent; color:var(--ink);
+  cursor:pointer; font-family:var(--f-body); transition:all .2s;
+}
+.modal-bar .m-btn:hover { background:var(--ink); color:var(--paper); }
+.modal-bar .m-btn.close { border-color:var(--oxblood); color:var(--oxblood); }
+.modal-bar .m-btn.close:hover { background:var(--oxblood); color:var(--paper); }
+.modal-body {
+  flex:1; overflow-y:auto;
+  padding:36px 48px 56px;
+  font-family:var(--f-body); font-size:15px; line-height:1.85; color:var(--ink);
+}
+.modal-body.loading { display:flex; align-items:center; justify-content:center; }
+.modal-body .spinner {
+  width:36px; height:36px; border:3px solid var(--rule); border-top-color:var(--moss);
+  border-radius:50%; animation: spin .8s linear infinite;
+}
+
+/* 阅读器内 Markdown 排版 */
+.md h1,.md h2,.md h3,.md h4,.md h5,.md h6 { font-family:var(--f-display); font-weight:900; color:var(--moss-deep); margin:1.4em 0 .5em; line-height:1.25; }
+.md h1 { font-size:26px; border-bottom:2px solid var(--rule); padding-bottom:8px; }
+.md h2 { font-size:22px; border-bottom:1px solid var(--rule); padding-bottom:6px; }
+.md h3 { font-size:18px; }
+.md h4 { font-size:16px; color:var(--ink); }
+.md p { margin:.7em 0; }
+.md ul,.md ol { padding-left:1.6em; margin:.7em 0; }
+.md li { margin:.3em 0; }
+.md strong { color:var(--oxblood); font-weight:700; }
+.md em { color:var(--moss); }
+.md code { font-family:var(--f-mono); background:var(--paper-2); padding:2px 6px; border-radius:3px; font-size:13px; color:var(--oxblood); }
+.md pre { background:var(--moss-deep); color:#e8e2d4; padding:16px 20px; border-radius:6px; overflow-x:auto; margin:1em 0; }
+.md pre code { background:none; color:inherit; padding:0; }
+.md blockquote { border-left:3px solid var(--ochre); padding-left:1em; margin:1em 0; color:var(--ink-soft); font-style:italic; }
+.md table { border-collapse:collapse; width:100%; margin:1em 0; font-size:13.5px; }
+.md th,.md td { border:1px solid var(--rule); padding:8px 12px; text-align:left; }
+.md th { background:var(--paper-2); font-weight:700; color:var(--moss-deep); }
+.md tr:nth-child(even) td { background:rgba(236,226,207,0.4); }
+.md hr { border:none; border-top:1px solid var(--rule); margin:2em 0; }
+.md a { color:var(--moss); border-bottom:1px solid var(--rule); }
+
+/* Toast */
+#toast {
+  position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(80px);
+  background:var(--moss-deep); color:var(--paper);
+  padding:12px 22px; border-radius:2px; font-size:13px; font-weight:600;
+  letter-spacing:0.04em; opacity:0; transition:all .3s; z-index:2000; pointer-events:none;
+  border-left:3px solid var(--ochre);
+}
+#toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+
+/* 入场动画 · 交错揭示 */
+.reveal { opacity:0; transform:translateY(20px); animation: reveal .6s cubic-bezier(.2,.7,.2,1) forwards; }
+@keyframes reveal { to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes rise { from{opacity:0; transform:translate(-50%,-46%)} to{opacity:1; transform:translate(-50%,-50%)} }
+@keyframes spin { to { transform:rotate(360deg) } }
+
+/* 响应式 */
+@media (max-width: 720px) {
+  .wrap { padding:0 20px; }
+  .masthead { padding:40px 0 28px; }
+  .masthead .vol { display:none; }
+  .section-head { flex-wrap:wrap; }
+  .section-head .desc { margin-left:0; text-align:left; }
+  .grid.exam, .grid.review { grid-template-columns:1fr; }
+  .modal-body { padding:24px 22px 40px; }
+  .colophon { flex-direction:column; gap:12px; text-align:center; }
+}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
 
-  <div class="header">
-    <h1>🏥 医学复习资料库</h1>
-    <p class="subtitle">押题卷 · 复习手册 · 题库</p>
-    <span class="badge">📂 大三下学期</span>
-  </div>
+  <!-- 报头 -->
+  <header class="masthead reveal">
+    <div class="masthead-top">
+      <div class="crest">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20" stroke="#2d5a3d"/><circle cx="12" cy="12" r="9" stroke="#8b2635"/></svg>
+        <span>医学复习资料库 · EST. 2026</span>
+      </div>
+      <span>大三下学期 · Spring Term</span>
+    </div>
+    <h1>医道<span class="red">典籍</span><br>复习资料库</h1>
+    <p class="tagline">押题卷与复习手册，为同窗备考而辑。在线答题、预览研读、一键打印 PDF。</p>
+    <div class="vol">Vol.<br><b>Ⅲ</b></div>
+  </header>
 
-  <div id="app"></div>
+  <!-- 押题卷 -->
+  <section class="section">
+    <div class="section-head reveal" style="animation-delay:.05s">
+      <span class="section-num">Ⅰ</span>
+      <h2>押题卷 · 交互式答题</h2>
+      <span class="desc">点击选项即时判分 · 进度追踪 · 错题高亮</span>
+    </div>
+    <div class="grid exam" id="grid-exam"></div>
+  </section>
 
-  <div class="footer">
-    <p>© 2026 医学复习资料库 · 仅供学习交流</p>
-    <p style="margin-top:8px;">
-      <a href="https://github.com/2710074390-cyber/med-review-site" target="_blank">GitHub 源码</a>
-    </p>
+  <!-- 复习资料 -->
+  <section class="section">
+    <div class="section-head reveal" style="animation-delay:.1s">
+      <span class="section-num">Ⅱ</span>
+      <h2>复习手册 · 系统研读</h2>
+      <span class="desc">在线预览 · 下载源文件 · 打印 PDF</span>
+    </div>
+    <div class="grid review" id="grid-review"></div>
+  </section>
+
+  <!-- 版权页 -->
+  <footer class="colophon">
+    <span>© 2026 · 仅供学习交流</span>
+    <span class="mark">— 文以载道，医以济世 —</span>
+    <a href="https://github.com/2710074390-cyber/med-review-site" target="_blank">GitHub 源码 ↗</a>
+  </footer>
+</div>
+
+<!-- 预览模态层 -->
+<div id="modal">
+  <div class="modal-card">
+    <div class="modal-bar">
+      <span class="m-title" id="m-title">预览</span>
+      <div class="m-actions">
+        <button class="m-btn" id="m-download">⬇ 下载 MD</button>
+        <button class="m-btn" id="m-print">🖨 打印</button>
+        <button class="m-btn close" id="m-close">✕ 关闭</button>
+      </div>
+    </div>
+    <div class="modal-body loading" id="m-body"><div class="spinner"></div></div>
   </div>
 </div>
 
@@ -189,213 +414,171 @@
 
 <script>
 /* ============================================================
-   数据：每个科目的产物路径
+   数据
    ============================================================ */
 const BASE = '大三下';
 
-const SECTIONS = [
-  {
-    title: '📝 押题卷 · 交互式答题',
-    type: 'exam',
-    items: [
-      { name: '内科学',     icon: '🫀', html: '押题卷/内科学押题卷_2026.html',       meta: '全真模拟' },
-      { name: '精神病学',   icon: '🧠', html: '押题卷/精神病学押题卷_2026.html',     meta: '331 题' },
-      { name: '神经病学',   icon: '⚡', html: '押题卷/神经病学押题卷_2026.html',     meta: '全真模拟' },
-      { name: '医患沟通',   icon: '💬', html: '押题卷/医患沟通押题卷_2026.html',     meta: '情景题' },
-      { name: '外科学',     icon: '🔪', html: '押题卷/外科学押题卷_108题.html',      meta: '108 题' },
-    ]
-  },
-  {
-    title: '📚 复习手册 · 系统学习',
-    type: 'review',
-    items: [
-      { name: '内科学',     icon: '🫀', md: '复习资料/内科学_主复习资料.md',                                 meta: 'v5 · 214K' },
-      { name: '外科学',     icon: '🔪', md: '复习资料/外科学_主复习资料.md',     html: '复习资料/外科学_主复习资料.html',     meta: 'v5 · 232K' },
-      { name: '精神病学',   icon: '🧠', md: '复习资料/精神病学_主复习资料.md',   html: '复习资料/精神病学_主复习资料.html',   meta: 'v5.1 · 134K' },
-      { name: '神经病学',   icon: '⚡', md: '复习资料/神经病学_主复习资料.md',                               meta: 'v5 · 164K' },
-      { name: '医患沟通',   icon: '💬', md: '复习资料/医患沟通_主复习资料.md',                               meta: 'v5.1 · 131K' },
-      { name: '中医学',     icon: '🌿', md: '复习资料/中医学_主复习资料.md',     html: '复习资料/中医学_主复习资料.html',     meta: 'v5 · 115K' },
-      { name: '中医心理学', icon: '🧘', md: '复习资料/中医心理学_主复习资料.md', html: '复习资料/中医心理学_主复习资料.html', meta: '86K' },
-    ]
-  },
-  {
-    title: '📋 题库 · JSON 数据',
-    type: 'kb',
-    items: [
-      { name: '精神病学题库', icon: '🧠', json: '题库/精神病学_统一题库_331题.json', meta: '331 题 · JSON' },
-    ]
-  }
+const EXAMS = [
+  { name:'内科学',   icon:'🫀', html:'押题卷/内科学押题卷_2026.html',     desc:'心血管 · 呼吸 · 消化 · 泌尿系统全真模拟', meta:'全真模拟' },
+  { name:'精神病学', icon:'🧠', html:'押题卷/精神病学押题卷_2026.html',   desc:'精神分裂 · 情感障碍 · 神经症 331 题',     meta:'331 题' },
+  { name:'神经病学', icon:'⚡', html:'押题卷/神经病学押题卷_2026.html',   desc:'脑血管病 · 癫痫 · 周围神经病变',           meta:'全真模拟' },
+  { name:'医患沟通', icon:'💬', html:'押题卷/医患沟通押题卷_2026.html',   desc:'沟通技巧 · 医学伦理 · 知情同意情景题',     meta:'情景题' },
+  { name:'外科学',   icon:'🔪', html:'押题卷/外科学押题卷_108题.html',    desc:'普外 · 骨科 · 泌尿 108 题精练',             meta:'108 题' },
+];
+
+const REVIEWS = [
+  { name:'内科学',     icon:'🫀', md:'复习资料/内科学_主复习资料.md',                                 desc:'心血管/呼吸/消化/泌尿，考点分级标注',       meta:'v5 · 214K' },
+  { name:'外科学',     icon:'🔪', md:'复习资料/外科学_主复习资料.md',     html:'复习资料/外科学_主复习资料.html',     desc:'普外/骨科/泌尿，手术指征与术式要点',       meta:'v5 · 232K' },
+  { name:'精神病学',   icon:'🧠', md:'复习资料/精神病学_主复习资料.md',   html:'复习资料/精神病学_主复习资料.html',   desc:'掌握/熟悉/理解三级标注，侧栏导航',         meta:'v5.1 · 134K' },
+  { name:'神经病学',   icon:'⚡', md:'复习资料/神经病学_主复习资料.md',                               desc:'脑血管/癫痫/运动障碍定位诊断',             meta:'v5 · 164K' },
+  { name:'医患沟通',   icon:'💬', md:'复习资料/医患沟通_主复习资料.md',                               desc:'沟通模型 · 伦理原则 · 知情同意',           meta:'v5.1 · 131K' },
+  { name:'中医学',     icon:'🌿', md:'复习资料/中医学_主复习资料.md',     html:'复习资料/中医学_主复习资料.html',     desc:'基础理论 · 方剂 · 诊断辨证',               meta:'v5 · 115K' },
+  { name:'中医心理学', icon:'🧘', md:'复习资料/中医心理学_主复习资料.md', html:'复习资料/中医心理学_主复习资料.html', desc:'情志 · 脏腑 · 治法，心身同治',             meta:'86K' },
 ];
 
 /* ============================================================
-   工具函数
+   工具
    ============================================================ */
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2000);
+const $ = s => document.querySelector(s);
+const toast = (msg) => { const t=$('#toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._tm); t._tm=setTimeout(()=>t.classList.remove('show'),2200); };
+
+function viewOnline(path){ window.open(BASE+'/'+path,'_blank'); }
+
+function downloadFile(path, filename){
+  fetch(BASE+'/'+path).then(r=>{ if(!r.ok) throw 0; return r.blob(); })
+    .then(b=>{
+      const a=document.createElement('a'); a.href=URL.createObjectURL(b); a.download=filename;
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(a.href);
+      toast('⬇ 已下载：'+filename);
+    }).catch(()=>toast('❌ 下载失败：文件不存在'));
 }
 
-// 在线查看：新标签打开 HTML
-function viewOnline(path) {
-  window.open(BASE + '/' + path, '_blank');
+function printHTML(path){
+  const w=window.open(BASE+'/'+path,'_blank');
+  if(!w){ toast('❌ 弹窗被拦截，请允许'); return; }
+  toast('🖨 正在准备打印…');
+  const ck=setInterval(()=>{ try{ if(w.document.readyState==='complete'){ clearInterval(ck); setTimeout(()=>{w.focus();w.print();},300);} }catch(e){clearInterval(ck);} },200);
 }
 
-// 下载文件：fetch + blob（保证 download 属性生效）
-function downloadFile(path, filename) {
-  fetch(BASE + '/' + path)
-    .then(r => {
-      if (!r.ok) throw new Error('文件未找到');
-      return r.blob();
-    })
-    .then(blob => {
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      showToast('⬇️ 已下载：' + filename);
-    })
-    .catch(() => showToast('❌ 下载失败：文件不存在'));
-}
-
-// 打印 PDF：打开 HTML，加载完成后调用 print
-function printHTML(path) {
-  const w = window.open(BASE + '/' + path, '_blank');
-  if (!w) { showToast('❌ 弹窗被拦截，请允许弹窗'); return; }
-  showToast('🖨️ 正在准备打印…');
-  const check = setInterval(() => {
-    try {
-      if (w.document.readyState === 'complete') {
-        clearInterval(check);
-        setTimeout(() => { w.focus(); w.print(); }, 300);
-      }
-    } catch (e) { clearInterval(check); }
-  }, 200);
-}
-
-// 轻量 Markdown → HTML 渲染（用于只有 MD 没有 HTML 的打印场景）
-function mdToHtml(md) {
-  let html = md
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+/* ---- Markdown 渲染（轻量，支持表格/代码/标题/列表/加粗/引用） ---- */
+function mdToHtml(md){
+  let h = md.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   // 代码块
-  html = html.replace(/```([\s\S]*?)```/g, (m, c) => '<pre><code>' + c + '</code></pre>');
-  // 标题
-  html = html.replace(/^######\s+(.*)$/gm, '<h6>$1</h6>')
-             .replace(/^#####\s+(.*)$/gm, '<h5>$1</h5>')
-             .replace(/^####\s+(.*)$/gm, '<h4>$1</h4>')
-             .replace(/^###\s+(.*)$/gm, '<h3>$1</h3>')
-             .replace(/^##\s+(.*)$/gm, '<h2>$1</h2>')
-             .replace(/^#\s+(.*)$/gm, '<h1>$1</h1>');
-  // 加粗 / 斜体 / 行内代码
-  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-             .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-             .replace(/`([^`]+)`/g, '<code>$1</code>');
-  // 表格（简易处理）
-  html = html.replace(/^\|(.+)\|\s*$/gm, (m, c) => {
-    if (c.includes('---')) return ''; // 分隔行
-    const cells = c.split('|').map(x => x.trim()).filter(x => x !== '');
-    return '<tr>' + cells.map(x => '<td>' + x + '</td>').join('') + '</tr>';
+  h = h.replace(/```([\s\S]*?)```/g, (m,c)=>'<pre><code>'+c.replace(/^\n/,'')+'</code></pre>');
+  // 表格
+  h = h.replace(/(^\|.+\|\s*\n)(^\|[\s:|-]+\|\s*\n)((?:^\|.+\|\s*\n)+)/gm, (m,hdr,sep,body)=>{
+    const heads = hdr.split('|').map(s=>s.trim()).filter(Boolean);
+    const rows = body.trim().split('\n').map(r=>r.split('|').map(s=>s.trim()).filter(Boolean));
+    let t='<table><thead><tr>'+heads.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>';
+    rows.forEach(r=>{ t+='<tr>'+r.map(x=>'<td>'+x+'</td>').join('')+'</tr>'; });
+    return t+'</tbody></table>';
   });
-  html = html.replace(/(<tr>[\s\S]*?<\/tr>)/g, '<table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse;width:100%">$1</table>');
+  // 标题
+  h = h.replace(/^######\s+(.*)$/gm,'<h6>$1</h6>')
+       .replace(/^#####\s+(.*)$/gm,'<h5>$1</h5>')
+       .replace(/^####\s+(.*)$/gm,'<h4>$1</h4>')
+       .replace(/^###\s+(.*)$/gm,'<h3>$1</h3>')
+       .replace(/^##\s+(.*)$/gm,'<h2>$1</h2>')
+       .replace(/^#\s+(.*)$/gm,'<h1>$1</h1>');
+  // 引用
+  h = h.replace(/^&gt;\s?(.*)$/gm,'<blockquote>$1</blockquote>');
+  // 行内
+  h = h.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+       .replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g,'<em>$1</em>')
+       .replace(/`([^`]+)`/g,'<code>$1</code>');
   // 列表
-  html = html.replace(/^[-*]\s+(.*)$/gm, '<li>$1</li>');
-  html = html.replace(/(<li>[\s\S]*?<\/li>)/g, '<ul>$1</ul>');
-  // 段落（连续空行分段）
-  html = html.split(/\n\n+/).map(p => {
-    if (/^<(h\d|ul|ol|pre|table|tr|li)/.test(p.trim())) return p;
-    return p.trim() ? '<p>' + p.replace(/\n/g, '<br>') + '</p>' : '';
+  h = h.replace(/^[-*+]\s+(.*)$/gm,'<li>$1</li>');
+  h = h.replace(/(<li>[\s\S]*?<\/li>)/g, m=> '<ul>'+m+'</ul>').replace(/<\/ul>\s*<ul>/g,'');
+  h = h.replace(/^\d+\.\s+(.*)$/gm,'<li>$1</li>');
+  // 水平线
+  h = h.replace(/^---+$/gm,'<hr>');
+  // 段落
+  h = h.split(/\n\n+/).map(p=>{
+    const t=p.trim();
+    if(!t) return '';
+    if(/^<(h\d|ul|ol|pre|table|blockquote|hr)/.test(t)) return t;
+    return '<p>'+t.replace(/\n/g,'<br>')+'</p>';
   }).join('\n');
-  return html;
+  return h;
 }
 
-// 打印 MD（无 HTML 时）：fetch MD → 渲染 → 新窗口打印
-function printMD(path, title) {
-  showToast('🖨️ 正在渲染并准备打印…');
-  fetch(BASE + '/' + path)
-    .then(r => { if (!r.ok) throw new Error(); return r.text(); })
-    .then(md => {
-      const w = window.open('', '_blank');
-      if (!w) { showToast('❌ 弹窗被拦截，请允许弹窗'); return; }
-      w.document.write(`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
-        <title>${title}</title>
-        <style>
-          body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
-               line-height:1.8;max-width:780px;margin:40px auto;padding:0 24px;color:#222;}
-          h1,h2,h3,h4,h5{color:#1a1a2e;margin:1.4em 0 0.6em;}
-          h1{font-size:24px;border-bottom:2px solid #e2e8f0;padding-bottom:8px;}
-          h2{font-size:20px;border-bottom:1px solid #e2e8f0;padding-bottom:6px;}
-          table{margin:12px 0;font-size:13px;}
-          th,td{border:1px solid #cbd5e1;padding:6px 10px;}
-          code{background:#f0f4f8;padding:2px 6px;border-radius:4px;font-size:13px;}
-          pre{background:#f8f9fb;padding:14px;border-radius:8px;overflow-x:auto;}
-          pre code{background:none;padding:0;}
-          ul{padding-left:24px;} li{margin:4px 0;}
-          @media print{body{margin:0;max-width:none;}}
-        </style></head><body>`);
-      w.document.write(mdToHtml(md));
-      w.document.write('</body></html>');
-      w.document.close();
-      setTimeout(() => { w.focus(); w.print(); }, 400);
-    })
-    .catch(() => showToast('❌ 读取文件失败'));
+/* ---- 预览模态 ---- */
+let currentMD = null, currentName = null;
+function previewMD(path, name){
+  currentMD = path; currentName = name;
+  $('#m-title').textContent = name + ' · 复习手册';
+  $('#modal').classList.add('open');
+  const body=$('#m-body');
+  body.className='modal-body loading';
+  body.innerHTML='<div class="spinner"></div>';
+  fetch(BASE+'/'+path).then(r=>{ if(!r.ok) throw 0; return r.text(); })
+    .then(md=>{
+      body.className='modal-body';
+      body.innerHTML='<div class="md">'+mdToHtml(md)+'</div>';
+      body.scrollTop=0;
+    }).catch(()=>{
+      body.className='modal-body';
+      body.innerHTML='<p>❌ 读取失败，该文件可能不存在。</p>';
+    });
 }
+
+$('#m-close').addEventListener('click', ()=>$('#modal').classList.remove('open'));
+$('#modal').addEventListener('click', e=>{ if(e.target.id==='modal') $('#modal').classList.remove('open'); });
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') $('#modal').classList.remove('open'); });
+$('#m-download').addEventListener('click', ()=>{ if(currentMD) downloadFile(currentMD, currentMD.split('/').pop()); });
+$('#m-print').addEventListener('click', ()=>{
+  if(!currentMD) return;
+  // 渲染当前模态内容到新窗口打印
+  const w=window.open('','_blank');
+  if(!w){ toast('❌ 弹窗被拦截'); return; }
+  const css=document.querySelector('style').textContent;
+  const content=$('#m-body').innerHTML;
+  w.document.write('<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><style>'+css+'body{background:#fff}.modal-body{padding:40px 48px}@media print{.modal-body{padding:0}}</style></head><body><div class="modal-body">'+content+'</div></body></html>');
+  w.document.close();
+  setTimeout(()=>{ w.focus(); w.print(); },400);
+});
 
 /* ============================================================
-   渲染卡片
+   渲染
    ============================================================ */
-function renderCard(item, type) {
-  const iconClass = type === 'exam' ? 'exam' : type === 'review' ? 'review' : 'kb';
-  let buttons = '';
-
-  if (type === 'exam') {
-    // 押题卷：在线查看 + 打印 PDF
-    buttons += `<button class="btn primary" onclick="viewOnline('${item.html}')">👁️ 在线答题</button>`;
-    buttons += `<button class="btn" onclick="printHTML('${item.html}')">🖨️ 打印PDF</button>`;
-  } else if (type === 'review') {
-    // 复习手册：下载 MD + 在线查看(有HTML) + 打印 PDF
-    const mdName = item.md.split('/').pop();
-    buttons += `<button class="btn primary" onclick="downloadFile('${item.md}','${mdName}')">⬇️ 下载MD</button>`;
-    if (item.html) {
-      buttons += `<button class="btn" onclick="viewOnline('${item.html}')">👁️ 在线查看</button>`;
-      buttons += `<button class="btn" onclick="printHTML('${item.html}')">🖨️ 打印PDF</button>`;
-    } else {
-      buttons += `<button class="btn" onclick="printMD('${item.md}','${item.name} 复习手册')">🖨️ 打印PDF</button>`;
-    }
-  } else if (type === 'kb') {
-    // 题库：下载 JSON
-    const fileName = item.json.split('/').pop();
-    buttons += `<button class="btn primary" onclick="downloadFile('${item.json}','${fileName}')">⬇️ 下载题库</button>`;
-  }
-
-  return `
-    <div class="card">
-      <div class="card-head">
-        <div class="card-icon ${iconClass}">${item.icon}</div>
-        <div>
-          <div class="card-title">${item.name}</div>
-          <div class="card-meta">${item.meta || ''}</div>
-        </div>
-      </div>
-      <div class="btn-row">${buttons}</div>
-    </div>`;
+function examCard(it, i){
+  return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s">
+    <span class="idx">№ ${String(i+1).padStart(2,'0')}</span>
+    <div class="card-head">
+      <div class="glyph">${it.icon}</div>
+      <div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div>
+    </div>
+    <p class="card-desc">${it.desc}</p>
+    <div class="btns">
+      <button class="btn primary" onclick="viewOnline('${it.html}')">👁 在线答题</button>
+      <button class="btn accent" onclick="printHTML('${it.html}')">🖨 打印 PDF</button>
+    </div>
+  </div>`;
 }
 
-function render() {
-  const app = document.getElementById('app');
-  let html = '';
-  for (const sec of SECTIONS) {
-    html += `<div class="section-title">${sec.title}</div>`;
-    html += `<div class="grid">${sec.items.map(it => renderCard(it, sec.type)).join('')}</div>`;
+function reviewCard(it, i){
+  const mdName = it.md.split('/').pop();
+  let btns = `<button class="btn primary" onclick="previewMD('${it.md}','${it.name}')">👁 预览</button>`;
+  btns += `<button class="btn" onclick="downloadFile('${it.md}','${mdName}')">⬇ MD</button>`;
+  if(it.html){
+    btns += `<button class="btn" onclick="viewOnline('${it.html}')">↗ HTML</button>`;
+    btns += `<button class="btn accent" onclick="printHTML('${it.html}')">🖨 PDF</button>`;
+  } else {
+    btns += `<button class="btn accent" onclick="previewMD('${it.md}','${it.name}');setTimeout(()=>document.getElementById('m-print').click(),800)">🖨 PDF</button>`;
   }
-  app.innerHTML = html;
+  return `<div class="card reveal" style="animation-delay:${0.1+i*0.06}s">
+    <span class="idx">№ ${String(i+1).padStart(2,'0')}</span>
+    <div class="card-head">
+      <div class="glyph">${it.icon}</div>
+      <div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div>
+    </div>
+    <p class="card-desc">${it.desc}</p>
+    <div class="btns">${btns}</div>
+  </div>`;
 }
 
-render();
+$('#grid-exam').innerHTML = EXAMS.map(examCard).join('');
+$('#grid-review').innerHTML = REVIEWS.map(reviewCard).join('');
 </script>
 </body>
 </html>

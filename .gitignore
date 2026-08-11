@@ -3,6 +3,9 @@ node_modules/
 dist/
 .cache/
 
+# wrangler 缓存（含账户信息，禁止上传）
+.wrangler/
+
 # 日志
 *.log
 npm-debug.log*
@@ -26,6 +29,3 @@ Thumbs.db
 tmp/
 temp/
 *.tmp
-
-# 脚本（不上传）
-deploy.sh
