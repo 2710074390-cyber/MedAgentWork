@@ -330,8 +330,200 @@ body::after {
 .print-root pre code { background:none; color:inherit; }
 .print-root code { font-family:var(--f-mono); background:var(--paper-2); padding:2px 6px; border-radius:3px; color:var(--oxblood); }
 .print-root blockquote { border-left:3px solid var(--ochre); padding-left:1em; color:var(--ink-soft); }
-</style>
-</head>
+html[data-theme="obsidian"] body{background:#202020;padding-top:40px}
+html[data-theme="obsidian"] h1{color:#dcddde}
+html[data-theme="obsidian"] .subtitle{color:#999}
+html[data-theme="obsidian"] .section-title{color:#999}
+html[data-theme="obsidian"] .card{background:#282828;border:1px solid #333;border-radius:8px}
+html[data-theme="obsidian"] .card:hover{background:#303030;border-color:#7f6df2;transform:translateX(4px);box-shadow:0 4px 24px rgba(0,0,0,.4)}
+html[data-theme="obsidian"] .card .icon{background:rgba(255,255,255,.06);border-radius:6px}
+html[data-theme="obsidian"] .card .info h2{color:#dcddde}
+html[data-theme="obsidian"] .card .info p{color:#999}
+html[data-theme="obsidian"] .badge-new{background:rgba(68,207,110,.15);color:#44cf6e}
+html[data-theme="obsidian"] .badge-hot{background:rgba(251,70,76,.15);color:#fb464c}
+html[data-theme="obsidian"] .footer{color:#666}
+html[data-theme="obsidian"] .footer a{color:#999}
+#theme-fab{position:fixed;top:16px;right:20px;z-index:1000;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;font-size:16px;cursor:pointer;backdrop-filter:blur(8px);transition:all .25s}
+#theme-fab:hover{transform:scale(1.08);border-color:#fff}
+html[data-theme="obsidian"] #theme-fab{background:#282828;border-color:#333;color:#dcddde}
+html[data-theme="obsidian"] #theme-fab:hover{border-color:#7f6df2}
+/* ===== Obsidian 工作区编排（obsidian 主题专用布局：文件树 + 内容区） ===== */
+#ob-layout{display:none}
+html[data-theme="obsidian"] .masthead,html[data-theme="obsidian"] .view,html[data-theme="obsidian"] .colophon{display:none!important}
+html[data-theme="obsidian"] #ob-layout{display:flex;margin:14px -32px 0;min-height:calc(100vh - 130px);align-items:stretch}
+html[data-theme="obsidian"] .wrap{max-width:none}
+html[data-theme="obsidian"] .toolbar{margin-bottom:0}
+#ob-sidebar{width:300px;flex-shrink:0;background:#161616;border-right:1px solid #333;display:flex;flex-direction:column;overflow:hidden}
+#ob-sidebar .ob-sb-head{display:flex;align-items:center;gap:8px;padding:12px 14px;font-size:13px;font-weight:700;color:#dcddde;border-bottom:1px solid #333;letter-spacing:.5px;flex-shrink:0}
+#ob-sidebar .ob-sb-head svg{width:15px;height:15px;color:#a882ff}
+#ob-sidebar .ob-sb-head .ob-vault-sub{font-size:11px;color:#666;font-weight:400;margin-left:4px}
+#ob-tree{flex:1;overflow-y:auto;padding:8px 0 20px;font-size:13px;user-select:none}
+#ob-tree::-webkit-scrollbar{width:6px}
+#ob-tree::-webkit-scrollbar-thumb{background:#3f3f3f;border-radius:3px}
+/* 树：复用押题卷树的视觉语言（树线/图标/选中态） */
+#ob-tree .tree-group>.g-head{display:flex;align-items:center;gap:7px;padding:6px 10px;cursor:pointer;font-size:12.5px;color:#dcddde;border-radius:4px;margin:1px 6px;transition:background .15s;position:relative}
+#ob-tree .tree-group>.g-head:hover{background:rgba(255,255,255,.075)}
+#ob-tree .tree-group>.g-head .g-arrow{width:10px;height:10px;flex-shrink:0;color:#666;transition:transform .18s ease}
+#ob-tree .tree-group>.g-head .g-folder{display:flex;color:#666;flex-shrink:0;transition:color .18s}
+#ob-tree .tree-group>.g-head .g-folder svg{width:15px;height:15px}
+#ob-tree .tree-group>.g-head .g-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+#ob-tree .tree-group>.g-head .g-count{font-size:11px;color:#666;font-variant-numeric:tabular-nums}
+#ob-tree .tree-group.open>.g-head .g-arrow{transform:rotate(90deg)}
+#ob-tree .tree-group.open>.g-head .g-folder{color:#a882ff}
+#ob-tree .tree-group>.g-items{display:grid;grid-template-rows:0fr;margin:0 6px 2px 21px;border-left:1px solid rgba(255,255,255,.13);transition:grid-template-rows .22s ease,border-color .22s ease}
+#ob-tree .tree-group.open>.g-items{grid-template-rows:1fr}
+#ob-tree .tree-group:not(.open)>.g-items{border-left-color:transparent}
+#ob-tree .g-items-inner{min-height:0;overflow:hidden}
+#ob-tree .t-item{display:flex;align-items:center;gap:8px;padding:4.5px 10px 4.5px 12px;cursor:pointer;font-size:12.5px;color:#999;position:relative;transition:background .15s,color .15s;border-radius:0 4px 4px 0}
+#ob-tree .t-item::before{content:'';position:absolute;left:-1px;top:50%;width:8px;height:1px;background:rgba(255,255,255,.13);transition:background .15s}
+#ob-tree .t-item:hover{background:rgba(255,255,255,.075);color:#dcddde}
+#ob-tree .t-item:hover::before{background:rgba(255,255,255,.3)}
+#ob-tree .t-item .t-file{display:flex;color:#666;flex-shrink:0}
+#ob-tree .t-item .t-file svg{width:13px;height:13px}
+#ob-tree .t-item .t-stem{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#ob-tree .t-item.active{background:rgba(127,109,242,.16);color:#dcddde}
+#ob-tree .t-item.active::after{content:'';position:absolute;left:0;top:18%;bottom:18%;width:2.5px;border-radius:2px;background:#a882ff}
+#ob-tree .t-item.active .t-file{color:#a882ff}
+/* 内容区（Obsidian 阅读模式感） */
+#ob-main{flex:1;min-width:0;background:#202020;padding:36px 52px 60px;overflow-y:auto}
+#ob-main::-webkit-scrollbar{width:8px}
+#ob-main::-webkit-scrollbar-thumb{background:#3f3f3f;border-radius:4px}
+.ob-path{font-family:"Cascadia Code","SF Mono",Consolas,monospace;font-size:11px;color:#666;letter-spacing:.08em;margin-bottom:28px;padding-bottom:12px;border-bottom:1px solid #333;display:flex;align-items:center;gap:6px}
+.ob-path .seg{color:#666}
+.ob-path .seg.current{color:#a882ff}
+.ob-path .sep{opacity:.5}
+.ob-doc{max-width:720px}
+.ob-doc .ob-doc-icon{width:52px;height:52px;border:1px solid #333;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#282828;font-size:24px;margin-bottom:20px}
+.ob-doc h2{font-size:30px;font-weight:700;color:#e6e6e6;margin:0 0 8px;letter-spacing:.01em}
+.ob-doc .ob-doc-meta{font-family:"Cascadia Code","SF Mono",Consolas,monospace;font-size:12px;color:#666;letter-spacing:.1em;margin-bottom:18px;text-transform:uppercase}
+.ob-doc .ob-doc-desc{font-size:14.5px;color:#999;line-height:1.9;margin-bottom:32px}
+.ob-doc .ob-doc-rule{height:1px;background:linear-gradient(90deg,#333,transparent);margin-bottom:28px}
+.ob-actions{display:flex;flex-wrap:wrap;gap:10px}
+.ob-btn{padding:9px 20px;font-size:12.5px;font-weight:600;letter-spacing:.03em;border:1px solid #7f6df2;background:transparent;color:#a882ff;cursor:pointer;transition:all .2s;border-radius:4px;font-family:inherit}
+.ob-btn:hover{background:#7f6df2;color:#202020}
+.ob-btn.ghost{border-color:#555;color:#999}
+.ob-btn.ghost:hover{background:#555;color:#e6e6e6;border-color:#555}
+.ob-empty{padding:80px 20px;text-align:center;color:#666;font-size:14px}
+.ob-empty .ob-empty-ico{font-size:40px;margin-bottom:14px;opacity:.6}</style>
+<!-- maq-obsidian-tree -->
+<script>
+(function(){try{var t=localStorage.getItem('maq-theme');if(t==='obsidian')document.documentElement.setAttribute('data-theme','obsidian');var s=localStorage.getItem('maq-tree');if(s==='1'&&!document.documentElement.hasAttribute('data-tree'))document.documentElement.setAttribute('data-tree','1');}catch(e){}})();
+</script><script>
+var Theme = {
+  key:'maq-theme',
+  get:function(){try{return localStorage.getItem(this.key)||'default'}catch(e){return 'default'}},
+  set:function(t){try{localStorage.setItem(this.key,t)}catch(e){}document.documentElement.setAttribute('data-theme',t);var b=document.getElementById('btn-theme');if(b)b.textContent=t==='obsidian'?'🌲':'◐'},
+  toggle:function(){this.set(this.get()==='obsidian'?'default':'obsidian')}
+};
+var Tree = {
+  key:'maq-tree',
+  groupsKey:'maq-tree-groups',
+  open:false,
+  activeIdx:-1,
+  SVG:{
+    folder:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>',
+    file:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+    chevron:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>'
+  },
+  toggle:function(){this.open=!this.open;try{localStorage.setItem(this.key,this.open?'1':'0')}catch(e){}document.documentElement.setAttribute('data-tree',this.open?'1':'0')},
+  close:function(){this.open=false;try{localStorage.setItem(this.key,'0')}catch(e){}document.documentElement.setAttribute('data-tree','0')},
+  build:function(data){
+    var titleEl=document.getElementById('tree-title');
+    if(titleEl){var h1=document.querySelector('#topbar h1');if(h1)titleEl.textContent=h1.textContent;}
+    var groupsOpen={};
+    try{groupsOpen=JSON.parse(localStorage.getItem(this.groupsKey)||'{}')}catch(e){groupsOpen={}}
+    var order=['A1','A2','A3','A4','B1','X','判断'];
+    var groups={},realNum=0;
+    for(var i=0;i<data.length;i++){
+      var q=data[i];
+      if(q.t!=='q')continue;
+      realNum++;
+      var key=q.tp;
+      if(!groups[key])groups[key]={items:[]};
+      groups[key].items.push({no:realNum,idx:i,stem:q.s});
+    }
+    var body=document.getElementById('tree-body'),h='',g=0;
+    for(;g<order.length;g++){
+      var k=order[g];
+      if(!groups[k])continue;
+      var isOpen=groupsOpen[k]!==undefined?groupsOpen[k]:(g===0);
+      h+='<div class="tree-group" data-g="'+k+'"'+(isOpen?' data-open="1"':'')+'><div class="g-head">'+this.SVG.chevron.replace('<svg','<svg class="g-arrow"')+'<span class="g-folder">'+this.SVG.folder+'</span><span class="g-name">'+k+' 题型</span><span class="g-count">'+groups[k].items.length+'</span></div><div class="g-items"><div class="g-items-inner">';
+      for(var j=0;j<groups[k].items.length;j++){
+        var it=groups[k].items[j];
+        h+='<div class="t-item" data-idx="'+it.idx+'" title="第'+it.no+'题"><span class="t-file">'+this.SVG.file+'</span><span class="t-no">'+it.no+'</span><span class="t-stem">'+it.stem+'</span></div>';
+      }
+      h+='</div></div></div>';
+    }
+    body.innerHTML=h;
+    var ges=body.querySelectorAll('.tree-group');
+    for(var x=0;x<ges.length;x++){if(ges[x].getAttribute('data-open')==='1')ges[x].classList.add('open');}
+    var self=this;
+    var ghs=body.querySelectorAll('.g-head');
+    for(var a=0;a<ghs.length;a++){
+      ghs[a].addEventListener('click',function(){var gr=this.parentNode;gr.classList.toggle('open');self.persist();});
+    }
+    var items=body.querySelectorAll('.t-item');
+    for(var b2=0;b2<items.length;b2++){
+      items[b2].addEventListener('click',function(){var idx=parseInt(this.getAttribute('data-idx'),10);self.goTo(idx);});
+    }
+    var ta=document.getElementById('tree-toggle-all');
+    if(ta){
+      ta.onclick=function(){
+        var anyClosed=body.querySelectorAll('.tree-group:not(.open)').length>0;
+        for(var c=0;c<ges.length;c++)ges[c].classList.toggle('open',anyClosed);
+        self.persist();
+      };
+    }
+    this.watchScroll();
+  },
+  persist:function(){
+    var o={},gs=document.querySelectorAll('.tree-group');
+    for(var i=0;i<gs.length;i++)o[gs[i].getAttribute('data-g')]=gs[i].classList.contains('open');
+    try{localStorage.setItem(this.groupsKey,JSON.stringify(o))}catch(e){}
+  },
+  goTo:function(idx){
+    var el=document.getElementById('q'+idx);
+    if(!el)return;
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    this.setActive(idx);
+    el.classList.remove('tree-flash');void el.offsetWidth;el.classList.add('tree-flash');
+    var t=this;
+    setTimeout(function(){el.classList.remove('tree-flash')},1400);
+    /* Obsidian 式：点击跳转后树保持打开，遮罩点击收起 */
+  },
+  setActive:function(idx){
+    this.activeIdx=idx;
+    var items=document.querySelectorAll('.t-item'),cur=null;
+    for(var i=0;i<items.length;i++){
+      var isA=parseInt(items[i].getAttribute('data-idx'),10)===idx;
+      items[i].classList.toggle('active',isA);
+      if(isA)cur=items[i];
+    }
+    if(cur&&cur.scrollIntoView)cur.scrollIntoView({block:'nearest'});
+  },
+  watchScroll:function(){
+    if(!('IntersectionObserver' in window))return;
+    var self=this,last=-1;
+    var io=new IntersectionObserver(function(entries){
+      var best=null,bestDist=1e9;
+      var vh=window.innerHeight||document.documentElement.clientHeight;
+      for(var i=0;i<entries.length;i++){
+        if(!entries[i].isIntersecting)continue;
+        var r=entries[i].boundingClientRect;
+        var dist=Math.abs(r.top+r.height/2-vh/2);
+        if(dist<bestDist){bestDist=dist;best=entries[i].target;}
+      }
+      if(best){
+        var idx=parseInt(String(best.id).replace('q',''),10);
+        if(!isNaN(idx)&&idx!==last){last=idx;self.setActive(idx);}
+      }
+    },{threshold:[0.2,0.5,0.8]});
+    var qs=document.querySelectorAll('.question');
+    for(var j=0;j<qs.length;j++)io.observe(qs[j]);
+  }
+};
+(function(){try{var t=Theme.get();if(t==='obsidian')Theme.set('obsidian');var s=localStorage.getItem('maq-tree');if(s==='1'){Tree.open=true;document.documentElement.setAttribute('data-tree','1');}}catch(e){}})();
+</script></head>
 <body>
 <div class="wrap">
 
@@ -581,6 +773,98 @@ function switchTerm(term){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 document.querySelectorAll('.term-tab').forEach(t=>t.addEventListener('click',()=>switchTerm(t.dataset.term)));
+</script>
+<div id="ob-layout">
+  <div id="ob-sidebar">
+    <div class="ob-sb-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/><path d="M12 10v6"/><path d="m9 13 3 3 3-3"/></svg>MedAgentWork<span class="ob-vault-sub" id="ob-vault-count"></span></div>
+    <div id="ob-tree"></div>
+  </div>
+  <div id="ob-main">
+    <div class="ob-path" id="ob-path"></div>
+    <div class="ob-doc" id="ob-doc"></div>
+  </div>
+</div><script>
+/* ===== Obsidian 工作区（文件树 + 内容区） ===== */
+(function(){
+  var VSVG={
+    folder:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>',
+    file:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>',
+    chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>'
+  };
+  var groupsKey='maq-tree-groups';
+  var gOpen={};try{gOpen=JSON.parse(localStorage.getItem(groupsKey)||'{}')}catch(e){}
+  var vault=null;
+  /* 注意：页面用 const 声明 EXAMS/BANKS/REVIEWS（全局词法环境，不挂 window），直接 typeof 检测 */
+  try{ if(typeof EXAMS!=='undefined'&&typeof BANKS!=='undefined'&&typeof REVIEWS!=='undefined') vault={exam:EXAMS,bank:BANKS,review:REVIEWS}; }catch(e){}
+  if(!vault) vault={exam:[{name:'神经病学押题卷',html:'神经病学押题卷_117题.html',desc:'117 题 · batch020',meta:'HOT'},{name:'中医学押题卷',html:'中医学押题卷_95题.html',desc:'95 题 · batch021',meta:'HOT'}],bank:[],review:[]};
+  var KINDS=[{k:'exam',label:'押题卷'},{k:'bank',label:'题库'},{k:'review',label:'复习资料'}];
+  /* 注意：以下 JS 字符串内的 ' 是 Python 层转义，输出后为 JS 的 '（反斜杠保留） */
+  function pv(){
+    var o={};var gs=document.querySelectorAll('#ob-tree .tree-group');
+    for(var i=0;i<gs.length;i++)o[gs[i].getAttribute('data-g')]=gs[i].classList.contains('open');
+    try{localStorage.setItem(groupsKey,JSON.stringify(o))}catch(e){}
+  }
+  function buildVault(){
+    var total=vault.exam.length+vault.bank.length+vault.review.length;
+    var c=document.getElementById('ob-vault-count');if(c)c.textContent=total+' 个文件';
+    var h='';
+    for(var z=0;z<KINDS.length;z++){
+      var kd=KINDS[z],arr=vault[kd.k];
+      if(!arr||!arr.length)continue;
+      var isOpen=gOpen[kd.k]!==undefined?gOpen[kd.k]:(z===0);
+      h+='<div class="tree-group" data-g="'+kd.k+'"'+(isOpen?' data-open="1"':'')+'><div class="g-head">'+VSVG.chev.replace('<svg','<svg class="g-arrow"')+'<span class="g-folder">'+VSVG.folder+'</span><span class="g-name">'+kd.label+'</span><span class="g-count">'+arr.length+'</span></div><div class="g-items"><div class="g-items-inner">';
+      for(var i=0;i<arr.length;i++){
+        h+='<div class="t-item" data-kind="'+kd.k+'" data-i="'+i+'" title="'+arr[i].name+'"><span class="t-file">'+VSVG.file+'</span><span class="t-stem">'+arr[i].name+'</span></div>';
+      }
+      h+='</div></div></div>';
+    }
+    var tree=document.getElementById('ob-tree');
+    tree.innerHTML=h;
+    var ges=tree.querySelectorAll('.tree-group');
+    for(var x=0;x<ges.length;x++){if(ges[x].getAttribute('data-open')==='1')ges[x].classList.add('open');}
+    var ghs=tree.querySelectorAll('.g-head');
+    for(var a=0;a<ghs.length;a++){
+      ghs[a].addEventListener('click',function(){var gr=this.parentNode;gr.classList.toggle('open');pv();});
+    }
+    var its=tree.querySelectorAll('.t-item');
+    for(var b=0;b<its.length;b++){
+      its[b].addEventListener('click',function(){showDoc(this.getAttribute('data-kind'),parseInt(this.getAttribute('data-i'),10));});
+    }
+    var first=tree.querySelector('.t-item');
+    if(first)showDoc(first.getAttribute('data-kind'),parseInt(first.getAttribute('data-i'),10));
+  }
+  var ICO={'内科学':'🫀','精神病学':'🧠','神经病学':'⚡','医患沟通':'💬','外科学':'🔪','中医学':'🌿','中医心理学':'🧘'};
+  function iconOf(name){var m=name.match(/^(内科学|精神病学|神经病学|医患沟通|外科学|中医学|中医心理学)/);return m?ICO[m[1]]:'📄';}
+  function showDoc(kind,i){
+    var arr=vault[kind];if(!arr||!arr[i])return;
+    var it=arr[i];
+    var label=kind==='exam'?'押题卷':kind==='bank'?'题库':'复习资料';
+    var its=document.querySelectorAll('#ob-tree .t-item');
+    for(var a=0;a<its.length;a++)its[a].classList.remove('active');
+    var cur=document.querySelector('#ob-tree .t-item[data-kind="'+kind+'"][data-i="'+i+'"]');
+    if(cur)cur.classList.add('active');
+    var path=document.getElementById('ob-path');
+    path.innerHTML='<span class="seg">MedAgentWork</span><span class="sep">/</span><span class="seg">'+label+'</span><span class="sep">/</span><span class="seg current">'+it.name+'</span>';
+    var meta=it.meta?it.meta:(it.pdf?it.pdf.split('/').pop():it.md?it.md.split('/').pop():'');
+    var desc=it.desc||'';
+    var btns='';
+    if(kind==='exam'){
+      btns+='<button class="ob-btn" onclick="viewOnline(\''+it.html+'\')">👁 在线答题</button>';
+      btns+='<button class="ob-btn ghost" onclick="printHTML(\''+it.html+'\')">🖨 打印 PDF</button>';
+    }else if(kind==='bank'){
+      btns+='<button class="ob-btn" onclick="previewPDF(\''+it.pdf+'\',\''+it.name+'\')">👁 预览</button>';
+      btns+='<button class="ob-btn ghost" onclick="downloadFile(\''+it.pdf+'\',\''+it.pdf.split('/').pop()+'\')">⬇ 下载 PDF</button>';
+    }else{
+      btns+='<button class="ob-btn" onclick="previewMD(\''+it.md+'\',\''+it.name+'\')">👁 预览</button>';
+      btns+='<button class="ob-btn ghost" onclick="downloadFile(\''+it.md+'\',\''+it.md.split('/').pop()+'\')">⬇ 下载 MD</button>';
+      if(it.html){btns+='<button class="ob-btn ghost" onclick="viewOnline(\''+it.html+'\')">↗ HTML</button><button class="ob-btn ghost" onclick="printHTML(\''+it.html+'\')">🖨 打印</button>';}
+    }
+    var doc=document.getElementById('ob-doc');
+    doc.innerHTML='<div class="ob-doc-icon">'+iconOf(it.name)+'</div><h2>'+it.name+'</h2><div class="ob-doc-meta">'+meta+'</div><div class="ob-doc-desc">'+desc+'</div><div class="ob-doc-rule"></div><div class="ob-actions">'+btns+'</div>';
+    document.getElementById('ob-main').scrollTop=0;
+  }
+  buildVault();
+})();
 </script>
 </body>
 </html>
