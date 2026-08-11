@@ -523,22 +523,20 @@ function previewPDF(path,name){
   $('#m-title').textContent=name+' · 题库';
   $('#modal').classList.add('open');
   const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
-  $('#m-actions').innerHTML='<button class="m-btn" onclick="window.open(url(currentPDF),\'_blank\')">↗ 新标签</button><button class="m-btn" onclick="downloadFile(currentPDF,currentPDF.split(\'/\').pop())">⬇ 下载 PDF</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
+  $('#m-actions').innerHTML='<button class="m-btn" onclick="window.open(url(currentPDF),\'_blank\')"> 新标签</button><button class="m-btn" onclick="downloadFile(currentPDF,currentPDF.split(\'/\').pop())">⬇ 下载 PDF</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
   const fullUrl=url(path);
-  /* 先验证文件可达，再渲染预览——避免空白 iframe */
-  fetch(fullUrl,{method:'HEAD'}).then(r=>{
-    if(!r.ok) throw 0;
-    body.className='modal-body';
-    /* 双层兜底：<object> 承载 PDF，内嵌 <iframe>；不支持则显示下载提示 */
-    body.innerHTML=
-      '<object data="'+fullUrl+'" type="application/pdf" style="width:100%;height:100%;display:block">'
-      +'<iframe src="'+fullUrl+'" style="width:100%;height:100%;border:0"></iframe>'
-      +'</object>'
-      +'<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;color:var(--ink-soft);font-size:13px;pointer-events:none;opacity:0">如果你的浏览器无法预览，请点击「↗ 新标签」或「⬇ 下载 PDF」</div>';
-  }).catch(()=>{
-    body.className='modal-body';
-    body.innerHTML='<div style="padding:60px 40px;text-align:center;color:var(--ink-soft)"><p style="font-size:16px;margin-bottom:8px">📄 PDF 预览不可用</p><p style="font-size:13px">请点击右上角「↗ 新标签」或「⬇ 下载 PDF」查看完整内容。</p></div>';
-  });
+  /* 直接渲染，不预检 HEAD（某些 CDN 节点 HEAD 响应慢） */
+  body.className='modal-body';
+  body.innerHTML=
+    '<object data="'+fullUrl+'" type="application/pdf" style="width:100%;height:100%;display:block">'
+    +'<iframe src="'+fullUrl+'" style="width:100%;height:100%;border:0"></iframe>'
+    +'</object>';
+  /* 3 秒后若仍在 loading（<object> 加载失败），显示降级提示 */
+  setTimeout(()=>{
+    if(body.querySelector('.spinner')){
+      body.innerHTML='<div style="padding:60px 40px;text-align:center;color:var(--ink-soft)"><p style="font-size:16px;margin-bottom:8px">📄 PDF 预览加载缓慢</p><p style="font-size:13px;margin-bottom:16px">请点击右上角「↗ 新标签」或「 下载 PDF」查看完整内容。</p></div>';
+    }
+  },3000);
 }
 function closeModal(){$('#modal').classList.remove('open');$('#m-body').innerHTML='<div class="spinner"></div>';}
 $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
