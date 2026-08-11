@@ -52,6 +52,30 @@
   --noise:0;
 }
 
+:root[data-theme="obsidian"] {
+  --paper:#202020; --paper-2:#282828; --paper-edge:#333333;
+  --ink:#dcddde; --ink-soft:#999999; --ink-faint:#666666;
+  --moss:#7f6df2; --moss-deep:#483699; --oxblood:#fb464c; --ochre:#e9973f;
+  --rule:rgba(220,221,222,0.14); --rule-soft:rgba(220,221,222,0.07);
+  --card-bg:rgba(40,40,40,0.85); --card-hover-bg:rgba(48,48,48,0.95);
+  --accent:#7f6df2; --hero:#e6e6e6;
+  --f-display:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-body:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --f-mono:"SF Mono","Cascadia Code",Consolas,monospace;
+  --noise:0;
+}
+:root[data-theme="obsidian"] body::before { background:radial-gradient(ellipse 60% 50% at 50% 0%, rgba(127,109,242,0.07), transparent 70%); }
+:root[data-theme="obsidian"] .term-tab.active { color:var(--moss); }
+:root[data-theme="obsidian"] .masthead h1 .red,
+:root[data-theme="obsidian"] .masthead .tagline,
+:root[data-theme="obsidian"] .section-num,
+:root[data-theme="obsidian"] .coming p { font-style:normal; }
+:root[data-theme="obsidian"] .card:hover { box-shadow:0 18px 40px -18px rgba(0,0,0,0.6); border-color:var(--moss); }
+:root[data-theme="obsidian"] .btn.primary { background:var(--moss-deep); border-color:var(--moss-deep); }
+:root[data-theme="obsidian"] .btn.primary:hover { background:var(--oxblood); border-color:var(--oxblood); }
+:root[data-theme="obsidian"] .colophon a { color:var(--moss); }
+:root[data-theme="obsidian"] .colophon .mark { font-style:normal; }
+
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body {
@@ -105,6 +129,7 @@ body::after {
 .theme-btn[data-t="classic"] { background:linear-gradient(135deg,#f4ede0,#8b2635); }
 .theme-btn[data-t="modern"]  { background:linear-gradient(135deg,#ffffff,#0969da); }
 .theme-btn[data-t="night"]   { background:linear-gradient(135deg,#15171c,#39d99c); }
+.theme-btn[data-t="obsidian"]{ background:linear-gradient(135deg,#202020,#7f6df2); }
 
 /* ---------- 页眉 ---------- */
 .masthead { padding:48px 0 40px; border-bottom:1px solid var(--ink); position:relative; }
@@ -321,6 +346,7 @@ body::after {
       <button class="theme-btn active" data-t="classic" title="古典 · 羊皮纸"></button>
       <button class="theme-btn" data-t="modern" title="现代 · 医蓝"></button>
       <button class="theme-btn" data-t="night" title="暗夜 · 深炭"></button>
+      <button class="theme-btn" data-t="obsidian" title="Obsidian · 深紫树"></button>
     </div>
   </div>
 

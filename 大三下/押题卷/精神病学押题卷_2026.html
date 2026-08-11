@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>精神病学 押题卷 2026</title>
 <style>
-:root{--bg:#0a0a14;--card:#12122a;--card2:#1a1a3a;--gold:#c9a84c;--gold2:#e8d48b;--accent:#7c5ce7;--accent2:#a78bfa;--green:#00c853;--red:#ff3d5a;--text:#e0dff0;--text2:#9d9db5;--blue:#5b9cf5;--orange:#f0a050;--purple:#b44cf0;--teal:#20c9a0}
+:root{--bg:#0a0a14;--card:#12122a;--card2:#1a1a3a;--gold:#c9a84c;--gold2:#e8d48b;--accent:#7c5ce7;--accent2:#a78bfa;--green:#00c853;--red:#ff3d5a;--text:#e0dff0;--text2:#9d9db5;--blue:#5b9cf5;--orange:#f0a050;--purple:#b44cf0;--teal:#20c9a0}html[data-theme="obsidian"]{--bg:#202020;--card:#282828;--card2:#2e2e2e;--gold:#7f6df2;--gold2:#8875ff;--accent:#483699;--accent2:#a882ff;--green:#44cf6e;--red:#fb464c;--text:#dcddde;--text2:#999;--blue:#027aff;--orange:#e9973f;--purple:#a882ff;--teal:#53dfdd}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Georgia','Noto Serif SC','STSong','Songti SC','SimSun',serif;background:var(--bg);color:var(--text);line-height:1.8;padding-top:140px;background-image:radial-gradient(ellipse at 50% 0%,rgba(124,92,231,.08),transparent 60%),radial-gradient(ellipse at 80% 100%,rgba(201,168,76,.05),transparent 50%);background-attachment:fixed}
 #topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(180deg,rgba(18,18,42,.98),rgba(10,10,20,.95));border-bottom:1px solid rgba(201,168,76,.3);padding:14px 20px;backdrop-filter:blur(12px);transition:transform .35s ease}#topbar.hidden{transform:translateY(-100%)}
@@ -69,9 +69,92 @@ body{font-family:'Georgia','Noto Serif SC','STSong','Songti SC','SimSun',serif;b
 @keyframes fadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .footer{text-align:center;padding:30px;color:var(--text2);font-size:11px;letter-spacing:1px;border-top:1px solid rgba(255,255,255,.03);margin-top:20px}
 @media print{body{background:#fff;color:#000;padding-top:0}.question{border:1px solid #ddd;background:#fff}.option{color:#000}.answer-box{display:block!important}#topbar{position:static;background:#fff;color:#000;border-bottom:1px solid #000}.option{cursor:default;pointer-events:none}}
+
+/* ===== Obsidian 树 主题覆盖（参考 Obsidian 官方 Default dark 设计令牌） ===== */
+html[data-theme="obsidian"] body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);background-image:none;padding-top:132px}
+html[data-theme="obsidian"] #topbar{background:linear-gradient(180deg,rgba(22,22,22,.98),rgba(32,32,32,.95));border-bottom:1px solid #333}
+html[data-theme="obsidian"] #topbar h1{color:var(--gold);font-family:inherit;letter-spacing:1px}
+html[data-theme="obsidian"] #topbar .decor{background:linear-gradient(90deg,var(--gold),transparent)}
+html[data-theme="obsidian"] #topbar button{border-color:rgba(127,109,242,.4);color:var(--text2)}
+html[data-theme="obsidian"] #topbar button:hover{border-color:var(--gold);color:var(--gold);background:rgba(127,109,242,.1)}
+html[data-theme="obsidian"] #topbar .progress-wrap{background:rgba(255,255,255,.08);border-radius:4px}
+html[data-theme="obsidian"] #topbar .progress-label{color:var(--text2)}
+html[data-theme="obsidian"] #topbar .stat{color:var(--text2)}
+html[data-theme="obsidian"] .question{background:var(--card);border:1px solid #333;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+html[data-theme="obsidian"] .question.correct{background:linear-gradient(135deg,var(--card),rgba(68,207,110,.05));border-left:3px solid var(--green)}
+html[data-theme="obsidian"] .question.wrong{background:linear-gradient(135deg,var(--card),rgba(251,70,76,.05));border-left:3px solid var(--red)}
+html[data-theme="obsidian"] .question::before{background:linear-gradient(90deg,transparent,rgba(127,109,242,.2),transparent)}
+html[data-theme="obsidian"] .q-num{font-family:inherit;color:var(--accent2)}
+html[data-theme="obsidian"] .q-stem{color:var(--text)}
+html[data-theme="obsidian"] .option{border:1px solid rgba(255,255,255,.06);border-radius:6px;background:transparent;color:var(--text2)}
+html[data-theme="obsidian"] .option:hover{border-color:var(--accent2);background:rgba(168,130,255,.08);color:var(--text)}
+html[data-theme="obsidian"] .option.picked{background:rgba(168,130,255,.1);border-color:var(--purple)}
+html[data-theme="obsidian"] .q-type.A1{border-color:rgba(83,223,221,.45);color:var(--teal)}
+html[data-theme="obsidian"] .q-type.A2{border-color:rgba(2,122,255,.5);color:var(--blue)}
+html[data-theme="obsidian"] .q-type.A3,.q-type.A4{border-color:rgba(251,70,76,.4);color:var(--red)}
+html[data-theme="obsidian"] .q-type.B1{border-color:rgba(233,151,63,.5);color:var(--orange)}
+html[data-theme="obsidian"] .q-type.X{border-color:rgba(168,130,255,.5);color:var(--purple)}
+html[data-theme="obsidian"] .q-type.判断{border-color:rgba(83,223,221,.4);color:var(--teal)}
+html[data-theme="obsidian"] .case-group{background:var(--card2);border-left:2px solid var(--blue);border-radius:8px}
+html[data-theme="obsidian"] .case-header{background:rgba(2,122,255,.07);color:var(--text)}
+html[data-theme="obsidian"] .b1-box{border-left:2px solid var(--orange);background:rgba(233,151,63,.05);color:var(--text2)}
+html[data-theme="obsidian"] .exp{color:var(--text2)}
+html[data-theme="obsidian"] .src{color:rgba(127,109,242,.7)}
+html[data-theme="obsidian"] .footer{border-top:1px solid #333;color:var(--text2)}
+html[data-theme="obsidian"] ::-webkit-scrollbar{width:8px;height:8px}
+html[data-theme="obsidian"] ::-webkit-scrollbar-track{background:var(--bg)}
+html[data-theme="obsidian"] ::-webkit-scrollbar-thumb{background:#3f3f3f;border-radius:4px}
+html[data-theme="obsidian"] ::-webkit-scrollbar-thumb:hover{background:#555}
+html[data-theme="obsidian"] .ans-head.green{color:var(--green)}
+html[data-theme="obsidian"] .ans-head.red{color:var(--red)}
+html[data-theme="obsidian"] #topbar .stat b{color:var(--gold)}
+html[data-theme="obsidian"] .case-label{color:var(--blue)}
+html[data-theme="obsidian"] .b1-label{color:var(--orange)}
+/* 题目跳转闪烁高亮 */
+.tree-flash{animation:treeFlash 1.2s ease}
+@keyframes treeFlash{0%{box-shadow:0 0 0 2px var(--gold);background:rgba(201,168,76,.08)}100%{box-shadow:0 0 0 0 transparent}}
+html[data-theme="obsidian"] .tree-flash{animation-name:treeFlashO}
+@keyframes treeFlashO{0%{box-shadow:0 0 0 2px var(--gold);background:rgba(127,109,242,.12)}100%{box-shadow:0 0 0 0 transparent}}
+/* ===== Obsidian 树 侧边栏（两种主题共用，变量驱动） ===== */
+#tree-panel{position:fixed;top:118px;left:0;bottom:0;width:300px;z-index:990;background:var(--card2);border-right:1px solid rgba(255,255,255,.06);transform:translateX(-102%);transition:transform .3s ease;display:flex;flex-direction:column;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif}
+html[data-tree="1"] #tree-panel{transform:translateX(0)}
+html[data-theme="obsidian"] #tree-panel{background:#161616;border-right:1px solid #333;box-shadow:2px 0 12px rgba(0,0,0,.4)}
+#tree-panel .tree-header{display:flex;align-items:center;gap:8px;padding:14px 16px;font-size:13px;font-weight:600;color:var(--text);border-bottom:1px solid rgba(255,255,255,.06);letter-spacing:.5px}
+html[data-theme="obsidian"] #tree-panel .tree-header{border-bottom-color:#333;color:#dcddde}
+#tree-panel .tree-header .t-title{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#tree-panel .tree-toggle{background:none;border:none;color:var(--text2);cursor:pointer;font-size:14px;padding:2px 6px;border-radius:4px}
+#tree-panel .tree-toggle:hover{color:var(--gold);background:rgba(255,255,255,.06)}
+#tree-body{flex:1;overflow-y:auto;padding:8px 0 20px}
+#tree-body::-webkit-scrollbar{width:6px}
+#tree-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:3px}
+html[data-theme="obsidian"] #tree-body::-webkit-scrollbar-thumb{background:#3f3f3f}
+.tree-group{user-select:none}
+.tree-group>.g-head{display:flex;align-items:center;gap:6px;padding:7px 14px;cursor:pointer;font-size:12.5px;color:var(--text);border-radius:4px;margin:1px 6px;letter-spacing:.5px}
+.tree-group>.g-head:hover{background:rgba(255,255,255,.06)}
+html[data-theme="obsidian"] .tree-group>.g-head:hover{background:rgba(255,255,255,.075)}
+.tree-group>.g-head .g-arrow{font-size:9px;color:var(--text2);width:10px;transition:transform .2s;display:inline-block}
+.tree-group.open>.g-head .g-arrow{transform:rotate(90deg)}
+.tree-group>.g-head .g-name{flex:1}
+.tree-group>.g-head .g-count{font-size:11px;color:var(--text2);background:rgba(255,255,255,.07);padding:1px 8px;border-radius:10px}
+html[data-theme="obsidian"] .tree-group>.g-head .g-count{background:rgba(255,255,255,.08);color:#999}
+.tree-group>.g-items{display:none;margin:0 6px 2px 22px;border-left:1px solid rgba(255,255,255,.1)}
+html[data-theme="obsidian"] .tree-group>.g-items{border-left-color:rgba(255,255,255,.14)}
+.tree-group.open>.g-items{display:block}
+.t-item{display:flex;align-items:baseline;gap:8px;padding:5px 12px;cursor:pointer;font-size:12.5px;color:var(--text2);border-radius:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background .15s}
+.t-item:hover{background:rgba(255,255,255,.06);color:var(--text)}
+html[data-theme="obsidian"] .t-item:hover{background:rgba(255,255,255,.075);color:#dcddde}
+.t-item .t-no{font-family:Georgia,'Noto Serif SC',serif;font-size:11px;color:var(--gold);flex-shrink:0;min-width:26px}
+html[data-theme="obsidian"] .t-item .t-no{font-family:inherit;color:#a882ff}
+.t-item .t-stem{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#tree-scrim{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:980;opacity:0;pointer-events:none;transition:opacity .25s}
+html[data-tree="1"] #tree-scrim{opacity:1;pointer-events:auto}
 </style>
-</head>
+<!-- maq-obsidian-tree -->
+<script>
+(function(){try{var t=localStorage.getItem('maw-theme');if(t==='obsidian')document.documentElement.setAttribute('data-theme','obsidian');var s=localStorage.getItem('maw_tree');if(s==='1'&&!document.documentElement.hasAttribute('data-tree'))document.documentElement.setAttribute('data-tree','1');}catch(e){}})();
+</script></head>
 <body>
+<div id="tree-panel"><div class="tree-header"><span class="t-title">📚 <span id="tree-title"></span></span><button class="tree-toggle" onclick="Tree.close()" title="收起">✕</button></div><div id="tree-body"></div></div><div id="tree-scrim" onclick="Tree.close()"></div>
 <div id="topbar">
 <div class="inner">
 <h1>PSYCHIATRY</h1><span class="decor"></span><span class="meta">精神病学 押题卷 · 教师重点(2026考纲) · 91题 · 12模块全覆盖</span>
@@ -83,7 +166,7 @@ body{font-family:'Georgia','Noto Serif SC','STSong','Songti SC','SimSun',serif;b
 <span class="stat">✓<b id="cc">0</b> ✗<b id="wc">0</b> · <b id="sp">0%</b></span>
 <span style="flex:1"></span>
 <button onclick="Quiz.reset()">重置</button>
-<button onclick="Quiz.showAll()">展开解析</button>
+<button onclick="Quiz.showAll()">展开解析</button><button id="btn-tree" onclick="Tree.toggle()" title="目录树">☰</button><button id="btn-theme" onclick="Theme.toggle()" title="切换主题">◐</button>
 </div>
 </div>
 </div>
@@ -91,6 +174,66 @@ body{font-family:'Georgia','Noto Serif SC','STSong','Songti SC','SimSun',serif;b
 <div class="footer">MedAgentWork · 精神病学押题卷 2026 · 点击选项直接作答 · 基于第9版教材</div>
 
 <script>
+var Theme = {
+  key:'maw-theme',
+  get:function(){try{return localStorage.getItem(this.key)||'default'}catch(e){return 'default'}},
+  set:function(t){try{localStorage.setItem(this.key,t)}catch(e){}document.documentElement.setAttribute('data-theme',t);var b=document.getElementById('btn-theme');if(b)b.textContent=t==='obsidian'?'🌲':'◐'},
+  toggle:function(){this.set(this.get()==='obsidian'?'default':'obsidian')}
+};
+var Tree = {
+  key:'maw_tree',
+  open:false,
+  toggle:function(){this.open=!this.open;try{localStorage.setItem(this.key,this.open?'1':'0')}catch(e){}document.documentElement.setAttribute('data-tree',this.open?'1':'0')},
+  close:function(){this.open=false;try{localStorage.setItem(this.key,'0')}catch(e){}document.documentElement.setAttribute('data-tree','0')},
+  build:function(data){
+    var titleEl=document.getElementById('tree-title');
+    if(titleEl&&document.querySelector('#topbar h1'))titleEl.textContent=document.querySelector('#topbar h1').textContent;
+    var blocks=document.getElementById('quiz-root').children;
+    var order=['A1','A2','A3','A4','B1','X','判断'];
+    var groups={},realNum=0;
+    for(var i=0;i<data.length;i++){
+      var q=data[i];
+      if(q.t!=='q')continue;
+      realNum++;
+      var key=q.tp;
+      if(!groups[key])groups[key]={items:[]};
+      groups[key].items.push({no:realNum,idx:i,stem:q.s});
+    }
+    var body=document.getElementById('tree-body'),h='';
+    for(var g=0;g<order.length;g++){
+      var k=order[g];
+      if(!groups[k])continue;
+      h+='<div class="tree-group" data-g="'+k+'"><div class="g-head"><span class="g-arrow">▶</span><span class="g-name">'+k+' 题型</span><span class="g-count">'+groups[k].items.length+'</span></div><div class="g-items">';
+      for(var j=0;j<groups[k].items.length;j++){
+        var it=groups[k].items[j];
+        h+='<div class="t-item" data-idx="'+it.idx+'" title="第'+it.no+'题"><span class="t-no">'+it.no+'</span><span class="t-stem">'+it.stem+'</span></div>';
+      }
+      h+='</div></div>';
+    }
+    body.innerHTML=h;
+    var ghs=body.querySelectorAll('.g-head');
+    for(var x=0;x<ghs.length;x++){
+      ghs[x].addEventListener('click',function(){var g=this.parentNode;g.classList.toggle('open');});
+    }
+    var items=body.querySelectorAll('.t-item');
+    for(var y=0;y<items.length;y++){
+      items[y].addEventListener('click',function(){
+        var idx=parseInt(this.getAttribute('data-idx'),10);
+        var el=document.getElementById('q'+idx);
+        if(el){
+          el.scrollIntoView({behavior:'smooth',block:'center'});
+          el.classList.remove('tree-flash');void el.offsetWidth;el.classList.add('tree-flash');
+          setTimeout(function(){el.classList.remove('tree-flash')},1400);
+        }
+        Tree.close();
+      });
+    }
+    var first=body.querySelector('.tree-group');
+    if(first)first.classList.add('open');
+  }
+};
+(function(){try{var t=Theme.get();if(t==='obsidian')Theme.set('obsidian');var s=localStorage.getItem('maw_tree');if(s==='1'){Tree.open=true;document.documentElement.setAttribute('data-tree','1');}}catch(e){}})();
+</script><script>
 var Quiz = (function(){
 var data = [
 
@@ -3155,8 +3298,8 @@ function updateBar(){
     document.getElementById('sp').textContent=a>0?Math.round(state.correct/a*100)+'%':'0%';
     document.getElementById('pbar').style.width=(a/TOTAL*100)+'%';
     document.getElementById('plabel').textContent=a+'/'+TOTAL;
-    if(a===TOTAL&&state.wrong===0) document.getElementById('pbar').style.background='#00c853';
-    else if(a===TOTAL) document.getElementById('pbar').style.background='#c9a84c';
+    if(a===TOTAL&&state.wrong===0) document.getElementById('pbar').style.background='var(--green)';
+    else if(a===TOTAL) document.getElementById('pbar').style.background='var(--gold)';
 }
 
 function arraysEqual(a,b){
@@ -3306,6 +3449,7 @@ window.addEventListener('scroll',function(){
   lastScroll=st<=0?0:st;
 },{passive:true});
 render();
+Tree.build(data);
 updateBar();
 
 return {pick:pick,reset:reset,showAll:showAll};
