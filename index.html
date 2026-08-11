@@ -421,14 +421,30 @@ const REVIEWS=[
 const $=s=>document.querySelector(s);
 const toast=msg=>{const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove('show'),2200);};
 
-function viewOnline(path){window.open(BASE+'/'+path,'_blank');}
+/* 路径编码：逐段 encodeURI，避免中文路径在部分浏览器/CDN 下 404 */
+function encPath(path){
+  return path.split('/').map(seg=>encodeURI(seg)).join('/');
+}
+function url(path){return encPath(BASE)+'/'+encPath(path);}
+
+function viewOnline(path){window.open(url(path),'_blank');}
 function downloadFile(path,filename){
-  fetch(BASE+'/'+path).then(r=>{if(!r.ok)throw 0;return r.blob();})
-    .then(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=filename;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(a.href);toast('⬇ 已下载：'+filename);})
-    .catch(()=>toast('❌ 下载失败：文件不存在'));
+  /* 优先用直链 <a download>（浏览器原生，最可靠）；失败再 fetch blob */
+  const a=document.createElement('a');
+  a.href=url(path); a.download=filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  toast('⬇ 开始下载：'+filename);
+  /* 兜底：1.2s 后若下载未触发（部分浏览器跨源忽略 download），改 fetch blob */
+  setTimeout(()=>{
+    fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.blob();})
+      .then(b=>{
+        const a2=document.createElement('a'); a2.href=URL.createObjectURL(b); a2.download=filename;
+        document.body.appendChild(a2); a2.click(); a2.remove(); URL.revokeObjectURL(a2.href);
+      }).catch(()=>{ /* 直链已在进行，静默 */ });
+  },1200);
 }
 function printHTML(path){
-  const w=window.open(BASE+'/'+path,'_blank');
+  const w=window.open(url(path),'_blank');
   if(!w){toast('❌ 弹窗被拦截，请允许');return;}
   toast('🖨 正在准备打印…');
   const ck=setInterval(()=>{try{if(w.document.readyState==='complete'){clearInterval(ck);setTimeout(()=>{w.focus();w.print();},300);}}catch(e){clearInterval(ck);}},200);
@@ -493,7 +509,7 @@ function previewMD(path,name){
   $('#modal').classList.add('open');
   const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
   $('#m-actions').innerHTML='<button class="m-btn" onclick="downloadFile(currentMD,currentMD.split(\'/\').pop())">⬇ 下载 MD</button><button class="m-btn" id="m-print">🖨 打印</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
-  fetch(BASE+'/'+path).then(r=>{if(!r.ok)throw 0;return r.text();})
+  fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.text();})
     .then(md=>{body.className='modal-body';body.innerHTML='<div class="md">'+mdToHtml(md)+'</div>';body.scrollTop=0;})
     .catch(()=>{body.className='modal-body';body.innerHTML='<p style="padding:40px;text-align:center">❌ 读取失败</p>';});
   $('#m-print').onclick=()=>{
@@ -507,12 +523,22 @@ function previewPDF(path,name){
   $('#m-title').textContent=name+' · 题库';
   $('#modal').classList.add('open');
   const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
-  $('#m-actions').innerHTML='<button class="m-btn" onclick="downloadFile(currentPDF,currentPDF.split(\'/\').pop())">⬇ 下载 PDF</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
-  const ifr=document.createElement('iframe');
-  ifr.src=BASE+'/'+path;
-  ifr.onload=()=>{body.className='modal-body';body.innerHTML='';body.appendChild(ifr);};
-  ifr.onerror=()=>{body.className='modal-body';body.innerHTML='<p style="padding:40px;text-align:center">❌ PDF 加载失败，请用「下载」按钮。</p>';};
-  setTimeout(()=>{if(body.classList.contains('loading')){body.className='modal-body';body.innerHTML='';body.appendChild(ifr);}},3000);
+  $('#m-actions').innerHTML='<button class="m-btn" onclick="window.open(url(currentPDF),\'_blank\')">↗ 新标签</button><button class="m-btn" onclick="downloadFile(currentPDF,currentPDF.split(\'/\').pop())">⬇ 下载 PDF</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
+  const fullUrl=url(path);
+  /* 先验证文件可达，再渲染预览——避免空白 iframe */
+  fetch(fullUrl,{method:'HEAD'}).then(r=>{
+    if(!r.ok) throw 0;
+    body.className='modal-body';
+    /* 双层兜底：<object> 承载 PDF，内嵌 <iframe>；不支持则显示下载提示 */
+    body.innerHTML=
+      '<object data="'+fullUrl+'" type="application/pdf" style="width:100%;height:100%;display:block">'
+      +'<iframe src="'+fullUrl+'" style="width:100%;height:100%;border:0"></iframe>'
+      +'</object>'
+      +'<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;color:var(--ink-soft);font-size:13px;pointer-events:none;opacity:0">如果你的浏览器无法预览，请点击「↗ 新标签」或「⬇ 下载 PDF」</div>';
+  }).catch(()=>{
+    body.className='modal-body';
+    body.innerHTML='<div style="padding:60px 40px;text-align:center;color:var(--ink-soft)"><p style="font-size:16px;margin-bottom:8px">📄 PDF 预览不可用</p><p style="font-size:13px">请点击右上角「↗ 新标签」或「⬇ 下载 PDF」查看完整内容。</p></div>';
+  });
 }
 function closeModal(){$('#modal').classList.remove('open');$('#m-body').innerHTML='<div class="spinner"></div>';}
 $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
