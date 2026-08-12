@@ -31,9 +31,13 @@
 - ✅ 纯静态，无 API 调用，无敏感信息
 - ✅ `.wrangler/` 缓存已加入 .gitignore
 
-## 🙏 致谢
+## 👥 贡献者
 
 复习资料与题库由多 Agent 系统辅助生产，感谢以下大模型服务提供方：
+
+<a href="https://github.com/deepseek-ai" title="深度求索 DeepSeek"><img src="https://avatars.githubusercontent.com/deepseek-ai?s=72&v=4" width="64" height="64" alt="深度求索 DeepSeek"/></a>
+<a href="https://github.com/zhipuai" title="智谱 AI · GLM"><img src="https://avatars.githubusercontent.com/zhipuai?s=72&v=4" width="64" height="64" alt="智谱 AI · GLM"/></a>
+<a href="https://github.com/QwenLM" title="通义千问 Qwen"><img src="https://avatars.githubusercontent.com/QwenLM?s=72&v=4" width="64" height="64" alt="通义千问 Qwen"/></a>
 
 - **深度求索（DeepSeek）** — [deepseek.com](https://www.deepseek.com)
 - **智谱 AI（GLM）** — [zhipuai.cn](https://www.zhipuai.cn)
