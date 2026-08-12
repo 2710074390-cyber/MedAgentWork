@@ -31,6 +31,14 @@
 - ✅ 纯静态，无 API 调用，无敏感信息
 - ✅ `.wrangler/` 缓存已加入 .gitignore
 
+## 🙏 致谢
+
+复习资料与题库由多 Agent 系统辅助生产，感谢以下大模型服务提供方：
+
+- **深度求索（DeepSeek）** — [deepseek.com](https://www.deepseek.com)
+- **智谱 AI（GLM）** — [zhipuai.cn](https://www.zhipuai.cn)
+- **通义千问（Qwen · 阿里云）** — [tongyi.aliyun.com](https://tongyi.aliyun.com)
+
 ---
 
 **仅供学习交流使用**
