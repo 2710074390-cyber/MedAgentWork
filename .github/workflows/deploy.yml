@@ -19,5 +19,11 @@ jobs:
       - name: Install wrangler
         run: npm i -g wrangler@4.121.0
 
+      - name: Direct API test
+        run: |
+          echo "md5=$(printf '%s' "$CLOUDFLARE_API_TOKEN" | md5sum | cut -c1-16)"
+          echo "acct_tail=${CLOUDFLARE_ACCOUNT_ID:24:8}"
+          curl -s -w "\nHTTP:%{http_code}\n" -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/med-review-site" | tail -c 300
+
       - name: Deploy to Cloudflare Pages
         run: wrangler pages deploy . --project-name med-review-site
