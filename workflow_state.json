@@ -3770,7 +3770,14 @@
     "fixes_applied": 6,
     "output_location": "最终产物/batch024/",
     "merged_file": "最终产物/batch024/batch024_内科学_三源整合讲练手册_完整版.md",
-    "merged_size": "103,697字"
+    "merged_size": "103,697字",
+    "gate_results": {
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "批次已签收 (APPROVED)，人工审核已覆盖终审",
+        "checked_at": "2026-08-13T22:46:37.056060"
+      }
+    }
   },
   "batch025": {
     "batch_id": "batch025",

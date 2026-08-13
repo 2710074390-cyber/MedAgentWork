@@ -25,6 +25,8 @@
 - [x] **git 版本控制**：仓库初始化 + 基线/清理/重构三提交（.gitignore 已排除 reports/archive/索引/大文件）
 - [x] **工作区整理**：16 个旧复习资料版本 + 30 份旧 validate 报告归档，输入素材残留清理
 - [x] **文档同步**：USER.md 5-Agent、操作流程.txt DSH 版、CONTEXT.md 协作规则/工具表、healthcheck 补 scripts/ 扫描
+- [x] **P0-1 统一题库数据层**：scripts/qbank.py（统一解析器/注册表/去重/查询/统计），1743 题迁移入库；
+      ingest 自动注册；healthcheck 新增 H 维度；实测发现 1 组跨批次重复待裁决
 
 ---
 

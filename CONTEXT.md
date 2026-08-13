@@ -207,6 +207,10 @@ archive/
 GoldenSet/                   ← 用户签收后加入
   └── 真题上册.md
 
+question_bank/               ← 统一题库注册表（P0-1，2026-08-13）
+  ├── registry.jsonl         ← 全库题目注册（一行一题：hash/批次/题型/溯源）
+  └── registry_meta.json     ← 注册表元信息（版本/统计）
+
 reports/                     ← 自动化脚本输出（按子目录分类）
   ├── validate/              ← validate_options.py
   ├── healthcheck/           ← healthcheck.py
@@ -360,6 +364,7 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **review_template.html** | 1.0.0 | `知识库素材/review_template.html` | 渲染模板（含 demo 内容），供 render_review.py 参考 |
 | **r2_balancer.py** | 2.0.0 | `scripts/r2_balancer.py` | `python scripts/r2_balancer.py --file <path>` — **只扩充不截断**的R2选项长度平衡器 |
 | **workflow_state.py** | 1.0.0 | `scripts/workflow_state.py` | `python scripts/workflow_state.py --check / --migrate / --show {batchID}` — 状态统一读写/校验/迁移（2026-08-13 重构） |
+| **qbank.py** | 1.0.0 | `scripts/qbank.py` | `python scripts/qbank.py init / register / query / stats / check` — 统一题库注册表（P0-1，2026-08-13） |
 | **dsh** (DeepSeek Harness) | 0.1.0-rc.6 | `C:\Users\38063\Desktop\Web-AI\tools\dsh\node_modules\.bin\dsh` | `cd C:\Users\38063\Desktop\Web-AI\tools\dsh && npx dsh web`（需 API key） |
 
 ### 复习资料渲染（2026-06-21 新增）

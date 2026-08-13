@@ -69,6 +69,17 @@ python scripts/workflow_state.py --migrate                # 旧数据迁移（�
 python scripts/workflow_state.py --show batch026          # 查看批次详情
 ```
 
+### 统一题库注册表（P0-1 · 2026-08-13）
+```text
+python scripts/qbank.py init                              # 初始化注册表
+python scripts/qbank.py register --dir 中间产物 --dir 最终产物   # 注册题库（自动去重检测）
+python scripts/qbank.py stats                             # 全库统计（批次/题型/Bloom）
+python scripts/qbank.py query --stem 心衰 --type A1 --limit 10  # 跨批次查询
+python scripts/qbank.py check                             # 跨批次重复报告 + 完整性
+```
+说明：ingest 摄入 agent2/agent4 题库时自动注册；重复只报告不删除；
+中间产物与最终产物的新旧版本共存属预期（check 分类为"同批次多版本"）。
+
 ### 门禁（编排者自动执行；手动复核用）
 ```text
 python validate_options.py --batch batch026               # 选项质量（报告在 reports/validate/）
@@ -111,6 +122,7 @@ python 知识库素材/validate_configs.py                             # 配置�
 | `复习资料/` | 主复习资料 MD/HTML（仅保留当前版） | MedReview |
 | `GoldenSet/` | 金标准（只读，**仅你手动签收写入**） | 你 |
 | `reports/` | validate/healthcheck/maintenance/gate 报告（脚本自动分类） | 脚本 |
+| `question_bank/` | 统一题库注册表（registry.jsonl，跨批次去重/查询） | qbank.py + ingest 自动注册 |
 | `archive/` | 批次归档 + 历史版本（git 忽略，不入库） | maintenance |
 | `schemas/` | 产物契约 JSON Schema | 重构维护 |
 | `.dsh/skills/` | DSH 角色技能（medmaster/medgen/medqc/medfix/medreview/medbatch） | 重构维护 |

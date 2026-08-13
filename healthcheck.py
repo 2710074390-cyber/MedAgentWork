@@ -11,7 +11,7 @@ MedAgentWork 工程健康检查 v1.0
   python healthcheck.py --json       # JSON 输出（适合 CI/cron）
   python healthcheck.py --fix        # 自动修复可修复的问题
 
-检查维度（7 层）:
+检查维度（8 层）:
   A. 脚本存活性 — 所有 .py 文件可导入
   B. 文件完整性 — workflow_state 引用的文件存在，JSON 可解析
   C. 状态一致性 — 批次记录无断裂，无重复文件
@@ -19,6 +19,7 @@ MedAgentWork 工程健康检查 v1.0
   E. Prompt 同步 — clean/ 版本与 current 一致
   F. GoldenSet  — 金标准可用（--full 模式含回归）
   G. 知识库     — RAG 索引清单完整（--full 模式）
+  H. 题库注册表 — qbank 注册表完整性 + 跨批次重复（P0-1 新增）
 """
 import sys, json, os, subprocess, hashlib, argparse
 from pathlib import Path
@@ -36,7 +37,7 @@ BASE = Path(__file__).parent
 REQUIRED_DIRS = [
     '输入素材', '中间产物', '质检报告', '最终产物', '复习资料',
     'GoldenSet', '知识库素材', 'Prompt版本', 'docs',
-    'scripts', 'reports', 'memory',
+    'scripts', 'reports', 'memory', 'question_bank',
 ]
 
 ROOT_ALLOWED = {
@@ -418,6 +419,36 @@ def check_knowledge_base(full=False):
 
 
 # ──────────────────────────────────────────
+# H. 题库注册表（P0-1 qbank 数据层）
+# ──────────────────────────────────────────
+
+def check_qbank():
+    """检查统一题库注册表: 存在性/完整性/跨批次重复"""
+    results = []
+    qbank_path = BASE / 'question_bank' / 'registry.jsonl'
+    if not qbank_path.exists():
+        return [{'check': 'H1-registry', 'status': 'WARN',
+                 'detail': 'question_bank/registry.jsonl 不存在（运行 python scripts/qbank.py init）'}]
+    try:
+        sys.path.insert(0, str(BASE / 'scripts'))
+        import qbank
+        issues, warns, infos = qbank.check()
+        s = qbank.stats()
+        detail = f'注册表 {s["total"]} 题'
+        if warns:
+            detail += f'，跨批次重复 {len(warns)} 组（需人工裁决）'
+        if issues:
+            results.append({'check': 'H1-registry', 'status': 'FAIL',
+                            'detail': f'{detail}；问题: {"; ".join(issues[:3])}'})
+        else:
+            status = 'WARN' if warns else 'PASS'
+            results.append({'check': 'H1-registry', 'status': status, 'detail': detail})
+    except Exception as e:
+        results.append({'check': 'H1-registry', 'status': 'WARN', 'detail': f'qbank 检查异常: {e}'})
+    return results
+
+
+# ──────────────────────────────────────────
 # 汇总输出
 # ──────────────────────────────────────────
 
@@ -486,6 +517,14 @@ def run_healthcheck(full=False):
     print(f"  [G] 知识库...", end=' ')
     r = check_knowledge_base(full)
     sections['G'] = r
+    fails = sum(1 for x in r if x['status'] == 'FAIL')
+    warns = sum(1 for x in r if x['status'] == 'WARN')
+    print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+
+    # H (P0-1 题库注册表)
+    print(f"  [H] 题库注册表...", end=' ')
+    r = check_qbank()
+    sections['H'] = r
     fails = sum(1 for x in r if x['status'] == 'FAIL')
     warns = sum(1 for x in r if x['status'] == 'WARN')
     print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')

@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-08-13T23:02:12.281738",
+  "stats": {
+    "total": 1743,
+    "by_batch": {
+      "batch022": 336,
+      "batch017": 300,
+      "predict": 274,
+      "batch018": 262,
+      "unknown": 242,
+      "batch019": 240,
+      "batch015": 89
+    },
+    "by_type": {
+      "A1": 749,
+      "A2": 423,
+      "X": 239,
+      "B1": 194,
+      "A3": 73,
+      "判断": 60,
+      "A4": 5
+    },
+    "by_bloom": {
+      "理解": 370,
+      "记忆": 286,
+      "未标注": 242,
+      "应用": 233,
+      "comprehension": 194,
+      "memory": 192,
+      "application": 153,
+      "analysis": 37,
+      "分析": 36
+    },
+    "schema_version": 1
+  }
+}

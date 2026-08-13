@@ -291,6 +291,22 @@ def main():
     else:
         print(f"\n  📋 目标路径（未移动）: {dest}")
 
+    # 7b. 统一题库注册（P0-1 qbank 数据层：agent2/agent4 的 JSON 题库自动入库）
+    if not args.no_move and ext == '.json' and args.stage in ('agent2', 'agent4'):
+        try:
+            import qbank
+            stage_tag = 'final' if args.stage == 'agent4' else 'intermediate'
+            n, dups = qbank.register_file(dest, args.batch, stage=stage_tag)
+            qbank.update_meta()
+            if n:
+                print(f"  📚 题库注册: {n} 题 → question_bank/registry.jsonl")
+            if dups:
+                print(f"  ⚠️ 与注册表重复 {len(dups)} 条（去重仅报告，不自动删除）:")
+                for d in dups[:3]:
+                    print(f"     「{d['stem']}」 ← {d.get('dup_with_file')}")
+        except Exception as e:
+            print(f"  ⚠️ 题库注册跳过: {e}")
+
     # 7. 更新 workflow_state.json
     state = load_state()
     batch = add_lineage(state, args.batch, args.stage, dest, file_md5)
