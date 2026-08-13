@@ -43,7 +43,6 @@ ROOT_ALLOWED = {
     'CONTEXT.md', 'SOUL.md', 'USER.md', 'workflow_state.json',
     '操作流程.txt', '.gitignore',
     'validate_options.py', 'verify_page_numbers.py', 'ingest.py', 'healthcheck.py', 'save.py', 'gate_check.py',
-    'regression_db.json',
 }
 
 ROOT_FORBIDDEN_EXT = {'.exe', '.msi', '.log', '.dll', '.bin'}
@@ -93,9 +92,12 @@ def check_script_importability():
     """检查所有 .py 脚本是否可以至少被 Python 编译"""
     results = []
     py_files = []
-    for d in [BASE] + [BASE / 'GoldenSet'] + [BASE / '知识库素材']:
+    # v1.1 (2026-08-13): 补充 scripts/ 目录（此前漏检 25+ 活跃脚本）
+    for d in [BASE, BASE / 'GoldenSet', BASE / '知识库素材', BASE / 'scripts']:
         if d.exists():
             py_files.extend(d.glob('*.py'))
+    # 排除一次性归档脚本（scripts/archive/ 不在存活性契约内）
+    py_files = [f for f in py_files if 'archive' not in f.parts]
 
     for f in sorted(set(py_files)):
         try:
@@ -184,6 +186,8 @@ def check_state_consistency():
                if k not in ('active_batch', 'system_config') and isinstance(v, dict)}
 
     # C1: 检查中间产物和最终产物目录中的批次是否都在 state 中
+    # v1.1 (2026-08-13): 识别子批次命名 batchXXX-A/B/C（同一主批次的并行分区）
+    import re as _re
     for stage_dir_name in ('中间产物', '最终产物'):
         stage_path = BASE / stage_dir_name
         if not stage_path.exists():
@@ -192,6 +196,9 @@ def check_state_consistency():
             if batch_dir.name == 'archive' or not batch_dir.is_dir():
                 continue
             if batch_dir.name not in batches:
+                parent_id = _re.sub(r'-[A-Z]$', '', batch_dir.name)
+                if parent_id in batches:
+                    continue  # 子批次目录（batchXXX-A/B/C），主批次已登记
                 results.append({
                     'check': 'C1-orphan',
                     'status': 'WARN',
@@ -256,8 +263,9 @@ def check_directory_structure():
             elif item.name.startswith(ROOT_FORBIDDEN_PREFIX):
                 root_violations.append(str(item.name))
             elif item.name not in ROOT_ALLOWED and item.suffix in ('.py', '.json', '.txt', '.log', '.md'):
-                if not item.name.startswith('validate_options_report'):
-                    root_violations.append(str(item.name))
+                # v1.1 (2026-08-13): validate 报告已强制写入 reports/validate/，
+                # 移除根目录 validate_options_report 豁免（防泄漏回归）
+                root_violations.append(str(item.name))
 
     if root_violations:
         results.append({'check': 'D2-root', 'status': 'WARN',

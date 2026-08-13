@@ -1,6 +1,6 @@
 # MedAgentWork 待办清单
 
-> 更新：2026-06-27 | 基于：v3.0 技术报告批判分析 + Week 1 四条防线落地 + 四科 v5 测试
+> 更新：2026-08-13 | 基于：v3.0 技术报告批判分析 + Week 1 四条防线落地 + 四科 v5 测试 + 正式重构
 
 ---
 
@@ -15,22 +15,16 @@
 - [x] SOUL.md HC-15/16 规则 + 工具速查表
 - [x] FACT.md 更新 Week 1 成果
 
----
+## 🟢 已完成 (正式重构·2026-08-13)
 
-## 🔴 P0 — 阻塞级（本周）
-
-- [ ] **医患沟通首次试运行** ← 最后一个零实测学科（用户进行中）
-  - 新建 D21-D23 质检维度（可执行性/伦理边界/场景真实性）
-  - 预期触发 3-5 个新事件并驱动新 HC 规则
-  - 17维质检矩阵在此学科预计大面积失效
-
-- [ ] **frequency_analyzer 正则修复**
-  - 疾病名正则与"综合征""病因"等维度词重叠（如"肾病综合征"匹配两次）
-  - 修复：疾病名边界检测 + 维度词去重
-
-- [ ] **补丁溯源 Source-Completeness Gate**
-  - gate_check.py 新增：检测 COMPLETE.json ↔ 分系统源文件 diff
-  - 存在未同步差异 → halt（不再依赖 Agent 4 自觉）
+- [x] **医患沟通首次试运行**（batch019 已交付 v5.1，2026-07-04；D21-D23 维度待补充记录）
+- [x] **DSH 迁移**：6 个角色 skill（.dsh/skills/）+ 主会话编排 + 文件直传替代剪贴板
+- [x] **P0 修复**：gate_check 报告路径/回归库路径/按批次 HALT/APPROVED 跳过；save.py lost-update；validate 输出至 reports/validate/；ingest 预检 schema 兼容
+- [x] **统一状态模块**：scripts/workflow_state.py（原子读写/血缘/按批次HALT/迁移/校验），ingest/save/gate_check 全部接入；workflow_state.json 迁移至 schema_version=2
+- [x] **契约 schema 落地**：schemas/agent2/3/4_output.schema.json + ingest 摄入时 jsonschema 实际校验（修 pipeline.yaml 死引用）
+- [x] **git 版本控制**：仓库初始化 + 基线/清理/重构三提交（.gitignore 已排除 reports/archive/索引/大文件）
+- [x] **工作区整理**：16 个旧复习资料版本 + 30 份旧 validate 报告归档，输入素材残留清理
+- [x] **文档同步**：USER.md 5-Agent、操作流程.txt DSH 版、CONTEXT.md 协作规则/工具表、healthcheck 补 scripts/ 扫描
 
 ---
 

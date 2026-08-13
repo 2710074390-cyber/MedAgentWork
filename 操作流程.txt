@@ -1,29 +1,48 @@
-简化为 2 步/阶段：
+MedAgentWork 操作流程（DSH 版 · 2026-08-13 重构）
+================================================
 
-  准备：将教材/笔记/重点放入 输入素材/
+主流程已迁移至 DeepSeek Harness (DSH)：MedAgentWork 为 DSH 工作区，
+5 个角色以 .dsh/skills/ 技能形式存在，编排在主会话完成，无需窗口间复制粘贴。
 
-  阶段一  窗口 [Agent 1]  → 打字：「开始新批次：科目+章节」
-                          ← 看回显 → 打字：「确认」
+──────────────────────────────────────────
+一、完整批次流程（DSH 主会话）
+──────────────────────────────────────────
 
-  阶段二  窗口 [Agent 2]  ← Agent 1 产出调用指令 → 粘贴
-                          ← 产出题库 → Ctrl+C 复制
-          终端             → python save.py
+准备：将教材/笔记/重点放入 输入素材/{科目}/
 
-  阶段三  窗口 [Agent 1]  → 打字：「继续」
-          窗口 [Agent 3]  ← 粘贴指令
-                          ← 产出质检报告 → Ctrl+C
-          终端             → python save.py
+1. 打开 DSH Web (http://127.0.0.1:3080)，进入 MedAgentWork 工作区，新建会话
+2. 输入：「开始新批次：{科目}+{章节}」（如 开始新批次：医患沟通）
+   → 编排者回显意图（科目/目标题数/模块划分）→ 你确认
+3. 编排者自动执行（无需你干预）：
+   - 调用 MedGen（subagent）→ 题库写入 中间产物/{batchID}/
+   - 运行门禁：python validate_options.py --batch {batchID}
+   - 调用 MedQC → 质检报告写入 质检报告/{batchID}/
+   - 运行门禁：python gate_check.py --batch {batchID} --stage agent3_done
+   - 调用 MedFix → 修复版写入 最终产物/{batchID}/
+   - 运行门禁：python gate_check.py --batch {batchID} --stage agent4_done
+   - 调用 MedReview → 复习资料写入 复习资料/
+   - 终审门禁：python gate_check.py --batch {batchID} --stage final
+4. 你审查产物 → 输入「签收 {batchID}」→ 批次置 APPROVED
+5. 手动将金标准题移入 GoldenSet/（仅你操作），运行 python healthcheck.py
 
-  阶段四  窗口 [Agent 1]  → 打字：「继续」
-          窗口 [Agent 4]  ← 粘贴指令
-                          ← 产出修复版 → Ctrl+C
-          终端             → python save.py
+──────────────────────────────────────────
+二、状态与门禁速查
+──────────────────────────────────────────
 
-  阶段五  窗口 [Agent 1]  → 打字：「继续」
-          窗口 [Agent 5]  ← 粘贴指令
-                          ← 产出主复习资料 → Ctrl+C
-          终端             → python save.py
+  python scripts/workflow_state.py --check      # 状态结构校验
+  python scripts/workflow_state.py --migrate    # 旧数据迁移（一次性）
+  python scripts/workflow_state.py --show batch026  # 查看批次
+  python gate_check.py --batch {batchID} --stage auto   # 自动检测阶段门禁
+  python gate_check.py --batch {batchID} --clear-halt   # 修复后清除 HALT
+  python validate_options.py --batch {batchID}  # 选项质量校验（报告在 reports/validate/）
 
-  收尾   窗口 [Agent 1]  → 打字：「终审」
-                         ← 审查升级告警 → 打字：「签收 batch006」
-          终端            → python healthcheck.py
+门禁 BLOCKED → 回退对应 Agent 修复 → 重跑门禁。详见 .dsh/skills/medbatch/SKILL.md。
+
+──────────────────────────────────────────
+三、备用流程（Cherry Studio 手动接力，已弃用）
+──────────────────────────────────────────
+
+旧流程存档于 archive/docs/操作流程_CherryStudio_旧版_20260616.txt。
+save.py / ingest.py 仍可用：产物存文件后运行
+  python ingest.py <文件> --batch {batchID} --stage agent2
+（不再依赖剪贴板；save.py 的剪贴板模式保留兼容）。

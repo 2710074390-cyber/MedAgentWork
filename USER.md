@@ -1,6 +1,6 @@
 # User Profile — MedAgentWork
 
-> 4 个 Agent 共享此用户信息。
+> 5 个 Agent 共享此用户信息。
 
 ## Name
 （待补充）
@@ -16,10 +16,11 @@ UTC+8（中国标准时间）
 
 ## Context
 - 用户正在准备临床医学考试
-- 使用 4-Agent 工作流：编排 → 出题 → 质检 → 终审
+- 使用 5-Agent 工作流：编排（MedMaster）→ 出题（MedGen）→ 质检（MedQC）→ 修复（MedFix）→ 复习资料（MedReview）
+- 2026-08-13 起主流程迁移至 DeepSeek Harness（DSH）：角色技能位于 `.dsh/skills/`，编排在主会话完成；Cherry Studio 接力流程保留为备用
 - 金标准（GoldenSet）由用户手动维护
 - 工作目录：`C:\Users\38063\Desktop\MedAgentWork`
-- 提示词写在 Cherry Studio 智能体配置中
+- 角色提示词：`Prompt版本/*_current_prompt.md`（DSH skill 引用同一文件，单一事实来源）
 
 ## 关联 Agent 工作区
 | 工作区 | 路径 | 角色 |

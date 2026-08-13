@@ -357,7 +357,8 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **mmdc** (Mermaid) | 11.15.0 | 全局 npm 包 | `mmdc` |
 | **render_review.py** | 1.0.0 | `知识库素材/render_review.py` | `python 知识库素材/render_review.py "复习资料/XXX.md"` |
 | **review_template.html** | 1.0.0 | `知识库素材/review_template.html` | 渲染模板（含 demo 内容），供 render_review.py 参考 |
-| **r2_balancer.py** | 2.0.0 | `r2_balancer.py` | `python r2_balancer.py --file <path>` — **只扩充不截断**的R2选项长度平衡器 |
+| **r2_balancer.py** | 2.0.0 | `scripts/r2_balancer.py` | `python scripts/r2_balancer.py --file <path>` — **只扩充不截断**的R2选项长度平衡器 |
+| **workflow_state.py** | 1.0.0 | `scripts/workflow_state.py` | `python scripts/workflow_state.py --check / --migrate / --show {batchID}` — 状态统一读写/校验/迁移（2026-08-13 重构） |
 | **dsh** (DeepSeek Harness) | 0.1.0-rc.6 | `C:\Users\38063\Desktop\Web-AI\tools\dsh\node_modules\.bin\dsh` | `cd C:\Users\38063\Desktop\Web-AI\tools\dsh && npx dsh web`（需 API key） |
 
 ### 复习资料渲染（2026-06-21 新增）
@@ -390,9 +391,25 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 
 ## 多 Agent 协作规则
 
-> 5 个 Agent 通过用户中转传递调用指令（操作流程.txt），共享同一工作文件夹。
+> 5 个 Agent 共享同一工作文件夹。**2026-08-13 起主流程为 DSH 自动编排**（角色技能 `.dsh/skills/`，编排在主会话完成）；Cherry Studio 用户中转接力（下节"旧调用链路"）保留为备用。
 
-### 调用链路
+### DSH 调用链路（主流程 · 2026-08-13 重构）
+```
+用户 → 主会话 (MedMaster, medmaster skill) → 回显意图 → 用户确认
+      → 编排者后台调用 MedGen (medgen skill) → 题库直写 中间产物/{batchID}/
+      → 编排者运行 validate_options.py 门禁 (FAIL==0)
+      → 后台调用 MedQC (medqc skill) → 质检报告直写 质检报告/{batchID}/
+      → 编排者运行 gate_check.py --stage agent3_done
+      → 后台调用 MedFix (medfix skill) → 修复版直写 最终产物/{batchID}/
+      → 编排者运行 gate_check.py --stage agent4_done
+      → 后台调用 MedReview (medreview skill) → 复习资料直写 复习资料/
+      → 编排者运行 gate_check.py --stage final
+      → 用户审查 → 签收/打回 → 合格手动加入 GoldenSet/
+```
+批次运行手册：`.dsh/skills/medbatch/SKILL.md`（阶段序列/门禁命令/目录命名/故障处置）。
+每批次建议独立 DSH 会话；事件记入 `memory/JOURNAL.jsonl`。
+
+### 旧调用链路（Cherry Studio 用户中转，已弃用）
 ```
 用户 → Agent 1 (MedMaster) → 回显意图 → 用户确认
       → Agent 1 给出 Agent 2 调用指令 → 用户粘贴到 Agent 2
