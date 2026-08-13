@@ -1,36 +1,37 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-13T23:02:12.281738",
+  "updated_at": "2026-08-13T23:04:54.265437",
   "stats": {
-    "total": 1743,
+    "total": 2074,
     "by_batch": {
       "batch022": 336,
+      "psychiatry-merged": 331,
       "batch017": 300,
       "predict": 274,
       "batch018": 262,
-      "unknown": 242,
+      "batch023-ref": 242,
       "batch019": 240,
       "batch015": 89
     },
     "by_type": {
-      "A1": 749,
-      "A2": 423,
-      "X": 239,
-      "B1": 194,
-      "A3": 73,
-      "判断": 60,
-      "A4": 5
+      "A1": 877,
+      "A2": 501,
+      "X": 276,
+      "B1": 214,
+      "A3": 115,
+      "判断": 80,
+      "A4": 11
     },
     "by_bloom": {
-      "理解": 370,
-      "记忆": 286,
+      "理解": 473,
+      "记忆": 373,
+      "应用": 350,
       "未标注": 242,
-      "应用": 233,
       "comprehension": 194,
       "memory": 192,
       "application": 153,
-      "analysis": 37,
-      "分析": 36
+      "分析": 60,
+      "analysis": 37
     },
     "schema_version": 1
   }

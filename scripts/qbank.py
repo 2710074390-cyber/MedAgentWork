@@ -320,6 +320,7 @@ def register_dir(dirs, batch_hint=None):
 
 def _infer_batch(path):
     """从路径推断批次号（batch026 → batch026；batch024-A → batch024-A；
+    batch023_existing_ref → batch023-ref（合并来源参考文件）；
     predict 押题卷 → predict；其余 unknown）。"""
     parts = path.parts
     for p in parts:
@@ -327,6 +328,9 @@ def _infer_batch(path):
         if m:
             return m.group(1)
     name = str(path)
+    m2 = re.search(r'(batch\d{3,})_existing_ref', name)
+    if m2:
+        return m2.group(1) + '-ref'
     if 'predict' in name.lower():
         return 'predict'
     return 'unknown'
@@ -373,27 +377,33 @@ def stats():
     }
 
 
-def check():
+def check(ignore_pairs=None):
     """去重报告 + 完整性检查。返回 (问题列表, 警告列表, 提示列表)。
 
     重复分类（2026-08-13 v1.1）:
-      - 跨批次重复 = WARN（同一题干出现在两个不同批次，需人工裁决）
+      - 跨批次重复 = WARN（同一题干出现在两个不同批次，需人工裁决；
+        可通过 --ignore-pair 豁免已知合并关系，如合并来源 vs 合并结果）
       - 同批次 multi-stage（intermediate/final 并存）= INFO（新版本取代旧版本，属预期）
+    ignore_pairs: 集合 of frozenset({batchA, batchB}) — 豁免的批次对
     """
     entries = _read_entries()
-    from collections import Counter, defaultdict
+    from collections import defaultdict
     by_hash = defaultdict(list)
     for e in entries:
         by_hash[e.get('stem_hash')].append(e)
     issues = []
     warns = []
     infos = []
+    ignored = 0
     for h, group in by_hash.items():
         if len(group) < 2:
             continue
         batches = {e.get('batch') for e in group}
         if len(batches) > 1:
             sample = group[0]
+            if ignore_pairs and frozenset(batches) in ignore_pairs:
+                ignored += 1
+                continue
             warns.append(
                 f'跨批次重复 x{len(group)}: 「{sample.get("stem_snippet", "")}」'
                 f' 批次={sorted(batches)}'
@@ -419,6 +429,8 @@ def check():
             meta = json.load(f)
     if entries and meta.get('schema_version') != REGISTRY_VERSION:
         issues.append(f'meta schema_version={meta.get("schema_version")} 与当前 {REGISTRY_VERSION} 不一致')
+    if ignored:
+        infos.append(f'已豁免已知合并关系 {ignored} 组（--ignore-pair）')
     return issues, warns, infos
 
 
@@ -476,7 +488,10 @@ def main():
     p_q.add_argument('--json', action='store_true', help='JSON 输出')
 
     sub.add_parser('stats', help='全库统计')
-    sub.add_parser('check', help='去重报告 + 完整性')
+    p_check = sub.add_parser('check', help='去重报告 + 完整性')
+    p_check.add_argument('--ignore-pair', action='append', default=[],
+                         metavar='batchA,batchB',
+                         help='豁免已知合并关系的批次对（如 batch023-ref,psychiatry-merged）')
 
     parser.add_argument('--selftest', action='store_true', help='解析器自检')
     args = parser.parse_args()
@@ -531,7 +546,14 @@ def main():
         return
 
     if args.cmd == 'check':
-        issues, warns, infos = check()
+        ignore_pairs = None
+        if args.ignore_pair:
+            ignore_pairs = set()
+            for pair in args.ignore_pair:
+                a, _, b = pair.partition(',')
+                if a and b:
+                    ignore_pairs.add(frozenset({a.strip(), b.strip()}))
+        issues, warns, infos = check(ignore_pairs)
         s = stats()
         print(f'注册表: {s["total"]} 题 | schema v{s["schema_version"]}')
         if warns:
