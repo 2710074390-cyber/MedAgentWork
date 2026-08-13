@@ -104,6 +104,7 @@
 ```
 ✅ SOUL.md  USER.md  CONTEXT.md  workflow_state.json  操作流程.txt  .gitignore
 ✅ gate_check.py  healthcheck.py  validate_options.py  save.py  ingest.py  verify_page_numbers.py
+✅ .git/  .dsh/（DSH 技能与版本控制，2026-08-13 起）
 ```
 
 绝对禁止出现在根目录：

@@ -119,8 +119,8 @@ def check_prereq(batch_id, stage):
 
     return False, (
         f'管线阻断：{prereq["desc"]} 不存在。'
-        f'请先完成 {STAGE_NAMES.get(prereq["stage"], prereq["stage"])} 阶段，'
-        f'复制其产出后运行 python save.py'
+        f'请先完成 {STAGE_NAMES.get(prereq["stage"], prereq["stage"])} 阶段'
+        f'（DSH 流程：编排者完成后自动继续；手动流程：先保存该阶段产出再运行 python save.py）'
     )
 
 
@@ -169,7 +169,7 @@ def main():
 
     if stage is None:
         print(f'\n  ✅ 批次 {batch_id} 全部阶段已完成！')
-        print(f'  在 Agent 1 窗口输入「终审」进入归档流程。')
+        print(f'  在 DSH 主会话输入「终审」进入归档/签收流程。')
         sys.exit(0)
 
     # ── 4. 管线强制校验 ⛔ ──
@@ -345,7 +345,7 @@ def main():
 {'═'*50}
   ✅ {stage} 完成 → 👉 {next_stage}
 
-  在 Agent 1 窗口输入「继续」获取调用指令
+  在 DSH 主会话输入「继续」获取下一阶段调用指令（手动流程备选：粘贴到对应 Agent 窗口）
 {'═'*50}
 ''')
 

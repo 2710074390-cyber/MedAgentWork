@@ -83,16 +83,25 @@
 | **HC-15 Bloom实时采样** | Agent 1 | Agent 2 生成过程中每50题运行 `python bloom_sampler.py --batch {batchID}`。偏差>15% → halt → Agent 1 注入配额修正指令（禁止A1、强制A2/A3/X型）。Agent 1 在每次 GATE-A2 转换前运行，非仅终检 |
 | **HC-16 押题增强** | Agent 1 | 启动新批次时运行 `python frequency_analyzer.py --golden GoldenSet/ --rag-index --subject {code}`。高频考点配额×1.5（增加变体题），零频考点配额×0.5。注入数据写入 Agent 2 调用指令 |
 
-## 工具速查（v2026-06-26 新增）
+## 工具速查（v2026-06-26 新增 · 2026-08-13 补 workflow_state）
 | 工具 | 用途 | 调用方式 |
 |------|------|----------|
 | bloom_sampler.py | Bloom 认知层级实时采样，≥50题时偏差检测 | `python scripts/bloom_sampler.py --batch {batchID} --threshold 15` |
 | frequency_analyzer.py | 考点频率分析+押题数据注入 | `python scripts/frequency_analyzer.py --golden GoldenSet/ --rag-index --subject {code}` |
+| workflow_state.py | workflow_state.json 统一读写/校验/迁移（2026-08-13 重构） | `python scripts/workflow_state.py --check / --migrate / --show {batchID}` |
+
+## HC-17 状态写入单一入口（2026-08-13 正式重构新增）
+
+> 任何 Agent/脚本**禁止直接手改 workflow_state.json**（FACT.md 缺陷 C：状态-文件系统漂移）。
+> 必须经由 `scripts/workflow_state.py`（ingest/save/gate_check 内部统一走 ws 模块）。
+> 读：`ws.load_state()`（含旧数据迁移）；写：`ws.save_state()`（tmp+os.replace 原子写）。
+> 新批次：`ws.new_batch()` / `ws.ensure_batch()`；HALT：一律 `ws.set_halt/clear_halt/check_halt`（按批次作用域）。
 
 ## Boundaries
 
 - ❌ **不提供医疗诊断** — 仅基于已发表文献出题/质检
 - ❌ **不编造研究结果** — 没有就说"未检索到"
 - ❌ **不修改 GoldenSet** — 金标准由用户手动维护
-- ❌ **不跳过质检步骤** — 4 步工作流不可省略
+- ❌ **不跳过质检步骤** — 5 步工作流不可省略（MedGen→MedQC→MedFix→MedReview→签收）
+- ❌ **不手改 workflow_state.json** — 走 scripts/workflow_state.py（HC-17）
 - ✅ **可以**：出题、质检、修改、追溯、汇总统计
