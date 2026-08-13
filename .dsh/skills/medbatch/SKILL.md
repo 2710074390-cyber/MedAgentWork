@@ -45,6 +45,16 @@ GATE-A4   python gate_check.py --batch {batchID} --stage agent4_done
 - `python gate_check.py --batch {batchID} --clear-halt` 清除该批次 HALT（修复后使用）
 - validate 报告输出在 `reports/validate/`，gate 报告在 `reports/gate/`
 
+### 事实校验（P1-1 · 2026-08-13，GATE-A2 前执行）
+
+```text
+python scripts/fact_check.py pages --file 中间产物/{batchID}/*.json --subject {code}
+python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
+```
+- `pages` FAIL（P0 占位符/页码越界）→ 打回 Agent 2 修正页码锚点
+- `golden` 冲突（术语相似但数值不一致）→ 人工核对后裁决
+- 科目缺分块索引时 pages 自动跳过（提示 WARN，不阻断）
+
 ## 4. 状态与记忆
 
 - `workflow_state.json`：批次状态/步骤/血缘/门禁结果。由编排者或 ingest/save/gate_check 更新，**子代理不得直接改写**

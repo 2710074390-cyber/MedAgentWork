@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-13T23:04:54.265437",
+  "updated_at": "2026-08-13T23:25:39.761027",
   "stats": {
     "total": 2074,
     "by_batch": {
@@ -34,5 +34,15 @@
       "analysis": 37
     },
     "schema_version": 1
-  }
+  },
+  "ignore_pairs": [
+    [
+      "batch022",
+      "predict"
+    ],
+    [
+      "batch023-ref",
+      "psychiatry-merged"
+    ]
+  ]
 }

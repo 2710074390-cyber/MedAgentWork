@@ -366,6 +366,7 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **workflow_state.py** | 1.0.0 | `scripts/workflow_state.py` | `python scripts/workflow_state.py --check / --migrate / --show {batchID}` — 状态统一读写/校验/迁移（2026-08-13 重构） |
 | **qbank.py** | 1.0.0 | `scripts/qbank.py` | `python scripts/qbank.py init / register / query / stats / check` — 统一题库注册表（P0-1，2026-08-13） |
 | **run_tests.py** | 1.0.0 | `scripts/run_tests.py` | `python scripts/run_tests.py` — 零依赖测试运行器（P0-2，2026-08-13）；有 pytest 时可用 `python -m pytest tests/ -q` |
+| **fact_check.py** | 1.0.0 | `scripts/fact_check.py` | `python scripts/fact_check.py pages --file X --subject neurology` / `golden --file X` — 事实校验机械化（P1-1，2026-08-13）：页码反查 + GoldenSet 交叉验证 |
 | **dsh** (DeepSeek Harness) | 0.1.0-rc.6 | `C:\Users\38063\Desktop\Web-AI\tools\dsh\node_modules\.bin\dsh` | `cd C:\Users\38063\Desktop\Web-AI\tools\dsh && npx dsh web`（需 API key） |
 
 ### 复习资料渲染（2026-06-21 新增）

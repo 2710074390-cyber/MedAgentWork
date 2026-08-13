@@ -30,6 +30,12 @@
 - [x] **P0-2 测试套件**：tests/ 四模块 44 用例（validate R1-R13 黄金用例 / workflow_state / qbank / 契约 schema），
       scripts/run_tests.py 零依赖运行器；healthcheck 新增 I 维度（自动回归）；
       修 agent4 schema final_gate 类型 bug（实际数据为字符串）
+- [x] **P1-1 事实校验机械化**：scripts/fact_check.py（页码反查 pages + GoldenSet 交叉验证 golden，HC-8 机械化）；
+      jieba 分词 + containment 相似度（实测校准：真题重复 0.61-0.83）；
+      实测 batch022 神经病学 322 题：页码 0 FAIL/38 WARN（P55 集中引用 28 题疑似占位模式）、
+      金标准 1 组疑似重复（脊髓型颈椎病，待人工确认）；
+      qbank 页码规范化修复（P310-P312 区间、指南年份不再误提取）；
+      ignore-pairs 持久化到 registry_meta.json（--save，healthcheck 自动读取）
 
 ---
 

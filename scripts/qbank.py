@@ -82,6 +82,7 @@ def parse_question(raw):
         'answer': _norm_answer(raw.get('answer') or raw.get('answer_key') or raw.get('correct_answer')),
         'explanation': str(raw.get('explanation') or raw.get('analysis') or raw.get('解析') or ''),
         'source_pages': _norm_pages(raw),
+        'source_pages_raw': (raw.get('source_pages') or raw.get('source_page') or raw.get('page') or ''),
     }
     return q
 
@@ -121,11 +122,19 @@ def _norm_answer(ans):
 
 
 def _norm_pages(raw):
+    """source_pages → 页码 int 列表。
+
+    v1.1 (2026-08-13): 仅提取 P 前缀页码（教材页码锚点），支持区间 P310-P312；
+    指南年份（如"指南2023"）不再被误提取为页码。
+    """
     pages = raw.get('source_pages') or raw.get('source_page') or raw.get('page') or ''
     if isinstance(pages, list):
-        return [str(p) for p in pages]
+        out = []
+        for p in pages:
+            out.extend(int(x) for x in re.findall(r'P\s*(\d+)', str(p)))
+        return out
     if isinstance(pages, str):
-        return re.findall(r'P?\d+', pages)
+        return [int(x) for x in re.findall(r'P\s*(\d+)', pages)]
     return []
 
 
@@ -196,10 +205,13 @@ def _rel(path):
 
 def _save_meta(stats):
     meta_path().parent.mkdir(parents=True, exist_ok=True)
+    old = _read_meta()
     meta = {
         'schema_version': REGISTRY_VERSION,
         'updated_at': datetime.now().isoformat(),
         'stats': stats,
+        # 保留既有豁免对（init --force 重建时不清空）
+        'ignore_pairs': old.get('ignore_pairs', []),
     }
     with open(meta_path(), 'w', encoding='utf-8') as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
@@ -399,6 +411,37 @@ def stats():
     }
 
 
+def _read_meta():
+    """读取注册表元信息（含持久化的 ignore_pairs）。"""
+    if meta_path().exists():
+        try:
+            with open(meta_path(), 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {}
+
+
+def _persist_ignore_pairs(pairs):
+    """持久化已知合并关系批次对到元信息（CLI --save 使用）。"""
+    meta = _read_meta()
+    meta['ignore_pairs'] = [sorted(p) for p in pairs]
+    meta['updated_at'] = datetime.now().isoformat()
+    with open(meta_path(), 'w', encoding='utf-8') as f:
+        json.dump(meta, f, ensure_ascii=False, indent=2)
+
+
+def _effective_ignore_pairs(extra=None):
+    """合并持久化 + 本次调用传入的豁免对。"""
+    pairs = set()
+    for p in _read_meta().get('ignore_pairs', []):
+        if isinstance(p, list) and len(p) == 2:
+            pairs.add(frozenset(p))
+    if extra:
+        pairs |= extra
+    return pairs or None
+
+
 def check(ignore_pairs=None):
     """去重报告 + 完整性检查。返回 (问题列表, 警告列表, 提示列表)。
 
@@ -407,7 +450,9 @@ def check(ignore_pairs=None):
         可通过 --ignore-pair 豁免已知合并关系，如合并来源 vs 合并结果）
       - 同批次 multi-stage（intermediate/final 并存）= INFO（新版本取代旧版本，属预期）
     ignore_pairs: 集合 of frozenset({batchA, batchB}) — 豁免的批次对
+                  （与 registry_meta.json 中持久化的对合并生效）
     """
+    ignore_pairs = _effective_ignore_pairs(ignore_pairs)
     entries = _read_entries()
     from collections import defaultdict
     by_hash = defaultdict(list)
@@ -514,6 +559,8 @@ def main():
     p_check.add_argument('--ignore-pair', action='append', default=[],
                          metavar='batchA,batchB',
                          help='豁免已知合并关系的批次对（如 batch023-ref,psychiatry-merged）')
+    p_check.add_argument('--save', action='store_true',
+                         help='将 --ignore-pair 持久化到 registry_meta.json（healthcheck 自动读取）')
 
     parser.add_argument('--selftest', action='store_true', help='解析器自检')
     args = parser.parse_args()
@@ -575,6 +622,9 @@ def main():
                 a, _, b = pair.partition(',')
                 if a and b:
                     ignore_pairs.add(frozenset({a.strip(), b.strip()}))
+            if args.save:
+                _persist_ignore_pairs(ignore_pairs)
+                print(f'✓ 已持久化 {len(ignore_pairs)} 个豁免批次对 → registry_meta.json')
         issues, warns, infos = check(ignore_pairs)
         s = stats()
         print(f'注册表: {s["total"]} 题 | schema v{s["schema_version"]}')

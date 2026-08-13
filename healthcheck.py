@@ -433,10 +433,9 @@ def check_qbank():
     try:
         sys.path.insert(0, str(BASE / 'scripts'))
         import qbank
-        # 已知合并关系豁免（与 CLI `qbank check --ignore-pair` 一致）:
-        # batch023-ref(合并来源 242题) ↔ psychiatry-merged(合并结果 331题)
-        KNOWN_PAIRS = {frozenset({'batch023-ref', 'psychiatry-merged'})}
-        issues, warns, infos = qbank.check(ignore_pairs=KNOWN_PAIRS)
+        # 已知合并关系豁免对持久化在 registry_meta.json（`qbank check --ignore-pair X,Y --save` 写入），
+        # 此处不硬编码；check() 内部自动合并持久化对。
+        issues, warns, infos = qbank.check()
         s = qbank.stats()
         detail = f'注册表 {s["total"]} 题'
         if warns:

@@ -110,6 +110,15 @@ python scripts/run_tests.py -v           # 详细输出
 ```
 说明：重构或改规则后必须跑一次；healthcheck [I] 维度会自动执行。
 
+### 事实校验（P1-1 · 2026-08-13）
+```text
+python scripts/fact_check.py pages --file <题库.json> --subject neurology   # 页码反查
+python scripts/fact_check.py golden --file <题库.json>                      # GoldenSet 交叉验证
+```
+说明：`pages` 对照教材分块索引核验 source_pages（P0 占位符/越界=FAIL，不在索引=WARN，
+指南年份等非页码来源单独标注）；`golden` 用 jieba 分词对比金标准（下册 2754 题），
+containment≥0.7 判疑似重复、0.45-0.7 判相似，其中数值不一致（正确选项+解析 vs 金标准）判冲突（需人工核对）。
+
 ### RAG 知识库
 ```text
 python 知识库素材/embed_index.py --subject internal-med --force   # 重建单科索引
