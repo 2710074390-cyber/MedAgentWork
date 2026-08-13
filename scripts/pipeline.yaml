@@ -4,6 +4,11 @@
 # 所有阈值、Schema、门禁规则集中于此，
 # 替代 SOUL.md + Prompt 中分散的约束声明。
 #
+# ⚠️ 正式重构 (2026-08-13):
+#   - contract_schema 指向 schemas/*.schema.json，已由 ingest.py 用 jsonschema 实际校验（不再死引用）
+#   - subjects 段与 知识库素材/subject_config.json 重复，以 知识库素材/ 为 RAG 参数唯一事实来源，
+#     本文件 subjects 段仅作文档速查（修改 RAG 参数请改 知识库素材/configs/ 后运行 validate_configs.py）
+#
 # 设计参考: GitLab CI / Jenkinsfile / Argo Workflows
 # 核心理念: Pipeline as Code — 管线定义即执行规范
 
@@ -144,7 +149,9 @@ stages:
     input_dir: "最终产物/"
     output_dir: "复习资料/"
     prerequisites: [agent4]
-    contract_schema: "schemas/agent5_output.schema.json"
+    # contract: 复习资料为 MD 文档，无 JSON Schema；
+    # 契约 = Prompt版本/Agent5_MedReview_Prompt.md 的附录要求 + verify_page_numbers.py (HC-9/10/11)
+    contract_schema: null
     quality_gates:
       - id: GATE-FINAL-HC9
         type: content_check

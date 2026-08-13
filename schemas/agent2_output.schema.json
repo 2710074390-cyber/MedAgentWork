@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "medagentwork-agent2-output",
+  "title": "MedGen 题库产物契约 (agent2_output)",
+  "description": "Agent 2 (MedGen) 产出题库 JSON 的结构契约。纯数组；兼容历史字段名（question/question_type/answer_key），required 项为核心契约。由 ingest.py 在摄入时用 jsonschema 校验。",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["options"],
+    "anyOf": [
+      { "required": ["stem"] },
+      { "required": ["question"] },
+      { "required": ["question_text"] }
+    ],
+    "properties": {
+      "question_id": { "type": "string", "description": "新契约主键，如 NRO-M1-A1-001" },
+      "id": { "type": ["string", "integer"], "description": "旧契约主键" },
+      "type": { "type": "string", "enum": ["A1", "A2", "A3", "A4", "B1", "X", "判断"] },
+      "question_type": { "type": "string", "description": "旧字段名" },
+      "polarity": {
+        "type": "string",
+        "enum": ["positive", "negative", "multi", "正选", "反选", "多选"]
+      },
+      "bloom_level": {
+        "type": "string",
+        "enum": ["memory", "comprehension", "application", "analysis", "记忆", "理解", "应用", "分析"]
+      },
+      "bloom": { "type": "string", "description": "旧字段名" },
+      "module": { "type": "string", "description": "模块编号，如 M1" },
+      "stem": { "type": "string", "minLength": 1 },
+      "question": { "type": "string", "description": "旧字段名" },
+      "question_text": { "type": "string", "description": "旧字段名" },
+      "options": {
+        "type": ["object", "array"],
+        "minProperties": 2,
+        "description": "新契约: {A: text, B: text, ...}；旧契约: [{label, text}] 或 ['A. text']"
+      },
+      "answer": { "type": "string", "description": "答案键，如 C" },
+      "answer_key": { "type": "string", "description": "新契约答案键" },
+      "correct_answer": { "type": "string", "description": "旧字段名" },
+      "explanation": { "type": "string", "description": "新契约解析" },
+      "analysis": { "type": "string", "description": "旧字段名" },
+      "source": { "type": ["string", "array"] },
+      "source_pages": { "type": "array", "items": { "type": "string" } },
+      "priority_level": { "type": "string", "description": "考点优先级" },
+      "difficulty_index": { "type": "number", "description": "预估难度（LLM 估算，非实测）" },
+      "discrimination_index": { "type": "number", "description": "预估区分度（LLM 估算，非实测）" },
+      "non_functioning_distractors": { "type": "integer" },
+      "exam_focus": { "type": ["string", "boolean"] },
+      "topic": { "type": "string" }
+    },
+    "additionalProperties": true
+  }
+}

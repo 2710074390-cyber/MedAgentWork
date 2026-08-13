@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "medagentwork-agent3-output",
+  "title": "MedQC 质检报告契约 (agent3_output)",
+  "description": "Agent 3 (MedQC) 质检报告 JSON 的结构契约。核心: report_metadata.gate_decision + dimensions(含 D20) + bloom_distribution。由 ingest.py 在摄入时用 jsonschema 校验。",
+  "type": "object",
+  "required": ["report_metadata"],
+  "properties": {
+    "report_metadata": {
+      "type": "object",
+      "required": ["gate_decision"],
+      "properties": {
+        "gate_decision": {
+          "type": "string",
+          "enum": ["PASS", "PASS_WITH_FIXES", "BLOCKED", "APPROVED"]
+        },
+        "overall_score": { "type": "number" },
+        "batch_id": { "type": "string" },
+        "validation_date": { "type": "string" },
+        "qc_agent": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "dimensions": { "type": "object", "description": "维度评分，必须含 D20（B1 专项）" },
+    "dimension_scores": { "type": "object", "description": "旧字段名" },
+    "bloom_distribution": {
+      "type": "object",
+      "description": "记忆/理解/应用/分析 实际占比，Bloom 门禁依据"
+    },
+    "bloom": { "type": "object", "description": "旧字段名" },
+    "overall_score": { "type": "number", "description": "顶层评分（旧格式）" },
+    "score": { "type": "number" },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "question_id": { "type": "string" },
+          "severity": { "type": "string", "enum": ["critical", "major", "minor", "info", "FAIL", "WARN"] },
+          "rule": { "type": "string", "description": "检测维度编号，如 D20/D17" },
+          "detail": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

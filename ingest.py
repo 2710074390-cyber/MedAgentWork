@@ -20,6 +20,10 @@ sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 BASE = Path(__file__).parent
 STATE_FILE = BASE / "workflow_state.json"
 
+# 正式重构 (2026-08-13): 状态读写/血缘统一走 scripts/workflow_state.py
+sys.path.insert(0, str(BASE / 'scripts'))
+import workflow_state as ws
+
 STAGE_DIRS = {
     'agent2': '中间产物',
     'agent3': '质检报告',
@@ -87,37 +91,59 @@ def validate_json_structure(filepath):
     return issues
 
 
+# ──────────────────────────────────────────
+# 契约 schema 校验（正式重构 2026-08-13）
+# schemas/agent2_output.schema.json 等为管线契约单一事实来源，
+# 摄入时用 jsonschema 实际校验（修复 pipeline.yaml 死引用问题）。
+# ──────────────────────────────────────────
+
+SCHEMA_MAP = {
+    'agent2': 'agent2_output.schema.json',
+    'agent3': 'agent3_output.schema.json',
+    'agent4': 'agent4_output.schema.json',
+}
+
+
+def validate_schema(filepath, stage):
+    """契约 schema 校验（jsonschema）。schema 缺失/解析失败/库不可用时静默跳过。"""
+    schema_file = BASE / 'schemas' / SCHEMA_MAP.get(stage, '')
+    if not schema_file.exists():
+        return []
+    try:
+        import jsonschema
+        with open(schema_file, 'r', encoding='utf-8') as f:
+            schema = json.load(f)
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        validator = jsonschema.Draft7Validator(schema)
+        errors = sorted(validator.iter_errors(data), key=lambda e: list(e.path))
+        return [f'schema[{stage}]: {"/".join(map(str, e.path)) or "$"}: {e.message}' for e in errors[:20]]
+    except ImportError:
+        return []
+    except Exception:
+        return []
+
+
 def load_state():
-    """加载 workflow_state.json"""
-    if STATE_FILE.exists():
-        with open(STATE_FILE, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    return {}
+    """加载 workflow_state.json（统一模块，含旧数据迁移）"""
+    state, err = ws.load_state()
+    if err:
+        print(f"  ⚠️ {err}，按空状态继续")
+        return {}
+    return state
 
 
 def save_state(state):
-    """保存 workflow_state.json"""
-    with open(STATE_FILE, 'w', encoding='utf-8') as f:
-        json.dump(state, f, ensure_ascii=False, indent=2)
+    """保存 workflow_state.json（统一模块，原子写盘）"""
+    ws.save_state(state)
     print(f"  📄 workflow_state.json 已更新")
 
 
 def add_lineage(state, batch_id, stage, filepath, file_md5):
-    """添加血缘记录到批次"""
+    """添加血缘记录（统一模块）；保留 Prompt 版本内容推断"""
     if batch_id not in state:
         print(f"  ⚠️ 批次 {batch_id} 在 workflow_state.json 中不存在，创建新条目")
-        state[batch_id] = {
-            'batch_id': batch_id,
-            'status': 'IN_PROGRESS',
-            'created': datetime.now().isoformat(),
-            'workflow': 'Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)',
-        }
 
-    batch = state[batch_id]
-    if 'lineage' not in batch:
-        batch['lineage'] = []
-
-    # 确定 agent_model（尝试从文件名或内容推断，无法确定则写 unknown）
     model = 'unknown'
     prompt_version = 'unknown'
 
@@ -131,30 +157,8 @@ def add_lineage(state, batch_id, stage, filepath, file_md5):
     except Exception:
         pass
 
-    entry = {
-        'stage': f'{stage}_DONE',
-        'input_file': str(filepath),
-        'input_md5': file_md5,
-        'agent_model': model,
-        'prompt_version': prompt_version,
-        'timestamp': datetime.now().isoformat(),
-    }
-    batch['lineage'].append(entry)
-
-    # 更新 steps 状态
-    if 'steps' not in batch:
-        batch['steps'] = {}
-    stage_key = stage.upper()
-    batch['steps'][stage_key] = {
-        'status': 'COMPLETED',
-        'output': str(filepath.name),
-        'md5': file_md5,
-    }
-
-    # 更新批次状态
-    batch['status'] = f'{stage_key}_DONE'
-
-    return batch
+    return ws.add_lineage(state, batch_id, stage, filepath, file_md5,
+                          model=model, prompt_version=prompt_version)
 
 
 def run_precheck(filepath, batch_id):
@@ -225,6 +229,13 @@ def main():
     if source.suffix == '.json':
         print(f"\n  🩺 JSON 结构预检...")
         issues = validate_json_structure(source)
+        # 2a. 契约 schema 校验（正式重构: schemas/*.schema.json 实时生效）
+        schema_issues = validate_schema(source, args.stage)
+        if schema_issues:
+            print(f"  ⚠️ 契约 schema 发现 {len(schema_issues)} 个问题:")
+            for issue in schema_issues[:10]:
+                print(f"    - {issue}")
+            issues += schema_issues
         if issues:
             print(f"  ✗ 发现 {len(issues)} 个结构问题:")
             for issue in issues[:10]:

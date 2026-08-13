@@ -22,15 +22,17 @@
   exit 1 = GATE_BLOCKED（必须修复后重试）
   exit 2 = GATE_FAIL（脚本/数据错误）
 """
-import sys, json, os, re, argparse
+import sys, json, re, argparse
 from pathlib import Path
 from datetime import datetime
-from collections import Counter
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 BASE = Path(__file__).parent
-WORKFLOW_STATE = BASE / 'workflow_state.json'
+
+# 正式重构 (2026-08-13): 状态读写/HALT 统一走 scripts/workflow_state.py
+sys.path.insert(0, str(BASE / 'scripts'))
+import workflow_state as ws
 
 
 # ═══════════════════════════════════════
@@ -162,23 +164,9 @@ def normalize_batch(batch_data):
     return normalized
 
 
-def load_state():
-    """加载工作流状态"""
-    if not WORKFLOW_STATE.exists():
-        return None, f'{WORKFLOW_STATE} 不存在'
-    try:
-        with open(WORKFLOW_STATE, 'r', encoding='utf-8') as f:
-            return json.load(f), None
-    except json.JSONDecodeError as e:
-        return None, f'JSON 解析失败: {e}'
-
-
-def save_state(state):
-    """保存工作流状态（原子写入）"""
-    tmp = WORKFLOW_STATE.with_suffix('.tmp')
-    with open(tmp, 'w', encoding='utf-8') as f:
-        json.dump(state, f, ensure_ascii=False, indent=2)
-    os.replace(tmp, WORKFLOW_STATE)
+# 正式重构 (2026-08-13): load_state/save_state/set_halt/clear_halt/check_halt
+# 已统一迁移至 scripts/workflow_state.py（原子写盘、按批次 HALT、旧数据迁移），
+# 本文件不再保留本地实现，全部经由 ws.* 调用。
 
 
 def find_validate_report(batch_id):
@@ -778,89 +766,20 @@ def detect_current_stage(state, batch_id):
 
 
 # ═══════════════════════════════════════
-# Halt 信号管理
+# Halt 信号管理（已迁移至 scripts/workflow_state.py）
 # ═══════════════════════════════════════
-
-def set_halt(state, batch_id, reason, agent):
-    """在 workflow_state.json 中设置 halt 信号（按批次作用域）。
-
-    v1.1 (2026-08-13): halt 从全局改为按批次作用域 ——
-    全局 halt 会因一个批次的门禁失败停掉整条管线（含已签收批次），
-    现在 halt 记录携带 batch_id，check_halt 只对同批次生效。
-    """
-    state['halt'] = {
-        'active': True,
-        'batch_id': batch_id,
-        'reason': reason,
-        'agent': agent,
-        'timestamp': datetime.now().isoformat(),
-    }
-
-    # 也在批次记录中标记
-    if batch_id in state:
-        batch = state[batch_id]
-        if isinstance(batch, dict):
-            if 'gate_results' not in batch:
-                batch['gate_results'] = {}
-            batch['gate_results']['halt'] = {
-                'active': True,
-                'reason': reason,
-                'agent': agent,
-                'batch_id': batch_id,
-            }
-
-    save_state(state)
-    print(f"\n  🛑 HALT 信号已设置（批次 {batch_id}）: {reason}")
-
-
-def clear_halt(state, batch_id):
-    """清除 halt 信号"""
-    if 'halt' in state:
-        state['halt'] = {'active': False}
-    if batch_id in state:
-        batch = state[batch_id]
-        if isinstance(batch, dict) and 'gate_results' in batch:
-            batch['gate_results']['halt'] = {'active': False}
-    save_state(state)
-    print(f"  ✅ HALT 信号已清除")
+# set_halt / clear_halt / check_halt 统一由 ws.* 提供（按批次作用域）。
+# 本文件保留打印输出，逻辑见 workflow_state.py。
 
 
 # ═══════════════════════════════════════
 # 主入口
 # ═══════════════════════════════════════
 
-def check_halt(state, batch_id):
-    """检查 halt 信号（按批次作用域）。
-
-    v1.1 (2026-08-13): 仅当 halt 属于当前批次（或为无 batch_id 的历史
-    全局 halt）时阻断；其他批次的门禁失败不再停掉本批次。
-    """
-    halt = state.get('halt', {})
-    if halt.get('active'):
-        halt_batch = halt.get('batch_id')
-        if halt_batch is None or halt_batch == batch_id:
-            return {
-                'gate': 'HALT',
-                'status': 'BLOCKED',
-                'reason': f"批次 {batch_id} 已停止: {halt.get('reason', '未知')} (触发Agent: {halt.get('agent', '?')})",
-            }
-    # 也检查批次级别 halt
-    if batch_id in state:
-        batch = state[batch_id]
-        if isinstance(batch, dict):
-            batch_halt = batch.get('gate_results', {}).get('halt', {})
-            if batch_halt.get('active'):
-                return {
-                    'gate': 'HALT',
-                    'status': 'BLOCKED',
-                    'reason': f"批次 {batch_id} 已停止: {batch_halt.get('reason', '未知')}",
-                }
-    return None
-
 
 def run_gate_check(batch_id, stage, run_regression=True):
     """执行门禁检查"""
-    state, err = load_state()
+    state, err = ws.load_state()
     if err:
         print(f"  ✗ 无法加载工作流状态: {err}")
         sys.exit(2)
@@ -883,7 +802,7 @@ def run_gate_check(batch_id, stage, run_regression=True):
         sys.exit(2)
 
     # 先检查 halt 信号
-    halt_result = check_halt(state, batch_id)
+    halt_result = ws.check_halt(state, batch_id)
     if halt_result:
         print(f"\n{'═'*60}")
         print(f"  🛑 管线已停止")
@@ -963,11 +882,12 @@ def run_gate_check(batch_id, stage, run_regression=True):
             # 修复前曾因历史门禁误判停掉整条管线（batch024 事件）。
             print(f"\n  ⚠️ 批次 {batch_id} 已签收（APPROVED），门禁结果仅作参考，不写入 HALT。")
         else:
-            set_halt(state, batch_id,
-                     f'{stage} 门禁未通过: ' + '; '.join(r['reason'] for r in results if r['status'] != 'PASS'),
-                     'MedMaster/gate_check.py')
+            ws.set_halt(state, batch_id,
+                        f'{stage} 门禁未通过: ' + '; '.join(r['reason'] for r in results if r['status'] != 'PASS'),
+                        'MedMaster/gate_check.py')
+            print(f"\n  🛑 HALT 信号已设置（批次 {batch_id}）")
 
-    save_state(state)
+    ws.save_state(state)
 
     # 汇总
     print(f"\n{'─'*60}")
@@ -1010,11 +930,13 @@ def main():
     args = parser.parse_args()
 
     if args.clear_halt:
-        state, err = load_state()
+        state, err = ws.load_state()
         if err:
             print(f"  ✗ {err}")
             sys.exit(2)
-        clear_halt(state, args.batch)
+        ws.clear_halt(state, args.batch)
+        ws.save_state(state)
+        print(f"  ✅ HALT 信号已清除")
         sys.exit(0)
 
     run_gate_check(args.batch, args.stage)
