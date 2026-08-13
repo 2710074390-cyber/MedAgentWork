@@ -1,0 +1,67 @@
+{
+  "subject": "中医学",
+  "subject_code": "tcm",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 500,
+    "overlap": 120,
+    "min_chunk_size": 60,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(麻黄汤|桂枝汤|麻黄杏仁|银翘散|桑菊饮|九味羌活汤|小青龙汤|大青龙|止嗽散|柴葛|人参败毒|麻杏石甘|白虎汤|犀角地黄|清营汤|黄连解毒|普济消毒|导赤散|龙胆泻肝|左金丸|泻白散|清胃散|芍药汤|白头翁汤|苇茎汤)",
+        "description": "核心方剂不拆分——方名+组成+功用+主治+加减须在同一chunk"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(君臣佐使|君药|臣药|佐药|使药|配伍|功效|主治)",
+        "description": "方剂分析法不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(腧穴|定位|归经|主治|刺灸法|进针|得气|灸法)",
+        "description": "每穴独立chunk不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(辨证论治|八纲辨证|脏腑辨证|病因辨证|卫气营血|六经辨证)",
+        "description": "辨证分型不拆分"
+      }
+    ],
+    "metadata_enrichment": ["has_formula", "has_acupoint", "has_diagnostic_criteria"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.70,
+    "hybrid_search": true,
+    "keyword_weight": 0.6,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "感冒": "感冒",
+      "咳嗽": "咳嗽",
+      "喘证": "喘证",
+      "心悸": "心悸",
+      "胸痹": "胸痹",
+      "头痛": "头痛",
+      "眩晕": "眩晕",
+      "中风": "中风",
+      "水肿": "水肿",
+      "淋证": "淋证",
+      "消渴": "消渴"
+    }
+  }
+}

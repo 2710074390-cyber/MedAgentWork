@@ -1,0 +1,70 @@
+{
+  "subject": "精神病学（习题集）",
+  "subject_code": "psychiatry-exercise",
+  "version": "1.0",
+  "description": "人卫《精神病学学习指导与习题集》第5版 — Q&A格式，每题独立保护",
+
+  "chunk_strategy": {
+    "chunk_size": 1000,
+    "overlap": 180,
+    "min_chunk_size": 120,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2,
+        "description": "含>=2个数值（如病程标准、剂量）的段落不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(A1型题|A2型题|A3型题|A4型题|B1型题|X型题|名词解释|简答题|论述题|病例分析)",
+        "description": "题型标题不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(题干|问题|选项|答案|解析|★|参考答案|解题思路)",
+        "description": "完整Q&A结构不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(诊断标准|DSM|ICD-10|ICD-11|CCMD|诊断条目|符合.*条)",
+        "description": "精神科诊断标准条目不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(SAPS|SANS|PANSS|BPRS|HAMA|HAMD|YMRS|CGI|GAF|SCL-90|MMSE|MoCA)",
+        "description": "评定量表名称及条目不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(首选药物|治疗原则|电抽搐|心理治疗|CBT|不良反应|禁忌证)",
+        "description": "治疗方案关键信息不拆分"
+      }
+    ],
+    "metadata_enrichment": ["has_question", "has_kaodian", "has_diagnostic_criteria", "has_scale", "has_drug_info"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 15,
+    "top_n": 5,
+    "score_threshold": 0.70,
+    "hybrid_search": true,
+    "keyword_weight": 0.40,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "抑郁症": "抑郁发作",
+      "躁狂": "躁狂发作",
+      "精分": "精神分裂症",
+      "双相": "双相情感障碍",
+      "OCD": "强迫障碍",
+      "PTSD": "创伤后应激障碍",
+      "首选": "首选药物"
+    }
+  }
+}

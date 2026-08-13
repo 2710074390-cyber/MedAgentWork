@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>神经病学 押题卷</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;background:#eef1f5;color:#1a1a2e;line-height:1.8;padding-top:132px}
+#topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(135deg,#0d1b2a,#1b2838,#1a237e);color:#fff;padding:16px 20px;box-shadow:0 2px 16px rgba(0,0,0,.25)}
+#topbar .inner{max-width:960px;margin:0 auto}
+#topbar h1{font-size:20px;margin-bottom:4px;display:inline;margin-right:12px;letter-spacing:1px}
+#topbar .meta{font-size:12px;opacity:.7;display:inline}
+#topbar .progress-row{display:flex;align-items:center;gap:12px;margin-top:8px}
+#topbar .progress-wrap{flex:1;background:rgba(255,255,255,.12);border-radius:6px;height:6px;overflow:hidden}
+#topbar .progress-bar{height:100%;background:#34a853;border-radius:6px;transition:width .4s;width:0%}
+#topbar .progress-label{font-size:11px;opacity:.8;white-space:nowrap;min-width:50px;text-align:right}
+#topbar .btn-row{display:flex;gap:8px;margin-top:6px}
+#topbar button{padding:5px 16px;border:none;border-radius:14px;font-size:12px;cursor:pointer;font-weight:600;transition:all .2s}
+#topbar .btn-reset{background:rgba(255,255,255,.2);color:#fff}
+#topbar .btn-reset:hover{background:rgba(255,255,255,.35)}
+#topbar .btn-show{background:rgba(255,255,255,.2);color:#fff}
+#topbar .btn-show:hover{background:rgba(255,255,255,.35)}
+.container{max-width:960px;margin:0 auto;padding:0 20px 20px}
+.question{background:#fff;border-radius:12px;padding:24px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);transition:all .3s}
+.question.correct{border-left:4px solid #34a853;background:#f6fef6}
+.question.wrong{border-left:4px solid #ea4335;background:#fef7f7}
+.q-num{display:inline-block;background:#e8f0fe;color:#1a73e8;padding:2px 12px;border-radius:12px;font-size:13px;font-weight:600;margin-right:4px}
+.q-type{display:inline-block;font-size:12px;padding:2px 10px;border-radius:12px}
+.q-type.A1{background:#e8f5e9;color:#2e7d32}
+.q-type.A2{background:#e3f2fd;color:#1565c0}
+.q-type.A3,.q-type.A4{background:#fce4ec;color:#c62828}
+.q-type.B1{background:#fff3e0;color:#e65100}
+.q-type.X{background:#f3e5f5;color:#7b1fa2}
+.q-type.判断{background:#e0f2f1;color:#00695c}
+.q-stem{font-size:16px;margin:10px 0 14px;font-weight:500}
+.option{padding:10px 16px;margin:4px 0;border-radius:8px;background:#f8f9fa;cursor:pointer;transition:all .15s;border:2px solid transparent;display:flex;align-items:baseline;user-select:none}
+.option:hover{background:#e8f0fe;border-color:#1a73e8;transform:translateX(3px)}
+.option.correct-show{border-color:#34a853;background:#e8f5e9!important;cursor:default}
+.option.wrong-pick{border-color:#ea4335;background:#fce8e6!important;cursor:default}
+.option.picked{border-color:#7b1fa2;background:#f3e5f5!important;transform:translateX(3px)}
+.option.picked .opt-label{color:#7b1fa2}
+.option.no-click{pointer-events:none;opacity:.85}
+.opt-label{font-weight:700;color:#1a73e8;margin-right:10px;min-width:26px;flex-shrink:0}
+.option.correct-show .opt-label{color:#2e7d32}
+.option.wrong-pick .opt-label{color:#c62828}
+.result-icon{display:none;margin-left:auto;font-size:18px;font-weight:700}
+.result-icon.show{display:inline}
+.answer-box{display:none;margin-top:12px;padding:16px;border-radius:8px;animation:fadeIn .3s}
+.answer-box.open{display:block}
+.answer-box.ok{background:#e8f5e9;border-left:3px solid #34a853}
+.answer-box.no{background:#fef0ef;border-left:3px solid #ea4335}
+.ans-head{font-size:16px;font-weight:700;margin-bottom:4px}
+.ans-head.green{color:#2e7d32}
+.ans-head.red{color:#c62828}
+.exp{font-size:14px;color:#333;line-height:1.75}
+.src{font-size:12px;color:#888;margin-top:6px}
+.case-group{background:#fff;border-radius:12px;padding:22px;margin-bottom:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);border-left:4px solid #1a73e8}
+.case-header{font-size:15px;color:#333;margin-bottom:14px;padding:14px 18px;background:#f0f4ff;border-radius:8px}
+.case-label{font-weight:700;color:#1a73e8}
+.b1-box{background:#fff3e0;padding:14px 18px;border-radius:8px;margin:12px 0 16px;font-size:14px;border-left:3px solid #e65100;line-height:2}
+.b1-label{font-weight:700;color:#e65100}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.footer{text-align:center;padding:24px;color:#999;font-size:12px}
+@media print{body{background:#fff;padding-top:0}#topbar{position:static;background:#1a237e;box-shadow:none}.no-print{display:none}.answer-box{display:block!important}.option{cursor:default;pointer-events:none}}
+</style>
+</head>
+<body>
+<div id="topbar">
+<div class="inner">
+<h1>🧠 神经病学 押题卷</h1><span class="meta">基于教师最新重点(2026) | __TOTAL_Q__题 | 全新命制</span>
+<div class="progress-row">
+<div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>
+<span class="progress-label" id="plabel">0/__TOTAL_Q__</span>
+</div>
+<div class="btn-row">
+<span style="font-size:12px;opacity:.9">✅<b id="cc">0</b> ❌<b id="wc">0</b> 📊<b id="sp">0%</b></span>
+<span style="flex:1"></span>
+<button class="btn-reset" onclick="Quiz.reset()">🔄 重置</button>
+<button class="btn-show" onclick="Quiz.showAll()">📖 展开解析</button>
+</div>
+</div>
+</div>
+<div class="container"><div id="quiz-root"></div></div>
+<div class="footer">MedAgentWork · 神经病学押题卷 · 点击选项直接作答</div>
+
+<script>
+var Quiz = (function(){
+var data = __JS_DATA__;
+
+var TOTAL = 0;
+for(var i=0;i<data.length;i++) if(data[i].t==='q') TOTAL++;
+
+var state = {answered:{},correct:0,wrong:0,selected:{}};
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function tc(t){
+    var m={A1:'A1',A2:'A2',A3:'A3',A4:'A4',B1:'B1',X:'X'};
+    return m[t]||'判断';
+}
+
+function updateBar(){
+    var a=state.correct+state.wrong;
+    document.getElementById('cc').textContent=state.correct;
+    document.getElementById('wc').textContent=state.wrong;
+    document.getElementById('sp').textContent=a>0?Math.round(state.correct/a*100)+'%':'0%';
+    document.getElementById('pbar').style.width=(a/TOTAL*100)+'%';
+    document.getElementById('plabel').textContent=a+'/'+TOTAL;
+    if(a===TOTAL&&state.wrong===0) document.getElementById('pbar').style.background='#34a853';
+    else if(a===TOTAL) document.getElementById('pbar').style.background='#fbbc04';
+}
+
+function arraysEqual(a,b){
+    if(a.length!==b.length) return false;
+    var sa=a.slice().sort(), sb=b.slice().sort();
+    for(var i=0;i<sa.length;i++) if(sa[i]!==sb[i]) return false;
+    return true;
+}
+
+function finishQuestion(idx,isOk,correct,userLabels){
+    state.answered[idx]=true;
+    var q=data[idx];
+    if(isOk) state.correct++; else state.wrong++;
+    var qDiv=document.getElementById('q'+idx);
+    var opts=qDiv.querySelectorAll('.option');
+    var panel=document.getElementById('p'+idx);
+    if(isOk){
+        qDiv.classList.add('correct');
+        panel.classList.add('open','ok');
+        panel.firstChild.className='ans-head green';
+        panel.firstChild.textContent='\u2705 回答正确！答案：'+correct.join(', ');
+    }else{
+        qDiv.classList.add('wrong');
+        panel.classList.add('open','no');
+        panel.firstChild.className='ans-head red';
+        panel.firstChild.textContent='\u274c 回答错误！正确答案：'+correct.join(', ');
+    }
+    for(var k=0;k<opts.length;k++){
+        var o=opts[k], ol=o.getAttribute('data-l');
+        o.classList.add('no-click');
+        if(correct.indexOf(ol)>=0){
+            o.classList.add('correct-show');
+            o.lastChild.classList.add('show'); o.lastChild.textContent='\u2713';
+        }
+        if(userLabels.indexOf(ol)>=0&&!isOk){
+            o.classList.add('wrong-pick');
+            o.lastChild.classList.add('show'); o.lastChild.textContent='\u2717';
+        }
+    }
+    updateBar();
+    setTimeout(function(){
+        for(var j=idx+1;j<data.length;j++){
+            if(data[j].t==='q'&&!state.answered[j]){
+                var n=document.getElementById('q'+j);
+                if(n) n.scrollIntoView({behavior:'smooth',block:'center'});
+                break;
+            }
+        }
+    },350);
+}
+
+function pick(idx,label){
+    if(state.answered[idx]) return;
+    var q=data[idx], correct=q.c;
+
+    if(q.tp==='X'){
+        if(!state.selected[idx]) state.selected[idx]=[];
+        var sel=state.selected[idx];
+        var pos=sel.indexOf(label);
+        if(pos>=0){
+            sel.splice(pos,1);
+            document.querySelector('#q'+idx+' .option[data-l="'+label+'"]').classList.remove('picked');
+        }else{
+            sel.push(label);
+            document.querySelector('#q'+idx+' .option[data-l="'+label+'"]').classList.add('picked');
+        }
+        if(sel.length===correct.length){
+            var isOk=arraysEqual(sel,correct);
+            finishQuestion(idx,isOk,correct,sel.slice());
+        }
+        return;
+    }
+
+    var isOk=correct.indexOf(label)>=0;
+    finishQuestion(idx,isOk,correct,[label]);
+}
+
+function reset(){
+    state={answered:{},correct:0,wrong:0,selected:{}};
+    var qs=document.querySelectorAll('.question');
+    for(var i=0;i<qs.length;i++) qs[i].classList.remove('correct','wrong');
+    var os=document.querySelectorAll('.option');
+    for(var i=0;i<os.length;i++){
+        os[i].classList.remove('no-click','correct-show','wrong-pick','picked');
+        os[i].lastChild.classList.remove('show'); os[i].lastChild.textContent='';
+    }
+    var ps=document.querySelectorAll('.answer-box');
+    for(var i=0;i<ps.length;i++) ps[i].classList.remove('open','ok','no');
+    document.getElementById('pbar').style.background='#34a853';
+    updateBar();
+    window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showAll(){
+    var ps=document.querySelectorAll('.answer-box');
+    for(var i=0;i<ps.length;i++) ps[i].classList.add('open');
+}
+
+function render(){
+    var root=document.getElementById('quiz-root');
+    var h='', caseOpen=false, realNum=0, b1Open=false;
+    for(var i=0;i<data.length;i++){
+        var q=data[i];
+        if(q.t==='c'){
+            if(caseOpen) h+='</div>';
+            if(b1Open){h+='</div>';b1Open=false;}
+            h+='<div class="case-group"><div class="case-header"><span class="case-label">\ud83d\udccb 病例 '+q.n+'</span>  '+esc(q.cs)+'</div>';
+            caseOpen=true;
+        }else if(q.t==='b'){
+            if(b1Open) h+='</div>';
+            if(caseOpen){h+='</div>';caseOpen=false;}
+            h+='<div class="b1-box"><span class="b1-label">\ud83d\udd17 共用选项：</span> '+esc(q.lb)+'</div>';
+            b1Open=true;
+        }else{
+            realNum++;
+            var isX=q.tp==='X';
+            h+='<div class="question" id="q'+i+'">';
+            h+='<span class="q-num">'+realNum+'</span><span class="q-type '+tc(q.tp)+'">'+q.tp+'</span>';
+            if(isX) h+=' <span style="font-size:11px;color:#7b1fa2;font-weight:600">(多选——点击切换选择，选够'+q.c.length+'个自动提交)</span>';
+            if(q.tp==='\u5224\u65ad') h+=' <span style="font-size:11px;color:#00695c">(判断正误)</span>';
+            h+='<div class="q-stem">'+esc(q.s)+'</div>';
+            if(q.o){
+                for(var k=0;k<q.o.length;k++){
+                    var o=q.o[k];
+                    h+='<div class="option" data-l="'+o.l+'" onclick="Quiz.pick('+i+',\''+o.l+'\')">';
+                    h+='<span class="opt-label">'+o.l+'.</span><span>'+esc(o.x)+'</span>';
+                    h+='<span class="result-icon">\u2713</span></div>';
+                }
+            }
+            h+='<div class="answer-box" id="p'+i+'">';
+            h+='<div class="ans-head">\u2705 答案：'+q.c.join(', ')+' | '+q.tp+' | '+q.bl+'</div>';
+            h+='<div class="exp">'+esc(q.ex)+'</div>';
+            if(q.sr) h+='<div class="src">\ud83d\udcd6 '+esc(q.sr)+'</div>';
+            h+='</div></div>';
+        }
+    }
+    if(caseOpen) h+='</div>';
+    if(b1Open) h+='</div>';
+    root.innerHTML=h;
+}
+
+render();
+updateBar();
+
+return {pick:pick,reset:reset,showAll:showAll};
+})();
+</script>
+</body>
+</html>

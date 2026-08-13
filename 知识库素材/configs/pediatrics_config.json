@@ -1,0 +1,60 @@
+{
+  "subject": "儿科学",
+  "subject_code": "pediatrics",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 600,
+    "overlap": 150,
+    "min_chunk_size": 80,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(正常值|参考值|正常范围|心率|呼吸|血压|体温)",
+        "description": "不同年龄正常值不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(生长发育|生长曲线|发育里程碑|抬头|独坐|站立|行走|语言发育|社交发育)",
+        "description": "发育里程碑不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "mg/kg",
+        "description": "按体重给药剂量不拆分"
+      },
+      {
+        "type": "age_aware",
+        "description": "chunk级别标注适用年龄范围",
+        "age_patterns": ["新生儿", "婴儿", "幼儿", "学龄前", "学龄期", "青春期"]
+      }
+    ],
+    "metadata_enrichment": ["has_age_specific", "has_dosage_calc", "has_milestone"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 7,
+    "score_threshold": 0.70,
+    "hybrid_search": true,
+    "keyword_weight": 0.3,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "黄疸": "新生儿黄疸",
+      "肺炎": "小儿肺炎",
+      "腹泻": "小儿腹泻病",
+      "贫血": "营养性缺铁性贫血"
+    }
+  }
+}

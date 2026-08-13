@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>医患沟通 押题卷</title>
+<style>
+:root{--bg:#f5f0e8;--card:#fffdf9;--accent:#c7924b;--accent2:#8b5e3c;--green:#4a8c5c;--red:#c44e4e;--purple:#8b5a7a;--orange:#c08040;--teal:#4a7c7c;--top1:#3e2723;--top2:#5d3a2e;--top3:#2e4a3b;--text:#2c2416;--text2:#5c5242;--border:#e8dfd0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Serif SC','Source Han Serif SC','Songti SC',Georgia,'Times New Roman',serif;background:var(--bg);color:var(--text);line-height:1.85;padding-top:136px;background-image:radial-gradient(ellipse at 50% 0%,rgba(199,146,75,.06) 0%,transparent 70%),radial-gradient(ellipse at 80% 100%,rgba(46,74,59,.04) 0%,transparent 60%)}
+#topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(135deg,var(--top1) 0%,var(--top2) 40%,var(--top3) 100%);color:#f5efe0;padding:18px 20px 14px;box-shadow:0 3px 20px rgba(62,39,35,.35);border-bottom:2px solid rgba(199,146,75,.3);transition:transform .35s ease}#topbar.hidden{transform:translateY(-100%)}
+#topbar .inner{max-width:980px;margin:0 auto}
+#topbar h1{font-size:21px;margin-bottom:3px;display:inline;margin-right:14px;letter-spacing:2px;font-weight:700}
+#topbar .meta{font-size:12px;opacity:.75;display:inline;letter-spacing:.5px}
+#topbar .progress-row{display:flex;align-items:center;gap:12px;margin-top:10px}
+#topbar .progress-wrap{flex:1;background:rgba(255,255,255,.1);border-radius:8px;height:7px;overflow:hidden}
+#topbar .progress-bar{height:100%;background:var(--accent);border-radius:8px;transition:width .4s cubic-bezier(.4,0,.2,1);width:0%}
+#topbar .progress-label{font-size:11px;opacity:.8;white-space:nowrap;min-width:52px;text-align:right;font-family:'SF Mono','Cascadia Code',monospace}
+#topbar .btn-row{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap}
+#topbar .btn-row .stats{font-size:12px;opacity:.85;letter-spacing:.3px}
+#topbar .btn-row .stats b{color:var(--accent);font-size:14px}
+#topbar button{padding:5px 18px;border:1px solid rgba(245,239,224,.25);border-radius:16px;font-size:12px;cursor:pointer;font-weight:600;transition:all .25s;background:rgba(245,239,224,.08);color:#f5efe0;font-family:inherit;letter-spacing:.5px}
+#topbar button:hover{background:rgba(199,146,75,.25);border-color:var(--accent);transform:translateY(-1px)}
+#topbar .btn-reset{background:rgba(245,239,224,.12)}
+#topbar .btn-show{background:rgba(245,239,224,.12)}
+.container{max-width:980px;margin:0 auto;padding:0 20px 30px}
+.question{background:var(--card);border-radius:12px;padding:24px 26px;margin-bottom:16px;box-shadow:0 2px 12px rgba(62,39,35,.06),0 0 0 1px rgba(62,39,35,.04);transition:all .3s;border-left:4px solid transparent}
+.question.correct{border-left-color:var(--green);background:#f6faf7}
+.question.wrong{border-left-color:var(--red);background:#fdf6f6}
+.q-num{display:inline-block;background:rgba(199,146,75,.12);color:var(--accent2);padding:3px 13px;border-radius:14px;font-size:13px;font-weight:700;margin-right:6px;letter-spacing:.5px}
+.q-type{display:inline-block;font-size:11px;padding:2px 10px;border-radius:12px;font-weight:600;letter-spacing:.5px}
+.q-type.A1{background:#eaf4ec;color:#3a6b4a}
+.q-type.A2{background:#e8eff7;color:#3a5a8b}
+.q-type.A3,.q-type.A4{background:#fbeaee;color:#8b3a4a}
+.q-type.B1{background:#fdf0e0;color:#8b5a2e}
+.q-type.X{background:#f3e8f3;color:#7a4a7a}
+.q-type.判断{background:#e4f0ef;color:#3a6b6b}
+.q-stem{font-size:15.5px;margin:10px 0 15px;font-weight:600;color:var(--text);line-height:1.85}
+.option{padding:11px 18px;margin:5px 0;border-radius:9px;background:#faf7f2;cursor:pointer;transition:all .18s;border:1.5px solid transparent;display:flex;align-items:baseline;user-select:none;font-size:14.5px}
+.option:hover{background:#f5efe0;border-color:var(--accent);transform:translateX(4px);box-shadow:0 2px 8px rgba(199,146,75,.12)}
+.option.correct-show{border-color:var(--green);background:#eaf4ec!important;cursor:default;transform:none}
+.option.wrong-pick{border-color:var(--red);background:#fbeaec!important;cursor:default;transform:none}
+.option.picked{border-color:var(--purple);background:#f3e8f3!important;transform:translateX(4px)}
+.option.picked .opt-label{color:var(--purple)}
+.option.no-click{pointer-events:none;opacity:.9}
+.opt-label{font-weight:700;color:var(--accent2);margin-right:12px;min-width:26px;flex-shrink:0;font-family:'SF Mono','Cascadia Code',monospace;font-size:14px}
+.option.correct-show .opt-label{color:var(--green)}
+.option.wrong-pick .opt-label{color:var(--red)}
+.result-icon{display:none;margin-left:auto;font-size:18px;font-weight:700;flex-shrink:0}
+.result-icon.show{display:inline}
+.answer-box{display:none;margin-top:14px;padding:18px 20px;border-radius:10px;animation:fadeIn .35s}
+.answer-box.open{display:block}
+.answer-box.ok{background:#f0f7f3;border-left:3px solid var(--green)}
+.answer-box.no{background:#fdf3f2;border-left:3px solid var(--red)}
+.ans-head{font-size:15px;font-weight:700;margin-bottom:6px}
+.ans-head.green{color:var(--green)}
+.ans-head.red{color:var(--red)}
+.exp{font-size:13.5px;color:var(--text2);line-height:1.85}
+.src{font-size:11.5px;color:#a09080;margin-top:8px;font-style:italic}
+.src b{color:var(--accent);font-style:normal}
+.case-group{background:var(--card);border-radius:12px;padding:22px 24px;margin-bottom:16px;box-shadow:0 2px 12px rgba(62,39,35,.06);border-left:4px solid var(--accent2)}
+.case-header{font-size:14.5px;color:var(--text);margin-bottom:16px;padding:15px 20px;background:rgba(199,146,75,.08);border-radius:9px;line-height:1.85}
+.case-label{font-weight:700;color:var(--accent2);letter-spacing:1px}
+.b1-box{background:rgba(199,146,75,.06);padding:15px 20px;border-radius:9px;margin:12px 0 18px;font-size:14px;border-left:3px solid var(--orange);line-height:2.1;color:var(--text2)}
+.b1-label{font-weight:700;color:var(--orange)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+.footer{text-align:center;padding:28px 20px;color:#b8a898;font-size:12px;letter-spacing:1px;border-top:1px solid var(--border);margin-top:10px}
+.footer span{color:var(--accent2)}
+
+/* Topic tag styles */
+.topic-tag{display:inline-block;font-size:10px;padding:1px 8px;border-radius:8px;margin-left:6px;font-weight:500;vertical-align:middle;letter-spacing:.3px}
+.topic-tag.teacher{background:rgba(199,146,75,.15);color:var(--accent2)}
+
+@media(max-width:640px){
+  body{padding-top:160px}
+  #topbar{padding:14px 14px 12px}
+  #topbar h1{font-size:17px;display:block;margin-bottom:4px}
+  .container{padding:0 12px 20px}
+  .question,.case-group{padding:18px 16px}
+  .option{padding:10px 14px;font-size:13.5px}
+  .q-stem{font-size:14.5px}
+}
+@media print{
+  body{background:#fff;padding-top:0;font-size:12px}
+  #topbar{position:static;background:var(--top2)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;box-shadow:none;border:none}
+  .no-print{display:none}
+  .answer-box{display:block!important}
+  .option{cursor:default;pointer-events:none}
+  .question,.case-group{break-inside:avoid;box-shadow:none;border:1px solid #ddd}
+}
+
+
+
+
+
+</style>
+</head>
+<body><div id="topbar">
+<div class="inner">
+<h1>&#x1f3a5; 医患沟通 押题卷</h1><span class="meta">基于教师最新重点(2026) | 60题 | 执业医师备考</span>
+<div class="progress-row">
+<div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>
+<span class="progress-label" id="plabel">0/60</span>
+</div>
+<div class="btn-row">
+<span class="stats">&#x2705;<b id="cc">0</b> &#x274c;<b id="wc">0</b> &#x1f4ca;<b id="sp">0%</b></span>
+<span style="flex:1"></span>
+<button class="btn-reset no-print" onclick="Quiz.reset()">&#x1f504; 重置</button>
+<button class="btn-show no-print" onclick="Quiz.showAll()">&#x1f4d6; 展开解析</button>
+</div>
+</div>
+</div>
+<div class="container"><div id="quiz-root"></div></div>
+<div class="footer">MedAgentWork &middot; <span>医患沟通押题卷</span> &middot; 点击选项直接作答 &middot; 教师重点优先</div>
+
+<script>
+var Quiz = (function(){
+var data = [
+/* ===== A1型 单选题 27题 ===== */
+{"t":"q","n":1,"tp":"A1","s":"将医患关系归纳为\"主动-被动型、指导-合作型、共同参与型\"三种模式的学者是：","o":[{"l":"A","x":"弗洛伊德和荣格"},{"l":"B","x":"萨斯和荷伦德"},{"l":"C","x":"恩格尔和马斯洛"},{"l":"D","x":"罗杰斯和斯金纳"},{"l":"E","x":"皮亚杰和维果茨基"}],"c":["B"],"ex":"1956年，美国学者萨斯（Szasz）和荷伦德（Hollender）根据医生和病人在医疗决策与执行中的地位及主动性，将医患关系概括为三种基本模式：主动-被动型、指导-合作型、共同参与型。这一分类至今仍是理解医患关系的基础框架。","sr":"教材第2章","bl":"记忆"},
+
+{"t":"q","n":2,"tp":"A1","s":"关于主动-被动型医患关系模式，以下描述正确的是：","o":[{"l":"A","x":"适用于慢性病患者，医患平等协商"},{"l":"B","x":"原型为成人-成人关系，强调患者自助"},{"l":"C","x":"医生完全主动、患者完全被动，原型为父母-婴儿"},{"l":"D","x":"患者主动寻求医生帮助并配合执行"},{"l":"E","x":"医患双方共同参与医疗方案的制定"}],"c":["C"],"ex":"主动-被动型模式中，医生处于完全主动地位，患者完全被动服从。原型为父母与婴儿的关系。适用于昏迷、麻醉、休克、严重创伤、婴幼儿等无自主能力的患者。","sr":"教材第2章","bl":"理解"},
+
+{"t":"q","n":3,"tp":"A1","s":"共同参与型医患关系模式最适合于：","o":[{"l":"A","x":"昏迷患者"},{"l":"B","x":"急性感染性疾病患者"},{"l":"C","x":"术后恢复期患者"},{"l":"D","x":"慢性病患者和康复期患者"},{"l":"E","x":"急诊危重症患者"}],"c":["D"],"ex":"共同参与型模式中，医患双方有近乎同等的权利，共同参与医疗方案的决定与实施。此模式适用于具有一定医学知识或长期慢性病患者（如高血压、糖尿病等），类似于成人-成人关系，医生的责任是\"帮助患者自助\"。","sr":"教材第2章","bl":"理解"},
+
+{"t":"q","n":4,"tp":"A1","s":"指导-合作型医患关系模式的原型是：","o":[{"l":"A","x":"成人-成人关系"},{"l":"B","x":"父母-婴儿关系"},{"l":"C","x":"同伴-同伴关系"},{"l":"D","x":"师生-学生关系"},{"l":"E","x":"父母-儿童关系"}],"c":["E"],"ex":"指导-合作型模式的原型是父母-儿童关系。医生指导患者做什么，患者服从并配合医嘱执行。此模式适用于急性感染性疾病的诊疗过程及术后恢复阶段，患者有意识但需要医生的专业指导。","sr":"教材第2章","bl":"记忆"},
+
+{"t":"q","n":5,"tp":"A1","s":"关于医患关系模式的转化，以下说法正确的是：","o":[{"l":"A","x":"一旦确定后便固定不变"},{"l":"B","x":"只能从主动-被动型向共同参与型单向转化"},{"l":"C","x":"三种模式可互相排斥，不可共存"},{"l":"D","x":"共同参与型可退化为指导-合作型"},{"l":"E","x":"随病情变化可由一种模式向另一种模式转化"}],"c":["E"],"ex":"医患关系模式并非一成不变，随着病情的变化和治疗阶段的不同，可以由一种模式向另一种模式转化。例如，患者从昏迷中苏醒后，医患关系可由主动-被动型转向指导-合作型；随着患者逐渐恢复，还可进一步转向共同参与型。","sr":"教材第2章","bl":"理解"},
+
+{"t":"q","n":6,"tp":"A1","s":"生物-心理-社会医学模式的提出者是：","o":[{"l":"A","x":"萨斯和荷伦德"},{"l":"B","x":"弗洛伊德"},{"l":"C","x":"恩格尔(Engel)"},{"l":"D","x":"希波克拉底"},{"l":"E","x":"奥斯勒(Osler)"}],"c":["C"],"ex":"1977年，美国罗切斯特大学医学院精神病学和内科学教授恩格尔（Engel）在《科学》杂志上提出了生物-心理-社会医学模式，强调在诊疗中不仅要关注生物学因素，还需重视心理和社会因素对疾病的影响，为医患沟通提供了重要的理论框架。","sr":"教材第2章","bl":"记忆"},
+
+{"t":"q","n":7,"tp":"A1","s":"医患沟通中的\"55387原则\"指出，沟通中55%的信息传递来自：","o":[{"l":"A","x":"视觉（面部表情和肢体语言）"},{"l":"B","x":"语言内容"},{"l":"C","x":"听觉（语调和语速）"},{"l":"D","x":"书面文字"},{"l":"E","x":"诊疗环境"}],"c":["A"],"ex":"55387原则描述了沟通中信息传递的三个渠道占比：55%靠视觉（面部表情、肢体动作、身体姿态等非言语信息），38%靠听觉（语调、语速、音量等副语言），仅有7%靠语言内容本身。这一原则充分说明了非言语沟通在医患交流中的重要性。","sr":"教材第3章","bl":"理解"},
+
+{"t":"q","n":8,"tp":"A1","s":"以下哪项不属于非言语沟通的形式？","o":[{"l":"A","x":"面部表情"},{"l":"B","x":"目光接触"},{"l":"C","x":"人际距离"},{"l":"D","x":"书面知情同意书"},{"l":"E","x":"语调变化"}],"c":["D"],"ex":"非言语沟通指抛开自然语言，以人所呈现的静态及动态信息符号进行信息传递的系统。包括面部表情、目光接触、身段表情、语调表情、人际距离、衣着打扮、环境信息等。书面知情同意书属于书面语言沟通范畴，不属于非言语沟通。","sr":"教材第3章","bl":"记忆"},
+
+{"t":"q","n":9,"tp":"A1","s":"医患沟通中，倾听的基本原则不包括：","o":[{"l":"A","x":"全神贯注，给予患者充分时间表达"},{"l":"B","x":"适时使用点头、眼神等给予回应"},{"l":"C","x":"不随意打断患者的叙述"},{"l":"D","x":"同时处理多项任务以提高效率"},{"l":"E","x":"注意患者言语背后的情绪信息"}],"c":["D"],"ex":"倾听是临床工作中最基本也最重要的技能之一。倾听的基本原则包括：全神贯注、不随意打断、给予回应（点头、眼神等）、体会患者的感受、抓住主要问题。一边接诊一边处理其他事务（如看手机、写病历而眼神离开患者）违背了积极倾听的原则，会严重损害医患信任。","sr":"教材第3章","bl":"理解"},
+
+{"t":"q","n":10,"tp":"A1","s":"告知坏消息的SPIKES模型中，第一个步骤\"S\"代表：","o":[{"l":"A","x":"直接告知诊断结果"},{"l":"B","x":"设置合适的沟通环境"},{"l":"C","x":"评估患者对病情的认知"},{"l":"D","x":"总结信息并答疑"},{"l":"E","x":"确认患者的知情意愿"}],"c":["B"],"ex":"SPIKES模型是专门用于告知坏消息的六步沟通模式：S—Setting（设置独立、安静、无干扰的沟通环境）；P—Perception（评估患者对病情的现有认知）；I—Invitation（确认患者的知情意愿）；K—Knowledge（分步骤告知病情信息）；E—Empathy（给予共情和情绪支持）；S—Strategy/Summary（总结诊疗计划并答疑）。","sr":"教材第3章","bl":"记忆"},
+
+{"t":"q","n":11,"tp":"A1","s":"SPIKES模型中的\"K\"步骤（Knowledge）的核心技术要求是：","o":[{"l":"A","x":"一次性告知所有细节以避免遗漏"},{"l":"B","x":"使用尽可能专业的术语以体现权威"},{"l":"C","x":"先给予\"警告性铺垫\"，再使用通俗语言逐步告知"},{"l":"D","x":"邀请多位医务人员共同告知以增强可信度"},{"l":"E","x":"优先告知家属，再决定是否告知患者"}],"c":["C"],"ex":"K（Knowledge）步骤的核心是\"警告后再停顿\"——先用缓冲语（如\"检查结果出来了，情况比我们预期的要复杂一些\"）给予心理铺垫，再用通俗易懂的语言逐步告知病情信息，每次传递少量信息后停顿，观察患者反应。避免信息轰炸、专业术语堆砌和一次性生硬告知。","sr":"教材第3章","bl":"理解"},
+
+{"t":"q","n":12,"tp":"A1","s":"构成有效知情同意的四个核心要素中不包括：","o":[{"l":"A","x":"诊疗方案符合成本效益原则"},{"l":"B","x":"充分的信息披露"},{"l":"C","x":"患者对信息的理解"},{"l":"D","x":"患者的自愿同意"},{"l":"E","x":"患者具备同意能力"}],"c":["A"],"ex":"有效知情同意的四要素是：(1)信息披露——医务人员充分告知病情、诊疗方案、风险及替代方案；(2)信息理解——患者能够理解告知的内容；(3)自愿同意——同意决定不受胁迫或不当影响；(4)同意能力——患者具备相应的民事行为能力。\"成本效益原则\"不属于知情同意的核心要素。","sr":"教材第5章","bl":"记忆"},
+
+{"t":"q","n":13,"tp":"A1","s":"NURSE共情模式中，第一个字母\"N\"代表：","o":[{"l":"A","x":"表达歉意"},{"l":"B","x":"给予否定性反馈"},{"l":"C","x":"保持中立态度"},{"l":"D","x":"命名和理解患者的情绪"},{"l":"E","x":"协商解决方案"}],"c":["D"],"ex":"NURSE共情模式：N—Naming（命名情绪：\"我能感受到您很焦虑\"）；U—Understanding（表达理解：\"换成是我也会担心\"）；R—Respecting（表达尊重：\"您为康复付出了很多努力\"）；S—Supporting（给予支持：\"我们会一起面对\"）；E—Exploring（深入探索：\"您最担心的是什么\"）。","sr":"教材第3章","bl":"记忆"},
+
+{"t":"q","n":14,"tp":"A1","s":"SBAR标准化沟通模式中，\"A\"代表：","o":[{"l":"A","x":"行动计划"},{"l":"B","x":"评估患者现状"},{"l":"C","x":"背景情况"},{"l":"D","x":"当前现状"},{"l":"E","x":"提出治疗建议"}],"c":["B"],"ex":"SBAR沟通模式是医护交接班和团队协作中广泛使用的标准化沟通工具：S—Situation（现状：当前发生了什么）；B—Background（背景：相关病史和临床背景）；A—Assessment（评估：我对现状的专业判断）；R—Recommendation（建议：我建议采取的措施）。","sr":"教材第3章","bl":"记忆"},
+
+{"t":"q","n":15,"tp":"A1","s":"根据《医疗机构投诉管理办法》，医疗投诉处理时限原则上不超过：","o":[{"l":"A","x":"3个工作日"},{"l":"B","x":"5个工作日"},{"l":"C","x":"7个工作日"},{"l":"D","x":"15个自然日"},{"l":"E","x":"10个工作日"}],"c":["E"],"ex":"《医疗机构投诉管理办法》规定，涉及医疗收费、服务态度等方面的投诉，一般应当于10个工作日内反馈处理情况或结果；涉及医疗质量安全的投诉，处理时限可适当延长，但需向投诉人告知延长期限的理由。","sr":"教材第8章","bl":"记忆"},
+
+{"t":"q","n":16,"tp":"A1","s":"医患双方向医疗纠纷人民调解委员会提出调解申请后，医调委完成调解的时限为：","o":[{"l":"A","x":"15个工作日"},{"l":"B","x":"20个工作日"},{"l":"C","x":"30个工作日"},{"l":"D","x":"45个工作日"},{"l":"E","x":"60个自然日"}],"c":["C"],"ex":"根据《医疗纠纷预防和处理条例》，医疗纠纷人民调解委员会应当自受理调解申请之日起30个工作日内完成调解。需要医疗损害鉴定或专家咨询的，鉴定和咨询时间不计入调解期限。这是教师重点强调的制度性知识点。","sr":"教材第8章","bl":"记忆"},
+
+{"t":"q","n":17,"tp":"A1","s":"根据《民法典》第1220条，因抢救生命垂危患者等紧急情况不能取得患者或近亲属意见时：","o":[{"l":"A","x":"经医疗机构负责人或授权负责人批准可立即实施救治"},{"l":"B","x":"必须等待家属签署同意书后方可手术"},{"l":"C","x":"由急诊科主任口头同意即可"},{"l":"D","x":"需经卫生行政部门审批后方可实施"},{"l":"E","x":"由两名以上主治医师签字即可实施"}],"c":["A"],"ex":"《民法典》第1220条明确规定：因抢救生命垂危的患者等紧急情况，不能取得患者或者其近亲属意见的，经医疗机构负责人或者授权的负责人批准，可以立即实施相应的医疗措施。这是知情同意原则在紧急情况下的法定例外情形。","sr":"教材第5章","bl":"记忆"},
+
+{"t":"q","n":18,"tp":"A1","s":"关于医患沟通中的\"三明治沟通法\"，正确的描述是：","o":[{"l":"A","x":"先告知最坏后果，再讲诊疗方案，最后谈费用"},{"l":"B","x":"按照\"诊断→治疗→预后\"的固定顺序沟通"},{"l":"C","x":"分三个阶段：建立关系→采集病史→制定方案"},{"l":"D","x":"以正面内容开头和结尾，将负面信息置于中间"},{"l":"E","x":"先讲费用预算，再谈治疗方案，最后承诺疗效"}],"c":["D"],"ex":"三明治沟通法通过\"正面内容—负面信息—正面内容\"的结构，将需要告知的风险、不足或改进要求等负面信息置于两层正面信息之间，降低负面信息的冲击力，让患者更容易接受，减少抵触情绪。典型的应用场景包括坏消息告知和绩效反馈。","sr":"教材第3章","bl":"理解"},
+
+{"t":"q","n":19,"tp":"A1","s":"在改善患者治疗依从性方面，以下哪项策略最具循证依据支持其有效性？","o":[{"l":"A","x":"使用专业术语以体现医学权威"},{"l":"B","x":"医患共同设定可量化的小目标"},{"l":"C","x":"强调\"不遵医嘱后果自负\""},{"l":"D","x":"开具最昂贵药物以增强患者信心"},{"l":"E","x":"尽量减少沟通以提升门诊效率"}],"c":["B"],"ex":"研究表明，医患共同决策（SDM）和共同设定可量化、可实现的小目标（如\"本周每天步行15分钟\"而非\"多运动\"），能显著提高患者的治疗依从性。专业术语可能造成理解障碍，威胁性语言反而降低依从性——有效的医患沟通使依从性提高约30%。","sr":"教材第3章","bl":"理解"},
+
+{"t":"q","n":20,"tp":"A1","s":"《医疗纠纷预防和处理条例》正式施行的年份是：","o":[{"l":"A","x":"2014年"},{"l":"B","x":"2016年"},{"l":"C","x":"2017年"},{"l":"D","x":"2020年"},{"l":"E","x":"2018年"}],"c":["E"],"ex":"《医疗纠纷预防和处理条例》于2018年7月31日由国务院公布，自2018年10月1日起施行。该条例强调了医疗纠纷的预防为主、处理合法的原则，明确了医疗纠纷的处理途径包括双方自愿协商、申请人民调解、申请行政调解以及向人民法院提起诉讼。","sr":"教材第8章","bl":"记忆"},
+
+{"t":"q","n":21,"tp":"A1","s":"在55387原则中，沟通的38%信息传递来自于：","o":[{"l":"A","x":"语言内容本身"},{"l":"B","x":"目光接触频率"},{"l":"C","x":"语调、语速和音量"},{"l":"D","x":"面部微表情"},{"l":"E","x":"身体姿态和手势"}],"c":["C"],"ex":"55387原则中：55%来自视觉（表情、肢体语言），38%来自听觉（语调、语速、音量、停顿方式等副语言特征），7%来自实际的语言内容。即使是同样的文字，不同的语调表达出的情感和信任感可以截然不同。","sr":"教材第3章","bl":"理解"},
+
+{"t":"q","n":22,"tp":"A1","s":"共同参与型医患关系模式的原型类比为：","o":[{"l":"A","x":"成人-成人关系"},{"l":"B","x":"父母-儿童关系"},{"l":"C","x":"父母-婴儿关系"},{"l":"D","x":"师生-学生关系"},{"l":"E","x":"同伴-同伴关系"}],"c":["A"],"ex":"共同参与型模式的原型是成人-成人关系。此模式下医生与患者地位平等，医生帮助患者自助（\"help the patient to help himself\"），患者作为治疗的积极参与者和合作者。最适用于慢性病管理和康复期患者。","sr":"教材第2章","bl":"记忆"},
+
+{"t":"q","n":23,"tp":"A1","s":"以下哪项属于十八项医疗质量安全核心制度的内容？","o":[{"l":"A","x":"药品集中采购制度"},{"l":"B","x":"医院感染监测制度"},{"l":"C","x":"医师定期考核制度"},{"l":"D","x":"急危重患者抢救制度"},{"l":"E","x":"护理人员排班制度"}],"c":["D"],"ex":"十八项核心制度包括：首诊负责制度、三级查房制度、会诊制度、分级护理制度、值班和交接班制度、疑难病例讨论制度、急危重患者抢救制度、术前讨论制度、死亡病例讨论制度、查对制度、手术安全核查制度、手术分级管理制度、新技术和新项目准入制度、危急值报告制度、病历管理制度、抗菌药物分级管理制度、临床用血审核制度、信息安全管理制度。","sr":"教材第10章","bl":"记忆"},
+
+{"t":"q","n":24,"tp":"A1","s":"巴林特小组（Balint Group）在医患沟通培训中的主要目的是：","o":[{"l":"A","x":"提高临床操作技能和手术精准度"},{"l":"B","x":"改善医生对医患关系的理解和共情能力"},{"l":"C","x":"训练医生的领导力和管理能力"},{"l":"D","x":"评估医生的药物处方合理性"},{"l":"E","x":"提升医生在学术会议上的演讲技巧"}],"c":["B"],"ex":"巴林特小组由匈牙利精神分析师迈克尔·巴林特（Michael Balint）于20世纪50年代创立，是一种聚焦于医患关系的小组讨论方法。通过定期组织医生讨论令他们感到困扰的医患互动案例，帮助医生理解患者心理和自身情绪反应，提升共情能力和职业满足感，减少职业倦怠。","sr":"教材第4章","bl":"理解"},
+
+{"t":"q","n":25,"tp":"A1","s":"\"回教法\"（Teach-Back）在医患沟通中的核心作用是：","o":[{"l":"A","x":"让患者复述病历中的关键信息以完成书写"},{"l":"B","x":"让患者用自己语言重述医嘱以确认理解"},{"l":"C","x":"让患者返回教学门诊给下级医生做示范"},{"l":"D","x":"让患者录下医生的嘱托以便反复回听"},{"l":"E","x":"让患者在下次复诊时重新叙述病史"}],"c":["B"],"ex":"回教法（Teach-Back）是医患沟通中确认患者理解程度的核心方法。医生在告知病情或治疗方案后，请患者用自己的语言复述关键要点（\"为了确认我讲清楚了，您能用自己的话重复一下吗？\"），而非简单地询问\"你听懂了吗\"。此法对文化程度较低或老年患者尤为重要。","sr":"教材第3章","bl":"理解"},
+
+{"t":"q","n":26,"tp":"A1","s":"接诊6岁以下儿科患者时，医患沟通的核心适配对象是：","o":[{"l":"A","x":"患儿本人"},{"l":"B","x":"幼儿园老师"},{"l":"C","x":"陪同家属（监护人）"},{"l":"D","x":"社区儿童保健医生"},{"l":"E","x":"可仅通过病历资料判断"}],"c":["C"],"ex":"6岁以下儿童无完全民事行为能力，无法准确表述病情和理解诊疗方案，因此核心沟通对象为其监护人（陪同家属）。但沟通时仍需兼顾患儿的情绪安抚——用玩具、卡通贴纸、柔和语气降低患儿的恐惧感，核心告知与知情同意均需向家属完成。","sr":"教材第7章","bl":"理解"},
+
+{"t":"q","n":27,"tp":"A1","s":"知情同意原则在医学伦理中的核心理论基础是：","o":[{"l":"A","x":"尊重患者的自主权"},{"l":"B","x":"不伤害原则"},{"l":"C","x":"有利（行善）原则"},{"l":"D","x":"公正原则"},{"l":"E","x":"效用最大化原则"}],"c":["A"],"ex":"知情同意的伦理学核心是尊重患者的自主权（Autonomy）——承认患者有权根据自己的价值观和意愿做出医疗决策。行善和不伤害是医疗行为的一般原则，而知情同意是患者自主权的具体制度体现。","sr":"教材第5章","bl":"理解"},
+
+/* ===== A2型 病例单选题 15题 ===== */
+{"t":"q","n":28,"tp":"A2","s":"一名因车祸导致重度颅脑损伤的昏迷患者被送入急诊科，医生立即进行抢救和处理。此时适用的医患关系模式是：","o":[{"l":"A","x":"指导-合作型"},{"l":"B","x":"主动-被动型"},{"l":"C","x":"共同参与型"},{"l":"D","x":"协商调解型"},{"l":"E","x":"契约型"}],"c":["B"],"ex":"昏迷患者无自主意识和行为能力，医生需要完全主导诊疗决策，患者被动接受治疗——这正是主动-被动型医患关系的典型适用场景。指导-合作型适用于有意识但需要专业指导的患者，共同参与型适用于慢性病患者。","sr":"教材第2章","bl":"应用"},
+
+{"t":"q","n":29,"tp":"A2","s":"一位50岁男性急性肺炎患者，医生告知其需要住院并使用抗生素治疗，患者表示理解并遵从医嘱。此医患关系属于：","o":[{"l":"A","x":"主动-被动型"},{"l":"B","x":"共同参与型"},{"l":"C","x":"指导-合作型"},{"l":"D","x":"契约型"},{"l":"E","x":"消费型"}],"c":["C"],"ex":"急性感染性疾病患者在清醒状态下主动求医，医生给出专业指导（住院+抗生素），患者理解并配合执行——符合指导-合作型模式。此模式下患者有意识且有一定的主动性，需要医生的专业指导但不能完全平等参与决策。","sr":"教材第2章","bl":"应用"},
+
+{"t":"q","n":30,"tp":"A2","s":"一位55岁机关干部，患胃溃疡多年，因胃出血入院手术治疗后病情平稳。此时最适宜的医患关系模式是：","o":[{"l":"A","x":"主动-被动型"},{"l":"B","x":"指导-合作型"},{"l":"C","x":"被动-主动型"},{"l":"D","x":"共同参与型"},{"l":"E","x":"强制-合作型"}],"c":["D"],"ex":"慢性病患者（胃溃疡多年）术后恢复期，患者为机关干部具有一定知识水平——最适合采用共同参与型模式。此时患者可以与医生平等讨论康复方案、饮食调整和长期用药策略，医生帮助患者建立自我管理能力。","sr":"教材第2章","bl":"应用"},
+
+{"t":"q","n":31,"tp":"A2","s":"一位女医生接诊时声调柔和、目光亲切、面带微笑，给患者以温暖信赖的感觉。她在医患沟通中发挥得最好的是：","o":[{"l":"A","x":"非言语沟通"},{"l":"B","x":"书面语言沟通"},{"l":"C","x":"医疗技术操作"},{"l":"D","x":"病历书写"},{"l":"E","x":"药物处方制定"}],"c":["A"],"ex":"声调（副语言特征）、目光（目光接触）、微笑（面部表情）均属于非言语沟通的范畴。非言语沟通传递了温暖、关注和信任，是建立良好医患关系的关键要素，在情感信息传递中占比约70%。","sr":"教材第3章","bl":"应用"},
+
+{"t":"q","n":32,"tp":"A2","s":"一位50岁男性被确诊为晚期肺癌，主管医生计划告知病情。按照SPIKES模型，医生首先应该做的是：","o":[{"l":"A","x":"一次性告知所有病情以避免患者猜测"},{"l":"B","x":"直接阅读CT报告给患者听以增加可信度"},{"l":"C","x":"询问家属是否需要对患者隐瞒病情"},{"l":"D","x":"请多位医生共同到场以显示重视"},{"l":"E","x":"选择独立安静的房间，确保不受打扰"}],"c":["E"],"ex":"SPIKES模型的第一步S（Setting）要求设置合适的沟通环境：选择独立、安静、私密的房间，关掉手机或传呼机，确保交谈过程不受打扰。对重大坏消息的告知，环境的准备是建立信任和保障患者隐私的第一步。","sr":"教材第3章","bl":"应用"},
+
+{"t":"q","n":33,"tp":"A2","s":"患者因术后疼痛剧烈，情绪失控对护士大声斥责。此时规培医师最恰当的沟通回应是：","o":[{"l":"A","x":"\"请您安静，这里是医院。\""},{"l":"B","x":"\"我理解您现在很痛苦，我们一起想办法缓解。\""},{"l":"C","x":"\"镇痛泵已经开足剂量了，再喊也没用。\""},{"l":"D","x":"\"再这样我就叫保安了。\""},{"l":"E","x":"立即回避，让护士独自处理。"}],"c":["B"],"ex":"面对情绪激动的患者，\"情绪优先于问题处理\"——先共情接纳患者的情绪，让患者感受到被理解和关注，才能让患者恢复理性沟通状态。选项B运用了NURSE共情模式的核心技巧（命名情绪+表达理解+给予支持），是最符合沟通伦理的做法。","sr":"教材第8章","bl":"应用"},
+
+{"t":"q","n":34,"tp":"A2","s":"某患者因胆囊结石需行腹腔镜胆囊切除术，医生在术前与患者及家属详细沟通了手术方案、可能的并发症（如胆管损伤、出血、中转开腹等）及替代治疗方案。此沟通主要体现了哪项医学伦理原则？","o":[{"l":"A","x":"不伤害原则"},{"l":"B","x":"行善（有利）原则"},{"l":"C","x":"知情同意原则"},{"l":"D","x":"公正原则"},{"l":"E","x":"保密原则"}],"c":["C"],"ex":"术前详细告知手术方案、风险、并发症及替代治疗方案，是知情同意原则的核心要求。知情同意不仅是法律程序（签字），更是一个尊重患者自主权的沟通过程。医生有义务确保患者在充分了解信息后自愿做出决定。","sr":"教材第5章","bl":"应用"},
+
+{"t":"q","n":35,"tp":"A2","s":"接诊一位80岁听力下降的老年患者，沟通时以下做法错误的是：","o":[{"l":"A","x":"语速放慢，面对面让患者看清口型"},{"l":"B","x":"用通俗易懂的语言替代专业术语"},{"l":"C","x":"重要信息重复强调并请患者复述确认"},{"l":"D","x":"一次性讲完所有注意事项以提高效率"},{"l":"E","x":"确保沟通环境安静，减少背景噪音"}],"c":["D"],"ex":"老年患者理解和记忆能力较弱，一次性输出过多信息会导致信息过载及遗忘。正确做法是分次、分段告知，每次沟通2-3个要点，使用回教法确认理解。语速放慢、通俗语言、重复强调都是老年患者沟通的正确技巧。","sr":"教材第7章","bl":"应用"},
+
+{"t":"q","n":36,"tp":"A2","s":"急诊科接诊一名车祸多发伤患者，血压70/40mmHg，意识模糊，家属尚未赶到医院。该场景下医患沟通的核心要求是：","o":[{"l":"A","x":"简洁、准确、突出重点，同步开展抢救操作"},{"l":"B","x":"详细告知所有可能的诊疗方案和利弊"},{"l":"C","x":"等待家属到场后再开始沟通和救治"},{"l":"D","x":"先完成所有检查，再统一和家属沟通"},{"l":"E","x":"仅需告知法律责任，无需解释病情"}],"c":["A"],"ex":"急诊危重症患者的沟通核心要求是：简洁、准确、突出重点，边抢救边沟通。急诊沟通的\"3W1H\"原则：What（什么情况）、Why（为什么紧急）、What to do（正在做什么）、Help needed（需要什么配合）。不可因为沟通而延误抢救，也不能因等待家属而搁置救治。","sr":"教材第6章","bl":"应用"},
+
+{"t":"q","n":37,"tp":"A2","s":"一位30岁女性患者因乳腺癌被建议行根治性手术，患者因对手术恐惧而拒绝签字同意。此时医生首先应该采取的措施是：","o":[{"l":"A","x":"尊重患者选择，不再讨论手术方案"},{"l":"B","x":"告知患者不手术的后果并要求其承担责任"},{"l":"C","x":"直接通知家属并请家属代为签字"},{"l":"D","x":"转诊至其他医院以避免医疗纠纷"},{"l":"E","x":"探究患者恐惧的具体原因，针对性进行心理疏导和解释"}],"c":["E"],"ex":"面对因恐惧拒绝签字的患者，医生不应急于施压或直接转给家属处理，而应耐心探究恐惧的具体原因（如怕痛、怕毁形、怕死亡），针对性进行心理疏导和信息补充，必要时请心理科会诊或请成功康复的病友分享经验。知情同意要求患者自愿，而非被胁迫。","sr":"教材第5章","bl":"应用"},
+
+{"t":"q","n":38,"tp":"A2","s":"患者在门诊对诊疗收费提出投诉，表达强烈不满。按照首接负责制的原则，接诊人员应该：","o":[{"l":"A","x":"直接告知去财务科处理"},{"l":"B","x":"认真倾听、记录诉求，协调相关部门并负责跟进反馈"},{"l":"C","x":"解释收费标准已经过物价局审批，不予调整"},{"l":"D","x":"让患者写一份书面投诉材料后再处理"},{"l":"E","x":"回避患者，让其他同事出面处理"}],"c":["B"],"ex":"首接负责制要求：第一个接待投诉的医务人员应当认真听取患者意见，如实记录，并负责协调相关部门处理、跟踪反馈结果。不得以\"不归我管\"为由推诿患者——即使确实需要其他部门介入，也要做好衔接引导，不能直接把患者推走。","sr":"教材第8章","bl":"应用"},
+
+{"t":"q","n":39,"tp":"A2","s":"接诊一位聋哑患者（无家属陪同），医生首选的沟通方式是：","o":[{"l":"A","x":"放弃详细问诊，直接根据体征开药"},{"l":"B","x":"大声重复问话直到患者理解"},{"l":"C","x":"采用书面文字交流或图片辅助沟通"},{"l":"D","x":"要求患者必须带家属后再来就诊"},{"l":"E","x":"仅通过快速体格检查做出诊断"}],"c":["C"],"ex":"接诊聋哑患者时，首选书面文字交流或借助图片、手势等视觉化辅助工具进行沟通。根据《无障碍环境建设条例》，医疗机构应为残障患者提供合理便利。不可因沟通障碍而降低诊疗标准或拒绝接诊——\"沟通障碍不应成为医疗质量的障碍\"。","sr":"教材第7章","bl":"应用"},
+
+{"t":"q","n":40,"tp":"A2","s":"一位晚期肝癌患者意识清醒，问医生：\"我还能活多久？\"以下哪项回应最符合医患沟通的伦理要求？","o":[{"l":"A","x":"\"别想太多，好好配合治疗，肯定能好起来。\""},{"l":"B","x":"\"你这病已经到了晚期，疼了就给你打止疼针。\""},{"l":"C","x":"\"我们不要讨论这个问题，让你家属来谈。\""},{"l":"D","x":"\"每个人的情况都不同，我们一起来面对，您现在有什么最想完成的事吗？\""},{"l":"E","x":"\"根据统计数据，大约还有3-6个月。\""}],"c":["D"],"ex":"面对临终患者的预后询问，医生应在不给予虚假希望的前提下，以尊重和关怀的态度回应。选项D既不回避问题也不生硬告知统计数据，而是引导患者关注当下有意义的事，体现了以患者为中心的沟通原则。直接说\"大概3-6个月\"忽略了患者的心理承受力；虚假承诺\"肯定能好\"则违背了诚信原则。","sr":"教材第7章","bl":"应用"},
+
+{"t":"q","n":41,"tp":"A2","s":"在ICU晨间交接班时，A医生向接班B医生报告：\"35床张某，昨晚22:00血压骤降至80/50mmHg，经多巴胺升压后稳定在100/70mmHg，尿量减少至20ml/h，血气分析示代谢性酸中毒。我认为存在早期感染性休克，建议复查血培养并调整抗生素方案。\"A医生采用的沟通模式是：","o":[{"l":"A","x":"SBAR模式"},{"l":"B","x":"SPIKES模式"},{"l":"C","x":"CICARE模式"},{"l":"D","x":"AIDET模式"},{"l":"E","x":"NURSE模式"}],"c":["A"],"ex":"A医生的报告完整包含了SBAR四要素：S现状（血压骤降、尿量减少）、B背景（35床张某、经多巴胺升压）、A评估（认为存在早期感染性休克）、R建议（复查血培养、调整抗生素）。SPIKES用于坏消息告知，NURSE用于共情，CICARE/AIDET用于服务流程沟通。","sr":"教材第3章","bl":"应用"},
+
+{"t":"q","n":42,"tp":"A2","s":"患者上网查资料后对治疗方案提出质疑：\"网上说另一种方案更好，为什么不用那种？\"医生最恰当的回应是：","o":[{"l":"A","x":"\"网上信息不可信，你应该相信专业医生。\""},{"l":"B","x":"\"你想用哪种方案就用哪种，签个字就行。\""},{"l":"C","x":"直接改用患者提出的方案以避免纠纷"},{"l":"D","x":"\"我们按指南来就行，不要浪费时间讨论。\""},{"l":"E","x":"\"感谢你主动了解病情，我们一起来看看两种方案的循证依据和对你个人情况的适用性。\""}],"c":["E"],"ex":"面对患者的质疑，医生应以开放的态度肯定患者的积极参与，同时用专业知识帮助患者理解不同方案的利弊。这种做法既尊重了患者的自主权和信息获取权，又履行了医生的专业指导职责。否定患者的努力（\"网上信息不可信\"）或者消极回避都会损害医患信任。","sr":"教材第3章","bl":"应用"},
+
+/* ===== A3型 病例串题 第1组 3题 ===== */
+{"t":"c","n":43,"cs":"患者男，62岁，因\"直肠癌\"入院，计划行直肠癌根治术。术前一天，管床医生与患者及家属进行术前谈话。患者情绪紧张，反复询问\"手术风险大不大\"，其妻子在一旁不停落泪。医生向其详细解释了手术方案、麻醉方式、可能的并发症（吻合口漏、出血、感染、排尿功能障碍等）及替代治疗选择，并回答了患者提出的问题。"},
+{"t":"q","n":43,"tp":"A3","s":"(1) 上述术前谈话主要体现的医学伦理原则是：","o":[{"l":"A","x":"不伤害原则"},{"l":"B","x":"公正分配原则"},{"l":"C","x":"知情同意原则"},{"l":"D","x":"效用最大化原则"},{"l":"E","x":"最佳利益原则"}],"c":["C"],"ex":"(1)术前谈话中向患者详细解释手术方案、风险、并发症及替代方案，是知情同意原则的具体实践，核心是尊重患者自主权。(2)患者情绪紧张、妻子落泪，提示需要情感层面的支持——此时应使用共情技术回应情绪，而非仅继续罗列医学信息。(3)确保患者理解所告知的信息，是知情同意四要素中\"信息理解\"要素的核心要求。","sr":"教材第5章","bl":"应用"},
+
+{"t":"q","n":44,"tp":"A3","s":"(2) 在患者情绪紧张且妻子落泪的情况下，医生此时应该优先：","o":[{"l":"A","x":"尽快完成签字手续，避免耽误手术安排"},{"l":"B","x":"继续详细罗列所有可能的手术并发症"},{"l":"C","x":"使用共情技术回应患者及家属的情绪"},{"l":"D","x":"请护士安抚家属，医生继续解释专业内容"},{"l":"E","x":"暂缓沟通，次日手术前再谈"}],"c":["C"],"ex":"(1)术前谈话中向患者详细解释手术方案、风险、并发症及替代方案，是知情同意原则的具体实践，核心是尊重患者自主权。(2)患者情绪紧张、妻子落泪，提示需要情感层面的支持——此时应使用共情技术回应情绪，而非仅继续罗列医学信息。(3)确保患者理解所告知的信息，是知情同意四要素中\"信息理解\"要素的核心要求。","sr":"教材第5章","bl":"应用"},
+
+{"t":"q","n":45,"tp":"A3","s":"(3) 在签署知情同意书之前，医生使用\"回教法\"确认患者理解程度的做法是：","o":[{"l":"A","x":"直接询问\"您听懂了吗？\""},{"l":"B","x":"要求患者背诵同意书全文"},{"l":"C","x":"请患者用自己的语言复述手术的关键风险和注意事项"},{"l":"D","x":"让患者家属为患者解释手术内容"},{"l":"E","x":"让患者在同意书上签字即表示已经理解"}],"c":["C"],"ex":"(1)术前谈话中向患者详细解释手术方案、风险、并发症及替代方案，是知情同意原则的具体实践，核心是尊重患者自主权。(2)患者情绪紧张、妻子落泪，提示需要情感层面的支持——此时应使用共情技术回应情绪，而非仅继续罗列医学信息。(3)确保患者理解所告知的信息，是知情同意四要素中\"信息理解\"要素的核心要求。","sr":"教材第5章","bl":"应用"},
+
+/* ===== A3型 病例串题 第2组 3题 ===== */
+{"t":"c","n":46,"cs":"患者女，34岁，因\"甲状腺结节\"行甲状腺次全切除术。术后第2天，患者出现声音嘶哑，饮水呛咳。患者家属情绪激动地到医生办公室吵闹，认为\"手术做坏了\"，要求医院承担责任。"},
+{"t":"q","n":46,"tp":"A3","s":"(1) 面对情绪激动的家属，医生的首要沟通策略是：","o":[{"l":"A","x":"立即反驳，说明手术本身存在风险"},{"l":"B","x":"先保持沉默，等家属发泄完情绪后再沟通安抚"},{"l":"C","x":"直接请医务科或保卫科出面处理"},{"l":"D","x":"告知家属可以去投诉或走法律途径"},{"l":"E","x":"立即给出赔偿方案以平息事态"}],"c":["B"],"ex":"(1)面对愤怒型家属，情绪优先于问题处理——先给予患者家属情绪宣泄的空间，等情绪稍微平复后再进行沟通安抚，避免正面冲突升级。立即反驳或推诿都会激化矛盾。(2)主动坦诚沟通是处理医疗不良事件的首要原则——推诿或隐瞒会加剧不信任。(3)医调委调解是医疗纠纷处理的重要途径，受理后30个工作日内完成调解。","sr":"教材第8章","bl":"应用"},
+
+{"t":"q","n":47,"tp":"A3","s":"(2) 发生医疗不良事件后，与患者家属沟通的首要原则是：","o":[{"l":"A","x":"推诿责任，强调是手术并发症"},{"l":"B","x":"隐瞒实情，等待检查结果后再沟通"},{"l":"C","x":"主动坦诚沟通，及时回应诉求"},{"l":"D","x":"让第三方全部出面，医生不再接触患者"},{"l":"E","x":"强调术前已签署知情同意书，医院无责"}],"c":["C"],"ex":"(1)面对愤怒型家属，情绪优先于问题处理——先给予患者家属情绪宣泄的空间，等情绪稍微平复后再进行沟通安抚，避免正面冲突升级。立即反驳或推诿都会激化矛盾。(2)主动坦诚沟通是处理医疗不良事件的首要原则——推诿或隐瞒会加剧不信任。(3)医调委调解是医疗纠纷处理的重要途径，受理后30个工作日内完成调解。","sr":"教材第8章","bl":"应用"},
+
+{"t":"q","n":48,"tp":"A3","s":"(3) 如双方协商无法达成一致，以下哪种纠纷处理途径由第三方中立机构主持调解？","o":[{"l":"A","x":"卫生行政部门行政调解"},{"l":"B","x":"向人民法院提起民事诉讼"},{"l":"C","x":"医疗纠纷人民调解委员会调解"},{"l":"D","x":"医院内部协商解决"},{"l":"E","x":"公安机关介入调解"}],"c":["C"],"ex":"(1)面对愤怒型家属，情绪优先于问题处理——先给予患者家属情绪宣泄的空间，等情绪稍微平复后再进行沟通安抚，避免正面冲突升级。立即反驳或推诿都会激化矛盾。(2)主动坦诚沟通是处理医疗不良事件的首要原则——推诿或隐瞒会加剧不信任。(3)医调委调解是医疗纠纷处理的重要途径，受理后30个工作日内完成调解。","sr":"教材第8章","bl":"应用"},
+
+/* ===== B1型 共用选项 第1组 2题 ===== */
+{"t":"b","n":49,"lb":"A.主动-被动型 B.指导-合作型 C.共同参与型 D.契约型 E.消费型"},
+{"t":"q","n":49,"tp":"B1","s":"(1) 一名40岁男性因急性阑尾炎入院，医生告知需要手术，患者表示信任医生并遵从安排。此医患关系模式属于：","o":[{"l":"A","x":"主动-被动型"},{"l":"B","x":"指导-合作型"},{"l":"C","x":"共同参与型"},{"l":"D","x":"契约型"},{"l":"E","x":"消费型"}],"c":["B"],"ex":"(1)急性阑尾炎→患者主动求医+遵从医嘱→指导-合作型。(2)高血压管理→慢性病+患者参与自我管理→共同参与型。契约型和消费型不属于萨斯-荷伦德的三模式分类体系。","sr":"教材第2章","bl":"应用"},
+{"t":"q","n":50,"tp":"B1","s":"(2) 一名52岁高血压患者，长期与医生讨论调整降压方案，自行监测血压并记录饮食运动情况。此医患关系模式属于：","o":[{"l":"A","x":"主动-被动型"},{"l":"B","x":"指导-合作型"},{"l":"C","x":"共同参与型"},{"l":"D","x":"契约型"},{"l":"E","x":"消费型"}],"c":["C"],"ex":"(1)急性阑尾炎→患者主动求医+遵从医嘱→指导-合作型。(2)高血压管理→慢性病+患者参与自我管理→共同参与型。契约型和消费型不属于萨斯-荷伦德的三模式分类体系。","sr":"教材第2章","bl":"应用"},
+
+/* ===== B1型 共用选项 第2组 2题 ===== */
+{"t":"b","n":51,"lb":"A.SPIKES模型 B.SBAR模式 C.NURSE共情模式 D.SEGUE框架 E.CICARE模式"},
+{"t":"q","n":51,"tp":"B1","s":"(1) 用于告知患者恶性肿瘤等坏消息的标准化六步沟通模型是：","o":[{"l":"A","x":"SPIKES模型"},{"l":"B","x":"SBAR模式"},{"l":"C","x":"NURSE共情模式"},{"l":"D","x":"SEGUE框架"},{"l":"E","x":"CICARE模式"}],"c":["A"],"ex":"(1)SPIKES模型：专门用于坏消息告知（Setting→Perception→Invitation→Knowledge→Empathy→Strategy/Summary）。(2)SBAR模式：用于医护交接班和团队沟通（Situation→Background→Assessment→Recommendation）。NURSE用于共情回应，SEGUE用于问诊流程评估。","sr":"教材第3章","bl":"应用"},
+{"t":"q","n":52,"tp":"B1","s":"(2) 用于医护团队交接班和紧急情况汇报的标准化沟通工具是：","o":[{"l":"A","x":"SPIKES模型"},{"l":"B","x":"SBAR模式"},{"l":"C","x":"NURSE共情模式"},{"l":"D","x":"SEGUE框架"},{"l":"E","x":"CICARE模式"}],"c":["B"],"ex":"(1)SPIKES模型：专门用于坏消息告知（Setting→Perception→Invitation→Knowledge→Empathy→Strategy/Summary）。(2)SBAR模式：用于医护交接班和团队沟通（Situation→Background→Assessment→Recommendation）。NURSE用于共情回应，SEGUE用于问诊流程评估。","sr":"教材第3章","bl":"应用"},
+
+/* ===== X型 多选题 5题 ===== */
+{"t":"q","n":53,"tp":"X","s":"构成有效知情同意的四要素包括：","o":[{"l":"A","x":"充分的信息披露"},{"l":"B","x":"患者对信息的理解"},{"l":"C","x":"患者的自愿同意"},{"l":"D","x":"患者具备同意能力"},{"l":"E","x":"家属共同在场见证"}],"c":["A","B","C","D"],"ex":"有效知情同意的四要素为：信息披露、信息理解、自愿同意、同意能力。家属共同在场并非法定要素——具备完全民事行为能力的成年患者可以独立行使知情同意权。","sr":"教材第5章","bl":"记忆"},
+
+{"t":"q","n":54,"tp":"X","s":"以下哪些属于非言语沟通的形式？","o":[{"l":"A","x":"面部表情"},{"l":"B","x":"目光接触"},{"l":"C","x":"人际距离"},{"l":"D","x":"语调变化"},{"l":"E","x":"肢体姿态"}],"c":["A","B","C","D","E"],"ex":"非言语沟通包括动态和静态两大类别：动态包括面部表情、身段表情（肢体姿态）、目光接触、语调表情（语调/语速/音量变化）和人际距离等；静态包括衣着打扮、环境信息等。以上五项全部属于非言语沟通的范畴。","sr":"教材第3章","bl":"记忆"},
+
+{"t":"q","n":55,"tp":"X","s":"中国医师协会提出的人文医学执业技能培训体系中，医患沟通基本能力类型包括：","o":[{"l":"A","x":"建立和谐关系的能力"},{"l":"B","x":"采集信息与解释病情的能力"},{"l":"C","x":"与患者共同制定诊疗方案的能力"},{"l":"D","x":"处理冲突与投诉的能力"},{"l":"E","x":"团队协作与多学科沟通的能力"}],"c":["A","B","C","D","E"],"ex":"中国医师协会人文医学执业技能培训体系将医患沟通能力分为五个维度：建立关系的技能、信息采集与给予的技能、共同决策的技能、处理冲突的技能、团队协作的技能。这五项能力共同构成完整的人文医学沟通能力框架。","sr":"教材第3章","bl":"记忆"},
+
+{"t":"q","n":56,"tp":"X","s":"以下哪些属于十八项医疗质量安全核心制度？","o":[{"l":"A","x":"首诊负责制度"},{"l":"B","x":"危急值报告制度"},{"l":"C","x":"疑难病例讨论制度"},{"l":"D","x":"抗菌药物分级管理制度"},{"l":"E","x":"医生绩效考核制度"}],"c":["A","B","C","D"],"ex":"十八项核心制度包括首诊负责制度、危急值报告制度、疑难病例讨论制度、抗菌药物分级管理制度等。医生绩效考核制度虽然与医院管理有关，但不属于国家规定的十八项医疗质量安全核心制度。","sr":"教材第10章","bl":"记忆"},
+
+{"t":"q","n":57,"tp":"X","s":"提高医患沟通质量的非言语技巧包括：","o":[{"l":"A","x":"适时保持目光接触（约占沟通时间60-70%）"},{"l":"B","x":"身体微微前倾以表达关注"},{"l":"C","x":"以开放而非交叉双臂的姿态面对患者"},{"l":"D","x":"与患者保持适当的人际距离"},{"l":"E","x":"通过点头等动作给予患者倾听反馈"}],"c":["A","B","C","D","E"],"ex":"以上五项均为提高医患沟通质量的有效非言语技巧：目光接触传递关注、身体前倾表达投入、开放姿态降低防御感、适当距离让患者舒适、点头反馈鼓励患者表达。研究表明，非言语沟通在情感信息传递中占比约70%，这些技巧对建立信任关系至关重要。","sr":"教材第3章","bl":"理解"},
+
+/* ===== 判断 3题 ===== */
+{"t":"q","n":58,"tp":"判断","s":"根据55387沟通原则，医患沟通中面部表情和肢体语言传递的信息占比为7%。","o":[{"l":"A","x":"正确"},{"l":"B","x":"错误"}],"c":["B"],"ex":"错误。55387原则中：55%来自视觉（面部表情、肢体语言等非言语信息），38%来自听觉（语调、语速等副语言），7%来自语言内容本身。题目中将7%与55%混淆了。","sr":"教材第3章","bl":"理解"},
+
+{"t":"q","n":59,"tp":"判断","s":"知情同意不仅是一个法律上的签字程序，更是一个贯穿于诊疗全过程的动态沟通过程。","o":[{"l":"A","x":"正确"},{"l":"B","x":"错误"}],"c":["A"],"ex":"正确。知情同意的本质是一个医患双向沟通的过程，而非仅仅在同意书上签字的形式。有效的知情同意要求医生在整个诊疗过程中持续与患者沟通病情变化、方案调整及新出现的风险，是动态的、持续的，而非一次性完成的文书签署。","sr":"教材第5章","bl":"理解"},
+
+{"t":"q","n":60,"tp":"判断","s":"医患沟通本质上是一个单向的信息传递过程，医生负责输出专业知识，患者负责接收。","o":[{"l":"A","x":"正确"},{"l":"B","x":"错误"}],"c":["B"],"ex":"错误。医患沟通是双向的互动过程，而非单向传递。医生不仅需要输出信息，更需要倾听患者的叙述、观察非言语线索、理解患者的情感需求，并通过反馈确认患者是否理解。单向沟通会导致患者满意度下降、信息误解和医疗纠纷增加。","sr":"教材第1章","bl":"理解"}
+];
+
+var TOTAL=0;
+for(var i=0;i<data.length;i++) if(data[i].t==='q') TOTAL++;
+
+var state={answered:{},correct:0,wrong:0,selected:{}};
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function tc(t){
+  var m={A1:'A1',A2:'A2',A3:'A3',A4:'A4',B1:'B1',X:'X'};
+  return m[t]||'判断';
+}
+
+function updateBar(){
+  var a=state.correct+state.wrong;
+  document.getElementById('cc').textContent=state.correct;
+  document.getElementById('wc').textContent=state.wrong;
+  document.getElementById('sp').textContent=a>0?Math.round(state.correct/a*100)+'%':'0%';
+  document.getElementById('pbar').style.width=(a/TOTAL*100)+'%';
+  document.getElementById('plabel').textContent=a+'/'+TOTAL;
+  if(a===TOTAL&&state.wrong===0) document.getElementById('pbar').style.background='#4a8c5c';
+  else if(a===TOTAL) document.getElementById('pbar').style.background='#c08040';
+}
+
+function arraysEqual(a,b){
+  if(a.length!==b.length) return false;
+  var sa=a.slice().sort(),sb=b.slice().sort();
+  for(var i=0;i<sa.length;i++) if(sa[i]!==sb[i]) return false;
+  return true;
+}
+
+function finishQuestion(idx,isOk,correct,userLabels){
+  state.answered[idx]=true;
+  var q=data[idx];
+  if(isOk) state.correct++; else state.wrong++;
+  var qDiv=document.getElementById('q'+idx);
+  var opts=qDiv.querySelectorAll('.option');
+  var panel=document.getElementById('p'+idx);
+  if(isOk){
+    qDiv.classList.add('correct');
+    panel.classList.add('open','ok');
+    panel.firstChild.className='ans-head green';
+    panel.firstChild.textContent='\u2705 回答正确！答案：'+correct.join(', ');
+  }else{
+    qDiv.classList.add('wrong');
+    panel.classList.add('open','no');
+    panel.firstChild.className='ans-head red';
+    panel.firstChild.textContent='\u274c 回答错误！正确答案：'+correct.join(', ');
+  }
+  for(var k=0;k<opts.length;k++){
+    var o=opts[k],ol=o.getAttribute('data-l');
+    o.classList.add('no-click');
+    if(correct.indexOf(ol)>=0){
+      o.classList.add('correct-show');
+      o.lastChild.classList.add('show'); o.lastChild.textContent='\u2713';
+    }
+    if(userLabels.indexOf(ol)>=0&&!isOk){
+      o.classList.add('wrong-pick');
+      o.lastChild.classList.add('show'); o.lastChild.textContent='\u2717';
+    }
+  }
+  updateBar();
+  setTimeout(function(){
+    for(var j=idx+1;j<data.length;j++){
+      if(data[j].t==='q'&&!state.answered[j]){
+        var n=document.getElementById('q'+j);
+        if(n) n.scrollIntoView({behavior:'smooth',block:'center'});
+        break;
+      }
+    }
+  },350);
+}
+
+function pick(idx,label){
+  if(state.answered[idx]) return;
+  var q=data[idx],correct=q.c;
+  if(q.tp==='X'){
+    if(!state.selected[idx]) state.selected[idx]=[];
+    var sel=state.selected[idx];
+    var pos=sel.indexOf(label);
+    if(pos>=0){
+      sel.splice(pos,1);
+      document.querySelector('#q'+idx+' .option[data-l="'+label+'"]').classList.remove('picked');
+    }else{
+      sel.push(label);
+      document.querySelector('#q'+idx+' .option[data-l="'+label+'"]').classList.add('picked');
+    }
+    if(sel.length===correct.length){
+      var isOk=arraysEqual(sel,correct);
+      finishQuestion(idx,isOk,correct,sel.slice());
+    }
+    return;
+  }
+  var isOk=correct.indexOf(label)>=0;
+  finishQuestion(idx,isOk,correct,[label]);
+}
+
+function reset(){
+  state={answered:{},correct:0,wrong:0,selected:{}};
+  var qs=document.querySelectorAll('.question');
+  for(var i=0;i<qs.length;i++) qs[i].classList.remove('correct','wrong');
+  var os=document.querySelectorAll('.option');
+  for(var i=0;i<os.length;i++){
+    os[i].classList.remove('no-click','correct-show','wrong-pick','picked');
+    os[i].lastChild.classList.remove('show'); os[i].lastChild.textContent='';
+  }
+  var ps=document.querySelectorAll('.answer-box');
+  for(var i=0;i<ps.length;i++) ps[i].classList.remove('open','ok','no');
+  document.getElementById('pbar').style.background='#c7924b';
+  updateBar();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showAll(){
+  var ps=document.querySelectorAll('.answer-box');
+  for(var i=0;i<ps.length;i++) ps[i].classList.add('open');
+}
+
+function render(){
+  var root=document.getElementById('quiz-root');
+  var h='',caseOpen=false,realNum=0,b1Open=false;
+  for(var i=0;i<data.length;i++){
+    var q=data[i];
+    if(q.t==='c'){
+      if(caseOpen) h+='</div>';
+      if(b1Open){h+='</div>';b1Open=false;}
+      h+='<div class="case-group"><div class="case-header"><span class="case-label">\ud83d\udccb 病例 '+q.n+'</span>  '+esc(q.cs)+'</div>';
+      caseOpen=true;
+    }else if(q.t==='b'){
+      if(b1Open) h+='</div>';
+      if(caseOpen){h+='</div>';caseOpen=false;}
+      h+='<div class="b1-box"><span class="b1-label">\ud83d\udd17 共用选项：</span><br>'+esc(q.lb)+'</div>';
+      b1Open=true;
+    }else{
+      realNum++;
+      var isX=q.tp==='X';
+      h+='<div class="question" id="q'+i+'">';
+      h+='<span class="q-num">'+realNum+'</span><span class="q-type '+tc(q.tp)+'">'+q.tp+'</span>';
+      if(isX) h+=' <span style="font-size:11px;color:#7a4a7a;font-weight:600">(多选——点击切换选择，选够'+q.c.length+'个自动提交)</span>';
+      if(q.tp==='\u5224\u65ad') h+=' <span style="font-size:11px;color:#3a6b6b;font-weight:600">(判断正误)</span>';
+      h+='<div class="q-stem">'+esc(q.s)+'</div>';
+      if(q.o){
+        for(var k=0;k<q.o.length;k++){
+          var o=q.o[k];
+          h+='<div class="option" data-l="'+o.l+'" onclick="Quiz.pick('+i+',\''+o.l+'\')">';
+          h+='<span class="opt-label">'+o.l+'.</span><span>'+esc(o.x)+'</span>';
+          h+='<span class="result-icon">\u2713</span></div>';
+        }
+      }
+      h+='<div class="answer-box" id="p'+i+'">';
+      h+='<div class="ans-head">\u2705 答案：'+q.c.join(', ')+' | '+q.tp+' | '+q.bl+'</div>';
+      h+='<div class="exp">'+esc(q.ex)+'</div>';
+      if(q.sr) h+='<div class="src">\ud83d\udcd6 <b>'+esc(q.sr)+'</b></div>';
+      h+='</div></div>';
+    }
+  }
+  if(caseOpen) h+='</div>';
+  if(b1Open) h+='</div>';
+  root.innerHTML=h;
+}
+
+var lastScroll=0,topbar=document.getElementById('topbar');
+window.addEventListener('scroll',function(){
+  var st=window.pageYOffset||document.documentElement.scrollTop;
+  if(st>lastScroll&&st>120)topbar.classList.add('hidden');
+  else if(st<lastScroll)topbar.classList.remove('hidden');
+  lastScroll=st<=0?0:st;
+},{passive:true});
+render();
+updateBar();
+
+return {pick:pick,reset:reset,showAll:showAll};
+})();
+</script>
+</body>
+</html>

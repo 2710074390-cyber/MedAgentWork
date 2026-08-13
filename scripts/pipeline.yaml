@@ -1,0 +1,376 @@
+# MedAgentWork Pipeline Configuration v2.0
+# ==========================================
+# 5-Agent 管线声明式配置 — 单一事实来源。
+# 所有阈值、Schema、门禁规则集中于此，
+# 替代 SOUL.md + Prompt 中分散的约束声明。
+#
+# 设计参考: GitLab CI / Jenkinsfile / Argo Workflows
+# 核心理念: Pipeline as Code — 管线定义即执行规范
+
+pipeline:
+  name: "MedAgentWork 5-Agent 题库生产管线"
+  version: "2.0.0"
+  created: "2026-06-24"
+
+# ═══════════════════════════════════════════════════════════
+# Stage 定义 — 每个阶段 = 一个 Agent + 门禁
+# ═══════════════════════════════════════════════════════════
+
+stages:
+  - id: agent2
+    name: "MedGen 内容生产"
+    description: "根据教材生成结构化题目 JSON + 备考资料"
+    input_dir: "输入素材/"
+    output_dir: "中间产物/"
+    contract_schema: "schemas/agent2_output.schema.json"
+    quality_gates:
+      - id: GATE-A2
+        type: script
+        command: "python validate_options.py --batch {batch_id}"
+        pass_condition: "summary.fail == 0"
+        on_failure: BLOCK
+        auto_fix: false
+    slo:
+      bloom_memory_max: 35          # 记忆层上限 (%)
+      bloom_application_min: 20     # 应用层下限 (%)
+      r2_fail_max: 0               # 长度比 FAIL 必须为 0
+      r7_fail_max: 0               # 截断 FAIL 必须为 0
+      r8_fail_max: 0               # 最小长度 FAIL 必须为 0
+      option_avg_min: 6            # 选项平均字数下限
+      option_avg_max: 18           # 选项平均字数上限
+      answer_bias_max: 15          # 单选项答案集中度上限 (%)
+    prompt_constraints:
+      subject_short_terms:
+        tcm: [中药名, 方剂名, 穴位名, 证型名, 脏腑名, 经络名, 病因, 学说, 治则]
+        psychiatry: [药名, 受体名, 量表缩写, 综合征缩写]
+        neurology: [解剖结构缩写, 综合征缩写]
+        internal_med: [药名缩写, 评分缩写]
+        surgery: [术式缩写, 分级缩写]
+      option_length:
+        min_chars: 4
+        max_chars: 18
+        ratio_max: 1.5
+        natural_short_exempt: true
+
+  - id: agent3
+    name: "MedQC 质量守门"
+    description: "质检报告 + 门禁裁决"
+    input_dir: "中间产物/"
+    output_dir: "质检报告/"
+    prerequisites: [agent2]
+    contract_schema: "schemas/agent3_output.schema.json"
+    quality_gates:
+      - id: GATE-A3-D20
+        type: conditional
+        pass_condition: "D20_score != 0"
+        on_failure: BLOCK
+        can_override: false
+      - id: GATE-A3-BLOOM
+        type: threshold
+        field: "bloom_max_deviation"
+        threshold: 15              # Bloom 偏差 > 15% → BLOCKED
+        on_failure: BLOCK
+        can_override: false
+    slo:
+      overall_score_min: 70        # 质检总分下限
+      critical_issues_max: 5       # Critical 问题上限
+      major_issues_max: 20         # Major 问题上限
+      bloom_deviation_max: 15      # Bloom 单层偏差上限 (%)
+      answer_bias_max: 20          # 答案位置集中度上限 (%)
+      must_escalate_max: 5         # 必须升项问题数上限
+    checks:
+      - D5: "答案溯源验证"
+      - D6: "否定词加粗检查"
+      - D7: "选项重复检测"
+      - D10: "难度分布检查"
+      - D11: "干扰项 plausibility 逐项评分"
+      - D12: "页码标注完整性"
+      - D13: "术语一致性"
+      - D14: "教材引用准确性"
+      - D15: "外来素材事实验证 (条件触发)"
+      - D16: "Bloom 认知层级覆盖率"
+      - D17: "选项同质性 (类别/语法/长度/绝对化/括号后缀/视觉突出/题干词移动)"
+      - D18: "词重复线索 (NBME) → 已代码化 R10"
+      - D19: "收敛策略 (NBME) → 已代码化 R11"
+      - D20: "B1 型题专项检查"
+
+  - id: agent4
+    name: "MedFix 交付修正"
+    description: "根据质检报告修复文件 + 追溯日志"
+    input_dir: "中间产物/"
+    output_dir: "最终产物/"
+    prerequisites: [agent3]
+    contract_schema: "schemas/agent4_output.schema.json"
+    quality_gates:
+      - id: GATE-A4-TRACE
+        type: file_exists
+        pattern: "*追溯日志*.json"
+        on_failure: BLOCK
+      - id: GATE-A4-HC13
+        type: field_check
+        field: "source_file_synced"
+        pass_condition: "== true"
+        on_failure: BLOCK
+        can_override: false
+      - id: GATE-A4-JSON
+        type: content_check
+        check: "no_yaml_frontmatter"
+        on_failure: BLOCK
+        auto_fix: true               # 可自动剥离 YAML 前置
+      - id: GATE-A4-RERUN
+        type: script
+        command: "python validate_options.py --batch {batch_id}_FIXED"
+        pass_condition: "summary.fail == 0"
+        on_failure: BLOCK
+    slo:
+      polarity_violations_max: 0    # 极性违规 (错误改对/对改错)
+      rollbacks_max: 0              # 回滚次数
+      escalations_max: 3            # 升项上限
+      hc6_issues_max: 3             # HC-6 独立审查问题上限
+    constraints:
+      - id: HC-6-RESTORE
+        rule: "禁止暴力截断; 禁止 '(相关表现)' '(相关类型)' 无意义后缀"
+        check: "R12 in validate_options.py"
+      - id: HC-7-CONSISTENCY
+        rule: "修改后全局一致性扫描 — 使用 diff 对比修复前后所有字段"
+        check: "可代码化: R14 (待实现)"
+      - id: HC-13-SOURCE
+        rule: "修复 COMPLETE.json 必须同步修改分系统源文件"
+        check: "GATE-A4-HC13"
+
+  - id: agent5
+    name: "MedReview 主复习资料"
+    description: "综合素材生成教材浓缩型分层复习手册"
+    input_dir: "最终产物/"
+    output_dir: "复习资料/"
+    prerequisites: [agent4]
+    contract_schema: "schemas/agent5_output.schema.json"
+    quality_gates:
+      - id: GATE-FINAL-HC9
+        type: content_check
+        field: "hc9_terminology_appendix"
+        pass_condition: "exists and non_empty"
+        on_failure: BLOCK
+      - id: GATE-FINAL-HC10
+        type: content_check
+        field: "hc10_page_authenticity"
+        pass_condition: "contains 'OK' and not contains 'placeholder'"
+        on_failure: BLOCK
+      - id: GATE-FINAL-HC11
+        type: content_check
+        field: "hc11_outline_page_marking"
+        pass_condition: "contains 'OK' or contains '0 missing'"
+        on_failure: BLOCK
+      - id: GATE-FINAL-JSON
+        type: content_check
+        field: "json_valid"
+        pass_condition: "== true"
+        on_failure: BLOCK
+    slo:
+      hc9_entry_count_min: 20       # 术语附录最少条目
+      hc10_page_dispersion_min: 10  # 页码分散度 (不同页码数)
+      hc10_no_placeholder: true     # 禁止占位符页码
+      hc11_coverage_min: 90         # 大纲页码标注覆盖率 (%)
+      visual_v1_v8_all_pass: true   # 视觉质量自检 8 项
+
+# ═══════════════════════════════════════════════════════════
+# 全局 SLO (Service Level Objectives)
+# ═══════════════════════════════════════════════════════════
+
+global_slo:
+  bloom_target: {记忆: 30, 理解: 40, 应用: 25, 分析: 5}
+  bloom_tolerance: 10              # 允许偏差 (%)
+  validate_fail_max: 0             # 最终产物 FAIL 必须为 0
+  gate_bypass_count: 0             # 门禁绕过事件 (目标: 0)
+  regression_rate: 0               # 已修复问题回归率 (目标: 0)
+  mean_time_to_recovery: 30        # MTTR 目标 (分钟)
+
+# ═══════════════════════════════════════════════════════════
+# 学科特性配置 (Feature Flags)
+# ═══════════════════════════════════════════════════════════
+
+subjects:
+  internal-med:
+    chunk_size: 800
+    top_n: 7
+    hybrid_search: true
+    keyword_weight: 0.3
+    protect_rules:
+      - "风险评分量表不拆分"
+      - "诊断分类标准不拆分"
+    short_term_categories: [药名缩写, 评分缩写]
+    option_length_ratio: 1.5
+
+  surgery:
+    chunk_size: 1000
+    top_n: 5
+    hybrid_search: true
+    keyword_weight: 0.4
+    protect_rules:
+      - "手术步骤顺序保护"
+      - "分期分型/TNM不拆分"
+    short_term_categories: [术式缩写, 分级缩写]
+    option_length_ratio: 1.5
+
+  neurology:
+    chunk_size: 800
+    top_n: 5
+    hybrid_search: true
+    keyword_weight: 0.5
+    protect_rules:
+      - "综合征不拆分"
+      - "传导通路不拆分"
+      - "分型标准不拆分"
+    short_term_categories: [解剖结构缩写, 综合征缩写]
+    option_length_ratio: 1.5
+
+  psychiatry:
+    chunk_size: 500
+    top_n: 5
+    hybrid_search: true
+    keyword_weight: 0.3
+    protect_rules:
+      - "DSM/ICD诊断条目不拆分"
+      - "评定量表不拆分"
+    short_term_categories: [药名, 受体名, 量表缩写, 综合征缩写]
+    option_length_ratio: 1.7
+
+  pediatrics:
+    chunk_size: 600
+    top_n: 7
+    hybrid_search: true
+    keyword_weight: 0.3
+    protect_rules:
+      - "年龄正常值不拆分"
+      - "发育里程碑不拆分"
+      - "按体重剂量不拆分"
+    short_term_categories: [发育缩写, 评分缩写]
+    option_length_ratio: 1.5
+
+  tcm:
+    chunk_size: 500
+    top_n: 5
+    hybrid_search: true
+    keyword_weight: 0.6
+    protect_rules:
+      - "每方独立chunk"
+      - "每药独立chunk"
+      - "每穴独立chunk"
+    short_term_categories: [中药名, 方剂名, 穴位名, 证型名, 脏腑名, 经络名, 病因, 学说, 治则]
+    option_length_ratio: 2.0        # 中医放宽: 脏腑1字 vs 方剂名7字
+
+  dermatology:
+    chunk_size: 600
+    top_n: 5
+    hybrid_search: false
+    keyword_weight: 0
+    protect_rules:
+      - "皮损形态+分布三联组不拆分"
+    short_term_categories: [药名缩写, 皮疹类型缩写]
+    option_length_ratio: 1.5
+
+  doctor-patient:
+    chunk_size: 800
+    top_n: 3
+    hybrid_search: false
+    keyword_weight: 0
+    protect_rules:
+      - "法律条文不拆分"
+      - "沟通模型步骤不拆分"
+    short_term_categories: []
+    option_length_ratio: 1.5
+
+  tcm-psychology:
+    chunk_size: 500
+    top_n: 5
+    hybrid_search: true
+    keyword_weight: 0.45
+    protect_rules:
+      - "证型辨证论治不拆分"
+      - "情志相胜配对不对拆分"
+    short_term_categories: [证型名, 疗法名, 穴位名, 脏腑名]
+    option_length_ratio: 2.0
+
+# ═══════════════════════════════════════════════════════════
+# 管线恢复 Runbook (Automated Playbooks)
+# ═══════════════════════════════════════════════════════════
+
+runbook:
+  # 故障模式 → 自动修复映射
+  patterns:
+    - symptom: "workflow_state 缺少 AGENT3/AGENT4 步骤记录"
+      detection: "healthcheck.py 或 gate_check.py"
+      auto_fix: "从顶层 qc_result/agent4_result 字段补写 steps 块"
+      script: "scripts/runbook.py --fix missing-steps"
+
+    - symptom: "批次目录不在 workflow_state 中 (孤立批次)"
+      detection: "healthcheck.py C1-orphan"
+      auto_fix: "检测中间产物目录 → 自动补录 workflow_state 最小记录"
+      script: "scripts/runbook.py --fix orphan-batch"
+
+    - symptom: "clean/ Prompt 与 current 不同步"
+      detection: "healthcheck.py E2-outdated"
+      auto_fix: "从 current 版本覆盖 clean/ 副本"
+      script: "scripts/maintenance.py --task prompts"
+
+    - symptom: "根目录散落 validate_options_report_*.json"
+      detection: "healthcheck.py D2-root"
+      auto_fix: "全部移入 reports/"
+      script: "scripts/maintenance.py --task cleanup"
+
+    - symptom: "gate_check.py 发现 GATE-A2 BLOCKED (validate FAIL > 0)"
+      detection: "gate_check.py"
+      auto_fix: false              # 不可自动修复，需 Agent 2 修正后重新生成
+      escalation: "通知用户: Agent 2 产出未达标，需修正后重跑"
+
+    - symptom: "gate_check.py 发现 GATE-A3 BLOCKED (D20=0 或 Bloom>15%)"
+      detection: "gate_check.py"
+      auto_fix: false              # 不可自动修复，需回退 Agent 2 重构
+      escalation: "通知用户: 质检门禁阻断，需回退 Agent 2 重构"
+
+    - symptom: "跨工作区 CONTEXT.md 工具表不一致"
+      detection: "scripts/maintenance.py --task cross"
+      auto_fix: "以 MedAgentWork 为基准同步所有工作区"
+      script: "scripts/sync_tools.py"
+
+  # 严重级别
+  severities:
+    P0_BLOCK: [GATE-A2, GATE-A3, GATE-A4]    # 阻断管线
+    P1_WARN: [orphan-batch, prompt-desync, cross-sync]  # 不阻断但需修复
+    P2_INFO: [root-pollution]                            # 不影响功能
+
+# ═══════════════════════════════════════════════════════════
+# 可观测性 (Observability)
+# ═══════════════════════════════════════════════════════════
+
+observability:
+  metrics:
+    - name: validate_score_trend
+      description: "每批次 validate PASS/WARN/FAIL 趋势"
+      source: "validate_options_report_*.json"
+    - name: bloom_distribution
+      description: "每批次 Bloom 四层分布"
+      source: "workflow_state.json"
+    - name: option_length_trend
+      description: "每批次选项平均字数走势"
+      source: "validate_options_report_*.json"
+    - name: gate_pass_rate
+      description: "门禁通过率 (每阶段)"
+      source: "workflow_state.json.gate_results"
+    - name: regression_rate
+      description: "已修复问题回归率"
+      source: "regression_db.json"
+
+  alert_rules:
+    - name: bloom_memory_creeping
+      condition: "连续 2 批次 Bloom 记忆层上升且均 > 35%"
+      action: "通知用户 + 建议检查 Agent 2 Prompt"
+    - name: validate_fail_increasing
+      condition: "FAIL 数环比增长 > 50%"
+      action: "通知用户 + 检查最近 Prompt 变更"
+    - name: gate_bypass_detected
+      condition: "gate_results 显示 PASS 但实际未运行检查脚本"
+      action: "自动运行 gate_check.py 复核 + 通知用户"
+    - name: option_length_oscillation
+      condition: "连续 2 批次选项 avg 波动 > 50%"
+      action: "通知用户 + 建议参数化约束校准"

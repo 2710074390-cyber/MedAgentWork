@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>精神病学 · 高效复习手册</title>
+<style>
+/* ============================================================
+   MedAgentWork — 主复习资料 HTML 渲染模板
+   设计理念：专业医学教材 + 现代网页阅读体验
+   零外部依赖，离线可用
+   ============================================================ */
+
+/* ----- CSS Custom Properties ----- */
+:root {
+  /* Light theme (default) */
+  --bg-primary: #fafbfc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f2f5;
+  --bg-callout: #f8f9fb;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a5568;
+  --text-tertiary: #718096;
+  --border: #e2e8f0;
+  --border-light: #edf2f7;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10);
+
+  /* Importance colors */
+  --color-master: #dc2626;      /* 掌握 - red */
+  --color-master-bg: #fef2f2;
+  --color-master-border: #fecaca;
+  --color-familiar: #d97706;    /* 熟悉 - amber */
+  --color-familiar-bg: #fffbeb;
+  --color-familiar-border: #fde68a;
+  --color-understand: #059669;  /* 了解 - green */
+  --color-understand-bg: #ecfdf5;
+  --color-understand-border: #a7f3d0;
+
+  /* Callout colors */
+  --color-warning: #d97706;
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fcd34d;
+  --color-tip: #7c3aed;
+  --color-tip-bg: #f5f3ff;
+  --color-tip-border: #c4b5fd;
+  --color-info: #2563eb;
+  --color-info-bg: #eff6ff;
+  --color-info-border: #93c5fd;
+  --color-success: #059669;
+  --color-success-bg: #ecfdf5;
+  --color-success-border: #6ee7b7;
+
+  /* Accent */
+  --accent: #2563eb;
+  --accent-light: #dbeafe;
+
+  /* Typography */
+  --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+  --font-mono: "SF Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
+  --line-height: 1.8;
+  --content-width: 720px;
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --header-height: 56px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+}
+
+/* ----- Dark Theme ----- */
+[data-theme="dark"] {
+  --bg-primary: #0f1117;
+  --bg-secondary: #161822;
+  --bg-tertiary: #1e2030;
+  --bg-callout: #1a1c2a;
+  --text-primary: #e2e4e9;
+  --text-secondary: #a0a6b5;
+  --text-tertiary: #6b7280;
+  --border: #2a2d3a;
+  --border-light: #222433;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
+
+  --color-master-bg: #3b1219;
+  --color-master-border: #5c1f24;
+  --color-familiar-bg: #3b2f0a;
+  --color-familiar-border: #5c4a1a;
+  --color-understand-bg: #0a2e1f;
+  --color-understand-border: #1a4a30;
+
+  --color-warning-bg: #3b2f0a;
+  --color-warning-border: #5c4a1a;
+  --color-tip-bg: #1e123b;
+  --color-tip-border: #3a2560;
+  --color-info-bg: #0a1e3b;
+  --color-info-border: #1a3a5c;
+  --color-success-bg: #0a2e1f;
+  --color-success-border: #1a4a30;
+
+  --accent-light: #1a2e4a;
+}
+
+/* ----- Reset & Base ----- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: var(--line-height);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ----- Progress Bar ----- */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--color-master), var(--accent), var(--color-understand));
+  z-index: 1000;
+  transition: width 100ms linear;
+}
+
+/* ----- Top Header ----- */
+#top-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 900;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+#top-header .title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#top-header .actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ----- Theme Toggle ----- */
+.theme-toggle {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+}
+.theme-toggle:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+/* ----- Sidebar Toggle (mobile) ----- */
+#sidebar-toggle {
+  display: none;
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text-secondary);
+}
+
+/* ----- Sidebar ----- */
+#sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--header-height));
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  z-index: 800;
+  padding: 16px 0;
+  transition: transform var(--transition-normal);
+}
+
+#sidebar::-webkit-scrollbar { width: 4px; }
+#sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.sidebar-section {
+  padding: 8px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+}
+
+.sidebar-link {
+  display: block;
+  padding: 8px 20px 8px 24px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all var(--transition-fast);
+  line-height: 1.5;
+}
+.sidebar-link:hover {
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  border-left-color: var(--border);
+}
+.sidebar-link.active {
+  color: var(--accent);
+  background: var(--accent-light);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+.sidebar-link .badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 3px;
+  margin-left: 6px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+.badge-master { background: var(--color-master-bg); color: var(--color-master); }
+.badge-familiar { background: var(--color-familiar-bg); color: var(--color-familiar); }
+.badge-understand { background: var(--color-understand-bg); color: var(--color-understand); }
+
+/* ----- Main Content ----- */
+#main-content {
+  margin-left: var(--sidebar-width);
+  margin-top: var(--header-height);
+  padding: 40px 48px 80px;
+  max-width: calc(var(--content-width) + 96px);
+}
+
+/* ----- Hero Banner ----- */
+.hero-banner {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
+  border-radius: 16px;
+  padding: 36px 40px;
+  margin-bottom: 40px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 400px; height: 400px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+.hero-banner h1 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+.hero-banner .meta {
+  font-size: 14px;
+  opacity: 0.85;
+  position: relative;
+  z-index: 1;
+}
+.hero-banner .meta-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+.hero-banner .meta-tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  font-size: 12px;
+  backdrop-filter: blur(4px);
+}
+
+/* ----- Section Title ----- */
+.section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 48px 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title:first-of-type {
+  margin-top: 0;
+}
+
+/* ----- Module Card ----- */
+.module-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-normal);
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}
+.module-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.module-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.module-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.module-stats {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.module-stat {
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.stat-master { background: var(--color-master-bg); color: var(--color-master); }
+.stat-familiar { background: var(--color-familiar-bg); color: var(--color-familiar); }
+.stat-understand { background: var(--color-understand-bg); color: var(--color-understand); }
+
+.module-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.module-meta span { display: flex; align-items: center; gap: 4px; }
+
+/* ----- Importance Badge (inline) ----- */
+.importance-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  vertical-align: middle;
+  letter-spacing: 0.02em;
+}
+.imp-master { background: var(--color-master-bg); color: var(--color-master); border: 1px solid var(--color-master-border); }
+.imp-familiar { background: var(--color-familiar-bg); color: var(--color-familiar); border: 1px solid var(--color-familiar-border); }
+.imp-understand { background: var(--color-understand-bg); color: var(--color-understand); border: 1px solid var(--color-understand-border); }
+
+/* ----- Callout Blocks ----- */
+.callout {
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 16px 0;
+  border-left: 4px solid;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.callout-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.callout-warning {
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning);
+}
+.callout-warning .callout-title { color: var(--color-warning); }
+
+.callout-tip {
+  background: var(--color-tip-bg);
+  border-color: var(--color-tip);
+}
+.callout-tip .callout-title { color: var(--color-tip); }
+
+.callout-info {
+  background: var(--color-info-bg);
+  border-color: var(--color-info);
+}
+.callout-info .callout-title { color: var(--color-info); }
+
+.callout-success {
+  background: var(--color-success-bg);
+  border-color: var(--color-success);
+}
+.callout-success .callout-title { color: var(--color-success); }
+
+/* ----- Accordion (details/summary) ----- */
+.accordion {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 12px 0;
+  overflow: hidden;
+}
+.accordion summary {
+  padding: 14px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  background: var(--bg-tertiary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  user-select: none;
+  transition: background var(--transition-fast);
+}
+.accordion summary::-webkit-details-marker { display: none; }
+.accordion summary::before {
+  content: '▸';
+  display: inline-block;
+  transition: transform var(--transition-fast);
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+.accordion[open] summary::before {
+  transform: rotate(90deg);
+}
+.accordion summary:hover {
+  background: var(--accent-light);
+}
+.accordion .accordion-body {
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ----- Tables ----- */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+thead {
+  background: var(--bg-tertiary);
+}
+th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid var(--border);
+  white-space: nowrap;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+  vertical-align: top;
+}
+tr:nth-child(even) td {
+  background: var(--bg-callout);
+}
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* ----- Fill-in-blank (active recall) ----- */
+.fill-blank {
+  display: inline-block;
+  min-width: 60px;
+  border-bottom: 2px dashed var(--accent);
+  padding: 0 4px;
+  margin: 0 2px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: transparent;
+  position: relative;
+}
+.fill-blank.revealed {
+  color: var(--color-understand);
+  border-bottom-color: var(--color-understand);
+  font-weight: 600;
+}
+.fill-blank::after {
+  content: '（点击显示）';
+  position: absolute;
+  left: 4px;
+  top: 0;
+  color: var(--text-tertiary);
+  font-size: 12px;
+  pointer-events: none;
+}
+.fill-blank.revealed::after {
+  display: none;
+}
+
+/* ----- Blockquote ----- */
+blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 16px 0;
+  padding: 12px 20px;
+  background: var(--accent-light);
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* ----- Code / Mono ----- */
+code {
+  background: var(--bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  color: var(--color-tip);
+}
+
+/* ----- Back to Top ----- */
+#back-to-top {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: var(--shadow-md);
+  z-index: 700;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+#back-to-top:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* ----- Sidebar overlay (mobile) ----- */
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 790;
+}
+
+/* ----- Print Styles ----- */
+@media print {
+  #progress-bar, #top-header, #sidebar, #sidebar-overlay, #sidebar-toggle, #back-to-top, .theme-toggle {
+    display: none !important;
+  }
+  #main-content {
+    margin-left: 0;
+    margin-top: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+  .module-card, .hero-banner {
+    box-shadow: none;
+    break-inside: avoid;
+    border: 1px solid #ddd;
+  }
+  .hero-banner {
+    background: #f0f4ff !important;
+    color: #1a1a2e !important;
+  }
+  .hero-banner .meta-tag {
+    background: #e2e8f0;
+    color: #1a1a2e;
+  }
+  body { font-size: 12px; background: #fff; }
+  .accordion[open] .accordion-body { display: block !important; }
+  .accordion:not([open]) .accordion-body { display: none !important; }
+  .fill-blank { color: var(--color-understand); border-bottom: 1px solid #999; }
+  .fill-blank::after { display: none; }
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 1024px) {
+  #main-content {
+    padding: 24px 20px 60px;
+  }
+  .hero-banner {
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+  .hero-banner h1 { font-size: 22px; }
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    transform: translateX(-100%);
+    box-shadow: var(--shadow-lg);
+  }
+  #sidebar.open {
+    transform: translateX(0);
+  }
+  #sidebar-overlay.show {
+    display: block;
+  }
+  #sidebar-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #main-content {
+    margin-left: 0;
+    padding: 16px 12px 60px;
+    max-width: 100%;
+  }
+  .module-card {
+    padding: 20px 16px;
+  }
+  .hero-banner {
+    border-radius: 10px;
+    padding: 20px 16px;
+  }
+  .hero-banner h1 { font-size: 20px; }
+  #back-to-top { bottom: 16px; right: 16px; }
+}
+
+/* ----- Utility ----- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div id="progress-bar" style="width:0%"></div>
+
+<!-- Top Header -->
+<header id="top-header">
+  <button id="sidebar-toggle" aria-label="目录">☰</button>
+  <span class="title">📖 精神病学 · 高效复习手册</span>
+  <div class="actions">
+    <button class="theme-toggle" id="theme-toggle" aria-label="切换暗色模式" title="切换暗色/亮色模式">🌙</button>
+  </div>
+</header>
+
+<!-- Sidebar Overlay -->
+<div id="sidebar-overlay"></div>
+
+<!-- Sidebar -->
+<nav id="sidebar">
+  <div class="sidebar-section">📋 导航</div>
+  <a href="#nav" class="sidebar-link active">科目导航</a>
+  <a href="#guide" class="sidebar-link">使用指南</a>
+  <a href="#overview" class="sidebar-link">模块速览</a>
+
+  <div class="sidebar-section" style="margin-top:12px">📚 模块</div>
+  <a href="#m1" class="sidebar-link">M1 绪论 <span class="badge badge-understand">了解</span></a>
+  <a href="#m2" class="sidebar-link">M2 症状学 <span class="badge badge-familiar">重要</span></a>
+  <a href="#m5" class="sidebar-link">M5 精神分裂症 <span class="badge badge-master">核心</span></a>
+
+  <div class="sidebar-section" style="margin-top:12px">📎 附录</div>
+  <a href="#appendix-terms" class="sidebar-link">术语异名对照</a>
+  <a href="#appendix-pages" class="sidebar-link">教材页码索引</a>
+</nav>
+
+<!-- Main Content -->
+<main id="main-content">
+
+<!-- ====== HERO BANNER ====== -->
+<div class="hero-banner">
+  <h1>🧠 精神病学 高效复习手册</h1>
+  <p class="meta">batch007 | 12模块 · 教材浓缩型 | 221题题库反选</p>
+  <div class="meta-tags">
+    <span class="meta-tag">📘 精神病学（第9版）</span>
+    <span class="meta-tag">🎯 期末考试</span>
+    <span class="meta-tag">⏱️ 预计阅读 6-8 小时</span>
+    <span class="meta-tag">📝 221题覆盖</span>
+  </div>
+</div>
+
+<!-- ====== 科目导航 ====== -->
+<h2 class="section-title" id="nav">🧭 科目导航：精神病学怎么学？</h2>
+
+<div class="module-card">
+  <h3 style="font-size:17px;margin-bottom:12px">📌 科目特点</h3>
+
+  <p style="margin-bottom:12px"><strong>症状学是基础语言</strong>：精神病学的"听诊器"是精神状况检查。六大症状维度（感知觉、思维、情感、意志、行为、认知）是你理解一切疾病的通用语法。</p>
+  <p style="margin-bottom:12px"><strong>诊断依赖时间轴</strong>：精神科没有CT/MRI那样直观的确诊工具。诊断靠症状组合+持续时间+功能损害+排除。</p>
+  <p style="margin-bottom:12px"><strong>药物机制-副作用一体两面</strong>：受体阻断既是疗效来源也是副作用的根源。D2→EPS+泌乳素↑、M1→口干便秘、α1→低血压、H1→镇静发胖。</p>
+  <p style="margin-bottom:16px"><strong>四种疾病构成半壁江山</strong>：精神分裂症（31题）、抑郁障碍（29题）、双相障碍（24题）、躯体治疗（19题）合计103题（47%）。</p>
+
+  <h4 style="font-size:14px;margin:16px 0 8px;color:var(--text-secondary)">命题规律</h4>
+  <ul style="padding-left:20px;color:var(--text-secondary);font-size:14px;line-height:2">
+    <li><strong>A1型（40%）</strong>：定义、概念、数值、分型——纯记忆题</li>
+    <li><strong>A2型（30%）</strong>：病例描述→诊断/选药</li>
+    <li><strong>B1型（10%）</strong>：配对题——阳性/阴性症状、一代/二代药物</li>
+    <li><strong>A3/A4型（10%）</strong>：病例串题（诊断→鉴别→治疗）</li>
+    <li><strong>X型（10%）</strong>：多选综合征组合</li>
+  </ul>
+
+  <h4 style="font-size:14px;margin:20px 0 8px;color:var(--text-secondary)">建议复习路径</h4>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>阶段</th><th>时间</th><th>目标</th><th>具体操作</th></tr></thead>
+      <tbody>
+        <tr><td><strong>第一阶段</strong></td><td>50%</td><td>建立疾病框架</td><td>M2症状学→M5精神分裂症→M6抑郁→M7双相→M12治疗</td></tr>
+        <tr><td><strong>第二阶段</strong></td><td>30%</td><td>覆盖剩余模块</td><td>M3→M4→M10→M1→M8→M9→M11</td></tr>
+        <tr><td><strong>第三阶段</strong></td><td>20%</td><td>查漏补缺</td><td>刷A2/A3/A4病例题+B1配对题，错题回看</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout callout-warning" style="margin-top:16px">
+    <div class="callout-title">⚠️ 避坑提示</div>
+    <ul style="padding-left:18px;margin-top:4px">
+      <li>❌ <strong>只背不鉴别</strong>：精神病学考试的核心能力是鉴别诊断</li>
+      <li>❌ <strong>忽略时间窗</strong>：急性应激障碍&lt;1月 vs PTSD&gt;1月</li>
+      <li>❌ <strong>药物只记名字不记机制</strong>：SSRI/SNRI/NaSSA分类是高频考点</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ====== 使用指南 ====== -->
+<h2 class="section-title" id="guide">📖 使用指南</h2>
+<div class="module-card">
+  <h3 style="font-size:16px;margin-bottom:12px">分层阅读策略</h3>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px">
+    <div class="callout callout-success">
+      <div class="callout-title">🟢 基础薄弱</div>
+      先读每模块的「🧩 前置知识检查」，补上缺口再进入核心层
+    </div>
+    <div class="callout callout-info">
+      <div class="callout-title">🟡 标准复习</div>
+      跳过前置补丁，从「🎯 高收益摘要」读到「📌 本章小结」
+    </div>
+    <div class="callout callout-warning">
+      <div class="callout-title">🔴 冲刺高分</div>
+      标准路径 + 展开所有折叠区 + 深度读完「🔗 深度链接」
+    </div>
+    <div class="callout callout-tip">
+      <div class="callout-title">⚡ 考前速刷</div>
+      只看「高收益摘要」+「对比速查」+「本章小结」
+    </div>
+  </div>
+
+  <h4 style="font-size:14px;margin:20px 0 8px;color:var(--text-secondary)">主动回忆使用说明</h4>
+  <p style="font-size:14px;color:var(--text-secondary)">每个模块的「🔄 主动回忆区」设计了填空式自测题。建议先遮住答案，尝试独立完成填空，再
+  <span class="fill-blank" onclick="this.classList.toggle('revealed')">点击显示答案</span>
+  核对。错题回归「📋 结构化笔记」重新阅读。</p>
+</div>
+
+<!-- ====== 模块速览地图 ====== -->
+<h2 class="section-title" id="overview">🗺️ 模块速览地图</h2>
+<div class="module-card">
+  <pre style="background:var(--bg-tertiary);padding:20px;border-radius:8px;font-size:13px;line-height:1.8;overflow-x:auto;font-family:var(--font-mono);color:var(--text-primary)">
+精神病学（12模块）
+├── <span style="color:var(--color-understand)">基础层</span>
+│   ├── M1 绪论（P1-9, 了解）—— 学科定义、病因模型
+│   └── M2 症状学（P10-24, 重要）—— 六大症状维度
+├── <span style="color:var(--color-familiar)">疾病层（认知相关）</span>
+│   ├── M3 神经认知障碍 —— 谵妄、AD、VD
+│   └── M4 物质所致障碍 —— 酒精、阿片、兴奋剂
+├── <span style="color:var(--color-master)">疾病层（三大核心）</span>
+│   ├── M5 精神分裂症 —— 阳性/阴性/认知症状
+│   ├── M6 抑郁障碍 —— 三低 + SSRI + 三阶段
+│   └── M7 双相障碍 —— 三高 + 心境稳定剂 + 锂盐
+├── <span style="color:var(--color-familiar)">疾病层（焦虑/应激）</span>
+│   ├── M8 强迫及相关 —— OCD + 躯体变形障碍
+│   ├── M9 躯体忧虑/疑病
+│   ├── M10 应激相关 —— PTSD + 急性应激
+│   └── M11 睡眠障碍
+└── <span style="color:var(--color-master)">治疗层</span>
+    └── M12 躯体治疗 —— 五大类药物 + MECT/rTMS</pre>
+</div>
+
+<!-- ====== MODULE 1: 绪论 ====== -->
+<h2 class="section-title" id="m1">📘 模块1：绪论</h2>
+<div class="module-card">
+  <div class="module-header">
+    <h2>M1 · 绪论</h2>
+    <div class="module-stats">
+      <span class="module-stat stat-master">掌握 0</span>
+      <span class="module-stat stat-familiar">熟悉 2</span>
+      <span class="module-stat stat-understand">了解 5</span>
+    </div>
+  </div>
+  <div class="module-meta">
+    <span>📝 预计题型：A1型为主</span>
+    <span>⏱️ 阅读约 8 分钟</span>
+    <span>🔗 关联：为M2-M12提供学科框架</span>
+  </div>
+
+  <h3 style="font-size:15px;margin:20px 0 10px;color:var(--text-primary)">🧩 前置知识检查</h3>
+  <ul style="font-size:14px;color:var(--text-secondary);line-height:2;padding-left:20px">
+    <li>✅ 需掌握：<strong>医学模式转变</strong> → 从生物医学模式转向生物-心理-社会综合模式</li>
+    <li>⚡ 快速补课：<strong>精神障碍≠精神病</strong> → 精神障碍涵盖认知、情绪、行为等方面的临床意义紊乱。精神病特指伴有现实检验能力严重受损的重性障碍。考试常将两者互换来挖坑</li>
+  </ul>
+
+  <h3 style="font-size:15px;margin:20px 0 10px">🎯 高收益摘要</h3>
+  <ul style="font-size:14px;color:var(--text-secondary);line-height:2;padding-left:20px">
+    <li>精神病学=研究精神障碍病因/诊断/治疗/预防的临床医学分支学科 <span style="color:var(--text-tertiary)">（教材P1）</span></li>
+    <li>精神卫生=维护和促进心理健康的活动和状态，属公共卫生范畴 <span style="color:var(--text-tertiary)">（教材P1）</span></li>
+    <li>病因学=生物-心理-社会综合模型，三者交互作用 <span style="color:var(--text-tertiary)">（教材P5-9）</span></li>
+  </ul>
+
+  <h3 style="font-size:15px;margin:24px 0 12px">📋 结构化笔记</h3>
+
+  <p style="margin-bottom:12px"><span class="importance-badge imp-familiar">熟悉</span> <strong>精神病学核心概念群</strong>：精神病学是研究精神障碍的病因、发病机制、临床表现、诊断、治疗和预防的临床医学二级学科（教材P1）。精神卫生侧重维护和促进心理健康（公共卫生范畴），精神医学是涵盖精神病学+精神卫生的广义概念。</p>
+
+  <p style="margin-bottom:12px"><span class="importance-badge imp-understand">了解</span> <strong>脑与精神活动的关系</strong>：精神活动是大脑功能的产物。生理基础为神经科学，心理基础涉及心理学/社会学/人类学（教材P3-5）。</p>
+
+  <div class="accordion" open>
+    <summary>🔬 展开：生物-心理-社会病因模型</summary>
+    <div class="accordion-body">
+      <p><span class="importance-badge imp-familiar">熟悉</span> <strong>生物-心理-社会综合模型</strong>：精神障碍三大病因维度相互交织（教材P5-9）：</p>
+      <ul style="padding-left:20px;margin-top:8px;line-height:2">
+        <li><strong>生物学因素</strong>：遗传（多基因遗传模式）、神经发育异常、神经递质失衡（DA/5-HT/NE/Glu）</li>
+        <li><strong>心理因素</strong>：人格特质（神经质/内向）、应对方式、早年创伤经历</li>
+        <li><strong>社会因素</strong>：应激性生活事件、社会支持缺乏、社会经济地位</li>
+      </ul>
+      <div class="callout callout-warning" style="margin-top:12px">
+        <div class="callout-title">⚠️ 易错陷阱</div>
+        三者不是简单叠加，而是交互作用——同样遭遇应激，有遗传易感性+性格缺陷的人更容易发病。考题常把单一因素描述当成综合性模型来挖坑。
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin:24px 0 10px">🔄 主动回忆区</h3>
+  <div style="font-size:14px;line-height:2.2">
+    <p><strong>基础级</strong></p>
+    <p>1. 精神病学是研究精神障碍的<span class="fill-blank" onclick="this.classList.toggle('revealed')">病因、发病机制、临床表现、诊断、治疗和预防</span>的临床医学二级学科。</p>
+    <p>2. 精神障碍的病因学公认模型是<span class="fill-blank" onclick="this.classList.toggle('revealed')">生物-心理-社会</span>综合模型。</p>
+    <p style="margin-top:12px"><strong>进阶级</strong></p>
+    <p>3. 为什么说"精神障碍≠精神病"？<span class="fill-blank" onclick="this.classList.toggle('revealed')">精神障碍概念更广，涵盖认知/情绪/行为等紊乱；精神病仅指伴现实检验能力严重受损的重性障碍</span></p>
+  </div>
+
+  <div class="callout callout-warning" style="margin-top:20px">
+    <div class="callout-title">⚠️ 常见陷阱</div>
+    <p style="margin-top:4px"><strong>陷阱1</strong>：把"精神病学"和"精神卫生"混为一谈 → 正确：精神病学是临床医学学科，精神卫生是公共卫生概念</p>
+    <p style="margin-top:4px"><strong>陷阱2</strong>：认为病因是单一因素 → 正确：生物-心理-社会三因素交互作用</p>
+  </div>
+
+  <div class="callout callout-tip" style="margin-top:16px">
+    <div class="callout-title">💡 记忆口诀</div>
+    <p style="margin-top:4px"><strong>"精神三概念，大小各不同"</strong> → 精神医学（最大）包含精神病学（临床）+精神卫生（公卫），精神障碍是两者的研究对象。</p>
+  </div>
+
+  <h3 style="font-size:15px;margin:20px 0 8px">📌 本章小结</h3>
+  <ul style="font-size:14px;color:var(--text-secondary);line-height:2;padding-left:20px">
+    <li>精神病学 → 临床医学分支，研究精神障碍的诊断与治疗</li>
+    <li>精神卫生 → 公共卫生概念，维护心理健康</li>
+    <li>病因 → 生物-心理-社会三因素交互作用，非简单叠加</li>
+  </ul>
+</div>
+
+<!-- ====== MODULE 5: 精神分裂症 (CORE) ====== -->
+<h2 class="section-title" id="m5">🔴 模块5：精神分裂症及其他精神病性障碍</h2>
+<div class="module-card" style="border-left: 4px solid var(--color-master)">
+  <div class="module-header">
+    <h2>M5 · 精神分裂症 <span class="importance-badge imp-master" style="font-size:12px;padding:3px 10px">核心级</span></h2>
+    <div class="module-stats">
+      <span class="module-stat stat-master">掌握 12</span>
+      <span class="module-stat stat-familiar">熟悉 8</span>
+      <span class="module-stat stat-understand">了解 3</span>
+    </div>
+  </div>
+  <div class="module-meta">
+    <span>📝 预计题型：A1/A2/A3/A4/B1/X 全题型</span>
+    <span>⏱️ 阅读约 25 分钟</span>
+    <span>📊 31题（全科最高）</span>
+  </div>
+
+  <h3 style="font-size:15px;margin:20px 0 10px">🧩 前置知识检查</h3>
+  <ul style="font-size:14px;color:var(--text-secondary);line-height:2;padding-left:20px">
+    <li>✅ 需掌握：<strong>多巴胺假说</strong> → 中脑边缘通路DA亢进→阳性症状；中脑皮质通路DA低下→阴性症状</li>
+    <li>✅ 需掌握：<strong>突触修剪异常</strong> → 青春期突触过度修剪→前额叶功能↓，解释为什么精神分裂症好发于青壮年</li>
+  </ul>
+
+  <h3 style="font-size:15px;margin:20px 0 10px">🎯 高收益摘要</h3>
+  <div class="callout callout-info">
+    <div class="callout-title">如果明天考试只记住5件事：</div>
+    <ol style="padding-left:20px;line-height:2.2;margin-top:4px">
+      <li>诊断核心：≥2项特征性症状持续≥1月，总病程≥6月 <span style="color:var(--text-tertiary)">（教材P74）</span></li>
+      <li>阳性症状（幻觉/妄想/紊乱言行）vs 阴性症状（情感淡漠/意志缺乏/社交退缩）</li>
+      <li>偏执型最常见（妄想+幻觉为主），紧张型=木僵+兴奋交替</li>
+      <li>抗精神病药：一代（D2阻断→EPS）；二代（5-HT2A+D2→EPS少但代谢副作用多）</li>
+      <li>氯氮平：疗效最强但需监测血常规（粒细胞缺乏风险1-2%）</li>
+    </ol>
+  </div>
+
+  <h3 style="font-size:15px;margin:24px 0 12px">📋 结构化笔记</h3>
+
+  <p style="margin-bottom:16px"><span class="importance-badge imp-master">掌握</span> <strong>精神分裂症定义与诊断</strong>：一组病因未明的重性精神障碍，多在青壮年缓慢起病，表现为感知、思维、情感、行为等多方面障碍和精神活动不协调。DSM-5诊断标准：≥2项特征性症状（幻觉、妄想、言语紊乱、行为紊乱或紧张症、阴性症状，至少1项为前3项之一），持续≥1月，总病程≥6月，伴社会/职业功能损害（教材P74-75）。</p>
+
+  <div class="accordion" open>
+    <summary>🔬 展开：阳性症状 vs 阴性症状 vs 认知症状</summary>
+    <div class="accordion-body">
+      <div class="table-wrapper">
+        <table>
+          <thead><tr><th>维度</th><th>阳性症状</th><th>阴性症状</th><th>认知症状</th></tr></thead>
+          <tbody>
+            <tr><td><strong>本质</strong></td><td>正常功能的"增加/扭曲"</td><td>正常功能的"减少/缺失"</td><td>信息处理能力缺陷</td></tr>
+            <tr><td><strong>表现</strong></td><td>幻觉/妄想/紊乱言行</td><td>情感淡漠/意志缺乏/社交退缩/快感缺失</td><td>注意力/记忆/执行功能↓</td></tr>
+            <tr><td><strong>DA通路</strong></td><td>中脑边缘DA↑</td><td>中脑皮质DA↓</td><td>前额叶DA↓</td></tr>
+            <tr><td><strong>药物反应</strong></td><td>一代/二代均有效</td><td>二代略优于一代</td><td>药物治疗有限</td></tr>
+            <tr><td><strong>预后意义</strong></td><td>急性期突出，可控制</td><td>持续存在，影响功能更大</td><td>决定长期功能恢复</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout callout-warning" style="margin-top:12px">
+        <div class="callout-title">⚠️ 易错陷阱</div>
+        阴性症状≠抑郁症状。阴性症状是"没有"（没有情感表达、没有意志行为），抑郁是"有负面"（有低落情绪、有自责观念）。考试A2型病例最爱把"情感淡漠+意志缺乏"描述得像是抑郁，需要根据核心症状区分。
+      </div>
+    </div>
+  </div>
+
+  <h3 style="font-size:15px;margin:20px 0 10px">📊 对比速查：一代 vs 二代抗精神病药</h3>
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>特征</th><th>一代（典型）</th><th>二代（非典型）</th></tr></thead>
+      <tbody>
+        <tr><td><strong>代表药</strong></td><td>氯丙嗪、氟哌啶醇、舒必利</td><td>利培酮、奥氮平、喹硫平、阿立哌唑、氯氮平</td></tr>
+        <tr><td><strong>机制</strong></td><td>强D2阻断</td><td>5-HT2A + D2双重阻断</td></tr>
+        <tr><td><strong>EPS</strong></td><td>常见（急性肌张力障碍/PKP/TD）</td><td>较少（利培酮>6mg时增加）</td></tr>
+        <tr><td><strong>泌乳素</strong></td><td>显著升高</td><td>利培酮升高，其他轻微</td></tr>
+        <tr><td><strong>代谢副作用</strong></td><td>较轻</td><td>奥氮平/氯氮平>喹硫平>利培酮</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size:15px;margin:24px 0 10px">🔄 主动回忆区</h3>
+  <div style="font-size:14px;line-height:2.2">
+    <p><strong>基础级</strong></p>
+    <p>1. 精神分裂症DSM-5诊断要求特征性症状持续≥<span class="fill-blank" onclick="this.classList.toggle('revealed')">1月</span>，总病程≥<span class="fill-blank" onclick="this.classList.toggle('revealed')">6月</span>。</p>
+    <p>2. 阳性症状对应中脑边缘DA<span class="fill-blank" onclick="this.classList.toggle('revealed')">亢进</span>，阴性症状对应中脑皮质DA<span class="fill-blank" onclick="this.classList.toggle('revealed')">低下</span>。</p>
+    <p style="margin-top:12px"><strong>进阶级</strong></p>
+    <p>3. 为什么氯氮平疗效最强却不是一线？<span class="fill-blank" onclick="this.classList.toggle('revealed')">粒细胞缺乏风险1-2%需定期监测血常规，仅用于难治性精神分裂症</span></p>
+  </div>
+
+  <div class="callout callout-warning" style="margin-top:20px">
+    <div class="callout-title">⚠️ 常见陷阱</div>
+    <p style="margin-top:4px"><strong>陷阱1</strong>：阴性症状=抑郁 → 错！阴性是"缺失"（no emotion），抑郁是"负面"（negative emotion）</p>
+    <p style="margin-top:4px"><strong>陷阱2</strong>：一代药和二代药的主要区别在于疗效 → 错！主要区别在副作用谱，疗效差异不显著（除氯氮平）</p>
+    <p style="margin-top:4px"><strong>陷阱3</strong>：诊断只需看症状 → 错！必须满足时间标准（症状≥1月+总病程≥6月）</p>
+  </div>
+
+  <div class="callout callout-tip" style="margin-top:16px">
+    <div class="callout-title">💡 记忆口诀</div>
+    <p style="margin-top:4px"><strong>"阳亢阴低认知差，一代EPS二代胖"</strong> → 阳性=边缘DA亢进，阴性=皮质DA低下，认知=前额叶DA低下。一代药EPS多，二代药代谢副作用多（发胖）。</p>
+  </div>
+
+  <h3 style="font-size:15px;margin:20px 0 8px">📌 本章小结</h3>
+  <ul style="font-size:14px;color:var(--text-secondary);line-height:2;padding-left:20px">
+    <li>精神分裂症=多维度精神活动不协调，青壮年起病，慢性迁延</li>
+    <li>诊断=症状（≥2项,≥1月）+ 病程（≥6月）+ 功能损害 + 排除</li>
+    <li>DA通路→症状：中脑边缘↑（阳性）、中脑皮质↓（阴性）、前额叶↓（认知）</li>
+  </ul>
+
+  <h3 style="font-size:15px;margin:24px 0 10px">🔗 深度链接</h3>
+  <div style="font-size:14px;color:var(--text-secondary);line-height:1.8">
+    <p>🧠 <strong>机制深挖</strong>：为什么二代药EPS少？5-HT2A受体在黑质-纹状体通路抑制DA释放。二代药同时阻断5-HT2A→解除这种抑制→DA释放增加→抵消D2阻断→EPS减少。但这也意味着二代药的D2占有率需要更高才能达到同等抗精神病效果。</p>
+    <p style="margin-top:8px">🔗 <strong>跨模块串联</strong>：精神分裂症（M5）↔ 躯体治疗（M12）：M5的抗精神病药受体机制详解在M12。M5了解疾病→M12了解治疗，不可分割。</p>
+  </div>
+</div>
+
+<!-- ====== APPENDIX: 术语异名 ====== -->
+<h2 class="section-title" id="appendix-terms">📋 附录一：术语同意异名对照表</h2>
+<div class="module-card">
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>标准名</th><th>异名</th><th>说明</th></tr></thead>
+      <tbody>
+        <tr><td>精神分裂症</td><td>早发性痴呆 / Schizophrenia</td><td>旧称"早发性痴呆"，现已不用</td></tr>
+        <tr><td>双相障碍</td><td>躁狂抑郁症 / Bipolar Disorder</td><td>旧称躁郁症</td></tr>
+        <tr><td>抑郁障碍</td><td>抑郁症 / Major Depressive Disorder (MDD)</td><td>临床常用"抑郁症"</td></tr>
+        <tr><td>谵妄</td><td>急性脑综合征 / Delirium</td><td>意识障碍为核心</td></tr>
+        <tr><td>痴呆</td><td>慢性脑综合征 / Dementia</td><td>智能障碍为核心</td></tr>
+        <tr><td>阿尔茨海默病</td><td>AD / Alzheimer's Disease</td><td>最常见神经退行性痴呆</td></tr>
+        <tr><td>血管性痴呆</td><td>VD / Vascular Dementia</td><td>阶梯样恶化</td></tr>
+        <tr><td>强迫症</td><td>OCD / Obsessive-Compulsive Disorder</td><td>强迫思维+强迫行为</td></tr>
+        <tr><td>创伤后应激障碍</td><td>PTSD / Post-Traumatic Stress Disorder</td><td>闯入+回避+高警觉</td></tr>
+        <tr><td>电抽搐治疗</td><td>MECT / 改良电休克</td><td>精神科物理治疗</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ====== APPENDIX: 教材页码 ====== -->
+<h2 class="section-title" id="appendix-pages">📖 附录二：教材知识点页码索引</h2>
+<div class="module-card">
+  <div class="table-wrapper">
+    <table>
+      <thead><tr><th>模块</th><th>核心知识点</th><th>教材参考</th></tr></thead>
+      <tbody>
+        <tr><td>M1</td><td>绪论</td><td>教材P1-9</td></tr>
+        <tr><td>M2</td><td>精神障碍的症状学</td><td>教材P10-24</td></tr>
+        <tr><td>M3</td><td>神经认知障碍</td><td>教材P85-93, P222-228</td></tr>
+        <tr><td>M4</td><td>精神活性物质所致障碍</td><td>教材P180-191</td></tr>
+        <tr><td>M5</td><td>精神分裂症</td><td>教材P71-85</td></tr>
+        <tr><td>M6</td><td>抑郁障碍</td><td>教材P103-117</td></tr>
+        <tr><td>M7</td><td>双相障碍</td><td>教材P94-102</td></tr>
+        <tr><td>M8</td><td>强迫及相关障碍</td><td>教材P124-133</td></tr>
+        <tr><td>M9</td><td>躯体忧虑障碍及疑病</td><td>教材P162-175</td></tr>
+        <tr><td>M10</td><td>应激相关障碍</td><td>教材P134-143</td></tr>
+        <tr><td>M11</td><td>睡眠障碍</td><td>教材P250-261</td></tr>
+        <tr><td>M12</td><td>躯体治疗</td><td>教材P290-306</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</main>
+
+<!-- Back to Top -->
+<button id="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>
+
+<script>
+/* ============================================================
+   MedAgentWork — 交互脚本（纯 vanilla JS，零依赖）
+   ============================================================ */
+
+// ----- Theme Toggle -----
+const html = document.documentElement;
+const themeToggle = document.getElementById('theme-toggle');
+
+function setTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('med-review-theme', theme);
+}
+
+// Load saved theme or use system preference
+const savedTheme = localStorage.getItem('med-review-theme');
+if (savedTheme) {
+  setTheme(savedTheme);
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  setTheme('dark');
+}
+
+themeToggle.addEventListener('click', () => {
+  setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+
+// ----- Progress Bar -----
+const progressBar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = Math.min(progress, 100) + '%';
+});
+
+// ----- Back to Top -----
+const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 400);
+});
+backToTop.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// ----- Sidebar Active Link -----
+const sidebarLinks = document.querySelectorAll('.sidebar-link');
+const sections = [];
+
+sidebarLinks.forEach(link => {
+  const href = link.getAttribute('href');
+  if (href && href.startsWith('#')) {
+    const target = document.getElementById(href.slice(1));
+    if (target) sections.push({ link, target });
+  }
+});
+
+function updateActiveLink() {
+  const scrollPos = window.scrollY + 100;
+  let activeLink = null;
+
+  for (let i = sections.length - 1; i >= 0; i--) {
+    if (sections[i].target.offsetTop <= scrollPos) {
+      activeLink = sections[i].link;
+      break;
+    }
+  }
+
+  sidebarLinks.forEach(l => l.classList.remove('active'));
+  if (activeLink) activeLink.classList.add('active');
+}
+
+window.addEventListener('scroll', updateActiveLink);
+updateActiveLink();
+
+// ----- Mobile Sidebar -----
+const sidebar = document.getElementById('sidebar');
+const sidebarToggle = document.getElementById('sidebar-toggle');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+function openSidebar() {
+  sidebar.classList.add('open');
+  sidebarOverlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeSidebar() {
+  sidebar.classList.remove('open');
+  sidebarOverlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+sidebarToggle.addEventListener('click', openSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+// Close sidebar when a link is clicked (mobile)
+sidebar.querySelectorAll('.sidebar-link').forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+      setTimeout(closeSidebar, 200);
+    }
+  });
+});
+
+// ----- Fill-in-blank: "Reveal All" on module card double-click -----
+document.querySelectorAll('.module-card').forEach(card => {
+  // Add a small hint button
+  const recallSection = card.querySelector('[style*="主动回忆"]')?.parentElement;
+  if (!recallSection) return;
+
+  const blanks = card.querySelectorAll('.fill-blank');
+  if (blanks.length === 0) return;
+
+  // Create reveal all button
+  const revealBtn = document.createElement('button');
+  revealBtn.textContent = '👁️ 显示全部答案';
+  revealBtn.style.cssText = `
+    display: inline-block; margin-top: 8px; padding: 6px 16px;
+    border-radius: 6px; border: 1px solid var(--border);
+    background: var(--bg-tertiary); color: var(--text-secondary);
+    font-size: 12px; cursor: pointer; font-family: var(--font-body);
+    transition: all var(--transition-fast);
+  `;
+  revealBtn.addEventListener('mouseenter', () => {
+    revealBtn.style.background = 'var(--accent-light)';
+    revealBtn.style.color = 'var(--accent)';
+  });
+  revealBtn.addEventListener('mouseleave', () => {
+    revealBtn.style.background = 'var(--bg-tertiary)';
+    revealBtn.style.color = 'var(--text-secondary)';
+  });
+
+  let revealed = false;
+  revealBtn.addEventListener('click', () => {
+    revealed = !revealed;
+    blanks.forEach(b => {
+      if (revealed) b.classList.add('revealed');
+      else b.classList.remove('revealed');
+    });
+    revealBtn.textContent = revealed ? '🙈 隐藏全部答案' : '👁️ 显示全部答案';
+  });
+
+  // Insert after the active recall section
+  const recallContainer = card.querySelector('h3')?.parentElement;
+  if (recallContainer) {
+    const lastRecallEl = recallContainer.querySelector('[style*="主动回忆"]');
+    const insertAfter = lastRecallEl?.closest('div') || lastRecallEl;
+    if (insertAfter) {
+      insertAfter.appendChild(revealBtn);
+    }
+  }
+
+  // Try to find the recall area more specifically
+  const headings = card.querySelectorAll('h3');
+  headings.forEach(h => {
+    if (h.textContent.includes('主动回忆')) {
+      let next = h.nextElementSibling;
+      while (next && next.tagName === 'DIV') {
+        next.appendChild(revealBtn.cloneNode(true));
+        next = next.nextElementSibling;
+      }
+    }
+  });
+});
+
+// Re-do the reveal button logic more cleanly
+document.querySelectorAll('.module-card').forEach(card => {
+  // Remove any previously added buttons (avoid duplicates)
+  card.querySelectorAll('.reveal-all-btn').forEach(b => b.remove());
+
+  const blanks = card.querySelectorAll('.fill-blank');
+  if (blanks.length === 0) return;
+
+  const btn = document.createElement('button');
+  btn.className = 'reveal-all-btn';
+  btn.textContent = '👁️ 显示全部答案';
+  btn.style.cssText = `
+    display: inline-block; margin: 12px 0 0 0; padding: 6px 16px;
+    border-radius: 6px; border: 1px solid var(--border);
+    background: var(--bg-tertiary); color: var(--text-secondary);
+    font-size: 12px; cursor: pointer; font-family: var(--font-body);
+    transition: all var(--transition-fast);
+  `;
+  btn.addEventListener('mouseenter', () => { btn.style.background = 'var(--accent-light)'; btn.style.color = 'var(--accent)'; });
+  btn.addEventListener('mouseleave', () => { btn.style.background = 'var(--bg-tertiary)'; btn.style.color = 'var(--text-secondary)'; });
+
+  let revealed = false;
+  btn.addEventListener('click', () => {
+    revealed = !revealed;
+    blanks.forEach(b => {
+      if (revealed) b.classList.add('revealed');
+      else b.classList.remove('revealed');
+    });
+    btn.textContent = revealed ? '🙈 隐藏全部答案' : '👁️ 显示全部答案';
+  });
+
+  // Find the active recall section and append
+  const recallHeadings = Array.from(card.querySelectorAll('h3')).filter(h => h.textContent.includes('主动回忆'));
+  recallHeadings.forEach(h => {
+    let el = h.nextElementSibling;
+    if (el && el.tagName === 'DIV') {
+      el.appendChild(btn.cloneNode(true));
+    }
+  });
+});
+
+// ----- Keyboard shortcuts -----
+document.addEventListener('keydown', (e) => {
+  // Press 't' to toggle theme
+  if (e.key === 't' && !e.ctrlKey && !e.metaKey && !e.altKey &&
+      document.activeElement === document.body) {
+    setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  }
+  // Press 'm' to toggle sidebar (mobile)
+  if (e.key === 'm' && !e.ctrlKey && !e.metaKey && !e.altKey &&
+      document.activeElement === document.body && window.innerWidth <= 768) {
+    if (sidebar.classList.contains('open')) closeSidebar();
+    else openSidebar();
+  }
+});
+
+console.log('📖 MedAgentWork 复习手册已就绪');
+console.log('  🌙 按 T 切换暗色模式');
+console.log('  📱 移动端按 M 切换侧栏');
+console.log('  👆 点击填空处显示答案');
+</script>
+</body>
+</html>

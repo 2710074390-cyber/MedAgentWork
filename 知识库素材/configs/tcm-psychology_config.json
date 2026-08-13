@@ -1,0 +1,76 @@
+{
+  "subject": "中医心理学",
+  "subject_code": "tcm-psychology",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 500,
+    "overlap": 120,
+    "min_chunk_size": 60,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(逍遥散|柴胡疏肝|温胆汤|归脾汤|甘麦大枣|半夏厚朴|百合地黄|天王补心|朱砂安神|酸枣仁汤|越鞠丸|血府逐瘀|天麻钩藤|龙胆泻肝|黄连温胆|安神定志|生铁落饮|礞石滚痰|顺气导痰|养心汤|交泰丸)",
+        "description": "中医心理疾病核心方剂不拆分——方名+组成+功用+主治须在同一chunk"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(腧穴|穴位|定位|归经|刺灸法|百会|神门|内关|太冲|三阴交|心俞|肝俞|脾俞|肾俞|足三里|丰隆|印堂|四神聪|安眠)",
+        "description": "调神穴位信息不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(辨证论治|八纲辨证|脏腑辨证|气血津液辨证|病因辨证|心理症状辨析|诊法)",
+        "description": "辨证分型条目不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(意疗|气功疗法|音乐疗法|情志相胜|移精变气|暗示诱导|顺情从欲|开导解惑|志意以绳)",
+        "description": "中医心理特色治疗方法不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(形神合一|形神共养|天人相应|阴阳睡梦|藏象五志|五神藏)",
+        "description": "中医心理学核心理论不拆分"
+      }
+    ],
+    "metadata_enrichment": ["has_formula", "has_acupoint", "has_diagnostic_criteria", "has_syndrome"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.70,
+    "hybrid_search": true,
+    "keyword_weight": 0.45,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "郁证": "郁证",
+      "卑慄": "卑慄",
+      "不寐": "不寐",
+      "脏躁": "脏躁",
+      "百合病": "百合病",
+      "心悸": "心悸",
+      "梅核气": "梅核气",
+      "癫狂": "癫狂",
+      "情志病": "情志病",
+      "心理养生": "心理养生",
+      "胎教": "胎教",
+      "意疗": "意疗",
+      "气功": "气功疗法",
+      "音乐疗法": "音乐疗法",
+      "五音": "五音处方法"
+    }
+  }
+}

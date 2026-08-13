@@ -1,0 +1,731 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20260621-batch009",
+    "batch_id": "batch009",
+    "subject": "中医学",
+    "exam_type": "期末考试",
+    "validation_date": "2026-06-21",
+    "source_file": "中间产物/batch009/ALL_questions.json",
+    "total_questions": 266,
+    "total_materials": 1,
+    "gate_decision": "BLOCKED",
+    "overall_score": 68.5,
+    "blocking_reasons": [
+      "M8模块14道单选题答案全为A，存在严重猜测线索",
+      "备考资料(左归丸)与题库(六味地黄丸)关于肾精不足型眩晕方剂矛盾",
+      "6/8组A3/A4子题答案集中度≥60%（含3组100%同答案）",
+      "全局单选题答案A占46.1%，严重偏离20%期望值"
+    ],
+    "dimension_scores": {
+      "D1_术语规范性": {"score": 95, "pass": 266, "fail": 0, "gate": "pass"},
+      "D2_语法拼写": {"score": 98, "pass": 266, "fail": 0, "gate": "pass"},
+      "D3_结构完整性": {"score": 95, "pass": 266, "fail": 0, "gate": "pass"},
+      "D4_格式一致性": {"score": 75, "pass": 252, "fail": 14, "gate": "warn"},
+      "D5_事实准确性": {"score": 70, "pass": 263, "fail": 3, "gate": "fail"},
+      "D6_题型极性自洽": {"score": 100, "pass": 11, "fail": 0, "gate": "pass"},
+      "D7_选项互斥性": {"score": 98, "pass": 266, "fail": 0, "gate": "pass"},
+      "D8_答案唯一性": {"score": 100, "pass": 266, "fail": 0, "gate": "pass"},
+      "D9_解析完整度": {"score": 92, "pass": 266, "fail": 0, "gate": "pass"},
+      "D10_认知层级校准": {"score": 90, "pass": 266, "fail": 0, "gate": "pass"},
+      "D11_干扰项质量": {"score": 88, "pass": 260, "fail": 6, "gate": "warn"},
+      "D12_考点溯源": {"score": 72, "pass": 252, "fail": 14, "gate": "warn"},
+      "D13_跨题一致性": {"score": 95, "pass": 266, "fail": 0, "gate": "pass"},
+      "D14_跨章节一致性": {"score": 65, "pass": 263, "fail": 3, "gate": "fail"},
+      "D15_外来素材验证": {"score": null, "pass": null, "fail": null, "gate": "n/a"},
+      "D16_认知层级覆盖率": {"score": 55, "pass": null, "fail": null, "gate": "fail"},
+      "D17_选项同质性": {"score": 85, "pass": 264, "fail": 2, "gate": "warn"},
+      "D18_词重复线索": {"score": 90, "pass": 264, "fail": 2, "gate": "warn"},
+      "D19_收敛策略": {"score": 92, "pass": 264, "fail": 2, "gate": "warn"},
+      "D20_B1型题专项": {"score": 70, "pass": 7, "fail": 2, "gate": "warn"},
+      "D21_答案分布": {"score": 30, "pass": 0, "fail": 1, "gate": "fail"}
+    }
+  },
+
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "target": "M8模块全部A1/A2题",
+      "dimension": "D21",
+      "severity": "critical",
+      "description": "M8模块14道单选题答案全为A，学生只需猜A即可全对。严重违反考试安全原则。",
+      "current_text": "batch009-M8-A1-001~008, M8-A2-001~006 答案均为A",
+      "impact": "考生可利用答案位置线索获得不当分数，严重降低题目区分度",
+      "affected_questions": [
+        "batch009-M8-A1-001", "batch009-M8-A1-002", "batch009-M8-A1-003",
+        "batch009-M8-A1-004", "batch009-M8-A1-005", "batch009-M8-A1-006",
+        "batch009-M8-A1-007", "batch009-M8-A1-008", "batch009-M8-A2-001",
+        "batch009-M8-A2-002", "batch009-M8-A2-003", "batch009-M8-A2-004",
+        "batch009-M8-A2-005", "batch009-M8-A2-006"
+      ]
+    },
+    {
+      "issue_id": "ISSUE-002",
+      "target": "全局单选题答案分布",
+      "dimension": "D21",
+      "severity": "critical",
+      "description": "全局206道单选题答案分布严重偏A: A=95(46.1%) B=60(29.1%) C=29(14.1%) D=12(5.8%) E=10(4.9%)。期望值约20%/选项。",
+      "current_text": "A: 95(46.1%), B: 60(29.1%), C: 29(14.1%), D: 12(5.8%), E: 10(4.9%)",
+      "impact": "考生可利用答案位置规律猜测，降低考试效度"
+    },
+    {
+      "issue_id": "ISSUE-003",
+      "target": "batch009-M10-B1-001.optionC / batch009-M10-X-003.optionC",
+      "dimension": "D5",
+      "severity": "critical",
+      "description": "肾精不足型眩晕方剂：备考资料明确写'左归丸'(教材P287)，但题库M10-B1-001共用选项C和M10-X-003选项C均写'六味地黄丸'。同批次产物自相矛盾。",
+      "current_text": "M10-B1-001.C: '肾精不足型——补肾填精，养阴生髓，六味地黄丸加减' | M10-X-003.C: '肾精不足型——补肾填精，养阴生髓——六味地黄丸'",
+      "impact": "备考资料与题库矛盾，学生复习时将无所适从。且六味地黄丸偏于滋补肾阴，左归丸偏于填补肾精，两者功效侧重不同。",
+      "reference": "备考资料原文: '肾精不足证治法：滋养肝肾、益精填髓。方剂：左归丸 (大纲/教材P287)'",
+      "affected_questions": [
+        "batch009-M10-B1-001",
+        "batch009-M10-X-003",
+        "batch009-M10-A3-001"
+      ]
+    },
+    {
+      "issue_id": "ISSUE-004",
+      "target": "batch009-M10-A3-001 (sub2.optionC)",
+      "dimension": "D5",
+      "severity": "major",
+      "description": "M10-A3-001子题2中，肾精不足型选项C写'六味地黄丸，滋补肾阴而填精益髓'，与备考资料'左归丸'矛盾。此选项虽非正确答案，但描述本身存在事实偏差。",
+      "current_text": "C. 六味地黄丸，滋补肾阴而填精益髓",
+      "impact": "干扰项事实不准确可能误导学生"
+    },
+    {
+      "issue_id": "ISSUE-005",
+      "target": "batch009-M5-A3-001",
+      "dimension": "D21",
+      "severity": "critical",
+      "description": "A3题组3个子题答案全为B(100%集中)。考生仅需猜B即可全对。",
+      "current_text": "sub_questions: 001a→B, 001b→B, 001c→B",
+      "impact": "A3题组答案集中度100%，严重猜测线索"
+    },
+    {
+      "issue_id": "ISSUE-006",
+      "target": "batch009-M10-A3-001",
+      "dimension": "D21",
+      "severity": "critical",
+      "description": "A3题组3个子题答案全为A(100%集中)。",
+      "current_text": "sub_questions: 001a→A, 001b→A, 001c→A",
+      "impact": "A3题组答案集中度100%，严重猜测线索"
+    },
+    {
+      "issue_id": "ISSUE-007",
+      "target": "batch009-M10-A3-002",
+      "dimension": "D21",
+      "severity": "critical",
+      "description": "A3题组2个子题答案全为A(100%集中)。",
+      "current_text": "sub_questions: 001a→A, 001b→A",
+      "impact": "A3题组答案集中度100%"
+    },
+    {
+      "issue_id": "ISSUE-008",
+      "target": "batch009-M8-A3-001",
+      "dimension": "D21",
+      "severity": "critical",
+      "description": "A3题组2个子题答案全为A(100%集中)。",
+      "current_text": "sub_questions: 001a→A, 001b→A",
+      "impact": "A3题组答案集中度100%"
+    },
+    {
+      "issue_id": "ISSUE-009",
+      "target": "batch009-M2-A3-001",
+      "dimension": "D21",
+      "severity": "major",
+      "description": "A3题组3个子题中2个答案为D(66.7%集中)。",
+      "current_text": "sub_questions: 001a→D, 001b→D, 001c→B",
+      "impact": "A3题组答案集中度66.7%"
+    },
+    {
+      "issue_id": "ISSUE-010",
+      "target": "batch009-M4-A3-001",
+      "dimension": "D21",
+      "severity": "major",
+      "description": "A3题组3个子题中2个答案为C(66.7%集中)。",
+      "current_text": "sub_questions: 001a→C, 001b→C, 001c→B",
+      "impact": "A3题组答案集中度66.7%"
+    },
+    {
+      "issue_id": "ISSUE-011",
+      "target": "batch009-M8-A1-004 / M8-A1-005 / M8-A1-006 / M8-A2-004 / M8-A2-005 / M8-A2-006 / M8-A3-001 / M8-X-001 / M8-X-004",
+      "dimension": "D12",
+      "severity": "major",
+      "description": "M8模块9道题source_page为'Pxxx'占位符，溯源标注缺失。",
+      "current_text": "source_page: 'Pxxx'",
+      "impact": "无法追溯教材原文进行事实核验"
+    },
+    {
+      "issue_id": "ISSUE-012",
+      "target": "batch009-M9-A1-003 / M9-A1-005 / M9-A2-004 / M9-A2-005 / M9-X-003",
+      "dimension": "D12",
+      "severity": "major",
+      "description": "M9模块5道题source_page为'Pxxx'占位符。",
+      "current_text": "source_page: 'Pxxx'",
+      "impact": "无法追溯教材原文"
+    },
+    {
+      "issue_id": "ISSUE-013",
+      "target": "全局Bloom分布",
+      "dimension": "D16",
+      "severity": "major",
+      "description": "记忆层120题(45.1%)远超目标30%，偏差+15.1%超过10%阈值。理解层80题(30.1%)低于目标40%(-9.9%)。",
+      "current_text": "记忆:120(45.1%) 理解:80(30.1%) 应用:53(19.9%) 分析:13(4.9%)",
+      "impact": "题目整体认知层次偏低，不利于培养临床思维能力",
+      "module_detail": {
+        "M1": {"记忆": 7, "理解": 8, "应用": 4, "分析": 1, "记忆占比": "35%"},
+        "M2": {"记忆": 9, "理解": 16, "应用": 9, "分析": 1, "记忆占比": "26%"},
+        "M3": {"记忆": 7, "理解": 14, "应用": 5, "分析": 2, "记忆占比": "25%"},
+        "M4": {"记忆": 13, "理解": 17, "应用": 5, "分析": 1, "记忆占比": "36%"},
+        "M5": {"记忆": 11, "理解": 16, "应用": 7, "分析": 1, "记忆占比": "31%"},
+        "M6": {"记忆": 9, "理解": 15, "应用": 4, "分析": 1, "记忆占比": "31%"},
+        "M7": {"记忆": 10, "理解": 11, "应用": 5, "分析": 1, "记忆占比": "37%"},
+        "M8": {"记忆": 7, "理解": 7, "应用": 4, "分析": 1, "记忆占比": "37%"},
+        "M9": {"记忆": 5, "理解": 7, "应用": 4, "分析": 1, "记忆占比": "29%"},
+        "M10": {"记忆": 2, "理解": 9, "应用": 6, "分析": 3, "记忆占比": "10%"}
+      },
+      "suggestion": "建议将M4/M7/M8各3-5道记忆层A1题升级为应用层A2案例题。重点转换模块：M4(36%)、M7(37%)、M8(37%)。"
+    },
+    {
+      "issue_id": "ISSUE-014",
+      "target": "batch009-M2-B1-001",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1型共用选项全部≤2字(心/肺/脾/肝/肾)，过于笼统。5/5选项均为单字脏腑名。",
+      "current_text": "shared_options: ['心', '肺', '脾', '肝', '肾']",
+      "impact": "共用选项过于简短宽泛，降低B1型题的区分度和临床情境感"
+    },
+    {
+      "issue_id": "ISSUE-015",
+      "target": "batch009-M3-B1-001",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1型共用选项4/5≤2字(风邪/寒邪/湿邪/燥邪)，仅火(热)邪为5字。",
+      "current_text": "shared_options: ['风邪', '寒邪', '湿邪', '燥邪', '火(热)邪']",
+      "impact": "共用选项过于简短"
+    },
+    {
+      "issue_id": "ISSUE-016",
+      "target": "batch009-M3-B1-001.optionE",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "B1共用选项中E项'火(热)邪'(5字)与其他选项(2字)长度比=2.5>1.5。",
+      "current_text": "A.风邪(2) B.寒邪(2) C.湿邪(2) D.燥邪(2) E.火(热)邪(5)",
+      "impact": "E项视觉上突出，可能被考生排除"
+    },
+    {
+      "issue_id": "ISSUE-017",
+      "target": "batch009-M10-A2-001",
+      "dimension": "D18",
+      "severity": "major",
+      "description": "题干中'牙关紧闭'和'两手握固'仅出现在正确答案A中，未出现在任何干扰项中。考生可据此直接定位答案。",
+      "current_text": "题干: '...牙关紧闭、两手握固...' → 仅A包含'牙关紧闭两手握固'",
+      "impact": "词重复线索：考生无需医学知识即可通过词汇匹配选出正确答案"
+    },
+    {
+      "issue_id": "ISSUE-018",
+      "target": "batch009-M10-A2-002",
+      "dimension": "D18",
+      "severity": "major",
+      "description": "题干中'目合口开'和'手撒'仅出现在正确答案A中。",
+      "current_text": "题干: '...目合口开、手撒肢冷...' → 仅A包含'目合口开手撒遗尿'",
+      "impact": "词重复线索"
+    },
+    {
+      "issue_id": "ISSUE-019",
+      "target": "batch009-M6-A1-012",
+      "dimension": "D19",
+      "severity": "major",
+      "description": "正确答案选项术语共享计数=4，干扰项均值=1.2。考生可通过术语重叠猜测答案。",
+      "current_text": "答案共享=4, 干扰均值=1.2, 各选项={A:3, B:4, C:0, D:2, E:0}",
+      "impact": "NBME收敛策略线索"
+    },
+    {
+      "issue_id": "ISSUE-020",
+      "target": "batch009-M10-A1-002",
+      "dimension": "D19",
+      "severity": "major",
+      "description": "正确答案选项术语共享计数=4，干扰项均值=1.0。A和B共享计数均为4，但A为正确答案。",
+      "current_text": "答案共享=4, 干扰均值=1.0, 各选项={A:4, B:4, C:0, D:0, E:0}",
+      "impact": "NBME收敛策略线索"
+    },
+    {
+      "issue_id": "ISSUE-021",
+      "target": "batch009-M7-A2-003",
+      "dimension": "D11",
+      "severity": "major",
+      "description": "HC-6/validate_options R6告警：正确值3.0g(大黄后下剂量) vs 干扰值30.0g(10x)/60.0g(20x)/20.0g(6.7x)。差距过大，干扰项区分度不足。",
+      "current_text": "B.3-15g(✅) C.30.0g(10x) D.60.0g(20x) E.20.0g(6.7x)",
+      "impact": "干扰项数值与正确值差距过大(>5x)，考生可轻易排除"
+    },
+    {
+      "issue_id": "ISSUE-022",
+      "target": "batch009-M7-A1-007",
+      "dimension": "D11",
+      "severity": "major",
+      "description": "大黄用法题：正确值3-15g vs 干扰值5-20g(部分重叠)和10-30g(部分重叠)。D和E数值区间与正确答案区间差距偏大。",
+      "current_text": "B.3-15g(✅) D.5-20g(先煎) E.10-30g(包煎)",
+      "impact": "干扰项数值偏大， plausibility偏低"
+    },
+    {
+      "issue_id": "ISSUE-023",
+      "target": "全局A3/A4/B1题型数量",
+      "dimension": "D6",
+      "severity": "major",
+      "description": "A3/A4仅8题(目标~15,缺口-7)，B1仅9组30子题(目标~24子题,缺口约-15子题)。题型缺口较大。",
+      "current_text": "A3:7 A4:1 B1:9组(30子题)",
+      "impact": "高阶思维题型不足，无法充分考查临床应用能力"
+    },
+    {
+      "issue_id": "ISSUE-024",
+      "target": "全局总题量",
+      "dimension": "D6",
+      "severity": "minor",
+      "description": "总题量266题 vs 目标~300题(缺口-34题, -11%)。",
+      "current_text": "266题",
+      "impact": "题量略低于目标"
+    },
+    {
+      "issue_id": "ISSUE-025",
+      "target": "batch009-M4-A3-001 / M5-A3-001 / M6-A4-001 / M8-A3-001",
+      "dimension": "D3",
+      "severity": "minor",
+      "description": "4组A3/A4题缺少polarity字段(M4/M5/M6/M8)。虽然A3/A4的polarity可由子题推断，但字段缺失影响自动化处理。",
+      "current_text": "keys不含'polarity'",
+      "impact": "结构不完整，可能影响下游解析"
+    },
+    {
+      "issue_id": "ISSUE-026",
+      "target": "batch009-M4-A3-001 / M5-A3-001 / M6-A4-001 / M8-A3-001 / M10-A3-001 / M10-A3-002",
+      "dimension": "D9",
+      "severity": "minor",
+      "description": "6组A3/A4题在父级缺少explanation字段(虽然子题选项中有解析性文字)。",
+      "current_text": "keys不含'explanation'或explanation为空",
+      "impact": "A3/A4组级解析缺失"
+    }
+  ],
+
+  "modification_instructions": [
+    {
+      "patch_id": "PATCH-M8-001",
+      "target": "M8模块全部A1/A2题(14题)的options顺序",
+      "operation": "shuffle_options",
+      "current_value": "14题答案均为A",
+      "proposed_value": "重新排列选项顺序，使答案均匀分布于A/B/C/D/E。建议目标分布：A:3 B:3 C:3 D:3 E:2",
+      "reason": "M8模块答案全A违反考试安全原则，需打乱选项顺序",
+      "linked_issue_ids": ["ISSUE-001"],
+      "preconditions": [
+        "打乱后须同步更新answer字段",
+        "打乱后须同步更新explanation中对选项的引用",
+        "打乱后X-002/X-003多选题答案须同步更新"
+      ],
+      "post_checks": [
+        "验证打乱后M8答案分布不再集中于A",
+        "验证每道题的answer字段指向正确选项内容",
+        "验证explanation引用的选项标签与answer一致"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-GLOBAL-001",
+      "target": "全局单选题选项顺序",
+      "operation": "shuffle_options",
+      "current_value": "A:95(46.1%) B:60(29.1%) C:29(14.1%) D:12(5.8%) E:10(4.9%)",
+      "proposed_value": "目标: A~20% B~20% C~20% D~20% E~20%（各±5%）",
+      "reason": "全局答案分布严重偏A，违反考试安全原则",
+      "linked_issue_ids": ["ISSUE-002"],
+      "preconditions": [
+        "仅调整选项顺序，不改变选项内容",
+        "同步更新answer字段",
+        "同步更新explanation中选项引用",
+        "反向题(negative)调整时须确保polarity不变",
+        "多选题(X型)调整时须同步更新多选答案"
+      ],
+      "post_checks": [
+        "验证调整后全局答案分布各选项在15%-25%区间",
+        "验证每道题answer字段指向正确内容",
+        "验证反向题polarity未改变"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M10-001",
+      "target": "batch009-M10-B1-001.shared_options[C].text",
+      "operation": "replace_text",
+      "current_value": "肾精不足型——补肾填精，养阴生髓，六味地黄丸加减",
+      "proposed_value": "肾精不足型——滋养肝肾，益精填髓，左归丸加减",
+      "reason": "与备考资料统一：肾精不足型眩晕方剂应为左归丸(教材P287)，非六味地黄丸",
+      "linked_issue_ids": ["ISSUE-003"],
+      "preconditions": [
+        "确认教材P287原文为'左归丸'",
+        "确认六味地黄丸在题库中仍用于其他适应证（如肾阴虚证）"
+      ],
+      "post_checks": [
+        "验证修改后M10-B1-001共用选项C与备考资料一致",
+        "验证题库中六味地黄丸仅用于肾阴虚证(M8-A1-004等)，不用于肾精不足"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M10-002",
+      "target": "batch009-M10-X-003.optionC.text",
+      "operation": "replace_text",
+      "current_value": "肾精不足型——补肾填精，养阴生髓——六味地黄丸",
+      "proposed_value": "肾精不足型——滋养肝肾，益精填髓——左归丸",
+      "reason": "与备考资料及PATCH-M10-001统一",
+      "linked_issue_ids": ["ISSUE-003"],
+      "preconditions": [
+        "PATCH-M10-001已执行",
+        "确认X-003答案ABCD中C项仍为正确选项"
+      ],
+      "post_checks": [
+        "验证X-003答案不变(ABCD)",
+        "验证修改后与M10-B1-001一致"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M10-003",
+      "target": "batch009-M10-A3-001.sub_questions[1].options[C].text",
+      "operation": "replace_text",
+      "current_value": "六味地黄丸，滋补肾阴而填精益髓",
+      "proposed_value": "左归丸，滋养肝肾而益精填髓",
+      "reason": "干扰项中也须统一方剂名称，六味地黄丸治肾阴虚而非肾精不足",
+      "linked_issue_ids": ["ISSUE-004"],
+      "preconditions": [
+        "确认此选项为干扰项（正确答案为A天麻钩藤饮）",
+        "修改后该选项仍为干扰项（左归丸非肝阳上亢主方）"
+      ],
+      "post_checks": [
+        "验证该选项仍为干扰项，不影响正确答案A",
+        "验证修改后该选项真值极性不得改变"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-A3-001",
+      "target": "batch009-M5-A3-001.sub_questions[0-2].options顺序",
+      "operation": "shuffle_options",
+      "current_value": "3个子题答案均为B",
+      "proposed_value": "子题答案分散至不同字母(如A/B/C或B/C/D)",
+      "reason": "A3题组100%答案集中，需打乱",
+      "linked_issue_ids": ["ISSUE-005"],
+      "preconditions": [
+        "仅调整选项顺序，不改变选项内容",
+        "同步更新各子题answer字段"
+      ],
+      "post_checks": [
+        "验证3个子题答案不再全为同一字母",
+        "验证每子题answer指向正确内容"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-A3-002",
+      "target": "batch009-M10-A3-001.sub_questions[0-2].options顺序",
+      "operation": "shuffle_options",
+      "current_value": "3个子题答案均为A",
+      "proposed_value": "子题答案分散至不同字母",
+      "reason": "A3题组100%答案集中",
+      "linked_issue_ids": ["ISSUE-006"],
+      "preconditions": ["同PATCH-A3-001"],
+      "post_checks": ["同PATCH-A3-001"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-A3-003",
+      "target": "batch009-M10-A3-002.sub_questions[0-1].options顺序",
+      "operation": "shuffle_options",
+      "current_value": "2个子题答案均为A",
+      "proposed_value": "子题答案分散(如A和C)",
+      "reason": "A3题组100%答案集中",
+      "linked_issue_ids": ["ISSUE-007"],
+      "preconditions": ["同PATCH-A3-001"],
+      "post_checks": ["同PATCH-A3-001"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-A3-004",
+      "target": "batch009-M8-A3-001.sub_questions[0-1].options顺序",
+      "operation": "shuffle_options",
+      "current_value": "2个子题答案均为A",
+      "proposed_value": "子题答案分散(如A和C)",
+      "reason": "A3题组100%答案集中",
+      "linked_issue_ids": ["ISSUE-008"],
+      "preconditions": ["同PATCH-A3-001"],
+      "post_checks": ["同PATCH-A3-001"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-D12-001",
+      "target": "M8模块9道Pxxx题 + M9模块5道Pxxx题",
+      "operation": "add_source_anchor",
+      "current_value": "source_page: 'Pxxx'",
+      "proposed_value": "替换为实际教材页码(需查教材)",
+      "reason": "溯源标注缺失，无法进行事实核验",
+      "linked_issue_ids": ["ISSUE-011", "ISSUE-012"],
+      "preconditions": [
+        "须对照教材确认每道题的实际页码"
+      ],
+      "post_checks": [
+        "验证所有source_page不再包含'xxx'",
+        "验证页码与教材内容对应"
+      ],
+      "risk_level": "must_escalate"
+    },
+    {
+      "patch_id": "PATCH-D18-001",
+      "target": "batch009-M10-A2-001.options[B-D]",
+      "operation": "replace_text",
+      "current_value": "干扰项不含'牙关紧闭'和'两手握固'",
+      "proposed_value": "在至少2个干扰项中加入'牙关紧闭'或'两手握固'等题干关键词（以错误上下文形式），或从题干中删除这些特征性描述改用更笼统表述",
+      "reason": "题干关键词仅出现在正确答案中，构成词重复线索",
+      "linked_issue_ids": ["ISSUE-017"],
+      "preconditions": [
+        "修改后干扰项仍为错误选项(polarity不变)",
+        "修改后正确答案A仍为唯一正确选项"
+      ],
+      "post_checks": [
+        "验证题干关键词至少在2个干扰项中出现",
+        "验证修改后答案仍为A"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-D18-002",
+      "target": "batch009-M10-A2-002.options[B-D]",
+      "operation": "replace_text",
+      "current_value": "干扰项不含'目合口开'和'手撒'",
+      "proposed_value": "在至少2个干扰项中加入'目合口开'或'手撒'等题干关键词",
+      "reason": "同ISSUE-018，词重复线索",
+      "linked_issue_ids": ["ISSUE-018"],
+      "preconditions": ["同PATCH-D18-001"],
+      "post_checks": ["同PATCH-D18-001"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-D17-001",
+      "target": "batch009-M3-B1-001.shared_options[E].text",
+      "operation": "replace_text",
+      "current_value": "火(热)邪",
+      "proposed_value": "火邪",
+      "reason": "去除括号后缀使选项长度与其他选项一致(均为2字)",
+      "linked_issue_ids": ["ISSUE-016"],
+      "preconditions": [
+        "确认教材中'火邪'与'火(热)邪'等价",
+        "确认修改后不影响子题答案"
+      ],
+      "post_checks": [
+        "验证5个选项长度比≤1.5",
+        "验证子题答案未改变"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-HC6-001",
+      "target": "batch009-M7-A2-003.options[C,D,E]",
+      "operation": "replace_text",
+      "current_value": "C.取大黄3-9g，与他药一同先煎30分钟 | D.取大黄5-10g，与他药同煎60分钟 | E.取大黄10-20g，用沸水冲泡代茶饮用",
+      "proposed_value": "C.取大黄3-9g，与他药一同先煎30分钟 | D.取大黄3-10g，与他药同煎15分钟 | E.取大黄5-15g，研末后以药汁冲服",
+      "reason": "缩小干扰项数值与正确值(3-15g)的差距，提高干扰项plausibility",
+      "linked_issue_ids": ["ISSUE-021"],
+      "preconditions": [
+        "修改后干扰项仍为错误选项",
+        "修改后数值仍为大黄的合理(但错误)用法",
+        "正确答案B(3-15g后下)不变"
+      ],
+      "post_checks": [
+        "验证干扰项数值与正确值比值≤5x",
+        "验证答案仍为B"
+      ],
+      "risk_level": "auto_with_review"
+    }
+  ],
+
+  "escalations": [
+    {
+      "escalation_id": "ESC-001",
+      "target": "M8/M9模块14道Pxxx页码题",
+      "reason": "需对照教材原文确认实际页码，Agent 4无法自行推断",
+      "context": "M8模块9题(方剂学)和M9模块5题(针灸推拿)的source_page均为'Pxxx'占位符",
+      "suggested_action": "人工查阅教材对应章节，补全页码。或确认Agent 2的RAG知识库中是否有这些章节的页码信息。"
+    },
+    {
+      "escalation_id": "ESC-002",
+      "target": "Bloom认知层级偏差(+15.1%)",
+      "reason": "将记忆层题目升级为应用层需要重新编写题干(创建临床案例)，非简单格式修改",
+      "context": "记忆层45.1% vs 目标30%，需将约40道A1记忆题转换为A2应用案例题。偏差最大模块：M4(36%)、M7(37%)、M8(37%)。",
+      "suggested_action": "由Agent 2重新编写约15-20道A2应用案例题替换现有A1记忆题，或将部分A1题重新标注Bloom层级（如果题目实际涉及理解/应用）。建议分批处理：M8先转5题，M4转5题，M7转5题。"
+    },
+    {
+      "escalation_id": "ESC-003",
+      "target": "A3/A4/B1题型缺口",
+      "reason": "需新增题目以填补题型缺口，非修改现有题目可解决",
+      "context": "A3/A4缺口-7题(需增2-3组)，B1缺口约-15子题(需增3-5组)。",
+      "suggested_action": "由Agent 2补充编写A3/A4案例题组2-3组(每组2-3子题)和B1配伍题组3-5组(每组3-4子题)。"
+    }
+  ],
+
+  "hc6_spot_check": {
+    "seed": "batch009_hc6_20260621",
+    "total_checked": 16,
+    "numeric_checked": 4,
+    "non_numeric_checked": 12,
+    "issues_found": 5,
+    "issues_detail": [
+      {
+        "question_id": "batch009-M7-A2-003",
+        "option": "C",
+        "correct_value": 3.0,
+        "distractor_value": 30.0,
+        "ratio": "10.0x",
+        "severity": "should_fix"
+      },
+      {
+        "question_id": "batch009-M7-A2-003",
+        "option": "D",
+        "correct_value": 3.0,
+        "distractor_value": 60.0,
+        "ratio": "20.0x",
+        "severity": "should_fix"
+      },
+      {
+        "question_id": "batch009-M7-A2-003",
+        "option": "E",
+        "correct_value": 3.0,
+        "distractor_value": 20.0,
+        "ratio": "6.7x",
+        "severity": "should_fix"
+      },
+      {
+        "question_id": "batch009-M7-A1-007",
+        "option": "D",
+        "correct_value": 3.0,
+        "distractor_value": 20.0,
+        "ratio": "6.7x",
+        "severity": "should_fix"
+      },
+      {
+        "question_id": "batch009-M7-A1-007",
+        "option": "E",
+        "correct_value": 3.0,
+        "distractor_value": 30.0,
+        "ratio": "10.0x",
+        "severity": "should_fix"
+      }
+    ],
+    "conclusion": "16题抽查发现5处数值干扰项区分度不足(>5x)，集中在M7大黄用法相关题目。需缩小干扰项数值区间。"
+  },
+
+  "additional_findings": {
+    "answer_distribution": {
+      "description": "全局单选题答案分布严重偏A",
+      "detail": {
+        "A": {"count": 95, "pct": "46.1%"},
+        "B": {"count": 60, "pct": "29.1%"},
+        "C": {"count": 29, "pct": "14.1%"},
+        "D": {"count": 12, "pct": "5.8%"},
+        "E": {"count": 10, "pct": "4.9%"}
+      },
+      "expected": "各约20%",
+      "severity": "critical"
+    },
+    "a3a4_answer_concentration": {
+      "description": "6/8组A3/A4子题答案集中度≥60%",
+      "groups": [
+        {"id": "M5-A3-001", "answers": ["B","B","B"], "concentration": "100%"},
+        {"id": "M10-A3-001", "answers": ["A","A","A"], "concentration": "100%"},
+        {"id": "M10-A3-002", "answers": ["A","A"], "concentration": "100%"},
+        {"id": "M8-A3-001", "answers": ["A","A"], "concentration": "100%"},
+        {"id": "M2-A3-001", "answers": ["D","D","B"], "concentration": "66.7%"},
+        {"id": "M4-A3-001", "answers": ["C","C","B"], "concentration": "66.7%"}
+      ]
+    },
+    "old_syllabus_residue": {
+      "description": "旧大纲残留物检查",
+      "result": "合谷(1次,作为干扰项✅) 附子(0次✅) 石膏(0次✅) — 残留物仅作为干扰项出现，合规"
+    },
+    "validate_options_report": {
+      "total": 255,
+      "pass": 254,
+      "warn": 1,
+      "fail": 0,
+      "warn_detail": "batch009-M7-A2-003 R6数值区分度不足"
+    },
+    "new_knowledge_coverage": {
+      "description": "新大纲知识点覆盖度",
+      "result": "全部23个新增知识点已覆盖 ✅",
+      "note": "金元四大家(5题)、逍遥散(13题)、白虎汤(11题)、眩晕(18题)等重点新知识点题量充足"
+    }
+  },
+
+  "suggestions": [
+    {
+      "id": "SUG-001",
+      "priority": "high",
+      "category": "Bloom偏差修正",
+      "content": "将约15-20道A1记忆题升级为A2应用案例题。优先转换模块M4/M7/M8(记忆占比36-37%)。例如将'华盖是哪个脏腑'转换为'患者咳嗽气喘、胸闷，病位在五脏中位置最高的脏腑，该脏腑被称为?'",
+      "estimated_impact": "记忆层可从45.1%降至约38%，理解+应用层相应提升"
+    },
+    {
+      "id": "SUG-002",
+      "priority": "high",
+      "category": "题型补充",
+      "content": "补充A3/A4案例题组2-3组和B1配伍题组3-5组。A3建议方向：中药功效临床应用案例、辨证论治综合案例。B1建议方向：针灸腧穴配伍、中药方剂配伍。",
+      "estimated_impact": "A3/A4达到~15题，B1达到~24子题"
+    },
+    {
+      "id": "SUG-003",
+      "priority": "medium",
+      "category": "B1型题优化",
+      "content": "M2-B1-001和M3-B1-001的共用选项过于简短(单字脏腑名/2字邪气名)。建议扩展为包含描述性文字的选项，如'心——主血脉藏神的君主之官'，提高临床情境感。但需注意B1型共用选项本身倾向于简短，可根据实际考试风格决定是否需要修改。",
+      "estimated_impact": "提升B1型题区分度和临床感"
+    },
+    {
+      "id": "SUG-004",
+      "priority": "medium",
+      "category": "D19收敛策略",
+      "content": "M6-A1-012和M10-A1-002正确答案选项术语共享计数显著高于干扰项。建议在干扰项中增加与题干相关的术语，使各选项的术语重叠度更加均匀。",
+      "estimated_impact": "消除NBME收敛策略线索"
+    },
+    {
+      "id": "SUG-005",
+      "priority": "low",
+      "category": "A3/A4结构完善",
+      "content": "4组A3/A4缺少polarity字段(M4/M5/M6/M8)，6组缺少explanation字段。建议补充以提高结构完整性。",
+      "estimated_impact": "提升JSON结构规范性"
+    }
+  ],
+
+  "summary": {
+    "total_issues": 26,
+    "by_severity": {
+      "critical": 7,
+      "major": 15,
+      "minor": 4
+    },
+    "by_dimension": {
+      "D4": 1,
+      "D5": 2,
+      "D11": 2,
+      "D12": 2,
+      "D14": 1,
+      "D16": 1,
+      "D17": 1,
+      "D18": 2,
+      "D19": 2,
+      "D20": 2,
+      "D21": 8,
+      "D3": 1,
+      "D6": 1,
+      "D9": 1
+    },
+    "total_patches": 14,
+    "patches_by_risk": {
+      "safe_auto": 5,
+      "auto_with_review": 7,
+      "must_escalate": 2
+    },
+    "total_escalations": 3,
+    "gate_rationale": "BLOCKED原因：①M8模块14题答案全A+全局答案46.1%偏A构成严重考试安全缺陷；②备考资料与题库关于肾精不足型眩晕方剂(左归丸vs六味地黄丸)矛盾属D5/D14跨产物事实不一致；③6/8组A3/A4答案集中度≥60%。以上问题须由Agent 4修复后方可放行。"
+  }
+}

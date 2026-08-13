@@ -1,0 +1,1001 @@
+[
+  {
+    "id": "predict-031",
+    "module_name": "病史采集与体格检查",
+    "type": "A1",
+    "bloom": "记忆",
+    "stem": "神经系统疾病病史采集中，最核心的部分是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "既往史"
+      },
+      {
+        "label": "B",
+        "text": "个人史"
+      },
+      {
+        "label": "C",
+        "text": "现病史"
+      },
+      {
+        "label": "D",
+        "text": "家族史"
+      },
+      {
+        "label": "E",
+        "text": "系统回顾"
+      }
+    ],
+    "answer": "C",
+    "explanation": "现病史是病史采集的核心，应详细询问起病方式、症状演变过程、伴随症状等。神经系统疾病的时间演变模式对定性诊断至关重要。",
+    "source_page": "教材P95",
+    "difficulty": "easy"
+  },
+  {
+    "id": "predict-032",
+    "module_name": "病史采集与体格检查",
+    "type": "A1",
+    "bloom": "记忆",
+    "stem": "脑膜刺激征不包括以下哪项？",
+    "options": [
+      {
+        "label": "A",
+        "text": "颈强直"
+      },
+      {
+        "label": "B",
+        "text": "Kernig征"
+      },
+      {
+        "label": "C",
+        "text": "Brudzinski征"
+      },
+      {
+        "label": "D",
+        "text": "Lasegue征"
+      },
+      {
+        "label": "E",
+        "text": "以上都不包括"
+      }
+    ],
+    "answer": "D",
+    "explanation": "脑膜刺激征包括：颈强直、Kernig征、Brudzinski征。Lasegue征（直腿抬高试验）是坐骨神经痛的检查方法，非脑膜刺激征。",
+    "source_page": "教材P105",
+    "difficulty": "easy"
+  },
+  {
+    "id": "predict-033",
+    "module_name": "病史采集与体格检查",
+    "type": "A2",
+    "bloom": "应用",
+    "stem": "患者男，30岁，突发剧烈头痛伴呕吐。查体：颈强直(+)，Kernig征(+)，Brudzinski征(+)。上述体征提示：",
+    "options": [
+      {
+        "label": "A",
+        "text": "脑实质病变"
+      },
+      {
+        "label": "B",
+        "text": "脑膜受累"
+      },
+      {
+        "label": "C",
+        "text": "小脑病变"
+      },
+      {
+        "label": "D",
+        "text": "脊髓病变"
+      },
+      {
+        "label": "E",
+        "text": "周围神经病变"
+      }
+    ],
+    "answer": "B",
+    "explanation": "颈强直+Kernig征+Brudzinski征阳性=脑膜刺激征三联征，提示脑膜受累，最常见于蛛网膜下腔出血和脑膜炎。",
+    "source_page": "教材P105",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-034",
+    "module_name": "病史采集与体格检查",
+    "type": "A2",
+    "bloom": "应用",
+    "stem": "检查患者肌力时，嘱患者抬离床面但不能对抗检查者施加的阻力，该肌力等级为：",
+    "options": [
+      {
+        "label": "A",
+        "text": "1级"
+      },
+      {
+        "label": "B",
+        "text": "2级"
+      },
+      {
+        "label": "C",
+        "text": "3级"
+      },
+      {
+        "label": "D",
+        "text": "4级"
+      },
+      {
+        "label": "E",
+        "text": "5级"
+      }
+    ],
+    "answer": "C",
+    "explanation": "肌力6级分级：0级=无肌肉收缩；1级=有肌肉收缩但无关节活动；2级=可水平移动但不能抬离床面；3级=可抬离床面但不能对抗阻力；4级=可对抗部分阻力；5级=正常。",
+    "source_page": "教材P100",
+    "difficulty": "easy"
+  },
+  {
+    "id": "predict-035",
+    "module_name": "病史采集与体格检查",
+    "type": "A3",
+    "bloom": "应用",
+    "stem": "患者女，25岁，进行性双下肢无力2周。查体：双下肢肌力2级，肌张力减低，膝腱反射和跟腱反射消失，Babinski征(-)，T8平面以下痛觉减退。(1)该患者肌张力减低和腱反射消失提示病变累及：(2)感觉障碍平面的确定有助于：",
+    "options": [
+      {
+        "label": "A",
+        "text": "上运动神经元；定性诊断"
+      },
+      {
+        "label": "B",
+        "text": "下运动神经元；定位诊断"
+      },
+      {
+        "label": "C",
+        "text": "小脑；鉴别诊断"
+      },
+      {
+        "label": "D",
+        "text": "基底节；病因诊断"
+      },
+      {
+        "label": "E",
+        "text": "皮质；预后判断"
+      }
+    ],
+    "answer": "B",
+    "explanation": "(1)肌张力减低+腱反射消失→下运动神经元损害；(2)感觉障碍平面（T8）对于脊髓病变的定位诊断具有关键意义。",
+    "source_page": "教材P100-102",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-036",
+    "module_name": "辅助检查",
+    "type": "A1",
+    "bloom": "记忆",
+    "stem": "腰椎穿刺的绝对禁忌症是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "发热"
+      },
+      {
+        "label": "B",
+        "text": "颅内压增高合并后颅窝占位"
+      },
+      {
+        "label": "C",
+        "text": "凝血功能轻度异常"
+      },
+      {
+        "label": "D",
+        "text": "背部皮肤感染"
+      },
+      {
+        "label": "E",
+        "text": "腰椎骨折"
+      }
+    ],
+    "answer": "B",
+    "explanation": "颅内压增高（尤其是后颅窝占位性病变）是腰椎穿刺的绝对禁忌症，因为腰穿放液后可能诱发脑疝。穿刺部位感染也是禁忌。",
+    "source_page": "教材P115",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-037",
+    "module_name": "辅助检查",
+    "type": "A1",
+    "bloom": "理解",
+    "stem": "关于脑脊液的产生与吸收，以下说法正确的是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "脑脊液主要由蛛网膜颗粒产生"
+      },
+      {
+        "label": "B",
+        "text": "脑脊液主要由脉络丛产生"
+      },
+      {
+        "label": "C",
+        "text": "脑脊液每日产生量约50ml"
+      },
+      {
+        "label": "D",
+        "text": "脑脊液经室间孔吸收"
+      },
+      {
+        "label": "E",
+        "text": "脑脊液总量约500ml"
+      }
+    ],
+    "answer": "B",
+    "explanation": "脑脊液主要由侧脑室脉络丛产生（约500ml/日），经侧脑室→室间孔→第三脑室→中脑导水管→第四脑室→蛛网膜下腔，最终经蛛网膜颗粒吸收入静脉窦。成人脑脊液总量约130-150ml。",
+    "source_page": "教材P113",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-038",
+    "module_name": "辅助检查",
+    "type": "A2",
+    "bloom": "应用",
+    "stem": "患者男，28岁，四肢对称性无力进行性加重1周。腰穿示：脑脊液压力正常，白细胞5×10^6/L，蛋白质1.5g/L，糖和氯化物正常。最可能的诊断是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性脊髓炎"
+      },
+      {
+        "label": "B",
+        "text": "吉兰-巴雷综合征"
+      },
+      {
+        "label": "C",
+        "text": "多发性硬化"
+      },
+      {
+        "label": "D",
+        "text": "重症肌无力"
+      },
+      {
+        "label": "E",
+        "text": "周期性瘫痪"
+      }
+    ],
+    "answer": "B",
+    "explanation": "脑脊液蛋白-细胞分离（蛋白显著升高而细胞数正常）是吉兰-巴雷综合征的特征性脑脊液改变，尤以发病第2-3周最明显。",
+    "source_page": "教材P118",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-039",
+    "module_name": "辅助检查",
+    "type": "A1",
+    "bloom": "理解",
+    "stem": "磁共振弥散加权成像（DWI）在急性脑梗死中的临床价值是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "可在发病数分钟内显示缺血灶"
+      },
+      {
+        "label": "B",
+        "text": "主要用于脑出血的诊断"
+      },
+      {
+        "label": "C",
+        "text": "对后颅窝病变不敏感"
+      },
+      {
+        "label": "D",
+        "text": "需要注射造影剂"
+      },
+      {
+        "label": "E",
+        "text": "仅在发病24小时后有诊断价值"
+      }
+    ],
+    "answer": "A",
+    "explanation": "DWI可在缺血发生后数分钟至数小时内显示细胞毒性水肿导致的水分子弥散受限（高信号），是诊断超急性期脑梗死最敏感的影像学方法。CT通常在发病24小时后才显示低密度灶。",
+    "source_page": "教材P120",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-040",
+    "module_name": "辅助检查",
+    "type": "X",
+    "bloom": "理解",
+    "stem": "腰椎穿刺的适应症包括：",
+    "options": [
+      {
+        "label": "A",
+        "text": "中枢神经系统感染的诊断"
+      },
+      {
+        "label": "B",
+        "text": "蛛网膜下腔出血的诊断（CT阴性时）"
+      },
+      {
+        "label": "C",
+        "text": "吉兰-巴雷综合征的诊断"
+      },
+      {
+        "label": "D",
+        "text": "颅内压增高原因不明"
+      },
+      {
+        "label": "E",
+        "text": "鞘内注射药物"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "腰椎穿刺适应症：CNS感染诊断、SAH诊断（CT阴性时）、GBS等炎性脱髓鞘病诊断、鞘内给药等。颅内压增高原因不明时应慎行腰穿，需先做影像学排除后颅窝占位。",
+    "source_page": "教材P115-116",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-041",
+    "module_name": "辅助检查",
+    "type": "判断",
+    "bloom": "理解",
+    "stem": "腰椎穿刺后患者需去枕平卧4-6小时，主要目的是预防脑疝形成。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "B",
+    "explanation": "错误。腰穿后去枕平卧4-6小时的目的是减少低颅压性头痛的发生（因穿刺孔持续漏脑脊液所致），而非预防脑疝。脑疝的预防应在穿刺前通过影像学评估颅内压和占位情况来实现。",
+    "source_page": "教材P115-116",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-042",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "记忆",
+    "stem": "短暂性脑缺血发作（TIA）的症状通常在多长时间内完全恢复？",
+    "options": [
+      {
+        "label": "A",
+        "text": "1小时内"
+      },
+      {
+        "label": "B",
+        "text": "6小时内"
+      },
+      {
+        "label": "C",
+        "text": "24小时内"
+      },
+      {
+        "label": "D",
+        "text": "48小时内"
+      },
+      {
+        "label": "E",
+        "text": "72小时内"
+      }
+    ],
+    "answer": "C",
+    "explanation": "TIA传统定义为神经功能缺损症状在24小时内完全恢复，且影像学上无责任梗死病灶。目前组织学定义强调无梗死证据的短暂缺血事件，但考试仍以24小时为经典标准。",
+    "source_page": "教材P130",
+    "difficulty": "easy"
+  },
+  {
+    "id": "predict-043",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "理解",
+    "stem": "脑血栓形成最常见的病因是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "心源性栓塞"
+      },
+      {
+        "label": "B",
+        "text": "脑动脉粥样硬化"
+      },
+      {
+        "label": "C",
+        "text": "高血压小动脉玻璃样变"
+      },
+      {
+        "label": "D",
+        "text": "脑血管畸形"
+      },
+      {
+        "label": "E",
+        "text": "血液高凝状态"
+      }
+    ],
+    "answer": "B",
+    "explanation": "脑血栓形成最常见的病因是脑动脉粥样硬化，导致血管狭窄和闭塞。心源性栓塞是脑栓塞最常见病因。高血压小动脉玻璃样变是腔隙性脑梗死最常见病因。",
+    "source_page": "教材P132",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-044",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "记忆",
+    "stem": "脑栓塞最常见的栓子来源是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "动脉粥样硬化斑块脱落"
+      },
+      {
+        "label": "B",
+        "text": "心源性栓子（尤其是心房颤动）"
+      },
+      {
+        "label": "C",
+        "text": "脂肪栓子"
+      },
+      {
+        "label": "D",
+        "text": "空气栓子"
+      },
+      {
+        "label": "E",
+        "text": "肿瘤栓子"
+      }
+    ],
+    "answer": "B",
+    "explanation": "脑栓塞最常见的栓子来源是心源性，其中心房颤动是最重要的病因（占50%以上）。心源性栓子脱落后随血流进入脑动脉导致栓塞，起病最急（数秒至数分钟达高峰）。",
+    "source_page": "教材P135",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-045",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "记忆",
+    "stem": "大脑中动脉主干闭塞的特征性临床表现不包括：",
+    "options": [
+      {
+        "label": "A",
+        "text": "对侧偏瘫（上肢重于下肢）"
+      },
+      {
+        "label": "B",
+        "text": "对侧偏身感觉障碍"
+      },
+      {
+        "label": "C",
+        "text": "对侧同向性偏盲"
+      },
+      {
+        "label": "D",
+        "text": "双眼向病灶对侧凝视"
+      },
+      {
+        "label": "E",
+        "text": "优势半球受累可出现失语"
+      }
+    ],
+    "answer": "D",
+    "explanation": "大脑中动脉主干闭塞→三偏征（对侧偏瘫+对侧偏身感觉障碍+对侧同向偏盲）+优势半球受累失语+Gerstmann综合征。双眼向病灶侧凝视（非对侧），因为额叶侧视中枢受损。",
+    "source_page": "教材P133-134",
+    "difficulty": "hard"
+  },
+  {
+    "id": "predict-046",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "理解",
+    "stem": "延髓背外侧综合征（Wallenberg综合征）最常见的病因是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "大脑中动脉闭塞"
+      },
+      {
+        "label": "B",
+        "text": "椎动脉或小脑后下动脉闭塞"
+      },
+      {
+        "label": "C",
+        "text": "颈内动脉闭塞"
+      },
+      {
+        "label": "D",
+        "text": "基底动脉尖闭塞"
+      },
+      {
+        "label": "E",
+        "text": "大脑前动脉闭塞"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Wallenberg综合征由椎动脉或小脑后下动脉（PICA）闭塞引起，累及延髓背外侧结构。临床特征：眩晕/恶心/呕吐+同侧面部痛温觉丧失+对侧躯体痛温觉丧失+同侧Horner征+吞咽困难/构音障碍。",
+    "source_page": "教材P140",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-047",
+    "module_name": "脑血管疾病",
+    "type": "A2",
+    "bloom": "应用",
+    "stem": "患者男，68岁，高血压病史10年。晨起时发现右侧肢体完全无力，伴言语不清。查体：BP 180/100mmHg，神清，运动性失语，右侧中枢性面瘫，右侧上下肢肌力0级，右侧Babinski征(+)，右侧偏身痛觉减退，双眼向左侧凝视。最可能的诊断是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "脑出血"
+      },
+      {
+        "label": "B",
+        "text": "大脑中动脉主干闭塞"
+      },
+      {
+        "label": "C",
+        "text": "脑干出血"
+      },
+      {
+        "label": "D",
+        "text": "蛛网膜下腔出血"
+      },
+      {
+        "label": "E",
+        "text": "短暂性脑缺血发作"
+      }
+    ],
+    "answer": "B",
+    "explanation": "安静状态（晨起）起病+三偏征+失语+双眼向病灶侧凝视=典型的左侧大脑中动脉主干闭塞（大动脉粥样硬化型脑梗死）。脑出血通常活动中起病，伴头痛呕吐。",
+    "source_page": "教材P133-134",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-048",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "记忆",
+    "stem": "脑出血最常见的部位是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "脑叶"
+      },
+      {
+        "label": "B",
+        "text": "基底节区（壳核）"
+      },
+      {
+        "label": "C",
+        "text": "脑干"
+      },
+      {
+        "label": "D",
+        "text": "小脑"
+      },
+      {
+        "label": "E",
+        "text": "脑室"
+      }
+    ],
+    "answer": "B",
+    "explanation": "脑出血最常见的部位是基底节区（尤其壳核），约占60-70%，由豆纹动脉（大脑中动脉的深穿支，直角发出，承受压力大）破裂引起。",
+    "source_page": "教材P142",
+    "difficulty": "easy"
+  },
+  {
+    "id": "predict-049",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "理解",
+    "stem": "高血压性脑出血最常见的责任血管是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "大脑中动脉主干"
+      },
+      {
+        "label": "B",
+        "text": "豆纹动脉"
+      },
+      {
+        "label": "C",
+        "text": "大脑前动脉"
+      },
+      {
+        "label": "D",
+        "text": "基底动脉"
+      },
+      {
+        "label": "E",
+        "text": "小脑后下动脉"
+      }
+    ],
+    "answer": "B",
+    "explanation": "豆纹动脉从大脑中动脉呈直角发出，承受较大血流冲击压力，长期高血压使其易发生微动脉瘤（Charcot-Bouchard动脉瘤）并破裂出血，是基底节区出血最常见的原因。",
+    "source_page": "教材P142",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-050",
+    "module_name": "脑血管疾病",
+    "type": "A2",
+    "bloom": "应用",
+    "stem": "患者男，55岁，活动中突发剧烈头痛、呕吐，继而意识不清。查体：BP 200/110mmHg，深昏迷，右侧瞳孔散大，左侧肢体瘫痪。头颅CT示右侧基底节区高密度影，量约80ml，中线结构左移。目前最紧急的处理是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即静脉溶栓"
+      },
+      {
+        "label": "B",
+        "text": "脱水降颅压+控制血压+准备手术"
+      },
+      {
+        "label": "C",
+        "text": "抗血小板治疗"
+      },
+      {
+        "label": "D",
+        "text": "抗凝治疗"
+      },
+      {
+        "label": "E",
+        "text": "腰椎穿刺放脑脊液"
+      }
+    ],
+    "answer": "B",
+    "explanation": "大量脑出血（>30ml基底节区）+脑疝征象（瞳孔散大、中线移位）=紧急脱水降颅压（甘露醇）+控制血压+手术清除血肿。溶栓/抗血小板/抗凝均为禁忌。腰穿可诱发脑疝。",
+    "source_page": "教材P144-145",
+    "difficulty": "hard"
+  },
+  {
+    "id": "predict-051",
+    "module_name": "脑血管疾病",
+    "type": "A2",
+    "bloom": "应用",
+    "stem": "患者女，45岁，活动中突发剧烈头痛，呈\"爆裂样\"，伴恶心呕吐。查体：颈强直(+)，Kernig征(+)，无肢体瘫痪。头颅CT示鞍上池、环池高密度影。最可能的诊断是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "脑出血"
+      },
+      {
+        "label": "B",
+        "text": "蛛网膜下腔出血"
+      },
+      {
+        "label": "C",
+        "text": "脑梗死"
+      },
+      {
+        "label": "D",
+        "text": "偏头痛"
+      },
+      {
+        "label": "E",
+        "text": "紧张性头痛"
+      }
+    ],
+    "answer": "B",
+    "explanation": "活动中突发爆裂样头痛+脑膜刺激征阳性+CT示蛛网膜下腔（鞍上池、环池）高密度影=典型蛛网膜下腔出血（SAH）。最常见病因为颅内动脉瘤破裂。无偏瘫可帮助与脑出血鉴别。",
+    "source_page": "教材P148",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-052",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "记忆",
+    "stem": "蛛网膜下腔出血最常见的病因是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "高血压动脉硬化"
+      },
+      {
+        "label": "B",
+        "text": "颅内动脉瘤破裂"
+      },
+      {
+        "label": "C",
+        "text": "脑血管畸形"
+      },
+      {
+        "label": "D",
+        "text": "血液病"
+      },
+      {
+        "label": "E",
+        "text": "烟雾病"
+      }
+    ],
+    "answer": "B",
+    "explanation": "颅内动脉瘤破裂是SAH最常见的病因，约占75-80%。脑血管畸形多见于青少年，烟雾病多见于儿童和青年。",
+    "source_page": "教材P147",
+    "difficulty": "easy"
+  },
+  {
+    "id": "predict-053",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "理解",
+    "stem": "急性缺血性脑卒中静脉溶栓（rt-PA）的标准时间窗是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "发病后3小时内"
+      },
+      {
+        "label": "B",
+        "text": "发病后4.5小时内"
+      },
+      {
+        "label": "C",
+        "text": "发病后6小时内"
+      },
+      {
+        "label": "D",
+        "text": "发病后12小时内"
+      },
+      {
+        "label": "E",
+        "text": "发病后24小时内"
+      }
+    ],
+    "answer": "B",
+    "explanation": "rt-PA（阿替普酶）静脉溶栓的标准时间窗为发病后4.5小时内，大量临床研究证实此时间窗内获益远高于出血风险。尿激酶溶栓时间窗为6小时内。",
+    "source_page": "教材P136",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-054",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "理解",
+    "stem": "脑梗死与脑出血的鉴别中，支持脑出血的诊断依据是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "安静状态下起病"
+      },
+      {
+        "label": "B",
+        "text": "起病时血压正常"
+      },
+      {
+        "label": "C",
+        "text": "活动中起病，伴头痛呕吐和意识障碍"
+      },
+      {
+        "label": "D",
+        "text": "症状逐渐进展加重"
+      },
+      {
+        "label": "E",
+        "text": "CT示低密度灶"
+      }
+    ],
+    "answer": "C",
+    "explanation": "脑出血通常在活动中或情绪激动时起病，数分钟至数小时达高峰，常伴剧烈头痛、呕吐和意识障碍。脑梗死多在安静/睡眠中起病，意识障碍较轻。CT高密度=出血，低密度=梗死。",
+    "source_page": "教材P143-144",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-055",
+    "module_name": "脑血管疾病",
+    "type": "A3",
+    "bloom": "应用",
+    "stem": "患者男，72岁，高血压糖尿病史，晨起发现左侧肢体无力2小时。查体：BP 160/90mmHg，神清，左侧中枢性面舌瘫，左侧肢体肌力2级，左侧Babinski征(+)。头颅CT未见异常。(1)首先应考虑的诊断是：(2)下一步最重要的检查是：(3)如果发病3小时且无禁忌症，首选治疗是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "脑出血；CTA；手术"
+      },
+      {
+        "label": "B",
+        "text": "急性脑梗死；MRI-DWI；rt-PA静脉溶栓"
+      },
+      {
+        "label": "C",
+        "text": "TIA；颈动脉超声；抗血小板"
+      },
+      {
+        "label": "D",
+        "text": "脑栓塞；心脏超声；抗凝"
+      },
+      {
+        "label": "E",
+        "text": "脑肿瘤；增强MRI；手术"
+      }
+    ],
+    "answer": "B",
+    "explanation": "(1)晨起安静发病+局灶神经体征+CT未见出血→急性脑梗死；(2)MRI-DWI可在超早期（数分钟至数小时）显示缺血灶；(3)发病4.5小时内且无禁忌症→rt-PA静脉溶栓是标准治疗。",
+    "source_page": "教材P132-137",
+    "difficulty": "hard"
+  },
+  {
+    "id": "predict-056",
+    "module_name": "脑血管疾病",
+    "type": "A2",
+    "bloom": "应用",
+    "stem": "患者男，60岁，房颤病史5年，未服用抗凝药。突发右侧肢体完全瘫痪伴意识障碍30分钟来院。查体：嗜睡，完全性失语，右侧偏瘫，右侧Babinski征(+)，双眼向左侧凝视。头颅CT未见异常。最可能的诊断是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "脑血栓形成"
+      },
+      {
+        "label": "B",
+        "text": "脑栓塞（心源性）"
+      },
+      {
+        "label": "C",
+        "text": "腔隙性脑梗死"
+      },
+      {
+        "label": "D",
+        "text": "分水岭脑梗死"
+      },
+      {
+        "label": "E",
+        "text": "脑出血"
+      }
+    ],
+    "answer": "B",
+    "explanation": "房颤病史+活动中突发起病（数秒至数分钟达高峰）+意识障碍+CT早期未见异常=典型心源性脑栓塞。脑血栓形成多于安静时起病且进展较慢（数小时至数日）。",
+    "source_page": "教材P135",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-057",
+    "module_name": "脑血管疾病",
+    "type": "X",
+    "bloom": "理解",
+    "stem": "脑血管疾病的可干预危险因素包括：",
+    "options": [
+      {
+        "label": "A",
+        "text": "高血压"
+      },
+      {
+        "label": "B",
+        "text": "糖尿病"
+      },
+      {
+        "label": "C",
+        "text": "心房颤动"
+      },
+      {
+        "label": "D",
+        "text": "年龄"
+      },
+      {
+        "label": "E",
+        "text": "高脂血症"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "脑血管疾病可干预危险因素：高血压（最重要的危险因素）、糖尿病、心房颤动、高脂血症、吸烟、肥胖、缺乏运动等。年龄和性别是不可干预的危险因素。",
+    "source_page": "教材P130-131",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-058",
+    "module_name": "脑血管疾病",
+    "type": "B1",
+    "bloom": "理解",
+    "stem": "(1)起病最急，数秒至数分钟达高峰 (2)起病较慢，数小时至数日逐渐进展",
+    "options": [
+      {
+        "label": "A",
+        "text": "脑栓塞"
+      },
+      {
+        "label": "B",
+        "text": "脑血栓形成"
+      },
+      {
+        "label": "C",
+        "text": "脑出血"
+      },
+      {
+        "label": "D",
+        "text": "蛛网膜下腔出血"
+      },
+      {
+        "label": "E",
+        "text": "TIA"
+      }
+    ],
+    "answer": "A/B",
+    "explanation": "(1)脑栓塞：起病最急骤（数秒至数分钟达高峰），栓子突然堵塞血管。(2)脑血栓形成：起病较缓慢（数小时至数日渐进展），血栓逐渐增大堵塞血管。",
+    "source_page": "教材P132-135",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-059",
+    "module_name": "脑血管疾病",
+    "type": "A1",
+    "bloom": "理解",
+    "stem": "腔隙性脑梗死最常见的病因是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "大动脉粥样硬化"
+      },
+      {
+        "label": "B",
+        "text": "心源性栓塞"
+      },
+      {
+        "label": "C",
+        "text": "高血压性小动脉玻璃样变"
+      },
+      {
+        "label": "D",
+        "text": "动脉夹层"
+      },
+      {
+        "label": "E",
+        "text": "血管炎"
+      }
+    ],
+    "answer": "C",
+    "explanation": "腔隙性脑梗死由大脑半球深部或脑干的穿支小动脉闭塞引起，最常见病因为高血压导致的小动脉玻璃样变和纤维素样坏死。梗死灶直径<15mm。",
+    "source_page": "教材P138",
+    "difficulty": "medium"
+  },
+  {
+    "id": "predict-060",
+    "module_name": "脑血管疾病",
+    "type": "A2",
+    "bloom": "应用",
+    "stem": "患者女，58岁，突发眩晕、恶心呕吐、行走不稳3小时。查体：右侧面部痛温觉减退，左侧躯干肢体痛温觉减退，右侧Horner征，右侧指鼻试验欠准，声音嘶哑。最可能的诊断是：",
+    "options": [
+      {
+        "label": "A",
+        "text": "小脑出血"
+      },
+      {
+        "label": "B",
+        "text": "延髓背外侧综合征（Wallenberg）"
+      },
+      {
+        "label": "C",
+        "text": "脑桥出血"
+      },
+      {
+        "label": "D",
+        "text": "梅尼埃病"
+      },
+      {
+        "label": "E",
+        "text": "前庭神经元炎"
+      }
+    ],
+    "answer": "B",
+    "explanation": "交叉性感觉障碍+Horner征+共济失调+后组脑神经麻痹=典型Wallenberg综合征（延髓背外侧综合征），由椎动脉或小脑后下动脉闭塞引起。",
+    "source_page": "教材P140",
+    "difficulty": "hard"
+  },
+  {
+    "id": "predict-061",
+    "module_name": "脑血管疾病",
+    "type": "判断",
+    "bloom": "理解",
+    "stem": "分水岭脑梗死多发生于脑内两条大动脉供血区之间的边缘带，常见诱因包括休克、严重脱水等全身性低血压。",
+    "options": [
+      {
+        "label": "A",
+        "text": "正确"
+      },
+      {
+        "label": "B",
+        "text": "错误"
+      }
+    ],
+    "answer": "A",
+    "explanation": "正确。分水岭（边缘带）脑梗死发生于两条大动脉供血交界区，常在已有脑动脉狭窄基础上，因全身性低血压（如休克、严重脱水、心脏手术中血压骤降）诱发。",
+    "source_page": "教材P139",
+    "difficulty": "medium"
+  }
+]

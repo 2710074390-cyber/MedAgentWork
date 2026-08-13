@@ -1,0 +1,35 @@
+# ── MedAgentWork .gitignore (2026-08-13 重构基线) ──
+
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 原子写入临时文件
+*.tmp
+
+# 生成报告（可重建，铁律②：reports/ 按保留策略管理）
+reports/
+
+# RAG 索引与分块元数据（可重建）
+知识库素材/index_store/
+知识库素材/chunks_metadata/
+
+# 本地快捷方式（指向外部路径，仅本机有效）
+*.lnk
+
+# 临时目录（铁律：_scratch/temp 一周内清理）
+temp/
+
+# 历史归档（稳定内容，不入库保持仓库精简）
+archive/
+
+# 大体积输入素材（PDF/DOCX 二进制，保持仓库为纯文本）
+输入素材/**/*.pdf
+输入素材/**/*.docx
+知识库素材/**/*.pdf
+知识库素材/**/*.docx
+
+# 本地环境文件
+.env

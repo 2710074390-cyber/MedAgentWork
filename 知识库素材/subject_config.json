@@ -1,0 +1,341 @@
+{
+  "schema_version": "2.0",
+  "last_updated": "2026-06-21T12:31:16.589580+08:00",
+  "note": "v2.0: 每学科加入 retrieval_strategy（混合检索 + keyword_weight），替代全局默认值",
+  "subjects": {
+    "internal-med": {
+      "name": "内科学",
+      "priority": 0,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 200,
+        "top_k": 20,
+        "top_n": 7,
+        "hybrid_search": true,
+        "keyword_weight": 0.3,
+        "numeric_threshold": 2,
+        "preserve_sequence": false,
+        "special_rules": [
+          "table_protect",
+          "numeric_protect",
+          "pattern_protect:CHA2DS2|CURB-65|GCS|APACHE|MELD|Child-Pugh"
+        ]
+      },
+      "description": "疾病中心制，诊断标准密集，数值阈值多，满分占比最高"
+    },
+    "surgery": {
+      "name": "外科学",
+      "priority": 1,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 1000,
+        "overlap": 200,
+        "top_k": 25,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "preserve_sequence": true,
+        "special_rules": [
+          "procedure_protect",
+          "staging_protect",
+          "chapter_filter"
+        ]
+      },
+      "description": "手术中心制，术前术中术后时序强，解剖标志多"
+    },
+    "pediatrics": {
+      "name": "儿科学",
+      "priority": 1,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 600,
+        "overlap": 150,
+        "top_k": 20,
+        "top_n": 7,
+        "hybrid_search": true,
+        "keyword_weight": 0.3,
+        "age_aware": true,
+        "numeric_threshold": 2,
+        "special_rules": [
+          "mg_per_kg_protect",
+          "milestone_protect",
+          "age_range_tag"
+        ]
+      },
+      "description": "年龄特异性参数密集，生长发育指标，按体重/体表面积用药"
+    },
+    "neurology": {
+      "name": "神经病学",
+      "priority": 1,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 180,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.5,
+        "preserve_sequence": false,
+        "special_rules": [
+          "pathway_protect",
+          "syndrome_protect",
+          "anatomy_keyword_boost"
+        ]
+      },
+      "description": "解剖定位驱动，综合征复杂，神经传导通路不可拆"
+    },
+    "psychiatry": {
+      "name": "精神病学",
+      "priority": 2,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 500,
+        "overlap": 120,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.3,
+        "special_rules": [
+          "diagnostic_criteria_protect",
+          "scale_protect",
+          "drug_class_keyword"
+        ]
+      },
+      "description": "诊断标准中心制，DSM/ICD标准结构化，药物副作用对比"
+    },
+    "dermatology": {
+      "name": "皮肤性病学",
+      "priority": 2,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 600,
+        "overlap": 150,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": false,
+        "keyword_weight": 0.0,
+        "preserve_sequence": true,
+        "special_rules": [
+          "morphology_triad_protect",
+          "topical_drug_rules"
+        ]
+      },
+      "description": "形态学描述为主，皮损形态+分布→诊断，外用药物剂型选择"
+    },
+    "tcm": {
+      "name": "中医学",
+      "priority": 2,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 500,
+        "overlap": 120,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.6,
+        "special_rules": [
+          "formula_independent_chunk",
+          "herb_independent_chunk",
+          "acupoint_independent_chunk",
+          "pattern_type_tag"
+        ]
+      },
+      "description": "范式独立，辨证论治为核心，方剂/腧穴为最小知识单元"
+    },
+    "tcm-psychology": {
+      "name": "中医心理学",
+      "priority": 2,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 500,
+        "overlap": 120,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.45,
+        "special_rules": [
+          "formula_independent_chunk",
+          "acupoint_independent_chunk",
+          "pattern_type_tag",
+          "diagnostic_criteria_protect",
+          "psychotherapy_protect"
+        ]
+      },
+      "description": "中医心理学交叉学科，形神合一理论+辨证论治+情志疗法+心理养生"
+    },
+    "doctor-patient": {
+      "name": "医患沟通",
+      "priority": 3,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 150,
+        "top_k": 15,
+        "top_n": 3,
+        "hybrid_search": false,
+        "keyword_weight": 0.0,
+        "special_rules": [
+          "law_protect",
+          "model_protect"
+        ]
+      },
+      "description": "沟通模型+伦理原则+法律法规，文科属性强"
+    },
+    "cognitive-neuroscience": {
+      "name": "认知神经科学",
+      "priority": 2,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 600,
+        "overlap": 150,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.45,
+        "preserve_sequence": false,
+        "special_rules": [
+          "pathway_protect",
+          "technique_protect",
+          "brain_area_protect",
+          "syndrome_protect",
+          "potential_protect"
+        ]
+      },
+      "description": "交叉学科：神经电生理+感知觉通路+研究技术+高级认知功能，术语密度高"
+    },
+    "heyincheng-jy1": {
+      "name": "贺银成讲义上册",
+      "priority": 3,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 500,
+        "overlap": 100,
+        "top_k": 15,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "score_threshold": 0.65
+      },
+      "description": "考点浓缩型总结，非逐字教材，精炼短小"
+    },
+    "heyincheng-jy2": {
+      "name": "贺银成讲义中册",
+      "priority": 3,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 500,
+        "overlap": 100,
+        "top_k": 15,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "score_threshold": 0.65
+      },
+      "description": "考点浓缩型总结"
+    },
+    "heyincheng-jy3": {
+      "name": "贺银成讲义下册",
+      "priority": 3,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 500,
+        "overlap": 100,
+        "top_k": 15,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "score_threshold": 0.65
+      },
+      "description": "考点浓缩型总结"
+    },
+    "heyincheng-zt1": {
+      "name": "贺银成真题上册",
+      "priority": 3,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 150,
+        "top_k": 10,
+        "top_n": 3,
+        "hybrid_search": true,
+        "keyword_weight": 0.5,
+        "score_threshold": 0.7
+      },
+      "description": "历年真题+解析，每题独立chunk"
+    },
+    "heyincheng-zt2": {
+      "name": "贺银成真题下册",
+      "priority": 3,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 150,
+        "top_k": 10,
+        "top_n": 3,
+        "hybrid_search": true,
+        "keyword_weight": 0.5,
+        "score_threshold": 0.7
+      },
+      "description": "历年真题+解析，每题独立chunk"
+    },
+    "zhaozhao-part1": {
+      "name": "昭昭题眼狂背(上)",
+      "priority": 3,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 400,
+        "overlap": 80,
+        "top_k": 10,
+        "top_n": 3,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "score_threshold": 0.75
+      },
+      "description": "口诀/记忆法，碎片化，辅助记忆"
+    },
+    "zhaozhao-part2": {
+      "name": "昭昭题眼狂背(下)",
+      "priority": 3,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 400,
+        "overlap": 80,
+        "top_k": 10,
+        "top_n": 3,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "score_threshold": 0.75
+      },
+      "description": "口诀/记忆法，碎片化，辅助记忆"
+    }
+  },
+  "defaults": {
+    "chunk_size": 800,
+    "overlap": 150,
+    "min_chunk_size": 100,
+    "numeric_threshold": 3,
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.7,
+    "hybrid_search": false,
+    "keyword_weight": 0.0
+  }
+}

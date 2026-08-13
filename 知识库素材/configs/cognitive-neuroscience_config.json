@@ -1,0 +1,89 @@
+{
+  "subject": "认知神经科学",
+  "subject_code": "cognitive-neuroscience",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 600,
+    "overlap": 150,
+    "min_chunk_size": 60,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(静息电位|动作电位|去极化|复极化|超极化|全或无|阈值|钠钾泵|电压门控|配体门控|EPSP|IPSP|时间总和|空间总和)",
+        "description": "神经电生理核心机制不拆分——电位变化+离子通道+突触传递须在同一chunk"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(ERP|fMRI|MEG|fNIRS|TMS|PET|EEG|事件相关电位|功能性磁共振|脑磁图|近红外|经颅磁刺激|正电子发射)",
+        "description": "研究技术方法不拆分——技术名+原理+优缺点须在同一chunk"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(视觉通路|听觉通路|嗅觉通路|味觉通路|躯体感觉通路|视网膜|外侧膝状体|初级视皮层|耳蜗|上橄榄核|下丘|内侧膝状体)",
+        "description": "感知觉传导通路不拆分——感受器→神经→核团→皮层完整链条"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(前额叶|海马|杏仁核|基底节|小脑|脑干|丘脑|下丘脑|枕叶|颞叶|顶叶|额叶|扣带回|岛叶|纹状体|伏隔核|中脑|脑桥|延髓)",
+        "description": "脑区功能描述不拆分——脑区+位置+功能保持完整"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(失认症|失读症|失写症|盲视|偏侧忽略|面孔失认|物体失认|纯词聋|纯词哑|Wernicke|Broca|传导性失语)",
+        "description": "认知障碍综合征不拆分——症状+脑基础+特征保持完整"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(长时程增强|LTP|长时程抑制|LTD|工作记忆|情景记忆|语义记忆|程序性记忆|陈述性记忆|非陈述性记忆|内侧颞叶|海马体)",
+        "description": "学习记忆机制不拆分——类型+脑区+机制保持完整"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(选择性注意|有意注意|无意注意|早期选择|晚期选择|过滤器模型|衰减模型|特征整合|注意瞬脱|变化盲视|不注意盲视)",
+        "description": "注意理论/现象不拆分——理论名+实验证据+结论保持完整"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(词汇加工|语义整合|句法加工|N400|P600|ELAN|LAN|双通路理论|语音通路|词形通路)",
+        "description": "语言加工模型不拆分——理论+脑电成分+脑区保持完整"
+      }
+    ],
+    "metadata_enrichment": ["has_syndrome", "has_anatomy_pathway", "has_drug_info"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.70,
+    "hybrid_search": true,
+    "keyword_weight": 0.45,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "盲视": "盲视",
+      "面孔失认": "面孔失认症",
+      "物体失认": "物体失认症",
+      "偏侧忽略": "半侧空间忽略",
+      "长时程增强": "LTP",
+      "长时程抑制": "LTD",
+      "工作记忆": "工作记忆",
+      "事件相关电位": "ERP",
+      "功能性磁共振": "fMRI",
+      "经颅磁刺激": "TMS",
+      "脑磁图": "MEG",
+      "静息电位": "静息膜电位",
+      "动作电位": "动作电位"
+    }
+  }
+}

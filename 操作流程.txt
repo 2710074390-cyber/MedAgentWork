@@ -1,0 +1,29 @@
+简化为 2 步/阶段：
+
+  准备：将教材/笔记/重点放入 输入素材/
+
+  阶段一  窗口 [Agent 1]  → 打字：「开始新批次：科目+章节」
+                          ← 看回显 → 打字：「确认」
+
+  阶段二  窗口 [Agent 2]  ← Agent 1 产出调用指令 → 粘贴
+                          ← 产出题库 → Ctrl+C 复制
+          终端             → python save.py
+
+  阶段三  窗口 [Agent 1]  → 打字：「继续」
+          窗口 [Agent 3]  ← 粘贴指令
+                          ← 产出质检报告 → Ctrl+C
+          终端             → python save.py
+
+  阶段四  窗口 [Agent 1]  → 打字：「继续」
+          窗口 [Agent 4]  ← 粘贴指令
+                          ← 产出修复版 → Ctrl+C
+          终端             → python save.py
+
+  阶段五  窗口 [Agent 1]  → 打字：「继续」
+          窗口 [Agent 5]  ← 粘贴指令
+                          ← 产出主复习资料 → Ctrl+C
+          终端             → python save.py
+
+  收尾   窗口 [Agent 1]  → 打字：「终审」
+                         ← 审查升级告警 → 打字：「签收 batch006」
+          终端            → python healthcheck.py

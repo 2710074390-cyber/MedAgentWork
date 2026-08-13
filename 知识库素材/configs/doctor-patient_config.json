@@ -1,0 +1,51 @@
+{
+  "subject": "医患沟通",
+  "subject_code": "doctor-patient",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 800,
+    "overlap": 150,
+    "min_chunk_size": 100,
+    "numeric_threshold": 3,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "pattern_protect",
+        "pattern": "(第.{1,10}条|第.{1,5}款|法律责任|应当|可以.*处罚)",
+        "description": "法律条文整段不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(Kalamazoo|Calgary-Cambridge|SPIKES|指南|共识)",
+        "description": "沟通模型步骤不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(知情同意|隐私权|保密|告知|说明义务)",
+        "description": "伦理原则描述不拆分"
+      }
+    ],
+    "metadata_enrichment": ["has_law", "has_model"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 15,
+    "top_n": 3,
+    "score_threshold": 0.70,
+    "hybrid_search": false,
+    "keyword_weight": 0.0,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "医患": "医患关系",
+      "知情同意": "知情同意权",
+      "医疗纠纷": "医疗纠纷预防和处理",
+      "伦理": "医学伦理"
+    }
+  }
+}

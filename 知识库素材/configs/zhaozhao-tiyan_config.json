@@ -1,0 +1,36 @@
+{
+  "subject": "昭昭题眼狂背",
+  "subject_code": "zhaozhao-tiyan",
+  "version": "1.0",
+  "description": "口诀/记忆法，碎片化，仅辅助记忆。适用于 zhaozhao-part1/2",
+
+  "chunk_strategy": {
+    "chunk_size": 400,
+    "overlap": 80,
+    "min_chunk_size": 40,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      }
+    ],
+    "metadata_enrichment": ["has_mnemonic"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 10,
+    "top_n": 3,
+    "score_threshold": 0.75,
+    "hybrid_search": true,
+    "keyword_weight": 0.4,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": false,
+    "term_map": {}
+  }
+}

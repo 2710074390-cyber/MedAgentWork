@@ -1,0 +1,56 @@
+{
+  "subject": "皮肤性病学",
+  "subject_code": "dermatology",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 600,
+    "overlap": 150,
+    "min_chunk_size": 80,
+    "numeric_threshold": 2,
+    "preserve_sequence": true,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(原发疹|继发疹|斑疹|丘疹|斑块|结节|风团|水疱|大疱|脓疱|囊肿|鳞屑|糜烂|溃疡|裂隙|抓痕|苔藓|萎缩|瘢痕)",
+        "description": "皮损形态描述+好发部位+诊断的三元组不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(Auspitz|Nikolsky|Darier|Koebner)",
+        "description": "皮肤科特征性体征不拆分"
+      },
+      {
+        "type": "table_protect",
+        "context_sentences": 1
+      }
+    ],
+    "metadata_enrichment": ["has_morphology", "has_drug_info"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.70,
+    "hybrid_search": false,
+    "keyword_weight": 0.0,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "银屑病": "银屑病",
+      "湿疹": "湿疹",
+      "荨麻疹": "荨麻疹",
+      "药疹": "药疹",
+      "梅毒": "梅毒",
+      "淋病": "淋病"
+    }
+  }
+}

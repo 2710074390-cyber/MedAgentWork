@@ -1,0 +1,57 @@
+{
+  "subject": "精神病学",
+  "subject_code": "psychiatry",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 500,
+    "overlap": 120,
+    "min_chunk_size": 80,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(诊断标准|DSM|ICD-10|ICD-11|CCMD|诊断条目|符合.*条)",
+        "description": "精神科诊断标准条目不拆分，整组保留"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(SAPS|SANS|PANSS|BPRS|HAMA|HAMD|YMRS|CGI|GAF|SCL-90|MMSE|MoCA)",
+        "description": "评定量表名称及条目不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(阳性症状|阴性症状|认知症状|情感症状|精神病性症状)",
+        "description": "症状群分类不拆分"
+      }
+    ],
+    "metadata_enrichment": ["has_diagnostic_criteria", "has_scale", "has_drug_info"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.70,
+    "hybrid_search": true,
+    "keyword_weight": 0.3,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "抑郁症": "抑郁发作",
+      "躁狂": "躁狂发作",
+      "精分": "精神分裂症",
+      "双相": "双相情感障碍",
+      "OCD": "强迫障碍",
+      "PTSD": "创伤后应激障碍"
+    }
+  }
+}

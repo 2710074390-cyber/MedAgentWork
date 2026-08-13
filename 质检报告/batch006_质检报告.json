@@ -1,0 +1,2998 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20260620-batch006",
+    "batch_source": "Agent 2 batch006 产出（301题）",
+    "total_questions": 301,
+    "total_materials": 0,
+    "gate_decision": "PASS_WITH_FIXES",
+    "overall_score": 2.7,
+    "dimension_scores": {
+      "D1_术语规范性": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D2_语法拼写": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D3_结构完整性": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D4_格式一致性": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D5_事实准确性": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D6_题型极性自洽": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D7_选项互斥性": {
+        "pass": 300,
+        "fail": 1,
+        "severity_breakdown": "C:0 M:0 m:1",
+        "score": 9.5
+      },
+      "D8_答案唯一性": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D9_解析完整度": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D10_认知层级校准": {
+        "pass": 300,
+        "fail": 1,
+        "severity_breakdown": "C:0 M:1 m:0",
+        "score": 8.0
+      },
+      "D11_干扰项质量": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D12_考点溯源": {
+        "pass": 300,
+        "fail": 1,
+        "severity_breakdown": "C:0 M:1 m:0",
+        "score": 8.0
+      },
+      "D13_跨题一致性": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D14_跨章节一致性": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D15_外来素材验证": {
+        "pass": 301,
+        "fail": 0,
+        "severity_breakdown": "C:0 M:0 m:0",
+        "score": 10.0
+      },
+      "D16_认知层级覆盖率": {
+        "pass": 300,
+        "fail": 1,
+        "severity_breakdown": "C:0 M:1 m:0",
+        "score": 8.0
+      },
+      "D17_选项同质性": {
+        "pass": 299,
+        "fail": 2,
+        "severity_breakdown": "C:0 M:1 m:1",
+        "score": 7.5
+      },
+      "D18_词重复线索": {
+        "pass": 300,
+        "fail": 1,
+        "severity_breakdown": "C:0 M:0 m:1",
+        "score": 9.5
+      },
+      "D19_收敛策略": {
+        "pass": 300,
+        "fail": 1,
+        "severity_breakdown": "C:0 M:0 m:1",
+        "score": 9.5
+      },
+      "D20_B1型题专项": {
+        "pass": 292,
+        "fail": 9,
+        "severity_breakdown": "C:0 M:9 m:0",
+        "score": 0
+      }
+    }
+  },
+  "bloom_report": {
+    "target": {
+      "记忆": "30%",
+      "理解": "40%",
+      "应用": "25%",
+      "分析": "5%"
+    },
+    "actual": {
+      "记忆": "30.6%",
+      "理解": "43.5%",
+      "应用": "19.6%",
+      "分析": "6.3%"
+    },
+    "deviation": {
+      "记忆": "+0.6%",
+      "理解": "+3.5%",
+      "应用": "-5.4%",
+      "分析": "+1.3%"
+    },
+    "flag": "⚠ Agent 1调用指令数据错误(记忆/理解互换)→实际: 记忆达标, 理解+3.5%, 应用-5.4%"
+  },
+  "issues": [
+    {
+      "issue_id": "ISSUE-0000",
+      "target": "27 items",
+      "dimension": "D12",
+      "severity": "major",
+      "description": "27道题目source字段缺教材页码，仅标注\"大纲/教材\"或类似",
+      "current_text": "例: batch006_M01_Q010 -> 大纲/待查",
+      "impact": "无法追溯知识来源权威性，降低题库可信度"
+    },
+    {
+      "issue_id": "ISSUE-0001",
+      "target": "126 items",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "126道题目选项长度比>2.0（严重不符合同质性要求）",
+      "current_text": "全队列212题长度比>1.5, 其中126题>2.0",
+      "impact": "考生可通过选项长度差异排除/选择答案，降低题目效度"
+    },
+    {
+      "issue_id": "ISSUE-0002",
+      "target": "1 items",
+      "dimension": "D16",
+      "severity": "major",
+      "description": "应用层级占比19.6%，低于目标25%偏差5.4%",
+      "current_text": "应用题59/301",
+      "impact": "临床推理题不足，影响考试区分度与效度"
+    },
+    {
+      "issue_id": "ISSUE-0003",
+      "target": "1 items",
+      "dimension": "D10",
+      "severity": "major",
+      "description": "难度分布严重偏基础: 基础295题(98%)，中等仅6题(2%)，无难题",
+      "current_text": "difficulty字段: 基础295, 中等6",
+      "impact": "缺乏区分度，无法有效区分不同水平考生"
+    },
+    {
+      "issue_id": "ISSUE-0004",
+      "target": "1 items",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "14处选项含绝对化用语（总是/从不/所有等）",
+      "current_text": "[{'qid': 'batch006_M01_Q013', 'label': 'E', 'word': '仅', 'text': '仅支链氨基酸分解增加'}, {'qid': 'batch006_M05_Q111', 'label': 'D', 'word': '仅', 'text': '仅用普萘洛尔→手术'}, {'qid': 'batch006_M06_Q115', 'label': 'D', 'word': '仅', 'text': '无水疱，仅红斑'}]",
+      "impact": "绝对化用语使干扰项更易被排除"
+    },
+    {
+      "issue_id": "ISSUE-0005",
+      "target": "1 items",
+      "dimension": "D7",
+      "severity": "minor",
+      "description": "20道数值型选项题目选项未按升序/降序排列",
+      "current_text": "[{'qid': 'batch006_M01_Q006', 'values': [38.5, 38.0, 39.0, 37.5, 38.0]}, {'qid': 'batch006_M01_Q007', 'values': [12.0, 4.0, 10.0, 10.0, 10.0]}, {'qid': 'batch006_M01_Q020', 'values': [1.0, 0.5, 24.0]}]",
+      "impact": "不一致的排序增加考生认知负荷，不符合NBME规范"
+    },
+    {
+      "issue_id": "ISSUE-0006",
+      "target": "1 items",
+      "dimension": "D18",
+      "severity": "minor",
+      "description": "1道题目题干关键词仅出现在正确选项中",
+      "current_text": "[{'qid': 'batch006_M05_Q111', 'keywords': ['脉率'], 'answer': '先用ATD(MMI)2周→再加用碘剂2周→BMR<20%且脉'}]",
+      "impact": "考生可通过关键词匹配直接选出正确答案"
+    },
+    {
+      "issue_id": "ISSUE-0007",
+      "target": "1 items",
+      "dimension": "D19",
+      "severity": "minor",
+      "description": "2道题目存在收敛策略（正确答案术语共享计数最高）",
+      "current_text": "[{'qid': 'batch006_M01_Q020', 'ans_share': 2, 'avg_other': 0.5}, {'qid': 'batch006_M01_Q024', 'ans_share': 3, 'avg_other': 1.5}]",
+      "impact": "考生可通过术语重叠程度猜测答案"
+    },
+    {
+      "issue_id": "ISSUE-0008",
+      "target": "1 items",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1组(2子题): 共用选项：(1)金黄色葡萄球菌感染 (2)最可能的临床表现是：...: 维度单一(1维)",
+      "current_text": "共用选项: ['弥漫性红肿，边界不清', '境界清楚的红斑，有灼热感', '局限化脓灶，有脓栓形成']..., 答案位置: {'C': 1, 'A': 1}",
+      "impact": "B1型题设计缺陷降低组题效度"
+    },
+    {
+      "issue_id": "ISSUE-0009",
+      "target": "1 items",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1组(2子题): 共用选项：(1)杀灭一切微生物包括细菌芽孢的方法称为：...: 选项笼统(5项<=2字); 维度单一(1维)",
+      "current_text": "共用选项: ['消毒', '灭菌', '防腐']..., 答案位置: {'B': 1, 'A': 1}",
+      "impact": "B1型题设计缺陷降低组题效度"
+    },
+    {
+      "issue_id": "ISSUE-0010",
+      "target": "1 items",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1组(4子题): 共用选项：(1)甲状腺腺叶切除术属于：...: 维度单一(1维)",
+      "current_text": "共用选项: ['急症手术', '限期手术', '择期手术']..., 答案位置: {'C': 1, 'B': 1, 'A': 2}",
+      "impact": "B1型题设计缺陷降低组题效度"
+    },
+    {
+      "issue_id": "ISSUE-0011",
+      "target": "1 items",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1组(2子题): 共用选项：(1)头面颈部切口拆线时间为术后：...: 维度单一(1维)",
+      "current_text": "共用选项: ['4-5天', '6-7天', '7-9天']..., 答案位置: {'A': 1, 'D': 1}",
+      "impact": "B1型题设计缺陷降低组题效度"
+    },
+    {
+      "issue_id": "ISSUE-0012",
+      "target": "1 items",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1组(6子题): 共用选项：(1)车祸致腹腔内大出血应首先考虑：...: 维度单一(1维)",
+      "current_text": "共用选项: ['心源性休克', '低血容量性休克', '感染性休克']..., 答案位置: {'B': 2, 'A': 1, 'C': 1, 'D': 1, 'E': 1}",
+      "impact": "B1型题设计缺陷降低组题效度"
+    },
+    {
+      "issue_id": "ISSUE-0013",
+      "target": "1 items",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1组(2子题): 共用选项：(1)普鲁卡因属于：...: 维度单一(1维)",
+      "current_text": "共用选项: ['酯类局麻药', '酰胺类局麻药', '吸入麻醉药']..., 答案位置: {'A': 1, 'B': 1}",
+      "impact": "B1型题设计缺陷降低组题效度"
+    },
+    {
+      "issue_id": "ISSUE-0014",
+      "target": "1 items",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1组(2子题): 共用选项：(1)琥珀胆碱属于：...: 维度单一(1维)",
+      "current_text": "共用选项: ['去极化肌松药', '非去极化肌松药', '中枢性肌松药']..., 答案位置: {'A': 1, 'B': 1}",
+      "impact": "B1型题设计缺陷降低组题效度"
+    },
+    {
+      "issue_id": "ISSUE-0015",
+      "target": "1 items",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1组(4子题): 共用选项：(1)砂粒体是以下哪型甲状腺癌的特征性病理表现？...: 维度单一(1维)",
+      "current_text": "共用选项: ['乳头状癌', '滤泡癌', '髓样癌']..., 答案位置: {'A': 1, 'C': 1, 'B': 1, 'D': 1}",
+      "impact": "B1型题设计缺陷降低组题效度"
+    },
+    {
+      "issue_id": "ISSUE-0016",
+      "target": "1 items",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "B1组(2子题): 共用选项：(1)创面出现大水疱、剧痛、红润潮湿，愈合后不留瘢痕：...: 维度单一(1维)",
+      "current_text": "共用选项: ['Ⅰ度烧伤', '浅Ⅱ度烧伤', '深Ⅱ度烧伤']..., 答案位置: {'B': 1, 'D': 1}",
+      "impact": "B1型题设计缺陷降低组题效度"
+    }
+  ],
+  "modification_instructions": [
+    {
+      "patch_id": "PATCH-SRC-001",
+      "target": "batch006_M01_Q010.source",
+      "operation": "add_source_anchor",
+      "current_value": "大纲/待查",
+      "proposed_value": "大纲/教材[待补充页码]",
+      "reason": "source字段缺少教材具体页码，无法追溯",
+      "linked_issue_ids": [
+        "ISSUE-0000"
+      ],
+      "preconditions": [
+        "确认题目涉及知识点对应教材章节页码"
+      ],
+      "post_checks": [
+        "source字段含\"教材P\"格式页码引用"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-SRC-002",
+      "target": "batch006_M04_Q090.source",
+      "operation": "add_source_anchor",
+      "current_value": "大纲/待查",
+      "proposed_value": "大纲/教材[待补充页码]",
+      "reason": "source字段缺少教材具体页码，无法追溯",
+      "linked_issue_ids": [
+        "ISSUE-0000"
+      ],
+      "preconditions": [
+        "确认题目涉及知识点对应教材章节页码"
+      ],
+      "post_checks": [
+        "source字段含\"教材P\"格式页码引用"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-SRC-003",
+      "target": "batch006_M08_Q132.source",
+      "operation": "add_source_anchor",
+      "current_value": "大纲/待查",
+      "proposed_value": "大纲/教材[待补充页码]",
+      "reason": "source字段缺少教材具体页码，无法追溯",
+      "linked_issue_ids": [
+        "ISSUE-0000"
+      ],
+      "preconditions": [
+        "确认题目涉及知识点对应教材章节页码"
+      ],
+      "post_checks": [
+        "source字段含\"教材P\"格式页码引用"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-SRC-004",
+      "target": "batch006_M08_Q133.source",
+      "operation": "add_source_anchor",
+      "current_value": "大纲/待查",
+      "proposed_value": "大纲/教材[待补充页码]",
+      "reason": "source字段缺少教材具体页码，无法追溯",
+      "linked_issue_ids": [
+        "ISSUE-0000"
+      ],
+      "preconditions": [
+        "确认题目涉及知识点对应教材章节页码"
+      ],
+      "post_checks": [
+        "source字段含\"教材P\"格式页码引用"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-SRC-005",
+      "target": "batch006_M08_Q134.source",
+      "operation": "add_source_anchor",
+      "current_value": "大纲/待查",
+      "proposed_value": "大纲/教材[待补充页码]",
+      "reason": "source字段缺少教材具体页码，无法追溯",
+      "linked_issue_ids": [
+        "ISSUE-0000"
+      ],
+      "preconditions": [
+        "确认题目涉及知识点对应教材章节页码"
+      ],
+      "post_checks": [
+        "source字段含\"教材P\"格式页码引用"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-ABS-001",
+      "target": "batch006_M01_Q013.optionE",
+      "operation": "replace_text",
+      "current_value": "仅支链氨基酸分解增加",
+      "proposed_value": "[替换绝对化用语\"仅\"]",
+      "reason": "选项含绝对化用语\"仅\"，降低干扰有效性",
+      "linked_issue_ids": [
+        "ISSUE-0004"
+      ],
+      "preconditions": [
+        "确认替换后不改变选项事实真值"
+      ],
+      "post_checks": [
+        "选项不再含绝对化用语",
+        "选项含义不变"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-ABS-002",
+      "target": "batch006_M05_Q111.optionD",
+      "operation": "replace_text",
+      "current_value": "仅用普萘洛尔→手术",
+      "proposed_value": "[替换绝对化用语\"仅\"]",
+      "reason": "选项含绝对化用语\"仅\"，降低干扰有效性",
+      "linked_issue_ids": [
+        "ISSUE-0004"
+      ],
+      "preconditions": [
+        "确认替换后不改变选项事实真值"
+      ],
+      "post_checks": [
+        "选项不再含绝对化用语",
+        "选项含义不变"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-ABS-003",
+      "target": "batch006_M06_Q115.optionD",
+      "operation": "replace_text",
+      "current_value": "无水疱，仅红斑",
+      "proposed_value": "[替换绝对化用语\"仅\"]",
+      "reason": "选项含绝对化用语\"仅\"，降低干扰有效性",
+      "linked_issue_ids": [
+        "ISSUE-0004"
+      ],
+      "preconditions": [
+        "确认替换后不改变选项事实真值"
+      ],
+      "post_checks": [
+        "选项不再含绝对化用语",
+        "选项含义不变"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-ABS-004",
+      "target": "batch006_M09_Q139.optionA",
+      "operation": "replace_text",
+      "current_value": "患侧肺完全萎陷",
+      "proposed_value": "[替换绝对化用语\"完全\"]",
+      "reason": "选项含绝对化用语\"完全\"，降低干扰有效性",
+      "linked_issue_ids": [
+        "ISSUE-0004"
+      ],
+      "preconditions": [
+        "确认替换后不改变选项事实真值"
+      ],
+      "post_checks": [
+        "选项不再含绝对化用语",
+        "选项含义不变"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-ABS-005",
+      "target": "batch006_M01_Q154.optionD",
+      "operation": "replace_text",
+      "current_value": "广谱抗菌药物覆盖所有可能菌",
+      "proposed_value": "[替换绝对化用语\"所有\"]",
+      "reason": "选项含绝对化用语\"所有\"，降低干扰有效性",
+      "linked_issue_ids": [
+        "ISSUE-0004"
+      ],
+      "preconditions": [
+        "确认替换后不改变选项事实真值"
+      ],
+      "post_checks": [
+        "选项不再含绝对化用语",
+        "选项含义不变"
+      ],
+      "risk_level": "auto_with_review"
+    }
+  ],
+  "escalations": [
+    {
+      "escalation_id": "ESC-0000",
+      "target": "AGENT3_调用指令.md -- Bloom数据表",
+      "reason": "Agent 1调用指令中Bloom报告交换了记忆/理解两层级的数值。指令称:记忆43.5%/理解30.6%，实际数据:记忆30.6%/理解43.5%。该错误导致质检重点方向被误导。",
+      "context": "指令第24行: 记忆实际43.5% / 理解实际30.6%。ALL_questions.json实际: 记忆=92(30.6%), 理解=131(43.5%)",
+      "suggested_action": "① 通知Agent 1修正调用指令中的Bloom统计 ② 若记忆层实际偏低，需增加基础题至30% ③ 本报告按实际数据执行D16检查（应用偏差-5.4%为主要问题）"
+    }
+  ],
+  "per_question_summary": {
+    "total": 301,
+    "pass": 77,
+    "should_fix": 224,
+    "must_escalate": 0
+  },
+  "per_question": [
+    {
+      "question_id": "batch006_M01_Q001",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q002",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_5.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_5.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q003",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_5.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_5.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q004",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q005",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q006",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M01_Q007",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M01_Q008",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_5.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_5.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q009",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q010",
+      "verdict": "should_fix",
+      "issues": [
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D12_no_page"
+    },
+    {
+      "question_id": "batch006_M01_Q011",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q012",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q013",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q014",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.8_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.8_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q015",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q016",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q017",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q018",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q019",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q020",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major",
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major; D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M01_Q021",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q022",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q023",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q024",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.8_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.8_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q025",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q026",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q027",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q028",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_9.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_9.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q029",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q030",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q031",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q032",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q033",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor",
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor; D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M01_Q034",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q035",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q036",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q037",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q038",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q039",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q040",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q041",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q042",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q043",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q044",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q045",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q046",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q047",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M02_Q048",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q049",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q050",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q051",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_5.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_5.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q052",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q053",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q054",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q055",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q056",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_6.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_6.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q057",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M02_Q058",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor",
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor; D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M02_Q059",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q060",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q061",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q062",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q063",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q064",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q065",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_5.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_5.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q066",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor",
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor; D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M02_Q067",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q068",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q069",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q070",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q071",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q072",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M02_Q073",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q074",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q075",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M03_Q076",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M04_Q077",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M04_Q078",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.6_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.6_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q079",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q080",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q081",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.8_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.8_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q082",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q083",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M04_Q084",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M04_Q085",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M04_Q086",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q087",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q088",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q089",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q090",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.2_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.2_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M04_Q091",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q092",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_8.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_8.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q093",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q094",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q095",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q096",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q097",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.6_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.6_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q098",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M05_Q099",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q100",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.4_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.4_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q101",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q102",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q103",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q104",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q105",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q106",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q107",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q108",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M05_Q109",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.4_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.4_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q110",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q111",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_9.2_severity:major",
+        "D18_exclusive:脉率"
+      ],
+      "fix_suggestion": "D17_len_ratio_9.2_severity:major; D18_exclusive:脉率"
+    },
+    {
+      "question_id": "batch006_M05_Q112",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M06_Q113",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M06_Q114",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M06_Q115",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M06_Q116",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M06_Q117",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M06_Q118",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M06_Q119",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M06_Q120",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M06_Q121",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M07_Q122",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q123",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q124",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M07_Q125",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M07_Q126",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M07_Q127",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q128",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor"
+    },
+    {
+      "question_id": "batch006_M07_Q129",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q130",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M07_Q131",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M08_Q132",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M08_Q133",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M08_Q134",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M08_Q135",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M08_Q136",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M08_Q137",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M09_Q138",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_7.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_7.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M09_Q139",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M09_Q140",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M09_Q141",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M09_Q142",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.4_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.4_severity:major"
+    },
+    {
+      "question_id": "batch006_M09_Q143",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M09_Q144",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M09_Q145",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.8_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.8_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M01_Q146",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M01_Q147",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q148",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q149",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q150",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q151",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q152",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q153",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor",
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor; D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M01_Q154",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q155",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q156",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M02_Q157",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M02_Q158",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q159",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M02_Q160",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M02_Q161",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q162",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor"
+    },
+    {
+      "question_id": "batch006_M02_Q163",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q164",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q165",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q166",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q167",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q168",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q169",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q170",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q171",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q172",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q173",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M03_Q174",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q175",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q176",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q177",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q178",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M03_Q179",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q180",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M03_Q181",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.6_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.6_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q182",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q183",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q184",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.6_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.6_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q185",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q186",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor",
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor; D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M04_Q187",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M04_Q188",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M04_Q189",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q190",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.7_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.7_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q191",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q192",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q193",
+      "verdict": "should_fix",
+      "issues": [
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M04_Q194",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q195",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q196",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M05_Q197",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M05_Q198",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q199",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.8_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.8_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q200",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q201",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q202",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_5.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_5.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M06_Q203",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_5.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_5.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M06_Q204",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.7_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.7_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q205",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_6.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_6.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q206",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q207",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M07_Q208",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M08_Q209",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M08_Q210",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M08_Q211",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M09_Q212",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.5_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.5_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M09_Q213",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.2_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.2_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M09_Q214",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.1_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.1_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q215",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.1_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.1_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q216",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q217",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q218",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_7.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_7.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q219",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.7_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.7_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q220",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q221",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q222",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q223",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q224",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q225",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q226",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q227",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q228",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M06_Q229",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M06_Q230",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M06_Q231",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M07_Q232",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q233",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M06_Q234",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M06_Q235",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M06_Q236",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major",
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major; D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M03_Q237",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.7_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.7_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q238",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.7_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.7_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q239",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q240",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q241",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q242",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q243",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q244",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q245",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q246",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M02_Q247",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q248",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.2_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.2_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q249",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M03_Q250",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.4_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.4_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q251",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q252",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor",
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor; D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M05_Q253",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M05_Q254",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M06_Q255",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.3_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.3_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q256",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M07_Q257",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M09_Q258",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.1_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.1_severity:major"
+    },
+    {
+      "question_id": "batch006_M09_Q259",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M09_Q260",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M03_Q261",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.4_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.4_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q262",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.6_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.6_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q263",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M08_Q264",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q265",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M03_Q266",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q267",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M03_Q268",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_5.7_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_5.7_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M03_Q269",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q270",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M02_Q271",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M03_Q272",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.6_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.6_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q273",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.1_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.1_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q274",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M07_Q275",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M09_Q276",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.4_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.4_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M05_Q277",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q278",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M06_Q279",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M01_Q280",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M02_Q281",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.7_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.7_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q282",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M09_Q283",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.7_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.7_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q284",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M09_Q285",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.7_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.7_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M08_Q286",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.2_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.2_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M02_Q287",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_5.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_5.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M07_Q288",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M01_Q289",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.0_severity:minor"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.0_severity:minor"
+    },
+    {
+      "question_id": "batch006_M04_Q290",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M09_Q291",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M09_Q292",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M05_Q293",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major"
+    },
+    {
+      "question_id": "batch006_M01_Q294",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_4.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_4.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M02_Q295",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M03_Q296",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M05_Q297",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_6.5_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_6.5_severity:major"
+    },
+    {
+      "question_id": "batch006_M04_Q298",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_1.8_severity:minor",
+        "D7_numeric_order"
+      ],
+      "fix_suggestion": "D17_len_ratio_1.8_severity:minor; D7_numeric_order"
+    },
+    {
+      "question_id": "batch006_M07_Q299",
+      "verdict": "pass",
+      "issues": [],
+      "fix_suggestion": ""
+    },
+    {
+      "question_id": "batch006_M08_Q300",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_3.0_severity:major",
+        "D12_no_page"
+      ],
+      "fix_suggestion": "D17_len_ratio_3.0_severity:major; D12_no_page"
+    },
+    {
+      "question_id": "batch006_M09_Q301",
+      "verdict": "should_fix",
+      "issues": [
+        "D17_len_ratio_2.8_severity:major"
+      ],
+      "fix_suggestion": "D17_len_ratio_2.8_severity:major"
+    }
+  ],
+  "hcs_checks": {
+    "HC6_interference_sample": {
+      "checked": 31,
+      "failed": 0,
+      "details": [
+        "抽查未发现>5倍差距的极端干扰项"
+      ]
+    },
+    "HC11_source_pages": {
+      "missing_pages": 27,
+      "severity": "major",
+      "details": [
+        {
+          "qid": "batch006_M01_Q010",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M04_Q090",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q132",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q133",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q134",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q135",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q136",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q137",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M09_Q143",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M09_Q145",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M02_Q157",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M03_Q180",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q209",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q210",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q211",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M09_Q212",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M09_Q213",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M09_Q259",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M09_Q260",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M03_Q267",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M03_Q268",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M03_Q270",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M09_Q276",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M09_Q285",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q286",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M09_Q292",
+          "source": "大纲/待查"
+        },
+        {
+          "qid": "batch006_M08_Q300",
+          "source": "大纲/待查"
+        }
+      ]
+    }
+  },
+  "d17_summary": {
+    "length_ratio>1.5": 212,
+    "length_ratio>2.0": 126,
+    "absolute_words": 14,
+    "recommendation": "Agent 2需强化HC-7(NBME)选项同质性约束，将长度比控制在≤1.5"
+  },
+  "d20_b1_summary": {
+    "total_b1": 31,
+    "groups": 14,
+    "flagged_groups": 9,
+    "details": [
+      {
+        "group": "B1组(2子题): 共用选项：(1)金黄色葡萄球菌感染 (2)最可能的临床表现是：...",
+        "flags": [
+          "维度单一(1维)"
+        ]
+      },
+      {
+        "group": "B1组(2子题): 共用选项：(1)杀灭一切微生物包括细菌芽孢的方法称为：...",
+        "flags": [
+          "选项笼统(5项<=2字)",
+          "维度单一(1维)"
+        ]
+      },
+      {
+        "group": "B1组(4子题): 共用选项：(1)甲状腺腺叶切除术属于：...",
+        "flags": [
+          "维度单一(1维)"
+        ]
+      },
+      {
+        "group": "B1组(2子题): 共用选项：(1)头面颈部切口拆线时间为术后：...",
+        "flags": [
+          "维度单一(1维)"
+        ]
+      },
+      {
+        "group": "B1组(6子题): 共用选项：(1)车祸致腹腔内大出血应首先考虑：...",
+        "flags": [
+          "维度单一(1维)"
+        ]
+      },
+      {
+        "group": "B1组(2子题): 共用选项：(1)普鲁卡因属于：...",
+        "flags": [
+          "维度单一(1维)"
+        ]
+      },
+      {
+        "group": "B1组(2子题): 共用选项：(1)琥珀胆碱属于：...",
+        "flags": [
+          "维度单一(1维)"
+        ]
+      },
+      {
+        "group": "B1组(4子题): 共用选项：(1)砂粒体是以下哪型甲状腺癌的特征性病理表现？...",
+        "flags": [
+          "维度单一(1维)"
+        ]
+      },
+      {
+        "group": "B1组(2子题): 共用选项：(1)创面出现大水疱、剧痛、红润潮湿，愈合后不留瘢痕：...",
+        "flags": [
+          "维度单一(1维)"
+        ]
+      }
+    ]
+  },
+  "verification_notes": {
+    "agent1_bloom_error": "Agent 1调用指令Bloom数据错误: 指令中记忆=43.5%/理解=30.6%为互换值。实际: 记忆=30.6%/理解=43.5%。已升级为ESC-0000。",
+    "d16_actual_focus": "应用层级(19.6%)低于目标(-5.4%)为D16主问题，非调用指令声称的记忆超标。",
+    "difficulty_skew": "难度分布高度偏基础(98%)，缺乏中高难度题目区分度。"
+  }
+}

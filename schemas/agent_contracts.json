@@ -1,0 +1,370 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agent Contract Schemas — MedAgentWork 5-Agent Pipeline",
+  "version": "1.0.0",
+  "agent2_output": {
+    "$id": "schemas/agent2_output",
+    "type": "array",
+    "minItems": 1,
+    "items": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[\\w-]+\\d{3}[\\w_-]+-\\d{3}$"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "A1",
+            "A2",
+            "A3",
+            "A4",
+            "B1",
+            "X"
+          ]
+        },
+        "stem": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 500
+        },
+        "options": {
+          "type": "object",
+          "minProperties": 4,
+          "maxProperties": 6,
+          "patternProperties": {
+            "^[A-E]$": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 50
+            }
+          }
+        },
+        "answer": {
+          "type": "string",
+          "pattern": "^[A-E]( *, *[A-E])*$"
+        },
+        "analysis": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 800
+        },
+        "module": {
+          "type": "string"
+        },
+        "topic": {
+          "type": "string"
+        },
+        "bloom": {
+          "type": "string",
+          "enum": [
+            "记忆",
+            "理解",
+            "应用",
+            "分析"
+          ]
+        },
+        "difficulty": {
+          "enum": [
+            "基础",
+            "中等",
+            "困难"
+          ],
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "number"
+            }
+          ]
+        },
+        "source": {
+          "type": "string",
+          "pattern": "^(大纲|教材|考纲).*P?\\d+.*$"
+        },
+        "b1_group": {
+          "type": "string"
+        },
+        "shared_options": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "type"
+      ]
+    }
+  },
+  "agent3_output": {
+    "$id": "schemas/agent3_output",
+    "type": "object",
+    "required": [],
+    "properties": {
+      "gate_decision": {
+        "type": "string",
+        "enum": [
+          "PASS",
+          "PASS_WITH_FIXES",
+          "BLOCKED"
+        ]
+      },
+      "overall_score": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "dimensions": {
+        "type": "object",
+        "properties": {
+          "D1": {
+            "type": "number"
+          },
+          "D2": {
+            "type": "number"
+          },
+          "D4": {
+            "type": "number"
+          },
+          "D5": {
+            "type": "number"
+          },
+          "D6": {
+            "type": "number"
+          },
+          "D7": {
+            "type": "number"
+          },
+          "D10": {
+            "type": "number"
+          },
+          "D11": {
+            "type": "number"
+          },
+          "D12": {
+            "type": "number"
+          },
+          "D13": {
+            "type": "number"
+          },
+          "D14": {
+            "type": "number"
+          },
+          "D15": {
+            "type": "number"
+          },
+          "D16": {
+            "type": "number"
+          },
+          "D17": {
+            "type": "number"
+          },
+          "D18": {
+            "type": "number"
+          },
+          "D19": {
+            "type": "number"
+          },
+          "D20": {
+            "type": "number"
+          }
+        }
+      },
+      "issues": {
+        "type": "object",
+        "properties": {
+          "critical": {
+            "type": "array"
+          },
+          "major": {
+            "type": "array"
+          },
+          "minor": {
+            "type": "array"
+          }
+        }
+      },
+      "patches": {
+        "type": "object",
+        "properties": {
+          "safe_auto": {
+            "type": "array"
+          },
+          "auto_with_review": {
+            "type": "array"
+          },
+          "must_escalate": {
+            "type": "array"
+          }
+        }
+      },
+      "bloom_distribution": {
+        "type": "object",
+        "properties": {
+          "记忆": {
+            "type": "number"
+          },
+          "理解": {
+            "type": "number"
+          },
+          "应用": {
+            "type": "number"
+          },
+          "分析": {
+            "type": "number"
+          }
+        }
+      },
+      "answer_distribution": {
+        "type": "object"
+      }
+    }
+  },
+  "agent4_output": {
+    "$id": "schemas/agent4_output",
+    "type": "object",
+    "required": [],
+    "properties": {
+      "patches": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "patch_id",
+            "type",
+            "source_file_synced"
+          ],
+          "properties": {
+            "patch_id": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "safe_auto",
+                "auto_with_review",
+                "escalation"
+              ]
+            },
+            "question_id": {
+              "type": "string"
+            },
+            "field": {
+              "type": "string"
+            },
+            "old_value": {
+              "type": "string"
+            },
+            "new_value": {
+              "type": "string"
+            },
+            "reason": {
+              "type": "string"
+            },
+            "source_file_synced": {
+              "type": "boolean"
+            },
+            "source_file": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "source_file_synced": {
+        "type": "boolean"
+      },
+      "polarity_violations": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "rollbacks": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "escalations": {
+        "type": "array"
+      },
+      "hc6_findings": {
+        "type": "integer"
+      },
+      "hc7_findings": {
+        "type": "integer"
+      }
+    }
+  },
+  "agent5_output": {
+    "$id": "schemas/agent5_output",
+    "type": "object",
+    "required": [
+      "hc9_terminology_appendix",
+      "hc10_page_index",
+      "hc11_source_mapping"
+    ],
+    "properties": {
+      "hc9_terminology_appendix": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL"
+            ]
+          },
+          "entry_count": {
+            "type": "integer",
+            "minimum": 20
+          },
+          "categories": {
+            "type": "array",
+            "minItems": 3
+          }
+        }
+      },
+      "hc10_page_index": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL"
+            ]
+          },
+          "unique_pages": {
+            "type": "integer",
+            "minimum": 10
+          },
+          "placeholder_detected": {
+            "type": "boolean"
+          }
+        }
+      },
+      "hc11_source_mapping": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "enum": [
+              "PASS",
+              "FAIL"
+            ]
+          },
+          "coverage_pct": {
+            "type": "number",
+            "minimum": 90
+          },
+          "missing_count": {
+            "type": "integer"
+          }
+        }
+      },
+      "visual_quality": {
+        "type": "object",
+        "properties": {
+          "v1_v8_all_pass": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}

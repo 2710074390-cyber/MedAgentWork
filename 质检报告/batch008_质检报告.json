@@ -1,0 +1,494 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20260621-batch008",
+    "batch_source": "Agent2 batch008 中医心理学",
+    "total_questions": 207,
+    "total_materials": 1,
+    "gate_decision": "PASS_WITH_FIXES",
+    "overall_score": 7.5,
+    "dimension_scores": {
+      "D1_术语规范性": {
+        "pass": 207,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D2_语法拼写": {
+        "pass": 207,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D3_结构完整性": {
+        "pass": 207,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D4_格式一致性": {
+        "pass": 207,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D5_事实准确性": {
+        "pass": 207,
+        "fail": 0,
+        "score": 9.5,
+        "note": "方药/穴位/五音/五行/七情对应全部核验通过"
+      },
+      "D6_题型极性自洽": {
+        "pass": 4,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D7_选项互斥性": {
+        "pass": 207,
+        "fail": 0,
+        "score": 9.0
+      },
+      "D8_答案唯一性": {
+        "pass": 190,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D9_答案正确性": {
+        "pass": 17,
+        "fail": 0,
+        "score": 9.5,
+        "note": "X型答案格式正确，B1解析过短5题"
+      },
+      "D10_认知层级校准": {
+        "pass": 207,
+        "fail": 0,
+        "score": 8.5
+      },
+      "D11_干扰项质量": {
+        "pass": 166,
+        "fail": 41,
+        "score": 7.0,
+        "note": "41处绝对化用语干扰项+71处过短选项"
+      },
+      "D12_考点溯源": {
+        "pass": 207,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D13_跨题一致性": {
+        "pass": 207,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D14_跨章节一致性": {
+        "pass": 207,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D15_外来素材验证": {
+        "pass": 0,
+        "fail": 0,
+        "score": "N/A",
+        "note": "本批次无外来素材，跳过"
+      },
+      "D16_认知层级覆盖率": {
+        "pass": 0,
+        "fail": 1,
+        "score": 6.5,
+        "note": "记忆40.1%超标10.1%"
+      },
+      "D17_选项同质性": {
+        "pass": 149,
+        "fail": 58,
+        "score": 5.5,
+        "note": "58题R2>2.0 + 23题语法不一致"
+      },
+      "D18_词重复线索": {
+        "pass": 207,
+        "fail": 0,
+        "score": 9.5
+      },
+      "D19_收敛策略": {
+        "pass": 202,
+        "fail": 5,
+        "score": 8.5
+      },
+      "D20_B1型题专项": {
+        "pass": 9,
+        "fail": 3,
+        "score": 6.0,
+        "note": "组007-009选项不共享，线索泄露"
+      }
+    },
+    "summary": {
+      "total_issues": 11,
+      "critical": 1,
+      "major": 3,
+      "minor": 7,
+      "safe_auto": 3,
+      "auto_with_review": 2,
+      "must_escalate": 1
+    }
+  },
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "target": "psy-B1-007/008/009.options",
+      "dimension": "D20",
+      "severity": "critical",
+      "description": "B1组007-009选项不真正共享：正确答案含\"——克X\"注释，干扰项无此注释，形成视觉线索泄露",
+      "current_text": "B1-007仅B有\"——克思\"; B1-008仅D有\"——克喜\"; B1-009 D/E有\"——克X\"",
+      "impact": "考生可通过识别\"——克X\"注释直接锁定正确答案，严重损害考试效度"
+    },
+    {
+      "issue_id": "ISSUE-002",
+      "target": "GLOBAL.bloom_distribution",
+      "dimension": "D16",
+      "severity": "major",
+      "description": "记忆层占比40.1%(目标30%)，超标10.1%。理解层33.3%(目标40%)偏低6.7%",
+      "current_text": "记忆83题/理解69题/应用46题/分析9题",
+      "impact": "题库整体认知层级偏记忆，可能影响区分度。建议将8-10道纯记忆A1题升级为理解或应用层"
+    },
+    {
+      "issue_id": "ISSUE-003",
+      "target": "MULTI(58题).options",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "58题选项长度比>2.0：人名/术语短选项型18题，非人名型40题",
+      "current_text": "最严重: psy-A3-006(5.7x), psy-A3-008(5.7x), psy-A1-093(5.2x), psy-A1-058(4.0x)",
+      "impact": "选项长度差异过大可给考生提供答题线索(长选项倾向为正确答案)"
+    },
+    {
+      "issue_id": "ISSUE-004",
+      "target": "MULTI(23题).options",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "23题选项中部分含\"——\"分隔符或括号注释，其他选项无此结构",
+      "current_text": "涉及psy-A1-002/003/004, psy-A3-002, psy-A1-046等",
+      "impact": "语法结构不一致可辅助考生排除答案"
+    },
+    {
+      "issue_id": "ISSUE-005",
+      "target": "MULTI(41处).distractors",
+      "dimension": "D11",
+      "severity": "minor",
+      "description": "41处干扰项含绝对化用语(完全/绝对/从不/总是)，作为弱干扰项存在",
+      "current_text": "涉及psy-A1-007/008/025/026/027/029/031等",
+      "impact": "绝对化用语使干扰项过于明显，降低题目区分度。但作为干扰项策略可接受"
+    },
+    {
+      "issue_id": "ISSUE-006",
+      "target": "psy-B1-005/006/010/011/012.explanation",
+      "dimension": "D9",
+      "severity": "minor",
+      "description": "5道B1题解析过短(10-13字)，仅列出对应关系未解释原因",
+      "current_text": "如psy-B1-006: \"羽(yǔ)→肾→水。\"",
+      "impact": "解析完整度不足，不利于考生理解"
+    },
+    {
+      "issue_id": "ISSUE-007",
+      "target": "psy-A2-017/A1-083/A2-033/A1-092/A1-094.options",
+      "dimension": "D19",
+      "severity": "minor",
+      "description": "5题正确选项术语共享计数显著高于干扰项均值",
+      "current_text": "psy-A1-092: 正确选项共享计数=3, 干扰项均值=1.0",
+      "impact": "考生可通过术语重叠策略猜测答案"
+    },
+    {
+      "issue_id": "ISSUE-008",
+      "target": "psy-A1-060.optionE",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "选项\"情志之间的克制关系是绝对的\"以\"的\"结尾(13字)",
+      "current_text": "情志之间的克制关系是绝对的",
+      "impact": "语义完整，非截断。但结尾的\"的\"可能被误判"
+    },
+    {
+      "issue_id": "ISSUE-009",
+      "target": "MULTI(10题).stem",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "10道反选/否定题的否定词未加粗(如\"不包括\"\"错误的\")",
+      "current_text": "psy-A1-002/006/030/043/045/051/065/075/109/120",
+      "impact": "JSON格式下无法实现Markdown加粗，标记但不阻塞"
+    },
+    {
+      "issue_id": "ISSUE-010",
+      "target": "psy-A1-110.options",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "数值选项未按升序/降序排列: [14.0, 2.0, 0.0, 30.0, 50.0]",
+      "current_text": "[14.0, 2.0, 0.0, 30.0, 50.0]",
+      "impact": "数值选项应排序以避免提供位置线索"
+    },
+    {
+      "issue_id": "ISSUE-011",
+      "target": "psy-A1-113.options",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "十宣穴0.1寸的干扰项区分度不足：2.0/1.0/3.0寸差距过大(10-30x)",
+      "current_text": "正确值0.1 vs 干扰值2.0(20x)/1.0(10x)/3.0(30x)",
+      "impact": "干扰值与正确值差距>5倍，plausibility<0.3"
+    }
+  ],
+  "modification_instructions": [
+    {
+      "patch_id": "PATCH-B1-001",
+      "target": "psy-B1-007/008/009.options",
+      "operation": "replace_text",
+      "current_value": "各题选项不统一，正确答案含\"——克X\"注释",
+      "proposed_value": "统一5个选项均含完整注释：A:喜（火克金）——克忧, B:怒（木克土）——克思, C:悲（金克木）——克怒, D:恐（水克火）——克喜, E:思（土克水）——克恐",
+      "reason": "消除选项间视觉线索泄露，使所有选项格式统一",
+      "linked_issue_ids": [
+        "ISSUE-001"
+      ],
+      "preconditions": [
+        "修改后各选项真值极性不得改变",
+        "三题使用完全相同的选项文本"
+      ],
+      "post_checks": [
+        "① 三题选项文本完全一致 ② 所有选项格式统一 ③ 无法通过选项格式区分答案 ④ 答案标签映射正确"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-BLOOM-001",
+      "target": "GLOBAL.bloom_distribution",
+      "operation": "escalate_to_human",
+      "current_value": "记忆40.1%超标10.1%",
+      "proposed_value": "建议将8-10道纯记忆A1题升级为理解/应用层",
+      "reason": "题库认知层级偏高记忆",
+      "linked_issue_ids": [
+        "ISSUE-002"
+      ],
+      "preconditions": [
+        "选择升级的题目应为理解层附近的内容"
+      ],
+      "post_checks": [
+        "① 调整后记忆<=30% ② 理解>=35% ③ 升级后的题目bloom字段已更新"
+      ],
+      "risk_level": "must_escalate"
+    },
+    {
+      "patch_id": "PATCH-R2-001",
+      "target": "MULTI(40题非人名型).options",
+      "operation": "replace_text",
+      "current_value": "40题非人名型选项长度比>2.0",
+      "proposed_value": "扩充过短选项或缩短过长选项，使比值<=2.0",
+      "reason": "消除选项长度线索",
+      "linked_issue_ids": [
+        "ISSUE-003"
+      ],
+      "preconditions": [
+        "人名型短选项(2-3字)可保留，仅修复非人名型",
+        "修改不改变选项事实内容"
+      ],
+      "post_checks": [
+        "① 修复后所有受影响题R2<=2.0 ② 选项事实极性不变 ③ 答案键无需调整"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-EXPL-001",
+      "target": "psy-B1-005/006/010/011/012.explanation",
+      "operation": "replace_text",
+      "current_value": "解析过短(10-13字)",
+      "proposed_value": "扩充至30+字，加入对应关系解释和排除项说明",
+      "reason": "提高解析完整度",
+      "linked_issue_ids": [
+        "ISSUE-006"
+      ],
+      "preconditions": [
+        "不改变答案"
+      ],
+      "post_checks": [
+        "解析>=30字且包含对应关系说明"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-ORD-001",
+      "target": "psy-A1-110.options",
+      "operation": "fix_format",
+      "current_value": "[14.0, 2.0, 0.0, 30.0, 50.0]",
+      "proposed_value": "按升序排列并重新映射ABCDE",
+      "reason": "数值选项应排序",
+      "linked_issue_ids": [
+        "ISSUE-010"
+      ],
+      "preconditions": [
+        "答案标签需同步更新"
+      ],
+      "post_checks": [
+        "① 数值升序排列 ② 答案标签正确映射 ③ 解析同步更新"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-R6-001",
+      "target": "psy-A1-113.options",
+      "operation": "replace_text",
+      "current_value": "十宣穴0.1寸干扰项2.0/1.0/3.0寸(差距10-30x)",
+      "proposed_value": "调整为0.3/0.5/0.8寸等更接近的干扰值(差距3-8x)",
+      "reason": "提高干扰项plausibility至>=0.3",
+      "linked_issue_ids": [
+        "ISSUE-011"
+      ],
+      "preconditions": [
+        "干扰值仍需为穴位定位中可能出现的数值"
+      ],
+      "post_checks": [
+        "① 所有干扰值与正确值差距<=5x ② plausibility>=0.3"
+      ],
+      "risk_level": "auto_with_review"
+    }
+  ],
+  "escalations": [
+    {
+      "escalation_id": "ESC-001",
+      "target": "GLOBAL.bloom_distribution",
+      "reason": "记忆层占比40.1%超标10.1%，需人工选择8-10道适合升级的题目",
+      "context": "当前分布：记忆83/理解69/应用46/分析9。目标：记忆<=30%/理解>=35%/应用>=25%/分析<=10%",
+      "suggested_action": "从记忆层A1题中选择知识点较复杂(如五脏五志、郁证分型等)的题目，将bloom字段从\"记忆\"改为\"理解\"，并适当修改题干增加理解性问法"
+    }
+  ],
+  "detailed_findings": {
+    "D5_fact_check": {
+      "formula_syndrome_verified": 14,
+      "acupoint_questions_verified": 15,
+      "five_tone_verified": 3,
+      "emotion_qi_verified": "ALL",
+      "random_sample_20": "ALL PASS",
+      "note": "方药-证型对应、穴位定位、五音五脏、七情气机对应均核验通过"
+    },
+    "D16_bloom_detail": {
+      "记忆": {
+        "count": 83,
+        "pct": 40.1,
+        "target": 30,
+        "diff": 10.1,
+        "status": "should_fix"
+      },
+      "理解": {
+        "count": 69,
+        "pct": 33.3,
+        "target": 40,
+        "diff": -6.7,
+        "status": "ok"
+      },
+      "应用": {
+        "count": 46,
+        "pct": 22.2,
+        "target": 25,
+        "diff": -2.8,
+        "status": "ok"
+      },
+      "分析": {
+        "count": 9,
+        "pct": 4.3,
+        "target": 5,
+        "diff": -0.7,
+        "status": "ok"
+      }
+    },
+    "D17_option_length_detail": {
+      "R2_fail_count": 58,
+      "R2_warn_count": 49,
+      "R2_pass_count": 100,
+      "name_type_questions": 18,
+      "non_name_type_questions": 40,
+      "top5_worst": [
+        {
+          "id": "psy-A3-006",
+          "ratio": 5.7
+        },
+        {
+          "id": "psy-A3-008",
+          "ratio": 5.7
+        },
+        {
+          "id": "psy-A1-093",
+          "ratio": 5.2
+        },
+        {
+          "id": "psy-A1-108",
+          "ratio": 4.6
+        },
+        {
+          "id": "psy-A1-058",
+          "ratio": 4.0
+        }
+      ]
+    },
+    "D20_b1_detail": {
+      "total_b1": 12,
+      "groups": 4,
+      "group_001_003": {
+        "status": "PASS",
+        "questions": [
+          "psy-B1-001",
+          "psy-B1-002",
+          "psy-B1-003"
+        ],
+        "shared_options": true,
+        "answer_distribution": "A/E/D",
+        "topic": "五脏五神"
+      },
+      "group_004_006": {
+        "status": "PASS",
+        "questions": [
+          "psy-B1-004",
+          "psy-B1-005",
+          "psy-B1-006"
+        ],
+        "shared_options": true,
+        "answer_distribution": "B/D/E",
+        "topic": "五音五脏"
+      },
+      "group_007_009": {
+        "status": "FAIL",
+        "questions": [
+          "psy-B1-007",
+          "psy-B1-008",
+          "psy-B1-009"
+        ],
+        "shared_options": false,
+        "answer_distribution": "B/D/E",
+        "topic": "情志相胜",
+        "issue": "正确答案含\"——克X\"注释而干扰项无此注释"
+      },
+      "group_010_012": {
+        "status": "PASS",
+        "questions": [
+          "psy-B1-010",
+          "psy-B1-011",
+          "psy-B1-012"
+        ],
+        "shared_options": true,
+        "answer_distribution": "A/C/B",
+        "topic": "不寐证型方药"
+      }
+    },
+    "exam_coverage": {
+      "all_14_core_topics_covered": true,
+      "topics": [
+        "五脏五神",
+        "五脏五志",
+        "五音五脏",
+        "七情气机",
+        "情志相胜",
+        "形神合一",
+        "心主神明",
+        "郁证辨证",
+        "不寐辨证",
+        "意疗六法",
+        "养生六原则",
+        "养生六方法",
+        "耳穴",
+        "整体恒动观"
+      ]
+    },
+    "HC6_sampling": {
+      "triggered": true,
+      "scope": "Agent2自产 >=10%",
+      "sampled_questions": 23,
+      "distractor_issues_found": 3,
+      "note": "psy-A1-113十宣穴数值区分度不足，已标记ISSUE-011"
+    }
+  }
+}

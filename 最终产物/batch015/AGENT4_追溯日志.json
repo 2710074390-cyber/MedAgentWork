@@ -1,0 +1,522 @@
+{
+  "execution_metadata": {
+    "execution_id": "MODEXEC-20260625-batch015",
+    "qc_report_id": "QC-20260625-batch015",
+    "execution_time": "2026-06-25T20:38:45.480909",
+    "total_patches_received": 13,
+    "safe_auto_executed": 9,
+    "auto_with_review_executed": 4,
+    "must_escalate_skipped": 0,
+    "rolled_back": 0,
+    "polarity_violations": 0
+  },
+  "patch_log": [
+    {
+      "patch_id": "PATCH-M03-001",
+      "status": "EXECUTED",
+      "target": "Q_M03_Q015.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "[('A', '3-5分'), ('B', '6-8分'), ('C', '9-12分'), ('E', '13-15分'), ('D', '9-15分')]",
+        "after": "[('A', '3-5分'), ('B', '6-8分'), ('C', '9-12分'), ('D', '9-15分'), ('E', '13-15分')]"
+      },
+      "precondition_results": [
+        {
+          "condition": "answer=C points to 9-12分",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "options order A,B,C,D,E",
+          "passed": true
+        },
+        {
+          "check": "answer=C still correct",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M09-001",
+      "status": "EXECUTED",
+      "target": "Q_M09_Q023.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "[('A', '1分钟和3分钟'), ('B', '1分钟和5分钟'), ('D', '3分钟和5分钟'), ('E', '5分钟和10分钟'), ('C', '1分钟和10分钟')]",
+        "after": "[('A', '1分钟和3分钟'), ('B', '1分钟和5分钟'), ('C', '1分钟和10分钟'), ('D', '3分钟和5分钟'), ('E', '5分钟和10分钟')]"
+      },
+      "precondition_results": [
+        {
+          "condition": "answer=B points to 1分钟和5分钟",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "options order A,B,C,D,E",
+          "passed": true
+        },
+        {
+          "check": "answer=B still correct",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M06-001",
+      "status": "EXECUTED",
+      "target": "Q_M06_Q004.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "[('A', '早期（0至6小时）'), ('D', '水肿期（6至48小时）'), ('E', '感染期（48小时后）'), ('B', '恢复期（1周后）'), ('C', '后遗症期（2周后）')]",
+        "after": "[('A', '早期（0至6小时）'), ('B', '水肿期（6至48小时）'), ('C', '感染期（48小时后）'), ('D', '恢复期（1周后）'), ('E', '后遗症期（2周后）')]"
+      },
+      "precondition_results": [
+        {
+          "condition": "answer=B should point to 水肿期",
+          "passed": true
+        },
+        {
+          "condition": "explanation mentions 水肿期",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "options order A,B,C,D,E",
+          "passed": true
+        },
+        {
+          "check": "answer=B points to 水肿期",
+          "passed": true
+        },
+        {
+          "check": "explanation matches option",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M09-002",
+      "status": "EXECUTED",
+      "target": "Q_M09_Q004.optionB",
+      "operation": "replace_text",
+      "diff": {
+        "before": "PaO2<60，PaCO2正常或降低",
+        "after": "PaO2<60mmHg，PaCO2正常或降低"
+      },
+      "precondition_results": [
+        {
+          "condition": "value 60 is mmHg",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "optionB has mmHg",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M09-003",
+      "status": "EXECUTED",
+      "target": "Q_M09_Q004.optionD",
+      "operation": "replace_text",
+      "diff": {
+        "before": "PaO2<80，PaCO2>40mmHg",
+        "after": "PaO2<80mmHg，PaCO2>40mmHg"
+      },
+      "precondition_results": [
+        {
+          "condition": "value 80 is mmHg",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "optionD both values have units",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M01-002",
+      "status": "EXECUTED",
+      "target": "Q_batch015_M01_Q001.stem",
+      "operation": "fix_format",
+      "diff": {
+        "before": "下列哪项不是浅部组织化脓性感染常见的诱因？",
+        "after": "下列哪项**不是**浅部组织化脓性感染常见的诱因？"
+      },
+      "precondition_results": [],
+      "post_check_results": [
+        {
+          "check": "negation bolded",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M04-001",
+      "status": "EXECUTED",
+      "target": "Q_batch015_M04_Q001.stem",
+      "operation": "fix_format",
+      "diff": {
+        "before": "以下哪项不是气管切开的适应证？",
+        "after": "以下哪项**不是**气管切开的适应证？"
+      },
+      "precondition_results": [],
+      "post_check_results": [
+        {
+          "check": "negation bolded",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M09-004",
+      "status": "EXECUTED",
+      "target": "Q_batch015_M09_Q003.stem",
+      "operation": "fix_format",
+      "diff": {
+        "before": "COPD患者典型的胸部体征不包括以下哪项？",
+        "after": "COPD患者典型的胸部体征**不包括**以下哪项？"
+      },
+      "precondition_results": [],
+      "post_check_results": [
+        {
+          "check": "negation bolded",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M09-005",
+      "status": "EXECUTED",
+      "target": "Q_batch015_M09_Q013.stem",
+      "operation": "fix_format",
+      "diff": {
+        "before": "以下哪项不是窦性心动过速的常见病因？",
+        "after": "以下哪项**不是**窦性心动过速的常见病因？"
+      },
+      "precondition_results": [],
+      "post_check_results": [
+        {
+          "check": "negation bolded",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M09-006",
+      "status": "EXECUTED",
+      "target": "Q_batch015_M09_Q016.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{'A': '高度敏感型', 'B': '中度敏感', 'C': '低度敏感', 'D': '化疗不敏感类型', 'E': '未确定类型'}",
+        "after": "{'A': '高度敏感可能治愈', 'B': '中度敏感', 'C': '低度敏感', 'D': '不敏感', 'E': '未确定'}"
+      },
+      "precondition_results": [
+        {
+          "condition": "b1_shared_options is canonical",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "options match b1_shared_options",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer=A still valid"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M09-006",
+      "status": "EXECUTED",
+      "target": "Q_batch015_M09_Q017.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{'A': '高度敏感型', 'B': '中度敏感', 'C': '低度敏感', 'D': '化疗不敏感类型', 'E': '未确定类型'}",
+        "after": "{'A': '高度敏感可能治愈', 'B': '中度敏感', 'C': '低度敏感', 'D': '不敏感', 'E': '未确定'}"
+      },
+      "precondition_results": [
+        {
+          "condition": "b1_shared_options is canonical",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "options match b1_shared_options",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer=B still valid"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-M09-006",
+      "status": "EXECUTED",
+      "target": "Q_batch015_M09_Q018.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{'A': '高度敏感型', 'B': '中度敏感', 'C': '低度敏感', 'D': '化疗不敏感类型', 'E': '未确定类型'}",
+        "after": "{'A': '高度敏感可能治愈', 'B': '中度敏感', 'C': '低度敏感', 'D': '不敏感', 'E': '未确定'}"
+      },
+      "precondition_results": [
+        {
+          "condition": "b1_shared_options is canonical",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "options match b1_shared_options",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer=C still valid"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-GLOBAL-001",
+      "status": "EXECUTED",
+      "target": "全局-答案分布",
+      "operation": "redistribute_answers",
+      "diff": {
+        "before": "A=15%, B=48.8%, C=18.8%, D=12.5%, E=5%",
+        "after": "A=20.0%, B=22.5%, C=22.5%, D=20.0%, E=15.0%"
+      },
+      "precondition_results": [
+        {
+          "condition": "每选项20%±5%",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "A2不再全B",
+          "passed": true
+        },
+        {
+          "check": "80题每选项12-20",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-GLOBAL-002",
+      "status": "EXECUTED",
+      "target": "全局-Bloom分布",
+      "operation": "reclassify_bloom",
+      "diff": {
+        "before": "记忆50.6%/理解32.6%/应用16.9%/分析0%",
+        "after": "记忆32.6%/理解44.9%/应用16.9%/分析5.6%"
+      },
+      "precondition_results": [
+        {
+          "condition": "升级题目需综合判断",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "分析层>=5%",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-GLOBAL-003",
+      "status": "EXECUTED",
+      "target": "全局-待查来源",
+      "operation": "add_source_anchor",
+      "diff": {
+        "before": "17题待查",
+        "after": "1题已补充, 16题保留待查"
+      },
+      "precondition_results": [
+        {
+          "condition": "能确定的补充，不确定的保留",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "部分题目已补充教材页码",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "N/A"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "N/A"
+      },
+      "failure_reason": null
+    }
+  ],
+  "escalations_for_human": [],
+  "hc6_independent_findings": [],
+  "hc7_consistency_scan": {
+    "results": [],
+    "issues_found": 0
+  },
+  "source_file_synced": true,
+  "final_gate": "PASS"
+}

@@ -1,0 +1,41 @@
+{
+  "subject": "贺银成真题",
+  "subject_code": "heyincheng-zhenti",
+  "version": "1.0",
+  "description": "历年真题+解析，每题独立chunk。适用于 heyincheng-zt1/2",
+
+  "chunk_strategy": {
+    "chunk_size": 800,
+    "overlap": 150,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(题干|选项|答案|解析|考点)",
+        "description": "每道完整题（题干+选项+答案+解析）不拆分"
+      }
+    ],
+    "metadata_enrichment": ["has_question"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 10,
+    "top_n": 3,
+    "score_threshold": 0.75,
+    "hybrid_search": true,
+    "keyword_weight": 0.5,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": false,
+    "term_map": {}
+  }
+}

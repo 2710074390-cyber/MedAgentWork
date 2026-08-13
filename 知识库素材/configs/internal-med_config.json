@@ -1,0 +1,58 @@
+{
+  "subject": "内科学",
+  "subject_code": "internal-med",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 800,
+    "overlap": 200,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "table_protect",
+        "description": "表格前后各保留1句上下文",
+        "context_sentences": 1
+      },
+      {
+        "type": "numeric_protect",
+        "min_values": 2,
+        "description": "含>=2个数值的段落不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(CHA2DS2|CURB-65|GCS|APACHE|MELD|Child-Pugh|Child Pugh|NYHA|Killip|TIMI|GRACE|PSI|CURB)",
+        "description": "风险评分量表不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "诊断标准|分类标准|分期标准",
+        "description": "诊断分类标准不拆分"
+      }
+    ],
+    "metadata_enrichment": ["has_diagnostic_criteria", "has_drug_dosage", "has_scale"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 7,
+    "score_threshold": 0.70,
+    "hybrid_search": true,
+    "keyword_weight": 0.3,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "房颤": "心房颤动",
+      "心梗": "心肌梗死",
+      "脑梗": "脑梗死",
+      "甲亢": "甲状腺功能亢进症",
+      "慢阻肺": "COPD",
+      "肝硬化": "肝硬化"
+    }
+  }
+}

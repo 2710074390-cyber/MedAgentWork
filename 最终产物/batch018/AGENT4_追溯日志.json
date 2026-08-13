@@ -1,0 +1,584 @@
+{
+  "execution_metadata": {
+    "execution_id": "MODEXEC-20260626-batch018",
+    "qc_report_id": "QC-20260625-batch018",
+    "execution_time": "2026-06-26T12:00:00+08:00",
+    "total_patches_received": 25,
+    "safe_auto_executed": 16,
+    "auto_with_review_executed": 5,
+    "must_escalate_skipped": 0,
+    "rolled_back": 0,
+    "escalated": 2,
+    "independent_findings": 1,
+    "hc7_consistency_scan": "FOUND: ['CN034: 半边 in option C', 'CN121: 气味识别 in option D', 'CN133: 气味识别 in option B', 'CN210: 完全无关 in option C']"
+  },
+  "patch_log": [
+    {
+      "patch_id": "PATCH-CN-001",
+      "target": "CN091.type+stem",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "type=B1, stem=将每种技术与其最突出的优势匹配：\n子题2：适合精确定位脑功能激活区",
+        "after": "type=A1, stem=适合精确定位脑功能激活区的脑成像技术是？"
+      },
+      "reason": "B1单子题→A1型",
+      "detail": "ISSUE-001",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-002",
+      "target": "CN125",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=A, opts=[('B', '缺少短波感光色素'), ('A', '缺少中波和长波感光色素'), ('C', '中枢神经系统受损'), ('D', '视杆细胞全部缺失'), ...",
+        "after": "answer=B, opts=标准化A-E"
+      },
+      "reason": "色盲B1组标准化: A→B",
+      "detail": "ISSUE-002",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-002",
+      "target": "CN126",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=A, opts=[('A', '缺少短波感光色素'), ('B', '缺少中波和长波感光色素'), ('C', '中枢神经系统受损'), ('D', '视杆细胞全部缺失'), ...",
+        "after": "answer=A, opts=标准化A-E"
+      },
+      "reason": "色盲B1组标准化: A不变",
+      "detail": "ISSUE-002",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-002",
+      "target": "CN127",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=C, opts=[('A', '缺少短波感光色素'), ('B', '缺少中波和长波感光色素'), ('C', '中枢神经系统受损'), ('D', '视杆细胞全部缺失'), ...",
+        "after": "answer=C, opts=标准化A-E"
+      },
+      "reason": "色盲B1组标准化: C不变",
+      "detail": "ISSUE-002",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-022",
+      "target": "CN172",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=A",
+        "after": "answer=A"
+      },
+      "reason": "记忆类型组标准化: A不变",
+      "detail": "ISSUE-003",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-022",
+      "target": "CN173",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=A",
+        "after": "answer=B"
+      },
+      "reason": "记忆类型组标准化: A→B",
+      "detail": "ISSUE-003",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-022",
+      "target": "CN174",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=E",
+        "after": "answer=E"
+      },
+      "reason": "记忆类型组标准化: E不变",
+      "detail": "ISSUE-003",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-023",
+      "target": "CN175",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=A",
+        "after": "answer=A"
+      },
+      "reason": "脑区组标准化: A不变",
+      "detail": "ISSUE-004",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-023",
+      "target": "CN176",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=C",
+        "after": "answer=B"
+      },
+      "reason": "脑区组标准化: C→B",
+      "detail": "ISSUE-004",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-023",
+      "target": "CN177",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=C",
+        "after": "answer=C"
+      },
+      "reason": "脑区组标准化: C不变",
+      "detail": "ISSUE-004",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-004",
+      "target": "CN236.optionB",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "记得（Remember）——伴有情景细节的回忆体验",
+        "after": "伴随情景细节的有意识回忆"
+      },
+      "reason": "R13:25→8字",
+      "detail": "ISSUE-005",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-003",
+      "target": "CN236.optionC",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "反应时",
+        "after": "基于反应时的判断"
+      },
+      "reason": "3→7字扩充",
+      "detail": "ISSUE-005",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-003",
+      "target": "CN236.optionA",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "快速反应",
+        "after": "快速正确反应"
+      },
+      "reason": "4→6字微调",
+      "detail": "ISSUE-005",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-003",
+      "target": "CN236.optionD",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "正确拒绝",
+        "after": "正确拒绝旧项目"
+      },
+      "reason": "4→7字微调",
+      "detail": "ISSUE-005",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-003",
+      "target": "CN236.optionE",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "随机猜测",
+        "after": "随机猜测反应"
+      },
+      "reason": "4→6字微调",
+      "detail": "ISSUE-005",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-005",
+      "target": "CN234.optionE",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "脑桥",
+        "after": "脑桥网状结构"
+      },
+      "reason": "2→6字扩充",
+      "detail": "ISSUE-006",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-006",
+      "target": "CN234.optionB",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "通常与情绪状态相关的脑区",
+        "after": "情绪相关脑区如前脑岛"
+      },
+      "reason": "12→11字 去模糊术语",
+      "detail": "ISSUE-006",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-005",
+      "target": "CN234.optionD",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "小脑半球",
+        "after": "小脑半球区域"
+      },
+      "reason": "4→6字微调",
+      "detail": "ISSUE-006",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-007",
+      "target": "CN116.optionC",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "鼓膜",
+        "after": "鼓膜损伤"
+      },
+      "reason": "2→4字",
+      "detail": "ISSUE-007",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-007",
+      "target": "CN116.optionB",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "咽鼓管",
+        "after": "咽鼓管阻塞"
+      },
+      "reason": "3→5字",
+      "detail": "ISSUE-007",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-007",
+      "target": "CN116.optionE",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "外耳道",
+        "after": "外耳道堵塞"
+      },
+      "reason": "3→5字",
+      "detail": "ISSUE-007",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-007",
+      "target": "CN116.optionA",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "中耳听小骨",
+        "after": "中耳听小骨损伤"
+      },
+      "reason": "5→7字",
+      "detail": "ISSUE-007",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-007",
+      "target": "CN116.optionD",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "内耳耳蜗、毛细胞或听神经",
+        "after": "内耳耳蜗或听神经损伤"
+      },
+      "reason": "12→11字",
+      "detail": "ISSUE-007",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-008",
+      "target": "CN158.optionA",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "语言任务激活左脑外侧额叶，空间任务激活右脑后顶叶和枕叶",
+        "after": "语言任务→左额叶，空间任务→右顶枕叶"
+      },
+      "reason": "27→18字 LLM语义压缩",
+      "detail": "ISSUE-008",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-009",
+      "target": "CN240.optionB",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "个体倾向于把积极词汇评价为自我相关，消极词汇评价为自我不相关",
+        "after": "积极词→自我相关，消极词→自我不相关"
+      },
+      "reason": "30→18字 LLM语义压缩",
+      "detail": "ISSUE-009",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-024",
+      "target": "CN240.optionD",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "个体对自我评价完全客观无偏",
+        "after": "个体对自我评价基本客观准确"
+      },
+      "reason": "去绝对词:完全客观无偏→基本客观准确",
+      "detail": "ISSUE-022",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-010",
+      "target": "CN241.optionB",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "腹侧前扣带回对区分积极和消极自我信息有重要作用",
+        "after": "腹侧前扣带回区分积极与消极自我信息"
+      },
+      "reason": "23→18字",
+      "detail": "ISSUE-030",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-011",
+      "target": "CN248.optionB",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "有意识地进行换位思考来理解他人的思想和感受",
+        "after": "有意识换位思考以理解他人思想感受"
+      },
+      "reason": "21→16字",
+      "detail": "ISSUE-029",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-012-D18",
+      "target": "CN252.optionA",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "球的真实位置",
+        "after": "球的真实位置信念"
+      },
+      "reason": "分散信念关键词→D18修复",
+      "detail": "ISSUE-016",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-012",
+      "target": "CN252.optionB",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "Sally持有与实际情况不同的错误信念",
+        "after": "Sally持有错误信念（不同于实际）"
+      },
+      "reason": "19→15字",
+      "detail": "ISSUE-016",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-012-D18",
+      "target": "CN252.optionC",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "Anne的动机",
+        "after": "Anne的信念与动机"
+      },
+      "reason": "分散信念关键词→D18修复",
+      "detail": "ISSUE-016",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-013",
+      "target": "CN020.optionA",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "提高记忆测试的信度",
+        "after": "提高情绪记忆测试的信度"
+      },
+      "reason": "+情绪关键词",
+      "detail": "ISSUE-011",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-013",
+      "target": "CN020.optionD",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "增强实验的表面效度",
+        "after": "增强情绪实验的表面效度"
+      },
+      "reason": "+情绪关键词",
+      "detail": "ISSUE-011",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-013",
+      "target": "CN020.optionB",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "方便被试筛选入组",
+        "after": "筛选情绪反应敏感的被试"
+      },
+      "reason": "+情绪关键词",
+      "detail": "ISSUE-011",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-014",
+      "target": "CN034.stem",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "患者右顶叶受损后，绘画时只画右半边物体，完全忽略左侧空间。此症状被称为？",
+        "after": "患者右顶叶受损后，绘画时只画右侧物体，完全忽略左侧空间。此症状被称为？"
+      },
+      "reason": "半边→右侧，去题干词重复",
+      "detail": "ISSUE-012",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-015",
+      "target": "CN072.stem",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "MMN（失匹配负波）的诱发条件是？",
+        "after": "MMN（mismatch negativity）的诱发条件是？"
+      },
+      "reason": "失匹配→mismatch negativity英文化",
+      "detail": "ISSUE-013",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-016",
+      "target": "CN114.stem",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "与面孔知觉密切相关的脑结构是？",
+        "after": "在视觉识别熟悉人脸的神经机制中，起核心作用的脑结构是？"
+      },
+      "reason": "面孔→人脸/视觉识别",
+      "detail": "ISSUE-014",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-017",
+      "target": "CN121.stem",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "海马损伤患者在气味识别任务中表现严重受损，最可能的解释是？",
+        "after": "海马损伤患者在嗅觉相关记忆任务中表现严重受损，最可能的解释是？"
+      },
+      "reason": "气味识别→嗅觉相关记忆",
+      "detail": "ISSUE-015",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-018",
+      "target": "CN156.options",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=A, opts=[('B', '3±1个项目'), ('A', '7±2个项目'), ('C', '12±3个项目'), ('D', '15±5个项目'), ('E', '20±4个项目')]",
+        "after": "answer=B, opts=升序"
+      },
+      "reason": "R3数值排序",
+      "detail": "ISSUE-017",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-021",
+      "target": "CN233.optionA",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "该理论已被完全证伪",
+        "after": "该理论的基本假设受到质疑"
+      },
+      "reason": "完全证伪→基本假设受到质疑",
+      "detail": "ISSUE-023",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-021",
+      "target": "CN233.optionC",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "该理论已被完全证实",
+        "after": "该理论获得部分实验支持"
+      },
+      "reason": "完全证实→部分实验支持",
+      "detail": "ISSUE-023",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-021",
+      "target": "CN233.optionE",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "该理论与现代情感神经科学完全无关",
+        "after": "该理论与现代情感神经科学部分重叠"
+      },
+      "reason": "完全无关→部分重叠",
+      "detail": "ISSUE-023",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "PATCH-CN-025",
+      "target": "CN058.options",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "answer=C, opts=[('A', '1个Na⁺出/1个K⁺进'), ('B', '2个Na⁺出/1个K⁺进'), ('C', '3个Na⁺出/2个K⁺进'), ('D', '1个Na⁺出/3个K⁺进'), ('E', '2个Na⁺出/3个K⁺进')]",
+        "after": "answer=E, opts=按Na⁺数升序:1,1,2,2,3"
+      },
+      "reason": "R3数值排序",
+      "detail": "ISSUE-018",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "INDEPENDENT-CN027",
+      "target": "CN027.optionC",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "红核",
+        "after": "红核区域"
+      },
+      "reason": "2→4字",
+      "detail": "ISSUE-010 独立修复",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "INDEPENDENT-CN027",
+      "target": "CN027.optionB",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "黑质",
+        "after": "黑质区域"
+      },
+      "reason": "2→4字",
+      "detail": "ISSUE-010 独立修复",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    },
+    {
+      "patch_id": "INDEPENDENT-CN027",
+      "target": "CN027.optionE",
+      "status": "EXECUTED",
+      "diff": {
+        "before": "蓝斑核",
+        "after": "蓝斑核区域"
+      },
+      "reason": "3→5字",
+      "detail": "ISSUE-010 独立修复",
+      "source_file_synced": "N/A (Agent2单一产出)"
+    }
+  ],
+  "escalations_for_human": [
+    {
+      "escalation_id": "ESC-CN-001",
+      "target": "CN139+CN140",
+      "reason": "QC误将ERP/MEG组件名(N400/P300/P600/M100/M300/M400/M600)识别为数值型选项。这些是学科标准命名(N400=400ms处负波)，修改将产生事实错误。",
+      "recommendation": "维持原题不变。QC D11维度应增加选项类型判断前置检查。"
+    },
+    {
+      "escalation_id": "ESC-CN-002",
+      "target": "CN070+CN198",
+      "reason": "同ESC-CN-001。CN070选项为ERP成分分类(早/中/晚成分)含描述性范围，非独立数值。CN198选项为ERP组件名(MMN/P300/N400/N100/P600)含组件命名数字。",
+      "recommendation": "维持原题不变。"
+    }
+  ],
+  "final_gate": "PASS"
+}

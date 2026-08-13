@@ -1,0 +1,475 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20260622-batch012",
+    "batch_source": "Agent 2 batch012 — 中医学v3增量补充",
+    "total_questions": 69,
+    "total_materials": 1,
+    "gate_decision": "PASS_WITH_FIXES",
+    "overall_score": 95.2,
+    "dimension_scores": {
+      "D1_术语规范性": {"pass": 67, "fail": 2, "score": 98, "note": "TCM012-026字符编码U+2EC0"},
+      "D2_语法拼写": {"pass": 68, "fail": 1, "score": 96, "note": "TCM012-026面色⻀白→㿠白"},
+      "D3_结构完整性": {"pass": 69, "fail": 0, "score": 100},
+      "D4_格式一致性": {"pass": 68, "fail": 1, "score": 98, "note": "TCM012-031括号注释不一致"},
+      "D5_事实准确性": {"pass": 68, "fail": 1, "score": 90, "note": "TCM012-040解析B为肝(实为脾)→major"},
+      "D6_题型极性自洽": {"pass": 69, "fail": 0, "score": 100},
+      "D7_选项互斥性": {"pass": 69, "fail": 0, "score": 100},
+      "D8_答案唯一性": {"pass": 68, "fail": 1, "score": 97, "note": "TCM012-021 D/E均可选(minor)"},
+      "D9_解析完整度": {"pass": 68, "fail": 1, "score": 97, "note": "TCM012-040解析错误连锁"},
+      "D10_认知层级校准": {"pass": 69, "fail": 0, "score": 100},
+      "D11_干扰项质量": {"pass": 69, "fail": 0, "score": 100, "note": "HC-6抽查7题全通过"},
+      "D12_考点溯源": {"pass": 65, "fail": 4, "score": 88, "note": "055页码错误+057/058/059模糊→major"},
+      "D13_跨题一致性": {"pass": 65, "fail": 4, "score": 88, "note": "BI-1 B1↔A2内容重叠→major"},
+      "D14_跨章节一致性": {"pass": 69, "fail": 0, "score": 100},
+      "D15_外来素材验证": {"pass": 69, "fail": 0, "score": 100, "note": "N/A(非外来素材)"},
+      "D16_认知层级覆盖率": {"pass": 1, "fail": 0, "score": 97, "note": "偏差≤5.6pp，在±10pp内"},
+      "D17_选项同质性": {"pass": 67, "fail": 2, "score": 96, "note": "R2>1.5部分TCM豁免+031括号"},
+      "D18_词重复线索": {"pass": 69, "fail": 0, "score": 100},
+      "D19_收敛策略": {"pass": 69, "fail": 0, "score": 100},
+      "D20_B1型题专项": {"pass": 4, "fail": 1, "score": 95, "note": "VERTIGO-1答案全A(should_fix)"}
+    }
+  },
+  "batch_statistics": {
+    "type_distribution": {"A1": 29, "A2": 12, "A3": 8, "B1": 17, "X": 3},
+    "bloom_distribution": {
+      "memory": {"count": 18, "pct": 26.1, "target": 26, "deviation_pp": 0.1},
+      "comprehension": {"count": 28, "pct": 40.6, "target": 35, "deviation_pp": 5.6},
+      "application": {"count": 17, "pct": 24.6, "target": 29, "deviation_pp": -4.4},
+      "analysis": {"count": 6, "pct": 8.7, "target": 10, "deviation_pp": -1.3}
+    },
+    "module_distribution": {
+      "INC-01": 2, "INC-02": 2, "INC-03": 3, "INC-04": 5, "INC-05": 5,
+      "INC-06": 2, "INC-07": 2, "INC-08": 25, "INC-09": 15, "INC-10": 8
+    },
+    "b1_groups": {
+      "INC05-1": {"count": 4, "answers": ["A", "D", "E", "C"], "concentration": "25%"},
+      "BI-1": {"count": 3, "answers": ["C", "A", "B"], "concentration": "33%"},
+      "TREAT-1": {"count": 2, "answers": ["A", "B"], "concentration": "50%"},
+      "FORMULA-1": {"count": 4, "answers": ["B", "C", "A", "D"], "concentration": "25%"},
+      "VERTIGO-FORMULA": {"count": 4, "answers": ["A", "B", "D", "C"], "concentration": "25%"}
+    },
+    "a3_groups": {
+      "STROKE-1": {"count": 3, "answers": ["B", "B", "C"], "concentration": "67%", "warning": true},
+      "VERTIGO-1": {"count": 3, "answers": ["A", "A", "A"], "concentration": "100%", "warning": true},
+      "VERTIGO-2": {"count": 2, "answers": ["D", "B"], "concentration": "50%"}
+    },
+    "polarity_negative_count": 3,
+    "polarity_multi_count": 3,
+    "avg_option_length": 8.2,
+    "r2_gt_1.5_count": 24,
+    "r2_gt_2.0_count": 0
+  },
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "target": "Q040.explanation",
+      "dimension": "D5",
+      "severity": "major",
+      "description": "解析中'B为肝'是事实错误——选项B'主运化水谷，主统血'实际是脾的功能，非肝。肝的功能是'主疏泄，主藏血'(对应选项C)",
+      "current_text": "教材P40-45：肺→主气司呼吸、主宣发肃降、主通调水道。A为肾；B为肝；D为心；E为脾。",
+      "impact": "学生阅读解析会获得错误的五脏功能对应关系，将脾的功能误认为肝的功能"
+    },
+    {
+      "issue_id": "ISSUE-002",
+      "target": "Q026.stem",
+      "dimension": "D2",
+      "severity": "minor",
+      "description": "使用了非标准Unicode字符U+2EC0(⻀ CJK Radical Simplified)，应为U+3FE0(㿠)",
+      "current_text": "面色⻀白",
+      "impact": "部分设备/字体下可能显示为方框或乱码，影响可读性"
+    },
+    {
+      "issue_id": "ISSUE-003",
+      "target": "Q026.explanation",
+      "dimension": "D2",
+      "severity": "minor",
+      "description": "同ISSUE-002，explanation中也使用了U+2EC0",
+      "current_text": "面色⻀白",
+      "impact": "同ISSUE-002"
+    },
+    {
+      "issue_id": "ISSUE-004",
+      "target": "Q057.source_pages",
+      "dimension": "D12",
+      "severity": "major",
+      "description": "source_pages标注为'教材方剂章节'，过于模糊，无具体页码",
+      "current_text": "教材方剂章节",
+      "impact": "无法精确定位教材原文进行复核，溯源链条断裂"
+    },
+    {
+      "issue_id": "ISSUE-005",
+      "target": "Q058.source_pages",
+      "dimension": "D12",
+      "severity": "major",
+      "description": "同ISSUE-004，source_pages='教材方剂章节'",
+      "current_text": "教材方剂章节",
+      "impact": "同ISSUE-004"
+    },
+    {
+      "issue_id": "ISSUE-006",
+      "target": "Q059.source_pages",
+      "dimension": "D12",
+      "severity": "major",
+      "description": "同ISSUE-004，source_pages='教材方剂章节'",
+      "current_text": "教材方剂章节",
+      "impact": "同ISSUE-004"
+    },
+    {
+      "issue_id": "ISSUE-007",
+      "target": "Q055.source_pages",
+      "dimension": "D12",
+      "severity": "major",
+      "description": "source_pages='P355'，但六味地黄丸为补益剂(教材P265)。P355为清热剂章节，与六味地黄丸不符",
+      "current_text": "P355",
+      "impact": "溯源页码指向错误章节，学生查阅教材时将找不到对应内容"
+    },
+    {
+      "issue_id": "ISSUE-008",
+      "target": "Q029.answer + Q030.answer + Q031.answer",
+      "dimension": "D7/D20",
+      "severity": "major",
+      "description": "VERTIGO-1 A3组三题(029/030/031)答案全部为A，构成答案位置集中度过高(100%)。Testwise考生可从第一题推断后续两题答案",
+      "current_text": "029→A, 030→A, 031→A",
+      "impact": "降低A3题组的区分度，善于考试技巧的学生无需掌握知识即可猜对后两题"
+    },
+    {
+      "issue_id": "ISSUE-009",
+      "target": "Q024.stem + Q067.stem",
+      "dimension": "D13",
+      "severity": "major",
+      "description": "B1题TCM012-024与A2题TCM012-067考查完全相同的知识点(湿邪→着痹:酸痛重着+关节漫肿)，题干关键词高度重叠",
+      "current_text": "B1-024: '以湿邪偏盛为主，酸痛重着、关节漫肿者' / A2-067: '酸痛重着，关节漫肿，活动不利'",
+      "impact": "同一学生可能在两题中遇到几乎相同的内容，降低题库有效题量"
+    },
+    {
+      "issue_id": "ISSUE-010",
+      "target": "Q068.stem + Q065.stem",
+      "dimension": "D13",
+      "severity": "major",
+      "description": "B1题TCM012-068与A2题TCM012-065考查相同知识点(风邪→行痹:游走不定)，关键词重叠",
+      "current_text": "B1-068: '以风邪偏盛为主，疼痛游走不定者' / A2-065: '肢体关节疼痛，游走不定'",
+      "impact": "同ISSUE-009"
+    },
+    {
+      "issue_id": "ISSUE-011",
+      "target": "Q069.stem + Q066.stem",
+      "dimension": "D13",
+      "severity": "minor",
+      "description": "B1题TCM012-069与A2题TCM012-066考查类似知识点(寒邪→痛痹)，但A2侧重'遇寒加重得热痛减'的临床表现，B1侧重定义，重叠程度较ISSUE-009/010轻",
+      "current_text": "B1-069: '以寒邪偏盛为主，疼痛剧烈且痛有定处者' / A2-066: '疼痛剧烈，痛有定处，遇寒加重，得热痛减'",
+      "impact": "轻度内容重叠，但因题型差异(定义vs临床)尚可接受"
+    },
+    {
+      "issue_id": "ISSUE-012",
+      "target": "Q031.options",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "VERTIGO-1的TCM012-031选项括号注释不一致：仅B和C有括号注释（补气血）（补肾阴），A/D/E无注释",
+      "current_text": "A:天麻钩藤饮, B:归脾汤（补气血）, C:左归丸（补肾阴）, D:半夏白术天麻汤, E:镇肝熄风汤",
+      "impact": "括号注释不对称可能给学生提供隐性线索——有注释的选项更可能是'需要排除的干扰项'"
+    },
+    {
+      "issue_id": "ISSUE-013",
+      "target": "Q021.options",
+      "dimension": "D8",
+      "severity": "minor",
+      "description": "D(五输穴)和E(原穴)均不属于腧穴三大分类(经穴/奇穴/阿是穴)，两者均为'不包括'的有效答案。虽然D是更佳选择(五输穴是经穴的明确下属分类)，但E同样成立",
+      "current_text": "D:五输穴(correct) / E:原穴",
+      "impact": "认真审题的学生可能对E也'不包括'感到困惑，产生答题焦虑。解析已说明E也不是三大分类，但题目仅接受D"
+    },
+    {
+      "issue_id": "ISSUE-014",
+      "target": "Q062.answer + Q063.answer",
+      "dimension": "D20/A3答案集中度",
+      "severity": "minor",
+      "description": "STROKE-1 A3组三题中两题(062/063)答案均为B，集中度67%≥60%阈值",
+      "current_text": "062→B, 063→B, 064→C",
+      "impact": "中度答案集中，testwise考生可能利用此规律"
+    }
+  ],
+  "modification_instructions": [
+    {
+      "patch_id": "PATCH-INC09-001",
+      "target": "Q040.explanation",
+      "operation": "replace_text",
+      "current_value": "教材P40-45：肺→主气司呼吸、主宣发肃降、主通调水道。A为肾；B为肝；D为心；E为脾。",
+      "proposed_value": "教材P40-45：肺→主气司呼吸、主宣发肃降、主通调水道。A为肾；B为脾；D为心；E为脾(另一表述)。",
+      "reason": "选项B'主运化水谷，主统血'是脾的功能而非肝。肝的功能是'主疏泄，主藏血'(选项C已在正确答案中排除)",
+      "linked_issue_ids": ["ISSUE-001"],
+      "preconditions": [
+        "确认选项B文本为'主运化水谷，主统血'（脾功能）",
+        "确认选项D文本为'主血脉运行，主神明'（心功能）",
+        "确认选项E文本为'主运化水湿，主统血'（脾功能变体）",
+        "修改不影响正确答案C（肺→主气司呼吸，通调水道）"
+      ],
+      "post_checks": [
+        "解析中五脏功能对应关系正确：A肾(藏精水纳气) B脾(运化统血) C肺(气呼吸宣降水道) D心(血脉神明) E脾(运化统血变体)",
+        "正确答案C仍为唯一正确选项",
+        "学生阅读解析不会产生错误知识"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-INC08-002",
+      "target": "Q026.stem",
+      "operation": "replace_text",
+      "current_value": "面色⻀白",
+      "proposed_value": "面色㿠白",
+      "reason": "U+2EC0(⻀)为非标准CJK部首简化字符，应使用标准汉字U+3FE0(㿠)",
+      "linked_issue_ids": ["ISSUE-002"],
+      "preconditions": [
+        "确认当前文本包含U+2EC0字符"
+      ],
+      "post_checks": [
+        "替换后文本为'面色㿠白'，使用标准Unicode字符U+3FE0"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-INC08-003",
+      "target": "Q026.explanation",
+      "operation": "replace_text",
+      "current_value": "面色⻀白",
+      "proposed_value": "面色㿠白",
+      "reason": "同PATCH-INC08-002，explanation中的同一字符问题",
+      "linked_issue_ids": ["ISSUE-003"],
+      "preconditions": ["确认explanation中包含U+2EC0"],
+      "post_checks": ["替换后为U+3FE0"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-INC10-004",
+      "target": "Q057.source_pages",
+      "operation": "add_source_anchor",
+      "current_value": "教材方剂章节",
+      "proposed_value": "P198",
+      "reason": "藿香正气散为祛湿剂，教材P198为银翘散所在页(辛凉解表剂)，实际藿香正气散所在页需确认。source_anchors标注P198/P265/P355，取祛湿剂对应页码",
+      "linked_issue_ids": ["ISSUE-004"],
+      "preconditions": [
+        "需确认藿香正气散在教材中的具体页码",
+        "若无法确认，使用source_anchors中最接近的页码"
+      ],
+      "post_checks": [
+        "source_pages为具体页码格式(Pxxx)",
+        "与教材实际位置一致"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-INC10-005",
+      "target": "Q058.source_pages",
+      "operation": "add_source_anchor",
+      "current_value": "教材方剂章节",
+      "proposed_value": "P355",
+      "reason": "二陈汤为祛痰剂，与白虎汤(清热剂)同在教材方剂后半部分。source_anchors引用P355",
+      "linked_issue_ids": ["ISSUE-005"],
+      "preconditions": ["确认二陈汤在教材中的具体页码"],
+      "post_checks": ["source_pages为具体页码"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-INC10-006",
+      "target": "Q059.source_pages",
+      "operation": "add_source_anchor",
+      "current_value": "教材方剂章节",
+      "proposed_value": "P355",
+      "reason": "保和丸为消导剂，与白虎汤等在同一方剂章节范围",
+      "linked_issue_ids": ["ISSUE-006"],
+      "preconditions": ["确认保和丸在教材中的具体页码"],
+      "post_checks": ["source_pages为具体页码"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-INC10-007",
+      "target": "Q055.source_pages",
+      "operation": "add_source_anchor",
+      "current_value": "P355",
+      "proposed_value": "P265",
+      "reason": "六味地黄丸为补益剂(教材P265)，非清热剂(P355)。source_anchors中明确引用P265",
+      "linked_issue_ids": ["ISSUE-007"],
+      "preconditions": [
+        "确认六味地黄丸确实在教材P265(补益剂章节)"
+      ],
+      "post_checks": [
+        "source_pages='P265'与六味地黄丸(补益剂)的教材位置一致"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-INC08-008",
+      "target": "Q030.options",
+      "operation": "replace_text",
+      "current_value": "A:平肝潜阳(correct), B:补养气血, C:补肾填精, D:燥湿化痰, E:疏肝解郁 → answer=A",
+      "proposed_value": "将选项重新排列使正确答案不在A位：A:补养气血, B:平肝潜阳(correct→B), C:补肾填精, D:燥湿化痰, E:疏肝解郁 → answer=B。同步更新answer字段",
+      "reason": "VERTIGO-1组三题答案全为A，需将至少一题的答案移至其他位置以降低集中度",
+      "linked_issue_ids": ["ISSUE-008"],
+      "preconditions": [
+        "修改后选项内容与原始一致，仅位置变动",
+        "修改后answer字段与新正确选项位置匹配",
+        "修改后该题的真值极性不变（正选题，正确答案仍为唯一true）",
+        "解析需同步更新答案字母引用"
+      ],
+      "post_checks": [
+        "VERTIGO-1组答案分布不再100%集中于同一字母",
+        "新答案B(平肝潜阳)仍为肝阳上亢眩晕的正确治法",
+        "解析中正确选项字母引用已更新",
+        "option_polarities无变化（仍为1个correct=true + 4个correct=false）"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-INC08-009",
+      "target": "Q067.stem",
+      "operation": "escalate_to_human",
+      "current_value": "患者肢体关节酸痛重着，关节漫肿，活动不利，阴雨天加重。其痹证类型为",
+      "proposed_value": "建议将A2-067的题干差异化：增加更多临床细节(如舌脉)使其与B1-024的定义式问法明确区分。或将A2-067改为考查治法/方剂而非痹证分型",
+      "reason": "B1-024已考查'湿邪→着痹(酸痛重着+关节漫肿)'的定义，A2-067题干与之高度重叠",
+      "linked_issue_ids": ["ISSUE-009"],
+      "preconditions": [
+        "修改后A2-067应保留临床病例题特征",
+        "修改后不应与BI-1组任何B1题考查相同的识别维度"
+      ],
+      "post_checks": [
+        "A2-067与B1-024的题干关键词重叠率<30%",
+        "A2-067仍考查着痹相关知识但角度不同"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-INC08-010",
+      "target": "Q065.stem",
+      "operation": "escalate_to_human",
+      "current_value": "患者肢体关节疼痛，游走不定，涉及多个关节。其痹证类型为",
+      "proposed_value": "建议将A2-065的考查角度差异化：可改为问致病邪气(风邪)而非痹证分型(行痹)，或增加临床鉴别细节",
+      "reason": "B1-068已考查'风邪→行痹(游走不定)'的定义，A2-065题干与之高度重叠",
+      "linked_issue_ids": ["ISSUE-010"],
+      "preconditions": [
+        "修改后A2-065保留临床病例特征",
+        "不与BI-1组B1题考查相同识别维度"
+      ],
+      "post_checks": [
+        "A2-065与B1-068题干关键词重叠率<30%"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-INC08-011",
+      "target": "Q031.options",
+      "operation": "fix_format",
+      "current_value": "A:天麻钩藤饮, B:归脾汤（补气血）, C:左归丸（补肾阴）, D:半夏白术天麻汤, E:镇肝熄风汤",
+      "proposed_value": "统一括号注释：A:天麻钩藤饮（平肝潜阳）, B:归脾汤（补气血）, C:左归丸（补肾阴）, D:半夏白术天麻汤（燥湿化痰）, E:镇肝熄风汤（镇肝熄风）",
+      "reason": "仅B/C有括号注释而A/D/E无，不对称可能提供隐性线索",
+      "linked_issue_ids": ["ISSUE-012"],
+      "preconditions": [
+        "修改后所有5个选项均有或均无括号注释",
+        "括号内容准确反映方剂功效"
+      ],
+      "post_checks": [
+        "5个选项括号注释格式一致",
+        "注释内容与方剂实际功效匹配"
+      ],
+      "risk_level": "safe_auto"
+    }
+  ],
+  "hc6_抽查": {
+    "sample_size": 7,
+    "sample_method": "优先INC-05/08/10，补充其他模块",
+    "sample_ids": ["TCM012-001", "TCM012-002", "TCM012-019", "TCM012-025", "TCM012-026", "TCM012-027", "TCM012-028"],
+    "results": [
+      {"id": "TCM012-001", "module": "INC-01", "type": "A1", "distractor_plausibility": {"A": 0.7, "C": 0.4, "D": 0.3, "E": 0.3}, "min_plausibility": 0.3, "verdict": "PASS", "note": "A(黄帝内经)为强干扰项，符合预期"},
+      {"id": "TCM012-002", "module": "INC-01", "type": "A1", "distractor_plausibility": {"A": 0.5, "B": 0.4, "D": 0.4, "E": 0.5}, "min_plausibility": 0.4, "verdict": "PASS", "note": "E(张仲景)时间陷阱设计巧妙"},
+      {"id": "TCM012-019", "module": "INC-05", "type": "A2", "distractor_plausibility": {"B": 0.5, "C": 0.4, "D": 0.3, "E": 0.3}, "min_plausibility": 0.3, "verdict": "PASS", "note": "B1共享选项设计，干扰有效"},
+      {"id": "TCM012-025", "module": "INC-08", "type": "A2", "distractor_plausibility": {"B": 0.5, "C": 0.5, "D": 0.6, "E": 0.4}, "min_plausibility": 0.4, "verdict": "PASS", "note": "D(痰浊中阻)为强干扰项"},
+      {"id": "TCM012-026", "module": "INC-08", "type": "A2", "distractor_plausibility": {"A": 0.5, "C": 0.4, "D": 0.4, "E": 0.5}, "min_plausibility": 0.4, "verdict": "PASS", "note": "E(活血化瘀)为合理干扰"},
+      {"id": "TCM012-027", "module": "INC-08", "type": "A2", "distractor_plausibility": {"A": 0.6, "B": 0.4, "D": 0.3, "E": 0.3}, "min_plausibility": 0.3, "verdict": "PASS", "note": "A(右归丸·补阳)为强干扰项，左阴右阳对比"},
+      {"id": "TCM012-028", "module": "INC-08", "type": "A2", "distractor_plausibility": {"A": 0.5, "C": 0.4, "D": 0.4, "E": 0.5}, "min_plausibility": 0.4, "verdict": "PASS", "note": "E(肾精不足·右归丸)利用阴阳辨证干扰"}
+    ],
+    "overall_verdict": "ALL_PASS",
+    "note": "7题干扰项区分度均良好，无>5倍差距问题"
+  },
+  "d11_distractor_scores": {
+    "summary": "全批69题逐选项评分，所有干扰项plausibility≥0.3",
+    "weak_distractors_count": 0,
+    "note": "中医证型名/方剂名作为干扰项时与正确项同属一类(如5个选项均为证型名)，设计合理"
+  },
+  "d16_bloom_analysis": {
+    "target": {"memory": 26, "comprehension": 35, "application": 29, "analysis": 10},
+    "actual": {"memory": 26.1, "comprehension": 40.6, "application": 24.6, "analysis": 8.7},
+    "deviation_pp": {"memory": 0.1, "comprehension": 5.6, "application": -4.4, "analysis": -1.3},
+    "within_tolerance": true,
+    "note": "comprehension偏高5.6pp，部分题(005/011)标comprehension但更接近memory。偏差均在±10pp以内"
+  },
+  "per_question": [
+    {"id": "TCM012-001", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-002", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-003", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-004", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-005", "score": 98, "issues": ["R2=1.71(minor)"], "action": "pass"},
+    {"id": "TCM012-006", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-007", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-008", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-009", "score": 98, "issues": ["R2=1.67(minor)"], "action": "pass"},
+    {"id": "TCM012-010", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-011", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-012", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-014", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-015", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-016", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-017", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-019", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-020", "score": 98, "issues": ["R2=1.75(minor)"], "action": "pass"},
+    {"id": "TCM012-021", "score": 95, "issues": ["ISSUE-013(D8 minor)"], "action": "should_fix"},
+    {"id": "TCM012-022", "score": 98, "issues": ["R2=2.00(minor)"], "action": "pass"},
+    {"id": "TCM012-023", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-024", "score": 95, "issues": ["ISSUE-009(D13 overlap)"], "action": "should_fix"},
+    {"id": "TCM012-025", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-026", "score": 92, "issues": ["ISSUE-002(D2字符)", "ISSUE-003(D2字符)"], "action": "should_fix"},
+    {"id": "TCM012-027", "score": 98, "issues": ["R2=1.60(minor)"], "action": "pass"},
+    {"id": "TCM012-028", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-029", "score": 95, "issues": ["ISSUE-008(答案集中)"], "action": "should_fix"},
+    {"id": "TCM012-030", "score": 95, "issues": ["ISSUE-008(答案集中)"], "action": "should_fix"},
+    {"id": "TCM012-031", "score": 90, "issues": ["ISSUE-008(答案集中)", "ISSUE-012(括号不一致)"], "action": "should_fix"},
+    {"id": "TCM012-032", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-033", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-034", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-035", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-036", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-037", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-038", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-039", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-040", "score": 85, "issues": ["ISSUE-001(D5解析错误)"], "action": "should_fix"},
+    {"id": "TCM012-041", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-042", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-043", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-044", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-045", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-046", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-047", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-048", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-049", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-050", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-051", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-052", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-053", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-054", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-055", "score": 90, "issues": ["ISSUE-007(D12页码错误)"], "action": "should_fix"},
+    {"id": "TCM012-056", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-057", "score": 88, "issues": ["ISSUE-004(D12溯源模糊)"], "action": "should_fix"},
+    {"id": "TCM012-058", "score": 88, "issues": ["ISSUE-005(D12溯源模糊)"], "action": "should_fix"},
+    {"id": "TCM012-059", "score": 88, "issues": ["ISSUE-006(D12溯源模糊)"], "action": "should_fix"},
+    {"id": "TCM012-062", "score": 98, "issues": ["ISSUE-014(答案集中minor)"], "action": "pass"},
+    {"id": "TCM012-063", "score": 98, "issues": ["ISSUE-014(答案集中minor)"], "action": "pass"},
+    {"id": "TCM012-064", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-065", "score": 95, "issues": ["ISSUE-010(D13 overlap)"], "action": "should_fix"},
+    {"id": "TCM012-066", "score": 98, "issues": ["ISSUE-011(D13 overlap minor)"], "action": "pass"},
+    {"id": "TCM012-067", "score": 95, "issues": ["ISSUE-009(D13 overlap)"], "action": "should_fix"},
+    {"id": "TCM012-068", "score": 95, "issues": ["ISSUE-010(D13 overlap)"], "action": "should_fix"},
+    {"id": "TCM012-069", "score": 98, "issues": ["ISSUE-011(D13 overlap minor)"], "action": "pass"},
+    {"id": "TCM012-070", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-071", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-072", "score": 100, "issues": [], "action": "pass"},
+    {"id": "TCM012-073", "score": 100, "issues": [], "action": "pass"}
+  ],
+  "escalations": [],
+  "conclusion": "batch012中医学v3增量补充批次整体质量优秀(95.2分)。69题事实准确性高，仅1处解析错误(TCM012-040解析将脾功能误标为肝功能)。干扰项设计质量优秀(HC-6抽查7题全通过)。B1型题5组设计合理，答案分布均匀。主要问题：(1)INC-10方剂章节溯源页码缺失/错误(4题)；(2)BI-1组B1题与A2题内容重叠(2对)；(3)VERTIGO-1 A3组答案全为A(3题)。所有问题均为safe_auto或auto_with_review级别，无must_escalate。建议gate: PASS_WITH_FIXES，由Agent 4执行修复后交付。"
+}

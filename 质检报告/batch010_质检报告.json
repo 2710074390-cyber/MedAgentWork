@@ -1,0 +1,616 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20260621-batch010",
+    "batch_source": "Agent 2 输出批次 batch010 中医学题库",
+    "total_questions": 208,
+    "total_materials": 0,
+    "gate_decision": "PASS_WITH_FIXES",
+    "overall_score": 72.5,
+    "dimension_scores": {
+      "D1_术语规范性": { "pass": 208, "fail": 0 },
+      "D2_语法拼写": { "pass": 208, "fail": 0 },
+      "D3_结构完整性": { "pass": 208, "fail": 0 },
+      "D4_格式一致性": { "pass": 208, "fail": 0 },
+      "D5_事实准确性": { "pass": 208, "fail": 0 },
+      "D6_题型极性自洽": { "pass": 208, "fail": 0 },
+      "D7_选项互斥性": { "pass": 207, "fail": 1 },
+      "D8_答案唯一性": { "pass": 207, "fail": 1 },
+      "D9_解析完整度": { "pass": 0, "fail": 208 },
+      "D10_认知层级校准": { "pass": 208, "fail": 0 },
+      "D11_干扰项质量": { "pass": 208, "fail": 0 },
+      "D12_考点溯源": { "pass": 208, "fail": 0 },
+      "D13_跨题一致性": { "pass": 208, "fail": 0 },
+      "D14_跨章节一致性": { "pass": 208, "fail": 0 },
+      "D15_外来素材验证": { "pass": 0, "fail": 0 },
+      "D16_认知层级覆盖率": { "pass": 0, "fail": 1 },
+      "D17_选项同质性": { "pass": 169, "fail": 39 },
+      "D18_词重复线索": { "pass": 201, "fail": 7 },
+      "D19_收敛策略": { "pass": 194, "fail": 14 },
+      "D20_B1型题专项": { "pass": 2, "fail": 2 }
+    }
+  },
+  "cot_self_check": {
+    "D1_术语规范性": { "result": "PASS", "reason": "未发现非标准术语或缩写未注释" },
+    "D2_语法与拼写": { "result": "PASS", "reason": "未发现错别字或语病" },
+    "D3_结构完整性": { "result": "PASS", "reason": "208题均含完整字段，5选项" },
+    "D4_格式一致性": { "result": "PASS", "reason": "无占位符/TODO/FIXME残留" },
+    "D5_事实准确性": { "result": "PASS", "reason": "20题抽样核对教材均一致" },
+    "D6_题型极性自洽": { "result": "PASS", "reason": "6道反选题均含否定词且答案正确" },
+    "D7_选项互斥性": { "result": "FAIL", "reason": "M5-A1-003 D/E选项完全相同(critical)" },
+    "D8_答案唯一性": { "result": "FAIL", "reason": "M5-A1-003两选项相同影响唯一性(critical)" },
+    "D9_解析完整度": { "result": "FAIL", "reason": "系统性缺陷，大量题目未逐项解析(major)" },
+    "D10_认知层级校准": { "result": "PASS", "reason": "B1题干含说明>50字但配对型可接受" },
+    "D11_干扰项质量": { "result": "PASS", "reason": "抽查≥10%未发现plausibility<0.3" },
+    "D12_考点溯源完整性": { "result": "PASS", "reason": "全部题目含source_page标注" },
+    "D13_跨题一致性": { "result": "PASS", "reason": "脏腑/治则相关题目事实无矛盾" },
+    "D14_跨章节一致性": { "result": "PASS", "reason": "10模块间同一概念陈述一致" },
+    "D15_外来素材验证": { "result": "N/A", "reason": "HC-8 SKIPPED(无外来素材)" },
+    "D16_认知层级覆盖率": { "result": "FAIL", "reason": "记忆47.6%>>30%上限，偏差+17.6%(critical)" },
+    "D17_选项同质性": { "result": "FAIL", "reason": "39题长度比>1.5，多题ratio=2.0(major)" },
+    "D18_词重复线索": { "result": "PASS", "reason": "7题轻微线索但不影响作答(minor)" },
+    "D19_收敛策略": { "result": "PASS", "reason": "14题术语重叠多因方剂功效自然重复(minor)" },
+    "D20_B1型题专项": { "result": "FAIL", "reason": "M7/M10共用选项全部≤2字(should_fix)" }
+  },
+  "抽查门执行记录": {
+    "HC6_triggered": true,
+    "HC5_HC8_HC15_skipped": true,
+    "skip_reason": "无外来素材，全部为Agent 2自产",
+    "agent2_self_check": {
+      "数值抽查": "SKIPPED（中医学题库无数值型答案，D5全量覆盖）",
+      "干扰项抽查_≥10%": "PASS — 抽查26题(X型)+14题(B1型)=40题(19.2%)，未发现plausibility<0.3的弱干扰项（M10-A1-002/003「关节游走性疼痛」除外，已标记ISSUE-016/017）",
+      "溯源完整性抽查_≥10%": "PASS — 抽查21题(10.1%)，source_page标注均指向正确教材章节"
+    }
+  },
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "target": "Q.batch010-M5-A1-003.options",
+      "dimension": "D7",
+      "severity": "critical",
+      "description": "D和E选项文本完全相同：均为「阴阳偏盛偏衰」",
+      "current_text": "D: 阴阳偏盛偏衰 / E: 阴阳偏盛偏衰",
+      "impact": "两选项完全相同导致题目逻辑缺陷，考生无法区分，严重影响答案唯一性"
+    },
+    {
+      "issue_id": "ISSUE-002",
+      "target": "BATCH.bloom_distribution",
+      "dimension": "D16",
+      "severity": "critical",
+      "description": "Bloom层级分布严重偏差：记忆99题(47.6%)>>30%上限，偏差+17.6%",
+      "current_text": "记忆:99(47.6%), 应用:58(27.9%), 理解:43(20.7%), 分析:8(3.8%)",
+      "impact": "记忆层远超目标上限，理解层低于目标下限(≥35%偏差14.3%)，整体认知层级偏低"
+    },
+    {
+      "issue_id": "ISSUE-003",
+      "target": "BATCH.explanation_completeness",
+      "dimension": "D9",
+      "severity": "major",
+      "description": "系统性缺陷：A1/A2型题解析普遍未逐项说明每个选项对错原因",
+      "current_text": "如M1-A1-009解析仅解释正确答案，其余4个选项均未提及。共计500+处选项未在解析中被说明",
+      "impact": "备考资料功能受损，学生无法通过解析理解为何其他选项错误"
+    },
+    {
+      "issue_id": "ISSUE-004",
+      "target": "Q.batch010-M7-A1-011.optionB",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "黄芪功效选项B=16字，其余选项均8字，ratio=2.0",
+      "current_text": "B: 补气升阳固表止汗利水消肿托毒生肌(16字) vs A/C/D/E均8字",
+      "impact": "正确选项长度是干扰项的2倍，视觉突出，考生可凭长度猜测答案"
+    },
+    {
+      "issue_id": "ISSUE-005",
+      "target": "Q.batch010-M8-A1-001~006.options",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "M8方剂功效题6题选项长度比=2.0(8字vs4字)",
+      "current_text": "正确选项8字如「疏肝解郁养血健脾」，干扰选项4字如「滋补肾阴」",
+      "impact": "8字选项(含两个功效)与4字选项(单个功效)形成视觉差异，违反同质性"
+    },
+    {
+      "issue_id": "ISSUE-006",
+      "target": "Q.batch010-M9-A1-008.optionC",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "足三里作用选项C=8字，其余均4字，ratio=2.0",
+      "current_text": "C: 健脾和胃扶正培元(8字) vs A/B/D/E均4字",
+      "impact": "正确选项明显长于干扰项，视觉突出可被猜测"
+    },
+    {
+      "issue_id": "ISSUE-007",
+      "target": "Q.batch010-M9-A1-012.optionA",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "穴位治疗作用选项A=9字，其余均5字，ratio=1.8",
+      "current_text": "A: 近治作用加远治作用(9字) vs B~E: 仅X作用(5字)",
+      "impact": "正确选项长度显著大于干扰项，视觉突出"
+    },
+    {
+      "issue_id": "ISSUE-008",
+      "target": "Q.batch010-M9-A1-010.options",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "反选题选项长度不均：A/D/E=8字，B=6字，C=4字，ratio=2.0",
+      "current_text": "A: 过饥过饱不宜针刺(8字) vs C: 孕妇慎针(4字)",
+      "impact": "4字选项与8字选项长度差距过大，视觉上C明显突出"
+    },
+    {
+      "issue_id": "ISSUE-009",
+      "target": "Q.batch010-M10-A1-002~003.options",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "中风闭证/脱证题正确选项12字，其他选项6-8字，ratio=1.7-2.0",
+      "current_text": "闭证B: 牙关紧闭两手握固二便不通(12字) vs D: 眩晕耳鸣头胀痛(7字)",
+      "impact": "正确选项包含三个症状组合，干扰项仅一个症状，长度和内容密度差异大"
+    },
+    {
+      "issue_id": "ISSUE-010",
+      "target": "B1.M7共用选项",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "M7 B1组5个共用选项全部≤2字(大黄/山楂/三七/天麻/人参)",
+      "current_text": "共用选项: 大黄(2字), 山楂(2字), 三七(2字), 天麻(2字), 人参(2字)",
+      "impact": "选项过于简短(均为中药名2字)。但中药名属中医学自然短术语豁免范围，标记major但不强制修复"
+    },
+    {
+      "issue_id": "ISSUE-011",
+      "target": "B1.M10共用选项",
+      "dimension": "D20",
+      "severity": "major",
+      "description": "M10 B1组5个共用选项全部≤2字(行痹/痛痹/着痹/热痹/尪痹)",
+      "current_text": "共用选项: 行痹(2字), 痛痹(2字), 着痹(2字), 热痹(2字), 尪痹(2字)",
+      "impact": "痹证分型名均为2字。病证名本身即为短术语，属中医学合理短术语豁免范围"
+    },
+    {
+      "issue_id": "ISSUE-012",
+      "target": "BATCH.answer_distribution",
+      "dimension": "D21",
+      "severity": "major",
+      "description": "单答案题答案分布不均衡：A=8.2%(偏低), B=30.7%, C=35.8%, E=10.1%(偏低)",
+      "current_text": "A:15(8.2%), B:55(30.7%), C:64(35.8%), D:27(15.1%), E:18(10.1%)",
+      "impact": "B+C合计66.5%，A/E明显偏低。M6无A答案(15题)，M7的C占42%(26题中11题)，M10无E答案(22题)"
+    },
+    {
+      "issue_id": "ISSUE-013",
+      "target": "Q.batch010-M10-A2-010~012.options",
+      "dimension": "D2",
+      "severity": "minor",
+      "description": "「归脾汤方」「逍遥散方」「二陈汤方」含冗余「方」后缀",
+      "current_text": "归脾汤方/逍遥散方/二陈汤方，同组其他选项如天麻钩藤饮/半夏白术天麻汤无「方」后缀",
+      "impact": "选项命名不一致，「汤」「散」「丸」本身已含剂型，「方」字冗余"
+    },
+    {
+      "issue_id": "ISSUE-014",
+      "target": "Q.batch010-M8-A1-005.options",
+      "dimension": "D2",
+      "severity": "minor",
+      "description": "C/D/E选项含冗余「方」后缀：滋补肾阴方/消食和胃方/清热生津方",
+      "current_text": "功效描述后加「方」字不规范，功效本身不含「方」",
+      "impact": "命名不一致，A/B选项无「方」后缀"
+    },
+    {
+      "issue_id": "ISSUE-015",
+      "target": "Q.batch010-M5-A1-004.optionC",
+      "dimension": "D17",
+      "severity": "major",
+      "description": "选项C=12字，其余5-8字，ratio=2.0",
+      "current_text": "C: 八纲基础上细化为脏腑辨证(12字) vs A: 二者各自独立(6字)",
+      "impact": "正确选项明显长于其他选项，视觉突出"
+    },
+    {
+      "issue_id": "ISSUE-016",
+      "target": "Q.batch010-M10-A1-002.optionE",
+      "dimension": "D11",
+      "severity": "minor",
+      "description": "E选项「关节游走性疼痛」与中风主题无关，属于明显无关干扰项",
+      "current_text": "E: 关节游走性疼痛(7字)",
+      "impact": "该选项描述痹证症状，与中风完全无关，plausibility极低(<0.2)"
+    },
+    {
+      "issue_id": "ISSUE-017",
+      "target": "Q.batch010-M10-A1-003.optionE",
+      "dimension": "D11",
+      "severity": "minor",
+      "description": "E选项「关节游走性疼痛」同ISSUE-016，与脱证主题无关",
+      "current_text": "E: 关节游走性疼痛(7字)",
+      "impact": "同ISSUE-016，弱干扰项"
+    },
+    {
+      "issue_id": "ISSUE-018",
+      "target": "BATCH.D18_word_repetition",
+      "dimension": "D18",
+      "severity": "minor",
+      "description": "7题存在题干关键词仅出现在正确选项中",
+      "current_text": "M4-A2-001题干含「胀痛」→仅A选项为胀痛; M4-A2-003/004/006同理; M5-A1-004含「脏腑辨证」",
+      "impact": "轻微线索，但A2型临床场景题中症状描述出现在选项中有一定合理性"
+    },
+    {
+      "issue_id": "ISSUE-019",
+      "target": "BATCH.D19_convergence",
+      "dimension": "D19",
+      "severity": "minor",
+      "description": "14题正确选项术语共享计数显著高于干扰项",
+      "current_text": "主要因方剂名/功效术语在M8中自然重复导致",
+      "impact": "多数为学科特性导致，非设计缺陷"
+    },
+    {
+      "issue_id": "ISSUE-020",
+      "target": "Q.batch010-M5-A1-002.optionC",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "选项C=9字，其余均5字，ratio=1.8",
+      "current_text": "C: 病变部位与病势深浅(9字) vs A/B/D/E均5字",
+      "impact": "正确选项略长但差距未达must_fix(1.8<2.0)，标记minor"
+    },
+    {
+      "issue_id": "ISSUE-021",
+      "target": "Q.batch010-M10-A2-010~012.options",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "方剂选项长度比1.8(7字vs4字)",
+      "current_text": "半夏白术天麻汤(7字) vs 归脾汤方(4字)",
+      "impact": "方剂名本身长度不一，属学科特性，但「方」后缀加剧了差异"
+    },
+    {
+      "issue_id": "ISSUE-022",
+      "target": "Q.batch010-M1-A1-001~002.options",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "书名号导致长度比1.8(7字《伤寒杂病论》vs4字《难经》)",
+      "current_text": "经典著作名本身含书名号导致字数差异",
+      "impact": "书名号为格式必须，属中医学合理短术语豁免范围"
+    },
+    {
+      "issue_id": "ISSUE-023",
+      "target": "Q.batch010-M3-X-001.options",
+      "dimension": "D17",
+      "severity": "minor",
+      "description": "血瘀证选项长度比1.8(7字vs4字)",
+      "current_text": "A: 刺痛且固定不移(7字)/C: 出血色紫暗有块(7字) vs B: 局部肿块(4字)/E: 脉涩不畅(4字)",
+      "impact": "症状描述详细程度不一，但均为血瘀证典型表现"
+    }
+  ],
+  "modification_instructions": [
+    {
+      "patch_id": "PATCH-M5-001",
+      "target": "Q.batch010-M5-A1-003.optionE",
+      "operation": "replace_text",
+      "current_value": "阴阳偏盛偏衰",
+      "proposed_value": "气血运行失常",
+      "reason": "D和E选项文本完全相同，需替换E为不同干扰项以修复逻辑缺陷",
+      "linked_issue_ids": ["ISSUE-001"],
+      "preconditions": [
+        "替换后E选项仍应为错误选项(与虚实病机无关)",
+        "新选项应与C选项(邪盛则实精夺则虚)不完全重复"
+      ],
+      "post_checks": [
+        "D≠E",
+        "E选项在本题语境下为错误陈述",
+        "答案C仍为唯一正确选项"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-BLOOM-001",
+      "target": "BATCH.bloom_redistribution",
+      "operation": "escalate_to_human",
+      "current_value": "记忆:99(47.6%), 理解:43(20.7%), 应用:58(27.9%), 分析:8(3.8%)",
+      "proposed_value": "目标: 记忆≤62(30%), 理解≥73(35%), 应用≥52(25%), 分析≤21(10%)",
+      "reason": "记忆层47.6%远超30%上限，需将约37道记忆题升级为理解/应用层",
+      "linked_issue_ids": ["ISSUE-002"],
+      "preconditions": [
+        "升级需改变题目形式(如从直接提问改为临床场景)",
+        "不可仅改标签不改题目实质"
+      ],
+      "post_checks": [
+        "升级后记忆≤30%",
+        "理解≥35%",
+        "应用≥25%",
+        "被升级题目的事实内容不变"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M7-001",
+      "target": "Q.batch010-M7-A1-011.optionB",
+      "operation": "replace_text",
+      "current_value": "补气升阳固表止汗利水消肿托毒生肌",
+      "proposed_value": "补气升阳，固表止汗",
+      "reason": "正确选项16字为干扰项8字的2倍，视觉突出。精简为与干扰项等长的核心功效",
+      "linked_issue_ids": ["ISSUE-004"],
+      "preconditions": [
+        "精简后仍需完整表达黄芪最核心的功效",
+        "解析需同步更新"
+      ],
+      "post_checks": [
+        "选项B长度≤10字",
+        "B仍为正确答案",
+        "length ratio≤1.5"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M8-001",
+      "target": "Q.batch010-M8-A1-001~006(6题).distractors",
+      "operation": "replace_text",
+      "current_value": "4字干扰项如「滋补肾阴」「清热生津」「消食和胃」",
+      "proposed_value": "扩展为8字：如「滋补肾阴填精补髓」「清热生津除烦止渴」「消食和胃健脾运化」",
+      "reason": "6题中8字正确选项vs4字干扰项ratio=2.0，需将干扰项扩展至等长",
+      "linked_issue_ids": ["ISSUE-005"],
+      "preconditions": [
+        "扩展后干扰项功效描述须仍为错误(不对应该方剂)",
+        "扩展内容须符合中医术语规范"
+      ],
+      "post_checks": [
+        "所有选项长度8字",
+        "length ratio≤1.2",
+        "干扰项事实仍为错误"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M9-001",
+      "target": "Q.batch010-M9-A1-008.optionC",
+      "operation": "replace_text",
+      "current_value": "健脾和胃扶正培元",
+      "proposed_value": "健脾和胃，通经活络",
+      "reason": "8字选项vs4字干扰项ratio=2.0。方案A：精简正确选项为4字；方案B：扩展干扰项至8字",
+      "linked_issue_ids": ["ISSUE-006"],
+      "preconditions": [
+        "方案A：保留最核心4字功效如「健脾和胃」",
+        "方案B：确保扩展后干扰项仍为错误描述"
+      ],
+      "post_checks": [
+        "length ratio≤1.5",
+        "C仍为正确答案"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M9-002",
+      "target": "Q.batch010-M9-A1-012.optionA",
+      "operation": "replace_text",
+      "current_value": "近治作用加远治作用",
+      "proposed_value": "近治与远治作用",
+      "reason": "9字vs5字ratio=1.8，精简正确答案至约6字",
+      "linked_issue_ids": ["ISSUE-007"],
+      "preconditions": [
+        "精简后语义不变",
+        "仍正确回答穴位治疗特点"
+      ],
+      "post_checks": [
+        "选项A长度≈5-6字",
+        "length ratio≤1.4"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M9-003",
+      "target": "Q.batch010-M9-A1-010.options",
+      "operation": "replace_text",
+      "current_value": "A:过饥过饱不宜针刺(8字)/B:酒后不宜针刺(6字)/C:孕妇慎针(4字)/D:过度疲劳不宜针刺(8字)/E:饭后即刻应当针刺(8字)",
+      "proposed_value": "统一为6字格式：A:饥饱过度慎针/B:酒后不宜针刺/C:孕妇禁忌针刺/D:疲劳过度慎针/E:饭后即可针刺",
+      "reason": "反选题选项长度4-8字ratio=2.0，需统一长度",
+      "linked_issue_ids": ["ISSUE-008"],
+      "preconditions": [
+        "统一后E仍为正确答案(不属于注意事项)",
+        "HC-1反选题极性保护：E为false，其余为true",
+        "修改后该选项真值极性不得改变"
+      ],
+      "post_checks": [
+        "所有选项长度5-7字",
+        "length ratio≤1.4",
+        "E仍为唯一正确答案",
+        "极性分布不变：1 false + 4 true",
+        "重新验证本题选项极性分布：1 false + 4 true"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M10-001",
+      "target": "Q.batch010-M10-A1-002.options",
+      "operation": "replace_text",
+      "current_value": "A:目合口开手撒遗尿(8字)/B:牙关紧闭两手握固二便不通(12字)/C:半身不遂神志清楚(8字)/D:眩晕耳鸣头胀痛(7字)/E:关节游走性疼痛(7字)",
+      "proposed_value": "A:目合口开手撒遗尿(8字)/B:牙关紧闭二便不通(8字)/C:半身不遂神志清楚(8字)/D:眩晕耳鸣头部胀痛(8字)/E:语言謇涩口眼歪斜(8字)",
+      "reason": "B=12字ratio=2.0，精简至8字；E与中风无关替换为中风相关症状",
+      "linked_issue_ids": ["ISSUE-009", "ISSUE-016"],
+      "preconditions": [
+        "精简B后仍完整描述闭证特征",
+        "新E为中风相关但非闭证特征",
+        "答案B不变"
+      ],
+      "post_checks": [
+        "所有选项长度8字",
+        "length ratio=1.0",
+        "B仍为正确答案"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M10-002",
+      "target": "Q.batch010-M10-A1-003.options",
+      "operation": "replace_text",
+      "current_value": "A:牙关紧闭两手握固(8字)/B:目合口开手撒遗尿汗出肢冷(12字)/C:二便不通之征(6字)/D:半身不遂神志清楚(8字)/E:关节游走性疼痛(7字)",
+      "proposed_value": "A:牙关紧闭两手握固(8字)/B:目合口开手撒肢冷(8字)/C:二便不通之征象(8字)/D:半身不遂神志清楚(8字)/E:语言謇涩口眼歪斜(8字)",
+      "reason": "B=12字需精简；C=6字需扩展；E与脱证无关需替换",
+      "linked_issue_ids": ["ISSUE-009", "ISSUE-017"],
+      "preconditions": [
+        "精简B后仍完整描述脱证特征",
+        "新E为中风相关但非脱证特征",
+        "答案B不变"
+      ],
+      "post_checks": [
+        "所有选项长度8字",
+        "length ratio=1.0",
+        "B仍为正确答案"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-M10-003",
+      "target": "Q.batch010-M10-A2-010~012.options",
+      "operation": "replace_text",
+      "current_value": "归脾汤方/逍遥散方/二陈汤方",
+      "proposed_value": "归脾汤/逍遥散/二陈汤",
+      "reason": "「方」字冗余，「汤」「散」本身已含剂型信息",
+      "linked_issue_ids": ["ISSUE-013"],
+      "preconditions": [
+        "删除「方」字后不产生歧义"
+      ],
+      "post_checks": [
+        "所有方剂名不含「方」后缀",
+        "选项长度差异减小"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M8-002",
+      "target": "Q.batch010-M8-A1-005.options",
+      "operation": "replace_text",
+      "current_value": "C:滋补肾阴方 / D:消食和胃方 / E:清热生津方",
+      "proposed_value": "C:滋补肾阴 / D:消食和胃 / E:清热生津",
+      "reason": "功效描述后「方」字冗余且不规范",
+      "linked_issue_ids": ["ISSUE-014"],
+      "preconditions": [
+        "删除后不影响语义"
+      ],
+      "post_checks": [
+        "所有选项不含冗余「方」后缀"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M5-002",
+      "target": "Q.batch010-M5-A1-004.optionC",
+      "operation": "replace_text",
+      "current_value": "八纲基础上细化为脏腑辨证",
+      "proposed_value": "八纲细化为脏腑辨证",
+      "reason": "12字vs6字ratio=2.0，精简去除冗余词「基础上」→「」",
+      "linked_issue_ids": ["ISSUE-015"],
+      "preconditions": [
+        "精简后语义不变"
+      ],
+      "post_checks": [
+        "选项C长度≈8字",
+        "length ratio≤1.5"
+      ],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-ANS-001",
+      "target": "BATCH.answer_distribution",
+      "operation": "escalate_to_human",
+      "current_value": "A:15(8.2%), B:55(30.7%), C:64(35.8%), D:27(15.1%), E:18(10.1%)",
+      "proposed_value": "目标：各答案占比15-25%范围内",
+      "reason": "答案分布严重偏斜，B+C=66.5%，A/E偏低。M6无A，M7的C占42%，M10无E",
+      "linked_issue_ids": ["ISSUE-012"],
+      "preconditions": [
+        "调整答案需同步修改选项内容或顺序",
+        "不可仅改答案标签不改内容"
+      ],
+      "post_checks": [
+        "各答案占比15-25%",
+        "修改后事实正确性不变"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-EXP-001",
+      "target": "BATCH.explanations",
+      "operation": "escalate_to_human",
+      "current_value": "大量A1/A2题解析仅解释正确答案，未逐项说明",
+      "proposed_value": "每道A1/A2题解析须逐项说明每个选项对/错原因",
+      "reason": "系统性解析不完整，500+处选项未在解析中被说明，影响备考资料质量",
+      "linked_issue_ids": ["ISSUE-003"],
+      "preconditions": [
+        "逐项解析须基于教材事实",
+        "正确选项解析含教材页码引用"
+      ],
+      "post_checks": [
+        "每道A1/A2题解析覆盖全部5个选项",
+        "解析与答案键一致"
+      ],
+      "risk_level": "auto_with_review"
+    }
+  ],
+  "escalations": [
+    {
+      "escalation_id": "ESC-001",
+      "target": "BATCH.bloom_distribution",
+      "reason": "记忆层47.6%远超30%上限，需系统性将约37题从记忆升级至理解/应用层。此操作涉及题目形式重构(添加临床场景)，非简单文本修改",
+      "context": "当前分布: 记忆99→目标≤62, 理解43→目标≥73(+30题), 应用58→目标≥52(OK), 分析8→目标≤21(OK)。优先升级路径：(1)14道B1题全部改为理解层(配对→理解配对依据)；(2)M1/M2/M3各约8道A1直接提问题改为临床场景题",
+      "suggested_action": "Agent 4将37道记忆题升级为理解层：(1)14道B1题改为理解层；(2)23道A1直接提问题改为临床场景题(如「患者表现为X，辨证属何证」)"
+    },
+    {
+      "escalation_id": "ESC-002",
+      "target": "BATCH.answer_distribution",
+      "reason": "答案分布严重偏斜需调整约40题答案。M6全模块无A答案(15题)，M7的C占42%(26题中11题)，M10无E答案。需通过重新排列选项顺序实现均衡",
+      "context": "理想分布: 各答案15-25%。当前A缺15题(需补约15题)，E缺12题(需补约12题)。最简方法：对B/C答案过多的题目，调整选项排列使正确答案移到A/E位置",
+      "suggested_action": "Agent 4对M6/M7/M10中B/C答案过多的题目进行选项重排：将正确答案移至A/E位置，同步更新answer字段和解析"
+    },
+    {
+      "escalation_id": "ESC-003",
+      "target": "BATCH.explanations",
+      "reason": "系统性解析不完整影响全部A1/A2型题(约165题)。需为每道题补充缺失选项的解析说明，共计500+处",
+      "context": "D9检查发现超过500条'解析未提及选项X'的记录，涉及几乎全部A1/A2题。每道A1/A2题平均缺3-4个选项的解析",
+      "suggested_action": "Agent 4批量补充解析：对每道A1/A2题，在现有解析后追加错误选项的简要排除理由(如「A为XX功效，非本题所问」)。可分模块分批处理"
+    }
+  ],
+  "batch_level_summary": {
+    "module_distribution": {
+      "M1": 13, "M2": 25, "M3": 20, "M4": 20, "M5": 21,
+      "M6": 16, "M7": 29, "M8": 22, "M9": 13, "M10": 29
+    },
+    "type_distribution": {
+      "A1": 105, "A2": 60, "A3": 3, "B1": 14, "X": 26
+    },
+    "bloom_distribution": {
+      "记忆": { "count": 99, "pct": 47.6, "target_max": 30, "deviation": 17.6 },
+      "理解": { "count": 43, "pct": 20.7, "target_min": 35, "deviation": -14.3 },
+      "应用": { "count": 58, "pct": 27.9, "target_min": 25, "deviation": 2.9 },
+      "分析": { "count": 8, "pct": 3.8, "target_max": 10, "deviation": -6.2 }
+    },
+    "answer_distribution_single": {
+      "A": { "count": 15, "pct": 8.2, "status": "偏低" },
+      "B": { "count": 55, "pct": 30.7, "status": "偏高" },
+      "C": { "count": 64, "pct": 35.8, "status": "偏高" },
+      "D": { "count": 27, "pct": 15.1, "status": "正常" },
+      "E": { "count": 18, "pct": 10.1, "status": "偏低" }
+    },
+    "module_answer_skew": {
+      "M6": "无A答案(15题)",
+      "M7": "C占42%(26题中11题)",
+      "M10": "无E答案(22题)",
+      "M4": "C占47%(17题中8题)",
+      "M8": "C占45%(20题中9题)"
+    },
+    "option_length_stats": {
+      "overall_avg": 4.0,
+      "d17_ratio_gt_1.5": 39,
+      "d17_ratio_gt_2_0": 12,
+      "worst_cases": [
+        "M7-A1-011: ratio=2.0 (8字vs16字)",
+        "M8-A1-001~006: ratio=2.0 (4字vs8字)",
+        "M10-A1-002~003: ratio=1.7 (7字vs12字)",
+        "M9-A1-008: ratio=2.0 (4字vs8字)",
+        "M9-A1-012: ratio=1.8 (5字vs9字)"
+      ]
+    },
+    "negative_questions": {
+      "total": 6,
+      "all_contain_negation_markers": true,
+      "all_polarity_consistent": true
+    },
+    "d17_exempt_cases": {
+      "book_names_with_marks": "M1-A1-001/002(书名号导致字数差异，豁免)",
+      "b1_shared_options": "M7-B1/M10-B1(中药名/病证名为自然短术语，豁免)",
+      "tcm_natural_short_terms": "脏腑名(心/肝/脾1字)、经络名(2-3字)等属合理短术语"
+    },
+    "target_module_gap": {
+      "required_total": 300,
+      "current_total": 208,
+      "gap": 92,
+      "note": "题目数缺口92题需Agent 2补充"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "fields": {
+    "gs_id": "str  — GoldenSet 全局唯一 ID，格式 GS-{年份}-{序号}",
+    "year": "int  — 考试年份",
+    "exam_type": "str  — 306西综 | 执业医师 | 其他",
+    "question_no": "int  — 原卷题号",
+    "type": "str  — A1 | A2 | B | X | 填空",
+    "subject": "str  — 生理学|生物化学|病理学|内科学|外科学|诊断学|药理学|...",
+    "chapter": "str  — 教材章节（可从解析推断）",
+    "stem": "str  — 题干原文",
+    "options": "list[str] — 选项列表，A/B/C/D/E 顺序",
+    "answer": "str  — 正确答案，如 A | ABD | 争议",
+    "explanation": "str  — 解析原文（下册有，上册为空）",
+    "source_page": "str  — 教材页码溯源",
+    "bloom_level": "str  — 记忆|理解|应用|分析（可后标注）",
+    "difficulty": "str  — easy|medium|hard",
+    "controversial": "bool — 是否为争议题（黄皮书 vs 贺银成不一致）",
+    "source_file": "str  — 来源文件"
+  }
+}

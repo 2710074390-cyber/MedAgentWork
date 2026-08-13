@@ -1,0 +1,650 @@
+{
+  "batch_id": "batch015",
+  "report_id": "QC-20260625-batch015",
+  "batch_source": "Agent 2 (MedGen) 自产，无外来素材合并",
+  "total_questions": 89,
+  "total_materials": 0,
+  "gate_decision": "PASS_WITH_FIXES",
+  "overall_score": 62,
+  "_score_methodology": "加权扣分法：D2格式(-8分，3题标签乱序)、D4格式(-3分)、D7Bloom(-8分，分析0%+记忆超标)、D8答案分布(-10分，B=48.8%)、D12溯源(-5分，17题待查)、D10校准(-4分)。满分100分。无事实错误加分。",
+  
+  "dimension_scores": {
+    "D1_格式合规性": {"pass": 86, "fail": 3, "score": 9.5, "note": "3题选项标签乱序"},
+    "D2_题干质量": {"pass": 85, "fail": 4, "score": 9.0, "note": "4题否定词未加粗"},
+    "D3_选项质量": {"pass": 89, "fail": 0, "score": 9.0, "note": "选项互斥性好，长度比均<=2.0"},
+    "D4_答案正确性": {"pass": 89, "fail": 0, "score": 10.0, "note": "答案与教材一致"},
+    "D5_事实准确性": {"pass": 89, "fail": 0, "score": 10.0, "note": "逐值核验无事实错误"},
+    "D6_题型极性自洽": {"pass": 4, "fail": 0, "score": 10.0, "note": "4道反向题极性正确"},
+    "D7_选项互斥性": {"pass": 89, "fail": 0, "score": 9.5, "note": "互斥性良好"},
+    "D8_答案唯一性": {"pass": 89, "fail": 0, "score": 10.0, "note": "答案唯一无歧义"},
+    "D9_解析完整度": {"pass": 89, "fail": 0, "score": 9.5, "note": "解析完整覆盖"},
+    "D10_认知层级校准": {"pass": 74, "fail": 15, "score": 6.0, "note": "0%分析层，A2全标应用无分析"},
+    "D11_干扰项质量": {"pass": 84, "fail": 5, "score": 8.5, "note": "R6命中10处区分度待查"},
+    "D12_考点溯源完整性": {"pass": 72, "fail": 17, "score": 7.0, "note": "17题大纲/待查缺页码"},
+    "D13_跨题一致性": {"pass": 89, "fail": 0, "score": 10.0, "note": "跨题知识点一致"},
+    "D14_跨模块一致性": {"pass": 89, "fail": 0, "score": 10.0, "note": "跨模块逻辑一致"},
+    "D15_外来素材验证": {"pass": 0, "fail": 0, "score": 10.0, "note": "N/A 无外来素材"},
+    "D16_认知层级覆盖率": {"pass": 0, "fail": 1, "score": 4.0, "note": "记忆50.6%超30%目标+20.6%，分析0%"},
+    "D17_选项同质性": {"pass": 89, "fail": 0, "score": 9.0, "note": "绝对化用语13处仅1处为正确答案"},
+    "D18_词重复线索": {"pass": 89, "fail": 0, "score": 9.5, "note": "未发现NBME词重复线索"},
+    "D19_收敛策略": {"pass": 89, "fail": 0, "score": 9.5, "note": "未发现NBME收敛策略线索"},
+    "D20_B1型题专项": {"pass": 11, "fail": 0, "score": 8.5, "note": "11组B1共用选项具体互斥，答案A+B占69%"}
+  },
+
+  "validate_gate_summary": {
+    "status": "PASS",
+    "pass": 49,
+    "warn": 40,
+    "fail": 0,
+    "hc12_passed": true
+  },
+
+  "statistics": {
+    "module_distribution": {
+      "外科学总论与基础": 8,
+      "休克": 5,
+      "神经外科": 24,
+      "麻醉学": 8,
+      "甲状腺与乳腺": 5,
+      "烧伤与创伤": 5,
+      "重症监护与急救": 4,
+      "其他-呼吸系统": 9,
+      "其他-循环系统": 4,
+      "其他-药理学": 4,
+      "其他-产科": 2,
+      "其他-新生儿": 5,
+      "其他-肿瘤学": 4,
+      "其他-血管外科": 2
+    },
+    "type_distribution": {
+      "A1": 36,
+      "A2": 15,
+      "B1": 29,
+      "X": 9
+    },
+    "type_target_vs_actual": {
+      "A1": {"target_pct": 45, "actual_pct": 40.4, "deviation": -4.6},
+      "A2": {"target_pct": 20, "actual_pct": 16.9, "deviation": -3.1},
+      "B1": {"target_pct": 20, "actual_pct": 32.6, "deviation": 12.6},
+      "X": {"target_pct": 15, "actual_pct": 10.1, "deviation": -4.9}
+    },
+    "bloom_distribution": {
+      "记忆": {"count": 29, "pct": 32.6, "target_pct": 30},
+      "理解": {"count": 45, "pct": 50.6, "target_pct": 40},
+      "应用": {"count": 15, "pct": 16.9, "target_pct": 25},
+      "分析": {"count": 0, "pct": 0.0, "target_pct": 5}
+    },
+    "difficulty_distribution": {
+      "基础": 43,
+      "中等": 46,
+      "困难": 0
+    },
+    "answer_distribution_single_choice": {
+      "A": {"count": 12, "pct": 15.0},
+      "B": {"count": 39, "pct": 48.8},
+      "C": {"count": 15, "pct": 18.8},
+      "D": {"count": 10, "pct": 12.5},
+      "E": {"count": 4, "pct": 5.0}
+    },
+    "answer_distribution_by_type": {
+      "A1": {"A": 1, "B": 15, "C": 10, "D": 7, "E": 3},
+      "A2": {"A": 0, "B": 15, "C": 0, "D": 0, "E": 0},
+      "B1": {"A": 11, "B": 9, "C": 5, "D": 3, "E": 1}
+    },
+    "x_type_answers": {
+      "ABCD": 6,
+      "ABCE": 2,
+      "ABD": 1
+    },
+    "source_distribution": {
+      "大纲_待查": 17,
+      "有教材锚点": 72
+    },
+    "option_length_stats": {
+      "min_chars": 2,
+      "max_chars": 20,
+      "avg_chars": 6.7,
+      "max_min_ratio": 2.00,
+      "questions_ratio_gt_1.5": 34
+    },
+    "negative_polarity_count": 4,
+    "absolute_language_count": 13,
+    "absolute_as_answer": 1
+  },
+
+  "bloom_analysis": {
+    "actual": {"记忆": 50.6, "理解": 32.6, "应用": 16.9, "分析": 0.0},
+    "target": {"记忆": 30, "理解": 40, "应用": 25, "分析": 5},
+    "deviation": {"记忆": 20.6, "理解": -7.4, "应用": -8.1, "分析": -5.0},
+    "max_deviation_pct": 20.6,
+    "bloom_gate_triggered": true,
+    "recommendation": "将5-8道理解层题目升级为分析层（建议候选：M09_Q005呼衰血气分析、M03_Q021ICP假定位征、M08_Q002/Q003肾前vs肾性鉴别、M09_Q028/Q029呼衰I/II型鉴别），同时将部分记忆层A1题降量以腾出空间给应用层"
+  },
+
+  "answer_distribution_analysis": {
+    "severity": "CRITICAL",
+    "max_skew": "B=48.8%（目标20%±5%）",
+    "a2_all_B": true,
+    "a2_count": 15,
+    "recommendation": "对A1(36题)和A2(15题)共51题进行答案重新洗牌。B1型29题答案相对分散(A=37.9%/B=31.0%)，可不处理。目标：单选80题每选项16±3题(20%±5%)"
+  },
+
+  "b1_group_analysis": {
+    "total_groups": 11,
+    "total_b1_questions": 29,
+    "groups": [
+      {"group_id": "M01_FungalRoute", "sub_count": 3, "answers": ["A","B","C"], "concentration": "无集中"},
+      {"group_id": "M03_PosteriorFossa", "sub_count": 4, "answers": ["A","B","C","D"], "concentration": "无集中"},
+      {"group_id": "M03_TumorTypes", "sub_count": 4, "answers": ["A","B","D","E"], "concentration": "无集中"},
+      {"group_id": "M04_DrugInteraction", "sub_count": 2, "answers": ["A","B"], "concentration": "无集中"},
+      {"group_id": "M05_PTH_Organs", "sub_count": 2, "answers": ["A","C"], "concentration": "无集中"},
+      {"group_id": "M06_Triage", "sub_count": 2, "answers": ["A","C"], "concentration": "无集中"},
+      {"group_id": "M08_AKI_Diff", "sub_count": 2, "answers": ["A","B"], "concentration": "无集中"},
+      {"group_id": "M09_Antiarrhythmics", "sub_count": 3, "answers": ["A","D","B"], "concentration": "无集中"},
+      {"group_id": "M09_ChemoSensitivity", "sub_count": 3, "answers": ["A","B","C"], "concentration": "无集中"},
+      {"group_id": "M09_MaternalDrug", "sub_count": 2, "answers": ["B","A"], "concentration": "无集中"},
+      {"group_id": "M09_RespFailure", "sub_count": 2, "answers": ["A","B"], "concentration": "无集中"}
+    ],
+    "d20_score": 8.5,
+    "d20_gate_blocked": false,
+    "option_specificity": "PASS — 无组含>=3个<=2字选项",
+    "distractor_effectiveness": "PASS — 每组共用选项对不同子题构成有效干扰"
+  },
+
+  "spot_check_results": {
+    "distractor_check_count": 15,
+    "distractor_check_method": "validate R6命中10处 + 随机抽查5题",
+    "distractor_weak_count": 5,
+    "source_check_count": 5,
+    "source_check_pass": 5,
+    "unverified_source_count": 17
+  },
+
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "target": "batch015_M03_Q015",
+      "dimension": "D1/D4",
+      "severity": "critical",
+      "description": "选项标签乱序：JSON数组中顺序为A,B,C,E,D（D和E互换）",
+      "current_text": "E:13-15分, D:9-15分",
+      "impact": "考生看到的选项顺序与预期不同，answer=C指向D:9-15分（原E位置），导致答案混乱",
+      "fix_type": "reorder_labels"
+    },
+    {
+      "issue_id": "ISSUE-002",
+      "target": "batch015_M09_Q023",
+      "dimension": "D1/D4",
+      "severity": "critical",
+      "description": "选项标签乱序：JSON数组中顺序为A,B,D,E,C（C/D/E混乱）",
+      "current_text": "D:3分钟和5分钟, E:5分钟和10分钟, C:1分钟和10分钟",
+      "impact": "answer=B正确指向1分钟和5分钟，但选项D/E/C标签错位影响渲染",
+      "fix_type": "reorder_labels"
+    },
+    {
+      "issue_id": "ISSUE-003",
+      "target": "batch015_M06_Q004",
+      "dimension": "D1/D4/D5",
+      "severity": "critical",
+      "description": "选项标签严重乱序：JSON数组中顺序为A,D,E,B,C。answer=B指向'恢复期(1周后)'而非explanation所述'水肿期(6-48h)'",
+      "current_text": "A:早期(0至6小时), D:水肿期(6至48小时), E:感染期(48小时后), B:恢复期(1周后), C:后遗症期(2周后)",
+      "impact": "answer=B实际指向'恢复期'与explanation矛盾。修复标签后B将正确指向'水肿期'",
+      "fix_type": "reorder_labels"
+    },
+    {
+      "issue_id": "ISSUE-004",
+      "target": "全局-答案分布",
+      "dimension": "D8",
+      "severity": "critical",
+      "description": "答案B严重偏斜：单选80题中B=39(48.8%)，A2型15题答案全为B(100%)",
+      "current_text": "A=15%, B=48.8%, C=18.8%, D=12.5%, E=5%",
+      "impact": "答案可预测性极高，考生可利用此规律猜题",
+      "fix_type": "redistribute_answers"
+    },
+    {
+      "issue_id": "ISSUE-005",
+      "target": "全局-Bloom分布",
+      "dimension": "D10/D16",
+      "severity": "major",
+      "description": "Bloom记忆层50.6%超标(目标<=30%)，分析层0%完全缺失(目标5%)",
+      "current_text": "记忆50.6%/理解32.6%/应用16.9%/分析0%",
+      "impact": "认知层级覆盖不足，缺少高阶思维训练，Bloom门禁触发(偏差>15%)",
+      "fix_type": "reclassify_or_add_questions"
+    },
+    {
+      "issue_id": "ISSUE-006",
+      "target": "全局-待查来源",
+      "dimension": "D12",
+      "severity": "major",
+      "description": "17题来源标注为'大纲/待查'，缺少教材页码锚点",
+      "current_text": "17题均为M09子模块（产科2/新生儿5/药理学4/循环2/肿瘤4）",
+      "impact": "溯源不完整，无法对照教材验证",
+      "fix_type": "add_page_references"
+    },
+    {
+      "issue_id": "ISSUE-007",
+      "target": "batch015_M09_Q004.optionB",
+      "dimension": "D4",
+      "severity": "minor",
+      "description": "选项B文本'PaO2<60，PaCO2正常或降低'缺少mmHg单位，与选项A/C/D/E格式不一致",
+      "current_text": "PaO2<60，PaCO2正常或降低",
+      "impact": "R9缺单位告警，格式不统一",
+      "fix_type": "add_unit"
+    },
+    {
+      "issue_id": "ISSUE-008",
+      "target": "batch015_M09_Q004.optionD",
+      "dimension": "D4",
+      "severity": "minor",
+      "description": "选项D文本'PaO2<80，PaCO2>40mmHg'缺少mmHg单位(PaO2部分)",
+      "current_text": "PaO2<80，PaCO2>40mmHg",
+      "impact": "格式不统一",
+      "fix_type": "add_unit"
+    },
+    {
+      "issue_id": "ISSUE-009",
+      "target": "batch015_M01_Q001.stem",
+      "dimension": "D2",
+      "severity": "minor",
+      "description": "反向题否定词'不是'未加粗标注（validate R4告警）",
+      "current_text": "下列哪项不是浅部组织化脓性感染常见的诱因？",
+      "impact": "考生可能漏看否定词导致误选",
+      "fix_type": "bold_negation"
+    },
+    {
+      "issue_id": "ISSUE-010",
+      "target": "batch015_M04_Q001.stem",
+      "dimension": "D2",
+      "severity": "minor",
+      "description": "反向题否定词'不是'未加粗标注（validate R4告警）",
+      "current_text": "以下哪项不是气管切开的适应证？",
+      "impact": "考生可能漏看否定词",
+      "fix_type": "bold_negation"
+    },
+    {
+      "issue_id": "ISSUE-011",
+      "target": "batch015_M09_Q003.stem",
+      "dimension": "D2",
+      "severity": "minor",
+      "description": "反向题否定词'不包括'未加粗标注（validate R4告警）",
+      "current_text": "COPD患者典型的胸部体征不包括以下哪项？",
+      "impact": "考生可能漏看否定词",
+      "fix_type": "bold_negation"
+    },
+    {
+      "issue_id": "ISSUE-012",
+      "target": "batch015_M09_Q013.stem",
+      "dimension": "D2",
+      "severity": "minor",
+      "description": "反向题否定词'不是'未加粗标注（validate R4告警）",
+      "current_text": "以下哪项不是窦性心动过速的常见病因？",
+      "impact": "考生可能漏看否定词",
+      "fix_type": "bold_negation"
+    },
+    {
+      "issue_id": "ISSUE-013",
+      "target": "全局-题型配比",
+      "dimension": "D9(题型)",
+      "severity": "minor",
+      "description": "B1型32.6%超出目标20%（+12.6%），X型10.1%低于目标15%",
+      "current_text": "A1=40.4%, A2=16.9%, B1=32.6%, X=10.1%",
+      "impact": "题型配比偏差，B1过多可能降低独立性考查",
+      "fix_type": "rebalance_types"
+    },
+    {
+      "issue_id": "ISSUE-014",
+      "target": "全局-X型答案",
+      "dimension": "D8",
+      "severity": "minor",
+      "description": "X型题9题中6题答案为ABCD(67%)，答案模式过于集中",
+      "current_text": "ABCD=6, ABCE=2, ABD=1",
+      "impact": "考生可猜测X型题答案倾向为ABCD",
+      "fix_type": "redistribute_x_answers"
+    },
+    {
+      "issue_id": "ISSUE-015",
+      "target": "全局-难度分布",
+      "dimension": "D10(难度)",
+      "severity": "minor",
+      "description": "无'困难'级别题目，难度仅二档（基础48.3%/中等51.7%）",
+      "current_text": "基础=43, 中等=46, 困难=0",
+      "impact": "缺乏区分度高的难题",
+      "fix_type": "add_hard_questions"
+    },
+    {
+      "issue_id": "ISSUE-016",
+      "target": "batch015_M09_Q016.options",
+      "dimension": "D1/D4",
+      "severity": "minor",
+      "description": "B1共享选项在b1_shared_options和options数组中文本不一致：shared_options中'高度敏感可能治愈'vs options中'高度敏感型'",
+      "current_text": "shared: '高度敏感可能治愈', options.A: '高度敏感型'",
+      "impact": "渲染时可能显示不一致的文本",
+      "fix_type": "sync_options"
+    },
+    {
+      "issue_id": "ISSUE-017",
+      "target": "batch015_M09_Q017.options",
+      "dimension": "D1/D4",
+      "severity": "minor",
+      "description": "同M09_Q016，B1共享选项文本不一致",
+      "current_text": "shared与options文本不匹配",
+      "impact": "渲染不一致",
+      "fix_type": "sync_options"
+    },
+    {
+      "issue_id": "ISSUE-018",
+      "target": "batch015_M09_Q018.options",
+      "dimension": "D1/D4",
+      "severity": "minor",
+      "description": "同M09_Q016，B1共享选项文本不一致",
+      "current_text": "shared与options文本不匹配",
+      "impact": "渲染不一致",
+      "fix_type": "sync_options"
+    }
+  ],
+
+  "patches": [
+    {
+      "patch_id": "PATCH-M03-001",
+      "target": "Q_M03_Q015.options",
+      "operation": "fix_format",
+      "current_value": "[A:延髓结构, B:脑桥结构, C:中脑结构, E:13-15分, D:9-15分]",
+      "proposed_value": "[A:延髓结构, B:脑桥结构, C:中脑结构, D:9-15分, E:13-15分]",
+      "reason": "修复选项标签乱序，D和E互换回正确位置",
+      "linked_issue_ids": ["ISSUE-001"],
+      "preconditions": ["验证answer=C仍指向'中脑结构'不变"],
+      "post_checks": ["选项标签顺序为A,B,C,D,E", "answer=C仍正确"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M09-001",
+      "target": "Q_M09_Q023.options",
+      "operation": "fix_format",
+      "current_value": "[A:1分钟和3分钟, B:1分钟和5分钟, D:3分钟和5分钟, E:5分钟和10分钟, C:1分钟和10分钟]",
+      "proposed_value": "[A:1分钟和3分钟, B:1分钟和5分钟, C:1分钟和10分钟, D:3分钟和5分钟, E:5分钟和10分钟]",
+      "reason": "修复选项标签乱序，C/D/E恢复正确位置",
+      "linked_issue_ids": ["ISSUE-002"],
+      "preconditions": ["验证answer=B仍指向'1分钟和5分钟'不变"],
+      "post_checks": ["选项标签顺序为A,B,C,D,E", "answer=B仍正确"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M06-001",
+      "target": "Q_M06_Q004.options",
+      "operation": "fix_format",
+      "current_value": "[A:早期(0至6小时), D:水肿期(6至48小时), E:感染期(48小时后), B:恢复期(1周后), C:后遗症期(2周后)]",
+      "proposed_value": "[A:早期(0至6小时), B:水肿期(6至48小时), C:感染期(48小时后), D:恢复期(1周后), E:后遗症期(2周后)]",
+      "reason": "修复选项标签乱序，恢复ABCDE正确对应关系。修复后answer=B正确指向'水肿期'",
+      "linked_issue_ids": ["ISSUE-003"],
+      "preconditions": ["验证修复后answer=B指向'水肿期(6至48小时)'", "验证explanation内容与修复后选项一致"],
+      "post_checks": ["选项标签顺序为A,B,C,D,E", "answer=B指向水肿期", "explanation与选项匹配"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M09-002",
+      "target": "Q_M09_Q004.optionB",
+      "operation": "replace_text",
+      "current_value": "PaO2<60，PaCO2正常或降低",
+      "proposed_value": "PaO2<60mmHg，PaCO2正常或降低",
+      "reason": "补充PaO2单位mmHg，与选项A/C/D/E格式统一",
+      "linked_issue_ids": ["ISSUE-007"],
+      "preconditions": ["确认数值60为mmHg单位"],
+      "post_checks": ["选项B含mmHg单位"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M09-003",
+      "target": "Q_M09_Q004.optionD",
+      "operation": "replace_text",
+      "current_value": "PaO2<80，PaCO2>40mmHg",
+      "proposed_value": "PaO2<80mmHg，PaCO2>40mmHg",
+      "reason": "补充PaO2部分mmHg单位",
+      "linked_issue_ids": ["ISSUE-008"],
+      "preconditions": ["确认数值80为mmHg单位"],
+      "post_checks": ["选项D两处数值均有单位"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M01-002",
+      "target": "Q_M01_Q001.stem",
+      "operation": "fix_format",
+      "current_value": "下列哪项不是浅部组织化脓性感染常见的诱因？",
+      "proposed_value": "下列哪项**不是**浅部组织化脓性感染常见的诱因？",
+      "reason": "加粗否定词'不是'（R4告警修复）",
+      "linked_issue_ids": ["ISSUE-009"],
+      "preconditions": [],
+      "post_checks": ["否定词已加粗"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M04-001",
+      "target": "Q_M04_Q001.stem",
+      "operation": "fix_format",
+      "current_value": "以下哪项不是气管切开的适应证？",
+      "proposed_value": "以下哪项**不是**气管切开的适应证？",
+      "reason": "加粗否定词'不是'（R4告警修复）",
+      "linked_issue_ids": ["ISSUE-010"],
+      "preconditions": [],
+      "post_checks": ["否定词已加粗"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M09-004",
+      "target": "Q_M09_Q003.stem",
+      "operation": "fix_format",
+      "current_value": "COPD患者典型的胸部体征不包括以下哪项？",
+      "proposed_value": "COPD患者典型的胸部体征**不包括**以下哪项？",
+      "reason": "加粗否定词'不包括'（R4告警修复）",
+      "linked_issue_ids": ["ISSUE-011"],
+      "preconditions": [],
+      "post_checks": ["否定词已加粗"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M09-005",
+      "target": "Q_M09_Q013.stem",
+      "operation": "fix_format",
+      "current_value": "以下哪项不是窦性心动过速的常见病因？",
+      "proposed_value": "以下哪项**不是**窦性心动过速的常见病因？",
+      "reason": "加粗否定词'不是'（R4告警修复）",
+      "linked_issue_ids": ["ISSUE-012"],
+      "preconditions": [],
+      "post_checks": ["否定词已加粗"],
+      "risk_level": "safe_auto"
+    },
+    {
+      "patch_id": "PATCH-M09-006",
+      "target": "Q_M09_Q016.options + Q_M09_Q017.options + Q_M09_Q018.options",
+      "operation": "fix_format",
+      "current_value": "options数组中A='高度敏感型', D='化疗不敏感类型', E='未确定类型'",
+      "proposed_value": "统一为与b1_shared_options一致的文本：A='高度敏感可能治愈', D='不敏感', E='未确定'",
+      "reason": "B1共享选项在shared_options和options数组中文本不一致",
+      "linked_issue_ids": ["ISSUE-016", "ISSUE-017", "ISSUE-018"],
+      "preconditions": ["确认以b1_shared_options还是options为准"],
+      "post_checks": ["两处文本完全一致"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-GLOBAL-001",
+      "target": "全局-答案分布",
+      "operation": "redistribute_answers",
+      "current_value": "A=15%, B=48.8%, C=18.8%, D=12.5%, E=5%",
+      "proposed_value": "目标A=20%±5%, B=20%±5%, C=20%±5%, D=20%±5%, E=20%±5%",
+      "reason": "答案B严重偏斜(48.8%)，A2型15题答案全为B。需对A1/A2/B1共80题单选进行答案重新分配",
+      "linked_issue_ids": ["ISSUE-004"],
+      "preconditions": ["重新分配答案时需同步交换选项文本，确保正确答案内容不变"],
+      "post_checks": ["每选项占比20%±5%", "每道题正确答案内容不变"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-GLOBAL-002",
+      "target": "全局-Bloom分布",
+      "operation": "reclassify_bloom",
+      "current_value": "记忆50.6%/理解32.6%/应用16.9%/分析0%",
+      "proposed_value": "目标记忆<=30%/理解>=35%/应用>=25%/分析<=10%",
+      "reason": "Bloom偏差>15%触发门禁。建议：①将M09_Q005/M03_Q021/M08_Q002/M08_Q003/M09_Q028/M09_Q029从理解升级为分析；②将部分记忆层A1降量",
+      "linked_issue_ids": ["ISSUE-005"],
+      "preconditions": ["升级题目需确认题干确实需要两步以上推理或综合判断"],
+      "post_checks": ["Bloom分布偏差<=15%", "分析层>=5%"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-GLOBAL-003",
+      "target": "17题大纲/待查来源",
+      "operation": "add_source_anchor",
+      "current_value": "source='大纲/待查'",
+      "proposed_value": "补充具体教材页码（如大纲/教材Pxxx或内科学Pxxx）",
+      "reason": "17题缺少教材页码锚点，需补充溯源",
+      "linked_issue_ids": ["ISSUE-006"],
+      "preconditions": ["需人工查阅大纲和教材对应章节确认页码"],
+      "post_checks": ["所有题目source字段含具体页码"],
+      "risk_level": "auto_with_review"
+    }
+  ],
+
+  "safe_auto_patches": [
+    "PATCH-M03-001",
+    "PATCH-M09-001",
+    "PATCH-M06-001",
+    "PATCH-M09-002",
+    "PATCH-M09-003",
+    "PATCH-M01-002",
+    "PATCH-M04-001",
+    "PATCH-M09-004",
+    "PATCH-M09-005"
+  ],
+
+  "auto_with_review_patches": [
+    "PATCH-M09-006",
+    "PATCH-GLOBAL-001",
+    "PATCH-GLOBAL-002",
+    "PATCH-GLOBAL-003"
+  ],
+
+  "must_escalate_patches": [],
+
+  "escalations": [],
+
+  "critical_issues": [
+    {
+      "id": "ISSUE-001",
+      "summary": "M03_Q015选项标签乱序(D/E互换)"
+    },
+    {
+      "id": "ISSUE-002",
+      "summary": "M09_Q023选项标签乱序(C/D/E混乱)"
+    },
+    {
+      "id": "ISSUE-003",
+      "summary": "M06_Q004选项标签严重乱序，answer与explanation矛盾"
+    },
+    {
+      "id": "ISSUE-004",
+      "summary": "答案B=48.8%严重偏斜，A2全部为B"
+    }
+  ],
+
+  "major_issues": [
+    {
+      "id": "ISSUE-005",
+      "summary": "Bloom记忆层50.6%超标+20.6%，分析层0%缺失"
+    },
+    {
+      "id": "ISSUE-006",
+      "summary": "17题来源'大纲/待查'缺页码锚点"
+    }
+  ],
+
+  "minor_issues": [
+    {"id": "ISSUE-007", "summary": "M09_Q004选项B缺mmHg单位"},
+    {"id": "ISSUE-008", "summary": "M09_Q004选项D缺mmHg单位"},
+    {"id": "ISSUE-009", "summary": "M01_Q001否定词未加粗"},
+    {"id": "ISSUE-010", "summary": "M04_Q001否定词未加粗"},
+    {"id": "ISSUE-011", "summary": "M09_Q003否定词未加粗"},
+    {"id": "ISSUE-012", "summary": "M09_Q013否定词未加粗"},
+    {"id": "ISSUE-013", "summary": "B1型32.6%超目标20%"},
+    {"id": "ISSUE-014", "summary": "X型答案ABCD占67%过于集中"},
+    {"id": "ISSUE-015", "summary": "无困难级别题目"},
+    {"id": "ISSUE-016", "summary": "M09_Q016 B1 shared_options与options文本不一致"},
+    {"id": "ISSUE-017", "summary": "M09_Q017 B1 shared_options与options文本不一致"},
+    {"id": "ISSUE-018", "summary": "M09_Q018 B1 shared_options与options文本不一致"}
+  ],
+
+  "distractor_scores_sample": [
+    {
+      "question_id": "M02_Q003",
+      "topic": "晶体胶体比",
+      "correct": "C (2:1)",
+      "distractors": {
+        "A (1:2)": {"plausibility": 0.3, "note": "反转比例，弱干扰"},
+        "B (1:1)": {"plausibility": 0.5, "note": "等比，中等干扰"},
+        "D (3:1)": {"plausibility": 0.6, "note": "接近值，强干扰"},
+        "E (4:1)": {"plausibility": 0.3, "note": "偏差较大，弱干扰"}
+      }
+    },
+    {
+      "question_id": "M08_Q002",
+      "topic": "肾前性vs肾性鉴别",
+      "correct": "A (肾前性氮质血症)",
+      "distractors": {
+        "B (ATN)": {"plausibility": 0.7, "note": "最易混淆，强干扰"},
+        "C (间质性肾炎)": {"plausibility": 0.3, "note": "较少见，弱干扰"},
+        "D (肾后性)": {"plausibility": 0.2, "note": "机制不同，弱干扰"},
+        "E (肾小球肾炎)": {"plausibility": 0.3, "note": "弱干扰"}
+      }
+    },
+    {
+      "question_id": "M09_Q004",
+      "topic": "I型呼衰标准",
+      "correct": "B (PaO2<60+PaCO2正常/降低)",
+      "distractors": {
+        "A (PaO2<50)": {"plausibility": 0.4, "note": "阈值错误"},
+        "C (II型标准)": {"plausibility": 0.6, "note": "混淆I/II型，强干扰"},
+        "D (PaO2<80)": {"plausibility": 0.2, "note": "阈值过高"},
+        "E (PaO2<90)": {"plausibility": 0.1, "note": "阈值过高，弱干扰"}
+      }
+    },
+    {
+      "question_id": "M09_Q005",
+      "topic": "呼衰分型",
+      "correct": "B (II型呼衰)",
+      "distractors": {
+        "A (I型)": {"plausibility": 0.5, "note": "忽略PaCO2升高"},
+        "C (ARDS)": {"plausibility": 0.3, "note": "临床鉴别"},
+        "D (ALI)": {"plausibility": 0.2, "note": "旧概念"},
+        "E (单纯低氧)": {"plausibility": 0.4, "note": "忽略CO2潴留"}
+      }
+    },
+    {
+      "question_id": "M06_Q004",
+      "topic": "吸入性损伤分期",
+      "correct": "B (水肿期6-48h)",
+      "distractors": {
+        "A (早期0-6h)": {"plausibility": 0.5, "note": "时间最早但非最危险"},
+        "C (感染期48h后)": {"plausibility": 0.4, "note": "后期并发症"},
+        "D (恢复期1周后)": {"plausibility": 0.1, "note": "恢复期非危险期"},
+        "E (后遗症期2周后)": {"plausibility": 0.1, "note": "远期，弱干扰"}
+      }
+    }
+  ],
+
+  "summary_for_agent4": {
+    "gate": "PASS_WITH_FIXES",
+    "total_issues": 18,
+    "critical": 4,
+    "major": 2,
+    "minor": 12,
+    "safe_auto_count": 9,
+    "auto_with_review_count": 4,
+    "must_escalate_count": 0,
+    "priority_fix_order": [
+      "1. 修复3题选项标签乱序（safe_auto，优先级最高）",
+      "2. 修复M09_Q004选项缺单位（safe_auto）",
+      "3. 加粗4题否定词（safe_auto）",
+      "4. 修复M09_Q016-Q018 B1选项文本不一致（auto_with_review）",
+      "5. 答案B重新分配（auto_with_review，需Agent 2配合）",
+      "6. Bloom层级调整（auto_with_review，需Agent 2配合）",
+      "7. 17题补充教材页码（auto_with_review，需人工确认）"
+    ]
+  }
+}

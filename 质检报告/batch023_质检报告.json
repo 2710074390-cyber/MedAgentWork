@@ -1,0 +1,206 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20260629-batch023",
+    "batch_source": "Agent 2 输出批次 — batch023 精神病学补产",
+    "total_questions": 70,
+    "total_materials": 0,
+    "qc_date": "2026-06-29",
+    "qc_agent": "MedQC",
+    "input_file": "中间产物/batch023/ALL_questions_batch023.json",
+    "validate_report": "validate_options_report_batch023.json",
+    "rag_reference": "中间产物/batch023_RAG_snippets.json",
+    "gate_decision": "PASS_WITH_FIXES",
+    "overall_score": 9.0,
+    "_score_methodology": "加权平均: 维度分×(该维度影响题数/总题数)之和 / 权重之和。D20=0且仅影响B1题(3%)时，总分扣分≤0.3。禁止简单平均（batch006教训：简单平均将9.0拉至2.7）",
+    "dimension_scores": {
+      "D1_术语规范性": { "score": 10.0, "issues": 0 },
+      "D2_语法拼写": { "score": 10.0, "issues": 0 },
+      "D3_结构完整性": { "score": 10.0, "issues": 0 },
+      "D4_格式一致性": { "score": 10.0, "issues": 0 },
+      "D5_事实准确性": { "score": 9.8, "issues": 1 },
+      "D6_题型极性自洽": { "score": 10.0, "issues": 0 },
+      "D7_选项互斥性": { "score": 10.0, "issues": 0 },
+      "D8_答案唯一性": { "score": 10.0, "issues": 0 },
+      "D9_解析完整度": { "score": 9.0, "issues": 3 },
+      "D10_认知层级校准": { "score": 10.0, "issues": 0 },
+      "D11_干扰项质量": { "score": 10.0, "issues": 0 },
+      "D12_考点溯源": { "score": 10.0, "issues": 0 },
+      "D13_跨题一致性": { "score": 10.0, "issues": 0 },
+      "D14_跨章节一致性": { "score": 10.0, "issues": 0 },
+      "D15_外来素材验证": { "score": "N/A", "issues": 0 },
+      "D16_认知层级覆盖率": { "score": 7.0, "issues": 1 },
+      "D17_选项同质性": { "score": 10.0, "issues": 0 },
+      "D18_词重复线索": { "score": 10.0, "issues": 0 },
+      "D19_收敛策略": { "score": 10.0, "issues": 0 },
+      "D20_B1型题专项": { "score": "N/A", "issues": 0 }
+    },
+    "summary": {
+      "total_issues": 5,
+      "critical": 0,
+      "major": 1,
+      "minor": 4,
+      "safe_auto": 0,
+      "auto_with_review": 8,
+      "must_escalate": 0,
+      "judgment_correct_rate": "20/20 (100%)",
+      "validate_38fail_explanation": "全部为判断题格式误报（判断题用'正确'/'错误'而非A-E），A1/A2/A3 50题零实质性违规"
+    }
+  },
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "target": "Q.M8_A1_001~005",
+      "dimension": "D9",
+      "severity": "minor",
+      "description": "M8 A1型5道概念题（病程特点/时间标准/CBT操作/预后指标/思维行为关系）解析仅确认正确选项，未逐项说明干扰项A/C/D/E为何错误",
+      "current_text": "M8_A1_001解析: '教材P128明确指出强迫症易慢性化，自发缓解少见。'",
+      "impact": "学生无法通过解析理解错误选项的排除逻辑，A1型概念题的学习价值降低",
+      "auto_fixable": false
+    },
+    {
+      "issue_id": "ISSUE-002",
+      "target": "Q.M8_A2_002",
+      "dimension": "D9",
+      "severity": "minor",
+      "description": "解析仅说明社会关系损害原因，未逐项排除职业功能/躯体健康/认知功能/经济负担各选项为何非最突出",
+      "current_text": "解析: '患者因强迫行为导致丈夫提出离婚，首发损害领域是社会/家庭关系。'",
+      "impact": "A2型临床推理题需完整的鉴别排除链，当前解析缺少对其他功能领域的排除说明",
+      "auto_fixable": false
+    },
+    {
+      "issue_id": "ISSUE-003",
+      "target": "Q.M2_A2_001",
+      "dimension": "D9",
+      "severity": "minor",
+      "description": "谵妄A2题解析仅描述谵妄特征，未逐项排除痴呆/精分/分离转换/急性应激障碍等干扰选项",
+      "current_text": "解析: '教材P24：谵妄特征——意识清晰度降低...典型谵妄表现。'",
+      "impact": "症状学鉴别诊断是M2核心考点，解析需包含完整鉴别推理链",
+      "auto_fixable": false
+    },
+    {
+      "issue_id": "ISSUE-004",
+      "target": "BLOOM_DISTRIBUTION",
+      "dimension": "D16",
+      "severity": "major",
+      "description": "认知层级Bloom分布：记忆17.1%(12题) | 理解18.6%(13题) | 应用62.9%(44题) | 分析1.4%(1题)。理解层18.6%低于目标35%，偏差-16.4%（>10%阈值）。分析层1.4%低于目标10%，偏差-8.6%（<10%，可接受）",
+      "impact": "理解层题目不足导致A1型概念辨析题深度不够。学生缺乏从机制/病理生理层面理解疾病的训练",
+      "auto_fixable": false,
+      "context_note": "补产批次设计侧重A2/A3识病应用（教师群通知要求），理解层偏低部分由设计意图导致。建议后续在M5/M8各补充2-3道机制/病理生理类理解题以提升覆盖"
+    },
+    {
+      "issue_id": "ISSUE-005",
+      "target": "Q.M5_A2_001",
+      "dimension": "D5",
+      "severity": "minor",
+      "description": "诊断'妄想性障碍'vs'精神分裂症（偏执型）'的边界说明不足。ICD-10中持久性妄想(标准d)可独立满足精分诊断门槛，但中国临床教学倾向孤立系统性妄想+无其他精分症状→妄想性障碍。当前解析未详细说明此鉴别逻辑的教材依据",
+      "current_text": "解析: '患者仅表现为系统性被害妄想（无幻觉、无阴性症状、无思维形式障碍），日常生活功能相对完好'",
+      "impact": "鉴别诊断推理链不完整，可能引起争议。需补充ICD/CCMD标准参照",
+      "auto_fixable": false
+    }
+  ],
+  "modification_instructions": [
+    {
+      "patch_id": "PATCH-D9-M8A1-001~005",
+      "target": "Q.M8_A1_001~005.explanation",
+      "operation": "add_source_anchor",
+      "current_value": "仅确认正确选项的解析",
+      "proposed_value": "为每题的每个干扰选项补充1-2句错误原因说明（如A1_001: A(发作性病程)→更符合心境障碍特征；C(首次后痊愈)→OCD自发缓解少见；D(阶梯式好转)→更符合器质性疾病；E(仅儿童期)→成人期亦可慢性化）",
+      "reason": "提升A1型概念题的学习价值，使学生理解完整排除逻辑",
+      "linked_issue_ids": ["ISSUE-001"],
+      "preconditions": ["不改变正确答案", "不改变题干和选项文本"],
+      "post_checks": ["每道A1题解析覆盖全部5个选项"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-D9-M8A2-002",
+      "target": "Q.M8_A2_002.explanation",
+      "operation": "replace_text",
+      "current_value": "患者因强迫行为导致丈夫提出离婚，首发损害领域是社会/家庭关系。教材P127指出强迫症状引起患者明显的痛苦和功能损害，社会关系损害在污染/清洗型强迫症中尤为突出。",
+      "proposed_value": "患者因强迫行为导致丈夫提出离婚，首发损害领域是社会/家庭关系(B)。排除依据：题干未提及工作能力下降(A)；双手皮肤破损为继发躯体损害而非最突出(C)；自知力完整排除认知损害(D)；题干未提及经济负担(E)。教材P127指出强迫症状引起患者明显的痛苦和功能损害，社会关系损害在污染/清洗型强迫症中尤为突出。",
+      "reason": "补充逐项排除逻辑，使A2型题的临床推理链完整",
+      "linked_issue_ids": ["ISSUE-002"],
+      "preconditions": ["不改变正确答案B", "不改变题干和选项文本"],
+      "post_checks": ["解析中排除全部4个干扰项"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-D9-M2A2-001",
+      "target": "Q.M2_A2_001.explanation",
+      "operation": "replace_text",
+      "current_value": "教材P24：谵妄特征——意识清晰度降低、大量幻觉错觉、常突然发作与中止、持续数分钟至数小时、事后遗忘或部分遗忘。本例老年患者，躯体疾病基础上急性起病、波动性病程、视幻觉、事后遗忘，典型谵妄表现。",
+      "proposed_value": "教材P24：谵妄特征——意识清晰度降低、大量幻觉错觉、常突然发作与中止、持续数分钟至数小时、事后遗忘或部分遗忘。本例老年患者，躯体疾病基础上急性起病、波动性病程(持续3小时缓解)、视幻觉、事后遗忘→典型谵妄(A)。排除：痴呆(B)呈慢性进行性而非波动性；精分(C)无意识障碍+幻觉以幻听为主；分离转换(D)无事后遗忘特征；急性应激障碍(E)有明确创伤事件+症状与之密切相关。",
+      "reason": "补充完整鉴别排除链，M2症状学是基础重点章节",
+      "linked_issue_ids": ["ISSUE-003"],
+      "preconditions": ["不改变正确答案A", "不改变题干和选项文本"],
+      "post_checks": ["解析中排除全部4个干扰项"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-D5-M5A2-001",
+      "target": "Q.M5_A2_001.explanation",
+      "operation": "replace_text",
+      "current_value": "患者仅表现为系统性被害妄想（无幻觉、无阴性症状、无思维形式障碍），日常生活功能相对完好（衣着整洁、对答切题），病程>1个月，更符合妄想障碍诊断。精神分裂症通常伴有其他精神病性症状。",
+      "proposed_value": "患者仅表现为系统性被害妄想（无幻觉、无阴性症状、无思维形式障碍），日常生活功能相对完好（衣着整洁、对答切题），病程>1个月，更符合妄想性障碍诊断(B)。鉴别要点：①ICD-10虽允许持久性妄想(d项)独立诊断精分，但中国临床教学共识要求≥2组症状方可诊断；②精分(偏执型)(A)通常伴有其他精神病性症状；③偏执性人格障碍(C)青少年期起病、无固定妄想；④双相(D)以心境高涨/低落为原发症状；⑤脑器质性(E)有明确病因+认知损害。教材P79：孤立妄想需其他更典型精分症状方能确诊。",
+      "reason": "补充ICD/中国教学共识的鉴别说明，消除诊断边界争议",
+      "linked_issue_ids": ["ISSUE-005"],
+      "preconditions": ["不改变正确答案B", "不改变题干和选项文本"],
+      "post_checks": ["解析中排除全部4个干扰项", "鉴别逻辑符合中国临床教学共识"],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-D16-BLOOM-001",
+      "target": "BLOOM_DISTRIBUTION.batch_rebalance",
+      "operation": "escalate_to_human",
+      "current_value": "理解层18.6%（目标35%），偏差-16.4%",
+      "proposed_value": "建议：①在M5(精分)补充2-3道病理生理/神经生化类理解题（如DA假说、Glu假说）；②在M8(强迫)补充2道CBT机制/SSRI药理学理解题。新增4-6题后理解层可升至约26%，与目标偏差缩至<10%",
+      "reason": "理解层短缺陷制A1型概念辨析深度，但补产背景+教师侧重应用型，当前可放行。标记为后续优化建议",
+      "linked_issue_ids": ["ISSUE-004"],
+      "preconditions": ["不阻塞当前批次通过"],
+      "post_checks": ["后续批次补充理解层题目"],
+      "risk_level": "auto_with_review"
+    }
+  ],
+  "escalations": [],
+  "batch023_specific_checks": {
+    "M8_舍曲林200mg_验证": {
+      "target": "M8_A3_002",
+      "result": "PASS",
+      "detail": "舍曲林治疗强迫症目标剂量150-200mg/d符合FDA说明书及临床指南。SSRI治疗OCD通常需高于抑郁剂量，200mg/d在安全范围内。教材P127-128未列出具体剂量但临床标准支持。"
+    },
+    "判断题_准确性": {
+      "target": "Judge_001~020",
+      "result": "ALL_PASS",
+      "detail": "20道判断题全部经RAG/教材验证通过。正确13题(65%)、错误7题(35%)，分布合理。错误题的错点有教材原文支撑（如M2_J002谵妄病程描述对照P24、M5_J001自知力对照P73、M6_J002 SSRI+MAOI禁忌对照P108）。"
+    },
+    "判断题_隐蔽性": {
+      "target": "Judge_error_questions",
+      "result": "GOOD",
+      "detail": "7道错误题均基于常见混淆概念设计：M2_J002(谵妄vs痴呆病程)、M3_J002(相同混淆)、M5_J001(自知力缺乏常见于精分)、M5_J003(心理社会因素作用)、M6_J002(药物相互作用禁忌)、M8_J001(强迫症自知力)、M9_J001(SSD诊断核心)。无'一眼假'的明显错误点。"
+    },
+    "D18_词重复线索": {
+      "target": "A2_识病题_31题",
+      "result": "PASS",
+      "detail": "A2型识病题均以症状/行为描述构建题干，正确选项为诊断名，题干描述词（如'怕脏''洗手''自语自笑'）未在诊断名选项中专门出现。如M8_A2_001题干含'门未锁好'→正确选项'强迫症'不含此词，干扰项'强迫性人格障碍'也含'强迫'二字。无泄题风险。"
+    },
+    "D19_收敛策略": {
+      "target": "ALL_50_MCQ",
+      "result": "PASS",
+      "detail": "正确选项与题干的术语共享计数未显著高于干扰项。A2/A3题的题干使用描述性语言而非诊断术语，避免了常见收敛线索。典型例：M5_A2_002题干未出现'精神分裂症'，正确选项B与干扰项D均含此词。"
+    },
+    "D20_B1型题": {
+      "target": "N/A",
+      "result": "N/A",
+      "detail": "本批次无B1型题"
+    },
+    "去重验证": {
+      "target": "vs_batch007_242题",
+      "result": "PASS",
+      "detail": "判断题覆盖基础知识，与batch007 A1型题存在知识重叠但题型不同，视为功能不重复。A2/A3型补产题聚焦四大重点疾病识病应用，与batch007覆盖范围互补而非重复。"
+    },
+    "术语一致性": {
+      "target": "全批次70题",
+      "result": "PASS",
+      "detail": "药物使用通用名（舍曲林/氟西汀/碳酸锂/利培酮/氯氮平），疾病名标准化（精神分裂症/双相障碍/强迫症/抑郁障碍），无商品名混用或术语分裂。"
+    }
+  }
+}

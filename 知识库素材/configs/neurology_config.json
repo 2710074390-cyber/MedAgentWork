@@ -1,0 +1,60 @@
+{
+  "subject": "神经病学",
+  "subject_code": "neurology",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 800,
+    "overlap": 180,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(综合征|syndrome|Wallenberg|Millard-Gubler|Foville|Parinaud|Weber|Benedikt|Claude|Dejerine|Guillain-Barré|Brown-Séquard)",
+        "description": "综合征描述不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(传导通路|传导束|神经通路|纤维联系|投射|交叉)",
+        "description": "传导通路不拆分"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(TOAST|OCSP|NINDS|ASCO)",
+        "description": "分型标准不拆分"
+      },
+      {
+        "type": "table_protect",
+        "context_sentences": 1
+      }
+    ],
+    "metadata_enrichment": ["has_syndrome", "has_anatomy_pathway", "has_staging"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.70,
+    "hybrid_search": true,
+    "keyword_weight": 0.5,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "面瘫": "面神经麻痹",
+      "眩晕": "良性阵发性位置性眩晕",
+      "帕金森": "帕金森病",
+      "GBS": "吉兰-巴雷综合征",
+      "TIA": "短暂性脑缺血发作"
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "subject": "外科学",
+  "subject_code": "surgery",
+  "version": "1.0",
+
+  "chunk_strategy": {
+    "chunk_size": 1000,
+    "overlap": 200,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": true,
+    "special_rules": [
+      {
+        "type": "table_protect",
+        "context_sentences": 1
+      },
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(TNM|Garden|Neer|AO分型|Mason|Schatzker|Salter-Harris|Weber|Lauge-Hansen)",
+        "description": "骨折/肿瘤分期分型不拆分"
+      },
+      {
+        "type": "sequence_protect",
+        "description": "手术步骤（术前→术中→术后）保持顺序",
+        "markers": ["术前", "术中", "术后", "手术步骤", "麻醉方式", "体位", "切口", "显露", "缝合", "引流", "并发症"]
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "适应证|禁忌证|适应症|禁忌症|绝对禁忌|相对禁忌",
+        "description": "手术适应证/禁忌证不拆分"
+      }
+    ],
+    "metadata_enrichment": ["has_procedure", "has_staging", "has_indications"]
+  },
+
+  "retrieval_strategy": {
+    "top_k": 25,
+    "top_n": 5,
+    "score_threshold": 0.70,
+    "hybrid_search": true,
+    "keyword_weight": 0.4,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "阑尾炎": "急性阑尾炎",
+      "胆囊切除": "胆囊切除术",
+      "疝修补": "腹股沟疝修补术",
+      "甲癌": "甲状腺癌"
+    }
+  }
+}
