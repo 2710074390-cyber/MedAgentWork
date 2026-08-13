@@ -248,8 +248,21 @@ def migrate_legacy(state):
     if not isinstance(state, dict):
         return state, changes
 
-    # 1. 批次级: steps 中大小写重复键（batch007 遗留 'completed'/'COMPLETED'）
+    def is_batch_key(key):
+        return isinstance(key, str) and key.startswith('batch')
+
+    # 1. 非批次顶层键自愈: 移除被误注入的 batch_id（v1.0 bug: 曾把 halt/
+    #    gate_system/system_config/merged_psychiatry 当批次注入 batch_id）
+    for key in list(state.keys()):
+        if not is_batch_key(key) and isinstance(state[key], dict):
+            polluted = state[key].pop('batch_id', None)
+            if polluted is not None:
+                changes.append(f'{key}: 移除误注入 batch_id={polluted!r}')
+
+    # 2. 批次级: steps 中大小写重复键（batch007 遗留 'completed'/'COMPLETED'）
     for key, batch in state.items():
+        if not is_batch_key(key):
+            continue
         if not isinstance(batch, dict):
             continue
         if batch.get('batch_id') is None:
@@ -262,7 +275,7 @@ def migrate_legacy(state):
                     del steps[dup]
                     changes.append(f'{key}: 移除重复键 {dup!r}（保留 COMPLETED）')
 
-    # 2. 顶层: schema 版本标记
+    # 3. 顶层: schema 版本标记
     if state.get('schema_version') != STATE_SCHEMA_VERSION:
         changes.append(f'schema_version → {STATE_SCHEMA_VERSION}')
     return state, changes
@@ -331,17 +344,24 @@ def main():
         return
 
     if args.migrate or args.dry_run:
-        state, changes = migrate_legacy(state)
+        # 直接读原始文件（绕过 load_state 的内存迁移），确保迁移可落盘
+        try:
+            with open(state_path(), 'r', encoding='utf-8') as f:
+                raw = json.load(f)
+        except Exception as e:
+            print(f'✗ 读取状态失败: {e}')
+            sys.exit(2)
+        state, changes = migrate_legacy(raw)
         if not changes:
             print('✓ 无需迁移')
         else:
             for c in changes:
                 print(f'  ↳ {c}')
-            if not args.dry_run:
-                state['schema_version'] = STATE_SCHEMA_VERSION
-                state['last_migrated'] = datetime.now().isoformat()
-                save_state(state)
-                print(f'✓ 已保存（schema_version={STATE_SCHEMA_VERSION}）')
+        if not args.dry_run:
+            state['schema_version'] = STATE_SCHEMA_VERSION
+            state['last_migrated'] = datetime.now().isoformat()
+            save_state(state)
+            print(f'✓ 已保存（schema_version={STATE_SCHEMA_VERSION}）')
         return
 
     if args.check or True:

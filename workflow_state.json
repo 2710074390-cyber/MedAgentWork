@@ -1,16 +1,14 @@
 {
   "active_batch": "batch024",
   "halt": {
-    "active": false,
-    "batch_id": "halt"
+    "active": false
   },
   "gate_system": {
     "version": "1.0",
     "installed": "2026-06-23T15:45:00+08:00",
     "script": "gate_check.py",
     "mode": "Orchestrator-as-Enforcer",
-    "description": "每次工作流状态转换前，Agent 1 必须运行 gate_check.py。验证未通过→halt→不可推进。",
-    "batch_id": "gate_system"
+    "description": "每次工作流状态转换前，Agent 1 必须运行 gate_check.py。验证未通过→halt→不可推进。"
   },
   "batch023": {
     "batch_id": "batch023",
@@ -202,8 +200,7 @@
       "review_v5.1": "复习资料/精神病学_主复习资料_v5.1.md",
       "merge_script": "scripts/merge_psychiatry.py"
     },
-    "notes": "三批次合并为统一题库。Bloom分析层已达标(7.3%>5%)。四大重点疾病占53.5%。12模块全覆盖。",
-    "batch_id": "merged_psychiatry"
+    "notes": "三批次合并为统一题库。Bloom分析层已达标(7.3%>5%)。四大重点疾病占53.5%。12模块全覆盖。"
   },
   "batch011": {
     "batch_id": "batch011",
@@ -1348,8 +1345,7 @@
         "recovery": "python gate_check.py --batch {batchID} --clear-halt"
       },
       "driver_event": "工程鲁棒性系统性诊断——batch003→014 积累的5起管线绕过+3次截断回归"
-    },
-    "batch_id": "system_config"
+    }
   },
   "batch009": {
     "batch_id": "batch009",
@@ -3821,5 +3817,5 @@
     "known_limitation": "贺银成真题索引外科学覆盖稀疏"
   },
   "schema_version": 2,
-  "last_migrated": "2026-08-13T22:30:27.476715"
+  "last_migrated": "2026-08-13T22:35:19.351220"
 }
