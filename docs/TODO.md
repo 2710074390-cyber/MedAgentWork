@@ -27,6 +27,9 @@
 - [x] **文档同步**：USER.md 5-Agent、操作流程.txt DSH 版、CONTEXT.md 协作规则/工具表、healthcheck 补 scripts/ 扫描
 - [x] **P0-1 统一题库数据层**：scripts/qbank.py（统一解析器/注册表/去重/查询/统计），1743 题迁移入库；
       ingest 自动注册；healthcheck 新增 H 维度；实测发现 1 组跨批次重复待裁决
+- [x] **P0-2 测试套件**：tests/ 四模块 44 用例（validate R1-R13 黄金用例 / workflow_state / qbank / 契约 schema），
+      scripts/run_tests.py 零依赖运行器；healthcheck 新增 I 维度（自动回归）；
+      修 agent4 schema final_gate 类型 bug（实际数据为字符串）
 
 ---
 

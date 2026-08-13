@@ -11,7 +11,7 @@ MedAgentWork 工程健康检查 v1.0
   python healthcheck.py --json       # JSON 输出（适合 CI/cron）
   python healthcheck.py --fix        # 自动修复可修复的问题
 
-检查维度（8 层）:
+检查维度（9 层）:
   A. 脚本存活性 — 所有 .py 文件可导入
   B. 文件完整性 — workflow_state 引用的文件存在，JSON 可解析
   C. 状态一致性 — 批次记录无断裂，无重复文件
@@ -20,8 +20,9 @@ MedAgentWork 工程健康检查 v1.0
   F. GoldenSet  — 金标准可用（--full 模式含回归）
   G. 知识库     — RAG 索引清单完整（--full 模式）
   H. 题库注册表 — qbank 注册表完整性 + 跨批次重复（P0-1 新增）
+  I. 测试套件   — tests/ 回归套件全部通过（P0-2 新增）
 """
-import sys, json, os, subprocess, hashlib, argparse
+import sys, json, os, re, subprocess, hashlib, argparse
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 from collections import defaultdict
@@ -432,7 +433,10 @@ def check_qbank():
     try:
         sys.path.insert(0, str(BASE / 'scripts'))
         import qbank
-        issues, warns, infos = qbank.check()
+        # 已知合并关系豁免（与 CLI `qbank check --ignore-pair` 一致）:
+        # batch023-ref(合并来源 242题) ↔ psychiatry-merged(合并结果 331题)
+        KNOWN_PAIRS = {frozenset({'batch023-ref', 'psychiatry-merged'})}
+        issues, warns, infos = qbank.check(ignore_pairs=KNOWN_PAIRS)
         s = qbank.stats()
         detail = f'注册表 {s["total"]} 题'
         if warns:
@@ -445,6 +449,37 @@ def check_qbank():
             results.append({'check': 'H1-registry', 'status': status, 'detail': detail})
     except Exception as e:
         results.append({'check': 'H1-registry', 'status': 'WARN', 'detail': f'qbank 检查异常: {e}'})
+    return results
+
+
+# ──────────────────────────────────────────
+# I. 测试套件（P0-2 回归防线）
+# ──────────────────────────────────────────
+
+def check_tests():
+    """运行 tests/ 回归套件（scripts/run_tests.py），失败即 FAIL。"""
+    results = []
+    runner = BASE / 'scripts' / 'run_tests.py'
+    if not runner.exists():
+        return [{'check': 'I1-tests', 'status': 'WARN',
+                 'detail': 'scripts/run_tests.py 不存在（P0-2 未部署）'}]
+    try:
+        result = subprocess.run(
+            [sys.executable, str(runner)],
+            capture_output=True, text=True, timeout=120,
+            encoding='utf-8', errors='replace'
+        )
+        # 从输出提取统计
+        m = re.search(r'✅ (\d+) 通过\s+✗ (\d+) 失败\s+⚠️ (\d+) 错误', result.stdout or '')
+        detail = f'测试: {m.group(0)}' if m else '测试: 输出无法解析'
+        if result.returncode == 0:
+            results.append({'check': 'I1-tests', 'status': 'PASS', 'detail': detail})
+        else:
+            results.append({'check': 'I1-tests', 'status': 'FAIL', 'detail': detail})
+    except subprocess.TimeoutExpired:
+        results.append({'check': 'I1-tests', 'status': 'WARN', 'detail': '测试超时 (>120s)'})
+    except Exception as e:
+        results.append({'check': 'I1-tests', 'status': 'WARN', 'detail': f'测试异常: {e}'})
     return results
 
 
@@ -525,6 +560,14 @@ def run_healthcheck(full=False):
     print(f"  [H] 题库注册表...", end=' ')
     r = check_qbank()
     sections['H'] = r
+    fails = sum(1 for x in r if x['status'] == 'FAIL')
+    warns = sum(1 for x in r if x['status'] == 'WARN')
+    print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+
+    # I (P0-2 测试套件)
+    print(f"  [I] 测试套件...", end=' ')
+    r = check_tests()
+    sections['I'] = r
     fails = sum(1 for x in r if x['status'] == 'FAIL')
     warns = sum(1 for x in r if x['status'] == 'WARN')
     print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')

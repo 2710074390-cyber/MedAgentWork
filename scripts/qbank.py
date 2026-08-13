@@ -36,14 +36,28 @@ REGISTRY_VERSION = 1
 # 路径
 # ──────────────────────────────────────────
 
+_REG_BASE = None  # 测试接缝：临时注册表根目录（tests 用）
+
+
+def _set_registry_base(base):
+    """测试用：将注册表读写重定向到临时目录（不污染真实注册表）。"""
+    global _REG_BASE
+    _REG_BASE = Path(base) if base else None
+
+
 def base_dir():
     return Path(__file__).resolve().parent.parent
 
+
+def _root():
+    return _REG_BASE if _REG_BASE else base_dir()
+
+
 def registry_path():
-    return base_dir() / 'question_bank' / 'registry.jsonl'
+    return _root() / 'question_bank' / 'registry.jsonl'
 
 def meta_path():
-    return base_dir() / 'question_bank' / 'registry_meta.json'
+    return _root() / 'question_bank' / 'registry_meta.json'
 
 
 # ──────────────────────────────────────────
@@ -193,6 +207,14 @@ def _save_meta(stats):
 
 def update_meta():
     """刷新注册表元信息（外部调用：ingest 注册后）。"""
+    _save_meta(stats())
+
+
+def init_registry_for_test():
+    """程序化初始化空注册表（测试用，写入当前 _REG_BASE 指向的目录）。"""
+    p = registry_path()
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text('', encoding='utf-8')
     _save_meta(stats())
 
 

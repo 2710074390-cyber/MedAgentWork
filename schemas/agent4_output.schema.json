@@ -35,7 +35,7 @@
         "escalations_for_human": { "type": ["array", "string"] },
         "hc6_independent_findings": { "type": ["array", "object"] },
         "hc7_consistency_scan": { "type": ["array", "object"] },
-        "final_gate": { "type": "object" }
+        "final_gate": { "type": ["object", "string"], "description": "实际数据为 'PASS' 等字符串或对象（2026-08-13 修正）" }
       },
       "additionalProperties": true
     },

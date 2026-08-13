@@ -96,11 +96,19 @@ python save.py --batch batch026                               # 剪贴板模式�
 
 ### 维护
 ```text
-python healthcheck.py                    # 7 维健康检查（46 个脚本存活性）
+python healthcheck.py                    # 9 维健康检查（46+ 脚本存活性 + 题库注册表 + 测试套件）
 python healthcheck.py --full             # 含 GoldenSet 回归 + RAG 检查
 python scripts/maintenance.py            # 自动归档/清理/跨区同步
 python verify_page_numbers.py --all      # 知识库页码真实性
 ```
+
+### 测试（P0-2 · 2026-08-13）
+```text
+python scripts/run_tests.py              # 零依赖回归套件（44 用例：规则/状态/注册表/schema）
+python scripts/run_tests.py -v           # 详细输出
+# 有 pytest 时: python -m pytest tests/ -q
+```
+说明：重构或改规则后必须跑一次；healthcheck [I] 维度会自动执行。
 
 ### RAG 知识库
 ```text
