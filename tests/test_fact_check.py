@@ -89,8 +89,8 @@ def test_golden_duplicate_and_conflict():
 
         def fake_keywords(text):
             if '高血压' in text:
-                # GS 6 词 vs 新题 5 词, 交集 {高血压,血压,控制}=3 → containment=3/6=0.5
-                return {'高血压', '血压', '控制', '目标', '一般', '应该'} if '应该' in text \
+                # GS 5 词 vs 新题 5 词, 交集 {高血压,血压,控制}=3 → containment=3/5=0.6
+                return {'高血压', '血压', '控制', '目标', '一般'} if '应该' in text \
                     else {'高血压', '血压', '控制', '多少', '合适'}
             return orig_keywords(text)
 

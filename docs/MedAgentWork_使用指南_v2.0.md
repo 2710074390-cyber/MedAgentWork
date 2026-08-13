@@ -117,7 +117,8 @@ python scripts/fact_check.py golden --file <题库.json>                      # 
 ```
 说明：`pages` 对照教材分块索引核验 source_pages（P0 占位符/越界=FAIL，不在索引=WARN，
 指南年份等非页码来源单独标注）；`golden` 用 jieba 分词对比金标准（下册 2754 题），
-containment≥0.7 判疑似重复、0.45-0.7 判相似，其中数值不一致（正确选项+解析 vs 金标准）判冲突（需人工核对）。
+containment≥0.85 且交集≥4 判疑似重复、≥0.55 判相似，其中双方数值≥2 且不一致=冲突（需人工核对）。
+已知限制：GS 下册 stem 为①②③多子题打包块 + gs_id 重复 469 组，重复判定已加防误报门槛。
 
 ### RAG 知识库
 ```text

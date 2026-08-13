@@ -194,6 +194,7 @@ def load_golden(gs_path=None):
         stem = x.get('stem') or x.get('stem_abbreviated') or ''
         if not stem:
             continue
+        stem = _strip_gs_prefix(stem)
         items.append({
             'gs_id': x.get('gs_id', 'GS-?'),
             'year': x.get('year', ''),
@@ -206,15 +207,28 @@ def load_golden(gs_path=None):
     return items
 
 
-def golden_crosscheck(questions, gs_items, top_k=3, dup_threshold=0.7, sim_threshold=0.45,
+def _strip_gs_prefix(stem):
+    """剥离金标准 stem 的编号/选项前缀（'150. ABCD ①...' → '①...'）。
+
+    GS 下册的 stem 是"题号+选项+①②③多子题打包块"，前缀是纯噪音
+    （2026-08-13 实测: 'ABCD' 等 token 参与相似度计算污染匹配）。
+    """
+    s = str(stem).strip()
+    s = re.sub(r'^\d+[\.、]?\s*[A-D]{1,4}\s*', '', s)
+    return s.strip()
+
+
+def golden_crosscheck(questions, gs_items, top_k=3, dup_threshold=0.85, sim_threshold=0.45,
                       min_inter=3, limit=None):
     """新题 vs 金标准。返回 results: [{qid, kind, gs_id, containment, jaccard, detail}]。
 
     kind: duplicate(疑似重复题) / conflict(术语相似但数值不一致) / similar(相似题,参考)
 
-    校准 (2026-08-13, GS 下册 2754 题): jieba 分词表示下，
-    containment ≥0.7 判重复；0.45-0.7 判相似/冲突；min_inter=3 过滤
-    短题干+泛化术语假阳性（n-gram 曾致 containment=0.6 假重复）。
+    校准 (2026-08-13, GS 下册 2754 题 + batch022 322 题实测):
+    - GS stem 是多子题打包块(①②③)，低 inter 高 containment = 子题主题撞车，非真重复
+    - 真重复（同题改写）: containment≈1.0, inter≥4（停用词过滤后短题干仅 4 词）
+    - 误报样本: 脊髓型颈椎病 0.75/3、HPV 0.8、甲亢瘫痪 0.75 → 均 <0.85
+    → duplicate: containment≥0.85 且 inter≥4；conflict: containment≥0.55 且双方数值≥2
     """
     results = []
     qs = questions[:limit] if limit else questions
@@ -233,16 +247,17 @@ def golden_crosscheck(questions, gs_items, top_k=3, dup_threshold=0.7, sim_thres
             cont = inter / max(min(len(kws), len(g['keywords'])), 1)
             if cont >= sim_threshold:
                 j = inter / max(len(kws | g['keywords']), 1)
-                scored.append((cont, j, g))
+                scored.append((cont, j, inter, g))  # inter 随条目携带，防分类时读到残留值
         scored.sort(key=lambda x: -x[0])
-        for cont, j, g in scored[:top_k]:
-            if cont >= dup_threshold:
+        for cont, j, inter, g in scored[:top_k]:
+            if cont >= dup_threshold and inter >= 4:
                 results.append({'qid': q['qid'], 'kind': 'duplicate', 'gs_id': g['gs_id'],
                                 'containment': round(cont, 2), 'jaccard': round(j, 2),
                                 'detail': f'疑似与金标准重复: {g["stem"][:50]}'})
             else:
                 shared = qnums & g['numbers']
-                if qnums and g['numbers'] and not shared:
+                # 冲突需较强相似(≥0.55)且双方数值≥2个（弱匹配+单值年龄/时间撞车=噪音）
+                if cont >= 0.55 and len(qnums) >= 2 and len(g['numbers']) >= 2 and not shared:
                     results.append({'qid': q['qid'], 'kind': 'conflict', 'gs_id': g['gs_id'],
                                     'containment': round(cont, 2), 'jaccard': round(j, 2),
                                     'detail': f'术语相似但数值不一致: 新题{qnums} vs 金标准{g["numbers"]} — 需人工核对'})
