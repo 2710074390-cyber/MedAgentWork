@@ -18,12 +18,20 @@
 
 ## 📂 目录结构
 
+> 本仓库**仅存放资料与题库数据**，项目代码（5-Agent 管线、质量门禁、测试）见 [MedAgentWork-Public](https://github.com/2710074390-cyber/MedAgentWork-Public)。
+
 ```
 ├── index.html              # 导航页（三主题 + 学期切换）
-└── 大三下/
-    ├── 押题卷/             # 5 套交互式答题 HTML
-    ├── 题库/               # 6 科 PDF 题库
-    └── 复习资料/           # 7 科 MD（4 科含 HTML）
+├── question_bank/          # 题库注册表（registry.jsonl + 元数据）
+├── 大三下/
+│   ├── 押题卷/             # 5 套交互式答题 HTML
+│   ├── 题库/               # 6 科 PDF 题库
+│   └── 复习资料/           # 7 科 MD（4 科含 HTML）
+├── 复习资料/               # 主复习资料 MD
+├── 知识库素材/             # RAG 素材（configs + OCR 文本 + subject_config）
+├── GoldenSet/              # 金标真题数据（结构化 JSON + 真题 MD）
+├── 中间产物/ 最终产物/      # 批次生产产物（batch027）
+└── 质检报告/               # QC 质检报告
 ```
 
 ## 🔒 隐私
