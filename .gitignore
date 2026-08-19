@@ -1,6 +1,6 @@
-# ── MedAgentWork .gitignore (2026-08-13 重构基线) ──
+# ── MedAgentWork .gitignore（合并：工具链 + 网页部署，2026-08-20）──
 
-# Python 缓存
+# ── Python / 工具链 ──
 __pycache__/
 *.pyc
 *.pyo
@@ -21,6 +21,7 @@ reports/
 
 # 临时目录（铁律：_scratch/temp 一周内清理）
 temp/
+tmp/
 
 # 历史归档（稳定内容，不入库保持仓库精简）
 archive/
@@ -31,5 +32,27 @@ archive/
 知识库素材/**/*.pdf
 知识库素材/**/*.docx
 
-# 本地环境文件
+# ── 网页部署（Cloudflare Pages / wrangler）──
+node_modules/
+dist/
+.cache/
+
+# wrangler 缓存（含账户信息，禁止上传）
+.wrangler/
+
+# 日志
+*.log
+npm-debug.log*
+
+# ── 系统 / 编辑器 ──
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── 环境变量（敏感信息）──
 .env
+.env.local
+.env.*.local
