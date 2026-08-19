@@ -37,6 +37,14 @@
       qbank 页码规范化修复（P310-P312 区间、指南年份不再误提取）；
       ignore-pairs 持久化到 registry_meta.json（--save，healthcheck 自动读取）
 
+## 🟢 已完成 (2026-08-20 · 成本优化 + MD 最终交付)
+
+- [x] **RAG 检索磁盘缓存**：search_kb.py 查询结果 + embed 双层缓存（key 含参数与索引配置签名，索引重建自动失效）；相同查询跨 Agent/批次命中缓存 → 0 API 调用；`--no-cache` 关闭、`--cache-clear` 清理（batch027 402 余额不足事件驱动）
+- [x] **RAG 成本降级模式**：`--no-rerank` 跳过付费 rerank，用 Stage1 余弦分数（成本约减半），余额不足时管线不中断
+- [x] **题库最终交付 MD 格式**：qbank.py 新增 `export-md` 子命令（统一解析器兼容 6 种字段变体，按模块分组，✅ 答案标记/解析/页码/Bloom）；medbatch/medfix/medmaster skill + Prompt 同步强制「GATE-A4 后必须导出 ALL_questions_FIXED.md」
+- [x] **注册表归档感知**：qbank check 支持 archive/ 路径回退（学期切换归档后 14 条注册失效问题修复）；新增 `rehome` 命令持久化重写失效路径
+- [x] **测试扩充**：tests/test_export_md.py 5 用例（export-md 格式/判断题原文答案/归档感知/rehome 读写），全量 46→51 用例通过
+
 ---
 
 ## 🟠 P1 — 架构级（两周内）

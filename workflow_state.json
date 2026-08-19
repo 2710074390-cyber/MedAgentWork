@@ -1,5 +1,5 @@
 {
-  "active_batch": "batch024",
+  "active_batch": "batch027",
   "halt": {
     "active": false
   },
@@ -3824,5 +3824,183 @@
     "known_limitation": "贺银成真题索引外科学覆盖稀疏"
   },
   "schema_version": 2,
-  "last_migrated": "2026-08-13T22:35:19.351220"
+  "last_migrated": "2026-08-13T22:35:19.351220",
+  "batch027": {
+    "batch_id": "batch027",
+    "status": "APPROVED",
+    "created": "2026-08-19T23:14:35.653386",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-08-19T23:15:00+08:00",
+        "completed_at": "2026-08-19T23:35:00+08:00",
+        "output": "中间产物/batch027/ALL_questions.json (100题) + 备考资料.md",
+        "question_count": 100,
+        "type_distribution": {
+          "A1": 43,
+          "A2": 27,
+          "A3": 12,
+          "B1": 10,
+          "X": 8
+        },
+        "module_distribution": {
+          "M1": 10,
+          "M2": 15,
+          "M3": 13,
+          "M4": 14,
+          "M5": 14,
+          "M6": 12,
+          "M7": 11,
+          "M8": 11
+        },
+        "Bloom_actual": {
+          "记忆": "30%",
+          "理解": "40%",
+          "应用": "24%",
+          "分析": "6%"
+        },
+        "validate_gate": "PASS (58 pass / 42 warn / 0 fail; R2=41 告警为结构豁免)",
+        "fact_check": "pages FAIL=0 WARN=0 | golden 2疑似重复+1数值冲突已人工核对裁决放行(同考点独立命题,数值与教材一致)",
+        "note": "RAG降级(402余额不足)，以素材PDF全文+重点难点+旧题为依据"
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-08-19T23:40:00+08:00",
+        "completed_at": "2026-08-19T23:55:00+08:00",
+        "output": "质检报告/batch027_质检报告.json",
+        "gate_decision": "PASS_WITH_FIXES",
+        "overall_score": 96.5,
+        "issues": "4 critical + 4 major + 2 minor (0 must_escalate)",
+        "bloom_distribution": {
+          "记忆": "30%",
+          "理解": "40%",
+          "应用": "24%",
+          "分析": "6%"
+        },
+        "bloom_deviation": "0% (目标30/40/24/6)",
+        "D20": 10,
+        "key_validations": "D5事实25+数值项逐值通过 | 极性7题待修 | D7答案位置A=60.9%待重排 | 跨批batch014无冲突",
+        "patch_count": 9
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-08-20T00:05:00+08:00",
+        "completed_at": "2026-08-20T00:15:00+08:00",
+        "output": "最终产物/batch027/ALL_questions_FIXED.json + AGENT4_追溯日志.json + AGENT4_修改声明.md + escalations_for_human.md",
+        "safe_auto": 4,
+        "auto_with_review": 5,
+        "rolled_back": 0,
+        "polarity_violations": 0,
+        "escalations": 0,
+        "questions_modified": 43,
+        "fix_summary": "D6极性4题真值表反转+3题标签修正 | D7答案位置重排38题(A56→均衡) | D2错别字1处 | 答案分布A18/B19/C18/D19/E18",
+        "validate_after": "PASS 58 / WARN 42 / FAIL 0 (与基线一致, 全为已声明豁免)",
+        "source_file_synced": true
+      },
+      "AGENT5": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-08-20T00:20:00+08:00",
+        "completed_at": "2026-08-20T00:28:00+08:00",
+        "output": "复习资料/内科学_呼吸系统_主复习资料.md (2424行, 147KB)",
+        "modules": "8/8全覆盖",
+        "callout_count": 77,
+        "details_count": 32,
+        "hc9_terminology": "50+条目",
+        "hc10_pages": "110个真实页码, 无占位符",
+        "hc11_sources": "全部带教材页码",
+        "folds": 32
+      },
+      "COMPLETED": {
+        "timestamp": "2026-08-20T00:40:00+08:00",
+        "final_product": "最终产物/batch027/ALL_questions_FIXED.json",
+        "review_material": "复习资料/内科学_呼吸系统_主复习资料.md",
+        "total": 100,
+        "types": {
+          "A1": 43,
+          "A2": 27,
+          "A3": 12,
+          "B1": 10,
+          "X": 8
+        },
+        "bloom": {
+          "记忆": "30%",
+          "理解": "40%",
+          "应用": "24%",
+          "分析": "6%"
+        },
+        "validate_final": "PASS 58 / WARN 42 / FAIL 0",
+        "test_suite": "46 passed / 0 failed / 0 errors (run_tests.py)",
+        "gate_status": "GATE-A2 PASS | GATE-A3 PASS | GATE-A4 PASS | GATE-FINAL PASS"
+      }
+    },
+    "lineage": [],
+    "subject": "内科学",
+    "chapter": "呼吸系统疾病（8模块：总论/COPD/支气管哮喘/肺部感染性疾病/肺结核/肺癌/肺动脉高压与肺心病/呼吸衰竭）",
+    "exam_type": "期末考试（高分通过）",
+    "semester": "大四上（2026秋）",
+    "target_count": 100,
+    "question_types": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "X型"
+    ],
+    "source_priority": "内科学笔记汇总.pdf(805页,呼吸系统p1-155) > 内科学1重点难点.doc > batch014呼吸题155题(参考防重复) > RAG(402余额不足降级)",
+    "source_files": [
+      "archive/输入素材_20260819/内科学/03、内科学笔记汇总.pdf",
+      "archive/输入素材_20260819/内科学/内科学1（重点与难点）.doc",
+      "中间产物/batch027/呼吸系统教材原文.md"
+    ],
+    "rag_status": "DEGRADED - SILICONFLOW 402余额不足，以素材文本+旧题为依据",
+    "target_bloom": {
+      "记忆": "30%",
+      "理解": "40%",
+      "应用": "25%",
+      "分析": "5%"
+    },
+    "module_targets": {
+      "M1(总论)": 10,
+      "M2(COPD)": 15,
+      "M3(支气管哮喘)": 13,
+      "M4(肺部感染)": 14,
+      "M5(肺结核)": 14,
+      "M6(肺癌)": 12,
+      "M7(肺动脉高压与肺心病)": 11,
+      "M8(呼吸衰竭)": 11
+    },
+    "gate_results": {
+      "GATE-A2": {
+        "status": "PASS",
+        "reason": "产出门禁通过 (FAIL=0, PASS=58, WARN=42)",
+        "checked_at": "2026-08-19T23:36:47.281898"
+      },
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
+        "checked_at": "2026-08-19T23:55:32.019428"
+      },
+      "halt": {
+        "active": false
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-08-20T00:46:04.739542"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "批次已签收 (APPROVED)，人工审核已覆盖终审",
+        "checked_at": "2026-08-20T00:45:19.307202"
+      }
+    },
+    "final_review": {
+      "hc9_terminology_appendix": "PASS - 术语同意异名对照表50+条目（COPD/AECOPD/2HRZE/PaO2-PaCO2/PEEP/GOLD）",
+      "hc10_page_authenticity": "PASS - 110个真实页码(2-154)，程序化反查教材原文全部命中，无占位符",
+      "hc11_outline_page_marking": "PASS - 来源锚点全部标注教材页码",
+      "json_valid": true
+    },
+    "approved_at": "2026-08-20T00:30:22.163259"
+  }
 }

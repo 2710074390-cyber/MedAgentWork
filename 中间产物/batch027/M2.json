@@ -1,0 +1,647 @@
+[
+  {
+    "id": "batch027-M2-A1-001",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "COPD肺功能分级（GOLD）",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "根据GOLD分级，COPD患者FEV1占预计值百分比为50%~79%时属于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "GOLD1级：轻度"
+      },
+      {
+        "label": "B",
+        "text": "GOLD2级：中度"
+      },
+      {
+        "label": "C",
+        "text": "GOLD3级：重度"
+      },
+      {
+        "label": "D",
+        "text": "GOLD4级：极重度"
+      },
+      {
+        "label": "E",
+        "text": "分级无法确定"
+      }
+    ],
+    "answer": "B",
+    "explanation": "GOLD分级按FEV1占预计值百分比：1级≥80%、2级50%~79%、3级30%~49%、4级＜30%；一秒率（FEV1/FVC）定性、一秒量（FEV1%pred）定量。教材P9。",
+    "source_page": "教材P9",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A1-002",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "长期家庭氧疗",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "COPD患者长期家庭氧疗时，鼻导管吸氧流量一般为？",
+    "options": [
+      {
+        "label": "A",
+        "text": "3.5~4L/min"
+      },
+      {
+        "label": "B",
+        "text": "3~3.5L/min"
+      },
+      {
+        "label": "C",
+        "text": "2.5~3L/min"
+      },
+      {
+        "label": "D",
+        "text": "2~2.5L/min"
+      },
+      {
+        "label": "E",
+        "text": "1~2L/min"
+      }
+    ],
+    "answer": "E",
+    "explanation": "长期家庭氧疗采用低流量吸氧（1~2L/min，氧浓度约30%，氧浓度=21+4×氧流量），目标PaO2≥60mmHg、SaO2≥90%，以保持低氧对外周化学感受器的刺激。教材P12。",
+    "source_page": "教材P12",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch027-M2-A1-003",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "COPD并发症首选检查",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "COPD患者突发胸痛、呼吸困难，怀疑并发自发性气胸，首选的检查是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "肺功能检查"
+      },
+      {
+        "label": "B",
+        "text": "动脉血气分析"
+      },
+      {
+        "label": "C",
+        "text": "胸部X线"
+      },
+      {
+        "label": "D",
+        "text": "胸部CT"
+      },
+      {
+        "label": "E",
+        "text": "超声心动图"
+      }
+    ],
+    "answer": "C",
+    "explanation": "COPD并发气胸首选X线（弧形细线条外是无肺纹理的透亮区）；COPD本身首选肺功能，并发肺性脑病首选动脉血气分析。教材P10。",
+    "source_page": "教材P10",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A1-004",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "吸氧浓度增量估算",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "鼻导管吸氧时，氧流量每增加1L/min，吸氧浓度约增加？",
+    "options": [
+      {
+        "label": "A",
+        "text": "2%"
+      },
+      {
+        "label": "B",
+        "text": "4%"
+      },
+      {
+        "label": "C",
+        "text": "6%"
+      },
+      {
+        "label": "D",
+        "text": "8%"
+      },
+      {
+        "label": "E",
+        "text": "10%"
+      }
+    ],
+    "answer": "B",
+    "explanation": "吸氧浓度（%）≈21+4×氧流量（L/min），即氧流量每增加1L/min，氧浓度约增加4%；1~2L/min低流量吸氧时氧浓度约25%~29%（约30%）。教材P12。",
+    "source_page": "教材P12",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A1-005",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "内源性PEEP机制",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "COPD患者出现内源性PEEP的主要机制是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "肺泡表面活性物质分泌增多"
+      },
+      {
+        "label": "B",
+        "text": "呼气末肺泡残气增加致肺泡内压大于大气压"
+      },
+      {
+        "label": "C",
+        "text": "吸气阻力增加致胸腔负压增大"
+      },
+      {
+        "label": "D",
+        "text": "呼吸肌收缩增强使通气量增加"
+      },
+      {
+        "label": "E",
+        "text": "气道分泌物减少使气道阻力下降"
+      }
+    ],
+    "answer": "B",
+    "explanation": "COPD呼气困难→呼气末肺泡残气量增加→肺泡内压大于大气压（内源性PEEP），患者须先克服内源性PEEP才能产生肺泡内负压开始吸气，明显增加呼吸做功致呼吸肌疲劳。教材P7。",
+    "source_page": "教材P7",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A1-006",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "呼酸补碱指征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "COPD急性加重并发呼吸性酸中毒时，考虑补碱的血气指征是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "动脉血pH值＜7.10"
+      },
+      {
+        "label": "B",
+        "text": "动脉血pH值＜7.15"
+      },
+      {
+        "label": "C",
+        "text": "动脉血pH值＜7.20"
+      },
+      {
+        "label": "D",
+        "text": "动脉血pH值＜7.25"
+      },
+      {
+        "label": "E",
+        "text": "动脉血pH值＜7.30"
+      }
+    ],
+    "answer": "C",
+    "explanation": "呼吸系统疾病所致酸中毒多不补碱，应以改善呼吸为主，仅当pH＜7.20（<7.2）时才考虑补碱；补碱过度可致代碱→氧解离曲线左移→加重组织缺氧（宁酸勿碱）。教材P13。",
+    "source_page": "教材P13",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A1-007",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "COPD稳定期综合评估分组",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "COPD稳定期综合评估中，去年中度急性加重≥2次或曾因急性加重住院，该患者属于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "A组低风险症状少"
+      },
+      {
+        "label": "B",
+        "text": "B组低风险症状多"
+      },
+      {
+        "label": "C",
+        "text": "E组高风险"
+      },
+      {
+        "label": "D",
+        "text": "C组中风险"
+      },
+      {
+        "label": "E",
+        "text": "D组低风险"
+      }
+    ],
+    "answer": "C",
+    "explanation": "COPD稳定期按急性加重风险（去年中度加重≥2次或因加重住院=高风险）与症状（mMRC）分A、B、E组；E组（高风险）予LABA+LAMA，必要时加用ICS（血嗜酸性粒细胞≥300）。教材P11。",
+    "source_page": "教材P11",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A2-001",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "COPD并发症判断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "COPD患者，突发左侧胸痛、呼吸困难加重，查体：左肺叩诊鼓音，呼吸音明显减弱或消失。该患者最可能的并发症是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "细菌性肺炎"
+      },
+      {
+        "label": "B",
+        "text": "胸腔积液"
+      },
+      {
+        "label": "C",
+        "text": "自发性气胸"
+      },
+      {
+        "label": "D",
+        "text": "急性肺栓塞"
+      },
+      {
+        "label": "E",
+        "text": "急性心肌梗死"
+      }
+    ],
+    "answer": "C",
+    "explanation": "COPD（肺大泡破裂）并发自发性气胸：突发胸痛、继之呼吸困难，患侧叩诊鼓音、语颤及呼吸音减弱或消失，纵隔可向健侧移位，首选X线确诊。教材P9。",
+    "source_page": "教材P9",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A2-002",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "COPD稳定期分组治疗",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "COPD稳定期患者，mMRC分级为3级（平地走100米需停下来喘气），去年无急性加重。该患者首选的治疗方案是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "单一支气管扩张剂"
+      },
+      {
+        "label": "B",
+        "text": "LABA联合LAMA"
+      },
+      {
+        "label": "C",
+        "text": "单用吸入糖皮质激素"
+      },
+      {
+        "label": "D",
+        "text": "口服糖皮质激素"
+      },
+      {
+        "label": "E",
+        "text": "长期家庭氧疗"
+      }
+    ],
+    "answer": "B",
+    "explanation": "该患者症状多（mMRC≥2级）但无高风险（去年无急性加重）→B组，首选LABA+LAMA；A组（低风险症状少）用一种支气管扩张剂，E组（高风险）才考虑加用ICS。教材P11。",
+    "source_page": "教材P11",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A2-003",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "AECOPD分级",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "COPD患者急性加重，动脉血气示PaCO2 78mmHg、PaO2 52mmHg，患者嗜睡、意识模糊。该患者AECOPD分级属于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ⅰ级"
+      },
+      {
+        "label": "B",
+        "text": "Ⅱ级"
+      },
+      {
+        "label": "C",
+        "text": "Ⅲ级"
+      },
+      {
+        "label": "D",
+        "text": "Ⅳ级"
+      },
+      {
+        "label": "E",
+        "text": "无法分级"
+      }
+    ],
+    "answer": "C",
+    "explanation": "AECOPD分级：Ⅰ级无高碳酸血症、无呼吸衰竭、无意识改变；Ⅱ级有高碳酸血症、有呼吸衰竭、无意识改变；Ⅲ级有高碳酸血症、有呼吸衰竭、有意识状态改变（肺性脑病），需有创机械通气。教材P12。",
+    "source_page": "教材P12",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A2-004",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "CO2潴留机制分析",
+    "type": "A2",
+    "polarity": "negative",
+    "bloom": "分析",
+    "stem": "COPD患者，动脉血气示pH 7.31，PaCO2 78mmHg，PaO2 52mmHg。导致该患者PaCO2升高的机制**不包括**？",
+    "options": [
+      {
+        "label": "A",
+        "text": "肺泡通气量下降"
+      },
+      {
+        "label": "B",
+        "text": "无效腔通气增加"
+      },
+      {
+        "label": "C",
+        "text": "内源性PEEP"
+      },
+      {
+        "label": "D",
+        "text": "弥散功能障碍"
+      },
+      {
+        "label": "E",
+        "text": "呼吸肌疲劳"
+      }
+    ],
+    "answer": "D",
+    "explanation": "弥散功能障碍只导致缺氧、不引起CO2潴留（CO2溶解度大、扩散系数约为O2的20倍，扩散快）；肺泡通气量下降、无效腔通气增加、内源性PEEP、呼吸肌疲劳均可加重CO2潴留。教材P7。",
+    "source_page": "教材P7",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch027-M2-A3-001a",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "COPD病例组（诊断/机制/诱因）",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，70岁，吸烟40年。反复咳嗽、咳痰20年，活动后气短5年，加重伴咳黄脓痰3天入院，发热38.8℃。查体：桶状胸，双肺呼吸音低，可闻及散在干湿啰音。肺功能：吸入支气管扩张剂后FEV1/FVC=0.55，FEV1占预计值42%。该患者最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "支气管扩张症"
+      },
+      {
+        "label": "B",
+        "text": "浸润型肺结核"
+      },
+      {
+        "label": "C",
+        "text": "左心功能不全"
+      },
+      {
+        "label": "D",
+        "text": "慢性阻塞性肺疾病"
+      },
+      {
+        "label": "E",
+        "text": "支气管哮喘"
+      }
+    ],
+    "answer": "D",
+    "explanation": "中老年、长期吸烟、慢性咳痰喘+吸入支气管扩张剂后FEV1/FVC仍＜70%（0.55）→持续气流受限，符合COPD；哮喘为可逆气流受限，支扩以大量脓痰咯血为主。教材P9。",
+    "source_page": "教材P9",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-A3-001b",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "COPD病例组（诊断/机制/诱因）",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "该患者出现低氧血症最主要的机制是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "弥散功能障碍"
+      },
+      {
+        "label": "B",
+        "text": "肺内分流量增加"
+      },
+      {
+        "label": "C",
+        "text": "通气血流比例失调"
+      },
+      {
+        "label": "D",
+        "text": "外周氧耗量增加"
+      },
+      {
+        "label": "E",
+        "text": "肺泡通气量下降"
+      }
+    ],
+    "answer": "E",
+    "explanation": "COPD细支气管狭窄、梗阻→肺泡通气量下降，既导致缺氧又引起CO2潴留，是低氧血症最主要的机制；VA/Q失调、弥散障碍为换气障碍，仅部分参与。教材P7。",
+    "source_page": "教材P7",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch027-M2-A3-001c",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "COPD病例组（诊断/机制/诱因）",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "该患者此次急性加重最常见的病因是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "药物使用不当"
+      },
+      {
+        "label": "B",
+        "text": "上呼吸道感染"
+      },
+      {
+        "label": "C",
+        "text": "剧烈运动"
+      },
+      {
+        "label": "D",
+        "text": "气候变化"
+      },
+      {
+        "label": "E",
+        "text": "精神紧张"
+      }
+    ],
+    "answer": "B",
+    "explanation": "感染是COPD急性加重最常见的原因，常见病原体有肺炎链球菌、流感嗜血杆菌、卡他莫拉菌、金葡菌，故急性加重期需应用抗生素并加强支气管舒张剂治疗。教材P13。",
+    "source_page": "教材P13",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M2-X-001",
+    "module": "M2",
+    "module_name": "慢性阻塞性肺疾病",
+    "topic": "COPD肺功能改变",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于COPD患者肺功能改变的描述，正确的有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "FEV1/FVC降低"
+      },
+      {
+        "label": "B",
+        "text": "RV/TLC升高"
+      },
+      {
+        "label": "C",
+        "text": "DLCO降低"
+      },
+      {
+        "label": "D",
+        "text": "动态肺顺应性先降低"
+      },
+      {
+        "label": "E",
+        "text": "静态肺顺应性降低"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "COPD动态顺应性先降低（细支气管不完全阻塞致气道阻力增加）、静态顺应性升高（弹性成分破坏、弹性阻力下降，动低静高）；FEV1/FVC下降、RV/TLC明显升高（＞40%为肺气肿）、DLCO降低。教材P6。",
+    "source_page": "教材P6",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  }
+]

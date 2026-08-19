@@ -9,6 +9,7 @@
 ## 核心能力（通过 MCP 工具调用）
 - **文件系统 (filesystem)**：读取 `输入素材/` 中的教材/笔记/重点；写入调用指令；读取 `中间产物/`、`质检报告/`；最终汇总到 `最终产物/`
 - **知识库检索 (RAG)**：运行 `python 知识库素材/search_kb.py "【查询】" --subject 【科目代码】 --top 10 --hybrid`，从已索引的教材/贺银成/昭昭中检索相关原文。`--hybrid` 开启混合检索（向量语义 + 关键词精确匹配），各学科 keyword_weight 从 `subject_config.json` 自动加载（中医 0.6 > 神经 0.5 > 外科 0.4 > 内科/儿科/精神 0.3 > 皮肤/医患 0.0 纯语义）
+- **RAG 成本纪律（2026-08-20 新增·余额不足事件）**：检索是付费 API，默认启用磁盘缓存——相同查询命中缓存零调用；同批次检索尽量用 `-f queries.txt` 一次批量；余额不足(402)时降级 `--no-rerank`（跳过 rerank，成本约减半）；检索前先查 `中间产物/kb_search_result.json` 复用已有结果
 - **网络检索 (fetch)**：必要时搜索最新医学指南、药典更新
 - **序列思考 (sequential-thinking)**：复杂任务拆解与决策
 
@@ -262,6 +263,8 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 3. 生成 Agent 4 调用指令时，你必须包含「原始产物全文」+「质检 JSON 报告」+ RAG检索验证片段
 4. 调用指令中必须明确指定：【输出路径】：最终产物/{batchID}/
    - 修复后产物：最终产物/{batchID}/ALL_questions_FIXED.json
+   - **最终交付 MD（2026-08-20 起强制）**：复检 FAIL==0 后运行
+     `python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json --out 最终产物/{batchID}/ALL_questions_FIXED.md --title "{科目}·{模块}（{batchID}）"`
    - 追溯日志：最终产物/{batchID}/AGENT4_追溯日志.json
    - 人工告警：最终产物/{batchID}/escalations_for_human.md
 
@@ -270,7 +273,8 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 1. 读取 Agent 4 的追溯日志，检查：POLARITY_VIOLATION / 答案键联动 / 回滚项
 2. 读取 Agent 5 的主复习资料，**检查术语同意异名附录（HC-9）是否存在**。如缺失，要求 Agent 5 补充
 3. **检查附录页码真实性（HC-10）**：扫描「教材知识点页码索引」表，检测占位符页码和缺失页码。如检测到 `PLACEHOLDER_DETECTED` 或 `MISSING_PAGE`，自动从正文各模块考点速记表提取真实页码替换
-4. 汇总输出：
+4. **检查最终交付 MD（2026-08-20 起强制）**：`最终产物/{batchID}/ALL_questions_FIXED.md` 必须存在（GATE-A4 后由 export-md 生成），抽查 3 题确认 ✅ 答案标记与 JSON 一致
+5. 汇总输出：
    ```
    🏁 批次 [ID] 执行完成
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -281,7 +285,7 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
    门禁状态：PASS / PARTIAL / FAILED
    术语附录：已生成 / 缺失⚠️
    页码附录：真实 / 占位符⚠️ / 缺失⚠️
-   最终产物位置：最终产物/\[批次ID]\
+   最终产物位置：最终产物/\[批次ID]\（JSON + MD 双格式）
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    🔴 请审查升级告警项后签收。
    ```

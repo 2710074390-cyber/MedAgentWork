@@ -536,6 +536,36 @@ def gate_agent4(batch_id, batch_data):
         except Exception:
             pass
 
+    # 检查最终交付 MD（2026-08-20 起强制）：
+    # 每个 ALL_questions_FIXED*.json 必须有同目录 ALL_questions_FIXED*.md
+    # （由 `python scripts/qbank.py export-md` 生成，用户可读最终交付格式）
+    for jf in json_files:
+        md_expected = jf.with_suffix('.md')
+        if not md_expected.exists():
+            issues.append({
+                'gate_sub': 'GATE-A4-MD',
+                'status': 'BLOCKED',
+                'reason': f'{jf.name} 缺少最终交付 MD 文件 {md_expected.name}。'
+                          f'请运行 python scripts/qbank.py export-md --file {jf.name} --out {md_expected.name}',
+                'rule': '最终交付 MD 格式 (2026-08-20 起强制)',
+            })
+        else:
+            # 抽查 MD 中包含答案标记（✅ 覆盖率 ≥50%，防空转）
+            try:
+                md_text = md_expected.read_text(encoding='utf-8')
+                total_q = sum(1 for line in md_text.splitlines() if line.startswith('### '))
+                check_marks = md_text.count('✅')
+                if total_q > 0 and check_marks < max(1, total_q * 0.5):
+                    issues.append({
+                        'gate_sub': 'GATE-A4-MD',
+                        'status': 'BLOCKED',
+                        'reason': f'{md_expected.name} 答案标记覆盖率过低 '
+                                  f'({check_marks}✅ / {total_q}题)。MD 必须包含 ✅ 答案标记。',
+                        'rule': 'MD答案标记 (save.py MD答案标记规范)',
+                    })
+            except Exception:
+                pass
+
     if issues:
         return {
             'gate': 'GATE-A4',
@@ -547,7 +577,7 @@ def gate_agent4(batch_id, batch_data):
     return {
         'gate': 'GATE-A4',
         'status': 'PASS',
-        'reason': '修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净)',
+        'reason': '修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)',
     }
 
 

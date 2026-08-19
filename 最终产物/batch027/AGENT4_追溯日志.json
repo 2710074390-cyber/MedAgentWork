@@ -1,0 +1,1994 @@
+{
+  "execution_metadata": {
+    "execution_id": "MODEXEC-20260819-batch027",
+    "qc_report_id": "QC-20260819-batch027",
+    "execution_time": "2026-08-19T23:59:26.335013",
+    "total_patches_received": 9,
+    "safe_auto_executed": 4,
+    "auto_with_review_executed": 5,
+    "must_escalate_skipped": 0,
+    "rolled_back": 0,
+    "polarity_violations": 0,
+    "source_file_synced": true,
+    "hc7_consistency_scan": {
+      "typo_residue_积液积液": 0,
+      "negative_count": 4,
+      "true_reverse_questions": [
+        "batch027-M2-A2-004",
+        "batch027-M4-A1-005",
+        "batch027-M4-A2-004",
+        "batch027-M7-A2-003"
+      ],
+      "total_questions": 100,
+      "x_answers": {
+        "batch027-M2-X-001": "ABCD",
+        "batch027-M3-X-001": "ABCE",
+        "batch027-M4-X-001": "ABCD",
+        "batch027-M5-X-001": "ABCD",
+        "batch027-M5-X-002": "ABCD",
+        "batch027-M6-X-001": "ABCD",
+        "batch027-M7-X-001": "ABCD",
+        "batch027-M8-X-001": "ABCD"
+      }
+    }
+  },
+  "patch_log": [
+    {
+      "patch_id": "PATCH-HX-001",
+      "status": "EXECUTED",
+      "target": "batch027-M2-A2-004.option_polarities",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": {
+          "A": false,
+          "B": false,
+          "C": false,
+          "D": true,
+          "E": false
+        },
+        "after": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": false,
+          "E": true
+        }
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M2-A2-004 存在且 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "answer_key 指向的选项文本与解析一致（不改选项文本）",
+          "passed": true
+        },
+        {
+          "condition": "原始 option_polarities 与报告一致 before={'A': False, 'B': False, 'C': False, 'D': True, 'E': False}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "答案选项极性必须为 false（反向题不变式）",
+          "passed": true
+        },
+        {
+          "check": "其余选项极性必须为 true",
+          "passed": true
+        },
+        {
+          "check": "answer_key 不变，选项文本未改动",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "真反选题（机制**不包括**）：答案D(弥散功能障碍)为假机制，极性必须false，其余true"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=D 不变"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-002",
+      "status": "EXECUTED",
+      "target": "batch027-M4-A1-005.option_polarities",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": {
+          "A": false,
+          "B": false,
+          "C": false,
+          "D": true,
+          "E": false
+        },
+        "after": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": false,
+          "E": true
+        }
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M4-A1-005 存在且 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "answer_key 指向的选项文本与解析一致（不改选项文本）",
+          "passed": true
+        },
+        {
+          "condition": "原始 option_polarities 与报告一致 before={'A': False, 'B': False, 'C': False, 'D': True, 'E': False}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "答案选项极性必须为 false（反向题不变式）",
+          "passed": true
+        },
+        {
+          "check": "其余选项极性必须为 true",
+          "passed": true
+        },
+        {
+          "check": "answer_key 不变，选项文本未改动",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "真反选题（对支原体**无效**）：答案D(青霉素)为假陈述，极性必须false，其余true"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=D 不变"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-003",
+      "status": "EXECUTED",
+      "target": "batch027-M4-A2-004.option_polarities",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": {
+          "A": false,
+          "B": false,
+          "C": false,
+          "D": true,
+          "E": false
+        },
+        "after": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": false,
+          "E": true
+        }
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M4-A2-004 存在且 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "answer_key 指向的选项文本与解析一致（不改选项文本）",
+          "passed": true
+        },
+        {
+          "condition": "原始 option_polarities 与报告一致 before={'A': False, 'B': False, 'C': False, 'D': True, 'E': False}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "答案选项极性必须为 false（反向题不变式）",
+          "passed": true
+        },
+        {
+          "check": "其余选项极性必须为 true",
+          "passed": true
+        },
+        {
+          "check": "answer_key 不变，选项文本未改动",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "真反选题（痰液特征对应**错误**）：答案D为错误对应，极性必须false，其余true"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=D 不变"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-004",
+      "status": "EXECUTED",
+      "target": "batch027-M7-A2-003.option_polarities",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": {
+          "A": false,
+          "B": false,
+          "C": false,
+          "D": false,
+          "E": true
+        },
+        "after": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": true,
+          "E": false
+        }
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M7-A2-003 存在且 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "answer_key 指向的选项文本与解析一致（不改选项文本）",
+          "passed": true
+        },
+        {
+          "condition": "原始 option_polarities 与报告一致 before={'A': False, 'B': False, 'C': False, 'D': False, 'E': True}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "答案选项极性必须为 false（反向题不变式）",
+          "passed": true
+        },
+        {
+          "check": "其余选项极性必须为 true",
+          "passed": true
+        },
+        {
+          "check": "answer_key 不变，选项文本未改动",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "真反选题（强心苷指征**不包括**）：答案E(双下肢水肿明显者)为假陈述，极性必须false，其余true"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=E 不变"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-005",
+      "status": "EXECUTED",
+      "target": "batch027-M3-A3-001c.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M3-A3-001c 存在",
+          "passed": true
+        },
+        {
+          "condition": "题干为\"主要原因/原因是\"正面设问",
+          "passed": true
+        },
+        {
+          "condition": "答案键 A 且 option_polarities[A]=true",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity=positive",
+          "passed": true
+        },
+        {
+          "check": "正选题校验：答案选项唯一 true",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 保持不变",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "正面设问（答案A为真陈述：地塞米松起效慢、不良反应大）"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=A 不变，option_polarities 未动"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-006",
+      "status": "EXECUTED",
+      "target": "batch027-M4-A3-001c.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M4-A3-001c 存在",
+          "passed": true
+        },
+        {
+          "condition": "题干为\"主要原因/原因是\"正面设问",
+          "passed": true
+        },
+        {
+          "condition": "答案键 A 且 option_polarities[A]=true",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity=positive",
+          "passed": true
+        },
+        {
+          "check": "正选题校验：答案选项唯一 true",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 保持不变",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "正面设问（答案A为真陈述：不产生毒素、无肺组织坏死）"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=A 不变，option_polarities 未动"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-007",
+      "status": "EXECUTED",
+      "target": "batch027-M7-A3-001c.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M7-A3-001c 存在",
+          "passed": true
+        },
+        {
+          "condition": "题干为\"主要原因/原因是\"正面设问",
+          "passed": true
+        },
+        {
+          "condition": "答案键 A 且 option_polarities[A]=true",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity=positive",
+          "passed": true
+        },
+        {
+          "check": "正选题校验：答案选项唯一 true",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 保持不变",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "正面设问（答案A为真陈述：利尿可致痰液黏稠、呼酸合并代碱）"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=A 不变，option_polarities 未动"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-009",
+      "status": "EXECUTED",
+      "target": "batch027-M1-A1-001.explanation",
+      "operation": "replace_text",
+      "diff": {
+        "before": "语音震颤增强见于肺实变（大叶性肺炎、大片肺梗死）、肺内空洞及胸腔积液积液上方，因传导增强；COPD、哮喘、肺不张、肺水肿、胸腔积液、气胸均使语音震颤减弱。教材P20。",
+        "after": "语音震颤增强见于肺实变（大叶性肺炎、大片肺梗死）、肺内空洞及胸腔积液上方，因传导增强；COPD、哮喘、肺不张、肺水肿、胸腔积液、气胸均使语音震颤减弱。教材P20。"
+      },
+      "precondition_results": [
+        {
+          "condition": "原文含\"胸腔积液积液上方\"",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "解析文本无重复词\"积液积液\"",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "本题为 positive 正选题，不改极性"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "仅改解析文本，答案键不受影响"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-008",
+      "status": "EXECUTED",
+      "target": "GLOBAL.answer_position (92 道单选)",
+      "operation": "fix_format",
+      "diff": {
+        "before": "A=56(60.9%) B=9 C=15 D=9 E=3；M6 全 A、M8 全 A",
+        "after": "A1/A2/A3 目标 {'A': 16, 'B': 17, 'C': 16, 'D': 17, 'E': 16}；92 道单选实际 {'A': 18, 'B': 19, 'C': 18, 'D': 19, 'E': 18}",
+        "moved_questions": 38,
+        "numeric_mirrored_count": 2
+      },
+      "precondition_results": [
+        {
+          "condition": "重排仅调整选项顺序，不改动选项文本与解析内容",
+          "passed": true
+        },
+        {
+          "condition": "每题同步更新 answer_key 与 option_polarities（HC-2 答案联动）",
+          "passed": true
+        },
+        {
+          "condition": "数值型选项保持升/降序排列逻辑（D7）",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "重排后 92 道单选答案分布每字母 17-21 题",
+          "passed": true,
+          "detail": "实际分布 {'A': 18, 'B': 19, 'C': 18, 'D': 19, 'E': 18}"
+        },
+        {
+          "check": "逐题 answer_key 指向文本与原正确选项一致",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 与选项标签/真值联动一致（HC-2 + HC-3 反向题保护）",
+          "passed": true
+        },
+        {
+          "check": "数值型选项保持升/降序排列逻辑（R3/D7）",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "4 道真反选题（答案极性 false）重排保护校验通过"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "全部重排题 answer_key 指向原正确文本"
+      },
+      "failure_reason": null,
+      "moves": [
+        {
+          "qid": "batch027-M8-A1-001",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "二氧化碳分压>50mmHg"
+        },
+        {
+          "qid": "batch027-M8-A1-002",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "高浓度吸氧"
+        },
+        {
+          "qid": "batch027-M8-A1-003",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "≤18mmHg"
+        },
+        {
+          "qid": "batch027-M8-A1-004",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "肾脏代偿性重吸收HCO₃⁻增多"
+        },
+        {
+          "qid": "batch027-M8-A2-001",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "Ⅱ型呼吸衰竭"
+        },
+        {
+          "qid": "batch027-M8-A2-002",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "高浓度吸氧加重CO2潴留"
+        },
+        {
+          "qid": "batch027-M8-A2-003",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "气管插管有创机械通气"
+        },
+        {
+          "qid": "batch027-M8-A2-004",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "以中枢抑制为主的通气障碍"
+        },
+        {
+          "qid": "batch027-M8-A2-005",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "CO2潴留致脑血管扩张、颅内高压"
+        },
+        {
+          "qid": "batch027-M8-A2-006",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "呼酸合并代碱"
+        },
+        {
+          "qid": "batch027-M6-A1-001",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "小细胞癌"
+        },
+        {
+          "qid": "batch027-M6-A1-002",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "经胸壁穿刺活检"
+        },
+        {
+          "qid": "batch027-M6-A1-003",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "右锁骨上淋巴结"
+        },
+        {
+          "qid": "batch027-M6-A1-004",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "异位分泌PTH样物质"
+        },
+        {
+          "qid": "batch027-M6-A1-005",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "声音嘶哑"
+        },
+        {
+          "qid": "batch027-M6-A1-006",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "肺不张牵拉水平裂上移"
+        },
+        {
+          "qid": "batch027-M6-A2-002",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "肺腺癌"
+        },
+        {
+          "qid": "batch027-M6-A2-003",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "吉非替尼"
+        },
+        {
+          "qid": "batch027-M6-A2-004",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "异位分泌ACTH"
+        },
+        {
+          "qid": "batch027-M6-A2-005",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "局限性哮鸣音、阻塞性肺炎"
+        },
+        {
+          "qid": "batch027-M4-A1-002",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "革兰阴性杆菌和金葡菌"
+        },
+        {
+          "qid": "batch027-M4-A1-004",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "荚膜"
+        },
+        {
+          "qid": "batch027-M4-A1-006",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "中老年伴误吸者"
+        },
+        {
+          "qid": "batch027-M4-A2-001",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "左氧氟沙星"
+        },
+        {
+          "qid": "batch027-M4-A2-002",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "嗜肺军团菌"
+        },
+        {
+          "qid": "batch027-M4-A2-003",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "产生毒素导致肺组织坏死"
+        },
+        {
+          "qid": "batch027-M4-A3-001a",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "肺炎链球菌肺炎"
+        },
+        {
+          "qid": "batch027-M4-A3-001b",
+          "old_answer": "A",
+          "new_answer": "C",
+          "permutation_old_labels_order": [
+            "D",
+            "E",
+            "A",
+            "B",
+            "C"
+          ],
+          "correct_text": "肺泡实变致声音传导增强"
+        },
+        {
+          "qid": "batch027-M4-A3-001c",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "不产生毒素、无肺组织坏死"
+        },
+        {
+          "qid": "batch027-M2-A1-002",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "E",
+            "D",
+            "C",
+            "B",
+            "A"
+          ],
+          "correct_text": "1~2L/min"
+        },
+        {
+          "qid": "batch027-M2-A1-005",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "呼气末肺泡残气增加致肺泡内压大于大气压"
+        },
+        {
+          "qid": "batch027-M2-A2-001",
+          "old_answer": "A",
+          "new_answer": "C",
+          "permutation_old_labels_order": [
+            "D",
+            "E",
+            "A",
+            "B",
+            "C"
+          ],
+          "correct_text": "自发性气胸"
+        },
+        {
+          "qid": "batch027-M2-A3-001a",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "慢性阻塞性肺疾病"
+        },
+        {
+          "qid": "batch027-M2-A3-001b",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "肺泡通气量下降"
+        },
+        {
+          "qid": "batch027-M2-A3-001c",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "上呼吸道感染"
+        },
+        {
+          "qid": "batch027-M3-A1-004",
+          "old_answer": "A",
+          "new_answer": "C",
+          "permutation_old_labels_order": [
+            "D",
+            "E",
+            "A",
+            "B",
+            "C"
+          ],
+          "correct_text": "白三烯受体拮抗剂"
+        },
+        {
+          "qid": "batch027-M3-A1-005",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "吸气时肺扩张牵拉小气道使气道阻力下降"
+        },
+        {
+          "qid": "batch027-M3-A1-006",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "E",
+            "D",
+            "C",
+            "B",
+            "A"
+          ],
+          "correct_text": "PaO2下降、PaCO2下降"
+        }
+      ]
+    }
+  ],
+  "escalations_for_human": [],
+  "final_gate": "PASS",
+  "source_file_synced": true,
+  "patches": [
+    {
+      "patch_id": "PATCH-HX-001",
+      "status": "EXECUTED",
+      "target": "batch027-M2-A2-004.option_polarities",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": {
+          "A": false,
+          "B": false,
+          "C": false,
+          "D": true,
+          "E": false
+        },
+        "after": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": false,
+          "E": true
+        }
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M2-A2-004 存在且 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "answer_key 指向的选项文本与解析一致（不改选项文本）",
+          "passed": true
+        },
+        {
+          "condition": "原始 option_polarities 与报告一致 before={'A': False, 'B': False, 'C': False, 'D': True, 'E': False}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "答案选项极性必须为 false（反向题不变式）",
+          "passed": true
+        },
+        {
+          "check": "其余选项极性必须为 true",
+          "passed": true
+        },
+        {
+          "check": "answer_key 不变，选项文本未改动",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "真反选题（机制**不包括**）：答案D(弥散功能障碍)为假机制，极性必须false，其余true"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=D 不变"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-002",
+      "status": "EXECUTED",
+      "target": "batch027-M4-A1-005.option_polarities",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": {
+          "A": false,
+          "B": false,
+          "C": false,
+          "D": true,
+          "E": false
+        },
+        "after": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": false,
+          "E": true
+        }
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M4-A1-005 存在且 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "answer_key 指向的选项文本与解析一致（不改选项文本）",
+          "passed": true
+        },
+        {
+          "condition": "原始 option_polarities 与报告一致 before={'A': False, 'B': False, 'C': False, 'D': True, 'E': False}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "答案选项极性必须为 false（反向题不变式）",
+          "passed": true
+        },
+        {
+          "check": "其余选项极性必须为 true",
+          "passed": true
+        },
+        {
+          "check": "answer_key 不变，选项文本未改动",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "真反选题（对支原体**无效**）：答案D(青霉素)为假陈述，极性必须false，其余true"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=D 不变"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-003",
+      "status": "EXECUTED",
+      "target": "batch027-M4-A2-004.option_polarities",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": {
+          "A": false,
+          "B": false,
+          "C": false,
+          "D": true,
+          "E": false
+        },
+        "after": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": false,
+          "E": true
+        }
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M4-A2-004 存在且 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "answer_key 指向的选项文本与解析一致（不改选项文本）",
+          "passed": true
+        },
+        {
+          "condition": "原始 option_polarities 与报告一致 before={'A': False, 'B': False, 'C': False, 'D': True, 'E': False}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "答案选项极性必须为 false（反向题不变式）",
+          "passed": true
+        },
+        {
+          "check": "其余选项极性必须为 true",
+          "passed": true
+        },
+        {
+          "check": "answer_key 不变，选项文本未改动",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "真反选题（痰液特征对应**错误**）：答案D为错误对应，极性必须false，其余true"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=D 不变"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-004",
+      "status": "EXECUTED",
+      "target": "batch027-M7-A2-003.option_polarities",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": {
+          "A": false,
+          "B": false,
+          "C": false,
+          "D": false,
+          "E": true
+        },
+        "after": {
+          "A": true,
+          "B": true,
+          "C": true,
+          "D": true,
+          "E": false
+        }
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M7-A2-003 存在且 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "answer_key 指向的选项文本与解析一致（不改选项文本）",
+          "passed": true
+        },
+        {
+          "condition": "原始 option_polarities 与报告一致 before={'A': False, 'B': False, 'C': False, 'D': False, 'E': True}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "答案选项极性必须为 false（反向题不变式）",
+          "passed": true
+        },
+        {
+          "check": "其余选项极性必须为 true",
+          "passed": true
+        },
+        {
+          "check": "answer_key 不变，选项文本未改动",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "真反选题（强心苷指征**不包括**）：答案E(双下肢水肿明显者)为假陈述，极性必须false，其余true"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=E 不变"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-005",
+      "status": "EXECUTED",
+      "target": "batch027-M3-A3-001c.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M3-A3-001c 存在",
+          "passed": true
+        },
+        {
+          "condition": "题干为\"主要原因/原因是\"正面设问",
+          "passed": true
+        },
+        {
+          "condition": "答案键 A 且 option_polarities[A]=true",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity=positive",
+          "passed": true
+        },
+        {
+          "check": "正选题校验：答案选项唯一 true",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 保持不变",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "正面设问（答案A为真陈述：地塞米松起效慢、不良反应大）"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=A 不变，option_polarities 未动"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-006",
+      "status": "EXECUTED",
+      "target": "batch027-M4-A3-001c.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M4-A3-001c 存在",
+          "passed": true
+        },
+        {
+          "condition": "题干为\"主要原因/原因是\"正面设问",
+          "passed": true
+        },
+        {
+          "condition": "答案键 A 且 option_polarities[A]=true",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity=positive",
+          "passed": true
+        },
+        {
+          "check": "正选题校验：答案选项唯一 true",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 保持不变",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "正面设问（答案A为真陈述：不产生毒素、无肺组织坏死）"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=A 不变，option_polarities 未动"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-007",
+      "status": "EXECUTED",
+      "target": "batch027-M7-A3-001c.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "题目 batch027-M7-A3-001c 存在",
+          "passed": true
+        },
+        {
+          "condition": "题干为\"主要原因/原因是\"正面设问",
+          "passed": true
+        },
+        {
+          "condition": "答案键 A 且 option_polarities[A]=true",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity=positive",
+          "passed": true
+        },
+        {
+          "check": "正选题校验：答案选项唯一 true",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 保持不变",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "正面设问（答案A为真陈述：利尿可致痰液黏稠、呼酸合并代碱）"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "answer_key=A 不变，option_polarities 未动"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-009",
+      "status": "EXECUTED",
+      "target": "batch027-M1-A1-001.explanation",
+      "operation": "replace_text",
+      "diff": {
+        "before": "语音震颤增强见于肺实变（大叶性肺炎、大片肺梗死）、肺内空洞及胸腔积液积液上方，因传导增强；COPD、哮喘、肺不张、肺水肿、胸腔积液、气胸均使语音震颤减弱。教材P20。",
+        "after": "语音震颤增强见于肺实变（大叶性肺炎、大片肺梗死）、肺内空洞及胸腔积液上方，因传导增强；COPD、哮喘、肺不张、肺水肿、胸腔积液、气胸均使语音震颤减弱。教材P20。"
+      },
+      "precondition_results": [
+        {
+          "condition": "原文含\"胸腔积液积液上方\"",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "解析文本无重复词\"积液积液\"",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": false,
+        "passed": true,
+        "detail": "本题为 positive 正选题，不改极性"
+      },
+      "answer_key_check": {
+        "applicable": false,
+        "key_still_valid": true,
+        "detail": "仅改解析文本，答案键不受影响"
+      },
+      "failure_reason": null
+    },
+    {
+      "patch_id": "PATCH-HX-008",
+      "status": "EXECUTED",
+      "target": "GLOBAL.answer_position (92 道单选)",
+      "operation": "fix_format",
+      "diff": {
+        "before": "A=56(60.9%) B=9 C=15 D=9 E=3；M6 全 A、M8 全 A",
+        "after": "A1/A2/A3 目标 {'A': 16, 'B': 17, 'C': 16, 'D': 17, 'E': 16}；92 道单选实际 {'A': 18, 'B': 19, 'C': 18, 'D': 19, 'E': 18}",
+        "moved_questions": 38,
+        "numeric_mirrored_count": 2
+      },
+      "precondition_results": [
+        {
+          "condition": "重排仅调整选项顺序，不改动选项文本与解析内容",
+          "passed": true
+        },
+        {
+          "condition": "每题同步更新 answer_key 与 option_polarities（HC-2 答案联动）",
+          "passed": true
+        },
+        {
+          "condition": "数值型选项保持升/降序排列逻辑（D7）",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "重排后 92 道单选答案分布每字母 17-21 题",
+          "passed": true,
+          "detail": "实际分布 {'A': 18, 'B': 19, 'C': 18, 'D': 19, 'E': 18}"
+        },
+        {
+          "check": "逐题 answer_key 指向文本与原正确选项一致",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 与选项标签/真值联动一致（HC-2 + HC-3 反向题保护）",
+          "passed": true
+        },
+        {
+          "check": "数值型选项保持升/降序排列逻辑（R3/D7）",
+          "passed": true
+        }
+      ],
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "4 道真反选题（答案极性 false）重排保护校验通过"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "全部重排题 answer_key 指向原正确文本"
+      },
+      "failure_reason": null,
+      "moves": [
+        {
+          "qid": "batch027-M8-A1-001",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "二氧化碳分压>50mmHg"
+        },
+        {
+          "qid": "batch027-M8-A1-002",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "高浓度吸氧"
+        },
+        {
+          "qid": "batch027-M8-A1-003",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "≤18mmHg"
+        },
+        {
+          "qid": "batch027-M8-A1-004",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "肾脏代偿性重吸收HCO₃⁻增多"
+        },
+        {
+          "qid": "batch027-M8-A2-001",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "Ⅱ型呼吸衰竭"
+        },
+        {
+          "qid": "batch027-M8-A2-002",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "高浓度吸氧加重CO2潴留"
+        },
+        {
+          "qid": "batch027-M8-A2-003",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "气管插管有创机械通气"
+        },
+        {
+          "qid": "batch027-M8-A2-004",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "以中枢抑制为主的通气障碍"
+        },
+        {
+          "qid": "batch027-M8-A2-005",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "CO2潴留致脑血管扩张、颅内高压"
+        },
+        {
+          "qid": "batch027-M8-A2-006",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "呼酸合并代碱"
+        },
+        {
+          "qid": "batch027-M6-A1-001",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "小细胞癌"
+        },
+        {
+          "qid": "batch027-M6-A1-002",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "经胸壁穿刺活检"
+        },
+        {
+          "qid": "batch027-M6-A1-003",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "右锁骨上淋巴结"
+        },
+        {
+          "qid": "batch027-M6-A1-004",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "异位分泌PTH样物质"
+        },
+        {
+          "qid": "batch027-M6-A1-005",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "声音嘶哑"
+        },
+        {
+          "qid": "batch027-M6-A1-006",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "肺不张牵拉水平裂上移"
+        },
+        {
+          "qid": "batch027-M6-A2-002",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "肺腺癌"
+        },
+        {
+          "qid": "batch027-M6-A2-003",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "吉非替尼"
+        },
+        {
+          "qid": "batch027-M6-A2-004",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "异位分泌ACTH"
+        },
+        {
+          "qid": "batch027-M6-A2-005",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "局限性哮鸣音、阻塞性肺炎"
+        },
+        {
+          "qid": "batch027-M4-A1-002",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "革兰阴性杆菌和金葡菌"
+        },
+        {
+          "qid": "batch027-M4-A1-004",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "荚膜"
+        },
+        {
+          "qid": "batch027-M4-A1-006",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "中老年伴误吸者"
+        },
+        {
+          "qid": "batch027-M4-A2-001",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "左氧氟沙星"
+        },
+        {
+          "qid": "batch027-M4-A2-002",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "嗜肺军团菌"
+        },
+        {
+          "qid": "batch027-M4-A2-003",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "产生毒素导致肺组织坏死"
+        },
+        {
+          "qid": "batch027-M4-A3-001a",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "肺炎链球菌肺炎"
+        },
+        {
+          "qid": "batch027-M4-A3-001b",
+          "old_answer": "A",
+          "new_answer": "C",
+          "permutation_old_labels_order": [
+            "D",
+            "E",
+            "A",
+            "B",
+            "C"
+          ],
+          "correct_text": "肺泡实变致声音传导增强"
+        },
+        {
+          "qid": "batch027-M4-A3-001c",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "不产生毒素、无肺组织坏死"
+        },
+        {
+          "qid": "batch027-M2-A1-002",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "E",
+            "D",
+            "C",
+            "B",
+            "A"
+          ],
+          "correct_text": "1~2L/min"
+        },
+        {
+          "qid": "batch027-M2-A1-005",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "呼气末肺泡残气增加致肺泡内压大于大气压"
+        },
+        {
+          "qid": "batch027-M2-A2-001",
+          "old_answer": "A",
+          "new_answer": "C",
+          "permutation_old_labels_order": [
+            "D",
+            "E",
+            "A",
+            "B",
+            "C"
+          ],
+          "correct_text": "自发性气胸"
+        },
+        {
+          "qid": "batch027-M2-A3-001a",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "慢性阻塞性肺疾病"
+        },
+        {
+          "qid": "batch027-M2-A3-001b",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "B",
+            "C",
+            "D",
+            "E",
+            "A"
+          ],
+          "correct_text": "肺泡通气量下降"
+        },
+        {
+          "qid": "batch027-M2-A3-001c",
+          "old_answer": "A",
+          "new_answer": "B",
+          "permutation_old_labels_order": [
+            "E",
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "correct_text": "上呼吸道感染"
+        },
+        {
+          "qid": "batch027-M3-A1-004",
+          "old_answer": "A",
+          "new_answer": "C",
+          "permutation_old_labels_order": [
+            "D",
+            "E",
+            "A",
+            "B",
+            "C"
+          ],
+          "correct_text": "白三烯受体拮抗剂"
+        },
+        {
+          "qid": "batch027-M3-A1-005",
+          "old_answer": "A",
+          "new_answer": "D",
+          "permutation_old_labels_order": [
+            "C",
+            "D",
+            "E",
+            "A",
+            "B"
+          ],
+          "correct_text": "吸气时肺扩张牵拉小气道使气道阻力下降"
+        },
+        {
+          "qid": "batch027-M3-A1-006",
+          "old_answer": "A",
+          "new_answer": "E",
+          "permutation_old_labels_order": [
+            "E",
+            "D",
+            "C",
+            "B",
+            "A"
+          ],
+          "correct_text": "PaO2下降、PaCO2下降"
+        }
+      ]
+    }
+  ]
+}

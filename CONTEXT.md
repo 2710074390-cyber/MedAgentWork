@@ -164,6 +164,7 @@ archive/
 | maintenance.py | 维护报告 | `reports/maintenance/` |
 | gate_check.py | 门禁报告 | `reports/gate/` |
 | save.py | 题库 MD/JSON | `中间产物/{batchID}/` 或 `最终产物/{batchID}/` |
+| qbank.py export-md | 最终交付题库 MD | 默认 `最终产物/{batchID}/ALL_questions_FIXED.md`（2026-08-20 起 GATE-A4 强制） |
 | inject_obsidian_theme.py | Obsidian 树主题注入/移除（`--remove` 反注入）| 就地修改 `最终产物/*押题卷*.html` 与 `index.html`（⚠️ 2026-08-12 已从线上站移除 Obsidian 主题，站点恢复三主题；脚本保留备用） |
 | verify_obsidian_theme.py | 主题浏览器实测截图 | `reports/theme_shots/` |
 
@@ -202,6 +203,7 @@ archive/
 
 最终产物/                    ← Agent 4 产出
   └── batch001_内科学_心衰_最终版.json
+  └── batch001_内科学_心衰_最终版.md   ← 最终交付 MD（export-md 生成，2026-08-20 起强制）
   └── batch001_追溯日志.md
 
 GoldenSet/                   ← 用户签收后加入
@@ -289,7 +291,7 @@ Agent 每完成一轮任务后执行：
 | `知识库素材/embed_index.py` | PDF 教材嵌入索引 | `--force` 强制重新索引；`--subject <code>` 单科索引 |
 | `知识库素材/embed_md.py` | 贺银成 Markdown 嵌入索引 | `--force` 强制重新索引 |
 | `知识库素材/embed_zhaozhao.py` | 昭昭题眼 Markdown 嵌入索引 | `--force` 强制重新索引 |
-| `知识库素材/search_kb.py` | 两阶段检索（向量+重排序） | `--hybrid` 启用混合检索；`--no-hybrid` 禁用 |
+| `知识库素材/search_kb.py` | 两阶段检索（向量+重排序） | `--hybrid` 启用混合检索；`--no-hybrid` 禁用；`--no-rerank` 成本降级（跳过付费 rerank）；`--no-cache` 禁用磁盘缓存（默认开启，2026-08-20 成本优化） |
 | `知识库素材/validate_configs.py` | 配置完整性/一致性校验 | 每次改配置后运行 |
 
 ### 学科 RAG 配置速查
@@ -364,10 +366,10 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **review_template.html** | 1.0.0 | `知识库素材/review_template.html` | 渲染模板（含 demo 内容），供 render_review.py 参考 |
 | **r2_balancer.py** | 2.0.0 | `scripts/r2_balancer.py` | `python scripts/r2_balancer.py --file <path>` — **只扩充不截断**的R2选项长度平衡器 |
 | **workflow_state.py** | 1.0.0 | `scripts/workflow_state.py` | `python scripts/workflow_state.py --check / --migrate / --show {batchID}` — 状态统一读写/校验/迁移（2026-08-13 重构） |
-| **qbank.py** | 1.0.0 | `scripts/qbank.py` | `python scripts/qbank.py init / register / query / stats / check` — 统一题库注册表（P0-1，2026-08-13） |
+| **qbank.py** | 1.1.0 | `scripts/qbank.py` | `python scripts/qbank.py init / register / query / stats / check / export-md / rehome` — 统一题库注册表 + 最终交付 MD 导出 + 归档路径重定位（2026-08-20 升级） |
 | **run_tests.py** | 1.0.0 | `scripts/run_tests.py` | `python scripts/run_tests.py` — 零依赖测试运行器（P0-2，2026-08-13）；有 pytest 时可用 `python -m pytest tests/ -q` |
 | **fact_check.py** | 1.0.0 | `scripts/fact_check.py` | `python scripts/fact_check.py pages --file X --subject neurology` / `golden --file X` — 事实校验机械化（P1-1，2026-08-13）：页码反查 + GoldenSet 交叉验证 |
-| **dsh** (DeepSeek Harness) | 0.1.0-rc.6 | `C:\Users\38063\Desktop\Web-AI\tools\dsh\node_modules\.bin\dsh` | `cd C:\Users\38063\Desktop\Web-AI\tools\dsh && npx dsh web`（需 API key） |
+| **dsh** (DeepSeek Harness) | 0.1.0-rc.7 | `C:\Users\38063\Desktop\Web-AI\tools\dsh\node_modules\.bin\dsh` | `cd C:\Users\38063\Desktop\Web-AI\tools\dsh && npx dsh web`（需 API key） |
 
 ### 复习资料渲染（2026-06-21 新增）
 - `python 知识库素材/render_review.py "复习资料/XXX_主复习资料.md"` → 生成精美自包含 HTML

@@ -25,7 +25,7 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 | 输入 | `输入素材/{科目}/` | 用户放入教材/笔记 |
 | Agent 2 | `中间产物/{batchID}/` | `ALL_questions.json`、备考资料 .md |
 | Agent 3 | `质检报告/{batchID}/` | `A3_质检报告.json` |
-| Agent 4 | `最终产物/{batchID}/` | `ALL_questions_FIXED.json`、`AGENT4_追溯日志.json`、`AGENT4_修改声明.md`、`escalations_for_human.md` |
+| Agent 4 | `最终产物/{batchID}/` | `ALL_questions_FIXED.json`、**`ALL_questions_FIXED.md`（最终交付格式，2026-08-20 起强制）**、`AGENT4_追溯日志.json`、`AGENT4_修改声明.md`、`escalations_for_human.md` |
 | Agent 5 | `复习资料/` | `{科目}_主复习资料.md` |
 | 金标准 | `GoldenSet/` | 仅用户手动移入 |
 | 归档 | `archive/{类别}/{batchID}/` | 签收后由 maintenance 归档 |
@@ -38,12 +38,14 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 GATE-A2   python validate_options.py --batch {batchID}          # FAIL==0 才放行
 GATE-A3   python gate_check.py --batch {batchID} --stage agent3_done
 GATE-A4   python gate_check.py --batch {batchID} --stage agent4_done
+MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json   # 最终交付 MD（2026-08-20 起强制）
 终审      python gate_check.py --batch {batchID} --stage final
 ```
 
 - 已签收（APPROVED）批次重跑门禁只作参考，不写 HALT
 - `python gate_check.py --batch {batchID} --clear-halt` 清除该批次 HALT（修复后使用）
 - validate 报告输出在 `reports/validate/`，gate 报告在 `reports/gate/`
+- **MD 导出是最终交付格式**：GATE-A4 通过后必须运行 export-md 生成 `ALL_questions_FIXED.md`（JSON 为机器可读源，MD 为用户可读交付），与 JSON 同目录交付
 
 ### 事实校验（P1-1 · 2026-08-13，GATE-A2 前执行）
 
@@ -71,6 +73,19 @@ python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
 | Bloom 偏差 >15% | 回退 Agent 2 按配额修正（`scripts/bloom_sampler.py`，HC-15） |
 | 补丁未溯源 | 追溯日志缺 source_file_synced → 打回 Agent 4（HC-13，batch014 教训） |
 | 签收 | 用户确认 → 状态置 APPROVED → 用户手动移入 GoldenSet → 归档 |
+| RAG 余额不足(402) | 降级：`search_kb.py --no-rerank`（跳过付费 rerank，用 Stage1 余弦）；查询优先复用缓存结果（batch027 教训） |
+| 注册表报"文件不存在" | 已归档批次属预期：`qbank.py check` 已归档感知；如需修正路径用 `qbank.py rehome`（2026-08-20） |
+
+## 6. 成本纪律（2026-08-20 · 余额不足事件后新增）
+
+检索是付费 API（每查询 = 1 embed + 1 rerank）。**默认开启磁盘缓存**：
+
+- 相同查询重复执行 → 0 API 调用（缓存 key 含参数与索引配置签名，索引重建自动失效）
+- 批量查询 `-f`：embed 结果按查询粒度缓存，跨批次重复查询免重复付费
+- 降级模式：`search_kb.py "查询" --subject X --no-rerank`（跳过 rerank，成本约减半）
+- 缓存清理：`search_kb.py --cache-clear`（仅索引重建/参数调整后执行）
+- 检索前先查 `中间产物/kb_search_result.json` 与 cache，避免 MedGen/MedReview 重复检索同一查询
+- MedMaster 检索尽量一次批量覆盖多考点（`-f queries.txt`），减少交互式单发调用
 
 ## 6. DSH 流程差异（vs 旧 Cherry Studio 流程）
 

@@ -30,12 +30,20 @@ SCORE_THRESHOLD = 0.70  # minimum rerank score to include
 MAX_RETRIES = 3
 TZ = timezone(timedelta(hours=8))
 
+# 缓存（2026-08-20 成本优化 P1）：
+#   检索是付费 API（embed + rerank 每查询两次调用）。相同查询在
+#   MedGen 检索 / MedReview 检索 / 跨批次复用时反复付费。
+#   磁盘缓存 key = hash(subject + query + 参数)，命中则 0 API 调用。
+CACHE_ENABLED = True      # --no-cache 可关闭
+CACHE_EMBED = True        # 是否缓存 embed 结果（同一查询重复 embed 免调用）
+
 BASE_DIR = Path(r"C:\Users\38063\Desktop\MedAgentWork")
 KB_DIR = BASE_DIR / "知识库素材"
 INDEX_STORE = KB_DIR / "index_store"
 META_DIR = KB_DIR / "chunks_metadata"
 LOG_DIR = KB_DIR / "retrieval_log"
 CONFIG_DIR = KB_DIR / "configs"
+CACHE_DIR = KB_DIR / "cache"
 
 # 科目名 → subject_code 映射
 SUBJECT_ALIASES = {
@@ -135,6 +143,69 @@ def check_config_manifest_consistency(subject_code):
         return False
     return True
 
+# ─── 缓存层（2026-08-20 新增 · 成本优化）─────────────
+
+def _cache_key(parts):
+    """稳定 cache key：hash(subject|query|参数|配置版本)。"""
+    import hashlib
+    raw = "|".join(str(p) for p in parts)
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _cache_path(parts, suffix="json"):
+    return CACHE_DIR / f"{_cache_key(parts)}.{suffix}"
+
+
+def _cache_read(parts):
+    """读缓存，返回 data 或 None。损坏/过期静默回退。"""
+    if not CACHE_ENABLED:
+        return None
+    try:
+        p = _cache_path(parts)
+        if not p.exists():
+            return None
+        with open(p, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def _cache_write(parts, data):
+    if not CACHE_ENABLED:
+        return
+    try:
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        p = _cache_path(parts)
+        with open(p, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False)
+    except Exception:
+        pass
+
+
+def _cache_clear():
+    """清空检索缓存（索引重建/参数调整后使用）。"""
+    import shutil
+    if CACHE_DIR.exists():
+        shutil.rmtree(CACHE_DIR)
+        print(f"  [CACHE] 已清空 {CACHE_DIR}")
+
+
+def _config_sig(subject_code):
+    """配置签名：索引重建后旧缓存自动失效。"""
+    manifest_path = INDEX_STORE / "index_manifest.json"
+    sig = "default"
+    if manifest_path.exists():
+        try:
+            with open(manifest_path, "r", encoding="utf-8") as f:
+                manifest = json.load(f)
+            if subject_code in manifest:
+                entry = manifest[subject_code]
+                sig = f"{entry.get('config_version','?')}|{entry.get('chunk_size','?')}"
+        except Exception:
+            pass
+    return sig
+
+
 # ─── 加载索引 ────────────────────────────────────────
 
 def get_api_key():
@@ -159,13 +230,20 @@ def api_request(endpoint, payload, api_key):
 
 
 def embed_query(query_text, api_key):
-    """Stage 1: embed the query"""
+    """Stage 1: embed the query（带缓存：同一查询免重复 API 调用）"""
+    if CACHE_EMBED:
+        cached = _cache_read(["embed", EMBED_MODEL, query_text])
+        if cached is not None and "embedding" in cached:
+            return np.array(cached["embedding"], dtype=np.float32)
     result = api_request("embeddings", {
         "model": EMBED_MODEL,
         "input": [query_text],
         "encoding_format": "float"
     }, api_key)
-    return np.array(result["data"][0]["embedding"], dtype=np.float32)
+    emb = np.array(result["data"][0]["embedding"], dtype=np.float32)
+    if CACHE_EMBED:
+        _cache_write(["embed", EMBED_MODEL, query_text], {"embedding": emb.tolist()})
+    return emb
 
 
 def rerank(query, documents, api_key, top_n=TOP_N_RERANK):
@@ -352,13 +430,17 @@ def enhance_query(query, config):
 
 
 def search(query, api_key, subject=None, top_k=TOP_K_RETRIEVAL, top_n=TOP_N_RERANK,
-           threshold=SCORE_THRESHOLD, config=None, hybrid_override=None):
+           threshold=SCORE_THRESHOLD, config=None, hybrid_override=None, no_rerank=False):
     """
     Two-stage search with optional per-subject config.
     1. Embed query → cosine similarity → top-k candidates
     2. Rerank candidates → top-n results
 
     hybrid_override: True/False to force hybrid on/off, None to use config.
+    no_rerank: True = 跳过付费 rerank，直接用 Stage1 余弦分数取 top_n（成本降级模式，
+               2026-08-20：402 余额不足事件后提供，避免管线因 API 欠费中断）。
+    缓存（2026-08-20）：完整检索结果按 (subject, query, 参数, 配置签名) 缓存，
+               命中时零 API 调用；返回体带 "cached": true 标记。
     """
     subject_code = resolve_subject(subject) if subject else None
 
@@ -382,6 +464,15 @@ def search(query, api_key, subject=None, top_k=TOP_K_RETRIEVAL, top_n=TOP_N_RERA
         hybrid_search = False
         keyword_weight = 0.0
 
+    # 缓存命中检查（key 含参数与配置签名，索引/参数变更自动失效）
+    cache_parts = ["search", subject_code or "*", query, top_k, top_n,
+                   round(threshold, 3), hybrid_search, keyword_weight, no_rerank,
+                   _config_sig(subject_code)]
+    cached = _cache_read(cache_parts)
+    if cached is not None and "results" in cached:
+        cached["cached"] = True
+        return cached
+
     # 查询增强：同义词扩展
     queries = enhance_query(query, config)
     query_vec = embed_query(queries[0], api_key)  # 主查询 embedding
@@ -389,7 +480,9 @@ def search(query, api_key, subject=None, top_k=TOP_K_RETRIEVAL, top_n=TOP_N_RERA
     chunks, doc_vectors = load_index(subject_code)
 
     if not chunks:
-        return {"query": query, "results": [], "error": "No chunks loaded"}
+        result = {"query": query, "results": [], "error": "No chunks loaded"}
+        _cache_write(cache_parts, result)
+        return result
 
     # Stage 1: embed + cosine similarity
     candidates = cosine_similarity_search(query_vec, doc_vectors, chunks, top_k)
@@ -412,17 +505,46 @@ def search(query, api_key, subject=None, top_k=TOP_K_RETRIEVAL, top_n=TOP_N_RERA
             candidates = candidates[:top_k]
 
     if not candidates:
-        return {"query": query, "results": [], "stage1_hits": 0}
+        result = {"query": query, "results": [], "stage1_hits": 0}
+        _cache_write(cache_parts, result)
+        return result
 
     # 混合检索：关键词重排 Stage 1 候选
     if hybrid_search and keyword_weight > 0:
-        pre_count = len(candidates)
         candidates = hybrid_rerank_candidates(candidates, query, keyword_weight)
-        if not config:  # suppress in normal mode
-            pass
-        # Log keyword breakdown for top candidates
-        if not config:
-            pass
+
+    # 降级模式：跳过付费 rerank（成本优化）
+    if no_rerank:
+        final = []
+        score_key = "_blended_score" if (hybrid_search and keyword_weight > 0) else "_cosine_score"
+        for c in candidates[:top_n]:
+            score = c.get(score_key, 0)
+            if score >= 0.3:  # 余弦分数阈值（低于 rerank 阈值，属不同尺度）
+                entry = {
+                    "subject": c.get("subject", ""),
+                    "chapter": c.get("chapter", ""),
+                    "page_number": c.get("page_number", 0),
+                    "pdf_page_number": c.get("pdf_page_number"),
+                    "score": round(score, 4),
+                    "text": c["text"],
+                    "textbook": c.get("textbook", ""),
+                    "chunk_id": c.get("chunk_id", ""),
+                    "reranked": False,
+                }
+                final.append(entry)
+        result = {
+            "query": query,
+            "subject_filter": subject,
+            "stage1_candidates": len(candidates),
+            "stage2_results": len(final),
+            "results": final,
+            "config_applied": config is not None,
+            "hybrid_search": hybrid_search,
+            "keyword_weight": keyword_weight,
+            "no_rerank": True,
+        }
+        _cache_write(cache_parts, result)
+        return result
 
     # Stage 2: rerank
     doc_texts = [c["text"] for c in candidates]
@@ -452,7 +574,7 @@ def search(query, api_key, subject=None, top_k=TOP_K_RETRIEVAL, top_n=TOP_N_RERA
                     entry["_blended_score"] = chunk.get("_blended_score", 0)
                 final.append(entry)
 
-    return {
+    result = {
         "query": query,
         "subject_filter": subject,
         "stage1_candidates": len(candidates),
@@ -462,6 +584,8 @@ def search(query, api_key, subject=None, top_k=TOP_K_RETRIEVAL, top_n=TOP_N_RERA
         "hybrid_search": hybrid_search,
         "keyword_weight": keyword_weight,
     }
+    _cache_write(cache_parts, result)
+    return result
 
 
 def resolve_subject(name):
@@ -508,8 +632,20 @@ def main():
     parser.add_argument("--threshold", "-t", type=float, default=SCORE_THRESHOLD, help="Min score threshold (default: 0.70)")
     parser.add_argument("--hybrid", action="store_true", default=None, help="Enable hybrid keyword+vector search")
     parser.add_argument("--no-hybrid", dest="hybrid_disable", action="store_true", help="Disable hybrid search even if config says so")
+    parser.add_argument("--no-cache", action="store_true", help="禁用检索/embed 磁盘缓存（默认开启，成本优化）")
+    parser.add_argument("--no-rerank", action="store_true", help="跳过付费 rerank，用 Stage1 余弦分数（成本降级模式）")
+    parser.add_argument("--cache-clear", action="store_true", help="清空检索缓存后退出（索引重建/参数调整后使用）")
 
     args = parser.parse_args()
+
+    if args.cache_clear:
+        _cache_clear()
+        return
+
+    if args.no_cache:
+        global CACHE_ENABLED, CACHE_EMBED
+        CACHE_ENABLED = False
+        CACHE_EMBED = False
 
     if not args.query and not args.file:
         parser.print_help()
@@ -550,24 +686,32 @@ def main():
         hybrid_override = False
 
     all_results = {}
+    cache_hits = 0
     for q in queries:
         if not args.json:
             print(f"\n[QUERY] {q}")
         results = search(q, api_key, args.subject, args.recall, args.top,
-                         threshold, subj_config, hybrid_override)
+                         threshold, subj_config, hybrid_override,
+                         no_rerank=args.no_rerank)
         all_results[q] = results
+        if results.get("cached"):
+            cache_hits += 1
 
         if not args.json:
+            mode = "CACHE" if results.get("cached") else ("STAGE1-only" if results.get("no_rerank") else "2-stage")
             if results.get("error"):
                 print(f"  [ERROR] {results['error']}")
                 continue
-            print(f"  Stage1: {results.get('stage1_candidates', 0)} candidates → Stage2: {results.get('stage2_results', 0)} results")
+            print(f"  [{mode}] Stage1: {results.get('stage1_candidates', 0)} candidates → Stage2: {results.get('stage2_results', 0)} results")
             for i, r in enumerate(results.get("results", [])):
                 print(f"  [{i+1}] {r['subject']} 教材P{r['page_number']} | score={r['score']}")
                 print(f"      {r['text'][:120]}...")
         else:
             # Log
             log_retrieval(q, results, args.subject)
+
+    if not args.json and len(queries) > 1:
+        print(f"\n  [CACHE] {cache_hits}/{len(queries)} 查询命中缓存（0 API 调用）")
 
     # Output final JSON
     output = {"queries": all_results} if len(queries) > 1 else all_results[queries[0]]

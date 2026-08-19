@@ -18,6 +18,9 @@ whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出
 1. **输入**：读取编排者给出的两个文件路径（题库 + 质检报告）；仅执行质检报告中的结构化指令，Precondition 不符即停（不可自行扩大修改范围）。
 2. **输出到 `最终产物/{batchID}/`**：
    - `ALL_questions_FIXED.json` — 修复后题库，**纯 JSON 数组，禁止 YAML frontmatter**（batch006 教训；修改声明单独成文件）
+   - `ALL_questions_FIXED.md` — **最终交付格式（2026-08-20 起强制）**：复检 FAIL==0 后运行
+     `python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json --out 最终产物/{batchID}/ALL_questions_FIXED.md --title "{科目}·{模块}（{batchID}）"`
+     生成可读 MD（✅ 答案标记/解析/页码），JSON 与 MD 同目录交付
    - `AGENT4_追溯日志.json` — 逐项 patch 记录，**必须含 `source_file_synced: true`**（HC-13：修复聚合文件必须同步回溯源文件，batch014 教训）
    - `AGENT4_修改声明.md`、`escalations_for_human.md`
 3. **修复纪律**：
@@ -25,4 +28,5 @@ whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出
    - 禁止"（相关表现）""（相关类型）"等无意义后缀凑长度，干扰项修复必须增加实质性区分信息
    - 反向题极性不可翻转；答案键联动检查
 4. **复检**：修改后运行 `python validate_options.py --file <ALL_questions_FIXED.json>`，FAIL==0 才交付。
-5. **完成后报告**：文件路径 + 修复题数 + 复检结果 + 升级项清单。
+5. **MD 交付**：复检通过后运行 `python scripts/qbank.py export-md --file <ALL_questions_FIXED.json> --out <同目录 .md>` 生成最终交付 MD（见第 2 节命令）。
+6. **完成后报告**：文件路径 + 修复题数 + 复检结果 + MD 导出结果 + 升级项清单。

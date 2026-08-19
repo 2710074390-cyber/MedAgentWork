@@ -19,6 +19,8 @@ qbank.py — MedAgentWork 统一题库数据层 v1.0 (2026-08-13 · 架构 P0-1)
   python scripts/qbank.py stats                          # 全库统计
   python scripts/qbank.py query --stem 心衰 --type A1 --limit 10    # 查询
   python scripts/qbank.py check                          # 去重报告 + 完整性
+  python scripts/qbank.py export-md --file <json> [--out <md>]  # 题库 → 可读 Markdown（最终交付格式）
+  python scripts/qbank.py rehome [--dry-run]             # 修复归档后失效的注册路径
   python scripts/qbank.py --selftest                     # 解析器自检
 
 设计约束: 仅标准库；register 幂等（(file,index) 已注册则跳过）；
@@ -58,6 +60,49 @@ def registry_path():
 
 def meta_path():
     return _root() / 'question_bank' / 'registry_meta.json'
+
+# ──────────────────────────────────────────
+# 归档感知路径解析（2026-08-20 · 学期切换归档后注册表失效修复）
+# ──────────────────────────────────────────
+
+def _find_in_archive(rel):
+    """在 archive/ 中按「相对路径后缀」查找已归档文件。
+
+    学期切换（2026-08-19）把 中间产物/、最终产物/、复习资料/ 移入
+    archive/ 后，注册表中旧相对路径失效。优先精确后缀匹配
+    （如 中间产物\\batch019\\batch019_questions.json → archive\\中间产物\\batch019\\...），
+    退化到 basename 唯一匹配（如 复习资料\\精神病学_统一题库_331题.json →
+    archive\\复习资料历史_20260819\\精神病学_统一题库_331题.json）。
+    """
+    try:
+        rel_norm = Path(rel).as_posix()
+        name = Path(rel).name
+    except Exception:
+        return None
+    archive_dir = _root() / 'archive'
+    if not archive_dir.exists():
+        return None
+    # 1. 精确后缀匹配（最快路径，无歧义）
+    for f in archive_dir.rglob(name):
+        try:
+            if f.is_file() and f.relative_to(archive_dir).as_posix().endswith(rel_norm):
+                return f
+        except ValueError:
+            continue
+    # 2. basename 唯一匹配（归档目录改名场景，如 复习资料历史_20260819）
+    matches = [f for f in archive_dir.rglob(name) if f.is_file()]
+    if len(matches) == 1:
+        return matches[0]
+    return None
+
+
+def resolve_entry_path(rel):
+    """注册条目文件的实际路径：原位存在 → 原位；否则在 archive/ 中查找。"""
+    p = _root() / rel
+    if p.exists():
+        return p
+    alt = _find_in_archive(rel)
+    return alt if alt else None
 
 
 # ──────────────────────────────────────────
@@ -481,11 +526,10 @@ def check(ignore_pairs=None):
                 f'同批次多版本 x{len(group)}: 「{sample.get("stem_snippet", "")}」'
                 f' 批次={sample.get("batch")} (stage={sorted({e.get("stage") for e in group})})'
             )
-    # 完整性: 引用文件存在
+    # 完整性: 引用文件存在（支持 archive/ 归档回退，2026-08-20）
     missing = set()
     for e in entries:
-        fp = base_dir() / e.get('file', '')
-        if not fp.exists():
+        if resolve_entry_path(e.get('file', '')) is None:
             missing.add(e.get('file'))
     if missing:
         issues.append(f'{len(missing)} 个注册文件不存在: {sorted(missing)[:5]}')
@@ -499,6 +543,161 @@ def check(ignore_pairs=None):
     if ignored:
         infos.append(f'已豁免已知合并关系 {ignored} 组（--ignore-pair）')
     return issues, warns, infos
+
+
+# ──────────────────────────────────────────
+# 注册表路径重定位 rehome（2026-08-20 新增）
+# ──────────────────────────────────────────
+
+def rehome(dry_run=False):
+    """将注册表中失效的条目路径重写为 archive/ 下的实际位置。
+
+    学期切换归档后，14 条注册指向已移入 archive/ 的文件。
+    check() 已支持归档回退（只读感知）；rehome 则把路径**持久化修正**，
+    使 qbank 下游（query/去重/统计）继续使用活动路径语义。
+
+    返回 (重写条数, 仍缺失条数)。
+    """
+    entries = _read_entries()
+    if not entries:
+        return 0, 0
+    rewritten = 0
+    still_missing = 0
+    for e in entries:
+        rel = e.get('file', '')
+        if not rel:
+            continue
+        if (base_dir() / rel).exists():
+            continue  # 原位存在，无需处理
+        alt = _find_in_archive(rel)
+        if alt is None:
+            still_missing += 1
+            continue
+        new_rel = str(alt.relative_to(base_dir().resolve())) if alt.is_relative_to(base_dir().resolve()) else str(alt)
+        e['file'] = new_rel
+        rewritten += 1
+    if rewritten and not dry_run:
+        # 原子重写 registry.jsonl
+        tmp = registry_path().with_suffix('.jsonl.tmp')
+        with open(tmp, 'w', encoding='utf-8') as f:
+            for e in entries:
+                f.write(json.dumps(e, ensure_ascii=False) + '\n')
+        tmp.replace(registry_path())
+    return rewritten, still_missing
+
+
+# ──────────────────────────────────────────
+# MD 导出（2026-08-20 新增 · 最终交付格式）
+# ──────────────────────────────────────────
+
+TYPE_NAMES = {'A1': 'A1型题', 'A2': 'A2型题', 'A3': 'A3型题', 'A4': 'A4型题',
+              'B1': 'B1型题', 'X': 'X型题', '判断': '判断题'}
+
+
+def export_md(filepath, outpath=None, title=None):
+    """题库 JSON → 可读 Markdown（最终交付格式）。
+
+    基于统一解析器 parse_question（兼容 6 种历史字段变体），
+    按模块分组输出，正确选项用 ✅ 标记 + 加粗，附答案/解析/页码/Bloom。
+    默认输出到源文件同目录同名 .md。
+
+    返回 (输出路径, 题数)；非题库文件返回 (None, 0)。
+    """
+    data = load_json_file(filepath)
+    if not isinstance(data, list):
+        print(f'✗ {filepath} 不是题库 JSON（顶层非数组），跳过导出')
+        return None, 0
+
+    questions = []
+    for i, raw in enumerate(data):
+        q = parse_question(raw)
+        if q is not None:
+            q['_index'] = i
+            q['_raw'] = raw
+            questions.append(q)
+    if not questions:
+        print(f'✗ {filepath} 未解析出任何题目，跳过导出')
+        return None, 0
+
+    # 模块分组（兼容 module / module_name / 中文键）
+    from collections import OrderedDict
+    by_module = OrderedDict()
+    for q in questions:
+        mod = q.get('module') or '未分组'
+        by_module.setdefault(mod, []).append(q)
+
+    if title is None:
+        title = Path(filepath).stem.replace('_FIXED', '').replace('_questions', '')
+    if outpath is None:
+        outpath = str(Path(filepath).with_suffix('.md'))
+
+    from collections import Counter
+    type_counter = Counter(q['type'] or '?' for q in questions)
+    bloom_counter = Counter(q['bloom_level'] or '未标注' for q in questions)
+
+    lines = []
+    lines.append(f'# {title} 题库（{len(questions)}题）')
+    lines.append('')
+    lines.append(f'> 来源：{_rel(filepath)} | 导出：{datetime.now().strftime("%Y-%m-%d %H:%M")}')
+    lines.append(f'> 题型分布：{"、".join(f"{k}×{v}" for k, v in type_counter.most_common())}')
+    lines.append(f'> Bloom分布：{"、".join(f"{k}×{v}" for k, v in bloom_counter.most_common())}')
+    lines.append('')
+    lines.append('---')
+    lines.append('')
+
+    seq = 0
+    for mod, qs in by_module.items():
+        lines.append(f'## {mod}（{len(qs)}题）')
+        lines.append('')
+        for q in qs:
+            seq += 1
+            qt = TYPE_NAMES.get(q.get('type', ''), q.get('type') or '未知')
+            bl = q.get('bloom_level') or '未标注'
+            qid = q.get('qid') or f'Q{q["_index"]+1}'
+            lines.append(f'### {seq}. [{qt}｜{bl}] {qid}')
+            lines.append('')
+            # 溯源/页码
+            pages_raw = q.get('source_pages_raw') or ''
+            if not pages_raw and q.get('source_pages'):
+                pages_raw = 'P' + ',P'.join(str(p) for p in q['source_pages'])
+            meta = f'模块：{mod}'
+            if pages_raw:
+                meta += f'｜页码：{pages_raw}'
+            lines.append(f'> {meta}')
+            lines.append('')
+            lines.append(f'**{q["stem"]}**')
+            lines.append('')
+            ans = q.get('answer') or ''
+            raw_ans = ''
+            raw = q.get('_raw') or {}
+            raw_ans = str(raw.get('answer') or raw.get('answer_key') or raw.get('correct_answer') or '')
+            opts = q.get('options') or {}
+            if opts:
+                for label in sorted(opts.keys()):
+                    text = opts[label]
+                    if ans and label.upper() == ans.upper():
+                        lines.append(f'- **{label}. {text}** ✅')
+                    else:
+                        lines.append(f'- {label}. {text}')
+            lines.append('')
+            if raw_ans:
+                # 判断/填空类答案保留原文（如"正确/错误"），字母答案显示字母
+                lines.append(f'**答案：{raw_ans}**')
+            else:
+                lines.append(f'**答案：（未标注）**')
+            expl = q.get('explanation') or ''
+            if expl:
+                lines.append('')
+                lines.append(f'> 解析：{expl}')
+            lines.append('')
+            lines.append('---')
+            lines.append('')
+
+    with open(outpath, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(lines))
+    size_kb = os.path.getsize(outpath) / 1024
+    print(f'✅ MD 导出: {outpath}（{len(questions)}题 / {len(lines)}行 / {size_kb:.1f}KB）')
+    return outpath, len(questions)
 
 
 # ──────────────────────────────────────────
@@ -561,6 +760,14 @@ def main():
                          help='豁免已知合并关系的批次对（如 batch023-ref,psychiatry-merged）')
     p_check.add_argument('--save', action='store_true',
                          help='将 --ignore-pair 持久化到 registry_meta.json（healthcheck 自动读取）')
+
+    p_md = sub.add_parser('export-md', help='题库 JSON → 可读 Markdown（最终交付格式）')
+    p_md.add_argument('--file', '-f', required=True, help='题库 JSON 路径')
+    p_md.add_argument('--out', '-o', default=None, help='输出 .md 路径（默认同目录同名）')
+    p_md.add_argument('--title', '-t', default=None, help='MD 标题（默认取文件名）')
+
+    p_rehome = sub.add_parser('rehome', help='重写注册表中归档后失效的文件路径')
+    p_rehome.add_argument('--dry-run', action='store_true', help='只报告不写入')
 
     parser.add_argument('--selftest', action='store_true', help='解析器自检')
     args = parser.parse_args()
@@ -649,6 +856,20 @@ def main():
             sys.exit(1)
         else:
             print('✓ 完整性通过')
+        return
+
+    if args.cmd == 'export-md':
+        out, n = export_md(args.file, args.out, args.title)
+        if out is None:
+            sys.exit(1)
+        return
+
+    if args.cmd == 'rehome':
+        rewritten, missing = rehome(dry_run=args.dry_run)
+        if args.dry_run:
+            print(f'ℹ️ dry-run：可重写 {rewritten} 条' + (f'，仍缺失 {missing} 条' if missing else ''))
+        else:
+            print(f'✅ 已重写 {rewritten} 条注册路径' + (f'，仍缺失 {missing} 条' if missing else ''))
         return
 
     parser.print_help()

@@ -1,0 +1,604 @@
+[
+  {
+    "id": "batch027-M5-A1-001",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "继发性肺结核好发部位",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "继发性肺结核的好发部位是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "上叶尖后段"
+      },
+      {
+        "label": "B",
+        "text": "右肺中叶"
+      },
+      {
+        "label": "C",
+        "text": "左肺上叶舌段"
+      },
+      {
+        "label": "D",
+        "text": "上叶前段"
+      },
+      {
+        "label": "E",
+        "text": "双肺下叶前段"
+      }
+    ],
+    "answer": "A",
+    "explanation": "继发性肺结核好发于上叶尖后段、下叶背段和后基底段；原发性肺结核原发灶位于上叶下部、下叶上部近胸膜处，艾滋病合并结核好发于下叶。教材P84。",
+    "source_page": "教材P84",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-A1-002",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "肺结核传染性判断",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "判断肺结核患者有无传染性，最可靠的依据是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "痰涂片抗酸染色阳性"
+      },
+      {
+        "label": "B",
+        "text": "PPD试验强阳性"
+      },
+      {
+        "label": "C",
+        "text": "胸部X线示空洞影"
+      },
+      {
+        "label": "D",
+        "text": "午后低热盗汗"
+      },
+      {
+        "label": "E",
+        "text": "血沉明显增快"
+      }
+    ],
+    "answer": "A",
+    "explanation": "痰涂片是确定肺结核是否为传染源的依据：涂阳→开放性肺结核（排菌量大、有传染性）；痰培养阳性（菌阳）提示活动性肺结核。教材P86。",
+    "source_page": "教材P86",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-A1-003",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "抗结核药与菌群敏感性",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "对B群（细胞内半静止状态）结核杆菌最敏感的抗结核药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "异烟肼"
+      },
+      {
+        "label": "B",
+        "text": "利福平"
+      },
+      {
+        "label": "C",
+        "text": "吡嗪酰胺"
+      },
+      {
+        "label": "D",
+        "text": "链霉素"
+      },
+      {
+        "label": "E",
+        "text": "乙胺丁醇"
+      }
+    ],
+    "answer": "C",
+    "explanation": "结核杆菌按代谢分A/B/C/D群：A群最活跃、异烟肼最敏感；B群半静止（细胞内）、吡嗪酰胺最敏感；C群（细胞外）利福平最敏感；D群完全休眠、无药物敏感。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-A1-004",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "异烟肼不良反应预防",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "服用异烟肼的患者需同时补充维生素B6，其目的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "预防周围神经炎"
+      },
+      {
+        "label": "B",
+        "text": "预防肝功能损害"
+      },
+      {
+        "label": "C",
+        "text": "增强抗结核效果"
+      },
+      {
+        "label": "D",
+        "text": "预防高尿酸血症"
+      },
+      {
+        "label": "E",
+        "text": "预防视神经炎"
+      }
+    ],
+    "answer": "A",
+    "explanation": "异烟肼致周围神经炎（手足麻木），需加用维生素B6预防；利福平、异烟肼、吡嗪酰胺多有肝功能损害，链霉素有耳毒性肾毒性，乙胺丁醇致视神经炎，吡嗪酰胺致高尿酸。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-A2-001",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "肺结核病例诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，52岁，低热、盗汗、咳嗽咳痰2个月，胸片示左上肺密度不均匀片状影，血WBC 7.5×10⁹/L。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "浸润型肺结核"
+      },
+      {
+        "label": "B",
+        "text": "细菌性肺炎"
+      },
+      {
+        "label": "C",
+        "text": "急性肺脓肿"
+      },
+      {
+        "label": "D",
+        "text": "支气管肺癌"
+      },
+      {
+        "label": "E",
+        "text": "支气管扩张症"
+      }
+    ],
+    "answer": "A",
+    "explanation": "长期低热、盗汗+上肺病变（密度不均匀片状影）→优先考虑肺结核；细菌性肺炎血WBC多升高，肺癌多刺激性咳嗽痰中带血，肺脓肿多有误吸高热病史。教材P92。",
+    "source_page": "教材P92",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-A2-002",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "初治化疗疗程",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "初治肺结核患者，无耐药，其强化期和巩固期的疗程分别是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "1个月和3个月"
+      },
+      {
+        "label": "B",
+        "text": "2个月和4个月"
+      },
+      {
+        "label": "C",
+        "text": "3个月和6个月"
+      },
+      {
+        "label": "D",
+        "text": "4个月和8个月"
+      },
+      {
+        "label": "E",
+        "text": "5个月和10个月"
+      }
+    ],
+    "answer": "B",
+    "explanation": "初治活动性肺结核每日方案2HRZE/4HR：强化期2个月（异烟肼+利福平+吡嗪酰胺+乙胺丁醇）、巩固期4个月（异烟肼+利福平）；间歇方案2H3R3Z3E3/4H3R3。教材P88。",
+    "source_page": "教材P88",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-A2-003",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "抗结核药不良反应分析",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性，35岁，发热、咳嗽1个月，胸片示右上肺空洞影，痰涂片抗酸染色阳性。抗结核治疗2周后出现手足麻木，最可能的原因是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "异烟肼所致周围神经炎"
+      },
+      {
+        "label": "B",
+        "text": "利福平所致肝功能损害"
+      },
+      {
+        "label": "C",
+        "text": "吡嗪酰胺所致高尿酸血症"
+      },
+      {
+        "label": "D",
+        "text": "乙胺丁醇所致视神经炎"
+      },
+      {
+        "label": "E",
+        "text": "链霉素所致耳毒性"
+      }
+    ],
+    "answer": "A",
+    "explanation": "异烟肼最具特征性的不良反应为周围神经炎（手足麻木），需加用维生素B6；利福平多致肝损害（ALT升高3倍或黄疸停药），吡嗪酰胺致高尿酸，乙胺丁醇致视神经炎，链霉素致耳肾毒性。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-B1-001",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "抗结核药与菌群作用（共用选项）",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "对A群（生长繁殖最活跃）结核杆菌最敏感的抗结核药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "异烟肼"
+      },
+      {
+        "label": "B",
+        "text": "利福平"
+      },
+      {
+        "label": "C",
+        "text": "吡嗪酰胺"
+      },
+      {
+        "label": "D",
+        "text": "链霉素"
+      },
+      {
+        "label": "E",
+        "text": "乙胺丁醇"
+      }
+    ],
+    "answer": "A",
+    "explanation": "A群结核杆菌生长繁殖最活跃、多位于干酪液化处、极易耐药，异烟肼对A群最敏感且能渗入全身各组织、杀灭细胞内外结核杆菌。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-B1-002",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "抗结核药与菌群作用（共用选项）",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "对B群（细胞内半静止状态）结核杆菌最敏感的抗结核药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "异烟肼"
+      },
+      {
+        "label": "B",
+        "text": "利福平"
+      },
+      {
+        "label": "C",
+        "text": "吡嗪酰胺"
+      },
+      {
+        "label": "D",
+        "text": "链霉素"
+      },
+      {
+        "label": "E",
+        "text": "乙胺丁醇"
+      }
+    ],
+    "answer": "C",
+    "explanation": "B群结核杆菌处于细胞内半静止状态，吡嗪酰胺对其最敏感，可在细胞内杀菌（半杀菌）；注意吡嗪酰胺还可致高尿酸血症，痛风患者慎用。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-B1-003",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "抗结核药与菌群作用（共用选项）",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "对C群（细胞外半静止状态）结核杆菌最敏感的抗结核药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "异烟肼"
+      },
+      {
+        "label": "B",
+        "text": "利福平"
+      },
+      {
+        "label": "C",
+        "text": "吡嗪酰胺"
+      },
+      {
+        "label": "D",
+        "text": "链霉素"
+      },
+      {
+        "label": "E",
+        "text": "乙胺丁醇"
+      }
+    ],
+    "answer": "B",
+    "explanation": "C群结核杆菌处于细胞外半静止状态，利福平对其最敏感，可杀灭细胞内外结核杆菌（全杀菌）；利福平需注意肝功能损害，转氨酶升高3倍以上或黄疸时应停药。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-B1-004",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "抗结核药与菌群作用（共用选项）",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "主要杀灭细胞外结核杆菌的半杀菌药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "异烟肼"
+      },
+      {
+        "label": "B",
+        "text": "利福平"
+      },
+      {
+        "label": "C",
+        "text": "吡嗪酰胺"
+      },
+      {
+        "label": "D",
+        "text": "链霉素"
+      },
+      {
+        "label": "E",
+        "text": "乙胺丁醇"
+      }
+    ],
+    "answer": "D",
+    "explanation": "链霉素在细胞外杀菌（半杀菌），因肾毒性、耳毒性大，临床已少用；异烟肼、利福平杀细胞内外结核杆菌（全杀菌），乙胺丁醇为抑菌剂。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-B1-005",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "抗结核药与菌群作用（共用选项）",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "属于抑菌剂、需警惕视神经炎的抗结核药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "异烟肼"
+      },
+      {
+        "label": "B",
+        "text": "利福平"
+      },
+      {
+        "label": "C",
+        "text": "吡嗪酰胺"
+      },
+      {
+        "label": "D",
+        "text": "链霉素"
+      },
+      {
+        "label": "E",
+        "text": "乙胺丁醇"
+      }
+    ],
+    "answer": "E",
+    "explanation": "乙胺丁醇为抑菌剂，最特征性不良反应为视神经炎（视力下降、视野缺损）；抗结核抑菌剂有乙胺丁醇和对氨基水杨酸。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch027-M5-X-001",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "继发性肺结核类型",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "记忆",
+    "stem": "继发性肺结核的常见类型包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "浸润型肺结核"
+      },
+      {
+        "label": "B",
+        "text": "干酪性肺炎"
+      },
+      {
+        "label": "C",
+        "text": "慢性纤维空洞型肺结核"
+      },
+      {
+        "label": "D",
+        "text": "结核球病灶"
+      },
+      {
+        "label": "E",
+        "text": "原发性肺结核"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "继发性肺结核类型：局灶型、浸润型（最常见的活动性继发性肺结核）、干酪性肺炎（病情危重、虫蚀样空洞）、慢性纤维空洞型（厚壁空洞、垂柳样肺纹理）、结核球（纤维包裹的干酪样坏死）；原发性肺结核属初次感染，不属继发性。教材P83。",
+    "source_page": "教材P83",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch027-M5-X-002",
+    "module": "M5",
+    "module_name": "肺结核",
+    "topic": "PPD试验假阴性情况",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "PPD试验阴性或弱阳性可见于下列哪些情况？",
+    "options": [
+      {
+        "label": "A",
+        "text": "重症结核病患者"
+      },
+      {
+        "label": "B",
+        "text": "长期应用免疫抑制剂"
+      },
+      {
+        "label": "C",
+        "text": "严重细菌感染"
+      },
+      {
+        "label": "D",
+        "text": "明显营养不良"
+      },
+      {
+        "label": "E",
+        "text": "未接种卡介苗的婴幼儿"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "PPD阴性或弱阳性见于免疫力低下者：营养不良、HIV感染、麻疹、水痘、癌症、严重细菌感染、重症结核病（粟粒性结核、结核性脑膜炎）、长期用糖皮质激素或免疫抑制剂；PPD阳性对提示未接种卡介苗婴幼儿的结核病价值较大。教材P85。",
+    "source_page": "教材P85",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  }
+]
