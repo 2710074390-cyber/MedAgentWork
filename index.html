@@ -175,6 +175,14 @@ body {
 .hero-canvas canvas { position:absolute; top:0; left:0; width:100%; height:100%; }
 .hero-glow { position:absolute; inset:0; z-index:0; pointer-events:none; mix-blend-mode:screen;
   background:radial-gradient(circle at 78% 62%, rgba(45,95,158,0.16), transparent 45%); }
+.hero-glow-follow {
+  position:absolute; width:480px; height:480px; border-radius:50%; pointer-events:none; z-index:1;
+  background:radial-gradient(circle, rgba(103,153,254,0.13), transparent 62%);
+  mix-blend-mode:screen; opacity:0; transform:translate(-50%,-50%); transition:opacity .4s;
+  will-change:transform;
+}
+.hero-glow-follow.on { opacity:1; }
+@media (hover:none) { .hero-glow-follow { display:none; } }
 .hero .wrap { position:relative; z-index:2; width:100%; }
 .hero-grid { display:grid; grid-template-columns:minmax(0,58fr) minmax(0,42fr); gap:56px; align-items:center; }
 .hero-copy { display:flex; flex-direction:column; gap:22px; }
@@ -293,6 +301,53 @@ body {
 }
 .section-head .right { text-align:right; font-family:var(--f-mono); font-size:12px; color:var(--text-3); letter-spacing:0.1em; line-height:2; }
 .section-head .right b { display:block; color:var(--text-2); font-weight:500; font-size:12.5px; letter-spacing:0.14em; }
+
+/* ---------- 内容总览台（绝对主角入口） ---------- */
+.deck-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.deck-tile {
+  position:relative; display:flex; flex-direction:column; gap:14px;
+  background:var(--surface); border:1px solid var(--border); border-radius:16px;
+  padding:30px 28px 26px; overflow:hidden; text-decoration:none; color:var(--text);
+  transition:border-color .3s, transform .3s, box-shadow .3s;
+}
+.deck-tile:hover { border-color:rgba(103,153,254,0.5); transform:translateY(-4px); box-shadow:0 28px 70px -30px rgba(103,153,254,0.28); }
+.deck-tile::before {
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .35s;
+  background:radial-gradient(560px circle at var(--mx,50%) var(--my,0%), rgba(103,153,254,0.1), transparent 45%);
+}
+.deck-tile:hover::before { opacity:1; }
+.dt-top { display:flex; align-items:center; justify-content:space-between; }
+.dt-icon {
+  width:54px; height:54px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:26px;
+  background:var(--brand-soft); border:1px solid rgba(103,153,254,0.3);
+  box-shadow:0 0 26px rgba(103,153,254,0.16);
+}
+.dt-num { font-family:var(--f-mono); font-size:30px; font-weight:600; color:rgba(255,255,255,0.14); letter-spacing:0.05em; line-height:1; }
+.deck-tile h3 { font-size:22px; font-weight:600; letter-spacing:-0.01em; display:flex; align-items:baseline; gap:10px; }
+.dt-en { font-family:var(--f-mono); font-size:11px; letter-spacing:0.14em; color:var(--brand); text-transform:uppercase; }
+.deck-tile p { font-size:13.5px; color:var(--text-2); line-height:1.7; }
+.dt-go { margin-top:auto; padding-top:6px; font-family:var(--f-mono); font-size:12.5px; color:var(--text-2); letter-spacing:0.06em; display:flex; align-items:center; gap:8px; transition:color .25s; }
+.deck-tile:hover .dt-go { color:var(--brand); }
+.dt-go i { font-style:normal; transition:transform .25s; }
+.deck-tile:hover .dt-go i { transform:translateX(5px); }
+
+/* ---------- 展示级分区头部 ---------- */
+.section-head.display h2 { font-size:clamp(32px,4.4vw,52px); }
+
+/* ---------- 旗舰卡（每区首卡，绝对主角强化） ---------- */
+.card.featured { grid-column:1/-1; flex-direction:row; align-items:center; gap:30px; padding:34px 36px; }
+.card.featured .glyph { width:72px; height:72px; border-radius:16px; font-size:32px; }
+.card.featured .card-head { margin-bottom:0; padding-right:0; flex:0 0 auto; }
+.card.featured .card-title { font-size:24px; }
+.card.featured .card-meta { font-size:12px; margin-top:4px; }
+.card.featured .card-desc { font-size:15px; min-height:auto; margin-bottom:0; flex:1; line-height:1.75; }
+.card.featured .btns { margin-top:0; width:auto; min-width:240px; }
+.card.featured .btns .btn { flex:1 1 0; }
+@media (max-width:1024px) {
+  .deck-grid { grid-template-columns:1fr; }
+  .card.featured { flex-direction:column; align-items:flex-start; gap:18px; }
+  .card.featured .btns { width:100%; min-width:0; }
+}
 
 /* ---------- 能力卡片（管线） ---------- */
 .cap-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
@@ -577,10 +632,10 @@ body {
       <span class="name">Med<b>Agent</b>Work</span>
     </a>
     <div class="nav-links">
-      <a href="#pipeline">管线</a>
       <a href="#exams">押题卷</a>
       <a href="#banks">题库</a>
       <a href="#reviews">复习手册</a>
+      <a href="#pipeline">幕后管线</a>
       <a href="#quick">快速上手</a>
     </div>
     <div class="nav-right">
@@ -601,8 +656,10 @@ body {
   <div class="hero-canvas" id="hero-canvas" aria-hidden="true">
     <canvas id="star-canvas"></canvas>
     <canvas id="ascii-canvas"></canvas>
+    <canvas id="mw-canvas"></canvas>
   </div>
   <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow-follow" id="hero-glow-follow" aria-hidden="true"></div>
   <div class="atom-wrap" id="atom-wrap" aria-hidden="true">
     <div class="atom">
       <div class="ticks"><span>· · · · · · · · · · · · · · · · · · · · · · · ·</span></div>
@@ -682,14 +739,81 @@ body {
 <!-- ============ 大三下 ============ -->
 <div class="view active" id="view-junior2">
 
-<!-- ============ 管线能力 ============ -->
+<!-- ============ 内容总览台（绝对主角） ============ -->
+<section class="section deck" id="deck">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>CONTENT DECK · <i>选择你的战场</i></span></span>
+      <h2>备考资源 <span class="accent">一键直达</span></h2>
+    </div>
+    <div class="right"><b>ABSOLUTE FOCUS</b>押题卷 · 题库 · 复习手册<br>4,917 题 · 15 学科 · 7 册手册</div>
+  </div>
+  <div class="deck-grid">
+    <a class="deck-tile reveal" href="#exams">
+      <div class="dt-top"><span class="dt-icon">🧩</span><span class="dt-num">05</span></div>
+      <h3>押题卷 <span class="dt-en">EXAMS</span></h3>
+      <p>交互式答题 · 点击选项即时判分 · 进度追踪 · 错题高亮 · 按考频组卷</p>
+      <span class="dt-go">进入押题卷 <i>→</i></span>
+    </a>
+    <a class="deck-tile reveal" href="#banks">
+      <div class="dt-top"><span class="dt-icon">📥</span><span class="dt-num">06</span></div>
+      <h3>题库 <span class="dt-en">PDF LIBRARY</span></h3>
+      <p>六科 PDF 直链下载 · 版本与题量一屏可查 · 1,900+ 题精选</p>
+      <span class="dt-go">进入题库 <i>→</i></span>
+    </a>
+    <a class="deck-tile reveal" href="#reviews">
+      <div class="dt-top"><span class="dt-icon">📚</span><span class="dt-num">07</span></div>
+      <h3>复习手册 <span class="dt-en">REVIEWS</span></h3>
+      <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线预览 · 下载源文件 · 一键打印</p>
+      <span class="dt-go">进入复习手册 <i>→</i></span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ 押题卷（绝对主角 01） ============ -->
+<section class="section" id="exams">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>EXAMS · <i>INTERACTIVE</i></span></span>
+      <h2>押题卷 <span class="accent">交互式答题</span></h2>
+    </div>
+    <div class="right"><b>01 · 押题卷</b>05 套 · 点击选项即时判分<br>进度追踪 · 错题高亮 · 按考频组卷</div>
+  </div>
+  <div class="grid" id="grid-exam"></div>
+</section>
+
+<!-- ============ 题库 PDF（绝对主角 02） ============ -->
+<section class="section" id="banks">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>BANKS · <i>PDF LIBRARY</i></span></span>
+      <h2>题库 <span class="accent">PDF 精选</span></h2>
+    </div>
+    <div class="right"><b>02 · 题库</b>06 科 · 直链下载<br>版本与题量一屏可查</div>
+  </div>
+  <div class="grid" id="grid-bank"></div>
+</section>
+
+<!-- ============ 复习手册（绝对主角 03） ============ -->
+<section class="section" id="reviews">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>REVIEWS · <i>SYSTEMATIC</i></span></span>
+      <h2>复习手册 <span class="accent">系统研读</span></h2>
+    </div>
+    <div class="right"><b>03 · 复习手册</b>07 科 · 在线预览 · 下载源文件<br>一键打印 PDF</div>
+  </div>
+  <div class="grid" id="grid-review"></div>
+</section>
+
+<!-- ============ 幕后管线（支撑系统） ============ -->
 <section class="section" id="pipeline">
   <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>AGENT = MODEL + <i>PIPELINE</i></span></span>
-      <h2><span class="accent">Pipeline</span><br>让题库在真实考场持续产出</h2>
+      <span class="chip"><span>BACKSTAGE · <i>AGENT = MODEL + PIPELINE</i></span></span>
+      <h2>幕后管线<br>让题库持续产出</h2>
     </div>
-    <div class="right"><b>CAPABILITIES</b>01 / 管线 · 门禁 · 知识库</div>
+    <div class="right"><b>BACKSTAGE</b>管线 · 门禁 · 知识库<br>支撑以上全部内容</div>
   </div>
   <div class="cap-grid">
     <div class="cap-card reveal">
@@ -714,105 +838,6 @@ body {
       <div class="cap-flow"><em>hybrid</em><em>rerank</em><em>calibrated_p</em></div>
     </div>
   </div>
-</section>
-
-<!-- ============ 粘性滚动：内容三大件 ============ -->
-<section class="section sticky-sec" id="products">
-  <div class="section-head reveal">
-    <div class="left">
-      <span class="chip"><span>DESIGN APPROACH · <i>EVERYTHING IS TRACEABLE</i></span></span>
-      <h2>一切皆可溯源。<br>每次修订皆可回放。</h2>
-    </div>
-    <div class="right"><b>PRODUCTS</b>02 / 押题卷 · 题库 · 手册</div>
-  </div>
-  <div class="sticky-grid">
-    <div class="sticky-list" id="sticky-list">
-      <div class="sticky-item active" data-mock="0">
-        <div class="si-head"><div class="si-dot"></div><h3>押题卷 · 交互式答题</h3></div>
-        <p>点击选项即时判分，进度追踪、错题高亮；套卷按考频组卷，难度经锚点校准配平。</p>
-      </div>
-      <div class="sticky-item" data-mock="1">
-        <div class="si-head"><div class="si-dot"></div><h3>题库 · PDF 精选</h3></div>
-        <p>六科 PDF 题库直链下载，版本标注清晰；题量、修订、批次信息一屏可查。</p>
-      </div>
-      <div class="sticky-item" data-mock="2">
-        <div class="si-head"><div class="si-dot"></div><h3>复习手册 · 系统研读</h3></div>
-        <p>掌握 / 熟悉 / 理解三级标注，侧栏导航；在线预览、下载源文件、一键打印 PDF。</p>
-      </div>
-    </div>
-    <div class="sticky-stage">
-      <div class="sticky-frame" id="sticky-frame">
-        <!-- Mock 1: 押题卷 -->
-        <div class="sticky-mock active" data-mock="0">
-          <div class="mock-in">
-            <span class="mock-tag">EXAM · 内科学 · 心血管系统 · 03/50</span>
-            <div class="mock-progress"><i></i></div>
-            <div class="mock-row"><span class="m-icon">🫀</span><span class="m-name">下列关于左心衰的叙述，正确的是</span></div>
-            <div class="mock-row"><span class="m-icon">A</span><span class="m-name">左心衰以肺淤血为主</span></div>
-            <div class="mock-row sel"><span class="m-icon">B</span><span class="m-name">最早体征是奔马律</span><span class="m-right">✓ 判分</span></div>
-            <div class="mock-row"><span class="m-icon">C</span><span class="m-name">最常见诱因是感染</span></div>
-            <div class="mock-row"><span class="m-icon">D</span><span class="m-name">首选药物为利尿剂</span></div>
-          </div>
-        </div>
-        <!-- Mock 2: 题库 PDF -->
-        <div class="sticky-mock" data-mock="1">
-          <div class="mock-in">
-            <span class="mock-tag">BANK · 6 SUBJECTS · PDF</span>
-            <div class="mock-row"><span class="m-icon">🫀</span><div><div class="m-name">内科学</div><div class="m-sub">364 题 · 3.0 MB</div></div><span class="m-right">⬇ 3.0MB</span></div>
-            <div class="mock-row"><span class="m-icon">🔪</span><div><div class="m-name">外科学</div><div class="m-sub">重点修订 · 3.1 MB</div></div><span class="m-right">⬇ 3.1MB</span></div>
-            <div class="mock-row sel"><span class="m-icon">🧠</span><div><div class="m-name">精神病学</div><div class="m-sub">242 题 · v3 · 2.0 MB</div></div><span class="m-right">⬇ 2.0MB</span></div>
-            <div class="mock-row"><span class="m-icon">⚡</span><div><div class="m-name">神经病学</div><div class="m-sub">259 题 · v3 · 2.8 MB</div></div><span class="m-right">⬇ 2.8MB</span></div>
-          </div>
-        </div>
-        <!-- Mock 3: 复习手册 -->
-        <div class="sticky-mock" data-mock="2">
-          <div class="mock-in">
-            <span class="mock-tag">REVIEW · v5.1 · 掌握/熟悉/理解</span>
-            <div class="mock-bar"><div class="bar"><i style="width:92%"></i></div><div class="bar"><i style="width:64%"></i></div><div class="bar"><i style="width:38%"></i></div></div>
-            <div class="mock-row"><span class="m-icon">📖</span><div><div class="m-name">心血管 · 心衰</div><div class="m-sub">掌握 · 考点分级标注 · 溯源 RAG 教材</div></div><span class="m-right">🖨 PDF</span></div>
-            <div class="mock-row"><span class="m-icon">📖</span><div><div class="m-name">呼吸 · 哮喘</div><div class="m-sub">熟悉 · 鉴别诊断要点</div></div><span class="m-right">↗ HTML</span></div>
-            <div class="mock-row sel"><span class="m-icon">📖</span><div><div class="m-name">消化 · 肝硬化</div><div class="m-sub">理解 · 并发症处理原则</div></div><span class="m-right">⬇ MD</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 押题卷 ============ -->
-<section class="section" id="exams">
-  <div class="section-head reveal">
-    <div class="left">
-      <span class="chip"><span>EXAMS · <i>INTERACTIVE</i></span></span>
-      <h2>押题卷 <span class="accent">交互式答题</span></h2>
-    </div>
-    <div class="right"><b>VOL. Ⅲ</b>05 套 · 点击选项即时判分<br>进度追踪 · 错题高亮</div>
-  </div>
-  <div class="grid" id="grid-exam"></div>
-</section>
-
-<!-- ============ 题库 PDF ============ -->
-<section class="section" id="banks">
-  <div class="section-head reveal">
-    <div class="left">
-      <span class="chip"><span>BANKS · <i>PDF LIBRARY</i></span></span>
-      <h2>题库 <span class="accent">PDF 精选</span></h2>
-    </div>
-    <div class="right"><b>VOL. Ⅲ</b>06 科 · 直链下载<br>版本与题量一屏可查</div>
-  </div>
-  <div class="grid" id="grid-bank"></div>
-</section>
-
-<!-- ============ 复习手册 ============ -->
-<section class="section" id="reviews">
-  <div class="section-head reveal">
-    <div class="left">
-      <span class="chip"><span>REVIEWS · <i>SYSTEMATIC</i></span></span>
-      <h2>复习手册 <span class="accent">系统研读</span></h2>
-    </div>
-    <div class="right"><b>VOL. Ⅲ</b>07 科 · 在线预览 · 下载源文件<br>一键打印 PDF</div>
-  </div>
-  <div class="grid" id="grid-review"></div>
 </section>
 
 <!-- ============ 快速上手 ============ -->
@@ -1040,14 +1065,14 @@ $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 /* ---------- 卡片渲染 ---------- */
-function examCard(it,i){return `<div class="card reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="viewOnline('${it.html}')">👁 在线答题</button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')">🖨 打印</button></div></div>`;}
-function bankCard(it,i){const fname=it.pdf.split('/').pop();return `<div class="card reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-brand btn-sm" onclick="downloadFile('${it.pdf}','${fname}')">⬇ 下载 PDF</button></div></div>`;}
+function examCard(it,i){return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="viewOnline('${it.html}')">👁 在线答题</button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')">🖨 打印</button></div></div>`;}
+function bankCard(it,i){const fname=it.pdf.split('/').pop();return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-brand btn-sm" onclick="downloadFile('${it.pdf}','${fname}')">⬇ 下载 PDF</button></div></div>`;}
 function reviewCard(it,i){
   const mdName=it.md.split('/').pop();
   let btns=`<button class="btn btn-pri btn-sm" onclick="previewMD('${it.md}','${it.name}')">👁 预览</button><button class="btn btn-ghost btn-sm" onclick="downloadFile('${it.md}','${mdName}')">⬇ MD</button>`;
   if(it.html){btns+=`<button class="btn btn-ghost btn-sm" onclick="viewOnline('${it.html}')">↗ HTML</button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')">🖨 PDF</button>`;}
   else{btns+=`<button class="btn btn-ghost btn-sm" onclick="previewMD('${it.md}','${it.name}')">🖨 PDF</button>`;}
-  return `<div class="card reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns">${btns}</div></div>`;
+  return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns">${btns}</div></div>`;
 }
 $('#grid-exam').innerHTML=EXAMS.map(examCard).join('');
 $('#grid-bank').innerHTML=BANKS.map(bankCard).join('');
@@ -1055,7 +1080,7 @@ $('#grid-review').innerHTML=REVIEWS.map(reviewCard).join('');
 
 /* ---------- 鼠标跟随光晕 ---------- */
 document.addEventListener('mousemove',e=>{
-  const c=e.target.closest&&e.target.closest('.card');
+  const c=e.target.closest&&e.target.closest('.card,.deck-tile');
   if(!c)return;
   const r=c.getBoundingClientRect();
   c.style.setProperty('--mx',(e.clientX-r.left)+'px');
@@ -1185,6 +1210,149 @@ function initCanvases(){
   window.addEventListener('resize',()=>{size();seed();});
 }
 initCanvases();
+
+/* ---------- MW 粒子艺术字（可交互） ---------- */
+(function(){
+  const canvas=document.getElementById('mw-canvas');
+  const wrap=document.getElementById('hero-canvas');
+  const glow=document.getElementById('hero-glow-follow');
+  const hero=document.querySelector('.hero');
+  if(!canvas||!wrap||!hero)return;
+  const ctx=canvas.getContext('2d');
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W=0,H=0,parts=[];
+  const mouse={x:-9999,y:-9999};
+  const shocks=[];
+  let t=0;
+
+  /* 从离屏画布采样 "MW" 字形 → 粒子家点 */
+  function build(){
+    const mobile=W<720;
+    const tw=Math.min(560,W*0.62), th=Math.max(20,Math.round(tw*0.47));
+    const off=document.createElement('canvas');
+    off.width=Math.max(8,Math.round(tw)); off.height=Math.max(8,th);
+    const octx=off.getContext('2d');
+    const fs=Math.round(th*0.86);
+    octx.font='900 '+fs+'px "Segoe UI","PingFang SC","Microsoft YaHei",sans-serif';
+    octx.textAlign='center'; octx.textBaseline='middle';
+    octx.fillStyle='#fff';
+    octx.fillText('MW',off.width/2,off.height/2+fs*0.05);
+    const img=octx.getImageData(0,0,off.width,off.height);
+    const data=img.data;
+    const step=mobile?6:4;
+    const cx=W*(mobile?0.5:0.64), cy=H*0.42;
+    const homes=[];
+    for(let y=0;y<off.height;y+=step){
+      for(let x=0;x<off.width;x+=step){
+        if(data[(y*off.width+x)*4+3]>120){
+          homes.push({x:cx+(x-off.width/2), y:cy+(y-off.height/2)});
+        }
+      }
+    }
+    parts=homes.map(h=>({
+      hx:h.x,hy:h.y,
+      x:h.x+(Math.random()-0.5)*12,y:h.y+(Math.random()-0.5)*12,
+      vx:0,vy:0,
+      s:Math.random()*1.5+0.7,
+      ph:Math.random()*Math.PI*2,
+      tw:Math.random()*1.2+0.5
+    }));
+  }
+  function size(){
+    const r=wrap.getBoundingClientRect();
+    W=Math.max(1,r.width);H=Math.max(1,r.height);
+    canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
+    canvas.style.width=W+'px';canvas.style.height=H+'px';
+    build();
+  }
+  size();
+
+  hero.addEventListener('mousemove',e=>{
+    const r=hero.getBoundingClientRect();
+    mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top;
+    if(glow){
+      glow.style.transform='translate('+(e.clientX-r.left)+'px,'+(e.clientY-r.top)+'px) translate(-50%,-50%)';
+      glow.classList.add('on');
+    }
+  });
+  hero.addEventListener('mouseleave',()=>{
+    mouse.x=-9999;mouse.y=-9999;
+    if(glow)glow.classList.remove('on');
+  });
+  window.addEventListener('resize',()=>{if(glow)glow.classList.remove('on');});
+  /* 点击 → 冲击波（避开按钮/链接） */
+  hero.addEventListener('click',e=>{
+    if(e.target.closest&&e.target.closest('a,button'))return;
+    const r=hero.getBoundingClientRect();
+    shocks.push({x:e.clientX-r.left,y:e.clientY-r.top,r:0,sp:10,p:2.6});
+  });
+
+  let visible=true;
+  document.addEventListener('visibilitychange',()=>{visible=!document.hidden;});
+
+  function draw(){
+    if(fx.on&&visible&&!reduced){
+      t+=0.016;
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+      ctx.clearRect(0,0,W,H);
+      /* 视差：MW 整体随鼠标轻微偏移 */
+      const px=(mouse.x-W*0.5)*-0.03, py=(mouse.y-H*0.5)*-0.03;
+      const mx=mouse.x-px, my=mouse.y-py;
+      const R=140,R2=R*R;
+      ctx.save();
+      ctx.translate(px,py);
+      for(let i=0;i<parts.length;i++){
+        const p=parts[i];
+        /* 弹簧回位 + 波动 */
+        let ax=(p.hx-p.x)*0.014, ay=(p.hy-p.y)*0.014;
+        ax+=Math.sin(t*0.9+p.ph)*0.08; ay+=Math.cos(t*0.7+p.ph)*0.06;
+        /* 鼠标斥力 */
+        const dx=p.x-mx, dy=p.y-my;
+        const d2=dx*dx+dy*dy;
+        if(d2<R2){const d=Math.sqrt(d2)||1;const f=(1-d/R)*2.4;ax+=dx/d*f;ay+=dy/d*f;}
+        /* 点击冲击波 */
+        for(let s=shocks.length-1;s>=0;s--){
+          const sh=shocks[s];
+          const ddx=p.x-sh.x, ddy=p.y-sh.y;
+          const dd=Math.sqrt(ddx*ddx+ddy*ddy)||1;
+          const band=Math.abs(dd-sh.r);
+          if(band<70&&sh.r<W*0.9){
+            const f=(1-band/70)*sh.p*(1-sh.r/(W*0.9));
+            ax+=ddx/dd*f; ay+=ddy/dd*f;
+          }
+        }
+        p.vx+=ax;p.vy+=ay;
+        p.vx*=0.86;p.vy*=0.86;
+        p.x+=p.vx;p.y+=p.vy;
+        const a=0.22+0.30*Math.abs(Math.sin(t*p.tw+p.ph));
+        ctx.fillStyle='rgba(103,153,254,'+a.toFixed(3)+')';
+        ctx.fillRect(p.x,p.y,p.s,p.s);
+      }
+      ctx.restore();
+      for(let s=shocks.length-1;s>=0;s--){
+        shocks[s].r+=shocks[s].sp;
+        if(shocks[s].r>W*0.9)shocks.splice(s,1);
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+  window.addEventListener('resize',size);
+
+  /* ---------- 磁吸 CTA 按钮 ---------- */
+  if(matchMedia('(hover:hover)').matches){
+    document.querySelectorAll('.hero-cta .btn').forEach(b=>{
+      b.addEventListener('mousemove',e=>{
+        const r=b.getBoundingClientRect();
+        const dx=(e.clientX-r.left-r.width/2)*0.16;
+        const dy=(e.clientY-r.top-r.height/2)*0.22;
+        b.style.transform='translate('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px)';
+      });
+      b.addEventListener('mouseleave',()=>{b.style.transform='';});
+    });
+  }
+})();
 
 /* ---------- FX 开关 ---------- */
 (function(){
