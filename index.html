@@ -627,13 +627,16 @@ body {
 @media (max-width:720px) {
   .wrap { padding:0 18px; }
   .nav-links { display:none; }
-  .nav-in { gap:12px; padding:0 14px; }
-  .brand .name { font-size:14px; }
-  .nav-term-tabs { display:none; }
+  .nav-in { gap:8px; padding:0 12px; }
+  .brand { gap:8px; }
+  .brand .name { font-size:13.5px; }
+  .nav-term-tabs { display:flex; }   /* 手机端学期切换保持主页可见 */
+  .nav-term { padding:6px 10px; font-size:12px; }
+  .nav-term .lock { display:none; }
   .nav-right { gap:8px; }
   .fx-toggle { display:none; }
   .nav-right .btn-sec { display:none; }
-  .nav-burger { display:flex; }
+  .nav-burger { display:flex; width:36px; height:36px; }
   /* 内容总览台 → 横向滑动卡片 */
   .deck-grid { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:14px; margin:0 -18px; padding:0 18px 10px; scrollbar-width:none; }
   .deck-grid::-webkit-scrollbar { display:none; }
@@ -651,6 +654,11 @@ body {
   .quick { padding:30px 22px; }
   .md { padding:24px 20px 40px; }
   .footer-in { flex-direction:column; text-align:center; }
+}
+
+@media (max-width:400px) {
+  .brand .name { display:none; }   /* 超窄屏：只保留 Logo 与学期切换 */
+  .nav-term { padding:6px 8px; font-size:11.5px; }
 }
 
 /* ---------- 动效偏好 ---------- */
