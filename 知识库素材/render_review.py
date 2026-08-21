@@ -305,6 +305,13 @@ body {
   max-width: calc(var(--content-width) + 96px);
 }
 
+/* 导出 PDF 引导条（打印时隐藏） */
+.print-hint {
+  display: block; margin: 0 0 18px; padding: 11px 16px; border-radius: 10px;
+  background: #eef4ff; border: 1px solid #c6d8f5; color: #0b4f8a; font-size: 13.5px; line-height: 1.7;
+}
+@media print { .print-hint { display: none !important; } }
+
 /* Hero Banner */
 .hero-banner {
   background: var(--hero-gradient);
@@ -1367,6 +1374,9 @@ class ReviewRenderer:
 
         # Main content
         html_parts.append('<main id="main-content">')
+
+        # 导出 PDF 引导条（打印时隐藏）
+        html_parts.append('<div class="print-hint">📄 请在弹出的打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把本手册保存成 PDF 文件（折叠内容已自动展开）。</div>')
 
         # Hero banner
         tags = [

@@ -281,6 +281,13 @@ body {
   max-width: calc(var(--content-width) + 96px);
 }
 
+/* 导出 PDF 引导条（打印时隐藏） */
+.print-hint {
+  display: block; margin: 0 0 18px; padding: 11px 16px; border-radius: 10px;
+  background: #eef4ff; border: 1px solid #c6d8f5; color: #0b4f8a; font-size: 13.5px; line-height: 1.7;
+}
+@media print { .print-hint { display: none !important; } }
+
 /* Hero Banner */
 .hero-banner {
   background: var(--hero-gradient);
@@ -745,6 +752,7 @@ tr:last-child td {
 <a href="#附录三必背记忆口诀汇总" class="sidebar-link">附录三：必背记忆口诀汇总</a>
 </nav>
 <main id="main-content">
+<div class="print-hint">📄 请在弹出的打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把本手册保存成 PDF 文件（折叠内容已自动展开）。</div>
 <div class="hero-banner">
 <h1>🧠 精神病学 高效复习手册</h1>
 <p class="meta">MedAgentWork 自动生成 | 教材浓缩型 | 分层阅读</p>

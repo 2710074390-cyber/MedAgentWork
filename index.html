@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23679efe'/%3E%3Ctext x='16' y='21.5' font-family='monospace' font-size='13' font-weight='700' fill='%230a0a0a' text-anchor='middle'%3EMW%3C/text%3E%3C/svg%3E">
 <title>MedAgentWork · 医学复习资料库</title>
@@ -117,6 +117,51 @@ body {
 .nav-term:hover { color:var(--text); }
 .nav-term.active { background:rgba(255,255,255,0.12); color:var(--text); }
 .nav-term .lock { font-size:10px; opacity:0.65; margin-left:3px; }
+.nav-burger {
+  display:none; width:38px; height:38px; border-radius:10px; flex-shrink:0;
+  border:1px solid var(--border); background:var(--glass); cursor:pointer;
+  flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  transition:border-color .2s;
+}
+.nav-burger:hover { border-color:var(--border-strong); }
+.nav-burger span { display:block; width:17px; height:2px; background:var(--text); border-radius:2px; transition:all .3s; }
+.nav-burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2){ opacity:0; }
+.nav-burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+/* ---------- 移动端全屏菜单 ---------- */
+.mobile-menu {
+  position:fixed; inset:0; z-index:300; background:rgba(8,9,12,0.94);
+  backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+  display:flex; opacity:0; pointer-events:none; transform:translateY(-12px);
+  transition:opacity .3s, transform .3s;
+}
+.mobile-menu.open { opacity:1; pointer-events:auto; transform:translateY(0); }
+.mm-inner { width:100%; max-width:520px; margin:0 auto; padding:calc(24px + env(safe-area-inset-top)) 26px calc(30px + env(safe-area-inset-bottom)); display:flex; flex-direction:column; }
+.mm-head { display:flex; align-items:center; gap:11px; margin-bottom:26px; }
+.mm-head .logo {
+  width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, var(--brand) 0%, #3b6bd6 60%, #1a3870 100%);
+  box-shadow:0 0 18px rgba(103,153,254,0.45); font-family:var(--f-mono); font-size:13px; font-weight:700; color:#0a0a0a;
+}
+.mm-head .name { font-size:16px; font-weight:600; }
+.mm-head .name b { color:var(--brand); }
+.mm-links { display:flex; flex-direction:column; gap:2px; }
+.mm-links a {
+  display:flex; align-items:center; gap:14px; padding:15px 6px; font-size:19px; font-weight:600;
+  color:var(--text); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.06); transition:color .2s;
+}
+.mm-links a:hover, .mm-links a:active { color:var(--brand); }
+.mm-idx { font-family:var(--f-mono); font-size:11px; color:var(--brand); letter-spacing:0.1em; width:22px; }
+.mm-term { display:flex; gap:10px; margin-top:26px; }
+.mm-term-btn {
+  flex:1; padding:13px; border-radius:12px; border:1px solid var(--border-strong);
+  background:var(--glass); color:var(--text-2); font-size:14.5px; font-weight:500;
+  cursor:pointer; font-family:var(--f-sans); transition:all .2s;
+}
+.mm-term-btn.active { background:rgba(255,255,255,0.12); color:var(--text); border-color:rgba(255,255,255,0.3); }
+.mm-foot { margin-top:auto; padding-top:28px; display:flex; gap:10px; }
+.mm-foot .btn { flex:1; }
 .fx-toggle {
   display:flex; align-items:center; gap:8px; cursor:pointer; user-select:none;
   font-family:var(--f-mono); font-size:11px; letter-spacing:0.06em; color:var(--text-2);
@@ -330,6 +375,16 @@ body {
 .deck-tile:hover .dt-go { color:var(--brand); }
 .dt-go i { font-style:normal; transition:transform .25s; }
 .deck-tile:hover .dt-go i { transform:translateX(5px); }
+
+/* ---------- 新手提示条 ---------- */
+.deck-tip {
+  margin-top:18px; display:flex; align-items:center; gap:14px;
+  padding:16px 20px; border-radius:12px; border:1px solid var(--border);
+  background:rgba(103,153,254,0.05); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+}
+.deck-tip .tip-icon { font-size:20px; flex-shrink:0; }
+.deck-tip p { font-size:13.5px; color:var(--text-2); line-height:1.75; }
+.deck-tip p b { color:var(--text); font-weight:600; }
 
 /* ---------- 展示级分区头部 ---------- */
 .section-head.display h2 { font-size:clamp(32px,4.4vw,52px); }
@@ -574,10 +629,19 @@ body {
   .nav-links { display:none; }
   .nav-in { gap:12px; padding:0 14px; }
   .brand .name { font-size:14px; }
-  .nav-term { padding:4px 9px; font-size:11.5px; }
+  .nav-term-tabs { display:none; }
   .nav-right { gap:8px; }
   .fx-toggle { display:none; }
   .nav-right .btn-sec { display:none; }
+  .nav-burger { display:flex; }
+  /* 内容总览台 → 横向滑动卡片 */
+  .deck-grid { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:14px; margin:0 -18px; padding:0 18px 10px; scrollbar-width:none; }
+  .deck-grid::-webkit-scrollbar { display:none; }
+  .deck-tile { flex:0 0 84%; scroll-snap-align:center; }
+  /* 模态自适应 */
+  .modal-bar { flex-wrap:wrap; gap:8px; }
+  .modal-bar .m-title { min-width:55%; }
+  .md { padding:24px 18px 44px; }
   .stats-in { gap:18px; }
   .stats .sep { display:none; }
   .section { padding:72px 0 0; }
@@ -647,9 +711,38 @@ body {
         <span class="dot"></span><span>FX</span>
       </button>
       <a class="btn btn-sec btn-sm" href="https://github.com/2710074390-cyber/MedAgentWork" target="_blank" rel="noopener">GitHub ↗</a>
+      <button class="nav-burger" id="nav-burger" aria-label="打开菜单" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
+
+<!-- 移动端全屏菜单 -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <div class="mm-inner">
+    <div class="mm-head">
+      <span class="logo">MW</span><span class="name">Med<b>Agent</b>Work</span>
+    </div>
+    <nav class="mm-links">
+      <a href="#exams"><span class="mm-idx">01</span>押题卷</a>
+      <a href="#banks"><span class="mm-idx">02</span>题库</a>
+      <a href="#reviews"><span class="mm-idx">03</span>复习手册</a>
+      <a href="#pipeline"><span class="mm-idx">04</span>幕后管线</a>
+      <a href="#quick"><span class="mm-idx">05</span>快速上手</a>
+    </nav>
+    <div class="mm-term">
+      <button class="mm-term-btn active" data-term="junior2">大三下</button>
+      <button class="mm-term-btn" data-term="senior1">大四上🔒</button>
+    </div>
+    <div class="mm-foot">
+      <button class="fx-toggle on" id="fx-toggle-m" title="切换粒子/原子特效">
+        <span class="dot"></span><span>FX 粒子</span>
+      </button>
+      <a class="btn btn-pri btn-sm" href="https://github.com/2710074390-cyber/MedAgentWork" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</div>
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
@@ -764,9 +857,13 @@ body {
     <a class="deck-tile reveal" href="#reviews">
       <div class="dt-top"><span class="dt-icon">📚</span><span class="dt-num">07</span></div>
       <h3>复习手册 <span class="dt-en">REVIEWS</span></h3>
-      <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线预览 · 下载源文件 · 一键打印</p>
+      <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线阅读 · 下载保存 · 导出 PDF</p>
       <span class="dt-go">进入复习手册 <i>→</i></span>
     </a>
+  </div>
+  <div class="deck-tip reveal">
+    <span class="tip-icon">💡</span>
+    <p><b>第一次使用？</b> 点击上方任意分类即可进入 · 所有资料都能<b>在线查看</b>、<b>下载保存</b>到手机或电脑，复习手册还可以直接<b>导出为 PDF 打印</b></p>
   </div>
 </section>
 
@@ -801,7 +898,7 @@ body {
       <span class="chip"><span>REVIEWS · <i>SYSTEMATIC</i></span></span>
       <h2>复习手册 <span class="accent">系统研读</span></h2>
     </div>
-    <div class="right"><b>03 · 复习手册</b>07 科 · 在线预览 · 下载源文件<br>一键打印 PDF</div>
+    <div class="right"><b>03 · 复习手册</b>07 科 · 在线阅读 · 下载保存<br>导出 PDF 打印</div>
   </div>
   <div class="grid" id="grid-review"></div>
 </section>
@@ -979,22 +1076,27 @@ function url(path){ return encPath(BASE)+'/'+encPath(path); }
 
 function viewOnline(path){ window.open(url(path),'_blank'); }
 function downloadFile(path,filename){
-  const a=document.createElement('a');
-  a.href=url(path); a.download=filename;
-  document.body.appendChild(a); a.click(); a.remove();
-  toast('⬇ 开始下载：'+filename);
-  setTimeout(()=>{
-    fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.blob();})
-      .then(b=>{
-        const a2=document.createElement('a'); a2.href=URL.createObjectURL(b); a2.download=filename;
-        document.body.appendChild(a2); a2.click(); a2.remove(); URL.revokeObjectURL(a2.href);
-      }).catch(()=>{});
-  },1200);
+  toast('⬇ 下载中：'+filename);
+  /* 优先 fetch blob：进度可感知、跨浏览器可靠 */
+  fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.blob();})
+    .then(b=>{
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(b); a.download=filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(()=>URL.revokeObjectURL(a.href),4000);
+      toast('✅ 已下载：'+filename);
+    }).catch(()=>{
+      /* 兜底：直链下载 */
+      const a=document.createElement('a');
+      a.href=url(path); a.download=filename;
+      document.body.appendChild(a); a.click(); a.remove();
+      toast('⬇ 开始下载：'+filename);
+    });
 }
 function printHTML(path){
   const w=window.open(url(path),'_blank');
   if(!w){toast('❌ 弹窗被拦截，请允许');return;}
-  toast('🖨 正在准备打印…');
+  toast('🖨 正在打开，随后弹出打印窗口…');
   const ck=setInterval(()=>{try{if(w.document.readyState==='complete'){clearInterval(ck);setTimeout(()=>{w.focus();w.print();},300);}}catch(e){clearInterval(ck);}},200);
 }
 
@@ -1021,43 +1123,70 @@ function mdToHtml(md){
   return h;
 }
 
-/* ---------- 打印样式（继承暗色玻璃主题） ---------- */
-function themePrintCSS(){
+/* ---------- 打印样式（白纸渲染版：输出「渲染后的 MD 形式」） ---------- */
+function printCSS(){
   return `
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:${'var(--f-sans)'};background:#0f1113;color:rgba(255,255,255,0.88);line-height:1.85;padding:40px 48px;}
-    .print-root{font-family:${'var(--f-sans)'};color:rgba(255,255,255,0.88);}
-    h1,h2,h3,h4{font-weight:600;color:#fff;margin:1.4em 0 .5em;line-height:1.3;}
-    h1{font-size:26px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:8px;}
-    h2{font-size:21px;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:6px;}
-    h3{font-size:18px;}
-    strong{color:#fff;}em{color:#9cc0ff;}
-    code{font-family:${'var(--f-mono)'};background:rgba(255,255,255,0.07);padding:2px 6px;border-radius:5px;color:#9cc0ff;}
-    pre{background:#101216;border:1px solid rgba(255,255,255,0.1);padding:16px 20px;border-radius:10px;overflow-x:auto;}
-    pre code{background:none;color:inherit;}
-    blockquote{border-left:2px solid #679efe;padding-left:1em;color:rgba(255,255,255,0.5);}
-    table{border-collapse:collapse;width:100%;margin:1em 0;font-size:13.5px;}
-    th,td{border:1px solid rgba(255,255,255,0.12);padding:8px 12px;text-align:left;}
-    th{background:rgba(255,255,255,0.06);color:#fff;}
-    tr:nth-child(even) td{background:rgba(255,255,255,0.02);}
-    @page{margin:1.5cm;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+      background:#fff;color:#1a1a2e;line-height:1.9;padding:28px 36px;font-size:14px;}
+    .print-head{border-bottom:3px solid #111;padding-bottom:14px;margin-bottom:10px;}
+    .print-head h1{font-size:26px;letter-spacing:-0.01em;margin:0 0 6px;border:none;padding:0;}
+    .print-head .print-meta{font-family:"Cascadia Code",Consolas,monospace;font-size:11px;color:#6b7280;letter-spacing:0.08em;}
+    h1,h2,h3,h4,h5,h6{font-weight:700;color:#111;margin:1.5em 0 .5em;line-height:1.35;break-after:avoid;}
+    h1{font-size:25px;border-bottom:2px solid #222;padding-bottom:8px;}
+    h2{font-size:20px;border-bottom:1px solid #ddd;padding-bottom:6px;}
+    h3{font-size:16.5px;} h4{font-size:15px;} h5{font-size:14px;} h6{font-size:13px;}
+    p{margin:.6em 0;}
+    strong{color:#000;} em{color:#0b4f8a;}
+    code{font-family:"Cascadia Code",Consolas,monospace;background:#f4f4f5;padding:1px 5px;border-radius:4px;font-size:12.5px;color:#b3261e;}
+    pre{background:#f6f7f9;border:1px solid #e5e7eb;padding:12px 16px;border-radius:8px;overflow-x:auto;white-space:pre-wrap;break-inside:avoid;}
+    pre code{background:none;color:#1f2937;padding:0;}
+    blockquote{border-left:3px solid #94a3b8;padding-left:1em;color:#4b5563;margin:1em 0;}
+    table{border-collapse:collapse;width:100%;margin:1em 0;font-size:12.5px;break-inside:avoid;}
+    th,td{border:1px solid #d1d5db;padding:6px 10px;text-align:left;}
+    th{background:#f3f4f6;font-weight:600;}
+    tr:nth-child(even) td{background:#fafafa;}
+    ul,ol{padding-left:1.6em;margin:.6em 0;}
+    li{margin:.25em 0;}
+    hr{border:none;border-top:1px solid #e5e7eb;margin:1.5em 0;}
+    a{color:#0b4f8a;text-decoration:none;border-bottom:1px solid rgba(11,79,138,0.3);}
+    .print-hint{display:block;background:#eef4ff;border:1px solid #c6d8f5;color:#0b4f8a;
+      padding:11px 16px;border-radius:10px;margin-bottom:20px;font-size:13.5px;line-height:1.7;}
+    @media print{.print-hint{display:none !important;}}
+    @page{margin:1.4cm 1.6cm;}
   `;
 }
+function renderPrintDoc(md,title){
+  return '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>'+title+'</title><style>'+printCSS()+'</style></head><body><div class="print-hint">📄 请在打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把这份复习手册保存成 PDF 文件（打印对话框里也可以直接打印纸质版）。</div><div class="print-head"><h1>'+title+'</h1><div class="print-meta">MEDAGENTWORK · 医学复习资料库 · 仅供学习交流 · 生成于 '+(new Date().toLocaleDateString('zh-CN'))+'</div></div>'+mdToHtml(md)+'</body></html>';
+}
+/* 一键导出 PDF：抓取 MD → 渲染 → 打印（输出渲染后的 MD 排版） */
+function printMD(path,name){
+  toast('🖨 正在渲染，马上弹出打印窗口…');
+  fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.text();})
+    .then(md=>{
+      const w=window.open('','_blank');
+      if(!w){toast('❌ 弹窗被拦截，请允许弹出窗口');return;}
+      w.document.write(renderPrintDoc(md,name+' · 复习手册'));
+      w.document.close();
+      setTimeout(()=>{w.focus();w.print();},500);
+    }).catch(()=>toast('❌ 操作失败：读取不到内容，请稍后重试'));
+}
 
-let currentMD=null;
+let currentMD=null,currentMDText=null;
 function previewMD(path,name){
-  currentMD=path;
+  currentMD=path;currentMDText=null;
   $('#m-title').textContent=name+' · 复习手册';
   $('#modal').classList.add('open');
   const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
-  $('#m-actions').innerHTML='<button class="m-btn" onclick="downloadFile(currentMD,currentMD.split(\'/\').pop())">⬇ 下载 MD</button><button class="m-btn" id="m-print">🖨 打印</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
+  $('#m-actions').innerHTML='<button class="m-btn" onclick="downloadFile(currentMD,currentMD.split(\'/\').pop())">⬇ 下载 MD</button><button class="m-btn" id="m-print">🖨 导出 PDF</button><button class="m-btn close" onclick="closeModal()">✕ 关闭</button>';
   fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.text();})
-    .then(md=>{body.className='modal-body';body.innerHTML='<div class="md">'+mdToHtml(md)+'</div>';body.scrollTop=0;})
+    .then(md=>{currentMDText=md;body.className='modal-body';body.innerHTML='<div class="md">'+mdToHtml(md)+'</div>';body.scrollTop=0;})
     .catch(()=>{body.className='modal-body';body.innerHTML='<p style="padding:40px;text-align:center;color:rgba(255,255,255,0.5)">❌ 读取失败</p>';});
   $('#m-print').onclick=()=>{
     const w=window.open('','_blank');if(!w){toast('❌ 弹窗被拦截');return;}
-    w.document.write('<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><style>'+themePrintCSS()+'</style></head><body><div class="print-root">'+$('#m-body').innerHTML+'</div></body></html>');
-    w.document.close();setTimeout(()=>{w.focus();w.print();},400);
+    const md=currentMDText||$('#m-body').innerText;
+    w.document.write(renderPrintDoc(md,name+' · 复习手册'));
+    w.document.close();setTimeout(()=>{w.focus();w.print();},450);
   };
 }
 function closeModal(){$('#modal').classList.remove('open');$('#m-body').innerHTML='<div class="spinner"></div>';}
@@ -1065,13 +1194,13 @@ $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 /* ---------- 卡片渲染 ---------- */
-function examCard(it,i){return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="viewOnline('${it.html}')">👁 在线答题</button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')">🖨 打印</button></div></div>`;}
+function examCard(it,i){return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="viewOnline('${it.html}')">👁 开始答题</button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')">🖨 导出 PDF</button></div></div>`;}
 function bankCard(it,i){const fname=it.pdf.split('/').pop();return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-brand btn-sm" onclick="downloadFile('${it.pdf}','${fname}')">⬇ 下载 PDF</button></div></div>`;}
 function reviewCard(it,i){
   const mdName=it.md.split('/').pop();
-  let btns=`<button class="btn btn-pri btn-sm" onclick="previewMD('${it.md}','${it.name}')">👁 预览</button><button class="btn btn-ghost btn-sm" onclick="downloadFile('${it.md}','${mdName}')">⬇ MD</button>`;
-  if(it.html){btns+=`<button class="btn btn-ghost btn-sm" onclick="viewOnline('${it.html}')">↗ HTML</button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')">🖨 PDF</button>`;}
-  else{btns+=`<button class="btn btn-ghost btn-sm" onclick="previewMD('${it.md}','${it.name}')">🖨 PDF</button>`;}
+  let btns=`<button class="btn btn-pri btn-sm" onclick="previewMD('${it.md}','${it.name}')">👁 在线阅读</button><button class="btn btn-ghost btn-sm" onclick="downloadFile('${it.md}','${mdName}')">⬇ 下载</button>`;
+  if(it.html){btns+=`<button class="btn btn-ghost btn-sm" onclick="viewOnline('${it.html}')">↗ 网页版</button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')">🖨 导出 PDF</button>`;}
+  else{btns+=`<button class="btn btn-ghost btn-sm" onclick="printMD('${it.md}','${it.name}')">🖨 导出 PDF</button>`;}
   return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">№ ${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${it.meta}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns">${btns}</div></div>`;
 }
 $('#grid-exam').innerHTML=EXAMS.map(examCard).join('');
@@ -1143,13 +1272,37 @@ function copyCmd(btn){
 
 /* ---------- 学期切换 ---------- */
 function switchTerm(term){
-  $$('.nav-term').forEach(t=>t.classList.toggle('active',t.dataset.term===term));
+  $$('.nav-term,.mm-term-btn').forEach(t=>t.classList.toggle('active',t.dataset.term===term));
   $$('.view').forEach(v=>v.classList.remove('active'));
   $('#view-'+term).classList.add('active');
   try{localStorage.setItem('maw-term',term);}catch(e){}
+  closeMobileMenu();
   window.scrollTo({top:0,behavior:'smooth'});
 }
-document.querySelectorAll('.nav-term').forEach(t=>t.addEventListener('click',()=>switchTerm(t.dataset.term)));
+document.querySelectorAll('.nav-term,.mm-term-btn').forEach(t=>t.addEventListener('click',()=>switchTerm(t.dataset.term)));
+
+/* ---------- 移动端菜单 ---------- */
+function closeMobileMenu(){
+  const m=$('#mobile-menu'),b=$('#nav-burger');
+  if(m)m.classList.remove('open');
+  if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}
+  if(m)m.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+(function(){
+  const m=$('#mobile-menu'),b=$('#nav-burger');
+  if(!m||!b)return;
+  b.addEventListener('click',()=>{
+    const open=!m.classList.contains('open');
+    m.classList.toggle('open',open);
+    b.classList.toggle('open',open);
+    b.setAttribute('aria-expanded',String(open));
+    m.setAttribute('aria-hidden',String(!open));
+    document.body.style.overflow=open?'hidden':'';
+  });
+  m.querySelectorAll('.mm-links a').forEach(a=>a.addEventListener('click',()=>closeMobileMenu()));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileMenu();});
+})();
 
 /* ---------- 粒子 / ASCII 星域 ---------- */
 const fx={on:true};
@@ -1354,20 +1507,25 @@ initCanvases();
   }
 })();
 
-/* ---------- FX 开关 ---------- */
-(function(){
-  const btn=document.getElementById('fx-toggle');
+/* ---------- FX 开关（导航 + 移动菜单双入口） ---------- */
+function bindFxToggle(btn){
   if(!btn)return;
-  try{const v=localStorage.getItem('maw-fx');if(v!==null){fx.on=v==='1';btn.classList.toggle('on',fx.on);btn.classList.toggle('off',!fx.on);}}catch(e){}
   btn.addEventListener('click',()=>{
     fx.on=!fx.on;
-    btn.classList.toggle('on',fx.on);btn.classList.toggle('off',!fx.on);
+    $$('.fx-toggle').forEach(x=>{x.classList.toggle('on',fx.on);x.classList.toggle('off',!fx.on);});
     const canvases=$$('#hero-canvas canvas');
     canvases.forEach(c=>{const ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);});
     document.getElementById('atom-wrap').style.opacity=fx.on?'0.9':'0.15';
     try{localStorage.setItem('maw-fx',fx.on?'1':'0');}catch(e){}
     toast(fx.on?'✦ 粒子特效已开启':'✦ 粒子特效已关闭');
   });
+}
+(function(){
+  const btn=document.getElementById('fx-toggle');
+  const btnM=document.getElementById('fx-toggle-m');
+  try{const v=localStorage.getItem('maw-fx');if(v!==null){fx.on=v==='1';$$('.fx-toggle').forEach(x=>{x.classList.toggle('on',fx.on);x.classList.toggle('off',!fx.on);});}}catch(e){}
+  bindFxToggle(btn);
+  bindFxToggle(btnM);
 })();
 
 /* ---------- 大四上 ASCII 盒子 ---------- */

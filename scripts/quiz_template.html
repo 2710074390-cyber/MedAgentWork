@@ -221,9 +221,13 @@
   }
 
   /* ---------- 打印（保色 + 防断裂 + 默认展开解析） ---------- */
+  .print-hint {
+    display: block; margin: 16px 20px 0; padding: 11px 16px; border-radius: 10px;
+    background: #eef4ff; border: 1px solid #c6d8f5; color: #0b4f8a; font-size: 13.5px; line-height: 1.7;
+  }
   @media print {
     body { background: #fff; padding-top: 0; font-size: 12px; }
-    #topbar, .theme-fab, .no-print { display: none !important; }
+    #topbar, .theme-fab, .no-print, .print-hint { display: none !important; }
     .question { box-shadow: none; border: 1px solid #ddd; border-left: 4px solid #999; background: #fff !important; }
     .answer-box { display: block !important; }
     .option { cursor: default; pointer-events: none; }
@@ -252,6 +256,8 @@
 </header>
 
 <div class="container"><div id="quiz"></div></div>
+
+<div class="print-hint">📄 请在弹出的打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把本卷保存成 PDF 文件（答题解析已默认展开）。</div>
 
 <button class="theme-fab" id="theme-toggle" title="切换主题（深海/亮/暗 · localStorage maw-theme）">☀️</button>
 
