@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN" data-theme="deep">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,6 +47,8 @@
     --hover-shift: 3px;
     --shadow: 0 2px 12px rgba(0,0,0,.06);
     --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    --topbar-bg: linear-gradient(135deg, #1a3a5f, #2563eb);
+    --topbar-border: transparent;
   }
   [data-theme="dark"] {
     --bg-primary: #0f1117;
@@ -69,6 +71,30 @@
     --picked-border: #3a2560;
     --shadow: 0 2px 12px rgba(0,0,0,.3);
   }
+  [data-theme="deep"] {
+    /* 深海·未来主义（与 index.html 新站风格统一：黑蓝深海 + 玻璃 UI） */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #101113;
+    --bg-tertiary: #1a1c20;
+    --text-primary: rgba(255,255,255,0.92);
+    --text-secondary: rgba(255,255,255,0.60);
+    --text-tertiary: rgba(255,255,255,0.42);
+    --border: rgba(255,255,255,0.12);
+    --accent: #679efe;
+    --accent-light: rgba(103,153,254,0.14);
+    --correct: #34d399;
+    --correct-bg: rgba(16,185,129,0.10);
+    --correct-border: rgba(52,211,153,0.40);
+    --wrong: #f87171;
+    --wrong-bg: rgba(248,113,113,0.09);
+    --wrong-border: rgba(248,113,113,0.40);
+    --picked: #8ab2ff;
+    --picked-bg: rgba(103,153,254,0.13);
+    --picked-border: rgba(103,153,254,0.50);
+    --shadow: 0 2px 18px rgba(0,0,0,0.55);
+    --topbar-bg: rgba(10,10,10,0.72);
+    --topbar-border: rgba(255,255,255,0.08);
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: var(--font-body); font-size: 15px; line-height: 1.8;
@@ -80,7 +106,9 @@
   /* ---------- 顶栏 ---------- */
   #topbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: linear-gradient(135deg, #1a3a5f, #2563eb);
+    background: var(--topbar-bg);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--topbar-border);
     color: #fff; padding: 12px 20px 10px;
   }
   #topbar h1 { font-size: 18px; font-weight: 700; }
@@ -225,7 +253,7 @@
 
 <div class="container"><div id="quiz"></div></div>
 
-<button class="theme-fab" id="theme-toggle" title="切换亮/暗主题（localStorage maw-theme，与 index.html 共享）">🌙</button>
+<button class="theme-fab" id="theme-toggle" title="切换主题（深海/亮/暗 · localStorage maw-theme）">☀️</button>
 
 <!-- ==================== 题目注入点：替换 QUESTIONS 数组 ==================== -->
 <script id="quiz-data">
@@ -246,7 +274,7 @@
 */
 const PAPER_META = {
   "title": "内科学押题卷",
-  "sub": "统一模板 v1.0 · 90 题 · 2026-08-21 迁移"
+  "sub": "统一模板 v1.1-TEST · 90 题 · 2026-08-21 迁移"
 };
 const QUESTIONS = [
   {
@@ -1770,18 +1798,21 @@ const QUESTIONS = [
   var STORAGE_KEY = 'maw-theme';        // 与 index.html 共享主题记忆
   var RECORD_KEY = 'maw-quiz-record-' + (PAPER_META.title || 'default');
 
-  // ---- 主题 ----
+  // ---- 主题（三态循环：深海 → 亮 → 暗；默认深海，与 index.html 新站统一） ----
   var html = document.documentElement;
+  var ORDER = ['deep', 'light', 'dark'];
+  var NEXT = { deep: 'light', light: 'dark', dark: 'deep' };
+  var ICON = { deep: '🌊', light: '☀️', dark: '🌙' };   // 图标 = 点击后切换到的主题
   function applyTheme(t) {
     html.setAttribute('data-theme', t);
-    document.getElementById('theme-toggle').textContent = t === 'dark' ? '☀️' : '🌙';
+    document.getElementById('theme-toggle').textContent = ICON[NEXT[t]];
     try { localStorage.setItem(STORAGE_KEY, t); } catch (e) {}
   }
   var saved = null;
   try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
-  applyTheme(saved === 'dark' ? 'dark' : 'light');
+  applyTheme(ORDER.indexOf(saved) >= 0 ? saved : 'deep');
   document.getElementById('theme-toggle').addEventListener('click', function () {
-    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    applyTheme(NEXT[html.getAttribute('data-theme')]);
   });
 
   // ---- 作答记录 ----
