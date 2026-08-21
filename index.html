@@ -1383,7 +1383,7 @@ initCanvases();
   const dpr=Math.min(window.devicePixelRatio||1,2);
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W=0,H=0,parts=[];
-  const mouse={x:-9999,y:-9999};
+  const mouse={x:-9999,y:-9999,active:false};
   const shocks=[];
   let t=0;
 
@@ -1431,14 +1431,14 @@ initCanvases();
 
   hero.addEventListener('mousemove',e=>{
     const r=hero.getBoundingClientRect();
-    mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top;
+    mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true;
     if(glow){
       glow.style.transform='translate('+(e.clientX-r.left)+'px,'+(e.clientY-r.top)+'px) translate(-50%,-50%)';
       glow.classList.add('on');
     }
   });
   hero.addEventListener('mouseleave',()=>{
-    mouse.x=-9999;mouse.y=-9999;
+    mouse.x=-9999;mouse.y=-9999;mouse.active=false;
     if(glow)glow.classList.remove('on');
   });
   window.addEventListener('resize',()=>{if(glow)glow.classList.remove('on');});
@@ -1457,8 +1457,9 @@ initCanvases();
       t+=0.016;
       ctx.setTransform(dpr,0,0,dpr,0,0);
       ctx.clearRect(0,0,W,H);
-      /* 视差：MW 整体随鼠标轻微偏移 */
-      const px=(mouse.x-W*0.5)*-0.03, py=(mouse.y-H*0.5)*-0.03;
+      /* 视差：MW 整体随鼠标轻微偏移（鼠标未进入时保持原位，粒子常驻） */
+      const px=mouse.active?(mouse.x-W*0.5)*-0.03:0;
+      const py=mouse.active?(mouse.y-H*0.5)*-0.03:0;
       const mx=mouse.x-px, my=mouse.y-py;
       const R=140,R2=R*R;
       ctx.save();
