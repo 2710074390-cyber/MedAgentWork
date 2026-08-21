@@ -265,6 +265,15 @@
   .btn-next.ghost { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); box-shadow: none; }
   .btn-next.ghost:hover { color: var(--text-primary); }
 
+  /* 答对自动跳题提示（2 秒倒计时条） */
+  .auto-note {
+    display: flex; align-items: center; gap: 9px; margin-bottom: 10px;
+    font-size: 12.5px; color: var(--correct); font-weight: 600;
+  }
+  .auto-bar { width: 80px; height: 4px; border-radius: 2px; background: var(--bg-tertiary); overflow: hidden; }
+  .auto-bar i { display: block; height: 100%; width: 100%; background: var(--correct); animation: autoShrink 2s linear forwards; }
+  @keyframes autoShrink { from { width: 100%; } to { width: 0; } }
+
   /* 结算报告 */
   #focus-results { display: none; }
   .results-card { background: var(--bg-secondary); border-radius: var(--radius-card);
@@ -436,7 +445,7 @@ const QUESTIONS = [
   }
 
   // ---- 状态 ----
-  var state = { filterSystem: null, wrongOnly: false, mode: 'focus', idx: 0 };
+  var state = { filterSystem: null, wrongOnly: false, mode: 'focus', idx: 0, autoT: null };
   var streak = 0, maxStreak = 0, fqT0 = Date.now(), fqMulti = [];
 
   function visibleQuestions() {
@@ -662,7 +671,10 @@ const QUESTIONS = [
       html += '<button class="btn-conf ' + (rec.confidence === 'sure' ? 'ok2' : '') + '" data-act="conf" data-v="sure">💪 有信心</button>';
       html += '<button class="btn-conf ' + (rec.confidence === 'unsure' ? 'no2' : '') + '" data-act="conf" data-v="unsure">😟 没把握</button>';
       html += '</div>';
-      html += '<div class="fq-next"><button class="btn-next" data-act="next">下一题 →</button></div>';
+      html += '<div class="fq-next">';
+      if (isCorrect) html += '<div class="auto-note">✓ 答对 <span class="auto-bar"><i></i></span> 即将自动进入下一题</div>';
+      html += '<button class="btn-next" data-act="next">下一题 →</button>';
+      html += '</div>';
     }
     html += '</div>';
     return html;
@@ -707,6 +719,14 @@ const QUESTIONS = [
     fqCard.innerHTML = fqState(list[state.idx], state.idx, list.length) + fqSheetHtml(list, state.idx);
     updateFocusMeta(list);
     updateScore();
+    /* 答对自动跳题：2 秒后进入下一道未答题（答错停留读解析） */
+    if (state.autoT) { clearTimeout(state.autoT); state.autoT = null; }
+    var cur = list[state.idx];
+    var rec = cur ? records[cur.qid] : null;
+    var hasUnanswered = list.some(function (q) { return !records[q.qid]; });
+    if (rec && rec.correct && hasUnanswered) {
+      state.autoT = setTimeout(function () { state.autoT = null; fqNext(); }, 2000);
+    }
   }
 
   function fqPick(letter) {
@@ -745,6 +765,7 @@ const QUESTIONS = [
     renderFocus();
   }
   function fqNext() {
+    if (state.autoT) { clearTimeout(state.autoT); state.autoT = null; }
     var list = visibleQuestions();
     if (!list.length) return;
     /* 优先跳转到下一道未答的题；全答完 → 结算报告 */
