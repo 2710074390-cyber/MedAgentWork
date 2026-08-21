@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN" data-theme="deep">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,6 +48,7 @@
   --color-success-border: #6ee7b7;
   --accent: #2563eb;
   --accent-light: #dbeafe;
+  --hero-gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
   --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
   --font-mono: "SF Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
   --line-height: 1.8;
@@ -86,6 +87,47 @@
   --color-success-bg: #0a2e1f;
   --color-success-border: #1a4a30;
   --accent-light: #1a2e4a;
+  --hero-gradient: linear-gradient(135deg, #0a1628 0%, #16233f 50%, #241d40 100%);
+}
+
+[data-theme="deep"] {
+  /* 深海·未来主义（与 index.html 新站风格统一：黑蓝深海 + 玻璃 UI） */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #101113;
+  --bg-tertiary: #1a1c20;
+  --bg-callout: #16181d;
+  --text-primary: rgba(255,255,255,0.92);
+  --text-secondary: rgba(255,255,255,0.60);
+  --text-tertiary: rgba(255,255,255,0.42);
+  --border: rgba(255,255,255,0.12);
+  --border-light: rgba(255,255,255,0.07);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+  --color-master: #f87171;
+  --color-master-bg: rgba(248,113,113,0.10);
+  --color-master-border: rgba(248,113,113,0.40);
+  --color-familiar: #fbbf24;
+  --color-familiar-bg: rgba(251,191,36,0.10);
+  --color-familiar-border: rgba(251,191,36,0.40);
+  --color-understand: #34d399;
+  --color-understand-bg: rgba(52,211,153,0.10);
+  --color-understand-border: rgba(52,211,153,0.40);
+  --color-warning: #fbbf24;
+  --color-warning-bg: rgba(251,191,36,0.10);
+  --color-warning-border: rgba(251,191,36,0.40);
+  --color-tip: #8ab2ff;
+  --color-tip-bg: rgba(103,153,254,0.10);
+  --color-tip-border: rgba(103,153,254,0.40);
+  --color-info: #679efe;
+  --color-info-bg: rgba(103,153,254,0.10);
+  --color-info-border: rgba(103,153,254,0.40);
+  --color-success: #34d399;
+  --color-success-bg: rgba(52,211,153,0.10);
+  --color-success-border: rgba(52,211,153,0.40);
+  --accent: #679efe;
+  --accent-light: rgba(103,153,254,0.14);
+  --hero-gradient: linear-gradient(135deg, #0a0f1a 0%, #101a2e 50%, #0e1420 100%);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -241,7 +283,7 @@ body {
 
 /* Hero Banner */
 .hero-banner {
-  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
+  background: var(--hero-gradient);
   border-radius: 16px;
   padding: 36px 40px;
   margin-bottom: 40px;
@@ -609,8 +651,9 @@ tr:last-child td {
     color: #1a1a2e;
   }
   body { font-size: 12px; background: #fff; }
-  .accordion[open] .accordion-body { display: block !important; }
-  .accordion:not([open]) .accordion-body { display: none !important; }
+  /* 打印折叠展开（2026-08-21 修复）：全部折叠区强制展开，避免打印丢内容 */
+  .accordion .accordion-body { display: block !important; }
+  .accordion:not([open]) > .accordion-body { display: block !important; }
   .fill-blank { color: var(--color-understand); border-bottom: 1px solid #999; }
   .fill-blank::after { display: none; }
 }
@@ -789,10 +832,7 @@ tr:last-child td {
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>✅ 需掌握：中医理论体系 → 以阴阳五行学说为核心，以脏腑经络学说为基础，以整体观念和辨证论治为基本特点的医学理论体系</li><li>⚡ 快速补课：祝由 → 远古时期以祈祷、咒语等方式进行心理治疗的原始心理疗法，是中医心理学最早的雏形。考试中常考"中医心理学萌芽阶段的代表是什么"→答案就是祝由</li>
 </ul>
-<h3 id="高收益摘要4条" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🎯 高收益摘要（4条）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>中医心理学=以经典中医理论为主导，研究情志心理因素与疾病或健康关系的科学体系（教材§1.1）</li><li>三大特点=整体性（治神+治身）、边缘性（中医×现代心理学交叉）、实践性（以防病治病为根本目的）（教材§1.1）</li><li>巢元方《诸病源候论》首次提出"七情"；陈言（陈无择）明确"七情"概念为喜怒忧思悲恐惊（教材§1.2）</li><li>1985年首本《中医心理学》出版+首届学术会议=独立学科正式形成（教材§1.2）</li>
-</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要（4条）</div><p><br>- 中医心理学=以经典中医理论为主导，研究情志心理因素与疾病或健康关系的科学体系（教材§1.1）<br>- 三大特点=整体性（治神+治身）、边缘性（中医×现代心理学交叉）、实践性（以防病治病为根本目的）（教材§1.1）<br>- 巢元方<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">诸病源候论</span>首次提出"七情"；陈言（陈无择）明确"七情"概念为喜怒忧思悲恐惊（教材§1.2）<br>- 1985年首本<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">中医心理学</span>出版+首届学术会议=独立学科正式形成（教材§1.2）</p></div>
 <h3 id="结构化笔记教材浓缩型" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（教材浓缩型）</h3>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】中医心理学概念</strong>：以经典中医理论为主导，在医事保健活动中，研究情志心理因素与疾病或健康之间的网络关系，并用于指导实践的一门系统的科学体系。（教材§1.1）</p>
 <details class="accordion" open>
@@ -810,11 +850,11 @@ tr:last-child td {
 </details>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】七情概念的提出</strong>（教材§1.2）：</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li><strong>首次提出</strong>：巢元方《诸病源候论》（晋隋唐时期）——首次提出"七情"</li><li><strong>明确概念</strong>：陈言（陈无择，宋代）——明确提出"七情"概念为喜、怒、忧、思、悲、恐、惊</li>
+<li><strong>首次提出</strong>：巢元方<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">诸病源候论</span>（晋隋唐时期）——首次提出"七情"</li><li><strong>明确概念</strong>：陈言（陈无择，宋代）——明确提出"七情"概念为喜、怒、忧、思、悲、恐、惊</li>
 </ul>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】独立学科形成标志</strong>：（教材§1.2）</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>1985年，第一本《中医心理学》出版</li><li>同年，成都召开首届中医心理学学术会议</li><li>两件事共同标志中医心理学作为独立学科正式形成</li>
+<li>1985年，第一本<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">中医心理学</span>出版</li><li>同年，成都召开首届中医心理学学术会议</li><li>两件事共同标志中医心理学作为独立学科正式形成</li>
 </ul>
 <details class="accordion" open>
 <summary>🔬 展开：中医心理学简史分期</summary>
@@ -859,7 +899,7 @@ tr:last-child td {
 <tbody>
 <tr>
 <td>巢元方</td>
-<td>《诸病源候论》</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">诸病源候论</span></td>
 <td>首次提出"七情"</td>
 <td>晋隋唐</td>
 </tr>
@@ -871,7 +911,7 @@ tr:last-child td {
 </tr>
 <tr>
 <td>张仲景</td>
-<td>《伤寒杂病论》</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">伤寒杂病论</span></td>
 <td>首创情志辨证论治</td>
 <td>汉代</td>
 </tr>
@@ -883,7 +923,7 @@ tr:last-child td {
 </tr>
 <tr>
 <td>华佗</td>
-<td>《华氏中藏经》</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">华氏中藏经</span></td>
 <td>情志病症脏腑论治</td>
 <td>汉代</td>
 </tr>
@@ -898,7 +938,7 @@ tr:last-child td {
 <tbody>
 <tr>
 <td>九气</td>
-<td>《内经》气机变化理论</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">内经</span>气机变化理论</td>
 <td>七情学说发展基础</td>
 </tr>
 <tr>
@@ -921,7 +961,7 @@ tr:last-child td {
 <h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
 <p style="margin:8px 0;line-height:1.8"><strong>基础级</strong>：</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>中医心理学的三大特点是______、______、______</li><li>首次提出"七情"的医著是______著的《______》</li><li>明确"七情"概念为喜怒忧思悲恐惊的医家是______</li><li>中医心理学作为独立学科正式形成的标志是______年______出版和______召开</li>
+<li>中医心理学的三大特点是______、______、______</li><li>首次提出"七情"的医著是______著的<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">______</span></li><li>明确"七情"概念为喜怒忧思悲恐惊的医家是______</li><li>中医心理学作为独立学科正式形成的标志是______年______出版和______召开</li>
 </ul>
 <p style="margin:8px 0;line-height:1.8"><strong>进阶级</strong>：</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
@@ -942,22 +982,10 @@ tr:last-child td {
 - 必然趋势、现代化途径、必备素质、保健基础
 </div>
 </details>
-<h3 id="常见陷阱" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">⚠️ 常见陷阱</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>⚠️ 陷阱：首次提出七情=陈言 → 正确认知：首次提出是巢元方《诸病源候论》，陈言是"明确概念"。两问常互换出题</li><li>⚠️ 陷阱：中医心理学特点包括"理论性" → 正确认知：三大特点是整体性/边缘性/实践性，无"理论性"。干扰项用"构建抽象理论体系"混淆视听</li>
-</ul>
-<h3 id="记忆口诀" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">💡 记忆口诀</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li><code>"巢陈七情奠基础，八五学科成独立"</code> → 巢元方首提七情→陈言明确概念→1985年学科独立</li><li><code>"六郁越鞠朱震亨，初成四家内难华张"</code> → 六郁学说+越鞠丸=朱震亨；初步形成四家=内经+难经+华佗+张仲景</li>
-</ul>
-<h3 id="本章小结" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📌 本章小结</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>中医心理学是以经典中医理论为主导，研究情志心理因素与疾病健康关系的系统学科 → 三大特点（整体性/边缘性/实践性）决定了其学科定位</li><li>七情概念经历了巢元方首次提出→陈言明确概念的历史演进 → 1985年学科独立标志现代中医心理学的确立</li><li>从祝由到六郁学说，中医心理学蕴含两千多年的学术积淀 → 每个历史时期都有代表性医家和学说</li>
-</ul>
-<h3 id="深度链接拔高延伸" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔗 深度链接（拔高延伸）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>🧠 <strong>机制深挖</strong>：为什么"心"在中医心理学中居于核心地位？→ "心者，君主之官，神明出焉"（《素问·灵兰秘典论》）。中医的"心"综合了现代医学循环系统（心主血脉）和神经系统（心主神明）的双重功能，这是"思外揣内"认知方式的产物。心神不仅主导精神活动，还通过"使道"（经络）统领全身脏腑——所以七情致病首伤心、所有心理疾病最终都绕不开心。</li><li>🔗 <strong>跨模块串联</strong>：M1的学科定义 → M2的形神合一/心主神明/五脏神志（理论基础） → M5的8种心理疾病（临床落地）。三个模块是"定义→理论→应用"的递进关系。考题可能串联出："中医心理学的理论基础包括哪些？请结合郁证说明。"</li><li>🏥 <strong>临床推理链</strong>：祝由（原始心理疗法）→《内经》奠定理论→张仲景首创辨证论治→现代意疗六法。这条线索展示了中医心理治疗从原始巫术到系统疗法的发展逻辑——考试可能考"中医心理治疗的源流"。</li>
-</ul>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>- ⚠️ 陷阱：首次提出七情=陈言 → 正确认知：首次提出是巢元方<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">诸病源候论</span>，陈言是"明确概念"。两问常互换出题<br>- ⚠️ 陷阱：中医心理学特点包括"理论性" → 正确认知：三大特点是整体性/边缘性/实践性，无"理论性"。干扰项用"构建抽象理论体系"混淆视听</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>- <code>"巢陈七情奠基础，八五学科成独立"</code> → 巢元方首提七情→陈言明确概念→1985年学科独立<br>- <code>"六郁越鞠朱震亨，初成四家内难华张"</code> → 六郁学说+越鞠丸=朱震亨；初步形成四家=内经+难经+华佗+张仲景</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>- 中医心理学是以经典中医理论为主导，研究情志心理因素与疾病健康关系的系统学科 → 三大特点（整体性/边缘性/实践性）决定了其学科定位<br>- 七情概念经历了巢元方首次提出→陈言明确概念的历史演进 → 1985年学科独立标志现代中医心理学的确立<br>- 从祝由到六郁学说，中医心理学蕴含两千多年的学术积淀 → 每个历史时期都有代表性医家和学说</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接（拔高延伸）</div><p><br>- 🧠 <strong>机制深挖</strong>：为什么"心"在中医心理学中居于核心地位？→ "心者，君主之官，神明出焉"（<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">素问·灵兰秘典论</span>）。中医的"心"综合了现代医学循环系统（心主血脉）和神经系统（心主神明）的双重功能，这是"思外揣内"认知方式的产物。心神不仅主导精神活动，还通过"使道"（经络）统领全身脏腑——所以七情致病首伤心、所有心理疾病最终都绕不开心。<br>- 🔗 <strong>跨模块串联</strong>：M1的学科定义 → M2的形神合一/心主神明/五脏神志（理论基础） → M5的8种心理疾病（临床落地）。三个模块是"定义→理论→应用"的递进关系。考题可能串联出："中医心理学的理论基础包括哪些？请结合郁证说明。"<br>- 🏥 <strong>临床推理链</strong>：祝由（原始心理疗法）→<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">内经</span>奠定理论→张仲景首创辨证论治→现代意疗六法。这条线索展示了中医心理治疗从原始巫术到系统疗法的发展逻辑——考试可能考"中医心理治疗的源流"。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 </div> <!-- close module-card -->
 <h2 class="section-title" id="m2">📘 模块2：中医心理学理论基础</h2>
@@ -969,12 +997,9 @@ tr:last-child td {
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>✅ 需掌握：藏象学说 → 中医研究人体脏腑生理功能、病理变化及其相互关系的学说，心肝脾肺肾各有其功能定位</li><li>✅ 需掌握：阴阳五行 → 阴阳是事物对立统一的两个方面；五行（木火土金水）及其相生相克关系，是中医理论的说理工具</li><li>⚡ 快速补课：气机 → 人体之气的运动变化，基本形式为升降出入。七情通过影响气机（怒则气上等）来致病，这是七情致病第二条特点的核心机制</li>
 </ul>
-<h3 id="高收益摘要5条" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🎯 高收益摘要（5条）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>形神合一论=核心学说：形为神之质（形体是精神的物质基础），神为形之主（精神是形体活动的主宰），形病则神病，神病形亦病（教材§2.1）</li><li>心主神明论=心统帅全身脏腑生理活动+主司精神意识思维情志等心理活动，以心主血脉为物质基础（教材§2.2）</li><li>五脏藏五神：心藏神→肝藏魂→脾藏意→肺藏魄→肾藏志；五脏主五志：心志喜→肝志怒→脾志思→肺志悲(忧)→肾志恐（教材§2.4）</li><li>七情致病特点（三条）：①直伤内脏（首伤心→波及他脏）②影响脏腑气机（怒上喜缓思结悲消恐下惊乱忧聚）③影响病情转归（教材§2.4）</li><li>情志相胜五行相克：喜胜忧（火克金）/怒胜思（木克土）/悲胜怒（金克木）/恐胜喜（水克火）/思胜恐（土克水）（教材§2.4）</li>
-</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要（5条）</div><p><br>- 形神合一论=核心学说：形为神之质（形体是精神的物质基础），神为形之主（精神是形体活动的主宰），形病则神病，神病形亦病（教材§2.1）<br>- 心主神明论=心统帅全身脏腑生理活动+主司精神意识思维情志等心理活动，以心主血脉为物质基础（教材§2.2）<br>- 五脏藏五神：心藏神→肝藏魂→脾藏意→肺藏魄→肾藏志；五脏主五志：心志喜→肝志怒→脾志思→肺志悲(忧)→肾志恐（教材§2.4）<br>- 七情致病特点（三条）：①直伤内脏（首伤心→波及他脏）②影响脏腑气机（怒上喜缓思结悲消恐下惊乱忧聚）③影响病情转归（教材§2.4）<br>- 情志相胜五行相克：喜胜忧（火克金）/怒胜思（木克土）/悲胜怒（金克木）/恐胜喜（水克火）/思胜恐（土克水）（教材§2.4）</p></div>
 <h3 id="结构化笔记教材浓缩型" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（教材浓缩型）</h3>
-<h4 id="掌握级形神合一论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】形神合一论</h4>
+<h4 id="掌握级形神合一论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】形神合一论</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>形神合一</strong>是中医心理学最核心的理论学说，指生命形体与精神心理状态的高度和谐平衡状态。（教材§2.1）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>神的含义</strong>：广义=整个人体生命活动的外在表现（有生命力的人+脏腑气血功能互动+内脏精气外华）；狭义=精神意识、思维活动和情志改变（思维+感觉意识+情志活动）。（教材§2.1）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>形神关系</strong>（教材§2.1）：</p>
@@ -990,7 +1015,7 @@ tr:last-child td {
 - **易错陷阱**：考试可能给一个病例让你判断是"形病及神"还是"神病及形"。判断标准——看初始病因：先有躯体病→精神症状=形病及神；先有情志刺激→躯体症状=神病及形
 </div>
 </details>
-<h4 id="掌握级心主神明论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】心主神明论</h4>
+<h4 id="掌握级心主神明论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】心主神明论</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>心主神明</strong>：心有统率全身脏腑、经络、形体、官窍的生理活动和主司精神、意识、思维和情志等心理活动的功能。被称为"君主之官"。（教材§2.2）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>理论内涵</strong>（教材§2.2）：</p>
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
@@ -1013,7 +1038,7 @@ tr:last-child td {
 **易错陷阱**：考题常问"心主神明与脑主神明是否矛盾"——不矛盾。中医的心是功能概念（包含脑的部分功能），不是解剖概念。两者是从不同视角对同一精神活动的理解。
 </div>
 </details>
-<h4 id="掌握级五脏神志论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】五脏神志论</h4>
+<h4 id="掌握级五脏神志论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】五脏神志论</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>五神分属五脏</strong>（教材§2.4）：</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li><strong>心藏神</strong>：以心主血脉为物质基础。生理：统领主宰精神意识思维活动。病理：昏迷、发狂（痰热扰心或痰迷心窍）</li><li><strong>肝藏魂</strong>：以肝血营养为物质基础。魂=后天形成的意识思维活动。病理：夜寐不安、多梦、幻视幻听</li><li><strong>脾藏意</strong>：以脾功能为基础。意=心接受外界事物后进行追忆的过程。病理：脾失健运→思维迟钝或紊乱</li><li><strong>肺藏魄</strong>：以精气为物质基础。魄=与生俱来的本能活动。病理：先天禀赋不足或情志刺激→神志异常</li><li><strong>肾藏志</strong>：以肾精为物质基础。志=意的基础上确认→专志不移/记忆。病理：肾精亏损→健忘、精神疲惫</li>
@@ -1036,7 +1061,7 @@ tr:last-child td {
 - 五脏病导致心神失调：心气血不足→脏躁；痰火扰心→癫狂；心阳不足→神疲自汗
 </div>
 </details>
-<h4 id="掌握级七情致病特点" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】七情致病特点</h4>
+<h4 id="掌握级七情致病特点" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】七情致病特点</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>七情</strong>：喜、怒、忧、思、悲、恐、惊七种情志变化。正常时是人体对客观事物的情志反映；异常时（突然、强烈或长期持久超过调节范围）→人体气机紊乱、脏腑阴阳气血失调→心理疾病。（教材§2.4/§3.2）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>致病特点三条</strong>（教材§2.4/§3.2·简答必考）：</p>
 <p style="margin:8px 0;line-height:1.8">① <strong>直接伤及内脏</strong>：五脏与情志活动有对应关系，不同情志伤相应脏腑。但各情志刺激都与心密切关联——七情刺激损及心→波及他脏。临床上以心、肝、脾三脏气血失调为多见</p>
@@ -1086,7 +1111,7 @@ tr:last-child td {
 </tbody>
 </table></div>
 <p style="margin:8px 0;line-height:1.8">③ <strong>影响病情转归</strong>：情志异常可加重病情（如肝阳上亢+恼怒→中风；胸痹心痛+暴喜暴怒→心阳暴脱）；疾病也可导致情志异常（如肝气虚→善恐，心气虚→善悲）</p>
-<h4 id="熟悉级人格体质论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】人格体质论</h4>
+<h4 id="熟悉级人格体质论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】人格体质论</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>人格与体质关系</strong>：一定的人格总是与一定的体质有某种关联。形神合一→"精气"为形神共同基础，神对形有反作用，形神共受自然与社会环境影响。（教材§2.5）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>阴阳五态人</strong>：太阴之人（如林黛玉）、少阴之人（如沙和尚）、太阳之人（如张飞）、少阳之人（如王熙凤）、阴阳平和之人（如诸葛亮）。（教材§2.5）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>阴阳二十五人</strong>=五态×五行（木火土金水）各五型。（教材§2.5）</p>
@@ -1103,7 +1128,7 @@ tr:last-child td {
 - **考试要点**：考题可能给体质描述让你判断哪种心理疾病风险更高。核心判断逻辑=体质偏颇方向与疾病病机方向一致。
 </div>
 </details>
-<h4 id="熟悉级阴阳睡梦论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】阴阳睡梦论</h4>
+<h4 id="熟悉级阴阳睡梦论" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】阴阳睡梦论</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>睡眠机制</strong>：阴阳之气自然有规律转化的结果。卫气昼行阳分→觉醒；卫气夜行阴分→睡眠。与自然界阴阳盛衰变化一致。（教材§2.6）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>睡眠相关脏腑</strong>：与心、肝、脾、肾关系密切。心主血脉藏神（心神安居=昼精夜瞑）；脾气旺→化源充足→充养心神；肝血充足→心血旺盛；心肾平和→水火既济→安然入睡。（教材§2.6）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>梦与心肝关系最密切</strong>：心藏神→精神意识、肝藏魂→梦境活动。其次与肾、脾也有关系。（教材§2.6）</p>
@@ -1211,22 +1236,10 @@ tr:last-child td {
 - 气郁
 </div>
 </details>
-<h3 id="常见陷阱" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">⚠️ 常见陷阱</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>⚠️ 陷阱：五神=喜怒思悲恐 → 正确认知：五神=神魂魄意志（精神活动层次），五志=喜怒思悲恐（情绪反应层次）。考题极有可能将两者互换混淆</li><li>⚠️ 陷阱：忧和悲的气机变化相同 → 正确认知：悲则气消（消散）、忧则气聚（郁结）。虽同属肺志，但气机方向相反——这是考试最爱考的"同脏不同气机"陷阱</li><li>⚠️ 陷阱：七情致病只伤心肝脾 → 正确认知：虽以心肝脾多见，但肺（悲忧）和肾（恐）也会受伤。考题可能在选项中漏掉某个脏腑来考验完整性</li>
-</ul>
-<h3 id="记忆口诀" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">💡 记忆口诀</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li><code>"神魂魄意志，心肝脾肺肾——喜怒思悲恐，木土水火金"</code> → 五脏-五神-五志-五行快速对应</li><li><code>"怒上喜缓思结悲消恐下惊乱忧聚"</code> → 七情→气机七向对应（读顺口即可）</li><li><code>"火喜木怒土思金悲水恐；水胜火（恐胜喜）、木胜土（怒胜思）、金胜木（悲胜怒）、火胜金（喜胜忧）、土胜水（思胜恐）"</code> → 五行相克推导情志相胜</li>
-</ul>
-<h3 id="本章小结" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📌 本章小结</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>形神合一论是中医心理学核心学说 → 形为神之质/神为形之主 → 形神互依互存、双向影响，这是理解所有心理疾病病因病机的总纲</li><li>心主神明论确立了"君主之官"的核心地位 → 五脏藏神与心主神明并不矛盾——心神为统帅，五神为分工</li><li>七情致病三条（直伤内脏→影响气机→影响转归）是简答题必考点 → 其中气机七向对应更是B1型配伍题的最爱</li>
-</ul>
-<h3 id="深度链接拔高延伸" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔗 深度链接（拔高延伸）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>🧠 <strong>机制深挖</strong>：为什么中医把精神活动归于"心"而非"脑"？→ 中医认知方式为"思外揣内"——通过外在表现推断内脏功能。精神紧张→心悸（心在跳），悲伤→胸闷（心区不适），恐惧→心跳加速。所以古人把精神活动归于心。而西医通过解剖发现脑才是神经中枢。两者的差异不是对错问题，而是认知路径的根本不同。</li><li>🔗 <strong>跨模块串联</strong>：M2的五脏神志论 ↔ M4的情志相胜法 ↔ M5的辨证论治。考试可能给一个病例（如"患者因长期思虑导致食欲不振、失眠"），要求你从五脏神志（思伤脾→心亦主思）解释病机，再用情志相胜（怒胜思）设计治疗方案——这是横跨三个模块的综合考查。</li><li>🏥 <strong>临床推理链</strong>：阴阳五态人分类（M2.5）→ 体质偏颇→疾病易感性→个性化治疗（M3三因制宜中的因人制宜）。这是中医"个体化治疗"思想在心理学中的完整体现。</li>
-</ul>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>- ⚠️ 陷阱：五神=喜怒思悲恐 → 正确认知：五神=神魂魄意志（精神活动层次），五志=喜怒思悲恐（情绪反应层次）。考题极有可能将两者互换混淆<br>- ⚠️ 陷阱：忧和悲的气机变化相同 → 正确认知：悲则气消（消散）、忧则气聚（郁结）。虽同属肺志，但气机方向相反——这是考试最爱考的"同脏不同气机"陷阱<br>- ⚠️ 陷阱：七情致病只伤心肝脾 → 正确认知：虽以心肝脾多见，但肺（悲忧）和肾（恐）也会受伤。考题可能在选项中漏掉某个脏腑来考验完整性</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>- <code>"神魂魄意志，心肝脾肺肾——喜怒思悲恐，木土水火金"</code> → 五脏-五神-五志-五行快速对应<br>- <code>"怒上喜缓思结悲消恐下惊乱忧聚"</code> → 七情→气机七向对应（读顺口即可）<br>- <code>"火喜木怒土思金悲水恐；水胜火（恐胜喜）、木胜土（怒胜思）、金胜木（悲胜怒）、火胜金（喜胜忧）、土胜水（思胜恐）"</code> → 五行相克推导情志相胜</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>- 形神合一论是中医心理学核心学说 → 形为神之质/神为形之主 → 形神互依互存、双向影响，这是理解所有心理疾病病因病机的总纲<br>- 心主神明论确立了"君主之官"的核心地位 → 五脏藏神与心主神明并不矛盾——心神为统帅，五神为分工<br>- 七情致病三条（直伤内脏→影响气机→影响转归）是简答题必考点 → 其中气机七向对应更是B1型配伍题的最爱</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接（拔高延伸）</div><p><br>- 🧠 <strong>机制深挖</strong>：为什么中医把精神活动归于"心"而非"脑"？→ 中医认知方式为"思外揣内"——通过外在表现推断内脏功能。精神紧张→心悸（心在跳），悲伤→胸闷（心区不适），恐惧→心跳加速。所以古人把精神活动归于心。而西医通过解剖发现脑才是神经中枢。两者的差异不是对错问题，而是认知路径的根本不同。<br>- 🔗 <strong>跨模块串联</strong>：M2的五脏神志论 ↔ M4的情志相胜法 ↔ M5的辨证论治。考试可能给一个病例（如"患者因长期思虑导致食欲不振、失眠"），要求你从五脏神志（思伤脾→心亦主思）解释病机，再用情志相胜（怒胜思）设计治疗方案——这是横跨三个模块的综合考查。<br>- 🏥 <strong>临床推理链</strong>：阴阳五态人分类（M2.5）→ 体质偏颇→疾病易感性→个性化治疗（M3三因制宜中的因人制宜）。这是中医"个体化治疗"思想在心理学中的完整体现。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 </div> <!-- close module-card -->
 <h2 class="section-title" id="m3">📘 模块3：中医心理学临床基础</h2>
@@ -1238,12 +1251,9 @@ tr:last-child td {
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>✅ 需掌握：气机的五种病理状态 → 气滞（气运行不畅）、气逆（气上升太过）、气陷（气上升不及）、气闭（气闭塞不通）、气脱（气外脱不守）。（教材§3.2）</li><li>⚡ 快速补课：四诊 → 望闻问切是中医诊察疾病的基本方法。在中医心理学中，四诊用于"察心"——望神/闻声/问情志病史/切脉象变化，从而评估患者的心理状态和人格类型</li>
 </ul>
-<h3 id="高收益摘要4条" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🎯 高收益摘要（4条）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>中医心理疾病定义=情志刺激或躯体病变→形神失调→以神志失常为主的一类疾病。形神失调是最根本核心认识（教材§3.1）</li><li>七情致病特点完整三条：①直伤内脏（首伤心→波及他脏）②影响脏腑气机（七向）③影响病情转归（双向）（教材§3.2·简答必考）</li><li>整体恒动观思想十二字：司外揣内/见微知著/以常达变（教材§3.3·简答常考）</li><li>治疗四大原则：调谐阴阳/调节气血/心身同治/疏导情志（教材§3.4·X型高频）</li>
-</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要（4条）</div><p><br>- 中医心理疾病定义=情志刺激或躯体病变→形神失调→以神志失常为主的一类疾病。形神失调是最根本核心认识（教材§3.1）<br>- 七情致病特点完整三条：①直伤内脏（首伤心→波及他脏）②影响脏腑气机（七向）③影响病情转归（双向）（教材§3.2·简答必考）<br>- 整体恒动观思想十二字：司外揣内/见微知著/以常达变（教材§3.3·简答常考）<br>- 治疗四大原则：调谐阴阳/调节气血/心身同治/疏导情志（教材§3.4·X型高频）</p></div>
 <h3 id="结构化笔记教材浓缩型" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（教材浓缩型）</h3>
-<h4 id="掌握级中医心理疾病定义与核心认识" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】中医心理疾病定义与核心认识</h4>
+<h4 id="掌握级中医心理疾病定义与核心认识" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】中医心理疾病定义与核心认识</h4>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】中医心理疾病定义</strong>：情志刺激或躯体病变等因素导致人体形与神失调，又以神志失常为主的一类疾病。（教材§3.1）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>核心认识=形神失调</strong>：形=神志活动的物质基础；神=泛指人体一切心理活动。形神失调是中医对心理疾病最根本、最核心的认识。（教材§3.1）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>临床要点</strong>（教材§3.1）：</p>
@@ -1266,7 +1276,7 @@ tr:last-child td {
 **易错陷阱**：五种气机紊乱的七情对应容易混淆。记住规律——向上走的（怒上/喜缓）=气逆/气脱；向内结的（思结/忧聚）=气滞；向下走的（恐下）=气陷；混乱突发的（惊乱）=气闭。
 </div>
 </details>
-<h4 id="掌握级七情致病特点完整版简答模板" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】七情致病特点（完整版·简答模板）</h4>
+<h4 id="掌握级七情致病特点完整版简答模板" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】七情致病特点（完整版·简答模板）</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>七情正常与异常</strong>（教材§3.2）：</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>正常：喜/怒/忧/思/悲/恐/惊七种情志变化=人体对客观事物的正常反映</li><li>异常：突然+强烈+长期持久超过调节范围→气机紊乱→脏腑阴阳气血失调→心理疾病</li>
@@ -1281,7 +1291,7 @@ tr:last-child td {
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>正向→负向：情志异常加重病情。如肝阳上亢+恼怒→肝阳暴张→中风；胸痹心痛+暴喜暴怒→心阳暴脱</li><li>反向→正向：疾病也可导致情志异常。如肝气虚→善恐；心气虚→善悲</li>
 </ul>
-<h4 id="掌握级整体恒动观思想" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】整体恒动观思想</h4>
+<h4 id="掌握级整体恒动观思想" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】整体恒动观思想</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>整体恒动观思想</strong>十二字口诀（教材§3.3·简答常考）：</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li><strong>司外揣内</strong>："有诸内者，必形诸外"——通过观察外部现象推测内部变化</li><li><strong>见微知著</strong>：通过微小变化推测整体情况——局部包含整体信息</li><li><strong>以常达变</strong>：在认识正常的基础上，发现异常变化——知常达变</li>
@@ -1312,7 +1322,7 @@ tr:last-child td {
 - 睡眠症状：不寐/嗜睡/多梦
 </div>
 </details>
-<h4 id="掌握级治疗原则" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】治疗原则</h4>
+<h4 id="掌握级治疗原则" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】治疗原则</h4>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】治疗四大原则</strong>（教材§3.4·X型高频）：</p>
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li><strong>调谐阴阳</strong>：阴阳平衡为治疗目标</li><li><strong>调节气血</strong>：气血和畅为治疗基础</li><li><strong>心身同治</strong>：治神+治身相结合</li><li><strong>疏导情志</strong>：引导患者情志恢复正常</li>
@@ -1414,22 +1424,10 @@ tr:last-child td {
 - 神、色、形、态、舌
 </div>
 </details>
-<h3 id="常见陷阱" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">⚠️ 常见陷阱</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>⚠️ 陷阱：七情致病先伤肝 → 正确认知：虽然郁证与肝关系密切，但七情致病规律是"首伤心神→波及他脏"。心为五脏六腑之大主，任何情志刺激最先影响的是心</li><li>⚠️ 陷阱：辨证纲要只含阴阳/脏腑/经络 → 正确认知：还包含气血失调+痰火与心理疾病，共五个维度。考题可能在X型选项中漏掉"痰火"来挖坑</li><li>⚠️ 陷阱：三因制宜中的"时"仅指四季 → 正确认知：还包括昼夜晨昏的变化，不仅限于四季</li>
-</ul>
-<h3 id="记忆口诀" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">💡 记忆口诀</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li><code>"四诊察心望闻问切，整体恒动司见以常"</code> → 四诊+整体恒动观十二字</li><li><code>"阴阳气血身心导——治四则"</code> → 调谐阴阳/调节气血/心身同治/疏导情志</li>
-</ul>
-<h3 id="本章小结" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📌 本章小结</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>形神失调是中医心理疾病最根本的认识 → 所有病因病机最终都落实到形与神的失衡关系上</li><li>七情致病三条是从"伤何脏→伤何气机→如何影响病程"逐层递进的完整逻辑链 → 每条都要能独立展开论述</li><li>整体恒动观（司外揣内/见微知著/以常达变）是中医心理学诊法辨证的哲学基础 → 十二字会背=简答至少拿大半分数</li>
-</ul>
-<h3 id="深度链接拔高延伸" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔗 深度链接（拔高延伸）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>🧠 <strong>机制深挖</strong>：为什么气机紊乱是心理疾病的核心病机？→ 七情→气机→脏腑→形神失调，这条"情-气-脏-神"病理链是中医心理学解释心理疾病发病的独有逻辑。情绪刺激通过改变气的运动状态（升降出入）来影响脏腑功能→产生躯体症状+精神症状。这一机制串联了M2（五脏神志）和M5（疾病辨证）的所有知识。</li><li>🔗 <strong>跨模块串联</strong>：M3的四诊察心法↔M5的病例分析。考试病例题中隐含的"四诊信息"需要被识别——"胸胁胀痛"=问诊+切诊，"苔薄腻脉弦"=望诊（舌）+切诊（脉），"情绪低落"=望诊（神）+问诊。病例分析的核心能力就是从题干提取四诊信息。</li><li>🏥 <strong>临床推理链</strong>：四诊合参→辨证纲要（阴阳/脏腑/经络/气血/痰火五维分析）→确定治则（调谐阴阳/调节气血/心身同治/疏导情志）→三因制宜细化方案。这条完整的临床思维路径贯穿M3-4-5三个模块。</li>
-</ul>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>- ⚠️ 陷阱：七情致病先伤肝 → 正确认知：虽然郁证与肝关系密切，但七情致病规律是"首伤心神→波及他脏"。心为五脏六腑之大主，任何情志刺激最先影响的是心<br>- ⚠️ 陷阱：辨证纲要只含阴阳/脏腑/经络 → 正确认知：还包含气血失调+痰火与心理疾病，共五个维度。考题可能在X型选项中漏掉"痰火"来挖坑<br>- ⚠️ 陷阱：三因制宜中的"时"仅指四季 → 正确认知：还包括昼夜晨昏的变化，不仅限于四季</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>- <code>"四诊察心望闻问切，整体恒动司见以常"</code> → 四诊+整体恒动观十二字<br>- <code>"阴阳气血身心导——治四则"</code> → 调谐阴阳/调节气血/心身同治/疏导情志</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>- 形神失调是中医心理疾病最根本的认识 → 所有病因病机最终都落实到形与神的失衡关系上<br>- 七情致病三条是从"伤何脏→伤何气机→如何影响病程"逐层递进的完整逻辑链 → 每条都要能独立展开论述<br>- 整体恒动观（司外揣内/见微知著/以常达变）是中医心理学诊法辨证的哲学基础 → 十二字会背=简答至少拿大半分数</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接（拔高延伸）</div><p><br>- 🧠 <strong>机制深挖</strong>：为什么气机紊乱是心理疾病的核心病机？→ 七情→气机→脏腑→形神失调，这条"情-气-脏-神"病理链是中医心理学解释心理疾病发病的独有逻辑。情绪刺激通过改变气的运动状态（升降出入）来影响脏腑功能→产生躯体症状+精神症状。这一机制串联了M2（五脏神志）和M5（疾病辨证）的所有知识。<br>- 🔗 <strong>跨模块串联</strong>：M3的四诊察心法↔M5的病例分析。考试病例题中隐含的"四诊信息"需要被识别——"胸胁胀痛"=问诊+切诊，"苔薄腻脉弦"=望诊（舌）+切诊（脉），"情绪低落"=望诊（神）+问诊。病例分析的核心能力就是从题干提取四诊信息。<br>- 🏥 <strong>临床推理链</strong>：四诊合参→辨证纲要（阴阳/脏腑/经络/气血/痰火五维分析）→确定治则（调谐阴阳/调节气血/心身同治/疏导情志）→三因制宜细化方案。这条完整的临床思维路径贯穿M3-4-5三个模块。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 </div> <!-- close module-card -->
 <h2 class="section-title" id="m4">📘 模块4：常用治疗方法</h2>
@@ -1441,12 +1439,9 @@ tr:last-child td {
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>✅ 需掌握：五行相克顺序 → 木克土→土克水→水克火→火克金→金克木（闭合回路）。情志相胜法直接建立在此之上</li><li>⚡ 快速补课：六字诀 → 气功中的吐纳方法，通过六种发音调节对应脏腑——嘘（肝）、呵（心）、呼（脾）、呬（肺）、吹（肾）、嘻（三焦）。郁证治疗中常用的嘘字诀、呼字诀、呵字诀即源于此</li>
 </ul>
-<h3 id="高收益摘要4条" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🎯 高收益摘要（4条）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>意疗=中医心理疗法（非针药疗法），包含六法：顺情从欲/开导解惑/情志相胜/移精变气/暗示诱导/志意以绳（教材§4.1·X型必考）</li><li>情志相胜法=五行相克理论指导下的情绪制约疗法：喜胜忧/怒胜思/悲胜怒/恐胜喜/思胜恐（教材§4.1·B1必考）</li><li>开导解惑四步法=擒（告之以其败）→纵（语之以其善）→切入（导之以其所便）→突破（开之以其苦），起源于《内经》（教材§4.1）</li><li>五音-五脏对应=角(肝)→徵(心)→宫(脾)→商(肺)→羽(肾)，对应木火土金水（教材§4.3·B1必考）</li>
-</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要（4条）</div><p><br>- 意疗=中医心理疗法（非针药疗法），包含六法：顺情从欲/开导解惑/情志相胜/移精变气/暗示诱导/志意以绳（教材§4.1·X型必考）<br>- 情志相胜法=五行相克理论指导下的情绪制约疗法：喜胜忧/怒胜思/悲胜怒/恐胜喜/思胜恐（教材§4.1·B1必考）<br>- 开导解惑四步法=擒（告之以其败）→纵（语之以其善）→切入（导之以其所便）→突破（开之以其苦），起源于<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">内经</span>（教材§4.1）<br>- 五音-五脏对应=角(肝)→徵(心)→宫(脾)→商(肺)→羽(肾)，对应木火土金水（教材§4.3·B1必考）</p></div>
 <h3 id="结构化笔记教材浓缩型" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（教材浓缩型）</h3>
-<h4 id="掌握级意疗六法" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】意疗六法</h4>
+<h4 id="掌握级意疗六法" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】意疗六法</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>意疗定义</strong>：中医心理疗法，又称心疗或非针药疗法。不用药物/针灸/手术，借助于语言、行为以及特意安排的场景来影响患者心理活动，达到治疗或康复目的。（教材§4.1）</p>
 <details class="accordion" open>
 <summary>🔬 展开：意疗六法详解</summary>
@@ -1493,10 +1488,10 @@ tr:last-child td {
 - 具体方法：习以平惊法（系统脱敏）、厌恶矫正法（厌恶疗法）、正意顺念法（正念疗法）、行为诱导法、行为满足疗法、歌吟/舞蹈疗法
 </div>
 </details>
-<h4 id="熟悉级气功疗法" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】气功疗法</h4>
+<h4 id="熟悉级气功疗法" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】气功疗法</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>气功三调</strong>：调心（意识状态调控·核心）、调息（呼吸调控）、调身（姿势动作调控）——三调合一。（教材§4.2）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>意识调控技巧</strong>：意守（意识移置于某事物的心理操作）、观想（意守想象中事物）、入静（逐渐消除一切意识对象→意识活动中止）。（教材§4.2）</p>
-<h4 id="熟悉级音乐疗法" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】音乐疗法</h4>
+<h4 id="熟悉级音乐疗法" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】音乐疗法</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>五音-五脏-五行对应</strong>（教材§4.3·B1必考）：</p>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -1551,7 +1546,7 @@ tr:last-child td {
 **易错陷阱**：肝郁≠用金音（悲胜怒）。音乐疗法选音的直接逻辑是"病在何脏→选对应的音"，而非"用相克的音"。情志相胜选情绪是"用相克的"，音乐选音是"对应本脏"——这是完全不同的逻辑。
 </div>
 </details>
-<h4 id="熟悉级针灸疗法" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】针灸疗法</h4>
+<h4 id="熟悉级针灸疗法" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】针灸疗法</h4>
 <p style="margin:8px 0;line-height:1.8"><strong>治神三步骤</strong>：察神→守神（定身+专一）→治神。（教材§4.4）</p>
 <p style="margin:8px 0;line-height:1.8"><strong>临床治神两层</strong>（教材§4.4）：</p>
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
@@ -1675,7 +1670,7 @@ tr:last-child td {
 <tr>
 <td>开导解惑</td>
 <td>擒→纵→切入→突破</td>
-<td>起源于《内经》</td>
+<td>起源于<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">内经</span></td>
 </tr>
 <tr>
 <td>情志相胜</td>
@@ -1724,22 +1719,10 @@ tr:last-child td {
 - 神门、皮质下、神经衰弱穴
 </div>
 </details>
-<h3 id="常见陷阱" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">⚠️ 常见陷阱</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>⚠️ 陷阱：情志相胜使用与五行相克方向相反的情志 → 正确认知：怒胜思（木克土），不是思胜怒（土克木）。用"谁克谁"的五行关系来推导：木克土=怒胜思</li><li>⚠️ 陷阱：开导解惑四步中"擒"和"纵"的顺序互换 → 正确认知：先擒（告之危害）后纵（态度和善），顺序不可颠倒。先让患者认识严重性，再给予希望</li><li>⚠️ 陷阱：音乐疗法选音使用相克原理 → 正确认知：音乐选音使用对应本脏原理（肝郁→角调/木音），而情志相胜选情绪使用相克原理。两者逻辑不同，不可混淆</li>
-</ul>
-<h3 id="记忆口诀" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">💡 记忆口诀</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li><code>"顺情开导情志胜，移精暗示志意绳"</code> → 意疗六法名称速记</li><li><code>"擒纵切入破——开导四步法"</code> → 开导解惑四步</li><li><code>"水喜木怒土思金悲水恐"</code> → 情志相胜五行相克推演</li>
-</ul>
-<h3 id="本章小结" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📌 本章小结</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>意疗六法（顺情从欲/开导解惑/情志相胜/移精变气/暗示诱导/志意以绳）是中医心理治疗的核心工具 → 其中开导解惑四步法和情志相胜法是考查密度最高的两个</li><li>五音-五脏对应（角徵宫商羽→肝心脾肺肾）是B1型配伍题必考点 → 与M2的五脏-五行-五志-五神构成完整对应体系</li><li>针灸治神三步骤（察神→守神→治神）+三个关键耳穴（神门/皮质下/神经衰弱穴）是操作层面的高频考点</li>
-</ul>
-<h3 id="深度链接拔高延伸" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔗 深度链接（拔高延伸）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>🧠 <strong>机制深挖</strong>：为什么音乐能治病？→ 中医认为五音通过声波震荡影响五脏气机——角音（木）疏泄肝气、徵音（火）振奋心气、宫音（土）健运脾气、商音（金）清肃肺气、羽音（水）潜纳肾气。现代研究证实音乐通过大脑右半球调节边缘系统-下丘脑-垂体-肾上腺轴，影响神经递质释放。两个理论体系从不同角度指向同一结论。</li><li>🔗 <strong>跨模块串联</strong>：M2的情志相胜五行相克理论 ↔ M4的情志相胜疗法 ↔ M5的郁证/不寐/卑惵等疾病治疗。考试可能给一个"思虑过度致脾失健运"的病例，要求你：①用情志相胜法设计治疗方案（怒胜思）②说明五行原理（木克土）③如果不用情志相胜，还可以用什么方法（开导解惑/移精变气/宫调音乐）</li><li>🏥 <strong>临床推理链</strong>：以不寐患者为例——心理治疗（开导解惑+暗示诱导+移精变气+放松训练）→音乐治疗（据证选音：心脾两虚/心胆气虚=火音；肝郁化火=木音；心肾不交=水音）→针灸（神门+三阴交+内关+耳穴）→药物（辨证选方）。多种疗法协同形成"心理-音乐-针灸-药物"四维治疗网。</li>
-</ul>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>- ⚠️ 陷阱：情志相胜使用与五行相克方向相反的情志 → 正确认知：怒胜思（木克土），不是思胜怒（土克木）。用"谁克谁"的五行关系来推导：木克土=怒胜思<br>- ⚠️ 陷阱：开导解惑四步中"擒"和"纵"的顺序互换 → 正确认知：先擒（告之危害）后纵（态度和善），顺序不可颠倒。先让患者认识严重性，再给予希望<br>- ⚠️ 陷阱：音乐疗法选音使用相克原理 → 正确认知：音乐选音使用对应本脏原理（肝郁→角调/木音），而情志相胜选情绪使用相克原理。两者逻辑不同，不可混淆</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>- <code>"顺情开导情志胜，移精暗示志意绳"</code> → 意疗六法名称速记<br>- <code>"擒纵切入破——开导四步法"</code> → 开导解惑四步<br>- <code>"水喜木怒土思金悲水恐"</code> → 情志相胜五行相克推演</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>- 意疗六法（顺情从欲/开导解惑/情志相胜/移精变气/暗示诱导/志意以绳）是中医心理治疗的核心工具 → 其中开导解惑四步法和情志相胜法是考查密度最高的两个<br>- 五音-五脏对应（角徵宫商羽→肝心脾肺肾）是B1型配伍题必考点 → 与M2的五脏-五行-五志-五神构成完整对应体系<br>- 针灸治神三步骤（察神→守神→治神）+三个关键耳穴（神门/皮质下/神经衰弱穴）是操作层面的高频考点</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接（拔高延伸）</div><p><br>- 🧠 <strong>机制深挖</strong>：为什么音乐能治病？→ 中医认为五音通过声波震荡影响五脏气机——角音（木）疏泄肝气、徵音（火）振奋心气、宫音（土）健运脾气、商音（金）清肃肺气、羽音（水）潜纳肾气。现代研究证实音乐通过大脑右半球调节边缘系统-下丘脑-垂体-肾上腺轴，影响神经递质释放。两个理论体系从不同角度指向同一结论。<br>- 🔗 <strong>跨模块串联</strong>：M2的情志相胜五行相克理论 ↔ M4的情志相胜疗法 ↔ M5的郁证/不寐/卑惵等疾病治疗。考试可能给一个"思虑过度致脾失健运"的病例，要求你：①用情志相胜法设计治疗方案（怒胜思）②说明五行原理（木克土）③如果不用情志相胜，还可以用什么方法（开导解惑/移精变气/宫调音乐）<br>- 🏥 <strong>临床推理链</strong>：以不寐患者为例——心理治疗（开导解惑+暗示诱导+移精变气+放松训练）→音乐治疗（据证选音：心脾两虚/心胆气虚=火音；肝郁化火=木音；心肾不交=水音）→针灸（神门+三阴交+内关+耳穴）→药物（辨证选方）。多种疗法协同形成"心理-音乐-针灸-药物"四维治疗网。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 </div> <!-- close module-card -->
 <h2 class="section-title" id="m5">📘 模块5：常见中医心理疾病（核心模块·50%分值）</h2>
@@ -1751,14 +1734,11 @@ tr:last-child td {
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>✅ 需掌握：脏腑辨证基础 → 能区分肝气郁结（胸胁胀痛/脉弦）、心脾两虚（心悸健忘/食少/脉细弱）、阴虚火旺（五心烦热/舌红少苔/脉细数）、痰热内扰（痰多胸闷/苔黄腻/脉滑数）四个常见证型的基本特征</li><li>✅ 需掌握：方药命名规律 → "柴胡疏肝散"=疏肝解郁；"归脾汤"=健脾养心；"天王补心丹"=补心安神；"黄连阿胶汤"=滋阴降火；"血府逐瘀汤"=活血化瘀。从方名反推功效，记住方名≈记住了一半功效</li><li>⚡ 快速补课：3P模型 → 不寐病因模型：素质因素（易感体质）+诱发因素（触发事件）+维持因素（不良应对使失眠持续）。这个模型常被考到"不寐病因的现代心理学解释"</li>
 </ul>
-<h3 id="高收益摘要5条" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🎯 高收益摘要（5条）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>郁证（★掌握·8证型）：情志不舒→气机郁滞→心情抑郁/胸胁胀痛/易怒易哭。实证（气郁/化火/血瘀/痰结）→虚证（心脾两虚/心阴亏虚/心神惑乱），代表方从柴胡疏肝散到甘麦大枣汤（教材§5.1）</li><li>不寐（★掌握·9证型）：心神失养或不安→不能获得正常睡眠。虚（阴血不足）→实（火盛扰心/瘀血阻滞），九证型覆盖肝/心/脾/肾/胆/胃多脏腑（教材§5.2）</li><li>脏躁=忧郁烦躁/无故悲伤/呵欠频频→甘麦大枣汤（教材§5.3）；梅核气=咽中异物感/咯不出咽不下→半夏厚朴汤（教材§5.5）</li><li>心悸=心中急剧跳动/惊慌不安→神门/内关/心俞/巨阙四穴（教材§5.4）；卑惵=抑郁胆怯自卑恐惧→安神定志丸（教材§5.6）</li><li>百合病=神志恍惚/口苦尿黄脉微数→百合地黄汤（教材§5.7）；癫狂=癫（静而多喜少动）+狂（动而多怒毁物）（教材§5.8）</li>
-</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要（5条）</div><p><br>- 郁证（★掌握·8证型）：情志不舒→气机郁滞→心情抑郁/胸胁胀痛/易怒易哭。实证（气郁/化火/血瘀/痰结）→虚证（心脾两虚/心阴亏虚/心神惑乱），代表方从柴胡疏肝散到甘麦大枣汤（教材§5.1）<br>- 不寐（★掌握·9证型）：心神失养或不安→不能获得正常睡眠。虚（阴血不足）→实（火盛扰心/瘀血阻滞），九证型覆盖肝/心/脾/肾/胆/胃多脏腑（教材§5.2）<br>- 脏躁=忧郁烦躁/无故悲伤/呵欠频频→甘麦大枣汤（教材§5.3）；梅核气=咽中异物感/咯不出咽不下→半夏厚朴汤（教材§5.5）<br>- 心悸=心中急剧跳动/惊慌不安→神门/内关/心俞/巨阙四穴（教材§5.4）；卑惵=抑郁胆怯自卑恐惧→安神定志丸（教材§5.6）<br>- 百合病=神志恍惚/口苦尿黄脉微数→百合地黄汤（教材§5.7）；癫狂=癫（静而多喜少动）+狂（动而多怒毁物）（教材§5.8）</p></div>
 <h3 id="结构化笔记教材浓缩型" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（教材浓缩型）</h3>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="郁证掌握12分论述题核心8证型" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 郁证（★掌握·12分论述题核心·8证型）</h4>
-<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】郁证定义</strong>：多由情志不舒，气机郁滞所引起，以心情抑郁、情绪不宁、胸部满闷、胁肋胀痛，或易怒易哭，或咽中如有异物梗塞等为主要临床表现的一类病证。明代虞抟《医学正传》首先采用"郁证"作为病名。（教材§5.1）</p>
+<h4 id="郁证掌握12分论述题核心8证型" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 郁证（★掌握·12分论述题核心·8证型）</h4>
+<p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】郁证定义</strong>：多由情志不舒，气机郁滞所引起，以心情抑郁、情绪不宁、胸部满闷、胁肋胀痛，或易怒易哭，或咽中如有异物梗塞等为主要临床表现的一类病证。明代虞抟<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">医学正传</span>首先采用"郁证"作为病名。（教材§5.1）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】病因病机</strong>（教材§5.1·简答高频）：</p>
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li><strong>愤懑恼怒，肝气郁结</strong>——情志刺激→肝失疏泄→气机郁滞</li><li><strong>忧愁思虑，脾失健运</strong>——思虑过度→脾气郁结→气血生化乏源</li><li><strong>情志过极，心失所养</strong>——所愿不遂→耗伤心血→心神失养</li><li><strong>脏气易郁，为郁之内因</strong>——禀赋不足→脏气虚弱→易感易郁</li><li><strong>忧虑恐惧，肾精亏虚</strong>——久病惊恐→肾精耗损→脑髓失养</li>
@@ -1812,7 +1792,7 @@ tr:last-child td {
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="不寐掌握12分论述题核心9证型" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 不寐（★掌握·12分论述题核心·9证型）</h4>
+<h4 id="不寐掌握12分论述题核心9证型" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 不寐（★掌握·12分论述题核心·9证型）</h4>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】不寐定义</strong>：亦称失眠，由于心神失常或不安而引起经常不能获得正常睡眠为特征的一类病证。轻者入寐困难/寐而易醒/醒后不能再寐/时寐时醒，严重者整夜不能入寐。（教材§5.2）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】病因病机</strong>（教材§5.2·简答高频）：</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
@@ -1852,8 +1832,8 @@ tr:last-child td {
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="脏躁熟悉名解3分" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 脏躁（熟悉·名解3分）</h4>
-<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】脏躁定义</strong>：以精神忧郁、烦躁不宁、无故悲伤、呵欠频频作为主要症状的一种情志病证。汉代张仲景《金匮要略》："妇人脏躁，喜悲伤欲哭，象如神灵所作，数欠伸，甘麦大枣汤主之。"（教材§5.3）</p>
+<h4 id="脏躁熟悉名解3分" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 脏躁（熟悉·名解3分）</h4>
+<p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】脏躁定义</strong>：以精神忧郁、烦躁不宁、无故悲伤、呵欠频频作为主要症状的一种情志病证。汉代张仲景<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">金匮要略</span>："妇人脏躁，喜悲伤欲哭，象如神灵所作，数欠伸，甘麦大枣汤主之。"（教材§5.3）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】代表方</strong>：甘麦大枣汤——甘润缓急，养心安神</p>
 <p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】西医诊断</strong>：癔症、更年期综合征</p>
 <details class="accordion" open>
@@ -1873,7 +1853,7 @@ tr:last-child td {
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="心悸熟悉名解3分" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 心悸（熟悉·名解3分）</h4>
+<h4 id="心悸熟悉名解3分" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 心悸（熟悉·名解3分）</h4>
 <p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】心悸定义</strong>：因外感或内伤致气血阴阳亏虚，心失所养；或痰饮瘀血阻滞，心脉不畅，引起以心中急剧跳动，惊慌不安，甚则不能自主为主要临床表现的心脏常见病证。（教材§5.4）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】治疗原则</strong>：虚证（补气/养血/滋阴/温阳）→实证（祛痰/化饮/清火/行瘀）→虚实错杂（兼顾主次标本缓急）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】针灸四穴</strong>：神门、内关、心俞、巨阙</p>
@@ -1886,7 +1866,7 @@ tr:last-child td {
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="梅核气熟悉名解3分" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 梅核气（熟悉·名解3分）</h4>
+<h4 id="梅核气熟悉名解3分" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 梅核气（熟悉·名解3分）</h4>
 <p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】梅核气定义</strong>：以咽喉中常有异物感，如梅核阻于喉头，咯之不出，咽之不下，但不影响进食为主要临床表现的一类情志病证。多发于女性。（教材§5.5）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】代表方</strong>：半夏厚朴汤（行气散结/降逆化痰）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-familiar">熟悉</span> <strong>【熟悉级】针灸</strong>：天突、膻中、鸠尾、中脘</p>
@@ -1902,8 +1882,8 @@ tr:last-child td {
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="卑惵了解名解可能考" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 卑惵（了解·名解可能考）</h4>
-<p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> <strong>【了解级】卑惵定义</strong>：因心气亏损、胆虚神怯，或气郁胆气不宁所致以抑郁、胆怯、自卑、恐惧（惵）为主要表现的神志疾病。明代戴思恭《证治要诀》首先采用"卑惵"作为病名。（教材§5.6）</p>
+<h4 id="卑惵了解名解可能考" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 卑惵（了解·名解可能考）</h4>
+<p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> <strong>【了解级】卑惵定义</strong>：因心气亏损、胆虚神怯，或气郁胆气不宁所致以抑郁、胆怯、自卑、恐惧（惵）为主要表现的神志疾病。明代戴思恭<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">证治要诀</span>首先采用"卑惵"作为病名。（教材§5.6）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> <strong>【了解级】代表方</strong>：安神定志丸（心胆气虚证）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> <strong>【了解级】西医诊断</strong>：心脏神经症、恐惧症、神经衰弱</p>
 <p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> <strong>【了解级】针灸</strong>：神门、太冲、丘墟</p>
@@ -1921,12 +1901,12 @@ tr:last-child td {
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="百合病了解名解可能考" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 百合病（了解·名解可能考）</h4>
+<h4 id="百合病了解名解可能考" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 百合病（了解·名解可能考）</h4>
 <p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> <strong>【了解级】百合病定义</strong>：因神志不遂，或热病之后，或心肺阴虚所致，以精神恍惚、欲卧不能卧、欲行不能行、食欲时好时坏、口苦、尿黄、脉象微数为主要临床表现的疾病。（教材§5.7）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> <strong>【了解级】代表方</strong>：百合地黄汤（阴虚内热证）</p>
 <p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> <strong>【了解级】针灸</strong>：内关、神门、涌泉</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="癫狂了解名解可能考" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 癫狂（了解·名解可能考）</h4>
+<h4 id="癫狂了解名解可能考" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 癫狂（了解·名解可能考）</h4>
 <p style="margin:8px 0"><span class="importance-badge imp-understand">了解</span> <strong>【了解级】癫狂定义</strong>：脏腑功能紊乱，气血痰火内扰心神而引起神志异常改变的疾病。癫病和狂病相互联系、相互转化，故并称癫狂。（教材§5.8）</p>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -2083,7 +2063,7 @@ tr:last-child td {
 <h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
 <p style="margin:8px 0;line-height:1.8"><strong>基础级</strong>：</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>郁证的定义核心三症状：______/______/______</li><li>郁证8证型口诀"痰气肝气郁化火，心脾心肾神失养"展开为：______/______/______/______/______/______/______/______</li><li>不寐的9证型中，属实证的有______/______/______/______，属虚证的有______/______/______/______/______</li><li>脏躁的代表方是______，出自______的《______》</li><li>梅核气的代表方是______，功效为______/______</li>
+<li>郁证的定义核心三症状：______/______/______</li><li>郁证8证型口诀"痰气肝气郁化火，心脾心肾神失养"展开为：______/______/______/______/______/______/______/______</li><li>不寐的9证型中，属实证的有______/______/______/______，属虚证的有______/______/______/______/______</li><li>脏躁的代表方是______，出自______的<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">______</span></li><li>梅核气的代表方是______，功效为______/______</li>
 </ul>
 <p style="margin:8px 0;line-height:1.8"><strong>进阶级</strong>：</p>
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
@@ -2106,22 +2086,10 @@ tr:last-child td {
 - 肝气郁结证、疏肝解郁理气畅中、柴胡疏肝散
 </div>
 </details>
-<h3 id="常见陷阱" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">⚠️ 常见陷阱</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>⚠️ 陷阱：郁证和不寐都有"心脾两虚"证型→用同一方 → 正确认知：两者都用归脾汤，但治法表述不同——郁证心脾两虚=健脾养心补益气血，不寐心脾两虚=补益心脾养血安神。答题时治法表述要贴合疾病</li><li>⚠️ 陷阱：郁证8证型只有6个方 → 正确认知：口诀中"痰气/肝气/化火/心脾/心肾/神"=6型，实际还有气滞血瘀（血府逐瘀汤）和肝阴亏虚（杞菊地黄丸/滋水清肝饮）=完整8型</li><li>⚠️ 陷阱：梅核气=慢性咽炎 → 正确认知：梅核气的咽部异物感与情志密切相关（情志不舒时加重），咽喉检查无异常发现。西医慢性咽炎有咽部充血等器质性改变，两者不同</li><li>⚠️ 陷阱：心悸和怔忡是一回事 → 正确认知：心悸=惊悸（初发/较轻），怔忡=经久不愈/较重。考试可能互换混淆</li>
-</ul>
-<h3 id="记忆口诀" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">💡 记忆口诀</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li><code>"痰气肝气郁化火，心脾心肾神失养"</code> → 郁证6证型口诀（+血瘀+肝阴亏=8型）</li><li><code>"痰气郁结半夏朴，柴胡疏肝肝气郁。气郁化火丹逍遥，心脾两虚用归脾。心肾阴虚天王丹，心神失养甘麦枣。滋水清肝肝阴亏"</code> → 郁证方药完整口诀</li><li><code>"龙胆清火涤痰保和血府归脾连阿胶，安神定志交泰酸枣仁"</code> → 不寐9方药速记（肝郁化火=龙胆泻肝/痰热=清火涤痰/胃气不和=保和丸/瘀血=血府逐瘀/心脾两虚=归脾/阴虚火旺=黄连阿胶/心胆气虚=安神定志丸/心肾不交=六味+交泰丸/肝郁血虚=酸枣仁汤）</li>
-</ul>
-<h3 id="本章小结" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📌 本章小结</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>郁证和不寐是分值最高的两个疾病（论述题12分）→ 必须掌握完整八层内容：定义→病因病机→辨证要点→各证型症状→治法→方药→心理疗法→其他疗法（音乐/针灸/气功/食疗）</li><li>郁证的核心是"气机郁滞→肝失疏泄"，不寐的核心是"心神失养→心为主导" → 两个疾病的病机重心不同，答题时尤其注意</li><li>了解级6病（脏躁/心悸/梅核气/卑惵/百合病/癫狂）的名解+代表方是性价比最高的记忆策略 → 每个疾病记住"1句话定义+1个代表方"就够拿3分</li>
-</ul>
-<h3 id="深度链接拔高延伸" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔗 深度链接（拔高延伸）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>🧠 <strong>机制深挖</strong>：郁证为什么从"气郁"开始，最终伤及五脏？→ 气机郁滞→肝失疏泄（第一阶段·肝）→肝郁克脾→脾失健运→气血生化不足（第二阶段·脾）→心失所养→心神失常（第三阶段·心）→日久及肾（第四阶段·肾）。这条"肝→脾→心→肾"的传变链是中医"五脏相关"理论的经典体现。</li><li>🔗 <strong>跨模块串联</strong>：M2的五脏神志论（心主神明/肝主疏泄）↔M5郁证的脏腑传变（肝→脾→心→肾）。M2的情志相胜理论↔M5卑惵的情志相胜+系统脱敏联合治疗。M4的耳穴（神门/皮质下/神经衰弱穴）↔M5不寐的针灸治疗。考试的综合论述题会要求你横跨2-3个模块来回答。</li><li>🏥 <strong>临床推理链</strong>（以典型郁证病例为例）：主诉情绪低落+胸胁胀痛→四诊（望神得神与否/问情志内伤史/切脉弦）→辨病（郁证）→辨虚实（实）→辨脏腑（肝）→辨证型（肝气郁结）→治法（疏肝解郁理气畅中）→方药（柴胡疏肝散）→心理治疗（开导解惑擒纵切入+移精变气）→音乐（角调）→针灸（百会/四神聪/内关）→食疗（玫瑰花茶）→预后（重视情志调护防复发）。这13步推演覆盖了M1-M5的知识点。</li>
-</ul>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>- ⚠️ 陷阱：郁证和不寐都有"心脾两虚"证型→用同一方 → 正确认知：两者都用归脾汤，但治法表述不同——郁证心脾两虚=健脾养心补益气血，不寐心脾两虚=补益心脾养血安神。答题时治法表述要贴合疾病<br>- ⚠️ 陷阱：郁证8证型只有6个方 → 正确认知：口诀中"痰气/肝气/化火/心脾/心肾/神"=6型，实际还有气滞血瘀（血府逐瘀汤）和肝阴亏虚（杞菊地黄丸/滋水清肝饮）=完整8型<br>- ⚠️ 陷阱：梅核气=慢性咽炎 → 正确认知：梅核气的咽部异物感与情志密切相关（情志不舒时加重），咽喉检查无异常发现。西医慢性咽炎有咽部充血等器质性改变，两者不同<br>- ⚠️ 陷阱：心悸和怔忡是一回事 → 正确认知：心悸=惊悸（初发/较轻），怔忡=经久不愈/较重。考试可能互换混淆</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>- <code>"痰气肝气郁化火，心脾心肾神失养"</code> → 郁证6证型口诀（+血瘀+肝阴亏=8型）<br>- <code>"痰气郁结半夏朴，柴胡疏肝肝气郁。气郁化火丹逍遥，心脾两虚用归脾。心肾阴虚天王丹，心神失养甘麦枣。滋水清肝肝阴亏"</code> → 郁证方药完整口诀<br>- <code>"龙胆清火涤痰保和血府归脾连阿胶，安神定志交泰酸枣仁"</code> → 不寐9方药速记（肝郁化火=龙胆泻肝/痰热=清火涤痰/胃气不和=保和丸/瘀血=血府逐瘀/心脾两虚=归脾/阴虚火旺=黄连阿胶/心胆气虚=安神定志丸/心肾不交=六味+交泰丸/肝郁血虚=酸枣仁汤）</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>- 郁证和不寐是分值最高的两个疾病（论述题12分）→ 必须掌握完整八层内容：定义→病因病机→辨证要点→各证型症状→治法→方药→心理疗法→其他疗法（音乐/针灸/气功/食疗）<br>- 郁证的核心是"气机郁滞→肝失疏泄"，不寐的核心是"心神失养→心为主导" → 两个疾病的病机重心不同，答题时尤其注意<br>- 了解级6病（脏躁/心悸/梅核气/卑惵/百合病/癫狂）的名解+代表方是性价比最高的记忆策略 → 每个疾病记住"1句话定义+1个代表方"就够拿3分</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接（拔高延伸）</div><p><br>- 🧠 <strong>机制深挖</strong>：郁证为什么从"气郁"开始，最终伤及五脏？→ 气机郁滞→肝失疏泄（第一阶段·肝）→肝郁克脾→脾失健运→气血生化不足（第二阶段·脾）→心失所养→心神失常（第三阶段·心）→日久及肾（第四阶段·肾）。这条"肝→脾→心→肾"的传变链是中医"五脏相关"理论的经典体现。<br>- 🔗 <strong>跨模块串联</strong>：M2的五脏神志论（心主神明/肝主疏泄）↔M5郁证的脏腑传变（肝→脾→心→肾）。M2的情志相胜理论↔M5卑惵的情志相胜+系统脱敏联合治疗。M4的耳穴（神门/皮质下/神经衰弱穴）↔M5不寐的针灸治疗。考试的综合论述题会要求你横跨2-3个模块来回答。<br>- 🏥 <strong>临床推理链</strong>（以典型郁证病例为例）：主诉情绪低落+胸胁胀痛→四诊（望神得神与否/问情志内伤史/切脉弦）→辨病（郁证）→辨虚实（实）→辨脏腑（肝）→辨证型（肝气郁结）→治法（疏肝解郁理气畅中）→方药（柴胡疏肝散）→心理治疗（开导解惑擒纵切入+移精变气）→音乐（角调）→针灸（百会/四神聪/内关）→食疗（玫瑰花茶）→预后（重视情志调护防复发）。这13步推演覆盖了M1-M5的知识点。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 </div> <!-- close module-card -->
 <h2 class="section-title" id="m6">📘 模块6：中医心理养生</h2>
@@ -2133,10 +2101,7 @@ tr:last-child td {
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>✅ 需掌握：治未病 → 中医预防医学思想，包括未病先防（预防疾病发生）和既病防变（已病后防止加重和传变）。M6的养生原则和方法即治未病思想在心理领域的应用</li><li>⚡ 快速补课：子午觉 → 子时（23:00-1:00）和午时（11:00-13:00）入睡，顺应阴阳交替恢复精力。这是"顺应自然"原则在睡眠中的具体体现</li>
 </ul>
-<h3 id="高收益摘要3条" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🎯 高收益摘要（3条）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>中医心理养生=以整体观念和形神理论为指导，结合现代心理学思想，研究维护和增进心身健康的原则和方法（教材§6.1）</li><li>养生六大原则：顺应自然/适应社会/形与神俱/动静合一/神情相应/审因制宜（教材§6.2·X型必考）</li><li>养生六大方法：清静养神/养性调神/节欲守神/怡情畅神/顺时调神/动形怡神（教材§6.3·X型必考）</li>
-</ul>
+<div class="callout callout-info"><div class="callout-title">高收益摘要（3条）</div><p><br>- 中医心理养生=以整体观念和形神理论为指导，结合现代心理学思想，研究维护和增进心身健康的原则和方法（教材§6.1）<br>- 养生六大原则：顺应自然/适应社会/形与神俱/动静合一/神情相应/审因制宜（教材§6.2·X型必考）<br>- 养生六大方法：清静养神/养性调神/节欲守神/怡情畅神/顺时调神/动形怡神（教材§6.3·X型必考）</p></div>
 <h3 id="结构化笔记教材浓缩型" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（教材浓缩型）</h3>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> <strong>【掌握级】养生六大原则</strong>（教材§6.2·X型必考）：</p>
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
@@ -2274,22 +2239,10 @@ tr:last-child td {
 - 三因制宜
 </div>
 </details>
-<h3 id="常见陷阱" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">⚠️ 常见陷阱</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>⚠️ 陷阱：养生六大原则和六大方法混搭出题 → 正确认知：原则=指导方针（顺应/适应/形神/动静/神情/审因），方法=具体操作（清静/养性/节欲/怡情/顺时/动形）。X型题可能把方法混入原则选项中</li><li>⚠️ 陷阱："审因制宜"与"三因制宜"混同 → 正确认知：审因制宜是养生原则之一（侧重情志调理中的个体化），三因制宜是治疗原则之一（侧重临床治疗的个体化）。概念相似但应用场景不同</li>
-</ul>
-<h3 id="记忆口诀" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">💡 记忆口诀</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li><code>"顺应适应形神俱，动静神情审因制"</code> → 六大原则速记</li><li><code>"清养节怡顺动——六神法"</code> → 六大方法速记（清静养神/养性调神/节欲守神/怡情畅神/顺时调神/动形怡神）</li><li><code>"胎变稚成盛衰——六阶段"</code> → 个体保健六阶段速记</li>
-</ul>
-<h3 id="本章小结" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📌 本章小结</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>六大原则和六大方法是性价比最高的X型多选考点 → 背熟12条名称即可覆盖80%的M6考题</li><li>个体保健六阶段强调"从胎儿到老年"的全生命周期心理保健 → 体现中医"治未病"思想</li><li>常用穴位功效（百会/太阳/合谷/膻中/神门/三阴交/内关/太冲）是A1型高频考点 → 知道每个穴位最核心的功效即可</li>
-</ul>
-<h3 id="深度链接拔高延伸" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔗 深度链接（拔高延伸）</h3>
-<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
-<li>🔗 <strong>跨模块串联</strong>：M6的"形与神俱"原则 = M2形神合一论在养生中的具体化。M6的"顺时调神法" = M3四季情志特点（春困/夏中暑/秋悲/冬走低）的应对策略。考试可能问"如何运用形神合一理论指导中医心理养生"，答案需要跨M2和M6。</li><li>🏥 <strong>临床推理链</strong>：体质辨识（M2九分法）→因人制宜（M3三因制宜）→个体化养生方案（M6六阶段+六方法）。如：气郁质青年→成阳期（14-30岁）→怡情畅神法（玫瑰花茶/八段锦）+动形怡神法（有氧运动）+审因制宜（情志调理为主）。</li>
-</ul>
+<div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p><br>- ⚠️ 陷阱：养生六大原则和六大方法混搭出题 → 正确认知：原则=指导方针（顺应/适应/形神/动静/神情/审因），方法=具体操作（清静/养性/节欲/怡情/顺时/动形）。X型题可能把方法混入原则选项中<br>- ⚠️ 陷阱："审因制宜"与"三因制宜"混同 → 正确认知：审因制宜是养生原则之一（侧重情志调理中的个体化），三因制宜是治疗原则之一（侧重临床治疗的个体化）。概念相似但应用场景不同</p></div>
+<div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p><br>- <code>"顺应适应形神俱，动静神情审因制"</code> → 六大原则速记<br>- <code>"清养节怡顺动——六神法"</code> → 六大方法速记（清静养神/养性调神/节欲守神/怡情畅神/顺时调神/动形怡神）<br>- <code>"胎变稚成盛衰——六阶段"</code> → 个体保健六阶段速记</p></div>
+<div class="callout callout-info"><div class="callout-title">本章小结</div><p><br>- 六大原则和六大方法是性价比最高的X型多选考点 → 背熟12条名称即可覆盖80%的M6考题<br>- 个体保健六阶段强调"从胎儿到老年"的全生命周期心理保健 → 体现中医"治未病"思想<br>- 常用穴位功效（百会/太阳/合谷/膻中/神门/三阴交/内关/太冲）是A1型高频考点 → 知道每个穴位最核心的功效即可</p></div>
+<div class="callout callout-note"><div class="callout-title">深度链接（拔高延伸）</div><p><br>- 🔗 <strong>跨模块串联</strong>：M6的"形与神俱"原则 = M2形神合一论在养生中的具体化。M6的"顺时调神法" = M3四季情志特点（春困/夏中暑/秋悲/冬走低）的应对策略。考试可能问"如何运用形神合一理论指导中医心理养生"，答案需要跨M2和M6。<br>- 🏥 <strong>临床推理链</strong>：体质辨识（M2九分法）→因人制宜（M3三因制宜）→个体化养生方案（M6六阶段+六方法）。如：气郁质青年→成阳期（14-30岁）→怡情畅神法（玫瑰花茶/八段锦）+动形怡神法（有氧运动）+审因制宜（情志调理为主）。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h2 id="教材知识点页码索引hc-10" style="font-size:22px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">教材知识点页码索引（HC-10）</h2>
 <div class="table-wrapper"><table>
@@ -2450,27 +2403,27 @@ tr:last-child td {
 <tr>
 <td>心</td>
 <td>君主之官</td>
-<td>《素问》称心为"君主之官，神明出焉"</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">素问</span>称心为"君主之官，神明出焉"</td>
 </tr>
 <tr>
 <td>肝</td>
 <td>将军之官</td>
-<td>《素问》称肝为"将军之官，谋虑出焉"</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">素问</span>称肝为"将军之官，谋虑出焉"</td>
 </tr>
 <tr>
 <td>脾胃</td>
 <td>仓廪之官</td>
-<td>《素问》称脾胃为"仓廪之官，五味出焉"</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">素问</span>称脾胃为"仓廪之官，五味出焉"</td>
 </tr>
 <tr>
 <td>肺</td>
 <td>相傅之官</td>
-<td>《素问》称肺为"相傅之官，治节出焉"</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">素问</span>称肺为"相傅之官，治节出焉"</td>
 </tr>
 <tr>
 <td>肾</td>
 <td>作强之官</td>
-<td>《素问》称肾为"作强之官，伎巧出焉"</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">素问</span>称肾为"作强之官，伎巧出焉"</td>
 </tr>
 </tbody>
 </table></div>
@@ -2490,12 +2443,12 @@ tr:last-child td {
 <tr>
 <td>卑惵</td>
 <td>恐惧症/神经衰弱/心脏神经症</td>
-<td>明代戴思恭《证治要诀》首先命名</td>
+<td>明代戴思恭<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">证治要诀</span>首先命名</td>
 </tr>
 <tr>
 <td>脏躁</td>
 <td>癔症/更年期综合征</td>
-<td>源自张仲景《金匮要略》</td>
+<td>源自张仲景<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">金匮要略</span></td>
 </tr>
 <tr>
 <td>百合病</td>
@@ -2600,7 +2553,7 @@ tr:last-child td {
 <tr>
 <td>开导解惑</td>
 <td>言语开导/说理开导</td>
-<td>起源于《内经》，四步法</td>
+<td>起源于<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">内经</span>，四步法</td>
 </tr>
 <tr>
 <td>情志相胜法</td>
@@ -2734,25 +2687,32 @@ tr:last-child td {
 </main>
 <button id="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>
 <script>
-// Theme Toggle
+// Theme Toggle（三态循环：深海 → 亮 → 暗；默认深海，与 index.html 新站统一）
 const html = document.documentElement;
 const themeToggle = document.getElementById('theme-toggle');
 
+const THEME_ORDER = ['deep', 'light', 'dark'];
+const THEME_NEXT = { deep: 'light', light: 'dark', dark: 'deep' };
+const THEME_ICON = { deep: '\uD83C\uDF0A', light: '\u2600\uFE0F', dark: '\uD83C\uDF19' };  // 图标 = 点击后切换到的主题
+
 function setTheme(theme) {
   html.setAttribute('data-theme', theme);
-  themeToggle.textContent = theme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  themeToggle.textContent = THEME_ICON[THEME_NEXT[theme]] || '\uD83C\uDF19';
   localStorage.setItem('med-review-theme', theme);
 }
 
+const DEFAULT_DARK = false;  // 由 render_review.py --dark 注入替换
 const savedTheme = localStorage.getItem('med-review-theme');
-if (savedTheme) {
+if (savedTheme && THEME_ORDER.indexOf(savedTheme) >= 0) {
   setTheme(savedTheme);
-} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+} else if (DEFAULT_DARK || window.matchMedia('(prefers-color-scheme: dark)').matches) {
   setTheme('dark');
+} else {
+  setTheme('deep');
 }
 
 themeToggle.addEventListener('click', () => {
-  setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  setTheme(THEME_NEXT[html.getAttribute('data-theme')] || 'deep');
 });
 
 // Progress Bar
@@ -2827,26 +2787,32 @@ document.querySelectorAll('.module-card').forEach(card => {
   card.querySelectorAll('.reveal-all-btn').forEach(b => b.remove());
   const blanks = card.querySelectorAll('.fill-blank');
   if (blanks.length === 0) return;
-  const btn = document.createElement('button');
-  btn.className = 'reveal-all-btn';
-  btn.textContent = '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
-  btn.style.cssText = 'display:inline-block;margin:12px 0 0 0;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all var(--transition-fast);';
-  btn.addEventListener('mouseenter',()=>{btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';});
-  btn.addEventListener('mouseleave',()=>{btn.style.background='var(--bg-tertiary)';btn.style.color='var(--text-secondary)';});
-  let revealed = false;
-  btn.addEventListener('click',()=>{
-    revealed = !revealed;
-    blanks.forEach(b => { if(revealed) b.classList.add('revealed'); else b.classList.remove('revealed'); });
-    btn.textContent = revealed ? '\uD83D\uDE48 \u9690\u85CF\u5168\u90E8\u7B54\u6848' : '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
-  });
+  // 2026-08-21 修复：按钮工厂（cloneNode 不复制 addEventListener 监听器，旧实现挂载的是死按钮）
+  function makeBtn() {
+    const btn = document.createElement('button');
+    btn.className = 'reveal-all-btn';
+    btn.textContent = '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+    btn.style.cssText = 'display:inline-block;margin:12px 0 0 0;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all var(--transition-fast);';
+    btn.addEventListener('mouseenter',()=>{btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';});
+    btn.addEventListener('mouseleave',()=>{btn.style.background='var(--bg-tertiary)';btn.style.color='var(--text-secondary)';});
+    let revealed = false;
+    btn.addEventListener('click',()=>{
+      revealed = !revealed;
+      blanks.forEach(b => { if(revealed) b.classList.add('revealed'); else b.classList.remove('revealed'); });
+      btn.textContent = revealed ? '\uD83D\uDE48 \u9690\u85CF\u5168\u90E8\u7B54\u6848' : '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+    });
+    return btn;
+  }
   const recallH = Array.from(card.querySelectorAll('h3')).filter(h=>h.textContent.includes('\u4E3B\u52A8\u56DE\u5FC6'));
-  recallH.forEach(h=>{ let el=h.nextElementSibling; if(el&&el.tagName==='DIV') el.appendChild(btn.cloneNode(true)); });
+  let appended = false;
+  recallH.forEach(h=>{ let el=h.nextElementSibling; if(el){ el.appendChild(makeBtn()); appended = true; } });
+  if(!appended) card.appendChild(makeBtn()); // 无「主动回忆」模块时兜底挂卡片末尾
 });
 
 // Keyboard shortcuts
 document.addEventListener('keydown',(e)=>{
   if(e.key==='t'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body)
-    setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
+    setTheme(THEME_NEXT[html.getAttribute('data-theme')] || 'deep');
   if(e.key==='m'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body&&window.innerWidth<=768)
     sidebar.classList.contains('open')?closeSidebar():openSidebar();
 });

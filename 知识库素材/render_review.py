@@ -114,6 +114,46 @@ CSS = r"""
   --hero-gradient: linear-gradient(135deg, #0a1628 0%, #16233f 50%, #241d40 100%);
 }
 
+[data-theme="deep"] {
+  /* 深海·未来主义（与 index.html 新站风格统一：黑蓝深海 + 玻璃 UI） */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #101113;
+  --bg-tertiary: #1a1c20;
+  --bg-callout: #16181d;
+  --text-primary: rgba(255,255,255,0.92);
+  --text-secondary: rgba(255,255,255,0.60);
+  --text-tertiary: rgba(255,255,255,0.42);
+  --border: rgba(255,255,255,0.12);
+  --border-light: rgba(255,255,255,0.07);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
+  --color-master: #f87171;
+  --color-master-bg: rgba(248,113,113,0.10);
+  --color-master-border: rgba(248,113,113,0.40);
+  --color-familiar: #fbbf24;
+  --color-familiar-bg: rgba(251,191,36,0.10);
+  --color-familiar-border: rgba(251,191,36,0.40);
+  --color-understand: #34d399;
+  --color-understand-bg: rgba(52,211,153,0.10);
+  --color-understand-border: rgba(52,211,153,0.40);
+  --color-warning: #fbbf24;
+  --color-warning-bg: rgba(251,191,36,0.10);
+  --color-warning-border: rgba(251,191,36,0.40);
+  --color-tip: #8ab2ff;
+  --color-tip-bg: rgba(103,153,254,0.10);
+  --color-tip-border: rgba(103,153,254,0.40);
+  --color-info: #679efe;
+  --color-info-bg: rgba(103,153,254,0.10);
+  --color-info-border: rgba(103,153,254,0.40);
+  --color-success: #34d399;
+  --color-success-bg: rgba(52,211,153,0.10);
+  --color-success-border: rgba(52,211,153,0.40);
+  --accent: #679efe;
+  --accent-light: rgba(103,153,254,0.14);
+  --hero-gradient: linear-gradient(135deg, #0a0f1a 0%, #101a2e 50%, #0e1420 100%);
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -694,26 +734,32 @@ tr:last-child td {
 """
 
 JS = r"""
-// Theme Toggle
+// Theme Toggle（三态循环：深海 → 亮 → 暗；默认深海，与 index.html 新站统一）
 const html = document.documentElement;
 const themeToggle = document.getElementById('theme-toggle');
 
+const THEME_ORDER = ['deep', 'light', 'dark'];
+const THEME_NEXT = { deep: 'light', light: 'dark', dark: 'deep' };
+const THEME_ICON = { deep: '\uD83C\uDF0A', light: '\u2600\uFE0F', dark: '\uD83C\uDF19' };  // 图标 = 点击后切换到的主题
+
 function setTheme(theme) {
   html.setAttribute('data-theme', theme);
-  themeToggle.textContent = theme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
+  themeToggle.textContent = THEME_ICON[THEME_NEXT[theme]] || '\uD83C\uDF19';
   localStorage.setItem('med-review-theme', theme);
 }
 
 const DEFAULT_DARK = false;  // 由 render_review.py --dark 注入替换
 const savedTheme = localStorage.getItem('med-review-theme');
-if (savedTheme) {
+if (savedTheme && THEME_ORDER.indexOf(savedTheme) >= 0) {
   setTheme(savedTheme);
 } else if (DEFAULT_DARK || window.matchMedia('(prefers-color-scheme: dark)').matches) {
   setTheme('dark');
+} else {
+  setTheme('deep');
 }
 
 themeToggle.addEventListener('click', () => {
-  setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  setTheme(THEME_NEXT[html.getAttribute('data-theme')] || 'deep');
 });
 
 // Progress Bar
@@ -813,7 +859,7 @@ document.querySelectorAll('.module-card').forEach(card => {
 // Keyboard shortcuts
 document.addEventListener('keydown',(e)=>{
   if(e.key==='t'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body)
-    setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
+    setTheme(THEME_NEXT[html.getAttribute('data-theme')] || 'deep');
   if(e.key==='m'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body&&window.innerWidth<=768)
     sidebar.classList.contains('open')?closeSidebar():openSidebar();
 });
@@ -1294,7 +1340,7 @@ class ReviewRenderer:
 
         html_parts = []
         html_parts.append('<!DOCTYPE html>')
-        html_parts.append('<html lang="zh-CN" data-theme="%s">' % ('dark' if dark_mode else 'light'))
+        html_parts.append('<html lang="zh-CN" data-theme="%s">' % ('dark' if dark_mode else 'deep'))
         html_parts.append('<head>')
         html_parts.append('<meta charset="UTF-8">')
         html_parts.append('<meta name="viewport" content="width=device-width, initial-scale=1.0">')
