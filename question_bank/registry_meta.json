@@ -1,48 +1,113 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-13T23:25:39.761027",
+  "updated_at": "2026-08-21T18:13:48.396793",
   "stats": {
-    "total": 2074,
+    "total": 4296,
     "by_batch": {
-      "batch022": 336,
-      "psychiatry-merged": 331,
+      "batch004": 388,
+      "batch022": 322,
+      "batch006": 301,
       "batch017": 300,
-      "predict": 274,
+      "batch014": 266,
       "batch018": 262,
-      "batch023-ref": 242,
+      "batch009": 260,
+      "batch011": 259,
       "batch019": 240,
-      "batch015": 89
+      "batch016": 222,
+      "batch007": 216,
+      "batch010": 208,
+      "batch008": 207,
+      "psychiatry-merged": 142,
+      "batch020": 117,
+      "batch027": 100,
+      "predict": 98,
+      "batch021": 95,
+      "batch015": 89,
+      "batch023": 70,
+      "batch012": 69,
+      "batch013": 65
     },
     "by_type": {
-      "A1": 877,
-      "A2": 501,
-      "X": 276,
-      "B1": 214,
-      "A3": 115,
-      "判断": 80,
-      "A4": 11
+      "A1": 2033,
+      "A2": 978,
+      "X": 567,
+      "B1": 341,
+      "A3": 216,
+      "判断": 116,
+      "A4": 45
     },
     "by_bloom": {
-      "理解": 473,
-      "记忆": 373,
-      "应用": 350,
-      "未标注": 242,
-      "comprehension": 194,
-      "memory": 192,
-      "application": 153,
-      "分析": 60,
-      "analysis": 37
+      "理解": 1384,
+      "记忆": 1180,
+      "应用": 895,
+      "comprehension": 219,
+      "memory": 210,
+      "分析": 206,
+      "application": 169,
+      "analysis": 33
     },
     "schema_version": 1
   },
   "ignore_pairs": [
     [
+      "batch004",
+      "batch020"
+    ],
+    [
+      "batch007",
+      "psychiatry-merged"
+    ],
+    [
+      "batch009",
+      "batch012"
+    ],
+    [
+      "batch007",
+      "batch023-ref"
+    ],
+    [
+      "batch006",
+      "batch017"
+    ],
+    [
+      "batch011",
+      "predict"
+    ],
+    [
+      "batch012",
+      "batch021"
+    ],
+    [
       "batch022",
       "predict"
     ],
     [
+      "batch009",
+      "batch021"
+    ],
+    [
+      "batch010",
+      "batch021"
+    ],
+    [
       "batch023-ref",
       "psychiatry-merged"
+    ],
+    [
+      "batch009",
+      "batch010"
+    ],
+    [
+      "batch011",
+      "batch022"
+    ],
+    [
+      "batch023",
+      "psychiatry-merged"
+    ],
+    [
+      "batch010",
+      "batch012"
     ]
   ]
 }

@@ -1,53 +1,39 @@
 {
-  "version": "1.1",
-  "generated_at": "2026-06-16T18:00:00+08:00",
+  "version": "2.0",
+  "generated_at": "2026-08-20T18:27:38.606064",
   "files": {
     "上册_试卷": {
       "path": "structured/GS_上册_2024.json",
-      "description": "2024年考研西综真题试卷（纯题目，无答案）",
-      "count": 2641,
+      "description": "考研西综真题试卷 1994-2024（纯题目，无答案；B 型题组共享选项已正确绑定）",
+      "count": 5168,
       "has_answers": false,
       "has_explanations": false
     },
     "下册_精析": {
       "path": "structured/GS_下册_2025_1994.json",
-      "description": "贺银成历年真题精析（2025-1994，含答案+解析）",
-      "count": 2754,
-      "has_answers": true,
-      "has_explanations": true
-    },
-    "CMB_val": {
-      "path": "Layer1_扩展层/CMB_val_280.json",
-      "description": "CMB-val 280题 (FreedomIntelligence/CMB, Apache-2.0)",
-      "count": 280,
-      "has_answers": true,
-      "has_explanations": true
-    },
-    "CMB_clin": {
-      "path": "Layer2_临床推理/CMB_clin_74.json",
-      "description": "CMB-Clin 74例临床推理病例 (FreedomIntelligence/CMB, Apache-2.0)",
-      "count": 74,
+      "description": "贺银成历年真题精析（1994-2025，含答案+解析，无题干/选项）",
+      "count": 4448,
       "has_answers": true,
       "has_explanations": true
     }
   },
-  "total_questions": 5749,
+  "total_questions": 9616,
   "layers": {
     "Layer0_锚定层": {
-      "description": "306西综真题精选（2005-2025）",
+      "description": "306西综真题精选（1994-2025）",
       "source": "真题上册.md + 真题下册.md",
       "target": 500,
-      "current": 2754
+      "current": 4448
     },
     "Layer1_扩展层": {
       "description": "CMB-val + 校内期末高频题",
       "target": 300,
-      "current": 280
+      "current": 0
     },
     "Layer2_临床推理": {
       "description": "临床案例深度推理题",
       "target": 50,
-      "current": 74
+      "current": 0
     }
   }
 }
