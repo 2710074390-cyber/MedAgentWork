@@ -148,20 +148,22 @@ def main():
     args = parser.parse_args()
 
     # ── 1. 加载状态（统一模块，含旧数据迁移）──
-    state, _err = ws.load_state()
+    # v2.0 (2026-08-20 审查修复): 加载失败即中止 —— 此前按空状态继续，
+    # 与第 11 步重载失败一起构成整文件覆写的数据丢失窗口
+    state, err = ws.load_state()
     if state is None:
-        state = {}
+        print(f'  ✗ 状态加载失败: {err}')
+        print('  ✗ 中止（防止空状态覆写丢失全部批次）。')
+        sys.exit(3)
 
     # ── 2. 确定批次 ──
     batch_id = args.batch or state.get('active_batch')
     if not batch_id:
         # 自动推算下一批次号
-        existing = sorted([k for k in state if k.startswith('batch') and k not in ('active_batch', 'system_config')])
-        if existing:
-            num = int(existing[-1].replace('batch', ''))
-            batch_id = f'batch{num+1:03d}'
-        else:
-            batch_id = 'batch006'
+        # v2.0 (审查修复): 按数值排序 + 严格过滤 batch\d{3} —— 此前字典序排序
+        # 在 batch099/100 并存时推出已存在的批次，且 batchXXX-ref 类键会 int() 崩溃
+        nums = sorted(int(k[5:]) for k in state if re.fullmatch(r'batch\d{3}', k))
+        batch_id = f'batch{max(nums, default=0) + 1:03d}'
         print(f'  ℹ️  未指定批次，自动使用: {batch_id}')
 
     # ── 3. 确定阶段 ──
@@ -353,10 +355,14 @@ def main():
     # v1.2 (2026-08-13): ingest 作为子进程已更新过 workflow_state.json
     # （血缘/steps/md5）。必须重新加载磁盘上的最新 state 再写，
     # 否则会用旧副本覆写、丢失 ingest 刚写入的血缘记录（lost-update）。
-    state, _ = ws.load_state()
+    state, err = ws.load_state()
     if state is None:
-        state = {}
-        print(f'  ⚠️ 重新加载 state 失败，保留内存副本')
+        # v2.0 (2026-08-20 审查修复): 重载失败立即中止 —— 此前用空 dict 覆写
+        # 整个 workflow_state.json（全部批次状态与血缘静默丢失）
+        print(f'  ✗ 重新加载 state 失败: {err}')
+        print('  ✗ 中止保存（防止空状态覆写丢失全部批次）。')
+        print('    如确认需要重建，请先备份 workflow_state.json 再手动处理。')
+        sys.exit(3)
     state['active_batch'] = batch_id
     ws.save_state(state)
 

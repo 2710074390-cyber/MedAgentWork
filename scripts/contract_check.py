@@ -17,79 +17,43 @@ from datetime import datetime, timezone, timedelta
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 BASE = Path(__file__).parent.parent
-SCHEMAS_FILE = BASE / 'schemas' / 'agent_contracts.json'
+# v2.0 (2026-08-20 审查修复): 契约单一事实源收敛 —— 此前读 schemas/agent_contracts.json
+# （旧合并契约，与 *_output.schema.json 漂移，对真实 batch027 全量误报 120 错误）。
+# 现在直接读 ingest.py 实际校验用的 schemas/{agent}_output.schema.json。
+SCHEMA_FILES = {
+    'agent2_output': 'agent2_output.schema.json',
+    'agent3_output': 'agent3_output.schema.json',
+    'agent4_output': 'agent4_output.schema.json',
+}
 CST = timezone(timedelta(hours=8))
 
 
 def load_schemas():
-    with open(SCHEMAS_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
+    out = {}
+    for key, fname in SCHEMA_FILES.items():
+        p = BASE / 'schemas' / fname
+        if p.exists():
+            with open(p, 'r', encoding='utf-8') as f:
+                out[key] = json.load(f)
+    return out
 
 
 def validate_against_schema(data, schema, path=""):
-    """递归验证 data 是否符合 schema (简化版 JSON Schema validator)"""
-    errors = []
+    """用 jsonschema Draft7 校验，返回错误字符串列表。
 
-    if not isinstance(data, dict):
-        return [f"{path}: 期望 object, 实际 {type(data).__name__}"]
-
-    # 检查 required 字段
-    for req in schema.get('required', []):
-        if req not in data:
-            errors.append(f"{path}: 缺少必填字段 '{req}'")
-
-    # 检查属性类型和约束
-    for prop, prop_schema in schema.get('properties', {}).items():
-        if prop not in data:
-            continue
-        value = data[prop]
-        prop_path = f"{path}.{prop}" if path else prop
-
-        expected_type = prop_schema.get('type')
-        if expected_type:
-            if expected_type == 'array' and not isinstance(value, list):
-                errors.append(f"{prop_path}: 期望 array, 实际 {type(value).__name__}")
-            elif expected_type == 'number' and not isinstance(value, (int, float)):
-                # 允许字符串形式的数字 (Agent 经常输出 "7.5" 而不是 7.5)
-                if isinstance(value, str):
-                    try:
-                        float(value)
-                    except ValueError:
-                        errors.append(f"{prop_path}: 期望 number, 实际 '{value}'")
-            elif expected_type == 'integer' and not isinstance(value, int):
-                if isinstance(value, str):
-                    try:
-                        int(value)
-                    except ValueError:
-                        errors.append(f"{prop_path}: 期望 integer, 实际 '{value}'")
-            elif expected_type == 'boolean' and not isinstance(value, bool):
-                errors.append(f"{prop_path}: 期望 boolean, 实际 {type(value).__name__}")
-            elif expected_type == 'string' and not isinstance(value, str):
-                errors.append(f"{prop_path}: 期望 string, 实际 {type(value).__name__}")
-
-        # Enum 约束
-        enum_vals = prop_schema.get('enum')
-        if enum_vals and value not in enum_vals:
-            errors.append(f"{prop_path}: '{value}' 不在允许值 {enum_vals} 中")
-
-        # Pattern 约束
-        pattern = prop_schema.get('pattern')
-        if pattern and isinstance(value, str):
-            import re
-            if not re.match(pattern, value):
-                errors.append(f"{prop_path}: '{value}' 不匹配 pattern '{pattern}'")
-
-        # 数值范围
-        minimum = prop_schema.get('minimum')
-        if minimum is not None and isinstance(value, (int, float)):
-            if value < minimum:
-                errors.append(f"{prop_path}: {value} < 最小值 {minimum}")
-        maximum = prop_schema.get('maximum')
-        if maximum is not None and isinstance(value, (int, float)):
-            if value > maximum:
-                errors.append(f"{prop_path}: {value} > 最大值 {maximum}")
-
-    return errors
+    v2.0 (2026-08-20 审查修复): 弃用自研简化校验器（不支持 anyOf/items/$ref，
+    且 bool 是 int 子类等误放行），直接复用与 ingest 相同的标准实现。
+    """
+    try:
+        import jsonschema
+    except ImportError:
+        return [f'{path or "$"}: jsonschema 未安装，无法校验']
+    try:
+        jsonschema.Draft7Validator(schema).validate(data)
+        return []
+    except jsonschema.ValidationError as e:
+        loc = '/'.join(str(p) for p in e.path) or path or '$'
+        return [f'{loc}: {e.message}']
 
 
 def find_agent_output(batch_id, agent_id):
@@ -189,7 +153,9 @@ def check_agent3(batch_id):
         'agent': 'agent3',
         'batch': batch_id,
         'file': str(filepath),
-        'status': 'PASS' if not errors else 'WARN',
+        # v2.0 (2026-08-20 审查修复): 契约违反此前只报 WARN 永不 FAIL，
+        # 无法作为门禁；契约不符即 FAIL
+        'status': 'PASS' if not errors else 'FAIL',
         'errors': errors,
     }
 
@@ -229,7 +195,8 @@ def check_agent4(batch_id):
         'batch': batch_id,
         'file': str(filepath),
         'source_file_synced': synced,
-        'status': 'PASS' if not errors else 'WARN',
+        # v2.0 (2026-08-20 审查修复): HC-13 溯源违反是硬门禁，必须 FAIL
+        'status': 'PASS' if not errors else 'FAIL',
         'errors': errors,
     }
 
@@ -297,7 +264,10 @@ def main():
     args = parser.parse_args()
 
     if args.all:
-        check_all()
+        results = check_all()
+        # v2.0 (2026-08-20 审查修复): 有 FAIL 即非零退出 —— 此前恒 exit 0，
+        # 无法用于任何门禁/CI
+        sys.exit(1 if any(r['status'] == 'FAIL' for r in results) else 0)
     elif args.agent and args.batch:
         if args.agent == 'agent2':
             r = check_agent2(args.batch)
@@ -310,6 +280,7 @@ def main():
         if r.get('errors'):
             for e in r['errors'][:10]:
                 print(f"  ↳ {e}")
+        sys.exit(1 if r['status'] == 'FAIL' else 0)
     else:
         parser.print_help()
 

@@ -6,7 +6,9 @@ from collections import Counter
 from datetime import datetime
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-BASE = Path(__file__).parent
+# v2.0 (2026-08-20 审查修复): BASE 必须指向仓库根 —— 此前 Path(__file__).parent
+# 指向 scripts/ 自身，--batch 模式拼出 scripts/最终产物/... 必然报"找不到批次"
+BASE = Path(__file__).resolve().parent.parent
 
 DEFAULT_TARGET = {'记忆': 30.0, '理解': 40.0, '应用': 25.0, '分析': 5.0}
 BLOOM_ALIASES = {

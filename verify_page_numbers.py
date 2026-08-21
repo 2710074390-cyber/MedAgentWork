@@ -231,6 +231,9 @@ def main():
     args = parser.parse_args()
 
     ran_something = False
+    # v2.0 (2026-08-20 审查修复): 全程跟踪 FAIL —— 此前 main 无退出码，
+    # 无法作为门禁判定依据；终审接入本脚本后按退出码判定
+    has_fail = False
 
     # ── 索引检查 ──
     if args.all:
@@ -240,6 +243,8 @@ def main():
             r = check(code)
             status = r.get("status", "?")
             icon = "✓" if status == "OK" else ("⚠️" if status == "WARN" else "✗")
+            if status not in ("OK", "WARN"):
+                has_fail = True
             print(f"  {icon} {name:8s} → {status} {r.get('source', r.get('note',''))}")
 
     elif args.subject:
@@ -247,6 +252,8 @@ def main():
         code = SUBJECT_TO_CODE.get(args.subject, args.subject)
         r = check(code)
         print(json.dumps(r, ensure_ascii=False, indent=2))
+        if r.get("status") not in ("OK", "WARN"):
+            has_fail = True
         if r.get("status") == "WARN":
             print(f"\n⚠️ 该科目索引使用 PDF 阅读器页码，非教材印刷页码！")
             if r.get("estimated_offset"):
@@ -263,6 +270,8 @@ def main():
         for r in results:
             status = r["status"]
             icon = "✓" if status == "OK" else ("⚠️" if "NO_APPENDIX" in status else "✗")
+            if status == "FAIL":
+                has_fail = True
             print(f"  {icon} {r['file']}: {status}")
             if "issues" in r:
                 for issue in r["issues"]:
@@ -283,6 +292,8 @@ def main():
                 for r in results:
                     status = r["status"]
                     icon = "✓" if status == "OK" else ("⚠️" if "NO_APPENDIX" in status else "✗")
+                    if status == "FAIL":
+                        has_fail = True
                     extra = ""
                     if r.get("most_common"):
                         extra = f" ({r['most_common']})"
@@ -295,6 +306,8 @@ def main():
         r = check_syllabus_pages(args.check_syllabus_pages)
         status = r["status"]
         icon = "✓" if status == "OK" else "✗"
+        if status == "FAIL":
+            has_fail = True
         print(f"  {icon} {r['file']}: {status}")
         if status == "FAIL":
             print(f"      共{r['total_rows']}行，其中{r['missing_count']}行缺少教材页码")
@@ -307,6 +320,9 @@ def main():
 
     if not ran_something:
         parser.print_help()
+
+    # v2.0 (2026-08-20 审查修复): 任一检查 FAIL → exit 1（可接入 gate_check 终审）
+    sys.exit(1 if has_fail else 0)
 
 
 if __name__ == "__main__":

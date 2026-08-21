@@ -230,6 +230,16 @@ FORBIDDEN_PATTERNS = [
 NEGATION_WORDS = r'(?<!\*{2})(?:不包括|不正确|错误|不属于|不是|除外|哪项不对|哪项错|描述错)(?!\*{2})'
 
 
+def _is_x_type(t):
+    """X 型判定：兼容 'X'/'X型'/'X型题' 三种历史写法（真实数据为 'X'）。
+
+    v2.1 (2026-08-20 审查修复): 此前 R7/R8/R9 只认 'X型'、R10/R11/R13 认
+    ('X','X型') —— 同一规则是否生效取决于题型写法，真实 'X' 数据会被
+    R7/R8/R9 误检（截断/缺单位误报）。统一经此函数判定。
+    """
+    return str(t or '').strip() in ('X', 'X型', 'X型题')
+
+
 def check_r1_forbidden(q):
     """R1: 禁止项检测"""
     issues = []
@@ -365,7 +375,7 @@ def check_r5_option_count(q):
                 'target': f"{q['id']}.options",
                 'detail': f'{qtype}型题应有5个选项，实际{count}个',
             })
-    elif qtype == 'X':
+    elif _is_x_type(qtype):
         if count < 4:
             issues.append({
                 'rule': 'R5',
@@ -427,7 +437,8 @@ def check_r7_truncation(q):
     - 选项为单字+句号（如"致.化.破.一."，严重截断）
     """
     issues = []
-    if q['type'] == 'X型':
+    # v2.1: 统一经 _is_x_type 判定（此前只认 'X型'，真实 'X' 数据被误检）
+    if _is_x_type(q['type']):
         return issues
 
     for letter, text in q.get('options', {}).items():
@@ -474,7 +485,7 @@ def check_r8_min_length(q):
     - 排除：纯数值选项（如"5%"）、合理短术语（如精神科症状名）
     """
     issues = []
-    if q['type'] == 'X型':
+    if _is_x_type(q['type']):
         return issues
 
     # Known short psychiatric terms that are legitimate
@@ -544,12 +555,16 @@ def check_r9_missing_unit(q):
     排除：纯数字ID、页码引用(P123)、年份(2024年)、百分比已有%标记
     """
     issues = []
-    if q['type'] == 'X型':
+    if _is_x_type(q['type']):
         return issues
 
     # ── 临床参数缩写列表（通常后跟单位 %/mmHg/cmH2O 等）──
+    # v2.1 (2026-08-20 审查修复): 'FEV1/FVC' 复合参数必须排在 'FEV1'/'FVC' 之前，
+    # 且 'FVC' 单独匹配时加负向后顾排除 'FEV1/FVC' —— 此前 'FVC' 先命中
+    # 'FEV1/FVC<0.7' 的子串，把无量纲比值误判为 FVC 缺单位 FAIL（假阳性，
+    # 实测复现；COPD 标准诊断表述被硬阻断，甚至诱导 Agent4 劣化正确内容）
     clinical_params = [
-        'LVEF', 'FEV1', 'FVC', 'FEV1/FVC', 'PaO2', 'PaCO2', 'SaO2', 'SpO2',
+        'FEV1/FVC', 'LVEF', 'FEV1', 'FVC', 'PaO2', 'PaCO2', 'SaO2', 'SpO2',
         'PEF', 'TLC', 'RV', 'DLCO', 'BNP', 'NT-proBNP', 'HbA1c',
         'INR', 'PT', 'APTT', 'TT', 'D-二聚体',
         'CRP', 'ESR', 'PCT', 'CK-MB', 'cTnI', 'cTnT', 'ALT', 'AST',
@@ -593,14 +608,22 @@ def check_r9_missing_unit(q):
         # Check 1: 临床参数 + 比较符 + 数值 + (缺单位)
         for param in clinical_params:
             # Pattern: LVEF<40, PaO2<60, FEV1≤80
-            param_pattern = re.compile(
-                rf'{param}\s*[<>≤≥]?\s*(\d+\.?\d*)\s*(?![％%]|mm\s*Hg|cm\s*H2O|mmHg)'
-            )
+            # v2.1: 'FVC' 加负向后顾 (?<!FEV1/)，避免命中 'FEV1/FVC' 复合参数内的 'FVC'
+            if param == 'FVC':
+                param_pattern = re.compile(
+                    r'(?<!FEV1/)FVC\s*[<>≤≥]?\s*(\d+\.?\d*)\s*(?![％%]|mm\s*Hg|cm\s*H2O|mmHg)'
+                )
+            else:
+                param_pattern = re.compile(
+                    rf'{param}\s*[<>≤≥]?\s*(\d+\.?\d*)\s*(?![％%]|mm\s*Hg|cm\s*H2O|mmHg)'
+                )
             m = param_pattern.search(stripped)
             if m:
                 num_val = m.group(1)
-                # 跳过小数（如 FEV1/FVC 0.7 是比值）
-                if param in ('FEV1/FVC',) and float(num_val) < 10:
+                # 跳过小数（如 FEV1/FVC 0.7 是比值，无量纲）
+                # v2.1: 继续检查其余参数（'FVC' 子串误报已由 (?<!FEV1/) 负向后顾排除，
+                # 同一选项内其他参数如 PaO2 缺单位仍应被检出）
+                if param == 'FEV1/FVC' and float(num_val) < 10:
                     continue
                 expected_unit = '%' if param in ('LVEF', 'FEV1', 'FVC', 'FEV1/FVC', 'PEF', 'TLC', 'RV', 'DLCO', 'HbA1c') else 'mmHg'
                 # Check 1a: 临床参数缩写在比较符后缺单位 → 明确事实错误 → FAIL
@@ -1646,7 +1669,9 @@ def main():
 
         all_issues, summary = validate_questions(all_questions, args.verbose, mode=args.mode, filepath=str(files[0]))
         print_report(all_issues, summary, files[0])
-        save_json_report(all_issues, summary, files[0], args.batch)
+        # v2.1 (2026-08-20 审查修复): 批次模式此前漏传 mode → 报告元数据 check_mode
+        # 恒写 "basic" 而实际跑的是 full，审计失真
+        save_json_report(all_issues, summary, files[0], args.batch, mode=args.mode)
 
         if summary['fail'] > 0 or summary['warn'] > 0:
             had_issues = True

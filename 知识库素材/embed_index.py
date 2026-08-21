@@ -417,6 +417,12 @@ def process_pdf(pdf_path, subject, subject_code, config=None):
 # ─── 嵌入与存储 ───────────────────────────────────────
 
 def embed_and_store(chunks, subject_code, api_key):
+    """嵌入并存储。返回 (embeddings, failed_batches)。
+
+    v1.1 (2026-08-20 审查修复 C4): 此前批次嵌入失败被静默丢弃且 manifest 仍标
+    indexed —— 部分索引被当完整索引服务（欠费/抖动后 KB 静默残缺）。
+    现在：失败批次计数并告警；全部失败则抛错不写盘；meta/npy 原子写。
+    """
     print(f"\n[EMBED] Starting ({subject_code})...")
 
     META_DIR.mkdir(parents=True, exist_ok=True)
@@ -424,6 +430,7 @@ def embed_and_store(chunks, subject_code, api_key):
 
     total = len(chunks)
     embeddings = []
+    failed_batches = 0
 
     for i in range(0, total, BATCH_SIZE):
         batch = chunks[i:i+BATCH_SIZE]
@@ -436,6 +443,7 @@ def embed_and_store(chunks, subject_code, api_key):
                 embeddings.append(item)
         except Exception as e:
             print(f"  [FAIL] batch {i//BATCH_SIZE}: {e}")
+            failed_batches += 1
             continue
 
         progress = min(i+BATCH_SIZE, total)
@@ -443,29 +451,40 @@ def embed_and_store(chunks, subject_code, api_key):
         if i + BATCH_SIZE < total:
             time.sleep(0.15)
 
-    # 写入 JSONL (不含向量，向量单独存)
-    with open(meta_file, "w", encoding="utf-8") as f:
+    if failed_batches:
+        print(f"  ⚠️ {failed_batches}/{max(1, (total+BATCH_SIZE-1)//BATCH_SIZE)} 个批次嵌入失败"
+              f" → 生成的是 partial 索引（{len(embeddings)}/{total} chunks），"
+              f"manifest 将标注 status=partial，检索端会告警")
+    if not embeddings:
+        raise RuntimeError(f"{subject_code}: 全部批次嵌入失败，未写入任何数据（索引保持原状）")
+
+    # 原子写 JSONL（v1.1: tmp + os.replace，避免半写损坏）
+    tmp_meta = meta_file.with_name(meta_file.name + '.tmp')
+    with open(tmp_meta, "w", encoding="utf-8") as f:
         for item in embeddings:
             meta = item["meta"].copy()
             meta["text"] = item["text"]
             f.write(json.dumps(meta, ensure_ascii=False) + "\n")
+    os.replace(tmp_meta, meta_file)
 
-    # 向量存为 numpy
+    # 向量存为 numpy（原子写）
     import numpy as np
     vecs_array = np.array([item["embedding"] for item in embeddings], dtype=np.float32)
     vec_file = INDEX_STORE / subject_code / "embeddings.npy"
     vec_file.parent.mkdir(parents=True, exist_ok=True)
-    np.save(vec_file, vecs_array)
+    tmp_vec = vec_file.with_name(vec_file.name + '.tmp')
+    np.save(tmp_vec, vecs_array)
+    os.replace(tmp_vec, vec_file)
 
     print(f"  [OK] Stored: {len(embeddings)} items")
     print(f"       Metadata: {meta_file}")
     print(f"       Vectors:   {vec_file}")
-    return embeddings
+    return embeddings, failed_batches
 
 
 # ─── 索引清单 ────────────────────────────────────────
 
-def update_manifest(subject_code, subject, chunk_count, pdf_path, config=None):
+def update_manifest(subject_code, subject, chunk_count, pdf_path, config=None, status="indexed"):
     INDEX_STORE.mkdir(parents=True, exist_ok=True)
     manifest_path = INDEX_STORE / "index_manifest.json"
 
@@ -476,7 +495,9 @@ def update_manifest(subject_code, subject, chunk_count, pdf_path, config=None):
 
     entry = {
         "subject": subject,
-        "status": "indexed",
+        # v1.1 (2026-08-20 审查修复 C4): status 支持 'indexed' / 'partial'
+        # （部分批次嵌入失败时由调用方传入 'partial'，检索端据此告警）
+        "status": status,
         "chunk_count": chunk_count,
         "source_file": pdf_path.name,
         "model": EMBED_MODEL,
@@ -584,8 +605,11 @@ def main():
             if not chunks:
                 print(f"  [WARN] No chunks extracted")
                 continue
-            embed_and_store(chunks, code, api_key)
-            update_manifest(code, subject, len(chunks), pdf_path, subj_config)
+            embeddings, failed_batches = embed_and_store(chunks, code, api_key)
+            # v1.1 (2026-08-20 审查修复 C4): chunk_count 用实际入库数（此前用处理前
+            # 总数，部分失败时 manifest 虚报）；status 标注 partial
+            status = 'partial' if failed_batches else 'indexed'
+            update_manifest(code, subject, len(embeddings), pdf_path, subj_config, status=status)
         except Exception as e:
             import traceback
             print(f"\n[FAIL] {subject}: {e}")

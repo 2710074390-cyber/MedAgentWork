@@ -72,6 +72,7 @@ CSS = r"""
   --color-success-border: #6ee7b7;
   --accent: #2563eb;
   --accent-light: #dbeafe;
+  --hero-gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
   --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
   --font-mono: "SF Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
   --line-height: 1.8;
@@ -110,6 +111,7 @@ CSS = r"""
   --color-success-bg: #0a2e1f;
   --color-success-border: #1a4a30;
   --accent-light: #1a2e4a;
+  --hero-gradient: linear-gradient(135deg, #0a1628 0%, #16233f 50%, #241d40 100%);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -265,7 +267,7 @@ body {
 
 /* Hero Banner */
 .hero-banner {
-  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
+  background: var(--hero-gradient);
   border-radius: 16px;
   padding: 36px 40px;
   margin-bottom: 40px;
@@ -633,8 +635,9 @@ tr:last-child td {
     color: #1a1a2e;
   }
   body { font-size: 12px; background: #fff; }
-  .accordion[open] .accordion-body { display: block !important; }
-  .accordion:not([open]) .accordion-body { display: none !important; }
+  /* 打印折叠展开（2026-08-21 修复）：全部折叠区强制展开，避免打印丢内容 */
+  .accordion .accordion-body { display: block !important; }
+  .accordion:not([open]) > .accordion-body { display: block !important; }
   .fill-blank { color: var(--color-understand); border-bottom: 1px solid #999; }
   .fill-blank::after { display: none; }
 }
@@ -701,10 +704,11 @@ function setTheme(theme) {
   localStorage.setItem('med-review-theme', theme);
 }
 
+const DEFAULT_DARK = false;  // 由 render_review.py --dark 注入替换
 const savedTheme = localStorage.getItem('med-review-theme');
 if (savedTheme) {
   setTheme(savedTheme);
-} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+} else if (DEFAULT_DARK || window.matchMedia('(prefers-color-scheme: dark)').matches) {
   setTheme('dark');
 }
 
@@ -784,20 +788,26 @@ document.querySelectorAll('.module-card').forEach(card => {
   card.querySelectorAll('.reveal-all-btn').forEach(b => b.remove());
   const blanks = card.querySelectorAll('.fill-blank');
   if (blanks.length === 0) return;
-  const btn = document.createElement('button');
-  btn.className = 'reveal-all-btn';
-  btn.textContent = '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
-  btn.style.cssText = 'display:inline-block;margin:12px 0 0 0;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all var(--transition-fast);';
-  btn.addEventListener('mouseenter',()=>{btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';});
-  btn.addEventListener('mouseleave',()=>{btn.style.background='var(--bg-tertiary)';btn.style.color='var(--text-secondary)';});
-  let revealed = false;
-  btn.addEventListener('click',()=>{
-    revealed = !revealed;
-    blanks.forEach(b => { if(revealed) b.classList.add('revealed'); else b.classList.remove('revealed'); });
-    btn.textContent = revealed ? '\uD83D\uDE48 \u9690\u85CF\u5168\u90E8\u7B54\u6848' : '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
-  });
+  // 2026-08-21 修复：按钮工厂（cloneNode 不复制 addEventListener 监听器，旧实现挂载的是死按钮）
+  function makeBtn() {
+    const btn = document.createElement('button');
+    btn.className = 'reveal-all-btn';
+    btn.textContent = '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+    btn.style.cssText = 'display:inline-block;margin:12px 0 0 0;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all var(--transition-fast);';
+    btn.addEventListener('mouseenter',()=>{btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';});
+    btn.addEventListener('mouseleave',()=>{btn.style.background='var(--bg-tertiary)';btn.style.color='var(--text-secondary)';});
+    let revealed = false;
+    btn.addEventListener('click',()=>{
+      revealed = !revealed;
+      blanks.forEach(b => { if(revealed) b.classList.add('revealed'); else b.classList.remove('revealed'); });
+      btn.textContent = revealed ? '\uD83D\uDE48 \u9690\u85CF\u5168\u90E8\u7B54\u6848' : '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+    });
+    return btn;
+  }
   const recallH = Array.from(card.querySelectorAll('h3')).filter(h=>h.textContent.includes('\u4E3B\u52A8\u56DE\u5FC6'));
-  recallH.forEach(h=>{ let el=h.nextElementSibling; if(el&&el.tagName==='DIV') el.appendChild(btn.cloneNode(true)); });
+  let appended = false;
+  recallH.forEach(h=>{ let el=h.nextElementSibling; if(el){ el.appendChild(makeBtn()); appended = true; } });
+  if(!appended) card.appendChild(makeBtn()); // 无「主动回忆」模块时兜底挂卡片末尾
 });
 
 // Keyboard shortcuts
@@ -1159,7 +1169,15 @@ class ReviewRenderer:
             tag = f'h{level}'
             font_sizes = {1: '28px', 2: '22px', 3: '16px', 4: '14px', 5: '13px', 6: '12px'}
             fs = font_sizes.get(level, '14px')
-            return f'<{tag} id="{sid}" style="font-size:{fs};margin:{24 if level<=2 else 16}px 0 {8 if level<=2 else 6}px;color:var(--text-primary);font-weight:700">{self.parse_inline(text)}</{tag}>', i + 1
+            # 重要性 emoji 标题（#### 🔴【掌握级】…）→ badge + 剥离 emoji 的标题
+            imp_head = re.match(r'^(🔴|🟡|🟢)\s*(.+)', text)
+            badge_html = ''
+            if imp_head:
+                bmap = {'🔴': ('imp-master', '掌握'), '🟡': ('imp-familiar', '熟悉'), '🟢': ('imp-understand', '了解')}
+                bcls, btxt = bmap[imp_head.group(1)]
+                badge_html = f'<span class="importance-badge {bcls}">{btxt}</span> '
+                text = imp_head.group(2).strip()
+            return f'<{tag} id="{sid}" style="font-size:{fs};margin:{24 if level<=2 else 16}px 0 {8 if level<=2 else 6}px;color:var(--text-primary);font-weight:700">{badge_html}{self.parse_inline(text)}</{tag}>', i + 1
 
         # Callout detection (⚠️, 💡, 🎯, etc.)
         callout_match = re.match(r'^(⚠️|💡|🎯|✅|❌|⚡|🧩|🔄|📊|📌|🔗|🧠|🏥)\s*(.+)', line)
@@ -1265,7 +1283,7 @@ class ReviewRenderer:
 
         return '\n'.join(result)
 
-    def convert(self) -> str:
+    def convert(self, dark_mode: bool = False) -> str:
         """完整转换 MD → HTML"""
         self.extract_metadata()
         self.build_sidebar()
@@ -1276,7 +1294,7 @@ class ReviewRenderer:
 
         html_parts = []
         html_parts.append('<!DOCTYPE html>')
-        html_parts.append('<html lang="zh-CN" data-theme="light">')
+        html_parts.append('<html lang="zh-CN" data-theme="%s">' % ('dark' if dark_mode else 'light'))
         html_parts.append('<head>')
         html_parts.append('<meta charset="UTF-8">')
         html_parts.append('<meta name="viewport" content="width=device-width, initial-scale=1.0">')
@@ -1377,7 +1395,9 @@ class ReviewRenderer:
         html_parts.append('<button id="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>')
 
         # JavaScript
-        html_parts.append(f'<script>{JS}</script>')
+        js = JS.replace('const DEFAULT_DARK = false;',
+                        'const DEFAULT_DARK = %s;' % str(dark_mode).lower())
+        html_parts.append(f'<script>{js}</script>')
 
         html_parts.append('</body>')
         html_parts.append('</html>')
@@ -1421,7 +1441,7 @@ def main():
     # Render
     print(f'📖 读取: {input_path}')
     renderer = ReviewRenderer(input_path)
-    html_content = renderer.convert()
+    html_content = renderer.convert(dark_mode=args.dark)
 
     # Write
     output_path.parent.mkdir(parents=True, exist_ok=True)

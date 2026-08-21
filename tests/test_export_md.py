@@ -69,6 +69,42 @@ def test_export_md_non_bank_file():
         assert out is None and n == 0
 
 
+# v1.2 (2026-08-20 审查修复): X 型多选答案逐字母 ✅ 标记
+# （此前 _norm_answer 把 'ABD' 截断为 'A'，交付 MD 只给 A 打 ✅ 自相矛盾）
+
+def test_export_md_x_type_all_letters_marked():
+    with tempfile.TemporaryDirectory() as tmp:
+        questions = [
+            {'id': 'X1', 'module': 'M1', 'type': 'X', 'bloom_level': '记忆',
+             'stem': '慢阻肺急性加重期的治疗包括？',
+             'options': [{'label': 'A', 'text': '支气管扩张剂'}, {'label': 'B', 'text': '糖皮质激素'},
+                         {'label': 'C', 'text': '氧疗'}, {'label': 'D', 'text': '机械通气'},
+                         {'label': 'E', 'text': '常规预防性抗真菌治疗'}],
+             'answer': 'ABCD', 'explanation': 'ABCD 均为加重期治疗。', 'source_pages': 'P55'},
+        ]
+        src = _mk(tmp, 'q.json', questions)
+        out = str(Path(tmp) / 'q.md')
+        outpath, n = qbank.export_md(str(src), out, title='测试题库')
+        assert n == 1
+        md = Path(outpath).read_text(encoding='utf-8')
+        assert '**A. 支气管扩张剂** ✅' in md
+        assert '**B. 糖皮质激素** ✅' in md
+        assert '**C. 氧疗** ✅' in md
+        assert '**D. 机械通气** ✅' in md
+        assert '- E. 常规预防性抗真菌治疗' in md      # 非正确选项不打 ✅
+        assert '**答案：ABCD**' in md                  # 与 ✅ 标记一致
+
+
+def test_norm_answer_multi_letter_and_compound():
+    assert qbank._norm_answer('ABD') == 'ABD'
+    assert qbank._norm_answer('答案：ABC') == 'ABC'
+    assert qbank._norm_answer(['A', 'C']) == 'AC'     # 列表形态
+    assert qbank._norm_answer('E/A') == 'E/A'         # B1 复合答案保持原样
+    assert qbank._norm_answer('A') == 'A'
+    assert qbank._norm_answer('正确') == '正'          # 非字母答案行为不变
+    assert qbank._norm_answer('') == ''
+
+
 # ── rehome / 归档感知 ──
 
 def _mk_question(tmp, rel):

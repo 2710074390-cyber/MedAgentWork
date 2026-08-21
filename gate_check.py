@@ -22,7 +22,7 @@
   exit 1 = GATE_BLOCKED（必须修复后重试）
   exit 2 = GATE_FAIL（脚本/数据错误）
 """
-import sys, json, re, argparse
+import sys, json, re, argparse, subprocess
 from pathlib import Path
 from datetime import datetime
 
@@ -129,12 +129,14 @@ def normalize_batch(batch_data):
     normalized['steps']['AGENT5'] = agent5
 
     # ── final_review 标准化 ──
+    # v2.0 (2026-08-20 审查修复): 缺失时不再自动补 'OK'/True —— 此前空批次
+    # final_review=null 也会被 normalize 补 'OK' 后通过终审（fail-open）。
     if isinstance(fr, dict):
         normalized['final_review'] = {
             'hc9': fr.get('hc9_terminology_appendix', ''),
             'hc10': fr.get('hc10_page_authenticity', ''),
             'hc11': fr.get('hc11_outline_page_marking', ''),
-            'json_valid': fr.get('json_valid', True),
+            'json_valid': fr.get('json_valid'),
         }
     elif isinstance(fr, str):
         # batch005-008: final_review 是字符串描述
@@ -147,18 +149,17 @@ def normalize_batch(batch_data):
             'json_valid': True,
         }
     else:
-        # 完全缺失：尝试从 AGENT5 的 hc_checks/terminology 字符串提取
+        # 完全缺失：仅透传 AGENT5 实际记录的字符串，不再凭空推断
         a5_hc = agent5.get('hc_checks', {}) if isinstance(agent5, dict) else {}
         if not a5_hc:
-            # 从 AGENT5 的 output 字符串或 hc9_terminology 字符串推断
             hc9_str = agent5.get('hc9_terminology', '')
             hc10_str = agent5.get('hc10_pages', '')
             hc11_str = agent5.get('hc11_sources', '')
             normalized['final_review'] = {
-                'hc9': hc9_str if hc9_str else 'OK' if '已生成' in str(agent5.get('output', '')) else '',
-                'hc10': hc10_str if hc10_str else 'OK' if '页码' in str(agent5.get('output', '')) else '',
-                'hc11': hc11_str if hc11_str else 'OK',
-                'json_valid': True,
+                'hc9': str(hc9_str or ''),
+                'hc10': str(hc10_str or ''),
+                'hc11': str(hc11_str or ''),
+                'json_valid': None,   # 缺失 → 终审按 fail-closed 阻断
             }
 
     return normalized
@@ -201,10 +202,18 @@ def find_qc_report(batch_id):
     candidates = [
         report_dir / f'{batch_id}_质检报告.json',
         report_dir / f'{batch_id}_质检报告_v3.json',
+        # medqc skill 约定：质检报告/{batchID}/A3_质检报告.json（子目录形态，
+        # v2.0 审查修复补搜 —— 否则 fail-closed 门禁会误阻断正常流程）
+        report_dir / batch_id / 'A3_质检报告.json',
     ]
     for c in candidates:
         if c.exists():
             return c
+    # 子目录形态回退：质检报告/{batch_id}/*.json
+    sub = report_dir / batch_id
+    if sub.is_dir():
+        for f in sorted(sub.glob('*.json')):
+            return f
     # 模糊匹配
     if report_dir.exists():
         for f in sorted(report_dir.glob(f'{batch_id}*质检报告*.json')):
@@ -300,6 +309,7 @@ def gate_agent3(batch_id, batch_data):
 
     # 尝试从质检报告 JSON 读取 D20 分数
     qc_report_path = find_qc_report(batch_id)
+    qc_gate_decision = ''
     d20_score = None
     bloom_data = None
     bloom_deviation = None
@@ -309,18 +319,59 @@ def gate_agent3(batch_id, batch_data):
             with open(qc_report_path, 'r', encoding='utf-8') as f:
                 qc_report = json.load(f)
 
-            # 提取D20评分
-            dimensions = qc_report.get('dimensions', qc_report.get('dimension_scores', {}))
-            d20_score = dimensions.get('D20', dimensions.get('d20', None))
+            # 权威 gate_decision 优先取自质检报告（report_metadata 或顶层）
+            md = qc_report.get('report_metadata', {})
+            qc_gate_decision = str(md.get('gate_decision', qc_report.get('gate_decision', '')) or '')
 
-            # 提取Bloom分布
+            # 提取D20评分（兼容 dict 与 list 两种 dimensions 形态：
+            # 旧格式 dict {'D20': 10}；新格式 list [{'dimension':'D20_B1型题专项','score':10.0}]
+            # v2.0 (2026-08-20 审查修复): 此前对 list 形态 .get() 抛 AttributeError 被
+            # except 吞掉 → D20 门禁静默失效，必须按形态分别提取）
+            dimensions = qc_report.get('dimensions', qc_report.get('dimension_scores', {}))
+            if isinstance(dimensions, dict):
+                d20_score = dimensions.get('D20', dimensions.get('d20', None))
+            elif isinstance(dimensions, list):
+                for item in dimensions:
+                    if isinstance(item, dict) and str(item.get('dimension', '')).startswith('D20'):
+                        d20_score = item.get('score')
+                        break
+            if d20_score is None:
+                # 兼容 report_metadata.dimension_scores 形态（batch027 实际数据）
+                ds = md.get('dimension_scores', {})
+                for k, v in ds.items():
+                    if str(k).startswith('D20'):
+                        d20_score = v.get('score') if isinstance(v, dict) else v
+                        break
+
+            # 提取Bloom分布（兼容两种形态：
+            # 1) 扁平 {'记忆':30,'理解':40,...}
+            # 2) 嵌套 {'target':{...},'actual':{...},'actual_pct':{...},'deviation_pct':N}
+            #    （batch027 实际数据，直接取扁平键会得到 0 偏差 → 误阻断）
             bloom_data = qc_report.get('bloom_distribution', qc_report.get('bloom', {}))
+            if isinstance(bloom_data, dict):
+                if isinstance(bloom_data.get('actual'), dict):
+                    bloom_data = bloom_data['actual']
+                elif isinstance(bloom_data.get('actual_pct'), dict):
+                    bloom_data = bloom_data['actual_pct']
 
             # 提取整体评分
             overall_score = qc_report.get('overall_score', qc_report.get('score', None))
 
-        except Exception:
-            pass
+        except Exception as e:
+            print(f'  ⚠️ 质检报告解析失败: {qc_report_path} ({e})')
+
+    if qc_gate_decision:
+        gate_decision = qc_gate_decision
+
+    # ── v2.0 (2026-08-20 审查修复): gate_decision 作为硬输入 ──
+    # 此前 QC 明确否决（REJECT/BLOCKED/FAIL/REDO）也被放行（fail-open）。
+    if gate_decision in ('REJECT', 'BLOCKED', 'FAIL', 'REDO'):
+        return {
+            'gate': 'GATE-A3',
+            'status': 'BLOCKED',
+            'reason': f'质检否决: gate_decision={gate_decision}（QC 打回，不可推进）',
+            'qc_report': str(qc_report_path) if qc_report_path else '未找到',
+        }
 
     # 如果 JSON 报告不存在，尝试从标准化数据中提取
     if bloom_data is None or not bloom_data:
@@ -368,12 +419,22 @@ def gate_agent3(batch_id, batch_data):
         target_bloom = {'记忆': '30%', '理解': '40%', '应用': '25%', '分析': '5%'}
 
     # 标准化 target_bloom 值为 float
+    # v2.0 (2026-08-20 审查修复): 畸形值（如 '约30%'）此前直接 ValueError 崩溃且不写
+    # HALT 信号，门禁状态不可信；现改为受控 BLOCKED。
     normalized_target = {}
-    for key, val in target_bloom.items():
-        if isinstance(val, str):
-            normalized_target[key] = float(val.replace('%', ''))
-        else:
-            normalized_target[key] = float(val)
+    try:
+        for key, val in target_bloom.items():
+            if isinstance(val, str):
+                normalized_target[key] = float(val.replace('%', ''))
+            else:
+                normalized_target[key] = float(val)
+    except (ValueError, TypeError) as e:
+        return {
+            'gate': 'GATE-A3',
+            'status': 'BLOCKED',
+            'reason': f'target_bloom 格式异常，无法判定 Bloom 门禁: {e}',
+            'qc_report': str(qc_report_path) if qc_report_path else '未找到',
+        }
     target_bloom = normalized_target
 
     # ── D20 硬阻断检查 ──
@@ -424,8 +485,30 @@ def gate_agent3(batch_id, batch_data):
                 'rule': 'Bloom门禁规则 (batch011教训: 记忆54.1%未阻断)',
             })
 
+    # ── v2.0 (2026-08-20 审查修复): fail-closed —— 无证据不放行 ──
+    # 与 GATE-A2"无报告即 BLOCKED"对齐（此前空壳 AGENT3 步骤无任何 QC 数据也判 PASS）。
+    evidence_issues = []
+    if not qc_report_path:
+        evidence_issues.append({
+            'gate_sub': 'GATE-A3-NO-REPORT',
+            'status': 'BLOCKED',
+            'reason': f'未找到质检报告文件（质检报告/{batch_id}_质检报告.json），无证据不可放行',
+        })
+    if d20_score is None and not re.search(r'D20', issues_text):
+        evidence_issues.append({
+            'gate_sub': 'GATE-A3-NO-D20',
+            'status': 'BLOCKED',
+            'reason': '质检报告缺失 D20 评分（B1 专项维度），fail-closed 不放行',
+        })
+    if not bloom_data:
+        evidence_issues.append({
+            'gate_sub': 'GATE-A3-NO-BLOOM',
+            'status': 'BLOCKED',
+            'reason': '质检报告缺失 Bloom 分布数据，fail-closed 不放行',
+        })
+
     # ── 汇总 GATE-A3 结果 ──
-    sub_results = d20_issues + bloom_issues
+    sub_results = d20_issues + bloom_issues + evidence_issues
     blocked_subs = [r for r in sub_results if r['status'] == 'BLOCKED']
 
     if blocked_subs:
@@ -632,34 +715,84 @@ def gate_final(batch_id, batch_data):
         })
 
     # HC-11: 大纲页码
+    # v2.0 (2026-08-20 审查修复): 空串不再视为通过（此前 hc11='' 直接放行，fail-open）
     hc11 = final_review.get('hc11', '')
-    if not ('OK' in str(hc11) or 'PASS' in str(hc11) or hc11 == ''):
+    if not ('OK' in str(hc11) or 'PASS' in str(hc11)):
         issues.append({
             'gate_sub': 'GATE-FINAL-HC11',
             'status': 'BLOCKED',
-            'reason': 'HC-11: 大纲来源页码标注不完整',
+            'reason': 'HC-11: 大纲来源页码标注缺失或未通过',
         })
 
     # JSON 有效性
-    if not final_review.get('json_valid', True):
+    # v2.0 (2026-08-20 审查修复): 必须为真实布尔 true —— 字符串 'False'/'True'
+    # 此前恒真通过（真实数据 batch014 就是字符串），终审 JSON 检查形同虚设
+    json_valid = final_review.get('json_valid', None)
+    if not (isinstance(json_valid, bool) and json_valid):
         issues.append({
             'gate_sub': 'GATE-FINAL-JSON',
             'status': 'BLOCKED',
-            'reason': '最终产物 JSON 无效',
+            'reason': f'最终产物 JSON 有效性未证实（json_valid={json_valid!r}，必须为布尔 true）',
         })
+
+    # v2.0 (2026-08-20 审查修复): HC-10 机械校验接入 —— 此前终审只匹配自报字符串
+    # （'OK'/'PASS'），verify_page_numbers.py 从未被门禁实际调用。现在对可解析科目
+    # 的复习资料实跑附录占位符检测：exit 1 → BLOCKED；脚本异常/文件缺失 → WARN 提示。
+    warn_gates = []
+    subject = batch_data.get('subject', '')
+    if subject and subject in ('内科学', '儿科学', '外科学', '神经病学', '精神病学',
+                               '皮肤性病学', '中医学', '医患沟通'):
+        review_dir = BASE / '复习资料'
+        review_files = sorted(review_dir.glob(f'{subject}_*主复习资料.md')) \
+            if review_dir.exists() else []
+        if not review_files:
+            review_files = sorted(review_dir.glob(f'{subject}_*备考复习资料.md')) \
+                if review_dir.exists() else []
+        if review_files:
+            try:
+                proc = subprocess.run(
+                    [sys.executable, str(BASE / 'verify_page_numbers.py'),
+                     '--check-appendix', subject],
+                    capture_output=True, text=True, timeout=120,
+                    encoding='utf-8', errors='replace')
+                if proc.returncode == 1:
+                    issues.append({
+                        'gate_sub': 'GATE-FINAL-PAGES',
+                        'status': 'BLOCKED',
+                        'reason': f'HC-10 附录页码机械校验失败（verify_page_numbers.py exit 1）: {review_files[0].name}',
+                    })
+                else:
+                    warn_gates.append({
+                        'gate_sub': 'GATE-FINAL-PAGES',
+                        'status': 'PASS',
+                        'reason': f'HC-10 附录页码机械校验通过（verify_page_numbers.py exit {proc.returncode}）',
+                    })
+            except Exception as e:
+                warn_gates.append({
+                    'gate_sub': 'GATE-FINAL-PAGES',
+                    'status': 'WARN',
+                    'reason': f'HC-10 机械校验未执行: {type(e).__name__}: {e}',
+                })
+        else:
+            warn_gates.append({
+                'gate_sub': 'GATE-FINAL-PAGES',
+                'status': 'WARN',
+                'reason': f'未找到 {subject} 的复习资料文件，HC-10 机械校验跳过',
+            })
 
     if issues:
         return {
             'gate': 'GATE-FINAL',
             'status': 'BLOCKED',
             'reason': f'终审门禁阻断 ({len(issues)}项)',
-            'sub_gates': issues,
+            'sub_gates': issues + warn_gates,
         }
 
     return {
         'gate': 'GATE-FINAL',
         'status': 'PASS',
         'reason': '终审门禁通过 (HC-9/10/11 OK, JSON有效)',
+        'sub_gates': warn_gates,
     }
 
 
@@ -721,7 +854,7 @@ def run_regression_checks(batch_id, stage):
                         results.append({
                             'gate': f'REG-{rule_id}',
                             'status': 'INFO',
-                            'reason': f'[{rule_name}] 脚本可用: {script}（需手动运行验证）',
+                            'reason': f'[{rule_name}] 脚本可用: {script}（仅提示，不参与门禁判定 — v2.0 审查修复明确标注）',
                             'rule_info': rule,
                             'command': script,
                         })
@@ -729,7 +862,7 @@ def run_regression_checks(batch_id, stage):
             results.append({
                 'gate': f'REG-{rule_id}',
                 'status': 'INFO',
-                'reason': f'[{rule_name}] 手工检查: {rule.get("check_logic", "")}',
+                'reason': f'[{rule_name}] 手工检查: {rule.get("check_logic", "")}（仅提示，不参与门禁判定）',
                 'rule_info': rule,
             })
 
@@ -849,29 +982,35 @@ def run_gate_check(batch_id, stage, run_regression=True):
     results = []
     all_pass = True
 
-    if stage in ('agent2_done', 'all'):
-        r = gate_agent2(batch_id)
-        results.append(r)
-        if r['status'] != 'PASS':
-            all_pass = False
+    # v2.0 (2026-08-20 审查修复): 门禁执行崩溃不再裸 traceback 退出
+    # （此前崩溃时不写 HALT 信号、门禁状态不可信），统一受控失败 exit 2。
+    try:
+        if stage in ('agent2_done', 'all'):
+            r = gate_agent2(batch_id)
+            results.append(r)
+            if r['status'] != 'PASS':
+                all_pass = False
 
-    if stage in ('agent3_done', 'all'):
-        r = gate_agent3(batch_id, batch_data)
-        results.append(r)
-        if r['status'] != 'PASS':
-            all_pass = False
+        if stage in ('agent3_done', 'all'):
+            r = gate_agent3(batch_id, batch_data)
+            results.append(r)
+            if r['status'] != 'PASS':
+                all_pass = False
 
-    if stage in ('agent4_done', 'all'):
-        r = gate_agent4(batch_id, batch_data)
-        results.append(r)
-        if r['status'] != 'PASS':
-            all_pass = False
+        if stage in ('agent4_done', 'all'):
+            r = gate_agent4(batch_id, batch_data)
+            results.append(r)
+            if r['status'] != 'PASS':
+                all_pass = False
 
-    if stage in ('final', 'all'):
-        r = gate_final(batch_id, batch_data)
-        results.append(r)
-        if r['status'] != 'PASS':
-            all_pass = False
+        if stage in ('final', 'all'):
+            r = gate_final(batch_id, batch_data)
+            results.append(r)
+            if r['status'] != 'PASS':
+                all_pass = False
+    except Exception as e:
+        print(f"\n  ✗ 门禁执行异常: {type(e).__name__}: {e}")
+        sys.exit(2)
 
     # 输出结果
     for r in results:
@@ -906,8 +1045,10 @@ def run_gate_check(batch_id, stage, run_regression=True):
             if 'command' in rr:
                 print(f"      ↳ 命令: {rr['command']}")
 
+    approved_mode = batch_data.get('status') == 'APPROVED'
+
     if not all_pass:
-        if batch_data.get('status') == 'APPROVED':
+        if approved_mode:
             # v1.1 (2026-08-13): 已签收批次的门禁仅作参考，不写 HALT。
             # 修复前曾因历史门禁误判停掉整条管线（batch024 事件）。
             print(f"\n  ⚠️ 批次 {batch_id} 已签收（APPROVED），门禁结果仅作参考，不写入 HALT。")
@@ -924,6 +1065,11 @@ def run_gate_check(batch_id, stage, run_regression=True):
     if all_pass:
         print(f"  ✅ 门禁检查全部通过 — 可以推进到下一阶段")
         print(f"{'═'*60}\n")
+    elif approved_mode:
+        # v2.0 (2026-08-20 审查修复): 参考模式退出码与提示语义一致（此前提示
+        # "仅作参考"却仍 exit 1，误导主控做不必要干预）
+        print(f"  ℹ️ 已签收批次门禁未通过（参考模式 — 退出码 0，不阻断管线）")
+        print(f"{'═'*60}\n")
     else:
         print(f"  🛑 门禁检查未通过 — 管线已停止。修复后运行:")
         blocked_gates = [r['gate'] for r in results if r['status'] != 'PASS']
@@ -932,7 +1078,7 @@ def run_gate_check(batch_id, stage, run_regression=True):
         print(f"     python gate_check.py --batch {batch_id} --stage auto")
         print(f"{'═'*60}\n")
 
-    sys.exit(0 if all_pass else 1)
+    sys.exit(0 if (all_pass or approved_mode) else 1)
 
 
 # ═══════════════════════════════════════

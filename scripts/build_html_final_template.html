@@ -93,7 +93,8 @@ for(var i=0;i<data.length;i++) if(data[i].t==='q') TOTAL++;
 
 var state = {answered:{},correct:0,wrong:0,selected:{}};
 
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function escJs(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'\\"');}
 
 function tc(t){
     var m={A1:'A1',A2:'A2',A3:'A3',A4:'A4',B1:'B1',X:'X'};
@@ -226,20 +227,20 @@ function render(){
             realNum++;
             var isX=q.tp==='X';
             h+='<div class="question" id="q'+i+'">';
-            h+='<span class="q-num">'+realNum+'</span><span class="q-type '+tc(q.tp)+'">'+q.tp+'</span>';
+            h+='<span class="q-num">'+realNum+'</span><span class="q-type '+tc(q.tp)+'">'+esc(q.tp)+'</span>';
             if(isX) h+=' <span style="font-size:11px;color:#7b1fa2;font-weight:600">(多选——点击切换选择，选够'+q.c.length+'个自动提交)</span>';
             if(q.tp==='\u5224\u65ad') h+=' <span style="font-size:11px;color:#00695c">(判断正误)</span>';
             h+='<div class="q-stem">'+esc(q.s)+'</div>';
             if(q.o){
                 for(var k=0;k<q.o.length;k++){
                     var o=q.o[k];
-                    h+='<div class="option" data-l="'+o.l+'" onclick="Quiz.pick('+i+',\''+o.l+'\')">';
-                    h+='<span class="opt-label">'+o.l+'.</span><span>'+esc(o.x)+'</span>';
+                    h+='<div class="option" data-l="'+esc(o.l)+'" onclick="Quiz.pick('+i+',\''+escJs(o.l)+'\')">';
+                    h+='<span class="opt-label">'+esc(o.l)+'.</span><span>'+esc(o.x)+'</span>';
                     h+='<span class="result-icon">\u2713</span></div>';
                 }
             }
             h+='<div class="answer-box" id="p'+i+'">';
-            h+='<div class="ans-head">\u2705 答案：'+q.c.join(', ')+' | '+q.tp+' | '+q.bl+'</div>';
+            h+='<div class="ans-head">\u2705 答案：'+esc(q.c.join(', '))+' | '+esc(q.tp)+' | '+esc(q.bl)+'</div>';
             h+='<div class="exp">'+esc(q.ex)+'</div>';
             if(q.sr) h+='<div class="src">\ud83d\udcd6 '+esc(q.sr)+'</div>';
             h+='</div></div>';

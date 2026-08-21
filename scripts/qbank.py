@@ -161,9 +161,32 @@ def _norm_options(opts):
 
 
 def _norm_answer(ans):
+    """答案归一化 → 大写字母串。
+
+    v1.2 (2026-08-20 审查修复): 此前 re.search 只取**首个**字母，多选答案
+    'ABD' 被截断成 'A'（实测复现）——注册表答案错误、export-md 只给 A 打 ✅
+    而答案行显示 ABD，最终交付自相矛盾。现在优先整串匹配 [A-E]+；
+    B1 复合答案 'E/A' 保持原样；非字母答案（判断/填空）保留原文首段。
+    """
+    if isinstance(ans, (list, tuple)):
+        # X 型答案可能以列表形态出现（['A','C']）
+        ans = ''.join(str(a).strip() for a in ans if str(a).strip())
     ans = str(ans or '').strip()
-    m = re.search(r'[A-E]', ans)
-    return m.group(0) if m else (ans[:1] if ans else '')
+    upper = ans.upper()
+    # B1 题组复合答案（如 'E/A'）保持原样
+    if re.fullmatch(r'[A-E]/[A-E]', upper):
+        return upper
+    m = re.fullmatch(r'[A-E]+', upper)
+    if m:
+        return m.group(0)
+    # 兼容 "答案：ABD" 等带前缀的表述
+    m = re.search(r'[A-E]{2,}', upper)
+    if m:
+        return m.group(0)
+    m = re.search(r'[A-E]', upper)
+    if m:
+        return m.group(0)
+    return ans[:1] if ans else ''
 
 
 def _norm_pages(raw):
@@ -468,9 +491,20 @@ def _read_meta():
 
 
 def _persist_ignore_pairs(pairs):
-    """持久化已知合并关系批次对到元信息（CLI --save 使用）。"""
+    """持久化已知合并关系批次对到元信息（CLI --save 使用）。
+
+    v1.2 (2026-08-20 审查修复 M4): 此前整体替换 meta 中已有的豁免集 ——
+    多次 --save 互相清空对方（实测：5 对已持久化豁免被后续 3 对 --save 覆盖
+    丢失，跨批次重复告警回潮 343 组）。现改为**合并追加**（只增不减）；
+    如需删除请直接编辑 registry_meta.json 的 ignore_pairs。
+    """
     meta = _read_meta()
-    meta['ignore_pairs'] = [sorted(p) for p in pairs]
+    existing = set()
+    for p in meta.get('ignore_pairs', []):
+        if isinstance(p, list) and len(p) == 2:
+            existing.add(frozenset(p))
+    merged = existing | {frozenset(p) for p in pairs if len(p) == 2}
+    meta['ignore_pairs'] = [sorted(p) for p in merged]
     meta['updated_at'] = datetime.now().isoformat()
     with open(meta_path(), 'w', encoding='utf-8') as f:
         json.dump(meta, f, ensure_ascii=False, indent=2)
@@ -513,9 +547,23 @@ def check(ignore_pairs=None):
         batches = {e.get('batch') for e in group}
         if len(batches) > 1:
             sample = group[0]
-            if ignore_pairs and frozenset(batches) in ignore_pairs:
-                ignored += 1
-                continue
+            # v1.2 (2026-08-20 审查修复 M4/L): 豁免判定从"整个重复组的批次集合
+            # 精确命中豁免对"放宽为"组内批次两两组合全部在豁免对中"——
+            # 此前 3+ 批次组合（如 batch007/batch023-ref/psychiatry-merged 同源
+            # 三表示）永远无法豁免，已持久化的成对豁免形同虚设
+            if ignore_pairs:
+                bs = set(batches)
+                pairs_ok = True
+                for a in bs:
+                    for b in bs:
+                        if a != b and frozenset({a, b}) not in ignore_pairs:
+                            pairs_ok = False
+                            break
+                    if not pairs_ok:
+                        break
+                if pairs_ok:
+                    ignored += 1
+                    continue
             warns.append(
                 f'跨批次重复 x{len(group)}: 「{sample.get("stem_snippet", "")}」'
                 f' 批次={sorted(batches)}'
@@ -673,9 +721,12 @@ def export_md(filepath, outpath=None, title=None):
             raw_ans = str(raw.get('answer') or raw.get('answer_key') or raw.get('correct_answer') or '')
             opts = q.get('options') or {}
             if opts:
+                # v1.2 (2026-08-20 审查修复): 多选（X 型）答案逐字母标记 ✅，
+                # 此前只标记首个字母（'ABD' → 仅 A 打 ✅），与答案行自相矛盾
+                correct_letters = {c for c in str(ans).upper() if c in 'ABCDE'}
                 for label in sorted(opts.keys()):
                     text = opts[label]
-                    if ans and label.upper() == ans.upper():
+                    if label.upper() in correct_letters:
                         lines.append(f'- **{label}. {text}** ✅')
                     else:
                         lines.append(f'- {label}. {text}')

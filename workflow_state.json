@@ -3974,12 +3974,12 @@
       "GATE-A2": {
         "status": "PASS",
         "reason": "产出门禁通过 (FAIL=0, PASS=58, WARN=42)",
-        "checked_at": "2026-08-19T23:36:47.281898"
+        "checked_at": "2026-08-20T18:10:03.158011"
       },
       "GATE-A3": {
         "status": "PASS",
         "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
-        "checked_at": "2026-08-19T23:55:32.019428"
+        "checked_at": "2026-08-20T18:10:03.158011"
       },
       "halt": {
         "active": false
@@ -3987,12 +3987,12 @@
       "GATE-A4": {
         "status": "PASS",
         "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
-        "checked_at": "2026-08-20T00:46:04.739542"
+        "checked_at": "2026-08-20T18:10:03.158011"
       },
       "GATE-FINAL": {
         "status": "PASS",
         "reason": "批次已签收 (APPROVED)，人工审核已覆盖终审",
-        "checked_at": "2026-08-20T00:45:19.307202"
+        "checked_at": "2026-08-20T19:45:49.380382"
       }
     },
     "final_review": {

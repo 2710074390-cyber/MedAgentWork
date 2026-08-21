@@ -109,6 +109,9 @@ def cross_validate(batch_questions, gs_data, sample_rate=0.05):
         }
 
     # 仅对匹配科目的题目进行抽样
+    # v1.1 (2026-08-20 审查修复 C5): 固定随机种子保证可复现（此前无种子，每次
+    # 抽样结果不同，无法对照复跑）
+    random.seed(42)
     matchable = [q for q in batch_questions
                  if q.get("subject", "未分类") in matched_subjects]
     sample_size = max(1, int(len(matchable) * sample_rate))
@@ -129,9 +132,15 @@ def cross_validate(batch_questions, gs_data, sample_rate=0.05):
                       if g.get("subject") == q.get("subject", "未分类")]
 
         # 1. 数值比对
+        # v1.1 (2026-08-20 审查修复 C5): 此前与 GS 同科目任意题的任何同单位数值
+        # 都做比对（跨题巧合匹配 → 不同药物同为 5mg 也误报）。现在先按术语重叠
+        # 对齐"同一知识点"，共享术语 ≥2 才做数值比对，消除巧合误报。
         for gq in subject_gs[:20]:  # 限20条避免太慢
             g_nums = extract_numbers(gq.get("stem", "") + gq.get("explanation", ""))
             g_terms = extract_terms(gq.get("stem", ""))
+            term_overlap_now = q_terms & g_terms
+            if len(term_overlap_now) < 2:
+                continue  # 知识点不对齐，跳过数值比对
 
             # 找重叠的数值
             for qn in q_nums:
@@ -271,3 +280,12 @@ if __name__ == "__main__":
         print(f"\n⚠️ 数值不一致项:")
         for vi in report['value_issues'][:5]:
             print(f"  - {vi['batch_q_id']}: batch={vi['batch_value']} vs GS={vi['gs_value']}")
+
+    # v1.1 (2026-08-20 审查修复 C5): 按门禁结果设置退出码 —— 此前恒 exit 0，
+    # 门禁既可能假阻塞（误报）也可能假通过（无退出码）
+    gate = report.get('gate', '')
+    if gate == 'BLOCKED':
+        sys.exit(1)
+    if report.get('value_issues'):
+        sys.exit(2)   # 有数值问题但未达 BLOCKED 阈值 → 2（需人工复核）
+    sys.exit(0)

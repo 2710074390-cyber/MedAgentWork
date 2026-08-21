@@ -103,6 +103,33 @@ def test_r9_with_unit_no_issue():
     assert vo.check_r9_missing_unit(q) == []
 
 
+# v2.1 (2026-08-20 审查修复): FEV1/FVC 是无量纲比值，0.7/<0.7 是标准 COPD 诊断表述
+# （此前 'FVC' 子串先命中 → 假 FAIL；本用例是修复的回归防线）
+
+def test_r9_fev1fvc_ratio_no_false_positive():
+    q = _q({'A': 'FEV1/FVC<0.7', 'B': '甲', 'C': '乙', 'D': '丙', 'E': '丁'})
+    assert vo.check_r9_missing_unit(q) == []
+
+
+def test_r9_fev1fvc_ratio_without_comparator_no_false_positive():
+    q = _q({'A': 'FEV1/FVC 0.7', 'B': '甲', 'C': '乙', 'D': '丙', 'E': '丁'})
+    assert vo.check_r9_missing_unit(q) == []
+
+
+def test_r9_fev1fvc_other_param_still_detected():
+    # 同一选项内 FEV1/FVC 比值豁免，但其他缺单位参数仍应被检出
+    q = _q({'A': 'FEV1/FVC<0.7，PaO2<60', 'B': '甲', 'C': '乙', 'D': '丙', 'E': '丁'})
+    sev = _sev(vo.check_r9_missing_unit(q), 'R9')
+    assert 'FAIL' in sev
+    assert any('PaO2' in i['detail'] for i in vo.check_r9_missing_unit(q))
+
+
+def test_r9_bare_fvc_still_fail():
+    # 裸 'FVC'（非 FEV1/FVC 复合）后跟无量纲数值仍应报缺单位（FVC 以 L 计量）
+    q = _q({'A': 'FVC<1.5', 'B': '甲', 'C': '乙', 'D': '丙', 'E': '丁'})
+    assert 'FAIL' in _sev(vo.check_r9_missing_unit(q), 'R9')
+
+
 # ── R10 词重复线索（NBME D18）──
 # 注: 强制 n-gram 关键词提取（_JIEBA_AVAILABLE=False），使用例不依赖 jieba 分词版本
 

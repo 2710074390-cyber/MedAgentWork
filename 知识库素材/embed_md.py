@@ -221,12 +221,18 @@ def process_md(md_path, subject, subject_code, config=None):
     return all_chunks
 
 def embed_and_store(chunks, subject_code, api_key):
+    """嵌入并存储。返回 (stored_count, failed_batches)。
+
+    v1.1 (2026-08-20 审查修复 C4，与 embed_index.py 同步): 批次失败计数并告警、
+    全部失败抛错不写盘、meta/npy 原子写。
+    """
     print(f"  [EMBED] {len(chunks)} chunks...")
     META_DIR.mkdir(parents=True, exist_ok=True)
     meta_file = META_DIR / f"{subject_code}_chunks.jsonl"
 
     total = len(chunks)
     embeddings = []
+    failed_batches = 0
 
     for i in range(0, total, BATCH_SIZE):
         batch = chunks[i:i+BATCH_SIZE]
@@ -238,6 +244,7 @@ def embed_and_store(chunks, subject_code, api_key):
                 embeddings.append(item)
         except Exception as e:
             print(f"  [FAIL] batch {i//BATCH_SIZE}: {e}")
+            failed_batches += 1
 
         if i + BATCH_SIZE < total:
             print(f"  Progress: {min(i+BATCH_SIZE, total)}/{total} (sleep {BATCH_SLEEP}s)")
@@ -245,20 +252,30 @@ def embed_and_store(chunks, subject_code, api_key):
         else:
             print(f"  Progress: {total}/{total}")
 
-    with open(meta_file, "w", encoding="utf-8") as f:
+    if failed_batches:
+        print(f"  ⚠️ {failed_batches} 个批次嵌入失败 → partial 索引（{len(embeddings)}/{total}），"
+              f"manifest 将标注 status=partial")
+    if not embeddings:
+        raise RuntimeError(f"{subject_code}: 全部批次嵌入失败，未写入任何数据")
+
+    tmp_meta = meta_file.with_name(meta_file.name + '.tmp')
+    with open(tmp_meta, "w", encoding="utf-8") as f:
         for item in embeddings:
             meta = item["meta"].copy(); meta["text"] = item["text"]
             f.write(json.dumps(meta, ensure_ascii=False) + "\n")
+    os.replace(tmp_meta, meta_file)
 
     vec_file = INDEX_STORE / subject_code / "embeddings.npy"
     vec_file.parent.mkdir(parents=True, exist_ok=True)
     vecs_array = np.array([item["embedding"] for item in embeddings], dtype=np.float32)
-    np.save(vec_file, vecs_array)
+    tmp_vec = vec_file.with_name(vec_file.name + '.tmp')
+    np.save(tmp_vec, vecs_array)
+    os.replace(tmp_vec, vec_file)
 
     print(f"  [OK] Stored: {len(embeddings)}")
-    return len(embeddings)
+    return len(embeddings), failed_batches
 
-def update_manifest(subject_code, info, chunk_count, config=None):
+def update_manifest(subject_code, info, chunk_count, config=None, status="indexed"):
     INDEX_STORE.mkdir(parents=True, exist_ok=True)
     manifest_path = INDEX_STORE / "index_manifest.json"
 
@@ -269,7 +286,8 @@ def update_manifest(subject_code, info, chunk_count, config=None):
 
     entry = {
         "subject": info["subject"],
-        "status": "indexed",
+        # v1.1 (2026-08-20 审查修复 C4): 支持 'partial'（部分批次嵌入失败）
+        "status": status,
         "chunk_count": chunk_count,
         "source_file": f"{info['subject']}.md",
         "model": EMBED_MODEL,
@@ -334,8 +352,9 @@ def main():
             if not chunks:
                 print(f"  [WARN] No chunks")
                 continue
-            count = embed_and_store(chunks, info["code"], api_key)
-            update_manifest(info["code"], info, count, subj_config)
+            count, failed_batches = embed_and_store(chunks, info["code"], api_key)
+            status = 'partial' if failed_batches else 'indexed'
+            update_manifest(info["code"], info, count, subj_config, status=status)
         except Exception as e:
             import traceback
             print(f"[FAIL] {info['subject']}: {e}")

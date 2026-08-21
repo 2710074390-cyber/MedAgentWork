@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
-"""神经病学押题卷 — 交互式HTML（点击作答+即时判定+进度追踪）"""
+"""神经病学押题卷 — 交互式HTML（点击作答+即时判定+进度追踪）
+
+⚠️ 2026-08-20 审查标注: 本脚本与 render_predict_html.py / build_html_final.py
+共用输出 最终产物/神经病学押题卷_2026.html（last-writer-wins，输出冲突未收敛，
+收敛为单一入口列入 docs/TODO.md P3）。输入数据在 中间产物/ 已随学期切换归档，
+需先反归档或改路径再运行。v2.0 起转义已补齐（esc/esc_js）。
+"""
 import json, os, re
 from datetime import datetime
 
@@ -26,32 +32,25 @@ mod_info = [
 
 def esc(s):
     if not s: return ''
-    return str(s).replace('&','&amp;').replace('<','&lt;').replace('>','&gt;').replace('"','&quot;')
+    # v2.0 (2026-08-20 审查修复): 补单引号转义 —— 此前 esc() 不转义 '，
+    # 与 onclick 内嵌 JS 字符串（'{tp}'）叠加构成注入缺口
+    return str(s).replace('&','&amp;').replace('<','&lt;').replace('>','&gt;').replace('"','&quot;').replace("'",'&#39;')
 
-def parse_answer(q):
-    """解析答案为子题数组"""
-    tp = q['type']
-    ans = q.get('answer','')
-    if tp in ('A1','A2','判断'):
-        return [ans]  # 单选，单答案
-    elif tp == 'X':
-        return [list(ans)]  # 多选，答案字符列表
-    elif tp == 'B1':
-        return ans.split('/')  # "A/C" → ["A","C"]
-    elif tp == 'A3':
-        # A3 = 复合型，选项text内含分号分隔的子答案提示
-        # 从选项文本中提取子答案信息
-        opts = q.get('options',[])
-        correct_opt = None
-        for o in opts:
-            if o['label'] == ans:
-                correct_opt = o['text']
-                break
-        # 尝试按分号拆分
-        if correct_opt and '；' in correct_opt:
-            return correct_opt.split('；')
-        return [ans]  # fallback
-    return [ans]
+def esc_js(s):
+    """JS 字符串上下文转义（onclick 内嵌参数）。
+
+    v2.0 (2026-08-20 审查修复): qid/tp 等字段此前直接拼进
+    onclick="selectOption(this,'{qid_js}','{tp_js}')" 未转义，字段含引号即注入/错乱。
+    """
+    if s is None: return ''
+    return str(s).replace('\\','\\\\').replace("'","\\'").replace('"','\\"')
+
+# v2.0 (2026-08-20 审查修复): 删除从未被调用的 parse_answer() 死代码。
+# A3 数据模型说明（实测 archive/中间产物/predict_100q_final.json）：
+# 每个选项字母是一条完整"病例假设链"（如 '下运动神经元；定位诊断'，分号分隔各
+# 子问答案），题干以 (1)(2)(3) 拆分子问，各子问共用同一正确字母（predict-035
+# 解析证实 (1)→下运动神经元=B、(2)→定位诊断=B）。因此 A3 子问渲染中
+# is_correct = (lbl == ans) 按同一字母判定是**正确语义**，勿改。
 
 # Count types
 type_counts = {}
@@ -185,18 +184,22 @@ qidx = 0
 for name, pri, color in mod_info:
     if name not in grouped: continue
     mod_qs = grouped[name]
-    H.append(f'<div class="module-section" id="mod-{name}">')
-    H.append(f'<div class="module-header" style="background:{color}"><h2>{name} <span class="priority-badge">{pri}</span><span class="module-count">{len(mod_qs)}题</span></h2></div>')
+    H.append(f'<div class="module-section" id="mod-{esc(name)}">')
+    H.append(f'<div class="module-header" style="background:{esc(color)}"><h2>{esc(name)} <span class="priority-badge">{esc(pri)}</span><span class="module-count">{len(mod_qs)}题</span></h2></div>')
 
     for q in mod_qs:
         qidx += 1
         qid = f"q{qidx}"
         tp = q['type']
+        # v2.0 (2026-08-20 审查修复): 进 HTML/JS 的字段全部转义
+        tp_esc = esc(tp)
+        tp_js = esc_js(tp)
+        qid_js = esc_js(qid)
         stem = esc(q['stem'])
         ans = q.get('answer','')
         exp = esc(q.get('explanation',''))
         src = esc(q.get('source_page',''))
-        bloom = q.get('bloom','')
+        bloom = esc(q.get('bloom',''))
         opts = q.get('options',[])
 
         # Parse answer for different types
@@ -208,7 +211,7 @@ for name, pri, color in mod_info:
             correct_labels = [ans]
 
         H.append(f'<div class="question-card" id="card-{qid}">')
-        H.append(f'<span class="question-number">第{qidx}题</span><span class="question-type type-{tp}">{tp}</span>')
+        H.append(f'<span class="question-number">第{qidx}题</span><span class="question-type type-{tp_esc}">{tp_esc}</span>')
         H.append(f'<div class="question-stem">{stem}</div>')
 
         # Render options based on type
@@ -221,7 +224,7 @@ for name, pri, color in mod_info:
                 lbl = o['label']
                 txt = esc(o.get('text',''))
                 is_correct = (lbl == ans)
-                H.append(f'<label class="option-label" data-qid="{qid}" data-letter="{lbl}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{qid}\',\'{tp}\')">')
+                H.append(f'<label class="option-label" data-qid="{qid}" data-letter="{esc(lbl)}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{qid_js}\',\'{tp_js}\')">')
                 H.append(f'<span class="option-letter">{lbl}</span><span>{txt}</span><span class="option-feedback">{" ✓" if is_correct else ""}</span>')
                 H.append('</label>')
             H.append('</div>')
@@ -231,7 +234,7 @@ for name, pri, color in mod_info:
                 lbl = o['label']
                 txt = esc(o.get('text',''))
                 is_correct = (lbl == ans)
-                H.append(f'<label class="option-label" data-qid="{qid}" data-letter="{lbl}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{qid}\',\'{tp}\')">')
+                H.append(f'<label class="option-label" data-qid="{qid}" data-letter="{esc(lbl)}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{qid_js}\',\'{tp_js}\')">')
                 H.append(f'<span class="option-letter">{lbl}</span><span>{txt}</span><span class="option-feedback">{" ✓" if is_correct else ""}</span>')
                 H.append('</label>')
             H.append('</div>')
@@ -242,11 +245,11 @@ for name, pri, color in mod_info:
                 lbl = o['label']
                 txt = esc(o.get('text',''))
                 is_correct = (lbl in correct_labels)
-                H.append(f'<label class="option-label x-option" data-qid="{qid}" data-letter="{lbl}" data-correct="{"1" if is_correct else "0"}" onclick="toggleXOption(this)">')
+                H.append(f'<label class="option-label x-option" data-qid="{qid}" data-letter="{esc(lbl)}" data-correct="{"1" if is_correct else "0"}" onclick="toggleXOption(this)">')
                 H.append(f'<span class="option-letter">{lbl}</span><span>{txt}</span><span class="option-feedback">{" ✓" if is_correct else ""}</span>')
                 H.append('</label>')
             H.append('</div>')
-            H.append(f'<div class="submit-row"><button class="submit-btn" id="submit-{qid}" onclick="submitXAnswer(\'{qid}\')">✅ 提交判定</button>')
+            H.append(f'<div class="submit-row"><button class="submit-btn" id="submit-{qid}" onclick="submitXAnswer(\'{qid_js}\')">✅ 提交判定</button>')
             H.append(f'<span class="submit-hint">点击选项选中/取消，然后提交判定</span></div>')
         elif tp == 'B1':
             # Shared options with sub-questions
@@ -273,7 +276,7 @@ for name, pri, color in mod_info:
                         lbl = o['label']
                         txt = esc(o.get('text',''))
                         is_correct = (lbl == sub_ans)
-                        H.append(f'<label class="option-label" data-qid="{sub_qid}" data-letter="{lbl}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{sub_qid}\',\'B1\')">')
+                        H.append(f'<label class="option-label" data-qid="{sub_qid}" data-letter="{esc(lbl)}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{sub_qid}\',\'B1\')">')
                         H.append(f'<span class="option-letter">{lbl}</span><span>{txt}</span><span class="option-feedback">{" ✓" if is_correct else ""}</span>')
                         H.append('</label>')
                     H.append('</div>')
@@ -283,7 +286,7 @@ for name, pri, color in mod_info:
                     lbl = o['label']
                     txt = esc(o.get('text',''))
                     is_correct = (lbl == ans)
-                    H.append(f'<label class="option-label" data-qid="{qid}" data-letter="{lbl}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{qid}\',\'B1\')">')
+                    H.append(f'<label class="option-label" data-qid="{qid}" data-letter="{esc(lbl)}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{qid_js}\',\'B1\')">')
                     H.append(f'<span class="option-letter">{lbl}</span><span>{txt}</span><span class="option-feedback">{" ✓" if is_correct else ""}</span>')
                     H.append('</label>')
         elif tp == 'A3':
@@ -309,7 +312,7 @@ for name, pri, color in mod_info:
                             parts = full_text.split('；')
                             display_text = parts[int(s_num)-1] if int(s_num)-1 < len(parts) else full_text
                             is_correct = (lbl == ans)
-                            H.append(f'<label class="option-label" data-qid="{sub_qid}" data-letter="{lbl}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{sub_qid}\',\'A3\')">')
+                            H.append(f'<label class="option-label" data-qid="{sub_qid}" data-letter="{esc(lbl)}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{sub_qid}\',\'A3\')">')
                             H.append(f'<span class="option-letter">{lbl}</span><span>{esc(display_text)}</span><span class="option-feedback">{" ✓" if is_correct else ""}</span>')
                             H.append('</label>')
                         H.append('</div>')
@@ -320,7 +323,7 @@ for name, pri, color in mod_info:
                     lbl = o['label']
                     txt = esc(o.get('text',''))
                     is_correct = (lbl == ans)
-                    H.append(f'<label class="option-label" data-qid="{qid}" data-letter="{lbl}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{qid}\',\'A3\')">')
+                    H.append(f'<label class="option-label" data-qid="{qid}" data-letter="{esc(lbl)}" data-correct="{"1" if is_correct else "0"}" onclick="selectOption(this,\'{qid_js}\',\'A3\')">')
                     H.append(f'<span class="option-letter">{lbl}</span><span>{txt}</span><span class="option-feedback">{" ✓" if is_correct else ""}</span>')
                     H.append('</label>')
                 H.append('</div>')

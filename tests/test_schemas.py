@@ -52,9 +52,15 @@ def test_agent2_negative_missing_options():
 
 
 def test_agent3_positive():
+    # v2.0 (2026-08-20 审查修复): dimensions 按真实产物为数组形态
+    # （[{dimension,status,score,detail}]，batch027 实测）；旧 dict 形态用例
+    # 固化了错误契约，已替换
     _valid(_load_schema('agent3_output.schema.json'), {
         'report_metadata': {'gate_decision': 'PASS_WITH_FIXES', 'overall_score': 82.5},
-        'dimensions': {'D20': 1},
+        'dimensions': [
+            {'dimension': 'D1_术语规范性', 'status': 'PASS', 'score': 10.0, 'detail': 'OK'},
+            {'dimension': 'D20_B1型题专项', 'status': 'PASS', 'score': 10.0},
+        ],
         'bloom_distribution': {'记忆': 30, '理解': 40, '应用': 25, '分析': 5},
         'issues': [{'question_id': 'T1', 'severity': 'major', 'rule': 'D17', 'detail': 'x'}],
     })

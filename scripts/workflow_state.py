@@ -276,7 +276,10 @@ def migrate_legacy(state):
                     changes.append(f'{key}: 移除重复键 {dup!r}（保留 COMPLETED）')
 
     # 3. 顶层: schema 版本标记
+    # v2.0 (2026-08-20 审查修复): 实际写入版本号 —— 此前只记录 changes 不写入，
+    # 库调用方 load→save 后版本号仍旧，validate_state 持续告警
     if state.get('schema_version') != STATE_SCHEMA_VERSION:
+        state['schema_version'] = STATE_SCHEMA_VERSION
         changes.append(f'schema_version → {STATE_SCHEMA_VERSION}')
     return state, changes
 
@@ -364,16 +367,21 @@ def main():
             print(f'✓ 已保存（schema_version={STATE_SCHEMA_VERSION}）')
         return
 
-    if args.check or True:
-        issues = validate_state(state)
-        batches = [k for k in state if isinstance(state[k], dict) and str(k).startswith('batch')]
-        print(f'workflow_state.json: {len(batches)} 个批次 | schema_version={state.get("schema_version")}')
-        if issues:
-            print(f'⚠️ {len(issues)} 个问题:')
-            for i in issues:
-                print(f'  - {i}')
-        else:
-            print('✓ 结构校验通过')
+    # v2.0 (2026-08-20 审查修复): 删除 `if args.check or True:` 死条件
+    # （此前 --check 形同虚设、无参数也执行检查块）；校验失败非零退出
+    if not args.check:
+        parser.print_help()
+        return
+
+    issues = validate_state(state)
+    batches = [k for k in state if isinstance(state[k], dict) and str(k).startswith('batch')]
+    print(f'workflow_state.json: {len(batches)} 个批次 | schema_version={state.get("schema_version")}')
+    if issues:
+        print(f'⚠️ {len(issues)} 个问题:')
+        for i in issues:
+            print(f'  - {i}')
+        sys.exit(1)
+    print('✓ 结构校验通过')
 
 
 if __name__ == '__main__':

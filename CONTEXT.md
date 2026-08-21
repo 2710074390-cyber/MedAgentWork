@@ -369,7 +369,22 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **qbank.py** | 1.1.0 | `scripts/qbank.py` | `python scripts/qbank.py init / register / query / stats / check / export-md / rehome` — 统一题库注册表 + 最终交付 MD 导出 + 归档路径重定位（2026-08-20 升级） |
 | **run_tests.py** | 1.0.0 | `scripts/run_tests.py` | `python scripts/run_tests.py` — 零依赖测试运行器（P0-2，2026-08-13）；有 pytest 时可用 `python -m pytest tests/ -q` |
 | **fact_check.py** | 1.0.0 | `scripts/fact_check.py` | `python scripts/fact_check.py pages --file X --subject neurology` / `golden --file X` — 事实校验机械化（P1-1，2026-08-13）：页码反查 + GoldenSet 交叉验证 |
+| **blueprint.py** | 1.0.0 | `scripts/blueprint.py` | `python scripts/blueprint.py` — 考频蓝图（2026-08-20 第三方交付）：GS 下册 + 贺银成引用 → 学科权重 + 高频真题，输出 `知识库素材/blueprint.json`（标准库） |
+| **anchor_bank.py** | 1.0.0 | `scripts/anchor_bank.py` | `C:/Users/38063/AppData/Local/Programs/Python/Python312/python.exe scripts/anchor_bank.py download/embed/anchor/check` — CMExam 锚点难度体系（2026-08-20 第三方交付）。⚠️ **必须用 Python312**（torch+sentence-transformers 已装，默认 python 3.10 无 torch）；embed 已缓存可跳过；重跑 anchor 后必须 `python scripts/apply_calibrated_difficulty.py` 回写 registry |
+| **apply_calibrated_difficulty.py** | 1.1.0 | `scripts/apply_calibrated_difficulty.py` | `python scripts/apply_calibrated_difficulty.py [--dry-run]` — **expanded 校准值回写 registry（2026-08-21 终审修订）**：默认读 `calibrated_difficulty.expanded.jsonl`，按 qid join 刷新 calibrated_p/calibration_confidence/calibration_flag/max_sim/prior_key + 补 anchor_source；写前自动备份 registry.jsonl；registry 已去重为 qid 唯一，qid join 安全 |
+| **paper_builder.py** | 1.0.0 | `scripts/paper_builder.py` | `python scripts/paper_builder.py --subject 内科学 --count 100 [--dry-run]` — 组卷公式 v1.0（2026-08-20）：考频权重 × 难度配平(calibrated_p) × NFD 过滤；输出兼容 `scripts/quiz_template.html` QUESTIONS 数组 |
+| **quiz_template.html** | 1.0.0 | `scripts/quiz_template.html` | 统一押题卷模板（2026-08-20 第三方交付）：CSS 变量化/亮暗主题/响应式/作答采集；题目注入 `<script id="quiz-data">` 的 QUESTIONS 数组 |
 | **dsh** (DeepSeek Harness) | 0.1.0-rc.7 | `C:\Users\38063\Desktop\Web-AI\tools\dsh\node_modules\.bin\dsh` | `cd C:\Users\38063\Desktop\Web-AI\tools\dsh && npx dsh web`（需 API key） |
+
+### 环境备忘（2026-08-20 · 第三方交付后）
+
+| 项 | 备忘 |
+|---|---|
+| **Python312** | `C:/Users/38063/AppData/Local/Programs/Python/Python312/python.exe` — torch 2.12 + sentence-transformers 5.5.1 + scipy/sklearn 齐全；**anchor_bank.py 必须用此解释器**（默认 `python` 3.10 无 torch） |
+| **bge-small-zh-v1.5** | 已缓存 `~/.cache/huggingface/hub`，离线可跑；如需重下走 `HF_ENDPOINT=https://hf-mirror.com` |
+| **GitHub 镜像序** | `gh-proxy.com` → `ghproxy.net` → `mirror.ghproxy.com` → 直连（实测 gh-proxy.com 可用，mirror.ghproxy.com 超时） |
+| **calibrated_p 性质** | CMExam 人工标注锚点 + 先验表的外部先验估计，**非本库实测**。允许：组卷配平/异常筛查/推送排序；禁止：对外标注「实测难度」 |
+| **注册表覆盖** | registry 现 4917 题（2026-08-20 补齐 batch004/006/007/008/009/010/011/012/013/014/016/020/021/023/027 注册）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
 
 ### 复习资料渲染（2026-06-21 新增）
 - `python 知识库素材/render_review.py "复习资料/XXX_主复习资料.md"` → 生成精美自包含 HTML

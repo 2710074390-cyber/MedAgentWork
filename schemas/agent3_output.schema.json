@@ -21,7 +21,21 @@
       },
       "additionalProperties": true
     },
-    "dimensions": { "type": "object", "description": "维度评分，必须含 D20（B1 专项）" },
+    "dimensions": {
+      "type": "array",
+      "description": "维度评分列表（v2.0 审查修复: 此前声明为 object，而真实产物（batch027 实测）是数组 [{dimension,status,score,detail}]，ingest 摄入时必然报类型不符）",
+      "items": {
+        "type": "object",
+        "required": ["dimension", "status", "score"],
+        "properties": {
+          "dimension": { "type": "string", "description": "如 D1_术语规范性 / D20_B1型题专项" },
+          "status": { "type": "string", "enum": ["PASS", "WARN", "FAIL", "MINOR", "MAJOR", "N/A"] },
+          "score": { "type": "number" },
+          "detail": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
     "dimension_scores": { "type": "object", "description": "旧字段名" },
     "bloom_distribution": {
       "type": "object",

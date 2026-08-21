@@ -125,11 +125,18 @@ def validate_schema(filepath, stage):
 
 
 def load_state():
-    """加载 workflow_state.json（统一模块，含旧数据迁移）"""
+    """加载 workflow_state.json（统一模块，含旧数据迁移）。
+
+    v2.0 (2026-08-20 审查修复): 加载失败即中止 —— 此前出错时返回 {}，
+    后续 save_state 会用近乎空的状态**整体覆写**含全部批次的
+    workflow_state.json（24 批次状态与血缘静默丢失的数据丢失窗口）。
+    """
     state, err = ws.load_state()
     if err:
-        print(f"  ⚠️ {err}，按空状态继续")
-        return {}
+        print(f"  ✗ {err}")
+        print("  ✗ 状态加载失败，中止摄入（防止空状态覆写丢失全部批次）。")
+        print("    如确认需要重建，请先备份 workflow_state.json 再手动处理。")
+        sys.exit(3)
     return state
 
 

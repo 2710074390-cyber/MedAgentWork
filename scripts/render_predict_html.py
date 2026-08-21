@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
-"""渲染押题卷HTML"""
+"""渲染押题卷HTML
+
+⚠️ 2026-08-20 审查标注: 与 render_interactive_html.py / build_html_final.py
+共用输出 最终产物/神经病学押题卷_2026.html（last-writer-wins，收敛为单一入口
+列入 docs/TODO.md P3）。输入数据在 中间产物/ 已归档，需先反归档或改路径。
+v2.0 起转义已补齐（esc/esc_js）。
+"""
 import json, os
 from datetime import datetime
 
@@ -26,7 +32,14 @@ mod_info = [
 
 def esc(s):
     if not s: return ''
-    return str(s).replace('&','&amp;').replace('<','&lt;').replace('>','&gt;').replace('"','&quot;')
+    # v2.0 (2026-08-20 审查修复): 补单引号转义（与 render_interactive_html 同步）
+    return str(s).replace('&','&amp;').replace('<','&lt;').replace('>','&gt;').replace('"','&quot;').replace("'",'&#39;')
+
+
+def esc_js(s):
+    """JS 字符串上下文转义（v2.0 审查修复）。"""
+    if s is None: return ''
+    return str(s).replace('\\','\\\\').replace("'","\\'").replace('"','\\"')
 
 type_stats = {}; bloom_stats = {}
 for q in questions:
@@ -127,16 +140,19 @@ qidx = 0
 for name, pri, color in mod_info:
     if name not in grouped: continue
     H.append(f'<div class="module-section" id="mod-{name}">')
-    H.append(f'<div class="module-header" style="background:{color}"><h2>{name} <span class="priority-badge">{pri}</span></h2></div>')
+    H.append(f'<div class="module-header" style="background:{esc(color)}"><h2>{esc(name)} <span class="priority-badge">{esc(pri)}</span></h2></div>')
     for q in grouped[name]:
         qidx += 1
         qid = f"q{qidx}"
         tp = q['type']
+        # v2.0 (2026-08-20 审查修复): 进 HTML/JS 的字段全部转义
+        tp_esc = esc(tp)
+        qid_js = esc_js(qid)
         stem = esc(q['stem'])
         ans = q.get('answer','')
         exp = esc(q.get('explanation',''))
         src = esc(q.get('source_page',''))
-        bloom = q.get('bloom','')
+        bloom = esc(q.get('bloom',''))
         opts = q.get('options',[])
 
         opts_html = ''
@@ -145,15 +161,15 @@ for name, pri, color in mod_info:
         else:
             parts = ['<div class="options">']
             for o in opts:
-                parts.append(f'<span class="option-tag">{o["label"]}. {esc(o["text"])}</span>')
+                parts.append(f'<span class="option-tag">{esc(o["label"])}. {esc(o["text"])}</span>')
             parts.append('</div>')
             opts_html = ''.join(parts)
 
         H.append(f'<div class="question-card">')
-        H.append(f'<span class="question-number">第{qidx}题</span><span class="question-type type-{tp}">{tp}</span>')
+        H.append(f'<span class="question-number">第{qidx}题</span><span class="question-type type-{tp_esc}">{tp_esc}</span>')
         H.append(f'<div class="question-stem">{stem}</div>')
         H.append(opts_html)
-        H.append(f'<div class="no-print"><span class="answer-toggle" onclick="toggleAns(\'{qid}\')" id="btn-{qid}">查看答案</span></div>')
+        H.append(f'<div class="no-print"><span class="answer-toggle" onclick="toggleAns(\'{qid_js}\')" id="btn-{qid}">查看答案</span></div>')
         H.append(f'<div id="{qid}" class="answer-section" style="display:none">')
         H.append(f'<div class="answer-box"><span class="answer-label">答案：</span><span class="answer-value">{esc(ans)}</span>')
         H.append(f'<span class="source-tag">{src}</span><span class="bloom-tag">{bloom}</span></div>')

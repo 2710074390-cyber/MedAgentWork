@@ -30,15 +30,30 @@ OUTPUT_DIR = BASE / "regression_reports"
 
 
 # ── Schema 校验 ───────────────────────────────────────────
+# v1.1 (2026-08-20 审查修复): 按册分级 —— 上册（真题原文）含完整题干/选项，
+# 要求 stem/options；下册（贺银成答案精析，源文件 真题下册.md 为
+# "N. 答案 ①解析…" 格式，**没有题干与选项**）硬性要求 stem/options 永远无法
+# 满足 → 此前 2754/2754 条全报 critical。现按下册实际内容分级校验。
 REQUIRED_FIELDS = ["gs_id", "year", "question_no", "type", "stem", "options"]
+ANALYSIS_REQUIRED_FIELDS = ["gs_id", "year", "question_no", "type", "answer", "explanation"]
 RECOMMENDED_FIELDS = ["answer", "subject", "explanation", "source_page", "bloom_level", "difficulty"]
 
 
+def is_analysis_file(file_name):
+    """精析类源文件（无题干/选项）：GS_下册_* 等。"""
+    return "GS_下册" in file_name
+
+
+def required_fields_for(file_name):
+    return ANALYSIS_REQUIRED_FIELDS if is_analysis_file(file_name) else REQUIRED_FIELDS
+
+
 def validate_schema(questions, file_name):
-    """逐题校验 schema"""
+    """逐题校验 schema（按文件类型分级）"""
     issues = []
+    required = required_fields_for(file_name)
     for i, q in enumerate(questions):
-        for f in REQUIRED_FIELDS:
+        for f in required:
             if f not in q or q[f] is None or q[f] == "":
                 issues.append({
                     "index": i,
@@ -183,8 +198,12 @@ if __name__ == "__main__":
     print(f"  状态: {index_check['status']}")
     for issue in index_check.get('issues', []):
         print(f"    ⚠️ {issue['file']}: {issue['issue']} (索引={issue['index_count']}, 实际={issue['actual_count']})")
-    if index_check['status'] == 'MISMATCH':
-        report["overall"] = "FAIL" if report["overall"] != "FAIL" else "PARTIAL"
+    # v1.1 (2026-08-20 审查修复 C6): overall 判定逻辑此前翻转 ——
+    # "FAIL if overall != FAIL else PARTIAL" 在已 FAIL 时反而降为 PARTIAL、
+    # 未 FAIL 时升为 FAIL，两个分支语义都错。正确语义：MISMATCH（索引数不一致，
+    # 非致命）只把 PASS 降为 PARTIAL，绝不覆盖已有 FAIL。
+    if index_check['status'] == 'MISMATCH' and report["overall"] == "PASS":
+        report["overall"] = "PARTIAL"
 
     # 3. 答案覆盖率
     print("\n[3/4] 检查答案覆盖率...")
@@ -242,3 +261,7 @@ if __name__ == "__main__":
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(report, f, ensure_ascii=False, indent=2)
     print(f"\n报告已保存: {output_path}")
+
+    # v1.1 (2026-08-20 审查修复 C6): FAIL 时非零退出 —— 此前恒 exit 0，
+    # 无法作为 CI/门禁判定依据
+    sys.exit(1 if report['overall'] == 'FAIL' else 0)

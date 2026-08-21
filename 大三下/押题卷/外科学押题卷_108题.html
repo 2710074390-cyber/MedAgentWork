@@ -1,3606 +1,2209 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>外科学 押题卷</title>
+<title>外科学押题卷 · MedAgentWork 统一模板 v1.0</title>
+<!--
+  ============================================================================
+  quiz_template.html — MedAgentWork 统一押题卷模板 v1.0 (2026-08-20)
+  ============================================================================
+  用途：五套押题卷（内/外/神经/精神/医患）统一迁移到此模板。
+  设计令牌：沿用复习资料模板命名体系（--bg-primary/--text-primary/...），
+            新增押题卷语义令牌（--correct/--wrong/--picked）。
+  达标项：CSS变量化 / 亮暗双主题(localStorage maw-theme，与index.html打通) /
+          640px响应式 / print保色 / 对错三通道反馈(颜色+✓✗+文字) /
+          localStorage作答采集+JSON导出+错题重刷。
+  题目注入：替换下方 <script id="quiz-data"> 中的 QUESTIONS 数组。
+  验收标准：见 AGENT_TASKS.md V-P0-1。
+  ============================================================================
+-->
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft YaHei',sans-serif;background:#0f1923;color:#e0e0e0;line-height:1.8;padding-top:140px}
-#topbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:linear-gradient(135deg,#0d1b2a,#1b2838,#0d1b2a);color:#e8edf2;padding:16px 24px;box-shadow:0 2px 20px rgba(0,0,0,.5);border-bottom:1px solid rgba(255,255,255,.06);transition:transform .35s ease}#topbar.hidden{transform:translateY(-100%)}
-#topbar .inner{max-width:980px;margin:0 auto}
-#topbar h1{font-size:22px;margin-bottom:2px;display:inline;margin-right:12px;font-weight:800;letter-spacing:1px;color:#64b5f6}
-#topbar .meta{font-size:12px;opacity:.5;display:inline;letter-spacing:.5px}
-#topbar .subtitle{font-size:11px;opacity:.4;margin-top:2px;letter-spacing:1px}
-#topbar .progress-row{display:flex;align-items:center;gap:14px;margin-top:10px}
-#topbar .progress-wrap{flex:1;background:rgba(255,255,255,.08);border-radius:4px;height:5px;overflow:hidden}
-#topbar .progress-bar{height:100%;background:linear-gradient(90deg,#43a047,#66bb6a);border-radius:4px;transition:width .5s ease;width:0%}
-#topbar .progress-label{font-size:11px;opacity:.6;white-space:nowrap;min-width:60px;text-align:right;font-variant-numeric:tabular-nums}
-#topbar .btn-row{display:flex;gap:10px;margin-top:8px}
-#topbar button{padding:6px 18px;border:1px solid rgba(255,255,255,.12);border-radius:6px;font-size:12px;cursor:pointer;font-weight:600;transition:all .2s;background:rgba(255,255,255,.05);color:#90caf9;letter-spacing:.5px}
-#topbar button:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#bbdefb}
-.container{max-width:980px;margin:0 auto;padding:0 20px 30px}
-.section-divider{color:#546e7a;text-align:center;margin:28px 0 18px;font-size:13px;letter-spacing:2px;font-weight:700;text-transform:uppercase;position:relative}
-.section-divider::before,.section-divider::after{content:'';display:inline-block;width:60px;height:1px;background:rgba(255,255,255,.08);vertical-align:middle;margin:0 16px}
-.question{background:#1a2733;border-radius:10px;padding:24px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.3);transition:all .3s;border:1px solid rgba(255,255,255,.04)}
-.question:hover{border-color:rgba(255,255,255,.08)}
-.question.correct{border-left:3px solid #43a047;background:#162516}
-.question.wrong{border-left:3px solid #e53935;background:#261616}
-.q-num{display:inline-block;background:rgba(100,181,246,.12);color:#64b5f6;padding:2px 14px;border-radius:4px;font-size:13px;font-weight:700;margin-right:6px;letter-spacing:.5px}
-.q-type{display:inline-block;font-size:11px;padding:2px 10px;border-radius:4px;font-weight:700;letter-spacing:.5px}
-.q-type.A1{background:rgba(67,160,71,.15);color:#66bb6a}
-.q-type.A2{background:rgba(100,181,246,.15);color:#64b5f6}
-.q-type.A3,.q-type.A4{background:rgba(229,57,53,.15);color:#ef5350}
-.q-type.B1{background:rgba(255,167,38,.15);color:#ffa726}
-.q-type.X{background:rgba(171,71,188,.15);color:#ce93d8}
-.q-type.判断{background:rgba(38,166,154,.15);color:#4db6ac}
-.q-stem{font-size:16px;margin:12px 0 16px;font-weight:500;color:#e8edf2}
-.option{padding:12px 18px;margin:4px 0;border-radius:6px;background:rgba(255,255,255,.03);cursor:pointer;transition:all .15s;border:1px solid rgba(255,255,255,.05);display:flex;align-items:baseline;user-select:none}
-.option:hover{background:rgba(100,181,246,.1);border-color:rgba(100,181,246,.3);transform:translateX(2px)}
-.option.correct-show{border-color:#43a047!important;background:rgba(67,160,71,.12)!important;cursor:default}
-.option.wrong-pick{border-color:#e53935!important;background:rgba(229,57,53,.1)!important;cursor:default}
-.option.picked{border-color:#ab47bc!important;background:rgba(171,71,188,.12)!important;transform:translateX(2px)}
-.option.picked .opt-label{color:#ce93d8}
-.option.no-click{pointer-events:none;opacity:.75}
-.opt-label{font-weight:700;color:#64b5f6;margin-right:12px;min-width:28px;flex-shrink:0;font-size:15px}
-.option.correct-show .opt-label{color:#66bb6a}
-.option.wrong-pick .opt-label{color:#ef5350}
-.result-icon{display:none;margin-left:auto;font-size:16px;font-weight:700}
-.result-icon.show{display:inline}
-.answer-box{display:none;margin-top:14px;padding:18px;border-radius:6px;animation:fadeIn .3s;font-size:14px}
-.answer-box.open{display:block}
-.answer-box.ok{background:rgba(67,160,71,.08);border-left:3px solid #43a047}
-.answer-box.no{background:rgba(229,57,53,.06);border-left:3px solid #e53935}
-.ans-head{font-size:15px;font-weight:700;margin-bottom:6px}
-.ans-head.green{color:#66bb6a}
-.ans-head.red{color:#ef5350}
-.exp{color:#b0bec5;line-height:1.8}
-.src{font-size:11px;color:#546e7a;margin-top:8px;font-style:italic}
-.case-group{background:#1a2733;border-radius:10px;padding:22px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.3);border:1px solid rgba(100,181,246,.15)}
-.case-header{font-size:15px;color:#cfd8dc;margin-bottom:16px;padding:16px 20px;background:rgba(100,181,246,.05);border-radius:6px;border-left:3px solid #64b5f6}
-.case-label{font-weight:700;color:#64b5f6}
-.b1-box{background:rgba(255,167,38,.06);padding:14px 18px;border-radius:6px;margin-bottom:16px;font-size:14px;border-left:3px solid #ffa726}
-.b1-label{font-weight:700;color:#ffa726}
-@keyframes fadeIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
-.footer{text-align:center;padding:32px;color:#455a64;font-size:12px;letter-spacing:1px}
+  :root {
+    /* 基础（亮色） */
+    --bg-primary: #fafbfc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f0f2f5;
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a5568;
+    --text-tertiary: #5A6675;   /* 修复：原 #718096 对比 3.71:1 不达标 */
+    --border: #e2e8f0;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    /* 押题卷语义令牌 */
+    --correct: #047857;         /* 修复：原 #059669 对比不足，加深 */
+    --correct-bg: #ecfdf5;
+    --correct-border: #6ee7b7;
+    --wrong: #dc2626;
+    --wrong-bg: #fef2f2;
+    --wrong-border: #fca5a5;
+    --picked: #7c3aed;
+    --picked-bg: #f5f3ff;
+    --picked-border: #c4b5fd;
+    /* 组件规格（全站统一） */
+    --radius-card: 12px;
+    --radius-option: 8px;
+    --radius-bar: 6px;
+    --hover-shift: 3px;
+    --shadow: 0 2px 12px rgba(0,0,0,.06);
+    --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  [data-theme="dark"] {
+    --bg-primary: #0f1117;
+    --bg-secondary: #161822;
+    --bg-tertiary: #1e2030;
+    --text-primary: #e2e4e9;
+    --text-secondary: #a0a6b5;
+    --text-tertiary: #8A93A3;   /* 修复：原 #6b7280 对比 4.21:1 不达标 */
+    --border: #2a2d3a;
+    --accent: #60a5fa;
+    --accent-light: #1a2e4a;
+    --correct: #34d399;
+    --correct-bg: #0a2e1f;
+    --correct-border: #1a4a30;
+    --wrong: #f87171;
+    --wrong-bg: #3b1219;
+    --wrong-border: #5c1f24;
+    --picked: #a78bfa;
+    --picked-bg: #1e123b;
+    --picked-border: #3a2560;
+    --shadow: 0 2px 12px rgba(0,0,0,.3);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-body); font-size: 15px; line-height: 1.8;
+    background: var(--bg-primary); color: var(--text-primary);
+    padding-top: 96px; transition: background .25s ease, color .25s ease;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px 40px; }
 
+  /* ---------- 顶栏 ---------- */
+  #topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: linear-gradient(135deg, #1a3a5f, #2563eb);
+    color: #fff; padding: 12px 20px 10px;
+  }
+  #topbar h1 { font-size: 18px; font-weight: 700; }
+  #topbar .sub { font-size: 12px; opacity: .85; margin-top: 2px; }
+  .bar-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .score { font-size: 13px; font-variant-numeric: tabular-nums; }
+  .btn {
+    font-size: 12px; padding: 5px 12px; border-radius: 14px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.45); background: rgba(255,255,255,.12);
+    color: #fff; font-family: inherit; transition: background .15s;
+  }
+  .btn:hover { background: rgba(255,255,255,.25); }
+  .btn.active { background: #fff; color: #1a3a5f; border-color: #fff; font-weight: 700; }
+  #progress { height: 6px; border-radius: var(--radius-bar); background: rgba(255,255,255,.2); margin-top: 8px; overflow: hidden; }
+  #progress-fill { height: 100%; width: 0; border-radius: var(--radius-bar); background: #34d399; transition: width .3s ease; }
 
+  /* ---------- 系统筛选（可选功能：题目带 system 字段时自动启用） ---------- */
+  #system-tags { display: none; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  #system-tags.show { display: flex; }
+  .system-tag {
+    font-size: 12px; padding: 3px 10px; border-radius: 12px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.4); color: #fff; background: transparent;
+    font-family: inherit;
+  }
+  .system-tag.active { background: #fff; color: #1a3a5f; font-weight: 700; }
+
+  /* ---------- 题卡 ---------- */
+  .question {
+    background: var(--bg-secondary); border-radius: var(--radius-card);
+    box-shadow: var(--shadow); padding: 22px 24px; margin: 18px 0;
+    border-left: 4px solid transparent; transition: background .2s;
+    break-inside: avoid;
+  }
+  .question.is-correct { border-left-color: var(--correct); background: var(--correct-bg); }
+  .question.is-wrong { border-left-color: var(--wrong); background: var(--wrong-bg); }
+  .q-meta { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+  .q-num { font-size: 13px; font-weight: 700; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+  .q-type {
+    font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 4px;
+    background: var(--accent-light); color: var(--accent);
+  }
+  .q-bloom { font-size: 12px; color: var(--text-tertiary); }
+  .q-verdict { font-size: 12px; font-weight: 700; margin-left: auto; }
+  .q-verdict.ok { color: var(--correct); }
+  .q-verdict.no { color: var(--wrong); }
+  .q-stem { font-size: 15.5px; line-height: 1.85; margin-bottom: 14px; }
+  .q-stem b { font-weight: 700; } /* 否定词加粗（R4 规范） */
+
+  /* ---------- 选项（三通道反馈：颜色 + ✓/✗ + 文字） ---------- */
+  .option {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14.5px; line-height: 1.7; padding: 10px 14px; margin: 8px 0;
+    border: 2px solid var(--border); border-radius: var(--radius-option);
+    cursor: pointer; background: var(--bg-tertiary);
+    transition: transform .15s ease, border-color .15s, background .15s;
+  }
+  .option:hover { border-color: var(--accent); transform: translateX(var(--hover-shift)); }
+  .opt-label { font-weight: 700; font-size: 13px; color: var(--accent); min-width: 18px; padding-top: 1px; }
+  .opt-mark { font-weight: 700; font-size: 14px; margin-left: auto; min-width: 16px; text-align: right; }
+  .option.picked { border-color: var(--picked); background: var(--picked-bg); }
+  .option.picked .opt-label { color: var(--picked); }
+  .option.correct-show { border-color: var(--correct); background: var(--correct-bg); }
+  .option.correct-show .opt-label { color: var(--correct); }
+  .option.correct-show .opt-mark { color: var(--correct); }
+  .option.wrong-pick { border-color: var(--wrong); background: var(--wrong-bg); }
+  .option.wrong-pick .opt-label { color: var(--wrong); }
+  .option.wrong-pick .opt-mark { color: var(--wrong); }
+
+  /* ---------- 解析 ---------- */
+  .answer-box {
+    display: none; margin-top: 12px; padding: 14px 16px;
+    border-radius: var(--radius-option); font-size: 13.5px; line-height: 1.8;
+    background: var(--bg-tertiary); animation: fadeIn .2s ease;
+  }
+  .answer-box.show { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .ans-head { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .answer-box.ok .ans-head { color: var(--correct); }
+  .answer-box.no .ans-head { color: var(--wrong); }
+  .exp { color: var(--text-secondary); }
+  .src { font-size: 12px; color: var(--text-tertiary); margin-top: 6px; }
+
+  /* ---------- X 型多选确认（2026-08-21 迁移补全：原模板只切换不判分） ---------- */
+  .multi-confirm { margin-top: 10px; display: flex; align-items: center; gap: 10px; }
+  .btn-confirm {
+    font-size: 13px; padding: 6px 18px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--accent); background: var(--accent); color: #fff;
+    font-family: inherit; transition: background .15s, opacity .15s;
+  }
+  .btn-confirm:hover { opacity: .88; }
+  .btn-confirm:disabled { opacity: .45; cursor: default; }
+
+  /* ---------- 主题切换 ---------- */
+  .theme-fab {
+    position: fixed; right: 16px; bottom: 16px; z-index: 99;
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border);
+    background: var(--bg-secondary); color: var(--text-primary); cursor: pointer;
+    font-size: 17px; box-shadow: var(--shadow); font-family: inherit;
+  }
+
+  /* ---------- 响应式（640px） ---------- */
+  @media (max-width: 640px) {
+    body { padding-top: 118px; font-size: 14.5px; }
+    #topbar { padding: 10px 14px 8px; }
+    #topbar h1 { font-size: 16px; }
+    .container { padding: 0 12px 24px; }
+    .question { padding: 16px 14px; }
+    .q-stem { font-size: 14.5px; }
+    .option { font-size: 13.5px; padding: 9px 12px; }
+  }
+
+  /* ---------- 打印（保色 + 防断裂 + 默认展开解析） ---------- */
+  @media print {
+    body { background: #fff; padding-top: 0; font-size: 12px; }
+    #topbar, .theme-fab, .no-print { display: none !important; }
+    .question { box-shadow: none; border: 1px solid #ddd; border-left: 4px solid #999; background: #fff !important; }
+    .answer-box { display: block !important; }
+    .option { cursor: default; pointer-events: none; }
+    .option.correct-show { border-color: #047857 !important; background: #ecfdf5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .option.wrong-pick { border-color: #dc2626 !important; background: #fef2f2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
 </style>
 </head>
-<body><div id="topbar">
-<div class="inner">
-<h1>外科学 押题卷</h1><span class="meta">108题 | MedAgentWork · batch022</span>
-<div class="subtitle">基于教师复习重点 + 考研西综高频考点 · 临床医学大三下学期</div>
-<div class="progress-row">
-<div class="progress-wrap"><div class="progress-bar" id="pbar"></div></div>
-<span class="progress-label" id="plabel">0/108</span>
-</div>
-<div class="btn-row">
-<span style="font-size:12px;opacity:.7">✅<b id="cc">0</b> ❌<b id="wc">0</b> 📊<b id="sp">0%</b></span>
-<span style="flex:1"></span>
-<button class="btn-reset" onclick="Quiz.reset()">🔄 重置</button>
-<button class="btn-show" onclick="Quiz.showAll()">📖 展开解析</button>
-</div>
-</div>
-</div>
-<div class="container"><div id="quiz-root"></div></div>
-<div class="footer">MedAgentWork · 外科学押题卷 · 点击选项直接作答 · 医学事实基于人卫九版《外科学》及考研西综高频考点</div>
-</div>
-<script>
-var Quiz = (function(){
-var data = [
-  {
-    "t": "q",
-    "n": 1,
-    "tp": "A1",
-    "s": "手术区皮肤消毒范围要包括手术切口周围至少",
-    "o": [
-      {
-        "l": "A",
-        "x": "5cm"
-      },
-      {
-        "l": "B",
-        "x": "10cm"
-      },
-      {
-        "l": "C",
-        "x": "15cm"
-      },
-      {
-        "l": "D",
-        "x": "20cm"
-      },
-      {
-        "l": "E",
-        "x": "25cm"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "手术区皮肤消毒范围要包括手术切口周围至少15cm的区域。如手术有延长切口的可能，则应相应扩大消毒范围。无菌术是外科手术的基础，包括灭菌法、抗菌法及一定的操作规则和管理制度。（教材：无菌术章节）",
-    "sr": "教材无菌术章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 2,
-    "tp": "A1",
-    "s": "高压蒸汽灭菌法的标准灭菌条件是",
-    "o": [
-      {
-        "l": "A",
-        "x": "100℃×20min"
-      },
-      {
-        "l": "B",
-        "x": "110℃×30min"
-      },
-      {
-        "l": "C",
-        "x": "121℃×30min"
-      },
-      {
-        "l": "D",
-        "x": "131℃×10min"
-      },
-      {
-        "l": "E",
-        "x": "115℃×40min"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "高压蒸汽灭菌法是最可靠的灭菌方法，标准条件为121℃（压力102.9kPa）维持30分钟。适用于耐高温、耐湿的物品，如金属器械、玻璃器皿、布类敷料等。130℃（压力205.8kPa）可在10分钟内达到灭菌效果但不能常规使用。（教材：无菌术章）",
-    "sr": "教材无菌术章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 3,
-    "tp": "A1",
-    "s": "等渗性脱水最常见的原因是",
-    "o":[{"l":"A","x":"大量出汗"},{"l":"B","x":"长期禁食"},{"l":"C","x":"大量呕吐和腹泻"},{"l":"D","x":"尿崩症表现"},{"l":"E","x":"糖尿病酮症酸中毒"}],
-    "c": [
-      "C"
-    ],
-    "ex": "等渗性脱水（急性脱水/混合性脱水）是外科最常见的缺水类型，水和钠成比例丢失。常见原因：①消化液急性丢失（大量呕吐、腹泻、肠瘘）；②体液丧失在感染区或软组织内（腹腔内感染、肠梗阻、烧伤）。等渗性脱水时血清钠在135-145mmol/L正常范围，但细胞外液量急剧减少。（教材：水电解质平衡章）",
-    "sr": "教材水电解质章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 4,
-    "tp": "A1",
-    "s": "低渗性脱水的血清钠浓度标准是",
-    "o": [
-      {
-        "l": "A",
-        "x": "<130mmol/L"
-      },
-      {
-        "l": "B",
-        "x": "<135mmol/L"
-      },
-      {
-        "l": "C",
-        "x": "<140mmol/L"
-      },
-      {
-        "l": "D",
-        "x": "<145mmol/L"
-      },
-      {
-        "l": "E",
-        "x": "<150mmol/L"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "低渗性脱水（慢性脱水/继发性脱水）血清钠<135mmol/L，水和钠同时丢失但失钠多于失水，细胞外液呈低渗状态。常见于：①消化液持续丢失后只补水；②大创面渗液后只补水；③长期使用排钠利尿剂。临床特征：轻度(<135)疲乏头晕，中度(<130)恶心呕吐血压下降，重度(<120)神志不清休克。（教材：水电解质章）",
-    "sr": "教材水电解质章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 5,
-    "tp": "A1",
-    "s": "高钾血症最危险的表现是",
-    "o": [
-      {
-        "l": "A",
-        "x": "四肢麻木"
-      },
-      {
-        "l": "B",
-        "x": "恶心呕吐"
-      },
-      {
-        "l": "C",
-        "x": "心脏骤停"
-      },
-      {
-        "l": "D",
-        "x": "代谢性酸中毒"
-      },
-      {
-        "l": "E",
-        "x": "肠麻痹"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "高钾血症（血清钾>5.5mmol/L）对机体的主要危害是心脏毒性，可导致各种心律失常甚至心脏骤停（舒张期停搏）。ECG特征：早期T波高尖、QT间期缩短→QRS波增宽、P波低平消失→室颤或心脏停搏。紧急处理：静注10%葡萄糖酸钙10-20ml对抗K+对心肌的毒性。（教材：水电解质章）",
-    "sr": "教材水电解质章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 6,
-    "tp": "A1",
-    "s": "代谢性酸中毒最突出的临床表现是",
-    "o": [
-      {
-        "l": "A",
-        "x": "面色潮红"
-      },
-      {
-        "l": "B",
-        "x": "呼吸深快"
-      },
-      {
-        "l": "C",
-        "x": "心率减慢"
-      },
-      {
-        "l": "D",
-        "x": "腱反射亢进"
-      },
-      {
-        "l": "E",
-        "x": "手足抽搐"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "代谢性酸中毒时，H+浓度升高刺激外周化学感受器和延髓呼吸中枢，引起代偿性呼吸深快（Kussmaul呼吸），以排出更多CO2降低PCO2。面色潮红、心率增快也可见到。HCO3-下降，BE负值增大。治疗要点：积极处理原发病，pH<7.2时可补碱。（教材：酸碱平衡章）",
-    "sr": "教材酸碱平衡章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 7,
-    "tp": "X",
-    "s": "代谢性碱中毒的常见病因包括",
-    "o": [
-      {
-        "l": "A",
-        "x": "幽门梗阻剧烈呕吐"
-      },
-      {
-        "l": "B",
-        "x": "长期胃肠减压"
-      },
-      {
-        "l": "C",
-        "x": "大量输注库存血"
-      },
-      {
-        "l": "D",
-        "x": "长期使用呋塞米"
-      },
-      {
-        "l": "E",
-        "x": "严重腹泻"
-      }
-    ],
-    "c": [
-      "A",
-      "B",
-      "D"
-    ],
-    "ex": "代谢性碱中毒HCO3-原发性升高。常见病因：①H+丢失过多——幽门梗阻剧烈呕吐、长期胃肠减压（丢HCl）；②低钾血症——细胞内外K+-H+交换、肾排H+增多；③利尿剂（呋塞米等袢利尿剂）——增加Na+远曲小管交换K+和H+；④碱性物质摄入过多。C为高钾血症原因之一（库存血含高K+），E导致代谢性酸中毒。（教材：酸碱平衡章）",
-    "sr": "教材酸碱平衡章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 8,
-    "tp": "A1",
-    "s": "休克微循环缺血期的特征性变化是",
-    "o": [
-      {
-        "l": "A",
-        "x": "毛细血管前括约肌舒张"
-      },
-      {
-        "l": "B",
-        "x": "微循环只出不进"
-      },
-      {
-        "l": "C",
-        "x": "毛细血管前括约肌收缩"
-      },
-      {
-        "l": "D",
-        "x": "微循环只进不出"
-      },
-      {
-        "l": "E",
-        "x": "微循环广泛开放"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "休克微循环分为三期：①缺血期（代偿期）——儿茶酚胺大量释放，毛细血管前括约肌收缩→微循环「只出不进」；②淤血期（失代偿期）——酸中毒使毛细血管前括约肌舒张，后微静脉仍收缩→微循环「只进不出」；③衰竭期（DIC期）——血液高凝、微血栓形成。选项B描述的是淤血期。（教材：休克章）",
-    "sr": "教材休克章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 9,
-    "tp": "A1",
-    "s": "休克监测中最能反映组织灌注情况的指标是",
-    "o": [
-      {
-        "l": "A",
-        "x": "动脉血压"
-      },
-      {
-        "l": "B",
-        "x": "中心静脉压"
-      },
-      {
-        "l": "C",
-        "x": "每小时尿量"
-      },
-      {
-        "l": "D",
-        "x": "心率变化"
-      },
-      {
-        "l": "E",
-        "x": "血红蛋白"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "尿量是反映肾血流灌注的敏感指标，可间接反映全身组织灌注。休克患者尿量<25ml/h提示肾灌注不足，尿量>30ml/h表明休克改善。血压不是敏感指标，心率和CVP受多种因素影响。尿量是最简单、可靠的组织灌注监测指标。（教材：休克章）",
-    "sr": "教材休克章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 10,
-    "tp": "A1",
-    "s": "感染性休克的血流动力学特征是",
-    "o": [
-      {
-        "l": "A",
-        "x": "高排高阻型"
-      },
-      {
-        "l": "B",
-        "x": "低排低阻型"
-      },
-      {
-        "l": "C",
-        "x": "高排低阻型"
-      },
-      {
-        "l": "D",
-        "x": "低排高阻型"
-      },
-      {
-        "l": "E",
-        "x": "正常排高阻型"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "感染性休克血流动力学分为两型：①高排低阻型（暖休克）——外周血管扩张、阻力降低、心输出量正常或增高，皮肤温暖干燥（多见于G+菌感染早期）；②低排高阻型（冷休克）——外周血管收缩、阻力增高、心输出量减少，皮肤湿冷（多见于G-菌感染）。暖休克较少见但预后较好。（教材：休克章）",
-    "sr": "教材休克章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 11,
-    "tp": "A2",
-    "s": "患者男性，40岁，车祸致脾破裂。血压80/50mmHg，心率120次/分，四肢湿冷，尿量15ml/h。该患者休克的类型是",
-    "o": [
-      {
-        "l": "A",
-        "x": "心源性休克"
-      },
-      {
-        "l": "B",
-        "x": "感染性休克"
-      },
-      {
-        "l": "C",
-        "x": "过敏性休克"
-      },
-      {
-        "l": "D",
-        "x": "低血容量性休克"
-      },
-      {
-        "l": "E",
-        "x": "神经源性休克"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "患者因脾破裂大出血，血压下降、心率增快、四肢湿冷、尿量减少，符合低血容量性休克（失血性休克）的典型表现。脾破裂是腹腔脏器损伤中最常见的实质脏器损伤，出血量大，需紧急手术。低血容量性休克的核心治疗是补充血容量和止血。（教材：休克章）",
-    "sr": "教材休克章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 12,
-    "tp": "A1",
-    "s": "外科感染的特点不包括",
-    "o": [
-      {
-        "l": "A",
-        "x": "多为混合感染"
-      },
-      {
-        "l": "B",
-        "x": "局部症状明显"
-      },
-      {
-        "l": "C",
-        "x": "常需手术处理"
-      },
-      {
-        "l": "D",
-        "x": "以病毒感染为主"
-      },
-      {
-        "l": "E",
-        "x": "常伴组织坏死"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "外科感染的特点：①多为需氧菌与厌氧菌的混合感染；②局部症状和体征明显（红、肿、热、痛、功能障碍）；③病变多呈器质性，常伴组织坏死和化脓；④常需手术切开引流或清创处理。外科感染以细菌感染为主（主要是G+球菌和G-杆菌），病毒感染不属于外科感染的常见病原类型。（教材：外科感染章）",
-    "sr": "教材外科感染章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 13,
-    "tp": "A1",
-    "s": "破伤风梭菌感染的特征性临床表现是",
-    "o": [
-      {
-        "l": "A",
-        "x": "高热寒战"
-      },
-      {
-        "l": "B",
-        "x": "苦笑面容和角弓反张"
-      },
-      {
-        "l": "C",
-        "x": "伤口脓性分泌物"
-      },
-      {
-        "l": "D",
-        "x": "皮下捻发感"
-      },
-      {
-        "l": "E",
-        "x": "局部红肿热痛"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "破伤风是由破伤风梭菌（G+厌氧芽孢杆菌）经伤口侵入，产生痉挛毒素（破伤风痉挛毒素）引起的急性特异性感染。特征性表现：①肌紧张性收缩（肌强直）——咀嚼肌（张口困难、苦笑面容）→颈项→躯干（角弓反张）→四肢；②阵发性强烈痉挛——轻微刺激即可诱发。患者神志始终清楚。潜伏期6-12天，潜伏期越短病情越重。（教材：外科感染章）",
-    "sr": "教材外科感染章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 14,
-    "tp": "A1",
-    "s": "痈的致病菌主要是",
-    "o":[{"l":"A","x":"大肠杆菌"},{"l":"B","x":"绿脓杆菌"},{"l":"C","x":"金黄色葡萄球菌"},{"l":"D","x":"链球菌感染"},{"l":"E","x":"厌氧菌"}],
-    "c": [
-      "C"
-    ],
-    "ex": "痈是多个相邻毛囊及其周围组织的急性化脓性感染，致病菌以金黄色葡萄球菌最多见。好发于颈项、背部等皮肤厚韧处。表现为多个脓头、大片炎性浸润区、剧烈疼痛。全身症状重，需切开引流（做「+」或「++」字形切口）。糖尿病患者易发生痈。（教材：外科感染章）",
-    "sr": "教材外科感染章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 15,
-    "tp": "X",
-    "s": "全身性外科感染（脓毒症）的诊断标准包括",
-    "o": [
-      {
-        "l": "A",
-        "x": "体温>38℃或<36℃"
-      },
-      {
-        "l": "B",
-        "x": "心率>90次/分"
-      },
-      {
-        "l": "C",
-        "x": "呼吸>20次/分"
-      },
-      {
-        "l": "D",
-        "x": "白细胞>12×10⁹/L或<4×10⁹/L"
-      },
-      {
-        "l": "E",
-        "x": "血糖>15mmol/L"
-      }
-    ],
-    "c": [
-      "A",
-      "B",
-      "C",
-      "D"
-    ],
-    "ex": "脓毒症（SIRS+感染证据）诊断标准（满足≥2项）：①体温>38℃或<36℃；②心率>90次/分；③呼吸>20次/分或PaCO2<32mmHg；④白细胞>12×10⁹/L或<4×10⁹/L或幼稚杆状核>10%。严重脓毒症=脓毒症+器官功能障碍。脓毒性休克=脓毒症+充分液体复苏后仍持续低血压。E高血糖不是SIRS标准项。（教材：外科感染章）",
-    "sr": "教材外科感染章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 16,
-    "tp": "A1",
-    "s": "创伤愈合过程中，伤口收缩的主要细胞是",
-    "o": [
-      {
-        "l": "A",
-        "x": "中性粒细胞"
-      },
-      {
-        "l": "B",
-        "x": "巨噬细胞"
-      },
-      {
-        "l": "C",
-        "x": "肌成纤维细胞"
-      },
-      {
-        "l": "D",
-        "x": "血管内皮细胞"
-      },
-      {
-        "l": "E",
-        "x": "淋巴细胞"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "创伤愈合过程分为：①炎症期（3-5天）——中性粒细胞、巨噬细胞清除坏死组织；②增生期——成纤维细胞增殖合成胶原、肌成纤维细胞收缩使伤口缩小、血管内皮细胞增殖形成新生毛细血管（肉芽组织）；③塑形期——胶原纤维交联重组。肌成纤维细胞具有平滑肌细胞特性，其收缩使创面缩小。（教材：创伤章）",
-    "sr": "教材创伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 17,
-    "tp": "A1",
-    "s": "成人双上肢烧伤面积按照中国九分法计算为",
-    "o": [
-      {
-        "l": "A",
-        "x": "9%"
-      },
-      {
-        "l": "B",
-        "x": "18%"
-      },
-      {
-        "l": "C",
-        "x": "27%"
-      },
-      {
-        "l": "D",
-        "x": "36%"
-      },
-      {
-        "l": "E",
-        "x": "45%"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "中国九分法（成人）：头面颈9%（头6面3颈3），双上肢18%（双手5双前臂6双上臂7，即9%×2），躯干27%（前13后13会阴1，即9%×3），双下肢46%（双臀5双足7双小腿13双大腿21，即9%×5+1%）。儿童头大下肢小，需用公式校正。（教材：烧伤章）",
-    "sr": "教材烧伤章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 18,
-    "tp": "A2",
-    "s": "患者男性，30岁，体重60kg。火焰烧伤后2小时入院。烧伤面积：双下肢（不含臀部）34%，躯干前13%。烧伤深度：浅Ⅱ度为主。第一个24小时应补液量为",
-    "o": [
-      {
-        "l": "A",
-        "x": "3000ml"
-      },
-      {
-        "l": "B",
-        "x": "4230ml"
-      },
-      {
-        "l": "C",
-        "x": "5600ml"
-      },
-      {
-        "l": "D",
-        "x": "6200ml"
-      },
-      {
-        "l": "E",
-        "x": "7000ml"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "烧伤面积=34%+13%=47%。伤后第一个24小时补液量公式（国内通用）：每1%烧伤面积×体重(kg)×1.5ml（胶体+电解质液）+基础需水量2000ml（5%GS）。计算：47×60×1.5+2000=4230+2000=6230ml。但题目选项B为4230ml可能只算胶晶部分（不含基础水），也有教材直接用Parkland公式。国内公式区分：胶体:电解质=0.5:1，电解质首选平衡盐溶液。第二个24小时为第一个24小时的一半+基础水。（教材：烧伤章）",
-    "sr": "教材烧伤章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 19,
-    "tp": "A1",
-    "s": "临床上最严重的输血并发症是",
-    "o": [
-      {
-        "l": "A",
-        "x": "发热反应"
-      },
-      {
-        "l": "B",
-        "x": "过敏反应"
-      },
-      {
-        "l": "C",
-        "x": "溶血反应"
-      },
-      {
-        "l": "D",
-        "x": "细菌污染反应"
-      },
-      {
-        "l": "E",
-        "x": "循环超负荷"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "溶血反应是最严重的输血并发症，多由ABO血型不合引起。典型表现：输入10-20ml后出现沿输血静脉的疼痛、发热、寒战、呼吸困难、腰背酸痛、血红蛋白尿、低血压休克。可导致急性肾功能衰竭和DIC，死亡率高。处理：立即停止输血、维持循环、利尿、碱化尿液、透析。发热反应是最常见的输血并发症。（教材：输血章）",
-    "sr": "教材输血章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 20,
-    "tp": "A1",
-    "s": "成分输血中，新鲜冰冻血浆（FFP）的主要适应证是",
-    "o": [
-      {
-        "l": "A",
-        "x": "补充血容量"
-      },
-      {
-        "l": "B",
-        "x": "纠正贫血"
-      },
-      {
-        "l": "C",
-        "x": "补充凝血因子"
-      },
-      {
-        "l": "D",
-        "x": "提高胶体渗透压"
-      },
-      {
-        "l": "E",
-        "x": "补充血小板"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "FFP含有全部凝血因子，主要用于凝血因子缺乏导致的出血（如肝病、DIC、大量输血后稀释性凝血障碍）。补充血容量首选晶体液和人造胶体，纠正贫血输红细胞，提高胶渗压输白蛋白，补充血小板输浓缩血小板。FFP的输注指征应严格把握，不用于扩容和营养支持。（教材：输血章）",
-    "sr": "教材输血章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 21,
-    "tp": "A1",
-    "s": "成人择期手术术前禁食、禁水的时间分别是",
-    "o": [
-      {
-        "l": "A",
-        "x": "禁食6h，禁水2h"
-      },
-      {
-        "l": "B",
-        "x": "禁食8h，禁水4h"
-      },
-      {
-        "l": "C",
-        "x": "禁食12h，禁水4h"
-      },
-      {
-        "l": "D",
-        "x": "禁食12h，禁水6h"
-      },
-      {
-        "l": "E",
-        "x": "禁食24h，禁水8h"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "成人择期手术常规术前禁食12小时、禁水4小时（麻醉诱导前2小时可饮少量清水）。目的是防止麻醉或手术过程中发生胃内容物反流误吸（Mendelson综合征）。小儿禁食时间可适当缩短。（教材：围手术期章）",
-    "sr": "教材围手术期章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 22,
-    "tp": "A1",
-    "s": "手术后最常见的并发症是",
-    "o": [
-      {
-        "l": "A",
-        "x": "切口感染"
-      },
-      {
-        "l": "B",
-        "x": "肺部感染"
-      },
-      {
-        "l": "C",
-        "x": "深静脉血栓"
-      },
-      {
-        "l": "D",
-        "x": "尿潴留"
-      },
-      {
-        "l": "E",
-        "x": "切口裂开"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "切口感染是术后最常见的并发症，发生率约3%-5%（清洁切口<2%，污染切口可达20%+）。通常发生在术后3-5天，表现为切口红、肿、热、痛，可伴发热和白细胞升高。预防措施包括严格无菌操作、术前备皮不过早、围术期预防性使用抗生素、精细止血避免血肿。（教材：围手术期章）",
-    "sr": "教材围手术期章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 23,
-    "tp": "X",
-    "s": "预防术后深静脉血栓形成的措施包括",
-    "o": [
-      {
-        "l": "A",
-        "x": "早期下床活动"
-      },
-      {
-        "l": "B",
-        "x": "弹力袜/间歇充气加压"
-      },
-      {
-        "l": "C",
-        "x": "术后长期卧床休息"
-      },
-      {
-        "l": "D",
-        "x": "低分子肝素抗凝"
-      },
-      {
-        "l": "E",
-        "x": "充分补液避免血液浓缩"
-      }
-    ],
-    "c": [
-      "A",
-      "B",
-      "D",
-      "E"
-    ],
-    "ex": "深静脉血栓（DVT）的预防：①基本预防——尽早下床活动、下肢主动/被动活动；②机械预防——弹力袜、间歇充气加压装置（IPC）；③药物预防——低分子肝素、磺达肝癸钠、华法林等。高危因素包括高龄、肥胖、恶性肿瘤、手术时间长、骨科大手术等。C「长期卧床」是促发因素而非预防措施。肺栓塞是DVT最危险的后果。（教材：围手术期章）",
-    "sr": "教材围手术期章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 24,
-    "tp": "A1",
-    "s": "局麻药毒性反应最早出现的症状是",
-    "o": [
-      {
-        "l": "A",
-        "x": "惊厥发作"
-      },
-      {
-        "l": "B",
-        "x": "呼吸停止"
-      },
-      {
-        "l": "C",
-        "x": "中枢神经系统兴奋症状"
-      },
-      {
-        "l": "D",
-        "x": "心律失常"
-      },
-      {
-        "l": "E",
-        "x": "血压下降"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "局麻药毒性反应首先表现为中枢神经系统症状：早期为兴奋型——口舌麻木、头晕耳鸣、多语、肌肉震颤、惊厥；严重时转为抑制型——昏迷、呼吸停止。心血管系统表现（心律失常、血压下降）在中枢症状之后出现。预防措施：不超过极量、回抽无血、加肾上腺素（指/趾/阴茎禁加）、术前使用苯二氮卓类药物提高惊厥阈。（教材：麻醉章）",
-    "sr": "教材麻醉章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 25,
-    "tp": "A1",
-    "s": "硬膜外麻醉最严重的并发症是",
-    "o": [
-      {
-        "l": "A",
-        "x": "低血压"
-      },
-      {
-        "l": "B",
-        "x": "局麻药毒性反应"
-      },
-      {
-        "l": "C",
-        "x": "硬膜外血肿"
-      },
-      {
-        "l": "D",
-        "x": "全脊髓麻醉"
-      },
-      {
-        "l": "E",
-        "x": "脊神经根损伤"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "全脊髓麻醉是最严重的硬膜外麻醉并发症，由于硬膜外导管误入蛛网膜下腔未及时发现，将大量局麻药注入蛛网膜下腔导致全部脊神经被阻滞。表现为注药后数分钟内出现全部脊神经支配区无痛、低血压、呼吸停止、神志消失。处理：立即面罩加压给氧、气管插管、升压药维持循环。硬膜外麻醉常见并发症为低血压。（教材：麻醉章）",
-    "sr": "教材麻醉章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 26,
-    "tp": "A1",
-    "s": "心肺复苏中，胸外按压与通气的比例是",
-    "o": [
-      {
-        "l": "A",
-        "x": "15:1"
-      },
-      {
-        "l": "B",
-        "x": "15:2"
-      },
-      {
-        "l": "C",
-        "x": "30:1"
-      },
-      {
-        "l": "D",
-        "x": "30:2"
-      },
-      {
-        "l": "E",
-        "x": "5:1"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "2015年AHA指南推荐成人基础生命支持（BLS）按压-通气比为30:2（无论单人还是双人施救）。按压频率100-120次/分，按压深度5-6cm。成人CPR流程为C-A-B（胸外按压→开放气道→人工呼吸），高质量CPR强调：快速按压、用力按压、充分回弹、减少中断。电除颤（室颤/无脉性室速）应在获取AED后尽快实施。（教材：心肺复苏章）",
-    "sr": "教材心肺复苏章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 27,
-    "tp": "A1",
-    "s": "肠内营养相对于肠外营养的主要优点是",
-    "o": [
-      {
-        "l": "A",
-        "x": "操作简单"
-      },
-      {
-        "l": "B",
-        "x": "费用更低"
-      },
-      {
-        "l": "C",
-        "x": "维护肠黏膜屏障功能"
-      },
-      {
-        "l": "D",
-        "x": "热量更高"
-      },
-      {
-        "l": "E",
-        "x": "并发症更少"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "肠内营养（EN）的最大优势是维护肠黏膜屏障功能，防止肠道菌群移位（gut barrier function）。肠道是应激反应的中心器官，长期禁食和使用肠外营养（PN）可导致肠黏膜萎缩、通透性增加，使细菌和内毒素进入血液循环。EN还能促进胃肠激素分泌、改善门静脉循环。首选原则：只要肠道有功能就用肠内营养。（教材：营养章）",
-    "sr": "教材营养章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 28,
-    "tp": "A1",
-    "s": "恶性肿瘤与良性肿瘤的根本区别在于",
-    "o": [
-      {
-        "l": "A",
-        "x": "生长速度"
-      },
-      {
-        "l": "B",
-        "x": "有无包膜"
-      },
-      {
-        "l": "C",
-        "x": "有无转移"
-      },
-      {
-        "l": "D",
-        "x": "对机体影响"
-      },
-      {
-        "l": "E",
-        "x": "细胞分化程度"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "有无转移（浸润和转移能力）是恶性肿瘤与良性肿瘤的根本区别。良性肿瘤不转移，恶性肿瘤可发生局部浸润和远处转移（淋巴道、血道、种植转移）。其他特点：良性肿瘤分化好、异型性小、生长慢、有包膜、不复发；恶性肿瘤分化差、异型性大、生长快、无包膜、易复发。（教材：肿瘤章）",
-    "sr": "教材肿瘤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 29,
-    "tp": "A1",
-    "s": "甲亢手术治疗的绝对适应证是",
-    "o": [
-      {
-        "l": "A",
-        "x": "轻度甲亢"
-      },
-      {
-        "l": "B",
-        "x": "青少年甲亢"
-      },
-      {
-        "l": "C",
-        "x": "胸骨后甲状腺肿伴甲亢"
-      },
-      {
-        "l": "D",
-        "x": "妊娠早期甲亢"
-      },
-      {
-        "l": "E",
-        "x": "浸润性突眼"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "甲亢手术适应证：①中重度甲亢长期服药无效或复发；②甲状腺巨大有压迫症状（胸骨后甲状腺肿）；③结节性甲状腺肿伴甲亢；④疑有恶变。禁忌证：①青少年甲亢；②轻度甲亢；③老年或有严重器质性疾病不能耐受手术；④浸润性突眼术后可能加重。妊娠期甲亢：早期（1-3月）手术，中晚期药物。（教材：甲状腺章）",
-    "sr": "教材甲状腺章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 30,
-    "tp": "A1",
-    "s": "甲状腺次全切除术后最危急的并发症是",
-    "o": [
-      {
-        "l": "A",
-        "x": "喉返神经损伤"
-      },
-      {
-        "l": "B",
-        "x": "甲状旁腺功能减退"
-      },
-      {
-        "l": "C",
-        "x": "甲状腺危象"
-      },
-      {
-        "l": "D",
-        "x": "出血窒息"
-      },
-      {
-        "l": "E",
-        "x": "喉上神经损伤"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "术后出血导致窒息是最危急的并发症，多发生于术后24-48小时内。原因：甲状腺上动脉或静脉结扎线脱落、残留腺体创面渗血。表现为颈部迅速肿胀、呼吸困难、发绀，需立即床旁拆除缝线、清除血肿、气管插管或切开。甲状腺危象虽然严重但发生率低且多发生于术后12-36h。喉返神经损伤导致声音嘶哑（单侧）或呼吸困难（双侧）。（教材：甲状腺章）",
-    "sr": "教材甲状腺章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 31,
-    "tp": "A1",
-    "s": "甲状腺癌中最常见且预后最好的病理类型是",
-    "o": [
-      {
-        "l": "A",
-        "x": "乳头状癌"
-      },
-      {
-        "l": "B",
-        "x": "滤泡状癌"
-      },
-      {
-        "l": "C",
-        "x": "髓样癌"
-      },
-      {
-        "l": "D",
-        "x": "未分化癌"
-      },
-      {
-        "l": "E",
-        "x": "鳞状细胞癌"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "乳头状癌占甲状腺癌的60%-80%（最常见），多见于中青年女性，生长缓慢、淋巴结转移早但预后好（10年生存率>90%）。滤泡状癌占10%-15%，血行转移为主。髓样癌来源于滤泡旁C细胞，分泌降钙素，可有家族性。未分化癌占5%-10%，多见于老年人，恶性程度最高，平均生存3-6个月。（教材：甲状腺章）",
-    "sr": "教材甲状腺章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 32,
-    "tp": "A1",
-    "s": "甲状腺癌手术后出现手足抽搐，可能的原因是",
-    "o": [
-      {
-        "l": "A",
-        "x": "喉返神经损伤"
-      },
-      {
-        "l": "B",
-        "x": "喉上神经损伤"
-      },
-      {
-        "l": "C",
-        "x": "甲状腺功能减退"
-      },
-      {
-        "l": "D",
-        "x": "甲状旁腺功能减退"
-      },
-      {
-        "l": "E",
-        "x": "气管软化塌陷"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "甲状腺术后手足抽搐为甲状旁腺功能减退的典型表现。甲状旁腺术中误切或血供受损→PTH下降→低钙血症→神经肌肉兴奋性增高→手足抽搐。Chvostek征（轻扣面神经致口角抽动）和Trousseau征（束臂试验阳性）有助于诊断。处理：急症静注10%葡萄糖酸钙10-20ml，慢症口服钙剂+维生素D。（教材：甲状腺章）",
-    "sr": "教材甲状腺章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 33,
-    "tp": "A1",
-    "s": "乳腺癌最常见的病理类型是",
-    "o": [
-      {
-        "l": "A",
-        "x": "浸润性小叶癌"
-      },
-      {
-        "l": "B",
-        "x": "浸润性导管癌"
-      },
-      {
-        "l": "C",
-        "x": "髓样癌"
-      },
-      {
-        "l": "D",
-        "x": "黏液癌"
-      },
-      {
-        "l": "E",
-        "x": "Paget病"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "浸润性导管癌（非特殊型）占乳腺癌的70%-80%，是最常见的病理类型。乳腺癌好发于外上象限（45%-50%），其次为中央区、内上象限。转移途径以淋巴转移为主，主要转移至同侧腋窝淋巴结。乳腺癌分子分型：Luminal A（ER+/PR+/HER2-）、Luminal B、HER2过表达型、三阴型（Basal-like）。（教材：乳腺章）",
-    "sr": "教材乳腺章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 34,
-    "tp": "A1",
-    "s": "乳腺癌出现「橘皮样」外观的原因是",
-    "o": [
-      {
-        "l": "A",
-        "x": "Cooper韧带受累"
-      },
-      {
-        "l": "B",
-        "x": "皮下淋巴管被癌细胞堵塞"
-      },
-      {
-        "l": "C",
-        "x": "肿瘤侵犯皮肤"
-      },
-      {
-        "l": "D",
-        "x": "局部炎症反应"
-      },
-      {
-        "l": "E",
-        "x": "静脉回流受阻"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "乳腺癌皮肤「橘皮样」改变是由于皮下淋巴管被癌细胞堵塞，导致真皮水肿、毛囊处皮肤凹陷形成。而Cooper韧带受累缩短导致皮肤凹陷呈「酒窝征」。两者均为乳腺癌的重要体征。炎性乳癌表现为乳房皮肤红、肿、热、痛（类似急性乳腺炎），属特殊类型，预后差。（教材：乳腺章）",
-    "sr": "教材乳腺章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 35,
-    "tp": "X",
-    "s": "乳腺癌的高危因素包括",
-    "o": [
-      {
-        "l": "A",
-        "x": "月经初潮早（<12岁）"
-      },
-      {
-        "l": "B",
-        "x": "绝经年龄晚（>55岁）"
-      },
-      {
-        "l": "C",
-        "x": "未生育或晚育"
-      },
-      {
-        "l": "D",
-        "x": "BRCA1/2基因突变"
-      },
-      {
-        "l": "E",
-        "x": "哺乳时间长"
-      }
-    ],
-    "c": [
-      "A",
-      "B",
-      "C",
-      "D"
-    ],
-    "ex": "乳腺癌高危因素：①月经初潮早（<12岁）、绝经晚（>55岁）——雌激素暴露时间长；②未生育或30岁后初次生育；③BRCA1/2基因突变（遗传性乳腺癌）；④一级亲属乳腺癌史；⑤乳腺不典型增生；⑥绝经后肥胖；⑦胸部放射史。E「哺乳时间长」是保护因素而非危险因素，哺乳可降低乳腺癌风险。（教材：乳腺章）",
-    "sr": "教材乳腺章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 36,
-    "tp": "A1",
-    "s": "腹股沟斜疝与直疝最重要的鉴别依据是",
-    "o": [
-      {
-        "l": "A",
-        "x": "疝块形状"
-      },
-      {
-        "l": "B",
-        "x": "易否嵌顿"
-      },
-      {
-        "l": "C",
-        "x": "疝囊颈与腹壁下动脉的关系"
-      },
-      {
-        "l": "D",
-        "x": "发病年龄"
-      },
-      {
-        "l": "E",
-        "x": "是否进入阴囊"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "斜疝与直疝的根本区别在于疝囊颈与腹壁下动脉的关系：斜疝疝囊颈在腹壁下动脉外侧（经腹股沟管），直疝在内侧（经直疝三角-Hesselbach三角）。临床鉴别要点：①斜疝多见于青壮年，可入阴囊，呈梨形，易嵌顿；②直疝多见于老年人，不入阴囊，呈半球形，极少嵌顿。回纳疝块压住内环口，嘱患者咳嗽，斜疝不再突出而直疝仍可突出。（教材：腹外疝章）",
-    "sr": "教材腹外疝章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 37,
-    "tp": "A1",
-    "s": "嵌顿性疝与绞窄性疝的根本区别在于",
-    "o": [
-      {
-        "l": "A",
-        "x": "疝块大小"
-      },
-      {
-        "l": "B",
-        "x": "有无疼痛"
-      },
-      {
-        "l": "C",
-        "x": "有无肠梗阻"
-      },
-      {
-        "l": "D",
-        "x": "疝内容物有无血运障碍"
-      },
-      {
-        "l": "E",
-        "x": "疝发生时间"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "嵌顿性疝：疝内容物被卡住不能回纳但血运尚可。绞窄性疝：嵌顿后未及时处理，内容物血运障碍→缺血坏死。嵌顿性疝向绞窄性疝发展是连续过程，两者本质区别在于有无血运障碍。绞窄性疝疼痛加剧、疝块增大变硬、触痛明显，可伴肠梗阻和全身中毒症状，需紧急手术。（教材：腹外疝章）",
-    "sr": "教材腹外疝章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 38,
-    "tp": "A2",
-    "s": "患者男性，65岁。右腹股沟区可复性包块3年，今晨用力排便后包块突然增大，不能回纳，伴剧烈疼痛。查体：右腹股沟区可见8cm×5cm包块，张力高，触痛明显。最可能的诊断是",
-    "o": [
-      {
-        "l": "A",
-        "x": "腹股沟直疝"
-      },
-      {
-        "l": "B",
-        "x": "股疝"
-      },
-      {
-        "l": "C",
-        "x": "嵌顿性腹股沟斜疝"
-      },
-      {
-        "l": "D",
-        "x": "睾丸鞘膜积液"
-      },
-      {
-        "l": "E",
-        "x": "精索静脉曲张"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "患者有可复性腹股沟包块史（斜疝），用力后突然增大不能回纳+剧烈疼痛=嵌顿征象。老年患者直疝的可能性也存在，但嵌顿更多见于斜疝。嵌顿疝需紧急处理：手法复位（早期、无腹膜炎、儿童首选）或紧急手术。绞窄性疝表现为疼痛加剧、疝块增大变硬、触痛明显、肠梗阻、发热→肠坏死→需肠切除。（教材：腹外疝章）",
-    "sr": "教材腹外疝章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 39,
-    "tp": "A1",
-    "s": "腹部闭合性损伤中，最易损伤的实质脏器是",
-    "o": [
-      {
-        "l": "A",
-        "x": "肝"
-      },
-      {
-        "l": "B",
-        "x": "脾"
-      },
-      {
-        "l": "C",
-        "x": "胰"
-      },
-      {
-        "l": "D",
-        "x": "肾"
-      },
-      {
-        "l": "E",
-        "x": "肾上腺"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "脾是腹腔内最易受损的实质脏器，占腹部闭合性损伤的40%-50%。脾破裂分为中央型、被膜下破裂和真性破裂（最常见、最危险）。典型表现：左上腹痛、左肩放射痛（Kehr征）、失血性休克。治疗以脾切除为主，儿童和部分成人可行保脾手术。肝破裂次之（15%-20%），常合并胆道出血。（教材：腹部损伤章）",
-    "sr": "教材腹部损伤章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 40,
-    "tp": "A1",
-    "s": "腹部闭合性损伤诊断中最有意义的辅助检查是",
-    "o": [
-      {
-        "l": "A",
-        "x": "腹部B超"
-      },
-      {
-        "l": "B",
-        "x": "X线平片"
-      },
-      {
-        "l": "C",
-        "x": "诊断性腹腔穿刺"
-      },
-      {
-        "l": "D",
-        "x": "CT扫描"
-      },
-      {
-        "l": "E",
-        "x": "血常规"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "诊断性腹腔穿刺是最简单、最有效的腹部损伤辅助检查方法，阳性率可达90%以上。穿刺抽出不凝血提示实质脏器破裂（脾、肝），抽出消化液或浑浊液体提示空腔脏器破裂。穿刺阴性不能排除内脏损伤，可重复穿刺或灌洗。B超和CT为无创检查，CT准确率最高但不宜用于血流动力学不稳定者。X线发现膈下游离气体提示空腔脏器穿孔。（教材：腹部损伤章）",
-    "sr": "教材腹部损伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 41,
-    "tp": "A1",
-    "s": "胃十二指肠溃疡急性穿孔最具特征性的体征是",
-    "o": [
-      {
-        "l": "A",
-        "x": "上腹部压痛"
-      },
-      {
-        "l": "B",
-        "x": "肝浊音界缩小或消失"
-      },
-      {
-        "l": "C",
-        "x": "肠鸣音亢进"
-      },
-      {
-        "l": "D",
-        "x": "移动性浊音阳性"
-      },
-      {
-        "l": "E",
-        "x": "Murphy征阳性"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "消化性溃疡急性穿孔后，胃十二指肠内气体进入腹腔→膈下游离气体→肝浊音界缩小或消失（叩诊呈鼓音）。立位X线见膈下新月形游离气体可确认诊断（阳性率约80%）。典型症状：突发上腹剧痛（刀割样）→迅速蔓延全腹→腹膜刺激征（压痛、反跳痛、肌紧张→板状腹）。非手术治疗适用于空腹小穿孔、腹膜炎局限者。（教材：胃十二指肠章）",
-    "sr": "教材胃十二指肠章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 42,
-    "tp": "A1",
-    "s": "胃癌最主要的转移途径是",
-    "o": [
-      {
-        "l": "A",
-        "x": "直接蔓延"
-      },
-      {
-        "l": "B",
-        "x": "淋巴转移"
-      },
-      {
-        "l": "C",
-        "x": "血行转移"
-      },
-      {
-        "l": "D",
-        "x": "种植转移"
-      },
-      {
-        "l": "E",
-        "x": "跳跃转移"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "淋巴转移是胃癌最主要的转移途径，早期即可发生。胃癌淋巴引流按淋巴结分组和分站（D1/D2/D3），标准胃癌根治术行D2淋巴结清扫。血行转移多发生于晚期，最常见的远处转移部位是肝。种植转移在女性可形成Krukenberg瘤（卵巢转移瘤）。胃癌最常见的部位是胃窦部（约50%）。（教材：胃十二指肠章）",
-    "sr": "教材胃十二指肠章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 43,
-    "tp": "A1",
-    "s": "急性阑尾炎最具特征性的症状是",
-    "o":[{"l":"A","x":"发热症状"},{"l":"B","x":"恶心呕吐"},{"l":"C","x":"转移性右下腹痛"},{"l":"D","x":"腹泻"},{"l":"E","x":"腹胀"}],
-    "c": [
-      "C"
-    ],
-    "ex": "转移性右下腹痛是急性阑尾炎最具特征性的症状：70%-80%患者始于上腹部或脐周痛（内脏神经传导）→数小时后转移并固定于右下腹（躯体神经传导）。特征性体征：①麦氏点（McBurney点）压痛——右髂前上棘至脐连线中外1/3处；②反跳痛和腹肌紧张——提示阑尾化脓或穿孔致局限性/弥漫性腹膜炎。辅助检查：白细胞↑、中性粒细胞比例↑，B超或CT。（教材：阑尾炎章）",
-    "sr": "教材阑尾炎章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 44,
-    "tp": "A2",
-    "s": "患者男性，25岁。腹痛6小时，始于脐周，后转移至右下腹，伴恶心。查体：T 38.2°C，右下腹麦氏点压痛明显，有反跳痛。血WBC 14×10⁹/L。最可能的诊断是",
-    "o": [
-      {
-        "l": "A",
-        "x": "急性胃肠炎"
-      },
-      {
-        "l": "B",
-        "x": "急性胆囊炎"
-      },
-      {
-        "l": "C",
-        "x": "急性阑尾炎"
-      },
-      {
-        "l": "D",
-        "x": "右侧输尿管结石"
-      },
-      {
-        "l": "E",
-        "x": "胃十二指肠溃疡穿孔"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "青年男性+转移性右下腹痛+麦氏点压痛反跳痛+白细胞升高=典型急性阑尾炎。鉴别：急性胆囊炎疼痛在右上腹、Murphy征(+)；输尿管结石伴血尿、肾区叩击痛；溃疡穿孔突发剧痛、板状腹、膈下游离气体。治疗：一旦确诊尽早手术（阑尾切除术），单纯性阑尾炎可试用抗生素保守治疗。（教材：阑尾炎章）",
-    "sr": "教材阑尾炎章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 45,
-    "tp": "A1",
-    "s": "肠梗阻四大典型临床表现是",
-    "o": [
-      {
-        "l": "A",
-        "x": "腹痛、腹胀、呕吐、停止排便排气"
-      },
-      {
-        "l": "B",
-        "x": "腹痛、腹泻、发热、黄疸"
-      },
-      {
-        "l": "C",
-        "x": "腹胀、便秘、呕血、发热"
-      },
-      {
-        "l": "D",
-        "x": "腹痛、呕吐、腹泻、便血"
-      },
-      {
-        "l": "E",
-        "x": "腹胀、呕吐、发热、黄疸"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "肠梗阻四大典型表现：腹痛（阵发性绞痛）、腹胀（低位梗阻明显）、呕吐（高位梗阻早而频繁）、停止排便排气（完全性肠梗阻）。机械性肠梗阻最常见，病因包括肠粘连（最常见55%）、嵌顿疝、肿瘤、肠扭转、肠套叠。绞窄性肠梗阻（血运障碍）是急症中的急症，表现为持续性剧痛、腹膜刺激征、血性腹水、休克。X线可见阶梯状气液平面。（教材：肠梗阻章）",
-    "sr": "教材肠梗阻章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 46,
-    "tp": "A1",
-    "s": "判断绞窄性肠梗阻最有价值的临床表现是",
-    "o": [
-      {
-        "l": "A",
-        "x": "阵发性腹痛"
-      },
-      {
-        "l": "B",
-        "x": "腹胀不对称"
-      },
-      {
-        "l": "C",
-        "x": "腹膜刺激征"
-      },
-      {
-        "l": "D",
-        "x": "X线阶梯状液平"
-      },
-      {
-        "l": "E",
-        "x": "肠鸣音亢进"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "腹膜刺激征（压痛、反跳痛、肌紧张）提示肠管已发生绞窄坏死，炎症波及壁层腹膜，是绞窄性肠梗阻最具价值的体征。其他提示绞窄的征象：①腹痛持续性加重；②呕吐物/胃肠减压液呈血性；③腹腔穿刺抽出血性液体；④病情进展快，出现休克；⑤X线示孤立胀大肠袢（假肿瘤征）。（教材：肠梗阻章）",
-    "sr": "教材肠梗阻章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 47,
-    "tp": "A1",
-    "s": "急性胆囊炎最典型的体征是",
-    "o": [
-      {
-        "l": "A",
-        "x": "Murphy征阳性"
-      },
-      {
-        "l": "B",
-        "x": "Courvoisier征阳性"
-      },
-      {
-        "l": "C",
-        "x": "Cullen征阳性"
-      },
-      {
-        "l": "D",
-        "x": "Grey-Turner征阳性"
-      },
-      {
-        "l": "E",
-        "x": "Charcot三联征"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "Murphy征（墨菲征）阳性是急性胆囊炎最典型的体征：检查者拇指置于右肋缘下腹直肌外侧缘与肋弓交界处，嘱患者深吸气，因发炎的胆囊随肝脏下移触及拇指引起剧痛而突然屏气。Courvoisier征（无痛性黄疸+胆囊肿大）提示胰头癌或壶腹周围癌。Cullen征（脐周青紫）和Grey-Turner征（腰部青紫）见于重症急性胰腺炎。Charcot三联征（腹痛+寒战发热+黄疸）提示急性胆管炎。（教材：胆道章）",
-    "sr": "教材胆道章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 48,
-    "tp": "A1",
-    "s": "急性梗阻性化脓性胆管炎（AOSC）最重要的治疗措施是",
-    "o": [
-      {
-        "l": "A",
-        "x": "大剂量抗生素"
-      },
-      {
-        "l": "B",
-        "x": "纠正水电解质紊乱"
-      },
-      {
-        "l": "C",
-        "x": "紧急胆道减压引流"
-      },
-      {
-        "l": "D",
-        "x": "糖皮质激素"
-      },
-      {
-        "l": "E",
-        "x": "血管活性药物"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "AOSC（急性梗阻性化脓性胆管炎）是最危重的胆道急症，Reynolds五联征（Charcot三联征+休克+神经精神症状）。核心病理是胆道梗阻+感染导致胆道高压→细菌和毒素逆行入血→脓毒症休克。治疗关键是紧急胆道减压引流（解除梗阻）——首选ERCP+ENBD，次选PTCD，手术为胆总管切开T管引流。抗生素和抗休克治疗是辅助措施，不解决根本问题。（教材：胆道章）",
-    "sr": "教材胆道章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 49,
-    "tp": "A1",
-    "s": "胆囊结石最常见的症状是",
-    "o":[{"l":"A","x":"右上腹剧烈绞痛"},{"l":"B","x":"皮肤黄疸"},{"l":"C","x":"无症状（静止性结石）"},{"l":"D","x":"发热寒战"},{"l":"E","x":"消化不良"}],
-    "c": [
-      "C"
-    ],
-    "ex": "约60%-80%的胆囊结石患者无症状（静止性胆囊结石），多在体检B超时偶然发现。有症状者主要表现为右上腹或上腹部隐痛/饱胀不适（慢性胆囊炎表现），当结石嵌顿于胆囊管时出现胆绞痛——右上腹阵发性剧痛向右肩背部放射、Murphy征(+)。胆囊结石的诊断首选B超（敏感性>95%）。（教材：胆道章）",
-    "sr": "教材胆道章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 50,
-    "tp": "A1",
-    "s": "急性胰腺炎最常见的病因是",
-    "o": [
-      {
-        "l": "A",
-        "x": "暴饮暴食"
-      },
-      {
-        "l": "B",
-        "x": "胆道疾病"
-      },
-      {
-        "l": "C",
-        "x": "高脂血症"
-      },
-      {
-        "l": "D",
-        "x": "酒精"
-      },
-      {
-        "l": "E",
-        "x": "药物"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "我国急性胰腺炎最常见的病因是胆道疾病（胆石症占50%以上），西方以酒精性多见。发病机制：共同通道受阻→胆汁反流入胰管→胰酶激活→胰腺自身消化。其他病因：高脂血症（甘油三酯>11.3mmol/L）、暴饮暴食、ERCP术后、药物、高钙血症、感染、外伤等。诊断：血淀粉酶升高>正常3倍+影像学（CT最重要）。（教材：胰腺章）",
-    "sr": "教材胰腺章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 51,
-    "tp": "A1",
-    "s": "急性胰腺炎最常用的血生化诊断指标是",
-    "o": [
-      {
-        "l": "A",
-        "x": "血淀粉酶"
-      },
-      {
-        "l": "B",
-        "x": "血脂肪酶"
-      },
-      {
-        "l": "C",
-        "x": "血糖"
-      },
-      {
-        "l": "D",
-        "x": "血钙"
-      },
-      {
-        "l": "E",
-        "x": "C反应蛋白"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "血清淀粉酶是急性胰腺炎最常用的诊断指标，发病后2-12小时开始升高，24小时达高峰，持续3-5天，超过正常值上限3倍具有诊断价值。但淀粉酶升高的程度与病情严重程度不平行。血脂肪酶特异性更高（仅胰腺产生），持续时间更长（7-10天），对就诊较晚者更有价值。血钙降低（<1.87mmol/L）提示重症胰腺炎，预后不良。（教材：胰腺章）",
-    "sr": "教材胰腺章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 52,
-    "tp": "A1",
-    "s": "原发性肝癌最主要的病因是",
-    "o": [
-      {
-        "l": "A",
-        "x": "酒精性肝病"
-      },
-      {
-        "l": "B",
-        "x": "黄曲霉毒素"
-      },
-      {
-        "l": "C",
-        "x": "乙型病毒性肝炎"
-      },
-      {
-        "l": "D",
-        "x": "肝血吸虫病"
-      },
-      {
-        "l": "E",
-        "x": "自身免疫性肝炎"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "我国原发性肝癌最主要病因是乙型病毒性肝炎（乙肝后肝硬化），约80%的肝癌患者HBsAg阳性。HBV DNA整合入宿主肝细胞基因组→基因突变→肝癌。其他病因：丙肝、酒精性肝硬化、黄曲霉毒素（B1）污染食物、肝血吸虫病、遗传代谢疾病。肝癌血清标志物：AFP≥400ng/ml持续4周或≥200ng/ml持续8周，排除妊娠、活动性肝病、生殖腺胚胎源性肿瘤后可诊断。（教材：肝脏章）",
-    "sr": "教材肝脏章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 53,
-    "tp": "A1",
-    "s": "门静脉高压症最危险的并发症是",
-    "o":[{"l":"A","x":"腹水"},{"l":"B","x":"脾功能亢进"},{"l":"C","x":"食管胃底静脉曲张破裂出血"},{"l":"D","x":"肝性脑病"},{"l":"E","x":"皮肤黄疸"}],
-    "c": [
-      "C"
-    ],
-    "ex": "食管胃底静脉曲张破裂出血是门脉高压症最危险的并发症，死亡率为30%-50%。门脉压力增高→侧支循环开放→食管胃底静脉迂曲扩张→破裂大出血。临床表现：呕血（鲜红色或咖啡色）+黑便+失血性休克。紧急处理：①药物（生长抑素/奥曲肽+特利加压素）；②三腔二囊管压迫止血（临时措施）；③内镜下套扎/硬化剂注射（首选）；④急诊TIPS或手术。首次出血后1年内再出血率约60%-70%。（教材：门脉高压章）",
-    "sr": "教材门脉高压章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 54,
-    "tp": "A1",
-    "s": "结肠癌最早出现的症状通常是",
-    "o":[{"l":"A","x":"腹痛"},{"l":"B","x":"腹部包块"},{"l":"C","x":"排便习惯和粪便性状改变"},{"l":"D","x":"肠梗阻"},{"l":"E","x":"缺铁性贫血"}],
-    "c": [
-      "C"
-    ],
-    "ex": "排便习惯和粪便性状改变是结肠癌最早出现的症状：排便次数增多或便秘、腹泻与便秘交替、大便变细、便血（黏液血便）。右半结肠癌以全身症状为主——贫血、消瘦、腹部包块（因肠腔大、内容物为液态不易梗阻）；左半结肠癌以肠梗阻症状为主——腹痛、便秘、便血（因肠腔小、内容为固态易梗阻）。诊断主要依靠结肠镜+活检。（教材：结直肠章）",
-    "sr": "教材结直肠章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 55,
-    "tp": "A1",
-    "s": "血栓闭塞性脉管炎（Buerger病）病变主要累及",
-    "o": [
-      {
-        "l": "A",
-        "x": "大中动脉"
-      },
-      {
-        "l": "B",
-        "x": "中小动静脉"
-      },
-      {
-        "l": "C",
-        "x": "微血管"
-      },
-      {
-        "l": "D",
-        "x": "大静脉"
-      },
-      {
-        "l": "E",
-        "x": "毛细血管"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "血栓闭塞性脉管炎（Buerger病）主要累及四肢中小动静脉，以下肢多见。病因与吸烟密切相关（几乎100%患者吸烟），好发于青壮年男性（25-45岁）。病理特征：血管壁全层非化脓性炎症+血栓形成。临床分期（Fontaine）：I期无症状，II期间歇性跛行，III期静息痛，IV期趾/指溃疡坏疽（干性坏疽）。治疗首要措施：严格戒烟。（教材：周围血管章）",
-    "sr": "教材周围血管章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 56,
-    "tp": "A1",
-    "s": "骨折的专有体征不包括",
-    "o": [
-      {
-        "l": "A",
-        "x": "畸形"
-      },
-      {
-        "l": "B",
-        "x": "反常活动"
-      },
-      {
-        "l": "C",
-        "x": "骨擦音或骨擦感"
-      },
-      {
-        "l": "D",
-        "x": "局部肿胀疼痛"
-      },
-      {
-        "l": "E",
-        "x": "以上都是专有体征"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "骨折三大专有体征（特有体征，出现其一即可诊断骨折）：①畸形——骨折段移位使患肢外形改变；②反常活动——在非关节部位出现类似关节的活动；③骨擦音或骨擦感——骨折断端相互摩擦产生。D「局部肿胀疼痛」是骨折的一般表现（非专有体征），软组织损伤也可出现。但专有体征并非每例骨折都有（如嵌插骨折、裂纹骨折可无），需X线确诊。（教材：骨折总论章）",
-    "sr": "教材骨折总论章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 57,
-    "tp": "A1",
-    "s": "骨折愈合过程中，原始骨痂形成期需要的时间是",
-    "o": [
-      {
-        "l": "A",
-        "x": "1-2周"
-      },
-      {
-        "l": "B",
-        "x": "2-3周"
-      },
-      {
-        "l": "C",
-        "x": "4-8周"
-      },
-      {
-        "l": "D",
-        "x": "12-24周"
-      },
-      {
-        "l": "E",
-        "x": "1-2年"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "骨折愈合分四期：①血肿炎症机化期（1-2周）——血肿→肉芽组织→纤维连接；②原始骨痂形成期（4-8周）——膜内成骨+软骨内成骨形成外骨痂和内骨痂，达到临床愈合标准；③骨痂改造塑形期（8-12周至1-2年）——编织骨→板层骨，按Wolff定律应力重塑。临床愈合标准：局部无压痛、无反常活动、X线示骨痂通过骨折线。（教材：骨折总论章）",
-    "sr": "教材骨折总论章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 58,
-    "tp": "A1",
-    "s": "骨折早期最严重的并发症是",
-    "o":[{"l":"A","x":"失血性休克"},{"l":"B","x":"脂肪栓塞综合征"},{"l":"C","x":"骨筋膜室综合征"},{"l":"D","x":"局部感染"},{"l":"E","x":"内脏损伤"}],
-    "c": [
-      "B"
-    ],
-    "ex": "脂肪栓塞综合征是骨折（尤其是长骨干骨折如股骨干）早期最严重的并发症之一，多发生于伤后24-72小时。骨髓内脂肪滴进入血液循环→肺血管栓塞→呼吸困难、发绀、低氧血症→ARDS；脑脂肪栓塞→意识障碍。典型三联征：呼吸困难+意识障碍+皮肤瘀斑（颈前、胸前、腋下）。骨筋膜室综合征虽也严重但多见于前臂和小腿骨折后，主要威胁肢体而非生命。（教材：骨折总论章）",
-    "sr": "教材骨折总论章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 59,
-    "tp": "A1",
-    "s": "骨筋膜室综合征最常发生的部位是",
-    "o": [
-      {
-        "l": "A",
-        "x": "大腿"
-      },
-      {
-        "l": "B",
-        "x": "上臂"
-      },
-      {
-        "l": "C",
-        "x": "前臂和小腿"
-      },
-      {
-        "l": "D",
-        "x": "手部"
-      },
-      {
-        "l": "E",
-        "x": "足部"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "骨筋膜室综合征最常发生于前臂掌侧（前臂骨筋膜室）和小腿（尤其前室）。病理：骨筋膜室内容物（肌肉、神经、血管）压力增高→微循环障碍→肌肉和神经缺血坏死。5P征：Pain（疼痛进行性加重）、Pallor（苍白）、Pulselessness（无脉）、Paresthesia（感觉异常）、Paralysis（麻痹）。一旦确诊应立即切开筋膜减压，超过6-8小时→不可逆缺血坏死→Volkmann挛缩或截肢。（教材：骨折总论章）",
-    "sr": "教材骨折总论章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 60,
-    "tp": "X",
-    "s": "骨折的急救处理原则包括",
-    "o": [
-      {
-        "l": "A",
-        "x": "抢救生命"
-      },
-      {
-        "l": "B",
-        "x": "包扎伤口"
-      },
-      {
-        "l": "C",
-        "x": "妥善固定"
-      },
-      {
-        "l": "D",
-        "x": "迅速转运"
-      },
-      {
-        "l": "E",
-        "x": "立即复位"
-      }
-    ],
-    "c": [
-      "A",
-      "B",
-      "C",
-      "D"
-    ],
-    "ex": "骨折急救处理原则（按优先顺序）：①抢救生命——处理休克、保持呼吸道通畅、止血；②包扎伤口——压迫止血、防止污染（外露骨折端不可还纳）；③妥善固定——就地取材固定（超关节固定），减少疼痛和继发损伤；④迅速转运——尽快转送医院。E「立即复位」不是急救阶段的任务，应在医院内由专业医师在适当麻醉下进行。开放性骨折伤后6-8小时内清创。（教材：骨折总论章）",
-    "sr": "教材骨折总论章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 61,
-    "tp": "A1",
-    "s": "Colles骨折的典型畸形是",
-    "o": [
-      {
-        "l": "A",
-        "x": "枪刺样畸形和餐叉样畸形"
-      },
-      {
-        "l": "B",
-        "x": "垂腕畸形"
-      },
-      {
-        "l": "C",
-        "x": "爪形手畸形"
-      },
-      {
-        "l": "D",
-        "x": "猿手畸形"
-      },
-      {
-        "l": "E",
-        "x": "锤状指畸形"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "Colles骨折（伸直型桡骨远端骨折）是最常见的腕部骨折，多见于老年人跌倒手掌着地。典型畸形：①侧面观——餐叉样畸形（远折端向背侧移位）；②正面观——枪刺样畸形（远折端向桡侧移位）。骨折线距腕关节2-3cm。治疗：手法复位+石膏/夹板固定于掌屈尺偏位。Smith骨折（屈曲型）远折端向掌侧移位，称反Colles骨折。（教材：上肢骨折章）",
-    "sr": "教材上肢骨折章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 62,
-    "tp": "A1",
-    "s": "肱骨干中下1/3骨折最容易损伤的神经是",
-    "o": [
-      {
-        "l": "A",
-        "x": "腋神经"
-      },
-      {
-        "l": "B",
-        "x": "正中神经"
-      },
-      {
-        "l": "C",
-        "x": "桡神经"
-      },
-      {
-        "l": "D",
-        "x": "尺神经"
-      },
-      {
-        "l": "E",
-        "x": "肌皮神经"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "桡神经紧贴肱骨干中下1/3后方的桡神经沟走行，该处骨折最易损伤桡神经。表现为：垂腕畸形（腕伸肌麻痹）、伸指障碍、虎口区皮肤感觉障碍。肱骨外科颈骨折易损伤腋神经（三角肌麻痹、肩外展障碍），肱骨髁上骨折（伸直型）易损伤肱动脉和正中神经，肱骨内上髁骨折易损伤尺神经。（教材：上肢骨折章）",
-    "sr": "教材上肢骨折章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 63,
-    "tp": "A1",
-    "s": "股骨颈骨折最常见的并发症是",
-    "o": [
-      {
-        "l": "A",
-        "x": "骨折不愈合"
-      },
-      {
-        "l": "B",
-        "x": "股骨头缺血性坏死"
-      },
-      {
-        "l": "C",
-        "x": "创伤性关节炎"
-      },
-      {
-        "l": "D",
-        "x": "下肢深静脉血栓"
-      },
-      {
-        "l": "E",
-        "x": "脂肪栓塞"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "股骨头缺血性坏死是股骨颈骨折最常见且最严重的并发症。原因：股骨头的血供主要来自旋股内侧动脉（发自股深动脉），股骨颈骨折可损伤此动脉→股骨头缺血坏死。头下型骨折坏死率最高（>70%），基底型坏死率最低。老年人股骨颈骨折多采用人工髋关节置换术以避免不愈合和坏死。年轻人尽量行内固定保头治疗。（教材：下肢骨折章）",
-    "sr": "教材下肢骨折章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 64,
-    "tp": "A1",
-    "s": "胫腓骨骨折最易发生的并发症是",
-    "o":[{"l":"A","x":"脂肪栓塞"},{"l":"B","x":"骨筋膜室综合征"},{"l":"C","x":"局部感染"},{"l":"D","x":"骨折不愈合"},{"l":"E","x":"关节僵硬"}],
-    "c": [
-      "B"
-    ],
-    "ex": "胫腓骨骨折（尤其是胫骨中下段骨折）最易发生骨筋膜室综合征，因为小腿的四个骨筋膜室空间有限、组织压力易升高。同时胫骨中下1/3段血供差（滋养动脉仅从胫骨上1/3进入），骨折后延迟愈合和不愈合率高（胫骨中下1/3为骨不连最常见部位）。开放性骨折因胫骨前内侧软组织覆盖薄，感染风险也高。治疗：稳定型→石膏固定；不稳定型→交锁髓内钉/钢板。（教材：下肢骨折章）",
-    "sr": "教材下肢骨折章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 65,
-    "tp": "A1",
-    "s": "脊柱骨折最常发生的部位是",
-    "o": [
-      {
-        "l": "A",
-        "x": "颈椎"
-      },
-      {
-        "l": "B",
-        "x": "胸椎"
-      },
-      {
-        "l": "C",
-        "x": "胸腰段(T11-L2)"
-      },
-      {
-        "l": "D",
-        "x": "腰椎"
-      },
-      {
-        "l": "E",
-        "x": "骶椎"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "脊柱骨折最常发生在胸腰段（T11-L2），约占脊柱骨折的60%-70%。原因：胸椎相对固定（有肋骨支撑），腰椎活动度大，胸腰段为活动度转换区，应力集中导致易损伤。颈椎次之（C1-C2及C5-C7）。脊柱骨折合并脊髓损伤（截瘫）是最严重的后果，需MRI明确脊髓和韧带损伤情况。搬运脊柱损伤患者需轴向翻身，防止脊髓二次损伤。（教材：脊柱骨折章）",
-    "sr": "教材脊柱骨折章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 66,
-    "tp": "A1",
-    "s": "肩关节脱位最常见的类型是",
-    "o": [
-      {
-        "l": "A",
-        "x": "前脱位"
-      },
-      {
-        "l": "B",
-        "x": "后脱位"
-      },
-      {
-        "l": "C",
-        "x": "上脱位"
-      },
-      {
-        "l": "D",
-        "x": "下脱位"
-      },
-      {
-        "l": "E",
-        "x": "中心性脱位"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "肩关节脱位占全身关节脱位的50%，以前脱位最常见（占肩关节脱位的95%以上）。受伤机制：上肢外展外旋位跌倒，手掌着地→肱骨头冲破关节囊前下方→喙突下、锁骨下或盂下脱位。典型体征：方肩畸形（肩峰突出呈直角）+Dugas征阳性（患侧手掌搭对侧肩时肘部不能贴近胸壁）。治疗：Hippocrates法（足蹬法）或Kocher法复位，复位后三角巾悬吊3周。（教材：关节脱位章）",
-    "sr": "教材关节脱位章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 67,
-    "tp": "A1",
-    "s": "髋关节后脱位的典型畸形是",
-    "o": [
-      {
-        "l": "A",
-        "x": "下肢外展外旋畸形"
-      },
-      {
-        "l": "B",
-        "x": "下肢内收内旋短缩畸形"
-      },
-      {
-        "l": "C",
-        "x": "下肢外展内旋畸形"
-      },
-      {
-        "l": "D",
-        "x": "下肢屈曲外旋畸形"
-      },
-      {
-        "l": "E",
-        "x": "下肢伸直外展畸形"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "髋关节后脱位（占髋脱位85%-90%）典型畸形：患肢短缩、内收、内旋，弹性固定。受伤机制：屈髋屈膝位时膝前受到暴力（如车祸仪表盘伤→dashboard injury）→股骨头向后冲破关节囊。可合并坐骨神经损伤（足下垂）。前脱位畸形为外展外旋。治疗：Allis法或Bigelow法（问号法）急诊复位，6-8小时内复位可减少股骨头坏死率。（教材：关节脱位章）",
-    "sr": "教材关节脱位章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 68,
-    "tp": "A1",
-    "s": "最常见的恶性骨肿瘤是",
-    "o": [
-      {
-        "l": "A",
-        "x": "骨肉瘤"
-      },
-      {
-        "l": "B",
-        "x": "软骨肉瘤"
-      },
-      {
-        "l": "C",
-        "x": "Ewing肉瘤"
-      },
-      {
-        "l": "D",
-        "x": "骨髓瘤"
-      },
-      {
-        "l": "E",
-        "x": "骨巨细胞瘤"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "多发性骨髓瘤是最常见的恶性骨肿瘤（来源于骨髓浆细胞），多见于40岁以上成人。骨肉瘤是最常见的原发性恶性骨肿瘤，多见于青少年（10-25岁），好发于长骨干骺端（股骨远端、胫骨近端），X线示Codman三角（骨膜反应）和日光射线征。骨巨细胞瘤好发于长骨骨端（股骨远端、胫骨近端），为交界性肿瘤（潜在恶性），X线示皂泡样溶骨性破坏。（教材：骨肿瘤章）",
-    "sr": "教材骨肿瘤章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 69,
-    "tp": "A1",
-    "s": "骨肉瘤最具特征性的X线表现是",
-    "o": [
-      {
-        "l": "A",
-        "x": "葱皮样骨膜反应"
-      },
-      {
-        "l": "B",
-        "x": "Codman三角和日光射线征"
-      },
-      {
-        "l": "C",
-        "x": "皂泡样溶骨性破坏"
-      },
-      {
-        "l": "D",
-        "x": "椎体压缩性骨折"
-      },
-      {
-        "l": "E",
-        "x": "骨质增生硬化"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "Codman三角（骨膜被掀起形成三角形）和日光射线征（肿瘤骨呈放射状排列）是骨肉瘤最具特征性的X线表现。葱皮样骨膜反应是Ewing肉瘤的典型表现。皂泡样溶骨性破坏是骨巨细胞瘤的特征。骨肉瘤好发于青少年长骨干骺端（膝关节周围），血清碱性磷酸酶（AKP）升高有参考价值。治疗：新辅助化疗+保肢手术/截肢+术后化疗，5年生存率可达60%-70%。（教材：骨肿瘤章）",
-    "sr": "教材骨肿瘤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 70,
-    "tp": "A1",
-    "s": "急性血源性骨髓炎最常见的致病菌是",
-    "o":[{"l":"A","x":"大肠杆菌"},{"l":"B","x":"绿脓杆菌"},{"l":"C","x":"金黄色葡萄球菌"},{"l":"D","x":"链球菌感染"},{"l":"E","x":"结核杆菌"}],
-    "c": [
-      "C"
-    ],
-    "ex": "急性血源性骨髓炎最常见的致病菌是金黄色葡萄球菌（占80%以上），其次为乙型溶血性链球菌。好发于儿童长骨干骺端（因该处血供丰富、血流缓慢、细菌易停留）。局部表现：红、肿、热、痛、功能障碍、脓肿形成→可穿破骨膜形成软组织脓肿→溃破形成窦道。早期X线阴性（2周内），MRI可早期诊断。治疗：早期足量有效抗生素+手术钻孔引流/开窗减压。（教材：骨关节感染章）",
-    "sr": "教材骨关节感染章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 71,
-    "tp": "A1",
-    "s": "颅内压增高的「三主征」是",
-    "o": [
-      {
-        "l": "A",
-        "x": "头痛、呕吐、意识障碍"
-      },
-      {
-        "l": "B",
-        "x": "头痛、呕吐、视盘水肿"
-      },
-      {
-        "l": "C",
-        "x": "头痛、偏瘫、失语"
-      },
-      {
-        "l": "D",
-        "x": "呕吐、颈项强直、发热"
-      },
-      {
-        "l": "E",
-        "x": "头痛、癫痫、瞳孔散大"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "颅内压增高三主征：①头痛——最常见，晨起和夜间重，咳嗽、用力时加剧；②呕吐——喷射性呕吐，与饮食无关，因延髓呕吐中枢受刺激；③视盘水肿——最重要的客观体征，眼底检查可见视盘充血、边界模糊、静脉充盈。三主征同时出现提示颅内压增高已到相当严重的程度。正常成人颅内压：70-200mmH2O。（教材：颅内压增高章）",
-    "sr": "教材颅内压增高章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 72,
-    "tp": "A1",
-    "s": "急性硬膜外血肿的特征性CT表现是",
-    "o": [
-      {
-        "l": "A",
-        "x": "新月形高密度影"
-      },
-      {
-        "l": "B",
-        "x": "双凸透镜形高密度影"
-      },
-      {
-        "l": "C",
-        "x": "脑沟消失"
-      },
-      {
-        "l": "D",
-        "x": "环池消失"
-      },
-      {
-        "l": "E",
-        "x": "中线结构移位"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "急性硬膜外血肿CT表现为颅骨内板下双凸透镜形（梭形）高密度影。典型临床过程：头部外伤→原发性昏迷→中间清醒期（lucid interval）→再次昏迷（继发性昏迷），为硬膜外血肿最特征性的表现。出血来源多为脑膜中动脉破裂（颞部骨折）。硬膜下血肿CT表现为新月形高密度影。治疗：血肿>30ml或有明显占位效应者行开颅血肿清除术。（教材：颅脑损伤章）",
-    "sr": "教材颅脑损伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 73,
-    "tp": "A1",
-    "s": "硬膜下血肿与硬膜外血肿CT鉴别的关键在于",
-    "o": [
-      {
-        "l": "A",
-        "x": "血肿密度"
-      },
-      {
-        "l": "B",
-        "x": "血肿形态"
-      },
-      {
-        "l": "C",
-        "x": "血肿体积"
-      },
-      {
-        "l": "D",
-        "x": "血肿位置"
-      },
-      {
-        "l": "E",
-        "x": "血肿时间"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "CT形态是鉴别关键：硬膜外血肿呈双凸透镜形（梭形，不跨越颅缝——受硬脑膜附着限制），硬膜下血肿呈新月形（可跨越颅缝——蛛网膜无附着）。硬膜外出血源多为脑膜中动脉（动脉性），病情进展快；硬膜下出血源多为桥静脉撕裂（静脉性），常合并较重的脑挫裂伤，急性、亚急性（3天-3周）、慢性（>3周，老年人多见）。慢性硬膜下血肿CT可为低/等密度。（教材：颅脑损伤章）",
-    "sr": "教材颅脑损伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 74,
-    "tp": "A1",
-    "s": "脑挫裂伤最常发生的部位是",
-    "o": [
-      {
-        "l": "A",
-        "x": "额极和颞极"
-      },
-      {
-        "l": "B",
-        "x": "顶叶"
-      },
-      {
-        "l": "C",
-        "x": "枕叶"
-      },
-      {
-        "l": "D",
-        "x": "小脑"
-      },
-      {
-        "l": "E",
-        "x": "脑干"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "脑挫裂伤最常发生在额极和颞极（尤其是对冲伤）。对冲伤机制：枕部着力→脑组织因惯性向前冲击→额极和颞极撞击于前颅窝底和蝶骨嵴造成挫裂伤。临床表现：伤后立即昏迷（持续时间较长，>30min）、头痛呕吐、生命体征改变、局灶神经体征（偏瘫、失语等）。CT示低密度水肿区中散在点片状高密度出血灶。治疗：保守为主，严重脑水肿/血肿需去骨瓣减压。（教材：颅脑损伤章）",
-    "sr": "教材颅脑损伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 75,
-    "tp": "A1",
-    "s": "颅内最常见的原发性恶性肿瘤是",
-    "o": [
-      {
-        "l": "A",
-        "x": "脑膜瘤"
-      },
-      {
-        "l": "B",
-        "x": "垂体腺瘤"
-      },
-      {
-        "l": "C",
-        "x": "胶质瘤"
-      },
-      {
-        "l": "D",
-        "x": "听神经瘤"
-      },
-      {
-        "l": "E",
-        "x": "转移瘤"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "胶质瘤（来源于神经胶质细胞）是最常见的颅内原发性恶性肿瘤，占所有颅内肿瘤的40%-50%。其中胶质母细胞瘤（WHO IV级）恶性程度最高、预后最差。脑膜瘤是最常见的颅内良性肿瘤。颅内转移瘤约占颅内肿瘤的20%，常见原发灶为肺癌（最多）、乳腺癌、黑色素瘤、肾癌等。脑肿瘤的临床表现取决于部位和生长速度：颅内压增高症状+局灶定位体征+癫痫。（教材：颅内肿瘤章）",
-    "sr": "教材颅内肿瘤章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 76,
-    "tp": "A1",
-    "s": "脑疝最危急的类型是",
-    "o": [
-      {
-        "l": "A",
-        "x": "小脑幕切迹疝"
-      },
-      {
-        "l": "B",
-        "x": "枕骨大孔疝"
-      },
-      {
-        "l": "C",
-        "x": "大脑镰下疝"
-      },
-      {
-        "l": "D",
-        "x": "蝶骨嵴疝"
-      },
-      {
-        "l": "E",
-        "x": "直回疝"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "枕骨大孔疝（小脑扁桃体疝）是最危急的脑疝类型，小脑扁桃体经枕骨大孔疝入椎管→压迫延髓生命中枢→呼吸心跳骤停（可突然发生而无明显前兆）。小脑幕切迹疝压迫动眼神经（同侧瞳孔散大）和大脑脚（对侧偏瘫），较枕骨大孔疝稍可争取处理时间。急性颅内压增高→脑疝形成是神经外科最紧急的情况，需立即脱水降颅压（甘露醇）+紧急手术减压。（教材：颅内压增高章）",
-    "sr": "教材颅内压增高章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 77,
-    "tp": "A1",
-    "s": "张力性气胸的紧急处理措施是",
-    "o": [
-      {
-        "l": "A",
-        "x": "大剂量抗生素"
-      },
-      {
-        "l": "B",
-        "x": "立即开胸探查"
-      },
-      {
-        "l": "C",
-        "x": "胸腔穿刺减压（粗针头锁骨中线第2肋间穿刺）"
-      },
-      {
-        "l": "D",
-        "x": "气管插管"
-      },
-      {
-        "l": "E",
-        "x": "胸腔闭式引流"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "张力性气胸（高压性气胸）是最危险的气胸类型——胸壁/肺裂口形成活瓣→空气只进不出→胸腔压力进行性增高→纵隔显著移位→腔静脉扭曲→循环衰竭死亡。紧急处理：立即用粗针头在患侧锁骨中线第2肋间穿刺排气减压→再行胸腔闭式引流术。开放性气胸先将开放伤口变为闭合（凡士林纱布或清洁敷料包扎），再行闭式引流。（教材：胸部损伤章）",
-    "sr": "教材胸部损伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 78,
-    "tp": "A1",
-    "s": "进行性血胸的判断指标是",
-    "o": [
-      {
-        "l": "A",
-        "x": "胸腔积血>500ml"
-      },
-      {
-        "l": "B",
-        "x": "血红蛋白下降>10g/L"
-      },
-      {
-        "l": "C",
-        "x": "每小时引流量>200ml，连续3小时"
-      },
-      {
-        "l": "D",
-        "x": "血压<90/60mmHg"
-      },
-      {
-        "l": "E",
-        "x": "呼吸>30次/分"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "进行性血胸（持续活动性出血）的判断指标：①胸腔闭式引流每小时引流量>200ml，连续3小时以上；②输血补液后血压不升或升而复降；③血红蛋白、红细胞计数和血细胞比容持续下降。进行性血胸是开胸探查的指征——活动性出血需手术止血。非进行性血胸可保守治疗或胸腔闭式引流。凝固性血胸需手术清除（出血停止后数日内）。（教材：胸部损伤章）",
-    "sr": "教材胸部损伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 79,
-    "tp": "A1",
-    "s": "肺癌最常见的病理类型是",
-    "o":[{"l":"A","x":"鳞状细胞癌"},{"l":"B","x":"腺癌病变"},{"l":"C","x":"小细胞肺癌"},{"l":"D","x":"大细胞肺癌"},{"l":"E","x":"类癌"}],
-    "c": [
-      "B"
-    ],
-    "ex": "近年来腺癌已超过鳞癌成为肺癌最常见的病理类型（占40%-50%），尤其是不吸烟女性和年轻患者。鳞癌次之（占25%-30%），与吸烟密切相关，多为中央型（支气管腔内生长）。小细胞肺癌（SCLC）占15%，恶性程度最高、生长最快、早期血行转移，对化疗敏感。临床表现：咳嗽（最常见）、咯血或痰中带血、胸痛、呼吸困难。诊断：胸部CT+支气管镜+病理活检。（教材：肺癌章）",
-    "sr": "教材肺癌章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 80,
-    "tp": "A1",
-    "s": "肺癌最常见的早期症状是",
-    "o":[{"l":"A","x":"刺激性干咳"},{"l":"B","x":"胸部疼痛"},{"l":"C","x":"咯血症状"},{"l":"D","x":"呼吸困难"},{"l":"E","x":"发热症状"}],
-    "c": [
-      "A"
-    ],
-    "ex": "刺激性干咳是肺癌最常见的早期症状（约75%患者以咳嗽为首发症状），因肿瘤刺激支气管黏膜所致。痰中带血或咯血次之。晚期表现：①Horner综合征（Pancoast瘤侵犯颈交感神经）——患侧眼睑下垂、瞳孔缩小、眼球内陷、面部无汗；②上腔静脉阻塞综合征——头面部及上肢水肿、颈静脉怒张；③声音嘶哑（喉返神经侵犯）。小细胞肺癌可产生副肿瘤综合征（SIADH、Cushing综合征等）。（教材：肺癌章）",
-    "sr": "教材肺癌章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 81,
-    "tp": "A1",
-    "s": "食管癌最常见的病理类型是",
-    "o":[{"l":"A","x":"腺癌病变"},{"l":"B","x":"鳞状细胞癌"},{"l":"C","x":"小细胞癌"},{"l":"D","x":"腺鳞癌"},{"l":"E","x":"未分化癌"}],
-    "c": [
-      "B"
-    ],
-    "ex": "我国食管癌90%以上为鳞状细胞癌（与西方以腺癌为主不同）。好发部位：中段最多见（50%），下段次之（30%），上段最少（20%）。最关键的症状：进行性吞咽困难（先固体→后半流质→最后流质也咽不下）。早期症状：吞咽时胸骨后不适感或哽噎感。诊断：食管吞钡双重造影+胃镜+活检。手术是首选治疗方法（中下段食管癌根治术）。（教材：食管癌章）",
-    "sr": "教材食管癌章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 82,
-    "tp": "A1",
-    "s": "肾损伤中最常见的类型是",
-    "o": [
-      {
-        "l": "A",
-        "x": "肾蒂伤"
-      },
-      {
-        "l": "B",
-        "x": "肾全层裂伤"
-      },
-      {
-        "l": "C",
-        "x": "肾挫伤"
-      },
-      {
-        "l": "D",
-        "x": "肾碎裂伤"
-      },
-      {
-        "l": "E",
-        "x": "肾盂裂伤"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "肾挫伤是最常见的肾损伤类型（占85%以上），损伤局限于肾实质，肾包膜和肾盂黏膜完整，表现为镜下血尿或轻度肉眼血尿。肾裂伤次之（约10%），肾实质裂伤伴肾包膜或集合系统破裂，可出现肾周血肿和明显血尿。肾蒂伤（肾血管损伤）虽少见但最危险，可致大出血死亡。CT是诊断肾损伤的金标准。治疗：大多数肾挫伤和轻度裂伤可保守治疗（卧床休息、止血、抗感染）。（教材：泌尿系损伤章）",
-    "sr": "教材泌尿系损伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 83,
-    "tp": "A1",
-    "s": "良性前列腺增生最早出现的症状是",
-    "o": [
-      {
-        "l": "A",
-        "x": "排尿困难"
-      },
-      {
-        "l": "B",
-        "x": "急性尿潴留"
-      },
-      {
-        "l": "C",
-        "x": "尿频"
-      },
-      {
-        "l": "D",
-        "x": "血尿"
-      },
-      {
-        "l": "E",
-        "x": "尿失禁"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "尿频是BPH最早出现的症状，尤其是夜间尿频（夜尿增多）。随着梗阻加重出现排尿困难（进行性排尿困难是BPH最重要的症状）——排尿踌躇、尿线变细、射程变短、排尿费力、尿后滴沥。PSA是前列腺癌筛查指标。治疗：药物治疗（α1受体阻滞剂如坦索罗辛+5α还原酶抑制剂如非那雄胺）→中重度或药物无效者行TURP（经尿道前列腺电切术，金标准）。（教材：前列腺章）",
-    "sr": "教材前列腺章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 84,
-    "tp": "A2",
-    "s": "患者女性，55岁。右乳房外上象限触摸到一质硬无痛性肿块2周，边界不清，活动度差。同侧腋窝触及肿大淋巴结。最可能的诊断是",
-    "o": [
-      {
-        "l": "A",
-        "x": "乳腺纤维腺瘤"
-      },
-      {
-        "l": "B",
-        "x": "乳腺囊性增生"
-      },
-      {
-        "l": "C",
-        "x": "乳腺癌"
-      },
-      {
-        "l": "D",
-        "x": "急性乳腺炎"
-      },
-      {
-        "l": "E",
-        "x": "乳腺结核"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "中年女性+乳房外上象限无痛性质硬肿块+边界不清活动度差+腋窝淋巴结肿大=高度怀疑乳腺癌。乳腺纤维腺瘤多见于年轻女性、光滑活动好；乳腺囊性增生与月经周期相关、多发结节、触痛；急性乳腺炎多见于哺乳期、红肿热痛、发热。确诊手段：乳腺超声+钼靶+空心针穿刺活检。治疗：改良根治术/保乳术+前哨淋巴结活检+术后综合治疗（化疗、放疗、内分泌、靶向）。（教材：乳腺章）",
-    "sr": "教材乳腺章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 85,
-    "tp": "A2",
-    "s": "患者男性，50岁，右上腹持续性钝痛伴发热3天。查体：T 38.8°C，右上腹压痛，Murphy征阳性。WBC 13×10⁹/L，N 85%。B超示胆囊增大、壁厚>4mm，胆囊内有多个强回声伴声影。最可能的诊断是",
-    "o": [
-      {
-        "l": "A",
-        "x": "急性胰腺炎"
-      },
-      {
-        "l": "B",
-        "x": "急性胆囊炎"
-      },
-      {
-        "l": "C",
-        "x": "肝脓肿"
-      },
-      {
-        "l": "D",
-        "x": "消化性溃疡穿孔"
-      },
-      {
-        "l": "E",
-        "x": "急性阑尾炎"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "右上腹痛+发热+Murphy征阳性+WBC升高+B超示胆囊壁增厚+结石=急性胆囊炎。诊断标准：右上腹体征+ Murphy征+全身炎症反应+B超。95%急性胆囊炎合并胆囊结石。治疗：禁食补液+抗生素+解痉止痛；手术时机——早期（发病72h内）行腹腔镜胆囊切除术（LC）为金标准。（教材：胆道章）",
-    "sr": "教材胆道章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 86,
-    "tp": "A2",
-    "s": "患者男性，30岁。上腹部饱胀不适，进食后加重，伴反酸嗳气。胃镜示胃窦部溃疡2.0cm，幽门螺杆菌阳性。以下治疗方案中哪项最合适",
-    "o": [
-      {
-        "l": "A",
-        "x": "单纯PPI治疗"
-      },
-      {
-        "l": "B",
-        "x": "PPI+铋剂+两种抗生素四联疗法根除Hp"
-      },
-      {
-        "l": "C",
-        "x": "单纯手术治疗"
-      },
-      {
-        "l": "D",
-        "x": "单纯抗酸药"
-      },
-      {
-        "l": "E",
-        "x": "单纯H2受体拮抗剂"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "Hp阳性消化性溃疡的治疗核心是根除Hp。目前国内推荐铋剂四联疗法（PPI+铋剂+两种抗生素，14天）作为一线方案。单纯抑酸（PPI或H2RA）只能促进溃疡愈合但复发率高。手术适应症已明显减少：穿孔、出血、梗阻、恶变、难治性溃疡。消化性溃疡四大并发症：出血（最常见）、穿孔、幽门梗阻、癌变（胃溃疡有<1%癌变率，十二指肠溃疡不癌变）。（教材：胃十二指肠章）",
-    "sr": "教材胃十二指肠章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 87,
-    "tp": "A2",
-    "s": "患者男性，58岁，突发右上腹剧痛2小时，向右肩放射，伴恶心呕吐。B超示胆囊多发结石，胆总管扩张1.0cm。血淀粉酶正常。应首先考虑的检查是",
-    "o": [
-      {
-        "l": "A",
-        "x": "ERCP"
-      },
-      {
-        "l": "B",
-        "x": "MRCP"
-      },
-      {
-        "l": "C",
-        "x": "静脉胆道造影"
-      },
-      {
-        "l": "D",
-        "x": "腹部CT"
-      },
-      {
-        "l": "E",
-        "x": "PTC"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "胆总管结石（继发性）的临床表现：右上腹剧痛+胆总管扩张+B超示胆总管结石。MRCP目前是诊断胆总管结石的首选无创检查，可清晰显示胆胰管系统。ERCP兼具诊断和治疗（取石）价值但为有创检查（有胰腺炎风险），现主要用于确认胆总管结石后的取石治疗。CT有助于发现含钙结石。PTC主要用于高位胆道梗阻。（教材：胆道章）",
-    "sr": "教材胆道章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 88,
-    "tp": "A2",
-    "s": "患者女性，42岁。进行性吞咽困难3个月，先固体后流质。食管吞钡造影示食管中段管壁僵硬，黏膜破坏中断，管腔狭窄。最可能的诊断是",
-    "o": [
-      {
-        "l": "A",
-        "x": "贲门失弛缓症"
-      },
-      {
-        "l": "B",
-        "x": "食管良性狭窄"
-      },
-      {
-        "l": "C",
-        "x": "食管癌"
-      },
-      {
-        "l": "D",
-        "x": "食管静脉曲张"
-      },
-      {
-        "l": "E",
-        "x": "食管憩室"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "进行性吞咽困难（先固体后流质）是食管癌最典型症状。食管吞钡典型表现：黏膜中断破坏、管壁僵硬、管腔狭窄（不规则的充盈缺损或龛影）。贲门失弛缓症表现为食管下段「鸟嘴样」狭窄、上段食管明显扩张（食物潴留）。食管静脉曲张表现为串珠样或蚯蚓样充盈缺损。确诊需胃镜+活检。中下段食管癌首选手术治疗（食管癌根治术）。（教材：食管癌章）",
-    "sr": "教材食管癌章",
-    "bl": "应用"
-  },
-  {
-    "t": "c",
-    "n": 1,
-    "cs": "患者男性，28岁。腹痛8小时。今晨约5时出现脐周持续性钝痛，伴恶心。8时左右疼痛转移至右下腹，呈持续性。查体：T 38.0°C，P 88次/分，BP 120/80mmHg。右下腹麦氏点压痛、反跳痛阳性，Rovsing征阳性。血常规：WBC 15.2×10⁹/L，N 88%。"
-  },
-  {
-    "t": "q",
-    "n": 89,
-    "tp": "A3",
-    "s": "该患者最可能的诊断是",
-    "o": [
-      {
-        "l": "A",
-        "x": "右侧输尿管结石"
-      },
-      {
-        "l": "B",
-        "x": "急性胆囊炎"
-      },
-      {
-        "l": "C",
-        "x": "急性阑尾炎"
-      },
-      {
-        "l": "D",
-        "x": "胃十二指肠溃疡穿孔"
-      },
-      {
-        "l": "E",
-        "x": "Meckel憩室炎"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "青年男性+转移性右下腹痛+麦氏点压痛反跳痛+白细胞和中性粒细胞升高=典型急性阑尾炎。Rovsing征（按压左下腹引起右下腹痛）和腰大肌试验（右下肢后伸引起右下腹痛—提示盲肠后位阑尾炎）为辅助体征。治疗：确诊后尽早行阑尾切除术。单纯性阑尾炎可腹腔镜手术（LA），术后1-2天可出院。化脓性或坏疽性需急诊手术+抗生素。（教材：阑尾炎章）",
-    "sr": "教材阑尾炎章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 90,
-    "tp": "A3",
-    "s": "若上述患者行阑尾切除术，术中发现阑尾已坏疽穿孔、腹腔内有脓液约200ml。此时正确的处理是",
-    "o": [
-      {
-        "l": "A",
-        "x": "仅行阑尾切除"
-      },
-      {
-        "l": "B",
-        "x": "阑尾切除+腹腔冲洗+放置引流"
-      },
-      {
-        "l": "C",
-        "x": "仅放置腹腔引流"
-      },
-      {
-        "l": "D",
-        "x": "仅行腹腔冲洗"
-      },
-      {
-        "l": "E",
-        "x": "保守治疗"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "化脓/坏疽/穿孔性阑尾炎伴腹腔污染时，应行阑尾切除+腹腔冲洗（清除残余感染）+放置引流管（盆腔/右结肠旁沟），可预防术后腹腔脓肿形成。切口宜选右下腹探查切口（麦氏切口或旁正中切口）。术后并发症：切口感染（最常见）、腹腔脓肿、粪瘘（少见）。术后常规使用抗生素。（教材：阑尾炎章）",
-    "sr": "教材阑尾炎章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 91,
-    "tp": "A3",
-    "s": "该患者术后第3天出现畏寒发热、T 39.5°C、右下腹和盆腔压痛。最可能的并发症是",
-    "o": [
-      {
-        "l": "A",
-        "x": "切口感染"
-      },
-      {
-        "l": "B",
-        "x": "肺部感染"
-      },
-      {
-        "l": "C",
-        "x": "盆腔脓肿"
-      },
-      {
-        "l": "D",
-        "x": "粘连性肠梗阻"
-      },
-      {
-        "l": "E",
-        "x": "尿路感染"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "阑尾穿孔术后高热+盆腔压痛→盆腔脓肿（最常见的手术后腹腔脓肿类型）。诊断：直肠指检可触及直肠前壁饱满、有触痛的包块；B超/CT可明确。治疗：抗生素+经直肠穿刺/切开引流（已婚女性可经阴道后穹隆穿刺引流）。盆腔脓肿的全身症状重（高热），但腹部体征相对较轻。（教材：阑尾炎章）",
-    "sr": "教材阑尾炎章",
-    "bl": "分析"
-  },
-  {
-    "t": "c",
-    "n": 2,
-    "cs": "患者男性，65岁。腹痛、腹胀、呕吐、停止排便排气3天。既往有阑尾切除手术史20年。查体：腹部膨隆，可见肠型，全腹轻压痛，肠鸣音亢进、可闻及气过水声。X线腹部立位平片示中腹部多个阶梯状气液平面。"
-  },
-  {
-    "t": "q",
-    "n": 92,
-    "tp": "A3",
-    "s": "该患者肠梗阻最可能的病因是",
-    "o": [
-      {
-        "l": "A",
-        "x": "结肠肿瘤"
-      },
-      {
-        "l": "B",
-        "x": "肠扭转"
-      },
-      {
-        "l": "C",
-        "x": "粘连性肠梗阻"
-      },
-      {
-        "l": "D",
-        "x": "嵌顿疝"
-      },
-      {
-        "l": "E",
-        "x": "肠套叠"
-      }
-    ],
-    "c": [
-      "C"
-    ],
-    "ex": "腹部手术史（阑尾切除）→术后肠粘连是粘连性肠梗阻最常见的病因（约占机械性肠梗阻的55%）。该患者无疝史、无肿瘤高危因素，优先考虑粘连性肠梗阻。表现：痛、吐、胀、闭四大症状+X线阶梯状液平面=机械性肠梗阻。目前无绞窄征象（无腹膜刺激征、无血性腹水），可先行保守治疗（禁食、胃肠减压、补液、灌肠）。若保守治疗12-24小时无缓解或出现绞窄征象→手术。（教材：肠梗阻章）",
-    "sr": "教材肠梗阻章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 93,
-    "tp": "A3",
-    "s": "若该患者治疗过程中腹痛由阵发性转为持续性剧烈疼痛，出现腹膜刺激征，腹穿抽出血性液体。提示",
-    "o": [
-      {
-        "l": "A",
-        "x": "肠梗阻已缓解"
-      },
-      {
-        "l": "B",
-        "x": "转为绞窄性肠梗阻"
-      },
-      {
-        "l": "C",
-        "x": "合并急性胰腺炎"
-      },
-      {
-        "l": "D",
-        "x": "合并腹腔感染"
-      },
-      {
-        "l": "E",
-        "x": "肠梗阻类型改变"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "阵发性腹痛→持续性剧痛+腹膜刺激征+血性腹水=肠管已发生绞窄坏死。绞窄性肠梗阻是急腹症中的急症，需紧急手术，手术方式取决于肠管活力：肠管血运可恢复→解除梗阻（粘连松解）；肠已坏死→肠切除肠吻合术。延迟手术可导致肠坏死穿孔→弥漫性腹膜炎→感染性休克→多器官功能衰竭死亡。（教材：肠梗阻章）",
-    "sr": "教材肠梗阻章",
-    "bl": "分析"
-  },
-  {
-    "t": "c",
-    "n": 3,
-    "cs": "患者男性，35岁。头部外伤后昏迷约10分钟后清醒，诉头痛。约2小时后头痛加剧，再次出现意识障碍，右侧瞳孔散大，左侧肢体无力。CT示右颞部颅骨内板下双凸透镜形高密度影。"
-  },
-  {
-    "t": "q",
-    "n": 94,
-    "tp": "A3",
-    "s": "该患者最可能的诊断是",
-    "o": [
-      {
-        "l": "A",
-        "x": "急性硬膜下血肿"
-      },
-      {
-        "l": "B",
-        "x": "急性硬膜外血肿"
-      },
-      {
-        "l": "C",
-        "x": "脑挫裂伤"
-      },
-      {
-        "l": "D",
-        "x": "脑内血肿"
-      },
-      {
-        "l": "E",
-        "x": "蛛网膜下腔出血"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "头部外伤→原发昏迷→中间清醒期→继发昏迷（典型硬膜外血肿病程）+ CT双凸透镜形高密度影+同侧瞳孔散大对侧肢体无力（小脑幕切迹疝）=急性硬膜外血肿。出血来源多为脑膜中动脉。瞳孔散大侧为血肿侧（动眼神经受压），对侧偏瘫（大脑脚受压）。紧急处理：快速静滴甘露醇降颅压→立即手术（开颅血肿清除+止血）。延误处理可导致不可逆脑疝死亡。（教材：颅脑损伤章）",
-    "sr": "教材颅脑损伤章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 95,
-    "tp": "A3",
-    "s": "该患者右侧瞳孔散大的原因是",
-    "o": [
-      {
-        "l": "A",
-        "x": "动眼神经受压"
-      },
-      {
-        "l": "B",
-        "x": "视神经损伤"
-      },
-      {
-        "l": "C",
-        "x": "中脑损伤"
-      },
-      {
-        "l": "D",
-        "x": "桥脑损伤"
-      },
-      {
-        "l": "E",
-        "x": "延髓损伤"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "小脑幕切迹疝时，颞叶钩回疝入小脑幕切迹压迫同侧动眼神经（大脑后动脉和后交通动脉之间走行的动眼神经→副交感神经纤维首先受累→瞳孔括约肌麻痹→瞳孔散大）和同侧大脑脚（皮质脊髓束→对侧肢体偏瘫）。瞳孔先缩小后散大（早期动眼神经受刺激→瞳孔缩小），光反射迟钝→消失是进行性脑疝的可靠指标。（教材：颅脑损伤章）",
-    "sr": "教材颅脑损伤章",
-    "bl": "分析"
-  },
-  {
-    "t": "q",
-    "n": 96,
-    "tp": "A3",
-    "s": "该患者最恰当的紧急处理是",
-    "o": [
-      {
-        "l": "A",
-        "x": "观察等待"
-      },
-      {
-        "l": "B",
-        "x": "甘露醇脱水+开颅血肿清除术"
-      },
-      {
-        "l": "C",
-        "x": "单纯甘露醇脱水"
-      },
-      {
-        "l": "D",
-        "x": "腰穿放液"
-      },
-      {
-        "l": "E",
-        "x": "钻孔引流"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "急性硬膜外血肿伴脑疝形成（瞳孔散大+意识障碍）是神经外科最紧急的手术指征。处理流程：①快速静滴20%甘露醇250ml（15-20分钟内）临时降颅压争取手术时间；②立即开颅血肿清除+止血（脑膜中动脉止血）。血肿量>30ml即有手术指征；出现脑疝应立即手术，时间就是脑。腰穿禁忌（可诱发脑疝）。单纯脱水不能解决根本问题。（教材：颅脑损伤章）",
-    "sr": "教材颅脑损伤章",
-    "bl": "分析"
-  },
-  {
-    "t": "c",
-    "n": 4,
-    "cs": "患者女性，38岁。心悸、多汗、易怒、体重减轻3个月。查体：甲状腺Ⅱ度弥漫性肿大，质软，可闻及血管杂音。双手细震颤阳性。心率110次/分，心律绝对不齐（房颤）。FT3 18.5pmol/L↑，FT4 65.2pmol/L↑，TSH 0.01mIU/L↓。"
-  },
-  {
-    "t": "q",
-    "n": 97,
-    "tp": "A3",
-    "s": "该患者最可能的诊断是",
-    "o": [
-      {
-        "l": "A",
-        "x": "单纯性甲状腺肿"
-      },
-      {
-        "l": "B",
-        "x": "亚急性甲状腺炎"
-      },
-      {
-        "l": "C",
-        "x": "甲状腺腺瘤"
-      },
-      {
-        "l": "D",
-        "x": "原发性甲状腺功能亢进症(Graves病)"
-      },
-      {
-        "l": "E",
-        "x": "慢性淋巴细胞性甲状腺炎"
-      }
-    ],
-    "c": [
-      "D"
-    ],
-    "ex": "中年女性+高代谢症状（心悸多汗消瘦）+弥漫性甲状腺肿大+血管杂音+房颤+FT3/FT4↑+TSH↓=Graves病（原发性甲亢，最常见类型）。TRAb（TSH受体抗体）是其特异性自身抗体。单纯性甲状腺肿甲状腺功能正常；亚甲炎有颈部疼痛、血沉快、同位素摄取低；桥本病多为甲减表现、TPOAb/TgAb升高。治疗：抗甲状腺药物（甲巯咪唑）口服→放射性¹³¹I→手术。房颤随甲亢控制可恢复窦性心律。（教材：甲状腺章）",
-    "sr": "教材甲状腺章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 98,
-    "tp": "A3",
-    "s": "若该患者选择手术治疗，术前最重要的准备是",
-    "o": [
-      {
-        "l": "A",
-        "x": "术前禁食"
-      },
-      {
-        "l": "B",
-        "x": "碘剂准备"
-      },
-      {
-        "l": "C",
-        "x": "使用抗生素"
-      },
-      {
-        "l": "D",
-        "x": "使用普萘洛尔"
-      },
-      {
-        "l": "E",
-        "x": "使用丙硫氧嘧啶+碘剂控制甲亢症状"
-      }
-    ],
-    "c": [
-      "E"
-    ],
-    "ex": "甲亢术前准备最重要：先用硫脲类药物（丙硫氧嘧啶/甲巯咪唑）控制甲亢症状使基础代谢率降至正常→术前2周加用复方碘溶液（Lugol液）使甲状腺缩小变硬、减少术中出血。也可单用普萘洛尔做术前准备（适用于不能耐受硫脲类者）。术前准备充分的标准：①症状缓解、情绪稳定；②脉率<90次/分；③BMR<+20%；④甲状腺缩小变硬、血管杂音减弱或消失。（教材：甲状腺章）",
-    "sr": "教材甲状腺章",
-    "bl": "应用"
-  },
-  {
-    "t": "q",
-    "n": 99,
-    "tp": "判断",
-    "s": "高压蒸汽灭菌法在121℃条件下维持30分钟即可达到灭菌效果。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "高压蒸汽灭菌法标准条件为121℃（压力102.9kPa）维持30分钟，可杀灭一切微生物包括芽孢。这是最可靠、应用最广的物理灭菌法。（教材：无菌术章）",
-    "sr": "教材无菌术章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 100,
-    "tp": "判断",
-    "s": "低钾血症时心电图可出现T波低平或倒置、出现U波、ST段下移。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "血清钾<3.5mmol/L为低钾血症。心电图特征性改变：T波低平或倒置、ST段下移、出现U波（T波后的小波）、QT间期延长。补钾原则：口服补钾最安全、见尿补钾（尿量>40ml/h）、浓度<40mmol/L（即氯化钾浓度不超过0.3%）、速度<20mmol/h，严禁静推。（教材：水电解质章）",
-    "sr": "教材水电解质章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 101,
-    "tp": "判断",
-    "s": "绞窄性肠梗阻与单纯性肠梗阻的根本区别在于梗阻部位不同。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "两者的根本区别在于有无肠管血运障碍，而非梗阻部位。单纯性肠梗阻仅有肠内容物通过障碍而无血运障碍；绞窄性肠梗阻伴有肠管血运障碍，可导致肠坏死穿孔。正确：嵌顿性疝与绞窄性疝的根本区别在于有无血运障碍。（教材：肠梗阻章）",
-    "sr": "教材肠梗阻章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 102,
-    "tp": "判断",
-    "s": "急性阑尾炎最具特征性的症状是转移性右下腹痛，始于上腹部或脐周，数小时后转移并固定于右下腹。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "转移性右下腹痛是急性阑尾炎的特征性症状，70%-80%患者按此规律发作。早期为内脏神经传导（定位模糊→上腹/脐周），后期累及壁层腹膜→躯体神经传导→痛觉定位精确至右下腹。（教材：阑尾炎章）",
-    "sr": "教材阑尾炎章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 103,
-    "tp": "判断",
-    "s": "骨折三大专有体征为畸形、反常活动、骨擦音或骨擦感。出现其中任何一项即可诊断骨折。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "三大专有体征是骨折的特有表现，出现任何一种即可确诊骨折。但并非每例骨折都有专有体征——如嵌插骨折和裂纹骨折可无专有体征，需X线或CT确诊。（教材：骨折总论章）",
-    "sr": "教材骨折总论章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 104,
-    "tp": "判断",
-    "s": "急性硬膜外血肿的CT典型表现为颅骨内板下新月形高密度影。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "新月形高密度影是急性硬膜下血肿的CT表现。急性硬膜外血肿CT表现为双凸透镜形（梭形）高密度影，且不跨越颅缝（硬脑膜附着于颅缝处）。两者的CT形态差异是重要鉴别点。（教材：颅脑损伤章）",
-    "sr": "教材颅脑损伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 105,
-    "tp": "判断",
-    "s": "Colles骨折（伸直型桡骨远端骨折）的典型畸形是枪刺样畸形和餐叉样畸形。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "Colles骨折正面观呈枪刺样畸形（远折端向桡侧移位），侧面观呈餐叉样畸形（远折端向背侧移位）。为临床上最常见的骨折之一，多见于老年人跌倒手掌着地。（教材：上肢骨折章）",
-    "sr": "教材上肢骨折章",
-    "bl": "记忆"
-  },
-  {
-    "t": "q",
-    "n": 106,
-    "tp": "判断",
-    "s": "张力性气胸的紧急处理是立即开胸探查止血。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "张力性气胸的紧急处理是立即排气减压——用粗针头在患侧锁骨中线第2肋间穿刺，然后放置胸腔闭式引流管。开胸探查适用于：①进行性血胸；②胸腔闭式引流后持续大量漏气（>3天）；③心脏大血管损伤；④食管破裂等。（教材：胸部损伤章）",
-    "sr": "教材胸部损伤章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 107,
-    "tp": "判断",
-    "s": "急性胰腺炎血清淀粉酶升高的程度与病情严重程度呈正比。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "B"
-    ],
-    "ex": "血清淀粉酶的高低与病情严重程度不平行。重症坏死性胰腺炎（SAP）时，由于胰腺广泛坏死，淀粉酶反而不高甚至正常。判断重症胰腺炎的指标：Ranson评分、APACHE II评分、CT严重度指数（CTSI）、血钙<1.87mmol/L等。（教材：胰腺章）",
-    "sr": "教材胰腺章",
-    "bl": "理解"
-  },
-  {
-    "t": "q",
-    "n": 108,
-    "tp": "判断",
-    "s": "肠内营养相对于肠外营养最重要的优势是能够维护肠黏膜屏障功能、防止肠道菌群移位。",
-    "o": [
-      {
-        "l": "A",
-        "x": "正确"
-      },
-      {
-        "l": "B",
-        "x": "错误"
-      }
-    ],
-    "c": [
-      "A"
-    ],
-    "ex": "肠道是应激反应的中心器官，长期禁食和肠外营养→肠黏膜萎缩、通透性增加→细菌和内毒素移位→肠源性感染/SIRS/MODS。肠内营养可刺激胃肠激素分泌、维护肠黏膜屏障、维持肠道菌群平衡。只要肠道功能存在，应优先选择肠内营养。（教材：营养章）",
-    "sr": "教材营养章",
-    "bl": "理解"
+<body>
+
+<header id="topbar">
+  <h1 id="paper-title">外科学押题卷</h1>
+  <div class="sub" id="paper-sub">MedAgentWork 统一模板 v1.0</div>
+  <div class="bar-row">
+    <span class="score" id="score">已答 0 · 正确 0 · 正确率 --</span>
+    <span class="bar-btns no-print">
+      <button class="btn" id="btn-wrong" title="仅重刷错题">错题重刷</button>
+      <button class="btn" id="btn-all" title="恢复全部题目">全部题目</button>
+      <button class="btn" id="btn-export" title="导出作答JSON">导出作答</button>
+      <button class="btn" id="btn-reset" title="清空本地作答记录">清空记录</button>
+    </span>
+  </div>
+  <div id="system-tags"></div>
+  <div id="progress"><div id="progress-fill"></div></div>
+</header>
+
+<div class="container"><div id="quiz"></div></div>
+
+<button class="theme-fab" id="theme-toggle" title="切换亮/暗主题（localStorage maw-theme，与 index.html 共享）">🌙</button>
+
+<!-- ==================== 题目注入点：替换 QUESTIONS 数组 ==================== -->
+<script id="quiz-data">
+/*
+  题目 Schema（与 registry/最终产物字段对齐）：
+  {
+    qid:   "NRO-M2-A1-001"          // 必填，作答记录主键
+    type:  "A1"                     // A1/A2/A3/A4/B1/X/判断
+    system:"呼吸系统"               // 可选：填写则自动启用系统筛选标签
+    bloom: "应用"                    // 可选：认知层级
+    stem:  "题干，否定词用<b>不</b>加粗"  // 支持 <b>
+    options:["A内容","B内容",...]    // 4-5 个
+    answer:"C"                      // 单选字母；X 型如 "ABD"
+    explanation:"解析正文",          // 必填（打印时展示）
+    source:"教材P20"                 // 可选
+  }
+  多个 system 出现时顶栏自动生成筛选标签（内科卷已有功能的模板化）。
+*/
+const PAPER_META = {
+  "title": "外科学押题卷",
+  "sub": "统一模板 v1.0 · 108 题 · 2026-08-21 迁移"
+};
+const QUESTIONS = [
+  {
+    "qid": "WK-A1-001",
+    "type": "A1",
+    "stem": "手术区皮肤消毒范围要包括手术切口周围至少",
+    "options": [
+      "5cm",
+      "10cm",
+      "15cm",
+      "20cm",
+      "25cm"
+    ],
+    "answer": "C",
+    "explanation": "手术区皮肤消毒范围要包括手术切口周围至少15cm的区域。如手术有延长切口的可能，则应相应扩大消毒范围。无菌术是外科手术的基础，包括灭菌法、抗菌法及一定的操作规则和管理制度。（教材：无菌术章节）",
+    "source": "教材无菌术章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-002",
+    "type": "A1",
+    "stem": "高压蒸汽灭菌法的标准灭菌条件是",
+    "options": [
+      "100℃×20min",
+      "110℃×30min",
+      "121℃×30min",
+      "131℃×10min",
+      "115℃×40min"
+    ],
+    "answer": "C",
+    "explanation": "高压蒸汽灭菌法是最可靠的灭菌方法，标准条件为121℃（压力102.9kPa）维持30分钟。适用于耐高温、耐湿的物品，如金属器械、玻璃器皿、布类敷料等。130℃（压力205.8kPa）可在10分钟内达到灭菌效果但不能常规使用。（教材：无菌术章）",
+    "source": "教材无菌术章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-003",
+    "type": "A1",
+    "stem": "等渗性脱水最常见的原因是",
+    "options": [
+      "大量出汗",
+      "长期禁食",
+      "大量呕吐和腹泻",
+      "尿崩症表现",
+      "糖尿病酮症酸中毒"
+    ],
+    "answer": "C",
+    "explanation": "等渗性脱水（急性脱水/混合性脱水）是外科最常见的缺水类型，水和钠成比例丢失。常见原因：①消化液急性丢失（大量呕吐、腹泻、肠瘘）；②体液丧失在感染区或软组织内（腹腔内感染、肠梗阻、烧伤）。等渗性脱水时血清钠在135-145mmol/L正常范围，但细胞外液量急剧减少。（教材：水电解质平衡章）",
+    "source": "教材水电解质章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-004",
+    "type": "A1",
+    "stem": "低渗性脱水的血清钠浓度标准是",
+    "options": [
+      "&lt;130mmol/L",
+      "&lt;135mmol/L",
+      "&lt;140mmol/L",
+      "&lt;145mmol/L",
+      "&lt;150mmol/L"
+    ],
+    "answer": "B",
+    "explanation": "低渗性脱水（慢性脱水/继发性脱水）血清钠&lt;135mmol/L，水和钠同时丢失但失钠多于失水，细胞外液呈低渗状态。常见于：①消化液持续丢失后只补水；②大创面渗液后只补水；③长期使用排钠利尿剂。临床特征：轻度(&lt;135)疲乏头晕，中度(&lt;130)恶心呕吐血压下降，重度(&lt;120)神志不清休克。（教材：水电解质章）",
+    "source": "教材水电解质章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-005",
+    "type": "A1",
+    "stem": "高钾血症最危险的表现是",
+    "options": [
+      "四肢麻木",
+      "恶心呕吐",
+      "心脏骤停",
+      "代谢性酸中毒",
+      "肠麻痹"
+    ],
+    "answer": "C",
+    "explanation": "高钾血症（血清钾&gt;5.5mmol/L）对机体的主要危害是心脏毒性，可导致各种心律失常甚至心脏骤停（舒张期停搏）。ECG特征：早期T波高尖、QT间期缩短→QRS波增宽、P波低平消失→室颤或心脏停搏。紧急处理：静注10%葡萄糖酸钙10-20ml对抗K+对心肌的毒性。（教材：水电解质章）",
+    "source": "教材水电解质章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-006",
+    "type": "A1",
+    "stem": "代谢性酸中毒最突出的临床表现是",
+    "options": [
+      "面色潮红",
+      "呼吸深快",
+      "心率减慢",
+      "腱反射亢进",
+      "手足抽搐"
+    ],
+    "answer": "B",
+    "explanation": "代谢性酸中毒时，H+浓度升高刺激外周化学感受器和延髓呼吸中枢，引起代偿性呼吸深快（Kussmaul呼吸），以排出更多CO2降低PCO2。面色潮红、心率增快也可见到。HCO3-下降，BE负值增大。治疗要点：积极处理原发病，pH&lt;7.2时可补碱。（教材：酸碱平衡章）",
+    "source": "教材酸碱平衡章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-X-007",
+    "type": "X",
+    "stem": "代谢性碱中毒的常见病因包括",
+    "options": [
+      "幽门梗阻剧烈呕吐",
+      "长期胃肠减压",
+      "大量输注库存血",
+      "长期使用呋塞米",
+      "严重腹泻"
+    ],
+    "answer": "ABD",
+    "explanation": "代谢性碱中毒HCO3-原发性升高。常见病因：①H+丢失过多——幽门梗阻剧烈呕吐、长期胃肠减压（丢HCl）；②低钾血症——细胞内外K+-H+交换、肾排H+增多；③利尿剂（呋塞米等袢利尿剂）——增加Na+远曲小管交换K+和H+；④碱性物质摄入过多。C为高钾血症原因之一（库存血含高K+），E导致代谢性酸中毒。（教材：酸碱平衡章）",
+    "source": "教材酸碱平衡章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-008",
+    "type": "A1",
+    "stem": "休克微循环缺血期的特征性变化是",
+    "options": [
+      "毛细血管前括约肌舒张",
+      "微循环只出不进",
+      "毛细血管前括约肌收缩",
+      "微循环只进不出",
+      "微循环广泛开放"
+    ],
+    "answer": "C",
+    "explanation": "休克微循环分为三期：①缺血期（代偿期）——儿茶酚胺大量释放，毛细血管前括约肌收缩→微循环「只出不进」；②淤血期（失代偿期）——酸中毒使毛细血管前括约肌舒张，后微静脉仍收缩→微循环「只进不出」；③衰竭期（DIC期）——血液高凝、微血栓形成。选项B描述的是淤血期。（教材：休克章）",
+    "source": "教材休克章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-009",
+    "type": "A1",
+    "stem": "休克监测中最能反映组织灌注情况的指标是",
+    "options": [
+      "动脉血压",
+      "中心静脉压",
+      "每小时尿量",
+      "心率变化",
+      "血红蛋白"
+    ],
+    "answer": "C",
+    "explanation": "尿量是反映肾血流灌注的敏感指标，可间接反映全身组织灌注。休克患者尿量&lt;25ml/h提示肾灌注不足，尿量&gt;30ml/h表明休克改善。血压不是敏感指标，心率和CVP受多种因素影响。尿量是最简单、可靠的组织灌注监测指标。（教材：休克章）",
+    "source": "教材休克章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-010",
+    "type": "A1",
+    "stem": "感染性休克的血流动力学特征是",
+    "options": [
+      "高排高阻型",
+      "低排低阻型",
+      "高排低阻型",
+      "低排高阻型",
+      "正常排高阻型"
+    ],
+    "answer": "C",
+    "explanation": "感染性休克血流动力学分为两型：①高排低阻型（暖休克）——外周血管扩张、阻力降低、心输出量正常或增高，皮肤温暖干燥（多见于G+菌感染早期）；②低排高阻型（冷休克）——外周血管收缩、阻力增高、心输出量减少，皮肤湿冷（多见于G-菌感染）。暖休克较少见但预后较好。（教材：休克章）",
+    "source": "教材休克章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A2-011",
+    "type": "A2",
+    "stem": "患者男性，40岁，车祸致脾破裂。血压80/50mmHg，心率120次/分，四肢湿冷，尿量15ml/h。该患者休克的类型是",
+    "options": [
+      "心源性休克",
+      "感染性休克",
+      "过敏性休克",
+      "低血容量性休克",
+      "神经源性休克"
+    ],
+    "answer": "D",
+    "explanation": "患者因脾破裂大出血，血压下降、心率增快、四肢湿冷、尿量减少，符合低血容量性休克（失血性休克）的典型表现。脾破裂是腹腔脏器损伤中最常见的实质脏器损伤，出血量大，需紧急手术。低血容量性休克的核心治疗是补充血容量和止血。（教材：休克章）",
+    "source": "教材休克章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A1-012",
+    "type": "A1",
+    "stem": "外科感染的特点不包括",
+    "options": [
+      "多为混合感染",
+      "局部症状明显",
+      "常需手术处理",
+      "以病毒感染为主",
+      "常伴组织坏死"
+    ],
+    "answer": "D",
+    "explanation": "外科感染的特点：①多为需氧菌与厌氧菌的混合感染；②局部症状和体征明显（红、肿、热、痛、功能障碍）；③病变多呈器质性，常伴组织坏死和化脓；④常需手术切开引流或清创处理。外科感染以细菌感染为主（主要是G+球菌和G-杆菌），病毒感染不属于外科感染的常见病原类型。（教材：外科感染章）",
+    "source": "教材外科感染章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-013",
+    "type": "A1",
+    "stem": "破伤风梭菌感染的特征性临床表现是",
+    "options": [
+      "高热寒战",
+      "苦笑面容和角弓反张",
+      "伤口脓性分泌物",
+      "皮下捻发感",
+      "局部红肿热痛"
+    ],
+    "answer": "B",
+    "explanation": "破伤风是由破伤风梭菌（G+厌氧芽孢杆菌）经伤口侵入，产生痉挛毒素（破伤风痉挛毒素）引起的急性特异性感染。特征性表现：①肌紧张性收缩（肌强直）——咀嚼肌（张口困难、苦笑面容）→颈项→躯干（角弓反张）→四肢；②阵发性强烈痉挛——轻微刺激即可诱发。患者神志始终清楚。潜伏期6-12天，潜伏期越短病情越重。（教材：外科感染章）",
+    "source": "教材外科感染章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-014",
+    "type": "A1",
+    "stem": "痈的致病菌主要是",
+    "options": [
+      "大肠杆菌",
+      "绿脓杆菌",
+      "金黄色葡萄球菌",
+      "链球菌感染",
+      "厌氧菌"
+    ],
+    "answer": "C",
+    "explanation": "痈是多个相邻毛囊及其周围组织的急性化脓性感染，致病菌以金黄色葡萄球菌最多见。好发于颈项、背部等皮肤厚韧处。表现为多个脓头、大片炎性浸润区、剧烈疼痛。全身症状重，需切开引流（做「+」或「++」字形切口）。糖尿病患者易发生痈。（教材：外科感染章）",
+    "source": "教材外科感染章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-X-015",
+    "type": "X",
+    "stem": "全身性外科感染（脓毒症）的诊断标准包括",
+    "options": [
+      "体温&gt;38℃或&lt;36℃",
+      "心率&gt;90次/分",
+      "呼吸&gt;20次/分",
+      "白细胞&gt;12×10⁹/L或&lt;4×10⁹/L",
+      "血糖&gt;15mmol/L"
+    ],
+    "answer": "ABCD",
+    "explanation": "脓毒症（SIRS+感染证据）诊断标准（满足≥2项）：①体温&gt;38℃或&lt;36℃；②心率&gt;90次/分；③呼吸&gt;20次/分或PaCO2&lt;32mmHg；④白细胞&gt;12×10⁹/L或&lt;4×10⁹/L或幼稚杆状核&gt;10%。严重脓毒症=脓毒症+器官功能障碍。脓毒性休克=脓毒症+充分液体复苏后仍持续低血压。E高血糖不是SIRS标准项。（教材：外科感染章）",
+    "source": "教材外科感染章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-016",
+    "type": "A1",
+    "stem": "创伤愈合过程中，伤口收缩的主要细胞是",
+    "options": [
+      "中性粒细胞",
+      "巨噬细胞",
+      "肌成纤维细胞",
+      "血管内皮细胞",
+      "淋巴细胞"
+    ],
+    "answer": "C",
+    "explanation": "创伤愈合过程分为：①炎症期（3-5天）——中性粒细胞、巨噬细胞清除坏死组织；②增生期——成纤维细胞增殖合成胶原、肌成纤维细胞收缩使伤口缩小、血管内皮细胞增殖形成新生毛细血管（肉芽组织）；③塑形期——胶原纤维交联重组。肌成纤维细胞具有平滑肌细胞特性，其收缩使创面缩小。（教材：创伤章）",
+    "source": "教材创伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-017",
+    "type": "A1",
+    "stem": "成人双上肢烧伤面积按照中国九分法计算为",
+    "options": [
+      "9%",
+      "18%",
+      "27%",
+      "36%",
+      "45%"
+    ],
+    "answer": "B",
+    "explanation": "中国九分法（成人）：头面颈9%（头6面3颈3），双上肢18%（双手5双前臂6双上臂7，即9%×2），躯干27%（前13后13会阴1，即9%×3），双下肢46%（双臀5双足7双小腿13双大腿21，即9%×5+1%）。儿童头大下肢小，需用公式校正。（教材：烧伤章）",
+    "source": "教材烧伤章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A2-018",
+    "type": "A2",
+    "stem": "患者男性，30岁，体重60kg。火焰烧伤后2小时入院。烧伤面积：双下肢（不含臀部）34%，躯干前13%。烧伤深度：浅Ⅱ度为主。第一个24小时应补液量为",
+    "options": [
+      "3000ml",
+      "4230ml",
+      "5600ml",
+      "6200ml",
+      "7000ml"
+    ],
+    "answer": "B",
+    "explanation": "烧伤面积=34%+13%=47%。伤后第一个24小时补液量公式（国内通用）：每1%烧伤面积×体重(kg)×1.5ml（胶体+电解质液）+基础需水量2000ml（5%GS）。计算：47×60×1.5+2000=4230+2000=6230ml。但题目选项B为4230ml可能只算胶晶部分（不含基础水），也有教材直接用Parkland公式。国内公式区分：胶体:电解质=0.5:1，电解质首选平衡盐溶液。第二个24小时为第一个24小时的一半+基础水。（教材：烧伤章）",
+    "source": "教材烧伤章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A1-019",
+    "type": "A1",
+    "stem": "临床上最严重的输血并发症是",
+    "options": [
+      "发热反应",
+      "过敏反应",
+      "溶血反应",
+      "细菌污染反应",
+      "循环超负荷"
+    ],
+    "answer": "C",
+    "explanation": "溶血反应是最严重的输血并发症，多由ABO血型不合引起。典型表现：输入10-20ml后出现沿输血静脉的疼痛、发热、寒战、呼吸困难、腰背酸痛、血红蛋白尿、低血压休克。可导致急性肾功能衰竭和DIC，死亡率高。处理：立即停止输血、维持循环、利尿、碱化尿液、透析。发热反应是最常见的输血并发症。（教材：输血章）",
+    "source": "教材输血章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-020",
+    "type": "A1",
+    "stem": "成分输血中，新鲜冰冻血浆（FFP）的主要适应证是",
+    "options": [
+      "补充血容量",
+      "纠正贫血",
+      "补充凝血因子",
+      "提高胶体渗透压",
+      "补充血小板"
+    ],
+    "answer": "C",
+    "explanation": "FFP含有全部凝血因子，主要用于凝血因子缺乏导致的出血（如肝病、DIC、大量输血后稀释性凝血障碍）。补充血容量首选晶体液和人造胶体，纠正贫血输红细胞，提高胶渗压输白蛋白，补充血小板输浓缩血小板。FFP的输注指征应严格把握，不用于扩容和营养支持。（教材：输血章）",
+    "source": "教材输血章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-021",
+    "type": "A1",
+    "stem": "成人择期手术术前禁食、禁水的时间分别是",
+    "options": [
+      "禁食6h，禁水2h",
+      "禁食8h，禁水4h",
+      "禁食12h，禁水4h",
+      "禁食12h，禁水6h",
+      "禁食24h，禁水8h"
+    ],
+    "answer": "C",
+    "explanation": "成人择期手术常规术前禁食12小时、禁水4小时（麻醉诱导前2小时可饮少量清水）。目的是防止麻醉或手术过程中发生胃内容物反流误吸（Mendelson综合征）。小儿禁食时间可适当缩短。（教材：围手术期章）",
+    "source": "教材围手术期章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-022",
+    "type": "A1",
+    "stem": "手术后最常见的并发症是",
+    "options": [
+      "切口感染",
+      "肺部感染",
+      "深静脉血栓",
+      "尿潴留",
+      "切口裂开"
+    ],
+    "answer": "A",
+    "explanation": "切口感染是术后最常见的并发症，发生率约3%-5%（清洁切口&lt;2%，污染切口可达20%+）。通常发生在术后3-5天，表现为切口红、肿、热、痛，可伴发热和白细胞升高。预防措施包括严格无菌操作、术前备皮不过早、围术期预防性使用抗生素、精细止血避免血肿。（教材：围手术期章）",
+    "source": "教材围手术期章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-X-023",
+    "type": "X",
+    "stem": "预防术后深静脉血栓形成的措施包括",
+    "options": [
+      "早期下床活动",
+      "弹力袜/间歇充气加压",
+      "术后长期卧床休息",
+      "低分子肝素抗凝",
+      "充分补液避免血液浓缩"
+    ],
+    "answer": "ABDE",
+    "explanation": "深静脉血栓（DVT）的预防：①基本预防——尽早下床活动、下肢主动/被动活动；②机械预防——弹力袜、间歇充气加压装置（IPC）；③药物预防——低分子肝素、磺达肝癸钠、华法林等。高危因素包括高龄、肥胖、恶性肿瘤、手术时间长、骨科大手术等。C「长期卧床」是促发因素而非预防措施。肺栓塞是DVT最危险的后果。（教材：围手术期章）",
+    "source": "教材围手术期章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-024",
+    "type": "A1",
+    "stem": "局麻药毒性反应最早出现的症状是",
+    "options": [
+      "惊厥发作",
+      "呼吸停止",
+      "中枢神经系统兴奋症状",
+      "心律失常",
+      "血压下降"
+    ],
+    "answer": "C",
+    "explanation": "局麻药毒性反应首先表现为中枢神经系统症状：早期为兴奋型——口舌麻木、头晕耳鸣、多语、肌肉震颤、惊厥；严重时转为抑制型——昏迷、呼吸停止。心血管系统表现（心律失常、血压下降）在中枢症状之后出现。预防措施：不超过极量、回抽无血、加肾上腺素（指/趾/阴茎禁加）、术前使用苯二氮卓类药物提高惊厥阈。（教材：麻醉章）",
+    "source": "教材麻醉章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-025",
+    "type": "A1",
+    "stem": "硬膜外麻醉最严重的并发症是",
+    "options": [
+      "低血压",
+      "局麻药毒性反应",
+      "硬膜外血肿",
+      "全脊髓麻醉",
+      "脊神经根损伤"
+    ],
+    "answer": "D",
+    "explanation": "全脊髓麻醉是最严重的硬膜外麻醉并发症，由于硬膜外导管误入蛛网膜下腔未及时发现，将大量局麻药注入蛛网膜下腔导致全部脊神经被阻滞。表现为注药后数分钟内出现全部脊神经支配区无痛、低血压、呼吸停止、神志消失。处理：立即面罩加压给氧、气管插管、升压药维持循环。硬膜外麻醉常见并发症为低血压。（教材：麻醉章）",
+    "source": "教材麻醉章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-026",
+    "type": "A1",
+    "stem": "心肺复苏中，胸外按压与通气的比例是",
+    "options": [
+      "15:1",
+      "15:2",
+      "30:1",
+      "30:2",
+      "5:1"
+    ],
+    "answer": "D",
+    "explanation": "2015年AHA指南推荐成人基础生命支持（BLS）按压-通气比为30:2（无论单人还是双人施救）。按压频率100-120次/分，按压深度5-6cm。成人CPR流程为C-A-B（胸外按压→开放气道→人工呼吸），高质量CPR强调：快速按压、用力按压、充分回弹、减少中断。电除颤（室颤/无脉性室速）应在获取AED后尽快实施。（教材：心肺复苏章）",
+    "source": "教材心肺复苏章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-027",
+    "type": "A1",
+    "stem": "肠内营养相对于肠外营养的主要优点是",
+    "options": [
+      "操作简单",
+      "费用更低",
+      "维护肠黏膜屏障功能",
+      "热量更高",
+      "并发症更少"
+    ],
+    "answer": "C",
+    "explanation": "肠内营养（EN）的最大优势是维护肠黏膜屏障功能，防止肠道菌群移位（gut barrier function）。肠道是应激反应的中心器官，长期禁食和使用肠外营养（PN）可导致肠黏膜萎缩、通透性增加，使细菌和内毒素进入血液循环。EN还能促进胃肠激素分泌、改善门静脉循环。首选原则：只要肠道有功能就用肠内营养。（教材：营养章）",
+    "source": "教材营养章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-028",
+    "type": "A1",
+    "stem": "恶性肿瘤与良性肿瘤的根本区别在于",
+    "options": [
+      "生长速度",
+      "有无包膜",
+      "有无转移",
+      "对机体影响",
+      "细胞分化程度"
+    ],
+    "answer": "C",
+    "explanation": "有无转移（浸润和转移能力）是恶性肿瘤与良性肿瘤的根本区别。良性肿瘤不转移，恶性肿瘤可发生局部浸润和远处转移（淋巴道、血道、种植转移）。其他特点：良性肿瘤分化好、异型性小、生长慢、有包膜、不复发；恶性肿瘤分化差、异型性大、生长快、无包膜、易复发。（教材：肿瘤章）",
+    "source": "教材肿瘤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-029",
+    "type": "A1",
+    "stem": "甲亢手术治疗的绝对适应证是",
+    "options": [
+      "轻度甲亢",
+      "青少年甲亢",
+      "胸骨后甲状腺肿伴甲亢",
+      "妊娠早期甲亢",
+      "浸润性突眼"
+    ],
+    "answer": "C",
+    "explanation": "甲亢手术适应证：①中重度甲亢长期服药无效或复发；②甲状腺巨大有压迫症状（胸骨后甲状腺肿）；③结节性甲状腺肿伴甲亢；④疑有恶变。禁忌证：①青少年甲亢；②轻度甲亢；③老年或有严重器质性疾病不能耐受手术；④浸润性突眼术后可能加重。妊娠期甲亢：早期（1-3月）手术，中晚期药物。（教材：甲状腺章）",
+    "source": "教材甲状腺章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-030",
+    "type": "A1",
+    "stem": "甲状腺次全切除术后最危急的并发症是",
+    "options": [
+      "喉返神经损伤",
+      "甲状旁腺功能减退",
+      "甲状腺危象",
+      "出血窒息",
+      "喉上神经损伤"
+    ],
+    "answer": "D",
+    "explanation": "术后出血导致窒息是最危急的并发症，多发生于术后24-48小时内。原因：甲状腺上动脉或静脉结扎线脱落、残留腺体创面渗血。表现为颈部迅速肿胀、呼吸困难、发绀，需立即床旁拆除缝线、清除血肿、气管插管或切开。甲状腺危象虽然严重但发生率低且多发生于术后12-36h。喉返神经损伤导致声音嘶哑（单侧）或呼吸困难（双侧）。（教材：甲状腺章）",
+    "source": "教材甲状腺章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-031",
+    "type": "A1",
+    "stem": "甲状腺癌中最常见且预后最好的病理类型是",
+    "options": [
+      "乳头状癌",
+      "滤泡状癌",
+      "髓样癌",
+      "未分化癌",
+      "鳞状细胞癌"
+    ],
+    "answer": "A",
+    "explanation": "乳头状癌占甲状腺癌的60%-80%（最常见），多见于中青年女性，生长缓慢、淋巴结转移早但预后好（10年生存率&gt;90%）。滤泡状癌占10%-15%，血行转移为主。髓样癌来源于滤泡旁C细胞，分泌降钙素，可有家族性。未分化癌占5%-10%，多见于老年人，恶性程度最高，平均生存3-6个月。（教材：甲状腺章）",
+    "source": "教材甲状腺章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-032",
+    "type": "A1",
+    "stem": "甲状腺癌手术后出现手足抽搐，可能的原因是",
+    "options": [
+      "喉返神经损伤",
+      "喉上神经损伤",
+      "甲状腺功能减退",
+      "甲状旁腺功能减退",
+      "气管软化塌陷"
+    ],
+    "answer": "D",
+    "explanation": "甲状腺术后手足抽搐为甲状旁腺功能减退的典型表现。甲状旁腺术中误切或血供受损→PTH下降→低钙血症→神经肌肉兴奋性增高→手足抽搐。Chvostek征（轻扣面神经致口角抽动）和Trousseau征（束臂试验阳性）有助于诊断。处理：急症静注10%葡萄糖酸钙10-20ml，慢症口服钙剂+维生素D。（教材：甲状腺章）",
+    "source": "教材甲状腺章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A1-033",
+    "type": "A1",
+    "stem": "乳腺癌最常见的病理类型是",
+    "options": [
+      "浸润性小叶癌",
+      "浸润性导管癌",
+      "髓样癌",
+      "黏液癌",
+      "Paget病"
+    ],
+    "answer": "B",
+    "explanation": "浸润性导管癌（非特殊型）占乳腺癌的70%-80%，是最常见的病理类型。乳腺癌好发于外上象限（45%-50%），其次为中央区、内上象限。转移途径以淋巴转移为主，主要转移至同侧腋窝淋巴结。乳腺癌分子分型：Luminal A（ER+/PR+/HER2-）、Luminal B、HER2过表达型、三阴型（Basal-like）。（教材：乳腺章）",
+    "source": "教材乳腺章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-034",
+    "type": "A1",
+    "stem": "乳腺癌出现「橘皮样」外观的原因是",
+    "options": [
+      "Cooper韧带受累",
+      "皮下淋巴管被癌细胞堵塞",
+      "肿瘤侵犯皮肤",
+      "局部炎症反应",
+      "静脉回流受阻"
+    ],
+    "answer": "B",
+    "explanation": "乳腺癌皮肤「橘皮样」改变是由于皮下淋巴管被癌细胞堵塞，导致真皮水肿、毛囊处皮肤凹陷形成。而Cooper韧带受累缩短导致皮肤凹陷呈「酒窝征」。两者均为乳腺癌的重要体征。炎性乳癌表现为乳房皮肤红、肿、热、痛（类似急性乳腺炎），属特殊类型，预后差。（教材：乳腺章）",
+    "source": "教材乳腺章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-X-035",
+    "type": "X",
+    "stem": "乳腺癌的高危因素包括",
+    "options": [
+      "月经初潮早（&lt;12岁）",
+      "绝经年龄晚（&gt;55岁）",
+      "未生育或晚育",
+      "BRCA1/2基因突变",
+      "哺乳时间长"
+    ],
+    "answer": "ABCD",
+    "explanation": "乳腺癌高危因素：①月经初潮早（&lt;12岁）、绝经晚（&gt;55岁）——雌激素暴露时间长；②未生育或30岁后初次生育；③BRCA1/2基因突变（遗传性乳腺癌）；④一级亲属乳腺癌史；⑤乳腺不典型增生；⑥绝经后肥胖；⑦胸部放射史。E「哺乳时间长」是保护因素而非危险因素，哺乳可降低乳腺癌风险。（教材：乳腺章）",
+    "source": "教材乳腺章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-036",
+    "type": "A1",
+    "stem": "腹股沟斜疝与直疝最重要的鉴别依据是",
+    "options": [
+      "疝块形状",
+      "易否嵌顿",
+      "疝囊颈与腹壁下动脉的关系",
+      "发病年龄",
+      "是否进入阴囊"
+    ],
+    "answer": "C",
+    "explanation": "斜疝与直疝的根本区别在于疝囊颈与腹壁下动脉的关系：斜疝疝囊颈在腹壁下动脉外侧（经腹股沟管），直疝在内侧（经直疝三角-Hesselbach三角）。临床鉴别要点：①斜疝多见于青壮年，可入阴囊，呈梨形，易嵌顿；②直疝多见于老年人，不入阴囊，呈半球形，极少嵌顿。回纳疝块压住内环口，嘱患者咳嗽，斜疝不再突出而直疝仍可突出。（教材：腹外疝章）",
+    "source": "教材腹外疝章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-037",
+    "type": "A1",
+    "stem": "嵌顿性疝与绞窄性疝的根本区别在于",
+    "options": [
+      "疝块大小",
+      "有无疼痛",
+      "有无肠梗阻",
+      "疝内容物有无血运障碍",
+      "疝发生时间"
+    ],
+    "answer": "D",
+    "explanation": "嵌顿性疝：疝内容物被卡住不能回纳但血运尚可。绞窄性疝：嵌顿后未及时处理，内容物血运障碍→缺血坏死。嵌顿性疝向绞窄性疝发展是连续过程，两者本质区别在于有无血运障碍。绞窄性疝疼痛加剧、疝块增大变硬、触痛明显，可伴肠梗阻和全身中毒症状，需紧急手术。（教材：腹外疝章）",
+    "source": "教材腹外疝章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A2-038",
+    "type": "A2",
+    "stem": "患者男性，65岁。右腹股沟区可复性包块3年，今晨用力排便后包块突然增大，不能回纳，伴剧烈疼痛。查体：右腹股沟区可见8cm×5cm包块，张力高，触痛明显。最可能的诊断是",
+    "options": [
+      "腹股沟直疝",
+      "股疝",
+      "嵌顿性腹股沟斜疝",
+      "睾丸鞘膜积液",
+      "精索静脉曲张"
+    ],
+    "answer": "C",
+    "explanation": "患者有可复性腹股沟包块史（斜疝），用力后突然增大不能回纳+剧烈疼痛=嵌顿征象。老年患者直疝的可能性也存在，但嵌顿更多见于斜疝。嵌顿疝需紧急处理：手法复位（早期、无腹膜炎、儿童首选）或紧急手术。绞窄性疝表现为疼痛加剧、疝块增大变硬、触痛明显、肠梗阻、发热→肠坏死→需肠切除。（教材：腹外疝章）",
+    "source": "教材腹外疝章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A1-039",
+    "type": "A1",
+    "stem": "腹部闭合性损伤中，最易损伤的实质脏器是",
+    "options": [
+      "肝",
+      "脾",
+      "胰",
+      "肾",
+      "肾上腺"
+    ],
+    "answer": "B",
+    "explanation": "脾是腹腔内最易受损的实质脏器，占腹部闭合性损伤的40%-50%。脾破裂分为中央型、被膜下破裂和真性破裂（最常见、最危险）。典型表现：左上腹痛、左肩放射痛（Kehr征）、失血性休克。治疗以脾切除为主，儿童和部分成人可行保脾手术。肝破裂次之（15%-20%），常合并胆道出血。（教材：腹部损伤章）",
+    "source": "教材腹部损伤章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-040",
+    "type": "A1",
+    "stem": "腹部闭合性损伤诊断中最有意义的辅助检查是",
+    "options": [
+      "腹部B超",
+      "X线平片",
+      "诊断性腹腔穿刺",
+      "CT扫描",
+      "血常规"
+    ],
+    "answer": "C",
+    "explanation": "诊断性腹腔穿刺是最简单、最有效的腹部损伤辅助检查方法，阳性率可达90%以上。穿刺抽出不凝血提示实质脏器破裂（脾、肝），抽出消化液或浑浊液体提示空腔脏器破裂。穿刺阴性不能排除内脏损伤，可重复穿刺或灌洗。B超和CT为无创检查，CT准确率最高但不宜用于血流动力学不稳定者。X线发现膈下游离气体提示空腔脏器穿孔。（教材：腹部损伤章）",
+    "source": "教材腹部损伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-041",
+    "type": "A1",
+    "stem": "胃十二指肠溃疡急性穿孔最具特征性的体征是",
+    "options": [
+      "上腹部压痛",
+      "肝浊音界缩小或消失",
+      "肠鸣音亢进",
+      "移动性浊音阳性",
+      "Murphy征阳性"
+    ],
+    "answer": "B",
+    "explanation": "消化性溃疡急性穿孔后，胃十二指肠内气体进入腹腔→膈下游离气体→肝浊音界缩小或消失（叩诊呈鼓音）。立位X线见膈下新月形游离气体可确认诊断（阳性率约80%）。典型症状：突发上腹剧痛（刀割样）→迅速蔓延全腹→腹膜刺激征（压痛、反跳痛、肌紧张→板状腹）。非手术治疗适用于空腹小穿孔、腹膜炎局限者。（教材：胃十二指肠章）",
+    "source": "教材胃十二指肠章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-042",
+    "type": "A1",
+    "stem": "胃癌最主要的转移途径是",
+    "options": [
+      "直接蔓延",
+      "淋巴转移",
+      "血行转移",
+      "种植转移",
+      "跳跃转移"
+    ],
+    "answer": "B",
+    "explanation": "淋巴转移是胃癌最主要的转移途径，早期即可发生。胃癌淋巴引流按淋巴结分组和分站（D1/D2/D3），标准胃癌根治术行D2淋巴结清扫。血行转移多发生于晚期，最常见的远处转移部位是肝。种植转移在女性可形成Krukenberg瘤（卵巢转移瘤）。胃癌最常见的部位是胃窦部（约50%）。（教材：胃十二指肠章）",
+    "source": "教材胃十二指肠章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-043",
+    "type": "A1",
+    "stem": "急性阑尾炎最具特征性的症状是",
+    "options": [
+      "发热症状",
+      "恶心呕吐",
+      "转移性右下腹痛",
+      "腹泻",
+      "腹胀"
+    ],
+    "answer": "C",
+    "explanation": "转移性右下腹痛是急性阑尾炎最具特征性的症状：70%-80%患者始于上腹部或脐周痛（内脏神经传导）→数小时后转移并固定于右下腹（躯体神经传导）。特征性体征：①麦氏点（McBurney点）压痛——右髂前上棘至脐连线中外1/3处；②反跳痛和腹肌紧张——提示阑尾化脓或穿孔致局限性/弥漫性腹膜炎。辅助检查：白细胞↑、中性粒细胞比例↑，B超或CT。（教材：阑尾炎章）",
+    "source": "教材阑尾炎章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A2-044",
+    "type": "A2",
+    "stem": "患者男性，25岁。腹痛6小时，始于脐周，后转移至右下腹，伴恶心。查体：T 38.2°C，右下腹麦氏点压痛明显，有反跳痛。血WBC 14×10⁹/L。最可能的诊断是",
+    "options": [
+      "急性胃肠炎",
+      "急性胆囊炎",
+      "急性阑尾炎",
+      "右侧输尿管结石",
+      "胃十二指肠溃疡穿孔"
+    ],
+    "answer": "C",
+    "explanation": "青年男性+转移性右下腹痛+麦氏点压痛反跳痛+白细胞升高=典型急性阑尾炎。鉴别：急性胆囊炎疼痛在右上腹、Murphy征(+)；输尿管结石伴血尿、肾区叩击痛；溃疡穿孔突发剧痛、板状腹、膈下游离气体。治疗：一旦确诊尽早手术（阑尾切除术），单纯性阑尾炎可试用抗生素保守治疗。（教材：阑尾炎章）",
+    "source": "教材阑尾炎章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A1-045",
+    "type": "A1",
+    "stem": "肠梗阻四大典型临床表现是",
+    "options": [
+      "腹痛、腹胀、呕吐、停止排便排气",
+      "腹痛、腹泻、发热、黄疸",
+      "腹胀、便秘、呕血、发热",
+      "腹痛、呕吐、腹泻、便血",
+      "腹胀、呕吐、发热、黄疸"
+    ],
+    "answer": "A",
+    "explanation": "肠梗阻四大典型表现：腹痛（阵发性绞痛）、腹胀（低位梗阻明显）、呕吐（高位梗阻早而频繁）、停止排便排气（完全性肠梗阻）。机械性肠梗阻最常见，病因包括肠粘连（最常见55%）、嵌顿疝、肿瘤、肠扭转、肠套叠。绞窄性肠梗阻（血运障碍）是急症中的急症，表现为持续性剧痛、腹膜刺激征、血性腹水、休克。X线可见阶梯状气液平面。（教材：肠梗阻章）",
+    "source": "教材肠梗阻章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-046",
+    "type": "A1",
+    "stem": "判断绞窄性肠梗阻最有价值的临床表现是",
+    "options": [
+      "阵发性腹痛",
+      "腹胀不对称",
+      "腹膜刺激征",
+      "X线阶梯状液平",
+      "肠鸣音亢进"
+    ],
+    "answer": "C",
+    "explanation": "腹膜刺激征（压痛、反跳痛、肌紧张）提示肠管已发生绞窄坏死，炎症波及壁层腹膜，是绞窄性肠梗阻最具价值的体征。其他提示绞窄的征象：①腹痛持续性加重；②呕吐物/胃肠减压液呈血性；③腹腔穿刺抽出血性液体；④病情进展快，出现休克；⑤X线示孤立胀大肠袢（假肿瘤征）。（教材：肠梗阻章）",
+    "source": "教材肠梗阻章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-047",
+    "type": "A1",
+    "stem": "急性胆囊炎最典型的体征是",
+    "options": [
+      "Murphy征阳性",
+      "Courvoisier征阳性",
+      "Cullen征阳性",
+      "Grey-Turner征阳性",
+      "Charcot三联征"
+    ],
+    "answer": "A",
+    "explanation": "Murphy征（墨菲征）阳性是急性胆囊炎最典型的体征：检查者拇指置于右肋缘下腹直肌外侧缘与肋弓交界处，嘱患者深吸气，因发炎的胆囊随肝脏下移触及拇指引起剧痛而突然屏气。Courvoisier征（无痛性黄疸+胆囊肿大）提示胰头癌或壶腹周围癌。Cullen征（脐周青紫）和Grey-Turner征（腰部青紫）见于重症急性胰腺炎。Charcot三联征（腹痛+寒战发热+黄疸）提示急性胆管炎。（教材：胆道章）",
+    "source": "教材胆道章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-048",
+    "type": "A1",
+    "stem": "急性梗阻性化脓性胆管炎（AOSC）最重要的治疗措施是",
+    "options": [
+      "大剂量抗生素",
+      "纠正水电解质紊乱",
+      "紧急胆道减压引流",
+      "糖皮质激素",
+      "血管活性药物"
+    ],
+    "answer": "C",
+    "explanation": "AOSC（急性梗阻性化脓性胆管炎）是最危重的胆道急症，Reynolds五联征（Charcot三联征+休克+神经精神症状）。核心病理是胆道梗阻+感染导致胆道高压→细菌和毒素逆行入血→脓毒症休克。治疗关键是紧急胆道减压引流（解除梗阻）——首选ERCP+ENBD，次选PTCD，手术为胆总管切开T管引流。抗生素和抗休克治疗是辅助措施，不解决根本问题。（教材：胆道章）",
+    "source": "教材胆道章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-049",
+    "type": "A1",
+    "stem": "胆囊结石最常见的症状是",
+    "options": [
+      "右上腹剧烈绞痛",
+      "皮肤黄疸",
+      "无症状（静止性结石）",
+      "发热寒战",
+      "消化不良"
+    ],
+    "answer": "C",
+    "explanation": "约60%-80%的胆囊结石患者无症状（静止性胆囊结石），多在体检B超时偶然发现。有症状者主要表现为右上腹或上腹部隐痛/饱胀不适（慢性胆囊炎表现），当结石嵌顿于胆囊管时出现胆绞痛——右上腹阵发性剧痛向右肩背部放射、Murphy征(+)。胆囊结石的诊断首选B超（敏感性&gt;95%）。（教材：胆道章）",
+    "source": "教材胆道章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-050",
+    "type": "A1",
+    "stem": "急性胰腺炎最常见的病因是",
+    "options": [
+      "暴饮暴食",
+      "胆道疾病",
+      "高脂血症",
+      "酒精",
+      "药物"
+    ],
+    "answer": "B",
+    "explanation": "我国急性胰腺炎最常见的病因是胆道疾病（胆石症占50%以上），西方以酒精性多见。发病机制：共同通道受阻→胆汁反流入胰管→胰酶激活→胰腺自身消化。其他病因：高脂血症（甘油三酯&gt;11.3mmol/L）、暴饮暴食、ERCP术后、药物、高钙血症、感染、外伤等。诊断：血淀粉酶升高&gt;正常3倍+影像学（CT最重要）。（教材：胰腺章）",
+    "source": "教材胰腺章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-051",
+    "type": "A1",
+    "stem": "急性胰腺炎最常用的血生化诊断指标是",
+    "options": [
+      "血淀粉酶",
+      "血脂肪酶",
+      "血糖",
+      "血钙",
+      "C反应蛋白"
+    ],
+    "answer": "A",
+    "explanation": "血清淀粉酶是急性胰腺炎最常用的诊断指标，发病后2-12小时开始升高，24小时达高峰，持续3-5天，超过正常值上限3倍具有诊断价值。但淀粉酶升高的程度与病情严重程度不平行。血脂肪酶特异性更高（仅胰腺产生），持续时间更长（7-10天），对就诊较晚者更有价值。血钙降低（&lt;1.87mmol/L）提示重症胰腺炎，预后不良。（教材：胰腺章）",
+    "source": "教材胰腺章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-052",
+    "type": "A1",
+    "stem": "原发性肝癌最主要的病因是",
+    "options": [
+      "酒精性肝病",
+      "黄曲霉毒素",
+      "乙型病毒性肝炎",
+      "肝血吸虫病",
+      "自身免疫性肝炎"
+    ],
+    "answer": "C",
+    "explanation": "我国原发性肝癌最主要病因是乙型病毒性肝炎（乙肝后肝硬化），约80%的肝癌患者HBsAg阳性。HBV DNA整合入宿主肝细胞基因组→基因突变→肝癌。其他病因：丙肝、酒精性肝硬化、黄曲霉毒素（B1）污染食物、肝血吸虫病、遗传代谢疾病。肝癌血清标志物：AFP≥400ng/ml持续4周或≥200ng/ml持续8周，排除妊娠、活动性肝病、生殖腺胚胎源性肿瘤后可诊断。（教材：肝脏章）",
+    "source": "教材肝脏章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-053",
+    "type": "A1",
+    "stem": "门静脉高压症最危险的并发症是",
+    "options": [
+      "腹水",
+      "脾功能亢进",
+      "食管胃底静脉曲张破裂出血",
+      "肝性脑病",
+      "皮肤黄疸"
+    ],
+    "answer": "C",
+    "explanation": "食管胃底静脉曲张破裂出血是门脉高压症最危险的并发症，死亡率为30%-50%。门脉压力增高→侧支循环开放→食管胃底静脉迂曲扩张→破裂大出血。临床表现：呕血（鲜红色或咖啡色）+黑便+失血性休克。紧急处理：①药物（生长抑素/奥曲肽+特利加压素）；②三腔二囊管压迫止血（临时措施）；③内镜下套扎/硬化剂注射（首选）；④急诊TIPS或手术。首次出血后1年内再出血率约60%-70%。（教材：门脉高压章）",
+    "source": "教材门脉高压章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-054",
+    "type": "A1",
+    "stem": "结肠癌最早出现的症状通常是",
+    "options": [
+      "腹痛",
+      "腹部包块",
+      "排便习惯和粪便性状改变",
+      "肠梗阻",
+      "缺铁性贫血"
+    ],
+    "answer": "C",
+    "explanation": "排便习惯和粪便性状改变是结肠癌最早出现的症状：排便次数增多或便秘、腹泻与便秘交替、大便变细、便血（黏液血便）。右半结肠癌以全身症状为主——贫血、消瘦、腹部包块（因肠腔大、内容物为液态不易梗阻）；左半结肠癌以肠梗阻症状为主——腹痛、便秘、便血（因肠腔小、内容为固态易梗阻）。诊断主要依靠结肠镜+活检。（教材：结直肠章）",
+    "source": "教材结直肠章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-055",
+    "type": "A1",
+    "stem": "血栓闭塞性脉管炎（Buerger病）病变主要累及",
+    "options": [
+      "大中动脉",
+      "中小动静脉",
+      "微血管",
+      "大静脉",
+      "毛细血管"
+    ],
+    "answer": "B",
+    "explanation": "血栓闭塞性脉管炎（Buerger病）主要累及四肢中小动静脉，以下肢多见。病因与吸烟密切相关（几乎100%患者吸烟），好发于青壮年男性（25-45岁）。病理特征：血管壁全层非化脓性炎症+血栓形成。临床分期（Fontaine）：I期无症状，II期间歇性跛行，III期静息痛，IV期趾/指溃疡坏疽（干性坏疽）。治疗首要措施：严格戒烟。（教材：周围血管章）",
+    "source": "教材周围血管章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-056",
+    "type": "A1",
+    "stem": "骨折的专有体征不包括",
+    "options": [
+      "畸形",
+      "反常活动",
+      "骨擦音或骨擦感",
+      "局部肿胀疼痛",
+      "以上都是专有体征"
+    ],
+    "answer": "D",
+    "explanation": "骨折三大专有体征（特有体征，出现其一即可诊断骨折）：①畸形——骨折段移位使患肢外形改变；②反常活动——在非关节部位出现类似关节的活动；③骨擦音或骨擦感——骨折断端相互摩擦产生。D「局部肿胀疼痛」是骨折的一般表现（非专有体征），软组织损伤也可出现。但专有体征并非每例骨折都有（如嵌插骨折、裂纹骨折可无），需X线确诊。（教材：骨折总论章）",
+    "source": "教材骨折总论章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-057",
+    "type": "A1",
+    "stem": "骨折愈合过程中，原始骨痂形成期需要的时间是",
+    "options": [
+      "1-2周",
+      "2-3周",
+      "4-8周",
+      "12-24周",
+      "1-2年"
+    ],
+    "answer": "C",
+    "explanation": "骨折愈合分四期：①血肿炎症机化期（1-2周）——血肿→肉芽组织→纤维连接；②原始骨痂形成期（4-8周）——膜内成骨+软骨内成骨形成外骨痂和内骨痂，达到临床愈合标准；③骨痂改造塑形期（8-12周至1-2年）——编织骨→板层骨，按Wolff定律应力重塑。临床愈合标准：局部无压痛、无反常活动、X线示骨痂通过骨折线。（教材：骨折总论章）",
+    "source": "教材骨折总论章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-058",
+    "type": "A1",
+    "stem": "骨折早期最严重的并发症是",
+    "options": [
+      "失血性休克",
+      "脂肪栓塞综合征",
+      "骨筋膜室综合征",
+      "局部感染",
+      "内脏损伤"
+    ],
+    "answer": "B",
+    "explanation": "脂肪栓塞综合征是骨折（尤其是长骨干骨折如股骨干）早期最严重的并发症之一，多发生于伤后24-72小时。骨髓内脂肪滴进入血液循环→肺血管栓塞→呼吸困难、发绀、低氧血症→ARDS；脑脂肪栓塞→意识障碍。典型三联征：呼吸困难+意识障碍+皮肤瘀斑（颈前、胸前、腋下）。骨筋膜室综合征虽也严重但多见于前臂和小腿骨折后，主要威胁肢体而非生命。（教材：骨折总论章）",
+    "source": "教材骨折总论章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-059",
+    "type": "A1",
+    "stem": "骨筋膜室综合征最常发生的部位是",
+    "options": [
+      "大腿",
+      "上臂",
+      "前臂和小腿",
+      "手部",
+      "足部"
+    ],
+    "answer": "C",
+    "explanation": "骨筋膜室综合征最常发生于前臂掌侧（前臂骨筋膜室）和小腿（尤其前室）。病理：骨筋膜室内容物（肌肉、神经、血管）压力增高→微循环障碍→肌肉和神经缺血坏死。5P征：Pain（疼痛进行性加重）、Pallor（苍白）、Pulselessness（无脉）、Paresthesia（感觉异常）、Paralysis（麻痹）。一旦确诊应立即切开筋膜减压，超过6-8小时→不可逆缺血坏死→Volkmann挛缩或截肢。（教材：骨折总论章）",
+    "source": "教材骨折总论章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-X-060",
+    "type": "X",
+    "stem": "骨折的急救处理原则包括",
+    "options": [
+      "抢救生命",
+      "包扎伤口",
+      "妥善固定",
+      "迅速转运",
+      "立即复位"
+    ],
+    "answer": "ABCD",
+    "explanation": "骨折急救处理原则（按优先顺序）：①抢救生命——处理休克、保持呼吸道通畅、止血；②包扎伤口——压迫止血、防止污染（外露骨折端不可还纳）；③妥善固定——就地取材固定（超关节固定），减少疼痛和继发损伤；④迅速转运——尽快转送医院。E「立即复位」不是急救阶段的任务，应在医院内由专业医师在适当麻醉下进行。开放性骨折伤后6-8小时内清创。（教材：骨折总论章）",
+    "source": "教材骨折总论章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-061",
+    "type": "A1",
+    "stem": "Colles骨折的典型畸形是",
+    "options": [
+      "枪刺样畸形和餐叉样畸形",
+      "垂腕畸形",
+      "爪形手畸形",
+      "猿手畸形",
+      "锤状指畸形"
+    ],
+    "answer": "A",
+    "explanation": "Colles骨折（伸直型桡骨远端骨折）是最常见的腕部骨折，多见于老年人跌倒手掌着地。典型畸形：①侧面观——餐叉样畸形（远折端向背侧移位）；②正面观——枪刺样畸形（远折端向桡侧移位）。骨折线距腕关节2-3cm。治疗：手法复位+石膏/夹板固定于掌屈尺偏位。Smith骨折（屈曲型）远折端向掌侧移位，称反Colles骨折。（教材：上肢骨折章）",
+    "source": "教材上肢骨折章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-062",
+    "type": "A1",
+    "stem": "肱骨干中下1/3骨折最容易损伤的神经是",
+    "options": [
+      "腋神经",
+      "正中神经",
+      "桡神经",
+      "尺神经",
+      "肌皮神经"
+    ],
+    "answer": "C",
+    "explanation": "桡神经紧贴肱骨干中下1/3后方的桡神经沟走行，该处骨折最易损伤桡神经。表现为：垂腕畸形（腕伸肌麻痹）、伸指障碍、虎口区皮肤感觉障碍。肱骨外科颈骨折易损伤腋神经（三角肌麻痹、肩外展障碍），肱骨髁上骨折（伸直型）易损伤肱动脉和正中神经，肱骨内上髁骨折易损伤尺神经。（教材：上肢骨折章）",
+    "source": "教材上肢骨折章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-063",
+    "type": "A1",
+    "stem": "股骨颈骨折最常见的并发症是",
+    "options": [
+      "骨折不愈合",
+      "股骨头缺血性坏死",
+      "创伤性关节炎",
+      "下肢深静脉血栓",
+      "脂肪栓塞"
+    ],
+    "answer": "B",
+    "explanation": "股骨头缺血性坏死是股骨颈骨折最常见且最严重的并发症。原因：股骨头的血供主要来自旋股内侧动脉（发自股深动脉），股骨颈骨折可损伤此动脉→股骨头缺血坏死。头下型骨折坏死率最高（&gt;70%），基底型坏死率最低。老年人股骨颈骨折多采用人工髋关节置换术以避免不愈合和坏死。年轻人尽量行内固定保头治疗。（教材：下肢骨折章）",
+    "source": "教材下肢骨折章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-064",
+    "type": "A1",
+    "stem": "胫腓骨骨折最易发生的并发症是",
+    "options": [
+      "脂肪栓塞",
+      "骨筋膜室综合征",
+      "局部感染",
+      "骨折不愈合",
+      "关节僵硬"
+    ],
+    "answer": "B",
+    "explanation": "胫腓骨骨折（尤其是胫骨中下段骨折）最易发生骨筋膜室综合征，因为小腿的四个骨筋膜室空间有限、组织压力易升高。同时胫骨中下1/3段血供差（滋养动脉仅从胫骨上1/3进入），骨折后延迟愈合和不愈合率高（胫骨中下1/3为骨不连最常见部位）。开放性骨折因胫骨前内侧软组织覆盖薄，感染风险也高。治疗：稳定型→石膏固定；不稳定型→交锁髓内钉/钢板。（教材：下肢骨折章）",
+    "source": "教材下肢骨折章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-065",
+    "type": "A1",
+    "stem": "脊柱骨折最常发生的部位是",
+    "options": [
+      "颈椎",
+      "胸椎",
+      "胸腰段(T11-L2)",
+      "腰椎",
+      "骶椎"
+    ],
+    "answer": "C",
+    "explanation": "脊柱骨折最常发生在胸腰段（T11-L2），约占脊柱骨折的60%-70%。原因：胸椎相对固定（有肋骨支撑），腰椎活动度大，胸腰段为活动度转换区，应力集中导致易损伤。颈椎次之（C1-C2及C5-C7）。脊柱骨折合并脊髓损伤（截瘫）是最严重的后果，需MRI明确脊髓和韧带损伤情况。搬运脊柱损伤患者需轴向翻身，防止脊髓二次损伤。（教材：脊柱骨折章）",
+    "source": "教材脊柱骨折章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-066",
+    "type": "A1",
+    "stem": "肩关节脱位最常见的类型是",
+    "options": [
+      "前脱位",
+      "后脱位",
+      "上脱位",
+      "下脱位",
+      "中心性脱位"
+    ],
+    "answer": "A",
+    "explanation": "肩关节脱位占全身关节脱位的50%，以前脱位最常见（占肩关节脱位的95%以上）。受伤机制：上肢外展外旋位跌倒，手掌着地→肱骨头冲破关节囊前下方→喙突下、锁骨下或盂下脱位。典型体征：方肩畸形（肩峰突出呈直角）+Dugas征阳性（患侧手掌搭对侧肩时肘部不能贴近胸壁）。治疗：Hippocrates法（足蹬法）或Kocher法复位，复位后三角巾悬吊3周。（教材：关节脱位章）",
+    "source": "教材关节脱位章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-067",
+    "type": "A1",
+    "stem": "髋关节后脱位的典型畸形是",
+    "options": [
+      "下肢外展外旋畸形",
+      "下肢内收内旋短缩畸形",
+      "下肢外展内旋畸形",
+      "下肢屈曲外旋畸形",
+      "下肢伸直外展畸形"
+    ],
+    "answer": "B",
+    "explanation": "髋关节后脱位（占髋脱位85%-90%）典型畸形：患肢短缩、内收、内旋，弹性固定。受伤机制：屈髋屈膝位时膝前受到暴力（如车祸仪表盘伤→dashboard injury）→股骨头向后冲破关节囊。可合并坐骨神经损伤（足下垂）。前脱位畸形为外展外旋。治疗：Allis法或Bigelow法（问号法）急诊复位，6-8小时内复位可减少股骨头坏死率。（教材：关节脱位章）",
+    "source": "教材关节脱位章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-068",
+    "type": "A1",
+    "stem": "最常见的恶性骨肿瘤是",
+    "options": [
+      "骨肉瘤",
+      "软骨肉瘤",
+      "Ewing肉瘤",
+      "骨髓瘤",
+      "骨巨细胞瘤"
+    ],
+    "answer": "D",
+    "explanation": "多发性骨髓瘤是最常见的恶性骨肿瘤（来源于骨髓浆细胞），多见于40岁以上成人。骨肉瘤是最常见的原发性恶性骨肿瘤，多见于青少年（10-25岁），好发于长骨干骺端（股骨远端、胫骨近端），X线示Codman三角（骨膜反应）和日光射线征。骨巨细胞瘤好发于长骨骨端（股骨远端、胫骨近端），为交界性肿瘤（潜在恶性），X线示皂泡样溶骨性破坏。（教材：骨肿瘤章）",
+    "source": "教材骨肿瘤章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-069",
+    "type": "A1",
+    "stem": "骨肉瘤最具特征性的X线表现是",
+    "options": [
+      "葱皮样骨膜反应",
+      "Codman三角和日光射线征",
+      "皂泡样溶骨性破坏",
+      "椎体压缩性骨折",
+      "骨质增生硬化"
+    ],
+    "answer": "B",
+    "explanation": "Codman三角（骨膜被掀起形成三角形）和日光射线征（肿瘤骨呈放射状排列）是骨肉瘤最具特征性的X线表现。葱皮样骨膜反应是Ewing肉瘤的典型表现。皂泡样溶骨性破坏是骨巨细胞瘤的特征。骨肉瘤好发于青少年长骨干骺端（膝关节周围），血清碱性磷酸酶（AKP）升高有参考价值。治疗：新辅助化疗+保肢手术/截肢+术后化疗，5年生存率可达60%-70%。（教材：骨肿瘤章）",
+    "source": "教材骨肿瘤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-070",
+    "type": "A1",
+    "stem": "急性血源性骨髓炎最常见的致病菌是",
+    "options": [
+      "大肠杆菌",
+      "绿脓杆菌",
+      "金黄色葡萄球菌",
+      "链球菌感染",
+      "结核杆菌"
+    ],
+    "answer": "C",
+    "explanation": "急性血源性骨髓炎最常见的致病菌是金黄色葡萄球菌（占80%以上），其次为乙型溶血性链球菌。好发于儿童长骨干骺端（因该处血供丰富、血流缓慢、细菌易停留）。局部表现：红、肿、热、痛、功能障碍、脓肿形成→可穿破骨膜形成软组织脓肿→溃破形成窦道。早期X线阴性（2周内），MRI可早期诊断。治疗：早期足量有效抗生素+手术钻孔引流/开窗减压。（教材：骨关节感染章）",
+    "source": "教材骨关节感染章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-071",
+    "type": "A1",
+    "stem": "颅内压增高的「三主征」是",
+    "options": [
+      "头痛、呕吐、意识障碍",
+      "头痛、呕吐、视盘水肿",
+      "头痛、偏瘫、失语",
+      "呕吐、颈项强直、发热",
+      "头痛、癫痫、瞳孔散大"
+    ],
+    "answer": "B",
+    "explanation": "颅内压增高三主征：①头痛——最常见，晨起和夜间重，咳嗽、用力时加剧；②呕吐——喷射性呕吐，与饮食无关，因延髓呕吐中枢受刺激；③视盘水肿——最重要的客观体征，眼底检查可见视盘充血、边界模糊、静脉充盈。三主征同时出现提示颅内压增高已到相当严重的程度。正常成人颅内压：70-200mmH2O。（教材：颅内压增高章）",
+    "source": "教材颅内压增高章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-072",
+    "type": "A1",
+    "stem": "急性硬膜外血肿的特征性CT表现是",
+    "options": [
+      "新月形高密度影",
+      "双凸透镜形高密度影",
+      "脑沟消失",
+      "环池消失",
+      "中线结构移位"
+    ],
+    "answer": "B",
+    "explanation": "急性硬膜外血肿CT表现为颅骨内板下双凸透镜形（梭形）高密度影。典型临床过程：头部外伤→原发性昏迷→中间清醒期（lucid interval）→再次昏迷（继发性昏迷），为硬膜外血肿最特征性的表现。出血来源多为脑膜中动脉破裂（颞部骨折）。硬膜下血肿CT表现为新月形高密度影。治疗：血肿&gt;30ml或有明显占位效应者行开颅血肿清除术。（教材：颅脑损伤章）",
+    "source": "教材颅脑损伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-073",
+    "type": "A1",
+    "stem": "硬膜下血肿与硬膜外血肿CT鉴别的关键在于",
+    "options": [
+      "血肿密度",
+      "血肿形态",
+      "血肿体积",
+      "血肿位置",
+      "血肿时间"
+    ],
+    "answer": "B",
+    "explanation": "CT形态是鉴别关键：硬膜外血肿呈双凸透镜形（梭形，不跨越颅缝——受硬脑膜附着限制），硬膜下血肿呈新月形（可跨越颅缝——蛛网膜无附着）。硬膜外出血源多为脑膜中动脉（动脉性），病情进展快；硬膜下出血源多为桥静脉撕裂（静脉性），常合并较重的脑挫裂伤，急性、亚急性（3天-3周）、慢性（&gt;3周，老年人多见）。慢性硬膜下血肿CT可为低/等密度。（教材：颅脑损伤章）",
+    "source": "教材颅脑损伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-074",
+    "type": "A1",
+    "stem": "脑挫裂伤最常发生的部位是",
+    "options": [
+      "额极和颞极",
+      "顶叶",
+      "枕叶",
+      "小脑",
+      "脑干"
+    ],
+    "answer": "A",
+    "explanation": "脑挫裂伤最常发生在额极和颞极（尤其是对冲伤）。对冲伤机制：枕部着力→脑组织因惯性向前冲击→额极和颞极撞击于前颅窝底和蝶骨嵴造成挫裂伤。临床表现：伤后立即昏迷（持续时间较长，&gt;30min）、头痛呕吐、生命体征改变、局灶神经体征（偏瘫、失语等）。CT示低密度水肿区中散在点片状高密度出血灶。治疗：保守为主，严重脑水肿/血肿需去骨瓣减压。（教材：颅脑损伤章）",
+    "source": "教材颅脑损伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-075",
+    "type": "A1",
+    "stem": "颅内最常见的原发性恶性肿瘤是",
+    "options": [
+      "脑膜瘤",
+      "垂体腺瘤",
+      "胶质瘤",
+      "听神经瘤",
+      "转移瘤"
+    ],
+    "answer": "C",
+    "explanation": "胶质瘤（来源于神经胶质细胞）是最常见的颅内原发性恶性肿瘤，占所有颅内肿瘤的40%-50%。其中胶质母细胞瘤（WHO IV级）恶性程度最高、预后最差。脑膜瘤是最常见的颅内良性肿瘤。颅内转移瘤约占颅内肿瘤的20%，常见原发灶为肺癌（最多）、乳腺癌、黑色素瘤、肾癌等。脑肿瘤的临床表现取决于部位和生长速度：颅内压增高症状+局灶定位体征+癫痫。（教材：颅内肿瘤章）",
+    "source": "教材颅内肿瘤章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-076",
+    "type": "A1",
+    "stem": "脑疝最危急的类型是",
+    "options": [
+      "小脑幕切迹疝",
+      "枕骨大孔疝",
+      "大脑镰下疝",
+      "蝶骨嵴疝",
+      "直回疝"
+    ],
+    "answer": "B",
+    "explanation": "枕骨大孔疝（小脑扁桃体疝）是最危急的脑疝类型，小脑扁桃体经枕骨大孔疝入椎管→压迫延髓生命中枢→呼吸心跳骤停（可突然发生而无明显前兆）。小脑幕切迹疝压迫动眼神经（同侧瞳孔散大）和大脑脚（对侧偏瘫），较枕骨大孔疝稍可争取处理时间。急性颅内压增高→脑疝形成是神经外科最紧急的情况，需立即脱水降颅压（甘露醇）+紧急手术减压。（教材：颅内压增高章）",
+    "source": "教材颅内压增高章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-077",
+    "type": "A1",
+    "stem": "张力性气胸的紧急处理措施是",
+    "options": [
+      "大剂量抗生素",
+      "立即开胸探查",
+      "胸腔穿刺减压（粗针头锁骨中线第2肋间穿刺）",
+      "气管插管",
+      "胸腔闭式引流"
+    ],
+    "answer": "C",
+    "explanation": "张力性气胸（高压性气胸）是最危险的气胸类型——胸壁/肺裂口形成活瓣→空气只进不出→胸腔压力进行性增高→纵隔显著移位→腔静脉扭曲→循环衰竭死亡。紧急处理：立即用粗针头在患侧锁骨中线第2肋间穿刺排气减压→再行胸腔闭式引流术。开放性气胸先将开放伤口变为闭合（凡士林纱布或清洁敷料包扎），再行闭式引流。（教材：胸部损伤章）",
+    "source": "教材胸部损伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-078",
+    "type": "A1",
+    "stem": "进行性血胸的判断指标是",
+    "options": [
+      "胸腔积血&gt;500ml",
+      "血红蛋白下降&gt;10g/L",
+      "每小时引流量&gt;200ml，连续3小时",
+      "血压&lt;90/60mmHg",
+      "呼吸&gt;30次/分"
+    ],
+    "answer": "C",
+    "explanation": "进行性血胸（持续活动性出血）的判断指标：①胸腔闭式引流每小时引流量&gt;200ml，连续3小时以上；②输血补液后血压不升或升而复降；③血红蛋白、红细胞计数和血细胞比容持续下降。进行性血胸是开胸探查的指征——活动性出血需手术止血。非进行性血胸可保守治疗或胸腔闭式引流。凝固性血胸需手术清除（出血停止后数日内）。（教材：胸部损伤章）",
+    "source": "教材胸部损伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-079",
+    "type": "A1",
+    "stem": "肺癌最常见的病理类型是",
+    "options": [
+      "鳞状细胞癌",
+      "腺癌病变",
+      "小细胞肺癌",
+      "大细胞肺癌",
+      "类癌"
+    ],
+    "answer": "B",
+    "explanation": "近年来腺癌已超过鳞癌成为肺癌最常见的病理类型（占40%-50%），尤其是不吸烟女性和年轻患者。鳞癌次之（占25%-30%），与吸烟密切相关，多为中央型（支气管腔内生长）。小细胞肺癌（SCLC）占15%，恶性程度最高、生长最快、早期血行转移，对化疗敏感。临床表现：咳嗽（最常见）、咯血或痰中带血、胸痛、呼吸困难。诊断：胸部CT+支气管镜+病理活检。（教材：肺癌章）",
+    "source": "教材肺癌章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-080",
+    "type": "A1",
+    "stem": "肺癌最常见的早期症状是",
+    "options": [
+      "刺激性干咳",
+      "胸部疼痛",
+      "咯血症状",
+      "呼吸困难",
+      "发热症状"
+    ],
+    "answer": "A",
+    "explanation": "刺激性干咳是肺癌最常见的早期症状（约75%患者以咳嗽为首发症状），因肿瘤刺激支气管黏膜所致。痰中带血或咯血次之。晚期表现：①Horner综合征（Pancoast瘤侵犯颈交感神经）——患侧眼睑下垂、瞳孔缩小、眼球内陷、面部无汗；②上腔静脉阻塞综合征——头面部及上肢水肿、颈静脉怒张；③声音嘶哑（喉返神经侵犯）。小细胞肺癌可产生副肿瘤综合征（SIADH、Cushing综合征等）。（教材：肺癌章）",
+    "source": "教材肺癌章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-081",
+    "type": "A1",
+    "stem": "食管癌最常见的病理类型是",
+    "options": [
+      "腺癌病变",
+      "鳞状细胞癌",
+      "小细胞癌",
+      "腺鳞癌",
+      "未分化癌"
+    ],
+    "answer": "B",
+    "explanation": "我国食管癌90%以上为鳞状细胞癌（与西方以腺癌为主不同）。好发部位：中段最多见（50%），下段次之（30%），上段最少（20%）。最关键的症状：进行性吞咽困难（先固体→后半流质→最后流质也咽不下）。早期症状：吞咽时胸骨后不适感或哽噎感。诊断：食管吞钡双重造影+胃镜+活检。手术是首选治疗方法（中下段食管癌根治术）。（教材：食管癌章）",
+    "source": "教材食管癌章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-A1-082",
+    "type": "A1",
+    "stem": "肾损伤中最常见的类型是",
+    "options": [
+      "肾蒂伤",
+      "肾全层裂伤",
+      "肾挫伤",
+      "肾碎裂伤",
+      "肾盂裂伤"
+    ],
+    "answer": "C",
+    "explanation": "肾挫伤是最常见的肾损伤类型（占85%以上），损伤局限于肾实质，肾包膜和肾盂黏膜完整，表现为镜下血尿或轻度肉眼血尿。肾裂伤次之（约10%），肾实质裂伤伴肾包膜或集合系统破裂，可出现肾周血肿和明显血尿。肾蒂伤（肾血管损伤）虽少见但最危险，可致大出血死亡。CT是诊断肾损伤的金标准。治疗：大多数肾挫伤和轻度裂伤可保守治疗（卧床休息、止血、抗感染）。（教材：泌尿系损伤章）",
+    "source": "教材泌尿系损伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A1-083",
+    "type": "A1",
+    "stem": "良性前列腺增生最早出现的症状是",
+    "options": [
+      "排尿困难",
+      "急性尿潴留",
+      "尿频",
+      "血尿",
+      "尿失禁"
+    ],
+    "answer": "C",
+    "explanation": "尿频是BPH最早出现的症状，尤其是夜间尿频（夜尿增多）。随着梗阻加重出现排尿困难（进行性排尿困难是BPH最重要的症状）——排尿踌躇、尿线变细、射程变短、排尿费力、尿后滴沥。PSA是前列腺癌筛查指标。治疗：药物治疗（α1受体阻滞剂如坦索罗辛+5α还原酶抑制剂如非那雄胺）→中重度或药物无效者行TURP（经尿道前列腺电切术，金标准）。（教材：前列腺章）",
+    "source": "教材前列腺章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-A2-084",
+    "type": "A2",
+    "stem": "患者女性，55岁。右乳房外上象限触摸到一质硬无痛性肿块2周，边界不清，活动度差。同侧腋窝触及肿大淋巴结。最可能的诊断是",
+    "options": [
+      "乳腺纤维腺瘤",
+      "乳腺囊性增生",
+      "乳腺癌",
+      "急性乳腺炎",
+      "乳腺结核"
+    ],
+    "answer": "C",
+    "explanation": "中年女性+乳房外上象限无痛性质硬肿块+边界不清活动度差+腋窝淋巴结肿大=高度怀疑乳腺癌。乳腺纤维腺瘤多见于年轻女性、光滑活动好；乳腺囊性增生与月经周期相关、多发结节、触痛；急性乳腺炎多见于哺乳期、红肿热痛、发热。确诊手段：乳腺超声+钼靶+空心针穿刺活检。治疗：改良根治术/保乳术+前哨淋巴结活检+术后综合治疗（化疗、放疗、内分泌、靶向）。（教材：乳腺章）",
+    "source": "教材乳腺章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A2-085",
+    "type": "A2",
+    "stem": "患者男性，50岁，右上腹持续性钝痛伴发热3天。查体：T 38.8°C，右上腹压痛，Murphy征阳性。WBC 13×10⁹/L，N 85%。B超示胆囊增大、壁厚>4mm，胆囊内有多个强回声伴声影。最可能的诊断是",
+    "options": [
+      "急性胰腺炎",
+      "急性胆囊炎",
+      "肝脓肿",
+      "消化性溃疡穿孔",
+      "急性阑尾炎"
+    ],
+    "answer": "B",
+    "explanation": "右上腹痛+发热+Murphy征阳性+WBC升高+B超示胆囊壁增厚+结石=急性胆囊炎。诊断标准：右上腹体征+ Murphy征+全身炎症反应+B超。95%急性胆囊炎合并胆囊结石。治疗：禁食补液+抗生素+解痉止痛；手术时机——早期（发病72h内）行腹腔镜胆囊切除术（LC）为金标准。（教材：胆道章）",
+    "source": "教材胆道章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A2-086",
+    "type": "A2",
+    "stem": "患者男性，30岁。上腹部饱胀不适，进食后加重，伴反酸嗳气。胃镜示胃窦部溃疡2.0cm，幽门螺杆菌阳性。以下治疗方案中哪项最合适",
+    "options": [
+      "单纯PPI治疗",
+      "PPI+铋剂+两种抗生素四联疗法根除Hp",
+      "单纯手术治疗",
+      "单纯抗酸药",
+      "单纯H2受体拮抗剂"
+    ],
+    "answer": "B",
+    "explanation": "Hp阳性消化性溃疡的治疗核心是根除Hp。目前国内推荐铋剂四联疗法（PPI+铋剂+两种抗生素，14天）作为一线方案。单纯抑酸（PPI或H2RA）只能促进溃疡愈合但复发率高。手术适应症已明显减少：穿孔、出血、梗阻、恶变、难治性溃疡。消化性溃疡四大并发症：出血（最常见）、穿孔、幽门梗阻、癌变（胃溃疡有&lt;1%癌变率，十二指肠溃疡不癌变）。（教材：胃十二指肠章）",
+    "source": "教材胃十二指肠章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A2-087",
+    "type": "A2",
+    "stem": "患者男性，58岁，突发右上腹剧痛2小时，向右肩放射，伴恶心呕吐。B超示胆囊多发结石，胆总管扩张1.0cm。血淀粉酶正常。应首先考虑的检查是",
+    "options": [
+      "ERCP",
+      "MRCP",
+      "静脉胆道造影",
+      "腹部CT",
+      "PTC"
+    ],
+    "answer": "B",
+    "explanation": "胆总管结石（继发性）的临床表现：右上腹剧痛+胆总管扩张+B超示胆总管结石。MRCP目前是诊断胆总管结石的首选无创检查，可清晰显示胆胰管系统。ERCP兼具诊断和治疗（取石）价值但为有创检查（有胰腺炎风险），现主要用于确认胆总管结石后的取石治疗。CT有助于发现含钙结石。PTC主要用于高位胆道梗阻。（教材：胆道章）",
+    "source": "教材胆道章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A2-088",
+    "type": "A2",
+    "stem": "患者女性，42岁。进行性吞咽困难3个月，先固体后流质。食管吞钡造影示食管中段管壁僵硬，黏膜破坏中断，管腔狭窄。最可能的诊断是",
+    "options": [
+      "贲门失弛缓症",
+      "食管良性狭窄",
+      "食管癌",
+      "食管静脉曲张",
+      "食管憩室"
+    ],
+    "answer": "C",
+    "explanation": "进行性吞咽困难（先固体后流质）是食管癌最典型症状。食管吞钡典型表现：黏膜中断破坏、管壁僵硬、管腔狭窄（不规则的充盈缺损或龛影）。贲门失弛缓症表现为食管下段「鸟嘴样」狭窄、上段食管明显扩张（食物潴留）。食管静脉曲张表现为串珠样或蚯蚓样充盈缺损。确诊需胃镜+活检。中下段食管癌首选手术治疗（食管癌根治术）。（教材：食管癌章）",
+    "source": "教材食管癌章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A3-089",
+    "type": "A3",
+    "stem": "该患者最可能的诊断是",
+    "options": [
+      "右侧输尿管结石",
+      "急性胆囊炎",
+      "急性阑尾炎",
+      "胃十二指肠溃疡穿孔",
+      "Meckel憩室炎"
+    ],
+    "answer": "C",
+    "explanation": "青年男性+转移性右下腹痛+麦氏点压痛反跳痛+白细胞和中性粒细胞升高=典型急性阑尾炎。Rovsing征（按压左下腹引起右下腹痛）和腰大肌试验（右下肢后伸引起右下腹痛—提示盲肠后位阑尾炎）为辅助体征。治疗：确诊后尽早行阑尾切除术。单纯性阑尾炎可腹腔镜手术（LA），术后1-2天可出院。化脓性或坏疽性需急诊手术+抗生素。（教材：阑尾炎章）",
+    "source": "教材阑尾炎章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A3-090",
+    "type": "A3",
+    "stem": "若上述患者行阑尾切除术，术中发现阑尾已坏疽穿孔、腹腔内有脓液约200ml。此时正确的处理是",
+    "options": [
+      "仅行阑尾切除",
+      "阑尾切除+腹腔冲洗+放置引流",
+      "仅放置腹腔引流",
+      "仅行腹腔冲洗",
+      "保守治疗"
+    ],
+    "answer": "B",
+    "explanation": "化脓/坏疽/穿孔性阑尾炎伴腹腔污染时，应行阑尾切除+腹腔冲洗（清除残余感染）+放置引流管（盆腔/右结肠旁沟），可预防术后腹腔脓肿形成。切口宜选右下腹探查切口（麦氏切口或旁正中切口）。术后并发症：切口感染（最常见）、腹腔脓肿、粪瘘（少见）。术后常规使用抗生素。（教材：阑尾炎章）",
+    "source": "教材阑尾炎章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A3-091",
+    "type": "A3",
+    "stem": "该患者术后第3天出现畏寒发热、T 39.5°C、右下腹和盆腔压痛。最可能的并发症是",
+    "options": [
+      "切口感染",
+      "肺部感染",
+      "盆腔脓肿",
+      "粘连性肠梗阻",
+      "尿路感染"
+    ],
+    "answer": "C",
+    "explanation": "阑尾穿孔术后高热+盆腔压痛→盆腔脓肿（最常见的手术后腹腔脓肿类型）。诊断：直肠指检可触及直肠前壁饱满、有触痛的包块；B超/CT可明确。治疗：抗生素+经直肠穿刺/切开引流（已婚女性可经阴道后穹隆穿刺引流）。盆腔脓肿的全身症状重（高热），但腹部体征相对较轻。（教材：阑尾炎章）",
+    "source": "教材阑尾炎章",
+    "bloom": "分析"
+  },
+  {
+    "qid": "WK-A3-092",
+    "type": "A3",
+    "stem": "该患者肠梗阻最可能的病因是",
+    "options": [
+      "结肠肿瘤",
+      "肠扭转",
+      "粘连性肠梗阻",
+      "嵌顿疝",
+      "肠套叠"
+    ],
+    "answer": "C",
+    "explanation": "腹部手术史（阑尾切除）→术后肠粘连是粘连性肠梗阻最常见的病因（约占机械性肠梗阻的55%）。该患者无疝史、无肿瘤高危因素，优先考虑粘连性肠梗阻。表现：痛、吐、胀、闭四大症状+X线阶梯状液平面=机械性肠梗阻。目前无绞窄征象（无腹膜刺激征、无血性腹水），可先行保守治疗（禁食、胃肠减压、补液、灌肠）。若保守治疗12-24小时无缓解或出现绞窄征象→手术。（教材：肠梗阻章）",
+    "source": "教材肠梗阻章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A3-093",
+    "type": "A3",
+    "stem": "若该患者治疗过程中腹痛由阵发性转为持续性剧烈疼痛，出现腹膜刺激征，腹穿抽出血性液体。提示",
+    "options": [
+      "肠梗阻已缓解",
+      "转为绞窄性肠梗阻",
+      "合并急性胰腺炎",
+      "合并腹腔感染",
+      "肠梗阻类型改变"
+    ],
+    "answer": "B",
+    "explanation": "阵发性腹痛→持续性剧痛+腹膜刺激征+血性腹水=肠管已发生绞窄坏死。绞窄性肠梗阻是急腹症中的急症，需紧急手术，手术方式取决于肠管活力：肠管血运可恢复→解除梗阻（粘连松解）；肠已坏死→肠切除肠吻合术。延迟手术可导致肠坏死穿孔→弥漫性腹膜炎→感染性休克→多器官功能衰竭死亡。（教材：肠梗阻章）",
+    "source": "教材肠梗阻章",
+    "bloom": "分析"
+  },
+  {
+    "qid": "WK-A3-094",
+    "type": "A3",
+    "stem": "该患者最可能的诊断是",
+    "options": [
+      "急性硬膜下血肿",
+      "急性硬膜外血肿",
+      "脑挫裂伤",
+      "脑内血肿",
+      "蛛网膜下腔出血"
+    ],
+    "answer": "B",
+    "explanation": "头部外伤→原发昏迷→中间清醒期→继发昏迷（典型硬膜外血肿病程）+ CT双凸透镜形高密度影+同侧瞳孔散大对侧肢体无力（小脑幕切迹疝）=急性硬膜外血肿。出血来源多为脑膜中动脉。瞳孔散大侧为血肿侧（动眼神经受压），对侧偏瘫（大脑脚受压）。紧急处理：快速静滴甘露醇降颅压→立即手术（开颅血肿清除+止血）。延误处理可导致不可逆脑疝死亡。（教材：颅脑损伤章）",
+    "source": "教材颅脑损伤章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A3-095",
+    "type": "A3",
+    "stem": "该患者右侧瞳孔散大的原因是",
+    "options": [
+      "动眼神经受压",
+      "视神经损伤",
+      "中脑损伤",
+      "桥脑损伤",
+      "延髓损伤"
+    ],
+    "answer": "A",
+    "explanation": "小脑幕切迹疝时，颞叶钩回疝入小脑幕切迹压迫同侧动眼神经（大脑后动脉和后交通动脉之间走行的动眼神经→副交感神经纤维首先受累→瞳孔括约肌麻痹→瞳孔散大）和同侧大脑脚（皮质脊髓束→对侧肢体偏瘫）。瞳孔先缩小后散大（早期动眼神经受刺激→瞳孔缩小），光反射迟钝→消失是进行性脑疝的可靠指标。（教材：颅脑损伤章）",
+    "source": "教材颅脑损伤章",
+    "bloom": "分析"
+  },
+  {
+    "qid": "WK-A3-096",
+    "type": "A3",
+    "stem": "该患者最恰当的紧急处理是",
+    "options": [
+      "观察等待",
+      "甘露醇脱水+开颅血肿清除术",
+      "单纯甘露醇脱水",
+      "腰穿放液",
+      "钻孔引流"
+    ],
+    "answer": "B",
+    "explanation": "急性硬膜外血肿伴脑疝形成（瞳孔散大+意识障碍）是神经外科最紧急的手术指征。处理流程：①快速静滴20%甘露醇250ml（15-20分钟内）临时降颅压争取手术时间；②立即开颅血肿清除+止血（脑膜中动脉止血）。血肿量&gt;30ml即有手术指征；出现脑疝应立即手术，时间就是脑。腰穿禁忌（可诱发脑疝）。单纯脱水不能解决根本问题。（教材：颅脑损伤章）",
+    "source": "教材颅脑损伤章",
+    "bloom": "分析"
+  },
+  {
+    "qid": "WK-A3-097",
+    "type": "A3",
+    "stem": "该患者最可能的诊断是",
+    "options": [
+      "单纯性甲状腺肿",
+      "亚急性甲状腺炎",
+      "甲状腺腺瘤",
+      "原发性甲状腺功能亢进症(Graves病)",
+      "慢性淋巴细胞性甲状腺炎"
+    ],
+    "answer": "D",
+    "explanation": "中年女性+高代谢症状（心悸多汗消瘦）+弥漫性甲状腺肿大+血管杂音+房颤+FT3/FT4↑+TSH↓=Graves病（原发性甲亢，最常见类型）。TRAb（TSH受体抗体）是其特异性自身抗体。单纯性甲状腺肿甲状腺功能正常；亚甲炎有颈部疼痛、血沉快、同位素摄取低；桥本病多为甲减表现、TPOAb/TgAb升高。治疗：抗甲状腺药物（甲巯咪唑）口服→放射性¹³¹I→手术。房颤随甲亢控制可恢复窦性心律。（教材：甲状腺章）",
+    "source": "教材甲状腺章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-A3-098",
+    "type": "A3",
+    "stem": "若该患者选择手术治疗，术前最重要的准备是",
+    "options": [
+      "术前禁食",
+      "碘剂准备",
+      "使用抗生素",
+      "使用普萘洛尔",
+      "使用丙硫氧嘧啶+碘剂控制甲亢症状"
+    ],
+    "answer": "E",
+    "explanation": "甲亢术前准备最重要：先用硫脲类药物（丙硫氧嘧啶/甲巯咪唑）控制甲亢症状使基础代谢率降至正常→术前2周加用复方碘溶液（Lugol液）使甲状腺缩小变硬、减少术中出血。也可单用普萘洛尔做术前准备（适用于不能耐受硫脲类者）。术前准备充分的标准：①症状缓解、情绪稳定；②脉率&lt;90次/分；③BMR&lt;+20%；④甲状腺缩小变硬、血管杂音减弱或消失。（教材：甲状腺章）",
+    "source": "教材甲状腺章",
+    "bloom": "应用"
+  },
+  {
+    "qid": "WK-判断-099",
+    "type": "判断",
+    "stem": "高压蒸汽灭菌法在121℃条件下维持30分钟即可达到灭菌效果。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "高压蒸汽灭菌法标准条件为121℃（压力102.9kPa）维持30分钟，可杀灭一切微生物包括芽孢。这是最可靠、应用最广的物理灭菌法。（教材：无菌术章）",
+    "source": "教材无菌术章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-判断-100",
+    "type": "判断",
+    "stem": "低钾血症时心电图可出现T波低平或倒置、出现U波、ST段下移。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "血清钾&lt;3.5mmol/L为低钾血症。心电图特征性改变：T波低平或倒置、ST段下移、出现U波（T波后的小波）、QT间期延长。补钾原则：口服补钾最安全、见尿补钾（尿量&gt;40ml/h）、浓度&lt;40mmol/L（即氯化钾浓度不超过0.3%）、速度&lt;20mmol/h，严禁静推。（教材：水电解质章）",
+    "source": "教材水电解质章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-判断-101",
+    "type": "判断",
+    "stem": "绞窄性肠梗阻与单纯性肠梗阻的根本区别在于梗阻部位不同。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "两者的根本区别在于有无肠管血运障碍，而非梗阻部位。单纯性肠梗阻仅有肠内容物通过障碍而无血运障碍；绞窄性肠梗阻伴有肠管血运障碍，可导致肠坏死穿孔。正确：嵌顿性疝与绞窄性疝的根本区别在于有无血运障碍。（教材：肠梗阻章）",
+    "source": "教材肠梗阻章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-判断-102",
+    "type": "判断",
+    "stem": "急性阑尾炎最具特征性的症状是转移性右下腹痛，始于上腹部或脐周，数小时后转移并固定于右下腹。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "转移性右下腹痛是急性阑尾炎的特征性症状，70%-80%患者按此规律发作。早期为内脏神经传导（定位模糊→上腹/脐周），后期累及壁层腹膜→躯体神经传导→痛觉定位精确至右下腹。（教材：阑尾炎章）",
+    "source": "教材阑尾炎章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-判断-103",
+    "type": "判断",
+    "stem": "骨折三大专有体征为畸形、反常活动、骨擦音或骨擦感。出现其中任何一项即可诊断骨折。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "三大专有体征是骨折的特有表现，出现任何一种即可确诊骨折。但并非每例骨折都有专有体征——如嵌插骨折和裂纹骨折可无专有体征，需X线或CT确诊。（教材：骨折总论章）",
+    "source": "教材骨折总论章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-判断-104",
+    "type": "判断",
+    "stem": "急性硬膜外血肿的CT典型表现为颅骨内板下新月形高密度影。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "新月形高密度影是急性硬膜下血肿的CT表现。急性硬膜外血肿CT表现为双凸透镜形（梭形）高密度影，且不跨越颅缝（硬脑膜附着于颅缝处）。两者的CT形态差异是重要鉴别点。（教材：颅脑损伤章）",
+    "source": "教材颅脑损伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-判断-105",
+    "type": "判断",
+    "stem": "Colles骨折（伸直型桡骨远端骨折）的典型畸形是枪刺样畸形和餐叉样畸形。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "Colles骨折正面观呈枪刺样畸形（远折端向桡侧移位），侧面观呈餐叉样畸形（远折端向背侧移位）。为临床上最常见的骨折之一，多见于老年人跌倒手掌着地。（教材：上肢骨折章）",
+    "source": "教材上肢骨折章",
+    "bloom": "记忆"
+  },
+  {
+    "qid": "WK-判断-106",
+    "type": "判断",
+    "stem": "张力性气胸的紧急处理是立即开胸探查止血。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "张力性气胸的紧急处理是立即排气减压——用粗针头在患侧锁骨中线第2肋间穿刺，然后放置胸腔闭式引流管。开胸探查适用于：①进行性血胸；②胸腔闭式引流后持续大量漏气（&gt;3天）；③心脏大血管损伤；④食管破裂等。（教材：胸部损伤章）",
+    "source": "教材胸部损伤章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-判断-107",
+    "type": "判断",
+    "stem": "急性胰腺炎血清淀粉酶升高的程度与病情严重程度呈正比。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "血清淀粉酶的高低与病情严重程度不平行。重症坏死性胰腺炎（SAP）时，由于胰腺广泛坏死，淀粉酶反而不高甚至正常。判断重症胰腺炎的指标：Ranson评分、APACHE II评分、CT严重度指数（CTSI）、血钙&lt;1.87mmol/L等。（教材：胰腺章）",
+    "source": "教材胰腺章",
+    "bloom": "理解"
+  },
+  {
+    "qid": "WK-判断-108",
+    "type": "判断",
+    "stem": "肠内营养相对于肠外营养最重要的优势是能够维护肠黏膜屏障功能、防止肠道菌群移位。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "肠道是应激反应的中心器官，长期禁食和肠外营养→肠黏膜萎缩、通透性增加→细菌和内毒素移位→肠源性感染/SIRS/MODS。肠内营养可刺激胃肠激素分泌、维护肠黏膜屏障、维持肠道菌群平衡。只要肠道功能存在，应优先选择肠内营养。（教材：营养章）",
+    "source": "教材营养章",
+    "bloom": "理解"
   }
 ];
-var TOTAL = 0;
-for(var i=0;i<data.length;i++) if(data[i].t==='q') TOTAL++;
+;
+</script>
+<!-- ==================== 模板逻辑（迁移时保持不变） ==================== -->
+<script>
+(function () {
+  var STORAGE_KEY = 'maw-theme';        // 与 index.html 共享主题记忆
+  var RECORD_KEY = 'maw-quiz-record-' + (PAPER_META.title || 'default');
 
-var state = {answered:{},correct:0,wrong:0,selected:{}};
+  // ---- 主题 ----
+  var html = document.documentElement;
+  function applyTheme(t) {
+    html.setAttribute('data-theme', t);
+    document.getElementById('theme-toggle').textContent = t === 'dark' ? '☀️' : '🌙';
+    try { localStorage.setItem(STORAGE_KEY, t); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  applyTheme(saved === 'dark' ? 'dark' : 'light');
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
 
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function tc(t){var m={A1:'A1',A2:'A2',A3:'A3',A4:'A4',B1:'B1',X:'X'};return m[t]||'判断';}
+  // ---- 作答记录 ----
+  var records = {};
+  try { records = JSON.parse(localStorage.getItem(RECORD_KEY) || '{}'); } catch (e) { records = {}; }
+  function saveRecords() {
+    try { localStorage.setItem(RECORD_KEY, JSON.stringify(records)); } catch (e) {}
+  }
 
-function updateBar(){
-    var a=state.correct+state.wrong;
-    document.getElementById('cc').textContent=state.correct;
-    document.getElementById('wc').textContent=state.wrong;
-    document.getElementById('sp').textContent=a>0?Math.round(state.correct/a*100)+'%':'0%';
-    document.getElementById('pbar').style.width=(a/TOTAL*100)+'%';
-    document.getElementById('plabel').textContent=a+'/'+TOTAL;
-    if(a===TOTAL&&state.wrong===0) document.getElementById('pbar').style.background='linear-gradient(90deg,#43a047,#66bb6a)';
-    else if(a===TOTAL) document.getElementById('pbar').style.background='linear-gradient(90deg,#ffa726,#ffb74d)';
-}
+  // ---- 状态 ----
+  var state = { filterSystem: null, wrongOnly: false };
 
-function arraysEqual(a,b){
-    if(a.length!==b.length) return false;
-    var sa=a.slice().sort(), sb=b.slice().sort();
-    for(var i=0;i<sa.length;i++) if(sa[i]!==sb[i]) return false;
-    return true;
-}
+  // ---- 渲染 ----
+  var quizEl = document.getElementById('quiz');
+  function visibleQuestions() {
+    return QUESTIONS.filter(function (q) {
+      if (state.wrongOnly) {
+        var r = records[q.qid];
+        return r && !r.correct;
+      }
+      if (state.filterSystem && q.system && q.system !== state.filterSystem) return false;
+      return true;
+    });
+  }
+  function render() {
+    var list = visibleQuestions();
+    quizEl.innerHTML = '';
+    list.forEach(function (q, i) {
+      quizEl.appendChild(buildCard(q, i + 1));
+    });
+    updateScore();
+  }
+  function buildCard(q, n) {
+    var rec = records[q.qid] || null;
+    var card = document.createElement('div');
+    card.className = 'question';
+    card.dataset.qid = q.qid;
 
-function finishQuestion(idx,isOk,correct,userLabels){
-    state.answered[idx]=true;
-    if(isOk) state.correct++; else state.wrong++;
-    var qDiv=document.getElementById('q'+idx);
-    var opts=qDiv.querySelectorAll('.option');
-    var panel=document.getElementById('p'+idx);
-    if(isOk){
-        qDiv.classList.add('correct');
-        panel.classList.add('open','ok');
-        panel.firstChild.className='ans-head green';
-        panel.firstChild.textContent='✅ 回答正确！答案：'+correct.join(', ');
-    }else{
-        qDiv.classList.add('wrong');
-        panel.classList.add('open','no');
-        panel.firstChild.className='ans-head red';
-        panel.firstChild.textContent='❌ 回答错误！正确答案：'+correct.join(', ');
+    var meta = document.createElement('div');
+    meta.className = 'q-meta';
+    var verdict = '';
+    if (rec) {
+      card.classList.add(rec.correct ? 'is-correct' : 'is-wrong');
+      verdict = '<span class="q-verdict ' + (rec.correct ? 'ok' : 'no') + '">' +
+        (rec.correct ? '✓ 已答对' : '✗ 答错') + '</span>';
     }
-    for(var k=0;k<opts.length;k++){
-        var o=opts[k], ol=o.getAttribute('data-l');
-        o.classList.add('no-click');
-        if(correct.indexOf(ol)>=0){
-            o.classList.add('correct-show');
-            o.lastChild.classList.add('show'); o.lastChild.textContent='✓';
-        }
-        if(userLabels.indexOf(ol)>=0&&!isOk){
-            o.classList.add('wrong-pick');
-            o.lastChild.classList.add('show'); o.lastChild.textContent='✗';
-        }
+    meta.innerHTML =
+      '<span class="q-num">第 ' + n + ' 题</span>' +
+      '<span class="q-type">' + q.type + (q.type === 'X' ? ' ·多选' : '') + '</span>' +
+      (q.bloom ? '<span class="q-bloom">' + q.bloom + '</span>' : '') + verdict;
+    card.appendChild(meta);
+
+    var stem = document.createElement('div');
+    stem.className = 'q-stem';
+    stem.innerHTML = q.stem;
+    card.appendChild(stem);
+
+    var multi = q.type === 'X';
+    var multiPicks = [];
+    q.options.forEach(function (opt, idx) {
+      var letter = String.fromCharCode(65 + idx);
+      var el = document.createElement('div');
+      el.className = 'option';
+      el.innerHTML = '<span class="opt-label">' + letter + '.</span><span>' + opt + '</span><span class="opt-mark"></span>';
+      // 恢复已答状态
+      if (rec) {
+        var pickedNow = multi ? rec.picked.indexOf(letter) >= 0 : rec.picked === letter;
+        var isAnswer = q.answer.indexOf(letter) >= 0;
+        if (pickedNow) el.classList.add(multi && !isAnswer ? 'wrong-pick' : 'picked');
+        if (isAnswer) { el.classList.add('correct-show'); el.querySelector('.opt-mark').textContent = '✓'; }
+        if (pickedNow && !isAnswer) el.querySelector('.opt-mark').textContent = '✗';
+      } else {
+        el.addEventListener('click', (function (letter) {
+          return function () { handlePick(q, card, letter, el, multi, multiPicks); };
+        })(letter));
+      }
+      card.appendChild(el);
+    });
+
+    // 解析面板
+    var box = document.createElement('div');
+    box.className = 'answer-box';
+    if (rec) {
+      box.classList.add(rec.correct ? 'ok' : 'no');
+      box.classList.add('show');
     }
-    updateBar();
-    setTimeout(function(){
-        for(var j=idx+1;j<data.length;j++){
-            if(data[j].t==='q'&&!state.answered[j]){
-                var n=document.getElementById('q'+j);
-                if(n) n.scrollIntoView({behavior:'smooth',block:'center'});
-                break;
-            }
-        }
-    },350);
-}
+    box.innerHTML =
+      '<div class="ans-head">' + (rec ? (rec.correct ? '✓ 回答正确' : '✗ 回答错误') : '') + '　正确答案：' + q.answer + '</div>' +
+      '<div class="exp">' + q.explanation + '</div>' +
+      (q.source ? '<div class="src">来源：' + q.source + '　用时：' + ((rec && rec.seconds) || '-') + 's</div>' : '');
+    card.appendChild(box);
 
-function pick(idx,label){
-    if(state.answered[idx]) return;
-    var q=data[idx], correct=q.c;
-    if(q.tp==='X'){
-        if(!state.selected[idx]) state.selected[idx]=[];
-        var sel=state.selected[idx];
-        var pos=sel.indexOf(label);
-        if(pos>=0){
-            sel.splice(pos,1);
-            document.querySelector('#q'+idx+' .option[data-l="'+label+'"]').classList.remove('picked');
-        }else{
-            sel.push(label);
-            document.querySelector('#q'+idx+' .option[data-l="'+label+'"]').classList.add('picked');
-        }
-        if(sel.length===correct.length){
-            var isOk=arraysEqual(sel,correct);
-            finishQuestion(idx,isOk,correct,sel.slice());
-        }
-        return;
+    // X 型多选确认按钮（2026-08-21 补全：已选≥1 显示，点击判分）
+    if (multi) {
+      var bar = document.createElement('div');
+      bar.className = 'multi-confirm';
+      var cbtn = document.createElement('button');
+      cbtn.className = 'btn-confirm';
+      cbtn.textContent = '确认作答';
+      cbtn.disabled = true;
+      cbtn.addEventListener('click', function () { judgeMulti(q, card, multiPicks); });
+      bar.appendChild(cbtn);
+      var hint = document.createElement('span');
+      hint.className = 'q-bloom';
+      hint.textContent = '已选 0 项';
+      bar.appendChild(hint);
+      bar.style.display = 'none';
+      card.appendChild(bar);
     }
-    var isOk=correct.indexOf(label)>=0;
-    finishQuestion(idx,isOk,correct,[label]);
-}
+    return card;
+  }
 
-function reset(){
-    state={answered:{},correct:0,wrong:0,selected:{}};
-    var qs=document.querySelectorAll('.question');
-    for(var i=0;i<qs.length;i++) qs[i].classList.remove('correct','wrong');
-    var os=document.querySelectorAll('.option');
-    for(var i=0;i<os.length;i++){
-        os[i].classList.remove('no-click','correct-show','wrong-pick','picked');
-        os[i].lastChild.classList.remove('show'); os[i].lastChild.textContent='';
+  var startTime = Date.now();
+  function handlePick(q, card, letter, el, multi, multiPicks) {
+    if (multi) {
+      var pos = multiPicks.indexOf(letter);
+      if (pos >= 0) { multiPicks.splice(pos, 1); el.classList.remove('picked'); }
+      else { multiPicks.push(letter); el.classList.add('picked'); }
+      // 更新确认按钮状态
+      var bar = card.querySelector('.multi-confirm');
+      if (bar) {
+        bar.style.display = 'block';
+        bar.querySelector('.btn-confirm').disabled = multiPicks.length === 0;
+        bar.querySelector('span').textContent = '已选 ' + multiPicks.length + ' 项';
+      }
+      return;
     }
-    var ps=document.querySelectorAll('.answer-box');
-    for(var i=0;i<ps.length;i++) ps[i].classList.remove('open','ok','no');
-    document.getElementById('pbar').style.background='linear-gradient(90deg,#43a047,#66bb6a)';
-    updateBar();
-    window.scrollTo({top:0,behavior:'smooth'});
-}
+    // 单选：立即判分
+    var correct = q.answer === letter;
+    var seconds = Math.round((Date.now() - startTime) / 1000);
+    startTime = Date.now();
+    records[q.qid] = {
+      qid: q.qid, picked: letter, correct: correct,
+      seconds: seconds, ts: new Date().toISOString()
+    };
+    saveRecords();
+    render(); // 重渲染以显示三通道反馈 + 解析
+  }
 
-function showAll(){
-    var ps=document.querySelectorAll('.answer-box');
-    for(var i=0;i<ps.length;i++) ps[i].classList.add('open');
-}
+  // X 型多选判分（2026-08-21 补全）：所选集合与答案字母集合一致即对（顺序无关）
+  function judgeMulti(q, card, multiPicks) {
+    if (multiPicks.length === 0) return;
+    var picked = multiPicks.slice().sort().join('');
+    var ans = (q.answer || '').split('').sort().join('');
+    var correct = picked === ans;
+    var seconds = Math.round((Date.now() - startTime) / 1000);
+    startTime = Date.now();
+    records[q.qid] = {
+      qid: q.qid, picked: picked, correct: correct,
+      seconds: seconds, ts: new Date().toISOString()
+    };
+    saveRecords();
+    render();
+  }
 
-function render(){
-    var root=document.getElementById('quiz-root');
-    var h='', caseOpen=false, realNum=0;
-    // sections
-    var sections = {"1": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "2": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "3": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "4": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "5": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "6": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "7": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "8": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "9": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "10": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "11": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "12": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "13": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "14": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "15": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "16": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "17": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "18": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "19": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "20": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "21": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "22": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "23": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "24": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "25": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "26": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "27": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "28": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "29": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "30": "第一部分：外科总论（无菌术·水电平衡·休克·感染·创伤·烧伤·输血·围术期·麻醉·营养·肿瘤·CPR）", "31": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "32": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "33": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "34": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "35": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "36": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "37": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "38": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "39": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "40": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "41": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "42": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "43": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "44": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "45": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "46": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "47": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "48": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "49": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "50": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "51": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "52": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "53": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "54": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "55": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "56": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "57": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "58": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "59": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "60": "第二部分：普外科（甲状腺·乳腺·腹外疝·腹部损伤·胃十二指肠·阑尾炎·肠梗阻·胆道·胰腺·肝脏·门脉高压·结直肠·周围血管）", "61": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "62": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "63": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "64": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "65": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "66": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "67": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "68": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "69": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "70": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "71": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "72": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "73": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "74": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "75": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "76": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "77": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "78": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "79": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "80": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "81": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "82": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "83": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "84": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "85": "第三部分：骨科（骨折总论·上下肢骨折·脊柱·关节脱位·骨肿瘤·骨感染）", "86": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "87": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "88": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "89": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "90": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "91": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "92": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "93": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "94": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "95": "第四部分：神经外科（颅内压增高·颅脑损伤·颅内肿瘤·脑疝）", "96": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "97": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "98": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "99": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "100": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "101": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "102": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "103": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "104": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "105": "第五部分：胸外科+泌尿外科（胸部损伤·肺癌·食管癌·泌尿系损伤·前列腺）", "106": "第六部分：A3/A4病例组题（急性阑尾炎·肠梗阻·颅脑损伤·甲状腺）", "107": "第六部分：A3/A4病例组题（急性阑尾炎·肠梗阻·颅脑损伤·甲状腺）", "108": "第六部分：A3/A4病例组题（急性阑尾炎·肠梗阻·颅脑损伤·甲状腺）"};
-    var currentSection = '';
-    for(var i=0;i<data.length;i++){
-        var q=data[i];
-        if(q.t==='c'){
-            if(caseOpen) h+='</div>';
-            if(sections[q.n] && sections[q.n]!==currentSection){
-                currentSection = sections[q.n];
-                h+='<div class="section-divider">'+currentSection+'</div>';
-            }
-            h+='<div class="case-group"><div class="case-header"><span class="case-label">📋 病例 '+q.n+'</span>  '+esc(q.cs)+'</div>';
-            caseOpen=true;
-        }else{
-            if(!caseOpen && sections[q.n] && sections[q.n]!==currentSection){
-                currentSection = sections[q.n];
-                h+='<div class="section-divider">'+currentSection+'</div>';
-            }
-            realNum++;
-            var isX=q.tp==='X';
-            h+='<div class="question" id="q'+i+'">';
-            h+='<span class="q-num">'+realNum+'</span><span class="q-type '+tc(q.tp)+'">'+q.tp+'</span>';
-            if(isX) h+=' <span style="font-size:10px;color:#ce93d8;font-weight:600;opacity:.7">(多选——点击选项切换选择，选够'+q.c.length+'个自动提交)</span>';
-            h+='<div class="q-stem">'+esc(q.s)+'</div>';
-            if(q.tp==='B1'&&q.o){
-                h+='<div class="b1-box"><span class="b1-label">🔗 共用选项：</span> ';
-                var parts=[];
-                for(var k=0;k<q.o.length;k++) parts.push(q.o[k].l+'. '+esc(q.o[k].x));
-                h+=parts.join(' ｜ ');
-                h+='</div>';
-            }else if(q.o){
-                h+='<div class="options">';
-                for(var k=0;k<q.o.length;k++){
-                    var o=q.o[k];
-                    h+='<div class="option" data-l="'+o.l+'" onclick="Quiz.pick('+i+',\''+o.l+'\')">';
-                    h+='<span class="opt-label">'+o.l+'.</span><span>'+esc(o.x)+'</span>';
-                    h+='<span class="result-icon">✓</span></div>';
-                }
-                h+='</div>';
-            }
-            h+='<div class="answer-box" id="p'+i+'">';
-            h+='<div class="ans-head">✅ 答案：'+q.c.join(', ')+' ｜ '+q.tp+' ｜ '+q.bl+'</div>';
-            h+='<div class="exp">'+esc(q.ex)+'</div>';
-            if(q.sr) h+='<div class="src">📖 '+esc(q.sr)+'</div>';
-            h+='</div></div>';
-        }
-    }
-    if(caseOpen) h+='</div>';
-    root.innerHTML=h;
-}
+  // 多选确认：X 型题点击第3个选项后自动判分（简化约定，迁移时可改为确认按钮）
+  var _origHandlePick = handlePick;
 
-var lastScroll=0,topbar=document.getElementById('topbar');
-window.addEventListener('scroll',function(){
-  var st=window.pageYOffset||document.documentElement.scrollTop;
-  if(st>lastScroll&&st>120)topbar.classList.add('hidden');
-  else if(st<lastScroll)topbar.classList.remove('hidden');
-  lastScroll=st<=0?0:st;
-},{passive:true});
-render();
-updateBar();
+  // ---- 计分 ----
+  function updateScore() {
+    var answered = 0, right = 0;
+    QUESTIONS.forEach(function (q) {
+      var r = records[q.qid];
+      if (r) { answered++; if (r.correct) right++; }
+    });
+    var rate = answered ? Math.round(right * 100 / answered) + '%' : '--';
+    document.getElementById('score').textContent =
+      '已答 ' + answered + '/' + QUESTIONS.length + ' · 正确 ' + right + ' · 正确率 ' + rate;
+    document.getElementById('progress-fill').style.width =
+      (answered * 100 / Math.max(QUESTIONS.length, 1)) + '%';
+  }
 
-return {pick:pick, reset:reset, showAll:showAll, updateBar:updateBar};
+  // ---- 系统筛选标签（可选功能） ----
+  var systems = [];
+  QUESTIONS.forEach(function (q) { if (q.system && systems.indexOf(q.system) < 0) systems.push(q.system); });
+  if (systems.length > 1) {
+    var tagBox = document.getElementById('system-tags');
+    tagBox.classList.add('show');
+    systems.forEach(function (s) {
+      var b = document.createElement('button');
+      b.className = 'system-tag';
+      b.textContent = s;
+      b.addEventListener('click', function () {
+        state.filterSystem = (state.filterSystem === s) ? null : s;
+        state.wrongOnly = false;
+        render();
+        document.querySelectorAll('.system-tag').forEach(function (t) {
+          t.classList.toggle('active', t.textContent === state.filterSystem);
+        });
+      });
+      tagBox.appendChild(b);
+    });
+  }
+
+  // ---- 工具栏 ----
+  document.getElementById('btn-wrong').addEventListener('click', function () {
+    state.wrongOnly = !state.wrongOnly;
+    this.classList.toggle('active', state.wrongOnly);
+    render();
+  });
+  document.getElementById('btn-all').addEventListener('click', function () {
+    state.wrongOnly = false; state.filterSystem = null;
+    document.getElementById('btn-wrong').classList.remove('active');
+    document.querySelectorAll('.system-tag').forEach(function (t) { t.classList.remove('active'); });
+    render();
+  });
+  document.getElementById('btn-reset').addEventListener('click', function () {
+    if (!confirm('确认清空本卷作答记录？')) return;
+    records = {};
+    saveRecords();
+    render();
+  });
+  document.getElementById('btn-export').addEventListener('click', function () {
+    var payload = {
+      paper: PAPER_META.title,
+      exported_at: new Date().toISOString(),
+      stats: (function () {
+        var a = 0, r = 0;
+        Object.keys(records).forEach(function (k) { a++; if (records[k].correct) r++; });
+        return { answered: a, correct: r };
+      })(),
+      records: records
+    };
+    var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (PAPER_META.title || 'quiz') + '_作答记录.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  // ---- 标题 ----
+  document.getElementById('paper-title').textContent = PAPER_META.title;
+  document.getElementById('paper-sub').textContent = PAPER_META.sub;
+
+  render();
 })();
 </script>
 </body>

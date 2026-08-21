@@ -16,6 +16,12 @@ reports/
 知识库素材/index_store/
 知识库素材/chunks_metadata/
 
+# CMExam 锚点体系原始数据（可重建，~174MB 含 npz，2026-08-21）
+知识库素材/cmexam/
+
+# registry 写前自动备份（安全快照，不入库；git 历史即最终备份）
+question_bank/registry_backup_*.jsonl
+
 # 本地快捷方式（指向外部路径，仅本机有效）
 *.lnk
 

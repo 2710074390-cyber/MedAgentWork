@@ -191,7 +191,14 @@ def _cache_clear():
 
 
 def _config_sig(subject_code):
-    """配置签名：索引重建后旧缓存自动失效。"""
+    """配置签名：索引重建后旧缓存自动失效。
+
+    v1.1 (2026-08-20 审查修复): 此前读 entry.get('config_version','?')，而 manifest
+    实际键为 subject_config_version（实测 19 个条目均无 config_version 键）→ 签名
+    恒为 "?|chunk_size"，同配置 --force 重建索引后缓存不失效，MedGen/MedReview
+    持续拿到旧 chunk。现在签名 = subject_config_version|chunk_size|indexed_at，
+    任何索引重建（indexed_at 变化）都使旧缓存失效。
+    """
     manifest_path = INDEX_STORE / "index_manifest.json"
     sig = "default"
     if manifest_path.exists():
@@ -200,7 +207,11 @@ def _config_sig(subject_code):
                 manifest = json.load(f)
             if subject_code in manifest:
                 entry = manifest[subject_code]
-                sig = f"{entry.get('config_version','?')}|{entry.get('chunk_size','?')}"
+                sig = "|".join([
+                    str(entry.get('subject_config_version', '?')),
+                    str(entry.get('chunk_size', '?')),
+                    str(entry.get('indexed_at', '?')),
+                ])
         except Exception:
             pass
     return sig
@@ -283,6 +294,12 @@ def load_index(subject_code=None):
         if code not in manifest:
             print(f"  [WARN] {code} not in manifest, skipping")
             continue
+
+        # v1.1 (2026-08-20 审查修复 C4): partial 索引显式告警（部分批次嵌入失败）
+        if manifest[code].get("status") == "partial":
+            print(f"  [WARN] {code}: manifest status=partial（索引不完整，"
+                  f"chunk_count={manifest[code].get('chunk_count')}）— 建议重新索引",
+                  file=sys.stderr)
 
         meta_file = META_DIR / f"{code}_chunks.jsonl"
         vec_file = INDEX_STORE / code / "embeddings.npy"

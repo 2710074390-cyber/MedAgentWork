@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{科目}押题卷 · MedAgentWork 统一模板 v1.0</title>
+<!--
+  ============================================================================
+  quiz_template.html — MedAgentWork 统一押题卷模板 v1.0 (2026-08-20)
+  ============================================================================
+  用途：五套押题卷（内/外/神经/精神/医患）统一迁移到此模板。
+  设计令牌：沿用复习资料模板命名体系（--bg-primary/--text-primary/...），
+            新增押题卷语义令牌（--correct/--wrong/--picked）。
+  达标项：CSS变量化 / 亮暗双主题(localStorage maw-theme，与index.html打通) /
+          640px响应式 / print保色 / 对错三通道反馈(颜色+✓✗+文字) /
+          localStorage作答采集+JSON导出+错题重刷。
+  题目注入：替换下方 <script id="quiz-data"> 中的 QUESTIONS 数组。
+  验收标准：见 AGENT_TASKS.md V-P0-1。
+  ============================================================================
+-->
+<style>
+  :root {
+    /* 基础（亮色） */
+    --bg-primary: #fafbfc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f0f2f5;
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a5568;
+    --text-tertiary: #5A6675;   /* 修复：原 #718096 对比 3.71:1 不达标 */
+    --border: #e2e8f0;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    /* 押题卷语义令牌 */
+    --correct: #047857;         /* 修复：原 #059669 对比不足，加深 */
+    --correct-bg: #ecfdf5;
+    --correct-border: #6ee7b7;
+    --wrong: #dc2626;
+    --wrong-bg: #fef2f2;
+    --wrong-border: #fca5a5;
+    --picked: #7c3aed;
+    --picked-bg: #f5f3ff;
+    --picked-border: #c4b5fd;
+    /* 组件规格（全站统一） */
+    --radius-card: 12px;
+    --radius-option: 8px;
+    --radius-bar: 6px;
+    --hover-shift: 3px;
+    --shadow: 0 2px 12px rgba(0,0,0,.06);
+    --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  [data-theme="dark"] {
+    --bg-primary: #0f1117;
+    --bg-secondary: #161822;
+    --bg-tertiary: #1e2030;
+    --text-primary: #e2e4e9;
+    --text-secondary: #a0a6b5;
+    --text-tertiary: #8A93A3;   /* 修复：原 #6b7280 对比 4.21:1 不达标 */
+    --border: #2a2d3a;
+    --accent: #60a5fa;
+    --accent-light: #1a2e4a;
+    --correct: #34d399;
+    --correct-bg: #0a2e1f;
+    --correct-border: #1a4a30;
+    --wrong: #f87171;
+    --wrong-bg: #3b1219;
+    --wrong-border: #5c1f24;
+    --picked: #a78bfa;
+    --picked-bg: #1e123b;
+    --picked-border: #3a2560;
+    --shadow: 0 2px 12px rgba(0,0,0,.3);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-body); font-size: 15px; line-height: 1.8;
+    background: var(--bg-primary); color: var(--text-primary);
+    padding-top: 96px; transition: background .25s ease, color .25s ease;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px 40px; }
+
+  /* ---------- 顶栏 ---------- */
+  #topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: linear-gradient(135deg, #1a3a5f, #2563eb);
+    color: #fff; padding: 12px 20px 10px;
+  }
+  #topbar h1 { font-size: 18px; font-weight: 700; }
+  #topbar .sub { font-size: 12px; opacity: .85; margin-top: 2px; }
+  .bar-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .score { font-size: 13px; font-variant-numeric: tabular-nums; }
+  .btn {
+    font-size: 12px; padding: 5px 12px; border-radius: 14px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.45); background: rgba(255,255,255,.12);
+    color: #fff; font-family: inherit; transition: background .15s;
+  }
+  .btn:hover { background: rgba(255,255,255,.25); }
+  .btn.active { background: #fff; color: #1a3a5f; border-color: #fff; font-weight: 700; }
+  #progress { height: 6px; border-radius: var(--radius-bar); background: rgba(255,255,255,.2); margin-top: 8px; overflow: hidden; }
+  #progress-fill { height: 100%; width: 0; border-radius: var(--radius-bar); background: #34d399; transition: width .3s ease; }
+
+  /* ---------- 系统筛选（可选功能：题目带 system 字段时自动启用） ---------- */
+  #system-tags { display: none; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  #system-tags.show { display: flex; }
+  .system-tag {
+    font-size: 12px; padding: 3px 10px; border-radius: 12px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.4); color: #fff; background: transparent;
+    font-family: inherit;
+  }
+  .system-tag.active { background: #fff; color: #1a3a5f; font-weight: 700; }
+
+  /* ---------- 题卡 ---------- */
+  .question {
+    background: var(--bg-secondary); border-radius: var(--radius-card);
+    box-shadow: var(--shadow); padding: 22px 24px; margin: 18px 0;
+    border-left: 4px solid transparent; transition: background .2s;
+    break-inside: avoid;
+  }
+  .question.is-correct { border-left-color: var(--correct); background: var(--correct-bg); }
+  .question.is-wrong { border-left-color: var(--wrong); background: var(--wrong-bg); }
+  .q-meta { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+  .q-num { font-size: 13px; font-weight: 700; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+  .q-type {
+    font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 4px;
+    background: var(--accent-light); color: var(--accent);
+  }
+  .q-bloom { font-size: 12px; color: var(--text-tertiary); }
+  .q-verdict { font-size: 12px; font-weight: 700; margin-left: auto; }
+  .q-verdict.ok { color: var(--correct); }
+  .q-verdict.no { color: var(--wrong); }
+  .q-stem { font-size: 15.5px; line-height: 1.85; margin-bottom: 14px; }
+  .q-stem b { font-weight: 700; } /* 否定词加粗（R4 规范） */
+
+  /* ---------- 选项（三通道反馈：颜色 + ✓/✗ + 文字） ---------- */
+  .option {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14.5px; line-height: 1.7; padding: 10px 14px; margin: 8px 0;
+    border: 2px solid var(--border); border-radius: var(--radius-option);
+    cursor: pointer; background: var(--bg-tertiary);
+    transition: transform .15s ease, border-color .15s, background .15s;
+  }
+  .option:hover { border-color: var(--accent); transform: translateX(var(--hover-shift)); }
+  .opt-label { font-weight: 700; font-size: 13px; color: var(--accent); min-width: 18px; padding-top: 1px; }
+  .opt-mark { font-weight: 700; font-size: 14px; margin-left: auto; min-width: 16px; text-align: right; }
+  .option.picked { border-color: var(--picked); background: var(--picked-bg); }
+  .option.picked .opt-label { color: var(--picked); }
+  .option.correct-show { border-color: var(--correct); background: var(--correct-bg); }
+  .option.correct-show .opt-label { color: var(--correct); }
+  .option.correct-show .opt-mark { color: var(--correct); }
+  .option.wrong-pick { border-color: var(--wrong); background: var(--wrong-bg); }
+  .option.wrong-pick .opt-label { color: var(--wrong); }
+  .option.wrong-pick .opt-mark { color: var(--wrong); }
+
+  /* ---------- 解析 ---------- */
+  .answer-box {
+    display: none; margin-top: 12px; padding: 14px 16px;
+    border-radius: var(--radius-option); font-size: 13.5px; line-height: 1.8;
+    background: var(--bg-tertiary); animation: fadeIn .2s ease;
+  }
+  .answer-box.show { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .ans-head { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .answer-box.ok .ans-head { color: var(--correct); }
+  .answer-box.no .ans-head { color: var(--wrong); }
+  .exp { color: var(--text-secondary); }
+  .src { font-size: 12px; color: var(--text-tertiary); margin-top: 6px; }
+
+  /* ---------- X 型多选确认（2026-08-21 迁移补全：原模板只切换不判分） ---------- */
+  .multi-confirm { margin-top: 10px; display: flex; align-items: center; gap: 10px; }
+  .btn-confirm {
+    font-size: 13px; padding: 6px 18px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--accent); background: var(--accent); color: #fff;
+    font-family: inherit; transition: background .15s, opacity .15s;
+  }
+  .btn-confirm:hover { opacity: .88; }
+  .btn-confirm:disabled { opacity: .45; cursor: default; }
+
+  /* ---------- 主题切换 ---------- */
+  .theme-fab {
+    position: fixed; right: 16px; bottom: 16px; z-index: 99;
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border);
+    background: var(--bg-secondary); color: var(--text-primary); cursor: pointer;
+    font-size: 17px; box-shadow: var(--shadow); font-family: inherit;
+  }
+
+  /* ---------- 响应式（640px） ---------- */
+  @media (max-width: 640px) {
+    body { padding-top: 118px; font-size: 14.5px; }
+    #topbar { padding: 10px 14px 8px; }
+    #topbar h1 { font-size: 16px; }
+    .container { padding: 0 12px 24px; }
+    .question { padding: 16px 14px; }
+    .q-stem { font-size: 14.5px; }
+    .option { font-size: 13.5px; padding: 9px 12px; }
+  }
+
+  /* ---------- 打印（保色 + 防断裂 + 默认展开解析） ---------- */
+  @media print {
+    body { background: #fff; padding-top: 0; font-size: 12px; }
+    #topbar, .theme-fab, .no-print { display: none !important; }
+    .question { box-shadow: none; border: 1px solid #ddd; border-left: 4px solid #999; background: #fff !important; }
+    .answer-box { display: block !important; }
+    .option { cursor: default; pointer-events: none; }
+    .option.correct-show { border-color: #047857 !important; background: #ecfdf5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .option.wrong-pick { border-color: #dc2626 !important; background: #fef2f2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header id="topbar">
+  <h1 id="paper-title">{科目}押题卷</h1>
+  <div class="sub" id="paper-sub">MedAgentWork 统一模板 v1.0</div>
+  <div class="bar-row">
+    <span class="score" id="score">已答 0 · 正确 0 · 正确率 --</span>
+    <span class="bar-btns no-print">
+      <button class="btn" id="btn-wrong" title="仅重刷错题">错题重刷</button>
+      <button class="btn" id="btn-all" title="恢复全部题目">全部题目</button>
+      <button class="btn" id="btn-export" title="导出作答JSON">导出作答</button>
+      <button class="btn" id="btn-reset" title="清空本地作答记录">清空记录</button>
+    </span>
+  </div>
+  <div id="system-tags"></div>
+  <div id="progress"><div id="progress-fill"></div></div>
+</header>
+
+<div class="container"><div id="quiz"></div></div>
+
+<button class="theme-fab" id="theme-toggle" title="切换亮/暗主题（localStorage maw-theme，与 index.html 共享）">🌙</button>
+
+<!-- ==================== 题目注入点：替换 QUESTIONS 数组 ==================== -->
+<script id="quiz-data">
+/*
+  题目 Schema（与 registry/最终产物字段对齐）：
+  {
+    qid:   "NRO-M2-A1-001"          // 必填，作答记录主键
+    type:  "A1"                     // A1/A2/A3/A4/B1/X/判断
+    system:"呼吸系统"               // 可选：填写则自动启用系统筛选标签
+    bloom: "应用"                    // 可选：认知层级
+    stem:  "题干，否定词用<b>不</b>加粗"  // 支持 <b>
+    options:["A内容","B内容",...]    // 4-5 个
+    answer:"C"                      // 单选字母；X 型如 "ABD"
+    explanation:"解析正文",          // 必填（打印时展示）
+    source:"教材P20"                 // 可选
+  }
+  多个 system 出现时顶栏自动生成筛选标签（内科卷已有功能的模板化）。
+*/
+const PAPER_META = {
+  title: "内科学押题卷（示例）",
+  sub: "统一模板 v1.0 · 示例数据 3 题 · 迁移时替换本数组"
+};
+const QUESTIONS = [
+  {
+    qid: "DEMO-A1-001", type: "A1", system: "呼吸系统", bloom: "理解",
+    stem: "语音震颤增强最常见于下列哪种情况？",
+    options: ["大量胸腔积液", "慢性阻塞性肺疾病", "大叶性肺炎实变", "自发性气胸", "肺泡性肺水肿"],
+    answer: "C",
+    explanation: "语音震颤增强见于肺实变（大叶性肺炎、大片肺梗死）、肺内空洞及胸腔积液上方，因传导增强；COPD、哮喘、肺不张、肺水肿、胸腔积液、气胸均使语音震颤减弱。",
+    source: "教材P20"
+  },
+  {
+    qid: "DEMO-A2-001", type: "A2", system: "呼吸系统", bloom: "应用",
+    stem: "COPD患者，突发左侧胸痛、呼吸困难加重，查体：左肺叩诊鼓音，呼吸音明显减弱或消失。该患者最可能的并发症是？",
+    options: ["细菌性肺炎", "胸腔积液", "自发性气胸", "急性肺栓塞", "急性心肌梗死"],
+    answer: "C",
+    explanation: "COPD（肺大泡破裂）并发自发性气胸：突发胸痛、继之呼吸困难，患侧叩诊鼓音、语颤及呼吸音减弱或消失，纵隔可向健侧移位，首选X线确诊。",
+    source: "教材P9"
+  },
+  {
+    qid: "DEMO-X-001", type: "X", system: "消化系统", bloom: "分析",
+    stem: "下列关于消化性溃疡并发症的叙述，正确的有？",
+    options: ["出血最常见", "幽门梗阻多见于十二指肠溃疡", "穿孔多见于胃溃疡", "癌变率约1%"],
+    answer: "ABD",
+    explanation: "出血是消化性溃疡最常见并发症；幽门梗阻多见于十二指肠溃疡及幽门管溃疡；穿孔以十二指肠溃疡多见；胃溃疡癌变率约1%。C 表述相反。",
+    source: "教材P248"
+  }
+];
+</script>
+<!-- ==================== 模板逻辑（迁移时保持不变） ==================== -->
+<script>
+(function () {
+  var STORAGE_KEY = 'maw-theme';        // 与 index.html 共享主题记忆
+  var RECORD_KEY = 'maw-quiz-record-' + (PAPER_META.title || 'default');
+
+  // ---- 主题 ----
+  var html = document.documentElement;
+  function applyTheme(t) {
+    html.setAttribute('data-theme', t);
+    document.getElementById('theme-toggle').textContent = t === 'dark' ? '☀️' : '🌙';
+    try { localStorage.setItem(STORAGE_KEY, t); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  applyTheme(saved === 'dark' ? 'dark' : 'light');
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  // ---- 作答记录 ----
+  var records = {};
+  try { records = JSON.parse(localStorage.getItem(RECORD_KEY) || '{}'); } catch (e) { records = {}; }
+  function saveRecords() {
+    try { localStorage.setItem(RECORD_KEY, JSON.stringify(records)); } catch (e) {}
+  }
+
+  // ---- 状态 ----
+  var state = { filterSystem: null, wrongOnly: false };
+
+  // ---- 渲染 ----
+  var quizEl = document.getElementById('quiz');
+  function visibleQuestions() {
+    return QUESTIONS.filter(function (q) {
+      if (state.wrongOnly) {
+        var r = records[q.qid];
+        return r && !r.correct;
+      }
+      if (state.filterSystem && q.system && q.system !== state.filterSystem) return false;
+      return true;
+    });
+  }
+  function render() {
+    var list = visibleQuestions();
+    quizEl.innerHTML = '';
+    list.forEach(function (q, i) {
+      quizEl.appendChild(buildCard(q, i + 1));
+    });
+    updateScore();
+  }
+  function buildCard(q, n) {
+    var rec = records[q.qid] || null;
+    var card = document.createElement('div');
+    card.className = 'question';
+    card.dataset.qid = q.qid;
+
+    var meta = document.createElement('div');
+    meta.className = 'q-meta';
+    var verdict = '';
+    if (rec) {
+      card.classList.add(rec.correct ? 'is-correct' : 'is-wrong');
+      verdict = '<span class="q-verdict ' + (rec.correct ? 'ok' : 'no') + '">' +
+        (rec.correct ? '✓ 已答对' : '✗ 答错') + '</span>';
+    }
+    meta.innerHTML =
+      '<span class="q-num">第 ' + n + ' 题</span>' +
+      '<span class="q-type">' + q.type + (q.type === 'X' ? ' ·多选' : '') + '</span>' +
+      (q.bloom ? '<span class="q-bloom">' + q.bloom + '</span>' : '') + verdict;
+    card.appendChild(meta);
+
+    var stem = document.createElement('div');
+    stem.className = 'q-stem';
+    stem.innerHTML = q.stem;
+    card.appendChild(stem);
+
+    var multi = q.type === 'X';
+    var multiPicks = [];
+    q.options.forEach(function (opt, idx) {
+      var letter = String.fromCharCode(65 + idx);
+      var el = document.createElement('div');
+      el.className = 'option';
+      el.innerHTML = '<span class="opt-label">' + letter + '.</span><span>' + opt + '</span><span class="opt-mark"></span>';
+      // 恢复已答状态
+      if (rec) {
+        var pickedNow = multi ? rec.picked.indexOf(letter) >= 0 : rec.picked === letter;
+        var isAnswer = q.answer.indexOf(letter) >= 0;
+        if (pickedNow) el.classList.add(multi && !isAnswer ? 'wrong-pick' : 'picked');
+        if (isAnswer) { el.classList.add('correct-show'); el.querySelector('.opt-mark').textContent = '✓'; }
+        if (pickedNow && !isAnswer) el.querySelector('.opt-mark').textContent = '✗';
+      } else {
+        el.addEventListener('click', (function (letter) {
+          return function () { handlePick(q, card, letter, el, multi, multiPicks); };
+        })(letter));
+      }
+      card.appendChild(el);
+    });
+
+    // 解析面板
+    var box = document.createElement('div');
+    box.className = 'answer-box';
+    if (rec) {
+      box.classList.add(rec.correct ? 'ok' : 'no');
+      box.classList.add('show');
+    }
+    box.innerHTML =
+      '<div class="ans-head">' + (rec ? (rec.correct ? '✓ 回答正确' : '✗ 回答错误') : '') + '　正确答案：' + q.answer + '</div>' +
+      '<div class="exp">' + q.explanation + '</div>' +
+      (q.source ? '<div class="src">来源：' + q.source + '　用时：' + ((rec && rec.seconds) || '-') + 's</div>' : '');
+    card.appendChild(box);
+
+    // X 型多选确认按钮（2026-08-21 补全：已选≥1 显示，点击判分）
+    if (multi) {
+      var bar = document.createElement('div');
+      bar.className = 'multi-confirm';
+      var cbtn = document.createElement('button');
+      cbtn.className = 'btn-confirm';
+      cbtn.textContent = '确认作答';
+      cbtn.disabled = true;
+      cbtn.addEventListener('click', function () { judgeMulti(q, card, multiPicks); });
+      bar.appendChild(cbtn);
+      var hint = document.createElement('span');
+      hint.className = 'q-bloom';
+      hint.textContent = '已选 0 项';
+      bar.appendChild(hint);
+      bar.style.display = 'none';
+      card.appendChild(bar);
+    }
+    return card;
+  }
+
+  var startTime = Date.now();
+  function handlePick(q, card, letter, el, multi, multiPicks) {
+    if (multi) {
+      var pos = multiPicks.indexOf(letter);
+      if (pos >= 0) { multiPicks.splice(pos, 1); el.classList.remove('picked'); }
+      else { multiPicks.push(letter); el.classList.add('picked'); }
+      // 更新确认按钮状态
+      var bar = card.querySelector('.multi-confirm');
+      if (bar) {
+        bar.style.display = 'block';
+        bar.querySelector('.btn-confirm').disabled = multiPicks.length === 0;
+        bar.querySelector('span').textContent = '已选 ' + multiPicks.length + ' 项';
+      }
+      return;
+    }
+    // 单选：立即判分
+    var correct = q.answer === letter;
+    var seconds = Math.round((Date.now() - startTime) / 1000);
+    startTime = Date.now();
+    records[q.qid] = {
+      qid: q.qid, picked: letter, correct: correct,
+      seconds: seconds, ts: new Date().toISOString()
+    };
+    saveRecords();
+    render(); // 重渲染以显示三通道反馈 + 解析
+  }
+
+  // X 型多选判分（2026-08-21 补全）：所选集合与答案字母集合一致即对（顺序无关）
+  function judgeMulti(q, card, multiPicks) {
+    if (multiPicks.length === 0) return;
+    var picked = multiPicks.slice().sort().join('');
+    var ans = (q.answer || '').split('').sort().join('');
+    var correct = picked === ans;
+    var seconds = Math.round((Date.now() - startTime) / 1000);
+    startTime = Date.now();
+    records[q.qid] = {
+      qid: q.qid, picked: picked, correct: correct,
+      seconds: seconds, ts: new Date().toISOString()
+    };
+    saveRecords();
+    render();
+  }
+
+  // 多选确认：X 型题点击第3个选项后自动判分（简化约定，迁移时可改为确认按钮）
+  var _origHandlePick = handlePick;
+
+  // ---- 计分 ----
+  function updateScore() {
+    var answered = 0, right = 0;
+    QUESTIONS.forEach(function (q) {
+      var r = records[q.qid];
+      if (r) { answered++; if (r.correct) right++; }
+    });
+    var rate = answered ? Math.round(right * 100 / answered) + '%' : '--';
+    document.getElementById('score').textContent =
+      '已答 ' + answered + '/' + QUESTIONS.length + ' · 正确 ' + right + ' · 正确率 ' + rate;
+    document.getElementById('progress-fill').style.width =
+      (answered * 100 / Math.max(QUESTIONS.length, 1)) + '%';
+  }
+
+  // ---- 系统筛选标签（可选功能） ----
+  var systems = [];
+  QUESTIONS.forEach(function (q) { if (q.system && systems.indexOf(q.system) < 0) systems.push(q.system); });
+  if (systems.length > 1) {
+    var tagBox = document.getElementById('system-tags');
+    tagBox.classList.add('show');
+    systems.forEach(function (s) {
+      var b = document.createElement('button');
+      b.className = 'system-tag';
+      b.textContent = s;
+      b.addEventListener('click', function () {
+        state.filterSystem = (state.filterSystem === s) ? null : s;
+        state.wrongOnly = false;
+        render();
+        document.querySelectorAll('.system-tag').forEach(function (t) {
+          t.classList.toggle('active', t.textContent === state.filterSystem);
+        });
+      });
+      tagBox.appendChild(b);
+    });
+  }
+
+  // ---- 工具栏 ----
+  document.getElementById('btn-wrong').addEventListener('click', function () {
+    state.wrongOnly = !state.wrongOnly;
+    this.classList.toggle('active', state.wrongOnly);
+    render();
+  });
+  document.getElementById('btn-all').addEventListener('click', function () {
+    state.wrongOnly = false; state.filterSystem = null;
+    document.getElementById('btn-wrong').classList.remove('active');
+    document.querySelectorAll('.system-tag').forEach(function (t) { t.classList.remove('active'); });
+    render();
+  });
+  document.getElementById('btn-reset').addEventListener('click', function () {
+    if (!confirm('确认清空本卷作答记录？')) return;
+    records = {};
+    saveRecords();
+    render();
+  });
+  document.getElementById('btn-export').addEventListener('click', function () {
+    var payload = {
+      paper: PAPER_META.title,
+      exported_at: new Date().toISOString(),
+      stats: (function () {
+        var a = 0, r = 0;
+        Object.keys(records).forEach(function (k) { a++; if (records[k].correct) r++; });
+        return { answered: a, correct: r };
+      })(),
+      records: records
+    };
+    var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (PAPER_META.title || 'quiz') + '_作答记录.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  // ---- 标题 ----
+  document.getElementById('paper-title').textContent = PAPER_META.title;
+  document.getElementById('paper-sub').textContent = PAPER_META.sub;
+
+  render();
+})();
+</script>
+</body>
+</html>

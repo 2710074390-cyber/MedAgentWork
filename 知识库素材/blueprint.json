@@ -1,0 +1,1091 @@
+{
+  "version": "prelim-v1-e1b",
+  "generated_at": "2026-08-21T18:25:33",
+  "method": "regex cross-references from GS lower explanations + heyincheng-zt2 chunks; E-1b (2026-08-21): top_referenced chapter attribution via subject-aware keyword taxonomy (zero-embedding prelim, keyword-only, not semantic)",
+  "stats": {
+    "gs_lower_entries": 4448,
+    "gs_lower_entries_with_refs": 501,
+    "gs_lower_refs": 621,
+    "heyincheng_chunks": 3503,
+    "heyincheng_refs": 562,
+    "total_refs": 1183,
+    "unique_referenced_questions": 487,
+    "upper_index_size": 5168,
+    "top100_stem_match": 98,
+    "top100_chapter_attributed": 61
+  },
+  "by_subject": {
+    "生理学": {
+      "entries": 1177,
+      "refs": 177,
+      "refs_per_100_entries": 15.0
+    },
+    "生物化学": {
+      "entries": 902,
+      "refs": 171,
+      "refs_per_100_entries": 19.0
+    },
+    "病理学": {
+      "entries": 958,
+      "refs": 114,
+      "refs_per_100_entries": 11.9
+    },
+    "未分类": {
+      "entries": 351,
+      "refs": 79,
+      "refs_per_100_entries": 22.5
+    },
+    "内科学": {
+      "entries": 360,
+      "refs": 28,
+      "refs_per_100_entries": 7.8
+    },
+    "外科学": {
+      "entries": 287,
+      "refs": 23,
+      "refs_per_100_entries": 8.0
+    },
+    "诊断学": {
+      "entries": 214,
+      "refs": 17,
+      "refs_per_100_entries": 7.9
+    },
+    "医学遗传学": {
+      "entries": 150,
+      "refs": 9,
+      "refs_per_100_entries": 6.0
+    },
+    "医学心理学": {
+      "entries": 16,
+      "refs": 2,
+      "refs_per_100_entries": 12.5
+    },
+    "药理学": {
+      "entries": 16,
+      "refs": 1,
+      "refs_per_100_entries": 6.2
+    },
+    "医学伦理学": {
+      "entries": 17,
+      "refs": 0,
+      "refs_per_100_entries": 0.0
+    }
+  },
+  "by_subject_chapters": {
+    "生物化学": {
+      "酶": 49,
+      "核酸": 50,
+      "脂代谢": 8,
+      "未分类章节": 23,
+      "蛋白质": 22,
+      "血液生化": 4,
+      "肝胆生化": 3
+    },
+    "生理学": {
+      "泌尿": 18,
+      "未分类章节": 51,
+      "循环": 26,
+      "消化": 5,
+      "内分泌": 8,
+      "感觉器官": 4,
+      "细胞": 7,
+      "神经": 4,
+      "呼吸": 4
+    },
+    "病理学": {
+      "循环障碍": 15,
+      "肿瘤": 20,
+      "呼吸系统": 14,
+      "未分类章节": 7,
+      "炎症": 4,
+      "传染病": 4,
+      "心血管": 3,
+      "消化系统": 3
+    },
+    "内科学": {
+      "血液": 15
+    },
+    "外科学": {
+      "未分类章节": 14,
+      "颈部": 3
+    },
+    "未分类": {
+      "未分类章节": 50
+    },
+    "诊断学": {
+      "未分类章节": 11
+    }
+  },
+  "by_target_vintage": {
+    "1990": 2,
+    "1991": 11,
+    "1992": 5,
+    "1993": 4,
+    "1994": 20,
+    "1995": 31,
+    "1996": 40,
+    "1997": 22,
+    "1998": 49,
+    "1999": 50,
+    "2000": 57,
+    "2001": 80,
+    "2002": 63,
+    "2003": 121,
+    "2004": 74,
+    "2005": 74,
+    "2006": 38,
+    "2007": 36,
+    "2008": 46,
+    "2009": 33,
+    "2010": 24,
+    "2011": 10,
+    "2012": 21,
+    "2013": 39,
+    "2014": 48,
+    "2015": 35,
+    "2016": 32,
+    "2017": 25,
+    "2018": 30,
+    "2019": 16,
+    "2020": 11,
+    "2021": 18,
+    "2022": 11,
+    "2023": 7
+  },
+  "refs_by_referring_year": {
+    "1994": 14,
+    "1995": 33,
+    "1996": 25,
+    "1997": 24,
+    "1998": 21,
+    "1999": 17,
+    "2000": 24,
+    "2001": 19,
+    "2002": 21,
+    "2003": 8,
+    "2004": 19,
+    "2005": 9,
+    "2006": 14,
+    "2007": 15,
+    "2008": 28,
+    "2009": 40,
+    "2010": 10,
+    "2011": 24,
+    "2012": 6,
+    "2013": 3,
+    "2014": 2,
+    "2015": 9,
+    "2016": 40,
+    "2017": 1,
+    "2018": 2,
+    "2019": 31,
+    "2020": 30,
+    "2021": 18,
+    "2022": 26,
+    "2023": 36,
+    "2024": 35,
+    "2025": 17
+  },
+  "top_referenced": [
+    {
+      "year": 2014,
+      "qno": 39,
+      "refs": 22,
+      "stem": "在经典的信号转导途径中, 受 G 蛋白激活直接影响的酶是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "酶"
+    },
+    {
+      "year": 2006,
+      "qno": 133,
+      "refs": 11,
+      "stem": "嘌呤碱的合成原料有",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 2003,
+      "qno": 12,
+      "refs": 11,
+      "stem": "大量饮清水后,尿量增多的主要原因是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "泌尿"
+    },
+    {
+      "year": 2005,
+      "qno": 41,
+      "refs": 11,
+      "stem": "混合血栓的形态学特征是",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "循环障碍"
+    },
+    {
+      "year": 1998,
+      "qno": 26,
+      "refs": 8,
+      "stem": "线粒体外 NADH 经 $\\alpha$ -磷酸甘油穿梭作用进入线粒体内完成氧化磷酸化, 其 P/O 比值为",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "脂代谢"
+    },
+    {
+      "year": 2000,
+      "qno": 25,
+      "refs": 7,
+      "stem": "乙酰 CoA 羧化酶的别构抑制剂是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "酶"
+    },
+    {
+      "year": 2001,
+      "qno": 146,
+      "refs": 7,
+      "stem": "重组 DNA 技术中, 常用到的酶是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 2017,
+      "qno": 148,
+      "refs": 6,
+      "stem": "下列肿瘤的发生与 EBV 相关的有",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "肿瘤"
+    },
+    {
+      "year": 2002,
+      "qno": 9,
+      "refs": 6,
+      "stem": "下列哪一种情况下氧解离曲线发生右移?",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": null
+    },
+    {
+      "year": 2001,
+      "qno": 57,
+      "refs": 6,
+      "stem": "某糖尿病患者,男性,68岁,突发高热、寒战、右胸痛,次日咯痰,为黄脓性带血丝,量多,X线显示右下肺叶实变,其中有多个液气囊腔,最可能的诊断是",
+      "stem_in_upper": true,
+      "subject": "内科学",
+      "chapter": "血液"
+    },
+    {
+      "year": 2006,
+      "qno": 41,
+      "refs": 6,
+      "stem": "下列肿瘤中,属于良性肿瘤的是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 2016,
+      "qno": 157,
+      "refs": 6,
+      "stem": "下列核酸中, 具降解 mRNA 功能的有",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 2001,
+      "qno": 23,
+      "refs": 6,
+      "stem": "非竞争性抑制剂存在时,酶促反应动力学的特点是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "酶"
+    },
+    {
+      "year": 1997,
+      "qno": 145,
+      "refs": 6,
+      "stem": "蛋白质变性时",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "蛋白质"
+    },
+    {
+      "year": 1995,
+      "qno": 139,
+      "refs": 6,
+      "stem": "酶变性时的表现",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "酶"
+    },
+    {
+      "year": 2002,
+      "qno": 5,
+      "refs": 6,
+      "stem": "心肌细胞不会发生完全强直收缩的原因是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "循环"
+    },
+    {
+      "year": 1996,
+      "qno": 6,
+      "refs": 6,
+      "stem": "心肌不会产生强直收缩的原因是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "循环"
+    },
+    {
+      "year": 2005,
+      "qno": 43,
+      "refs": 5,
+      "stem": "肿瘤分期是指",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "肿瘤"
+    },
+    {
+      "year": 1996,
+      "qno": 37,
+      "refs": 5,
+      "stem": "下列描述中,哪种属于完全再生?",
+      "stem_in_upper": true,
+      "subject": "外科学",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 35,
+      "refs": 5,
+      "stem": "前臂断肢再植手术成功后,下列哪种愈合属于完全再生?",
+      "stem_in_upper": true,
+      "subject": "外科学",
+      "chapter": null
+    },
+    {
+      "year": 2014,
+      "qno": 72,
+      "refs": 5,
+      "stem": "男性,18岁。2天来右膝关节肿胀。自幼外伤后易出血不止。查体:皮肤黏膜未见出血点和紫癜,右膝关节肿胀,局部有压痛。化验示APTT延长,PT正常。该患者出血最可能的原因是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": null
+    },
+    {
+      "year": 2001,
+      "qno": 9,
+      "refs": 5,
+      "stem": "心率减慢(其他影响血压的因素不变)时,将增加的是",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 11,
+      "refs": 5,
+      "stem": "肾重吸收葡萄糖的部位是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "消化"
+    },
+    {
+      "year": 2003,
+      "qno": 15,
+      "refs": 5,
+      "stem": "交感神经兴奋可使",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 2004,
+      "qno": 13,
+      "refs": 5,
+      "stem": "下列关于视杆细胞的叙述, 错误的是",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 1999,
+      "qno": 31,
+      "refs": 5,
+      "stem": "氯霉素可抑制原核生物的蛋白质合成,其原因是",
+      "stem_in_upper": true,
+      "subject": "诊断学",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 2,
+      "refs": 5,
+      "stem": "下列关于 $\\mathrm{Na}^{+}-\\mathrm{K}^{+}$ 泵的描述, 错误的是",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 1991,
+      "qno": 114,
+      "refs": 5,
+      "stem": null,
+      "stem_in_upper": false,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2000,
+      "qno": 70,
+      "refs": 5,
+      "stem": "下列哪一项检查最有助于鉴别垂体性 Cushing 病和异位 ACTH 综合征?",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "内分泌"
+    },
+    {
+      "year": 2000,
+      "qno": 73,
+      "refs": 5,
+      "stem": "缺铁性贫血病人的下列哪一项检查结果不正确？",
+      "stem_in_upper": true,
+      "subject": "内科学",
+      "chapter": "血液"
+    },
+    {
+      "year": 1995,
+      "qno": 27,
+      "refs": 4,
+      "stem": "正常情况下,下列哪一种感受器最容易适应?",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "感觉器官"
+    },
+    {
+      "year": 2003,
+      "qno": 5,
+      "refs": 4,
+      "stem": "决定微循环营养通路周期性开闭的主要因素是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "循环"
+    },
+    {
+      "year": 2007,
+      "qno": 9,
+      "refs": 4,
+      "stem": "下列因素中,能引起氧解离曲线右移的是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": null
+    },
+    {
+      "year": 2012,
+      "qno": 42,
+      "refs": 4,
+      "stem": "虎斑心的组织学改变是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 1995,
+      "qno": 3,
+      "refs": 4,
+      "stem": "合成胆固醇的限速酶是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "酶"
+    },
+    {
+      "year": 2008,
+      "qno": 153,
+      "refs": 4,
+      "stem": "可使静脉回流加速的因素有",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 2016,
+      "qno": 46,
+      "refs": 4,
+      "stem": "下列肿瘤中,属于良性肿瘤的是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 129,
+      "refs": 4,
+      "stem": "局部电位的特点是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "细胞"
+    },
+    {
+      "year": 2001,
+      "qno": 142,
+      "refs": 4,
+      "stem": "影响突触前膜递质释放量的因素有",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "神经"
+    },
+    {
+      "year": 2004,
+      "qno": 20,
+      "refs": 4,
+      "stem": "下列关于 DNA 双螺旋结构的叙述, 正确的是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 2000,
+      "qno": 30,
+      "refs": 4,
+      "stem": "AUC 为异亮氨酸的遗传密码, 在 tRNA $^{异}$ 中其相应的反密码应为",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 2004,
+      "qno": 136,
+      "refs": 4,
+      "stem": "一个 tRNA 上的反密码子为 IAC, 其可识别的密码子是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 2007,
+      "qno": 137,
+      "refs": 4,
+      "stem": "下列肿瘤中,属于良性肿瘤的有",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 2002,
+      "qno": 140,
+      "refs": 4,
+      "stem": "引起中心静脉压升高的原因有",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 1996,
+      "qno": 27,
+      "refs": 4,
+      "stem": "在体内不能直接由草酰乙酸转变而来的化合物是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": null
+    },
+    {
+      "year": 2014,
+      "qno": 67,
+      "refs": 4,
+      "stem": "肝硬化患者发生肝肾综合征时的特点是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "泌尿"
+    },
+    {
+      "year": 2000,
+      "qno": 90,
+      "refs": 4,
+      "stem": "腕管综合征是因为下列哪项在腕管内受压所致?",
+      "stem_in_upper": true,
+      "subject": "外科学",
+      "chapter": null
+    },
+    {
+      "year": 1999,
+      "qno": 21,
+      "refs": 4,
+      "stem": "下列几种 DNA 分子的碱基组成比例各不相同, 哪一种 DNA 的解链温度 $(T_{\\mathrm{m}})$ 最低?",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 2003,
+      "qno": 36,
+      "refs": 4,
+      "stem": "下列各项中,属于白色血栓的是",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "循环障碍"
+    },
+    {
+      "year": 2005,
+      "qno": 27,
+      "refs": 4,
+      "stem": "下列代谢物经相应特异脱氢酶催化脱下的 2H, 不能经过 NADH 呼吸链氧化的是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "呼吸"
+    },
+    {
+      "year": 2004,
+      "qno": 148,
+      "refs": 4,
+      "stem": "对维持与调节机体酸碱平衡起重要作用的脏器有",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 1998,
+      "qno": 1,
+      "refs": 4,
+      "stem": "维持机体稳态的重要调节过程是",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 142,
+      "refs": 4,
+      "stem": "下列哪些指标支持结核性胸膜炎胸腔积液的诊断?",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "呼吸系统"
+    },
+    {
+      "year": 2000,
+      "qno": 57,
+      "refs": 4,
+      "stem": "胸水检查为: 血性, 比重 1.020, 蛋白定量 39g/L, LDH 503U/L, 葡萄糖定量 2.4mmol/L, ADA 110U/L, 最可能的诊断为",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": null
+    },
+    {
+      "year": 2004,
+      "qno": 6,
+      "refs": 4,
+      "stem": "心肌细胞有效不应期特别长的生理意义是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "循环"
+    },
+    {
+      "year": 2001,
+      "qno": 11,
+      "refs": 4,
+      "stem": "与 $\\mathrm{CO}_{2}$ 比较, $\\mathrm{O}_{2}$ 在体内的扩散系数",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 54,
+      "refs": 4,
+      "stem": "女性,60岁,慢性咳喘18年,加重一周,血气分析结果如下:pH7.35, $PaO_{2}$ 55mmHg, $PaCO_{2}$ 74mmHg, AB 42mmol/L,血钾2.8mmol/L,血氯80mmol/L,考虑诊断为",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 2005,
+      "qno": 20,
+      "refs": 4,
+      "stem": "下列哪种激素是通过基因调节机制而发挥生物学效应?",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 2003,
+      "qno": 74,
+      "refs": 4,
+      "stem": "下列与 SLE 病情活动性无关的实验室检查是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 31,
+      "refs": 4,
+      "stem": "下列关于游离胆红素的叙述, 正确的是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "血液生化"
+    },
+    {
+      "year": 1998,
+      "qno": 59,
+      "refs": 4,
+      "stem": "男性,50岁。1天来寒战、高热(39.6℃),咳嗽伴左胸痛,咯痰呈砖红色胶冻状,量多。查体:轻度紫绀,BP80/50mmHg,左肺叩浊,呼吸音低。X线胸片提示左肺呈多发性蜂窝状阴影。最可能的诊断为",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "呼吸系统"
+    },
+    {
+      "year": 2003,
+      "qno": 37,
+      "refs": 4,
+      "stem": "具有趋化作用的炎症介质是",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "炎症"
+    },
+    {
+      "year": 2004,
+      "qno": 27,
+      "refs": 4,
+      "stem": "下列关于变构酶的叙述, 错误的是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "酶"
+    },
+    {
+      "year": 1996,
+      "qno": 109,
+      "refs": 4,
+      "stem": "缺铁性贫血",
+      "stem_in_upper": true,
+      "subject": "内科学",
+      "chapter": "血液"
+    },
+    {
+      "year": 2004,
+      "qno": 2,
+      "refs": 4,
+      "stem": "细胞膜内外正常 $\\mathrm{Na}^{+}$ 和 $\\mathrm{K}^{+}$ 浓度差的形成和维持是由于",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 140,
+      "refs": 4,
+      "stem": "急性血吸虫卵结节的病理变化有",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "传染病"
+    },
+    {
+      "year": 2003,
+      "qno": 19,
+      "refs": 4,
+      "stem": "稳定蛋白质分子中 $\\alpha$ -螺旋和 $\\beta$ -折叠的化学键是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "蛋白质"
+    },
+    {
+      "year": 2004,
+      "qno": 11,
+      "refs": 3,
+      "stem": "下列物质中,食物的特殊动力作用最强的是",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2002,
+      "qno": 16,
+      "refs": 3,
+      "stem": "帕金森病的产生是由于下列哪个递质系统受损所致?",
+      "stem_in_upper": true,
+      "subject": "诊断学",
+      "chapter": null
+    },
+    {
+      "year": 2015,
+      "qno": 153,
+      "refs": 3,
+      "stem": "下列微循环结构中, 主要受局部代谢产物调节的有",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "循环"
+    },
+    {
+      "year": 2008,
+      "qno": 7,
+      "refs": 3,
+      "stem": "在微循环中,主要受局部代谢产物调节的结构是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "循环"
+    },
+    {
+      "year": 2012,
+      "qno": 25,
+      "refs": 3,
+      "stem": "下列结构中,属于蛋白质模体结构的是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "蛋白质"
+    },
+    {
+      "year": 2021,
+      "qno": 17,
+      "refs": 3,
+      "stem": "“亮氨酸拉链”属于蛋白质的结构是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "蛋白质"
+    },
+    {
+      "year": 2015,
+      "qno": 50,
+      "refs": 3,
+      "stem": "早期动脉粥样硬化病变的主要细胞是",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "心血管"
+    },
+    {
+      "year": 2007,
+      "qno": 46,
+      "refs": 3,
+      "stem": "微小病变肾病的主要病理改变是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "泌尿"
+    },
+    {
+      "year": 2019,
+      "qno": 32,
+      "refs": 3,
+      "stem": "下列属于良性肿瘤的是",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "肿瘤"
+    },
+    {
+      "year": 2020,
+      "qno": 112,
+      "refs": 3,
+      "stem": "医疗中患者的健康信息属于保密范围,医生为患者保密是医生的义务,但不是绝对义务。据此,下列医生的做法能够得到伦理辩护的是",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2010,
+      "qno": 164,
+      "refs": 3,
+      "stem": "下列选项中,属于结核结节成分的有",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "呼吸系统"
+    },
+    {
+      "year": 2004,
+      "qno": 25,
+      "refs": 3,
+      "stem": "合成嘌呤、嘧啶的共同原料是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 1994,
+      "qno": 37,
+      "refs": 3,
+      "stem": "下述哪个病变是癌前病变?",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "肿瘤"
+    },
+    {
+      "year": 2010,
+      "qno": 5,
+      "refs": 3,
+      "stem": "肝硬化患者易发生凝血障碍和出血现象,其主要原因是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "肝胆生化"
+    },
+    {
+      "year": 2012,
+      "qno": 31,
+      "refs": 3,
+      "stem": "氨的运输所涉及的机制是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 1994,
+      "qno": 77,
+      "refs": 3,
+      "stem": "患儿, 8 岁, 胫骨中上段慢性骨髓炎, 一般情况好, 体温不高, 局部有流脓窦道, X 线片有 $4 \\mathrm{~cm}$ 长整段死骨, 周围有不连续包壳。当前的主要治疗是",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2007,
+      "qno": 138,
+      "refs": 3,
+      "stem": "慢性支气管炎的病理变化可有",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 16,
+      "refs": 3,
+      "stem": "影响神经系统发育最重要的激素是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "内分泌"
+    },
+    {
+      "year": 1997,
+      "qno": 4,
+      "refs": 3,
+      "stem": "减少溶液中的 $Na^{+}$ 浓度, 将使单根神经纤维动作电位的超射值",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": "细胞"
+    },
+    {
+      "year": 2018,
+      "qno": 141,
+      "refs": 3,
+      "stem": "易化肌紧张的中枢部位有",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2008,
+      "qno": 175,
+      "refs": 3,
+      "stem": "可用甲状腺素治疗的甲状腺疾病有",
+      "stem_in_upper": true,
+      "subject": "外科学",
+      "chapter": "颈部"
+    },
+    {
+      "year": 2005,
+      "qno": 13,
+      "refs": 3,
+      "stem": "发热开始前,先出现寒战的原因是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 2011,
+      "qno": 16,
+      "refs": 3,
+      "stem": "视网膜中央凹对光的感受分辨率高,其主要原因是",
+      "stem_in_upper": true,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 2009,
+      "qno": 50,
+      "refs": 3,
+      "stem": "急性普通型肝炎的典型病变是",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "消化系统"
+    },
+    {
+      "year": 2004,
+      "qno": 61,
+      "refs": 3,
+      "stem": "诊断反流性食管炎最准确的方法是",
+      "stem_in_upper": true,
+      "subject": "诊断学",
+      "chapter": null
+    },
+    {
+      "year": 2003,
+      "qno": 115,
+      "refs": 3,
+      "stem": "经代谢转变能提供一碳单位的氨基酸是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "蛋白质"
+    },
+    {
+      "year": 2013,
+      "qno": 18,
+      "refs": 3,
+      "stem": "传导慢痛的外周神经纤维是",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2004,
+      "qno": 133,
+      "refs": 3,
+      "stem": "下列哪些化合物属于高能磷酸化合物？",
+      "stem_in_upper": true,
+      "subject": "未分类",
+      "chapter": null
+    },
+    {
+      "year": 2010,
+      "qno": 166,
+      "refs": 3,
+      "stem": "下列乳腺癌中,属于非浸润性癌的有",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "肿瘤"
+    },
+    {
+      "year": 2008,
+      "qno": 17,
+      "refs": 3,
+      "stem": null,
+      "stem_in_upper": false,
+      "subject": "生理学",
+      "chapter": null
+    },
+    {
+      "year": 2001,
+      "qno": 97,
+      "refs": 3,
+      "stem": "对真核及原核生物的蛋白质合成都有抑制作用的是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "蛋白质"
+    },
+    {
+      "year": 2002,
+      "qno": 30,
+      "refs": 3,
+      "stem": "在基因工程中, 将目的基因与载体 DNA 拼接的酶是",
+      "stem_in_upper": true,
+      "subject": "生物化学",
+      "chapter": "核酸"
+    },
+    {
+      "year": 2005,
+      "qno": 140,
+      "refs": 3,
+      "stem": "局灶型肺结核的特点有",
+      "stem_in_upper": true,
+      "subject": "病理学",
+      "chapter": "呼吸系统"
+    }
+  ]
+}

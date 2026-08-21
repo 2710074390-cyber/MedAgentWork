@@ -347,6 +347,40 @@ runbook:
     P2_INFO: [root-pollution]                            # 不影响功能
 
 # ═══════════════════════════════════════════════════════════
+# 组卷公式 (Paper Assembly) — 2026-08-21 · v1.1 已接入管线（DSH 待办 #6 完成）
+# 实现: scripts/paper_builder.py（--dry-run 预览）
+# 组卷权重 = 考频权重(blueprint) × 难度配平(calibrated_p) × NFD 过滤
+# v1.1 接线（《交接终审报告_20260821.md》§四 #6）：
+#   - 难度主源 = question_bank/calibrated_difficulty.expanded.jsonl（按 qid 覆盖 registry）
+#   - MedQC 复检处置（reports/conflict_recheck_20260821.json）接入：
+#       anchor_prior_conflict 题 KEEP_PRIOR→入卷按先验 / KEEP_ANCHOR→入卷按融合 /
+#       FLAG_MEDFIX/UNCERTAIN/无处置→排除（当前 2 题 Wallenberg 定位题被排除，待 MedFix）
+#   - 卷面 P 目标带 [0.55, 0.65]；CMExam 源偏易（avg_p≈0.68）→ 配平向 hard 侧偏移
+# 运行示例:
+#   python scripts/paper_builder.py --all --count 60 --dry-run
+#   python scripts/paper_builder.py --subject 内科学 --count 100
+# ═══════════════════════════════════════════════════════════
+
+paper_assembly:
+  script: "scripts/paper_builder.py"
+  version: "v1.1 (2026-08-21)"
+  formula: "考频权重(blueprint.by_subject.refs 归一化 + top_referenced 高频真题命中 ×1.5) × 置信度权重(high 1.0/medium 0.7/low 0.4) × NFD 过滤"
+  difficulty_source: "question_bank/calibrated_difficulty.expanded.jsonl（按 qid 覆盖 registry 校准五字段 + anchor_source）"
+  hard_filters:
+    - "NFD≥2（源 JSON non_functioning_distractors）不入卷"
+    - "calibration_flag=anchor_prior_conflict 且 MedQC 处置非 KEEP_*（FLAG_MEDFIX/UNCERTAIN/无记录）不入正式卷"
+  medqc_recheck: "reports/conflict_recheck_20260821.json — KEEP_PRIOR→p=prior_p；KEEP_ANCHOR→p=expanded 融合值"
+  targets:
+    paper_p: [0.55, 0.65]        # 卷面 P = mean(calibrated_p)，目标区间
+    hard_bias: "CMExam 源偏易 0.02-0.03 → 难度配平向 hard 侧偏移（替换时优先换入低 p 题）"
+    high_freq_min_ratio: 0.6     # 高考频章节/考点题量 ≥60%（章节级待 E-1b 后按章节执行）
+    low_freq_min_ratio: 0.2      # 20% 低频防裸奔
+    answer_balance: "A/B/C/D 贪心纠偏，目标均匀 ≤25%±5%"
+  type_weights: {A1: 0.40, A2: 0.25, A3: 0.15, B1: 0.10, X: 0.10}
+  output: "最终产物/押题卷_{subject}_{N}题.json（兼容 scripts/quiz_template.html QUESTIONS 数组）"
+  report: "reports/paper/paper_{subject}_{N}_{ts}.json"
+
+# ═══════════════════════════════════════════════════════════
 # 可观测性 (Observability)
 # ═══════════════════════════════════════════════════════════
 
