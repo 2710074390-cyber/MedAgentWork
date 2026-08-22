@@ -585,6 +585,30 @@ body {
 .md pre { background:#101216; border:1px solid var(--border); padding:16px 20px; border-radius:10px; overflow-x:auto; margin:1em 0; }
 .md pre code { background:none; color:rgba(255,255,255,0.85); padding:0; }
 .md blockquote { border-left:2px solid var(--brand); padding-left:1em; margin:1em 0; color:var(--text-2); }
+/* Obsidian Callout（MedReview 产物格式契约 · 2026-08-22 站点适配） */
+.md .callout { margin:1em 0; padding:14px 16px; border-radius:10px; border:1px solid var(--border); border-left-width:3px; background:var(--glass); }
+.md .callout-title { font-weight:600; color:var(--text); margin-bottom:6px; font-size:14.5px; }
+.md .callout-body { color:var(--text-2); }
+.md .callout-body p { margin:.4em 0; }
+.md .callout-body li { margin:.2em 0; }
+.md .callout-warning { border-left-color:#febc2e; background:rgba(254,188,46,0.07); }
+.md .callout-warning .callout-title { color:#febc2e; }
+.md .callout-tip { border-left-color:#a78bfa; background:rgba(167,139,250,0.07); }
+.md .callout-tip .callout-title { color:#a78bfa; }
+.md .callout-info { border-left-color:var(--brand); background:rgba(103,153,254,0.07); }
+.md .callout-info .callout-title { color:var(--brand); }
+.md .callout-success { border-left-color:var(--ok); background:rgba(40,200,64,0.07); }
+.md .callout-success .callout-title { color:var(--ok); }
+.md .callout-note { border-left-color:rgba(255,255,255,0.35); background:rgba(255,255,255,0.04); }
+.md .callout-note .callout-title { color:var(--text); }
+/* <details> 折叠区（默认展开，可收起） */
+.md details { margin:1em 0; border:1px solid var(--border); border-radius:10px; background:rgba(255,255,255,0.03); overflow:hidden; }
+.md details > summary { cursor:pointer; padding:10px 16px; font-weight:600; color:var(--text); list-style:none; user-select:none; }
+.md details > summary::-webkit-details-marker { display:none; }
+.md details > summary::before { content:"▾"; display:inline-block; margin-right:8px; color:var(--brand); transition:transform .2s; }
+.md details:not([open]) > summary::before { transform:rotate(-90deg); }
+.md details > *:not(summary) { margin:0 16px 12px; }
+.md ol { list-style:decimal; }
 .md table { border-collapse:collapse; width:100%; margin:1em 0; font-size:13.5px; }
 .md th,.md td { border:1px solid var(--border); padding:8px 12px; text-align:left; }
 .md th { background:rgba(255,255,255,0.05); font-weight:600; color:var(--text); }
@@ -1220,10 +1244,46 @@ function printHTML(path){
   const ck=setInterval(()=>{try{if(w.document.readyState==='complete'){clearInterval(ck);setTimeout(()=>{w.focus();w.print();},300);}}catch(e){clearInterval(ck);}},200);
 }
 
+const CALLOUT_MAP={WARNING:'warning',TIP:'tip',INFO:'info',SUCCESS:'success',NOTE:'note'};
+function mdEscape(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+/* 原始文本 → 转义 + 行内标记（summary 等未经转义的输入） */
+function mdInlineEscapeSafe(s){return mdEscape(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>');}
+/* 已转义文本 → 仅行内标记（不重复转义） */
+function mdInlineSafe(s){return String(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>');}
+/* 折叠区内部：文本已转义，做行内 + 列表（- 行包 ul；其余按行 <p>/<br>） */
+function mdBodySafe(escaped){
+  const lines=String(escaped).split('\n');
+  const out=[];
+  let inUl=false;
+  function closeUl(){if(inUl){out.push('</ul>');inUl=false;}}
+  for(const line of lines){
+    const t=line.trim();
+    if(!t){closeUl();continue;}
+    const m=t.match(/^[-*+]\s+(.*)$/);
+    if(m){if(!inUl){out.push('<ul>');inUl=true;}out.push('<li>'+mdInlineSafe(m[1])+'</li>');continue;}
+    closeUl();
+    out.push('<p>'+mdInlineSafe(t)+'</p>');
+  }
+  closeUl();
+  return out.join('');
+}
 function mdToHtml(md){
-  let h=md.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  /* 0) 统一换行符（CRLF → LF；否则 $ 断言被 \r 挡住，callout/标题/列表识别失败） */
+  md=String(md||'').replace(/\r\n?/g,'\n');
+  /* 1) 保护 <details> 折叠区（原始文本暂存，最后还原为可信 HTML） */
+  const details=[];
+  md=String(md||'').replace(/<details([^>]*)>([\s\S]*?)<\/details>/g,(m,attr,inner)=>{
+    const open=/\bopen\b/i.test(attr)?' open':'';
+    let summary='';
+    inner=inner.replace(/<summary>([\s\S]*?)<\/summary>/i,(m2,s)=>{summary=s.trim();return '';});
+    const idx=details.length;
+    details.push({open,summary,body:inner});
+    return '\u0001D'+idx+'\u0002';
+  });
+  /* 2) 其余内容统一转义，杜绝注入 */
+  let h=mdEscape(md);
   h=h.replace(/```([\s\S]*?)```/g,(m,c)=>'<pre><code>'+c.replace(/^\n/,'')+'</code></pre>');
-  h=h.replace(/(^\|.+\|\s*\n)(^\|[\s:|-]+\|\s*\n)((?:^\|.+\|\s*\n)+)/gm,(m,hdr,sep,body)=>{
+  h=h.replace(/(^\|.+\|[ \t]*\n)(^\|[\s:|-]+\|[ \t]*\n)((?:^\|.+\|[ \t]*\n)+)/gm,(m,hdr,sep,body)=>{
     const heads=hdr.split('|').map(s=>s.trim()).filter(Boolean);
     const rows=body.trim().split('\n').map(r=>r.split('|').map(s=>s.trim()).filter(Boolean));
     let t='<table><thead><tr>'+heads.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>';
@@ -1233,13 +1293,41 @@ function mdToHtml(md){
   h=h.replace(/^######\s+(.*)$/gm,'<h6>$1</h6>').replace(/^#####\s+(.*)$/gm,'<h5>$1</h5>')
      .replace(/^####\s+(.*)$/gm,'<h4>$1</h4>').replace(/^###\s+(.*)$/gm,'<h3>$1</h3>')
      .replace(/^##\s+(.*)$/gm,'<h2>$1</h2>').replace(/^#\s+(.*)$/gm,'<h1>$1</h1>');
-  h=h.replace(/^&gt;\s?(.*)$/gm,'<blockquote>$1</blockquote>');
+  /* 3) 行内标记（在列表/段落处理之前） */
   h=h.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>');
+  /* 4) 列表：有序 → <ol>（打包前标记），无序 → <ul>；列表块不再被 <p> 干扰 */
+  h=h.replace(/^-{3,}$/gm,'<hr>');
   h=h.replace(/^[-*+]\s+(.*)$/gm,'<li>$1</li>');
-  h=h.replace(/(<li>[\s\S]*?<\/li>)/g,m=>'<ul>'+m+'</ul>').replace(/<\/ul>\s*<ul>/g,'');
-  h=h.replace(/^\d+\.\s+(.*)$/gm,'<li>$1</li>');
-  h=h.replace(/^---+$/gm,'<hr>');
-  h=h.split(/\n\n+/).map(p=>{const t=p.trim();if(!t)return'';if(/^<(h\d|ul|ol|pre|table|blockquote|hr)/.test(t))return t;return '<p>'+t.replace(/\n/g,'<br>')+'</p>';}).join('\n');
+  h=h.replace(/^\d+\.\s+(.*)$/gm,'<li class="ol-item">$1</li>');
+  h=h.replace(/(<li class="ol-item">[\s\S]*?<\/li>)+/g,m=>'<ol>'+m+'</ol>').replace(/<\/ol>\s*<ol>/g,'');
+  h=h.replace(/<li class="ol-item">/g,'<li>');
+  h=h.replace(/(<li>[\s\S]*?<\/li>)+/g,m=>'<ul>'+m+'</ul>').replace(/<\/ul>\s*<ul>/g,'');
+  /* 5) Callout + 普通引用（在列表打包之后处理，避免 callout 内 ul 被二次包裹；连续 '>' 行整体处理） */
+  h=h.replace(/(^&gt;[^\n]*\n?)+/gm,(m)=>{
+    const lines=m.split('\n').filter(l=>l.length);
+    const first=lines[0]||'';
+    const mm=first.match(/^&gt;\s*\[!([A-Za-z]+)\](?:\s+(.*))?$/);
+    if(!mm) return lines.map(l=>'<blockquote>'+mdInlineSafe(l.replace(/^&gt;\s?/,''))+'</blockquote>').join('\n');
+    const typeKey=mm[1].toUpperCase();
+    const type=typeKey in CALLOUT_MAP?CALLOUT_MAP[typeKey]:'note';
+    const title=(mm[2]||'').trim()||typeKey;
+    const body=lines.slice(1).map(l=>l.replace(/^&gt;\s?/,'')).join('\n');
+    return '<div class="callout callout-'+type+'"><div class="callout-title">'+mdInlineSafe(title)+'</div><div class="callout-body">'+mdBodySafe(body)+'</div></div>';
+  });
+  /* 6) 段落化：块级元素/占位符不再包 <p>（修复 <p></p><li> 旧 bug） */
+  h=h.split(/\n\n+/).map(p=>{
+    const t=p.trim();
+    if(!t)return'';
+    if(/^\u0001D\d+\u0002$/.test(t))return t;
+    if(/^<(h\d|ul|ol|pre|table|blockquote|hr|div)/.test(t))return t;
+    return '<p>'+t.replace(/\n/g,'<br>')+'</p>';
+  }).join('\n');
+  /* 7) 还原折叠区（summary/正文均已转义渲染） */
+  h=h.replace(/\u0001D(\d+)\u0002/g,(m,i)=>{
+    const d=details[+i];
+    if(!d)return'';
+    return '<details'+d.open+'><summary>'+mdInlineEscapeSafe(d.summary)+'</summary>'+mdBodySafe(mdEscape(d.body))+'</details>';
+  });
   return h;
 }
 
@@ -1262,6 +1350,27 @@ function printCSS(){
     pre{background:#f6f7f9;border:1px solid #e5e7eb;padding:12px 16px;border-radius:8px;overflow-x:auto;white-space:pre-wrap;break-inside:avoid;}
     pre code{background:none;color:#1f2937;padding:0;}
     blockquote{border-left:3px solid #94a3b8;padding-left:1em;color:#4b5563;margin:1em 0;}
+    .callout{margin:1em 0;padding:12px 14px;border-radius:8px;border:1px solid #d1d5db;border-left-width:3px;background:#f8fafc;break-inside:avoid;}
+    .callout-title{font-weight:700;color:#111;margin-bottom:4px;}
+    .callout-body{color:#334155;}
+    .callout-body p{margin:.35em 0;}
+    .callout-warning{border-left-color:#d97706;background:#fffbeb;}
+    .callout-warning .callout-title{color:#b45309;}
+    .callout-tip{border-left-color:#7c3aed;background:#f5f3ff;}
+    .callout-tip .callout-title{color:#6d28d9;}
+    .callout-info{border-left-color:#2563eb;background:#eff6ff;}
+    .callout-info .callout-title{color:#1d4ed8;}
+    .callout-success{border-left-color:#059669;background:#ecfdf5;}
+    .callout-success .callout-title{color:#047857;}
+    .callout-note{border-left-color:#64748b;background:#f8fafc;}
+    .callout-note .callout-title{color:#334155;}
+    details{margin:1em 0;border:1px solid #d1d5db;border-radius:8px;padding:0;break-inside:avoid;}
+    details summary{cursor:pointer;padding:9px 14px;font-weight:700;color:#111;list-style:none;}
+    details summary::-webkit-details-marker{display:none;}
+    details summary::before{content:"▾ ";color:#2563eb;}
+    details:not([open]) summary::before{content:"▸ ";}
+    details>*:not(summary){margin:0 14px 10px;}
+    ol{list-style:decimal;}
     table{border-collapse:collapse;width:100%;margin:1em 0;font-size:12.5px;break-inside:avoid;}
     th,td{border:1px solid #d1d5db;padding:6px 10px;text-align:left;}
     th{background:#f3f4f6;font-weight:600;}
