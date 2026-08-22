@@ -666,7 +666,7 @@ tr:last-child td {
   .fill-blank::after { display: none; }
 }
 
-/* ---------- v2 · 学习跟踪（教育学升级：进度/自评/间隔复习/回忆模式） ---------- */
+/* ---------- v2 · 学习跟踪（教育学升级：进度/自评/回忆模式） ---------- */
 #study-chip { display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:5px 12px;
   border-radius:14px; background: var(--bg-tertiary); border:1px solid var(--border);
   color: var(--text-secondary); cursor:pointer; font-family: var(--font-body); }
@@ -685,27 +685,6 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 .btn-study.m-master { background:var(--color-understand-bg); border-color:var(--color-understand-border); color:var(--color-understand); font-weight:600; }
 .btn-study.m-review { background:var(--color-familiar-bg); border-color:var(--color-familiar-border); color:var(--color-familiar); font-weight:600; }
 .btn-study.m-weak { background:var(--color-master-bg); border-color:var(--color-master-border); color:var(--color-master); font-weight:600; }
-#plan-overlay { position:fixed; inset:0; z-index:1200; display:none; align-items:center; justify-content:center;
-  background:rgba(0,0,0,.55); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); }
-#plan-overlay.show { display:flex; }
-.plan-card { background:var(--bg-secondary); border:1px solid var(--border); border-radius:14px;
-  width:min(560px,92vw); max-height:86vh; overflow:auto; padding:26px; box-shadow: var(--shadow-lg); }
-.plan-card h3 { font-size:19px; margin-bottom:4px; }
-.plan-card .p-sub { font-size:12.5px; color:var(--text-tertiary); margin-bottom:16px; line-height:1.7; }
-.plan-item { display:flex; align-items:center; gap:12px; padding:11px 13px; border-radius:10px;
-  margin-bottom:8px; background:var(--bg-tertiary); border:1px solid var(--border); }
-.plan-item .p-day { font-family: var(--font-mono); font-size:11.5px; color:var(--accent); min-width:56px; }
-.plan-item .p-date { font-size:13.5px; color:var(--text-primary); font-weight:600; }
-.plan-item .p-tip { font-size:12px; color:var(--text-tertiary); }
-.plan-item .p-check { margin-left:auto; font-size:14px; cursor:pointer; user-select:none; }
-.plan-item.done { opacity:.55; }
-.plan-item.done .p-check::before { content:'✅'; }
-.plan-item:not(.done) .p-check::before { content:'☐'; }
-.plan-actions { display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; }
-.plan-actions button { font-size:13.5px; padding:9px 18px; border-radius:10px; cursor:pointer;
-  border:1px solid var(--accent); background:var(--accent); color:#fff; font-family: var(--font-body); }
-.plan-actions button.ghost { background:transparent; color:var(--text-secondary); border-color:var(--border); }
-@media print { #plan-overlay.show { display:none !important; } }
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -3246,12 +3225,9 @@ document.querySelectorAll('.module-card').forEach(card => {
 (function(){
   var subject = (document.title||'复习手册').replace(' · 高效复习手册','');
   var PROG_KEY = 'med-study-' + subject + '-progress';
-  var PLAN_KEY = 'med-study-' + subject + '-plan';
-  var prog = {}, plan = {};
+  var prog = {};
   try { prog = JSON.parse(localStorage.getItem(PROG_KEY)||'{}'); } catch(e){ prog={}; }
-  try { plan = JSON.parse(localStorage.getItem(PLAN_KEY)||'{}'); } catch(e){ plan={}; }
   function saveP(){ try{localStorage.setItem(PROG_KEY, JSON.stringify(prog));}catch(e){} }
-  function savePlan(){ try{localStorage.setItem(PLAN_KEY, JSON.stringify(plan));}catch(e){} }
 
   /* 收集模块卡片 */
   var modules = [];
@@ -3298,18 +3274,16 @@ document.querySelectorAll('.module-card').forEach(card => {
     });
   });
 
-  /* 顶栏：进度 chip + 回忆模式 + 复习计划 */
+  /* 顶栏：进度 chip + 回忆模式 */
   var actions = document.querySelector('#top-header .actions');
   var chip = document.createElement('button');
   chip.id = 'study-chip';
-  chip.title = '打开复习计划';
   actions.insertBefore(chip, actions.firstChild);
   function updateChip(){
     var done = modules.filter(function(m){ return prog[m.id] && prog[m.id].done; }).length;
     chip.innerHTML = '📈 已学 <b>'+done+'/'+modules.length+'</b> 模块';
   }
   updateChip();
-  chip.addEventListener('click', openPlan);
 
   var recallBtn = document.createElement('button');
   recallBtn.id = 'recall-toggle';
@@ -3323,54 +3297,6 @@ document.querySelectorAll('.module-card').forEach(card => {
     recallBtn.textContent = on ? '🧠 回忆模式·开启' : '🧠 回忆模式';
   });
 
-  /* 复习计划（间隔重复 1/3/7/15 天） */
-  var overlay = document.createElement('div');
-  overlay.id = 'plan-overlay';
-  document.body.appendChild(overlay);
-  function openPlan(){
-    var today = new Date();
-    var fmt = function(d){ return (d.getMonth()+1)+'月'+d.getDate()+'日'; };
-    var steps = [
-      { key:'d0',  day:'今天',      tip:'开始学习本手册' },
-      { key:'d1',  day:'第 1 天',   tip:'趁记忆新鲜，快速过一遍' },
-      { key:'d3',  day:'第 3 天',   tip:'重点看「需巩固/未掌握」' },
-      { key:'d7',  day:'第 7 天',   tip:'完整重刷一遍' },
-      { key:'d15', day:'第 15 天',  tip:'考前冲刺，查漏补缺' }
-    ];
-    var offs = { d0:0, d1:1, d3:3, d7:7, d15:15 };
-    var h = '<div class="plan-card">';
-    h += '<h3>📅 复习计划 · ' + subject + '</h3>';
-    h += '<div class="p-sub">基于艾宾浩斯遗忘曲线：学完后的 1 / 3 / 7 / 15 天各复习一次，记忆最牢固。点击完成即打勾，全部保存到本机。</div>';
-    steps.forEach(function(st){
-      var d = new Date(today); d.setDate(d.getDate() + offs[st.key]);
-      var done = !!plan[st.key];
-      h += '<div class="plan-item'+(done?' done':'')+'" data-key="'+st.key+'"><span class="p-day">'+st.day+'</span><span class="p-date">'+fmt(d)+'</span><span class="p-tip">'+st.tip+'</span><span class="p-check"></span></div>';
-    });
-    h += '<div class="plan-actions"><button data-act="print">🖨 打印/导出 PDF</button><button class="ghost" data-act="close">关闭</button></div>';
-    h += '</div>';
-    overlay.innerHTML = h;
-    overlay.classList.add('show');
-    overlay.querySelectorAll('.plan-item').forEach(function(it){
-      it.addEventListener('click', function(){
-        var k = it.dataset.key;
-        plan[k] = !plan[k]; savePlan();
-        it.classList.toggle('done', plan[k]);
-      });
-    });
-    overlay.querySelector('[data-act="close"]').addEventListener('click', function(){ overlay.classList.remove('show'); });
-    overlay.querySelector('[data-act="print"]').addEventListener('click', function(){
-      var w = window.open('', '_blank');
-      if(!w){ alert('请允许弹出窗口后再试'); return; }
-      var rows = '';
-      overlay.querySelectorAll('.plan-item').forEach(function(it){
-        rows += '<tr><td>'+it.querySelector('.p-day').textContent+'</td><td>'+it.querySelector('.p-date').textContent+'</td><td>'+it.querySelector('.p-tip').textContent+'</td><td>'+(plan[it.dataset.key]?'✅ 已完成':'☐ 待复习')+'</td></tr>';
-      });
-      w.document.write('<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>复习计划 · '+subject+'</title><style>body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#fff;color:#1a1a2e;padding:32px 40px;line-height:1.8}h1{font-size:24px;border-bottom:2px solid #222;padding-bottom:8px}.sub{color:#666;font-size:13px;margin:8px 0 20px}table{border-collapse:collapse;width:100%;font-size:14px}th,td{border:1px solid #d1d5db;padding:8px 12px;text-align:left}th{background:#f3f4f6}@page{margin:1.4cm}</style></head><body><h1>📅 复习计划 · '+subject+'</h1><div class="sub">'+subject+' · 艾宾浩斯间隔复习 · 生成于 '+new Date().toLocaleDateString('zh-CN')+'</div><table><thead><tr><th>节点</th><th>日期</th><th>任务</th><th>状态</th></tr></thead><tbody>'+rows+'</tbody></table></body></html>');
-      w.document.close();
-      setTimeout(function(){ w.focus(); w.print(); }, 400);
-    });
-  }
-  overlay.addEventListener('click', function(e){ if(e.target === overlay) overlay.classList.remove('show'); });
 })();
 
 // Keyboard shortcuts
