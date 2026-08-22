@@ -293,6 +293,33 @@ body {
 .cursor { display:inline-block; width:8px; height:16px; background:var(--brand); vertical-align:-2px; animation:blink 1.1s steps(1) infinite; }
 @keyframes blink { 50% { opacity:0; } }
 
+/* ---------- hero 终端内 · 学生向三步上手指南 ---------- */
+.guide-panel { display:flex; flex-direction:column; gap:9px; padding:2px 0 4px; }
+.g-guide-title { font-family:var(--f-mono); font-size:11.5px; letter-spacing:0.1em; color:var(--brand); margin-bottom:2px; }
+.g-step {
+  display:flex; align-items:flex-start; gap:11px;
+  padding:10px 12px; border-radius:10px; background:rgba(255,255,255,0.045);
+  border:1px solid var(--border); transition:border-color .2s;
+}
+.g-step:hover { border-color:rgba(103,153,254,0.4); }
+.g-no { font-family:var(--f-mono); font-size:11px; color:var(--brand); margin-top:2px; flex-shrink:0; }
+.g-body { flex:1; min-width:0; }
+.g-body b { display:inline-block; font-size:13.5px; color:var(--text); font-weight:600; margin-right:8px; }
+.g-where { font-family:var(--f-mono); font-size:10.5px; color:var(--text-2); letter-spacing:0.03em; }
+.g-body p { font-size:12.5px; color:var(--text-2); line-height:1.65; margin-top:3px; }
+.g-go {
+  flex-shrink:0; font-size:12px; color:var(--brand); text-decoration:none;
+  border:1px solid rgba(103,153,254,0.35); padding:4px 9px; border-radius:var(--r-pill);
+  margin-top:2px; transition:all .2s; white-space:nowrap;
+}
+.g-go:hover { background:rgba(103,153,254,0.12); border-color:var(--brand); }
+.g-tip {
+  display:flex; gap:8px; font-size:11.5px; color:var(--text-2); line-height:1.6;
+  padding:9px 12px; border-radius:10px; background:rgba(103,153,254,0.06);
+  border:1px solid rgba(103,153,254,0.18);
+}
+.g-tip b { color:var(--brand); font-weight:600; white-space:nowrap; }
+
 /* ---------- ASCII 原子像素 ---------- */
 .atom-wrap { position:absolute; right:-140px; top:50%; transform:translateY(-54%); width:560px; height:560px; z-index:1; pointer-events:none; mix-blend-mode:screen; opacity:.9; }
 .atom { position:absolute; inset:0; }
@@ -671,6 +698,11 @@ body {
   .section-head .right .right-sub { display:none; }
   .grid { grid-template-columns:1fr; }
   .term-body { min-height:210px; font-size:12.5px; padding:18px 16px 22px; }
+  .guide-panel { gap:8px; padding:0 0 2px; }
+  .g-step { padding:9px 10px; }
+  .g-body b { font-size:13px; }
+  .g-body p { font-size:12px; }
+  .g-go { font-size:11.5px; padding:3px 8px; }
   .quick { padding:30px 22px; }
   .md { padding:24px 20px 40px; }
   .footer-in { flex-direction:column; text-align:center; }
@@ -820,19 +852,41 @@ body {
             <button class="term-copy" onclick="copyCmd(this)" aria-label="复制命令"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.6" y="5.6" width="7.6" height="7.6" rx="1.4"/><path d="M10.4 3.4H4.6a1.2 1.2 0 0 0-1.2 1.2v5.8"/></svg>Copy</button>
           </div>
           <div class="term-body">
-<pre class="term-pre" id="term-run" style="font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">medagentwork run --subject 内科学</span>
+<pre class="term-pre term-pane" id="term-run" style="font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">medagentwork run --subject 内科学</span>
  <span class="dim">▸ 加载题库注册表 ........... 4,917 题</span>
  <span class="dim">▸ 锚点难度校准 ............. 280 锚点</span>
  <span class="dim">▸ 考频蓝图 ................. 15 学科</span>
  <span class="dim">▸ 门禁校验 validate_options .. <span class="ok">FAIL 0</span></span>
  <span class="ok">✓</span> 管线就绪 · 开始作答
  <span class="prompt">$</span> <span class="cursor"></span></pre>
-<pre class="term-pre" id="term-guide" style="display:none;font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">git clone https://github.com/2710074390-cyber/MedAgentWork</span>
- <span class="dim">▸ 克隆完成 · 进入 大三下/</span>
- <span class="prompt">$</span> <span class="cmd">medagentwork start --port 3000</span>
- <span class="dim">▸ 押题卷 5 套 · 题库 6 份 · 复习手册 7 册</span>
- <span class="br">→</span> <span class="hl">http://localhost:3000</span> <span class="dim">· 立即打开</span>
- <span class="prompt">$</span> <span class="cursor"></span></pre>
+<div class="guide-panel term-pane" id="term-guide" style="display:none">
+  <div class="g-guide-title">⚡ 三步上手 · 全部资料即开即用</div>
+  <div class="g-step">
+    <span class="g-no">01</span>
+    <div class="g-body">
+      <b>在线答题</b><span class="g-where">押题卷区 ·「开始答题」</span>
+      <p>点开任意押题卷，点选项立即判分；答错自动显示解析。进度保存在本机，下次接着刷。</p>
+    </div>
+    <a class="g-go" href="#exams">去答题 →</a>
+  </div>
+  <div class="g-step">
+    <span class="g-no">02</span>
+    <div class="g-body">
+      <b>下载题库 PDF</b><span class="g-where">题库区 ·「下载 PDF」</span>
+      <p>手机存进「文件」App，电脑存到「下载」文件夹。要纸质版：打开后打印，选「另存为 PDF」。</p>
+    </div>
+    <a class="g-go" href="#banks">去下载 →</a>
+  </div>
+  <div class="g-step">
+    <span class="g-no">03</span>
+    <div class="g-body">
+      <b>研读复习手册</b><span class="g-where">复习手册区 ·「在线阅读 / 导出 PDF」</span>
+      <p>在线阅读带「掌握 / 熟悉 / 理解」三级标注；「导出 PDF」一键生成可打印版本。</p>
+    </div>
+    <a class="g-go" href="#reviews">去研读 →</a>
+  </div>
+  <div class="g-tip"><b>💡 常见问题</b><span>点了「开始答题」没反应？多半是浏览器拦了弹窗——点地址栏右侧的拦截图标，选「允许弹窗」即可。所有资料仅供学习交流。</span></div>
+</div>
           </div>
         </div>
       </div>
@@ -1369,8 +1423,12 @@ function switchTermTab(btn){
   const t=btn.dataset.t;
   btn.parentElement.querySelectorAll('.term-tab').forEach(b=>b.classList.toggle('active',b===btn));
   const term=btn.closest('.hero-visual');
-  term.querySelectorAll('.term-pre').forEach(p=>p.style.display='none');
+  term.querySelectorAll('.term-pane').forEach(p=>p.style.display='none');
   document.getElementById('term-'+t).style.display='block';
+  const tt=term.querySelector('.term-title');
+  if(tt)tt.textContent=(t==='run')?'medagentwork — zsh':'使用指南 · 学生向三步教程';
+  const cp=term.querySelector('.term-copy');
+  if(cp)cp.style.visibility=(t==='run')?'visible':'hidden';
 }
 document.querySelectorAll('.hero-visual .term-tab').forEach(b=>b.addEventListener('click',()=>switchTermTab(b)));
 
