@@ -28,6 +28,7 @@ question_bank/registry_backup_*.jsonl
 # 临时目录（铁律：_scratch/temp 一周内清理）
 temp/
 tmp/
+_scratch/
 
 # 历史归档（稳定内容，不入库保持仓库精简）
 archive/
