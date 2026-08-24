@@ -1,0 +1,12 @@
+# MedAgentWork · Cloudflare Pages 配置（wrangler）
+# 说明：本文件是 Pages 项目的唯一配置源（name / 输出目录 / KV 绑定），
+#       wrangler pages deploy 会自动读取；对应字段不再依赖 Cloudflare 控制台。
+
+name = "med-review-site"
+pages_build_output_dir = "."
+compatibility_date = "2026-08-24"
+
+# 访问计数器 KV（functions/api/visits.js → env.VISITS）
+[[kv_namespaces]]
+binding = "VISITS"
+id = "7787668a344744e78f1bc6615010a257"

@@ -20,4 +20,4 @@ jobs:
         run: npm i -g wrangler@4.121.0
 
       - name: Deploy to Cloudflare Pages
-        run: wrangler pages deploy . --project-name med-review-site
+        run: wrangler pages deploy --branch main
