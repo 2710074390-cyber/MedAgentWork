@@ -6,6 +6,12 @@
 
 **Cloudflare Pages**（国内可直连）：https://med-review-site.pages.dev
 
+**本地一键部署**（与 CI 同环境，从干净 git 树部署，规避本地大文件超限）：
+
+```
+powershell scripts\deploy_site.ps1
+```
+
 ## ✨ 特性
 
 - **未来主义设计** — 黑蓝深海配色 · 玻璃拟态 UI · ASCII 原子像素星域（粒子特效可开关，localStorage 记忆）
