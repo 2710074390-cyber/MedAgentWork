@@ -931,6 +931,7 @@ body {
       <div class="stat"><b>280</b><span>难度锚点</span></div>
       <div class="sep"></div>
       <div class="stat"><b>v5.1</b><span>资料版本</span></div>
+      <div class="stat" id="stat-visits" title="打开首页即 +1"><b id="visits-num">…</b><span>访问计数</span></div>
       <div class="stat" style="margin-left:auto"><span>SYSTEM</span><b class="up">● ONLINE</b></div>
     </div>
   </div>
@@ -1828,6 +1829,32 @@ function bindFxToggle(btn){
 
 /* ---------- 历史兼容：恢复上次学期选择 ---------- */
 try{const saved=localStorage.getItem('maw-term');if(saved&&saved!=='junior2'){switchTerm(saved);window.scrollTo(0,0);}}catch(e){}
+
+/* ---------- 访问计数器（Cloudflare Pages Function + KV · 站长免计自己） ---------- */
+(function(){
+  const num=document.getElementById('visits-num');
+  const stat=document.getElementById('stat-visits');
+  if(!num)return;
+  const q=new URLSearchParams(location.search);
+  try{
+    // 站长专属：打开一次 ?noself=1 → 本机写入免计 Cookie（1 年），随后 URL 恢复干净
+    if(q.has('noself')){
+      document.cookie='maw_owner=1; path=/; max-age=31536000; SameSite=Lax; Secure';
+      history.replaceState(null,'',location.pathname+location.hash);
+    }
+  }catch(e){}
+  const isOwner=document.cookie.indexOf('maw_owner=1')!==-1;
+  fetch('/api/visits',{cache:'no-store'})
+    .then(r=>r.json())
+    .then(d=>{
+      num.textContent=(typeof d.total==='number')?d.total.toLocaleString('zh-CN'):'—';
+      if(stat&&isOwner&&typeof d.skip!=='undefined'){
+        stat.querySelector('span').textContent='访问计数 · 不计自己';
+        stat.title='本浏览器已开启免计数（打开过 ?noself=1）—— 你自己的访问不会被计入';
+      }
+    })
+    .catch(function(){num.textContent='—';});
+})();
 </script>
 </body>
 </html>
