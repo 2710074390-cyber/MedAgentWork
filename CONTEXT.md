@@ -378,7 +378,7 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **npm** | 11.13.0 | `C:\Program Files\nodejs\npm.cmd` | `npm` |
 | **Git** | 2.54.0 | `C:\Program Files\Git\mingw64\bin\git.exe` | `git` |
 | **gh** (GitHub CLI) | 2.97.0 | `C:\Program Files\GitHub CLI\gh.exe` | `gh` |
-| **wrangler** (Cloudflare CLI) | 4.120.0 | 全局 npm 包 | `wrangler` |
+| **wrangler** (Cloudflare CLI) | 4.121.0 | C:\Users\38063\AppData\Roaming\npm\wrangler.cmd | `wrangler`（已登录 OAuth：2710074390@qq.com） |
 | **Pandoc** | 3.8.3 | `C:\Program Files\RStudio\resources\app\bin\quarto\bin\tools\pandoc.exe` | 完整路径（不在 PATH） |
 | **R** | 4.6.0 | `C:\Program Files\R\R-4.6.0\bin\R.exe` | `R`（不在 PATH） |
 | **RStudio** | — | `C:\Program Files\RStudio\rstudio.exe` | 完整路径 |
