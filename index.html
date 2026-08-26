@@ -456,6 +456,46 @@ body {
 }
 .cap-card .cap-flow em b { color:var(--brand); font-weight:500; }
 
+/* ---------- 软件工坊（MedKit 桌面软件下载） ---------- */
+.sw-card {
+  position:relative; display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:center;
+  background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--r);
+  padding:30px 32px; overflow:hidden;
+  transition:border-color .3s, transform .3s, box-shadow .3s;
+}
+.sw-card::before {
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(560px circle at 12% 0%, rgba(45,212,191,0.08), transparent 46%);
+}
+.sw-card:hover { border-color:rgba(45,212,191,0.45); transform:translateY(-3px); box-shadow:0 24px 60px -28px rgba(0,0,0,0.9), 0 0 44px rgba(45,212,191,0.14); }
+.sw-logo { width:72px; height:72px; flex-shrink:0; position:relative; z-index:1; }
+.sw-logo svg { width:100%; height:100%; display:block; border-radius:15px; box-shadow:0 0 26px rgba(45,212,191,0.35); }
+.sw-body { position:relative; z-index:1; }
+.sw-title-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:7px; }
+.sw-title { font-size:20px; font-weight:600; letter-spacing:-0.01em; color:var(--text); }
+.sw-title .accent { color:var(--brand); }
+.sw-ver {
+  font-family:var(--f-mono); font-size:11.5px; letter-spacing:0.05em;
+  color:var(--text-2); padding:4px 12px; border-radius:var(--r-pill);
+  background:rgba(255,255,255,0.05); border:1px solid var(--border); white-space:nowrap;
+}
+.sw-ver.ok { color:#2dd4bf; border-color:rgba(45,212,191,0.35); }
+.sw-desc { font-size:13.5px; color:var(--text-2); line-height:1.7; max-width:700px; margin-bottom:6px; }
+.sw-desc b { color:var(--text); font-weight:500; }
+.sw-note { font-family:var(--f-mono); font-size:11px; color:var(--text-3); letter-spacing:0.06em; margin-bottom:18px; }
+.sw-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.sw-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+.sw-tags em {
+  font-style:normal; font-family:var(--f-mono); font-size:11px; color:var(--text-2);
+  padding:4px 9px; border-radius:6px; background:rgba(255,255,255,0.05); border:1px solid var(--border);
+}
+@media (max-width:720px) {
+  .sw-card { grid-template-columns:1fr; gap:18px; padding:24px 22px; }
+  .sw-logo { width:56px; height:56px; }
+  .sw-logo svg { border-radius:12px; }
+  .sw-actions .btn { flex:1; }
+}
+
 /* ---------- 内容卡片 ---------- */
 .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px; }
 .card {
@@ -751,7 +791,7 @@ body {
 
 /* ---------- 打印 ---------- */
 @media print {
-  .deep-sea, .nav, .hero-canvas, .atom-wrap, .stats, #modal, #toast, .footer .line, .fx-toggle { display:none !important; }
+  .deep-sea, .nav, .hero-canvas, .atom-wrap, .stats, #modal, #toast, .footer .line, .fx-toggle, #software { display:none !important; }
   body { background:#fff; color:#111; }
   .hero { min-height:auto; padding:40px 0; }
   .hero h1, .hero-desc, .hero-cta, .hero-badge { animation:none; opacity:1; transform:none; filter:none; }
@@ -789,6 +829,7 @@ body {
       <a href="#exams">押题卷</a>
       <a href="#banks">题库</a>
       <a href="#reviews">复习手册</a>
+      <a href="#software">软件下载</a>
       <a href="#pipeline">幕后管线</a>
       <a href="#quick">快速上手</a>
     </div>
@@ -815,8 +856,9 @@ body {
       <a href="#exams"><span class="mm-idx">01</span>押题卷</a>
       <a href="#banks"><span class="mm-idx">02</span>题库</a>
       <a href="#reviews"><span class="mm-idx">03</span>复习手册</a>
-      <a href="#pipeline"><span class="mm-idx">04</span>幕后管线</a>
-      <a href="#quick"><span class="mm-idx">05</span>快速上手</a>
+      <a href="#software"><span class="mm-idx">04</span>出题软件</a>
+      <a href="#pipeline"><span class="mm-idx">05</span>幕后管线</a>
+      <a href="#quick"><span class="mm-idx">06</span>快速上手</a>
     </nav>
     <div class="mm-term">
       <button class="mm-term-btn active" data-term="junior2">大三下</button>
@@ -971,8 +1013,14 @@ body {
       <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线阅读 · 下载保存 · 导出 PDF</p>
       <span class="dt-go">进入复习手册 <i>→</i></span>
     </a>
+    <a class="deck-tile reveal" href="#software">
+      <div class="dt-top"><span class="dt-icon">🛠️</span><span class="dt-num">04</span></div>
+      <h3>出题软件 <span class="dt-en">MEDKIT</span></h3>
+      <p>本站产物的桌面生成器 · 自备教材一键出题 · 免费开源 · Windows 直链下载</p>
+      <span class="dt-go">下载软件 <i>→</i></span>
+    </a>
   </div>
-  <div class="deck-dots" id="deck-dots" aria-hidden="true"><span class="on"></span><span></span><span></span></div>
+  <div class="deck-dots" id="deck-dots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
   </div>
   <div class="deck-tip reveal">
     <span class="tip-icon">💡</span>
@@ -1014,6 +1062,50 @@ body {
     <div class="right"><b>03 · 复习手册</b>07 科 · 在线阅读 · 下载保存<br><span class="right-sub">导出 PDF 打印</span></div>
   </div>
   <div class="grid" id="grid-review"></div>
+</section>
+
+<!-- ============ 软件工坊（绝对主角 04） ============ -->
+<section class="section" id="software">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>软件工坊 · <i>桌面生成器</i></span></span>
+      <h2>出题软件 <span class="accent">MedKit</span></h2>
+    </div>
+    <div class="right"><b>04 · 软件工坊</b>本站产物的生成器 · Windows<br><span class="right-sub">GitHub 开源 · 免费 · 数据本地</span></div>
+  </div>
+  <div class="sw-card reveal">
+    <div class="sw-logo" aria-hidden="true">
+      <svg viewBox="0 0 64 64" role="img" aria-label="MedKit 图标">
+        <defs>
+          <linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2dd4bf"/>
+            <stop offset="0.6" stop-color="#0d9488"/>
+            <stop offset="1" stop-color="#134e4a"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#mkg)"/>
+        <text x="32" y="32" text-anchor="middle" dominant-baseline="central"
+              font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif"
+              font-weight="700" font-size="21" fill="#f5faf8">MW</text>
+      </svg>
+    </div>
+    <div class="sw-body">
+      <div class="sw-title-row">
+        <span class="sw-title">MedKit · 医学题库工坊</span>
+        <span class="sw-ver" id="sw-ver">正在获取版本…</span>
+      </div>
+      <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点，自选 AI 服务商（DeepSeek / 智谱 / 通义 / Kimi），本地一键生成<b>全新题库、押题卷、复习手册与 Anki 卡片</b>。素材与产物全部保存在本机，只花自己的 API Key（整套题约 ¥1~5）。</p>
+      <div class="sw-tags">
+        <em>免费开源</em><em>Windows 7+</em><em>安装包 ≈ 39 MB</em><em>BYOK 自带 Key</em><em>内置更新提醒</em>
+      </div>
+      <p class="sw-note">MEDKIT → MEDGEN → MEDQC → MEDFIX → MEDREVIEW · DESKTOP EDITION</p>
+      <div class="sw-actions">
+        <a class="btn btn-pri" id="sw-dl" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.6v8.2M4.7 7.6 8 10.9l3.3-3.3M3 13.2h10"/></svg>下载 Windows 安装包</a>
+        <a class="btn btn-sec" id="sw-mirror" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener" style="display:none">镜像下载</a>
+        <a class="btn btn-sec" href="https://github.com/2710074390-cyber/medkit" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ============ 幕后管线（支撑系统） ============ -->
@@ -1500,6 +1592,32 @@ $$('.reveal').forEach(el=>io.observe(el));
   grid.addEventListener('scroll',update,{passive:true});
   window.addEventListener('resize',update);
   update();
+})();
+
+/* ---------- MedKit 软件下载：GitHub API 动态取最新版本 + 安装包直链 ---------- */
+(function(){
+  const REPO='2710074390-cyber/medkit';
+  const dl=$('#sw-dl'),mir=$('#sw-mirror'),ver=$('#sw-ver');
+  if(!dl||!ver)return;
+  fetch('https://api.github.com/repos/'+REPO+'/releases/latest',{headers:{Accept:'application/vnd.github+json'}})
+    .then(r=>r.ok?r.json():Promise.reject())
+    .then(j=>{
+      const tag=(j.tag_name||'').trim().replace(/^v/i,'');
+      const assets=j.assets||[];
+      const exe=assets.find(a=>/setup/i.test(a.name)&&/\.exe$/i.test(a.name))||assets.find(a=>/\.exe$/i.test(a.name));
+      ver.textContent=tag?('v'+tag+(exe?' · '+(exe.size/1048576).toFixed(1)+' MB':'')):'最新版见 GitHub';
+      ver.classList.add('ok');
+      if(exe&&exe.browser_download_url){
+        dl.href=exe.browser_download_url;
+        dl.addEventListener('click',()=>toast('⬇ 开始下载 MedKit v'+tag));
+        if(mir){
+          mir.href='https://ghproxy.net/'+exe.browser_download_url;
+          mir.title='直连失败时的备用加速通道';
+          mir.style.display='';
+        }
+      }
+    })
+    .catch(()=>{ver.textContent='最新版见 GitHub';});
 })();
 
 /* ---------- 粘性滚动联动 ---------- */

@@ -18,6 +18,10 @@ powershell scripts\deploy_site.ps1
 - **五阶段 Agent 管线** — MedGen 出题 → MedQC 质检 → MedFix 修复 → MedReview 成册，门禁强制校验
 - **学期切换** — 大三下（完整内容）/ 大四上（敬请期待）
 - **访问计数** — 首页统计条实时显示累计访问次数（Cloudflare Pages Function + KV，一次页面打开 +1；站长打开 `?noself=1` 可将自己本机访问设为免计）
+- **软件工坊（MedKit）** — 本站产物的桌面生成器下载区（`#software`）
+  - GitHub API 动态显示最新版本号与安装包大小，直链下载 + ghproxy 镜像备用
+  - 总览台第 4 磁贴 / 导航「软件下载」/ 移动端菜单均可直达
+  - 软件仓库：[2710074390-cyber/medkit](https://github.com/2710074390-cyber/medkit)
 - 各产物支持：👁️ 预览 / ⬇️ 下载 / 🖨️ 打印
 
 ## 📂 目录结构
@@ -32,7 +36,8 @@ powershell scripts\deploy_site.ps1
 
 ## 🔒 隐私
 
-- ✅ 纯静态 + 单个 Pages Function（访问计数），无第三方脚本、无外部请求
+- ✅ 纯静态 + 单个 Pages Function（访问计数），无第三方脚本
+- ✅ 除访问计数与 MedKit 版本查询（GitHub 公开 API）外无任何外部请求
 - ✅ 仅记录累计访问次数（Cloudflare KV），**不采集任何个人信息 / IP / 位置**
 - ✅ `.wrangler/` 缓存已加入 .gitignore
 
