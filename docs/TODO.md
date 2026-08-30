@@ -1,8 +1,23 @@
 # MedAgentWork 待办清单
 
-> 更新：2026-08-21（HC-18 考研真题配额落地 + 公开仓库同步）| 基于：v3.0 技术报告批判分析 + Week 1 四条防线落地 + 四科 v5 测试 + 正式重构 + 五域代码审查
+> 更新：2026-08-30（大四上生产准备：链路恢复 + 深归档 + 全链路自检）| 基于：v3.0 技术报告批判分析 + Week 1 四条防线落地 + 四科 v5 测试 + 正式重构 + 五域代码审查
 
 ---
+
+## 🟢 已完成 (2026-08-30 · 大四上生产准备 · 整理归档 + 自检生成链路)
+
+- [x] **生成链路运行时恢复**（自检发现 2026-08-20/22 重构后缺失，从 git 历史 2b0912c 还原）：.dsh/skills 6 技能、根目录 gate_check/validate_options/healthcheck/save/ingest/verify_page_numbers、schemas/ 3 契约、tests/ 7 文件、工作区知识库素材 search_kb/embed_index/embed_md/embed_zhaozhao/validate_configs/render_review（取自 b463687^ 即移除前最后版）、GoldenSet 4 工具、workflow_state.json、USER.md；63 个 .py py_compile 全绿
+- [x] **batch027 深归档**（内科学·呼吸 100 题，APPROVED 2026-08-20）：中间产物/质检报告/最终产物/押题卷组卷样例 → archive/；`qbank.py rehome` 重写 100 条注册路径；注册表 4296 题 check 通过、0 跨批重复
+- [x] **报告归档**：reports/validate 3 份 + reports/healthcheck 4 份（超 7 天）→ archive/reports/2026-08/；maintenance 保留至 09-19
+- [x] **临时脚本归档**：temp/ 注册表去重交接 13 文件 → archive/temp/registry_dedup_20260821/
+- [x] **docs 瘦身至 ≤5**：架构演进 v3.0、桌面版实现方案 v1 → archive/docs/（活跃：项目介绍 v4.0 / 使用指南 v2.0 / TODO / 产物格式规范 / 工作区目录结构）
+- [x] **注册表备份收敛**：旧备份 registry_backup_20260820_* ×2 + calibrated_difficulty.testonly.jsonl → archive/注册表备份_20260820/；保留 20260821 前后备份对
+- [x] **Prompt 版本清理**：Prompt版本/clean/ 4 份过期提示词 → archive/Prompt版本_clean_旧版_20260830/（消除 healthcheck E2 警告）
+- [x] **.gitignore 补漏**：知识库素材/retrieval_log/、cache/、GoldenSet/regression_reports/（UTF-8 校验通过）
+- [x] **工作区清整**：7 处 __pycache__ 全清；中间产物/质检报告/最终产物 空目录重建骨架（healthcheck D1 必需）；memory/JOURNAL.jsonl 建档；输入素材/大四上 4 科目骨架 + README
+- [x] **workflow_state 全局字段清空**：active_batch/status/current_agent → null（batch027 状态保留 APPROVED；schema v2 校验通过）
+- [x] **全链路自检**：run_tests 64/64 通过 · gate_check GATE-FINAL PASS（参考模式）· validate_options FAIL=0（R2×41/R8×2 为 WARN，exit 1 属已知 M1 语义）· contract_check 运行正常（无活动批次 → SKIP）· kaoyan_picker check 执行正常（batch027 0% 为 HC-18 生效前批次，历史事实）· validate_configs 0 错 0 警 · verify_produce_rules 全 ✅ · healthcheck 164 ✅/1 ⚠️/0 ✗（D2 README 误报为已知 M12）
+- [x] **遗留项（见自检报告）**：大四上 4 科目（传染病/妇产/急诊/耳鼻）RAG 配置与索引未建；输入素材未导入；batch028 后需逐批执行 HC-18 配额
 
 ## 🟢 已完成 (2026-08-21 · HC-18 考研真题配额 + 公开仓库同步)
 
@@ -158,14 +173,14 @@
 
 ## 🔁 定期维护（每次任务后）
 
+- [x] ~~**batch027 收尾归档**~~ ✅ 已完成 2026-08-30（深归档 + qbank rehome，见上方）
+- [x] ~~**.gitignore 补漏**~~ ✅ 已补 retrieval_log/cache/regression_reports（2026-08-30）
+- [ ] **注册表 bloom 标签规范化**：registry.jsonl 中英文标签混用（comprehension/memory/application…）与 242 条"未标注"，建议 register 时归一（未处理，源自 P2）
 - [ ] 根目录清洁度检查（对照 CONTEXT.md 铁律①）
 - [ ] `reports/` 子目录超期文件清理（validate 7天 / maintenance 30天）
 - [ ] `__pycache__/` 清理
 - [ ] 跨区 CONTEXT.md 工具路径同步（6个工作区）
-- [ ] `知识库素材/` 索引是否需要更新
-- [ ] **batch027 收尾归档**：签收已满 7 天 → maintenance 自动归档 中间产物/batch027 + 质检报告/batch027；`_scratch/build_batch027_report.py` 随批次归档或删除
-- [ ] **.gitignore 补漏**：`_scratch/`、`知识库素材/cache/`、`知识库素材/retrieval_log/`（现 2 文件）、`GoldenSet/regression_reports/`（现 22 文件）
-- [ ] **注册表 bloom 标签规范化**：registry.jsonl 中英文标签混用（comprehension/memory/application…）与 242 条"未标注"，建议 register 时归一
+- [ ] `知识库素材/` 索引是否需要更新（大四上 4 新科目待建索引）
 
 ---
 
