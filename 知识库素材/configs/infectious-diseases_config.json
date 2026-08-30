@@ -1,0 +1,56 @@
+{
+  "subject": "传染病学",
+  "subject_code": "infectious-diseases",
+  "version": "1.0",
+  "chunk_strategy": {
+    "chunk_size": 800,
+    "overlap": 200,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(布鲁氏菌|布氏菌|流行性脑脊髓膜炎|流行性乙型脑炎|肾综合征出血热|登革热|手足口病|霍乱|伤寒|细菌性痢疾|疟疾|血吸虫病|结核|乙型肝炎|丙型肝炎)",
+        "description": "重点传染病病名完整保护"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(ELISA|ELISPOT|PCR|凝集试验|肥达反应|补体结合试验|脑脊液)",
+        "description": "实验室检查术语保护"
+      },
+      {
+        "type": "table_protect",
+        "context_sentences": 1
+      }
+    ],
+    "metadata_enrichment": [
+      "has_epidemic",
+      "has_vaccine"
+    ]
+  },
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.7,
+    "hybrid_search": true,
+    "keyword_weight": 0.3,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "布病": "布鲁氏菌病",
+      "流脑": "流行性脑脊髓膜炎",
+      "乙脑": "流行性乙型脑炎",
+      "出血热": "肾综合征出血热",
+      "乙肝": "乙型肝炎",
+      "丙肝": "丙型肝炎"
+    }
+  }
+}

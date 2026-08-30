@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "last_updated": "2026-06-21T12:31:16.589580+08:00",
-  "note": "v2.0: 每学科加入 retrieval_strategy（混合检索 + keyword_weight），替代全局默认值",
+  "last_updated": "2026-08-30T00:00:00+08:00",
+  "note": "v2.0: 每学科加入 retrieval_strategy（混合检索 + keyword_weight），替代全局默认值；2026-08-30 大四上新增 infectious-diseases/obgyn/emergency/ent",
   "subjects": {
     "internal-med": {
       "name": "内科学",
@@ -325,6 +325,95 @@
         "score_threshold": 0.75
       },
       "description": "口诀/记忆法，碎片化，辅助记忆"
+    },
+    "infectious-diseases": {
+      "name": "传染病学",
+      "priority": 1,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 200,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.3,
+        "numeric_threshold": 2,
+        "preserve_sequence": false,
+        "special_rules": [
+          "numeric_protect",
+          "pattern_protect:(布鲁氏菌|布氏菌|流行性脑脊髓膜炎|流行性乙型脑炎|肾综合征出血热|登革热|手足口病|霍乱|伤寒|细菌性痢疾|疟疾|血吸虫病|结核|乙型肝炎|丙型肝炎)",
+          "table_protect"
+        ]
+      },
+      "description": "大四上新增；病原-流行病学-临床表现-诊断链，数值阈值多，病名保护优先"
+    },
+    "obgyn": {
+      "name": "妇产科学",
+      "priority": 1,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 200,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.3,
+        "numeric_threshold": 2,
+        "preserve_sequence": false,
+        "special_rules": [
+          "numeric_protect",
+          "pattern_protect:(FIGO|妊娠期高血压疾病|子痫|前置胎盘|胎盘早剥|产后出血|胎膜早破|产程|分娩机制|羊水栓塞)",
+          "table_protect"
+        ]
+      },
+      "description": "大四上新增；产科关键病名与孕周数值保护，妇科以分期分型为主"
+    },
+    "emergency": {
+      "name": "急诊与灾难医学",
+      "priority": 1,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 600,
+        "overlap": 150,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "numeric_threshold": 2,
+        "preserve_sequence": true,
+        "special_rules": [
+          "numeric_protect",
+          "procedure_protect",
+          "pattern_protect:(心肺复苏|CPR|心搏骤停|电除颤|GCS|创伤|休克|中毒|高级生命支持|气道管理)",
+          "table_protect"
+        ]
+      },
+      "description": "大四上新增；流程时间窗密集（preserve_sequence），抢救处置顺序保护"
+    },
+    "ent": {
+      "name": "耳鼻咽喉头颈外科学",
+      "priority": 2,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 200,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "numeric_threshold": 2,
+        "preserve_sequence": false,
+        "special_rules": [
+          "numeric_protect",
+          "pattern_protect:(鼻窦|鼻腔|中耳|咽鼓管|鼓膜|内耳|前庭|声带|喉返神经|扁桃体|腺样体|面神经|甲状腺)",
+          "table_protect"
+        ]
+      },
+      "description": "大四上新增；解剖结构术语密集（三级结构命名），专科检查术语保护"
     }
   },
   "defaults": {

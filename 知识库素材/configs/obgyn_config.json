@@ -1,0 +1,54 @@
+{
+  "subject": "妇产科学",
+  "subject_code": "obgyn",
+  "version": "1.0",
+  "chunk_strategy": {
+    "chunk_size": 800,
+    "overlap": 200,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(FIGO|妊娠期高血压疾病|子痫|前置胎盘|胎盘早剥|产后出血|胎膜早破|产程|分娩机制|羊水栓塞)",
+        "description": "产科关键病名与分期保护"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(孕周|mm|cm|mmHg|B超|彩超|胎心监护|无应激试验|催产素)",
+        "description": "孕产期数值与检查术语保护"
+      },
+      {
+        "type": "table_protect",
+        "context_sentences": 1
+      }
+    ],
+    "metadata_enrichment": [
+      "has_gestational_age",
+      "has_staging"
+    ]
+  },
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.7,
+    "hybrid_search": true,
+    "keyword_weight": 0.3,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "妊高症": "妊娠期高血压疾病",
+      "产后出血": "产后出血",
+      "IVF": "辅助生殖技术",
+      "宫外孕": "异位妊娠"
+    }
+  }
+}

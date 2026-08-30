@@ -1,0 +1,53 @@
+{
+  "subject": "急诊与灾难医学",
+  "subject_code": "emergency",
+  "version": "1.0",
+  "chunk_strategy": {
+    "chunk_size": 600,
+    "overlap": 150,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": true,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "procedure_protect",
+        "context_sentences": 1
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(心肺复苏|CPR|心搏骤停|电除颤|GCS|创伤|休克|中毒|高级生命支持|气道管理)",
+        "description": "急救流程与关键处置术语保护"
+      },
+      {
+        "type": "table_protect",
+        "context_sentences": 1
+      }
+    ],
+    "metadata_enrichment": [
+      "has_procedure",
+      "has_time_window"
+    ]
+  },
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.7,
+    "hybrid_search": true,
+    "keyword_weight": 0.4,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "CPR": "心肺复苏",
+      "心骤停": "心搏骤停",
+      "除颤": "电除颤",
+      "多发伤": "创伤"
+    }
+  }
+}

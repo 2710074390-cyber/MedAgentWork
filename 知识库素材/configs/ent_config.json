@@ -1,0 +1,53 @@
+{
+  "subject": "耳鼻咽喉头颈外科学",
+  "subject_code": "ent",
+  "version": "1.0",
+  "chunk_strategy": {
+    "chunk_size": 800,
+    "overlap": 200,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(鼻窦|鼻腔|中耳|咽鼓管|鼓膜|内耳|前庭|声带|喉返神经|扁桃体|腺样体|面神经|甲状腺)",
+        "description": "解剖与关键结构术语保护"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(耳内镜|鼻内镜|纯音测听|声导抗|CT|MRI|纤维喉镜)",
+        "description": "专科检查术语保护"
+      },
+      {
+        "type": "table_protect",
+        "context_sentences": 1
+      }
+    ],
+    "metadata_enrichment": [
+      "has_anatomy",
+      "has_imaging"
+    ]
+  },
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.7,
+    "hybrid_search": true,
+    "keyword_weight": 0.4,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "OSA": "阻塞性睡眠呼吸暂停",
+      "中耳炎": "中耳炎",
+      "突发性聋": "突发性耳聋"
+    }
+  }
+}

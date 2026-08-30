@@ -94,6 +94,10 @@ SUBJECT_MAP = {
     "中医心理学": {"code": "tcm-psychology", "priority": 2},
     "认知神经科学": {"code": "cognitive-neuroscience", "priority": 2},
     "医患沟通": {"code": "doctor-patient","priority": 2},
+    "传染病学": {"code": "infectious-diseases", "priority": 1},
+    "妇产科学": {"code": "obgyn",         "priority": 1},
+    "急诊与灾难医学": {"code": "emergency", "priority": 1},
+    "耳鼻咽喉头颈外科学": {"code": "ent", "priority": 2},
 }
 
 # ─── 工具函数 ───────────────────────────────────────
@@ -135,7 +139,8 @@ def batch_embed(texts, api_key):
 
 def detect_subject(filepath):
     name = filepath.stem
-    for subject, info in SUBJECT_MAP.items():
+    # 最长名称优先匹配：防止「耳鼻咽喉头颈外科学」被子串「外科学」误判（2026-08-30 大四上暖机发现）
+    for subject, info in sorted(SUBJECT_MAP.items(), key=lambda kv: -len(kv[0])):
         if subject in name:
             return subject, info["code"], info["priority"]
     return name, "unknown", 99
