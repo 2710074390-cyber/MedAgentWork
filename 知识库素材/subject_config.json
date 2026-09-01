@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
-  "last_updated": "2026-08-30T00:00:00+08:00",
-  "note": "v2.0: 每学科加入 retrieval_strategy（混合检索 + keyword_weight），替代全局默认值；2026-08-30 大四上新增 infectious-diseases/obgyn/emergency/ent",
+  "last_updated": "2026-09-01T00:00:00+08:00",
+  "note": "v2.0: 每学科加入 retrieval_strategy（混合检索 + keyword_weight），替代全局默认值；2026-08-30 大四上新增 infectious-diseases/obgyn/emergency/ent；2026-09-01 新增 stomatology/ophthalmology",
   "subjects": {
     "internal-med": {
       "name": "内科学",
@@ -414,6 +414,50 @@
         ]
       },
       "description": "大四上新增；解剖结构术语密集（三级结构命名），专科检查术语保护"
+    },
+    "stomatology": {
+      "name": "口腔科学",
+      "priority": 2,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 200,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "numeric_threshold": 2,
+        "preserve_sequence": false,
+        "special_rules": [
+          "numeric_protect",
+          "pattern_protect:(龋病|牙髓|根管|牙周|牙槽|牙体|牙列|义齿|种植|颞下颌|咬合|牙拔除|口腔黏膜|唾液腺|颌面|牙颌畸形|面神经|三叉神经)",
+          "table_protect"
+        ]
+      },
+      "description": "大四上新增；牙位/数值与解剖结构术语密集，病名与术式名称保护优先"
+    },
+    "ophthalmology": {
+      "name": "眼科学",
+      "priority": 2,
+      "index_status": "indexed",
+      "config_version": "2.0",
+      "retrieval_strategy": {
+        "chunk_size": 800,
+        "overlap": 200,
+        "top_k": 20,
+        "top_n": 5,
+        "hybrid_search": true,
+        "keyword_weight": 0.4,
+        "numeric_threshold": 2,
+        "preserve_sequence": false,
+        "special_rules": [
+          "numeric_protect",
+          "pattern_protect:(角膜|葡萄膜|视网膜|黄斑|视神经|视路|晶状体|玻璃体|青光眼|白内障|屈光|斜视|弱视|眼睑|泪器|结膜|巩膜|房水|前房|眼底|眼压|视觉|瞳孔)",
+          "table_protect"
+        ]
+      },
+      "description": "大四上新增；眼部解剖与病名术语密集，视功能指标（视力/视野/眼压）数值保护"
     }
   },
   "defaults": {

@@ -1,0 +1,54 @@
+{
+  "subject": "口腔科学",
+  "subject_code": "stomatology",
+  "version": "1.0",
+  "chunk_strategy": {
+    "chunk_size": 800,
+    "overlap": 200,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(龋病|牙髓|根管|牙周|牙槽|牙体|牙列|义齿|种植|颞下颌|咬合|牙拔除|口腔黏膜|唾液腺|颌面部|牙颌畸形|面神经|三叉神经)",
+        "description": "牙体牙髓/牙周/修复/种植核心病名与结构术语保护"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(牙位|牙式|根尖周|开髓|根管治疗|洗牙|洁治|刮治|充填|拔牙|阻生牙|前牙|后牙)",
+        "description": "专科诊疗操作与牙位术语保护"
+      },
+      {
+        "type": "table_protect",
+        "context_sentences": 1
+      }
+    ],
+    "metadata_enrichment": [
+      "has_procedure",
+      "has_drug_info",
+      "has_syndrome"
+    ]
+  },
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.7,
+    "hybrid_search": true,
+    "keyword_weight": 0.4,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "龋齿": "龋病",
+      "智齿": "第三磨牙",
+      "牙周病": "牙周疾病"
+    }
+  }
+}

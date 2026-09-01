@@ -1,0 +1,54 @@
+{
+  "subject": "眼科学",
+  "subject_code": "ophthalmology",
+  "version": "1.0",
+  "chunk_strategy": {
+    "chunk_size": 800,
+    "overlap": 200,
+    "min_chunk_size": 100,
+    "numeric_threshold": 2,
+    "preserve_sequence": false,
+    "special_rules": [
+      {
+        "type": "numeric_protect",
+        "min_values": 2
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(角膜|葡萄膜|视网膜|黄斑|视神经|视路|晶状体|玻璃体|青光眼|白内障|屈光|斜视|弱视|眼睑|泪器|结膜|巩膜|房水|前房|眼底|眼压|瞳孔)",
+        "description": "眼部解剖与核心病名术语保护"
+      },
+      {
+        "type": "pattern_protect",
+        "pattern": "(视力|视野|眼压|视功能|视力表|房角|视盘|杯盘比|OCT|裂隙灯|检眼镜|激光)",
+        "description": "专科检查与视功能指标保护"
+      },
+      {
+        "type": "table_protect",
+        "context_sentences": 1
+      }
+    ],
+    "metadata_enrichment": [
+      "has_procedure",
+      "has_drug_info",
+      "has_syndrome"
+    ]
+  },
+  "retrieval_strategy": {
+    "top_k": 20,
+    "top_n": 5,
+    "score_threshold": 0.7,
+    "hybrid_search": true,
+    "keyword_weight": 0.4,
+    "chapter_filter": true,
+    "rerank_model": "BAAI/bge-reranker-v2-m3"
+  },
+  "query_enhancement": {
+    "synonym_expansion": true,
+    "term_map": {
+      "老视": "老花",
+      "青光眼": "青光眼",
+      "弱视": "弱视"
+    }
+  }
+}

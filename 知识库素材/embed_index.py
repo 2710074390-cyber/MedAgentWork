@@ -98,6 +98,8 @@ SUBJECT_MAP = {
     "妇产科学": {"code": "obgyn",         "priority": 1},
     "急诊与灾难医学": {"code": "emergency", "priority": 1},
     "耳鼻咽喉头颈外科学": {"code": "ent", "priority": 2},
+    "口腔科学": {"code": "stomatology", "priority": 2},
+    "眼科学":   {"code": "ophthalmology", "priority": 2},
 }
 
 # ─── 工具函数 ───────────────────────────────────────

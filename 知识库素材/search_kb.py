@@ -71,6 +71,9 @@ SUBJECT_ALIASES = {
     "内科学习题集": "internal-med-exercise",
     "外科学习题集": "surgery-exercise",
     "精神病学习题集": "psychiatry-exercise",
+    # 大四上新增（2026-09-01）
+    "口腔科学": "stomatology",
+    "眼科学": "ophthalmology",
 }
 
 Auxiliary_CONFIG_MAP_SEARCH = {
