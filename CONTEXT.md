@@ -305,16 +305,24 @@ Agent 每完成一轮任务后执行：
 | 精神病学 | psychiatry | 500 | 5 | ✓ | 0.3 | 3 |
 | 皮肤性病学 | dermatology | 600 | 5 | — | — | 2 |
 | 中医学 | tcm | 500 | 5 | ✓ | **0.6** | 4 |
+| 中医心理学 | tcm-psychology | 500 | 5 | ✓ | 0.45 | 5 |
+| 认知神经科学 | cognitive-neuroscience | 600 | 5 | ✓ | 0.45 | 5 |
 | 医患沟通 | doctor-patient | 800 | 3 | — | — | 3 |
 | 贺银成讲义 | heyincheng-jy* | 500 | 5 | ✓ | 0.4 | 1 |
 | 贺银成真题 | heyincheng-zt* | 800 | 3 | ✓ | 0.5 | 1 |
 | 昭昭题眼 | zhaozhao-part* | 400 | 3 | ✓ | 0.4 | — |
+| 传染病学 | infectious-diseases | 800 | 5 | ✓ | 0.3 | 3 |
+| 妇产科学 | obgyn | 800 | 5 | ✓ | 0.3 | 3 |
+| 急诊与灾难医学 | emergency | 600 | 5 | ✓ | 0.4 | 3 |
+| 耳鼻咽喉头颈外科学 | ent | 800 | 5 | ✓ | 0.4 | 3 |
+| 口腔科学 | stomatology | 800 | 5 | ✓ | 0.4 | 2 |
+| 眼科学 | ophthalmology | 800 | 5 | ✓ | 0.4 | 2 |
 
 ### 配置文件结构
 
 ```
 知识库素材/
-├── subject_config.json              ← 全局注册表（15个学科入口+默认值）
+├── subject_config.json              ← 全局注册表（23个学科入口+默认值）
 ├── configs/                          ← 各学科独立配置
 │   ├── internal-med_config.json      ← chunk_strategy + retrieval_strategy + query_enhancement
 │   ├── surgery_config.json
