@@ -16,7 +16,7 @@ powershell scripts\deploy_site.ps1
 
 - **未来主义设计** — 黑蓝深海配色 · 玻璃拟态 UI · ASCII 原子像素星域（粒子特效可开关，localStorage 记忆）
 - **五阶段 Agent 管线** — MedGen 出题 → MedQC 质检 → MedFix 修复 → MedReview 成册，门禁强制校验
-- **学期切换** — 大三下（完整内容）/ 大四上（5 科教学版资料，PDF 直链下载）
+- **三视图导航** — 主页（介绍与软件下载）/ 大三下（押题卷 · 题库 · 复习手册）/ 大四上（5 科教学版资料 PDF）
 - **访问计数** — 首页统计条实时显示累计访问次数（Cloudflare Pages Function + KV，一次页面打开 +1；站长打开 `?noself=1` 可将自己本机访问设为免计）
 - **软件工坊（MedKit）** — 本站产物的桌面生成器下载区（`#software`）
   - GitHub API 动态显示最新版本号与安装包大小，直链下载 + ghproxy 镜像备用

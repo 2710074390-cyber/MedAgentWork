@@ -821,21 +821,22 @@ body {
 <!-- ============ 导航 ============ -->
 <nav class="nav">
   <div class="nav-in">
-    <a class="brand" href="#top">
+    <a class="brand" href="#top" onclick="goTerm('home');return false;">
       <span class="logo">MW</span>
       <span class="name">Med<b>Agent</b>Work</span>
     </a>
     <div class="nav-links">
-      <a href="#exams">押题卷</a>
-      <a href="#banks">题库</a>
-      <a href="#reviews">复习手册</a>
-      <a href="#software">软件下载</a>
-      <a href="#pipeline">幕后管线</a>
-      <a href="#quick">快速上手</a>
+      <a href="#exams" onclick="goTerm('junior2','exams');return false;">押题卷</a>
+      <a href="#banks" onclick="goTerm('junior2','banks');return false;">题库</a>
+      <a href="#reviews" onclick="goTerm('junior2','reviews');return false;">复习手册</a>
+      <a href="#software" onclick="goTerm('home','software');return false;">软件下载</a>
+      <a href="#pipeline" onclick="goTerm('home','pipeline');return false;">幕后管线</a>
+      <a href="#quick" onclick="goTerm('home','quick');return false;">快速上手</a>
     </div>
     <div class="nav-right">
       <div class="nav-term-tabs">
-        <button class="nav-term active" data-term="junior2">大三下</button>
+        <button class="nav-term active" data-term="home">主页</button>
+        <button class="nav-term" data-term="junior2">大三下</button>
         <button class="nav-term" data-term="senior1">大四上</button>
       </div>
       <a class="btn btn-sec btn-sm" href="https://github.com/2710074390-cyber/MedAgentWork" target="_blank" rel="noopener">GitHub ↗</a>
@@ -853,15 +854,16 @@ body {
       <span class="logo">MW</span><span class="name">Med<b>Agent</b>Work</span>
     </div>
     <nav class="mm-links">
-      <a href="#exams"><span class="mm-idx">01</span>押题卷</a>
-      <a href="#banks"><span class="mm-idx">02</span>题库</a>
-      <a href="#reviews"><span class="mm-idx">03</span>复习手册</a>
-      <a href="#software"><span class="mm-idx">04</span>出题软件</a>
-      <a href="#pipeline"><span class="mm-idx">05</span>幕后管线</a>
-      <a href="#quick"><span class="mm-idx">06</span>快速上手</a>
+      <a href="#exams" onclick="goTerm('junior2','exams')"><span class="mm-idx">01</span>押题卷</a>
+      <a href="#banks" onclick="goTerm('junior2','banks')"><span class="mm-idx">02</span>题库</a>
+      <a href="#reviews" onclick="goTerm('junior2','reviews')"><span class="mm-idx">03</span>复习手册</a>
+      <a href="#software" onclick="goTerm('home','software')"><span class="mm-idx">04</span>出题软件</a>
+      <a href="#pipeline" onclick="goTerm('home','pipeline')"><span class="mm-idx">05</span>幕后管线</a>
+      <a href="#quick" onclick="goTerm('home','quick')"><span class="mm-idx">06</span>快速上手</a>
     </nav>
     <div class="mm-term">
-      <button class="mm-term-btn active" data-term="junior2">大三下</button>
+      <button class="mm-term-btn active" data-term="home">主页</button>
+      <button class="mm-term-btn" data-term="junior2">大三下</button>
       <button class="mm-term-btn" data-term="senior1">大四上</button>
     </div>
     <div class="mm-foot">
@@ -872,6 +874,9 @@ body {
     </div>
   </div>
 </div>
+
+<!-- ============ 主页 ============ -->
+<div class="view active" id="view-home">
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
@@ -901,9 +906,9 @@ body {
           <p>每道题经<b>质检把关</b>、按考频组卷，可溯源、可回放——<b>刷得放心，背得有据</b>。</p>
         </div>
         <div class="hero-cta">
-          <a class="btn btn-pri" href="#exams">👁 在线答题</a>
-          <a class="btn btn-sec" href="#reviews">📚 复习手册</a>
-          <a class="btn btn-sec" href="#banks">📥 题库 PDF</a>
+          <a class="btn btn-pri" href="#exams" onclick="goTerm('junior2','exams');return false;">👁 在线答题</a>
+          <a class="btn btn-sec" href="#reviews" onclick="goTerm('junior2','reviews');return false;">📚 复习手册</a>
+          <a class="btn btn-sec" href="#banks" onclick="goTerm('junior2','banks');return false;">📥 题库 PDF</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -933,7 +938,7 @@ body {
       <b>在线答题</b><span class="g-where">押题卷区 ·「开始答题」</span>
       <p>点开任意押题卷，点选项立即判分；答错自动显示解析。进度保存在本机，下次接着刷。</p>
     </div>
-    <a class="g-go" href="#exams">去答题 →</a>
+    <a class="g-go" href="#exams" onclick="goTerm('junior2','exams')">去答题 →</a>
   </div>
   <div class="g-step">
     <span class="g-no">02</span>
@@ -941,7 +946,7 @@ body {
       <b>下载题库 PDF</b><span class="g-where">题库区 ·「下载 PDF」</span>
       <p>手机存进「文件」App，电脑存到「下载」文件夹。要纸质版：打开后打印，选「另存为 PDF」。</p>
     </div>
-    <a class="g-go" href="#banks">去下载 →</a>
+    <a class="g-go" href="#banks" onclick="goTerm('junior2','banks')">去下载 →</a>
   </div>
   <div class="g-step">
     <span class="g-no">03</span>
@@ -949,7 +954,7 @@ body {
       <b>研读复习手册</b><span class="g-where">复习手册区 ·「在线阅读 / 导出 PDF」</span>
       <p>在线阅读带「掌握 / 熟悉 / 理解」三级标注；「导出 PDF」一键生成可打印版本。</p>
     </div>
-    <a class="g-go" href="#reviews">去研读 →</a>
+    <a class="g-go" href="#reviews" onclick="goTerm('junior2','reviews')">去研读 →</a>
   </div>
   <div class="g-tip"><b>💡 常见问题</b><span>点了「开始答题」没反应？多半是浏览器拦了弹窗——点地址栏右侧的拦截图标，选「允许弹窗」即可。所有资料仅供学习交流。</span></div>
 </div>
@@ -980,133 +985,6 @@ body {
 </div>
 
 <main class="wrap">
-
-<!-- ============ 大三下 ============ -->
-<div class="view active" id="view-junior2">
-
-<!-- ============ 内容总览台（绝对主角） ============ -->
-<section class="section deck" id="deck">
-  <div class="section-head display reveal">
-    <div class="left">
-      <span class="chip"><span>内容总览 · <i>选择你的战场</i></span></span>
-      <h2>备考资源 <span class="accent">一键直达</span></h2>
-    </div>
-    <div class="right"><b>ABSOLUTE FOCUS</b>押题卷 · 题库 · 复习手册<br><span class="right-sub">4,917 题 · 15 学科 · 7 册手册</span></div>
-  </div>
-  <div class="deck-grid-wrap">
-  <div class="deck-grid">
-    <a class="deck-tile reveal" href="#exams">
-      <div class="dt-top"><span class="dt-icon">🧩</span><span class="dt-num">01</span></div>
-      <h3>押题卷 <span class="dt-en">EXAMS</span></h3>
-      <p>交互式答题 · 点击选项即时判分 · 进度追踪 · 错题高亮 · 按考频组卷</p>
-      <span class="dt-go">进入押题卷 <i>→</i></span>
-    </a>
-    <a class="deck-tile reveal" href="#banks">
-      <div class="dt-top"><span class="dt-icon">📥</span><span class="dt-num">02</span></div>
-      <h3>题库 <span class="dt-en">PDF LIBRARY</span></h3>
-      <p>六科 PDF 直链下载 · 版本与题量一屏可查 · 1,900+ 题精选</p>
-      <span class="dt-go">进入题库 <i>→</i></span>
-    </a>
-    <a class="deck-tile reveal" href="#reviews">
-      <div class="dt-top"><span class="dt-icon">📚</span><span class="dt-num">03</span></div>
-      <h3>复习手册 <span class="dt-en">REVIEWS</span></h3>
-      <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线阅读 · 下载保存 · 导出 PDF</p>
-      <span class="dt-go">进入复习手册 <i>→</i></span>
-    </a>
-    <a class="deck-tile reveal" href="#software">
-      <div class="dt-top"><span class="dt-icon">🛠️</span><span class="dt-num">04</span></div>
-      <h3>出题软件 <span class="dt-en">MEDKIT</span></h3>
-      <p>本站产物的桌面生成器 · 自备教材一键出题 · 免费开源 · Windows 直链下载</p>
-      <span class="dt-go">下载软件 <i>→</i></span>
-    </a>
-  </div>
-  <div class="deck-dots" id="deck-dots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
-  </div>
-  <div class="deck-tip reveal">
-    <span class="tip-icon">💡</span>
-    <p><b>第一次使用？</b> 点击上方任意分类即可进入 · 所有资料都能<b>在线查看</b>、<b>下载保存</b>到手机或电脑，复习手册还可以直接<b>导出为 PDF 打印</b></p>
-  </div>
-</section>
-
-<!-- ============ 押题卷（绝对主角 01） ============ -->
-<section class="section" id="exams">
-  <div class="section-head display reveal">
-    <div class="left">
-      <span class="chip"><span>押题卷 · <i>交互式答题</i></span></span>
-      <h2>押题卷 <span class="accent">交互式答题</span></h2>
-    </div>
-    <div class="right"><b>01 · 押题卷</b>05 套 · 点击选项即时判分<br><span class="right-sub">进度追踪 · 错题高亮 · 按考频组卷</span></div>
-  </div>
-  <div class="grid" id="grid-exam"></div>
-</section>
-
-<!-- ============ 题库 PDF（绝对主角 02） ============ -->
-<section class="section" id="banks">
-  <div class="section-head display reveal">
-    <div class="left">
-      <span class="chip"><span>题库 · <i>PDF 直链</i></span></span>
-      <h2>题库 <span class="accent">PDF 精选</span></h2>
-    </div>
-    <div class="right"><b>02 · 题库</b>06 科 · 直链下载<br><span class="right-sub">版本与题量一屏可查</span></div>
-  </div>
-  <div class="grid" id="grid-bank"></div>
-</section>
-
-<!-- ============ 复习手册（绝对主角 03） ============ -->
-<section class="section" id="reviews">
-  <div class="section-head display reveal">
-    <div class="left">
-      <span class="chip"><span>复习手册 · <i>系统研读</i></span></span>
-      <h2>复习手册 <span class="accent">系统研读</span></h2>
-    </div>
-    <div class="right"><b>03 · 复习手册</b>07 科 · 在线阅读 · 下载保存<br><span class="right-sub">导出 PDF 打印</span></div>
-  </div>
-  <div class="grid" id="grid-review"></div>
-</section>
-
-<!-- ============ 软件工坊（绝对主角 04） ============ -->
-<section class="section" id="software">
-  <div class="section-head display reveal">
-    <div class="left">
-      <span class="chip"><span>软件工坊 · <i>桌面生成器</i></span></span>
-      <h2>出题软件 <span class="accent">MedKit</span></h2>
-    </div>
-    <div class="right"><b>04 · 软件工坊</b>本站产物的生成器 · Windows<br><span class="right-sub">GitHub 开源 · 免费 · 数据本地</span></div>
-  </div>
-  <div class="sw-card reveal">
-    <div class="sw-logo" aria-hidden="true">
-      <svg viewBox="0 0 64 64" role="img" aria-label="MedKit 图标">
-        <defs>
-          <linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#2dd4bf"/>
-            <stop offset="0.6" stop-color="#0d9488"/>
-            <stop offset="1" stop-color="#134e4a"/>
-          </linearGradient>
-        </defs>
-        <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#mkg)"/>
-        <text x="32" y="32" text-anchor="middle" dominant-baseline="central"
-              font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif"
-              font-weight="700" font-size="21" fill="#f5faf8">MW</text>
-      </svg>
-    </div>
-    <div class="sw-body">
-      <div class="sw-title-row">
-        <span class="sw-title">MedKit · 医学题库工坊</span>
-        <span class="sw-ver" id="sw-ver">正在获取版本…</span>
-      </div>
-      <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点，自选 AI 服务商（DeepSeek / 智谱 / 通义 / Kimi），本地一键生成<b>全新题库、押题卷、复习手册与 Anki 卡片</b>。素材与产物全部保存在本机，只花自己的 API Key（整套题约 ¥1~5）。v0.10.1 新发布：R4 全链路审查三批次完结（18 项打磨：子步骤终态/僵尸线程隔离/分区互斥/超限与类型校验/批处理防连点/考前提醒触达/一键清同名卡等）+ 网络检索后端连通性修复（超时 75s、结果提取补强）；纯净安装包，不含示例/种子/测试数据。</p>
-      <div class="sw-tags">
-        <em>免费开源</em><em>Windows 7+</em><em>安装包 ≈ 59 MB</em><em>BYOK 自带 Key</em><em>内置更新提醒</em>
-      </div>
-      <p class="sw-note">MEDKIT → MEDGEN → MEDQC → MEDFIX → MEDREVIEW · DESKTOP EDITION</p>
-      <div class="sw-actions">
-        <a class="btn btn-pri" id="sw-dl" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.6v8.2M4.7 7.6 8 10.9l3.3-3.3M3 13.2h10"/></svg>下载 Windows 安装包</a>
-        <a class="btn btn-sec" id="sw-mirror" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener" style="display:none">镜像下载</a>
-        <a class="btn btn-sec" href="https://github.com/2710074390-cyber/medkit" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ============ 幕后管线（支撑系统） ============ -->
 <section class="section" id="pipeline">
@@ -1195,8 +1073,144 @@ body {
   </div>
 </section>
 
+<!-- ============ 软件工坊（绝对主角 04） ============ -->
+<section class="section" id="software">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>软件工坊 · <i>桌面生成器</i></span></span>
+      <h2>出题软件 <span class="accent">MedKit</span></h2>
+    </div>
+    <div class="right"><b>04 · 软件工坊</b>本站产物的生成器 · Windows<br><span class="right-sub">GitHub 开源 · 免费 · 数据本地</span></div>
+  </div>
+  <div class="sw-card reveal">
+    <div class="sw-logo" aria-hidden="true">
+      <svg viewBox="0 0 64 64" role="img" aria-label="MedKit 图标">
+        <defs>
+          <linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2dd4bf"/>
+            <stop offset="0.6" stop-color="#0d9488"/>
+            <stop offset="1" stop-color="#134e4a"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#mkg)"/>
+        <text x="32" y="32" text-anchor="middle" dominant-baseline="central"
+              font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif"
+              font-weight="700" font-size="21" fill="#f5faf8">MW</text>
+      </svg>
+    </div>
+    <div class="sw-body">
+      <div class="sw-title-row">
+        <span class="sw-title">MedKit · 医学题库工坊</span>
+        <span class="sw-ver" id="sw-ver">正在获取版本…</span>
+      </div>
+      <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点，自选 AI 服务商（DeepSeek / 智谱 / 通义 / Kimi），本地一键生成<b>全新题库、押题卷、复习手册与 Anki 卡片</b>。素材与产物全部保存在本机，只花自己的 API Key（整套题约 ¥1~5）。v0.9.0 新发布：90+ 项全链路体验修复——打印全库、停止即时生效、押题卷状态加固、成本记账补齐、防重复扣费。</p>
+      <div class="sw-tags">
+        <em>免费开源</em><em>Windows 7+</em><em>安装包 ≈ 59 MB</em><em>BYOK 自带 Key</em><em>内置更新提醒</em>
+      </div>
+      <p class="sw-note">MEDKIT → MEDGEN → MEDQC → MEDFIX → MEDREVIEW · DESKTOP EDITION</p>
+      <div class="sw-actions">
+        <a class="btn btn-pri" id="sw-dl" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.6v8.2M4.7 7.6 8 10.9l3.3-3.3M3 13.2h10"/></svg>下载 Windows 安装包</a>
+        <a class="btn btn-sec" id="sw-mirror" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener" style="display:none">镜像下载</a>
+        <a class="btn btn-sec" href="https://github.com/2710074390-cyber/medkit" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+</div><!-- /view-home -->
+
+<div class="wrap">
+
+<!-- ============ 大三下 ============ -->
+<div class="view" id="view-junior2">
+
+<!-- ============ 内容总览台（绝对主角） ============ -->
+<section class="section deck" id="deck">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>内容总览 · <i>选择你的战场</i></span></span>
+      <h2>备考资源 <span class="accent">一键直达</span></h2>
+    </div>
+    <div class="right"><b>ABSOLUTE FOCUS</b>押题卷 · 题库 · 复习手册<br><span class="right-sub">4,917 题 · 15 学科 · 7 册手册</span></div>
+  </div>
+  <div class="deck-grid-wrap">
+  <div class="deck-grid">
+    <a class="deck-tile reveal" href="#exams">
+      <div class="dt-top"><span class="dt-icon">🧩</span><span class="dt-num">01</span></div>
+      <h3>押题卷 <span class="dt-en">EXAMS</span></h3>
+      <p>交互式答题 · 点击选项即时判分 · 进度追踪 · 错题高亮 · 按考频组卷</p>
+      <span class="dt-go">进入押题卷 <i>→</i></span>
+    </a>
+    <a class="deck-tile reveal" href="#banks">
+      <div class="dt-top"><span class="dt-icon">📥</span><span class="dt-num">02</span></div>
+      <h3>题库 <span class="dt-en">PDF LIBRARY</span></h3>
+      <p>六科 PDF 直链下载 · 版本与题量一屏可查 · 1,900+ 题精选</p>
+      <span class="dt-go">进入题库 <i>→</i></span>
+    </a>
+    <a class="deck-tile reveal" href="#reviews">
+      <div class="dt-top"><span class="dt-icon">📚</span><span class="dt-num">03</span></div>
+      <h3>复习手册 <span class="dt-en">REVIEWS</span></h3>
+      <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线阅读 · 下载保存 · 导出 PDF</p>
+      <span class="dt-go">进入复习手册 <i>→</i></span>
+    </a>
+    <a class="deck-tile reveal" href="#software" onclick="goTerm('home','software');return false;">
+      <div class="dt-top"><span class="dt-icon">🛠️</span><span class="dt-num">04</span></div>
+      <h3>出题软件 <span class="dt-en">MEDKIT</span></h3>
+      <p>本站产物的桌面生成器 · 自备教材一键出题 · 免费开源 · Windows 直链下载</p>
+      <span class="dt-go">下载软件 <i>→</i></span>
+    </a>
+  </div>
+  <div class="deck-dots" id="deck-dots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+  </div>
+  <div class="deck-tip reveal">
+    <span class="tip-icon">💡</span>
+    <p><b>第一次使用？</b> 点击上方任意分类即可进入 · 所有资料都能<b>在线查看</b>、<b>下载保存</b>到手机或电脑，复习手册还可以直接<b>导出为 PDF 打印</b></p>
+  </div>
+</section>
+
+<!-- ============ 押题卷（绝对主角 01） ============ -->
+<section class="section" id="exams">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>押题卷 · <i>交互式答题</i></span></span>
+      <h2>押题卷 <span class="accent">交互式答题</span></h2>
+    </div>
+    <div class="right"><b>01 · 押题卷</b>05 套 · 点击选项即时判分<br><span class="right-sub">进度追踪 · 错题高亮 · 按考频组卷</span></div>
+  </div>
+  <div class="grid" id="grid-exam"></div>
+</section>
+
+<!-- ============ 题库 PDF（绝对主角 02） ============ -->
+<section class="section" id="banks">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>题库 · <i>PDF 直链</i></span></span>
+      <h2>题库 <span class="accent">PDF 精选</span></h2>
+    </div>
+    <div class="right"><b>02 · 题库</b>06 科 · 直链下载<br><span class="right-sub">版本与题量一屏可查</span></div>
+  </div>
+  <div class="grid" id="grid-bank"></div>
+</section>
+
+<!-- ============ 复习手册（绝对主角 03） ============ -->
+<section class="section" id="reviews">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>复习手册 · <i>系统研读</i></span></span>
+      <h2>复习手册 <span class="accent">系统研读</span></h2>
+    </div>
+    <div class="right"><b>03 · 复习手册</b>07 科 · 在线阅读 · 下载保存<br><span class="right-sub">导出 PDF 打印</span></div>
+  </div>
+  <div class="grid" id="grid-review"></div>
+</section>
+
 <!-- ============ 大四上 ============ -->
 </div><!-- /view-junior2 -->
+
+</div><!-- /wrap 大三下 -->
+
+<div class="wrap">
 
 <div class="view" id="view-senior1">
 
@@ -1246,7 +1260,10 @@ body {
 
 </div>
 
-</main>
+
+
+</div><!-- /wrap 大四上 -->
+
 
 <!-- ============ 页脚 ============ -->
 <footer class="footer">
@@ -1736,6 +1753,11 @@ function switchTerm(term){
   closeMobileMenu();
   window.scrollTo({top:0,behavior:'smooth'});
 }
+/* 跨视图跳转：先切换学期视图，再滚动到目标区块（用于首页/导航/磁贴跨区链接） */
+function goTerm(term,anchor){
+  switchTerm(term);
+  if(anchor){setTimeout(()=>{const el=document.getElementById(anchor);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},420);}
+}
 document.querySelectorAll('.nav-term,.mm-term-btn').forEach(t=>t.addEventListener('click',()=>switchTerm(t.dataset.term)));
 
 /* ---------- 移动端菜单 ---------- */
@@ -1987,7 +2009,7 @@ function bindFxToggle(btn){
 })();
 
 /* ---------- 历史兼容：恢复上次学期选择 ---------- */
-try{const saved=localStorage.getItem('maw-term');if(saved&&saved!=='junior2'){switchTerm(saved);window.scrollTo(0,0);}}catch(e){}
+try{const saved=localStorage.getItem('maw-term');if(saved){switchTerm(saved);window.scrollTo(0,0);}}catch(e){}
 
 /* ---------- 访问计数器（Cloudflare Pages Function + KV · 站长免计自己） ---------- */
 (function(){
