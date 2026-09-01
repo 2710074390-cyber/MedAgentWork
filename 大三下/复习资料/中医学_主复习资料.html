@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="deep">
+<html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,7 +48,6 @@
   --color-success-border: #6ee7b7;
   --accent: #2563eb;
   --accent-light: #dbeafe;
-  --hero-gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
   --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
   --font-mono: "SF Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
   --line-height: 1.8;
@@ -87,47 +86,6 @@
   --color-success-bg: #0a2e1f;
   --color-success-border: #1a4a30;
   --accent-light: #1a2e4a;
-  --hero-gradient: linear-gradient(135deg, #0a1628 0%, #16233f 50%, #241d40 100%);
-}
-
-[data-theme="deep"] {
-  /* 深海·未来主义（与 index.html 新站风格统一：黑蓝深海 + 玻璃 UI） */
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #101113;
-  --bg-tertiary: #1a1c20;
-  --bg-callout: #16181d;
-  --text-primary: rgba(255,255,255,0.92);
-  --text-secondary: rgba(255,255,255,0.60);
-  --text-tertiary: rgba(255,255,255,0.42);
-  --border: rgba(255,255,255,0.12);
-  --border-light: rgba(255,255,255,0.07);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
-  --color-master: #f87171;
-  --color-master-bg: rgba(248,113,113,0.10);
-  --color-master-border: rgba(248,113,113,0.40);
-  --color-familiar: #fbbf24;
-  --color-familiar-bg: rgba(251,191,36,0.10);
-  --color-familiar-border: rgba(251,191,36,0.40);
-  --color-understand: #34d399;
-  --color-understand-bg: rgba(52,211,153,0.10);
-  --color-understand-border: rgba(52,211,153,0.40);
-  --color-warning: #fbbf24;
-  --color-warning-bg: rgba(251,191,36,0.10);
-  --color-warning-border: rgba(251,191,36,0.40);
-  --color-tip: #8ab2ff;
-  --color-tip-bg: rgba(103,153,254,0.10);
-  --color-tip-border: rgba(103,153,254,0.40);
-  --color-info: #679efe;
-  --color-info-bg: rgba(103,153,254,0.10);
-  --color-info-border: rgba(103,153,254,0.40);
-  --color-success: #34d399;
-  --color-success-bg: rgba(52,211,153,0.10);
-  --color-success-border: rgba(52,211,153,0.40);
-  --accent: #679efe;
-  --accent-light: rgba(103,153,254,0.14);
-  --hero-gradient: linear-gradient(135deg, #0a0f1a 0%, #101a2e 50%, #0e1420 100%);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -145,7 +103,6 @@ body {
   background: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-wrap: break-word;   /* 手机端：ASCII 流程图/长串不可断行内容保护 */
 }
 
 #progress-bar {
@@ -282,16 +239,9 @@ body {
   max-width: calc(var(--content-width) + 96px);
 }
 
-/* 导出 PDF 引导条（打印时隐藏） */
-.print-hint {
-  display: block; margin: 0 0 18px; padding: 11px 16px; border-radius: 10px;
-  background: #eef4ff; border: 1px solid #c6d8f5; color: #0b4f8a; font-size: 13.5px; line-height: 1.7;
-}
-@media print { .print-hint { display: none !important; } }
-
 /* Hero Banner */
 .hero-banner {
-  background: var(--hero-gradient);
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
   border-radius: 16px;
   padding: 36px 40px;
   margin-bottom: 40px;
@@ -659,38 +609,13 @@ tr:last-child td {
     color: #1a1a2e;
   }
   body { font-size: 12px; background: #fff; }
-  /* 打印折叠展开（2026-08-21 修复）：全部折叠区强制展开，避免打印丢内容 */
-  .accordion .accordion-body { display: block !important; }
-  .accordion:not([open]) > .accordion-body { display: block !important; }
+  .accordion[open] .accordion-body { display: block !important; }
+  .accordion:not([open]) .accordion-body { display: none !important; }
   .fill-blank { color: var(--color-understand); border-bottom: 1px solid #999; }
   .fill-blank::after { display: none; }
 }
 
-/* ---------- v2 · 学习跟踪（教育学升级：进度/自评/回忆模式） ---------- */
-#study-chip { display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:5px 12px;
-  border-radius:14px; background: var(--bg-tertiary); border:1px solid var(--border);
-  color: var(--text-secondary); cursor:pointer; font-family: var(--font-body); }
-#study-chip b { color: var(--accent); }
-#recall-toggle { font-size:12px; padding:5px 12px; border-radius:14px; cursor:pointer;
-  border:1px solid var(--border); background:var(--bg-tertiary); color:var(--text-secondary);
-  font-family: var(--font-body); }
-#recall-toggle.on { background:var(--accent-light); border-color:var(--accent); color:var(--accent); font-weight:600; }
-body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color: var(--accent); }
-.module-control { display:flex; align-items:center; gap:8px; flex-wrap:wrap; width:100%; margin-top:4px; }
-.btn-study { font-size:12px; padding:4px 11px; border-radius:12px; cursor:pointer;
-  border:1px solid var(--border); background:var(--bg-tertiary); color:var(--text-secondary);
-  font-family: var(--font-body); transition: all .15s; }
-.btn-study:hover { border-color:var(--accent); color:var(--accent); }
-.btn-study.on-done { background:var(--color-success-bg); border-color:var(--color-success-border); color:var(--color-success); font-weight:600; }
-.btn-study.m-master { background:var(--color-understand-bg); border-color:var(--color-understand-border); color:var(--color-understand); font-weight:600; }
-.btn-study.m-review { background:var(--color-familiar-bg); border-color:var(--color-familiar-border); color:var(--color-familiar); font-weight:600; }
-.btn-study.m-weak { background:var(--color-master-bg); border-color:var(--color-master-border); color:var(--color-master); font-weight:600; }
-
 /* Responsive */
-@media (max-width: 768px) {
-  /* 手机端表格横向滚动，避免撑破页面 */
-  table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
-}
 @media (max-width: 1024px) {
   #main-content {
     padding: 24px 20px 60px;
@@ -775,7 +700,6 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <a href="#附录三必背记忆口诀汇总" class="sidebar-link">附录三：必背记忆口诀汇总</a>
 </nav>
 <main id="main-content">
-<div class="print-hint">📄 请在弹出的打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把本手册保存成 PDF 文件（折叠内容已自动展开）。</div>
 <div class="hero-banner">
 <h1>🧠 中医学 高效复习手册</h1>
 <p class="meta">MedAgentWork 自动生成 | 教材浓缩型 | 分层阅读</p>
@@ -902,16 +826,42 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:4px 0;line-height:2.2;font-size:14px">  <strong>武器工具</strong>（<span class="fill-blank" onclick="this.classList.toggle('revealed')">神农本草经</span>=最早的药物学专著，载药365种）+ <strong>临床示范</strong>（<span class="fill-blank" onclick="this.classList.toggle('revealed')">伤寒杂病论</span>=张仲景第一次</p>
 <p style="margin:8px 0;line-height:1.8">  演示了"辨证论治"如何在床旁操作）。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：四部经典=中医的"操作系统+补丁包+武器库+操作手册"。</p>
-<details class="accordion" open>
-<summary>🔬 展开：四大经典对比表</summary>
+<details class="accordion" open><summary>🔬 展开：四大经典对比表</summary>
 <div class="accordion-body">
-| 著作 | 地位 | 核心贡献 | 成书时代 |
-|------|------|---------|---------|
-| 《黄帝内经》 | 理论奠基 | 系统论述人体生理、病理、诊断、防治 | 战国至秦汉 |
-| 《难经》 | 补充发挥 | 81难问答解内经疑难，补脉诊和经络 | 东汉以前 |
-| 《神农本草经》 | 药物学开山 | 最早药学专著，载药365种，四气五味+君臣佐使 | 东汉 |
-| 《伤寒杂病论》 | 辨证论治典范 | 张仲景著，第一部理法方药完备的临床经典 | 东汉末 |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>著作</th>
+<th>地位</th>
+<th>核心贡献</th>
+<th>成书时代</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">黄帝内经</span></td>
+<td>理论奠基</td>
+<td>系统论述人体生理、病理、诊断、防治</td>
+<td>战国至秦汉</td>
+</tr>
+<tr>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">难经</span></td>
+<td>补充发挥</td>
+<td>81难问答解内经疑难，补脉诊和经络</td>
+<td>东汉以前</td>
+</tr>
+<tr>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">神农本草经</span></td>
+<td>药物学开山</td>
+<td>最早药学专著，载药365种，四气五味+君臣佐使</td>
+<td>东汉</td>
+</tr>
+<tr>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">伤寒杂病论</span></td>
+<td>辨证论治典范</td>
+<td>张仲景著，第一部理法方药完备的临床经典</td>
+<td>东汉末</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>「<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">本草纲目</span>是四大经典之一」→❌错！<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">本草纲目</span>是明代李时珍所著，不是四大经典。常见干扰项：<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">脉经</span>(王叔和)、<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">诸病源候论</span>(巢元方)。</p></div>
@@ -925,16 +875,52 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  <strong>李杲</strong>看到战乱年代很多人因饥荒导致脾胃虚弱→补脾胃最重要（补土派）；<strong>朱震亨</strong>观察到大城市</p>
 <p style="margin:8px 0;line-height:1.8">  富人的疾病多为阴虚阳亢→滋阴降火（滋阴派）。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：金元四大家=医学从"注经时代"走向"临床创新时代"的转折点。</p>
-<details class="accordion" open>
-<summary>🔬 展开：金元四大家完整对比</summary>
+<details class="accordion" open><summary>🔬 展开：金元四大家完整对比</summary>
 <div class="accordion-body">
-| 医家 | 学派 | 核心理论 | 治法特点 | 代表著作 | 时代 |
-|------|------|---------|---------|---------|------|
-| 刘完素 | 寒凉派 | 六气皆从火化 | 清热泻火 | 《素问玄机原病式》 | 金代 |
-| 张从正 | 攻下派 | 邪去则正安 | 汗吐下攻邪 | 《儒门事亲》 | 金代 |
-| 李杲 | 补土派 | 脾胃内伤百病由生 | 补中益气升阳 | 《脾胃论》 | 金元 |
-| 朱震亨 | 滋阴派 | 阳常有余阴常不足 | 滋阴降火 | 《格致余论》 | 元代 |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>医家</th>
+<th>学派</th>
+<th>核心理论</th>
+<th>治法特点</th>
+<th>代表著作</th>
+<th>时代</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>刘完素</td>
+<td>寒凉派</td>
+<td>六气皆从火化</td>
+<td>清热泻火</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">素问玄机原病式</span></td>
+<td>金代</td>
+</tr>
+<tr>
+<td>张从正</td>
+<td>攻下派</td>
+<td>邪去则正安</td>
+<td>汗吐下攻邪</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">儒门事亲</span></td>
+<td>金代</td>
+</tr>
+<tr>
+<td>李杲</td>
+<td>补土派</td>
+<td>脾胃内伤百病由生</td>
+<td>补中益气升阳</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">脾胃论</span></td>
+<td>金元</td>
+</tr>
+<tr>
+<td>朱震亨</td>
+<td>滋阴派</td>
+<td>阳常有余阴常不足</td>
+<td>滋阴降火</td>
+<td><span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">格致余论</span></td>
+<td>元代</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>「刘寒张攻李补朱滋」——刘完素(寒凉)+张从正(攻下)+李杲(补土)+朱震亨(滋阴)</p></div>
@@ -946,17 +932,14 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  <strong>怎么看变化</strong>（恒动观念=生命和疾病都不是静止照片而是动态电影）、<strong>怎么处理疾病</strong>（辨证论治=</p>
 <p style="margin:8px 0;line-height:1.8">  不看病名看证型，找准当前阶段的核心矛盾再下手）。这三点构成了一个完整的"观察-分析-决策"闭环。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：中医看病=用整体眼光+动态视角+精准辨证——"全·动·准"三字诀。</p>
-<details class="accordion" open>
-<summary>🔬 展开：整体观念的三层考试陷阱</summary>
+<details class="accordion" open><summary>🔬 展开：整体观念的三层考试陷阱</summary>
 <div class="accordion-body">
-**整体观念**包含三个不可分割的层面：
-- **人体自身整体性**：五脏六腑通过经络联结为有机整体
-- **人与自然环境的统一性**：季节气候（春夏脉浮大/秋冬脉沉小）、昼夜晨昏（旦慧昼安夕加夜甚）
-- **人与社会环境的统一性**：社会地位变迁、人际关系影响情志→脏腑气机紊乱
-
-考试最经典的"挖坑"方式：题目问"整体观念的含义包括？"，选项故意漏掉"人与社会的统一性"。
-"天人合一=整体观念"→❌错！天人合一是古代哲学概念，整体观念是中医学理论特点。
-
+<p style="margin:8px 0;line-height:1.8"><strong>整体观念</strong>包含三个不可分割的层面：</p>
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li><strong>人体自身整体性</strong>：五脏六腑通过经络联结为有机整体</li><li><strong>人与自然环境的统一性</strong>：季节气候（春夏脉浮大/秋冬脉沉小）、昼夜晨昏（旦慧昼安夕加夜甚）</li><li><strong>人与社会环境的统一性</strong>：社会地位变迁、人际关系影响情志→脏腑气机紊乱</li>
+</ul>
+<p style="margin:8px 0;line-height:1.8">考试最经典的"挖坑"方式：题目问"整体观念的含义包括？"，选项故意漏掉"人与社会的统一性"。</p>
+<p style="margin:8px 0;line-height:1.8">"天人合一=整体观念"→❌错！天人合一是古代哲学概念，整体观念是中医学理论特点。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>「整体观念=天人合一」→❌错！整体观念含三个层次（人自身+自然+社会）。考试中"天人合一"替代"整体观念"通常是错误选项。</p></div>
@@ -1098,10 +1081,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>为什么中医不能只看"病名"治疗而必须先"辨证"？因为同一个病在不同____和不同____身上表现为不同的____</li><li>阴阳为什么是八纲辨证的总纲？因为表热实属____/里寒虚属____</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 黄帝内经；难经；神农本草经；伤寒杂病论 2. 寒凉；攻下；补土；滋阴 3. 制约；互用；平衡；转化 4. 火；土；金；水；木 5. 阶段；人；证 6. 阳；阴
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>黄帝内经；难经；神农本草经；伤寒杂病论 2. 寒凉；攻下；补土；滋阴 3. 制约；互用；平衡；转化 4. 火；土；金；水；木 5. 阶段；人；证 6. 阳；阴</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p>- ⚠️ 「整体观念=天人合一」→天人合一是哲学概念，整体观念含三个层次，多选漏选高频<br>- ⚠️ 「证=症状的集合」→证包含病因病位病性邪正关系，比症状组合深刻得多<br>- ⚠️ 五行生克方向记混→ 生=顺时针（木火土金水），克=隔一个跳</p></div>
@@ -1131,17 +1115,78 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  （"肝主疏泄"=压力→气机紊乱→胁痛/月经不调）；<strong>肾</strong>=内分泌+生殖+水盐平衡+呼吸深度的合体</p>
 <p style="margin:8px 0;line-height:1.8">  （"肾主纳气"=肾上腺功能→呼吸深度）。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：五脏=五个功能模块的"品牌名"——不要拿解剖刀去验证。</p>
-<details class="accordion" open>
-<summary>🔬 展开：五脏系统全表</summary>
+<details class="accordion" open><summary>🔬 展开：五脏系统全表</summary>
 <div class="accordion-body">
-| 五脏 | 核心功能 | 在体 | 华 | 窍 | 志 | 五行 | 别称 | 通季节 |
-|------|---------|------|-----|-----|-----|------|------|--------|
-| 心 | 主血脉、藏神 | 合脉 | 面 | 舌 | 喜 | 火 | 君主之官 | 夏气 |
-| 肺 | 主气司呼吸、行水、朝百脉 | 合皮 | 毛 | 鼻 | 悲 | 金 | 华盖 | 秋气 |
-| 脾 | 主运化、统血 | 合肌肉 | 唇 | 口 | 思 | 土 | 后天之本 | 长夏 |
-| 肝 | 主疏泄、藏血 | 合筋 | 爪 | 目 | 怒 | 木 | 将军之官 | 春气 |
-| 肾 | 藏精、主水、纳气 | 合骨 | 发 | 耳及二阴 | 恐 | 水 | 先天之本 | 冬气 |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>五脏</th>
+<th>核心功能</th>
+<th>在体</th>
+<th>华</th>
+<th>窍</th>
+<th>志</th>
+<th>五行</th>
+<th>别称</th>
+<th>通季节</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>心</td>
+<td>主血脉、藏神</td>
+<td>合脉</td>
+<td>面</td>
+<td>舌</td>
+<td>喜</td>
+<td>火</td>
+<td>君主之官</td>
+<td>夏气</td>
+</tr>
+<tr>
+<td>肺</td>
+<td>主气司呼吸、行水、朝百脉</td>
+<td>合皮</td>
+<td>毛</td>
+<td>鼻</td>
+<td>悲</td>
+<td>金</td>
+<td>华盖</td>
+<td>秋气</td>
+</tr>
+<tr>
+<td>脾</td>
+<td>主运化、统血</td>
+<td>合肌肉</td>
+<td>唇</td>
+<td>口</td>
+<td>思</td>
+<td>土</td>
+<td>后天之本</td>
+<td>长夏</td>
+</tr>
+<tr>
+<td>肝</td>
+<td>主疏泄、藏血</td>
+<td>合筋</td>
+<td>爪</td>
+<td>目</td>
+<td>怒</td>
+<td>木</td>
+<td>将军之官</td>
+<td>春气</td>
+</tr>
+<tr>
+<td>肾</td>
+<td>藏精、主水、纳气</td>
+<td>合骨</td>
+<td>发</td>
+<td>耳及二阴</td>
+<td>恐</td>
+<td>水</td>
+<td>先天之本</td>
+<td>冬气</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>「中医的心=西医的heart」→❌错！中医的心=循环+精神活动双重中枢。把中医五脏等同于西医解剖器官是对中医最大的误解。</p></div>
@@ -1162,16 +1207,47 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  <strong>防御</strong>=国防军（免疫屏障）；<strong>固摄</strong>=警察系统（统摄血/津液/精液不流失）；<strong>气化</strong>=工业产能。</p>
 <p style="margin:8px 0;line-height:1.8">  "气虚"=五维同时衰减——运输瘫痪+供暖不足+边防空虚+治安混乱+工业衰退。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：气虚=五维同时衰减——不是"少了点气"，是整个运转系统功率降低。</p>
-<details class="accordion" open>
-<summary>🔬 展开：气分类与功能</summary>
+<details class="accordion" open><summary>🔬 展开：气分类与功能</summary>
 <div class="accordion-body">
-| 分类 | 来源 | 分布 | 功能 | 属性 |
-|------|------|------|------|------|
-| 元气 | 先天之精+后天水谷 | 藏于肾，布散全身 | 推动生长发育，激发脏腑 | 最根本的气 |
-| 宗气 | 肺吸清气+脾运精微 | 积于胸中（膻中） | 行呼吸，贯心脉行气血 | 胸中大气 |
-| 营气 | 水谷精微之精华 | 行于脉内 | 化生血液，营养全身 | 属阴 |
-| 卫气 | 水谷精微之悍烈 | 行于脉外 | 护卫肌表，调节腠理 | 属阳 |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>分类</th>
+<th>来源</th>
+<th>分布</th>
+<th>功能</th>
+<th>属性</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>元气</td>
+<td>先天之精+后天水谷</td>
+<td>藏于肾，布散全身</td>
+<td>推动生长发育，激发脏腑</td>
+<td>最根本的气</td>
+</tr>
+<tr>
+<td>宗气</td>
+<td>肺吸清气+脾运精微</td>
+<td>积于胸中（膻中）</td>
+<td>行呼吸，贯心脉行气血</td>
+<td>胸中大气</td>
+</tr>
+<tr>
+<td>营气</td>
+<td>水谷精微之精华</td>
+<td>行于脉内</td>
+<td>化生血液，营养全身</td>
+<td>属阴</td>
+</tr>
+<tr>
+<td>卫气</td>
+<td>水谷精微之悍烈</td>
+<td>行于脉外</td>
+<td>护卫肌表，调节腠理</td>
+<td>属阳</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <p style="margin:8px 0"><span class="importance-badge imp-master">掌握</span> 【掌握级】胆主决断+胃受纳腐熟+小肠分清泌浊（新大纲重点）（教材P39）</p>
@@ -1207,10 +1283,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>五脏共同特点是____和____精气——"藏而不泻、满而不实"</li><li>肺被称为"____"，心被称为"____"，脾被称为"____"，肾被称为"____"</li><li>胆既是____腑，又是____之腑——唯一具有双重身份的器官</li><li>气具有____、____、____、____、____五大功能</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 化生；贮藏 2. 华盖；君主之官；后天之本；先天之本 3. 六；奇恒 4. 推动；温煦；防御；固摄；气化
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>化生；贮藏 2. 华盖；君主之官；后天之本；先天之本 3. 六；奇恒 4. 推动；温煦；防御；固摄；气化</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p>- ⚠️ 「胆只属于六腑」→❌！胆既属六腑又属奇恒之腑→考试高频交叉考点<br>- ⚠️ 「肾阴=肾阳」→❌！肾阴主滋润濡养、肾阳主温煦推动，功能方向不同</p></div>
@@ -1237,18 +1314,61 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  <strong>燥</strong>=低湿度环境（黏膜脱水→"干涩""伤津"）；<strong>火（热）</strong>=高温+炎症反应（血管扩张→红肿热痛）。</p>
 <p style="margin:8px 0;line-height:1.8">  理解了六淫=六种物理应激→就理解了为什么治疗方法是"反其道而行"（寒者热之/热者寒之/湿者燥之/燥者润之）。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：六淫=人体的"极限天气耐受测试"——各种极端物理环境依次"过一遍"。</p>
-<details class="accordion" open>
-<summary>🔬 展开：六淫致病特性完整对比</summary>
+<details class="accordion" open><summary>🔬 展开：六淫致病特性完整对比</summary>
 <div class="accordion-body">
-| 六淫 | 阴阳 | 核心特性 | 致病特点 | 关键词 |
-|------|------|----------|---------|--------|
-| 风 | 阳邪 | 开泄·善行数变·百病之长 | 病位游走不定/变化快/常兼他邪 | 动·变幻·向上 |
-| 寒 | 阴邪 | 凝滞·收引·伤阳气 | 疼痛剧烈固定/经脉收缩/畏寒 | 冷·缩·痛 |
-| 暑 | 阳邪 | 炎热·升散·耗气伤津·挟湿 | 高热/多汗/口渴/夏季特有 | 热·夏季·汗多 |
-| 湿 | 阴邪 | 重浊·黏滞·趋下·阻遏气机 | 沉重感/病程缠绵/下部先受 | 重·黏·向下 |
-| 燥 | — | 干涩·伤津液·伤肺 | 口鼻咽喉干燥/干咳/秋季多见 | 干燥·秋季·肺 |
-| 火（热） | 阳邪 | 炎上·扰心神·耗气伤津·生风动血·致疮痈 | 高热/烦躁/出血/红肿 | 热·向上·红肿 |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>六淫</th>
+<th>阴阳</th>
+<th>核心特性</th>
+<th>致病特点</th>
+<th>关键词</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>风</td>
+<td>阳邪</td>
+<td>开泄·善行数变·百病之长</td>
+<td>病位游走不定/变化快/常兼他邪</td>
+<td>动·变幻·向上</td>
+</tr>
+<tr>
+<td>寒</td>
+<td>阴邪</td>
+<td>凝滞·收引·伤阳气</td>
+<td>疼痛剧烈固定/经脉收缩/畏寒</td>
+<td>冷·缩·痛</td>
+</tr>
+<tr>
+<td>暑</td>
+<td>阳邪</td>
+<td>炎热·升散·耗气伤津·挟湿</td>
+<td>高热/多汗/口渴/夏季特有</td>
+<td>热·夏季·汗多</td>
+</tr>
+<tr>
+<td>湿</td>
+<td>阴邪</td>
+<td>重浊·黏滞·趋下·阻遏气机</td>
+<td>沉重感/病程缠绵/下部先受</td>
+<td>重·黏·向下</td>
+</tr>
+<tr>
+<td>燥</td>
+<td>—</td>
+<td>干涩·伤津液·伤肺</td>
+<td>口鼻咽喉干燥/干咳/秋季多见</td>
+<td>干燥·秋季·肺</td>
+</tr>
+<tr>
+<td>火（热）</td>
+<td>阳邪</td>
+<td>炎上·扰心神·耗气伤津·生风动血·致疮痈</td>
+<td>高热/烦躁/出血/红肿</td>
+<td>热·向上·红肿</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>「风邪=只有外风」→❌！有外风（六淫）也有内风（肝阳化风）。「暑邪只有热」→❌！暑多挟湿。</p></div>
@@ -1340,10 +1460,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>六淫包括：____、____、____、____、____、____（热）</li><li>六淫共同特点五字诀："____季____相____"</li><li>七情伤五脏：怒伤____/喜伤____/思伤____/悲伤____/恐伤____</li><li>瘀血疼痛四大特点：____痛+____不移+____按+____间痛甚</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 风；寒；暑；湿；燥；火 2. 外；节；环；兼；转 3. 肝；心；脾；肺；肾 4. 刺；固定；拒；夜
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>风；寒；暑；湿；燥；火 2. 外；节；环；兼；转 3. 肝；心；脾；肺；肾 4. 刺；固定；拒；夜</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p>- ⚠️ 「六淫只有外感」→❌！内生五邪（内风/内寒/内湿/内燥/内火）也是致病因素<br>- ⚠️ 「瘀血=只有外伤导致」→❌！气虚/气滞/血寒/血热均可导致瘀血</p></div>
@@ -1367,19 +1488,52 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  触发最后一次应激反应→肾上腺皮质和髓质最后一次大量释放激素→患者短暂出现"好转"假象（精神转佳、</p>
 <p style="margin:8px 0;line-height:1.8">  面色如妆、突然思食）。这种"好转"的持续时间通常极短（数小时至1-2天），之后便是不可逆的衰竭。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：得神=真·健康，假神=临终系统最后一次"全功率自检"——亮一下然后关机。</p>
-<details class="accordion" open>
-<summary>🔬 展开：得神 vs 假神 完整对比表</summary>
+<details class="accordion" open><summary>🔬 展开：得神 vs 假神 完整对比表</summary>
 <div class="accordion-body">
-| 对比维度 | 得神（有神） | 假神（回光返照） |
-|----------|-------------|-----------------|
-| 精神 | 精神饱满 | 原萎靡→突然转佳 |
-| 目光 | 目光有神 | 原呆滞→目光明亮 |
-| 面色 | 面色荣润 | 两颧色红如妆（戴阳证） |
-| 语言 | 语言清晰 | 原低弱→突然清亮 |
-| 饮食 | 正常 | 原不思饮食→突然思食索食 |
-| 病机 | 正气充足 | 阴不敛阳·虚阳外越 |
-| 预后 | **良好** | **不良（临终预警）** |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>对比维度</th>
+<th>得神（有神）</th>
+<th>假神（回光返照）</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>精神</td>
+<td>精神饱满</td>
+<td>原萎靡→突然转佳</td>
+</tr>
+<tr>
+<td>目光</td>
+<td>目光有神</td>
+<td>原呆滞→目光明亮</td>
+</tr>
+<tr>
+<td>面色</td>
+<td>面色荣润</td>
+<td>两颧色红如妆（戴阳证）</td>
+</tr>
+<tr>
+<td>语言</td>
+<td>语言清晰</td>
+<td>原低弱→突然清亮</td>
+</tr>
+<tr>
+<td>饮食</td>
+<td>正常</td>
+<td>原不思饮食→突然思食索食</td>
+</tr>
+<tr>
+<td>病机</td>
+<td>正气充足</td>
+<td>阴不敛阳·虚阳外越</td>
+</tr>
+<tr>
+<td>预后</td>
+<td><strong>良好</strong></td>
+<td><strong>不良（临终预警）</strong></td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>「假神=病情好转」→❌大错！假神是"回光返照"，出现后通常短期内死亡。</p></div>
@@ -1504,10 +1658,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>四诊包括：____、____、____、____</li><li>得神典型表现：精神____+目光____+面色____</li><li>正常舌象："____舌、____苔"</li><li>红舌主____证，镜面舌主____枯竭</li><li>胀痛主____、刺痛主____、冷痛主____、重痛主____</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 望；闻；问；切 2. 饱满；有神；荣润 3. 淡红；薄白 4. 热；阴液 5. 气滞；瘀血；寒邪；湿邪
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>望；闻；问；切 2. 饱满；有神；荣润 3. 淡红；薄白 4. 热；阴液 5. 气滞；瘀血；寒邪；湿邪</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>- <code>"淡红舌·薄白苔"</code> → 正常舌象<br>- <code>"胀气刺瘀冷寒灼热隐虚重温"</code> → 六种疼痛</p></div>
@@ -1530,20 +1685,57 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  判断下来，每个病人都能落到八种基本证型之一。辨证的第一步，就是问自己"表还是里？</p>
 <p style="margin:8px 0;line-height:1.8">  寒还是热？虚还是实？"——三个问题问完，方向就定了。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：八纲=三个"是·还是"问题→答案自动生成阴阳总纲——中医诊断的"决策树根节点"。</p>
-<details class="accordion" open>
-<summary>🔬 展开：八纲各证典型表现</summary>
+<details class="accordion" open><summary>🔬 展开：八纲各证典型表现</summary>
 <div class="accordion-body">
-| 八纲 | 典型表现 | 核心鉴别词 |
-|------|---------|----------|
-| 表证 | 恶寒发热+头身疼痛+鼻塞流涕+苔薄白+脉浮 | 病位浅·皮毛肌腠 |
-| 里证 | 不恶寒反恶热+脏腑症状+苔厚+脉沉 | 病位深·脏腑 |
-| 寒证 | 恶寒喜暖+口淡不渴+面色白+分泌物清稀+舌淡苔白+脉迟紧 | 冷·白·清稀 |
-| 热证 | 发热+口渴喜冷+面红+分泌物黄稠+舌红苔黄+脉数 | 热·红·黄稠 |
-| 虚证 | 面色萎黄或白+神疲乏力+气短懒言+自汗+舌淡+脉虚无力 | 不足·无力 |
-| 实证 | 发热+烦躁+胸闷腹胀+疼痛拒按+便秘+苔厚腻+脉实有力 | 邪盛·有力 |
-| 阴虚 | 五心烦热+潮热盗汗+颧红+口干咽燥+舌红少苔+脉细数 | 虚热·干燥 |
-| 阳虚 | 畏寒肢冷+面色白+神疲乏力+小便清长+舌淡胖+脉沉迟无力 | 虚寒·冰冷 |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>八纲</th>
+<th>典型表现</th>
+<th>核心鉴别词</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>表证</td>
+<td>恶寒发热+头身疼痛+鼻塞流涕+苔薄白+脉浮</td>
+<td>病位浅·皮毛肌腠</td>
+</tr>
+<tr>
+<td>里证</td>
+<td>不恶寒反恶热+脏腑症状+苔厚+脉沉</td>
+<td>病位深·脏腑</td>
+</tr>
+<tr>
+<td>寒证</td>
+<td>恶寒喜暖+口淡不渴+面色白+分泌物清稀+舌淡苔白+脉迟紧</td>
+<td>冷·白·清稀</td>
+</tr>
+<tr>
+<td>热证</td>
+<td>发热+口渴喜冷+面红+分泌物黄稠+舌红苔黄+脉数</td>
+<td>热·红·黄稠</td>
+</tr>
+<tr>
+<td>虚证</td>
+<td>面色萎黄或白+神疲乏力+气短懒言+自汗+舌淡+脉虚无力</td>
+<td>不足·无力</td>
+</tr>
+<tr>
+<td>实证</td>
+<td>发热+烦躁+胸闷腹胀+疼痛拒按+便秘+苔厚腻+脉实有力</td>
+<td>邪盛·有力</td>
+</tr>
+<tr>
+<td>阴虚</td>
+<td>五心烦热+潮热盗汗+颧红+口干咽燥+舌红少苔+脉细数</td>
+<td>虚热·干燥</td>
+</tr>
+<tr>
+<td>阳虚</td>
+<td>畏寒肢冷+面色白+神疲乏力+小便清长+舌淡胖+脉沉迟无力</td>
+<td>虚寒·冰冷</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>「八纲中表里最重要」→❌错！阴阳是总纲——<span class="fill-blank" onclick="this.classList.toggle(\'revealed\')">内经</span>"善诊者，察色按脉，先别阴阳"</p></div>
@@ -1691,10 +1883,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>八纲辨证四对纲领：____、____、____、____，其中____为总纲</li><li>虚实纲领："邪气盛则____，精气夺则____"</li><li>阴虚证典型舌脉：舌____少苔、脉____数</li><li>阳虚证典型舌脉：舌____胖、脉____无力</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 阴阳；表里；寒热；虚实；阴阳 2. 实；虚 3. 红；细 4. 淡；沉迟
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>阴阳；表里；寒热；虚实；阴阳 2. 实；虚 3. 红；细 4. 淡；沉迟</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p>- ⚠️ 「八纲中表里最重要」→❌！阴阳是总纲——"善诊者，察色按脉，先别阴阳"<br>- ⚠️ 「阴虚=体内有水」→❌！阴虚是阴液不足——缺水导致虚热</p></div>
@@ -1794,10 +1987,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>治未病三层：____先防→既病____变→愈后防____</li><li>正治四原则：寒者____之·热者____之·虚则____之·实则____之</li><li>反治四方法：热因____用·寒因____用·塞因____用·通因____用</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 未病；防；复 2. 热；寒；补；泻 3. 热；寒；塞；通
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>未病；防；复 2. 热；寒；补；泻 3. 热；寒；塞；通</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>- <code>"防求调扶三"</code> → 六大治疗总则<br>- <code>"正逆反从"</code> → 正治=逆治（对着干），反治=从治（顺着来）</p></div>
@@ -1888,10 +2082,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>中药性能五大要素：四____·五____·升降____·归____·毒____</li><li>辛味药：能____（发散表邪）+能____（行气活血）</li><li>甘味药：能____（补益）+能____（缓急止痛）+能____（调和药性）</li><li>大黄核心功效：泻____·清____·凉____·逐____</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 气；味；浮沉；经；性 2. 散；行 3. 补；缓；和 4. 下；热；血；瘀
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>气；味；浮沉；经；性 2. 散；行 3. 补；缓；和 4. 下；热；血；瘀</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p>- ⚠️ 「大黄入汤剂同煎」→❌！大黄宜后下，久煎泻下力减弱<br>- ⚠️ 「天麻只治眩晕」→❌！天麻还可祛风通络治风寒湿痹</p></div>
@@ -1915,20 +2110,66 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  当先实脾"——疏肝时防止肝木过度克脾土；<strong>甘草</strong>（佐使）=调和诸药；<strong>薄荷+生姜</strong>=</p>
 <p style="margin:8px 0;line-height:1.8">  少量辛散助柴胡疏泄。全方疏肝+养血+健脾三法合一——"肝郁"从来不是单一问题。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：逍遥散="疏肝（柴胡）+养血（归芍）+健脾（术苓）"三线作战。</p>
-<details class="accordion" open>
-<summary>🔬 展开：逍遥散组成与角色</summary>
+<details class="accordion" open><summary>🔬 展开：逍遥散组成与角色</summary>
 <div class="accordion-body">
-| 药物 | 角色 | 作用 | 配伍逻辑 |
-|------|------|------|---------|
-| 柴胡 | 君 | 疏肝解郁 | 直击核心病机 |
-| 当归 | 臣 | 养血活血 | 肝体用血，疏肝必养血 |
-| 白芍 | 臣 | 柔肝敛阴 | 防止疏泄太过伤阴 |
-| 白术 | 佐 | 健脾益气 | "见肝之病知肝传脾当先实脾" |
-| 茯苓 | 佐 | 健脾渗湿 | 助白术健脾 |
-| 甘草 | 佐使 | 益气和中·调和 | 调和诸药 |
-| 薄荷 | 佐 | 疏散郁遏之气 | 少量辛散助柴胡疏泄 |
-| 煨生姜 | 佐 | 温中和胃 | 防寒凉药伤胃 |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>药物</th>
+<th>角色</th>
+<th>作用</th>
+<th>配伍逻辑</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>柴胡</td>
+<td>君</td>
+<td>疏肝解郁</td>
+<td>直击核心病机</td>
+</tr>
+<tr>
+<td>当归</td>
+<td>臣</td>
+<td>养血活血</td>
+<td>肝体用血，疏肝必养血</td>
+</tr>
+<tr>
+<td>白芍</td>
+<td>臣</td>
+<td>柔肝敛阴</td>
+<td>防止疏泄太过伤阴</td>
+</tr>
+<tr>
+<td>白术</td>
+<td>佐</td>
+<td>健脾益气</td>
+<td>"见肝之病知肝传脾当先实脾"</td>
+</tr>
+<tr>
+<td>茯苓</td>
+<td>佐</td>
+<td>健脾渗湿</td>
+<td>助白术健脾</td>
+</tr>
+<tr>
+<td>甘草</td>
+<td>佐使</td>
+<td>益气和中·调和</td>
+<td>调和诸药</td>
+</tr>
+<tr>
+<td>薄荷</td>
+<td>佐</td>
+<td>疏散郁遏之气</td>
+<td>少量辛散助柴胡疏泄</td>
+</tr>
+<tr>
+<td>煨生姜</td>
+<td>佐</td>
+<td>温中和胃</td>
+<td>防寒凉药伤胃</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀：「逍遥柴归芍苓术草薄姜」=「逍遥=疏肝+养血+健脾」</div><p></p></div>
@@ -2034,10 +2275,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>逍遥散的三大治法：____肝解郁+____血健脾</li><li>六味地黄丸"三补"：熟地黄补____·山茱萸补____·山药补____</li><li>白虎汤主治____气分热盛证四大症：大____·大____·大____·脉____</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 疏；养 2. 肾；肝肾；脾肾 3. 阳明；热；汗；渴；洪大
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>疏；养 2. 肾；肝肾；脾肾 3. 阳明；热；汗；渴；洪大</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p>- ⚠️ 「肾精不足证=六味地黄丸」→❌！肾精不足用<strong>左归丸</strong>——六味地黄丸=肾阴虚证<br>- ⚠️ 「银翘散=辛温解表」→❌！辛凉解表。麻黄汤才是辛温解表</p></div>
@@ -2133,10 +2375,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>十二经脉走向：手三阴从____走手·手三阳从____走头·足三阳从____走足·足三阴从____走腹胸</li><li>腧穴是脏腑经络之气____于体表的特殊部位</li><li>足三里在犊鼻穴下____寸，胫骨前嵴外____横指</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 胸；手；头；足 2. 输注 3. 3；一
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>胸；手；头；足 2. 输注 3. 3；一</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>- <code>"举手胸手头足胸"</code> → 十二经脉走向<br>- <code>"足三里膝下三寸胫旁开"</code> → 足三里定位<br>- <code>"腧穴=输注点"</code> → 核心关键词</p></div>
@@ -2158,17 +2401,42 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  激活系统未受损）→病情较轻。中脏腑=病灶累及大脑深部或大面积损伤→累及脑干网状结构→</p>
 <p style="margin:8px 0;line-height:1.8">  <strong>意识丧失+昏迷</strong>→病情危重。"神志改变"对应的正是"脑干网状结构是否被累及"这一关键解剖-生理边界。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：中经络 vs 中脏腑="有意识 vs 没意识"——大脑皮层 vs 累及脑干的本质区别。</p>
-<details class="accordion" open>
-<summary>🔬 展开：中风中经络 vs 中脏腑完整对比</summary>
+<details class="accordion" open><summary>🔬 展开：中风中经络 vs 中脏腑完整对比</summary>
 <div class="accordion-body">
-| 对比维度 | 中经络 | 中脏腑 |
-|----------|--------|--------|
-| 病情程度 | 较轻 | 危重 |
-| 病位深浅 | 浅（经络·大脑皮层） | 深（脏腑·脑干） |
-| 神志改变 | **无** | **有**（猝然昏仆·不省人事） |
-| 典型表现 | 口眼㖞斜·言语不利·半身不遂 | 猝然昏仆+半身不遂+口眼㖞斜 |
-| 闭证/脱证 | 不区分 | 区分为闭证与脱证 |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>对比维度</th>
+<th>中经络</th>
+<th>中脏腑</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>病情程度</td>
+<td>较轻</td>
+<td>危重</td>
+</tr>
+<tr>
+<td>病位深浅</td>
+<td>浅（经络·大脑皮层）</td>
+<td>深（脏腑·脑干）</td>
+</tr>
+<tr>
+<td>神志改变</td>
+<td><strong>无</strong></td>
+<td><strong>有</strong>（猝然昏仆·不省人事）</td>
+</tr>
+<tr>
+<td>典型表现</td>
+<td>口眼㖞斜·言语不利·半身不遂</td>
+<td>猝然昏仆+半身不遂+口眼㖞斜</td>
+</tr>
+<tr>
+<td>闭证/脱证</td>
+<td>不区分</td>
+<td>区分为闭证与脱证</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
@@ -2182,19 +2450,52 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  治法=<strong>回阳固脱</strong>（紧急回阳抢救生命）。</p>
 <p style="margin:8px 0;line-height:1.8">  闭和脱=中医急症最经典的"攻vs守"抉择——判断错误=用反方向治疗=加速死亡。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：闭证="关得住"→开窍（攻）·脱证="关不住"→固脱（守）。</p>
-<details class="accordion" open>
-<summary>🔬 展开：闭证 vs 脱证完整对比</summary>
+<details class="accordion" open><summary>🔬 展开：闭证 vs 脱证完整对比</summary>
 <div class="accordion-body">
-| 对比维度 | 闭证 | 脱证 |
-|----------|------|------|
-| 病机 | 邪实内闭 | 正气外脱 |
-| 牙关 | **紧闭** | 口开 |
-| 手 | **两手握固** | 手撒 |
-| 二便 | **大小便闭** | 遗尿失禁 |
-| 肢体 | 肢体强痉 | 肢体瘫软 |
-| 汗 | 无汗 | **肢冷汗出** |
-| 治法 | **开窍启闭** | **回阳固脱** |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>对比维度</th>
+<th>闭证</th>
+<th>脱证</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>病机</td>
+<td>邪实内闭</td>
+<td>正气外脱</td>
+</tr>
+<tr>
+<td>牙关</td>
+<td><strong>紧闭</strong></td>
+<td>口开</td>
+</tr>
+<tr>
+<td>手</td>
+<td><strong>两手握固</strong></td>
+<td>手撒</td>
+</tr>
+<tr>
+<td>二便</td>
+<td><strong>大小便闭</strong></td>
+<td>遗尿失禁</td>
+</tr>
+<tr>
+<td>肢体</td>
+<td>肢体强痉</td>
+<td>肢体瘫软</td>
+</tr>
+<tr>
+<td>汗</td>
+<td>无汗</td>
+<td><strong>肢冷汗出</strong></td>
+</tr>
+<tr>
+<td>治法</td>
+<td><strong>开窍启闭</strong></td>
+<td><strong>回阳固脱</strong></td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>「闭证和脱证治法相同」→❌大错！闭证=开窍（攻邪），脱证=固脱（回阳救逆）——方向完全相反。混淆=致命临床错误</p></div>
@@ -2213,19 +2514,68 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <p style="margin:8px 0;line-height:1.8">  <strong>痰浊中阻</strong>=脾虚生痰→痰浊蒙蔽清阳（"脑雾"——头重如蒙）→胸闷恶心+苔白腻→</p>
 <p style="margin:8px 0;line-height:1.8">  燥湿化痰健脾和胃→半夏白术天麻汤。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：眩晕="清阳上不到大脑"的统一结果——四条不同路径（风火/精亏/血虚/痰浊）导致同一个终点。</p>
-<details class="accordion" open>
-<summary>🔬 展开：眩晕四证型完整对比（最重要的辨证对比表）</summary>
+<details class="accordion" open><summary>🔬 展开：眩晕四证型完整对比（最重要的辨证对比表）</summary>
 <div class="accordion-body">
-| 对比维度 | 肝阳上亢 | 肾精不足 | 气血亏虚 | 痰浊中阻 |
-|----------|----------|----------|----------|----------|
-| 病机 | 肝阳偏盛·上扰清空 | 髓海空虚 | 气血不足·脑失所养 | 痰浊中阻·蒙蔽清阳 |
-| 眩晕特点 | 眩晕耳鸣·头胀痛 | 眩晕日久·精神萎靡 | 动则加剧 | 头重如蒙 |
-| 关键兼症 | 急躁易怒·恼怒加重 | 腰膝酸软·健忘·耳鸣 | 面白·乏力·心悸 | 胸闷恶心·食少多寐 |
-| 舌象 | 舌红苔黄 | 舌淡红 | 舌淡 | 苔白腻 |
-| 脉象 | 脉弦 | 脉细弱 | 脉细弱 | 脉濡滑 |
-| 治法 | 平肝潜阳·清火息风 | 滋养肝肾·益精填髓 | 补益气血·健运脾胃 | 燥湿化痰·健脾和胃 |
-| **方剂** | **天麻钩藤饮** | **左归丸** | **归脾汤** | **半夏白术天麻汤** |
-
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>对比维度</th>
+<th>肝阳上亢</th>
+<th>肾精不足</th>
+<th>气血亏虚</th>
+<th>痰浊中阻</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>病机</td>
+<td>肝阳偏盛·上扰清空</td>
+<td>髓海空虚</td>
+<td>气血不足·脑失所养</td>
+<td>痰浊中阻·蒙蔽清阳</td>
+</tr>
+<tr>
+<td>眩晕特点</td>
+<td>眩晕耳鸣·头胀痛</td>
+<td>眩晕日久·精神萎靡</td>
+<td>动则加剧</td>
+<td>头重如蒙</td>
+</tr>
+<tr>
+<td>关键兼症</td>
+<td>急躁易怒·恼怒加重</td>
+<td>腰膝酸软·健忘·耳鸣</td>
+<td>面白·乏力·心悸</td>
+<td>胸闷恶心·食少多寐</td>
+</tr>
+<tr>
+<td>舌象</td>
+<td>舌红苔黄</td>
+<td>舌淡红</td>
+<td>舌淡</td>
+<td>苔白腻</td>
+</tr>
+<tr>
+<td>脉象</td>
+<td>脉弦</td>
+<td>脉细弱</td>
+<td>脉细弱</td>
+<td>脉濡滑</td>
+</tr>
+<tr>
+<td>治法</td>
+<td>平肝潜阳·清火息风</td>
+<td>滋养肝肾·益精填髓</td>
+<td>补益气血·健运脾胃</td>
+<td>燥湿化痰·健脾和胃</td>
+</tr>
+<tr>
+<td><strong>方剂</strong></td>
+<td><strong>天麻钩藤饮</strong></td>
+<td><strong>左归丸</strong></td>
+<td><strong>归脾汤</strong></td>
+<td><strong>半夏白术天麻汤</strong></td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱（最重要的考试陷阱）</div><p>「肾精不足证→六味地黄丸」→❌这是全中医学最经典的方剂配对错误！肾<strong>精不足</strong>用<strong>左归丸</strong>（补肾填精），肾<strong>阴虚</strong>用<strong>六味地黄丸</strong>（滋补肾阴）。左归丸≠六味地黄丸——前者专补精，后者专滋阴！</p></div>
@@ -2347,10 +2697,11 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>看到"眩晕+头胀痛+急躁易怒+舌红苔黄+脉弦"=____证→治法____→方剂____</li><li>看到"眩晕日久+腰膝酸软+健忘+耳鸣"=____证→治法____→方剂____（⚠️不是六味地黄丸！）</li><li>中风昏迷+牙关紧闭+握固+便闭=____证→治法____；昏迷+口开手撒+遗尿=____证→治法____</li>
 </ol>
-<details class="accordion" open>
-<summary>📝 答案</summary>
+<details class="accordion" open><summary>📝 答案</summary>
 <div class="accordion-body">
-1. 经络；脏腑 2. 紧闭；握固；闭 3. 口开；撒；失禁 4. 行；痛；着 5. 肝阳上亢；平肝潜阳清火息风；天麻钩藤饮 6. 肾精不足；滋养肝肾益精填髓；左归丸 7. 闭；开窍启闭；脱；回阳固脱
+<ol style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>经络；脏腑 2. 紧闭；握固；闭 3. 口开；撒；失禁 4. 行；痛；着 5. 肝阳上亢；平肝潜阳清火息风；天麻钩藤饮 6. 肾精不足；滋养肝肾益精填髓；左归丸 7. 闭；开窍启闭；脱；回阳固脱</li>
+</ol>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">常见陷阱</div><p>- ⚠️ 「肾精不足证→六味地黄丸」→❌全中医学最经典错误！肾精不足=左归丸，肾阴虚=六味地黄丸<br>- ⚠️ 「闭证脱证治法相似」→❌闭证=开窍（攻）、脱证=固脱（守）——方向完全相反！</p></div>
@@ -2990,32 +3341,25 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 </main>
 <button id="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>
 <script>
-// Theme Toggle（三态循环：深海 → 亮 → 暗；默认深海，与 index.html 新站统一）
+// Theme Toggle
 const html = document.documentElement;
 const themeToggle = document.getElementById('theme-toggle');
 
-const THEME_ORDER = ['deep', 'light', 'dark'];
-const THEME_NEXT = { deep: 'light', light: 'dark', dark: 'deep' };
-const THEME_ICON = { deep: '\uD83C\uDF0A', light: '\u2600\uFE0F', dark: '\uD83C\uDF19' };  // 图标 = 点击后切换到的主题
-
 function setTheme(theme) {
   html.setAttribute('data-theme', theme);
-  themeToggle.textContent = THEME_ICON[THEME_NEXT[theme]] || '\uD83C\uDF19';
+  themeToggle.textContent = theme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
   localStorage.setItem('med-review-theme', theme);
 }
 
-const DEFAULT_DARK = false;  // 由 render_review.py --dark 注入替换
 const savedTheme = localStorage.getItem('med-review-theme');
-if (savedTheme && THEME_ORDER.indexOf(savedTheme) >= 0) {
+if (savedTheme) {
   setTheme(savedTheme);
-} else if (DEFAULT_DARK || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
   setTheme('dark');
-} else {
-  setTheme('deep');
 }
 
 themeToggle.addEventListener('click', () => {
-  setTheme(THEME_NEXT[html.getAttribute('data-theme')] || 'deep');
+  setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
 });
 
 // Progress Bar
@@ -3090,112 +3434,26 @@ document.querySelectorAll('.module-card').forEach(card => {
   card.querySelectorAll('.reveal-all-btn').forEach(b => b.remove());
   const blanks = card.querySelectorAll('.fill-blank');
   if (blanks.length === 0) return;
-  // 2026-08-21 修复：按钮工厂（cloneNode 不复制 addEventListener 监听器，旧实现挂载的是死按钮）
-  function makeBtn() {
-    const btn = document.createElement('button');
-    btn.className = 'reveal-all-btn';
-    btn.textContent = '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
-    btn.style.cssText = 'display:inline-block;margin:12px 0 0 0;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all var(--transition-fast);';
-    btn.addEventListener('mouseenter',()=>{btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';});
-    btn.addEventListener('mouseleave',()=>{btn.style.background='var(--bg-tertiary)';btn.style.color='var(--text-secondary)';});
-    let revealed = false;
-    btn.addEventListener('click',()=>{
-      revealed = !revealed;
-      blanks.forEach(b => { if(revealed) b.classList.add('revealed'); else b.classList.remove('revealed'); });
-      btn.textContent = revealed ? '\uD83D\uDE48 \u9690\u85CF\u5168\u90E8\u7B54\u6848' : '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
-    });
-    return btn;
-  }
+  const btn = document.createElement('button');
+  btn.className = 'reveal-all-btn';
+  btn.textContent = '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+  btn.style.cssText = 'display:inline-block;margin:12px 0 0 0;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all var(--transition-fast);';
+  btn.addEventListener('mouseenter',()=>{btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';});
+  btn.addEventListener('mouseleave',()=>{btn.style.background='var(--bg-tertiary)';btn.style.color='var(--text-secondary)';});
+  let revealed = false;
+  btn.addEventListener('click',()=>{
+    revealed = !revealed;
+    blanks.forEach(b => { if(revealed) b.classList.add('revealed'); else b.classList.remove('revealed'); });
+    btn.textContent = revealed ? '\uD83D\uDE48 \u9690\u85CF\u5168\u90E8\u7B54\u6848' : '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+  });
   const recallH = Array.from(card.querySelectorAll('h3')).filter(h=>h.textContent.includes('\u4E3B\u52A8\u56DE\u5FC6'));
-  let appended = false;
-  recallH.forEach(h=>{ let el=h.nextElementSibling; if(el){ el.appendChild(makeBtn()); appended = true; } });
-  if(!appended) card.appendChild(makeBtn()); // 无「主动回忆」模块时兜底挂卡片末尾
+  recallH.forEach(h=>{ let el=h.nextElementSibling; if(el&&el.tagName==='DIV') el.appendChild(btn.cloneNode(true)); });
 });
-
-// ============================================================
-// v2 · 学习跟踪系统（教育学：自我监控 / 元认知自评 / 间隔重复 / 主动回忆）
-// ============================================================
-(function(){
-  var subject = (document.title||'复习手册').replace(' · 高效复习手册','');
-  var PROG_KEY = 'med-study-' + subject + '-progress';
-  var prog = {};
-  try { prog = JSON.parse(localStorage.getItem(PROG_KEY)||'{}'); } catch(e){ prog={}; }
-  function saveP(){ try{localStorage.setItem(PROG_KEY, JSON.stringify(prog));}catch(e){} }
-
-  /* 收集模块卡片 */
-  var modules = [];
-  document.querySelectorAll('.module-card').forEach(function(card){
-    var h2 = card.querySelector('.module-header h2');
-    var m = h2 ? (h2.textContent.match(/M(\d+)/)||[])[1] : null;
-    var title = h2 ? h2.textContent.replace(/^M\d+\s*·\s*/,'') : '模块';
-    modules.push({ id: m ? 'm'+m : 'm'+(modules.length+1), title: title, hdr: card.querySelector('.module-header') });
-  });
-
-  /* 每个模块注入：标记已学 + 掌握度自评 */
-  modules.forEach(function(mod){
-    if(!mod.hdr) return;
-    var ctrl = document.createElement('div');
-    ctrl.className = 'module-control';
-    var s0 = prog[mod.id] || {};
-    ctrl.innerHTML =
-      '<button class="btn-study'+(s0.done?' on-done':'')+'" data-mod="'+mod.id+'" data-act="done">'+(s0.done?'✓ 已学':'○ 标记已学')+'</button>' +
-      '<button class="btn-study'+(s0.mastery==='master'?' m-master':'')+'" data-mod="'+mod.id+'" data-act="master">已掌握</button>' +
-      '<button class="btn-study'+(s0.mastery==='review'?' m-review':'')+'" data-mod="'+mod.id+'" data-act="review">需巩固</button>' +
-      '<button class="btn-study'+(s0.mastery==='weak'?' m-weak':'')+'" data-mod="'+mod.id+'" data-act="weak">未掌握</button>';
-    mod.hdr.appendChild(ctrl);
-    mod.refresh = function(){
-      var s = prog[mod.id]||{};
-      ctrl.querySelectorAll('.btn-study').forEach(function(b){
-        var act = b.dataset.act;
-        b.className = 'btn-study';
-        if(act==='done' && s.done) b.className = 'btn-study on-done';
-        if(act==='master' && s.mastery==='master') b.className = 'btn-study m-master';
-        if(act==='review' && s.mastery==='review') b.className = 'btn-study m-review';
-        if(act==='weak' && s.mastery==='weak') b.className = 'btn-study m-weak';
-        if(act==='done') b.textContent = s.done ? '✓ 已学' : '○ 标记已学';
-      });
-    };
-    ctrl.addEventListener('click', function(e){
-      var b = e.target.closest('[data-act]');
-      if(!b) return;
-      var act = b.dataset.act, id = b.dataset.mod;
-      var s = prog[id] || {};
-      if(act==='done'){ s.done = !s.done; }
-      else { s.mastery = (s.mastery===act) ? null : act; }
-      prog[id] = s; saveP();
-      mod.refresh(); updateChip();
-    });
-  });
-
-  /* 顶栏：进度 chip + 回忆模式 */
-  var actions = document.querySelector('#top-header .actions');
-  var chip = document.createElement('button');
-  chip.id = 'study-chip';
-  actions.insertBefore(chip, actions.firstChild);
-  function updateChip(){
-    var done = modules.filter(function(m){ return prog[m.id] && prog[m.id].done; }).length;
-    chip.innerHTML = '📈 已学 <b>'+done+'/'+modules.length+'</b> 模块';
-  }
-  updateChip();
-
-  var recallBtn = document.createElement('button');
-  recallBtn.id = 'recall-toggle';
-  recallBtn.textContent = '🧠 回忆模式';
-  recallBtn.title = '一键隐藏全部填空答案，逐题自测（主动回忆）';
-  actions.appendChild(recallBtn);
-  recallBtn.addEventListener('click', function(){
-    var on = !document.body.classList.contains('recall-mode');
-    document.body.classList.toggle('recall-mode', on);
-    recallBtn.classList.toggle('on', on);
-    recallBtn.textContent = on ? '🧠 回忆模式·开启' : '🧠 回忆模式';
-  });
-
-})();
 
 // Keyboard shortcuts
 document.addEventListener('keydown',(e)=>{
   if(e.key==='t'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body)
-    setTheme(THEME_NEXT[html.getAttribute('data-theme')] || 'deep');
+    setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
   if(e.key==='m'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body&&window.innerWidth<=768)
     sidebar.classList.contains('open')?closeSidebar():openSidebar();
 });

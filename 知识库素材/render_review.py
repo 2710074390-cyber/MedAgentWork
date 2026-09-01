@@ -1004,15 +1004,32 @@ class ReviewRenderer:
                 buf.append(lines[i])
                 i += 1
             raw = '\n'.join(buf)
-            # Convert to accordion class
-            raw = raw.replace('<details open>', '<details class="accordion" open>')
-            raw = raw.replace('<details>', '<details class="accordion">')
-            raw = raw.replace('<summary>', '<summary>')
-            raw = raw.replace('</details>', '</details>')
-            # Wrap body content
-            raw = re.sub(r'</summary>\s*\n', '</summary>\n<div class="accordion-body">\n', raw)
-            raw = re.sub(r'</details>', '</div>\n</details>', raw)
-            return raw, i
+            opened = re.search(r'<details[^>]*\bopen\b', raw.split('</summary>')[0]) is not None
+            m_sum = re.search(r'<summary>([\s\S]*?)</summary>', raw, re.S)
+            summary_raw = (m_sum.group(1).strip() if m_sum else '')
+            summary_html = self.parse_inline(html_module.escape(re.sub(r'\s+', ' ', summary_raw)))
+            body_raw = re.sub(r'^[\s\S]*?</summary>\s*', '', raw, count=1)
+            body_raw = re.sub(r'\s*</details>\s*$', '', body_raw)
+            body_lines = body_raw.split('\n')
+            inner_parts = []
+            prev_module_open = self._current_module_open
+            j = 0
+            while j < len(body_lines):
+                if not body_lines[j].strip():
+                    j += 1
+                    continue
+                bhtml, nxt = self.convert_block(body_lines, j)
+                if bhtml:
+                    inner_parts.append(bhtml)
+                if nxt <= j:
+                    nxt = j + 1
+                j = nxt
+            if self._current_module_open != prev_module_open:
+                inner_parts.append('</div> <!-- close nested module-card -->')
+                self._current_module_open = prev_module_open
+            body_html = '\n'.join(inner_parts)
+            return (f'<details class="accordion" {"open" if opened else ""}><summary>{summary_html}</summary>\n'
+                    f'<div class="accordion-body">\n{body_html}\n</div>\n</details>'), i
 
         # Table
         if '|' in line and line.strip().startswith('|'):

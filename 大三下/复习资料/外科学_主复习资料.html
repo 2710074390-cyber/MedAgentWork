@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="deep">
+<html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>外科学 · 高效复习手册</title>
+<title>外科学（一）高效复习手册 · 高效复习手册</title>
 <style>
 /* ============================================================
    MedAgentWork — 主复习资料 HTML 渲染模板
@@ -48,7 +48,6 @@
   --color-success-border: #6ee7b7;
   --accent: #2563eb;
   --accent-light: #dbeafe;
-  --hero-gradient: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
   --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
   --font-mono: "SF Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
   --line-height: 1.8;
@@ -87,47 +86,6 @@
   --color-success-bg: #0a2e1f;
   --color-success-border: #1a4a30;
   --accent-light: #1a2e4a;
-  --hero-gradient: linear-gradient(135deg, #0a1628 0%, #16233f 50%, #241d40 100%);
-}
-
-[data-theme="deep"] {
-  /* 深海·未来主义（与 index.html 新站风格统一：黑蓝深海 + 玻璃 UI） */
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #101113;
-  --bg-tertiary: #1a1c20;
-  --bg-callout: #16181d;
-  --text-primary: rgba(255,255,255,0.92);
-  --text-secondary: rgba(255,255,255,0.60);
-  --text-tertiary: rgba(255,255,255,0.42);
-  --border: rgba(255,255,255,0.12);
-  --border-light: rgba(255,255,255,0.07);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,0.6);
-  --color-master: #f87171;
-  --color-master-bg: rgba(248,113,113,0.10);
-  --color-master-border: rgba(248,113,113,0.40);
-  --color-familiar: #fbbf24;
-  --color-familiar-bg: rgba(251,191,36,0.10);
-  --color-familiar-border: rgba(251,191,36,0.40);
-  --color-understand: #34d399;
-  --color-understand-bg: rgba(52,211,153,0.10);
-  --color-understand-border: rgba(52,211,153,0.40);
-  --color-warning: #fbbf24;
-  --color-warning-bg: rgba(251,191,36,0.10);
-  --color-warning-border: rgba(251,191,36,0.40);
-  --color-tip: #8ab2ff;
-  --color-tip-bg: rgba(103,153,254,0.10);
-  --color-tip-border: rgba(103,153,254,0.40);
-  --color-info: #679efe;
-  --color-info-bg: rgba(103,153,254,0.10);
-  --color-info-border: rgba(103,153,254,0.40);
-  --color-success: #34d399;
-  --color-success-bg: rgba(52,211,153,0.10);
-  --color-success-border: rgba(52,211,153,0.40);
-  --accent: #679efe;
-  --accent-light: rgba(103,153,254,0.14);
-  --hero-gradient: linear-gradient(135deg, #0a0f1a 0%, #101a2e 50%, #0e1420 100%);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -145,7 +103,6 @@ body {
   background: var(--bg-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-wrap: break-word;   /* 手机端：ASCII 流程图/长串不可断行内容保护 */
 }
 
 #progress-bar {
@@ -282,16 +239,9 @@ body {
   max-width: calc(var(--content-width) + 96px);
 }
 
-/* 导出 PDF 引导条（打印时隐藏） */
-.print-hint {
-  display: block; margin: 0 0 18px; padding: 11px 16px; border-radius: 10px;
-  background: #eef4ff; border: 1px solid #c6d8f5; color: #0b4f8a; font-size: 13.5px; line-height: 1.7;
-}
-@media print { .print-hint { display: none !important; } }
-
 /* Hero Banner */
 .hero-banner {
-  background: var(--hero-gradient);
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #7c3aed 100%);
   border-radius: 16px;
   padding: 36px 40px;
   margin-bottom: 40px;
@@ -659,38 +609,13 @@ tr:last-child td {
     color: #1a1a2e;
   }
   body { font-size: 12px; background: #fff; }
-  /* 打印折叠展开（2026-08-21 修复）：全部折叠区强制展开，避免打印丢内容 */
-  .accordion .accordion-body { display: block !important; }
-  .accordion:not([open]) > .accordion-body { display: block !important; }
+  .accordion[open] .accordion-body { display: block !important; }
+  .accordion:not([open]) .accordion-body { display: none !important; }
   .fill-blank { color: var(--color-understand); border-bottom: 1px solid #999; }
   .fill-blank::after { display: none; }
 }
 
-/* ---------- v2 · 学习跟踪（教育学升级：进度/自评/回忆模式） ---------- */
-#study-chip { display:inline-flex; align-items:center; gap:6px; font-size:12px; padding:5px 12px;
-  border-radius:14px; background: var(--bg-tertiary); border:1px solid var(--border);
-  color: var(--text-secondary); cursor:pointer; font-family: var(--font-body); }
-#study-chip b { color: var(--accent); }
-#recall-toggle { font-size:12px; padding:5px 12px; border-radius:14px; cursor:pointer;
-  border:1px solid var(--border); background:var(--bg-tertiary); color:var(--text-secondary);
-  font-family: var(--font-body); }
-#recall-toggle.on { background:var(--accent-light); border-color:var(--accent); color:var(--accent); font-weight:600; }
-body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color: var(--accent); }
-.module-control { display:flex; align-items:center; gap:8px; flex-wrap:wrap; width:100%; margin-top:4px; }
-.btn-study { font-size:12px; padding:4px 11px; border-radius:12px; cursor:pointer;
-  border:1px solid var(--border); background:var(--bg-tertiary); color:var(--text-secondary);
-  font-family: var(--font-body); transition: all .15s; }
-.btn-study:hover { border-color:var(--accent); color:var(--accent); }
-.btn-study.on-done { background:var(--color-success-bg); border-color:var(--color-success-border); color:var(--color-success); font-weight:600; }
-.btn-study.m-master { background:var(--color-understand-bg); border-color:var(--color-understand-border); color:var(--color-understand); font-weight:600; }
-.btn-study.m-review { background:var(--color-familiar-bg); border-color:var(--color-familiar-border); color:var(--color-familiar); font-weight:600; }
-.btn-study.m-weak { background:var(--color-master-bg); border-color:var(--color-master-border); color:var(--color-master); font-weight:600; }
-
 /* Responsive */
-@media (max-width: 768px) {
-  /* 手机端表格横向滚动，避免撑破页面 */
-  table { display: block; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
-}
 @media (max-width: 1024px) {
   #main-content {
     padding: 24px 20px 60px;
@@ -745,15 +670,13 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <div id="progress-bar" style="width:0%"></div>
 <header id="top-header">
 <button id="sidebar-toggle" aria-label="目录">☰</button>
-<span class="title">📖 外科学 · 高效复习手册</span>
+<span class="title">📖 外科学（一）高效复习手册 · 高效复习手册</span>
 <div class="actions">
 <button class="theme-toggle" id="theme-toggle" aria-label="切换暗色模式" title="切换暗色/亮色模式">🌙</button>
 </div>
 </header>
 <div id="sidebar-overlay"></div>
 <nav id="sidebar">
-<div class="sidebar-section">📋 导航</div>
-<a href="#nav" class="sidebar-link active">科目导航</a>
 <div class="sidebar-section">📋 导航</div>
 <a href="#nav" class="sidebar-link active">科目导航</a>
 <div class="sidebar-section">📋 导航</div>
@@ -788,11 +711,10 @@ body.recall-mode .fill-blank.revealed { color: transparent; border-bottom-color:
 <a href="#附录三必背记忆口诀汇总v51-扩充版" class="sidebar-link">附录三：必背记忆口诀汇总（v5.1 扩充</a>
 </nav>
 <main id="main-content">
-<div class="print-hint">📄 请在弹出的打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把本手册保存成 PDF 文件（折叠内容已自动展开）。</div>
 <div class="hero-banner">
-<h1>🧠 外科学 高效复习手册</h1>
+<h1>🧠 外科学（一）高效复习手册 高效复习手册</h1>
 <p class="meta">MedAgentWork 自动生成 | 教材浓缩型 | 分层阅读</p>
-<div class="meta-tags"><span class="meta-tag">📘 医学复习手册</span><span class="meta-tag">🎯 期末考试</span></div>
+<div class="meta-tags"><span class="meta-tag">📦 batch017</span><span class="meta-tag">📘 医学复习手册</span><span class="meta-tag">🎯 期末考试</span></div>
 </div>
 <h2 id="科目导航外科学一怎么学" style="font-size:22px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">科目导航：外科学（一）怎么学？</h2>
 <h3 id="科目特点" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">科目特点</h3>
@@ -1048,56 +970,53 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 5 件事，就是这些：<br>> 1. 感染病程三分法：急性<3周 / 亚急性3周-2月 / 慢性>2月（教材P49）<br>> 2. 破伤风：痉挛毒素→抑制突触释放抑制性递质→肌紧张痉挛；治疗=TAT中和毒素+镇静解痉+清创（教材P59）<br>> 3. 气性坏疽：产气荚膜杆菌→捻发音+恶臭+皮下气肿+X线软组织积气；治疗=彻底清创+大剂量青霉素+高压氧（教材P61）<br>> 4. 浅表软组织感染最常见致病菌=金黄色葡萄球菌（教材P49）<br>> 5. 高压蒸汽灭菌后物品有效期=14天；围手术期预防用药指征=清洁-污染手术+污染手术（教材P49/P62）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级感染病程分类教材p49" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】感染病程分类（教材P49）</h4>
+<h4 id="掌握级感染病程分类教材p49" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】感染病程分类（教材P49）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题必考——三个时间节点既是考点也是干扰项设计区</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  感染的本质是病原体入侵→机体炎症反应→免疫清除之间的时间竞赛。3周这个节点来自临床观察：大多数急性细菌感染在3周内要么被免疫系统清除，要么转为慢性。2个月这个节点则对应组织修复和纤维化完成的时间——超过2个月意味着感染已经形成了慢性炎性病灶（如慢性骨髓炎的死骨/窦道形成），单纯抗菌药物无法根除，必须手术介入。这就是为什么「慢性>2月」对外科有意义——它标记了从"药物可治"到"必须手术"的转折点。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：急三慢二的分法不是人为划的，是免疫清除能力×组织修复速度共同决定的。</p>
 <p style="margin:8px 0;line-height:1.8">病程在3周之内为急性感染，超过2个月为慢性感染，介于两者之间为亚急性感染。</p>
-<details class="accordion" open>
-<summary>🔬 展开：三类感染的临床意义</summary>
+<details class="accordion" open><summary>🔬 展开：三类感染的临床意义</summary>
 <div class="accordion-body">
-- 急性感染（<3周）：抗生素治疗为主，一般不需手术
-- 亚急性感染（3周-2月）：警惕转为慢性，需评估是否需要外科干预
-- 慢性感染（>2月）：形成慢性病灶（死骨/窦道/纤维化），必须手术清除
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>急性感染（<3周）：抗生素治疗为主，一般不需手术</li><li>亚急性感染（3周-2月）：警惕转为慢性，需评估是否需要外科干预</li><li>慢性感染（>2月）：形成慢性病灶（死骨/窦道/纤维化），必须手术清除</li>
+</ul>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 慢性感染是「>2个月」不是「>1个月」！考试常用 ">1个月" 作干扰项。记忆法："2月=两个月=慢性"，看"2"这个数字。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级破伤风痉挛毒素的去抑制机制教材p59" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】破伤风：痉挛毒素的"去抑制"机制（教材P59）</h4>
+<h4 id="掌握级破伤风痉挛毒素的去抑制机制教材p59" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】破伤风：痉挛毒素的"去抑制"机制（教材P59）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2/X型题高频考点——毒素机制→临床表现→治疗原则的逻辑链必须完整</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  正常骨骼肌的控制依赖两套中枢通路：兴奋性通路（让肌肉收缩）和抑制性通路（让肌肉放松）。两者像油门和刹车——刹车持续轻踩，肌肉才能维持适度张力而不痉挛。破伤风痉挛毒素的作用不是"踩油门"，而是"剪断刹车线"——它被吸收后沿神经逆行至脊髓/脑干，裂解抑制性突触中的synaptobrevin蛋白（负责释放GABA/甘氨酸），导致抑制性递质无法释放。失去抑制后，α运动神经元不受约束地持续放电→全身横纹肌强直痉挛。这就是"去抑制"（disinhibition）模型。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：破伤风不是"过度兴奋"，而是"失去了刹车"——临床上用镇静药（地西泮）加强残余抑制就是对这个机制的精准反击。</p>
 <p style="margin:8px 0;line-height:1.8">致病菌为破伤风梭菌(G⁺厌氧)，产生痉挛毒素→沿神经逆行至脊髓/脑干→与抑制性突触结合→裂解synaptobrevin→阻断GABA/甘氨酸释放→α运动神经元去抑制→全身横纹肌紧张性收缩/阵发性痉挛。</p>
 <p style="margin:8px 0;line-height:1.8">临床表现：最早且最敏感的体征=张口困难（牙关紧闭）→苦笑面容→角弓反张。</p>
-<details class="accordion" open>
-<summary>🔬 展开：TAT为什么只能中和游离毒素？</summary>
+<details class="accordion" open><summary>🔬 展开：TAT为什么只能中和游离毒素？</summary>
 <div class="accordion-body">
-痉挛毒素与神经突触的结合是不可逆的共价结合。TAT（破伤风抗毒素）是抗体，只能中和循环血液中尚未与神经结合的游离毒素。一旦毒素进入突触并结合，TAT就无能为力了。这解释了治疗四原则的逻辑顺序：
-① 清创引流（消除毒素产生源头）—最根本
-② TAT（中和尚未结合的游离毒素）—抢时间窗
-③ 镇静解痉（控制已结合毒素造成的痉挛）—对症
-④ 抗感染（青霉素/甲硝唑杀灭梭菌）—病因治疗
+<p style="margin:8px 0;line-height:1.8">痉挛毒素与神经突触的结合是不可逆的共价结合。TAT（破伤风抗毒素）是抗体，只能中和循环血液中尚未与神经结合的游离毒素。一旦毒素进入突触并结合，TAT就无能为力了。这解释了治疗四原则的逻辑顺序：</p>
+<p style="margin:8px 0;line-height:1.8">① 清创引流（消除毒素产生源头）—最根本</p>
+<p style="margin:8px 0;line-height:1.8">② TAT（中和尚未结合的游离毒素）—抢时间窗</p>
+<p style="margin:8px 0;line-height:1.8">③ 镇静解痉（控制已结合毒素造成的痉挛）—对症</p>
+<p style="margin:8px 0;line-height:1.8">④ 抗感染（青霉素/甲硝唑杀灭梭菌）—病因治疗</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 痉挛毒素作用部位是「脊髓/脑干的抑制性突触」——不是「神经肌肉接头」（那是肉毒毒素的作用部位！）。这道题是B1型配伍的高频陷阱。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级气性坏疽产气组织坏死的双重打击教材p61" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】气性坏疽：产气+组织坏死的"双重打击"（教材P61）</h4>
+<h4 id="掌握级气性坏疽产气组织坏死的双重打击教材p61" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】气性坏疽：产气+组织坏死的"双重打击"（教材P61）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：B1型题常与破伤风配对考察——两者都是G⁺厌氧菌、都是外伤后深部感染、但机制完全不同</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  产气荚膜杆菌是少数能"吃组织+产气体"的细菌。它的α毒素是卵磷脂酶——能水解细胞膜的磷脂双分子层→细胞溶解→组织坏死。同时，它分解肌肉中的糖原→产生大量气体（H₂+CO₂）→气体沿筋膜间隙扩散→形成皮下气肿和捻发音。这两个效应相互放大：组织坏死→创造厌氧环境→细菌更活跃→产更多毒素和气体。X线上软组织积气就是α毒素+糖酵解的共同"指纹"。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：气性坏疽=外毒素"溶解"组织+气体"撑开"筋膜间隙——清创要"彻底到出血为止"，因为哪怕残留一点坏死组织都是厌氧培养基。</p>
 <p style="margin:8px 0;line-height:1.8">致病菌为产气荚膜杆菌(G⁺厌氧)，关键诊断依据：①伤口周围皮下气肿、捻发音；②分泌物涂片见G⁺粗大杆菌；③X线软组织间积气——三项结合可早期确诊，无需等48-72h的细菌培养。</p>
-<details class="accordion" open>
-<summary>🔬 展开：为什么不能等细菌培养结果？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么不能等细菌培养结果？</summary>
 <div class="accordion-body">
-气性坏疽进展极快（数小时内蔓延）。产气荚膜杆菌在厌氧环境下倍增时间可短至8分钟。等待48-72h的细菌培养结果=坐等肢体坏死。因此早期诊断依靠"临床三联征"（捻发音+涂片+X线），一旦高度怀疑立即启动治疗。
+<p style="margin:8px 0;line-height:1.8">气性坏疽进展极快（数小时内蔓延）。产气荚膜杆菌在厌氧环境下倍增时间可短至8分钟。等待48-72h的细菌培养结果=坐等肢体坏死。因此早期诊断依靠"临床三联征"（捻发音+涂片+X线），一旦高度怀疑立即启动治疗。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 气性坏疽诊断不能靠细菌培养（需48-72h）→ 靠局部表现+涂片+X线<br>⚠️ 高压氧治疗气性坏疽的原理：提高组织氧分压→抑制厌氧菌生长+抑制α毒素产生</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级灭菌法与无菌原则教材p49" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】灭菌法与无菌原则（教材P49）</h4>
+<h4 id="掌握级灭菌法与无菌原则教材p49" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】灭菌法与无菌原则（教材P49）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型选择题高频——灭菌方法选择+有效期是固定考点</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  灭菌的物理学本质是让微生物的蛋白质变性。高压蒸汽灭菌（121℃×15-20min）之所以是"最可靠"，是因为水蒸气在高压下能穿透敷料/器械包，将热量均匀传导到每个角落——干热做不到这一点（空气是热的不良导体）。14天有效期来自实验数据：在干燥密封条件下，14天后细菌可能从包装微破损处重新污染。这14天不是"刚好14天细菌出现"，而是统计学上的安全边界。</p>
@@ -1130,18 +1049,18 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级抗菌药物预防原则教材p62" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】抗菌药物预防原则（教材P62）</h4>
+<h4 id="掌握级抗菌药物预防原则教材p62" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】抗菌药物预防原则（教材P62）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题——围手术期用药指征的"清洁手术例外"是经典考点</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  抗菌药物预防的逻辑不是"怕感染就用"，而是"感染风险-药物风险"的权衡。清洁手术（如甲状腺/乳腺/疝气手术）的感染率极低（<2%），预防用药的获益（降低1-2%感染率）可能被药物不良反应/耐药菌筛选/艰难梭菌肠炎的风险抵消。但"范围大/时间长/重要脏器/异物植入/高危人群"五种情况改变了这个等式——此时感染后果严重（如关节置换术后感染=灾难性），预防用药获益>风险。</p>
 <p style="margin:8px 0;line-height:1.8">围手术期预防用药指征：清洁-污染手术和污染手术。清洁手术一般不需预防用药，但五种例外：手术范围大、时间长；涉及重要脏器；异物植入；高龄/免疫缺陷等高危人群。</p>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>清洁手术五例外："大时长、要脏器、异物进、高龄免疫低"</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级浅部感染诱因与真菌感染教材p49" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】浅部感染诱因与真菌感染（教材P49）</h4>
+<h4 id="熟悉级浅部感染诱因与真菌感染教材p49" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】浅部感染诱因与真菌感染（教材P49）</h4>
 <p style="margin:8px 0;line-height:1.8">浅部感染诱因：皮肤黏膜屏障破坏（外伤/手术）+ 全身免疫力下降（糖尿病/营养不良/免疫抑制）。</p>
 <p style="margin:8px 0;line-height:1.8">真菌感染（念珠菌病属特异性感染）：免疫功能低下→念珠菌从黏膜入侵→全身播散。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="了解级急性感染时限" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】急性感染时限</h4>
+<h4 id="了解级急性感染时限" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】急性感染时限</h4>
 <p style="margin:8px 0;line-height:1.8">急性感染<3周。常考干扰项："急性感染<2周"——错误。记忆口诀："3周内急，2月外慢，中间亚急"。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -1218,7 +1137,7 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 5 件事，就是这些：<br>> 1. 创伤愈合三期：炎症→增生→塑形（教材P132）<br>> 2. 影响愈合因素分局部（感染/血供）和全身（营养/激素）（教材P132）<br>> 3. 烧伤深度四分法：Ⅰ°红斑/浅Ⅱ°水疱剧痛/深Ⅱ°痛迟钝/Ⅲ°焦痂无痛（教材P138）<br>> 4. 小儿烧伤面积计算：头颈=9+(12-年龄)，双下肢=46-(12-年龄)（教材P138）<br>> 5. 多发伤救治：先救命后治伤，ABC原则（Airway→Breathing→Circulation）（教材P132）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级创伤愈合基本过程教材p132" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】创伤愈合基本过程（教材P132）</h4>
+<h4 id="掌握级创伤愈合基本过程教材p132" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】创伤愈合基本过程（教材P132）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：理解愈合过程是理解"为什么感染/缺血会延迟愈合"的前提——考试不只考分期，更考"某因素影响哪一期"</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  创伤愈合不是"等它自己长好"——它是三个精密编排的连续阶段，每个阶段有不可替代的功能。炎症期(1-3天)的核心任务是"清场"——血管扩张让白细胞进入伤口、吞噬坏死组织和细菌。如果没有充分清场→感染→无法进入下一阶段。增生期(3天-2周)是"搭建脚手架"——成纤维细胞分泌胶原+毛细血管新生→肉芽组织填充缺损。塑形期(2周-数月)是"精装修"——多余的胶原被降解、瘢痕收缩、张力逐渐恢复到原来的70-80%（永远达不到100%）。</p>
@@ -1247,14 +1166,13 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么愈合后张力只能恢复到80%？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么愈合后张力只能恢复到80%？</summary>
 <div class="accordion-body">
-正常皮肤的胶原排列是"编织篮"式（basket-weave），各方向受力均匀。瘢痕组织中的胶原排列是平行的——只能承受单一方向的张力。这种结构差异是永久性的，每经历一次塑形期，胶原排列优化一点但无法恢复到编织篮结构。
+<p style="margin:8px 0;line-height:1.8">正常皮肤的胶原排列是"编织篮"式（basket-weave），各方向受力均匀。瘢痕组织中的胶原排列是平行的——只能承受单一方向的张力。这种结构差异是永久性的，每经历一次塑形期，胶原排列优化一点但无法恢复到编织篮结构。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级影响伤口愈合因素教材p132" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】影响伤口愈合因素（教材P132）</h4>
+<h4 id="掌握级影响伤口愈合因素教材p132" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】影响伤口愈合因素（教材P132）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题经典考点——"下列哪些影响伤口愈合"可以拉出一个长列表</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  所有影响愈合的因素都可以归为两类：①限制了修复"原料"的供应（血供=氧气+营养；营养=蛋白质/VitC=胶原合成底物）；②破坏了修复"工地"的环境（感染=细菌毒素破坏新生组织；异物=机械阻隔+感染源）。糖皮质激素之所以抑制愈合，是因为它同时打击两个环节：抑制炎症（清场失败）+直接抑制成纤维细胞胶原合成（搭架失败）。</p>
@@ -1294,7 +1212,7 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级烧伤深度与面积教材p138" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】烧伤深度与面积（教材P138）</h4>
+<h4 id="掌握级烧伤深度与面积教材p138" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】烧伤深度与面积（教材P138）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题必考——烧伤深度决定治疗方案，面积决定液体复苏量</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  烧伤深度的本质问题是"生发层还在不在"。皮肤表皮基底层（生发层）是表皮再生的干细胞库——只要它存活，表皮就能再生（Ⅰ°/浅Ⅱ°）。深Ⅱ°烧伤毁掉了大部分生发层但保留了真皮深层的皮肤附属器（毛囊/汗腺）上皮——这些残留上皮细胞可以爬行覆盖创面，但速度慢、瘢痕重。Ⅲ°烧伤=全层皮肤坏死=没有任何上皮细胞存活=创面只能从边缘爬行（速度极慢）或用植皮覆盖。痛觉是判断深度的替代指标——因为痛觉神经末梢的密度在真皮乳头层最高、越深越少、皮下脂肪层为零。</p>
@@ -1337,23 +1255,22 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 <ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
 <li>头颈部 = 9 + (12 - 年龄)%</li><li>双下肢 = 46 - (12 - 年龄)%</li>
 </ul>
-<details class="accordion" open>
-<summary>🔬 展开：为什么小儿头颈面积比例大？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么小儿头颈面积比例大？</summary>
 <div class="accordion-body">
-小儿头颅相对较大、下肢相对较短。随年龄增长，头颈比例逐渐缩小，下肢比例增大。到12岁时接近成人九分法比例。这个公式的本质是"用年龄线性插值从小儿比例到成人比例"。
+<p style="margin:8px 0;line-height:1.8">小儿头颅相对较大、下肢相对较短。随年龄增长，头颈比例逐渐缩小，下肢比例增大。到12岁时接近成人九分法比例。这个公式的本质是"用年龄线性插值从小儿比例到成人比例"。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级烧伤创面处理原则教材p138" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】烧伤创面处理原则（教材P138）</h4>
+<h4 id="掌握级烧伤创面处理原则教材p138" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】烧伤创面处理原则（教材P138）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：治疗原则是X型多选题固定考点</p></div>
 <p style="margin:8px 0;line-height:1.8">清创（去除坏死组织）+ 抗感染（外用磺胺嘧啶银）+ 创面覆盖（敷料/植皮）。</p>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>烧伤处理三步："切（清创）→涂（磺胺嘧啶银）→盖（敷料/植皮）"</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级创伤并发症教材p132" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】创伤并发症（教材P132）</h4>
+<h4 id="熟悉级创伤并发症教材p132" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】创伤并发症（教材P132）</h4>
 <p style="margin:8px 0;line-height:1.8">感染→休克→脂肪栓塞综合征→急性肾衰竭(ARF)→多器官功能障碍综合征(MODS)。这是"创伤→SIRS→MODS"的经典演变链（串联M4）。</p>
-<h4 id="熟悉级多发伤临床特点教材p132" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】多发伤临床特点（教材P132）</h4>
+<h4 id="熟悉级多发伤临床特点教材p132" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】多发伤临床特点（教材P132）</h4>
 <p style="margin:8px 0;line-height:1.8">损伤部位多、伤情重、休克发生率高、漏诊率高、处理矛盾多。救治原则=先救命后治伤，按ABC顺序评估（Airway气道→Breathing呼吸→Circulation循环）。</p>
-<h4 id="了解级创伤评分" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】创伤评分</h4>
+<h4 id="了解级创伤评分" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】创伤评分</h4>
 <p style="margin:8px 0;line-height:1.8">常用GCS（格拉斯哥昏迷评分）、RTS（修订创伤评分）、ISS（损伤严重度评分）等。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -1424,13 +1341,13 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 6 件事，就是这些：<br>> 1. 休克本质=有效循环血量↓→组织灌注不足→细胞缺氧（教材P18）<br>> 2. 微循环三期：缺血期（代偿）→淤血期（失代偿）→衰竭期（DIC/MODS）（教材P18）<br>> 3. 休克代偿期血压可正常/略升——机体通过代偿维持血压，不能因血压"正常"而漏诊（教材P18）<br>> 4. 一般监测=神志/皮温色泽/血压脉搏/尿量；特殊监测=CVP/PAWP/CO/SvO₂/乳酸（教材P18）<br>> 5. 休克早期最易受损器官=肾脏（肾血流↓→少尿<400ml/d）（教材P18）<br>> 6. 感染性休克两型：暖休克(高排低阻/G⁺菌) vs 冷休克(低排高阻/G⁻菌)（教材P18）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级休克本质与有效循环血量教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】休克本质与有效循环血量（教材P18）</h4>
+<h4 id="掌握级休克本质与有效循环血量教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】休克本质与有效循环血量（教材P18）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：休克所有临床表现、分型、治疗的逻辑原点——不理解这个就不理解后面的一切</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  循环系统的存在只有一个目的：把O₂和营养送到每个细胞，把CO₂和废物带走。实现这个目的需要三个条件同时满足：①足够的总血量（血容量）、②能把血泵出去（心泵功能）、③血管床能容纳这些血量并维持适当压力（血管张力）。三者任何一个出问题→有效循环血量↓→毛细血管灌注↓→细胞从"有氧代谢"切换到"无氧代谢"→乳酸堆积→酸中毒→细胞功能紊乱→器官功能障碍。这就是休克从循环问题→代谢问题→器官问题的三层递进。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：休克不是"血压低"——血压低是晚期表现。休克的本质是"细胞在缺氧"，血压只是循环系统的一个读数。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级休克微循环三期改变教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】休克微循环三期改变（教材P18）</h4>
+<h4 id="掌握级休克微循环三期改变教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】休克微循环三期改变（教材P18）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：三期是休克理论的核心框架——A1/A2/X所有题型都围绕三期展开</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  微循环是全身循环的"最后一公里"——毛细血管前括约肌决定血液进不进组织，后微静脉决定血液出不出组织。休克早期的交感兴奋让前括约肌收缩→血流绕过毛细血管走直捷通路→组织开始缺氧（缺血期）。缺氧→无氧代谢→乳酸堆积→酸中毒→前括约肌对儿茶酚胺不再敏感、松弛开放，但后微静脉对酸中毒耐受性更强、仍收缩→大量血液淤滞在毛细血管内、静水压↑→液体渗出→血容量进一步↓（淤血期）。血流停滞→红细胞+血小板聚集→微血栓形成→DIC→毛细血管完全堵塞→组织坏死→MODS（衰竭期）。</p>
@@ -1464,15 +1381,14 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么代偿期血压可正常？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么代偿期血压可正常？</summary>
 <div class="accordion-body">
-交感-肾上腺髓质兴奋→去甲肾上腺素大量释放→皮肤/骨骼肌/内脏血管强烈收缩（α受体）→外周阻力↑+血流重分布→血压可维持甚至略升。同时心率↑（β受体）→心输出量↑。这两条代偿机制让血压读数"看起来正常"，但组织灌注已经下降（因为血液绕过了大部分毛细血管床）。临床铁律：血压是休克的晚期指标——等到血压下降，休克至少已进入淤血期。
+<p style="margin:8px 0;line-height:1.8">交感-肾上腺髓质兴奋→去甲肾上腺素大量释放→皮肤/骨骼肌/内脏血管强烈收缩（α受体）→外周阻力↑+血流重分布→血压可维持甚至略升。同时心率↑（β受体）→心输出量↑。这两条代偿机制让血压读数"看起来正常"，但组织灌注已经下降（因为血液绕过了大部分毛细血管床）。临床铁律：血压是休克的晚期指标——等到血压下降，休克至少已进入淤血期。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 休克代偿期血压可正常或略升→不能用血压正常来排除休克！血压是最后一个倒下的指标。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级休克一般监测指标教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】休克一般监测指标（教材P18）</h4>
+<h4 id="掌握级休克一般监测指标教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】休克一般监测指标（教材P18）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题必考各项监测的临床意义</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  五项一般监测实际上是按"器官灌注优先级"排列的。大脑对缺氧最敏感→神志最先变（烦躁→淡漠→昏迷）。皮肤和肾脏是最先被"牺牲"的外周器官（交感缩血管→皮肤血流↓+肾血流↓）→皮温下降+尿量减少。血压-脉搏是中枢循环的读数，变化最晚。这就是为什么尿量被称为"最敏感的床旁指标"——它在血压下降前就开始减少。</p>
@@ -1501,22 +1417,20 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级休克早期少尿机制教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】休克早期少尿机制（教材P18）</h4>
+<h4 id="掌握级休克早期少尿机制教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】休克早期少尿机制（教材P18）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：解释"为什么休克最先损伤肾脏"——A1/X型题高频</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  肾血流占心输出量的20-25%——是全身单一器官中血流最丰富的。但在休克时，肾脏被交感神经列为"非紧急器官"——肾血管强烈收缩→肾血流可降至正常的10%以下→GFR急剧下降。同时，低血压刺激压力感受器→ADH释放↑+RAAS系统激活→醛固酮↑→水钠重吸收↑→尿量进一步↓。三重打击（血流↓+ADH↑+醛固酮↑）叠加——这就是休克早期先少尿、且少尿程度与休克严重度平行的生理基础。</p>
 <p style="margin:8px 0;line-height:1.8">肾血流↓→肾小球滤过率(GFR)↓+抗利尿激素(ADH)↑+醛固酮↑→水钠重吸收↑→尿量↓。</p>
-<details class="accordion" open>
-<summary>🔬 展开：尿量的临床判断阈值</summary>
+<details class="accordion" open><summary>🔬 展开：尿量的临床判断阈值</summary>
 <div class="accordion-body">
-- 正常尿量：>800ml/d（或>30ml/h）
-- 少尿：<400ml/d（或<17ml/h）→休克警报
-- 无尿：<100ml/d →急性肾衰竭可能
-- 补液后尿量恢复→提示容量复苏有效，是判断复苏终点的简易指标
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>正常尿量：>800ml/d（或>30ml/h）</li><li>少尿：<400ml/d（或<17ml/h）→休克警报</li><li>无尿：<100ml/d →急性肾衰竭可能</li><li>补液后尿量恢复→提示容量复苏有效，是判断复苏终点的简易指标</li>
+</ul>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级休克分类教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】休克分类（教材P18）</h4>
+<h4 id="掌握级休克分类教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】休克分类（教材P18）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：分型是选择治疗方案的基础——不同类型治疗方向完全相反</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  休克分型的底层逻辑是"有效循环血量三要素中哪个出了故障"：低血容量=血容量↓（第一个要素），心源性=心泵功能↓（第二个要素），分布性=血管床容积异常↑（第三个要素），梗阻性=血流物理受阻（介于心源性和低容量之间）。这个分类的意义不是贴标签——它直接决定治疗方向：低容量→补液，心源性→强心+减后负荷，分布性→缩血管+抗感染，梗阻性→解除梗阻。搞错分型=用错治疗=雪上加霜。</p>
@@ -1550,7 +1464,7 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级感染性休克血流动力学分型教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】感染性休克血流动力学分型（教材P18）</h4>
+<h4 id="掌握级感染性休克血流动力学分型教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】感染性休克血流动力学分型（教材P18）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：暖休克vs冷休克的鉴别是B1型题高频考点</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  暖休克和冷休克的本质区别在于"血管是扩张还是收缩"。G⁺菌的外毒素→直接舒张血管平滑肌→外周阻力↓+血液淤滞在外周→皮肤温暖但组织缺氧（因为血流快但氧交换时间不足）→CO代偿性↑（"高排低阻"）。G⁻菌的内毒素→激活补体+细胞因子→内皮损伤+微血栓→血管收缩+毛细血管渗漏→皮肤湿冷+CO↓（"低排高阻"）。暖休克虽然"皮肤温暖"看似轻——但查乳酸就会发现严重组织缺氧。</p>
@@ -1590,12 +1504,12 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级失血性休克治疗教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】失血性休克治疗（教材P18）</h4>
+<h4 id="掌握级失血性休克治疗教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】失血性休克治疗（教材P18）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：治疗原则是A2/X型题高频</p></div>
 <p style="margin:8px 0;line-height:1.8">核心=止血+补充血容量。先晶体后胶体，维持Hb>70g/L（或Hct>21%）→考虑输血。</p>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>失血性休克治疗三步："止（止血）→补（晶体胶体）→输（Hb<70输血）"</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级特殊监测指标教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】特殊监测指标（教材P18）</h4>
+<h4 id="熟悉级特殊监测指标教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】特殊监测指标（教材P18）</h4>
 <div class="table-wrapper"><table>
 <thead><tr>
 <th>指标</th>
@@ -1637,11 +1551,11 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级血管活性药物教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】血管活性药物（教材P18）</h4>
+<h4 id="熟悉级血管活性药物教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】血管活性药物（教材P18）</h4>
 <p style="margin:8px 0;line-height:1.8">根据血流动力学类型选择：高排低阻→血管收缩剂（去甲肾上腺素）；低排高阻→血管扩张剂+强心。使用血管收缩剂需警惕肾缺血加重和组织缺氧↑。</p>
-<h4 id="熟悉级创伤性休克分类教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】创伤性休克分类（教材P18）</h4>
+<h4 id="熟悉级创伤性休克分类教材p18" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】创伤性休克分类（教材P18）</h4>
 <p style="margin:8px 0;line-height:1.8">分失血性（主要，占80%以上）和非失血性（心包填塞、张力性气胸等）。</p>
-<h4 id="了解级休克分期与阶段" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】休克分期与阶段</h4>
+<h4 id="了解级休克分期与阶段" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】休克分期与阶段</h4>
 <p style="margin:8px 0;line-height:1.8">可分为代偿期→失代偿期→不可逆期。代偿期血压可正常，失代偿期血压开始下降。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -1744,7 +1658,7 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 4 件事，就是这些：<br>> 1. SIRS诊断标准（4项≥2）：T>38℃或<36℃/HR>90次/分/R>20次/分或PaCO₂<32mmHg/WBC>12×10⁹/L或<4×10⁹/L（教材P25）<br>> 2. MODS本质=序贯性器官功能障碍+发病前器官功能正常（教材P25）<br>> 3. MODS最常见诱因=感染（脓毒症）→其次是休克/创伤/重症胰腺炎（教材P25）<br>> 4. 肠功能衰竭在MODS中的核心角色=肠屏障破坏→细菌移位→持续激活炎症→恶性循环（教材P25）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级sirs诊断标准教材p25" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】SIRS诊断标准（教材P25）</h4>
+<h4 id="掌握级sirs诊断标准教材p25" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】SIRS诊断标准（教材P25）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/X型题必考——四个标准+每项的"或"关系是干扰项设计经典素材</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  SIRS的四条标准（体温、心率、呼吸、白细胞）不是随机选的——它们分别反映了炎症反应的四个维度：体温=下丘脑体温调定点被炎症因子（IL-1/TNF-α）重置；心率=交感肾上腺系统被炎症激活→儿茶酚胺↑；呼吸=代谢率↑+乳酸酸中毒刺激呼吸中枢；白细胞=骨髓被炎症信号动员+血管内皮黏附分子上调→白细胞边集/释放。理解这四条标准的生理基础后，就明白为什么"≥2项"即可诊断——因为四项本质上是同一场炎症风暴在不同系统的"指纹"。</p>
@@ -1774,32 +1688,30 @@ ICU重症（呼吸衰竭/肾衰竭/心搏骤停）
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么WBC可以高也可以低？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么WBC可以高也可以低？</summary>
 <div class="accordion-body">
-WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4×10⁹/L则是更危险的信号——提示严重脓毒症导致骨髓抑制或白细胞大量边集/迁移至组织（血中白细胞"被消耗掉了"）。临床上，WBC降低的SIRS往往比WBC升高的预后更差。
+<p style="margin:8px 0;line-height:1.8">WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4×10⁹/L则是更危险的信号——提示严重脓毒症导致骨髓抑制或白细胞大量边集/迁移至组织（血中白细胞"被消耗掉了"）。临床上，WBC降低的SIRS往往比WBC升高的预后更差。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>SIRS诊断标准中的「或」很关键：体温过高「或」过低都算，WBC过高「或」过低都算。考试常给一个刚好相反的值做干扰。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级mods诊断要点与肠衰竭发动机学说教材p25" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】MODS诊断要点与"肠衰竭发动机"学说（教材P25）</h4>
+<h4 id="掌握级mods诊断要点与肠衰竭发动机学说教材p25" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】MODS诊断要点与"肠衰竭发动机"学说（教材P25）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：MODS机制中的"肠衰竭"是最常考的机制题</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  MODS最难理解的问题不是"器官怎么会一个接一个衰竭"——而是"为什么控制原发病后器官仍然继续衰竭"。答案藏在肠道。肠黏膜是全身代谢最活跃的组织之一（每3-5天更新一次），对缺血极度敏感。休克/创伤→肠道血流被优先"牺牲"→肠黏膜缺血→绒毛顶端上皮脱落→肠道屏障出现破口→肠道内的细菌和内毒素（正常情况下被肠屏障严密封锁）→穿过破口进入门静脉→首先抵达肝脏→激活肝内Kupffer细胞（巨噬细胞）→释放TNF-α、IL-1、IL-6等炎症因子→这些因子进入体循环→激活全身内皮细胞和白细胞→导致远隔器官（肺、肾、心）的炎症损伤。这就是"肠道→肝脏→全身"的三级放大模型。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：MODS的发动机不是原发病灶，而是肠道——肠屏障破坏后，就算把原发病灶清除了，肠道仍在持续"泄漏"细菌和内毒素，驱动炎症恶性循环。</p>
 <p style="margin:8px 0;line-height:1.8">核心特征：①序贯性——一个接一个器官先后出现功能障碍；②发病前器官功能正常——区别于慢性器官衰竭；③可逆性——及时干预可恢复。</p>
 <p style="margin:8px 0;line-height:1.8">MODS最常见诱因：感染（脓毒症/最主要）> 休克 > 严重创伤 > 重症胰腺炎。</p>
-<details class="accordion" open>
-<summary>🔬 展开：肠衰竭的分子机制——为什么是"发动机"不是"受害者"</summary>
+<details class="accordion" open><summary>🔬 展开：肠衰竭的分子机制——为什么是&quot;发动机&quot;不是&quot;受害者&quot;</summary>
 <div class="accordion-body">
-正常肠屏障由三层组成：①机械屏障（紧密连接的上皮细胞）、②免疫屏障（IgA+肠相关淋巴组织GALT）、③生物屏障（正常菌群）。休克缺血→①首先破坏（上皮脱落→紧密连接断裂）→细菌/内毒素穿越→②和③相继崩溃→"肠漏"一旦形成，每天有大量LPS（脂多糖/内毒素）持续进入门静脉。肝脏的Kupffer细胞是门静脉血的"守门员"——但持续的内毒素刺激会让Kupffer细胞从"守门"变为"放火"（持续释放炎症因子）。这就是为什么即使把原发感染灶清除了，MODS仍可能进展——肠道成了新的、持续的炎症源。
+<p style="margin:8px 0;line-height:1.8">正常肠屏障由三层组成：①机械屏障（紧密连接的上皮细胞）、②免疫屏障（IgA+肠相关淋巴组织GALT）、③生物屏障（正常菌群）。休克缺血→①首先破坏（上皮脱落→紧密连接断裂）→细菌/内毒素穿越→②和③相继崩溃→"肠漏"一旦形成，每天有大量LPS（脂多糖/内毒素）持续进入门静脉。肝脏的Kupffer细胞是门静脉血的"守门员"——但持续的内毒素刺激会让Kupffer细胞从"守门"变为"放火"（持续释放炎症因子）。这就是为什么即使把原发感染灶清除了，MODS仍可能进展——肠道成了新的、持续的炎症源。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>- ⚠️ MODS与慢性多器官衰竭的区别：MODS患者发病前器官功能正常——这是诊断MODS的前提条件<br>- ⚠️ SIRS诊断标准中的PaCO₂<32mmHg——是呼吸>20次/分「或」PaCO₂<32，两者满足一个即可。过度通气→PaCO₂↓是代谢性酸中毒的代偿反应</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级mods诱因教材p25" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】MODS诱因（教材P25）</h4>
+<h4 id="熟悉级mods诱因教材p25" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】MODS诱因（教材P25）</h4>
 <p style="margin:8px 0;line-height:1.8">诱因：感染（脓毒症/最主要）> 休克 > 严重创伤 > 重症胰腺炎。</p>
-<h4 id="了解级mods临床分期" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】MODS临床分期</h4>
+<h4 id="了解级mods临床分期" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】MODS临床分期</h4>
 <p style="margin:8px 0;line-height:1.8">一般分为四期：Ⅰ期(隐匿期)→Ⅱ期(显性期)→Ⅲ期(衰竭期)→Ⅳ期(终末期)。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -1864,7 +1776,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 5 件事，就是这些：<br>> 1. 脱水三型鉴别核心=查血钠：高渗>150 / 等渗135-150 / 低渗<135（教材P12）<br>> 2. 高渗性缺水病因=水摄入不足/丢失过多；低渗性缺水=胃肠液丢失后只补水未补盐（教材P12）<br>> 3. 补钾铁律：尿量>40ml/h（或>500ml/d）方可补钾——"见尿补钾"（教材P12）<br>> 4. 高钾血症病因：肾排钾↓（主要）/细胞内钾移出/摄入↑（教材P12）<br>> 5. 少尿定义：<400ml/d（或<17ml/h）（教材P12）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级脱水三型对比教材p12" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】脱水三型对比（教材P12）</h4>
+<h4 id="掌握级脱水三型对比教材p12" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】脱水三型对比（教材P12）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A2型病例题核心——给出血Na⁺值+临床表现→判断脱水类型→选择补液方案</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  脱水三型的本质区别在于"水和钠谁丢得多"。血浆渗透压≈2×[Na⁺]——Na⁺浓度直接决定渗透压。水丢失>钠丢失→血Na⁺浓缩→渗透压↑（高渗性）→细胞内水被"吸出"到细胞外→细胞皱缩→渴感中枢被强烈刺激（口渴明显）。钠丢失>水丢失→血Na⁺稀释→渗透压↓（低渗性）→水从细胞外进入细胞内→细胞外液量进一步减少→但渗透压↓不刺激渴感中枢（口渴不明显！）。等渗性=水钠等比丢失→渗透压不变→临床表现介于两者之间。</p>
@@ -1909,39 +1821,37 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：低渗性缺水"口渴不明显"的病理生理</summary>
+<details class="accordion" open><summary>🔬 展开：低渗性缺水&quot;口渴不明显&quot;的病理生理</summary>
 <div class="accordion-body">
-渴感中枢位于下丘脑视上核和室旁核，由渗透压感受器控制。当血浆渗透压下降（低渗），渗透压感受器不被刺激→渴感不产生。但与此同时，细胞外液低渗→水移入细胞内→细胞外液量更少→有效循环血量↓→肾素-血管紧张素-醛固酮系统激活。这解释了低渗性缺水的悖论：患者"不渴"但组织灌注已经不足——明明缺水却不觉得渴，是最容易被漏诊的脱水类型。
+<p style="margin:8px 0;line-height:1.8">渴感中枢位于下丘脑视上核和室旁核，由渗透压感受器控制。当血浆渗透压下降（低渗），渗透压感受器不被刺激→渴感不产生。但与此同时，细胞外液低渗→水移入细胞内→细胞外液量更少→有效循环血量↓→肾素-血管紧张素-醛固酮系统激活。这解释了低渗性缺水的悖论：患者"不渴"但组织灌注已经不足——明明缺水却不觉得渴，是最容易被漏诊的脱水类型。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>低渗性缺水「口渴不明显」≠「不口渴」→ 因细胞外液低渗→水向细胞内转移→细胞外液量更少→但渴感中枢不被渗透压刺激</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级补钾铁律教材p12" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】补钾铁律（教材P12）</h4>
+<h4 id="掌握级补钾铁律教材p12" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】补钾铁律（教材P12）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：外科学"最危险的错误"之一——不遵守补钾铁律=可能致命</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  人体总钾的98%在细胞内，仅2%在细胞外。血清K⁺正常范围3.5-5.5mmol/L——这个范围极其狭窄。钾的平衡几乎完全依赖肾脏排泄（90%的钾经肾排出）。如果肾功能正常，即使补钾稍多，肾脏也能把多余的钾排出去→血清K⁺维持正常。但如果肾功能受损（少尿/无尿）→补进去的钾排不出去→血清K⁺急剧升高→心肌细胞静息电位改变（部分去极化→兴奋性先↑后↓）→心律失常→心脏停搏在舒张期。这就是"见尿补钾"的逻辑——不是刻意限制补钾，而是"确认排泄通道正常后再补"。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：补钾不是怕"补多了"，是怕"排不出去"——肾是唯一的排泄通道，尿量>40ml/h=通道畅通。</p>
 <p style="margin:8px 0;line-height:1.8"><strong>绝对条件</strong>：尿量>40ml/h（或>500ml/d）方可补钾。</p>
 <p style="margin:8px 0;line-height:1.8">补钾三原则：浓度≤40mmol/L（3g/L），速度≤20mmol/h，每日总量≤100-200mmol。</p>
-<details class="accordion" open>
-<summary>🔬 展开：高钾血症的心电图演变——为什么从T波高尖到正弦波</summary>
+<details class="accordion" open><summary>🔬 展开：高钾血症的心电图演变——为什么从T波高尖到正弦波</summary>
 <div class="accordion-body">
-血清K⁺ 5.5-6.5：T波高尖（最早表现，反映复极加速）
-血清K⁺ 6.5-7.5：P波变平/消失（心房肌传导减慢）
-血清K⁺ 7.5-8.5：QRS波增宽（心室肌传导减慢）
-血清K⁺ >8.5：QRS与T波融合→正弦波→心室颤动/心脏停搏
-此过程可在数十分钟内完成——补钾必须严格控制浓度和速度。
+<p style="margin:8px 0;line-height:1.8">血清K⁺ 5.5-6.5：T波高尖（最早表现，反映复极加速）</p>
+<p style="margin:8px 0;line-height:1.8">血清K⁺ 6.5-7.5：P波变平/消失（心房肌传导减慢）</p>
+<p style="margin:8px 0;line-height:1.8">血清K⁺ 7.5-8.5：QRS波增宽（心室肌传导减慢）</p>
+<p style="margin:8px 0;line-height:1.8">血清K⁺ >8.5：QRS与T波融合→正弦波→心室颤动/心脏停搏</p>
+<p style="margin:8px 0;line-height:1.8">此过程可在数十分钟内完成——补钾必须严格控制浓度和速度。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 补钾前提「见尿」：不是任意有尿就行→是尿量>40ml/h（约>500ml/d）<br>⚠️ "少尿"与"无尿"区别：少尿<400ml/d，无尿<100ml/d</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级高钾血症教材p12" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】高钾血症（教材P12）</h4>
+<h4 id="掌握级高钾血症教材p12" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】高钾血症（教材P12）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题高频——高钾是"最危险的水电紊乱"</p></div>
 <p style="margin:8px 0;line-height:1.8">病因三途径：①肾排钾↓（最主要：肾衰竭/醛固酮↓/保钾利尿剂）；②细胞内钾移出（酸中毒→H⁺-K⁺交换/溶血/横纹肌溶解）；③摄入↑（大量输血/含钾药物）。</p>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>高钾三来源："肾排不出、细胞漏出、外面补进"</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级低钾血症教材p12" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】低钾血症（教材P12）</h4>
+<h4 id="熟悉级低钾血症教材p12" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】低钾血症（教材P12）</h4>
 <p style="margin:8px 0;line-height:1.8">轻度低钾（3.0-3.5mmol/L）→乏力；中度（2.5-3.0）→腹胀、腱反射↓；重度（<2.5）→心律失常、心脏骤停。ECG特征：T波低平/倒置、U波出现、ST段下降。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -2013,7 +1923,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 4 件事，就是这些：<br>> 1. 术中输血指征：Hb<70g/L（或Hct<21%）（教材P30）<br>> 2. 自体输血三大优点：无传染病传播/无免疫反应/节约血源（教材P30）<br>> 3. 输血小板适应证：手术患者Plt<50×10⁹/L，非手术出血患者Plt<20×10⁹/L（教材P30）<br>> 4. 大量输血后渗血原因：稀释性血小板减少+凝血因子消耗（教材P30）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级术中输血指征教材p30" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】术中输血指征（教材P30）</h4>
+<h4 id="掌握级术中输血指征教材p30" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】术中输血指征（教材P30）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题固定考点+临床决策题必考</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  输血的本质是用别人的红细胞暂时替代患者自己的携氧能力。Hb<70g/L这个阈值不是随意的——它是基于"氧输送(DO₂)-氧消耗(VO₂)关系"的生理临界点。当Hb从150g/L逐渐下降时，机体通过三个代偿机制维持组织氧供：①心输出量↑（心率↑+每搏量↑），②氧摄取率↑（从25%增加到最高60%），③血流重分布（优先供应心/脑）。当Hb降到70g/L以下时，这三条代偿机制已耗竭→氧输送开始低于氧需求→组织无氧代谢→乳酸↑。合并冠心病/COPD的患者代偿能力更差→阈值提高到80-100g/L。</p>
@@ -2042,21 +1952,20 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么是70而不是80或60？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么是70而不是80或60？</summary>
 <div class="accordion-body">
-经典研究（TRICC trial, 1999）比较了限制性输血策略（Hb<70输血）和宽松策略（Hb<100输血），发现限制性策略的30天死亡率不高于宽松策略，且避免了不必要的输血风险（感染/免疫反应/TRALI）。但此阈值不适用于急性出血/ACS患者——这些情况需要个体化判断。Hb<70是"择期手术/稳定患者"的输血门槛。
+<p style="margin:8px 0;line-height:1.8">经典研究（TRICC trial, 1999）比较了限制性输血策略（Hb<70输血）和宽松策略（Hb<100输血），发现限制性策略的30天死亡率不高于宽松策略，且避免了不必要的输血风险（感染/免疫反应/TRALI）。但此阈值不适用于急性出血/ACS患者——这些情况需要个体化判断。Hb<70是"择期手术/稳定患者"的输血门槛。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级成分输血血小板教材p30" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】成分输血——血小板（教材P30）</h4>
+<h4 id="掌握级成分输血血小板教材p30" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】成分输血——血小板（教材P30）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：血小板输注的两个阈值（50 vs 20）是A1型题最具区分度的考点</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  血小板的两个阈值对应两种不同的临床场景。Plt<50×10⁹/L→手术/侵入操作时出血风险显著增加——因为手术创面需要血小板形成初级止血栓子（血小板聚集+ADP/TXA₂释放）。Plt<20×10⁹/L→即使没有手术，自发出血风险（颅内出血/消化道出血）也开始出现——因为血管内皮日常的微小破损也需要血小板修复。50和20不是随机数字，而是对应"挑战性出血"（手术创面）和"自发性出血"两种不同的止血需求。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：50是"要动刀了必须有血小板堵伤口"，20是"不动刀也可能自己出血"。</p>
 <p style="margin:8px 0;line-height:1.8">输血小板指征：手术/侵入操作→Plt<50×10⁹/L；非手术出血→Plt<20×10⁹/L。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级自体输血教材p30" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】自体输血（教材P30）</h4>
+<h4 id="熟悉级自体输血教材p30" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】自体输血（教材P30）</h4>
 <div class="table-wrapper"><table>
 <thead><tr>
 <th>类型</th>
@@ -2082,7 +1991,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tbody>
 </table></div>
 <p style="margin:8px 0;line-height:1.8">禁忌：血液受污染（肠内容物/感染/肿瘤细胞）。</p>
-<h4 id="熟悉级大量输血并发症教材p30" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】大量输血并发症（教材P30）</h4>
+<h4 id="熟悉级大量输血并发症教材p30" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】大量输血并发症（教材P30）</h4>
 <p style="margin:8px 0;line-height:1.8">大量输血（>2500ml或24h内输全血>血容量）后渗血原因：①稀释性血小板减少（最主要）→大量输入不含血小板的库存血→血小板被稀释；②凝血因子消耗/稀释；③DIC；④低钙血症（枸橼酸抗凝剂螯合Ca²⁺）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -2141,18 +2050,17 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 2 件事，就是这些：<br>> 1. 化疗高度敏感肿瘤：绒癌、白血病、淋巴瘤、睾丸肿瘤（教材P145）<br>> 2. 动脉瘤破裂后可继发：休克、器官缺血（栓塞）、假性动脉瘤（教材P145）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
-<h4 id="熟悉级化疗敏感肿瘤教材p145" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】化疗敏感肿瘤（教材P145）</h4>
+<h4 id="熟悉级化疗敏感肿瘤教材p145" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】化疗敏感肿瘤（教材P145）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/X型题——化疗高度敏感的"四大金刚"是经典考点</p></div>
 <p style="margin:8px 0;line-height:1.8">对化疗高度敏感的恶性肿瘤：绒毛膜上皮癌、急性淋巴细胞白血病、霍奇金淋巴瘤/非霍奇金淋巴瘤、睾丸精原细胞瘤。</p>
-<details class="accordion" open>
-<summary>🔬 展开：为什么这四类肿瘤对化疗高度敏感？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么这四类肿瘤对化疗高度敏感？</summary>
 <div class="accordion-body">
-这四类肿瘤有一个共同特征——起源于快速增殖的细胞群体（滋养层细胞/淋巴细胞/生殖细胞），且保留了高增殖指数的生物学特性。化疗药物的共同靶点是快速分裂的细胞（作用于DNA合成/有丝分裂）→肿瘤细胞增殖越快→化疗杀伤越显著。正常骨髓/毛囊/胃肠道上皮也快速增殖→化疗的骨髓抑制/脱发/胃肠道反应等副作用也源于同一机制（"治疗窗口"概念）。
+<p style="margin:8px 0;line-height:1.8">这四类肿瘤有一个共同特征——起源于快速增殖的细胞群体（滋养层细胞/淋巴细胞/生殖细胞），且保留了高增殖指数的生物学特性。化疗药物的共同靶点是快速分裂的细胞（作用于DNA合成/有丝分裂）→肿瘤细胞增殖越快→化疗杀伤越显著。正常骨髓/毛囊/胃肠道上皮也快速增殖→化疗的骨髓抑制/脱发/胃肠道反应等副作用也源于同一机制（"治疗窗口"概念）。</p>
 </div>
 </details>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>化疗高度敏感四类："绒白淋睾"（绒毛膜上皮癌、白血病、淋巴瘤、睾丸精原细胞瘤）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级动脉瘤破裂后继发病变教材p145" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】动脉瘤破裂后继发病变（教材P145）</h4>
+<h4 id="熟悉级动脉瘤破裂后继发病变教材p145" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】动脉瘤破裂后继发病变（教材P145）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题常见考点——破裂后三个并发症每个都可以单独出选项</p></div>
 <p style="margin:8px 0;line-height:1.8">①失血性休克（急性破裂→大出血→有效循环血量↓→休克）；②远端器官缺血（附壁血栓脱落→随血流栓塞远端动脉→相应器官梗死）；③假性动脉瘤形成（破裂口被周围组织包裹→形成搏动性血肿→仍有破裂风险）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
@@ -2165,10 +2073,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <div class="callout callout-note"><div class="callout-title">🔗 第一篇内部跨模块链路（D5前置）</div><p>- <strong>M1+M2→M3</strong>：感染/创伤→失血/毒素→有效循环血量↓→休克<br>- <strong>M3→M4</strong>：休克→组织低灌注→肠屏障破坏→细菌移位→SIRS→MODS<br>- <strong>M5+M6→M3</strong>：水电平衡+输血→容量复苏→休克治疗的两大支柱<br>- <strong>M1+M2+M3+M4→M13</strong>：第一篇整条链→围手术期重症/ICU→第二篇的终点</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <p style="margin:8px 0;line-height:1.8">本批篇幅：约 28 页（含导航/指南/谱系4张/速览/7模块完整v5.1升级）</p>
-<div class="callout callout-info"><div class="callout-title">📊 提示</div><p>本批统计：Callout ~38个 / <details open> ~14个 / D1段 ~22个 / D2因果链 7张 / D3谱系 1张(科目级4篇) / D4决策树 1张</p></div>
-<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h1 id="第二篇-麻醉与围手术期处理" style="font-size:28px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">第二篇 麻醉与围手术期处理</h1>
 <div class="callout callout-info"><div class="callout-title">第二篇总览</div><p><strong>谱系位置</strong>：麻醉前评估→麻醉维持→苏醒→ICU的完整围手术期链路。<br><strong>核心问题</strong>：如何在保障患者安全的前提下，实现"无痛+无意识+肌肉松弛+应激抑制"的手术条件？<br><strong>6模块串联</strong>：M8(术前准备)→M9(局麻药工具)→M10(椎管内麻醉)+M11(气道管理)+M12(全麻药物)→M13(围术期并发症+ICU重症)</p></div>
@@ -2184,7 +2089,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 3 件事，就是这些：<br>> 1. 麻醉前用药四大目的：镇静+减少分泌物+抑制不良反射+镇痛（教材P75）<br>> 2. 麻醉学任务范围：麻醉+监护+疼痛治疗+急救复苏（教材P75）<br>> 3. 术前禁食时间：固体8h / 清液2-4h（教材P76）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
-<h4 id="熟悉级麻醉前用药目的教材p75" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】麻醉前用药目的（教材P75）</h4>
+<h4 id="熟悉级麻醉前用药目的教材p75" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】麻醉前用药目的（教材P75）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/X型题——四目的+对应药物是固定配对考点</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -2215,14 +2120,13 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么麻醉前要减少分泌物？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么麻醉前要减少分泌物？</summary>
 <div class="accordion-body">
-全麻药物（尤其吸入麻醉药）会刺激呼吸道腺体→分泌物↑。这些分泌物在两个环节制造危险：①诱导期——分泌物阻塞气道→通气困难；②苏醒期——分泌物刺激喉头→喉痉挛→完全气道梗阻。抗胆碱药（阿托品/东莨菪碱）提前阻断M受体→减少腺体分泌→降低这两个时间点的气道风险。同时，抗胆碱药还能抑制迷走神经反射→防止麻醉诱导中喉镜刺激引起的严重心动过缓。
+<p style="margin:8px 0;line-height:1.8">全麻药物（尤其吸入麻醉药）会刺激呼吸道腺体→分泌物↑。这些分泌物在两个环节制造危险：①诱导期——分泌物阻塞气道→通气困难；②苏醒期——分泌物刺激喉头→喉痉挛→完全气道梗阻。抗胆碱药（阿托品/东莨菪碱）提前阻断M受体→减少腺体分泌→降低这两个时间点的气道风险。同时，抗胆碱药还能抑制迷走神经反射→防止麻醉诱导中喉镜刺激引起的严重心动过缓。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级术前禁食教材p76" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】术前禁食（教材P76）</h4>
+<h4 id="熟悉级术前禁食教材p76" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】术前禁食（教材P76）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：禁食时间错误→反流误吸→Mendelson综合征→致命</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -2264,7 +2168,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 3 件事，就是这些：<br>> 1. 局麻药分酯类和酰胺类——鉴别靠化学结构（教材P80）<br>> 2. 酰胺类三大药+最大剂量：利多卡因400mg/布比卡因150mg/罗哌卡因200mg（教材P80）<br>> 3. 酯类代表：普鲁卡因/丁卡因——可用于皮试（教材P80）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级局麻药分类酯类-vs-酰胺类教材p80" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】局麻药分类：酯类 vs 酰胺类（教材P80）</h4>
+<h4 id="掌握级局麻药分类酯类-vs-酰胺类教材p80" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】局麻药分类：酯类 vs 酰胺类（教材P80）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题必考——分类鉴定+代谢途径+交叉过敏是三个递进考点</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  局麻药都是"两段式"分子：芳香环（亲脂端）+ 中间链（酯键或酰胺键）+ 胺基（亲水端）。中间链的化学键类型决定了分类和代谢方式。酯键→可被血浆假性胆碱酯酶快速水解→代谢快、半衰期短、过敏率高（水解产物对氨基苯甲酸是过敏原）。酰胺键→肝脏微粒体酶(CYP)代谢→代谢慢、半衰期长、过敏率极低。这就是为什么"酯类=血浆代谢+过敏多，酰胺类=肝脏代谢+过敏少"——一切都源于中间那个化学键。</p>
@@ -2291,15 +2195,14 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么布比卡因心脏毒性最大？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么布比卡因心脏毒性最大？</summary>
 <div class="accordion-body">
-布比卡因与心肌Na⁺通道的结合是"快结合-慢解离"模式（fast-in/slow-out）。其他局麻药（利多卡因）与Na⁺通道是"快结合-快解离"→心脏毒性短暂可逆。布比卡因一旦结合→解离极慢→Na⁺通道长时间被阻断→心肌传导严重抑制→顽固性室性心律失常→常规复苏效果极差。脂肪乳剂（Intralipid）可作为"脂质池"（lipid sink）将布比卡因从心肌Na⁺通道中"拖出来"——这是布比卡因中毒的特效解毒机制。
+<p style="margin:8px 0;line-height:1.8">布比卡因与心肌Na⁺通道的结合是"快结合-慢解离"模式（fast-in/slow-out）。其他局麻药（利多卡因）与Na⁺通道是"快结合-快解离"→心脏毒性短暂可逆。布比卡因一旦结合→解离极慢→Na⁺通道长时间被阻断→心肌传导严重抑制→顽固性室性心律失常→常规复苏效果极差。脂肪乳剂（Intralipid）可作为"脂质池"（lipid sink）将布比卡因从心肌Na⁺通道中"拖出来"——这是布比卡因中毒的特效解毒机制。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 酯类和酰胺类的分类依据是"中间化学键"不是"是否有酰胺基团"——两者分子中都有酰胺结构片段，关键是连接芳香环和胺基的那个键。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级酰胺类最大剂量教材p80" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】酰胺类最大剂量（教材P80）</h4>
+<h4 id="掌握级酰胺类最大剂量教材p80" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】酰胺类最大剂量（教材P80）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题高频——最大剂量是局麻药中毒的"安全红线"</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  局麻药的"最大剂量"本质上是在"有效麻醉浓度"和"中毒血药浓度"之间划定的安全边界。这个边界由两个因素决定：①药物分布容积（Vd）→决定血液中药物的稀释程度；②药物清除速度→决定药物在体内存留时间。利多卡因（400mg）安全窗口最大，因为它的分布容积大（广泛分布到组织）+肝清除率高。布比卡因（150mg）安全窗口最窄，因为它的蛋白结合率高（>95%）→游离药物浓度突然升高时缓冲能力差+心肌选择性高。</p>
@@ -2329,7 +2232,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </table></div>
 <div class="callout callout-tip"><div class="callout-title">记忆口诀</div><p>"利多四百罗二百，布比心毒一五零"——数字递减、毒性递增。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级局麻药中毒教材p80" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】局麻药中毒（教材P80）</h4>
+<h4 id="熟悉级局麻药中毒教材p80" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】局麻药中毒（教材P80）</h4>
 <p style="margin:8px 0;line-height:1.8">早期表现：口周麻木→金属味→耳鸣→视物模糊（中枢神经先兴奋后抑制）。严重：惊厥→意识丧失。最严重：心脏骤停（布比卡因最危险）。</p>
 <p style="margin:8px 0;line-height:1.8">治疗：①立即停药+吸氧；②抗惊厥（地西泮/咪达唑仑）；③脂肪乳剂20% 1.5ml/kg bolus（布比卡因中毒特效解毒——"lipid sink"机制）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
@@ -2387,7 +2290,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 5 件事，就是这些：<br>> 1. 腰麻(蛛网膜下腔阻滞)成功标志=清亮脑脊液流出（教材P85）<br>> 2. 硬膜外麻醉最严重并发症=全脊麻（局麻药误入蛛网膜下腔）（教材P86）<br>> 3. 腰麻后并发症：头痛(脑脊液漏/最常见)、尿潴留、低血压（教材P86）<br>> 4. 腰麻后体位=去枕平卧6h（防脑脊液漏→防头痛）（教材P86）<br>> 5. 椎管内麻醉禁忌证：休克/穿刺部位感染/凝血障碍/颅内高压（教材P85）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级腰麻-vs-硬膜外麻醉核心技术对比教材p85-86" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】腰麻 vs 硬膜外麻醉核心技术对比（教材P85-86）</h4>
+<h4 id="掌握级腰麻-vs-硬膜外麻醉核心技术对比教材p85-86" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】腰麻 vs 硬膜外麻醉核心技术对比（教材P85-86）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：B1型题最高频配对——腰麻和硬膜外在每一维度上的对比都是考点</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  腰麻和硬膜外麻醉的根本区别在于"药打到了哪个解剖层次"。从皮肤到脊髓需要穿过：皮肤→皮下→棘上韧带→棘间韧带→黄韧带→硬膜外腔→硬脊膜→蛛网膜→蛛网膜下腔(含脑脊液)。腰麻穿过了最后两层（硬膜+蛛网膜）→针尖进入蛛网膜下腔→脑脊液流出→药液直接与脊神经根接触→起效极快（1-5min）+只需小剂量。硬膜外麻醉停在硬膜外腔→药物需要渗透过硬脊膜和蛛网膜才能到达脊神经→起效慢（15-20min）+需要大剂量（腰麻的5-10倍）。</p>
@@ -2431,14 +2334,13 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么腰麻后要去枕平卧6小时？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么腰麻后要去枕平卧6小时？</summary>
 <div class="accordion-body">
-腰麻穿刺针穿透硬脊膜和蛛网膜→留下穿刺孔（约22-27G针孔）。正常成人脑脊液总量约150ml，每日产生约500ml。坐位/立位时脑脊液静水压高于平卧位→脑脊液从穿刺孔持续漏出→颅内容量↓→脑组织下沉→牵拉脑膜和神经→低颅压性头痛。去枕平卧→脊髓蛛网膜下腔与颅腔在同一水平→静水压差最小→脑脊液漏出最少→给穿刺孔足够时间愈合（6小时足够纤维蛋白封闭针孔）。饮水/补液→增加脑脊液生成→辅助恢复颅内容量。
+<p style="margin:8px 0;line-height:1.8">腰麻穿刺针穿透硬脊膜和蛛网膜→留下穿刺孔（约22-27G针孔）。正常成人脑脊液总量约150ml，每日产生约500ml。坐位/立位时脑脊液静水压高于平卧位→脑脊液从穿刺孔持续漏出→颅内容量↓→脑组织下沉→牵拉脑膜和神经→低颅压性头痛。去枕平卧→脊髓蛛网膜下腔与颅腔在同一水平→静水压差最小→脑脊液漏出最少→给穿刺孔足够时间愈合（6小时足够纤维蛋白封闭针孔）。饮水/补液→增加脑脊液生成→辅助恢复颅内容量。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级硬膜外麻醉并发症教材p86" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】硬膜外麻醉并发症（教材P86）</h4>
+<h4 id="掌握级硬膜外麻醉并发症教材p86" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】硬膜外麻醉并发症（教材P86）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题高频——硬膜外并发症列表长，每个都可单独出题</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -2476,7 +2378,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </table></div>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 全脊麻是硬膜外麻醉最严重并发症→不是腰麻的并发症！腰麻本身就是往蛛网膜下腔注药，不存在"误入"一说。<br>⚠️ 全脊麻的急救窗口极短（数分钟）→必须备好气管插管设备+升压药。这是为什么所有椎管内麻醉都必须有"气道急救预案"。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级腰麻并发症教材p86" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】腰麻并发症（教材P86）</h4>
+<h4 id="掌握级腰麻并发症教材p86" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】腰麻并发症（教材P86）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题——腰麻后四项并发症各有不同机制</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -2502,20 +2404,19 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：腰麻后恶心呕吐的三个机制</summary>
+<details class="accordion" open><summary>🔬 展开：腰麻后恶心呕吐的三个机制</summary>
 <div class="accordion-body">
-①低血压→脑干供血不足→延髓呕吐中枢激活；②交感神经阻滞→迷走神经相对亢进→胃肠蠕动↑+呕吐反射敏感；③麻醉平面过高(T4以上)→内脏牵拉反射→迷走神经传入↑。处理方法按优先级：先纠正低血压（补液+麻黄碱）→再用止吐药（昂丹司琼）。
+<p style="margin:8px 0;line-height:1.8">①低血压→脑干供血不足→延髓呕吐中枢激活；②交感神经阻滞→迷走神经相对亢进→胃肠蠕动↑+呕吐反射敏感；③麻醉平面过高(T4以上)→内脏牵拉反射→迷走神经传入↑。处理方法按优先级：先纠正低血压（补液+麻黄碱）→再用止吐药（昂丹司琼）。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级椎管内麻醉适应证与禁忌教材p85" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】椎管内麻醉适应证与禁忌（教材P85）</h4>
+<h4 id="掌握级椎管内麻醉适应证与禁忌教材p85" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】椎管内麻醉适应证与禁忌（教材P85）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题经典考点——"下列哪些是椎管内麻醉禁忌"</p></div>
 <p style="margin:8px 0;line-height:1.8">适应证：下腹部/盆腔/会阴部/下肢手术。</p>
 <p style="margin:8px 0;line-height:1.8">禁忌证：①休克（绝对禁忌——交感已最大代偿，再阻滞交感=血压崩溃）；②穿刺部位感染；③凝血功能障碍（INR>1.5或Plt<50→硬膜外血肿风险）；④颅内高压（腰穿→脑疝风险）；⑤严重脊柱畸形；⑥患者拒绝。</p>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>休克是椎管内麻醉的绝对禁忌——因为椎管内麻醉→交感神经阻滞→血管扩张→血压进一步↓。休克患者已经在靠交感缩血管代偿维持血压，阻断交感神经=釜底抽薪。这与"椎管内麻醉会引起低血压"的机制完全一致。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级颈丛阻滞并发症教材p82" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】颈丛阻滞并发症（教材P82）</h4>
+<h4 id="熟悉级颈丛阻滞并发症教材p82" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】颈丛阻滞并发症（教材P82）</h4>
 <p style="margin:8px 0;line-height:1.8">膈神经阻滞（呼吸困难）——膈神经来自C3-C5；喉返神经阻滞（声音嘶哑）——喉返神经与颈丛解剖相邻；Horner综合征（同侧瞳孔缩小/眼睑下垂/面部无汗）——颈交感干被阻滞。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -2613,7 +2514,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 6 件事，就是这些：<br>> 1. 成人气管插管深度：♂22-24cm / ♀20-22cm（门齿计）（教材P90）<br>> 2. 上呼吸道梗阻最常见原因=舌后坠（教材P90）<br>> 3. 气管插管禁忌：喉水肿/喉肿瘤/喉异物/颈椎损伤(相对)（教材P90）<br>> 4. 气管插管并发症：牙齿损伤/声带麻痹/喉水肿/导管误入食管（教材P90）<br>> 5. 气管切开适应证：上呼吸道梗阻/长期机械通气/气道保护（教材P92）<br>> 6. 会厌功能：吞咽时遮盖喉口防误吸（教材P90）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级气管插管关键参数教材p90" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】气管插管关键参数（教材P90）</h4>
+<h4 id="掌握级气管插管关键参数教材p90" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】气管插管关键参数（教材P90）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题必考——深度和内径的选择+过深的并发症连锁考</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  气管从声门到隆突的长度成人约10-13cm。导管尖端理想位置是隆突上2-4cm（即气管中段）。从门齿到声门约13-15cm（成人男性）→导管深度≈门齿到声门+声门到气���中段≈22-24cm。女性喉位置稍高、气管略短→20-22cm。导管内径由环状软骨内径决定（气管最窄处）——男性约17-21mm→ID 7.5-8.5mm，女性约14-18mm→ID 7.0-8.0mm。</p>
@@ -2637,15 +2538,14 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么导管容易滑入右主支气管？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么导管容易滑入右主支气管？</summary>
 <div class="accordion-body">
-气管在隆突处分为左右主支气管。右主支气管与气管的夹角约25°（较垂直），左主支气管约45°（较水平）。此外右主支气管更短(约2.5cm vs 5cm)且更粗。导管插入过深→自然沿较垂直的方向→进入右主支气管→右肺通气而左肺萎陷（单肺通气）→听诊左肺呼吸音消失。双侧听诊是确认导管位置的关键步骤。
+<p style="margin:8px 0;line-height:1.8">气管在隆突处分为左右主支气管。右主支气管与气管的夹角约25°（较垂直），左主支气管约45°（较水平）。此外右主支气管更短(约2.5cm vs 5cm)且更粗。导管插入过深→自然沿较垂直的方向→进入右主支气管→右肺通气而左肺萎陷（单肺通气）→听诊左肺呼吸音消失。双侧听诊是确认导管位置的关键步骤。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>气管导管深度过深→进入右主支气管（右短粗+角度小）→左肺不张</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级气道管理舌后坠的机制教材p90" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】气道管理：舌后坠的机制（教材P90）</h4>
+<h4 id="掌握级气道管理舌后坠的机制教材p90" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】气道管理：舌后坠的机制（教材P90）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题——"上呼吸道梗阻最常见原因"是基础考点</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  清醒状态下，颏舌肌（genioglossus）持续收缩→将舌根向前拉→保持咽部通畅。全麻/昏迷→所有骨骼肌松弛→颏舌肌也不例外→舌根因重力后坠→压住咽后壁→完全阻塞上呼吸道。这就是为什么全麻后患者"睡过去"的第一秒就面临气道梗阻风险——不是因为分泌物也不是因为喉痉挛，而是最基础的"舌头掉了"。仰头抬颏法的本质：将下颌骨向前上方提起→颏舌肌被动拉紧→将舌根从咽后壁"提起来"→恢复气道通畅。</p>
@@ -2653,12 +2553,12 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <p style="margin:8px 0;line-height:1.8">上呼吸道梗阻最常见原因=舌后坠。处理：仰头抬颏法/托下颌法+口咽通气道/鼻咽通气道。</p>
 <p style="margin:8px 0;line-height:1.8">会厌功能：吞咽时会厌向下遮盖喉口→防止食物/液体进入气管。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级气管插管适应证与禁忌教材p90" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】气管插管适应证与禁忌（教材P90）</h4>
+<h4 id="掌握级气管插管适应证与禁忌教材p90" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】气管插管适应证与禁忌（教材P90）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/X型题——适应证+禁忌的配对判断</p></div>
 <p style="margin:8px 0;line-height:1.8">适应证：全麻/呼吸衰竭需机械通气/气道保护（GCS≤8→吞咽反射消失→误吸风险高）/上呼吸道梗阻。</p>
 <p style="margin:8px 0;line-height:1.8">禁忌：喉水肿/喉肿瘤/喉异物（绝对相对禁忌——经喉插管会加重梗阻）；颈椎损伤→可选纤支镜引导（相对禁忌——避免颈部后仰加重脊髓损伤）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级气管插管并发症教材p90" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】气管插管并发症（教材P90）</h4>
+<h4 id="掌握级气管插管并发症教材p90" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】气管插管并发症（教材P90）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题的经典组合</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -2691,12 +2591,11 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </table></div>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 导管误入食管≠不会死——误入食管后通气进入胃部而非肺部→SpO₂下降在30-60秒内出现→未及时发现→缺氧性脑损伤/死亡。确认导管位置的"金标准"=持续呼气末CO₂监测（ETCO₂波形）。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级气管切开适应证教材p91-92" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】气管切开适应证（教材P91-92）</h4>
+<h4 id="熟悉级气管切开适应证教材p91-92" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】气管切开适应证（教材P91-92）</h4>
 <p style="margin:8px 0;line-height:1.8">适应证：上呼吸道梗阻（肿瘤/异物/水肿）、长期机械通气（>2-3周→避免喉损伤）、气道保护（大量分泌物/误吸风险高）。</p>
-<details class="accordion" open>
-<summary>🔬 展开：为什么长期插管要转气管切开？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么长期插管要转气管切开？</summary>
 <div class="accordion-body">
-经喉插管导管经过声带→长时间压迫→声带黏膜缺血→溃疡→肉芽肿→声带瘢痕→永久性声音嘶哑。气管切开绕过声带→消除了声带损伤风险。同时，气管切开→死腔减少→呼吸功降低→利于脱机。一般气管插管超过7-14天考虑转气管切开。
+<p style="margin:8px 0;line-height:1.8">经喉插管导管经过声带→长时间压迫→声带黏膜缺血→溃疡→肉芽肿→声带瘢痕→永久性声音嘶哑。气管切开绕过声带→消除了声带损伤风险。同时，气管切开→死腔减少→呼吸功降低→利于脱机。一般气管插管超过7-14天考虑转气管切开。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
@@ -2725,23 +2624,21 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 3 件事，就是这些：<br>> 1. 阿片类对吸入麻醉药的协同作用→降低MAC（教材P95）<br>> 2. 吸入麻醉药与其他药物的相互作用：氨基糖苷类→协同肌松/β阻滞剂→协同心肌抑制（教材P95）<br>> 3. 高血压患者麻醉管理核心=维持血压稳定、避免大幅波动（教材P95）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
-<h4 id="熟悉级mac概念与药物协同教材p95" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】MAC概念与药物协同（教材P95）</h4>
+<h4 id="熟悉级mac概念与药物协同教材p95" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】MAC概念与药物协同（教材P95）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：MAC是吸入麻醉药效价强度的核心概念</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理（虽非🔴考点，但概念重要）：</p>
 <p style="margin:8px 0;line-height:1.8">  MAC不是随便定义的"麻醉深度"指标——它选择"切皮不动"作为终点是因为这是最标准化、可重复的伤害性刺激。50%患者不动意味着MAC₅₀——类似于药理学中的ED₅₀。阿片类降低MAC 30-60%的机制：阿片类抑制脊髓和脑干的疼痛信号传递→减少了上传到大脑皮层的伤害性信号→吸入麻醉药需要"压制"的信号变少了→所需浓度降低。</p>
 <p style="margin:8px 0;line-height:1.8">MAC（最低肺泡有效浓度）=使50%患者在切皮时不发生体动反应的吸入麻醉药浓度。</p>
 <p style="margin:8px 0;line-height:1.8">阿片类药物（吗啡/芬太尼/瑞芬太尼）与吸入麻醉药协同→可降低MAC 30-60%。</p>
-<details class="accordion" open>
-<summary>🔬 展开：MAC的临床实用价值</summary>
+<details class="accordion" open><summary>🔬 展开：MAC的临床实用价值</summary>
 <div class="accordion-body">
-- 1 MAC = 50%不动；1.3 MAC = 95%不动（相当于ED₉₅）
-- MACawake（清醒MAC）= 约0.3-0.5 MAC → 患者恢复意识
-- 高龄→MAC↓（每增长10岁约降低6%）；体温↓→MAC↓；妊娠→MAC↓
-- 药物协同的临床意义：合用阿片类→MAC↓→可减少吸入麻醉药剂量→降低其心血管抑制作用
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>1 MAC = 50%不动；1.3 MAC = 95%不动（相当于ED₉₅）</li><li>MACawake（清醒MAC）= 约0.3-0.5 MAC → 患者恢复意识</li><li>高龄→MAC↓（每增长10岁约降低6%）；体温↓→MAC↓；妊娠→MAC↓</li><li>药物协同的临床意义：合用阿片类→MAC↓→可减少吸入麻醉药剂量→降低其心血管抑制作用</li>
+</ul>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级药物相互作用教材p95" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】药物相互作用（教材P95）</h4>
+<h4 id="熟悉级药物相互作用教材p95" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】药物相互作用（教材P95）</h4>
 <div class="table-wrapper"><table>
 <thead><tr>
 <th>合用药物</th>
@@ -2772,7 +2669,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </table></div>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>氨基糖苷类+全麻→肌松增强≠肌松药过量——前者是前膜ACh释放↓（突触前抑制），后者是后膜N受体竞争性阻断（突触后阻断）→机制不同但效应叠加。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="了解级高血压患者麻醉管理教材p95" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】高血压患者麻醉管理（教材P95）</h4>
+<h4 id="了解级高血压患者麻醉管理教材p95" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】高血压患者麻醉管理（教材P95）</h4>
 <p style="margin:8px 0;line-height:1.8">核心原则：维持血流动力学稳定，避免血压大幅波动。高血压患者血管已硬化→自动调节曲线右移→血压"正常"时肾/脑可能已灌注不足。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <div class="callout callout-note"><div class="callout-title">模块12因果链：全麻药物→相互作用→风险放大</div><p><br>```<br>        全麻药物体系<br>              │<br> ┌────────────┼────────────┐<br> ↓            ↓            ↓<br>吸入麻醉药  静脉麻醉药  肌松药<br>(七氟烷/异氟烷)(丙泊酚/依托咪酯)(罗库溴铵/顺阿曲库铵)<br> │            │            │<br> └────────────┼────────────┘<br>              ↓<br>     ★MAC (效价强度指标)<br>              │<br>     ┌────────┼────────┐<br>     ↓        ↓        ↓<br>  阿片类   β阻滞剂  氨基糖苷类<br>   ↓MAC     ↓心肌     ↑肌松<br>  30-60%   抑制       (ACh↓)<br>     │        │        │<br>     └────────┼────────┘<br>              ↓<br>    ★全麻药与合并用药的协同<br>      ≠"有用"≠"安全"<br>              │<br>              ↓<br>      协同效应=风险放大<br>              │<br>     ┌────────┼────────┐<br>     ↓        ↓        ↓<br>  低MAC   低血压   延迟呼吸<br>  苏醒快  难纠正   恢复<br>```<br><br>> [!INFO] 全麻药物相互作用的核心原则：任何"1+1>2"的协同都是双刃剑——它让你用更少的药达到麻醉深度，但也让副作用（心肌抑制/呼吸抑制/肌松延迟）更难预测和控制。</p></div>
@@ -2794,7 +2691,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 6 件事，就是这些：<br>> 1. 心肺复苏核心=胸外按压(C)+气道(A)+呼吸(B)，按压:呼吸=30:2（教材P100）<br>> 2. 心搏骤停判断依据=意识丧失+大动脉搏动消失+呼吸停止（教材P100）<br>> 3. 心室细颤→电击前先给肾上腺素→细颤变粗颤→提高除颤成功率（教材P102）<br>> 4. 脑复苏四要素=脑灌注压+亚低温+脱水+激素（教材P104）<br>> 5. 肾性肾衰竭两大病因=肾缺血+肾毒素（氨基糖苷类/造影剂）（教材P110）<br>> 6. 静脉血栓Virchow三联征=血流淤滞+血管内膜损伤+血液高凝（教材P120）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级心肺复苏流程cab顺序的逻辑教材p100" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】心肺复苏流程：CAB顺序的逻辑（教材P100）</h4>
+<h4 id="掌握级心肺复苏流程cab顺序的逻辑教材p100" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】心肺复苏流程：CAB顺序的逻辑（教材P100）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2/X型题全考——从流程到参数到药物，每题必考</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  2010年AHA指南将ABC改为CAB的理由不是随意的——是基于心搏骤停后"氧债"的生理学。心搏骤停时血液中仍存有足够的氧气（约可维持4分钟的氧供），问题不在于"氧气不够"，而在于"氧气送不出去"（循环停止）。传统ABC先开放气道→人工呼吸→再按压→浪费了宝贵的30-60秒——胸外按压每延迟1分钟，生存率下降7-10%。CAB将按压提到第一位：先按→让残留的氧气动起来→再用人工呼吸补充氧气。</p>
@@ -2828,35 +2725,32 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么按压频率是100-120次/分？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么按压频率是100-120次/分？</summary>
 <div class="accordion-body">
-按压频率<100→心输出量不足；按压频率>120→胸廓回弹不充分→静脉回流不足→下次按压时心腔内血量不够。100-120是"充分挤压+充分回弹"的最优区间。这与心肌的Frank-Starling机制相关——按压之间必须让胸廓完全回弹→胸内负压→静脉回流→下次按压才有足够的血量被泵出。
+<p style="margin:8px 0;line-height:1.8">按压频率<100→心输出量不足；按压频率>120→胸廓回弹不充分→静脉回流不足→下次按压时心腔内血量不够。100-120是"充分挤压+充分回弹"的最优区间。这与心肌的Frank-Starling机制相关——按压之间必须让胸廓完全回弹→胸内负压→静脉回流→下次按压才有足够的血量被泵出。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级心搏骤停判断教材p100" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】心搏骤停判断（教材P100）</h4>
+<h4 id="掌握级心搏骤停判断教材p100" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】心搏骤停判断（教材P100）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：判断时机=抢救的黄金窗口</p></div>
 <p style="margin:8px 0;line-height:1.8">三项判断依据（10秒内完成）：①意识突然丧失（拍打双肩+大声呼唤）；②大动脉搏动消失（颈动脉/股动脉，触摸不超过10秒）；③呼吸停止（或叹息样呼吸=临终呼吸≠有效呼吸）。</p>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>不能依赖心电监护/血压来判断→浪费时间。叹息样呼吸（gasping）不是有效呼吸——它是脑干缺氧的濒死反射，不应被误判为"还在呼吸"。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级心室细颤处理细颤粗颤除颤教材p102" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】心室细颤处理：细颤→粗颤→除颤（教材P102）</h4>
+<h4 id="掌握级心室细颤处理细颤粗颤除颤教材p102" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】心室细颤处理：细颤→粗颤→除颤（教材P102）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题高频——"先给药再电击"vs"直接电击"的判断</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  心室纤颤的"粗细"反映了心肌细胞电活动的同步化程度。粗颤=心肌细胞仍在相对同步地颤动→电击（非同步直流电除颤）可同时去极化全部心肌→给窦房结一个"重新接管"的机会→成功率较高。细颤=心肌细胞电活动微弱且不同步→电击难以让全部心肌同时去极化→成功率低。肾上腺素→兴奋α/β受体→冠脉灌注压↑（α→外周血管收缩→主动脉舒张压↑→冠脉血流↑）→心肌供氧改善→心肌细胞电活动增强→细颤→粗颤。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：肾上腺素不是"治颤"的药——它是让心脏"恢复元气"的药。颤还是颤，但从"微弱无力"变成"粗壮有力"→电击才能把它打停。</p>
 <p style="margin:8px 0;line-height:1.8">心室纤颤分粗颤和细颤。细颤→直接电除颤成功率低→先静脉注射肾上腺素（1mg）→细颤转为粗颤→提高除颤成功率。</p>
-<details class="accordion" open>
-<summary>🔬 展开：除颤的能量选择</summary>
+<details class="accordion" open><summary>🔬 展开：除颤的能量选择</summary>
 <div class="accordion-body">
-- 双相波除颤器：120-200J（首次）
-- 单相波除颤器：360J
-- 除颤后立即恢复CPR 2分钟（不是"看一下有没有心跳"）→再判断心律
-- 肾上腺素每3-5分钟重复一次1mg IV
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>双相波除颤器：120-200J（首次）</li><li>单相波除颤器：360J</li><li>除颤后立即恢复CPR 2分钟（不是"看一下有没有心跳"）→再判断心律</li><li>肾上腺素每3-5分钟重复一次1mg IV</li>
+</ul>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级脑复苏四要素教材p104" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】脑复苏四要素（教材P104）</h4>
+<h4 id="掌握级脑复苏四要素教材p104" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】脑复苏四要素（教材P104）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题——四个措施缺一不可的联合治疗</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  脑复苏的四要素各自攻击脑缺血损伤的不同环节——这就是"联合治疗"的生理基础。脑灌注压(CPP=MAP-ICP)→保证氧气和葡萄糖送达神经元（"供"）。亚低温32-34℃→降低脑代谢率（每降1℃→代谢率降低6-7%）→减少氧气需求（"需"）。脱水(甘露醇)→减轻脑水肿→降低ICP→维持CPP（"减压"）。糖皮质激素→稳定细胞膜+减轻炎症+减轻血管源性水肿（"保护"）。这四点构成了"供-需-压-护"四维保护框架——缺任何一环，大脑都会从其他维度受到打击。</p>
@@ -2886,7 +2780,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级急性肾衰竭三型鉴别教材p110" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】急性肾衰竭三型鉴别（教材P110）</h4>
+<h4 id="掌握级急性肾衰竭三型鉴别教材p110" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】急性肾衰竭三型鉴别（教材P110）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：B1型配伍题——肾前性/肾性/肾后性的病因鉴别</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -2913,20 +2807,46 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tbody>
 </table></div>
 <p style="margin:8px 0;line-height:1.8">肾毒素两大来源：①氨基糖苷类抗生素（蓄积在肾小管上皮→直接毒性）；②造影剂（渗透压负荷+直接肾小管毒性+血管收缩→"三重打击"）。</p>
-<details class="accordion" open>
-<summary>🔬 展开：肾前性vs肾性的鉴别指标</summary>
+<details class="accordion" open><summary>🔬 展开：肾前性vs肾性的鉴别指标</summary>
 <div class="accordion-body">
-| 指标 | 肾前性 | 肾性(ATN) |
-|------|--------|-----------|
-| 尿Na⁺ | <20mmol/L | >40mmol/L |
-| FENa(钠排泄分数) | <1% | >2% |
-| 尿渗透压 | >500 | <350 |
-| 尿/血肌酐比 | >40 | <20 |
-| 补液试验 | 尿量↑ | 尿量不↑ |
+<div class="table-wrapper"><table>
+<thead><tr>
+<th>指标</th>
+<th>肾前性</th>
+<th>肾性(ATN)</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>尿Na⁺</td>
+<td><20mmol/L</td>
+<td>>40mmol/L</td>
+</tr>
+<tr>
+<td>FENa(钠排泄分数)</td>
+<td><1%</td>
+<td>>2%</td>
+</tr>
+<tr>
+<td>尿渗透压</td>
+<td>>500</td>
+<td><350</td>
+</tr>
+<tr>
+<td>尿/血肌酐比</td>
+<td>>40</td>
+<td><20</td>
+</tr>
+<tr>
+<td>补液试验</td>
+<td>尿量↑</td>
+<td>尿量不↑</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级术后并发症时间线教材p115" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】术后并发症时间线（教材P115）</h4>
+<h4 id="熟悉级术后并发症时间线教材p115" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】术后并发症时间线（教材P115）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A2型病例题——"术后第X天出现Y症状"的时间是诊断线索</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -2959,11 +2879,11 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </table></div>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>- ⚠️ 伤口感染最早时间是术后第3天——术后24h内的发热通常是肺不张（非感染性发热）<br>- ⚠️ 肺栓塞的高危时刻=术后第一次下床——制动期间形成血栓→活动后血栓脱落→栓塞</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级静脉血栓virchow三联征教材p120" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】静脉血栓Virchow三联征（教材P120）</h4>
+<h4 id="熟悉级静脉血栓virchow三联征教材p120" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】静脉血栓Virchow三联征（教材P120）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题+机制理解——Virchow三联征解释了"谁容易得血栓"</p></div>
 <p style="margin:8px 0;line-height:1.8">Virchow三联征（促发因素）：①血流淤滞（制动/卧床/心衰）；②血管内膜损伤（手术/创伤/静脉穿刺）；③血液高凝状态（肿瘤/妊娠/口服避孕药/遗传性凝血异常）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="了解级现代麻醉学任务" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】现代麻醉学任务</h4>
+<h4 id="了解级现代麻醉学任务" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】现代麻醉学任务</h4>
 <p style="margin:8px 0;line-height:1.8">麻醉+术中监护+疼痛治疗+急救复苏。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -3055,10 +2975,8 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <div class="callout callout-note"><div class="callout-title">🔗 第二篇内部+跨篇链路（D5前置）</div><p>- <strong>M8→M9+M10+M12</strong>：麻醉前评估→选择麻醉方案（局麻/区域/全麻）<br>- <strong>M10→M11</strong>：椎管内麻醉并发症（全脊麻）→紧急气道管理（插管/通气）<br>- <strong>M3+M4→M13</strong>：第一篇的休克/MODS→第二篇的ICU重症→两篇在此交汇<br>- <strong>M11+M13→M14-M16</strong>：气道管理/CPR→神经外科重症（ICP↑/脑疝）→第三篇的前奏</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <p style="margin:8px 0;line-height:1.8">本批篇幅：约 24 页（含第二篇总览/6模块完整v5.1升级/腰麻vs硬膜外决策树/ARF鉴别决策树）</p>
 <div class="callout callout-info"><div class="callout-title">📊 提示</div><p>累计统计：Callout ~65个(目标84) / <details open> ~26个(目标42) / D1段 ~30个 / D2因果链 13张 / D3谱系 1张科目级 / D4决策树 3张</p></div>
-<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h1 id="第三篇-神经外科疾病" style="font-size:28px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">第三篇 神经外科疾病</h1>
 <div class="callout callout-info"><div class="callout-title">第三篇总览</div><p><strong>谱系位置</strong>：脑水肿→颅内压增高→脑疝→脑死亡——这是神经外科最紧急的疾病演变链，每一个环节都是"数分钟到数小时"级别的时间窗。<br><strong>核心问题</strong>：颅腔是一个刚性容器（Monro-Kellie学说），颅内任何额外体积都会挤压脑组织→当压力越过代偿极限→唯一的出口就是枕骨大孔和小脑幕裂孔→脑疝→死亡。<br><strong>6模块串联</strong>：M17(脑水肿基础)→M14(ICP↑诊断)→M15(脑疝急症)→M16(颅脑损伤实战)→M18(外伤后感染)→M19(肿瘤占位)</p></div>
@@ -3078,7 +2996,7 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 5 件事，就是这些：<br>> 1. 颅内压正常值：成人70-200mmH₂O（5-15mmHg）（教材P200）<br>> 2. 颅内压增高三大主症：头痛+呕吐+视乳头水肿（教材P200）<br>> 3. 急性ICP增高Cushing反应：血压↑+脉搏↓+呼吸慢（教材P200）<br>> 4. 颅内压增高病因：占位/脑水肿/脑积水/静脉回流受阻（教材P200）<br>> 5. 良性颅内压增高：无占位/无脑积水/腰穿压力↑（教材P202）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级颅内压icp正常值与三大主症教材p200" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】颅内压（ICP）正常值与三大主症（教材P200）</h4>
+<h4 id="掌握级颅内压icp正常值与三大主症教材p200" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】颅内压（ICP）正常值与三大主症（教材P200）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题——三大主症是颅内压增高的"经典套餐"，但急性≠慢性表现</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  Monro-Kellie学说告诉我们：颅腔是一个"只出不进"的刚性容器。脑组织(约1400ml)+血液(约150ml)+脑脊液(约150ml)=颅腔总容积(约1700ml)。正常时三者此消彼长——脑脊液可以挤回脊髓蛛网膜下腔，血液可通过静脉回流调节——这就是"颅内顺应性"。但当某个成分持续增长（肿瘤/血肿/水肿）→脑脊液和血液的代偿空间被耗尽→任何额外增量都会导致ICP指数级上升（颅内压力-容积曲线从"平台期"进入"陡升期"）。三大主症就是ICP↑在不同结构上的"指纹"：头痛=硬脑膜被牵拉（颅内唯一的痛敏结构），呕吐=延髓呕吐中枢受压（喷射=无恶心前兆，直接喷射），视乳头水肿=ICP经视神经鞘传导→视盘轴浆运输受阻。</p>
@@ -3104,30 +3022,28 @@ WBC>12×10⁹/L反映骨髓对炎症的正常反应（粒细胞动员）。WBC<4
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：颅内压力-容积曲线——为什么"突然就崩了"？</summary>
+<details class="accordion" open><summary>🔬 展开：颅内压力-容积曲线——为什么&quot;突然就崩了&quot;？</summary>
 <div class="accordion-body">
-颅内压力-容积曲线不是直线，而是指数曲线。在代偿期内（曲线平台段）→每增加1ml体积→ICP仅上升1-2mmHg。当代偿耗尽进入陡升段→每增加1ml体积→ICP上升10-20mmHg。这就是为什么一个"不大的"血肿可以突然从"患者清醒"变成"昏迷+脑疝"——不是血肿突然长大，而是跨过了那条指数曲线的拐点。
+<p style="margin:8px 0;line-height:1.8">颅内压力-容积曲线不是直线，而是指数曲线。在代偿期内（曲线平台段）→每增加1ml体积→ICP仅上升1-2mmHg。当代偿耗尽进入陡升段→每增加1ml体积→ICP上升10-20mmHg。这就是为什么一个"不大的"血肿可以突然从"患者清醒"变成"昏迷+脑疝"——不是血肿突然长大，而是跨过了那条指数曲线的拐点。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>三大主症是慢性颅内压增高的典型表现。急性ICP增高（如脑外伤后急性硬膜外血肿）可能只有头痛+意识障碍，不一定有视乳头水肿（需要数小时-数天才能形成）。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级cushing反应脑干最后的sos信号教材p200" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】Cushing反应：脑干最后的"SOS信号"（教材P200）</h4>
+<h4 id="掌握级cushing反应脑干最后的sos信号教材p200" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】Cushing反应：脑干最后的"SOS信号"（教材P200）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题必考——Cushing反应=颅内压增高的"临终警报"</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  Cushing反应的三联征（血压↑+脉搏↓+呼吸慢）看似矛盾——为什么颅内有问题会让血压升高？这不是好事，这是脑干在用最后的力气自救。ICP↑→脑干受压→脑干缺血→延髓血管运动中枢极度兴奋→交感神经风暴→全身血管剧烈收缩→血压骤升（目的是提高脑灌注压CPP=MAP-ICP，对抗被ICP"压扁"的脑血管）。但压力感受器（颈动脉窦/主动脉弓）检测到血压升高→反射性迷走神经兴奋→心率↓（这是为何脉搏缓慢有力）。呼吸中枢受压→呼吸变深变慢（Biot呼吸/潮式呼吸前兆）。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：Cushing反应=脑干在喊"我快被压死了！"——血压升高是它自救的最后尝试。一旦Cushing反应出现，脑疝就在几分钟到几小时内。</p>
 <p style="margin:8px 0;line-height:1.8">急性颅内压增高时出现的典型生命体征变化：</p>
 <p style="margin:8px 0;line-height:1.8"><strong>血压升高 + 脉搏缓慢有力 + 呼吸深慢 = Cushing反应</strong></p>
-<details class="accordion" open>
-<summary>🔬 展开：Cushing反应的完整病理生理链</summary>
+<details class="accordion" open><summary>🔬 展开：Cushing反应的完整病理生理链</summary>
 <div class="accordion-body">
-ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋→交感神经极度放电→全身小动脉收缩→外周阻力↑+血压↑（收缩压可达200+）。高血压→刺激颈动脉窦/主动脉弓压力感受器→迷走神经传入↑→心率↓（有时可降至40-50次/分）。同时呼吸中枢缺血→呼吸节律异常（先深慢→后不规则→最终停止）。这个序列中血压↑是代偿性的（维持CPP），但脉搏↓和呼吸异常是不祥之兆——提示脑干功能正在丧失。
+<p style="margin:8px 0;line-height:1.8">ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋→交感神经极度放电→全身小动脉收缩→外周阻力↑+血压↑（收缩压可达200+）。高血压→刺激颈动脉窦/主动脉弓压力感受器→迷走神经传入↑→心率↓（有时可降至40-50次/分）。同时呼吸中枢缺血→呼吸节律异常（先深慢→后不规则→最终停止）。这个序列中血压↑是代偿性的（维持CPP），但脉搏↓和呼吸异常是不祥之兆——提示脑干功能正在丧失。</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>- ⚠️ Cushing反应=BP↑（不是BP↓）——血压升高是代偿性自救，不是"好转"<br>- ⚠️ Cushing反应一旦出现→必须立即降颅压+准备手术。不能"观察观察"</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级颅内压增高病因与诊断教材p200-201" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】颅内压增高病因与诊断（教材P200-201）</h4>
+<h4 id="掌握级颅内压增高病因与诊断教材p200-201" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】颅内压增高病因与诊断（教材P200-201）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/X型题——四类病因+诊断路径</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  颅内压增高的病因按Monro-Kellie学说的三成分分类：①脑组织多了→占位/水肿；②脑脊液多了→脑积水；③血液多了→静脉回流受阻。良性的颅内压增高（假性脑瘤综合征）是唯一的例外——三者都不多但压力高（机制未完全明确，可能与脑脊液吸收障碍有关）。</p>
@@ -3168,7 +3084,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <p style="margin:8px 0;line-height:1.8">诊断性检查：CT（首选，快速筛查占位/出血/脑积水）、眼底镜检查（视乳头水肿）、腰穿测压（⚠️颅内压增高时慎用→有诱发脑疝风险）。</p>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ ICP增高患者做腰穿=脑疝风险！颅腔与椎管压力差↑→脑组织被"吸"向枕骨大孔→枕骨大孔疝。颅内压增高确诊前必须先做CT排除占位→CT阴性+眼底无视乳头水肿→才可谨慎腰穿。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级良性颅内压增高教材p202" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】良性颅内压增高（教材P202）</h4>
+<h4 id="熟悉级良性颅内压增高教材p202" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】良性颅内压增高（教材P202）</h4>
 <p style="margin:8px 0;line-height:1.8">特征：有颅内压增高症状/体征、无占位性病变、无脑积水、脑脊液成分正常、腰穿压力↑。常见于肥胖育龄女性。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <div class="callout callout-note"><div class="callout-title">模块14因果链：ICP↑→代偿→失代偿→Cushing→脑疝</div><p><br>```<br>              Monro-Kellie三成分之一↑<br>          (脑组织/CSF/血液容积↑)<br>                      │<br>                      ↓<br>              ★颅内代偿启动<br>          (CSF移向脊髓/静脉回流↑)<br>                      │<br>                      ↓<br>              代偿空间尚存→ICP正常<br>               (压力-容积曲线平台段)<br>                      │<br>         ┌────────────┼────────────┐<br>         ↓                          ↓<br>    原发病控制              原发病继续进展<br>    →ICP正常化               │<br>                              ↓<br>                     ★代偿空间耗尽<br>                  (进入曲线陡升段)<br>                              │<br>                    ┌─────────┼─────────┐<br>                    ↓         ↓         ↓<br>                 ICP↑↑     ICP↑      ICP↑<br>               (急性)    (亚急性)  (慢性)<br>                    │         │         │<br>                    ↓         │         ↓<br>                意识障碍      │    三大主症<br>               +Cushing反应   │  (头痛+呕吐+<br>                    │         │   视乳头水肿)<br>                    ↓         │<br>              ★脑干受压       │<br>              (数分钟→       │<br>               数小时)        │<br>                    │         │<br>                    └─────────┼─────────┘<br>                              ↓<br>                  若不干预→★脑疝(M15)<br>                    (颞叶钩回疝/枕骨大孔疝)<br>```<br><br>> [!INFO] 此图揭示颅内压增高的核心临床含义：颅腔代偿空间约10%（约150ml的CSF+血液可调节容量）。当这个空间被耗尽→ICP从"缓慢上升"变为"指数攀升"→临床表现从"头痛恶心"变为"意识障碍+Cushing反应"——这个切换可以在数分钟内完成。</p></div>
@@ -3197,7 +3113,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 4 件事，就是这些：<br>> 1. 脑疝形成条件=颅腔压力不均衡→脑组织从高压区向低压区移位（教材P204）<br>> 2. 颞叶钩回疝典型三联征：意识障碍+同侧瞳孔散大+对侧偏瘫（教材P204）<br>> 3. 脑疝治疗=脱水降颅压（甘露醇）+紧急手术减压（教材P205）<br>> 4. 脑疝是颅内压增高最严重的并发症，属神经外科急症（教材P204）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级脑疝病理机制与分型教材p204" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】脑疝病理机制与分型（教材P204）</h4>
+<h4 id="掌握级脑疝病理机制与分型教材p204" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】脑疝病理机制与分型（教材P204）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2/B1全考——三种脑疝的受压结构+临床表现是经典配对</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  脑疝的物理学本质是"压力梯度驱动下的脑组织移位"。颅腔被硬膜隔膜（大脑镰+小脑幕）分成三个相对独立的腔室——但这种分隔不是密封的，有解剖孔道（小脑幕裂孔/枕骨大孔/大脑镰下间隙）。当一个腔室压力升高（如一侧硬膜外血肿→颞叶压力↑）→压力差推动脑组织穿过最近的孔道→移位的脑组织像"软木塞"一样嵌顿在孔道中→压迫穿过该孔道的重要结构（神经/血管/脑干）。</p>
@@ -3231,16 +3147,14 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么钩回疝是同侧瞳孔散大+对侧偏瘫？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么钩回疝是同侧瞳孔散大+对侧偏瘫？</summary>
 <div class="accordion-body">
-动眼神经（CN III）从大脑脚内侧出脑干→经过小脑幕裂孔边缘→进入海绵窦。钩回疝时颞叶内侧（钩回）向下疝入小脑幕裂孔→首先挤压同侧动眼神经→副交感纤维（支配瞳孔括约肌）最先受损→瞳孔先缩小（刺激期）→后散大固定（麻痹期）。
-
-大脑脚（锥体束）在同侧被挤压——但锥体束在延髓锥体交叉处才交叉到对侧，所以小脑幕裂孔水平的锥体束是尚未交叉的→支配对侧肢体。因此：同侧大脑脚受压→对侧肢体偏瘫。这两组体征的"同侧+对侧"组合是神经解剖定位的经典考题。
+<p style="margin:8px 0;line-height:1.8">动眼神经（CN III）从大脑脚内侧出脑干→经过小脑幕裂孔边缘→进入海绵窦。钩回疝时颞叶内侧（钩回）向下疝入小脑幕裂孔→首先挤压同侧动眼神经→副交感纤维（支配瞳孔括约肌）最先受损→瞳孔先缩小（刺激期）→后散大固定（麻痹期）。</p>
+<p style="margin:8px 0;line-height:1.8">大脑脚（锥体束）在同侧被挤压——但锥体束在延髓锥体交叉处才交叉到对侧，所以小脑幕裂孔水平的锥体束是尚未交叉的→支配对侧肢体。因此：同侧大脑脚受压→对侧肢体偏瘫。这两组体征的"同侧+对侧"组合是神经解剖定位的经典考题。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级钩回疝临床表现与时间窗教材p204" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】钩回疝临床表现与时间窗（教材P204）</h4>
+<h4 id="掌握级钩回疝临床表现与时间窗教材p204" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】钩回疝临床表现与时间窗（教材P204）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A2型病例题高频——识别"瞳孔变化"就是识别脑疝的黄金窗口</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  钩回疝的临床表现按时间顺序展开，每一步都对应一个特定结构的受压：第一步=意识障碍（中脑网状结构受压→意识水平↓）→第二步=同侧瞳孔先缩小后散大（动眼神经受压→副交感纤维先刺激后麻痹）→第三步=对侧偏瘫（同侧大脑脚锥体束受压）→如继续进展→去大脑强直（中脑/脑桥受损）→双侧瞳孔散大固定→呼吸停止。</p>
@@ -3248,7 +3162,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <p style="margin:8px 0;line-height:1.8">意识障碍（中脑网状结构受压）+ 同侧瞳孔先缩小后散大（动眼神经受压）+ 对侧肢体偏瘫（同侧大脑脚受压，锥体束交叉前）。</p>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>- ⚠️ 钩回疝瞳孔变化分两阶段：先缩小（刺激期/易漏诊）→后散大（麻痹期/已不可逆）。考试常考"最先出现的瞳孔变化=缩小"<br>- ⚠️ 枕骨大孔疝可能没有瞳孔改变——动眼神经不经过枕骨大孔！枕骨大孔疝的经典表现=突发呼吸骤停（"猝死型"脑疝）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级脑疝治疗原则教材p205" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】脑疝治疗原则（教材P205）</h4>
+<h4 id="熟悉级脑疝治疗原则教材p205" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】脑疝治疗原则（教材P205）</h4>
 <p style="margin:8px 0;line-height:1.8">三步紧急处理（时间窗：分钟级）：</p>
 <p style="margin:8px 0;line-height:1.8">①立即脱水降颅压（20%甘露醇 0.25-1.0g/kg 快速静滴，15-30分钟内）；</p>
 <p style="margin:8px 0;line-height:1.8">②紧急手术减压（去骨瓣减压/血肿清除/病变切除——唯一能解除压迫的根治手段）；</p>
@@ -3278,7 +3192,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 6 件事，就是这些：<br>> 1. 脑震荡=伤后短暂意识障碍(<30min)+逆行性遗忘+CT阴性（教材P208）<br>> 2. 重型颅脑损伤标准=GCS≤8分（教材P208）<br>> 3. 硬膜外血肿CT=梭形/不跨颅缝/好发颞部/中间清醒期（教材P210）<br>> 4. 硬膜下血肿CT=新月形/跨颅缝/脑挫裂伤重（教材P210）<br>> 5. 颅底骨折征象=熊猫眼(前颅窝)/耳鼻漏/Battle征(后颅窝)（教材P207）<br>> 6. 颅底病变定位：前颅窝(Ⅰ/Ⅱ)/中颅窝(Ⅱ-Ⅵ)/后颅窝(Ⅶ-Ⅻ)（教材P207）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级颅脑损伤的血肿ct鉴别硬膜外-vs-硬膜下教材p210-211" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】颅脑损伤的血肿CT鉴别：硬膜外 vs 硬膜下（教材P210-211）</h4>
+<h4 id="掌握级颅脑损伤的血肿ct鉴别硬膜外-vs-硬膜下教材p210-211" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】颅脑损伤的血肿CT鉴别：硬膜外 vs 硬膜下（教材P210-211）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：<strong>B1型题最高频配对</strong>——CT形态+出血来源+意识特点的三个维度的对比是神经外科最核心的鉴别诊断</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  硬膜外和硬膜下血肿的CT形态差异是由解剖结构决定的，不是随机的。硬膜外层（骨膜层）与颅骨内面紧密粘连，尤其在颅缝处融合得最紧——所以硬膜外血肿（动脉出血→高压→快速扩张）被限制在骨膜与颅骨之间的潜在腔隙内，无法跨越颅缝，被"挤"成双凸镜/梭形。硬膜下血肿（桥静脉撕裂→低压→缓慢渗血）发生在硬膜与蛛网膜之间的潜在腔隙——这个腔隙没有任何阻碍、可以自由跨越颅缝→血肿沿脑表面散开→呈新月形。</p>
@@ -3329,21 +3243,18 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：中间清醒期的完整病理机制</summary>
+<details class="accordion" open><summary>🔬 展开：中间清醒期的完整病理机制</summary>
 <div class="accordion-body">
-硬膜外血肿的"中间清醒期"三步序贯演变：
-① 原发性脑损伤（如拳击→短暂意识丧失→脑震荡）→伤后立即昏迷（昏迷①）
-② 意识恢复（中间清醒期）——因为原发性损伤不重，脑功能暂时恢复
-③ 硬膜外血肿持续扩大（来自脑膜中动脉的活动性出血→每分每秒都在扩大）→血肿压迫脑组织→ICP↑→再次昏迷（昏迷②）
-
-中间清醒期的时间窗口=从意识恢复到再次昏迷的间隔——取决于动脉出血速度。脑膜中动脉主干破裂→中间清醒期可能只有15-30分钟；分支破裂→可能有2-4小时。关键临床意义：中间清醒期是手术的最佳窗口——若在此阶段识别并手术→预后极好；若等到再次昏迷→已发生脑疝→预后极差。
-
-⚠️ 但硬膜下血肿没有中间清醒期——因为桥静脉撕裂+常合并脑挫裂伤→原发性脑损伤本身就重→意识从未完全恢复→表现为"进行性意识障碍加重"。
+<p style="margin:8px 0;line-height:1.8">硬膜外血肿的"中间清醒期"三步序贯演变：</p>
+<p style="margin:8px 0;line-height:1.8">① 原发性脑损伤（如拳击→短暂意识丧失→脑震荡）→伤后立即昏迷（昏迷①）</p>
+<p style="margin:8px 0;line-height:1.8">② 意识恢复（中间清醒期）——因为原发性损伤不重，脑功能暂时恢复</p>
+<p style="margin:8px 0;line-height:1.8">③ 硬膜外血肿持续扩大（来自脑膜中动脉的活动性出血→每分每秒都在扩大）→血肿压迫脑组织→ICP↑→再次昏迷（昏迷②）</p>
+<p style="margin:8px 0;line-height:1.8">中间清醒期的时间窗口=从意识恢复到再次昏迷的间隔——取决于动脉出血速度。脑膜中动脉主干破裂→中间清醒期可能只有15-30分钟；分支破裂→可能有2-4小时。关键临床意义：中间清醒期是手术的最佳窗口——若在此阶段识别并手术→预后极好；若等到再次昏迷→已发生脑疝→预后极差。</p>
+<div class="callout callout-warning"><div class="callout-title">⚠️ 常见陷阱</div><p>但硬膜下血肿没有中间清醒期——因为桥静脉撕裂+常合并脑挫裂伤→原发性脑损伤本身就重→意识从未完全恢复→表现为"进行性意识障碍加重"。</p></div>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级gcs评分与分级教材p208" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】GCS评分与分级（教材P208）</h4>
+<h4 id="掌握级gcs评分与分级教材p208" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】GCS评分与分级（教材P208）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题必考——GCS≤8=气管插管的铁门槛</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  GCS（Glasgow Coma Scale）的设计原理不是"给意识打分"——而是通过三个维度的客观行为反应来间接评估脑功能水平：睁眼反应（E=1-4）→评估脑干网状激活系统的完整性（意识的最基本条件）；语言反应（V=1-5）→评估大脑皮层高级功能的完整性；运动反应（M=1-6，最高分）→评估大脑→脑干→脊髓运动通路的完整性。GCS≤8分=气管插管的逻辑：此时气道保护性反射（吞咽/咳嗽）已丧失→误吸风险极高+自主呼吸可能不稳定。</p>
@@ -3371,24 +3282,23 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：GCS的三个组成——怎么记？</summary>
+<details class="accordion" open><summary>🔬 展开：GCS的三个组成——怎么记？</summary>
 <div class="accordion-body">
-- E（睁眼）4-3-2-1：自发睁眼→呼唤睁眼→疼痛睁眼→不睁眼
-- V（语言）5-4-3-2-1：定向正确→混乱→不当言语→无意义声音→无言语
-- M（运动）6-5-4-3-2-1：遵嘱→定位→屈曲逃避→异常屈曲(去皮质)→异常伸展(去大脑)→无反应
-最低3分(1+1+1)，最高15分(4+5+6)。GCS≤8=重型="八以下插管不犹豫"
+<ul style="padding-left:20px;line-height:2;font-size:14px;color:var(--text-secondary)">
+<li>E（睁眼）4-3-2-1：自发睁眼→呼唤睁眼→疼痛睁眼→不睁眼</li><li>V（语言）5-4-3-2-1：定向正确→混乱→不当言语→无意义声音→无言语</li><li>M（运动）6-5-4-3-2-1：遵嘱→定位→屈曲逃避→异常屈曲(去皮质)→异常伸展(去大脑)→无反应</li>
+</ul>
+<p style="margin:8px 0;line-height:1.8">最低3分(1+1+1)，最高15分(4+5+6)。GCS≤8=重型="八以下插管不犹豫"</p>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>GCS≤8分=重型→必须气管插管保护气道。考试常出"GCS 8分要不要插管？"→要！</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级脑震荡诊断教材p208" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】脑震荡诊断（教材P208）</h4>
+<h4 id="掌握级脑震荡诊断教材p208" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】脑震荡诊断（教材P208）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题——脑震荡三大特征是对"轻型颅脑损伤"的定义</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  脑震荡的本质是"功能性而非结构性"的脑损伤。CT阴性排除了出血/挫伤/骨折，但神经元功能暂时紊乱——可能是弥漫性轴索损伤的轻微形式（神经元受到剪切力→轴膜微损伤→离子通道开放→钾外流+钙内流→神经元去极化→暂时失去功能但未死亡）。逆行性遗忘的机制：受伤瞬间的短期记忆尚未从海马"固化"到皮层→这些记忆永远丢失了（无法被提取不是因为"忘了"而是因为"从未被存储"）。</p>
 <p style="margin:8px 0;line-height:1.8">三大特征：①伤后立即出现短暂意识障碍（一般<30min）；②逆行性遗忘（对受伤经过及伤前片刻不能回忆）；③神经系统检查及头颅CT无阳性发现。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级颅底骨折定位教材p207" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】颅底骨折定位（教材P207）</h4>
+<h4 id="掌握级颅底骨折定位教材p207" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】颅底骨折定位（教材P207）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：B1型配伍题——颅底三个窝的骨折征象+颅神经定位=经典配对</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -3416,13 +3326,13 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </table></div>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 颅底骨折X线平片诊断率仅30-50%→诊断靠临床表现，不是影像学！<br>⚠️ 脑脊液漏的绝对禁忌：填塞/冲洗→可能逆行感染→细菌性脑膜炎</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级脑干损伤教材p213" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】脑干损伤（教材P213）</h4>
+<h4 id="掌握级脑干损伤教材p213" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】脑干损伤（教材P213）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题——脑干损伤的并发症是"集束考点"</p></div>
 <p style="margin:8px 0;line-height:1.8">并发症：呼吸衰竭（呼吸中枢受损/最常见死因）、中枢性高热（下丘脑体温调节中枢受损→无汗+皮肤血管收缩→散热障碍）、应激性溃疡(Cushing溃疡→颅内病变→迷走神经兴奋→胃酸分泌↑→胃黏膜糜烂出血)、肺部感染（意识障碍→咳嗽反射消失→误吸+排痰困难）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级迟发性外伤性脑内血肿教材p211" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】迟发性外伤性脑内血肿（教材P211）</h4>
+<h4 id="熟悉级迟发性外伤性脑内血肿教材p211" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】迟发性外伤性脑内血肿（教材P211）</h4>
 <p style="margin:8px 0;line-height:1.8">伤后首次CT阴性→伤后数小时至数天后复查CT→发现脑内血肿。机制：原发损伤→血管痉挛→继发缺血→血管再灌注后破裂。"首次CT正常≠没问题"——这是颅脑损伤观察的核心原因。</p>
-<h4 id="了解级脑功能评价" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】脑功能评价</h4>
+<h4 id="了解级脑功能评价" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】脑功能评价</h4>
 <p style="margin:8px 0;line-height:1.8">GCS（急性期意识状态）、GOS（格拉斯哥预后评分）、脑电图、诱发电位。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -3515,7 +3425,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 2 件事，就是这些：<br>> 1. 血管源性脑水肿=血脑屏障破坏→血浆渗出→细胞外间隙扩大（教材P212）<br>> 2. 脑水肿治疗=脱水(甘露醇)+激素(减轻血管源性水肿)+手术减压（教材P212）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
-<h4 id="熟悉级脑水肿两型鉴别教材p212" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】脑水肿两型鉴别（教材P212）</h4>
+<h4 id="熟悉级脑水肿两型鉴别教材p212" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】脑水肿两型鉴别（教材P212）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/X型题——两型机制+对激素反应差异=经典配对</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -3542,14 +3452,13 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么血管源性水肿对激素有效而细胞毒性无效？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么血管源性水肿对激素有效而细胞毒性无效？</summary>
 <div class="accordion-body">
-糖皮质激素（地塞米松）的作用是稳定血管内皮细胞→减少BBB通透性→减少血浆蛋白和水渗出。血管源性水肿的源头就是BBB破坏→激素直击病因→有效。细胞毒性水肿的源头是细胞膜Na⁺-K⁺-ATP酶衰竭（能量不足）→水进入细胞内→激素无法修复离子泵→无效（除非改善供氧/供能）。这就是为什么脑肿瘤周围水肿用激素效果好（血管源性），而脑梗死后水肿用激素基本无效（细胞毒性）。
+<p style="margin:8px 0;line-height:1.8">糖皮质激素（地塞米松）的作用是稳定血管内皮细胞→减少BBB通透性→减少血浆蛋白和水渗出。血管源性水肿的源头就是BBB破坏→激素直击病因→有效。细胞毒性水肿的源头是细胞膜Na⁺-K⁺-ATP酶衰竭（能量不足）→水进入细胞内→激素无法修复离子泵→无效（除非改善供氧/供能）。这就是为什么脑肿瘤周围水肿用激素效果好（血管源性），而脑梗死后水肿用激素基本无效（细胞毒性）。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="了解级脑水肿治疗教材p212" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】脑水肿治疗（教材P212）</h4>
+<h4 id="了解级脑水肿治疗教材p212" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】脑水肿治疗（教材P212）</h4>
 <p style="margin:8px 0;line-height:1.8">甘露醇（首选脱水剂→提高血浆渗透压→脑组织脱水）+ 糖皮质激素（对血管源性水肿有效）+ 手术去骨瓣减压（大量水肿→脑疝时→最后的救命手段）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
@@ -3567,7 +3476,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 3 件事，就是这些：<br>> 1. CNS感染三大来源=血源性+邻近扩散+直接种植(外伤/手术)（教材P225）<br>> 2. 脑外伤后感染最常见致病菌=金黄色葡萄球菌（教材P225）<br>> 3. 脑脓肿三大感染途径=血源性+邻近扩散(中耳炎/鼻窦炎)+直接种植（教材P225）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记</h3>
-<h4 id="掌握级脑脓肿感染途径教材p225" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】脑脓肿感染途径（教材P225）</h4>
+<h4 id="掌握级脑脓肿感染途径教材p225" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】脑脓肿感染途径（教材P225）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/X型题——感染途径→致病菌→好发部位的三者配对</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  脑脓肿的三个感染途径本质上是"细菌从哪里来、走哪条路、最终停在哪里"。邻近扩散（中耳炎→颞叶/小脑、鼻窦炎→额叶）走的是"最短路径"——炎症侵蚀薄骨壁→直接进入邻近脑组织。血源性（远处感染→血流→大脑中动脉供血区）走的是"高速公路"——细菌随血流到达脑组织→在灰白质交界处（血管口径变化最大处）停留。直接种植（外伤/手术→硬膜破损）走的是"破门而入"——细菌从外界直接进入→在伤道附近形成脓肿。</p>
@@ -3606,7 +3515,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级cns感染三大来源与致病菌教材p225" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】CNS感染三大来源与致病菌（教材P225）</h4>
+<h4 id="熟悉级cns感染三大来源与致病菌教材p225" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】CNS感染三大来源与致病菌（教材P225）</h4>
 <p style="margin:8px 0;line-height:1.8">三大来源：①血源性播散（远处感染灶经血流到达CNS）；②邻近结构直接扩散（中耳炎→颞叶、鼻窦炎→额叶）；③直接种植（开放性颅脑外伤/神经外科手术后）。</p>
 <p style="margin:8px 0;line-height:1.8">脑外伤后感染最常见致病菌=金黄色葡萄球菌（与M1模块串联——浅表软组织感染也是金葡菌）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
@@ -3625,7 +3534,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 4 件事，就是这些：<br>> 1. 颅内肿瘤最常见类型=胶质瘤（来源于神经上皮组织）（教材P230）<br>> 2. 小脑半球肿瘤体征=共济失调+眼球震颤+肌张力↓（教材P231）<br>> 3. 颅内肿瘤治疗原则=手术切除为主+放疗+化疗（教材P232）<br>> 4. 颅内肿瘤常见类型：胶质瘤/脑膜瘤/垂体瘤/转移瘤（教材P230）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级颅内肿瘤分类与特征教材p230" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】颅内肿瘤分类与特征（教材P230）</h4>
+<h4 id="掌握级颅内肿瘤分类与特征教材p230" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】颅内肿瘤分类与特征（教材P230）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题——肿瘤类型排名+特征配对</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  颅内肿瘤的发病率排名由两个因素决定：①哪种细胞最容易恶变（胶质细胞占脑容量的90%→胶质瘤最多）；②哪些组织有屏障或"特权"免疫状态（脑膜瘤来自脑膜、垂体瘤来自内分泌腺）。脑膜瘤预后最好的原因：它生长在脑外、边界清楚、不浸润脑组织——手术可以完整切除。</p>
@@ -3670,7 +3579,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级小脑半球肿瘤体征教材p231" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】小脑半球肿瘤体征（教材P231）</h4>
+<h4 id="掌握级小脑半球肿瘤体征教材p231" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】小脑半球肿瘤体征（教材P231）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题——小脑体征三联征=定位诊断的经典考题</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  小脑的主要功能是协调运动——它接收来自大脑皮层（"我想拿杯子"）、前庭系统（"头的位置"）和脊髓（"手的位置"）的三路信息，实时调整运动指令。小脑半球损伤→同侧肢体失去协调（因为小脑-红核-脊髓通路在同侧下行，不交叉→小脑病变=同侧体征——这与大脑病变的对侧体征相反）。眼球震颤=前庭-小脑联系受损→前庭张力失去小脑的抑制→眼球不自主震荡。肌张力↓=小脑对γ运动神经元的易化作用减弱。</p>
@@ -3678,11 +3587,11 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <p style="margin:8px 0;line-height:1.8">共济失调（同侧肢体运动协调障碍）+ 眼球震颤（前庭-小脑联系受损）+ 肌张力↓（同侧）。</p>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>⚠️ 小脑病变=同侧体征（小脑通路不交叉）；大脑病变=对侧体征（锥体束在延髓交叉）。这是神经定位的"第一道分岔"。考试常用的干扰项=把大脑病变的对侧体征套到小脑上。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级颅内肿瘤治疗教材p232" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】颅内肿瘤治疗（教材P232）</h4>
+<h4 id="熟悉级颅内肿瘤治疗教材p232" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】颅内肿瘤治疗（教材P232）</h4>
 <p style="margin:8px 0;line-height:1.8">手术切除为主。恶性胶质瘤术后辅助放疗+化疗（替莫唑胺）。转移瘤→全脑放疗。立体定向放射外科（γ刀/X刀）用于小肿瘤/术后残留。</p>
-<h4 id="熟悉级烟雾病治疗教材p235" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】烟雾病治疗（教材P235）</h4>
+<h4 id="熟悉级烟雾病治疗教材p235" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】烟雾病治疗（教材P235）</h4>
 <p style="margin:8px 0;line-height:1.8">血管重建术——颞浅动脉-大脑中动脉吻合术（STA-MCA bypass），改善脑灌注。</p>
-<h4 id="了解级颅内肿瘤预后" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】颅内肿瘤预后</h4>
+<h4 id="了解级颅内肿瘤预后" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】颅内肿瘤预后</h4>
 <p style="margin:8px 0;line-height:1.8">取决于病理类型、部位、切除程度。脑膜瘤预后最好（良性、可全切），胶质母细胞瘤预后最差（中位生存约15个月）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="主动回忆区" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔄 主动回忆区</h3>
@@ -3719,16 +3628,14 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 6 件事，就是这些：<br>> 1. 甲亢手术指征：继发性甲亢/结节性甲亢/内科治疗无效/压迫症状/怀疑恶变（教材P290）<br>> 2. 甲状腺术后呼吸困难四大原因：切口出血/喉头水肿/气管塌陷/双侧喉返神经损伤（教材P291）<br>> 3. 甲状腺癌临床特点：质硬固定+声音嘶哑(喉返神经受侵)+颈淋巴结转移（教材P292）<br>> 4. 甲状腺大部切除术后最危急并发症=切口出血压迫气管→紧急床旁拆线（教材P291）<br>> 5. 甲状旁腺损伤=低钙抽搐(Chvostek征/Trousseau征)（教材P294）<br>> 6. 单纯性甲状腺肿最主要病因=碘缺乏（教材P288）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级甲状腺术后呼吸困难四大原因紧急处理教材p291" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】甲状腺术后呼吸困难：四大原因+紧急处理（教材P291）</h4>
+<h4 id="掌握级甲状腺术后呼吸困难四大原因紧急处理教材p291" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】甲状腺术后呼吸困难：四大原因+紧急处理（教材P291）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A2/X型题最常考——术后呼吸困难=最危急并发症，"床旁拆线"是第一反应</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  甲状腺位于气管前方和两侧——气管被甲状腺"半包围"。术后呼吸困难的核心机制是"气管被从外部挤压或从内部堵塞"。四大原因按紧迫程度和机制分类：①切口出血（最危急+最常见）→血液在密闭的颈深筋膜腔内快速积聚→压迫气管→几分钟内窒息。床旁拆线的原理：释放颈深筋膜腔的压力→血液涌出→气管压力立即解除（不需要无菌条件——救命优先）。②喉头水肿→全麻插管创伤/过敏→黏膜肿胀→气道内径缩小。③气管塌陷→术前长期甲状腺肿压迫→气管软骨环软化→术后失去外部支撑→吸气时塌陷。④双侧喉返神经损伤→双侧声带内收→声门完全闭合（"开关被锁死"）→紧急气管切开是唯一方案。</p>
 <p style="margin:8px 0;line-height:1.8">  一句话：术后呼吸困难=拆线是第一反应！不是因为"可能是出血"，而是因为如果是出血→只有拆线能救命→如果不是出血，拆了线也不会加重。</p>
-<details class="accordion" open>
-<summary>🔬 展开：术后呼吸困难的快速鉴别——床旁拆线后的判断</summary>
+<details class="accordion" open><summary>🔬 展开：术后呼吸困难的快速鉴别——床旁拆线后的判断</summary>
 <div class="accordion-body">
-```
-术后患者突然呼吸困难→立即床旁拆线探查
+<pre style="background:var(--bg-tertiary);padding:16px;border-radius:8px;overflow-x:auto;font-size:13px;line-height:1.7;font-family:var(--font-mono)"><code>术后患者突然呼吸困难→立即床旁拆线探查
 
 ├─ 拆线后血液涌出+肿胀消退+呼吸改善
 │  → ★切口出血（最常见/最危急）
@@ -3744,13 +3651,12 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 │
 └─ 拆线后无血肿+声音嘶哑(单侧)或完全无声(双侧)
     → ★喉返神经损伤
-    → 单侧:观察(对侧代偿)；双侧:紧急气管切开
-```
+    → 单侧:观察(对侧代偿)；双侧:紧急气管切开</code></pre>
 </div>
 </details>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>- ⚠️ 术后呼吸困难第一处理不是气管插管→是床旁拆线！（血肿压迫最常见且只有拆线能救命）<br>- ⚠️ 单侧喉返神经损伤=声音嘶哑（一侧声带麻痹→对侧可代偿），双侧=窒息（双侧声带内收→声门紧闭→"开关被锁死"）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级甲亢手术适应证教材p290" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】甲亢手术适应证（教材P290）</h4>
+<h4 id="掌握级甲亢手术适应证教材p290" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】甲亢手术适应证（教材P290）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：X型多选题——手术指征的"五大条"是经典考点</p></div>
 <div class="table-wrapper"><table>
 <thead><tr>
@@ -3786,7 +3692,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </table></div>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>青少年甲亢一般不做手术（抗甲状腺药物是首选）——除非药物治疗失败或有压迫症状。妊娠期甲亢也首选药物。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级甲状腺癌临床特征教材p292" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】甲状腺癌临床特征（教材P292）</h4>
+<h4 id="掌握级甲状腺癌临床特征教材p292" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】甲状腺癌临床特征（教材P292）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A2型病例题——"质硬+固定+声音嘶哑+淋巴结肿大"四字判断恶性</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  甲状腺癌的四个恶性特征分别对应肿瘤侵犯的不同层次。质硬=肿瘤细胞密集+纤维组织增生（与囊性/软性的良性结节截然不同）。固定=肿瘤突破甲状腺包膜→侵犯周围组织（带状肌/气管/食管）→甲状腺不再随吞咽上下移动。声音嘶哑=肿瘤侵犯喉返神经（走行于甲状腺背面气管食管沟）→同侧声带麻痹。淋巴结转移=癌细胞沿淋巴引流路径→颈深淋巴结肿大。</p>
@@ -3830,7 +3736,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </tbody>
 </table></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级甲状旁腺与钙代谢chvostek征与trousseau征教材p294" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】甲状旁腺与钙代谢——Chvostek征与Trousseau征（教材P294）</h4>
+<h4 id="掌握级甲状旁腺与钙代谢chvostek征与trousseau征教材p294" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】甲状旁腺与钙代谢——Chvostek征与Trousseau征（教材P294）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题——甲状腺术后低钙抽搐是"第二个最危急并发症"</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  钙离子在神经肌肉接头处的关键作用是稳定Na⁺通道的激活阈值。Ca²⁺↓→Na⁺通道激活阈值降低→只需较小的刺激就能开放→神经纤维兴奋性↑→肌肉自发性收缩→抽搐。Chvostek征（轻叩面神经→同侧口角/眼轮匝肌抽搐）和Trousseau征（血压计袖带充气>收缩压3分钟→前臂缺血→腕部痉挛/"助产士手"）本质上都是"降低神经肌肉接头稳定性→让潜伏的兴奋性暴露出来"。甲状旁腺误切/血供受损→PTH↓→血Ca²⁺↓→术后24-72小时出现口周麻木→手足抽搐→喉痉挛→窒息。</p>
@@ -3841,14 +3747,14 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <li>Chvostek征：轻叩面神经→同侧口角/眼轮匝肌抽搐</li><li>Trousseau征：血压计袖带充气>收缩压3分钟→手部痉挛（"助产士手"）</li>
 </ul>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级良性甲状腺结节手术指征教材p288" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】良性甲状腺结节手术指征（教材P288）</h4>
+<h4 id="掌握级良性甲状腺结节手术指征教材p288" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】良性甲状腺结节手术指征（教材P288）</h4>
 <p style="margin:8px 0;line-height:1.8">①压迫症状（呼吸困难/吞咽困难/声音嘶哑）；②胸骨后甲状腺肿；③可疑恶变；④继发性甲亢；⑤影响外观（相对指征）。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级抗甲状腺药物适应证教材p290" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】抗甲状腺药物适应证（教材P290）</h4>
+<h4 id="熟悉级抗甲状腺药物适应证教材p290" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】抗甲状腺药物适应证（教材P290）</h4>
 <p style="margin:8px 0;line-height:1.8">轻症/青少年/孕妇/术前准备（使用抗甲状腺药物控制甲亢→减少术中甲状腺危象风险）。</p>
-<h4 id="熟悉级单纯性甲状腺肿教材p288" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】单纯性甲状腺肿（教材P288）</h4>
+<h4 id="熟悉级单纯性甲状腺肿教材p288" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】单纯性甲状腺肿（教材P288）</h4>
 <p style="margin:8px 0;line-height:1.8">最主要病因=碘缺乏→甲状腺素合成↓→TSH代偿性↑→甲状腺增生肿大。地方性甲状腺肿=某一地区人群中发病率>10%。</p>
-<h4 id="了解级pth调节" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-understand">了解</span> 【了解级】PTH调节</h4>
+<h4 id="了解级pth调节" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟢 【了解级】PTH调节</h4>
 <p style="margin:8px 0;line-height:1.8">血Ca²⁺浓度负反馈调节——Ca²⁺每下降0.1mg/dL→PTH分泌快速↑。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -3922,7 +3828,7 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 <div class="callout callout-info"><div class="callout-title">高收益摘要</div><p><br>> [!INFO] 如果明天考试只记住 5 件事，就是这些：<br>> 1. 乳腺癌最好发部位=外上象限（教材P300）<br>> 2. "酒窝征"=肿瘤侵犯Cooper韧带→皮肤凹陷（教材P300）<br>> 3. 乳腺癌血运转移顺序：肺→骨→肝→脑（教材P302）<br>> 4. 乳腺淋巴转移路径：腋窝淋巴结→锁骨上→内乳（教材P302）<br>> 5. Paget病=乳头乳晕湿疹样癌（教材P298）</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="结构化笔记v5-深度增强" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📋 结构化笔记（v5 深度增强）</h3>
-<h4 id="掌握级乳腺癌临床表现酒窝征-vs-橘皮样改变的解剖学本质教材p300" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】乳腺癌临床表现：酒窝征 vs 橘皮样改变的解剖学本质（教材P300）</h4>
+<h4 id="掌握级乳腺癌临床表现酒窝征-vs-橘皮样改变的解剖学本质教材p300" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】乳腺癌临床表现：酒窝征 vs 橘皮样改变的解剖学本质（教材P300）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题最高频——对这两个体征的解剖基础理解不到位=B1型配对题必错</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  酒窝征和橘皮样改变虽然都是"皮肤凹陷"，但侵犯的结构和机制完全不同——这个区别决定了它们出现的先后顺序和临床意义。酒窝征=Cooper韧带受侵→韧带纤维化+缩短→将皮肤"拉"向深层→形成点状凹陷（像衬衫上缝了一个扣子）。这是肿瘤直接侵犯结缔组织——通常发生在较小、较早期的肿瘤。橘皮样改变=肿瘤细胞堵塞皮下淋巴管→淋巴液回流障碍→真皮层水肿→皮肤肿胀→但毛囊皮脂腺处的皮肤被纤维组织"锚定"不能膨胀→形成多个点状凹陷→外观像橘子皮。这是淋巴系统被广泛侵犯的标志——通常发生在较大、较晚期的肿瘤。</p>
@@ -3949,14 +3855,13 @@ ICP↑→脑干受压→脑干缺血→延髓血管运动中枢缺血性兴奋�
 </tr>
 </tbody>
 </table></div>
-<details class="accordion" open>
-<summary>🔬 展开：为什么酒窝征出现早于橘皮样？</summary>
+<details class="accordion" open><summary>🔬 展开：为什么酒窝征出现早于橘皮样？</summary>
 <div class="accordion-body">
-Cooper韧带从乳腺腺体直接连接到皮肤真皮层。肿瘤在腺体内生长→最早侵犯的就是穿过腺体的Cooper韧带。而皮下淋巴管在乳腺浅筋膜的表面——需要肿瘤生长到一定大小或穿透浅筋膜后才被侵犯。因此"酒窝征先出现→橘皮样改变后出现"反映了肿瘤从"腺体内"到"皮下"的侵犯顺序。这也是为什么酒窝征是"早期可手术"的信号，而橘皮样改变往往已经是局部晚期。
+<p style="margin:8px 0;line-height:1.8">Cooper韧带从乳腺腺体直接连接到皮肤真皮层。肿瘤在腺体内生长→最早侵犯的就是穿过腺体的Cooper韧带。而皮下淋巴管在乳腺浅筋膜的表面——需要肿瘤生长到一定大小或穿透浅筋膜后才被侵犯。因此"酒窝征先出现→橘皮样改变后出现"反映了肿瘤从"腺体内"到"皮下"的侵犯顺序。这也是为什么酒窝征是"早期可手术"的信号，而橘皮样改变往往已经是局部晚期。</p>
 </div>
 </details>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级乳腺癌转移路径教材p302" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】乳腺癌转移路径（教材P302）</h4>
+<h4 id="掌握级乳腺癌转移路径教材p302" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】乳腺癌转移路径（教材P302）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/X型题——淋巴转移站点+血运转移顺序=两个必须分清的考点</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  乳腺癌的淋巴转移遵循"第一站→第二站"的序贯模式（Halsted理论）。腋窝淋巴结是乳腺淋巴引流的主要出口（约75%的乳腺淋巴流向腋窝）→第一站必然是腋窝。锁骨上/内乳是第二站——癌细胞越过第一站后继续沿淋巴管上行/内侧走。血运转移的顺序（肺→骨→肝→脑）由两个因素决定：①癌细胞随静脉回流→上腔静脉→右心→肺动脉→肺毛细血管床（第一个"过滤器"）→所以肺是最早的血运转移靶器官。②通过肺毛细血管的癌细胞→进入体循环→按血流分配→骨/肝/脑依次被累及。</p>
@@ -3967,7 +3872,7 @@ Cooper韧带从乳腺腺体直接连接到皮肤真皮层。肿瘤在腺体内�
 </ul>
 <p style="margin:8px 0;line-height:1.8"><strong>血运转移顺序</strong>：肺（最常见/第一过滤器）→骨（椎体/骨盆）→肝→脑。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级paget病教材p298" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】Paget病（教材P298）</h4>
+<h4 id="掌握级paget病教材p298" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】Paget病（教材P298）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1/A2型题——Paget病="最像良性病的恶性肿瘤"</p></div>
 <p style="margin:8px 0;line-height:1.8">🧬 第一性原理：</p>
 <p style="margin:8px 0;line-height:1.8">  Paget病（乳头乳晕湿疹样癌）的本质是导管原位癌（DCIS）的癌细胞沿输乳管向表皮"迁移"。癌细胞穿过输乳管上皮→进入乳头表皮→在表皮层内扩散→表现为红斑/糜烂/渗液/结痂。它"看起来像湿疹"是因为癌细胞在表皮内的扩散模仿了炎症性皮肤病的组织学模式，但它"其实是癌"是因为这些细胞是来源于导管上皮的腺癌细胞（不是皮肤角质形成细胞）。单侧+边界清楚+激素无效=三个关键鉴别点。</p>
@@ -3975,11 +3880,11 @@ Cooper韧带从乳腺腺体直接连接到皮肤真皮层。肿瘤在腺体内�
 <p style="margin:8px 0;line-height:1.8">表现：乳头乳晕区红斑/糜烂/渗液/结痂→类似湿疹→但边界清楚、单侧发生、皮质激素治疗无效。</p>
 <div class="callout callout-warning"><div class="callout-title">易错陷阱</div><p>Paget病外观像湿疹但本质是癌！→单侧发生+边界清楚+激素治疗无效是鉴别要点。用激素"试试看"=延误诊断！</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="掌握级乳腺癌最好发部位外上象限教材p300" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-master">掌握</span> 【掌握级】乳腺癌最好发部位=外上象限（教材P300）</h4>
+<h4 id="掌握级乳腺癌最好发部位外上象限教材p300" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🔴 【掌握级】乳腺癌最好发部位=外上象限（教材P300）</h4>
 <div class="callout callout-tip"><div class="callout-title">💡 记忆口诀</div><p>为什么重要：A1型题固定考点</p></div>
 <p style="margin:8px 0;line-height:1.8">乳腺外上象限组织最多→该象限乳腺腺体密度最高→肿瘤发生概率与组织量成正比。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<h4 id="熟悉级乳管内乳头状瘤教材p298" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700"><span class="importance-badge imp-familiar">熟悉</span> 【熟悉级】乳管内乳头状瘤（教材P298）</h4>
+<h4 id="熟悉级乳管内乳头状瘤教材p298" style="font-size:14px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">🟡 【熟悉级】乳管内乳头状瘤（教材P298）</h4>
 <p style="margin:8px 0;line-height:1.8">最常见的乳头溢液原因。表现为血性或浆液性乳头溢液（单侧单孔）。位于乳晕区→可触及小结节。治疗=病变导管切除。</p>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h3 id="对比速查" style="font-size:16px;margin:16px 0 6px;color:var(--text-primary);font-weight:700">📊 对比速查</h3>
@@ -4030,10 +3935,8 @@ Cooper韧带从乳腺腺体直接连接到皮肤真皮层。肿瘤在腺体内�
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <div class="callout callout-info"><div class="callout-title">第四篇小结</div><p><br>> [!INFO] 第四篇小结（v5增强版）<br>> - <strong>甲状腺</strong>：术后三大风险(出血→拆线/神经损伤→嘶哑窒息/旁腺损伤→抽搐)——缺氧分钟级，低钙小时级<br>> - <strong>乳腺</strong>：体征机制决定临床分期——酒窝征(Cooper韧带/早期)→橘皮样(淋巴管/晚期)→转移(腋窝→锁骨上→肺骨肝脑)<br>> - <strong>两篇的共同逻辑</strong>：体表器官→体格检查发现→病理确诊→手术为主综合治疗<br>> - <strong>🧬 第四篇核心洞察</strong>：甲状腺和乳腺都是"摸得到的肿瘤"——外科的价值在于"在淋巴/血运转移前切除"。所有的体征（质硬/固定/酒窝/橘皮/嘶哑/抽搐）都是肿瘤侵犯不同解剖层次的"体表投影"——理解解剖就能理解体征。</p></div>
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
-<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <p style="margin:8px 0;line-height:1.8">本批篇幅：约 30 页（含第三篇总览/6神外模块/第四篇总览/2甲乳模块/D4硬膜外vs硬膜下CT决策树）</p>
 <div class="callout callout-info"><div class="callout-title">📊 提示</div><p>累计统计：Callout ~96个(目标84✅) / <details open> ~44个(目标42✅) / D1段 ~42个 / D2因果链 21张 / D3谱系 1张科目级 / D4决策树 4张</p></div>
-<hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <hr style="border:none;border-top:1px solid var(--border);margin:24px 0">
 <h2 id="外科学一跨模块概念地图" style="font-size:22px;margin:24px 0 8px;color:var(--text-primary);font-weight:700">🗺️ 外科学（一）跨模块概念地图</h2>
 <blockquote><strong>D5 科目级概念地图</strong>：以下展示本科目 21 模块之间的关键跨模块链路。理解这些链路，你就能把 21 个孤立模块"焊接"成一幅完整的知识图谱。</blockquote>
@@ -4861,32 +4764,25 @@ Cooper韧带从乳腺腺体直接连接到皮肤真皮层。肿瘤在腺体内�
 </main>
 <button id="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>
 <script>
-// Theme Toggle（三态循环：深海 → 亮 → 暗；默认深海，与 index.html 新站统一）
+// Theme Toggle
 const html = document.documentElement;
 const themeToggle = document.getElementById('theme-toggle');
 
-const THEME_ORDER = ['deep', 'light', 'dark'];
-const THEME_NEXT = { deep: 'light', light: 'dark', dark: 'deep' };
-const THEME_ICON = { deep: '\uD83C\uDF0A', light: '\u2600\uFE0F', dark: '\uD83C\uDF19' };  // 图标 = 点击后切换到的主题
-
 function setTheme(theme) {
   html.setAttribute('data-theme', theme);
-  themeToggle.textContent = THEME_ICON[THEME_NEXT[theme]] || '\uD83C\uDF19';
+  themeToggle.textContent = theme === 'dark' ? '\u2600\uFE0F' : '\uD83C\uDF19';
   localStorage.setItem('med-review-theme', theme);
 }
 
-const DEFAULT_DARK = false;  // 由 render_review.py --dark 注入替换
 const savedTheme = localStorage.getItem('med-review-theme');
-if (savedTheme && THEME_ORDER.indexOf(savedTheme) >= 0) {
+if (savedTheme) {
   setTheme(savedTheme);
-} else if (DEFAULT_DARK || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
   setTheme('dark');
-} else {
-  setTheme('deep');
 }
 
 themeToggle.addEventListener('click', () => {
-  setTheme(THEME_NEXT[html.getAttribute('data-theme')] || 'deep');
+  setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
 });
 
 // Progress Bar
@@ -4961,112 +4857,26 @@ document.querySelectorAll('.module-card').forEach(card => {
   card.querySelectorAll('.reveal-all-btn').forEach(b => b.remove());
   const blanks = card.querySelectorAll('.fill-blank');
   if (blanks.length === 0) return;
-  // 2026-08-21 修复：按钮工厂（cloneNode 不复制 addEventListener 监听器，旧实现挂载的是死按钮）
-  function makeBtn() {
-    const btn = document.createElement('button');
-    btn.className = 'reveal-all-btn';
-    btn.textContent = '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
-    btn.style.cssText = 'display:inline-block;margin:12px 0 0 0;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all var(--transition-fast);';
-    btn.addEventListener('mouseenter',()=>{btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';});
-    btn.addEventListener('mouseleave',()=>{btn.style.background='var(--bg-tertiary)';btn.style.color='var(--text-secondary)';});
-    let revealed = false;
-    btn.addEventListener('click',()=>{
-      revealed = !revealed;
-      blanks.forEach(b => { if(revealed) b.classList.add('revealed'); else b.classList.remove('revealed'); });
-      btn.textContent = revealed ? '\uD83D\uDE48 \u9690\u85CF\u5168\u90E8\u7B54\u6848' : '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
-    });
-    return btn;
-  }
+  const btn = document.createElement('button');
+  btn.className = 'reveal-all-btn';
+  btn.textContent = '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+  btn.style.cssText = 'display:inline-block;margin:12px 0 0 0;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:var(--bg-tertiary);color:var(--text-secondary);font-size:12px;cursor:pointer;font-family:var(--font-body);transition:all var(--transition-fast);';
+  btn.addEventListener('mouseenter',()=>{btn.style.background='var(--accent-light)';btn.style.color='var(--accent)';});
+  btn.addEventListener('mouseleave',()=>{btn.style.background='var(--bg-tertiary)';btn.style.color='var(--text-secondary)';});
+  let revealed = false;
+  btn.addEventListener('click',()=>{
+    revealed = !revealed;
+    blanks.forEach(b => { if(revealed) b.classList.add('revealed'); else b.classList.remove('revealed'); });
+    btn.textContent = revealed ? '\uD83D\uDE48 \u9690\u85CF\u5168\u90E8\u7B54\u6848' : '\uD83D\uDC41\uFE0F \u663E\u793A\u5168\u90E8\u7B54\u6848';
+  });
   const recallH = Array.from(card.querySelectorAll('h3')).filter(h=>h.textContent.includes('\u4E3B\u52A8\u56DE\u5FC6'));
-  let appended = false;
-  recallH.forEach(h=>{ let el=h.nextElementSibling; if(el){ el.appendChild(makeBtn()); appended = true; } });
-  if(!appended) card.appendChild(makeBtn()); // 无「主动回忆」模块时兜底挂卡片末尾
+  recallH.forEach(h=>{ let el=h.nextElementSibling; if(el&&el.tagName==='DIV') el.appendChild(btn.cloneNode(true)); });
 });
-
-// ============================================================
-// v2 · 学习跟踪系统（教育学：自我监控 / 元认知自评 / 间隔重复 / 主动回忆）
-// ============================================================
-(function(){
-  var subject = (document.title||'复习手册').replace(' · 高效复习手册','');
-  var PROG_KEY = 'med-study-' + subject + '-progress';
-  var prog = {};
-  try { prog = JSON.parse(localStorage.getItem(PROG_KEY)||'{}'); } catch(e){ prog={}; }
-  function saveP(){ try{localStorage.setItem(PROG_KEY, JSON.stringify(prog));}catch(e){} }
-
-  /* 收集模块卡片 */
-  var modules = [];
-  document.querySelectorAll('.module-card').forEach(function(card){
-    var h2 = card.querySelector('.module-header h2');
-    var m = h2 ? (h2.textContent.match(/M(\d+)/)||[])[1] : null;
-    var title = h2 ? h2.textContent.replace(/^M\d+\s*·\s*/,'') : '模块';
-    modules.push({ id: m ? 'm'+m : 'm'+(modules.length+1), title: title, hdr: card.querySelector('.module-header') });
-  });
-
-  /* 每个模块注入：标记已学 + 掌握度自评 */
-  modules.forEach(function(mod){
-    if(!mod.hdr) return;
-    var ctrl = document.createElement('div');
-    ctrl.className = 'module-control';
-    var s0 = prog[mod.id] || {};
-    ctrl.innerHTML =
-      '<button class="btn-study'+(s0.done?' on-done':'')+'" data-mod="'+mod.id+'" data-act="done">'+(s0.done?'✓ 已学':'○ 标记已学')+'</button>' +
-      '<button class="btn-study'+(s0.mastery==='master'?' m-master':'')+'" data-mod="'+mod.id+'" data-act="master">已掌握</button>' +
-      '<button class="btn-study'+(s0.mastery==='review'?' m-review':'')+'" data-mod="'+mod.id+'" data-act="review">需巩固</button>' +
-      '<button class="btn-study'+(s0.mastery==='weak'?' m-weak':'')+'" data-mod="'+mod.id+'" data-act="weak">未掌握</button>';
-    mod.hdr.appendChild(ctrl);
-    mod.refresh = function(){
-      var s = prog[mod.id]||{};
-      ctrl.querySelectorAll('.btn-study').forEach(function(b){
-        var act = b.dataset.act;
-        b.className = 'btn-study';
-        if(act==='done' && s.done) b.className = 'btn-study on-done';
-        if(act==='master' && s.mastery==='master') b.className = 'btn-study m-master';
-        if(act==='review' && s.mastery==='review') b.className = 'btn-study m-review';
-        if(act==='weak' && s.mastery==='weak') b.className = 'btn-study m-weak';
-        if(act==='done') b.textContent = s.done ? '✓ 已学' : '○ 标记已学';
-      });
-    };
-    ctrl.addEventListener('click', function(e){
-      var b = e.target.closest('[data-act]');
-      if(!b) return;
-      var act = b.dataset.act, id = b.dataset.mod;
-      var s = prog[id] || {};
-      if(act==='done'){ s.done = !s.done; }
-      else { s.mastery = (s.mastery===act) ? null : act; }
-      prog[id] = s; saveP();
-      mod.refresh(); updateChip();
-    });
-  });
-
-  /* 顶栏：进度 chip + 回忆模式 */
-  var actions = document.querySelector('#top-header .actions');
-  var chip = document.createElement('button');
-  chip.id = 'study-chip';
-  actions.insertBefore(chip, actions.firstChild);
-  function updateChip(){
-    var done = modules.filter(function(m){ return prog[m.id] && prog[m.id].done; }).length;
-    chip.innerHTML = '📈 已学 <b>'+done+'/'+modules.length+'</b> 模块';
-  }
-  updateChip();
-
-  var recallBtn = document.createElement('button');
-  recallBtn.id = 'recall-toggle';
-  recallBtn.textContent = '🧠 回忆模式';
-  recallBtn.title = '一键隐藏全部填空答案，逐题自测（主动回忆）';
-  actions.appendChild(recallBtn);
-  recallBtn.addEventListener('click', function(){
-    var on = !document.body.classList.contains('recall-mode');
-    document.body.classList.toggle('recall-mode', on);
-    recallBtn.classList.toggle('on', on);
-    recallBtn.textContent = on ? '🧠 回忆模式·开启' : '🧠 回忆模式';
-  });
-
-})();
 
 // Keyboard shortcuts
 document.addEventListener('keydown',(e)=>{
   if(e.key==='t'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body)
-    setTheme(THEME_NEXT[html.getAttribute('data-theme')] || 'deep');
+    setTheme(html.getAttribute('data-theme')==='dark'?'light':'dark');
   if(e.key==='m'&&!e.ctrlKey&&!e.metaKey&&!e.altKey&&document.activeElement===document.body&&window.innerWidth<=768)
     sidebar.classList.contains('open')?closeSidebar():openSidebar();
 });
