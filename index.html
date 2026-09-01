@@ -836,7 +836,7 @@ body {
     <div class="nav-right">
       <div class="nav-term-tabs">
         <button class="nav-term active" data-term="junior2">大三下</button>
-        <button class="nav-term" data-term="senior1">大四上<span class="lock">🔒</span></button>
+        <button class="nav-term" data-term="senior1">大四上</button>
       </div>
       <a class="btn btn-sec btn-sm" href="https://github.com/2710074390-cyber/MedAgentWork" target="_blank" rel="noopener">GitHub ↗</a>
       <button class="nav-burger" id="nav-burger" aria-label="打开菜单" aria-expanded="false">
@@ -862,7 +862,7 @@ body {
     </nav>
     <div class="mm-term">
       <button class="mm-term-btn active" data-term="junior2">大三下</button>
-      <button class="mm-term-btn" data-term="senior1">大四上🔒</button>
+      <button class="mm-term-btn" data-term="senior1">大四上</button>
     </div>
     <div class="mm-foot">
       <button class="fx-toggle on" id="fx-toggle-m" title="切换粒子/原子特效">
@@ -1199,13 +1199,51 @@ body {
 </div><!-- /view-junior2 -->
 
 <div class="view" id="view-senior1">
-  <div class="coming reveal">
-    <div class="ascii-box" id="coming-ascii"></div>
-    <span class="signal"><i>▮▮▮</i> SIGNAL LOST · 信号待接入</span>
-    <h2>大四上 · <span class="accent">敬请期待</span></h2>
-    <p>大四上学期资料正在编纂之中，容时日，必当奉上。</p>
-    <button class="btn btn-sec" onclick="switchTerm('junior2')">← 返回大三下</button>
+
+<!-- ============ 大四上 · 内容总览台 ============ -->
+<section class="section deck" id="deck-s1">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>大四上 · <i>教学版资料</i></span></span>
+      <h2>备考资源 <span class="accent">一键直达</span></h2>
+    </div>
+    <div class="right"><b>大四上 · 教学计划版</b>05 科 · PDF 直链下载<br><span class="right-sub">按教学计划成册 · 教材浓缩型 v5.1</span></div>
   </div>
+  <div class="deck-grid-wrap">
+  <div class="deck-grid">
+    <a class="deck-tile reveal" href="#reviews-s1">
+      <div class="dt-top"><span class="dt-icon">📚</span><span class="dt-num">01</span></div>
+      <h3>教学版资料 <span class="dt-en">TEACHING ED.</span></h3>
+      <p>5 科主复习资料 PDF 直链下载 · 按教学计划成册 · 手机电脑即存即读</p>
+      <span class="dt-go">进入资料库 <i>→</i></span>
+    </a>
+    <div class="deck-tile reveal" style="cursor:default">
+      <div class="dt-top"><span class="dt-icon">🧩</span><span class="dt-num">02</span></div>
+      <h3>押题卷 / 题库 <span class="dt-en">COMING</span></h3>
+      <p>大四上押题卷与题库正在编纂之中，随生产进度陆续上线</p>
+      <span class="dt-go">敬请期待 <i>→</i></span>
+    </div>
+  </div>
+  <div class="deck-dots" aria-hidden="true"><span class="on"></span><span></span></div>
+  </div>
+</section>
+
+<!-- ============ 大四上 · 教学版资料（主复习资料 PDF） ============ -->
+<section class="section" id="reviews-s1">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>教学版资料 · <i>PDF 直链</i></span></span>
+      <h2>教学版资料 <span class="accent">5 科 · PDF 直链</span></h2>
+    </div>
+    <div class="right"><b>01 · 教学版资料</b>05 科 · 教材浓缩型 v5.1<br><span class="right-sub">按教学计划成册 · 即点即下</span></div>
+  </div>
+  <div class="grid" id="grid-review-s1"></div>
+  <div class="deck-tip reveal">
+    <span class="tip-icon">💡</span>
+    <p><b>什么是教学版资料？</b> 按课程<b>教学计划</b>章节范围成册的主复习资料（教材浓缩型 v5.1），PDF 直链下载后可离线翻阅，也可打印纸质复习。押题卷与题库正在编纂，后续将在本分区上线。</p>
+  </div>
+</section>
+
 </div>
 
 </main>
@@ -1274,6 +1312,15 @@ const REVIEWS=[
   {name:'中医心理学',icon:'🧘',md:'复习资料/中医心理学_主复习资料.md',html:'复习资料/中医心理学_主复习资料.html',size:'87K',desc:'情志 · 脏腑 · 治法，心身同治'},
 ];
 
+/* ---------- 大四上 · 教学版资料（主复习资料 PDF 直链） ---------- */
+const REVIEWS_S1=[
+  {name:'内科学',icon:'🫀',pdf:'复习资料/内科学_主复习资料_合订本.pdf',format:'PDF',size:'8.2 MB',tags:['合订本','教学计划版'],desc:'23 模块全科合订本 · 消化 · 呼吸 · 泌尿 · 内分泌 · 风湿 · 理化'},
+  {name:'外科学（二）',icon:'🔪',pdf:'复习资料/外科学（二）_主复习资料.pdf',format:'PDF',size:'9.4 MB',tags:['教学计划版'],desc:'胸外 · 普外 · 血管 · 泌尿 · 骨科 · 8 大模块'},
+  {name:'急诊与灾难医学',icon:'🚑',pdf:'复习资料/急诊与灾难医学_主复习资料.pdf',format:'PDF',size:'8.7 MB',tags:['教学计划版'],desc:'急性中毒 · 休克 · 心肺脑复苏 · 创伤急救 · 灾难救援'},
+  {name:'耳鼻咽喉头颈外科学',icon:'👂',pdf:'复习资料/耳鼻咽喉头颈外科学_主复习资料.pdf',format:'PDF',size:'7.8 MB',tags:['教学计划版'],desc:'耳 · 鼻 · 咽 · 喉 · 头颈 五模块'},
+  {name:'妇产科学',icon:'🤰',pdf:'复习资料/妇产科学_主复习资料.pdf',format:'PDF',size:'8.8 MB',tags:['教学计划版'],desc:'生殖生理 · 妊娠 · 分娩 · 产褥 · 妇科疾病'},
+];
+
 /* ---------- 内联 SVG 图标（P2-1：跨平台渲染一致，零外部请求） ---------- */
 const ICONS={
   play:'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 3.2v9.6L12.8 8z"/></svg>',
@@ -1302,18 +1349,20 @@ const toast=msg=>{const t=$('#toast');t.textContent=msg;t.classList.add('show');
 
 /* ---------- 路径编码（避免中文路径 404） ---------- */
 function encPath(path){ return path.split('/').map(seg=>encodeURI(seg)).join('/'); }
-function url(path){ return encPath(BASE)+'/'+encPath(path); }
+function urlAt(base,path){ return encPath(base)+'/'+encPath(path); }
+function url(path){ return urlAt(BASE,path); }
 
 function viewOnline(path){ window.open(url(path),'_blank'); }
-function downloadFile(path,filename,btn){
+function downloadFile(path,filename,btn,base){
   /* P2-2：loading 态 + 防重复点击 */
   if(btn&&(btn.disabled||btn.dataset.loading))return;
   const orig=btn?btn.innerHTML:null;
   if(btn){btn.dataset.loading='1';btn.disabled=true;btn.classList.add('loading');btn.innerHTML=ICONS.download+'<span>下载中…</span>';}
   const restore=()=>{if(btn){delete btn.dataset.loading;btn.disabled=false;btn.classList.remove('loading');if(orig!==null)btn.innerHTML=orig;}};
+  const baseUrl=base||BASE;
   toast('⬇ 下载中：'+filename);
   /* 优先 fetch blob：进度可感知、跨浏览器可靠 */
-  fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.blob();})
+  fetch(urlAt(baseUrl,path)).then(r=>{if(!r.ok)throw 0;return r.blob();})
     .then(b=>{
       const a=document.createElement('a');
       a.href=URL.createObjectURL(b); a.download=filename;
@@ -1325,7 +1374,7 @@ function downloadFile(path,filename,btn){
       restore();
       /* 兜底：直链下载 */
       const a=document.createElement('a');
-      a.href=url(path); a.download=filename;
+      a.href=urlAt(baseUrl,path); a.download=filename;
       document.body.appendChild(a); a.click(); a.remove();
       toast('⬇ 开始下载：'+filename);
     });
@@ -1525,9 +1574,15 @@ function reviewCard(it,i){
   else{btns+=`<button class="btn btn-ghost btn-sm" onclick="printMD('${it.md}','${it.name}')">${ICONS.print}<span>导出 PDF</span></button>`;}
   return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns">${btns}</div></div>`;
 }
+/* 大四上 · 教学版资料卡片：下载按钮注明「教学版资料」 */
+function reviewS1Card(it,i){
+  const fname=it.pdf.split('/').pop();
+  return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="downloadFile('${it.pdf}','${fname}',this,'大四上')">${ICONS.download}<span>教学版资料</span></button></div></div>`;
+}
 $('#grid-exam').innerHTML=EXAMS.map(examCard).join('');
 $('#grid-bank').innerHTML=BANKS.map(bankCard).join('');
 $('#grid-review').innerHTML=REVIEWS.map(reviewCard).join('');
+$('#grid-review-s1').innerHTML=REVIEWS_S1.map(reviewS1Card).join('');
 
 /* ---------- 鼠标跟随光晕 ---------- */
 document.addEventListener('mousemove',e=>{
@@ -1929,20 +1984,6 @@ function bindFxToggle(btn){
   try{const v=localStorage.getItem('maw-fx');if(v!==null){fx.on=v==='1';$$('.fx-toggle').forEach(x=>{x.classList.toggle('on',fx.on);x.classList.toggle('off',!fx.on);});}}catch(e){}
   bindFxToggle(btn);
   bindFxToggle(btnM);
-})();
-
-/* ---------- 大四上 ASCII 盒子 ---------- */
-(function(){
-  const box=document.getElementById('coming-ascii');
-  if(!box)return;
-  box.textContent=[
-    '╔══════════════════════════════╗',
-    '║   ││  M E D A G E N T W O R K  ││   ║',
-    '║   ││  SENIOR Ⅰ · AUTUMN 2027  ││   ║',
-    '║   ││  ──────────────────────  ││   ║',
-    '║   ││  COMPILING... ▓▓▓░░░░ 42% ││   ║',
-    '╚══════════════════════════════╝'
-  ].join('\n');
 })();
 
 /* ---------- 历史兼容：恢复上次学期选择 ---------- */
