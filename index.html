@@ -1254,7 +1254,7 @@ body {
   <div class="grid" id="grid-review-s1"></div>
   <div class="deck-tip reveal">
     <span class="tip-icon">💡</span>
-    <p><b>什么是教学版资料？</b> 按课程<b>教学计划</b>章节范围成册的主复习资料（教材浓缩型 v5.1），PDF 直链下载后可离线翻阅，也可打印纸质复习。押题卷与题库正在编纂，后续将在本分区上线。</p>
+    <p><b>什么是教学版资料？</b> 按课程<b>教学计划</b>章节范围成册的主复习资料（教材浓缩型 v5.1），PDF 直链下载后可离线翻阅，也可打印纸质复习。单册约 <b>8–9 MB</b>，点击后由浏览器下载管理器接管（进度见下载栏）。押题卷与题库正在编纂，后续将在本分区上线。</p>
   </div>
 </section>
 
@@ -1377,24 +1377,13 @@ function downloadFile(path,filename,btn,base){
   if(btn){btn.dataset.loading='1';btn.disabled=true;btn.classList.add('loading');btn.innerHTML=ICONS.download+'<span>下载中…</span>';}
   const restore=()=>{if(btn){delete btn.dataset.loading;btn.disabled=false;btn.classList.remove('loading');if(orig!==null)btn.innerHTML=orig;}};
   const baseUrl=base||BASE;
-  toast('⬇ 下载中：'+filename);
-  /* 优先 fetch blob：进度可感知、跨浏览器可靠 */
-  fetch(urlAt(baseUrl,path)).then(r=>{if(!r.ok)throw 0;return r.blob();})
-    .then(b=>{
-      const a=document.createElement('a');
-      a.href=URL.createObjectURL(b); a.download=filename;
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(()=>URL.revokeObjectURL(a.href),4000);
-      toast('✅ 已下载：'+filename);
-      restore();
-    }).catch(()=>{
-      restore();
-      /* 兜底：直链下载 */
-      const a=document.createElement('a');
-      a.href=urlAt(baseUrl,path); a.download=filename;
-      document.body.appendChild(a); a.click(); a.remove();
-      toast('⬇ 开始下载：'+filename);
-    });
+  toast('⬇ 开始下载：'+filename+'（速度见浏览器下载栏）');
+  /* 原生直链下载（2026-09-02 修复）：此前 fetch→blob 在慢网络/大文件下长时间无响应，
+     按钮卡「下载中…」；改为浏览器下载管理器直接接管——有进度、可取消、不假死 */
+  const a=document.createElement('a');
+  a.href=urlAt(baseUrl,path); a.download=filename; a.rel='noopener';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(restore,1200);
 }
 function printHTML(path){
   const w=window.open(url(path),'_blank');
@@ -1442,6 +1431,8 @@ function mdToHtml(md){
   /* 2) 其余内容统一转义，杜绝注入 */
   let h=mdEscape(md);
   h=h.replace(/```([\s\S]*?)```/g,(m,c)=>'<pre><code>'+c.replace(/^\n/,'')+'</code></pre>');
+  /* 2.2) 白名单还原 <b>/<i>（产物契约 v1.1：行内强调用 HTML 标签而非 **；转义后才还原，杜绝注入；旧 ** 语法继续兼容） */
+  h=h.replace(/&lt;(\/?)(b|i)&gt;/g,'<$1$2>');
   h=h.replace(/(^\|.+\|[ \t]*\n)(^\|[\s:|-]+\|[ \t]*\n)((?:^\|.+\|[ \t]*\n)+)/gm,(m,hdr,sep,body)=>{
     const heads=hdr.split('|').map(s=>s.trim()).filter(Boolean);
     const rows=body.trim().split('\n').map(r=>r.split('|').map(s=>s.trim()).filter(Boolean));
