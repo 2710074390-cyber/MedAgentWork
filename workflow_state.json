@@ -1,5 +1,5 @@
 {
-  "active_batch": null,
+  "active_batch": "batch031",
   "halt": {
     "active": false
   },
@@ -4002,5 +4002,88 @@
       "json_valid": true
     },
     "approved_at": "2026-08-20T00:30:22.163259"
+  },
+  "batch031": {
+    "batch_id": "batch031",
+    "status": "AGENT2_INVOKED",
+    "created": "2026-09-03T22:45:59.686325",
+    "workflow": "Agent2(MedGen 6子agent并行)→GATE-A2→Agent3(MedQC)→GATE-A3→Agent4(MedFix)→GATE-A4→导出MD+HTML",
+    "steps": {},
+    "lineage": [],
+    "subject": "急诊与灾难医学",
+    "plan_questions": 460,
+    "modules": 23,
+    "kaoyan_target_pct": 20,
+    "note": "大四上内科学期末题库 460题（23模块×20）；源：内科学第10版 第四/五/七/八/九篇 + GoldenSet 真题20%",
+    "stage": "agent2",
+    "chapter": "大四上·急诊与灾难医学 全11模块（对齐已交付主复习资料）",
+    "exam_type": "期末考试（必修）+ 执业医师基础",
+    "exam_format": {
+      "单选": 170,
+      "共用选项": 20,
+      "多选": 30,
+      "total": 220
+    },
+    "question_types": [
+      "A1",
+      "A2",
+      "A3",
+      "B1",
+      "X"
+    ],
+    "target_count": 220,
+    "teacher_emphasis": {
+      "key_chapters": "意识障碍与抽搐/急性中毒/心肺脑复苏/休克/创伤急救/灾难医学",
+      "focus_areas": "急症评估、心肺复苏、休克、创伤急救、灾害响应、现场救援、伤员分诊",
+      "note": "覆盖教材21章中已交付复习资料映射的11章"
+    },
+    "target_bloom": {
+      "记忆": "30%",
+      "理解": "40%",
+      "应用": "25%",
+      "分析": "5%"
+    }
+  },
+  "batch032": {
+    "batch_id": "batch032",
+    "status": "IN_PROGRESS",
+    "created": "2026-09-03T22:47:25.373487",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {},
+    "lineage": [],
+    "subject": "外科学（二）",
+    "chapter": "大四上·外科学（二）8模块：胸部/腹外疝与胃十二指肠/小肠阑尾结直肠/肝胆胰/血管淋巴/泌尿/骨折关节损伤/骨感染骨肿瘤",
+    "exam_type": "期末考试",
+    "question_types": [
+      "A1",
+      "A2",
+      "B1",
+      "X"
+    ],
+    "target_count": 300,
+    "task_type": "题库生成（大四上缺口补齐）",
+    "note": "字段口径对齐 batch017：中文 bloom_level（记忆/理解/应用/分析）、difficulty_index 0.3-0.85、5选项"
+  },
+  "batch033": {
+    "batch_id": "batch033",
+    "status": "AGENT2_INVOKED",
+    "created": "2026-09-03T23:04:54.382729",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {},
+    "lineage": [],
+    "subject": "内科学",
+    "chapter": "大四教学计划23模块（消化10/泌尿4/内分泌3/风湿3/理化3）",
+    "exam_type": "期末考试（高分通过）",
+    "semester": "大四上（2026秋）",
+    "target_count": 460,
+    "target_bloom": {
+      "记忆": "30%",
+      "理解": "40%",
+      "应用": "25%",
+      "分析": "5%"
+    },
+    "kaoyan_quota": "20%（HC-18，约92题）",
+    "source_priority": "内科学(第10版)教材PDF全文(P356-894) > 内科学_主复习资料_合订本.md > GoldenSet考研真题(697命中) > 贺银成讲义补充",
+    "note": "大四上内科学期末题库 460题（23模块×20）；源：内科学第10版 第四/五/七/八/九篇 + GoldenSet 真题20%"
   }
 }

@@ -1,0 +1,728 @@
+[
+  {
+    "id": "batch032_M1_A1_001",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "关于肋骨骨折的好发部位，下列叙述正确的是",
+    "options": [
+      "A. 第1～3肋骨最易发生骨折",
+      "B. 第4～7肋骨最易发生骨折",
+      "C. 第8～10肋骨最易发生骨折",
+      "D. 第11～12肋骨最易发生骨折",
+      "E. 肋软骨最易发生骨折"
+    ],
+    "correct_answer": "B",
+    "explanation": "第1～3肋骨粗短且有锁骨、肩胛骨保护不易骨折；第4～7肋骨较长而纤薄，最易发生骨折；第8～10肋前端肋软骨形成肋弓，第11～12肋前端游离，弹性较大不易骨折。参阅教材P257。",
+    "source_page": "教材P257",
+    "source_anchor": "RAG/教材P257",
+    "difficulty_index": 0.34,
+    "discrimination_index": 0.32
+  },
+  {
+    "id": "batch032_M1_A1_002",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "多根多处肋骨骨折导致胸壁软化、出现反常呼吸运动，称为",
+    "options": [
+      "A. 开放性气胸",
+      "B. 张力性气胸",
+      "C. 连枷胸",
+      "D. 血胸",
+      "E. 肺挫伤"
+    ],
+    "correct_answer": "C",
+    "explanation": "多根多处肋骨骨折指在2根或2根以上相邻肋骨各自发生2处或以上骨折，使局部胸壁失去肋骨支撑而软化，自主呼吸时出现反常运动，称为连枷胸。参阅教材P258。",
+    "source_page": "教材P258",
+    "source_anchor": "RAG/教材P258",
+    "difficulty_index": 0.36,
+    "discrimination_index": 0.34
+  },
+  {
+    "id": "batch032_M1_A1_003",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "连枷胸病人吸气时，软化区胸壁的运动方向是",
+    "options": [
+      "A. 向内凹陷",
+      "B. 向外突出",
+      "C. 保持不动",
+      "D. 随纵隔摆动",
+      "E. 随呼吸消失"
+    ],
+    "correct_answer": "A",
+    "explanation": "连枷胸反常呼吸表现为吸气时软化区胸壁内陷、呼气时相对外突，导致伤员低通气甚至呼吸衰竭。参阅教材P258。",
+    "source_page": "教材P258",
+    "source_anchor": "RAG/教材P258",
+    "difficulty_index": 0.38,
+    "discrimination_index": 0.33
+  },
+  {
+    "id": "batch032_M1_A1_004",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "根据病理生理特点，创伤性气胸一般不包括下列哪一型",
+    "options": [
+      "A. 闭合性气胸",
+      "B. 开放性气胸",
+      "C. 张力性气胸",
+      "D. 自发性气胸",
+      "E. 高压性气胸"
+    ],
+    "correct_answer": "D",
+    "explanation": "创伤性气胸分为闭合性、开放性和张力性三类，张力性气胸又称高压性气胸；自发性气胸多因肺大疱破裂等非创伤因素所致，不属于创伤性气胸分类。参阅教材P258。",
+    "source_page": "教材P258",
+    "source_anchor": "RAG/教材P258",
+    "difficulty_index": 0.46,
+    "discrimination_index": 0.36
+  },
+  {
+    "id": "batch032_M1_A1_005",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "开放性气胸病人吸气时，纵隔的移动方向是",
+    "options": [
+      "A. 向健侧移位",
+      "B. 向伤侧移位",
+      "C. 无移位",
+      "D. 向头侧移位",
+      "E. 向膈下移位"
+    ],
+    "correct_answer": "A",
+    "explanation": "开放性气胸时呼、吸气出现两侧胸膜腔压力不均衡的周期性变化，吸气时纵隔移向健侧、呼气时移向伤侧，称为纵隔扑动，可影响腔静脉回心血流量。参阅教材P259。",
+    "source_page": "教材P259",
+    "source_anchor": "RAG/教材P259",
+    "difficulty_index": 0.48,
+    "discrimination_index": 0.37
+  },
+  {
+    "id": "batch032_M1_A1_006",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "开放性气胸的现场急救首要措施是",
+    "options": [
+      "A. 立即清创缝合",
+      "B. 立即闭合胸壁伤口",
+      "C. 立即行胸腔闭式引流",
+      "D. 立即气管插管",
+      "E. 立即开胸探查"
+    ],
+    "correct_answer": "B",
+    "explanation": "开放性气胸急救处理要点是立即闭合胸壁伤口，将开放性气胸变为闭合性气胸，赢得挽救生命的时间并迅速转送医院。参阅教材P259。",
+    "source_page": "教材P259",
+    "source_anchor": "RAG/教材P259",
+    "difficulty_index": 0.40,
+    "discrimination_index": 0.35
+  },
+  {
+    "id": "batch032_M1_A1_007",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "气胸行胸腔闭式引流时，引流管通常置于",
+    "options": [
+      "A. 锁骨中线第2肋间",
+      "B. 腋中线第6肋间",
+      "C. 腋后线第7肋间",
+      "D. 肩胛线第8肋间",
+      "E. 胸骨旁线第3肋间"
+    ],
+    "correct_answer": "A",
+    "explanation": "胸腔闭式引流术气胸引流一般在前胸壁锁骨中线第2肋间隙，血胸引流则在腋中线与腋后线间第6或第7肋间隙。参阅教材P259。",
+    "source_page": "教材P259",
+    "source_anchor": "RAG/教材P259",
+    "difficulty_index": 0.42,
+    "discrimination_index": 0.35
+  },
+  {
+    "id": "batch032_M1_A1_008",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "张力性气胸的紧急处理措施是",
+    "options": [
+      "A. 立即胸腔穿刺抽气",
+      "B. 粗针头穿刺胸膜腔减压",
+      "C. 立即行胸腔闭式引流",
+      "D. 立即开胸探查",
+      "E. 立即气管插管"
+    ],
+    "correct_answer": "B",
+    "explanation": "张力性气胸是可迅速致死的危急重症，入院前或院内急救需迅速使用粗针头穿刺胸膜腔减压，并外接单向活瓣装置。参阅教材P260。",
+    "source_page": "教材P260",
+    "source_anchor": "RAG/教材P260",
+    "difficulty_index": 0.44,
+    "discrimination_index": 0.36
+  },
+  {
+    "id": "batch032_M1_A1_009",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "成人血胸中，中量血胸的胸腔积血量范围是",
+    "options": [
+      "A. ≤300ml",
+      "B. ≤500ml",
+      "C. 500～1000ml",
+      "D. ＞1000ml",
+      "E. ＞2000ml"
+    ],
+    "correct_answer": "C",
+    "explanation": "成人血胸量≤500ml为少量血胸，500ml～1000ml为中量血胸，＞1000ml为大量血胸。参阅教材P260。",
+    "source_page": "教材P260",
+    "source_anchor": "RAG/教材P260",
+    "difficulty_index": 0.40,
+    "discrimination_index": 0.34
+  },
+  {
+    "id": "batch032_M1_A1_010",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "提示存在进行性血胸的胸腔闭式引流量标准是",
+    "options": [
+      "A. 每小时超过100ml持续2小时",
+      "B. 每小时超过200ml持续3小时",
+      "C. 每小时超过300ml持续1小时",
+      "D. 每小时超过50ml持续5小时",
+      "E. 24小时超过500ml"
+    ],
+    "correct_answer": "B",
+    "explanation": "具备以下征象提示进行性血胸：持续脉搏加快、血压降低；胸腔闭式引流量每小时超过200ml、持续3小时；血红蛋白、红细胞计数和血细胞比容进行性降低。参阅教材P261。",
+    "source_page": "教材P261",
+    "source_anchor": "RAG/教材P261",
+    "difficulty_index": 0.52,
+    "discrimination_index": 0.38
+  },
+  {
+    "id": "batch032_M1_A1_011",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "感染性血胸时，胸腔积血中红细胞与白细胞计数比例约为",
+    "options": [
+      "A. 500∶1",
+      "B. 100∶1",
+      "C. 50∶1",
+      "D. 10∶1",
+      "E. 1∶1"
+    ],
+    "correct_answer": "B",
+    "explanation": "无感染时胸腔积血红细胞与白细胞计数比例与周围血相似，约500∶1；感染时白细胞计数明显增加，比例达100∶1可确定为感染性血胸。参阅教材P261。",
+    "source_page": "教材P261",
+    "source_anchor": "RAG/教材P261",
+    "difficulty_index": 0.54,
+    "discrimination_index": 0.38
+  },
+  {
+    "id": "batch032_M1_A1_012",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "漏斗胸诊断中，Haller指数的正常平均值约为",
+    "options": [
+      "A. 1.52",
+      "B. 2.52",
+      "C. 3.52",
+      "D. 4.52",
+      "E. 5.52"
+    ],
+    "correct_answer": "B",
+    "explanation": "Haller指数为胸骨最凹陷平面胸廓横径与同层面胸骨后缘到椎体前缘距离之比，正常人平均约2.52，大于3.2可诊断漏斗胸。参阅教材P264。",
+    "source_page": "教材P264",
+    "source_anchor": "RAG/教材P264",
+    "difficulty_index": 0.45,
+    "discrimination_index": 0.33
+  },
+  {
+    "id": "batch032_M1_A1_013",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "急性脓胸脓性纤维蛋白期胸腔积液的特点不包括",
+    "options": [
+      "A. pH＜7.2",
+      "B. 葡萄糖含量小于2.2mmol/L",
+      "C. LDH＞1000IU/L",
+      "D. pH＞7.4",
+      "E. 脓液稠厚"
+    ],
+    "correct_answer": "D",
+    "explanation": "脓性纤维蛋白期胸腔积液特点是pH＜7.2、葡萄糖含量小于2.2mmol/L、LDH＞1000IU/L，且脓液稠厚；pH＞7.4属肺炎旁积液期的浆液性表现，不属此期。参阅教材P265。",
+    "source_page": "教材P265",
+    "source_anchor": "RAG/教材P265",
+    "difficulty_index": 0.56,
+    "discrimination_index": 0.39
+  },
+  {
+    "id": "batch032_M1_A1_014",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "应用",
+    "question_text": "慢性脓胸病人肺萎陷时间过久、肺组织已纤维化不能复张时，最适宜采用的手术方式是",
+    "options": [
+      "A. 胸膜纤维板剥脱术",
+      "B. 胸廓成形术",
+      "C. 胸膜肺切除术",
+      "D. 胸腔穿刺抽脓",
+      "E. 胸腔闭式引流"
+    ],
+    "correct_answer": "C",
+    "explanation": "胸膜纤维板剥脱术适用于大部分慢性脓胸，但肺萎陷过久、肺组织已纤维化不能复张，或肺内存在广泛炎症、结核性空洞、支气管扩张者，不宜行剥脱术，应采取胸膜肺切除术。参阅教材P266。",
+    "source_page": "教材P266",
+    "source_anchor": "RAG/教材P266",
+    "difficulty_index": 0.60,
+    "discrimination_index": 0.40
+  },
+  {
+    "id": "batch032_M1_A1_015",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "原发性胸壁骨组织肿瘤中，原发于肋骨者约占",
+    "options": [
+      "A. 20%",
+      "B. 40%",
+      "C. 60%",
+      "D. 80%",
+      "E. 95%"
+    ],
+    "correct_answer": "D",
+    "explanation": "原发性胸壁肿瘤中原发于骨组织者80%起源于肋骨、20%起源于胸骨。参阅教材P268。",
+    "source_page": "教材P268",
+    "source_anchor": "RAG/教材P268",
+    "difficulty_index": 0.43,
+    "discrimination_index": 0.34
+  },
+  {
+    "id": "batch032_M1_A1_016",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "目前发病率已超越鳞癌成为最常见肺癌的病理类型是",
+    "options": [
+      "A. 鳞状细胞癌",
+      "B. 腺癌",
+      "C. 小细胞癌",
+      "D. 大细胞癌",
+      "E. 腺鳞癌"
+    ],
+    "correct_answer": "B",
+    "explanation": "腺癌近年来发病率上升明显，已超越鳞癌成为最常见的肺癌，多为周围型，一般生长较慢但有时在肿瘤较小时即发生血行和淋巴转移。参阅教材P275。",
+    "source_page": "教材P275",
+    "source_anchor": "RAG/教材P275",
+    "difficulty_index": 0.48,
+    "discrimination_index": 0.37
+  },
+  {
+    "id": "batch032_M1_A1_017",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "关于小细胞癌的叙述，正确的是",
+    "options": [
+      "A. 多为周围型，女性多见",
+      "B. 恶性程度低，生长缓慢",
+      "C. 神经内分泌起源，对化放疗敏感",
+      "D. 血行转移发生较晚",
+      "E. 首选手术治疗"
+    ],
+    "correct_answer": "C",
+    "explanation": "小细胞癌为神经内分泌起源，恶性程度高、生长快、很早出现淋巴和血行转移，对放射和化学治疗虽较敏感但可迅速耐药，预后差；除早期外以非手术治疗为主。参阅教材P275。",
+    "source_page": "教材P275",
+    "source_anchor": "RAG/教材P275",
+    "difficulty_index": 0.50,
+    "discrimination_index": 0.38
+  },
+  {
+    "id": "batch032_M1_A1_018",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "肺癌淋巴转移时最常累及的淋巴结是",
+    "options": [
+      "A. 锁骨上淋巴结",
+      "B. 腋窝淋巴结",
+      "C. 腹股沟淋巴结",
+      "D. 肠系膜淋巴结",
+      "E. 腘窝淋巴结"
+    ],
+    "correct_answer": "A",
+    "explanation": "肺癌淋巴转移先侵入肺段或肺叶支气管周围淋巴结，再到肺门和纵隔淋巴结，最后累及锁骨上前斜角肌淋巴结和颈部淋巴结。参阅教材P275。",
+    "source_page": "教材P275",
+    "source_anchor": "RAG/教材P275",
+    "difficulty_index": 0.47,
+    "discrimination_index": 0.36
+  },
+  {
+    "id": "batch032_M1_A1_019",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "应用",
+    "question_text": "目前公认肺癌筛查最有效的手段是",
+    "options": [
+      "A. 胸部X线平片",
+      "B. 低剂量胸部CT",
+      "C. 磁共振成像",
+      "D. PET-CT",
+      "E. 痰细胞学检查"
+    ],
+    "correct_answer": "B",
+    "explanation": "低剂量胸部CT是目前肺癌筛查最有效的手段，可发现肺内早期病变，通过早发现、早诊断、早治疗降低肺癌病人病死率。参阅教材P276。",
+    "source_page": "教材P276",
+    "source_anchor": "RAG/教材P276",
+    "difficulty_index": 0.55,
+    "discrimination_index": 0.39
+  },
+  {
+    "id": "batch032_M1_A1_020",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "应用",
+    "question_text": "我国食管癌高发区最常见的病理类型是",
+    "options": [
+      "A. 腺癌",
+      "B. 鳞癌",
+      "C. 小细胞癌",
+      "D. 腺鳞癌",
+      "E. 未分化癌"
+    ],
+    "correct_answer": "B",
+    "explanation": "高发区（如中国）食管癌以鳞癌为主，占80%以上；非高发区（美国和欧洲）以腺癌为主，占70%以上。参阅教材P283。",
+    "source_page": "教材P283",
+    "source_anchor": "RAG/教材P283",
+    "difficulty_index": 0.52,
+    "discrimination_index": 0.37
+  },
+  {
+    "id": "batch032_M1_A1_021",
+    "question_type": "A1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "分析",
+    "question_text": "男性，62岁。体检时发现右锁骨上淋巴结肿大，无压痛。淋巴结切除送检，病理诊断：淋巴结内可见腺癌浸润。肿瘤原发部位最可能是",
+    "options": [
+      "A. 食管",
+      "B. 胃",
+      "C. 肝",
+      "D. 肺",
+      "E. 乳腺"
+    ],
+    "correct_answer": "D",
+    "explanation": "①肺癌常转移至右锁骨上淋巴结，胃癌、食管癌常经胸导管转移至左锁骨上淋巴结，故答D。乳腺癌亦可转移至锁骨上淋巴结，但右锁骨上淋巴结腺癌浸润以肺癌最常见。参阅教材P275。[源:考研真题 GS-2023-032]",
+    "source_page": "教材P275",
+    "source_anchor": "考研真题/GS-2023-032",
+    "difficulty_index": 0.66,
+    "discrimination_index": 0.42,
+    "kaoyan_origin": {
+      "gs_id": "GS-2023-032",
+      "year": 2023,
+      "source": "2023考研西综·第32题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch032_M1_A2_001",
+    "question_type": "A2",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "应用",
+    "question_text": "男性，45岁。车祸致胸部撞击，诉胸痛、呼吸浅快。查体：右侧胸壁第4～7肋处可见反常呼吸运动，吸气时局部内陷。最可能的诊断是",
+    "options": [
+      "A. 闭合性气胸",
+      "B. 开放性气胸",
+      "C. 连枷胸",
+      "D. 张力性气胸",
+      "E. 血胸"
+    ],
+    "correct_answer": "C",
+    "explanation": "多根多处肋骨骨折使局部胸壁失去支撑而软化，出现吸气时内陷、呼气时外突的反常呼吸运动，称为连枷胸。本例第4～7肋多发骨折伴反常呼吸，符合连枷胸。参阅教材P258。",
+    "source_page": "教材P258",
+    "source_anchor": "RAG/教材P258",
+    "difficulty_index": 0.58,
+    "discrimination_index": 0.40
+  },
+  {
+    "id": "batch032_M1_A2_002",
+    "question_type": "A2",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "应用",
+    "question_text": "男性，30岁。被刀刺伤左胸壁，伤口随呼吸有气体进出伴吸吮声，呼吸困难、发绀。现场急救最关键的处理是",
+    "options": [
+      "A. 加压包扎并封闭伤口",
+      "B. 立即胸腔穿刺抽气",
+      "C. 立即静脉补液",
+      "D. 立即气管切开",
+      "E. 立即应用抗生素"
+    ],
+    "correct_answer": "A",
+    "explanation": "本例为开放性气胸（胸部吸吮性伤口）。急救要点是立即用不透气敷料在伤员用力呼气末封盖伤口、加压包扎，将开放性气胸变为闭合性气胸，赢得抢救时间。参阅教材P259。",
+    "source_page": "教材P259",
+    "source_anchor": "RAG/教材P259",
+    "difficulty_index": 0.60,
+    "discrimination_index": 0.41
+  },
+  {
+    "id": "batch032_M1_A2_003",
+    "question_type": "A2",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "应用",
+    "question_text": "男性，25岁。高处坠落伤后极度呼吸困难、烦躁、发绀，气管明显向健侧移位，颈静脉怒张，伤侧叩诊鼓音。最可能的诊断是",
+    "options": [
+      "A. 闭合性气胸",
+      "B. 开放性气胸",
+      "C. 张力性气胸",
+      "D. 血胸",
+      "E. 连枷胸"
+    ],
+    "correct_answer": "C",
+    "explanation": "张力性气胸为气管、支气管或肺损伤处形成活瓣，气体随吸气积累致胸膜腔压力高于大气压，表现为严重呼吸困难、发绀、气管向健侧移位、颈静脉怒张、皮下气肿，是可迅速致死的危急重症。参阅教材P260。",
+    "source_page": "教材P260",
+    "source_anchor": "RAG/教材P260",
+    "difficulty_index": 0.62,
+    "discrimination_index": 0.42
+  },
+  {
+    "id": "batch032_M1_A2_004",
+    "question_type": "A2",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "应用",
+    "question_text": "男性，35岁。车祸伤后行胸腔闭式引流，引流液每小时约250ml，已持续4小时，血红蛋白进行性下降。最可能的诊断是",
+    "options": [
+      "A. 凝固性血胸",
+      "B. 感染性血胸",
+      "C. 进行性血胸",
+      "D. 迟发性血胸",
+      "E. 自发性血胸"
+    ],
+    "correct_answer": "C",
+    "explanation": "持续大量出血所致胸膜腔积血称进行性血胸，征象包括胸腔闭式引流量每小时超过200ml、持续3小时，且血红蛋白、红细胞计数进行性降低。本例符合。参阅教材P261。",
+    "source_page": "教材P261",
+    "source_anchor": "RAG/教材P261",
+    "difficulty_index": 0.64,
+    "discrimination_index": 0.42
+  },
+  {
+    "id": "batch032_M1_A2_005",
+    "question_type": "A2",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "分析",
+    "question_text": "男性，60岁。刺激性咳嗽2个月，痰中带血，近1周出现声音嘶哑。胸部CT示右肺门肿块。声音嘶哑最可能的原因是",
+    "options": [
+      "A. 喉返神经受侵犯",
+      "B. 膈神经受侵犯",
+      "C. 食管受压迫",
+      "D. 上腔静脉受压迫",
+      "E. 气管受压迫"
+    ],
+    "correct_answer": "A",
+    "explanation": "肺癌局部晚期压迫或侵犯喉返神经，可引起声带麻痹、声音嘶哑；压迫膈神经致同侧膈肌麻痹，侵犯食管致吞咽困难，压迫上腔静脉致上腔静脉阻塞综合征。本例声嘶符合喉返神经受侵。参阅教材P275。",
+    "source_page": "教材P275",
+    "source_anchor": "RAG/教材P275",
+    "difficulty_index": 0.70,
+    "discrimination_index": 0.43
+  },
+  {
+    "id": "batch032_M1_B1_001a",
+    "question_type": "B1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "B1型题：将正确答案的字母填入题干后方。\n共用选项：\nA. 前上纵隔\nB. 中纵隔\nC. 后纵隔\nD. 前纵隔\nE. 心包腔内\n子题1：胸腺瘤最好发于：",
+    "options": [
+      "A. 前上纵隔",
+      "B. 中纵隔",
+      "C. 后纵隔",
+      "D. 前纵隔",
+      "E. 心包腔内"
+    ],
+    "correct_answer": "A",
+    "explanation": "胸腺瘤是多发于前上纵隔的肿瘤，约15%的病人合并重症肌无力。参阅教材P290。",
+    "source_page": "教材P290",
+    "source_anchor": "RAG/教材P290",
+    "difficulty_index": 0.42,
+    "discrimination_index": 0.35
+  },
+  {
+    "id": "batch032_M1_B1_001b",
+    "question_type": "B1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "记忆",
+    "question_text": "B1型题：将正确答案的字母填入题干后方。\n共用选项：\nA. 前上纵隔\nB. 中纵隔\nC. 后纵隔\nD. 前纵隔\nE. 心包腔内\n子题2：神经源性肿瘤最好发于：",
+    "options": [
+      "A. 前上纵隔",
+      "B. 中纵隔",
+      "C. 后纵隔",
+      "D. 前纵隔",
+      "E. 心包腔内"
+    ],
+    "correct_answer": "C",
+    "explanation": "神经源性肿瘤多位于后纵隔脊柱旁肋脊区内，以单侧多见，可分为自主神经系统肿瘤和周围神经来源肿瘤。参阅教材P290。",
+    "source_page": "教材P290",
+    "source_anchor": "RAG/教材P290",
+    "difficulty_index": 0.42,
+    "discrimination_index": 0.35
+  },
+  {
+    "id": "batch032_M1_B1_001c",
+    "question_type": "B1",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "B1型题：将正确答案的字母填入题干后方。\n共用选项：\nA. 前上纵隔\nB. 中纵隔\nC. 后纵隔\nD. 前纵隔\nE. 心包腔内\n子题3：畸胎瘤与皮样囊肿最好发于：",
+    "options": [
+      "A. 前上纵隔",
+      "B. 中纵隔",
+      "C. 后纵隔",
+      "D. 前纵隔",
+      "E. 心包腔内"
+    ],
+    "correct_answer": "D",
+    "explanation": "畸胎瘤与皮样囊肿多位于前纵隔，接近心底部的心脏大血管前方，囊内可含皮脂、胆固醇结节及毛发。参阅教材P291。",
+    "source_page": "教材P291",
+    "source_anchor": "RAG/教材P291",
+    "difficulty_index": 0.46,
+    "discrimination_index": 0.36
+  },
+  {
+    "id": "batch032_M1_X_001",
+    "question_type": "X",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "关于肋骨骨折，下列说法正确的有",
+    "options": [
+      "A. 第4～7肋骨较长而纤薄，易发生骨折",
+      "B. 多根多处肋骨骨折可致连枷胸",
+      "C. 骨折断端向内移位可刺破胸膜产生气胸",
+      "D. 第1～3肋骨因有锁骨保护不易骨折",
+      "E. 连枷胸可出现纵隔扑动"
+    ],
+    "correct_answer": "ABCD",
+    "explanation": "A正确：第4～7肋骨较长纤薄易骨折。B正确：多根多处肋骨骨折致胸壁软化即连枷胸。C正确：骨折断端向内移位可刺破胸膜、肺组织产生气胸、血胸。D正确：第1～3肋骨有锁骨、肩胛骨保护不易骨折。E错误：纵隔扑动是开放性气胸的特征，连枷胸表现为反常呼吸运动。参阅教材P257。",
+    "source_page": "教材P257",
+    "source_anchor": "RAG/教材P257",
+    "difficulty_index": 0.54,
+    "discrimination_index": 0.38
+  },
+  {
+    "id": "batch032_M1_X_002",
+    "question_type": "X",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "关于气胸的描述，正确的有",
+    "options": [
+      "A. 闭合性气胸胸壁伤口已闭合",
+      "B. 开放性气胸可引起纵隔扑动",
+      "C. 张力性气胸胸膜腔压力高于大气压",
+      "D. 张力性气胸又称高压性气胸",
+      "E. 开放性气胸需立即开胸探查"
+    ],
+    "correct_answer": "ABCD",
+    "explanation": "A正确：闭合性气胸胸壁伤口闭合、裂口缩小至不开放。B正确：开放性气胸呼吸时两侧胸膜腔压力不均衡致纵隔扑动。C、D正确：张力性气胸胸膜腔压力高于大气压，又称高压性气胸。E错误：开放性气胸急救先闭合伤口，仅气胸持续存在、疑内脏损伤或进行性出血才考虑开胸探查。参阅教材P258。",
+    "source_page": "教材P258",
+    "source_anchor": "RAG/教材P258",
+    "difficulty_index": 0.56,
+    "discrimination_index": 0.39
+  },
+  {
+    "id": "batch032_M1_X_003",
+    "question_type": "X",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "应用",
+    "question_text": "导致急性脓胸发展为慢性脓胸的原因包括",
+    "options": [
+      "A. 急性脓胸未及时治疗",
+      "B. 引流管拔除过早",
+      "C. 脓腔内有异物存留",
+      "D. 合并支气管瘘未处理",
+      "E. 引流管管径过粗"
+    ],
+    "correct_answer": "ABCD",
+    "explanation": "A、B、C、D均为慢性脓胸的病因：急性脓胸未及时治疗或处理不当（引流太迟、拔除过早、管过细或位置不当）、脓腔异物存留、合并支气管瘘或食管瘘未处理等。E错误：引流不畅多因引流管过细而非过粗。参阅教材P266。",
+    "source_page": "教材P266",
+    "source_anchor": "RAG/教材P266",
+    "difficulty_index": 0.62,
+    "discrimination_index": 0.41
+  },
+  {
+    "id": "batch032_M1_X_004",
+    "question_type": "X",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "关于肺癌病理类型，下列说法正确的有",
+    "options": [
+      "A. 鳞癌多与吸烟有关，常为中心型",
+      "B. 腺癌多为周围型，血行转移较早",
+      "C. 小细胞癌恶性程度高，预后差",
+      "D. 腺癌目前已为最常见肺癌",
+      "E. 小细胞癌以手术治疗为首选"
+    ],
+    "correct_answer": "ABCD",
+    "explanation": "A正确：鳞癌与吸烟关系密切，大多起源于较大支气管，常为中心型。B正确：腺癌多为周围型，有时肿瘤较小时即发生血行和淋巴转移。C正确：小细胞癌恶性程度高、预后差。D正确：腺癌发病率已超越鳞癌成为最常见肺癌。E错误：小细胞癌除早期外以非手术治疗为主，并非首选手术。参阅教材P274。",
+    "source_page": "教材P274",
+    "source_anchor": "RAG/教材P274",
+    "difficulty_index": 0.58,
+    "discrimination_index": 0.40
+  },
+  {
+    "id": "batch032_M1_X_005",
+    "question_type": "X",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "应用",
+    "question_text": "可用于肺癌病理分期及淋巴结分期的检查有",
+    "options": [
+      "A. 胸部CT",
+      "B. PET-CT",
+      "C. EBUS-TBNA",
+      "D. 纵隔镜检查",
+      "E. 骨扫描"
+    ],
+    "correct_answer": "ABCD",
+    "explanation": "A正确：CT可评估肿瘤范围、与邻近器官关系及淋巴结转移。B正确：PET-CT用于肺癌分期、转移灶检测。C正确：EBUS-TBNA对纵隔或肺门淋巴结细针穿刺活检用于病理及分期。D正确：纵隔镜直视下淋巴结活检明确有无转移。E错误：骨扫描是骨转移筛查手段，不直接用于淋巴结分期。参阅教材P276。",
+    "source_page": "教材P276",
+    "source_anchor": "RAG/教材P276",
+    "difficulty_index": 0.64,
+    "discrimination_index": 0.42
+  },
+  {
+    "id": "batch032_M1_X_006",
+    "question_type": "X",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "关于食管癌，下列说法正确的有",
+    "options": [
+      "A. 我国高发区以鳞癌为主",
+      "B. 胸中段食管癌较多见",
+      "C. 进行性吞咽困难是典型症状",
+      "D. 淋巴结转移为主要扩散途径",
+      "E. 腺癌是我国高发区主要类型"
+    ],
+    "correct_answer": "ABCD",
+    "explanation": "A、B正确：我国高发区以鳞癌为主（＞80%），胸中段多见、下段次之。C正确：中晚期典型症状为进行性吞咽困难。D正确：癌转移主要经淋巴途径。E错误：高发区以鳞癌为主，腺癌为非高发区主要类型。参阅教材P283。",
+    "source_page": "教材P283",
+    "source_anchor": "RAG/教材P283",
+    "difficulty_index": 0.56,
+    "discrimination_index": 0.40
+  },
+  {
+    "id": "batch032_M1_X_007",
+    "question_type": "X",
+    "module": "胸部损伤、肺疾病、食管疾病",
+    "bloom_level": "理解",
+    "question_text": "下列纵隔肿瘤与其特征性表现相符的有",
+    "options": [
+      "A. 胸腺瘤可伴重症肌无力",
+      "B. 畸胎瘤破入支气管可咳出毛发",
+      "C. 胸骨后甲状腺肿随吞咽上下活动",
+      "D. 神经源性肿瘤多位于后纵隔",
+      "E. 淋巴瘤宜首选手术治疗"
+    ],
+    "correct_answer": "ABCD",
+    "explanation": "A正确：约15%胸腺瘤合并重症肌无力。B正确：畸胎瘤破入支气管可使病人咳出皮脂物及毛发。C正确：胸骨后甲状腺肿可随吞咽运动上下活动。D正确：神经源性肿瘤多位于后纵隔。E错误：淋巴源性肿瘤多为恶性，不宜手术，多采用放疗或化疗。参阅教材P289。",
+    "source_page": "教材P289",
+    "source_anchor": "RAG/教材P289",
+    "difficulty_index": 0.58,
+    "discrimination_index": 0.40
+  }
+]

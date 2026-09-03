@@ -1,0 +1,4337 @@
+[
+  {
+    "id": "batch033-M1-A1-001",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "胃黏膜屏障组成",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "记忆",
+    "stem": "胃黏膜屏障的组成中，不包括下列哪项？",
+    "options": [
+      {
+        "label": "A",
+        "text": "表面上皮紧密连接构成物理屏障"
+      },
+      {
+        "label": "B",
+        "text": "黏液与碳酸氢盐构成化学屏障"
+      },
+      {
+        "label": "C",
+        "text": "黏膜血流与上皮更新构成细胞屏障"
+      },
+      {
+        "label": "D",
+        "text": "胃蛋白酶原分泌"
+      },
+      {
+        "label": "E",
+        "text": "免疫细胞参与生物屏障"
+      }
+    ],
+    "answer": "D",
+    "explanation": "胃黏膜屏障包括上皮紧密连接(物理)、黏液-碳酸氢盐(化学)、黏膜血流与上皮更新(细胞)及免疫细胞(生物)；胃蛋白酶原由主细胞分泌，是侵袭因素而非屏障。教材P356。",
+    "source_page": "教材P356",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-002",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "腹痛解剖定位",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "剑突下烧灼感伴反酸，最提示病变部位为",
+    "options": [
+      {
+        "label": "A",
+        "text": "食管"
+      },
+      {
+        "label": "B",
+        "text": "胃十二指肠"
+      },
+      {
+        "label": "C",
+        "text": "肝胆"
+      },
+      {
+        "label": "D",
+        "text": "胰腺"
+      },
+      {
+        "label": "E",
+        "text": "结肠"
+      }
+    ],
+    "answer": "A",
+    "explanation": "剑突下/胸骨后烧灼感为反流刺激食管所致，定位食管；胃十二指肠多为中上腹节律痛。教材P356。",
+    "source_page": "教材P356",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-003",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "胃镜适应证",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "下列病变中，胃镜检查是首选诊断方法的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "食管黏膜病变"
+      },
+      {
+        "label": "B",
+        "text": "胆总管结石"
+      },
+      {
+        "label": "C",
+        "text": "腹腔积液定性"
+      },
+      {
+        "label": "D",
+        "text": "胰头占位"
+      },
+      {
+        "label": "E",
+        "text": "大肠病变"
+      }
+    ],
+    "answer": "A",
+    "explanation": "胃镜直视上消化道黏膜并可活检，是食管胃十二指肠黏膜病变(反流性食管炎、溃疡、胃癌)首选；胆胰用ERCP，腹水用穿刺，结直肠用结肠镜。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-004",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "结肠镜适应证",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "结直肠及末端回肠病变的首选检查是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃镜"
+      },
+      {
+        "label": "B",
+        "text": "结肠镜"
+      },
+      {
+        "label": "C",
+        "text": "ERCP"
+      },
+      {
+        "label": "D",
+        "text": "腹腔穿刺"
+      },
+      {
+        "label": "E",
+        "text": "腹部CT"
+      }
+    ],
+    "answer": "B",
+    "explanation": "结肠镜是结直肠与末端回肠病变(炎性肠病、肿瘤)诊断金标准；胃镜看上消化道，ERCP看胆胰管。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-005",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "SAAG意义",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "血清-腹水白蛋白梯度(SAAG)≥11g/L 最支持",
+    "options": [
+      {
+        "label": "A",
+        "text": "门脉高压性腹水"
+      },
+      {
+        "label": "B",
+        "text": "结核性腹膜炎"
+      },
+      {
+        "label": "C",
+        "text": "癌性腹水"
+      },
+      {
+        "label": "D",
+        "text": "胰源性腹水"
+      },
+      {
+        "label": "E",
+        "text": "自发性腹膜炎"
+      }
+    ],
+    "answer": "A",
+    "explanation": "SAAG=血清白蛋白-腹水白蛋白，≥11g/L提示门脉高压(如肝硬化)；<11g/L多见于结核、肿瘤等。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-006",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "漏出液蛋白",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "漏出液的蛋白含量通常为",
+    "options": [
+      {
+        "label": "A",
+        "text": "<25g/L"
+      },
+      {
+        "label": "B",
+        "text": "25-30g/L"
+      },
+      {
+        "label": "C",
+        "text": ">30g/L"
+      },
+      {
+        "label": "D",
+        "text": ">40g/L"
+      },
+      {
+        "label": "E",
+        "text": ">50g/L"
+      }
+    ],
+    "answer": "A",
+    "explanation": "漏出液蛋白<25g/L、比重<1.018、Rivalta阴性，见于肝硬化/心衰/肾病；渗出液蛋白>30g/L。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-007",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "分泌性腹泻",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "进食后腹泻不缓解、粪便量大呈水样，最可能的腹泻类型是",
+    "options": [
+      {
+        "label": "A",
+        "text": "渗透性腹泻"
+      },
+      {
+        "label": "B",
+        "text": "分泌性腹泻"
+      },
+      {
+        "label": "C",
+        "text": "渗出性腹泻"
+      },
+      {
+        "label": "D",
+        "text": "动力性腹泻"
+      },
+      {
+        "label": "E",
+        "text": "感染性腹泻"
+      }
+    ],
+    "answer": "B",
+    "explanation": "分泌性腹泻肠分泌增加(霍乱、神经内分泌瘤)，量大、禁食不缓解；渗透性禁食后缓解，渗出性带脓血，动力性糊状。教材P356。",
+    "source_page": "教材P356",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-008",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "上消化道出血病因诊断",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "上消化道出血时对病因诊断最有帮助的检查方法是",
+    "options": [
+      {
+        "label": "A",
+        "text": "选择性腹腔动脉造影"
+      },
+      {
+        "label": "B",
+        "text": "内镜检查"
+      },
+      {
+        "label": "C",
+        "text": "X 线钡餐检查"
+      },
+      {
+        "label": "D",
+        "text": "胃黏膜活检"
+      },
+      {
+        "label": "E",
+        "text": "核素检查"
+      }
+    ],
+    "answer": "B",
+    "explanation": "上消化道出血最常见的病因为消化性溃疡, 占 50%, 其次为出血性胃炎、胃癌等, 因此对明确上消化道出血病因最有帮助的检查方法是内镜检查。内镜检查既可明确出血原因、部位, 还可在内镜下行止血治疗。",
+    "source_page": "教材P359",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-1995-092",
+      "year": 1995,
+      "source": "1995考研西综·第92题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M1-A2-001",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "腹痛节律定位",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,35岁。反复中上腹疼痛2年，呈空腹痛、夜间痛，进食后缓解。提示病变最可能在",
+    "options": [
+      {
+        "label": "A",
+        "text": "食管"
+      },
+      {
+        "label": "B",
+        "text": "胃十二指肠"
+      },
+      {
+        "label": "C",
+        "text": "小肠"
+      },
+      {
+        "label": "D",
+        "text": "肝胆"
+      },
+      {
+        "label": "E",
+        "text": "结肠"
+      }
+    ],
+    "answer": "B",
+    "explanation": "空腹痛、夜间痛、进食缓解为十二指肠溃疡典型节律，病变在胃十二指肠；食管多为烧灼反流。教材P356-374。",
+    "source_page": "教材P356",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-002",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "腹水SAAG判断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "男性,52岁。腹胀、下肢水肿，腹水检查比重1.012、蛋白22g/L、SAAG 14g/L。最可能的病因是",
+    "options": [
+      {
+        "label": "A",
+        "text": "肝硬化门脉高压"
+      },
+      {
+        "label": "B",
+        "text": "结核性腹膜炎"
+      },
+      {
+        "label": "C",
+        "text": "癌性腹膜炎"
+      },
+      {
+        "label": "D",
+        "text": "急性胰腺炎"
+      },
+      {
+        "label": "E",
+        "text": "肾病综合征"
+      }
+    ],
+    "answer": "A",
+    "explanation": "比重<1.018、蛋白<25g/L为漏出液，SAAG≥11g/L提示门脉高压，结合临床最支持肝硬化。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-003",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "腹泻分型",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,28岁。进食牛奶后腹胀、腹泻，禁食后症状消失。最可能的腹泻类型是",
+    "options": [
+      {
+        "label": "A",
+        "text": "渗透性腹泻"
+      },
+      {
+        "label": "B",
+        "text": "分泌性腹泻"
+      },
+      {
+        "label": "C",
+        "text": "渗出性腹泻"
+      },
+      {
+        "label": "D",
+        "text": "动力性腹泻"
+      },
+      {
+        "label": "E",
+        "text": "感染性腹泻"
+      }
+    ],
+    "answer": "A",
+    "explanation": "渗透性腹泻因肠腔水溶性物质(乳糖)吸水，禁食后缓解、粪渗/血浆渗>1；其余类型禁食不缓解。教材P356。",
+    "source_page": "教材P356",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-004",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "黄疸分型",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,60岁。皮肤巩膜黄染，大便呈陶土色，尿胆红素阳性、尿胆原减少。最可能的黄疸类型是",
+    "options": [
+      {
+        "label": "A",
+        "text": "溶血性黄疸"
+      },
+      {
+        "label": "B",
+        "text": "肝细胞性黄疸"
+      },
+      {
+        "label": "C",
+        "text": "梗阻性黄疸"
+      },
+      {
+        "label": "D",
+        "text": "先天性黄疸"
+      },
+      {
+        "label": "E",
+        "text": "生理性黄疸"
+      }
+    ],
+    "answer": "C",
+    "explanation": "梗阻性黄疸直接胆红素升高为主，ALP/GGT明显升高，尿胆原减少或阴性，大便陶土色；溶血以间接胆红素为主，肝细胞以肝酶为主。教材P356。",
+    "source_page": "教材P356",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-005",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "暴发型UC检查禁忌",
+    "type": "A2",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "女性,25岁。发热、黏液脓血便，诊断为暴发型溃疡性结肠炎。下列哪项检查属禁忌",
+    "options": [
+      {
+        "label": "A",
+        "text": "结肠镜"
+      },
+      {
+        "label": "B",
+        "text": "钡剂灌肠"
+      },
+      {
+        "label": "C",
+        "text": "粪培养"
+      },
+      {
+        "label": "D",
+        "text": "血常规"
+      },
+      {
+        "label": "E",
+        "text": "腹部超声"
+      }
+    ],
+    "answer": "B",
+    "explanation": "暴发型/重症溃疡性结肠炎禁钡剂灌肠(易诱发中毒性巨结肠)，但可行结肠镜；上消化道出血可行急诊胃镜。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-006",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "上消化道出血首选检查",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,45岁。呕血、黑便1天，既往无肝炎史。为明确出血病因，应首选",
+    "options": [
+      {
+        "label": "A",
+        "text": "急诊胃镜"
+      },
+      {
+        "label": "B",
+        "text": "腹部CT"
+      },
+      {
+        "label": "C",
+        "text": "钡餐造影"
+      },
+      {
+        "label": "D",
+        "text": "腹腔动脉造影"
+      },
+      {
+        "label": "E",
+        "text": "腹部超声"
+      }
+    ],
+    "answer": "A",
+    "explanation": "上消化道出血病因诊断最有帮助的是内镜检查，急诊胃镜可明确部位并止血；急性期不宜钡餐。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A3-001",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "上腹痛定位诊断",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,50岁。反复上腹胀痛3个月，伴消瘦、食欲下降，大便隐血阳性。为明确诊断，应首选的检查是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃镜及活检"
+      },
+      {
+        "label": "B",
+        "text": "结肠镜"
+      },
+      {
+        "label": "C",
+        "text": "ERCP"
+      },
+      {
+        "label": "D",
+        "text": "腹部X线"
+      },
+      {
+        "label": "E",
+        "text": "肿瘤标志物"
+      }
+    ],
+    "answer": "A",
+    "explanation": "中上腹症状伴消瘦、隐血阳性，首选胃镜直视上消化道并活检以定性；结肠镜看下消化道，ERCP看胆胰管。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A4-001",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "腹水性质分析",
+    "type": "A4",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性,60岁。腹胀、少尿2周，移动性浊音阳性，腹水蛋白20g/L、细胞数80×10⁶/L、SAAG 13g/L。该腹水最符合",
+    "options": [
+      {
+        "label": "A",
+        "text": "门脉高压性漏出液"
+      },
+      {
+        "label": "B",
+        "text": "结核性渗出液"
+      },
+      {
+        "label": "C",
+        "text": "癌性渗出液"
+      },
+      {
+        "label": "D",
+        "text": "胰源性腹水"
+      },
+      {
+        "label": "E",
+        "text": "自发性腹膜炎"
+      }
+    ],
+    "answer": "A",
+    "explanation": "蛋白<25g/L、比重<1.018为漏出液，SAAG≥11g/L提示门脉高压驱动，符合肝硬化漏出液；细胞数不高不支持感染/肿瘤渗出。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-B1-001",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "诊疗技术选择",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "胆总管结石伴梗阻性黄疸，首选的诊疗技术是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃镜"
+      },
+      {
+        "label": "B",
+        "text": "结肠镜"
+      },
+      {
+        "label": "C",
+        "text": "ERCP"
+      },
+      {
+        "label": "D",
+        "text": "腹腔穿刺"
+      },
+      {
+        "label": "E",
+        "text": "MRCP"
+      }
+    ],
+    "answer": "C",
+    "explanation": "ERCP可直视胆胰管并取石/支架，是胆总管结石、梗阻性黄疸的诊断+治疗首选；胃镜看黏膜，穿刺看腹水。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-B1-002",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "腹水判定技术",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "为判定腹腔积液性质(漏出或渗出)及门脉高压，应选用的检查是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃镜"
+      },
+      {
+        "label": "B",
+        "text": "结肠镜"
+      },
+      {
+        "label": "C",
+        "text": "ERCP"
+      },
+      {
+        "label": "D",
+        "text": "腹腔穿刺"
+      },
+      {
+        "label": "E",
+        "text": "MRCP"
+      }
+    ],
+    "answer": "D",
+    "explanation": "腹腔穿刺+腹水化验可定性腹水，SAAG≥11g/L提示门脉高压；其余技术用于黏膜或胆胰成像。教材P359。",
+    "source_page": "教材P359",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-X-001",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "胃黏膜屏障",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于胃黏膜屏障，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "表面上皮紧密连接构成物理屏障"
+      },
+      {
+        "label": "B",
+        "text": "黏液与碳酸氢盐构成化学屏障"
+      },
+      {
+        "label": "C",
+        "text": "黏膜血流与上皮更新构成细胞屏障"
+      },
+      {
+        "label": "D",
+        "text": "胃蛋白酶原是屏障核心成分"
+      },
+      {
+        "label": "E",
+        "text": "免疫细胞参与生物屏障"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "屏障四层：上皮紧密连接(物理)+黏液-碳酸氢盐(化学)+黏膜血流与上皮更新(细胞)+免疫细胞(生物)；胃蛋白酶原为侵袭因素，非屏障。教材P356。",
+    "source_page": "教材P356",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch033-M1-X-002",
+    "module": "M1",
+    "module_name": "消化系统总论",
+    "topic": "上消化道出血病因",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "可引起上消化道出血的病因有",
+    "options": [
+      {
+        "label": "A",
+        "text": "食管憩室炎"
+      },
+      {
+        "label": "B",
+        "text": "消化性溃疡"
+      },
+      {
+        "label": "C",
+        "text": "胃癌"
+      },
+      {
+        "label": "D",
+        "text": "慢性萎缩性胃炎"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "①上消化道出血是指食管、胃、十二指肠、空肠上段、胆道病变引起的出血。食管憩室炎、消化性溃疡、胃癌都是上消化道出血的病因。②急性胃炎可引起上消化道出血，但慢性萎缩性胃炎很少引起上消化道出血。",
+    "source_page": "教材P359",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2021-156",
+      "year": 2021,
+      "source": "2021考研西综·第156题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M2-A1-001",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "典型症状",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "胃食管反流病(GERD)最典型的临床表现是",
+    "options": [
+      {
+        "label": "A",
+        "text": "烧心与反流"
+      },
+      {
+        "label": "B",
+        "text": "进行性吞咽困难"
+      },
+      {
+        "label": "C",
+        "text": "胸骨后压榨样痛"
+      },
+      {
+        "label": "D",
+        "text": "慢性刺激性咳嗽"
+      },
+      {
+        "label": "E",
+        "text": "体重明显下降"
+      }
+    ],
+    "answer": "A",
+    "explanation": "烧心(胸骨后烧灼感)与反流(含酸味)并存是GERD特异性极高的典型症状，餐后1小时、卧位加重。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-002",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "Barrett癌前",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "Barrett食管是下列哪种肿瘤的癌前病变",
+    "options": [
+      {
+        "label": "A",
+        "text": "食管鳞癌"
+      },
+      {
+        "label": "B",
+        "text": "食管腺癌"
+      },
+      {
+        "label": "C",
+        "text": "胃窦腺癌"
+      },
+      {
+        "label": "D",
+        "text": "贲门癌"
+      },
+      {
+        "label": "E",
+        "text": "食管平滑肌瘤"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Barrett食管为食管下段鳞状上皮被柱状上皮(含杯状细胞)替代，是食管腺癌主要癌前病变，风险较常人高10-20倍。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-003",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "RE确诊方法",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "诊断反流性食管炎(RE)最准确的方法是",
+    "options": [
+      {
+        "label": "A",
+        "text": "PPI试验"
+      },
+      {
+        "label": "B",
+        "text": "胃镜"
+      },
+      {
+        "label": "C",
+        "text": "24小时食管pH监测"
+      },
+      {
+        "label": "D",
+        "text": "食管测压"
+      },
+      {
+        "label": "E",
+        "text": "上消化道造影"
+      }
+    ],
+    "answer": "B",
+    "explanation": "内镜是诊断RE最准确的方法，并可作洛杉矶A-D分级；24h pH监测是诊断GERD(含NERD)功能金标准。教材P364。",
+    "source_page": "教材P364",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-004",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "GERD金标准",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "诊断胃食管反流病(GERD)的“金标准”是",
+    "options": [
+      {
+        "label": "A",
+        "text": "PPI试验"
+      },
+      {
+        "label": "B",
+        "text": "胃镜"
+      },
+      {
+        "label": "C",
+        "text": "24小时食管pH监测"
+      },
+      {
+        "label": "D",
+        "text": "胸部CT"
+      },
+      {
+        "label": "E",
+        "text": "食管测压"
+      }
+    ],
+    "answer": "C",
+    "explanation": "24小时食管pH监测(反流监测)是GERD功能诊断金标准；内镜最准的是RE而非全部GERD；PPI试验为拟诊敲门砖。教材P364。",
+    "source_page": "教材P364",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-005",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "维持治疗首选",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "GERD维持治疗疗效最确切的药物是",
+    "options": [
+      {
+        "label": "A",
+        "text": "抗酸药"
+      },
+      {
+        "label": "B",
+        "text": "H2受体拮抗剂"
+      },
+      {
+        "label": "C",
+        "text": "质子泵抑制剂(PPI)"
+      },
+      {
+        "label": "D",
+        "text": "促动力药"
+      },
+      {
+        "label": "E",
+        "text": "胃黏膜保护剂"
+      }
+    ],
+    "answer": "C",
+    "explanation": "PPI不可逆抑制壁细胞质子泵，抑酸最强最持久，为GERD急性与维持治疗首选，疗程4-8周。教材P364-365。",
+    "source_page": "教材P365",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-006",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "抗反流屏障",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "关于GERD发病机制，正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃酸分泌过多是必要因素"
+      },
+      {
+        "label": "B",
+        "text": "抗反流屏障功能减弱是核心环节"
+      },
+      {
+        "label": "C",
+        "text": "食管清除能力增强"
+      },
+      {
+        "label": "D",
+        "text": "胃排空加快减少反流"
+      },
+      {
+        "label": "E",
+        "text": "食管黏膜屏障增厚"
+      }
+    ],
+    "answer": "B",
+    "explanation": "GERD核心是抗反流屏障异常(LES压降低、TLESR增多、裂孔疝)，胃酸分泌过多非必要机制；清除力下降、排空延迟促进反流。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-007",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "LA分级",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "洛杉矶(LA)分级中，食管黏膜破损>5mm但未融合，属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "A级"
+      },
+      {
+        "label": "B",
+        "text": "B级"
+      },
+      {
+        "label": "C",
+        "text": "C级"
+      },
+      {
+        "label": "D",
+        "text": "D级"
+      },
+      {
+        "label": "E",
+        "text": "正常"
+      }
+    ],
+    "answer": "B",
+    "explanation": "LA分级：A<5mm；B>5mm未融合；C融合<75%周径；D融合≥75%周径。教材P364。",
+    "source_page": "教材P364",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-008",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "NERD诊断",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "典型烧心反流、内镜阴性，确诊非糜烂性反流病(NERD)需依赖",
+    "options": [
+      {
+        "label": "A",
+        "text": "PPI试验有效"
+      },
+      {
+        "label": "B",
+        "text": "胃镜见糜烂"
+      },
+      {
+        "label": "C",
+        "text": "24小时pH监测阳性"
+      },
+      {
+        "label": "D",
+        "text": "食管测压异常"
+      },
+      {
+        "label": "E",
+        "text": "钡餐异常"
+      }
+    ],
+    "answer": "C",
+    "explanation": "NERD需内镜阴性+客观反流证据(24h pH监测阳性)；仅PPI试验有效或症状不能单独确诊NERD。教材P364。",
+    "source_page": "教材P364",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-001",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "典型病例诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,40岁。餐后1小时胸骨后烧灼感、反酸2个月，平卧时加重。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "心绞痛"
+      },
+      {
+        "label": "B",
+        "text": "胃食管反流病"
+      },
+      {
+        "label": "C",
+        "text": "食管癌"
+      },
+      {
+        "label": "D",
+        "text": "慢性胃炎"
+      },
+      {
+        "label": "E",
+        "text": "慢性胆囊炎"
+      }
+    ],
+    "answer": "B",
+    "explanation": "餐后1小时胸骨后烧灼+反酸、体位相关，为GERD典型症状；心绞痛与劳累相关且含硝酸甘油缓解。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-002",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "NERD确诊",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,50岁。典型烧心反流，胃镜未见黏膜糜烂。为确诊非糜烂性反流病(NERD)，还需",
+    "options": [
+      {
+        "label": "A",
+        "text": "PPI试验有效即可"
+      },
+      {
+        "label": "B",
+        "text": "胃镜见糜烂"
+      },
+      {
+        "label": "C",
+        "text": "24小时pH监测阳性"
+      },
+      {
+        "label": "D",
+        "text": "食管测压异常"
+      },
+      {
+        "label": "E",
+        "text": "钡餐异常"
+      }
+    ],
+    "answer": "C",
+    "explanation": "NERD诊断需内镜阴性+24h pH监测阳性证实病理性反流；单纯PPI有效或症状不能确诊。教材P364。",
+    "source_page": "教材P364",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-003",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "Barrett处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,55岁。GERD病史10年，内镜见食管下段橘红色柱状上皮。恰当的处理是",
+    "options": [
+      {
+        "label": "A",
+        "text": "按慢性胃炎治疗"
+      },
+      {
+        "label": "B",
+        "text": "视作Barrett食管并定期内镜随访"
+      },
+      {
+        "label": "C",
+        "text": "立即外科手术"
+      },
+      {
+        "label": "D",
+        "text": "按结核治疗"
+      },
+      {
+        "label": "E",
+        "text": "按食管癌化疗"
+      }
+    ],
+    "answer": "B",
+    "explanation": "食管下段鳞变柱(Barrett)为腺癌癌前，需定期内镜随访；重度异型增生才考虑内镜/手术。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-004",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "胸痛鉴别",
+    "type": "A2",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "男性,45岁。胸骨后烧灼痛，与进食、卧位相关，抗酸药可缓解，心电图正常。应首先排除的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "心绞痛/急性冠脉综合征"
+      },
+      {
+        "label": "B",
+        "text": "胃食管反流病"
+      },
+      {
+        "label": "C",
+        "text": "肺栓塞"
+      },
+      {
+        "label": "D",
+        "text": "肋间神经痛"
+      },
+      {
+        "label": "E",
+        "text": "主动脉夹层"
+      }
+    ],
+    "answer": "A",
+    "explanation": "非心源性胸痛需先排除心脏疾病(心电图/心肌酶)再评估GERD，避免漏诊急性冠脉综合征。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-005",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "首选治疗",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,38岁。确诊GERD，无严重并发症。初始治疗应首选",
+    "options": [
+      {
+        "label": "A",
+        "text": "长期单用抗酸药"
+      },
+      {
+        "label": "B",
+        "text": "PPI 4-8周"
+      },
+      {
+        "label": "C",
+        "text": "抗反流手术"
+      },
+      {
+        "label": "D",
+        "text": "单用促动力药"
+      },
+      {
+        "label": "E",
+        "text": "中药灌肠"
+      }
+    ],
+    "answer": "B",
+    "explanation": "PPI抑酸最强，为GERD首选与维持治疗，疗程4-8周；手术仅用于顽固或并发症者。教材P364-365。",
+    "source_page": "教材P365",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-006",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "食管外表现",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "男性,60岁。反复慢性咳嗽、声嘶，伴烧心反流体征。应首先考虑",
+    "options": [
+      {
+        "label": "A",
+        "text": "支气管哮喘"
+      },
+      {
+        "label": "B",
+        "text": "GERD食管外表现"
+      },
+      {
+        "label": "C",
+        "text": "中心型肺癌"
+      },
+      {
+        "label": "D",
+        "text": "特发性咽喉炎"
+      },
+      {
+        "label": "E",
+        "text": "肺结核"
+      }
+    ],
+    "answer": "B",
+    "explanation": "慢性咳嗽、咽喉炎、声嘶等食管外症状，若反复发作伴烧心反流，应考虑GERD；需先排除心肺疾病。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A3-001",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "病例确诊",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,48岁。烧心反流1年，PPI有效但停药复发，胃镜见食管下段黏膜纵行糜烂。为明确分级，最准确的方法是",
+    "options": [
+      {
+        "label": "A",
+        "text": "PPI试验"
+      },
+      {
+        "label": "B",
+        "text": "胃镜"
+      },
+      {
+        "label": "C",
+        "text": "24小时pH监测"
+      },
+      {
+        "label": "D",
+        "text": "食管测压"
+      },
+      {
+        "label": "E",
+        "text": "上消化道造影"
+      }
+    ],
+    "answer": "B",
+    "explanation": "内镜是诊断RE并作洛杉矶分级最准确的方法；pH监测用于证实反流而非评估黏膜破损程度。教材P364。",
+    "source_page": "教材P364",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A4-001",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "Barrett进展处理",
+    "type": "A4",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "女性,52岁。长期反流，内镜诊断Barrett食管，活检示重度异型增生。下一步处理应首选",
+    "options": [
+      {
+        "label": "A",
+        "text": "继续观察随访"
+      },
+      {
+        "label": "B",
+        "text": "内镜下切除或手术"
+      },
+      {
+        "label": "C",
+        "text": "加大PPI剂量"
+      },
+      {
+        "label": "D",
+        "text": "放射治疗"
+      },
+      {
+        "label": "E",
+        "text": "化学治疗"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Barrett伴重度异型增生属高度癌变风险，应内镜下切除或手术；轻度异型增生才以随访为主。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-B1-001",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "药物选择",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "GERD首选及长期维持治疗疗效最确切的药物是",
+    "options": [
+      {
+        "label": "A",
+        "text": "抗酸药"
+      },
+      {
+        "label": "B",
+        "text": "H2受体拮抗剂"
+      },
+      {
+        "label": "C",
+        "text": "质子泵抑制剂(PPI)"
+      },
+      {
+        "label": "D",
+        "text": "促动力药"
+      },
+      {
+        "label": "E",
+        "text": "黏膜保护剂"
+      }
+    ],
+    "answer": "C",
+    "explanation": "PPI抑制质子泵抑酸最强最久，为GERD首选与维持治疗；H2RA适于轻中症，促动力药辅助。教材P364-365。",
+    "source_page": "教材P365",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-B1-002",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "LA分级识别",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "洛杉矶(LA)分级中，黏膜破损<5mm者属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "A级"
+      },
+      {
+        "label": "B",
+        "text": "B级"
+      },
+      {
+        "label": "C",
+        "text": "C级"
+      },
+      {
+        "label": "D",
+        "text": "D级"
+      },
+      {
+        "label": "E",
+        "text": "正常"
+      }
+    ],
+    "answer": "A",
+    "explanation": "LA A级：黏膜破损<5mm；B级>5mm未融合；C级融合<75%周径；D级≥75%。教材P364。",
+    "source_page": "教材P364",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-X-001",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "发病机制",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "胃食管反流病发病相关的因素包括",
+    "options": [
+      {
+        "label": "A",
+        "text": "下食管括约肌压力降低"
+      },
+      {
+        "label": "B",
+        "text": "一过性LES松弛(TLESR)增多"
+      },
+      {
+        "label": "C",
+        "text": "食管裂孔疝"
+      },
+      {
+        "label": "D",
+        "text": "食管清除能力下降"
+      },
+      {
+        "label": "E",
+        "text": "胃酸分泌必然显著增多"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "GERD三环：LES压降低/TLESR增多/裂孔疝(阀松)、清除力下降(清不掉)、胃排空延迟(推上来)；胃酸分泌过多非必要机制。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-X-002",
+    "module": "M2",
+    "module_name": "胃食管反流病（GERD）",
+    "topic": "Barrett认知",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于Barrett食管，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "鳞状上皮被柱状上皮替代"
+      },
+      {
+        "label": "B",
+        "text": "是食管腺癌的癌前病变"
+      },
+      {
+        "label": "C",
+        "text": "伴重度异型增生需内镜或手术"
+      },
+      {
+        "label": "D",
+        "text": "与长期酸/胆汁反流有关"
+      },
+      {
+        "label": "E",
+        "text": "癌变风险与正常人相近"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "Barrett为反流反复损伤后鳞状上皮被耐酸柱状上皮替代，是食管腺癌癌前，重度异型增生需干预；风险高于常人10-20倍。教材P363。",
+    "source_page": "教材P363",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-001",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "慢性胃炎病因",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "慢性胃炎最常见的病因是",
+    "options": [
+      {
+        "label": "A",
+        "text": "幽门螺杆菌(Hp)感染"
+      },
+      {
+        "label": "B",
+        "text": "自身免疫"
+      },
+      {
+        "label": "C",
+        "text": "长期饮酒"
+      },
+      {
+        "label": "D",
+        "text": "胆汁反流"
+      },
+      {
+        "label": "E",
+        "text": "药物刺激"
+      }
+    ],
+    "answer": "A",
+    "explanation": "Hp感染是慢性胃炎最常见病因(尤其B型胃窦炎，占约90%)；自身免疫见于A型(少见)。教材P370。",
+    "source_page": "教材P370",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-002",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "A型胃炎特征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "A型(自身免疫性)萎缩性胃炎的主要特征是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃窦病变为主"
+      },
+      {
+        "label": "B",
+        "text": "胃体萎缩伴恶性贫血"
+      },
+      {
+        "label": "C",
+        "text": "Hp阳性率高"
+      },
+      {
+        "label": "D",
+        "text": "无贫血"
+      },
+      {
+        "label": "E",
+        "text": "胃酸分泌增多"
+      }
+    ],
+    "answer": "B",
+    "explanation": "A型为胃体/胃底萎缩，壁细胞破坏→内因子↓→VitB12吸收障碍→恶性贫血，胃酸显著降低、胃泌素升高。教材P370。",
+    "source_page": "教材P370",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-003",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "B型胃炎部位",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "慢性B型(多灶萎缩性)胃炎的好发部位是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃体"
+      },
+      {
+        "label": "B",
+        "text": "胃底"
+      },
+      {
+        "label": "C",
+        "text": "胃窦"
+      },
+      {
+        "label": "D",
+        "text": "贲门"
+      },
+      {
+        "label": "E",
+        "text": "幽门管"
+      }
+    ],
+    "answer": "C",
+    "explanation": "B型胃炎由Hp感染所致，好发于胃窦，极常见；A型好发于胃体/胃底。教材P370。",
+    "source_page": "教材P370",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-004",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "恶性贫血机制",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "A型萎缩性胃炎伴恶性贫血的主要机制是",
+    "options": [
+      {
+        "label": "A",
+        "text": "铁缺乏"
+      },
+      {
+        "label": "B",
+        "text": "内因子缺乏致VitB12吸收障碍"
+      },
+      {
+        "label": "C",
+        "text": "叶酸缺乏"
+      },
+      {
+        "label": "D",
+        "text": "慢性失血"
+      },
+      {
+        "label": "E",
+        "text": "溶血因素"
+      }
+    ],
+    "answer": "B",
+    "explanation": "A型胃炎抗内因子抗体阻断内因子，VitB12在小肠无法吸收→巨幼细胞性贫血(恶性贫血)，可伴神经症状。教材P371。",
+    "source_page": "教材P371",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-005",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "Hp根除方案",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "幽门螺杆菌(Hp)根除的标准四联方案包含",
+    "options": [
+      {
+        "label": "A",
+        "text": "PPI+1种抗生素"
+      },
+      {
+        "label": "B",
+        "text": "PPI+铋剂+2种抗生素"
+      },
+      {
+        "label": "C",
+        "text": "单用铋剂"
+      },
+      {
+        "label": "D",
+        "text": "H2RA+1种抗生素"
+      },
+      {
+        "label": "E",
+        "text": "益生菌单用"
+      }
+    ],
+    "answer": "B",
+    "explanation": "根除用PPI+铋剂+2种抗生素(如克拉霉素+阿莫西林)，疗程10-14天；单一抗菌药易耐药。教材P370。",
+    "source_page": "教材P370",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-006",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "尿素呼气试验",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "¹³C/¹⁴C尿素呼气试验用于Hp检测的主要原理是",
+    "options": [
+      {
+        "label": "A",
+        "text": "检测血中抗体"
+      },
+      {
+        "label": "B",
+        "text": "检测Hp尿素酶分解尿素产氨"
+      },
+      {
+        "label": "C",
+        "text": "检测细菌毒素"
+      },
+      {
+        "label": "D",
+        "text": "检测粪便抗原"
+      },
+      {
+        "label": "E",
+        "text": "检测细菌培养"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Hp依赖尿素酶产氨中和胃酸，服标记尿素后被分解呼出标记CO₂；该法无创、敏感，是根除后复查首选。教材P370。",
+    "source_page": "教材P370",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-007",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "胃癌癌前情况",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "属于胃癌癌前情况的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性糜烂性胃炎"
+      },
+      {
+        "label": "B",
+        "text": "慢性非萎缩性胃炎"
+      },
+      {
+        "label": "C",
+        "text": "萎缩性胃炎伴肠化生"
+      },
+      {
+        "label": "D",
+        "text": "消化性溃疡"
+      },
+      {
+        "label": "E",
+        "text": "胃息肉增生"
+      }
+    ],
+    "answer": "C",
+    "explanation": "萎缩、肠化生、异型增生构成胃癌癌前阶梯；慢性非萎缩性胃炎无明显癌变倾向。教材P373。",
+    "source_page": "教材P373",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-008",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "应激性溃疡",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "下述应激性溃疡的名称中，哪个与烧伤有关？",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性消化性溃疡"
+      },
+      {
+        "label": "B",
+        "text": "糜烂性胃炎"
+      },
+      {
+        "label": "C",
+        "text": "出血性胃炎"
+      },
+      {
+        "label": "D",
+        "text": "Curling 溃疡"
+      },
+      {
+        "label": "E",
+        "text": "Cushing 溃疡"
+      }
+    ],
+    "answer": "D",
+    "explanation": "Curling 溃疡指继发重度烧伤后发生的消化性溃疡。Cushing 溃疡是指继发重症脑外伤后发生的消化性溃疡。",
+    "source_page": "教材P369",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-1995-083",
+      "year": 1995,
+      "source": "1995考研西综·第83题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M3-A2-001",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "Hp阳性处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,45岁。上腹不适，胃镜示胃窦黏膜红白相间、活检Hp(+)。恰当的处理是",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即四联根除Hp"
+      },
+      {
+        "label": "B",
+        "text": "外科手术"
+      },
+      {
+        "label": "C",
+        "text": "单用抗酸药"
+      },
+      {
+        "label": "D",
+        "text": "暂不处理观察"
+      },
+      {
+        "label": "E",
+        "text": "化学治疗"
+      }
+    ],
+    "answer": "A",
+    "explanation": "B型胃炎Hp(+)应行铋剂四联根除(10-14天)；Hp是胃炎-溃疡-胃癌共同上游，根除可阻断进展。教材P370。",
+    "source_page": "教材P370",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A2-002",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "A型胃炎诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,55岁。乏力、面色苍白，胃镜示胃体萎缩，Hb 80g/L，血清VitB12降低。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "B型胃炎"
+      },
+      {
+        "label": "B",
+        "text": "A型胃炎伴恶性贫血"
+      },
+      {
+        "label": "C",
+        "text": "消化性溃疡"
+      },
+      {
+        "label": "D",
+        "text": "胃癌"
+      },
+      {
+        "label": "E",
+        "text": "缺铁性贫血"
+      }
+    ],
+    "answer": "B",
+    "explanation": "胃体萎缩+内因子缺乏→VitB12吸收障碍→巨幼细胞性贫血(恶性贫血)，为A型胃炎典型结局。教材P371。",
+    "source_page": "教材P371",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A2-003",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "急性胃炎机制",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "男性,40岁。大量饮酒后突发上腹痛、呕血。急诊考虑急性糜烂出血性胃炎，其主要机制是",
+    "options": [
+      {
+        "label": "A",
+        "text": "Hp急性感染"
+      },
+      {
+        "label": "B",
+        "text": "NSAIDs/乙醇损伤黏膜屏障"
+      },
+      {
+        "label": "C",
+        "text": "自身免疫破坏壁细胞"
+      },
+      {
+        "label": "D",
+        "text": "胆汁反流"
+      },
+      {
+        "label": "E",
+        "text": "病毒感染"
+      }
+    ],
+    "answer": "B",
+    "explanation": "急性糜烂出血性胃炎多由应激/NSAIDs/乙醇致黏膜血流与屏障失守，H⁺反弥散腐蚀黏膜；与Hp关系不大。教材P369。",
+    "source_page": "教材P369",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A2-004",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "萎缩随访",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "女性,50岁。胃镜诊断慢性萎缩性胃炎，患者担心癌变。应告知需",
+    "options": [
+      {
+        "label": "A",
+        "text": "无须随访"
+      },
+      {
+        "label": "B",
+        "text": "定期胃镜随访"
+      },
+      {
+        "label": "C",
+        "text": "立即手术"
+      },
+      {
+        "label": "D",
+        "text": "化学治疗"
+      },
+      {
+        "label": "E",
+        "text": "放射治疗"
+      }
+    ],
+    "answer": "B",
+    "explanation": "萎缩/肠化生/异型增生为癌前情况，需定期胃镜随访以早期发现癌变；仅在重度异型增生才考虑切除。教材P373。",
+    "source_page": "教材P373",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A2-005",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "NSAID胃炎",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,35岁。长期服用阿司匹林，上腹隐痛，胃镜示黏膜糜烂。最可能的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "自身免疫性胃炎"
+      },
+      {
+        "label": "B",
+        "text": "NSAID相关性胃炎"
+      },
+      {
+        "label": "C",
+        "text": "B型胃炎"
+      },
+      {
+        "label": "D",
+        "text": "A型胃炎"
+      },
+      {
+        "label": "E",
+        "text": "胃癌"
+      }
+    ],
+    "answer": "B",
+    "explanation": "NSAIDs抑制前列腺素(黏膜保护因子)削弱屏障，诱发急性/慢性糜烂性胃炎；与Hp无关。教材P369。",
+    "source_page": "教材P369",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A2-006",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "根除复查",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,60岁。既往Hp(+)胃炎，四联疗程结束后复查是否根除，首选",
+    "options": [
+      {
+        "label": "A",
+        "text": "血清Hp抗体"
+      },
+      {
+        "label": "B",
+        "text": "尿素呼气试验"
+      },
+      {
+        "label": "C",
+        "text": "胃镜活检"
+      },
+      {
+        "label": "D",
+        "text": "粪便隐血"
+      },
+      {
+        "label": "E",
+        "text": "钡餐造影"
+      }
+    ],
+    "answer": "B",
+    "explanation": "根除后复查首选尿素呼气试验(无创、敏感)；血清抗体长期存在，只提示感染不用于复查。教材P370。",
+    "source_page": "教材P370",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A3-001",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "病例治疗",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,50岁。上腹隐痛，胃镜示胃窦炎、Hp(+)。为根治病变并降低溃疡/胃癌风险，治疗应首选",
+    "options": [
+      {
+        "label": "A",
+        "text": "四联根除Hp"
+      },
+      {
+        "label": "B",
+        "text": "外科手术"
+      },
+      {
+        "label": "C",
+        "text": "单用铋剂"
+      },
+      {
+        "label": "D",
+        "text": "中药调理"
+      },
+      {
+        "label": "E",
+        "text": "暂观察"
+      }
+    ],
+    "answer": "A",
+    "explanation": "Hp(+)慢性胃炎应铋剂四联根除(10-14天)；根除是阻断胃炎→溃疡→胃癌的关键。教材P370。",
+    "source_page": "教材P370",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A4-001",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "A型机制分析",
+    "type": "A4",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "女性,48岁。胃镜示胃体萎缩，抗壁细胞抗体(PCA)与抗内因子抗体(IFA)均阳性，胃酸显著降低，血清胃泌素升高。最符合",
+    "options": [
+      {
+        "label": "A",
+        "text": "B型胃炎"
+      },
+      {
+        "label": "B",
+        "text": "A型(自身免疫性)胃炎"
+      },
+      {
+        "label": "C",
+        "text": "消化性溃疡"
+      },
+      {
+        "label": "D",
+        "text": "胃癌"
+      },
+      {
+        "label": "E",
+        "text": "反流性食管炎"
+      }
+    ],
+    "answer": "B",
+    "explanation": "PCA/IFA(+)破坏壁细胞→胃体萎缩、胃酸↓、胃泌素反馈性↑、内因子缺→恶性贫血，是A型胃炎完整机制链。教材P370-371。",
+    "source_page": "教材P371",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-B1-001",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "A/B型鉴别",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "慢性胃炎中，好发于胃窦、Hp阳性、无贫血者，典型属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃体萎缩"
+      },
+      {
+        "label": "B",
+        "text": "胃窦病变(B型)"
+      },
+      {
+        "label": "C",
+        "text": "恶性贫血"
+      },
+      {
+        "label": "D",
+        "text": "胃酸显著减低"
+      },
+      {
+        "label": "E",
+        "text": "PCA阳性"
+      }
+    ],
+    "answer": "B",
+    "explanation": "B型胃炎多见于胃窦、Hp(+)、无贫血、胃酸正常或偏低；A型才胃体萎缩、恶性贫血、PCA(+)。教材P370。",
+    "source_page": "教材P370",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-B1-002",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "特殊类型胃炎",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "属于胃癌癌前病变背景的胃炎类型是",
+    "options": [
+      {
+        "label": "A",
+        "text": "慢性萎缩性胃炎"
+      },
+      {
+        "label": "B",
+        "text": "慢性非萎缩性胃炎"
+      },
+      {
+        "label": "C",
+        "text": "化脓性胃炎"
+      },
+      {
+        "label": "D",
+        "text": "嗜酸性胃炎"
+      },
+      {
+        "label": "E",
+        "text": "放射性胃炎"
+      }
+    ],
+    "answer": "A",
+    "explanation": "慢性萎缩性胃炎伴肠化生/异型增生为胃癌癌前；非萎缩性无明确癌变倾向。教材P373。",
+    "source_page": "教材P373",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-X-001",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "慢性胃炎病因",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "下列属于慢性胃炎发病原因的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "Hp 感染"
+      },
+      {
+        "label": "B",
+        "text": "自身免疫"
+      },
+      {
+        "label": "C",
+        "text": "精神刺激"
+      },
+      {
+        "label": "D",
+        "text": "十二指肠液反流入胃"
+      }
+    ],
+    "answer": "ABD",
+    "explanation": "慢性胃炎的病因: ①幽门螺杆菌(Hp)感染是慢性胃炎的主要病因。②自身免疫性胃炎的自身抗体攻击壁细胞,使壁细胞总数减少,导致胃酸分泌减少;内因子抗体与内因子结合,阻碍维生素 B12 的吸收,从而导致恶性贫血。③幽门括约肌功能不全时,含胆汁和胰液的十二指肠液反流入胃,可削弱胃黏膜屏障功能,导致慢性胃炎。④慢性胃炎的发病与精神刺激无关,精神刺激是消化性溃疡的常见诱因。",
+    "source_page": "教材P370",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": true
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2012-171",
+      "year": 2012,
+      "source": "2012考研西综·第171题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M3-X-002",
+    "module": "M3",
+    "module_name": "胃炎",
+    "topic": "癌前病变",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "属于癌前病变的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "黏膜白斑"
+      },
+      {
+        "label": "B",
+        "text": "慢性非萎缩性胃炎"
+      },
+      {
+        "label": "C",
+        "text": "慢性溃疡性结肠炎"
+      },
+      {
+        "label": "D",
+        "text": "大肠绒毛状腺瘤"
+      }
+    ],
+    "answer": "ACD",
+    "explanation": "①某些疾病或病变本身不是恶性肿瘤,但具有发展为恶性肿瘤的潜能,患者发生相应恶性肿瘤的风险增加,这些疾病或病变称为癌前病变。黏膜白斑为鳞状细胞癌的癌前病变。慢性溃疡性结肠炎是结肠癌的癌前病变。大肠绒毛状腺瘤是大肠癌的癌前病变。②慢性萎缩性胃炎多伴肠上皮化生,是胃癌的癌前病变。慢性非萎缩性胃炎不属于癌前病变,故不答 B。参阅【1994NO37】。",
+    "source_page": "教材P373",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": true,
+      "D": true
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2021-150",
+      "year": 2021,
+      "source": "2021考研西综·第150题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M4-A1-001",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "DU好发部位",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "十二指肠溃疡(DU)的好发部位是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃角"
+      },
+      {
+        "label": "B",
+        "text": "胃窦小弯"
+      },
+      {
+        "label": "C",
+        "text": "十二指肠球部"
+      },
+      {
+        "label": "D",
+        "text": "贲门"
+      },
+      {
+        "label": "E",
+        "text": "幽门管"
+      }
+    ],
+    "answer": "C",
+    "explanation": "DU好发于十二指肠球部(前/后壁多见)；GU好发于胃角、胃窦小弯。教材P374。",
+    "source_page": "教材P374",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-A1-002",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "GU发病机制",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "胃溃疡(GU)发病机制的主要特点是",
+    "options": [
+      {
+        "label": "A",
+        "text": "侵袭因素(胃酸)增强"
+      },
+      {
+        "label": "B",
+        "text": "防御/屏障因素减弱"
+      },
+      {
+        "label": "C",
+        "text": "胃排空加快"
+      },
+      {
+        "label": "D",
+        "text": "胆汁分泌减少"
+      },
+      {
+        "label": "E",
+        "text": "前列腺素增多"
+      }
+    ],
+    "answer": "B",
+    "explanation": "GU以防御(屏障)减弱为主，基础胃酸正常或偏低；DU以侵袭(胃酸)增强为主。教材P374。",
+    "source_page": "教材P374",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-A1-003",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "确诊首选",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "消化性溃疡确诊的首选检查是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃镜+活检"
+      },
+      {
+        "label": "B",
+        "text": "X线钡餐"
+      },
+      {
+        "label": "C",
+        "text": "腹部CT"
+      },
+      {
+        "label": "D",
+        "text": "腹部超声"
+      },
+      {
+        "label": "E",
+        "text": "血液化验"
+      }
+    ],
+    "answer": "A",
+    "explanation": "胃镜是溃疡诊断首选与金标准，可直视龛影、判断期别并活检排除胃癌；钡餐示龛影为次选。教材P375。",
+    "source_page": "教材P375",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-A1-004",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "最常见并发症",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "消化性溃疡最常见的并发症是",
+    "options": [
+      {
+        "label": "A",
+        "text": "出血"
+      },
+      {
+        "label": "B",
+        "text": "穿孔"
+      },
+      {
+        "label": "C",
+        "text": "幽门梗阻"
+      },
+      {
+        "label": "D",
+        "text": "癌变"
+      },
+      {
+        "label": "E",
+        "text": "腹腔瘘管"
+      }
+    ],
+    "answer": "A",
+    "explanation": "出血最常见(15%-25%)，十二指肠溃疡更易出血；穿孔1%-5%，梗阻2%-4%，GU约1%癌变。教材P378。",
+    "source_page": "教材P378",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-A1-005",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "穿孔体征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "十二指肠溃疡并发穿孔的典型体征是",
+    "options": [
+      {
+        "label": "A",
+        "text": "板状腹、肝浊音界消失、膈下游离气体"
+      },
+      {
+        "label": "B",
+        "text": "轻度反跳痛"
+      },
+      {
+        "label": "C",
+        "text": "肠鸣音活跃"
+      },
+      {
+        "label": "D",
+        "text": "移动性浊音"
+      },
+      {
+        "label": "E",
+        "text": "皮肤黄染"
+      }
+    ],
+    "answer": "A",
+    "explanation": "穿孔致胃内容物入腹腔→急性弥漫性腹膜炎，表现为板状腹、肝浊音界缩小/消失、膈下游离气体。教材P378。",
+    "source_page": "教材P378",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-A1-006",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "NSAID溃疡机制",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "阿司匹林引起 NSAID 溃疡的最主要致溃疡机制是",
+    "options": [
+      {
+        "label": "A",
+        "text": "抑制 COX-1"
+      },
+      {
+        "label": "B",
+        "text": "抑制 COX-2"
+      },
+      {
+        "label": "C",
+        "text": "同时抑制 COX-1 和 COX-2"
+      },
+      {
+        "label": "D",
+        "text": "局部刺激作用"
+      }
+    ],
+    "answer": "C",
+    "explanation": "①非甾体抗炎药(NSAID)导致消化性溃疡的机制包括局部损害作用和系统作用两个方面,但以后者为主,故可首先排除D。②NSAID致溃疡的系统作用与其抑制环氧合酶(COX)有关,COX包括COX-1和COX-2,COX-1主要存在于胃黏膜组织,COX-2主要存在于炎症组织。阿司匹林为非选择性COX抑制剂,既可抑制COX-1,使胃肠道黏膜中经COX-1途径产生的具有细胞保护作用的内源性前列腺素合成减少,从而削弱胃十二指肠黏膜的防御机制,导致消化性溃疡(此为药物的副作用);又可抑制COX-2,产生抗炎、解热、镇痛的作用(此为药物的治疗作用)。",
+    "source_page": "教材P374",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2017-050",
+      "year": 2017,
+      "source": "2017考研西综·第50题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M4-A1-007",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "溃疡手术指征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "下列关于胃、十二指肠溃疡病手术治疗的叙述, 正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃Ⅱ、Ⅲ型溃疡行胃大部切除的范围应不少于胃的 60%"
+      },
+      {
+        "label": "B",
+        "text": "胃肠吻合口以 5~6cm 为宜"
+      },
+      {
+        "label": "C",
+        "text": "毕Ⅱ式胃大部切除术后溃疡复发率较高"
+      },
+      {
+        "label": "D",
+        "text": "选择性迷走神经切断术不需加做胃引流手术"
+      }
+    ],
+    "answer": "A",
+    "explanation": "①胃大部切除术是治疗消化性溃疡的常用术式,其切除范围是胃远端 2/3~3/4。一般来说,高泌酸的十二指肠溃疡和Ⅱ、Ⅲ型胃溃疡切除范围应不少于胃的 60%(A 对),低泌酸的 I 型胃溃疡则可略小(50%左右)。②胃肠吻合口的大小以 3~4cm 为宜。③毕Ⅱ式胃大部切除术是将远端胃切除后,封闭十二指肠残端,残胃与上端空肠端侧吻合。因此即使切胃较多,也不至于造成术后胃肠吻合口张力过大,术后溃疡复发率较低。术后溃疡复发率高是毕 I 式胃大部切除术的缺点。④选择性迷走神经切断术由于切断了支配胃窦部的鸦爪神经支,易导致术后胃潴留,需加做胃引流手术。不需加做胃引流手术的是高度选择性迷走神经切断术。",
+    "source_page": "教材P377",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2009-083",
+      "year": 2009,
+      "source": "2009考研西综·第83题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M4-A1-008",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "胃溃疡特点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "关于胃溃疡的叙述,正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "95% 的胃溃疡位于胃小弯"
+      },
+      {
+        "label": "B",
+        "text": "Ⅱ型胃溃疡癌变的可能性最大"
+      },
+      {
+        "label": "C",
+        "text": "胃溃疡不易引起胆汁反流"
+      },
+      {
+        "label": "D",
+        "text": "胃溃疡的幽门螺杆菌检出率不到 50%"
+      },
+      {
+        "label": "E",
+        "text": "伴胃炎者少,抗酸药物治疗效果好"
+      }
+    ],
+    "answer": "A",
+    "explanation": "①胃溃疡好发于胃小弯,占 95%(《内科学》为胃角和胃窦小弯)。②Ⅱ型胃溃疡靠近幽门,常合并十二指肠溃疡,癌变率较低。③胃溃疡幽门括约肌张力较低,常伴胆汁反流性胃炎。④胃溃疡幽门螺杆菌检出率为 80%~90%。⑤与十二指肠溃疡多由胃酸分泌过多所致的发病机制不同,胃溃疡多是胃黏膜保护性因素减弱所致,其基础胃酸稍增高或正常,甚至低于正常,因此制酸剂治疗效果不好。",
+    "source_page": "教材P374",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2004-084",
+      "year": 2004,
+      "source": "2004考研西综·第84题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M4-A2-001",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "DU节律诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "男性,30岁。空腹痛、夜间痛、进食后缓解2年。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃溃疡"
+      },
+      {
+        "label": "B",
+        "text": "十二指肠溃疡"
+      },
+      {
+        "label": "C",
+        "text": "慢性胃炎"
+      },
+      {
+        "label": "D",
+        "text": "胃癌"
+      },
+      {
+        "label": "E",
+        "text": "慢性胆囊炎"
+      }
+    ],
+    "answer": "B",
+    "explanation": "空腹痛/夜间痛/进食缓解为DU典型节律(疼痛-进餐-缓解)；GU为餐后痛。教材P374。",
+    "source_page": "教材P374",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-A2-002",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "GU诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,60岁。餐后1小时上腹痛，胃镜示胃角溃疡，周边黏膜柔软、皱襞向溃疡集中。诊断为",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃溃疡"
+      },
+      {
+        "label": "B",
+        "text": "十二指肠溃疡"
+      },
+      {
+        "label": "C",
+        "text": "胃癌"
+      },
+      {
+        "label": "D",
+        "text": "慢性胃炎"
+      },
+      {
+        "label": "E",
+        "text": "食管炎"
+      }
+    ],
+    "answer": "A",
+    "explanation": "餐后痛+胃角溃疡、周边黏膜柔软为良性GU特征；恶性溃疡边缘不规则、质硬、皱襞中断。教材P375。",
+    "source_page": "教材P375",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-A2-003",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "出血休克处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "男性,45岁。十二指肠溃疡并大出血、休克，血压不稳。首要处理是",
+    "options": [
+      {
+        "label": "A",
+        "text": "三腔二囊管压迫"
+      },
+      {
+        "label": "B",
+        "text": "积极补液抗休克"
+      },
+      {
+        "label": "C",
+        "text": "急诊手术"
+      },
+      {
+        "label": "D",
+        "text": "胃镜止血"
+      },
+      {
+        "label": "E",
+        "text": "生长抑素静滴"
+      }
+    ],
+    "answer": "B",
+    "explanation": "溃疡大出血并休克、血压不稳时，首选积极补充血容量抗休克；待血压稳定后再胃镜止血/手术。教材P375-378。",
+    "source_page": "教材P378",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-A2-004",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "出血病因诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "该患者最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃癌"
+      },
+      {
+        "label": "B",
+        "text": "十二指肠溃疡"
+      },
+      {
+        "label": "C",
+        "text": "肝硬化食管静脉曲张破裂出血"
+      },
+      {
+        "label": "D",
+        "text": "急性胃炎"
+      }
+    ],
+    "answer": "B",
+    "explanation": "①青年患者排柏油便2天,伴头晕、心慌、血压降低、心率增快,应诊断为上消化道大出血。十二指肠溃疡多见于青年人,胃癌常见于老年人,故答B而不是A。患者无肝炎病史,肝、脾不大,故肝硬化食管静脉曲张破裂出血的可能性较小。急性胃炎近期常有非甾体药物服用史,且出血量一般不大,不会导致休克,故不答D。②患者十二指肠溃疡大出血并休克,血压不稳,首选处理应是积极补充血容量,抗休克治疗。",
+    "source_page": "教材P375",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2014-099",
+      "year": 2014,
+      "source": "2014考研西综·第99题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M4-A2-005",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "DU并出血诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "慢性胃炎"
+      },
+      {
+        "label": "B",
+        "text": "胃溃疡"
+      },
+      {
+        "label": "C",
+        "text": "十二指肠溃疡"
+      },
+      {
+        "label": "D",
+        "text": "胃癌"
+      }
+    ],
+    "answer": "C",
+    "explanation": "①夜间痛是十二指肠溃疡的典型表现，黑便、大便隐血强阳性为并发出血的表现。根据题干，本例应诊断为十二指肠溃疡并出血。慢性胃炎多无症状，有症状者常表现为上腹痛或不适，饱胀、恶心等，一般无夜间痛、反酸等症状。胃溃疡多表现为饱餐痛（进食—疼痛—缓解），少有夜间痛。胃癌无典型节律性腹痛的特点。②确诊十二指肠溃疡首选纤维胃镜检查。",
+    "source_page": "教材P375",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2011-099",
+      "year": 2011,
+      "source": "2011考研西综·第99题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M4-A2-006",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "术后梗阻鉴别",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者,男,35岁。6天前因溃疡病出血行毕Ⅱ式胃大部切除术,2天来上腹胀满,进食后半小时尤甚,常恶心、呕吐,吐出胆汁样液体,量较多,不含食物,呕吐后症状缓解。查体:轻度脱水,上腹略饱满,轻度压痛。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "吻合口梗阻"
+      },
+      {
+        "label": "B",
+        "text": "输入袢梗阻"
+      },
+      {
+        "label": "C",
+        "text": "输出袢梗阻"
+      },
+      {
+        "label": "D",
+        "text": "倾倒综合征"
+      }
+    ],
+    "answer": "B",
+    "explanation": "①胃大部切除术后梗阻包括吻合口梗阻、输入袢梗阻和输出袢梗阻。根据题干，本例应诊断为慢性不全性输入袢梗阻（吐大量胆汁、几乎不含食物，呕吐后缓解）。②倾倒综合征多发生在进食后半小时左右，表现为心悸、出汗、恶心、腹泻等，与吐胆汁不符。",
+    "source_page": "教材P378",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2008-084",
+      "year": 2008,
+      "source": "2008考研西综·第84题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M4-A3-001",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "病例治疗",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,50岁。上腹痛呈节律性，胃镜示十二指肠球部溃疡，Hp(+)。为促使愈合并防止复发，治疗应",
+    "options": [
+      {
+        "label": "A",
+        "text": "PPI抑酸+根除Hp"
+      },
+      {
+        "label": "B",
+        "text": "单纯外科手术"
+      },
+      {
+        "label": "C",
+        "text": "单用抗酸药"
+      },
+      {
+        "label": "D",
+        "text": "暂观察"
+      },
+      {
+        "label": "E",
+        "text": "中药单方"
+      }
+    ],
+    "answer": "A",
+    "explanation": "溃疡治疗三靶点：抑酸(PPI首选)、根除Hp(铋剂四联)、黏膜保护；Hp(+)者根除可显著降低复发。教材P377。",
+    "source_page": "教材P377",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-A4-001",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "穿孔诊断",
+    "type": "A4",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性,55岁。消化性溃疡史，突发刀割样上腹痛，全腹压痛、板状腹，肝浊音界消失，立位腹平片见膈下游离气体。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "溃疡出血"
+      },
+      {
+        "label": "B",
+        "text": "溃疡穿孔"
+      },
+      {
+        "label": "C",
+        "text": "幽门梗阻"
+      },
+      {
+        "label": "D",
+        "text": "溃疡癌变"
+      },
+      {
+        "label": "E",
+        "text": "急性胰腺炎"
+      }
+    ],
+    "answer": "B",
+    "explanation": "突发刀割样痛+板状腹+肝浊音界消失+膈下游离气体，是溃疡穿孔致急性弥漫性腹膜炎的典型三联征。教材P378。",
+    "source_page": "教材P378",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-B1-001",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "GU好发部位",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "胃溃疡(GU)的好发部位是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃角/胃窦小弯"
+      },
+      {
+        "label": "B",
+        "text": "十二指肠球部"
+      },
+      {
+        "label": "C",
+        "text": "胃底"
+      },
+      {
+        "label": "D",
+        "text": "贲门"
+      },
+      {
+        "label": "E",
+        "text": "幽门管"
+      }
+    ],
+    "answer": "A",
+    "explanation": "GU好发于胃角、胃窦小弯；DU好发于十二指肠球部，二者好发部位不同。教材P374。",
+    "source_page": "教材P374",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-B1-002",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "DU并发症",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "十二指肠溃疡最少见、一般不予考虑的并发症是",
+    "options": [
+      {
+        "label": "A",
+        "text": "出血"
+      },
+      {
+        "label": "B",
+        "text": "穿孔"
+      },
+      {
+        "label": "C",
+        "text": "幽门梗阻"
+      },
+      {
+        "label": "D",
+        "text": "癌变"
+      },
+      {
+        "label": "E",
+        "text": "瘘管形成"
+      }
+    ],
+    "answer": "D",
+    "explanation": "DU一般不癌变(癌变率≈0)，GU约1%癌变；出血最常见、DU更易出血。教材P378。",
+    "source_page": "教材P378",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-X-001",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "发病机制",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "消化性溃疡的发病机制涉及",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃酸、胃蛋白酶侵袭因素增强"
+      },
+      {
+        "label": "B",
+        "text": "幽门螺杆菌(Hp)感染"
+      },
+      {
+        "label": "C",
+        "text": "NSAIDs抑制前列腺素"
+      },
+      {
+        "label": "D",
+        "text": "胃黏膜防御因素减弱"
+      },
+      {
+        "label": "E",
+        "text": "发病与情绪因素必然无关"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "溃疡=侵袭>防御：侵袭(胃酸/胃蛋白酶/Hp/NSAIDs)增强或防御(黏液/碳酸氢盐/血流/前列腺素)减弱；精神刺激是常见诱因而非无关。教材P374。",
+    "source_page": "教材P374",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M4-X-002",
+    "module": "M4",
+    "module_name": "消化性溃疡（PU）",
+    "topic": "并发症鉴别",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于消化性溃疡并发症，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "出血是最常见的并发症"
+      },
+      {
+        "label": "B",
+        "text": "十二指肠溃疡更易出血"
+      },
+      {
+        "label": "C",
+        "text": "穿孔可见膈下游离气体"
+      },
+      {
+        "label": "D",
+        "text": "幽门梗阻可致低钾低氯性碱中毒"
+      },
+      {
+        "label": "E",
+        "text": "十二指肠溃疡常发生癌变"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "出血最常见(15%-25%)、DU易出血；穿孔见膈下气体；幽门梗阻呕吐宿食→丢酸丢钾→低钾低氯性碱中毒；DU一般不癌变。教材P378。",
+    "source_page": "教材P378",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A1-001",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "早期胃癌定义",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "早期胃癌是指癌组织",
+    "options": [
+      {
+        "label": "A",
+        "text": "局限于黏膜或黏膜下层"
+      },
+      {
+        "label": "B",
+        "text": "浸润至肌层"
+      },
+      {
+        "label": "C",
+        "text": "穿透浆膜"
+      },
+      {
+        "label": "D",
+        "text": "有远处转移"
+      },
+      {
+        "label": "E",
+        "text": "直径>5cm"
+      }
+    ],
+    "answer": "A",
+    "explanation": "早期胃癌指癌限于黏膜或黏膜下层，不论有无淋巴结转移；浸润肌层为进展期。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A1-002",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "首选诊断",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "胃癌的首选诊断方法是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃镜+活检"
+      },
+      {
+        "label": "B",
+        "text": "钡餐造影"
+      },
+      {
+        "label": "C",
+        "text": "腹部CT"
+      },
+      {
+        "label": "D",
+        "text": "腹部超声"
+      },
+      {
+        "label": "E",
+        "text": "肿瘤标志物"
+      }
+    ],
+    "answer": "A",
+    "explanation": "胃镜直视并可活检定性，是胃癌诊断首选与金标准；超声内镜用于T分期。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A1-003",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "Borrmann分型",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "Borrmann分型中，息肉状隆起的肿块型属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ⅰ型"
+      },
+      {
+        "label": "B",
+        "text": "Ⅱ型"
+      },
+      {
+        "label": "C",
+        "text": "Ⅲ型"
+      },
+      {
+        "label": "D",
+        "text": "Ⅳ型"
+      },
+      {
+        "label": "E",
+        "text": "0型"
+      }
+    ],
+    "answer": "A",
+    "explanation": "BorrmannⅠ型为息肉状隆起(肿块型)；Ⅱ局限溃疡；Ⅲ浸润溃疡；Ⅳ弥漫浸润(皮革胃)。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A1-004",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "淋巴转移途径",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "胃癌淋巴转移首先累及",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃周淋巴结"
+      },
+      {
+        "label": "B",
+        "text": "左锁骨上淋巴结"
+      },
+      {
+        "label": "C",
+        "text": "肝脏"
+      },
+      {
+        "label": "D",
+        "text": "肺脏"
+      },
+      {
+        "label": "E",
+        "text": "腹膜"
+      }
+    ],
+    "answer": "A",
+    "explanation": "胃癌淋巴转移通常先累及胃周淋巴结，左锁骨上(Virchow)淋巴结为远处转移征象。教材P381。",
+    "source_page": "教材P381",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A1-005",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "癌前情况",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "下列哪项属于胃癌的癌前情况",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性糜烂性胃炎"
+      },
+      {
+        "label": "B",
+        "text": "慢性非萎缩性胃炎"
+      },
+      {
+        "label": "C",
+        "text": "萎缩性胃炎伴肠化生"
+      },
+      {
+        "label": "D",
+        "text": "十二指肠溃疡"
+      },
+      {
+        "label": "E",
+        "text": "反流性食管炎"
+      }
+    ],
+    "answer": "C",
+    "explanation": "萎缩、肠化生、异型增生为胃癌癌前阶梯；慢性非萎缩性胃炎无明显癌变倾向。教材P373。",
+    "source_page": "教材P373",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A1-006",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "皮革胃",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "皮革胃(革囊胃)对应的是Borrmann分型的",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ⅰ型息肉状"
+      },
+      {
+        "label": "B",
+        "text": "Ⅱ型局限溃疡"
+      },
+      {
+        "label": "C",
+        "text": "Ⅲ型浸润溃疡"
+      },
+      {
+        "label": "D",
+        "text": "Ⅳ型弥漫浸润"
+      },
+      {
+        "label": "E",
+        "text": "0型浅表"
+      }
+    ],
+    "answer": "D",
+    "explanation": "BorrmannⅣ型为弥漫浸润型，癌沿胃壁浸润致胃腔缩小、壁僵硬如皮革，即皮革胃。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A1-007",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "好发部位",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "胃癌最好发的部位是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃底"
+      },
+      {
+        "label": "B",
+        "text": "胃体"
+      },
+      {
+        "label": "C",
+        "text": "胃窦"
+      },
+      {
+        "label": "D",
+        "text": "贲门"
+      },
+      {
+        "label": "E",
+        "text": "幽门"
+      }
+    ],
+    "answer": "C",
+    "explanation": "胃癌好发于胃窦(尤其胃角为中心)，其次为胃体、贲门；胃窦是Hp相关病变常见区域。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A1-008",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "良恶性溃疡鉴别",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "下述哪项支持胃的恶性溃疡?",
+    "options": [
+      {
+        "label": "A",
+        "text": "溃疡呈圆形、椭圆形"
+      },
+      {
+        "label": "B",
+        "text": "边缘整齐,不隆起"
+      },
+      {
+        "label": "C",
+        "text": "底部较平坦"
+      },
+      {
+        "label": "D",
+        "text": "火山口状,底部凹凸不平"
+      },
+      {
+        "label": "E",
+        "text": "皱襞向溃疡集中"
+      }
+    ],
+    "answer": "D",
+    "explanation": "①胃癌的溃疡直径常>2cm,不规则,呈火山口状,底部凹凸不平,边缘不整齐、隆起,周围黏膜皱襞中断,呈结节状肥厚。②A、B、C、E项均为消化性溃疡的特点。",
+    "source_page": "教材P379",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-1999-040",
+      "year": 1999,
+      "source": "1999考研西综·第40题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M5-A2-001",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "报警症状",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,62岁。上腹无规律痛半年，伴消瘦、黑便。为明确诊断，首选",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃镜+活检"
+      },
+      {
+        "label": "B",
+        "text": "钡餐造影"
+      },
+      {
+        "label": "C",
+        "text": "腹部CT"
+      },
+      {
+        "label": "D",
+        "text": "腹部超声"
+      },
+      {
+        "label": "E",
+        "text": "肿瘤标志物"
+      }
+    ],
+    "answer": "A",
+    "explanation": "中老年无规律上腹痛+消瘦+黑便为胃癌警示征，首选胃镜+活检定性。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A2-002",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "内镜疑癌",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,55岁。消瘦、贫血，胃镜示胃窦溃疡边缘不规则、质硬、易出血。应考虑",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃溃疡"
+      },
+      {
+        "label": "B",
+        "text": "胃癌"
+      },
+      {
+        "label": "C",
+        "text": "十二指肠溃疡"
+      },
+      {
+        "label": "D",
+        "text": "慢性胃炎"
+      },
+      {
+        "label": "E",
+        "text": "胃憩室"
+      }
+    ],
+    "answer": "B",
+    "explanation": "溃疡边缘不规则、质硬、皱襞中断为恶性(癌性溃疡)特征；良性溃疡边缘整齐、底平滑。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A2-003",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "定性检查",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "男性,58岁。大便隐血持续阳性，伴消瘦、上腹不适。为进一步定性诊断，应",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃镜+活检"
+      },
+      {
+        "label": "B",
+        "text": "钡餐造影"
+      },
+      {
+        "label": "C",
+        "text": "肿瘤标志物"
+      },
+      {
+        "label": "D",
+        "text": "腹部CT"
+      },
+      {
+        "label": "E",
+        "text": "腹部超声"
+      }
+    ],
+    "answer": "A",
+    "explanation": "持续隐血阳性+消瘦提示胃癌可能，胃镜+活检是最重要定性检查。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A2-004",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "中老年鉴别",
+    "type": "A2",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "中老年人出现无规律性上腹痛伴消瘦、贫血，应首先警惕的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃溃疡"
+      },
+      {
+        "label": "B",
+        "text": "胃癌"
+      },
+      {
+        "label": "C",
+        "text": "慢性胃炎"
+      },
+      {
+        "label": "D",
+        "text": "慢性胆囊炎"
+      },
+      {
+        "label": "E",
+        "text": "胰腺炎"
+      }
+    ],
+    "answer": "B",
+    "explanation": "中老年人无规律痛+进行性加重+消瘦贫血提示胃癌；良性溃疡多有周期性、节律性慢性病史。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A2-005",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "癌前随访",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,50岁。慢性萎缩性胃炎伴中重度异型增生。恰当的处理是",
+    "options": [
+      {
+        "label": "A",
+        "text": "暂不处理观察"
+      },
+      {
+        "label": "B",
+        "text": "定期胃镜随访/必要时内镜下切除"
+      },
+      {
+        "label": "C",
+        "text": "单纯抗生素"
+      },
+      {
+        "label": "D",
+        "text": "长期抗酸药"
+      },
+      {
+        "label": "E",
+        "text": "与手术无关"
+      }
+    ],
+    "answer": "B",
+    "explanation": "中重度异型增生为高度癌变风险，需定期胃镜随访，重度者内镜下切除或手术。教材P373。",
+    "source_page": "教材P373",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A2-006",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "胃溃疡癌变",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "就目前资料考虑, 最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胃溃疡复发"
+      },
+      {
+        "label": "B",
+        "text": "胃溃疡癌变"
+      },
+      {
+        "label": "C",
+        "text": "合并胃泌素瘤"
+      },
+      {
+        "label": "D",
+        "text": "复合性溃疡"
+      }
+    ],
+    "answer": "B",
+    "explanation": "①胃溃疡的癌变率约为 1%，对于长期胃溃疡病史、年龄在45岁以上、体重下降，应警惕癌变。本例胃溃疡病史10年，近期腹痛失去规律，药物治疗无效，体重下降，应首先考虑胃溃疡癌变。胃溃疡复发腹痛规律不会改变，使用质子泵抑制剂应有效，体重不会下降，故不答A。胃泌素瘤常表现为顽固性消化性溃疡，一般无上腹部压痛，故不答C。复合性溃疡是指胃溃疡合并十二指肠溃疡，一般十二指肠溃疡先于胃溃疡发生，且常发生幽门梗阻。",
+    "source_page": "教材P379",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2013-099",
+      "year": 2013,
+      "source": "2013考研西综·第99题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M5-A3-001",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "确诊依据",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,60岁。上腹隐痛、消瘦，胃镜示胃角溃疡型病变，活检提示腺癌。确诊依据是",
+    "options": [
+      {
+        "label": "A",
+        "text": "典型症状"
+      },
+      {
+        "label": "B",
+        "text": "胃镜+活检病理"
+      },
+      {
+        "label": "C",
+        "text": "腹部CT"
+      },
+      {
+        "label": "D",
+        "text": "肿瘤标志物"
+      },
+      {
+        "label": "E",
+        "text": "钡餐造影"
+      }
+    ],
+    "answer": "B",
+    "explanation": "胃癌确诊依赖胃镜直视+活组织病理检查；影像与标志物仅辅助分期与随访。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-A4-001",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "Virchow淋巴结",
+    "type": "A4",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "女性,58岁。胃癌根治术后复查发现左锁骨上淋巴结肿大、质硬、固定。最提示",
+    "options": [
+      {
+        "label": "A",
+        "text": "局部炎症"
+      },
+      {
+        "label": "B",
+        "text": "左锁骨上(Virchow)淋巴结转移"
+      },
+      {
+        "label": "C",
+        "text": "淋巴结结核"
+      },
+      {
+        "label": "D",
+        "text": "反应性增生"
+      },
+      {
+        "label": "E",
+        "text": "正常变异"
+      }
+    ],
+    "answer": "B",
+    "explanation": "左锁骨上Virchow淋巴结接收胃淋巴回流，胃癌可经胸导管逆转移至此处，质硬固定提示转移。教材P381。",
+    "source_page": "教材P381",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-B1-001",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "早期胃癌定义",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "癌组织局限于黏膜或黏膜下层，不论有无淋巴结转移，称为",
+    "options": [
+      {
+        "label": "A",
+        "text": "早期胃癌"
+      },
+      {
+        "label": "B",
+        "text": "进展期胃癌"
+      },
+      {
+        "label": "C",
+        "text": "原位癌"
+      },
+      {
+        "label": "D",
+        "text": "远处转移癌"
+      },
+      {
+        "label": "E",
+        "text": "淋巴结转移癌"
+      }
+    ],
+    "answer": "A",
+    "explanation": "早期胃癌定义为癌限于黏膜或黏膜下层；超过黏膜下层至肌层为进展期。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-B1-002",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "Borrmann分型",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "癌组织弥漫浸润胃壁、胃腔缩小僵硬呈皮革样，对应的Borrmann分型是",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ⅰ型隆起"
+      },
+      {
+        "label": "B",
+        "text": "Ⅱ型局限溃疡"
+      },
+      {
+        "label": "C",
+        "text": "Ⅲ型浸润溃疡"
+      },
+      {
+        "label": "D",
+        "text": "Ⅳ型弥漫浸润"
+      },
+      {
+        "label": "E",
+        "text": "0型浅表"
+      }
+    ],
+    "answer": "D",
+    "explanation": "BorrmannⅣ型为弥漫浸润型(皮革胃)；Ⅰ隆起、Ⅱ局限溃疡、Ⅲ浸润溃疡。教材P379。",
+    "source_page": "教材P379",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M5-X-001",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "良恶性溃疡鉴别",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "下列有关胃的良性与恶性溃疡鉴别要点的叙述, 正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "早期溃疡型胃癌单凭内镜所见不难与良性溃疡鉴别"
+      },
+      {
+        "label": "B",
+        "text": "活组织检查可以确定良性或恶性溃疡"
+      },
+      {
+        "label": "C",
+        "text": "即使内镜下诊断为良性溃疡且活检阴性,仍有漏诊恶性溃疡的可能"
+      },
+      {
+        "label": "D",
+        "text": "胃镜复查溃疡愈合不是鉴别良性或恶性溃疡的可靠依据"
+      }
+    ],
+    "answer": "BCD",
+    "explanation": "胃良、恶性溃疡的鉴别很重要。早期的溃疡型胃癌在内镜下很难与良性溃疡相鉴别,可多处取活组织检查,以资鉴别。任何检查都不能保证100%准确,内镜下诊断为胃溃疡,即使活检阴性,仍可能为假阴性,而漏诊胃癌。复查胃镜溃疡愈合只能作为良、恶性溃疡鉴别的辅助诊断方法,而不是确诊依据。",
+    "source_page": "教材P379",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": true,
+      "D": true
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2005-143",
+      "year": 2005,
+      "source": "2005考研西综·第143题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch033-M5-X-002",
+    "module": "M5",
+    "module_name": "胃癌（GC）",
+    "topic": "癌变筛查检查",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "男性,62岁,胃溃疡多年,2个月来上腹痛发作频繁,无规律,食欲下降。该患者需要进行的检查有",
+    "options": [
+      {
+        "label": "A",
+        "text": "大便潜血(隐血)检查"
+      },
+      {
+        "label": "B",
+        "text": "胃酸测定"
+      },
+      {
+        "label": "C",
+        "text": "胃镜检查并取活检"
+      },
+      {
+        "label": "D",
+        "text": "腹部平片"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "①老年患者,胃溃疡多年,2个月来上腹痛发作频繁、无规律,食欲下降,应考虑是否癌变,因此可作大便隐血检查(胃溃疡呈间歇性阳性,阳性率40%~70%;胃癌呈持续性阳性,阳性率约95%);胃酸测定(胃癌常低胃酸);胃镜检查并取活检(最重要的定性检查)。②腹部平片可用于胃溃疡穿孔的诊断,不适用于胃癌和胃溃疡的鉴别,故不答D。",
+    "source_page": "教材P379",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2005-149",
+      "year": 2005,
+      "source": "2005考研西综·第149题",
+      "mode": "原题"
+    }
+  }
+]

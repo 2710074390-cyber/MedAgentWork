@@ -1,0 +1,2678 @@
+[
+  {
+    "id": "batch033-M1-A1-001",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "氰化物中毒机制",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "氰化物中毒主要是由于抑制了下列哪种细胞色素？",
+    "options": [
+      {
+        "label": "A",
+        "text": "细胞色素b"
+      },
+      {
+        "label": "B",
+        "text": "细胞色素c"
+      },
+      {
+        "label": "C",
+        "text": "细胞色素a"
+      },
+      {
+        "label": "D",
+        "text": "细胞色素aa3（细胞色素氧化酶）"
+      },
+      {
+        "label": "E",
+        "text": "细胞色素c1"
+      }
+    ],
+    "answer": "D",
+    "explanation": "氰化物中毒时，氰离子抑制细胞色素氧化酶（细胞色素aa3），使细胞不能利用氧而发生细胞内窒息。教材P877。",
+    "source_page": "教材P877",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2003-025",
+      "year": 2003,
+      "source": "2003考研西综·第25题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M1-A1-002",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "亚硝酸盐中毒表现",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "亚硝酸盐中毒引起的皮肤、黏膜改变主要是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "发绀"
+      },
+      {
+        "label": "B",
+        "text": "樱桃红"
+      },
+      {
+        "label": "C",
+        "text": "苍白"
+      },
+      {
+        "label": "D",
+        "text": "黄染"
+      },
+      {
+        "label": "E",
+        "text": "潮红"
+      }
+    ],
+    "answer": "A",
+    "explanation": "亚硝酸盐使血红蛋白氧化为高铁血红蛋白，失去携氧能力，组织缺氧出现发绀。教材P881。",
+    "source_page": "教材P881",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2024-130",
+      "year": 2024,
+      "source": "2024考研西综·第130题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M1-A1-003",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "铅中毒解毒药",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "铅中毒时首选的解毒药物是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "依地酸钙钠"
+      },
+      {
+        "label": "B",
+        "text": "二巯丙醇"
+      },
+      {
+        "label": "C",
+        "text": "纳洛酮"
+      },
+      {
+        "label": "D",
+        "text": "亚甲蓝"
+      },
+      {
+        "label": "E",
+        "text": "氟马西尼"
+      }
+    ],
+    "answer": "A",
+    "explanation": "依地酸钙钠是最常用的氨羧螯合剂，与多种金属形成稳定可溶螯合物由尿排出，常用于铅中毒。教材P887。",
+    "source_page": "教材P887",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2017-130",
+      "year": 2017,
+      "source": "2017考研西综·第130题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M1-A1-004",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "理化因素重点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "理化因素所致疾病本篇论述以哪类发病为重点？",
+    "options": [
+      {
+        "label": "A",
+        "text": "慢性蓄积发病"
+      },
+      {
+        "label": "B",
+        "text": "亚急性发病"
+      },
+      {
+        "label": "C",
+        "text": "急性发病"
+      },
+      {
+        "label": "D",
+        "text": "遗传性发病"
+      },
+      {
+        "label": "E",
+        "text": "先天性发病"
+      }
+    ],
+    "answer": "C",
+    "explanation": "本篇主要论述常见环境理化因素所致疾病，并以急性发病者为重点，因急性起病急、进展快、可致死且可逆。教材P876。",
+    "source_page": "教材P876",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-005",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "高温致病",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "物理因素中高温作用于人体主要引起？",
+    "options": [
+      {
+        "label": "A",
+        "text": "冻僵"
+      },
+      {
+        "label": "B",
+        "text": "中暑"
+      },
+      {
+        "label": "C",
+        "text": "高原病"
+      },
+      {
+        "label": "D",
+        "text": "电击伤"
+      },
+      {
+        "label": "E",
+        "text": "放射病"
+      }
+    ],
+    "answer": "B",
+    "explanation": "高温作用于人体引体温调节失代偿，导致中暑或热射病，是物理因素中最常见的急性损害。教材P876。",
+    "source_page": "教材P876",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-006",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "物理因素对应",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "下列物理因素与所致疾病的对应，正确的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "低气压—冻伤"
+      },
+      {
+        "label": "B",
+        "text": "电流—高原病"
+      },
+      {
+        "label": "C",
+        "text": "高温—中暑"
+      },
+      {
+        "label": "D",
+        "text": "辐射—电击"
+      },
+      {
+        "label": "E",
+        "text": "低温—放射病"
+      }
+    ],
+    "answer": "C",
+    "explanation": "物理因素按能量形式归类：高温→中暑，低温→冻伤，低气压→高原病，电流→电击，辐射→放射病。教材P876。",
+    "source_page": "教材P876",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-007",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "毒物代谢器官",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "化学毒物吸收入血后生物转化（代谢）的主要器官是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "肾脏"
+      },
+      {
+        "label": "B",
+        "text": "肝脏"
+      },
+      {
+        "label": "C",
+        "text": "肺脏"
+      },
+      {
+        "label": "D",
+        "text": "脑"
+      },
+      {
+        "label": "E",
+        "text": "小肠"
+      }
+    ],
+    "answer": "B",
+    "explanation": "大多数毒物在肝内通过氧化、还原、水解和结合进行代谢，然后分布全身并由肾等排出。教材P879。",
+    "source_page": "教材P879",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A1-008",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "急性重点依据",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "与慢性中毒相比，本篇将急性发病列为重点，主要因为急性发病？",
+    "options": [
+      {
+        "label": "A",
+        "text": "更常见"
+      },
+      {
+        "label": "B",
+        "text": "起病急、进展快、可致死且可逆"
+      },
+      {
+        "label": "C",
+        "text": "无法治疗"
+      },
+      {
+        "label": "D",
+        "text": "必有明确接触史"
+      },
+      {
+        "label": "E",
+        "text": "缺乏特异性表现"
+      }
+    ],
+    "answer": "B",
+    "explanation": "急性中毒发病急、病情重、变化快，可危及生命，但及时清除毒物和解毒多可逆转，故列为重点。教材P876。",
+    "source_page": "教材P876",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-001",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "热射病诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，40岁。夏季田间劳作时突发高热、无汗、意识障碍。查体：T41℃，皮肤干燥，心率120次/分。最可能诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "有机磷中毒"
+      },
+      {
+        "label": "B",
+        "text": "热射病"
+      },
+      {
+        "label": "C",
+        "text": "急性高原病"
+      },
+      {
+        "label": "D",
+        "text": "电击伤"
+      },
+      {
+        "label": "E",
+        "text": "冻伤"
+      }
+    ],
+    "answer": "B",
+    "explanation": "热射病特征为核心温度>40℃、意识障碍、无汗三联征，见于高温环境产热大于散热。教材P876。",
+    "source_page": "教材P876",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-002",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "急性高原病",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性，28岁。登山至海拔4500m后出现头痛、气促、口唇发绀。最可能患有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "中暑"
+      },
+      {
+        "label": "B",
+        "text": "急性高原病"
+      },
+      {
+        "label": "C",
+        "text": "冻伤"
+      },
+      {
+        "label": "D",
+        "text": "电击伤"
+      },
+      {
+        "label": "E",
+        "text": "放射病"
+      }
+    ],
+    "answer": "B",
+    "explanation": "低气压导致空气中氧分压降低，短时间停留出现急性缺氧，发生急性高原病。教材P876。",
+    "source_page": "教材P876",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-003",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "电击处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，35岁。右手接触裸露电线后即刻倒地、呼之不应、颈动脉搏动消失。首要处理是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即洗胃"
+      },
+      {
+        "label": "B",
+        "text": "脱离电源并心肺复苏"
+      },
+      {
+        "label": "C",
+        "text": "注射阿托品"
+      },
+      {
+        "label": "D",
+        "text": "高压氧治疗"
+      },
+      {
+        "label": "E",
+        "text": "亚甲蓝解毒"
+      }
+    ],
+    "answer": "B",
+    "explanation": "电击首要处理是立即切断电源、脱离致病因素，随后实施心肺复苏以稳定生命体征。教材P877。",
+    "source_page": "教材P877",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-004",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "化学因素特点",
+    "type": "A2",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于化学因素所致疾病的致病特点，下列说法错误的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "毒物经吸收后分布于靶器官"
+      },
+      {
+        "label": "B",
+        "text": "毒物多在肝生物转化"
+      },
+      {
+        "label": "C",
+        "text": "化学因素以能量损伤为主"
+      },
+      {
+        "label": "D",
+        "text": "多数代谢后毒性降低"
+      },
+      {
+        "label": "E",
+        "text": "少数代谢后毒性增强"
+      }
+    ],
+    "answer": "C",
+    "explanation": "化学因素以毒物毒性损伤靶器官，物理因素才以能量损伤为主；如硫代类有机磷氧化后对硫磷毒性反而增强。教材P879。",
+    "source_page": "教材P879",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-005",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "腐蚀性毒物",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，50岁。口服硫酸后口腔黏膜见黑色痂皮。该表现提示？",
+    "options": [
+      {
+        "label": "A",
+        "text": "硝酸灼伤"
+      },
+      {
+        "label": "B",
+        "text": "盐酸灼伤"
+      },
+      {
+        "label": "C",
+        "text": "硫酸灼伤"
+      },
+      {
+        "label": "D",
+        "text": "强碱灼伤"
+      },
+      {
+        "label": "E",
+        "text": "甲醛灼伤"
+      }
+    ],
+    "answer": "C",
+    "explanation": "腐蚀性毒物灼伤痂皮颜色有特征：硝酸呈黄色、盐酸呈棕色、硫酸呈黑色，有助于判断毒物。教材P881。",
+    "source_page": "教材P881",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A2-006",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "诊断原则",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "理化因素所致疾病的诊断原则中，最关键是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "明确接触史"
+      },
+      {
+        "label": "B",
+        "text": "血常规检查"
+      },
+      {
+        "label": "C",
+        "text": "胸部X线"
+      },
+      {
+        "label": "D",
+        "text": "肿瘤标志物"
+      },
+      {
+        "label": "E",
+        "text": "基因检测"
+      }
+    ],
+    "answer": "A",
+    "explanation": "理化因素所致疾病病因明确，诊断须结合接触史、临床表现和实验室检查综合分析，接触史是首要线索。教材P878。",
+    "source_page": "教材P878",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A3-001",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "中暑抢救",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "男性，30岁。高温车间作业4小时后意识模糊、体温40.5℃、无汗。首要处理措施是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "脱离高温环境并快速降温"
+      },
+      {
+        "label": "B",
+        "text": "大剂量阿托品"
+      },
+      {
+        "label": "C",
+        "text": "血液灌流"
+      },
+      {
+        "label": "D",
+        "text": "洗胃"
+      },
+      {
+        "label": "E",
+        "text": "纳洛酮"
+      }
+    ],
+    "answer": "A",
+    "explanation": "物理因素病处理核心是立即脱离致病因素并维持生命体征，热射病须迅速脱离高温并快速降温。教材P877。",
+    "source_page": "教材P877",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-A4-001",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "群体中毒鉴别",
+    "type": "A4",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性，52岁。无明显诱因突发昏迷、发绀，同室2人亦有类似表现。首要考虑？",
+    "options": [
+      {
+        "label": "A",
+        "text": "脑血管意外"
+      },
+      {
+        "label": "B",
+        "text": "一氧化碳中毒"
+      },
+      {
+        "label": "C",
+        "text": "有机磷中毒"
+      },
+      {
+        "label": "D",
+        "text": "糖尿病酮症"
+      },
+      {
+        "label": "E",
+        "text": "癫痫"
+      }
+    ],
+    "answer": "B",
+    "explanation": "同场所多人同时发病提示环境性理化因素，突发昏迷、发绀而无樱桃红外的特殊气味，最支持一氧化碳中毒，须结合环境调查。教材P878。",
+    "source_page": "教材P878",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-B1-001",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "物理因素对应",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "可引起急性高原病的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "高温"
+      },
+      {
+        "label": "B",
+        "text": "低气压"
+      },
+      {
+        "label": "C",
+        "text": "电流"
+      },
+      {
+        "label": "D",
+        "text": "辐射"
+      },
+      {
+        "label": "E",
+        "text": "低温"
+      }
+    ],
+    "answer": "B",
+    "explanation": "低气压使氧分压下降导致急性缺氧，发生急性高原病；其余因素对应不同疾病。教材P876。",
+    "source_page": "教材P876",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-B1-002",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "物理因素对应",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "可致放射病的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "高温"
+      },
+      {
+        "label": "B",
+        "text": "低气压"
+      },
+      {
+        "label": "C",
+        "text": "电流"
+      },
+      {
+        "label": "D",
+        "text": "辐射"
+      },
+      {
+        "label": "E",
+        "text": "低温"
+      }
+    ],
+    "answer": "D",
+    "explanation": "电离辐射作用于机体引起放射病，主要损伤DNA完整性；其余因素对应不同疾病。教材P876。",
+    "source_page": "教材P876",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-X-001",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "物理因素分类",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "应用",
+    "stem": "下列致病因素中，属于物理因素的有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "高温"
+      },
+      {
+        "label": "B",
+        "text": "有机磷"
+      },
+      {
+        "label": "C",
+        "text": "低气压"
+      },
+      {
+        "label": "D",
+        "text": "电流"
+      },
+      {
+        "label": "E",
+        "text": "铅"
+      }
+    ],
+    "answer": "ACD",
+    "explanation": "物理因素包括温度、气压、电流、辐射等能量形式；有机磷与铅属于化学因素（毒物）。教材P876。",
+    "source_page": "教材P876",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M1-X-002",
+    "module": "M1",
+    "module_name": "理化因素所致疾病总论（M1）",
+    "topic": "防治原则",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "应用",
+    "stem": "关于理化因素所致疾病防治原则，正确的有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "迅速脱离有害环境"
+      },
+      {
+        "label": "B",
+        "text": "稳定生命体征"
+      },
+      {
+        "label": "C",
+        "text": "针对病因和发病机制治疗"
+      },
+      {
+        "label": "D",
+        "text": "均须使用特效解毒药"
+      },
+      {
+        "label": "E",
+        "text": "对症支持治疗"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "防治原则为脱离危害因素、稳定生命体征、针对病因机制治疗与对症支持；许多理化病无特效疗法，并非均须特效解毒药。教材P877。",
+    "source_page": "教材P877",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch033-M2-A1-001",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "硝基苯中毒表现",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "硝基苯中毒常引起的皮肤、黏膜表现是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "皮肤黏膜灼伤"
+      },
+      {
+        "label": "B",
+        "text": "皮肤巩膜黄染"
+      },
+      {
+        "label": "C",
+        "text": "皮肤黏膜发绀"
+      },
+      {
+        "label": "D",
+        "text": "皮肤黏膜苍白"
+      },
+      {
+        "label": "E",
+        "text": "皮肤潮红"
+      }
+    ],
+    "answer": "C",
+    "explanation": "硝基苯等中毒使血高铁血红蛋白含量增加，出现发绀；毒蕈中毒致肝损出现黄染，强酸强碱致灼伤。教材P881。",
+    "source_page": "教材P881",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2020-130",
+      "year": 2020,
+      "source": "2020考研西综·第130题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M2-A1-002",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "亚硝酸盐解毒药",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "亚硝酸盐中毒引起高铁血红蛋白血症的有效解毒药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "氟马西尼"
+      },
+      {
+        "label": "B",
+        "text": "亚硝酸异戊酯"
+      },
+      {
+        "label": "C",
+        "text": "二巯丙磺钠"
+      },
+      {
+        "label": "D",
+        "text": "亚甲蓝"
+      },
+      {
+        "label": "E",
+        "text": "纳洛酮"
+      }
+    ],
+    "answer": "D",
+    "explanation": "小剂量亚甲蓝可使高铁血红蛋白还原为正常血红蛋白，用于治疗亚硝酸盐、苯胺、硝基苯等中毒。教材P887。",
+    "source_page": "教材P887",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2021-130",
+      "year": 2021,
+      "source": "2021考研西综·第130题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M2-A1-003",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "中毒定义",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "中毒是指进入人体的化学物质达到什么量而引起组织器官损害？",
+    "options": [
+      {
+        "label": "A",
+        "text": "治疗量"
+      },
+      {
+        "label": "B",
+        "text": "中毒量"
+      },
+      {
+        "label": "C",
+        "text": "预防量"
+      },
+      {
+        "label": "D",
+        "text": "微量"
+      },
+      {
+        "label": "E",
+        "text": "极量"
+      }
+    ],
+    "answer": "B",
+    "explanation": "进入人体的化学物质达到中毒量，导致组织和器官损害而引起的全身性疾病称为中毒。教材P879。",
+    "source_page": "教材P879",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-004",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "毒物分类",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "根据毒物来源和用途，中毒的毒物分类不包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "工业性毒物"
+      },
+      {
+        "label": "B",
+        "text": "药物"
+      },
+      {
+        "label": "C",
+        "text": "农药"
+      },
+      {
+        "label": "D",
+        "text": "有毒动植物"
+      },
+      {
+        "label": "E",
+        "text": "放射性物质"
+      }
+    ],
+    "answer": "E",
+    "explanation": "毒物分为工业性毒物、药物、农药、有毒动植物四类；放射性物质属物理因素致病，不列入中毒的化学毒物四类。教材P879。",
+    "source_page": "教材P879",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch033-M2-A1-005",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "清除未吸收",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "口服毒物后，清除胃肠道内尚未吸收毒物最常用的措施是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "催吐"
+      },
+      {
+        "label": "B",
+        "text": "洗胃"
+      },
+      {
+        "label": "C",
+        "text": "血液灌流"
+      },
+      {
+        "label": "D",
+        "text": "血浆置换"
+      },
+      {
+        "label": "E",
+        "text": "高压氧"
+      }
+    ],
+    "answer": "B",
+    "explanation": "口服毒物早期仍在胃内，洗胃是清除未吸收毒物的主要措施；血液净化用于清除已吸收毒物。教材P885。",
+    "source_page": "教材P885",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-006",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "催吐应用",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "关于催吐在急性中毒抢救中的应用，正确的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "已作为常规首选"
+      },
+      {
+        "label": "B",
+        "text": "适用于昏迷患者"
+      },
+      {
+        "label": "C",
+        "text": "临床上已不常规应用"
+      },
+      {
+        "label": "D",
+        "text": "可用于食管静脉曲张者"
+      },
+      {
+        "label": "E",
+        "text": "对孕妇安全"
+      }
+    ],
+    "answer": "C",
+    "explanation": "催吐易引起误吸、食管撕裂、胃穿孔等，且延迟活性炭应用，临床上已不常规使用。教材P885。",
+    "source_page": "教材P885",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-007",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "敌百虫洗胃",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "敌百虫口服中毒时禁用的洗胃液是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "清水"
+      },
+      {
+        "label": "B",
+        "text": "2%碳酸氢钠"
+      },
+      {
+        "label": "C",
+        "text": "1:5000高锰酸钾"
+      },
+      {
+        "label": "D",
+        "text": "生理盐水"
+      },
+      {
+        "label": "E",
+        "text": "温开水"
+      }
+    ],
+    "answer": "B",
+    "explanation": "敌百虫遇碱可转变为毒性更强的敌敌畏，故敌百虫中毒忌用2%碳酸氢钠，常用清水或高锰酸钾洗胃。教材P886。",
+    "source_page": "教材P886",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A1-008",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "对硫磷洗胃",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "对硫磷（1605）口服中毒时禁用的洗胃液是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "清水"
+      },
+      {
+        "label": "B",
+        "text": "2%碳酸氢钠"
+      },
+      {
+        "label": "C",
+        "text": "1:5000高锰酸钾"
+      },
+      {
+        "label": "D",
+        "text": "生理盐水"
+      },
+      {
+        "label": "E",
+        "text": "肥皂水"
+      }
+    ],
+    "answer": "C",
+    "explanation": "对硫磷等硫代类有机磷经1:5000高锰酸钾氧化后毒性增强，故对硫磷中毒忌用高锰酸钾，可用清水或碳酸氢钠。教材P886。",
+    "source_page": "教材P886",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-001",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "敌敌畏洗胃",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，22岁。服敌敌畏后1小时入院，昏迷，大汗，瞳孔缩小，双肺湿啰音。洗胃宜选？",
+    "options": [
+      {
+        "label": "A",
+        "text": "1:5000高锰酸钾"
+      },
+      {
+        "label": "B",
+        "text": "2%碳酸氢钠"
+      },
+      {
+        "label": "C",
+        "text": "清水"
+      },
+      {
+        "label": "D",
+        "text": "0.3%过氧化氢"
+      },
+      {
+        "label": "E",
+        "text": "5%硫酸钠"
+      }
+    ],
+    "answer": "B",
+    "explanation": "敌敌畏属有机磷，可用2%碳酸氢钠溶液洗胃；若为对硫磷则忌高锰酸钾，敌百虫忌碳酸氢钠。教材P892。",
+    "source_page": "教材P892",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-002",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "血液灌流",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性，30岁。自服百草枯后口腔糜烂、进行性呼吸困难。清除已吸收毒物首选？",
+    "options": [
+      {
+        "label": "A",
+        "text": "血液透析"
+      },
+      {
+        "label": "B",
+        "text": "血液灌流"
+      },
+      {
+        "label": "C",
+        "text": "血浆置换"
+      },
+      {
+        "label": "D",
+        "text": "腹膜透析"
+      },
+      {
+        "label": "E",
+        "text": "强化利尿"
+      }
+    ],
+    "answer": "B",
+    "explanation": "血液灌流用活性炭或树脂吸附脂溶性及大分子毒物，能清除百草枯，是最常用的中毒抢救措施之一。教材P887。",
+    "source_page": "教材P887",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-003",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "阿托品中毒",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，40岁。误服阿托品后烦躁、瞳孔散大、皮肤潮红、心率130次/分。该表现属？",
+    "options": [
+      {
+        "label": "A",
+        "text": "有机磷中毒"
+      },
+      {
+        "label": "B",
+        "text": "阿托品中毒"
+      },
+      {
+        "label": "C",
+        "text": "吗啡中毒"
+      },
+      {
+        "label": "D",
+        "text": "一氧化碳中毒"
+      },
+      {
+        "label": "E",
+        "text": "亚硝酸盐中毒"
+      }
+    ],
+    "answer": "B",
+    "explanation": "阿托品等抗胆碱药中毒表现为瞳孔扩大、皮肤干燥潮红、烦躁、心率增快；与有机磷中毒的瞳孔缩小、大汗相反。教材P881。",
+    "source_page": "教材P881",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-004",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "血液净化选择",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "关于中毒后血液净化方式的选择，正确的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "血液透析适于脂溶性大分子毒物"
+      },
+      {
+        "label": "B",
+        "text": "血液灌流可清除百草枯"
+      },
+      {
+        "label": "C",
+        "text": "血浆置换用于金属中毒"
+      },
+      {
+        "label": "D",
+        "text": "所有中毒均须血液净化"
+      },
+      {
+        "label": "E",
+        "text": "血液灌流不能清除巴比妥类"
+      }
+    ],
+    "answer": "B",
+    "explanation": "血液灌流吸附脂溶性毒物，能清除巴比妥类和百草枯；透析适于水溶性小分子，血浆置换用于蛋白结合/生物毒。教材P887。",
+    "source_page": "教材P887",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-005",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "强化利尿",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性，35岁。服镇静催眠药过量、意识模糊。为加速已吸收毒物排泄可采用？",
+    "options": [
+      {
+        "label": "A",
+        "text": "强化利尿"
+      },
+      {
+        "label": "B",
+        "text": "洗胃"
+      },
+      {
+        "label": "C",
+        "text": "催吐"
+      },
+      {
+        "label": "D",
+        "text": "导泻"
+      },
+      {
+        "label": "E",
+        "text": "高压氧"
+      }
+    ],
+    "answer": "A",
+    "explanation": "强化利尿用于以原形由肾排出的毒物，快速输注葡萄糖液并静脉注射呋塞米促进排泄；洗胃、催吐针对未吸收毒物。教材P887。",
+    "source_page": "教材P887",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A2-006",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "亚硝酸盐中毒",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，50岁。食变质蔬菜后口唇发绀、头痛，血氧正常。最可能的中毒是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "一氧化碳"
+      },
+      {
+        "label": "B",
+        "text": "亚硝酸盐"
+      },
+      {
+        "label": "C",
+        "text": "有机磷"
+      },
+      {
+        "label": "D",
+        "text": "酒精"
+      },
+      {
+        "label": "E",
+        "text": "氰化物"
+      }
+    ],
+    "answer": "B",
+    "explanation": "亚硝酸盐引起肠源性发绀（高铁血红蛋白血症），血氧正常但组织缺氧；一氧化碳发绀伴碳氧血红蛋白升高。教材P881。",
+    "source_page": "教材P881",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A3-001",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "瞳孔缩小体征",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "男性，28岁。田间喷洒有机磷农药后头晕、恶心、大汗、瞳孔缩小。体检最有助于提示其中毒的体征是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "发热"
+      },
+      {
+        "label": "B",
+        "text": "瞳孔缩小"
+      },
+      {
+        "label": "C",
+        "text": "高血压"
+      },
+      {
+        "label": "D",
+        "text": "黄疸"
+      },
+      {
+        "label": "E",
+        "text": "下肢水肿"
+      }
+    ],
+    "answer": "B",
+    "explanation": "瞳孔缩小见于有机磷、氨基甲酸酯类、吗啡、巴比妥等中毒，是中毒体征鉴别的关键线索之一。教材P881。",
+    "source_page": "教材P881",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-A4-001",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "抢救禁忌",
+    "type": "A4",
+    "polarity": "negative",
+    "bloom": "分析",
+    "stem": "女性，45岁。口服杀虫剂后昏迷、肺水肿、肌颤，血ChE 15%。关于抢救，错误的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即洗胃"
+      },
+      {
+        "label": "B",
+        "text": "阿托品抗M样症状"
+      },
+      {
+        "label": "C",
+        "text": "氯解磷定复活胆碱酯酶"
+      },
+      {
+        "label": "D",
+        "text": "吗啡镇静"
+      },
+      {
+        "label": "E",
+        "text": "清除毒物"
+      }
+    ],
+    "answer": "D",
+    "explanation": "有机磷中毒合并肺水肿时禁用吗啡（抑制呼吸），应使用阿托品；阿托品与胆碱酯酶复活药联合解毒。教材P892。",
+    "source_page": "教材P892",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-B1-001",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "解毒剂对应",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "阿片类中毒的特效解毒药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "纳洛酮"
+      },
+      {
+        "label": "B",
+        "text": "氟马西尼"
+      },
+      {
+        "label": "C",
+        "text": "亚甲蓝"
+      },
+      {
+        "label": "D",
+        "text": "依地酸钙钠"
+      },
+      {
+        "label": "E",
+        "text": "氯解磷定"
+      }
+    ],
+    "answer": "A",
+    "explanation": "纳洛酮为阿片受体拮抗剂，对麻醉镇痛药引起的呼吸抑制有特异性拮抗作用。教材P888。",
+    "source_page": "教材P888",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-B1-002",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "解毒剂对应",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "苯二氮䓬类中毒的特效解毒药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "纳洛酮"
+      },
+      {
+        "label": "B",
+        "text": "氟马西尼"
+      },
+      {
+        "label": "C",
+        "text": "亚甲蓝"
+      },
+      {
+        "label": "D",
+        "text": "依地酸钙钠"
+      },
+      {
+        "label": "E",
+        "text": "氯解磷定"
+      }
+    ],
+    "answer": "B",
+    "explanation": "氟马西尼是苯二氮䓬受体拮抗剂，用于治疗苯二氮䓬类药物过量和中毒。教材P888。",
+    "source_page": "教材P888",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M2-X-001",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "特殊解毒药",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "下列关于急性中毒特殊解毒药的应用，正确的有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "依地酸钙钠治疗铅中毒"
+      },
+      {
+        "label": "B",
+        "text": "二巯丙醇治疗砷、汞中毒"
+      },
+      {
+        "label": "C",
+        "text": "去铁胺治疗镁中毒"
+      },
+      {
+        "label": "D",
+        "text": "小剂量亚甲蓝治疗高铁血红蛋白血症"
+      },
+      {
+        "label": "E",
+        "text": "纳洛酮治疗阿片类中毒"
+      }
+    ],
+    "answer": "ABDE",
+    "explanation": "依地酸钙钠螯合铅，二巯丙醇治砷汞，小剂量亚甲蓝治高铁血红蛋白血症，纳洛酮拮阿片；去铁胺用于治疗铁中毒而非镁中毒。教材P887。",
+    "source_page": "教材P887",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": true,
+      "E": true
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2010-169",
+      "year": 2010,
+      "source": "2010考研西综·第169题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M2-X-002",
+    "module": "M2",
+    "module_name": "中毒（总论）（M2）",
+    "topic": "碳酸氢钠洗胃",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "应用",
+    "stem": "下列有机磷杀虫药口服中毒时，可用2%碳酸氢钠溶液反复洗胃的有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "对硫磷"
+      },
+      {
+        "label": "B",
+        "text": "敌百虫"
+      },
+      {
+        "label": "C",
+        "text": "敌敌畏"
+      },
+      {
+        "label": "D",
+        "text": "乐果"
+      },
+      {
+        "label": "E",
+        "text": "强酸（如硫酸）"
+      }
+    ],
+    "answer": "ACD",
+    "explanation": "一般有机磷可用2%碳酸氢钠洗胃，但对硫磷、敌敌畏、乐果均可用；敌百虫忌用（变敌敌畏），强酸亦忌碳酸氢钠。教材P886。",
+    "source_page": "教材P886",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": true,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2023-156",
+      "year": 2023,
+      "source": "2023考研西综·第156题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M3-A1-001",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "M样症状",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "记忆",
+    "stem": "下列哪一个不是有机磷中毒时的毒蕈碱样（M样）表现？",
+    "options": [
+      {
+        "label": "A",
+        "text": "恶心、呕吐和腹痛、腹泻"
+      },
+      {
+        "label": "B",
+        "text": "多汗"
+      },
+      {
+        "label": "C",
+        "text": "肌肉颤动"
+      },
+      {
+        "label": "D",
+        "text": "瞳孔缩小"
+      },
+      {
+        "label": "E",
+        "text": "心率减慢"
+      }
+    ],
+    "answer": "C",
+    "explanation": "M样症状为副交感兴奋：分泌多、瞳孔小、心率慢、平滑肌痉挛；肌肉颤动属烟碱样（N样）症状。教材P890。",
+    "source_page": "教材P890",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-1995-073",
+      "year": 1995,
+      "source": "1995考研西综·第73题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M3-A1-002",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "瞳孔缩小",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "引起瞳孔明显缩小的中毒是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "阿托品中毒"
+      },
+      {
+        "label": "B",
+        "text": "有机磷中毒"
+      },
+      {
+        "label": "C",
+        "text": "甲醇中毒"
+      },
+      {
+        "label": "D",
+        "text": "乙醇中毒"
+      },
+      {
+        "label": "E",
+        "text": "氰化物中毒"
+      }
+    ],
+    "answer": "B",
+    "explanation": "有机磷抑制胆碱酯酶使乙酰胆碱蓄积，兴奋虹膜环形肌M受体致瞳孔缩小；阿托品中毒则瞳孔扩大。教材P891。",
+    "source_page": "教材P891",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2019-130",
+      "year": 2019,
+      "source": "2019考研西综·第130题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M3-A1-003",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "呼吸气味",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "有机磷中毒时，患者的呼吸气味常是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "烂苹果味"
+      },
+      {
+        "label": "B",
+        "text": "苦杏仁味"
+      },
+      {
+        "label": "C",
+        "text": "蒜臭味"
+      },
+      {
+        "label": "D",
+        "text": "腥臭味"
+      },
+      {
+        "label": "E",
+        "text": "酒味"
+      }
+    ],
+    "answer": "C",
+    "explanation": "有机磷杀虫药有大蒜臭味，中毒时呼出气常为蒜臭味；苦杏仁味见于氰化物，烂苹果味见酮症酸中毒。教材P891。",
+    "source_page": "教材P891",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2018-130",
+      "year": 2018,
+      "source": "2018考研西综·第130题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M3-A1-004",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "烟碱样解毒",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "解除有机磷中毒时烟碱样毒性作用，首选？",
+    "options": [
+      {
+        "label": "A",
+        "text": "阿托品"
+      },
+      {
+        "label": "B",
+        "text": "解磷定"
+      },
+      {
+        "label": "C",
+        "text": "美解眠"
+      },
+      {
+        "label": "D",
+        "text": "尼可刹米"
+      },
+      {
+        "label": "E",
+        "text": "甘露醇"
+      }
+    ],
+    "answer": "B",
+    "explanation": "解磷定等胆碱酯酶复活药可恢复真性胆碱酯酶活性，有效解除烟碱样（N样）症状；阿托品主要解除M样症状。教材P892。",
+    "source_page": "教材P892",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-1996-107",
+      "year": 1996,
+      "source": "1996考研西综·第107题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M3-A1-005",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "中毒机制",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "有机磷杀虫药中毒的主要发病机制是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "抑制乙酰胆碱酯酶"
+      },
+      {
+        "label": "B",
+        "text": "抑制细胞色素氧化酶"
+      },
+      {
+        "label": "C",
+        "text": "抑制含巯基酶"
+      },
+      {
+        "label": "D",
+        "text": "兴奋M受体"
+      },
+      {
+        "label": "E",
+        "text": "破坏红细胞膜"
+      }
+    ],
+    "answer": "A",
+    "explanation": "有机磷与胆碱酯酶结合形成磷酰化胆碱酯酶，使其丧失分解乙酰胆碱能力，乙酰胆碱大量蓄积产生中毒症状。教材P890。",
+    "source_page": "教材P890",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-006",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "磷酰化酶",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "有机磷抑制胆碱酯酶后形成的稳定失活复合物是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "磷酰化胆碱酯酶"
+      },
+      {
+        "label": "B",
+        "text": "乙酰胆碱"
+      },
+      {
+        "label": "C",
+        "text": "胆碱"
+      },
+      {
+        "label": "D",
+        "text": "乙酸"
+      },
+      {
+        "label": "E",
+        "text": "卵磷脂"
+      }
+    ],
+    "answer": "A",
+    "explanation": "有机磷与真性胆碱酯酶酯解部位结合成稳定的磷酰化胆碱酯酶，使其失去分解乙酰胆碱能力。教材P890。",
+    "source_page": "教材P890",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-007",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "老化",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "关于磷酰化胆碱酯酶的“老化”，正确的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "可自发恢复活性"
+      },
+      {
+        "label": "B",
+        "text": "老化后不可逆"
+      },
+      {
+        "label": "C",
+        "text": "仅见于轻度中毒"
+      },
+      {
+        "label": "D",
+        "text": "复活药始终有效"
+      },
+      {
+        "label": "E",
+        "text": "与毒物剂量无关"
+      }
+    ],
+    "answer": "B",
+    "explanation": "磷酰化胆碱酯酶随时间延长部分变为老化型，不可逆，故须尽早使用胆碱酯酶复活药；中毒24~48小时后老化者复活药无效。教材P890。",
+    "source_page": "教材P890",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A1-008",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "ChE活力",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "急性有机磷中毒诊断最具意义的实验室检查是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "白细胞计数"
+      },
+      {
+        "label": "B",
+        "text": "血胆碱酯酶活力"
+      },
+      {
+        "label": "C",
+        "text": "转氨酶"
+      },
+      {
+        "label": "D",
+        "text": "肌酐"
+      },
+      {
+        "label": "E",
+        "text": "血糖"
+      }
+    ],
+    "answer": "B",
+    "explanation": "全血胆碱酯酶活力是诊断有机磷中毒的特异性指标，对判断中毒程度、疗效和预后极为重要。教材P891。",
+    "source_page": "教材P891",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A2-001",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "重度中毒",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性，20岁。误服有机磷农药后半小时入院。神志不清，皮肤潮湿多汗，面部肌肉束颤动，瞳孔缩小，双肺布满湿啰音。最可能的中毒程度是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻度"
+      },
+      {
+        "label": "B",
+        "text": "中度"
+      },
+      {
+        "label": "C",
+        "text": "重度"
+      },
+      {
+        "label": "D",
+        "text": "不能确定"
+      },
+      {
+        "label": "E",
+        "text": "极重度"
+      }
+    ],
+    "answer": "C",
+    "explanation": "神志不清（昏迷）伴M样与N样症状及肺水肿，符合重度中毒；重度ChE活力<30%。教材P891。",
+    "source_page": "教材P891",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2015-068",
+      "year": 2015,
+      "source": "2015考研西综·第68题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M3-A2-002",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "中度中毒",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "急性有机磷中毒下列表现中，能提示中度中毒的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "出汗流涎"
+      },
+      {
+        "label": "B",
+        "text": "呕吐腹泻"
+      },
+      {
+        "label": "C",
+        "text": "胸背部肌肉颤动"
+      },
+      {
+        "label": "D",
+        "text": "瞳孔缩小"
+      },
+      {
+        "label": "E",
+        "text": "心率减慢"
+      }
+    ],
+    "answer": "C",
+    "explanation": "开始出现N样症状（肌颤）提示中度中毒；出汗流涎、呕吐腹泻、瞳孔缩小均为M样症状，见于轻度。教材P891。",
+    "source_page": "教材P891",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2012-067",
+      "year": 2012,
+      "source": "2012考研西综·第67题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M3-A2-003",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "敌百虫洗胃",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "男性，30岁。口服敌百虫后大汗、瞳孔缩小、呕吐，神志清。最适宜的洗胃液是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "2%碳酸氢钠"
+      },
+      {
+        "label": "B",
+        "text": "1:5000高锰酸钾"
+      },
+      {
+        "label": "C",
+        "text": "清水"
+      },
+      {
+        "label": "D",
+        "text": "0.3%过氧化氢"
+      },
+      {
+        "label": "E",
+        "text": "5%硫酸钠"
+      }
+    ],
+    "answer": "C",
+    "explanation": "敌百虫忌用2%碳酸氢钠（变敌敌畏）且忌用高锰酸钾，故口服敌百虫中毒常用清水洗胃。教材P892。",
+    "source_page": "教材P892",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A2-004",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "解毒组合",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性，25岁。敌敌畏中毒、中度，血ChE 40%。除洗胃外应及早联用？",
+    "options": [
+      {
+        "label": "A",
+        "text": "阿托品+氯解磷定"
+      },
+      {
+        "label": "B",
+        "text": "纳洛酮+氟马西尼"
+      },
+      {
+        "label": "C",
+        "text": "亚甲蓝+维生素C"
+      },
+      {
+        "label": "D",
+        "text": "依地酸钙钠+二巯丙醇"
+      },
+      {
+        "label": "E",
+        "text": "甘露醇+地塞米松"
+      }
+    ],
+    "answer": "A",
+    "explanation": "有机磷中毒应早期、足量、联合应用抗胆碱药（阿托品）与胆碱酯酶复活药（氯解磷定），中重度中毒须两者联用。教材P892。",
+    "source_page": "教材P893",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A2-005",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "中间型综合征",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "有机磷中毒经治疗胆碱能危象消失后第3天，突发颈屈肌无力和呼吸肌麻痹。最可能诊断？",
+    "options": [
+      {
+        "label": "A",
+        "text": "反跳现象"
+      },
+      {
+        "label": "B",
+        "text": "中间型综合征"
+      },
+      {
+        "label": "C",
+        "text": "迟发性多发神经病"
+      },
+      {
+        "label": "D",
+        "text": "阿托品中毒"
+      },
+      {
+        "label": "E",
+        "text": "脑出血"
+      }
+    ],
+    "answer": "B",
+    "explanation": "中间型综合征多发生于重度中毒后24~96小时，表现为颈屈肌和近端肌无力、脑神经受累及呼吸肌麻痹，ChE<30%。教材P891。",
+    "source_page": "教材P891",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A2-006",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "阿托品中毒",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "重度有机磷中毒用阿托品中患者出现瞳孔明显散大、烦躁、尿潴留。首先考虑？",
+    "options": [
+      {
+        "label": "A",
+        "text": "阿托品用量不足"
+      },
+      {
+        "label": "B",
+        "text": "病情好转"
+      },
+      {
+        "label": "C",
+        "text": "阿托品中毒"
+      },
+      {
+        "label": "D",
+        "text": "氯解磷定过量"
+      },
+      {
+        "label": "E",
+        "text": "胆碱酯酶恢复"
+      }
+    ],
+    "answer": "C",
+    "explanation": "瞳孔明显扩大、神志模糊、烦躁、尿潴留等为阿托品中毒表现，应立即停用阿托品，与阿托品化不同。教材P892。",
+    "source_page": "教材P892",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-A3-001",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "阿托品化",
+    "type": "A3",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "治疗急性有机磷中毒时，下列属“阿托品化”表现的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "瞳孔扩大"
+      },
+      {
+        "label": "B",
+        "text": "颜面潮红"
+      },
+      {
+        "label": "C",
+        "text": "心率减慢"
+      },
+      {
+        "label": "D",
+        "text": "肺部啰音消失"
+      },
+      {
+        "label": "E",
+        "text": "瞳孔缩小"
+      }
+    ],
+    "answer": "ABD",
+    "explanation": "阿托品化指征为瞳孔较前扩大、口干、皮肤干燥、颜面潮红、心率增快、肺部湿啰音消失；心率减慢和瞳孔缩小为阿托品不足或中毒本身表现。教材P892。",
+    "source_page": "教材P892",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2007-143",
+      "year": 2007,
+      "source": "2007考研西综·第143题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M3-A4-001",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "反跳现象",
+    "type": "A4",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性，40岁。口服乐果后积极治疗，第5天好转，第7天突然再昏迷、肺水肿。最可能是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "迟发性多发神经病"
+      },
+      {
+        "label": "B",
+        "text": "反跳现象"
+      },
+      {
+        "label": "C",
+        "text": "中间型综合征"
+      },
+      {
+        "label": "D",
+        "text": "阿托品中毒"
+      },
+      {
+        "label": "E",
+        "text": "急性脑水肿"
+      }
+    ],
+    "answer": "B",
+    "explanation": "乐果、马拉硫磷等中毒病情好转后数日至1周可突然恶化，再次出现急性中毒症状，称反跳，与残留毒物重吸收或停药过早有关。教材P891。",
+    "source_page": "教材P891",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-B1-001",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "N样症状",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "属于烟碱样（N样）症状的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "瞳孔缩小"
+      },
+      {
+        "label": "B",
+        "text": "大汗流涎"
+      },
+      {
+        "label": "C",
+        "text": "肌纤维颤动"
+      },
+      {
+        "label": "D",
+        "text": "意识障碍"
+      },
+      {
+        "label": "E",
+        "text": "肺水肿"
+      }
+    ],
+    "answer": "C",
+    "explanation": "N样症状为横纹肌神经肌肉接头处乙酰胆碱蓄积，表现为肌纤维颤动、肌无力乃至呼吸肌麻痹；其余多为M样或中枢表现。教材P890。",
+    "source_page": "教材P890",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-B1-002",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "M样症状",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "属于毒蕈碱样（M样）症状的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "瞳孔缩小"
+      },
+      {
+        "label": "B",
+        "text": "大汗流涎"
+      },
+      {
+        "label": "C",
+        "text": "肌纤维颤动"
+      },
+      {
+        "label": "D",
+        "text": "意识障碍"
+      },
+      {
+        "label": "E",
+        "text": "肺水肿"
+      }
+    ],
+    "answer": "A",
+    "explanation": "M样症状为副交感末梢兴奋，瞳孔缩小、分泌增多、平滑肌痉挛；肌颤为N样，肺水肿为M样重状但此处以瞳孔缩小为代表。教材P890。",
+    "source_page": "教材P890",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch033-M3-X-001",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "M样症状",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "有机磷中毒时的毒蕈碱样症状有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "腹痛、腹泻"
+      },
+      {
+        "label": "B",
+        "text": "大汗、流涎"
+      },
+      {
+        "label": "C",
+        "text": "肌纤维颤动"
+      },
+      {
+        "label": "D",
+        "text": "瞳孔缩小"
+      },
+      {
+        "label": "E",
+        "text": "呼吸肌麻痹"
+      }
+    ],
+    "answer": "ABD",
+    "explanation": "M样症状包括瞳孔缩小、腺体分泌增多（大汗流涎）、平滑肌痉挛（腹痛腹泻）；肌纤维颤动与呼吸肌麻痹属N样症状。教材P890。",
+    "source_page": "教材P890",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2018-156",
+      "year": 2018,
+      "source": "2018考研西综·第156题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch033-M3-X-002",
+    "module": "M3",
+    "module_name": "急性有机磷杀虫药中毒（M3）",
+    "topic": "中毒表现",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "发生有机磷农药中毒时，可出现？",
+    "options": [
+      {
+        "label": "A",
+        "text": "骨骼肌收缩颤动"
+      },
+      {
+        "label": "B",
+        "text": "瞳孔缩小"
+      },
+      {
+        "label": "C",
+        "text": "大汗淋漓"
+      },
+      {
+        "label": "D",
+        "text": "心率加速"
+      },
+      {
+        "label": "E",
+        "text": "尿潴留"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "有机磷中毒M样表现为瞳孔缩小、大汗、心率减慢，N样表现为肌颤、心率血压增快；尿潴留为阿托品中毒表现而非有机磷本身。教材P890。",
+    "source_page": "教材P890",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2008-156",
+      "year": 2008,
+      "source": "2008考研西综·第156题",
+      "mode": "改编"
+    }
+  }
+]

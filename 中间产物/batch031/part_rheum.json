@@ -1,0 +1,2678 @@
+[
+ {
+  "id": "batch033-M1-A1-001",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "风湿病定义",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列关于风湿性疾病本质的描述，正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "主要由细菌感染直接引起"
+   },
+   {
+    "label": "B",
+    "text": "免疫介导、以疼痛为核心、可累及多系统"
+   },
+   {
+    "label": "C",
+    "text": "仅累及单一关节、不累及其他系统"
+   },
+   {
+    "label": "D",
+    "text": "好发于老年男性、与免疫无关"
+   },
+   {
+    "label": "E",
+    "text": "全部属于退行性骨关节病变"
+   }
+  ],
+  "answer": "B",
+  "explanation": "风湿性疾病是免疫介导、以关节/肌肉疼痛为核心、可累及多系统的疾病，本质为自身免疫攻击自身组织；不属于感染或单纯退行性疾病。教材P808。",
+  "source_page": "教材P808",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A1-002",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "风湿病十大类分类",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列疾病中属于弥漫性结缔组织病的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "骨关节炎"
+   },
+   {
+    "label": "B",
+    "text": "痛风"
+   },
+   {
+    "label": "C",
+    "text": "类风湿关节炎"
+   },
+   {
+    "label": "D",
+    "text": "强直性脊柱炎"
+   },
+   {
+    "label": "E",
+    "text": "反应性关节炎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "弥漫性结缔组织病包括RA、SLE、干燥综合征、皮肌炎、系统性硬化症、血管炎等；AS属血清阴性脊柱关节病，骨关节炎属退行性，痛风属代谢相关。教材P808。",
+  "source_page": "教材P808",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A1-003",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "ANA筛选用途",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "在系统性红斑狼疮的自身抗体中，灵敏度近100%、最适合作为筛查试验的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗核抗体（ANA）"
+   },
+   {
+    "label": "D",
+    "text": "抗CCP抗体"
+   },
+   {
+    "label": "E",
+    "text": "类风湿因子"
+   }
+  ],
+  "answer": "C",
+  "explanation": "ANA对SLE灵敏度近100%，但特异度仅约65%，故为最佳筛查试验；抗dsDNA/抗Sm为标记性抗体，抗CCP为RA特异抗体。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A1-004",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "抗Sm抗体特征",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "对系统性红斑狼疮具有高度特异性、且与疾病活动性无关的血清标记性抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗核抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗CCP抗体"
+   },
+   {
+    "label": "E",
+    "text": "类风湿因子"
+   }
+  ],
+  "answer": "C",
+  "explanation": "抗Sm抗体对SLE特异度约99%，为血清标记性抗体，但滴度与疾病活动性无关；抗dsDNA才与活动性相关。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A1-005",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "活动期补体变化",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "系统性红斑狼疮活动期，补体C3、C4的典型变化是",
+  "options": [
+   {
+    "label": "A",
+    "text": "升高"
+   },
+   {
+    "label": "B",
+    "text": "下降"
+   },
+   {
+    "label": "C",
+    "text": "先升后降"
+   },
+   {
+    "label": "D",
+    "text": "无明显变化"
+   },
+   {
+    "label": "E",
+    "text": "仅C3升高"
+   }
+  ],
+  "answer": "B",
+  "explanation": "SLE活动期大量免疫复合物形成并沉积，补体被消耗，故C3、C4下降；这是与ESR/CRP升高方向相反的特异性反向活动性指标。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A1-006",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "抗ENA抗体谱",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列自身抗体中，不属于抗ENA（可提取核抗原）抗体谱的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗RNP抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗SSB（La）抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗rRNP抗体"
+   }
+  ],
+  "answer": "C",
+  "explanation": "抗ENA抗体谱包括抗RNP、抗SSA、抗SSB、抗Sm、抗rRNP；抗dsDNA属抗核抗体，是SLE标记性抗体但不属于ENA谱。[源:考研真题 GS-2016-076]。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2016-076",
+   "year": 2016,
+   "source": "2016考研西综·第76题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M1-A1-007",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "ANCA相关血管炎",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "下列属于ANCA（抗中性粒细胞胞质抗体）相关血管炎的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "显微镜下多血管炎"
+   },
+   {
+    "label": "B",
+    "text": "IgA血管炎"
+   },
+   {
+    "label": "C",
+    "text": "红斑狼疮相关血管炎"
+   },
+   {
+    "label": "D",
+    "text": "类风湿关节炎相关血管炎"
+   },
+   {
+    "label": "E",
+    "text": "贝赫切特病血管炎"
+   }
+  ],
+  "answer": "A",
+  "explanation": "ANCA相关血管炎包括显微镜下多血管炎（MPA）、肉芽肿性多血管炎（GPA）、嗜酸性肉芽肿性多血管炎（EGPA）；IgA血管炎为免疫复合物性小血管炎，余为系统性疾病相关血管炎。[源:考研真题 GS-2021-056]。教材P808。",
+  "source_page": "教材P808",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2021-056",
+   "year": 2021,
+   "source": "2021考研西综·第56题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M1-A1-008",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "退行性病变分类",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "下列疾病中属于退行性病变（而非自身免疫性）的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "强直性脊柱炎"
+   },
+   {
+    "label": "B",
+    "text": "骨性关节炎"
+   },
+   {
+    "label": "C",
+    "text": "Reiter综合征"
+   },
+   {
+    "label": "D",
+    "text": "银屑病关节炎"
+   },
+   {
+    "label": "E",
+    "text": "系统性红斑狼疮"
+   }
+  ],
+  "answer": "B",
+  "explanation": "风湿病十大类中骨性关节炎属退行性病变；AS、Reiter综合征、银屑病关节炎属血清阴性脊柱关节病；SLE属弥漫性结缔组织病。[源:考研真题 GS-2007-075]。教材P808。",
+  "source_page": "教材P808",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2007-075",
+   "year": 2007,
+   "source": "2007考研西综·第75题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M1-A2-009",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "干燥综合征识别",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "中年女性，口干、眼干、猖獗龋齿、腮腺肿大，抗SSA抗体阳性。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "系统性红斑狼疮"
+   },
+   {
+    "label": "B",
+    "text": "多发性骨髓瘤"
+   },
+   {
+    "label": "C",
+    "text": "干燥综合征"
+   },
+   {
+    "label": "D",
+    "text": "贝赫切特病"
+   },
+   {
+    "label": "E",
+    "text": "类风湿关节炎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "中年女性+口干眼干+猖獗龋齿+抗SSA阳性，符合干燥综合征；SLE无猖獗龋齿，骨髓瘤抗SSA阴性，贝赫切特以口腔溃疡、外阴溃疡为主。[源:考研真题 GS-2021-091]。教材P808。",
+  "source_page": "教材P808",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2021-091",
+   "year": 2021,
+   "source": "2021考研西综·第91题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M1-A2-010",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "晨僵鉴别意义",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者对称性小关节肿痛伴晨僵，晨僵持续约1.5小时。对鉴别滑膜炎与退行性病变最有价值的线索是",
+  "options": [
+   {
+    "label": "A",
+    "text": "晨僵时长"
+   },
+   {
+    "label": "B",
+    "text": "关节疼痛程度"
+   },
+   {
+    "label": "C",
+    "text": "关节红肿范围"
+   },
+   {
+    "label": "D",
+    "text": "受累关节数目"
+   },
+   {
+    "label": "E",
+    "text": "患者年龄"
+   }
+  ],
+  "answer": "A",
+  "explanation": "晨僵是滑膜炎的活动性指标，RA晨僵常>1小时，骨关节炎晨僵短暂；晨僵时长是鉴别免疫性滑膜炎与退行性病变的常用分界。教材P808-810。",
+  "source_page": "教材P808",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A2-011",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "抗CCP提高特异性",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "青年女性，双手近端指间关节、掌指关节对称性肿痛1年，RF阳性。为进一步提高诊断特异性，应首选检测",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗核抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗CCP抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗SSA抗体"
+   }
+  ],
+  "answer": "B",
+  "explanation": "抗CCP抗体对RA特异度93%~98%，高于RF（约86%），有助早期诊断与提高特异性；ANA/抗dsDNA/抗Sm为SLE相关抗体。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A2-012",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "检查顺序思路",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "疑诊风湿性疾病的患者，为判断是否存在炎症活动，应最先进行的检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗核抗体谱"
+   },
+   {
+    "label": "B",
+    "text": "关节X线"
+   },
+   {
+    "label": "C",
+    "text": "血沉与C反应蛋白"
+   },
+   {
+    "label": "D",
+    "text": "抗CCP抗体"
+   },
+   {
+    "label": "E",
+    "text": "肾活检"
+   }
+  ],
+  "answer": "C",
+  "explanation": "风湿病检查遵循“先炎症→再抗体→后脏器”思路，ESR/CRP升高提示炎症活动，是初步判断有无活动的最常用指标。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A2-013",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "补体下降提示SLE",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "女性患者，面部红斑、关节痛、蛋白尿，实验室检查补体C3、C4下降。该补体变化最支持的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "骨关节炎"
+   },
+   {
+    "label": "B",
+    "text": "类风湿关节炎"
+   },
+   {
+    "label": "C",
+    "text": "系统性红斑狼疮"
+   },
+   {
+    "label": "D",
+    "text": "痛风"
+   },
+   {
+    "label": "E",
+    "text": "强直性脊柱炎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "SLE活动期免疫复合物大量沉积消耗补体，C3/C4下降为SLE特异的活动性反向指标；RA活动期补体多正常或轻度升高。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A2-014",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "抗SSA与继发干燥",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "继发于系统性红斑狼疮的干燥综合征患者中，出现的特异性抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗SSA抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗磷脂抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗RNP抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗组蛋白抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗dsDNA抗体"
+   }
+  ],
+  "answer": "A",
+  "explanation": "抗SSA抗体见于继发SLE的干燥综合征；抗磷脂抗体见于抗磷脂综合征，抗RNP与雷诺/肌炎相关，抗组蛋白抗体几乎见于所有SLE。[源:考研真题 GS-2009-074]。教材P808。",
+  "source_page": "教材P808",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2009-074",
+   "year": 2009,
+   "source": "2009考研西综·第74题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M1-A3-015",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "多系统受累病例",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "女性，28岁，反复发热、面部蝶形红斑、关节痛2个月，近1周出现双下肢水肿、尿泡沫增多。查体：血压150/95mmHg，颜面水肿。实验室检查：尿蛋白(+++)，抗核抗体阳性。",
+  "options": [
+   {
+    "label": "A",
+    "text": "类风湿关节炎"
+   },
+   {
+    "label": "B",
+    "text": "系统性红斑狼疮"
+   },
+   {
+    "label": "C",
+    "text": "骨关节炎"
+   },
+   {
+    "label": "D",
+    "text": "痛风"
+   },
+   {
+    "label": "E",
+    "text": "强直性脊柱炎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "育龄女性+蝶形红斑+多系统受累（皮肤、关节、肾）+ANA阳性，符合SLE；RA以侵蚀性小关节炎为主，骨关节炎/痛风/AS无此多系统表现。教材P808、P820。",
+  "source_page": "教材P820",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-A4-016",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "补体下降机制",
+  "type": "A4",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "女性，30岁，发热、关节痛、面部红斑3周，伴脱发、口腔溃疡。查体：体温38.2℃，双侧面颊蝶形红斑。实验室检查：Hb 90g/L，WBC 3.0×10⁹/L，Plt 90×10⁹/L，尿蛋白(+)，抗dsDNA阳性，补体C3下降。该患者的补体C3下降最恰当的机制解释是",
+  "options": [
+   {
+    "label": "A",
+    "text": "补体合成增加、消耗减少"
+   },
+   {
+    "label": "B",
+    "text": "免疫复合物大量沉积被消耗"
+   },
+   {
+    "label": "C",
+    "text": "肝脏合成功能衰竭"
+   },
+   {
+    "label": "D",
+    "text": "补体遗传性缺乏"
+   },
+   {
+    "label": "E",
+    "text": "药物抑制补体合成"
+   }
+  ],
+  "answer": "B",
+  "explanation": "SLE活动期大量免疫复合物形成并沉积，补体作为“清道夫”被消耗，C3、C4下降，既支持诊断又提示活动；与ESR/CRP升高方向相反。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "困难",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-B1-017",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "抗体用途B1",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "作为系统性红斑狼疮最佳筛查试验的抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗核抗体（ANA）"
+   },
+   {
+    "label": "B",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗CCP抗体"
+   },
+   {
+    "label": "E",
+    "text": "类风湿因子（RF）"
+   }
+  ],
+  "answer": "A",
+  "explanation": "ANA对SLE灵敏度近100%，特异度约65%，为最佳筛查试验；余选项分别为标记/活动性抗体或RA相关抗体。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-B1-018",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "抗体用途B1",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "对类风湿关节炎诊断特异性最高（约93%~98%）的抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗核抗体（ANA）"
+   },
+   {
+    "label": "B",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗CCP抗体"
+   },
+   {
+    "label": "E",
+    "text": "类风湿因子（RF）"
+   }
+  ],
+  "answer": "D",
+  "explanation": "抗CCP抗体对RA特异度93%~98%，高于RF（约86%），是RA高特异的诊断性抗体；余为SLE相关或RA非特异抗体。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-X-019",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "活动性指标X",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "下列指标中，可用于评估风湿性疾病病情活动的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "血沉（ESR）升高"
+   },
+   {
+    "label": "B",
+    "text": "C反应蛋白（CRP）升高"
+   },
+   {
+    "label": "C",
+    "text": "系统性红斑狼疮活动期补体C3下降"
+   },
+   {
+    "label": "D",
+    "text": "抗dsDNA抗体滴度升高"
+   },
+   {
+    "label": "E",
+    "text": "类风湿因子阴性"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "活动期非特异性标志ESR、CRP升高；SLE活动期补体C3/C4下降、抗dsDNA滴度升高与活动相关；RF阴性不能反映活动（RF阴性不能排除RA）。教材P810。",
+  "source_page": "教材P810",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M1-X-020",
+  "module": "M1",
+  "module_name": "风湿性疾病总论（M1）",
+  "topic": "分类与抗体X",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "下列关于风湿性疾病分类与特征抗体的描述，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "类风湿关节炎与系统性红斑狼疮均属弥漫性结缔组织病"
+   },
+   {
+    "label": "B",
+    "text": "强直性脊柱炎属血清阴性脊柱关节病、类风湿因子常阴性"
+   },
+   {
+    "label": "C",
+    "text": "抗CCP抗体是类风湿关节炎的高特异抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗Sm抗体对SLE特异性高且与活动性相关"
+   },
+   {
+    "label": "E",
+    "text": "骨关节炎属于退行性病变"
+   }
+  ],
+  "answer": "ABCE",
+  "explanation": "RA与SLE均属弥漫性结缔组织病；AS属血清阴性脊柱关节病、RF常阴性；抗CCP对RA高特异；抗Sm特异但“与活动性无关”故D错；骨关节炎属退行性。教材P808-810。",
+  "source_page": "教材P808",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch033-M2-A1-001",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA基本病理",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "类风湿关节炎最基本的病理改变是",
+  "options": [
+   {
+    "label": "A",
+    "text": "滑膜炎和血管翳形成"
+   },
+   {
+    "label": "B",
+    "text": "软骨退行性变"
+   },
+   {
+    "label": "C",
+    "text": "骨赘形成"
+   },
+   {
+    "label": "D",
+    "text": "痛风石沉积"
+   },
+   {
+    "label": "E",
+    "text": "免疫球蛋白沉积"
+   }
+  ],
+  "answer": "A",
+  "explanation": "RA基本病理为滑膜慢性炎症+血管翳形成，最终导致关节软骨和骨破坏、畸形；不同于骨关节炎的退变或痛风的结晶沉积。教材P814。",
+  "source_page": "教材P814",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A1-002",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA晨僵特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "类风湿关节炎患者晨僵的典型特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "持续时间常超过1小时"
+   },
+   {
+    "label": "B",
+    "text": "活动后加重、休息后减轻"
+   },
+   {
+    "label": "C",
+    "text": "仅见于晚期畸形患者"
+   },
+   {
+    "label": "D",
+    "text": "与关节外表现无关"
+   },
+   {
+    "label": "E",
+    "text": "夜间痛为主、晨轻"
+   }
+  ],
+  "answer": "A",
+  "explanation": "晨僵见于约95% RA患者，为活动性指标，通常持续1小时以上；骨关节炎晨僵短暂。教材P815。",
+  "source_page": "教材P815",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A1-003",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "抗CCP特异性",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "对类风湿关节炎诊断特异性最高（约93%~98%）的自身抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗核抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗CCP抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗SSA抗体"
+   }
+  ],
+  "answer": "C",
+  "explanation": "抗CCP抗体对RA特异度93%~98%，高于RF（约86%），有助早期诊断；其余为SLE相关抗体。教材P816。",
+  "source_page": "教材P816",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A1-004",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "DMARDs首选MTX",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "类风湿关节炎确诊后，控制病情、延缓骨破坏的首选改变病情抗风湿药是",
+  "options": [
+   {
+    "label": "A",
+    "text": "布洛芬"
+   },
+   {
+    "label": "B",
+    "text": "甲氨蝶呤"
+   },
+   {
+    "label": "C",
+    "text": "泼尼松"
+   },
+   {
+    "label": "D",
+    "text": "秋水仙碱"
+   },
+   {
+    "label": "E",
+    "text": "双氯芬酸"
+   }
+  ],
+  "answer": "B",
+  "explanation": "RA一经确诊应尽早用传统DMARDs，首选甲氨蝶呤，起效1~3月、可延缓病情、防结构破坏；NSAIDs与激素仅缓解症状。教材P818。",
+  "source_page": "教材P818",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A1-005",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "X线分期",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "类风湿关节炎X线分期中，表现为关节间隙变窄的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "Ⅰ期"
+   },
+   {
+    "label": "B",
+    "text": "Ⅱ期"
+   },
+   {
+    "label": "C",
+    "text": "Ⅲ期"
+   },
+   {
+    "label": "D",
+    "text": "Ⅳ期"
+   },
+   {
+    "label": "E",
+    "text": "0期"
+   }
+  ],
+  "answer": "B",
+  "explanation": "RA X线Ⅰ期软组织肿胀/骨疏松，Ⅱ期关节间隙变窄，Ⅲ期虫蚀样改变，Ⅳ期半脱位/强直。教材P816。",
+  "source_page": "教材P816",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A1-006",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA首发受累关节",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "首发最常累及近端指间关节、掌指关节和腕关节的风湿性疾病是",
+  "options": [
+   {
+    "label": "A",
+    "text": "类风湿关节炎"
+   },
+   {
+    "label": "B",
+    "text": "骨关节炎"
+   },
+   {
+    "label": "C",
+    "text": "强直性脊柱炎"
+   },
+   {
+    "label": "D",
+    "text": "系统性红斑狼疮"
+   },
+   {
+    "label": "E",
+    "text": "痛风"
+   }
+  ],
+  "answer": "A",
+  "explanation": "RA最常累及腕、掌指、近端指间关节；骨关节炎累及负重关节，AS侵犯中轴，SLE累及指腕膝。[源:考研真题 GS-2016-075]。教材P814-815。",
+  "source_page": "教材P814",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2016-075",
+   "year": 2016,
+   "source": "2016考研西综·第75题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M2-A1-007",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "抗角蛋白抗体谱",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "有助于类风湿关节炎早期诊断的抗角蛋白抗体谱，下列属于该谱的抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗核周因子抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗核抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗RNP抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗组织细胞抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗dsDNA抗体"
+   }
+  ],
+  "answer": "A",
+  "explanation": "抗角蛋白抗体谱包括抗核周因子抗体、抗角蛋白抗体、抗聚角蛋白微丝蛋白抗体、抗CCP抗体；ANA/抗RNP/抗dsDNA均不属此谱。[源:考研真题 GS-2008-076]。教材P816。",
+  "source_page": "教材P816",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2008-076",
+   "year": 2008,
+   "source": "2008考研西综·第76题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M2-A1-008",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RF本质",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "类风湿关节炎较具特异性的自身抗体，其靶抗原是变性IgG的Fc片段，该抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗核抗体"
+   },
+   {
+    "label": "B",
+    "text": "类风湿因子（RF）"
+   },
+   {
+    "label": "C",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗CCP抗体"
+   }
+  ],
+  "answer": "B",
+  "explanation": "RF是针对IgG Fc片段的自身抗体，约80% RA阳性，是RA较具特异性的自身抗体；抗dsDNA/抗Sm用于SLE，抗CCP特异更高但此题对应IgG Fc片段即为RF。[源:考研真题 GS-2006-049]。教材P810、P816。",
+  "source_page": "教材P816",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2006-049",
+   "year": 2006,
+   "source": "2006考研西综·第49题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M2-A2-009",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA临床诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "女性，45岁，双手近端指间关节、掌指关节对称性肿痛8个月，晨僵约1.5小时，RF阳性、抗CCP阳性。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "骨关节炎"
+   },
+   {
+    "label": "B",
+    "text": "类风湿关节炎"
+   },
+   {
+    "label": "C",
+    "text": "痛风"
+   },
+   {
+    "label": "D",
+    "text": "强直性脊柱炎"
+   },
+   {
+    "label": "E",
+    "text": "系统性红斑狼疮"
+   }
+  ],
+  "answer": "B",
+  "explanation": "中年女性+对称性小关节肿痛+晨僵>1h+RF/抗CCP阳性，符合RA；骨关节炎大关节、无晨僵>1h，痛风单关节红肿，AS中轴，SLE多无骨破坏。教材P814-817。",
+  "source_page": "教材P817",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A2-010",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "血管翳致骨破坏",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "类风湿关节炎中，由增生滑膜长入软骨面、释放基质金属蛋白酶导致骨破坏的关键结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "滑膜积液"
+   },
+   {
+    "label": "B",
+    "text": "血管翳"
+   },
+   {
+    "label": "C",
+    "text": "软骨下囊肿"
+   },
+   {
+    "label": "D",
+    "text": "骨赘"
+   },
+   {
+    "label": "E",
+    "text": "纤维粘连"
+   }
+  ],
+  "answer": "B",
+  "explanation": "血管翳是增生滑膜长入软骨面，释放溶酶体酶、MMP、TNF-α、IL-6，直接降解软骨与骨质，是RA骨破坏的关键。教材P814。",
+  "source_page": "教材P814",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A2-011",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "类风湿结节",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "类风湿关节炎患者肘部皮下出现质硬、无压痛的结节，提示",
+  "options": [
+   {
+    "label": "A",
+    "text": "病情缓解"
+   },
+   {
+    "label": "B",
+    "text": "病情活动"
+   },
+   {
+    "label": "C",
+    "text": "合并感染"
+   },
+   {
+    "label": "D",
+    "text": "药物过敏"
+   },
+   {
+    "label": "E",
+    "text": "骨质疏松"
+   }
+  ],
+  "answer": "B",
+  "explanation": "类风湿结节是最常见关节外表现（约30%~40%），出现提示病情活动。教材P816。",
+  "source_page": "教材P816",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A2-012",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "MTX补叶酸",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "类风湿关节炎患者使用甲氨蝶呤治疗期间，为减轻不良反应常规应补充",
+  "options": [
+   {
+    "label": "A",
+    "text": "维生素C"
+   },
+   {
+    "label": "B",
+    "text": "叶酸"
+   },
+   {
+    "label": "C",
+    "text": "钙剂"
+   },
+   {
+    "label": "D",
+    "text": "铁剂"
+   },
+   {
+    "label": "E",
+    "text": "维生素B12"
+   }
+  ],
+  "answer": "B",
+  "explanation": "甲氨蝶呤治疗RA需监测肝功、血象，常规补充叶酸以减轻不良反应。教材P818。",
+  "source_page": "教材P818",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A2-013",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "生物制剂筛查",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "类风湿关节炎患者拟使用TNF-α拮抗剂，用药前必须筛查的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "结核与乙肝"
+   },
+   {
+    "label": "B",
+    "text": "梅毒"
+   },
+   {
+    "label": "C",
+    "text": "艾滋病"
+   },
+   {
+    "label": "D",
+    "text": "粪隐血"
+   },
+   {
+    "label": "E",
+    "text": "肺功能"
+   }
+  ],
+  "answer": "A",
+  "explanation": "生物制剂（TNF-α拮抗剂）增加感染风险，用前须筛查结核与乙肝，活动性感染期禁用，常与甲氨蝶呤联用。教材P818。",
+  "source_page": "教材P818",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A2-014",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA晚期畸形",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "类风湿关节炎晚期常见的特征性畸形是",
+  "options": [
+   {
+    "label": "A",
+    "text": "天鹅颈样畸形"
+   },
+   {
+    "label": "B",
+    "text": "杵状指"
+   },
+   {
+    "label": "C",
+    "text": "Heberden结节"
+   },
+   {
+    "label": "D",
+    "text": "膝内翻畸形"
+   },
+   {
+    "label": "E",
+    "text": "脊柱后凸"
+   }
+  ],
+  "answer": "A",
+  "explanation": "RA晚期最常见天鹅颈样与纽扣花样畸形、手指尺侧偏斜；杵状指见于慢性缺氧疾病，Heberden结节与膝内翻为骨关节炎表现。教材P815。",
+  "source_page": "教材P815",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A3-015",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA影像学分期",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，50岁，双手近端指间关节、腕关节对称性肿痛1年，晨僵约1小时，逐渐出现手指天鹅颈样畸形。",
+  "options": [
+   {
+    "label": "A",
+    "text": "双手及腕关节X线"
+   },
+   {
+    "label": "B",
+    "text": "关节镜"
+   },
+   {
+    "label": "C",
+    "text": "骨扫描"
+   },
+   {
+    "label": "D",
+    "text": "胸部CT"
+   },
+   {
+    "label": "E",
+    "text": "超声心动图"
+   }
+  ],
+  "answer": "A",
+  "explanation": "RA影像学X线（双手+腕）为诊断/分期/监测标准，可分期Ⅰ~Ⅳ；MRI用于早期诊断，但分期评估首选X线。教材P816。",
+  "source_page": "教材P816",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-A4-016",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA肺间质病变",
+  "type": "A4",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "女性，48岁，多关节肿痛伴晨僵2年，RF阳性、抗CCP阳性，X线示双手多发虫蚀样破坏。近月出现活动后气促，胸片示双下肺间质病变。",
+  "options": [
+   {
+    "label": "A",
+    "text": "药物毒性直接损伤"
+   },
+   {
+    "label": "B",
+    "text": "血管翳侵犯肺部"
+   },
+   {
+    "label": "C",
+    "text": "自身免疫性肺受累（关节外表现）"
+   },
+   {
+    "label": "D",
+    "text": "感染播散"
+   },
+   {
+    "label": "E",
+    "text": "心功能不全致肺淤血"
+   }
+  ],
+  "answer": "C",
+  "explanation": "肺间质病变是RA最常见关节外表现，属自身免疫性多系统受累；与血管翳局部侵犯不同，为系统性表现。教材P816。",
+  "source_page": "教材P816",
+  "difficulty": "困难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-B1-017",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA药物B1",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "属于控制病情抗风湿药（DMARDs）、可延缓骨破坏、起效需1~3个月的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲氨蝶呤"
+   },
+   {
+    "label": "B",
+    "text": "塞来昔布"
+   },
+   {
+    "label": "C",
+    "text": "泼尼松"
+   },
+   {
+    "label": "D",
+    "text": "肿瘤坏死因子-α拮抗剂"
+   },
+   {
+    "label": "E",
+    "text": "来氟米特"
+   }
+  ],
+  "answer": "A",
+  "explanation": "甲氨蝶呤是首选传统DMARDs，起效1~3月、可延缓病情与骨破坏；塞来昔布为NSAIDs，泼尼松为激素，均不控制病情。教材P818。",
+  "source_page": "教材P818",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-B1-018",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA药物B1",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "属于非甾体抗炎药、主要缓解症状但不控制病情的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲氨蝶呤"
+   },
+   {
+    "label": "B",
+    "text": "塞来昔布"
+   },
+   {
+    "label": "C",
+    "text": "泼尼松"
+   },
+   {
+    "label": "D",
+    "text": "肿瘤坏死因子-α拮抗剂"
+   },
+   {
+    "label": "E",
+    "text": "来氟米特"
+   }
+  ],
+  "answer": "B",
+  "explanation": "塞来昔布属NSAIDs，可快速缓解RA炎症痛，但不控制病情、不防骨破坏；甲氨蝶呤/生物制剂才控病程。教材P818。",
+  "source_page": "教材P818",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M2-X-019",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA与OA畸形X",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "较难",
+  "stem": "下列选项中，不属于骨关节炎导致的畸形、而可见于类风湿关节炎的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "杵状指"
+   },
+   {
+    "label": "B",
+    "text": "Heberden结节"
+   },
+   {
+    "label": "C",
+    "text": "手指向尺侧偏斜"
+   },
+   {
+    "label": "D",
+    "text": "天鹅颈样畸形"
+   },
+   {
+    "label": "E",
+    "text": "Bouchard结节（近端指间关节结节）"
+   }
+  ],
+  "answer": "ACD",
+  "explanation": "Heberden结节（远端指间关节）与Bouchard结节（近端指间关节）均属骨关节炎畸形；杵状指见于慢性缺氧疾病，手指尺侧偏斜与天鹅颈样畸形为RA典型畸形，故不属于骨关节炎所致的是A、C、D。[源:考研真题 GS-2023-165]。教材P815、P816。",
+  "source_page": "教材P815",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2023-165",
+   "year": 2023,
+   "source": "2023考研西综·第165题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M2-X-020",
+  "module": "M2",
+  "module_name": "类风湿关节炎（M2 · RA）",
+  "topic": "RA治疗与活动X",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "下列关于类风湿关节炎治疗与病情活动的描述，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "NSAIDs可缓解症状但不能延缓骨破坏"
+   },
+   {
+    "label": "B",
+    "text": "糖皮质激素可迅速改善症状但不能控制病情"
+   },
+   {
+    "label": "C",
+    "text": "甲氨蝶呤是首选的传统DMARDs"
+   },
+   {
+    "label": "D",
+    "text": "生物制剂（TNF-α拮抗剂）常与甲氨蝶呤联用"
+   },
+   {
+    "label": "E",
+    "text": "关节畸形是判断病情活动的主要指标"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "NSAIDs与激素仅缓解症状/不控病情、不防骨破坏；MTX为首选DMARDs；生物制剂常与MTX联用；畸形是晚期表现、与活动性无关，故E错。教材P814-818。",
+  "source_page": "教材P818",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-A1-001",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE定义",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "系统性红斑狼疮（SLE）的本质是",
+  "options": [
+   {
+    "label": "A",
+    "text": "细菌感染引起的关节病"
+   },
+   {
+    "label": "B",
+    "text": "致病性自身抗体和免疫复合物介导、多系统受累的自身免疫病"
+   },
+   {
+    "label": "C",
+    "text": "单纯皮肤病变"
+   },
+   {
+    "label": "D",
+    "text": "代谢性骨病"
+   },
+   {
+    "label": "E",
+    "text": "退行性关节病"
+   }
+  ],
+  "answer": "B",
+  "explanation": "SLE是致病性自身抗体和免疫复合物介导、多系统受累的自身免疫病，好发于20~40岁育龄女性。教材P820。",
+  "source_page": "教材P820",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-A1-002",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "ANA筛查",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "系统性红斑狼疮最佳的筛查试验是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗核抗体（ANA）"
+   },
+   {
+    "label": "D",
+    "text": "抗CCP抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗rRNP抗体"
+   }
+  ],
+  "answer": "C",
+  "explanation": "ANA对SLE灵敏度近100%，为最佳筛查试验，但特异度仅约65%，不能单独确诊。教材P822。",
+  "source_page": "教材P822",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-A1-003",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "抗dsDNA价值",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "对确诊系统性红斑狼疮和判断其活动性参考价值最大的抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗核抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "D",
+    "text": "抗RNP抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗Ro抗体"
+   }
+  ],
+  "answer": "B",
+  "explanation": "抗dsDNA与抗Sm均为SLE标记性抗体，但抗Sm与活动性无关，抗dsDNA滴度与活动性相关，故对确诊和判断活动性价值最大。[源:考研真题 GS-2002-074]。教材P822。",
+  "source_page": "教材P822",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2002-074",
+   "year": 2002,
+   "source": "2002考研西综·第74题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M3-A1-004",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "抗Sm与活动无关",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列与系统性红斑狼疮病情活动性无关的实验室检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "血清C3、C4下降"
+   },
+   {
+    "label": "B",
+    "text": "白细胞减少"
+   },
+   {
+    "label": "C",
+    "text": "抗dsDNA抗体升高"
+   },
+   {
+    "label": "D",
+    "text": "抗Sm抗体升高"
+   },
+   {
+    "label": "E",
+    "text": "血沉加快"
+   }
+  ],
+  "answer": "D",
+  "explanation": "抗Sm抗体是SLE标记性抗体（特异度99%），但与疾病活动性无关；C3/C4下降、白细胞减少、抗dsDNA升高、血沉加快均提示活动。[源:考研真题 GS-2003-074]。教材P810、P822。",
+  "source_page": "教材P822",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2003-074",
+   "year": 2003,
+   "source": "2003考研西综·第74题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M3-A1-005",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE补体变化",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "系统性红斑狼疮活动期补体C3、C4的典型变化是",
+  "options": [
+   {
+    "label": "A",
+    "text": "升高"
+   },
+   {
+    "label": "B",
+    "text": "下降"
+   },
+   {
+    "label": "C",
+    "text": "先升后降"
+   },
+   {
+    "label": "D",
+    "text": "无明显变化"
+   },
+   {
+    "label": "E",
+    "text": "仅C4降低"
+   }
+  ],
+  "answer": "B",
+  "explanation": "SLE活动期大量免疫复合物沉积消耗补体，C3、C4下降，是特异性反向活动性指标。教材P810、P822。",
+  "source_page": "教材P822",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-A1-006",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "蝶形红斑",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "系统性红斑狼疮特征性的皮肤表现是",
+  "options": [
+   {
+    "label": "A",
+    "text": "类风湿结节"
+   },
+   {
+    "label": "B",
+    "text": "蝶形红斑"
+   },
+   {
+    "label": "C",
+    "text": "Gottron征"
+   },
+   {
+    "label": "D",
+    "text": "雷诺现象"
+   },
+   {
+    "label": "E",
+    "text": "紫癜"
+   }
+  ],
+  "answer": "B",
+  "explanation": "蝶形红斑（鼻梁+双颧颊部）是SLE特征性皮疹，由真皮-表皮交界处免疫复合物沉积所致；类风湿结节为RA，Gottron征为皮肌炎。教材P820-821。",
+  "source_page": "教材P821",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-A1-007",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "狼疮带（皮肤活检）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "系统性红斑狼疮患者皮肤活检时，最典型的发现是",
+  "options": [
+   {
+    "label": "A",
+    "text": "真皮浅表部出血"
+   },
+   {
+    "label": "B",
+    "text": "真皮深部出血"
+   },
+   {
+    "label": "C",
+    "text": "真皮内色素沉积"
+   },
+   {
+    "label": "D",
+    "text": "真皮深部免疫复合物沉积"
+   },
+   {
+    "label": "E",
+    "text": "真皮浅表部免疫复合物沉积"
+   }
+  ],
+  "answer": "E",
+  "explanation": "SLE典型改变为皮肤真皮与表皮交界处免疫复合物沉积，免疫荧光见真皮浅层明亮荧光带（狼疮带）。[源:考研真题 GS-2004-046]。教材P822。",
+  "source_page": "教材P822",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2004-046",
+   "year": 2004,
+   "source": "2004考研西综·第46题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M3-A1-008",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE超敏反应类型",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "系统性红斑狼疮的组织损伤主要所属的超敏反应类型是",
+  "options": [
+   {
+    "label": "A",
+    "text": "I型"
+   },
+   {
+    "label": "B",
+    "text": "II型"
+   },
+   {
+    "label": "C",
+    "text": "III型"
+   },
+   {
+    "label": "D",
+    "text": "IV型"
+   },
+   {
+    "label": "E",
+    "text": "以上均不是"
+   }
+  ],
+  "answer": "C",
+  "explanation": "SLE组织损伤主要由免疫复合物介导，属III型变态反应（DNA-抗DNA复合物致血管和肾小球病变）；部分血细胞损伤经II型。[源:考研真题 GS-2013-051]。教材P820。",
+  "source_page": "教材P820",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2013-051",
+   "year": 2013,
+   "source": "2013考研西综·第51题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M3-A2-009",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE临床诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "女性，26岁，面部蝶形红斑、光过敏、口腔溃疡，伴关节痛、蛋白尿。抗核抗体阳性、抗dsDNA阳性、补体C3下降。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "类风湿关节炎"
+   },
+   {
+    "label": "B",
+    "text": "系统性红斑狼疮"
+   },
+   {
+    "label": "C",
+    "text": "皮肌炎"
+   },
+   {
+    "label": "D",
+    "text": "系统性硬化症"
+   },
+   {
+    "label": "E",
+    "text": "干燥综合征"
+   }
+  ],
+  "answer": "B",
+  "explanation": "育龄女性+蝶形红斑+光敏+口腔溃疡+肾受累+ANA/抗dsDNA阳性+补体下降，满足临床+免疫学证据，符合SLE。教材P820-823。",
+  "source_page": "教材P823",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-A2-010",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE溶血性贫血",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "女性，32岁，确诊系统性红斑狼疮，辅助检查中最可能与病情相符的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "Coombs试验（+）"
+   },
+   {
+    "label": "B",
+    "text": "外周血涂片可见破碎红细胞"
+   },
+   {
+    "label": "C",
+    "text": "血清抗肾小球基底膜抗体阳性"
+   },
+   {
+    "label": "D",
+    "text": "尿红细胞位相显示80%红细胞形态正常"
+   },
+   {
+    "label": "E",
+    "text": "网织红细胞显著降低"
+   }
+  ],
+  "answer": "A",
+  "explanation": "约10% SLE有Coombs试验阳性的溶血性贫血；破碎红细胞见于红细胞异形症，抗GBM抗体见于I型急进性肾炎，形态正常血尿提示非肾小球源性。[源:考研真题 GS-2010-075]。教材P821、P822。",
+  "source_page": "教材P822",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2010-075",
+   "year": 2010,
+   "source": "2010考研西综·第75题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M3-A2-011",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "抗磷脂综合征",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "女性，28岁，反复下肢深静脉血栓、2次孕早期自发流产，血小板45×10⁹/L。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗磷脂综合征"
+   },
+   {
+    "label": "B",
+    "text": "特发性血小板减少性紫癜"
+   },
+   {
+    "label": "C",
+    "text": "弥散性血管内凝血"
+   },
+   {
+    "label": "D",
+    "text": "单纯易栓症"
+   },
+   {
+    "label": "E",
+    "text": "骨髓增生异常综合征"
+   }
+  ],
+  "answer": "A",
+  "explanation": "反复动/静脉血栓+习惯性流产+血小板减少，符合抗磷脂综合征，常继发于SLE活动期，抗磷脂抗体阳性。教材P821、P839。",
+  "source_page": "教材P839",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-A2-012",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE基础用药",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "系统性红斑狼疮轻症患者的初始治疗，通常首选的基础用药是",
+  "options": [
+   {
+    "label": "A",
+    "text": "环磷酰胺"
+   },
+   {
+    "label": "B",
+    "text": "羟氯喹"
+   },
+   {
+    "label": "C",
+    "text": "大剂量甲泼尼龙冲击"
+   },
+   {
+    "label": "D",
+    "text": "利妥昔单抗"
+   },
+   {
+    "label": "E",
+    "text": "血浆置换"
+   }
+  ],
+  "answer": "B",
+  "explanation": "轻症SLE以羟氯喹为基础用药，控制皮肤关节症状、减少复发；CTX/MMF用于脏器受累，生物制剂用于难治。教材P825。",
+  "source_page": "教材P825",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-A2-013",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "APS确诊检查",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "女性，26岁，左下肢肿胀疼痛1个月，曾多次流产，血小板45×10⁹/L。为明确诊断最重要的检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "血抗核抗体"
+   },
+   {
+    "label": "B",
+    "text": "血抗磷脂抗体"
+   },
+   {
+    "label": "C",
+    "text": "血类风湿因子"
+   },
+   {
+    "label": "D",
+    "text": "骨髓细胞学检查"
+   },
+   {
+    "label": "E",
+    "text": "凝血因子活性"
+   }
+  ],
+  "answer": "B",
+  "explanation": "育龄女性+下肢血栓+反复流产+血小板减少，考虑抗磷脂综合征，最重要检查是抗磷脂抗体；ANA用于SLE筛查，RF用于RA。[源:考研真题 GS-2023-056]。教材P821、P839。",
+  "source_page": "教材P839",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2023-056",
+   "year": 2023,
+   "source": "2023考研西综·第56题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M3-A2-014",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE组织损害物质",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "引起系统性红斑狼疮组织损害的主要物质是",
+  "options": [
+   {
+    "label": "A",
+    "text": "自身抗体"
+   },
+   {
+    "label": "B",
+    "text": "CD8⁺淋巴细胞"
+   },
+   {
+    "label": "C",
+    "text": "苏木素小体"
+   },
+   {
+    "label": "D",
+    "text": "狼疮细胞"
+   },
+   {
+    "label": "E",
+    "text": "补体C3"
+   }
+  ],
+  "answer": "A",
+  "explanation": "SLE由以抗核抗体为主的多种自身抗体引起，组织损伤与自身抗体存在有关；CD4⁺T细胞参与发病而非CD8⁺；苏木素小体、狼疮细胞为病变特征而非致损物质。[源:考研真题 GS-2018-038]。教材P820。",
+  "source_page": "教材P820",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2018-038",
+   "year": 2018,
+   "source": "2018考研西综·第38题",
+   "mode": "原题"
+  }
+ },
+ {
+  "id": "batch033-M3-A3-015",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "狼疮性肾炎肾活检",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "女性，24岁，面部红斑、关节痛半年，近2个月出现眼睑及双下肢水肿、尿泡沫增多。尿蛋白(+++)，血清补体C3下降，抗dsDNA阳性。",
+  "options": [
+   {
+    "label": "A",
+    "text": "肾活检"
+   },
+   {
+    "label": "B",
+    "text": "腹部超声"
+   },
+   {
+    "label": "C",
+    "text": "骨髓穿刺"
+   },
+   {
+    "label": "D",
+    "text": "关节X线"
+   },
+   {
+    "label": "E",
+    "text": "胸部CT"
+   }
+  ],
+  "answer": "A",
+  "explanation": "狼疮性肾炎诊断、分型、治疗与预后评估的金标准是肾活检；仅凭蛋白尿无法判断ISN/RPS分型，IV型弥漫增殖型最常见需强化免疫抑制。教材P823。",
+  "source_page": "教材P823",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-A4-016",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "狼疮肾炎诱导治疗",
+  "type": "A4",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "女性，30岁，SLE确诊3年，近1个月出现大量蛋白尿（>3.5g/d）、水肿、血压升高，肾活检为IV型狼疮性肾炎。查体无感染征象。",
+  "options": [
+   {
+    "label": "A",
+    "text": "单用羟氯喹"
+   },
+   {
+    "label": "B",
+    "text": "大剂量糖皮质激素联合环磷酰胺或霉酚酸酯"
+   },
+   {
+    "label": "C",
+    "text": "仅非甾体抗炎药"
+   },
+   {
+    "label": "D",
+    "text": "停用所有免疫抑制剂"
+   },
+   {
+    "label": "E",
+    "text": "单用生物制剂"
+   }
+  ],
+  "answer": "B",
+  "explanation": "IV型弥漫增殖型狼疮性肾炎伴大量蛋白尿、重要脏器受累，诱导缓解首选大剂量激素联合CTX或MMF；单用羟氯喹/NSAIDs不足，生物制剂用于难治病例。教材P823、P825。",
+  "source_page": "教材P825",
+  "difficulty": "困难",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-B1-017",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE抗体B1",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "对系统性红斑狼疮最具诊断价值、且滴度与疾病活动性相关的抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗核抗体（ANA）"
+   },
+   {
+    "label": "D",
+    "text": "抗磷脂抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗rRNP抗体"
+   }
+  ],
+  "answer": "A",
+  "explanation": "抗dsDNA抗体是SLE标记性抗体且滴度与活动性相关；抗Sm虽特异但与活动无关，ANA为筛查，抗磷脂见于APS。教材P822。",
+  "source_page": "教材P822",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-B1-018",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE抗体B1",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "提示系统性红斑狼疮合并神经精神狼疮或疾病活动时，有意义的抗体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗dsDNA抗体"
+   },
+   {
+    "label": "B",
+    "text": "抗Sm抗体"
+   },
+   {
+    "label": "C",
+    "text": "抗核抗体（ANA）"
+   },
+   {
+    "label": "D",
+    "text": "抗磷脂抗体"
+   },
+   {
+    "label": "E",
+    "text": "抗rRNP抗体"
+   }
+  ],
+  "answer": "E",
+  "explanation": "抗rRNP抗体阳性提示SLE活动期或神经精神狼疮（NP-SLE）；余选项用途不同。教材P822。",
+  "source_page": "教材P822",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch033-M3-X-019",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE分类标准X",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "根据系统性红斑狼疮分类标准，诊断需满足的条件包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "至少1条临床证据（如皮肤、肾、关节受累）"
+   },
+   {
+    "label": "B",
+    "text": "至少1条免疫学证据（如ANA、抗dsDNA、低补体）"
+   },
+   {
+    "label": "C",
+    "text": "临床与免疫学证据缺一不可"
+   },
+   {
+    "label": "D",
+    "text": "必须存在关节畸形"
+   },
+   {
+    "label": "E",
+    "text": "必须肾活检证实"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "SLE分类标准强调至少1条临床+1条免疫学证据，二者缺一不可；并非必须关节畸形或肾活检（肾活检为独立路径之一）。教材P823。",
+  "source_page": "教材P823",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch033-M3-X-020",
+  "module": "M3",
+  "module_name": "系统性红斑狼疮（M3 · SLE）",
+  "topic": "SLE活动与治疗X",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "下列关于系统性红斑狼疮病情活动性与治疗的描述，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "活动期补体C3、C4下降"
+   },
+   {
+    "label": "B",
+    "text": "抗dsDNA抗体滴度升高提示活动"
+   },
+   {
+    "label": "C",
+    "text": "糖皮质激素为首选快速抑制炎症的药物"
+   },
+   {
+    "label": "D",
+    "text": "重要脏器受累诱导缓解首选环磷酰胺或霉酚酸酯"
+   },
+   {
+    "label": "E",
+    "text": "皮肤蝶形红斑多伴有明显瘙痒"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "SLE活动期补体下降、抗dsDNA升高；激素首选快速抗炎，脏器受累诱导缓解用CTX/MMF；SLE皮疹通常无瘙痒，故E错。教材P821-825。",
+  "source_page": "教材P825",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ }
+]

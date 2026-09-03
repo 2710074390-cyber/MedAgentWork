@@ -29,10 +29,13 @@ PDF_NOTE = "题库/复习资料 PDF 由用户人工上传（管线不生产，�
 
 BANNED_SUB = re.compile(r"统一模板|TEST|v\d+\.\d")
 BANNED_MD = re.compile(r"复习资料批次|批次\s*\d+/\d+\s*完成|本批产出|本批统计|下一批"
-                       r"|V1-V13\s*视觉质量|视觉质量自检报告|视觉质量自检清单|全量自检")
+                       r"|V1-V\d+\s*视觉质量|视觉质量自检报告|视觉质量自检清单|全量自检")
 BANNED_HTML = re.compile(r"复习资料批次|下一批|本批产出")
 MERMAID = re.compile(r"```mermaid")
 FRONTMATTER = re.compile(r"^\s*---\s*$")
+# v1.1 复习资料 MD 标签白名单：仅允许 <b>/<i>；<details>/<summary> 为 v1.0 旧写法（仅提示）
+REVIEW_TAG_ALLOW = {"b", "i"}
+REVIEW_TAG_LEGACY = {"details", "summary"}
 
 rules = []
 
@@ -94,6 +97,16 @@ def main():
                 issues.append("Mermaid 代码块（应改 ASCII 图）")
             if t.lstrip().startswith("---") or t.startswith("---"):
                 issues.append("文件首部孤立 ---（front matter/残留分隔线）")
+            # v1.1 标签白名单：仅 <b>/<i>；其余（除旧 details/summary 外）判 FAIL
+            tags = re.findall(r"</?([a-zA-Z][a-zA-Z0-9-]*)[^>]*>", t)
+            bad = sorted({x.lower() for x in tags if x.lower() not in REVIEW_TAG_ALLOW})
+            if bad:
+                others = [x for x in bad if x not in REVIEW_TAG_LEGACY]
+                legacy = [x for x in bad if x in REVIEW_TAG_LEGACY]
+                if others:
+                    issues.append("非白名单 HTML 标签（仅允许 <b>/<i>）: " + ",".join(others[:6]))
+                if legacy:
+                    print(f"  ⚠️ {f.name}: 旧格式折叠区 {legacy}（产物契约 v1.1 起新产物禁用，旧产物仅提示）")
             check(f"复习资料 MD · {f.name}", not issues, "; ".join(issues) if issues else "")
         for f in html_files:
             t = f.read_text(encoding="utf-8")
