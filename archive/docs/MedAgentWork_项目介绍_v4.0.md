@@ -84,7 +84,7 @@ MedAgentWork 向用户交付的不是"让 AI 出几道题"，而是一套**可�
 ├── 知识库素材/            # RAG 教材索引、检索脚本、学科配置
 ├── 中间产物/ 质检报告/ 最终产物/ 复习资料/
 ├── tests/                 # 回归测试套件
-├── docs/                  # 本文档 + 使用指南 + 架构演进 + TODO
+├── docs/                  # 本文档 + TODO + 产物格式规范 + 目录结构说明 + 大四生成方案（≤5 活跃）
 ├── CONTEXT.md SOUL.md USER.md   # 共享规则（工具路径/硬约束/用户画像）
 ```
 
@@ -93,7 +93,7 @@ MedAgentWork 向用户交付的不是"让 AI 出几道题"，而是一套**可�
 
 ## 7. 开始使用
 
-1. 读 `docs/MedAgentWork_使用指南_v2.0.md`（唯一用户手册：DSH 主流程操作）
+1. 读 `操作流程.txt`（用户操作手册：DSH 主流程）与 `CONTEXT.md`（Agent 协作规则/工具路径）；旧版使用指南已归档至 `archive/docs/MedAgentWork_使用指南_v2.0.md`
 2. 把教材/笔记放入 `输入素材/{科目}/`，打开 DSH Web 新建会话，输入「开始新批次：科目+章节」
 3. 回显确认后全自动走完 MedGen→MedQC→MedFix→MedReview→终审；你只需审查与签收
 
