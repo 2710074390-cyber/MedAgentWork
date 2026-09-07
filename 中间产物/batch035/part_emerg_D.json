@@ -1,0 +1,1998 @@
+[
+  {
+    "id": "batch035-M7-A1-001",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS概念",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "多器官功能障碍综合征（MODS）是指机体在多种急性致病因素所致原发病变的基础上，相继引发2个或2个以上器官同时或序贯出现的功能障碍，其功能障碍的性质是",
+    "options": [
+      {
+        "label": "A",
+        "text": "不可逆性功能障碍"
+      },
+      {
+        "label": "B",
+        "text": "可逆性功能障碍"
+      },
+      {
+        "label": "C",
+        "text": "进行性加重的功能障碍"
+      },
+      {
+        "label": "D",
+        "text": "永久性功能障碍"
+      },
+      {
+        "label": "E",
+        "text": "静止性功能障碍"
+      }
+    ],
+    "answer": "B",
+    "explanation": "MODS是指在多种急性致病因素所致机体原发病变的基础上，相继引发2个或2个以上器官同时或序贯出现的可逆性功能障碍的临床综合征。MODS强调的是器官功能障碍是一个连续的、动态的演变过程，治愈后器官功能可望恢复到病前状态。教材P209。",
+    "source_page": "教材P209",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A1-002",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS与MOF关系",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "关于多器官功能障碍综合征（MODS）与多器官功能衰竭（MOF）的关系，下列描述正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "MODS与MOF是两个不同的疾病"
+      },
+      {
+        "label": "B",
+        "text": "MOF是MODS的终末阶段"
+      },
+      {
+        "label": "C",
+        "text": "MODS是MOF的终末阶段"
+      },
+      {
+        "label": "D",
+        "text": "MODS与MOF是同一概念的不同表述"
+      },
+      {
+        "label": "E",
+        "text": "MOF不可逆，MODS可逆"
+      }
+    ],
+    "answer": "B",
+    "explanation": "MODS的提出是对MOF认识上的深化，MOF是MODS的终末阶段。MODS的器官功能障碍可以是相对的，也可以是绝对的，强调的是器官功能障碍是一个连续的、动态的演变过程，MOF是MODS的终末阶段。教材P209。",
+    "source_page": "教材P209",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A1-003",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS概念提出年份",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "1992年，美国胸科医师协会（ACCP）/美国重症医学会（SCCM）正式提出MODS的概念，在此之前，1973年首次提出\"序贯性系统衰竭\"概念的学者是",
+    "options": [
+      {
+        "label": "A",
+        "text": "Tilney"
+      },
+      {
+        "label": "B",
+        "text": "Eiseman"
+      },
+      {
+        "label": "C",
+        "text": "Fry（弗雷）"
+      },
+      {
+        "label": "D",
+        "text": "Marshall"
+      },
+      {
+        "label": "E",
+        "text": "Sauaia"
+      }
+    ],
+    "answer": "A",
+    "explanation": "1973年Tilney首次提出了\"序贯性系统衰竭\"的概念，并指出继发功能障碍的器官可以是远隔器官。1977年Eiseman将不同原发疾病导致的多个器官相继发生功能衰竭命名为\"多器官功能衰竭\"。教材P209。",
+    "source_page": "教材P209",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A1-004",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS发病机制",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "目前认为MODS最重要的病理生理基础是",
+    "options": [
+      {
+        "label": "A",
+        "text": "组织缺血再灌注损伤"
+      },
+      {
+        "label": "B",
+        "text": "肠道屏障功能破坏"
+      },
+      {
+        "label": "C",
+        "text": "二次打击所致炎症反应失控"
+      },
+      {
+        "label": "D",
+        "text": "细菌毒素直接损害"
+      },
+      {
+        "label": "E",
+        "text": "基因调控异常"
+      }
+    ],
+    "answer": "C",
+    "explanation": "炎症反应被认为是MODS发病的基石，组织缺血-再灌注和/或全身炎症反应是其共同的病理生理基础，二次打击所致的炎症反应失控被认为是MODS最重要的病理生理基础。教材P210。",
+    "source_page": "教材P210",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A1-005",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "SIRS/CARS失衡",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "代偿性抗炎反应综合征（CARS）的病理生理特点是",
+    "options": [
+      {
+        "label": "A",
+        "text": "促炎症介质过度释放，抗炎症介质不足"
+      },
+      {
+        "label": "B",
+        "text": "抗炎症介质过度释放，免疫功能抑制"
+      },
+      {
+        "label": "C",
+        "text": "促炎与抗炎介质均过度释放"
+      },
+      {
+        "label": "D",
+        "text": "促炎与抗炎介质均释放不足"
+      },
+      {
+        "label": "E",
+        "text": "炎症介质释放正常，靶细胞反应性降低"
+      }
+    ],
+    "answer": "B",
+    "explanation": "代偿性抗炎症介质过度释放，促炎症介质/抗炎症介质平衡失调，导致免疫抑制状态，称为CARS。其特点是IL-4、IL-10、IL-11、IL-13等抗炎症介质释放过多，单核巨噬细胞活性下降，抗原呈递功能减弱，T细胞反应低下，造成\"免疫麻痹\"。教材P211。",
+    "source_page": "教材P211",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A1-006",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS临床特点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "MODS的临床特点**不包括**下列哪项",
+    "options": [
+      {
+        "label": "A",
+        "text": "从原发损伤到器官功能障碍有时间间隔"
+      },
+      {
+        "label": "B",
+        "text": "功能障碍的器官多是受损器官的远隔器官"
+      },
+      {
+        "label": "C",
+        "text": "循环系统处于\"高排低阻\"的高动力状态"
+      },
+      {
+        "label": "D",
+        "text": "持续性高代谢状态和能源利用障碍"
+      },
+      {
+        "label": "E",
+        "text": "循环系统处于\"低排高阻\"的低动力状态"
+      }
+    ],
+    "answer": "E",
+    "explanation": "MODS的临床特点包括：①从原发损伤到发生器官功能障碍有一定的时间间隔；②功能障碍的器官多是受损器官的远隔器官；③循环系统处于\"高排低阻\"的高动力状态；④持续性高代谢状态和能源利用障碍；⑤氧利用障碍。\"低排高阻\"是心源性休克等早期的表现，不是MODS的特点。教材P212。",
+    "source_page": "教材P212",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M7-A1-007",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS分类",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "原发性MODS与继发性MODS的主要区别在于",
+    "options": [
+      {
+        "label": "A",
+        "text": "发病是否与感染有关"
+      },
+      {
+        "label": "B",
+        "text": "发病是否与创伤有关"
+      },
+      {
+        "label": "C",
+        "text": "SIRS是否起主导作用"
+      },
+      {
+        "label": "D",
+        "text": "是否累及远隔器官"
+      },
+      {
+        "label": "E",
+        "text": "是否伴有循环功能障碍"
+      }
+    ],
+    "answer": "C",
+    "explanation": "原发性MODS是严重创伤、大量多次输血等明确的生理打击直接作用的结果，SIRS未起主导作用；继发性MODS并非损伤的直接后果，而是机体异常反应的结果，原发损伤引起SIRS，进一步导致自身破坏，造成远隔器官功能障碍。教材P212。",
+    "source_page": "教材P212",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A1-008",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS诊断标准",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "关于MODS修正的Fry诊断标准，循环系统功能障碍的诊断标准是收缩压低于90mmHg持续多长时间以上",
+    "options": [
+      {
+        "label": "A",
+        "text": "持续1小时以上"
+      },
+      {
+        "label": "B",
+        "text": "持续2小时以上"
+      },
+      {
+        "label": "C",
+        "text": "持续4小时以上"
+      },
+      {
+        "label": "D",
+        "text": "持续15分钟以上"
+      },
+      {
+        "label": "E",
+        "text": "持续30分钟以上"
+      }
+    ],
+    "answer": "A",
+    "explanation": "修正的Fry诊断标准中循环系统标准：收缩压<90mmHg，持续1小时以上，或循环需要药物支持才能维持稳定。呼吸系统标准：氧合指数(PaO2/FiO2)≤200mmHg。肾脏标准：血肌酐浓度>177μmol/L。教材P213。",
+    "source_page": "教材P213",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A2-001",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS临床分期判断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，55岁，因重症胰腺炎入院。入院后第3天出现呼吸急促、低氧血症，PaO2/FiO2为180mmHg，胸部X线片见双肺浸润。第5天出现少尿、血肌酐升高至200μmol/L。第7天出现上消化道出血，24小时出血量约500ml。该患者目前最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性呼吸窘迫综合征"
+      },
+      {
+        "label": "B",
+        "text": "急性肾损伤"
+      },
+      {
+        "label": "C",
+        "text": "应激性溃疡"
+      },
+      {
+        "label": "D",
+        "text": "多器官功能障碍综合征"
+      },
+      {
+        "label": "E",
+        "text": "全身炎症反应综合征"
+      }
+    ],
+    "answer": "D",
+    "explanation": "患者有重症胰腺炎诱因，相继出现呼吸功能（氧合指数≤200mmHg）、肾功能（血肌酐>177μmol/L）、胃肠道（上消化道出血24h>400ml）三个器官序贯功能障碍，符合MODS诊断标准。SIRS是全身性炎症反应，MODS是多个器官功能障碍。教材P213。",
+    "source_page": "教材P213",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A2-002",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "脓毒症诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，68岁，因肺部感染入院。查体：T 38.9℃，P 112次/分，R 26次/分，BP 96/60mmHg。意识模糊，呼吸急促。实验室检查：WBC 15.2×10^9/L，血乳酸3.5mmol/L。qSOFA评分：呼吸频率≥22次/分（1分），意识改变（1分），收缩压≤100mmHg（1分），共计3分。该患者最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "单纯肺部感染"
+      },
+      {
+        "label": "B",
+        "text": "全身炎症反应综合征"
+      },
+      {
+        "label": "C",
+        "text": "急性脓毒症"
+      },
+      {
+        "label": "D",
+        "text": "感染性休克"
+      },
+      {
+        "label": "E",
+        "text": "多器官功能障碍"
+      }
+    ],
+    "answer": "C",
+    "explanation": "有感染证据（肺部感染），qSOFA评分≥2分（本例3分），可诊断为脓毒症。感染性休克诊断需满足：充分液体复苏后仍需升压药维持MAP≥65mmHg且血乳酸>2mmol/L。本例尚无充分液体复苏后仍需升压药的证据，诊断为脓毒症更为准确。教材P214。",
+    "source_page": "教材P214",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A2-003",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "Marshall评分应用",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，60岁，严重创伤后出现多器官功能障碍。查体：GCS评分10分，实验室检查：PaO2/FiO2 160mmHg，血清肌酐280μmol/L，血胆红素85μmol/L，血小板计数60×10^9/L，PAR（压力调整后心率）为18次/分。根据Marshall多器官功能障碍综合征计分系统，该患者呼吸系统、肾脏、肝脏、血液系统、心血管系统和中枢神经系统的总分值约为",
+    "options": [
+      {
+        "label": "A",
+        "text": "8～9分"
+      },
+      {
+        "label": "B",
+        "text": "10～11分"
+      },
+      {
+        "label": "C",
+        "text": "12～13分"
+      },
+      {
+        "label": "D",
+        "text": "14～15分"
+      },
+      {
+        "label": "E",
+        "text": "16～17分"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Marshall计分：呼吸系统（PaO2/FiO2 151~225为2分），肾脏（肌酐201~350为2分），肝脏（胆红素61~120为2分），血液系统（血小板51~80为2分），心血管系统（PAR 15.1~20.0为2分），中枢神经系统（GCS 10~12为2分），总分约12分。MODS计分分数与病死率呈显著正相关。教材P213-214。",
+    "source_page": "教材P213-214",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A2-004",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "脓毒症治疗决策",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，45岁，因化脓性胆管炎致脓毒症、感染性休克。经充分液体复苏后，血压仍依赖去甲肾上腺素维持，血乳酸3.8mmol/L。关于该患者的治疗措施，下列哪项是正确的",
+    "options": [
+      {
+        "label": "A",
+        "text": "首选多巴胺作为血管升压药(降血压)"
+      },
+      {
+        "label": "B",
+        "text": "首选去甲肾上腺素纠正低血压"
+      },
+      {
+        "label": "C",
+        "text": "常规大剂量使用糖皮质激素"
+      },
+      {
+        "label": "D",
+        "text": "抗生素疗程固定为14天去甲肾上腺素"
+      },
+      {
+        "label": "E",
+        "text": "早期给予高容量机械通气"
+      }
+    ],
+    "answer": "B",
+    "explanation": "脓毒症伴低血压者首选去甲肾上腺素或多巴胺作为血管升压药物，但去甲肾上腺素是首选推荐。激素仅对液体复苏和血管升压药治疗不敏感者考虑小剂量短疗程应用。抗生素推荐疗程一般为7~10天。机械通气应采用小潮气量肺保护策略。教材P215。",
+    "source_page": "教材P215",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A3-001",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS分期判断",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，50岁，因严重多发伤入院。入院后第1天出现烦躁，轻度呼吸性碱中毒，少尿但利尿剂有效，血小板轻度减少。根据MODS临床分期，该患者目前处于哪一期",
+    "options": [
+      {
+        "label": "A",
+        "text": "1期"
+      },
+      {
+        "label": "B",
+        "text": "2期"
+      },
+      {
+        "label": "C",
+        "text": "3期"
+      },
+      {
+        "label": "D",
+        "text": "4期"
+      },
+      {
+        "label": "E",
+        "text": "无法分期"
+      }
+    ],
+    "answer": "A",
+    "explanation": "MODS 1期临床表现：一般情况正常或轻度烦躁；循环系统需补充容量；呼吸系统轻度呼吸性碱中毒；肾脏少尿、利尿剂有效；胃肠道胀气；肝脏正常或轻度胆汁淤积；血液系统正常或轻度异常。该患者符合1期表现。教材P212。",
+    "source_page": "教材P212",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-A3-002",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS治疗原则",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性，50岁，因严重多发伤入院。入院后第1天出现烦躁，轻度呼吸性碱中毒，少尿但利尿剂有效，血小板轻度减少。该患者目前最重要的治疗原则是",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即开始大剂量激素冲击治疗"
+      },
+      {
+        "label": "B",
+        "text": "积极控制原发病并加强器官功能监测"
+      },
+      {
+        "label": "C",
+        "text": "立即开始持续肾脏替代治疗"
+      },
+      {
+        "label": "D",
+        "text": "立即开始机械通气治疗"
+      },
+      {
+        "label": "E",
+        "text": "立即开始抗凝治疗"
+      }
+    ],
+    "answer": "B",
+    "explanation": "MODS 1期为早期阶段，此时器官功能障碍尚可逆。治疗重点在于早期识别、积极控制原发病（如感染、创伤等），严密监测各器官功能变化，及时干预，阻断单一受累脏器向多脏器发展的病理生理过程。对高危病人进行严密监测，能早诊断、早治疗，降低病死率。教材P215-216。",
+    "source_page": "教材P215-216",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-B1-001",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS发病机制学说",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "MODS发病机制中，强调机体遭受初次损伤后，经过一段时间再次出现损伤性刺激，炎症反应被放大而导致器官功能障碍的学说称为",
+    "options": [
+      {
+        "label": "A",
+        "text": "缺血再灌注损伤学说"
+      },
+      {
+        "label": "B",
+        "text": "炎症反应失控学说"
+      },
+      {
+        "label": "C",
+        "text": "肠道屏障功能破坏学说"
+      },
+      {
+        "label": "D",
+        "text": "二次打击或双相预激学说"
+      },
+      {
+        "label": "E",
+        "text": "基因调控学说"
+      }
+    ],
+    "answer": "D",
+    "explanation": "二次打击或双相预激学说强调机体遭受初次打击后，炎症反应被预激（priming），再次受到打击后炎症反应被放大，导致器官功能障碍。各种学说从不同侧面阐明了MODS的发病机制，相互之间有一定重叠和联系。教材P210。",
+    "source_page": "教材P210",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-B1-002",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS发病机制学说",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "MODS发病机制中被认为是发病基石，使治疗从控制感染延伸到调控机体炎症反应的学说是",
+    "options": [
+      {
+        "label": "A",
+        "text": "组织缺血再灌注损伤学说"
+      },
+      {
+        "label": "B",
+        "text": "炎症反应失控学说"
+      },
+      {
+        "label": "C",
+        "text": "肠道屏障功能破坏学说"
+      },
+      {
+        "label": "D",
+        "text": "二次打击或双相预激学说"
+      },
+      {
+        "label": "E",
+        "text": "基因调控学说炎症反应"
+      }
+    ],
+    "answer": "B",
+    "explanation": "炎症反应学说被认为是MODS发病的基石。SIRS的提出使对MODS的研究从感染、创伤等本身转移到机体炎症反应方面上来，也使MODS的治疗从控制感染、创伤延伸到调控机体炎症上。教材P210。",
+    "source_page": "教材P210",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M7-X-001",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "MODS高危因素",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "下列哪些是诱发MODS的主要高危因素",
+    "options": [
+      {
+        "label": "A",
+        "text": "年龄≥55岁"
+      },
+      {
+        "label": "B",
+        "text": "创伤严重度评分≥25分"
+      },
+      {
+        "label": "C",
+        "text": "大量反复输血"
+      },
+      {
+        "label": "D",
+        "text": "持续存在感染病灶"
+      },
+      {
+        "label": "E",
+        "text": "长期营养不良"
+      }
+    ],
+    "answer": "ABCDE",
+    "explanation": "诱发MODS的主要高危因素包括：复苏不充分或延迟复苏、营养不良、持续存在感染病灶、肠道缺血性损伤、持续存在炎症病灶、外科手术、基础脏器功能障碍、糖尿病、年龄≥55岁、应用糖皮质激素、嗜酒、恶性肿瘤、大量反复输血、使用抑酸药物、创伤严重度评分≥25分、高乳酸血症等。教材P210。[源:考研真题 GS-1999-158]",
+    "source_page": "教材P210",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-1999-158",
+      "year": 1999,
+      "source": "1999考研西综·第158题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M7-X-002",
+    "module": "M7",
+    "module_name": "多器官功能障碍综合征",
+    "topic": "脓毒症治疗",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于脓毒症的急诊处理，正确的措施有",
+    "options": [
+      {
+        "label": "A",
+        "text": "对严重脓毒症伴组织低灌注者应早期实施液体复苏"
+      },
+      {
+        "label": "B",
+        "text": "首选去甲肾上腺素纠正感染性休克低血压"
+      },
+      {
+        "label": "C",
+        "text": "对所有脓毒症病人常规大剂量使用糖皮质激素"
+      },
+      {
+        "label": "D",
+        "text": "脓毒症所致ARDS应尽早行小潮气量肺保护性通气"
+      },
+      {
+        "label": "E",
+        "text": "推荐抗生素疗程一般为7～10天"
+      }
+    ],
+    "answer": "ABDE",
+    "explanation": "A对：严重全身性感染伴组织低灌注者应立即实施早期复苏。B对：首选去甲肾上腺素或多巴胺作为纠正感染性休克低血压的血管升压药物。C错：仅对液体复苏和血管升压药治疗不敏感者考虑小剂量短疗程应用激素，不常规大剂量使用。D对：脓毒症所致ALI/ARDS病人应尽早机械通气，实行小潮气量、适当PEEP的肺保护性通气策略。E对：推荐抗生素疗程一般为7～10天。教材P215-216。",
+    "source_page": "教材P215-216",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": true,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M8-A1-001",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "心脏骤停三联征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "心脏骤停的\"三联征\"是指",
+    "options": [
+      {
+        "label": "A",
+        "text": "意识丧失、呼吸停止、血压测不出"
+      },
+      {
+        "label": "B",
+        "text": "意识丧失、呼吸停止、大动脉搏动消失"
+      },
+      {
+        "label": "C",
+        "text": "意识丧失、心音消失、双侧瞳孔散大"
+      },
+      {
+        "label": "D",
+        "text": "呼吸停止、心音消失、大动脉搏动消失"
+      },
+      {
+        "label": "E",
+        "text": "意识丧失、双侧瞳孔散大、心音消失"
+      }
+    ],
+    "answer": "B",
+    "explanation": "心脏骤停\"三联征\"为突发意识丧失、呼吸停止和大动脉搏动消失。临床表现为：突然摔倒，意识丧失；呼吸停止或叹息样呼吸；大动脉搏动消失，触摸不到颈、股动脉搏动，心音消失；双侧瞳孔散大，对光反射消失。教材P232。",
+    "source_page": "教材P232",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-002",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "心脏骤停心电图类型",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "下列哪项**不是**心脏骤停的心电图表现类型",
+    "options": [
+      {
+        "label": "A",
+        "text": "心室颤动"
+      },
+      {
+        "label": "B",
+        "text": "无脉性室速"
+      },
+      {
+        "label": "C",
+        "text": "心室静止"
+      },
+      {
+        "label": "D",
+        "text": "无脉性电活动"
+      },
+      {
+        "label": "E",
+        "text": "心房颤动"
+      }
+    ],
+    "answer": "E",
+    "explanation": "心脏骤停的心电图表现包括：心室颤动（VF）、无脉性室性心动过速、心室静止（VA）、无脉性电活动（PEA）。心房颤动不是心脏骤停的心电图表现，心房颤动时心脏仍有射血功能。教材P232。",
+    "source_page": "教材P232",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M8-A1-003",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "脑缺血耐受时间",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "正常体温情况下，心脏骤停后脑细胞开始发生不可逆缺血损害的时间是",
+    "options": [
+      {
+        "label": "A",
+        "text": "2分钟后"
+      },
+      {
+        "label": "B",
+        "text": "4分钟后"
+      },
+      {
+        "label": "C",
+        "text": "6分钟后"
+      },
+      {
+        "label": "D",
+        "text": "8分钟后"
+      },
+      {
+        "label": "E",
+        "text": "10分钟后"
+      }
+    ],
+    "answer": "B",
+    "explanation": "大脑是人体最易受缺血缺氧损害的器官。正常体温情况下，心脏骤停4分钟后，脑细胞开始发生不可逆的缺血损害；心脏骤停10分钟内未行心肺复苏，神经功能极少能恢复到发病前的水平。教材P231-232。",
+    "source_page": "教材P231-232",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-004",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "胸外按压机制",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "关于胸外按压的机制，将血液驱向体循环和肺循环的主要理论是",
+    "options": [
+      {
+        "label": "A",
+        "text": "心泵理论"
+      },
+      {
+        "label": "B",
+        "text": "胸泵理论"
+      },
+      {
+        "label": "C",
+        "text": "腹泵理论"
+      },
+      {
+        "label": "D",
+        "text": "肺泵理论"
+      },
+      {
+        "label": "E",
+        "text": "主动脉泵理论"
+      }
+    ],
+    "answer": "A",
+    "explanation": "心泵理论认为胸外按压时心脏受到胸骨和胸椎的挤压，心室和大动脉之间产生压力梯度，驱使血液流向体循环和肺循环。胸泵理论认为胸外按压时胸腔内压力增高，在胸腔内血管和胸腔外血管之间形成压力梯度。教材P232。",
+    "source_page": "教材P232",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-005",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "高质量胸外按压标准",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "高质量胸外按压的按压频率和按压幅度标准是",
+    "options": [
+      {
+        "label": "A",
+        "text": "频率80～100次/分，幅度4～5cm"
+      },
+      {
+        "label": "B",
+        "text": "频率80～100次/分，幅度5～6cm"
+      },
+      {
+        "label": "C",
+        "text": "频率100～120次/分，幅度5～6cm"
+      },
+      {
+        "label": "D",
+        "text": "频率100～120次/分，幅度4～5cm"
+      },
+      {
+        "label": "E",
+        "text": "频率120～140次/分，幅度5～6cm"
+      }
+    ],
+    "answer": "C",
+    "explanation": "高质量胸外按压标准：按压频率为100～120次/分；按压幅度为5～6cm；确保按压后放松期胸廓完全恢复原状；尽量减少胸外按压中断，中断时间<10秒。按压与放松时间相等，放松时手掌不离开胸壁。教材P235。",
+    "source_page": "教材P235",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-006",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "CPR按压通气比",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "成人单人心肺复苏时，胸外按压与人工通气的比例是",
+    "options": [
+      {
+        "label": "A",
+        "text": "5:1"
+      },
+      {
+        "label": "B",
+        "text": "15:2"
+      },
+      {
+        "label": "C",
+        "text": "15:1"
+      },
+      {
+        "label": "D",
+        "text": "30:2"
+      },
+      {
+        "label": "E",
+        "text": "30:1"
+      }
+    ],
+    "answer": "D",
+    "explanation": "成人无论单人还是双人CPR，按压与通气比均为30:2。每5组30:2的CPR为一个周期，时间约2分钟。2人以上CPR时应每隔2分钟轮换一次，以免按压者疲劳使按压质量和频率降低。教材P235。",
+    "source_page": "教材P235",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-007",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "开放气道方法",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "对怀疑有颈椎损伤的心脏骤停患者，开放气道时应采用的方法是",
+    "options": [
+      {
+        "label": "A",
+        "text": "仰头抬颏法"
+      },
+      {
+        "label": "B",
+        "text": "双手托颌法"
+      },
+      {
+        "label": "C",
+        "text": "仰头举颏法"
+      },
+      {
+        "label": "D",
+        "text": "气管插管法"
+      },
+      {
+        "label": "E",
+        "text": "口咽通气管法"
+      }
+    ],
+    "answer": "B",
+    "explanation": "双手托颌法用于怀疑病人有颈椎受伤时。病人平卧，急救者位于病人头侧，双手拇指置于病人口角旁，其余手指托住病人下颌部位，在保证头部和颈部固定的前提下，用力将病人下颌向上抬起。仰头抬颏法用于无明显头颈部受伤者。教材P236。",
+    "source_page": "教材P236",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-008",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "电除颤能量选择",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "成人电除颤时，双相波除颤的首次能量选择是",
+    "options": [
+      {
+        "label": "A",
+        "text": "50～100J"
+      },
+      {
+        "label": "B",
+        "text": "120～200J"
+      },
+      {
+        "label": "C",
+        "text": "200～300J"
+      },
+      {
+        "label": "D",
+        "text": "300～360J"
+      },
+      {
+        "label": "E",
+        "text": "360J"
+      }
+    ],
+    "answer": "B",
+    "explanation": "双相波除颤能量选择为120～200J，随后的除颤能量选择可使用第一次的能量或增加能量。单相波除颤使用360J。电击除颤是终止心室颤动的最有效方法，早期电击除颤是决定心脏骤停病人能否存活的关键因素。教材P237。",
+    "source_page": "教材P237",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-009",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "CPR复苏药物",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "心肺复苏中，成人首选的血管升压药物及其推荐剂量是",
+    "options": [
+      {
+        "label": "A",
+        "text": "肾上腺素1mg，每隔3～5分钟可重复"
+      },
+      {
+        "label": "B",
+        "text": "去甲肾上腺素1mg，每隔5分钟可重复"
+      },
+      {
+        "label": "C",
+        "text": "肾上腺素2mg，每隔5分钟可重复"
+      },
+      {
+        "label": "D",
+        "text": "多巴胺5mg，每隔3～5分钟可重复"
+      },
+      {
+        "label": "E",
+        "text": "多巴酚丁胺5mg，每隔3～5分钟可重复"
+      }
+    ],
+    "answer": "A",
+    "explanation": "肾上腺素在复苏过程中的作用主要是激动α受体，提高复苏过程中心脏和脑的灌注压。推荐成人首选给予肾上腺素1mg，每隔3～5分钟可重复使用。对CPR、电除颤和血管升压药物无反应的VF/VT，首选胺碘酮。教材P242。[源:考研真题 GS-1994-090]",
+    "source_page": "教材P242",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-1994-090",
+      "year": 1994,
+      "source": "1994考研西综·第90题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M8-A1-010",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "胺碘酮用法",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "心肺复苏中，对CPR、电除颤和血管升压药物无反应的室颤/无脉性室速（VF/VT），首选的抗心律失常药物及其初始剂量是",
+    "options": [
+      {
+        "label": "A",
+        "text": "利多卡因1.5mg/kg静脉注射"
+      },
+      {
+        "label": "B",
+        "text": "硫酸镁2g静脉注射"
+      },
+      {
+        "label": "C",
+        "text": "利多卡因100mg静脉注射"
+      },
+      {
+        "label": "D",
+        "text": "胺碘酮150mg静脉注射"
+      },
+      {
+        "label": "E",
+        "text": "胺碘酮300mg静脉注射"
+      }
+    ],
+    "answer": "E",
+    "explanation": "对CPR、电除颤和血管升压药物无反应的VF/VT，首选胺碘酮，初始剂量为300mg（或5mg/kg），静脉注射，无效时可再加用150mg。利多卡因作为无胺碘酮时的替代药物。镁剂用于尖端扭转型室性心动过速。教材P242。",
+    "source_page": "教材P242",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-011",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "复苏有效性监测",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "心肺复苏中，反映心输出量的可靠指标是",
+    "options": [
+      {
+        "label": "A",
+        "text": "动脉收缩压(SBP)"
+      },
+      {
+        "label": "B",
+        "text": "呼气末CO2分压(PetCO2)"
+      },
+      {
+        "label": "C",
+        "text": "中心静脉压(CVP)"
+      },
+      {
+        "label": "D",
+        "text": "肺动脉楔压(PAWP)"
+      },
+      {
+        "label": "E",
+        "text": "血乳酸水平(Lac)"
+      }
+    ],
+    "answer": "B",
+    "explanation": "呼气末CO2分压（PetCO2）可作为心肺复苏中反映心输出量的可靠指标。PetCO2与冠状动脉灌注压（CPP）、脑灌注压变化呈正相关。在未使用血管活性药物的情况下，PetCO2<10mmHg提示预后不良。CPP>15mmHg是复苏成功的必需条件。教材P234。",
+    "source_page": "教材P234",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-012",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "脑复苏低温治疗",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "ILCOR推荐的院外心脏骤停意识丧失成人低温治疗的目标温度和持续时间是",
+    "options": [
+      {
+        "label": "A",
+        "text": "30～32℃，持续6～12小时"
+      },
+      {
+        "label": "B",
+        "text": "30～32℃，持续24～48小时"
+      },
+      {
+        "label": "C",
+        "text": "32～34℃，持续12～24小时"
+      },
+      {
+        "label": "D",
+        "text": "32～34℃，持续24～48小时"
+      },
+      {
+        "label": "E",
+        "text": "34～36℃，持续12～24小时"
+      }
+    ],
+    "answer": "C",
+    "explanation": "ILCOR于2003年提出：院外心脏骤停和初始心律为室颤的意识丧失成人，应予32～34℃的低温治疗12～24小时。对其他初始心律和院内心脏骤停的病人，此治疗同样有益。低温治疗已被证实是有效的脑保护措施。教材P247。",
+    "source_page": "教材P247",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A1-013",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "心脏骤停后综合征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "心脏骤停后综合征（PCAS）被定义为严重的全身系统性缺血后出现的",
+    "options": [
+      {
+        "label": "A",
+        "text": "单一器官功能障碍"
+      },
+      {
+        "label": "B",
+        "text": "多器官功能障碍和衰竭"
+      },
+      {
+        "label": "C",
+        "text": "单纯脑功能障碍"
+      },
+      {
+        "label": "D",
+        "text": "单纯心肌功能障碍"
+      },
+      {
+        "label": "E",
+        "text": "呼吸功能衰竭"
+      }
+    ],
+    "answer": "B",
+    "explanation": "心脏骤停后综合征（PCAS）被定义为严重的全身系统性缺血后多器官功能障碍和衰竭。复苏后期的病理生理特征为持续缺血诱发的代谢紊乱及再灌注启动的系列级联反应，两者都介导了细胞的继发性损伤。包括心脏骤停后脑损害、心肌损害、全身性缺血/再灌注损伤等。教材P232-233。",
+    "source_page": "教材P232-233",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A2-001",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "心脏骤停判断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，60岁，冠心病病史。在餐厅就餐时突然倒地，呼之不应。你作为现场第一目击者，应首先采取的措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "拨打急救电话等待专业救援"
+      },
+      {
+        "label": "B",
+        "text": "判断无反应启动EMSS开始CPR"
+      },
+      {
+        "label": "C",
+        "text": "立即行气管插管通气"
+      },
+      {
+        "label": "D",
+        "text": "立即实施电除颤治疗"
+      },
+      {
+        "label": "E",
+        "text": "立即将患者送往医院"
+      }
+    ],
+    "answer": "B",
+    "explanation": "发现突然意识丧失倒地者，现场人员首先要确定现场安全，采用动作或呼叫判断病人有无意识。无反应病人应采取平卧位，立即启动EMSS，检查呼吸和脉搏（5～10秒），确认无呼吸或仅有异常呼吸且不能明确触及大动脉搏动时，立即开始CPR。教材P235。",
+    "source_page": "教材P235",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A2-002",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "电除颤时机判断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，55岁，院外发生心脏骤停，未被目击。急救人员到达现场时距离呼救已有较长时间。此时应首先采取的急救措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即实施电除颤治疗"
+      },
+      {
+        "label": "B",
+        "text": "先做5组CPR约2分钟再分析心律"
+      },
+      {
+        "label": "C",
+        "text": "立即行气管插管通气"
+      },
+      {
+        "label": "D",
+        "text": "立即静脉注射肾上腺素"
+      },
+      {
+        "label": "E",
+        "text": "立即建立静脉通道"
+      }
+    ],
+    "answer": "B",
+    "explanation": "当院外心脏骤停发生时未被急救人员目击，尤其是从呼救至急救人员到达现场的时间超过5分钟的情况下，先进行30次胸外按压，再做2次人工呼吸，行5组CPR（约2分钟），分析心律后实施电除颤。对心室颤动时间>4分钟的病人，电击前的胸外按压尤为重要。教材P237。",
+    "source_page": "教材P237",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A2-003",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "气道异物处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，70岁，进食肉类时突然出现剧烈呛咳，随后不能说话，呼吸困难，双手抓住颈部，面色发绀。此时最紧急的处理措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即行气管切开术"
+      },
+      {
+        "label": "B",
+        "text": "腹部冲击法(Heimlich)"
+      },
+      {
+        "label": "C",
+        "text": "立即行气管插管术"
+      },
+      {
+        "label": "D",
+        "text": "立即给予高流量吸氧"
+      },
+      {
+        "label": "E",
+        "text": "立即行胸部冲击法"
+      }
+    ],
+    "answer": "B",
+    "explanation": "患者典型气道完全阻塞表现（不能说话、呼吸困难、双手抓住颈部、发绀），应立即行腹部冲击法（Heimlich法）解除气道异物。救助者站在病人身后，双臂环抱病人腰部，一手握拳，拇指侧顶住剑突与脐间的腹中线部位，快速向内、向上冲击腹部。妊娠末期或过度肥胖者用胸部冲击法。教材P239。",
+    "source_page": "教材P239",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A2-004",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "淹溺复苏要点",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，25岁，在游泳池溺水被救上岸。查体：意识丧失，无呼吸，无脉搏。现场急救人员首先应采取的复苏措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即倒水，控出呼吸道内积水"
+      },
+      {
+        "label": "B",
+        "text": "立即行胸外心脏按压"
+      },
+      {
+        "label": "C",
+        "text": "即行人工通气后再胸外按压"
+      },
+      {
+        "label": "D",
+        "text": "立即实施电除颤"
+      },
+      {
+        "label": "E",
+        "text": "即建立静脉通道给予肾上腺素"
+      }
+    ],
+    "answer": "C",
+    "explanation": "淹溺最重要的复苏措施是尽快恢复通气和氧供。人工通气是淹溺复苏最重要的措施，如未发生心脏骤停，迅速人工通气可增加存活机会。大多数淹溺者在溺水过程中只吸入少量水，并不造成气道梗阻，人工呼吸前只需适当清除口中可视异物。检查无意识、无呼吸后，立即胸外心脏按压，按压与通气比30:2。教材P243。",
+    "source_page": "教材P243",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A2-005",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "妊娠CPR特点",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性，30岁，妊娠28周，因突发心脏骤停需行心肺复苏。关于孕妇CPR的特殊注意事项，正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "孕妇应取仰卧位实施胸外按压"
+      },
+      {
+        "label": "B",
+        "text": "将患者整体向左侧倾斜15°~30°"
+      },
+      {
+        "label": "C",
+        "text": "胸外按压部位取胸骨下段"
+      },
+      {
+        "label": "D",
+        "text": "人工通气时无需压迫环状软骨"
+      },
+      {
+        "label": "E",
+        "text": "导管内径较非孕妇女大0.5~1.0mm"
+      }
+    ],
+    "answer": "B",
+    "explanation": "妊娠20周后，为减少妊娠子宫对静脉回流和心输出量的影响，应垫高右腹部使孕妇向左侧倾斜15°～30°后再实施胸外按压。因膈肌抬高，胸外按压可取胸骨中间稍上部位。对无意识孕妇人工通气时应持续压迫环状软骨以防误吸。孕妇可能存在气道水肿，使用气管导管内径要小0.5～1.0mm。教材P244。",
+    "source_page": "教材P244",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A2-006",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "复苏后脑灌注管理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，50岁，心脏骤停经CPR后恢复自主循环（ROSC），但意识未恢复。关于脑复苏处理，下列哪项是正确的",
+    "options": [
+      {
+        "label": "A",
+        "text": "积极降低血压以减轻脑水肿"
+      },
+      {
+        "label": "B",
+        "text": "过度通气PaCO2降至25~30mmHg"
+      },
+      {
+        "label": "C",
+        "text": "舒张压<120mmHg时一般不需要处理"
+      },
+      {
+        "label": "D",
+        "text": "常规输注含糖液体补充能量"
+      },
+      {
+        "label": "E",
+        "text": "体温升高时首选药物降温处理"
+      }
+    ],
+    "answer": "C",
+    "explanation": "脑复苏需维持足够的脑灌注压。在一定的高血压状态进一步提高CBF可能对脑复苏有利，舒张压<120mmHg时一般不需要处理。过度通气使PaCO2降低可引起脑血管收缩而减少CBF，维持PaCO2在35～40mmHg是安全和合适的。除非有低血糖发生，一般应避免输注含糖液体。体温升高应积极处理，可药物或物理降温。教材P246-247。",
+    "source_page": "教材P246-247",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A3-001",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "CPR操作流程",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，65岁，在家中突然倒地，家属发现其呼之不应，无呼吸，立即拨打急救电话。急救人员到达现场后，确认患者无意识、无呼吸、无脉搏。该患者CPR的复苏顺序应为",
+    "options": [
+      {
+        "label": "A",
+        "text": "ABC(开放气道人工呼吸胸外按压)"
+      },
+      {
+        "label": "B",
+        "text": "CAB(胸外按压开放气道人工呼吸)"
+      },
+      {
+        "label": "C",
+        "text": "BAC(人工呼吸开放气道胸外按压)"
+      },
+      {
+        "label": "D",
+        "text": "ACB(开放气道胸外按压人工呼吸)"
+      },
+      {
+        "label": "E",
+        "text": "CBA(胸外按压人工呼吸开放气道)"
+      }
+    ],
+    "answer": "B",
+    "explanation": "心脏骤停大多由心脏疾病引起，共识推荐以先进行胸外按压为序，流程为C—A—B。即先进行胸外按压（Circulation），再开放气道（Airway），然后人工呼吸（Breathing）。因为心脏骤停最初数分钟内，血中氧合血红蛋白还保持在一定水平，心、脑的氧供更多地取决于血流量的降低程度。教材P235。[源:考研真题 GS-2019-049]",
+    "source_page": "教材P235",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2019-049",
+      "year": 2019,
+      "source": "2019考研西综·第49题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M8-A3-002",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "电除颤与CPR配合",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，65岁，在家中突然倒地，家属发现其呼之不应，无呼吸，立即拨打急救电话。急救人员到达现场后，确认患者无意识、无呼吸、无脉搏。心电监护显示心室颤动。在给予1次电除颤后，下一步应立刻采取的措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即检查心律和脉搏"
+      },
+      {
+        "label": "B",
+        "text": "立即再次行电除颤"
+      },
+      {
+        "label": "C",
+        "text": "行5组CPR约2分钟再查心律脉搏"
+      },
+      {
+        "label": "D",
+        "text": "立即静脉注射肾上腺素"
+      },
+      {
+        "label": "E",
+        "text": "立即行气管插管术"
+      }
+    ],
+    "answer": "C",
+    "explanation": "当发现心室颤动或无脉性室性心动过速时，急救人员应先电击除颤1次，后立刻进行5组CPR（约2分钟），之后再检查心律和脉搏，必要时再行电除颤。电除颤后心脏常处于无灌注或低灌注状态，电击后立刻胸外按压2分钟有助于心律恢复。教材P237。",
+    "source_page": "教材P237",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-A3-003",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "复苏药物使用时机",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性，65岁，在家中突然倒地，家属发现其呼之不应，无呼吸，立即拨打急救电话。急救人员到达现场后，确认患者无意识、无呼吸、无脉搏。心电监护显示心室颤动。经1次电除颤和5组CPR后，复查心电监护仍显示心室颤动。此时应给予的药物是",
+    "options": [
+      {
+        "label": "A",
+        "text": "静注肾上腺素1mg,继续CPR后再除颤"
+      },
+      {
+        "label": "B",
+        "text": "静注硫酸镁2g,继续CPR后再次电除颤"
+      },
+      {
+        "label": "C",
+        "text": "静注利多卡因100mg,继续CPR"
+      },
+      {
+        "label": "D",
+        "text": "静注碳酸氢钠100ml,继续CPR"
+      },
+      {
+        "label": "E",
+        "text": "静注胺碘酮300mg,继续CPR后再除颤"
+      }
+    ],
+    "answer": "A",
+    "explanation": "复苏抢救程序：在1次电击和CPR后，如VF/VT持续存在，推荐给予血管升压药物（肾上腺素1mg），但不能因给药而中断CPR。反复电除颤、CPR和应用血管升压药后，如果VF/VT仍持续存在，可使用抗心律失常药（首选胺碘酮）。本例为电除颤+CPR后VF仍持续，应首先给予血管升压药物。教材P241-242。",
+    "source_page": "教材P241-242",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-B1-001",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "CPR给药途径",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "心肺复苏过程中，药物经气管内给药时，用量是经静脉给药剂量的多少倍",
+    "options": [
+      {
+        "label": "A",
+        "text": "1倍剂量"
+      },
+      {
+        "label": "B",
+        "text": "2~2.5倍剂量"
+      },
+      {
+        "label": "C",
+        "text": "3~4倍剂量"
+      },
+      {
+        "label": "D",
+        "text": "5倍剂量"
+      },
+      {
+        "label": "E",
+        "text": "无需调整剂量"
+      }
+    ],
+    "answer": "B",
+    "explanation": "如果静脉通道不能建立，复苏药物可经由气管内给予，用量是经静脉给药剂量的2～2.5倍。静脉给药是最常用途径，一般药物经由外周静脉到达心脏需要1～2分钟。骨髓途径效果相当于中心静脉通道。教材P241。",
+    "source_page": "教材P241",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-B1-002",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "CPR给药途径",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "心肺复苏过程中，无法建立静脉通道时，其效果相当于中心静脉通道的给药途径是",
+    "options": [
+      {
+        "label": "A",
+        "text": "气管内给药"
+      },
+      {
+        "label": "B",
+        "text": "骨髓腔内给药"
+      },
+      {
+        "label": "C",
+        "text": "肌肉注射"
+      },
+      {
+        "label": "D",
+        "text": "皮下注射"
+      },
+      {
+        "label": "E",
+        "text": "口服给药"
+      }
+    ],
+    "answer": "B",
+    "explanation": "由于骨髓腔有不会塌陷的血管丛，骨髓途径是可供选择的给药途径，其效果相当于中心静脉通道。如果无法建立静脉通道，可建立经骨髓给药通道。气管内给药用量是经静脉给药剂量的2～2.5倍。教材P241。",
+    "source_page": "教材P241",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-X-001",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "生存链环节",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "记忆",
+    "stem": "院外心脏骤停（OHCA）或院内心脏骤停（IHCA）的\"生存链\"包括的环节有",
+    "options": [
+      {
+        "label": "A",
+        "text": "识别心脏骤停并启动急救系统"
+      },
+      {
+        "label": "B",
+        "text": "立即行心肺复苏"
+      },
+      {
+        "label": "C",
+        "text": "尽早实施电除颤"
+      },
+      {
+        "label": "D",
+        "text": "进行高级生命支持"
+      },
+      {
+        "label": "E",
+        "text": "复苏后监护和幸存者康复"
+      }
+    ],
+    "answer": "ABCDE",
+    "explanation": "生存链包括六个环节：①识别心脏骤停和启动急救服务系统；②立即心肺复苏；③尽早电除颤；④进行高级生命支持；⑤复苏后监护；⑥幸存者康复。前三个环节构成基本生命支持（BLS）的主要内容。教材P234。",
+    "source_page": "教材P234",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M8-X-002",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "心脏骤停病因",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "下列哪些因素可以引起心脏骤停",
+    "options": [
+      {
+        "label": "A",
+        "text": "冠心病心肌梗死"
+      },
+      {
+        "label": "B",
+        "text": "严重低钾血症"
+      },
+      {
+        "label": "C",
+        "text": "张力性气胸"
+      },
+      {
+        "label": "D",
+        "text": "淹溺（溺水）"
+      },
+      {
+        "label": "E",
+        "text": "药物中毒"
+      }
+    ],
+    "answer": "ABCDE",
+    "explanation": "心脏骤停的原因包括心脏性（冠心病、心肌病、电生理紊乱等）、呼吸性（通气不足、上呼吸道梗阻、呼吸衰竭）、循环性（张力性气胸、心脏压塞、肺栓塞、出血、脓毒症等）、代谢性（低钾血症、高钾血症、低镁血症等）、中毒（药物、毒品、气体中毒）和环境因素（雷击、触电、低/高温、淹溺）等。教材P231。",
+    "source_page": "教材P231",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M8-X-003",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "小儿CPR特点",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于小儿心肺复苏的特点，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "小儿心脏骤停多因呼吸功能障碍所致，成人多因心脏原因所致"
+      },
+      {
+        "label": "B",
+        "text": "小儿心脏骤停中约78%为心室静止"
+      },
+      {
+        "label": "C",
+        "text": "8岁以下患儿应先求救EMSS、再急救"
+      },
+      {
+        "label": "D",
+        "text": "婴儿胸外按压可采用双指按压法"
+      },
+      {
+        "label": "E",
+        "text": "小儿双人复苏时按压与通气比为15:2"
+      }
+    ],
+    "answer": "ABDE",
+    "explanation": "A对：成人心脏骤停多因突发心脏原因，小儿更多因呼吸功能障碍。B对：小儿心脏骤停中约78%是心室静止，其次为心动过缓或无脉性电活动，室性心律发生率<10%。C错：只有一位急救人员时，对8岁以下患儿应先急救2分钟再求救EMSS，即先急救、再求救。D对：婴儿可采用平卧位双指按压法。E对：小儿双人复苏时按压与通气比为15:2，单人时同成人为30:2。教材P237-238。",
+    "source_page": "教材P237-238",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": true,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M8-X-004",
+    "module": "M8",
+    "module_name": "心肺脑复苏",
+    "topic": "低温CPR特点",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于低温致心脏骤停的复苏处理，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "低温致心脏骤停的救治原则是在积极处理低体温的同时进行CPR"
+      },
+      {
+        "label": "B",
+        "text": "中心体温<30℃时电除颤往往无效"
+      },
+      {
+        "label": "C",
+        "text": "重度低体温（<30℃）应采用主动体内复温"
+      },
+      {
+        "label": "D",
+        "text": "低温时心脏对药物和电除颤的反应性明显下降"
+      },
+      {
+        "label": "E",
+        "text": "人工通气时应尽可能给予加温加湿氧气"
+      }
+    ],
+    "answer": "ABCDE",
+    "explanation": "A对：低温致心脏骤停的救治原则是在积极处理低体温的同时进行CPR。B对：中心体温<30℃时电除颤往往无效，需复温至30℃以上再考虑除颤。C对：重度低体温（<30℃）和无灌注心律者采用主动体内复温。D对：低温时心脏对药物、起搏刺激及电除颤的反应性明显下降。E对：人工通气时尽可能给予加温（32～34℃）加湿氧气面罩通气。教材P243。",
+    "source_page": "教材P243",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": true
+    }
+  }
+]

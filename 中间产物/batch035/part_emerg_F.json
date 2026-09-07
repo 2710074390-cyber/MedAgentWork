@@ -1,0 +1,604 @@
+[
+  {
+    "id": "batch035-M11-A1-001",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "灾难现场救援特点",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "记忆",
+    "stem": "关于灾难现场医学救援的特点，下列**描述错误**的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "现场救援包括伤员搜救检伤分类现场急救转运"
+      },
+      {
+        "label": "B",
+        "text": "救援任务紧迫组织结构松散,需高度统一指挥"
+      },
+      {
+        "label": "C",
+        "text": "现场救援人员易致心理创伤,需早期干预"
+      },
+      {
+        "label": "D",
+        "text": "为防止灾后暴发疫情，需进行现场卫生防疫"
+      },
+      {
+        "label": "E",
+        "text": "现场救援优先保障伤员,救援人员安全其次"
+      }
+    ],
+    "answer": "E",
+    "explanation": "灾难现场医学救援的前提是确保救援人员、被救人员和旁观者安全，保证救援人员自身安全是实施救援的基础，并非次要地位。教材P281。",
+    "source_page": "教材P281",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M11-A1-002",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "检伤分类标签含义",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "灾难现场检伤分类中，采用4色标签标识伤员救治优先顺序，其中黑色标签的含义是",
+    "options": [
+      {
+        "label": "A",
+        "text": "存活可能性极小，无法救治"
+      },
+      {
+        "label": "B",
+        "text": "伤势轻，可等待处理"
+      },
+      {
+        "label": "C",
+        "text": "伤势较重，暂无生命危险"
+      },
+      {
+        "label": "D",
+        "text": "伤势严重，需紧急救治"
+      },
+      {
+        "label": "E",
+        "text": "需进一步观察后再分类"
+      }
+    ],
+    "answer": "A",
+    "explanation": "黑色标签为期待救治，用于标示存活可能性极小的无法救治者；红色为优先救治（伤势严重需紧急救治），黄色为延迟救治（暂无生命危险），绿色为等待救治（轻伤可走动者）。教材P286。",
+    "source_page": "教材P286",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-A1-003",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "START分拣方法",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "灾难现场采用START（simple triage and rapid treatment）原则快速分拣时，\"30-2-可以-做\"方法中\"30\"代表",
+    "options": [
+      {
+        "label": "A",
+        "text": "收缩压30mmHg"
+      },
+      {
+        "label": "B",
+        "text": "呼吸频率30次/分"
+      },
+      {
+        "label": "C",
+        "text": "毛细血管再充盈时间30秒"
+      },
+      {
+        "label": "D",
+        "text": "脉搏30次/分"
+      },
+      {
+        "label": "E",
+        "text": "GCS评分30分"
+      }
+    ],
+    "answer": "B",
+    "explanation": "START方法中\"30\"指呼吸频率30次/分；\"2\"指毛细血管再充盈时间2秒；\"可以-做\"指遵从指挥的能力。只要呼吸频率<30次/分、毛细血管再充盈时间<2秒、能遵从指挥行走，则为轻伤。教材P286。",
+    "source_page": "教材P286",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-A1-004",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "止血带使用要点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "关于灾难现场止血带使用的描述，正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "止血带可用电线、铁丝代替"
+      },
+      {
+        "label": "B",
+        "text": "止血带应直接缠绕在皮肤上以增强止血效果"
+      },
+      {
+        "label": "C",
+        "text": "止血带绑扎松紧度以刚好停止出血即可"
+      },
+      {
+        "label": "D",
+        "text": "止血带最长使用时间不宜超过4小时"
+      },
+      {
+        "label": "E",
+        "text": "止血带应放置在出血伤口下方5cm处"
+      }
+    ],
+    "answer": "D",
+    "explanation": "止血带使用要点：严禁用电线、铁丝、绳索代替；不能直接缠在皮肤上，须用垫子垫上；松紧度以出血停止、远端动脉搏动不能扪及为度；最长不宜超过4小时；应放在出血伤口上方5cm，尽量靠近伤口。教材P282。",
+    "source_page": "教材P282",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-A1-005",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "脊柱骨折搬运",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "怀疑脊柱骨折的伤员在搬运时，下列做法正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "脊柱骨折伤员应采用侧卧位搬运"
+      },
+      {
+        "label": "B",
+        "text": "搬运时允许脊柱有弯曲以方便通过"
+      },
+      {
+        "label": "C",
+        "text": "搬运时应保持躯体呈一直线"
+      },
+      {
+        "label": "D",
+        "text": "颈椎骨折搬运时无须专人固定头部"
+      },
+      {
+        "label": "E",
+        "text": "采用一人抬胸一人抬腿的拉车式搬运法"
+      }
+    ],
+    "answer": "C",
+    "explanation": "脊柱骨折搬运时必须托住伤员的头、肩、臀和下肢，保持躯体呈一直线，严禁用拉车式搬运；怀疑颈椎骨折须有专人牵引固定头部，用颈托或沙袋固定，防止头部旋转。教材P284。",
+    "source_page": "教材P284",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-A2-001",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "START分拣应用",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "某地震现场，一男性伤员被救出后检查：呼吸26次/分，毛细血管再充盈时间1.5秒，能遵从指令行走。根据START分拣原则，该伤员应归为",
+    "options": [
+      {
+        "label": "A",
+        "text": "红色（立即救治）"
+      },
+      {
+        "label": "B",
+        "text": "黄色（延迟救治）"
+      },
+      {
+        "label": "C",
+        "text": "绿色（轻伤，等待救治）"
+      },
+      {
+        "label": "D",
+        "text": "黑色（期待救治）"
+      },
+      {
+        "label": "E",
+        "text": "需立即转运至后方医院"
+      }
+    ],
+    "answer": "C",
+    "explanation": "START原则：呼吸频率<30次/分、毛细血管再充盈时间<2秒、能遵从指挥行走，则为轻伤（绿色标签）。该伤员三项条件均满足（呼吸26次/分、毛细血管再充盈1.5秒、能行走），应归为轻伤。教材P286。",
+    "source_page": "教材P286",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-A2-002",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "现场急救止血",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "地震现场一伤员被重物砸伤右大腿，伤口可见活动性喷射状出血，远端肢体苍白、动脉搏动消失。现场急救时应首先采取的措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即行骨折夹板固定"
+      },
+      {
+        "label": "B",
+        "text": "搬运至安全区域再处理"
+      },
+      {
+        "label": "C",
+        "text": "清创缝合伤口出血"
+      },
+      {
+        "label": "D",
+        "text": "使用止血带控制出血"
+      },
+      {
+        "label": "E",
+        "text": "静脉输液抗休克治疗"
+      }
+    ],
+    "answer": "D",
+    "explanation": "存在致命性外出血时，应在出血控制后才能进行其他步骤。该伤员累及大血管的严重四肢创伤，喷射状出血提示动脉损伤，应首先使用止血带控制出血，再行骨折固定等后续处理，遵循C-A-B顺序。教材P299-300。",
+    "source_page": "教材P299",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-A3-001",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "START分拣实操",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "某地震发生后，现场医疗救援队短时间内接收大量伤员。伤员甲：呼吸28次/分，毛细血管再充盈时间1秒，能行走，意识清楚。根据START分拣原则，该伤员应分拣为",
+    "options": [
+      {
+        "label": "A",
+        "text": "红色（立即救治）"
+      },
+      {
+        "label": "B",
+        "text": "黄色（延迟救治）"
+      },
+      {
+        "label": "C",
+        "text": "绿色（轻伤，等待救治）"
+      },
+      {
+        "label": "D",
+        "text": "黑色（期待救治）"
+      },
+      {
+        "label": "E",
+        "text": "需进一步观察后再分类"
+      }
+    ],
+    "answer": "C",
+    "explanation": "START原则：呼吸频率<30次/分、毛细血管再充盈时间<2秒、能遵从指挥行走，则为轻伤（绿色标签）。伤员甲三项指标均符合轻伤标准。教材P286。",
+    "source_page": "教材P286",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-A3-002",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "START分拣实操",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "某地震发生后，现场医疗救援队短时间内接收大量伤员。伤员乙：呼吸32次/分，毛细血管再充盈时间4秒，无意识，桡动脉脉搏触不清。根据START分拣原则，该伤员应分拣为",
+    "options": [
+      {
+        "label": "A",
+        "text": "红色（立即救治）"
+      },
+      {
+        "label": "B",
+        "text": "黄色（延迟救治）"
+      },
+      {
+        "label": "C",
+        "text": "绿色（轻伤，等待救治）"
+      },
+      {
+        "label": "D",
+        "text": "黑色（期待救治）"
+      },
+      {
+        "label": "E",
+        "text": "需进一步观察后再分类"
+      }
+    ],
+    "answer": "A",
+    "explanation": "START原则：存在无意识、呼吸急促（>30次/分）、毛细血管再充盈延迟（>2秒）、桡动脉脉搏缺失中任何一项，即归为立即救治（红色标签）。伤员乙具备多项指标，应分拣为红色。教材P286。",
+    "source_page": "教材P286",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-A3-003",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "START分拣辨析",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "某地震发生后，现场医疗救援队短时间内接收大量伤员。伤员丙：呼吸24次/分，毛细血管再充盈时间1.5秒，神志尚清但不能行走，能遵从指令。根据START分拣原则，该伤员应分拣为",
+    "options": [
+      {
+        "label": "A",
+        "text": "红色（立即救治）"
+      },
+      {
+        "label": "B",
+        "text": "黄色（延迟救治）"
+      },
+      {
+        "label": "C",
+        "text": "绿色（轻伤，等待救治）"
+      },
+      {
+        "label": "D",
+        "text": "黑色（期待救治）"
+      },
+      {
+        "label": "E",
+        "text": "需进一步观察后再分类"
+      }
+    ],
+    "answer": "B",
+    "explanation": "START原则：呼吸频率<30次/分、毛细血管再充盈时间<2秒（满足\"30-2\"条件），但无法行走，则归为\"延迟救治\"（黄色标签）。该伤员符合\"30-2\"条件但不能行走，故分拣为黄色。此处需注意区分\"30-2\"条件满足但无法行走的黄色判定与存在意识障碍、呼吸急促等红色判定标准。教材P286。",
+    "source_page": "教材P286",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-B1-001",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "个体防护等级",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "在化学灾难现场，非挥发性固态或液态物质，毒性或传染性低，此时救援人员应选用的个体防护级别是",
+    "options": [
+      {
+        "label": "A",
+        "text": "A级个体防护"
+      },
+      {
+        "label": "B",
+        "text": "B级个体防护"
+      },
+      {
+        "label": "C",
+        "text": "C级个体防护"
+      },
+      {
+        "label": "D",
+        "text": "无需特殊防护"
+      },
+      {
+        "label": "E",
+        "text": "D级个体防护"
+      }
+    ],
+    "answer": "E",
+    "explanation": "D级个体防护适用于非挥发性固态或液态物质，毒性或传染性低的情况；A级适用于接触高压蒸气、可经皮肤吸收气体、高毒性化学物、未知化学物等；B级适用于气态有毒化学物质（不经皮肤吸收）、威胁生命浓度；C级适用于非皮肤吸收气态有毒物、浓度已知、非威胁生命浓度。教材P311。",
+    "source_page": "教材P311",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M11-X-001",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "现场止血方法",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "记忆",
+    "stem": "灾难现场常用的止血方法包括",
+    "options": [
+      {
+        "label": "A",
+        "text": "指压止血法"
+      },
+      {
+        "label": "B",
+        "text": "加压包扎止血法"
+      },
+      {
+        "label": "C",
+        "text": "填塞止血法"
+      },
+      {
+        "label": "D",
+        "text": "止血带止血法"
+      },
+      {
+        "label": "E",
+        "text": "电凝止血法"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "现场常用4种止血方法：指压止血法（适用于肢体及头面部外出血）、加压包扎止血法（适用于大多数活动性出血伤口）、填塞止血法（适用于较大而深的伤口）、止血带止血法（适用于累及大血管的严重四肢创伤）。电凝止血法为手术室内的止血方法，不适用于灾难现场。教材P282。",
+    "source_page": "教材P282",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-X-002",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "伤员转运原则",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于灾难现场伤员转运的原则，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "危及生命的严重创伤者应优先转运"
+      },
+      {
+        "label": "B",
+        "text": "转运应遵循NEWS原则进行安全评估"
+      },
+      {
+        "label": "C",
+        "text": "转运前应向伤员家属交代病情并取得知情同意"
+      },
+      {
+        "label": "D",
+        "text": "院前转运应最大限度地缩短运送时间"
+      },
+      {
+        "label": "E",
+        "text": "转运途中无须与接收医院保持联系"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "A对：危及生命需立即治疗的严重创伤者优先转运；B对：转运应遵循NEWS原则（Necessary、Enough、Working、Secure）；C对：如伤情相对稳定适合转运，向伤员及家属交代病情并取得同意后实施；D对：院前转运旨在最大限度地缩短运送时间；E错：转运途中应与接收医院保持联系，提前告知伤情和到达时间。教材P307-308。",
+    "source_page": "教材P307",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M11-X-003",
+    "module": "M11",
+    "module_name": "灾难现场医学救援",
+    "topic": "分级救治原则",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "灾难伤员分级救治的原则包括",
+    "options": [
+      {
+        "label": "A",
+        "text": "及时合理"
+      },
+      {
+        "label": "B",
+        "text": "连续继承"
+      },
+      {
+        "label": "C",
+        "text": "治送结合"
+      },
+      {
+        "label": "D",
+        "text": "就地治疗"
+      },
+      {
+        "label": "E",
+        "text": "分类转运"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "分级救治原则：①及时合理——做好现场抢救工作，积极后送，勿使伤员在现场过多过久滞留；②连续继承——各级救治应连续不中断，前后紧密衔接，逐步完善；③治送结合——救治与后送相辅相成，缺一不可。D错：灾难现场应遵循分级救治原则，而非单纯就地治疗；E错：分类转运是转运分拣的内容，不属于分级救治三大原则。教材P287。",
+    "source_page": "教材P287",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  }
+]

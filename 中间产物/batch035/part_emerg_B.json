@@ -1,0 +1,1886 @@
+[
+  {
+    "id": "batch031-M3-A1-001",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "呼吸困难病程分类",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "按病程分类，急性呼吸困难是指病程在3周之内的呼吸困难，慢性呼吸困难是指病程持续",
+    "options": [
+      {
+        "label": "A",
+        "text": "1周以上"
+      },
+      {
+        "label": "B",
+        "text": "2周以上"
+      },
+      {
+        "label": "C",
+        "text": "3周以上"
+      },
+      {
+        "label": "D",
+        "text": "4周以上"
+      },
+      {
+        "label": "E",
+        "text": "不满3周"
+      }
+    ],
+    "answer": "C",
+    "explanation": "教材按病程将呼吸困难分为急性（病程3周以内）与慢性（持续3周以上）两类；另可按病情分为轻、中、重度，按病因分为肺源性、心源性、中毒性、血源性、神经精神性等。教材P47。",
+    "source_page": "教材P47",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M3-A1-002",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "吸气性呼吸困难表现",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "表现为吸气时胸骨上窝、锁骨上窝及肋间隙凹陷（三凹征）的呼吸困难类型是",
+    "options": [
+      {
+        "label": "A",
+        "text": "呼气性呼吸困难"
+      },
+      {
+        "label": "B",
+        "text": "吸气性呼吸困难"
+      },
+      {
+        "label": "C",
+        "text": "混合性呼吸困难"
+      },
+      {
+        "label": "D",
+        "text": "潮式呼吸吸气"
+      },
+      {
+        "label": "E",
+        "text": "间停呼吸"
+      }
+    ],
+    "answer": "B",
+    "explanation": "吸气性呼吸困难多见于喉、气管狭窄（炎症、水肿、异物或肿物压迫），典型表现为干咳或高调吸气性喘鸣及三凹征；呼气性呼吸困难多见于支气管哮喘、COPD；混合性见于重症肺炎、大量胸腔积液等。教材P48。",
+    "source_page": "教材P48",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M3-A1-003",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "ARDS初期临床表现",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "记忆",
+    "stem": "下列哪项**不是**ARDS初期的临床表现？",
+    "options": [
+      {
+        "label": "A",
+        "text": "呼吸频率明显加快"
+      },
+      {
+        "label": "B",
+        "text": "呼吸窘迫,一般吸氧不缓解"
+      },
+      {
+        "label": "C",
+        "text": "呼吸道分泌物增多，肺部有啰音"
+      },
+      {
+        "label": "D",
+        "text": "X线胸片一般无明显异常"
+      },
+      {
+        "label": "E",
+        "text": "PaO2降至60mmHg"
+      }
+    ],
+    "answer": "C",
+    "explanation": "ARDS初期表现为呼吸加快、呼吸窘迫感且用一般吸氧法不能缓解、PaO2降至60mmHg、X线胸片一般无明显异常；呼吸道分泌物增多、肺部有啰音为进展期表现而非初期表现。教材P60。[源:考研真题 GS-1999-082]",
+    "source_page": "教材P60",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-1999-082",
+      "year": 1999,
+      "source": "1999考研西综·第82题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M3-A1-004",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "危重哮喘血气改变",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "支气管哮喘急性发作时，提示病情达危重度的动脉血PaCO2改变是",
+    "options": [
+      {
+        "label": "A",
+        "text": "＜35mmHg"
+      },
+      {
+        "label": "B",
+        "text": "35～45mmHg"
+      },
+      {
+        "label": "C",
+        "text": "＞45mmHg"
+      },
+      {
+        "label": "D",
+        "text": "＞60mmHg"
+      },
+      {
+        "label": "E",
+        "text": "＞80mmHg"
+      }
+    ],
+    "answer": "C",
+    "explanation": "按哮喘急性发作病情严重程度分级：轻度PaCO2＜45mmHg、中度≤45mmHg，重度及危重度PaCO2＞45mmHg，危重度还伴pH降低、PaO2＜60mmHg。教材P51。",
+    "source_page": "教材P51",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M3-A1-005",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "张力性气胸处理原则",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "发生后很快危及生命、需要紧急处理且必须立即抽气减压的气胸类型是",
+    "options": [
+      {
+        "label": "A",
+        "text": "闭合性气胸"
+      },
+      {
+        "label": "B",
+        "text": "张力性气胸"
+      },
+      {
+        "label": "C",
+        "text": "继发性气胸"
+      },
+      {
+        "label": "D",
+        "text": "特发性气胸"
+      },
+      {
+        "label": "E",
+        "text": "单纯性气胸"
+      }
+    ],
+    "answer": "B",
+    "explanation": "张力性气胸是一种特殊类型的自发性气胸，发生后很快可以危及生命，需要紧急处理，必须立即抽气减压；原发性自发性气胸多由胸膜下肺大疱破裂所致，继发性多在COPD等肺部疾病基础上发生。教材P54。[源:考研真题 GS-2024-062]",
+    "source_page": "教材P54",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2024-062",
+      "year": 2024,
+      "source": "2024考研西综·第62题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch031-M3-A1-006",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "急性左心衰镇静药",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "急性左心衰竭急诊处理中首选的镇静药是",
+    "options": [
+      {
+        "label": "A",
+        "text": "地西泮"
+      },
+      {
+        "label": "B",
+        "text": "吗啡"
+      },
+      {
+        "label": "C",
+        "text": "苯巴比妥"
+      },
+      {
+        "label": "D",
+        "text": "哌替啶"
+      },
+      {
+        "label": "E",
+        "text": "咪达唑仑"
+      }
+    ],
+    "answer": "B",
+    "explanation": "急性心衰镇静药首选吗啡，主要作用为抑制中枢交感神经、反射性降低周围血管阻力、扩张静脉减少回心血量，并有减轻焦虑、松弛支气管平滑肌作用；伴明显持续低血压、休克、意识障碍、COPD等病人禁忌使用。教材P56。",
+    "source_page": "教材P56",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M3-A1-007",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "PTE血栓来源",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "引起肺血栓栓塞症（PTE）的血栓主要来源于",
+    "options": [
+      {
+        "label": "A",
+        "text": "下肢深静脉"
+      },
+      {
+        "label": "B",
+        "text": "上肢深静脉"
+      },
+      {
+        "label": "C",
+        "text": "右心腔"
+      },
+      {
+        "label": "D",
+        "text": "门静脉系统"
+      },
+      {
+        "label": "E",
+        "text": "颈内静脉"
+      }
+    ],
+    "answer": "A",
+    "explanation": "引起PTE的血栓约70%～90%由深静脉血栓脱落后随血液循环进入肺动脉及其分支所致，原发部位以下肢深静脉为主，盆腔静脉血栓是女性肺栓塞的重要来源，极少数来自右心。教材P57。[源:考研真题 GS-2014-096]",
+    "source_page": "教材P57",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2014-096",
+      "year": 2014,
+      "source": "2014考研西综·第96题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch031-M3-A2-001",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "ARDS临床诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,54岁。急性胰腺炎行胆囊造瘘、胰腺引流术后,予禁食、胃肠减压、输液及抗感染治疗,并吸入高浓度氧。动脉血气分析:pH7.46,PaO2 55mmHg,PaCO2 33mmHg;X线胸片示两肺较广泛的点、片状阴影;心电图示窦性心动过速。此时提示病人可能存在",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性心力衰竭"
+      },
+      {
+        "label": "B",
+        "text": "阻塞性肺部病变"
+      },
+      {
+        "label": "C",
+        "text": "术后肺不张"
+      },
+      {
+        "label": "D",
+        "text": "肺部感染"
+      },
+      {
+        "label": "E",
+        "text": "ARDS"
+      }
+    ],
+    "answer": "E",
+    "explanation": "患者PaO2＜60mmHg、PaCO2＜50mmHg，应诊断为Ⅰ型呼吸衰竭，可首先排除阻塞性肺部病变（COPD常导致Ⅱ型呼吸衰竭）；外科危重病人突发呼吸困难、普通吸氧不能改善、胸片呈斑片状阴影，应诊断为ARDS；急性心力衰竭、肺部感染不会出现如此严重的呼吸困难，两肺广泛点片状阴影亦可排除术后肺不张。教材P60。[源:考研真题 GS-1996-082]",
+    "source_page": "教材P60",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-1996-082",
+      "year": 1996,
+      "source": "1996考研西综·第82题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M3-A2-002",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "COPD并发气胸",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,68岁。3年前诊断为COPD,未规律治疗。2小时前无明显诱因突感左胸剧痛,继之呼吸困难、发绀、大汗、烦躁。查体:BP90/60mmHg,气管右移,左肺呼吸音减弱,未闻及干、湿啰音。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "肺炎并发胸膜炎"
+      },
+      {
+        "label": "B",
+        "text": "急性肺栓塞"
+      },
+      {
+        "label": "C",
+        "text": "自发性气胸"
+      },
+      {
+        "label": "D",
+        "text": "急性心肌梗死"
+      },
+      {
+        "label": "E",
+        "text": "大量胸腔积液"
+      }
+    ],
+    "answer": "C",
+    "explanation": "自发性气胸为COPD的常见并发症，表现为突然加重的呼吸困难、明显发绀、患侧叩诊鼓音、听诊呼吸音减弱或消失、气管向健侧移位；肺炎并发胸膜炎常有肺部湿啰音、无气管移位；肺栓塞常表现为呼吸困难、胸痛、咯血三联征；急性心肌梗死常表现为持续性胸痛。教材P54。[源:考研真题 GS-2013-064]",
+    "source_page": "教材P54",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2013-064",
+      "year": 2013,
+      "source": "2013考研西综·第64题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M3-A2-003",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "急性肺水肿识别",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,70岁。高血压病史20年。夜间睡眠中突然憋醒,极度呼吸困难,被迫端坐位,咳大量粉红色泡沫痰,大汗淋漓,口唇发绀。听诊双肺满布湿啰音及哮鸣音,心尖部可闻及舒张期奔马律。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "支气管哮喘急性发作"
+      },
+      {
+        "label": "B",
+        "text": "自发性气胸"
+      },
+      {
+        "label": "C",
+        "text": "左心衰竭伴肺水肿"
+      },
+      {
+        "label": "D",
+        "text": "急性肺栓塞"
+      },
+      {
+        "label": "E",
+        "text": "急性呼吸窘迫综合征"
+      }
+    ],
+    "answer": "C",
+    "explanation": "急性肺水肿是急性左心衰最严重的表现，典型表现为突发极度呼吸困难、端坐呼吸、极度烦躁不安、口唇发绀、大汗淋漓、咳大量泡沫样稀薄痰或粉红色泡沫痰，听诊双肺湿啰音或哮鸣音，心尖部可闻及舒张期奔马律。教材P56。",
+    "source_page": "教材P56",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M3-A3-001",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "气胸确诊检查",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,26岁。瘦高体型,抬重物时突发右侧胸痛伴胸闷、呼吸困难,疼痛放射到同侧肩部。查体:右侧胸廓饱满,呼吸运动减弱,叩诊呈鼓音,呼吸音减弱,肝、肺浊音界消失。为确立诊断，应首选的检查是",
+    "options": [
+      {
+        "label": "A",
+        "text": "直立位胸部X线片"
+      },
+      {
+        "label": "B",
+        "text": "胸部CT"
+      },
+      {
+        "label": "C",
+        "text": "心电图检查"
+      },
+      {
+        "label": "D",
+        "text": "动脉血气分析"
+      },
+      {
+        "label": "E",
+        "text": "诊断性胸腔穿刺"
+      }
+    ],
+    "answer": "A",
+    "explanation": "发病时胸部X线影像学检查是诊断气胸最为准确和可靠的方法，条件允许时应选择直立位拍片；仅因病情危重不能立即行胸部X线检查时，才可在胸腔积气体征最明显处进行诊断性穿刺。教材P55。[源:考研真题 GS-2018-070]",
+    "source_page": "教材P55",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2018-070",
+      "year": 2018,
+      "source": "2018考研西综·第70题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch031-M3-A3-002",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "ARDS严重程度分级",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "女性,45岁。重症肺炎3天,进行性呼吸困难加重,已排除心源性肺水肿并行机械通气,PEEP 8cmH2O,FiO2 60%时测得PaO2 90mmHg。按PaO2/FiO2判断，该病人ARDS的严重程度为",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻度"
+      },
+      {
+        "label": "B",
+        "text": "中度"
+      },
+      {
+        "label": "C",
+        "text": "重度"
+      },
+      {
+        "label": "D",
+        "text": "危重度"
+      },
+      {
+        "label": "E",
+        "text": "不能分级"
+      }
+    ],
+    "answer": "B",
+    "explanation": "ARDS严重程度采用PaO2/FiO2定义（PEEP或CPAP≥5cmH2O时）：轻度为200mmHg＜PaO2/FiO2≤300mmHg，中度为100mmHg＜PaO2/FiO2≤200mmHg，重度为PaO2/FiO2≤100mmHg。本例PaO2/FiO2=90/0.6=150mmHg，属中度；ARDS分级无危重度（危重度为哮喘分级用语）。教材P60。",
+    "source_page": "教材P60",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M3-B1-001",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "呼吸困难病因归类",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "按病因分类，支气管哮喘急性发作引起的呼吸困难属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "肺源性"
+      },
+      {
+        "label": "B",
+        "text": "心源性"
+      },
+      {
+        "label": "C",
+        "text": "中毒性"
+      },
+      {
+        "label": "D",
+        "text": "血源性"
+      },
+      {
+        "label": "E",
+        "text": "神经精神性"
+      }
+    ],
+    "answer": "A",
+    "explanation": "按病因呼吸困难分为肺源性、心源性、中毒性、血源性、神经精神性及其他；肺源性呼吸困难又分为呼气性、吸气性和混合性，支气管哮喘属肺源性。教材P47。",
+    "source_page": "教材P47",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M3-B1-002",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "呼吸困难病因归类",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "按病因分类，糖尿病酮症酸中毒引起的呼吸困难属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "肺源性"
+      },
+      {
+        "label": "B",
+        "text": "心源性"
+      },
+      {
+        "label": "C",
+        "text": "中毒性"
+      },
+      {
+        "label": "D",
+        "text": "血源性"
+      },
+      {
+        "label": "E",
+        "text": "神经精神性"
+      }
+    ],
+    "answer": "D",
+    "explanation": "表4-1中血源性呼吸困难的常见疾病包括重度贫血、高铁血红蛋白血症、甲状腺危象、糖尿病酮症酸中毒、急性大出血等；中毒性常见于CO、药物中毒及毒蛇咬伤。教材P47。",
+    "source_page": "教材P47",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M3-X-001",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "ARDS机械通气原则",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "急性呼吸窘迫综合征机械通气治疗的原则有",
+    "options": [
+      {
+        "label": "A",
+        "text": "采用较大潮气量，保证PaCO2正常"
+      },
+      {
+        "label": "B",
+        "text": "给予适当水平PEEP，开放萎陷肺泡"
+      },
+      {
+        "label": "C",
+        "text": "初始上机即给予高水平PEEP"
+      },
+      {
+        "label": "D",
+        "text": "吸气平台压控制在30～35cmH2O以下"
+      },
+      {
+        "label": "E",
+        "text": "常规抗凝治疗预防肺损伤"
+      }
+    ],
+    "answer": "BD",
+    "explanation": "A错：应采用小潮气量6～8ml/kg（理想体重），可允许一定程度的CO2潴留；B对：充分复张塌陷肺泡后应用适当水平PEEP防止呼气末肺泡塌陷，改善低氧血症；C错：PEEP应从较低水平开始逐渐调至合适水平；D对：气道平台压应＜30cmH2O，防止肺泡过度扩张及机械通气相关性肺损伤；E错：ARDS除非合并DIC，一般不常规抗凝。教材P61。[源:考研真题 GS-2019-154]",
+    "source_page": "教材P61",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2019-154",
+      "year": 2019,
+      "source": "2019考研西综·第154题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M3-X-002",
+    "module": "M3",
+    "module_name": "呼吸困难",
+    "topic": "哮喘急诊处理",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于支气管哮喘急性发作的急诊处理，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "缓解症状首选吸入SABA"
+      },
+      {
+        "label": "B",
+        "text": "第1小时内SABA可每20分钟重复1次"
+      },
+      {
+        "label": "C",
+        "text": "哮喘急性发作时应禁用镇静药"
+      },
+      {
+        "label": "D",
+        "text": "全身激素首选地塞米松静滴"
+      },
+      {
+        "label": "E",
+        "text": "面罩吸氧使血氧饱和度92%以上"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "A对：吸入短效β2受体激动剂（沙丁胺醇、特布他林等）是缓解轻中度以上急性哮喘症状的首选药物；B对：第1小时内20分钟重复1次，亦可用雾化吸入溶液；C对：哮喘紧急处理须禁用镇静药；D错：地塞米松血浆和组织半衰期长、对脑垂体-肾上腺轴抑制时间长，应尽量避免使用，严重哮喘首选甲泼尼龙或琥珀酸氢化可的松；E对：可用面罩大流量吸氧，保持血氧饱和度在92%以上（儿童≥95%），但不宜给纯氧。教材P53。",
+    "source_page": "教材P53",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M4-A1-001",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "晕厥定义与时长",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "晕厥是一过性全脑低灌注导致的短暂性意识丧失，典型晕厥发作持续时间一般不超过",
+    "options": [
+      {
+        "label": "A",
+        "text": "10秒"
+      },
+      {
+        "label": "B",
+        "text": "20秒"
+      },
+      {
+        "label": "C",
+        "text": "30秒"
+      },
+      {
+        "label": "D",
+        "text": "40秒"
+      },
+      {
+        "label": "E",
+        "text": "60秒"
+      }
+    ],
+    "answer": "B",
+    "explanation": "晕厥的特点为突然、短暂和自行完全恢复，典型晕厥发作持续时间一般不超过20秒，少数可持续数分钟。教材P14。",
+    "source_page": "教材P14",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-002",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "血管迷走性晕厥检查",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "有助于诊断血管迷走性晕厥的检查是",
+    "options": [
+      {
+        "label": "A",
+        "text": "直立倾斜试验"
+      },
+      {
+        "label": "B",
+        "text": "颈动脉窦按摩试验"
+      },
+      {
+        "label": "C",
+        "text": "卧位起立试验"
+      },
+      {
+        "label": "D",
+        "text": "冠状动脉造影"
+      },
+      {
+        "label": "E",
+        "text": "腰椎穿刺"
+      }
+    ],
+    "answer": "A",
+    "explanation": "血管迷走性晕厥以青年女性、体质虚弱者常见，直立倾斜试验阳性；颈动脉窦按摩试验用于颈动脉窦性晕厥；卧位起立试验用于直立性低血压性晕厥。教材P15。",
+    "source_page": "教材P15",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-003",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "先昏迷后发热病因",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "下列疾病中，最可能先出现意识障碍后发热的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "流行性乙型脑炎"
+      },
+      {
+        "label": "B",
+        "text": "重症中暑"
+      },
+      {
+        "label": "C",
+        "text": "有机磷农药中毒"
+      },
+      {
+        "label": "D",
+        "text": "中毒性细菌性痢疾"
+      },
+      {
+        "label": "E",
+        "text": "流行性脑脊髓膜炎"
+      }
+    ],
+    "answer": "C",
+    "explanation": "先发热后昏迷见于流行性乙型脑炎、流行性脑脊髓膜炎、中毒性菌痢、中暑、斑疹伤寒等；先昏迷后发热见于脑出血、巴比妥类药物中毒、有机磷农药中毒等。教材P17（昏迷常见病因表3-2）。[源:考研真题 GS-2023-041]",
+    "source_page": "教材P17",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2023-041",
+      "year": 2023,
+      "source": "2023考研西综·第41题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M4-A1-004",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "GCS评分意义",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "格拉斯哥昏迷量表（GCS）评分中，提示有潜在死亡危险的分值范围是",
+    "options": [
+      {
+        "label": "A",
+        "text": "3～5分"
+      },
+      {
+        "label": "B",
+        "text": "6～8分"
+      },
+      {
+        "label": "C",
+        "text": "9～11分"
+      },
+      {
+        "label": "D",
+        "text": "12～14分"
+      },
+      {
+        "label": "E",
+        "text": "15分"
+      }
+    ],
+    "answer": "A",
+    "explanation": "GCS根据睁眼、言语、运动三项反应评分，最高15分（无昏迷），最低3分，分数越低昏迷越深；通常8分以上恢复机会较大，7分以下预后不良，3～5分者有潜在死亡危险。教材P18。",
+    "source_page": "教材P18",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-005",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "昏迷呼吸节律鉴别",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "昏迷病人查体发现鼾式呼吸，最应考虑的疾病是",
+    "options": [
+      {
+        "label": "A",
+        "text": "糖尿病酮症酸中毒"
+      },
+      {
+        "label": "B",
+        "text": "尿毒症昏迷"
+      },
+      {
+        "label": "C",
+        "text": "脑出血昏迷"
+      },
+      {
+        "label": "D",
+        "text": "肝性脑病"
+      },
+      {
+        "label": "E",
+        "text": "镇静催眠药中毒"
+      }
+    ],
+    "answer": "C",
+    "explanation": "鼾式呼吸见于脑出血；呼吸深长（Kussmaul呼吸）伴烂苹果味见于糖尿病酮症酸中毒、尿有氨味见于尿毒症昏迷；浅而慢的呼吸见于镇静催眠药及成瘾性药物中毒；肝性脑病呼气有肝臭味。教材P19。",
+    "source_page": "教材P19",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-006",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "高血压脑出血部位",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "绝大多数高血压脑出血发生的部位是",
+    "options": [
+      {
+        "label": "A",
+        "text": "大脑皮质"
+      },
+      {
+        "label": "B",
+        "text": "脑干脑桥"
+      },
+      {
+        "label": "C",
+        "text": "基底节区及内囊"
+      },
+      {
+        "label": "D",
+        "text": "小脑齿状核"
+      },
+      {
+        "label": "E",
+        "text": "丘脑区域"
+      }
+    ],
+    "answer": "C",
+    "explanation": "绝大多数高血压脑出血发生在基底核的壳核及内囊区（约占70%），脑叶、脑干及小脑齿状核出血各占约10%。教材P23。",
+    "source_page": "教材P23",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-007",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "脑桥出血瞳孔特征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "脑桥出血病人最具特征性的瞳孔改变是",
+    "options": [
+      {
+        "label": "A",
+        "text": "双侧瞳孔散大固定"
+      },
+      {
+        "label": "B",
+        "text": "双侧瞳孔缩小呈针尖样"
+      },
+      {
+        "label": "C",
+        "text": "双侧瞳孔不等大"
+      },
+      {
+        "label": "D",
+        "text": "一侧瞳孔散大伴对光反射消失"
+      },
+      {
+        "label": "E",
+        "text": "瞳孔大小无异常改变"
+      }
+    ],
+    "answer": "B",
+    "explanation": "脑桥出血常迅速出现深昏迷，瞳孔明显缩小呈针尖样，但对光反射存在；四肢瘫痪，双侧锥体束征阳性，高热，呼吸不规则，血压不稳。教材P24。",
+    "source_page": "教材P24",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-008",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "rt-PA溶栓时间窗",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "急性脑梗死使用rt-PA（重组组织型纤溶酶原激活剂）静脉溶栓的时间窗为发病后",
+    "options": [
+      {
+        "label": "A",
+        "text": "3小时以内"
+      },
+      {
+        "label": "B",
+        "text": "3～4.5小时"
+      },
+      {
+        "label": "C",
+        "text": "6小时以内"
+      },
+      {
+        "label": "D",
+        "text": "8小时以内"
+      },
+      {
+        "label": "E",
+        "text": "12小时以内"
+      }
+    ],
+    "answer": "B",
+    "explanation": "早期溶栓适应证规定：发病3～4.5小时以内使用rt-PA，6小时以内使用尿激酶；rt-PA一次用量0.9mg/kg（最大90mg）。教材P29。",
+    "source_page": "教材P29",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-009",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "SAH最常见病因",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "自发性蛛网膜下腔出血最常见的病因是",
+    "options": [
+      {
+        "label": "A",
+        "text": "高血压脑动脉硬化"
+      },
+      {
+        "label": "B",
+        "text": "颅内肿瘤卒中"
+      },
+      {
+        "label": "C",
+        "text": "先天性动脉瘤破裂"
+      },
+      {
+        "label": "D",
+        "text": "血液系统疾病"
+      },
+      {
+        "label": "E",
+        "text": "颅内静脉血栓形成"
+      }
+    ],
+    "answer": "C",
+    "explanation": "自发性蛛网膜下腔出血最常见的病因为先天性动脉瘤和动静脉畸形破裂（约占75%～80%），其次是高血压脑出血（约占15%）；40岁以后发病者多为颅内动脉瘤破裂。教材P31。",
+    "source_page": "教材P31",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-010",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "低血糖症诊断界值",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "正常人血糖浓度低于下列哪项可考虑低血糖症",
+    "options": [
+      {
+        "label": "A",
+        "text": "＜2.5mmol/L"
+      },
+      {
+        "label": "B",
+        "text": "＜2.8mmol/L"
+      },
+      {
+        "label": "C",
+        "text": "＜3.36mmol/L"
+      },
+      {
+        "label": "D",
+        "text": "＜3.9mmol/L"
+      },
+      {
+        "label": "E",
+        "text": "＜4.4mmol/L"
+      }
+    ],
+    "answer": "B",
+    "explanation": "低血糖症指正常人血中葡萄糖浓度＜2.8mmol/L，或糖尿病病人血糖浓度＜3.9mmol/L；典型者具有Whipple三联征。教材P34。",
+    "source_page": "教材P34",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-011",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "癫痫持续状态首选药",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "全身强直-阵挛性发作持续状态控制抽搐的首选药物是",
+    "options": [
+      {
+        "label": "A",
+        "text": "苯妥英钠"
+      },
+      {
+        "label": "B",
+        "text": "地西泮"
+      },
+      {
+        "label": "C",
+        "text": "苯巴比妥"
+      },
+      {
+        "label": "D",
+        "text": "利多卡因"
+      },
+      {
+        "label": "E",
+        "text": "氯硝西泮"
+      }
+    ],
+    "answer": "B",
+    "explanation": "癫痫持续状态处理原则为迅速控制抽搐、立即终止发作，地西泮为首选药物，成人每次10～20mg，以2～5mg/min速度静脉注射，15～20分钟后可重复给药。教材P46。",
+    "source_page": "教材P46",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A1-012",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "HHS渗透压标准",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "高渗性高血糖状态（HHS）实验室诊断的血浆有效渗透压参考标准是",
+    "options": [
+      {
+        "label": "A",
+        "text": "≥280mOsm/(kg·H2O)"
+      },
+      {
+        "label": "B",
+        "text": "≥300mOsm/(kg·H2O)"
+      },
+      {
+        "label": "C",
+        "text": "≥310mOsm/(kg·H2O)"
+      },
+      {
+        "label": "D",
+        "text": "≥320mOsm/(kg·H2O)"
+      },
+      {
+        "label": "E",
+        "text": "≥350mOsm/(kg·H2O)"
+      }
+    ],
+    "answer": "D",
+    "explanation": "HHS实验室诊断参考标准：血糖≥33.3mmol/L，有效血浆渗透压≥320mOsm/(kg·H2O)（正常范围280～310）；当渗透压＞320时即可出现淡漠、嗜睡，＞350时可有幻觉、定向力障碍甚至昏迷。教材P39。",
+    "source_page": "教材P39",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A2-001",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "昏迷程度判断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,82岁。因脑出血4小时行开颅减压手术后意识不清,对声、光刺激无反应,尚可对疼痛刺激有反应,角膜反射、吞咽反射存在。对该患者意识状态的判断，正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "昏睡"
+      },
+      {
+        "label": "B",
+        "text": "轻度昏迷"
+      },
+      {
+        "label": "C",
+        "text": "中度昏迷"
+      },
+      {
+        "label": "D",
+        "text": "深度昏迷"
+      },
+      {
+        "label": "E",
+        "text": "意识模糊"
+      }
+    ],
+    "answer": "B",
+    "explanation": "轻度昏迷指意识大部分丧失，无自主运动，对声、光刺激无反应，对疼痛刺激尚可出现防御反应，角膜反射、瞳孔对光反射、吞咽反射等可存在；中度昏迷对剧烈刺激可出现防御反射但角膜反射减弱；深度昏迷对各种刺激全无反应，深、浅反射均消失。教材P17。[源:考研真题 GS-2024-042]",
+    "source_page": "教材P17",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2024-042",
+      "year": 2024,
+      "source": "2024考研西综·第42题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M4-A2-002",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "DKA临床诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,20岁。近半年乏力、体重下降约15kg,食欲尚可,尿量多。2天前外出就餐后恶心、腹痛伴腹泻,1天来精神恍惚。既往曾查血糖高。查体:T36.8℃,P118次/分,R28次/分,BP88/58mmHg,嗜睡,呼吸深快,皮肤干燥,四肢发凉。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "甲状腺危象"
+      },
+      {
+        "label": "B",
+        "text": "糖尿病酮症酸中毒"
+      },
+      {
+        "label": "C",
+        "text": "感染中毒性休克"
+      },
+      {
+        "label": "D",
+        "text": "急性食物中毒"
+      },
+      {
+        "label": "E",
+        "text": "高渗性高血糖状态"
+      }
+    ],
+    "answer": "B",
+    "explanation": "患者无高热，可排除甲状腺危象、感染中毒性休克（二者多有高热）；青年男性、乏力消瘦、多尿、既往血糖增高，考虑糖尿病；进食后腹泻、精神恍惚、呼吸深快（Kussmaul呼吸）、脱水征、四肢发凉，应诊断为糖尿病酮症酸中毒。教材P36。[源:考研真题 GS-2019-055]",
+    "source_page": "教材P36",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2019-055",
+      "year": 2019,
+      "source": "2019考研西综·第55题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M4-A2-003",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "HHS临床诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,72岁。口渴、多饮、多尿1个月,近1天反应迟钝、嗜睡来诊。查体明显脱水貌。急查血糖35.3mmol/L,尿酮体弱阳性,无深大呼吸。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "糖尿病酮症酸中毒"
+      },
+      {
+        "label": "B",
+        "text": "高血糖高渗状态"
+      },
+      {
+        "label": "C",
+        "text": "急性胃肠炎伴血糖升高"
+      },
+      {
+        "label": "D",
+        "text": "水电解质紊乱"
+      },
+      {
+        "label": "E",
+        "text": "乳酸酸中毒"
+      }
+    ],
+    "answer": "B",
+    "explanation": "急查血糖高达35.3mmol/L，可首先排除急性胃肠炎合并脱水、水电解质紊乱（血糖不会如此显著增高）；DKA血糖多为16.7～33.3mmol/L，常伴Kussmaul呼吸；HHS血糖多≥33.3mmol/L、无Kussmaul呼吸、无明显酮症酸中毒，本例符合HHS。教材P39。[源:考研真题 GS-2015-108]",
+    "source_page": "教材P39",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2015-108",
+      "year": 2015,
+      "source": "2015考研西综·第108题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M4-A2-004",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "低钙抽搐病因检查",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,38岁。甲状腺大部切除术后1天出现手足持续性痉挛,伴口周麻木、指尖针刺感。为明确诊断，首选的检查是",
+    "options": [
+      {
+        "label": "A",
+        "text": "血T3、T4"
+      },
+      {
+        "label": "B",
+        "text": "颈部B超"
+      },
+      {
+        "label": "C",
+        "text": "颈部穿刺"
+      },
+      {
+        "label": "D",
+        "text": "血清钙、磷浓度"
+      },
+      {
+        "label": "E",
+        "text": "颈部CT"
+      }
+    ],
+    "answer": "D",
+    "explanation": "手足持续性痉挛伴口周麻木提示低钙血症（术后甲状旁腺损伤致PTH分泌减少），诊断低钙血症的血清总钙＜2.25mmol/L（须经血清白蛋白校正），故首选血清钙、磷浓度测定；血T3、T4用于甲状腺功能评估，颈部B超、CT用于甲状腺形态学检查。教材P44。[源:考研真题 GS-2015-116]",
+    "source_page": "教材P44",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2015-116",
+      "year": 2015,
+      "source": "2015考研西综·第116题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M4-A2-005",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "高热抽搐分型",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男婴,2岁。发热、流涕1天,体温39℃,就诊时突发全身性抽搐,持续约3分钟自行停止,发作后很快清醒,查体无神经系统异常体征,24小时内仅发作1次。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "单纯性高热抽搐"
+      },
+      {
+        "label": "B",
+        "text": "复杂性高热抽搐"
+      },
+      {
+        "label": "C",
+        "text": "化脓性脑膜炎"
+      },
+      {
+        "label": "D",
+        "text": "癫痫发作"
+      },
+      {
+        "label": "E",
+        "text": "低钙性抽搐"
+      }
+    ],
+    "answer": "A",
+    "explanation": "单纯性高热抽搐：首次发作多在6月龄至3岁之间，发热24小时内出现，体温＞38℃，发作呈全身性，持续时间一般不超过10分钟，发作后很快清醒且无神经系统体征，24小时内只发作一次；复杂性高热抽搐发作年龄＜6月龄或＞6岁，发作持续超过15分钟，呈局限性发作，24小时内可反复发作。教材P44。",
+    "source_page": "教材P44",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A2-006",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "低血糖昏迷救治",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,68岁。糖尿病病史12年,晨起注射胰岛素后未进食,家属发现其呼之不应送来急诊。急查血糖1.9mmol/L。应立即采取的处理措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "静注50%葡萄糖40~60ml"
+      },
+      {
+        "label": "B",
+        "text": "静脉滴注0.9%氯化钠溶液"
+      },
+      {
+        "label": "C",
+        "text": "肌内注射胰高血糖素1mg"
+      },
+      {
+        "label": "D",
+        "text": "快速静脉注射甘露醇"
+      },
+      {
+        "label": "E",
+        "text": "静脉注射地西泮10mg"
+      }
+    ],
+    "answer": "A",
+    "explanation": "低血糖症急诊处理应立刻补充葡萄糖，对昏迷者首剂静脉注射50%葡萄糖40～60ml，然后继续用5%～10%葡萄糖静脉滴注，多数病人迅速清醒；中枢神经系统血糖恢复正常的时间滞后于其他组织，应持续输注葡萄糖数小时以免再次发生低血糖；胰高血糖素仅适用于不能迅速建立静脉通道的病人。教材P36。",
+    "source_page": "教材P36",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A3-001",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "壳核内囊出血定位",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,65岁。高血压病史15年,打麻将时突发头痛、呕吐,随即言语含糊,右侧肢体无力。查体:BP200/110mmHg,嗜睡,双眼向左侧凝视,右侧中枢性面瘫、右侧肢体偏瘫,右侧偏身感觉减退。最可能的出血部位是",
+    "options": [
+      {
+        "label": "A",
+        "text": "左侧壳核-内囊"
+      },
+      {
+        "label": "B",
+        "text": "右侧壳核内囊左侧"
+      },
+      {
+        "label": "C",
+        "text": "丘脑区域"
+      },
+      {
+        "label": "D",
+        "text": "脑桥出血"
+      },
+      {
+        "label": "E",
+        "text": "小脑半球"
+      }
+    ],
+    "answer": "A",
+    "explanation": "壳核-内囊为临床最常见出血部位，出血病灶对侧常出现偏瘫、偏侧感觉障碍与偏盲的三偏综合征，双眼向病灶侧凝视（凝视病灶），优势半球病变可有失语。本例右侧偏瘫伴双眼向左凝视，提示左侧壳核-内囊出血。教材P24。",
+    "source_page": "教材P24",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A3-002",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "脑出血首选检查",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,65岁。高血压病史15年,打麻将时突发头痛、呕吐,随即言语含糊,右侧肢体无力。查体:BP200/110mmHg,嗜睡,双眼向左侧凝视,右侧中枢性面瘫、右侧肢体偏瘫。为尽快明确诊断，应首选的检查是",
+    "options": [
+      {
+        "label": "A",
+        "text": "颅脑MRI"
+      },
+      {
+        "label": "B",
+        "text": "脑血管造影"
+      },
+      {
+        "label": "C",
+        "text": "腰椎穿刺"
+      },
+      {
+        "label": "D",
+        "text": "颅脑CT扫描"
+      },
+      {
+        "label": "E",
+        "text": "脑电图"
+      }
+    ],
+    "answer": "D",
+    "explanation": "颅脑CT检查对脑出血的诊断率几乎可达100%，既是有效的诊断方法，也是制订治疗方案、观察疗效、判断预后的重要依据，是急性脑出血的首选检查；MRI诊断亚急性与慢性血肿比CT敏感；脑血管造影用于怀疑AVM或脑动脉瘤破裂出血时明确病因。教材P26。",
+    "source_page": "教材P26",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-A3-003",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "脑梗死溶栓决策",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "女性,70岁。持续性心房颤动病史10年。3小时前突发言语不清伴右侧肢体无力。查体:BP170/95mmHg,神志清楚,运动性失语,右侧中枢性面舌瘫,右上肢肌力2级。急查颅脑CT未见高密度出血灶,亦未见大片低密度病灶。凝血功能正常,无近期手术、外伤及出血病史。下一步最适宜的治疗是",
+    "options": [
+      {
+        "label": "A",
+        "text": "rt-PA静脉溶栓"
+      },
+      {
+        "label": "B",
+        "text": "尿激酶静脉溶栓"
+      },
+      {
+        "label": "C",
+        "text": "低分子量肝素抗凝"
+      },
+      {
+        "label": "D",
+        "text": "静脉滴注甘露醇"
+      },
+      {
+        "label": "E",
+        "text": "去骨瓣减压术"
+      }
+    ],
+    "answer": "A",
+    "explanation": "患者有房颤病史（心源性栓子来源）、突发起病，符合脑栓塞；发病3小时，在rt-PA时间窗（3～4.5小时）内，年龄≥18岁，血压170/95mmHg未超过溶栓禁忌（收缩压≥180mmHg或舒张压≥110mmHg），CT排除脑出血及大片低密度灶，无出血倾向及近期手术史，具备rt-PA静脉溶栓适应证；尿激酶时间窗为6小时以内但rt-PA为当前首选再灌注方案；抗凝治疗一般不推荐急性期应用。教材P29。",
+    "source_page": "教材P29",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-B1-001",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "晕厥病因归类",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "各种原因（包括药物）导致的心室率＜40次/分的心动过缓所引起的晕厥属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "反射性晕厥"
+      },
+      {
+        "label": "B",
+        "text": "心源性晕厥"
+      },
+      {
+        "label": "C",
+        "text": "脑源性晕厥"
+      },
+      {
+        "label": "D",
+        "text": "低血糖性晕厥"
+      },
+      {
+        "label": "E",
+        "text": "严重贫血性晕厥"
+      }
+    ],
+    "answer": "B",
+    "explanation": "心源性晕厥包括心律失常致晕厥和器质性心脏病致晕厥；各种原因（包括药物）导致的心动过缓（心室率＜40次/分）和快速性室性心律失常（心率＞130次/分）均可引起急性脑缺血而发生晕厥。教材P15。",
+    "source_page": "教材P15",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-B1-002",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "晕厥病因归类",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "青年女性,体质虚弱,激动、恐惧后于直立位发作晕厥,发作前有头晕、面色苍白、出汗等先兆,血压迅速下降、心率减慢,直立倾斜试验阳性。其晕厥类型属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "反射性晕厥"
+      },
+      {
+        "label": "B",
+        "text": "心源性晕厥"
+      },
+      {
+        "label": "C",
+        "text": "脑源性晕厥"
+      },
+      {
+        "label": "D",
+        "text": "低血糖性晕厥"
+      },
+      {
+        "label": "E",
+        "text": "严重贫血性晕厥"
+      }
+    ],
+    "answer": "A",
+    "explanation": "血管迷走性晕厥属反射性晕厥，以青年女性、体质虚弱者常见，诱发因素包括激动、恐惧、焦虑、剧痛等，多在直立位或坐位时诱发，发病前有先兆症状，直立倾斜试验阳性。教材P15。[源:考研真题 GS-2010-057]",
+    "source_page": "教材P15",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2010-057",
+      "year": 2010,
+      "source": "2010考研西综·第57题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch031-M4-X-001",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "昏迷常见病因",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "引起昏迷的常见病因包括",
+    "options": [
+      {
+        "label": "A",
+        "text": "低血糖症"
+      },
+      {
+        "label": "B",
+        "text": "高钠血症"
+      },
+      {
+        "label": "C",
+        "text": "黏液性水肿昏迷"
+      },
+      {
+        "label": "D",
+        "text": "帕金森病"
+      },
+      {
+        "label": "E",
+        "text": "脓毒症脑病"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "A对：血糖异常（低血糖、糖尿病酮症酸中毒、高渗性高血糖状态）是昏迷的常见病因；B对：电解质与酸碱平衡紊乱（高钠/低钠血症、酸碱中毒、高低钾血症等）可致昏迷；C对：内分泌疾病（黏液性水肿昏迷、甲状腺危象、垂体危象等）可致昏迷；D错：帕金森病一般不直接引起昏迷；E对：感染性休克（脓毒症）、中枢神经系统感染均可致昏迷。教材P17。",
+    "source_page": "教材P17",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M4-X-002",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "脑出血急性期治疗",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于脑出血急性期的内科治疗，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "收缩压＞200mmHg时持续静脉降压"
+      },
+      {
+        "label": "B",
+        "text": "甘露醇0.25～0.5g/kg，q6h"
+      },
+      {
+        "label": "C",
+        "text": "烦躁者可用地西泮，禁用吗啡"
+      },
+      {
+        "label": "D",
+        "text": "多数病人应常规使用止血药"
+      },
+      {
+        "label": "E",
+        "text": "壳核出血＞30ml应行手术治疗"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "A对：收缩压＞200mmHg或平均动脉压＞150mmHg时，要持续应用静脉降压药物积极降低血压；B对：控制脑水肿可使用3%高渗盐水或甘露醇0.25～0.5g/kg，每6小时一次；C对：如烦躁不安，可用地西泮类药物，禁用吗啡类药物；D错：除有出血倾向和并发消化道出血的病人可适当应用止血药物外，多数病人不必常规使用；E对：壳核出血＞30ml、丘脑出血＞15ml、小脑半球出血＞10ml或直径≥3cm等应行手术治疗。教材P27。",
+    "source_page": "教材P27",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M4-X-003",
+    "module": "M4",
+    "module_name": "意识障碍与抽搐",
+    "topic": "癫痫持续状态用药",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于癫痫持续状态控制抽搐的用药，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "控制抽搐首选地西泮静脉注射"
+      },
+      {
+        "label": "B",
+        "text": "地西泮以2～5mg/min速度静注"
+      },
+      {
+        "label": "C",
+        "text": "地西泮15～20分钟后可重复给药"
+      },
+      {
+        "label": "D",
+        "text": "苯妥英钠静注速度不超过25mg/min"
+      },
+      {
+        "label": "E",
+        "text": "咪达唑仑起效缓慢，数小时方起效"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "A对：全身强直-阵挛性发作持续状态首选地西泮，成人每次10～20mg；B对：以2～5mg/min的速度静脉注射；C对：15～20分钟后可重复给药，总量不超过100～200mg；D对：苯妥英钠成人首次150～250mg，静脉注射速度不超过25mg/min，以免发生低血压、心律失常；E错：咪达唑仑起效快，但有抑制呼吸、引起低血压的作用。教材P46。",
+    "source_page": "教材P46",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  }
+]

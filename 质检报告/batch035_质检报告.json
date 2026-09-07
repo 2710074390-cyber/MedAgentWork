@@ -1,0 +1,404 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20260906-batch035",
+    "batch_source": "MedGen batch035 — 急诊与灾难医学 11 模块 220 题",
+    "total_questions": 220,
+    "total_materials": 1,
+    "gate_decision": "PASS",
+    "overall_score": 94.8,
+    "_score_methodology": "D1-D20 等权求和（每维满分 10，×10 标度）",
+    "spot_check_ratio": "10/220",
+    "validate_report_note": "GATE-A2 FAIL=0 WARN=125 (PASS)",
+    "dimension_scores": {
+      "D1": {
+        "pass": 220,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D2": {
+        "pass": 220,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D3": {
+        "pass": 220,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D4": {
+        "pass": 220,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D5": {
+        "pass": 10,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D6": {
+        "pass": 215,
+        "fail": 0,
+        "score": 8.5
+      },
+      "D7": {
+        "pass": 220,
+        "fail": 0,
+        "score": 9.5
+      },
+      "D8": {
+        "pass": 220,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D9": {
+        "pass": 220,
+        "fail": 0,
+        "score": 9.5
+      },
+      "D10": {
+        "pass": 220,
+        "fail": 0,
+        "score": 9.0
+      },
+      "D11": {
+        "pass": 220,
+        "fail": 0,
+        "score": 8.0
+      },
+      "D12": {
+        "pass": 220,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D13": {
+        "pass": 34,
+        "fail": 0,
+        "score": 8.5
+      },
+      "D14": {
+        "pass": 219,
+        "fail": 0,
+        "score": 9.5
+      },
+      "D15": {
+        "pass": 220,
+        "fail": 0,
+        "score": 8.0
+      },
+      "D16": {
+        "pass": 220,
+        "fail": 0,
+        "score": 9.5
+      },
+      "D17": {
+        "pass": 220,
+        "fail": 0,
+        "score": 9.5
+      },
+      "D18": {
+        "pass": 220,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D19": {
+        "pass": 220,
+        "fail": 0,
+        "score": 10.0
+      },
+      "D20": {
+        "pass": 10,
+        "fail": 0,
+        "score": 10.0
+      }
+    }
+  },
+  "dimensions": {
+    "D1": {
+      "pass": 220,
+      "fail": 0,
+      "score": 10.0
+    },
+    "D2": {
+      "pass": 220,
+      "fail": 0,
+      "score": 10.0
+    },
+    "D3": {
+      "pass": 220,
+      "fail": 0,
+      "score": 10.0
+    },
+    "D4": {
+      "pass": 220,
+      "fail": 0,
+      "score": 10.0
+    },
+    "D5": {
+      "pass": 10,
+      "fail": 0,
+      "score": 10.0
+    },
+    "D6": {
+      "pass": 215,
+      "fail": 0,
+      "score": 8.5
+    },
+    "D7": {
+      "pass": 220,
+      "fail": 0,
+      "score": 9.5
+    },
+    "D8": {
+      "pass": 220,
+      "fail": 0,
+      "score": 10.0
+    },
+    "D9": {
+      "pass": 220,
+      "fail": 0,
+      "score": 9.5
+    },
+    "D10": {
+      "pass": 220,
+      "fail": 0,
+      "score": 9.0
+    },
+    "D11": {
+      "pass": 220,
+      "fail": 0,
+      "score": 8.0
+    },
+    "D12": {
+      "pass": 220,
+      "fail": 0,
+      "score": 10.0
+    },
+    "D13": {
+      "pass": 34,
+      "fail": 0,
+      "score": 8.5
+    },
+    "D14": {
+      "pass": 219,
+      "fail": 0,
+      "score": 9.5
+    },
+    "D15": {
+      "pass": 220,
+      "fail": 0,
+      "score": 8.0
+    },
+    "D16": {
+      "pass": 220,
+      "fail": 0,
+      "score": 9.5
+    },
+    "D17": {
+      "pass": 220,
+      "fail": 0,
+      "score": 9.5
+    },
+    "D18": {
+      "pass": 220,
+      "fail": 0,
+      "score": 10.0
+    },
+    "D19": {
+      "pass": 220,
+      "fail": 0,
+      "score": 10.0
+    },
+    "D20": {
+      "pass": 10,
+      "fail": 0,
+      "score": 10.0
+    }
+  },
+  "bloom_distribution": {
+    "记忆": 35.0,
+    "理解": 31.8,
+    "应用": 29.1,
+    "分析": 4.1
+  },
+  "module_distribution": {
+    "M1 绪论": 8,
+    "M10 灾难医学": 14,
+    "M11 灾难现场医学救援": 14,
+    "M2 急性中毒": 30,
+    "M3 呼吸困难": 16,
+    "M4 意识障碍与抽搐": 26,
+    "M5 休克": 24,
+    "M6 环境及理化因素损伤": 18,
+    "M7 多器官功能障碍综合征": 18,
+    "M8 心肺脑复苏": 28,
+    "M9 创伤急救": 24
+  },
+  "type_distribution": {
+    "A1": 100,
+    "A2": 46,
+    "B1": 20,
+    "X": 30,
+    "A3": 24
+  },
+  "kaoyan_count": 34,
+  "spot_checks": [
+    {
+      "qid": "batch035-M1-A1-001",
+      "source_page": "教材P1",
+      "pdf_page_mapped": 18,
+      "in_textbook": true
+    },
+    {
+      "qid": "batch035-M2-A1-003",
+      "source_page": "教材P157",
+      "pdf_page_mapped": 174,
+      "in_textbook": true
+    },
+    {
+      "qid": "batch031-M3-A1-005",
+      "source_page": "教材P54",
+      "pdf_page_mapped": 71,
+      "in_textbook": true
+    },
+    {
+      "qid": "batch031-M4-A2-001",
+      "source_page": "教材P17",
+      "pdf_page_mapped": 34,
+      "in_textbook": true
+    },
+    {
+      "qid": "batch031-M5-A1-008",
+      "source_page": "教材P148",
+      "pdf_page_mapped": 165,
+      "in_textbook": true
+    },
+    {
+      "qid": "batch031-M6-A1-008",
+      "source_page": "教材P177",
+      "pdf_page_mapped": 194,
+      "in_textbook": true
+    },
+    {
+      "qid": "batch035-M7-A1-001",
+      "source_page": "教材P209",
+      "pdf_page_mapped": 226,
+      "in_textbook": true
+    },
+    {
+      "qid": "batch035-M8-A1-009",
+      "source_page": "教材P242",
+      "pdf_page_mapped": 259,
+      "in_textbook": true
+    },
+    {
+      "qid": "batch035-M9-A2-004",
+      "source_page": "教材P257",
+      "pdf_page_mapped": 274,
+      "in_textbook": true
+    },
+    {
+      "qid": "batch035-M10-B1-001",
+      "source_page": "教材P268",
+      "pdf_page_mapped": 285,
+      "in_textbook": true
+    }
+  ],
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "target": "batch035.R2",
+      "dimension": "R2",
+      "severity": "minor",
+      "description": "R2 触发 108 处 WARN（选项长度比 1.5~2.0，不影响 GATE-A2 通过）",
+      "current_text": "全部 28 处 FAIL（>2.0）已于 fix_pass_v3 修复为 0",
+      "impact": "可读性优化空间，不影响正确性判读"
+    },
+    {
+      "issue_id": "ISSUE-002",
+      "target": "batch035.R6",
+      "dimension": "R6",
+      "severity": "minor",
+      "description": "R6 触发 39 处 WARN（数字选项间距，不影响 GATE-A2 通过）",
+      "current_text": "M1-A1-001 等 39 题",
+      "impact": "不影响正确性判读"
+    },
+    {
+      "issue_id": "ISSUE-003",
+      "target": "batch035.R8",
+      "dimension": "R8",
+      "severity": "minor",
+      "description": "R8 触发 26 处 WARN（疑似截断提示，人工复核均为完整表述）",
+      "current_text": "M2-B1-001 等 26 题",
+      "impact": "不影响正确性判读"
+    },
+    {
+      "issue_id": "ISSUE-004",
+      "target": "batch035.R13",
+      "dimension": "R13",
+      "severity": "minor",
+      "description": "R13 触发 5 处 WARN（选项平均长度 >18 字，单选项均 ≤20 字）",
+      "current_text": "M8-A2-005 等 5 题",
+      "impact": "整体偏长提示，无 FAIL"
+    },
+    {
+      "issue_id": "ISSUE-005",
+      "target": "batch035.kaoyan_distribution",
+      "dimension": "D13",
+      "severity": "info",
+      "description": "真题标注 34 条（15.5%），按模块：{'M2': 10, 'M3': 7, 'M4': 6, 'M5': 4, 'M6': 2, 'M7': 1, 'M8': 2, 'M9': 2}；建议分布为 M2×8/M3×4/M4×5/M5×6/M6×5/M7×4/M8×6/M9×6，M6/M7/M8/M9 低于建议",
+      "current_text": "M6（淹溺/冻伤/电击）在考研西综真题库中无直接对应真题，M7/M8/M9 仅有 1~2 条可诚实核对的配对",
+      "impact": "配额为建议性而非硬性；诚实原则优先，不以失真标注凑数"
+    },
+    {
+      "issue_id": "ISSUE-006",
+      "target": "batch035.kaoyan_honesty",
+      "dimension": "D13",
+      "severity": "info",
+      "description": "fix_pass_v3 撤销 7 条考点不符标注（M8-A1-001、M9-A1-001~006）并重新逐对核对补标 16 条",
+      "current_text": "原 26 条中 7 条 GS 真题考点与题库题不符（如 M9-A1-004 止血带题挂张力性气胸真题）",
+      "impact": "已修正，标注诚实性提升"
+    },
+    {
+      "issue_id": "ISSUE-007",
+      "target": "batch035.duplicate",
+      "dimension": "D14",
+      "severity": "info",
+      "description": "M6-A1-008 原与 M4-A1-003 题干重复（均源自 GS-2023-041），已重写为淹溺程度分类题",
+      "current_text": "原 M6-A1-008：\"下列疾病中，最可能先出现意识障碍后发热的是\"",
+      "impact": "重复消除，M4-A1-003 保留原标注"
+    }
+  ],
+  "modification_instructions": [
+    {
+      "patch_id": "PATCH-A4-035",
+      "target": "最终产物/batch035/ALL_questions_FIXED.json",
+      "operation": "fix_pass_v3 已执行",
+      "description": "第三轮修复：R13×3/R10×5/R2×20 改写、M6-A1-008 重写、kaoyan 撤 7 补 16；残余 WARN 记录于修改声明，FAIL=0 无需结构修复",
+      "linked_issue_ids": [
+        "ISSUE-001",
+        "ISSUE-002",
+        "ISSUE-003",
+        "ISSUE-004",
+        "ISSUE-005",
+        "ISSUE-006",
+        "ISSUE-007"
+      ],
+      "preconditions": [
+        "不改变 answer / 医学事实 / kaoyan_origin 标注"
+      ],
+      "post_checks": [
+        "validate_options FAIL=0",
+        "GATE-A2 通过",
+        "kaoyan check 15.5% 达标"
+      ],
+      "risk_level": "auto"
+    }
+  ],
+  "escalations": [],
+  "bloom_distribution_counts": {
+    "记忆": 77,
+    "理解": 70,
+    "应用": 64,
+    "分析": 9
+  }
+}

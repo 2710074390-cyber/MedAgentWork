@@ -1,0 +1,1844 @@
+[
+  {
+    "id": "batch031-M5-A1-001",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "休克的病理生理本质",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "休克最基本的病理生理改变是",
+    "options": [
+      {
+        "label": "A",
+        "text": "有效循环血容量减少，组织微循环灌注不足"
+      },
+      {
+        "label": "B",
+        "text": "心输出量显著下降，外周血管扩张"
+      },
+      {
+        "label": "C",
+        "text": "冠状动脉血流减少，心肌收缩力降低"
+      },
+      {
+        "label": "D",
+        "text": "细胞外液总量显著增多，组织水肿"
+      },
+      {
+        "label": "E",
+        "text": "动脉血氧饱和度进行性下降"
+      }
+    ],
+    "answer": "A",
+    "explanation": "休克是由各种致病因素引起的有效循环血容量急剧减少，导致器官和组织微循环灌注不足，致使组织缺氧、细胞代谢紊乱、器官功能受损的综合征。参阅教材P148。",
+    "source_page": "教材P148",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A1-002",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "休克指数估计失血量",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "成人休克指数（脉率/收缩压）为1.0时，估计失血量约为全身血量的",
+    "options": [
+      {
+        "label": "A",
+        "text": "10%以下"
+      },
+      {
+        "label": "B",
+        "text": "20%～30%"
+      },
+      {
+        "label": "C",
+        "text": "30%～50%"
+      },
+      {
+        "label": "D",
+        "text": "50%～70%"
+      },
+      {
+        "label": "E",
+        "text": "70%以上"
+      }
+    ],
+    "answer": "B",
+    "explanation": "休克指数（脉率/收缩压）为0.5表明血容量正常或失血量不超过10%；为1.0时失血量约为20%～30%；为1.5时失血量约为30%～50%。参阅教材P154。",
+    "source_page": "教材P154",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A1-003",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "心源性休克的血流动力学",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "心源性休克病人血流动力学指标的典型改变是",
+    "options": [
+      {
+        "label": "A",
+        "text": "CI<1.5，PAWP<8"
+      },
+      {
+        "label": "B",
+        "text": "CI<2.2，PAWP>18"
+      },
+      {
+        "label": "C",
+        "text": "CI2.5~4，PAWP12~18"
+      },
+      {
+        "label": "D",
+        "text": "CI>4.0，PAWP<10"
+      },
+      {
+        "label": "E",
+        "text": "CI正常，PAWP>25"
+      }
+    ],
+    "answer": "B",
+    "explanation": "心源性休克时心脏指数（CI）＜2.2L/(min·m²)，肺动脉楔压（PAWP）＞18mmHg；CI正常值为2.5～4.0L/(min·m²)。参阅教材P154、P151。",
+    "source_page": "教材P154",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A1-004",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "感染性休克血管活性药",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "治疗感染性休克最理想的血管活性药物方案是",
+    "options": [
+      {
+        "label": "A",
+        "text": "多巴胺联合间羟胺"
+      },
+      {
+        "label": "B",
+        "text": "肾上腺素联合多巴胺"
+      },
+      {
+        "label": "C",
+        "text": "多巴酚丁胺联合毛花苷C"
+      },
+      {
+        "label": "D",
+        "text": "去甲肾上腺素联合多巴酚丁胺"
+      },
+      {
+        "label": "E",
+        "text": "去甲肾上腺素联合纳洛酮"
+      }
+    ],
+    "answer": "D",
+    "explanation": "去甲肾上腺素与多巴酚丁胺联合应用是治疗感染性休克最理想的血管活性药物治疗方案；多巴胺是最常用的血管活性药，抗休克时宜采取小剂量。参阅教材P153。",
+    "source_page": "教材P153",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A1-005",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "暖休克的常见病因",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "感染性休克中，暖休克多见于",
+    "options": [
+      {
+        "label": "A",
+        "text": "革兰氏阴性杆菌感染"
+      },
+      {
+        "label": "B",
+        "text": "深部真菌感染"
+      },
+      {
+        "label": "C",
+        "text": "病毒性感染"
+      },
+      {
+        "label": "D",
+        "text": "立克次体感染"
+      },
+      {
+        "label": "E",
+        "text": "革兰氏阳性球菌感染"
+      }
+    ],
+    "answer": "E",
+    "explanation": "暖休克多见于革兰氏阳性球菌感染，表现为意识清醒、皮肤潮红、不湿不凉、脉搏可触及、脉压＞30mmHg、尿量＞30ml/h；冷休克多见于革兰氏阴性杆菌感染。参阅教材P155。",
+    "source_page": "教材P155",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M5-A1-006",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "过敏性休克的病程特点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "接触过敏原后发生过敏性休克，若不及时抢救，重者可在多长时间内死亡",
+    "options": [
+      {
+        "label": "A",
+        "text": "1小时内"
+      },
+      {
+        "label": "B",
+        "text": "2分钟内"
+      },
+      {
+        "label": "C",
+        "text": "3小时内"
+      },
+      {
+        "label": "D",
+        "text": "10分钟内"
+      },
+      {
+        "label": "E",
+        "text": "30分钟内"
+      }
+    ],
+    "answer": "D",
+    "explanation": "过敏性休克是一种极为严重的过敏反应，若不及时抢救，重者可在10分钟内死亡；常在接触过敏原后15分钟内发生严重反应，少数可在30分钟甚至数小时后发生，称迟发性反应。参阅教材P155。",
+    "source_page": "教材P155",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A1-007",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "失血性休克输血指征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "失血性休克病人，血红蛋白浓度低于多少时可以输注浓缩红细胞",
+    "options": [
+      {
+        "label": "A",
+        "text": "70g/L"
+      },
+      {
+        "label": "B",
+        "text": "80g/L"
+      },
+      {
+        "label": "C",
+        "text": "90g/L"
+      },
+      {
+        "label": "D",
+        "text": "100g/L"
+      },
+      {
+        "label": "E",
+        "text": "120g/L"
+      }
+    ],
+    "answer": "A",
+    "explanation": "一般认为血红蛋白浓度高于100g/L不必输血；低于70g/L可输浓缩红细胞；在70～100g/L时，根据出血是否停止、一般情况、代偿能力和其他重要器官功能决定是否输红细胞。参阅教材P154。",
+    "source_page": "教材P154",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A1-008",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "休克概念与治疗原则",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "下列关于休克的叙述，哪项是正确的？",
+    "options": [
+      {
+        "label": "A",
+        "text": "迅速失血超全身总血量10%时即出现休克"
+      },
+      {
+        "label": "B",
+        "text": "失血性休克应输入葡萄糖溶液再大量输血"
+      },
+      {
+        "label": "C",
+        "text": "损伤性休克不属于低血容量性休克"
+      },
+      {
+        "label": "D",
+        "text": "感染性休克多是革兰阴性杆菌释放内毒素引起"
+      },
+      {
+        "label": "E",
+        "text": "感染性休克的治疗原则是首先控制感染"
+      }
+    ],
+    "answer": "D",
+    "explanation": "①短期内失血超过全身总血量的20%时可出现休克。②抢救失血性休克时可首先快速输入平衡盐液，继之输血。③创伤和失血引起的休克归为低血容量性休克。④革兰阴性杆菌性休克多由内毒素引起，D正确。⑤休克的治疗原则首先是补充血容量，感染性休克也不例外。[源:考研真题 GS-2003-076]",
+    "source_page": "教材P148",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2003-076",
+      "year": 2003,
+      "source": "2003考研西综·第76题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M5-A1-009",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "各型休克内脏损害程度",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "下列选项中，对休克的微循环变化和内脏继发性损害较严重的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "心源性休克"
+      },
+      {
+        "label": "B",
+        "text": "低血容量性休克"
+      },
+      {
+        "label": "C",
+        "text": "感染性休克"
+      },
+      {
+        "label": "D",
+        "text": "过敏性休克"
+      },
+      {
+        "label": "E",
+        "text": "神经源性休克"
+      }
+    ],
+    "answer": "C",
+    "explanation": "感染性休克的致病菌大多为革兰阴性杆菌，其释放的内毒素可刺激交感神经引起血管痉挛并损害血管内皮细胞，促使组胺、激肽、前列腺素等炎症介质释放，引起全身炎症反应，导致微循环障碍、代谢紊乱及器官功能不全；其余类型休克无内毒素释放，对内脏的继发性损害相对较轻。[源:考研真题 GS-2007-087]",
+    "source_page": "教材P149",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2007-087",
+      "year": 2007,
+      "source": "2007考研西综·第87题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M5-A1-010",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "休克早期微循环变化",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "休克早期微循环的主要变化是",
+    "options": [
+      {
+        "label": "A",
+        "text": "毛细血管前阻力显著降低"
+      },
+      {
+        "label": "B",
+        "text": "交感神经肾上腺髓质兴奋,微循环以收缩为主"
+      },
+      {
+        "label": "C",
+        "text": "毛细血管网大量开放、淤血"
+      },
+      {
+        "label": "D",
+        "text": "微血栓广泛形成微循环"
+      },
+      {
+        "label": "E",
+        "text": "血管床容积显著增大，血压进行性下降"
+      }
+    ],
+    "answer": "B",
+    "explanation": "休克早期有效循环血容量减少，反射性引起交感神经-肾上腺髓质系统兴奋，使心率加快、心肌收缩力增强、小血管收缩，周围血管阻力增加以维持血压；毛细血管内流体静压降低有利于液体进入血管，增加回心血量。淤血、微血栓形成见于失代偿期及DIC阶段。参阅教材P149。",
+    "source_page": "教材P149",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A1-011",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "CVP监测与肺水肿",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "休克病人快速补液过程中，中心静脉压监测明显＞12cmH2O时，应警惕发生",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性肾损伤"
+      },
+      {
+        "label": "B",
+        "text": "心律失常"
+      },
+      {
+        "label": "C",
+        "text": "颅内压增高"
+      },
+      {
+        "label": "D",
+        "text": "肺水肿"
+      },
+      {
+        "label": "E",
+        "text": "脑水肿"
+      }
+    ],
+    "answer": "D",
+    "explanation": "动脉血压和中心静脉压是简便客观的补液监护指标，当中心静脉压明显＞12cmH2O时，应警惕发生肺水肿。参阅教材P153。",
+    "source_page": "教材P153",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A2-001",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "休克指数的临床应用",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，30岁，腹部刀刺伤2小时。查体：面色苍白，四肢湿冷，脉搏120次/分，收缩压80mmHg。按休克指数估计，其失血量约为全身血量的",
+    "options": [
+      {
+        "label": "A",
+        "text": "10%以下"
+      },
+      {
+        "label": "B",
+        "text": "20%～30%"
+      },
+      {
+        "label": "C",
+        "text": "30%～50%"
+      },
+      {
+        "label": "D",
+        "text": "50%～70%"
+      },
+      {
+        "label": "E",
+        "text": "70%以上"
+      }
+    ],
+    "answer": "C",
+    "explanation": "休克指数=脉率/收缩压=120/80=1.5，提示失血量约为30%～50%；休克指数1.0约为20%～30%，0.5为血容量正常或失血不超过10%。参阅教材P154。",
+    "source_page": "教材P154",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A2-002",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "心梗合并心源性休克治疗",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，78岁。6小时前在睡眠中突发胸痛，有明显压迫感，自含硝酸甘油2片，症状稍有缓解。2小时前胸痛再次加重，持续不缓解伴呼吸困难而来院。既往有高血压病20年，糖尿病18年。查体：R20次/分，BP88/50mmHg，口唇发绀，双肺满布湿啰音，心率106次/分，心律齐，心音低钝，四肢末梢皮肤湿凉。心电图示V2～V6、I、aVL导联ST段水平下移0.2～0.4mV，T波倒置，cTnT 1.58μg/L。对该患者应采取的治疗措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "即刻静脉补液扩容，提升血压BP"
+      },
+      {
+        "label": "B",
+        "text": "在使用升压药的同时，即刻溶栓治疗"
+      },
+      {
+        "label": "C",
+        "text": "即刻在置入IABP同时行冠脉介入治疗"
+      },
+      {
+        "label": "D",
+        "text": "即刻给予血管扩张剂及利尿剂，控制心衰"
+      },
+      {
+        "label": "E",
+        "text": "即刻静脉注射毛花苷C纠正心力衰竭"
+      }
+    ],
+    "answer": "C",
+    "explanation": "①老年患者突发胸痛，硝酸甘油疗效差，心电图多导联ST段压低超过0.1mV、T波倒置，肌钙蛋白T增高，应考虑非ST段抬高型心肌梗死（NSTEMI）。患者血压＜90/60mmHg，心率增快，心音低钝，四肢末梢皮肤湿凉，应考虑休克，故诊断为NSTEMI合并心源性休克。②为降低心源性休克的病死率，应立即置入主动脉内球囊反搏（IABP）进行辅助循环，同时行冠状动脉介入治疗。③A为休克的一般性治疗措施，B、D、E并不适合NSTEMI合并心源性休克的治疗。[源:考研真题 GS-2024-046]",
+    "source_page": "教材P154",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2024-046",
+      "year": 2024,
+      "source": "2024考研西综·第46题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M5-A2-003",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "感染性休克初始复苏量",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性，65岁，急性胆管炎伴寒战、高热12小时。查体：血压78/45mmHg，心率125次/分，皮肤湿冷呈花斑状，血乳酸4.8mmol/L。该病人初始液体复苏应",
+    "options": [
+      {
+        "label": "A",
+        "text": "按30ml/kg的标准快速补充等渗晶体液"
+      },
+      {
+        "label": "B",
+        "text": "按10ml/kg的标准限制性补液"
+      },
+      {
+        "label": "C",
+        "text": "立即输注全血1 000ml"
+      },
+      {
+        "label": "D",
+        "text": "先用升压药将血压提至正常后再补液"
+      },
+      {
+        "label": "E",
+        "text": "按100ml/kg的标准快速补液"
+      }
+    ],
+    "answer": "A",
+    "explanation": "感染性休克病人对于低血压（平均动脉压＜65mmHg）或血乳酸≥4mmol/L者，应按30ml/kg的标准进行液体复苏。本例平均动脉压约56mmHg、血乳酸4.8mmol/L，符合复苏指征。参阅教材P155。",
+    "source_page": "教材P155",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A2-004",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "过敏性休克首要处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性，25岁，静脉滴注青霉素5分钟后出现全身荨麻疹、喉部发紧、呼吸困难，血压70/40mmHg。首要的急救处理是",
+    "options": [
+      {
+        "label": "A",
+        "text": "快速静脉补液扩容"
+      },
+      {
+        "label": "B",
+        "text": "静脉注射地塞米松"
+      },
+      {
+        "label": "C",
+        "text": "肌内注射异丙嗪"
+      },
+      {
+        "label": "D",
+        "text": "雾化吸入支气管扩张剂"
+      },
+      {
+        "label": "E",
+        "text": "立即停药并肌内注射肾上腺素"
+      }
+    ],
+    "answer": "E",
+    "explanation": "过敏性休克必须立即去除过敏原（药物过敏时需立即停药），保持呼吸道通畅、吸氧，立即注射肾上腺素（首选肌内注射），同时给予糖皮质激素、升压药、抗组胺药等。参阅教材P155。",
+    "source_page": "教材P155",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M5-A2-005",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "休克的首要急救措施",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，72岁，呕吐、腹泻2天，少尿，精神萎靡。查体：心率115次/分，血压84/60mmHg，皮肤弹性差。即刻应采取的处理措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "快速补液加升压药"
+      },
+      {
+        "label": "B",
+        "text": "增强CT"
+      },
+      {
+        "label": "C",
+        "text": "血管造影"
+      },
+      {
+        "label": "D",
+        "text": "减慢心率"
+      },
+      {
+        "label": "E",
+        "text": "留置导尿监测尿量"
+      }
+    ],
+    "answer": "A",
+    "explanation": "病人心率增快、血压84/60mmHg，应考虑休克，故首选治疗为补充血容量；不宜在休克状态下做过多的影像学检查（增强CT、血管造影等），以免贻误抢救时机；心率增快系循环血容量不足所致，补足血容量后心率将减慢。参阅教材P152。[源:考研真题 GS-2013-111]",
+    "source_page": "教材P152",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2013-111",
+      "year": 2013,
+      "source": "2013考研西综·第111题",
+      "mode": "原题"
+    }
+  },
+  {
+    "id": "batch031-M5-A3-001",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "休克程度的判断",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，45岁，车祸伤致左上腹痛、心悸2小时入院。查体：神志淡漠，面色苍白，四肢湿冷发凉，脉搏110次/分，血压85/65mmHg，腹部移动性浊音阳性，腹腔穿刺抽出不凝血液，留置导尿示尿量约20ml/h。该病人休克的程度为",
+    "options": [
+      {
+        "label": "A",
+        "text": "休克代偿期（轻度）"
+      },
+      {
+        "label": "B",
+        "text": "休克失代偿期（中度）"
+      },
+      {
+        "label": "C",
+        "text": "休克失代偿期（重度）"
+      },
+      {
+        "label": "D",
+        "text": "神经源性休克"
+      },
+      {
+        "label": "E",
+        "text": "感染性休克"
+      }
+    ],
+    "answer": "B",
+    "explanation": "中度（失代偿期）休克表现为神志尚清楚但表情淡漠、很口渴、皮肤苍白发冷、脉搏100～200次/分、收缩压70～90mmHg且脉压小、少尿，估计失血量20%～40%。重度休克收缩压在70mmHg以下或测不到、意识模糊甚至昏迷、少尿或无尿；本例血压85/65mmHg、神志淡漠，符合中度。参阅教材P150。",
+    "source_page": "教材P150",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A3-002",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "失血量的估计",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，45岁，车祸伤致左上腹痛、心悸2小时入院。查体：神志淡漠，面色苍白，四肢湿冷发凉，脉搏110次/分，血压85/65mmHg，腹部移动性浊音阳性，腹腔穿刺抽出不凝血液，留置导尿示尿量约20ml/h。估计该病人的失血量约为",
+    "options": [
+      {
+        "label": "A",
+        "text": "10%以下（400ml以下）"
+      },
+      {
+        "label": "B",
+        "text": "10%～20%（400～800ml）"
+      },
+      {
+        "label": "C",
+        "text": "20%～40%（800～1 600ml）"
+      },
+      {
+        "label": "D",
+        "text": "40%~50%(1600~2000ml)"
+      },
+      {
+        "label": "E",
+        "text": "50%以上（2 000ml以上）"
+      }
+    ],
+    "answer": "C",
+    "explanation": "休克失代偿期中度者估计失血量为20%～40%（800～1 600ml）；轻度（代偿期）在20%以下（800ml以下），重度在40%以上（1 600ml以上），此标准针对成人低血容量性休克。参阅教材P150。",
+    "source_page": "教材P150",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-A3-003",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "失血性休克的急救处理",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性，45岁，车祸伤致左上腹痛、心悸2小时入院。查体：神志淡漠，面色苍白，四肢湿冷发凉，脉搏110次/分，血压85/65mmHg，腹部移动性浊音阳性，腹腔穿刺抽出不凝血液，留置导尿示尿量约20ml/h。在快速建立补液通路补充血容量的同时，对该病人首要的处理是",
+    "options": [
+      {
+        "label": "A",
+        "text": "大量输注库存全血"
+      },
+      {
+        "label": "B",
+        "text": "继续观察，待补足晶体液后再评估"
+      },
+      {
+        "label": "C",
+        "text": "行全腹部CT明确脏器损伤细节"
+      },
+      {
+        "label": "D",
+        "text": "静脉滴注多巴胺维持血压"
+      },
+      {
+        "label": "E",
+        "text": "积极手术准备,实施紧急手术止血"
+      }
+    ],
+    "answer": "E",
+    "explanation": "失血性休克的治疗主要包括补充血容量和积极处理原发病、控制出血两方面；对于脾破裂等急性活动性腹腔出血，需要在恢复血容量的同时积极进行手术准备，实施紧急手术止血。若病人对初始的充分补液反应较差，应考虑有活动性出血，尽快查明原因及时处理。参阅教材P154。",
+    "source_page": "教材P154",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M5-B1-001",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "低血容量性休克血流动力学",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "低血容量性休克典型的血流动力学改变是",
+    "options": [
+      {
+        "label": "A",
+        "text": "CVP降低、心输出量下降、外周阻力增加"
+      },
+      {
+        "label": "B",
+        "text": "CVP增高、心输出量下降、外周阻力增加"
+      },
+      {
+        "label": "C",
+        "text": "心输出量增加、外周阻力降低、四肢温暖"
+      },
+      {
+        "label": "D",
+        "text": "中心静脉压降低、外周阻力降低"
+      },
+      {
+        "label": "E",
+        "text": "心输出量增加、中心静脉压增高"
+      }
+    ],
+    "answer": "A",
+    "explanation": "低血容量性休克的主要血流动力学改变：中心静脉压降低，回心血量减少，心输出量下降，外周血管阻力增加，心率加快；外周静脉塌陷，脉压变小。参阅教材P154。",
+    "source_page": "教材P154",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-B1-002",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "暖休克的血流动力学",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "感染性休克中暖休克典型的血流动力学改变是",
+    "options": [
+      {
+        "label": "A",
+        "text": "CVP降低、心输出量下降、外周阻力增加"
+      },
+      {
+        "label": "B",
+        "text": "CVP增高、心输出量下降、外周阻力增加"
+      },
+      {
+        "label": "C",
+        "text": "心输出量增加、外周阻力降低、四肢温暖"
+      },
+      {
+        "label": "D",
+        "text": "中心静脉压降低、外周阻力降低"
+      },
+      {
+        "label": "E",
+        "text": "心输出量增加、中心静脉压增高"
+      }
+    ],
+    "answer": "C",
+    "explanation": "暖休克多见于革兰氏阳性球菌感染，表现为意识清醒、皮肤潮红或粉红、不湿不凉、脉搏乏力慢但可触及、脉压＞30mmHg、毛细血管充盈时间＜2秒、尿量＞30ml/h，呈高动力状态（心输出量增加、外周阻力降低、四肢温暖）。参阅教材P155。",
+    "source_page": "教材P155",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-X-001",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "感染性休克早期复苏目标",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "应用",
+    "stem": "感染性休克病人应在最初6小时内达到的复苏目标包括",
+    "options": [
+      {
+        "label": "A",
+        "text": "尿量≥0.5ml/(kg·h)"
+      },
+      {
+        "label": "B",
+        "text": "中心静脉或混合静脉血氧饱和度≥70%"
+      },
+      {
+        "label": "C",
+        "text": "中心静脉压达到8～12mmHg"
+      },
+      {
+        "label": "D",
+        "text": "平均动脉压≥65mmHg"
+      },
+      {
+        "label": "E",
+        "text": "尿量≥100ml/h"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "教材规定感染性休克最初6小时复苏目标：①中心静脉压达到8～12mmHg；②平均动脉压≥65mmHg；③尿量≥0.5ml/(kg·h)；④中心静脉或混合静脉氧饱和度（SvO2或ScvO2）≥70%。故A、B、C、D正确；E错误，尿量目标为≥0.5ml/(kg·h)而非≥100ml/h。对于低血压（平均动脉压＜65mmHg）或血乳酸≥4mmol/L者，应按30ml/kg的标准进行液体复苏。参阅教材P155。",
+    "source_page": "教材P155",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M5-X-002",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "休克失代偿期临床表现",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "休克失代偿期（休克期）的临床表现包括",
+    "options": [
+      {
+        "label": "A",
+        "text": "神志淡漠,反应迟钝,意识模糊"
+      },
+      {
+        "label": "B",
+        "text": "脉搏细速、血压进行性下降"
+      },
+      {
+        "label": "C",
+        "text": "皮肤温暖干燥、颜面潮红"
+      },
+      {
+        "label": "D",
+        "text": "尿量减少甚至无尿"
+      },
+      {
+        "label": "E",
+        "text": "出冷汗、口唇肢端发绀、四肢厥冷"
+      }
+    ],
+    "answer": "ABDE",
+    "explanation": "A正确，失代偿期病人神情淡漠、反应迟钝，甚至意识模糊或昏迷；B正确，脉搏细速、血压进行性下降，严重时脉搏摸不清、血压测不出；C错误，皮肤温暖干燥、潮红为暖休克或休克代偿期表现为皮肤苍白，失代偿期出冷汗、口唇肢端发绀、四肢厥冷（E正确）；D正确，严重时少尿甚至无尿。若皮肤黏膜出现瘀斑或消化道出血提示已发展至DIC阶段。参阅教材P150。",
+    "source_page": "教材P150",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": true,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M5-X-003",
+    "module": "M5",
+    "module_name": "休克",
+    "topic": "血管活性药物的应用",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于休克时血管活性药物的应用，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "多巴胺是最常用的血管活性药，其药理作用与剂量有关"
+      },
+      {
+        "label": "B",
+        "text": "多巴酚丁胺对心肌的正性肌力作用较多巴胺强，能降低肺毛细血管楔压"
+      },
+      {
+        "label": "C",
+        "text": "去甲肾上腺素与多巴酚丁胺联合应用是治疗感染性休克最理想的血管活性药物方案"
+      },
+      {
+        "label": "D",
+        "text": "间羟胺直接兴奋α、β受体，作用强于去甲肾上腺素"
+      },
+      {
+        "label": "E",
+        "text": "血压下降即应立即使用血管收缩药，无需先补足血容量"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "A正确，多巴胺兼具兴奋α、β1和多巴胺受体作用，其药理作用与剂量有关，抗休克时宜采取小剂量；B正确，多巴酚丁胺正性肌力作用较多巴胺强，能增加心输出量、降低肺毛细血管楔压；C正确；D错误，间羟胺系间接兴奋α、β受体，对心脏和血管的作用同去甲肾上腺素但作用弱，维持时间约30分钟；E错误，血管活性药物适用于经补足血容量后血压仍不稳定或休克症状未见缓解的严重休克。参阅教材P153。",
+    "source_page": "教材P153",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A1-001",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "热射病的临床特征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "热射病病人典型的临床表现是",
+    "options": [
+      {
+        "label": "A",
+        "text": "体温超过38℃，大汗淋漓"
+      },
+      {
+        "label": "B",
+        "text": "体温正常，腓肠肌对称性痉挛"
+      },
+      {
+        "label": "C",
+        "text": "体温超过40.5℃，高热、无汗、意识障碍"
+      },
+      {
+        "label": "D",
+        "text": "体温正常或略升高，面色苍白、皮肤湿冷"
+      },
+      {
+        "label": "E",
+        "text": "体温不超过38℃头晕乏力注意力不集中"
+      }
+    ],
+    "answer": "C",
+    "explanation": "热射病是中暑最严重的类型，表现为高热、无汗、意识障碍，体温超过40.5℃，可出现皮肤干燥灼热、谵妄、昏迷、抽搐、呼吸急促、心动过速等，严重者出现休克、心力衰竭、脑水肿、ARDS、DIC、MODS。A、E为先兆及轻症中暑表现，B为热痉挛，D为热衰竭。参阅教材P179。",
+    "source_page": "教材P179",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A1-002",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "热痉挛的发病机制",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "高温环境强体力作业的年轻人出现四肢及腹部肌肉阵发性痉挛，其主要原因是",
+    "options": [
+      {
+        "label": "A",
+        "text": "高热引起脑细胞水肿"
+      },
+      {
+        "label": "B",
+        "text": "体内热量蓄积过多"
+      },
+      {
+        "label": "C",
+        "text": "外周血管扩张导致血压下降"
+      },
+      {
+        "label": "D",
+        "text": "大量出汗导致血液浓缩"
+      },
+      {
+        "label": "E",
+        "text": "出汗仅补水,致低钠低氯血症"
+      }
+    ],
+    "answer": "E",
+    "explanation": "热痉挛常发生于高温环境下强体力作业或运动的年轻人，出汗后水和盐分大量丢失，仅补充水或低张液，形成低钠血症、低氯血症，出现四肢、腹部、背部肌肉痉挛和疼痛，常发生于腓肠肌，呈对称性和阵发性，病人意识清楚，体温一般正常。参阅教材P179。",
+    "source_page": "教材P179",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M6-A1-003",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "冻僵的定义",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "冻僵（意外低体温）是指机体中心体温低于",
+    "options": [
+      {
+        "label": "A",
+        "text": "35℃"
+      },
+      {
+        "label": "B",
+        "text": "36℃"
+      },
+      {
+        "label": "C",
+        "text": "36.5℃"
+      },
+      {
+        "label": "D",
+        "text": "37℃"
+      },
+      {
+        "label": "E",
+        "text": "37.5℃"
+      }
+    ],
+    "answer": "A",
+    "explanation": "冻僵又称意外低体温，是指处在寒冷环境中的机体中心体温低于35℃，伴神经和心血管系统损伤为主要表现的全身性疾病。参阅教材P180。",
+    "source_page": "教材P180",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A1-004",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "冻结性冻伤快速复温",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "冻结性冻伤温水快速复温时，水温应控制在",
+    "options": [
+      {
+        "label": "A",
+        "text": "32～35℃"
+      },
+      {
+        "label": "B",
+        "text": "37～39℃"
+      },
+      {
+        "label": "C",
+        "text": "40～42℃"
+      },
+      {
+        "label": "D",
+        "text": "43～45℃"
+      },
+      {
+        "label": "E",
+        "text": "45～50℃"
+      }
+    ],
+    "answer": "B",
+    "explanation": "温水快速复温水温应控制在37～39℃；水温超过39℃并不会使复温时间缩短，反而会使病人疼痛加剧，影响复温效果；水温超过42℃时会造成额外损伤。复温后注意保持冻伤部位干燥。参阅教材P182。",
+    "source_page": "教材P182",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A1-005",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "中国九分法烧伤面积",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "按中国九分法估算，成人双下肢（含双臀）面积占体表面积的",
+    "options": [
+      {
+        "label": "A",
+        "text": "9%"
+      },
+      {
+        "label": "B",
+        "text": "18%"
+      },
+      {
+        "label": "C",
+        "text": "27%"
+      },
+      {
+        "label": "D",
+        "text": "46%"
+      },
+      {
+        "label": "E",
+        "text": "53%"
+      }
+    ],
+    "answer": "D",
+    "explanation": "中国九分法：头颈9×1=9%，双上肢9×2=18%，躯干9×3=27%，双下肢9×5+1=46%。参阅教材P186。[源:考研真题 GS-2003-079]",
+    "source_page": "教材P186",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2003-079",
+      "year": 2003,
+      "source": "2003考研西综·第79题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch031-M6-A1-006",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "浅Ⅱ度烧伤创面特点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "浅Ⅱ度烧伤的创面特点是",
+    "options": [
+      {
+        "label": "A",
+        "text": "粉红或红色，创面干燥，疼痛明显"
+      },
+      {
+        "label": "B",
+        "text": "白色、褐色，干燥似皮革，感觉消失"
+      },
+      {
+        "label": "C",
+        "text": "粉红、大水疱，创面潮湿，疼痛明显"
+      },
+      {
+        "label": "D",
+        "text": "粉红、出血性水疱，痛觉迟钝，常需植皮"
+      },
+      {
+        "label": "E",
+        "text": "创面蜡白、焦痂形成，痛觉消失"
+      }
+    ],
+    "answer": "C",
+    "explanation": "浅Ⅱ度伤及表皮生发层与真皮乳头层（真皮浅层），创面粉红、大水疱、潮湿、疼痛明显，10天～2周愈合，不留瘢痕，常有色素改变。A为Ⅰ度，B、E为Ⅲ度，D为深Ⅱ度。参阅教材P186。[源:考研真题 GS-2014-041]",
+    "source_page": "教材P186",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2014-041",
+      "year": 2014,
+      "source": "2014考研西综·第41题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch031-M6-A1-007",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "人体组织电流阻力顺序",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "电流作用下，人体各组织对电流的阻力按自小而大的顺序排列，正确的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "皮肤肌肉血管神经脂肪肌腱骨组织"
+      },
+      {
+        "label": "B",
+        "text": "血管神经肌肉皮肤脂肪肌腱骨组织"
+      },
+      {
+        "label": "C",
+        "text": "骨组织肌腱脂肪皮肤肌肉神经血管"
+      },
+      {
+        "label": "D",
+        "text": "神经血管肌肉脂肪皮肤骨组织肌腱"
+      },
+      {
+        "label": "E",
+        "text": "肌肉血管神经皮肤肌腱脂肪骨组织"
+      }
+    ],
+    "answer": "B",
+    "explanation": "身体各组织单独对电流的阻力按自小而大顺序依次为血管、神经、肌肉、皮肤、脂肪、肌腱、骨组织；电流通过心脏易导致心脏骤停，通过脑干则导致中枢神经麻痹、呼吸暂停。参阅教材P187。",
+    "source_page": "教材P187",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A1-008",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "淹溺程度分类",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "溺水3～4分钟获救，神志丧失，无脉搏血压，面色苍白肿胀。按淹溺程度分类，该患者属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻度淹溺：意识清楚，血压升高"
+      },
+      {
+        "label": "B",
+        "text": "中度淹溺：剧烈呛咳，意识模糊"
+      },
+      {
+        "label": "C",
+        "text": "重度淹溺：昏迷，四肢厥冷，口鼻血性泡沫"
+      },
+      {
+        "label": "D",
+        "text": "迟发性淹溺：初期症状轻，后出现肺水肿"
+      },
+      {
+        "label": "E",
+        "text": "浸渍综合征：低温液体致心律失常、晕厥"
+      }
+    ],
+    "answer": "C",
+    "explanation": "按临床表现将淹溺分为轻、中、重三度：轻度——落水片刻，吸入或吞入少量液体，反射性呼吸暂停，意识清楚，血压升高，心率加快；中度——溺水1～2分钟，水经呼吸道或消化道进入，剧烈呛咳、呕吐，意识模糊、烦躁，呼吸不规则或表浅，血压下降，心率减慢，反射减弱；重度——溺水3～4分钟，昏迷，面色发绀或苍白肿胀，眼球突出，四肢厥冷，血压测不到，口鼻血性泡沫，胃扩张、上腹膨隆，可有抽搐，呼吸心搏微弱或停止。本例溺水3～4分钟、神志丧失、无脉搏血压、面色苍白肿胀，符合重度淹溺。D迟发性淹溺指溺水后初期症状较轻，数小时至1天后出现肺水肿等表现；E浸渍综合征指较长时间浸于低温液体（中心体温低于35℃），出现心律失常、晕厥等表现。教材P177。",
+    "source_page": "教材P177",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A2-001",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "热射病的首要处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，22岁，烈日下军事训练2小时后昏迷倒地。查体：体温41℃，皮肤灼热干燥无汗，呼吸急促。现场首要的急救措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即口服含盐清凉饮料"
+      },
+      {
+        "label": "B",
+        "text": "立即静脉滴注氯丙嗪25～50mg"
+      },
+      {
+        "label": "C",
+        "text": "立即行气管插管、机械通气"
+      },
+      {
+        "label": "D",
+        "text": "脱离高温环境，用冷水浸泡快速降温"
+      },
+      {
+        "label": "E",
+        "text": "静脉滴注甘露醇脱水降颅压"
+      }
+    ],
+    "answer": "D",
+    "explanation": "热射病快速降温是治疗的首要措施，病死率与体温过高及持续时间密切相关，如果降温延迟，病死率明显增高；当病人脱离高温环境后应立即开始降温，可采用冷水浸泡、喷洒凉水并持续扇风蒸发、冰毯冰袋等体外降温方法。参阅教材P179。",
+    "source_page": "教材P179",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A2-002",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "淡水淹溺的液体管理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，18岁，淡水淹溺经抢救恢复自主呼吸。查体：血钠126mmol/L，尿呈酱油色，血红蛋白进行性下降。其液体管理原则是",
+    "options": [
+      {
+        "label": "A",
+        "text": "及时补充液体，严格控制氯化钠溶液入量"
+      },
+      {
+        "label": "B",
+        "text": "限制入水量，补充氯化钠溶液、血浆和白蛋白"
+      },
+      {
+        "label": "C",
+        "text": "大量输注5%葡萄糖溶液稀释血液"
+      },
+      {
+        "label": "D",
+        "text": "大量补充高渗盐水快速纠正低钠血症"
+      },
+      {
+        "label": "E",
+        "text": "快速静脉输注右旋糖酐40扩容蛋白"
+      }
+    ],
+    "answer": "B",
+    "explanation": "淡水淹溺时因血液稀释，应适当限制入水量，并适当补充氯化钠溶液、血浆和白蛋白；海水淹溺时大量体液渗入肺组织、血容量偏低，需及时补充液体，严格控制氯化钠溶液的入量（A为海水淹溺原则）。注意纠正高钾血症及酸中毒，对发生溶血者及时碱化尿液。参阅教材P178。",
+    "source_page": "教材P178",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A2-003",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "电击伤现场脱离电源",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "工人在检修电路时触电倒地，身体仍与电线接触。现场施救者首先应",
+    "options": [
+      {
+        "label": "A",
+        "text": "徒手将触电者拉开"
+      },
+      {
+        "label": "B",
+        "text": "立即行心肺复苏"
+      },
+      {
+        "label": "C",
+        "text": "立即拨打急救电话等待专业人员"
+      },
+      {
+        "label": "D",
+        "text": "立即检查触电者意识和呼吸"
+      },
+      {
+        "label": "E",
+        "text": "切断电源,使触电者脱离电源"
+      }
+    ],
+    "answer": "E",
+    "explanation": "电击伤现场急救首先强调确保现场救助者自身的安全，在第一时间切断电源，或用绝缘物使触电者与电源分离，或采取保护措施将伤者搬离危险区；对心脏、呼吸骤停者再立即行心肺复苏。参阅教材P188。",
+    "source_page": "教材P188",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M6-A2-004",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "烧伤面积估算与伤情",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性，30岁，火焰烧伤双上肢及躯干，全部创面均出现大水疱、剧痛。按中国九分法估算，其烧伤总面积和伤情分类为",
+    "options": [
+      {
+        "label": "A",
+        "text": "27%，中度烧伤"
+      },
+      {
+        "label": "B",
+        "text": "36%，中度烧伤"
+      },
+      {
+        "label": "C",
+        "text": "45%，重度烧伤"
+      },
+      {
+        "label": "D",
+        "text": "45%，特重度烧伤"
+      },
+      {
+        "label": "E",
+        "text": "54%，特重度烧伤"
+      }
+    ],
+    "answer": "C",
+    "explanation": "双上肢18%＋躯干27%=45%；创面大水疱、剧痛为浅Ⅱ度烧伤。烧伤总面积达30%～49%为重度烧伤（或Ⅲ度烧伤面积在10%～19%）；特重度烧伤指烧伤面积50%及以上或Ⅲ度烧伤面积在20%及以上。故本例为45%、重度烧伤。参阅教材P186。",
+    "source_page": "教材P186",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A3-001",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "劳力性热射病诊断",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，25岁，盛夏高温环境下长途负重行军后意识不清30分钟。查体：体温41.2℃，皮肤灼热、干燥无汗，呼吸30次/分，心率140次/分，血压100/60mmHg，双肺未闻及啰音，病理征阴性。最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "劳力性热射病"
+      },
+      {
+        "label": "B",
+        "text": "非劳力性热射病"
+      },
+      {
+        "label": "C",
+        "text": "中暑热衰竭"
+      },
+      {
+        "label": "D",
+        "text": "中暑热痉挛"
+      },
+      {
+        "label": "E",
+        "text": "急性脑血管意外"
+      }
+    ],
+    "answer": "A",
+    "explanation": "在高温、高湿或强烈太阳照射环境中作业或运动数小时后发病者为劳力性热射病，表现为高热、无汗、意识障碍，体温超过40.5℃；本例青年、强体力行军后发病，符合劳力性热射病。经典型多见于老年、体弱、有慢性病病人在高温和通风不良环境中维持数日。热衰竭意识障碍不明显，热痉挛意识清楚、体温一般正常。参阅教材P179。",
+    "source_page": "教材P179",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-A3-002",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "热射病降温目标",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性，25岁，盛夏高温环境下长途负重行军后意识不清30分钟。查体：体温41.2℃，皮肤灼热、干燥无汗，呼吸30次/分，心率140次/分，血压100/60mmHg，双肺未闻及啰音，病理征阴性。对该病人进行降温，正确的目标是",
+    "options": [
+      {
+        "label": "A",
+        "text": "2小时内降至39℃以下即可"
+      },
+      {
+        "label": "B",
+        "text": "4小时内缓慢降至38.5℃以下"
+      },
+      {
+        "label": "C",
+        "text": "10分钟内降至36℃以下"
+      },
+      {
+        "label": "D",
+        "text": "40分钟内至39℃,2小时内至38.5℃"
+      },
+      {
+        "label": "E",
+        "text": "60分钟内降至37℃以下"
+      }
+    ],
+    "answer": "D",
+    "explanation": "热射病降温目标：核心体温在10～40分钟内迅速降至39℃以下，2小时内降至38.5℃以下，达到正常体温时停止降温，避免体温过低。体外降温可用冷水浸泡（降温速度可达0.2℃/min）、蒸发降温、冰毯冰袋等；体内降温可用4℃盐水200ml灌胃或直肠灌洗等。参阅教材P179。",
+    "source_page": "教材P179",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-B1-001",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "闪电击伤的皮肤体征",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "闪电击伤病人查体时最典型的皮肤体征是",
+    "options": [
+      {
+        "label": "A",
+        "text": "局部有横行排列的两个点状牙痕"
+      },
+      {
+        "label": "B",
+        "text": "口腔及鼻腔充满血性泡沫"
+      },
+      {
+        "label": "C",
+        "text": "共济失调伴剧烈头痛、恶心呕吐"
+      },
+      {
+        "label": "D",
+        "text": "复温皮肤呈红色或紫红色,充血水肿,无水疱"
+      },
+      {
+        "label": "E",
+        "text": "皮肤出现微红的树枝样或细条状条纹"
+      }
+    ],
+    "answer": "E",
+    "explanation": "闪电损伤时皮肤上可出现微红的树枝样或细条状条纹，这是电流沿着或穿过皮肤所致的Ⅰ度或Ⅱ度烧伤；佩戴指环、手表、项链或腰带处可有较深的烧伤。A为蜈蚣咬伤的牙痕特点，B为重度淹溺的表现，C为高原脑水肿的最早特异性症状，D为Ⅰ度冻伤复温后表现。参阅教材P188。",
+    "source_page": "教材P188",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M6-B1-002",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "Ⅰ度冻伤复温后表现",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "Ⅰ度（红斑性）冻伤复温后的表现是",
+    "options": [
+      {
+        "label": "A",
+        "text": "局部有横行排列的两个点状牙痕"
+      },
+      {
+        "label": "B",
+        "text": "口腔及鼻腔充满血性泡沫复温"
+      },
+      {
+        "label": "C",
+        "text": "共济失调伴剧烈头痛、复温后恶心呕吐"
+      },
+      {
+        "label": "D",
+        "text": "复温皮肤呈红色或紫红色,充血水肿,无水疱"
+      },
+      {
+        "label": "E",
+        "text": "皮肤出现微红的树枝样或细条状条纹"
+      }
+    ],
+    "answer": "D",
+    "explanation": "Ⅰ度冻伤为红斑性冻伤，损害在表层，受冻皮肤早期苍白，复温后呈红色或紫红色，充血水肿，无水疱，1周后脱屑愈合，不留瘢痕。Ⅱ度冻伤为水疱性冻伤，Ⅲ度、Ⅳ度为坏死性及深层坏死。参阅教材P181。",
+    "source_page": "教材P181",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch031-M6-X-001",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "热射病的综合治疗",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "应用",
+    "stem": "关于热射病的治疗，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "快速降温是治疗的首要措施，病死率与体温过高及持续时间密切相关"
+      },
+      {
+        "label": "B",
+        "text": "核心体温应在10～40分钟内降至39℃以下，2小时内降至38.5℃以下"
+      },
+      {
+        "label": "C",
+        "text": "液体复苏首选含钠液体，第一个小时输液总量可达1.5～2L"
+      },
+      {
+        "label": "D",
+        "text": "应早期大量输注葡萄糖注射液以快速补充能量"
+      },
+      {
+        "label": "E",
+        "text": "氯丙嗪25～50mg加入液体内静脉滴注，同时严密监测血压"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "A正确，快速降温是治疗的首要措施，降温延迟病死率明显增高；B正确，降温目标为核心体温在10～40分钟内降至39℃以下、2小时内降至38.5℃以下，达到正常体温时停止降温；C正确，液体复苏首选含钠液体如生理盐水或林格液，输液速度以维持尿量100～200ml/h为准，第一个小时输液总量可达1.5～2L；D错误，应避免早期大量输注葡萄糖注射液，以免血钠在短时间内快速下降、加重神经损伤；E正确，氯丙嗪25～50mg加入250～500ml液体内静脉滴注1～2小时，需严密监测血压。参阅教材P179、P180。",
+    "source_page": "教材P179",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch031-M6-X-002",
+    "module": "M6",
+    "module_name": "环境及理化因素损伤",
+    "topic": "冻结性冻伤处理原则",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于冻结性冻伤的急救处理，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "迅速脱离寒冷环境，保暖并尽早快速复温"
+      },
+      {
+        "label": "B",
+        "text": "温水快速复温，水温控制在37～39℃"
+      },
+      {
+        "label": "C",
+        "text": "严禁火烤雪搓,冷水浸泡或猛力捶打冻伤部位"
+      },
+      {
+        "label": "D",
+        "text": "可静脉滴注右旋糖酐40以降低血液黏稠度、改善微循环"
+      },
+      {
+        "label": "E",
+        "text": "复温越快越好，可用45℃以上热水浸泡以缩短复温时间"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "A正确，治疗原则包括迅速脱离寒冷环境、保暖、尽早快速复温；B正确，温水快速复温水温应控制在37～39℃；C正确，严禁火烤、雪搓、冷水浸泡或猛力捶打冻伤部位；D正确，右旋糖酐40静脉滴注每日500～1 000ml，维持7～14天，以降低血液黏稠度、改善微循环；E错误，水温超过39℃并不会使复温时间缩短，反而会使疼痛加剧，超过42℃会造成额外损伤。参阅教材P182。",
+    "source_page": "教材P182",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  }
+]

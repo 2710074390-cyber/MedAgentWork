@@ -1,0 +1,1696 @@
+[
+  {
+    "id": "batch035-M1-A1-001",
+    "module": "M1",
+    "module_name": "绪论",
+    "topic": "急诊医学概念",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "急诊医学的核心内涵是",
+    "options": [
+      {
+        "label": "A",
+        "text": "院前急救、院内急诊和危重症监护一体化模式"
+      },
+      {
+        "label": "B",
+        "text": "早期判断,迅速救治,保护脏器功能生命安全"
+      },
+      {
+        "label": "C",
+        "text": "急救人员、车辆、通信的调动准备和现场急救"
+      },
+      {
+        "label": "D",
+        "text": "对灾难的预见、预防和准备及灾后卫生防疫"
+      },
+      {
+        "label": "E",
+        "text": "对慢性疾病进行长期随访和康复治疗"
+      }
+    ],
+    "answer": "B",
+    "explanation": "急诊医学是对急危重症、创伤和意外伤害进行评估、急诊处理、治疗和预防的学科专业，其核心是早期判断、迅速有效救治、保护脏器功能和生命安全。教材P1。",
+    "source_page": "教材P1",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M1-A1-002",
+    "module": "M1",
+    "module_name": "绪论",
+    "topic": "急诊分诊分类",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "急诊分诊中，Ⅱ类病人应在多长时间内进行病情评估和治疗",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即进行抢救"
+      },
+      {
+        "label": "B",
+        "text": "10分钟内"
+      },
+      {
+        "label": "C",
+        "text": "30分钟内"
+      },
+      {
+        "label": "D",
+        "text": "1小时内"
+      },
+      {
+        "label": "E",
+        "text": "2小时内"
+      }
+    ],
+    "answer": "B",
+    "explanation": "急诊分诊将病人分为5类：Ⅰ类生命垂危需立即抢救；Ⅱ类随时危及生命应在10分钟内评估治疗；Ⅲ类存在危及生命状况应在30分钟内评估；Ⅳ类潜在危重可在1小时内处理；Ⅴ类非紧急可适当延时，一般2小时内处理。教材P2。",
+    "source_page": "教材P2",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M1-A1-003",
+    "module": "M1",
+    "module_name": "绪论",
+    "topic": "院前急救时间指标",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "关于院前急救技术指标，急救反应时间是指",
+    "options": [
+      {
+        "label": "A",
+        "text": "从接到求救电话到派出救护车抵达现场的时间"
+      },
+      {
+        "label": "B",
+        "text": "急救人员在现场对伤病员救治的时间"
+      },
+      {
+        "label": "C",
+        "text": "从现场到医院的转运时间"
+      },
+      {
+        "label": "D",
+        "text": "从发病到开始实施急救的时间"
+      },
+      {
+        "label": "E",
+        "text": "从入院到开始确定性治疗的时间"
+      }
+    ],
+    "answer": "A",
+    "explanation": "急救反应时间是从接到求救电话到派出救护车抵达伤病现场的平均时间，国际目标要求为5～10分钟。现场抢救时间是急救人员在现场对伤病员救治的时间，转运时间是从现场到医院的时间。教材P1。",
+    "source_page": "教材P1",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M1-A1-004",
+    "module": "M1",
+    "module_name": "绪论",
+    "topic": "急诊专业特点",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于急诊医学专业特点的描述，**错误的**是",
+    "options": [
+      {
+        "label": "A",
+        "text": "急症病情危重、进展难预料，具危重复杂性"
+      },
+      {
+        "label": "B",
+        "text": "救治时间窗内早期目标治疗，具时限急迫性"
+      },
+      {
+        "label": "C",
+        "text": "早期纠正器官功能紊乱可逆转，具机制可逆性"
+      },
+      {
+        "label": "D",
+        "text": "急诊症状零乱复杂，需跨专科综合分析"
+      },
+      {
+        "label": "E",
+        "text": "急诊应优先明确诊断再抢救,处置强调先诊救"
+      }
+    ],
+    "answer": "E",
+    "explanation": "急诊医学强调“救人治病”的原则，即将抢救生命作为第一目标，而非先明确诊断再抢救。急诊专业特点包括危重复杂性、时限急迫性、机制可逆性、综合关联性和处置简捷性。教材P3-4。",
+    "source_page": "教材P3-4",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M1-A1-005",
+    "module": "M1",
+    "module_name": "绪论",
+    "topic": "急诊思维流程",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "急诊处理临床问题的思维方法中，首要的评估步骤是",
+    "options": [
+      {
+        "label": "A",
+        "text": "询问详细发病经过和既往病史"
+      },
+      {
+        "label": "B",
+        "text": "进行全面的体格检查"
+      },
+      {
+        "label": "C",
+        "text": "评价病人气道、呼吸和循环"
+      },
+      {
+        "label": "D",
+        "text": "立即安排实验室和影像学检查"
+      },
+      {
+        "label": "E",
+        "text": "根据临床表现做出确定性诊断"
+      }
+    ],
+    "answer": "C",
+    "explanation": "急诊处理临床问题的思维方法归纳为：①评价病人“A-B-C”（气道、呼吸、循环），判断有无生命危险，如有危险要立即抢救；②无论是否能立即做出临床诊断，都要马上评估病情严重程度；③根据病情采取相应救治措施；④继续观察病情变化，重复评估。教材P5。",
+    "source_page": "教材P5",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M1-A2-001",
+    "module": "M1",
+    "module_name": "绪论",
+    "topic": "急诊临床分诊应用",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,68岁。突发胸痛2小时,伴大汗、呼吸困难,血压85/50mmHg,心电图示急性广泛前壁心肌梗死。根据急诊分诊标准，该病人应属于",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ⅰ类——生命垂危病人"
+      },
+      {
+        "label": "B",
+        "text": "Ⅱ类——随时危及生命的病人"
+      },
+      {
+        "label": "C",
+        "text": "Ⅲ类——存在危及生命状况的病人"
+      },
+      {
+        "label": "D",
+        "text": "Ⅳ类——潜在危重状况的病人"
+      },
+      {
+        "label": "E",
+        "text": "Ⅴ类——非紧急的病人"
+      }
+    ],
+    "answer": "A",
+    "explanation": "患者急性广泛前壁心肌梗死，血压85/50mmHg提示心源性休克，生命垂危，属于Ⅰ类病人，需要立即进行抢救。Ⅰ类为生命垂危病人，需立即抢救；Ⅱ类为随时危及生命病人，应在10分钟内评估治疗。教材P2。",
+    "source_page": "教材P2",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M1-B1-001",
+    "module": "M1",
+    "module_name": "绪论",
+    "topic": "急救与灾难医学原则",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "急诊医学强调的基本原则是",
+    "options": [
+      {
+        "label": "A",
+        "text": "先抢后救，先使伤员脱离危险环境"
+      },
+      {
+        "label": "B",
+        "text": "救人治病，将抢救生命作为第一目标"
+      },
+      {
+        "label": "C",
+        "text": "先明确诊断，再针对病因进行治疗"
+      },
+      {
+        "label": "D",
+        "text": "先完善检查，再决定治疗方案"
+      },
+      {
+        "label": "E",
+        "text": "先转运后抢救，尽快送达医院"
+      }
+    ],
+    "answer": "B",
+    "explanation": "急诊医学强调“救人治病”的原则，即将抢救生命作为第一目标。只有在生命体征稳定的情况下，才能赢得确定诊断和针对病因治疗的时机。灾难医学的原则是“先抢后救”，强调先使伤员脱离危险环境再进行分拣急救。教材P3。",
+    "source_page": "教材P3",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M1-X-001",
+    "module": "M1",
+    "module_name": "绪论",
+    "topic": "EMSS三位一体模式",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "我国急救医疗服务体系（EMSS）的组成部分包括",
+    "options": [
+      {
+        "label": "A",
+        "text": "院前急救"
+      },
+      {
+        "label": "B",
+        "text": "医院急诊"
+      },
+      {
+        "label": "C",
+        "text": "危重症监护"
+      },
+      {
+        "label": "D",
+        "text": "社区卫生服务中心"
+      },
+      {
+        "label": "E",
+        "text": "康复医疗机构"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "我国目前的急救医疗服务体系（EMSS）是院前急救、医院急诊、危重症监护三位一体的模式。院前急救是指到达医院前对急症、创伤病人开展现场或转运途中的医疗救治；医院急诊是EMSS中最重要而又最复杂的中心环节；危重症监护是指在急诊抢救和观察区域内实现完备的监护和抢救的医疗功能。教材P1-2。",
+    "source_page": "教材P1-2",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A1-001",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "急性中毒概念",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于急性中毒的临床特点，下列哪项**不正确**",
+    "options": [
+      {
+        "label": "A",
+        "text": "起病急骤，症状严重"
+      },
+      {
+        "label": "B",
+        "text": "病情变化迅速，常危及生命"
+      },
+      {
+        "label": "C",
+        "text": "病程较长且缺乏特异性诊断指标"
+      },
+      {
+        "label": "D",
+        "text": "短时间内吸收大量毒物所致"
+      },
+      {
+        "label": "E",
+        "text": "需及时治疗以防生命危险"
+      }
+    ],
+    "answer": "C",
+    "explanation": "急性中毒是指短时间内吸收大量毒物导致躯体损害，起病急骤，症状严重，病情变化迅速，如不及时治疗常危及生命。慢性中毒是长时间吸收少量毒物的结果，起病缓慢，病程较长，缺乏特异性诊断指标，多不属于急诊范畴。教材P157。",
+    "source_page": "教材P157",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A1-002",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "毒物代谢与排出",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "毒物吸收后主要在哪里代谢，其代谢产物主要经何种途径排出",
+    "options": [
+      {
+        "label": "A",
+        "text": "肾脏代谢，肝脏排出"
+      },
+      {
+        "label": "B",
+        "text": "肺脏代谢，消化道排出"
+      },
+      {
+        "label": "C",
+        "text": "脾脏代谢，呼吸道排出"
+      },
+      {
+        "label": "D",
+        "text": "肝脏代谢，肾脏排出"
+      },
+      {
+        "label": "E",
+        "text": "脑组织代谢，皮肤排出"
+      }
+    ],
+    "answer": "D",
+    "explanation": "毒物吸收后经血液分布于全身，主要在肝脏代谢。多数毒物代谢后毒性降低（解毒），但也有少数毒物代谢后毒性反而增强，如对硫磷氧化为毒性更强的对氧磷。体内毒物主要由肾脏排出，气体和易挥发毒物还可以原型经呼吸道排出。教材P157。",
+    "source_page": "教材P157",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A1-003",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "中毒机制分类",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "一氧化碳、硫化氢、氰化物等窒息性毒物导致机体中毒的主要机制是",
+    "options": [
+      {
+        "label": "A",
+        "text": "局部腐蚀和刺激作用"
+      },
+      {
+        "label": "B",
+        "text": "麻醉作用抑制脑功能"
+      },
+      {
+        "label": "C",
+        "text": "阻碍氧的吸收、转运或利用"
+      },
+      {
+        "label": "D",
+        "text": "抑制酶的活力"
+      },
+      {
+        "label": "E",
+        "text": "干扰细胞器的生理功能"
+      }
+    ],
+    "answer": "C",
+    "explanation": "一氧化碳、硫化氢、氰化物等窒息性毒物可阻碍氧的吸收、转运或利用，使机体组织和器官缺氧。抑制酶的活力是有机磷等毒物的机制，麻醉作用是有机溶剂和吸入性麻醉药的机制。教材P157。[源:考研真题 GS-2003-025]",
+    "source_page": "教材P157",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2003-025",
+      "year": 2003,
+      "source": "2003考研西综·第25题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M2-A1-004",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "有机磷中毒M样症状",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "急性有机磷杀虫剂中毒时，下列属于毒蕈碱样（M样）症状的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "颜面肌纤维颤动"
+      },
+      {
+        "label": "B",
+        "text": "呼吸肌麻痹"
+      },
+      {
+        "label": "C",
+        "text": "瞳孔缩小、多汗、流涎"
+      },
+      {
+        "label": "D",
+        "text": "四肢强直性痉挛"
+      },
+      {
+        "label": "E",
+        "text": "肌力减退和瘫痪"
+      }
+    ],
+    "answer": "C",
+    "explanation": "毒蕈碱样症状（M样症状）在三种表现中出现最早，主要由于副交感神经末梢兴奋，平滑肌痉挛和腺体分泌增加，表现为恶心、呕吐、腹痛、腹泻、多汗、流涎、瞳孔缩小、气道分泌物增加、支气管痉挛等。A、B、D、E均为烟碱样（N样）症状。教材P162。[源:考研真题 GS-2018-156]",
+    "source_page": "教材P162",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2018-156",
+      "year": 2018,
+      "source": "2018考研西综·第156题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M2-A1-005",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "有机磷中毒分级ChE",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "急性有机磷杀虫剂中毒中度中毒时，全血胆碱酯酶活力为",
+    "options": [
+      {
+        "label": "A",
+        "text": "70%以上"
+      },
+      {
+        "label": "B",
+        "text": "50%～70%"
+      },
+      {
+        "label": "C",
+        "text": "30%～50%"
+      },
+      {
+        "label": "D",
+        "text": "15%～30%"
+      },
+      {
+        "label": "E",
+        "text": "15%以下"
+      }
+    ],
+    "answer": "C",
+    "explanation": "急性有机磷中毒程度分级：轻度中毒以M样症状为主，胆碱酯酶活力为50%～70%；中度中毒M样症状加重并出现N样症状，胆碱酯酶活力为30%～50%；重度中毒合并肺水肿、呼吸衰竭、抽搐、昏迷等，胆碱酯酶活力在30%以下。教材P163。[源:考研真题 GS-2012-067]",
+    "source_page": "教材P163",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2012-067",
+      "year": 2012,
+      "source": "2012考研西综·第67题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M2-A1-006",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "有机磷特效解毒药",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "目前推荐用于急性有机磷杀虫剂中毒急救的首选抗胆碱药是",
+    "options": [
+      {
+        "label": "A",
+        "text": "阿托品"
+      },
+      {
+        "label": "B",
+        "text": "盐酸戊乙奎醚"
+      },
+      {
+        "label": "C",
+        "text": "碘解磷定"
+      },
+      {
+        "label": "D",
+        "text": "氯解磷定"
+      },
+      {
+        "label": "E",
+        "text": "双复磷"
+      }
+    ],
+    "answer": "B",
+    "explanation": "目前推荐用盐酸戊乙奎醚替代阿托品作为有机磷杀虫剂中毒急救的首选抗胆碱药，因其具有拮抗腺体分泌效应更强、有较强拮抗N受体作用、中枢和外周双重抗胆碱效应、不引起心动过速、半衰期长、中毒发生率低等优点。教材P164。",
+    "source_page": "教材P164",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A1-007",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "阿托品化表现",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "记忆",
+    "stem": "下列哪项**不是**有机磷中毒阿托品化的判定标准",
+    "options": [
+      {
+        "label": "A",
+        "text": "瞳孔较前扩大"
+      },
+      {
+        "label": "B",
+        "text": "皮肤干燥、颜面潮红"
+      },
+      {
+        "label": "C",
+        "text": "心率较前增快"
+      },
+      {
+        "label": "D",
+        "text": "肺部啰音消失"
+      },
+      {
+        "label": "E",
+        "text": "瞳孔明显扩大伴意识模糊"
+      }
+    ],
+    "answer": "E",
+    "explanation": "阿托品化指征为瞳孔较前扩大、口干、皮肤干燥、颜面潮红、心率增快、肺部湿啰音消失。E选项瞳孔明显扩大伴意识模糊提示阿托品中毒，而非阿托品化。阿托品中毒时应立即停用阿托品，酌情给予毛果芸香碱对抗。教材P164。[源:考研真题 GS-2007-143]",
+    "source_page": "教材P164",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2007-143",
+      "year": 2007,
+      "source": "2007考研西综·第143题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M2-A1-008",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "百草枯靶器官",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "百草枯中毒最突出和最严重的损害器官是",
+    "options": [
+      {
+        "label": "A",
+        "text": "肝脏"
+      },
+      {
+        "label": "B",
+        "text": "肾脏"
+      },
+      {
+        "label": "C",
+        "text": "肺脏"
+      },
+      {
+        "label": "D",
+        "text": "心脏"
+      },
+      {
+        "label": "E",
+        "text": "中枢神经"
+      }
+    ],
+    "answer": "C",
+    "explanation": "百草枯中毒时肺损伤是最突出和最严重的改变。百草枯在肺组织含量为血液中的10倍或数十倍，通过过氧化损伤和炎症等机制导致肺损伤。大剂量服毒者可在24～48小时出现进行性呼吸困难，呼吸衰竭是病人死亡的主要原因。教材P166。",
+    "source_page": "教材P166",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A1-009",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "CO中毒治疗",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "关于急性一氧化碳中毒的治疗，下列哪项是正确的",
+    "options": [
+      {
+        "label": "A",
+        "text": "面罩吸氧是治疗最有效的方法"
+      },
+      {
+        "label": "B",
+        "text": "高压氧治疗可缩短昏迷时间和病程"
+      },
+      {
+        "label": "C",
+        "text": "高压氧治疗仅适用于重度中毒患者"
+      },
+      {
+        "label": "D",
+        "text": "COHb浓度降至15%即可停止吸氧"
+      },
+      {
+        "label": "E",
+        "text": "机械通气不适用于CO中毒的治疗"
+      }
+    ],
+    "answer": "B",
+    "explanation": "氧疗是治疗一氧化碳中毒最有效的方法，高压氧治疗能增加血液中物理溶解氧含量，COHb解离速度较正常吸氧时快4～5倍，可缩短昏迷时间和病程，预防迟发性脑病发生。高压氧适用于中、重度中毒，或出现神经精神症状、COHb浓度≥25%者。教材P176。",
+    "source_page": "教材P176",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A1-010",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "BZD中毒解毒药",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "苯二氮䓬类中毒的特效解毒药是",
+    "options": [
+      {
+        "label": "A",
+        "text": "纳洛酮"
+      },
+      {
+        "label": "B",
+        "text": "氟马西尼"
+      },
+      {
+        "label": "C",
+        "text": "烯丙吗啡"
+      },
+      {
+        "label": "D",
+        "text": "亚甲蓝"
+      },
+      {
+        "label": "E",
+        "text": "乙酰胺"
+      }
+    ],
+    "answer": "B",
+    "explanation": "氟马西尼是苯二氮䓬类中毒的特效解毒药，能竞争性抑制苯二氮䓬受体，阻断该类药物对中枢神经系统的作用。用法：0.2mg静脉注射，酌情重复，总量可达2mg。纳洛酮用于阿片类和酒精中毒；亚甲蓝用于高铁血红蛋白血症；乙酰胺用于氟乙酰胺中毒。教材P161、P172。[源:考研真题 GS-2021-130]",
+    "source_page": "教材P161",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2021-130",
+      "year": 2021,
+      "source": "2021考研西综·第130题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M2-A1-011",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "血液净化方式选择",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "对于脂溶性强、蛋白结合率高、分子量大的毒物中毒，首选的血液净化方式是",
+    "options": [
+      {
+        "label": "A",
+        "text": "血液透析"
+      },
+      {
+        "label": "B",
+        "text": "血液灌流"
+      },
+      {
+        "label": "C",
+        "text": "血浆置换"
+      },
+      {
+        "label": "D",
+        "text": "CRRT"
+      },
+      {
+        "label": "E",
+        "text": "腹膜透析"
+      }
+    ],
+    "answer": "B",
+    "explanation": "血液灌流对分子量500～40000Da的水溶性和脂溶性毒物均有清除作用，因其对脂溶性强、蛋白结合率高、分子量大的毒物的清除能力远大于血液透析，故常作为急性中毒的首选净化方式。血液透析可清除分子量小于500Da、水溶性强、蛋白结合率低的毒物。教材P160-161。",
+    "source_page": "教材P160-161",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A1-012",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "毒鼠强治疗",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "毒鼠强中毒时控制惊厥应首选的药物是",
+    "options": [
+      {
+        "label": "A",
+        "text": "乙酰胺"
+      },
+      {
+        "label": "B",
+        "text": "维生素K1"
+      },
+      {
+        "label": "C",
+        "text": "地西泮"
+      },
+      {
+        "label": "D",
+        "text": "亚甲蓝"
+      },
+      {
+        "label": "E",
+        "text": "纳洛酮"
+      }
+    ],
+    "answer": "C",
+    "explanation": "毒鼠强可拮抗γ-氨基丁酸（GABA）受体，导致中枢神经系统过度兴奋而引起惊厥。抗惊厥治疗选用地西泮、苯巴比妥钠、羟丁酸钠、二巯丙磺钠等药物。乙酰胺为氟乙酰胺的特效解毒药；维生素K1为抗凝血类杀鼠剂的特效药。教材P168。",
+    "source_page": "教材P168",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A1-013",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "酒精中毒昏迷期",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "急性酒精中毒昏迷期，血乙醇浓度通常超过",
+    "options": [
+      {
+        "label": "A",
+        "text": "500mg/L"
+      },
+      {
+        "label": "B",
+        "text": "1000mg/L"
+      },
+      {
+        "label": "C",
+        "text": "1500mg/L"
+      },
+      {
+        "label": "D",
+        "text": "2000mg/L"
+      },
+      {
+        "label": "E",
+        "text": "2500mg/L"
+      }
+    ],
+    "answer": "E",
+    "explanation": "血乙醇浓度大于500～1500mg/L为兴奋期；大于1500～2500mg/L为共济失调期；大于2500mg/L为昏迷期，病人进入昏迷状态，瞳孔散大，体温不升，血压下降，呼吸减慢，严重者可发生呼吸、循环衰竭。教材P173。",
+    "source_page": "教材P173",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M2-A2-001",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "有机磷中毒程度判断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女性,20岁。误服有机磷农药后半小时家人送来急诊。查体:神志不清,皮肤潮湿多汗,面部肌肉束颤动,瞳孔缩小,双肺布满湿啰音。该患者最可能的中毒程度是",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻度中毒"
+      },
+      {
+        "label": "B",
+        "text": "中度中毒"
+      },
+      {
+        "label": "C",
+        "text": "重度中毒"
+      },
+      {
+        "label": "D",
+        "text": "不能确定"
+      },
+      {
+        "label": "E",
+        "text": "隐匿性中毒"
+      }
+    ],
+    "answer": "C",
+    "explanation": "患者神志不清，应诊断为重度有机磷中毒。皮肤潮湿多汗、瞳孔缩小、双肺湿啰音为M样症状，面部肌肉束颤动为N样症状。重度中毒指M样和N样症状外，还合并脑水肿、肺水肿、呼吸衰竭、抽搐、昏迷等，胆碱酯酶活力在30%以下。教材P163。[源:考研真题 GS-2015-068]",
+    "source_page": "教材P163",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2015-068",
+      "year": 2015,
+      "source": "2015考研西综·第68题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M2-A2-002",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "CO中毒诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,45岁。冬季室内使用煤炉取暖,晨起被家人发现昏迷。查体:昏迷状态,口唇呈樱桃红色,呼吸浅慢,心率110次/分,血压90/60mmHg。为明确诊断，应首选的检查是",
+    "options": [
+      {
+        "label": "A",
+        "text": "动脉血气分析"
+      },
+      {
+        "label": "B",
+        "text": "血碳氧血红蛋白测定"
+      },
+      {
+        "label": "C",
+        "text": "颅脑CT检查"
+      },
+      {
+        "label": "D",
+        "text": "常规心电图"
+      },
+      {
+        "label": "E",
+        "text": "血电解质测定"
+      }
+    ],
+    "answer": "B",
+    "explanation": "患者有明确的室内煤炉取暖史，晨起昏迷，口唇樱桃红色，高度提示急性一氧化碳中毒。血碳氧血红蛋白浓度增高是一氧化碳中毒的特异性诊断指标，该检查有助于确诊和判断中毒程度。教材P175-176。",
+    "source_page": "教材P175-176",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A2-003",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "百草枯中毒处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,28岁。口服百草枯约30ml后2小时来诊。查体:神志清楚,口腔黏膜糜烂,双肺呼吸音清。应立即采取的措施中，最重要的是",
+    "options": [
+      {
+        "label": "A",
+        "text": "尽早进行血液灌流治疗"
+      },
+      {
+        "label": "B",
+        "text": "大剂量甲泼尼龙冲击治疗"
+      },
+      {
+        "label": "C",
+        "text": "高浓度吸氧改善缺氧"
+      },
+      {
+        "label": "D",
+        "text": "立即使用环磷酰胺"
+      },
+      {
+        "label": "E",
+        "text": "静脉输注碳酸氢钠碱化尿液"
+      }
+    ],
+    "answer": "A",
+    "explanation": "百草枯中毒目前尚无特效治疗，尽早排出毒物、血液净化等早期综合救治是关键。洗胃完成后应及早进行血液灌流治疗，有肾损害者可行血液灌流联合血液透析。高浓度氧气吸入可加重肺组织损害，仅在PaO2＜40mmHg时才能使用。教材P167。",
+    "source_page": "教材P167",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A2-004",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "有机磷中毒洗胃",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,35岁。自服敌百虫约50ml后1小时来急诊。查体:神志模糊,瞳孔针尖样缩小,大汗淋漓,肌纤维颤动。洗胃时禁用的洗胃液是",
+    "options": [
+      {
+        "label": "A",
+        "text": "清水洗胃液"
+      },
+      {
+        "label": "B",
+        "text": "2%碳酸氢钠溶液"
+      },
+      {
+        "label": "C",
+        "text": "高锰酸钾洗胃液"
+      },
+      {
+        "label": "D",
+        "text": "生理盐水洗胃液"
+      },
+      {
+        "label": "E",
+        "text": "温开水洗胃液"
+      }
+    ],
+    "answer": "B",
+    "explanation": "口服中毒者可用清水、2%碳酸氢钠或1:5000高锰酸钾溶液洗胃。但敌百虫中毒时禁用碳酸氢钠洗胃，因为碳酸氢钠可将敌百虫转化为敌敌畏，使毒性显著增强；对硫磷中毒时禁用高锰酸钾洗胃，因为高锰酸钾可将对硫磷氧化为对氧磷，使毒性增强。教材P163。[源:考研真题 GS-2023-156]",
+    "source_page": "教材P163",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2023-156",
+      "year": 2023,
+      "source": "2023考研西综·第156题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M2-A2-005",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "阿片类药物中毒",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,25岁。被发现昏迷,身边有注射器。查体:昏迷,瞳孔针尖样缩小,呼吸浅慢(6次/分),口唇发绀。应首先采取的治疗措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "静脉注射纳洛酮"
+      },
+      {
+        "label": "B",
+        "text": "静脉注射氟马西尼"
+      },
+      {
+        "label": "C",
+        "text": "血液灌流治疗"
+      },
+      {
+        "label": "D",
+        "text": "静脉注射亚甲蓝"
+      },
+      {
+        "label": "E",
+        "text": "静脉注射乙酰胺"
+      }
+    ],
+    "answer": "A",
+    "explanation": "患者有注射史、昏迷、瞳孔针尖样缩小、呼吸抑制，符合吗啡或海洛因中毒的典型三联征。纳洛酮为阿片受体拮抗剂，对麻醉性镇痛药所致的呼吸抑制有特异性拮抗作用，用法：0.4～0.8mg静脉注射，酌情重复，总量可达10～20mg。教材P161。",
+    "source_page": "教材P161",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A2-006",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "食物中毒鉴别",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "一家三口进食自制罐头后出现头晕、乏力,继而出现眼睑下垂、吞咽困难、言语含糊。查体:神志清楚,双侧瞳孔等大等圆,对光反射存在,肌力正常。最可能的诊断和治疗措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "河鲀毒素中毒，尽早使用阿托品"
+      },
+      {
+        "label": "B",
+        "text": "肉毒杆菌中毒，尽早使用肉毒抗毒血清"
+      },
+      {
+        "label": "C",
+        "text": "有机磷中毒，尽早使用阿托品和氯解磷定"
+      },
+      {
+        "label": "D",
+        "text": "毒蕈中毒，尽早使用阿托品"
+      },
+      {
+        "label": "E",
+        "text": "亚硝酸盐中毒，尽早使用亚甲蓝"
+      }
+    ],
+    "answer": "B",
+    "explanation": "肉毒杆菌中毒常见于进食罐头食品，以中枢神经系统症状为主，表现为眼肌麻痹、吞咽困难、言语困难、呼吸肌麻痹等。肉毒抗毒血清是特效治疗，发病24小时内最有效。河鲀毒素中毒表现为口唇麻木、呕吐、四肢无力、呼吸麻痹。教材P169。",
+    "source_page": "教材P169",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A2-007",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "酒精中毒意识障碍",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,40岁。大量饮酒后昏迷,呕吐物为胃内容物。查体:昏迷状态,瞳孔散大,体温35.5℃,呼吸浅慢(10次/分),血压80/50mmHg,心率120次/分。血乙醇浓度3500mg/L。除常规支持治疗外，应优先使用的药物是",
+    "options": [
+      {
+        "label": "A",
+        "text": "氟马西尼"
+      },
+      {
+        "label": "B",
+        "text": "纳洛酮"
+      },
+      {
+        "label": "C",
+        "text": "地西泮"
+      },
+      {
+        "label": "D",
+        "text": "苯巴比妥"
+      },
+      {
+        "label": "E",
+        "text": "氯丙嗪"
+      }
+    ],
+    "answer": "B",
+    "explanation": "患者血乙醇浓度大于2500mg/L，处于昏迷期，应诊断为急性重度酒精中毒。纳洛酮0.4～0.8mg静脉注射对昏迷病人有促醒作用。酒精中毒烦躁不安者可用小剂量地西泮，但禁用吗啡、氯丙嗪及巴比妥类镇静药，以免加重呼吸抑制。教材P173。",
+    "source_page": "教材P173",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A3-001",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "有机磷中毒诊断",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,30岁。自服农药约100ml后30分钟被家人送来急诊。查体:意识模糊,全身湿冷,双侧瞳孔针尖样缩小,口鼻大量分泌物,呼吸急促,双肺满布湿啰音,可见颜面及四肢肌纤维颤动。该患者最可能的诊断是",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性有机磷杀虫剂中毒"
+      },
+      {
+        "label": "B",
+        "text": "急性氨基甲酸酯类杀虫剂中毒"
+      },
+      {
+        "label": "C",
+        "text": "急性拟除虫菊酯类杀虫剂中毒"
+      },
+      {
+        "label": "D",
+        "text": "急性百草枯中毒"
+      },
+      {
+        "label": "E",
+        "text": "急性毒鼠强中毒"
+      }
+    ],
+    "answer": "A",
+    "explanation": "患者有明确的农药接触史，出现M样症状（瞳孔针尖样缩小、全身湿冷、口鼻分泌物增多、肺水肿）、N样症状（肌纤维颤动）和中枢神经系统症状（意识模糊），符合急性有机磷中毒的典型表现。氨基甲酸酯类中毒虽也有类似表现但病程较短。教材P162-163。",
+    "source_page": "教材P162-163",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A3-002",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "有机磷中毒抢救措施",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "男性,30岁。自服农药约100ml后30分钟被家人送来急诊。查体:意识模糊,全身湿冷,双侧瞳孔针尖样缩小,口鼻大量分泌物,呼吸急促,双肺满布湿啰音,可见颜面及四肢肌纤维颤动。对该患者应首先采取的治疗措施是",
+    "options": [
+      {
+        "label": "A",
+        "text": "清水洗胃，并静注阿托品和氯解磷定"
+      },
+      {
+        "label": "B",
+        "text": "立即行血液灌流治疗"
+      },
+      {
+        "label": "C",
+        "text": "先静脉注射地西泮控制抽搐再洗胃"
+      },
+      {
+        "label": "D",
+        "text": "先完善血胆碱酯酶检查再用药"
+      },
+      {
+        "label": "E",
+        "text": "先用2%碳酸氢钠洗胃再用药"
+      }
+    ],
+    "answer": "A",
+    "explanation": "有机磷中毒治疗原则：立即脱离中毒现场、清除毒物（洗胃），同时尽早使用特效解毒药。洗胃一般在服毒后4～6小时内效果最好，应尽早进行。阿托品和胆碱酯酶复活剂应早期、足量、联合、重复用药，不能等待检查结果。由于敌百虫禁用碳酸氢钠洗胃，在不明农药种类时一般用清水洗胃。教材P163。",
+    "source_page": "教材P163",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-A3-003",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "有机磷中毒阿托品中毒",
+    "type": "A3",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "男性,30岁。自服农药后经洗胃、阿托品和氯解磷定治疗后症状缓解。继续治疗中患者出现瞳孔明显扩大、烦躁不安、胡言乱语、尿潴留。此时应首先考虑的处理是",
+    "options": [
+      {
+        "label": "A",
+        "text": "增加阿托品用量以加强疗效"
+      },
+      {
+        "label": "B",
+        "text": "立即停用阿托品，酌情给予毛果芸香碱"
+      },
+      {
+        "label": "C",
+        "text": "加用盐酸戊乙奎醚替代阿托品"
+      },
+      {
+        "label": "D",
+        "text": "增加氯解磷定用量以对抗阿托品中毒"
+      },
+      {
+        "label": "E",
+        "text": "立即行血液灌流清除毒物"
+      }
+    ],
+    "answer": "B",
+    "explanation": "患者出现瞳孔明显扩大、烦躁不安、谵妄、尿潴留，提示阿托品中毒，应立即停用阿托品，酌情给予毛果芸香碱对抗，必要时采取血液净化治疗。阿托品中毒是造成有机磷中毒者死亡的重要因素之一，因此要严密观察病人神志、瞳孔、皮肤、心率和肺部啰音变化，及时调整用药。教材P164。",
+    "source_page": "教材P164",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-B1-001",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "中毒瞳孔变化",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "引起瞳孔明显缩小的急性中毒是",
+    "options": [
+      {
+        "label": "A",
+        "text": "有机磷杀虫剂中毒"
+      },
+      {
+        "label": "B",
+        "text": "阿托品中毒"
+      },
+      {
+        "label": "C",
+        "text": "甲醇中毒"
+      },
+      {
+        "label": "D",
+        "text": "乙醇中毒"
+      },
+      {
+        "label": "E",
+        "text": "氰化物中毒"
+      }
+    ],
+    "answer": "A",
+    "explanation": "有机磷中毒时乙酰胆碱大量蓄积，与虹膜环形肌的M受体结合，导致瞳孔缩小（严重时呈针尖样）。阿托品中毒瞳孔扩大；甲醇中毒引起视神经炎；乙醇中毒昏迷期可有瞳孔散大；氰化物中毒可见瞳孔扩大。教材P158。[源:考研真题 GS-2019-130]",
+    "source_page": "教材P158",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2019-130",
+      "year": 2019,
+      "source": "2019考研西综·第130题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M2-B1-002",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "中毒呼吸气味",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "有机磷杀虫剂中毒时呼出气的气味特征为",
+    "options": [
+      {
+        "label": "A",
+        "text": "苦杏仁味"
+      },
+      {
+        "label": "B",
+        "text": "蒜臭味"
+      },
+      {
+        "label": "C",
+        "text": "烂苹果味"
+      },
+      {
+        "label": "D",
+        "text": "苯酚味"
+      },
+      {
+        "label": "E",
+        "text": "腥臭味"
+      }
+    ],
+    "answer": "B",
+    "explanation": "有机磷杀虫剂中毒呼出气有蒜味；氰化物中毒有苦杏仁味；苯酚和甲酚皂溶液中毒有苯酚味；糖尿病酮症酸中毒有烂苹果味；肝性脑病有腥臭味。教材P158。[源:考研真题 GS-2018-130]",
+    "source_page": "教材P158",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2018-130",
+      "year": 2018,
+      "source": "2018考研西综·第130题",
+      "mode": "改编"
+    }
+  },
+  {
+    "id": "batch035-M2-B1-003",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "血液净化方式选择",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "氯酸盐、重铬酸盐中毒易引起急性肾衰竭，应首选的血液净化方式是",
+    "options": [
+      {
+        "label": "A",
+        "text": "血液透析"
+      },
+      {
+        "label": "B",
+        "text": "血液灌流"
+      },
+      {
+        "label": "C",
+        "text": "血浆置换"
+      },
+      {
+        "label": "D",
+        "text": "CRRT"
+      },
+      {
+        "label": "E",
+        "text": "腹膜透析"
+      }
+    ],
+    "answer": "A",
+    "explanation": "血液透析可清除分子量小于500Da、水溶性强、蛋白结合率低的毒物。氯酸盐、重铬酸盐中毒时易引起急性肾衰竭，应首选血液透析。血液灌流对脂溶性强、蛋白结合率高的毒物清除能力强，是急性中毒的首选净化方式。血浆置换主要清除蛋白结合率高的大分子物质。教材P160。",
+    "source_page": "教材P160",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-X-001",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "有机磷中毒解毒药",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于急性有机磷杀虫剂中毒解毒药的应用，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "抗胆碱药首选盐酸戊乙奎醚"
+      },
+      {
+        "label": "B",
+        "text": "阿托品能有效解除M样症状和呼吸中枢抑制"
+      },
+      {
+        "label": "C",
+        "text": "胆碱酯酶复活剂能有效解除烟碱样症状"
+      },
+      {
+        "label": "D",
+        "text": "阿托品对N样症状和呼吸肌麻痹有效"
+      },
+      {
+        "label": "E",
+        "text": "重度毒须将阿托品胆碱酯酶复活剂联合应用"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "A对：目前推荐用盐酸戊乙奎醚替代阿托品作为首选抗胆碱药。B对：阿托品主要阻断乙酰胆碱对M受体的作用，能有效解除M样症状及呼吸中枢抑制。C对：胆碱酯酶复活剂能有效解除烟碱样症状，迅速控制肌纤维颤动。D错：阿托品不能阻断N受体，故对N样症状和呼吸肌麻痹所致的周围性呼吸衰竭无效。E对：中重度中毒者必须将阿托品与胆碱酯酶复活剂联合应用，两药合用时应减少阿托品剂量。教材P164。",
+    "source_page": "教材P164",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M2-X-002",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "中毒急诊处理原则",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "急性中毒的急诊处理原则包括",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即脱离中毒现场，终止与毒物继续接触"
+      },
+      {
+        "label": "B",
+        "text": "检查并稳定生命体征"
+      },
+      {
+        "label": "C",
+        "text": "迅速清除体内已被吸收或尚未吸收的毒物"
+      },
+      {
+        "label": "D",
+        "text": "如有可能，尽早使用特效解毒药"
+      },
+      {
+        "label": "E",
+        "text": "首先完善毒物检测明确诊断再处理"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "急性中毒治疗原则：①立即脱离中毒现场，终止与毒物继续接触；②检查并稳定生命体征；③迅速清除体内已被吸收或尚未吸收的毒物；④如有可能，尽早使用特效解毒药；⑤预防并发症及对症支持治疗。毒物检测虽能帮助确诊，但不能过分依赖，不能因等待检测结果而延误治疗。教材P159-160。",
+    "source_page": "教材P159-160",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch035-M2-X-003",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "百草枯中毒综合治疗",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于急性百草枯中毒的急诊处理，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即用1%～2%碳酸氢钠或温清水洗胃"
+      },
+      {
+        "label": "B",
+        "text": "洗胃后注入15%漂白土溶液或活性炭吸附"
+      },
+      {
+        "label": "C",
+        "text": "早期大剂量应用糖皮质激素和环磷酰胺"
+      },
+      {
+        "label": "D",
+        "text": "尽早行高浓度氧气吸入以改善低氧血症"
+      },
+      {
+        "label": "E",
+        "text": "及早进行血液灌流治疗加速毒物排泄"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "A对：立即以1%～2%碳酸氢钠或温清水洗胃，洗胃量不少于5L。B对：洗胃完毕注入15%漂白土溶液或活性炭100g吸附。C对：早期大剂量应用糖皮质激素及环磷酰胺冲击治疗对中重度病人可能有益。D错：高浓度氧气吸入可加重肺组织损害，仅当PaO2＜40mmHg或出现ARDS时才能使用。E对：洗胃完成后应及早进行血液灌流治疗。教材P167。",
+    "source_page": "教材P167",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch035-M2-X-004",
+    "module": "M2",
+    "module_name": "急性中毒",
+    "topic": "特效解毒药应用",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "关于急性中毒特效解毒药的应用，正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "铅中毒首选依地酸钙钠治疗"
+      },
+      {
+        "label": "B",
+        "text": "砷、汞中毒可用二巯丙醇等巯基螯合剂"
+      },
+      {
+        "label": "C",
+        "text": "亚硝酸盐中毒使用小剂量亚甲蓝"
+      },
+      {
+        "label": "D",
+        "text": "氰化物中毒采用亚硝酸盐-硫代硫酸钠疗法"
+      },
+      {
+        "label": "E",
+        "text": "氟乙酰胺中毒的特效解毒药是维生素K1"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "A对：依地酸钙钠是最常用的氨羧螯合剂，主要用于治疗铅中毒。B对：二巯丙醇等巯基螯合剂含有活性巯基，主要用于治疗砷、汞、铜、锑等中毒。C对：小剂量亚甲蓝（1～2mg/kg）可使高铁血红蛋白还原为正常血红蛋白，是亚硝酸盐、苯胺等中毒的特效解毒药。D对：氰化物中毒一般采用亚硝酸盐-硫代硫酸钠疗法。E错：氟乙酰胺中毒的特效解毒药是乙酰胺，维生素K1为抗凝血类杀鼠剂的特效药。教材P161。[源:考研真题 GS-2010-169]",
+    "source_page": "教材P161",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2010-169",
+      "year": 2010,
+      "source": "2010考研西综·第169题",
+      "mode": "改编"
+    }
+  }
+]
