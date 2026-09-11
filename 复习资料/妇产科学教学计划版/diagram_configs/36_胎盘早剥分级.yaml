@@ -1,0 +1,32 @@
+type: grid
+title: 胎盘早剥分级（0~3级）
+subtitle: 妇产科学 M7 妊娠并发症（按剥离范围与母儿状态递增）
+cols: 2
+output: annotated/36_胎盘早剥分级.png
+webp: images_webp/36_胎盘早剥分级.webp
+items:
+  - title: 0级
+    color: green
+    lines:
+      - 无症状，产后回顾性诊断
+      - 剥离面小，母儿状态稳定
+      - 可阴道分娩
+  - title: 1级
+    color: teal
+    lines:
+      - 少量阴道流血、子宫轻压痛
+      - 胎心正常、无休克
+      - 可阴道分娩
+  - title: 2级
+    color: orange
+    lines:
+      - 子宫强直性收缩、有压痛
+      - 胎儿窘迫（胎心异常）
+      - 剖宫产终止
+  - title: 3级
+    color: red
+    lines:
+      - 板状腹、产妇休克、胎死宫内
+      - 约 1/3 并发凝血异常（DIC）
+      - 剖宫产终止，抗休克+纠正凝血
+note: 内容依据人卫《妇产科学》第9版；早剥出血量可显性/隐性，隐性出血量与病情可不相符；本图由 render_diagram.py 确定性渲染

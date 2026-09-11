@@ -1,0 +1,42 @@
+type: compare
+title: 各型流产鉴别（五型）
+subtitle: 妇产科学 M7（按出血量/腹痛/组织排出/宫颈口/子宫大小）
+output: annotated/37_流产五型鉴别.png
+webp: images_webp/37_流产五型鉴别.webp
+items:
+  - title: 先兆流产
+    color: green
+    lines:
+      - 出血少、腹痛无或轻
+      - 组织未排出、宫颈口闭
+      - 子宫与孕周相符
+      - 处理：保胎
+  - title: 难免流产
+    color: orange
+    lines:
+      - 出血中→多、腹痛加剧
+      - 组织未排出、宫颈口扩张
+      - 子宫相符或略小
+      - 处理：尽早清宫
+  - title: 不全流产
+    color: yellow
+    lines:
+      - 出血少→多、腹痛减轻
+      - 组织部分排出、宫口扩张/堵塞
+      - 子宫小于孕周
+      - 处理：刮宫
+  - title: 完全流产
+    color: blue
+    lines:
+      - 出血少→无、无腹痛
+      - 组织全部排出、宫颈口闭
+      - 子宫正常或略大
+      - 处理：观察
+  - title: 稽留流产
+    color: purple
+    lines:
+      - 出血少或无、无腹痛
+      - 组织未排出、宫颈口闭
+      - 子宫较停经周数小
+      - 处理：清宫（防 DIC）
+note: 内容依据人卫《妇产科学》第9版（表2）；处理口诀：先兆保胎、难免速清、不全即刮、完全观察；本图由 render_diagram.py 确定性渲染

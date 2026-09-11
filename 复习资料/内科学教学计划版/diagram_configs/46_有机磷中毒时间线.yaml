@@ -1,0 +1,31 @@
+type: flow
+title: 有机磷中毒时间线
+subtitle: 内科学 M5 理化因素（急性中毒后三类后期表现）
+direction: horizontal
+numbered: true
+output: annotated/46_有机磷中毒时间线.png
+webp: images_webp/46_有机磷中毒时间线.webp
+steps:
+  - title: 急性期（0~24h）
+    color: blue
+    lines:
+      - M样/N样/中枢胆碱能危象
+      - 解毒：阿托品+氯解磷定
+  - title: 反跳（数小时~1天）
+    color: orange
+    lines:
+      - 症状突然再加重
+      - 见于乐果、马拉硫磷
+  - title: 中间型综合征（24~96h）
+    color: red
+    lines:
+      - 颈屈肌/近端肌无力、呼吸肌麻痹
+      - 血 ChE 多 <30%
+      - 机械通气+继续氯解磷定
+  - title: 迟发性多发神经病（2~3周）
+    color: purple
+    lines:
+      - 肢体远端对称性感觉/运动障碍
+      - 与神经病靶酯酶（NTE）老化相关
+      - 神经营养/康复为主
+note: 内容依据人卫《内科学》第9版（教材P891）；IMS 顾呼吸肌、OPIDP 顾远端神经，时间窗是分水岭；本图由 render_diagram.py 确定性渲染

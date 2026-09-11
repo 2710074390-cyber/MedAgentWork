@@ -1,0 +1,28 @@
+type: compare
+title: 动脉三病鉴别（TAO / ASO / 急性动脉栓塞）
+subtitle: 外科学（二）M1 周围血管疾病（教材表34-A/D）
+output: annotated/35_动脉三病鉴别.png
+webp: images_webp/35_动脉三病鉴别.webp
+items:
+  - title: 血栓闭塞性脉管炎（TAO）
+    color: teal
+    lines:
+      - 青壮年男性+吸烟
+      - 中、小动静脉炎性闭塞
+      - 慢性病程，游走性浅静脉炎
+      - 无动脉钙化，戒烟为核心
+  - title: 动脉硬化性闭塞症（ASO）
+    color: blue
+    lines:
+      - 中老年（>45岁）+代谢病
+      - 大、中动脉粥样硬化
+      - 慢性：间歇性跛行→静息痛→坏疽
+      - 钙化、多部位硬化；旁路/介入
+  - title: 急性动脉栓塞
+    color: red
+    lines:
+      - 房颤/心瓣膜病栓子脱落
+      - 任何动脉分叉，起病急骤
+      - 5P 征：疼痛/苍白/无脉/感觉异常/运动障碍
+      - 6 小时窗，Fogarty 球囊取栓
+note: 内容依据人卫《外科学》第9版（教材P325-327）；本图由 render_diagram.py 确定性渲染

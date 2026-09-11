@@ -1,0 +1,29 @@
+type: flow
+title: 骨筋膜隔室综合征因果链
+subtitle: 外科学（二）M9 骨折并发症（内压-灌注恶性循环）
+direction: horizontal
+numbered: true
+output: annotated/36_骨筋膜隔室综合征因果链.png
+webp: images_webp/36_骨筋膜隔室综合征因果链.webp
+steps:
+  - title: 起始通路（两条）
+    color: blue
+    lines:
+      - 骨折血肿+水肿→内容物体积↑
+      - 外包扎过紧/局部压迫→腔容积↓
+  - title: 隔室内压力↑（★关键转折）
+    color: orange
+    lines:
+      - 密闭隔室（骨/骨间膜/肌间隔/深筋膜）
+      - 小动脉灌注压相对最低
+  - title: 缺血—水肿—缺血 恶性循环
+    color: red
+    lines:
+      - 微循环关闭→肌肉/神经缺血
+      - 缺血加重水肿→压力进一步↑
+  - title: 结局分支
+    color: purple
+    lines:
+      - 及时识别+切开减压→预后好、功能保住
+      - 识别延迟→缺血性肌挛缩（爪形手/足）→残疾
+note: 内容依据人卫《外科学》第9版（教材P618）；舒张压−筋膜室压<30mmHg 应及时切开筋膜减压；5P 出现即已晚；本图由 render_diagram.py 确定性渲染

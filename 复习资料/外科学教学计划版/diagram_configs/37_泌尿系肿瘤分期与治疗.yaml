@@ -1,0 +1,26 @@
+type: grid
+title: 泌尿系肿瘤分期与治疗
+subtitle: 外科学（二）M6 泌尿系肿瘤（按浸润深度选手术）
+cols: 3
+output: annotated/37_泌尿系肿瘤分期与治疗.png
+webp: images_webp/37_泌尿系肿瘤分期与治疗.webp
+items:
+  - title: 膀胱癌（尿路上皮癌）
+    color: blue
+    lines:
+      - 无痛性肉眼血尿首发，复发率 50%~70%
+      - 非肌层浸润（Tis/Ta/T1）→ TURBT+膀胱灌注（BCG）
+      - 肌层浸润（T2 及以上）→ 新辅助化疗+根治性膀胱切除
+  - title: 肾细胞癌（肾小管上皮）
+    color: orange
+    lines:
+      - 三联征：血尿+腰痛+肿块，可伴副瘤综合征
+      - T1 期 → 肾部分切除（保肾）
+      - T2~T4/无法部分切除 → 根治性肾切除（肾+肾周脂肪+输尿管上段）
+  - title: 肾盂癌（尿路上皮癌）
+    color: purple
+    lines:
+      - 间歇性无痛血尿、条状血块，约 17% 伴发膀胱癌
+      - 多中心起病 → 根治性肾+输尿管全长切除
+      - 加输尿管口膀胱壁袖状切除，术后膀胱灌注
+note: 内容依据人卫《外科学》第9版（教材P564-573）；本图由 render_diagram.py 确定性渲染

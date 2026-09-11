@@ -1,0 +1,32 @@
+type: grid
+title: 前置胎盘四分类
+subtitle: 妇产科学 M7 妊娠并发症（依据胎盘下缘与宫颈内口关系）
+cols: 2
+output: annotated/35_前置胎盘四分类.png
+webp: images_webp/35_前置胎盘四分类.webp
+items:
+  - title: 完全性前置胎盘
+    color: red
+    lines:
+      - 胎盘完全覆盖宫颈内口
+      - 出血最早、量最大、最危险
+      - 34~37 周后择期剖宫产
+  - title: 部分性前置胎盘
+    color: orange
+    lines:
+      - 胎盘部分覆盖宫颈内口
+      - 出血较早、较重
+      - 以剖宫产终止为主
+  - title: 边缘性前置胎盘
+    color: yellow
+    lines:
+      - 胎盘边缘达到宫颈内口边缘
+      - 出血较晚、较轻
+      - 38 周后择期剖宫产
+  - title: 低置胎盘
+    color: green
+    lines:
+      - 胎盘下缘距宫颈内口 <2cm
+      - 出血最轻
+      - 仅边缘性/低置+枕先露可阴道试产
+note: 内容依据人卫《妇产科学》第9版；诊断首选经阴道超声，严禁肛门指检；本图由 render_diagram.py 确定性渲染

@@ -1,0 +1,29 @@
+type: flow
+title: 妊娠期阴道流血决策路径
+subtitle: 妇产科学 M7（按孕周与伴随症状分流）
+direction: horizontal
+numbered: true
+output: annotated/38_妊娠期阴道流血决策路径.png
+webp: images_webp/38_妊娠期阴道流血决策路径.webp
+steps:
+  - title: 妊娠期阴道流血
+    color: gray
+    lines:
+      - 先看孕周与伴随症状
+      - 病理性产前出血禁肛查/禁灌肠
+  - title: 孕早期（<12周）
+    color: blue
+    lines:
+      - 流产五型（先兆/难免/不全/完全/稽留）
+      - 异位妊娠：停经+腹痛+宫颈举痛
+  - title: 孕中晚期·无痛性反复流血
+    color: orange
+    lines:
+      - 前置胎盘：无痛、鲜红、外出血
+      - 超声分型→剖宫产为主
+  - title: 孕中晚期·腹痛+流血
+    color: red
+    lines:
+      - 胎盘早剥：子宫高张/板状腹→按0~3级处理
+      - 胎膜破裂后无痛流血+窘迫→前置血管破裂→急诊剖宫产
+note: 内容依据人卫《妇产科学》第9版（前置胎盘/早剥/流产/前置血管考点）；本图由 render_diagram.py 确定性渲染
