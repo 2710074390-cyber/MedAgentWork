@@ -1231,12 +1231,12 @@ body {
       <p>5 科主复习资料 PDF 直链下载 · 按教学计划成册 · 手机电脑即存即读</p>
       <span class="dt-go">进入资料库 <i>→</i></span>
     </a>
-    <div class="deck-tile reveal" style="cursor:default">
+    <a class="deck-tile reveal" href="#banks-s1">
       <div class="dt-top"><span class="dt-icon">🧩</span><span class="dt-num">02</span></div>
-      <h3>押题卷 / 题库 <span class="dt-en">COMING</span></h3>
-      <p>大四上押题卷与题库正在编纂之中，随生产进度陆续上线</p>
-      <span class="dt-go">敬请期待 <i>→</i></span>
-    </div>
+      <h3>题库 <span class="dt-en">BANKS</span></h3>
+      <p>5 科教学题库 PDF 直链下载 · 大四上题库 1,460 题</p>
+      <span class="dt-go">进入题库 <i>→</i></span>
+    </a>
   </div>
   <div class="deck-dots" aria-hidden="true"><span class="on"></span><span></span></div>
   </div>
@@ -1254,8 +1254,20 @@ body {
   <div class="grid" id="grid-review-s1"></div>
   <div class="deck-tip reveal">
     <span class="tip-icon">💡</span>
-    <p><b>什么是教学版资料？</b> 按课程<b>教学计划</b>章节范围成册的主复习资料（教材浓缩型 v5.1），PDF 直链下载后可离线翻阅，也可打印纸质复习。单册约 <b>7–11 MB</b>，点击后由浏览器下载管理器接管（进度见下载栏）。押题卷与题库正在编纂，后续将在本分区上线。</p>
+    <p><b>什么是教学版资料？</b> 按课程<b>教学计划</b>章节范围成册的主复习资料（教材浓缩型 v5.1），PDF 直链下载后可离线翻阅，也可打印纸质复习。单册约 <b>7–11 MB</b>，点击后由浏览器下载管理器接管（进度见下载栏）。题库已在本分区上线，押题卷正在编纂，后续上线。</p>
   </div>
+</section>
+
+<!-- ============ 大四上 · 题库（教学题库 PDF 直链） ============ -->
+<section class="section" id="banks-s1">
+  <div class="section-head display reveal">
+    <div class="left">
+      <span class="chip"><span>大四上题库 · <i>PDF 直链</i></span></span>
+      <h2>大四上题库 <span class="accent">5 科 · PDF 直链</span></h2>
+    </div>
+    <div class="right"><b>02 · 题库</b>05 科 · 1,460 题<br><span class="right-sub">教学题库 · 即点即下</span></div>
+  </div>
+  <div class="grid" id="grid-banks-s1"></div>
 </section>
 
 </div>
@@ -1336,6 +1348,13 @@ const REVIEWS_S1=[
   {name:'急诊与灾难医学',icon:'🚑',pdf:'大四上/复习资料/急诊与灾难医学_主复习资料.pdf',format:'PDF',size:'7.5 MB',tags:['教学计划版'],desc:'急性中毒 · 休克 · 心肺脑复苏 · 创伤急救 · 灾难救援'},
   {name:'耳鼻咽喉头颈外科学',icon:'👂',pdf:'大四上/复习资料/耳鼻咽喉头颈外科学_主复习资料.pdf',format:'PDF',size:'6.7 MB',tags:['教学计划版'],desc:'耳 · 鼻 · 咽 · 喉 · 头颈 五模块'},
   {name:'妇产科学',icon:'🤰',pdf:'大四上/复习资料/妇产科学_主复习资料.pdf',format:'PDF',size:'8.7 MB',tags:['教学计划版'],desc:'生殖生理 · 妊娠 · 分娩 · 产褥 · 妇科疾病'},
+];
+const BANKS_S1=[
+  {name:'内科学',icon:'🫀',pdf:'大四上/题库/内科教学题库.pdf',count:460,format:'PDF',size:'3.9 MB',tags:['教学题库'],desc:'消化 · 泌尿 · 内分泌 · 风湿 · 理化'},
+  {name:'外科学（二）',icon:'🔪',pdf:'大四上/题库/外科教学题库.pdf',count:300,format:'PDF',size:'3.4 MB',tags:['教学题库'],desc:'胸外 · 普外 · 血管 · 泌尿 · 骨科'},
+  {name:'妇产科学',icon:'🤰',pdf:'大四上/题库/妇产教学题库.pdf',count:280,format:'PDF',size:'3.5 MB',tags:['教学题库'],desc:'生殖生理 · 妊娠 · 分娩 · 产褥 · 妇科疾病'},
+  {name:'急诊与灾难医学',icon:'🚑',pdf:'大四上/题库/急诊教学题库.pdf',count:220,format:'PDF',size:'3.4 MB',tags:['教学题库'],desc:'急性中毒 · 休克 · 心肺脑复苏 · 创伤急救 · 灾难救援'},
+  {name:'耳鼻咽喉头颈外科学',icon:'👂',pdf:'大四上/题库/耳鼻喉教学题库.pdf',count:200,format:'PDF',size:'3.2 MB',tags:['教学题库'],desc:'耳 · 鼻 · 咽 · 喉 · 头颈 五模块'},
 ];
 
 /* ---------- 内联 SVG 图标（P2-1：跨平台渲染一致，零外部请求） ---------- */
@@ -1591,6 +1610,7 @@ $('#grid-exam').innerHTML=EXAMS.map(examCard).join('');
 $('#grid-bank').innerHTML=BANKS.map(bankCard).join('');
 $('#grid-review').innerHTML=REVIEWS.map(reviewCard).join('');
 $('#grid-review-s1').innerHTML=REVIEWS_S1.map(reviewS1Card).join('');
+$('#grid-banks-s1').innerHTML=BANKS_S1.map(bankCard).join('');
 
 /* ---------- 鼠标跟随光晕 ---------- */
 document.addEventListener('mousemove',e=>{
