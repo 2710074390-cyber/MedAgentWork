@@ -203,13 +203,16 @@ addOption("0", settingMarginDefault()).addOption("2", settingMarginMinimal()).ad
 ### 步骤 4：验证
 
 ```bash
-# 门禁（本方案交付）
+# 1) 结构门禁（零第三方依赖）
 python scripts/check_obsidian.py --all          # 全量
 python scripts/check_obsidian.py --all --strict # WARN 也计入退出码
 python scripts/check_obsidian.py --all --json reports/obsidian_check.json
 
-# 证伪测试（验证门禁自己没坏）
-python _scratch/test_check_obsidian.py
+# 2) 真实渲染验证（需 markdown-it-py：pip install markdown-it-py）
+python scripts/verify_render.py
+
+# 3) 门禁的证伪测试（路径无关，可从任意目录跑）
+python tests/test_check_obsidian.py
 ```
 
 再用 `Obsidian产物/Obsidian导出验证样章.md` 做**肉眼验收**（见 §6.2）。
@@ -285,9 +288,18 @@ hyc 产物里 **W13 共 5 处**：MinerU 把图表源码压成单行（用 ` ／
 
 ## 六、如何保证正常渲染并成功导出
 
-### 6.1 门禁（自动化）
+### 6.1 门禁（自动化，三件套）
 
-`scripts/check_obsidian.py` —— 与 `check_visual.py` 同风格，FAIL 为结构性缺陷，WARN 为体验风险。
+| 脚本 | 作用 | 何时跑 |
+|---|---|---|
+| `scripts/check_obsidian.py` | 正则结构检查（能定位行号、能查 vault 排除规则） | 每次改产物后 |
+| `scripts/verify_render.py` | **真实渲染验证**（markdown-it 渲染，抓「语法看着对但渲染不出来」） | 每次改产物后 |
+| `tests/test_check_obsidian.py` | 门禁的 20 项**证伪测试**（注入即红、不注入不红） | 改门禁本身后 |
+
+三者分工：结构检查快且能定位行号；渲染验证能抓语法正确但渲染失败的情况；
+证伪测试保证前两者自己没坏。**缺任何一环都会漏。**
+
+`check_obsidian.py` 与 `check_visual.py` 同风格，FAIL 为结构性缺陷，WARN 为体验风险。
 
 | 代码 | 级别 | 检查内容 |
 |---|---|---|
@@ -376,14 +388,15 @@ WARN 构成：**W4 ×53**（HTML 表格，任务一「含合并单元格则保 H
 | 文件 | 作用 |
 |---|---|
 | `scripts/obsidian-snippets/medagentwork-print.css` | CSS snippet **源文件**（入库）；安装时复制到 `.obsidian/snippets/` |
-| `scripts/check_obsidian.py` | 渲染/导出兼容性门禁 |
+| `scripts/check_obsidian.py` | 渲染/导出兼容性门禁（正则结构检查） |
+| `scripts/verify_render.py` | **真实渲染验证**：markdown-it 渲染产出，统计表格 / callout / 图片 |
 | `scripts/prepare_obsidian.py` | **转换器**：落实 4 条输出约定 + 按章拆分 + 生成 toc 目录笔记 |
 | `Obsidian产物/<册>/` | 236 个分册 md + 各自的 `images/`（与 md 同级，保证链接可解析） |
 | `Obsidian产物/_source/` | 原始整册 md 归档（供回溯；不入库） |
 | `Obsidian产物/Obsidian导出验证样章.md` | 肉眼验收样章（9 类结构） |
 | `.obsidian/plugins/better-export-pdf/` | 插件 v2.0.3（页码 / 书签 / 合并 / 导出预览） |
-| `_scratch/test_check_obsidian.py` | 门禁的 20 项证伪测试 |
-| `_scratch/verify_details_render.py` | HTML block 边界假设的验证脚本 |
+| `tests/test_check_obsidian.py` | 门禁的 20 项证伪测试 |
+| `_scratch/verify_details_render.py` | HTML block 边界假设的验证脚本（一次性实验） |
 | `reports/obsidian_check.json` | 本次全量门禁结果 |
 | `docs/Obsidian导出方案.md` | 本文档 |
 
