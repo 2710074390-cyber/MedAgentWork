@@ -46,6 +46,7 @@ MAX_HEADING_JUMP = 1
 DEFAULT_GLOBS = [
     "Obsidian产物/*.md",
     "Obsidian产物/[!_]*/*.md",
+    "_MOC/*.md",          # 导航笔记含大量 wikilink，是歧义检查的重点对象
 ]
 
 IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg", ".bmp", ".avif"}
@@ -71,6 +72,8 @@ MD_LIST_RE = re.compile(r"^[ \t]*(?:[-*+]|\d+\.)[ \t]+\S", re.M)
 MD_TABLE_ROW_RE = re.compile(r"^[ \t]*\|.*\|[ \t]*$", re.M)
 MD_MATH_RE = re.compile(r"(?<!\\)\$[^$\n]+\$")
 CONSEC_BLANK_RE = re.compile(r"\n(?:[ \t]*\n){%d,}" % (MAX_CONSEC_BLANK + 1))
+# Obsidian 内部链接（wikilink）—— 用于检查同名文件导致的解析歧义
+WIKILINK_RE = re.compile(r"\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]")
 # 折叠标记：Obsidian 的 callout（原生特性，替代 <details> 的正解）
 CALLOUT_RE = re.compile(r"^>[ \t]*\[![a-zA-Z]+\]", re.M)
 
@@ -221,6 +224,21 @@ def build_image_index(vault: Path) -> dict[str, list[str]]:
     return idx
 
 
+def build_md_index(vault: Path) -> dict[str, list[str]]:
+    """建立「md 文件名 -> [vault 相对路径, ...]」索引，用于 wikilink 歧义检查。
+
+    Obsidian 解析 [[名字]] 时，若 vault 内存在多个同名 md，会任选其一 ——
+    这会让链接静默指向错误的文件，比断链更难发现。
+    """
+    idx: dict[str, list[str]] = {}
+    for p in vault.rglob("*.md"):
+        parts = p.relative_to(vault).parts
+        if any(x.startswith(".") for x in parts):
+            continue
+        idx.setdefault(p.name, []).append("/".join(parts))
+    return idx
+
+
 def load_ignore_filters(vault: Path) -> list[str]:
     """读取 vault 的 userIgnoreFilters（被排除的文件在 Obsidian 中不可见）。"""
     app_json = vault / ".obsidian" / "app.json"
@@ -307,7 +325,8 @@ class Finding:
 
 
 def check_file(md_path: Path, vault: Path, idx: dict[str, list[str]],
-               filters: list[str], raw: str) -> tuple[list[Finding], dict]:
+               filters: list[str], raw: str,
+               md_idx: dict[str, list[str]] | None = None) -> tuple[list[Finding], dict]:
     findings: list[Finding] = []
     stats: dict = {"bytes": len(raw.encode("utf-8")), "images": 0, "image_bytes": 0}
 
@@ -385,6 +404,27 @@ def check_file(md_path: Path, vault: Path, idx: dict[str, list[str]],
         findings.append(Finding(
             "WARN", "W11",
             f"依赖文件名兜底解析 {len(byname)} 处（重命名即断链，建议改 vault 相对路径）"))
+
+    # --- wikilink 解析歧义 ---
+    # Obsidian 遇到多个同名 md 会任选其一，链接静默指向错误文件，比断链更难发现。
+    if md_idx:
+        amb_links: list[str] = []
+        for mm in WIKILINK_RE.finditer(masked):
+            target = mm.group(1).strip()
+            if not target:
+                continue
+            cand = vault / (target if target.endswith(".md") else target + ".md")
+            if cand.is_file():
+                continue          # vault 相对路径命中，无歧义
+            hits = md_idx.get(Path(target).name + ".md", [])
+            if len(hits) > 1:
+                ln = masked.count(chr(10), 0, mm.start()) + 1
+                amb_links.append(f"L{ln}: [[{target}]] -> {len(hits)} 个同名")
+        if amb_links:
+            findings.append(Finding(
+                "FAIL", "F6",
+                f"wikilink 解析歧义 {len(amb_links)} 处（同名 md 多个，会静默指向错误文件）"
+                f"例：{amb_links[0]}"))
 
     # --- 标题层级 ---
     levels = [len(mm.group(1)) for mm in HEADING_RE.finditer(masked)]
@@ -526,6 +566,9 @@ def main(argv: list[str] | None = None) -> int:
     print(f"vault 排除规则: {len(filters)} 条")
     idx = build_image_index(vault)
     print(f"图片索引: {sum(len(v) for v in idx.values())} 个文件 / {len(idx)} 个唯一名")
+    md_idx = build_md_index(vault)
+    dup_md = {k: v for k, v in md_idx.items() if len(v) > 1}
+    print(f"md 索引: {sum(len(v) for v in md_idx.values())} 个文件 / {len(dup_md)} 组同名")
     print()
 
     n_fail = n_warn = 0
@@ -538,7 +581,7 @@ def main(argv: list[str] | None = None) -> int:
             n_fail += 1
             continue
 
-        findings, stats = check_file(t, vault, idx, filters, raw)
+        findings, stats = check_file(t, vault, idx, filters, raw, md_idx)
         print(f"▸ {stats.get('rel_path', t.name)}")
         print(f"    · {stats['bytes'] / 1024:.0f} KB | 图片 {stats['images']} 张 "
               f"({stats['image_bytes'] / 1048576:.1f} MB) | details {stats['details']} | "

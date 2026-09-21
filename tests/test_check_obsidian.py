@@ -56,6 +56,22 @@ t("读到排除规则", len(filters) > 0, f"{len(filters)} 条")
 t("_scratch 被识别为排除", C.is_ignored("_scratch/hyc_compile/out/a.md", filters) is not None)
 t("大三下 不在排除内", C.is_ignored("大三下/复习资料/a.md", filters) is None)
 
+print("--- E. wikilink 歧义检查（F6） ---")
+md_idx = C.build_md_index(vault)
+dup = {k: v for k, v in md_idx.items() if len(v) > 1}
+t("md 索引构建成功", len(md_idx) > 0, f"{len(md_idx)} 个唯一名")
+# 注意：vault 里存在同名 md 是常态（如多个 README.md），
+# 只有当它们被 wikilink 引用时才会造成歧义 —— 所以这里只报告，不做断言。
+# 真正的歧义检查由 F6 在被检查文件里逐个 wikilink 判定。
+print(f"  INFO  当前 vault 有 {len(dup)} 组同名 md（未被引用则无害）：{list(dup)[:4]}")
+# 注入一个必然歧义的场景，确认 F6 真的会红
+fake_idx = {"某同名文件.md": ["a/某同名文件.md", "b/某同名文件.md"],
+            "唯一文件.md": ["c/唯一文件.md"]}
+findings, _ = C.check_file(Path("x.md"), vault, {}, [], "见 [[某同名文件]] 与 [[唯一文件]]\n",
+                           fake_idx)
+codes = [f.code for f in findings]
+t("F6 能检出歧义（注入即红）", "F6" in codes, str(codes))
+
 print()
 if fails:
     print(f"✘ {len(fails)} 项失败: {fails}")
