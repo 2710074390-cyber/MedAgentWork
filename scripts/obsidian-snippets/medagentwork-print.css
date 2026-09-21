@@ -1,0 +1,407 @@
+/* ==========================================================================
+   MedAgentWork · Obsidian 阅读与打印样式 (v1)
+   --------------------------------------------------------------------------
+   安装：
+     1) 把本文件放到 <vault>/.obsidian/snippets/medagentwork-print.css
+     2) Obsidian → Settings → Appearance → CSS snippets → 点「刷新」→ 打开开关
+   作用域：
+     · 全局 —— 中文排版基线（字体栈 / 行高 / 粗体补偿 / 表格 / 图片）
+     · 打印 —— @media print 分页与防断裂（导出 PDF 时生效）
+     · 按需 —— frontmatter 写 cssclasses: [mgw-book] 启用章节强制分页
+   安全：
+     本文件只影响渲染，不改动任何笔记内容。关闭开关即完全还原。
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. 可调参数（想微调只改这一段）
+   ========================================================================== */
+
+body {
+  /* 中文正文栈：优先思源黑体 / Noto，回落到系统黑体 */
+  --mgw-font-body: "Noto Sans CJK SC", "Source Han Sans SC", "HarmonyOS Sans SC",
+                   "Microsoft YaHei", "PingFang SC", -apple-system, sans-serif;
+  /* 中文打印栈：衬线体更省墨、更接近教材观感 */
+  --mgw-font-print: "Noto Serif CJK SC", "Source Han Serif SC", "SimSun",
+                    "Songti SC", serif;
+  /* 代码 / 等宽 */
+  --mgw-font-mono: "JetBrains Mono", "Cascadia Mono", Consolas,
+                   "Sarasa Mono SC", monospace;
+
+  /* 中文行高：西文 1.5 够用，中文方块字需要更大行距才有呼吸感 */
+  --mgw-leading: 1.75;
+  /* 段间距 */
+  --mgw-p-space: 1.05em;
+  /* 正文最大行宽（中文一行 35~45 字最好读） */
+  --mgw-measure: 42em;
+  /* 主色（与 scripts/design-tokens.css 的 --p-blue-700 对齐） */
+  --mgw-brand: #2563eb;
+  --mgw-brand-soft: #eff6ff;
+  --mgw-rule: #d8dee9;
+
+  /* ★ 中文粗体补偿：中文没有真粗体字重，Chromium 合成加粗偏弱。
+       Obsidian 1.6+ 提供 --bold-modifier，推荐值 100~300。
+       这是「中文笔记看着发灰、重点不突出」最直接的解药。 */
+  --bold-modifier: 200;
+}
+
+/* 让正文用上我们的字体栈与行高 */
+.markdown-preview-view,
+.markdown-rendered,
+.markdown-source-view.mod-cm6 .cm-content {
+  font-family: var(--mgw-font-body);
+  line-height: var(--mgw-leading);
+  letter-spacing: 0.01em;
+}
+
+/* 中文标点与西文混排时自动加一点间隙，避免「字挤在一起」 */
+.markdown-rendered p,
+.markdown-rendered li {
+  text-spacing-trim: space-first;   /* Chromium 133+ 支持，旧版自动忽略 */
+}
+
+
+/* ==========================================================================
+   2. 标题层级（尺度 > 间距 > 字重 > 颜色，强度递减）
+   --------------------------------------------------------------------------
+   用元素选择器而非 Obsidian 变量，避免变量改名导致样式失效。
+   ========================================================================== */
+
+.markdown-rendered h1,
+.markdown-rendered h2,
+.markdown-rendered h3,
+.markdown-rendered h4,
+.markdown-rendered h5,
+.markdown-rendered h6 {
+  font-family: var(--mgw-font-body);
+  line-height: 1.35;
+  /* 标题不与上方内容贴死：上间距远大于下间距，视觉上「归拢」到下方正文 */
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  letter-spacing: 0;
+}
+
+.markdown-rendered h1 {
+  font-size: 1.7em;
+  font-weight: 700;
+  margin-top: 0;
+  padding-bottom: 0.35em;
+  border-bottom: 2px solid var(--mgw-rule);
+}
+
+.markdown-rendered h2 {
+  font-size: 1.42em;
+  font-weight: 700;
+  padding-bottom: 0.28em;
+  border-bottom: 1px solid var(--mgw-rule);
+}
+
+.markdown-rendered h3 { font-size: 1.22em; font-weight: 600; }
+.markdown-rendered h4 { font-size: 1.08em; font-weight: 600; color: #1f2937; }
+.markdown-rendered h5 { font-size: 1em;    font-weight: 600; color: #374151; }
+.markdown-rendered h6 { font-size: 0.94em; font-weight: 600; color: #4b5563; }
+
+.theme-dark .markdown-rendered h4 { color: #e5e7eb; }
+.theme-dark .markdown-rendered h5 { color: #d1d5db; }
+.theme-dark .markdown-rendered h6 { color: #9ca3af; }
+
+
+/* ==========================================================================
+   3. 正文、列表、引用
+   ========================================================================== */
+
+.markdown-rendered p {
+  margin-block: var(--mgw-p-space);
+}
+
+.markdown-rendered ul,
+.markdown-rendered ol {
+  margin-block: var(--mgw-p-space);
+  padding-inline-start: 1.6em;
+}
+
+.markdown-rendered li + li {
+  margin-top: 0.28em;   /* 列表项之间留一点缝，密集术语表更易扫读 */
+}
+
+.markdown-rendered blockquote {
+  border-inline-start: 3px solid var(--mgw-brand);
+  background: var(--mgw-brand-soft);
+  padding: 0.6em 0.9em;
+  margin-inline: 0;
+  border-radius: 0 6px 6px 0;
+}
+
+.theme-dark .markdown-rendered blockquote {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+/* 行内代码：中文文档里常用来标术语，给一点底色让它跳出来 */
+.markdown-rendered code {
+  font-family: var(--mgw-font-mono);
+  font-size: 0.92em;
+  padding: 0.12em 0.36em;
+  border-radius: 4px;
+  background: rgba(127, 127, 127, 0.12);
+}
+
+.markdown-rendered pre {
+  font-family: var(--mgw-font-mono);
+  line-height: 1.6;
+  border-radius: 8px;
+  padding: 0.9em 1.1em;
+}
+
+
+/* ==========================================================================
+   4. 表格（医学文档表格多，是打印最容易崩的地方）
+   ========================================================================== */
+
+.markdown-rendered table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94em;
+  margin-block: 1.1em;
+}
+
+.markdown-rendered th,
+.markdown-rendered td {
+  border: 1px solid var(--mgw-rule);
+  padding: 0.42em 0.6em;
+  vertical-align: top;
+  line-height: 1.55;   /* 表格内行高略紧，避免行数暴增 */
+}
+
+.markdown-rendered thead th {
+  background: #f3f6fa;
+  font-weight: 600;
+  text-align: left;
+}
+
+/* 斑马纹：长表格跨行时不易串行 */
+.markdown-rendered tbody tr:nth-child(even) {
+  background: rgba(127, 127, 127, 0.05);
+}
+
+.theme-dark .markdown-rendered thead th { background: #2a2f3a; }
+.theme-dark .markdown-rendered th,
+.theme-dark .markdown-rendered td { border-color: #3a404d; }
+
+/* 数字列右对齐更易比较（用 :has 挑纯数字列，不支持的版本自动忽略） */
+.markdown-rendered td:has(> *:only-child) { text-align: left; }
+
+
+/* ==========================================================================
+   5. 图片
+   ========================================================================== */
+
+.markdown-rendered img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin-inline: auto;   /* 图片居中，医学插图居中更整齐 */
+}
+
+/* 图片紧跟图注时，图注居中弱化 */
+.markdown-rendered img + em,
+.markdown-rendered img + p em:only-child {
+  display: block;
+  text-align: center;
+  font-size: 0.88em;
+  color: #6b7280;
+}
+
+
+/* ==========================================================================
+   6. callout（Obsidian 原生折叠块，替代 <details> 的正解）
+   ========================================================================== */
+
+.callout {
+  border-radius: 8px;
+  padding: 0.7em 0.9em;
+}
+
+.callout-title {
+  font-weight: 600;
+}
+
+/* 可折叠 callout 的箭头提示更明显 */
+.callout.is-collapsible .callout-title {
+  cursor: pointer;
+}
+
+
+/* ==========================================================================
+   7. 打印样式（导出 PDF 时生效）
+   --------------------------------------------------------------------------
+   这是本 snippet 的核心。Obsidian 导出 PDF 走 Chromium printToPDF，
+   @media print 规则会被应用（Better Export PDF 的 README 明确说明）。
+   ========================================================================== */
+
+@media print {
+
+  /* ---------- 7.1 纸张与正文 ---------- */
+
+  body {
+    /* 打印专用字体栈：衬线体，更省墨、更像正式教材 */
+    --font-print-override: var(--mgw-font-print);
+    font-family: var(--mgw-font-print);
+  }
+
+  .markdown-preview-view,
+  .markdown-rendered {
+    font-family: var(--mgw-font-print);
+    font-size: 11pt;          /* 中文正文 10.5~11pt 是打印甜点 */
+    line-height: 1.7;
+  }
+
+  /* 去掉屏幕上的阴影 / 圆角 / 背景，避免打印出灰底 */
+  .markdown-rendered blockquote {
+    background: transparent;
+    border-inline-start: 3px solid #999;
+  }
+
+  .markdown-rendered pre,
+  .markdown-rendered code {
+    background: transparent;
+    border: 1px solid var(--mgw-rule);
+  }
+
+  .markdown-rendered thead th {
+    background: #eee !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ---------- 7.2 分页控制（核心） ---------- */
+
+  /* 章从新页开始 —— 只对 mgw-book 生效，避免普通笔记被切碎 */
+  .mgw-book .markdown-rendered h1 {
+    break-before: page;
+  }
+  /* 文档第一个 H1 不要多出一张空白首页 */
+  .mgw-book .markdown-rendered > h1:first-child {
+    break-before: auto;
+  }
+
+  /* 标题后不立即分页（防止「标题孤零零在页尾」） */
+  .markdown-rendered h1,
+  .markdown-rendered h2,
+  .markdown-rendered h3,
+  .markdown-rendered h4 {
+    break-after: avoid;
+    break-inside: avoid;
+  }
+
+  /* 表格 / 代码块 / 图片 / 引用块不跨页断开 */
+  .markdown-rendered table,
+  .markdown-rendered pre,
+  .markdown-rendered blockquote,
+  .markdown-rendered figure,
+  .markdown-rendered img,
+  .callout {
+    break-inside: avoid;
+  }
+
+  /* 大表格允许断页，但断点后重复表头（医学表格经常超一页） */
+  .markdown-rendered table {
+    break-inside: auto;
+  }
+  .markdown-rendered thead {
+    display: table-header-group;
+  }
+  /* 无 thead 的表格（MinerU 转来的 HTML 表格，含合并单元格）无法重复表头，
+     因此不允许跨页断开 —— 否则断点之后读者看不到列归属 */
+  .markdown-rendered table:not(:has(thead)) {
+    break-inside: avoid;
+  }
+  .markdown-rendered tfoot {
+    display: table-footer-group;
+  }
+  .markdown-rendered tr {
+    break-inside: avoid;
+  }
+
+  /* 段落孤行 / 寡行控制：页尾至少留 3 行，页首至少留 3 行 */
+  .markdown-rendered p,
+  .markdown-rendered li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* 图片不超出纸张 */
+  .markdown-rendered img {
+    max-height: 88vh;
+    break-inside: avoid;
+  }
+
+  /* ---------- 7.3 打印时强制展开折叠块 ---------- */
+
+  /* 纯 CSS 无法改变 <details> 的 open 状态（折叠是浏览器内部机制），
+     但可以让内容可见。注意：这只对带空行分隔的 details 有效；
+     若 details 内是「标签行紧邻内容」的写法，markdown 本身就没被解析，
+     必须在 md 侧写成 <details open>（见 docs/Obsidian导出方案.md）。 */
+  details::details-content {
+    content-visibility: visible !important;
+  }
+  details > *:not(summary) {
+    display: block !important;
+  }
+
+  /* ---------- 7.4 隐藏屏幕专用元素 ---------- */
+
+  .markdown-embed-link,
+  .internal-embed .markdown-embed-title,
+  .collapse-indicator,
+  .copy-code-button,
+  .edit-block-button {
+    display: none !important;
+  }
+
+  /* 内部链接打印成纯文本（避免 PDF 里出现一堆蓝色下划线） */
+  .markdown-rendered a.internal-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* ---------- 7.5 页脚页码（需 Better Export PDF，内置导出不支持） ---------- */
+
+  /* Better Export PDF 的 Footer Template 里可写：
+       <div style="width:100%;font-size:9px;text-align:center;color:#666">
+         <span class="pageNumber"></span> / <span class="totalPages"></span>
+       </div>
+     内置导出没有页码能力，这是装插件的核心理由之一。 */
+}
+
+
+/* ==========================================================================
+   8. 按需变体（frontmatter: cssclasses: [mgw-book]）
+   --------------------------------------------------------------------------
+   · mgw-book     —— 教材 / 讲义：章节从新页开始
+   · mgw-handout  —— 复习手册：紧凑排版，字号略小
+   ========================================================================== */
+
+/* 教材：屏幕上也给章节间更明显的分隔 */
+.mgw-book .markdown-rendered h1 {
+  margin-top: 2.4em;
+}
+
+/* 手册：紧凑一点，减少翻页 */
+.mgw-handout .markdown-rendered {
+  font-size: 0.96em;
+  line-height: 1.68;
+}
+.mgw-handout .markdown-rendered p {
+  margin-block: 0.8em;
+}
+.mgw-handout .markdown-rendered table {
+  font-size: 0.9em;
+}
+
+@media print {
+  .mgw-handout .markdown-rendered {
+    font-size: 10pt;
+    line-height: 1.6;
+  }
+}

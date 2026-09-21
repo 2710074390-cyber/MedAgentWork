@@ -6,6 +6,11 @@ __pycache__/
 *.pyo
 *.pyd
 
+# 测试覆盖率与安全扫描产物（本地运行 CI 同款命令时生成，可重建）
+.coverage
+coverage.xml
+bandit-report.json
+
 # 原子写入临时文件
 *.tmp
 
@@ -46,6 +51,16 @@ archive/
 知识库素材/**/*.pdf
 知识库素材/**/*.docx
 
+# 教材 MinerU 解析产物（可由 PDF 重建；含教材插图，体量大且涉版权，仅本机个人复习使用）
+# 见 scripts/kb_finalize_textbook_mineru.py 与 scripts/kb_build_textbook_index.py
+知识库素材/**/_mineru_raw/
+知识库素材/**/*_mineru/
+
+# Obsidian 导出产物（2026-09-21）：分册 md 入库（纯文本），
+# 但插图体量大且涉版权、原始整册可由 MinerU 产物重建，二者不入库
+Obsidian产物/**/images/
+Obsidian产物/_source/
+
 # ── 网页部署（Cloudflare Pages / wrangler）──
 node_modules/
 dist/
@@ -65,6 +80,11 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Obsidian 本地配置（与 .vscode/.idea 同性质：含 workspace 状态与插件二进制，不入库）
+# 样式资产的可入库副本在 scripts/obsidian-snippets/，
+# 安装时复制到 .obsidian/snippets/ 并在 Appearance 里启用即可。
+.obsidian/
 
 # ── 环境变量（敏感信息）──
 .env
