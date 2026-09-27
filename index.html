@@ -1318,30 +1318,36 @@ body {
    MedAgentWork — Futuristic Edition
    数据层与交互逻辑（与原版功能完全兼容）
    ============================================================ */
-const BASE='大三下';
+/* ---------- 资源路径约定（唯一规则，勿引入第二套）----------
+   下面所有 path 一律「仓库根相对」，必须自带顶层目录：`大三下/…` 或 `大四上/…`。
+   2026-09-27 下载故障复盘：大四上两张卡既自带 `大四上/` 前缀、又在 downloadFile
+   里被拼了一次 base，实际请求落到 `大四上/大四上/…`；而 Cloudflare Pages 在仓库
+   没有 404.html 时会把未命中路径回退成 index.html，于是返回 200 + 首页 HTML，
+   用户拿到一个「扩展名是 .pdf、内容是网页」的打不开的文件。
+   教训：状态码 200 不等于文件存在，链接门禁必须同时断言 Content-Type。 */
 const EXAMS=[
-  {name:'内科学',icon:'🫀',html:'押题卷/内科学押题卷_2026.html',count:90,tags:['全真模拟'],desc:'心血管 · 呼吸 · 消化 · 泌尿'},
-  {name:'精神病学',icon:'🧠',html:'押题卷/精神病学押题卷_2026.html',count:91,desc:'精神分裂 · 情感障碍 · 神经症'},
-  {name:'神经病学',icon:'⚡',html:'押题卷/神经病学押题卷_2026.html',count:106,tags:['全真模拟'],desc:'脑血管病 · 癫痫 · 周围神经病变'},
-  {name:'医患沟通',icon:'💬',html:'押题卷/医患沟通押题卷_2026.html',count:60,tags:['情景题'],desc:'沟通技巧 · 医学伦理 · 知情同意'},
-  {name:'外科学',icon:'🔪',html:'押题卷/外科学押题卷_108题.html',count:108,desc:'普外 · 骨科 · 泌尿'},
+  {name:'内科学',icon:'🫀',html:'大三下/押题卷/内科学押题卷_2026.html',count:90,tags:['全真模拟'],desc:'心血管 · 呼吸 · 消化 · 泌尿'},
+  {name:'精神病学',icon:'🧠',html:'大三下/押题卷/精神病学押题卷_2026.html',count:91,desc:'精神分裂 · 情感障碍 · 神经症'},
+  {name:'神经病学',icon:'⚡',html:'大三下/押题卷/神经病学押题卷_2026.html',count:106,tags:['全真模拟'],desc:'脑血管病 · 癫痫 · 周围神经病变'},
+  {name:'医患沟通',icon:'💬',html:'大三下/押题卷/医患沟通押题卷_2026.html',count:60,tags:['情景题'],desc:'沟通技巧 · 医学伦理 · 知情同意'},
+  {name:'外科学',icon:'🔪',html:'大三下/押题卷/外科学押题卷_108题.html',count:108,desc:'普外 · 骨科 · 泌尿'},
 ];
 const BANKS=[
-  {name:'内科学',icon:'🫀',pdf:'题库/内科学题库_364题.pdf',count:364,format:'PDF',size:'2.9 MB',desc:'心血管 · 呼吸 · 消化 · 泌尿'},
-  {name:'外科学',icon:'🔪',pdf:'题库/外科学题库.pdf',format:'PDF',size:'3.1 MB',tags:['重点修订'],desc:'普外 · 骨科 · 泌尿'},
-  {name:'精神病学',icon:'🧠',pdf:'题库/精神病学题库_242题.pdf',count:242,version:'v3',format:'PDF',size:'2.0 MB',desc:'精神分裂 · 情感障碍 · 神经症'},
-  {name:'神经病学',icon:'⚡',pdf:'题库/神经病学题库_259题.pdf',count:259,version:'v3',format:'PDF',size:'2.8 MB',desc:'脑血管病 · 癫痫 · 周围神经病变'},
-  {name:'医患沟通',icon:'💬',pdf:'题库/医患沟通题库.pdf',format:'PDF',size:'2.8 MB',desc:'沟通技巧 · 医学伦理 · 知情同意'},
-  {name:'中医学',icon:'🌿',pdf:'题库/中医学题库.pdf',format:'PDF',size:'2.6 MB',tags:['batch010'],desc:'基础理论 · 方剂 · 诊断辨证'},
+  {name:'内科学',icon:'🫀',pdf:'大三下/题库/内科学题库_364题.pdf',count:364,format:'PDF',size:'2.9 MB',desc:'心血管 · 呼吸 · 消化 · 泌尿'},
+  {name:'外科学',icon:'🔪',pdf:'大三下/题库/外科学题库.pdf',format:'PDF',size:'3.1 MB',tags:['重点修订'],desc:'普外 · 骨科 · 泌尿'},
+  {name:'精神病学',icon:'🧠',pdf:'大三下/题库/精神病学题库_242题.pdf',count:242,version:'v3',format:'PDF',size:'2.0 MB',desc:'精神分裂 · 情感障碍 · 神经症'},
+  {name:'神经病学',icon:'⚡',pdf:'大三下/题库/神经病学题库_259题.pdf',count:259,version:'v3',format:'PDF',size:'2.8 MB',desc:'脑血管病 · 癫痫 · 周围神经病变'},
+  {name:'医患沟通',icon:'💬',pdf:'大三下/题库/医患沟通题库.pdf',format:'PDF',size:'2.8 MB',desc:'沟通技巧 · 医学伦理 · 知情同意'},
+  {name:'中医学',icon:'🌿',pdf:'大三下/题库/中医学题库.pdf',format:'PDF',size:'2.6 MB',tags:['batch010'],desc:'基础理论 · 方剂 · 诊断辨证'},
 ];
 const REVIEWS=[
-  {name:'内科学',icon:'🫀',md:'复习资料/内科学_主复习资料.md',version:'v5.1',size:'213K',desc:'心血管 · 呼吸 · 消化 · 泌尿'},
-  {name:'外科学',icon:'🔪',md:'复习资料/外科学_主复习资料.md',html:'复习资料/外科学_主复习资料.html',version:'v5.1',size:'236K',desc:'普外 · 骨科 · 泌尿'},
-  {name:'精神病学',icon:'🧠',md:'复习资料/精神病学_主复习资料.md',html:'复习资料/精神病学_主复习资料.html',version:'v5.1',size:'134K',desc:'精神分裂 · 情感障碍 · 神经症'},
-  {name:'神经病学',icon:'⚡',md:'复习资料/神经病学_主复习资料.md',version:'v5',size:'166K',desc:'脑血管病 · 癫痫 · 周围神经病变'},
-  {name:'医患沟通',icon:'💬',md:'复习资料/医患沟通_主复习资料.md',version:'v5.1',size:'132K',desc:'沟通技巧 · 医学伦理 · 知情同意'},
-  {name:'中医学',icon:'🌿',md:'复习资料/中医学_主复习资料.md',html:'复习资料/中医学_主复习资料.html',version:'v5',size:'117K',desc:'基础理论 · 方剂 · 诊断辨证'},
-  {name:'中医心理学',icon:'🧘',md:'复习资料/中医心理学_主复习资料.md',html:'复习资料/中医心理学_主复习资料.html',size:'87K',desc:'情志 · 脏腑 · 治法，心身同治'},
+  {name:'内科学',icon:'🫀',md:'大三下/复习资料/内科学_主复习资料.md',version:'v5.1',size:'213K',desc:'心血管 · 呼吸 · 消化 · 泌尿'},
+  {name:'外科学',icon:'🔪',md:'大三下/复习资料/外科学_主复习资料.md',html:'大三下/复习资料/外科学_主复习资料.html',version:'v5.1',size:'236K',desc:'普外 · 骨科 · 泌尿'},
+  {name:'精神病学',icon:'🧠',md:'大三下/复习资料/精神病学_主复习资料.md',html:'大三下/复习资料/精神病学_主复习资料.html',version:'v5.1',size:'134K',desc:'精神分裂 · 情感障碍 · 神经症'},
+  {name:'神经病学',icon:'⚡',md:'大三下/复习资料/神经病学_主复习资料.md',version:'v5',size:'166K',desc:'脑血管病 · 癫痫 · 周围神经病变'},
+  {name:'医患沟通',icon:'💬',md:'大三下/复习资料/医患沟通_主复习资料.md',version:'v5.1',size:'132K',desc:'沟通技巧 · 医学伦理 · 知情同意'},
+  {name:'中医学',icon:'🌿',md:'大三下/复习资料/中医学_主复习资料.md',html:'大三下/复习资料/中医学_主复习资料.html',version:'v5',size:'117K',desc:'基础理论 · 方剂 · 诊断辨证'},
+  {name:'中医心理学',icon:'🧘',md:'大三下/复习资料/中医心理学_主复习资料.md',html:'大三下/复习资料/中医心理学_主复习资料.html',size:'87K',desc:'情志 · 脏腑 · 治法，心身同治'},
 ];
 
 /* ---------- 大四上 · 教学版资料（主复习资料 PDF 直链） ---------- */
@@ -1388,22 +1394,21 @@ const toast=msg=>{const t=$('#toast');t.textContent=msg;t.classList.add('show');
 
 /* ---------- 路径编码（避免中文路径 404） ---------- */
 function encPath(path){ return path.split('/').map(seg=>encodeURI(seg)).join('/'); }
-function urlAt(base,path){ return encPath(base)+'/'+encPath(path); }
-function url(path){ return urlAt(BASE,path); }
+/* 唯一入口：path 已是仓库根相对（见上方「资源路径约定」），不再拼接任何 base */
+function url(path){ return encPath(path); }
 
 function viewOnline(path){ window.open(url(path),'_blank'); }
-function downloadFile(path,filename,btn,base){
+function downloadFile(path,filename,btn){
   /* P2-2：loading 态 + 防重复点击 */
   if(btn&&(btn.disabled||btn.dataset.loading))return;
   const orig=btn?btn.innerHTML:null;
   if(btn){btn.dataset.loading='1';btn.disabled=true;btn.classList.add('loading');btn.innerHTML=ICONS.download+'<span>下载中…</span>';}
   const restore=()=>{if(btn){delete btn.dataset.loading;btn.disabled=false;btn.classList.remove('loading');if(orig!==null)btn.innerHTML=orig;}};
-  const baseUrl=base||BASE;
   toast('⬇ 开始下载：'+filename+'（速度见浏览器下载栏）');
   /* 原生直链下载（2026-09-02 修复）：此前 fetch→blob 在慢网络/大文件下长时间无响应，
      按钮卡「下载中…」；改为浏览器下载管理器直接接管——有进度、可取消、不假死 */
   const a=document.createElement('a');
-  a.href=urlAt(baseUrl,path); a.download=filename; a.rel='noopener';
+  a.href=encPath(path); a.download=filename; a.rel='noopener';
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(restore,1200);
 }
@@ -1607,7 +1612,7 @@ function reviewCard(it,i){
 /* 大四上 · 教学版资料卡片：下载按钮注明「教学版资料」 */
 function reviewS1Card(it,i){
   const fname=it.pdf.split('/').pop();
-  return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="downloadFile('${it.pdf}','${fname}',this,'大四上')">${ICONS.download}<span>教学版资料</span></button></div></div>`;
+  return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="downloadFile('${it.pdf}','${fname}',this)">${ICONS.download}<span>教学版资料</span></button></div></div>`;
 }
 $('#grid-exam').innerHTML=EXAMS.map(examCard).join('');
 $('#grid-bank').innerHTML=BANKS.map(bankCard).join('');
