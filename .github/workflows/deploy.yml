@@ -16,6 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # 部署前门禁：把 index.html 里每个按钮的真实请求路径解析出来，
+      # 逐个确认仓库内文件存在。断链即拒绝部署（fail-closed）。
+      # 背景：2026-09-27 大四上分区因路径重复拼前缀导致 10 个下载按钮失效；
+      #      坏链在 Pages 上返回的是 200 + 首页 HTML，只看状态码抓不到。
+      - name: Link gate (fail-closed)
+        run: node scripts/check_site_links.mjs index.html
+
       - name: Install wrangler
         run: npm i -g wrangler@4.121.0
 
