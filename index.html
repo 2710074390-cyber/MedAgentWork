@@ -953,8 +953,8 @@ body {
   <div class="g-step">
     <span class="g-no">03</span>
     <div class="g-body">
-      <b>研读复习手册</b><span class="g-where">复习手册区 ·「在线阅读 / 导出 PDF」</span>
-      <p>在线阅读带「掌握 / 熟悉 / 理解」三级标注；「导出 PDF」一键生成可打印版本。</p>
+      <b>研读复习手册</b><span class="g-where">复习手册区 ·「在线阅读 / 打印 PDF」</span>
+      <p>在线阅读带「掌握 / 熟悉 / 理解」三级标注；「打印 PDF」会打开浏览器打印对话框，可另存为 PDF（由浏览器生成，非站点提供的原生 PDF）。</p>
     </div>
     <a class="g-go" href="#reviews" onclick="goTerm('junior2','reviews')">去研读 →</a>
   </div>
@@ -1153,7 +1153,7 @@ body {
     <a class="deck-tile reveal" href="#reviews">
       <div class="dt-top"><span class="dt-icon">📚</span><span class="dt-num">03</span></div>
       <h3>复习手册 <span class="dt-en">REVIEWS</span></h3>
-      <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线阅读 · 下载保存 · 导出 PDF</p>
+      <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线阅读 · 下载 MD · 打印 PDF</p>
       <span class="dt-go">进入复习手册 <i>→</i></span>
     </a>
     <a class="deck-tile reveal" href="#software" onclick="goTerm('home','software');return false;">
@@ -1202,7 +1202,7 @@ body {
       <span class="chip"><span>复习手册 · <i>系统研读</i></span></span>
       <h2>复习手册 <span class="accent">系统研读</span></h2>
     </div>
-    <div class="right"><b>03 · 复习手册</b>07 科 · 在线阅读 · 下载保存<br><span class="right-sub">导出 PDF 打印</span></div>
+    <div class="right"><b>03 · 复习手册</b>07 科 · 在线阅读 · 下载 MD<br><span class="right-sub">打印 PDF（浏览器生成）</span></div>
   </div>
   <div class="grid" id="grid-review"></div>
 </section>
@@ -1565,7 +1565,7 @@ function printCSS(){
 function renderPrintDoc(md,title){
   return '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>'+title+'</title><style>'+printCSS()+'</style></head><body><div class="print-hint">📄 请在打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把这份复习手册保存成 PDF 文件（打印对话框里也可以直接打印纸质版）。</div><div class="print-head"><h1>'+title+'</h1><div class="print-meta">MEDAGENTWORK · 医学复习资料库 · 仅供学习交流 · 生成于 '+(new Date().toLocaleDateString('zh-CN'))+'</div></div>'+mdToHtml(md)+'</body></html>';
 }
-/* 一键导出 PDF：抓取 MD → 渲染 → 打印（输出渲染后的 MD 排版） */
+/* 打印 MD 预览：抓取 MD → 渲染 → 交给浏览器打印（产出的是浏览器生成的 PDF，非原生 PDF） */
 function printMD(path,name){
   toast('🖨 正在渲染，马上弹出打印窗口…');
   fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.text();})
@@ -1584,7 +1584,7 @@ function previewMD(path,name){
   $('#m-title').textContent=name+' · 复习手册';
   $('#modal').classList.add('open');
   const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
-  $('#m-actions').innerHTML='<button class="m-btn" onclick="downloadFile(currentMD,currentMD.split(\'/\').pop(),this)">'+ICONS.download+'<span>下载 MD</span></button><button class="m-btn" id="m-print">'+ICONS.print+'<span>导出 PDF</span></button><button class="m-btn close" onclick="closeModal()">'+ICONS.close+'<span>关闭</span></button>';
+  $('#m-actions').innerHTML='<button class="m-btn" onclick="downloadFile(currentMD,currentMD.split(\'/\').pop(),this)">'+ICONS.download+'<span>下载 MD</span></button><button class="m-btn" id="m-print" title="打开浏览器打印对话框，可另存为 PDF（由浏览器生成，非原生 PDF）">'+ICONS.print+'<span>打印 PDF</span></button><button class="m-btn close" onclick="closeModal()">'+ICONS.close+'<span>关闭</span></button>';
   fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.text();})
     .then(md=>{currentMDText=md;body.className='modal-body';body.innerHTML='<div class="md">'+mdToHtml(md)+'</div>';body.scrollTop=0;})
     .catch(()=>{body.className='modal-body';body.innerHTML='<p style="padding:40px;text-align:center;color:rgba(255,255,255,0.5)">❌ 读取失败</p>';});
@@ -1600,13 +1600,21 @@ $('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
 
 /* ---------- 卡片渲染 ---------- */
-function examCard(it,i){return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="viewOnline('${it.html}')">${ICONS.play}<span>开始答题</span></button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')">${ICONS.print}<span>导出 PDF</span></button></div></div>`;}
+/* 打印类按钮文案约定（2026-09-28）：
+   下面带 ICONS.print 的按钮走 window.print()，产出的是「浏览器生成的 PDF」，
+   不是站点提供的原生 PDF（排版/字体随访问者浏览器与纸张设置而变，且无书签）。
+   文案统一写「打印 PDF」+ title 说明，避免用户以为站点提供了原生 PDF。
+   若某科目已有人工导出的原生 PDF，只需在该条目加 pdf: 字段，
+   pdfBtn() 就会自动多给一个「下载 PDF」直链（优先级最高）。 */
+const TIP_PRINT='title="打开浏览器打印对话框，可另存为 PDF（由浏览器生成，非原生 PDF）"';
+function pdfBtn(it,cls){return it.pdf?`<button class="btn ${cls} btn-sm" onclick="downloadFile('${it.pdf}','${it.pdf.split('/').pop()}',this)">${ICONS.download}<span>下载 PDF</span></button>`:'';}
+function examCard(it,i){return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns">${pdfBtn(it,'btn-pri')}<button class="btn ${it.pdf?'btn-ghost':'btn-pri'} btn-sm" onclick="viewOnline('${it.html}')">${ICONS.play}<span>开始答题</span></button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')" ${TIP_PRINT}>${ICONS.print}<span>打印 PDF</span></button></div></div>`;}
 function bankCard(it,i){const fname=it.pdf.split('/').pop();return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="downloadFile('${it.pdf}','${fname}',this)">${ICONS.download}<span>下载 PDF</span></button></div></div>`;}
 function reviewCard(it,i){
   const mdName=it.md.split('/').pop();
-  let btns=`<button class="btn btn-pri btn-sm" onclick="previewMD('${it.md}','${it.name}')">${ICONS.eye}<span>在线阅读</span></button><button class="btn btn-ghost btn-sm" onclick="downloadFile('${it.md}','${mdName}',this)">${ICONS.download}<span>下载</span></button>`;
-  if(it.html){btns+=`<button class="btn btn-ghost btn-sm" onclick="viewOnline('${it.html}')">${ICONS.external}<span>网页版</span></button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')">${ICONS.print}<span>导出 PDF</span></button>`;}
-  else{btns+=`<button class="btn btn-ghost btn-sm" onclick="printMD('${it.md}','${it.name}')">${ICONS.print}<span>导出 PDF</span></button>`;}
+  let btns=pdfBtn(it,'btn-pri')+`<button class="btn ${it.pdf?'btn-ghost':'btn-pri'} btn-sm" onclick="previewMD('${it.md}','${it.name}')">${ICONS.eye}<span>在线阅读</span></button><button class="btn btn-ghost btn-sm" onclick="downloadFile('${it.md}','${mdName}',this)">${ICONS.download}<span>下载 MD</span></button>`;
+  if(it.html){btns+=`<button class="btn btn-ghost btn-sm" onclick="viewOnline('${it.html}')">${ICONS.external}<span>网页版</span></button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')" ${TIP_PRINT}>${ICONS.print}<span>打印 PDF</span></button>`;}
+  else{btns+=`<button class="btn btn-ghost btn-sm" onclick="printMD('${it.md}','${it.name}')" ${TIP_PRINT}>${ICONS.print}<span>打印 PDF</span></button>`;}
   return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns">${btns}</div></div>`;
 }
 /* 大四上 · 教学版资料卡片：下载按钮注明「教学版资料」 */

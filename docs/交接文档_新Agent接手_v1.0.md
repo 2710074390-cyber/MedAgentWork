@@ -40,7 +40,7 @@
 ### 三大硬约束（复习资料生产，违反即返工）
 
 1. **页码锚点真实**：引用教材必须用真实印刷页（hc-10），页偏移必须**先实测后使用**（急诊 N−17、内科 N−31 先例），禁止占位符。文本中页码分隔符为 `===== 第 N 页 =====`（N=PDF 页）。
-2. **产物形态（HC-18 契约）**：复习资料 = MD + HTML（`render_review.py` 渲染）；**PDF 一律人工打印**，任何脚本禁止生成 PDF。
+2. **产物形态（HC-18 契约）**：复习资料 = MD + HTML（`render_review.py` 渲染）；**PDF 一律由用户人工导出后上传**，任何脚本禁止生成 PDF（`export_review_pdfs.py` 写站点目录会被硬拒）。超 Cloudflare Pages 25 MiB 上限时用 `scripts/shrink_pdf.py` **只压图不重排**。
 3. **v5.2 导出兼容（E1-E3）**：行内强调用 `<b>`/`<i>`（**禁用 `**`/`*`**）、折叠区用 `#### 🔬 展开：名称`（**禁用 `<details>`**）、0 Mermaid（用 ASCII 图）、0 流程残留（`✅ 批次完成`/`V1-V14 自检报告` 等），详见 `docs/产物格式规范.md` §3。
 
 ### 生产配方（方案 §6 的 9 步，已实操 3 次，直接照抄）
@@ -61,7 +61,7 @@ S7  机械约束自检（沿用 中间产物/ent_review/check_fences.py 思路�
     callout ≥ 模块数×4 | 展开区 ≥ 模块数×2 | 每模块 D2 图 ≥1 | D4 树 ≥1 | 对比表 ≥5/模块
     V14：`**`计数=0、`<details>`计数=0、`<b></b>`配对、0 Mermaid、0 批次/自检残留、0 试题形态
 S8  python 知识库素材/render_review.py "{文件}" → 自包含 HTML（--dark 默认）
-S9  人工：浏览器打印→PDF → 大四上/复习资料/；跑 verify_produce_rules.py（PDF 走人工上传标记）
+S9  人工：导出 PDF（Chrome 打印对话框 / Obsidian）→ 超 25 MiB 先跑 scripts/shrink_pdf.py → 放 大四上/复习资料/；跑 verify_produce_rules.py（断言 PDF 来源：/Creator 不含 HeadlessChrome 且 ≤25 MiB）
 ```
 
 **范本**（结构照抄）：
