@@ -1,10 +1,18 @@
 # -*- coding: utf-8 -*-
 """export_review_pdfs.py — 批量导出 5 科教学计划版复习手册 PDF（v3 配图版）。
 
+⚠️ 2026-09-28 起：本脚本产物**不是交付物**，禁止写入站点目录。
+   它用 `chrome --headless=new --print-to-pdf` 生成的是「网页打印件」，
+   会重新排版（封面/分页与人工导出版不同），且 /Creator 带 HeadlessChrome 指纹。
+   2026-09-12 它就是这样把用户 09-01 人工导出的定稿版覆盖掉的。
+   规范 §5.6：PDF 一律人工导出上传，脚本不得生成。
+   站点上的 PDF 请用「人工导出 → scripts/shrink_pdf.py 压到 25 MiB 以内 → 上传」。
+   本脚本仅供生成自查稿/预览稿，--out-dir 指向站点目录会被硬拒。
+
 管线：render_review.py(MD→自包含HTML, --embed-images) → prepare_pdf_html.py(图片降采样JPEG)
       → Chrome headless 打印 PDF → PyMuPDF 校验（页数/含图页）→ 输出 manifest。
 
-用法：python scripts/export_review_pdfs.py [--out-dir 大四上/复习资料]
+用法：python scripts/export_review_pdfs.py [--out-dir _scratch/pdf_export]
 依赖：默认 python（render_review.py/prepare_pdf_html.py）；校验用 Python312（pymupdf）。
 """
 import argparse
@@ -66,11 +74,47 @@ def verify(pdf_path: Path) -> dict:
 
 def main():
     ap = argparse.ArgumentParser(description="批量导出 5 科教学版复习手册 PDF")
-    ap.add_argument("--out-dir", default=str(ROOT / "大四上" / "复习资料"), help="PDF 输出目录")
+    ap.add_argument("--out-dir", default=str(ROOT / "_scratch" / "pdf_export"),
+                    help="PDF 输出目录（默认在站点目录之外；指向 大三下/ 或 大四上/ 会被拒绝）")
     ap.add_argument("--work-dir", default=str(ROOT / "_scratch" / "配图计划v3" / "pdf_export" / "work"))
     args = ap.parse_args()
     out_dir = Path(args.out_dir); out_dir.mkdir(parents=True, exist_ok=True)
     work_dir = Path(args.work_dir); work_dir.mkdir(parents=True, exist_ok=True)
+
+    # ---- 站点目录保护闸（2026-09-28）----
+    # 本脚本用 `chrome --headless=new --print-to-pdf` 生成的是「网页打印件」，
+    # 不是人工导出的原生 PDF（Creator 会带 HeadlessChrome 指纹），
+    # 且会重新排版（封面/分页与人工导出版不同）。2026-09-12 它就是这么把
+    # 用户 09-01 的人工导出版覆盖掉的。
+    # 规范 §5.6：PDF 一律人工导出上传，脚本不得生成。故此处硬拒。
+    # 注意：--out-dir 的相对路径按 CWD 解析，而站点目录按硬编码 ROOT 解析，
+    # 两边基准不同，所以两种解释都要查一遍。
+    raw_out = Path(args.out_dir)
+    cands = {raw_out.resolve()}
+    if not raw_out.is_absolute():
+        cands.add((ROOT / raw_out).resolve())
+    for site in (ROOT / "大三下", ROOT / "大四上"):
+        site_r = site.resolve()
+        hit = None
+        for c in cands:
+            try:
+                c.relative_to(site_r)
+                hit = c
+                break
+            except ValueError:
+                continue
+        if hit is None:
+            continue
+        print(f"[X] 拒绝执行：--out-dir 落在站点交付目录内\n"
+              f"    指定: {raw_out}  → 解析为 {hit}\n"
+              f"    站点: {site}\n\n"
+              f"    规范 §5.6 要求 PDF 由人工导出上传，脚本不得生成（本脚本产物带\n"
+              f"    HeadlessChrome 指纹，verify_produce_rules.py 会判 FAIL）。\n"
+              f"    要生成自查用的 PDF，请把 --out-dir 指向站点目录之外，例如：\n"
+              f"      --out-dir _scratch/pdf_export\n"
+              f"    要把人工导出的 PDF 压到 Pages 25 MiB 上限内，用：\n"
+              f"      python scripts/shrink_pdf.py <你导出的.pdf> -o <目标.pdf>")
+        return 2
 
     manifest = []
     for subj_dir, md_name, pdf_name in SUBJECTS:
@@ -88,4 +132,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

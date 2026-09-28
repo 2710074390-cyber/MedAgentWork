@@ -2,12 +2,16 @@
 # -*- coding: utf-8 -*-
 """verify_produce_rules.py — 产物形态门禁（2026-08-22）
 
-按 docs/产物格式规范.md 校验 `大三下/` 交付目录与押题卷模板：
+按 docs/产物格式规范.md 校验交付目录与押题卷模板：
   1. 扩展名白名单：押题卷=仅 .html；题库=仅 .md/.html/.pdf；复习资料=仅 .md/.html
   2. 押题卷：PAPER_META.sub 无「统一模板/TEST/v1.x」；QUESTIONS 字段契约（options 纯数组）
   3. 复习资料 MD：无批次/流程标记残留；无 Mermaid；无 YAML front matter
   4. 复习资料 HTML：无批次标记残留
-  5. 题库：允许 .pdf 但打「人工上传」提示（管线不生产）
+  5. PDF 来源断言（2026-09-28 新增）：`大三下/` + `大四上/` 下每个 PDF 必须
+     ① ≤ 25 MiB（Cloudflare Pages 单文件上限）
+     ② /Creator 不含 HeadlessChrome（脚本无头打印指纹，规范 §5.6 禁止脚本生成 PDF）
+     背景：2026-09-12 脚本打印件覆盖了用户 09-01 的人工导出版，而当时门禁只覆盖
+     `大三下/`、且对 PDF 的检查恒为 True，所以没拦住。
 用法：python scripts/verify_produce_rules.py   → 全量检查，FAIL==0 时 exit 0
 """
 import io
@@ -19,13 +23,27 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "大三下"
+# 2026-09-28：大四上分区此前完全不在门禁范围内（SITE 只指 大三下），
+# 于是 export_review_pdfs.py 生成的 Chrome 无头打印件能直接进站并覆盖人工导出版。
+SITE_ROOTS = [SITE, ROOT / "大四上"]
 
 ALLOWED = {
     "押题卷": {".html"},
     "题库": {".md", ".html", ".pdf"},
     "复习资料": {".md", ".html"},
 }
+S1_ALLOWED = {".pdf", ".md", ".html"}      # 大四上分区（复习资料/题库）
 PDF_NOTE = "题库/复习资料 PDF 由用户人工上传（管线不生产，本校验仅提示）"
+
+# ---------- PDF 来源断言（2026-09-28）----------
+# 规范 §5.6：PDF 一律人工导出上传，脚本不得生成。但「人工导出」本身也是
+# Chromium 的 printToPDF（Chrome 打印对话框、Obsidian 内置导出都是），
+# 所以不能靠 /Producer=Skia/PDF 区分 —— 那会把人工导出的也一起毙掉。
+# 可区分的指纹在 /Creator：
+#   人工（Chrome 打印对话框 / Obsidian 内置导出）：Chromium
+#   脚本（chrome --headless=new --print-to-pdf）：Mozilla/5.0 (…) HeadlessChrome/149.0.0.0 Safari/537.36
+SCRIPT_PRINT_RE = re.compile(rb"HeadlessChrome|HeadlessShell", re.I)
+PDF_SIZE_LIMIT = 25 * 1024 * 1024          # Cloudflare Pages 单文件硬上限 25 MiB
 
 BANNED_SUB = re.compile(r"统一模板|TEST|v\d+\.\d")
 BANNED_MD = re.compile(r"复习资料批次|批次\s*\d+/\d+\s*完成|本批产出|本批统计|下一批"
@@ -55,17 +73,48 @@ def main():
             check(f"目录存在 · {sub}", False, "缺失")
             continue
         bad = []
-        pdfs = []
         for f in sorted(d.glob("*")):
             if f.is_dir():
                 continue
             if f.suffix.lower() not in exts:
                 bad.append(f.name)
-            if f.suffix.lower() == ".pdf":
-                pdfs.append(f.name)
         check(f"扩展名白名单 · {sub}（{len(exts)} 类）", not bad, "违规: " + ",".join(bad) if bad else "")
-        if pdfs:
-            check(f"PDF 人工上传标记 · {sub}", True, f"{len(pdfs)} 个 PDF（人工提供，本机不产）")
+
+    # 1b) 大四上分区（2026-09-28 起纳入门禁）
+    s1 = ROOT / "大四上"
+    if s1.exists():
+        for sub in ("复习资料", "题库"):
+            d = s1 / sub
+            if not d.exists():
+                check(f"目录存在 · 大四上/{sub}", False, "缺失")
+                continue
+            bad = [f.name for f in sorted(d.glob("*"))
+                   if not f.is_dir() and f.suffix.lower() not in S1_ALLOWED]
+            check(f"扩展名白名单 · 大四上/{sub}（{len(S1_ALLOWED)} 类）",
+                  not bad, "违规: " + ",".join(bad) if bad else "")
+
+    # 1c) PDF 来源断言：站点目录下所有 PDF（递归）
+    pdfs = []
+    for root in SITE_ROOTS:
+        if root.exists():
+            pdfs += [p for p in sorted(root.rglob("*.pdf")) if p.is_file()]
+    if not pdfs:
+        # 抽不到目标 = 门禁失效，不能当成"通过"
+        check("PDF 来源断言 · 扫到 PDF", False,
+              "站点目录下一个 PDF 都没扫到 —— 路径约定可能已变，门禁失效")
+    for p in pdfs:
+        rel = p.relative_to(ROOT).as_posix()
+        size = p.stat().st_size
+        issues = []
+        if size > PDF_SIZE_LIMIT:
+            issues.append(f"{size/1048576:.2f} MiB 超 Cloudflare Pages 25 MiB 单文件上限")
+        data = p.read_bytes()
+        m = re.search(rb"/Creator\s*\(([^)]{0,200})\)", data)
+        creator = m.group(1).decode("latin1", "replace") if m else ""
+        if SCRIPT_PRINT_RE.search(data):
+            issues.append("Creator 含 HeadlessChrome —— 脚本无头打印产物，规范 §5.6 禁止")
+        check(f"PDF 来源 · {rel}", not issues,
+              "; ".join(issues) if issues else f"{size/1048576:.2f} MiB · Creator={creator[:38]}")
 
     # 2) 押题卷
     quiz = SITE / "押题卷"
