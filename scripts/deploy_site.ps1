@@ -25,7 +25,8 @@
 param(
   [string]$Branch = "main",
   [string]$Commit = "HEAD",
-  [switch]$Keep
+  [switch]$Keep,
+  [switch]$Force
 )
 
 $ErrorActionPreference = "Stop"
@@ -47,6 +48,46 @@ if (-not (Test-Path (Join-Path $repo ".git"))) {
 if (-not (Test-Path (Join-Path $repo "wrangler.toml"))) {
   Write-Host "[X] 缺少 wrangler.toml（Pages 配置源）" -ForegroundColor Red
   exit 1
+}
+
+# ---------- 0.5) 回退保护闸（2026-09-28）----------
+# 本脚本部署的是**本地提交**（默认 HEAD）。若本地落后于 origin/<Branch>，
+# 部署就会把线上打回旧版 —— 这是真事故，不是假设：
+# 2026-09-28 本地 main 落后 6 个提交时，一次本地部署会把
+# 「大四上分区下载 404 修复」与「人工导出版 PDF」一起退回成脚本打印件。
+# 故默认拒绝（fail-closed）；确需强行部署时显式加 -Force。
+$remoteSha = $null
+git -C $repo fetch origin $Branch --quiet 2>$null
+if ($LASTEXITCODE -eq 0) {
+  $remoteSha = (git -C $repo rev-parse FETCH_HEAD 2>$null)
+  if ($remoteSha) { $remoteSha = $remoteSha.Trim() }
+}
+$localSha = (git -C $repo rev-parse $Commit 2>$null)
+if ($localSha) { $localSha = $localSha.Trim() }
+
+if (-not $remoteSha -or -not $localSha) {
+  # 查不到就不能放行 —— fail-closed，与仓库其它门禁一致
+  if ($Force) {
+    Write-Host "[!] 取不到 origin/$Branch 或本地 $Commit（离线 / git 不在 PATH）—— 已加 -Force，继续部署。" -ForegroundColor Yellow
+  } else {
+    Write-Host "[X] 拒绝部署：无法确认本地是否落后 origin/$Branch。" -ForegroundColor Red
+    Write-Host "    原因可能是离线，或 git 不在 PATH（本脚本需要 git 建 worktree，本来就依赖它）。" -ForegroundColor Red
+    Write-Host "    确认本地不落后、或就是要拿本地版本覆盖线上时，加 -Force。" -ForegroundColor Red
+    exit 2
+  }
+} else {
+  $behind = [int](git -C $repo rev-list --count "$localSha..$remoteSha" 2>$null)
+  $ahead  = [int](git -C $repo rev-list --count "$remoteSha..$localSha" 2>$null)
+  if ($localSha -ne $remoteSha) {
+    Write-Host ("[!] 本地 {0} = {1}   vs   origin/{2} = {3}   （落后 {4} / 超前 {5}）" -f `
+      $Commit, $localSha.Substring(0,7), $Branch, $remoteSha.Substring(0,7), $behind, $ahead) -ForegroundColor Yellow
+  }
+  if ($behind -gt 0 -and -not $Force) {
+    Write-Host "[X] 拒绝部署：本地落后 origin/$Branch $behind 个提交，部署会把线上打回旧版。" -ForegroundColor Red
+    Write-Host "    先把本地与远程对齐（git merge origin/$Branch，或 git checkout origin/$Branch 部署线上版）；" -ForegroundColor Red
+    Write-Host "    确实要拿本地版本覆盖线上时，加 -Force。" -ForegroundColor Red
+    exit 2
+  }
 }
 
 # ---------- 1) 清理可能残留的旧 worktree ----------
