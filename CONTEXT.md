@@ -420,7 +420,22 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **bge-small-zh-v1.5** | 已缓存 `~/.cache/huggingface/hub`，离线可跑；如需重下走 `HF_ENDPOINT=https://hf-mirror.com` |
 | **GitHub 镜像序** | `gh-proxy.com` → `ghproxy.net` → `mirror.ghproxy.com` → 直连（实测 gh-proxy.com 可用，mirror.ghproxy.com 超时） |
 | **calibrated_p 性质** | CMExam 人工标注锚点 + 先验表的外部先验估计，**非本库实测**。允许：组卷配平/异常筛查/推送排序；禁止：对外标注「实测难度」 |
-| **注册表覆盖** | registry 现 4917 题（2026-08-20 补齐 batch004/006/007/008/009/010/011/012/013/014/016/020/021/023/027 注册）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
+| **注册表覆盖** | registry 现 **5,276** 题（`question_bank/registry_meta.json` 的 `stats.total`，2026-09-07 随 batch035 刷新；2026-08-20 曾补齐 batch004/006/007/008/009/010/011/012/013/014/016/020/021/023/027 注册）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
+| **学科数** | **23**（`知识库素材/subject_config.json` 的 `subjects` 条目数，v2.0 · 2026-09-01） |
+
+### ⚠️ index.html 两处「会漂移」的数字（每次发版/扩容后必须同步）
+
+`index.html` 的对外数字**不在任何守卫的扫描面内**（链接门禁只看 URL 可达性），靠人记得改。
+2026-10-12 实测抓到两处已漂移：题库数停在 4,917（真身 5,276）、学科数停在 15（真身 23）。
+
+| 位置 | 现状写法 | 真身来源 |
+|---|---|---|
+| hero 徽标 / 终端动画 / 统计条 / 三处 right-sub | `5,276 题 · 23 学科` | `question_bank/registry_meta.json` → `stats.total`；`知识库素材/subject_config.json` → `subjects` 条数 |
+| 软件工坊（`#software`）的 `sw-desc` 正文 | `v0.12.0 新发布：…` | `medkit` 仓库的 CHANGELOG / GitHub Release |
+| 软件工坊 `sw-tags` 的安装包体积 | `安装包 ≈ 50 MB` | Release 资产里 `MedKit-Setup-*.exe` 的实际体积 |
+
+> `sw-ver` 版本徽标与下载直链由 GitHub API 动态取（`releases/latest`），**无需手工改**；
+> 会过期的是上面三处**手写文案**。
 
 ### 复习资料渲染（2026-06-21 新增）
 - `python 知识库素材/render_review.py "复习资料/XXX_主复习资料.md"` → 生成精美自包含 HTML
