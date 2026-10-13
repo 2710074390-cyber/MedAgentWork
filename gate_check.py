@@ -23,6 +23,7 @@
   exit 2 = GATE_FAIL（脚本/数据错误）
 """
 import sys, json, re, argparse, subprocess
+from collections import Counter
 from pathlib import Path
 from datetime import datetime
 
@@ -34,12 +35,37 @@ BASE = Path(__file__).parent
 sys.path.insert(0, str(BASE / 'scripts'))
 import workflow_state as ws
 
+# v2.1 回灌 (2026-10-13): pipeline.yaml 阈值「单一事实来源」（缺失回退内置默认）
+from pipeline_config import get_number
+
+# 集成 telemetry 模块（2026-09-09 新增；v2.1 回灌加固：降级可见，不再静默）
+try:
+    from scripts.telemetry import log_gate_check, log_info, log_error
+    TELEMETRY_AVAILABLE = True
+except ImportError:
+    try:
+        from telemetry import log_gate_check, log_info, log_error
+        TELEMETRY_AVAILABLE = True
+    except ImportError as _e:
+        print(f"  ⚠️ telemetry 模块不可用({_e})，事件日志已跳过（不影响门禁结果）", file=sys.stderr)
+
+        def log_gate_check(*a, **k):
+            pass
+
+        def log_info(*a, **k):
+            pass
+
+        def log_error(*a, **k):
+            pass
+
+        TELEMETRY_AVAILABLE = False
+
 
 # ═══════════════════════════════════════
 # 工具函数
 # ═══════════════════════════════════════
 
-def normalize_batch(batch_data):
+def normalize_batch(batch_data: dict) -> dict | None:
     """统一不同批次的数据结构为通用接口。
 
     batch003-005: 扁平 steps（仅 status+output）
@@ -129,8 +155,7 @@ def normalize_batch(batch_data):
     normalized['steps']['AGENT5'] = agent5
 
     # ── final_review 标准化 ──
-    # v2.0 (2026-08-20 审查修复): 缺失时不再自动补 'OK'/True —— 此前空批次
-    # final_review=null 也会被 normalize 补 'OK' 后通过终审（fail-open）。
+    # 缺失时不再自动补 'OK'/True（防止 fail-open）
     if isinstance(fr, dict):
         normalized['final_review'] = {
             'hc9': fr.get('hc9_terminology_appendix', ''),
@@ -172,9 +197,7 @@ def normalize_batch(batch_data):
 
 def find_validate_report(batch_id):
     """查找指定批次的 validate_options.py 报告
-
-    v1.1 (2026-08-13): 按铁律⑤ 优先搜索 reports/validate/，
-    兼容历史根目录残留（2026-08-13 前 validate_options.py 曾写根目录）。
+    优先搜索 reports/validate/，兼容历史根目录残留。
     """
     search_dirs = [BASE / 'reports' / 'validate', BASE]
     candidates = [
@@ -219,6 +242,73 @@ def find_qc_report(batch_id):
         for f in sorted(report_dir.glob(f'{batch_id}*质检报告*.json')):
             return f
     return None
+
+
+# ── v2.1 回灌 (2026-10-13): Bloom 独立重算（评审 §七.14，源自 medagentwork-skill v2.1）──
+_BLOOM_LEVELS = ['记忆', '理解', '应用', '分析']
+_BLOOM_ALIASES = {
+    '记忆': '记忆', '回忆': '记忆', '识记': '记忆', '记忆型': '记忆',
+    '理解': '理解', '领会': '理解', '理解型': '理解',
+    '应用': '应用', '运用': '应用', '应用型': '应用',
+    '分析': '分析', '综合': '分析', '评价': '分析', '分析型': '分析',
+}
+_TYPE_DEFAULT_BLOOM = {'A1': '记忆', 'A2': '应用', 'B1': '理解', 'A3': '分析', 'A4': '分析'}
+
+
+def find_question_bank(batch_id):
+    """定位批次题库 JSON（用于 Bloom 独立重算）。"""
+    for base in (BASE / '最终产物' / batch_id, BASE / '中间产物' / batch_id):
+        if not base.is_dir():
+            continue
+        for name in ('ALL_questions_FIXED.json', 'ALL_questions.json'):
+            f = base / name
+            if f.exists():
+                return f
+        cands = sorted(base.glob('ALL_questions*.json'))
+        if cands:
+            return cands[-1]
+    return None
+
+
+def recompute_bloom_from_qbank(batch_id):
+    """从题库 JSON 独立重算 Bloom 分布，返回 (distribution|None, error|None)。
+
+    门禁此前只读质检报告里 LLM 自述的 bloom_distribution —— 数据来源仍是自述。
+    本函数用题目自带的 bloom_level 字段（缺失时按题型映射兜底）机械重算，
+    供门禁与自述值交叉验证。
+    """
+    qb = find_question_bank(batch_id)
+    if not qb:
+        return None, '未找到题库 JSON'
+    try:
+        data = json.loads(qb.read_text(encoding='utf-8'))
+    except Exception as e:
+        return None, f'题库 JSON 解析失败: {e}'
+
+    if isinstance(data, list):
+        questions = data
+    elif isinstance(data, dict):
+        questions = data.get('questions') or data.get('items') or []
+    else:
+        questions = []
+    if not questions:
+        return None, '题库为空'
+
+    counter = Counter()
+    for q in questions:
+        if not isinstance(q, dict):
+            continue
+        raw = q.get('bloom') or q.get('bloom_level') or q.get('cognitive_level')
+        level = _BLOOM_ALIASES.get(str(raw).strip()) if raw else None
+        if not level:
+            level = _TYPE_DEFAULT_BLOOM.get(str(q.get('type', '')).strip())
+        if level:
+            counter[level] += 1
+
+    total = sum(counter.values())
+    if total == 0:
+        return None, '题库中无可用 bloom_level 字段'
+    return {lv: round(counter.get(lv, 0) / total * 100, 1) for lv in _BLOOM_LEVELS}, None
 
 
 # ═══════════════════════════════════════
@@ -375,7 +465,7 @@ def gate_agent3(batch_id, batch_data):
 
     # 如果 JSON 报告不存在，尝试从标准化数据中提取
     if bloom_data is None or not bloom_data:
-        # 从 AGENT2 和所有 AGENT2_V* 中取最新的 Bloom
+        # 从 AGENT2 步骤中取最新的 Bloom
         agent2_steps = []
         for step_key in sorted(batch_steps.keys()):
             if step_key.startswith('AGENT2'):
@@ -390,23 +480,19 @@ def gate_agent3(batch_id, batch_data):
         bloom_data = source.get('Bloom_actual', source.get('bloom_actual', {}))
         bloom_deviation_str = source.get('Bloom_deviation', '')
 
-        # 如果 normalized 中也没有 Bloom，尝试顶层 merged_stats/final_stats
+        # 如果仍无 Bloom，尝试其他来源
         if not bloom_data:
-            merged = batch_data.get('merged_stats', batch_data.get('final_stats', {}))
-            bloom_data = merged.get('bloom', {})
+            for src_key in ['merged_stats', 'final_stats', 'final_review', 'final_product']:
+                src = batch_data.get(src_key, {})
+                if isinstance(src, dict) and src.get('bloom'):
+                    bloom_data = src['bloom']
+                    break
+
+        # 最终回退：从 COMPLETED 步骤提取
         if not bloom_data:
             completed = batch_steps.get('COMPLETED', {})
             if isinstance(completed, dict):
                 bloom_data = completed.get('bloom', {})
-
-        # 如果 Bloom 数据仍为空，回退到 COMPLETED 步骤
-        if not bloom_data:
-            completed = batch_steps.get('COMPLETED', {})
-            bloom_data = completed.get('bloom', {})
-            if not bloom_data:
-                # 最终回退：从 final_product/final_stats 提取
-                final_review = batch_data.get('final_review', batch_data.get('final_stats', {}))
-                bloom_data = final_review.get('bloom', {})
 
         if bloom_deviation_str:
             # 解析 "记忆+26.1%，理解-14.4%，应用-7.8%，分析-3.9%"
@@ -476,12 +562,14 @@ def gate_agent3(batch_id, batch_data):
 
         max_dev = max(deviations.values())
 
-        if max_dev > 15:
+        # v2.1 回灌: 阈值取自 pipeline.yaml（缺失回退内置默认 15）
+        bloom_dev_max = get_number('bloom_deviation_max', 15)
+        if max_dev > bloom_dev_max:
             dev_detail = ', '.join(f'{k}=Δ{deviations[k]:.1f}%' for k in sorted(deviations, key=deviations.get, reverse=True)[:2])
             bloom_issues.append({
                 'gate_sub': 'GATE-A3-BLOOM',
                 'status': 'BLOCKED',
-                'reason': f'Bloom认知层级偏差{max_dev:.1f}% > 15%阈值（{dev_detail}）。必须回退Agent 2重构。',
+                'reason': f'Bloom认知层级偏差{max_dev:.1f}% > {bloom_dev_max:g}%阈值（{dev_detail}）。必须回退Agent 2重构。',
                 'rule': 'Bloom门禁规则 (batch011教训: 记忆54.1%未阻断)',
             })
 
@@ -507,8 +595,44 @@ def gate_agent3(batch_id, batch_data):
             'reason': '质检报告缺失 Bloom 分布数据，fail-closed 不放行',
         })
 
+    # ── v2.1 回灌 (2026-10-13): Bloom 独立重算交叉验证（评审 §七.14）──
+    # 上面 bloom_data 取自质检报告 —— 属 LLM 自述数据。此处用题库 JSON 独立重算
+    # 一遍 Bloom 分布，两者偏差超过容忍度即 BLOCKED。这把 Bloom 门禁从
+    # 「读 LLM 自述」升级为「确定性重算 + 自述交叉验证」。
+    recompute_issues = []
+    recomputed, recompute_err = recompute_bloom_from_qbank(batch_id)
+    recompute_tolerance = get_number('bloom_recompute_tolerance', 5)
+    if recomputed and bloom_data:
+        mismatch = {lv: abs(recomputed.get(lv, 0) - actual.get(lv, 0)) for lv in _BLOOM_LEVELS}
+        worst = max(mismatch.values()) if mismatch else 0.0
+        if worst > recompute_tolerance:
+            detail = ', '.join(
+                f'{lv} 自述{actual.get(lv, 0):.1f}%/重算{recomputed.get(lv, 0):.1f}%'
+                for lv in _BLOOM_LEVELS if mismatch[lv] > recompute_tolerance
+            )
+            recompute_issues.append({
+                'gate_sub': 'GATE-A3-BLOOM-RECOMPUTE',
+                'status': 'BLOCKED',
+                'reason': (f'Bloom 分布自述值与题库重算值最大偏差 {worst:.1f}% > '
+                           f'{recompute_tolerance:g}%（{detail}）。质检报告 Bloom 数据与题库不一致，不可放行。'),
+                'rule': 'Bloom 独立重算交叉验证（v2.1 回灌）',
+            })
+        else:
+            recompute_issues.append({
+                'gate_sub': 'GATE-A3-BLOOM-RECOMPUTE',
+                'status': 'PASS',
+                'reason': f'Bloom 自述值与题库重算值最大偏差 {worst:.1f}% ≤ {recompute_tolerance:g}%，交叉验证通过',
+            })
+    else:
+        # 题库缺失时不阻断（fail-closed 已由 NO-BLOOM 覆盖），仅记录可诊断信息
+        recompute_issues.append({
+            'gate_sub': 'GATE-A3-BLOOM-RECOMPUTE',
+            'status': 'SKIPPED',
+            'reason': f'无法独立重算 Bloom（{recompute_err or "无 bloom_data"}），已跳过交叉验证',
+        })
+
     # ── 汇总 GATE-A3 结果 ──
-    sub_results = d20_issues + bloom_issues + evidence_issues
+    sub_results = d20_issues + bloom_issues + recompute_issues + evidence_issues
     blocked_subs = [r for r in sub_results if r['status'] == 'BLOCKED']
 
     if blocked_subs:
@@ -940,10 +1064,15 @@ def detect_current_stage(state, batch_id):
 # ═══════════════════════════════════════
 
 
-def run_gate_check(batch_id, stage, run_regression=True):
+def run_gate_check(batch_id: str, stage: str, run_regression: bool = True) -> None:
     """执行门禁检查"""
+    if TELEMETRY_AVAILABLE:
+        log_info(f"Starting gate check for {batch_id}", batch_id=batch_id, stage=stage)
+    
     state, err = ws.load_state()
     if err:
+        if TELEMETRY_AVAILABLE:
+            log_error(f"Failed to load state: {err}", batch_id=batch_id)
         print(f"  ✗ 无法加载工作流状态: {err}")
         sys.exit(2)
 
@@ -1063,16 +1192,20 @@ def run_gate_check(batch_id, stage, run_regression=True):
     # 汇总
     print(f"\n{'─'*60}")
     if all_pass:
+        if TELEMETRY_AVAILABLE:
+            log_gate_check(batch_id, stage, 'PASS', reason='all_pass')
         print(f"  ✅ 门禁检查全部通过 — 可以推进到下一阶段")
         print(f"{'═'*60}\n")
     elif approved_mode:
-        # v2.0 (2026-08-20 审查修复): 参考模式退出码与提示语义一致（此前提示
-        # "仅作参考"却仍 exit 1，误导主控做不必要干预）
+        if TELEMETRY_AVAILABLE:
+            log_gate_check(batch_id, stage, 'PASS_APPROVED', reason='approved_mode')
         print(f"  ℹ️ 已签收批次门禁未通过（参考模式 — 退出码 0，不阻断管线）")
         print(f"{'═'*60}\n")
     else:
-        print(f"  🛑 门禁检查未通过 — 管线已停止。修复后运行:")
         blocked_gates = [r['gate'] for r in results if r['status'] != 'PASS']
+        if TELEMETRY_AVAILABLE:
+            log_gate_check(batch_id, stage, 'BLOCKED', reason='blocked: ' + ','.join(blocked_gates))
+        print(f"  🛑 门禁检查未通过 — 管线已停止。修复后运行:")
         print(f"     python gate_check.py --batch {batch_id} --clear-halt")
         print(f"     [修复问题后]")
         print(f"     python gate_check.py --batch {batch_id} --stage auto")

@@ -8,11 +8,12 @@ kaoyan_picker.py — 考研真题配额工具（HC-18，2026-08-21 新增）
            上册（题干/选项, 1994-2024 西综真题试卷）与下册（贺银成精析, 含答案+解析）
            按 gs_id 配对后输出候选 JSON，供 MedGen 按 HC-18 配额（≈20%）引用/改编。
   check  — 终审机械化校验：统计题库 JSON 中 kaoyan_origin 占比，目标 20%（合格带 15%-25%），
-           <15% 视为未达标（exit 1）。
+           <15% 视为未达标（exit 1）。确无金标准时可显式加 --golden-absent 走降级模式
+           （报告留痕 degraded=true；不加该参数默认仍 fail-closed，不允许悄悄放行）。
 
 用法：
   python scripts/kaoyan_picker.py pick  --subject 内科学 --keywords "心衰,心力衰竭" --target 20 --out 中间产物/batch028/kaoyan_candidates.json
-  python scripts/kaoyan_picker.py check --file 最终产物/batch028/ALL_questions_FIXED.json [--out reports/validate/kaoyan_check_batch028.json]
+  python scripts/kaoyan_picker.py check --file 最终产物/batch028/ALL_questions_FIXED.json [--out reports/validate/kaoyan_check_batch028.json] [--golden-absent]
 
 数据要求（项目内既有的 GoldenSet 解析产物，见 GoldenSet/parse_goldenset.py v2.0）：
   GoldenSet/structured/GS_上册_2024.json   字段: gs_id/year/question_no/type/stem/options/answer/explanation/subject/source_file
@@ -179,6 +180,16 @@ def cmd_check(args):
     kaoyan = [q for q in questions if q.get('kaoyan_origin')]
     ratio = len(kaoyan) / total if total else 0
     ok = QUALIFIED_MIN <= ratio <= QUALIFIED_MAX + 0.05
+
+    # ── v2.1 回灌：金标准缺失时的显式降级模式（评审 §七.13）──
+    # 无金标准的批次会卡在 HC-18 第一条门禁上。降级必须由操作者显式开启
+    # （--golden-absent），并在报告中留痕 degraded=true —— 默认仍是 fail-closed，
+    # 不允许"悄悄放行"。
+    degraded = False
+    if not ok and ratio < QUALIFIED_MIN and getattr(args, 'golden_absent', False):
+        degraded = True
+        ok = True
+
     report = {
         'file': args.file,
         'rule': 'HC-18 考研真题配额',
@@ -188,6 +199,8 @@ def cmd_check(args):
         'target': TARGET,
         'qualified_band': [QUALIFIED_MIN, QUALIFIED_MAX],
         'pass': ok,
+        'degraded': degraded,
+        'golden_status': 'absent(降级)' if degraded else ('present' if kaoyan else 'absent'),
         'warn': ratio > QUALIFIED_MAX + 0.05,  # 超出上限仅提示
     }
     if args.out:
@@ -199,11 +212,16 @@ def cmd_check(args):
     print(f'📊 HC-18 考研真题配额检查：{args.file}')
     print(f'  题目总数：{total}；考研原题：{len(kaoyan)}（占比 {ratio*100:.1f}%）')
     print(f'  目标：{TARGET*100:.0f}%（合格带 {QUALIFIED_MIN*100:.0f}%-{QUALIFIED_MAX*100:.0f}%）')
-    if ok:
+    if degraded:
+        print(f'  ⚠️ DEGRADED：未启用金标准（--golden-absent），本批次跳过 HC-18 配额要求。')
+        print(f'     ⚠️ 该批次的答案正确性【完全依赖 MedQC + 人工签收】，无金标准兜底。')
+        print(f'     建议：先把已签收的高质量题人工移入 GoldenSet/，再开启金标准机制。')
+    elif ok:
         print('  ✅ PASS：考研真题占比达标')
     else:
         print(f'  ✗ FAIL：占比 {ratio*100:.1f}% < {QUALIFIED_MIN*100:.0f}% 下限，'
               f'需补充考研真题或说明「该章节无真题覆盖」')
+        print(f'     确无金标准时，可显式使用 --golden-absent 走降级模式（会在报告中留痕 degraded=true）')
     if report['warn']:
         print(f'  ⚠️ WARN：占比 {ratio*100:.1f}% 超过上限 {QUALIFIED_MAX*100:.0f}%，'
               f'注意保持原创题比例')
@@ -224,6 +242,9 @@ def main():
     p_check = sub.add_parser('check', help='终审校验题库 kaoyan_origin 占比')
     p_check.add_argument('--file', required=True, help='题库 JSON（纯数组或含 questions 字段）')
     p_check.add_argument('--out', default='', help='可选：报告 JSON 输出路径')
+    p_check.add_argument('--golden-absent', dest='golden_absent', action='store_true',
+                         help='显式声明「本批次无金标准可用」→ 走降级模式（报告留痕 degraded=true），'
+                              '默认 fail-closed 不放行')
     p_check.set_defaults(func=cmd_check)
 
     args = parser.parse_args()
