@@ -407,7 +407,7 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **apply_calibrated_difficulty.py** | 1.1.0 | `scripts/apply_calibrated_difficulty.py` | `python scripts/apply_calibrated_difficulty.py [--dry-run]` — **expanded 校准值回写 registry（2026-08-21 终审修订）**：默认读 `calibrated_difficulty.expanded.jsonl`，按 qid join 刷新 calibrated_p/calibration_confidence/calibration_flag/max_sim/prior_key + 补 anchor_source；写前自动备份 registry.jsonl；registry 已去重为 qid 唯一，qid join 安全 |
 | **paper_builder.py** | 1.0.0 | `scripts/paper_builder.py` | `python scripts/paper_builder.py --subject 内科学 --count 100 [--dry-run]` — 组卷公式 v1.0（2026-08-20）：考频权重 × 难度配平(calibrated_p) × NFD 过滤；输出兼容 `scripts/quiz_template.html` QUESTIONS 数组 |
 | **clean_produce_markup.py** | 1.0.0 | `scripts/clean_produce_markup.py` | `python scripts/clean_produce_markup.py [--dry-run]` — 交付物清理（2026-08-22）：清除复习资料 MD/HTML 的批次标记/自检报告残留 + 押题卷副标题成品化（去「统一模板/TEST」）；备份至 `archive/交付物清理前备份_*` |
-| **verify_produce_rules.py** | 1.0.0 | `scripts/verify_produce_rules.py` | `python scripts/verify_produce_rules.py` — 产物形态门禁（2026-08-22，FAIL==0 才放行）：扩展名白名单（押题卷=仅html / 题库=md+html+pdf / 复习资料=md+html）、押题卷副标题质检、复习资料无流程残留/无 Mermaid、PDF 人工上传标记。规则源：`docs/产物格式规范.md`（HC-18） |
+| **verify_produce_rules.py** | 1.1.0 | `scripts/verify_produce_rules.py` | `python scripts/verify_produce_rules.py` — 产物形态门禁（2026-08-22，FAIL==0 才放行）：扩展名白名单（押题卷=仅html / 题库=md+html+pdf / 复习资料=md+html）、押题卷副标题质检、复习资料无流程残留/无 Mermaid、**PDF 来源断言（2026-09-28 新增，覆盖 `大三下/` + `大四上/`：每个 PDF 必须 ≤25 MiB 且 `/Creator` 不含 `HeadlessChrome` —— 后者是 `chrome --headless=new --print-to-pdf` 的脚本指纹）**。规则源：`docs/产物格式规范.md`（HC-18） |
 | **render_qbank_html.py** | 1.0.0 | `scripts/render_qbank_html.py` | `python scripts/render_qbank_html.py --input <题库JSON> --output <out.html> [--title ...]` — 题库最终产物 HTML 交付版（2026-08-22）：题库 PDF 一律人工上传，本脚本只产 HTML |
 | **quiz_template.html** | 1.0.0 | `scripts/quiz_template.html` | 统一押题卷模板（2026-08-20 第三方交付）：CSS 变量化/亮暗主题/响应式/作答采集；题目注入 `<script id="quiz-data">` 的 QUESTIONS 数组 |
 | **dsh** (DeepSeek Harness) | 0.1.0-rc.7 | `C:\Users\38063\Desktop\Web-AI\tools\dsh\node_modules\.bin\dsh` | `cd C:\Users\38063\Desktop\Web-AI\tools\dsh && npx dsh web`（需 API key） |
@@ -420,7 +420,22 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **bge-small-zh-v1.5** | 已缓存 `~/.cache/huggingface/hub`，离线可跑；如需重下走 `HF_ENDPOINT=https://hf-mirror.com` |
 | **GitHub 镜像序** | `gh-proxy.com` → `ghproxy.net` → `mirror.ghproxy.com` → 直连（实测 gh-proxy.com 可用，mirror.ghproxy.com 超时） |
 | **calibrated_p 性质** | CMExam 人工标注锚点 + 先验表的外部先验估计，**非本库实测**。允许：组卷配平/异常筛查/推送排序；禁止：对外标注「实测难度」 |
-| **注册表覆盖** | registry 现 4917 题（2026-08-20 补齐 batch004/006/007/008/009/010/011/012/013/014/016/020/021/023/027 注册）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
+| **注册表覆盖** | registry 现 **5,276** 题（`question_bank/registry_meta.json` 的 `stats.total`，2026-09-07 随 batch035 刷新；2026-08-20 曾补齐 batch004/006/007/008/009/010/011/012/013/014/016/020/021/023/027 注册）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
+| **学科数** | **23**（`知识库素材/subject_config.json` 的 `subjects` 条目数，v2.0 · 2026-09-01） |
+
+### ⚠️ index.html 两处「会漂移」的数字（每次发版/扩容后必须同步）
+
+`index.html` 的对外数字**不在任何守卫的扫描面内**（链接门禁只看 URL 可达性），靠人记得改。
+2026-10-12 实测抓到两处已漂移：题库数停在 4,917（真身 5,276）、学科数停在 15（真身 23）。
+
+| 位置 | 现状写法 | 真身来源 |
+|---|---|---|
+| hero 徽标 / 终端动画 / 统计条 / 三处 right-sub | `5,276 题 · 23 学科` | `question_bank/registry_meta.json` → `stats.total`；`知识库素材/subject_config.json` → `subjects` 条数 |
+| 软件工坊（`#software`）的 `sw-desc` 正文 | `v0.12.0 新发布：…` | `medkit` 仓库的 CHANGELOG / GitHub Release |
+| 软件工坊 `sw-tags` 的安装包体积 | `安装包 ≈ 50 MB` | Release 资产里 `MedKit-Setup-*.exe` 的实际体积 |
+
+> `sw-ver` 版本徽标与下载直链由 GitHub API 动态取（`releases/latest`），**无需手工改**；
+> 会过期的是上面三处**手写文案**。
 
 ### 复习资料渲染（2026-06-21 新增）
 - `python 知识库素材/render_review.py "复习资料/XXX_主复习资料.md"` → 生成精美自包含 HTML

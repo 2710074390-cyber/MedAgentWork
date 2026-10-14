@@ -1,0 +1,11 @@
+# 站点 PDF 一律强制附件下载（2026-09-30 修复）
+# 根因：此前 PDF 仅以 application/pdf 内联提供，夸克等浏览器忽略 <a download> 后走内置文档预览，
+# 对 10-22MB 大文件卡「解析中」无法下载。加 Content-Disposition: attachment 后所有浏览器直接进下载管理器。
+/大三下/题库/*
+  Content-Disposition: attachment
+
+/大四上/复习资料/*
+  Content-Disposition: attachment
+
+/大四上/题库/*
+  Content-Disposition: attachment
