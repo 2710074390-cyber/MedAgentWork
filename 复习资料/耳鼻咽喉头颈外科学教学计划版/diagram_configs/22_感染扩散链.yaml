@@ -1,0 +1,39 @@
+type: flow
+title: 感染类疾病一处病变多处受累扩散链
+subtitle: 耳鼻咽喉头颈外科学 M1 总论（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/22_感染扩散链.png
+webp: images_webp/22_感染扩散链.webp
+steps:
+  - title: 急性鼻炎
+    color: blue
+    lines:
+      - 鼻腔黏膜急性感染
+      - 上呼吸道最常见入口
+  - title: 急性鼻窦炎
+    color: teal
+    lines:
+      - 经窦口蔓延至鼻窦
+      - 鼻塞、脓涕、窦区头痛
+  - title: 急性中耳炎
+    color: green
+    lines:
+      - 经咽鼓管侵入中耳
+      - 儿童咽鼓管短平直尤易受累
+  - title: 急性咽炎
+    color: yellow
+    lines:
+      - 向下蔓延至咽部
+      - 咽痛、咽后壁淋巴滤泡增生
+  - title: 急性喉炎
+    color: orange
+    lines:
+      - 继续向下累及喉部
+      - 声嘶、小儿可致喉阻塞
+  - title: 急性气管支气管炎
+    color: red
+    lines:
+      - 侵及下呼吸道
+      - 咳嗽、咳痰、气道痉挛
+note: 内容依据人卫《耳鼻咽喉头颈外科学》第9版；render_diagram.py确定性渲染

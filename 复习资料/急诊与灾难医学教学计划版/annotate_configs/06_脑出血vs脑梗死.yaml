@@ -1,0 +1,19 @@
+image: raw/06_脑出血vs脑梗死_raw.png
+output: annotated/06_脑出血vs脑梗死.png
+fixes:
+  - box: [90, 120, 400, 165]
+    text: 脑出血（CT 即刻高密度）
+    mode: label
+    anchor: [350, 300]
+  - box: [70, 760, 420, 805]
+    text: 血肿＋周围水肿带
+    mode: label
+    anchor: [350, 540]
+  - box: [580, 120, 910, 165]
+    text: 脑梗死（24h 后低密度）
+    mode: label
+    anchor: [810, 300]
+  - box: [560, 760, 930, 805]
+    text: 缺血软化灶（边界模糊）
+    mode: label
+    anchor: [810, 540]

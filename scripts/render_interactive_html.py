@@ -32,25 +32,15 @@ mod_info = [
 
 def esc(s):
     if not s: return ''
-    # v2.0 (2026-08-20 审查修复): 补单引号转义 —— 此前 esc() 不转义 '，
-    # 与 onclick 内嵌 JS 字符串（'{tp}'）叠加构成注入缺口
     return str(s).replace('&','&amp;').replace('<','&lt;').replace('>','&gt;').replace('"','&quot;').replace("'",'&#39;')
 
 def esc_js(s):
-    """JS 字符串上下文转义（onclick 内嵌参数）。
-
-    v2.0 (2026-08-20 审查修复): qid/tp 等字段此前直接拼进
-    onclick="selectOption(this,'{qid_js}','{tp_js}')" 未转义，字段含引号即注入/错乱。
-    """
+    """JS 字符串上下文转义（onclick 内嵌参数）。"""
     if s is None: return ''
     return str(s).replace('\\','\\\\').replace("'","\\'").replace('"','\\"')
 
-# v2.0 (2026-08-20 审查修复): 删除从未被调用的 parse_answer() 死代码。
-# A3 数据模型说明（实测 archive/中间产物/predict_100q_final.json）：
-# 每个选项字母是一条完整"病例假设链"（如 '下运动神经元；定位诊断'，分号分隔各
-# 子问答案），题干以 (1)(2)(3) 拆分子问，各子问共用同一正确字母（predict-035
-# 解析证实 (1)→下运动神经元=B、(2)→定位诊断=B）。因此 A3 子问渲染中
-# is_correct = (lbl == ans) 按同一字母判定是**正确语义**，勿改。
+# A3 数据模型说明：每个选项字母是一条完整"病例假设链"，题干以 (1)(2)(3) 拆分子问，
+# 各子问共用同一正确字母。is_correct = (lbl == ans) 按同一字母判定是正确语义。
 
 # Count types
 type_counts = {}
@@ -191,7 +181,6 @@ for name, pri, color in mod_info:
         qidx += 1
         qid = f"q{qidx}"
         tp = q['type']
-        # v2.0 (2026-08-20 审查修复): 进 HTML/JS 的字段全部转义
         tp_esc = esc(tp)
         tp_js = esc_js(tp)
         qid_js = esc_js(qid)

@@ -1,0 +1,36 @@
+image: raw/11_泌尿系解剖与结石部位_raw.png
+output: annotated/11_泌尿系解剖与结石部位.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [90, 140, 280, 185]
+    text: "肾（肾结石）"
+    mode: label
+    anchor: [357, 272]
+  - box: [760, 140, 870, 185]
+    text: "肾"
+    mode: label
+    anchor: [700, 220]
+  - box: [60, 425, 400, 470]
+    text: "狭窄①肾盂输尿管连接部"
+    mode: label
+    anchor: [422, 450]
+  - box: [60, 595, 380, 640]
+    text: "狭窄②跨髂血管处"
+    mode: label
+    anchor: [420, 620]
+  - box: [620, 650, 880, 695]
+    text: "狭窄③膀胱壁内段"
+    mode: label
+    anchor: [585, 695]
+  - box: [430, 500, 540, 545]
+    text: "输尿管"
+    mode: label
+    anchor: [480, 555]
+  - box: [430, 760, 540, 805]
+    text: "膀胱"
+    mode: label
+    anchor: [500, 755]
+  - box: [430, 930, 540, 975]
+    text: "尿道"
+    mode: label
+    anchor: [500, 908]

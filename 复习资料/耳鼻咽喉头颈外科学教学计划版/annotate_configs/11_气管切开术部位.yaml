@@ -1,0 +1,39 @@
+image: raw/11_气管切开术部位_raw.png
+output: annotated/11_气管切开术部位.png
+fixes:
+  - box: [20, 180, 280, 225]
+    text: 颈前皮肤软组织
+    mode: label
+    anchor: [200, 250]
+  - box: [20, 500, 380, 545]
+    text: 甲状腺峡部（横跨2-4环）
+    mode: label
+    anchor: [220, 535]
+  - box: [20, 660, 300, 705]
+    text: 气管（C形软骨环）
+    mode: label
+    anchor: [285, 690]
+  - box: [20, 800, 280, 845]
+    text: 食管（气管后方）
+    mode: label
+    anchor: [360, 800]
+  - box: [855, 190, 990, 235]
+    text: 甲状软骨
+    mode: label
+    anchor: [830, 260]
+  - box: [830, 370, 990, 415]
+    text: 环甲膜（紧急切开）
+    mode: label
+    anchor: [775, 405]
+  - box: [830, 450, 950, 495]
+    text: 环状软骨
+    mode: label
+    anchor: [800, 460]
+  - box: [830, 630, 990, 675]
+    text: 甲状腺峡部
+    mode: label
+    anchor: [815, 665]
+  - box: [540, 800, 990, 845]
+    text: 气管切开部位（2-4环以下）
+    mode: label
+    anchor: [740, 790]

@@ -1,0 +1,33 @@
+type: flow
+title: 视路分段与视野缺损定位
+subtitle: 眼科学 M9 视路疾病（确定性图谱通道）
+direction: horizontal
+output: annotated/04_视路分段与视野缺损.png
+webp: images_webp/04_视路分段与视野缺损.webp
+steps:
+  - title: 视网膜→视神经
+    color: blue
+    lines:
+      - "一侧视神经损伤"
+      - "→ 同侧全盲（单眼失明）"
+  - title: 视交叉
+    color: teal
+    lines:
+      - "鼻侧纤维交叉、颞侧不交叉"
+      - "中央受损（垂体瘤）→ 双颞侧偏盲"
+  - title: 视束
+    color: green
+    lines:
+      - "一侧视束受损"
+      - "→ 双眼对侧同向性偏盲"
+  - title: 视放射
+    color: orange
+    lines:
+      - "扇形纤维走行"
+      - "→ 象限性缺损（上/下象限）"
+  - title: 视皮质（枕叶）
+    color: purple
+    lines:
+      - "双侧视皮质受累"
+      - "→ 同向偏盲+黄斑回避"
+note: 内容依据人卫《眼科学》第10版（范先群/颜华）M9；「鼻侧交叉、颞侧不交叉」为定位核心；render_diagram.py确定性渲染

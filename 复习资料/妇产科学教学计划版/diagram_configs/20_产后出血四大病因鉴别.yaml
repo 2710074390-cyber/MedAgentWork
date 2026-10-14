@@ -1,0 +1,35 @@
+type: compare
+title: 产后出血四大病因鉴别
+subtitle: 妇产科学 M6 分娩并发症（确定性图谱通道）
+output: annotated/20_产后出血四大病因鉴别.png
+webp: images_webp/20_产后出血四大病因鉴别.webp
+items:
+  - title: 子宫收缩乏力
+    color: blue
+    lines:
+      - 最常见病因
+      - 胎盘娩出后出血、色暗红
+      - 宫底升高、质软、轮廓不清
+      - 按摩＋宫缩剂后变硬、流血减少
+  - title: 胎盘因素
+    color: teal
+    lines:
+      - 胎盘未娩出或残留
+      - 数分钟出血、色暗红
+      - 滞留/植入/残留
+      - 宫腔检查、徒手剥离
+  - title: 软产道裂伤
+    color: green
+    lines:
+      - 胎儿娩出后立即出血、色鲜红
+      - 宫颈/阴道/会阴裂伤或血肿
+      - 宫颈裂伤多在3点与9点处
+      - 缝合止血、血肿切开引流
+  - title: 凝血功能障碍
+    color: red
+    lines:
+      - 持续流血、血液不凝
+      - 全身多部位出血、瘀斑
+      - 化验血小板/纤维蛋白原异常
+      - 补凝血因子、按DIC处理
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

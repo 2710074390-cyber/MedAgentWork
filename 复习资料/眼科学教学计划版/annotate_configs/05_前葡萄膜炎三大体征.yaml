@@ -1,0 +1,20 @@
+image: raw/05_前葡萄膜炎三大体征_raw.png
+output: annotated/05_前葡萄膜炎三大体征.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [30, 90, 280, 138]
+    text: KP（角膜内皮沉着）
+    mode: label
+    anchor: [215, 520]
+  - box: [320, 90, 580, 138]
+    text: 前房闪辉+细胞
+    mode: label
+    anchor: [330, 480]
+  - box: [300, 880, 430, 928]
+    text: 瞳孔缩小/不规则
+    mode: label
+    anchor: [465, 495]
+  - box: [840, 740, 990, 788]
+    text: 虹膜后粘连
+    mode: label
+    anchor: [560, 505]

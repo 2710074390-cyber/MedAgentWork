@@ -1,0 +1,40 @@
+type: grid
+title: 产程曲线异常诊断六阈值
+subtitle: 妇产科学 M5 异常分娩（确定性图谱通道）
+cols: 3
+output: annotated/18_产程曲线异常诊断标准.png
+webp: images_webp/18_产程曲线异常诊断标准.webp
+items:
+  - title: 潜伏期延长
+    color: blue
+    lines:
+      - 初产妇 >20h
+      - 经产妇 >14h
+  - title: 活跃期延长
+    color: teal
+    lines:
+      - 宫口扩张 <0.5cm/h
+      - 进入活跃期标志为5cm
+  - title: 活跃期停滞
+    color: green
+    lines:
+      - 破膜且宫口≥5cm后停扩
+      - 宫缩正常≥4h
+      - 宫缩欠佳≥6h
+  - title: 胎头下降延缓
+    color: orange
+    lines:
+      - 第二产程
+      - 初产妇 <1cm/h
+      - 经产妇 <2cm/h
+  - title: 胎头下降停滞
+    color: yellow
+    lines:
+      - 第二产程
+      - 胎头不降 >1h
+  - title: 第二产程延长
+    color: red
+    lines:
+      - 初产>3h、经产>2h
+      - 硬膜外初产>4h、经产>3h
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

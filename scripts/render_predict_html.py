@@ -32,12 +32,11 @@ mod_info = [
 
 def esc(s):
     if not s: return ''
-    # v2.0 (2026-08-20 审查修复): 补单引号转义（与 render_interactive_html 同步）
     return str(s).replace('&','&amp;').replace('<','&lt;').replace('>','&gt;').replace('"','&quot;').replace("'",'&#39;')
 
 
 def esc_js(s):
-    """JS 字符串上下文转义（v2.0 审查修复）。"""
+    """JS 字符串上下文转义。"""
     if s is None: return ''
     return str(s).replace('\\','\\\\').replace("'","\\'").replace('"','\\"')
 
@@ -145,7 +144,6 @@ for name, pri, color in mod_info:
         qidx += 1
         qid = f"q{qidx}"
         tp = q['type']
-        # v2.0 (2026-08-20 审查修复): 进 HTML/JS 的字段全部转义
         tp_esc = esc(tp)
         qid_js = esc_js(qid)
         stem = esc(q['stem'])

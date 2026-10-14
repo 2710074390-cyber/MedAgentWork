@@ -1,0 +1,20 @@
+image: raw/21_鼻疖危险三角海绵窦血栓_raw.png
+output: annotated/21_鼻疖危险三角海绵窦血栓.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [620, 560, 900, 625]
+    text: "鼻前庭疖"
+    mode: label
+    anchor: [505, 585]
+  - box: [620, 660, 920, 725]
+    text: "危险三角区"
+    mode: label
+    anchor: [500, 660]
+  - box: [40, 430, 260, 495]
+    text: "内眦静脉"
+    mode: label
+    anchor: [385, 475]
+  - box: [620, 270, 960, 345]
+    text: "海绵窦（血栓性静脉炎）"
+    mode: label
+    anchor: [595, 355]

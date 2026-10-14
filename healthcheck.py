@@ -22,14 +22,15 @@ MedAgentWork 工程健康检查 v1.0
   H. 题库注册表 — qbank 注册表完整性 + 跨批次重复（P0-1 新增）
   I. 测试套件   — tests/ 回归套件全部通过（P0-2 新增）
 """
-import sys, json, os, re, subprocess, hashlib, argparse
+import sys, json, os, re, subprocess, argparse
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
-from collections import defaultdict
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 BASE = Path(__file__).parent
+sys.path.insert(0, str(BASE / 'scripts'))
+from utils import md5_file, safe_json_load
 
 # ──────────────────────────────────────────
 # 配置
@@ -59,32 +60,6 @@ PROMPT_CURRENT = {
 }
 
 CST = timezone(timedelta(hours=8))
-
-# ──────────────────────────────────────────
-# 工具函数
-# ──────────────────────────────────────────
-
-def md5_file(filepath):
-    h = hashlib.md5()
-    try:
-        with open(filepath, 'rb') as f:
-            for chunk in iter(lambda: f.read(8192), b''):
-                h.update(chunk)
-        return h.hexdigest()
-    except Exception:
-        return None
-
-
-def safe_json_load(filepath):
-    """安全加载 JSON，返回 (data, error)"""
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            return json.load(f), None
-    except json.JSONDecodeError as e:
-        return None, f'JSON 解析失败: {e}'
-    except Exception as e:
-        return None, str(e)
-
 
 # ──────────────────────────────────────────
 # A. 脚本存活性
@@ -486,6 +461,15 @@ def check_tests():
 # 汇总输出
 # ──────────────────────────────────────────
 
+def _print_section(name: str, results: list) -> None:
+    """打印单个检查章节的结果摘要"""
+    fails = sum(1 for x in results if x['status'] == 'FAIL')
+    warns = sum(1 for x in results if x['status'] == 'WARN')
+    total = len(results)
+    passed = total - fails - warns
+    print(f'{passed}✅ {warns}⚠️ {fails}✗')
+
+
 def run_healthcheck(full=False):
     """运行全部健康检查，返回 (results_by_section, summary)"""
     sections = {}
@@ -500,10 +484,8 @@ def run_healthcheck(full=False):
     print(f"\n  [A] 脚本存活性...", end=' ')
     r = check_script_importability()
     sections['A'] = r
-    fails = sum(1 for x in r if x['status'] == 'FAIL')
-    warns = sum(1 for x in r if x['status'] == 'WARN')
-    total = len(r)
-    print(f'{total} 个脚本: {total-fails-warns}✅ {warns}⚠️ {fails}✗')
+    print(f'{len(r)} 个脚本: ', end='')
+    _print_section('', r)
 
     # B
     print(f"  [B] 文件完整性...", end=' ')
@@ -511,65 +493,50 @@ def run_healthcheck(full=False):
     r2 = check_workflow_references()
     r = r1 + r2
     sections['B'] = r
-    fails = sum(1 for x in r if x['status'] == 'FAIL')
-    warns = sum(1 for x in r if x['status'] == 'WARN')
-    print(f'{len(r1)} JSON + {len(r2)} 引用: {len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+    print(f'{len(r1)} JSON + {len(r2)} 引用: ', end='')
+    _print_section('', r)
 
     # C
     print(f"  [C] 状态一致性...", end=' ')
     r = check_state_consistency()
     sections['C'] = r
-    fails = sum(1 for x in r if x['status'] == 'FAIL')
-    warns = sum(1 for x in r if x['status'] == 'WARN')
-    print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+    _print_section('', r)
 
     # D
     print(f"  [D] 目录结构...", end=' ')
     r = check_directory_structure()
     sections['D'] = r
-    fails = sum(1 for x in r if x['status'] == 'FAIL')
-    warns = sum(1 for x in r if x['status'] == 'WARN')
-    print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+    _print_section('', r)
 
     # E
     print(f"  [E] Prompt 同步...", end=' ')
     r = check_prompt_sync()
     sections['E'] = r
-    fails = sum(1 for x in r if x['status'] == 'FAIL')
-    warns = sum(1 for x in r if x['status'] == 'WARN')
-    print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+    _print_section('', r)
 
     # F
     print(f"  [F] GoldenSet...", end=' ')
     r = check_goldenset(full)
     sections['F'] = r
-    fails = sum(1 for x in r if x['status'] == 'FAIL')
-    warns = sum(1 for x in r if x['status'] == 'WARN')
-    print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+    _print_section('', r)
 
     # G
     print(f"  [G] 知识库...", end=' ')
     r = check_knowledge_base(full)
     sections['G'] = r
-    fails = sum(1 for x in r if x['status'] == 'FAIL')
-    warns = sum(1 for x in r if x['status'] == 'WARN')
-    print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+    _print_section('', r)
 
     # H (P0-1 题库注册表)
     print(f"  [H] 题库注册表...", end=' ')
     r = check_qbank()
     sections['H'] = r
-    fails = sum(1 for x in r if x['status'] == 'FAIL')
-    warns = sum(1 for x in r if x['status'] == 'WARN')
-    print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+    _print_section('', r)
 
     # I (P0-2 测试套件)
     print(f"  [I] 测试套件...", end=' ')
     r = check_tests()
     sections['I'] = r
-    fails = sum(1 for x in r if x['status'] == 'FAIL')
-    warns = sum(1 for x in r if x['status'] == 'WARN')
-    print(f'{len(r)-fails-warns}✅ {warns}⚠️ {fails}✗')
+    _print_section('', r)
 
     # 汇总
     all_results = []

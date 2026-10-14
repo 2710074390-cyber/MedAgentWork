@@ -1,0 +1,11 @@
+title: 脊髓内部结构与传导束
+output: annotated/18_脊髓内部结构与传导束.png
+webp: images_webp/18_脊髓内部结构与传导束.webp
+trim: true
+rows:
+  - height: 1280
+    panels:
+      - image: raw/18_脊髓节段与椎骨关系_矢状面.jpg
+        caption: 节段与椎骨（矢状面）
+      - image: raw/18_脊髓横切面与传导束.jpg
+        caption: 脊髓横切面：灰质、白质与主要传导束

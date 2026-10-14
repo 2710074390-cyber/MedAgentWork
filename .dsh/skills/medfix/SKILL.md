@@ -27,6 +27,6 @@ whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出
    - 只扩充短选项（加领域限定词），**绝不 `text[:n]` 暴力截断**（batch014 教训）
    - 禁止"（相关表现）""（相关类型）"等无意义后缀凑长度，干扰项修复必须增加实质性区分信息
    - 反向题极性不可翻转；答案键联动检查
-4. **复检**：修改后运行 `python validate_options.py --file <ALL_questions_FIXED.json>`，FAIL==0 才交付。
+4. **复检**：修改后运行 `python -m scripts.validate --file <ALL_questions_FIXED.json>` 或 `python validate_options.py --file <ALL_questions_FIXED.json>`，FAIL==0 才交付。
 5. **MD 交付**：复检通过后运行 `python scripts/qbank.py export-md --file <ALL_questions_FIXED.json> --out <同目录 .md>` 生成最终交付 MD（见第 2 节命令）。
 6. **完成后报告**：文件路径 + 修复题数 + 复检结果 + MD 导出结果 + 升级项清单。

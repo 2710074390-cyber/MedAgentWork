@@ -1,0 +1,27 @@
+image: raw/03_子宫动脉与输尿管交叉_raw.png
+output: annotated/03_子宫动脉与输尿管交叉.png
+fixes:
+  - box: [440, 80, 540, 125]
+    text: 子宫
+    mode: label
+    anchor: [500, 220]
+  - box: [60, 140, 180, 185]
+    text: 输卵管
+    mode: label
+    anchor: [180, 220]
+  - box: [60, 320, 160, 365]
+    text: 卵巢
+    mode: label
+    anchor: [200, 360]
+  - box: [30, 590, 380, 635]
+    text: 子宫动脉（跨其前方）
+    mode: label
+    anchor: [360, 640]
+  - box: [600, 790, 980, 835]
+    text: 输尿管（后方下行·桥下流水）
+    mode: label
+    anchor: [610, 760]
+  - box: [450, 790, 540, 835]
+    text: 宫颈
+    mode: label
+    anchor: [500, 740]

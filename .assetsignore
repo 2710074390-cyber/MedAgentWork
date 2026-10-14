@@ -1,0 +1,61 @@
+# Wrangler Pages 部署排除清单（.assetsignore，gitignore 语法）
+# 站点仅需：index.html、functions/、大三下/、大四上/ 及根目录引用的静态资源
+# 其余为 RAG/教材/脚本/测试/中间产物，体积大或涉版权，不上传
+
+# 大体积 RAG 教材与 CMExam 原始数据（含 100MB npz，Pages 单文件限 25MB）
+知识库素材/
+
+# 临时/草稿/测试导出
+_scratch/
+中间产物/
+temp/
+tmp/
+
+# 历史归档与输入素材
+archive/
+输入素材/
+
+# 工程与脚本（非站点资源）
+scripts/
+tests/
+schemas/
+GoldenSet/
+question_bank/
+docs/
+memory/
+.medagentwork-skill/
+medagentwork-skill/
+medagentwork-skill-extracted/
+Prompt版本/
+质检报告/
+未命名/
+
+# Obsidian 个人笔记与配置（非站点资源）
+Obsidian产物/
+.obsidian/
+复习资料/
+
+# 版本控制与运行时
+.git/
+.github/
+.wrangler/
+.dsh/
+.workbuddy-ai/
+.trae-html-share-packages/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+
+# 站点自己的推送页（独立产物，不并入主站）
+题库推送站/
+
+# 系统/编辑器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+*.zip
+*.lnk
+.env
+.env.*

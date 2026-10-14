@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "medagentwork-agent4-output",
+  "title": "MedFix 追溯日志契约 (agent4_output)",
+  "description": "Agent 4 (MedFix) 追溯日志 JSON 的结构契约。两种形态：对象形态（含 source_file_synced，HC-13 门禁依据）或数组形态（逐项 patch）。由 ingest.py 在摄入时用 jsonschema 校验。",
+  "oneOf": [
+    {
+      "title": "追溯日志（对象形态）",
+      "type": "object",
+      "anyOf": [
+        { "required": ["source_file_synced"] },
+        { "required": ["source_files_synced"] }
+      ],
+      "properties": {
+        "source_file_synced": { "type": "boolean", "description": "HC-13: 修复是否同步回溯源文件" },
+        "source_files_synced": { "type": "boolean" },
+        "execution_metadata": { "type": "object" },
+        "patch_log": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "question_id": { "type": "string" },
+              "issue_type": { "type": "string" },
+              "action": { "type": "string" },
+              "detail": { "type": "string" },
+              "before": {},
+              "after": {},
+              "source_file_synced": { "type": "boolean" }
+            },
+            "additionalProperties": true
+          }
+        },
+        "patches": { "type": "array", "description": "旧字段名" },
+        "escalations_for_human": { "type": ["array", "string"] },
+        "hc6_independent_findings": { "type": ["array", "object"] },
+        "hc7_consistency_scan": { "type": ["array", "object"] },
+        "final_gate": { "type": ["object", "string"], "description": "实际数据为 'PASS' 等字符串或对象（2026-08-13 修正）" }
+      },
+      "additionalProperties": true
+    },
+    {
+      "title": "追溯日志（数组形态，逐项 patch）",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question_id"],
+        "properties": {
+          "question_id": { "type": "string" },
+          "issue_type": { "type": "string" },
+          "action": { "type": "string" },
+          "detail": { "type": "string" },
+          "before": {},
+          "after": {},
+          "source_file_synced": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      }
+    }
+  ]
+}

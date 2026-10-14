@@ -1,0 +1,24 @@
+type: flow
+title: 内分泌代谢病诊断三步
+subtitle: 内科学 内分泌系统·M1 内分泌总论（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/31_内分泌病诊断三步.png
+webp: images_webp/31_内分泌病诊断三步.webp
+steps:
+- title: 功能诊断
+  color: blue
+  lines:
+  - 激素测定±激发/抑制试验
+  - 回答“多还是少”（是不是病）
+- title: 定位诊断
+  color: teal
+  lines:
+  - 影像（MRI/CT）+激素水平
+  - 回答“轴的第几级”（病在哪）
+- title: 病因诊断
+  color: purple
+  lines:
+  - 自身抗体/基因/病理
+  - 回答“为什么”（免疫/肿瘤/遗传）
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

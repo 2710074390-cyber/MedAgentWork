@@ -1,0 +1,24 @@
+image: raw/06_青光眼杯盘比对比_raw.png
+output: annotated/06_青光眼杯盘比对比.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [60, 120, 320, 168]
+    text: 正常视盘（C/D<0.3）
+    mode: label
+    anchor: [335, 500]
+  - box: [60, 760, 300, 808]
+    text: 盘沿饱满粉红
+    mode: label
+    anchor: [295, 560]
+  - box: [640, 120, 920, 168]
+    text: 青光眼大杯（C/D>0.6）
+    mode: label
+    anchor: [705, 470]
+  - box: [640, 760, 920, 808]
+    text: 盘沿变窄苍白
+    mode: label
+    anchor: [800, 570]
+  - box: [800, 830, 990, 878]
+    text: 血管屈膝移位
+    mode: label
+    anchor: [760, 600]

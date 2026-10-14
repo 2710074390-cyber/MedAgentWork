@@ -1,0 +1,31 @@
+type: grid
+title: 肝硬化四大并发症
+subtitle: 内科学 消化系统·M8 肝硬化（确定性图谱通道）
+cols: 2
+output: annotated/18_肝硬化四大并发症.png
+webp: images_webp/18_肝硬化四大并发症.webp
+items:
+- title: 上消化道出血（最常见）
+  color: red
+  lines:
+  - 食管胃底静脉曲张破裂
+  - 突发大量呕血/柏油样便
+  - 可致失血性休克
+- title: 肝性脑病（最严重/最常见死因）
+  color: purple
+  lines:
+  - 氨中毒为主
+  - 扑翼样震颤见于1-3期
+  - 最常见死亡原因
+- title: 自发性细菌性腹膜炎（SBP）
+  color: orange
+  lines:
+  - 腹水为细菌培养基
+  - 发热+腹痛+腹水骤增
+  - 腹水 PMN>250×10⁶/L
+- title: 肝肾综合征
+  color: gray
+  lines:
+  - 功能性肾衰、肾无器质性病变
+  - 少尿无尿、稀释性低钠、尿钠↓
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

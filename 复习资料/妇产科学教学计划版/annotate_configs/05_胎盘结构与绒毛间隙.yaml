@@ -1,0 +1,23 @@
+image: raw/05_胎盘结构与绒毛间隙_raw.png
+output: annotated/05_胎盘结构与绒毛间隙.png
+fixes:
+  - box: [560, 100, 660, 145]
+    text: 脐带
+    mode: label
+    anchor: [505, 200]
+  - box: [600, 370, 920, 415]
+    text: 胎儿面（羊膜光滑）
+    mode: label
+    anchor: [700, 420]
+  - box: [60, 550, 300, 595]
+    text: 绒毛膜绒毛
+    mode: label
+    anchor: [330, 590]
+  - box: [560, 600, 920, 645]
+    text: 绒毛间隙（充满母血）
+    mode: label
+    anchor: [540, 620]
+  - box: [300, 920, 640, 965]
+    text: 母体面（胎盘小叶）
+    mode: label
+    anchor: [500, 830]

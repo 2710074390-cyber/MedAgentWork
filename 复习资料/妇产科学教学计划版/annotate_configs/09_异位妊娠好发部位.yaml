@@ -1,0 +1,27 @@
+image: raw/09_异位妊娠好发部位_raw.png
+output: annotated/09_异位妊娠好发部位.png
+fixes:
+  - box: [820, 380, 960, 425]
+    text: 子宫角
+    mode: label
+    anchor: [800, 420]
+  - box: [620, 140, 740, 185]
+    text: 间质部
+    mode: label
+    anchor: [660, 320]
+  - box: [480, 110, 580, 155]
+    text: 峡部
+    mode: label
+    anchor: [530, 265]
+  - box: [60, 210, 440, 255]
+    text: 壶腹部·异位妊娠约78%
+    mode: label
+    anchor: [420, 285]
+  - box: [60, 610, 260, 655]
+    text: 伞部（伞端）
+    mode: label
+    anchor: [270, 650]
+  - box: [360, 850, 480, 895]
+    text: 卵巢
+    mode: label
+    anchor: [420, 780]

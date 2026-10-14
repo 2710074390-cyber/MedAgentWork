@@ -1,0 +1,23 @@
+image: raw/m03_gvp_raw.jpg
+
+output: annotated/m03_gvp.yaml.png
+
+font: C:\Windows\Fonts\msyhbd.ttc
+
+fixes:
+  - box: [140, 300, 280, 345]
+    text: "健康牙龈"
+    mode: label
+    anchor: [300, 330]
+  - box: [140, 370, 280, 415]
+    text: "釉牙骨质界"
+    mode: label
+    anchor: [430, 360]
+  - box: [730, 490, 880, 535]
+    text: "牙周袋"
+    mode: label
+    anchor: [660, 530]
+  - box: [730, 630, 880, 675]
+    text: "牙槽骨吸收"
+    mode: label
+    anchor: [660, 660]

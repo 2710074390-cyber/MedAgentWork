@@ -1,0 +1,15 @@
+image: raw/09_胸部致命创伤三联_raw.png
+output: annotated/09_胸部致命创伤三联.png
+fixes:
+  - box: [55, 215, 330, 260]
+    text: 连枷胸（胸壁软化）
+    mode: label
+    anchor: [140, 500]
+  - box: [355, 215, 650, 260]
+    text: 张力性气胸（纵隔移位）
+    mode: label
+    anchor: [585, 480]
+  - box: [690, 215, 930, 260]
+    text: 血胸（液平面）
+    mode: label
+    anchor: [860, 580]

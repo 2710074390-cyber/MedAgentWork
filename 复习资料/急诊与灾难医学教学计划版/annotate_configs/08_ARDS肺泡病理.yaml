@@ -1,0 +1,19 @@
+image: raw/08_ARDS肺泡病理_raw.png
+output: annotated/08_ARDS肺泡病理.png
+fixes:
+  - box: [80, 120, 430, 165]
+    text: 正常肺泡：饱满、壁薄
+    mode: label
+    anchor: [280, 300]
+  - box: [540, 120, 910, 165]
+    text: ARDS：萎陷、壁增厚
+    mode: label
+    anchor: [720, 300]
+  - box: [600, 290, 820, 335]
+    text: 透明膜形成
+    mode: label
+    anchor: [720, 480]
+  - box: [570, 780, 830, 825]
+    text: 肺泡内渗出液
+    mode: label
+    anchor: [730, 660]

@@ -1,0 +1,30 @@
+type: flow
+title: 休克·微循环三期变化
+subtitle: 急诊与灾难医学 M5 休克（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/01_微循环三期变化.png
+webp: images_webp/01_微循环三期变化.webp
+steps:
+  - title: 缺血缺氧期（代偿期）
+    color: blue
+    lines:
+      - 微动脉、毛细血管前括约肌收缩
+      - 真毛细血管网关闭，灌少于流
+      - 动静脉短路开放
+      - 自身输血、自身输液代偿
+  - title: 淤血缺氧期（失代偿期）
+    color: orange
+    lines:
+      - 前括约肌舒张，微静脉仍收缩
+      - 血液淤滞毛细血管网，灌大于流
+      - 酸中毒、血管通透性增加
+      - 血压进行性下降
+  - title: 微循环衰竭期（不可逆期）
+    color: red
+    lines:
+      - 微血管麻痹扩张，升压药无反应
+      - 微血栓形成，DIC
+      - 不灌不流，无复流现象
+      - 多器官功能障碍（MODS）
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

@@ -1,0 +1,39 @@
+type: flow
+title: 不孕症诊疗流程
+subtitle: 妇产科学 M14 不孕症与辅助生殖（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/34_不孕症诊疗流程.png
+webp: images_webp/34_不孕症诊疗流程.webp
+steps:
+  - title: 确诊不孕症
+    color: blue
+    lines:
+      - 未避孕正常性生活≥12个月未孕
+      - 原发＝从未妊娠
+      - 继发＝曾妊娠后不孕
+  - title: 男女双方同查
+    color: teal
+    lines:
+      - 男方精液分析首选（2~3次）
+      - 女方排卵监测＋基础激素/AMH
+      - 月经周期2~4日测基础水平
+  - title: 输卵管通畅检查
+    color: green
+    lines:
+      - HSG为输卵管通畅首选
+      - 月经净后3~7日进行
+      - 拟宫腔/盆腔异常再宫腔镜/腹腔镜
+  - title: 对因治疗＋IUI
+    color: orange
+    lines:
+      - 纠正盆腔器质病变＋诱导排卵
+      - 不明原因行IUI 3~6周期
+      - 促排卵监测防OHSS
+  - title: IVF-ET
+    color: red
+    lines:
+      - 仍不孕或输卵管性不孕
+      - 取卵体外受精后移植
+      - 严重男性因素行ICSI、必要时PGT
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

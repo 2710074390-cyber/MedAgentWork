@@ -1,0 +1,13 @@
+title: 耳的应用解剖：鼓膜、鼓室与听骨链
+output: annotated/01_耳解剖外中内耳.png
+webp: images_webp/01_耳解剖外中内耳.webp
+trim: true
+rows:
+  - panels:
+      - image: raw/01_鼓室外侧壁全景.jpg
+        caption: 鼓室外侧壁（鼓膜、三听小骨、鼓索与乳突窦）
+  - panels:
+      - image: raw/01_鼓室内侧壁.jpg
+        caption: 鼓室内侧壁（前庭窗、蜗窗、面神经管凸、咽鼓管）
+      - image: raw/01_鼓膜与听小骨.jpg
+        caption: 鼓膜外观与锤骨、砧骨、镫骨

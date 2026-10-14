@@ -1,0 +1,19 @@
+image: raw/m09_facial_palsy_raw.jpg
+
+output: annotated/m09_facial_palsy.yaml.png
+
+font: C:\Windows\Fonts\msyhbd.ttc
+
+fixes:
+  - box: [60, 60, 180, 105]
+    text: "健侧"
+    mode: label
+    anchor: [300, 400]
+  - box: [220, 60, 340, 105]
+    text: "患侧"
+    mode: label
+    anchor: [700, 400]
+  - box: [380, 60, 560, 105]
+    text: "口角下垂（患侧）"
+    mode: label
+    anchor: [700, 690]

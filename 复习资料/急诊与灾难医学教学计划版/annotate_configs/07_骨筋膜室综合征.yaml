@@ -1,0 +1,31 @@
+image: raw/07_骨筋膜室综合征_raw.png
+output: annotated/07_骨筋膜室综合征.png
+fixes:
+  - box: [600, 250, 780, 295]
+    text: 前筋膜室
+    mode: label
+    anchor: [585, 340]
+  - box: [740, 400, 940, 445]
+    text: 外侧筋膜室
+    mode: label
+    anchor: [690, 430]
+  - box: [80, 300, 320, 345]
+    text: 后深筋膜室
+    mode: label
+    anchor: [400, 380]
+  - box: [80, 650, 320, 695]
+    text: 后浅筋膜室
+    mode: label
+    anchor: [400, 620]
+  - box: [430, 830, 560, 875]
+    text: 胫骨
+    mode: label
+    anchor: [540, 480]
+  - box: [620, 830, 740, 875]
+    text: 腓骨
+    mode: label
+    anchor: [650, 510]
+  - box: [30, 470, 210, 515]
+    text: 深筋膜鞘
+    mode: label
+    anchor: [265, 490]

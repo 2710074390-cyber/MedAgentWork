@@ -1,0 +1,15 @@
+image: raw/12_滋养细胞疾病绒毛对比_raw.png
+output: annotated/12_滋养细胞疾病绒毛对比.png
+fixes:
+  - box: [50, 740, 330, 785]
+    text: 葡萄胎（水泡状绒毛）
+    mode: label
+    anchor: [190, 680]
+  - box: [350, 740, 650, 785]
+    text: 侵蚀性葡萄胎（侵入肌层）
+    mode: label
+    anchor: [500, 670]
+  - box: [660, 740, 970, 785]
+    text: 绒毛膜癌（无绒毛结构）
+    mode: label
+    anchor: [815, 660]

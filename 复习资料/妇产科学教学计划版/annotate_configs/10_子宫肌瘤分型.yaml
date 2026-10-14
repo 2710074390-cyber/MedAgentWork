@@ -1,0 +1,19 @@
+image: raw/10_子宫肌瘤分型_raw.png
+output: annotated/10_子宫肌瘤分型.png
+fixes:
+  - box: [440, 290, 540, 335]
+    text: 宫腔
+    mode: label
+    anchor: [495, 350]
+  - box: [60, 410, 280, 455]
+    text: 肌壁间肌瘤
+    mode: label
+    anchor: [370, 455]
+  - box: [40, 580, 380, 625]
+    text: 浆膜下肌瘤（带蒂）
+    mode: label
+    anchor: [270, 600]
+  - box: [640, 460, 980, 505]
+    text: 黏膜下肌瘤（突入宫腔）
+    mode: label
+    anchor: [600, 490]

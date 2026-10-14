@@ -1,0 +1,36 @@
+type: flow
+title: 子痫前期"两阶段"机制链
+subtitle: 妇产科学 M7 妊娠并发症（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/23_子痫前期两阶段机制链.png
+webp: images_webp/23_子痫前期两阶段机制链.webp
+steps:
+  - title: 螺旋动脉重塑不足
+    color: blue
+    lines:
+      - 滋养细胞浸润受损
+      - 仅蜕膜层重塑
+  - title: 胎盘浅着床
+    color: teal
+    lines:
+      - 胎盘灌注不足
+      - 管腔径仅正常1/2
+  - title: 胎盘缺血→释放胎盘因子
+    color: green
+    lines:
+      - 胎盘缺血缺氧
+      - 释放胎盘因子
+      - 系统性炎症激活
+  - title: 内皮损伤
+    color: orange
+    lines:
+      - 扩血管物↓、缩血管物↑
+      - 全身小血管痉挛
+  - title: 高血压＋器官损害
+    color: red
+    lines:
+      - 高血压＋蛋白尿
+      - 脑水肿/心衰/肝破裂/早剥
+      - 胎儿窘迫
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

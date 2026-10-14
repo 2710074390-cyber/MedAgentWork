@@ -1,0 +1,36 @@
+image: raw/08_肝外胆道与胆囊三角_raw.png
+output: annotated/08_肝外胆道与胆囊三角.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [280, 130, 430, 175]
+    text: "肝（下缘）"
+    mode: label
+    anchor: [350, 210]
+  - box: [470, 235, 620, 280]
+    text: "左、右肝管"
+    mode: label
+    anchor: [500, 300]
+  - box: [540, 350, 660, 395]
+    text: "肝总管"
+    mode: label
+    anchor: [522, 375]
+  - box: [100, 480, 240, 525]
+    text: "胆囊"
+    mode: label
+    anchor: [320, 520]
+  - box: [280, 370, 420, 415]
+    text: "胆囊管"
+    mode: label
+    anchor: [435, 430]
+  - box: [430, 275, 680, 322]
+    text: "Calot三角（胆囊三角）"
+    mode: label
+    anchor: [480, 378]
+  - box: [560, 580, 680, 625]
+    text: "胆总管"
+    mode: label
+    anchor: [548, 615]
+  - box: [380, 830, 560, 875]
+    text: "十二指肠"
+    mode: label
+    anchor: [480, 800]

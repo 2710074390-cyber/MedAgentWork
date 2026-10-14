@@ -1,0 +1,36 @@
+type: grid
+title: 支气管哮喘急性发作·轻中重危重四度
+subtitle: 急诊与灾难医学 M3 呼吸困难（确定性图谱通道）
+cols: 2
+output: annotated/05_哮喘急性发作四度分级.png
+webp: images_webp/05_哮喘急性发作四度分级.webp
+items:
+  - title: 轻度
+    color: green
+    lines:
+      - 步行上楼气短、可平卧、连续成句
+      - 脉率<100次/分
+      - PEF>80%；PaO2正常
+      - PaCO2<45；SaO2>95%
+  - title: 中度
+    color: yellow
+    lines:
+      - 稍事活动气短、喜坐位、讲话中断
+      - 脉率100~120次/分
+      - PEF 60%~80%；PaO2≥60
+      - PaCO2≤45；SaO2 91%~95%
+  - title: 重度
+    color: orange
+    lines:
+      - 休息时端坐呼吸、只能讲单个字、大汗
+      - 呼吸常>30、脉率>120、常有三凹征
+      - PEF<60%或绝对值<100L/min
+      - PaO2<60；PaCO2>45；SaO2≤90%
+  - title: 危重度
+    color: red
+    lines:
+      - 不能讲话、嗜睡或意识模糊、大汗淋漓
+      - 胸腹矛盾呼吸、呼吸过缓或不规则
+      - 哮鸣音渐弱乃至无（“沉默肺”）、无奇脉
+      - PaCO2>45；SaO2≤90%；pH降低
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

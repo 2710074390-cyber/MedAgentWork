@@ -1,0 +1,104 @@
+{
+ "batch": "batch034",
+ "agent": "Agent4 MedFix",
+ "subject": "妇产科学（教学计划版 14 模块）",
+ "raw_total": 280,
+ "fixed_total": 280,
+ "fixes": [
+  {
+   "round": "fix_pass1_M1M2_M1M4",
+   "scope": "M1-M4 共31题",
+   "purpose": "校正 R2/R10/R13 机械 FAIL（选项长度比、题干关键词独占、选项超20字）；清除 medfix 违规添加的32处无意义括号后缀（HC-6）",
+   "tool": "_fix_M1M2.py / _fix_M1M4.py"
+  },
+  {
+   "round": "fix_pass2_M5M7",
+   "scope": "M5-M7 共30题",
+   "purpose": "继续压缩机械 FAIL 99→70；M5-A2-005 选项恢复",
+   "tool": "_fix_M5M7.py"
+  },
+  {
+   "round": "fix_pass3_M8M10",
+   "scope": "M8-M10 共28题+零星",
+   "purpose": "机械 FAIL 70→43；M2-X2/M3-B1-001/002/M7-A2-006 零星修复",
+   "tool": "_fix_M8M10.py"
+  },
+  {
+   "round": "fix_pass4_M11M12",
+   "scope": "M11-M12 共19题",
+   "purpose": "机械 FAIL 43→26",
+   "tool": "_fix_M11M12.py"
+  },
+  {
+   "round": "fix_pass5_M13M14",
+   "scope": "M13-M14 共24题",
+   "purpose": "机械 FAIL 26→3",
+   "tool": "_fix_M13M14.py"
+  },
+  {
+   "round": "fix_pass6_final",
+   "scope": "3+1题",
+   "purpose": "R10 关键词共享（M11-A2-003/M11-A4-001/M13-A2-006）；修复误覆盖的 M11-A2-003 B 选项",
+   "tool": "_fix_final3.py / _fix_b_option.py"
+  },
+  {
+   "round": "fix_pass7_kaoyan_HC18",
+   "scope": "全量280题",
+   "purpose": "7处上游 kaoyan_origin gs_id 经 GoldenSet 比对确认为错误引用→移除；补入13道真题改编题（答案/数值/知识点零改动），HC-18 占比 36→42 (15.0%)",
+   "tool": "_fix_kaoyan.py"
+  }
+ ],
+ "gates_after": {
+  "GATE-A2_validate_options": {
+   "fail": 0,
+   "warn": 198,
+   "pass": 82
+  },
+  "GATE-A2_qc_structured": "全部通过 (0 异常)",
+  "GATE-A2_answer_explanation_consistency": "0/0 冲突",
+  "kaoyan_quota_HC18": "42/280 = 15.0% (合格带 15-25%) PASS",
+  "bloom_HC15": "记忆30.7/理解37.9/应用26.4/分析5.0，最大偏差2.1% PASS",
+  "fact_check_pages": "抽样 10/10 教材内锚点"
+ },
+ "distribution": {
+  "modules": "14 modules × 20题 = 280",
+  "types": {
+   "A1": 112,
+   "A2": 84,
+   "A3": 14,
+   "A4": 14,
+   "B1": 28,
+   "X": 28
+  },
+  "difficulty": {
+   "基础": 107,
+   "中等": 113,
+   "较难": 46,
+   "困难": 14
+  },
+  "bloom": {
+   "记忆": 86,
+   "理解": 106,
+   "应用": 74,
+   "分析": 14
+  },
+  "kaoyan_origin": 42
+ },
+ "deviation_notes": [
+  "M12-X1-001 由「卵巢肿瘤组织发生学分类」替换为绒癌vs恶性葡萄胎病理特点（真题 GS-2019-149 引用，X型4选项保持原题形态）",
+  "M2-A2-006 由「仰卧位低血压」病例替换为妊娠晚期体检诊断（真题 GS-2022-068 引用，病例题干取自原题共用题干）",
+  "M13-X1-001 由「PCOS内分泌特征」替换为月经不调就诊医患沟通（真题 GS-2021-110 引用）",
+  "M1-A1-005 / M1-B1-001 / M2-A1-006 / M7-A1-002 / M10-A1-003 / M10-A2-001 / M10-A2-006 七处上游 gs_id 标注与题干内容不符（经真题上册/下册全文比对无对应原题），已移除标注并如实降级为原创题",
+  "M13-A1-003 五个选项统一压缩至≤20字（R13），医学定义未改",
+  "补入的4选项真题（GS-2010-135/2008-051/2015-047/2011-005/2015-069/2017-082/2021-051/2022-112/2022-068/2021-110）按 R5 规范补足第5干扰项，答案/数值/知识点零改动"
+ ],
+ "source_file_synced": true,
+ "source_files_synced": true,
+ "source_files": [
+  "中间产物/batch034/ALL_questions.json（上游原版，保留未动）",
+  "中间产物/batch034/_upstream_FIXED_backup.json（上游 FIXED 备份）",
+  "最终产物/batch034/ALL_questions_FIXED.json（修复交付版，已覆盖）"
+ ],
+ "source_sync_note": "HC-13 补丁溯源 2026-09-07：7 轮修复统一落盘 中间产物/batch034/_clean_stage6.json（每轮均有 validate 报告快照 _val_stage*.json 佐证），最终覆盖 最终产物/batch034/ALL_questions_FIXED.json；上游 中间产物/batch034/ALL_questions.json 与 FIXED 备份保留原状，未静默改动。",
+ "generated_at": "2026-09-07T10:16:38.551875"
+}

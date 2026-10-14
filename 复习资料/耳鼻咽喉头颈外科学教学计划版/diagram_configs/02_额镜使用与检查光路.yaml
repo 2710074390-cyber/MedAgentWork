@@ -1,0 +1,29 @@
+type: flow
+title: 额镜使用与检查光路
+subtitle: 耳鼻咽喉头颈外科学 M1 总论（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/02_额镜使用与检查光路.png
+webp: images_webp/02_额镜使用与检查光路.webp
+steps:
+  - title: 外来光源
+    color: blue
+    lines:
+      - 光源置于受检者耳后上方约15 cm
+      - 投射平行外来光至凹面镜
+  - title: 凹面聚光镜
+    color: teal
+    lines:
+      - 圆形聚光凹面镜，直径约8 cm
+      - 焦距约25 cm，反射并聚焦成亮斑
+  - title: 中央窥视孔
+    color: green
+    lines:
+      - 窥视孔直径约1.4 cm
+      - 单目经窥视孔观察，另一眼不闭
+  - title: 检查部位
+    color: orange
+    lines:
+      - 与检查部位距离约25 cm
+      - 瞳孔—窥视孔—反光焦点—病灶成一直线
+note: 内容依据人卫《耳鼻咽喉头颈外科学》第9版；render_diagram.py确定性渲染

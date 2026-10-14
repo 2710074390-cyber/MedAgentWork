@@ -1,0 +1,23 @@
+type: compare
+title: 上 vs 下消化道出血鉴别（Treitz 韧带分界）
+subtitle: 内科学 消化系统·M10 消化道出血（确定性图谱通道）
+output: annotated/20_上下消化道出血部位鉴别.png
+webp: images_webp/20_上下消化道出血部位鉴别.webp
+items:
+- title: 上消化道出血（Treitz 以上）
+  color: blue
+  lines:
+  - 食管/胃/十二指肠/肝胆胰
+  - 呕血+黑便（柏油样）
+  - 血尿素氮升高明显
+  - 最常见病因为消化性溃疡
+  - 首选胃镜
+- title: 下消化道出血（Treitz 以下）
+  color: green
+  lines:
+  - 小肠/结肠/直肠/肛管
+  - 便血（鲜红/暗红/果酱样）
+  - 血尿素氮升高不明显
+  - 常见病因为结直肠癌/痔/憩室/IBD
+  - 首选结肠镜
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

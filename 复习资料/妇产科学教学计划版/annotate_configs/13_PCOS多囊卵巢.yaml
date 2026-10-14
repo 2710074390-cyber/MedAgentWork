@@ -1,0 +1,23 @@
+image: raw/13_PCOS多囊卵巢_raw.png
+output: annotated/13_PCOS多囊卵巢.png
+fixes:
+  - box: [120, 190, 300, 235]
+    text: 正常卵巢
+    mode: label
+    anchor: [250, 300]
+  - box: [100, 510, 260, 555]
+    text: 优势卵泡
+    mode: label
+    anchor: [310, 560]
+  - box: [560, 190, 820, 235]
+    text: 多囊卵巢（PCOS）
+    mode: label
+    anchor: [750, 300]
+  - box: [760, 380, 920, 425]
+    text: 白膜增厚
+    mode: label
+    anchor: [880, 400]
+  - box: [560, 690, 880, 735]
+    text: 项链征·多个小囊泡
+    mode: label
+    anchor: [760, 640]

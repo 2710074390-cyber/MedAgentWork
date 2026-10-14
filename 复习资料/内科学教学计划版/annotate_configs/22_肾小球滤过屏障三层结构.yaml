@@ -1,0 +1,24 @@
+image: raw/22_肾小球滤过屏障三层结构_raw.png
+output: annotated/22_肾小球滤过屏障三层结构.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [650, 245, 920, 295]
+    text: "足细胞裂孔膜"
+    mode: label
+    anchor: [700, 345]
+  - box: [150, 335, 380, 385]
+    text: "有孔内皮"
+    mode: label
+    anchor: [280, 415]
+  - box: [450, 335, 650, 385]
+    text: "基底膜(GBM)"
+    mode: label
+    anchor: [520, 398]
+  - box: [300, 480, 520, 540]
+    text: "毛细血管腔"
+    mode: label
+    anchor: [410, 510]
+  - box: [780, 500, 950, 560]
+    text: "肾小囊腔"
+    mode: label
+    anchor: [830, 550]

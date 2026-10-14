@@ -1,0 +1,37 @@
+type: flow
+title: 羊水栓塞病理生理链
+subtitle: 妇产科学 M6 分娩并发症（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/21_羊水栓塞病理生理链.png
+webp: images_webp/21_羊水栓塞病理生理链.webp
+steps:
+  - title: 羊水异体抗原入母血
+    color: blue
+    lines:
+      - ①羊膜腔压力>静脉压
+      - ②血窦开放
+      - ③胎膜破裂
+  - title: 过敏样反应/SIRS
+    color: teal
+    lines:
+      - Ⅰ型变态反应
+      - 炎症损伤、全身炎症反应
+  - title: 肺动脉高压
+    color: orange
+    lines:
+      - 肺血管反射性痉挛
+      - 机制核心环节
+  - title: 急性右心衰→休克
+    color: red
+    lines:
+      - 右心负荷↑→急性右心衰
+      - 左心回心血↓→左心输出↓
+      - 低血压/循环衰竭（与失血量不符）
+  - title: DIC
+    color: purple
+    lines:
+      - 促凝物质→微血栓
+      - 凝血因子消耗→纤溶亢进
+      - 出血与孕产妇死亡主因
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

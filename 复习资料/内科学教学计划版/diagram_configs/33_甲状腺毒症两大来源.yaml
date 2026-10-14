@@ -1,0 +1,23 @@
+type: compare
+title: 甲状腺毒症两大来源
+subtitle: 内科学 内分泌系统·M2 甲状腺功能亢进症（确定性图谱通道）
+output: annotated/33_甲状腺毒症两大来源.png
+webp: images_webp/33_甲状腺毒症两大来源.webp
+items:
+- title: 甲亢：甲状腺合成过多
+  color: red
+  lines:
+  - 滤泡过度合成释放激素
+  - Graves病、结节性甲状腺肿
+  - 高功能腺瘤
+  - 甲状腺摄碘率升高
+  - 治疗：抑合成/消融（ATD/¹³¹I/手术）
+- title: 非甲亢性：漏出/外源
+  color: green
+  lines:
+  - 激素“进来了”而非“造多了”
+  - 亚急性甲状腺炎、桥本甲亢期
+  - 过量甲状腺素、异位甲状腺
+  - 甲状腺摄碘率降低
+  - 治疗：治炎症/停药、β阻断对症
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

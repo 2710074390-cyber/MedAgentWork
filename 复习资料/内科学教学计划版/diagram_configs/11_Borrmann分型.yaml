@@ -1,0 +1,26 @@
+type: grid
+title: 进展期胃癌 Borrmann 分型
+subtitle: 内科学 消化系统·M5 胃癌（确定性图谱通道）
+cols: 2
+output: annotated/11_Borrmann分型.png
+webp: images_webp/11_Borrmann分型.webp
+items:
+- title: Ⅰ 息肉型
+  color: blue
+  lines:
+  - 肿块突出胃腔、边界清楚
+  - 预后相对最好
+- title: Ⅱ 局限溃疡型
+  color: teal
+  lines:
+  - 溃疡+边界清楚
+- title: Ⅲ 浸润溃疡型
+  color: orange
+  lines:
+  - 溃疡+浸润、边界不清
+- title: Ⅳ 弥漫浸润型
+  color: red
+  lines:
+  - 皮革胃、胃壁弥漫增厚僵硬
+  - 预后最差、淋巴转移率高
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

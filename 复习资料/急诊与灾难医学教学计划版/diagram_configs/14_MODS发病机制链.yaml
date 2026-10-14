@@ -1,0 +1,34 @@
+type: flow
+title: MODS 发病机制链（六学说·远隔序贯）
+subtitle: 急诊与灾难医学 M7 多器官功能障碍综合征（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/14_MODS发病机制链.png
+webp: images_webp/14_MODS发病机制链.webp
+steps:
+  - title: 原发病打击
+    color: blue
+    lines:
+      - 严重感染、休克、严重创伤
+      - 大手术、重症胰腺炎、烧烫伤
+      - 慢性心/肾/肝不全、糖尿病更易发生
+  - title: 六大发病学说
+    color: orange
+    lines:
+      - 缺血再灌注损伤
+      - 炎症反应失控（最重要、基石）
+      - 肠道屏障破坏、细菌毒素
+      - 二次打击/双相预激、基因调控
+  - title: SIRS/CARS/MARS 失衡
+    color: red
+    lines:
+      - 促炎介质 TNF-α、IL-1β 级联
+      - CARS 致“免疫麻痹”、感染扩散
+      - 防御反应转为自我损害
+  - title: 远隔器官序贯→MODS
+    color: purple
+    lines:
+      - 肺、消化系统最先受累
+      - 远隔器官、间隔常>24h
+      - ≥2个器官可逆性功能障碍
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

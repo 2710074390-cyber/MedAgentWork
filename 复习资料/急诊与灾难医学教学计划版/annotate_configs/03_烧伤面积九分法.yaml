@@ -1,0 +1,31 @@
+image: raw/03_烧伤面积九分法_raw.png
+output: annotated/03_烧伤面积九分法.png
+fixes:
+  - box: [560, 80, 740, 125]
+    text: 头颈部 9%
+    mode: label
+    anchor: [515, 110]
+  - box: [110, 250, 360, 295]
+    text: 双上肢 9%×2
+    mode: label
+    anchor: [405, 285]
+  - box: [560, 330, 760, 375]
+    text: 躯干前 13%
+    mode: label
+    anchor: [500, 360]
+  - box: [560, 500, 690, 545]
+    text: 会阴 1%
+    mode: label
+    anchor: [500, 522]
+  - box: [110, 595, 310, 640]
+    text: 双大腿 21%
+    mode: label
+    anchor: [435, 605]
+  - box: [110, 760, 320, 805]
+    text: 双小腿 13%
+    mode: label
+    anchor: [450, 770]
+  - box: [320, 945, 470, 990]
+    text: 双足 7%
+    mode: label
+    anchor: [450, 905]

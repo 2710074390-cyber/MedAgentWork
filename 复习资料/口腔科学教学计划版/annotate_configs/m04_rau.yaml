@@ -1,0 +1,23 @@
+image: raw/m04_rau_raw.jpg
+
+output: annotated/m04_rau.yaml.png
+
+font: C:\Windows\Fonts\msyhbd.ttc
+
+fixes:
+  - box: [60, 60, 200, 105]
+    text: "重型（左颊大溃疡）"
+    mode: label
+    anchor: [330, 470]
+  - box: [240, 60, 400, 105]
+    text: "轻型（右颊小溃疡群）"
+    mode: label
+    anchor: [690, 470]
+  - box: [420, 60, 580, 105]
+    text: "疱疹样（舌背密簇）"
+    mode: label
+    anchor: [530, 590]
+  - box: [620, 60, 800, 105]
+    text: "下唇内侧溃疡"
+    mode: label
+    anchor: [470, 780]

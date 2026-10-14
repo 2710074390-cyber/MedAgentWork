@@ -1,0 +1,7 @@
+image: raw/12_眼外肌图谱外侧观_raw.jpg
+output: annotated/12_眼外肌神经支配.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [600, 30, 1000, 145]
+    text: "神经支配：Ⅲ动眼神经—上睑提肌/上直肌/内直肌/下直肌\nⅣ滑车神经—上斜肌　Ⅵ外展神经—外直肌\nⅡ视神经—视觉传导"
+    mode: label

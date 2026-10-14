@@ -1,0 +1,24 @@
+image: raw/13_泪道解剖与泪囊炎定位_raw.png
+output: annotated/13_泪道解剖与泪囊炎定位.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [20, 160, 230, 208]
+    text: 泪点
+    mode: label
+    anchor: [415, 330]
+  - box: [440, 210, 560, 258]
+    text: 泪小管
+    mode: label
+    anchor: [465, 300]
+  - box: [340, 140, 660, 188]
+    text: 泪囊（急性泪囊炎红肿区）
+    mode: label
+    anchor: [510, 530]
+  - box: [880, 400, 990, 448]
+    text: 鼻泪管
+    mode: label
+    anchor: [525, 680]
+  - box: [880, 790, 990, 838]
+    text: 下鼻道开口
+    mode: label
+    anchor: [520, 790]

@@ -1,0 +1,31 @@
+image: raw/06_咽三分部与咽淋巴环_raw.png
+output: annotated/06_咽三分部与咽淋巴环.png
+fixes:
+  - box: [60, 200, 160, 245]
+    text: 鼻咽
+    mode: label
+    anchor: [430, 230]
+  - box: [60, 450, 160, 495]
+    text: 口咽
+    mode: label
+    anchor: [390, 470]
+  - box: [40, 760, 320, 805]
+    text: 喉咽（下接食管）
+    mode: label
+    anchor: [450, 730]
+  - box: [600, 140, 900, 185]
+    text: 咽扁桃体（腺样体）
+    mode: label
+    anchor: [540, 215]
+  - box: [660, 440, 800, 485]
+    text: 腭扁桃体
+    mode: label
+    anchor: [640, 480]
+  - box: [580, 690, 740, 735]
+    text: 舌扁桃体
+    mode: label
+    anchor: [545, 725]
+  - box: [40, 560, 360, 605]
+    text: Waldeyer咽淋巴环
+    mode: label
+    anchor: [330, 555]

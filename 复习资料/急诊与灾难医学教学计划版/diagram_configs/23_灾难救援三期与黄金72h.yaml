@@ -1,0 +1,30 @@
+type: flow
+title: 灾难救援三期与“黄金72小时”
+subtitle: 急诊与灾难医学 M10 灾难医学（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/23_灾难救援三期与黄金72h.png
+webp: images_webp/23_灾难救援三期与黄金72h.webp
+steps:
+  - title: 紧急救援期
+    color: red
+    lines:
+      - 灾后1周内
+      - 重视“黄金72小时”
+      - 以创伤急救为主
+      - 靠前配置、抢时间救可救之人
+  - title: 持续救援期
+    color: orange
+    lines:
+      - 灾后1周~1个月
+      - 针对高发疾病
+      - 降低致残率、减少伤亡
+      - 医疗资源集中
+  - title: 恢复重建期
+    color: green
+    lines:
+      - 灾后1个月以后
+      - 常见病及传染病防治
+      - 重建各级医疗机构
+      - 恢复功能齐全的医疗体系
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

@@ -1,0 +1,19 @@
+image: raw/06_胎产式先露方位_raw.png
+output: annotated/06_胎产式先露方位.png
+fixes:
+  - box: [120, 415, 380, 460]
+    text: 枕先露（最常见）
+    mode: label
+    anchor: [310, 380]
+  - box: [620, 415, 760, 460]
+    text: 臀先露
+    mode: label
+    anchor: [780, 380]
+  - box: [120, 870, 380, 915]
+    text: 肩先露（横产式）
+    mode: label
+    anchor: [230, 720]
+  - box: [620, 870, 860, 915]
+    text: 面先露（头仰伸）
+    mode: label
+    anchor: [770, 810]

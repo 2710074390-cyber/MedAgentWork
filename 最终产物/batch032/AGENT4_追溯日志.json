@@ -1,0 +1,897 @@
+{
+ "batch_id": "batch032",
+ "agent": "Agent4 MedFix（ZCode 主会话执行）",
+ "executed_at": "2026-09-06T12:00:00+08:00",
+ "source_file": "中间产物/batch032/ALL_questions.json",
+ "output_file": "最终产物/batch032/ALL_questions_FIXED.json",
+ "input_md5_note": "与中间产物 ALL_questions.json 题干/选项/答案语义一致，仅答案字母分布重排",
+ "patches": [
+  {
+   "patch_id": "PATCH-HX-001",
+   "source": "质检报告/batch032/batch032_质检报告.json modification_instructions",
+   "operation": "fix_nbmestruct",
+   "status": "DONE_EARLIER（由 _patch.py/_patch2.py 于 2026-09-04 执行）",
+   "description": "B1 共用选项前序剥离、长度比/超长/选项数修正、R10 线索清理、错字修正"
+  },
+  {
+   "patch_id": "PATCH-A4-032",
+   "source": "Agent4 独立质量审查 (HC-6)：单选答案分布偏斜 A=37.4%/E=2.9%（REG-REG-014 提示项）",
+   "operation": "ANSWER_REBALANCE",
+   "status": "DONE",
+   "description": "对 73 题 A1/A2 执行答案重排：跳过数值选项(R3)/B1共用组/\"以上\"类选项；选项内容整体对调、correct_answer 同步、解析字母引用同步改写",
+   "moved_count": 73
+  },
+  {
+   "patch_id": "PATCH-A4-033",
+   "source": "Agent4 独立审查：qbank check 报 3 条重复题干（2 条批内 + 1 条跨批次 batch033）",
+   "operation": "DEDUP_REWRITE",
+   "status": "DONE",
+   "description": "3 题 A1 按教材真实考点去重改写（教材P374/P395/P574 实测锚点），答案字母保持原位不破坏答案分布；M3_A1_004 同一考研真题重复引用已去 kaoyan_origin（GS-2011-086 由 M2_A1_007 保留）",
+   "entries": [
+    {
+     "qid": "batch032_M2_A1_021",
+     "operation": "DEDUP_REWRITE",
+     "before_stem": "胃癌最好发的部位是",
+     "after_stem": "女性胃癌病人发生卵巢转移性肿瘤（Krukenberg瘤）的主要转移途径是",
+     "after_answer": "B",
+     "before_kaoyan": false,
+     "after_kaoyan": false,
+     "reason": "原题「胃癌最好发的部位是」与 batch033-D5-A1-007 题干重复，改为同模块胃癌扩散考点"
+    },
+    {
+     "qid": "batch032_M3_A1_004",
+     "operation": "DEDUP_REWRITE",
+     "before_stem": "下列肠梗阻表现中，提示发生肠绞窄可能性较小的是",
+     "after_stem": "临床上最常见的粘连性肠梗阻的病因为",
+     "after_answer": "D",
+     "before_kaoyan": true,
+     "after_kaoyan": false,
+     "reason": "原题「提示肠绞窄可能性较小的表现」与 M2_A1_007 重复引用同一考研真题 GS-2011-086，去 kaoyan_origin，改为同模块粘连性肠梗阻考点（GS 真题由 M2_A1_007 保留）"
+    },
+    {
+     "qid": "batch032_M6_A1_004",
+     "operation": "DEDUP_REWRITE",
+     "before_stem": "前列腺癌最常发生的部位是：",
+     "after_stem": "前列腺癌最常见的转移部位是",
+     "after_answer": "E",
+     "before_kaoyan": false,
+     "after_kaoyan": false,
+     "reason": "原题「前列腺癌最常发生的部位是」与同组 B1 题 M6_B1_004 题干重复（B1 共用选项组保留），改为同模块转移考点"
+    }
+   ]
+  }
+ ],
+ "answer_distribution": {
+  "before_singles": {
+   "A": "23.0%",
+   "B": "17.3%",
+   "C": "20.2%",
+   "D": "19.8%",
+   "E": "19.8%"
+  },
+  "after_singles": {
+   "A": "23.0%",
+   "B": "17.3%",
+   "C": "20.2%",
+   "D": "19.8%",
+   "E": "19.8%"
+  },
+  "x_type_after": {
+   "ABC": 14,
+   "ABCD": 31,
+   "ABCE": 4,
+   "ABD": 3,
+   "AC": 1,
+   "ACD": 3,
+   "BC": 1
+  }
+ },
+ "safety_checks": {
+  "numeric_option_questions_untouched": true,
+  "b1_groups_untouched": true,
+  "x_type_untouched": true,
+  "kaoyan_origin_preserved": 59,
+  "explanation_letter_refs_synced": true
+ },
+ "independent_findings": [
+  {
+   "qid": "batch032_M6_A2_003",
+   "type": "A2",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_012",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M2_A2_001",
+   "type": "A2",
+   "module": "腹外疝、急性化脓性腹膜炎、胃十二指肠疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M8_A2_002",
+   "type": "A2",
+   "module": "骨与关节化脓性感染、骨肿瘤",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A1_006",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  "...(其余见 moved_entries)"
+ ],
+ "moved_entries": [
+  {
+   "qid": "batch032_M6_A2_003",
+   "type": "A2",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_012",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M2_A2_001",
+   "type": "A2",
+   "module": "腹外疝、急性化脓性腹膜炎、胃十二指肠疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M8_A2_002",
+   "type": "A2",
+   "module": "骨与关节化脓性感染、骨肿瘤",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A1_006",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A1_010",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M1_A1_008",
+   "type": "A1",
+   "module": "胸部损伤、肺疾病、食管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M5_A1_013",
+   "type": "A1",
+   "module": "周围血管与淋巴疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M2_A1_016",
+   "type": "A1",
+   "module": "腹外疝、急性化脓性腹膜炎、胃十二指肠疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M7_A1_005",
+   "type": "A1",
+   "module": "骨折、关节损伤、脊柱脊髓损伤、骨盆骨折",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M4_A1_010",
+   "type": "A1",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_007",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M1_A1_006",
+   "type": "A1",
+   "module": "胸部损伤、肺疾病、食管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A1_009",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M2_A1_014",
+   "type": "A1",
+   "module": "腹外疝、急性化脓性腹膜炎、胃十二指肠疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M8_A2_001",
+   "type": "A2",
+   "module": "骨与关节化脓性感染、骨肿瘤",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A1_002",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M7_A1_013",
+   "type": "A1",
+   "module": "骨折、关节损伤、脊柱脊髓损伤、骨盆骨折",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M6_A1_004",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M8_A2_003",
+   "type": "A2",
+   "module": "骨与关节化脓性感染、骨肿瘤",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_013",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M2_A1_002",
+   "type": "A1",
+   "module": "腹外疝、急性化脓性腹膜炎、胃十二指肠疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M7_A2_003",
+   "type": "A2",
+   "module": "骨折、关节损伤、脊柱脊髓损伤、骨盆骨折",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M4_A1_024",
+   "type": "A1",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_011",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A1_018",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M7_A1_016",
+   "type": "A1",
+   "module": "骨折、关节损伤、脊柱脊髓损伤、骨盆骨折",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M6_A1_005",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M7_A2_006",
+   "type": "A2",
+   "module": "骨折、关节损伤、脊柱脊髓损伤、骨盆骨折",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M2_A1_008",
+   "type": "A1",
+   "module": "腹外疝、急性化脓性腹膜炎、胃十二指肠疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M5_A1_012",
+   "type": "A1",
+   "module": "周围血管与淋巴疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_019",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M5_A1_005",
+   "type": "A1",
+   "module": "周围血管与淋巴疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A1_011",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M7_A1_011",
+   "type": "A1",
+   "module": "骨折、关节损伤、脊柱脊髓损伤、骨盆骨折",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M4_A1_001",
+   "type": "A1",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A1_021",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M8_A1_003",
+   "type": "A1",
+   "module": "骨与关节化脓性感染、骨肿瘤",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M8_A2_004",
+   "type": "A2",
+   "module": "骨与关节化脓性感染、骨肿瘤",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_021",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M8_A1_015",
+   "type": "A1",
+   "module": "骨与关节化脓性感染、骨肿瘤",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "E",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M5_A2_002",
+   "type": "A2",
+   "module": "周围血管与淋巴疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M2_A1_012",
+   "type": "A1",
+   "module": "腹外疝、急性化脓性腹膜炎、胃十二指肠疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M4_A1_006",
+   "type": "A1",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M8_A1_006",
+   "type": "A1",
+   "module": "骨与关节化脓性感染、骨肿瘤",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A2_001",
+   "type": "A2",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M7_A2_002",
+   "type": "A2",
+   "module": "骨折、关节损伤、脊柱脊髓损伤、骨盆骨折",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M8_A1_007",
+   "type": "A1",
+   "module": "骨与关节化脓性感染、骨肿瘤",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M7_A2_004",
+   "type": "A2",
+   "module": "骨折、关节损伤、脊柱脊髓损伤、骨盆骨折",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M3_A1_003",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M1_A2_005",
+   "type": "A2",
+   "module": "胸部损伤、肺疾病、食管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A1_007",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M5_A1_002",
+   "type": "A1",
+   "module": "周围血管与淋巴疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_023",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M5_A2_004",
+   "type": "A2",
+   "module": "周围血管与淋巴疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A2_003",
+   "type": "A2",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M4_A1_011",
+   "type": "A1",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M4_A1_019",
+   "type": "A1",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M1_A2_002",
+   "type": "A2",
+   "module": "胸部损伤、肺疾病、食管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M4_A2_004",
+   "type": "A2",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_020",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M4_A2_006",
+   "type": "A2",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A2_004",
+   "type": "A2",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_016",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M4_A1_003",
+   "type": "A1",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_001",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "D",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": true
+  },
+  {
+   "qid": "batch032_M6_A1_022",
+   "type": "A1",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "C",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M2_A1_024",
+   "type": "A1",
+   "module": "腹外疝、急性化脓性腹膜炎、胃十二指肠疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "C",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M2_A1_019",
+   "type": "A1",
+   "module": "腹外疝、急性化脓性腹膜炎、胃十二指肠疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "C",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M3_A1_018",
+   "type": "A1",
+   "module": "小肠疾病、阑尾疾病、结直肠与肛管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "A",
+   "after": "C",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M6_A2_005",
+   "type": "A2",
+   "module": "泌尿系统疾病（损伤、感染、结石、肿瘤、良性前列腺增生）",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "C",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M4_A2_002",
+   "type": "A2",
+   "module": "肝疾病、门静脉高压症、胆道疾病、胰腺疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "C",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  },
+  {
+   "qid": "batch032_M1_A1_016",
+   "type": "A1",
+   "module": "胸部损伤、肺疾病、食管疾病",
+   "operation": "ANSWER_REBALANCE",
+   "before": "B",
+   "after": "C",
+   "method": "选项内容对调（文本随字母迁移，医学事实不变）+ 解析字母引用同步改写",
+   "kaoyan_origin": false
+  }
+ ],
+ "consistency_scan": "重排仅交换选项位置，无数值改动，无残留旧值风险（HC-7）",
+ "source_file_synced": true,
+ "source_files_synced": true,
+ "source_files": [
+  "中间产物/batch032/module1.json",
+  "中间产物/batch032/module2.json",
+  "中间产物/batch032/module3.json",
+  "中间产物/batch032/module4.json",
+  "中间产物/batch032/module5.json",
+  "中间产物/batch032/module6.json",
+  "中间产物/batch032/module7.json",
+  "中间产物/batch032/module8.json"
+ ],
+ "source_sync_note": "HC-13 补丁溯源 2026-09-06：以 ALL_questions_FIXED.json 为唯一事实来源重建 module1-8.json（含 PATCH-HX-001 结构修复 + PATCH-A4-032 答案重排），重建后逐题 JSON 级比对 300/300 题差异=0（见 中间产物/batch032/sync_source_files.py）",
+ "kaoyan_origin_preserved": 58,
+ "kaoyan_ratio": "58/300 = 19.3%"
+}

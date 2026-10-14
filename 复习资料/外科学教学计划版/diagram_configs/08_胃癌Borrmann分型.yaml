@@ -1,0 +1,28 @@
+type: grid
+title: 进展期胃癌 Borrmann 四型
+subtitle: 外科学（二）M2 腹外疝、急性化脓性腹膜炎、胃十二指肠疾病（确定性图谱通道）
+cols: 2
+output: annotated/08_胃癌Borrmann分型.png
+webp: images_webp/08_胃癌Borrmann分型.webp
+items:
+  - title: Ⅰ型 息肉型（肿块型）
+    color: blue
+    lines:
+      - 边界清楚
+      - 突入胃腔的块状癌
+  - title: Ⅱ型 溃疡局限型
+    color: teal
+    lines:
+      - 边界清楚
+      - 略隆起的溃疡
+  - title: Ⅲ型 溃疡浸润型
+    color: orange
+    lines:
+      - 边界模糊
+      - 向周围浸润
+  - title: Ⅳ型 弥漫浸润型（皮革胃）
+    color: red
+    lines:
+      - 弥漫浸润
+      - 胃壁僵硬
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

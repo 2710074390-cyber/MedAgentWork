@@ -1,0 +1,32 @@
+type: grid
+title: CKD K/DOQI 分期（按 GFR）
+subtitle: 内科学 泌尿系统·M4 慢性肾衰竭（确定性图谱通道）
+cols: 3
+output: annotated/28_CKD分期KDOQI.png
+webp: images_webp/28_CKD分期KDOQI.webp
+items:
+- title: 1期 GFR≥90
+  color: green
+  lines:
+  - GFR 正常或升高
+- title: 2期 GFR 60-89
+  color: teal
+  lines:
+  - 轻度降低
+- title: 3a期 GFR 45-59
+  color: blue
+  lines:
+  - 轻中度降低
+- title: 3b期 GFR 30-44
+  color: orange
+  lines:
+  - 中重度降低
+- title: 4期 GFR 15-29
+  color: red
+  lines:
+  - 重度降低
+- title: 5期 GFR<15
+  color: purple
+  lines:
+  - 终末期 ESRD
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

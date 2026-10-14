@@ -1,0 +1,26 @@
+type: grid
+title: 输尿管三处生理狭窄（结石好发部位）
+subtitle: 外科学（二）M6 泌尿系统疾病（确定性图谱通道）
+cols: 3
+output: annotated/25_输尿管三狭窄与结石.png
+webp: images_webp/25_输尿管三狭窄与结石.webp
+items:
+  - title: 第一狭窄
+    color: blue
+    lines:
+      - 肾盂输尿管连接处
+      - 管腔由宽变窄
+      - 结石易停留处
+  - title: 第二狭窄
+    color: teal
+    lines:
+      - 输尿管跨髂血管处
+      - 跨越髂动脉入口
+      - 结石易停留处
+  - title: 第三狭窄
+    color: red
+    lines:
+      - 输尿管膀胱壁段
+      - 输尿管下 1/3
+      - 结石最常嵌顿于此
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

@@ -1,0 +1,31 @@
+type: grid
+title: 消化道出血量估计与活动性出血
+subtitle: 内科学 消化系统·M10 消化道出血（确定性图谱通道）
+cols: 5
+output: annotated/21_出血量估计与活动性出血.png
+webp: images_webp/21_出血量估计与活动性出血.webp
+items:
+- title: 粪隐血阳性
+  color: blue
+  lines:
+  - 约 5ml
+- title: 黑便
+  color: teal
+  lines:
+  - 约 50ml
+- title: 呕血
+  color: yellow
+  lines:
+  - 约 250ml
+- title: 失血性休克
+  color: red
+  lines:
+  - '>1000ml'
+  - 全身血量20%以上
+- title: 活动性出血征象
+  color: orange
+  lines:
+  - 反复呕血/黑便
+  - 心率↑、血压↓、肠鸣音活跃
+  - 血尿素氮（BUN）升高
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

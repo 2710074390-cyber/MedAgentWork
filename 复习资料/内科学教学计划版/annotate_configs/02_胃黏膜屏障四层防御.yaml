@@ -1,0 +1,24 @@
+image: raw/02_胃黏膜屏障四层防御_raw.png
+output: annotated/02_胃黏膜屏障四层防御.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [60, 285, 330, 345]
+    text: "H+反弥散"
+    mode: label
+    anchor: [430, 345]
+  - box: [840, 420, 990, 470]
+    text: "黏液层"
+    mode: label
+    anchor: [810, 445]
+  - box: [840, 478, 990, 520]
+    text: "碳酸氢盐层"
+    mode: label
+    anchor: [810, 500]
+  - box: [835, 543, 990, 600]
+    text: "上皮细胞\n(紧密连接)"
+    mode: label
+    anchor: [810, 572]
+  - box: [840, 635, 990, 680]
+    text: "黏膜血流"
+    mode: label
+    anchor: [810, 660]

@@ -1,0 +1,20 @@
+image: raw/01_连枷胸反常呼吸_raw.png
+output: annotated/01_连枷胸反常呼吸.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [90, 50, 380, 125]
+    text: "吸气相"
+    mode: label
+    anchor: [250, 290]
+  - box: [620, 50, 910, 125]
+    text: "呼气相"
+    mode: label
+    anchor: [750, 290]
+  - box: [50, 730, 400, 800]
+    text: "骨折段（反常呼吸）"
+    mode: label
+    anchor: [140, 490]
+  - box: [400, 160, 620, 230]
+    text: "纵隔移位"
+    mode: label
+    anchor: [290, 380]

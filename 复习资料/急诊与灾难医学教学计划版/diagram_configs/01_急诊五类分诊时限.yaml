@@ -1,0 +1,13 @@
+type: grid
+title: 医院急诊5类分诊时限（Ⅰ~Ⅴ类）
+subtitle: 急诊与灾难医学 M1 绪论（确定性图谱通道）
+cols: 5
+output: annotated/01_急诊五类分诊时限.png
+webp: images_webp/01_急诊五类分诊时限.webp
+items:
+  - {title: Ⅰ类·立即, color: red, lines: ["生命垂危病人", "立即抢救"]}
+  - {title: Ⅱ类·10分钟, color: orange, lines: ["随时危及生命", "10分钟内评估治疗"]}
+  - {title: Ⅲ类·30分钟, color: yellow, lines: ["存在危及生命状况", "30分钟内评估治疗"]}
+  - {title: Ⅳ类·1小时, color: green, lines: ["潜在危重状况", "1小时内急诊处理"]}
+  - {title: Ⅴ类·2小时, color: blue, lines: ["非紧急病人", "一般2小时内处理"]}
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

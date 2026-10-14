@@ -1,0 +1,53 @@
+# MedIllustration 单一配置源（P1-4 / P2-8）
+# 脚本（render_diagram / annotate_image / export_webp / check_inline_images）与
+# med-illustration-workflow SKILL 统一引用本文件，禁止在脚本或文档中硬编码散落常量。
+# 改动任一项 → 同步检查 SKILL.md 与上述脚本。
+
+model:
+  default: seedream_5.0_pro        # image_gen / image_edit 当前主力模型
+  candidates:                       # 待比选模型（成本与中文能力调研，见工程调研报告）
+    - id: seedream_5.0_pro
+      note: 当前主力，约 0.22~0.26 元/张
+    - id: qwen-image-3.0           # 通义万相：中文 SOTA，约 0.12~0.18 元/张（turbo 0.14）
+      note: 调研建议主力候选；尚未做金样对比，见 P1-4 待办
+  cost_preference: low_api_cost     # 用户成本偏好：低 / 零 API
+
+style:
+  prefix: >-
+    扁平矢量风格医学科普卡通插画（flat vector medical illustration），柔和平涂色块，
+    统一粗细的深色描边，造型极简概括，纯白色背景，居中单一主视图，构图简洁、四周留白充足；
+    无渐变、无阴影、无照片质感、无纹理；画面中不出现任何文字、字母、数字、箭头、指示线、
+    编号、图例、局部放大图或辅助小图。主体：
+  negative: 写实、照片、3D、复杂纹理、光影、文字乱码、水印、多余结构、解剖变形
+
+colors:                             # 色板键语义（render_diagram 与卡通 prompt 共用）
+  blue:   "#2F6DB5"                 # 结构 / 通路 / 静脉
+  teal:   "#2E8B80"
+  green:  "#3F9A57"                 # 正常 / 代偿
+  orange: "#D17A3C"                 # 病变 / 进展
+  yellow: "#D9A441"
+  red:    "#C0504D"                 # 动脉 / 异常
+  purple: "#7B5EA7"                 # 缺血 / 特殊
+  gray:   "#8A94A6"                 # 中性
+  max_主色: 4                       # 一图 ≤4 主色
+
+canvas:
+  png_width: 2048                   # 标注版 / 渲染版 PNG 画布宽
+  webp_width: 1600                  # 部署版宽
+  webp_quality: 82
+  webp_method: 6
+
+fonts:
+  bold: C:\Windows\Fonts\msyhbd.ttc   # 微软雅黑 Bold（标题）
+  regular: C:\Windows\Fonts\msyh.ttc  # 微软雅黑 Regular（正文，缺失回退 Bold）
+
+gate:
+  volume_kb: 500                     # C6 单张体积阈值（KB）
+  webp_only: true                    # C7：MD 引用必须为 images_webp/*.webp
+  orphan_fail: true                  # C8：images_webp 孤儿文件即 FAIL
+  exempt_registry: 复习资料/_配图需求/存量与占位登记.md
+
+golden_samples:                      # 金样（P2-10：固定入 Git 作回归基准）
+  anatomy: 复习资料/_试点插图/raw/金样_眼球结构_扁平卡通_raw.png
+  mechanism: 复习资料/_试点插图/raw/金样_突触机制_扁平卡通_raw.png
+  versioning: 固定每类金样并纳入 Git；滚动时以最新验收图为准但保留金样作回归基准

@@ -1,0 +1,62 @@
+{
+  "batch_id": "batch037",
+  "subject": "口腔科学（大四教学计划）",
+  "agent": "MedFix(DSH 直跑)",
+  "date": "2026-09-30",
+  "source_file_synced": true,
+  "source_file": "中间产物/batch037/ALL_questions.json",
+  "output_file": "最终产物/batch037/ALL_questions_FIXED.json",
+  "fixed_questions": 57,
+  "changed_fields": [
+    "stem",
+    "options",
+    "explanation",
+    "source_page"
+  ],
+  "gate": "GATE-A2 validate FAIL 57→0（重跑三次：57→3→0）",
+  "patches": [
+    {
+      "rule": "R2 正确选项长度比>2.0",
+      "count": 49,
+      "action": "精简正确项/加长最短干扰项至比≤2.0",
+      "source_file_synced": true
+    },
+    {
+      "rule": "R10 题干关键词仅现于正确项",
+      "count": 17,
+      "action": "改写题干去关键词或改正确项措辞",
+      "source_file_synced": true
+    },
+    {
+      "rule": "R13 选项>20字",
+      "count": 5,
+      "action": "压缩至≤20字",
+      "source_file_synced": true
+    },
+    {
+      "rule": "R1 绝对化用语",
+      "count": 1,
+      "action": "「必须住院拔牙」改「住院治疗后拔牙」",
+      "source_file_synced": true
+    },
+    {
+      "rule": "R4 否定词加粗",
+      "count": 29,
+      "action": "negative 题干否定短语统一 <b> 加粗（E1-E3 兼容）",
+      "source_file_synced": true
+    },
+    {
+      "rule": "页码精修",
+      "count": 3,
+      "action": "M09 Angle 分类题 source_page P136→P137（教材第十一章内容页）",
+      "source_file_synced": true
+    }
+  ],
+  "post_fix_validate": {
+    "total": 168,
+    "pass": 76,
+    "warn": 92,
+    "fail": 0,
+    "file": "reports/validate/validate_options_report_batch037.json"
+  }
+}

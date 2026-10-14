@@ -410,6 +410,7 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **verify_produce_rules.py** | 1.1.0 | `scripts/verify_produce_rules.py` | `python scripts/verify_produce_rules.py` — 产物形态门禁（2026-08-22，FAIL==0 才放行）：扩展名白名单（押题卷=仅html / 题库=md+html+pdf / 复习资料=md+html）、押题卷副标题质检、复习资料无流程残留/无 Mermaid、**PDF 来源断言（2026-09-28 新增，覆盖 `大三下/` + `大四上/`：每个 PDF 必须 ≤25 MiB 且 `/Creator` 不含 `HeadlessChrome` —— 后者是 `chrome --headless=new --print-to-pdf` 的脚本指纹）**。规则源：`docs/产物格式规范.md`（HC-18） |
 | **render_qbank_html.py** | 1.0.0 | `scripts/render_qbank_html.py` | `python scripts/render_qbank_html.py --input <题库JSON> --output <out.html> [--title ...]` — 题库最终产物 HTML 交付版（2026-08-22）：题库 PDF 一律人工上传，本脚本只产 HTML |
 | **quiz_template.html** | 1.0.0 | `scripts/quiz_template.html` | 统一押题卷模板（2026-08-20 第三方交付）：CSS 变量化/亮暗主题/响应式/作答采集；题目注入 `<script id="quiz-data">` 的 QUESTIONS 数组 |
+| **validate** (validate_options.py) | 2.0.0 | `scripts/validate/` | `python -m scripts.validate --batch {batchID}` 或 `python validate_options.py --batch {batchID}` — 选项设计机械化校验器（R1-R13+B1+JS1+S3+S4）。v2.0 模块化拆分（2026-09-09）：`scripts/validate/` 包含 parsers/rules_numeric/rules_structural/rules_static/engine/reporter，根目录 validate_options.py 为向后兼容入口 |
 | **dsh** (DeepSeek Harness) | 0.1.0-rc.7 | `C:\Users\38063\Desktop\Web-AI\tools\dsh\node_modules\.bin\dsh` | `cd C:\Users\38063\Desktop\Web-AI\tools\dsh && npx dsh web`（需 API key） |
 
 ### 环境备忘（2026-08-20 · 第三方交付后）

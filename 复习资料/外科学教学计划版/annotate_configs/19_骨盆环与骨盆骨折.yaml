@@ -1,0 +1,26 @@
+image: raw/19_骨盆环与骨盆骨折_raw.png
+output: annotated/19_骨盆环与骨盆骨折.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [120, 720, 380, 765]
+    text: "正常骨盆环（上面观）"
+    mode: label
+  - box: [620, 720, 880, 765]
+    text: "骨盆骨折"
+    mode: label
+  - box: [210, 330, 310, 375]
+    text: "骶骨"
+    mode: label
+    anchor: [255, 400]
+  - box: [50, 290, 150, 335]
+    text: "髂骨"
+    mode: label
+    anchor: [110, 370]
+  - box: [190, 640, 330, 685]
+    text: "耻骨联合"
+    mode: label
+    anchor: [255, 660]
+  - box: [540, 300, 680, 345]
+    text: "骨折线"
+    mode: label
+    anchor: [650, 430]

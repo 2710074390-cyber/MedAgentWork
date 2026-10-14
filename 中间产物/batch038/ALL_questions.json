@@ -1,0 +1,9921 @@
+[
+ {
+  "id": "batch038-M01-A1-001",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "感染过程的表现（隐性感染）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "感染过程的五种表现形式（感染谱）中，发生率最高的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "病原体被清除"
+   },
+   {
+    "label": "B",
+    "text": "隐性感染"
+   },
+   {
+    "label": "C",
+    "text": "显性感染"
+   },
+   {
+    "label": "D",
+    "text": "病原携带状态"
+   },
+   {
+    "label": "E",
+    "text": "潜伏性感染"
+   }
+  ],
+  "answer": "B",
+  "explanation": "感染过程的五种表现中，隐性感染最常见，病原携带状态次之，显性感染所占比重最低。隐性感染又称亚临床感染，仅诱导特异性免疫应答而不引起明显组织损伤，只能通过免疫学检查发现。教材P3。",
+  "source_page": "教材P3",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-002",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "传染病的治疗原则",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "传染病治疗应坚持的原则是",
+  "options": [
+   {
+    "label": "A",
+    "text": "治疗与护理、隔离与消毒并重"
+   },
+   {
+    "label": "B",
+    "text": "强调病原或特异性治疗"
+   },
+   {
+    "label": "C",
+    "text": "以对症治疗为主要手段"
+   },
+   {
+    "label": "D",
+    "text": "以支持治疗为主要手段"
+   },
+   {
+    "label": "E",
+    "text": "以隔离患者为主要手段"
+   }
+  ],
+  "answer": "A",
+  "explanation": "治疗传染病要坚持综合治疗的原则，即治疗与护理、隔离与消毒并重，一般治疗、对症治疗与病原治疗并重。教材P14。",
+  "source_page": "教材P14",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-003",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "隐性感染与显性感染的数量关系",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "在大多数病毒性传染病中，隐性感染的数量常远远超过显性感染，约为其",
+  "options": [
+   {
+    "label": "A",
+    "text": "2倍以上"
+   },
+   {
+    "label": "B",
+    "text": "5倍以上"
+   },
+   {
+    "label": "C",
+    "text": "10倍以上"
+   },
+   {
+    "label": "D",
+    "text": "20倍以上"
+   },
+   {
+    "label": "E",
+    "text": "50倍以上"
+   }
+  ],
+  "answer": "C",
+  "explanation": "在大多数病毒性传染病中（如脊髓灰质炎和流行性乙型脑炎），隐性感染是最常见的表现，其数量常远远超过显性感染，达10倍以上。教材P3。",
+  "source_page": "教材P3",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-004",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "流行过程的基本环节",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "传染病流行过程的发生需要三个基本条件，即",
+  "options": [
+   {
+    "label": "A",
+    "text": "病原体、机体及其所处的环境"
+   },
+   {
+    "label": "B",
+    "text": "传染源、传播途径、人群易感性"
+   },
+   {
+    "label": "C",
+    "text": "传染源、传播途径、预防接种"
+   },
+   {
+    "label": "D",
+    "text": "隐性感染、显性感染、病原携带"
+   },
+   {
+    "label": "E",
+    "text": "自然因素、社会因素、个人行为因素"
+   }
+  ],
+  "answer": "B",
+  "explanation": "流行过程的发生需要三个基本条件，即传染源、传播途径和人群易感性；这三个环节必须同时存在，切断任何一个环节流行即告终止。教材P7。",
+  "source_page": "教材P7",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-005",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "传染病的基本特征（传染性）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "传染病与其他感染性疾病的主要区别在于传染病具有",
+  "options": [
+   {
+    "label": "A",
+    "text": "传染性"
+   },
+   {
+    "label": "B",
+    "text": "地方性"
+   },
+   {
+    "label": "C",
+    "text": "季节性"
+   },
+   {
+    "label": "D",
+    "text": "流行性"
+   },
+   {
+    "label": "E",
+    "text": "外来性"
+   }
+  ],
+  "answer": "A",
+  "explanation": "传染性是传染病与其他感染性疾病的主要区别；地方性、季节性、流行性、外来性均属传染病流行过程表现出的流行病学特征。教材P9。",
+  "source_page": "教材P9",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-006",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "法定传染病的分类（甲类）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "根据《中华人民共和国传染病防治法》，下列属于甲类传染病的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼠疫和霍乱"
+   },
+   {
+    "label": "B",
+    "text": "艾滋病和病毒性肝炎"
+   },
+   {
+    "label": "C",
+    "text": "肺结核和伤寒"
+   },
+   {
+    "label": "D",
+    "text": "麻疹和流行性腮腺炎"
+   },
+   {
+    "label": "E",
+    "text": "登革热和细菌性痢疾"
+   }
+  ],
+  "answer": "A",
+  "explanation": "甲类为强制管理的烈性传染病，包括鼠疫、霍乱2种，要求发现后2小时内网络直报；其余各项均属乙类或丙类。教材P16。",
+  "source_page": "教材P16",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-007",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "甲类传染病的报告时限",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "甲类传染病被发现后，通过传染病疫情监测信息系统上报的时限要求是",
+  "options": [
+   {
+    "label": "A",
+    "text": "2小时内"
+   },
+   {
+    "label": "B",
+    "text": "6小时内"
+   },
+   {
+    "label": "C",
+    "text": "12小时内"
+   },
+   {
+    "label": "D",
+    "text": "24小时内"
+   },
+   {
+    "label": "E",
+    "text": "48小时内"
+   }
+  ],
+  "answer": "A",
+  "explanation": "甲类传染病为强制管理的烈性传染病，要求发现后2小时内通过传染病疫情监测信息系统上报；乙类传染病要求诊断后24小时内上报。教材P16。",
+  "source_page": "教材P16",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-008",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "组织损伤的发生机制",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "理解",
+  "stem": "传染病中导致组织损伤的发生方式主要有直接损伤、毒素作用和免疫机制，下列**不属于**上述机制的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "病原体机械运动直接破坏组织"
+   },
+   {
+    "label": "B",
+    "text": "病原体分泌酶类溶解组织"
+   },
+   {
+    "label": "C",
+    "text": "外毒素选择性损害靶器官"
+   },
+   {
+    "label": "D",
+    "text": "免疫复合物介导组织损伤"
+   },
+   {
+    "label": "E",
+    "text": "补体系统溶解病原体清除感染"
+   }
+  ],
+  "answer": "E",
+  "explanation": "传染病导致组织损伤的发生方式有直接损伤、毒素作用和免疫机制三类。补体系统溶解病原体属非特异性免疫的清除作用，不属于组织损伤机制。教材P6。",
+  "source_page": "教材P6",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-009",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "毒素作用（内毒素）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "革兰氏阴性杆菌裂解后释放的内毒素引起发热、休克，其作用机制是",
+  "options": [
+   {
+    "label": "A",
+    "text": "激活单核巨噬细胞分泌TNF-α"
+   },
+   {
+    "label": "B",
+    "text": "直接释放外毒素作用于靶器官"
+   },
+   {
+    "label": "C",
+    "text": "选择性损害中枢神经系统"
+   },
+   {
+    "label": "D",
+    "text": "引起肠黏膜分泌亢进导致腹泻"
+   },
+   {
+    "label": "E",
+    "text": "溶解宿主细胞导致细胞死亡"
+   }
+  ],
+  "answer": "A",
+  "explanation": "革兰氏阴性杆菌裂解后产生的内毒素可激活单核/巨噬细胞分泌TNF-α和其他细胞因子，导致发热、休克及弥散性血管内凝血。教材P6。",
+  "source_page": "教材P6",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-010",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "潜伏期的概念",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "关于传染病潜伏期的描述，正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "自病原体侵入机体至出现症状的时期"
+   },
+   {
+    "label": "B",
+    "text": "自病原体侵入机体至排出病原体的时期"
+   },
+   {
+    "label": "C",
+    "text": "自症状出现至症状明显的时期"
+   },
+   {
+    "label": "D",
+    "text": "自症状明显至症状消失的时期"
+   },
+   {
+    "label": "E",
+    "text": "自病原体感染至产生抗体的时期"
+   }
+  ],
+  "answer": "A",
+  "explanation": "潜伏期指从病原体侵入机体起至开始出现临床症状为止的时期，是检疫工作观察、留验接触者的重要依据。教材P10。",
+  "source_page": "教材P10",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-011",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "感染过程中的体液免疫（IgM）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "在感染过程中，提示近期感染的免疫球蛋白类型是",
+  "options": [
+   {
+    "label": "A",
+    "text": "特异性IgM"
+   },
+   {
+    "label": "B",
+    "text": "特异性IgG"
+   },
+   {
+    "label": "C",
+    "text": "特异性IgA"
+   },
+   {
+    "label": "D",
+    "text": "特异性IgD"
+   },
+   {
+    "label": "E",
+    "text": "特异性IgE"
+   }
+  ],
+  "answer": "A",
+  "explanation": "感染过程中IgM首先出现且持续时间不长，是近期感染的标志；IgG随后出现并持续较长时间；IgA主要是呼吸道和消化道黏膜上的局部抗体；IgE主要作用于原虫和蠕虫。教材P5。",
+  "source_page": "教材P5",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-012",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "法定传染病的报告时限（乙类）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "某医师接诊一例确诊的病毒性肝炎患者，按规定应在诊断后一定时限内通过传染病疫情监测信息系统上报，该时限是",
+  "options": [
+   {
+    "label": "A",
+    "text": "2小时内"
+   },
+   {
+    "label": "B",
+    "text": "12小时内"
+   },
+   {
+    "label": "C",
+    "text": "24小时内"
+   },
+   {
+    "label": "D",
+    "text": "48小时内"
+   },
+   {
+    "label": "E",
+    "text": "72小时内"
+   }
+  ],
+  "answer": "C",
+  "explanation": "病毒性肝炎属乙类传染病，乙类（除按甲类管理的病种外）要求在诊断后24小时内通过传染病疫情监测信息系统上报。教材P16。",
+  "source_page": "教材P16",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A1-013",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "传染病报告与保密原则 [源:考研真题 GS-2024-113]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "关于保密原则，下列做法正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "实习生将疑难病例信息发到朋友圈"
+   },
+   {
+    "label": "B",
+    "text": "医生在食堂实名讨论患者病情"
+   },
+   {
+    "label": "C",
+    "text": "患者HIV阳性，医生不向任何机构透露"
+   },
+   {
+    "label": "D",
+    "text": "经患者同意将病例用于临床教学"
+   },
+   {
+    "label": "E",
+    "text": "医生将患者HIV结果告知其单位领导"
+   }
+  ],
+  "answer": "D",
+  "explanation": "改编自2024考研西综真题（GS-2024-113）。医务人员应遵守保密守信原则，但艾滋病属乙类传染病，HIV阳性须依法上报疾病预防控制机构，不得完全不透露；A、B在朋友圈或食堂泄露患者信息违背保密原则，E擅自告知单位领导亦违背保密原则，D经患者同意用于临床教学符合保密原则。教材P16。",
+  "source_page": "教材P16",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2024-113",
+   "year": 2024,
+   "source": "2024考研西综·第113题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A2-001",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "传染病报告与保密（艾滋病） [源:考研真题 GS-2018-113]",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，45岁。艾滋病病毒抗体检测为阳性，要求医生为其保密。医生以下做法能得到伦理辩护的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "将检测结果报告给患者单位的领导"
+   },
+   {
+    "label": "B",
+    "text": "将检测结果告知前来询问的患者父亲"
+   },
+   {
+    "label": "C",
+    "text": "将检测结果报告当地疾病预防控制中心"
+   },
+   {
+    "label": "D",
+    "text": "将检测结果告知前来询问的保险公司职员"
+   },
+   {
+    "label": "E",
+    "text": "将检测结果告知前来询问的患者同事"
+   }
+  ],
+  "answer": "C",
+  "explanation": "改编自2018考研西综真题（GS-2018-113）。医生应遵守保密守信原则，但艾滋病为法定乙类传染病，医务人员负有传染病报告的社会责任，须将阳性结果报告当地疾病预防控制中心；A、B、D、E均违背保密原则。教材P16。",
+  "source_page": "教材P16",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2018-113",
+   "year": 2018,
+   "source": "2018考研西综·第113题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A2-002",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "热型的识别（稽留热）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，28岁。持续高热1周，体温波动于39.5～40.2℃，24小时内体温相差不超过1℃，该热型属于",
+  "options": [
+   {
+    "label": "A",
+    "text": "稽留热"
+   },
+   {
+    "label": "B",
+    "text": "弛张热"
+   },
+   {
+    "label": "C",
+    "text": "间歇热"
+   },
+   {
+    "label": "D",
+    "text": "回归热"
+   },
+   {
+    "label": "E",
+    "text": "不规则热"
+   }
+  ],
+  "answer": "A",
+  "explanation": "体温升高超过39℃且24小时内相差不超过1℃者称稽留热，可见于伤寒、斑疹伤寒等的极期。教材P11。",
+  "source_page": "教材P11",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A2-003",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "隔离的种类（严密隔离）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "某患者确诊霍乱收入传染病病房，应采取的隔离种类是",
+  "options": [
+   {
+    "label": "A",
+    "text": "严密隔离"
+   },
+   {
+    "label": "B",
+    "text": "呼吸道隔离"
+   },
+   {
+    "label": "C",
+    "text": "消化道隔离"
+   },
+   {
+    "label": "D",
+    "text": "血液体液隔离"
+   },
+   {
+    "label": "E",
+    "text": "接触隔离"
+   }
+  ],
+  "answer": "A",
+  "explanation": "对传染性强、病死率高的传染病，如霍乱、鼠疫、狂犬病等，应住单人房并严密隔离。教材P17。",
+  "source_page": "教材P17",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A2-004",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "传播途径（接触传播）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "某地农民赤脚下稻田劳作后出现发热、皮疹，确诊为血吸虫病，其感染途径属于",
+  "options": [
+   {
+    "label": "A",
+    "text": "呼吸道传播"
+   },
+   {
+    "label": "B",
+    "text": "消化道传播"
+   },
+   {
+    "label": "C",
+    "text": "接触传播"
+   },
+   {
+    "label": "D",
+    "text": "虫媒传播"
+   },
+   {
+    "label": "E",
+    "text": "血液传播"
+   }
+  ],
+  "answer": "C",
+  "explanation": "血吸虫病经接触传播，易感者与被病原体污染的水或土壤接触时获得感染。教材P8。",
+  "source_page": "教材P8",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-A2-005",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "传染病诊断的三个结合",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "传染病的诊断需要综合分析三个方面的资料，即",
+  "options": [
+   {
+    "label": "A",
+    "text": "临床资料、流行病学资料和实验室资料"
+   },
+   {
+    "label": "B",
+    "text": "病史资料、症状资料和体征资料"
+   },
+   {
+    "label": "C",
+    "text": "血常规资料、尿常规资料和粪常规资料"
+   },
+   {
+    "label": "D",
+    "text": "隔离资料、消毒资料和预防资料"
+   },
+   {
+    "label": "E",
+    "text": "病因资料、发病机制资料和病理资料"
+   }
+  ],
+  "answer": "A",
+  "explanation": "传染病的诊断要综合分析临床资料、流行病学资料和实验室及其他检查资料三个方面，其中病原体的检出或分离培养可直接确定诊断。教材P12。",
+  "source_page": "教材P12",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-X-001",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "感染过程的表现（感染谱）",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "感染过程可出现的表现形式（感染谱）包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "病原体被清除"
+   },
+   {
+    "label": "B",
+    "text": "隐性感染"
+   },
+   {
+    "label": "C",
+    "text": "显性感染"
+   },
+   {
+    "label": "D",
+    "text": "病原携带状态"
+   },
+   {
+    "label": "E",
+    "text": "潜伏性感染"
+   }
+  ],
+  "answer": "ABCDE",
+  "explanation": "在机体防御功能强弱与病原体数量毒力的相互作用下，感染过程可出现五种结局：病原体被清除、隐性感染、显性感染、病原携带状态和潜伏性感染。教材P3。",
+  "source_page": "教材P3",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-X-002",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "感染过程中病原体的作用（致病能力）",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "病原体的致病能力（pathogenicity）包括下列哪些方面",
+  "options": [
+   {
+    "label": "A",
+    "text": "侵袭力"
+   },
+   {
+    "label": "B",
+    "text": "毒力"
+   },
+   {
+    "label": "C",
+    "text": "数量"
+   },
+   {
+    "label": "D",
+    "text": "变异性"
+   },
+   {
+    "label": "E",
+    "text": "抗原性"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "病原体侵入机体后能否引起疾病，取决于其致病能力和机体的免疫功能；致病能力包括侵袭力、毒力、数量和变异性四个方面，抗原性不属于致病能力的构成。教材P4。",
+  "source_page": "教材P4",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-X-003",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "影响流行过程的因素",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "影响传染病流行过程的因素包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "自然因素"
+   },
+   {
+    "label": "B",
+    "text": "社会因素"
+   },
+   {
+    "label": "C",
+    "text": "个人行为因素"
+   },
+   {
+    "label": "D",
+    "text": "心理因素"
+   },
+   {
+    "label": "E",
+    "text": "饮食因素"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "流行过程本身受自然因素、社会因素和个人行为因素三方面影响；自然因素包括地理、气象和生态等，社会因素包括社会制度、经济状况、生活条件和文化水平等。教材P8。",
+  "source_page": "教材P8",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-X-004",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "新发感染病的概念与组成",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "新发感染病（emerging infectious diseases）包括下列哪些情况",
+  "options": [
+   {
+    "label": "A",
+    "text": "新识别的和以往未知的感染病"
+   },
+   {
+    "label": "B",
+    "text": "因对已知抗菌药物耐药而再度流行的老感染病"
+   },
+   {
+    "label": "C",
+    "text": "已得到控制又重新流行的再发感染病"
+   },
+   {
+    "label": "D",
+    "text": "因生态环境改变而扩展至新地区的感染病"
+   },
+   {
+    "label": "E",
+    "text": "仅由寄生虫引起的慢性感染病"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "新发感染病指由新种或新型病原微生物引起的感染病，以及近年来导致地区性或国际性公共卫生问题的感染病（再发的感染病），包括新发现的感染病与再发感染病两大类，耐药老感染病亦纳入其中；新发感染病以病毒及细菌为主要病原体，E不成立。教材P18。",
+  "source_page": "教材P18",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-X-005",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "传染病的基本特征",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "传染病的四个基本特征包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "有特异病原体"
+   },
+   {
+    "label": "B",
+    "text": "有传染性"
+   },
+   {
+    "label": "C",
+    "text": "有流行病学特征"
+   },
+   {
+    "label": "D",
+    "text": "有感染后免疫"
+   },
+   {
+    "label": "E",
+    "text": "有固定潜伏期"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "传染病有别于其他疾病的四个基本特征为：有特异性病原体、有传染性、有流行病学特征、有感染后免疫；潜伏期属临床特点而非基本特征。教材P9。",
+  "source_page": "教材P9",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M01-X-006",
+  "module": "M01",
+  "module_name": "传染病学总论（含新发感染病概述）",
+  "topic": "传染病的预防（三个环节）",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "针对传染病流行过程的三个基本环节，预防的基本措施包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "管理传染源"
+   },
+   {
+    "label": "B",
+    "text": "切断传播途径"
+   },
+   {
+    "label": "C",
+    "text": "保护易感人群"
+   },
+   {
+    "label": "D",
+    "text": "治疗并发症"
+   },
+   {
+    "label": "E",
+    "text": "康复针灸治疗"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "预防应针对流行过程的三个基本环节采取综合措施：管理传染源、切断传播途径、保护易感人群；治疗并发症与康复治疗属治疗范畴，不属预防三环节。教材P16。",
+  "source_page": "教材P16",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-001",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "急性重型肝炎肝细胞坏死（残留部位）[源:考研真题 GS-2021-032]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "急性重型肝炎时，残留的少量肝细胞多见的部位是",
+  "options": [
+   {
+    "label": "A",
+    "text": "中央静脉周围"
+   },
+   {
+    "label": "B",
+    "text": "肝小叶周边"
+   },
+   {
+    "label": "C",
+    "text": "全小叶随机分布"
+   },
+   {
+    "label": "D",
+    "text": "残留的网状支架旁"
+   },
+   {
+    "label": "E",
+    "text": "汇管区周围"
+   }
+  ],
+  "answer": "B",
+  "explanation": "本题来源：改编自2021考研西综真题（GS-2021-032）。急性重型病毒性肝炎镜下以肝细胞大块坏死为特征，坏死自肝小叶中央开始并迅速向四周扩展，仅肝小叶周边部残留少许变性肝细胞，溶解坏死组织很快被清除而仅残留网状支架，故残留肝细胞多见于肝小叶周边，选B。教材P34。[源:考研真题 GS-2021-032]",
+  "source_page": "教材P34",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2021-032",
+   "year": 2021,
+   "source": "2021考研西综·第32题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-002",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "急性普通型病毒性肝炎病理 [源:考研真题 GS-2016-048]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列病理变化中，属于急性普通型病毒性肝炎的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "汇管区炎症并突破界板"
+   },
+   {
+    "label": "B",
+    "text": "桥接坏死伴小叶结构破坏"
+   },
+   {
+    "label": "C",
+    "text": "肝细胞广泛脂肪变性伴嗜酸性粒细胞浸润"
+   },
+   {
+    "label": "D",
+    "text": "肝细胞广泛水肿伴点状坏死"
+   },
+   {
+    "label": "E",
+    "text": "肝细胞嗜酸性变伴碎片状坏死"
+   }
+  ],
+  "answer": "D",
+  "explanation": "本题来源：改编自2016考研西综真题（GS-2016-048）。急性普通型病毒性肝炎的典型病变为肝细胞广泛水样变性（水肿）伴点状坏死，故选D。突破界板的灶性坏死为碎片状坏死，见于慢性肝炎；桥接坏死伴小叶结构破坏见于中、重度慢性肝炎；除丙型外其他病毒性肝炎很少发生脂肪变性。教材P34。[源:考研真题 GS-2016-048]",
+  "source_page": "教材P34",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2016-048",
+   "year": 2016,
+   "source": "2016考研西综·第48题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-003",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝细胞点状坏死特点 [源:考研真题 GS-2005-046]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "肝细胞点状坏死的特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "肝细胞核碎裂为小点状的坏死"
+   },
+   {
+    "label": "B",
+    "text": "破坏界板的碎片状坏死"
+   },
+   {
+    "label": "C",
+    "text": "形成嗜酸性小体改变"
+   },
+   {
+    "label": "D",
+    "text": "坏死灶仅累及几个细胞"
+   },
+   {
+    "label": "E",
+    "text": "伴有严重脂肪变性的坏死"
+   }
+  ],
+  "answer": "D",
+  "explanation": "本题来源：改编自2005考研西综真题（GS-2005-046）。肝细胞点状坏死为急性普通型肝炎的病理特点，表现为肝小叶内散在的灶性肝细胞坏死，每个坏死灶仅累及一个至几个肝细胞，故选D。肝细胞核碎裂为小点状为坏死时核的自溶性改变；破坏界板的坏死为碎片状坏死；嗜酸性小体为肝细胞凋亡的表现。教材P34。[源:考研真题 GS-2005-046]",
+  "source_page": "教材P34",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2005-046",
+   "year": 2005,
+   "source": "2005考研西综·第46题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-004",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "急性重型肝炎病理特点 [源:考研真题 GS-2001-101]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "急性重型肝炎的病理学特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "肝细胞点灶状坏死"
+   },
+   {
+    "label": "B",
+    "text": "肝细胞碎片状坏死"
+   },
+   {
+    "label": "C",
+    "text": "肝细胞桥接坏死"
+   },
+   {
+    "label": "D",
+    "text": "肝细胞亚大片坏死"
+   },
+   {
+    "label": "E",
+    "text": "肝细胞大片坏死"
+   }
+  ],
+  "answer": "E",
+  "explanation": "本题来源：2001考研西综真题（GS-2001-101）。大片坏死指几乎累及整个肝小叶的大范围肝细胞坏死，为急性重型肝炎的病理特点，故选E。点状坏死见于急性普通型肝炎；碎片状坏死见于慢性肝炎；桥接坏死见于中、重度慢性肝炎。教材P34。[源:考研真题 GS-2001-101]",
+  "source_page": "教材P34",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2001-101",
+   "year": 2001,
+   "source": "2001考研西综·第101题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-005",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "与HBV感染相关的肝细胞改变（毛玻璃样）[源:考研真题 GS-2000-033]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "与乙型肝炎病毒（HBV）感染相关的肝细胞病理改变是",
+  "options": [
+   {
+    "label": "A",
+    "text": "细胞内大量糖原沉积"
+   },
+   {
+    "label": "B",
+    "text": "核内出现假包涵体"
+   },
+   {
+    "label": "C",
+    "text": "光面内质网大量增生"
+   },
+   {
+    "label": "D",
+    "text": "前角蛋白细丝堆集"
+   },
+   {
+    "label": "E",
+    "text": "粗面内质网增多"
+   }
+  ],
+  "answer": "C",
+  "explanation": "本题来源：2000考研西综真题（GS-2000-033）。HBV感染时肝细胞胞质内充满嗜酸性细颗粒状物质，不透明似毛玻璃样，称为毛玻璃样肝细胞；电镜示其胞质光面内质网大量增生，HBsAg颗粒积存于此，故选C。肝细胞玻璃样变时前角蛋白细丝堆积称Mallory小体。教材P28。[源:考研真题 GS-2000-033]",
+  "source_page": "教材P28",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2000-033",
+   "year": 2000,
+   "source": "2000考研西综·第33题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-006",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "黄疸性质鉴别（DBil/TBil）[源:考研真题 GS-2014-111]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "为了解黄疸的性质，最有意义的检查项目是",
+  "options": [
+   {
+    "label": "A",
+    "text": "血清转氨酶水平"
+   },
+   {
+    "label": "B",
+    "text": "乙肝病毒标志物"
+   },
+   {
+    "label": "C",
+    "text": "DBil/TBil"
+   },
+   {
+    "label": "D",
+    "text": "甲胎蛋白测定"
+   },
+   {
+    "label": "E",
+    "text": "凝血酶原活动度"
+   }
+  ],
+  "answer": "C",
+  "explanation": "本题来源：改编自2014考研西综真题（GS-2014-111）。明确黄疸性质应测定结合胆红素（DBil）/总胆红素（TBil）比值：DBil/TBil增高提示梗阻性黄疸，降低提示溶血性黄疸，正常范围提示肝细胞性黄疸，故选C。转氨酶反映肝细胞受损，乙肝病毒标志物用于诊断乙型肝炎，甲胎蛋白用于筛查原发性肝癌。教材P39。[源:考研真题 GS-2014-111]",
+  "source_page": "教材P39",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2014-111",
+   "year": 2014,
+   "source": "2014考研西综·第111题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-007",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝硬化致肝性脑病最多见类型 [源:考研真题 GS-1998-071]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列哪种肝硬化引起肝性脑病最多见",
+  "options": [
+   {
+    "label": "A",
+    "text": "酒精性肝硬化"
+   },
+   {
+    "label": "B",
+    "text": "原发性胆汁性肝硬化"
+   },
+   {
+    "label": "C",
+    "text": "淤血性肝硬化"
+   },
+   {
+    "label": "D",
+    "text": "肝炎后肝硬化"
+   },
+   {
+    "label": "E",
+    "text": "血吸虫病性肝硬化"
+   }
+  ],
+  "answer": "D",
+  "explanation": "本题来源：1998考研西综真题（GS-1998-071）。各型肝硬化均可引起肝性脑病，以病毒性肝炎（尤其乙型肝炎）后肝硬化最常见，约占70%，故选D。教材P35。[源:考研真题 GS-1998-071]",
+  "source_page": "教材P35",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-1998-071",
+   "year": 1998,
+   "source": "1998考研西综·第71题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-008",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "最易并发原发性肝癌的肝硬化 [源:考研真题 GS-2004-103]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "最易并发原发性肝癌的肝硬化是",
+  "options": [
+   {
+    "label": "A",
+    "text": "病毒性肝炎后肝硬化"
+   },
+   {
+    "label": "B",
+    "text": "酒精性肝硬化"
+   },
+   {
+    "label": "C",
+    "text": "原发性胆汁性肝硬化"
+   },
+   {
+    "label": "D",
+    "text": "淤血性肝硬化"
+   },
+   {
+    "label": "E",
+    "text": "血吸虫病性肝硬化"
+   }
+  ],
+  "answer": "A",
+  "explanation": "本题来源：2004考研西综真题（GS-2004-103）。病毒性肝炎（尤其乙型肝炎）后肝硬化最易并发原发性肝细胞癌，即肝炎、肝硬化、肝癌三部曲，故选A。教材P33。[源:考研真题 GS-2004-103]",
+  "source_page": "教材P33",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2004-103",
+   "year": 2004,
+   "source": "2004考研西综·第103题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-009",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝细胞气球样变性的本质 [源:考研真题 GS-2022-124]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "肝细胞气球样变性的本质是",
+  "options": [
+   {
+    "label": "A",
+    "text": "水样变性"
+   },
+   {
+    "label": "B",
+    "text": "脂肪变性"
+   },
+   {
+    "label": "C",
+    "text": "玻璃样变性"
+   },
+   {
+    "label": "D",
+    "text": "淀粉样变性"
+   },
+   {
+    "label": "E",
+    "text": "纤维素样变性"
+   }
+  ],
+  "answer": "A",
+  "explanation": "本题来源：改编自2022考研西综真题（GS-2022-124）。病毒性肝炎时肝细胞水肿进一步加重，细胞体积明显肿大、由多角形变为圆形、胞质疏松透亮，称为气球样变，其本质是水样变性（细胞水肿），故选A。教材P34。[源:考研真题 GS-2022-124]",
+  "source_page": "教材P34",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2022-124",
+   "year": 2022,
+   "source": "2022考研西综·第124题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-010",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "纤维素性炎（反选：错误项）[源:考研真题 GS-1995-038]",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "理解",
+  "stem": "关于纤维素渗出的描述，下列哪项是**错误的**",
+  "options": [
+   {
+    "label": "A",
+    "text": "可引起纤维组织机化"
+   },
+   {
+    "label": "B",
+    "text": "可发生在大叶性肺炎"
+   },
+   {
+    "label": "C",
+    "text": "可见于绒毛心"
+   },
+   {
+    "label": "D",
+    "text": "可见于细菌性痢疾"
+   },
+   {
+    "label": "E",
+    "text": "可见于病毒性肝炎"
+   }
+  ],
+  "answer": "E",
+  "explanation": "本题来源：1995考研西综真题（GS-1995-038，反选题）。纤维素性炎以纤维素渗出为主，大叶性肺炎、绒毛心、细菌性痢疾（假膜性炎特例）均与之相关；病毒性肝炎经免疫反应致病，并无纤维素渗出，不属于纤维素性炎，故“可见于病毒性肝炎”是错误的描述，选E。教材P34。[源:考研真题 GS-1995-038]",
+  "source_page": "教材P34",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-1995-038",
+   "year": 1995,
+   "source": "1995考研西综·第38题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-011",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "甲型肝炎病毒基因组类型",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "甲型肝炎病毒的基因组类型是",
+  "options": [
+   {
+    "label": "A",
+    "text": "单股线状RNA"
+   },
+   {
+    "label": "B",
+    "text": "单股环状RNA"
+   },
+   {
+    "label": "C",
+    "text": "双股线状DNA"
+   },
+   {
+    "label": "D",
+    "text": "双股环状DNA"
+   },
+   {
+    "label": "E",
+    "text": "单股负链RNA"
+   }
+  ],
+  "answer": "A",
+  "explanation": "HAV基因组为单股线状RNA，全长由7478个核苷酸组成，故选A。教材P27。",
+  "source_page": "教材P27",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-012",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "戊型肝炎主要传播途径",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "戊型肝炎的主要传播途径是",
+  "options": [
+   {
+    "label": "A",
+    "text": "粪-口途径"
+   },
+   {
+    "label": "B",
+    "text": "血液体液途径"
+   },
+   {
+    "label": "C",
+    "text": "垂直传播途径"
+   },
+   {
+    "label": "D",
+    "text": "性接触途径"
+   },
+   {
+    "label": "E",
+    "text": "虫媒叮咬途径"
+   }
+  ],
+  "answer": "A",
+  "explanation": "戊型肝炎主要经粪-口途径传播，暴发流行均由粪便污染水源所致；也可经血液、垂直和密切接触等途径传播，故选A。教材P30。",
+  "source_page": "教材P30",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-013",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "成人感染HBV后最先出现的血清学标志物",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "成人感染HBV后，血清中最先出现的标志物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "HBsAg"
+   },
+   {
+    "label": "B",
+    "text": "抗-HBs"
+   },
+   {
+    "label": "C",
+    "text": "HBeAg"
+   },
+   {
+    "label": "D",
+    "text": "抗-HBe"
+   },
+   {
+    "label": "E",
+    "text": "抗-HBc IgM"
+   }
+  ],
+  "answer": "A",
+  "explanation": "成人感染HBV后最早1～2周、最迟11～12周，血中首先出现HBsAg，故选A。HBeAg出现略晚于HBsAg。教材P28。",
+  "source_page": "教材P28",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-014",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "抗-HBs的临床意义",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "抗-HBs阳性的临床意义是",
+  "options": [
+   {
+    "label": "A",
+    "text": "对HBV有免疫功能"
+   },
+   {
+    "label": "B",
+    "text": "表示现症HBV感染"
+   },
+   {
+    "label": "C",
+    "text": "表示病毒复制活跃"
+   },
+   {
+    "label": "D",
+    "text": "表示传染性强弱"
+   },
+   {
+    "label": "E",
+    "text": "提示既往HAV感染"
+   }
+  ],
+  "answer": "A",
+  "explanation": "抗-HBs为保护性抗体，阳性表示对HBV有免疫功能，见于乙型肝炎恢复期、既往感染及乙肝疫苗接种后，故选A。表示现症感染、病毒复制活跃与传染性的为HBsAg、HBeAg、HBV DNA等。教材P28。",
+  "source_page": "教材P28",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-015",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "丙型肝炎慢性化率",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "丙型肝炎的慢性化率约为",
+  "options": [
+   {
+    "label": "A",
+    "text": "0.01%左右"
+   },
+   {
+    "label": "B",
+    "text": "1%~5%左右"
+   },
+   {
+    "label": "C",
+    "text": "10%~40%左右"
+   },
+   {
+    "label": "D",
+    "text": "60%~85%"
+   },
+   {
+    "label": "E",
+    "text": "约70%左右"
+   }
+  ],
+  "answer": "D",
+  "explanation": "丙型肝炎的慢性化率为60%~85%，一旦慢性化，HCV RNA滴度趋于稳定，自发痊愈少见，故选D。其余依次为甲型肝炎病死率（0.01%）、戊型肝炎病死率（1%~5%）、急性乙型肝炎转为慢性的比率（10%~40%）及急性丁型肝炎重叠感染转为慢性的比率（约70%）。教材P33。",
+  "source_page": "教材P33",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-016",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "丙型肝炎抗病毒治疗指征",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "丙型肝炎患者进行抗病毒治疗的指征是",
+  "options": [
+   {
+    "label": "A",
+    "text": "只要HCV RNA阳性即应治疗"
+   },
+   {
+    "label": "B",
+    "text": "只要抗-HCV阳性即应治疗"
+   },
+   {
+    "label": "C",
+    "text": "只要肝功能异常即应治疗"
+   },
+   {
+    "label": "D",
+    "text": "只要ALT轻度升高即应治疗"
+   },
+   {
+    "label": "E",
+    "text": "只要肝组织学异常即应治疗"
+   }
+  ],
+  "answer": "A",
+  "explanation": "丙型肝炎只要HCV RNA或HCAg阳性即应进行抗病毒治疗，故选A。抗-HCV阳性仅提示感染，需进一步检测HCV RNA。教材P45。",
+  "source_page": "教材P45",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-017",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "慢性肝炎病理分级分期",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "重度慢性肝炎的病理分级分期为",
+  "options": [
+   {
+    "label": "A",
+    "text": "G1~2、S0~2"
+   },
+   {
+    "label": "B",
+    "text": "G3、S1~3"
+   },
+   {
+    "label": "C",
+    "text": "G4、S2~4"
+   },
+   {
+    "label": "D",
+    "text": "G2、S1~2"
+   },
+   {
+    "label": "E",
+    "text": "G4、S0~2"
+   }
+  ],
+  "answer": "C",
+  "explanation": "轻度慢性肝炎为G1~2、S0~2，中度为G3、S1~3，重度为G4、S2~4，故选C。教材P35。",
+  "source_page": "教材P35",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A1-018",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "乙型肝炎疫苗接种程序",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "乙型肝炎疫苗的接种程序是",
+  "options": [
+   {
+    "label": "A",
+    "text": "0、1、6个月"
+   },
+   {
+    "label": "B",
+    "text": "0、1、3个月"
+   },
+   {
+    "label": "C",
+    "text": "0、3、6个月"
+   },
+   {
+    "label": "D",
+    "text": "0、1、12个月"
+   },
+   {
+    "label": "E",
+    "text": "0、6、12个月"
+   }
+  ],
+  "answer": "A",
+  "explanation": "现使用基因工程疫苗，采用0、1、6个月的接种程序，每次注射10~20μg，抗-HBs阳转率可达90%以上，故选A。教材P49。",
+  "source_page": "教材P49",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-001",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "急性甲型黄疸型肝炎诊断（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，26岁，1周前食生蚝后出现发热、全身乏力、食欲缺乏、厌油、尿色加深，查体见巩膜黄染，肝大、质软、有压痛。血清ALT明显升高，抗-HAV IgM阳性。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性甲型黄疸型肝炎"
+   },
+   {
+    "label": "B",
+    "text": "急性乙型黄疸型肝炎"
+   },
+   {
+    "label": "C",
+    "text": "急性戊型黄疸型肝炎"
+   },
+   {
+    "label": "D",
+    "text": "慢性乙型病毒性肝炎"
+   },
+   {
+    "label": "E",
+    "text": "肝外梗阻性黄疸"
+   }
+  ],
+  "answer": "A",
+  "explanation": "进食未煮熟海产品（生蚝）为甲型肝炎的危险因素，患者急性起病伴发热、黄疸、ALT明显升高及抗-HAV IgM阳性，符合急性甲型黄疸型肝炎，故选A。教材P36。",
+  "source_page": "教材P36",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-002",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "HBeAg阳性慢性乙型肝炎诊断（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，35岁，HBsAg阳性5年。查体无异常，ALT反复轻度升高。实验室检查：HBsAg阳性、HBeAg阳性、抗-HBe阴性、HBV DNA阳性，肝组织学检查示肝炎病变。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "HBeAg阳性慢性乙型肝炎"
+   },
+   {
+    "label": "B",
+    "text": "HBeAg阴性慢性乙型肝炎"
+   },
+   {
+    "label": "C",
+    "text": "HBeAg阳性慢性HBV感染"
+   },
+   {
+    "label": "D",
+    "text": "HBeAg阴性慢性HBV感染"
+   },
+   {
+    "label": "E",
+    "text": "隐匿性慢性乙型肝炎"
+   }
+  ],
+  "answer": "A",
+  "explanation": "血清HBsAg、HBeAg与HBV DNA阳性，抗-HBe阴性，ALT持续或反复升高或肝组织学有肝炎病变，诊断为HBeAg阳性慢性乙型肝炎，故选A。仅HBV DNA阳性、ALT正常且肝组织无明显异常者为慢性HBV感染。教材P42-43。",
+  "source_page": "教材P42-43",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-003",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "急性肝衰竭诊断（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，40岁，既往无肝病史。发病第6天出现极度乏力、严重厌食呕吐，黄疸迅速加深并出现嗜睡、性格改变、定向力障碍。凝血酶原活动度35%，血清总胆红素320μmol/L。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性肝衰竭"
+   },
+   {
+    "label": "B",
+    "text": "亚急性肝衰竭"
+   },
+   {
+    "label": "C",
+    "text": "慢加急性肝衰竭"
+   },
+   {
+    "label": "D",
+    "text": "慢性肝衰竭"
+   },
+   {
+    "label": "E",
+    "text": "淤胆型肝炎"
+   }
+  ],
+  "answer": "A",
+  "explanation": "发病2周内出现以Ⅱ度以上肝性脑病为特征的肝衰竭综合征为急性肝衰竭，本例凝血酶原活动度35%低于40%，是诊断肝衰竭的重要依据，故选A。教材P37。",
+  "source_page": "教材P37",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-004",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "亚急性肝衰竭（腹水型）诊断（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者，男，52岁，慢性乙型肝炎病史。起病3周后出现腹胀、尿少及移动性浊音阳性，黄疸持续加深，凝血酶原活动度进行性下降，未出现肝性脑病。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "亚急性腹水型肝衰竭"
+   },
+   {
+    "label": "B",
+    "text": "亚急性脑病型肝衰竭"
+   },
+   {
+    "label": "C",
+    "text": "急性肝功能衰竭"
+   },
+   {
+    "label": "D",
+    "text": "慢加急性肝衰竭"
+   },
+   {
+    "label": "E",
+    "text": "慢性肝功能衰竭"
+   }
+  ],
+  "answer": "A",
+  "explanation": "起病15天至26周内出现肝衰竭综合征者为亚急性肝衰竭，首先出现腹水和/或胸腔积液者称为腹水型，本例符合，故选A。教材P37。",
+  "source_page": "教材P37",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-005",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "淤胆型肝炎诊断（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，48岁，3周前出现乏力、食欲缺乏，随后皮肤瘙痒、粪色变浅、尿色深黄，黄疸持续不退。查血清总胆红素明显升高且以直接胆红素为主，γ-GT及ALP升高，凝血酶原活动度65%。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性淤胆型肝炎"
+   },
+   {
+    "label": "B",
+    "text": "急性黄疸型肝炎"
+   },
+   {
+    "label": "C",
+    "text": "急性重型肝炎"
+   },
+   {
+    "label": "D",
+    "text": "肝外梗阻性黄疸"
+   },
+   {
+    "label": "E",
+    "text": "溶血性黄疸"
+   }
+  ],
+  "answer": "A",
+  "explanation": "黄疸深、皮肤瘙痒、粪色变浅、以直接胆红素为主、γ-GT及ALP升高而凝血酶原活动度大于60%、消化道症状较轻，符合淤胆型肝炎，故选A。教材P38。",
+  "source_page": "教材P38",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-006",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "妊娠晚期合并戊型肝炎（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，28岁，妊娠晚期，近1周出现乏力、食欲缺乏、恶心，2天前尿色加深、皮肤发黄，查体巩膜黄染，抗-HEV IgM阳性。该患者病情特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "较易发生肝衰竭，病死率高"
+   },
+   {
+    "label": "B",
+    "text": "较易进展为慢性肝炎"
+   },
+   {
+    "label": "C",
+    "text": "一般病情轻微可自愈"
+   },
+   {
+    "label": "D",
+    "text": "多表现为无症状携带"
+   },
+   {
+    "label": "E",
+    "text": "与普通人病程一致"
+   }
+  ],
+  "answer": "A",
+  "explanation": "妊娠晚期妇女患戊型肝炎时病情较重，较易发展为肝衰竭，病死率高，妊娠合并戊型肝炎病死率可高达30%以上，故选A。教材P36-37。",
+  "source_page": "教材P36-37",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-007",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "慢性丙型肝炎抗病毒治疗选择（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，45岁，因HCV RNA阳性诊断为慢性丙型肝炎，肝功能代偿良好、无肝硬化。对该患者首选的治疗是",
+  "options": [
+   {
+    "label": "A",
+    "text": "直接抗病毒药物治疗"
+   },
+   {
+    "label": "B",
+    "text": "聚乙二醇干扰素-α"
+   },
+   {
+    "label": "C",
+    "text": "核苷（酸）类似物"
+   },
+   {
+    "label": "D",
+    "text": "利巴韦林单药治疗"
+   },
+   {
+    "label": "E",
+    "text": "仅保肝对症治疗"
+   }
+  ],
+  "answer": "A",
+  "explanation": "慢性丙型肝炎只要HCV RNA阳性即应抗病毒治疗，目前主要使用直接抗病毒药物，泛基因型方案如索磷布韦/维帕他韦，故选A。核苷（酸）类似物为抗HBV药物，利巴韦林主要用于慢性戊型肝炎。教材P46。",
+  "source_page": "教材P46",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-008",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "HBsAg阳性母亲新生儿的免疫预防（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "孕妇HBsAg阳性，分娩一足月新生儿。对该新生儿的免疫预防处理，正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "生后12小时内注射HBIG与疫苗"
+   },
+   {
+    "label": "B",
+    "text": "仅注射乙型肝炎免疫球蛋白"
+   },
+   {
+    "label": "C",
+    "text": "满月后再接种首剂乙肝疫苗"
+   },
+   {
+    "label": "D",
+    "text": "仅接种乙肝疫苗不注射HBIG"
+   },
+   {
+    "label": "E",
+    "text": "暂无需任何免疫预防措施"
+   }
+  ],
+  "answer": "A",
+  "explanation": "HBsAg阳性母亲的新生儿应在出生后12小时内尽早注射乙型肝炎免疫球蛋白，同时接种第一剂乙肝疫苗，并完成全程三剂接种，故选A。教材P49。",
+  "source_page": "教材P49",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-009",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "代偿性肝硬化判断（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者，男，50岁，乙型肝炎肝硬化。查体见脾大，无腹水、无肝性脑病及上消化道出血。实验室检查：白蛋白38g/L，总胆红素30μmol/L，凝血酶原活动度65%。该患者的肝硬化分期是",
+  "options": [
+   {
+    "label": "A",
+    "text": "代偿性肝硬化"
+   },
+   {
+    "label": "B",
+    "text": "失代偿性肝硬化"
+   },
+   {
+    "label": "C",
+    "text": "活动性肝硬化"
+   },
+   {
+    "label": "D",
+    "text": "静止性肝硬化"
+   },
+   {
+    "label": "E",
+    "text": "肝炎肝纤维化"
+   }
+  ],
+  "answer": "A",
+  "explanation": "代偿性肝硬化（Child-Pugh A级）指早期肝硬化，白蛋白不低于35g/L、总胆红素低于35μmol/L、凝血酶原活动度大于60%，可有门静脉高压征但无腹水、肝性脑病或上消化道大出血，故选A。教材P38。",
+  "source_page": "教材P38",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-A2-010",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝衰竭并发肝肾综合征（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "患者，男，46岁，慢性乙型肝炎肝衰竭入院。治疗中出现尿量进行性减少，血肌酐升高，血钠降低，尿常规无明显蛋白及红细胞。既往无肾脏疾病史。该患者最可能出现的并发症是",
+  "options": [
+   {
+    "label": "A",
+    "text": "肝肾综合征"
+   },
+   {
+    "label": "B",
+    "text": "急性肾小管坏死"
+   },
+   {
+    "label": "C",
+    "text": "慢性肾小球肾炎"
+   },
+   {
+    "label": "D",
+    "text": "急性肾盂肾炎"
+   },
+   {
+    "label": "E",
+    "text": "药物性肾损害"
+   }
+  ],
+  "answer": "A",
+  "explanation": "肝衰竭终末期可出现功能性肾衰竭即肝肾综合征，约半数有出血、放腹水、大量利尿、严重感染等诱因，表现为少尿或无尿、氮质血症、电解质失调，尿常规多无明显异常，结合无肾脏基础疾病史，故选A。教材P38。",
+  "source_page": "教材P38",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-B1-001",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝炎病毒的生物学特性（缺陷病毒）",
+  "type": "B1",
+  "polarity": "positive",
+  "b1_group": "N1-5",
+  "bloom": "理解",
+  "stem": "缺陷病毒，其复制与表达抗原须有HBV辅佐的病原体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲型肝炎病毒"
+   },
+   {
+    "label": "B",
+    "text": "乙型肝炎病毒"
+   },
+   {
+    "label": "C",
+    "text": "丙型肝炎病毒"
+   },
+   {
+    "label": "D",
+    "text": "丁型肝炎病毒"
+   },
+   {
+    "label": "E",
+    "text": "戊型肝炎病毒"
+   }
+  ],
+  "answer": "D",
+  "explanation": "HDV为缺陷病毒，在血液中由HBsAg包被，其复制、表达抗原及引起肝损害须有HBV或其他嗜肝DNA病毒辅佐，故选D。教材P29。",
+  "source_page": "教材P29",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-B1-002",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝炎病毒的科属归类（嗜肝DNA病毒科）",
+  "type": "B1",
+  "polarity": "positive",
+  "b1_group": "N1-5",
+  "bloom": "记忆",
+  "stem": "属于嗜肝DNA病毒科的病原体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲型肝炎病毒"
+   },
+   {
+    "label": "B",
+    "text": "乙型肝炎病毒"
+   },
+   {
+    "label": "C",
+    "text": "丙型肝炎病毒"
+   },
+   {
+    "label": "D",
+    "text": "丁型肝炎病毒"
+   },
+   {
+    "label": "E",
+    "text": "戊型肝炎病毒"
+   }
+  ],
+  "answer": "B",
+  "explanation": "HBV是嗜肝DNA病毒科正嗜肝DNA病毒属的一员，故选B。教材P28。",
+  "source_page": "教材P28",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-B1-003",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝炎病毒的科属归类（嗜肝RNA病毒属）",
+  "type": "B1",
+  "polarity": "positive",
+  "b1_group": "N1-5",
+  "bloom": "理解",
+  "stem": "1993年被归类于嗜肝RNA病毒属的病原体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲型肝炎病毒"
+   },
+   {
+    "label": "B",
+    "text": "乙型肝炎病毒"
+   },
+   {
+    "label": "C",
+    "text": "丙型肝炎病毒"
+   },
+   {
+    "label": "D",
+    "text": "丁型肝炎病毒"
+   },
+   {
+    "label": "E",
+    "text": "戊型肝炎病毒"
+   }
+  ],
+  "answer": "A",
+  "explanation": "1993年将HAV归类于微小RNA病毒科中的嗜肝RNA病毒属，该属仅有HAV一个种，故选A。教材P27。",
+  "source_page": "教材P27",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-B1-004",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝炎病毒的发现史（分子克隆）",
+  "type": "B1",
+  "polarity": "positive",
+  "b1_group": "N1-5",
+  "bloom": "理解",
+  "stem": "1989年经分子克隆技术发现的病原体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲型肝炎病毒"
+   },
+   {
+    "label": "B",
+    "text": "乙型肝炎病毒"
+   },
+   {
+    "label": "C",
+    "text": "丙型肝炎病毒"
+   },
+   {
+    "label": "D",
+    "text": "丁型肝炎病毒"
+   },
+   {
+    "label": "E",
+    "text": "戊型肝炎病毒"
+   }
+  ],
+  "answer": "C",
+  "explanation": "HCV是1989年经分子克隆技术发现的，1991年被归为黄病毒科丙型肝炎病毒属，故选C。教材P29。",
+  "source_page": "教材P29",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-B1-005",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝炎病毒的基因组结构",
+  "type": "B1",
+  "polarity": "positive",
+  "b1_group": "N1-5",
+  "bloom": "理解",
+  "stem": "基因组为单股正链RNA且含3个开放读码框的病原体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲型肝炎病毒"
+   },
+   {
+    "label": "B",
+    "text": "乙型肝炎病毒"
+   },
+   {
+    "label": "C",
+    "text": "丙型肝炎病毒"
+   },
+   {
+    "label": "D",
+    "text": "丁型肝炎病毒"
+   },
+   {
+    "label": "E",
+    "text": "戊型肝炎病毒"
+   }
+  ],
+  "answer": "E",
+  "explanation": "HEV基因组为单股正链RNA，全长7.2~7.6kb，含3个开放读码框，故选E。教材P29。",
+  "source_page": "教材P29",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-X-001",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "亚急性重型肝炎病理特点（X型）[源:考研真题 GS-2020-151]",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "亚急性重型肝炎的病理特点有",
+  "options": [
+   {
+    "label": "A",
+    "text": "肝细胞亚大块坏死"
+   },
+   {
+    "label": "B",
+    "text": "肝细胞再生结节形成"
+   },
+   {
+    "label": "C",
+    "text": "残存肝细胞出现明显异型"
+   },
+   {
+    "label": "D",
+    "text": "网状纤维支架塌陷"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "本题来源：2020考研西综真题（GS-2020-151）。亚急性重型肝炎镜下特点为既有肝细胞亚大块坏死，又有结节状肝细胞再生；坏死区网状纤维支架塌陷和胶原化，故选ABD。“残存肝细胞出现明显异型”为肝癌的特点。教材P34-35。[源:考研真题 GS-2020-151]",
+  "source_page": "教材P34-35",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2020-151",
+   "year": 2020,
+   "source": "2020考研西综·第151题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-X-002",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "病毒性肝炎的病原体构成",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "病毒性肝炎的病原体包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲型肝炎病毒"
+   },
+   {
+    "label": "B",
+    "text": "乙型肝炎病毒"
+   },
+   {
+    "label": "C",
+    "text": "丙型肝炎病毒"
+   },
+   {
+    "label": "D",
+    "text": "丁型肝炎病毒"
+   },
+   {
+    "label": "E",
+    "text": "戊型肝炎病毒"
+   }
+  ],
+  "answer": "ABCDE",
+  "explanation": "病毒性肝炎目前按病原学明确分类的有甲、乙、丙、丁、戊五型肝炎病毒，均为主要致病因子，故选ABCDE。教材P26。",
+  "source_page": "教材P26",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-X-003",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "HBeAg阳性慢性乙型肝炎血清学特点",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "HBeAg阳性慢性乙型肝炎的血清学特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "血清HBsAg阳性"
+   },
+   {
+    "label": "B",
+    "text": "血清HBeAg阳性"
+   },
+   {
+    "label": "C",
+    "text": "血清HBV DNA阳性"
+   },
+   {
+    "label": "D",
+    "text": "血清抗-HBe阳性"
+   },
+   {
+    "label": "E",
+    "text": "血清ALT持续或反复升高"
+   }
+  ],
+  "answer": "ABCE",
+  "explanation": "HBeAg阳性慢性乙型肝炎：血清HBsAg、HBeAg和HBV DNA阳性，抗-HBe阴性，ALT持续或反复升高或肝组织学有肝炎病变，故选ABCE。教材P42-43。",
+  "source_page": "教材P42-43",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-X-004",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "肝衰竭的常见诱因",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "重症肝炎（肝衰竭）的常见诱因有",
+  "options": [
+   {
+    "label": "A",
+    "text": "重叠感染其他肝炎病毒"
+   },
+   {
+    "label": "B",
+    "text": "过度疲劳与精神刺激"
+   },
+   {
+    "label": "C",
+    "text": "饮酒及应用肝损伤药物"
+   },
+   {
+    "label": "D",
+    "text": "合并细菌感染"
+   },
+   {
+    "label": "E",
+    "text": "规律作息与清淡饮食"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "肝衰竭病因及诱因包括重叠感染、机体免疫状况、妊娠、HBV前C区突变、过度疲劳、精神刺激、饮酒、应用肝损伤药物、合并细菌感染及合并症等，故选ABCD；规律作息与清淡饮食为保护因素而非诱因。教材P37。",
+  "source_page": "教材P37",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-X-005",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "血清HBV DNA阳性、ALT正常者的抗病毒指征",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "血清HBV DNA阳性、ALT正常的慢性HBV感染者，符合下列哪些情况应进行抗病毒治疗",
+  "options": [
+   {
+    "label": "A",
+    "text": "有乙型肝炎肝硬化家族史"
+   },
+   {
+    "label": "B",
+    "text": "有肝细胞癌家族史"
+   },
+   {
+    "label": "C",
+    "text": "年龄大于30岁"
+   },
+   {
+    "label": "D",
+    "text": "肝组织学提示明显炎症或纤维化"
+   },
+   {
+    "label": "E",
+    "text": "无任何肝病相关危险因素"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "血清HBV DNA阳性者无论ALT高低，只要符合下列之一即应抗病毒治疗：有乙型肝炎肝硬化或肝细胞癌家族史、年龄大于30岁、无创或肝组织学检查提示明显炎症或纤维化、HBV相关肝外表现，故选ABCD。教材P44-45。",
+  "source_page": "教材P44-45",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-X-006",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "病毒性肝炎的预防措施",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "关于病毒性肝炎的预防措施，下列正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲型、戊型肝炎重在切断粪-口传播途径"
+   },
+   {
+    "label": "B",
+    "text": "乙型肝炎疫苗是预防和控制乙型肝炎最关键的疫苗"
+   },
+   {
+    "label": "C",
+    "text": "慢性HBV感染母亲的新生儿应注射乙型肝炎免疫球蛋白"
+   },
+   {
+    "label": "D",
+    "text": "加强血制品管理并严格筛选献血员"
+   },
+   {
+    "label": "E",
+    "text": "目前丙型和丁型肝炎已有特异性疫苗"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "甲型、戊型肝炎以切断粪-口传播途径为主；接种乙型肝炎疫苗是我国预防和控制乙型肝炎流行的最关键措施；HBsAg阳性母亲的新生儿应注射乙型肝炎免疫球蛋白；应加强血制品管理与献血员筛选；目前对丙型和丁型肝炎尚缺乏特异性免疫预防措施，故E错误。故选ABCD。教材P49-50。",
+  "source_page": "教材P49-50",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M02-X-007",
+  "module": "M02",
+  "module_name": "病毒性肝炎",
+  "topic": "HBV所致肝衰竭的三重打击机制",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "分析",
+  "stem": "关于HBV所致肝衰竭的发病机制，下列正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "免疫损伤形成炎症风暴致肝细胞大片坏死"
+   },
+   {
+    "label": "B",
+    "text": "肝细胞肿胀及血管改变导致缺血缺氧"
+   },
+   {
+    "label": "C",
+    "text": "肠道细菌易位与内毒素加重肝损伤"
+   },
+   {
+    "label": "D",
+    "text": "免疫损伤、缺血缺氧及内毒素损伤构成三重打击"
+   },
+   {
+    "label": "E",
+    "text": "由HBV直接杀死肝细胞而无免疫参与"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "HBV所致肝衰竭基于机体变态反应，产生大量抗原-抗体复合物激活补体、释放TNF及IL-1、IL-6等形成炎症风暴，为第一重打击；炎症致肝细胞肿胀、血管改变引起缺血缺氧为第二重打击；肠菌异位、内毒素释放为第三重打击；免疫损伤、缺血/缺氧及内毒素损伤三重打击是主要机制，故选ABCD。教材P33。",
+  "source_page": "教材P33",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-001",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹的病原学（病毒分类）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "麻疹病毒的分类归属是",
+  "options": [
+   {
+    "label": "A",
+    "text": "副黏病毒科"
+   },
+   {
+    "label": "B",
+    "text": "正黏病毒科"
+   },
+   {
+    "label": "C",
+    "text": "疱疹病毒科"
+   },
+   {
+    "label": "D",
+    "text": "黄病毒科"
+   },
+   {
+    "label": "E",
+    "text": "小RNA病毒科"
+   }
+  ],
+  "answer": "A",
+  "explanation": "麻疹病毒属于副黏病毒科、麻疹病毒属，呈球状或丝状，外有脂蛋白包膜，核衣壳内为单股负链RNA，只有1个血清型；包膜的血凝素（H）、融合蛋白（F）和基质蛋白（M）是主要致病物质。教材P90-91。",
+  "source_page": "教材P90-91",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-002",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹合并肺炎患者的传染期",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "麻疹患者具有传染性的时期一般自发病前2天至出疹后5天，若合并肺炎等并发症，其传染性可持续至",
+  "options": [
+   {
+    "label": "A",
+    "text": "出疹后3天"
+   },
+   {
+    "label": "B",
+    "text": "出疹后5天"
+   },
+   {
+    "label": "C",
+    "text": "出疹后7天"
+   },
+   {
+    "label": "D",
+    "text": "出疹后10天"
+   },
+   {
+    "label": "E",
+    "text": "出疹后14天"
+   }
+  ],
+  "answer": "D",
+  "explanation": "麻疹发病前2天至出疹后5天内均具有传染性，有肺炎等合并症的患者传染性可持续至出疹后10天。病毒主要存在于患者口、鼻、咽、眼结膜分泌物中。教材P91。",
+  "source_page": "教材P91",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-003",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹黏膜斑（科氏斑）的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "麻疹前驱期的特征性体征麻疹黏膜斑（科氏斑）多位于",
+  "options": [
+   {
+    "label": "A",
+    "text": "双侧第一磨牙对面的颊黏膜"
+   },
+   {
+    "label": "B",
+    "text": "双侧第二磨牙对面的颊黏膜"
+   },
+   {
+    "label": "C",
+    "text": "双侧软腭边缘的黏膜"
+   },
+   {
+    "label": "D",
+    "text": "舌腹侧近舌系带的黏膜"
+   },
+   {
+    "label": "E",
+    "text": "咽后壁中央的黏膜"
+   }
+  ],
+  "answer": "B",
+  "explanation": "麻疹黏膜斑位于双侧第二磨牙对面的颊黏膜上，充血粗糙，为0.5～1.0mm针尖大小白色点状突起、周围有红晕，发病后2～3天出现，90%以上患者可见，是前驱期特征性体征和临床诊断依据。教材P92。",
+  "source_page": "教材P92",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-004",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "典型麻疹的出疹顺序",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "典型麻疹皮疹出现的先后顺序是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耳后发际、颜面颈、躯干四肢、手足"
+   },
+   {
+    "label": "B",
+    "text": "颜面颈、耳后发际、躯干四肢、手足"
+   },
+   {
+    "label": "C",
+    "text": "躯干四肢、颜面颈、耳后发际、手足"
+   },
+   {
+    "label": "D",
+    "text": "手足、躯干四肢、颜面颈、耳后发际"
+   },
+   {
+    "label": "E",
+    "text": "颜面颈、躯干、四肢、耳后发际"
+   }
+  ],
+  "answer": "A",
+  "explanation": "典型麻疹出疹期皮疹首先见于耳后、发际，自上而下依次蔓延至颜面、颈部、躯干及四肢，2～3天遍及全身，最后达手掌与足底。教材P92。",
+  "source_page": "教材P92",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-005",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹最常见的并发症",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "麻疹最常见的并发症和死亡原因是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性喉炎"
+   },
+   {
+    "label": "B",
+    "text": "病毒性脑炎"
+   },
+   {
+    "label": "C",
+    "text": "中毒性心肌炎"
+   },
+   {
+    "label": "D",
+    "text": "化脓性中耳炎"
+   },
+   {
+    "label": "E",
+    "text": "支气管肺炎"
+   }
+  ],
+  "answer": "E",
+  "explanation": "肺炎为麻疹最常见的并发症和死亡原因，多见于5岁以下患儿，占麻疹死亡原因的90%以上；麻疹病毒本身引起的肺炎多不严重，继发的细菌性肺炎较为严重。教材P93。",
+  "source_page": "教材P93",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-006",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹患者的隔离期",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "无并发症的麻疹患者应隔离至",
+  "options": [
+   {
+    "label": "A",
+    "text": "出疹后3天"
+   },
+   {
+    "label": "B",
+    "text": "出疹后10天"
+   },
+   {
+    "label": "C",
+    "text": "出疹后5天"
+   },
+   {
+    "label": "D",
+    "text": "出疹后7天"
+   },
+   {
+    "label": "E",
+    "text": "出疹后14天"
+   }
+  ],
+  "answer": "C",
+  "explanation": "对麻疹患者应做到早诊断、早报告、早隔离、早治疗；患者隔离至出疹后5天，伴呼吸道等并发症者应延长到出疹后10天，易感接触者检疫期为3周。教材P94-95。",
+  "source_page": "教材P94-95",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-007",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "水痘-带状疱疹病毒的核酸类型",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "水痘-带状疱疹病毒的核酸类型是",
+  "options": [
+   {
+    "label": "A",
+    "text": "单股正链RNA"
+   },
+   {
+    "label": "B",
+    "text": "单股负链RNA"
+   },
+   {
+    "label": "C",
+    "text": "单链DNA"
+   },
+   {
+    "label": "D",
+    "text": "双链RNA"
+   },
+   {
+    "label": "E",
+    "text": "双链DNA"
+   }
+  ],
+  "answer": "E",
+  "explanation": "水痘-带状疱疹病毒属于人类疱疹病毒α科3型，呈球形，外层为脂蛋白包膜，核心为双链DNA；病毒仅有一个血清型，人是唯一宿主。教材P99。",
+  "source_page": "教材P99",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-008",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "水痘的皮疹特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "水痘皮疹的典型特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "离心性分布，仅见单一批次疱疹"
+   },
+   {
+    "label": "B",
+    "text": "沿神经呈带状分布，伴明显神经痛"
+   },
+   {
+    "label": "C",
+    "text": "出疹后遗留明显色素沉着与脱屑"
+   },
+   {
+    "label": "D",
+    "text": "躯干多见，斑丘疹、疱疹、结痂并存"
+   },
+   {
+    "label": "E",
+    "text": "皮疹自手足开始向躯干扩散"
+   }
+  ],
+  "answer": "D",
+  "explanation": "水痘皮疹呈向心性分布，首先见于躯干部，以后延及面部，四肢较少；初为红色斑疹，数小时后变为丘疹并发展成疱疹。因皮疹分批出现，故同一部位可同时见斑丘疹、疱疹和结痂，为本病临床特点。教材P100。",
+  "source_page": "教材P100",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-009",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "水痘的潜伏期",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "水痘的潜伏期通常为",
+  "options": [
+   {
+    "label": "A",
+    "text": "3～5天"
+   },
+   {
+    "label": "B",
+    "text": "7～10天"
+   },
+   {
+    "label": "C",
+    "text": "10～21天"
+   },
+   {
+    "label": "D",
+    "text": "14～16天"
+   },
+   {
+    "label": "E",
+    "text": "21～28天"
+   }
+  ],
+  "answer": "C",
+  "explanation": "水痘潜伏期为10～21天，以14～16天为多见。典型水痘可分为前驱期和出疹期两期。教材P100。",
+  "source_page": "教材P100",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-010",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "水痘治疗禁用糖皮质激素",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "理解",
+  "stem": "治疗水痘时**不宜**使用的药物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "糖皮质激素"
+   },
+   {
+    "label": "B",
+    "text": "阿昔洛韦"
+   },
+   {
+    "label": "C",
+    "text": "伐昔洛韦"
+   },
+   {
+    "label": "D",
+    "text": "炉甘石洗剂"
+   },
+   {
+    "label": "E",
+    "text": "阿糖腺苷"
+   }
+  ],
+  "answer": "A",
+  "explanation": "治疗水痘不宜使用糖皮质激素；病程早期应用阿昔洛韦有一定疗效，新一代抗疱疹病毒药物伐昔洛韦和泛昔洛韦具有更好的疗效和安全性，阿糖腺苷也可试用，皮肤瘙痒者可用炉甘石洗剂涂擦。教材P102。",
+  "source_page": "教材P102",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-011",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "带状疱疹的临床特征",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "带状疱疹最具特征性的表现是",
+  "options": [
+   {
+    "label": "A",
+    "text": "双侧对称分布的带状成簇水疱"
+   },
+   {
+    "label": "B",
+    "text": "单侧周围神经分布区带状成簇水疱伴神经痛"
+   },
+   {
+    "label": "C",
+    "text": "单侧肢体散在分布的红色斑丘疹"
+   },
+   {
+    "label": "D",
+    "text": "全身向心性分布的水疱与结痂并存"
+   },
+   {
+    "label": "E",
+    "text": "口腔颊黏膜针尖样白色斑点伴红晕"
+   }
+  ],
+  "answer": "B",
+  "explanation": "带状疱疹临床特征为沿身体单侧体表神经分布的相应皮肤区域出现呈带状的成簇水疱，伴有神经病理性疼痛，多为一侧性，很少超过躯体中线。教材P102-103。",
+  "source_page": "教材P102-103",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-012",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "带状疱疹的好发部位",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "带状疱疹最好发的部位是",
+  "options": [
+   {
+    "label": "A",
+    "text": "颈神经分布区"
+   },
+   {
+    "label": "B",
+    "text": "三叉神经分布区"
+   },
+   {
+    "label": "C",
+    "text": "腰骶部神经分布区"
+   },
+   {
+    "label": "D",
+    "text": "肋间神经分布区"
+   },
+   {
+    "label": "E",
+    "text": "坐骨神经分布区"
+   }
+  ],
+  "answer": "D",
+  "explanation": "带状疱疹可发生于任何感觉神经分布区，好发部位依次为肋间神经、颈神经、三叉神经及腰骶部神经。教材P103。",
+  "source_page": "教材P103",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A1-013",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹属乙类传染病应网络直报 [源:考研真题 GS-2020-112]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "医疗中患者的健康信息属于保密范围，医生为患者保密是义务，但并非任何情况下都需保密。据此，下列医生的做法能够得到伦理辩护的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "将肿瘤患者病理诊断告知单位领导"
+   },
+   {
+    "label": "B",
+    "text": "按保险公司要求提供患者病历资料"
+   },
+   {
+    "label": "C",
+    "text": "将麻疹患者信息上报相关部门"
+   },
+   {
+    "label": "D",
+    "text": "将梅毒患者感染信息告知同事"
+   },
+   {
+    "label": "E",
+    "text": "将乙肝患者化验结果告知其亲属"
+   }
+  ],
+  "answer": "C",
+  "explanation": "本题来源：2020 考研西综真题（GS-2020-112）。麻疹属于《传染病防治法》规定的乙类传染病，应在诊断后通过传染病疫情监测信息系统上报，故将麻疹患者信息上报相关部门能够得到伦理辩护；A、B、D、E 均违背保密原则。题干与选项依据源题精简以符合选项长度规范，考查点与答案不变。教材P90。",
+  "source_page": "教材P90",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2020-112",
+   "year": 2020,
+   "source": "2020考研西综·第112题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A2-001",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹的临床诊断（科氏斑）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，4岁。发热3天，伴流涕、咳嗽、畏光、流泪。查体：结膜充血，双侧第二磨牙对面的颊黏膜可见针尖大小的白色点状突起，周围有红晕。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "风疹"
+   },
+   {
+    "label": "B",
+    "text": "幼儿急疹"
+   },
+   {
+    "label": "C",
+    "text": "麻疹"
+   },
+   {
+    "label": "D",
+    "text": "猩红热"
+   },
+   {
+    "label": "E",
+    "text": "药物疹"
+   }
+  ],
+  "answer": "C",
+  "explanation": "该患儿有发热、上呼吸道卡他症状、结膜充血、畏光，并于发热后2～3天出现麻疹黏膜斑（科氏斑），为麻疹前驱期特征性体征和临床诊断依据，故最可能为麻疹。教材P92、P94。",
+  "source_page": "教材P92",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A2-002",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹并发细菌性肺炎",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "麻疹患儿，皮疹消退后体温复升，咳嗽加重，咳脓痰，肺部闻及明显湿啰音，胸片示多段大片炎症。最可能的并发症是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性感染性喉炎"
+   },
+   {
+    "label": "B",
+    "text": "中毒性心肌炎"
+   },
+   {
+    "label": "C",
+    "text": "麻疹病毒性脑炎"
+   },
+   {
+    "label": "D",
+    "text": "亚急性硬化性全脑炎"
+   },
+   {
+    "label": "E",
+    "text": "继发性细菌性肺炎"
+   }
+  ],
+  "answer": "E",
+  "explanation": "患儿在皮疹消退后病情突然加重，咳嗽、咳脓痰，肺部有明显啰音，胸片示大片或多段炎症，符合麻疹继发细菌性肺炎的表现；肺炎为麻疹最常见的并发症和死亡原因。教材P93。",
+  "source_page": "教材P93",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A2-003",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "水痘的临床诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，6岁。发热1天，躯干出现红色斑疹、丘疹，数小时后变为椭圆形水疱，周围有红晕，伴瘙痒，且皮疹分批出现。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "风疹"
+   },
+   {
+    "label": "B",
+    "text": "麻疹"
+   },
+   {
+    "label": "C",
+    "text": "手足口病"
+   },
+   {
+    "label": "D",
+    "text": "水痘"
+   },
+   {
+    "label": "E",
+    "text": "脓疱疮"
+   }
+  ],
+  "answer": "D",
+  "explanation": "患儿皮疹呈向心性分布，初为红色斑疹、丘疹，数小时后发展为椭圆形疱疹，周围有红晕、伴瘙痒，且分批出现，符合水痘的皮疹特点，故最可能的诊断为水痘。教材P100。",
+  "source_page": "教材P100",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A2-004",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "带状疱疹的临床诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，62岁。左侧胸背部沿肋间神经分布区出现成簇水疱，伴剧烈神经痛，多为一侧性。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "单纯疱疹"
+   },
+   {
+    "label": "B",
+    "text": "带状疱疹"
+   },
+   {
+    "label": "C",
+    "text": "接触性皮炎"
+   },
+   {
+    "label": "D",
+    "text": "脂溢性皮炎"
+   },
+   {
+    "label": "E",
+    "text": "肋间神经痛"
+   }
+  ],
+  "answer": "B",
+  "explanation": "老年患者出现沿单侧肋间神经分布区成簇水疱伴剧烈神经痛，符合带状疱疹的典型表现；须与单纯疱疹鉴别，后者常反复发生、分布无规律、疼痛不明显。教材P103。",
+  "source_page": "教材P103",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A2-005",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹接触者的被动免疫",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "3岁易感儿童，无麻疹疫苗接种史，与其患麻疹的母亲有密切接触。为预防发病，应在接触后尽早采取的措施是",
+  "options": [
+   {
+    "label": "A",
+    "text": "皮下注射麻疹疫苗"
+   },
+   {
+    "label": "B",
+    "text": "口服阿昔洛韦"
+   },
+   {
+    "label": "C",
+    "text": "肌内注射免疫球蛋白"
+   },
+   {
+    "label": "D",
+    "text": "静脉注射糖皮质激素"
+   },
+   {
+    "label": "E",
+    "text": "肌内注射青霉素"
+   }
+  ],
+  "answer": "C",
+  "explanation": "体弱及年幼的易感者接触麻疹患者后应立即采用被动免疫，在接触患者5天内肌内注射免疫球蛋白；本例儿童易感且已有接触，故应尽早肌内注射免疫球蛋白。教材P95。",
+  "source_page": "教材P95",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-A2-006",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹乙类传染病应网络直报（变体）[源:考研真题 GS-2020-112]",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "接诊医生诊断一例麻疹患儿后，依据《中华人民共和国传染病防治法》，正确的处置是",
+  "options": [
+   {
+    "label": "A",
+    "text": "因保护患者隐私不作上报"
+   },
+   {
+    "label": "B",
+    "text": "将麻疹病例信息上报相关部门"
+   },
+   {
+    "label": "C",
+    "text": "待患儿痊愈后再补报"
+   },
+   {
+    "label": "D",
+    "text": "待麻疹痊愈后再行上报"
+   },
+   {
+    "label": "E",
+    "text": "由患儿家属自行决定"
+   }
+  ],
+  "answer": "B",
+  "explanation": "改编自 2020 考研西综真题（GS-2020-112）。麻疹属于《传染病防治法》规定的乙类传染病，诊断后应依法通过传染病疫情监测信息系统上报，故正确处置是将麻疹病例信息上报相关部门。教材P90。",
+  "source_page": "教材P90",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2020-112",
+   "year": 2020,
+   "source": "2020考研西综·第112题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-X-001",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹的传染源与传播途径",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于麻疹的传染源和传播途径，说法正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "患者是唯一的传染源"
+   },
+   {
+    "label": "B",
+    "text": "发病前2天至出疹后5天有传染性"
+   },
+   {
+    "label": "C",
+    "text": "主要经呼吸道飞沫传播"
+   },
+   {
+    "label": "D",
+    "text": "密切接触者亦可经污染的手传播"
+   },
+   {
+    "label": "E",
+    "text": "隐性感染者是主要传染源"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "麻疹患者是唯一的传染源，发病前2天至出疹后5天内有传染性；经呼吸道飞沫传播是主要途径，密切接触者亦可经污染病毒的手传播；病毒携带者和隐性感染者较少见，作为传染源意义不大。教材P91。",
+  "source_page": "教材P91",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-X-002",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "水痘的传播途径",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "水痘的传播途径包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "呼吸道飞沫传播"
+   },
+   {
+    "label": "B",
+    "text": "直接接触疱疹液传播"
+   },
+   {
+    "label": "C",
+    "text": "接触被污染的用具间接传播"
+   },
+   {
+    "label": "D",
+    "text": "粪-口途径传播"
+   },
+   {
+    "label": "E",
+    "text": "经输血传播"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "水痘-带状疱疹病毒主要通过呼吸道飞沫和直接接触传播，亦可通过接触被污染的用具间接传播；经粪-口和输血途径不是水痘的传播途径。教材P99-100。",
+  "source_page": "教材P99-100",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-X-003",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "带状疱疹的临床特点",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "带状疱疹的临床特点有",
+  "options": [
+   {
+    "label": "A",
+    "text": "多为单侧分布，很少超过躯体中线"
+   },
+   {
+    "label": "B",
+    "text": "疱疹沿神经支配区呈带状排列"
+   },
+   {
+    "label": "C",
+    "text": "伴有显著的神经病理性疼痛"
+   },
+   {
+    "label": "D",
+    "text": "好发于肋间神经及三叉神经"
+   },
+   {
+    "label": "E",
+    "text": "皮疹多分布于身体两侧对称部位"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "带状疱疹多为一侧性，很少超过躯体中线，疱疹沿神经支配的皮肤呈带状排列，伴显著神经痛；好发部位依次为肋间神经、颈神经、三叉神经及腰骶部神经。多为一侧而非两侧对称分布。教材P102-103。",
+  "source_page": "教材P102-103",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-X-004",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹与水痘的鉴别",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "分析",
+  "stem": "关于麻疹与水痘的鉴别，说法正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "麻疹出疹自耳后发际开始，自上而下蔓延"
+   },
+   {
+    "label": "B",
+    "text": "水痘皮疹呈向心性分布，以躯干为多"
+   },
+   {
+    "label": "C",
+    "text": "两者皮疹消退后均可遗留明显瘢痕"
+   },
+   {
+    "label": "D",
+    "text": "麻疹前驱期可见麻疹黏膜斑"
+   },
+   {
+    "label": "E",
+    "text": "水痘皮疹分批出现，斑丘疹、疱疹与结痂并存"
+   }
+  ],
+  "answer": "ABDE",
+  "explanation": "麻疹出疹自耳后发际开始自上而下蔓延，前驱期可见麻疹黏膜斑；水痘皮疹呈向心性分布、以躯干为多，且分批出现，可同时见斑丘疹、疱疹和结痂。水痘结痂脱落后一般不留瘢痕，故C错误。教材P92、P100。",
+  "source_page": "教材P92",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-X-005",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "麻疹的并发症",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "麻疹的并发症包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉炎"
+   },
+   {
+    "label": "B",
+    "text": "肺炎"
+   },
+   {
+    "label": "C",
+    "text": "心肌炎"
+   },
+   {
+    "label": "D",
+    "text": "脑炎"
+   },
+   {
+    "label": "E",
+    "text": "亚急性硬化性全脑炎"
+   }
+  ],
+  "answer": "ABCDE",
+  "explanation": "麻疹的并发症包括喉炎、肺炎、心肌炎、脑炎和亚急性硬化性全脑炎（SSPE）；其中肺炎为最常见的并发症和死亡原因，SSPE为麻疹的远期并发症。教材P93-94。",
+  "source_page": "教材P93",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-X-006",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "水痘的并发症与治疗",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "分析",
+  "stem": "关于水痘，说法正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "孕妇患水痘可致胎儿畸形或新生儿水痘"
+   },
+   {
+    "label": "B",
+    "text": "成人水痘症状较重，易并发水痘肺炎"
+   },
+   {
+    "label": "C",
+    "text": "治疗水痘可早期应用阿昔洛韦"
+   },
+   {
+    "label": "D",
+    "text": "治疗水痘应首选糖皮质激素"
+   },
+   {
+    "label": "E",
+    "text": "疱疹继发细菌感染可致脓疱、蜂窝织炎"
+   }
+  ],
+  "answer": "ABCE",
+  "explanation": "妊娠20周前患水痘可累及胎儿，产前数天内患水痘可致新生儿水痘；成人水痘症状较重、易并发水痘肺炎；病程早期应用阿昔洛韦有一定疗效；皮疹继发细菌感染可致化脓性感染、丹毒和蜂窝织炎。治疗水痘不宜使用糖皮质激素，故D错误。教材P100-102。",
+  "source_page": "教材P100-102",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M03-X-007",
+  "module": "M03",
+  "module_name": "麻疹、水痘和带状疱疹",
+  "topic": "水痘-带状疱疹病毒的病原学",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于水痘-带状疱疹病毒，说法正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "属人类疱疹病毒α科3型"
+   },
+   {
+    "label": "B",
+    "text": "核心为双链DNA"
+   },
+   {
+    "label": "C",
+    "text": "仅有一个血清型，人是唯一宿主"
+   },
+   {
+    "label": "D",
+    "text": "胸腺嘧啶激酶与其潜伏感染有关"
+   },
+   {
+    "label": "E",
+    "text": "病毒在痂皮中可长期存活"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "水痘-带状疱疹病毒属人类疱疹病毒α科3型，核心为双链DNA，仅有一个血清型，人是唯一宿主；其胸腺嘧啶激酶与潜伏感染、引起带状疱疹有关。该病毒抵抗力弱，不能在痂皮中存活，故E错误。教材P99。",
+  "source_page": "教材P99",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-001",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病的病原学（病毒形态与核酸类型）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "关于狂犬病毒的形态与结构，正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "球形，中心为单股正链RNA"
+   },
+   {
+    "label": "B",
+    "text": "杆状，中心为双股线性DNA"
+   },
+   {
+    "label": "C",
+    "text": "子弹形，中心为单股负链RNA"
+   },
+   {
+    "label": "D",
+    "text": "螺旋形，中心为单股负链RNA"
+   },
+   {
+    "label": "E",
+    "text": "砖形，中心为双股环状DNA"
+   }
+  ],
+  "answer": "C",
+  "explanation": "狂犬病毒属弹状病毒科拉沙病毒属，形似子弹，约75nm×180nm，病毒中心为单股负链RNA，外面为核衣壳和含脂蛋白及糖蛋白的包膜。球形、杆状、螺旋形、砖形均非其形态。教材P134。",
+  "source_page": "教材P134",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-002",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病的传染源",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "关于狂犬病传染源的描述，正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "患者是主要传染源"
+   },
+   {
+    "label": "B",
+    "text": "主要传染源为病犬"
+   },
+   {
+    "label": "C",
+    "text": "人与人之间易于传播"
+   },
+   {
+    "label": "D",
+    "text": "家养犬均不携带病毒"
+   },
+   {
+    "label": "E",
+    "text": "野生动物不携带病毒"
+   }
+  ],
+  "answer": "B",
+  "explanation": "带狂犬病毒的动物是本病的传染源，我国狂犬病的主要传染源是病犬，其次为猫、猪、牛、马等家畜。狂犬病患者不是传染源，不形成人与人之间的传染。教材P134。",
+  "source_page": "教材P134",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-003",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病的潜伏期",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "狂犬病的潜伏期通常为",
+  "options": [
+   {
+    "label": "A",
+    "text": "10～20天"
+   },
+   {
+    "label": "B",
+    "text": "20～90天"
+   },
+   {
+    "label": "C",
+    "text": "90～180天"
+   },
+   {
+    "label": "D",
+    "text": "180～365天"
+   },
+   {
+    "label": "E",
+    "text": "365天以上"
+   }
+  ],
+  "answer": "B",
+  "explanation": "狂犬病潜伏期为20～90天，也可长达10年以上；潜伏期长短与年龄、伤口部位、伤口深浅、入侵病毒数量和毒力等因素相关。教材P135。",
+  "source_page": "教材P135",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-004",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂躁型狂犬病的三期临床经过",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "狂躁型狂犬病的典型临床经过依次是",
+  "options": [
+   {
+    "label": "A",
+    "text": "前驱期、麻痹期、兴奋期"
+   },
+   {
+    "label": "B",
+    "text": "兴奋期、前驱期、麻痹期"
+   },
+   {
+    "label": "C",
+    "text": "前驱期、兴奋期、麻痹期"
+   },
+   {
+    "label": "D",
+    "text": "麻痹期、前驱期、兴奋期"
+   },
+   {
+    "label": "E",
+    "text": "兴奋期、麻痹期、前驱期"
+   }
+  ],
+  "answer": "C",
+  "explanation": "狂躁型（脑炎型）典型临床经过分为前驱期、兴奋期、麻痹期三期，从出现症状到死亡的平均时间为7.8天。教材P135。",
+  "source_page": "教材P135",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-005",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病特征性包涵体（内氏小体）[源:考研真题 GS-2002-045]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "具有诊断意义的狂犬病特征性包涵体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "Councilman小体"
+   },
+   {
+    "label": "B",
+    "text": "内氏小体"
+   },
+   {
+    "label": "C",
+    "text": "Rusell小体"
+   },
+   {
+    "label": "D",
+    "text": "Mallory小体"
+   },
+   {
+    "label": "E",
+    "text": "Aschoff小体"
+   }
+  ],
+  "answer": "B",
+  "explanation": "改编自2002考研西综真题（GS-2002-045）。狂犬病特征性病变是嗜酸性包涵体，称内氏小体（Negri body），为狂犬病毒的集落，最常见于海马及小脑浦肯野细胞中，HE染色呈樱桃红色，具有诊断意义。Councilman小体见于急性病毒性肝炎，Rusell小体见于浆细胞，Mallory小体见于肝细胞，Aschoff小体见于风湿病。教材P135。",
+  "source_page": "教材P135",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2002-045",
+   "year": 2002,
+   "source": "2002考研西综·第45题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-006",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病暴露后伤口冲洗时间",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "被可疑动物咬伤后，用肥皂水和流动清水交替冲洗所有咬伤处，冲洗时间约为",
+  "options": [
+   {
+    "label": "A",
+    "text": "5分钟"
+   },
+   {
+    "label": "B",
+    "text": "10分钟"
+   },
+   {
+    "label": "C",
+    "text": "15分钟"
+   },
+   {
+    "label": "D",
+    "text": "30分钟"
+   },
+   {
+    "label": "E",
+    "text": "60分钟"
+   }
+  ],
+  "answer": "C",
+  "explanation": "伤口冲洗：用肥皂水（或其他弱碱性清洁剂、专业冲洗液）和一定压力的流动清水交替彻底冲洗所有咬伤和抓伤处约15分钟，然后用生理盐水将伤口洗净，最后进行消毒处理。教材P136。",
+  "source_page": "教材P136",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-007",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病暴露后5针免疫程序",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "暴露后采用5针免疫程序接种狂犬病疫苗，其接种日次安排是",
+  "options": [
+   {
+    "label": "A",
+    "text": "第0、1、3、7、14天"
+   },
+   {
+    "label": "B",
+    "text": "第0、7、14、21、28天"
+   },
+   {
+    "label": "C",
+    "text": "第1、3、7、14、28天"
+   },
+   {
+    "label": "D",
+    "text": "第0、3、7、14、28天"
+   },
+   {
+    "label": "E",
+    "text": "第0、3、7、21、30天"
+   }
+  ],
+  "answer": "D",
+  "explanation": "暴露后5针免疫程序：于第0（注射当天）、3、7、14和28天各注射狂犬病疫苗1剂次，共注射5剂次。另有“2-1-1”程序：第0天注射2剂次，第7、21天各注射1剂次，共注射4剂次。教材P137。",
+  "source_page": "教材P137",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-008",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "HIV的病原学（核酸类型与科属）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "关于人类免疫缺陷病毒的病原学特征，正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "单股DNA病毒，属嗜肝DNA病毒科"
+   },
+   {
+    "label": "B",
+    "text": "单股RNA病毒，属反转录病毒科"
+   },
+   {
+    "label": "C",
+    "text": "双股RNA病毒，属呼肠孤病毒科"
+   },
+   {
+    "label": "D",
+    "text": "双股DNA病毒，属疱疹病毒科"
+   },
+   {
+    "label": "E",
+    "text": "负链RNA病毒，属弹状病毒科"
+   }
+  ],
+  "answer": "B",
+  "explanation": "HIV为单链RNA病毒，属于反转录病毒科慢病毒属中的人类慢病毒组；HIV为直径约100～120nm的球形颗粒，由核心和包膜两部分组成。教材P138。",
+  "source_page": "教材P138",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-009",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "HIV主要感染细胞（靶细胞）[源:考研真题 GS-2024-033]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "HIV 感染人体后主要侵犯、破坏的靶细胞是",
+  "options": [
+   {
+    "label": "A",
+    "text": "辅助性T细胞"
+   },
+   {
+    "label": "B",
+    "text": "细胞毒性T细胞"
+   },
+   {
+    "label": "C",
+    "text": "B淋巴细胞"
+   },
+   {
+    "label": "D",
+    "text": "中性粒细胞"
+   },
+   {
+    "label": "E",
+    "text": "单核巨噬细胞"
+   }
+  ],
+  "answer": "A",
+  "explanation": "改编自2024考研西综真题（GS-2024-033）。HIV主要感染CD4⁺T淋巴细胞，CD4分子作为病毒受体，即主要侵犯辅助性T淋巴细胞；除CD4⁺T淋巴细胞外，表达CD4分子的宿主细胞均可能作为靶细胞受到HIV侵袭。教材P138。",
+  "source_page": "教材P138",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2024-033",
+   "year": 2024,
+   "source": "2024考研西综·第33题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-010",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "艾滋病的主要传播途径",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "艾滋病最主要的传播途径是",
+  "options": [
+   {
+    "label": "A",
+    "text": "日常生活接触传播"
+   },
+   {
+    "label": "B",
+    "text": "食物和水传播"
+   },
+   {
+    "label": "C",
+    "text": "性接触传播"
+   },
+   {
+    "label": "D",
+    "text": "昆虫叮咬传播"
+   },
+   {
+    "label": "E",
+    "text": "共用马桶传播"
+   }
+  ],
+  "answer": "C",
+  "explanation": "艾滋病主要经性接触、血液及母婴传播，性接触传播是主要的传播途径（包括同性、异性和双性性接触）；经血液和血制品传播包括共用针具静脉吸毒、输入被污染的血液或血制品。目前无证据表明HIV可经食物、水、昆虫或生活接触传播。教材P139。",
+  "source_page": "教材P139",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-011",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "HIV的主要受体分子（GS-2024-033变体）[源:考研真题 GS-2024-033]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "HIV 包膜糖蛋白与宿主细胞结合的主要受体分子是",
+  "options": [
+   {
+    "label": "A",
+    "text": "CD8分子"
+   },
+   {
+    "label": "B",
+    "text": "CD3分子"
+   },
+   {
+    "label": "C",
+    "text": "CD19分子"
+   },
+   {
+    "label": "D",
+    "text": "CD4分子"
+   },
+   {
+    "label": "E",
+    "text": "CD28分子"
+   }
+  ],
+  "answer": "D",
+  "explanation": "改编自2024考研西综真题（GS-2024-033，变体）。HIV-1的gp120首先与第一受体（CD4分子，为主要受体）结合，然后与第二受体（嗜淋巴细胞受体CXCR4、趋化因子受体CCR5等）结合。CD8、CD3、CD19、CD28均非HIV的主要受体。教材P140。",
+  "source_page": "教材P140",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2024-033",
+   "year": 2024,
+   "source": "2024考研西综·第33题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-012",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "与Burkitt淋巴瘤相关的病毒（艾滋病相关肿瘤）[源:考研真题 GS-2023-126]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "与地方性 Burkitt 淋巴瘤密切相关的病毒是",
+  "options": [
+   {
+    "label": "A",
+    "text": "HBV"
+   },
+   {
+    "label": "B",
+    "text": "CMV"
+   },
+   {
+    "label": "C",
+    "text": "HPV"
+   },
+   {
+    "label": "D",
+    "text": "EBV"
+   },
+   {
+    "label": "E",
+    "text": "HTLV-1"
+   }
+  ],
+  "answer": "D",
+  "explanation": "改编自2023考研西综真题（GS-2023-126）。艾滋病病理可为肿瘤性病变，如卡波西肉瘤及非霍奇金淋巴瘤、伯基特（Burkitt）淋巴瘤等；地方性Burkitt淋巴瘤的发病与EB病毒（EBV）感染密切相关。HBV为乙型肝炎的病原体，CMV、HPV等并非其相关病毒。教材P141。",
+  "source_page": "教材P141",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2023-126",
+   "year": 2023,
+   "source": "2023考研西综·第126题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-013",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "艾滋病期CD4⁺T淋巴细胞计数阈值",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "艾滋病期患者 CD4 阳性 T 淋巴细胞计数多低于",
+  "options": [
+   {
+    "label": "A",
+    "text": "50个/μl"
+   },
+   {
+    "label": "B",
+    "text": "100个/μl"
+   },
+   {
+    "label": "C",
+    "text": "200个/μl"
+   },
+   {
+    "label": "D",
+    "text": "500个/μl"
+   },
+   {
+    "label": "E",
+    "text": "1000个/μl"
+   }
+  ],
+  "answer": "C",
+  "explanation": "艾滋病期为感染HIV后的终末期，患者CD4⁺T淋巴细胞计数明显下降，多少于200个/μl，HIV血浆病毒载量明显升高。HIV抗体阳性者虽无艾滋病期表现，但CD4⁺T淋巴细胞数＜200个/μl，也可诊断为艾滋病。教材P141。",
+  "source_page": "教材P141",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A1-014",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "HIV感染诊断的抗体检测（金标准）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "HIV 感染诊断中被称为“金标准”的血清学检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "HIV p24 抗原检测"
+   },
+   {
+    "label": "B",
+    "text": "HIV 抗体检测"
+   },
+   {
+    "label": "C",
+    "text": "HIV 病毒核酸定量检测"
+   },
+   {
+    "label": "D",
+    "text": "CD4 阳性 T 淋巴细胞计数"
+   },
+   {
+    "label": "E",
+    "text": "HIV 耐药基因型检测"
+   }
+  ],
+  "answer": "B",
+  "explanation": "HIV-1/HIV-2抗体检测是HIV感染诊断的“金标准”，经筛查试验（初筛和复检）和确证试验两步；初筛灵敏度达99%，抗体初筛阳性结果须经确证试验（免疫印迹法、条带/线性免疫试验等）检测确认。教材P142。",
+  "source_page": "教材P142",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A2-001",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病的诊断（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，35岁。3个月前曾被流浪犬咬伤手部，未接种疫苗。近3日出现低热、伤口处蚁走感，继而出现恐水、怕风、咽喉肌痉挛，神志清楚。血白细胞 12×10⁹/L，中性粒细胞 0.85。该患者最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "破伤风"
+   },
+   {
+    "label": "B",
+    "text": "狂犬病"
+   },
+   {
+    "label": "C",
+    "text": "病毒性脑膜脑炎"
+   },
+   {
+    "label": "D",
+    "text": "脊髓灰质炎"
+   },
+   {
+    "label": "E",
+    "text": "急性感染性多发性神经炎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "患者有流浪犬咬伤史且未接种疫苗，出现伤口处蚁走感、恐水、怕风、咽喉肌痉挛而神志清楚，符合狂躁型狂犬病表现；本病须与破伤风、病毒性脑膜脑炎、脊髓灰质炎等鉴别。教材P135-136。",
+  "source_page": "教材P135-136",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A2-002",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病暴露后伤口处置（病例）",
+  "type": "A2",
+  "polarity": "negative",
+  "bloom": "应用",
+  "stem": "男童，2岁。被不明来源的犬咬伤小腿，伤口较深且有出血，于受伤后2小时就诊。下列处置中**不正确**的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "立即用肥皂水和流动清水冲洗伤口"
+   },
+   {
+    "label": "B",
+    "text": "伤口冲洗后用稀释碘伏涂擦消毒"
+   },
+   {
+    "label": "C",
+    "text": "伤口清创后立即缝合并包扎"
+   },
+   {
+    "label": "D",
+    "text": "在伤口周围浸润注射免疫球蛋白"
+   },
+   {
+    "label": "E",
+    "text": "尽早接种狂犬病疫苗及免疫球蛋白"
+   }
+  ],
+  "answer": "C",
+  "explanation": "狂犬病伤口处理：用肥皂水和流动清水交替冲洗约15分钟，冲洗后用稀释碘伏或其他具有病毒灭活效果的消毒剂涂擦，伤口一般不予缝合或包扎，以便排血引流；如有免疫球蛋白应在伤口底部和周围行局部浸润注射，并尽早接种疫苗。故“清创后立即缝合包扎”不正确。教材P136。",
+  "source_page": "教材P136",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A2-003",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "艾滋病期的诊断（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "女性，32岁。发热、盗汗、腹泻1个月余，体重下降约12%，伴反复口腔真菌感染。HIV抗体确证试验阳性，CD4 阳性 T 淋巴细胞计数 150个/μl。该患者处于 HIV 感染的",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性期"
+   },
+   {
+    "label": "B",
+    "text": "无症状期"
+   },
+   {
+    "label": "C",
+    "text": "艾滋病期"
+   },
+   {
+    "label": "D",
+    "text": "恢复期"
+   },
+   {
+    "label": "E",
+    "text": "慢性期"
+   }
+  ],
+  "answer": "C",
+  "explanation": "患者有长期发热、盗汗、腹泻、6个月内体重下降10%以上及反复口腔真菌感染，HIV抗体确证阳性，CD4⁺T淋巴细胞计数150个/μl（＜200个/μl），符合艾滋病期的诊断标准。急性期多发生于初次感染6个月内，无症状期CD4逐渐下降。教材P143。",
+  "source_page": "教材P143",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A2-004",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "艾滋病职业暴露后预防（PEP，病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "护士为 HIV 感染者采血时不慎被针头刺伤，手指有破损出血。为降低感染风险，应尽早服用抗 HIV 药物，最迟不超过暴露后",
+  "options": [
+   {
+    "label": "A",
+    "text": "6小时内"
+   },
+   {
+    "label": "B",
+    "text": "24小时内"
+   },
+   {
+    "label": "C",
+    "text": "48小时内"
+   },
+   {
+    "label": "D",
+    "text": "72小时内"
+   },
+   {
+    "label": "E",
+    "text": "96小时内"
+   }
+  ],
+  "answer": "D",
+  "explanation": "暴露后预防（PEP）指尚未感染HIV的人群在暴露于高感染风险后，尽早（不超过72小时）服用特定抗HIV药物；职业暴露推荐方案为TDF+FTC（3TC）+LPV/r或RAL。教材P147。",
+  "source_page": "教材P147",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A2-005",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "HIV急性期的识别（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "男性，28岁。3周前有不安全性接触史。近1周出现发热、咽痛、皮疹及全身淋巴结肿大，HIV RNA 检测阳性而 HIV 抗体筛查阴性。该患者最可能处于 HIV 感染的",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性期"
+   },
+   {
+    "label": "B",
+    "text": "无症状期"
+   },
+   {
+    "label": "C",
+    "text": "艾滋病期"
+   },
+   {
+    "label": "D",
+    "text": "恢复期"
+   },
+   {
+    "label": "E",
+    "text": "慢性期"
+   }
+  ],
+  "answer": "A",
+  "explanation": "患者感染后6个月内出现发热、咽痛、皮疹及淋巴结肿大，HIV RNA阳性而抗体筛查阴性，符合急性期（primary infection）表现：此期血清可检出HIV RNA及p24抗原，而HIV抗体则在感染后数周才出现。教材P141。",
+  "source_page": "教材P141",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A2-006",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病严重咬伤后的处置（病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，50岁。被家犬咬伤面部，伤口较深。家犬外观健康。按狂犬病暴露后处置原则，该患者应",
+  "options": [
+   {
+    "label": "A",
+    "text": "伤口处理、疫苗接种并注射免疫球蛋白"
+   },
+   {
+    "label": "B",
+    "text": "仅行伤口处理，不接种疫苗"
+   },
+   {
+    "label": "C",
+    "text": "伤口处理并接种狂犬病疫苗"
+   },
+   {
+    "label": "D",
+    "text": "伤口处理并注射免疫球蛋白"
+   },
+   {
+    "label": "E",
+    "text": "仅注射免疫球蛋白，不处理伤口"
+   }
+  ],
+  "answer": "A",
+  "explanation": "患者面部咬伤、创口较深，属发病机会多的情形（头、面、颈、手指处咬伤后发病机会多，创口深而大者发病率高），应彻底冲洗消毒伤口、接种狂犬病疫苗，并在伤口底部和周围浸润注射免疫球蛋白，必要时预防破伤风及细菌感染。教材P136-137。",
+  "source_page": "教材P136-137",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-A2-007",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "艾滋病机会性感染的治疗（肺孢子菌肺炎，病例）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，40岁。HIV 感染确诊 5 年，近期出现发热、干咳、胸闷及血氧分压下降，胸片示双肺弥漫性间质浸润，痰检找到肺孢子菌包囊。针对该机会性感染，首选的治疗药物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "乙胺嘧啶联合磺胺嘧啶"
+   },
+   {
+    "label": "B",
+    "text": "磺胺甲噁唑-甲氧苄啶"
+   },
+   {
+    "label": "C",
+    "text": "克拉霉素联合乙胺丁醇"
+   },
+   {
+    "label": "D",
+    "text": "两性霉素B联合氟胞嘧啶"
+   },
+   {
+    "label": "E",
+    "text": "阿昔洛韦联合更昔洛韦"
+   }
+  ],
+  "answer": "B",
+  "explanation": "肺孢子菌肺炎（PCP）的病原治疗首选磺胺甲噁唑-甲氧苄啶（SMZ-TMP），2片/次，每6小时1次，首剂加倍，疗程2～3周。乙胺嘧啶联合磺胺嘧啶为弓形虫病首选；克拉霉素联合乙胺丁醇用于鸟型分枝杆菌感染。教材P146。",
+  "source_page": "教材P146",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-X-001",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病的传播途径",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "狂犬病的传播途径包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "被感染动物咬伤后经含病毒唾液传播"
+   },
+   {
+    "label": "B",
+    "text": "含病毒气溶胶经呼吸道传播"
+   },
+   {
+    "label": "C",
+    "text": "接受感染动物的器官或组织移植"
+   },
+   {
+    "label": "D",
+    "text": "与患者共同进餐传播"
+   },
+   {
+    "label": "E",
+    "text": "开放性伤口或黏膜被含病毒唾液污染"
+   }
+  ],
+  "answer": "ABCE",
+  "explanation": "被感染动物咬伤后通过含病毒的唾液传染是狂犬病的主要传播途径；其他途径包括含病毒气溶胶经呼吸道传播、组织或器官移植、宰杀切割处理受感染动物或尸体、开放性伤口或黏膜被含病毒唾液污染。狂犬病患者不是传染源，不形成人与人之间的传染。教材P134。",
+  "source_page": "教材P134",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-X-002",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "增加狂犬病发病机会的因素",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "被病兽咬伤后，可增加狂犬病发病机会的因素包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "咬伤部位为头面颈或手指"
+   },
+   {
+    "label": "B",
+    "text": "创口深而大"
+   },
+   {
+    "label": "C",
+    "text": "咬伤后迅速彻底清洗伤口"
+   },
+   {
+    "label": "D",
+    "text": "及时全程足量接种疫苗和免疫球蛋白"
+   },
+   {
+    "label": "E",
+    "text": "被咬伤者免疫功能低下"
+   }
+  ],
+  "answer": "ABE",
+  "explanation": "被病兽咬伤后是否发病与下列因素有关：①咬伤部位（头、面、颈、手指处发病机会多）；②咬伤的严重性（创口深而大者发病率高）；③局部处理情况（迅速彻底清洗者发病机会较少）；④是否及时、全程、足量注射疫苗和免疫球蛋白；⑤被咬伤者免疫功能低下或免疫缺陷者发病机会多。故增加发病机会者为A、B、E。教材P134。",
+  "source_page": "教材P134",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-X-003",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "麻痹型狂犬病的临床特点",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "麻痹型狂犬病的临床特点包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "以脊髓或延髓受损为主"
+   },
+   {
+    "label": "B",
+    "text": "无兴奋期和典型恐水表现"
+   },
+   {
+    "label": "C",
+    "text": "常见高热、头痛、呕吐"
+   },
+   {
+    "label": "D",
+    "text": "呈上行性麻痹或横断性脊髓炎"
+   },
+   {
+    "label": "E",
+    "text": "早期出现典型恐水症状"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "麻痹型狂犬病以脊髓或延髓受损为主，无兴奋期和典型的恐水表现，常见高热、头痛、呕吐、腱反射消失、肢体软弱无力、共济失调和大小便失禁，呈横断性脊髓炎或上行性麻痹，最终因全身弛缓性瘫痪而死亡；从出现症状到死亡的平均时间为11天。典型恐水为狂躁型表现。教材P135。",
+  "source_page": "教材P135",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-X-004",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "狂犬病暴露后的预防措施",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "狂犬病暴露后的预防措施包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "彻底冲洗和消毒伤口"
+   },
+   {
+    "label": "B",
+    "text": "接种狂犬病疫苗"
+   },
+   {
+    "label": "C",
+    "text": "在伤口周围浸润注射免疫球蛋白"
+   },
+   {
+    "label": "D",
+    "text": "伤口一般予以缝合包扎"
+   },
+   {
+    "label": "E",
+    "text": "必要时预防破伤风及细菌感染"
+   }
+  ],
+  "answer": "ABCE",
+  "explanation": "狂犬病暴露后预防包括伤口处理（彻底冲洗、消毒，一般不缝合或包扎）、接种狂犬病疫苗、必要时在伤口底部和周围浸润注射免疫球蛋白，并注意预防破伤风及细菌感染。伤口一般不予缝合或包扎，以便排血引流。教材P136-137。",
+  "source_page": "教材P136-137",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-X-005",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "HIV的传播途径",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "HIV 的传播途径包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "无保护的性接触传播"
+   },
+   {
+    "label": "B",
+    "text": "共用针具静脉吸毒传播"
+   },
+   {
+    "label": "C",
+    "text": "感染母亲经胎盘或哺乳传播"
+   },
+   {
+    "label": "D",
+    "text": "输入被污染的血制品传播"
+   },
+   {
+    "label": "E",
+    "text": "经食物、水和昆虫叮咬传播"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "HIV主要经性接触、血液及母婴传播：性接触传播为主要途径；经血液和血制品传播包括共用针具静脉吸毒、输入被HIV污染的血液或血制品；垂直传播可经胎盘、产道及产后血性分泌物、哺乳等传给婴儿。目前无证据表明HIV可经食物、水、昆虫或生活接触传播。教材P139。",
+  "source_page": "教材P139",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-X-006",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "艾滋病期机会性感染及肿瘤",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "艾滋病期常见的机会性感染及肿瘤包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "肺孢子菌肺炎"
+   },
+   {
+    "label": "B",
+    "text": "隐球菌脑膜炎"
+   },
+   {
+    "label": "C",
+    "text": "卡波西肉瘤"
+   },
+   {
+    "label": "D",
+    "text": "白念珠菌食管炎"
+   },
+   {
+    "label": "E",
+    "text": "普通大叶性肺炎"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "艾滋病期可发生各种机会性感染及肿瘤：呼吸系统可见肺孢子菌肺炎、鸟复合分枝杆菌感染、巨细胞病毒肺炎；中枢神经系统可见新隐球菌脑膜炎、弓形虫脑病、结核性脑膜炎等；消化系统可见白念珠菌食管炎；并可见卡波西肉瘤等。普通大叶性肺炎不属于其特征性机会性感染。教材P141。",
+  "source_page": "教材P141",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-X-007",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "HAART的抗反转录病毒药物类别",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "高效抗反转录病毒治疗所用的抗反转录病毒药物类别包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "核苷类反转录酶抑制剂"
+   },
+   {
+    "label": "B",
+    "text": "非核苷类反转录酶抑制剂"
+   },
+   {
+    "label": "C",
+    "text": "蛋白酶抑制剂"
+   },
+   {
+    "label": "D",
+    "text": "整合酶抑制剂"
+   },
+   {
+    "label": "E",
+    "text": "β内酰胺酶抑制剂"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "目前国际上抗反转录病毒药物有六类30余种，包括核苷类反转录酶抑制剂、非核苷类反转录酶抑制剂、蛋白酶抑制剂、融合抑制剂、整合酶抑制剂和CCR5抑制剂；国内有前五类。β内酰胺酶抑制剂属抗菌药物，不属抗反转录病毒药物。教材P144。",
+  "source_page": "教材P144",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-X-008",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "原发性免疫缺陷病（艾滋病鉴别）[源:考研真题 GS-2022-149]",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "属于原发性免疫缺陷的疾病有",
+  "options": [
+   {
+    "label": "A",
+    "text": "原发性丙种球蛋白缺乏症"
+   },
+   {
+    "label": "B",
+    "text": "黏膜皮肤念珠菌病"
+   },
+   {
+    "label": "C",
+    "text": "毛细血管扩张性共济失调症"
+   },
+   {
+    "label": "D",
+    "text": "艾滋病"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "本题来源：2022考研西综真题（GS-2022-149）。免疫缺陷病分为原发性免疫缺陷病和继发性免疫缺陷病两类：原发性丙种球蛋白缺乏症、黏膜皮肤念珠菌病、毛细血管扩张性共济失调症属原发性免疫缺陷病；艾滋病（HIV感染）属继发性免疫缺陷病。教材P143。",
+  "source_page": "教材P143",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2022-149",
+   "year": 2022,
+   "source": "2022考研西综·第149题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M04-X-009",
+  "module": "M04",
+  "module_name": "狂犬病、艾滋病",
+  "topic": "继发性免疫缺陷病（GS-2022-149变体）[源:考研真题 GS-2022-149]",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "下列属于继发性免疫缺陷病的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "艾滋病"
+   },
+   {
+    "label": "B",
+    "text": "晚期恶性肿瘤"
+   },
+   {
+    "label": "C",
+    "text": "长期应用免疫抑制剂者"
+   },
+   {
+    "label": "D",
+    "text": "原发性丙种球蛋白缺乏症"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "改编自2022考研西综真题（GS-2022-149，变体）。继发性免疫缺陷病继发于其他疾病或因素，如艾滋病（HIV感染）、晚期恶性肿瘤及长期应用免疫抑制剂等；原发性丙种球蛋白缺乏症属原发性免疫缺陷病。教材P143。",
+  "source_page": "教材P143",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2022-149",
+   "year": 2022,
+   "source": "2022考研西综·第149题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-001",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒的肠道溃疡形态 [源:考研真题 GS-1999-037]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "关于伤寒的病变，下列描述正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "结肠形成多发性不规则溃疡"
+   },
+   {
+    "label": "B",
+    "text": "盲肠形成多发性烧瓶状溃疡"
+   },
+   {
+    "label": "C",
+    "text": "回肠形成多数环形溃疡"
+   },
+   {
+    "label": "D",
+    "text": "回肠形成鹅口疮样溃疡"
+   },
+   {
+    "label": "E",
+    "text": "回肠形成多数圆形或椭圆形溃疡"
+   }
+  ],
+  "answer": "E",
+  "explanation": "本题来源：1999考研西综真题（GS-1999-037）。伤寒的肠道溃疡主要见于回肠末段，呈圆形或椭圆形，长轴与肠管长轴平行。回肠多数环形溃疡见于肠结核；盲肠多发性烧瓶状溃疡见于肠阿米巴病；结肠多发性不规则溃疡见于急性细菌性痢疾；回肠鹅口疮样溃疡见于克罗恩病。教材P179。",
+  "source_page": "教材P179",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-1999-037",
+   "year": 1999,
+   "source": "1999考研西综·第37题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-002",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒肉芽肿的主要细胞（伤寒细胞） [源:考研真题 GS-2018-126]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "构成伤寒肉芽肿的主要细胞是",
+  "options": [
+   {
+    "label": "A",
+    "text": "巨噬细胞"
+   },
+   {
+    "label": "B",
+    "text": "淋巴细胞"
+   },
+   {
+    "label": "C",
+    "text": "多核巨细胞"
+   },
+   {
+    "label": "D",
+    "text": "浆细胞"
+   },
+   {
+    "label": "E",
+    "text": "中性粒细胞"
+   }
+  ],
+  "answer": "A",
+  "explanation": "改编自2018考研西综真题（GS-2018-126）。伤寒是以巨噬细胞增生为主的急性增生性炎；巨噬细胞吞噬伤寒沙门菌、红细胞及细胞碎片后称为伤寒细胞，伤寒细胞聚集成团形成伤寒小结（伤寒肉芽肿），为伤寒的特征性病变，故主要细胞为巨噬细胞。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2018-126",
+   "year": 2018,
+   "source": "2018考研西综·第126题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-003",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "化脓性炎的鉴别（伤寒属增生性炎） [源:考研真题 GS-2018-040]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "下列疾病中，属于化脓性炎的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "大叶性肺炎"
+   },
+   {
+    "label": "B",
+    "text": "淋病性尿道炎"
+   },
+   {
+    "label": "C",
+    "text": "阿米巴肝脓肿"
+   },
+   {
+    "label": "D",
+    "text": "病毒性肝炎"
+   },
+   {
+    "label": "E",
+    "text": "肠伤寒病"
+   }
+  ],
+  "answer": "B",
+  "explanation": "改编自2018考研西综真题（GS-2018-040）。淋病性尿道炎由淋病奈瑟菌引起，属急性化脓性炎；大叶性肺炎为纤维素性炎；阿米巴肝脓肿为变质性炎；病毒性肝炎经免疫反应致病，属变质性炎；肠伤寒病由伤寒沙门菌引起，属急性增生性炎（以伤寒小结为特征性病变）。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2018-040",
+   "year": 2018,
+   "source": "2018考研西综·第40题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-004",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒的炎症性质（急性增生性炎） [源:考研真题 GS-2023-149]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "伤寒的病变性质属于",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性化脓性炎"
+   },
+   {
+    "label": "B",
+    "text": "急性增生性炎"
+   },
+   {
+    "label": "C",
+    "text": "变质性炎"
+   },
+   {
+    "label": "D",
+    "text": "假膜性炎"
+   },
+   {
+    "label": "E",
+    "text": "浆液性炎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "改编自2023考研西综真题（GS-2023-149）。伤寒沙门菌引起以巨噬细胞增生为特点的急性增生性炎，其标志性病变为伤寒小结（伤寒肉芽肿）。急性肾盂肾炎、流行性脑脊髓膜炎属化脓性炎；病毒性肝炎、阿米巴病属变质性炎；细菌性痢疾属假膜性炎。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2023-149",
+   "year": 2023,
+   "source": "2023考研西综·第149题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-005",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒细胞的来源（单核巨噬细胞系统） [源:考研真题 GS-2019-150]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "伤寒细胞来源于",
+  "options": [
+   {
+    "label": "A",
+    "text": "单核巨噬细胞系统"
+   },
+   {
+    "label": "B",
+    "text": "T淋巴细胞系统"
+   },
+   {
+    "label": "C",
+    "text": "B淋巴细胞系统"
+   },
+   {
+    "label": "D",
+    "text": "中性粒细胞系统"
+   },
+   {
+    "label": "E",
+    "text": "嗜酸性粒细胞系统"
+   }
+  ],
+  "answer": "A",
+  "explanation": "改编自2019考研西综真题（GS-2019-150）。伤寒细胞是巨噬细胞吞噬伤寒沙门菌、红细胞及细胞碎片后形成的细胞；巨噬细胞来源于单核巨噬细胞系统，伤寒细胞聚集成团构成伤寒小结。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2019-150",
+   "year": 2019,
+   "source": "2019考研西综·第150题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-006",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒的特征性病变（伤寒小结，区别于假膜性炎） [源:考研真题 GS-2018-151]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "伤寒具有病理诊断意义的特征性病变是",
+  "options": [
+   {
+    "label": "A",
+    "text": "巨噬细胞聚集形成的小结节"
+   },
+   {
+    "label": "B",
+    "text": "淋巴细胞聚集形成的滤泡"
+   },
+   {
+    "label": "C",
+    "text": "嗜酸性粒细胞聚集形成的脓肿"
+   },
+   {
+    "label": "D",
+    "text": "多核巨细胞形成的异物结节"
+   },
+   {
+    "label": "E",
+    "text": "中性粒细胞聚集形成的脓液"
+   }
+  ],
+  "answer": "A",
+  "explanation": "改编自2018考研西综真题（GS-2018-151）。伤寒属于急性增生性炎而非假膜性炎（假膜性炎见于细菌性痢疾、白喉）；其具有病理诊断意义的特征性病变为伤寒小结，即巨噬细胞（伤寒细胞）聚集成团形成的结节。淋巴细胞聚集形成淋巴滤泡；嗜酸性粒细胞聚集形成嗜酸性脓肿；多核巨细胞及中性粒细胞聚集分别见于异物性肉芽肿和化脓性炎。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2018-151",
+   "year": 2018,
+   "source": "2018考研西综·第151题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-007",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒的病原学（内毒素致病）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "伤寒沙门菌在发病机制中起主要作用的致病物质是",
+  "options": [
+   {
+    "label": "A",
+    "text": "外毒素"
+   },
+   {
+    "label": "B",
+    "text": "内毒素"
+   },
+   {
+    "label": "C",
+    "text": "荚膜多糖"
+   },
+   {
+    "label": "D",
+    "text": "芽胞结构"
+   },
+   {
+    "label": "E",
+    "text": "鞭毛蛋白"
+   }
+  ],
+  "answer": "B",
+  "explanation": "伤寒沙门菌不产生外毒素，其菌体裂解所释放的内毒素（脂多糖）在发病机制中起重要作用；内毒素可激活单核/巨噬细胞释放IL-1、TNF等细胞因子，引起持续发热、表情淡漠、相对缓脉和白细胞减少等。伤寒沙门菌具有O抗原、H抗原和Vi抗原。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-008",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒的传染源（慢性带菌者）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "伤寒不断传播甚至流行的主要传染源是",
+  "options": [
+   {
+    "label": "A",
+    "text": "潜伏期带菌者"
+   },
+   {
+    "label": "B",
+    "text": "暂时带菌者"
+   },
+   {
+    "label": "C",
+    "text": "慢性带菌者"
+   },
+   {
+    "label": "D",
+    "text": "轻型患者"
+   },
+   {
+    "label": "E",
+    "text": "典型患者"
+   }
+  ],
+  "answer": "C",
+  "explanation": "带菌者或患者是伤寒的唯一传染源。恢复期排菌超过3个月者为慢性带菌者，原先有胆石症或慢性胆囊炎等胆道疾病的患者容易成为慢性带菌者，少数可终身排菌，是伤寒不断传播甚至流行的主要传染源。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-009",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒的传播途径（水源污染最重要）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "伤寒最重要的传播途径是",
+  "options": [
+   {
+    "label": "A",
+    "text": "水源被污染"
+   },
+   {
+    "label": "B",
+    "text": "食物被污染"
+   },
+   {
+    "label": "C",
+    "text": "日常生活接触"
+   },
+   {
+    "label": "D",
+    "text": "苍蝇机械携带"
+   },
+   {
+    "label": "E",
+    "text": "蟑螂机械携带"
+   }
+  ],
+  "answer": "A",
+  "explanation": "伤寒沙门菌经粪-口途径传播，其中水源被污染是最重要的传播途径，常引起暴发流行；食物被污染是主要途径，也可引起暴发流行；日常生活密切接触引起散发流行；苍蝇、蟑螂等媒介机械携带可引起散发流行。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A1-010",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒的病原治疗（首选第三代喹诺酮类）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "成人伤寒经验治疗的首选药物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "氯霉素类药物"
+   },
+   {
+    "label": "B",
+    "text": "氨苄西林类药物"
+   },
+   {
+    "label": "C",
+    "text": "复方磺胺甲噁唑"
+   },
+   {
+    "label": "D",
+    "text": "第三代喹诺酮类"
+   },
+   {
+    "label": "E",
+    "text": "氨基糖苷类药物"
+   }
+  ],
+  "answer": "D",
+  "explanation": "在没有药物敏感性试验结果之前，伤寒经验治疗的首选药物推荐第三代喹诺酮类（如左氧氟沙星、环丙沙星），疗程14天；18岁以下患者、哺乳期和孕妇首选头孢曲松钠。氯霉素、氨苄西林和复方磺胺甲噁唑现仅用于敏感菌株的治疗。教材P183。",
+  "source_page": "教材P183",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A2-001",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒极期的临床表现（典型病例诊断）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，28岁。持续发热10天，体温39.5℃，呈稽留热，伴表情淡漠、反应迟钝、腹胀、便秘。查体见相对缓脉，胸腹部散在淡红色小斑丘疹、压之退色，肝脾肋下可触及。血常规：白细胞3.2×10⁹/L，嗜酸性粒细胞消失。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "病毒性上呼吸道感染"
+   },
+   {
+    "label": "B",
+    "text": "肠伤寒"
+   },
+   {
+    "label": "C",
+    "text": "细菌性痢疾"
+   },
+   {
+    "label": "D",
+    "text": "间日疟"
+   },
+   {
+    "label": "E",
+    "text": "革兰阴性杆菌败血症"
+   }
+  ],
+  "answer": "B",
+  "explanation": "持续发热1周以上，伴稽留热、表情淡漠、相对缓脉、玫瑰疹及肝脾大，是伤寒极期的特征性表现；外周血白细胞减少、嗜酸性粒细胞减少或消失支持伤寒诊断。病毒性上呼吸道感染病程短、呼吸道症状明显；细菌性痢疾以左下腹痛、里急后重、脓血便为特点；间日疟为周期性寒战、高热、大汗，血涂片可找到疟原虫；革兰阴性杆菌败血症多有原发感染灶、寒战明显、弛张热。教材P179。",
+  "source_page": "教材P179",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A2-002",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒的并发症（肠穿孔）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，25岁。伤寒病程第3周，体温已开始下降。今晨突发右下腹剧痛，伴恶心、呕吐，四肢冰冷、脉搏细速。查体见全腹压痛、反跳痛，腹壁紧张，肝浊音界消失。最可能的并发症是",
+  "options": [
+   {
+    "label": "A",
+    "text": "肠出血"
+   },
+   {
+    "label": "B",
+    "text": "肠穿孔"
+   },
+   {
+    "label": "C",
+    "text": "中毒性心肌炎"
+   },
+   {
+    "label": "D",
+    "text": "中毒性肝炎"
+   },
+   {
+    "label": "E",
+    "text": "溶血性尿毒症综合征"
+   }
+  ],
+  "answer": "B",
+  "explanation": "肠穿孔是伤寒最严重的并发症，多发生于病程第2～3周，穿孔部位多在回肠末段。穿孔前可有腹胀、腹泻或肠出血等前兆，表现为右下腹突然疼痛，继之出现腹膜炎体征及休克；腹部X线检查可发现膈下游离气体。教材P181。",
+  "source_page": "教材P181",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A2-003",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "伤寒的并发症（肠出血）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，30岁。伤寒病程第3周，今晨排便后突然出现头晕、口渴、面色苍白、四肢冰冷。查体见脉搏细速、血压下降。粪便隐血试验强阳性。最可能的并发症是",
+  "options": [
+   {
+    "label": "A",
+    "text": "肠出血"
+   },
+   {
+    "label": "B",
+    "text": "肠穿孔"
+   },
+   {
+    "label": "C",
+    "text": "中毒性休克"
+   },
+   {
+    "label": "D",
+    "text": "急性胆囊炎"
+   },
+   {
+    "label": "E",
+    "text": "支气管肺炎"
+   }
+  ],
+  "answer": "A",
+  "explanation": "肠出血为伤寒常见的严重并发症，多出现在病程第2～3周，成人比小儿多见。大量出血时常表现为体温突然下降、头晕、口渴、恶心、烦躁不安，以及面色苍白、手足冰冷、呼吸急促、脉搏细速、血压下降等休克体征，粪便隐血试验阳性或出现肉眼血便。教材P181。",
+  "source_page": "教材P181",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A2-004",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "肥达试验的结果判读（辅助诊断意义）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "男性，32岁。持续发热2周。肥达试验结果：O抗体效价1:160，H抗体效价1:320，副伤寒甲、乙、丙鞭毛抗体均阴性。既往无伤寒病史及菌苗接种史。该结果的临床意义是",
+  "options": [
+   {
+    "label": "A",
+    "text": "可确诊伤寒"
+   },
+   {
+    "label": "B",
+    "text": "支持伤寒诊断"
+   },
+   {
+    "label": "C",
+    "text": "提示副伤寒甲感染"
+   },
+   {
+    "label": "D",
+    "text": "提示副伤寒乙感染"
+   },
+   {
+    "label": "E",
+    "text": "无辅助诊断价值"
+   }
+  ],
+  "answer": "B",
+  "explanation": "O抗体效价≥1:80、H抗体效价≥1:160才有辅助诊断意义，且应动态观察（一般5～7天复查1次），效价逐渐升高则辅助诊断意义提高。单次肥达试验结果不能确诊伤寒，O抗体升高仅支持沙门菌感染、不能区分伤寒与副伤寒。教材P180。",
+  "source_page": "教材P180",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-A2-005",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "副伤寒的临床类型（副伤寒丙脓毒血症型）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，22岁。急起寒战、高热，体温迅速升至39.8℃，热型不规则，伴腹痛、腹泻。病程第10天出现右下肺局限性化脓灶。血培养检出丙型副伤寒沙门菌。该患者属于",
+  "options": [
+   {
+    "label": "A",
+    "text": "副伤寒甲胃肠炎型"
+   },
+   {
+    "label": "B",
+    "text": "副伤寒乙伤寒型"
+   },
+   {
+    "label": "C",
+    "text": "副伤寒丙脓毒血症型"
+   },
+   {
+    "label": "D",
+    "text": "典型伤寒极期"
+   },
+   {
+    "label": "E",
+    "text": "副伤寒甲伤寒型"
+   }
+  ],
+  "answer": "C",
+  "explanation": "副伤寒丙可表现为脓毒血症型、伤寒型或急性胃肠炎型，以脓毒血症型最多见，起病急、寒战、热型不规则，出现迁徙性化脓病灶（以肺部、骨骼及关节常见）时病程延长。副伤寒甲、乙肠道病变表浅，起病常有急性胃肠炎症状，热程短，皮疹出现早、稍大、色深。教材P185。",
+  "source_page": "教材P185",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-B1-001",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "肠道溃疡形态的鉴别（肠伤寒）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N1-5",
+  "stem": "肠伤寒",
+  "options": [
+   {
+    "label": "A",
+    "text": "溃疡呈圆形或椭圆形，长轴与肠管平行"
+   },
+   {
+    "label": "B",
+    "text": "溃疡呈大小不等、形状不一的浅溃疡"
+   },
+   {
+    "label": "C",
+    "text": "溃疡呈环形，长轴与肠管长轴垂直"
+   },
+   {
+    "label": "D",
+    "text": "溃疡呈口小底大的烧瓶状溃疡"
+   },
+   {
+    "label": "E",
+    "text": "溃疡呈纵行裂隙状，鹅口疮样"
+   }
+  ],
+  "answer": "A",
+  "explanation": "肠伤寒的肠道溃疡主要位于回肠末段，呈圆形或椭圆形，长轴与肠管长轴平行。教材P179。",
+  "source_page": "教材P179",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-B1-002",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "肠道溃疡形态的鉴别（细菌性痢疾） [源:考研真题 GS-2000-101]",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N1-5",
+  "stem": "急性细菌性痢疾",
+  "options": [
+   {
+    "label": "A",
+    "text": "溃疡呈圆形或椭圆形，长轴与肠管平行"
+   },
+   {
+    "label": "B",
+    "text": "溃疡呈大小不等、形状不一的浅溃疡"
+   },
+   {
+    "label": "C",
+    "text": "溃疡呈环形，长轴与肠管长轴垂直"
+   },
+   {
+    "label": "D",
+    "text": "溃疡呈口小底大的烧瓶状溃疡"
+   },
+   {
+    "label": "E",
+    "text": "溃疡呈纵行裂隙状，鹅口疮样"
+   }
+  ],
+  "answer": "B",
+  "explanation": "本题来源：改编自2000考研西综真题（GS-2000-101）。急性细菌性痢疾为肠黏膜的假膜性炎，假膜坏死脱落后可形成大小不等、形状不一的浅溃疡，又称地图状溃疡。教材P179。",
+  "source_page": "教材P179",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2000-101",
+   "year": 2000,
+   "source": "2000考研西综·第101题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-B1-003",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "肠道溃疡形态的鉴别（肠结核） [源:考研真题 GS-2011-133]",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N1-5",
+  "stem": "肠结核",
+  "options": [
+   {
+    "label": "A",
+    "text": "溃疡呈圆形或椭圆形，长轴与肠管平行"
+   },
+   {
+    "label": "B",
+    "text": "溃疡呈大小不等、形状不一的浅溃疡"
+   },
+   {
+    "label": "C",
+    "text": "溃疡呈环形，长轴与肠管长轴垂直"
+   },
+   {
+    "label": "D",
+    "text": "溃疡呈口小底大的烧瓶状溃疡"
+   },
+   {
+    "label": "E",
+    "text": "溃疡呈纵行裂隙状，鹅口疮样"
+   }
+  ],
+  "answer": "C",
+  "explanation": "本题来源：改编自2011考研西综真题（GS-2011-133）。肠结核的溃疡呈环形（横带状），长轴与肠管长轴垂直（因共用选项重新排序，本题正确答案对应选项C）。教材P179。",
+  "source_page": "教材P179",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2011-133",
+   "year": 2011,
+   "source": "2011考研西综·第133题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-B1-004",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "肠道溃疡形态的鉴别（肠阿米巴病）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N1-5",
+  "stem": "肠阿米巴病",
+  "options": [
+   {
+    "label": "A",
+    "text": "溃疡呈圆形或椭圆形，长轴与肠管平行"
+   },
+   {
+    "label": "B",
+    "text": "溃疡呈大小不等、形状不一的浅溃疡"
+   },
+   {
+    "label": "C",
+    "text": "溃疡呈环形，长轴与肠管长轴垂直"
+   },
+   {
+    "label": "D",
+    "text": "溃疡呈口小底大的烧瓶状溃疡"
+   },
+   {
+    "label": "E",
+    "text": "溃疡呈纵行裂隙状，鹅口疮样"
+   }
+  ],
+  "answer": "D",
+  "explanation": "肠阿米巴病时，溶组织内阿米巴破坏和溶解周围组织，形成口小底大的烧瓶状溃疡。教材P179。",
+  "source_page": "教材P179",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-B1-005",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "肠道溃疡形态的鉴别（克罗恩病）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N1-5",
+  "stem": "克罗恩病",
+  "options": [
+   {
+    "label": "A",
+    "text": "溃疡呈圆形或椭圆形，长轴与肠管平行"
+   },
+   {
+    "label": "B",
+    "text": "溃疡呈大小不等、形状不一的浅溃疡"
+   },
+   {
+    "label": "C",
+    "text": "溃疡呈环形，长轴与肠管长轴垂直"
+   },
+   {
+    "label": "D",
+    "text": "溃疡呈口小底大的烧瓶状溃疡"
+   },
+   {
+    "label": "E",
+    "text": "溃疡呈纵行裂隙状，鹅口疮样"
+   }
+  ],
+  "answer": "E",
+  "explanation": "克罗恩病的肠道溃疡多呈纵行裂隙状，黏膜面可见鹅口疮样溃疡。教材P179。",
+  "source_page": "教材P179",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-X-001",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "肉芽肿性炎（伤寒小结） [源:考研真题 GS-2024-150]",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "以肉芽肿为基本病变的疾病有",
+  "options": [
+   {
+    "label": "A",
+    "text": "结核病"
+   },
+   {
+    "label": "B",
+    "text": "伤寒"
+   },
+   {
+    "label": "C",
+    "text": "阿米巴病"
+   },
+   {
+    "label": "D",
+    "text": "细菌性痢疾"
+   }
+  ],
+  "answer": "AB",
+  "explanation": "本题来源：2024考研西综真题（GS-2024-150）。以肉芽肿为基本病变的疾病属于肉芽肿性炎：结核病的肉芽肿为结核结节，伤寒的肉芽肿为伤寒小结，故答A、B。阿米巴病属变质性炎，细菌性痢疾属假膜性炎（纤维素性炎），故不答C、D。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2024-150",
+   "year": 2024,
+   "source": "2024考研西综·第150题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M05-X-002",
+  "module": "M05",
+  "module_name": "伤寒（含副伤寒）",
+  "topic": "肉芽肿性病变的判定（伤寒小结） [源:考研真题 GS-2021-149]",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "属于肉芽肿性病变的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "砂粒体"
+   },
+   {
+    "label": "B",
+    "text": "结核结节"
+   },
+   {
+    "label": "C",
+    "text": "风湿小体"
+   },
+   {
+    "label": "D",
+    "text": "伤寒小结"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "本题来源：2021考研西综真题（GS-2021-149）。肉芽肿是由巨噬细胞及其衍生细胞局部增生形成的境界清楚的结节状病灶，结核结节、风湿小体、伤寒小结分别为结核病、风湿病和伤寒的肉芽肿，故答B、C、D。砂粒体为钙化小体，不属于肉芽肿，不答A。教材P178。",
+  "source_page": "教材P178",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2021-149",
+   "year": 2021,
+   "source": "2021考研西综·第149题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-001",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "中毒型菌痢的肠道病理（滤泡性肠炎）[源:考研真题 GS-2022-035]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "中毒性细菌性痢疾的肠道病理变化特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "假膜性肠炎"
+   },
+   {
+    "label": "B",
+    "text": "滤泡性肠炎"
+   },
+   {
+    "label": "C",
+    "text": "溃疡性肠炎"
+   },
+   {
+    "label": "D",
+    "text": "出血性肠炎"
+   },
+   {
+    "label": "E",
+    "text": "化脓性肠炎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "本题改编自2022考研西综真题（GS-2022-035）[源:考研真题 GS-2022-035]。中毒性细菌性痢疾的肠道病变一般为卡他性炎，有时肠壁集合和孤立淋巴小结滤泡增生肿大，可呈滤泡性肠炎改变；假膜性肠炎为急性普通型菌痢的特征性病变，溃疡性肠炎、出血性肠炎均非其特点。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2022-035",
+   "year": 2022,
+   "source": "2022考研西综·第35题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-002",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "中毒型菌痢的临床识别（意识障碍型）[源:考研真题 GS-2023-041]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "下列疾病中，最可能先出现意识障碍后发热的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "流行性乙型脑炎"
+   },
+   {
+    "label": "B",
+    "text": "中毒性肺炎"
+   },
+   {
+    "label": "C",
+    "text": "有机磷农药中毒"
+   },
+   {
+    "label": "D",
+    "text": "中毒性痢疾"
+   },
+   {
+    "label": "E",
+    "text": "化脓性脑膜炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "本题改编自2023考研西综真题（GS-2023-041）[源:考研真题 GS-2023-041]。原题核定答案为中毒性痢疾（D）。中毒型细菌性痢疾以2～7岁儿童多见，突起高热，可有嗜睡、昏迷、惊厥及循环、呼吸衰竭，局部肠道症状轻微或缺如；需注意教材强调其意识障碍多在发热之后出现，本条依规范核定值保留真题答案（争议已备注）。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2023-041",
+   "year": 2023,
+   "source": "2023考研西综·第41题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-003",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "化脓性炎鉴别（菌痢属假膜性炎）[源:考研真题 GS-2011-135]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列疾病中，属于化脓性炎的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性细菌性痢疾"
+   },
+   {
+    "label": "B",
+    "text": "大叶性肺炎"
+   },
+   {
+    "label": "C",
+    "text": "急性蜂窝织炎"
+   },
+   {
+    "label": "D",
+    "text": "急性重症肝炎"
+   },
+   {
+    "label": "E",
+    "text": "流行性乙型脑炎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "本题改编自2011考研西综真题（GS-2011-135）[源:考研真题 GS-2011-135]。急性蜂窝织炎是指疏松结缔组织的弥漫性化脓性炎；急性细菌性痢疾属假膜性炎（纤维素性炎），大叶性肺炎属纤维素性炎，急性重症肝炎属变质性炎，流行性乙型脑炎属渗出性炎。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2011-135",
+   "year": 2011,
+   "source": "2011考研西综·第135题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-004",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "肠腔狭窄的病因鉴别（肠结核）[源:考研真题 GS-2017-036]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列疾病中，容易导致肠腔狭窄的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "肠伤寒"
+   },
+   {
+    "label": "B",
+    "text": "急性阿米巴肠病"
+   },
+   {
+    "label": "C",
+    "text": "急性细菌性痢疾"
+   },
+   {
+    "label": "D",
+    "text": "肠结核"
+   },
+   {
+    "label": "E",
+    "text": "溃疡性结肠炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "本题改编自2017考研西综真题（GS-2017-036）[源:考研真题 GS-2017-036]。增生型肠结核肠壁大量结核性肉芽组织形成和纤维组织增生，肠壁高度肥厚，易导致肠腔狭窄而致慢性不完全性肠梗阻；肠伤寒、急性细菌性痢疾主要引起肠穿孔、肠出血，菌痢肠黏膜溃疡反复形成与修复可致瘢痕，但肠腔狭窄少见。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2017-036",
+   "year": 2017,
+   "source": "2017考研西综·第36题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-005",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "细菌性痢疾病原学（志贺菌）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "细菌性痢疾的病原菌是",
+  "options": [
+   {
+    "label": "A",
+    "text": "沙门菌"
+   },
+   {
+    "label": "B",
+    "text": "志贺菌"
+   },
+   {
+    "label": "C",
+    "text": "霍乱弧菌"
+   },
+   {
+    "label": "D",
+    "text": "大肠埃希菌"
+   },
+   {
+    "label": "E",
+    "text": "副溶血弧菌"
+   }
+  ],
+  "answer": "B",
+  "explanation": "细菌性痢疾是由志贺菌（俗称痢疾杆菌）引起的肠道传染病，志贺菌属肠杆菌科，为革兰阴性杆菌，有菌毛、无鞭毛。教材P185。",
+  "source_page": "教材P185",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-006",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "霍乱病原学（O1群为主要致病菌）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "引起霍乱暴发流行的主要致病菌是",
+  "options": [
+   {
+    "label": "A",
+    "text": "O1群霍乱弧菌"
+   },
+   {
+    "label": "B",
+    "text": "O139群霍乱弧菌"
+   },
+   {
+    "label": "C",
+    "text": "非O1群霍乱弧菌"
+   },
+   {
+    "label": "D",
+    "text": "不典型O1群霍乱弧菌"
+   },
+   {
+    "label": "E",
+    "text": "非O1非O139群霍乱弧菌"
+   }
+  ],
+  "answer": "A",
+  "explanation": "O1群霍乱弧菌（含古典生物型和埃尔托生物型）是霍乱的主要致病菌；O139群亦可引起流行，WHO确定其与O1群同样对待；不典型O1群弧菌不产生肠毒素，无致病性。教材P203。",
+  "source_page": "教材P203",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-007",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "我国菌痢优势菌群（福氏、宋内志贺菌）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "我国细菌性痢疾的优势菌群是",
+  "options": [
+   {
+    "label": "A",
+    "text": "福氏志贺菌与宋内志贺菌"
+   },
+   {
+    "label": "B",
+    "text": "痢疾志贺菌与鲍氏志贺菌"
+   },
+   {
+    "label": "C",
+    "text": "痢疾志贺菌与宋内志贺菌"
+   },
+   {
+    "label": "D",
+    "text": "福氏志贺菌与鲍氏志贺菌"
+   },
+   {
+    "label": "E",
+    "text": "鲍氏志贺菌与宋内志贺菌"
+   }
+  ],
+  "answer": "A",
+  "explanation": "志贺菌属分为4个血清群，我国以福氏、宋内志贺菌占优势；福氏志贺菌感染易转为慢性，宋内志贺菌所致症状轻，痢疾志贺菌毒力最强。教材P185。",
+  "source_page": "教材P185",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-008",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "霍乱传播途径（粪-口途径）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "霍乱的主要传播途径是",
+  "options": [
+   {
+    "label": "A",
+    "text": "呼吸道传播"
+   },
+   {
+    "label": "B",
+    "text": "粪-口传播"
+   },
+   {
+    "label": "C",
+    "text": "虫媒传播"
+   },
+   {
+    "label": "D",
+    "text": "血液传播"
+   },
+   {
+    "label": "E",
+    "text": "母婴垂直传播"
+   }
+  ],
+  "answer": "B",
+  "explanation": "霍乱主要通过污染的水或食物经粪-口途径传播，日常生活接触和苍蝇亦可引起间接传播。教材P204。",
+  "source_page": "教材P204",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-009",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "霍乱发病机制（霍乱肠毒素致分泌性腹泻）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "霍乱的特征性剧烈水样腹泻，其主要发生机制是",
+  "options": [
+   {
+    "label": "A",
+    "text": "细菌直接侵袭肠黏膜"
+   },
+   {
+    "label": "B",
+    "text": "肠毒素激活腺苷环化酶"
+   },
+   {
+    "label": "C",
+    "text": "肠黏膜溃疡致渗出"
+   },
+   {
+    "label": "D",
+    "text": "肠壁淋巴滤泡增生"
+   },
+   {
+    "label": "E",
+    "text": "肠道正常菌群失调"
+   }
+  ],
+  "answer": "B",
+  "explanation": "霍乱弧菌黏附于小肠上段肠黏膜上皮细胞刷状缘，不侵入肠黏膜下层；霍乱肠毒素A亚单位使GTP酶活性受抑制，腺苷环化酶持续活化，细胞内cAMP浓度升高，肠黏膜隐窝细胞过度分泌水、氯化物及碳酸盐，引起特征性剧烈水样腹泻。教材P205。",
+  "source_page": "教材P205",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-010",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "志贺菌致病机制（侵袭结肠黏膜固有层）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "志贺菌致病的主要机制是",
+  "options": [
+   {
+    "label": "A",
+    "text": "侵袭结肠黏膜固有层繁殖"
+   },
+   {
+    "label": "B",
+    "text": "黏附小肠上皮分泌肠毒素"
+   },
+   {
+    "label": "C",
+    "text": "产生内毒素致肠穿孔"
+   },
+   {
+    "label": "D",
+    "text": "鞭毛运动致肠壁损伤"
+   },
+   {
+    "label": "E",
+    "text": "芽孢形成致慢性感染"
+   }
+  ],
+  "answer": "A",
+  "explanation": "志贺菌经口进入，穿过胃酸屏障后侵袭并生长在结肠黏膜上皮细胞，经基膜进入固有层，并在其中繁殖、释放毒素，引起炎症反应、肠黏膜炎症及坏死、溃疡；志贺菌无鞭毛、无芽孢。教材P185-186。",
+  "source_page": "教材P185-186",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-011",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "霍乱典型病程三期",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "霍乱典型病例的临床分期依次为",
+  "options": [
+   {
+    "label": "A",
+    "text": "前驱期、极期、恢复期"
+   },
+   {
+    "label": "B",
+    "text": "泻吐期、脱水期、恢复期"
+   },
+   {
+    "label": "C",
+    "text": "发热期、休克期、恢复期"
+   },
+   {
+    "label": "D",
+    "text": "潜伏期、泻吐期、恢复期"
+   },
+   {
+    "label": "E",
+    "text": "侵袭期、泻吐期、恢复期"
+   }
+  ],
+  "answer": "B",
+  "explanation": "典型霍乱病程分为三期：泻吐期、脱水期、恢复期（反应期），其中泻吐期以无痛性剧烈腹泻、呕吐为主。教材P205。",
+  "source_page": "教材P205",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-012",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "急性菌痢普通型抗菌治疗（首选环丙沙星）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "成人急性普通型细菌性痢疾，首选的口服抗菌药物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "环丙沙星"
+   },
+   {
+    "label": "B",
+    "text": "阿莫西林"
+   },
+   {
+    "label": "C",
+    "text": "氯霉素"
+   },
+   {
+    "label": "D",
+    "text": "四环素"
+   },
+   {
+    "label": "E",
+    "text": "青霉素"
+   }
+  ],
+  "answer": "A",
+  "explanation": "喹诺酮类药物抗菌谱广、口服吸收好、耐药菌株相对较少，为菌痢首选药物，首选环丙沙星；儿童、孕妇及哺乳期妇女非必要不宜使用。教材P189。",
+  "source_page": "教材P189",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A1-013",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "中毒型菌痢脑型降颅压治疗（甘露醇）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "中毒型细菌性痢疾脑型患者，为减轻脑水肿宜选用",
+  "options": [
+   {
+    "label": "A",
+    "text": "甘露醇"
+   },
+   {
+    "label": "B",
+    "text": "呋塞米"
+   },
+   {
+    "label": "C",
+    "text": "洛贝林"
+   },
+   {
+    "label": "D",
+    "text": "间羟胺"
+   },
+   {
+    "label": "E",
+    "text": "多巴胺"
+   }
+  ],
+  "answer": "A",
+  "explanation": "中毒型菌痢脑型可给予20%甘露醇每次1～2g/kg快速静脉滴注，每4～6小时1次，以减轻脑水肿。教材P190。",
+  "source_page": "教材P190",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A2-001",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "慢性菌痢与溃疡性结肠炎鉴别 [源:考研真题 GS-2020-052]",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，30岁。反复腹泻、黏液脓血便1年余，加重3天。查体：轻度贫血貌，左下腹明显压痛，无反跳痛，肠鸣音活跃。粪便培养未见病原菌，广谱抗菌药物治疗1周无效。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "肠易激综合征"
+   },
+   {
+    "label": "B",
+    "text": "溃疡性结肠炎"
+   },
+   {
+    "label": "C",
+    "text": "慢性细菌性痢疾"
+   },
+   {
+    "label": "D",
+    "text": "阿米巴肠炎"
+   },
+   {
+    "label": "E",
+    "text": "结肠息肉病"
+   }
+  ],
+  "answer": "B",
+  "explanation": "本题来源：2020考研西综真题（GS-2020-052）[源:考研真题 GS-2020-052]。青年男性长期反复腹泻、黏液脓血便，左下腹压痛，粪便培养未见病原菌、广谱抗菌药物治疗无效，符合溃疡性结肠炎；慢性细菌性痢疾应有急性痢疾病史且粪便培养可检出志贺菌。教材P188。",
+  "source_page": "教材P188",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2020-052",
+   "year": 2020,
+   "source": "2020考研西综·第52题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A2-002",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "霍乱诊断（米泔水样便的病原识别）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，35岁。进食海产品后突起无痛性剧烈腹泻，先泻后吐，粪便呈米泔水样，迅速出现脱水及腓肠肌痉挛。引起该患者症状最可能的病原体是",
+  "options": [
+   {
+    "label": "A",
+    "text": "沙门菌"
+   },
+   {
+    "label": "B",
+    "text": "霍乱弧菌"
+   },
+   {
+    "label": "C",
+    "text": "志贺菌"
+   },
+   {
+    "label": "D",
+    "text": "轮状病毒"
+   },
+   {
+    "label": "E",
+    "text": "大肠埃希菌"
+   }
+  ],
+  "answer": "B",
+  "explanation": "无痛性剧烈腹泻、先泻后吐、米泔水样便、迅速脱水及腓肠肌痉挛是霍乱的典型表现，其病原体为霍乱弧菌。教材P204。",
+  "source_page": "教材P204",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A2-003",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "中毒型菌痢的临床诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，男，4岁。夏季突起高热、抽搐，迅速出现面色苍白、四肢厥冷、皮肤花斑，血压下降，起病时无明显腹痛、腹泻。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "流行性乙型脑炎"
+   },
+   {
+    "label": "B",
+    "text": "中毒型菌痢"
+   },
+   {
+    "label": "C",
+    "text": "感染性休克"
+   },
+   {
+    "label": "D",
+    "text": "重症中暑"
+   },
+   {
+    "label": "E",
+    "text": "癫痫持续状态"
+   }
+  ],
+  "answer": "B",
+  "explanation": "中毒型菌痢以2～7岁儿童多见，突起高热，可有惊厥、意识障碍，迅速发生循环和呼吸衰竭，而局部肠道症状很轻或缺如。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A2-004",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "霍乱补液治疗（轻度脱水首选口服补液）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "某霍乱患者轻度脱水，无剧烈呕吐。其首选的治疗措施是",
+  "options": [
+   {
+    "label": "A",
+    "text": "口服补液盐"
+   },
+   {
+    "label": "B",
+    "text": "静脉输注生理盐水"
+   },
+   {
+    "label": "C",
+    "text": "静脉输注541溶液"
+   },
+   {
+    "label": "D",
+    "text": "全血输注"
+   },
+   {
+    "label": "E",
+    "text": "仅静脉补钾"
+   }
+  ],
+  "answer": "A",
+  "explanation": "霍乱治疗的关键是及时、正确地补充液体和电解质；轻度脱水患者以口服补液为主，中、重度脱水或呕吐剧烈不能口服者予静脉补液。教材P209。",
+  "source_page": "教材P209",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A2-005",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "菌痢的诊断（粪便细菌培养确诊）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "某患者夏季出现发热、腹痛、腹泻、里急后重、黏液脓血便，左下腹压痛。为确诊菌痢，最有价值的检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "粪便细菌培养"
+   },
+   {
+    "label": "B",
+    "text": "粪便涂片镜检"
+   },
+   {
+    "label": "C",
+    "text": "血白细胞计数"
+   },
+   {
+    "label": "D",
+    "text": "结肠镜检查"
+   },
+   {
+    "label": "E",
+    "text": "特异性核酸检测"
+   }
+  ],
+  "answer": "A",
+  "explanation": "粪便培养出志贺菌可以确诊菌痢；粪便镜检见大量白细胞、脓细胞有助于诊断，特异性核酸检测临床较少使用。教材P188。",
+  "source_page": "教材P188",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A2-006",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "急性菌痢与急性阿米巴痢疾的鉴别",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "患者腹泻，粪便呈暗红色果酱样，有腥臭味，腹痛轻、无里急后重，粪便镜检白细胞少、红细胞多并可见夏科-莱登结晶。该患者最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性细菌性痢疾"
+   },
+   {
+    "label": "B",
+    "text": "急性阿米巴痢疾"
+   },
+   {
+    "label": "C",
+    "text": "霍乱弧菌性肠炎"
+   },
+   {
+    "label": "D",
+    "text": "细菌性食物中毒"
+   },
+   {
+    "label": "E",
+    "text": "轮状病毒性肠炎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "急性阿米巴痢疾粪便呈暗红色果酱样、有腥臭味，腹痛轻、无里急后重，镜检白细胞少、红细胞多，可见夏科-莱登结晶及溶组织内阿米巴滋养体；急性细菌性痢疾粪便为黏液脓血便、有里急后重。教材P188。",
+  "source_page": "教材P188",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-A2-007",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "急性菌痢重型临床判断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，70岁，平素体弱。急起发热，腹泻每天30余次，为稀水脓血便，伴明显腹痛、里急后重，后期出现严重腹胀及中毒性肠麻痹。其临床类型属于",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性轻型菌痢"
+   },
+   {
+    "label": "B",
+    "text": "急性普通型菌痢"
+   },
+   {
+    "label": "C",
+    "text": "急性重型菌痢"
+   },
+   {
+    "label": "D",
+    "text": "中毒型菌痢"
+   },
+   {
+    "label": "E",
+    "text": "慢性迁延型菌痢"
+   }
+  ],
+  "answer": "C",
+  "explanation": "重型菌痢多见于老年、体弱、有基础疾病及营养不良患者，急起发热，腹泻每天30次以上，后期可出现严重腹胀及中毒性肠麻痹；慢性菌痢指病程超过2个月者。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-B1-001",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "霍乱粪便性状【配伍 N1-5】",
+  "type": "B1",
+  "b1_group": "N1-5",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "霍乱患者最具特征性的粪便性状是",
+  "options": [
+   {
+    "label": "A",
+    "text": "米泔水样便"
+   },
+   {
+    "label": "B",
+    "text": "黏液脓血便"
+   },
+   {
+    "label": "C",
+    "text": "无痛性腹泻"
+   },
+   {
+    "label": "D",
+    "text": "里急后重"
+   },
+   {
+    "label": "E",
+    "text": "果酱样便"
+   }
+  ],
+  "answer": "A",
+  "explanation": "霍乱腹泻为无痛性剧烈腹泻，粪便呈米泔水样，无粪臭，稍有鱼腥味。教材P205。",
+  "source_page": "教材P205",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-B1-002",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "急性普通型菌痢粪便性状【配伍 N1-5】",
+  "type": "B1",
+  "b1_group": "N1-5",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "急性普通型细菌性痢疾的粪便特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "米泔水样便"
+   },
+   {
+    "label": "B",
+    "text": "黏液脓血便"
+   },
+   {
+    "label": "C",
+    "text": "无痛性腹泻"
+   },
+   {
+    "label": "D",
+    "text": "里急后重"
+   },
+   {
+    "label": "E",
+    "text": "果酱样便"
+   }
+  ],
+  "answer": "B",
+  "explanation": "急性普通型菌痢病初为稀水样便，1～2天后转为黏液脓血便，便量少。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-B1-003",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "霍乱腹泻特点【配伍 N1-5】",
+  "type": "B1",
+  "b1_group": "N1-5",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "霍乱与细菌性痢疾在排便方面的主要区别是",
+  "options": [
+   {
+    "label": "A",
+    "text": "米泔水样便"
+   },
+   {
+    "label": "B",
+    "text": "黏液脓血便"
+   },
+   {
+    "label": "C",
+    "text": "无痛性腹泻"
+   },
+   {
+    "label": "D",
+    "text": "里急后重"
+   },
+   {
+    "label": "E",
+    "text": "果酱样便"
+   }
+  ],
+  "answer": "C",
+  "explanation": "霍乱腹泻为无痛性剧烈腹泻，不伴里急后重；细菌性痢疾则多有明显腹痛及里急后重。教材P205。",
+  "source_page": "教材P205",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-B1-004",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "菌痢里急后重表现【配伍 N1-5】",
+  "type": "B1",
+  "b1_group": "N1-5",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "急性细菌性痢疾患者排便时伴有的肛门坠胀、便意频繁表现是",
+  "options": [
+   {
+    "label": "A",
+    "text": "米泔水样便"
+   },
+   {
+    "label": "B",
+    "text": "黏液脓血便"
+   },
+   {
+    "label": "C",
+    "text": "无痛性腹泻"
+   },
+   {
+    "label": "D",
+    "text": "里急后重"
+   },
+   {
+    "label": "E",
+    "text": "果酱样便"
+   }
+  ],
+  "answer": "D",
+  "explanation": "里急后重指肛门坠胀、便意频繁而排便不尽感，是急性菌痢的突出表现。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-B1-005",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "急性阿米巴痢疾粪便性状【配伍 N1-5】",
+  "type": "B1",
+  "b1_group": "N1-5",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "急性阿米巴痢疾的粪便性状是",
+  "options": [
+   {
+    "label": "A",
+    "text": "米泔水样便"
+   },
+   {
+    "label": "B",
+    "text": "黏液脓血便"
+   },
+   {
+    "label": "C",
+    "text": "无痛性腹泻"
+   },
+   {
+    "label": "D",
+    "text": "里急后重"
+   },
+   {
+    "label": "E",
+    "text": "果酱样便"
+   }
+  ],
+  "answer": "E",
+  "explanation": "急性阿米巴痢疾粪便为暗红色果酱样便，腥臭味浓。教材P188。",
+  "source_page": "教材P188",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-X-001",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "假膜性炎（菌痢肠黏膜）[源:考研真题 GS-2022-148]",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "属于假膜性炎的病变或疾病有",
+  "options": [
+   {
+    "label": "A",
+    "text": "绒毛心"
+   },
+   {
+    "label": "B",
+    "text": "细菌性痢疾"
+   },
+   {
+    "label": "C",
+    "text": "大叶性肺炎"
+   },
+   {
+    "label": "D",
+    "text": "白喉"
+   }
+  ],
+  "answer": "BD",
+  "explanation": "本题来源：2022考研西综真题（GS-2022-148）[源:考研真题 GS-2022-148]。发生于黏膜的纤维素性炎可在黏膜表面形成假膜，称假膜性炎，如急性细菌性痢疾的肠黏膜、白喉的咽喉部黏膜；绒毛心为浆膜的纤维素性炎，大叶性肺炎为肺组织的纤维素性炎，均不属于假膜性炎。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2022-148",
+   "year": 2022,
+   "source": "2022考研西综·第148题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-X-002",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "霍乱的临床表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "霍乱患者的临床表现可包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "无痛性剧烈腹泻"
+   },
+   {
+    "label": "B",
+    "text": "里急后重"
+   },
+   {
+    "label": "C",
+    "text": "米泔水样便"
+   },
+   {
+    "label": "D",
+    "text": "腓肠肌痉挛"
+   },
+   {
+    "label": "E",
+    "text": "喷射性呕吐"
+   }
+  ],
+  "answer": "ACDE",
+  "explanation": "霍乱典型表现为无痛性剧烈腹泻（不伴里急后重）、米泔水样便、喷射性呕吐及低钠所致腓肠肌痉挛。教材P205。",
+  "source_page": "教材P205",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": true,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M06-X-003",
+  "module": "M06",
+  "module_name": "细菌性痢疾·霍乱",
+  "topic": "中毒型菌痢的临床特点",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "中毒型细菌性痢疾的临床特点有",
+  "options": [
+   {
+    "label": "A",
+    "text": "多见于2～7岁儿童"
+   },
+   {
+    "label": "B",
+    "text": "突起高热伴惊厥"
+   },
+   {
+    "label": "C",
+    "text": "起病时肠道症状轻微"
+   },
+   {
+    "label": "D",
+    "text": "迅速发生循环或呼吸衰竭"
+   },
+   {
+    "label": "E",
+    "text": "病程超过2个月迁延不愈"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "中毒型菌痢以2～7岁儿童多见，突起高热，可有惊厥、昏迷，迅速发生循环和呼吸衰竭，而局部肠道症状很轻或缺如；病程超过2个月者为慢性菌痢。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-001",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "疟疾的病原学（可感染人类的4种疟原虫）",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "记忆",
+  "stem": "下列疟原虫中，**不属于**可感染人类的4种疟原虫的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "间日疟原虫"
+   },
+   {
+    "label": "B",
+    "text": "恶性疟原虫"
+   },
+   {
+    "label": "C",
+    "text": "三日疟原虫"
+   },
+   {
+    "label": "D",
+    "text": "卵形疟原虫"
+   },
+   {
+    "label": "E",
+    "text": "诺氏疟原虫"
+   }
+  ],
+  "answer": "E",
+  "explanation": "可感染人类的疟原虫分为间日疟原虫、恶性疟原虫、三日疟原虫和卵形疟原虫4种，分别引起间日疟、恶性疟、三日疟和卵形疟；诺氏疟原虫为人猴共患的虫种，经猴—蚊—人传播，不属于上述4种人类疟原虫。教材P269。",
+  "source_page": "教材P269",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-002",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "疟疾复发的根源（迟发型子孢子/休眠子）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "疟疾复发与下列哪种疟原虫结构有关",
+  "options": [
+   {
+    "label": "A",
+    "text": "肝细胞内的迟发型子孢子"
+   },
+   {
+    "label": "B",
+    "text": "肝细胞内的速发型子孢子"
+   },
+   {
+    "label": "C",
+    "text": "红细胞内雌配子体"
+   },
+   {
+    "label": "D",
+    "text": "红细胞内雄配子体"
+   },
+   {
+    "label": "E",
+    "text": "按蚊体内的囊合子"
+   }
+  ],
+  "answer": "A",
+  "explanation": "间日疟和卵形疟原虫既有速发型子孢子，又有迟发型子孢子；迟发型子孢子亦称休眠子，发育缓慢，是间日疟与卵形疟复发的根源。速发型子孢子发育较快，引起初发；配子体与囊合子为疟原虫在按蚊体内完成有性繁殖的阶段。教材P269。",
+  "source_page": "教材P269",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-003",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "疟疾的传播媒介（雌性按蚊）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "疟疾的主要传播媒介是",
+  "options": [
+   {
+    "label": "A",
+    "text": "雌性库蚊"
+   },
+   {
+    "label": "B",
+    "text": "雄性按蚊"
+   },
+   {
+    "label": "C",
+    "text": "雌性按蚊"
+   },
+   {
+    "label": "D",
+    "text": "雌性伊蚊"
+   },
+   {
+    "label": "E",
+    "text": "雄性库蚊"
+   }
+  ],
+  "answer": "C",
+  "explanation": "疟疾的传播媒介为雌性按蚊，经叮咬人体传播；少数病例可因输入带疟原虫的血液或经垂直传播感染。库蚊、伊蚊不是疟疾的传播媒介，雄性蚊虫不吸血。教材P270。",
+  "source_page": "教材P270",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-004",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "疟疾周期性发作的机制（红细胞成批破裂释放致热原）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "疟疾周期性发作的直接原因是",
+  "options": [
+   {
+    "label": "A",
+    "text": "疟原虫侵入肝细胞内缓慢发育增殖"
+   },
+   {
+    "label": "B",
+    "text": "成批红细胞破裂释出裂殖子及代谢产物"
+   },
+   {
+    "label": "C",
+    "text": "按蚊叮咬时将子孢子注入人体血液"
+   },
+   {
+    "label": "D",
+    "text": "成熟配子体在蚊肠道内结合发育"
+   },
+   {
+    "label": "E",
+    "text": "迟发型子孢子发育为成熟裂殖体"
+   }
+  ],
+  "answer": "B",
+  "explanation": "疟原虫在肝细胞及红细胞内增殖时不引起症状；当成批红细胞被胀破，释放大量裂殖子、代谢产物、虫体蛋白、变性血红蛋白及红细胞碎片，作为致热原刺激机体产生强烈免疫反应，引起寒战、高热。教材P271。",
+  "source_page": "教材P271",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-005",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "典型疟疾发作的发冷期持续时间",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "典型疟疾发作中，发冷期首次发作持续的时间约为",
+  "options": [
+   {
+    "label": "A",
+    "text": "5～10分钟"
+   },
+   {
+    "label": "B",
+    "text": "10～15分钟"
+   },
+   {
+    "label": "C",
+    "text": "20～30分钟"
+   },
+   {
+    "label": "D",
+    "text": "30～45分钟"
+   },
+   {
+    "label": "E",
+    "text": "45～60分钟"
+   }
+  ],
+  "answer": "B",
+  "explanation": "发冷期骤起畏寒、剧烈寒战，口唇发绀、皮肤苍白或青紫，持续10～15分钟；反复发作数次后可逐渐延长，持续30～45分钟。发热期一般持续2～6小时，出汗期历时2～3小时。教材P271。",
+  "source_page": "教材P271",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-006",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "间日疟与卵形疟发作的间歇期",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "间日疟和卵形疟的发作间歇期约为",
+  "options": [
+   {
+    "label": "A",
+    "text": "24小时"
+   },
+   {
+    "label": "B",
+    "text": "36小时"
+   },
+   {
+    "label": "C",
+    "text": "48小时"
+   },
+   {
+    "label": "D",
+    "text": "72小时"
+   },
+   {
+    "label": "E",
+    "text": "96小时"
+   }
+  ],
+  "answer": "C",
+  "explanation": "间日疟原虫和卵形疟原虫在红细胞内的发育周期约为48小时，故发作间歇期约为48小时；三日疟原虫约为72小时；恶性疟原虫为36～48小时且发育先后不一，故临床发作不规则。教材P269、P272。",
+  "source_page": "教材P272",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-007",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "疟疾诊断的实验室检查（血涂片为金标准）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "WHO推荐的疟疾诊断“金标准”是",
+  "options": [
+   {
+    "label": "A",
+    "text": "外周血涂片显微镜查找疟原虫"
+   },
+   {
+    "label": "B",
+    "text": "快速疟原虫抗原检测试纸"
+   },
+   {
+    "label": "C",
+    "text": "疟原虫核酸基因检测技术"
+   },
+   {
+    "label": "D",
+    "text": "骨髓涂片显微镜查找疟原虫"
+   },
+   {
+    "label": "E",
+    "text": "血清抗疟原虫抗体检测"
+   }
+  ],
+  "answer": "A",
+  "explanation": "外周血涂制厚、薄血片，吉姆萨或瑞氏染色后镜检疟原虫，是目前WHO推荐疟疾诊断的“金标准”，可确定感染、鉴别虫株并识别原虫期与密度；快速抗原检测简便快速，基因检测可作虫种鉴别，骨髓涂片阳性率稍高但非常规首选。教材P272-273。",
+  "source_page": "教材P272-273",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-008",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "复发与再燃的鉴别（再燃由血液内残存疟原虫引起）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "关于疟疾的再燃，下列描述正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "与肝内迟发型子孢子有关"
+   },
+   {
+    "label": "B",
+    "text": "仅见于间日疟和卵形疟"
+   },
+   {
+    "label": "C",
+    "text": "与血液内残存的疟原虫有关"
+   },
+   {
+    "label": "D",
+    "text": "多发生于临床治愈1年以后"
+   },
+   {
+    "label": "E",
+    "text": "再燃是间日疟复发的根源"
+   }
+  ],
+  "answer": "C",
+  "explanation": "再燃与血液内残存的疟原虫有关，常出现在临床治愈后1个月内，4种疟原虫均可引起。与肝内迟发型子孢子有关者为复发，仅见于间日疟和卵形疟。教材P272。",
+  "source_page": "教材P272",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-009",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "磷酸伯氨喹的作用（杀肝内期原虫、防止复发）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "磷酸伯氨喹的抗疟作用特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "杀灭红细胞内期原虫以控制发作"
+   },
+   {
+    "label": "B",
+    "text": "杀灭肝内期原虫以防复发"
+   },
+   {
+    "label": "C",
+    "text": "杀灭红细胞内期配子体"
+   },
+   {
+    "label": "D",
+    "text": "杀灭红细胞内期滋养体"
+   },
+   {
+    "label": "E",
+    "text": "杀灭子孢子以阻断传播"
+   }
+  ],
+  "answer": "B",
+  "explanation": "磷酸伯氨喹能杀灭肝内期疟原虫（迟发型子孢子），防止复发，且能抑制成熟配子体在蚊体内发育、减少传播，但对红内期疟原虫几乎无作用；控制临床发作主要依靠氯喹、青蒿素类等杀红内期原虫药物。教材P273-274。",
+  "source_page": "教材P273-274",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-010",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "磷酸氯喹的临床应用（不推荐用于恶性疟）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "关于磷酸氯喹治疗疟疾，下列描述正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "对各种疟原虫均有根治作用"
+   },
+   {
+    "label": "B",
+    "text": "恶性疟原虫广泛耐药故不推荐"
+   },
+   {
+    "label": "C",
+    "text": "可杀灭肝内期原虫以防止复发"
+   },
+   {
+    "label": "D",
+    "text": "为重症恶性疟的首选治疗"
+   },
+   {
+    "label": "E",
+    "text": "常单独用于控制临床发作"
+   }
+  ],
+  "answer": "B",
+  "explanation": "磷酸氯喹对各种疟原虫的红内期无性期均有较强杀灭作用，但大部分疟疾流行区的恶性疟原虫对氯喹已产生耐药，故不推荐用于恶性疟治疗。氯喹不能杀灭肝内期原虫、不能防止复发；根治间日疟和卵形疟需联合磷酸伯氨喹；重症恶性疟首选青蒿琥酯。教材P274。",
+  "source_page": "教材P274",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-011",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "重症疟疾的抗疟治疗（首选青蒿琥酯注射剂）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "重症疟疾患者的病因治疗应首选的药物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "青蒿琥酯注射剂"
+   },
+   {
+    "label": "B",
+    "text": "磷酸氯喹口服"
+   },
+   {
+    "label": "C",
+    "text": "磷酸伯氨喹口服"
+   },
+   {
+    "label": "D",
+    "text": "乙胺嘧啶口服"
+   },
+   {
+    "label": "E",
+    "text": "多西环素口服"
+   }
+  ],
+  "answer": "A",
+  "explanation": "重症疟疾病情凶险、病死率高，首选青蒿琥酯注射剂静脉注射，成人120mg/次，于0、12和24小时各1次，以后1次/d，连续用药至少7天；蒿甲醚注射剂肌内注射为另一选择。氯喹不推荐用于恶性疟；伯氨喹主要用于防止复发与传播。教材P274。",
+  "source_page": "教材P274",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-012",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "疟疾的化学预防（成人常用氯喹）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "赴疟疾流行区，成人预防疟疾常用的药物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "磷酸氯喹"
+   },
+   {
+    "label": "B",
+    "text": "青蒿琥酯"
+   },
+   {
+    "label": "C",
+    "text": "磷酸咯萘啶"
+   },
+   {
+    "label": "D",
+    "text": "蒿甲醚"
+   },
+   {
+    "label": "E",
+    "text": "伯氨喹"
+   }
+  ],
+  "answer": "A",
+  "explanation": "赴疟疾流行区前，成人常用磷酸氯喹口服0.5g、每周1次进行化学预防，或磷酸哌喹0.6g每月1次；耐氯喹流行区可选用甲氟喹、乙胺嘧啶或多西环素。青蒿琥酯、蒿甲醚、磷酸咯萘啶为治疗用药；伯氨喹主要用于根治现症患者和防止传播。教材P275。",
+  "source_page": "教材P275",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A1-013",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "脾破裂的叙述（反选；疟疾等慢性脾病使脾更易破裂） [源:考研真题 GS-2004-083]",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "理解",
+  "stem": "下列关于脾破裂的叙述，**错误的是**",
+  "options": [
+   {
+    "label": "A",
+    "text": "有慢性病理改变的脾更易破裂"
+   },
+   {
+    "label": "B",
+    "text": "临床多采用脾切除术治疗"
+   },
+   {
+    "label": "C",
+    "text": "约85%为真性脾破裂出血"
+   },
+   {
+    "label": "D",
+    "text": "治疗原则为紧急手术止血"
+   },
+   {
+    "label": "E",
+    "text": "成人脾切除后易发暴发型感染"
+   }
+  ],
+  "answer": "E",
+  "explanation": "本题来源：改编自2004考研西综真题（GS-2004-083）。①脾是腹腔脏器中最易受损的器官之一，有慢性病理改变（如血吸虫病、疟疾）的脾更易破裂；②约85%为真性脾破裂（脾实质破裂累及被膜），出血量大，常需急诊手术止血，成年患者多采用脾切除；③成人脾切除后对免疫功能影响不明显，不易发生脾切除术后凶险性感染，该并发症主要见于婴幼儿（发病率约1%），故成人脾切除后暴发型感染发病率高的说法错误。教材P271。[源:考研真题 GS-2004-083]",
+  "source_page": "教材P271",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2004-083",
+   "year": 2004,
+   "source": "2004考研西综·第83题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A2-001",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "疟疾的诊断（间歇热+流行区+脾大） [源:考研真题 GS-2020-041]",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，23岁。4天前自东南亚旅游归来，突发寒战、高热，体温达40.1℃，持续约2小时后自行退热至36.2℃，伴大汗、乏力。1天前再次出现同样症状。查体：腹软，脾肋下可触及。血常规：白细胞2.2×10⁹/L。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "败血症"
+   },
+   {
+    "label": "B",
+    "text": "肠伤寒"
+   },
+   {
+    "label": "C",
+    "text": "疟疾"
+   },
+   {
+    "label": "D",
+    "text": "肾综合征出血热"
+   },
+   {
+    "label": "E",
+    "text": "急性血吸虫病"
+   }
+  ],
+  "answer": "C",
+  "explanation": "本题来源：2020考研西综真题（GS-2020-041）。①东南亚为疟疾流行区，患者有流行区旅居史；②典型的间歇性寒战、高热、大汗，伴脾大、白细胞减少，符合疟疾诊断。败血症多呈弛张热、白细胞增高；伤寒多呈稽留热；肾综合征出血热有头痛、腰痛、眼眶痛及皮肤出血点、蛋白尿；急性血吸虫病有疫水接触史。教材P272。[源:考研真题 GS-2020-041]",
+  "source_page": "教材P272",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2020-041",
+   "year": 2020,
+   "source": "2020考研西综·第41题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A2-002",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "疟疾的诊断（血涂片为首选检查）（变体） [源:考研真题 GS-2020-041]",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，30岁。自非洲务工回国后反复出现寒战、高热、大汗，每2天发作1次，伴乏力、脾大。为明确诊断，首选的检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "外周血厚薄涂片显微镜检查"
+   },
+   {
+    "label": "B",
+    "text": "骨髓穿刺涂片显微镜检查"
+   },
+   {
+    "label": "C",
+    "text": "血液细菌培养及药敏试验"
+   },
+   {
+    "label": "D",
+    "text": "肥达试验检测伤寒抗体"
+   },
+   {
+    "label": "E",
+    "text": "腹部B型超声检查脾脏"
+   }
+  ],
+  "answer": "A",
+  "explanation": "改编自2020考研西综真题（GS-2020-041）。患者有非洲疟疾流行区旅居史，反复周期性寒战、高热、大汗伴脾大，应高度怀疑疟疾；确诊首选外周血厚、薄涂片吉姆萨染色显微镜检查疟原虫，此为WHO推荐的金标准。骨髓涂片阳性率略高但非常规首选；血培养用于细菌感染；肥达试验用于伤寒；B超仅能发现脾大。教材P272-273。[源:考研真题 GS-2020-041]",
+  "source_page": "教材P272-273",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2020-041",
+   "year": 2020,
+   "source": "2020考研西综·第41题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A2-003",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "重症疟疾（脑型疟疾）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，35岁。自非洲回国后持续发热5天，体温39.5℃，热型不规则。今晨出现剧烈头痛、频繁呕吐，继之谵妄、昏迷伴抽搐。查体：颈项强直，脾肋下3cm。血涂片查见恶性疟原虫。该患者最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "脑型疟疾"
+   },
+   {
+    "label": "B",
+    "text": "流行性乙型脑炎"
+   },
+   {
+    "label": "C",
+    "text": "流行性脑脊髓膜炎"
+   },
+   {
+    "label": "D",
+    "text": "中毒性菌痢"
+   },
+   {
+    "label": "E",
+    "text": "病毒性脑膜炎"
+   }
+  ],
+  "answer": "A",
+  "explanation": "重症疟疾多由恶性疟原虫所致，以脑型疟疾多见，表现为发热、意识受损、多次抽搐等中枢神经系统症状；患者有非洲旅居史、脾大，血涂片查见恶性疟原虫，可确诊脑型疟疾。乙型脑炎、流脑、中毒性菌痢等需与脑型疟鉴别，但血涂片见疟原虫可确定诊断。教材P272。",
+  "source_page": "教材P272",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A2-004",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "间日疟复发的处理（联合伯氨喹根治）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "男性，28岁。确诊间日疟，经氯喹治疗后临床症状消失、血涂片转阴。3个月后再次出现寒战、高热发作，血涂片再次查见间日疟原虫。为防止此类复发，应尽早加用的药物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "磷酸伯氨喹"
+   },
+   {
+    "label": "B",
+    "text": "磷酸氯喹"
+   },
+   {
+    "label": "C",
+    "text": "青蒿琥酯"
+   },
+   {
+    "label": "D",
+    "text": "磷酸咯萘啶"
+   },
+   {
+    "label": "E",
+    "text": "乙胺嘧啶"
+   }
+  ],
+  "answer": "A",
+  "explanation": "本病例为间日疟复发，与肝内迟发型子孢子（休眠子）有关。间日疟和卵形疟的抗疟治疗，除使用抗红内期疟原虫药物外，还需加服抗肝内期疟原虫的药物磷酸伯氨喹，方能根治、防止复发。氯喹、青蒿琥酯、磷酸咯萘啶等仅杀灭红内期原虫，用于控制临床发作。教材P272、P273-274。",
+  "source_page": "教材P272",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A2-005",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "黑尿热（溶血性尿毒综合征，伯氨喹诱发/G6PD缺乏）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，26岁。间日疟患者，服用磷酸伯氨喹3天后出现腰痛、酱油色尿，继而出现黄疸、尿量减少。血涂片示红细胞G6PD活性缺乏。该患者最可能发生的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "黑尿热"
+   },
+   {
+    "label": "B",
+    "text": "急性肾小球肾炎"
+   },
+   {
+    "label": "C",
+    "text": "急性胆囊炎"
+   },
+   {
+    "label": "D",
+    "text": "溶血性输血反应"
+   },
+   {
+    "label": "E",
+    "text": "疟疾再燃"
+   }
+  ],
+  "answer": "A",
+  "explanation": "大量被疟原虫寄生的红细胞在血管内裂解，可引起溶血性尿毒综合征，亦称黑尿热，表现为腰痛、酱油色尿、黄疸，严重者发生急性肾衰竭；抗疟药物如伯氨喹可诱发。伯氨喹可使红细胞G6PD缺乏的患者发生急性血管内溶血，故使用前应常规检测G6PD活性。教材P271、P273-274。",
+  "source_page": "教材P271",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-A2-006",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "典型疟疾发作的临床表现（出汗期特点）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "男性，24岁。确诊间日疟，发作时先出现剧烈寒战、口唇发绀，持续约15分钟后转为高热、颜面潮红，约3小时后全身大汗、体温骤降。关于该患者此次发作的出汗期，下列描述正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "大汗后体温骤降，历时2～3小时"
+   },
+   {
+    "label": "B",
+    "text": "大汗后体温骤升，伴明显寒战"
+   },
+   {
+    "label": "C",
+    "text": "仅表现为大汗，体温无明显变化"
+   },
+   {
+    "label": "D",
+    "text": "大汗后体温骤降，历时1～2小时"
+   },
+   {
+    "label": "E",
+    "text": "大汗后体温骤降，伴剧烈寒战"
+   }
+  ],
+  "answer": "A",
+  "explanation": "出汗期为高热后突然大汗，体温骤降，感觉明显好转，但困倦思睡，历时2～3小时。寒战见于发冷期，持续10～15分钟；发热期体温常达39～41℃，一般持续2～6小时。教材P272。",
+  "source_page": "教材P272",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-B1-001",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "抗疟药物的作用（氯喹杀红内期控制发作）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N1-5",
+  "stem": "主要杀灭红细胞内期疟原虫以控制临床发作，但因恶性疟原虫广泛耐药而不推荐用于恶性疟",
+  "options": [
+   {
+    "label": "A",
+    "text": "磷酸氯喹"
+   },
+   {
+    "label": "B",
+    "text": "磷酸伯氨喹"
+   },
+   {
+    "label": "C",
+    "text": "青蒿琥酯"
+   },
+   {
+    "label": "D",
+    "text": "磷酸哌喹"
+   },
+   {
+    "label": "E",
+    "text": "乙胺嘧啶"
+   }
+  ],
+  "answer": "A",
+  "explanation": "磷酸氯喹对各种疟原虫的红内期无性期均有较强杀灭作用，用于控制临床发作；因大部分流行区恶性疟原虫对氯喹耐药，故不推荐用于恶性疟治疗。教材P274。",
+  "source_page": "教材P274",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-B1-002",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "抗疟药物的作用（伯氨喹防止复发与传播）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N1-5",
+  "stem": "能杀灭肝内期疟原虫以防止复发，并抑制成熟配子体在蚊体内发育、减少传播",
+  "options": [
+   {
+    "label": "A",
+    "text": "磷酸氯喹"
+   },
+   {
+    "label": "B",
+    "text": "磷酸伯氨喹"
+   },
+   {
+    "label": "C",
+    "text": "青蒿琥酯"
+   },
+   {
+    "label": "D",
+    "text": "磷酸哌喹"
+   },
+   {
+    "label": "E",
+    "text": "乙胺嘧啶"
+   }
+  ],
+  "answer": "B",
+  "explanation": "磷酸伯氨喹能杀灭肝内期疟原虫、防止复发，并抑制成熟配子体在蚊体内发育以减少传播，但对红内期疟原虫几乎无作用。教材P273-274。",
+  "source_page": "教材P273-274",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-B1-003",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "抗疟药物的作用（重症疟疾首选青蒿琥酯）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N1-5",
+  "stem": "为重症疟疾首选的注射用抗疟药物",
+  "options": [
+   {
+    "label": "A",
+    "text": "磷酸氯喹"
+   },
+   {
+    "label": "B",
+    "text": "磷酸伯氨喹"
+   },
+   {
+    "label": "C",
+    "text": "青蒿琥酯"
+   },
+   {
+    "label": "D",
+    "text": "磷酸哌喹"
+   },
+   {
+    "label": "E",
+    "text": "乙胺嘧啶"
+   }
+  ],
+  "answer": "C",
+  "explanation": "重症疟疾首选青蒿琥酯注射剂静脉注射，成人120mg/次，于0、12和24小时各1次，以后1次/d，连续用药至少7天。教材P274。",
+  "source_page": "教材P274",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-B1-004",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "抗疟药物的作用（磷酸哌喹与氯喹交叉耐药）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N1-5",
+  "stem": "属4-氨基喹啉类，与氯喹有交叉抗药性，且有肝内蓄积作用",
+  "options": [
+   {
+    "label": "A",
+    "text": "磷酸氯喹"
+   },
+   {
+    "label": "B",
+    "text": "磷酸伯氨喹"
+   },
+   {
+    "label": "C",
+    "text": "青蒿琥酯"
+   },
+   {
+    "label": "D",
+    "text": "磷酸哌喹"
+   },
+   {
+    "label": "E",
+    "text": "乙胺嘧啶"
+   }
+  ],
+  "answer": "D",
+  "explanation": "磷酸哌喹属4-氨基喹啉类，对各种疟原虫红内期无性期均有较强杀灭作用，但与氯喹有交叉抗药性，有肝内蓄积作用，1个月内不要重复使用，肝病患者及孕妇慎用。教材P274。",
+  "source_page": "教材P274",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-B1-005",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "抗疟药物的作用（乙胺嘧啶用于化学预防）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N1-5",
+  "stem": "在耐氯喹疟疾流行区，可用作化学预防，成人25mg每周1次",
+  "options": [
+   {
+    "label": "A",
+    "text": "磷酸氯喹"
+   },
+   {
+    "label": "B",
+    "text": "磷酸伯氨喹"
+   },
+   {
+    "label": "C",
+    "text": "青蒿琥酯"
+   },
+   {
+    "label": "D",
+    "text": "磷酸哌喹"
+   },
+   {
+    "label": "E",
+    "text": "乙胺嘧啶"
+   }
+  ],
+  "answer": "E",
+  "explanation": "在耐氯喹疟疾流行区，可用乙胺嘧啶25mg、每周1次进行化学预防，亦可选用甲氟喹或多西环素。教材P275。",
+  "source_page": "教材P275",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-X-001",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "疟原虫生活史（人体内与按蚊体内阶段）",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于疟原虫生活史，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "疟原虫在人体内进行有性繁殖"
+   },
+   {
+    "label": "B",
+    "text": "疟原虫在按蚊体内进行有性繁殖"
+   },
+   {
+    "label": "C",
+    "text": "迟发型子孢子是间日疟复发的根源"
+   },
+   {
+    "label": "D",
+    "text": "恶性疟原虫无迟发型子孢子"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "疟原虫在人体内的裂体增殖阶段为无性繁殖期，在按蚊体内进行有性繁殖期，故A错、B对。间日疟和卵形疟原虫既有速发型又有迟发型子孢子，迟发型子孢子（休眠子）是其复发的根源，故C对。三日疟和恶性疟原虫无迟发型子孢子，故无复发，D对。教材P269。",
+  "source_page": "教材P269",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M07-X-002",
+  "module": "M07",
+  "module_name": "疟疾",
+  "topic": "重症疟疾的主要临床表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "重症疟疾的主要临床表现有",
+  "options": [
+   {
+    "label": "A",
+    "text": "意识受损甚至昏迷"
+   },
+   {
+    "label": "B",
+    "text": "反复抽搐"
+   },
+   {
+    "label": "C",
+    "text": "严重贫血与黄疸"
+   },
+   {
+    "label": "D",
+    "text": "酸中毒与低血糖"
+   },
+   {
+    "label": "E",
+    "text": "外周血白细胞显著增高"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "重症疟疾表现为发热、意识受损、全身无力、多次抽搐、酸中毒、低血糖、严重贫血、肾功能损害、黄疸、肺水肿或急性呼吸窘迫综合征、显著出血、休克等，故A、B、C、D均正确。外周血白细胞在急性发作时可轻度增加，发作后正常，多次发作后反而减少，白细胞显著增高不属于重症疟疾的表现，故E错。教材P272-273。",
+  "source_page": "教材P272",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-001",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的描述（反选：错误项） [源:考研真题 GS-1995-041]",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "记忆",
+  "stem": "下述有关日本血吸虫病的描述中，**错误**的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性虫卵结节可引起脓肿形成和积脓"
+   },
+   {
+    "label": "B",
+    "text": "部分虫卵可随粪便排出体外"
+   },
+   {
+    "label": "C",
+    "text": "晚期可发展成门脉性肝硬化"
+   },
+   {
+    "label": "D",
+    "text": "钉螺是本虫唯一中间宿主"
+   },
+   {
+    "label": "E",
+    "text": "肺、脑组织可发生虫卵结节"
+   }
+  ],
+  "answer": "A",
+  "explanation": "改编自1995考研西综真题（GS-1995-041）。急性血吸虫病的虫卵结节为嗜酸性脓肿，状似脓肿而非真性脓肿，实质为大量嗜酸性粒细胞堆积，并非“脓肿形成和积脓”，故A项描述错误。感染后成虫产卵，虫卵可随粪便排出体外；晚期可发展成窦前阻塞性门脉性肝硬化；钉螺是日本血吸虫必需的唯一中间宿主；虫卵结节可发生于肝、肠、肺、脑等组织，故B、C、D、E均正确。教材P284-285。",
+  "source_page": "教材P284-285",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-1995-041",
+   "year": 1995,
+   "source": "1995考研西综·第41题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-002",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "急性血吸虫病早期虫卵结节的病理 [源:考研真题 GS-2020-039]",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "急性血吸虫病由虫卵引起的早期基本病理变化是",
+  "options": [
+   {
+    "label": "A",
+    "text": "嗜酸性脓肿"
+   },
+   {
+    "label": "B",
+    "text": "假结核结节"
+   },
+   {
+    "label": "C",
+    "text": "钙化虫卵"
+   },
+   {
+    "label": "D",
+    "text": "肝纤维化"
+   },
+   {
+    "label": "E",
+    "text": "干线状纤维化"
+   }
+  ],
+  "answer": "A",
+  "explanation": "改编自2020考研西综真题（GS-2020-039）。急性血吸虫病由虫卵引起的早期病变为急性虫卵结节，典型表现为大量嗜酸性粒细胞浸润形成的嗜酸性脓肿（状似脓肿而非真性脓肿）。假结核结节、钙化虫卵及肝纤维化（含干线状纤维化）均属慢性虫卵结节或晚期病变特点，故不答B、C、D、E。教材P285。",
+  "source_page": "教材P285",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2020-039",
+   "year": 2020,
+   "source": "2020考研西综·第39题",
+   "mode": "改编"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-003",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "直肠癌发生相关因素（反选：无关项） [源:考研真题 GS-2005-099]",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "理解",
+  "stem": "目前认为与直肠癌发生**无关**的因素是",
+  "options": [
+   {
+    "label": "A",
+    "text": "痔"
+   },
+   {
+    "label": "B",
+    "text": "日本血吸虫病"
+   },
+   {
+    "label": "C",
+    "text": "溃疡性结肠炎"
+   },
+   {
+    "label": "D",
+    "text": "高蛋白高脂肪饮食"
+   },
+   {
+    "label": "E",
+    "text": "直肠腺瘤"
+   }
+  ],
+  "answer": "A",
+  "explanation": "本题来源：2005考研西综真题（GS-2005-099）。痔主要由直肠上、下静脉扩张淤血所致，与直肠癌的发生无关，故答A。其余因素均与直肠癌发生相关：日本血吸虫病、溃疡性结肠炎等慢性肠道炎症可使肠黏膜反复破坏、感染和修复而癌变；高蛋白高脂肪饮食能使粪便中致癌物增多；直肠腺瘤是直肠癌的癌前病变，故不答B、C、D、E。教材P288。",
+  "source_page": "教材P288",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2005-099",
+   "year": 2005,
+   "source": "2005考研西综·第99题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-004",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫的中间宿主（钉螺）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "日本血吸虫生活史中，下列叙述正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "钉螺是其唯一中间宿主"
+   },
+   {
+    "label": "B",
+    "text": "蚊虫是其唯一中间宿主"
+   },
+   {
+    "label": "C",
+    "text": "淡水鱼是其唯一中间宿主"
+   },
+   {
+    "label": "D",
+    "text": "猪类是其唯一中间宿主"
+   },
+   {
+    "label": "E",
+    "text": "人类是其唯一中间宿主"
+   }
+  ],
+  "answer": "A",
+  "explanation": "钉螺是日本血吸虫必需的唯一中间宿主，虫卵入水孵出毛蚴后侵入钉螺，经母胞蚴和子胞蚴二代发育为尾蚴逸出，故答A。蚊虫、淡水鱼、猪类均非本虫的中间宿主；人是本虫的终末宿主，牛、猪、羊、狗、猫等为保虫宿主，故不答B、C、D、E。教材P285。",
+  "source_page": "教材P285",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-005",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的传染源",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "在我国，日本血吸虫病最重要的传染源是",
+  "options": [
+   {
+    "label": "A",
+    "text": "患者与病牛"
+   },
+   {
+    "label": "B",
+    "text": "患者与病猪"
+   },
+   {
+    "label": "C",
+    "text": "患者与病犬"
+   },
+   {
+    "label": "D",
+    "text": "患者与病羊"
+   },
+   {
+    "label": "E",
+    "text": "患者与病鼠"
+   }
+  ],
+  "answer": "A",
+  "explanation": "日本血吸虫病是人兽共患病，传染源为患者和保虫宿主。在我国，患者和病牛是重要的传染源：水网地区患者为主要传染源，湖沼地区除患者外，感染的牛与猪也是重要传染源，山丘地区鼠类亦为传染源，故答A。教材P285。",
+  "source_page": "教材P285",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-006",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的人群易感性",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "日本血吸虫病的人群易感性特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "青壮年农民与渔民感染率最高"
+   },
+   {
+    "label": "B",
+    "text": "学龄前儿童感染率最高"
+   },
+   {
+    "label": "C",
+    "text": "六十岁以上老年人感染率最高"
+   },
+   {
+    "label": "D",
+    "text": "城市常住居民感染率最高"
+   },
+   {
+    "label": "E",
+    "text": "在校学生感染率最高"
+   }
+  ],
+  "answer": "A",
+  "explanation": "人群对日本血吸虫普遍易感，患者的年龄、性别、职业分布均随接触疫水的机会而异，以男性青壮年农民和渔民感染率最高，男多于女，夏秋季感染机会最多，故答A。教材P285。",
+  "source_page": "教材P285",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-007",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的基本病理改变（虫卵肉芽肿）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "日本血吸虫病的基本病理改变是",
+  "options": [
+   {
+    "label": "A",
+    "text": "虫卵沉积形成的肉芽肿"
+   },
+   {
+    "label": "B",
+    "text": "尾蚴钻皮形成的皮炎"
+   },
+   {
+    "label": "C",
+    "text": "成虫引起的静脉内膜炎"
+   },
+   {
+    "label": "D",
+    "text": "幼虫引起的肺组织出血"
+   },
+   {
+    "label": "E",
+    "text": "童虫引起的血管壁坏死"
+   }
+  ],
+  "answer": "A",
+  "explanation": "虫卵肉芽肿反应（虫卵结节）是日本血吸虫病的基本病理改变，也是本病的主要病理损害，故答A。尾蚴钻皮可引起尾蚴性皮炎，幼虫移行可达肺并致组织点状出血，成虫及其代谢产物仅引起局部轻微静脉内膜炎，虫体死后所致门静脉分支栓塞性脉管炎也较轻微，均非本病的特征性基本病变。教材P285-286。",
+  "source_page": "教材P285-286",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-008",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的异位损害部位",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "日本血吸虫病异位损害最常见的部位是",
+  "options": [
+   {
+    "label": "A",
+    "text": "脑与肺"
+   },
+   {
+    "label": "B",
+    "text": "肝与脾"
+   },
+   {
+    "label": "C",
+    "text": "肾与膀胱"
+   },
+   {
+    "label": "D",
+    "text": "心与心包"
+   },
+   {
+    "label": "E",
+    "text": "甲状腺"
+   }
+  ],
+  "answer": "A",
+  "explanation": "异位损害指虫卵和/或成虫寄生在门静脉系统之外的器官病变，人体常见的异位损害部位以肺、脑较多见，故答A。肝、脾为本病主要受累的原位器官，肾、膀胱、心包、甲状腺等部位虽可发生但属罕见，故不答B、C、D、E。教材P286。",
+  "source_page": "教材P286",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-009",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "急性血吸虫病的血象改变（嗜酸性粒细胞增多）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "急性血吸虫病患者外周血最突出的改变是",
+  "options": [
+   {
+    "label": "A",
+    "text": "嗜酸性粒细胞显著增多"
+   },
+   {
+    "label": "B",
+    "text": "中性粒细胞显著增多"
+   },
+   {
+    "label": "C",
+    "text": "淋巴细胞显著增多"
+   },
+   {
+    "label": "D",
+    "text": "单核细胞显著增多"
+   },
+   {
+    "label": "E",
+    "text": "嗜碱性粒细胞显著增多"
+   }
+  ],
+  "answer": "A",
+  "explanation": "急性期血吸虫病患者外周血嗜酸性粒细胞显著增多，白细胞总数在10×10⁹/L以上，嗜酸性粒细胞一般占20%~40%，最多可达90%以上，对诊断具有重要参考价值，故答A。教材P287。",
+  "source_page": "教材P287",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-010",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的病原学诊断（粪便查虫卵/毛蚴）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "确诊日本血吸虫病最直接的依据是",
+  "options": [
+   {
+    "label": "A",
+    "text": "粪便检出活卵或孵出毛蚴"
+   },
+   {
+    "label": "B",
+    "text": "血清环卵沉淀试验阳性"
+   },
+   {
+    "label": "C",
+    "text": "间接血凝试验结果为阳性"
+   },
+   {
+    "label": "D",
+    "text": "外周血嗜酸性粒细胞增多"
+   },
+   {
+    "label": "E",
+    "text": "腹部B超见肝纤维化改变"
+   }
+  ],
+  "answer": "A",
+  "explanation": "粪便内检查虫卵和孵出毛蚴是确诊血吸虫病的直接依据，常用改良加藤厚涂片法或虫卵透明法检查虫卵。免疫学检查（环卵沉淀试验、间接血凝试验）特异性较高，但治愈后抗体持续时间长，不能区分既往感染与现症患者；外周血嗜酸性粒细胞增多与B超肝纤维化改变均为辅助指标，故答A。教材P288。",
+  "source_page": "教材P288",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-011",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的病原治疗（吡喹酮）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "治疗日本血吸虫病的首选药物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "吡喹酮"
+   },
+   {
+    "label": "B",
+    "text": "甲硝唑"
+   },
+   {
+    "label": "C",
+    "text": "磷酸氯喹"
+   },
+   {
+    "label": "D",
+    "text": "伯氨喹"
+   },
+   {
+    "label": "E",
+    "text": "阿苯达唑"
+   }
+  ],
+  "answer": "A",
+  "explanation": "吡喹酮毒性小、疗效好、给药方便、适应证广，可用于各期各型血吸虫病患者，是目前治疗日本血吸虫病的首选药物，故答A。甲硝唑主要用于阿米巴病；氯喹、伯氨喹为抗疟药；阿苯达唑主要用于肠道线虫及囊尾蚴病，故不答B、C、D、E。教材P289。",
+  "source_page": "教材P289",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A1-012",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "晚期血吸虫病肝纤维化的发生机制",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "晚期日本血吸虫病肝脏呈干线状改变，其发病机制主要是",
+  "options": [
+   {
+    "label": "A",
+    "text": "虫卵肉芽肿基础上的胶原沉积"
+   },
+   {
+    "label": "B",
+    "text": "肝炎病毒持续复制损伤"
+   },
+   {
+    "label": "C",
+    "text": "酒精代谢产物反复损伤"
+   },
+   {
+    "label": "D",
+    "text": "胆汁淤积引起的肝损伤"
+   },
+   {
+    "label": "E",
+    "text": "自身免疫抗体攻击肝细胞"
+   }
+  ],
+  "answer": "A",
+  "explanation": "血吸虫病肝纤维化是在虫卵肉芽肿基础上产生的：虫卵释放的可溶性虫卵抗原、巨噬细胞与T淋巴细胞产生的成纤维细胞刺激因子，均可促使成纤维细胞增殖与胶原合成，晚期肝内门静脉周围广泛纤维化呈干线状，故答A。肝炎病毒持续复制、酒精代谢产物、胆汁淤积及自身免疫损伤分别为其他肝病的发病机制，故不答B、C、D、E。教材P286。",
+  "source_page": "教材P286",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A2-001",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "急性血吸虫病的诊断（病例分析）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，25岁。夏季在湖区参加抗洪，接触疫水处出现红色皮损，2天后自行消退。1个月后出现发热、荨麻疹、腹痛腹泻，查体肝大伴压痛、脾轻度肿大，外周血嗜酸性粒细胞显著增多。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性血吸虫病"
+   },
+   {
+    "label": "B",
+    "text": "肠伤寒沙门菌感染"
+   },
+   {
+    "label": "C",
+    "text": "阿米巴肝脓肿"
+   },
+   {
+    "label": "D",
+    "text": "急性细菌性痢疾"
+   },
+   {
+    "label": "E",
+    "text": "慢性血吸虫病"
+   }
+  ],
+  "answer": "A",
+  "explanation": "患者为初次重度感染，有明确疫水接触史，接触部位出现蚤咬样红色皮损（尾蚴性皮炎）后自行消退，随后出现发热、荨麻疹、腹痛腹泻、肝大伴压痛及脾大，外周血嗜酸性粒细胞显著增多，符合急性血吸虫病，故答A。肠伤寒沙门菌感染以稽留热、相对缓脉、玫瑰疹、白细胞减少为特点；阿米巴肝脓肿以弛张热、肝区痛及脓肿为特点；急性细菌性痢疾以里急后重、脓血便为特点；慢性血吸虫病病程多在半年以上。教材P286-287。",
+  "source_page": "教材P286-287",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A2-002",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "晚期血吸虫病巨脾型的诊断（病例分析）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，48岁。反复腹泻、便血10余年，逐渐出现腹部包块及腹胀。查体脾明显增大、下缘达盆腔、质硬，肝肋下未及，有长期疫水接触史。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "晚期血吸虫病"
+   },
+   {
+    "label": "B",
+    "text": "慢性乙型病毒性肝炎"
+   },
+   {
+    "label": "C",
+    "text": "酒精性肝硬化"
+   },
+   {
+    "label": "D",
+    "text": "结肠恶性肿瘤"
+   },
+   {
+    "label": "E",
+    "text": "慢性粒细胞白血病"
+   }
+  ],
+  "answer": "A",
+  "explanation": "患者有长期疫水接触史和反复腹泻、便血史，脾进行性增大、质硬并下缘达盆腔，肝逐渐缩小，符合晚期血吸虫病巨脾型（最为常见），故答A。慢性乙型病毒性肝炎、酒精性肝硬化多伴较明显的肝功能损害；结肠恶性肿瘤以消瘦、便血为主；慢性粒细胞白血病虽伴脾大但外周血象有明显异常，故不答B、C、D、E。教材P287。",
+  "source_page": "教材P287",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A2-003",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "脑型血吸虫病的诊断（病例分析）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，30岁。有长期疫水接触史，近半年反复出现发作性肢体抽搐，伴意识丧失。颅脑CT示顶叶单侧多发性高密度结节影。该患者最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "脑型血吸虫病"
+   },
+   {
+    "label": "B",
+    "text": "原发性癫痫"
+   },
+   {
+    "label": "C",
+    "text": "脑胶质瘤"
+   },
+   {
+    "label": "D",
+    "text": "结核性脑膜炎"
+   },
+   {
+    "label": "E",
+    "text": "脑囊尾蚴病"
+   }
+  ],
+  "answer": "A",
+  "explanation": "患者有长期疫水接触史，反复发作性肢体抽搐伴意识丧失，颅脑CT示顶叶单侧多发性高密度结节影，符合脑型血吸虫病慢性型（以局限性癫痫为多见），故答A。原发性癫痫无上述影像改变；脑胶质瘤多呈单发占位；结核性脑膜炎以发热、脑膜刺激征为主；脑囊尾蚴病CT多为散在钙化小结节，故不答B、C、D、E。教材P287。",
+  "source_page": "教材P287",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A2-004",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "急性血吸虫病的鉴别诊断（嗜酸性粒细胞价值）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "男性，22岁。发热3周，伴腹痛腹泻，曾拟诊阿米巴肝脓肿与伤寒，相应治疗无效。查体肝大伴压痛。有疫水接触史。为明确鉴别，最有价值的检查线索是",
+  "options": [
+   {
+    "label": "A",
+    "text": "血中嗜酸性粒细胞显著增多"
+   },
+   {
+    "label": "B",
+    "text": "血中嗜酸性粒细胞明显减少"
+   },
+   {
+    "label": "C",
+    "text": "肝大伴明显压痛体征"
+   },
+   {
+    "label": "D",
+    "text": "腹痛伴腹泻的病史"
+   },
+   {
+    "label": "E",
+    "text": "多种抗生素治疗无效"
+   }
+  ],
+  "answer": "A",
+  "explanation": "急性血吸虫病需与伤寒、阿米巴肝脓肿、粟粒性结核等鉴别，血象中嗜酸性粒细胞显著增多有重要鉴别价值。该患者有疫水接触史，若外周血嗜酸性粒细胞显著增多则高度提示急性血吸虫病，故答A；明显减少不符合本病，故不答B。肝大伴压痛、腹痛腹泻、治疗无效均为非特异性线索，故不答C、D、E。教材P289。",
+  "source_page": "教材P289",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A2-005",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "尾蚴性皮炎（病例分析）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "男性，20岁。接触疫水后，在侵入部位出现蚤咬样红色皮损，2~3天后自行消退。该皮损称为",
+  "options": [
+   {
+    "label": "A",
+    "text": "尾蚴性皮炎"
+   },
+   {
+    "label": "B",
+    "text": "结节性红斑"
+   },
+   {
+    "label": "C",
+    "text": "固定性药疹"
+   },
+   {
+    "label": "D",
+    "text": "急性荨麻疹"
+   },
+   {
+    "label": "E",
+    "text": "接触性皮炎"
+   }
+  ],
+  "answer": "A",
+  "explanation": "尾蚴侵入皮肤部位时，其头腺分泌的溶组织酶及死亡后崩解产物可引起局部组织水肿、毛细血管扩张充血、中性粒细胞和单核细胞浸润，局部出现红色丘疹，称尾蚴性皮炎，持续1~3天消退，故答A。教材P286。",
+  "source_page": "教材P286",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-A2-006",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "晚期血吸虫病结肠肉芽肿型的诊断（病例分析）",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "男性，35岁。有血吸虫病史8年，反复黏液脓血便。电子肠镜见下段肠黏膜增厚、溃疡及息肉，肠腔狭窄。该患者属于晚期血吸虫病的",
+  "options": [
+   {
+    "label": "A",
+    "text": "结肠肉芽肿型"
+   },
+   {
+    "label": "B",
+    "text": "巨脾型表现"
+   },
+   {
+    "label": "C",
+    "text": "腹水型表现"
+   },
+   {
+    "label": "D",
+    "text": "侏儒型表现"
+   },
+   {
+    "label": "E",
+    "text": "肺型异位损害"
+   }
+  ],
+  "answer": "A",
+  "explanation": "晚期血吸虫病结肠肉芽肿型以结肠病变为突出表现，病程3~6年以上，常有腹痛、腹泻或便秘、黏液脓血便，肠镜见黏膜苍白、增厚、充血、水肿、溃疡或息肉及肠狭窄，较易癌变。该患者病史8年，下段肠黏膜增厚伴溃疡、息肉及肠腔狭窄，符合结肠肉芽肿型，故答A。巨脾型、腹水型、侏儒型分别以显著脾大、腹水、生长发育障碍为突出表现，肺型为异位损害，故不答B、C、D、E。教材P287。",
+  "source_page": "教材P287",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-X-001",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "可见大量嗜酸性粒细胞浸润的病变 [源:考研真题 GS-2023-148]",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "可见大量嗜酸性粒细胞浸润的病变有",
+  "options": [
+   {
+    "label": "A",
+    "text": "过敏性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "血吸虫感染"
+   },
+   {
+    "label": "C",
+    "text": "小叶性肺炎"
+   },
+   {
+    "label": "D",
+    "text": "病毒性肝炎"
+   }
+  ],
+  "answer": "AB",
+  "explanation": "本题来源：2023考研西综真题（GS-2023-148）。嗜酸性粒细胞浸润为主的病变常见于过敏反应和寄生虫感染：过敏性鼻炎与急性血吸虫感染均可见大量嗜酸性粒细胞浸润，故答A、B。小叶性肺炎为化脓性炎，以中性粒细胞浸润为主；病毒性肝炎为病毒感染，以淋巴细胞浸润为主，故不答C、D。教材P285。",
+  "source_page": "教材P285",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2023-148",
+   "year": 2023,
+   "source": "2023考研西综·第148题",
+   "mode": "原题"
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-X-002",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的传播必备条件",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "日本血吸虫病传播必须具备的条件有",
+  "options": [
+   {
+    "label": "A",
+    "text": "带虫卵的粪便入水"
+   },
+   {
+    "label": "B",
+    "text": "钉螺的孳生"
+   },
+   {
+    "label": "C",
+    "text": "人畜接触疫水"
+   },
+   {
+    "label": "D",
+    "text": "蚊虫的叮咬"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "日本血吸虫病传播必须具备三个条件：带虫卵的粪便入水、钉螺孳生以及人畜接触疫水，故答A、B、C。蚊虫叮咬不是本病的传播途径，故不答D。教材P285。",
+  "source_page": "教材P285",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-X-003",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫的保虫宿主",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "可作为日本血吸虫保虫宿主的动物有",
+  "options": [
+   {
+    "label": "A",
+    "text": "牛"
+   },
+   {
+    "label": "B",
+    "text": "猪"
+   },
+   {
+    "label": "C",
+    "text": "羊"
+   },
+   {
+    "label": "D",
+    "text": "猫"
+   },
+   {
+    "label": "E",
+    "text": "蚊"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "在自然界除人以外，尚有牛、猪、羊、狗、猫等41种哺乳动物可作为日本血吸虫的保虫宿主，故答A、B、C、D。蚊为节肢动物，不能作为本虫的保虫宿主，故不答E。教材P284。",
+  "source_page": "教材P284",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-X-004",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "晚期血吸虫病的临床分型",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "晚期血吸虫病的临床类型有",
+  "options": [
+   {
+    "label": "A",
+    "text": "巨脾型"
+   },
+   {
+    "label": "B",
+    "text": "腹水型"
+   },
+   {
+    "label": "C",
+    "text": "结肠肉芽肿型"
+   },
+   {
+    "label": "D",
+    "text": "侏儒型"
+   },
+   {
+    "label": "E",
+    "text": "急性发热型"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "晚期血吸虫病根据主要临床表现分为巨脾型、腹水型、结肠肉芽肿型与侏儒型4型，故答A、B、C、D。急性发热型属于急性血吸虫病的表现，不属于晚期分型，故不答E。教材P287。",
+  "source_page": "教材P287",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-X-005",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的诊断方法",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "可用于诊断日本血吸虫病的检查方法有",
+  "options": [
+   {
+    "label": "A",
+    "text": "粪便虫卵检查"
+   },
+   {
+    "label": "B",
+    "text": "毛蚴孵化法"
+   },
+   {
+    "label": "C",
+    "text": "环卵沉淀试验"
+   },
+   {
+    "label": "D",
+    "text": "间接血凝试验"
+   },
+   {
+    "label": "E",
+    "text": "血培养"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "可用于诊断日本血吸虫病的方法包括粪便虫卵检查、毛蚴孵化法、环卵沉淀试验（COPT）与间接血凝试验（IHA）等，故答A、B、C、D。血培养用于细菌感染的病原诊断，对本病无诊断价值，故不答E。教材P288。",
+  "source_page": "教材P288",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ },
+ {
+  "id": "batch038-M08-X-006",
+  "module": "M08",
+  "module_name": "日本血吸虫病",
+  "topic": "日本血吸虫病的病理改变",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于日本血吸虫病的病理改变，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "病变以肝与结肠最显著"
+   },
+   {
+    "label": "B",
+    "text": "基本病理改变为虫卵肉芽肿"
+   },
+   {
+    "label": "C",
+    "text": "肺与脑为常见异位损害部位"
+   },
+   {
+    "label": "D",
+    "text": "晚期肝纤维化呈干线状"
+   },
+   {
+    "label": "E",
+    "text": "主要病理损害由尾蚴引起"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "日本血吸虫主要寄生在肠系膜下静脉与直肠痔上静脉内，虫卵沉积于肠壁黏膜下层并顺门静脉血流至肝内分支，病变以肝与结肠最显著；其基本病理改变为虫卵肉芽肿；肺与脑为常见异位损害部位；晚期肝内门静脉周围广泛纤维化呈干线状，故答A、B、C、D。本病主要病理损害由虫卵引起而非尾蚴，故不答E。教材P285-286。",
+  "source_page": "教材P285-286",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "subject": "传染病学"
+ }
+]

@@ -1,0 +1,21 @@
+type: flow
+title: 子宫颈癌 FIGO 2018 临床分期
+subtitle: 妇产科学 M11 子宫颈肿瘤（确定性图谱通道）
+direction: horizontal
+numbered: false
+output: annotated/11_宫颈癌FIGO分期示意.png
+webp: images_webp/11_宫颈癌FIGO分期示意.webp
+steps:
+  - title: Ⅰ期
+    color: blue
+    lines: ["肿瘤严格局限于宫颈", "蔓延至宫体不计入", "ⅠA：镜下浸润", "ⅠB：肉眼可见"]
+  - title: Ⅱ期
+    color: teal
+    lines: ["肿瘤超越子宫", "未达盆壁及阴道下 1/3", "ⅡA：无宫旁浸润", "ⅡB：有宫旁浸润"]
+  - title: Ⅲ期
+    color: orange
+    lines: ["累及盆壁或阴道下 1/3", "致肾积水或肾无功能", "ⅢC：淋巴结受累", "盆腔/腹主动脉旁"]
+  - title: Ⅳ期
+    color: red
+    lines: ["肿瘤超出真骨盆", "ⅣA：侵犯膀胱直肠黏膜", "ⅣB：远处器官转移"]
+note: 内容依据 FIGO 2018 宫颈癌分期、人卫《妇产科学》第9版；render_diagram.py 确定性渲染

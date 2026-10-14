@@ -1,0 +1,44 @@
+type: grid
+title: 晚期产后出血六大病因
+subtitle: 妇产科学 M9 产褥期疾病（确定性图谱通道）
+cols: 3
+output: annotated/26_晚期产后出血病因鉴别.png
+webp: images_webp/26_晚期产后出血病因鉴别.webp
+items:
+  - title: 胎盘胎膜残留
+    color: blue
+    lines:
+      - 产后10日左右
+      - 血性恶露延长、反复或突发出血
+      - 宫口松弛、病理见绒毛
+  - title: 蜕膜残留
+    color: teal
+    lines:
+      - 产后1周内脱落、残留更晚
+      - 病理见坏死蜕膜、不见绒毛
+      - 可继发内膜炎
+  - title: 附着面复旧不全
+    color: green
+    lines:
+      - 产后2周左右
+      - 突然大量流血
+      - 子宫大而软、宫口松弛
+  - title: 感染（子宫内膜炎）
+    color: orange
+    lines:
+      - 恶露恶臭＋子宫压痛
+      - 附着面复旧不全
+      - 血常规、CRP、病原学
+  - title: 剖宫产切口愈合不良
+    color: red
+    lines:
+      - 术后2~3周
+      - 突然大量出血可致休克
+      - 超声见切口血肿/裂开
+  - title: 其他病因
+    color: purple
+    lines:
+      - 动静脉畸形/假性动脉瘤
+      - 滋养细胞肿瘤/黏膜下肌瘤/宫颈癌
+      - 查血hCG、影像、病理
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

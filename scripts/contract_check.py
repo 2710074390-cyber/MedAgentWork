@@ -17,9 +17,7 @@ from datetime import datetime, timezone, timedelta
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 BASE = Path(__file__).parent.parent
-# v2.0 (2026-08-20 审查修复): 契约单一事实源收敛 —— 此前读 schemas/agent_contracts.json
-# （旧合并契约，与 *_output.schema.json 漂移，对真实 batch027 全量误报 120 错误）。
-# 现在直接读 ingest.py 实际校验用的 schemas/{agent}_output.schema.json。
+# 契约单一事实源：直接读 schemas/{agent}_output.schema.json
 SCHEMA_FILES = {
     'agent2_output': 'agent2_output.schema.json',
     'agent3_output': 'agent3_output.schema.json',
@@ -39,11 +37,7 @@ def load_schemas():
 
 
 def validate_against_schema(data, schema, path=""):
-    """用 jsonschema Draft7 校验，返回错误字符串列表。
-
-    v2.0 (2026-08-20 审查修复): 弃用自研简化校验器（不支持 anyOf/items/$ref，
-    且 bool 是 int 子类等误放行），直接复用与 ingest 相同的标准实现。
-    """
+    """用 jsonschema Draft7 校验，返回错误字符串列表。"""
     try:
         import jsonschema
     except ImportError:
@@ -153,8 +147,7 @@ def check_agent3(batch_id):
         'agent': 'agent3',
         'batch': batch_id,
         'file': str(filepath),
-        # v2.0 (2026-08-20 审查修复): 契约违反此前只报 WARN 永不 FAIL，
-        # 无法作为门禁；契约不符即 FAIL
+        # 契约违反即 FAIL
         'status': 'PASS' if not errors else 'FAIL',
         'errors': errors,
     }
@@ -195,7 +188,7 @@ def check_agent4(batch_id):
         'batch': batch_id,
         'file': str(filepath),
         'source_file_synced': synced,
-        # v2.0 (2026-08-20 审查修复): HC-13 溯源违反是硬门禁，必须 FAIL
+        # HC-13 溯源违反是硬门禁
         'status': 'PASS' if not errors else 'FAIL',
         'errors': errors,
     }
@@ -265,8 +258,7 @@ def main():
 
     if args.all:
         results = check_all()
-        # v2.0 (2026-08-20 审查修复): 有 FAIL 即非零退出 —— 此前恒 exit 0，
-        # 无法用于任何门禁/CI
+        # 有 FAIL 即非零退出
         sys.exit(1 if any(r['status'] == 'FAIL' for r in results) else 0)
     elif args.agent and args.batch:
         if args.agent == 'agent2':

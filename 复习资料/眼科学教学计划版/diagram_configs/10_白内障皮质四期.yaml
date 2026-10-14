@@ -1,0 +1,32 @@
+type: grid
+title: 白内障皮质四期演进
+subtitle: 眼科学 M6 晶状体疾病（确定性图谱通道）
+cols: 4
+output: annotated/10_白内障皮质四期.png
+webp: images_webp/10_白内障皮质四期.webp
+items:
+  - title: 初发期
+    color: blue
+    lines:
+      - "周边皮质楔形混浊"
+      - "空泡/水隙"
+      - "视力影响小"
+  - title: 膨胀期
+    color: orange
+    lines:
+      - "晶状体肿胀、体积增大"
+      - "前房变浅、虹视"
+      - "可诱发急性闭角型青光眼"
+  - title: 成熟期
+    color: red
+    lines:
+      - "全皮质乳白色混浊"
+      - "视力降至指数/手动"
+      - "虹膜投影（+）→（-）"
+  - title: 过熟期
+    color: purple
+    lines:
+      - "皮质液化、核下沉（Morgagni）"
+      - "囊膜皱缩、核震颤"
+      - "可致晶状体性青光眼/过敏"
+note: 内容依据人卫《眼科学》第10版（范先群/颜华）M6；老年性白内障最常见类型为皮质性；render_diagram.py确定性渲染

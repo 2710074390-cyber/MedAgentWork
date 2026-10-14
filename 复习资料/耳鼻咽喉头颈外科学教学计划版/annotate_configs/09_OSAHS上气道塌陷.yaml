@@ -1,0 +1,23 @@
+image: raw/09_OSAHS上气道塌陷_raw.png
+output: annotated/09_OSAHS上气道塌陷.png
+fixes:
+  - box: [40, 55, 320, 100]
+    text: 清醒·气道通畅
+    mode: label
+    anchor: [330, 280]
+  - box: [30, 720, 360, 765]
+    text: 舌肌紧张、软腭前位
+    mode: label
+    anchor: [300, 640]
+  - box: [560, 55, 880, 100]
+    text: 睡眠·软组织后坠
+    mode: label
+    anchor: [820, 280]
+  - box: [660, 480, 900, 525]
+    text: 塌陷气道（狭窄）
+    mode: label
+    anchor: [830, 530]
+  - box: [560, 720, 880, 765]
+    text: 舌、软腭松弛后坠
+    mode: label
+    anchor: [800, 640]

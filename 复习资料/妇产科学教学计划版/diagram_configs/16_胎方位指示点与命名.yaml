@@ -1,0 +1,41 @@
+type: grid
+title: 胎方位指示点与命名
+subtitle: 妇产科学 M3 妊娠诊断与产前检查（确定性图谱通道）
+cols: 2
+output: annotated/16_胎方位指示点与命名.png
+webp: images_webp/16_胎方位指示点与命名.webp
+items:
+  - title: 枕先露（指示点：枕骨 O）
+    color: blue
+    lines:
+      - 指示点＝枕骨
+      - 共 6 种胎方位
+      - 缩写＝部位(O)＋侧别(L/R)＋前后(A/P/T)
+      - LOA 为最常见枕前位
+      - 左前LOA/左横LOT/左后LOP
+      - 右前ROA/右横ROT/右后ROP
+  - title: 面先露（指示点：颏骨 M）
+    color: teal
+    lines:
+      - 指示点＝颏骨（勿与枕骨混）
+      - 共 6 种胎方位
+      - 例：颏左前 LMA
+      - 颏前位可试产
+      - 持续颏后/颏横位不能经阴道
+  - title: 臀先露（指示点：骶骨 S）
+    color: green
+    lines:
+      - 指示点＝骶骨
+      - 共 6 种胎方位
+      - 例：骶左前 LSA
+      - 分混合/单臀/足先露
+      - 多数分娩期选剖宫产
+  - title: 肩先露（指示点：肩胛骨 Sc）
+    color: orange
+    lines:
+      - 指示点＝肩胛骨
+      - 仅 4 种胎方位
+      - 肩左前LSCA/肩左后LSCP
+      - 肩右前RSCA/肩右后RSCP
+      - 足月活胎不能经阴道分娩
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

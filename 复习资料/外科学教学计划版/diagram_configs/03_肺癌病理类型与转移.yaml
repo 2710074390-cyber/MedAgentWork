@@ -1,0 +1,28 @@
+type: compare
+title: 肺癌主要病理类型鉴别（鳞癌 / 腺癌 / 小细胞癌）
+subtitle: 外科学（二）M1 胸部损伤、肺疾病、食管疾病（确定性图谱通道）
+output: annotated/03_肺癌病理类型与转移.png
+webp: images_webp/03_肺癌病理类型与转移.webp
+items:
+  - title: 鳞状细胞癌
+    color: blue
+    lines:
+      - 吸烟男性、中心型
+      - 生长慢、先淋巴后血行
+      - 块大可中心坏死成厚壁空洞
+      - 治疗以手术为主
+  - title: 腺癌
+    color: teal
+    lines:
+      - 相对年轻、多周围型
+      - 已超越鳞癌成为最常见类型
+      - 肿瘤不大但早期血行+淋巴转移
+      - 手术；东亚非吸烟女性多 EGFR 突变→靶向
+  - title: 小细胞癌
+    color: red
+    lines:
+      - 老年男性、中心型、神经内分泌
+      - 恶性度最高、生长最快
+      - 很早即发生淋巴+血行转移
+      - 除早期（T1-2N0M0）外以放化疗为主
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

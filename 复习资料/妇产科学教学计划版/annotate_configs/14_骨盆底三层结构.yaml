@@ -1,0 +1,23 @@
+image: raw/14_骨盆底三层结构_raw.png
+output: annotated/14_骨盆底三层结构.png
+fixes:
+  - box: [40, 270, 380, 315]
+    text: 外层（浅层筋膜肌肉）
+    mode: label
+    anchor: [350, 330]
+  - box: [620, 410, 880, 455]
+    text: 中层·泌尿生殖膈
+    mode: label
+    anchor: [600, 450]
+  - box: [60, 600, 440, 645]
+    text: 内层·盆膈（肛提肌为主）
+    mode: label
+    anchor: [380, 620]
+  - box: [560, 320, 920, 365]
+    text: 尿生殖裂孔（尿道/阴道）
+    mode: label
+    anchor: [525, 390]
+  - box: [560, 570, 700, 615]
+    text: 直肠裂孔
+    mode: label
+    anchor: [515, 600]

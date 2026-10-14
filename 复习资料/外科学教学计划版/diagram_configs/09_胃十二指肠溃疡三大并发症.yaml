@@ -1,0 +1,28 @@
+type: compare
+title: 胃十二指肠溃疡三大并发症
+subtitle: 外科学（二）M2 腹外疝、急性化脓性腹膜炎、胃十二指肠疾病（确定性图谱通道）
+output: annotated/09_胃十二指肠溃疡三大并发症.png
+webp: images_webp/09_胃十二指肠溃疡三大并发症.webp
+items:
+  - title: 穿孔
+    color: red
+    lines:
+      - 好发胃小弯/球部前壁
+      - 突发刀割样剧痛、板状腹
+      - 立位腹平片见膈下游离气体
+      - 穿孔修补或胃大部切除
+  - title: 出血
+    color: orange
+    lines:
+      - 好发球部后壁/胃小弯
+      - 呕血、黑便、可致休克
+      - 急诊胃镜为首选检查
+      - 首选胃镜止血；必要时手术缝扎
+  - title: 幽门梗阻
+    color: purple
+    lines:
+      - 好发幽门/幽门管/球部
+      - 呕吐宿食、不含胆汁
+      - 脱水＋低氯低钾代谢性碱中毒
+      - 首选胃大部切除术
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

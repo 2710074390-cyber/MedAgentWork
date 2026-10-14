@@ -1,0 +1,39 @@
+type: flow
+title: 宫颈癌治疗选择（分期阶梯）
+subtitle: 妇产科学 M11 子宫颈肿瘤（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/29_宫颈癌治疗选择决策表.png
+webp: images_webp/29_宫颈癌治疗选择决策表.webp
+steps:
+  - title: ⅠA1（无LVSI）
+    color: blue
+    lines:
+      - 锥切（有生育要求）
+      - 或筋膜外全子宫切除
+      - 有LVSI按ⅠA2处理
+  - title: ⅠA2
+    color: teal
+    lines:
+      - 改良广泛子宫切除
+      - ＋盆腔淋巴评估
+      - 有生育→广泛性宫颈切除
+  - title: ⅠB1/ⅠB2/ⅡA1
+    color: green
+    lines:
+      - 广泛子宫切除
+      - ＋盆腔淋巴结
+      - ＋选择性腹主动脉旁淋巴结
+  - title: ⅠB3/ⅡA2及以上
+    color: orange
+    lines:
+      - 根治性放疗
+      - 或同步放化疗
+      - 铂类为基础
+  - title: 晚期转移/复发
+    color: red
+    lines:
+      - 铂类＋贝伐珠单抗
+      - 免疫检查点抑制剂后线
+      - 不宜手术者
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

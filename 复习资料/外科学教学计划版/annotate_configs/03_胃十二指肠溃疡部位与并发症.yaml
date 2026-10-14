@@ -1,0 +1,40 @@
+image: raw/03_胃十二指肠溃疡部位与并发症_raw.png
+output: annotated/03_胃十二指肠溃疡部位与并发症.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [430, 25, 520, 70]
+    text: "食管"
+    mode: label
+    anchor: [485, 110]
+  - box: [630, 130, 730, 175]
+    text: "胃底"
+    mode: label
+    anchor: [640, 190]
+  - box: [650, 330, 750, 375]
+    text: "胃体"
+    mode: label
+    anchor: [640, 360]
+  - box: [560, 240, 830, 288]
+    text: "胃溃疡好发·胃小弯"
+    mode: label
+    anchor: [548, 372]
+  - box: [290, 455, 430, 500]
+    text: "幽门"
+    mode: label
+    anchor: [390, 512]
+  - box: [30, 420, 300, 468]
+    text: "十二指肠球部·溃疡好发"
+    mode: label
+    anchor: [313, 548]
+  - box: [30, 640, 280, 688]
+    text: "穿孔、出血好发部位"
+    mode: label
+    anchor: [285, 680]
+  - box: [380, 760, 480, 805]
+    text: "胰头"
+    mode: label
+    anchor: [400, 730]
+  - box: [30, 540, 230, 585]
+    text: "十二指肠降部"
+    mode: label
+    anchor: [238, 600]

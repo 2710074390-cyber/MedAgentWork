@@ -1,0 +1,20 @@
+{
+  "schema_version": 2,
+  "batch001": {
+    "batch_id": "batch001",
+    "status": "IN_PROGRESS",
+    "created": "2026-09-20T22:10:52.728182",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {},
+    "lineage": [],
+    "subject": "脑血管疾病",
+    "target": 10,
+    "gate_results": {
+      "GATE-A2": {
+        "status": "PASS",
+        "reason": "产出门禁通过 (FAIL=0, PASS=2, WARN=1)",
+        "checked_at": "2026-09-20T22:10:54.008725"
+      }
+    }
+  }
+}

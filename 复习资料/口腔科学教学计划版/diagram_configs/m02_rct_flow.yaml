@@ -1,0 +1,22 @@
+type: flow
+title: 根管治疗三步流程
+subtitle: 开髓→预备→消毒→充填（M02 考点10）
+steps:
+  - title: 开髓与根管预备
+    color: teal
+    lines:
+      - 开髓揭顶，建立直线通路
+      - 根管清理成形（手用/机用锉逐号预备）
+  - title: 根管消毒
+    color: orange
+    lines:
+      - 冲洗（次氯酸钠+EDTA交替）
+      - 封药（氢氧化钙糊剂）
+  - title: 根管充填
+    color: green
+    lines:
+      - 牙胶尖+封闭剂（侧压/热牙胶）
+      - 根管口封闭，冠部充填
+note: 三阶段闭环：预备→消毒→充填，充填须严密达根尖止点
+output: ../annotated/m02_rct.png
+webp: ../images_webp/m02_rct.webp

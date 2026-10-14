@@ -1,0 +1,25 @@
+type: compare
+title: 前置胎盘 vs 胎盘早剥
+subtitle: 妇产科学 M7 妊娠晚期出血鉴别（确定性图谱通道）
+output: annotated/08_前置胎盘vs胎盘早剥.png
+webp: images_webp/08_前置胎盘vs胎盘早剥.webp
+items:
+  - title: 前置胎盘
+    color: blue
+    lines:
+      - 胎盘附着于子宫下段
+      - 下缘达到或覆盖宫颈内口
+      - 位置低于胎先露部
+      - 妊娠晚期无痛性反复阴道流血
+      - 子宫软、无压痛，胎位清楚
+      - 出血为外出血，色鲜红
+  - title: 胎盘早剥
+    color: red
+    lines:
+      - 妊娠20周后正常位置胎盘
+      - 在胎儿娩出前部分或全部剥离
+      - 突发持续性腹痛，伴腰背痛
+      - 阴道流血量与贫血程度可不平行
+      - 子宫硬如板状、有压痛
+      - 内出血为主时宫底渐升高
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

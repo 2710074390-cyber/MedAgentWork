@@ -1,0 +1,16 @@
+type: grid
+title: 盆腔器官脱垂分型与 POP-Q 分度
+subtitle: 妇产科学 M16 · 第24章 P286-289
+cols: 4
+output: annotated/40_盆腔器官脱垂分型与POP-Q分度.png
+webp: images_webp/40_盆腔器官脱垂分型与POP-Q分度.webp
+items:
+  - {title: 膀胱膨出, color: blue, lines: ["阴道前壁脱垂（上 2/3）", "常伴压力性尿失禁"]}
+  - {title: 尿道膨出, color: blue, lines: ["前壁下 1/3 段脱垂", "可致排尿困难"]}
+  - {title: 直肠膨出, color: teal, lines: ["阴道后壁脱垂", "可致便秘、手助压迫排便"]}
+  - {title: 肠疝, color: teal, lines: ["直肠子宫陷凹疝", "后穹隆球形突出、内含小肠"]}
+  - {title: 子宫脱垂, color: orange, lines: ["宫颈外口达坐骨棘水平以下", "不影响月经与轻度受孕"]}
+  - {title: 穹隆脱垂, color: orange, lines: ["子宫切除术后", "顶端支持缺失"]}
+  - {title: POP-Q Ⅰ-Ⅱ, color: gray, lines: ["最远点 >-1cm ~ +1cm", "未达缘 / 缘外 1cm 内"]}
+  - {title: POP-Q Ⅲ-Ⅳ, color: gray, lines: [">+1cm ~ ≥(TVL-2)", "接近 / 完全外翻"]}
+note: 依据《妇产科学（第10版）》P286-289；NIH 2001：前缘超处女膜缘外 1cm；POP-Q 六点＋三径，屏气最重计分

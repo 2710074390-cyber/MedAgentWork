@@ -1,0 +1,29 @@
+type: flow
+title: RA 关节病变进展链
+subtitle: 内科学 风湿性疾病·M2 类风湿关节炎（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/39_RA关节病变进展.png
+webp: images_webp/39_RA关节病变进展.webp
+steps:
+- title: 正常滑膜
+  color: green
+  lines:
+  - 薄而光滑、含滑液
+  - 润滑关节
+- title: 滑膜炎
+  color: yellow
+  lines:
+  - CD4+T细胞与APC浸润滑膜
+  - 滑膜慢性炎症、增生
+- title: 血管翳形成
+  color: orange
+  lines:
+  - 增生滑膜长入软骨面
+  - 释放 MMP、TNF-α、IL-6 降解软骨与骨
+- title: 软骨和骨破坏
+  color: red
+  lines:
+  - 关节间隙变窄
+  - 虫蚀样破坏→强直/畸形
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

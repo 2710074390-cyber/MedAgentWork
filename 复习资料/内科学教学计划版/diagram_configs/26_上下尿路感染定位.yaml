@@ -1,0 +1,25 @@
+type: compare
+title: 上 vs 下尿路感染定位
+subtitle: 内科学 泌尿系统·M3 尿路感染（确定性图谱通道）
+output: annotated/26_上下尿路感染定位.png
+webp: images_webp/26_上下尿路感染定位.webp
+items:
+- title: 下尿路：急性膀胱炎
+  color: green
+  lines:
+  - 尿路刺激征（有）
+  - 无全身症状
+  - 无肾区叩击痛
+  - 无白细胞管型
+  - 外周血白细胞不高
+  - 短程疗法 3-5 日
+- title: 上尿路：急性肾盂肾炎
+  color: red
+  lines:
+  - 尿路刺激征（可有）
+  - 寒战、高热>38℃
+  - 肾区叩击痛（有）
+  - 白细胞管型（有，定位证据）
+  - 外周血白细胞升高
+  - 疗程 2 周
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

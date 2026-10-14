@@ -1,0 +1,32 @@
+image: raw/17_肝纤维化假小叶形成_raw.png
+output: annotated/17_肝纤维化假小叶形成.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [200, 150, 420, 200]
+    text: "正常肝小叶"
+    mode: label
+    anchor: [310, 340]
+  - box: [335, 520, 455, 565]
+    text: "中央静脉"
+    mode: label
+    anchor: [318, 505]
+  - box: [140, 295, 285, 340]
+    text: "肝细胞索"
+    mode: label
+    anchor: [235, 385]
+  - box: [140, 650, 285, 695]
+    text: "肝窦"
+    mode: label
+    anchor: [245, 620]
+  - box: [620, 150, 800, 200]
+    text: "假小叶"
+    mode: label
+    anchor: [700, 300]
+  - box: [850, 395, 985, 440]
+    text: "纤维隔"
+    mode: label
+    anchor: [830, 430]
+  - box: [850, 600, 985, 645]
+    text: "再生结节"
+    mode: label
+    anchor: [785, 620]

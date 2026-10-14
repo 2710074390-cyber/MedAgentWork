@@ -1,0 +1,32 @@
+image: raw/07_肛管齿状线与痔分型_raw.png
+output: annotated/07_肛管齿状线与痔分型.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [360, 70, 640, 120]
+    text: "直肠壶腹"
+    mode: label
+    anchor: [500, 220]
+  - box: [420, 480, 530, 525]
+    text: "肛柱"
+    mode: label
+    anchor: [462, 540]
+  - box: [620, 670, 760, 715]
+    text: "齿状线"
+    mode: label
+    anchor: [600, 702]
+  - box: [40, 580, 320, 628]
+    text: "内痔（齿状线上·黏膜）"
+    mode: label
+    anchor: [418, 635]
+  - box: [380, 780, 530, 825]
+    text: "混合痔"
+    mode: label
+    anchor: [505, 715]
+  - box: [640, 770, 920, 818]
+    text: "外痔（齿状线下·皮肤）"
+    mode: label
+    anchor: [578, 740]
+  - box: [420, 860, 540, 905]
+    text: "肛管"
+    mode: label
+    anchor: [500, 835]

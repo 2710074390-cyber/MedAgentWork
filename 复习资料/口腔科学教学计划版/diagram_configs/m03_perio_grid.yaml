@@ -1,0 +1,46 @@
+type: grid
+title: 牙周炎分期-分级判定网格
+subtitle: 分期（Ⅰ-Ⅳ期）×分级（A-C）（M03 考点6）
+items:
+  - title: Ⅰ期 轻度
+    color: teal
+    lines:
+      - CAL 1-2mm
+      - 骨丧失 冠根1/3内
+      - 无因牙周炎失牙
+  - title: Ⅱ期 中度
+    color: blue
+    lines:
+      - CAL 3-4mm
+      - 骨丧失 根中1/3
+      - 无因牙周炎失牙
+  - title: Ⅲ期 重度
+    color: orange
+    lines:
+      - CAL ≥5mm
+      - 骨丧失 根尖1/3
+      - 因牙周炎失牙 ≤4颗
+  - title: Ⅳ期 极重度
+    color: red
+    lines:
+      - CAL ≥5mm
+      - 因牙周炎失牙 ≥5颗
+      - 咬合紊乱/牙移位
+  - title: A级 进展率低
+    color: green
+    lines:
+      - 骨丧失/年龄 <0.25
+      - 无吸烟/糖尿病
+  - title: B级 进展率中
+    color: yellow
+    lines:
+      - 骨丧失/年龄 0.25-1.0
+      - 吸烟<10支/日 或 糖尿病HbA1c<7%
+  - title: C级 进展率高
+    color: red
+    lines:
+      - 骨丧失/年龄 >1.0
+      - 吸烟≥10支/日 或 HbA1c≥7%
+note: 先定分期（严重程度），再定分级（进展风险与修饰因素）
+output: ../annotated/m03_perio_grid.png
+webp: ../images_webp/m03_perio_grid.webp

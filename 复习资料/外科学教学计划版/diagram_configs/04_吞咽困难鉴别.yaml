@@ -1,0 +1,31 @@
+type: compare
+title: 进行性吞咽困难的病因鉴别
+subtitle: 外科学（二）M1 胸部损伤、肺疾病、食管疾病（确定性图谱通道）
+output: annotated/04_吞咽困难鉴别.png
+webp: images_webp/04_吞咽困难鉴别.webp
+items:
+  - title: 食管癌
+    color: red
+    lines:
+      - 进行性吞咽困难、消瘦、锁骨上淋巴结
+      - 中老年、男性多、胸中段
+      - 钡餐＋胃镜活检确诊
+  - title: 贲门失弛缓症
+    color: blue
+    lines:
+      - 间断性、时轻时重、反流
+      - 20～50 岁、女性稍多
+      - 食管测压确诊；钡餐呈鸟嘴样
+  - title: 食管良性肿瘤
+    color: green
+    lines:
+      - 缓慢、轻度、病程长、黏膜完整
+      - 中年多见（平滑肌瘤最多见）
+      - 钡餐"半月状"压迹
+  - title: 腐蚀性食管狭窄
+    color: orange
+    lines:
+      - 有吞服腐蚀剂史、胸骨后痛
+      - 口咽灼伤、意外/儿童多见
+      - 病史＋食管造影
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

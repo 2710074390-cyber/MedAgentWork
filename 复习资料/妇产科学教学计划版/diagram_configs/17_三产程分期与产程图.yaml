@@ -1,0 +1,30 @@
+type: flow
+title: 三产程分期及时限
+subtitle: 妇产科学 M4 正常分娩（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/17_三产程分期与产程图.png
+webp: images_webp/17_三产程分期与产程图.webp
+steps:
+  - title: 第一产程（宫颈扩张期）
+    color: blue
+    lines:
+      - 规律宫缩→宫口开全(10cm)
+      - 潜伏期初产≤20h、经产≤14h
+      - 以宫口5cm进入活跃期
+      - 活跃期扩张≥0.5cm/h
+  - title: 第二产程（胎儿娩出期）
+    color: teal
+    lines:
+      - 宫口开全→胎儿娩出
+      - 无硬膜外：初产≤3h、经产≤2h
+      - 硬膜外：初产≤4h、经产≤3h
+      - 初产>1h关注、>2h全面评估
+  - title: 第三产程（胎盘娩出期）
+    color: green
+    lines:
+      - 胎儿娩出→胎盘娩出
+      - 约 5～15 分钟
+      - 不超过 30 分钟
+      - 超30分钟为产程异常
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

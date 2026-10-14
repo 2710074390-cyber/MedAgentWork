@@ -1,0 +1,36 @@
+image: raw/03_肝脏面解剖与肝外胆道_raw.png
+output: annotated/03_肝脏面解剖与肝外胆道.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [375, 455, 480, 500]
+    text: "左肝管"
+    mode: label
+    anchor: [465, 505]
+  - box: [560, 435, 665, 480]
+    text: "右肝管"
+    mode: label
+    anchor: [568, 490]
+  - box: [565, 535, 700, 580]
+    text: "肝总管"
+    mode: label
+    anchor: [532, 560]
+  - box: [330, 375, 520, 420]
+    text: "Calot三角"
+    mode: label
+    anchor: [480, 545]
+  - box: [295, 495, 420, 540]
+    text: "胆囊动脉"
+    mode: label
+    anchor: [470, 548]
+  - box: [375, 555, 480, 600]
+    text: "胆囊管"
+    mode: label
+    anchor: [475, 605]
+  - box: [245, 650, 380, 695]
+    text: "胆囊"
+    mode: label
+    anchor: [378, 700]
+  - box: [565, 700, 700, 745]
+    text: "胆总管"
+    mode: label
+    anchor: [535, 750]

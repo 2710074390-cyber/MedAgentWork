@@ -1,0 +1,16 @@
+image: raw/17_不可除颤心律_raw.png
+output: annotated/17_不可除颤心律.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [370, 18, 630, 75]
+    text: "不可除颤心律"
+    mode: label
+  - box: [95, 95, 425, 158]
+    text: "无脉性电活动(PEA)"
+    mode: label
+  - box: [595, 95, 885, 158]
+    text: "心室静止(Asystole)"
+    mode: label
+  - box: [240, 915, 760, 975]
+    text: "不可电击，CPR+肾上腺素"
+    mode: label

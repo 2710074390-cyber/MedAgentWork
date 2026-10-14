@@ -1,0 +1,23 @@
+image: raw/10_鼻咽癌部位与淋巴转移_raw.png
+output: annotated/10_鼻咽癌部位与淋巴转移.png
+fixes:
+  - box: [120, 320, 260, 365]
+    text: 鼻咽腔
+    mode: label
+    anchor: [430, 365]
+  - box: [60, 395, 380, 440]
+    text: 好发：咽隐窝/顶后壁
+    mode: label
+    anchor: [490, 400]
+  - box: [620, 575, 860, 620]
+    text: 颈深上淋巴结
+    mode: label
+    anchor: [590, 610]
+  - box: [620, 720, 840, 765]
+    text: 淋巴转移路径
+    mode: label
+    anchor: [600, 740]
+  - box: [680, 830, 900, 875]
+    text: 锁骨上淋巴结
+    mode: label
+    anchor: [640, 840]

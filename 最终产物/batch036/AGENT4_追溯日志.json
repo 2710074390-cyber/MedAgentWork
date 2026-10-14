@@ -1,0 +1,403 @@
+{
+  "batch": "batch036",
+  "agent": "Agent4 MedFix",
+  "subject": "耳鼻咽喉头颈外科学（大四上·5 教学模块）",
+  "source_file_synced": true,
+  "source_files_synced": true,
+  "synced_files": [
+    "中间产物/batch036/ALL_questions.json",
+    "part_M1.json",
+    "part_M2a.json",
+    "part_M2b.json",
+    "part_M3a.json",
+    "part_M3b.json",
+    "part_M4.json",
+    "part_M5a.json",
+    "part_M5b.json"
+  ],
+  "raw_total": 200,
+  "fixed_total": 200,
+  "question_delta": 0,
+  "answer_content_changed": 0,
+  "rounds": [
+    {
+      "round": "fix_pass1_answer_balance",
+      "scope": "2 道单选题",
+      "purpose": "REG-014 答案位置均衡：E 位 14.9% < 15% 下限，交换选项位置使 E 达标",
+      "tool": "中间产物/batch036/_fix_pass_a4.py",
+      "content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "scope": "27 道含否定词题干",
+      "purpose": "R4 否定词加粗（validate_options WARN，与 batch034 34处 / batch035 11处 做法一致）",
+      "tool": "中间产物/batch036/_fix_pass_a4.py",
+      "content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass3_hc9_terminology",
+      "scope": "1 处选项术语",
+      "purpose": "HC-9 术语统一：\"急性鼻-鼻窦炎\"→\"急性鼻窦炎\"（第10版教材标准名，与库内其余 15 处\"鼻窦炎\"一致）",
+      "tool": "inline",
+      "content_changed": true,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass4_r2_regression",
+      "scope": "1 处选项",
+      "purpose": "修复 fix_pass3 引入的 R2 长度比回归",
+      "tool": "inline",
+      "content_changed": true,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    }
+  ],
+  "patches": [
+    {
+      "round": "fix_pass1_answer_balance",
+      "target": "batch036-M3-A1-009",
+      "operation": "swap_option_position",
+      "from": "C",
+      "to": "E",
+      "purpose": "REG-014 答案位置均衡：E 位 14.9% 提升至 ≥15%",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass1_answer_balance",
+      "target": "batch036-M3-A1-017",
+      "operation": "swap_option_position",
+      "from": "C",
+      "to": "E",
+      "purpose": "REG-014 答案位置均衡：E 位 14.9% 提升至 ≥15%",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M1-A1-003",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M1-A1-006",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M1-A1-007",
+      "operation": "bold_negation_word",
+      "word": "不属于",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M1-A2-005",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M2-A1-005",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M2-A1-012",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M2-A2-003",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M2-A1-019",
+      "operation": "bold_negation_word",
+      "word": "不包括",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M2-A1-020",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M2-A1-022",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M2-A1-023",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M3-A1-004",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M3-A1-005",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M3-A1-009",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M3-A2-007",
+      "operation": "bold_negation_word",
+      "word": "不正确",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M3-A1-012",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M3-A1-014",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M3-A1-018",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M3-A2-013",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M4-A1-011",
+      "operation": "bold_negation_word",
+      "word": "不属于",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M4-A2-009",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M4-A3-002",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M5-A1-004",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M5-A1-006",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M5-A2-005",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M5-A1-012",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass2_r4_negation_bold",
+      "target": "batch036-M5-A1-016",
+      "operation": "bold_negation_word",
+      "word": "错误的",
+      "purpose": "R4 否定词加粗，降低漏看否定词导致的误答（与 batch034/035 做法一致）",
+      "content_changed": false,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass3_hc9_terminology",
+      "target": "batch036-M3-A2-008.optionD",
+      "operation": "terminology_normalize",
+      "from": "急性鼻-鼻窦炎",
+      "to": "急性鼻窦炎",
+      "purpose": "HC-9 术语同意异名统一（干扰项，答案未变）",
+      "content_changed": true,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    },
+    {
+      "round": "fix_pass4_r2_regression",
+      "target": "batch036-M3-A2-008.optionD",
+      "operation": "lengthen_distractor",
+      "from": "急性鼻窦炎",
+      "to": "急性化脓性鼻窦炎",
+      "purpose": "fix_pass3 术语归一后长度比 11/5=2.2x 触发 R2 FAIL，补\"化脓性\"至 8 字使比值回落 1.375x（干扰项，答案未变）",
+      "content_changed": true,
+      "answer_content_changed": false,
+      "source_file_synced": true
+    }
+  ],
+  "residual_warns_accepted": [
+    {
+      "rule": "R1",
+      "count": 3,
+      "reason": "绝对化用语均位于干扰项内，非正确项，符合 NBME 惯例"
+    },
+    {
+      "rule": "R2",
+      "count": 13,
+      "reason": "长度比 1.5-2.0×，多为 3-7 字疾病/解剖术语，属规范豁免下限"
+    },
+    {
+      "rule": "R3",
+      "count": 3,
+      "reason": "器械体位（M1-A3-001）、跨量纲长度（M2-A1-005）、混合时间单位（M2-A1-015）无法按数值排序，重排反而制造位置线索"
+    },
+    {
+      "rule": "R6",
+      "count": 7,
+      "reason": "药物浓度序列（M1-A2-002）与跨量纲数值（M2-A1-005/011）为校验器误判，压缩数值将损害医学真实性"
+    },
+    {
+      "rule": "R8",
+      "count": 9,
+      "reason": "\"约10dB\"含 dB 单位、\"β-2转铁蛋白\"为名称非数值、\"声带后1/3\"为分数比，校验器单位词表未覆盖"
+    }
+  ],
+  "hc18_note": "考研真题配额清零：耳鼻咽喉头颈外科学不属西医综合 306 考纲，GoldenSet 无成体系真题 → 100% 原创，kaoyan_origin=0，如实标注（用户 2026-09-04 确认）",
+  "hc9_note": "术语异名实测 16 组：15 组已统一；1 组双形态（鼻-鼻窦炎/鼻窦炎）已归一；\"腭扁桃体/扁桃体\"为解剖学精确名 vs 临床通用名，属合法上下位关系，予以保留"
+}

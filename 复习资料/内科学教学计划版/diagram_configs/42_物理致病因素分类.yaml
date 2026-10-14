@@ -1,0 +1,39 @@
+type: grid
+title: 物理致病因素分类（能量→疾病）
+subtitle: 内科学 理化因素所致疾病·M1 理化因素总论（确定性图谱通道）
+cols: 5
+output: annotated/42_物理致病因素分类.png
+webp: images_webp/42_物理致病因素分类.webp
+items:
+- title: 高温→中暑/热射病
+  color: red
+  lines:
+  - 产热>散热
+  - 体温调节失代偿
+  - 热射病>40℃
+  - 意识障碍、无汗
+- title: 低温→冻伤/冻僵
+  color: teal
+  lines:
+  - 散热>产热
+  - 核心体温下降
+  - 复温为主
+- title: 低气压→高原病
+  color: blue
+  lines:
+  - 低氧
+  - 组织氧供被突破
+  - 吸氧/尽快下撤
+- title: 电流→电击
+  color: yellow
+  lines:
+  - 电流通过组织
+  - 心律失常/组织烧伤
+  - 断电+心肺复苏
+- title: 辐射→放射病
+  color: purple
+  lines:
+  - 电离辐射
+  - DNA 损伤
+  - 对症支持
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

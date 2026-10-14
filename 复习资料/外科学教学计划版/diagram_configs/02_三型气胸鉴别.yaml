@@ -1,0 +1,28 @@
+type: compare
+title: 三种气胸鉴别（闭合性 / 开放性 / 张力性）
+subtitle: 外科学（二）M1 胸部损伤、肺疾病、食管疾病（确定性图谱通道）
+output: annotated/02_三型气胸鉴别.png
+webp: images_webp/02_三型气胸鉴别.webp
+items:
+  - title: 闭合性气胸
+    color: green
+    lines:
+      - 裂口小、随肺萎陷自闭
+      - 伤侧肺部分萎陷
+      - 纵隔轻度向健侧移位
+      - 少量观察；大量穿刺/闭式引流
+  - title: 开放性气胸
+    color: orange
+    lines:
+      - 胸壁开放伤口、与大气相通
+      - 肺完全萎陷、丧失功能
+      - 纵隔扑动（吸气移健侧、呼气移伤侧）
+      - 立即封闭伤口（呼气末加压包扎）
+  - title: 张力性气胸
+    color: red
+    lines:
+      - 活瓣单向进气、只进不出
+      - 肺严重萎陷
+      - 纵隔显著向健侧移位
+      - 粗针减压→闭式引流
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

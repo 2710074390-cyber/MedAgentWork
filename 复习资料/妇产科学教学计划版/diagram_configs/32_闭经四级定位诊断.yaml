@@ -1,0 +1,34 @@
+type: flow
+title: 闭经四级定位诊断
+subtitle: 妇产科学 M13 生殖内分泌（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/32_闭经四级定位诊断.png
+webp: images_webp/32_闭经四级定位诊断.webp
+steps:
+  - title: 子宫性闭经
+    color: blue
+    lines:
+      - 雌孕激素序贯试验阴性
+      - FSH正常
+      - Asherman综合征、宫颈粘连
+  - title: 卵巢性闭经
+    color: teal
+    lines:
+      - FSH升高
+      - AMH↓、E2低
+      - POI/POF、Turner、卵巢肿瘤
+  - title: 垂体性闭经
+    color: green
+    lines:
+      - FSH/LH均低
+      - 垂体兴奋试验LH无/低升高
+      - 希恩综合征、垂体瘤、空蝶鞍
+  - title: 下丘脑性闭经
+    color: orange
+    lines:
+      - LH<5IU/L
+      - 垂体兴奋试验LH升高
+      - 功能性应激/消瘦/运动
+      - 颅咽管瘤（最常见）
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

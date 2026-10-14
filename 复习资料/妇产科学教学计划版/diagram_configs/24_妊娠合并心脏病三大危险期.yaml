@@ -1,0 +1,27 @@
+type: flow
+title: 妊娠合并心脏病三大危险期
+subtitle: 妇产科学 M8 妊娠合并内外科疾病（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/24_妊娠合并心脏病三大危险期.png
+webp: images_webp/24_妊娠合并心脏病三大危险期.webp
+steps:
+  - title: 妊娠32~34周
+    color: blue
+    lines:
+      - 血容量与心输出量达高峰
+      - 心率增快10~15次/分
+      - 前负荷峰值
+  - title: 分娩期
+    color: orange
+    lines:
+      - 每次宫缩250~500ml入体循环
+      - 第二产程屏气增肺循环压力
+      - 先心病左→右分流可逆转为右向左
+  - title: 产后3日内（尤其24h）
+    color: red
+    lines:
+      - 潴留液回体循环
+      - 宫缩挤血、回心血量激增
+      - 心脏负担最重、最易心衰
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

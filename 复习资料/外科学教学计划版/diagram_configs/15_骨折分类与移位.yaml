@@ -1,0 +1,14 @@
+type: grid
+title: 骨折按骨折线形态分型
+subtitle: 外科学（二）M7 骨折概述（确定性图谱通道）
+cols: 3
+output: annotated/15_骨折分类与移位.png
+webp: images_webp/15_骨折分类与移位.webp
+items:
+  - {title: 横形骨折, color: blue, lines: ["骨折线近垂直骨干纵轴", "多由直接暴力引起"]}
+  - {title: 斜形骨折, color: teal, lines: ["骨折线与骨干成角", "属不稳定骨折"]}
+  - {title: 螺旋形骨折, color: purple, lines: ["扭转暴力致螺旋状骨折线", "属不稳定骨折"]}
+  - {title: 粉碎性骨折, color: red, lines: ["骨质碎裂成 3 块以上", "T/Y 形骨折亦属此类"]}
+  - {title: 青枝骨折, color: green, lines: ["多见于儿童", "骨皮质部分断裂、弯折不断"]}
+  - {title: 嵌插骨折, color: orange, lines: ["坚质骨嵌插入松质骨", "多见于干骺端"]}
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

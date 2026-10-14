@@ -1,0 +1,34 @@
+type: flow
+title: DVT：Virchow 三要素 → 血栓 → PE / PTS 转归链
+subtitle: 外科学（二）M5 周围血管与淋巴疾病（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/21_DVT三要素与转归链.png
+webp: images_webp/21_DVT三要素与转归链.webp
+steps:
+  - title: Virchow 三要素
+    color: blue
+    lines:
+      - 静脉损伤（内皮裸露）
+      - 血流缓慢
+      - 血液高凝
+  - title: 深静脉血栓形成
+    color: orange
+    lines:
+      - 深静脉腔内异常凝血
+      - 血栓阻塞深静脉
+      - 患肢肿胀、胀痛、浅静脉扩张
+  - title: 血栓脱落 → 肺栓塞（PE）
+    color: red
+    lines:
+      - 血栓随血流进入肺动脉
+      - 大块肺栓塞可致死
+      - 下腔静脉滤器防 PE
+  - title: 机化再通 → PTS
+    color: purple
+    lines:
+      - 血栓炎症机化
+      - 瓣膜被破坏
+      - 血栓后综合征（PTS）
+      - 回流障碍＋反流并存
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

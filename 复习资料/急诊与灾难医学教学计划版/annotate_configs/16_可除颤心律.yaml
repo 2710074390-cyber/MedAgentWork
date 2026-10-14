@@ -1,0 +1,16 @@
+image: raw/16_可除颤心律_raw.png
+output: annotated/16_可除颤心律.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [370, 18, 630, 75]
+    text: "可除颤心律"
+    mode: label
+  - box: [115, 95, 405, 158]
+    text: "心室颤动(VF)"
+    mode: label
+  - box: [595, 95, 885, 158]
+    text: "无脉性室速(VT)"
+    mode: label
+  - box: [270, 915, 730, 975]
+    text: "可电击复律 · 立即电击"
+    mode: label

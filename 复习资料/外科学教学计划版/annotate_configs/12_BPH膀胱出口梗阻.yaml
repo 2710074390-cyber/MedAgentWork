@@ -1,0 +1,28 @@
+image: raw/12_BPH膀胱出口梗阻_raw.png
+output: annotated/12_BPH膀胱出口梗阻.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [280, 140, 640, 185]
+    text: "膀胱（壁增厚·小梁小房）"
+    mode: label
+    anchor: [470, 240]
+  - box: [380, 350, 660, 395]
+    text: "增生中叶突入膀胱"
+    mode: label
+    anchor: [462, 410]
+  - box: [200, 470, 380, 515]
+    text: "增生侧叶"
+    mode: label
+    anchor: [425, 505]
+  - box: [240, 600, 520, 645]
+    text: "受压变细的尿道"
+    mode: label
+    anchor: [462, 575]
+  - box: [700, 440, 800, 485]
+    text: "直肠"
+    mode: label
+    anchor: [640, 470]
+  - box: [80, 470, 240, 515]
+    text: "耻骨联合"
+    mode: label
+    anchor: [330, 505]

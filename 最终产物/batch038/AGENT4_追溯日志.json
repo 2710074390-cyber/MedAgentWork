@@ -1,0 +1,146 @@
+{
+  "source_file_synced": true,
+  "execution_metadata": {
+    "execution_id": "MODEXEC-2026-10-14-038",
+    "qc_report_id": "QC-2026-10-14-batch038",
+    "batch_id": "batch038",
+    "execution_time": "2026-10-14T20:02:00+08:00",
+    "total_patches_received": 2,
+    "safe_auto_executed": 2,
+    "auto_with_review_executed": 0,
+    "must_escalate_skipped": 0,
+    "rolled_back": 0,
+    "polarity_violations": 0,
+    "source_files_synced": [
+      "中间产物/batch038/module_M03.json",
+      "中间产物/batch038/module_M05.json",
+      "中间产物/batch038/module_M06.json",
+      "中间产物/batch038/module_M07.json"
+    ],
+    "rebuilt_aggregate": "最终产物/batch038/ALL_questions_FIXED.json",
+    "rebuild_method": "由 module_M01.json ~ module_M08.json 8 个源文件重新合并（顺序拼接），共 220 题"
+  },
+  "patch_log": [
+    {
+      "patch_id": "PATCH-B1-001",
+      "status": "EXECUTED",
+      "target": "B1.b1_group（20 道 B1 题：M02/M05/M06/M07 各 5 题）",
+      "operation": "fix_format",
+      "linked_issue_ids": ["ISSUE-001"],
+      "sub_changes": [
+        {"module": "M02", "questions": 5, "before": "N1-5", "after": "N1-5", "changed": false},
+        {"module": "M05", "questions": 5, "before": "N1-5", "after": "N6-10", "changed": true},
+        {"module": "M06", "questions": 5, "before": "N1-5", "after": "N11-15", "changed": true},
+        {"module": "M07", "questions": 5, "before": "N1-5", "after": "N16-20", "changed": true}
+      ],
+      "affected_question_ids": [
+        "batch038-M02-B1-001", "batch038-M02-B1-002", "batch038-M02-B1-003", "batch038-M02-B1-004", "batch038-M02-B1-005",
+        "batch038-M05-B1-001", "batch038-M05-B1-002", "batch038-M05-B1-003", "batch038-M05-B1-004", "batch038-M05-B1-005",
+        "batch038-M06-B1-001", "batch038-M06-B1-002", "batch038-M06-B1-003", "batch038-M06-B1-004", "batch038-M06-B1-005",
+        "batch038-M07-B1-001", "batch038-M07-B1-002", "batch038-M07-B1-003", "batch038-M07-B1-004", "batch038-M07-B1-005"
+      ],
+      "precondition_results": [
+        {"condition": "按 module 顺序分组：M02/M05/M06/M07", "passed": true},
+        {"condition": "同组 5 题共用选项完全一致", "passed": true}
+      ],
+      "post_check_results": [
+        {"check": "4 个 B1 组组号互异（N1-5 / N6-10 / N11-15 / N16-20）且各组 5 题", "passed": true},
+        {"check": "组内选项与答案零改动", "passed": true}
+      ],
+      "polarity_regression": {"applicable": false, "passed": true, "detail": "仅改分组标签 b1_group，未触及选项文本与极性"},
+      "answer_key_check": {"applicable": false, "key_still_valid": true, "detail": "答案键未改动"},
+      "failure_reason": null,
+      "source_file_synced": true
+    },
+    {
+      "patch_id": "PATCH-002",
+      "status": "EXECUTED",
+      "target": "batch038-M03-A1-013.stem",
+      "operation": "replace_text",
+      "linked_issue_ids": ["ISSUE-002"],
+      "diff": {
+        "before": "医疗中患者的健康信息属于保密范围，医生为患者保密是义务，但并非任何情况下都需保密。据此，下列医生的做法能够得到伦理辩护的是",
+        "after": "医疗中患者的健康情况属于保密范围，医生为患者保密是义务，但并非任何情况下都需保密。据此，下列医生的做法能够得到伦理辩护的是"
+      },
+      "precondition_results": [
+        {"condition": "题干含与正确选项 C 共享的关键词（信息）构成收敛线索", "passed": true},
+        {"condition": "改写后知识点与答案不变（麻疹属乙类传染病应依法上报）", "passed": true}
+      ],
+      "post_check_results": [
+        {"check": "R10 词重复线索 fail=0（无题干关键词仅现于正确选项）", "passed": true},
+        {"check": "R11 收敛策略 WARN 消失（validate: R11 命中 0 处）", "passed": true},
+        {"check": "答案键 C 仍为唯一可伦理辩护选项，A/B/D/E 仍为违规", "passed": true}
+      ],
+      "polarity_regression": {"applicable": false, "passed": true, "detail": "正选题，极性未变；未修改任何选项文本"},
+      "answer_key_check": {"applicable": true, "key_still_valid": true, "detail": "未改动选项与答案键，知识点保持"},
+      "kaoyan_origin_preserved": true,
+      "failure_reason": null,
+      "source_file_synced": true
+    }
+  ],
+  "skipped_and_not_modified": [
+    {
+      "issue_id": "ISSUE-003",
+      "target": "batch038-M03-A2-001.optionA/C",
+      "rule": "R8",
+      "severity": "minor",
+      "status": "SKIPPED",
+      "reason": "『风疹』『麻疹』为完整标准 2 字病名，同组选项（幼儿急疹/猩红热/药物疹）结构一致，属病例诊断题自然表现；R8 为 WARN 非 FAIL，保留不改。"
+    },
+    {
+      "issue_id": "ISSUE-004",
+      "target": "batch038-M03-A2-003.optionA/B/D",
+      "rule": "R8",
+      "severity": "minor",
+      "status": "SKIPPED",
+      "reason": "『风疹』『麻疹』『水痘』均为完整标准病名，2 字为疾病名自然长度，保留不改。"
+    },
+    {
+      "issue_id": "ISSUE-005",
+      "target": "batch038-M07-A2-001.optionC",
+      "rule": "R8",
+      "severity": "minor",
+      "status": "SKIPPED",
+      "reason": "『疟疾』为完整标准病名，同组结构一致，保留不改。"
+    },
+    {
+      "issue_id": "ISSUE-006",
+      "target": "batch038-M08-A1-003.optionA",
+      "rule": "R8",
+      "severity": "minor",
+      "status": "SKIPPED",
+      "reason": "『痔』为完整疾病名（原题 GS-2005-099），结构无异质，保留不改。"
+    },
+    {
+      "issue_id": "ISSUE-007",
+      "target": "batch038-M03-A1-005",
+      "rule": "D5-FALSE-POSITIVE",
+      "severity": "minor",
+      "status": "SKIPPED",
+      "reason": "人工裁定为误报：仅通用词/单位触发数值相似，答案(支气管肺炎)与数值与教材 P93 一致，无真实冲突，不修。"
+    },
+    {
+      "issue_id": "ISSUE-008",
+      "target": "batch038-M02-A1-003 / M02-A1-004 / M04-A1-012 / M08-X-001",
+      "rule": "D13-EXPECTED-DUP",
+      "severity": "minor",
+      "status": "SKIPPED",
+      "reason": "KO 题含真题解析原文导致的预期重合，非答案冲突；KO 题依规保留真题来源标注与解析，不修。"
+    }
+  ],
+  "independent_findings": [],
+  "consistency_scan": {
+    "method": "HC-7 全局一致性扫描（跨全部 220 题）",
+    "checks": [
+      {"term": "b1_group = N1-5", "expected": "仅 M02 组保留 N1-5（5 题）", "actual": "5 题（全部为 M02-B1）", "passed": true},
+      {"term": "b1_group = N6-10", "expected": "M05 组 5 题", "actual": "5 题", "passed": true},
+      {"term": "b1_group = N11-15", "expected": "M06 组 5 题", "actual": "5 题", "passed": true},
+      {"term": "b1_group = N16-20", "expected": "M07 组 5 题", "actual": "5 题", "passed": true},
+      {"term": "题干残留『健康信息』", "expected": "0（旧值已清除）", "actual": "0", "passed": true},
+      {"term": "batch038-M03-A1-013 answer", "expected": "C（未变）", "actual": "C", "passed": true}
+    ],
+    "result": "PASS — 无残留旧值，4 组组号互异，答案键一致"
+  },
+  "escalations_for_human": [],
+  "final_gate": "PASS"
+}

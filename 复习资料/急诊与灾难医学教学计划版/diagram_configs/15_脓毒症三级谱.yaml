@@ -1,0 +1,30 @@
+type: flow
+title: 脓毒症三级谱（SIRS→脓毒症→感染性休克）
+subtitle: 急诊与灾难医学 M7 多器官功能障碍综合征（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/15_脓毒症三级谱.png
+webp: images_webp/15_脓毒症三级谱.webp
+steps:
+  - title: SIRS（全身炎症反应综合征）
+    color: blue
+    lines:
+      - 机体对任何打击的炎症应答底线
+      - 经典标准满足≥2项
+      - 体温/心率/呼吸/白细胞
+      - 无感染也可发生
+  - title: 脓毒症（Sepsis-3）
+    color: orange
+    lines:
+      - 感染 + 危及生命的器官功能障碍
+      - 诊断：感染同时 SOFA≥2 分
+      - qSOFA≥2 项床边快速初筛
+      - 损害主要由失控性机体反应所致
+  - title: 感染性休克
+    color: red
+    lines:
+      - 充分液体复苏后仍需升压药
+      - 维持 MAP≥65mmHg
+      - 且血乳酸>2mmol/L
+      - 预后最差、病死率最高
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

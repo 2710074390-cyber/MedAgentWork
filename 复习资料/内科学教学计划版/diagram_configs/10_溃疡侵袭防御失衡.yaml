@@ -1,0 +1,23 @@
+type: compare
+title: 消化性溃疡：侵袭与防御的失衡
+subtitle: 内科学 消化系统·M4 消化性溃疡（确定性图谱通道）
+output: annotated/10_溃疡侵袭防御失衡.png
+webp: images_webp/10_溃疡侵袭防御失衡.webp
+items:
+- title: 侵袭因素（攻击方）
+  color: red
+  lines:
+  - 胃酸、胃蛋白酶
+  - Hp 感染（DU 感染率约90%）
+  - NSAIDs（抑制前列腺素）
+  - 胆汁反流
+  - DU 以侵袭（胃酸）增强为主
+- title: 防御因素（防守方）
+  color: green
+  lines:
+  - 黏液-碳酸氢盐屏障
+  - 黏膜血流
+  - 前列腺素
+  - 上皮更新/修复
+  - GU 以防御（屏障）减弱为主
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

@@ -1,0 +1,24 @@
+image: raw/05_抗反流屏障失效与反流机制_raw.png
+output: annotated/05_抗反流屏障失效与反流机制.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [250, 140, 400, 190]
+    text: "食管"
+    mode: label
+    anchor: [445, 180]
+  - box: [170, 420, 400, 470]
+    text: "食管黏膜损伤"
+    mode: label
+    anchor: [470, 465]
+  - box: [580, 350, 800, 400]
+    text: "反流物"
+    mode: label
+    anchor: [548, 400]
+  - box: [610, 500, 900, 560]
+    text: "下食管括约肌(LES)松弛"
+    mode: label
+    anchor: [595, 535]
+  - box: [790, 700, 950, 750]
+    text: "胃"
+    mode: label
+    anchor: [775, 720]

@@ -1,0 +1,28 @@
+image: raw/20_骨髓炎死骨包壳_raw.png
+output: annotated/20_骨髓炎死骨包壳.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [100, 290, 240, 335]
+    text: "骨髓腔"
+    mode: label
+    anchor: [210, 400]
+  - box: [330, 300, 580, 345]
+    text: "死骨（sequestrum）"
+    mode: label
+    anchor: [450, 430]
+  - box: [560, 270, 820, 315]
+    text: "包壳（involucrum）"
+    mode: label
+    anchor: [620, 390]
+  - box: [540, 700, 800, 745]
+    text: "层状骨膜反应"
+    mode: label
+    anchor: [620, 665]
+  - box: [700, 470, 820, 515]
+    text: "窦道"
+    mode: label
+    anchor: [700, 530]
+  - box: [760, 350, 890, 395]
+    text: "软组织"
+    mode: label
+    anchor: [800, 400]

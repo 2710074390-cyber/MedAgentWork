@@ -1,0 +1,29 @@
+type: grid
+title: 急性胰腺炎严重度分级（2012 修订 Atlanta）
+subtitle: 外科学（二）M4 肝疾病、门静脉高压症、胆道疾病、胰腺疾病（确定性图谱通道）
+cols: 3
+output: annotated/18_急性胰腺炎严重度分级.png
+webp: images_webp/18_急性胰腺炎严重度分级.webp
+items:
+  - title: MAP 轻症
+    color: green
+    lines:
+      - 占多数
+      - 无器官衰竭
+      - 无局部/全身并发症
+      - 自限、预后好
+  - title: MSAP 中重症
+    color: orange
+    lines:
+      - 约占 30%
+      - 无持续器官衰竭（<48h）
+      - 有局部/全身并发症
+      - 早期病死率低；后期坏死感染则升高
+  - title: SAP 重症
+    color: red
+    lines:
+      - 约占 10%
+      - 持续器官衰竭>48h（Marshall≥2）
+      - 多为出血坏死性
+      - 病死率高达 30%
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

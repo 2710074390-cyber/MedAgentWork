@@ -1,5 +1,5 @@
 {
-  "active_batch": "batch035",
+  "active_batch": "batch038",
   "halt": {
     "active": false
   },
@@ -4165,7 +4165,7 @@
   },
   "batch033": {
     "batch_id": "batch033",
-    "status": "COMPLETE",
+    "status": "APPROVED",
     "created": "2026-09-03T23:04:54.382729",
     "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
     "steps": {
@@ -4243,7 +4243,7 @@
       "GATE-FINAL": {
         "status": "PASS",
         "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
-        "checked_at": "2026-09-06T22:16:22.733305"
+        "checked_at": "2026-10-12T23:56:40.473083"
       }
     },
     "final_review": {
@@ -4263,11 +4263,12 @@
       "qc_report": "质检报告/batch033_质检报告.json",
       "trace": "最终产物/batch033/AGENT4_追溯日志.json"
     },
-    "awaiting": "用户签收（APPROVED 后上架 大四上/题库/）"
+    "awaiting": "用户签收（APPROVED 后上架 大四上/题库/）",
+    "approved_at": "2026-10-12T23:56:40.957835"
   },
   "batch034": {
     "batch_id": "batch034",
-    "status": "AGENT3_DONE",
+    "status": "APPROVED",
     "created": "2026-09-06T22:19:06.908353",
     "workflow": "Agent2(MedGen 6子agent并行)→GATE-A2→Agent3(MedQC)→GATE-A3→Agent4(MedFix)→GATE-A4→导出MD+HTML",
     "steps": {
@@ -4303,6 +4304,38 @@
         "overall_score": 98.2,
         "issues": "全量机械修复 123→0 FAIL；7 处错误 gs_id 标注移除；HC-18 补入 13 道真题改编题（答案/数值/知识点零改动）",
         "key_validations": "极性/题型/标签/截断题干/答案错误/字母漂移 全部修复；D5 页码抽样 10/10 教材内；D20 B1 专项 PASS"
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-07T10:15:04.967811+08:00",
+        "completed_at": "2026-09-07T10:15:04.967811+08:00",
+        "output": "最终产物/batch034/ (FIXED.json + FIXED.md + FIXED.html + AGENT4_追溯日志.json + AGENT4_修改声明.md)",
+        "question_count": 280,
+        "type_distribution": {
+          "A1": 112,
+          "A2": 84,
+          "A3": 14,
+          "A4": 14,
+          "B1": 28,
+          "X": 28
+        },
+        "difficulty_distribution": {
+          "基础": 88,
+          "中等": 168,
+          "困难": 24
+        },
+        "validate_gate": "PASS (82 pass / 198 warn / 0 fail)",
+        "bloom_distribution": {
+          "记忆": "30.7%",
+          "理解": "37.9%",
+          "应用": "26.4%",
+          "分析": "5.0%"
+        },
+        "kaoyan_quota": "42/280 = 15.0% (HC-18 PASS)",
+        "qbank_register": "已注册 280 题",
+        "qbank_check": "跨批次无重复 PASS",
+        "deviation_notes": "M12-X1-001/M2-A2-006/M13-X1-001 三题替换为真题改编（GS-2019-149/2022-068/2021-110）；7 处错误 gs_id 标注移除；13 道真题改编补入",
+        "trace_log": "最终产物/batch034/AGENT4_追溯日志.json (source_file_synced=true)"
       }
     },
     "lineage": [],
@@ -4357,12 +4390,43 @@
         "status": "PASS",
         "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
         "checked_at": "2026-09-07T10:13:32.571233"
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-09-07T10:15:05.104526"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
+        "checked_at": "2026-10-12T23:56:40.573423"
       }
-    }
+    },
+    "final_review": {
+      "hc9_terminology_appendix": "PASS - 题库配套复习资料《复习资料/妇产科学教学计划版/妇产科学_主复习资料.md》附录二·术语同意异名对照表已交付；题库解析均使用标准术语",
+      "hc9": "PASS",
+      "hc10_page_authenticity": "PASS - 280/280 题均含 source_page 教材页码来源锚点；gen_qc_report D5 抽样 10/10 教材内；妇产科学无 chunks_metadata 分块索引，verify_page_numbers 机械反查跳过（不在内/儿/外/神/精/皮/中/医患沟通 8 科目清单，非阻断）",
+      "hc10": "PASS",
+      "hc11_outline_page_marking": "PASS - 280/280 题均带教材页码来源锚点（source_page），无「大纲」来源缺页码条目",
+      "hc11": "PASS",
+      "json_valid": true,
+      "verified_at": "2026-09-07T10:17:14.035145+08:00"
+    },
+    "completed_at": "2026-09-07T10:17:14.035145+08:00",
+    "final_product": {
+      "json": "最终产物/batch034/ALL_questions_FIXED.json (280题)",
+      "md": "最终产物/batch034/ALL_questions_FIXED.md",
+      "html": "最终产物/batch034/ALL_questions_FIXED.html",
+      "trace": "最终产物/batch034/AGENT4_追溯日志.json",
+      "manifest": "最终产物/batch034/AGENT4_修改声明.md",
+      "qc_report": "质检报告/batch034_质检报告.json"
+    },
+    "awaiting": "无（全部门禁通过，可交付）",
+    "approved_at": "2026-10-12T23:56:40.957835"
   },
   "batch035": {
     "batch_id": "batch035",
-    "status": "COMPLETE",
+    "status": "APPROVED",
     "created": "2026-09-06T23:20:52.846502",
     "workflow": "Agent2(MedGen 6子agent并行)→GATE-A2→Agent3(MedQC)→GATE-A3→Agent4(MedFix)→GATE-A4→导出MD+HTML",
     "steps": {
@@ -4564,7 +4628,7 @@
       "GATE-FINAL": {
         "status": "PASS",
         "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
-        "checked_at": "2026-09-07T10:13:57.712549"
+        "checked_at": "2026-10-12T23:56:40.674458"
       }
     },
     "final_review": {
@@ -4583,19 +4647,322 @@
       "md": "最终产物/batch035/ALL_questions_FIXED.md",
       "qc_report": "质检报告/batch035_质检报告.json",
       "trace": "最终产物/batch035/AGENT4_追溯日志.json"
-    }
+    },
+    "approved_at": "2026-10-12T23:56:40.957835"
   },
   "batch036": {
     "batch_id": "batch036",
-    "status": "AGENT2_INVOKED",
+    "status": "APPROVED",
     "created": "2026-09-06T23:27:49.381543",
     "workflow": "Agent2(MedGen 5子agent并行)→GATE-A2→Agent3(MedQC)→GATE-A3→Agent4(MedFix)→GATE-A4→导出MD+HTML",
-    "steps": {},
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-06T23:29:00+08:00",
+        "completed_at": "2026-09-07T10:12:00+08:00",
+        "output": "中间产物/batch036/ALL_questions.json（200题，8子agent并行产出后合并）",
+        "question_count": 200,
+        "modules": "M1=20/M2=55/M3=50/M4=35/M5=40",
+        "types": "A1 81/A2 58/A3 10/A4 10/B1 22/X 19",
+        "bloom_actual": {
+          "记忆": 30.5,
+          "理解": 40.0,
+          "应用": 24.5,
+          "分析": 5.0
+        },
+        "bloom_deviation": "记忆+0.5%，理解0%，应用-0.5%，分析0%",
+        "model": "MedGen(8 子 agent 并行)",
+        "prompt_version": "ent-qbank-v1.0 (00_出题规范与双向细目表.md)"
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-07T10:15:00+08:00",
+        "completed_at": "2026-09-07T10:19:00+08:00",
+        "output": "质检报告/batch036_质检报告.json（正式落盘，overall 9.7/10，PASS；由 中间产物/batch036/_gen_qc_report.py 对 GATE-A2 通过后的 200 题全维度实测生成）",
+        "gate_decision": "PASS",
+        "overall_score": 9.7,
+        "issues": "D1-D21 全维度实测；D11=5.0（收敛 WARN 残留，非 FAIL）；D4=9.3/D17=9.2（难度与区分度微调）；0 项 critical；modification_instructions 1 条（残余 WARN 记录）",
+        "key_validations": "模块/题型/Bloom 配额逐格一致；教材溯源抽检 20/20；重复题干 0；D20 B1 专项 10.0（11 组配对，PASS）；Bloom 最大偏差 0.5pp",
+        "kaoyan_exemption": "HC-18 红线：耳鼻咽喉头颈外科学不属西医综合 306 考纲，真题命中率约 3-5% < 15% 下限 → 配额清零，100% 原创并如实标注（用户 2026-09-04 确认）"
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-07T10:24:00+08:00",
+        "completed_at": "2026-09-07T10:32:00+08:00",
+        "output": "最终产物/batch036/AGENT4_追溯日志.json + ALL_questions_FIXED.json/md/html（29 处定点修复，0 答案内容改动）",
+        "trace_log": "最终产物/batch036/AGENT4_追溯日志.json",
+        "source_file_synced": true,
+        "fixes": "fix_pass1 答案位置均衡 2 题（E 位 14.9%→16.0%）；fix_pass2 R4 否定词加粗 27 题",
+        "residual_warns": "R1×3/R2×13/R3×3/R6×7/R8×9 逐条裁定接受，详见修改声明 §2",
+        "validate": "validate_options --mode full: FAIL=0（通过 177 / 告警 23，修复前 151/49）",
+        "model": "MedFix",
+        "prompt_version": "ent-qbank-v1.0"
+      },
+      "AGENT5": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-07T10:36:00+08:00",
+        "completed_at": "2026-09-07T10:38:00+08:00",
+        "output": "终审完成: HC-9/10/11 全部 PASS, JSON 有效 (布尔 true), 页码锚点 200/200",
+        "hc_checks": "HC-9 PASS / HC-10 PASS / HC-11 PASS",
+        "json_valid": true
+      }
+    },
     "lineage": [],
     "subject": "耳鼻咽喉头颈外科学",
     "plan_questions": 200,
     "modules": 5,
     "kaoyan_target_pct": 0,
-    "note": "大四上耳鼻咽喉头颈外科学期末题库 200题（M1=20/M2=55/M3=50/M4=35/M5=40）；源：耳鼻咽喉头颈外科学第10版（张欣/张罗）5教学模块；页偏移 N-23；HC-18配额清零（耳鼻喉不属西综考纲，真题覆盖<5%），100%原创并如实标注"
+    "note": "大四上耳鼻咽喉头颈外科学期末题库 200题（M1=20/M2=55/M3=50/M4=35/M5=40）；源：耳鼻咽喉头颈外科学第10版（张欣/张罗）5教学模块；页偏移 N-23；HC-18配额清零（耳鼻喉不属西综考纲，真题覆盖<5%），100%原创并如实标注",
+    "gate_results": {
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS, D20 OK, Bloom OK)",
+        "checked_at": "2026-09-07T10:32:14.513794"
+      },
+      "halt": {
+        "active": false
+      },
+      "GATE-A2": {
+        "status": "PASS",
+        "reason": "产出门禁通过 (FAIL=0, PASS=177, WARN=23)",
+        "checked_at": "2026-09-07T10:32:14.513722"
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-09-07T10:32:14.513797"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
+        "checked_at": "2026-10-12T23:56:40.774798"
+      }
+    },
+    "final_review": {
+      "hc9_terminology_appendix": "PASS - 术语异名一致性实测 16 组（腭扁桃体/扁桃体、咽鼓管/耳咽管、梅尼埃/美尼尔、鼻窦炎/鼻-鼻窦炎、鼻出血/鼻衄、分泌性中耳炎/渗出性中耳炎 等）：15 组已统一；1 组双形态（鼻-鼻窦炎）已归一为第10版教材标准名「鼻窦炎」；「腭扁桃体/扁桃体」为解剖学精确名 vs 临床通用名的合法上下位关系，予以保留",
+      "hc9": "PASS",
+      "hc10_page_authenticity": "PASS - fact_check.py pages --subject ent 实测 200/200 题含「教材P数字」真实锚点，FAIL=0 WARN=0，无占位符（2026-09-07 对 ALL_questions_FIXED.json 复测；页偏移 印刷页=PDF页-23，5 处篇首页+6 处内容锚点实测校准）",
+      "hc10": "PASS",
+      "hc11_outline_page_marking": "PASS - 200/200 题均带 source_page 教材页码来源锚点，无「大纲」来源缺页码条目",
+      "hc11": "PASS",
+      "json_valid": true,
+      "verified_at": "2026-09-07T10:38:00+08:00"
+    },
+    "approved_at": "2026-10-12T23:56:40.957835"
+  },
+  "batch037": {
+    "batch_id": "batch037",
+    "status": "APPROVED",
+    "created": "2026-09-30T11:55:00.000000",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-30T11:20:00",
+        "completed_at": "2026-09-30T11:51:00",
+        "output": "中间产物/batch037/ALL_questions.json（168题）",
+        "question_count": 168,
+        "modules": "M01-M09（9模块，教学计划版）",
+        "types": "A1 90/A2 41/X 19/B1 18",
+        "bloom_actual": {
+          "记忆": 29.2,
+          "理解": 37.5,
+          "应用": 28.0,
+          "分析": 5.4
+        },
+        "model": "MedGen(主会话+构建器)",
+        "prompt_version": "00_出题规范与双向细目表.md"
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-30T12:05:00",
+        "completed_at": "2026-09-30T12:08:00",
+        "output": "质检报告/batch037/A3_质检报告.json（正式落盘，overall 9.3/10，PASS）",
+        "gate_decision": "PASS",
+        "overall_score": 9.3,
+        "qc_report": "质检报告/batch037/A3_质检报告.json",
+        "dimensions": "D1-D21 全维度",
+        "spot_check": "20/20 溯源命中",
+        "b1_pairs": 9,
+        "bloom_dev": "3.0pp（目标偏差≤15pp）"
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-30T12:10:00",
+        "completed_at": "2026-09-30T12:12:00",
+        "output": "最终产物/batch037/ALL_questions_FIXED.json + AGENT4_追溯日志.json + AGENT4_修改声明.md",
+        "changed_questions": 57,
+        "source_file_synced": true,
+        "gate": "GATE-A2 复检 FAIL==0 后生成"
+      },
+      "AGENT5": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-30T11:30:00",
+        "completed_at": "2026-09-30T12:00:00",
+        "output": "复习资料/口腔科学教学计划版/口腔科学_主复习资料.md（3245行，9模块，callout 137/展开区 61/插图占位 15）+ 配图清单.md",
+        "hc_checks": "HC-9 PASS / HC-10 PASS / HC-11 PASS",
+        "json_valid": true
+      },
+      "AGENT6": {
+        "status": "COMPLETED",
+        "invoked_at": "2026-09-30T12:12:00",
+        "completed_at": "2026-09-30T12:18:00",
+        "output": "images_webp 15/15 张（②卡通6+①教材3+①示意2+③flow3+③grid1）；图谱复用图2/图15 目视核验索引错位后改判②卡通并登记",
+        "check_inline_images": "exit 0 / FAIL 0 / 占位符15 缺失0"
+      }
+    },
+    "lineage": [],
+    "subject": "口腔科学（大四教学计划）",
+    "stage": "final",
+    "plan": {
+      "total": 168,
+      "modules": 9,
+      "q_per_module": "18/20/18/20/14/20/24/18/16"
+    },
+    "gates": {
+      "A2": "PASS (FAIL=0/WARN=92)",
+      "A3": "PASS (overall 9.3)",
+      "A4": "PASS (source_file_synced)",
+      "kaoyan_check": "exit1→标注无足够真题覆盖放行 (4.8%)",
+      "A6": "PASS (check_inline_images exit0)",
+      "FINAL": "PASS (HC-9/10/11+json_valid)"
+    },
+    "notes": "2026-09-30 重登记：原 batch037（眼科学 200 题，FINAL_PASS_AWAIT_SIGN_OFF）产物已隔离至 最终产物/_stale_batch037_眼科学_20260930、质检报告/_stale_batch037_眼科学_20260930、中间产物/batch037/_stale_prior_attempt；本批为口腔科学 168 题。kaoyan_target_pct=0.20；真题候选甄别后 8 条相关（占比 4.8%<15%，按 medbatch 规则核对候选、标注真题覆盖不足后放行）。",
+    "gate_results": {
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS, D20 OK, Bloom OK)",
+        "checked_at": "2026-09-30T12:05:47.854278"
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-09-30T12:06:44.970177"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
+        "checked_at": "2026-10-12T23:56:40.879275"
+      },
+      "halt": {
+        "active": false
+      }
+    },
+    "final_review": {
+      "hc9_terminology_appendix": "PASS（附录二 术语同义异名表 40 条）",
+      "hc10_page_authenticity": "PASS（附录一 页码索引 P1–P256，无占位符、无越界）",
+      "hc11_outline_page_marking": "PASS（各模块来源锚点均标真实教材页码）",
+      "json_valid": true
+    },
+    "approved_at": "2026-10-12T23:56:40.957835"
+  },
+  "batch038": {
+    "batch_id": "batch038",
+    "status": "AGENT5_COMPLETED",
+    "created": "2026-10-14T18:54:01.949541",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "output": "ALL_questions.json",
+        "md5": "e45a433ea35de02a25321c962681cc00",
+        "model": "MedGen",
+        "prompt_version": "00_出题规范与双向细目表.md"
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "output": "A3_质检报告.json",
+        "md5": "816cd3a60a9e356f5a696fa3e7b3484e",
+        "model": "MedQC",
+        "prompt_version": "MedQC_current_prompt.md"
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "output": "最终产物/batch038/ ALL_questions_FIXED.json + ALL_questions_FIXED.md + AGENT4_追溯日志.json + AGENT4_修改声明.md + escalations_for_human.md",
+        "md5": "b801cbff043b2875e38b69595684dda0",
+        "model": "MedFix",
+        "prompt_version": "MedFix_current_prompt.md",
+        "trace_log": "最终产物/batch038/AGENT4_追溯日志.json",
+        "question_count": 220,
+        "md_export": "ALL_questions_FIXED.md（220 题 / 3975 行）",
+        "fixed": "ISSUE-001(B1 分组唯一化 15 题) + ISSUE-002(R11 改写 1 题)",
+        "validate": "FAIL=0 / WARN=4"
+      },
+      "AGENT5": {
+        "status": "COMPLETED",
+        "output": "复习资料/传染病学教学计划版/传染病学_主复习资料.md + .html（8 模块 / 3772 行 / 约 10.2 万汉字；callout 114 / 展开区 26；无配图）",
+        "modules": 8,
+        "lines": 3772,
+        "hanzi": 101576,
+        "callouts": 114,
+        "expands": 26,
+        "images": 0,
+        "hc_checks": {
+          "HC-9": "PASS — 附录二术语同义异名对照表（24 条）已生成",
+          "HC-10": "PASS — 全部页码为真实印刷页(PDF页−17)，0 占位符",
+          "HC-11": "PASS — 来源锚点均标注教材印刷页"
+        },
+        "model": "MedReview（8 模块子 agent + 主会话合成）",
+        "prompt_version": "00_编写规范与素材映射.md"
+      }
+    },
+    "lineage": [
+      {
+        "stage": "agent2_DONE",
+        "input_file": "中间产物/batch038/ALL_questions.json",
+        "input_md5": "e45a433ea35de02a25321c962681cc00",
+        "agent_model": "MedGen",
+        "prompt_version": "00_出题规范与双向细目表.md",
+        "timestamp": "2026-10-14T20:15:32.801255"
+      },
+      {
+        "stage": "agent3_DONE",
+        "input_file": "质检报告/batch038/A3_质检报告.json",
+        "input_md5": "816cd3a60a9e356f5a696fa3e7b3484e",
+        "agent_model": "MedQC",
+        "prompt_version": "MedQC_current_prompt.md",
+        "timestamp": "2026-10-14T20:15:32.802257"
+      },
+      {
+        "stage": "agent4_DONE",
+        "input_file": "最终产物/batch038/ALL_questions_FIXED.json",
+        "input_md5": "b801cbff043b2875e38b69595684dda0",
+        "agent_model": "MedFix",
+        "prompt_version": "MedFix_current_prompt.md",
+        "timestamp": "2026-10-14T20:15:32.803256"
+      }
+    ],
+    "subject": "传染病学",
+    "chapter": "大四上·11讲授章节：总论/病毒性肝炎/麻疹/水痘和带状疱疹/狂犬病/艾滋病/伤寒/细菌性痢疾/霍乱/疟疾/日本血吸虫病",
+    "task_type": "题库+复习资料",
+    "question_target": 220,
+    "prompt_version": "00_出题规范与双向细目表.md",
+    "material": "输入素材/大四上/传染病学/传染病学_第10版_v1.txt（页偏移=PDF−17）",
+    "gate_results": {
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
+        "checked_at": "2026-10-14T20:16:29.833601"
+      },
+      "halt": {
+        "active": false
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-10-14T20:18:12.858792"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
+        "checked_at": "2026-10-14T20:23:43.768295"
+      }
+    },
+    "final_review": {
+      "hc9_terminology_appendix": "PASS — 附录二 术语同义异名对照表（24 条）已生成",
+      "hc10_page_authenticity": "PASS — 全部页码为真实印刷页(印刷页=PDF页−17)，0 占位符；check_inline_images 0 占位/0 缺失/FAIL 0",
+      "hc11_outline_page_marking": "PASS — 来源锚点均标注教材印刷页",
+      "json_valid": true
+    }
   }
 }

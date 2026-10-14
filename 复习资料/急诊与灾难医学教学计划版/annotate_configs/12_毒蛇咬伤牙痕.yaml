@@ -1,0 +1,11 @@
+image: raw/12_毒蛇咬伤牙痕_raw.png
+output: annotated/12_毒蛇咬伤牙痕.png
+fixes:
+  - box: [55, 280, 450, 325]
+    text: 神经毒：一对细牙痕、不肿
+    mode: label
+    anchor: [300, 505]
+  - box: [540, 280, 950, 325]
+    text: 血循毒：牙痕宽、红肿瘀斑
+    mode: label
+    anchor: [750, 500]

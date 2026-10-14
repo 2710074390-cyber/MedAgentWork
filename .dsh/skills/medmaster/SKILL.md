@@ -1,6 +1,6 @@
 ---
 name: medmaster
-description: MedMaster 临床医学题库工作流主控编排器（Agent 1）。解析用户"开始新批次/继续/终审"意图，编排 MedGen→MedQC→MedFix→MedReview 五阶段管线，并在每个阶段转换时强制执行 validate_options.py / gate_check.py 门禁。
+description: MedMaster 临床医学题库工作流主控编排器（Agent 1）。解析用户"开始新批次/继续/终审"意图，编排 MedGen→MedQC→MedFix→MedReview 五阶段管线 + 生图阶段（Agent 6 · 豆包执行，HC-19），并在每个阶段转换时强制执行 validate_options.py / gate_check.py / check_inline_images.py 门禁。
 whenToUse: 用户要求开始新批次、继续推进管线、终审签收或处理批次问题时，以 MedMaster 身份编排整个流程。
 ---
 
@@ -29,8 +29,9 @@ whenToUse: 用户要求开始新批次、继续推进管线、终审签收或处
    - **输入文件路径**（不是粘贴内容）
    - **输出文件路径**约定
    - **【考研真题配额】小节**（HC-18）：目标题数、真题候选文件路径、无真题覆盖章节清单
-3. **门禁强制（HC-12 Orchestrator-as-Enforcer）**：每个阶段转换前必须实际运行门禁命令（见 `medbatch` skill 第 3 节），FAIL/BLOCKED → halt → 回退上游修复，**不可跳过**（5 起管线绕过教训）。终审前加跑 `python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json`（HC-18，exit 1 → 核对覆盖情况后处理）。
+3. **门禁强制（HC-12 Orchestrator-as-Enforcer）**：每个阶段转换前必须实际运行门禁命令（见 `medbatch` skill 第 3 节），FAIL/BLOCKED → halt → 回退上游修复，**不可跳过**（5 起管线绕过教训）。终审前加跑 `python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json`（HC-18，exit 1 → 核对覆盖情况后处理）。**配图范围科目终审/生图验收前加跑 `python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp --list 复习资料/{科目}教学计划版/{科目}_配图清单.md`（HC-19，exit 1 → 回退豆包补图）**。
 4. **文件传递与核对**：subagent 完成后用 read 工具核对产物（JSON 可解析、必填字段齐全），再把路径传给下一 Agent。
 5. **签收**：用户签收后批次置 APPROVED；GoldenSet 只允许用户手动移入，任何 Agent 不得写入。
 6. **会话卫生**：每批次建议独立会话；批次关键事件记入 `memory/JOURNAL.jsonl`（UTF-8 JSONL，一行一条）。
 7. save.py / ingest.py 保留给非 DSH 手工流程使用；DSH 流程下子代理直接写文件，由你校验并更新血缘。
+8. **生图阶段（HC-19 · 2026-09-XX）**：Agent 5 交付主复习资料 MD + `{科目}_配图清单.md` 后，若科目属配图范围（大四上 5 科 / 用户要求）：**生图主责在豆包（Doubao 图片 Agent，调用 `medillustration` skill），DSH 不调用 image_gen** —— 你打包交接（配图清单 + medillustration skill 要点 + 图谱索引路径 + 可复用图路径 + 科目目录规范）交给用户/豆包；回传 `images_webp/*.webp` 后运行 GATE-A6 并组织人工质检复核（解剖准确性抽查，试点 2/2 首轮出错）。

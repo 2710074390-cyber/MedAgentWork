@@ -1,0 +1,34 @@
+type: grid
+title: 骨盆骨折 Young-Burgess 分型
+subtitle: 外科学（二）M7 骨折、关节损伤、脊柱脊髓损伤、骨盆骨折（确定性图谱通道）
+cols: 2
+output: annotated/31_骨盆骨折YoungBurgess分型.png
+webp: images_webp/31_骨盆骨折YoungBurgess分型.webp
+items:
+  - title: LC 侧方挤压
+    color: blue
+    lines:
+      - 侧方暴力、骨盆内向挤压
+      - 约占 38.2%
+      - 耻骨支斜行骨折
+      - 同/对侧骨盆后部损伤
+  - title: APC 前后挤压
+    color: green
+    lines:
+      - 前方暴力、骨盆外旋
+      - 约占 52.4%
+      - 耻骨联合分离或耻骨支纵行骨折
+  - title: VS 垂直剪切
+    color: red
+    lines:
+      - 垂直/纵向暴力
+      - 约占 5.8%
+      - 骶结节＋骶棘韧带断裂、骶髂关节全脱位
+      - 半骨盆向后上移位；神经血管损伤概率高
+  - title: CM 混合
+    color: purple
+    lines:
+      - LC/VS 或 LC/APC 组合
+      - 约占 3.6%
+      - 以 LC/APC Ⅲ与 VS 型最严重
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

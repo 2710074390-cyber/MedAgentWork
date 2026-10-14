@@ -1,0 +1,19 @@
+image: raw/04_心脏骤停心电图三型_raw.png
+output: annotated/04_心脏骤停心电图三型.png
+fixes:
+  - box: [100, 140, 340, 185]
+    text: 正常窦性心律
+    mode: label
+    anchor: [160, 250]
+  - box: [100, 385, 430, 430]
+    text: 心室颤动 VF（可除颤）
+    mode: label
+    anchor: [160, 460]
+  - box: [100, 585, 390, 630]
+    text: 无脉性电活动 PEA
+    mode: label
+    anchor: [160, 655]
+  - box: [100, 765, 350, 810]
+    text: 心室停搏（直线）
+    mode: label
+    anchor: [160, 830]

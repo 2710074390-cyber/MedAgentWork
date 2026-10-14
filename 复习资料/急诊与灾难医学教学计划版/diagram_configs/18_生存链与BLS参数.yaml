@@ -1,0 +1,45 @@
+type: flow
+title: 生存链6环与成人BLS/ACLS关键参数
+subtitle: 急诊与灾难医学 M8 心肺脑复苏（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/18_生存链与BLS参数.png
+webp: images_webp/18_生存链与BLS参数.webp
+steps:
+  - title: 识别骤停·启动EMS
+    color: blue
+    lines:
+      - 拍肩呼叫判断意识
+      - 查呼吸/脉搏5~10秒
+      - 无反应即呼救EMSS
+  - title: 立即CPR（C-A-B）
+    color: green
+    lines:
+      - 按压100~120次/分、深5~6cm
+      - 按压/通气30:2
+      - 中断<10s、每2分钟轮换
+  - title: 尽早电除颤
+    color: orange
+    lines:
+      - 双相波120~200J、单相波360J
+      - 电击后立即按压2分钟
+      - 每延迟1min存活率降7%~10%
+  - title: 高级生命支持ACLS
+    color: purple
+    lines:
+      - 可除颤：VF/无脉室速
+      - 不可除颤：PEA/心室静止
+      - 肾上腺素 + 纠5H5T病因
+  - title: 复苏后监护
+    color: teal
+    lines:
+      - 防治心脏骤停后综合征
+      - 目标体温管理
+      - 处理可逆病因
+  - title: 幸存者康复
+    color: gray
+    lines:
+      - 神经功能评估
+      - 早期康复介入
+      - 长期随访
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

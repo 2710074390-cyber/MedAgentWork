@@ -1,0 +1,28 @@
+image: raw/14_下肢静脉与DVT_raw.png
+output: annotated/14_下肢静脉与DVT.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [120, 180, 300, 225]
+    text: "深静脉"
+    mode: label
+    anchor: [480, 210]
+  - box: [620, 280, 920, 325]
+    text: "大隐静脉（浅静脉）"
+    mode: label
+    anchor: [560, 320]
+  - box: [620, 420, 760, 465]
+    text: "交通支"
+    mode: label
+    anchor: [545, 450]
+  - box: [120, 430, 300, 475]
+    text: "静脉瓣"
+    mode: label
+    anchor: [485, 462]
+  - box: [100, 620, 360, 665]
+    text: "血栓（DVT）"
+    mode: label
+    anchor: [475, 640]
+  - box: [620, 800, 820, 845]
+    text: "曲张浅静脉"
+    mode: label
+    anchor: [560, 815]

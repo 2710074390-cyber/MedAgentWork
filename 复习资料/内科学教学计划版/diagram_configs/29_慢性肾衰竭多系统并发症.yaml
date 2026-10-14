@@ -1,0 +1,30 @@
+type: grid
+title: 慢性肾衰竭多系统并发症
+subtitle: 内科学 泌尿系统·M4 慢性肾衰竭（确定性图谱通道）
+cols: 2
+output: annotated/29_慢性肾衰竭多系统并发症.png
+webp: images_webp/29_慢性肾衰竭多系统并发症.webp
+items:
+- title: 血液系统（肾性贫血）
+  color: blue
+  lines:
+  - EPO 减少→正细胞正色素贫血
+  - 治疗 rHuEPO+补铁
+  - 出血倾向（血小板功能↓）
+- title: 肾性骨病
+  color: teal
+  lines:
+  - 骨化三醇↓+PTH↑
+  - 高转化性骨病（纤维囊性骨炎）最常见
+- title: 心血管
+  color: red
+  lines:
+  - 高血压（水钠潴留）、左室肥厚
+  - 心力衰竭=最常见死因
+  - 尿毒症性心包炎
+- title: 电解质与酸碱
+  color: orange
+  lines:
+  - 高钾、低钙、高磷
+  - 代谢性酸中毒、低钠血症
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

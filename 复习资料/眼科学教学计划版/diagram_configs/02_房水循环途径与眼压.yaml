@@ -1,0 +1,28 @@
+type: flow
+title: 房水循环途径与眼压
+subtitle: 眼科学 M1/M7 眼压与房水动力学（确定性图谱通道）
+direction: horizontal
+output: annotated/02_房水循环途径与眼压.png
+webp: images_webp/02_房水循环途径与眼压.webp
+steps:
+  - title: 睫状突分泌
+    color: teal
+    lines:
+      - "睫状体无色素上皮主动分泌"
+      - "房水进入后房"
+  - title: 后房→瞳孔→前房
+    color: blue
+    lines:
+      - "经瞳孔流入前房"
+      - "瞳孔阻滞→后房压力↑"
+  - title: 前房角小梁网
+    color: green
+    lines:
+      - "主要流出通道（约80-90%）"
+      - "小梁网→Schlemm管"
+  - title: 巩膜静脉/睫状前静脉
+    color: purple
+    lines:
+      - "Schlemm管→房水静脉"
+      - "汇入眼静脉回流"
+note: 内容依据人卫《眼科学》第10版（范先群/颜华）M1/M7；生成与流出平衡维持眼压10~21mmHg，流出受阻→青光眼；render_diagram.py确定性渲染

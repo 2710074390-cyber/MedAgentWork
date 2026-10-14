@@ -1,0 +1,27 @@
+image: raw/04_胎儿循环三条分流_raw.png
+output: annotated/04_胎儿循环三条分流.png
+fixes:
+  - box: [560, 190, 980, 235]
+    text: ②动脉导管（肺动脉→主动脉）
+    mode: label
+    anchor: [500, 240]
+  - box: [560, 290, 900, 335]
+    text: ①卵圆孔（心房水平）
+    mode: label
+    anchor: [535, 305]
+  - box: [80, 460, 400, 505]
+    text: ③静脉导管（肝内短路）
+    mode: label
+    anchor: [450, 485]
+  - box: [80, 830, 380, 875]
+    text: 脐静脉（充氧血）
+    mode: label
+    anchor: [460, 810]
+  - box: [600, 830, 920, 875]
+    text: 脐动脉×2（缺氧血）
+    mode: label
+    anchor: [540, 810]
+  - box: [430, 900, 530, 945]
+    text: 胎盘
+    mode: label
+    anchor: [500, 855]

@@ -29,6 +29,7 @@ qbank.py — MedAgentWork 统一题库数据层 v1.0 (2026-08-13 · 架构 P0-1)
 import sys, json, os, re, hashlib, argparse
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
@@ -41,24 +42,24 @@ REGISTRY_VERSION = 1
 _REG_BASE = None  # 测试接缝：临时注册表根目录（tests 用）
 
 
-def _set_registry_base(base):
+def _set_registry_base(base: str | Path | None) -> None:
     """测试用：将注册表读写重定向到临时目录（不污染真实注册表）。"""
     global _REG_BASE
     _REG_BASE = Path(base) if base else None
 
 
-def base_dir():
+def base_dir() -> Path:
     return Path(__file__).resolve().parent.parent
 
 
-def _root():
+def _root() -> Path:
     return _REG_BASE if _REG_BASE else base_dir()
 
 
-def registry_path():
+def registry_path() -> Path:
     return _root() / 'question_bank' / 'registry.jsonl'
 
-def meta_path():
+def meta_path() -> Path:
     return _root() / 'question_bank' / 'registry_meta.json'
 
 # ──────────────────────────────────────────
@@ -96,7 +97,7 @@ def _find_in_archive(rel):
     return None
 
 
-def resolve_entry_path(rel):
+def resolve_entry_path(rel: str) -> Path | None:
     """注册条目文件的实际路径：原位存在 → 原位；否则在 archive/ 中查找。"""
     p = _root() / rel
     if p.exists():
@@ -109,7 +110,7 @@ def resolve_entry_path(rel):
 # 统一解析器：任意历史字段变体 → 规范结构
 # ──────────────────────────────────────────
 
-def parse_question(raw):
+def parse_question(raw: dict[str, Any]) -> dict[str, Any] | None:
     """将任意格式的题目 dict 归一化为规范结构。无法识别返回 None。"""
     if not isinstance(raw, dict):
         return None
@@ -132,7 +133,7 @@ def parse_question(raw):
     return q
 
 
-def _norm_type(t):
+def _norm_type(t: str | int) -> str:
     t = str(t).strip()
     m = re.search(r'([A-Z]?\d?|X|判断)', t)
     if '判断' in t:
@@ -140,9 +141,9 @@ def _norm_type(t):
     return t if t in ('A1', 'A2', 'A3', 'A4', 'B1', 'X') else t
 
 
-def _norm_options(opts):
+def _norm_options(opts: dict | list | None) -> dict[str, str]:
     """options → {label: text}。兼容 dict / [{label,text}] / ['A. text']。"""
-    out = {}
+    out: dict[str, str] = {}
     if isinstance(opts, dict):
         for k, v in opts.items():
             if isinstance(v, str) and v.strip():
@@ -215,7 +216,7 @@ def stem_hash(stem):
 def load_json_file(filepath):
     """读取 JSON 文件，返回 data 或 None（解析失败）。"""
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
+        with open(filepath, encoding='utf-8') as f:
             return json.load(f)
     except Exception:
         return None
@@ -244,7 +245,7 @@ def _read_entries():
     if not p.exists():
         return []
     entries = []
-    with open(p, 'r', encoding='utf-8') as f:
+    with open(p, encoding='utf-8') as f:
         for line in f:
             line = line.strip()
             if not line:
@@ -483,7 +484,7 @@ def _read_meta():
     """读取注册表元信息（含持久化的 ignore_pairs）。"""
     if meta_path().exists():
         try:
-            with open(meta_path(), 'r', encoding='utf-8') as f:
+            with open(meta_path(), encoding='utf-8') as f:
                 return json.load(f)
         except Exception:
             pass
@@ -584,7 +585,7 @@ def check(ignore_pairs=None):
     # 元信息
     meta = {}
     if meta_path().exists():
-        with open(meta_path(), 'r', encoding='utf-8') as f:
+        with open(meta_path(), encoding='utf-8') as f:
             meta = json.load(f)
     if entries and meta.get('schema_version') != REGISTRY_VERSION:
         issues.append(f'meta schema_version={meta.get("schema_version")} 与当前 {REGISTRY_VERSION} 不一致')

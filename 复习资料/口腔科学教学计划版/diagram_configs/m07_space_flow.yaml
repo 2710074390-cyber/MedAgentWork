@@ -1,0 +1,33 @@
+type: flow
+title: 颌面部间隙感染扩散路径
+subtitle: 牙源性感染五条扩散路径（M07 考点3）
+steps:
+  - title: 感染源
+    color: red
+    lines:
+      - 下颌磨牙根尖周炎/冠周炎
+  - title: 路径1 前庭沟
+    color: teal
+    lines:
+      - 磨牙颊侧骨板薄弱处穿通
+      - 颊侧前庭沟脓肿
+  - title: 路径2 颊部
+    color: blue
+    lines:
+      - 向上穿颊肌→颊间隙
+  - title: 路径3 咬肌
+    color: orange
+    lines:
+      - 向后外→咬肌间隙（张口受限）
+  - title: 路径4 翼下颌
+    color: purple
+    lines:
+      - 向后→翼下颌间隙
+  - title: 路径5 下颌下-口底
+    color: red
+    lines:
+      - 向下→下颌下间隙→口底
+      - ★口底蜂窝织炎可致窒息
+note: 下颌第三磨牙感染可向多个间隙扩散，警惕口底/咽旁累及呼吸道
+output: ../annotated/m07_space_flow.png
+webp: ../images_webp/m07_space_flow.webp

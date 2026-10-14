@@ -1,0 +1,25 @@
+image: raw/m02_caries_raw.jpg
+
+output: annotated/m02_caries.yaml.png
+
+font: C:\Windows\Fonts\msyhbd.ttc
+
+fixes:
+  - box: [500, 300, 620, 350]
+    text: "釉质龋"
+    mode: label
+  - box: [470, 430, 600, 480]
+    text: "牙本质浅龋"
+    mode: label
+  - box: [490, 550, 620, 600]
+    text: "牙本质深龋"
+    mode: label
+  - box: [280, 270, 370, 320]
+    text: "釉质"
+    mode: label
+  - box: [280, 430, 370, 480]
+    text: "牙本质"
+    mode: label
+  - box: [280, 590, 370, 640]
+    text: "牙髓腔"
+    mode: label

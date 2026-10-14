@@ -1,0 +1,105 @@
+{
+  "batch": "batch033",
+  "agent": "Agent4 MedFix",
+  "subject": "内科学（消化/泌尿/内分泌/风湿/理化5大系统）",
+  "raw_total": 460,
+  "fixed_total": 460,
+  "fixes": [
+    {
+      "round": "fix_pass1_digestive",
+      "scope": "消化系统100题",
+      "purpose": "内化Agent2-1的114条选项/题干映射补齐，校正R2/R10/R13",
+      "tool": "fix_digestive.py (114 mappings)"
+    },
+    {
+      "round": "fix_pass2",
+      "scope": "全量460题",
+      "purpose": "4选项A1/A2/B1补齐第5选项(R5)；E3-A1-007选项重排；25条R10题干预扰项；2条共享关键词修正；2条绝对化用语软化",
+      "tool": "fix_pass2.py"
+    },
+    {
+      "round": "fix_pass3",
+      "scope": "17道FAIL=R2/R10",
+      "purpose": "把GATE-A2 FAIL从17条压到0（选项长度比≤2.0；R10题干关键词共享给干扰项）",
+      "tool": "fix_pass3.py (40 opt changes)"
+    },
+    {
+      "round": "fix_pass4",
+      "scope": "7类结构与极性",
+      "purpose": "1) 难度归并较难→中等（按 batch014/016/027 三级制 基础/中等/困难）；2) T3-A3-014 考研多选误标A3→X；3) 19题选项乱序；4) S1-A1-006 / D5-A2-012 极性正；5) 22题补 [源:考研真题] 标签（HC-18）；6) R1-B1-018 题干重复去重",
+      "tool": "fix_pass4.py"
+    },
+    {
+      "round": "fix_pass5",
+      "scope": "1题",
+      "purpose": "R1-B1-018 改写后引入新R10 → 改题干去「IgA」字面 / 干扰项A「系膜毛细血管性肾炎」共享关键词",
+      "tool": "fix_pass5.py"
+    },
+    {
+      "round": "fix_pass6",
+      "scope": "8题医学正确性",
+      "purpose": "1) E2-A1-004 答案B→A（TRAb阳性率80-100%与教材/解析一致）；2) 5条解析字母重映射（真题选项重排后字母漂移）；3) 3题截断题干回填（D4-A2-012/013、D5-A2-014共用题干题组，从解析回填完整病例）；4) R4-A1-008题干补肌酐；5) D5-A1-001选项A精度",
+      "tool": "fix_pass6.py"
+    }
+  ],
+  "gates_after": {
+    "GATE-A2_validate_options": {
+      "fail": 0,
+      "warn": 267,
+      "pass": 193
+    },
+    "GATE-A2_qc_structured": "全部通过 (0 异常)",
+    "GATE-A2_answer_explanation_consistency": "0/0 冲突",
+    "fact_check_pages_internal_med": {
+      "fail": 0,
+      "warn": 0,
+      "coverage": "100% (460/460)"
+    },
+    "fact_check_golden_cross": {
+      "疑似重复": 11,
+      "数值冲突": 1,
+      "相似参考": 141,
+      "note": "11条疑似均为合法真题引用或解释文本相似，1条数值冲突已修复（E2-A1-004）"
+    },
+    "bloom_sampler_HC15": "记忆30.2/理解40.0/应用24.9/分析4.9, 最大偏差0.2% PASS",
+    "kaoyan_quota_HC18": "80/460 = 17.4% (合格带 15-25%) PASS"
+  },
+  "distribution": {
+    "modules": "23 modules × 20题 = 460",
+    "types": {
+      "A1": 184,
+      "A2": 138,
+      "A3": 22,
+      "A4": 23,
+      "B1": 46,
+      "X": 47
+    },
+    "difficulty": {
+      "基础": 184,
+      "中等": 253,
+      "困难": 23
+    },
+    "polarity": {
+      "positive": 403,
+      "negative": 10,
+      "multi": 47
+    },
+    "kaoyan_origin": 80
+  },
+  "deviation_notes": [
+    "T3模块 A3=0, X=3: T3-A3-014 考研GS-2007-143 原为多选，保留原题多选性质更准确，故改判X型并改号T3-X-021",
+    "R1-B1-018 题干由「急进性肾炎特征性病理改变」改写为「IgA肾病病理类型」，原因为R1-A1-006已测同一知识点；同模块内已存在6道急进性肾炎题，改写降低知识簇过载"
+  ],
+  "source_file_synced": true,
+  "source_files_synced": true,
+  "source_files": [
+    "中间产物/batch031/part_digestive_A.json",
+    "中间产物/batch031/part_digestive_B.json",
+    "中间产物/batch031/digestive_current.json",
+    "中间产物/batch031/part_renal.json",
+    "中间产物/batch031/part_endocrine.json",
+    "中间产物/batch031/part_rheum.json",
+    "中间产物/batch031/part_toxic.json"
+  ],
+  "source_sync_note": "HC-13 补丁溯源 2026-09-06：此前 6 轮修复仅落在聚合文件，源文件经全量字段比对存在 51 处不一致/缺失（expl/options/ans/polarity/type/题干回填）。已以 ALL_questions_FIXED.json 为唯一事实来源按系统前缀重建全部 7 个源文件，重建后逐题 JSON 级比对 0 差异（见 中间产物/batch031/sync_source_files.py）。"
+}

@@ -31,18 +31,13 @@ sys.path.insert(0, str(BASE))
 
 import qbank
 import validate_options as vo
+from utils import SUBJECT_TO_CODE
 
 # 关键词提取复用 validate_options._extract_stem_keywords:
 # jieba 可用时用真分词（本机已装，golden 交叉验证的默认路径）；
 # 无 jieba 时自动回退 n-gram（确定性强，pages 命令不依赖关键词）。
 # 注意: 切勿强制 _JIEBA_AVAILABLE=False —— n-gram 对短题干+泛化术语过度敏感
 # （2026-08-13 实测: "中枢神经系统包括：" 与 Reynolds五联征题 containment=0.6 假阳性）
-
-SUBJECT_TO_CODE = {
-    '内科学': 'internal-med', '儿科学': 'pediatrics', '外科学': 'surgery',
-    '神经病学': 'neurology', '精神病学': 'psychiatry',
-    '皮肤性病学': 'dermatology', '中医学': 'tcm', '医患沟通': 'doctor-patient',
-}
 
 GOLDEN_FILE = BASE / 'GoldenSet' / 'structured' / 'GS_下册_2025_1994.json'
 

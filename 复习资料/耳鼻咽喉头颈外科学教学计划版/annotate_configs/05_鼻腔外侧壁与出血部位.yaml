@@ -1,0 +1,27 @@
+image: raw/05_鼻腔外侧壁与出血部位_raw.png
+output: annotated/05_鼻腔外侧壁与出血部位.png
+fixes:
+  - box: [620, 380, 740, 425]
+    text: 上鼻甲
+    mode: label
+    anchor: [560, 420]
+  - box: [630, 470, 750, 515]
+    text: 中鼻甲
+    mode: label
+    anchor: [610, 505]
+  - box: [630, 570, 750, 615]
+    text: 下鼻甲（最大）
+    mode: label
+    anchor: [610, 610]
+  - box: [620, 650, 900, 695]
+    text: 各鼻道（鼻甲下方）
+    mode: label
+    anchor: [560, 660]
+  - box: [20, 700, 330, 745]
+    text: Little区（前下易出血）
+    mode: label
+    anchor: [290, 740]
+  - box: [540, 860, 990, 905]
+    text: 吴氏鼻-鼻咽静脉丛（后段出血）
+    mode: label
+    anchor: [630, 800]

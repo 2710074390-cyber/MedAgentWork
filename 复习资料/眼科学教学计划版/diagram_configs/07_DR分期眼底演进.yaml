@@ -1,0 +1,32 @@
+type: grid
+title: 糖尿病视网膜病变分期眼底演进
+subtitle: 眼科学 M8 视网膜疾病（确定性图谱通道）
+cols: 2
+output: annotated/07_DR分期眼底演进.png
+webp: images_webp/07_DR分期眼底演进.webp
+items:
+  - title: Ⅰ期（NPDR轻度）
+    color: blue
+    lines:
+      - "微动脉瘤+小出血点"
+      - "后极部散在分布"
+      - "黄斑区最常见"
+  - title: Ⅱ期（NPDR中度）
+    color: teal
+    lines:
+      - "硬性渗出+出血斑增多"
+      - "棉絮斑可有"
+      - "黄斑水肿可致视力下降"
+  - title: Ⅲ期（NPDR重度）
+    color: orange
+    lines:
+      - "棉絮斑明显"
+      - "静脉串珠+IRMA"
+      - "4-2-1 规则（四象限出血/两象限静脉串珠/一象限IRMA）"
+  - title: Ⅳ-Ⅵ期（PDR增殖期）
+    color: red
+    lines:
+      - "新生血管（视盘/周边）"
+      - "玻璃体积血/纤维增殖"
+      - "牵拉性视网膜脱离（Ⅵ期）"
+note: 内容依据人卫《眼科学》第10版（范先群/颜华）M8；NPDR=非增殖期，PDR=增殖期；render_diagram.py确定性渲染

@@ -1,0 +1,20 @@
+image: raw/09_CRAO樱桃红斑眼底_raw.png
+output: annotated/09_CRAO樱桃红斑眼底.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [40, 80, 300, 128]
+    text: 视网膜灰白水肿
+    mode: label
+    anchor: [300, 300]
+  - box: [380, 880, 640, 928]
+    text: 樱桃红斑（黄斑区）
+    mode: label
+    anchor: [510, 500]
+  - box: [720, 90, 950, 138]
+    text: 视盘
+    mode: label
+    anchor: [760, 550]
+  - box: [740, 850, 990, 898]
+    text: 血管纤细（90分钟抢救窗）
+    mode: label
+    anchor: [600, 650]

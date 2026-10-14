@@ -14,6 +14,7 @@ MedAgentWork — 主复习资料 HTML 渲染器
 import re
 import sys
 import json
+import base64
 import html as html_module
 from pathlib import Path
 from datetime import datetime
@@ -500,6 +501,29 @@ code {
   color: var(--color-tip);
 }
 
+/* Medical Figure */
+.med-figure {
+  margin: 20px 0;
+  text-align: center;
+  break-inside: avoid;
+}
+.med-figure img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  background: var(--bg-secondary);
+}
+.med-figure .fig-caption {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  text-align: center;
+  line-height: 1.6;
+}
+
 /* Tables */
 .table-wrapper {
   overflow-x: auto;
@@ -817,8 +841,9 @@ document.addEventListener('keydown',(e)=>{
 class ReviewRenderer:
     """将 MedAgentWork 主复习资料 Markdown 转换为精美 HTML"""
 
-    def __init__(self, md_path: Path):
+    def __init__(self, md_path: Path, embed_images: bool = False):
         self.md_path = md_path
+        self.embed_images = embed_images
         self.md_text = md_path.read_text(encoding='utf-8')
         self.lines = self.md_text.split('\n')
         self.subject_name = ""
@@ -846,6 +871,8 @@ class ReviewRenderer:
         text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', text)
         # Inline code
         text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
+        # Images (must precede Links: ![alt](path) would otherwise match [alt](path))
+        text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', self._replace_image, text)
         # Links
         text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', text)
         # Fill-in-blank (《答案》→ clickable span)
@@ -855,6 +882,34 @@ class ReviewRenderer:
             text
         )
         return text
+
+    def _replace_image(self, match) -> str:
+        """将 ![alt](path) 替换为 <figure><img><figcaption> 结构。
+
+        支持 --embed-images base64 内联模式；自动从 alt 解析「图N：标题」图注。
+        """
+        alt = match.group(1).strip()
+        path = match.group(2).strip()
+        caption = alt
+        m = re.match(r'^图\d+[：:]\s*(.*)$', alt)
+        if m:
+            caption = m.group(1).strip()
+        src = path
+        if self.embed_images:
+            try:
+                p = (self.md_path.parent / path).resolve()
+                data = p.read_bytes()
+                ext = p.suffix.lower().lstrip('.')
+                if ext == 'jpg':
+                    ext = 'jpeg'
+                elif ext == 'svg':
+                    ext = 'svg+xml'
+                src = 'data:image/' + ext + ';base64,' + base64.b64encode(data).decode('ascii')
+            except Exception:
+                src = path
+        return (f'<figure class="med-figure"><img src="{html_module.escape(src)}" '
+                f'alt="{html_module.escape(alt)}" loading="lazy" decoding="async">'
+                f'<figcaption class="fig-caption">{html_module.escape(caption)}</figcaption></figure>')
 
     def make_id(self, text: str) -> str:
         """生成 HTML 锚点 ID"""
@@ -1212,6 +1267,11 @@ class ReviewRenderer:
                 result = result.replace(f'《{blank_text}》', replacement)
             return f'<p style="margin:4px 0;line-height:2.2;font-size:14px">{self.parse_inline(result)}</p>', i + 1
 
+        # Image block (standalone markdown image line -> <figure>, not wrapped in <p>)
+        img_block = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)\s*$', line)
+        if img_block:
+            return self._replace_image(img_block), i + 1
+
         # Paragraph (non-empty, non-special)
         if line.strip():
             return f'<p style="margin:8px 0;line-height:1.8">{self.parse_inline(line)}</p>', i + 1
@@ -1422,6 +1482,8 @@ def main():
     parser.add_argument('input', help='输入的 Markdown 复习资料路径')
     parser.add_argument('-o', '--output', help='输出 HTML 文件路径 (默认: 同目录同名 .html)')
     parser.add_argument('--dark', action='store_true', help='默认使用暗色模式')
+    parser.add_argument('--embed-images', action='store_true',
+                        help='将图片以 base64 内联进 HTML（自包含单文件，适合打印PDF）')
     args = parser.parse_args()
 
     input_path = Path(args.input)
@@ -1437,7 +1499,7 @@ def main():
 
     # Render
     print(f'📖 读取: {input_path}')
-    renderer = ReviewRenderer(input_path)
+    renderer = ReviewRenderer(input_path, embed_images=args.embed_images)
     html_content = renderer.convert()
 
     # Write
@@ -1448,6 +1510,9 @@ def main():
     print(f'   科目: {renderer.subject_name}')
     if renderer.batch_id:
         print(f'   批次: {renderer.batch_id}')
+    img_count = html_content.count('<figure class="med-figure">')
+    if img_count:
+        print(f'   插图: {img_count} 张')
     print(f'   模块: {len([l for l in renderer.sidebar_links if l[0].startswith("m") and l[0][1:].isdigit()])} 个')
 
 

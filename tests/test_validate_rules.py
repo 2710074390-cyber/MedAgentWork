@@ -35,12 +35,12 @@ def test_r1_absolute_words_warn():
 # ── R2 长度比 ──
 
 def test_r2_ratio_over_2_fail():
-    q = _q({'A': '短', 'B': '这是一个非常长的选项内容超过两倍长度阈值', 'C': '中', 'D': '中', 'E': '中'})
+    q = _q({'A': '短', 'B': '这是一个非常长的选项内容超过两倍长度阈值', 'C': '中', 'D': '中', 'E': '中'}, answer='B')
     assert 'FAIL' in _sev(vo.check_r2_length_ratio(q), 'R2')
 
 
 def test_r2_ratio_15_to_2_warn():
-    q = _q({'A': '短选项内容', 'B': '中等长度选项内容测试', 'C': '中等长度选项', 'D': '中等长度选项', 'E': '中等长度选项'})
+    q = _q({'A': '短选项内容', 'B': '中等长度选项内容测试', 'C': '中等长度选项', 'D': '中等长度选项', 'E': '中等长度选项'}, answer='B')
     sev = _sev(vo.check_r2_length_ratio(q), 'R2')
     assert sev and sev[0] == 'WARN'
 
@@ -134,7 +134,8 @@ def test_r9_bare_fvc_still_fail():
 # 注: 强制 n-gram 关键词提取（_JIEBA_AVAILABLE=False），使用例不依赖 jieba 分词版本
 
 def test_r10_exclusive_keyword_fail():
-    vo._JIEBA_AVAILABLE = False  # 确定性 n-gram 模式
+    import scripts.validate.rules_structural as rs
+    rs._JIEBA_AVAILABLE = False  # 确定性 n-gram 模式
     q = _q({'A': '肺栓塞应给予抗凝治疗', 'B': '给予对症支持', 'C': '观察随访', 'D': '口服止痛药', 'E': '卧床休息'},
            stem='肺栓塞首选治疗是')
     assert 'FAIL' in _sev(vo.check_r10_clue_repetition(q), 'R10')
@@ -143,7 +144,8 @@ def test_r10_exclusive_keyword_fail():
 # ── R11 收敛策略（NBME D19）──
 
 def test_r11_convergence_warn():
-    vo._JIEBA_AVAILABLE = False  # 确定性 n-gram 模式
+    import scripts.validate.rules_structural as rs
+    rs._JIEBA_AVAILABLE = False  # 确定性 n-gram 模式
     # 正确选项命中 9 个题干词；其他选项 0-1 个 → avg_other=0.5, max_other=1
     # 9 > 0.5×2 且 9 > 1×1.5 → 收敛策略触发
     q = _q({'A': '急性肺栓塞首选溶栓治疗', 'B': '困难病例', 'C': '呼吸支持', 'D': '卧床休息', 'E': '随访观察'},
@@ -177,3 +179,91 @@ def test_validate_questions_smoke():
     all_issues, summary = vo.validate_questions(questions, mode='full')
     assert summary['total_questions'] == 1
     assert summary['fail'] >= 1  # R1 命中的 FAIL 被计入
+
+
+# ── S1 Schema 完整性 ──
+
+def test_s1_missing_required_field():
+    """测试缺少必填字段"""
+    q = {'id': 'T-002', 'type': 'A1', 'options': {'A': '甲', 'B': '乙'}}
+    issues = vo.check_s1_schema_completeness(q)
+    assert any('question' in i['target'] for i in issues)
+
+
+def test_s1_empty_options():
+    """测试空选项"""
+    q = {'id': 'T-003', 'type': 'A1', 'question': '测试题干', 'options': {}, 'answer': 'A'}
+    issues = vo.check_s1_schema_completeness(q)
+    assert any('options' in i['target'] for i in issues)
+
+
+def test_s1_valid_question():
+    """测试有效题目"""
+    q = _q({'A': '甲', 'B': '乙', 'C': '丙', 'D': '丁', 'E': '戊'})
+    issues = vo.check_s1_schema_completeness(q)
+    assert issues == []
+
+
+# ── S2 空值检测 ──
+
+def test_s2_empty_stem():
+    """测试空题干"""
+    q = {'id': 'T-004', 'type': 'A1', 'question': '', 'options': {'A': '甲'}, 'answer': 'A'}
+    issues = vo.check_s2_null_values(q)
+    assert any('question' in i['target'] for i in issues)
+
+
+def test_s2_empty_answer():
+    """测试空答案"""
+    q = {'id': 'T-005', 'type': 'A1', 'question': '测试题干', 'options': {'A': '甲'}, 'answer': ''}
+    issues = vo.check_s2_null_values(q)
+    assert any('answer' in i['target'] for i in issues)
+
+
+# ── S4 绝对化用语 ──
+
+def test_s4_absolute_language_in_stem():
+    """测试题干中的绝对化用语"""
+    q = _q({'A': '甲', 'B': '乙', 'C': '丙', 'D': '丁', 'E': '戊'},
+           stem='以下哪项是绝对正确的？')
+    issues = vo.check_s4_absolute_language(q)
+    assert any('stem' in i['target'] for i in issues)
+
+
+def test_s4_absolute_language_in_option():
+    """测试选项中的绝对化用语"""
+    q = _q({'A': '100%有效', 'B': '乙', 'C': '丙', 'D': '丁', 'E': '戊'})
+    issues = vo.check_s4_absolute_language(q)
+    assert any('option' in i['target'] for i in issues)
+
+
+# ── X型题特殊规则 ──
+
+def test_x_type_skip_r7():
+    """测试X型题跳过R7截断检测"""
+    q = _q({'A': '短', 'B': '中', 'C': '长', 'D': '更长'}, qtype='X')
+    issues = vo.check_r7_truncation(q)
+    assert issues == []
+
+
+def test_x_type_skip_r8():
+    """测试X型题跳过R8最小长度检测"""
+    q = _q({'A': '短', 'B': '中', 'C': '长', 'D': '更长'}, qtype='X')
+    issues = vo.check_r8_min_length(q)
+    assert issues == []
+
+
+# ── B1型题特殊规则 ──
+
+def test_b1_shared_options():
+    """测试B1型题共用选项"""
+    q = {
+        'id': 'T-006',
+        'type': 'B1',
+        'question': '第一个子题',
+        'options': {'A': '共用选项A', 'B': '共用选项B', 'C': '共用选项C', 'D': '共用选项D', 'E': '共用选项E'},
+        'answer': 'A',
+        'b1_group': '13-14',
+    }
+    issues = vo.check_r5_option_count(q)
+    assert issues == []  # B1型题应该有5个选项

@@ -1,0 +1,35 @@
+type: grid
+title: 原发性肾小球疾病临床综合征五分类
+subtitle: 内科学 泌尿系统·M1 肾小球肾炎（确定性图谱通道）
+cols: 5
+output: annotated/23_肾小球疾病临床综合征五分类.png
+webp: images_webp/23_肾小球疾病临床综合征五分类.webp
+items:
+- title: 急性肾炎综合征
+  color: blue
+  lines:
+  - 起病急、<3个月
+  - 血尿+红细胞管型
+  - C3 一过性下降
+- title: 急进性肾炎综合征
+  color: red
+  lines:
+  - 短期内进行性肾功能衰竭
+  - 新月体形成
+  - 数周至数月入肾衰
+- title: 慢性肾炎综合征
+  color: teal
+  lines:
+  - 迁延>3个月
+  - 血尿/蛋白尿/水肿/高血压
+  - 渐进致慢性肾衰竭
+- title: 肾病综合征
+  color: purple
+  lines:
+  - 蛋白尿>3.5g/d
+  - 白蛋白<30g/L
+- title: 无症状性血尿/蛋白尿（隐匿型）
+  color: green
+  lines:
+  - 无水肿/高血压/肾功能损害
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

@@ -20,7 +20,7 @@ whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务
 3. **输出**：
    - 题库 JSON 直接写入 `中间产物/{batchID}/`（如 `ALL_questions.json`）。**必须为纯 JSON 数组**，禁止 YAML frontmatter 或修改声明混入（batch006 教训）。
    - 如产出备考资料 MD，写入同一目录。
-4. **产出门禁（不可跳过）**：交付前运行 `python validate_options.py --file <你的JSON路径>`；输出中 `✗ 失败: N` 的 N>0 时必须**自行修正后重新生成**，直到 FAIL==0（batch006 教训：未自检即交付导致二次回调）。
+4. **产出门禁（不可跳过）**：交付前运行 `python -m scripts.validate --file <你的JSON路径>` 或 `python validate_options.py --file <你的JSON路径>`；输出中 `✗ 失败: N` 的 N>0 时必须**自行修正后重新生成**，直到 FAIL==0（batch006 教训：未自检即交付导致二次回调）。
 5. **数值纪律**：所有数值型选项必须带完整单位（次/分、mmHg、%、个月）；诊断/疾病名不可截断，使用完整标准术语（batch014 教训）。
 6. **考研真题配额（HC-18）**：题库中约 1/5（目标 20%，区间 15%–25%）为考研原题——从编排者提供的 kaoyan_candidates.json 或 `GoldenSet/structured/` 按 gs_id 选取引用/改编；知识点/答案/数值不得改动；每题标注 `kaoyan_origin` + `[源:考研真题 GS-XXX]` + 解析来源句。无真题覆盖章节以原创补齐并如实标注。
 7. **完成后报告**：文件路径 + 题目总数 + Bloom 分布摘要 + 考研真题占比 + 自检结果（通过/失败数）。

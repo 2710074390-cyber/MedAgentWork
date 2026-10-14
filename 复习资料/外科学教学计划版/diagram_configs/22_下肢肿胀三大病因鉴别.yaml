@@ -1,0 +1,28 @@
+type: compare
+title: 下肢肿胀三大病因鉴别（动脉 / 静脉 / 淋巴）
+subtitle: 外科学（二）M5 周围血管与淋巴疾病（确定性图谱通道）
+output: annotated/22_下肢肿胀三大病因鉴别.png
+webp: images_webp/22_下肢肿胀三大病因鉴别.webp
+items:
+  - title: 动脉缺血性
+    color: red
+    lines:
+      - 皮肤苍白、厥冷
+      - 抬高病肢症状加重
+      - 动脉搏动减弱或消失
+      - 见于 ASO / TAO / 急性栓塞
+  - title: 静脉淤血性
+    color: blue
+    lines:
+      - 皮肤暗红、潮热
+      - 抬高病肢可减轻
+      - 浅静脉曲张、色素沉着
+      - 见于静脉曲张 / DVT / 瓣膜功能不全
+  - title: 淋巴水肿
+    color: purple
+    lines:
+      - 蛋白性水肿，自足趾向近端蔓延
+      - 抬高肢体不能缓解
+      - 加压后海绵状、回弹慢
+      - 皮肤苔藓样变、晚期象皮腿
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

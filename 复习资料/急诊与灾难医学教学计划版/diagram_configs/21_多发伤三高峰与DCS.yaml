@@ -1,0 +1,47 @@
+type: flow
+title: 多发伤三死亡高峰与损伤控制外科(DCS)三阶段
+subtitle: 急诊与灾难医学 M9 创伤急救（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/21_多发伤三高峰与DCS.png
+webp: images_webp/21_多发伤三高峰与DCS.webp
+steps:
+  - title: 第一高峰·伤后数分钟
+    color: red
+    lines:
+      - 即时死亡
+      - 脑/脑干/高位脊髓损伤
+      - 心脏大血管撕裂
+      - 来不及抢救
+  - title: 第二高峰·伤后6~8h
+    color: orange
+    lines:
+      - “黄金时间”
+      - 颅内血肿、血气胸
+      - 肝脾破裂、骨盆股骨大出血
+      - 可预防性死亡
+  - title: 第三高峰·数天至数周
+    color: purple
+    lines:
+      - 严重感染
+      - 器官功能衰竭
+      - 脓毒症、MODS
+  - title: DCS①救命手术
+    color: blue
+    lines:
+      - 控制出血+控制污染
+      - 快速关腹
+      - 强调有效、快速、简单
+  - title: DCS②ICU复苏
+    color: teal
+    lines:
+      - 复温、纠正凝血与酸中毒
+      - 呼吸机通气
+      - 防“死亡三联征”
+  - title: DCS③确定性再手术
+    color: green
+    lines:
+      - 取出填塞物
+      - 全面探查
+      - 解剖重建
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

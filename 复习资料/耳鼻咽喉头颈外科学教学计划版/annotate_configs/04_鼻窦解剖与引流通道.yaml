@@ -1,0 +1,31 @@
+image: raw/04_鼻窦解剖与引流通道_raw.png
+output: annotated/04_鼻窦解剖与引流通道.png
+fixes:
+  - box: [100, 110, 200, 155]
+    text: 额窦
+    mode: label
+    anchor: [330, 190]
+  - box: [40, 280, 220, 325]
+    text: 筛窦（蜂窝小房）
+    mode: label
+    anchor: [400, 340]
+  - box: [300, 500, 500, 545]
+    text: 蝶窦（位置最深）
+    mode: label
+    anchor: [420, 455]
+  - box: [40, 640, 200, 685]
+    text: 上颌窦（最大）
+    mode: label
+    anchor: [290, 640]
+  - box: [430, 880, 530, 925]
+    text: 鼻腔
+    mode: label
+    anchor: [500, 830]
+  - box: [560, 600, 680, 645]
+    text: 鼻中隔
+    mode: label
+    anchor: [515, 700]
+  - box: [600, 300, 780, 345]
+    text: 各窦自然开口
+    mode: label
+    anchor: [585, 430]

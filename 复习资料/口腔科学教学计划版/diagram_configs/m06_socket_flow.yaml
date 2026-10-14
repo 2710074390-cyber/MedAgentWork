@@ -1,0 +1,29 @@
+type: flow
+title: 拔牙创愈合时间轴
+subtitle: 血凝块→肉芽→上皮→骨修复（M06 考点10）
+steps:
+  - title: 15分钟-出血停止
+    color: red
+    lines:
+      - 牙槽窝血凝块形成
+      - 保护创面、防止感染
+  - title: 24小时
+    color: orange
+    lines:
+      - 肉芽组织开始长入
+  - title: 3天
+    color: yellow
+    lines:
+      - 肉芽组织由边缘向中心生长
+  - title: 1周
+    color: teal
+    lines:
+      - 上皮覆盖创面
+      - 纤维组织长入
+  - title: 2月
+    color: green
+    lines:
+      - 新骨形成，完全骨性愈合
+note: 临床可见创口愈合约1-2周，骨愈合约2-3月
+output: ../annotated/m06_socket_flow.png
+webp: ../images_webp/m06_socket_flow.webp

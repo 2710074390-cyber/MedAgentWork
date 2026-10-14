@@ -1,0 +1,23 @@
+image: raw/02_骨产道三平面径线_raw.png
+output: annotated/02_骨产道三平面径线.png
+fixes:
+  - box: [60, 170, 160, 215]
+    text: 骨盆
+    mode: label
+    anchor: [250, 220]
+  - box: [680, 260, 900, 305]
+    text: ①入口平面（横椭圆）
+    mode: label
+    anchor: [660, 310]
+  - box: [620, 450, 940, 495]
+    text: ②中骨盆平面（最窄）
+    mode: label
+    anchor: [600, 490]
+  - box: [650, 630, 880, 675]
+    text: ③出口平面（菱形）
+    mode: label
+    anchor: [625, 660]
+  - box: [80, 380, 300, 425]
+    text: 骨盆轴（产轴）
+    mode: label
+    anchor: [490, 430]

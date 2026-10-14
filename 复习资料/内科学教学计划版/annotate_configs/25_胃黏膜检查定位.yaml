@@ -1,0 +1,31 @@
+image: raw/25_胃黏膜检查定位_raw.png
+output: annotated/25_胃黏膜检查定位.png
+fixes:
+  - box: [80, 110, 410, 155]
+    text: 贲门（食管入口）
+    mode: label
+    anchor: [470, 190]
+  - box: [690, 230, 790, 275]
+    text: 胃底
+    mode: label
+    anchor: [640, 300]
+  - box: [700, 500, 800, 545]
+    text: 胃体
+    mode: label
+    anchor: [660, 530]
+  - box: [400, 830, 520, 875]
+    text: 胃窦
+    mode: label
+    anchor: [440, 720]
+  - box: [50, 780, 340, 825]
+    text: 幽门→十二指肠
+    mode: label
+    anchor: [255, 720]
+  - box: [110, 430, 260, 475]
+    text: 胃小弯
+    mode: label
+    anchor: [470, 470]
+  - box: [620, 840, 760, 885]
+    text: 胃大弯
+    mode: label
+    anchor: [620, 805]

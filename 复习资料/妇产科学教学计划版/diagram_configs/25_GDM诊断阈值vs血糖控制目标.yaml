@@ -1,0 +1,23 @@
+type: compare
+title: GDM 诊断阈值 vs 血糖控制目标
+subtitle: 妇产科学 M8 妊娠合并内外科疾病（确定性图谱通道）
+output: annotated/25_GDM诊断阈值vs血糖控制目标.png
+webp: images_webp/25_GDM诊断阈值vs血糖控制目标.webp
+items:
+  - title: 75g OGTT 诊断阈值
+    color: blue
+    lines:
+      - 妊娠24~28周行75g OGTT
+      - 空腹 ≥5.1 mmol/L
+      - 服糖后1h ≥10.0 mmol/L
+      - 服糖后2h ≥8.5 mmol/L
+      - 任一点≥阈值即诊GDM
+  - title: 血糖控制目标
+    color: green
+    lines:
+      - 餐前及空腹 <5.3 mmol/L
+      - 餐后1h <7.8 mmol/L
+      - 餐后2h <6.7 mmol/L
+      - 夜间 ≥3.3 mmol/L
+      - 首选胰岛素控制
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

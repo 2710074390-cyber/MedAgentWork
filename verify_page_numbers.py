@@ -14,14 +14,11 @@ from collections import Counter
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 BASE = Path(__file__).parent
+sys.path.insert(0, str(BASE / 'scripts'))
+from utils import SUBJECT_TO_CODE
+
 MANIFEST = BASE / "知识库素材" / "index_store" / "index_manifest.json"
 REVIEW_DIR = BASE / "复习资料"
-
-SUBJECT_TO_CODE = {
-    "内科学": "internal-med", "儿科学": "pediatrics", "外科学": "surgery",
-    "神经病学": "neurology", "精神病学": "psychiatry",
-    "皮肤性病学": "dermatology", "中医学": "tcm", "医患沟通": "doctor-patient",
-}
 
 
 # ──────────────────────────────────────────

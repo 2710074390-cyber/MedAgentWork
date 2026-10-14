@@ -1,0 +1,40 @@
+type: grid
+title: 常见阴道炎鉴别（VVC/BV/滴虫/AV）
+subtitle: 妇产科学 M10 外阴阴道炎症（确定性图谱通道）
+cols: 2
+output: annotated/27_常见阴道炎鉴别.png
+webp: images_webp/27_常见阴道炎鉴别.webp
+items:
+  - title: VVC（假丝酵母菌）
+    color: blue
+    lines:
+      - 重度瘙痒
+      - 白色豆腐渣样/凝乳状分泌物
+      - 黏膜水肿红斑
+      - pH<4.5（唯一）
+      - 胺试验阴性、见芽生孢子/假菌丝
+  - title: BV（细菌性阴道病）
+    color: teal
+    lines:
+      - 无/轻度瘙痒
+      - 白色匀质、腥臭味分泌物
+      - 阴道黏膜正常无炎症
+      - pH>4.5、胺试验阳性
+      - 见线索细胞、甲硝唑首选
+  - title: 阴道毛滴虫病
+    color: green
+    lines:
+      - 轻度瘙痒
+      - 稀薄脓性、泡沫状分泌物
+      - 散在出血点、草莓颈
+      - pH>4.5、见活动滴虫
+      - 甲硝唑全身＋伴侣同治
+  - title: AV（需氧菌性阴道炎）
+    color: orange
+    lines:
+      - 瘙痒＋烧灼感
+      - 黄/黄绿色脓性分泌物
+      - 黏膜充血、散在出血点
+      - pH>4.5、乳杆菌↓需氧菌↑
+      - 抗需氧菌治疗
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

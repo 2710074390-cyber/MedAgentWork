@@ -1,0 +1,39 @@
+image: raw/01_女性盆腔矢状剖_raw.png
+output: annotated/01_女性盆腔矢状剖.png
+fixes:
+  - box: [30, 620, 200, 665]
+    text: 耻骨联合
+    mode: label
+    anchor: [230, 660]
+  - box: [60, 480, 160, 525]
+    text: 膀胱
+    mode: label
+    anchor: [300, 540]
+  - box: [620, 280, 920, 325]
+    text: 子宫（前倾前屈位）
+    mode: label
+    anchor: [580, 340]
+  - box: [300, 380, 400, 425]
+    text: 宫腔
+    mode: label
+    anchor: [470, 400]
+  - box: [480, 110, 580, 155]
+    text: 卵巢
+    mode: label
+    anchor: [500, 210]
+  - box: [180, 110, 320, 155]
+    text: 输卵管
+    mode: label
+    anchor: [420, 150]
+  - box: [440, 860, 540, 905]
+    text: 阴道
+    mode: label
+    anchor: [540, 800]
+  - box: [800, 360, 900, 405]
+    text: 直肠
+    mode: label
+    anchor: [745, 390]
+  - box: [640, 470, 900, 515]
+    text: 直肠子宫陷凹
+    mode: label
+    anchor: [630, 495]

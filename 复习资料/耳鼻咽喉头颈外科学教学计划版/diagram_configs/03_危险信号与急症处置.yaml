@@ -1,0 +1,10 @@
+type: grid
+title: 急症危险信号与首步处置
+subtitle: 耳鼻咽喉头颈外科学 M1 总论（确定性图谱通道）
+cols: 2
+output: annotated/03_危险信号与急症处置.png
+webp: images_webp/03_危险信号与急症处置.webp
+items:
+  - {title: 急性咽喉痛+吸气性呼吸困难, color: red, lines: ["警惕: 急性会厌炎/喉阻塞", "首步: 开放气道，激素+足量抗生素", "备插管/气管切开；绝不强行压舌"]}
+  - {title: 大量鼻出血+面色苍白脉速, color: orange, lines: ["警惕: 后部鼻出血/失血性休克", "首步: 抗休克、补液", "前/后鼻孔填塞"]}
+note: 内容依据人卫《耳鼻咽喉头颈外科学》第9版；render_diagram.py确定性渲染

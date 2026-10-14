@@ -1,0 +1,25 @@
+type: compare
+title: 完全性 vs 部分性葡萄胎
+subtitle: 妇产科学 M12 妊娠滋养细胞疾病（确定性图谱通道）
+output: annotated/31_完全性vs部分性葡萄胎.png
+webp: images_webp/31_完全性vs部分性葡萄胎.webp
+items:
+  - title: 完全性葡萄胎
+    color: blue
+    lines:
+      - 核型二倍体（46XX占90%）、全父源
+      - 无胚胎及附属物
+      - 绒毛弥漫水肿、血管消失
+      - 滋养细胞弥漫显著增生
+      - P57免疫组化阴性
+      - hCG明显升高（多>10万IU/L）
+  - title: 部分性葡萄胎
+    color: red
+    lines:
+      - 核型三倍体（69XXY常见）、双亲
+      - 有胚胎/孕囊（多死亡畸形）
+      - 部分绒毛水肿＋正常绒毛
+      - 滋养细胞局灶轻度增生
+      - P57免疫组化阳性
+      - hCG轻度升高
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

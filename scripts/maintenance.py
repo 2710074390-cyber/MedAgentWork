@@ -17,7 +17,7 @@ MedAgentWork 自动维护脚本 v1.0
   python scripts/maintenance.py --full             # 完整模式（含 GoldenSet 回归）
   python scripts/maintenance.py --json             # 仅输出 JSON
 """
-import sys, json, os, shutil, hashlib, argparse, subprocess
+import sys, json, os, shutil, argparse, subprocess
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
@@ -25,6 +25,9 @@ sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 BASE = Path(__file__).parent.parent
 CST = timezone(timedelta(hours=8))
+
+# 导入公共工具函数
+from utils import md5_file, safe_json_load
 
 # ── 配置 ──────────────────────────────────────
 
@@ -71,25 +74,6 @@ CROSS_WORKSPACES = [
 HEALTHCHECK_SCRIPT = BASE / 'healthcheck.py'
 GATE_CHECK_SCRIPT = BASE / 'gate_check.py'
 REPORTS_DIR = BASE / 'reports'
-
-
-def md5_file(filepath):
-    h = hashlib.md5()
-    try:
-        with open(filepath, 'rb') as f:
-            for chunk in iter(lambda: f.read(8192), b''):
-                h.update(chunk)
-        return h.hexdigest()
-    except Exception:
-        return None
-
-
-def safe_json_load(filepath):
-    try:
-        with open(filepath, 'r', encoding='utf-8') as f:
-            return json.load(f), None
-    except Exception as e:
-        return None, str(e)
 
 
 # ═══════════════════════════════════════

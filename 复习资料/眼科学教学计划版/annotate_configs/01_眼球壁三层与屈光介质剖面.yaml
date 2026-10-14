@@ -1,0 +1,40 @@
+image: raw/01_眼球壁三层与屈光介质剖面_raw.png
+output: annotated/01_眼球壁三层与屈光介质剖面.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [30, 280, 120, 328]
+    text: 角膜
+    mode: label
+    anchor: [100, 460]
+  - box: [180, 110, 330, 158]
+    text: 前房
+    mode: label
+    anchor: [180, 470]
+  - box: [350, 110, 455, 158]
+    text: 虹膜
+    mode: label
+    anchor: [270, 500]
+  - box: [30, 790, 200, 838]
+    text: 晶状体
+    mode: label
+    anchor: [205, 637]
+  - box: [40, 840, 220, 888]
+    text: 玻璃体腔
+    mode: label
+    anchor: [480, 600]
+  - box: [840, 330, 990, 378]
+    text: 巩膜
+    mode: label
+    anchor: [735, 420]
+  - box: [840, 430, 990, 478]
+    text: 脉络膜
+    mode: label
+    anchor: [700, 460]
+  - box: [875, 530, 990, 578]
+    text: 视网膜
+    mode: label
+    anchor: [630, 510]
+  - box: [820, 790, 980, 838]
+    text: 视神经
+    mode: label
+    anchor: [850, 680]

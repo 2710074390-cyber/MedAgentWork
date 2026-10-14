@@ -1,0 +1,23 @@
+image: raw/m04_precancer_raw_v2.jpg
+
+output: annotated/m04_precancer.yaml.png
+
+font: C:\Windows\Fonts\msyhbd.ttc
+
+fixes:
+  - box: [60, 60, 200, 105]
+    text: "白斑（颊黏膜）"
+    mode: label
+    anchor: [360, 430]
+  - box: [240, 60, 380, 105]
+    text: "白斑（颊黏膜）"
+    mode: label
+    anchor: [640, 430]
+  - box: [420, 60, 560, 105]
+    text: "红斑"
+    mode: label
+    anchor: [320, 570]
+  - box: [600, 60, 740, 105]
+    text: "红斑"
+    mode: label
+    anchor: [680, 570]

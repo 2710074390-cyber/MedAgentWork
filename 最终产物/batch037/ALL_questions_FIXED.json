@@ -1,0 +1,7277 @@
+[
+  {
+    "id": "batch037-M01-A1-001",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "FDI 牙位记录法",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "按 FDI 牙位记录法，左上第一恒磨牙的牙位记录是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "11"
+      },
+      {
+        "label": "B",
+        "text": "16"
+      },
+      {
+        "label": "C",
+        "text": "26"
+      },
+      {
+        "label": "D",
+        "text": "36"
+      },
+      {
+        "label": "E",
+        "text": "46"
+      }
+    ],
+    "answer": "C",
+    "explanation": "恒牙 FDI 两位数牙位记录：第一位为象限（1 右上、2 左上、3 左下、4 右下），第二位为牙位（1-8）；左上第一恒磨牙即 26。教材P6。",
+    "source_page": "教材P6",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A1-002",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "牙体组织构成",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "牙体组织中硬度最高、最坚硬的组织是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "釉质"
+      },
+      {
+        "label": "B",
+        "text": "牙本质"
+      },
+      {
+        "label": "C",
+        "text": "牙骨质"
+      },
+      {
+        "label": "D",
+        "text": "牙髓"
+      },
+      {
+        "label": "E",
+        "text": "牙周膜"
+      }
+    ],
+    "answer": "A",
+    "explanation": "釉质是人体最坚硬的组织，覆盖牙冠表面；牙本质构成牙体主体，牙骨质覆盖牙根，牙髓为软组织。教材P4。",
+    "source_page": "教材P4",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A1-003",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "牙周组织构成",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "下列<b>不属于</b>牙周组织的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "牙龈"
+      },
+      {
+        "label": "B",
+        "text": "牙周膜"
+      },
+      {
+        "label": "C",
+        "text": "牙槽骨"
+      },
+      {
+        "label": "D",
+        "text": "牙骨质"
+      },
+      {
+        "label": "E",
+        "text": "牙髓"
+      }
+    ],
+    "answer": "E",
+    "explanation": "牙周组织包括牙龈、牙周膜、牙槽骨与牙骨质；牙髓位于髓腔与根管内，属于牙体组织。教材P5。",
+    "source_page": "教材P5",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M01-A1-004",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "唾液腺解剖",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "腮腺导管开口于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "上颌第二磨牙相对的颊黏膜处"
+      },
+      {
+        "label": "B",
+        "text": "上颌第一磨牙相对的颊黏膜处"
+      },
+      {
+        "label": "C",
+        "text": "下颌第二磨牙相对的颊黏膜处"
+      },
+      {
+        "label": "D",
+        "text": "舌下肉阜的腺管开口处"
+      },
+      {
+        "label": "E",
+        "text": "舌下襞黏膜下腺管开口"
+      }
+    ],
+    "answer": "A",
+    "explanation": "腮腺导管（Stensen 管）开口于平对上颌第二磨牙牙冠的颊黏膜处；舌下肉阜为下颌下腺与舌下腺大管的开口。教材P9。",
+    "source_page": "教材P9",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A1-005",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "面神经走行",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "面神经出颅的部位是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "圆孔"
+      },
+      {
+        "label": "B",
+        "text": "卵圆孔"
+      },
+      {
+        "label": "C",
+        "text": "眶下孔"
+      },
+      {
+        "label": "D",
+        "text": "茎乳孔"
+      },
+      {
+        "label": "E",
+        "text": "颈静脉孔"
+      }
+    ],
+    "answer": "D",
+    "explanation": "面神经经茎乳孔出颅，向前穿入腮腺后分为颞、颧、颊、下颌缘、颈五支；圆孔/卵圆孔为三叉神经分支出颅处。教材P18。",
+    "source_page": "教材P18",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A1-006",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "面神经分支",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于面神经五支的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "颞支支配额肌"
+      },
+      {
+        "label": "B",
+        "text": "颧支支配眼轮匝肌"
+      },
+      {
+        "label": "C",
+        "text": "颊支支配颊肌与口轮匝肌"
+      },
+      {
+        "label": "D",
+        "text": "下颌缘支支配下唇诸肌"
+      },
+      {
+        "label": "E",
+        "text": "颈支损伤引起明显功能障碍"
+      }
+    ],
+    "answer": "E",
+    "explanation": "面神经五支中颈支支配颈阔肌，其损伤对功能影响较小（颈阔肌功能不重要）；其余各支支配对应表情肌，损伤各有典型表现。教材P18。",
+    "source_page": "教材P18",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M01-A1-007",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "咀嚼肌功能",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "参与开口运动的咀嚼肌是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "咬肌"
+      },
+      {
+        "label": "B",
+        "text": "颞肌"
+      },
+      {
+        "label": "C",
+        "text": "翼内肌"
+      },
+      {
+        "label": "D",
+        "text": "翼外肌"
+      },
+      {
+        "label": "E",
+        "text": "二腹肌后腹"
+      }
+    ],
+    "answer": "D",
+    "explanation": "翼外肌双侧收缩使下颌前伸并开口（张口运动的主要动力肌）；咬肌、颞肌、翼内肌为闭口（升颌）肌群。教材P13。",
+    "source_page": "教材P13",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A1-008",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "危险三角区",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "面部危险三角区感染最严重的并发症是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "面神经麻痹"
+      },
+      {
+        "label": "B",
+        "text": "海绵窦血栓性静脉炎"
+      },
+      {
+        "label": "C",
+        "text": "化脓性颌骨骨髓炎"
+      },
+      {
+        "label": "D",
+        "text": "全身败血症"
+      },
+      {
+        "label": "E",
+        "text": "颅内脑脓肿"
+      }
+    ],
+    "answer": "B",
+    "explanation": "危险三角区（鼻根至两侧口角）内面静脉无静脉瓣、血流可逆流，感染灶挤压后病原体可经内眦静脉、翼静脉丛进入海绵窦，引起海绵窦血栓性静脉炎。教材P25。",
+    "source_page": "教材P25",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A1-009",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "面静脉特点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "面静脉重要的解剖特点是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "无静脉瓣"
+      },
+      {
+        "label": "B",
+        "text": "有静脉瓣"
+      },
+      {
+        "label": "C",
+        "text": "与面动脉伴行并含动脉血"
+      },
+      {
+        "label": "D",
+        "text": "直接注入颈内静脉"
+      },
+      {
+        "label": "E",
+        "text": "走行于深筋膜深层"
+      }
+    ],
+    "answer": "A",
+    "explanation": "面静脉瓣膜稀少甚至无瓣膜，血液可双向流动，这是危险三角区感染易向颅内海绵窦扩散的解剖基础。教材P25。",
+    "source_page": "教材P25",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A1-010",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "下颌骨薄弱部位",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "下列<b>不是</b>下颌骨骨折好发部位的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "正中联合"
+      },
+      {
+        "label": "B",
+        "text": "颏孔区"
+      },
+      {
+        "label": "C",
+        "text": "下颌角"
+      },
+      {
+        "label": "D",
+        "text": "髁突颈"
+      },
+      {
+        "label": "E",
+        "text": "下颌支中部"
+      }
+    ],
+    "answer": "E",
+    "explanation": "下颌骨薄弱部位（骨折好发区）为正中联合、颏孔区、下颌角及髁突颈；下颌支中部骨质较厚，非好发部位。教材P26。",
+    "source_page": "教材P26",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M01-A2-001",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "FDI 牙位记录应用",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患儿 6 岁，处于混合牙列期，检查见左侧下颌第一恒磨牙刚萌出，其 FDI 牙位记录是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "16"
+      },
+      {
+        "label": "B",
+        "text": "26"
+      },
+      {
+        "label": "C",
+        "text": "36"
+      },
+      {
+        "label": "D",
+        "text": "46"
+      },
+      {
+        "label": "E",
+        "text": "66"
+      }
+    ],
+    "answer": "C",
+    "explanation": "左侧下颌即第 3 象限，第一恒磨牙牙位号为 6，故为 36。教材P6。",
+    "source_page": "教材P6",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A2-002",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "面神经分支定位",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者面部表情异常，笑时口角向健侧偏斜，患侧口角下垂，最可能损伤的面神经分支是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "颞支"
+      },
+      {
+        "label": "B",
+        "text": "颧支"
+      },
+      {
+        "label": "C",
+        "text": "颊支"
+      },
+      {
+        "label": "D",
+        "text": "下颌缘支"
+      },
+      {
+        "label": "E",
+        "text": "颈支"
+      }
+    ],
+    "answer": "D",
+    "explanation": "下颌缘支支配下唇诸肌（下唇方肌、颏肌等），损伤时下唇不能上抬，口角向健侧偏斜，呈典型「歪嘴」；颞支损伤额纹消失，颧支损伤眼睑闭合不全。教材P18。",
+    "source_page": "教材P18",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A2-003",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "三叉神经分支",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "三叉神经下颌神经（第Ⅲ支）的分支中，经下颌孔进入下颌骨、支配下唇黏膜的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "颊神经"
+      },
+      {
+        "label": "B",
+        "text": "耳颞神经"
+      },
+      {
+        "label": "C",
+        "text": "下牙槽神经"
+      },
+      {
+        "label": "D",
+        "text": "舌神经"
+      },
+      {
+        "label": "E",
+        "text": "眶下神经"
+      }
+    ],
+    "answer": "C",
+    "explanation": "下牙槽神经为下颌神经最大分支，经下颌孔入下颌管，分支经颏孔出颏神经，支配同侧下颌牙及下唇黏膜；损伤可出现下唇麻木。教材P21。",
+    "source_page": "教材P21",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-A2-004",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "面神经颧支定位",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者右眼睑不能闭合、右侧额纹消失，提示面神经哪一支损伤？",
+    "options": [
+      {
+        "label": "A",
+        "text": "颞支"
+      },
+      {
+        "label": "B",
+        "text": "颧支"
+      },
+      {
+        "label": "C",
+        "text": "颊支"
+      },
+      {
+        "label": "D",
+        "text": "下颌缘支"
+      },
+      {
+        "label": "E",
+        "text": "颈支"
+      }
+    ],
+    "answer": "B",
+    "explanation": "颧支支配眼轮匝肌，损伤致眼睑不能闭合；额纹消失为颞支（额肌）受累。两问同见时提示面神经主干或周围性损伤。教材P18。",
+    "source_page": "教材P18",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-X-001",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "唾液功能",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "唾液的重要生理功能包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "湿润与缓冲"
+      },
+      {
+        "label": "B",
+        "text": "清洁与抗菌"
+      },
+      {
+        "label": "C",
+        "text": "软化食物便于吞咽"
+      },
+      {
+        "label": "D",
+        "text": "促进牙体硬组织脱矿"
+      },
+      {
+        "label": "E",
+        "text": "含淀粉酶参与消化"
+      }
+    ],
+    "answer": "ABCE",
+    "explanation": "唾液具有湿润、缓冲、清洁、抗菌（溶菌酶等）、软化食物、辅助消化（淀粉酶）及保护牙体（促进再矿化）等功能；促进脱矿是菌斑产酸的结果，不是唾液功能。教材P9。",
+    "source_page": "教材P9",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M01-X-002",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "血供与静脉回流",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "分析",
+    "stem": "关于口腔颌面部血供与静脉回流的叙述，正确的有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "面动脉为面部主要供血动脉，可于咬肌前缘触及搏动"
+      },
+      {
+        "label": "B",
+        "text": "面静脉无静脉瓣"
+      },
+      {
+        "label": "C",
+        "text": "危险三角区感染可经内眦静脉扩散至海绵窦"
+      },
+      {
+        "label": "D",
+        "text": "颞浅动脉可于耳屏前触及搏动"
+      },
+      {
+        "label": "E",
+        "text": "面静脉内血液只能单向流向颈内静脉"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "面动脉是面部主要供血动脉（咬肌前缘可触及其搏动），颞浅动脉可于耳屏前触及；面静脉无静脉瓣，血液可逆流，危险三角区感染可经内眦静脉-翼静脉丛进入海绵窦，因此面静脉血流并非单向。教材P25。",
+    "source_page": "教材P25",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-B1-001",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "大涎腺",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "口腔内最大的一对大涎腺是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "腮腺"
+      },
+      {
+        "label": "B",
+        "text": "下颌下腺"
+      },
+      {
+        "label": "C",
+        "text": "舌下腺"
+      },
+      {
+        "label": "D",
+        "text": "腭腺"
+      },
+      {
+        "label": "E",
+        "text": "舌腺"
+      }
+    ],
+    "answer": "A",
+    "explanation": "三对大涎腺为腮腺、下颌下腺、舌下腺，其中腮腺最大；腭腺、舌腺属小涎腺。教材P9。",
+    "source_page": "教材P9",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M01-B1-002",
+    "module": "M01",
+    "module_name": "口腔颌面解剖生理与口腔检查",
+    "topic": "涎腺导管开口",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "导管开口于舌下肉阜的大涎腺是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "腮腺"
+      },
+      {
+        "label": "B",
+        "text": "下颌下腺"
+      },
+      {
+        "label": "C",
+        "text": "舌下腺"
+      },
+      {
+        "label": "D",
+        "text": "腭腺"
+      },
+      {
+        "label": "E",
+        "text": "舌腺"
+      }
+    ],
+    "answer": "B",
+    "explanation": "下颌下腺导管（Wharton 管）开口于舌下肉阜；舌下腺大管亦开口于此或汇入下颌下腺导管，腮腺导管开口于上颌第二磨牙相对颊黏膜。教材P9。",
+    "source_page": "教材P9",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-001",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "龋病病因",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "龋病发生的始动因子（最基本因素）是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "细菌"
+      },
+      {
+        "label": "B",
+        "text": "食物"
+      },
+      {
+        "label": "C",
+        "text": "宿主"
+      },
+      {
+        "label": "D",
+        "text": "时间"
+      },
+      {
+        "label": "E",
+        "text": "遗传"
+      }
+    ],
+    "answer": "A",
+    "explanation": "龋病四联因素为细菌、食物、宿主、时间，其中细菌（牙菌斑生物膜）是龋病发生的始动因子。教材P63。",
+    "source_page": "教材P63",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-002",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "致龋菌",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "龋病最主要的致龋菌是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "变形链球菌"
+      },
+      {
+        "label": "B",
+        "text": "牙龈卟啉单胞菌"
+      },
+      {
+        "label": "C",
+        "text": "伴放线聚集杆菌"
+      },
+      {
+        "label": "D",
+        "text": "金黄色葡萄球菌"
+      },
+      {
+        "label": "E",
+        "text": "白色念珠菌"
+      }
+    ],
+    "answer": "A",
+    "explanation": "变形链球菌（变异链球菌）是主要致龋菌，通过代谢蔗糖产酸使釉质脱矿；牙龈卟啉单胞菌等为牙周病主要致病菌。教材P63。",
+    "source_page": "教材P63",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-003",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "浅龋特征",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于浅龋的临床特点，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "一般无自觉症状"
+      },
+      {
+        "label": "B",
+        "text": "病变局限于釉质"
+      },
+      {
+        "label": "C",
+        "text": "探诊可有粗糙感"
+      },
+      {
+        "label": "D",
+        "text": "冷热刺激痛明显"
+      },
+      {
+        "label": "E",
+        "text": "可呈白垩色或墨浸样改变"
+      }
+    ],
+    "answer": "D",
+    "explanation": "浅龋位于釉质层，一般无自觉症状、无刺激痛，探诊粗糙，可见白垩色或墨浸样改变；出现冷热刺激痛提示龋损已达牙本质层（中龋及以上）。教材P73。",
+    "source_page": "教材P73",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-004",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "深龋特征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "深龋最典型的临床表现是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "冷热刺激痛，去除刺激即消失"
+      },
+      {
+        "label": "B",
+        "text": "自发性阵发性剧痛"
+      },
+      {
+        "label": "C",
+        "text": "夜间疼痛加剧明显"
+      },
+      {
+        "label": "D",
+        "text": "咬合时疼痛明显"
+      },
+      {
+        "label": "E",
+        "text": "牙冠颜色改变明显"
+      }
+    ],
+    "answer": "A",
+    "explanation": "深龋龋损达牙本质深层，冷热刺激痛明显但刺激去除后疼痛即消失；自发性剧痛、夜间痛为牙髓炎表现。教材P74。",
+    "source_page": "教材P74",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-005",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "急性牙髓炎疼痛",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "急性牙髓炎最典型的临床特点是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "自发阵发性剧痛"
+      },
+      {
+        "label": "B",
+        "text": "持续性隐痛"
+      },
+      {
+        "label": "C",
+        "text": "咬合时疼痛"
+      },
+      {
+        "label": "D",
+        "text": "刺激痛且去除即消"
+      },
+      {
+        "label": "E",
+        "text": "搏动性胀痛"
+      }
+    ],
+    "answer": "A",
+    "explanation": "急性牙髓炎呈自发性阵发性剧痛，夜间加剧，温度刺激加剧，疼痛不能自行定位（放射至同侧头面部）。教材P75。",
+    "source_page": "教材P75",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-006",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "牙髓炎疼痛定位",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于急性牙髓炎疼痛特点的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "呈自发性阵发性疼痛"
+      },
+      {
+        "label": "B",
+        "text": "夜间疼痛加剧"
+      },
+      {
+        "label": "C",
+        "text": "疼痛可放射至同侧头面部"
+      },
+      {
+        "label": "D",
+        "text": "疼痛能够精确定位到患牙"
+      },
+      {
+        "label": "E",
+        "text": "冷热刺激可加剧疼痛"
+      }
+    ],
+    "answer": "D",
+    "explanation": "急性牙髓炎疼痛的突出特点之一是疼痛不能自行定位（牵涉痛），患者常说不清具体哪颗牙；其余特点均正确。教材P75。",
+    "source_page": "教材P75",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-007",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "化脓性牙髓炎热痛冷缓解",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "牙髓温度测验时，化脓性牙髓炎（牙髓部分坏死）的典型表现是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "热痛冷缓解"
+      },
+      {
+        "label": "B",
+        "text": "冷痛热缓解"
+      },
+      {
+        "label": "C",
+        "text": "冷热刺激均不敏感"
+      },
+      {
+        "label": "D",
+        "text": "热痛冷加剧"
+      },
+      {
+        "label": "E",
+        "text": "冷热刺激无反应"
+      }
+    ],
+    "answer": "A",
+    "explanation": "牙髓化脓坏死时，热刺激使腔内气体膨胀致疼痛加剧，冷刺激收缩减轻压力而缓解，即「热痛冷缓解」，临床常用含冷水止痛。教材P76。",
+    "source_page": "教材P76",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-008",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "可复性牙髓炎",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "可复性牙髓炎的诊断要点是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "无自发痛，刺激痛去除即消失"
+      },
+      {
+        "label": "B",
+        "text": "自发性阵发性剧痛"
+      },
+      {
+        "label": "C",
+        "text": "夜间疼痛明显加剧"
+      },
+      {
+        "label": "D",
+        "text": "牙髓活力测试无反应"
+      },
+      {
+        "label": "E",
+        "text": "叩诊时疼痛明显"
+      }
+    ],
+    "answer": "A",
+    "explanation": "可复性牙髓炎（牙髓充血）受刺激时短暂疼痛，去除刺激后即消失，无自发痛；牙髓活力测试反应正常或敏感。教材P75。",
+    "source_page": "教材P75",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-009",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "逆行性牙髓炎",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "逆行性牙髓炎的感染途径是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "经牙周袋自根尖孔感染"
+      },
+      {
+        "label": "B",
+        "text": "经冠部龋洞感染"
+      },
+      {
+        "label": "C",
+        "text": "经血行播散感染"
+      },
+      {
+        "label": "D",
+        "text": "邻近牙根尖周扩散"
+      },
+      {
+        "label": "E",
+        "text": "外伤直接感染"
+      }
+    ],
+    "answer": "A",
+    "explanation": "逆行性牙髓炎指细菌经深牙周袋通过根尖孔逆行进入牙髓引起的感染，患牙牙冠多完整无龋。教材P76。",
+    "source_page": "教材P76",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-010",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "急性根尖周炎特点",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于急性根尖周炎的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "患牙叩痛明显"
+      },
+      {
+        "label": "B",
+        "text": "咬合时疼痛加重"
+      },
+      {
+        "label": "C",
+        "text": "牙髓活力测试多无反应"
+      },
+      {
+        "label": "D",
+        "text": "早期可有持续性钝痛"
+      },
+      {
+        "label": "E",
+        "text": "疼痛不能定位到患牙"
+      }
+    ],
+    "answer": "E",
+    "explanation": "根尖周炎疼痛可明确定位到患牙（患牙有伸长感、咬合痛），与牙髓炎疼痛不能定位相反。教材P78。",
+    "source_page": "教材P78",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M02-A2-001",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "急性牙髓炎诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者右下后牙自发性阵发痛 2 天，夜间加剧，冷热刺激均可诱发疼痛且持续片刻，疼痛不能定位。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "可复性牙髓炎"
+      },
+      {
+        "label": "B",
+        "text": "急性牙髓炎"
+      },
+      {
+        "label": "C",
+        "text": "急性根尖周炎"
+      },
+      {
+        "label": "D",
+        "text": "深龋病"
+      },
+      {
+        "label": "E",
+        "text": "牙本质敏感症"
+      }
+    ],
+    "answer": "B",
+    "explanation": "自发阵发痛、夜间痛、刺激痛持续、不能定位，是急性牙髓炎的典型「四联特征」；可复性牙髓炎无自发痛，根尖周炎可定位且叩痛明显。教材P75。",
+    "source_page": "教材P75",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A2-002",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "急性根尖周炎诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者左下后牙咬合痛 3 天，叩痛（++），牙髓活力测试无反应，颊侧根尖区牙龈肿胀。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性牙髓炎"
+      },
+      {
+        "label": "B",
+        "text": "急性根尖周炎"
+      },
+      {
+        "label": "C",
+        "text": "急性牙周脓肿"
+      },
+      {
+        "label": "D",
+        "text": "慢性牙髓炎"
+      },
+      {
+        "label": "E",
+        "text": "三叉神经痛"
+      }
+    ],
+    "answer": "B",
+    "explanation": "咬合痛、叩痛明显、牙髓活力无反应、根尖区肿胀，为急性根尖周炎的典型表现；急性牙周脓肿无牙髓病变，牙髓活力正常。教材P78。",
+    "source_page": "教材P78",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A2-003",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "深龋治疗-间接盖髓",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者深龋近髓，去腐净后见极薄牙本质，无自发痛史，冷测一过性敏感。首选的治疗是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "根管治疗"
+      },
+      {
+        "label": "B",
+        "text": "间接盖髓后充填"
+      },
+      {
+        "label": "C",
+        "text": "直接盖髓术"
+      },
+      {
+        "label": "D",
+        "text": "活髓切断术"
+      },
+      {
+        "label": "E",
+        "text": "干髓术治疗"
+      }
+    ],
+    "answer": "B",
+    "explanation": "深龋近髓但无自发痛、无不可复性牙髓炎证据，首选间接盖髓（氢氧化钙垫底）后充填，保存牙髓活力；直接盖髓适用于意外穿髓，活髓切断适用于冠髓炎。教材P79。",
+    "source_page": "教材P79",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A2-004",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "根尖脓肿切开排脓",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者右上后牙咬合痛伴颊侧牙龈肿胀，脓肿已局限并有波动感，首选的紧急处理是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "切开排脓"
+      },
+      {
+        "label": "B",
+        "text": "开髓引流"
+      },
+      {
+        "label": "C",
+        "text": "拔除患牙"
+      },
+      {
+        "label": "D",
+        "text": "口服抗生素观察"
+      },
+      {
+        "label": "E",
+        "text": "局部热敷"
+      }
+    ],
+    "answer": "A",
+    "explanation": "根尖周脓肿达骨膜下或黏膜下、形成波动感时，应尽早切开排脓（同时开放髓腔引流），缓解疼痛、防止扩散。教材P78。",
+    "source_page": "教材P78",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-X-001",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "深龋鉴别诊断",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "深龋治疗前需要与下列哪些疾病进行鉴别？",
+    "options": [
+      {
+        "label": "A",
+        "text": "可复性牙髓炎"
+      },
+      {
+        "label": "B",
+        "text": "慢性牙髓炎"
+      },
+      {
+        "label": "C",
+        "text": "牙髓坏死"
+      },
+      {
+        "label": "D",
+        "text": "三叉神经痛"
+      },
+      {
+        "label": "E",
+        "text": "牙龈炎"
+      }
+    ],
+    "answer": "AB",
+    "explanation": "深龋需与可复性牙髓炎（刺激痛短暂、去除即消）和慢性牙髓炎（自发痛史、刺激痛持续）鉴别，以决定盖髓或根管治疗；三叉神经痛为神经性疼痛，牙龈炎与牙髓无关。教材P74。",
+    "source_page": "教材P74",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-X-002",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "根管治疗步骤",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "根管治疗术的基本步骤包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "根管预备"
+      },
+      {
+        "label": "B",
+        "text": "根管消毒"
+      },
+      {
+        "label": "C",
+        "text": "根管充填"
+      },
+      {
+        "label": "D",
+        "text": "牙体预备"
+      },
+      {
+        "label": "E",
+        "text": "取印模"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "根管治疗三步为根管预备（机械清理成形）、根管消毒（药物封药）与根管充填（牙胶+封闭剂严密封闭）；牙体预备与取印模属修复步骤。教材P80。",
+    "source_page": "教材P80",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-B1-001",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "深龋刺激痛",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "牙齿冷热刺激痛明显，去除刺激后疼痛立即消失，最常见于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "龋病"
+      },
+      {
+        "label": "B",
+        "text": "牙髓炎"
+      },
+      {
+        "label": "C",
+        "text": "根尖周炎"
+      },
+      {
+        "label": "D",
+        "text": "牙周炎"
+      },
+      {
+        "label": "E",
+        "text": "楔状缺损"
+      }
+    ],
+    "answer": "A",
+    "explanation": "冷热刺激痛且刺激去除后疼痛立即消失，是深龋（牙本质敏感）的典型特点，提示龋损达牙本质层而未累及牙髓。教材P74。",
+    "source_page": "教材P74",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-B1-002",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "牙髓炎疼痛特点",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "牙齿自发性阵发性疼痛，夜间加剧，冷热刺激使疼痛持续，不能定位，最常见于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "龋病"
+      },
+      {
+        "label": "B",
+        "text": "牙髓炎"
+      },
+      {
+        "label": "C",
+        "text": "根尖周炎"
+      },
+      {
+        "label": "D",
+        "text": "牙周炎"
+      },
+      {
+        "label": "E",
+        "text": "楔状缺损"
+      }
+    ],
+    "answer": "B",
+    "explanation": "自发性阵发痛、夜间痛、刺激痛持续、不能定位，为急性牙髓炎的典型表现，提示牙髓不可复性炎症。教材P75。",
+    "source_page": "教材P75",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-011",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "根管消毒药物",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "根管治疗中常用作根管消毒、长期封药的药物是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "氢氧化钙"
+      },
+      {
+        "label": "B",
+        "text": "丁香油"
+      },
+      {
+        "label": "C",
+        "text": "碘仿纱条"
+      },
+      {
+        "label": "D",
+        "text": "樟脑酚"
+      },
+      {
+        "label": "E",
+        "text": "甲醛甲酚"
+      }
+    ],
+    "answer": "A",
+    "explanation": "氢氧化钙是根管消毒常用封药，兼具抗菌与诱导硬组织形成作用；樟脑酚、甲醛甲酚已渐少用，丁香油多用于暂封/安抚，碘仿用于干槽症填塞。教材P80。",
+    "source_page": "教材P80",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M02-A1-012",
+    "module": "M02",
+    "module_name": "牙体牙髓病",
+    "topic": "牙髓坏死诊断",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "牙髓坏死最可靠的诊断依据是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "牙髓活力测试无反应"
+      },
+      {
+        "label": "B",
+        "text": "牙冠颜色改变"
+      },
+      {
+        "label": "C",
+        "text": "无自觉症状"
+      },
+      {
+        "label": "D",
+        "text": "叩诊疼痛明显"
+      },
+      {
+        "label": "E",
+        "text": "X线根尖暗影"
+      }
+    ],
+    "answer": "A",
+    "explanation": "牙髓坏死的可靠诊断指标是牙髓活力（电活力、温度）测试无反应，辅以牙冠变色；无自觉症状与牙冠变色可见于多种情况，X线根尖暗影提示根尖周病。教材P77。",
+    "source_page": "教材P77",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A1-001",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "龈炎与牙周炎区别",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "牙龈炎与牙周炎的根本区别是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "有无牙龈出血"
+      },
+      {
+        "label": "B",
+        "text": "有无附着丧失"
+      },
+      {
+        "label": "C",
+        "text": "有无牙石"
+      },
+      {
+        "label": "D",
+        "text": "有无口臭"
+      },
+      {
+        "label": "E",
+        "text": "有无牙周袋"
+      }
+    ],
+    "answer": "B",
+    "explanation": "牙龈炎病变局限于牙龈，无附着丧失；牙周炎出现真性牙周袋与附着丧失（结合上皮根方增殖），附着丧失是两者的根本区别。教材P84。",
+    "source_page": "教材P84",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A1-002",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "牙周致病菌",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "牙周炎最主要的致病菌是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "牙龈卟啉单胞菌"
+      },
+      {
+        "label": "B",
+        "text": "变形链球菌"
+      },
+      {
+        "label": "C",
+        "text": "金黄色葡萄球菌"
+      },
+      {
+        "label": "D",
+        "text": "白色念珠菌"
+      },
+      {
+        "label": "E",
+        "text": "大肠埃希菌"
+      }
+    ],
+    "answer": "A",
+    "explanation": "牙龈卟啉单胞菌是牙周炎最主要的致病菌（红色复合体成员）；变形链球菌主要致龋。教材P83。",
+    "source_page": "教材P83",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A1-003",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "牙周病始动因子",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "牙周病的始动因子是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "牙菌斑生物膜"
+      },
+      {
+        "label": "B",
+        "text": "牙结石沉积"
+      },
+      {
+        "label": "C",
+        "text": "食物嵌塞"
+      },
+      {
+        "label": "D",
+        "text": "咬合创伤"
+      },
+      {
+        "label": "E",
+        "text": "全身性疾病"
+      }
+    ],
+    "answer": "A",
+    "explanation": "牙菌斑生物膜是牙周病的始动因子，其细菌及其产物直接引发牙龈炎症；牙石、食物嵌塞、创伤𬌗、全身因素为加重或促进因素。教材P83。",
+    "source_page": "教材P83",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A1-004",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "骨吸收类型",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "慢性牙周炎最常见的牙槽骨吸收类型是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "水平型骨吸收"
+      },
+      {
+        "label": "B",
+        "text": "垂直型骨吸收"
+      },
+      {
+        "label": "C",
+        "text": "凹坑状吸收"
+      },
+      {
+        "label": "D",
+        "text": "弧形吸收"
+      },
+      {
+        "label": "E",
+        "text": "反波浪状吸收"
+      }
+    ],
+    "answer": "A",
+    "explanation": "慢性牙周炎骨吸收以水平型最常见（牙槽嵴高度均匀降低）；垂直型（角形）吸收多见于局限型/侵袭性牙周炎。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A1-005",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "牙周炎分期",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "牙周炎分期Ⅲ期对应的邻面附着丧失标准是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "1-2mm"
+      },
+      {
+        "label": "B",
+        "text": "3-4mm"
+      },
+      {
+        "label": "C",
+        "text": "≥5mm"
+      },
+      {
+        "label": "D",
+        "text": "≥5mm 且多牙丧失"
+      },
+      {
+        "label": "E",
+        "text": "≥8mm"
+      }
+    ],
+    "answer": "C",
+    "explanation": "牙周炎分期依据严重程度：Ⅰ期 CAL 1-2mm，Ⅱ期 3-4mm，Ⅲ期 ≥5mm，Ⅳ期 ≥5mm 且因牙周炎丧失多颗牙。教材P86。",
+    "source_page": "教材P86",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A1-006",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "牙周炎分级",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于牙周炎分级的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "反映疾病进展速度"
+      },
+      {
+        "label": "B",
+        "text": "C 级进展最快"
+      },
+      {
+        "label": "C",
+        "text": "分级依据骨丧失与年龄之比等危险因素"
+      },
+      {
+        "label": "D",
+        "text": "吸烟是分级调整因素"
+      },
+      {
+        "label": "E",
+        "text": "分级由附着丧失水平直接决定"
+      }
+    ],
+    "answer": "E",
+    "explanation": "分级（A/B/C）反映进展速度与危险因素（吸烟、糖尿病、骨丧失%/年龄），分期才依据附着丧失等严重度指标；将分级等同于严重度分级是错误的。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M03-A1-007",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "ANUG 特征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "急性坏死性溃疡性龈炎的特征性表现是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "龈乳头火山口状坏死"
+      },
+      {
+        "label": "B",
+        "text": "牙龈呈菜花样增生"
+      },
+      {
+        "label": "C",
+        "text": "牙龈组织退缩"
+      },
+      {
+        "label": "D",
+        "text": "牙周脓肿反复发作"
+      },
+      {
+        "label": "E",
+        "text": "牙龈色素沉着"
+      }
+    ],
+    "answer": "A",
+    "explanation": "ANUG（急性坏死性溃疡性龈炎）以龈乳头坏死、火山口状缺损、灰白色假膜、疼痛与口臭为特征，多见于免疫力低下或精神紧张者。教材P89。",
+    "source_page": "教材P89",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A1-008",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "药物性牙龈增生",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "下列药物中一般不引起药物性牙龈增生的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "苯妥英钠"
+      },
+      {
+        "label": "B",
+        "text": "环孢素"
+      },
+      {
+        "label": "C",
+        "text": "硝苯地平"
+      },
+      {
+        "label": "D",
+        "text": "阿莫西林"
+      },
+      {
+        "label": "E",
+        "text": "维拉帕米"
+      }
+    ],
+    "answer": "D",
+    "explanation": "药物性牙龈增生常见于苯妥英钠（抗癫痫）、环孢素（免疫抑制剂）、硝苯地平等钙通道阻滞剂；阿莫西林为抗生素，不引起牙龈增生。教材P89。",
+    "source_page": "教材P89",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A1-009",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "牙周脓肿鉴别",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "鉴别牙周脓肿与根尖周脓肿最可靠的指标是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "牙髓活力"
+      },
+      {
+        "label": "B",
+        "text": "脓肿位置"
+      },
+      {
+        "label": "C",
+        "text": "疼痛程度"
+      },
+      {
+        "label": "D",
+        "text": "牙齿松动度"
+      },
+      {
+        "label": "E",
+        "text": "口臭"
+      }
+    ],
+    "answer": "A",
+    "explanation": "牙周脓肿患牙牙髓活力正常（牙周来源），根尖周脓肿患牙牙髓已坏死（牙髓活力无反应），牙髓活力测试是两者鉴别的可靠指标。教材P90。",
+    "source_page": "教材P90",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A1-010",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "妊娠期龈炎",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于妊娠期龈炎的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "与妊娠期激素水平变化有关"
+      },
+      {
+        "label": "B",
+        "text": "好发于前牙区龈乳头"
+      },
+      {
+        "label": "C",
+        "text": "产后多自行消退"
+      },
+      {
+        "label": "D",
+        "text": "常规需行牙周手术切除"
+      },
+      {
+        "label": "E",
+        "text": "以局部炎症控制为主"
+      }
+    ],
+    "answer": "D",
+    "explanation": "妊娠期龈炎与雌激素、孕激素水平升高有关，好发于前牙区龈乳头，产后多减轻，治疗以局部洁治、控制菌斑为主，一般不需牙周手术。教材P89。",
+    "source_page": "教材P89",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A2-001",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "ANUG 诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者牙龈出血、口腔异味，检查见牙龈乳头呈火山口状缺损、覆灰白色假膜，触痛明显。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性坏死性溃疡性龈炎"
+      },
+      {
+        "label": "B",
+        "text": "慢性边缘性龈炎"
+      },
+      {
+        "label": "C",
+        "text": "药物性牙龈增生"
+      },
+      {
+        "label": "D",
+        "text": "妊娠期增生性龈炎"
+      },
+      {
+        "label": "E",
+        "text": "牙龈纤维瘤病"
+      }
+    ],
+    "answer": "A",
+    "explanation": "龈乳头火山口状坏死伴假膜、疼痛、口臭为急性坏死性溃疡性龈炎的典型表现，多见于应激、熬夜或免疫功能低下者。教材P89。",
+    "source_page": "教材P89",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A2-002",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "慢性龈炎诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者刷牙出血，检查见龈缘红肿、探诊出血，探诊深度 3mm，无附着丧失。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "慢性龈炎"
+      },
+      {
+        "label": "B",
+        "text": "慢性牙周炎"
+      },
+      {
+        "label": "C",
+        "text": "急性牙周脓肿"
+      },
+      {
+        "label": "D",
+        "text": "牙龈增生"
+      },
+      {
+        "label": "E",
+        "text": "牙龈瘤"
+      }
+    ],
+    "answer": "A",
+    "explanation": "牙龈炎症、探诊出血但无附着丧失、无真性牙周袋，符合慢性龈炎诊断；出现附着丧失方可诊断牙周炎。教材P84。",
+    "source_page": "教材P84",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A2-003",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "牙周炎分期应用",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者全口多数牙松动，牙周袋深 4-6mm，邻面附着丧失 3-4mm，X 线示牙槽骨水平吸收达根中 1/3。按牙周炎分期属于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ⅰ期"
+      },
+      {
+        "label": "B",
+        "text": "Ⅱ期"
+      },
+      {
+        "label": "C",
+        "text": "Ⅲ期"
+      },
+      {
+        "label": "D",
+        "text": "Ⅳ期"
+      },
+      {
+        "label": "E",
+        "text": "无法分期"
+      }
+    ],
+    "answer": "B",
+    "explanation": "邻面附着丧失 3-4mm 符合Ⅱ期（1-2mm 为Ⅰ期、3-4mm 为Ⅱ期、≥5mm 为Ⅲ期）；骨吸收达根中 1/3 也支持中度（Ⅱ期）水平。教材P86。",
+    "source_page": "教材P86",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-A2-004",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "牙周炎与糖尿病",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "糖尿病患者血糖控制不佳，伴全口牙周炎急性加重、牙龈明显出血，其与牙周炎的关系是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "双向影响，互为危险因素"
+      },
+      {
+        "label": "B",
+        "text": "牙周炎导致糖尿病"
+      },
+      {
+        "label": "C",
+        "text": "两者无任何关联"
+      },
+      {
+        "label": "D",
+        "text": "糖尿病是牙周炎的保护因素"
+      },
+      {
+        "label": "E",
+        "text": "仅影响牙槽骨形态"
+      }
+    ],
+    "answer": "A",
+    "explanation": "牙周炎与糖尿病互为危险因素、双向影响：糖尿病增加牙周炎发生与进展风险，有效牙周治疗也有助于血糖控制。教材P91。",
+    "source_page": "教材P91",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-X-001",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "牙周炎临床特征",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "牙周炎的临床特征包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "牙周袋形成"
+      },
+      {
+        "label": "B",
+        "text": "附着丧失"
+      },
+      {
+        "label": "C",
+        "text": "牙槽骨吸收"
+      },
+      {
+        "label": "D",
+        "text": "牙齿松动"
+      },
+      {
+        "label": "E",
+        "text": "牙冠变色"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "牙周炎四大临床特征为牙周袋形成、附着丧失、牙槽骨吸收与牙齿松动（晚期可移位脱落）；牙冠变色提示牙髓坏死，与牙周炎无关。教材P84。",
+    "source_page": "教材P84",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-X-002",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "牙周炎危险因素",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "牙周炎的危险因素包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "吸烟"
+      },
+      {
+        "label": "B",
+        "text": "糖尿病"
+      },
+      {
+        "label": "C",
+        "text": "精神压力"
+      },
+      {
+        "label": "D",
+        "text": "遗传易感性"
+      },
+      {
+        "label": "E",
+        "text": "龋病"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "吸烟、糖尿病、精神压力与遗传易感性均为牙周炎公认危险因素；龋病由致龋菌引起，不属于牙周炎危险因素。教材P83。",
+    "source_page": "教材P83",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-B1-001",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "骨吸收形式",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "慢性牙周炎最常见的牙槽骨吸收形式是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "水平型骨吸收"
+      },
+      {
+        "label": "B",
+        "text": "垂直型骨吸收"
+      },
+      {
+        "label": "C",
+        "text": "牙龈增生"
+      },
+      {
+        "label": "D",
+        "text": "附着丧失"
+      },
+      {
+        "label": "E",
+        "text": "牙周脓肿"
+      }
+    ],
+    "answer": "A",
+    "explanation": "慢性牙周炎以水平型骨吸收（全口牙槽嵴均匀降低）最常见，垂直型骨吸收多见于局限型病变。教材P87。",
+    "source_page": "教材P87",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M03-B1-002",
+    "module": "M03",
+    "module_name": "牙周疾病",
+    "topic": "附着丧失",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "反映牙周炎组织破坏程度的标志是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "水平型骨吸收"
+      },
+      {
+        "label": "B",
+        "text": "垂直型骨吸收"
+      },
+      {
+        "label": "C",
+        "text": "牙龈增生"
+      },
+      {
+        "label": "D",
+        "text": "附着丧失"
+      },
+      {
+        "label": "E",
+        "text": "牙周脓肿"
+      }
+    ],
+    "answer": "D",
+    "explanation": "附着丧失（临床附着水平 CAL）是牙周炎组织破坏程度的核心标志，用于分期与疗效评估；牙周袋深度受牙龈肿胀影响，不能单独代表破坏程度。教材P84。",
+    "source_page": "教材P84",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A1-001",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "RAU 特点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "阿弗他溃疡最主要的临床特点是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "复发性、周期性、自限性"
+      },
+      {
+        "label": "B",
+        "text": "进行性加重且不愈合"
+      },
+      {
+        "label": "C",
+        "text": "癌变率较高需警惕"
+      },
+      {
+        "label": "D",
+        "text": "具有一定传染性"
+      },
+      {
+        "label": "E",
+        "text": "单次发作不再出现"
+      }
+    ],
+    "answer": "A",
+    "explanation": "RAU 具有复发性、周期性、自限性三大特点，溃疡约 1-2 周自行愈合；进行性不愈合的溃疡提示癌性溃疡可能。教材P92。",
+    "source_page": "教材P92",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A1-002",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "RAU 分型",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "复发性阿弗他溃疡最常见的临床类型是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻型"
+      },
+      {
+        "label": "B",
+        "text": "重型（腺周口疮）"
+      },
+      {
+        "label": "C",
+        "text": "疱疹样型"
+      },
+      {
+        "label": "D",
+        "text": "白塞综合征型"
+      },
+      {
+        "label": "E",
+        "text": "创伤型"
+      }
+    ],
+    "answer": "A",
+    "explanation": "轻型阿弗他溃疡最常见（约占 75%-80%），溃疡小而浅（<10mm）、数量少；重型大而深、疱疹样型小而多。教材P93。",
+    "source_page": "教材P93",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A1-003",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "原发性单纯疱疹",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "原发性单纯疱疹病毒感染在口腔的表现是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性疱疹性龈口炎"
+      },
+      {
+        "label": "B",
+        "text": "复发性唇疱疹"
+      },
+      {
+        "label": "C",
+        "text": "带状疱疹"
+      },
+      {
+        "label": "D",
+        "text": "手足口病"
+      },
+      {
+        "label": "E",
+        "text": "鹅口疮（雪口病）"
+      }
+    ],
+    "answer": "A",
+    "explanation": "初次感染 HSV-1 多发生于婴幼儿，表现为急性疱疹性龈口炎（发热、口腔成簇小疱、龈炎）；再次激活表现为复发性唇疱疹。教材P95。",
+    "source_page": "教材P95",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A1-004",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "雪口病",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "口腔念珠菌病假膜型俗称？",
+    "options": [
+      {
+        "label": "A",
+        "text": "雪口病"
+      },
+      {
+        "label": "B",
+        "text": "口角炎"
+      },
+      {
+        "label": "C",
+        "text": "疱疹性口炎"
+      },
+      {
+        "label": "D",
+        "text": "天疱疮"
+      },
+      {
+        "label": "E",
+        "text": "白斑"
+      }
+    ],
+    "answer": "A",
+    "explanation": "假膜型念珠菌病（雪口病）多见于婴幼儿，黏膜覆白色凝乳状假膜，可擦去露出潮红糜烂面；假膜由菌丝、孢子与脱落上皮组成。教材P97。",
+    "source_page": "教材P97",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A1-005",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "念珠菌病分型",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "长期使用广谱抗生素最常诱发的口腔念珠菌病类型是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性红斑（萎缩）型"
+      },
+      {
+        "label": "B",
+        "text": "假膜型（雪口）"
+      },
+      {
+        "label": "C",
+        "text": "慢性红斑型"
+      },
+      {
+        "label": "D",
+        "text": "慢性增殖型"
+      },
+      {
+        "label": "E",
+        "text": "结节型病变"
+      }
+    ],
+    "answer": "A",
+    "explanation": "长期广谱抗生素致菌群失调，最常诱发急性红斑型念珠菌病（抗生素性口炎），黏膜充血发红、灼痛；义齿性口炎为慢性红斑型。教材P97。",
+    "source_page": "教材P97",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A1-006",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "天疱疮体征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "天疱疮最具诊断价值的体征是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "尼氏征阳性（棘层松解）"
+      },
+      {
+        "label": "B",
+        "text": "黏膜白色网状条纹"
+      },
+      {
+        "label": "C",
+        "text": "针刺反应阳性"
+      },
+      {
+        "label": "D",
+        "text": "皮损对称分布"
+      },
+      {
+        "label": "E",
+        "text": "靶形红斑损害"
+      }
+    ],
+    "answer": "A",
+    "explanation": "天疱疮为自身免疫性棘层松解性疾病，尼氏征（Nikolsky 征）阳性、揭皮试验阳性为其特征性体征，是重要诊断依据。教材P100。",
+    "source_page": "教材P100",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A1-007",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "扁平苔藓特征",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于口腔扁平苔藓的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "好发于中年女性"
+      },
+      {
+        "label": "B",
+        "text": "典型损害为白色网状条纹"
+      },
+      {
+        "label": "C",
+        "text": "可发生糜烂"
+      },
+      {
+        "label": "D",
+        "text": "属于癌前状态"
+      },
+      {
+        "label": "E",
+        "text": "尼氏征阳性"
+      }
+    ],
+    "answer": "E",
+    "explanation": "口腔扁平苔藓典型损害为白色网状（威克姆纹）或丘疹样条纹，尼氏征阴性；尼氏征阳性是天疱疮的特征。教材P98。",
+    "source_page": "教材P98",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M04-A1-008",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "白斑病特点",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于口腔白斑病，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "属于癌前病损"
+      },
+      {
+        "label": "B",
+        "text": "白色斑块不能被擦去"
+      },
+      {
+        "label": "C",
+        "text": "分均质型与非均质型"
+      },
+      {
+        "label": "D",
+        "text": "颗粒型恶变倾向较高"
+      },
+      {
+        "label": "E",
+        "text": "均质型恶变率高于颗粒型"
+      }
+    ],
+    "answer": "E",
+    "explanation": "白斑为癌前病损，白色斑块不能被擦去；非均质型（颗粒状、疣状、溃疡型）恶变倾向高于均质型，因此「均质型恶变率高于颗粒型」是错误的。教材P104。",
+    "source_page": "教材P104",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M04-A1-009",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "癌前病损概念",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "口腔黏膜癌前病损是指？",
+    "options": [
+      {
+        "label": "A",
+        "text": "白斑与红斑"
+      },
+      {
+        "label": "B",
+        "text": "口腔扁平苔藓"
+      },
+      {
+        "label": "C",
+        "text": "口腔黏膜下纤维性变"
+      },
+      {
+        "label": "D",
+        "text": "盘状红斑狼疮"
+      },
+      {
+        "label": "E",
+        "text": "慢性唇炎"
+      }
+    ],
+    "answer": "A",
+    "explanation": "癌前病损指形态上即为癌前病变者：白斑与红斑；扁平苔藓、黏膜下纤维性变等属癌前状态（背景性风险）。教材P103。",
+    "source_page": "教材P103",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A2-001",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "轻型 RAU 诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者口腔溃疡反复发作，每次 1-2 周自愈，检查见左颊黏膜一枚圆形浅溃疡，直径约 3mm，中央凹陷，表面黄白色假膜，周围红晕。诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻型复发性阿弗他溃疡"
+      },
+      {
+        "label": "B",
+        "text": "重型阿弗他溃疡"
+      },
+      {
+        "label": "C",
+        "text": "白塞病口腔溃疡"
+      },
+      {
+        "label": "D",
+        "text": "疱疹样阿弗他溃疡"
+      },
+      {
+        "label": "E",
+        "text": "创伤性溃疡病损"
+      }
+    ],
+    "answer": "A",
+    "explanation": "反复发作、自愈、小而浅、红黄凹痛的圆形溃疡，符合轻型 RAU；重型直径>10mm 且留瘢痕，疱疹样型数目多。教材P93。",
+    "source_page": "教材P93",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A2-002",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "唇疱疹诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者唇部成簇小水疱，破溃结痂，反复在同一部位发作，发作前有灼热感。诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "复发性唇疱疹"
+      },
+      {
+        "label": "B",
+        "text": "带状疱疹"
+      },
+      {
+        "label": "C",
+        "text": "手足口病"
+      },
+      {
+        "label": "D",
+        "text": "天疱疮"
+      },
+      {
+        "label": "E",
+        "text": "多形红斑"
+      }
+    ],
+    "answer": "A",
+    "explanation": "唇部成簇小疱、破溃结痂、反复同部位发作、前驱灼热感，为复发性唇疱疹（HSV 再激活）的典型表现；带状疱疹沿神经分布且剧痛。教材P96。",
+    "source_page": "教材P96",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A2-003",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "带状疱疹治疗",
+    "type": "A2",
+    "polarity": "negative",
+    "bloom": "应用",
+    "stem": "患者右面部沿三叉神经第Ⅱ支分布区出现成簇水疱伴剧烈神经痛，诊断为带状疱疹。下列处理<b>不当</b>的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "早期足量抗病毒（阿昔洛韦等）"
+      },
+      {
+        "label": "B",
+        "text": "联合止痛治疗"
+      },
+      {
+        "label": "C",
+        "text": "预防继发感染"
+      },
+      {
+        "label": "D",
+        "text": "急性期局部外用糖皮质激素"
+      },
+      {
+        "label": "E",
+        "text": "老年患者注意预防带状疱疹后神经痛"
+      }
+    ],
+    "answer": "D",
+    "explanation": "带状疱疹应早期足量抗病毒、止痛、防继发感染，老年患者防带状疱疹后神经痛；急性期局部不宜外用糖皮质激素（可能抑制局部免疫、延缓愈合）。教材P96。",
+    "source_page": "教材P96",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A2-004",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "义齿性口炎",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "老年患者戴活动义齿多年，腭部黏膜充血发红、点状白色斑点，基托下黏膜发红。诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "慢性红斑型念珠菌病"
+      },
+      {
+        "label": "B",
+        "text": "雪口病（假膜型）"
+      },
+      {
+        "label": "C",
+        "text": "口腔白斑病"
+      },
+      {
+        "label": "D",
+        "text": "口腔扁平苔藓"
+      },
+      {
+        "label": "E",
+        "text": "口腔黏膜红斑"
+      }
+    ],
+    "answer": "A",
+    "explanation": "义齿性口炎（慢性红斑型念珠菌病）表现为基托覆盖区黏膜充血发红，与义齿佩戴、菌斑堆积有关；雪口病多见于婴幼儿，白斑不能被擦去。教材P98。",
+    "source_page": "教材P98",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-X-001",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "RAU 病因",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "复发性阿弗他溃疡的病因与诱因包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "免疫功能异常"
+      },
+      {
+        "label": "B",
+        "text": "遗传倾向"
+      },
+      {
+        "label": "C",
+        "text": "局部创伤"
+      },
+      {
+        "label": "D",
+        "text": "精神紧张与压力"
+      },
+      {
+        "label": "E",
+        "text": "龋病"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "RAU 病因复杂，涉及免疫（细胞免疫为主）、遗传、感染、环境（局部创伤、精神压力）与系统疾病、营养缺乏等多因素；龋病不是 RAU 的病因。教材P92。",
+    "source_page": "教材P92",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-X-002",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "念珠菌病分型",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "口腔念珠菌病的临床分型包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "假膜型"
+      },
+      {
+        "label": "B",
+        "text": "急性红斑型"
+      },
+      {
+        "label": "C",
+        "text": "慢性红斑型"
+      },
+      {
+        "label": "D",
+        "text": "慢性增殖型"
+      },
+      {
+        "label": "E",
+        "text": "结节型"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "口腔念珠菌病分假膜型（雪口）、急性红斑型（萎缩型）、慢性红斑型（义齿性口炎）与慢性增殖型（白斑样）四型。教材P97。",
+    "source_page": "教材P97",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-B1-001",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "重型 RAU 识别",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "溃疡大而深，直径常大于 10mm，愈合缓慢且留瘢痕的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻型阿弗他溃疡"
+      },
+      {
+        "label": "B",
+        "text": "重型阿弗他溃疡"
+      },
+      {
+        "label": "C",
+        "text": "疱疹样阿弗他溃疡"
+      },
+      {
+        "label": "D",
+        "text": "创伤性溃疡"
+      },
+      {
+        "label": "E",
+        "text": "癌性溃疡"
+      }
+    ],
+    "answer": "B",
+    "explanation": "重型阿弗他溃疡（腺周口疮）大而深、愈合慢、留瘢痕；轻型小而浅不留瘢痕，疱疹样型小而多。教材P93。",
+    "source_page": "教材P93",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-B1-002",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "疱疹样溃疡识别",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "溃疡小而多，数十个针尖样密集分布的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻型阿弗他溃疡"
+      },
+      {
+        "label": "B",
+        "text": "重型阿弗他溃疡"
+      },
+      {
+        "label": "C",
+        "text": "疱疹样阿弗他溃疡"
+      },
+      {
+        "label": "D",
+        "text": "创伤性溃疡"
+      },
+      {
+        "label": "E",
+        "text": "癌性溃疡"
+      }
+    ],
+    "answer": "C",
+    "explanation": "疱疹样阿弗他溃疡溃疡小而多（针尖至米粒大小、数十个），多位于舌背与口底，疼痛明显。教材P93。",
+    "source_page": "教材P93",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M04-A1-010",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "白塞针刺反应",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "贝赫切特病的特异性临床表现是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "颊部蝶形红斑"
+      },
+      {
+        "label": "B",
+        "text": "腮腺肿大"
+      },
+      {
+        "label": "C",
+        "text": "针刺反应"
+      },
+      {
+        "label": "D",
+        "text": "腹部血管杂音"
+      },
+      {
+        "label": "E",
+        "text": "晨僵"
+      }
+    ],
+    "answer": "C",
+    "explanation": "贝赫切特病的特异性临床表现是针刺反应阳性：消毒后用无菌针头刺入前臂屈面皮内，48 小时后局部出现红丘疹或伴白疱疹即为阳性；颊部蝶形红斑为系统性红斑狼疮特征，腮腺肿大见于干燥综合征，腹部血管杂音为大动脉炎表现。[源:考研真题 GS-2021-055] 教材P93。",
+    "source_page": "教材P93",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2021-055",
+      "year": 2021,
+      "source": "2021 西医综合 A型题",
+      "mode": "改编",
+      "note": "原题4选项（A-D 顺序保留），新增第5干扰选项；答案与知识点未变。"
+    }
+  },
+  {
+    "id": "batch037-M04-A2-005",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "白塞诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者中年女性，反复口腔溃疡 3 年，近半年出现左膝关节炎与眼炎，查体见口腔黏膜散在溃疡。该患者最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "系统性红斑狼疮"
+      },
+      {
+        "label": "B",
+        "text": "风湿热关节炎"
+      },
+      {
+        "label": "C",
+        "text": "类风湿关节炎"
+      },
+      {
+        "label": "D",
+        "text": "贝赫切特病"
+      },
+      {
+        "label": "E",
+        "text": "干燥综合征"
+      }
+    ],
+    "answer": "D",
+    "explanation": "反复口腔溃疡、外阴溃疡、皮肤病变、眼炎为贝赫切特病基本症状，可伴关节炎等多系统受累，故应诊断贝赫切特病；狼疮多有自身抗体阳性而口腔溃疡少见，类风湿关节炎以对称性小关节受累为主。[源:考研真题 GS-2019-091] 教材P93。",
+    "source_page": "教材P93",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2019-091",
+      "year": 2019,
+      "source": "2019 西医综合 A型题",
+      "mode": "改编",
+      "note": "真题题干文本不完整，按官方解析要点复原病例情境（反复口腔溃疡、膝关节炎、眼炎）；新增第5干扰选项；答案与知识点未变。"
+    }
+  },
+  {
+    "id": "batch037-M04-X-003",
+    "module": "M04",
+    "module_name": "口腔黏膜常见疾病",
+    "topic": "癌前病变",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "下列属于癌前病变的有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "黏膜白斑"
+      },
+      {
+        "label": "B",
+        "text": "慢性非萎缩性胃炎"
+      },
+      {
+        "label": "C",
+        "text": "慢性溃疡性结肠炎"
+      },
+      {
+        "label": "D",
+        "text": "大肠绒毛状腺瘤"
+      }
+    ],
+    "answer": "ACD",
+    "explanation": "癌前病变指具有发展为恶性肿瘤潜能的病变：黏膜白斑为鳞状细胞癌（口腔癌）的癌前病变，慢性溃疡性结肠炎与大肠绒毛状腺瘤为大肠癌的癌前病变；慢性萎缩性胃炎伴肠上皮化生才是胃癌癌前病变，慢性非萎缩性胃炎不属于。[源:考研真题 GS-2021-150] 教材P103。",
+    "source_page": "教材P103",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": true,
+      "D": true
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2021-150",
+      "year": 2021,
+      "source": "2021 西医综合 X型题",
+      "mode": "原题",
+      "note": "原题引用，4选项符合 X 型（≥4）要求，未改动。"
+    }
+  },
+  {
+    "id": "batch037-M05-A1-001",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "修复体种类选择",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "牙体缺损严重、需保护剩余牙体并获得良好固位时，最常用的修复方式是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "嵌体"
+      },
+      {
+        "label": "B",
+        "text": "贴面"
+      },
+      {
+        "label": "C",
+        "text": "桩核冠"
+      },
+      {
+        "label": "D",
+        "text": "全冠"
+      },
+      {
+        "label": "E",
+        "text": "高嵌体"
+      }
+    ],
+    "answer": "D",
+    "explanation": "全冠（金属、金属烤瓷或全瓷冠）覆盖牙冠全部，固位力强、可保护剩余牙体，是牙体缺损严重时的常用修复体；嵌体、贴面用于缺损较小者。教材P107。",
+    "source_page": "教材P107",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-A1-002",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "固定桥组成",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "记忆",
+    "stem": "下列<b>不属于</b>固定桥组成部分的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "固位体"
+      },
+      {
+        "label": "B",
+        "text": "桥体"
+      },
+      {
+        "label": "C",
+        "text": "连接体"
+      },
+      {
+        "label": "D",
+        "text": "基牙"
+      },
+      {
+        "label": "E",
+        "text": "卡环"
+      }
+    ],
+    "answer": "E",
+    "explanation": "固定桥由固位体、桥体、连接体三部分组成，基牙是支持基础而非组件；卡环是可摘局部义齿的固位体。教材P110。",
+    "source_page": "教材P110",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M05-A1-003",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "PFM 特点",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于烤瓷熔附金属全冠（PFM），<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "兼具美观与强度"
+      },
+      {
+        "label": "B",
+        "text": "存在崩瓷风险"
+      },
+      {
+        "label": "C",
+        "text": "需磨除部分牙体组织"
+      },
+      {
+        "label": "D",
+        "text": "金属基底提供强度"
+      },
+      {
+        "label": "E",
+        "text": "无需进行牙体预备"
+      }
+    ],
+    "answer": "E",
+    "explanation": "PFM 修复必须先进行牙体预备（磨除一定厚度牙体以容纳金属基底与瓷层），「无需牙体预备」是错误的；其余特点均正确。教材P110。",
+    "source_page": "教材P110",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M05-A1-004",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "全口义齿固位",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "全口义齿赖以固位的最重要因素是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "大气压力与吸附力"
+      },
+      {
+        "label": "B",
+        "text": "卡环固位力"
+      },
+      {
+        "label": "C",
+        "text": "种植体固位"
+      },
+      {
+        "label": "D",
+        "text": "粘接剂粘接"
+      },
+      {
+        "label": "E",
+        "text": "摩擦固位"
+      }
+    ],
+    "answer": "A",
+    "explanation": "全口义齿主要依靠基托与黏膜间的吸附力及边缘封闭产生的大气压力固位，无天然牙可提供卡环等固位。教材P116。",
+    "source_page": "教材P116",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-A1-005",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "骨结合",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "口腔种植体与颌骨组织的结合方式是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "骨结合（骨性结合）"
+      },
+      {
+        "label": "B",
+        "text": "纤维结缔组织结合"
+      },
+      {
+        "label": "C",
+        "text": "化学性粘接"
+      },
+      {
+        "label": "D",
+        "text": "机械性嵌合"
+      },
+      {
+        "label": "E",
+        "text": "软组织包绕"
+      }
+    ],
+    "answer": "A",
+    "explanation": "种植体通过骨结合（osseointegration）与牙槽骨直接紧密结合，纤维性结合（临床结合失败）应避免。教材P126。",
+    "source_page": "教材P126",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-A1-006",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "种植禁忌证",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "下列情况中不适合进行口腔种植的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "未控制的糖尿病"
+      },
+      {
+        "label": "B",
+        "text": "单牙缺失"
+      },
+      {
+        "label": "C",
+        "text": "多牙缺失"
+      },
+      {
+        "label": "D",
+        "text": "全口缺失"
+      },
+      {
+        "label": "E",
+        "text": "骨量充足"
+      }
+    ],
+    "answer": "A",
+    "explanation": "全身健康状况差者（未控制糖尿病、严重心血管病、凝血障碍等）为种植禁忌；单牙、多牙、全口缺失均为种植适应证。教材P126。",
+    "source_page": "教材P126",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-A1-007",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "桩核冠条件",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "桩核冠修复的前提条件是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "已完成完善的根管治疗"
+      },
+      {
+        "label": "B",
+        "text": "牙髓活力正常"
+      },
+      {
+        "label": "C",
+        "text": "无需根管治疗"
+      },
+      {
+        "label": "D",
+        "text": "牙冠完整无缺损"
+      },
+      {
+        "label": "E",
+        "text": "无明显叩痛即可"
+      }
+    ],
+    "answer": "A",
+    "explanation": "桩核冠修复要求患牙先完成完善根管治疗，桩置入根管内提供固位，再行全冠修复；牙髓活力正常者无需桩核冠。教材P112。",
+    "source_page": "教材P112",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-A1-008",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "可摘义齿组成",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "可摘局部义齿的固位体是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "卡环"
+      },
+      {
+        "label": "B",
+        "text": "基托"
+      },
+      {
+        "label": "C",
+        "text": "人工牙"
+      },
+      {
+        "label": "D",
+        "text": "连接体"
+      },
+      {
+        "label": "E",
+        "text": "支托"
+      }
+    ],
+    "answer": "A",
+    "explanation": "卡环是可摘局部义齿的固位体，环抱基牙提供固位；基托承托人工牙并传导力，支托传递𬌗力，连接体连接各部件。教材P112。",
+    "source_page": "教材P112",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-A2-001",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "前牙缺损修复选择",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者上前牙切角缺损约 1/3，美观要求高，拟行修复。首选的修复方式是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "金属全冠"
+      },
+      {
+        "label": "B",
+        "text": "瓷贴面"
+      },
+      {
+        "label": "C",
+        "text": "嵌体"
+      },
+      {
+        "label": "D",
+        "text": "桩核冠"
+      },
+      {
+        "label": "E",
+        "text": "高嵌体"
+      }
+    ],
+    "answer": "B",
+    "explanation": "前牙切角缺损、美观要求高者，瓷贴面（或树脂贴面）为微创且美观的首选；缺损过大或涉及咬合面才考虑全冠，桩核冠用于牙髓已治疗的大面积缺损。教材P107。",
+    "source_page": "教材P107",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-A2-002",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "单牙缺失修复方案",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者缺失一颗下颌第一磨牙，两侧邻牙健康、骨量充足，最符合不损伤邻牙原则的方案是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "可摘局部义齿"
+      },
+      {
+        "label": "B",
+        "text": "种植修复"
+      },
+      {
+        "label": "C",
+        "text": "传统固定桥"
+      },
+      {
+        "label": "D",
+        "text": "全口义齿"
+      },
+      {
+        "label": "E",
+        "text": "嵌体修复"
+      }
+    ],
+    "answer": "B",
+    "explanation": "种植修复不磨切邻牙、不依赖邻牙支持，是单牙缺失时保护邻牙的最佳方案；传统固定桥需磨切邻牙作为基牙。教材P126。",
+    "source_page": "教材P126",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-A2-003",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "全口义齿固位增强",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者下颌牙列缺失、牙槽嵴低平，全口义齿固位差，为增强固位可采取的措施是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "种植支持式覆盖义齿"
+      },
+      {
+        "label": "B",
+        "text": "增大基托范围并加强边缘封闭"
+      },
+      {
+        "label": "C",
+        "text": "增加卡环数量"
+      },
+      {
+        "label": "D",
+        "text": "使用粘接剂"
+      },
+      {
+        "label": "E",
+        "text": "缩短基托边缘"
+      }
+    ],
+    "answer": "A",
+    "explanation": "牙槽嵴低平致义齿固位差时，种植支持式覆盖义齿或种植全口义齿是最有效的固位增强手段；增大基托、加强边缘封闭可改善但有限。教材P116。",
+    "source_page": "教材P116",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-A2-004",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "根管治疗后修复",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者上颌第一磨牙大面积缺损无法充填，牙髓已坏死并完成根管治疗，最佳治疗方案是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "桩核冠后全冠修复"
+      },
+      {
+        "label": "B",
+        "text": "瓷贴面修复"
+      },
+      {
+        "label": "C",
+        "text": "高嵌体修复"
+      },
+      {
+        "label": "D",
+        "text": "树脂直接充填"
+      },
+      {
+        "label": "E",
+        "text": "3/4 冠修复"
+      }
+    ],
+    "answer": "A",
+    "explanation": "后牙大面积缺损且已行根管治疗后，牙体抗力差，应行桩核冠（桩增强固位）加全冠保护，避免牙体折裂。教材P112。",
+    "source_page": "教材P112",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-X-001",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "固定桥组成",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "固定桥的组成部分包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "固位体"
+      },
+      {
+        "label": "B",
+        "text": "桥体"
+      },
+      {
+        "label": "C",
+        "text": "连接体"
+      },
+      {
+        "label": "D",
+        "text": "基托"
+      },
+      {
+        "label": "E",
+        "text": "卡环"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "固定桥由固位体（固定于基牙上）、桥体（恢复缺失牙）与连接体三部分组成；基托、卡环为可摘局部义齿部件。教材P110。",
+    "source_page": "教材P110",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M05-X-002",
+    "module": "M05",
+    "module_name": "牙体缺损、牙列缺损/缺失的修复与口腔种植",
+    "topic": "种植禁忌证",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "分析",
+    "stem": "下列属于口腔种植相对或绝对禁忌证的有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "未控制的糖尿病"
+      },
+      {
+        "label": "B",
+        "text": "急性心肌梗死发作期"
+      },
+      {
+        "label": "C",
+        "text": "严重血液系统疾病"
+      },
+      {
+        "label": "D",
+        "text": "单牙缺失"
+      },
+      {
+        "label": "E",
+        "text": "牙龈炎"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "未控制的糖尿病、急性心肌梗死期、严重凝血障碍性疾病为种植禁忌；单牙缺失是适应证，牙龈炎为可控局部因素而非禁忌。教材P126。",
+    "source_page": "教材P126",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-001",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "局麻药选择",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "目前口腔局部麻醉最常用的酰胺类局麻药是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "利多卡因"
+      },
+      {
+        "label": "B",
+        "text": "普鲁卡因"
+      },
+      {
+        "label": "C",
+        "text": "丁卡因"
+      },
+      {
+        "label": "D",
+        "text": "可卡因"
+      },
+      {
+        "label": "E",
+        "text": "氯仿"
+      }
+    ],
+    "answer": "A",
+    "explanation": "利多卡因为酰胺类局麻药，作用快、穿透力强、安全范围大，是口腔局麻最常用药物；普鲁卡因为酯类，过敏反应较多。教材P55。",
+    "source_page": "教材P55",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-002",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "普鲁卡因分类",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "普鲁卡因属于哪一类局麻药？",
+    "options": [
+      {
+        "label": "A",
+        "text": "酯类局麻药"
+      },
+      {
+        "label": "B",
+        "text": "酰胺类局麻药"
+      },
+      {
+        "label": "C",
+        "text": "吸入麻醉药"
+      },
+      {
+        "label": "D",
+        "text": "静脉麻醉药"
+      },
+      {
+        "label": "E",
+        "text": "阿片类镇痛药"
+      }
+    ],
+    "answer": "A",
+    "explanation": "普鲁卡因属酯类局麻药，在体内被酯酶水解，过敏反应较酰胺类多见，现多用于过敏试验阴性的患者。教材P55。",
+    "source_page": "教材P55",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-003",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "肾上腺素配伍",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "局麻药中加入肾上腺素的主要目的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "收缩血管并延缓吸收"
+      },
+      {
+        "label": "B",
+        "text": "增强神经阻滞深度"
+      },
+      {
+        "label": "C",
+        "text": "预防过敏反应"
+      },
+      {
+        "label": "D",
+        "text": "对抗局麻药中毒"
+      },
+      {
+        "label": "E",
+        "text": "镇静催眠作用"
+      }
+    ],
+    "answer": "A",
+    "explanation": "肾上腺素使注射区血管收缩，延缓局麻药吸收、延长麻醉时间、减少术区出血并降低全身毒性；甲亢、高血压等患者禁用。教材P56。",
+    "source_page": "教材P56",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-004",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "肾上腺素禁忌",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "下列患者中，局麻药<b>不宜</b>加入肾上腺素的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "未控制的甲亢患者"
+      },
+      {
+        "label": "B",
+        "text": "健康青年男性"
+      },
+      {
+        "label": "C",
+        "text": "牙髓炎患者"
+      },
+      {
+        "label": "D",
+        "text": "慢性牙龈炎患者"
+      },
+      {
+        "label": "E",
+        "text": "无全身疾病者"
+      }
+    ],
+    "answer": "A",
+    "explanation": "未控制的甲亢、高血压、严重心脏病患者禁用含肾上腺素局麻药，以免诱发心血管事件；健康者常规使用安全。教材P56。",
+    "source_page": "教材P56",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-005",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "下牙槽神经阻滞",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "下牙槽神经阻滞麻醉的进针点位于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "翼下颌皱襞外侧、𬌗平面上方"
+      },
+      {
+        "label": "B",
+        "text": "翼下颌皱襞内侧"
+      },
+      {
+        "label": "C",
+        "text": "腭中缝黏膜部位"
+      },
+      {
+        "label": "D",
+        "text": "舌下肉阜旁黏膜"
+      },
+      {
+        "label": "E",
+        "text": "颊侧前庭沟黏膜"
+      }
+    ],
+    "answer": "A",
+    "explanation": "下牙槽神经阻滞麻醉进针点位于翼下颌皱襞中点外侧、𬌗平面上方约 1cm，向后外上方推进至下颌孔上方注射。教材P58。",
+    "source_page": "教材P58",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-006",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "阻滞麻醉范围",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "下牙槽神经阻滞麻醉的麻醉范围是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "同侧下颌牙及下唇黏膜"
+      },
+      {
+        "label": "B",
+        "text": "同侧上颌牙齿"
+      },
+      {
+        "label": "C",
+        "text": "同侧整个颊部皮肤"
+      },
+      {
+        "label": "D",
+        "text": "对侧下颌牙齿"
+      },
+      {
+        "label": "E",
+        "text": "舌体后部黏膜"
+      }
+    ],
+    "answer": "A",
+    "explanation": "下牙槽神经阻滞麻醉范围包括同侧下颌牙、牙周膜、牙槽骨、下唇及颏部黏膜（颊侧牙龈尚需颊长神经补充）；不含上颌牙与对侧。教材P58。",
+    "source_page": "教材P58",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-007",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "分离牙龈目的",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "拔牙术中先行分离牙龈的目的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "防止牙钳损伤牙周组织"
+      },
+      {
+        "label": "B",
+        "text": "局部麻醉作用"
+      },
+      {
+        "label": "C",
+        "text": "压迫创口止血"
+      },
+      {
+        "label": "D",
+        "text": "减少牙槽骨损伤"
+      },
+      {
+        "label": "E",
+        "text": "预防术后干槽症"
+      }
+    ],
+    "answer": "A",
+    "explanation": "分离牙龈使牙钳（牙挺）直接作用于牙体而不损伤牙龈，避免拔牙时牙龈撕裂与出血。教材P169。",
+    "source_page": "教材P169",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-008",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "拔牙后止血",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "拔牙后创口出血时，下列处理<b>不当</b>的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "咬无菌棉球压迫 30-40 分钟"
+      },
+      {
+        "label": "B",
+        "text": "术后 24 小时内局部冷敷"
+      },
+      {
+        "label": "C",
+        "text": "持续出血需及时复诊处理"
+      },
+      {
+        "label": "D",
+        "text": "用力漱口清除口内血块"
+      },
+      {
+        "label": "E",
+        "text": "避免吸吮创口"
+      }
+    ],
+    "answer": "D",
+    "explanation": "拔牙后应咬棉球压迫 30-40 分钟止血、24 小时内冷敷、避免吸吮；用力漱口会破坏血凝块、诱发或加重出血，属不当处理。教材P174。",
+    "source_page": "教材P174",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-009",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "干槽症时间",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "干槽症一般在拔牙后多长时间出现？",
+    "options": [
+      {
+        "label": "A",
+        "text": "2-3 天"
+      },
+      {
+        "label": "B",
+        "text": "数小时"
+      },
+      {
+        "label": "C",
+        "text": "1 周后"
+      },
+      {
+        "label": "D",
+        "text": "2 周后"
+      },
+      {
+        "label": "E",
+        "text": "1 个月后"
+      }
+    ],
+    "answer": "A",
+    "explanation": "干槽症多在拔牙后 2-3 天出现，以剧烈疼痛为特征；早期（数小时）疼痛多为麻醉消退后反应，1 周后多为其他感染。教材P176。",
+    "source_page": "教材P176",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-010",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "干槽症特征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "干槽症最重要的临床特征是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "拔牙后2-3天放射性剧痛"
+      },
+      {
+        "label": "B",
+        "text": "创口持续渗血"
+      },
+      {
+        "label": "C",
+        "text": "面部明显肿胀"
+      },
+      {
+        "label": "D",
+        "text": "张口受限明显"
+      },
+      {
+        "label": "E",
+        "text": "全身发热明显"
+      }
+    ],
+    "answer": "A",
+    "explanation": "干槽症以拔牙后 2-3 天出现、放射性剧痛为特征，牙槽窝空虚、无血凝块、有腐败坏死物及恶臭；出血、肿胀、发热非其核心表现。教材P176。",
+    "source_page": "教材P176",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A2-001",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "高血压拔牙",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者左下第三磨牙阻生拟拔除，术前血压 160/100mmHg，平时服药控制尚可。正确的处理是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "严密监测下拔牙"
+      },
+      {
+        "label": "B",
+        "text": "暂缓拔牙 1 个月"
+      },
+      {
+        "label": "C",
+        "text": "先住院降压再拔牙"
+      },
+      {
+        "label": "D",
+        "text": "只拔除部分牙冠"
+      },
+      {
+        "label": "E",
+        "text": "全麻下拔牙"
+      }
+    ],
+    "answer": "A",
+    "explanation": "血压 160/100mmHg 未达 180/110mmHg 的绝对禁忌阈值，可在监测血压、镇静条件下拔牙；血压≥180/110mmHg 或未控制者应暂缓。教材P169。",
+    "source_page": "教材P169",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A2-002",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "糖尿病拔牙",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者糖尿病史 10 年，空腹血糖 8.5mmol/L，拟拔除残根。正确的处理是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "血糖控制尚可，可拔牙"
+      },
+      {
+        "label": "B",
+        "text": "暂缓拔牙直至血糖正常"
+      },
+      {
+        "label": "C",
+        "text": "住院治疗后拔牙"
+      },
+      {
+        "label": "D",
+        "text": "全麻状态下拔牙"
+      },
+      {
+        "label": "E",
+        "text": "禁食 8 小时再拔牙"
+      }
+    ],
+    "answer": "A",
+    "explanation": "空腹血糖控制在 8.88mmol/L（160mg/dL）以下者可在预防性使用抗生素、防治感染的前提下拔牙；血糖≥8.88mmol/L 或未控制者暂缓。教材P169。",
+    "source_page": "教材P169",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A2-003",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "干槽症诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者拔除右下第二磨牙后 2 天，出现持续性剧痛并向耳颞部放射，检查见牙槽窝内无血凝块、有腐败坏死物、恶臭。诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "干槽症"
+      },
+      {
+        "label": "B",
+        "text": "拔牙创一般感染"
+      },
+      {
+        "label": "C",
+        "text": "牙槽骨骨髓炎"
+      },
+      {
+        "label": "D",
+        "text": "下牙槽神经损伤"
+      },
+      {
+        "label": "E",
+        "text": "血肿形成"
+      }
+    ],
+    "answer": "A",
+    "explanation": "拔牙后 2 天出现放射性剧痛、牙槽窝空虚无血凝块、腐败坏死物伴恶臭，为干槽症（纤维蛋白溶解性牙槽炎）典型表现。教材P176。",
+    "source_page": "教材P176",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A2-004",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "上颌窦穿通处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "拔牙时上颌磨牙牙根意外进入上颌窦，正确的处理是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "视穿孔大小，大者手术关闭"
+      },
+      {
+        "label": "B",
+        "text": "立即冲洗让其自愈"
+      },
+      {
+        "label": "C",
+        "text": "嘱患者用力擤鼻排出牙根"
+      },
+      {
+        "label": "D",
+        "text": "用碘仿填塞即可"
+      },
+      {
+        "label": "E",
+        "text": "观察 2 个月再处理"
+      }
+    ],
+    "answer": "A",
+    "explanation": "牙根进入上颌窦应视情况处理：小穿孔可严密缝合待其自愈，较大穿孔或牙根滞留上颌窦者需手术取出并关闭口-窦交通，嘱患者勿擤鼻。教材P174。",
+    "source_page": "教材P174",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-X-001",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "拔牙适应证",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "拔牙的适应证包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "龋坏过大无法修复"
+      },
+      {
+        "label": "B",
+        "text": "牙周病晚期明显松动"
+      },
+      {
+        "label": "C",
+        "text": "阻生牙反复冠周炎"
+      },
+      {
+        "label": "D",
+        "text": "滞留乳牙影响恒牙萌出"
+      },
+      {
+        "label": "E",
+        "text": "健康前牙"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "龋坏过大无法修复、晚期牙周病明显松动、反复冠周炎的阻生牙、滞留乳牙均为拔牙适应证；健康前牙不属于适应证。教材P167。",
+    "source_page": "教材P167",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-X-002",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "拔牙绝对禁忌",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "下列属于拔牙绝对禁忌证的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "血友病"
+      },
+      {
+        "label": "B",
+        "text": "急性白血病"
+      },
+      {
+        "label": "C",
+        "text": "未控制的糖尿病"
+      },
+      {
+        "label": "D",
+        "text": "高血压已控制"
+      },
+      {
+        "label": "E",
+        "text": "月经期"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "血友病、急性白血病、未控制糖尿病为拔牙绝对禁忌；高血压已控制者可在监测下拔牙，月经期一般暂缓但非绝对禁忌。教材P169。",
+    "source_page": "教材P169",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-B1-001",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "局麻晕厥",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "局麻注射后患者突然面色苍白、出冷汗、头晕、心慌、恶心，最可能是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "晕厥"
+      },
+      {
+        "label": "B",
+        "text": "过敏反应"
+      },
+      {
+        "label": "C",
+        "text": "中毒反应"
+      },
+      {
+        "label": "D",
+        "text": "血肿"
+      },
+      {
+        "label": "E",
+        "text": "暂时性面瘫"
+      }
+    ],
+    "answer": "A",
+    "explanation": "注射后突发面色苍白、冷汗、头晕、心慌、恶心为晕厥（血管抑制性）的典型表现，多见于恐惧或空腹患者，处理为平卧、保暖、松解衣领。教材P60。",
+    "source_page": "教材P60",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-B1-002",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "局麻血肿",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "局麻注射后患者面部出现明显瘀斑、肿胀，最常见的原因是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "晕厥"
+      },
+      {
+        "label": "B",
+        "text": "过敏反应"
+      },
+      {
+        "label": "C",
+        "text": "中毒反应"
+      },
+      {
+        "label": "D",
+        "text": "血肿"
+      },
+      {
+        "label": "E",
+        "text": "暂时性面瘫"
+      }
+    ],
+    "answer": "D",
+    "explanation": "注射时刺破血管致局部出血形成血肿，表现为注射区迅速肿胀、瘀斑；多可自行吸收，早期冷敷、后期热敷。教材P60。",
+    "source_page": "教材P60",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-011",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "拔牙创血凝块",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "拔牙后牙槽窝内形成血凝块的时间约为？",
+    "options": [
+      {
+        "label": "A",
+        "text": "15-30 分钟"
+      },
+      {
+        "label": "B",
+        "text": "约 1 小时"
+      },
+      {
+        "label": "C",
+        "text": "约 6 小时"
+      },
+      {
+        "label": "D",
+        "text": "约 24 小时"
+      },
+      {
+        "label": "E",
+        "text": "约 3 天"
+      }
+    ],
+    "answer": "A",
+    "explanation": "拔牙后出血停止约 15-30 分钟，牙槽窝内形成血凝块，保护创面并作为愈合支架；血凝块脱失是干槽症的诱因。教材P172。",
+    "source_page": "教材P172",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M06-A1-012",
+    "module": "M06",
+    "module_name": "口腔临床麻醉与牙拔除术",
+    "topic": "拔牙后护理",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "下列<b>不属于</b>拔牙后正确护理措施的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "24 小时内不漱口、不刷牙"
+      },
+      {
+        "label": "B",
+        "text": "不用力吸吮创口"
+      },
+      {
+        "label": "C",
+        "text": "正常进食避免过热食物"
+      },
+      {
+        "label": "D",
+        "text": "用力漱口清洁创口"
+      },
+      {
+        "label": "E",
+        "text": "术后咬棉球压迫止血"
+      }
+    ],
+    "answer": "D",
+    "explanation": "拔牙后 24 小时内禁止用力漱口、刷牙及吸吮，以免血凝块脱落诱发干槽症；「用力漱口」是错误的护理方式。教材P176。",
+    "source_page": "教材P176",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A1-001",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "感染来源",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "口腔颌面部感染最常见的来源是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "牙源性"
+      },
+      {
+        "label": "B",
+        "text": "腺源性"
+      },
+      {
+        "label": "C",
+        "text": "血源性"
+      },
+      {
+        "label": "D",
+        "text": "损伤性"
+      },
+      {
+        "label": "E",
+        "text": "医源性"
+      }
+    ],
+    "answer": "A",
+    "explanation": "口腔颌面部感染以牙源性最常见（龋病、牙髓病、根尖周病、冠周炎扩散所致），腺源性多见于儿童淋巴结炎。教材P179。",
+    "source_page": "教材P179",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A1-002",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "冠周炎好发年龄",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "智牙冠周炎最常见的发病年龄是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "18-25 岁"
+      },
+      {
+        "label": "B",
+        "text": "10-15 岁"
+      },
+      {
+        "label": "C",
+        "text": "40-50 岁"
+      },
+      {
+        "label": "D",
+        "text": "60 岁以上"
+      },
+      {
+        "label": "E",
+        "text": "各年龄均等"
+      }
+    ],
+    "answer": "A",
+    "explanation": "智牙冠周炎好发于 18-25 岁，即下颌第三磨牙萌出期的青年人，阻生或萌出不全致盲袋形成、易潴留食物与细菌。教材P180。",
+    "source_page": "教材P180",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A1-003",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "冠周炎特点",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于智牙冠周炎的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "好发于 18-25 岁青年"
+      },
+      {
+        "label": "B",
+        "text": "以下颌第三磨牙最常见"
+      },
+      {
+        "label": "C",
+        "text": "可出现张口受限"
+      },
+      {
+        "label": "D",
+        "text": "可反复发作并引起间隙感染"
+      },
+      {
+        "label": "E",
+        "text": "好发于上颌第一磨牙"
+      }
+    ],
+    "answer": "E",
+    "explanation": "智牙冠周炎以下颌第三磨牙最常见（上颌第三磨牙少见），好发于 18-25 岁，可伴张口受限、局部肿胀并反复发作。教材P180。",
+    "source_page": "教材P180",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M07-A1-004",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "口底蜂窝织炎",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "腐败坏死性口底蜂窝织炎最危险、最需优先处理的并发症是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "窒息"
+      },
+      {
+        "label": "B",
+        "text": "败血症"
+      },
+      {
+        "label": "C",
+        "text": "颌骨骨髓炎"
+      },
+      {
+        "label": "D",
+        "text": "脑脓肿"
+      },
+      {
+        "label": "E",
+        "text": "纵隔感染"
+      }
+    ],
+    "answer": "A",
+    "explanation": "口底蜂窝织炎（Ludwig 颌下蜂窝织炎）肿胀上抬舌体、压迫呼吸道，最危险并发症为窒息，需尽早行气管切开/预防性气管切开。教材P185。",
+    "source_page": "教材P185",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A1-005",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "疖痈处理",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于颌面部疖痈的处理，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "严禁挤压病灶"
+      },
+      {
+        "label": "B",
+        "text": "严禁局部热敷"
+      },
+      {
+        "label": "C",
+        "text": "炎症早期可切开引流"
+      },
+      {
+        "label": "D",
+        "text": "局部制动休息"
+      },
+      {
+        "label": "E",
+        "text": "使用足量抗生素"
+      }
+    ],
+    "answer": "C",
+    "explanation": "危险三角区疖痈严禁挤压、热敷与早期切开，以免感染经面静脉逆流入海绵窦；应制动、抗感染治疗，脓肿形成后方可切开。教材P186。",
+    "source_page": "教材P186",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A1-006",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "中央性骨髓炎",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "记忆",
+    "stem": "关于中央性颌骨骨髓炎的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "多由牙源性感染引起"
+      },
+      {
+        "label": "B",
+        "text": "好发于下颌骨"
+      },
+      {
+        "label": "C",
+        "text": "可出现下唇麻木"
+      },
+      {
+        "label": "D",
+        "text": "急性期应及早拔除病灶牙并开窗引流"
+      },
+      {
+        "label": "E",
+        "text": "病原菌主要是病毒"
+      }
+    ],
+    "answer": "E",
+    "explanation": "中央性颌骨骨髓炎多为牙源性细菌感染（金黄色葡萄球菌为主），好发于下颌骨，累及下牙槽神经可出现下唇麻木；病毒不是主要病原。教材P189。",
+    "source_page": "教材P189",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M07-A1-007",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "骨髓炎神经体征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "中央性颌骨骨髓炎累及下牙槽神经管时可出现的体征是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "下唇麻木"
+      },
+      {
+        "label": "B",
+        "text": "张口受限"
+      },
+      {
+        "label": "C",
+        "text": "上睑下垂"
+      },
+      {
+        "label": "D",
+        "text": "伸舌偏斜"
+      },
+      {
+        "label": "E",
+        "text": "鼻出血"
+      }
+    ],
+    "answer": "A",
+    "explanation": "下颌骨中央性骨髓炎破坏下牙槽神经管时出现同侧下唇麻木，是该病早期有意义的局部体征。教材P189。",
+    "source_page": "教材P189",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A1-008",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "放射性骨坏死",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于放射性颌骨骨髓炎（放射性骨坏死），<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "常发生于头颈部放疗后"
+      },
+      {
+        "label": "B",
+        "text": "以低氧、低细胞、低血管为病理特点"
+      },
+      {
+        "label": "C",
+        "text": "与照射剂量有关"
+      },
+      {
+        "label": "D",
+        "text": "高压氧治疗有一定效果"
+      },
+      {
+        "label": "E",
+        "text": "好发于未接受放疗的年轻人"
+      }
+    ],
+    "answer": "E",
+    "explanation": "放射性骨坏死发生于头颈部放疗后（尤其大剂量照射者），以低氧、低细胞、低血管为特征，高压氧有一定疗效；未放疗的年轻人不会发生。教材P189。",
+    "source_page": "教材P189",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M07-A1-009",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "清创缝合时间",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "口腔颌面部软组织损伤清创缝合的时间窗一般为？",
+    "options": [
+      {
+        "label": "A",
+        "text": "6 小时内"
+      },
+      {
+        "label": "B",
+        "text": "24 小时内"
+      },
+      {
+        "label": "C",
+        "text": "48 小时内"
+      },
+      {
+        "label": "D",
+        "text": "72 小时内"
+      },
+      {
+        "label": "E",
+        "text": "96 小时内"
+      }
+    ],
+    "answer": "C",
+    "explanation": "因口腔颌面部血运丰富、抗感染与愈合能力强，清创缝合可放宽至伤后 48 小时内；超过 48 小时视污染程度延期缝合。教材P191。",
+    "source_page": "教材P191",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A1-010",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "骨折体征",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "颌骨骨折最具诊断意义的临床体征是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "咬合错乱"
+      },
+      {
+        "label": "B",
+        "text": "面部肿胀"
+      },
+      {
+        "label": "C",
+        "text": "皮下瘀斑"
+      },
+      {
+        "label": "D",
+        "text": "张口受限"
+      },
+      {
+        "label": "E",
+        "text": "局部疼痛"
+      }
+    ],
+    "answer": "A",
+    "explanation": "咬合错乱是颌骨骨折最具诊断意义的体征（骨折段移位致牙列错位），面部肿胀、瘀斑等无特异性。教材P197。",
+    "source_page": "教材P197",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A1-011",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "Le Fort 分型",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "上颌骨 Le Fort Ⅲ型骨折又称？",
+    "options": [
+      {
+        "label": "A",
+        "text": "颅面分离（高位骨折）"
+      },
+      {
+        "label": "B",
+        "text": "低位水平骨折"
+      },
+      {
+        "label": "C",
+        "text": "呈锥形骨折"
+      },
+      {
+        "label": "D",
+        "text": "眶底爆裂骨折"
+      },
+      {
+        "label": "E",
+        "text": "鼻骨单纯骨折"
+      }
+    ],
+    "answer": "A",
+    "explanation": "Le Fort Ⅲ型骨折线经鼻骨、眶壁、颧额缝横贯颅底，使上颌骨与颅骨完全分离，又称颅面分离；Ⅱ型为锥形骨折。教材P201。",
+    "source_page": "教材P201",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A1-012",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "骨折段移位动力",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "下颌骨骨折后骨折段移位的动力主要来自？",
+    "options": [
+      {
+        "label": "A",
+        "text": "咀嚼肌的牵引"
+      },
+      {
+        "label": "B",
+        "text": "重力作用"
+      },
+      {
+        "label": "C",
+        "text": "血肿推挤"
+      },
+      {
+        "label": "D",
+        "text": "瘢痕挛缩"
+      },
+      {
+        "label": "E",
+        "text": "外固定压迫"
+      }
+    ],
+    "answer": "A",
+    "explanation": "下颌骨骨折段移位主要受升颌肌群（咬肌、颞肌、翼内肌）与降颌肌群（翼外肌、二腹肌等）牵引及骨折线方向影响。教材P197。",
+    "source_page": "教材P197",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A2-001",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "冠周炎诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者右下颌第三磨牙区肿痛、张口受限，口内见第三磨牙萌出不全、盲袋溢脓。诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "智牙冠周炎"
+      },
+      {
+        "label": "B",
+        "text": "急性牙髓炎"
+      },
+      {
+        "label": "C",
+        "text": "咬肌间隙感染"
+      },
+      {
+        "label": "D",
+        "text": "颌骨骨髓炎"
+      },
+      {
+        "label": "E",
+        "text": "流行性腮腺炎"
+      }
+    ],
+    "answer": "A",
+    "explanation": "下颌第三磨牙萌出不全、盲袋溢脓伴肿痛与张口受限，为智牙冠周炎典型表现；冠周炎可进一步扩散为间隙感染。教材P180。",
+    "source_page": "教材P180",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A2-002",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "冠周炎处理",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者右侧下颌第三磨牙冠周炎致颌下区肿胀、压痛，张口轻度受限，尚无波动感。首选的处理是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "局部冲洗上药加抗生素"
+      },
+      {
+        "label": "B",
+        "text": "切开引流排脓"
+      },
+      {
+        "label": "C",
+        "text": "立即拔除智齿"
+      },
+      {
+        "label": "D",
+        "text": "局部热敷处理"
+      },
+      {
+        "label": "E",
+        "text": "观察等待自愈"
+      }
+    ],
+    "answer": "A",
+    "explanation": "冠周炎急性期（未化脓）应局部冲洗盲袋、上药（碘甘油等）并配合抗生素；脓肿形成波动后方切开引流，拔牙宜在炎症消退后。教材P182。",
+    "source_page": "教材P182",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A2-003",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "窒息急救",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者口底蜂窝织炎致呼吸困难、三凹征明显，最紧急的处理是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即行气管切开术"
+      },
+      {
+        "label": "B",
+        "text": "大剂量抗生素静滴"
+      },
+      {
+        "label": "C",
+        "text": "切开引流"
+      },
+      {
+        "label": "D",
+        "text": "吸氧观察"
+      },
+      {
+        "label": "E",
+        "text": "半卧位休息"
+      }
+    ],
+    "answer": "A",
+    "explanation": "口底蜂窝织炎出现呼吸困难（三凹征）提示上呼吸道梗阻逼近，应紧急气管切开（必要时预防性气管切开），抗生素与引流为后续处理。教材P185。",
+    "source_page": "教材P185",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A2-004",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "海绵窦血栓",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者面颊部疖肿 3 天，自行挤压后出现寒战、高热、眼睑水肿、眼球突出，最可能发生了？",
+    "options": [
+      {
+        "label": "A",
+        "text": "海绵窦血栓性静脉炎"
+      },
+      {
+        "label": "B",
+        "text": "颅内脑脓肿"
+      },
+      {
+        "label": "C",
+        "text": "单纯败血症"
+      },
+      {
+        "label": "D",
+        "text": "蜂窝织炎扩散"
+      },
+      {
+        "label": "E",
+        "text": "全身脓毒血症"
+      }
+    ],
+    "answer": "A",
+    "explanation": "危险三角区疖肿被挤压后，细菌经面静脉逆流入海绵窦致海绵窦血栓性静脉炎，表现为高热、眼睑水肿、眼球突出、眼运动受限等。教材P186。",
+    "source_page": "教材P186",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A2-005",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "下颌角骨折治疗",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者外伤后张口受限、咬合错乱，X 线示左下颌角骨折伴移位。首选的治疗是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "牙弓夹板颌间固定"
+      },
+      {
+        "label": "B",
+        "text": "切开复位坚强内固定"
+      },
+      {
+        "label": "C",
+        "text": "单纯颌间牵引"
+      },
+      {
+        "label": "D",
+        "text": "保守观察治疗"
+      },
+      {
+        "label": "E",
+        "text": "颅颌弹性绷带"
+      }
+    ],
+    "answer": "B",
+    "explanation": "下颌角骨折伴移位者首选切开复位坚强内固定（钛板内固定），恢复咬合关系；无移位者可考虑保守或简单颌间固定。教材P202。",
+    "source_page": "教材P202",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A2-006",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "Le Fort Ⅲ型识别",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者高处坠落致面部骨折，X 线示双侧眶底、鼻骨、上颌骨骨折，颅面分离。其骨折类型是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "Le Fort Ⅰ型"
+      },
+      {
+        "label": "B",
+        "text": "Le Fort Ⅱ型"
+      },
+      {
+        "label": "C",
+        "text": "Le Fort Ⅲ型"
+      },
+      {
+        "label": "D",
+        "text": "下颌骨正中联合骨折"
+      },
+      {
+        "label": "E",
+        "text": "单纯颧骨骨折"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Le Fort Ⅲ型骨折累及鼻骨、眶壁、颧额缝并致颅面分离；Ⅰ型为低位水平骨折，Ⅱ型为锥形骨折。教材P201。",
+    "source_page": "教材P201",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-X-001",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "窒息原因",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "口腔颌面部损伤中易发生窒息的情况包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "口底蜂窝织炎致舌体上抬"
+      },
+      {
+        "label": "B",
+        "text": "双侧下颌骨骨折致舌后坠"
+      },
+      {
+        "label": "C",
+        "text": "上颌骨骨折软腭下坠"
+      },
+      {
+        "label": "D",
+        "text": "血液与分泌物误吸"
+      },
+      {
+        "label": "E",
+        "text": "单纯牙龈撕裂伤"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "窒息原因分阻塞性（口底肿胀舌上抬、双侧下颌骨折舌后坠、上颌骨折软腭下坠、异物堵塞）与吸入性（血液、分泌物、呕吐物误吸）；单纯牙龈撕裂不引起窒息。教材P192。",
+    "source_page": "教材P192",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-X-002",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "下颌骨骨折表现",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "下颌骨骨折的临床表现包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "咬合错乱"
+      },
+      {
+        "label": "B",
+        "text": "骨折段异常动度"
+      },
+      {
+        "label": "C",
+        "text": "骨摩擦音"
+      },
+      {
+        "label": "D",
+        "text": "局部疼痛与肿胀"
+      },
+      {
+        "label": "E",
+        "text": "鼻出血"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "下颌骨骨折典型表现为咬合错乱、异常动度、骨摩擦音、局部疼痛肿胀与功能障碍；鼻出血多见于上颌骨（Le Fort）骨折。教材P197。",
+    "source_page": "教材P197",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-B1-001",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "咬肌间隙感染",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "牙源性感染致张口受限明显、面颊部肿胀但无明显凹陷性水肿，多见于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "眶下间隙感染"
+      },
+      {
+        "label": "B",
+        "text": "咬肌间隙感染"
+      },
+      {
+        "label": "C",
+        "text": "翼下颌间隙感染"
+      },
+      {
+        "label": "D",
+        "text": "下颌下间隙感染"
+      },
+      {
+        "label": "E",
+        "text": "口底蜂窝织炎"
+      }
+    ],
+    "answer": "B",
+    "explanation": "咬肌间隙感染因咬肌与下颌支间形成深部脓肿，临床表现为明显张口受限、面颊肿胀而皮肤无凹陷性水肿（深部硬肿）。教材P182。",
+    "source_page": "教材P182",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-B1-002",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "口底蜂窝织炎识别",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "感染可迅速向口底蔓延致窒息、需警惕早期气管切开的间隙感染是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "眶下间隙感染"
+      },
+      {
+        "label": "B",
+        "text": "咬肌间隙感染"
+      },
+      {
+        "label": "C",
+        "text": "翼下颌间隙感染"
+      },
+      {
+        "label": "D",
+        "text": "下颌下间隙感染"
+      },
+      {
+        "label": "E",
+        "text": "口底蜂窝织炎"
+      }
+    ],
+    "answer": "E",
+    "explanation": "口底蜂窝织炎（含双侧下颌下、舌下间隙）肿胀可将舌推向上后方压迫呼吸道，是最易致窒息的间隙感染。教材P185。",
+    "source_page": "教材P185",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M07-A1-013",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "牙再植时间",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "牙外伤完全脱位后，最佳再植时间是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "30 分钟内"
+      },
+      {
+        "label": "B",
+        "text": "6 小时内"
+      },
+      {
+        "label": "C",
+        "text": "24 小时内"
+      },
+      {
+        "label": "D",
+        "text": "48 小时内"
+      },
+      {
+        "label": "E",
+        "text": "72 小时内"
+      }
+    ],
+    "answer": "A",
+    "explanation": "完全脱位牙应尽快再植，30 分钟内最佳，一般不宜超过 2 小时；离体牙应置于生理盐水或牛奶中保存、勿干燥。教材P205。",
+    "source_page": "教材P205",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M07-A2-007",
+    "module": "M07",
+    "module_name": "口腔颌面部感染与损伤",
+    "topic": "颌面外伤窒息急救",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者颌面部外伤后 40 分钟来院，神志朦胧，烦躁不安，口鼻有泥沙夹血外溢，呼吸困难。此时最紧迫的急救措施是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "给予吸氧"
+      },
+      {
+        "label": "B",
+        "text": "输注血液"
+      },
+      {
+        "label": "C",
+        "text": "应用止血药物"
+      },
+      {
+        "label": "D",
+        "text": "通畅呼吸道"
+      },
+      {
+        "label": "E",
+        "text": "抗休克"
+      }
+    ],
+    "answer": "D",
+    "explanation": "口鼻有泥沙夹血外溢提示上呼吸道异物堵塞，应立即清除口鼻异物、托下颌、头后仰，保持呼吸道通畅，以免窒息死亡；吸氧、输血、止血均为通畅呼吸道之后的措施。[源:考研真题 GS-2010-113] 教材P192。",
+    "source_page": "教材P192",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2010-113",
+      "year": 2010,
+      "source": "2010 西医综合 A型题",
+      "mode": "改编",
+      "note": "真题题干文本不完整，按官方解析要点复原病例情境；新增第5干扰选项；答案与知识点未变。"
+    }
+  },
+  {
+    "id": "batch037-M08-A1-001",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "化脓性腮腺炎病原",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "急性化脓性腮腺炎最常见的病原菌是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "金黄色葡萄球菌"
+      },
+      {
+        "label": "B",
+        "text": "变形链球菌"
+      },
+      {
+        "label": "C",
+        "text": "腮腺炎病毒"
+      },
+      {
+        "label": "D",
+        "text": "白色念珠菌"
+      },
+      {
+        "label": "E",
+        "text": "大肠埃希菌"
+      }
+    ],
+    "answer": "A",
+    "explanation": "急性化脓性腮腺炎多由金黄色葡萄球菌引起，常发生于全身抵抗力低下（术后、脱水、慢性消耗病）者，多为逆行感染。教材P212。",
+    "source_page": "教材P212",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-A1-002",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "涎石病好发部位",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "唾液腺结石病（涎石病）最好发于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "下颌下腺"
+      },
+      {
+        "label": "B",
+        "text": "腮腺"
+      },
+      {
+        "label": "C",
+        "text": "舌下腺"
+      },
+      {
+        "label": "D",
+        "text": "腭腺"
+      },
+      {
+        "label": "E",
+        "text": "唇腺"
+      }
+    ],
+    "answer": "A",
+    "explanation": "涎石病以颌下腺（下颌下腺）最多见（约占 80%），与其导管长、分泌液黏稠、含钙高及逆重力排泌有关。教材P214。",
+    "source_page": "教材P214",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-A1-003",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "化脓性腮腺炎",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于化脓性腮腺炎的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "多发生于全身抵抗力低下时"
+      },
+      {
+        "label": "B",
+        "text": "导管口可流出脓液"
+      },
+      {
+        "label": "C",
+        "text": "腮腺区红肿热痛"
+      },
+      {
+        "label": "D",
+        "text": "急性期可行腮腺造影检查"
+      },
+      {
+        "label": "E",
+        "text": "治疗以抗生素及切开引流为主"
+      }
+    ],
+    "answer": "D",
+    "explanation": "急性化脓性腮腺炎急性期禁行腮腺造影（造影剂刺激加重炎症并可能扩散），应在炎症消退后评估；其余处理正确。教材P212。",
+    "source_page": "教材P212",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-A1-004",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "舌下腺囊肿分型",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "舌下腺囊肿口外型（潜突型）的典型表现是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "颌下区肿物而口底外观正常"
+      },
+      {
+        "label": "B",
+        "text": "口底淡蓝色波动性肿物"
+      },
+      {
+        "label": "C",
+        "text": "舌下区囊肿伴舌运动障碍"
+      },
+      {
+        "label": "D",
+        "text": "颈部正中囊性肿物"
+      },
+      {
+        "label": "E",
+        "text": "腮腺区囊性肿物"
+      }
+    ],
+    "answer": "A",
+    "explanation": "口外型（潜突型）舌下腺囊肿穿过下颌舌骨肌突出于颌下区，表现为颌下区柔软肿物而口底无明显异常，易误诊为颌下腺肿物。教材P216。",
+    "source_page": "教材P216",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-A1-005",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "舌下腺囊肿治疗",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于舌下腺囊肿的治疗，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "应切除舌下腺"
+      },
+      {
+        "label": "B",
+        "text": "囊壁应一并完整处理"
+      },
+      {
+        "label": "C",
+        "text": "单纯抽吸囊液易复发"
+      },
+      {
+        "label": "D",
+        "text": "造袋术复发率较高"
+      },
+      {
+        "label": "E",
+        "text": "放射治疗为首选"
+      }
+    ],
+    "answer": "E",
+    "explanation": "舌下腺囊肿根治方法为手术切除舌下腺（连同囊壁），单纯抽液、造袋术复发率高；放射治疗无效且有害，绝非遗选。教材P216。",
+    "source_page": "教材P216",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M08-A1-006",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "舍格伦综合征表现",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "舍格伦综合征（干燥综合征）最典型的口腔外表现是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "口干、眼干"
+      },
+      {
+        "label": "B",
+        "text": "持续性发热"
+      },
+      {
+        "label": "C",
+        "text": "关节红肿畸形"
+      },
+      {
+        "label": "D",
+        "text": "皮肤溃疡"
+      },
+      {
+        "label": "E",
+        "text": "皮肤黄疸"
+      }
+    ],
+    "answer": "A",
+    "explanation": "舍格伦综合征以口干（唾液腺受累）与眼干（泪腺受累）为典型表现，中年女性多见，可伴系统性损害。教材P217。",
+    "source_page": "教材P217",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-A1-007",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "多形性腺瘤",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "涎腺肿瘤中最常见的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "多形性腺瘤"
+      },
+      {
+        "label": "B",
+        "text": "沃辛瘤"
+      },
+      {
+        "label": "C",
+        "text": "腺样囊性癌"
+      },
+      {
+        "label": "D",
+        "text": "黏液表皮样癌"
+      },
+      {
+        "label": "E",
+        "text": "腺泡细胞癌"
+      }
+    ],
+    "answer": "A",
+    "explanation": "多形性腺瘤（混合瘤）是涎腺肿瘤中最常见者（良性为主、约占全部涎腺肿瘤半数），腮腺最多见，属临界性肿瘤。教材P219。",
+    "source_page": "教材P219",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-A1-008",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "多形性腺瘤特点",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于多形性腺瘤的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "是涎腺最常见的良性肿瘤"
+      },
+      {
+        "label": "B",
+        "text": "属临界性（交界性）肿瘤"
+      },
+      {
+        "label": "C",
+        "text": "手术应完整切除、避免切碎"
+      },
+      {
+        "label": "D",
+        "text": "复发与包膜不完整或术中破裂有关"
+      },
+      {
+        "label": "E",
+        "text": "仅需放射治疗，无需手术"
+      }
+    ],
+    "answer": "E",
+    "explanation": "多形性腺瘤虽为良性但有临界性（包膜不完整、易复发），治疗以手术完整切除（解剖面神经）为主，放射治疗无效，故「放疗即可」错误。教材P219。",
+    "source_page": "教材P219",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M08-A1-009",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "腺样囊性癌特点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "腺样囊性癌最突出的生物学特点是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "沿神经束扩散（嗜神经性）"
+      },
+      {
+        "label": "B",
+        "text": "血行转移极早"
+      },
+      {
+        "label": "C",
+        "text": "生长极为迅速"
+      },
+      {
+        "label": "D",
+        "text": "不发生任何转移"
+      },
+      {
+        "label": "E",
+        "text": "仅发生于腮腺浅叶"
+      }
+    ],
+    "answer": "A",
+    "explanation": "腺样囊性癌恶性度高，最具特征的是沿神经扩散（嗜神经性），可致疼痛、面瘫，并易血行转移至肺；发生于小涎腺（腭部等）亦常见。教材P219。",
+    "source_page": "教材P219",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-A2-001",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "涎石病诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者进食时左颌下区明显肿胀疼痛，饭后逐渐消退，触诊可及导管内硬块。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "下颌下腺涎石病"
+      },
+      {
+        "label": "B",
+        "text": "急性化脓性腮腺炎"
+      },
+      {
+        "label": "C",
+        "text": "流行性腮腺炎"
+      },
+      {
+        "label": "D",
+        "text": "舍格伦综合征"
+      },
+      {
+        "label": "E",
+        "text": "舌下腺囊肿"
+      }
+    ],
+    "answer": "A",
+    "explanation": "进食时颌下区肿胀、餐后消退、导管内可及硬块，为涎石阻塞下颌下腺导管的典型「涎石绞痛」表现。教材P214。",
+    "source_page": "教材P214",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-A2-002",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "沃辛瘤诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "老年男性，吸烟多年，腮腺区无痛性肿块多年，B 超示腮腺尾叶混合性回声团。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "沃辛瘤"
+      },
+      {
+        "label": "B",
+        "text": "多形性腺瘤"
+      },
+      {
+        "label": "C",
+        "text": "腺样囊性癌"
+      },
+      {
+        "label": "D",
+        "text": "黏液表皮样癌"
+      },
+      {
+        "label": "E",
+        "text": "腮腺囊肿"
+      }
+    ],
+    "answer": "A",
+    "explanation": "沃辛瘤（腺淋巴瘤/乳头状囊腺瘤）好发于老年男性、与吸烟相关，多见于腮腺尾叶、可双侧多发；多形性腺瘤无此吸烟关联。教材P219。",
+    "source_page": "教材P219",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-A2-003",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "舍格伦诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "中年女性，口干、眼干多年，多发猖獗性龋齿，抗 SSA 抗体阳性。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "舍格伦综合征"
+      },
+      {
+        "label": "B",
+        "text": "干燥性角结膜炎"
+      },
+      {
+        "label": "C",
+        "text": "类风湿关节炎"
+      },
+      {
+        "label": "D",
+        "text": "贝赫切特病"
+      },
+      {
+        "label": "E",
+        "text": "系统性红斑狼疮"
+      }
+    ],
+    "answer": "A",
+    "explanation": "中年女性口干眼干、猖獗性龋齿、抗 SSA 抗体阳性，是舍格伦综合征的典型组合（抗 SSA 抗体有诊断价值）；单纯眼干无猖獗龋。教材P217。",
+    "source_page": "教材P217",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-X-001",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "涎腺恶性肿瘤",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "下列涎腺肿瘤中属于恶性的有？",
+    "options": [
+      {
+        "label": "A",
+        "text": "腺样囊性癌"
+      },
+      {
+        "label": "B",
+        "text": "黏液表皮样癌（低分化）"
+      },
+      {
+        "label": "C",
+        "text": "腺癌"
+      },
+      {
+        "label": "D",
+        "text": "多形性腺瘤"
+      },
+      {
+        "label": "E",
+        "text": "沃辛瘤"
+      }
+    ],
+    "answer": "ABC",
+    "explanation": "腺样囊性癌、腺癌及低分化黏液表皮样癌为恶性；多形性腺瘤属临界性（良性为主），沃辛瘤为良性。教材P219。",
+    "source_page": "教材P219",
+    "difficulty": "困难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-X-002",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "舌下腺囊肿特点",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "舌下腺囊肿的临床特点包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "好发于舌下区"
+      },
+      {
+        "label": "B",
+        "text": "囊壁薄、透光呈淡蓝色"
+      },
+      {
+        "label": "C",
+        "text": "口外型可表现为颌下区肿物"
+      },
+      {
+        "label": "D",
+        "text": "治疗需切除舌下腺"
+      },
+      {
+        "label": "E",
+        "text": "均为潴留性囊肿"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "舌下腺囊肿囊壁薄、透光呈淡蓝色（口内型），口外型表现为颌下区肿物；治疗以切除舌下腺为根治手段；其发生多为外渗性（导管损伤），「均潴留性」错误。教材P216。",
+    "source_page": "教材P216",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-B1-001",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "流行性腮腺炎",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "儿童多见、常累及双侧腮腺、导管口无脓液的涎腺炎是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性化脓性腮腺炎"
+      },
+      {
+        "label": "B",
+        "text": "流行性腮腺炎"
+      },
+      {
+        "label": "C",
+        "text": "慢性复发性腮腺炎"
+      },
+      {
+        "label": "D",
+        "text": "涎石病"
+      },
+      {
+        "label": "E",
+        "text": "舍格伦综合征"
+      }
+    ],
+    "answer": "B",
+    "explanation": "流行性腮腺炎为病毒感染，多见于儿童、常双侧腮腺肿大疼痛，导管口无脓液，具传染性；化脓性腮腺炎单侧多见且有脓液。教材P213。",
+    "source_page": "教材P213",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M08-B1-002",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "舍格伦识别",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "中年女性口干眼干、双侧腮腺肿大、伴猖獗性龋齿的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "急性化脓性腮腺炎"
+      },
+      {
+        "label": "B",
+        "text": "流行性腮腺炎"
+      },
+      {
+        "label": "C",
+        "text": "慢性复发性腮腺炎"
+      },
+      {
+        "label": "D",
+        "text": "涎石病"
+      },
+      {
+        "label": "E",
+        "text": "舍格伦综合征"
+      }
+    ],
+    "answer": "E",
+    "explanation": "舍格伦综合征以中年女性多见，口干眼干、腮腺肿大伴猖獗性龋齿；化脓性腮腺炎有脓液，流行性腮腺炎多见于儿童。教材P217。",
+    "source_page": "教材P217",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M08-A1-010",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "干燥综合征检查",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "患者中年女性，长期口干、眼干、哭时无泪，牙齿脱落，抗核抗体阳性。下列检查<b>无助于</b>该患者诊断的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "Schirmer 试验"
+      },
+      {
+        "label": "B",
+        "text": "腮腺造影检查"
+      },
+      {
+        "label": "C",
+        "text": "涎腺放射性核素扫描"
+      },
+      {
+        "label": "D",
+        "text": "双膝关节 X 线片"
+      },
+      {
+        "label": "E",
+        "text": "甲状腺超声"
+      }
+    ],
+    "answer": "D",
+    "explanation": "口干、眼干、猖獗龋提示干燥综合征：Schirmer 试验评估泪腺功能，腮腺造影、涎腺放射性核素扫描评估涎腺功能，均有助于诊断；干燥综合征关节破坏少见，双膝关节 X 线片对诊断价值不大。[源:考研真题 GS-2017-091] 教材P217。",
+    "source_page": "教材P217",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2017-091",
+      "year": 2017,
+      "source": "2017 西医综合 A型题",
+      "mode": "改编",
+      "note": "真题题干文本不完整，按官方解析要点复原病例情境；新增第5干扰选项；答案与知识点未变。"
+    }
+  },
+  {
+    "id": "batch037-M08-A2-004",
+    "module": "M08",
+    "module_name": "唾液腺常见疾病与口腔颌面部肿瘤",
+    "topic": "流行性腮腺炎医患沟通",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "女童，5 岁。因发热伴腮腺部位肿痛到急诊就诊，父亲急切地对医生说：「孩子得腮腺炎了，赶快用点消炎药」。医生仔细检查后确诊为流行性腮腺炎，开具抗病毒药，并告知护理措施，但患儿父亲仍坚持自己的要求。此时医生不恰当的做法是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "介绍流行性腮腺炎的临床表现和治疗知识"
+      },
+      {
+        "label": "B",
+        "text": "告知家长不当用药可能对患儿产生的损害"
+      },
+      {
+        "label": "C",
+        "text": "劝说家长要相信医生的专业处置"
+      },
+      {
+        "label": "D",
+        "text": "尊重患儿家长要求"
+      },
+      {
+        "label": "E",
+        "text": "立即停诊并要求患儿另寻他院"
+      }
+    ],
+    "answer": "D",
+    "explanation": "医患沟通应遵循共同参与原则，耐心倾听、解释病情与治疗计划；「尊重患儿父亲要求」（按其要求使用消炎药）违背合理用药原则，是不恰当做法，应坚持科学处置并继续沟通。[源:考研真题 GS-2022-111] 教材P213。",
+    "source_page": "教材P213",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2022-111",
+      "year": 2022,
+      "source": "2022 西医综合 A型题",
+      "mode": "改编",
+      "note": "原题4选项（A-D 顺序保留），新增第5干扰选项；答案与知识点未变。"
+    }
+  },
+  {
+    "id": "batch037-M09-A1-001",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "Angle 分类",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于 Angle 错𬌗分类的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "Ⅰ类为中性错𬌗"
+      },
+      {
+        "label": "B",
+        "text": "Ⅱ类为远中错𬌗"
+      },
+      {
+        "label": "C",
+        "text": "Ⅲ类为近中错𬌗"
+      },
+      {
+        "label": "D",
+        "text": "分类主要依据第一磨牙关系"
+      },
+      {
+        "label": "E",
+        "text": "Ⅱ类即下颌前突"
+      }
+    ],
+    "answer": "E",
+    "explanation": "Angle 分类以第一磨牙关系为依据：Ⅰ类中性、Ⅱ类远中（上颌前突、下颌后缩）、Ⅲ类近中（下颌前突）；「Ⅱ类即下颌前突」错误，下颌前突是Ⅲ类。教材P137。",
+    "source_page": "教材P137",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M09-A1-002",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "TMD 特点",
+    "type": "A1",
+    "polarity": "negative",
+    "bloom": "理解",
+    "stem": "关于颞下颌关节紊乱病（TMD）的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "好发于青壮年"
+      },
+      {
+        "label": "B",
+        "text": "女性多于男性"
+      },
+      {
+        "label": "C",
+        "text": "以疼痛、弹响、下颌运动异常为主要表现"
+      },
+      {
+        "label": "D",
+        "text": "首选手术治疗"
+      },
+      {
+        "label": "E",
+        "text": "多采用保守治疗"
+      }
+    ],
+    "answer": "D",
+    "explanation": "TMD 以疼痛、弹响、下颌运动异常为三大症状，治疗以保守治疗（心理疏导、𬌗垫、理疗、药物）为主，手术仅用于少数器质性病变。教材P155。",
+    "source_page": "教材P155",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-A1-003",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "毛状白斑",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "口腔毛状白斑多见于哪类患者？",
+    "options": [
+      {
+        "label": "A",
+        "text": "一侧周围性面瘫伴额纹消失"
+      },
+      {
+        "label": "B",
+        "text": "双侧周围性面瘫"
+      },
+      {
+        "label": "C",
+        "text": "中枢性面瘫表现"
+      },
+      {
+        "label": "D",
+        "text": "额纹存在仅口角歪斜"
+      },
+      {
+        "label": "E",
+        "text": "仅累及单侧上肢"
+      }
+    ],
+    "answer": "A",
+    "explanation": "口腔毛状白斑是 HIV 感染者重要的口腔表现，多见于舌侧缘，与 EB 病毒（人疱疹病毒）有关。教材P251。",
+    "source_page": "教材P251",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-A1-004",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "哈钦森牙",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "晚期先天性梅毒特有的牙体畸形是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "艾滋病（HIV）患者"
+      },
+      {
+        "label": "B",
+        "text": "糖尿病患者"
+      },
+      {
+        "label": "C",
+        "text": "妊娠期妇女"
+      },
+      {
+        "label": "D",
+        "text": "头颈部放疗患者"
+      },
+      {
+        "label": "E",
+        "text": "长期吸烟者"
+      }
+    ],
+    "answer": "A",
+    "explanation": "先天性梅毒的特征性口腔表现包括哈钦森牙（半月形切牙）、桑葚状磨牙、鞍鼻与口角放射状瘢痕等。教材P255。",
+    "source_page": "教材P255",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-A2-001",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "三叉神经痛诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者面部第Ⅱ支分布区出现电击样剧痛，触摸面部可诱发，夜间入睡后缓解。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "原发性三叉神经痛"
+      },
+      {
+        "label": "B",
+        "text": "急性牙髓炎"
+      },
+      {
+        "label": "C",
+        "text": "急性根尖周炎"
+      },
+      {
+        "label": "D",
+        "text": "颞下颌关节紊乱病"
+      },
+      {
+        "label": "E",
+        "text": "贝尔麻痹"
+      }
+    ],
+    "answer": "A",
+    "explanation": "三叉神经痛呈电击样、刀割样剧痛，有扳机点、突发突止，夜间多缓解；牙源性疼痛夜间加重且刺激诱发。教材P234。",
+    "source_page": "教材P234",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-A2-002",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "贝尔麻痹诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者晨起后发现一侧额纹消失、眼睑闭合不全、口角向对侧偏斜。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "右侧贝尔麻痹"
+      },
+      {
+        "label": "B",
+        "text": "中枢性面瘫"
+      },
+      {
+        "label": "C",
+        "text": "三叉神经痛"
+      },
+      {
+        "label": "D",
+        "text": "咬肌痉挛"
+      },
+      {
+        "label": "E",
+        "text": "腮腺肿瘤"
+      }
+    ],
+    "answer": "A",
+    "explanation": "晨起突发右侧周围性面瘫（额纹消失+眼睑闭合不全+口角左偏即右侧口角下垂），为右侧贝尔麻痹典型表现；中枢性面瘫额纹不消失。教材P238。",
+    "source_page": "教材P238",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-A2-003",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "TMD 诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者颞下颌关节区疼痛、张口时关节弹响、张口受限，X 线未见骨质破坏。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "颞下颌关节紊乱病"
+      },
+      {
+        "label": "B",
+        "text": "颞下颌关节强直"
+      },
+      {
+        "label": "C",
+        "text": "下颌骨骨折"
+      },
+      {
+        "label": "D",
+        "text": "腮腺肿瘤"
+      },
+      {
+        "label": "E",
+        "text": "面神经炎"
+      }
+    ],
+    "answer": "A",
+    "explanation": "关节区疼痛、弹响、张口受限而无影像学骨质破坏，符合颞下颌关节紊乱病；关节强直表现为渐进性张口受限伴影像学改变。教材P155。",
+    "source_page": "教材P155",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-A2-004",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "白血病口腔表现",
+    "type": "A2",
+    "polarity": "negative",
+    "bloom": "应用",
+    "stem": "关于白血病患者口腔表现的叙述，<b><b>错误</b>的是</b>？",
+    "options": [
+      {
+        "label": "A",
+        "text": "牙龈可呈增生肿胀"
+      },
+      {
+        "label": "B",
+        "text": "牙龈容易出血"
+      },
+      {
+        "label": "C",
+        "text": "牙龈色泽苍白"
+      },
+      {
+        "label": "D",
+        "text": "口腔黏膜可发生溃疡"
+      },
+      {
+        "label": "E",
+        "text": "系牙龈卟啉单胞菌感染所致"
+      }
+    ],
+    "answer": "E",
+    "explanation": "白血病口腔表现（牙龈增生、出血、苍白、溃疡）系白血病细胞浸润牙龈及血小板减少所致，并非细菌感染为主因；牙周炎才与牙龈卟啉单胞菌相关。教材P251。",
+    "source_page": "教材P251",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    }
+  },
+  {
+    "id": "batch037-M09-X-001",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "错𬌗危害",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "错𬌗畸形的危害包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "影响咀嚼功能"
+      },
+      {
+        "label": "B",
+        "text": "易患龋病与牙周病"
+      },
+      {
+        "label": "C",
+        "text": "影响面部美观与心理"
+      },
+      {
+        "label": "D",
+        "text": "可诱发或加重颞下颌关节紊乱"
+      },
+      {
+        "label": "E",
+        "text": "对全身健康无任何影响"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "错𬌗畸形影响咀嚼、发音与美观，牙列拥挤易致龋与牙周病，并可诱发 TMD、影响心理健康；「无任何影响」错误。教材P136。",
+    "source_page": "教材P136",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-X-002",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "牙周与全身疾病",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "理解",
+    "stem": "牙周炎与全身疾病的关系包括？",
+    "options": [
+      {
+        "label": "A",
+        "text": "与糖尿病双向影响"
+      },
+      {
+        "label": "B",
+        "text": "是心血管疾病的独立危险因素"
+      },
+      {
+        "label": "C",
+        "text": "与早产低出生体重儿相关"
+      },
+      {
+        "label": "D",
+        "text": "与类风湿关节炎相关"
+      },
+      {
+        "label": "E",
+        "text": "与龋病互为因果"
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "牙周炎与糖尿病双向影响，与心血管疾病、早产低出生体重、类风湿关节炎等全身疾病相关；龋病为另一独立疾病，不与牙周炎互为因果。教材P256。",
+    "source_page": "教材P256",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-B1-001",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "Angle Ⅰ类",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "下颌第一磨牙呈中性关系（磨牙中性𬌗）的错𬌗畸形属于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "Angle Ⅰ类"
+      },
+      {
+        "label": "B",
+        "text": "Angle Ⅱ类"
+      },
+      {
+        "label": "C",
+        "text": "Angle Ⅲ类"
+      },
+      {
+        "label": "D",
+        "text": "开𬌗畸形"
+      },
+      {
+        "label": "E",
+        "text": "深覆𬌗畸形"
+      }
+    ],
+    "answer": "A",
+    "explanation": "Angle Ⅰ类错𬌗为磨牙中性关系，畸形主要表现为牙列拥挤、间隙等；磨牙关系是 Angle 分类的核心依据。教材P137。",
+    "source_page": "教材P137",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-B1-002",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "Angle Ⅱ类",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "分析",
+    "stem": "上颌第一磨牙相对下颌第一磨牙前移、下颌后缩的错𬌗属于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "Angle Ⅰ类"
+      },
+      {
+        "label": "B",
+        "text": "Angle Ⅱ类"
+      },
+      {
+        "label": "C",
+        "text": "Angle Ⅲ类"
+      },
+      {
+        "label": "D",
+        "text": "开𬌗畸形"
+      },
+      {
+        "label": "E",
+        "text": "深覆𬌗畸形"
+      }
+    ],
+    "answer": "B",
+    "explanation": "下颌第一磨牙位于上颌第一磨牙远中（上颌前移）即远中错𬌗，为 Angle Ⅱ类，临床多表现为下颌后缩、上颌前突。教材P137。",
+    "source_page": "教材P137",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-B1-003",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "三叉神经痛治疗",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "原发性三叉神经痛首选的药物治疗是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "卡马西平"
+      },
+      {
+        "label": "B",
+        "text": "泼尼松"
+      },
+      {
+        "label": "C",
+        "text": "阿昔洛韦"
+      },
+      {
+        "label": "D",
+        "text": "布洛芬"
+      },
+      {
+        "label": "E",
+        "text": "甲硝唑"
+      }
+    ],
+    "answer": "A",
+    "explanation": "卡马西平是原发性三叉神经痛的首选药物，通过稳定钠通道抑制神经放电；效果不佳或不能耐受时可用苯妥英钠等。教材P234。",
+    "source_page": "教材P234",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-B1-004",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "贝尔麻痹治疗",
+    "type": "B1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "贝尔麻痹急性期（发病 2 周内）的首选治疗是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "卡马西平"
+      },
+      {
+        "label": "B",
+        "text": "泼尼松"
+      },
+      {
+        "label": "C",
+        "text": "阿昔洛韦"
+      },
+      {
+        "label": "D",
+        "text": "布洛芬"
+      },
+      {
+        "label": "E",
+        "text": "甲硝唑"
+      }
+    ],
+    "answer": "B",
+    "explanation": "贝尔麻痹急性期首选糖皮质激素（泼尼松）以减轻神经水肿与炎症，可配合神经营养药物、理疗；阿昔洛韦用于带状疱疹等病毒感染。教材P238。",
+    "source_page": "教材P238",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    }
+  },
+  {
+    "id": "batch037-M09-A2-005",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "干燥综合征猖獗龋",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "患者中年女性，口干、舌面干裂、口腔黏膜溃疡 2 年，多发龋齿并多个残留黑色牙根，抗 SSA 抗体阳性。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "系统性红斑狼疮"
+      },
+      {
+        "label": "B",
+        "text": "多发性骨髓瘤"
+      },
+      {
+        "label": "C",
+        "text": "干燥综合征"
+      },
+      {
+        "label": "D",
+        "text": "贝赫切特病"
+      },
+      {
+        "label": "E",
+        "text": "类风湿关节炎"
+      }
+    ],
+    "answer": "C",
+    "explanation": "猖獗性龋齿为干燥综合征的特征之一，抗 SSA 抗体阳性对本病有诊断价值，结合口干、舌面干裂与黏膜溃疡，应诊断干燥综合征；狼疮不会出现猖獗性龋齿，骨髓瘤以骨损害、贫血为主，贝赫切特病以溃疡、眼炎、皮肤病变为主。[源:考研真题 GS-2021-091] 教材P217。",
+    "source_page": "教材P217",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2021-091",
+      "year": 2021,
+      "source": "2021 西医综合 A型题",
+      "mode": "改编",
+      "note": "真题题干文本不完整，按官方解析要点复原病例情境；新增第5干扰选项；答案与知识点未变。"
+    }
+  },
+  {
+    "id": "batch037-M09-A1-005",
+    "module": "M09",
+    "module_name": "错𬌗畸形、颞下颌关节病与口腔全身关系",
+    "topic": "血液病口腔表现",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "患者皮肤散在瘀点、牙龈及口腔黏膜出血 1 周，血小板计数 8×10^9/L。支持该患者诊断的临床表现是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "口腔溃疡"
+      },
+      {
+        "label": "B",
+        "text": "面部蝶形红斑"
+      },
+      {
+        "label": "C",
+        "text": "脾脏不大"
+      },
+      {
+        "label": "D",
+        "text": "肌肉血肿"
+      },
+      {
+        "label": "E",
+        "text": "血尿"
+      }
+    ],
+    "answer": "C",
+    "explanation": "该患者符合免疫性血小板减少症（ITP）诊断：ITP 表现为皮肤、牙龈、口腔黏膜出血而非口腔溃疡，无蝶形红斑、无肌肉血肿（后者提示凝血障碍性疾病），一般不伴脾大，故「脾脏不大」支持诊断。[源:考研真题 GS-2010-105] 教材P251。",
+    "source_page": "教材P251",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "kaoyan_origin": {
+      "gs_id": "GS-2010-105",
+      "year": 2010,
+      "source": "2010 西医综合 A型题",
+      "mode": "改编",
+      "note": "真题题干文本不完整，按官方解析要点复原病例情境；新增第5干扰选项；答案与知识点未变。"
+    }
+  }
+]

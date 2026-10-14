@@ -1,0 +1,24 @@
+type: flow
+title: 沙眼后遗症链
+subtitle: 眼科学 M3 结膜疾病（确定性图谱通道）
+direction: horizontal
+output: annotated/15_沙眼后遗症链.png
+webp: images_webp/15_沙眼后遗症链.webp
+steps:
+  - title: 睑内翻倒睫
+    color: orange
+    lines:
+      - "沙眼瘢痕期睑板变形"
+      - "睑缘内翻、睫毛磨擦角膜"
+  - title: 角膜混浊/溃疡
+    color: red
+    lines:
+      - "睫毛机械损伤+继发感染"
+      - "角膜上皮缺损→浸润→瘢痕"
+  - title: 干眼与视力丧失
+    color: purple
+    lines:
+      - "泪膜破坏+角膜瘢痕血管翳"
+      - "视力下降甚至失明"
+      - "WHO防盲重点病种"
+note: 内容依据人卫《眼科学》第10版（范先群/颜华）M3；沙眼后遗症链为致盲核心路径；render_diagram.py确定性渲染

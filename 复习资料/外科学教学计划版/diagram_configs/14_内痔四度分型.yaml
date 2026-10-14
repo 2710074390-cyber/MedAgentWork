@@ -1,0 +1,31 @@
+type: grid
+title: 内痔分度（Ⅰ～Ⅳ度）
+subtitle: 外科学（二）M3 小肠疾病、阑尾疾病、结直肠与肛管疾病（确定性图谱通道）
+cols: 2
+output: annotated/14_内痔四度分型.png
+webp: images_webp/14_内痔四度分型.webp
+items:
+  - title: Ⅰ度
+    color: green
+    lines:
+      - 排便时带/滴血，可自止
+      - 无痔核脱出
+  - title: Ⅱ度
+    color: blue
+    lines:
+      - 排便时脱出
+      - 便后自行还纳
+      - 可伴出血
+  - title: Ⅲ度
+    color: orange
+    lines:
+      - 排便/久站/咳嗽/负重脱出
+      - 需手法辅助还纳
+      - 可伴出血
+  - title: Ⅳ度
+    color: red
+    lines:
+      - 脱出不能还纳
+      - 或还纳后又脱出
+      - 可伴出血
+note: 内容依据人卫《外科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

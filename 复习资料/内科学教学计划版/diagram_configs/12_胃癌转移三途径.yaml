@@ -1,0 +1,24 @@
+type: flow
+title: 胃癌三条转移途径
+subtitle: 内科学 消化系统·M5 胃癌（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/12_胃癌转移三途径.png
+webp: images_webp/12_胃癌转移三途径.webp
+steps:
+- title: 淋巴转移（最重要）
+  color: blue
+  lines:
+  - 胃周淋巴结→腹主动脉旁
+  - 经胸导管至左锁骨上淋巴结（Virchow）
+- title: 血行转移
+  color: teal
+  lines:
+  - 经门静脉入肝
+  - 肝是最常见血行转移部位
+- title: 种植转移
+  color: purple
+  lines:
+  - 癌细胞脱落入腹腔
+  - 种植于腹膜、卵巢（Krukenberg 瘤）
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

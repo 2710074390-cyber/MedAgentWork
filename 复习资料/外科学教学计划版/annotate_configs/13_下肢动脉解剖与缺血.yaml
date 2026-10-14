@@ -1,0 +1,28 @@
+image: raw/13_下肢动脉解剖与缺血_raw.png
+output: annotated/13_下肢动脉解剖与缺血.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [620, 50, 780, 95]
+    text: "髂/股动脉"
+    mode: label
+    anchor: [555, 70]
+  - box: [560, 410, 680, 455]
+    text: "腘动脉"
+    mode: label
+    anchor: [515, 435]
+  - box: [560, 700, 800, 745]
+    text: "胫前/胫后动脉"
+    mode: label
+    anchor: [510, 720]
+  - box: [400, 890, 640, 935]
+    text: "足部动脉弓"
+    mode: label
+    anchor: [490, 870]
+  - box: [80, 555, 360, 600]
+    text: "斑块致管腔狭窄"
+    mode: label
+    anchor: [483, 595]
+  - box: [80, 650, 420, 695]
+    text: "闭塞段·远端缺血"
+    mode: label
+    anchor: [483, 650]

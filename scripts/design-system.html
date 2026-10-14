@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedAgentWork 设计系统 · Design Tokens</title>
+<link rel="stylesheet" href="design-tokens.css">
+<style>
+/* ---- 演示页自身的壳（只用令牌，不写任何硬编码色值） ---- */
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-body);background:var(--bg);color:var(--fg);
+     line-height:var(--p-leading-normal);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:var(--p-space-7) var(--p-space-5) 96px}
+
+/* 顶栏 */
+.bar{position:sticky;top:0;z-index:10;background:var(--topbar-bg);
+     border-bottom:1px solid var(--topbar-border);padding:var(--p-space-3) var(--p-space-5);
+     display:flex;align-items:center;gap:var(--p-space-3);backdrop-filter:blur(10px)}
+.bar h1{font-size:var(--p-text-md);font-weight:var(--p-weight-semibold);letter-spacing:.02em}
+.bar .sp{flex:1}
+.bar button{font:inherit;font-size:var(--p-text-sm);padding:var(--p-space-1) var(--p-space-3);
+     border:1px solid var(--border-strong);border-radius:var(--p-radius-sm);
+     background:transparent;color:var(--fg-muted);cursor:pointer;transition:all var(--duration-fast) var(--ease-out)}
+.bar button:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
+
+/* 章节 */
+section{margin-top:var(--p-space-7)}
+h2.sec{font-size:var(--p-text-xl);font-weight:var(--p-weight-semibold);
+     padding-bottom:var(--p-space-2);border-bottom:1px solid var(--border);margin-bottom:var(--p-space-5)}
+h2.sec small{font-size:var(--p-text-sm);font-weight:var(--p-weight-normal);color:var(--fg-subtle);margin-left:var(--p-space-3)}
+.note{color:var(--fg-muted);font-size:var(--p-text-sm);line-height:var(--p-leading-loose);
+     margin-bottom:var(--p-space-4);max-width:var(--p-measure)}
+
+/* 色板 */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(178px,1fr));gap:var(--p-space-3)}
+.sw{border:1px solid var(--border);border-radius:var(--p-radius-sm);overflow:hidden;background:var(--card-bg)}
+.sw .chip{height:52px}
+.sw .meta{padding:var(--p-space-2) var(--p-space-3);font-size:var(--p-text-xs);font-family:var(--font-code)}
+.sw .meta b{display:block;font-family:var(--font-body);font-size:var(--p-text-sm);
+     font-weight:var(--p-weight-medium);color:var(--fg);margin-bottom:2px}
+.sw .meta span{color:var(--fg-subtle)}
+
+/* 尺度表 */
+.scale{display:flex;flex-direction:column;gap:var(--p-space-2)}
+.row{display:grid;grid-template-columns:132px 1fr 92px;gap:var(--p-space-3);align-items:baseline;
+     padding:var(--p-space-2) 0;border-bottom:1px dashed var(--border)}
+.row .k{font-family:var(--font-code);font-size:var(--p-text-xs);color:var(--fg-subtle)}
+.row .v{font-family:var(--font-code);font-size:var(--p-text-xs);color:var(--fg-muted);text-align:right}
+
+/* 层级演示 */
+.hier{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-card);
+     padding:var(--p-space-5)}
+.hier>*+*{margin-top:var(--p-space-3)}
+
+/* 组件 */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--p-space-4)}
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--radius-card);
+     padding:var(--p-space-4);box-shadow:var(--card-shadow)}
+.card h3{font-size:var(--p-text-md);font-weight:var(--p-weight-semibold);margin-bottom:var(--p-space-2)}
+.card p{font-size:var(--p-text-sm);color:var(--fg-muted)}
+
+.btn{font:inherit;font-size:var(--p-text-sm);font-weight:var(--p-weight-medium);
+     padding:var(--p-space-2) var(--p-space-4);border-radius:var(--p-radius-sm);cursor:pointer;
+     border:1px solid transparent;transition:all var(--duration-fast) var(--ease-out)}
+.btn.primary{background:var(--brand);color:var(--fg-on-brand)}
+.btn.primary:hover{background:var(--brand-hover)}
+.btn.ghost{border-color:var(--border-strong);color:var(--fg-muted);background:transparent}
+.btn.ghost:hover{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
+
+/* callout（复习资料主力组件） */
+.co{border-radius:var(--p-radius-sm);padding:var(--p-space-3) var(--p-space-4);
+     font-size:var(--p-text-sm);border-left:3px solid;margin-bottom:var(--p-space-3)}
+.co b{display:block;font-size:var(--p-text-xs);letter-spacing:.04em;margin-bottom:var(--p-space-1)}
+.co.mastered{background:var(--success-bg);border-color:var(--success);color:var(--fg)}
+.co.mastered b{color:var(--success)}
+.co.warning{background:var(--warning-bg);border-color:var(--warning);color:var(--fg)}
+.co.warning b{color:var(--warning)}
+.co.tip{background:var(--brand-soft);border-color:var(--tone-tip);color:var(--fg)}
+.co.tip b{color:var(--tone-tip)}
+.co.danger{background:var(--danger-bg);border-color:var(--danger);color:var(--fg)}
+.co.danger b{color:var(--danger)}
+
+table{border-collapse:collapse;width:100%;font-size:var(--p-text-sm);
+     background:var(--card-bg);border-radius:var(--p-radius-sm);overflow:hidden}
+th,td{padding:var(--p-space-2) var(--p-space-3);border-bottom:1px solid var(--border);text-align:left}
+th{background:var(--bg-inset);font-weight:var(--p-weight-semibold);font-size:var(--p-text-xs);
+   color:var(--fg-muted);letter-spacing:.03em}
+tbody tr:last-child td{border-bottom:none}
+
+/* 对比区 */
+.cmp{display:grid;grid-template-columns:1fr 1fr;gap:var(--p-space-4)}
+@media(max-width:760px){.cmp{grid-template-columns:1fr}}
+.cmp .col{border:1px solid var(--border);border-radius:var(--radius-card);overflow:hidden}
+.cmp .col h4{font-size:var(--p-text-xs);letter-spacing:.06em;padding:var(--p-space-2) var(--p-space-3);
+     background:var(--bg-inset);color:var(--fg-muted);font-weight:var(--p-weight-semibold)}
+.cmp .col .body{padding:var(--p-space-4)}
+.bad{color:var(--danger);font-family:var(--font-code);font-size:var(--p-text-xs);line-height:1.9}
+.good{color:var(--success);font-family:var(--font-code);font-size:var(--p-text-xs);line-height:1.9}
+.tag{display:inline-block;font-size:var(--p-text-xs);padding:1px var(--p-space-2);
+     border-radius:var(--p-radius-pill);font-weight:var(--p-weight-medium)}
+.tag.ok{background:var(--success-bg);color:var(--success);border:1px solid var(--success-border)}
+.tag.no{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <h1>MedAgentWork · 设计系统</h1>
+  <span class="tag ok" id="theme-tag">浅色</span>
+  <span class="sp"></span>
+  <button onclick="toggleTheme()">◐ 切换主题</button>
+</div>
+
+<div class="wrap">
+
+<!-- ================= 1. 语义色板 ================= -->
+<section>
+  <h2 class="sec">一、语义色板 <small>Layer 2 · 从 140 种唯一色收敛到 22 个语义令牌</small></h2>
+  <p class="note">每个令牌描述<b>用途</b>而非颜色。组件只允许引用这一层，
+     禁止直接写 <code>#2563eb</code> 这类原始值 —— 否则改一次品牌色要动 5 个文件 341 处。</p>
+  <div class="swatches" id="swatches"></div>
+</section>
+
+<!-- ================= 2. 排版尺度 ================= -->
+<section>
+  <h2 class="sec">二、排版尺度 <small>8 档字号 · 4 档圆角 · 8 档间距</small></h2>
+  <p class="note">现状 index.html 有 <b>25 档字号、14 档圆角</b>（2/3/4/5/7/8/9/11/12/15px…），
+     属"随手取整"的典型症状。收敛为模数尺度后，任何新组件都有明确可选项。</p>
+  <div class="grid2">
+    <div>
+      <h3 style="font-size:var(--p-text-sm);color:var(--fg-muted);margin-bottom:var(--p-space-3)">字号 / 行高 / 字重</h3>
+      <div class="scale" id="type-scale"></div>
+    </div>
+    <div>
+      <h3 style="font-size:var(--p-text-sm);color:var(--fg-muted);margin-bottom:var(--p-space-3)">间距（8px 基准）</h3>
+      <div class="scale" id="space-scale"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3. 视觉层级 ================= -->
+<section>
+  <h2 class="sec">三、视觉层级 <small>标题六层完整定义</small></h2>
+  <p class="note">门禁实测：<b>6 个模板里 4 个未定义 h2/h3/h4</b>，标题落到浏览器默认样式，
+     层级靠"碰运气"。六层必须全定义，读者才能一眼建立结构。</p>
+  <div class="hier">
+    <h1>h1 篇标题 · 第二篇 生理学</h1>
+    <h2>h2 章标题 · 第1章 绪论</h2>
+    <h3>h3 节标题 · 一、机体的内环境和稳态</h3>
+    <h4>h4 小节 · 1. 体液及其组成</h4>
+    <h5>h5 子项 · (1) 细胞内液</h5>
+    <h6>h6 细目 · 补充说明</h6>
+    <p>正文 14.5px / 行高 1.75 —— 中文长文取偏大字号，降低长时间阅读疲劳。
+       医学资料单次阅读常超过 40 分钟，正文可读性优先于"信息密度"。</p>
+    <p style="font-size:var(--p-text-sm);color:var(--fg-muted)">辅助文字 13px —— 图注、来源、元信息</p>
+    <p style="font-size:var(--p-text-xs);color:var(--fg-subtle)">最小文字 12px —— 角标、代码、时间戳，不再更小</p>
+  </div>
+</section>
+
+<!-- ================= 4. 组件 ================= -->
+<section>
+  <h2 class="sec">四、组件示例 <small>复习资料 / 押题卷实际用到的</small></h2>
+  <div class="co mastered"><b>已掌握 MASTERED</b>急性心梗心电图演变：ST 段抬高 → 病理性 Q 波 → T 波倒置，按时间顺序记忆。</div>
+  <div class="co warning"><b>易混淆 WARNING</b>心绞痛与心梗的疼痛鉴别，注意"持续时间"与"含服硝酸甘油是否缓解"两个关键点。</div>
+  <div class="co tip"><b>口诀 TIP</b>一嗅二视三动眼，四滑五叉六外展。</div>
+  <div class="co danger"><b>禁忌 CONTRA</b>严重主动脉瓣狭窄患者禁用强效扩血管药，可致晕厥。</div>
+
+  <div class="grid2" style="margin-top:var(--p-space-5)">
+    <div class="card">
+      <h3>例题卡片</h3>
+      <p style="margin-bottom:var(--p-space-3)">【例 1】2021NO1A 下列关于人体内环境概念的描述，<b>错误</b>的是</p>
+      <table>
+        <tbody>
+          <tr><td style="width:32px">A</td><td>机体内的全部液体</td></tr>
+          <tr><td>B</td><td>细胞赖以生存的环境</td></tr>
+          <tr><td>C</td><td>其理化性质变动很小</td></tr>
+          <tr><td>D</td><td>生物进化的结果</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>按钮与状态</h3>
+      <p style="margin-bottom:var(--p-space-3)">同一套令牌驱动浅色/深色，无需为每个组件写主题覆盖。</p>
+      <div style="display:flex;gap:var(--p-space-2);flex-wrap:wrap">
+        <button class="btn primary">开始答题</button>
+        <button class="btn ghost">查看解析</button>
+      </div>
+      <p style="margin-top:var(--p-space-3)">
+        <span class="tag ok">已掌握</span>
+        <span class="tag no">待巩固</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:var(--p-space-4)">
+    <h3>数据表格</h3>
+    <table style="margin-top:var(--p-space-2)">
+      <thead><tr><th>心动周期时相</th><th>房室瓣</th><th>动脉瓣</th><th>压力关系</th></tr></thead>
+      <tbody>
+        <tr><td>等容收缩期</td><td>关闭</td><td>关闭</td><td>Pa &lt; PV &lt; PA</td></tr>
+        <tr><td>快速射血期</td><td>关闭</td><td>开启</td><td>Pa &lt; PV &gt; PA</td></tr>
+        <tr><td>等容舒张期</td><td>关闭</td><td>关闭</td><td>Pa &lt; PV &lt; PA</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= 5. 前后对比 ================= -->
+<section>
+  <h2 class="sec">五、落地前后对比 <small>以 index.html 实测数据</small></h2>
+  <div class="cmp">
+    <div class="col">
+      <h4>现状（硬编码散装）</h4>
+      <div class="body">
+        <div class="bad">
+#0a0a0a #0d0f12 #101113 #1f2126 #26282c<br>
+#679efe #9cc0ff #1a3870 #2d5f9e #4a8ac4<br>
+#28c840 #febc2e #ff5f57 #2563eb #1a73e8<br>
+font-size: 9 / 10 / 10.5 / 11 / 11.5 / 12 /<br>
+&nbsp;&nbsp;12.5 / 13 / 13.5 / 14 / 14.5 / 15 /<br>
+&nbsp;&nbsp;16 / 16.5 / 17 / 18 / 19 / 20 /<br>
+&nbsp;&nbsp;21 / 22 / 24 / 25 / 26 / 30 / 32<br>
+border-radius: 2/3/4/5/6/7/8/9/10/11/12/14/15/16
+        </div>
+        <p style="margin-top:var(--p-space-3);font-size:var(--p-text-xs);color:var(--fg-subtle)">
+          25 档字号 · 14 档圆角 · 140 种唯一色 · 令牌覆盖 74%
+        </p>
+      </div>
+    </div>
+    <div class="col">
+      <h4>令牌化后</h4>
+      <div class="body">
+        <div class="good">
+var(--bg) var(--bg-elevated) var(--bg-inset)<br>
+var(--fg) var(--fg-muted) var(--fg-subtle)<br>
+var(--border) var(--border-strong)<br>
+var(--brand) var(--brand-hover) var(--brand-soft)<br>
+var(--success) var(--warning) var(--danger)<br>
+var(--info) var(--tone-tip)<br>
+<br>
+var(--p-text-xs … 3xl)&nbsp;&nbsp;→ 8 档<br>
+var(--p-radius-sm … lg)&nbsp;&nbsp;→ 4 档<br>
+var(--p-space-1 … 8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ 8 档
+        </div>
+        <p style="margin-top:var(--p-space-3);font-size:var(--p-text-xs);color:var(--fg-subtle)">
+          改品牌色 = 改 1 处；换主题 = 改 1 个 data-theme 属性
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+/* 语义色板 —— 从令牌实际计算值渲染，保证文档与令牌永不脱节 */
+const SEMANTIC = [
+  ['--bg','页面底'],['--bg-subtle','次级底'],['--bg-elevated','卡片底'],['--bg-inset','凹陷/表头'],
+  ['--fg','主文字'],['--fg-muted','次要文字'],['--fg-subtle','弱化文字'],
+  ['--border','描边'],['--border-strong','强调描边'],
+  ['--brand','品牌'],['--brand-hover','品牌悬停'],['--brand-soft','品牌浅底'],
+  ['--success','成功/已掌握'],['--warning','警示/待巩固'],['--danger','错误/禁忌'],['--info','信息'],
+  ['--tone-mastered','掌握'],['--tone-familiar','熟悉'],['--tone-learning','待巩固'],['--tone-tip','口诀'],
+  ['--card-bg','卡片'],['--topbar-bg','顶栏'],
+];
+const TYPE = [
+  ['--p-text-xs','12px','角标 · 代码 · 时间戳'],
+  ['--p-text-sm','13px','图注 · 来源 · 表格'],
+  ['--p-text-base','14.5px','正文'],
+  ['--p-text-md','16px','题干 · 强调正文'],
+  ['--p-text-lg','18px','h3 小节'],
+  ['--p-text-xl','22px','h2 章节'],
+  ['--p-text-2xl','28px','h1 篇'],
+  ['--p-text-3xl','34px','落地页主标题'],
+];
+const SPACE = ['1','2','3','4','5','6','7','8'];
+
+function cssVar(n){ return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+
+function renderSwatches(){
+  document.getElementById('swatches').innerHTML = SEMANTIC.map(([v,label])=>{
+    const val = cssVar(v);
+    return `<div class="sw"><div class="chip" style="background:var(${v})"></div>
+      <div class="meta"><b>${label}</b><span>${v}<br>${val}</span></div></div>`;
+  }).join('');
+}
+function renderType(){
+  document.getElementById('type-scale').innerHTML = TYPE.map(([v,px,use])=>
+    `<div class="row"><span style="font-size:var(${v})">Aa 心电</span>
+     <span class="k">${v.replace('--p-text-','')} · ${use}</span>
+     <span class="v">${px}</span></div>`).join('');
+}
+function renderSpace(){
+  document.getElementById('space-scale').innerHTML = SPACE.map(n=>
+    `<div class="row"><span style="display:inline-block;height:10px;width:var(--p-space-${n});background:var(--brand);border-radius:2px"></span>
+     <span class="k">--p-space-${n}</span><span class="v">${cssVar('--p-space-'+n)}</span></div>`).join('');
+}
+function toggleTheme(){
+  const r = document.documentElement;
+  const dark = r.getAttribute('data-theme') === 'dark';
+  r.setAttribute('data-theme', dark ? 'light' : 'dark');
+  document.getElementById('theme-tag').textContent = dark ? '浅色' : '深色';
+  renderSwatches();
+}
+renderSwatches(); renderType(); renderSpace();
+</script>
+</body>
+</html>

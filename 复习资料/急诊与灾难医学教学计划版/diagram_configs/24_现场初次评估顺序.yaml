@@ -1,0 +1,39 @@
+type: flow
+title: 灾难现场初次评估与生命支持顺序（止血优先→C→A→B）
+subtitle: 急诊与灾难医学 M11 灾难现场医学救援（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/24_现场初次评估顺序.png
+webp: images_webp/24_现场初次评估顺序.webp
+steps:
+  - title: 现场安全评估
+    color: blue
+    lines:
+      - 进入前评估风险、确认安全
+      - 穿戴防护、划区警戒
+      - 核生化分热/温/冷区
+  - title: 先控致命外出血
+    color: red
+    lines:
+      - 致命性外出血先于其他步骤
+      - 止血带控制活动性出血
+      - 预防失血性休克
+  - title: C 维持循环
+    color: orange
+    lines:
+      - 心肺复苏
+      - 意识丧失/呼吸停止/大动脉搏动消失
+      - 瞳孔散大、皮肤黏膜发绀
+  - title: A 保持气道
+    color: yellow
+    lines:
+      - 气道阻塞数分钟致死
+      - 仰头抬颏/双手托颌
+      - 重点评估颌面头颈胸创伤
+  - title: B 维持通气
+    color: green
+    lines:
+      - 排除通气障碍、吸氧
+      - 无自主呼吸口对口人工呼吸
+      - 必要时高级气道/环甲膜
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

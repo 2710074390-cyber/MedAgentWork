@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>口腔科学 · 眼科学 教学版资料题库推送</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%230f4c5c' d='M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 4a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM7 17c1.2-2.4 3.2-3.5 5-3.5s3.8 1.1 5 3.5c-1.2 1-3 1.5-5 1.5s-3.8-.5-5-1.5z'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#1a2a30;
+    --ink-soft:#4a5e66;
+    --paper:#f6f3ec;
+    --card:#ffffff;
+    --line:#e3ddd0;
+    --teal:#0f4c5c;
+    --teal-deep:#0a3642;
+    --teal-soft:#e0ecef;
+    --amber:#b8742a;
+    --ok:#2d6a4f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--paper);color:var(--ink);font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;line-height:1.6}
+  .serif{font-family:"Noto Serif SC","Songti SC","SimSun",serif}
+
+  /* ===== 顶部 ===== */
+  header{
+    background:linear-gradient(160deg,var(--teal-deep) 0%,var(--teal) 100%);
+    color:#f4f1e8;padding:56px 24px 64px;position:relative;overflow:hidden;
+  }
+  header::after{
+    content:"";position:absolute;right:-80px;top:-80px;width:340px;height:340px;
+    border:1px solid rgba(244,241,232,.15);border-radius:50%;
+  }
+  header::before{
+    content:"";position:absolute;right:-40px;top:-40px;width:220px;height:220px;
+    border:1px solid rgba(244,241,232,.12);border-radius:50%;
+  }
+  .wrap{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+  .eyebrow{letter-spacing:.3em;font-size:12px;opacity:.85;margin-bottom:16px}
+  h1{font-size:38px;font-weight:700;line-height:1.25;margin-bottom:14px;letter-spacing:1px}
+  .sub{font-size:15px;opacity:.92;max-width:680px}
+  .meta-row{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{
+    background:rgba(244,241,232,.12);border:1px solid rgba(244,241,232,.25);
+    padding:6px 14px;border-radius:999px;font-size:13px;backdrop-filter:blur(4px);
+  }
+
+  /* ===== 主体 ===== */
+  main{max-width:1080px;margin:-32px auto 60px;padding:0 24px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  @media(max-width:780px){.grid{grid-template-columns:1fr}h1{font-size:28px}}
+
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;box-shadow:0 6px 24px rgba(15,76,92,.08);display:flex;flex-direction:column;
+  }
+  .card-head{
+    padding:22px 24px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:14px;
+  }
+  .badge{
+    width:46px;height:46px;border-radius:10px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--teal-soft);color:var(--teal);
+  }
+  .card-head h2{font-size:21px;font-weight:700}
+  .card-head .en{font-size:12px;color:var(--ink-soft);letter-spacing:.08em;margin-top:2px}
+
+  .file{
+    padding:18px 24px;border-bottom:1px solid var(--line);
+    display:flex;align-items:center;gap:14px;
+  }
+  .file:last-of-type{border-bottom:none}
+  .file-icon{
+    width:38px;height:46px;flex-shrink:0;border:1.5px solid var(--teal);
+    border-radius:4px;position:relative;background:#fff;
+    display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;
+  }
+  .file-icon::after{
+    content:"";position:absolute;top:0;right:0;border-width:0 0 10px 10px;
+    border-style:solid;border-color:transparent var(--teal-soft) transparent transparent;
+  }
+  .file-icon span{font-size:9px;font-weight:700;color:var(--teal);letter-spacing:.5px}
+  .file-info{flex:1;min-width:0}
+  .file-name{font-size:14.5px;font-weight:600;word-break:break-all}
+  .file-meta{font-size:12px;color:var(--ink-soft);margin-top:3px;display:flex;gap:10px;flex-wrap:wrap}
+  .tag{
+    display:inline-block;padding:1px 8px;border-radius:4px;font-size:11px;
+    background:var(--teal-soft);color:var(--teal);
+  }
+  .tag.amber{background:#f7ead6;color:var(--amber)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--teal);color:#fff;text-decoration:none;
+    padding:9px 16px;border-radius:8px;font-size:13.5px;font-weight:600;
+    min-height:44px;min-width:88px;justify-content:center;
+    transition:background .15s,transform .1s;white-space:nowrap;
+  }
+  .btn:hover{background:var(--teal-deep)}
+  .btn:active{transform:scale(.97)}
+  .btn svg{width:14px;height:14px}
+
+  .card-foot{
+    padding:14px 24px;background:#faf8f2;border-top:1px dashed var(--line);
+    font-size:12.5px;color:var(--ink-soft);
+  }
+
+  /* ===== 说明区 ===== */
+  .notice{
+    margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:20px 24px;
+  }
+  .notice h3{font-size:15px;margin-bottom:10px;color:var(--teal)}
+  .notice ul{padding-left:20px;font-size:13.5px;color:var(--ink-soft)}
+  .notice li{margin:5px 0}
+
+  footer{
+    text-align:center;padding:30px 20px;color:var(--ink-soft);font-size:12.5px;
+    border-top:1px solid var(--line);margin-top:20px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">CLINICAL MEDICINE · TEACHING MATERIALS</div>
+    <h1 class="serif">口腔科学 · 眼科学<br>教学版资料题库推送</h1>
+    <p class="sub">基于教学计划编排的两门课程主复习资料与配套题库 PDF，已在本站打包并本地化存放，点击按钮即可直接下载，无需登录、无外链跳转。</p>
+    <div class="meta-row">
+      <span class="chip">共 2 门课程</span>
+      <span class="chip">4 份 PDF 文件</span>
+      <span class="chip">总计约 32 MB</span>
+      <span class="chip">本地直链 · 即点即下</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="grid">
+
+    <!-- ===== 口腔科学 ===== -->
+    <section class="card">
+      <div class="card-head">
+        <div class="badge">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3c-3 0-5 2-5 5 0 2 .5 3.5.5 6 0 3-1 5-1 7 0 1.5 1 2 2 1 1 0 2-1 3-1 2.5 0 2-2 3-3.5 0-1.5 1-2.5 1-4.5S14 17 14 18.5c0 1.5 1 3 3 3 1 0 2-1.5 2-3 0-2-1-4-1-7 0-2.5.5-4 .5-6 0-3-2-5-5-5z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="serif">口腔科学</h2>
+          <div class="en">STOMATOLOGY · TEACHING PACK</div>
+        </div>
+      </div>
+
+      <div class="file">
+        <div class="file-icon"><span>PDF</span></div>
+        <div class="file-info">
+          <div class="file-name">口腔科学_主复习资料.pdf</div>
+          <div class="file-meta">
+            <span class="tag">主复习资料</span>
+            <span>13.1 MB</span>
+          </div>
+        </div>
+        <a class="btn" href="downloads/oral-review.pdf" download="口腔科学_主复习资料.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          下载
+        </a>
+      </div>
+
+      <div class="file">
+        <div class="file-icon"><span>PDF</span></div>
+        <div class="file-info">
+          <div class="file-name">口腔科学教学题库.pdf</div>
+          <div class="file-meta">
+            <span class="tag amber">配套题库</span>
+            <span>0.7 MB</span>
+          </div>
+        </div>
+        <a class="btn" href="downloads/oral-bank.pdf" download="口腔科学教学题库.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          下载
+        </a>
+      </div>
+
+      <div class="card-foot">按教学计划章节编排，覆盖龋病、牙髓病、牙周病、口腔黏膜病、口腔颌面外科等核心内容。</div>
+    </section>
+
+    <!-- ===== 眼科学 ===== -->
+    <section class="card">
+      <div class="card-head">
+        <div class="badge">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="serif">眼科学</h2>
+          <div class="en">OPHTHALMOLOGY · TEACHING PACK</div>
+        </div>
+      </div>
+
+      <div class="file">
+        <div class="file-icon"><span>PDF</span></div>
+        <div class="file-info">
+          <div class="file-name">眼科学_主复习资料.pdf</div>
+          <div class="file-meta">
+            <span class="tag">主复习资料</span>
+            <span>15.2 MB</span>
+          </div>
+        </div>
+        <a class="btn" href="downloads/eye-review.pdf" download="眼科学_主复习资料.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          下载
+        </a>
+      </div>
+
+      <div class="file">
+        <div class="file-icon"><span>PDF</span></div>
+        <div class="file-info">
+          <div class="file-name">眼科学·期末题库.pdf</div>
+          <div class="file-meta">
+            <span class="tag amber">期末题库</span>
+            <span>3.0 MB</span>
+          </div>
+        </div>
+        <a class="btn" href="downloads/eye-bank.pdf" download="眼科学·期末题库.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          下载
+        </a>
+      </div>
+
+      <div class="card-foot">覆盖眼解剖、屈光、白内障、青光眼、葡萄膜病、视网膜病及视光学等教学大纲要求内容。</div>
+    </section>
+
+  </div>
+
+  <div class="notice">
+    <h3>下载说明</h3>
+    <ul>
+      <li>所有 PDF 已与本页面同目录打包（位于 <code>downloads/</code> 文件夹），点击「下载」按钮即从本地读取，不经过任何外部服务器。</li>
+      <li>若双击本页面后浏览器拦截下载，请允许本站点的自动下载权限；文件以原始中文名保存。</li>
+      <li>整站拷贝时，请将 <code>口腔科学与眼科学教学题库推送.html</code> 与 <code>downloads/</code> 文件夹一起复制，否则下载链接会失效。</li>
+    </ul>
+  </div>
+</main>
+
+<footer>
+  临床医学教学资料题库 · 本地推送页 &nbsp;|&nbsp; 口腔科学 / 眼科学 &nbsp;|&nbsp; 仅供教学复习使用
+</footer>
+
+</body>
+</html>

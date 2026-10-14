@@ -1,0 +1,36 @@
+type: grid
+title: 烧伤深度·三度四分法
+subtitle: 急诊与灾难医学 M6 环境及理化因素损伤（确定性图谱通道）
+cols: 2
+output: annotated/13_烧伤三度四分法.png
+webp: images_webp/13_烧伤三度四分法.webp
+items:
+  - title: Ⅰ度
+    color: yellow
+    lines:
+      - 仅伤及表皮浅层
+      - 创面粉红或红色、干燥
+      - 疼痛明显
+      - 数日愈合、不留瘢痕
+  - title: 浅Ⅱ度
+    color: green
+    lines:
+      - 伤及表皮生发层与真皮乳头层
+      - 创面粉红、大水疱、潮湿
+      - 疼痛明显
+      - 10天~2周愈合、不留瘢痕、常有色素改变
+  - title: 深Ⅱ度
+    color: orange
+    lines:
+      - 伤及真皮乳头层及部分真皮网状层
+      - 创面粉红、出血性水疱、潮湿
+      - 疼痛
+      - 需数周、或发展为Ⅲ度、需植皮
+  - title: Ⅲ度
+    color: red
+    lines:
+      - 全皮层烧伤，达皮下、肌肉或骨骼
+      - 创面白色/褐色、干燥似皮革
+      - 无感觉
+      - 需切痂植皮、皮瓣移植或截肢
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

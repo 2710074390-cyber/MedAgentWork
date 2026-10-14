@@ -1,0 +1,35 @@
+image: raw/07_喉解剖冠状剖_raw.png
+output: annotated/07_喉解剖冠状剖.png
+fixes:
+  - box: [620, 80, 700, 125]
+    text: 舌骨
+    mode: label
+    anchor: [555, 110]
+  - box: [280, 180, 380, 225]
+    text: 会厌
+    mode: label
+    anchor: [465, 235]
+  - box: [30, 330, 200, 375]
+    text: 甲状软骨
+    mode: label
+    anchor: [385, 340]
+  - box: [600, 380, 860, 425]
+    text: 室带（假声带）
+    mode: label
+    anchor: [585, 405]
+  - box: [600, 490, 680, 535]
+    text: 声带
+    mode: label
+    anchor: [555, 510]
+  - box: [600, 555, 720, 600]
+    text: 声门裂
+    mode: label
+    anchor: [505, 565]
+  - box: [620, 650, 760, 695]
+    text: 环状软骨
+    mode: label
+    anchor: [585, 680]
+  - box: [600, 830, 820, 875]
+    text: 气管软骨环
+    mode: label
+    anchor: [555, 845]

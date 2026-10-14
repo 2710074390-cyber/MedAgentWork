@@ -1,0 +1,29 @@
+type: flow
+title: IBD 炎症层次→表型→治疗阶梯
+subtitle: 内科学 消化系统·M6 炎症性肠病（确定性图谱通道）
+direction: vertical
+numbered: true
+output: annotated/14_IBD表型与治疗阶梯.png
+webp: images_webp/14_IBD表型与治疗阶梯.webp
+steps:
+- title: 慢性非特异性炎症启动
+  color: blue
+  lines:
+  - 自身免疫/遗传/环境
+  - 肠道菌群、感染、吸烟
+- title: 定表型：UC vs CD
+  color: teal
+  lines:
+  - UC：黏膜层连续→浅溃疡/隐窝脓肿→黏液脓血便
+  - CD：全层节段→纵行溃疡/鹅卵石/瘘管→肠梗阻
+- title: 轻中度：5-ASA 首选
+  color: green
+  lines:
+  - UC 轻中度 5-ASA（作用于局部黏膜）
+  - CD 轻中度布地奈德/5-ASA
+- title: 重度→难治：激素→免疫/生物
+  color: orange
+  lines:
+  - 重度用糖皮质激素诱导缓解
+  - 难治用免疫抑制剂/生物制剂（抗TNF、维得利珠、乌司奴）
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

@@ -1,0 +1,61 @@
+type: grid
+title: 风湿性疾病十大类谱系
+subtitle: 内科学 风湿性疾病·M1 风湿性疾病总论（确定性图谱通道）
+cols: 2
+output: annotated/37_风湿病十大类谱系.png
+webp: images_webp/37_风湿病十大类谱系.webp
+items:
+- title: 弥漫性结缔组织病
+  color: blue
+  lines:
+  - RA、SLE、干燥综合征
+  - 皮肌炎、系统性硬化
+  - 血管炎、重叠综合征
+  - 自身抗体、多系统受累
+- title: 血清阴性脊柱关节病
+  color: teal
+  lines:
+  - AS、银屑病关节炎
+  - 反应性/肠病性关节炎
+  - RF阴性、中轴受累
+- title: 退行性骨关节病
+  color: gray
+  lines:
+  - 骨关节炎
+  - 退行性、非免疫
+- title: 代谢相关
+  color: orange
+  lines:
+  - 痛风
+  - 尿酸结晶
+- title: 感染相关
+  color: yellow
+  lines:
+  - 风湿热
+  - 病原体相关
+- title: 肿瘤相关
+  color: purple
+  lines:
+  - 滑膜肉瘤、转移性肿瘤
+  - 白血病、多发性骨髓瘤
+- title: 神经血管相关
+  color: purple
+  lines:
+  - 雷诺现象、腕管综合征
+  - 神经性关节病（Charcot）
+- title: 骨与软骨病变
+  color: purple
+  lines:
+  - 骨质疏松、骨软化
+  - Paget病、缺血性骨坏死
+- title: 关节周围/软组织病
+  color: purple
+  lines:
+  - 纤维肌痛、滑囊炎
+  - 肌腱炎、附着点炎
+- title: 其他关节性疾病
+  color: purple
+  lines:
+  - 复发性风湿病
+  - 间歇性关节积液、药物相关
+note: 分类与代表病依据人卫《内科学》第9版；render_diagram.py确定性渲染

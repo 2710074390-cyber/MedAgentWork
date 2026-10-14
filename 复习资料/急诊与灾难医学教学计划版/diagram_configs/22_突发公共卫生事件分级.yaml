@@ -1,0 +1,31 @@
+type: grid
+title: 突发公共卫生事件Ⅰ~Ⅳ级分级与响应主体
+subtitle: 急诊与灾难医学 M10 灾难医学（确定性图谱通道）
+cols: 2
+output: annotated/22_突发公共卫生事件分级.png
+webp: images_webp/22_突发公共卫生事件分级.webp
+items:
+  - title: Ⅰ级·特别重大
+    color: red
+    lines:
+      - 肺鼠疫/肺炭疽波及≥2省份
+      - SARS、人感染高致病禽流感并扩散
+      - 多省不明原因疾病、新发传染病
+      - 响应：国务院统一领导
+  - title: Ⅱ级·重大
+    color: orange
+    lines:
+      - 较大范围疫情
+      - 省级范围内扩散
+      - 响应：省级指挥部
+  - title: Ⅲ级·较大
+    color: yellow
+    lines:
+      - 局部暴发流行
+      - 响应：市（地）级
+  - title: Ⅳ级·一般
+    color: green
+    lines:
+      - 小范围、对健康影响较小
+      - 响应：县级
+note: 内容依据人卫《急诊与灾难医学》第3版；render_diagram.py 确定性渲染，文字与结构可复核

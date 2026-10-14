@@ -1,0 +1,27 @@
+type: compare
+title: 传导性 vs 感音神经性耳聋
+subtitle: 耳鼻咽喉头颈外科学 M2 耳科学（确定性图谱通道）
+output: annotated/05_音叉试验与听力图判读.png
+webp: images_webp/05_音叉试验与听力图判读.webp
+items:
+  - title: 传导性听力损失
+    color: blue
+    lines:
+      - "Rinne(气vs骨): 阴(-), BC>AC"
+      - "Weber(偏侧): →患(病)耳"
+      - "Schwabach: (+)骨导延长"
+      - "Gelle: 阴性(镫骨固定)"
+      - "听力图: 骨导正常/接近正常"
+      - "气导提高以低频为主, 上升型"
+      - "气骨导差>10 dB, 低频区明显"
+  - title: 感音神经性听力损失
+    color: red
+    lines:
+      - "Rinne(气vs骨): 阳(+), AC>BC"
+      - "Weber(偏侧): →健耳"
+      - "Schwabach: (-)骨导缩短"
+      - "Gelle: 阳性"
+      - "听力图: 气、骨导一致下降"
+      - "通常高频损失重, 渐降/陡降型"
+      - "无气骨导差; 早期梅尼埃可上升型"
+note: 内容依据人卫《耳鼻咽喉头颈外科学》第9版；render_diagram.py确定性渲染

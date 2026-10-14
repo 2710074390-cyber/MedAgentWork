@@ -1,0 +1,32 @@
+image: raw/10_胰腺解剖与坏死性胰腺炎_raw.png
+output: annotated/10_胰腺解剖与坏死性胰腺炎.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [70, 370, 170, 415]
+    text: "胰尾"
+    mode: label
+    anchor: [130, 450]
+  - box: [320, 360, 420, 405]
+    text: "胰体"
+    mode: label
+    anchor: [360, 440]
+  - box: [660, 580, 760, 625]
+    text: "胰头"
+    mode: label
+    anchor: [715, 575]
+  - box: [780, 280, 990, 325]
+    text: "十二指肠（C形包绕）"
+    mode: label
+    anchor: [880, 380]
+  - box: [420, 420, 540, 465]
+    text: "主胰管"
+    mode: label
+    anchor: [470, 478]
+  - box: [250, 580, 400, 625]
+    text: "坏死灶"
+    mode: label
+    anchor: [415, 548]
+  - box: [660, 420, 960, 465]
+    text: "共同通道（胰管+胆总管）"
+    mode: label
+    anchor: [800, 540]

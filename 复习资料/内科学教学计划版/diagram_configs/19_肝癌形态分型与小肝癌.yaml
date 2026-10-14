@@ -1,0 +1,30 @@
+type: grid
+title: 原发性肝癌形态分型与小肝癌
+subtitle: 内科学 消化系统·M9 原发性肝癌（确定性图谱通道）
+cols: 5
+output: annotated/19_肝癌形态分型与小肝癌.png
+webp: images_webp/19_肝癌形态分型与小肝癌.webp
+items:
+- title: 单结节型
+  color: blue
+  lines:
+  - 界清球形、可有包膜
+- title: 结节型
+  color: teal
+  lines:
+  - 最常见、多伴肝硬化
+- title: 弥漫型
+  color: purple
+  lines:
+  - 罕见、难与肝硬化区分
+- title: 巨块型
+  color: red
+  lines:
+  - '>10cm、右叶多见'
+  - 中心坏死出血
+- title: 小肝癌定义
+  color: green
+  lines:
+  - 单发≤5cm
+  - 或≤3个且最大径≤3cm
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

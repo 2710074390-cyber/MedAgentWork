@@ -1,0 +1,38 @@
+type: grid
+title: 妊娠期高血压疾病五分类
+subtitle: 妇产科学 M7 妊娠并发症（确定性图谱通道）
+cols: 3
+output: annotated/22_妊娠期高血压疾病分类.png
+webp: images_webp/22_妊娠期高血压疾病分类.webp
+items:
+  - title: 妊娠期高血压
+    color: blue
+    lines:
+      - 妊娠20周后新发高血压
+      - 无蛋白尿
+      - 产后12周内恢复
+  - title: 子痫前期
+    color: teal
+    lines:
+      - 孕20周后≥140/90mmHg
+      - ＋蛋白尿或器官损害
+      - 重度：≥160/110或严重表现
+  - title: 子痫
+    color: red
+    lines:
+      - 子痫前期基础上
+      - 不能用其他原因解释的抽搐
+      - 最严重阶段
+  - title: 妊娠合并慢性高血压
+    color: purple
+    lines:
+      - 高血压孕前已存在
+      - 妊娠20周前即有
+      - 产后不解除
+  - title: 慢性高血压并发子痫前期
+    color: orange
+    lines:
+      - 原有慢性高血压
+      - 孕20周后新发或加重蛋白尿
+      - 或血压升高/器官损害
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

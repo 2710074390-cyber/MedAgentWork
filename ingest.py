@@ -11,7 +11,7 @@ MedAgentWork 产物摄入脚本 v1.0 — 自动化中转 + 血缘追溯
   agent4 → 最终产物/{batchID}/
   agent5 → 复习资料/
 """
-import sys, json, hashlib, shutil, argparse, re
+import sys, json, shutil, argparse, re
 from pathlib import Path
 from datetime import datetime
 
@@ -23,6 +23,7 @@ STATE_FILE = BASE / "workflow_state.json"
 # 正式重构 (2026-08-13): 状态读写/血缘统一走 scripts/workflow_state.py
 sys.path.insert(0, str(BASE / 'scripts'))
 import workflow_state as ws
+from utils import md5_file
 
 STAGE_DIRS = {
     'agent2': '中间产物',
@@ -37,15 +38,6 @@ STAGE_NEXT = {
     'agent4': 'Agent 5 (MedReview) — 主复习资料',
     'agent5': '用户签收 — 人工审查',
 }
-
-
-def md5_file(filepath):
-    """计算文件 MD5"""
-    h = hashlib.md5()
-    with open(filepath, 'rb') as f:
-        for chunk in iter(lambda: f.read(8192), b''):
-            h.update(chunk)
-    return h.hexdigest()
 
 
 def validate_json_structure(filepath):

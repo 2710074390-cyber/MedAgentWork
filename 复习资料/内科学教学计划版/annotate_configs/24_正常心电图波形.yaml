@@ -1,0 +1,15 @@
+image: raw/24_正常心电图波形_raw.png
+output: annotated/24_正常心电图波形.png
+fixes:
+  - box: [95, 420, 195, 465]
+    text: P 波
+    mode: label
+    anchor: [145, 535]
+  - box: [140, 290, 340, 335]
+    text: QRS 波群
+    mode: label
+    anchor: [205, 395]
+  - box: [260, 420, 340, 465]
+    text: T 波
+    mode: label
+    anchor: [295, 510]

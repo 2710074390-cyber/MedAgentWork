@@ -1,0 +1,44 @@
+image: raw/06_结直肠解剖与血供_raw.png
+output: annotated/06_结直肠解剖与血供.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [210, 180, 320, 225]
+    text: "升结肠"
+    mode: label
+    anchor: [280, 255]
+  - box: [420, 120, 580, 165]
+    text: "横结肠"
+    mode: label
+    anchor: [500, 225]
+  - box: [700, 180, 810, 225]
+    text: "降结肠"
+    mode: label
+    anchor: [720, 255]
+  - box: [480, 700, 610, 745]
+    text: "乙状结肠"
+    mode: label
+    anchor: [560, 690]
+  - box: [470, 870, 560, 915]
+    text: "直肠"
+    mode: label
+    anchor: [510, 850]
+  - box: [250, 600, 340, 645]
+    text: "盲肠"
+    mode: label
+    anchor: [310, 625]
+  - box: [330, 730, 410, 775]
+    text: "阑尾"
+    mode: label
+    anchor: [380, 735]
+  - box: [250, 430, 460, 475]
+    text: "肠系膜上动脉"
+    mode: label
+    anchor: [455, 525]
+  - box: [470, 380, 620, 425]
+    text: "肠系膜下动脉"
+    mode: label
+    anchor: [510, 445]
+  - box: [350, 320, 480, 365]
+    text: "边缘动脉弓"
+    mode: label
+    anchor: [380, 345]

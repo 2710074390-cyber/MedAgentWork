@@ -1,0 +1,34 @@
+type: flow
+title: 眼化学伤现场急救流程
+subtitle: 眼科学 M10 眼外伤（确定性图谱通道）
+direction: horizontal
+output: annotated/14_眼化学伤急救流程.png
+webp: images_webp/14_眼化学伤急救流程.webp
+steps:
+  - title: 就地争分夺秒冲洗
+    color: red
+    lines:
+      - "大量清水/生理盐水"
+      - "冲洗 ≥30 分钟"
+      - "翻转眼睑，冲洗穹窿部"
+      - "先冲洗，后就诊"
+  - title: 结膜囊清除残留
+    color: orange
+    lines:
+      - "检查结膜囊残留颗粒"
+      - "石灰/水泥等固体先清除"
+      - "无菌棉签/镊取出"
+  - title: 分度与治疗
+    color: teal
+    lines:
+      - "轻: 角膜上皮损伤"
+      - "中: 角膜混浊、虹膜纹理不清"
+      - "重: 角膜瓷白/穿孔（碱烧伤最重）"
+      - "抗炎+阿托品散瞳+胶原酶抑制剂"
+  - title: 随访并发症
+    color: purple
+    lines:
+      - "角膜溃疡/穿孔"
+      - "继发青光眼"
+      - "睑球粘连、干眼"
+note: 内容依据人卫《眼科学》第10版（范先群/颜华）M10；碱烧伤（液化性坏死）重于酸烧伤；render_diagram.py确定性渲染

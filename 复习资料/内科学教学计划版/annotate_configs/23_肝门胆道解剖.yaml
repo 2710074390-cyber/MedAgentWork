@@ -1,0 +1,69 @@
+image: images_v2/23_肝门胆道解剖（写实解剖）.png
+output: images_annotated/23_肝门胆道解剖（写实解剖）.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [50, 180, 250, 280]
+    text: ""
+    mode: overlay
+  - box: [500, 160, 650, 220]
+    text: ""
+    mode: overlay
+  - box: [830, 230, 980, 290]
+    text: ""
+    mode: overlay
+  - box: [10, 370, 130, 420]
+    text: ""
+    mode: overlay
+  - box: [680, 620, 780, 680]
+    text: ""
+    mode: overlay
+  - box: [600, 720, 880, 830]
+    text: ""
+    mode: overlay
+  - box: [80, 820, 230, 880]
+    text: ""
+    mode: overlay
+  - box: [150, 100, 350, 150]
+    text: "静脉韧带裂"
+    mode: label
+    anchor: [350, 300]
+  - box: [100, 180, 300, 230]
+    text: "肝圆韧带裂"
+    mode: label
+    anchor: [320, 350]
+  - box: [500, 100, 650, 150]
+    text: "胆囊窝"
+    mode: label
+    anchor: [550, 250]
+  - box: [800, 180, 950, 230]
+    text: "腔静脉沟"
+    mode: label
+    anchor: [750, 300]
+  - box: [50, 350, 180, 400]
+    text: "左纵沟"
+    mode: label
+    anchor: [200, 400]
+  - box: [680, 580, 800, 630]
+    text: "横沟（第一肝门）"
+    mode: label
+    anchor: [620, 580]
+  - box: [80, 780, 250, 830]
+    text: "第一肝门"
+    mode: label
+    anchor: [300, 700]
+  - box: [600, 700, 850, 750]
+    text: "肝总管/胆囊管"
+    mode: label
+    anchor: [500, 550]
+  - box: [600, 760, 880, 810]
+    text: "胆总管→十二指肠大乳头"
+    mode: label
+    anchor: [550, 700]
+  - box: [350, 500, 500, 550]
+    text: "胆囊"
+    mode: label
+    anchor: [350, 550]
+  - box: [400, 600, 580, 650]
+    text: "门静脉/肝动脉"
+    mode: label
+    anchor: [450, 650]

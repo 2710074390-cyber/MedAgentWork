@@ -1,0 +1,36 @@
+type: grid
+title: 真性细菌尿与尿感分类
+subtitle: 内科学 泌尿系统·M3 尿路感染（确定性图谱通道）
+cols: 5
+output: annotated/27_真性细菌尿与尿感分类.png
+webp: images_webp/27_真性细菌尿与尿感分类.webp
+items:
+- title: 真性细菌尿（诊断金标准）
+  color: blue
+  lines:
+  - ≥10⁵ CFU/ml（中段尿）
+  - 诊断尿感主要依据
+  - 真性菌尿非临床症状
+- title: 按部位
+  color: teal
+  lines:
+  - 上尿路=肾盂肾炎
+  - 下尿路=膀胱炎
+- title: 按有无症状
+  color: green
+  lines:
+  - 症状性尿感
+  - 无症状细菌尿
+  - 一般不治，妊娠除外
+- title: 按复杂性
+  color: orange
+  lines:
+  - 复杂性尿感
+  - 非复杂性尿感
+- title: 按发作次数
+  color: purple
+  lines:
+  - 孤立/反复发作
+  - 反复发作：6月≥2次
+  - 或1年≥3次
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

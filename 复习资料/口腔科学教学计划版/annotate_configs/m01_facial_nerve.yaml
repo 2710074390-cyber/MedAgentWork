@@ -1,0 +1,28 @@
+image: raw/m01_facial_nerve_raw.jpg
+output: annotated/m01_facial_nerve.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [60, 300, 210, 345]
+    text: "颞支"
+    mode: label
+    anchor: [487, 394]
+  - box: [60, 370, 210, 415]
+    text: "颧支"
+    mode: label
+    anchor: [586, 500]
+  - box: [60, 480, 210, 525]
+    text: "腮腺"
+    mode: label
+    anchor: [365, 520]
+  - box: [60, 550, 210, 595]
+    text: "颊支"
+    mode: label
+    anchor: [712, 573]
+  - box: [60, 600, 210, 645]
+    text: "下颌缘支"
+    mode: label
+    anchor: [646, 778]
+  - box: [60, 700, 210, 745]
+    text: "颈支"
+    mode: label
+    anchor: [551, 840]

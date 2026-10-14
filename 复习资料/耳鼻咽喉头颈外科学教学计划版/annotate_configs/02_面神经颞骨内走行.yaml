@@ -1,0 +1,39 @@
+image: raw/02_面神经颞骨内走行_raw.png
+output: annotated/02_面神经颞骨内走行.png
+fixes:
+  - box: [20, 300, 210, 345]
+    text: 内耳门→内耳道
+    mode: label
+    anchor: [235, 385]
+  - box: [250, 470, 380, 515]
+    text: 迷路段
+    mode: label
+    anchor: [360, 440]
+  - box: [280, 300, 440, 345]
+    text: 膝状神经节
+    mode: label
+    anchor: [435, 425]
+  - box: [560, 235, 720, 280]
+    text: 岩浅大神经
+    mode: label
+    anchor: [560, 305]
+  - box: [630, 420, 880, 465]
+    text: 鼓室段（水平段）
+    mode: label
+    anchor: [600, 465]
+  - box: [630, 520, 790, 565]
+    text: 镫骨肌神经
+    mode: label
+    anchor: [585, 555]
+  - box: [660, 630, 900, 675]
+    text: 乳突段（垂直段）
+    mode: label
+    anchor: [625, 650]
+  - box: [660, 760, 800, 805]
+    text: 鼓索神经
+    mode: label
+    anchor: [645, 760]
+  - box: [360, 860, 480, 905]
+    text: 茎乳孔
+    mode: label
+    anchor: [530, 845]

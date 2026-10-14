@@ -1,0 +1,34 @@
+type: flow
+title: 胃炎癌前病变演进链
+subtitle: 内科学 消化系统·M3 慢性胃炎（确定性图谱通道）
+direction: vertical
+numbered: true
+output: annotated/08_胃炎癌前病变演进链.png
+webp: images_webp/08_胃炎癌前病变演进链.webp
+steps:
+- title: 上游病因
+  color: blue
+  lines:
+  - Hp 定植（尿素酶护体）/ 自身免疫（PCA+IFA）
+  - 持续损伤、破坏壁细胞
+- title: 慢性萎缩性胃炎
+  color: teal
+  lines:
+  - 胃黏膜腺体减少（萎缩）
+  - B型胃窦 Hp 为主 / A型胃体自免
+- title: 肠上皮化生
+  color: yellow
+  lines:
+  - 肠型（杯状细胞）上皮替代
+  - 癌前阶梯中段
+- title: 异型增生
+  color: orange
+  lines:
+  - 细胞分化异常，分轻/中/重
+  - 重度有时与高分化腺癌难区分
+- title: 胃癌
+  color: red
+  lines:
+  - 癌前阶梯终末事件
+  - 越到后段越难逆转
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

@@ -1,0 +1,29 @@
+type: flow
+title: NAFLD 疾病谱系与可逆分界
+subtitle: 内科学 消化系统·M7 脂肪性肝病（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/15_NAFLD谱系.png
+webp: images_webp/15_NAFLD谱系.webp
+steps:
+- title: 单纯性脂肪变性（NAFL）
+  color: green
+  lines:
+  - 大泡性脂肪变
+  - 可逆
+- title: 脂肪性肝炎（NASH）
+  color: yellow
+  lines:
+  - 脂肪变+气球样变+炎症
+  - 可逆窗口：减重3%-5%改善脂肪变、7%-10%改善酶学
+- title: 肝纤维化
+  color: orange
+  lines:
+  - 星状细胞活化、纤维增生
+  - 基本不可逆
+- title: 肝硬化→肝癌
+  color: red
+  lines:
+  - 假小叶、再生结节
+  - 不可逆
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

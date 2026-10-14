@@ -1,0 +1,32 @@
+image: raw/16_骨构造与干骺端_raw.png
+output: annotated/16_骨构造与干骺端.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [660, 120, 760, 165]
+    text: "骨骺"
+    mode: label
+    anchor: [600, 155]
+  - box: [640, 210, 900, 255]
+    text: "骨松质（海绵状）"
+    mode: label
+    anchor: [565, 250]
+  - box: [620, 290, 880, 335]
+    text: "骺软骨（生长板）"
+    mode: label
+    anchor: [560, 262]
+  - box: [60, 300, 260, 345]
+    text: "干骺端"
+    mode: label
+    anchor: [430, 330]
+  - box: [80, 480, 260, 525]
+    text: "骨密质"
+    mode: label
+    anchor: [440, 500]
+  - box: [560, 500, 700, 545]
+    text: "骨髓腔"
+    mode: label
+    anchor: [532, 510]
+  - box: [660, 830, 760, 875]
+    text: "骨膜"
+    mode: label
+    anchor: [600, 858]

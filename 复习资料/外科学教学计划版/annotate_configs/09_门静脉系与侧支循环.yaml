@@ -1,0 +1,28 @@
+image: raw/09_门静脉系与侧支循环_raw.png
+output: annotated/09_门静脉系与侧支循环.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [200, 210, 290, 255]
+    text: "肝"
+    mode: label
+    anchor: [300, 275]
+  - box: [150, 550, 360, 595]
+    text: "门静脉主干"
+    mode: label
+    anchor: [390, 545]
+  - box: [60, 680, 440, 725]
+    text: "脾静脉、肠系膜上静脉"
+    mode: label
+    anchor: [420, 685]
+  - box: [720, 190, 999, 235]
+    text: "①食管胃底静脉丛"
+    mode: label
+    anchor: [685, 275]
+  - box: [700, 495, 999, 540]
+    text: "②脐周静脉网（海蛇头）"
+    mode: label
+    anchor: [660, 538]
+  - box: [560, 790, 830, 835]
+    text: "③直肠静脉丛"
+    mode: label
+    anchor: [520, 770]

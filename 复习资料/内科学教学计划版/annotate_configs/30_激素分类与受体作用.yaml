@@ -1,0 +1,36 @@
+image: raw/30_激素分类与受体作用_raw.png
+output: annotated/30_激素分类与受体作用.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [220, 205, 440, 250]
+    text: "含氮激素"
+    mode: label
+    anchor: [330, 280]
+  - box: [170, 380, 300, 430]
+    text: "膜受体"
+    mode: label
+    anchor: [320, 430]
+  - box: [195, 620, 430, 665]
+    text: "第二信使(cAMP)"
+    mode: label
+    anchor: [310, 640]
+  - box: [250, 765, 420, 810]
+    text: "起效快"
+    mode: label
+    anchor: [330, 725]
+  - box: [590, 200, 810, 245]
+    text: "类固醇激素"
+    mode: label
+    anchor: [660, 280]
+  - box: [555, 580, 660, 625]
+    text: "核受体"
+    mode: label
+    anchor: [630, 610]
+  - box: [645, 665, 820, 710]
+    text: "基因转录"
+    mode: label
+    anchor: [700, 675]
+  - box: [620, 765, 790, 810]
+    text: "起效慢"
+    mode: label
+    anchor: [680, 735]

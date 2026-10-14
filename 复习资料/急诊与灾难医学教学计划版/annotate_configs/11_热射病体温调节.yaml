@@ -1,0 +1,19 @@
+image: raw/11_热射病体温调节_raw.png
+output: annotated/11_热射病体温调节.png
+fixes:
+  - box: [50, 95, 340, 140]
+    text: 外界高温·产热↑
+    mode: label
+    anchor: [255, 200]
+  - box: [590, 130, 950, 175]
+    text: 散热障碍（出汗衰竭）
+    mode: label
+    anchor: [720, 290]
+  - box: [370, 455, 630, 500]
+    text: 体温调节失控
+    mode: label
+    anchor: [500, 420]
+  - box: [330, 880, 670, 925]
+    text: 核心体温＞40℃
+    mode: label
+    anchor: [500, 830]

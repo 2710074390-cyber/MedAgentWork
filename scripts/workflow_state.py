@@ -276,8 +276,7 @@ def migrate_legacy(state):
                     changes.append(f'{key}: 移除重复键 {dup!r}（保留 COMPLETED）')
 
     # 3. 顶层: schema 版本标记
-    # v2.0 (2026-08-20 审查修复): 实际写入版本号 —— 此前只记录 changes 不写入，
-    # 库调用方 load→save 后版本号仍旧，validate_state 持续告警
+    # 实际写入版本号（防止 validate_state 持续告警）
     if state.get('schema_version') != STATE_SCHEMA_VERSION:
         state['schema_version'] = STATE_SCHEMA_VERSION
         changes.append(f'schema_version → {STATE_SCHEMA_VERSION}')
@@ -367,8 +366,7 @@ def main():
             print(f'✓ 已保存（schema_version={STATE_SCHEMA_VERSION}）')
         return
 
-    # v2.0 (2026-08-20 审查修复): 删除 `if args.check or True:` 死条件
-    # （此前 --check 形同虚设、无参数也执行检查块）；校验失败非零退出
+    # 校验失败非零退出
     if not args.check:
         parser.print_help()
         return

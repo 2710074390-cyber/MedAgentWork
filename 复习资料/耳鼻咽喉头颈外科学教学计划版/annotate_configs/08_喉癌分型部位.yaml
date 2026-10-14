@@ -1,0 +1,19 @@
+image: raw/08_喉癌分型部位_raw.png
+output: annotated/08_喉癌分型部位.png
+fixes:
+  - box: [620, 280, 780, 325]
+    text: ①声门上型
+    mode: label
+    anchor: [545, 340]
+  - box: [620, 600, 760, 645]
+    text: ②声门型
+    mode: label
+    anchor: [585, 620]
+  - box: [600, 770, 780, 815]
+    text: ③声门下型
+    mode: label
+    anchor: [545, 775]
+  - box: [180, 560, 300, 605]
+    text: 声带
+    mode: label
+    anchor: [440, 590]

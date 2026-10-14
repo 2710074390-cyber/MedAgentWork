@@ -1,0 +1,30 @@
+type: flow
+title: 枕先露正常分娩机制（七步）
+subtitle: 妇产科学 M4 正常分娩（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/07_枕先露分娩机制.png
+webp: images_webp/07_枕先露分娩机制.webp
+steps:
+  - title: 衔接
+    color: blue
+    lines: ["双顶径进入骨盆入口", "最低点达坐骨棘水平", "经产妇多在临产后衔接"]
+  - title: 下降
+    color: teal
+    lines: ["胎头沿骨盆轴前进", "动作贯穿分娩全过程", "下降程度判断产程进展"]
+  - title: 俯屈
+    color: green
+    lines: ["颏部贴近胸壁", "以枕下前囟径替代枕额径", "适应产道最小径线"]
+  - title: 内旋转
+    color: orange
+    lines: ["枕骨向前旋转 45°", "矢状缝与前后径一致", "第一产程末完成"]
+  - title: 仰伸
+    color: purple
+    lines: ["以耻骨弓为支点", "顶、额、面、颏相继娩出", "胎头沿产轴向上仰伸"]
+  - title: 复位及外旋转
+    color: yellow
+    lines: ["复位：胎头转回 45°", "恢复胎头与胎肩正常关系", "再外旋转 45°"]
+  - title: 胎肩及胎体娩出
+    color: red
+    lines: ["前肩自耻骨弓下先娩", "后肩自会阴缘滑出", "胎体侧屈相继娩出"]
+note: 内容依据人卫《妇产科学》第9版（以枕左前位为例）；render_diagram.py 确定性渲染

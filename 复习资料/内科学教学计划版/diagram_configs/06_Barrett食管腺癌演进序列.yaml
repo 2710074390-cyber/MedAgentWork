@@ -1,0 +1,33 @@
+type: flow
+title: Barrett 食管→食管腺癌四步演进
+subtitle: 内科学 消化系统·M2 胃食管反流病（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/06_Barrett食管腺癌演进序列.png
+webp: images_webp/06_Barrett食管腺癌演进序列.webp
+steps:
+- title: 慢性反流性食管炎
+  color: orange
+  lines:
+  - 胃酸/胆汁长期反流损伤
+  - 食管下段复层鳞状上皮不耐酸
+  - 反复破损、反复修复
+- title: Barrett 化生
+  color: yellow
+  lines:
+  - 鳞状上皮被柱状上皮替代
+  - 橘红色、齿状线近端、岛/舌/环形
+  - 为耐酸而牺牲分化
+- title: 异型增生
+  color: orange
+  lines:
+  - 上皮细胞分化异常
+  - 轻度可逆转、重度难与高分化腺癌区分
+  - 需定期内镜随访
+- title: 食管腺癌
+  color: red
+  lines:
+  - Barrett 为食管腺癌主要癌前病变
+  - 腺癌风险较正常人高10-20倍
+  - 重度异型增生/早癌需内镜切除或手术
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

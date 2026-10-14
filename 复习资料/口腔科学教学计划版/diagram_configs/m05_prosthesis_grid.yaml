@@ -1,0 +1,15 @@
+type: grid
+title: 口腔修复体种类谱
+subtitle: 口腔科学 M5·牙体缺损与牙列缺损修复（确定性图谱通道）
+cols: 4
+output: annotated/m05_prosthesis.png
+webp: images_webp/m05_prosthesis.webp
+items:
+  - {title: 嵌体, color: orange, lines: ["嵌入牙体窝洞内的修复体", "适用于牙体缺损未累及牙尖", "与牙体粘接固位"]}
+  - {title: 贴面, color: teal, lines: ["覆盖牙冠唇面的薄层修复体", "主要用于前牙美学修复", "变色牙、釉质发育不全"]}
+  - {title: 全冠, color: blue, lines: ["覆盖整个牙冠的修复体", "恢复形态功能并保护牙体", "金属、烤瓷或全瓷"]}
+  - {title: 桩核冠, color: yellow, lines: ["根管内桩＋核＋冠", "牙冠大部缺损但牙根完好", "保留天然牙根"]}
+  - {title: 固定桥, color: green, lines: ["两侧基牙做冠、中间桥体", "修复个别牙缺失，不可摘", "需基牙条件良好"]}
+  - {title: 可摘局部义齿, color: purple, lines: ["基托＋卡环＋人工牙", "修复多个牙缺失，可自行摘戴", "需口腔卫生维护"]}
+  - {title: 全口义齿, color: gray, lines: ["上／下颌全口缺牙时的义齿", "基托依靠黏膜承托固位", "需定期复查调改"]}
+note: 内容依据人卫《口腔科学》第10版；本图由 render_diagram.py 确定性渲染，文字与结构可复核

@@ -38,8 +38,11 @@
 ```
 [IDLE] → [INTENT_CONFIRM] → [AGENT2_INVOKED] → [AGENT2_DONE] → 
 [AGENT3_INVOKED] → [AGENT3_DONE] → [AGENT4_INVOKED] → [AGENT4_DONE] → 
-[AGENT5_INVOKED] → [AGENT5_DONE] → [HUMAN_REVIEW] → [COMPLETE]
+[AGENT5_INVOKED] → [AGENT5_DONE] → [AGENT6_INVOKED] → [AGENT6_DONE] → 
+[HUMAN_REVIEW] → [COMPLETE]
 ```
+
+> AGENT6（MedIllustrator 生图，HC-19，2026-09-XX 新增）：仅当科目属于「配图范围」（大四上 5 科主复习资料 / 用户要求配图的科目）时触发；纯题库批次（无主复习资料任务）自动跳过。
 
 每个状态转换时，你必须：
 1. 更新 `workflow_state.json`
@@ -56,6 +59,7 @@
    - 有 AGENT2 无 AGENT3 → 阶段三：生成 Agent 3 调用指令
    - 有 AGENT3 无 AGENT4 → 阶段四：生成 Agent 4 调用指令
    - 有 AGENT4 无 AGENT5 → 阶段四之后：生成 Agent 5 调用指令
+   - 有 AGENT5 无 AGENT6 且科目属配图范围 → 阶段五之后：打包生图交接任务包（豆包执行，HC-19）；不属配图范围 → 直接终审
    - 全部完成 → 阶段五：终审与归档
 4. 直接输出当前状态简报 + 下一阶段的调用指令，无需用户再汇报
 
@@ -200,6 +204,22 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 
 **HC-5/6/8 交叉触发说明**：考研原题引用属于「外来素材合并」范畴——对引用题执行 HC-5 数值抽查（≥10%）、HC-8 GoldenSet 比对（100% 与 gs_id 源比对，Agent 3 D21 覆盖）；「引用真题」的答案本身以官方公布为准，发现与教材冲突 → 升级告警，不静默修改（HC-6/8 的修正范围限于改编题自行设计的干扰项）。
 
+### HC-19：插图契约（2026-09-XX 新增 · 生图功能接入）
+
+> 主复习资料的图片内容全部由**豆包（Doubao 图片 Agent）**按 `medillustration` skill 负责（生图/标注/压缩；DSH 不调用 image_gen）；DSH 侧文字 Agent（Agent 2/5）只写占位符与配图清单，MedMaster 做打包交接与门禁校验。穿插原则见「工作流执行模板 · 阶段五·五」。
+
+1. **Agent 5 产出**：主复习资料 MD 按 v5.3 插图规范插入 `![图N：图注](images_webp/xxx.webp)` 占位符 + 输出 `{科目}_配图清单.md`（每条含 底图来源：图谱图号 / AI生成 / 跨科复用）。
+2. **配图范围**：大四上 5 科（内科学试点已 22 图、外科学（二）/妇产科学/急诊与灾难医学/耳鼻咽喉头颈外科学待配）+ 用户指定科目；已有配图需求基线：`复习资料/_配图需求/大四上复习资料_配图需求清单.md`（59 张建议，P1 34 张优先）。
+3. **底图来源决策**：解剖结构类优先《人体解剖学彩色图谱》（`知识库素材/《人体解剖学》彩色图谱（第2版）(1).pdf-*/images/` + `知识库素材/图谱图片索引/image_index.md`）；机制/病理/无现成图用 AI 生成无字底图；同知识点跨科直接复用已有图（如急诊有机磷机制复用内科学 `images_webp/14_有机磷中毒突触机制（写实神经生物学）.webp`）。
+4. **质检硬需求**：AI 生成图必须人工质检（试点 2/2 首轮出错——肝画成肾、视神经放大图画成尿道样结构）：解剖准确性 / 无文字无杂项 / 标注无重叠。AI 图内中文标注一律禁用，中文标注用 `scripts/annotate_image.py` 程序叠加（label 模式默认）。
+5. **机械检查（GATE-A6，HC-12 不可跳过）**：
+   ```
+   python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp
+   ```
+   - exit 0 → 占位符语法合格、图号连续、alt 为「图N：图注」、引用的 webp 文件均存在
+   - exit 1 → halt，回退豆包（图片 Agent）补图/修复后重跑（缺失图/格式错误/图号断号）
+6. **终审汇总**：批终审报告新增一行 `插图：{X} 张（图谱复用 Y / AI 生成 Z / 缺失⚠️）`。
+
 ## 工作流执行模板
 
 ### 阶段一：启动、检索与意图确认
@@ -300,6 +320,21 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
    - 追溯日志：最终产物/{batchID}/AGENT4_追溯日志.json
    - 人工告警：最终产物/{batchID}/escalations_for_human.md
 
+### 阶段五·五：生图（Agent 6 · 豆包执行 · HC-19 · 配图范围科目）
+
+Agent 5 交付主复习资料 MD + 配图清单后。**生图主责在豆包（Doubao 图片 Agent），DSH 不调用 image_gen**；DSH 侧只做任务打包、机械校验与人工质检复核。
+
+1. 核对 `{科目}_配图清单.md` 存在，统计占位符数（grep `!\[图[0-9]+：` 主复习资料 MD）
+2. **打包豆包交接任务包**（发给用户/豆包图片 Agent 对话框，需包含）：
+   - `{科目}_配图清单.md` 全文（每条含 AI Prompt 要素 / 图谱图号 / 复用来源）
+   - medillustration 分工契约与 skill 要点（`.dsh/skills/medillustration/SKILL.md`）：无字底图硬约束（单一主视图、≥2048px、纯白背景、无文字）、图谱优先（`知识库素材/图谱图片索引/image_index.md`）、AI 图人工质检、中文标注一律 `scripts/annotate_image.py` 程序叠加（label 模式）、WebP 1600px q=82 压缩
+   - 图谱 images/ 目录路径与可复用图路径（如内科学 `images_webp/14_有机磷中毒突触机制（写实神经生物学）.webp`）
+   - 科目目录规范：raw/ annotate_configs/ annotated/ images_webp/（相对 `复习资料/{科目}教学计划版/`）
+3. **验收**：豆包回传 images_webp/*.webp 后，DSH 侧：
+   - 人工质检复核（解剖准确性抽查——试点 2/2 首轮出错，肝画成肾）；不合格 → 打回豆包重生成
+   - 运行 GATE-A6（见下）
+4. exit 0 → 更新 workflow_state（AGENT6_DONE）→ 进入阶段五终审；exit 1 → halt，回退豆包重做
+
 ### 阶段五：终审与归档
 
 1. 读取 Agent 4 的追溯日志，检查：POLARITY_VIOLATION / 答案键联动 / 回滚项
@@ -307,7 +342,8 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 3. **检查附录页码真实性（HC-10）**：扫描「教材知识点页码索引」表，检测占位符页码和缺失页码。如检测到 `PLACEHOLDER_DETECTED` 或 `MISSING_PAGE`，自动从正文各模块考点速记表提取真实页码替换
 4. **检查考研真题配额（HC-18）**：运行 `python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json`；exit 1 → 核对真题候选与覆盖情况，确无覆盖则在报告中标注「无真题覆盖」后放行
 5. **检查最终交付 MD（2026-08-20 起强制）**：`最终产物/{batchID}/ALL_questions_FIXED.md` 必须存在（GATE-A4 后由 export-md 生成），抽查 3 题确认 ✅ 答案标记与 JSON 一致
-6. 汇总输出：
+6. **检查插图完整性（HC-19，配图范围科目强制）**：运行 `python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp`；exit 1 → 回退豆包补图；统计图谱复用/AI 生成张数供汇总
+7. 汇总输出：
    ```
    🏁 批次 [ID] 执行完成
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -319,6 +355,7 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
    考研真题占比：X%（目标≈20%，PASS / 未达标⚠️ / 无真题覆盖）
    术语附录：已生成 / 缺失⚠️
    页码附录：真实 / 占位符⚠️ / 缺失⚠️
+   插图：X 张（图谱复用 Y / AI 生成 Z / 缺失⚠️；配图范围科目）
    最终产物位置：最终产物/\[批次ID]\（JSON + MD 双格式）
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    🔴 请审查升级告警项后签收。

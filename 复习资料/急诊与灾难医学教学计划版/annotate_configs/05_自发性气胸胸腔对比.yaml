@@ -1,0 +1,23 @@
+image: raw/05_自发性气胸胸腔对比_raw.png
+output: annotated/05_自发性气胸胸腔对比.png
+fixes:
+  - box: [100, 120, 320, 165]
+    text: 正常：肺充盈贴壁
+    mode: label
+    anchor: [260, 300]
+  - box: [70, 820, 320, 865]
+    text: 肺完全膨胀
+    mode: label
+    anchor: [200, 520]
+  - box: [620, 120, 860, 165]
+    text: 气胸：肺向肺门萎陷
+    mode: label
+    anchor: [740, 300]
+  - box: [560, 230, 940, 275]
+    text: 胸膜腔积气（无肺纹理）
+    mode: label
+    anchor: [590, 330]
+  - box: [560, 820, 760, 865]
+    text: 萎陷的肺
+    mode: label
+    anchor: [660, 540]

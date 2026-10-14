@@ -1,0 +1,33 @@
+type: grid
+title: START 四色分拣（红黄绿黑）
+subtitle: 急诊与灾难医学 M11 灾难现场医学救援（确定性图谱通道）
+cols: 2
+output: annotated/25_START四色分拣.png
+webp: images_webp/25_START四色分拣.webp
+items:
+  - title: 红·立即救治
+    color: red
+    lines:
+      - 第一优先
+      - 伤势严重、威胁生命
+      - 立即救治与转运
+      - 维持呼吸循环稳定
+  - title: 黄·延迟救治
+    color: yellow
+    lines:
+      - 第二优先
+      - 伤重但暂无生命危险
+      - 查明并控制病理生理紊乱
+  - title: 绿·等待救治
+    color: green
+    lines:
+      - 第三优先
+      - 轻伤、可走动
+      - 处理隐匿低氧/代谢性酸中毒
+  - title: 黑·期待救治
+    color: gray
+    lines:
+      - 零优先
+      - 存活可能性极小
+      - 放弃、有限资源最大化
+note: START“30-2-可以-做”：呼吸<30次/分、毛细血管再充盈<2s、能遵令行走；30~60s完成初判

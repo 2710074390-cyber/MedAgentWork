@@ -1,0 +1,28 @@
+image: raw/44_AChE磷酰化ACh蓄积_raw.png
+output: annotated/44_AChE磷酰化ACh蓄积.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [250, 145, 450, 195]
+    text: "突触前膜"
+    mode: label
+    anchor: [350, 260]
+  - box: [430, 200, 620, 250]
+    text: "ACh释放"
+    mode: label
+    anchor: [470, 400]
+  - box: [500, 230, 700, 280]
+    text: "ACh蓄积"
+    mode: label
+    anchor: [580, 360]
+  - box: [600, 470, 770, 520]
+    text: "AChE失活"
+    mode: label
+    anchor: [650, 418]
+  - box: [420, 690, 730, 745]
+    text: "有机磷(OPI)磷酰化AChE"
+    mode: label
+    anchor: [530, 672]
+  - box: [780, 380, 960, 430]
+    text: "M/N受体"
+    mode: label
+    anchor: [760, 450]

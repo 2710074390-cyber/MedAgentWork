@@ -1,0 +1,31 @@
+image: raw/05_阑尾解剖与麦氏点_raw.png
+output: annotated/05_阑尾解剖与麦氏点.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [380, 55, 520, 100]
+    text: "升结肠"
+    mode: label
+    anchor: [450, 150]
+  - box: [700, 430, 800, 475]
+    text: "回肠"
+    mode: label
+    anchor: [680, 478]
+  - box: [560, 380, 680, 425]
+    text: "回盲瓣"
+    mode: label
+    anchor: [558, 470]
+  - box: [300, 580, 400, 625]
+    text: "盲肠"
+    mode: label
+    anchor: [420, 610]
+  - box: [600, 830, 800, 878]
+    text: "阑尾（常见盆位）"
+    mode: label
+    anchor: [640, 858]
+  - box: [600, 690, 820, 735]
+    text: "阑尾位置变异（虚线）"
+    mode: label
+    anchor: [650, 712]
+  - box: [30, 800, 360, 900]
+    text: "麦氏点：脐与右髂前上棘\n连线中外1/3交点"
+    mode: overlay

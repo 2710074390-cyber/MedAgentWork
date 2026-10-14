@@ -1,0 +1,25 @@
+image: raw/17_骨肿瘤X线征象_raw.png
+output: annotated/17_骨肿瘤X线征象.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [60, 800, 300, 850]
+    text: "Codman三角"
+    mode: label
+  - box: [380, 800, 620, 850]
+    text: "葱皮样骨膜反应"
+    mode: label
+  - box: [700, 800, 940, 850]
+    text: "日光射线征"
+    mode: label
+  - box: [50, 360, 310, 405]
+    text: "骨膜被肿瘤掀起"
+    mode: label
+    anchor: [250, 470]
+  - box: [380, 360, 620, 405]
+    text: "层状新生骨"
+    mode: label
+    anchor: [430, 470]
+  - box: [700, 360, 940, 405]
+    text: "瘤骨呈针状放射"
+    mode: label
+    anchor: [780, 470]

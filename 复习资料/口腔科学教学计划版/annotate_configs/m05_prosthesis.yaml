@@ -1,0 +1,28 @@
+image: raw/m05_prosthesis_raw.jpg
+
+output: annotated/m05_prosthesis.yaml.png
+
+font: C:\Windows\Fonts\msyhbd.ttc
+
+fixes:
+  - box: [120, 640, 210, 835]
+    text: "嵌体"
+    mode: overlay
+  - box: [200, 580, 290, 775]
+    text: "贴面"
+    mode: overlay
+  - box: [280, 520, 385, 725]
+    text: "全冠"
+    mode: overlay
+  - box: [370, 465, 470, 675]
+    text: "桩核冠"
+    mode: overlay
+  - box: [450, 410, 590, 625]
+    text: "固定桥"
+    mode: overlay
+  - box: [570, 330, 720, 515]
+    text: "可摘局部义齿"
+    mode: overlay
+  - box: [710, 250, 895, 485]
+    text: "全口义齿"
+    mode: overlay

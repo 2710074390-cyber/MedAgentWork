@@ -1,0 +1,21 @@
+type: flow
+title: 产后子宫复旧时间线
+subtitle: 妇产科学 M9 正常产褥（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/15_产后子宫复旧示意图.png
+webp: images_webp/15_产后子宫复旧示意图.webp
+steps:
+  - title: 胎盘刚娩出
+    color: blue
+    lines: ["宫底约在脐下一指", "子宫重约 1000g", "宫颈呈袖口状开放"]
+  - title: 产后第 1 日
+    color: teal
+    lines: ["宫底略上升至脐平", "以后每日下降 1~2cm", "血性恶露 3~4 日"]
+  - title: 产后 10 日
+    color: green
+    lines: ["子宫降入骨盆腔内", "腹部扪不到宫底", "浆液性恶露约 10 日"]
+  - title: 产后 6 周
+    color: orange
+    lines: ["恢复非孕期大小", "重约 50~70g", "白色恶露约 3 周净"]
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核

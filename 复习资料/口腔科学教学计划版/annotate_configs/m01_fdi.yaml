@@ -1,0 +1,25 @@
+image: raw/m01_fdi_raw.jpg
+
+output: annotated/m01_fdi.yaml.png
+
+font: C:\Windows\Fonts\msyhbd.ttc
+
+fixes:
+  - box: [400, 160, 600, 210]
+    text: "上颌"
+    mode: label
+  - box: [400, 780, 600, 830]
+    text: "下颌"
+    mode: label
+  - box: [620, 300, 670, 350]
+    text: "1"
+    mode: label
+  - box: [320, 300, 370, 350]
+    text: "2"
+    mode: label
+  - box: [620, 700, 670, 750]
+    text: "3"
+    mode: label
+  - box: [320, 700, 370, 750]
+    text: "4"
+    mode: label

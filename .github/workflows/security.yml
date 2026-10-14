@@ -1,0 +1,69 @@
+name: Security Audit
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 0'  # 每周日运行
+
+jobs:
+  dependency-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install safety
+        run: pip install safety
+      
+      - name: Check dependencies
+        run: safety check -r requirements.txt
+        continue-on-error: true  # 不阻断CI，仅报告
+      
+      - name: Install pip-audit
+        run: pip install pip-audit
+      
+      - name: Audit dependencies
+        run: pip-audit -r requirements.txt
+        continue-on-error: true
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Scan for secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --only-verified
+
+  code-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install bandit
+        run: pip install bandit[toml]
+      
+      - name: Run bandit security linter
+        run: bandit -r scripts/ -f json -o bandit-report.json || true
+      
+      - name: Upload bandit report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bandit-report
+          path: bandit-report.json

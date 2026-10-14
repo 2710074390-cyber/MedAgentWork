@@ -1,0 +1,237 @@
+/* ============================================================================
+   MedAgentWork — Design Tokens v1.0
+   单一事实来源（Single Source of Truth）
+
+   用法：构建时把本文件内容内联进产物 <style> 的最前面（保持零外部依赖）。
+         <style>{{ TOKENS_CSS }}{{ 各模板自己的组件样式 }}</style>
+
+   架构：三层令牌，禁止跨层引用
+     Layer 1  primitive  原始色阶/尺度 —— 只描述"是什么"，禁止在组件里直接用
+     Layer 2  semantic   语义角色     —— 只描述"干什么用"，组件优先用这一层
+     Layer 3  component  组件专用     —— 仅当语义层无法表达时才新增
+
+   主题：默认浅色（打印/PDF 友好）；[data-theme="dark"] 深色（屏幕长读）。
+         两套主题必须定义同一组语义令牌名，缺一个即为 bug。
+   ========================================================================= */
+
+/* ============================ Layer 1 · Primitive ========================= */
+:root {
+  /* 中性灰阶 —— 冷调，避免纯灰发闷 */
+  --p-neutral-0:   #ffffff;
+  --p-neutral-25:  #fafbfc;
+  --p-neutral-50:  #f5f7fa;
+  --p-neutral-100: #eef1f5;
+  --p-neutral-200: #e2e8f0;
+  --p-neutral-300: #cbd5e1;
+  --p-neutral-400: #94a3b8;
+  --p-neutral-500: #64748b;
+  --p-neutral-600: #475569;
+  --p-neutral-700: #334155;
+  --p-neutral-800: #1e293b;
+  --p-neutral-850: #171c26;
+  --p-neutral-900: #101113;
+  --p-neutral-950: #0a0a0a;
+
+  /* 品牌蓝 —— 医学场景取"冷静、可信"，避免高饱和刺眼 */
+  --p-blue-50:  #eef5ff;
+  --p-blue-100: #dbeafe;
+  --p-blue-300: #9cc0ff;
+  --p-blue-500: #679efe;
+  --p-blue-600: #4a86e8;
+  --p-blue-700: #2563eb;
+  --p-blue-800: #1a3870;
+
+  /* 状态色：每种三档（fg / bg / border），够用即可 */
+  --p-green-50:  #ecfdf5;
+  --p-green-600: #059669;
+  --p-green-700: #047857;
+  --p-amber-50:  #fffbeb;
+  --p-amber-600: #d97706;
+  --p-red-50:    #fef2f2;
+  --p-red-600:   #dc2626;
+  --p-violet-50: #f5f3ff;
+  --p-violet-600:#7c3aed;
+  --p-cyan-50:   #ecfeff;
+  --p-cyan-600:  #0891b2;
+
+  /* 字号尺度：模数 ~1.2，8 档封顶（替代现状 5~25 档） */
+  --p-text-xs:   12px;   /* 角标、元信息、代码 */
+  --p-text-sm:   13px;   /* 辅助说明、表格 */
+  --p-text-base: 14.5px; /* 正文 —— 医学长文取偏大值，降低长时间阅读疲劳 */
+  --p-text-md:   16px;   /* 强调正文、题干 */
+  --p-text-lg:   18px;   /* 小节标题 h3 */
+  --p-text-xl:   22px;   /* 章节标题 h2 */
+  --p-text-2xl:  28px;   /* 篇标题 h1 */
+  --p-text-3xl:  34px;   /* 封面主标题，仅在落地页使用 */
+
+  /* 行高：正文松、标题紧 —— 这是"层级感"最省力的来源 */
+  --p-leading-tight:  1.25;  /* 标题 */
+  --p-leading-snug:   1.5;   /* 表格、列表 */
+  --p-leading-normal: 1.75;  /* 正文（中文长文） */
+  --p-leading-loose:  1.9;   /* 摘要、导语 */
+
+  /* 字重：只用 4 档，避免"到处半粗" */
+  --p-weight-normal:   400;
+  --p-weight-medium:   500;
+  --p-weight-semibold: 600;
+  --p-weight-bold:     700;
+
+  /* 间距：8px 基准，7 档 */
+  --p-space-1: 4px;
+  --p-space-2: 8px;
+  --p-space-3: 12px;
+  --p-space-4: 16px;
+  --p-space-5: 24px;
+  --p-space-6: 32px;
+  --p-space-7: 48px;
+  --p-space-8: 64px;
+
+  /* 圆角：4 档（替代现状 3~14 档） */
+  --p-radius-sm:   6px;
+  --p-radius-md:   10px;
+  --p-radius-lg:   14px;
+  --p-radius-pill: 999px;
+
+  /* 字体栈：中文优先，等宽用于 ASCII 图/公式/代码 */
+  --p-font-sans: "PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --p-font-mono: "Cascadia Code","JetBrains Mono","SF Mono",Consolas,"Noto Sans Mono CJK SC",Menlo,monospace;
+
+  /* 内容宽度：正文单栏 720px 是中文长文可读上限（约 38~42 字/行） */
+  --p-measure: 720px;
+  --p-container: 1136px;
+}
+
+/* ============================ Layer 2 · Semantic ========================== */
+/* 浅色（默认）—— 打印/PDF 首选 */
+:root {
+  /* 表面 */
+  --bg:            var(--p-neutral-100);
+  --bg-subtle:     var(--p-neutral-50);
+  --bg-elevated:   var(--p-neutral-0);
+  --bg-inset:      var(--p-neutral-200);
+  --bg-overlay:    rgba(16, 17, 19, 0.55);
+
+  /* 文字：三档足够，禁止再细分 */
+  --fg:            var(--p-neutral-800);
+  --fg-muted:      var(--p-neutral-600);
+  --fg-subtle:     var(--p-neutral-500);
+  --fg-on-brand:   var(--p-neutral-0);
+
+  /* 描边 */
+  --border:        var(--p-neutral-200);
+  --border-strong: var(--p-neutral-300);
+
+  /* 品牌 */
+  --brand:         var(--p-blue-700);
+  --brand-hover:   var(--p-blue-800);
+  --brand-soft:    var(--p-blue-50);
+
+  /* 状态（每种给 fg / bg / border 三件套，组件不许自己拼） */
+  --success:        var(--p-green-700);
+  --success-bg:     var(--p-green-50);
+  --success-border: #a7f3d0;
+  --warning:        var(--p-amber-600);
+  --warning-bg:     var(--p-amber-50);
+  --warning-border: #fde68a;
+  --danger:         var(--p-red-600);
+  --danger-bg:      var(--p-red-50);
+  --danger-border:  #fecaca;
+  --info:           var(--p-cyan-600);
+  --info-bg:        var(--p-cyan-50);
+  --info-border:    #a5f3fc;
+
+  /* 掌握度（复习资料专用语义，替代 --color-master/familiar/... 的散装命名） */
+  --tone-mastered:  var(--p-green-700);   /* 已掌握 */
+  --tone-familiar:  var(--p-blue-700);    /* 熟悉 */
+  --tone-learning:  var(--p-amber-600);   /* 待巩固 */
+  --tone-tip:       var(--p-violet-600);  /* 提示/口诀 */
+
+  /* 阴影：3 档，且必须用色相偏移而非纯黑（纯黑发脏） */
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+  --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.12);
+
+  color-scheme: light;
+}
+
+/* 深色 —— 屏幕长读首选；对应现有 obsidian 主题 */
+:root[data-theme="dark"],
+:root[data-theme="obsidian"] {
+  --bg:            var(--p-neutral-950);
+  --bg-subtle:     #0d0f12;
+  --bg-elevated:   var(--p-neutral-900);
+  --bg-inset:      var(--p-neutral-850);
+  --bg-overlay:    rgba(0, 0, 0, 0.6);
+
+  --fg:            #e6e8eb;
+  --fg-muted:      #9aa4b2;
+  --fg-subtle:     #6b7480;
+  --fg-on-brand:   var(--p-neutral-950);
+
+  --border:        rgba(255, 255, 255, 0.10);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  --brand:         var(--p-blue-500);
+  --brand-hover:   var(--p-blue-300);
+  --brand-soft:    rgba(103, 158, 254, 0.14);
+
+  --success:        #34d399;
+  --success-bg:     rgba(52, 211, 153, 0.12);
+  --success-border: rgba(52, 211, 153, 0.35);
+  --warning:        #febc2e;
+  --warning-bg:     rgba(254, 188, 46, 0.12);
+  --warning-border: rgba(254, 188, 46, 0.35);
+  --danger:         #ff6b63;
+  --danger-bg:      rgba(255, 107, 99, 0.12);
+  --danger-border:  rgba(255, 107, 99, 0.35);
+  --info:           #53dfdd;
+  --info-bg:        rgba(83, 223, 221, 0.12);
+  --info-border:    rgba(83, 223, 221, 0.35);
+
+  --tone-mastered:  #34d399;
+  --tone-familiar:  var(--p-blue-300);
+  --tone-learning:  #febc2e;
+  --tone-tip:       #a882ff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.55);
+
+  color-scheme: dark;
+}
+
+/* ============================ Layer 3 · Component ========================= */
+/* 组件令牌：只放"语义层表达不了"的，且必须引用 Layer 2 */
+:root {
+  --radius-card:   var(--p-radius-md);
+  --radius-input:  var(--p-radius-sm);
+  --radius-badge:  var(--p-radius-pill);
+
+  --font-body:     var(--p-font-sans);
+  --font-code:     var(--p-font-mono);
+
+  --card-bg:       var(--bg-elevated);
+  --card-border:   var(--border);
+  --card-shadow:   var(--shadow-sm);
+
+  --topbar-bg:     var(--bg-elevated);
+  --topbar-border: var(--border);
+  --nav-h:         60px;
+
+  --focus-ring:    0 0 0 2px var(--bg), 0 0 0 4px var(--brand);
+  --duration-fast: 150ms;
+  --duration-base: 220ms;
+  --ease-out:      cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ============================ 基础排版（层级） ============================ */
+/* 标题层级必须完整定义 —— 现状 5 个模板里有 2 个只写了 h1，
+   h2~h4 落到浏览器默认样式，是"层级不清"的直接原因。 */
+:root {
+  --h1-size: var(--p-text-2xl);  --h1-weight: var(--p-weight-bold);
+  --h2-size: var(--p-text-xl);   --h2-weight: var(--p-weight-semibold);
+  --h3-size: var(--p-text-lg);   --h3-weight: var(--p-weight-semibold);
+  --h4-size: var(--p-text-md);   --h4-weight: var(--p-weight-semibold);
+  --h5-size: var(--p-text-base); --h5-weight: var(--p-weight-medium);
+  --h6-size: var(--p-text-sm);   --h6-weight: var(--p-weight-medium);
+}

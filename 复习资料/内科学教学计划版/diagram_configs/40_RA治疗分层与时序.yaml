@@ -1,0 +1,26 @@
+type: flow
+title: RA 治疗分层与时序
+subtitle: 内科学 风湿性疾病·M2 类风湿关节炎（确定性图谱通道）
+direction: horizontal
+numbered: true
+output: annotated/40_RA治疗分层与时序.png
+webp: images_webp/40_RA治疗分层与时序.webp
+steps:
+- title: 对症快起效（治标）
+  color: orange
+  lines:
+  - NSAIDs 抗炎镇痛、糖皮质激素快速消炎
+  - 不控制病情、不防骨破坏
+- title: 尽早 DMARDs（治本）
+  color: blue
+  lines:
+  - 确诊后尽早用
+  - 首选甲氨蝶呤
+  - 起效1-3月、可延缓/防止骨破坏
+- title: 难治/重症升级
+  color: purple
+  lines:
+  - 生物 DMARDs（TNF-α拮抗剂等）
+  - JAK 抑制剂（托法替布）
+  - 多与甲氨蝶呤联用
+note: 内容依据人卫《内科学》第9版；render_diagram.py确定性渲染

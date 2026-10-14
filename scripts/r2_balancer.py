@@ -8,8 +8,6 @@ R2选项平衡器 v2.0 — 绝后患版
 import json, sys, re, argparse, os
 from pathlib import Path
 
-# v2.0 (2026-08-20 审查修复): 缺失该行时 GBK 控制台打印 ⚠/→ 等字符直接
-# UnicodeEncodeError 崩溃（实测复现）
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
 # ── 语义扩充词典 ──
@@ -92,9 +90,6 @@ def balance_options(questions, verbose=False):
 
         if changed:
             # 重新检查
-            # v2.0 (2026-08-20 审查修复): min/max 赋值此前颠倒（mn2 取到最大值、
-            # mx2 取到最小值 → mx2/mn2 = min/max ≤ 1 恒判成功、退出码恒 0，
-            # 工具自欺）；且"初始已违反但扩充失败"的题此前被静默放过。
             lengths2 = {o['label']: len(o['text']) for o in opts}
             mn2, mx2 = min(lengths2.values()), max(lengths2.values())
             if mn2 > 0 and mx2 / mn2 <= 2.0:

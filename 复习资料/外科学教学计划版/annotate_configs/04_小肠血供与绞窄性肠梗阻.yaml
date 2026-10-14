@@ -1,0 +1,25 @@
+image: raw/04_小肠血供与绞窄性肠梗阻_raw.png
+output: annotated/04_小肠血供与绞窄性肠梗阻.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [80, 270, 290, 320]
+    text: "正常血供"
+    mode: label
+  - box: [395, 270, 605, 320]
+    text: "绞窄·静脉淤血"
+    mode: label
+  - box: [715, 270, 925, 320]
+    text: "缺血坏死"
+    mode: label
+  - box: [50, 700, 310, 745]
+    text: "系膜动脉弓通畅"
+    mode: label
+    anchor: [180, 520]
+  - box: [370, 700, 630, 745]
+    text: "肠管扭转·血管拧闭"
+    mode: label
+    anchor: [500, 540]
+  - box: [700, 700, 950, 745]
+    text: "血供中断·肠管坏死"
+    mode: label
+    anchor: [820, 540]

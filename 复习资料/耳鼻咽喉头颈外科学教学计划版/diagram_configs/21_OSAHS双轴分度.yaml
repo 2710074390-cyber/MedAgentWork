@@ -1,0 +1,11 @@
+type: grid
+title: 成人OSAHS双轴分度（AHI+最低SaO₂）
+subtitle: 耳鼻咽喉头颈外科学 M4 咽科学（确定性图谱通道）
+cols: 3
+output: annotated/21_OSAHS双轴分度.png
+webp: images_webp/21_OSAHS双轴分度.webp
+items:
+  - {title: 轻度, color: green, lines: ["AHI: 5~15 次/h", "最低SaO₂: 85~90%", "报告: 轻度OSA合并轻度低氧血症"]}
+  - {title: 中度, color: orange, lines: ["AHI: ＞15~30 次/h", "最低SaO₂: 80~＜85%", "报告: 中度OSA合并中度低氧血症"]}
+  - {title: 重度, color: red, lines: ["AHI: ＞30 次/h", "最低SaO₂: ＜80%", "报告: 重度OSA合并重度低氧血症"]}
+note: 内容依据人卫《耳鼻咽喉头颈外科学》第9版；render_diagram.py确定性渲染

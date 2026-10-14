@@ -1,0 +1,28 @@
+image: raw/01_腹股沟区解剖与疝_raw.png
+output: annotated/01_腹股沟区解剖与疝.png
+font: C:\Windows\Fonts\msyhbd.ttc
+fixes:
+  - box: [120, 95, 330, 145]
+    text: "腹壁肌层"
+    mode: label
+    anchor: [250, 215]
+  - box: [60, 330, 200, 378]
+    text: "腹膜"
+    mode: label
+    anchor: [180, 360]
+  - box: [150, 250, 330, 298]
+    text: "深环（内环）"
+    mode: label
+    anchor: [343, 338]
+  - box: [660, 600, 850, 648]
+    text: "浅环（外环）"
+    mode: label
+    anchor: [661, 668]
+  - box: [380, 250, 660, 300]
+    text: "腹股沟管（精索穿行）"
+    mode: label
+    anchor: [480, 385]
+  - box: [250, 640, 520, 690]
+    text: "直疝三角（Hesselbach三角）"
+    mode: label
+    anchor: [470, 560]

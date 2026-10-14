@@ -1,0 +1,36 @@
+type: grid
+title: 常用女性避孕方法对比
+subtitle: 妇产科学 M14 不孕症与避孕（确定性图谱通道）
+cols: 2
+output: annotated/33_常用女性避孕方法对比.png
+webp: images_webp/33_常用女性避孕方法对比.webp
+items:
+  - title: 宫内节育器（IUD）
+    color: blue
+    lines:
+      - 异物刺激内膜损伤＋慢性炎症
+      - 铜离子毒精毒胚、干扰着床
+      - 月经净后3~7日放置
+      - 使用5~10年
+  - title: 复方短效口服避孕药（COC）
+    color: teal
+    lines:
+      - 孕激素为主抑制排卵
+      - 改变宫颈黏液/内膜/输卵管
+      - 连服21日停7日
+      - 禁忌血栓/肝病/乳腺/吸烟>35
+  - title: 避孕套
+    color: green
+    lines:
+      - 物理屏障阻止精子入阴道
+      - 哺乳期最佳、兼防性病
+      - 每次全程正确使用
+      - 避孕率93%~95%
+  - title: 紧急避孕
+    color: orange
+    lines:
+      - 延迟/阻止排卵、影响着床
+      - 口服紧急避孕药72h内
+      - 含铜IUD 5日(120h)内、失败率<1%
+      - 仅补救、不能替代常规避孕
+note: 内容依据人卫《妇产科学》第9版；render_diagram.py 确定性渲染，文字与结构可复核
