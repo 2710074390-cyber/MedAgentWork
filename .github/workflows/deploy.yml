@@ -26,5 +26,17 @@ jobs:
       - name: Install wrangler
         run: npm i -g wrangler@4.121.0
 
+      # 组装站点上传目录（白名单）：Cloudflare Pages 的 `wrangler pages deploy`
+      # 不识别根目录 .assetsignore（该机制仅 Workers 静态资产支持），若直接以仓库根
+      # 为输出，会把 scripts/ question_bank/ 中间产物/ 复习资料/ 等非站点文件一并
+      # 上传公开。此处与本地脚本 scripts/deploy_site.ps1 使用同一白名单。
+      - name: Stage site files (whitelist)
+        run: |
+          mkdir -p _stage
+          for it in index.html _headers _redirects functions 大三下 大四上; do
+            if [ -e "$it" ]; then cp -R "$it" _stage/; fi
+          done
+          ls -1 _stage
+
       - name: Deploy to Cloudflare Pages
-        run: wrangler pages deploy --branch main
+        run: wrangler pages deploy _stage --branch main

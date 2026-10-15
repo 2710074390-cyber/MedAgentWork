@@ -105,12 +105,28 @@ if ($LASTEXITCODE -ne 0) { Write-Host "[X] worktree 创建失败" -ForegroundCol
 Write-Host "    worktree: $worktree"
 
 $failed = $false
+$stage = $null
 try {
-  # ---------- 3) 部署 ----------
+  # ---------- 3) 组装站点上传目录（白名单） ----------
+  # 背景（2026-10-15）：Cloudflare Pages 的 `wrangler pages deploy` 不识别根目录
+  # .assetsignore（该机制仅 Workers 静态资产支持），把 scripts/ question_bank/
+  # 中间产物/ 复习资料/ 等「已提交但非站点」文件一并上传，导致站点可直链下载。
+  # 故部署前按白名单组装独立上传目录；CI 侧 deploy.yml 采用同一白名单，双通道一致。
+  Write-Step "组装站点上传目录（白名单）..."
+  $stage = Join-Path (Split-Path $repo -Parent) "_medagentwork-site"
+  if (Test-Path $stage) { Remove-Item -Recurse -Force $stage }
+  New-Item -ItemType Directory -Force -Path $stage | Out-Null
+  foreach ($it in @('index.html', '_headers', '_redirects', 'functions', '大三下', '大四上')) {
+    $s = Join-Path $worktree $it
+    if (Test-Path $s) { Copy-Item $s (Join-Path $stage $it) -Recurse -Force }
+  }
+  Write-Host "    stage: $stage"
+
+  # ---------- 4) 部署 ----------
   Write-Step "部署到 Cloudflare Pages（--branch $Branch）..."
-  Push-Location $worktree
+  Push-Location $repo   # 保持仓库根（读取 wrangler.toml：name / KV 绑定）
   try {
-    wrangler pages deploy --branch $Branch
+    wrangler pages deploy $stage --branch $Branch
     if ($LASTEXITCODE -ne 0) { throw "wrangler pages deploy 失败（exit $LASTEXITCODE）" }
   } finally {
     Pop-Location
@@ -122,6 +138,9 @@ catch {
   $failed = $true
 }
 finally {
+  if ($stage -and (Test-Path $stage)) {
+    Remove-Item -Recurse -Force $stage -ErrorAction SilentlyContinue
+  }
   if (-not $Keep) {
     Write-Step "清理 worktree..."
     git -C $repo worktree remove $worktree --force 2>$null

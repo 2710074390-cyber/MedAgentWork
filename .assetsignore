@@ -1,4 +1,10 @@
-# Wrangler Pages 部署排除清单（.assetsignore，gitignore 语法）
+# 站点「不上传」清单（参考）
+# ⚠️ 2026-10-15 实测：Cloudflare Pages 的 `wrangler pages deploy` **不识别本文件**
+#    （.assetsignore 机制仅对 Workers 静态资产生效）。若直接以仓库根为输出目录，
+#    下列路径会被一并上传公开。真正的排除改由部署端「白名单」实现：
+#      · 本地：scripts/deploy_site.ps1   · CI：.github/workflows/deploy.yml
+#    二者均只上传 index.html / _headers / functions / 大三下 / 大四上。
+#    本文件保留，仅作「哪些内容不应上站」的说明之用。
 # 站点仅需：index.html、functions/、大三下/、大四上/ 及根目录引用的静态资源
 # 其余为 RAG/教材/脚本/测试/中间产物，体积大或涉版权，不上传
 

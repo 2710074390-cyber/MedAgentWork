@@ -65,6 +65,7 @@ Obsidian产物/_source/
 node_modules/
 dist/
 .cache/
+_stage/
 
 # wrangler 缓存（含账户信息，禁止上传）
 .wrangler/
