@@ -241,17 +241,35 @@ body {
 
 @media print {
 
+  /* ---------- 7.0 导出保真（2026-10-15 修复；契约 E4 / 自检 V16） ----------
+     复习资料的强调一律写在 HTML <b> 里（E1 禁用 **）。实测（PyMuPDF 逐 span 查字体）：
+     Chromium 打印时，正文若落在**无真粗体字面的宋体系**（SimSun/宋体），内联 <b> 不会变粗
+     → PDF 里「加粗全部消失」；标题因显式 font-weight 仍会回落到雅黑粗体。
+     故此处对加粗元素显式声明字重 + 指定**有真粗体字面**的字体（雅黑/思源黑）。
+     同时彩色 emoji（🔴🟡🟢）与底色在 Chromium 默认 economy 打印模式下可能被丢色，故全局 exact。 */
+  b, strong,
+  .markdown-rendered b, .markdown-rendered strong {
+    font-weight: 700 !important;
+    font-family: "Microsoft YaHei", "Noto Sans CJK SC", "PingFang SC",
+                 "Source Han Sans SC", sans-serif !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
   /* ---------- 7.1 纸张与正文 ---------- */
 
   body {
-    /* 打印专用字体栈：衬线体，更省墨、更像正式教材 */
+    /* 打印专用字体栈：衬线体，更省墨、更像正式教材。
+       末尾追加 emoji 字体，保证 🔴🟡🟢 等彩色字形不落到缺字体的兜底字体上。 */
     --font-print-override: var(--mgw-font-print);
-    font-family: var(--mgw-font-print);
+    font-family: var(--mgw-font-print), "Segoe UI Emoji", "Noto Color Emoji";
   }
 
   .markdown-preview-view,
   .markdown-rendered {
-    font-family: var(--mgw-font-print);
+    font-family: var(--mgw-font-print), "Segoe UI Emoji", "Noto Color Emoji";
     font-size: 11pt;          /* 中文正文 10.5~11pt 是打印甜点 */
     line-height: 1.7;
   }

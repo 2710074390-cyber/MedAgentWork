@@ -273,6 +273,7 @@ python tests/test_check_obsidian.py
 | 论坛有报告 PDF 丢中文字符（需强制 CJK 字体） | `--font-print-override` 显式指定中文字体栈 |
 | 中文需更大行距 | 行高 1.75（西文 1.5 不够） |
 | 中文一行字数过多伤眼 | 行宽 42em（约 35~45 汉字） |
+| **内联 `<b>` 在 PDF 里不发粗 / 🔴🟡🟢 丢色（2026-10-15 实测）** | 打印 CSS 对 `b,strong` 强制 `font-weight:700` + **有真粗体字面**的字体；**不要**让正文只落在宋体（SimSun 无真粗体字面）；全局 `print-color-adjust: exact`；字体栈带 `Segoe UI Emoji`。已在 `scripts/obsidian-snippets/medagentwork-print.css` 的 `@media print` §7.0 固化（契约 E4 / 自检 V16） |
 
 ### 5.6 MinerU 造成的既成事实
 
@@ -336,6 +337,7 @@ mask 边界、HTML block 边界、图片解析、排除规则 —— 全部通�
 - [ ] 导出对话框纸张 = **A4**，页边距 = `Default`（**不要选 `None`**）
 - [ ] 打开导出预览（Better Export PDF）确认分页位置
 - [ ] 抽查 3 处：一个长表格跨页、一处 mermaid、一处图片
+- [ ] **导出保真（E4 / V16）**：抽查 1 处 `<b>` 关键术语为**真粗体**、1 处 🔴🟡🟢 为**彩色**（用 **Chromium 内核阅读器**核验，如 Chrome / Edge；第三方阅读器多不支持彩色 emoji，会误判为"消失"）
 
 ---
 

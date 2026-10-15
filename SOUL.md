@@ -111,6 +111,7 @@
 
 - 禁区：`大三下/` 与 `最终产物/` 内不得产出 `.pdf`；禁止任何脚本调用 weasyprint/pdfkit 等 PDF 工具链。
 - 复习资料 MD 仅使用站端渲染器子集：h1-h6/表格/粗斜体/代码块/**Obsidian Callout（> [!TYPE]）**/**`<details open>`**/列表/hr；**禁 Mermaid**（用 ASCII 图）、禁其它 HTML 标签、禁 YAML front matter。
+- **复习资料导出保真（E4 · 2026-10-15 新增）**：强调一律写 `<b>`（E1），**打印 CSS 必须**对其显式 `font-weight:700 !important` 且字面落在**有真粗体**的字体（雅黑/思源黑），**禁止**正文只落在无粗体字面的宋体系（SimSun/宋体）——否则 Obsidian/Chromium 导出 PDF 时**内联加粗整体消失**；打印样式须全局 `print-color-adjust: exact` 且字体栈带 emoji 字体，保 🔴🟡🟢 **彩色**（否则导出/阅读器中丢色）。导出后必须抽检：1 处 `<b>` 关键术语为真粗体 + 🔴🟡🟢 为彩色（用 Chromium 内核阅读器核验）。实现：`scripts/obsidian-snippets/medagentwork-print.css` 的 `@media print` §7.0；回归防护：`tests/test_obsidian_snippet.py`。
 - 交付前清理流程残留（`📦 复习资料批次 X/Y`、`✅ 批次完成`、`⏭️ 下一批`、`V1-V13 自检报告`）—— 用 `scripts/clean_produce_markup.py`。
 - 押题卷副标题 `PAPER_META.sub` 只允许成品文案（`按考频组卷 · N 题 · 日期`）；**禁止** "统一模板"、"TEST"、内部版本号。
 - 门禁：产物进入 `大三下/` 前必须 `python scripts/verify_produce_rules.py`（FAIL==0）。
