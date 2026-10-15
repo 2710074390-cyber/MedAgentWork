@@ -19,11 +19,15 @@
 
 body {
   /* 中文正文栈：优先思源黑体 / Noto，回落到系统黑体 */
-  --mgw-font-body: "Noto Sans CJK SC", "Source Han Sans SC", "HarmonyOS Sans SC",
-                   "Microsoft YaHei", "PingFang SC", -apple-system, sans-serif;
-  /* 中文打印栈：衬线体更省墨、更接近教材观感 */
-  --mgw-font-print: "Noto Serif CJK SC", "Source Han Serif SC", "SimSun",
-                    "Songti SC", serif;
+  --mgw-font-body: "Noto Sans SC", "Noto Sans CJK SC", "Source Han Sans SC",
+                   "HarmonyOS Sans SC", "Microsoft YaHei", "PingFang SC",
+                   -apple-system, sans-serif;
+  /* 中文打印栈：衬线体更省墨、更接近教材观感。
+     ★2026-10-15 修正：本机装的是「Noto Serif SC」（思源宋体），原写「Noto Serif CJK SC」
+     名字不匹配 → 实际回落到宋体 SimSun（笔画细、导出后显得发灰）。把已安装的名字放最前。
+     想要更「清晰/厚重」：把首个改成本机同样有的 "Noto Sans SC"（思源黑体）或 "Microsoft YaHei"。 */
+  --mgw-font-print: "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC",
+                    "SimSun", "Songti SC", serif;
   /* 代码 / 等宽 */
   --mgw-font-mono: "JetBrains Mono", "Cascadia Mono", Consolas,
                    "Sarasa Mono SC", monospace;
@@ -250,8 +254,8 @@ body {
   b, strong,
   .markdown-rendered b, .markdown-rendered strong {
     font-weight: 700 !important;
-    font-family: "Microsoft YaHei", "Noto Sans CJK SC", "PingFang SC",
-                 "Source Han Sans SC", sans-serif !important;
+    font-family: "Noto Sans SC", "Microsoft YaHei", "Noto Sans CJK SC",
+                 "PingFang SC", "Source Han Sans SC", sans-serif !important;
   }
   * {
     -webkit-print-color-adjust: exact !important;
