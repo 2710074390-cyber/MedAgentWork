@@ -274,7 +274,7 @@ python tests/test_check_obsidian.py
 | 中文需更大行距 | 行高 1.75（西文 1.5 不够） |
 | 中文一行字数过多伤眼 | 行宽 42em（约 35~45 汉字） |
 | **内联 `<b>` 在 PDF 里不发粗 / 🔴🟡🟢 丢色（2026-10-15 实测）** | 打印 CSS 对 `b,strong` 强制 `font-weight:700` + **有真粗体字面**的字体；**不要**让正文只落在宋体（SimSun 无真粗体字面）；全局 `print-color-adjust: exact`；字体栈带 `Segoe UI Emoji`。已在 `scripts/obsidian-snippets/medagentwork-print.css` 的 `@media print` §7.0 固化（契约 E4 / 自检 V16） |
-| **导出后正文笔画发细/发灰（2026-10-15）** | 字体栈里写了本机**未安装**的名字（如 `"Noto Serif CJK SC"`）→ 一路回落到宋体 SimSun（笔画细）。修法：把**本机已装**的名字放最前（本机为 `"Noto Serif SC"` 思源宋体 / `"Noto Sans SC"` 思源黑体 / `"Microsoft YaHei"`）；想更清晰可直接用思源黑体 |
+| **导出后正文笔画发细/发灰（2026-10-15）** | 字体栈里写了本机**未安装**的名字（如 `"Noto Serif CJK SC"`）→ 一路回落到宋体 SimSun（笔画细）。修法：把**本机已装**的名字放最前（本机为 `"Noto Sans SC"` 思源黑体 / `"Noto Serif SC"` 思源宋体 / `"Microsoft YaHei"`）。**现已定正文为 `"Noto Sans SC"`（思源黑体，最清晰）**；如需教材衬线观感，把 `--mgw-font-print` 首项换成 `"Noto Serif SC"` |
 
 ### 5.6 MinerU 造成的既成事实
 

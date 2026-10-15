@@ -22,12 +22,12 @@ body {
   --mgw-font-body: "Noto Sans SC", "Noto Sans CJK SC", "Source Han Sans SC",
                    "HarmonyOS Sans SC", "Microsoft YaHei", "PingFang SC",
                    -apple-system, sans-serif;
-  /* 中文打印栈：衬线体更省墨、更接近教材观感。
-     ★2026-10-15 修正：本机装的是「Noto Serif SC」（思源宋体），原写「Noto Serif CJK SC」
-     名字不匹配 → 实际回落到宋体 SimSun（笔画细、导出后显得发灰）。把已安装的名字放最前。
-     想要更「清晰/厚重」：把首个改成本机同样有的 "Noto Sans SC"（思源黑体）或 "Microsoft YaHei"。 */
-  --mgw-font-print: "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC",
-                    "SimSun", "Songti SC", serif;
+  /* 中文打印栈（★2026-10-15 定为思源黑体）：目标是「清晰、笔画实」。
+     本机已装 Noto Sans SC（思源黑体）/ Noto Serif SC（思源宋体）/ Microsoft YaHei。
+     原栈名 "Noto Serif CJK SC" 本机没有 → 回落宋体（笔画细、发灰），已弃用。
+     想回到衬线（教材观感）：把首项换成 "Noto Serif SC"。 */
+  --mgw-font-print: "Noto Sans SC", "Noto Sans CJK SC", "Source Han Sans SC",
+                    "Microsoft YaHei", "Noto Serif SC", "SimSun", serif;
   /* 代码 / 等宽 */
   --mgw-font-mono: "JetBrains Mono", "Cascadia Mono", Consolas,
                    "Sarasa Mono SC", monospace;
