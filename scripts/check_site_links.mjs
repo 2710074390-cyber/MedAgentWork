@@ -31,11 +31,17 @@ const scripts = [...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(m =
 if (scripts.length !== 1) { console.error(`[X] 期望 1 段 script，实际 ${scripts.length} 段`); process.exit(2); }
 const src = scripts[0];
 
-/* ---------- 2. 切到卡片渲染完成处（之后全是 DOM 副作用） ---------- */
-const CUT = "$('#grid-exam').innerHTML=";
-const cutAt = src.indexOf(CUT);
-if (cutAt < 0) { console.error("[X] 找不到切点 " + CUT); process.exit(2); }
-const core = src.slice(0, cutAt);
+/* ---------- 2. 切到卡片渲染完成处（之后全是 DOM 副作用） ----------
+   2026-10-16 修：原切点写死 `$('#grid-exam').innerHTML=`。站点大换血删掉押题卷分区后，
+   该语句不复存在 ⇒ 门禁第 2 步就 exit 2，Deploy 通道**连续四次红灯**（线上一直靠本地
+   deploy_site.ps1 兜着）。现改为按「第一条卡片渲染语句」定位，任何 `$('#grid-*').innerHTML=`
+   都算；一条都没有才 fail-closed（页面结构真的大改时仍会红，不会静默放行）。 */
+const renderStmt = src.match(/\$\('#grid-[a-z0-9-]+'\)\.innerHTML=/);
+if (!renderStmt) {
+  console.error("[X] 找不到任何卡片渲染语句（$('#grid-*').innerHTML=）——页面结构可能已变，门禁失效");
+  process.exit(2);
+}
+const core = src.slice(0, renderStmt.index);
 
 /* ---------- 3. stub DOM，执行核心脚本 ---------- */
 const stub = {
@@ -105,11 +111,13 @@ const DRIVER = `
     });
   }
 
-  scan(examCard, EXAMS, "大三下·押题卷");
-  scan(bankCard, BANKS, "大三下·题库");
-  scan(reviewCard, REVIEWS, "大三下·复习资料");
-  scan(reviewS1Card, REVIEWS_S1, "大四上·教学版资料");
-  scan(bankCard, BANKS_S1, "大四上·题库");
+  /* 2026-10-16 修：按「当前页面真实存在的卡片族」扫描。原实现写死 scan(examCard, EXAMS)
+     扫押题卷；押题卷分区已随站点大换血删除 ⇒ 求值到这一行会 ReferenceError，门禁失效。
+     用 typeof 守卫（对未声明标识符安全），存在才扫；一条目标都扫不到时下游仍会 fail-closed。 */
+  if (typeof bankCard === "function" && typeof BANKS !== "undefined") scan(bankCard, BANKS, "大三下·题库");
+  if (typeof reviewCard === "function" && typeof REVIEWS !== "undefined") scan(reviewCard, REVIEWS, "大三下·复习资料");
+  if (typeof reviewS1Card === "function" && typeof REVIEWS_S1 !== "undefined") scan(reviewS1Card, REVIEWS_S1, "大四上·教学版资料");
+  if (typeof bankCard === "function" && typeof BANKS_S1 !== "undefined") scan(bankCard, BANKS_S1, "大四上·题库");
   return { BASE: ROOTBASE, convention: HAS_URLAT ? "BASE+urlAt（旧）" : "仓库根相对（新）", targets };
 })();
 `;
