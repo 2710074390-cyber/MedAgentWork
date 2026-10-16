@@ -32,16 +32,24 @@ if (scripts.length !== 1) { console.error(`[X] 期望 1 段 script，实际 ${sc
 const src = scripts[0];
 
 /* ---------- 2. 切到卡片渲染完成处（之后全是 DOM 副作用） ----------
-   2026-10-16 修：原切点写死 `$('#grid-exam').innerHTML=`。站点大换血删掉押题卷分区后，
-   该语句不复存在 ⇒ 门禁第 2 步就 exit 2，Deploy 通道**连续四次红灯**（线上一直靠本地
-   deploy_site.ps1 兜着）。现改为按「第一条卡片渲染语句」定位，任何 `$('#grid-*').innerHTML=`
-   都算；一条都没有才 fail-closed（页面结构真的大改时仍会红，不会静默放行）。 */
-const renderStmt = src.match(/\$\('#grid-[a-z0-9-]+'\)\.innerHTML=/);
+   2026-10-16 修：原切点写死 `$('#grid-exam').innerHTML=`，删分区后该语句不复存在即 exit 2。
+   v2 重设计后渲染写法由 `$('#grid-*').innerHTML=ARR.map(...)` 变为 `if(gN)gN.innerHTML=ARR.map(...)`，
+   故这里同时兼容新旧两种形式：`.map(` 前是 `$('#id').` 或 `gN.` 皆可，并容许可选的一层 `if(...)` 包装；
+   一条都找不到才 fail-closed（页面结构真的大改时仍会红，不会静默放行）。 */
+const renderStmt = src.match(/(?:if\([^)]*\)\s*)?(?:\$\('#[^']*'\)|[A-Za-z_$][\w$]*)\s*\.innerHTML\s*=\s*[A-Za-z_$][\w$]*\.map\(/);
 if (!renderStmt) {
-  console.error("[X] 找不到任何卡片渲染语句（$('#grid-*').innerHTML=）——页面结构可能已变，门禁失效");
+  console.error("[X] 找不到任何卡片渲染语句（$('#grid-*').innerHTML= 或 gN.innerHTML=ARR.map(）——页面结构可能已变，门禁失效");
   process.exit(2);
 }
-const core = src.slice(0, renderStmt.index);
+let cut = renderStmt.index;
+/* v2 把渲染包进 safe('…',()=>{ … })：直接切在渲染语句处会截断函数体（语法错误），
+   故若该 safe(…) 调用尚未闭合，就把切点回退到包裹之前；旧版顶层写法不受影响。 */
+const wrap = src.lastIndexOf("safe(", cut);
+if (wrap >= 0 && wrap < cut) {
+  const seg = src.slice(wrap, cut);
+  if ((seg.match(/\{/g) || []).length > (seg.match(/\}/g) || []).length) cut = wrap;
+}
+const core = src.slice(0, cut);
 
 /* ---------- 3. stub DOM，执行核心脚本 ---------- */
 const stub = {
@@ -69,7 +77,7 @@ g.clearTimeout = () => {};
 g.requestAnimationFrame = () => 0;
 g.fetch = () => Promise.reject(new Error("stub"));
 
-/* ---------- 4. 驱动：渲染每张卡，抽出 onclick 里的真实请求 ---------- */
+/* ---------- 4. 驱动：渲染每张卡，抽出按钮里的真实请求（旧版 onclick / 新版 data-act+data-path） ---------- */
 const DRIVER = `
 ;globalThis.__probe = (function(){
   const targets = [];
@@ -107,6 +115,16 @@ const DRIVER = `
         else { base = ROOTBASE; kind = fnName === "viewOnline" ? "打开" : fnName === "printHTML" ? "打印" : fnName === "previewMD" ? "阅读" : "打印"; }
         targets.push({ label, name: it.name, kind, fn: fnName, path: p, base,
                        url: resolve(base, p), declaredBase: args[3] ? lit(args[3]) : null });
+      }
+      /* 新版无内联 onclick，按钮改走 data-act + data-path 事件委托；一样抽出真实请求路径 */
+      for (const b of h.matchAll(/<button\\b[^>]*>/g)) {
+        const tag = b[0];
+        const act = (tag.match(/data-act="([^"]*)"/) || [])[1];
+        const dp = (tag.match(/data-path="([^"]*)"/) || [])[1];
+        if (!act || !dp) continue;
+        const kind = act === "download" ? "下载" : act === "preview" ? "阅读" : act === "view" ? "打开" : "打印";
+        targets.push({ label, name: it.name, kind, fn: act, path: dp, base: ROOTBASE,
+                       url: resolve(ROOTBASE, dp), declaredBase: null });
       }
     });
   }
