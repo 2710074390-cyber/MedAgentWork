@@ -250,6 +250,18 @@ body {
   animation:enter .8s cubic-bezier(.2,.7,.2,1) .4s forwards;
 }
 .hero-desc b { color:var(--text); font-weight:500; }
+/* 首屏规格条：把「有多少东西、能干什么」做成可扫的卡片，而不是一段散文 */
+.hero-spec {
+  display:flex; flex-wrap:wrap; gap:10px; list-style:none; max-width:560px;
+  opacity:0; transform:translateY(18px); filter:blur(8px);
+  animation:enter .8s cubic-bezier(.2,.7,.2,1) .48s forwards;
+}
+.hero-spec li {
+  display:flex; flex-direction:column; gap:2px; padding:9px 14px; border-radius:10px;
+  background:rgba(255,255,255,0.045); border:1px solid var(--border);
+}
+.hero-spec li b { font-size:13.5px; color:var(--text); font-weight:600; }
+.hero-spec li span { font-size:11.5px; color:var(--text-2); }
 .hero-cta {
   display:flex; flex-wrap:wrap; gap:12px; margin-top:6px;
   opacity:0; transform:translateY(16px); filter:blur(8px);
@@ -908,9 +920,13 @@ body {
         <span class="chip hero-badge"><span>医学复习资料库 · <i>5,791 题 · 23 学科</i></span></span>
         <h1>备考<span class="accent">题严选</span><br>复习<span class="accent">可溯源</span></h1>
         <div class="hero-desc">
-          <p>为<b>临床医学生</b>备考而辑：<b>网页刷题 · 题库 PDF 下载 · 复习手册分层背</b>，打开即用，无需安装任何软件。</p>
-          <p>每道题经<b>质检把关</b>、按考频组卷，可溯源、可回放——<b>刷得放心，背得有据</b>。</p>
+          <p>临床医学生备考资料库 · <b>打开即用，无需安装</b></p>
         </div>
+        <ul class="hero-spec">
+          <li><b>7 科 1,848 题</b><span>在线刷 · 点选项即判分</span></li>
+          <li><b>6 科题库 PDF</b><span>直链下载 · 即点即存</span></li>
+          <li><b>7 册复习手册</b><span>在线研读 · 可打印</span></li>
+        </ul>
         <div class="hero-cta">
           <a class="btn btn-pri" href="/drill">🌐 网页刷题</a>
           <a class="btn btn-sec" href="#reviews" onclick="goTerm('junior2','reviews');return false;">📚 复习手册</a>
@@ -941,27 +957,27 @@ body {
     <span class="g-no">01</span>
     <div class="g-body">
       <b>网页刷题</b><span class="g-where">免安装 · 昵称即入</span>
-      <p>7 科 1,848 题在线刷：点选项即判分、多选确认作答、答题卡任意跳题、判错自动回流错题本。换设备用同一昵称密码即可同步。</p>
+      <p>7 科 1,848 题 · 点选项即判分 · 答题卡跳题 · 换设备同步</p>
     </div>
     <a class="g-go" href="/drill">去刷题 →</a>
   </div>
   <div class="g-step">
     <span class="g-no">02</span>
     <div class="g-body">
-      <b>下载题库 PDF</b><span class="g-where">题库区 ·「下载 PDF」</span>
-      <p>手机存进「文件」App，电脑存到「下载」文件夹。要纸质版：打开后打印，选「另存为 PDF」。</p>
+      <b>下载题库 PDF</b><span class="g-where">题库区</span>
+      <p>直链下载：手机存「文件」App · 电脑存「下载」文件夹</p>
     </div>
     <a class="g-go" href="#banks" onclick="goTerm('junior2','banks')">去下载 →</a>
   </div>
   <div class="g-step">
     <span class="g-no">03</span>
     <div class="g-body">
-      <b>研读复习手册</b><span class="g-where">复习手册区 ·「在线阅读 / 打印 PDF」</span>
-      <p>在线阅读带「掌握 / 熟悉 / 理解」三级标注；「打印 PDF」会打开浏览器打印对话框，可另存为 PDF（由浏览器生成，非站点提供的原生 PDF）。</p>
+      <b>研读复习手册</b><span class="g-where">复习手册区</span>
+      <p>掌握 / 熟悉 / 理解 三级标注 · 在线阅读 · 可打印为 PDF</p>
     </div>
     <a class="g-go" href="#reviews" onclick="goTerm('junior2','reviews')">去研读 →</a>
   </div>
-  <div class="g-tip"><b>💡 常见问题</b><span>忘记密码？换设备登录用同一昵称密码即可同步错题本与收藏。所有资料仅供学习交流。</span></div>
+  <div class="g-tip"><b>💡 提示</b><span>换设备用同一昵称密码即可同步错题本与收藏 · 资料仅供学习交流</span></div>
 </div>
           </div>
         </div>
@@ -1005,21 +1021,21 @@ body {
       <div class="cap-icon">⚙️</div>
       <h3>五阶段管线</h3>
       <span class="cap-meta">PIPELINE · CORDIS 式编排</span>
-      <p>MedMaster 编排者解析意图，五个 Agent 各司其职：出题、质检、修复、成册，阶段门禁强制执行，批次全程可追溯。</p>
+      <p>编排 → 出题 → 质检 → 修复 → 成册；阶段门禁强制，批次全程可追溯。</p>
       <div class="cap-flow"><em><b>medgen</b></em><em>→</em><em><b>medqc</b></em><em>→</em><em><b>medfix</b></em><em>→</em><em><b>medreview</b></em></div>
     </div>
     <div class="cap-card reveal">
       <div class="cap-icon">🧪</div>
       <h3>质量门禁</h3>
       <span class="cap-meta">GATE · D1–D20 质检矩阵</span>
-      <p>选项规范性硬校验 FAIL==0 才放行；二十维质检矩阵交叉验证，GoldenSet 真题锚定；每条修改记录溯源日志，可回放重演。</p>
+      <p>选项硬校验 FAIL==0 才放行 · 二十维质检 · GoldenSet 真题锚定 · 改动可回放。</p>
       <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>fact_check</em></div>
     </div>
     <div class="cap-card reveal">
       <div class="cap-icon">🧬</div>
       <h3>个性化学科 RAG</h3>
       <span class="cap-meta">KNOWLEDGE · 23 学科配置</span>
-      <p>每个学科独立分块策略与检索参数：向量 + 关键词混合检索、重排序、语义保护规则，考频蓝图驱动组卷配平。</p>
+      <p>23 学科独立分块与检索 · 向量 + 关键词混合 · 重排 · 考频蓝图配平。</p>
       <div class="cap-flow"><em>hybrid</em><em>rerank</em><em>calibrated_p</em></div>
     </div>
   </div>
@@ -1038,7 +1054,7 @@ body {
       <div>
         <span class="chip"><span><i>01</i> · 网页刷题</span></span>
         <h3>网页刷题</h3>
-        <p class="q-desc">免安装、昵称即入。7 科 1,848 题在线刷，点选项即时判分，错题自动进错题本，换设备密码登录同步。</p>
+        <p class="q-desc">免安装、昵称即入 · 点选项即时判分 · 错题自动进错题本 · 换设备同步。</p>
         <div class="terminal term-w">
           <div class="term-bar">
             <div class="term-dots"><i></i><i></i><i></i></div>
@@ -1056,7 +1072,7 @@ body {
       <div>
         <span class="chip"><span><i>02</i> · 下载与打印</span></span>
         <h3>下载与打印</h3>
-        <p class="q-desc">所有资料在 GitHub 开源。克隆仓库后可直接浏览源文件，或通过站点一键下载 / 打印 PDF。</p>
+        <p class="q-desc">资料全部在 GitHub 开源 · 站点可直接下载 / 打印 PDF。</p>
         <div class="terminal term-w">
           <div class="term-bar">
             <div class="term-dots"><i></i><i></i><i></i></div>
@@ -1108,9 +1124,9 @@ body {
         <span class="sw-title">MedKit · 医学题库工坊</span>
         <span class="sw-ver" id="sw-ver">正在获取版本…</span>
       </div>
-      <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点，自选 AI 服务商（DeepSeek / 智谱 / 通义 / Kimi），本地一键生成<b>全新题库、押题卷、复习手册</b>。素材与产物全部保存在本机，只花自己的 API Key（整套题约 ¥1~5）。v0.18.0 新发布：<b>错题本变成一个大聊天界面</b>——刷题<b>判错自动进错题本，不用任何导入导出</b>；进去就是一个聊天框，可以直接问「我最近哪个章节最弱」「这些错题有什么共性」，助手<b>只依据你自己的错题作答，答不出就说不知道</b>（每条结论都带来源）。错题本体仍是<b>你自己文件夹里的 markdown</b>（固定放在 <code>~/文档/MedKit错题本/</code>）：不装软件也能读，可丢进网盘 / Git，换机器拷走即用；另带<b>今日复习 SM-2 排程</b>（记得 / 模糊 / 忘了，连续记住两次即判「已掌握」）。刷题体验是<b>医考帮模式</b>：<b>点选项即判分</b>、<b>答题卡</b>跳题、<b>背题模式</b>直接看答案，答对还能自动进下一题，判对归档「已掌握」，越刷越清楚自己差在哪。不想装软件？还有<b>网页体验版</b>：免安装、昵称即入，大四上 7 科 1,848 题在线刷（判错自动进错题本、答题卡任意跳题），手机浏览器直接开刷。</p>
+      <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点 → 本地一键生成<b>题库 / 押题卷 / 复习手册</b>。数据留在本机，只花自己的 API Key（整套题约 ¥1~5）。</p>
       <div class="sw-tags">
-        <em>免费开源</em><em>Windows 7+</em><em>安装包 ≈ 50 MB</em><em>BYOK 自带 Key</em><em>内置更新提醒</em>
+        <em>v0.18.0 · 错题本 = 大聊天界面</em><em>判错自动进错题本</em><em>免费开源</em><em>Windows 7+</em><em>安装包 ≈ 50 MB</em><em>BYOK 自带 Key</em><em>内置更新提醒</em>
       </div>
       <p class="sw-note">MEDKIT → MEDGEN → MEDQC → MEDFIX → MEDREVIEW · DESKTOP EDITION</p>
       <div class="sw-actions">
@@ -1171,7 +1187,7 @@ body {
   </div>
   <div class="deck-tip reveal">
     <span class="tip-icon">💡</span>
-    <p><b>第一次使用？</b> 点击上方任意分类即可进入 · 所有资料都能<b>在线查看</b>、<b>下载保存</b>到手机或电脑，复习手册还可以直接<b>导出为 PDF 打印</b></p>
+    <p><b>第一次使用？</b> 点任一分类进入 · 资料可在手机 / 电脑在线阅读或下载 · 复习手册支持打印为 PDF</p>
   </div>
 </section>
 
@@ -1254,13 +1270,13 @@ body {
         <div class="card-meta">MedKit 网页体验版 · 免安装 · 昵称即入</div>
       </div>
     </div>
-    <p class="card-desc">7 科 1,848 题在线刷：点选项即判分 · 多选确认作答 · 答题卡任意跳题 · 判错自动回流错题本 · 错题重做。进度与错题跟随昵称保留 30 天。</p>
+    <p class="card-desc">7 科 1,848 题在线刷 · 点选项即判分 · 判错自动进错题本 · 进度跟随昵称保留 30 天。</p>
     <div class="btns"><span class="btn btn-pri btn-sm">开始刷题 →</span></div>
   </a>
   <div class="grid" id="grid-review-s1"></div>
   <div class="deck-tip reveal">
     <span class="tip-icon">💡</span>
-    <p><b>什么是教学版资料？</b> 按课程<b>教学计划</b>章节范围成册的主复习资料（教材浓缩型 v5.1），PDF 直链下载后可离线翻阅，也可打印纸质复习。单册约 <b>3–24 MB</b>，点击后由浏览器下载管理器接管（进度见下载栏）。<b>网页刷题已在本分区上线</b>：7 科 1,848 题在线刷，点选项即判分，判错自动进错题本。</p>
+    <p><b>什么是教学版资料？</b> 按课程教学计划成册的教材浓缩版（v5.1）· 单册 3–24 MB · 点即下载，可离线翻阅或打印</p>
   </div>
 </section>
 
