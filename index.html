@@ -829,7 +829,7 @@ body {
       <span class="name">Med<b>Agent</b>Work</span>
     </a>
     <div class="nav-links">
-      <a href="#exams" onclick="goTerm('junior2','exams');return false;">押题卷</a>
+      <a href="/drill">🌐 网页刷题</a>
       <a href="#banks" onclick="goTerm('junior2','banks');return false;">题库</a>
       <a href="#reviews" onclick="goTerm('junior2','reviews');return false;">复习手册</a>
       <a href="#software" onclick="goTerm('home','software');return false;">软件下载</a>
@@ -858,7 +858,7 @@ body {
       <span class="logo">MW</span><span class="name">Med<b>Agent</b>Work</span>
     </div>
     <nav class="mm-links">
-      <a href="#exams" onclick="goTerm('junior2','exams')"><span class="mm-idx">01</span>押题卷</a>
+      <a href="/drill"><span class="mm-idx">01</span>网页刷题</a>
       <a href="#banks" onclick="goTerm('junior2','banks')"><span class="mm-idx">02</span>题库</a>
       <a href="#reviews" onclick="goTerm('junior2','reviews')"><span class="mm-idx">03</span>复习手册</a>
       <a href="#software" onclick="goTerm('home','software')"><span class="mm-idx">04</span>出题软件</a>
@@ -907,18 +907,18 @@ body {
         <span class="chip hero-badge"><span>医学复习资料库 · <i>5,791 题 · 23 学科</i></span></span>
         <h1>备考<span class="accent">题严选</span><br>复习<span class="accent">可溯源</span></h1>
         <div class="hero-desc">
-          <p>为<b>临床医学生</b>备考而辑：<b>押题卷在线刷 · 题库 PDF 下载 · 复习手册分层背</b>，打开即用，无需安装任何软件。</p>
+          <p>为<b>临床医学生</b>备考而辑：<b>网页刷题 · 题库 PDF 下载 · 复习手册分层背</b>，打开即用，无需安装任何软件。</p>
           <p>每道题经<b>质检把关</b>、按考频组卷，可溯源、可回放——<b>刷得放心，背得有据</b>。</p>
         </div>
         <div class="hero-cta">
-          <a class="btn btn-pri" href="#exams" onclick="goTerm('junior2','exams');return false;">👁 在线答题</a>
+          <a class="btn btn-pri" href="/drill">🌐 网页刷题</a>
           <a class="btn btn-sec" href="#reviews" onclick="goTerm('junior2','reviews');return false;">📚 复习手册</a>
           <a class="btn btn-sec" href="#banks" onclick="goTerm('junior2','banks');return false;">📥 题库 PDF</a>
         </div>
       </div>
       <div class="hero-visual">
         <div class="term-tabs">
-          <button class="term-tab active" data-t="run">在线答题</button>
+          <button class="term-tab active" data-t="run">网页刷题</button>
           <button class="term-tab" data-t="guide">使用指南</button>
         </div>
         <div class="terminal">
@@ -928,22 +928,21 @@ body {
             <button class="term-copy" onclick="copyCmd(this)" aria-label="复制命令"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.6" y="5.6" width="7.6" height="7.6" rx="1.4"/><path d="M10.4 3.4H4.6a1.2 1.2 0 0 0-1.2 1.2v5.8"/></svg>Copy</button>
           </div>
           <div class="term-body">
-<pre class="term-pre term-pane" id="term-run" style="font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">medagentwork run --subject 内科学</span>
- <span class="dim">▸ 加载题库注册表 ........... 5,791 题</span>
- <span class="dim">▸ 锚点难度校准 ............. 280 锚点</span>
- <span class="dim">▸ 考频蓝图 ................. 23 学科</span>
- <span class="dim">▸ 门禁校验 validate_options .. <span class="ok">FAIL 0</span></span>
- <span class="ok">✓</span> 管线就绪 · 开始作答
+<pre class="term-pre term-pane" id="term-run" style="font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">medkit-drill enter --nickname 医学生小王</span>
+ <span class="dim">▸ 加载题库 ................. 7 科 1,848 题</span>
+ <span class="dim">▸ 身份校验 ................. 通过</span>
+ <span class="dim">▸ 同步错题本 ............... 12 条</span>
+ <span class="ok">✓</span> 登录成功 · 点选项即判分
  <span class="prompt">$</span> <span class="cursor"></span></pre>
 <div class="guide-panel term-pane" id="term-guide" style="display:none">
   <div class="g-guide-title">⚡ 三步上手 · 全部资料即开即用</div>
   <div class="g-step">
     <span class="g-no">01</span>
     <div class="g-body">
-      <b>在线答题</b><span class="g-where">押题卷区 ·「开始答题」</span>
-      <p>点开任意押题卷，点选项立即判分；答错自动显示解析。进度保存在本机，下次接着刷。</p>
+      <b>网页刷题</b><span class="g-where">免安装 · 昵称即入</span>
+      <p>7 科 1,848 题在线刷：点选项即判分、多选确认作答、答题卡任意跳题、判错自动回流错题本。换设备用同一昵称密码即可同步。</p>
     </div>
-    <a class="g-go" href="#exams" onclick="goTerm('junior2','exams')">去答题 →</a>
+    <a class="g-go" href="/drill">去刷题 →</a>
   </div>
   <div class="g-step">
     <span class="g-no">02</span>
@@ -961,7 +960,7 @@ body {
     </div>
     <a class="g-go" href="#reviews" onclick="goTerm('junior2','reviews')">去研读 →</a>
   </div>
-  <div class="g-tip"><b>💡 常见问题</b><span>点了「开始答题」没反应？多半是浏览器拦了弹窗——点地址栏右侧的拦截图标，选「允许弹窗」即可。所有资料仅供学习交流。</span></div>
+  <div class="g-tip"><b>💡 常见问题</b><span>忘记密码？换设备登录用同一昵称密码即可同步错题本与收藏。所有资料仅供学习交流。</span></div>
 </div>
           </div>
         </div>
@@ -1036,9 +1035,9 @@ body {
   <div class="quick reveal">
     <div class="quick-in">
       <div>
-        <span class="chip"><span><i>01</i> · 在线答题</span></span>
-        <h3>在线答题</h3>
-        <p class="q-desc">无需安装任何软件。打开任意押题卷即可作答，浏览器本地判分，无网络依赖。</p>
+        <span class="chip"><span><i>01</i> · 网页刷题</span></span>
+        <h3>网页刷题</h3>
+        <p class="q-desc">免安装、昵称即入。7 科 1,848 题在线刷，点选项即时判分，错题自动进错题本，换设备密码登录同步。</p>
         <div class="terminal term-w">
           <div class="term-bar">
             <div class="term-dots"><i></i><i></i><i></i></div>
@@ -1046,10 +1045,10 @@ body {
             <button class="term-copy" onclick="copyCmd(this)" aria-label="复制命令"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.6" y="5.6" width="7.6" height="7.6" rx="1.4"/><path d="M10.4 3.4H4.6a1.2 1.2 0 0 0-1.2 1.2v5.8"/></svg>Copy</button>
           </div>
           <div class="term-body" style="min-height:0">
-<pre class="term-pre" style="font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">medagentwork exam --list</span>
- <span class="dim">▸ 内科学 / 精神病学 / 神经病学 / 医患沟通 / 外科学</span>
- <span class="prompt">$</span> <span class="cmd">medagentwork exam --open 内科学</span>
- <span class="br">→</span> <span class="hl">答题器已启动 · 50 题 · 全真模拟</span></pre>
+<pre class="term-pre" style="font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">medkit-drill list</span>
+ <span class="dim">▸ 外科学 / 传染病学 / 眼科学 / 耳鼻咽喉 / 妇产 / 口腔 / 急诊</span>
+ <span class="prompt">$</span> <span class="cmd">medkit-drill start --bank waike</span>
+ <span class="br">→</span> <span class="hl">外科学 · 300 题 · 答题卡就绪</span></pre>
           </div>
         </div>
       </div>
@@ -1138,15 +1137,15 @@ body {
       <span class="chip"><span>内容总览 · <i>选择你的战场</i></span></span>
       <h2>备考资源 <span class="accent">一键直达</span></h2>
     </div>
-    <div class="right"><b>ABSOLUTE FOCUS</b>押题卷 · 题库 · 复习手册<br><span class="right-sub">5,791 题 · 23 学科 · 7 册手册</span></div>
+    <div class="right"><b>ABSOLUTE FOCUS</b>网页刷题 · 题库 · 复习手册<br><span class="right-sub">5,791 题 · 23 学科 · 7 册手册</span></div>
   </div>
   <div class="deck-grid-wrap">
   <div class="deck-grid">
-    <a class="deck-tile reveal" href="#exams">
-      <div class="dt-top"><span class="dt-icon">🧩</span><span class="dt-num">01</span></div>
-      <h3>押题卷 <span class="dt-en">EXAMS</span></h3>
-      <p>交互式答题 · 点击选项即时判分 · 进度追踪 · 错题高亮 · 按考频组卷</p>
-      <span class="dt-go">进入押题卷 <i>→</i></span>
+    <a class="deck-tile reveal" href="/drill">
+      <div class="dt-top"><span class="dt-icon">🌐</span><span class="dt-num">01</span></div>
+      <h3>网页刷题 <span class="dt-en">DRILL</span></h3>
+      <p>7 科 1,848 题在线刷 · 点选项即时判分 · 答题卡跳题 · 错题本同步 · 换设备密码登录</p>
+      <span class="dt-go">开始刷题 <i>→</i></span>
     </a>
     <a class="deck-tile reveal" href="#banks">
       <div class="dt-top"><span class="dt-icon">📥</span><span class="dt-num">02</span></div>
@@ -1173,18 +1172,6 @@ body {
     <span class="tip-icon">💡</span>
     <p><b>第一次使用？</b> 点击上方任意分类即可进入 · 所有资料都能<b>在线查看</b>、<b>下载保存</b>到手机或电脑，复习手册还可以直接<b>导出为 PDF 打印</b></p>
   </div>
-</section>
-
-<!-- ============ 押题卷（绝对主角 01） ============ -->
-<section class="section" id="exams">
-  <div class="section-head display reveal">
-    <div class="left">
-      <span class="chip"><span>押题卷 · <i>交互式答题</i></span></span>
-      <h2>押题卷 <span class="accent">交互式答题</span></h2>
-    </div>
-    <div class="right"><b>01 · 押题卷</b>05 套 · 点击选项即时判分<br><span class="right-sub">进度追踪 · 错题高亮 · 按考频组卷</span></div>
-  </div>
-  <div class="grid" id="grid-exam"></div>
 </section>
 
 <!-- ============ 题库 PDF（绝对主角 02） ============ -->
@@ -1272,7 +1259,7 @@ body {
   <div class="grid" id="grid-review-s1"></div>
   <div class="deck-tip reveal">
     <span class="tip-icon">💡</span>
-    <p><b>什么是教学版资料？</b> 按课程<b>教学计划</b>章节范围成册的主复习资料（教材浓缩型 v5.1），PDF 直链下载后可离线翻阅，也可打印纸质复习。单册约 <b>3–24 MB</b>，点击后由浏览器下载管理器接管（进度见下载栏）。题库已在本分区上线，押题卷正在编纂，后续上线。</p>
+    <p><b>什么是教学版资料？</b> 按课程<b>教学计划</b>章节范围成册的主复习资料（教材浓缩型 v5.1），PDF 直链下载后可离线翻阅，也可打印纸质复习。单册约 <b>3–24 MB</b>，点击后由浏览器下载管理器接管（进度见下载栏）。<b>网页刷题已在本分区上线</b>：7 科 1,848 题在线刷，点选项即判分，判错自动进错题本。</p>
   </div>
 </section>
 
@@ -1341,13 +1328,6 @@ body {
    没有 404.html 时会把未命中路径回退成 index.html，于是返回 200 + 首页 HTML，
    用户拿到一个「扩展名是 .pdf、内容是网页」的打不开的文件。
    教训：状态码 200 不等于文件存在，链接门禁必须同时断言 Content-Type。 */
-const EXAMS=[
-  {name:'内科学',icon:'🫀',html:'大三下/押题卷/内科学押题卷_2026.html',count:90,tags:['全真模拟'],desc:'心血管 · 呼吸 · 消化 · 泌尿'},
-  {name:'精神病学',icon:'🧠',html:'大三下/押题卷/精神病学押题卷_2026.html',count:91,desc:'精神分裂 · 情感障碍 · 神经症'},
-  {name:'神经病学',icon:'⚡',html:'大三下/押题卷/神经病学押题卷_2026.html',count:106,tags:['全真模拟'],desc:'脑血管病 · 癫痫 · 周围神经病变'},
-  {name:'医患沟通',icon:'💬',html:'大三下/押题卷/医患沟通押题卷_2026.html',count:60,tags:['情景题'],desc:'沟通技巧 · 医学伦理 · 知情同意'},
-  {name:'外科学',icon:'🔪',html:'大三下/押题卷/外科学押题卷_108题.html',count:108,desc:'普外 · 骨科 · 泌尿'},
-];
 const BANKS=[
   {name:'内科学',icon:'🫀',pdf:'大三下/题库/内科学题库_364题.pdf',count:364,format:'PDF',size:'2.9 MB',desc:'心血管 · 呼吸 · 消化 · 泌尿'},
   {name:'外科学',icon:'🔪',pdf:'大三下/题库/外科学题库.pdf',format:'PDF',size:'3.1 MB',tags:['重点修订'],desc:'普外 · 骨科 · 泌尿'},
@@ -1630,7 +1610,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
    pdfBtn() 就会自动多给一个「下载 PDF」直链（优先级最高）。 */
 const TIP_PRINT='title="打开浏览器打印对话框，可另存为 PDF（由浏览器生成，非原生 PDF）"';
 function pdfBtn(it,cls){return it.pdf?`<button class="btn ${cls} btn-sm" onclick="downloadFile('${it.pdf}','${it.pdf.split('/').pop()}',this)">${ICONS.download}<span>下载 PDF</span></button>`:'';}
-function examCard(it,i){return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns">${pdfBtn(it,'btn-pri')}<button class="btn ${it.pdf?'btn-ghost':'btn-pri'} btn-sm" onclick="viewOnline('${it.html}')">${ICONS.play}<span>开始答题</span></button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')" ${TIP_PRINT}>${ICONS.print}<span>打印 PDF</span></button></div></div>`;}
 function bankCard(it,i){const fname=it.pdf.split('/').pop();return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="downloadFile('${it.pdf}','${fname}',this)">${ICONS.download}<span>下载 PDF</span></button></div></div>`;}
 function reviewCard(it,i){
   const mdName=it.md.split('/').pop();
@@ -1644,7 +1623,6 @@ function reviewS1Card(it,i){
   const fname=it.pdf.split('/').pop();
   return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="downloadFile('${it.pdf}','${fname}',this)">${ICONS.download}<span>教学版资料</span></button></div></div>`;
 }
-$('#grid-exam').innerHTML=EXAMS.map(examCard).join('');
 $('#grid-bank').innerHTML=BANKS.map(bankCard).join('');
 $('#grid-review').innerHTML=REVIEWS.map(reviewCard).join('');
 $('#grid-review-s1').innerHTML=REVIEWS_S1.map(reviewS1Card).join('');
