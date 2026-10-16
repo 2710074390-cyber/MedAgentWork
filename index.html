@@ -139,7 +139,7 @@ body.modal-open { overflow:hidden; }
 .lg-body,
 .card, .deck-tile, .cap-card, .sw-card, .quick,
 .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip,
-.nav-term-tabs, .hero-spec li, .search, .mm-term-btn,
+.nav-term-tabs, .search, .mm-term-btn,
 .modal-bar .m-btn, .sw-ver {
   background-image:var(--lg-glow-layer), var(--lg-fill);
   box-shadow:inset 0 1px 0 var(--lg-hi), inset 0 -1px 0 var(--lg-lo);
@@ -152,14 +152,14 @@ body.modal-open { overflow:hidden; }
 .lg-edge,
 .card, .deck-tile, .cap-card, .sw-card, .quick,
 .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip,
-.nav-term-tabs, .hero-spec li, .search, .mm-term-btn,
+.nav-term-tabs, .search, .mm-term-btn,
 .modal-bar .m-btn, .sw-ver, .modal-card, #toast {
   position:relative; border-color:transparent;
 }
 .lg-edge::after,
 .card::after, .deck-tile::after, .cap-card::after, .sw-card::after, .quick::after,
 .btn-sec::after, .btn-ghost::after, .icon-btn::after, .fx-toggle::after, .chip::after,
-.nav-term-tabs::after, .hero-spec li::after, .search::after, .mm-term-btn::after,
+.nav-term-tabs::after, .search::after, .mm-term-btn::after,
 .modal-bar .m-btn::after, .sw-ver::after, .modal-card::after, #toast::after {
   content:""; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none;
   background:var(--lg-stroke);
@@ -169,7 +169,7 @@ body.modal-open { overflow:hidden; }
 /* hover：边缘高光整体提亮一档（中性，不变色——交互时"以光激活"而非炫技） */
 .card:hover, .deck-tile:hover, .cap-card:hover, .sw-card:hover,
 .btn-sec:hover, .btn-ghost:hover, .icon-btn:hover, .fx-toggle:hover,
-.hero-spec li:hover, .mm-term-btn:hover, .modal-bar .m-btn:hover {
+.mm-term-btn:hover, .modal-bar .m-btn:hover {
   --lg-stroke:var(--lg-stroke-hover);
 }
 .search:focus-within { --lg-stroke:linear-gradient(180deg, var(--brand) 0%, rgba(122,165,248,0.35) 60%, rgba(122,165,248,0.18) 100%); }
@@ -189,7 +189,7 @@ body.modal-open { overflow:hidden; }
   .nav { background:var(--bg); }
   .modal-card, #toast, .search { background:var(--surface); }
   .terminal { background:rgba(13,19,34,0.96); }
-  .card, .deck-tile, .cap-card, .sw-card, .quick, .hero-spec li,
+  .card, .deck-tile, .cap-card, .sw-card, .quick,
   .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip, .nav-term-tabs,
   .mm-term-btn, .modal-bar .m-btn, .sw-ver { background:var(--surface); }
 }
@@ -272,6 +272,7 @@ body.modal-open { overflow:hidden; }
   font-size:var(--fs-xs); font-weight:600; letter-spacing:0.04em; color:var(--text-2);
 }
 .chip i { font-style:normal; color:var(--brand); }
+.hero-copy > .chip, .section-head .left > .chip { align-self:flex-start; }  /* 防 flex 列拉伸（P0 复检修正） */
 .btn {
   display:inline-flex; align-items:center; justify-content:center; gap:7px;
   border-radius:var(--r-pill); font-family:var(--f-sans); font-size:15px; font-weight:500;
@@ -315,13 +316,8 @@ body.modal-open { overflow:hidden; }
 .hero-desc { max-width:560px; color:var(--text-2); font-size:var(--fs-lg);
   opacity:0; transform:translateY(18px); animation:enter .8s cubic-bezier(.2,.7,.2,1) .4s forwards; }
 .hero-desc b { color:var(--text); font-weight:600; }
-.hero-spec { display:flex; flex-wrap:wrap; gap:10px; list-style:none; max-width:580px;
-  opacity:0; transform:translateY(18px); animation:enter .8s cubic-bezier(.2,.7,.2,1) .48s forwards; }
-.hero-spec li { display:flex; flex-direction:column; gap:2px; padding:10px 15px; border-radius:12px; border:1px solid transparent; }
-.hero-spec li b { font-size:var(--fs-sm); color:var(--text); font-weight:600; font-variant-numeric:tabular-nums; }
-.hero-spec li span { font-size:var(--fs-xs); color:var(--text-3); }
-.hero-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:6px;
-  opacity:0; transform:translateY(16px); animation:enter .7s cubic-bezier(.2,.7,.2,1) .55s forwards; }
+.hero-cta { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:10px;
+  opacity:0; transform:translateY(16px); animation:enter .7s cubic-bezier(.2,.7,.2,1) .48s forwards; }
 @keyframes enter { to { opacity:1; transform:translateY(0); } }
 
 /* 终端窗口（终端本体恒定深色，亮主题下亦成立） */
@@ -579,6 +575,14 @@ body.modal-open { overflow:hidden; }
 .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
 .reveal.in { opacity:1; transform:translateY(0); }
 
+/* ---------- 9.5 按压反馈（Apple：交互"以光激活" · ColorOS：柔性反馈——受力挤压、灵动回弹）---------- */
+html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+.btn:active, .icon-btn:active, .nav-term:active, .term-tab:active, .term-copy:active,
+.fx-toggle:active, .g-go:active, .mm-term-btn:active, .modal-bar .m-btn:active,
+.nav-links a:active { transform:scale(.96); transition-duration:.06s; }
+.deck-tile:active, .card.featured:active { transform:translateY(-1px) scale(.985); transition-duration:.06s; }
+.btn-pri:active { background:var(--brand-2); box-shadow:inset 0 2px 8px rgba(6,16,40,.28); }
+
 /* ---------- 10 响应式 ---------- */
 @media (max-width:1024px) {
   .hero-grid { grid-template-columns:1fr; gap:44px; }
@@ -592,7 +596,11 @@ body.modal-open { overflow:hidden; }
   .nav-links { display:none; }
   .nav-in { gap:8px; padding:0 12px; }
   .brand .name { font-size:13.5px; }
-  .nav-term { padding:6px 10px; min-height:40px; }
+  .nav-term { padding:6px 10px; min-height:44px; }
+  .icon-btn { width:44px; height:44px; }
+  .term-tab { min-height:44px; }
+  .g-go { min-height:44px; padding:10px 14px; }
+  .term-copy { min-height:40px; padding:10px 12px; }
   .nav-cta { display:inline-flex; }   /* 刷题胶囊移动端常驻（B5） */
   .nav-right .hide-m { display:none; }
   .nav-burger { display:flex; width:44px; height:44px; }
@@ -623,9 +631,11 @@ body.modal-open { overflow:hidden; }
   .footer-in { flex-direction:column; text-align:center; }
   .search { max-width:none; }
 }
+@media (max-width:520px) {
+  .nav-term-tabs { display:none; }   /* 学期切换收进汉堡菜单（P0·触控目标+防溢出，菜单内已有 mm-term 切换） */
+}
 @media (max-width:400px) {
   .brand .name { display:none; }
-  .nav-term { padding:6px 8px; font-size:11.5px; }
 }
 
 /* ---------- 11 动效偏好与打印 ---------- */
@@ -638,7 +648,7 @@ body.modal-open { overflow:hidden; }
   .deep-sea, .nav, .hero-canvas, .stats, #modal, #toast, .footer, .grid-tools, .fx-toggle { display:none !important; }
   body { background:#fff; color:#111; }
   .hero { min-height:auto; padding:40px 0; }
-  .hero h1, .hero-desc, .hero-cta, .hero-badge, .hero-spec { animation:none; opacity:1; transform:none; }
+  .hero h1, .hero-desc, .hero-cta, .hero-badge { animation:none; opacity:1; transform:none; }
   .card, .deck-tile { break-inside:avoid; border-color:#ddd; }
   .reveal { opacity:1 !important; transform:none !important; }
 }
@@ -757,18 +767,13 @@ body.modal-open { overflow:hidden; }
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="chip hero-badge">医学复习资料库 · <i>5,990 题 · 23 学科</i></span>
+        <span class="chip hero-badge">医学复习资料库 · <i>打开即用</i></span>
         <h1>备考<span class="accent">题严选</span><br>复习<span class="accent">可溯源</span></h1>
-        <p class="hero-desc">临床医学生备考资料库 · <b>打开即用，无需安装</b></p>
-        <ul class="hero-spec">
-          <li><b>8 科 2,047 题</b><span>在线刷 · 点选项即判分</span></li>
-          <li><b>6 科题库 PDF</b><span>直链下载 · 即点即存</span></li>
-          <li><b>7 册复习手册</b><span>在线研读 · 可打印</span></li>
-        </ul>
+        <p class="hero-desc">临床医学生备考资料库 · 题库、手册、PDF <b>一站齐全</b></p>
         <div class="hero-cta">
           <a class="btn btn-pri" href="/drill"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>网页刷题</a>
-          <a class="btn btn-sec" href="#/s2/reviews"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>复习手册</a>
-          <a class="btn btn-sec" href="#/s2/banks"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>题库 PDF</a>
+          <a class="btn btn-sec btn-sm" href="#/s2/reviews"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>复习手册</a>
+          <a class="btn btn-sec btn-sm" href="#/s2/banks"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>题库 PDF</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -1926,7 +1931,7 @@ safe('fx',()=>{
    事件委托，同一时刻只驱动一个元素；仅 hover/pointer:fine 设备，随 FX 开关联动。 */
 safe('glass-glow',()=>{
   if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
-  const SEL='.card,.deck-tile,.cap-card,.sw-card,.quick,.modal-card,.search,.hero-spec li,.btn-sec,.icon-btn,.chip';
+  const SEL='.card,.deck-tile,.cap-card,.sw-card,.quick,.modal-card,.search,.btn-sec,.icon-btn,.chip';
   let cur=null,rafId=0;
   function loop(){
     if(!cur){rafId=0;return;}
