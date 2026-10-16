@@ -1,664 +1,446 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!-- build: v1.2-drill-replace -->
-<meta name="theme-color" content="#0a0a0a">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23679efe'/%3E%3Ctext x='16' y='21.5' font-family='monospace' font-size='13' font-weight='700' fill='%230a0a0a' text-anchor='middle'%3EMW%3C/text%3E%3C/svg%3E">
+<!-- build: v2.0-redesign -->
+<meta name="theme-color" content="#0b1220">
+<meta name="description" content="MedAgentWork 医学复习资料库：7 科 1,848 题在线刷题、6+9 科题库 PDF 直链下载、7 册复习手册在线研读与打印、开源出题软件 MedKit。">
+<meta property="og:title" content="MedAgentWork · 医学复习资料库">
+<meta property="og:description" content="备考题严选，复习可溯源。打开即用，无需安装。">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%235b8def'/%3E%3Ctext x='16' y='21.5' font-family='monospace' font-size='13' font-weight='700' fill='%230b1220' text-anchor='middle'%3EMW%3C/text%3E%3C/svg%3E">
 <title>MedAgentWork · 医学复习资料库</title>
 <style>
 /* ============================================================
-   MedAgentWork — FUTURISTIC EDITION
-   设计语言：黑蓝深海 (Deep-Sea Black-Blue)
-            玻璃拟态 (Glassmorphism)
-            ASCII 原子像素 (ASCII Atomic Pixel)
+   MedAgentWork v2 — CLINICAL DEEP BLUE 设计系统
+   分区：1 设计令牌 | 2 基础 | 3 导航 | 4 Hero | 5 统计条
+         6 分区与卡片 | 7 搜索 | 8 模态与 MD | 9 页脚与反馈
+         10 响应式 | 11 动效偏好与打印
    零外部依赖 · GFW 友好 · 纯静态
    ============================================================ */
 
+/* ---------- 1 设计令牌 ---------- */
 :root {
-  --bg:#0a0a0a;
-  --bg-2:#0d0f12;
-  --surface:#101113;
-  --surface-2:#1f2126;
-  --surface-3:#26282c;
-  --border:rgba(255,255,255,0.08);
-  --border-strong:rgba(255,255,255,0.15);
-  --text:#ffffff;
-  --text-2:rgba(255,255,255,0.55);
-  --text-3:rgba(255,255,255,0.47);
-  --brand:#679efe;
-  --brand-soft:rgba(103,153,254,0.14);
-  --deep-1:#1a3870;
-  --deep-2:#2d5f9e;
-  --deep-3:#4a8ac4;
-  --glass:rgba(255,255,255,0.06);
-  --glass-strong:rgba(13,16,23,0.72);
-  --ok:#28c840; --warn:#febc2e; --err:#ff5f57;
-  --r:12px; --r-sm:8px; --r-pill:100px;
+  /* 字号阶（7 级，全站唯一来源） */
+  --fs-xs:12px; --fs-sm:13px; --fs-md:14px; --fs-lg:16px;
+  --fs-xl:clamp(20px,2.4vw,24px); --fs-2xl:clamp(28px,3.6vw,40px); --fs-3xl:clamp(38px,5.6vw,64px);
+  --r:14px; --r-sm:10px; --r-pill:100px;
   --f-sans:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
   --f-mono:"Cascadia Code","JetBrains Mono","SF Mono",Consolas,"Noto Sans Mono CJK SC",Menlo,monospace;
-  --nav-h:60px;
-  --container:1136px;
+  --nav-h:62px; --container:1160px;
+  --ok:#2fbf71; --warn:#e5a13a; --err:#e5605c;
+}
+/* 暗色（默认 · 品牌深海蓝） */
+:root, :root[data-theme="dark"] {
+  color-scheme:dark;
+  --bg:#0b1220; --bg-2:#0d1526; --surface:#111b30; --surface-2:#16233c;
+  --border:rgba(148,178,255,0.13); --border-strong:rgba(148,178,255,0.26);
+  --text:#eef3ff; --text-2:rgba(232,240,255,0.78); --text-3:rgba(232,240,255,0.60);
+  --brand:#7aa5f8; --brand-2:#5b8def; --brand-deep:#1e3a6e;
+  --brand-soft:rgba(122,165,248,0.13);
+  --teal:#2dd4bf; --teal-soft:rgba(45,212,191,0.12);
+  --glass:rgba(148,178,255,0.06);
+  --nav-bg:rgba(11,18,32,0.72);
+  --shadow-card:0 24px 60px -28px rgba(2,6,18,0.9);
+  --glow-1:rgba(45,95,158,0.30); --glow-2:rgba(26,56,112,0.38); --glow-3:rgba(74,138,196,0.20);
+}
+/* 亮色（研读友好 · 临床白） */
+:root[data-theme="light"] {
+  color-scheme:light;
+  --bg:#f5f8fd; --bg-2:#eef3fb; --surface:#ffffff; --surface-2:#f2f6fd;
+  --border:rgba(20,45,90,0.12); --border-strong:rgba(20,45,90,0.24);
+  --text:#152238; --text-2:rgba(21,34,56,0.76); --text-3:rgba(21,34,56,0.58);
+  --brand:#2f6bdf; --brand-2:#2559c4; --brand-deep:#dbe7ff;
+  --brand-soft:rgba(47,107,223,0.09);
+  --teal:#0d9488; --teal-soft:rgba(13,148,136,0.10);
+  --glass:rgba(47,107,223,0.05);
+  --nav-bg:rgba(245,248,253,0.78);
+  --shadow-card:0 18px 44px -24px rgba(21,45,90,0.28);
+  --glow-1:rgba(91,141,239,0.14); --glow-2:rgba(47,107,223,0.10); --glow-3:rgba(45,212,191,0.10);
+}
+@media (prefers-contrast: more) {
+  :root { --text-2:var(--text); --text-3:var(--text-2); }
 }
 
+/* ---------- 2 基础 ---------- */
 * { margin:0; padding:0; box-sizing:border-box; }
-:focus-visible { outline:2px solid var(--brand); outline-offset:2px; border-radius:inherit; }
+:focus-visible { outline:2px solid var(--brand); outline-offset:2px; border-radius:6px; }
 html { scroll-behavior:smooth; }
 body {
-  font-family:var(--f-sans);
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.7;
-  min-height:100vh;
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  font-family:var(--f-sans); font-size:var(--fs-md); background:var(--bg); color:var(--text);
+  line-height:1.75; min-height:100vh; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  transition:background .3s, color .3s;
 }
+body.modal-open { overflow:hidden; }
+.skip {
+  position:fixed; top:-60px; left:16px; z-index:4000; padding:10px 18px; border-radius:var(--r-pill);
+  background:var(--brand); color:#fff; text-decoration:none; font-size:var(--fs-sm); transition:top .2s;
+}
+.skip:focus { top:12px; }
+.ic { width:1.15em; height:1.15em; flex-shrink:0; vertical-align:-0.22em; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
 
-/* ---------- 深海背景：深蓝光晕 + 像素网格 ---------- */
-.deep-sea {
-  position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden;
-}
+/* 深海背景（随主题渐变淡化） */
+.deep-sea { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
 .deep-sea::before {
   content:""; position:absolute; inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-  background-size:64px 64px;
+  background-image:linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size:64px 64px; opacity:.35;
   mask-image:radial-gradient(ellipse 90% 70% at 50% 20%, rgba(0,0,0,0.9), transparent 80%);
   -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 20%, rgba(0,0,0,0.9), transparent 80%);
 }
 .deep-sea::after {
   content:""; position:absolute; inset:0;
   background:
-    radial-gradient(ellipse 55% 45% at 85% 100%, rgba(74,138,196,0.20), transparent 65%),
-    radial-gradient(ellipse 60% 50% at 15% 100%, rgba(26,56,112,0.35), transparent 70%),
-    radial-gradient(ellipse 80% 55% at 50% 115%, rgba(45,95,158,0.28), transparent 75%);
+    radial-gradient(ellipse 55% 45% at 85% 100%, var(--glow-3), transparent 65%),
+    radial-gradient(ellipse 60% 50% at 15% 100%, var(--glow-2), transparent 70%),
+    radial-gradient(ellipse 80% 55% at 50% 115%, var(--glow-1), transparent 75%);
 }
 .wrap { position:relative; z-index:1; max-width:var(--container); margin:0 auto; padding:0 24px; }
 
-/* ---------- 导航：玻璃悬浮 ---------- */
+/* ---------- 3 导航 ---------- */
 .nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  height:var(--nav-h);
-  background:rgba(10,10,10,0.62);
-  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,0.06);
+  position:fixed; top:0; left:0; right:0; z-index:100; height:var(--nav-h);
+  background:var(--nav-bg); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
 }
-.nav-in {
-  max-width:var(--container); margin:0 auto; height:100%;
-  padding:0 24px; display:flex; align-items:center; gap:24px;
-}
+.nav-in { max-width:var(--container); margin:0 auto; height:100%; padding:0 24px; display:flex; align-items:center; gap:20px; }
 .brand { display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--text); }
 .brand .logo {
-  width:26px; height:26px; border-radius:7px; flex-shrink:0;
-  display:flex; align-items:center; justify-content:center;
-  background:linear-gradient(135deg, var(--brand) 0%, #3b6bd6 60%, #1a3870 100%);
-  box-shadow:0 0 18px rgba(103,153,254,0.45);
-  font-family:var(--f-mono); font-size:12px; font-weight:700; color:#0a0a0a;
+  width:28px; height:28px; border-radius:8px; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 60%, var(--brand-deep) 100%);
+  box-shadow:0 0 18px rgba(91,141,239,0.40);
+  font-family:var(--f-mono); font-size:12px; font-weight:700; color:#fff;
 }
+:root[data-theme="light"] .brand .logo { color:#fff; }
 .brand .name { font-size:15px; font-weight:600; letter-spacing:-0.01em; }
 .brand .name b { color:var(--brand); font-weight:600; }
-.nav-links { display:flex; gap:4px; margin-left:12px; }
+.nav-links { display:flex; gap:2px; margin-left:8px; }
 .nav-links a {
-  color:var(--text-2); text-decoration:none; font-size:13.5px; padding:7px 13px;
-  border-radius:var(--r-pill); transition:all .2s;
+  color:var(--text-2); text-decoration:none; font-size:var(--fs-sm); padding:7px 13px;
+  border-radius:var(--r-pill); transition:color .2s, background .2s; display:inline-flex; align-items:center; gap:6px;
 }
-.nav-links a:hover { color:var(--text); background:rgba(255,255,255,0.06); }
-.nav-links a.active { color:var(--text); background:rgba(255,255,255,0.08); }
+.nav-links a:hover { color:var(--text); background:var(--glass); }
+.nav-links a.active { color:var(--text); background:var(--glass); }
 .nav-right { margin-left:auto; display:flex; align-items:center; gap:10px; }
-
-/* 粒子开关 */
-.nav-term-tabs { display:flex; gap:2px; padding:3px; border-radius:var(--r-pill);
-  border:1px solid var(--border); background:var(--glass); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+.nav-term-tabs { display:flex; gap:2px; padding:3px; border-radius:var(--r-pill); border:1px solid var(--border); background:var(--glass); }
 .nav-term {
-  font-family:var(--f-sans); font-size:12.5px; font-weight:500; color:var(--text-2);
-  padding:5px 13px; border-radius:var(--r-pill); cursor:pointer; border:none; background:transparent;
-  transition:all .2s; white-space:nowrap;
+  font-family:var(--f-sans); font-size:var(--fs-xs); font-weight:500; color:var(--text-2);
+  padding:6px 13px; border-radius:var(--r-pill); cursor:pointer; border:none; background:transparent; transition:all .2s; white-space:nowrap;
 }
 .nav-term:hover { color:var(--text); }
-.nav-term.active { background:rgba(255,255,255,0.12); color:var(--text); }
-.nav-term .lock { font-size:10px; opacity:0.65; margin-left:3px; }
-.nav-burger {
-  display:none; width:38px; height:38px; border-radius:10px; flex-shrink:0;
-  border:1px solid var(--border); background:var(--glass); cursor:pointer;
-  flex-direction:column; align-items:center; justify-content:center; gap:5px;
-  transition:border-color .2s;
+.nav-term.active { background:var(--brand); color:#fff; }
+.icon-btn {
+  width:38px; height:38px; border-radius:10px; flex-shrink:0; border:1px solid var(--border);
+  background:var(--glass); color:var(--text-2); cursor:pointer; display:flex; align-items:center; justify-content:center;
+  transition:all .2s; font-size:15px;
 }
-.nav-burger:hover { border-color:var(--border-strong); }
-.nav-burger span { display:block; width:17px; height:2px; background:var(--text); border-radius:2px; transition:all .3s; }
-.nav-burger.open span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
-.nav-burger.open span:nth-child(2){ opacity:0; }
-.nav-burger.open span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+.icon-btn:hover { color:var(--text); border-color:var(--border-strong); }
+.nav-burger { display:none; }
+.nav-cta { display:inline-flex; }
 
-/* ---------- 移动端全屏菜单 ---------- */
+/* 移动端全屏菜单 */
 .mobile-menu {
-  position:fixed; inset:0; z-index:300; background:rgba(8,9,12,0.94);
-  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
-  display:flex; opacity:0; pointer-events:none; transform:translateY(-12px); visibility:hidden;
+  position:fixed; inset:0; z-index:300; background:var(--bg); opacity:0;
+  display:flex; pointer-events:none; transform:translateY(-12px); visibility:hidden;
   transition:opacity .3s, transform .3s, visibility .3s;
 }
 .mobile-menu.open { opacity:1; pointer-events:auto; transform:translateY(0); visibility:visible; }
 .mm-inner { width:100%; max-width:520px; margin:0 auto; padding:calc(24px + env(safe-area-inset-top)) 26px calc(30px + env(safe-area-inset-bottom)); display:flex; flex-direction:column; }
 .mm-head { display:flex; align-items:center; gap:11px; margin-bottom:26px; }
-.mm-head .logo {
-  width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center;
-  background:linear-gradient(135deg, var(--brand) 0%, #3b6bd6 60%, #1a3870 100%);
-  box-shadow:0 0 18px rgba(103,153,254,0.45); font-family:var(--f-mono); font-size:13px; font-weight:700; color:#0a0a0a;
-}
+.mm-head .logo { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, var(--brand), var(--brand-2) 60%, var(--brand-deep)); font-family:var(--f-mono); font-size:13px; font-weight:700; color:#fff; }
 .mm-head .name { font-size:16px; font-weight:600; }
 .mm-head .name b { color:var(--brand); }
 .mm-links { display:flex; flex-direction:column; gap:2px; }
 .mm-links a {
   display:flex; align-items:center; gap:14px; padding:15px 6px; font-size:19px; font-weight:600;
-  color:var(--text); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.06); transition:color .2s;
+  color:var(--text); text-decoration:none; border-bottom:1px solid var(--border); transition:color .2s;
 }
 .mm-links a:hover, .mm-links a:active { color:var(--brand); }
 .mm-idx { font-family:var(--f-mono); font-size:11px; color:var(--brand); letter-spacing:0.1em; width:22px; }
 .mm-term { display:flex; gap:10px; margin-top:26px; }
 .mm-term-btn {
   flex:1; padding:13px; border-radius:12px; border:1px solid var(--border-strong);
-  background:var(--glass); color:var(--text-2); font-size:14.5px; font-weight:500;
-  cursor:pointer; font-family:var(--f-sans); transition:all .2s;
+  background:var(--glass); color:var(--text-2); font-size:14.5px; font-weight:500; cursor:pointer; font-family:var(--f-sans); transition:all .2s;
 }
-.mm-term-btn.active { background:rgba(255,255,255,0.12); color:var(--text); border-color:rgba(255,255,255,0.3); }
-.mm-foot { margin-top:auto; padding-top:28px; display:flex; gap:10px; }
+.mm-term-btn.active { background:var(--brand); border-color:var(--brand); color:#fff; }
+.mm-foot { margin-top:auto; padding-top:28px; display:flex; gap:10px; align-items:center; }
 .mm-foot .btn { flex:1; }
-.fx-toggle {
-  display:flex; align-items:center; gap:8px; cursor:pointer; user-select:none;
-  font-family:var(--f-mono); font-size:11px; letter-spacing:0.06em; color:var(--text-2);
-  padding:7px 13px; border-radius:var(--r-pill);
-  border:1px solid var(--border); background:var(--glass);
-  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-  transition:all .2s;
-}
-.fx-toggle:hover { color:var(--text); border-color:var(--border-strong); }
-.fx-toggle .dot { width:7px; height:7px; border-radius:50%; background:var(--text-3); transition:all .2s; }
-.fx-toggle.on .dot { background:var(--brand); box-shadow:0 0 8px var(--brand); }
-.fx-toggle.off .dot { background:var(--text-3); }
 
-/* ---------- 徽章芯片（渐变描边） ---------- */
+/* ---------- 徽章 / 按钮 ---------- */
 .chip {
-  display:inline-flex; padding:1px; border-radius:var(--r-sm);
-  background:linear-gradient(135deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.08) 35%, rgba(255,255,255,0.04) 65%, rgba(255,255,255,0.28) 100%);
-  box-shadow:0 0 16px rgba(255,255,255,0.08), 0 0 32px rgba(255,255,255,0.04);
+  display:inline-flex; align-items:center; gap:8px; padding:6px 13px; border-radius:var(--r-pill);
+  background:var(--brand-soft); border:1px solid var(--border);
+  font-size:var(--fs-xs); font-weight:600; letter-spacing:0.04em; color:var(--text-2);
 }
-.chip > span {
-  display:inline-flex; align-items:center; gap:8px;
-  padding:6px 10px 5px; border-radius:7px; background:rgba(0,0,0,0.25);
-  font-family:var(--f-sans); font-size:12.5px; font-weight:600; letter-spacing:0.05em;
-  text-transform:uppercase; color:rgba(255,255,255,0.95); line-height:1.4;
-}
-.chip > span i { font-style:normal; color:var(--brand); }
-
-/* ---------- 按钮 ---------- */
+.chip i { font-style:normal; color:var(--brand); }
 .btn {
   display:inline-flex; align-items:center; justify-content:center; gap:7px;
   border-radius:var(--r-pill); font-family:var(--f-sans); font-size:15px; font-weight:500;
   padding:11px 18px; cursor:pointer; text-decoration:none; white-space:nowrap;
-  transition:all .22s; border:1px solid transparent; line-height:1.4;
+  transition:all .22s; border:1px solid transparent; line-height:1.4; color:var(--text);
 }
-.btn-pri { background:#fff; color:#0a0a0a; }
-.btn-pri:hover { background:#e8edf8; transform:translateY(-1px); box-shadow:0 6px 24px rgba(255,255,255,0.14); }
-.btn-sec {
-  background:var(--glass); border-color:var(--border-strong); color:var(--text);
-  backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-}
-.btn-sec:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.28); transform:translateY(-1px); }
+.btn-pri { background:var(--brand); color:#fff; }
+.btn-pri:hover { background:var(--brand-2); transform:translateY(-1px); box-shadow:0 8px 26px rgba(91,141,239,0.35); }
+.btn-sec { background:var(--glass); border-color:var(--border-strong); }
+.btn-sec:hover { background:var(--surface-2); border-color:var(--border-strong); transform:translateY(-1px); }
+.btn-ghost { background:transparent; border-color:var(--border); color:var(--text-2); }
+.btn-ghost:hover { color:var(--text); border-color:var(--border-strong); background:var(--glass); }
 .btn.loading { opacity:0.6; pointer-events:none; }
-.btn-sm { padding:8px 15px; font-size:13.5px; }
-.btn-xs { padding:6px 12px; font-size:12.5px; }
+.btn-sm { padding:8px 15px; font-size:var(--fs-sm); }
 
-/* ---------- Hero ---------- */
-.hero {
-  position:relative; min-height:100vh; display:flex; align-items:center;
-  padding:calc(var(--nav-h) + 40px) 0 40px; overflow:hidden;
-}
+/* ---------- 4 Hero ---------- */
+.hero { position:relative; min-height:100vh; display:flex; align-items:center; padding:calc(var(--nav-h) + 40px) 0 48px; overflow:hidden; }
 .hero-canvas { position:absolute; inset:0; z-index:0; pointer-events:none;
   mask-image:linear-gradient(rgba(0,0,0,0.99) 0%, rgba(0,0,0,0.9) 30%, transparent 96%);
-  -webkit-mask-image:linear-gradient(rgba(0,0,0,0.99) 0%, rgba(0,0,0,0.9) 30%, transparent 96%);
-}
+  -webkit-mask-image:linear-gradient(rgba(0,0,0,0.99) 0%, rgba(0,0,0,0.9) 30%, transparent 96%); }
 .hero-canvas canvas { position:absolute; top:0; left:0; width:100%; height:100%; }
-.hero-glow { position:absolute; inset:0; z-index:0; pointer-events:none; mix-blend-mode:screen;
-  background:radial-gradient(circle at 78% 62%, rgba(45,95,158,0.16), transparent 45%); }
-.hero-glow-follow {
-  position:absolute; width:480px; height:480px; border-radius:50%; pointer-events:none; z-index:1;
-  background:radial-gradient(circle, rgba(103,153,254,0.13), transparent 62%);
-  mix-blend-mode:screen; opacity:0; transform:translate(-50%,-50%); transition:opacity .4s;
-  will-change:transform;
-}
-.hero-glow-follow.on { opacity:1; }
-@media (hover:none) { .hero-glow-follow { display:none; } }
+:root[data-theme="light"] .hero-canvas { opacity:.5; }
 .hero .wrap { position:relative; z-index:2; width:100%; }
-.hero-grid { display:grid; grid-template-columns:minmax(0,58fr) minmax(0,42fr); gap:56px; align-items:center; }
+.hero-grid { display:grid; grid-template-columns:minmax(0,56fr) minmax(0,44fr); gap:56px; align-items:center; }
 .hero-copy { display:flex; flex-direction:column; gap:22px; }
-.hero-badge { opacity:0; transform:translateY(20px); filter:blur(8px); animation:enter .8s cubic-bezier(.2,.7,.2,1) .1s forwards; }
+.hero-badge { opacity:0; transform:translateY(20px); animation:enter .8s cubic-bezier(.2,.7,.2,1) .1s forwards; }
 .hero h1 {
-  font-size:clamp(42px,6.4vw,76px); font-weight:500; letter-spacing:-0.02em; line-height:1.14;
-  color:var(--text); opacity:0; transform:translateY(22px); filter:blur(8px);
-  animation:enter .9s cubic-bezier(.2,.7,.2,1) .25s forwards;
+  font-size:var(--fs-3xl); font-weight:600; letter-spacing:-0.02em; line-height:1.16;
+  opacity:0; transform:translateY(22px); animation:enter .9s cubic-bezier(.2,.7,.2,1) .25s forwards;
 }
-.hero h1 .accent {
-  background:linear-gradient(100deg, var(--brand) 0%, #9cc0ff 55%, var(--deep-3) 100%);
+.hero h1 .accent, .section-head h2 .accent {
+  background:linear-gradient(100deg, var(--brand) 0%, #9cc0ff 55%, var(--teal) 110%);
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
-.hero-desc {
-  max-width:560px; color:var(--text-2); font-size:16.5px; line-height:1.75;
-  display:flex; flex-direction:column; gap:10px;
-  opacity:0; transform:translateY(18px); filter:blur(8px);
-  animation:enter .8s cubic-bezier(.2,.7,.2,1) .4s forwards;
+:root[data-theme="light"] .hero h1 .accent, :root[data-theme="light"] .section-head h2 .accent {
+  background:linear-gradient(100deg, var(--brand) 0%, var(--brand-2) 70%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
 }
-.hero-desc b { color:var(--text); font-weight:500; }
-/* 首屏规格条：把「有多少东西、能干什么」做成可扫的卡片，而不是一段散文 */
-.hero-spec {
-  display:flex; flex-wrap:wrap; gap:10px; list-style:none; max-width:560px;
-  opacity:0; transform:translateY(18px); filter:blur(8px);
-  animation:enter .8s cubic-bezier(.2,.7,.2,1) .48s forwards;
-}
-.hero-spec li {
-  display:flex; flex-direction:column; gap:2px; padding:9px 14px; border-radius:10px;
-  background:rgba(255,255,255,0.045); border:1px solid var(--border);
-}
-.hero-spec li b { font-size:13.5px; color:var(--text); font-weight:600; }
-.hero-spec li span { font-size:11.5px; color:var(--text-2); }
-.hero-cta {
-  display:flex; flex-wrap:wrap; gap:12px; margin-top:6px;
-  opacity:0; transform:translateY(16px); filter:blur(8px);
-  animation:enter .7s cubic-bezier(.2,.7,.2,1) .55s forwards;
-}
-@keyframes enter { to { opacity:1; transform:translateY(0); filter:blur(0); } }
+.hero-desc { max-width:560px; color:var(--text-2); font-size:var(--fs-lg);
+  opacity:0; transform:translateY(18px); animation:enter .8s cubic-bezier(.2,.7,.2,1) .4s forwards; }
+.hero-desc b { color:var(--text); font-weight:600; }
+.hero-spec { display:flex; flex-wrap:wrap; gap:10px; list-style:none; max-width:580px;
+  opacity:0; transform:translateY(18px); animation:enter .8s cubic-bezier(.2,.7,.2,1) .48s forwards; }
+.hero-spec li { display:flex; flex-direction:column; gap:2px; padding:10px 15px; border-radius:12px; background:var(--glass); border:1px solid var(--border); }
+.hero-spec li b { font-size:var(--fs-sm); color:var(--text); font-weight:600; font-variant-numeric:tabular-nums; }
+.hero-spec li span { font-size:var(--fs-xs); color:var(--text-3); }
+.hero-cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:6px;
+  opacity:0; transform:translateY(16px); animation:enter .7s cubic-bezier(.2,.7,.2,1) .55s forwards; }
+@keyframes enter { to { opacity:1; transform:translateY(0); } }
 
-/* ---------- 终端窗口 ---------- */
-.hero-visual { display:flex; flex-direction:column; gap:14px; opacity:0; transform:translateY(24px); filter:blur(10px);
-  animation:enter .9s cubic-bezier(.2,.7,.2,1) .5s forwards; }
+/* 终端窗口（终端本体恒定深色，亮主题下亦成立） */
+.hero-visual { display:flex; flex-direction:column; gap:14px; opacity:0; transform:translateY(24px); animation:enter .9s cubic-bezier(.2,.7,.2,1) .5s forwards; }
 .term-tabs { display:flex; gap:4px; padding:0 6px; margin-left:2px; }
 .term-tab {
-  padding:8px 16px; font-size:13px; font-weight:500; cursor:pointer;
-  border-radius:8px 8px 0 0; border:1px solid transparent; border-bottom:0;
-  color:var(--text-2); background:transparent; transition:all .2s;
-  font-family:var(--f-sans);
+  padding:8px 16px; font-size:var(--fs-sm); font-weight:500; cursor:pointer; border-radius:8px 8px 0 0;
+  border:1px solid transparent; border-bottom:0; color:var(--text-3); background:transparent; transition:all .2s; font-family:var(--f-sans);
 }
 .term-tab:hover { color:var(--text); }
-.term-tab.active { color:var(--text); background:rgba(0,0,0,0.2); border-color:rgba(255,255,255,0.08); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+.term-tab.active { color:#eef3ff; background:rgba(13,19,34,0.85); border-color:rgba(148,178,255,0.15); }
 .terminal {
-  border-radius:10px; border:1px solid rgba(255,255,255,0.08);
-  background:rgba(0,0,0,0.2); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-  overflow:hidden; box-shadow:0 24px 60px -24px rgba(0,0,0,0.7), 0 0 40px rgba(26,56,112,0.12);
+  border-radius:12px; border:1px solid rgba(148,178,255,0.16); background:#0d1322; color:#eef3ff;
+  overflow:hidden; box-shadow:var(--shadow-card), 0 0 40px rgba(30,58,110,0.14);
 }
-.term-bar { display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid var(--border); }
+.term-bar { display:flex; align-items:center; justify-content:space-between; padding:10px 16px; border-bottom:1px solid rgba(148,178,255,0.12); }
 .term-dots { display:flex; gap:7px; }
 .term-dots i { width:11px; height:11px; border-radius:50%; display:block; }
-.term-dots i:nth-child(1){ background:#ff5f57; } .term-dots i:nth-child(2){ background:#febc2e; } .term-dots i:nth-child(3){ background:#28c840; }
-.term-title { font-family:var(--f-mono); font-size:12px; color:var(--text-2); }
-.term-copy {
-  font-family:var(--f-mono); font-size:12px; color:var(--text-2); background:none; border:none;
-  cursor:pointer; display:flex; align-items:center; gap:6px; transition:color .2s;
-}
-.term-copy:hover { color:var(--text); }
+.term-dots i:nth-child(1){ background:#e5605c; } .term-dots i:nth-child(2){ background:#e5a13a; } .term-dots i:nth-child(3){ background:#2fbf71; }
+.term-title { font-family:var(--f-mono); font-size:var(--fs-xs); color:rgba(232,240,255,0.55); }
+.term-copy { font-family:var(--f-mono); font-size:var(--fs-xs); color:rgba(232,240,255,0.55); background:none; border:none; cursor:pointer; display:flex; align-items:center; gap:6px; transition:color .2s; padding:6px 8px; border-radius:8px; }
+.term-copy:hover { color:#eef3ff; }
 .term-body { padding:22px 24px 26px; font-family:var(--f-mono); font-size:13.5px; line-height:1.85; min-height:252px; }
-.term-body .cmd { color:var(--text); }
-.term-body .prompt { color:var(--brand); user-select:none; }
-.term-body .dim { color:var(--text-3); }
-.term-body .ok { color:var(--ok); }
-.term-body .br { color:var(--brand); }
-.term-body .hl { color:#9cc0ff; }
-.cursor { display:inline-block; width:8px; height:16px; background:var(--brand); vertical-align:-2px; animation:blink 1.1s steps(1) infinite; }
+.term-body .cmd { color:#eef3ff; } .term-body .prompt { color:#7aa5f8; user-select:none; }
+.term-body .dim { color:rgba(232,240,255,0.45); } .term-body .ok { color:#2fbf71; }
+.term-body .br { color:#7aa5f8; } .term-body .hl { color:#9cc0ff; }
+.cursor { display:inline-block; width:8px; height:16px; background:#7aa5f8; vertical-align:-2px; animation:blink 1.1s steps(1) infinite; }
 @keyframes blink { 50% { opacity:0; } }
 
-/* ---------- hero 终端内 · 学生向三步上手指南 ---------- */
-.guide-panel { display:flex; flex-direction:column; gap:9px; padding:2px 0 4px; }
-.g-guide-title { font-family:var(--f-mono); font-size:11.5px; letter-spacing:0.1em; color:var(--brand); margin-bottom:2px; }
-.g-step {
-  display:flex; align-items:flex-start; gap:11px;
-  padding:10px 12px; border-radius:10px; background:rgba(255,255,255,0.045);
-  border:1px solid var(--border); transition:border-color .2s;
-}
-.g-step:hover { border-color:rgba(103,153,254,0.4); }
-.g-no { font-family:var(--f-mono); font-size:11px; color:var(--brand); margin-top:2px; flex-shrink:0; }
+/* Hero 内三步指南（默认展示） */
+.guide-panel { display:flex; flex-direction:column; gap:9px; padding:2px 0 4px; font-family:var(--f-sans); }
+.g-guide-title { font-family:var(--f-mono); font-size:11.5px; letter-spacing:0.1em; color:#7aa5f8; margin-bottom:2px; }
+.g-step { display:flex; align-items:flex-start; gap:11px; padding:10px 12px; border-radius:10px; background:rgba(148,178,255,0.07); border:1px solid rgba(148,178,255,0.13); transition:border-color .2s; }
+.g-step:hover { border-color:rgba(122,165,248,0.45); }
+.g-no { font-family:var(--f-mono); font-size:11px; color:#7aa5f8; margin-top:2px; flex-shrink:0; }
 .g-body { flex:1; min-width:0; }
-.g-body b { display:inline-block; font-size:13.5px; color:var(--text); font-weight:600; margin-right:8px; }
-.g-where { font-family:var(--f-mono); font-size:10.5px; color:var(--text-2); letter-spacing:0.03em; }
-.g-body p { font-size:12.5px; color:var(--text-2); line-height:1.65; margin-top:3px; }
-.g-go {
-  flex-shrink:0; font-size:12px; color:var(--brand); text-decoration:none;
-  border:1px solid rgba(103,153,254,0.35); padding:4px 9px; border-radius:var(--r-pill);
-  margin-top:2px; transition:all .2s; white-space:nowrap;
-}
-.g-go:hover { background:rgba(103,153,254,0.12); border-color:var(--brand); }
-.g-tip {
-  display:flex; gap:8px; font-size:11.5px; color:var(--text-2); line-height:1.6;
-  padding:9px 12px; border-radius:10px; background:rgba(103,153,254,0.06);
-  border:1px solid rgba(103,153,254,0.18);
-}
-.g-tip b { color:var(--brand); font-weight:600; white-space:nowrap; }
+.g-body b { display:inline-block; font-size:13.5px; color:#eef3ff; font-weight:600; margin-right:8px; }
+.g-where { font-family:var(--f-mono); font-size:10.5px; color:rgba(232,240,255,0.5); letter-spacing:0.03em; }
+.g-body p { font-size:12.5px; color:rgba(232,240,255,0.6); line-height:1.65; margin-top:3px; }
+.g-go { flex-shrink:0; font-size:var(--fs-xs); color:#7aa5f8; text-decoration:none; border:1px solid rgba(122,165,248,0.35); padding:5px 10px; border-radius:var(--r-pill); margin-top:2px; transition:all .2s; white-space:nowrap; display:inline-flex; align-items:center; gap:5px; }
+.g-go:hover { background:rgba(122,165,248,0.14); border-color:#7aa5f8; }
+.g-tip { display:flex; gap:8px; font-size:11.5px; color:rgba(232,240,255,0.6); line-height:1.6; padding:9px 12px; border-radius:10px; background:rgba(122,165,248,0.08); border:1px solid rgba(122,165,248,0.2); }
+.g-tip b { color:#7aa5f8; font-weight:600; white-space:nowrap; }
 
-/* ---------- ASCII 原子像素 ---------- */
-.atom-wrap { position:absolute; right:-140px; top:50%; transform:translateY(-54%); width:560px; height:560px; z-index:1; pointer-events:none; mix-blend-mode:screen; opacity:.9; }
-.atom { position:absolute; inset:0; }
-.atom .ring { position:absolute; inset:0; border:1px solid rgba(103,153,254,0.16); border-radius:50%; }
-.atom .ring::before { content:""; position:absolute; inset:-7px; border-radius:50%; border:1px dashed rgba(255,255,255,0.05); }
-.atom .ring.r2 { transform:rotate(60deg) scale(0.86); border-color:rgba(103,153,254,0.12); }
-.atom .ring.r3 { transform:rotate(-60deg) scale(0.72); border-color:rgba(255,255,255,0.09); }
-.atom .ring.r2::before, .atom .ring.r3::before { display:none; }
-.atom .core {
-  position:absolute; left:50%; top:50%; width:90px; height:90px; transform:translate(-50%,-50%);
-  border-radius:50%; background:radial-gradient(circle, rgba(103,153,254,0.5), rgba(26,56,112,0.15) 60%, transparent 70%);
-  box-shadow:0 0 60px rgba(103,153,254,0.4), 0 0 120px rgba(45,95,158,0.25);
-}
-.atom .core::after {
-  content:""; position:absolute; inset:22px; border-radius:50%;
-  background:radial-gradient(circle, rgba(255,255,255,0.95), rgba(154,193,255,0.6) 45%, transparent 70%);
-  box-shadow:0 0 30px rgba(154,193,255,0.8);
-}
-.atom .e { position:absolute; left:50%; top:50%; width:10px; height:10px; margin:-5px; border-radius:50%;
-  background:#9cc0ff; box-shadow:0 0 14px #679efe, 0 0 30px rgba(103,153,254,0.5); }
-.orbit-anim { animation:orbit 9s linear infinite; }
-.orbit-anim.o2 { animation:orbit 13s linear infinite reverse; }
-.orbit-anim.o3 { animation:orbit 17s linear infinite; }
-@keyframes orbit { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-.atom .ticks { position:absolute; inset:8%; border-radius:50%; overflow:hidden;
-  display:flex; justify-content:center; }
-.atom .ticks span { font-family:var(--f-mono); font-size:9px; color:rgba(103,153,254,0.4); letter-spacing:14px; white-space:nowrap; }
-
-/* ---------- 统计条 ---------- */
-.stats {
-  position:relative; z-index:2; border-top:1px solid var(--border); border-bottom:1px solid var(--border);
-  background:rgba(16,17,19,0.5); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
-}
+/* ---------- 5 统计条 ---------- */
+.stats { position:relative; z-index:2; border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--glass); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); }
 .stats-in { display:flex; align-items:center; gap:32px; flex-wrap:wrap; padding:14px 0; }
-.stat { display:flex; align-items:baseline; gap:8px; font-family:var(--f-mono); }
-.stat b { font-size:16px; font-weight:600; color:var(--text); letter-spacing:0.02em; }
+.stat { display:flex; align-items:baseline; gap:8px; }
+.stat b { font-family:var(--f-mono); font-size:var(--fs-lg); font-weight:600; color:var(--text); font-variant-numeric:tabular-nums; }
 .stat span { font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-3); }
-.stat .up { color:var(--brand); font-size:11px; }
+.stat .up { color:var(--teal); font-size:11px; font-family:var(--f-mono); }
 .stats .sep { width:1px; height:18px; background:var(--border); }
 
-/* ---------- 分区 ---------- */
-.section { padding:96px 0 0; scroll-margin-top:var(--nav-h); }
-.section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:40px; flex-wrap:wrap; }
-.section-head .left { display:flex; flex-direction:column; gap:16px; }
-.section-head h2 {
-  font-size:clamp(28px,3.6vw,42px); font-weight:500; letter-spacing:-0.02em; line-height:1.22;
-  white-space:pre-line; color:var(--text);
-}
-.section-head h2 .accent {
-  background:linear-gradient(100deg, var(--brand) 0%, #9cc0ff 60%, var(--deep-3) 100%);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.section-head .right { text-align:right; font-family:var(--f-mono); font-size:12px; color:var(--text-3); letter-spacing:0.1em; line-height:2; }
-.section-head .right b { display:block; color:var(--text-2); font-weight:500; font-size:12.5px; letter-spacing:0.14em; }
+/* ---------- 6 分区与卡片 ---------- */
+.section { padding:96px 0 0; scroll-margin-top:calc(var(--nav-h) + 12px); }
+.section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:32px; flex-wrap:wrap; }
+.section-head .left { display:flex; flex-direction:column; gap:14px; }
+.section-head h2 { font-size:var(--fs-2xl); font-weight:600; letter-spacing:-0.02em; line-height:1.25; white-space:pre-line; }
+.section-head .right { text-align:right; font-family:var(--f-mono); font-size:var(--fs-xs); color:var(--text-3); letter-spacing:0.08em; line-height:2; }
+.section-head .right b { display:block; color:var(--text-2); font-weight:500; letter-spacing:0.12em; }
 
-/* ---------- 内容总览台（绝对主角入口） ---------- */
-.deck-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+/* 内容总览台 */
+.deck-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
 .deck-tile {
   position:relative; display:flex; flex-direction:column; gap:14px;
   background:var(--surface); border:1px solid var(--border); border-radius:16px;
-  padding:30px 28px 26px; overflow:hidden; text-decoration:none; color:var(--text);
+  padding:28px 26px 24px; overflow:hidden; text-decoration:none; color:var(--text);
   transition:border-color .3s, transform .3s, box-shadow .3s;
 }
-.deck-tile:hover { border-color:rgba(103,153,254,0.5); transform:translateY(-4px); box-shadow:0 28px 70px -30px rgba(103,153,254,0.28); }
-.deck-tile::before {
-  content:""; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .35s;
-  background:radial-gradient(560px circle at var(--mx,50%) var(--my,0%), rgba(103,153,254,0.1), transparent 45%);
-}
-.deck-tile:hover::before { opacity:1; }
+.deck-tile:hover { border-color:var(--brand); transform:translateY(-4px); box-shadow:var(--shadow-card); }
 .dt-top { display:flex; align-items:center; justify-content:space-between; }
 .dt-icon {
-  width:54px; height:54px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:26px;
-  background:var(--brand-soft); border:1px solid rgba(103,153,254,0.3);
-  box-shadow:0 0 26px rgba(103,153,254,0.16);
+  width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:24px;
+  background:var(--brand-soft); border:1px solid var(--border); color:var(--brand);
 }
-.dt-num { font-family:var(--f-mono); font-size:30px; font-weight:600; color:rgba(255,255,255,0.14); letter-spacing:0.05em; line-height:1; }
-.deck-tile h3 { font-size:22px; font-weight:600; letter-spacing:-0.01em; display:flex; align-items:baseline; gap:10px; }
-.dt-en { font-family:var(--f-mono); font-size:11px; letter-spacing:0.14em; color:var(--brand); text-transform:uppercase; }
-.deck-tile p { font-size:13.5px; color:var(--text-2); line-height:1.7; }
-.dt-go { margin-top:auto; padding-top:6px; font-family:var(--f-mono); font-size:12.5px; color:var(--text-2); letter-spacing:0.06em; display:flex; align-items:center; gap:8px; transition:color .25s; }
+.dt-icon .ic { width:26px; height:26px; }
+.dt-num { font-family:var(--f-mono); font-size:28px; font-weight:600; color:var(--border-strong); letter-spacing:0.05em; line-height:1; }
+.deck-tile h3 { font-size:21px; font-weight:600; letter-spacing:-0.01em; display:flex; align-items:baseline; gap:10px; }
+.dt-en { font-family:var(--f-mono); font-size:10.5px; letter-spacing:0.14em; color:var(--brand); text-transform:uppercase; }
+.deck-tile p { font-size:var(--fs-sm); color:var(--text-2); line-height:1.7; }
+.dt-go { margin-top:auto; padding-top:6px; font-size:var(--fs-sm); color:var(--text-3); display:flex; align-items:center; gap:8px; transition:color .25s; }
 .deck-tile:hover .dt-go { color:var(--brand); }
-.dt-go i { font-style:normal; transition:transform .25s; }
-.deck-tile:hover .dt-go i { transform:translateX(5px); }
+.dt-go .ic { transition:transform .25s; }
+.deck-tile:hover .dt-go .ic { transform:translateX(4px); }
 .deck-dots { display:none; }
-
-/* ---------- 新手提示条 ---------- */
-.deck-tip {
-  margin-top:18px; display:flex; align-items:center; gap:14px;
-  padding:16px 20px; border-radius:12px; border:1px solid var(--border);
-  background:rgba(103,153,254,0.05); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-}
-.deck-tip .tip-icon { font-size:20px; flex-shrink:0; }
-.deck-tip p { font-size:13.5px; color:var(--text-2); line-height:1.75; }
+.deck-tip { margin-top:18px; display:flex; align-items:center; gap:14px; padding:16px 20px; border-radius:12px; border:1px solid var(--border); background:var(--brand-soft); }
+.deck-tip .tip-icon { color:var(--brand); flex-shrink:0; display:flex; font-size:18px; }
+.deck-tip p { font-size:var(--fs-sm); color:var(--text-2); line-height:1.75; }
 .deck-tip p b { color:var(--text); font-weight:600; }
 
-/* ---------- 展示级分区头部 ---------- */
-.section-head.display h2 { font-size:clamp(32px,4.4vw,52px); }
-
-/* ---------- 旗舰卡（每区首卡，绝对主角强化） ---------- */
-.card.featured { grid-column:1/-1; flex-direction:row; align-items:center; gap:30px; padding:28px 32px; }
-.card.featured .glyph { width:72px; height:72px; border-radius:16px; font-size:32px; }
-.card.featured .card-head { margin-bottom:0; padding-right:0; flex:0 0 auto; }
-.card.featured .card-title { font-size:24px; }
-.card.featured .card-meta { font-size:12px; margin-top:4px; }
-.card.featured .card-desc { font-size:15px; min-height:auto; margin-bottom:0; flex:1; line-height:1.75; }
-.card.featured .btns { margin-top:0; width:auto; min-width:240px; }
-.card.featured .btns .btn { flex:1 1 0; }
-@media (max-width:1024px) {
-  .deck-grid { grid-template-columns:1fr; }
-  .card.featured { flex-direction:column; align-items:flex-start; gap:18px; }
-  .card.featured .btns { width:100%; min-width:0; }
-}
-
-/* ---------- 能力卡片（管线） ---------- */
+/* 能力卡 */
 .cap-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-.cap-card {
-  position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--r);
-  padding:26px; display:flex; flex-direction:column; gap:12px; overflow:hidden;
-  transition:border-color .3s, transform .3s, box-shadow .3s;
-}
-.cap-card:hover { border-color:rgba(103,153,254,0.4); transform:translateY(-3px); box-shadow:0 20px 50px -24px rgba(103,153,254,0.22); }
-.cap-card .cap-icon {
-  width:42px; height:42px; border-radius:11px; display:flex; align-items:center; justify-content:center;
-  background:var(--brand-soft); border:1px solid rgba(103,153,254,0.28); font-size:19px;
-  box-shadow:0 0 20px rgba(103,153,254,0.12);
-}
-.cap-card h3 { font-size:18px; font-weight:500; letter-spacing:-0.01em; color:var(--text); }
+.cap-card { position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:26px; display:flex; flex-direction:column; gap:12px; transition:border-color .3s, transform .3s, box-shadow .3s; }
+.cap-card:hover { border-color:var(--brand); transform:translateY(-3px); box-shadow:var(--shadow-card); }
+.cap-card .cap-icon { width:44px; height:44px; border-radius:11px; display:flex; align-items:center; justify-content:center; background:var(--brand-soft); border:1px solid var(--border); color:var(--brand); font-size:19px; }
+.cap-card .cap-icon .ic { width:22px; height:22px; }
+.cap-card h3 { font-size:18px; font-weight:600; color:var(--text); }
 .cap-card .cap-meta { font-family:var(--f-mono); font-size:11px; color:var(--brand); letter-spacing:0.08em; text-transform:uppercase; margin-top:-6px; }
-.cap-card p { font-size:13.5px; color:var(--text-2); line-height:1.7; }
+.cap-card p { font-size:var(--fs-sm); color:var(--text-2); line-height:1.7; }
 .cap-card .cap-flow { display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; padding-top:8px; }
-.cap-card .cap-flow em {
-  font-style:normal; font-family:var(--f-mono); font-size:11px; color:var(--text-2);
-  padding:4px 9px; border-radius:6px; background:rgba(255,255,255,0.05); border:1px solid var(--border);
-}
+.cap-card .cap-flow em { font-style:normal; font-family:var(--f-mono); font-size:11px; color:var(--text-2); padding:4px 9px; border-radius:6px; background:var(--glass); border:1px solid var(--border); }
 .cap-card .cap-flow em b { color:var(--brand); font-weight:500; }
 
-/* ---------- 软件工坊（MedKit 桌面软件下载） ---------- */
-.sw-card {
-  position:relative; display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:center;
-  background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--r);
-  padding:30px 32px; overflow:hidden;
-  transition:border-color .3s, transform .3s, box-shadow .3s;
-}
-.sw-card::before {
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(560px circle at 12% 0%, rgba(45,212,191,0.08), transparent 46%);
-}
-.sw-card:hover { border-color:rgba(45,212,191,0.45); transform:translateY(-3px); box-shadow:0 24px 60px -28px rgba(0,0,0,0.9), 0 0 44px rgba(45,212,191,0.14); }
-.sw-logo { width:72px; height:72px; flex-shrink:0; position:relative; z-index:1; }
-.sw-logo svg { width:100%; height:100%; display:block; border-radius:15px; box-shadow:0 0 26px rgba(45,212,191,0.35); }
-.sw-body { position:relative; z-index:1; }
+/* 软件工坊 */
+.sw-card { position:relative; display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:center; background:var(--surface); border:1px solid var(--border-strong); border-radius:var(--r); padding:30px 32px; overflow:hidden; transition:border-color .3s, transform .3s, box-shadow .3s; }
+.sw-card:hover { border-color:var(--teal); transform:translateY(-3px); box-shadow:var(--shadow-card); }
+.sw-logo { width:72px; height:72px; flex-shrink:0; }
+.sw-logo svg { width:100%; height:100%; display:block; border-radius:15px; box-shadow:0 0 26px rgba(45,212,191,0.3); }
 .sw-title-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:7px; }
-.sw-title { font-size:20px; font-weight:600; letter-spacing:-0.01em; color:var(--text); }
-.sw-title .accent { color:var(--brand); }
-.sw-ver {
-  font-family:var(--f-mono); font-size:11.5px; letter-spacing:0.05em;
-  color:var(--text-2); padding:4px 12px; border-radius:var(--r-pill);
-  background:rgba(255,255,255,0.05); border:1px solid var(--border); white-space:nowrap;
-}
-.sw-ver.ok { color:#2dd4bf; border-color:rgba(45,212,191,0.35); }
-.sw-desc { font-size:13.5px; color:var(--text-2); line-height:1.7; max-width:700px; margin-bottom:6px; }
-.sw-desc b { color:var(--text); font-weight:500; }
+.sw-title { font-size:20px; font-weight:600; color:var(--text); }
+.sw-ver { font-family:var(--f-mono); font-size:11.5px; color:var(--text-2); padding:4px 12px; border-radius:var(--r-pill); background:var(--glass); border:1px solid var(--border); white-space:nowrap; font-variant-numeric:tabular-nums; }
+.sw-ver.ok { color:var(--teal); border-color:var(--teal); }
+.sw-desc { font-size:var(--fs-sm); color:var(--text-2); line-height:1.75; max-width:700px; margin-bottom:6px; }
+.sw-desc b { color:var(--text); font-weight:600; }
 .sw-note { font-family:var(--f-mono); font-size:11px; color:var(--text-3); letter-spacing:0.06em; margin-bottom:18px; }
 .sw-actions { display:flex; flex-wrap:wrap; gap:10px; }
 .sw-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
-.sw-tags em {
-  font-style:normal; font-family:var(--f-mono); font-size:11px; color:var(--text-2);
-  padding:4px 9px; border-radius:6px; background:rgba(255,255,255,0.05); border:1px solid var(--border);
-}
-@media (max-width:720px) {
-  .sw-card { grid-template-columns:1fr; gap:18px; padding:24px 22px; }
-  .sw-logo { width:56px; height:56px; }
-  .sw-logo svg { border-radius:12px; }
-  .sw-actions .btn { flex:1; }
-}
+.sw-tags em { font-style:normal; font-family:var(--f-mono); font-size:11px; color:var(--text-2); padding:4px 9px; border-radius:6px; background:var(--glass); border:1px solid var(--border); }
 
-/* ---------- 内容卡片 ---------- */
+/* 资源卡片 */
 .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px; }
-.card {
-  position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--r);
-  padding:20px 20px 18px; overflow:hidden; display:flex; flex-direction:column;
-  transition:border-color .3s, transform .3s, box-shadow .3s;
-}
-.card:hover { border-color:rgba(103,153,254,0.42); transform:translateY(-3px); box-shadow:0 24px 60px -28px rgba(0,0,0,0.9), 0 0 40px rgba(26,56,112,0.18); }
-/* 线上刷题入口卡（reviews-s1 顶部横幅；a.card 的锚点重置） */
-.drill-entry { text-decoration:none; color:inherit; margin-bottom:18px; }
-.drill-entry .btns { margin-top:14px; }
-.card::before {
-  content:""; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .35s;
-  background:radial-gradient(520px circle at var(--mx,50%) var(--my,0%), rgba(103,153,254,0.09), transparent 42%);
-}
-.card:hover::before { opacity:1; }
-.card .idx {
-  position:absolute; top:16px; right:18px; font-family:var(--f-mono); font-size:11px;
-  color:var(--text-3); letter-spacing:0.1em;
-}
+.card { position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--r); padding:20px 20px 18px; display:flex; flex-direction:column; transition:border-color .3s, transform .3s, box-shadow .3s; }
+.card:hover { border-color:var(--brand); transform:translateY(-3px); box-shadow:var(--shadow-card); }
+.card[hidden] { display:none; }
+.card .idx { position:absolute; top:16px; right:18px; font-family:var(--f-mono); font-size:11px; color:var(--text-3); letter-spacing:0.1em; }
 .card-head { display:flex; align-items:center; gap:13px; margin-bottom:10px; padding-right:44px; }
-.glyph {
-  width:40px; height:40px; flex-shrink:0; border-radius:10px;
-  display:flex; align-items:center; justify-content:center; font-size:18px;
-  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
-  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-}
-.card-title { font-size:17px; font-weight:600; letter-spacing:-0.01em; color:var(--text); }
-.card-meta { font-family:var(--f-mono); font-size:12px; color:var(--text-3); margin-top:3px; letter-spacing:0.05em; }
-.card-desc { font-size:13px; color:var(--text-2); line-height:1.65; margin-bottom:18px; min-height:34px; }
+.glyph { width:42px; height:42px; flex-shrink:0; border-radius:11px; display:flex; align-items:center; justify-content:center; background:var(--brand-soft); border:1px solid var(--border); color:var(--brand); }
+.glyph .ic { width:21px; height:21px; }
+.card-title { font-size:17px; font-weight:600; color:var(--text); }
+.card-meta { font-family:var(--f-mono); font-size:var(--fs-xs); color:var(--text-3); margin-top:3px; letter-spacing:0.03em; font-variant-numeric:tabular-nums; }
+.card-desc { font-size:var(--fs-sm); color:var(--text-2); line-height:1.7; margin-bottom:18px; min-height:34px; }
 .btns { display:flex; flex-wrap:wrap; gap:8px; margin-top:auto; }
 .btns .btn { flex:1; min-width:0; }
-.btns .btn-ghost {
-  background:transparent; border:1px solid var(--border-strong); color:var(--text-2);
-}
-.btns .btn-ghost:hover { color:var(--text); border-color:rgba(255,255,255,0.3); background:rgba(255,255,255,0.05); }
+.card.featured { grid-column:1/-1; flex-direction:row; align-items:center; gap:30px; padding:28px 32px; text-decoration:none; color:inherit; }
+.card.featured .glyph { width:64px; height:64px; border-radius:16px; }
+.card.featured .glyph .ic { width:30px; height:30px; }
+.card.featured .card-head { margin-bottom:0; padding-right:0; flex:0 0 auto; }
+.card.featured .card-title { font-size:22px; }
+.card.featured .card-desc { font-size:15px; min-height:auto; margin-bottom:0; flex:1; line-height:1.75; }
+.card.featured .btns { margin-top:0; width:auto; min-width:220px; }
+.drill-entry { margin-bottom:18px; }
 
-/* ---------- 源码与进阶（原「快速上手」区，2026-10-16 改名） ---------- */
-.quick {
-  position:relative; border:1px solid var(--border); border-radius:16px;
-  background:linear-gradient(180deg, rgba(16,17,19,0.9), rgba(13,14,17,0.75));
-  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-  padding:44px 40px; overflow:hidden;
-}
-.quick::before { content:""; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(700px circle at 12% -10%, rgba(26,56,112,0.28), transparent 55%),
-             radial-gradient(500px circle at 95% 110%, rgba(74,138,196,0.14), transparent 55%); }
+/* 源码与进阶 */
+.quick { position:relative; border:1px solid var(--border); border-radius:16px; background:var(--surface); padding:44px 40px; overflow:hidden; }
 .quick-in { position:relative; display:grid; grid-template-columns:1fr 1fr; gap:36px; }
-.quick h3 { font-size:20px; font-weight:500; margin:14px 0 6px; }
-.quick .q-desc { font-size:14px; color:var(--text-2); margin-bottom:16px; }
+.quick h3 { font-size:20px; font-weight:600; margin:14px 0 6px; }
+.quick .q-desc { font-size:var(--fs-md); color:var(--text-2); margin-bottom:16px; }
 .quick .term-w { margin-top:18px; }
-.quick .q-side { display:flex; flex-direction:column; gap:14px; }
+.quick .q-side { display:flex; flex-direction:column; gap:14px; margin-top:14px; }
 .quick .q-side .btn { align-self:flex-start; }
 
-/* ---------- 大四上 ---------- */
-.coming {
-  position:relative; max-width:760px; margin:0 auto; text-align:center; padding:110px 20px 60px;
-  display:flex; flex-direction:column; align-items:center; gap:22px;
-}
-.coming .ascii-box {
-  font-family:var(--f-mono); font-size:clamp(11px,1.6vw,15px); line-height:1.55; color:var(--brand);
-  white-space:pre; text-align:left; text-shadow:0 0 14px rgba(103,153,254,0.5);
-  animation:pulseGlow 3.2s ease-in-out infinite;
-}
-@keyframes pulseGlow { 0%,100%{text-shadow:0 0 10px rgba(103,153,254,0.35)} 50%{text-shadow:0 0 22px rgba(103,153,254,0.7)} }
-.coming h2 { font-size:clamp(30px,4vw,46px); font-weight:500; letter-spacing:-0.01em; }
-.coming h2 .accent { color:var(--brand); }
-.coming p { color:var(--text-2); font-size:15px; max-width:430px; line-height:1.8; }
-.coming .signal { font-family:var(--f-mono); font-size:11px; letter-spacing:0.2em; color:var(--text-3); text-transform:uppercase; }
-.coming .signal i { font-style:normal; color:var(--warn); }
+/* ---------- 7 搜索 ---------- */
+.grid-tools { display:flex; align-items:center; gap:12px; margin-bottom:20px; flex-wrap:wrap; }
+.search { display:flex; align-items:center; gap:9px; flex:1; max-width:420px; padding:10px 16px; border-radius:var(--r-pill); border:1px solid var(--border); background:var(--surface); color:var(--text-3); transition:border-color .2s; }
+.search:focus-within { border-color:var(--brand); color:var(--brand); }
+.search input { flex:1; min-width:0; border:none; background:none; outline:none; color:var(--text); font-family:var(--f-sans); font-size:var(--fs-md); }
+.search input::placeholder { color:var(--text-3); }
+.grid-count { font-family:var(--f-mono); font-size:var(--fs-xs); color:var(--text-3); letter-spacing:0.05em; font-variant-numeric:tabular-nums; }
+.grid-empty { padding:34px 20px; text-align:center; color:var(--text-3); font-size:var(--fs-md); border:1px dashed var(--border-strong); border-radius:var(--r); }
+.grid-empty[hidden] { display:none; }
 
-/* ---------- 页脚 ---------- */
-.footer { margin-top:110px; padding:0 0 26px; position:relative; z-index:2; }
-.footer .line { height:1px; background:linear-gradient(90deg, transparent, var(--border), transparent); margin-bottom:26px; }
-.footer-in { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
-.footer .f-left { display:flex; align-items:center; gap:10px; font-size:12.5px; color:var(--text-2); }
-.footer .f-left .pulse { width:7px; height:7px; border-radius:50%; background:var(--ok); box-shadow:0 0 8px var(--ok); animation:pulse 2.2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
-.footer .f-mid { font-family:var(--f-mono); font-size:11px; color:var(--text-2); letter-spacing:0.16em; text-align:center; }
-.footer .f-right { display:flex; align-items:center; gap:14px; }
-.footer a { color:var(--text-2); text-decoration:none; font-size:12.5px; transition:color .2s; }
-.footer a:hover { color:var(--brand); }
-
-/* ---------- 模态层 ---------- */
-#modal { position:fixed; inset:0; z-index:1000; display:none; background:rgba(5,6,8,0.72);
-  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); animation:fadeIn .25s ease; }
+/* ---------- 8 模态与 MD ---------- */
+#modal { position:fixed; inset:0; z-index:1000; display:none; background:rgba(4,8,16,0.66); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); animation:fadeIn .25s ease; }
 #modal.open { display:block; }
+@keyframes fadeIn { from{opacity:0} }
 .modal-card {
   position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
-  width:min(900px,94vw); height:min(88vh,1000px);
-  background:#0f1113; border:1px solid rgba(255,255,255,0.1); border-radius:14px;
-  display:flex; flex-direction:column; overflow:hidden;
-  box-shadow:0 40px 120px -20px rgba(0,0,0,0.85), 0 0 60px rgba(26,56,112,0.15);
+  width:min(920px,94vw); height:min(88vh,1000px);
+  background:var(--surface); border:1px solid var(--border-strong); border-radius:16px;
+  display:flex; flex-direction:column; overflow:hidden; box-shadow:var(--shadow-card);
   animation:rise .35s cubic-bezier(.2,.7,.2,1);
 }
-.modal-bar { display:flex; align-items:center; gap:14px; padding:14px 20px; border-bottom:1px solid var(--border);
-  background:rgba(16,17,19,0.9); flex-shrink:0; }
+@keyframes rise { from{opacity:0; transform:translate(-50%,-47%)} }
+.modal-bar { display:flex; align-items:center; gap:14px; padding:14px 20px; border-bottom:1px solid var(--border); flex-shrink:0; }
 .modal-bar .m-dots { display:flex; gap:6px; }
 .modal-bar .m-dots i { width:10px; height:10px; border-radius:50%; }
-.modal-bar .m-dots i:nth-child(1){ background:#ff5f57; } .modal-bar .m-dots i:nth-child(2){ background:#febc2e; } .modal-bar .m-dots i:nth-child(3){ background:#28c840; }
-.modal-bar .m-title { font-size:15px; font-weight:600; color:var(--text); flex:1; font-family:var(--f-sans); }
-.modal-bar .m-actions { display:flex; gap:8px; }
-.modal-bar .m-btn {
-  display:inline-flex; align-items:center; gap:6px;
-  padding:7px 14px; font-size:12.5px; font-weight:500; border-radius:var(--r-pill);
-  border:1px solid var(--border-strong); background:var(--glass); color:var(--text);
-  cursor:pointer; font-family:var(--f-sans); backdrop-filter:blur(8px);
-  transition:all .2s;
-}
-.modal-bar .m-btn:hover { background:rgba(255,255,255,0.1); }
-.modal-bar .m-btn.close { border-color:rgba(255,95,87,0.4); color:#ff8a84; }
-.modal-bar .m-btn.close:hover { background:rgba(255,95,87,0.12); }
+.modal-bar .m-dots i:nth-child(1){ background:var(--err); } .modal-bar .m-dots i:nth-child(2){ background:var(--warn); } .modal-bar .m-dots i:nth-child(3){ background:var(--ok); }
+.modal-bar .m-title { font-size:15px; font-weight:600; color:var(--text); flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.modal-bar .m-actions { display:flex; gap:8px; flex-shrink:0; }
+.modal-bar .m-btn { display:inline-flex; align-items:center; gap:6px; padding:7px 14px; font-size:12.5px; font-weight:500; border-radius:var(--r-pill); border:1px solid var(--border-strong); background:var(--glass); color:var(--text); cursor:pointer; font-family:var(--f-sans); transition:all .2s; }
+.modal-bar .m-btn:hover { background:var(--surface-2); }
+.modal-bar .m-btn.close { border-color:var(--err); color:var(--err); }
 .modal-body { flex:1; overflow:hidden; }
-.modal-body.loading { display:flex; align-items:center; justify-content:center; overflow:auto; }
-.modal-body .spinner { width:34px; height:34px; border:3px solid var(--border); border-top-color:var(--brand); border-radius:50%; animation:spin .8s linear infinite; }
-.modal-body iframe { width:100%; height:100%; border:0; background:#0f1113; }
+.modal-body.loading { display:flex; align-items:center; justify-content:center; }
+.spinner { width:34px; height:34px; border:3px solid var(--border); border-top-color:var(--brand); border-radius:50%; animation:spin .8s linear infinite; }
+@keyframes spin { to{transform:rotate(360deg)} }
+.modal-error { padding:48px 24px; text-align:center; color:var(--text-3); display:flex; flex-direction:column; align-items:center; gap:12px; }
+.modal-error .ic { width:30px; height:30px; color:var(--err); }
 
-/* MD 排版（暗色玻璃） */
-.md { padding:36px 48px 56px; overflow-y:auto; height:100%; font-family:var(--f-sans); font-size:15px; line-height:1.85; color:rgba(255,255,255,0.88); }
-.md h1,.md h2,.md h3,.md h4,.md h5,.md h6 { font-weight:600; color:var(--text); margin:1.4em 0 .5em; line-height:1.3; letter-spacing:-0.01em; }
+.md { padding:36px 48px 56px; overflow-y:auto; height:100%; font-size:15px; line-height:1.85; color:var(--text-2); }
+.md h1,.md h2,.md h3,.md h4,.md h5,.md h6 { font-weight:600; color:var(--text); margin:1.4em 0 .5em; line-height:1.35; letter-spacing:-0.01em; }
 .md h1 { font-size:26px; border-bottom:1px solid var(--border); padding-bottom:10px; }
 .md h2 { font-size:21px; border-bottom:1px solid var(--border); padding-bottom:8px; }
 .md h3 { font-size:18px; }
 .md p { margin:.7em 0; }
 .md ul,.md ol { padding-left:1.6em; margin:.7em 0; }
 .md li { margin:.3em 0; }
-.md strong { color:#fff; font-weight:600; }
-.md em { color:#9cc0ff; }
-.md code { font-family:var(--f-mono); background:rgba(255,255,255,0.07); padding:2px 6px; border-radius:5px; font-size:13px; color:#9cc0ff; }
-.md pre { background:#101216; border:1px solid var(--border); padding:16px 20px; border-radius:10px; overflow-x:auto; margin:1em 0; }
-.md pre code { background:none; color:rgba(255,255,255,0.85); padding:0; }
-.md blockquote { border-left:2px solid var(--brand); padding-left:1em; margin:1em 0; color:var(--text-2); }
-/* Obsidian Callout（MedReview 产物格式契约 · 2026-08-22 站点适配） */
+.md strong { color:var(--text); font-weight:600; }
+.md em { color:var(--brand); }
+.md code { font-family:var(--f-mono); background:var(--glass); padding:2px 6px; border-radius:5px; font-size:13px; color:var(--brand); }
+.md pre { background:var(--bg-2); border:1px solid var(--border); padding:16px 20px; border-radius:10px; overflow-x:auto; margin:1em 0; }
+.md pre code { background:none; color:var(--text-2); padding:0; }
+.md blockquote { border-left:2px solid var(--brand); padding-left:1em; margin:1em 0; color:var(--text-3); }
 .md .callout { margin:1em 0; padding:14px 16px; border-radius:10px; border:1px solid var(--border); border-left-width:3px; background:var(--glass); }
 .md .callout-title { font-weight:600; color:var(--text); margin-bottom:6px; font-size:14.5px; }
 .md .callout-body { color:var(--text-2); }
 .md .callout-body p { margin:.4em 0; }
-.md .callout-body li { margin:.2em 0; }
-.md .callout-warning { border-left-color:#febc2e; background:rgba(254,188,46,0.07); }
-.md .callout-warning .callout-title { color:#febc2e; }
-.md .callout-tip { border-left-color:#a78bfa; background:rgba(167,139,250,0.07); }
-.md .callout-tip .callout-title { color:#a78bfa; }
-.md .callout-info { border-left-color:var(--brand); background:rgba(103,153,254,0.07); }
+.md .callout-warning { border-left-color:var(--warn); background:rgba(229,161,58,0.08); }
+.md .callout-warning .callout-title { color:var(--warn); }
+.md .callout-tip { border-left-color:#8b7cf6; background:rgba(139,124,246,0.08); }
+.md .callout-tip .callout-title { color:#8b7cf6; }
+.md .callout-info { border-left-color:var(--brand); background:var(--brand-soft); }
 .md .callout-info .callout-title { color:var(--brand); }
-.md .callout-success { border-left-color:var(--ok); background:rgba(40,200,64,0.07); }
+.md .callout-success { border-left-color:var(--ok); background:rgba(47,191,113,0.08); }
 .md .callout-success .callout-title { color:var(--ok); }
-.md .callout-note { border-left-color:rgba(255,255,255,0.35); background:rgba(255,255,255,0.04); }
-.md .callout-note .callout-title { color:var(--text); }
-/* <details> 折叠区（默认展开，可收起） */
-.md details { margin:1em 0; border:1px solid var(--border); border-radius:10px; background:rgba(255,255,255,0.03); overflow:hidden; }
+.md .callout-note { border-left-color:var(--text-3); }
+.md details { margin:1em 0; border:1px solid var(--border); border-radius:10px; background:var(--glass); overflow:hidden; }
 .md details > summary { cursor:pointer; padding:10px 16px; font-weight:600; color:var(--text); list-style:none; user-select:none; }
 .md details > summary::-webkit-details-marker { display:none; }
 .md details > summary::before { content:"▾"; display:inline-block; margin-right:8px; color:var(--brand); transition:transform .2s; }
@@ -667,198 +449,162 @@ body {
 .md ol { list-style:decimal; }
 .md table { border-collapse:collapse; width:100%; margin:1em 0; font-size:13.5px; }
 .md th,.md td { border:1px solid var(--border); padding:8px 12px; text-align:left; }
-.md th { background:rgba(255,255,255,0.05); font-weight:600; color:var(--text); }
-.md tr:nth-child(even) td { background:rgba(255,255,255,0.02); }
-.md hr { border:none; border-top:1px solid var(--border); margin:2em 0; }
-.md a { color:var(--brand); text-decoration:none; border-bottom:1px dashed rgba(103,153,254,0.4); }
+.md th { background:var(--glass); font-weight:600; color:var(--text); }
+.md a { color:var(--brand); text-decoration:none; border-bottom:1px dashed var(--border-strong); }
 
-/* Toast */
-#toast {
-  position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(80px);
-  background:rgba(16,17,19,0.85); border:1px solid var(--border-strong); color:var(--text);
-  padding:11px 22px; border-radius:var(--r-pill); font-size:13px; font-weight:500;
-  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-  opacity:0; transition:all .3s; z-index:2000; pointer-events:none;
-  box-shadow:0 10px 40px rgba(0,0,0,0.5); font-family:var(--f-sans);
-}
+/* ---------- 9 页脚 / Toast / FX 开关 ---------- */
+.footer { margin-top:110px; padding:0 0 26px; position:relative; z-index:2; }
+.footer .line { height:1px; background:linear-gradient(90deg, transparent, var(--border-strong), transparent); margin-bottom:26px; }
+.footer-in { display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap; }
+.footer .f-left { display:flex; align-items:center; gap:10px; font-size:12.5px; color:var(--text-2); }
+.footer .f-left .pulse { width:7px; height:7px; border-radius:50%; background:var(--ok); box-shadow:0 0 8px var(--ok); animation:pulse 2.2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+.footer .f-mid { font-family:var(--f-mono); font-size:11px; color:var(--text-3); letter-spacing:0.16em; text-align:center; }
+.footer .f-right { display:flex; align-items:center; gap:14px; }
+.footer a { color:var(--text-2); text-decoration:none; font-size:12.5px; transition:color .2s; }
+.footer a:hover { color:var(--brand); }
+.fx-toggle { display:flex; align-items:center; gap:8px; cursor:pointer; user-select:none; font-family:var(--f-mono); font-size:11px; letter-spacing:0.06em; color:var(--text-2); padding:7px 13px; border-radius:var(--r-pill); border:1px solid var(--border); background:var(--glass); transition:all .2s; }
+.fx-toggle:hover { color:var(--text); border-color:var(--border-strong); }
+.fx-toggle .dot { width:7px; height:7px; border-radius:50%; background:var(--text-3); transition:all .2s; }
+.fx-toggle.on .dot { background:var(--brand); box-shadow:0 0 8px var(--brand); }
+#toast { position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(80px); background:var(--surface); border:1px solid var(--border-strong); color:var(--text); padding:11px 22px; border-radius:var(--r-pill); font-size:var(--fs-sm); font-weight:500; opacity:0; transition:all .3s; z-index:2000; pointer-events:none; box-shadow:var(--shadow-card); }
 #toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
-
 .view { display:none; }
 .view.active { display:block; }
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity:1; transform:translateY(0); }
 
-/* 滚动显现 */
-.reveal { opacity:0; transform:translateY(26px); filter:blur(6px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1), filter .7s; }
-.reveal.in { opacity:1; transform:translateY(0); filter:blur(0); }
-
-/* 粘性滚动分区 */
-.sticky-sec { position:relative; }
-.sticky-grid { display:grid; grid-template-columns:minmax(0,42fr) minmax(0,58fr); gap:48px; align-items:start; }
-.sticky-list { display:flex; flex-direction:column; }
-.sticky-item { padding:64px 0; transition:opacity .5s; opacity:0.3; cursor:default; }
-.sticky-item .si-head { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
-.sticky-item .si-dot { width:9px; height:9px; border-radius:50%; background:rgba(255,255,255,0.25); transition:all .5s; }
-.sticky-item.active { opacity:1; }
-.sticky-item.active .si-dot { background:var(--brand); box-shadow:0 0 12px var(--brand); }
-.sticky-item h3 { font-size:21px; font-weight:500; letter-spacing:-0.01em; }
-.sticky-item p { font-size:14.5px; color:var(--text-2); line-height:1.75; margin-top:4px; max-width:400px; }
-.sticky-stage { position:sticky; top:calc(var(--nav-h) + 28px); }
-.sticky-frame {
-  position:relative; aspect-ratio:8/5; background:var(--surface-2); border:1px solid var(--border);
-  border-radius:14px; overflow:hidden; box-shadow:0 30px 80px -30px rgba(0,0,0,0.8);
-}
-.sticky-mock { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
-  transition:opacity .5s; opacity:0; pointer-events:none; background:#101113; }
-.sticky-mock.active { opacity:1; pointer-events:auto; }
-.sticky-mock .mock-in { width:100%; height:100%; padding:26px; display:flex; flex-direction:column; gap:10px; }
-.mock-tag { font-family:var(--f-mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); }
-.mock-row { display:flex; align-items:center; gap:10px; padding:11px 13px; border-radius:9px;
-  background:rgba(255,255,255,0.04); border:1px solid var(--border); }
-.mock-row.sel { background:rgba(103,153,254,0.1); border-color:rgba(103,153,254,0.35); }
-.mock-row .m-icon { width:28px; height:28px; border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:14px; background:rgba(255,255,255,0.06); }
-.mock-row .m-name { font-size:13px; color:var(--text); font-weight:500; }
-.mock-row .m-sub { font-family:var(--f-mono); font-size:10px; color:var(--text-3); }
-.mock-row .m-right { margin-left:auto; font-family:var(--f-mono); font-size:10px; color:var(--brand); }
-.mock-progress { height:5px; border-radius:3px; background:rgba(255,255,255,0.08); overflow:hidden; }
-.mock-progress i { display:block; height:100%; width:62%; background:linear-gradient(90deg, var(--brand), #9cc0ff); border-radius:3px; box-shadow:0 0 10px rgba(103,153,254,0.6); }
-.mock-bar { display:flex; gap:8px; }
-.mock-bar .bar { flex:1; height:6px; border-radius:3px; background:rgba(255,255,255,0.08); }
-.mock-bar .bar i { display:block; height:100%; border-radius:3px; background:rgba(255,255,255,0.22); }
-
-/* ---------- 响应式 ---------- */
+/* ---------- 10 响应式 ---------- */
 @media (max-width:1024px) {
   .hero-grid { grid-template-columns:1fr; gap:44px; }
-  .atom-wrap { display:none; }
   .cap-grid { grid-template-columns:1fr; }
-  .sticky-grid { grid-template-columns:1fr; }
-  .sticky-stage { position:static; }
-  .sticky-frame { margin-top:8px; }
   .quick-in { grid-template-columns:1fr; }
+  .card.featured { flex-direction:column; align-items:flex-start; gap:18px; }
+  .card.featured .btns { width:100%; min-width:0; }
 }
 @media (max-width:720px) {
   .wrap { padding:0 18px; }
   .nav-links { display:none; }
   .nav-in { gap:8px; padding:0 12px; }
-  .brand { gap:8px; }
   .brand .name { font-size:13.5px; }
-  .nav-term-tabs { display:flex; }   /* 手机端学期切换保持主页可见 */
-  .nav-term { padding:6px 10px; font-size:12px; min-height:44px; }
-  .nav-term .lock { display:none; }
-  .nav-right { gap:8px; }
-  .nav-right .btn-sec { display:none; }
+  .nav-term { padding:6px 10px; min-height:40px; }
+  .nav-cta { display:inline-flex; }   /* 刷题胶囊移动端常驻（B5） */
+  .nav-right .hide-m { display:none; }
   .nav-burger { display:flex; width:44px; height:44px; }
-  /* 触控目标 ≥44px（P0-5） */
-  .btn, .btn-sm, .btn-xs { min-height:44px; }
+  .btn { min-height:44px; }
   .modal-bar .m-btn { min-height:40px; }
-  .term-copy { padding:8px 10px; border-radius:8px; }
-  .fx-toggle { min-height:44px; }
-  /* 内容总览台 → 横向滑动卡片（P2-3：渐隐遮罩 + 指示点） */
   .deck-grid-wrap { position:relative; margin:0 -18px; padding:0 18px; }
-  .deck-grid-wrap::after {
-    content:""; position:absolute; right:0; top:0; bottom:10px; width:44px;
-    background:linear-gradient(to left, rgba(10,10,10,0.92) 22%, transparent);
-    pointer-events:none; transition:opacity .3s;
-  }
+  .deck-grid-wrap::after { content:""; position:absolute; right:0; top:0; bottom:10px; width:44px; background:linear-gradient(to left, var(--bg) 22%, transparent); pointer-events:none; transition:opacity .3s; }
   .deck-grid-wrap.end::after { opacity:0; }
   .deck-grid { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:14px; padding:0 0 10px; scrollbar-width:none; }
   .deck-grid::-webkit-scrollbar { display:none; }
   .deck-tile { flex:0 0 84%; scroll-snap-align:center; }
   .deck-dots { display:flex; justify-content:center; gap:7px; padding:12px 0 2px; }
-  .deck-dots span { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.18); transition:all .3s; }
-  .deck-dots span.on { width:18px; border-radius:4px; background:var(--brand); box-shadow:0 0 8px rgba(103,153,254,0.6); }
-  /* 模态自适应 */
+  .deck-dots span { width:7px; height:7px; border-radius:50%; background:var(--border-strong); transition:all .3s; }
+  .deck-dots span.on { width:18px; border-radius:4px; background:var(--brand); }
   .modal-bar { flex-wrap:wrap; gap:8px; }
-  .modal-bar .m-title { min-width:55%; }
-  .md { padding:24px 18px 44px; }
+  .md { padding:24px 20px 44px; }
   .stats-in { gap:18px; }
   .stats .sep { display:none; }
   .section { padding:72px 0 0; }
-  /* P2-5：区块标题右侧信息移动端简化（不隐藏） */
-  .section-head { flex-direction:column; align-items:flex-start; gap:12px; margin-bottom:30px; }
-  .section-head .right { display:block; text-align:left; font-size:11px; line-height:1.6; }
-  .section-head .right .right-sub { display:none; }
+  .section-head { flex-direction:column; align-items:flex-start; gap:12px; margin-bottom:24px; }
+  .section-head .right { display:none; }
   .grid { grid-template-columns:1fr; }
   .term-body { min-height:210px; font-size:12.5px; padding:18px 16px 22px; }
-  .guide-panel { gap:8px; padding:0 0 2px; }
-  .g-step { padding:9px 10px; }
-  .g-body b { font-size:13px; }
-  .g-body p { font-size:12px; }
-  .g-go { font-size:11.5px; padding:3px 8px; }
   .quick { padding:30px 22px; }
-  .md { padding:24px 20px 40px; }
+  .sw-card { grid-template-columns:1fr; gap:18px; padding:24px 22px; }
+  .sw-logo { width:56px; height:56px; }
+  .sw-actions .btn { flex:1; }
   .footer-in { flex-direction:column; text-align:center; }
+  .search { max-width:none; }
 }
-
 @media (max-width:400px) {
-  .brand .name { display:none; }   /* 超窄屏：只保留 Logo 与学期切换 */
+  .brand .name { display:none; }
   .nav-term { padding:6px 8px; font-size:11.5px; }
 }
 
-/* ---------- 动效偏好 ---------- */
+/* ---------- 11 动效偏好与打印 ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
   html { scroll-behavior:auto; }
-  /* 性能降级：移除 blur，用更实背景补偿（P2-4） */
-  .nav, .mobile-menu, .nav-term-tabs, .fx-toggle, .btn-sec, .term-tab, .terminal,
-  .stats, .deck-tip, .glyph, .quick, .m-btn, #modal, #toast {
-    backdrop-filter:none !important; -webkit-backdrop-filter:none !important;
-    background:rgba(13,16,23,0.92);
-  }
+  .nav, .stats, .search, #modal, #toast { backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
 }
-
-/* ---------- 打印 ---------- */
 @media print {
-  .deep-sea, .nav, .hero-canvas, .atom-wrap, .stats, #modal, #toast, .footer .line, .fx-toggle, #software { display:none !important; }
+  .deep-sea, .nav, .hero-canvas, .stats, #modal, #toast, .footer, .grid-tools, .fx-toggle { display:none !important; }
   body { background:#fff; color:#111; }
   .hero { min-height:auto; padding:40px 0; }
-  .hero h1, .hero-desc, .hero-cta, .hero-badge { animation:none; opacity:1; transform:none; filter:none; }
-  .card { break-inside:avoid; }
-  .reveal { opacity:1 !important; transform:none !important; filter:none !important; }
+  .hero h1, .hero-desc, .hero-cta, .hero-badge, .hero-spec { animation:none; opacity:1; transform:none; }
+  .card, .deck-tile { break-inside:avoid; border-color:#ddd; }
+  .reveal { opacity:1 !important; transform:none !important; }
 }
-.print-root { font-family:var(--f-sans); font-size:15px; line-height:1.85; color:rgba(255,255,255,0.88); background:#0f1113; padding:40px 48px; }
-.print-root h1,.print-root h2,.print-root h3,.print-root h4 { font-weight:600; color:#fff; margin:1.4em 0 .5em; line-height:1.3; }
-.print-root h1 { font-size:26px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:8px; }
-.print-root h2 { font-size:21px; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:6px; }
-.print-root strong { color:#fff; }
-.print-root em { color:#9cc0ff; }
-.print-root table { border-collapse:collapse; width:100%; margin:1em 0; font-size:13.5px; }
-.print-root th,.print-root td { border:1px solid rgba(255,255,255,0.12); padding:8px 12px; text-align:left; }
-.print-root th { background:rgba(255,255,255,0.06); color:#fff; }
-.print-root pre { background:#101216; border:1px solid rgba(255,255,255,0.1); padding:16px 20px; border-radius:10px; overflow-x:auto; }
-.print-root pre code { background:none; color:rgba(255,255,255,0.85); }
-.print-root code { font-family:var(--f-mono); background:rgba(255,255,255,0.07); padding:2px 6px; border-radius:5px; color:#9cc0ff; }
-.print-root blockquote { border-left:2px solid #679efe; padding-left:1em; color:rgba(255,255,255,0.5); }
-.print-root { font-family:var(--f-sans); }
 </style>
 </head>
 <body>
 
+<a class="skip" href="#main">跳到主要内容</a>
+
+<!-- SVG 图标精灵（跨平台一致渲染，替代 Emoji） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5C7 16.5 3.5 13.4 3.5 9.6 3.5 7 5.5 5 8 5c1.6 0 3.1.8 4 2.1C12.9 5.8 14.4 5 16 5c2.5 0 4.5 2 4.5 4.6 0 3.8-3.5 6.9-8.5 10.9z"/></symbol>
+    <symbol id="i-scalpel" viewBox="0 0 24 24"><path d="M4.5 19.5 9 18 19.5 7.5a2.6 2.6 0 0 0-3.7-3.7L5.5 14l-1 5.5z"/><path d="M13.6 6.6l3.7 3.7"/></symbol>
+    <symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 4.5v15"/><path d="M12 4.5a3 3 0 0 0-5.5 1.6A3.2 3.2 0 0 0 4 9.4a3.2 3.2 0 0 0 1 5.3 3 3 0 0 0 3.5 3.8A2.8 2.8 0 0 0 12 19.5"/><path d="M12 4.5a3 3 0 0 1 5.5 1.6A3.2 3.2 0 0 1 20 9.4a3.2 3.2 0 0 1-1 5.3 3 3 0 0 1-3.5 3.8 2.8 2.8 0 0 1-3.5 1"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5 5.5 13.5H11l-1 8 7.5-11H12l1-8z"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 4h14a1.8 1.8 0 0 1 1.8 1.8v8.4A1.8 1.8 0 0 1 19 16h-9l-4.8 3.6V16H5a1.8 1.8 0 0 1-1.8-1.8V5.8A1.8 1.8 0 0 1 5 4z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19C5 10 12 4.5 20 4.5 20 13 14 19 6.5 19H5z"/><path d="M5 19c2.5-5.5 6.5-9 11-11"/></symbol>
+    <symbol id="i-lotus" viewBox="0 0 24 24"><path d="M12 4.5c1.8 2.2 1.8 5.3 0 7.5-1.8-2.2-1.8-5.3 0-7.5z"/><path d="M4.8 9.5c2.8.4 4.7 2.4 5.2 5.2-2.8-.4-4.7-2.4-5.2-5.2z"/><path d="M19.2 9.5c-2.8.4-4.7 2.4-5.2 5.2 2.8-.4 4.7-2.4 5.2-5.2z"/><path d="M4 15.5c2 2.8 4.8 4 8 4s6-1.2 8-4"/></symbol>
+    <symbol id="i-cross" viewBox="0 0 24 24"><path d="M9.5 3.5h5v6h6v5h-6v6h-5v-6h-6v-5h6z"/></symbol>
+    <symbol id="i-ear" viewBox="0 0 24 24"><path d="M17.5 10a5.5 5.5 0 0 0-11 0c0 3.2 2.2 4.2 3.3 5.6.9 1.2.7 2.4 1.6 3.6a3.1 3.1 0 0 0 5.4-.6"/><path d="M14.3 10a2.3 2.3 0 0 0-4.6 0c0 2.3 2 2.4 2 4.7"/></symbol>
+    <symbol id="i-ob" viewBox="0 0 24 24"><circle cx="9" cy="6.5" r="2.5"/><path d="M4 20.5c0-4.5 2.5-7.5 5-7.5 1.6 0 3 .9 4 2.4"/><circle cx="16.5" cy="13" r="2"/><path d="M13 20.5c.4-2.6 1.8-4.2 3.5-4.2s3.1 1.6 3.5 4.2"/></symbol>
+    <symbol id="i-tooth" viewBox="0 0 24 24"><path d="M12 5.6C10.7 4 8.8 3.3 7.2 3.7 5 4.2 3.8 6.2 3.8 8.3c0 3 .9 5.6 1.6 8.1.6 2.1 1 4.9 2.2 4.9 1.5 0 1.2-3.4 2.2-5.4.4-.9 1-1.4 2.2-1.4s1.8.5 2.2 1.4c1 2 .7 5.4 2.2 5.4 1.2 0 1.6-2.8 2.2-4.9.7-2.5 1.6-5.1 1.6-8.1 0-2.1-1.2-4.1-3.4-4.6-1.6-.4-3.5.3-4.8 1.9z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="2.6"/></symbol>
+    <symbol id="i-virus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="10.6" r=".7"/><circle cx="10.4" cy="13.5" r=".7"/><circle cx="13.7" cy="13.2" r=".7"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.6 2.3 3.8 5.2 3.8 8.5s-1.2 6.2-3.8 8.5c-2.6-2.3-3.8-5.2-3.8-8.5s1.2-6.2 3.8-8.5z"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M6.5 3H19v15.5H6.5A1.8 1.8 0 0 0 4.7 20.3V4.8A1.8 1.8 0 0 1 6.5 3z"/><path d="M4.7 20.3A1.8 1.8 0 0 1 6.5 18.5H19V21H6.5"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M5.5 7h13A1.5 1.5 0 0 1 20 8.5v10a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 18.5v-10A1.5 1.5 0 0 1 5.5 7z"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M12 11v5M9.5 13.5h5"/></symbol>
+    <symbol id="i-pipeline" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="2.2"/><circle cx="12" cy="12" r="2.2"/><circle cx="18.5" cy="12" r="2.2"/><path d="M7.7 12h2.1M14.2 12h2.1"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 5.8v5.4c0 4.4 3 7.6 7 9.3 4-1.7 7-4.9 7-9.3V5.8L12 3z"/><path d="M8.8 12l2.2 2.2 4.2-4.4"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7.5 11l4.5 4.5L16.5 11M4.5 19.5h15"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24"><path d="M7 8V4h10v4"/><path d="M4.5 17H3.2v-6A1.8 1.8 0 0 1 5 9.2h14a1.8 1.8 0 0 1 1.8 1.8v6h-1.3"/><path d="M7 14h10v6.5H7z"/><path d="M17 11.5h2"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M10 5H5v14h14v-5"/><path d="M14 4h6v6"/><path d="M20 4l-7.5 7.5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2"/><path d="M15.5 5h-9A1.8 1.8 0 0 0 4.7 6.8v8.7"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M5 5l14 14M19 5 5 19"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3 21 21"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5 5l1.8 1.8M17.2 17.2 19 19M19 5l-1.8 1.8M6.8 17.2 5 19"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 5.5 19.5 12 13 18.5"/></symbol>
+    <symbol id="i-tip" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 1 3.5 10.9c-.8.6-1.2 1.3-1.2 2.1h-4.6c0-.8-.4-1.5-1.2-2.1A6 6 0 0 1 12 3z"/><path d="M10 19h4M10.8 21.5h2.4"/></symbol>
+  </defs>
+</svg>
+
 <div class="deep-sea" aria-hidden="true"></div>
 
 <!-- ============ 导航 ============ -->
-<nav class="nav">
+<nav class="nav" aria-label="主导航">
   <div class="nav-in">
-    <a class="brand" href="#top" onclick="goTerm('home');return false;">
+    <a class="brand" href="#/home">
       <span class="logo">MW</span>
       <span class="name">Med<b>Agent</b>Work</span>
     </a>
     <div class="nav-links">
-      <a href="/drill">🌐 网页刷题</a>
-      <a href="#banks" onclick="goTerm('junior2','banks');return false;">题库</a>
-      <a href="#reviews" onclick="goTerm('junior2','reviews');return false;">复习手册</a>
-      <a href="#software" onclick="goTerm('home','software');return false;">软件下载</a>
-      <a href="#pipeline" onclick="goTerm('home','pipeline');return false;">幕后管线</a>
-      <a href="#quick" onclick="goTerm('home','quick');return false;">源码与进阶</a>
+      <a href="/drill"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>网页刷题</a>
+      <a href="#/s2/banks" data-spy="banks">题库</a>
+      <a href="#/s2/reviews" data-spy="reviews">复习手册</a>
+      <a href="#/home/software" data-spy="software">软件下载</a>
+      <a href="#/home/pipeline" data-spy="pipeline">幕后管线</a>
+      <a href="#/home/quick" data-spy="quick">源码与进阶</a>
     </div>
     <div class="nav-right">
-      <div class="nav-term-tabs">
-        <button class="nav-term active" data-term="home">主页</button>
-        <button class="nav-term" data-term="junior2">大三下</button>
-        <button class="nav-term" data-term="senior1">大四上</button>
+      <div class="nav-term-tabs" role="tablist" aria-label="学期切换">
+        <button class="nav-term active" data-term="home" role="tab">主页</button>
+        <button class="nav-term" data-term="junior2" role="tab">大三下</button>
+        <button class="nav-term" data-term="senior1" role="tab">大四上</button>
       </div>
-      <a class="btn btn-sec btn-sm" href="https://github.com/2710074390-cyber/medagentwork-skill/releases/tag/v2.1" target="_blank" rel="noopener" title="MedAgentWork 技能包 v2.1：可安装到 AI 助手的题库生产管线">技能包 ↗</a>
-      <a class="btn btn-sec btn-sm" href="https://github.com/2710074390-cyber/MedAgentWork" target="_blank" rel="noopener">GitHub ↗</a>
-      <button class="nav-burger" id="nav-burger" aria-label="打开菜单" aria-expanded="false">
-        <span></span><span></span><span></span>
+      <a class="btn btn-pri btn-sm nav-cta" href="/drill"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>开始刷题</a>
+      <button class="icon-btn hide-m" id="theme-toggle" aria-label="切换亮/暗主题" title="切换亮/暗主题"><svg class="ic" aria-hidden="true"><use href="#i-sun" id="theme-icon"/></svg></button>
+      <a class="icon-btn hide-m" href="https://github.com/2710074390-cyber/MedAgentWork" target="_blank" rel="noopener" aria-label="GitHub 仓库" title="GitHub 仓库"><svg class="ic" aria-hidden="true"><use href="#i-external"/></svg></a>
+      <button class="icon-btn nav-burger" id="nav-burger" aria-label="打开菜单" aria-expanded="false">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
     </div>
   </div>
@@ -870,13 +616,13 @@ body {
     <div class="mm-head">
       <span class="logo">MW</span><span class="name">Med<b>Agent</b>Work</span>
     </div>
-    <nav class="mm-links">
+    <nav class="mm-links" aria-label="移动端导航">
       <a href="/drill"><span class="mm-idx">01</span>网页刷题</a>
-      <a href="#banks" onclick="goTerm('junior2','banks')"><span class="mm-idx">02</span>题库</a>
-      <a href="#reviews" onclick="goTerm('junior2','reviews')"><span class="mm-idx">03</span>复习手册</a>
-      <a href="#software" onclick="goTerm('home','software')"><span class="mm-idx">04</span>出题软件</a>
-      <a href="#pipeline" onclick="goTerm('home','pipeline')"><span class="mm-idx">05</span>幕后管线</a>
-      <a href="#quick" onclick="goTerm('home','quick')"><span class="mm-idx">06</span>源码与进阶</a>
+      <a href="#/s2/banks"><span class="mm-idx">02</span>题库</a>
+      <a href="#/s2/reviews"><span class="mm-idx">03</span>复习手册</a>
+      <a href="#/home/software"><span class="mm-idx">04</span>出题软件</a>
+      <a href="#/home/pipeline"><span class="mm-idx">05</span>幕后管线</a>
+      <a href="#/home/quick"><span class="mm-idx">06</span>源码与进阶</a>
     </nav>
     <div class="mm-term">
       <button class="mm-term-btn active" data-term="home">主页</button>
@@ -884,74 +630,55 @@ body {
       <button class="mm-term-btn" data-term="senior1">大四上</button>
     </div>
     <div class="mm-foot">
-      <button class="fx-toggle on" id="fx-toggle-m" title="切换粒子/原子特效">
+      <button class="fx-toggle on" id="fx-toggle-m" title="切换粒子特效">
         <span class="dot"></span><span>FX 粒子</span>
       </button>
-      <a class="btn btn-sec btn-sm" href="https://github.com/2710074390-cyber/medagentwork-skill/releases/tag/v2.1" target="_blank" rel="noopener" title="MedAgentWork 技能包 v2.1">技能包 ↗</a>
-      <a class="btn btn-pri btn-sm" href="https://github.com/2710074390-cyber/MedAgentWork" target="_blank" rel="noopener">GitHub ↗</a>
+      <button class="icon-btn" id="theme-toggle-m" aria-label="切换亮/暗主题"><svg class="ic" aria-hidden="true"><use href="#i-sun"/></svg></button>
+      <a class="btn btn-sec btn-sm" href="https://github.com/2710074390-cyber/medagentwork-skill/releases/tag/v2.1" target="_blank" rel="noopener">技能包 ↗</a>
     </div>
   </div>
 </div>
 
 <!-- ============ 主页 ============ -->
 <div class="view active" id="view-home">
+<main id="main">
 
-<!-- ============ HERO ============ -->
 <header class="hero" id="top">
   <div class="hero-canvas" id="hero-canvas" aria-hidden="true">
     <canvas id="star-canvas"></canvas>
     <canvas id="ascii-canvas"></canvas>
     <canvas id="mw-canvas"></canvas>
   </div>
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-glow-follow" id="hero-glow-follow" aria-hidden="true"></div>
-  <div class="atom-wrap" id="atom-wrap" aria-hidden="true">
-    <div class="atom">
-      <div class="ticks"><span>· · · · · · · · · · · · · · · · · · · · · · · ·</span></div>
-      <div class="ring orbit-anim o1"><div class="e" style="top:-5px;left:50%"></div></div>
-      <div class="ring r2 orbit-anim o2"><div class="e" style="top:50%;right:-5px"></div></div>
-      <div class="ring r3 orbit-anim o3"><div class="e" style="bottom:-5px;left:42%"></div></div>
-      <div class="core"></div>
-    </div>
-  </div>
   <div class="wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="chip hero-badge"><span>医学复习资料库 · <i>5,791 题 · 23 学科</i></span></span>
+        <span class="chip hero-badge">医学复习资料库 · <i>5,791 题 · 23 学科</i></span>
         <h1>备考<span class="accent">题严选</span><br>复习<span class="accent">可溯源</span></h1>
-        <div class="hero-desc">
-          <p>临床医学生备考资料库 · <b>打开即用，无需安装</b></p>
-        </div>
+        <p class="hero-desc">临床医学生备考资料库 · <b>打开即用，无需安装</b></p>
         <ul class="hero-spec">
           <li><b>7 科 1,848 题</b><span>在线刷 · 点选项即判分</span></li>
           <li><b>6 科题库 PDF</b><span>直链下载 · 即点即存</span></li>
           <li><b>7 册复习手册</b><span>在线研读 · 可打印</span></li>
         </ul>
         <div class="hero-cta">
-          <a class="btn btn-pri" href="/drill">🌐 网页刷题</a>
-          <a class="btn btn-sec" href="#reviews" onclick="goTerm('junior2','reviews');return false;">📚 复习手册</a>
-          <a class="btn btn-sec" href="#banks" onclick="goTerm('junior2','banks');return false;">📥 题库 PDF</a>
+          <a class="btn btn-pri" href="/drill"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>网页刷题</a>
+          <a class="btn btn-sec" href="#/s2/reviews"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>复习手册</a>
+          <a class="btn btn-sec" href="#/s2/banks"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>题库 PDF</a>
         </div>
       </div>
       <div class="hero-visual">
         <div class="term-tabs">
-          <button class="term-tab active" data-t="run">网页刷题</button>
-          <button class="term-tab" data-t="guide">使用指南</button>
+          <button class="term-tab active" data-t="guide">三步上手</button>
+          <button class="term-tab" data-t="run">命令演示</button>
         </div>
         <div class="terminal">
           <div class="term-bar">
             <div class="term-dots"><i></i><i></i><i></i></div>
-            <span class="term-title">medagentwork — zsh</span>
-            <button class="term-copy" onclick="copyCmd(this)" aria-label="复制命令"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.6" y="5.6" width="7.6" height="7.6" rx="1.4"/><path d="M10.4 3.4H4.6a1.2 1.2 0 0 0-1.2 1.2v5.8"/></svg>Copy</button>
+            <span class="term-title">使用指南 · 学生向三步教程</span>
+            <button class="term-copy" data-act="copy" aria-label="复制命令" style="visibility:hidden"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
           </div>
           <div class="term-body">
-<pre class="term-pre term-pane" id="term-run" style="font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">medkit-drill enter --nickname 医学生小王</span>
- <span class="dim">▸ 加载题库 ................. 7 科 1,848 题</span>
- <span class="dim">▸ 身份校验 ................. 通过</span>
- <span class="dim">▸ 同步错题本 ............... 12 条</span>
- <span class="ok">✓</span> 登录成功 · 点选项即判分
- <span class="prompt">$</span> <span class="cursor"></span></pre>
-<div class="guide-panel term-pane" id="term-guide" style="display:none">
+<div class="guide-panel term-pane" id="term-guide">
   <div class="g-guide-title">⚡ 三步上手 · 全部资料即开即用</div>
   <div class="g-step">
     <span class="g-no">01</span>
@@ -959,7 +686,7 @@ body {
       <b>网页刷题</b><span class="g-where">免安装 · 昵称即入</span>
       <p>7 科 1,848 题 · 点选项即判分 · 答题卡跳题 · 换设备同步</p>
     </div>
-    <a class="g-go" href="/drill">去刷题 →</a>
+    <a class="g-go" href="/drill">去刷题<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
   </div>
   <div class="g-step">
     <span class="g-no">02</span>
@@ -967,7 +694,7 @@ body {
       <b>下载题库 PDF</b><span class="g-where">题库区</span>
       <p>直链下载：手机存「文件」App · 电脑存「下载」文件夹</p>
     </div>
-    <a class="g-go" href="#banks" onclick="goTerm('junior2','banks')">去下载 →</a>
+    <a class="g-go" href="#/s2/banks">去下载<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
   </div>
   <div class="g-step">
     <span class="g-no">03</span>
@@ -975,10 +702,16 @@ body {
       <b>研读复习手册</b><span class="g-where">复习手册区</span>
       <p>掌握 / 熟悉 / 理解 三级标注 · 在线阅读 · 可打印为 PDF</p>
     </div>
-    <a class="g-go" href="#reviews" onclick="goTerm('junior2','reviews')">去研读 →</a>
+    <a class="g-go" href="#/s2/reviews">去研读<svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></a>
   </div>
-  <div class="g-tip"><b>💡 提示</b><span>换设备用同一昵称密码即可同步错题本与收藏 · 资料仅供学习交流</span></div>
+  <div class="g-tip"><b>提示</b><span>换设备用同一昵称密码即可同步错题本与收藏 · 资料仅供学习交流</span></div>
 </div>
+<pre class="term-pre term-pane" id="term-run" style="display:none;font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">medkit-drill enter --nickname 医学生小王</span>
+ <span class="dim">▸ 加载题库 ................. 7 科 1,848 题</span>
+ <span class="dim">▸ 身份校验 ................. 通过</span>
+ <span class="dim">▸ 同步错题本 ............... 12 条</span>
+ <span class="ok">✓</span> 登录成功 · 点选项即判分
+ <span class="prompt">$</span> <span class="cursor"></span></pre>
           </div>
         </div>
       </div>
@@ -986,7 +719,7 @@ body {
   </div>
 </header>
 
-<!-- ============ 统计条 ============ -->
+<!-- 统计条 -->
 <div class="stats">
   <div class="wrap">
     <div class="stats-in">
@@ -1005,34 +738,34 @@ body {
   </div>
 </div>
 
-<main class="wrap">
+<div class="wrap">
 
-<!-- ============ 幕后管线（支撑系统） ============ -->
+<!-- 幕后管线 -->
 <section class="section" id="pipeline">
   <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>幕后管线 · <i>五阶段 Agent 管线</i></span></span>
+      <span class="chip">幕后管线 · <i>五阶段 Agent 管线</i></span>
       <h2>幕后管线<br>让题库持续产出</h2>
     </div>
     <div class="right"><b>BACKSTAGE</b>管线 · 门禁 · 知识库<br><span class="right-sub">支撑以上全部内容</span></div>
   </div>
   <div class="cap-grid">
     <div class="cap-card reveal">
-      <div class="cap-icon">⚙️</div>
+      <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-pipeline"/></svg></div>
       <h3>五阶段管线</h3>
       <span class="cap-meta">PIPELINE · CORDIS 式编排</span>
       <p>编排 → 出题 → 质检 → 修复 → 成册；阶段门禁强制，批次全程可追溯。</p>
       <div class="cap-flow"><em><b>medgen</b></em><em>→</em><em><b>medqc</b></em><em>→</em><em><b>medfix</b></em><em>→</em><em><b>medreview</b></em></div>
     </div>
     <div class="cap-card reveal">
-      <div class="cap-icon">🧪</div>
+      <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></div>
       <h3>质量门禁</h3>
       <span class="cap-meta">GATE · D1–D20 质检矩阵</span>
       <p>选项硬校验 FAIL==0 才放行 · 二十维质检 · GoldenSet 真题锚定 · 改动可回放。</p>
       <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>fact_check</em></div>
     </div>
     <div class="cap-card reveal">
-      <div class="cap-icon">🧬</div>
+      <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-brain"/></svg></div>
       <h3>个性化学科 RAG</h3>
       <span class="cap-meta">KNOWLEDGE · 23 学科配置</span>
       <p>23 学科独立分块与检索 · 向量 + 关键词混合 · 重排 · 考频蓝图配平。</p>
@@ -1041,25 +774,25 @@ body {
   </div>
 </section>
 
-<!-- ============ 源码与进阶 ============ -->
+<!-- 源码与进阶 -->
 <section class="section" id="quick">
   <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>源码与进阶 · <i>开箱即用</i></span></span>
+      <span class="chip">源码与进阶 · <i>开箱即用</i></span>
       <h2>拿源文件，<span class="accent">或进阶用法</span></h2>
     </div>
   </div>
   <div class="quick reveal">
     <div class="quick-in">
       <div>
-        <span class="chip"><span><i>01</i> · 分科开刷</span></span>
+        <span class="chip"><i>01</i> · 分科开刷</span>
         <h3>按题库开刷</h3>
         <p class="q-desc">7 科各自独立题库 · 可只刷某一科 · 点选项即判分 · 进度跟随昵称保留 30 天。</p>
         <div class="terminal term-w">
           <div class="term-bar">
             <div class="term-dots"><i></i><i></i><i></i></div>
             <span class="term-title">medagentwork — quick start</span>
-            <button class="term-copy" onclick="copyCmd(this)" aria-label="复制命令"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.6" y="5.6" width="7.6" height="7.6" rx="1.4"/><path d="M10.4 3.4H4.6a1.2 1.2 0 0 0-1.2 1.2v5.8"/></svg>Copy</button>
+            <button class="term-copy" data-act="copy" aria-label="复制命令"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
           </div>
           <div class="term-body" style="min-height:0">
 <pre class="term-pre" style="font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">medkit-drill list</span>
@@ -1069,18 +802,18 @@ body {
           </div>
         </div>
         <div class="q-side">
-          <a class="btn btn-pri" href="/drill">🌐 开始刷题</a>
+          <a class="btn btn-pri" href="/drill"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>开始刷题</a>
         </div>
       </div>
       <div>
-        <span class="chip"><span><i>02</i> · 源码 / 技能包</span></span>
+        <span class="chip"><i>02</i> · 源码 / 技能包</span>
         <h3>源码与技能包</h3>
         <p class="q-desc">克隆仓库即可浏览全部源文件 · 技能包可装进你的 AI 助手跑整条管线。</p>
         <div class="terminal term-w">
           <div class="term-bar">
             <div class="term-dots"><i></i><i></i><i></i></div>
             <span class="term-title">medagentwork — source</span>
-            <button class="term-copy" onclick="copyCmd(this)" aria-label="复制命令"><svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.6" y="5.6" width="7.6" height="7.6" rx="1.4"/><path d="M10.4 3.4H4.6a1.2 1.2 0 0 0-1.2 1.2v5.8"/></svg>Copy</button>
+            <button class="term-copy" data-act="copy" aria-label="复制命令"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
           </div>
           <div class="term-body" style="min-height:0">
 <pre class="term-pre" style="font:inherit;color:inherit;background:none;border:none;white-space:pre-wrap;margin:0"> <span class="prompt">$</span> <span class="cmd">git clone https://github.com/2710074390-cyber/MedAgentWork</span>
@@ -1098,11 +831,11 @@ body {
   </div>
 </section>
 
-<!-- ============ 软件工坊（绝对主角 04） ============ -->
+<!-- 软件工坊 -->
 <section class="section" id="software">
-  <div class="section-head display reveal">
+  <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>软件工坊 · <i>桌面生成器</i></span></span>
+      <span class="chip">软件工坊 · <i>桌面生成器</i></span>
       <h2>出题软件 <span class="accent">MedKit</span></h2>
     </div>
     <div class="right"><b>04 · 软件工坊</b>本站产物的生成器 · Windows<br><span class="right-sub">GitHub 开源 · 免费 · 数据本地</span></div>
@@ -1110,17 +843,11 @@ body {
   <div class="sw-card reveal">
     <div class="sw-logo" aria-hidden="true">
       <svg viewBox="0 0 64 64" role="img" aria-label="MedKit 图标">
-        <defs>
-          <linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#2dd4bf"/>
-            <stop offset="0.6" stop-color="#0d9488"/>
-            <stop offset="1" stop-color="#134e4a"/>
-          </linearGradient>
-        </defs>
+        <defs><linearGradient id="mkg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#2dd4bf"/><stop offset="0.6" stop-color="#0d9488"/><stop offset="1" stop-color="#134e4a"/>
+        </linearGradient></defs>
         <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#mkg)"/>
-        <text x="32" y="32" text-anchor="middle" dominant-baseline="central"
-              font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif"
-              font-weight="700" font-size="21" fill="#f5faf8">MW</text>
+        <text x="32" y="32" text-anchor="middle" dominant-baseline="central" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif" font-weight="700" font-size="21" fill="#f5faf8">MW</text>
       </svg>
     </div>
     <div class="sw-body">
@@ -1130,145 +857,150 @@ body {
       </div>
       <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点 → 本地一键生成<b>题库 / 押题卷 / 复习手册</b>。数据留在本机，只花自己的 API Key（整套题约 ¥1~5）。</p>
       <div class="sw-tags">
-        <em>v0.18.0 · 错题本 = 大聊天界面</em><em>判错自动进错题本</em><em>免费开源</em><em>Windows 7+</em><em>安装包 ≈ 50 MB</em><em>BYOK 自带 Key</em><em>内置更新提醒</em>
+        <em>错题本 = 大聊天界面</em><em>判错自动进错题本</em><em>免费开源</em><em>Windows 7+</em><em>安装包 ≈ 50 MB</em><em>BYOK 自带 Key</em><em>内置更新提醒</em>
       </div>
       <p class="sw-note">MEDKIT → MEDGEN → MEDQC → MEDFIX → MEDREVIEW · DESKTOP EDITION</p>
       <div class="sw-actions">
-        <a class="btn btn-pri" id="sw-dl" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.6v8.2M4.7 7.6 8 10.9l3.3-3.3M3 13.2h10"/></svg>下载 Windows 安装包</a>
+        <a class="btn btn-pri" id="sw-dl" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>下载 Windows 安装包</a>
         <a class="btn btn-sec" id="sw-mirror" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener" style="display:none">镜像下载</a>
-        <a class="btn btn-sec" href="/drill">🌐 网页体验版</a>
+        <a class="btn btn-sec" href="/drill"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>网页体验版</a>
         <a class="btn btn-sec" href="https://github.com/2710074390-cyber/medkit" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
   </div>
 </section>
 
+</div><!-- /wrap -->
 </main>
 </div><!-- /view-home -->
 
-<div class="wrap">
-
 <!-- ============ 大三下 ============ -->
 <div class="view" id="view-junior2">
+<div class="wrap">
 
-<!-- ============ 内容总览台（绝对主角） ============ -->
 <section class="section deck" id="deck">
-  <div class="section-head display reveal">
+  <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>内容总览 · <i>选择你的战场</i></span></span>
+      <span class="chip">内容总览 · <i>选择你的战场</i></span>
       <h2>备考资源 <span class="accent">一键直达</span></h2>
     </div>
     <div class="right"><b>ABSOLUTE FOCUS</b>网页刷题 · 题库 · 复习手册<br><span class="right-sub">5,791 题 · 23 学科 · 7 册手册</span></div>
   </div>
   <div class="deck-grid-wrap">
-  <div class="deck-grid">
-    <a class="deck-tile reveal" href="/drill">
-      <div class="dt-top"><span class="dt-icon">🌐</span><span class="dt-num">01</span></div>
-      <h3>网页刷题 <span class="dt-en">DRILL</span></h3>
-      <p>7 科 1,848 题在线刷 · 点选项即时判分 · 答题卡跳题 · 错题本同步 · 换设备密码登录</p>
-      <span class="dt-go">开始刷题 <i>→</i></span>
-    </a>
-    <a class="deck-tile reveal" href="#banks">
-      <div class="dt-top"><span class="dt-icon">📥</span><span class="dt-num">02</span></div>
-      <h3>题库 <span class="dt-en">PDF LIBRARY</span></h3>
-      <p>六科 PDF 直链下载 · 版本与题量一屏可查 · 1,900+ 题精选</p>
-      <span class="dt-go">进入题库 <i>→</i></span>
-    </a>
-    <a class="deck-tile reveal" href="#reviews">
-      <div class="dt-top"><span class="dt-icon">📚</span><span class="dt-num">03</span></div>
-      <h3>复习手册 <span class="dt-en">REVIEWS</span></h3>
-      <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线阅读 · 下载 MD · 打印 PDF</p>
-      <span class="dt-go">进入复习手册 <i>→</i></span>
-    </a>
-    <a class="deck-tile reveal" href="#software" onclick="goTerm('home','software');return false;">
-      <div class="dt-top"><span class="dt-icon">🛠️</span><span class="dt-num">04</span></div>
-      <h3>出题软件 <span class="dt-en">MEDKIT</span></h3>
-      <p>本站产物的桌面生成器 · 自备教材一键出题 · 免费开源 · Windows 直链下载</p>
-      <span class="dt-go">下载软件 <i>→</i></span>
-    </a>
-  </div>
-  <div class="deck-dots" id="deck-dots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+    <div class="deck-grid">
+      <a class="deck-tile reveal" href="/drill">
+        <div class="dt-top"><span class="dt-icon"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></span><span class="dt-num">01</span></div>
+        <h3>网页刷题 <span class="dt-en">DRILL</span></h3>
+        <p>7 科 1,848 题在线刷 · 点选项即时判分 · 答题卡跳题 · 错题本同步 · 换设备密码登录</p>
+        <span class="dt-go">开始刷题 <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="deck-tile reveal" href="#/s2/banks">
+        <div class="dt-top"><span class="dt-icon"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></span><span class="dt-num">02</span></div>
+        <h3>题库 <span class="dt-en">PDF LIBRARY</span></h3>
+        <p>六科 PDF 直链下载 · 版本与题量一屏可查 · 1,900+ 题精选</p>
+        <span class="dt-go">进入题库 <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="deck-tile reveal" href="#/s2/reviews">
+        <div class="dt-top"><span class="dt-icon"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg></span><span class="dt-num">03</span></div>
+        <h3>复习手册 <span class="dt-en">REVIEWS</span></h3>
+        <p>掌握/熟悉/理解三级标注 · 侧栏导航 · 在线阅读 · 下载 MD · 打印 PDF</p>
+        <span class="dt-go">进入复习手册 <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="deck-tile reveal" href="#/home/software">
+        <div class="dt-top"><span class="dt-icon"><svg class="ic" aria-hidden="true"><use href="#i-tool"/></svg></span><span class="dt-num">04</span></div>
+        <h3>出题软件 <span class="dt-en">MEDKIT</span></h3>
+        <p>本站产物的桌面生成器 · 自备教材一键出题 · 免费开源 · Windows 直链下载</p>
+        <span class="dt-go">下载软件 <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+    </div>
+    <div class="deck-dots" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
   </div>
   <div class="deck-tip reveal">
-    <span class="tip-icon">💡</span>
+    <span class="tip-icon"><svg class="ic" aria-hidden="true"><use href="#i-tip"/></svg></span>
     <p><b>第一次使用？</b> 点任一分类进入 · 资料可在手机 / 电脑在线阅读或下载 · 复习手册支持打印为 PDF</p>
   </div>
 </section>
 
-<!-- ============ 题库 PDF（绝对主角 02） ============ -->
+<!-- 题库 PDF -->
 <section class="section" id="banks">
-  <div class="section-head display reveal">
+  <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>题库 · <i>PDF 直链</i></span></span>
+      <span class="chip">题库 · <i>PDF 直链</i></span>
       <h2>题库 <span class="accent">PDF 精选</span></h2>
     </div>
     <div class="right"><b>02 · 题库</b>06 科 · 直链下载<br><span class="right-sub">版本与题量一屏可查</span></div>
   </div>
+  <div class="grid-tools reveal">
+    <label class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="搜索科目，如：内科 / 神经 / 中医…" aria-label="搜索题库" data-filter="grid-bank"></label>
+    <span class="grid-count" data-count="grid-bank"></span>
+  </div>
   <div class="grid" id="grid-bank"></div>
+  <p class="grid-empty" data-empty="grid-bank" hidden>没有匹配的科目，换个关键词试试。</p>
 </section>
 
-<!-- ============ 复习手册（绝对主角 03） ============ -->
+<!-- 复习手册 -->
 <section class="section" id="reviews">
-  <div class="section-head display reveal">
+  <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>复习手册 · <i>系统研读</i></span></span>
+      <span class="chip">复习手册 · <i>系统研读</i></span>
       <h2>复习手册 <span class="accent">系统研读</span></h2>
     </div>
     <div class="right"><b>03 · 复习手册</b>07 科 · 在线阅读 · 下载 MD<br><span class="right-sub">打印 PDF（浏览器生成）</span></div>
   </div>
+  <div class="grid-tools reveal">
+    <label class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="搜索科目，如：外科 / 精神 / 医患…" aria-label="搜索复习手册" data-filter="grid-review"></label>
+    <span class="grid-count" data-count="grid-review"></span>
+  </div>
   <div class="grid" id="grid-review"></div>
+  <p class="grid-empty" data-empty="grid-review" hidden>没有匹配的科目，换个关键词试试。</p>
 </section>
 
-<!-- ============ 大四上 ============ -->
+</div>
 </div><!-- /view-junior2 -->
 
-</div><!-- /wrap 大三下 -->
-
+<!-- ============ 大四上 ============ -->
+<div class="view" id="view-senior1">
 <div class="wrap">
 
-<div class="view" id="view-senior1">
-
-<!-- ============ 大四上 · 内容总览台 ============ -->
 <section class="section deck" id="deck-s1">
-  <div class="section-head display reveal">
+  <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>大四上 · <i>教学版资料</i></span></span>
+      <span class="chip">大四上 · <i>教学版资料</i></span>
       <h2>备考资源 <span class="accent">一键直达</span></h2>
     </div>
     <div class="right"><b>大四上 · 教学计划版</b>09 科 · PDF 直链下载<br><span class="right-sub">按教学计划成册 · 教材浓缩型 v5.1 · 含教师重点版</span></div>
   </div>
   <div class="deck-grid-wrap">
-  <div class="deck-grid">
-    <a class="deck-tile reveal" href="#reviews-s1">
-      <div class="dt-top"><span class="dt-icon">📚</span><span class="dt-num">01</span></div>
-      <h3>教学版资料 <span class="dt-en">TEACHING ED.</span></h3>
-      <p>9 科主复习资料 PDF 直链下载 · 按教学计划成册 · 耳鼻喉教师重点版新上线</p>
-      <span class="dt-go">进入资料库 <i>→</i></span>
-    </a>
-    <a class="deck-tile reveal" href="#banks-s1">
-      <div class="dt-top"><span class="dt-icon">🧩</span><span class="dt-num">02</span></div>
-      <h3>题库 <span class="dt-en">BANKS</span></h3>
-      <p>9 科教学题库 PDF 直链下载 · 口腔 · 眼科 · 传染病学 · 耳鼻喉教师重点版新上线</p>
-      <span class="dt-go">进入题库 <i>→</i></span>
-    </a>
-  </div>
-  <div class="deck-dots" aria-hidden="true"><span class="on"></span><span></span></div>
+    <div class="deck-grid">
+      <a class="deck-tile reveal" href="#/s1/reviews-s1">
+        <div class="dt-top"><span class="dt-icon"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg></span><span class="dt-num">01</span></div>
+        <h3>教学版资料 <span class="dt-en">TEACHING ED.</span></h3>
+        <p>9 科主复习资料 PDF 直链下载 · 按教学计划成册 · 耳鼻喉教师重点版新上线</p>
+        <span class="dt-go">进入资料库 <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+      <a class="deck-tile reveal" href="#/s1/banks-s1">
+        <div class="dt-top"><span class="dt-icon"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></span><span class="dt-num">02</span></div>
+        <h3>题库 <span class="dt-en">BANKS</span></h3>
+        <p>9 科教学题库 PDF 直链下载 · 口腔 · 眼科 · 传染病学 · 耳鼻喉教师重点版新上线</p>
+        <span class="dt-go">进入题库 <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </a>
+    </div>
+    <div class="deck-dots" aria-hidden="true"><span class="on"></span><span></span></div>
   </div>
 </section>
 
-<!-- ============ 大四上 · 教学版资料（主复习资料 PDF） ============ -->
+<!-- 大四上 · 教学版资料 -->
 <section class="section" id="reviews-s1">
-  <div class="section-head display reveal">
+  <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>教学版资料 · <i>PDF 直链</i></span></span>
+      <span class="chip">教学版资料 · <i>PDF 直链</i></span>
       <h2>教学版资料 <span class="accent">9 科 · PDF 直链</span></h2>
     </div>
     <div class="right"><b>01 · 教学版资料</b>09 科 · 教材浓缩型 v5.1<br><span class="right-sub">按教学计划成册 · 即点即下</span></div>
   </div>
-  <a class="card featured reveal drill-entry" href="/drill" style="transition-delay:0s">
-    <span class="idx">★</span>
+  <a class="card featured drill-entry reveal" href="/drill">
     <div class="card-head">
-      <div class="glyph">📱</div>
+      <div class="glyph"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg></div>
       <div>
         <div class="card-title">线上刷题 · 大四上题库</div>
         <div class="card-meta">MedKit 网页体验版 · 免安装 · 昵称即入</div>
@@ -1277,31 +1009,37 @@ body {
     <p class="card-desc">7 科 1,848 题在线刷 · 点选项即判分 · 判错自动进错题本 · 进度跟随昵称保留 30 天。</p>
     <div class="btns"><span class="btn btn-pri btn-sm">开始刷题 →</span></div>
   </a>
+  <div class="grid-tools reveal">
+    <label class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="搜索科目，如：妇产 / 眼科 / 传染…" aria-label="搜索教学版资料" data-filter="grid-review-s1"></label>
+    <span class="grid-count" data-count="grid-review-s1"></span>
+  </div>
   <div class="grid" id="grid-review-s1"></div>
+  <p class="grid-empty" data-empty="grid-review-s1" hidden>没有匹配的科目，换个关键词试试。</p>
   <div class="deck-tip reveal">
-    <span class="tip-icon">💡</span>
+    <span class="tip-icon"><svg class="ic" aria-hidden="true"><use href="#i-tip"/></svg></span>
     <p><b>什么是教学版资料？</b> 按课程教学计划成册的教材浓缩版（v5.1）· 单册 3–24 MB · 点即下载，可离线翻阅或打印</p>
   </div>
 </section>
 
-<!-- ============ 大四上 · 题库（教学题库 PDF 直链） ============ -->
+<!-- 大四上 · 题库 -->
 <section class="section" id="banks-s1">
-  <div class="section-head display reveal">
+  <div class="section-head reveal">
     <div class="left">
-      <span class="chip"><span>大四上题库 · <i>PDF 直链</i></span></span>
+      <span class="chip">大四上题库 · <i>PDF 直链</i></span>
       <h2>大四上题库 <span class="accent">9 科 · PDF 直链</span></h2>
     </div>
     <div class="right"><b>02 · 题库</b>09 科 · PDF 直链<br><span class="right-sub">教学题库 · 即点即下</span></div>
   </div>
+  <div class="grid-tools reveal">
+    <label class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="搜索科目，如：内科 / 耳鼻喉 / 急诊…" aria-label="搜索大四上题库" data-filter="grid-banks-s1"></label>
+    <span class="grid-count" data-count="grid-banks-s1"></span>
+  </div>
   <div class="grid" id="grid-banks-s1"></div>
+  <p class="grid-empty" data-empty="grid-banks-s1" hidden>没有匹配的科目，换个关键词试试。</p>
 </section>
 
 </div>
-
-
-
-</div><!-- /wrap 大四上 -->
-
+</div><!-- /view-senior1 -->
 
 <!-- ============ 页脚 ============ -->
 <footer class="footer">
@@ -1311,7 +1049,7 @@ body {
       <div class="f-left"><span class="pulse"></span>© 2026 MedAgentWork · 仅供学习交流</div>
       <div class="f-mid">— 文以载道 · 医以济世 · 题库即管线 —</div>
       <div class="f-right">
-        <button class="fx-toggle on" id="fx-toggle" title="切换粒子/原子特效">
+        <button class="fx-toggle on" id="fx-toggle" title="切换粒子特效">
           <span class="dot"></span><span>FX</span>
         </button>
         <a href="https://github.com/2710074390-cyber/medagentwork-skill/releases/tag/v2.1" target="_blank" rel="noopener">技能包 ↗</a>
@@ -1325,84 +1063,113 @@ body {
 </footer>
 
 <!-- ============ 模态层 ============ -->
-<div id="modal">
+<div id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
   <div class="modal-card">
     <div class="modal-bar">
-      <div class="m-dots"><i></i><i></i><i></i></div>
+      <div class="m-dots" aria-hidden="true"><i></i><i></i><i></i></div>
       <span class="m-title" id="m-title">预览</span>
       <div class="m-actions" id="m-actions"></div>
     </div>
     <div class="modal-body loading" id="m-body"><div class="spinner"></div></div>
   </div>
 </div>
-<div id="toast"></div>
+<div id="toast" role="status" aria-live="polite"></div>
 
 <script>
 /* ============================================================
-   MedAgentWork — Futuristic Edition
-   数据层与交互逻辑（与原版功能完全兼容）
+   MedAgentWork v2 — 数据层与交互逻辑
+   分区：A 工具函数 | B 数据 | C 渲染 | D 路由 | E 搜索
+         F 模态与 MD | G 下载与打印 | H 特效 | I 主题 | J 服务
+   初始化原则：内容渲染最先，特效最后；每模块独立 try/catch，
+   单点失败不扩散（C8）。
    ============================================================ */
-/* ---------- 资源路径约定（唯一规则，勿引入第二套）----------
-   下面所有 path 一律「仓库根相对」，必须自带顶层目录：`大三下/…` 或 `大四上/…`。
-   2026-09-27 下载故障复盘：大四上两张卡既自带 `大四上/` 前缀、又在 downloadFile
-   里被拼了一次 base，实际请求落到 `大四上/大四上/…`；而 Cloudflare Pages 在仓库
-   没有 404.html 时会把未命中路径回退成 index.html，于是返回 200 + 首页 HTML，
-   用户拿到一个「扩展名是 .pdf、内容是网页」的打不开的文件。
-   教训：状态码 200 不等于文件存在，链接门禁必须同时断言 Content-Type。 */
+
+/* ---------- A 工具函数 ---------- */
+const $=s=>document.querySelector(s);
+const $$=s=>document.querySelectorAll(s);
+function safe(name,fn){try{fn();}catch(err){console.error('[MAW:'+name+']',err);}}
+const store={
+  get(k){try{return localStorage.getItem(k);}catch(e){return null;}},
+  set(k,v){try{localStorage.setItem(k,v);}catch(e){}}
+};
+const toast=(()=>{let tm;return msg=>{const t=$('#toast');if(!t)return;t.textContent=msg;t.classList.add('show');clearTimeout(tm);tm=setTimeout(()=>t.classList.remove('show'),2200);};})();
+function debounce(fn,ms){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};}
+/* C3：可中止的带超时 fetch */
+function fetchWithTimeout(url,ms,opt){
+  return new Promise((resolve,reject)=>{
+    const ctrl=new AbortController();
+    const tm=setTimeout(()=>{ctrl.abort();reject(new Error('timeout'));},ms);
+    fetch(url,Object.assign({},opt,{signal:ctrl.signal}))
+      .then(r=>{clearTimeout(tm);resolve(r);})
+      .catch(e=>{clearTimeout(tm);reject(e);});
+  });
+}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+/* 路径编码（避免中文路径 404）；path 一律仓库根相对，唯一规则勿引入第二套 */
+function encPath(path){return path.split('/').map(seg=>encodeURI(seg)).join('/');}
+function url(path){return encPath(path);}
+function icon(id){return '<svg class="ic" aria-hidden="true"><use href="#'+id+'"/></svg>';}
+/* 学科名 → SVG 图标（A3） */
+function subjectIcon(name){
+  if(/耳鼻/.test(name))return 'i-ear';
+  if(/口腔/.test(name))return 'i-tooth';
+  if(/眼/.test(name))return 'i-eye';
+  if(/妇产/.test(name))return 'i-ob';
+  if(/传染/.test(name))return 'i-virus';
+  if(/急诊/.test(name))return 'i-cross';
+  if(/内科/.test(name))return 'i-heart';
+  if(/外科/.test(name))return 'i-scalpel';
+  if(/精神/.test(name))return 'i-brain';
+  if(/神经/.test(name))return 'i-bolt';
+  if(/医患/.test(name))return 'i-chat';
+  if(/心理/.test(name))return 'i-lotus';
+  if(/中医/.test(name))return 'i-leaf';
+  return 'i-book';
+}
+
+/* ---------- B 数据层（与原站一致，路径约定不变） ---------- */
 const BANKS=[
-  {name:'内科学',icon:'🫀',pdf:'大三下/题库/内科学题库_364题.pdf',count:364,format:'PDF',size:'2.9 MB',desc:'心血管 · 呼吸 · 消化 · 泌尿'},
-  {name:'外科学',icon:'🔪',pdf:'大三下/题库/外科学题库.pdf',format:'PDF',size:'3.1 MB',tags:['重点修订'],desc:'普外 · 骨科 · 泌尿'},
-  {name:'精神病学',icon:'🧠',pdf:'大三下/题库/精神病学题库_242题.pdf',count:242,version:'v3',format:'PDF',size:'2.0 MB',desc:'精神分裂 · 情感障碍 · 神经症'},
-  {name:'神经病学',icon:'⚡',pdf:'大三下/题库/神经病学题库_259题.pdf',count:259,version:'v3',format:'PDF',size:'2.8 MB',desc:'脑血管病 · 癫痫 · 周围神经病变'},
-  {name:'医患沟通',icon:'💬',pdf:'大三下/题库/医患沟通题库.pdf',format:'PDF',size:'2.8 MB',desc:'沟通技巧 · 医学伦理 · 知情同意'},
-  {name:'中医学',icon:'🌿',pdf:'大三下/题库/中医学题库.pdf',format:'PDF',size:'2.6 MB',tags:['batch010'],desc:'基础理论 · 方剂 · 诊断辨证'},
+  {name:'内科学',pdf:'大三下/题库/内科学题库_364题.pdf',count:364,format:'PDF',size:'2.9 MB',desc:'心血管 · 呼吸 · 消化 · 泌尿'},
+  {name:'外科学',pdf:'大三下/题库/外科学题库.pdf',format:'PDF',size:'3.1 MB',tags:['重点修订'],desc:'普外 · 骨科 · 泌尿'},
+  {name:'精神病学',pdf:'大三下/题库/精神病学题库_242题.pdf',count:242,version:'v3',format:'PDF',size:'2.0 MB',desc:'精神分裂 · 情感障碍 · 神经症'},
+  {name:'神经病学',pdf:'大三下/题库/神经病学题库_259题.pdf',count:259,version:'v3',format:'PDF',size:'2.8 MB',desc:'脑血管病 · 癫痫 · 周围神经病变'},
+  {name:'医患沟通',pdf:'大三下/题库/医患沟通题库.pdf',format:'PDF',size:'2.8 MB',desc:'沟通技巧 · 医学伦理 · 知情同意'},
+  {name:'中医学',pdf:'大三下/题库/中医学题库.pdf',format:'PDF',size:'2.6 MB',tags:['batch010'],desc:'基础理论 · 方剂 · 诊断辨证'},
 ];
 const REVIEWS=[
-  {name:'内科学',icon:'🫀',md:'大三下/复习资料/内科学_主复习资料.md',version:'v5.1',size:'213K',desc:'心血管 · 呼吸 · 消化 · 泌尿'},
-  {name:'外科学',icon:'🔪',md:'大三下/复习资料/外科学_主复习资料.md',html:'大三下/复习资料/外科学_主复习资料.html',version:'v5.1',size:'236K',desc:'普外 · 骨科 · 泌尿'},
-  {name:'精神病学',icon:'🧠',md:'大三下/复习资料/精神病学_主复习资料.md',html:'大三下/复习资料/精神病学_主复习资料.html',version:'v5.1',size:'134K',desc:'精神分裂 · 情感障碍 · 神经症'},
-  {name:'神经病学',icon:'⚡',md:'大三下/复习资料/神经病学_主复习资料.md',version:'v5',size:'166K',desc:'脑血管病 · 癫痫 · 周围神经病变'},
-  {name:'医患沟通',icon:'💬',md:'大三下/复习资料/医患沟通_主复习资料.md',version:'v5.1',size:'132K',desc:'沟通技巧 · 医学伦理 · 知情同意'},
-  {name:'中医学',icon:'🌿',md:'大三下/复习资料/中医学_主复习资料.md',html:'大三下/复习资料/中医学_主复习资料.html',version:'v5',size:'117K',desc:'基础理论 · 方剂 · 诊断辨证'},
-  {name:'中医心理学',icon:'🧘',md:'大三下/复习资料/中医心理学_主复习资料.md',html:'大三下/复习资料/中医心理学_主复习资料.html',size:'87K',desc:'情志 · 脏腑 · 治法，心身同治'},
+  {name:'内科学',md:'大三下/复习资料/内科学_主复习资料.md',version:'v5.1',size:'213K',desc:'心血管 · 呼吸 · 消化 · 泌尿'},
+  {name:'外科学',md:'大三下/复习资料/外科学_主复习资料.md',html:'大三下/复习资料/外科学_主复习资料.html',version:'v5.1',size:'236K',desc:'普外 · 骨科 · 泌尿'},
+  {name:'精神病学',md:'大三下/复习资料/精神病学_主复习资料.md',html:'大三下/复习资料/精神病学_主复习资料.html',version:'v5.1',size:'134K',desc:'精神分裂 · 情感障碍 · 神经症'},
+  {name:'神经病学',md:'大三下/复习资料/神经病学_主复习资料.md',version:'v5',size:'166K',desc:'脑血管病 · 癫痫 · 周围神经病变'},
+  {name:'医患沟通',md:'大三下/复习资料/医患沟通_主复习资料.md',version:'v5.1',size:'132K',desc:'沟通技巧 · 医学伦理 · 知情同意'},
+  {name:'中医学',md:'大三下/复习资料/中医学_主复习资料.md',html:'大三下/复习资料/中医学_主复习资料.html',version:'v5',size:'117K',desc:'基础理论 · 方剂 · 诊断辨证'},
+  {name:'中医心理学',md:'大三下/复习资料/中医心理学_主复习资料.md',html:'大三下/复习资料/中医心理学_主复习资料.html',size:'87K',desc:'情志 · 脏腑 · 治法，心身同治'},
 ];
-
-/* ---------- 大四上 · 教学版资料（主复习资料 PDF 直链） ---------- */
 const REVIEWS_S1=[
-  {name:'内科学',icon:'🫀',pdf:'大四上/复习资料/内科学_主复习资料_合订本.pdf',format:'PDF',size:'14.8 MB',tags:['合订本','教学计划版'],desc:'23 模块全科合订本 · 消化 · 呼吸 · 泌尿 · 内分泌 · 风湿 · 理化'},
-  {name:'外科学（二）',icon:'🔪',pdf:'大四上/复习资料/外科学（二）_主复习资料.pdf',format:'PDF',size:'12.9 MB',tags:['教学计划版'],desc:'胸外 · 普外 · 血管 · 泌尿 · 骨科 · 8 大模块'},
-  {name:'急诊与灾难医学',icon:'🚑',pdf:'大四上/复习资料/急诊与灾难医学_主复习资料.pdf',format:'PDF',size:'22.6 MB',tags:['教学计划版'],desc:'急性中毒 · 休克 · 心肺脑复苏 · 创伤急救 · 灾难救援'},
-  {name:'耳鼻咽喉头颈外科学',icon:'👂',pdf:'大四上/复习资料/耳鼻咽喉头颈外科学_主复习资料.pdf',format:'PDF',size:'22.0 MB',tags:['教学计划版'],desc:'耳 · 鼻 · 咽 · 喉 · 头颈 五模块'},
-  {name:'耳鼻咽喉头颈外科学（教师重点版）',icon:'👂',pdf:'大四上/复习资料/耳鼻咽喉头颈外科学教师重点版_主复习资料.pdf',format:'PDF',size:'6.3 MB',tags:['教师重点版','新增'],desc:'总论与检查 · 耳 · 鼻 · 咽/OSAHS · 喉与气道 · 气管食管异物 · 头颈颈部肿块（7 模块）'},
-  {name:'妇产科学',icon:'🤰',pdf:'大四上/复习资料/妇产科学_主复习资料.pdf',format:'PDF',size:'12.1 MB',tags:['教学计划版'],desc:'生殖生理 · 妊娠 · 分娩 · 产褥 · 妇科疾病'},
-  {name:'口腔科学',icon:'🦷',pdf:'大四上/复习资料/口腔科学_主复习资料.pdf',format:'PDF',size:'17.0 MB',tags:['教学计划版','新增'],desc:'龋病 · 牙髓病 · 牙周病 · 口腔黏膜病 · 颌面外科'},
-  {name:'眼科学',icon:'👁',pdf:'大四上/复习资料/眼科学_主复习资料.pdf',format:'PDF',size:'21.3 MB',tags:['教学计划版','新增'],desc:'白内障 · 青光眼 · 葡萄膜病 · 视网膜病 · 屈光'},
-  {name:'传染病学',icon:'🦠',pdf:'大四上/复习资料/传染病学_主复习资料.pdf',format:'PDF',size:'9.1 MB',tags:['教学计划版','新增'],desc:'总论 · 病毒性肝炎 · 麻疹水痘 · 狂犬病艾滋病 · 伤寒 · 菌痢霍乱 · 疟疾 · 血吸虫（8 模块）'},
+  {name:'内科学',pdf:'大四上/复习资料/内科学_主复习资料_合订本.pdf',format:'PDF',size:'14.8 MB',tags:['合订本','教学计划版'],desc:'23 模块全科合订本 · 消化 · 呼吸 · 泌尿 · 内分泌 · 风湿 · 理化'},
+  {name:'外科学（二）',pdf:'大四上/复习资料/外科学（二）_主复习资料.pdf',format:'PDF',size:'12.9 MB',tags:['教学计划版'],desc:'胸外 · 普外 · 血管 · 泌尿 · 骨科 · 8 大模块'},
+  {name:'急诊与灾难医学',pdf:'大四上/复习资料/急诊与灾难医学_主复习资料.pdf',format:'PDF',size:'22.6 MB',tags:['教学计划版'],desc:'急性中毒 · 休克 · 心肺脑复苏 · 创伤急救 · 灾难救援'},
+  {name:'耳鼻咽喉头颈外科学',pdf:'大四上/复习资料/耳鼻咽喉头颈外科学_主复习资料.pdf',format:'PDF',size:'22.0 MB',tags:['教学计划版'],desc:'耳 · 鼻 · 咽 · 喉 · 头颈 五模块'},
+  {name:'耳鼻咽喉头颈外科学（教师重点版）',pdf:'大四上/复习资料/耳鼻咽喉头颈外科学教师重点版_主复习资料.pdf',format:'PDF',size:'6.3 MB',tags:['教师重点版','新增'],desc:'总论与检查 · 耳 · 鼻 · 咽/OSAHS · 喉与气道 · 气管食管异物 · 头颈颈部肿块（7 模块）'},
+  {name:'妇产科学',pdf:'大四上/复习资料/妇产科学_主复习资料.pdf',format:'PDF',size:'12.1 MB',tags:['教学计划版'],desc:'生殖生理 · 妊娠 · 分娩 · 产褥 · 妇科疾病'},
+  {name:'口腔科学',pdf:'大四上/复习资料/口腔科学_主复习资料.pdf',format:'PDF',size:'17.0 MB',tags:['教学计划版','新增'],desc:'龋病 · 牙髓病 · 牙周病 · 口腔黏膜病 · 颌面外科'},
+  {name:'眼科学',pdf:'大四上/复习资料/眼科学_主复习资料.pdf',format:'PDF',size:'21.3 MB',tags:['教学计划版','新增'],desc:'白内障 · 青光眼 · 葡萄膜病 · 视网膜病 · 屈光'},
+  {name:'传染病学',pdf:'大四上/复习资料/传染病学_主复习资料.pdf',format:'PDF',size:'9.1 MB',tags:['教学计划版','新增'],desc:'总论 · 病毒性肝炎 · 麻疹水痘 · 狂犬病艾滋病 · 伤寒 · 菌痢霍乱 · 疟疾 · 血吸虫（8 模块）'},
 ];
 const BANKS_S1=[
-  {name:'内科学',icon:'🫀',pdf:'大四上/题库/内科教学题库.pdf',count:443,format:'PDF',size:'1.6 MB',tags:['教学题库'],desc:'消化 · 泌尿 · 内分泌 · 风湿 · 理化'},
-  {name:'外科学（二）',icon:'🔪',pdf:'大四上/题库/外科教学题库.pdf',count:297,format:'PDF',size:'1.3 MB',tags:['教学题库'],desc:'胸外 · 普外 · 血管 · 泌尿 · 骨科'},
-  {name:'妇产科学',icon:'🤰',pdf:'大四上/题库/妇产教学题库.pdf',count:250,format:'PDF',size:'1.2 MB',tags:['教学题库'],desc:'生殖生理 · 妊娠 · 分娩 · 产褥 · 妇科疾病'},
-  {name:'急诊与灾难医学',icon:'🚑',pdf:'大四上/题库/急诊教学题库.pdf',count:220,format:'PDF',size:'3.4 MB',tags:['教学题库'],desc:'急性中毒 · 休克 · 心肺脑复苏 · 创伤急救 · 灾难救援'},
-  {name:'耳鼻咽喉头颈外科学',icon:'👂',pdf:'大四上/题库/耳鼻喉教学题库.pdf',count:163,format:'PDF',size:'0.9 MB',tags:['教学题库'],desc:'耳 · 鼻 · 咽 · 喉 · 头颈 五模块'},
-  {name:'耳鼻咽喉头颈外科学（教师重点版）',icon:'👂',pdf:'大四上/题库/耳鼻喉教师重点版题库.pdf',count:199,format:'PDF',size:'2.9 MB',tags:['教师重点版','新增'],desc:'总论与检查 · 耳 · 鼻 · 咽/OSAHS · 喉与气道 · 气管食管异物 · 头颈颈部肿块（7 模块）'},
-  {name:'口腔科学',icon:'🦷',pdf:'大四上/题库/口腔科学教学题库.pdf',format:'PDF',size:'0.7 MB',tags:['教学题库','新增'],desc:'龋病 · 牙髓病 · 牙周病 · 口腔黏膜病 · 颌面外科'},
-  {name:'眼科学',icon:'👁',pdf:'大四上/题库/眼科学教学题库.pdf',format:'PDF',size:'3.0 MB',tags:['教学题库','新增'],desc:'眼解剖 · 白内障 · 青光眼 · 视网膜病 · 屈光'},
-  {name:'传染病学',icon:'🦠',pdf:'大四上/题库/传染病学教学题库.pdf',count:220,format:'PDF',size:'1.0 MB',tags:['教学题库','新增'],desc:'总论 · 肝炎 · 麻疹水痘 · 狂犬病艾滋病 · 伤寒 · 菌痢霍乱 · 疟疾 · 血吸虫'},
+  {name:'内科学',pdf:'大四上/题库/内科教学题库.pdf',count:443,format:'PDF',size:'1.6 MB',tags:['教学题库'],desc:'消化 · 泌尿 · 内分泌 · 风湿 · 理化'},
+  {name:'外科学（二）',pdf:'大四上/题库/外科教学题库.pdf',count:297,format:'PDF',size:'1.3 MB',tags:['教学题库'],desc:'胸外 · 普外 · 血管 · 泌尿 · 骨科'},
+  {name:'妇产科学',pdf:'大四上/题库/妇产教学题库.pdf',count:250,format:'PDF',size:'1.2 MB',tags:['教学题库'],desc:'生殖生理 · 妊娠 · 分娩 · 产褥 · 妇科疾病'},
+  {name:'急诊与灾难医学',pdf:'大四上/题库/急诊教学题库.pdf',count:220,format:'PDF',size:'3.4 MB',tags:['教学题库'],desc:'急性中毒 · 休克 · 心肺脑复苏 · 创伤急救 · 灾难救援'},
+  {name:'耳鼻咽喉头颈外科学',pdf:'大四上/题库/耳鼻喉教学题库.pdf',count:163,format:'PDF',size:'0.9 MB',tags:['教学题库'],desc:'耳 · 鼻 · 咽 · 喉 · 头颈 五模块'},
+  {name:'耳鼻咽喉头颈外科学（教师重点版）',pdf:'大四上/题库/耳鼻喉教师重点版题库.pdf',count:199,format:'PDF',size:'2.9 MB',tags:['教师重点版','新增'],desc:'总论与检查 · 耳 · 鼻 · 咽/OSAHS · 喉与气道 · 气管食管异物 · 头颈颈部肿块（7 模块）'},
+  {name:'口腔科学',pdf:'大四上/题库/口腔科学教学题库.pdf',format:'PDF',size:'0.7 MB',tags:['教学题库','新增'],desc:'龋病 · 牙髓病 · 牙周病 · 口腔黏膜病 · 颌面外科'},
+  {name:'眼科学',pdf:'大四上/题库/眼科学教学题库.pdf',format:'PDF',size:'3.0 MB',tags:['教学题库','新增'],desc:'眼解剖 · 白内障 · 青光眼 · 视网膜病 · 屈光'},
+  {name:'传染病学',pdf:'大四上/题库/传染病学教学题库.pdf',count:220,format:'PDF',size:'1.0 MB',tags:['教学题库','新增'],desc:'总论 · 肝炎 · 麻疹水痘 · 狂犬病艾滋病 · 伤寒 · 菌痢霍乱 · 疟疾 · 血吸虫'},
 ];
 
-/* ---------- 内联 SVG 图标（P2-1：跨平台渲染一致，零外部请求） ---------- */
-const ICONS={
-  play:'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 3.2v9.6L12.8 8z"/></svg>',
-  eye:'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.8 8S4.1 3.8 8 3.8 14.2 8 14.2 8 11.9 12.2 8 12.2 1.8 8 1.8 8Z"/><circle cx="8" cy="8" r="1.7"/></svg>',
-  download:'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.6v8.2M4.7 7.6 8 10.9l3.3-3.3M3 13.2h10"/></svg>',
-  print:'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.8 5.7V2.6h6.4v3.1"/><path d="M2.7 13.1H2V8.1c0-.7.5-1.2 1.2-1.2h9.6c.7 0 1.2.5 1.2 1.2v5h-.7"/><path d="M4.8 9.9h6.4v3.5H4.8z"/><path d="M11.6 6.9h1.8"/></svg>',
-  external:'<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 3.3H3.3v9.5h9.5V9.6"/><path d="M9.2 2.8h4v4"/><path d="M13 3 7.9 8.1"/></svg>',
-  copy:'<svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5.6" y="5.6" width="7.6" height="7.6" rx="1.4"/><path d="M10.4 3.4H4.6a1.2 1.2 0 0 0-1.2 1.2v5.8"/></svg>',
-  close:'<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.4 3.4l9.2 9.2M12.6 3.4 3.4 12.6"/></svg>'
-};
-
-/* ---------- meta 行统一渲染（P0-1：[题量] · [版本] · [标签] · [格式] · [大小]，缺省跳过无残留分隔符） ---------- */
+/* ---------- C 渲染层 ---------- */
+/* meta 行统一渲染：题量 · 版本 · 标签 · 格式 · 大小，缺省跳过 */
 function renderMeta(it){
   const parts=[];
   if(it.count)parts.push(it.count+' 题');
@@ -1412,50 +1179,279 @@ function renderMeta(it){
   if(it.size)parts.push(it.size);
   return parts.join(' · ');
 }
-
-const $=s=>document.querySelector(s);
-const $$=s=>document.querySelectorAll(s);
-const toast=msg=>{const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._tm);t._tm=setTimeout(()=>t.classList.remove('show'),2200);};
-
-/* ---------- 路径编码（避免中文路径 404） ---------- */
-function encPath(path){ return path.split('/').map(seg=>encodeURI(seg)).join('/'); }
-/* 唯一入口：path 已是仓库根相对（见上方「资源路径约定」），不再拼接任何 base */
-function url(path){ return encPath(path); }
-
-function viewOnline(path){ window.open(url(path),'_blank'); }
-function downloadFile(path,filename,btn){
-  /* P2-2：loading 态 + 防重复点击 */
-  if(btn&&(btn.disabled||btn.dataset.loading))return;
-  const orig=btn?btn.innerHTML:null;
-  if(btn){btn.dataset.loading='1';btn.disabled=true;btn.classList.add('loading');btn.innerHTML=ICONS.download+'<span>下载中…</span>';}
-  const restore=()=>{if(btn){delete btn.dataset.loading;btn.disabled=false;btn.classList.remove('loading');if(orig!==null)btn.innerHTML=orig;}};
-  toast('⬇ 开始下载：'+filename+'（速度见浏览器下载栏）');
-  /* 原生直链下载（2026-09-02 修复）：此前 fetch→blob 在慢网络/大文件下长时间无响应，
-     按钮卡「下载中…」；改为浏览器下载管理器直接接管——有进度、可取消、不假死 */
-  const a=document.createElement('a');
-  a.href=encPath(path); a.download=filename; a.rel='noopener';
-  document.body.appendChild(a); a.click(); a.remove();
-  setTimeout(restore,1200);
+/* 卡片全部用 data-act + data-path 走事件委托，杜绝内联 onclick 的引号地狱 */
+function cardShell(it,i,btns,extraCls){
+  const q=esc((it.name+' '+(it.desc||'')+' '+((it.tags||[]).join(' '))).toLowerCase());
+  return '<div class="card'+(extraCls||'')+' reveal" style="transition-delay:'+(i*0.05)+'s" data-q="'+q+'">'
+    +'<span class="idx">#'+String(i+1).padStart(2,'0')+'</span>'
+    +'<div class="card-head"><div class="glyph">'+icon(subjectIcon(it.name))+'</div>'
+    +'<div><div class="card-title">'+esc(it.name)+'</div><div class="card-meta">'+esc(renderMeta(it))+'</div></div></div>'
+    +'<p class="card-desc">'+esc(it.desc||'')+'</p>'
+    +'<div class="btns">'+btns+'</div></div>';
 }
-function printHTML(path){
-  const w=window.open(url(path),'_blank');
-  if(!w){toast('❌ 弹窗被拦截，请允许');return;}
-  toast('🖨 正在打开，随后弹出打印窗口…');
-  const ck=setInterval(()=>{try{if(w.document.readyState==='complete'){clearInterval(ck);setTimeout(()=>{w.focus();w.print();},300);}}catch(e){clearInterval(ck);}},200);
+function bankCard(it,i){
+  const btns='<button class="btn btn-pri btn-sm" data-act="download" data-path="'+esc(it.pdf)+'">'+icon('i-download')+'<span>下载 PDF</span></button>';
+  return cardShell(it,i,btns);
+}
+const TIP_PRINT='打开浏览器打印对话框，可另存为 PDF（由浏览器生成，非原生 PDF）';
+function reviewCard(it,i){
+  let btns='';
+  if(it.pdf)btns+='<button class="btn btn-pri btn-sm" data-act="download" data-path="'+esc(it.pdf)+'">'+icon('i-download')+'<span>下载 PDF</span></button>';
+  btns+='<button class="btn '+(it.pdf?'btn-ghost':'btn-pri')+' btn-sm" data-act="preview" data-path="'+esc(it.md)+'" data-name="'+esc(it.name)+'">'+icon('i-eye')+'<span>在线阅读</span></button>';
+  btns+='<button class="btn btn-ghost btn-sm" data-act="download" data-path="'+esc(it.md)+'">'+icon('i-download')+'<span>下载 MD</span></button>';
+  if(it.html){
+    btns+='<button class="btn btn-ghost btn-sm" data-act="view" data-path="'+esc(it.html)+'">'+icon('i-external')+'<span>网页版</span></button>';
+    btns+='<button class="btn btn-ghost btn-sm" data-act="printhtml" data-path="'+esc(it.html)+'" title="'+TIP_PRINT+'">'+icon('i-print')+'<span>打印 PDF</span></button>';
+  }else{
+    btns+='<button class="btn btn-ghost btn-sm" data-act="printmd" data-path="'+esc(it.md)+'" data-name="'+esc(it.name)+'" title="'+TIP_PRINT+'">'+icon('i-print')+'<span>打印 PDF</span></button>';
+  }
+  return cardShell(it,i,btns);
+}
+function reviewS1Card(it,i){
+  const btns='<button class="btn btn-pri btn-sm" data-act="download" data-path="'+esc(it.pdf)+'">'+icon('i-download')+'<span>教学版资料</span></button>';
+  return cardShell(it,i,btns);
+}
+/* C8：卡片渲染最先执行，且独立容错 */
+safe('render-grids',()=>{
+  const g1=$('#grid-bank'),g2=$('#grid-review'),g3=$('#grid-review-s1'),g4=$('#grid-banks-s1');
+  if(g1)g1.innerHTML=BANKS.map(bankCard).join('');
+  if(g2)g2.innerHTML=REVIEWS.map(reviewCard).join('');
+  if(g3)g3.innerHTML=REVIEWS_S1.map(reviewS1Card).join('');
+  if(g4)g4.innerHTML=BANKS_S1.map(bankCard).join('');
+  /* 计数徽标 */
+  $$('.grid-count').forEach(el=>{
+    const grid=document.getElementById(el.dataset.count);
+    if(grid)el.textContent='共 '+grid.children.length+' 项';
+  });
+});
+
+/* 滚动显现（渲染后再观察，含动态卡片） */
+safe('reveal',()=>{
+  const io=new IntersectionObserver(es=>{
+    es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+  },{threshold:0.1});
+  $$('.reveal').forEach(el=>io.observe(el));
+});
+
+/* ---------- D 哈希路由（B1/B2：视图可寻址，链接原生） ----------
+   格式：#/home | #/s2 | #/s2/banks | #/s1/reviews-s1
+   兼容旧哈希：#banks #reviews #software #pipeline #quick #deck … */
+const VIEW_OF={home:'home',s2:'junior2',s1:'senior1'};
+const LEGACY={
+  top:['home',null],banks:['junior2','banks'],reviews:['junior2','reviews'],
+  software:['home','software'],pipeline:['home','pipeline'],quick:['home','quick'],
+  deck:['junior2',null],'deck-s1':['senior1',null],
+  'reviews-s1':['senior1','reviews-s1'],'banks-s1':['senior1','banks-s1']
+};
+const HASH_OF={home:'#/home',junior2:'#/s2',senior1:'#/s1'};
+let currentView='home';
+function applyView(view,anchor,scroll){
+  if(!document.getElementById('view-'+view))return;
+  currentView=view;
+  $$('.nav-term,.mm-term-btn').forEach(t=>t.classList.toggle('active',t.dataset.term===view));
+  $$('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+view));
+  store.set('maw-term',view);
+  closeMobileMenu();
+  if(anchor){
+    const el=document.getElementById(anchor);
+    if(el)requestAnimationFrame(()=>el.scrollIntoView({behavior:scroll?'smooth':'auto',block:'start'}));
+  }else if(scroll!==false){
+    window.scrollTo({top:0,behavior:'auto'});
+  }
+}
+function route(fromHashChange){
+  const raw=location.hash.replace(/^#\/?/,'');
+  if(!raw){
+    /* 无哈希：恢复上次视图（历史兼容） */
+    const saved=store.get('maw-term');
+    const v=(saved&&document.getElementById('view-'+saved))?saved:'home';
+    applyView(v,null,false);
+    return;
+  }
+  const parts=raw.split('/');
+  if(VIEW_OF[parts[0]]){applyView(VIEW_OF[parts[0]],parts[1]||null,true);return;}
+  if(LEGACY[parts[0]]){
+    const[v,a]=LEGACY[parts[0]];
+    /* 迁移到新哈希，保留历史条目 */
+    const nh=HASH_OF[v]+(a?'/'+a:'');
+    try{history.replaceState(null,'',nh);}catch(e){}
+    applyView(v,a,true);return;
+  }
+  /* 未知哈希：回主页 */
+  applyView('home',null,false);
+}
+safe('router',()=>{
+  window.addEventListener('hashchange',()=>route(true));
+  route(false);
+});
+/* 学期 Tab：点击写入哈希，由路由统一处理（可前进/后退） */
+safe('term-tabs',()=>{
+  $$('.nav-term,.mm-term-btn').forEach(t=>t.addEventListener('click',()=>{
+    const h=HASH_OF[t.dataset.term];
+    if(location.hash===h)applyView(t.dataset.term,null,true);
+    else location.hash=h;
+  }));
+});
+
+/* 导航 scrollspy（仅当前视图内的分区参与） */
+safe('scrollspy',()=>{
+  const links=$$('.nav-links a[data-spy]');
+  if(!links.length)return;
+  const map=new Map();
+  links.forEach(a=>{
+    const sec=document.getElementById(a.dataset.spy);
+    if(sec)map.set(sec,a);
+  });
+  const spy=new IntersectionObserver(es=>{
+    es.forEach(en=>{
+      if(!en.isIntersecting)return;
+      const a=map.get(en.target);
+      links.forEach(x=>{
+        const on=x===a;
+        x.classList.toggle('active',on);
+        if(on)x.setAttribute('aria-current','true');else x.removeAttribute('aria-current');
+      });
+    });
+  },{rootMargin:'-40% 0px -55% 0px',threshold:0});
+  map.forEach((a,sec)=>spy.observe(sec));
+});
+
+/* 移动端 deck 横滑指示点（支持两套 deck，C4 防护） */
+safe('deck-dots',()=>{
+  $$('.deck-grid-wrap').forEach(wrap=>{
+    const grid=wrap.querySelector('.deck-grid');
+    const dots=wrap.querySelectorAll('.deck-dots span');
+    if(!grid||!dots.length)return;
+    function update(){
+      let best=0,bd=Infinity;
+      [...grid.children].forEach((t,i)=>{
+        const d=Math.abs(t.offsetLeft-grid.scrollLeft-(grid.clientWidth-t.offsetWidth)/2);
+        if(d<bd){bd=d;best=i;}
+      });
+      dots.forEach((d,i)=>d.classList.toggle('on',i===best));
+      wrap.classList.toggle('end',grid.scrollLeft+grid.clientWidth>=grid.scrollWidth-4);
+    }
+    grid.addEventListener('scroll',update,{passive:true});
+    window.addEventListener('resize',debounce(update,150));
+    update();
+  });
+});
+
+/* ---------- E 搜索过滤（B3） ---------- */
+safe('search',()=>{
+  $$('input[data-filter]').forEach(inp=>{
+    const grid=document.getElementById(inp.dataset.filter);
+    if(!grid)return;
+    const empty=document.querySelector('[data-empty="'+inp.dataset.filter+'"]');
+    const counter=document.querySelector('[data-count="'+inp.dataset.filter+'"]');
+    inp.addEventListener('input',()=>{
+      const q=inp.value.trim().toLowerCase();
+      let shown=0;
+      [...grid.children].forEach(c=>{
+        const hit=!q||(c.dataset.q||'').includes(q);
+        c.hidden=!hit;
+        if(hit)shown++;
+      });
+      if(empty)empty.hidden=shown>0;
+      if(counter)counter.textContent=q?('匹配 '+shown+' 项'):('共 '+grid.children.length+' 项');
+    });
+  });
+});
+
+/* ---------- 移动端菜单 ---------- */
+function closeMobileMenu(){
+  const m=$('#mobile-menu'),b=$('#nav-burger');
+  if(m){m.classList.remove('open');m.setAttribute('aria-hidden','true');}
+  if(b){b.setAttribute('aria-expanded','false');}
+  document.body.classList.remove('modal-open');
+}
+safe('mobile-menu',()=>{
+  const m=$('#mobile-menu'),b=$('#nav-burger');
+  if(!m||!b)return;
+  b.addEventListener('click',()=>{
+    const open=!m.classList.contains('open');
+    m.classList.toggle('open',open);
+    b.setAttribute('aria-expanded',String(open));
+    m.setAttribute('aria-hidden',String(!open));
+    document.body.classList.toggle('modal-open',open);
+  });
+  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMobileMenu));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileMenu();});
+});
+
+/* ---------- F 模态层（B6：焦点陷阱 + 背景滚锁） ---------- */
+let currentMD=null,currentMDText=null,lastFocus=null;
+function openModal(){
+  const m=$('#modal');if(!m)return;
+  lastFocus=document.activeElement;
+  m.classList.add('open');
+  document.body.classList.add('modal-open');
+  const c=m.querySelector('.m-btn.close');
+  if(c)c.focus();
+}
+function closeModal(){
+  const m=$('#modal');if(!m)return;
+  m.classList.remove('open');
+  document.body.classList.remove('modal-open');
+  $('#m-body').innerHTML='<div class="spinner"></div>';
+  if(lastFocus&&lastFocus.focus)lastFocus.focus();
+  lastFocus=null;
+}
+safe('modal',()=>{
+  const m=$('#modal');if(!m)return;
+  m.addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
+  document.addEventListener('keydown',e=>{
+    if(!m.classList.contains('open'))return;
+    if(e.key==='Escape'){closeModal();return;}
+    if(e.key!=='Tab')return;
+    /* 焦点循环锁定在模态内 */
+    const f=[...m.querySelectorAll('button,a,[tabindex]:not([tabindex="-1"])')].filter(el=>!el.disabled&&el.offsetParent!==null);
+    if(!f.length)return;
+    const first=f[0],last=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  });
+});
+function previewMD(path,name){
+  currentMD=path;currentMDText=null;
+  $('#m-title').textContent=name+' · 复习手册';
+  openModal();
+  const body=$('#m-body');
+  body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
+  $('#m-actions').innerHTML=
+    '<button class="m-btn" data-act="download" data-path="'+esc(path)+'">'+icon('i-download')+'<span>下载 MD</span></button>'
+    +'<button class="m-btn" data-act="printcur" title="'+TIP_PRINT+'">'+icon('i-print')+'<span>打印 PDF</span></button>'
+    +'<button class="m-btn close" data-act="closemodal">'+icon('i-close')+'<span>关闭</span></button>';
+  fetchWithTimeout(url(path),15000)
+    .then(r=>{if(!r.ok)throw new Error('http '+r.status);return r.text();})
+    .then(md=>{
+      if(currentMD!==path)return;/* 已切换到别的预览 */
+      currentMDText=md;
+      body.className='modal-body';
+      body.innerHTML='<div class="md">'+mdToHtml(md)+'</div>';
+      body.scrollTop=0;
+    })
+    .catch(()=>{
+      body.className='modal-body';
+      body.innerHTML='<div class="modal-error">'+icon('i-close')+'<p>读取失败，请检查网络后重试</p></div>';
+    });
 }
 
+/* ---------- Markdown 渲染（C5：列表占位符防串扰 + 剂量写法保护） ---------- */
 const CALLOUT_MAP={WARNING:'warning',TIP:'tip',INFO:'info',SUCCESS:'success',NOTE:'note'};
 function mdEscape(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-/* 原始文本 → 转义 + 行内标记（summary 等未经转义的输入） */
-function mdInlineEscapeSafe(s){return mdEscape(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>');}
-/* 已转义文本 → 仅行内标记（不重复转义） */
-function mdInlineSafe(s){return String(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>');}
-/* 折叠区内部：文本已转义，做行内 + 列表（- 行包 ul；其余按行 <p>/<br>） */
+function mdInlineEscapeSafe(s){return mdInlineSafe(mdEscape(s));}
+function mdInlineSafe(s){
+  return String(s)
+    .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+    /* 行内 * 强调：两侧邻位是数字（剂量写法 2*10^9/L）时不作强调 */
+    .replace(/(?<![\*\d])\*([^*\n]+)\*(?![\*\d])/g,'<em>$1</em>')
+    .replace(/`([^`]+)`/g,'<code>$1</code>');
+}
 function mdBodySafe(escaped){
   const lines=String(escaped).split('\n');
-  const out=[];
-  let inUl=false;
-  function closeUl(){if(inUl){out.push('</ul>');inUl=false;}}
+  const out=[];let inUl=false;
+  const closeUl=()=>{if(inUl){out.push('</ul>');inUl=false;}};
   for(const line of lines){
     const t=line.trim();
     if(!t){closeUl();continue;}
@@ -1468,11 +1464,10 @@ function mdBodySafe(escaped){
   return out.join('');
 }
 function mdToHtml(md){
-  /* 0) 统一换行符（CRLF → LF；否则 $ 断言被 \r 挡住，callout/标题/列表识别失败） */
   md=String(md||'').replace(/\r\n?/g,'\n');
-  /* 1) 保护 <details> 折叠区（原始文本暂存，最后还原为可信 HTML） */
+  /* 1) 保护 <details> 折叠区 */
   const details=[];
-  md=String(md||'').replace(/<details([^>]*)>([\s\S]*?)<\/details>/g,(m,attr,inner)=>{
+  md=md.replace(/<details([^>]*)>([\s\S]*?)<\/details>/g,(m,attr,inner)=>{
     const open=/\bopen\b/i.test(attr)?' open':'';
     let summary='';
     inner=inner.replace(/<summary>([\s\S]*?)<\/summary>/i,(m2,s)=>{summary=s.trim();return '';});
@@ -1480,10 +1475,8 @@ function mdToHtml(md){
     details.push({open,summary,body:inner});
     return '\u0001D'+idx+'\u0002';
   });
-  /* 2) 其余内容统一转义，杜绝注入 */
   let h=mdEscape(md);
   h=h.replace(/```([\s\S]*?)```/g,(m,c)=>'<pre><code>'+c.replace(/^\n/,'')+'</code></pre>');
-  /* 2.2) 白名单还原 <b>/<i>（产物契约 v1.1：行内强调用 HTML 标签而非 **；转义后才还原，杜绝注入；旧 ** 语法继续兼容） */
   h=h.replace(/&lt;(\/?)(b|i)&gt;/g,'<$1$2>');
   h=h.replace(/(^\|.+\|[ \t]*\n)(^\|[\s:|-]+\|[ \t]*\n)((?:^\|.+\|[ \t]*\n)+)/gm,(m,hdr,sep,body)=>{
     const heads=hdr.split('|').map(s=>s.trim()).filter(Boolean);
@@ -1495,36 +1488,38 @@ function mdToHtml(md){
   h=h.replace(/^######\s+(.*)$/gm,'<h6>$1</h6>').replace(/^#####\s+(.*)$/gm,'<h5>$1</h5>')
      .replace(/^####\s+(.*)$/gm,'<h4>$1</h4>').replace(/^###\s+(.*)$/gm,'<h3>$1</h3>')
      .replace(/^##\s+(.*)$/gm,'<h2>$1</h2>').replace(/^#\s+(.*)$/gm,'<h1>$1</h1>');
-  /* 3) 行内标记（在列表/段落处理之前） */
-  h=h.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/(?<!\*)\*([^*\n]+)\*(?!\*)/g,'<em>$1</em>').replace(/`([^`]+)`/g,'<code>$1</code>');
-  /* 4) 列表：有序 → <ol>（打包前标记），无序 → <ul>；列表块不再被 <p> 干扰 */
+  h=h.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+     .replace(/(?<![\*\d])\*([^*\n]+)\*(?![\*\d])/g,'<em>$1</em>')
+     .replace(/`([^`]+)`/g,'<code>$1</code>');
   h=h.replace(/^-{3,}$/gm,'<hr>');
+  /* 列表：li 恒为单行，相邻同类项打包成占位符；不吃尾部空行，段落边界不丢（C5 修复） */
+  const blocks=[];
+  const stash=html=>{blocks.push(html);return '\u0001B'+(blocks.length-1)+'\u0002';};
   h=h.replace(/^[-*+]\s+(.*)$/gm,'<li>$1</li>');
-  h=h.replace(/^\d+\.\s+(.*)$/gm,'<li class="ol-item">$1</li>');
-  h=h.replace(/(<li class="ol-item">[\s\S]*?<\/li>)+/g,m=>'<ol>'+m+'</ol>').replace(/<\/ol>\s*<ol>/g,'');
-  h=h.replace(/<li class="ol-item">/g,'<li>');
-  h=h.replace(/(<li>[\s\S]*?<\/li>)+/g,m=>'<ul>'+m+'</ul>').replace(/<\/ul>\s*<ul>/g,'');
-  /* 5) Callout + 普通引用（在列表打包之后处理，避免 callout 内 ul 被二次包裹；连续 '>' 行整体处理） */
+  h=h.replace(/^\d+\.\s+(.*)$/gm,'<li data-ol>$1</li>');
+  h=h.replace(/<li data-ol>[^\n]*<\/li>(?:\n<li data-ol>[^\n]*<\/li>)*/g,m=>stash('<ol>'+m.replace(/ data-ol/g,'')+'</ol>'));
+  h=h.replace(/<li>[^\n]*<\/li>(?:\n<li>[^\n]*<\/li>)*/g,m=>stash('<ul>'+m+'</ul>'));
+  /* Callout + 普通引用 */
   h=h.replace(/(^&gt;[^\n]*\n?)+/gm,(m)=>{
     const lines=m.split('\n').filter(l=>l.length);
-    const first=lines[0]||'';
-    const mm=first.match(/^&gt;\s*\[!([A-Za-z]+)\](?:\s+(.*))?$/);
-    if(!mm) return lines.map(l=>'<blockquote>'+mdInlineSafe(l.replace(/^&gt;\s?/,''))+'</blockquote>').join('\n');
+    const mm=(lines[0]||'').match(/^&gt;\s*\[!([A-Za-z]+)\](?:\s+(.*))?$/);
+    if(!mm)return lines.map(l=>'<blockquote>'+mdInlineSafe(l.replace(/^&gt;\s?/,''))+'</blockquote>').join('\n');
     const typeKey=mm[1].toUpperCase();
     const type=typeKey in CALLOUT_MAP?CALLOUT_MAP[typeKey]:'note';
     const title=(mm[2]||'').trim()||typeKey;
     const body=lines.slice(1).map(l=>l.replace(/^&gt;\s?/,'')).join('\n');
-    return '<div class="callout callout-'+type+'"><div class="callout-title">'+mdInlineSafe(title)+'</div><div class="callout-body">'+mdBodySafe(body)+'</div></div>';
+    return stash('<div class="callout callout-'+type+'"><div class="callout-title">'+mdInlineSafe(title)+'</div><div class="callout-body">'+mdBodySafe(body)+'</div></div>');
   });
-  /* 6) 段落化：块级元素/占位符不再包 <p>（修复 <p></p><li> 旧 bug） */
+  /* 段落化 */
   h=h.split(/\n\n+/).map(p=>{
     const t=p.trim();
     if(!t)return'';
-    if(/^\u0001D\d+\u0002$/.test(t))return t;
-    if(/^<(h\d|ul|ol|pre|table|blockquote|hr|div)/.test(t))return t;
+    if(/^\u0001[DB]\d+\u0002$/.test(t))return t;
+    if(/^<(h\d|pre|table|blockquote|hr|div)/.test(t))return t;
     return '<p>'+t.replace(/\n/g,'<br>')+'</p>';
   }).join('\n');
-  /* 7) 还原折叠区（summary/正文均已转义渲染） */
+  /* 还原占位符 */
+  h=h.replace(/\u0001B(\d+)\u0002/g,(m,i)=>blocks[+i]||'');
   h=h.replace(/\u0001D(\d+)\u0002/g,(m,i)=>{
     const d=details[+i];
     if(!d)return'';
@@ -1533,559 +1528,355 @@ function mdToHtml(md){
   return h;
 }
 
-/* ---------- 打印样式（白纸渲染版：输出「渲染后的 MD 形式」） ---------- */
+/* ---------- G 下载与打印 ---------- */
+function downloadFile(path,btn){
+  if(btn&&(btn.disabled||btn.dataset.loading))return;
+  const orig=btn?btn.innerHTML:null;
+  if(btn){btn.dataset.loading='1';btn.disabled=true;btn.classList.add('loading');btn.innerHTML=icon('i-download')+'<span>下载中…</span>';}
+  const restore=()=>{if(btn){delete btn.dataset.loading;btn.disabled=false;btn.classList.remove('loading');if(orig!==null)btn.innerHTML=orig;}};
+  const fname=path.split('/').pop();
+  toast('⬇ 开始下载：'+fname+'（速度见浏览器下载栏）');
+  /* 原生直链下载：浏览器下载管理器接管，有进度、可取消、不假死 */
+  const a=document.createElement('a');
+  a.href=encPath(path);a.download=fname;a.rel='noopener';
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(restore,1200);
+}
+function viewOnline(path){window.open(url(path),'_blank','noopener');}
+
+/* C6：打印改走同源 Blob iframe，避开 document.write 与弹窗拦截 */
+function printHTMLDoc(html){
+  try{
+    const blob=new Blob([html],{type:'text/html'});
+    const u=URL.createObjectURL(blob);
+    const f=document.createElement('iframe');
+    f.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0;';
+    f.src=u;
+    f.onload=()=>{setTimeout(()=>{
+      try{f.contentWindow.focus();f.contentWindow.print();}
+      catch(e){window.open(u,'_blank','noopener');}
+      setTimeout(()=>{URL.revokeObjectURL(u);f.remove();},60000);
+    },300);};
+    document.body.appendChild(f);
+  }catch(e){
+    const w=window.open('','_blank');
+    if(!w){toast('❌ 弹窗被拦截，请允许弹出窗口');return;}
+    w.document.write(html);w.document.close();
+    setTimeout(()=>{try{w.focus();w.print();}catch(_){} },500);
+  }
+}
 function printCSS(){
-  return `
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
-      background:#fff;color:#1a1a2e;line-height:1.9;padding:28px 36px;font-size:14px;}
-    .print-head{border-bottom:3px solid #111;padding-bottom:14px;margin-bottom:10px;}
-    .print-head h1{font-size:26px;letter-spacing:-0.01em;margin:0 0 6px;border:none;padding:0;}
-    .print-head .print-meta{font-family:"Cascadia Code",Consolas,monospace;font-size:11px;color:#6b7280;letter-spacing:0.08em;}
-    h1,h2,h3,h4,h5,h6{font-weight:700;color:#111;margin:1.5em 0 .5em;line-height:1.35;break-after:avoid;}
-    h1{font-size:25px;border-bottom:2px solid #222;padding-bottom:8px;}
-    h2{font-size:20px;border-bottom:1px solid #ddd;padding-bottom:6px;}
-    h3{font-size:16.5px;} h4{font-size:15px;} h5{font-size:14px;} h6{font-size:13px;}
-    p{margin:.6em 0;}
-    strong{color:#000;} em{color:#0b4f8a;}
-    code{font-family:"Cascadia Code",Consolas,monospace;background:#f4f4f5;padding:1px 5px;border-radius:4px;font-size:12.5px;color:#b3261e;}
-    pre{background:#f6f7f9;border:1px solid #e5e7eb;padding:12px 16px;border-radius:8px;overflow-x:auto;white-space:pre-wrap;break-inside:avoid;}
-    pre code{background:none;color:#1f2937;padding:0;}
-    blockquote{border-left:3px solid #94a3b8;padding-left:1em;color:#4b5563;margin:1em 0;}
-    .callout{margin:1em 0;padding:12px 14px;border-radius:8px;border:1px solid #d1d5db;border-left-width:3px;background:#f8fafc;break-inside:avoid;}
-    .callout-title{font-weight:700;color:#111;margin-bottom:4px;}
-    .callout-body{color:#334155;}
-    .callout-body p{margin:.35em 0;}
-    .callout-warning{border-left-color:#d97706;background:#fffbeb;}
-    .callout-warning .callout-title{color:#b45309;}
-    .callout-tip{border-left-color:#7c3aed;background:#f5f3ff;}
-    .callout-tip .callout-title{color:#6d28d9;}
-    .callout-info{border-left-color:#2563eb;background:#eff6ff;}
-    .callout-info .callout-title{color:#1d4ed8;}
-    .callout-success{border-left-color:#059669;background:#ecfdf5;}
-    .callout-success .callout-title{color:#047857;}
-    .callout-note{border-left-color:#64748b;background:#f8fafc;}
-    .callout-note .callout-title{color:#334155;}
-    details{margin:1em 0;border:1px solid #d1d5db;border-radius:8px;padding:0;break-inside:avoid;}
-    details summary{cursor:pointer;padding:9px 14px;font-weight:700;color:#111;list-style:none;}
-    details summary::-webkit-details-marker{display:none;}
-    details summary::before{content:"▾ ";color:#2563eb;}
-    details:not([open]) summary::before{content:"▸ ";}
-    details>*:not(summary){margin:0 14px 10px;}
-    ol{list-style:decimal;}
-    table{border-collapse:collapse;width:100%;margin:1em 0;font-size:12.5px;break-inside:avoid;}
-    th,td{border:1px solid #d1d5db;padding:6px 10px;text-align:left;}
-    th{background:#f3f4f6;font-weight:600;}
-    tr:nth-child(even) td{background:#fafafa;}
-    ul,ol{padding-left:1.6em;margin:.6em 0;}
-    li{margin:.25em 0;}
-    hr{border:none;border-top:1px solid #e5e7eb;margin:1.5em 0;}
-    a{color:#0b4f8a;text-decoration:none;border-bottom:1px solid rgba(11,79,138,0.3);}
-    .print-hint{display:block;background:#eef4ff;border:1px solid #c6d8f5;color:#0b4f8a;
-      padding:11px 16px;border-radius:10px;margin-bottom:20px;font-size:13.5px;line-height:1.7;}
-    @media print{.print-hint{display:none !important;}}
-    @page{margin:1.4cm 1.6cm;}
-  `;
+  return '*{margin:0;padding:0;box-sizing:border-box;}'
+    +'body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#fff;color:#1a1a2e;line-height:1.9;padding:28px 36px;font-size:14px;}'
+    +'.print-head{border-bottom:3px solid #111;padding-bottom:14px;margin-bottom:10px;}'
+    +'.print-head h1{font-size:26px;letter-spacing:-0.01em;margin:0 0 6px;border:none;padding:0;}'
+    +'.print-head .print-meta{font-family:"Cascadia Code",Consolas,monospace;font-size:11px;color:#6b7280;letter-spacing:0.08em;}'
+    +'h1,h2,h3,h4,h5,h6{font-weight:700;color:#111;margin:1.5em 0 .5em;line-height:1.35;break-after:avoid;}'
+    +'h1{font-size:25px;border-bottom:2px solid #222;padding-bottom:8px;}h2{font-size:20px;border-bottom:1px solid #ddd;padding-bottom:6px;}h3{font-size:16.5px;}h4{font-size:15px;}'
+    +'p{margin:.6em 0;}strong{color:#000;}em{color:#0b4f8a;}'
+    +'code{font-family:"Cascadia Code",Consolas,monospace;background:#f4f4f5;padding:1px 5px;border-radius:4px;font-size:12.5px;color:#b3261e;}'
+    +'pre{background:#f6f7f9;border:1px solid #e5e7eb;padding:12px 16px;border-radius:8px;overflow-x:auto;white-space:pre-wrap;break-inside:avoid;}pre code{background:none;color:#1f2937;padding:0;}'
+    +'blockquote{border-left:3px solid #94a3b8;padding-left:1em;color:#4b5563;margin:1em 0;}'
+    +'.callout{margin:1em 0;padding:12px 14px;border-radius:8px;border:1px solid #d1d5db;border-left-width:3px;background:#f8fafc;break-inside:avoid;}'
+    +'.callout-title{font-weight:700;color:#111;margin-bottom:4px;}.callout-body{color:#334155;}.callout-body p{margin:.35em 0;}'
+    +'.callout-warning{border-left-color:#d97706;background:#fffbeb;}.callout-warning .callout-title{color:#b45309;}'
+    +'.callout-tip{border-left-color:#7c3aed;background:#f5f3ff;}.callout-tip .callout-title{color:#6d28d9;}'
+    +'.callout-info{border-left-color:#2563eb;background:#eff6ff;}.callout-info .callout-title{color:#1d4ed8;}'
+    +'.callout-success{border-left-color:#059669;background:#ecfdf5;}.callout-success .callout-title{color:#047857;}'
+    +'details{margin:1em 0;border:1px solid #d1d5db;border-radius:8px;break-inside:avoid;}'
+    +'details summary{cursor:pointer;padding:9px 14px;font-weight:700;color:#111;list-style:none;}'
+    +'details summary::-webkit-details-marker{display:none;}details summary::before{content:"▾ ";color:#2563eb;}'
+    +'details:not([open]) summary::before{content:"▸ ";}details>*:not(summary){margin:0 14px 10px;}'
+    +'ol{list-style:decimal;}ul,ol{padding-left:1.6em;margin:.6em 0;}li{margin:.25em 0;}'
+    +'table{border-collapse:collapse;width:100%;margin:1em 0;font-size:12.5px;break-inside:avoid;}'
+    +'th,td{border:1px solid #d1d5db;padding:6px 10px;text-align:left;}th{background:#f3f4f6;font-weight:600;}'
+    +'tr:nth-child(even) td{background:#fafafa;}hr{border:none;border-top:1px solid #e5e7eb;margin:1.5em 0;}'
+    +'a{color:#0b4f8a;text-decoration:none;border-bottom:1px solid rgba(11,79,138,0.3);}'
+    +'.print-hint{display:block;background:#eef4ff;border:1px solid #c6d8f5;color:#0b4f8a;padding:11px 16px;border-radius:10px;margin-bottom:20px;font-size:13.5px;line-height:1.7;}'
+    +'@media print{.print-hint{display:none !important;}}@page{margin:1.4cm 1.6cm;}';
 }
 function renderPrintDoc(md,title){
-  return '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>'+title+'</title><style>'+printCSS()+'</style></head><body><div class="print-hint">📄 请在打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把这份复习手册保存成 PDF 文件（打印对话框里也可以直接打印纸质版）。</div><div class="print-head"><h1>'+title+'</h1><div class="print-meta">MEDAGENTWORK · 医学复习资料库 · 仅供学习交流 · 生成于 '+(new Date().toLocaleDateString('zh-CN'))+'</div></div>'+mdToHtml(md)+'</body></html>';
+  return '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>'+esc(title)+'</title><style>'+printCSS()+'</style></head><body>'
+    +'<div class="print-hint">请在打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把这份复习手册保存成 PDF 文件（也可以直接打印纸质版）。</div>'
+    +'<div class="print-head"><h1>'+esc(title)+'</h1><div class="print-meta">MEDAGENTWORK · 医学复习资料库 · 仅供学习交流 · 生成于 '+(new Date().toLocaleDateString('zh-CN'))+'</div></div>'
+    +mdToHtml(md)+'</body></html>';
 }
-/* 打印 MD 预览：抓取 MD → 渲染 → 交给浏览器打印（产出的是浏览器生成的 PDF，非原生 PDF） */
 function printMD(path,name){
   toast('🖨 正在渲染，马上弹出打印窗口…');
-  fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.text();})
-    .then(md=>{
-      const w=window.open('','_blank');
-      if(!w){toast('❌ 弹窗被拦截，请允许弹出窗口');return;}
-      w.document.write(renderPrintDoc(md,name+' · 复习手册'));
-      w.document.close();
-      setTimeout(()=>{w.focus();w.print();},500);
-    }).catch(()=>toast('❌ 操作失败：读取不到内容，请稍后重试'));
+  fetchWithTimeout(url(path),15000)
+    .then(r=>{if(!r.ok)throw new Error('http '+r.status);return r.text();})
+    .then(md=>printHTMLDoc(renderPrintDoc(md,name+' · 复习手册')))
+    .catch(()=>toast('❌ 操作失败：读取不到内容，请稍后重试'));
+}
+function printHTMLFile(path){
+  const w=window.open(url(path),'_blank','noopener');
+  if(!w){toast('❌ 弹窗被拦截，请允许');return;}
+  toast('🖨 正在打开，随后弹出打印窗口…');
+  try{
+    const ck=setInterval(()=>{
+      try{if(w.document.readyState==='complete'){clearInterval(ck);setTimeout(()=>{w.focus();w.print();},300);}}
+      catch(e){clearInterval(ck);}
+    },200);
+    setTimeout(()=>clearInterval(ck),10000);
+  }catch(e){}
 }
 
-let currentMD=null,currentMDText=null;
-function previewMD(path,name){
-  currentMD=path;currentMDText=null;
-  $('#m-title').textContent=name+' · 复习手册';
-  $('#modal').classList.add('open');
-  const body=$('#m-body');body.className='modal-body loading';body.innerHTML='<div class="spinner"></div>';
-  $('#m-actions').innerHTML='<button class="m-btn" onclick="downloadFile(currentMD,currentMD.split(\'/\').pop(),this)">'+ICONS.download+'<span>下载 MD</span></button><button class="m-btn" id="m-print" title="打开浏览器打印对话框，可另存为 PDF（由浏览器生成，非原生 PDF）">'+ICONS.print+'<span>打印 PDF</span></button><button class="m-btn close" onclick="closeModal()">'+ICONS.close+'<span>关闭</span></button>';
-  fetch(url(path)).then(r=>{if(!r.ok)throw 0;return r.text();})
-    .then(md=>{currentMDText=md;body.className='modal-body';body.innerHTML='<div class="md">'+mdToHtml(md)+'</div>';body.scrollTop=0;})
-    .catch(()=>{body.className='modal-body';body.innerHTML='<p style="padding:40px;text-align:center;color:rgba(255,255,255,0.5)">❌ 读取失败</p>';});
-  $('#m-print').onclick=()=>{
-    const w=window.open('','_blank');if(!w){toast('❌ 弹窗被拦截');return;}
-    const md=currentMDText||$('#m-body').innerText;
-    w.document.write(renderPrintDoc(md,name+' · 复习手册'));
-    w.document.close();setTimeout(()=>{w.focus();w.print();},450);
-  };
-}
-function closeModal(){$('#modal').classList.remove('open');$('#m-body').innerHTML='<div class="spinner"></div>';}
-$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal();});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
-
-/* ---------- 卡片渲染 ---------- */
-/* 打印类按钮文案约定（2026-09-28）：
-   下面带 ICONS.print 的按钮走 window.print()，产出的是「浏览器生成的 PDF」，
-   不是站点提供的原生 PDF（排版/字体随访问者浏览器与纸张设置而变，且无书签）。
-   文案统一写「打印 PDF」+ title 说明，避免用户以为站点提供了原生 PDF。
-   若某科目已有人工导出的原生 PDF，只需在该条目加 pdf: 字段，
-   pdfBtn() 就会自动多给一个「下载 PDF」直链（优先级最高）。 */
-const TIP_PRINT='title="打开浏览器打印对话框，可另存为 PDF（由浏览器生成，非原生 PDF）"';
-function pdfBtn(it,cls){return it.pdf?`<button class="btn ${cls} btn-sm" onclick="downloadFile('${it.pdf}','${it.pdf.split('/').pop()}',this)">${ICONS.download}<span>下载 PDF</span></button>`:'';}
-function bankCard(it,i){const fname=it.pdf.split('/').pop();return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="downloadFile('${it.pdf}','${fname}',this)">${ICONS.download}<span>下载 PDF</span></button></div></div>`;}
-function reviewCard(it,i){
-  const mdName=it.md.split('/').pop();
-  let btns=pdfBtn(it,'btn-pri')+`<button class="btn ${it.pdf?'btn-ghost':'btn-pri'} btn-sm" onclick="previewMD('${it.md}','${it.name}')">${ICONS.eye}<span>在线阅读</span></button><button class="btn btn-ghost btn-sm" onclick="downloadFile('${it.md}','${mdName}',this)">${ICONS.download}<span>下载 MD</span></button>`;
-  if(it.html){btns+=`<button class="btn btn-ghost btn-sm" onclick="viewOnline('${it.html}')">${ICONS.external}<span>网页版</span></button><button class="btn btn-ghost btn-sm" onclick="printHTML('${it.html}')" ${TIP_PRINT}>${ICONS.print}<span>打印 PDF</span></button>`;}
-  else{btns+=`<button class="btn btn-ghost btn-sm" onclick="printMD('${it.md}','${it.name}')" ${TIP_PRINT}>${ICONS.print}<span>打印 PDF</span></button>`;}
-  return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns">${btns}</div></div>`;
-}
-/* 大四上 · 教学版资料卡片：下载按钮注明「教学版资料」 */
-function reviewS1Card(it,i){
-  const fname=it.pdf.split('/').pop();
-  return `<div class="card${i===0?' featured':''} reveal" style="transition-delay:${i*0.05}s"><span class="idx">#${String(i+1).padStart(2,'0')}</span><div class="card-head"><div class="glyph">${it.icon}</div><div><div class="card-title">${it.name}</div><div class="card-meta">${renderMeta(it)}</div></div></div><p class="card-desc">${it.desc}</p><div class="btns"><button class="btn btn-pri btn-sm" onclick="downloadFile('${it.pdf}','${fname}',this)">${ICONS.download}<span>教学版资料</span></button></div></div>`;
-}
-$('#grid-bank').innerHTML=BANKS.map(bankCard).join('');
-$('#grid-review').innerHTML=REVIEWS.map(reviewCard).join('');
-$('#grid-review-s1').innerHTML=REVIEWS_S1.map(reviewS1Card).join('');
-$('#grid-banks-s1').innerHTML=BANKS_S1.map(bankCard).join('');
-
-/* ---------- 鼠标跟随光晕 ---------- */
-document.addEventListener('mousemove',e=>{
-  const c=e.target.closest&&e.target.closest('.card,.deck-tile');
-  if(!c)return;
-  const r=c.getBoundingClientRect();
-  c.style.setProperty('--mx',(e.clientX-r.left)+'px');
-  c.style.setProperty('--my',(e.clientY-r.top)+'px');
+/* 事件委托：所有卡片/模态按钮统一入口（data-act） */
+safe('actions',()=>{
+  document.addEventListener('click',e=>{
+    const btn=e.target.closest&&e.target.closest('[data-act]');
+    if(!btn)return;
+    const act=btn.dataset.act,path=btn.dataset.path,name=btn.dataset.name;
+    switch(act){
+      case 'download':downloadFile(path,btn);break;
+      case 'preview':previewMD(path,name);break;
+      case 'view':viewOnline(path);break;
+      case 'printhtml':printHTMLFile(path);break;
+      case 'printmd':printMD(path,name);break;
+      case 'printcur':{
+        const md=currentMDText||$('#m-body').innerText;
+        const title=($('#m-title').textContent||'复习手册');
+        printHTMLDoc(renderPrintDoc(md,title));
+        break;
+      }
+      case 'closemodal':closeModal();break;
+      case 'copy':{
+        const term=btn.closest('.terminal');
+        const pres=term?term.querySelectorAll('.term-pre'):[];
+        let pre=null;
+        pres.forEach(p=>{if(p.style.display!=='none')pre=p;});
+        if(!pre&&pres.length)pre=pres[0];
+        if(!pre){toast('⧉ 复制失败');break;}
+        const txt=pre.textContent.replace(/^\s*\$\s*/m,'').trim();
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          navigator.clipboard.writeText(txt).then(()=>toast('⧉ 已复制：'+txt.slice(0,42)+'…')).catch(()=>toast('⧉ 复制失败'));
+        }else toast('⧉ 当前浏览器不支持复制');
+        break;
+      }
+    }
+  });
 });
 
-/* ---------- 滚动显现 ---------- */
-const io=new IntersectionObserver(es=>{
-  es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
-},{threshold:0.12});
-$$('.reveal').forEach(el=>io.observe(el));
+/* 终端 Tab 切换 */
+safe('term-tab',()=>{
+  $$('.hero-visual .term-tab').forEach(b=>b.addEventListener('click',()=>{
+    const t=b.dataset.t;
+    b.parentElement.querySelectorAll('.term-tab').forEach(x=>x.classList.toggle('active',x===b));
+    const term=b.closest('.hero-visual');
+    term.querySelectorAll('.term-pane').forEach(p=>p.style.display='none');
+    const pane=document.getElementById('term-'+t);
+    if(pane)pane.style.display='block';
+    const tt=term.querySelector('.term-title');
+    if(tt)tt.textContent=(t==='run')?'medagentwork — zsh':'使用指南 · 学生向三步教程';
+    const cp=term.querySelector('.term-copy');
+    if(cp)cp.style.visibility=(t==='run')?'visible':'hidden';
+  }));
+});
 
-/* ---------- 导航 scrollspy 激活态（P1-1） ---------- */
-(function(){
-  const links=$$('.nav-links a');
-  if(!links.length)return;
-  const map=new Map();
-  links.forEach(a=>{
-    const sec=document.getElementById(a.getAttribute('href').slice(1));
-    if(sec)map.set(sec,a);
-  });
-  const spy=new IntersectionObserver(es=>{
-    es.forEach(en=>{
-      if(en.isIntersecting){
-        const a=map.get(en.target);
-        links.forEach(x=>x.classList.toggle('active',x===a));
-      }
-    });
-  },{rootMargin:'-40% 0px -55% 0px',threshold:0});
-  map.forEach((a,sec)=>spy.observe(sec));
-  /* hash 直达时初始状态正确 */
-  function setFromHash(){
-    const sec=document.getElementById(location.hash.replace('#',''));
-    if(sec&&map.has(sec)){
-      const a=map.get(sec);
-      links.forEach(x=>x.classList.toggle('active',x===a));
-    }
-  }
-  if(location.hash)setFromHash();
-  window.addEventListener('hashchange',setFromHash);
-})();
-
-/* ---------- 移动端 deck 横滑：指示点 + 尾部遮罩消失（P2-3） ---------- */
-(function(){
-  const grid=document.querySelector('.deck-grid');
-  const wrap=document.querySelector('.deck-grid-wrap');
-  const dots=document.querySelectorAll('#deck-dots span');
-  if(!grid||!dots.length)return;
-  function update(){
-    let best=0,bd=Infinity;
-    [...grid.children].forEach((t,i)=>{
-      const d=Math.abs(t.offsetLeft-grid.scrollLeft-(grid.clientWidth-t.offsetWidth)/2);
-      if(d<bd){bd=d;best=i;}
-    });
-    dots.forEach((d,i)=>d.classList.toggle('on',i===best));
-    if(wrap)wrap.classList.toggle('end',grid.scrollLeft+grid.clientWidth>=grid.scrollWidth-4);
-  }
-  grid.addEventListener('scroll',update,{passive:true});
-  window.addEventListener('resize',update);
-  update();
-})();
-
-/* ---------- MedKit 软件下载：GitHub API 动态取最新版本 + 安装包直链 ---------- */
-(function(){
-  const REPO='2710074390-cyber/medkit';
-  const dl=$('#sw-dl'),mir=$('#sw-mirror'),ver=$('#sw-ver');
-  if(!dl||!ver)return;
-  fetch('https://api.github.com/repos/'+REPO+'/releases/latest',{headers:{Accept:'application/vnd.github+json'}})
-    .then(r=>r.ok?r.json():Promise.reject())
-    .then(j=>{
-      const tag=(j.tag_name||'').trim().replace(/^v/i,'');
-      const assets=j.assets||[];
-      const exe=assets.find(a=>/setup/i.test(a.name)&&/\.exe$/i.test(a.name))||assets.find(a=>/\.exe$/i.test(a.name));
-      ver.textContent=tag?('v'+tag+(exe?' · '+(exe.size/1048576).toFixed(1)+' MB':'')):'最新版见 GitHub';
-      ver.classList.add('ok');
-      if(exe&&exe.browser_download_url){
-        dl.href=exe.browser_download_url;
-        dl.addEventListener('click',()=>toast('⬇ 开始下载 MedKit v'+tag));
-        if(mir){
-          mir.href='https://ghproxy.net/'+exe.browser_download_url;
-          mir.title='直连失败时的备用加速通道';
-          mir.style.display='';
-        }
-      }
-    })
-    .catch(()=>{ver.textContent='最新版见 GitHub';});
-})();
-
-/* ---------- 粘性滚动联动 ---------- */
-(function(){
-  const items=$$('#sticky-list .sticky-item');
-  const mocks=$$('#sticky-frame .sticky-mock');
-  if(!items.length)return;
-  const total=items.length;
-  let ticking=false;
-  function update(){
-    ticking=false;
-    /* 激活中心最接近视口中线的条目（桌面粘性 / 移动堆叠均适用） */
-    const pin=window.innerHeight*0.5;
-    let best=0,bd=Infinity;
-    items.forEach((el,i)=>{
-      const r=el.getBoundingClientRect();
-      if(r.height<=0)return;
-      const d=Math.abs((r.top+r.height/2)-pin);
-      if(d<bd){bd=d;best=i;}
-    });
-    items.forEach((el,i)=>el.classList.toggle('active',i===best));
-    mocks.forEach((el,i)=>el.classList.toggle('active',i===best));
-  }
-  window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(update);}},{passive:true});
-  window.addEventListener('resize',update);
-  update();
-})();
-
-/* ---------- 终端 Tab 切换 ---------- */
-function switchTermTab(btn){
-  const t=btn.dataset.t;
-  btn.parentElement.querySelectorAll('.term-tab').forEach(b=>b.classList.toggle('active',b===btn));
-  const term=btn.closest('.hero-visual');
-  term.querySelectorAll('.term-pane').forEach(p=>p.style.display='none');
-  document.getElementById('term-'+t).style.display='block';
-  const tt=term.querySelector('.term-title');
-  if(tt)tt.textContent=(t==='run')?'medagentwork — zsh':'使用指南 · 学生向三步教程';
-  const cp=term.querySelector('.term-copy');
-  if(cp)cp.style.visibility=(t==='run')?'visible':'hidden';
-}
-document.querySelectorAll('.hero-visual .term-tab').forEach(b=>b.addEventListener('click',()=>switchTermTab(b)));
-
-function copyCmd(btn){
-  const term=btn&&btn.closest?btn.closest('.terminal'):null;
-  const pres=term?term.querySelectorAll('.term-pre'):[];
-  let pre=null;
-  pres.forEach(p=>{if(p.style.display!=='none')pre=p;});
-  if(!pre&&pres.length)pre=pres[0];
-  if(!pre){toast('⧉ 复制失败');return;}
-  const txt=pre.textContent.replace(/^\s*\$\s*/m,'').trim();
-  try{navigator.clipboard.writeText(txt).then(()=>toast('⧉ 已复制：'+txt.slice(0,42)+'…')).catch(()=>toast('⧉ 复制失败'));}
-  catch(e){toast('⧉ 复制失败');}
-}
-
-/* ---------- 学期切换 ---------- */
-function switchTerm(term){
-  $$('.nav-term,.mm-term-btn').forEach(t=>t.classList.toggle('active',t.dataset.term===term));
-  $$('.view').forEach(v=>v.classList.remove('active'));
-  $('#view-'+term).classList.add('active');
-  try{localStorage.setItem('maw-term',term);}catch(e){}
-  closeMobileMenu();
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-/* 跨视图跳转：先切换学期视图，再滚动到目标区块（用于首页/导航/磁贴跨区链接） */
-function goTerm(term,anchor){
-  switchTerm(term);
-  if(anchor){setTimeout(()=>{const el=document.getElementById(anchor);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},420);}
-}
-document.querySelectorAll('.nav-term,.mm-term-btn').forEach(t=>t.addEventListener('click',()=>switchTerm(t.dataset.term)));
-
-/* ---------- 移动端菜单 ---------- */
-function closeMobileMenu(){
-  const m=$('#mobile-menu'),b=$('#nav-burger');
-  if(m)m.classList.remove('open');
-  if(b){b.classList.remove('open');b.setAttribute('aria-expanded','false');}
-  if(m)m.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-}
-(function(){
-  const m=$('#mobile-menu'),b=$('#nav-burger');
-  if(!m||!b)return;
-  b.addEventListener('click',()=>{
-    const open=!m.classList.contains('open');
-    m.classList.toggle('open',open);
-    b.classList.toggle('open',open);
-    b.setAttribute('aria-expanded',String(open));
-    m.setAttribute('aria-hidden',String(!open));
-    document.body.style.overflow=open?'hidden':'';
-  });
-  m.querySelectorAll('.mm-links a').forEach(a=>a.addEventListener('click',()=>closeMobileMenu()));
-  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMobileMenu();});
-})();
-
-/* ---------- 粒子 / ASCII 星域 ---------- */
-const fx={on:true};
-const glyphs='01·+*:;=<>#░▒▓○◈∴◇×+·01∴+*·01'.split('');
-function initCanvases(){
+/* ---------- H 粒子特效（C1/C2：单一 rAF 驱动 + 视口门控 + 防抖） ---------- */
+safe('fx',()=>{
   const c1=document.getElementById('star-canvas');
   const c2=document.getElementById('ascii-canvas');
+  const c3=document.getElementById('mw-canvas');
   const wrap=document.getElementById('hero-canvas');
-  if(!c1||!c2||!wrap)return;
-  const dpr=Math.min(window.devicePixelRatio||1,2);
-  let W=0,H=0;
-  function size(){
-    const r=wrap.getBoundingClientRect();
-    W=r.width;H=r.height;
-    [c1,c2].forEach(c=>{c.width=W*dpr;c.height=H*dpr;c.style.width=W+'px';c.style.height=H+'px';});
-  }
-  size();
-  const stars=[],asciis=[];
-  function seed(){
-    stars.length=0;asciis.length=0;
-    const n=Math.floor(W/9);
-    for(let i=0;i<n;i++){
-      stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+0.3,v:Math.random()*0.22+0.05,tw:Math.random()*Math.PI*2,blue:Math.random()<0.55});
-    }
-    const m=Math.floor(W/16);
-    for(let i=0;i<m;i++){
-      asciis.push({x:Math.random()*W,y:Math.random()*H,g:glyphs[(Math.random()*glyphs.length)|0],s:Math.random()*0.55+0.4,v:Math.random()*0.16+0.03,ph:Math.random()*Math.PI*2});
-    }
-  }
-  seed();
-  const ctx1=c1.getContext('2d'),ctx2=c2.getContext('2d');
-  let t=0,visible=true;
-  document.addEventListener('visibilitychange',()=>{visible=!document.hidden;});
-  function draw(){
-    if(fx.on&&visible){
-      t+=0.016;
-      ctx1.setTransform(dpr,0,0,dpr,0,0);ctx1.clearRect(0,0,W,H);
-      ctx2.setTransform(dpr,0,0,dpr,0,0);ctx2.clearRect(0,0,W,H);
-      ctx1.font='11px monospace';ctx2.font='12px "Cascadia Code",monospace';
-      for(const s of stars){
-        s.y+=s.v;if(s.y>H){s.y=-2;s.x=Math.random()*W;}
-        const a=0.25+0.35*Math.abs(Math.sin(t*1.4+s.tw));
-        ctx1.beginPath();ctx1.arc(s.x,s.y,s.r,0,Math.PI*2);
-        ctx1.fillStyle=s.blue?`rgba(103,153,254,${a})`:`rgba(255,255,255,${a*0.8})`;
-        ctx1.fill();
-      }
-      for(const a of asciis){
-        a.y+=a.v;if(a.y>H){a.y=-8;a.x=Math.random()*W;}
-        const alpha=0.10+0.14*Math.abs(Math.sin(t*0.7+a.ph));
-        ctx2.fillStyle=`rgba(103,153,254,${alpha})`;
-        ctx2.globalAlpha=1;
-        ctx2.fillText(a.g,a.x,a.y);
-      }
-    }
-    requestAnimationFrame(draw);
-  }
-  draw();
-  window.addEventListener('resize',()=>{size();seed();});
-}
-initCanvases();
-
-/* ---------- MW 粒子艺术字（可交互） ---------- */
-(function(){
-  const canvas=document.getElementById('mw-canvas');
-  const wrap=document.getElementById('hero-canvas');
-  const glow=document.getElementById('hero-glow-follow');
   const hero=document.querySelector('.hero');
-  if(!canvas||!wrap||!hero)return;
-  const ctx=canvas.getContext('2d');
-  const dpr=Math.min(window.devicePixelRatio||1,2);
+  if(!c1||!c2||!wrap||!hero)return;
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W=0,H=0,parts=[];
+  const glyphs='01·+*:;=<>#░▒▓○◈∴◇×+·01∴+*·01'.split('');
+  const dpr=Math.min(window.devicePixelRatio||1,2);
+  const FX={on:store.get('maw-fx')!=='0',inView:true,raf:0};
+  let W=0,H=0,stars=[],asciis=[],parts=[];
+  const ctx1=c1.getContext('2d'),ctx2=c2.getContext('2d');
+  const ctx3=c3?c3.getContext('2d'):null;
   const mouse={x:-9999,y:-9999,active:false};
-  const shocks=[];
   let t=0;
 
-  /* 从离屏画布采样 "MW" 字形 → 粒子家点 */
-  function build(){
-    const mobile=W<720;
-    const tw=Math.min(560,W*0.62), th=Math.max(20,Math.round(tw*0.47));
+  function buildMW(){
+    parts=[];
+    if(!ctx3||W<720)return;/* 窄屏不建 MW 粒子（性能） */
+    const tw=Math.min(520,W*0.6),th=Math.max(20,Math.round(tw*0.47));
     const off=document.createElement('canvas');
-    off.width=Math.max(8,Math.round(tw)); off.height=Math.max(8,th);
+    off.width=Math.max(8,Math.round(tw));off.height=Math.max(8,th);
     const octx=off.getContext('2d');
     const fs=Math.round(th*0.86);
     octx.font='900 '+fs+'px "Segoe UI","PingFang SC","Microsoft YaHei",sans-serif';
-    octx.textAlign='center'; octx.textBaseline='middle';
-    octx.fillStyle='#fff';
+    octx.textAlign='center';octx.textBaseline='middle';octx.fillStyle='#fff';
     octx.fillText('MW',off.width/2,off.height/2+fs*0.05);
-    const img=octx.getImageData(0,0,off.width,off.height);
-    const data=img.data;
-    const step=mobile?6:4;
-    const cx=W*(mobile?0.5:0.64), cy=H*0.42;
-    const homes=[];
-    for(let y=0;y<off.height;y+=step){
-      for(let x=0;x<off.width;x+=step){
-        if(data[(y*off.width+x)*4+3]>120){
-          homes.push({x:cx+(x-off.width/2), y:cy+(y-off.height/2)});
-        }
+    const data=octx.getImageData(0,0,off.width,off.height).data;
+    const cx=W*0.64,cy=H*0.42,step=4;
+    for(let y=0;y<off.height;y+=step)for(let x=0;x<off.width;x+=step){
+      if(data[(y*off.width+x)*4+3]>120){
+        parts.push({hx:cx+x-off.width/2,hy:cy+y-off.height/2,x:cx+x-off.width/2+(Math.random()-0.5)*12,y:cy+y-off.height/2+(Math.random()-0.5)*12,vx:0,vy:0,s:Math.random()*1.5+0.7,ph:Math.random()*Math.PI*2,tw:Math.random()*1.2+0.5});
       }
     }
-    parts=homes.map(h=>({
-      hx:h.x,hy:h.y,
-      x:h.x+(Math.random()-0.5)*12,y:h.y+(Math.random()-0.5)*12,
-      vx:0,vy:0,
-      s:Math.random()*1.5+0.7,
-      ph:Math.random()*Math.PI*2,
-      tw:Math.random()*1.2+0.5
-    }));
   }
   function size(){
     const r=wrap.getBoundingClientRect();
     W=Math.max(1,r.width);H=Math.max(1,r.height);
-    canvas.width=Math.round(W*dpr);canvas.height=Math.round(H*dpr);
-    canvas.style.width=W+'px';canvas.style.height=H+'px';
-    build();
+    [c1,c2,c3].forEach(c=>{if(!c)return;c.width=W*dpr;c.height=H*dpr;c.style.width=W+'px';c.style.height=H+'px';});
+    stars=[];asciis=[];
+    const n=Math.floor(W/9);
+    for(let i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.4+0.3,v:Math.random()*0.22+0.05,tw:Math.random()*Math.PI*2,blue:Math.random()<0.55});
+    const m=Math.floor(W/16);
+    for(let i=0;i<m;i++)asciis.push({x:Math.random()*W,y:Math.random()*H,g:glyphs[(Math.random()*glyphs.length)|0],v:Math.random()*0.16+0.03,ph:Math.random()*Math.PI*2});
+    buildMW();
   }
-  size();
-
-  hero.addEventListener('mousemove',e=>{
-    const r=hero.getBoundingClientRect();
-    mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; mouse.active=true;
-    if(glow){
-      glow.style.transform='translate('+(e.clientX-r.left)+'px,'+(e.clientY-r.top)+'px) translate(-50%,-50%)';
-      glow.classList.add('on');
-    }
-  });
-  hero.addEventListener('mouseleave',()=>{
-    mouse.x=-9999;mouse.y=-9999;mouse.active=false;
-    if(glow)glow.classList.remove('on');
-  });
-  window.addEventListener('resize',()=>{if(glow)glow.classList.remove('on');});
-  /* 点击 → 冲击波（避开按钮/链接） */
-  hero.addEventListener('click',e=>{
-    if(e.target.closest&&e.target.closest('a,button'))return;
-    const r=hero.getBoundingClientRect();
-    shocks.push({x:e.clientX-r.left,y:e.clientY-r.top,r:0,sp:10,p:2.6});
-  });
-
-  let visible=true;
-  document.addEventListener('visibilitychange',()=>{visible=!document.hidden;});
-
+  function shouldRun(){return FX.on&&FX.inView&&!document.hidden&&!reduced;}
   function draw(){
-    if(fx.on&&visible&&!reduced){
-      t+=0.016;
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-      ctx.clearRect(0,0,W,H);
-      /* 视差：MW 整体随鼠标轻微偏移（鼠标未进入时保持原位，粒子常驻） */
+    FX.raf=0;
+    t+=0.016;
+    ctx1.setTransform(dpr,0,0,dpr,0,0);ctx1.clearRect(0,0,W,H);
+    ctx2.setTransform(dpr,0,0,dpr,0,0);ctx2.clearRect(0,0,W,H);
+    for(const s of stars){
+      s.y+=s.v;if(s.y>H){s.y=-2;s.x=Math.random()*W;}
+      const a=0.25+0.35*Math.abs(Math.sin(t*1.4+s.tw));
+      ctx1.beginPath();ctx1.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx1.fillStyle=s.blue?'rgba(122,165,248,'+a+')':'rgba(255,255,255,'+(a*0.8)+')';
+      ctx1.fill();
+    }
+    ctx2.font='12px "Cascadia Code",monospace';
+    for(const a of asciis){
+      a.y+=a.v;if(a.y>H){a.y=-8;a.x=Math.random()*W;}
+      ctx2.fillStyle='rgba(122,165,248,'+(0.10+0.14*Math.abs(Math.sin(t*0.7+a.ph)))+')';
+      ctx2.fillText(a.g,a.x,a.y);
+    }
+    if(ctx3&&parts.length){
+      ctx3.setTransform(dpr,0,0,dpr,0,0);ctx3.clearRect(0,0,W,H);
       const px=mouse.active?(mouse.x-W*0.5)*-0.03:0;
       const py=mouse.active?(mouse.y-H*0.5)*-0.03:0;
-      const mx=mouse.x-px, my=mouse.y-py;
-      const R=140,R2=R*R;
-      ctx.save();
-      ctx.translate(px,py);
-      for(let i=0;i<parts.length;i++){
-        const p=parts[i];
-        /* 弹簧回位 + 波动 */
-        let ax=(p.hx-p.x)*0.014, ay=(p.hy-p.y)*0.014;
-        ax+=Math.sin(t*0.9+p.ph)*0.08; ay+=Math.cos(t*0.7+p.ph)*0.06;
-        /* 鼠标斥力 */
-        const dx=p.x-mx, dy=p.y-my;
-        const d2=dx*dx+dy*dy;
+      const mx=mouse.x-px,my=mouse.y-py,R=140,R2=R*R;
+      ctx3.save();ctx3.translate(px,py);
+      for(const p of parts){
+        let ax=(p.hx-p.x)*0.014+Math.sin(t*0.9+p.ph)*0.08;
+        let ay=(p.hy-p.y)*0.014+Math.cos(t*0.7+p.ph)*0.06;
+        const dx=p.x-mx,dy=p.y-my,d2=dx*dx+dy*dy;
         if(d2<R2){const d=Math.sqrt(d2)||1;const f=(1-d/R)*2.4;ax+=dx/d*f;ay+=dy/d*f;}
-        /* 点击冲击波 */
-        for(let s=shocks.length-1;s>=0;s--){
-          const sh=shocks[s];
-          const ddx=p.x-sh.x, ddy=p.y-sh.y;
-          const dd=Math.sqrt(ddx*ddx+ddy*ddy)||1;
-          const band=Math.abs(dd-sh.r);
-          if(band<70&&sh.r<W*0.9){
-            const f=(1-band/70)*sh.p*(1-sh.r/(W*0.9));
-            ax+=ddx/dd*f; ay+=ddy/dd*f;
-          }
-        }
-        p.vx+=ax;p.vy+=ay;
-        p.vx*=0.86;p.vy*=0.86;
+        p.vx=(p.vx+ax)*0.86;p.vy=(p.vy+ay)*0.86;
         p.x+=p.vx;p.y+=p.vy;
-        const a=0.22+0.30*Math.abs(Math.sin(t*p.tw+p.ph));
-        ctx.fillStyle='rgba(103,153,254,'+a.toFixed(3)+')';
-        ctx.fillRect(p.x,p.y,p.s,p.s);
+        ctx3.fillStyle='rgba(122,165,248,'+(0.22+0.30*Math.abs(Math.sin(t*p.tw+p.ph))).toFixed(3)+')';
+        ctx3.fillRect(p.x,p.y,p.s,p.s);
       }
-      ctx.restore();
-      for(let s=shocks.length-1;s>=0;s--){
-        shocks[s].r+=shocks[s].sp;
-        if(shocks[s].r>W*0.9)shocks.splice(s,1);
-      }
+      ctx3.restore();
     }
-    requestAnimationFrame(draw);
+    if(shouldRun())FX.raf=requestAnimationFrame(draw);
   }
-  draw();
-  window.addEventListener('resize',size);
+  function kick(){if(!FX.raf&&shouldRun())FX.raf=requestAnimationFrame(draw);}
 
-  /* ---------- 磁吸 CTA 按钮 ---------- */
-  if(matchMedia('(hover:hover)').matches){
-    document.querySelectorAll('.hero-cta .btn').forEach(b=>{
-      b.addEventListener('mousemove',e=>{
-        const r=b.getBoundingClientRect();
-        const dx=(e.clientX-r.left-r.width/2)*0.16;
-        const dy=(e.clientY-r.top-r.height/2)*0.22;
-        b.style.transform='translate('+dx.toFixed(1)+'px,'+dy.toFixed(1)+'px)';
-      });
-      b.addEventListener('mouseleave',()=>{b.style.transform='';});
-    });
+  size();
+  window.addEventListener('resize',debounce(()=>{size();},150));
+  document.addEventListener('visibilitychange',kick);
+  /* Hero 出视口即整体停绘（C1） */
+  new IntersectionObserver(es=>{es.forEach(en=>{FX.inView=en.isIntersecting;kick();});},{threshold:0}).observe(hero);
+  /* 鼠标斥力：rAF 节流（每帧最多读一次最新坐标，C2） */
+  hero.addEventListener('mousemove',e=>{
+    const r=hero.getBoundingClientRect();
+    mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;mouse.active=true;
+  },{passive:true});
+  hero.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;mouse.active=false;},{passive:true});
+
+  /* FX 开关（导航/页脚/移动菜单多入口同步） */
+  function syncFxBtns(){$$('.fx-toggle').forEach(x=>{x.classList.toggle('on',FX.on);x.classList.toggle('off',!FX.on);});}
+  $$('.fx-toggle').forEach(btn=>btn.addEventListener('click',()=>{
+    FX.on=!FX.on;
+    store.set('maw-fx',FX.on?'1':'0');
+    syncFxBtns();
+    if(!FX.on)[c1,c2,c3].forEach(c=>{if(!c)return;const x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);});
+    kick();
+    toast(FX.on?'✦ 粒子特效已开启':'✦ 粒子特效已关闭');
+  }));
+  syncFxBtns();
+  kick();
+});
+
+/* ---------- I 主题切换（A5） ---------- */
+safe('theme',()=>{
+  const root=document.documentElement;
+  const stored=store.get('maw-theme');
+  const initial=stored||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+  root.setAttribute('data-theme',initial);
+  const meta=document.querySelector('meta[name="theme-color"]');
+  function sync(){
+    const dark=root.getAttribute('data-theme')!=='light';
+    if(meta)meta.setAttribute('content',dark?'#0b1220':'#f5f8fd');
+    $$('#theme-toggle use, #theme-toggle-m use').forEach(u=>u.setAttribute('href',dark?'#i-sun':'#i-moon'));
+    $$('#theme-toggle, #theme-toggle-m').forEach(b=>b.setAttribute('title',dark?'切换到亮色主题':'切换到暗色主题'));
   }
-})();
+  function toggle(){
+    root.setAttribute('data-theme',root.getAttribute('data-theme')==='light'?'dark':'light');
+    store.set('maw-theme',root.getAttribute('data-theme'));
+    sync();
+  }
+  const t1=$('#theme-toggle'),t2=$('#theme-toggle-m');
+  if(t1)t1.addEventListener('click',toggle);
+  if(t2)t2.addEventListener('click',toggle);
+  sync();
+});
 
-/* ---------- FX 开关（导航 + 移动菜单双入口） ---------- */
-function bindFxToggle(btn){
-  if(!btn)return;
-  btn.addEventListener('click',()=>{
-    fx.on=!fx.on;
-    $$('.fx-toggle').forEach(x=>{x.classList.toggle('on',fx.on);x.classList.toggle('off',!fx.on);});
-    const canvases=$$('#hero-canvas canvas');
-    canvases.forEach(c=>{const ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);});
-    document.getElementById('atom-wrap').style.opacity=fx.on?'0.9':'0.15';
-    try{localStorage.setItem('maw-fx',fx.on?'1':'0');}catch(e){}
-    toast(fx.on?'✦ 粒子特效已开启':'✦ 粒子特效已关闭');
-  });
-}
-(function(){
-  const btn=document.getElementById('fx-toggle');
-  const btnM=document.getElementById('fx-toggle-m');
-  try{const v=localStorage.getItem('maw-fx');if(v!==null){fx.on=v==='1';$$('.fx-toggle').forEach(x=>{x.classList.toggle('on',fx.on);x.classList.toggle('off',!fx.on);});}}catch(e){}
-  bindFxToggle(btn);
-  bindFxToggle(btnM);
-})();
-
-/* ---------- 历史兼容：恢复上次学期选择 ---------- */
-try{const saved=localStorage.getItem('maw-term');if(saved){switchTerm(saved);window.scrollTo(0,0);}}catch(e){}
-
-/* ---------- 访问计数器（Cloudflare Pages Function + KV · 站长免计自己） ---------- */
-(function(){
+/* ---------- J 服务层 ---------- */
+/* 访问计数（C3：5s 超时兜底） */
+safe('visits',()=>{
   const num=document.getElementById('visits-num');
   const stat=document.getElementById('stat-visits');
   if(!num)return;
-  const q=new URLSearchParams(location.search);
   try{
-    // 站长专属：打开一次 ?noself=1 → 本机写入免计 Cookie（1 年），随后 URL 恢复干净
+    const q=new URLSearchParams(location.search);
     if(q.has('noself')){
       document.cookie='maw_owner=1; path=/; max-age=31536000; SameSite=Lax; Secure';
       history.replaceState(null,'',location.pathname+location.hash);
     }
   }catch(e){}
   const isOwner=document.cookie.indexOf('maw_owner=1')!==-1;
-  fetch('/api/visits',{cache:'no-store'})
+  fetchWithTimeout('/api/visits',5000,{cache:'no-store'})
     .then(r=>r.json())
     .then(d=>{
       num.textContent=(typeof d.total==='number')?d.total.toLocaleString('zh-CN'):'—';
       if(stat&&isOwner&&typeof d.skip!=='undefined'){
-        stat.querySelector('span').textContent='访问计数 · 不计自己';
-        stat.title='本浏览器已开启免计数（打开过 ?noself=1）—— 你自己的访问不会被计入';
+        const sp=stat.querySelector('span');
+        if(sp)sp.textContent='访问计数 · 不计自己';
+        stat.title='本浏览器已开启免计数（打开过 ?noself=1）';
       }
     })
-    .catch(function(){num.textContent='—';});
-})();
+    .catch(()=>{num.textContent='—';});
+});
+/* MedKit 版本号（C3：6s 超时 + 会话缓存 30min） */
+safe('medkit-release',()=>{
+  const dl=$('#sw-dl'),mir=$('#sw-mirror'),ver=$('#sw-ver');
+  if(!dl||!ver)return;
+  function apply(j){
+    const tag=(j.tag_name||'').trim().replace(/^v/i,'');
+    const assets=j.assets||[];
+    const exe=assets.find(a=>/setup/i.test(a.name)&&/\.exe$/i.test(a.name))||assets.find(a=>/\.exe$/i.test(a.name));
+    ver.textContent=tag?('v'+tag+(exe?' · '+(exe.size/1048576).toFixed(1)+' MB':'')):'最新版见 GitHub';
+    ver.classList.add('ok');
+    if(exe&&exe.browser_download_url){
+      dl.href=exe.browser_download_url;
+      dl.addEventListener('click',()=>toast('⬇ 开始下载 MedKit v'+tag));
+      if(mir){
+        mir.href='https://ghproxy.net/'+exe.browser_download_url;
+        mir.title='直连失败时的备用加速通道';
+        mir.style.display='';
+      }
+    }
+  }
+  try{
+    const cached=sessionStorage.getItem('maw-rel');
+    if(cached){
+      const c=JSON.parse(cached);
+      if(c&&c.ts&&Date.now()-c.ts<1800000&&c.data){apply(c.data);return;}
+    }
+  }catch(e){}
+  fetchWithTimeout('https://api.github.com/repos/2710074390-cyber/medkit/releases/latest',6000,{headers:{Accept:'application/vnd.github+json'}})
+    .then(r=>r.ok?r.json():Promise.reject(new Error('http '+r.status)))
+    .then(j=>{
+      try{sessionStorage.setItem('maw-rel',JSON.stringify({ts:Date.now(),data:j}));}catch(e){}
+      apply(j);
+    })
+    .catch(()=>{ver.textContent='最新版见 GitHub';});
+});
+
+/* ---------- C8 全局错误兜底：可感知、不静默 ---------- */
+window.addEventListener('error',e=>{console.error('[MAW:runtime]',e.error||e.message);});
+window.addEventListener('unhandledrejection',e=>{console.error('[MAW:promise]',e.reason);});
 </script>
 </body>
 </html>
