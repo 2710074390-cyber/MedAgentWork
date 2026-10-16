@@ -134,7 +134,7 @@ const DRIVER = `
      用 typeof 守卫（对未声明标识符安全），存在才扫；一条目标都扫不到时下游仍会 fail-closed。 */
   if (typeof bankCard === "function" && typeof BANKS !== "undefined") scan(bankCard, BANKS, "大三下·题库");
   if (typeof reviewCard === "function" && typeof REVIEWS !== "undefined") scan(reviewCard, REVIEWS, "大三下·复习资料");
-  if (typeof reviewS1Card === "function" && typeof REVIEWS_S1 !== "undefined") scan(reviewS1Card, REVIEWS_S1, "大四上·教学版资料");
+  if (typeof reviewS1Card === "function" && typeof REVIEWS_S1 !== "undefined") scan(reviewS1Card, REVIEWS_S1, "大四上·复习资料");
   if (typeof bankCard === "function" && typeof BANKS_S1 !== "undefined") scan(bankCard, BANKS_S1, "大四上·题库");
   return { BASE: ROOTBASE, convention: HAS_URLAT ? "BASE+urlAt（旧）" : "仓库根相对（新）", targets };
 })();

@@ -448,6 +448,13 @@ body.modal-open { overflow:hidden; }
 .card { position:relative; border:1px solid transparent; border-radius:var(--r); padding:20px 20px 18px; display:flex; flex-direction:column; transition:border-color .3s, transform .3s, box-shadow .3s; }
 .card:hover { transform:translateY(-3px); box-shadow:inset 0 1px 0 var(--lg-hi), inset 0 -1px 0 var(--lg-lo), var(--shadow-card); }
 .card[hidden] { display:none; }
+/* 分区标题：网格内全宽一行，用于「教师重点版 / 教学计划版」分区 */
+.grid-part { grid-column:1/-1; display:flex; align-items:baseline; gap:10px; margin:2px 0 -2px; }
+.grid-part[hidden] { display:none; }
+.grid-part b { font-size:var(--fs-md); font-weight:600; color:var(--text); letter-spacing:0.01em; }
+.grid-part span { font-family:var(--f-mono); font-size:var(--fs-xs); color:var(--text-3); letter-spacing:0.05em; }
+.grid-part::after { content:""; flex:1; height:1px; align-self:center; background:linear-gradient(to right,var(--border-strong),transparent); }
+.grid-part.key b { color:var(--brand); }
 .card .idx { position:absolute; top:16px; right:18px; font-family:var(--f-mono); font-size:11px; color:var(--text-3); letter-spacing:0.1em; }
 .card-head { display:flex; align-items:center; gap:13px; margin-bottom:10px; padding-right:44px; }
 .glyph { width:42px; height:42px; flex-shrink:0; border-radius:11px; display:flex; align-items:center; justify-content:center; background:var(--brand-soft); border:1px solid var(--border); color:var(--brand); }
@@ -1118,23 +1125,23 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
 <section class="section deck" id="deck-s1">
   <div class="section-head reveal">
     <div class="left">
-      <span class="chip">大四上 · <i>教学版资料</i></span>
+      <span class="chip">大四上 · <i>复习资料</i></span>
       <h2>备考资源 <span class="accent">一键直达</span></h2>
     </div>
-    <div class="right"><b>大四上 · 教学计划版</b>09 科 · PDF 直链下载<br><span class="right-sub">按教学计划成册 · 教材浓缩型 v5.1 · 含教师重点版</span></div>
+    <div class="right"><b>大四上 · 复习资料</b>09 科 · PDF 直链下载<br><span class="right-sub">教师重点版 1 科置顶 · 教学计划版 8 科 · 教材浓缩型 v5.1</span></div>
   </div>
   <div class="deck-grid-wrap">
     <div class="deck-grid">
       <a class="deck-tile reveal" href="#/s1/reviews-s1">
         <div class="dt-top"><span class="dt-icon"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg></span><span class="dt-num">01</span></div>
-        <h3>教学版资料 <span class="dt-en">TEACHING ED.</span></h3>
-        <p>9 科主复习资料 PDF 直链下载 · 按教学计划成册 · 耳鼻喉教师重点版新上线</p>
+        <h3>复习资料 <span class="dt-en">REVIEWS</span></h3>
+        <p>9 科主复习资料 PDF 直链下载 · 耳鼻喉教师重点版置顶 · 按教学计划成册</p>
         <span class="dt-go">进入资料库 <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </a>
       <a class="deck-tile reveal" href="#/s1/banks-s1">
         <div class="dt-top"><span class="dt-icon"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg></span><span class="dt-num">02</span></div>
         <h3>题库 <span class="dt-en">BANKS</span></h3>
-        <p>9 科教学题库 PDF 直链下载 · 口腔 · 眼科 · 传染病学 · 耳鼻喉教师重点版新上线</p>
+        <p>9 科题库 PDF 直链下载 · 耳鼻喉教师重点版置顶 · 口腔 · 眼科 · 传染病学</p>
         <span class="dt-go">进入题库 <svg class="ic" aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </a>
     </div>
@@ -1142,14 +1149,14 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
   </div>
 </section>
 
-<!-- 大四上 · 教学版资料 -->
+<!-- 大四上 · 复习资料 -->
 <section class="section" id="reviews-s1">
   <div class="section-head reveal">
     <div class="left">
-      <span class="chip">教学版资料 · <i>PDF 直链</i></span>
-      <h2>教学版资料 <span class="accent">9 科 · PDF 直链</span></h2>
+      <span class="chip">复习资料 · <i>PDF 直链</i></span>
+      <h2>复习资料 <span class="accent">9 科 · PDF 直链</span></h2>
     </div>
-    <div class="right"><b>01 · 教学版资料</b>09 科 · 教材浓缩型 v5.1<br><span class="right-sub">按教学计划成册 · 即点即下</span></div>
+    <div class="right"><b>01 · 复习资料</b>09 科 · 教材浓缩型 v5.1<br><span class="right-sub">教师重点版 1 科置顶 · 教学计划版 8 科 · 即点即下</span></div>
   </div>
   <a class="card featured drill-entry reveal" href="/drill">
     <div class="card-head">
@@ -1163,14 +1170,14 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
     <div class="btns"><span class="btn btn-pri btn-sm">开始刷题 →</span></div>
   </a>
   <div class="grid-tools reveal">
-    <label class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="搜索科目，如：妇产 / 眼科 / 传染…" aria-label="搜索教学版资料" data-filter="grid-review-s1"><button class="search-clear" type="button" data-clear="grid-review-s1" aria-label="清空搜索" hidden><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button></label>
+    <label class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="搜索科目，如：妇产 / 眼科 / 传染…" aria-label="搜索复习资料" data-filter="grid-review-s1"><button class="search-clear" type="button" data-clear="grid-review-s1" aria-label="清空搜索" hidden><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button></label>
     <span class="grid-count" data-count="grid-review-s1"></span>
   </div>
   <div class="grid" id="grid-review-s1"></div>
   <div class="grid-empty" data-empty="grid-review-s1" hidden><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><p>没有匹配的科目</p><button class="btn btn-sec btn-sm" type="button" data-clear="grid-review-s1">清空搜索</button></div>
   <div class="deck-tip reveal">
     <span class="tip-icon"><svg class="ic" aria-hidden="true"><use href="#i-tip"/></svg></span>
-    <p><b>什么是教学版资料？</b> 按课程教学计划成册的教材浓缩版（v5.1）· 单册 3–24 MB · 点即下载，可离线翻阅或打印</p>
+    <p><b>什么是复习资料？</b> 按课程教学计划成册的教材浓缩版（v5.1）· 单册 3–24 MB · 点即下载，可离线翻阅或打印 · <b>教师重点版</b>按教师重点讲义成册，考前优先</p>
   </div>
 </section>
 
@@ -1181,7 +1188,7 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
       <span class="chip">大四上题库 · <i>PDF 直链</i></span>
       <h2>大四上题库 <span class="accent">9 科 · PDF 直链</span></h2>
     </div>
-    <div class="right"><b>02 · 题库</b>09 科 · PDF 直链<br><span class="right-sub">教学题库 · 即点即下</span></div>
+    <div class="right"><b>02 · 题库</b>09 科 · PDF 直链<br><span class="right-sub">教师重点版 1 科置顶 · 教学题库 8 科 · 即点即下</span></div>
   </div>
   <div class="grid-tools reveal">
     <label class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="搜索科目，如：内科 / 耳鼻喉 / 急诊…" aria-label="搜索大四上题库" data-filter="grid-banks-s1"><button class="search-clear" type="button" data-clear="grid-banks-s1" aria-label="清空搜索" hidden><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button></label>
@@ -1361,20 +1368,41 @@ function reviewCard(it,i){
   return cardShell(it,i,btns);
 }
 function reviewS1Card(it,i){
-  const btns='<button class="btn btn-pri btn-sm" data-act="download" data-path="'+esc(it.pdf)+'">'+icon('i-download')+'<span>教学版资料</span></button>';
+  const btns='<button class="btn btn-pri btn-sm" data-act="download" data-path="'+esc(it.pdf)+'">'+icon('i-download')+'<span>下载 PDF</span></button>';
   return cardShell(it,i,btns);
 }
+/* 大四上分区：按 tags 把「教师重点版」抽出来置顶，其余为「教学计划版」；
+   分区标题作为全宽行插在同一网格内，搜索时随卡片一起被隐藏 */
+const S1_KEY_TAG='教师重点版';
+function s1Partition(arr){
+  const key=[],teach=[];
+  arr.forEach(it=>((it.tags||[]).includes(S1_KEY_TAG)?key:teach).push(it));
+  const list=[];let i=0;
+  if(key.length){
+    list.push({h:{label:S1_KEY_TAG,hint:key.length+' 科 · 考前优先',key:true}});
+    key.forEach(it=>list.push({it,i:i++}));
+  }
+  if(teach.length){
+    list.push({h:{label:'教学计划版',hint:teach.length+' 科'}});
+    teach.forEach(it=>list.push({it,i:i++}));
+  }
+  return list;
+}
+function partHead(h){
+  return '<div class="grid-part reveal'+(h.key?' key':'')+'"><b>'+esc(h.label)+'</b><span>'+esc(h.hint)+'</span></div>';
+}
+const S1_LIST_REVIEWS=s1Partition(REVIEWS_S1),S1_LIST_BANKS=s1Partition(BANKS_S1);
 /* C8：卡片渲染最先执行，且独立容错 */
 safe('render-grids',()=>{
   const g1=$('#grid-bank'),g2=$('#grid-review'),g3=$('#grid-review-s1'),g4=$('#grid-banks-s1');
   if(g1)g1.innerHTML=BANKS.map(bankCard).join('');
   if(g2)g2.innerHTML=REVIEWS.map(reviewCard).join('');
-  if(g3)g3.innerHTML=REVIEWS_S1.map(reviewS1Card).join('');
-  if(g4)g4.innerHTML=BANKS_S1.map(bankCard).join('');
-  /* 计数徽标 */
+  if(g3)g3.innerHTML=S1_LIST_REVIEWS.map(x=>x.h?partHead(x.h):reviewS1Card(x.it,x.i)).join('');
+  if(g4)g4.innerHTML=S1_LIST_BANKS.map(x=>x.h?partHead(x.h):bankCard(x.it,x.i)).join('');
+  /* 计数徽标：只数卡片，不数分区标题 */
   $$('.grid-count').forEach(el=>{
     const grid=document.getElementById(el.dataset.count);
-    if(grid)el.textContent='共 '+grid.children.length+' 项';
+    if(grid)el.textContent='共 '+grid.querySelectorAll('.card').length+' 项';
   });
 });
 
@@ -1503,10 +1531,11 @@ safe('search',()=>{
       [...grid.children].forEach(c=>{
         const hit=!q||(c.dataset.q||'').includes(q);
         c.hidden=!hit;
-        if(hit)shown++;
+        if(hit&&c.classList&&c.classList.contains('card'))shown++;
       });
       if(empty)empty.hidden=shown>0;
-      if(counter)counter.textContent=q?('匹配 '+shown+' 项'):('共 '+grid.children.length+' 项');
+      const total=grid.querySelectorAll('.card').length;
+      if(counter)counter.textContent=q?('匹配 '+shown+' 项'):('共 '+total+' 项');
     });
   });
 });
