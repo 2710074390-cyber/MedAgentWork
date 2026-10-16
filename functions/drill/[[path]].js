@@ -10,7 +10,7 @@
  * 原样透传这两个头会让浏览器按压缩流解已解压的 body（花屏）。
  */
 
-const UPSTREAM = "https://53863187380f488cb25b6f9dd0ba1dff.sg.agentos-app.run";
+const UPSTREAM = "https://senior-quiz-app.app.workbuddy.host";
 
 export async function onRequest(context) {
   const { request } = context;
