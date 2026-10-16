@@ -504,6 +504,9 @@ body {
   transition:border-color .3s, transform .3s, box-shadow .3s;
 }
 .card:hover { border-color:rgba(103,153,254,0.42); transform:translateY(-3px); box-shadow:0 24px 60px -28px rgba(0,0,0,0.9), 0 0 40px rgba(26,56,112,0.18); }
+/* 线上刷题入口卡（reviews-s1 顶部横幅；a.card 的锚点重置） */
+.drill-entry { text-decoration:none; color:inherit; margin-bottom:18px; }
+.drill-entry .btns { margin-top:14px; }
 .card::before {
   content:""; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .35s;
   background:radial-gradient(520px circle at var(--mx,50%) var(--my,0%), rgba(103,153,254,0.09), transparent 42%);
@@ -1105,7 +1108,7 @@ body {
         <span class="sw-title">MedKit · 医学题库工坊</span>
         <span class="sw-ver" id="sw-ver">正在获取版本…</span>
       </div>
-      <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点，自选 AI 服务商（DeepSeek / 智谱 / 通义 / Kimi），本地一键生成<b>全新题库、押题卷、复习手册</b>。素材与产物全部保存在本机，只花自己的 API Key（整套题约 ¥1~5）。v0.17.0 新发布：<b>奥卡姆精简</b>——把产品收敛回它真正在被用的那一半。错题不再只存在数据库里，而是<b>你自己文件夹里的 markdown 文件</b>：不装软件也能读，可丢进网盘 / Git，换机器拷走即用；配套<b>错题助手 Agent 只依据你这个文件夹作答，答不出就说不知道</b>（每个结论都带引用）。「错题本」与「本地错题」合并成<b>一个入口</b>（进去切「本地文件 / 旧库」，不再有两个家）；实测零使用的讲解 / 提问 / 复习卡三域已删除，界面更短。刷题体验是<b>医考帮模式</b>：<b>点选项即判分</b>、<b>答题卡</b>跳题、<b>背题模式</b>直接看答案，判错自动回流错题本、支持「→ 重练」与判对归档「已掌握」，越刷越清楚自己差在哪。</p>
+      <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点，自选 AI 服务商（DeepSeek / 智谱 / 通义 / Kimi），本地一键生成<b>全新题库、押题卷、复习手册</b>。素材与产物全部保存在本机，只花自己的 API Key（整套题约 ¥1~5）。v0.17.0 新发布：<b>奥卡姆精简</b>——把产品收敛回它真正在被用的那一半。错题不再只存在数据库里，而是<b>你自己文件夹里的 markdown 文件</b>：不装软件也能读，可丢进网盘 / Git，换机器拷走即用；配套<b>错题助手 Agent 只依据你这个文件夹作答，答不出就说不知道</b>（每个结论都带引用）。「错题本」与「本地错题」合并成<b>一个入口</b>（进去切「本地文件 / 旧库」，不再有两个家）；实测零使用的讲解 / 提问 / 复习卡三域已删除，界面更短。刷题体验是<b>医考帮模式</b>：<b>点选项即判分</b>、<b>答题卡</b>跳题、<b>背题模式</b>直接看答案，判错自动回流错题本、支持「→ 重练」与判对归档「已掌握」，越刷越清楚自己差在哪。不想装软件？还有<b>网页体验版</b>：免安装、昵称即入，大四上 7 科 1,848 题在线刷（判错自动进错题本、答题卡任意跳题），手机浏览器直接开刷。</p>
       <div class="sw-tags">
         <em>免费开源</em><em>Windows 7+</em><em>安装包 ≈ 50 MB</em><em>BYOK 自带 Key</em><em>内置更新提醒</em>
       </div>
@@ -1113,6 +1116,7 @@ body {
       <div class="sw-actions">
         <a class="btn btn-pri" id="sw-dl" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.6v8.2M4.7 7.6 8 10.9l3.3-3.3M3 13.2h10"/></svg>下载 Windows 安装包</a>
         <a class="btn btn-sec" id="sw-mirror" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener" style="display:none">镜像下载</a>
+        <a class="btn btn-sec" href="/drill">🌐 网页体验版</a>
         <a class="btn btn-sec" href="https://github.com/2710074390-cyber/medkit" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
@@ -1253,6 +1257,18 @@ body {
     </div>
     <div class="right"><b>01 · 教学版资料</b>08 科 · 教材浓缩型 v5.1<br><span class="right-sub">按教学计划成册 · 即点即下</span></div>
   </div>
+  <a class="card featured reveal drill-entry" href="/drill" style="transition-delay:0s">
+    <span class="idx">★</span>
+    <div class="card-head">
+      <div class="glyph">📱</div>
+      <div>
+        <div class="card-title">线上刷题 · 大四上题库</div>
+        <div class="card-meta">MedKit 网页体验版 · 免安装 · 昵称即入</div>
+      </div>
+    </div>
+    <p class="card-desc">7 科 1,848 题在线刷：点选项即判分 · 多选确认作答 · 答题卡任意跳题 · 判错自动回流错题本 · 错题重做。进度与错题跟随昵称保留 30 天。</p>
+    <div class="btns"><span class="btn btn-pri btn-sm">开始刷题 →</span></div>
+  </a>
   <div class="grid" id="grid-review-s1"></div>
   <div class="deck-tip reveal">
     <span class="tip-icon">💡</span>
