@@ -9,3 +9,15 @@
 
 /大四上/题库/*
   Content-Disposition: attachment
+
+# Service Worker 不缓存（2026-10-17）：确保版本更新即时生效
+/sw.js
+  Cache-Control: no-cache
+
+# 应用图标与 manifest：短缓存
+/manifest.webmanifest
+  Cache-Control: public, max-age=3600
+/icon-192.png
+  Cache-Control: public, max-age=86400
+/icon-512.png
+  Cache-Control: public, max-age=86400

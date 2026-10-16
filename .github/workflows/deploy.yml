@@ -33,7 +33,7 @@ jobs:
       - name: Stage site files (whitelist)
         run: |
           mkdir -p _stage
-          for it in index.html _headers _redirects functions 大三下 大四上; do
+          for it in index.html _headers _redirects functions 大三下 大四上 sw.js manifest.webmanifest icon-192.png icon-512.png; do
             if [ -e "$it" ]; then cp -R "$it" _stage/; fi
           done
           ls -1 _stage

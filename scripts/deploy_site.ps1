@@ -116,7 +116,7 @@ try {
   $stage = Join-Path (Split-Path $repo -Parent) "_medagentwork-site"
   if (Test-Path $stage) { Remove-Item -Recurse -Force $stage }
   New-Item -ItemType Directory -Force -Path $stage | Out-Null
-  foreach ($it in @('index.html', '_headers', '_redirects', 'functions', '大三下', '大四上')) {
+  foreach ($it in @('index.html', '_headers', '_redirects', 'functions', '大三下', '大四上', 'sw.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png')) {
     $s = Join-Path $worktree $it
     if (Test-Path $s) { Copy-Item $s (Join-Path $stage $it) -Recurse -Force }
   }
