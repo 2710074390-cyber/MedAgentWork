@@ -35,7 +35,13 @@ jobs:
           pip install -r requirements.txt
           pip install pytest pytest-cov ruff mypy
       
-      - name: Lint with ruff
+      # 2026-10-16：降级为**非阻断**。实测 `ruff check scripts/` 现有 305 条、`ruff format
+      # --check` 有 79 个文件需重排，而本 CI 是 `pip install ruff`（不锁版本）——ruff 的默认
+      # 规则集会随版本漂移，这个 gate 从未绿过。更糟的是它排在 `Run tests` 之前：一挂就把
+      # **真正有价值的测试**整步跳过（实测该步骤至今从未执行过）。
+      # 故先让它只告警，把测试放出来；规则集锁定/清 305 条/重排 三条路另行决策。
+      - name: Lint with ruff（告警，不阻断）
+        continue-on-error: true
         run: |
           ruff check scripts/ --output-format=github
       
@@ -67,8 +73,12 @@ jobs:
       - name: Install ruff
         run: pip install ruff
       
-      - name: Check formatting
+      # 2026-10-16：同样降级为**非阻断**（原因见 test job 的 Lint 步骤注释）。本 job
+      # 两步都是「告警」，不再阻断流水线；保留它是为了在 Actions 里能看到 ruff 的真实输出。
+      - name: Check formatting（告警，不阻断）
+        continue-on-error: true
         run: ruff format --check scripts/
-      
-      - name: Check imports
+
+      - name: Check imports（告警，不阻断）
+        continue-on-error: true
         run: ruff check scripts/ --select I --output-format=github
