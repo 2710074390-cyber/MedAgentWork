@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<!-- build: v2.1-liquid-glass -->
+<!-- build: v2.2-liquid-glass-calm -->
 <meta name="theme-color" content="#0b1220">
 <meta name="description" content="MedAgentWork 医学复习资料库：8 科 2,047 题在线刷题、6+9 科题库 PDF 直链下载、7 册复习手册在线研读与打印、开源出题软件 MedKit。">
 <meta property="og:title" content="MedAgentWork · 医学复习资料库">
@@ -25,7 +25,7 @@
   /* 字号阶（7 级，全站唯一来源） */
   --fs-xs:12px; --fs-sm:13px; --fs-md:14px; --fs-lg:16px;
   --fs-xl:clamp(20px,2.4vw,24px); --fs-2xl:clamp(28px,3.6vw,40px); --fs-3xl:clamp(38px,5.6vw,64px);
-  --r:14px; --r-sm:10px; --r-pill:100px;
+  --r:20px; --r-sm:12px; --r-pill:100px;
   --f-sans:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
   --f-mono:"Cascadia Code","JetBrains Mono","SF Mono",Consolas,"Noto Sans Mono CJK SC",Menlo,monospace;
   --nav-h:62px; --container:1160px;
@@ -44,16 +44,17 @@
   --nav-bg:rgba(11,18,32,0.62);
   --shadow-card:0 24px 60px -28px rgba(2,6,18,0.9);
   --glow-1:rgba(45,95,158,0.30); --glow-2:rgba(26,56,112,0.38); --glow-3:rgba(74,138,196,0.20);
-  /* 液态玻璃（Liquid Glass） */
-  --lg-blur:18px;
-  --lg-fill:linear-gradient(168deg, rgba(255,255,255,0.105) 0%, rgba(255,255,255,0.045) 34%, rgba(148,178,255,0.05) 70%, rgba(255,255,255,0.02) 100%);
-  --lg-fill-strong:linear-gradient(168deg, rgba(25,35,58,0.88) 0%, rgba(17,27,48,0.82) 100%);
-  --lg-hi:rgba(255,255,255,0.20);
-  --lg-lo:rgba(3,7,16,0.32);
-  --lg-stroke:linear-gradient(140deg, rgba(255,255,255,0.36) 0%, rgba(255,255,255,0.09) 30%, rgba(148,178,255,0.07) 58%, rgba(255,255,255,0.20) 100%);
-  --lg-stroke-hover:linear-gradient(140deg, rgba(122,165,248,0.85) 0%, rgba(122,165,248,0.28) 55%, rgba(45,212,191,0.55) 100%);
-  --lg-sheen:rgba(255,255,255,0.11);
-  --lg-spot:rgba(255,255,255,0.13);
+  /* 液态玻璃（Apple Liquid Glass 取向：内部透明 · 顶部边缘高光 · 静态克制） */
+  --lg-blur:22px;
+  --lg-fill:linear-gradient(180deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.028) 45%, rgba(148,178,255,0.032) 100%);
+  --lg-fill-strong:linear-gradient(180deg, rgba(30,41,66,0.72) 0%, rgba(20,30,52,0.66) 100%);
+  --lg-hi:rgba(255,255,255,0.26);
+  --lg-lo:rgba(3,7,16,0.28);
+  --lg-stroke:linear-gradient(180deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.10) 22%, rgba(148,178,255,0.05) 62%, rgba(255,255,255,0.13) 100%);
+  --lg-stroke-hover:linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.16) 30%, rgba(148,178,255,0.10) 70%, rgba(255,255,255,0.20) 100%);
+  --lg-toplight:linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+  --lg-rest:0 10px 30px -14px rgba(2,6,18,0.55);
+  --lg-glow:rgba(160,190,255,0.10);
 }
 /* 亮色（研读友好 · 临床白） */
 :root[data-theme="light"] {
@@ -68,16 +69,17 @@
   --nav-bg:rgba(245,248,253,0.68);
   --shadow-card:0 18px 44px -24px rgba(21,45,90,0.28);
   --glow-1:rgba(91,141,239,0.14); --glow-2:rgba(47,107,223,0.10); --glow-3:rgba(45,212,191,0.10);
-  /* 液态玻璃（Liquid Glass · 亮主题） */
-  --lg-blur:18px;
-  --lg-fill:linear-gradient(168deg, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.52) 38%, rgba(226,237,255,0.55) 100%);
-  --lg-fill-strong:linear-gradient(168deg, rgba(255,255,255,0.94) 0%, rgba(243,248,255,0.90) 100%);
+  /* 液态玻璃（Apple Liquid Glass 取向 · 亮主题） */
+  --lg-blur:22px;
+  --lg-fill:linear-gradient(180deg, rgba(255,255,255,0.62) 0%, rgba(255,255,255,0.42) 50%, rgba(230,239,255,0.46) 100%);
+  --lg-fill-strong:linear-gradient(180deg, rgba(255,255,255,0.86) 0%, rgba(244,248,255,0.80) 100%);
   --lg-hi:rgba(255,255,255,0.95);
-  --lg-lo:rgba(21,45,90,0.10);
-  --lg-stroke:linear-gradient(140deg, rgba(255,255,255,0.98) 0%, rgba(47,107,223,0.14) 42%, rgba(47,107,223,0.30) 100%);
-  --lg-stroke-hover:linear-gradient(140deg, rgba(47,107,223,0.75) 0%, rgba(47,107,223,0.30) 55%, rgba(13,148,136,0.5) 100%);
-  --lg-sheen:rgba(255,255,255,0.6);
-  --lg-spot:rgba(47,107,223,0.09);
+  --lg-lo:rgba(21,45,90,0.08);
+  --lg-stroke:linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(47,107,223,0.10) 30%, rgba(47,107,223,0.22) 100%);
+  --lg-stroke-hover:linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(47,107,223,0.18) 35%, rgba(47,107,223,0.34) 100%);
+  --lg-toplight:linear-gradient(180deg, rgba(255,255,255,0.50) 0%, transparent 100%);
+  --lg-rest:0 10px 26px -14px rgba(21,45,90,0.16);
+  --lg-glow:rgba(47,107,223,0.08);
 }
 @media (prefers-contrast: more) {
   :root { --text-2:var(--text); --text-3:var(--text-2); }
@@ -119,24 +121,32 @@ body.modal-open { overflow:hidden; }
 }
 .wrap { position:relative; z-index:1; max-width:var(--container); margin:0 auto; padding:0 24px; }
 
-/* ---------- 2.5 液态玻璃系统（Liquid Glass） ----------
-   四层叠加：① 玻璃体渐变填充（顶亮底暗，模拟厚度）
-             ② 光谱渐变描边（伪元素 padding:1px + mask 挖空）
-             ③ 顶部内高光 + 底部内阴影（玻璃截面）
-             ④ 斜向扫光（hover 滑过）+ 指针光斑（JS 写 --mx/--my）
+/* ---------- 2.5 液态玻璃系统（Apple Liquid Glass 取向） ----------
+   静态光学结构，无扫光/光斑等炫技动画：
+     ① 内部透明：近透明的纵向渐变填充，颜色取自下层内容
+     ② 边缘高光：伪元素 padding:1px + mask 挖空，顶部亮、底部隐的外部高光
+     ③ 截面：inset 顶部高光 + 底部内阴影，传达玻璃厚度
+     ④ 静止受光面：卡片顶部一段恒定柔光，模拟环境光打在玻璃上
+     ⑤ 常驻悬浮投影：玻璃层浮于内容之上（Apple 层次感原则）
+     ⑥ 鼠标光晕：大面积低透明度径向光晕，缓动跟随指针（JS 写 --gx/--gy），
+        到位即休眠；仅 hover/pointer:fine 设备，随 FX 开关联动
    性能约定：真实 backdrop-filter 仅用于悬浮层（导航/模态/Toast/搜索）；
              内容卡片零模糊，纯渐变模拟。 */
 :root {
-  --lg-spot-layer:radial-gradient(160px circle at var(--mx,50%) var(--my,-40%), var(--lg-spot), transparent 72%);
+  --lg-glow-layer:radial-gradient(240px circle at var(--gx,50%) var(--gy,-40%), var(--lg-glow), transparent 70%);
 }
-/* 玻璃体（填充 + 截面高光）：大卡片 + 控件共用 */
+/* 玻璃体（光晕层 + 填充 + 截面高光）：大卡片 + 控件共用 */
 .lg-body,
 .card, .deck-tile, .cap-card, .sw-card, .quick,
 .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip,
 .nav-term-tabs, .hero-spec li, .search, .mm-term-btn,
 .modal-bar .m-btn, .sw-ver {
-  background-image:var(--lg-spot-layer), var(--lg-fill);
+  background-image:var(--lg-glow-layer), var(--lg-fill);
   box-shadow:inset 0 1px 0 var(--lg-hi), inset 0 -1px 0 var(--lg-lo);
+}
+/* 常驻悬浮投影：仅大表面（层次感，小控件保持安静） */
+.card, .deck-tile, .cap-card, .sw-card, .quick {
+  box-shadow:inset 0 1px 0 var(--lg-hi), inset 0 -1px 0 var(--lg-lo), var(--lg-rest);
 }
 /* 光谱描边（伪元素 padding:1px + mask 挖空；border 本体透明化） */
 .lg-edge,
@@ -156,25 +166,19 @@ body.modal-open { overflow:hidden; }
   -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite:xor; mask-composite:exclude;
 }
-/* hover：描边切换为品牌色光谱 */
+/* hover：边缘高光整体提亮一档（中性，不变色——交互时"以光激活"而非炫技） */
 .card:hover, .deck-tile:hover, .cap-card:hover, .sw-card:hover,
 .btn-sec:hover, .btn-ghost:hover, .icon-btn:hover, .fx-toggle:hover,
 .hero-spec li:hover, .mm-term-btn:hover, .modal-bar .m-btn:hover {
   --lg-stroke:var(--lg-stroke-hover);
 }
-.search:focus-within { --lg-stroke:linear-gradient(140deg, var(--brand) 0%, rgba(122,165,248,0.4) 60%, var(--teal) 110%); }
-/* 斜向镜面扫光：仅大表面（小控件扫光易噪；按钮类不设 overflow 以保护焦点框） */
-.lg-sheen, .card, .deck-tile, .cap-card, .sw-card, .quick { overflow:hidden; }
-.lg-sheen::before,
-.card::before, .deck-tile::before, .cap-card::before, .sw-card::before, .quick::before {
-  content:""; position:absolute; top:-55%; bottom:-55%; left:0; width:42%; pointer-events:none; z-index:0;
-  background:linear-gradient(100deg, transparent, var(--lg-sheen) 50%, transparent);
-  transform:translateX(-160%) skewX(-16deg);
-  transition:transform 1s cubic-bezier(.25,.7,.25,1);
+.search:focus-within { --lg-stroke:linear-gradient(180deg, var(--brand) 0%, rgba(122,165,248,0.35) 60%, rgba(122,165,248,0.18) 100%); }
+/* 静止受光面：大表面顶部一段恒定柔光（环境光打在玻璃上，无动画） */
+.card, .deck-tile, .cap-card, .sw-card, .quick { overflow:hidden; }
+.card::before, .deck-tile::before, .cap-card::before, .sw-card::before, .quick::before, .modal-card::before {
+  content:""; position:absolute; left:0; right:0; top:0; height:36%; pointer-events:none;
+  background:var(--lg-toplight); border-radius:inherit;
 }
-.lg-sheen:hover::before,
-.card:hover::before, .deck-tile:hover::before, .cap-card:hover::before,
-.sw-card:hover::before, .quick:hover::before { transform:translateX(380%) skewX(-16deg); }
 /* 悬浮层专用：真实磨砂（背景模糊 + 饱和度提升） */
 .lg-frost, .nav, .search, .stats, #toast, .modal-card {
   backdrop-filter:blur(var(--lg-blur)) saturate(1.6);
@@ -279,7 +283,7 @@ body.modal-open { overflow:hidden; }
 .btn-sec:hover { transform:translateY(-1px); filter:brightness(1.16); }
 .btn-ghost { background-image:none; background-color:transparent; box-shadow:none; border:1px solid var(--border); color:var(--text-2); }
 .btn-ghost::after { opacity:0; }
-.btn-ghost:hover { color:var(--text); background-image:var(--lg-spot-layer), var(--lg-fill); box-shadow:inset 0 1px 0 var(--lg-hi), inset 0 -1px 0 var(--lg-lo); }
+.btn-ghost:hover { color:var(--text); background-image:var(--lg-glow-layer), var(--lg-fill); box-shadow:inset 0 1px 0 var(--lg-hi), inset 0 -1px 0 var(--lg-lo); }
 .btn-ghost:hover::after { opacity:1; }
 .btn.loading { opacity:0.6; pointer-events:none; }
 .btn-sm { padding:8px 15px; font-size:var(--fs-sm); }
@@ -382,7 +386,7 @@ body.modal-open { overflow:hidden; }
 .deck-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px; }
 .deck-tile {
   position:relative; display:flex; flex-direction:column; gap:14px;
-  border:1px solid transparent; border-radius:16px;
+  border:1px solid transparent; border-radius:22px;
   padding:28px 26px 24px; text-decoration:none; color:var(--text);
   transition:border-color .3s, transform .3s, box-shadow .3s;
 }
@@ -422,7 +426,7 @@ body.modal-open { overflow:hidden; }
 
 /* 软件工坊 */
 .sw-card { position:relative; display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:center; border:1px solid transparent; border-radius:var(--r); padding:30px 32px; transition:border-color .3s, transform .3s, box-shadow .3s; }
-.sw-card:hover { --lg-stroke:linear-gradient(140deg, var(--teal) 0%, rgba(45,212,191,0.30) 55%, rgba(122,165,248,0.45) 100%); transform:translateY(-3px); box-shadow:inset 0 1px 0 var(--lg-hi), inset 0 -1px 0 var(--lg-lo), var(--shadow-card); }
+.sw-card:hover { transform:translateY(-3px); box-shadow:inset 0 1px 0 var(--lg-hi), inset 0 -1px 0 var(--lg-lo), var(--shadow-card); }
 .sw-logo { width:72px; height:72px; flex-shrink:0; }
 .sw-logo svg { width:100%; height:100%; display:block; border-radius:15px; box-shadow:0 0 26px rgba(45,212,191,0.3); }
 .sw-title-row { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:7px; }
@@ -485,8 +489,8 @@ body.modal-open { overflow:hidden; }
 .modal-card {
   position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
   width:min(920px,94vw); height:min(88vh,1000px);
-  background-image:var(--lg-spot-layer), var(--lg-fill-strong);
-  border:1px solid transparent; border-radius:16px;
+  background-image:var(--lg-glow-layer), var(--lg-fill-strong);
+  border:1px solid transparent; border-radius:22px;
   display:flex; flex-direction:column; overflow:hidden;
   box-shadow:inset 0 1px 0 var(--lg-hi), var(--shadow-card);
   backdrop-filter:blur(calc(var(--lg-blur) + 8px)) saturate(1.5);
@@ -1886,36 +1890,44 @@ safe('fx',()=>{
   kick();
 });
 
-/* ---------- H2 液态玻璃 · 指针光斑 ----------
-   事件委托 + rAF 节流：每帧最多写入一次 --mx/--my；
-   仅 hover 设备启用；FX 关闭时一并挂起（与粒子同生命周期）。 */
-safe('glass-spot',()=>{
+/* ---------- H2 液态玻璃 · 鼠标光晕 ----------
+   大面积低透明度径向光晕，缓动追踪指针（lerp），到位即休眠；
+   事件委托，同一时刻只驱动一个元素；仅 hover/pointer:fine 设备，随 FX 开关联动。 */
+safe('glass-glow',()=>{
   if(!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
-  const SPOT_SEL='.card,.deck-tile,.cap-card,.sw-card,.quick,.btn-sec,.icon-btn,.search,.hero-spec li,.chip,.modal-card';
-  let pending=null,scheduled=false,lastEl=null;
-  function flush(){
-    scheduled=false;
-    if(!pending)return;
-    const {el,x,y}=pending;pending=null;
-    if(!el.isConnected)return;
-    const r=el.getBoundingClientRect();
-    el.style.setProperty('--mx',(x-r.left)+'px');
-    el.style.setProperty('--my',(y-r.top)+'px');
+  const SEL='.card,.deck-tile,.cap-card,.sw-card,.quick,.modal-card,.search,.hero-spec li,.btn-sec,.icon-btn,.chip';
+  let cur=null,rafId=0;
+  function loop(){
+    if(!cur){rafId=0;return;}
+    const dx=cur.tx-cur.x,dy=cur.ty-cur.y;
+    cur.x+=dx*0.16; cur.y+=dy*0.16;
+    cur.el.style.setProperty('--gx',cur.x.toFixed(1)+'px');
+    cur.el.style.setProperty('--gy',cur.y.toFixed(1)+'px');
+    rafId=(Math.abs(dx)>0.2||Math.abs(dy)>0.2)?requestAnimationFrame(loop):0;
+  }
+  function wake(){if(!rafId)rafId=requestAnimationFrame(loop);}
+  function release(){
+    if(!cur)return;
+    cur.el.style.removeProperty('--gx');
+    cur.el.style.removeProperty('--gy');
+    cur=null;
   }
   document.addEventListener('pointermove',e=>{
-    if(!FX.on)return;
-    const t=e.target&&e.target.closest?e.target.closest(SPOT_SEL):null;
-    if(t!==lastEl){
-      if(lastEl){lastEl.style.removeProperty('--mx');lastEl.style.removeProperty('--my');}
-      lastEl=t;
-    }
-    if(!t)return;
-    pending={el:t,x:e.clientX,y:e.clientY};
-    if(!scheduled){scheduled=true;requestAnimationFrame(flush);}
+    if(!FX.on){release();return;}
+    const el=e.target&&e.target.closest?e.target.closest(SEL):null;
+    if(!el){release();return;}
+    const r=el.getBoundingClientRect();
+    const tx=e.clientX-r.left,ty=e.clientY-r.top;
+    if(!cur||cur.el!==el){
+      release();
+      cur={el,x:tx,y:ty,tx,ty};
+    }else{cur.tx=tx;cur.ty=ty;}
+    wake();
   },{passive:true});
-  document.addEventListener('pointerleave',()=>{
-    if(lastEl){lastEl.style.removeProperty('--mx');lastEl.style.removeProperty('--my');lastEl=null;}
-  },{passive:true});
+  document.addEventListener('pointerleave',release,{passive:true});
+  /* 模态关闭时残留清理 */
+  const modal=$('#modal');
+  if(modal)modal.addEventListener('transitionend',()=>{if(!modal.classList.contains('open'))release();},{passive:true});
 });
 
 /* ---------- I 主题切换（A5） ---------- */
