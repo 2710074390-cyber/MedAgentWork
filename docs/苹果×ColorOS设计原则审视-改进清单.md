@@ -99,4 +99,17 @@
   - #2 按压反馈：全站可点元素 `:active { scale(.96) }`（.06s 快速压入、释放回弹）、`.btn-pri` 按压加深、`tap-highlight` 统一
   - #3 触控目标：`≤520px` 学期切换收进汉堡菜单（含 441–508px 防溢出区间）；`≤720px` icon-btn/term-tab/g-go ≥44px、term-copy ≥40px、nav-term 44px
   - 复检修正：flex 列中 chip 被拉伸 → `align-self:flex-start`；QA 流水线修正——无头 Edge 最小窗口宽 ~500px，移动端验证须用固定宽度 iframe（`shot.html?w=390&h=844`）
-- [ ] 批次 2（P1）#4–#9  ·  [ ] 批次 3（P2）#10–#16
+- [x] **批次 2（P1）完成 · 2026-10-17**（提交 bba21d3）
+  - #4 同心圆角：面板/大卡统一 20、控件与内嵌件 12、内角=外角−视觉内边距；terminal 16
+  - #5 网格降噪：deep-sea 网格随滚动渐隐（rAF 节流，`--grid-k`），内容区回归留白
+  - #6 空/错状态：空状态=图标+文案+「清空搜索」；模态错误态=「重试」复用加载链路
+  - #7 视图过渡：220ms 淡入（避用 transform 以保护 fixed 后代）
+  - #8 Callout 图标化：5 类各配描边图标；tip 紫→青消除蓝紫同屏
+  - #9 `prefers-reduced-transparency`：玻璃→实色回退（Safari 生效，渐进增强）
+- [x] **批次 3（P2）完成 · 2026-10-17**（提交 bba21d3）
+  - #10 光晕：lerp .22 + 离开流光下坠渐出；修复 FX 作用域 bug（此前光晕从未生效）
+  - #11 搜索：自绘清空按钮 + 「/」快捷聚焦；#12 回顶胶囊；#13 骨架屏
+  - #14 字体栈：MiSans / OPPO Sans / HarmonyOS Sans SC 前置；#15 md 表格横滑容器
+  - #16 PWA：sw.js（导航 network-first / 静态 SWR / PDF 不缓存 / FIFO 90）+ manifest + 图标 + 双通道白名单
+- 遗留：无（16/16 完成）。可选后续：部署上线复核 Lighthouse、主题色个性化（ColorOS 取色风向）
+
