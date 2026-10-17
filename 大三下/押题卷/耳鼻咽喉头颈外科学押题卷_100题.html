@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{科目}押题卷 · MedAgentWork 统一模板 v1.0</title>
+<title>耳鼻咽喉头颈外科学押题卷 · MedAgentWork 统一模板 v1.0</title>
 <!--
   ============================================================================
   quiz_template.html — MedAgentWork 统一押题卷模板 v1.0 (2026-08-20)
@@ -99,13 +99,13 @@
   body {
     font-family: var(--font-body); font-size: 15px; line-height: 1.8;
     background: var(--bg-primary); color: var(--text-primary);
-    padding-top: 96px; transition: background .25s ease, color .25s ease;
+    transition: background .25s ease, color .25s ease;
   }
   .container { max-width: 960px; margin: 0 auto; padding: 0 20px 40px; }
 
   /* ---------- 顶栏 ---------- */
   #topbar {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: relative; z-index: 1;
     background: var(--topbar-bg);
     backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--topbar-border);
@@ -324,7 +324,7 @@
 
   /* ---------- 响应式（640px） ---------- */
   @media (max-width: 640px) {
-    body { padding-top: 118px; font-size: 14.5px; }
+    body { font-size: 14.5px; }
     #topbar { padding: 10px 14px 8px; }
     #topbar h1 { font-size: 16px; }
     .container { padding: 0 12px 24px; }
