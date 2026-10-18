@@ -94,3 +94,7 @@ Thumbs.db
 
 # 检索工作产物（瞬态，不入库）
 中间产物/kb_search_result.json
+
+# ── 本地工具产物（Trae / WorkBuddy 生成，仅本机有效，不入库）──
+.trae-html-share-packages/
+.workbuddy/

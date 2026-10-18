@@ -29,7 +29,7 @@ whenToUse: 用户要求开始新批次、继续推进管线、终审签收或处
    - **输入文件路径**（不是粘贴内容）
    - **输出文件路径**约定
    - **【考研真题配额】小节**（HC-18）：目标题数、真题候选文件路径、无真题覆盖章节清单
-3. **门禁强制（HC-12 Orchestrator-as-Enforcer）**：每个阶段转换前必须实际运行门禁命令（见 `medbatch` skill 第 3 节），FAIL/BLOCKED → halt → 回退上游修复，**不可跳过**（5 起管线绕过教训）。终审前加跑 `python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json`（HC-18，exit 1 → 核对覆盖情况后处理）。**配图范围科目终审/生图验收前加跑 `python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp --list 复习资料/{科目}教学计划版/{科目}_配图清单.md`（HC-19，exit 1 → 回退豆包补图）**。
+3. **门禁强制（HC-12 Orchestrator-as-Enforcer）**：每个阶段转换前必须实际运行门禁命令（见 `medbatch` skill 第 3 节），FAIL/BLOCKED → halt → 回退上游修复，**不可跳过**（5 起管线绕过教训）。终审前加跑 `python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json`（HC-18，exit 1 → 核对覆盖情况后处理）。**配图范围科目终审/生图验收前加跑 `python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp --list 复习资料/{科目}教学计划版/{科目}_配图清单.md`（HC-19，exit 1 → 回退豆包补图）**。**有教师重点/复习大纲输入的批次：门禁A5 与终审前加跑 `python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD>`（HC-20/D0 教师重点原文锚定，exit 1 → 回退 Agent 5 补写被概括丢失的数值/时间窗；无教师重点输入 → SKIPPED）**。
 4. **文件传递与核对**：subagent 完成后用 read 工具核对产物（JSON 可解析、必填字段齐全），再把路径传给下一 Agent。
 5. **签收**：用户签收后批次置 APPROVED；GoldenSet 只允许用户手动移入，任何 Agent 不得写入。
 6. **会话卫生**：每批次建议独立会话；批次关键事件记入 `memory/JOURNAL.jsonl`（UTF-8 JSONL，一行一条）。

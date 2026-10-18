@@ -20,6 +20,7 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 - 门禁未通过 → **halt** → 回退对应 Agent 修复 → 重跑门禁（不可跳过，HC-12）
 - GoldenSet 签收只由用户手动执行，任何 Agent 禁止写入
 - *门禁A5：MedReview 产出主复习资料 MD + 配图清单，编排者核对占位符与清单一致（`python scripts/check_inline_images.py --md … --list …`，首次跑允许 0 张占位 = MD 无图）后进入阶段 6
+- **门禁A5 附加（HC-20/D0 · 2026-10-18，有教师重点/复习大纲输入的批次强制）**：跑 `python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD>`（数值/时间窗类硬事实缺失或重点条目缺锚点 → exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED，不视为通过）
 - **阶段 6（HC-19）**：生图主责在豆包（Doubao 图片 Agent，调用 `medillustration` skill），DSH 不调用 image_gen；编排者打包交接（配图清单 + skill 要点 + 图谱索引 + 可复用图路径 + 科目目录规范），豆包回传 `images_webp/*.webp` 后运行 GATE-A6 并人工质检（解剖准确性抽查）
 
 ## 2. 目录与命名（铁律，详见 CONTEXT.md）
@@ -46,6 +47,7 @@ GATE-A4   python gate_check.py --batch {batchID} --stage agent4_done
 MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json   # 最终交付 MD（2026-08-20 起强制）
 真题配额  python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json   # HC-18 考研真题占比（2026-08-21 起，终审前执行）
 插图门禁  python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp --list 复习资料/{科目}教学计划版/{科目}_配图清单.md   # GATE-A6 / HC-19 插图占位一致性（配图范围科目，生图验收后与终审前各跑一次；exit 1 → 回退豆包补图）
+重点覆盖  python scripts/check_keypoint_coverage.py --keypoints 输入素材/{科目}/{科目}_教师重点_*.md --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md   # HC-20/D0 教师重点原文锚定（有教师重点输入的批次，门禁A5 与终审前各跑一次；exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED）
 终审      python gate_check.py --batch {batchID} --stage final
 ```
 
@@ -54,6 +56,7 @@ MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_
 - validate 报告输出在 `reports/validate/`，gate 报告在 `reports/gate/`
 - **MD 导出是最终交付格式**：GATE-A4 通过后必须运行 export-md 生成 `ALL_questions_FIXED.md`（JSON 为机器可读源，MD 为用户可读交付），与 JSON 同目录交付
 - **考研真题配额（HC-18）**：批次启动前运行 `kaoyan_picker.py pick`（检索该章节真题候选，注入 Agent 2 调用指令）；终审前运行 `kaoyan_picker.py check`（占比 ≥15% 通过；<15% 时核对候选，确无真题覆盖则标注"无真题覆盖"后放行）
+- **教师重点覆盖（HC-20/D0 · 2026-10-18）**：有教师重点/复习大纲输入的批次，Agent 5 交付前必须产出 `中间产物/{batchID}/{科目}_教师重点覆盖矩阵.md`（未覆盖/部分覆盖行数=0）；编排者在门禁A5 与终审前跑 `check_keypoint_coverage.py`，数值/时间窗/分级界值缺失或重点条目缺 `📌 重点原文（第X条）` 锚点 → exit 1 → 回退 Agent 5 补写（batch039 突发性聋时间窗丢失教训）
 
 ### 事实校验（P1-1 · 2026-08-13，GATE-A2 前执行）
 
@@ -84,6 +87,7 @@ python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
 | RAG 余额不足(402) | 降级：`search_kb.py --no-rerank`（跳过付费 rerank，用 Stage1 余弦）；查询优先复用缓存结果（batch027 教训） |
 | 注册表报"文件不存在" | 已归档批次属预期：`qbank.py check` 已归档感知；如需修正路径用 `qbank.py rehome`（2026-08-20） |
 | 插图缺失/占位符与文件不一致 | GATE-A6 exit 1 → 读输出定位（C2 文件缺失 / C3 图号断号 / C5 清单不一致）→ 回退豆包补图或修正清单 → 重跑门禁（HC-19） |
+| 复习资料丢失教师重点细节（时间窗/分级界值被概括成"大概意思"） | 跑 `scripts/check_keypoint_coverage.py --keypoints <原文> --md <MR MD>` 定位缺失硬事实 → 回退 Agent 5：在对应考点补 `📌 重点原文（第X条）：…` 落点行并原样保留数值/并列/禁止结构（HC-20/D0，batch039 突发性聋教训）；确属非命题范围的细节 → 写入 `--allowlist` 并注明理由，禁默认忽略 |
 | 豆包回传图片解剖错误 | 试点 2/2 首轮出错（肝画成肾、视神经放大图画成尿道样结构）→ 打回豆包重生成，提示词加强形态特征描述（如"楔形、右叶大于左叶"）；AI 图内中文标注一律禁用（乱码），改 annotate_image.py 程序叠加 |
 | 配图标注错位（文字/引线与结构位置不符） | 2026-09-30 实证（面神经腮腺标在鼻上、五支/溃疡/修复体全偏）→ ①先跑 `scripts/_analyze_annot_pos.py` 量化底图结构坐标（颜色掩膜网格热区/角度端点/xband），禁止目测估算；②重写 annotate YAML：label 一律带 `anchor` 引线指向实测坐标、文字放空白区、`output` 字段写 `annotated/xxx.png` 正确名；③侧脸图先 Read 底图判五官朝向（鼻/耳/腮腺相对位，腮腺=耳前神经主干根部）；④重标后逐张 Read 成品核验引线端点，再导出 webp → 重渲染 HTML（--embed-images，MD 先规范化无 BOM+LF）→ 重跑 check_inline_images exit 0 → 重新交付 |
 
