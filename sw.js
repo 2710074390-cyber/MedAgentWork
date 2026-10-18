@@ -1,11 +1,13 @@
 /* MedAgentWork Service Worker（P2 · 渐进式离线）
    策略：
-   - 导航请求 network-first：在线永远最新，离线回退缓存的应用壳（index.html）
+   - 导航请求 network-first：在线永远最新，离线回退应用壳（首页）
    - 静态资源（md/图片/字体等）stale-while-revalidate：先给缓存、后台刷新
    - PDF 一律不缓存（单文件可达 20MB+，避免撑爆配额）——离线可读的是手册 MD
    - 版本号变更即整体换血：旧缓存自动清理
+   2026-10-19：修复"任意导航响应都写成 /index.html"的缓存串台问题——
+   此前 /drill 等路由的响应会覆写首页离线副本；现在只缓存真正的首页。
 */
-const VERSION = 'maw-v1';
+const VERSION = 'maw-v2';
 const SHELL_CACHE = VERSION + '-shell';
 const ASSET_CACHE = VERSION + '-assets';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
@@ -42,12 +44,15 @@ self.addEventListener('fetch', e => {
   try { u = new URL(req.url); } catch (_) { return; }
   if (u.origin !== location.origin) return;
 
-  /* 导航：network-first，离线回退应用壳 */
+  /* 导航：network-first，离线回退应用壳（首页） */
   if (req.mode === 'navigate') {
+    const isShell = u.pathname === '/' || u.pathname === '/index.html';
     e.respondWith(
       fetch(req).then(r => {
-        const cp = r.clone();
-        caches.open(SHELL_CACHE).then(c => c.put('/index.html', cp)).catch(() => {});
+        if (r.ok && isShell) {   /* 只缓存真正的首页：路由页响应不得覆写应用壳 */
+          const cp = r.clone();
+          caches.open(SHELL_CACHE).then(c => c.put('/index.html', cp)).catch(() => {});
+        }
         return r;
       }).catch(() => caches.match('/index.html'))
     );
