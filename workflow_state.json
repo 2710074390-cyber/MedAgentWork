@@ -1,5 +1,5 @@
 {
-  "active_batch": "batch038",
+  "active_batch": "batch039",
   "halt": {
     "active": false
   },
@@ -4964,5 +4964,99 @@
       "hc11_outline_page_marking": "PASS — 来源锚点均标注教材印刷页",
       "json_valid": true
     }
+  },
+  "batch039": {
+    "batch_id": "batch039",
+    "status": "APPROVED",
+    "created": "2026-10-16T20:09:33.524800",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "output": "中间产物/batch039/ALL_questions.json",
+        "question_count": 199,
+        "modules": "M1=20/M2=55/M3=38/M4=26/M5=26/M6=17/M7=17",
+        "types": "A1 85/A2 47/A3 5/A4 1/B1 25/X 36",
+        "bloom_actual": {
+          "记忆": 31.3,
+          "理解": 40.0,
+          "应用": 23.3,
+          "分析": 5.3
+        },
+        "model": "MedGen(7 子 agent 并行)",
+        "prompt_version": "00_出题规范与双向细目表.md"
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "output": "质检报告/batch039/A3_质检报告.json",
+        "gate_decision": "PASS_WITH_FIXES",
+        "overall_score": 9.3,
+        "model": "MedQC",
+        "prompt_version": "MedQC_current_prompt.md"
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "output": "最终产物/batch039/ALL_questions_FIXED.json + .md + .html + AGENT4_追溯日志.json + AGENT4_修改声明.md + escalations_for_human.md",
+        "question_count": 199,
+        "md_export": "ALL_questions_FIXED.md（199 题 / 3573 行）",
+        "fixes": "PATCH-POS-001(答案位置再平衡 119 题) + D19(3) + D17(1组) + D11(1) + D4(命名统一) + X 打散(36)",
+        "validate": "FAIL=0 / WARN=2",
+        "source_file_synced": true,
+        "model": "MedFix",
+        "prompt_version": "MedFix_current_prompt.md"
+      },
+      "AGENT5": {
+        "status": "COMPLETED",
+        "output": "复习资料/耳鼻咽喉头颈外科学教师重点版/耳鼻咽喉头颈外科学教师重点版_主复习资料.md + .html（7 模块 / 2353 行）",
+        "modules": 7,
+        "lines": 2353,
+        "callouts": 85,
+        "expands": 17,
+        "images": 0,
+        "hc_checks": {
+          "HC-9": "PASS — 附录二 术语同义异名对照表（16 组）",
+          "HC-10": "PASS — 附录一 教材页码索引（真实印刷页，无占位符）",
+          "HC-11": "PASS — 各模块来源锚点为真实教材页"
+        },
+        "model": "MedReview（3 子 agent 分模块 + 主会话合成）",
+        "prompt_version": "Agent5_MedReview_Prompt.md"
+      }
+    },
+    "lineage": [],
+    "subject": "耳鼻咽喉头颈外科学（教师重点版）",
+    "plan_questions": 200,
+    "modules": 7,
+    "kaoyan_target_pct": 0,
+    "note": "大四上 耳鼻咽喉头颈外科学 期末题库/复习资料（依据教师重点讲义 20261014 七板块：总论与检查/耳科学/鼻科学/咽部疾病与OSAHS/喉部疾病及危重气道/气管支气管与食管异物/头颈外科学与颈部肿块）；源：《耳鼻咽喉头颈外科学》第10版（张欣/张罗）+ 教师重点讲义；页偏移 印刷页=PDF页−23；HC-18 配额清零（耳鼻喉不属西综306考纲，真题覆盖<5%，100%原创并如实标注，沿用 batch036 先例） | 复习资料置于「耳鼻咽喉头颈外科学教师重点版/」目录（与教学计划版原目录分离）",
+    "gate_results": {
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
+        "checked_at": "2026-10-16T21:25:26.999510"
+      },
+      "halt": {
+        "active": false
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-10-16T21:33:33.745609"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
+        "checked_at": "2026-10-16T23:31:00.246560"
+      }
+    },
+    "final_review": {
+      "hc9": "PASS — 附录二 术语同义异名对照表（16 组）",
+      "hc10": "PASS — 附录一 教材知识点页码索引（真实印刷页 P2–P404，无占位符；subject 不在机械校验科目清单内，跳过）",
+      "hc11": "PASS — 各模块来源锚点均标注真实教材印刷页",
+      "hc9_terminology_appendix": "PASS — 术语同义异名对照表 16 组（梅尼埃/美尼尔、分泌性中耳炎/渗出性中耳炎、腭扁桃体/扁桃体 等）",
+      "hc10_page_authenticity": "PASS — 附录一页码 P2–P404 真实印刷页，0 占位符",
+      "hc11_outline_page_marking": "PASS — 全部来源锚点为真实教材页",
+      "json_valid": true
+    },
+    "approved_at": "2026-10-16T23:31:20.992225"
   }
 }

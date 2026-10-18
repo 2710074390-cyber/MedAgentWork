@@ -1,0 +1,112 @@
+{
+  "batch_id": "batch039",
+  "subject": "耳鼻咽喉头颈外科学（教师重点版）",
+  "agent": "MedFix",
+  "executed_at": "2026-10-16T21:31:56.428313",
+  "qc_report": "质检报告/batch039/A3_质检报告.json",
+  "qc_gate_decision": "PASS_WITH_FIXES",
+  "qc_overall_score": 9.3,
+  "retained": [
+    {
+      "issue": "ISSUE-009(minor,D17-ABS)",
+      "reason": "『仅/唯一』多为医学事实性表述（如环状软骨为喉软骨中唯一完整环形），非诱导性绝对化，保留"
+    },
+    {
+      "issue": "M04-B1-001/005 R11",
+      "reason": "B1 组共用选项含部位前缀所致的收敛提示，非实质缺陷，保留"
+    }
+  ],
+  "revalidation": {
+    "fail": 0,
+    "warn": 2,
+    "pass": 197
+  },
+  "post_checks": {
+    "single_answer_dist": {
+      "E": 18.8,
+      "B": 20.3,
+      "D": 19.6,
+      "C": 19.6,
+      "A": 21.7
+    },
+    "bloom": {
+      "记忆": 31.2,
+      "理解": 40.2,
+      "应用": 23.1,
+      "分析": 5.5
+    },
+    "types": {
+      "A1": 85,
+      "A2": 47,
+      "X": 36,
+      "A3": 5,
+      "B1": 25,
+      "A4": 1
+    },
+    "total": 199,
+    "md5": "b338dbe0f25d6e43c9547d5602776202"
+  },
+  "global_consistency": "答案键与选项文本一致性逐题自检；B1 组 5 组各 5 题、组号唯一；题无重复 id。",
+  "source_file_synced": true,
+  "patches": [
+    {
+      "patch_id": "PATCH-POS-001",
+      "issue": "ISSUE-001(major,R-POS-BIAS)",
+      "operation": "重排选项物理顺序并同步 answer_key/option_polarities（仅重排，不改文本/真值）",
+      "scope": "138 道单答案题（A1/A2/A3/A4）中 119 道非数值题（数值题保留原序以守 R3）",
+      "before": {
+        "A": 110,
+        "B": 12,
+        "C": 10,
+        "D": 3,
+        "E": 3
+      },
+      "after": {
+        "E": 26,
+        "B": 28,
+        "D": 27,
+        "C": 27,
+        "A": 30
+      },
+      "source_file_synced": true
+    },
+    {
+      "patch_id": "PATCH-D19-001",
+      "issue": "ISSUE-002/003/004(minor,R11)",
+      "operation": "在干扰项引入题干同类近义表达（鼻中隔/鼻腔），稀释正确项术语共享",
+      "targets": [
+        "batch039-M03-A1-001",
+        "batch039-M03-A2-010",
+        "batch039-M03-A3-001"
+      ],
+      "result": "R11 3 处清除",
+      "source_file_synced": true
+    },
+    {
+      "patch_id": "PATCH-D17-001",
+      "issue": "ISSUE-005(minor,R2)",
+      "operation": "M04-B1 组共用选项补『部位（鼻咽/喉咽/口咽）』前缀对齐长度；同步微调 M04-B1-002 题干以消 R10",
+      "result": "R2 清除；新增 2 处 R11 WARN（M04-B1-001/005，B1 共用选项固有，保留）",
+      "source_file_synced": true
+    },
+    {
+      "patch_id": "PATCH-D11-001",
+      "issue": "ISSUE-006(minor,D11-5X)",
+      "operation": "M03-A1-006 数值干扰项收紧（D 12~24→12~18；E 24~48→19~24），保持升序（R3）",
+      "source_file_synced": true
+    },
+    {
+      "patch_id": "PATCH-D4-001",
+      "issue": "ISSUE-007/008(minor,R-ID-STYLE/R-B1-GROUP-SEQ)",
+      "operation": "case_group 统一 M0X-A3-01 / M06-A4-01 风格；b1_group 连续化 N1-5/N6-10/N11-15/N16-20/N21-25",
+      "source_file_synced": true
+    },
+    {
+      "patch_id": "PATCH-X-PERM-001",
+      "issue": "ISSUE-010(minor,R-X-E)",
+      "operation": "36 道 X 型选项定序随机打散，消除『A 恒正确/E 恒错/全集』位置线索",
+      "result": "X 答案分布 ABC11/ABD9/ACD4/BCD7/ABCD3/ACE1/ABCE1",
+      "source_file_synced": true
+    }
+  ]
+}

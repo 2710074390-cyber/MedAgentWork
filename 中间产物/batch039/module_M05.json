@@ -1,0 +1,1125 @@
+[
+ {
+  "id": "batch039-M05-A1-001",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉的位置与上下界",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "成人喉位于颈前正中，其下界约平下列哪一颈椎平面？",
+  "options": [
+   {
+    "label": "A",
+    "text": "第3颈椎"
+   },
+   {
+    "label": "B",
+    "text": "第4颈椎"
+   },
+   {
+    "label": "C",
+    "text": "第5颈椎"
+   },
+   {
+    "label": "D",
+    "text": "第6颈椎"
+   },
+   {
+    "label": "E",
+    "text": "第7颈椎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "喉位于颈前正中，上通喉咽，下接气管。成人喉上界为会厌上缘（约平第4～5颈椎），下界为环状软骨下缘（约平第6颈椎）；女性及儿童喉的位置较男性稍高。教材P290。",
+  "source_page": "教材P290",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-002",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "甲状软骨的特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "成人喉部体积最大的软骨是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状软骨"
+   },
+   {
+    "label": "B",
+    "text": "会厌软骨"
+   },
+   {
+    "label": "C",
+    "text": "环状软骨"
+   },
+   {
+    "label": "D",
+    "text": "杓状软骨"
+   },
+   {
+    "label": "E",
+    "text": "小角软骨"
+   }
+  ],
+  "answer": "A",
+  "explanation": "甲状软骨是喉部最大的软骨，由两块对称的四边形软骨板在前方正中融合而成，男性上端向前突出形成喉结，是成年男性的特征之一。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-003",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "环状软骨的特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "喉与气管支架中唯一呈完整环形的软骨是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状软骨"
+   },
+   {
+    "label": "B",
+    "text": "环状软骨"
+   },
+   {
+    "label": "C",
+    "text": "会厌软骨"
+   },
+   {
+    "label": "D",
+    "text": "杓状软骨"
+   },
+   {
+    "label": "E",
+    "text": "楔状软骨"
+   }
+  ],
+  "answer": "B",
+  "explanation": "环状软骨位于甲状软骨下方、第1气管环之上，前部较窄为弓、后部较宽为板，是喉气管中唯一完整的环形软骨，对维持气道通畅至关重要，损伤后易致喉气管狭窄。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-004",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "杓状软骨及其附属结构",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "关于杓状软骨及其附属结构，下列描述正确的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "位于环状软骨板下方"
+   },
+   {
+    "label": "B",
+    "text": "肌突位于其底部前方"
+   },
+   {
+    "label": "C",
+    "text": "声带突有甲杓肌附着"
+   },
+   {
+    "label": "D",
+    "text": "与喉结直接相连构成支架"
+   },
+   {
+    "label": "E",
+    "text": "属喉部唯一完整环形软骨"
+   }
+  ],
+  "answer": "C",
+  "explanation": "杓状软骨位于环状软骨板上外缘，底部与环状软骨构成环杓关节；底部前端突起为声带突，有甲杓肌和声韧带附着，底部外侧突起为肌突，环杓后肌附着其后下方；环状软骨才是唯一完整环形的软骨。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-005",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉腔分区",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "喉腔被声带分为三个区域，其中下连气管的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "声门上区"
+   },
+   {
+    "label": "B",
+    "text": "声门区"
+   },
+   {
+    "label": "C",
+    "text": "喉前庭区"
+   },
+   {
+    "label": "D",
+    "text": "声门下区"
+   },
+   {
+    "label": "E",
+    "text": "喉室区"
+   }
+  ],
+  "answer": "D",
+  "explanation": "以声带为界，喉腔分为声门上区、声门区和声门下区；声门上区上通喉咽，声门区为两侧声带之间的区域，声门下区位于声带以下并下连气管。教材P294。",
+  "source_page": "教材P294",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-006",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉上神经内支的功能",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "分布至声门上区黏膜、司该处感觉的神经是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "舌下神经"
+   },
+   {
+    "label": "B",
+    "text": "喉上神经外支"
+   },
+   {
+    "label": "C",
+    "text": "喉返神经"
+   },
+   {
+    "label": "D",
+    "text": "舌咽神经"
+   },
+   {
+    "label": "E",
+    "text": "喉上神经内支"
+   }
+  ],
+  "answer": "E",
+  "explanation": "喉上神经为迷走神经分支，分内、外两支；内支与喉上动、静脉伴行穿过舌甲膜，分布于声门上区黏膜司该处感觉；外支支配环甲肌运动。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M05-A1-007",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉返神经的支配范围",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "支配除环甲肌以外喉内肌运动的神经是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉返神经"
+   },
+   {
+    "label": "B",
+    "text": "喉上神经外支"
+   },
+   {
+    "label": "C",
+    "text": "喉上神经内支"
+   },
+   {
+    "label": "D",
+    "text": "舌咽神经"
+   },
+   {
+    "label": "E",
+    "text": "副神经"
+   }
+  ],
+  "answer": "A",
+  "explanation": "喉返神经是喉的主要运动神经，左侧绕主动脉弓、右侧绕锁骨下动脉上行，在环甲关节后方入喉，支配除环甲肌以外的喉内各肌，并有感觉支司声门下区黏膜感觉；环甲肌由喉上神经外支支配。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-008",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "双侧喉返神经损伤",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "喉返神经双侧损伤时，患者最可能出现的危重表现是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "持续性高音发声困难"
+   },
+   {
+    "label": "B",
+    "text": "严重吸气性呼吸困难"
+   },
+   {
+    "label": "C",
+    "text": "发声耐力明显下降"
+   },
+   {
+    "label": "D",
+    "text": "喉部干燥伴异物感"
+   },
+   {
+    "label": "E",
+    "text": "吞咽疼痛伴流涎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "喉返神经单侧损伤多表现为声音嘶哑，双侧损伤时因声门开放受限可导致严重吸气性呼吸困难，需及时建立气道；高音发声困难、发声耐力下降多见于喉上神经外支损伤。教材P315。",
+  "source_page": "教材P315",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-009",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "频闪喉镜的评估内容",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "长期用声过度者行频闪喉镜（动态喉镜）检查，其主要评估内容是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "声门下有无肿瘤"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨钙化程度"
+   },
+   {
+    "label": "C",
+    "text": "声带振动及黏膜波"
+   },
+   {
+    "label": "D",
+    "text": "喉返神经传导速度"
+   },
+   {
+    "label": "E",
+    "text": "环杓关节有无脱位"
+   }
+  ],
+  "answer": "C",
+  "explanation": "频闪喉镜（动态喉镜）可评估声带振动周期、振幅、对称性和黏膜波，是判断声带振动功能的重要方法，常用于声带小结等嗓音疾病的病情评估。教材P296。",
+  "source_page": "教材P296",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-010",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "小儿急性喉炎的咳嗽特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "小儿急性喉炎最具特征性的咳嗽特点是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "咳大量脓痰"
+   },
+   {
+    "label": "B",
+    "text": "金属音咳嗽"
+   },
+   {
+    "label": "C",
+    "text": "阵发性痉挛性咳嗽"
+   },
+   {
+    "label": "D",
+    "text": "犬吠样咳嗽"
+   },
+   {
+    "label": "E",
+    "text": "干咳伴胸痛"
+   }
+  ],
+  "answer": "D",
+  "explanation": "小儿急性喉炎起病急，主要症状为声嘶、犬吠样咳嗽、吸气性喉喘鸣和吸气性呼吸困难；当炎症向声门下发展、黏膜水肿加重时，出现特征性的犬吠样咳嗽。教材P311。",
+  "source_page": "教材P311",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-011",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "急性会厌炎的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，45岁。突发剧烈咽喉疼痛伴吞咽困难、流涎，发热39℃，口咽部检查无明显异常。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性喉炎"
+   },
+   {
+    "label": "B",
+    "text": "急性扁桃体炎"
+   },
+   {
+    "label": "C",
+    "text": "慢性咽炎"
+   },
+   {
+    "label": "D",
+    "text": "扁桃体周脓肿"
+   },
+   {
+    "label": "E",
+    "text": "急性会厌炎"
+   }
+  ],
+  "answer": "E",
+  "explanation": "成人突发剧烈咽喉痛、吞咽困难、流涎伴高热，而口咽部检查无明显异常时，应高度警惕急性会厌炎，须行间接喉镜或纤维（电子）鼻咽喉镜检查，可见会厌明显充血肿胀甚至呈球形。该病可迅速引起喉阻塞，气道保障优先。教材P309。",
+  "source_page": "教材P309",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M05-A2-012",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "四度喉阻塞的处理",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，3岁。极度呼吸困难，明显发绀，随后出现意识障碍、脉搏细数。此时最恰当的处理是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "立即气管切开"
+   },
+   {
+    "label": "B",
+    "text": "口服糖皮质激素"
+   },
+   {
+    "label": "C",
+    "text": "雾化吸入肾上腺素"
+   },
+   {
+    "label": "D",
+    "text": "密切观察病情变化"
+   },
+   {
+    "label": "E",
+    "text": "应用抗生素治疗"
+   }
+  ],
+  "answer": "A",
+  "explanation": "该患儿表现为喉阻塞四度（极度呼吸困难、发绀、意识障碍），应立即建立可靠气道、行气管切开术；若病情十分紧急可先行环甲膜切开。药物保守观察不能替代气道的紧急建立。教材P339。",
+  "source_page": "教材P339",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-013",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉阻塞的分度判定",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "喉阻塞患者安静时即出现吸气性呼吸困难及喉鸣，活动时加重，但不影响睡眠和进食、无烦躁不安。应判定为？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉阻塞Ⅰ度"
+   },
+   {
+    "label": "B",
+    "text": "喉阻塞Ⅱ度"
+   },
+   {
+    "label": "C",
+    "text": "喉阻塞Ⅲ度"
+   },
+   {
+    "label": "D",
+    "text": "喉阻塞Ⅳ度"
+   },
+   {
+    "label": "E",
+    "text": "无喉阻塞"
+   }
+  ],
+  "answer": "B",
+  "explanation": "喉阻塞二度为安静时也有轻度吸气性呼吸困难、喉喘鸣及软组织凹陷，活动时加重，但不影响睡眠和进食、无烦躁不安等缺氧症状；与三度的区别在于后者已出现烦躁不安、脉搏加快等缺氧症状。教材P339。",
+  "source_page": "教材P339",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-014",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "气管切开术的切开部位",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，50岁。因喉癌致Ⅲ度喉阻塞拟行气管切开术，术中切开气管的适宜部位是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "第1～2气管环"
+   },
+   {
+    "label": "B",
+    "text": "第2～3气管环"
+   },
+   {
+    "label": "C",
+    "text": "第3～4气管环"
+   },
+   {
+    "label": "D",
+    "text": "第5～6气管环"
+   },
+   {
+    "label": "E",
+    "text": "第7～8气管环"
+   }
+  ],
+  "answer": "C",
+  "explanation": "常规气管切开术多在第3～4气管环处纵行切开气管（教师重点述第2～4气管软骨环附近，具体位置应结合解剖条件判断）；避免切开第1气管环以免损伤环状软骨致喉狭窄，切口不应低于第5气管环，以免损伤大血管和胸膜顶。教材P342。",
+  "source_page": "教材P342",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-015",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉癌的确诊方法",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，60岁，吸烟40年。声音嘶哑进行性加重3个月，伴痰中带血。喉部检查见声带菜花样肿物。明确诊断最有价值的方法是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉部触诊判断活动度"
+   },
+   {
+    "label": "B",
+    "text": "颈部超声检查淋巴结"
+   },
+   {
+    "label": "C",
+    "text": "喉镜下活组织病理检查"
+   },
+   {
+    "label": "D",
+    "text": "纯音测听判断听力"
+   },
+   {
+    "label": "E",
+    "text": "血常规判断感染"
+   }
+  ],
+  "answer": "C",
+  "explanation": "喉癌确诊的金标准是活组织病理检查，可在间接喉镜、纤维（电子）鼻咽喉镜或直接喉镜下取组织送检；中老年重度吸烟者出现进行性声嘶伴痰中带血，须高度警惕喉癌。教材P327。",
+  "source_page": "教材P327",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-016",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉癌与声带小结的鉴别",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "男性，55岁，重度吸烟20年，进行性声嘶3个月，伴吞咽不适。与声带小结鉴别，最支持喉癌诊断的依据是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "声嘶病程较短"
+   },
+   {
+    "label": "B",
+    "text": "双侧声带对称性结节"
+   },
+   {
+    "label": "C",
+    "text": "用声过度病史"
+   },
+   {
+    "label": "D",
+    "text": "颈部无痛性肿块"
+   },
+   {
+    "label": "E",
+    "text": "颈部淋巴结质软活动"
+   }
+  ],
+  "answer": "D",
+  "explanation": "持续性、进行性声嘶伴痰中带血、吞咽不适或颈部肿块者应高度怀疑喉癌；声带小结表现为双侧声带前中1/3交界处对称性结节，多与长期用声过度有关，一般不伴颈部肿块。教材P326。",
+  "source_page": "教材P326",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-017",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N16-20",
+  "stem": "甲状软骨的主要特点是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "A",
+  "explanation": "甲状软骨是喉部最大的软骨，前方正中融合处男性形成喉结，符合选项A。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-018",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N16-20",
+  "stem": "环状软骨的主要特点是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "B",
+  "explanation": "环状软骨是喉气管中唯一呈完整环形的软骨，对维持气道通畅至关重要，符合选项B。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-019",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N16-20",
+  "stem": "会厌软骨的主要作用是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "C",
+  "explanation": "会厌软骨表面覆以黏膜构成会厌，吞咽时会厌向后下盖住喉入口，防止食物进入喉腔，符合选项C。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-020",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N16-20",
+  "stem": "喉上神经内支的功能是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "D",
+  "explanation": "喉上神经内支司声门上区黏膜的感觉，其外支支配环甲肌运动，符合选项D。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-021",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N16-20",
+  "stem": "喉返神经的功能是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "E",
+  "explanation": "喉返神经支配除环甲肌以外的喉内各肌运动，并有感觉支司声门下区黏膜感觉，符合选项E。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M05-X-022",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "成对的喉软骨",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "属于成对喉软骨的有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "杓状软骨"
+   },
+   {
+    "label": "B",
+    "text": "环状软骨"
+   },
+   {
+    "label": "C",
+    "text": "小角软骨"
+   },
+   {
+    "label": "D",
+    "text": "甲状软骨"
+   },
+   {
+    "label": "E",
+    "text": "楔状软骨"
+   }
+  ],
+  "answer": "ACE",
+  "explanation": "喉软骨共9块：不成对的有甲状软骨、环状软骨和会厌软骨，成对的有杓状软骨、小角软骨和楔状软骨。教材P290。",
+  "source_page": "教材P290",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M05-X-023",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉腔的分区",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "喉腔以声带为界可分为？",
+  "options": [
+   {
+    "label": "A",
+    "text": "声门区"
+   },
+   {
+    "label": "B",
+    "text": "声门上区"
+   },
+   {
+    "label": "C",
+    "text": "喉咽区"
+   },
+   {
+    "label": "D",
+    "text": "声门下区"
+   },
+   {
+    "label": "E",
+    "text": "喉前庭区"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "以声带为界，喉腔分为声门上区、声门区和声门下区；喉前庭属于声门上区内的结构，喉咽则属咽腔、不属于喉腔分区。教材P294。",
+  "source_page": "教材P294",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-X-024",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉返神经的描述",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于喉返神经的描述，正确的有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "右侧绕锁骨下动脉上行"
+   },
+   {
+    "label": "B",
+    "text": "左侧绕主动脉弓上行"
+   },
+   {
+    "label": "C",
+    "text": "属迷走神经分支"
+   },
+   {
+    "label": "D",
+    "text": "支配除环甲肌以外的喉内肌"
+   },
+   {
+    "label": "E",
+    "text": "主要支配环甲肌运动"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "喉返神经是迷走神经分支，左侧绕主动脉弓、右侧绕锁骨下动脉上行，在环甲关节后方入喉，支配除环甲肌以外的喉内各肌；环甲肌由喉上神经外支支配，故E错误。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-X-025",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉阻塞的临床表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "喉阻塞的典型临床表现包括？",
+  "options": [
+   {
+    "label": "A",
+    "text": "吸气性软组织凹陷"
+   },
+   {
+    "label": "B",
+    "text": "声嘶"
+   },
+   {
+    "label": "C",
+    "text": "吸气性喉喘鸣"
+   },
+   {
+    "label": "D",
+    "text": "吸气性呼吸困难"
+   },
+   {
+    "label": "E",
+    "text": "呼气期哮鸣音"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "喉阻塞典型表现为吸气性呼吸困难、吸气性喉喘鸣、吸气性软组织凹陷（三凹征）、声嘶及发绀等；呼气期哮鸣音多见于支气管哮喘等呼气性呼吸困难，故E错误。教材P338。",
+  "source_page": "教材P338",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-X-026",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉癌的临床警示表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "提示喉癌需高度警惕的临床表现有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "吞咽不适"
+   },
+   {
+    "label": "B",
+    "text": "持续进行性声嘶"
+   },
+   {
+    "label": "C",
+    "text": "痰中带血"
+   },
+   {
+    "label": "D",
+    "text": "突发剧烈咽痛伴流涎"
+   },
+   {
+    "label": "E",
+    "text": "颈部无痛性肿块"
+   }
+  ],
+  "answer": "ABCE",
+  "explanation": "中老年重度吸烟者出现持续性、进行性声嘶，尤其伴痰中带血、吞咽不适或颈部无痛性肿块时，应高度怀疑喉癌；突发剧烈咽痛伴流涎更提示急性会厌炎，故E错误。教材P326。",
+  "source_page": "教材P326",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": true
+  }
+ }
+]

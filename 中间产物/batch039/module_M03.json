@@ -1,0 +1,1613 @@
+[
+ {
+  "id": "batch039-M03-A1-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻中隔的支架构成",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻中隔的支架主要由哪些结构构成",
+  "options": [
+   {
+    "label": "A",
+    "text": "蝶骨体、翼突内侧板及腭骨"
+   },
+   {
+    "label": "B",
+    "text": "鼻中隔黏膜、上颌骨额突及腭骨"
+   },
+   {
+    "label": "C",
+    "text": "鼻骨、筛骨垂直板及犁骨"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔软骨、筛骨垂直板及犁骨"
+   },
+   {
+    "label": "E",
+    "text": "鼻中隔骨膜、上颌骨腭突及泪骨"
+   }
+  ],
+  "answer": "D",
+  "explanation": "鼻中隔由鼻中隔软骨、筛骨垂直板（筛骨正中板）、犁骨和上颌骨腭突构成，其中前三者为主要支架；其软骨膜、骨膜外覆黏膜。鼻骨属外鼻骨支架，不参与鼻中隔构成。教材P152。",
+  "source_page": "教材P152",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "骨性后鼻孔的周界构成",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "骨性后鼻孔的周界主要由哪些结构围成",
+  "options": [
+   {
+    "label": "A",
+    "text": "蝶骨大翼、颧骨及上颌骨"
+   },
+   {
+    "label": "B",
+    "text": "蝶骨体、翼突外侧板、腭骨及犁骨"
+   },
+   {
+    "label": "C",
+    "text": "额骨、上颌骨额突及鼻骨"
+   },
+   {
+    "label": "D",
+    "text": "上颌骨腭突、腭骨水平部及犁骨"
+   },
+   {
+    "label": "E",
+    "text": "蝶骨体、翼突内侧板、腭骨及犁骨"
+   }
+  ],
+  "answer": "E",
+  "explanation": "骨性后鼻孔（鼻后孔）主要由蝶骨体（顶）、蝶骨翼突内侧板（外）、腭骨水平部后缘（底）和犁骨后缘（内）围绕而成；双侧后鼻孔经鼻咽部交通。梨状孔才是鼻腔前部的骨性开口。教材P153。",
+  "source_page": "教材P153",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A1-003",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻泪管开口的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻泪管开口位于鼻腔的哪个部位",
+  "options": [
+   {
+    "label": "A",
+    "text": "下鼻道前部"
+   },
+   {
+    "label": "B",
+    "text": "下鼻道后部"
+   },
+   {
+    "label": "C",
+    "text": "中鼻道前部"
+   },
+   {
+    "label": "D",
+    "text": "中鼻道后部"
+   },
+   {
+    "label": "E",
+    "text": "上鼻道前部"
+   }
+  ],
+  "answer": "A",
+  "explanation": "下鼻道顶端呈穹窿状，其前部有鼻泪管开口，距前鼻孔约3～3.5cm，手术时应予保护。中鼻道为前组鼻窦开口所在，上鼻道为后组筛窦开口所在。教材P154。",
+  "source_page": "教材P154",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-004",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "蝶窦自然开口的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "蝶窦自然开口引流至鼻腔的哪个部位",
+  "options": [
+   {
+    "label": "A",
+    "text": "上鼻道"
+   },
+   {
+    "label": "B",
+    "text": "蝶筛隐窝"
+   },
+   {
+    "label": "C",
+    "text": "中鼻道"
+   },
+   {
+    "label": "D",
+    "text": "下鼻道"
+   },
+   {
+    "label": "E",
+    "text": "半月裂"
+   }
+  ],
+  "answer": "B",
+  "explanation": "蝶窦自然开口位于蝶窦前壁内上方，开口于上鼻甲（或最上鼻甲）后上方的蝶筛隐窝；后组筛窦开口于上鼻道，前组鼻窦（额窦、上颌窦、前组筛窦）开口于中鼻道。教材P156。",
+  "source_page": "教材P156",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-005",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "窦口鼻道复合体（OMC）的范围",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "理解",
+  "stem": "下列结构中，**不属于**窦口鼻道复合体（OMC）范围内的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "上颌窦自然开口"
+   },
+   {
+    "label": "B",
+    "text": "筛泡与半月裂"
+   },
+   {
+    "label": "C",
+    "text": "中鼻甲与钩突"
+   },
+   {
+    "label": "D",
+    "text": "蝶窦自然开口"
+   },
+   {
+    "label": "E",
+    "text": "前组筛窦自然开口"
+   }
+  ],
+  "answer": "A",
+  "explanation": "OMC是前组鼻窦引流的共同通道，为以筛漏斗为中心的一组解剖结构的共同称谓，包括中鼻甲、钩突、筛泡、半月裂以及额窦、前组筛窦和上颌窦的自然开口等，但不包括蝶窦自然开口（蝶窦引流至蝶筛隐窝）。教材P155。",
+  "source_page": "教材P155",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A1-006",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻周期的时间规律",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "正常人体鼻阻力呈左右交替的周期性变化，其周期约为",
+  "options": [
+   {
+    "label": "A",
+    "text": "每间隔1～2小时一个周期"
+   },
+   {
+    "label": "B",
+    "text": "每间隔2～7小时一个周期"
+   },
+   {
+    "label": "C",
+    "text": "每间隔8～12小时一个周期"
+   },
+   {
+    "label": "D",
+    "text": "每间隔12～18小时一个周期"
+   },
+   {
+    "label": "E",
+    "text": "每间隔19～24小时一个周期"
+   }
+  ],
+  "answer": "B",
+  "explanation": "鼻周期是鼻阻力的生理性昼夜及左右交替变化，主要受双侧下鼻甲黏膜内容量血管交替收缩与扩张的影响，每间隔2～7小时出现一个周期，受下丘脑调节，可促使睡眠时翻身。教材P161。",
+  "source_page": "教材P161",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-007",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "黏液纤毛系统的摆动方向",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "鼻腔黏膜纤毛的摆动方向是",
+  "options": [
+   {
+    "label": "A",
+    "text": "由内向外朝窦口方向摆动"
+   },
+   {
+    "label": "B",
+    "text": "由后向前朝前鼻孔方向摆动"
+   },
+   {
+    "label": "C",
+    "text": "由下向上朝鼻腔顶方向摆动"
+   },
+   {
+    "label": "D",
+    "text": "由前向后朝鼻咽方向摆动"
+   },
+   {
+    "label": "E",
+    "text": "双向无规则来回摆动"
+   }
+  ],
+  "answer": "D",
+  "explanation": "生理条件下鼻腔纤毛从前向后朝向鼻咽方向摆动，每根纤毛每分钟约摆动1000次，与黏液毯共同构成黏液纤毛清除系统，是鼻腔和鼻窦的重要防线；鼻窦纤毛则朝向自然窦口摆动。教材P161。",
+  "source_page": "教材P161",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-008",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "嗅区黏膜的分布部位",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "嗅区黏膜主要分布于鼻腔的哪个区域",
+  "options": [
+   {
+    "label": "A",
+    "text": "蝶筛隐窝后方的鼻咽顶壁"
+   },
+   {
+    "label": "B",
+    "text": "下鼻甲内侧面及鼻腔底"
+   },
+   {
+    "label": "C",
+    "text": "中鼻道及其下方的下鼻道"
+   },
+   {
+    "label": "D",
+    "text": "鼻前庭及其周围的鼻翼皮肤"
+   },
+   {
+    "label": "E",
+    "text": "上鼻甲内侧面及鼻中隔上部"
+   }
+  ],
+  "answer": "E",
+  "explanation": "嗅区黏膜分布于上鼻甲内侧面、筛板下表面、中鼻甲垂直部上部的内侧面及相应的鼻中隔上部，约占成人鼻黏膜的1/3，含嗅细胞、支持细胞及基底细胞，负责嗅觉感知。教材P156。",
+  "source_page": "教材P156",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A1-009",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "筛窦与眼眶的骨性分隔（纸样板）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "分隔筛窦与眼眶的菲薄骨壁是",
+  "options": [
+   {
+    "label": "A",
+    "text": "纸样板"
+   },
+   {
+    "label": "B",
+    "text": "筛骨水平板"
+   },
+   {
+    "label": "C",
+    "text": "蝶筛板"
+   },
+   {
+    "label": "D",
+    "text": "蝶骨小翼"
+   },
+   {
+    "label": "E",
+    "text": "上颌骨额突"
+   }
+  ],
+  "answer": "A",
+  "explanation": "筛窦外侧壁即眼眶内侧壁，大部分由泪骨和纸样板构成，手术损伤纸样板将出现眶内并发症，是鼻窦手术的重要解剖标志；筛骨水平板（筛板）为鼻腔顶壁，损伤可致脑脊液鼻漏。教材P159。",
+  "source_page": "教材P159",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-010",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻中隔利特尔动脉丛的组成",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "记忆",
+  "stem": "组成鼻中隔利特尔动脉丛的动脉**不包括**",
+  "options": [
+   {
+    "label": "A",
+    "text": "筛前动脉"
+   },
+   {
+    "label": "B",
+    "text": "鼻腭动脉"
+   },
+   {
+    "label": "C",
+    "text": "上唇动脉"
+   },
+   {
+    "label": "D",
+    "text": "腭大动脉"
+   },
+   {
+    "label": "E",
+    "text": "眼动脉主干"
+   }
+  ],
+  "answer": "A",
+  "explanation": "利特尔动脉丛由鼻腭动脉、筛前动脉、筛后动脉、上唇动脉和腭大动脉在鼻中隔前下部黏膜下吻合形成，该区称利特尔区，是鼻出血最常见部位。眼动脉主干位于眶内并分出筛前、筛后动脉，其本身不直接参与该动脉丛。教材P157。",
+  "source_page": "教材P157",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-011",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻疖最常见的致病菌",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻疖最常见的致病菌是",
+  "options": [
+   {
+    "label": "A",
+    "text": "流感嗜血杆菌"
+   },
+   {
+    "label": "B",
+    "text": "乙型溶血性链球菌"
+   },
+   {
+    "label": "C",
+    "text": "金黄色葡萄球菌"
+   },
+   {
+    "label": "D",
+    "text": "肺炎链球菌"
+   },
+   {
+    "label": "E",
+    "text": "铜绿假单胞菌"
+   }
+  ],
+  "answer": "C",
+  "explanation": "鼻疖为鼻前庭、鼻尖和鼻翼部毛囊、皮脂腺或汗腺的局限性急性化脓性炎症，以鼻前庭最常见，金黄色葡萄球菌是主要致病菌；乙型溶血性链球菌所致者多为鼻部丹毒。教材P186。",
+  "source_page": "教材P186",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-012",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻疖最严重的颅内并发症",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "鼻疖最严重的颅内并发症是",
+  "options": [
+   {
+    "label": "A",
+    "text": "眶内蜂窝织炎"
+   },
+   {
+    "label": "B",
+    "text": "鼻翼软骨膜炎"
+   },
+   {
+    "label": "C",
+    "text": "上唇蜂窝织炎"
+   },
+   {
+    "label": "D",
+    "text": "海绵窦血栓性静脉炎"
+   },
+   {
+    "label": "E",
+    "text": "颊部蜂窝织炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "面部静脉无瓣膜，血液可双向流动，鼻部皮肤感染经内眦静脉、眼上下静脉可扩散入海绵窦，故海绵窦血栓性静脉炎是鼻疖最严重的颅内并发症，表现为寒战、高热、剧烈头痛、眼睑及结膜水肿、眼球突出固定等，多因挤压疖肿所致。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-013",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "变应性鼻炎的发病机制",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "变应性鼻炎的主要发病机制属于",
+  "options": [
+   {
+    "label": "A",
+    "text": "非免疫性神经源性炎症"
+   },
+   {
+    "label": "B",
+    "text": "IgG介导的Ⅱ型变态反应"
+   },
+   {
+    "label": "C",
+    "text": "免疫复合物介导的Ⅲ型变态反应"
+   },
+   {
+    "label": "D",
+    "text": "T细胞介导的Ⅳ型变态反应"
+   },
+   {
+    "label": "E",
+    "text": "IgE介导的Ⅰ型变态反应"
+   }
+  ],
+  "answer": "E",
+  "explanation": "变应性鼻炎是特应性个体接触致敏原后由IgE介导组胺等炎性介质释放、多种免疫细胞和细胞因子参与的鼻黏膜慢性炎症，属IgE介导的Ⅰ型变态反应，有致敏和激发两个阶段。非免疫性神经源性炎症多见于血管运动性鼻炎。教材P196。",
+  "source_page": "教材P196",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A1-014",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "含牙囊肿的诊断依据",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "上颌骨囊性病变若含有未萌出牙齿的牙冠，应考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "含牙囊肿"
+   },
+   {
+    "label": "B",
+    "text": "牙根囊肿"
+   },
+   {
+    "label": "C",
+    "text": "鼻前庭囊肿"
+   },
+   {
+    "label": "D",
+    "text": "鼻窦黏液囊肿"
+   },
+   {
+    "label": "E",
+    "text": "鼻窦黏膜囊肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "含牙囊肿（滤泡囊肿）环绕未萌出牙或额外牙的牙冠并附着于牙颈部，影像学显示囊肿阴影内含牙影，常伴一牙缺如；牙根囊肿则起因于牙根感染、牙髓坏死，囊肿与病牙根尖相关。教材P230。",
+  "source_page": "教材P230",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-015",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "真菌球型鼻窦炎的CT特征",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者鼻窦CT示单侧上颌窦腔内不规则高密度影及点状钙化，最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性化脓性鼻窦炎"
+   },
+   {
+    "label": "B",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "上颌窦黏液囊肿"
+   },
+   {
+    "label": "D",
+    "text": "内翻性乳头状瘤"
+   },
+   {
+    "label": "E",
+    "text": "上颌窦恶性肿瘤"
+   }
+  ],
+  "answer": "B",
+  "explanation": "真菌球型鼻窦炎单窦发病、上颌窦最多见，鼻窦CT显示单窦不均匀密度增高，约70%可见高密度钙化斑，可伴窦壁膨隆或压迫性吸收，是术前重要诊断参考，最终诊断需依据病理。教材P209。",
+  "source_page": "教材P209",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "变应性鼻炎的典型病例诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，26岁，每年春季出现阵发性喷嚏、大量清水样鼻涕伴鼻痒和眼痒，查鼻黏膜苍白水肿，最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "血管运动性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性鼻炎"
+   },
+   {
+    "label": "C",
+    "text": "变应性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "慢性肥厚性鼻炎"
+   },
+   {
+    "label": "E",
+    "text": "萎缩性鼻炎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "发作性喷嚏、大量清水样涕、鼻痒、眼痒，鼻黏膜苍白水肿，变应原检测阳性，符合变应性鼻炎（本例呈季节性发作）；急性鼻炎有发热等全身症状，血管运动性鼻炎变应原检测阴性。教材P196-197。",
+  "source_page": "教材P196-197",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "急性细菌性鼻窦炎的判断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，30岁，感冒后脓涕、面颊部胀痛持续12天无好转，最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "慢性鼻窦炎急性发作"
+   },
+   {
+    "label": "B",
+    "text": "病毒性急性鼻炎"
+   },
+   {
+    "label": "C",
+    "text": "慢性单纯性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "E",
+    "text": "真菌球型鼻窦炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "急性细菌性鼻窦炎常见病原为肺炎链球菌、流感嗜血杆菌及卡他莫拉菌；症状持续至少10天无改善，或先改善后再次明显加重，应考虑急性细菌性鼻窦炎。单纯病毒性上呼吸道感染不应常规使用抗菌药物。教材P189-195。",
+  "source_page": "教材P189-195",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-003",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "慢性鼻窦炎的病程与诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，45岁，鼻塞、黏脓性鼻涕伴头面部胀痛已持续4个月，鼻内镜见中鼻道黏脓性分泌物，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "B",
+    "text": "急性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "变应性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "萎缩性鼻炎"
+   },
+   {
+    "label": "E",
+    "text": "慢性鼻窦炎"
+   }
+  ],
+  "answer": "E",
+  "explanation": "慢性鼻窦炎指鼻窦黏膜慢性炎症持续超过12周，以鼻塞、黏脓性或黏脓性鼻涕为主要症状，伴头面部胀痛或嗅觉减退，并需鼻内镜或影像学等客观证据支持；本例病程4个月，符合慢性鼻窦炎。教材P201。",
+  "source_page": "教材P201",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A2-004",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "真菌球型鼻窦炎的治疗",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，50岁，左侧单侧鼻塞、涕血伴恶臭，CT示左上颌窦内团块状影伴点状钙化，首选的治疗方式是",
+  "options": [
+   {
+    "label": "A",
+    "text": "手术清除窦内真菌团块"
+   },
+   {
+    "label": "B",
+    "text": "全身抗真菌药物治疗"
+   },
+   {
+    "label": "C",
+    "text": "口服糖皮质激素治疗"
+   },
+   {
+    "label": "D",
+    "text": "长期鼻用减充血剂"
+   },
+   {
+    "label": "E",
+    "text": "单纯鼻腔生理盐水冲洗"
+   }
+  ],
+  "answer": "A",
+  "explanation": "真菌球型鼻窦炎属非侵袭性，治疗以手术清除窦内真菌团块、建立宽敞通气和引流为主，术后不需抗真菌药物；抗真菌药物主要用于侵袭性真菌性鼻窦炎。教材P209-210。",
+  "source_page": "教材P209-210",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-005",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "挤压鼻疖致海绵窦血栓性静脉炎",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，22岁，鼻前庭疖肿5天，自行挤压后出现寒战、高热和患侧眼睑水肿，最可能的并发症是",
+  "options": [
+   {
+    "label": "A",
+    "text": "眶内蜂窝织炎"
+   },
+   {
+    "label": "B",
+    "text": "海绵窦血栓性静脉炎"
+   },
+   {
+    "label": "C",
+    "text": "上唇蜂窝织炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻翼软骨膜炎"
+   },
+   {
+    "label": "E",
+    "text": "面颊部蜂窝织炎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "鼻疖治疗原则为严禁挤压；挤压疖肿可使感染经内眦静脉、眼上下静脉扩散入海绵窦，引起海绵窦血栓性静脉炎，表现为寒战、高热、剧烈头痛、患侧眼睑及结膜水肿、眼球突出固定等。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-006",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻源性眶内并发症的危险信号",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "患儿，男，8岁，急性鼻窦炎5天，突发右眼睑红肿、眼球突出且活动受限，此时最应警惕的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性卡他性结膜炎"
+   },
+   {
+    "label": "B",
+    "text": "单纯眼睑过敏水肿"
+   },
+   {
+    "label": "C",
+    "text": "眶蜂窝织炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻前庭疖肿"
+   },
+   {
+    "label": "E",
+    "text": "分泌性中耳炎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "鼻窦与眼眶关系密切，儿童急性鼻窦炎尤其需警惕感染扩散。眼睑红肿、眼球突出、眼球活动受限、视力下降提示鼻源性眶内并发症（眶内炎性水肿、眶蜂窝织炎或眶骨膜下脓肿），视力下降和眼球活动障碍属重要危险信号，需结合增强CT或MRI鉴别。教材P203。",
+  "source_page": "教材P203",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-007",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "慢性单纯性鼻炎与肥厚性鼻炎的鉴别",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者，男，35岁，双侧间歇性、交替性鼻塞，下鼻甲充血肿胀，用减充血剂后鼻甲明显缩小，最符合的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "萎缩性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "慢性肥厚性鼻炎"
+   },
+   {
+    "label": "C",
+    "text": "变应性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "慢性单纯性鼻炎"
+   },
+   {
+    "label": "E",
+    "text": "药物性鼻炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "单纯性鼻炎鼻塞为间歇性、交替性，下鼻甲黏膜充血肿胀但收缩能力较好，用减充血剂后鼻甲明显缩小；肥厚性鼻炎多为持续性鼻塞，下鼻甲肥厚、表面可呈结节状或桑葚状，减充血剂收缩较差。教材P174。",
+  "source_page": "教材P174",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-008",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻中隔血肿的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者，男，20岁，鼻部外伤后2天出现双侧鼻塞，检查见鼻腔内对称性暗红色隆起、触之有波动感，应诊断为",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻骨骨折"
+   },
+   {
+    "label": "B",
+    "text": "鼻中隔脓肿"
+   },
+   {
+    "label": "C",
+    "text": "鼻中隔偏曲"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔穿孔"
+   },
+   {
+    "label": "E",
+    "text": "鼻中隔血肿"
+   }
+  ],
+  "answer": "E",
+  "explanation": "鼻外伤后鼻中隔出现对称性暗红色隆起、触之柔软有波动感、对血管收缩剂无反应，穿刺抽出血液者为鼻中隔血肿；抽出脓液者为鼻中隔脓肿。血肿需及时引流，以防软骨缺血坏死、感染及鞍鼻畸形。教材P220。",
+  "source_page": "教材P220",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A2-009",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻骨骨折的临床表现与诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者，男，25岁，鼻部外伤后鼻梁偏斜、局部压痛并鼻塞，最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻骨骨折"
+   },
+   {
+    "label": "B",
+    "text": "鼻中隔血肿"
+   },
+   {
+    "label": "C",
+    "text": "鼻中隔脱位"
+   },
+   {
+    "label": "D",
+    "text": "鼻腔异物"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭囊肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "鼻骨上部窄厚、下部宽薄，受暴力作用易发生骨折并多累及鼻骨下部向下方塌陷，表现为鼻部畸形、鼻梁偏斜、压痛、肿胀及鼻塞；鼻中隔血肿以鼻腔内对称性暗红色隆起、波动感为特征。教材P181。",
+  "source_page": "教材P181",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-010",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "老年后鼻出血的出血部位",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，68岁，高血压病史，突发右侧鼻腔大量出血，血液持续经咽部流出，出血部位最可能是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻腔前部鼻中隔利特尔区"
+   },
+   {
+    "label": "B",
+    "text": "鼻腔后段蝶腭动脉分支"
+   },
+   {
+    "label": "C",
+    "text": "鼻腔后部下鼻道静脉丛"
+   },
+   {
+    "label": "D",
+    "text": "鼻腔前庭浅表静脉"
+   },
+   {
+    "label": "E",
+    "text": "中鼻道黏膜下动脉丛"
+   }
+  ],
+  "answer": "B",
+  "explanation": "中、老年患者鼻出血多发生在鼻腔后段下鼻道的吴氏鼻-鼻咽静脉丛，亦可为鼻中隔后部动脉（约90%来自蝶腭动脉）出血，出血多较凶猛、不易止血；儿童、青少年的鼻出血多位于鼻中隔前下部利特尔区。教材P222。",
+  "source_page": "教材P222",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A3-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "后鼻出血的出血来源判断",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "应用",
+  "case_group": "M03-A3-01",
+  "stem": "（共用题干）患者，男，66岁，高血压病史10年，突发右侧鼻腔大量出血，血液部分经咽部流出，鼻腔前部未见明确出血点。此时出血最可能来源于",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻腔前部前庭黏膜糜烂面"
+   },
+   {
+    "label": "B",
+    "text": "鼻腔前部鼻中隔出血点"
+   },
+   {
+    "label": "C",
+    "text": "鼻腔后部动脉性出血"
+   },
+   {
+    "label": "D",
+    "text": "下鼻甲黏膜糜烂处"
+   },
+   {
+    "label": "E",
+    "text": "鼻腔上部嗅裂毛细血管网"
+   }
+  ],
+  "answer": "C",
+  "explanation": "血液持续向咽部流出、鼻腔前部未见出血点，提示鼻腔后部出血；鼻腔后部出血多来源于动脉（约90%来自蝶腭动脉），出血量较大且难以控制，多见于中老年及高血压患者。教材P222。",
+  "source_page": "教材P222",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A3-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "出血部位不明的鼻出血止血方法",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "应用",
+  "case_group": "M03-A3-01",
+  "stem": "（共用题干）该患者出血量较大且出血部位不明确，首选的止血方法是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻内镜下探查电凝止血"
+   },
+   {
+    "label": "B",
+    "text": "鼻腔可吸收材料填塞"
+   },
+   {
+    "label": "C",
+    "text": "化学药物烧灼出血点"
+   },
+   {
+    "label": "D",
+    "text": "前鼻孔凡士林纱条填塞"
+   },
+   {
+    "label": "E",
+    "text": "前额和后颈局部冷敷"
+   }
+  ],
+  "answer": "D",
+  "explanation": "填塞法适用于出血较剧、渗血面较大或出血部位不明者，前鼻孔纱条填塞是较常用的有效止血方法；烧灼法适用于反复少量出血且出血点明确者，可吸收材料填塞适用于弥漫性、出血量较少者。教材P223。",
+  "source_page": "教材P223",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（变应性鼻炎）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N6-10",
+  "stem": "每年春季出现阵发性喷嚏、清水样涕、鼻痒和鼻塞，鼻黏膜苍白水肿，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "阵发性喷嚏、清水样涕、鼻痒、鼻塞，鼻黏膜苍白水肿，呈季节性发作，为季节性变应性鼻炎，属IgE介导的Ⅰ型变态反应，常与哮喘共存。教材P196-197。",
+  "source_page": "教材P196-197",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（急性细菌性鼻窦炎）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N6-10",
+  "stem": "症状持续10天以上无改善，或好转后再次加重，脓涕伴面部胀痛，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "B",
+  "explanation": "急性细菌性鼻窦炎常见病原为肺炎链球菌、流感嗜血杆菌及卡他莫拉菌；症状持续至少10天无改善，或先改善后再次明显加重时，应考虑急性细菌性鼻窦炎。教材P189-195。",
+  "source_page": "教材P189-195",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-003",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（真菌球型鼻窦炎）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N6-10",
+  "stem": "单侧鼻塞、涕血伴恶臭，CT示单窦腔内不规则高密度影及点状钙化，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "C",
+  "explanation": "真菌球型鼻窦炎单窦发病、上颌窦最多见，表现为单侧鼻塞、流脓涕、涕血或恶臭，鼻窦CT可见单窦不均匀密度增高及高密度钙化斑，治疗以手术清除真菌团块为主。教材P208-209。",
+  "source_page": "教材P208-209",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-004",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（鼻中隔血肿）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N6-10",
+  "stem": "鼻部外伤后出现双侧鼻塞，鼻腔内对称性暗红色隆起、触之波动感，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "D",
+  "explanation": "鼻部外伤后鼻中隔出现对称性暗红色隆起、触之柔软有波动感、对血管收缩剂无反应，穿刺抽出血液者为鼻中隔血肿，需及时引流以防软骨缺血坏死、感染及鞍鼻畸形。教材P220。",
+  "source_page": "教材P220",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-005",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（鼻前庭疖肿）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "b1_group": "N6-10",
+  "stem": "外鼻红肿热痛，顶部出现黄白色脓点，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "E",
+  "explanation": "鼻前庭、鼻尖和鼻翼部毛囊、皮脂腺或汗腺的局限性急性化脓性炎症即鼻疖，最常见于鼻前庭，表现为局部红肿热痛、局限性隆起，约1周成熟后顶部出现黄白色脓点；治疗原则严禁挤压。教材P186。",
+  "source_page": "教材P186",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-X-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "利特尔动脉丛的组成动脉",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "参与构成鼻中隔利特尔动脉丛的动脉有",
+  "options": [
+   {
+    "label": "A",
+    "text": "筛前动脉"
+   },
+   {
+    "label": "B",
+    "text": "腭大动脉"
+   },
+   {
+    "label": "C",
+    "text": "鼻腭动脉"
+   },
+   {
+    "label": "D",
+    "text": "上唇动脉"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "鼻腭动脉、筛前动脉、筛后动脉、上唇动脉和腭大动脉在鼻中隔前下部黏膜下交互吻合，形成利特尔动脉丛，该区称利特尔区，是鼻出血最常见部位，故A、B、C、D均参与构成。教材P157。",
+  "source_page": "教材P157",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M03-X-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻中隔支架的组成骨与软骨",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "鼻中隔支架的组成结构包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻中隔软骨"
+   },
+   {
+    "label": "B",
+    "text": "犁骨"
+   },
+   {
+    "label": "C",
+    "text": "鼻骨"
+   },
+   {
+    "label": "D",
+    "text": "筛骨垂直板"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "鼻中隔由鼻中隔软骨、筛骨垂直板（筛骨正中板）、犁骨和上颌骨腭突构成，前三者为鼻中隔主要支架，故A、B、C正确；鼻骨属外鼻骨支架，不参与鼻中隔构成，故不答D。教材P152。",
+  "source_page": "教材P152",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M03-X-003",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "变应性鼻炎的典型症状",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "变应性鼻炎的典型临床表现有",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻痒与眼痒"
+   },
+   {
+    "label": "B",
+    "text": "头面部剧烈胀痛"
+   },
+   {
+    "label": "C",
+    "text": "大量清水样鼻涕"
+   },
+   {
+    "label": "D",
+    "text": "阵发性连续喷嚏"
+   }
+  ],
+  "answer": "ACD",
+  "explanation": "变应性鼻炎以鼻痒、阵发性连续喷嚏、大量水样鼻涕和鼻塞为主要特征，合并变应性结膜炎时可有眼痒和结膜充血。头面部胀痛属鼻窦炎表现，不是变应性鼻炎的典型症状，故不答D。教材P196-197。",
+  "source_page": "教材P196-197",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M03-X-004",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "急性细菌性鼻窦炎的常见致病菌",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "急性细菌性鼻窦炎的常见致病菌有",
+  "options": [
+   {
+    "label": "A",
+    "text": "卡他莫拉菌"
+   },
+   {
+    "label": "B",
+    "text": "流感嗜血杆菌"
+   },
+   {
+    "label": "C",
+    "text": "肺炎链球菌"
+   },
+   {
+    "label": "D",
+    "text": "铜绿假单胞菌"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "急性细菌性鼻窦炎常见病原为肺炎链球菌、流感嗜血杆菌及卡他莫拉菌，临床上也可表现为球菌与杆菌、需氧菌与厌氧菌的混合感染，故A、B、C正确；铜绿假单胞菌多见于医院获得性感染，非本病常见致病菌。教材P192。",
+  "source_page": "教材P192",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M03-X-005",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "功能性内镜鼻窦手术（FESS）的适应证",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "功能性内镜鼻窦手术（FESS）的适应证包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "B",
+    "text": "规范药物治疗无效的慢性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "部分伴鼻息肉的病例"
+   },
+   {
+    "label": "D",
+    "text": "无症状的鼻窦黏膜小囊肿"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "FESS主要用于规范药物治疗效果不佳的慢性鼻窦炎、部分伴鼻息肉的病例、真菌球型鼻窦炎及部分需外科处理的眶内或颅内并发症，故A、B、C正确；健康体检发现的无临床症状鼻窦内小囊肿一般无须处理，不是手术适应证。教材P204-210。",
+  "source_page": "教材P204-210",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M03-X-006",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻腔鼻窦手术的解剖风险",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "分析",
+  "stem": "关于鼻腔鼻窦手术的解剖风险，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "中鼻甲基板在手术中可不予辨识"
+   },
+   {
+    "label": "B",
+    "text": "气化良好的蝶窦外侧壁紧邻视神经"
+   },
+   {
+    "label": "C",
+    "text": "损伤眶纸样板可致眶内并发症"
+   },
+   {
+    "label": "D",
+    "text": "损伤筛骨水平板可致脑脊液鼻漏"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "筛窦外侧壁即纸样板，损伤可致眶内并发症；鼻腔顶壁中段为菲薄而脆的筛骨水平板（筛板），损伤可致脑脊液鼻漏；气化良好的蝶窦外侧壁菲薄甚或缺损，与视神经管、颈内动脉毗邻，手术易损伤视神经致失明，故A、B、C正确。中鼻甲及其基板是重要手术标志，术中不可不辨识。教材P159-160。",
+  "source_page": "教材P159-160",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ }
+]

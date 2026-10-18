@@ -1,0 +1,8435 @@
+[
+ {
+  "id": "batch039-M01-A1-001",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "额镜的功能",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "额镜在耳鼻咽喉科检查中的主要作用是",
+  "options": [
+   {
+    "label": "A",
+    "text": "对检查部位进行加温预热"
+   },
+   {
+    "label": "B",
+    "text": "直接放大并显示目标组织结构"
+   },
+   {
+    "label": "C",
+    "text": "对检查部位进行负压吸引"
+   },
+   {
+    "label": "D",
+    "text": "对检查部位进行液体喷雾"
+   },
+   {
+    "label": "E",
+    "text": "将光源反射并聚焦于检查部位"
+   }
+  ],
+  "answer": "E",
+  "explanation": "额镜为圆形聚光凹面镜，可将光源反射并聚焦于检查部位，检查者通过中央窥视孔观察反射光束焦点区域，是传统的照明器械，主要起照明作用而非放大、吸引、喷雾或加温。教材P11。",
+  "source_page": "教材P11",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M01-A1-002",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "检查器械的功能",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "用于暴露口咽部、便于观察扁桃体及咽后壁的检查器械是",
+  "options": [
+   {
+    "label": "A",
+    "text": "间接鼻咽镜"
+   },
+   {
+    "label": "B",
+    "text": "前鼻镜"
+   },
+   {
+    "label": "C",
+    "text": "耳窥镜"
+   },
+   {
+    "label": "D",
+    "text": "间接喉镜"
+   },
+   {
+    "label": "E",
+    "text": "压舌板"
+   }
+  ],
+  "answer": "E",
+  "explanation": "压舌板用于暴露口咽部，便于观察扁桃体、咽后壁及咽侧壁；前鼻镜用于鼻腔检查，耳窥镜用于外耳道及鼓膜检查，间接喉镜用于喉及下咽检查，间接鼻咽镜用于鼻咽部检查。教材P12。",
+  "source_page": "教材P12",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M01-A1-003",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "硬性内镜的特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "关于硬性内镜的特点，正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "可随意弯曲，便于观察深部腔隙"
+   },
+   {
+    "label": "B",
+    "text": "不能弯曲、图像清晰，适合精细观察"
+   },
+   {
+    "label": "C",
+    "text": "主要用于颈部肿块的穿刺活检"
+   },
+   {
+    "label": "D",
+    "text": "可测量听力损失的程度与类型"
+   },
+   {
+    "label": "E",
+    "text": "可替代听神经功能的定位检查"
+   }
+  ],
+  "answer": "B",
+  "explanation": "硬性内镜一般不能弯曲，图像清晰、适合精细观察，常用于鼻腔、鼻窦及耳部检查；可弯曲是软性内镜的特点。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-A1-004",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "软性内镜的特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "与硬性内镜相比，软性纤维内镜的主要特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "仅适用于外耳道及鼓膜检查"
+   },
+   {
+    "label": "B",
+    "text": "图像清晰，可放大观察目标"
+   },
+   {
+    "label": "C",
+    "text": "不可弯曲，结构坚固耐用"
+   },
+   {
+    "label": "D",
+    "text": "可弯曲，便于观察深在腔隙"
+   },
+   {
+    "label": "E",
+    "text": "仅适用于鼻腔浅表结构观察"
+   }
+  ],
+  "answer": "D",
+  "explanation": "软性纤维内镜或电子内镜可以弯曲，便于观察鼻腔深部、鼻咽、喉及部分下咽结构，也适用于部分儿童或张口受限患者；不可弯曲、需精细观察是硬性内镜的特点。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-A1-005",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "耳内镜的观察部位",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "耳内镜主要用于观察的部位是",
+  "options": [
+   {
+    "label": "A",
+    "text": "内耳与听神经"
+   },
+   {
+    "label": "B",
+    "text": "鼻腔与鼻窦"
+   },
+   {
+    "label": "C",
+    "text": "咽部与喉腔"
+   },
+   {
+    "label": "D",
+    "text": "鼻咽与下咽"
+   },
+   {
+    "label": "E",
+    "text": "外耳道与鼓膜"
+   }
+  ],
+  "answer": "E",
+  "explanation": "耳内镜用于观察外耳道和鼓膜形态；鼻腔、鼻窦需鼻内镜，鼻咽与喉部需电子鼻咽喉镜，而内耳与听神经无法经内镜直接观察。教材P12。",
+  "source_page": "教材P12",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M01-A1-006",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "客观听力学检查",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列听力学检查中，属于客观检查的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "纯音测听"
+   },
+   {
+    "label": "B",
+    "text": "声导抗"
+   },
+   {
+    "label": "C",
+    "text": "音叉试验"
+   },
+   {
+    "label": "D",
+    "text": "言语测听"
+   },
+   {
+    "label": "E",
+    "text": "表试验"
+   }
+  ],
+  "answer": "B",
+  "explanation": "声导抗、耳声发射和听性脑干反应属客观检查，不需受检者主观配合；纯音测听、音叉试验、言语测听及表试验均需受检者主观应答，属主观检查。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-A1-007",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "主观听力测试",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "下列检查中属于主观听力测试的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "听性脑干反应"
+   },
+   {
+    "label": "B",
+    "text": "声导抗"
+   },
+   {
+    "label": "C",
+    "text": "耳声发射"
+   },
+   {
+    "label": "D",
+    "text": "纯音测听"
+   },
+   {
+    "label": "E",
+    "text": "镫骨肌反射"
+   }
+  ],
+  "answer": "D",
+  "explanation": "纯音测听需受检者主观判断并做出应答，属主观听力测试；声导抗、耳声发射、听性脑干反应及镫骨肌反射均属客观检查。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-A1-008",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "电子鼻咽喉镜的用途",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "可弯曲、能清晰观察鼻咽、喉及部分下咽结构的内镜是",
+  "options": [
+   {
+    "label": "A",
+    "text": "频闪喉镜"
+   },
+   {
+    "label": "B",
+    "text": "硬性耳内镜"
+   },
+   {
+    "label": "C",
+    "text": "间接鼻咽镜"
+   },
+   {
+    "label": "D",
+    "text": "直接喉镜"
+   },
+   {
+    "label": "E",
+    "text": "电子鼻咽喉镜"
+   }
+  ],
+  "answer": "E",
+  "explanation": "软性电子鼻咽喉镜可弯曲，能清晰观察鼻咽、喉部及部分下咽结构；硬性耳内镜、间接鼻咽镜、直接喉镜等硬性器械不能弯曲，观察范围有限。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M01-A1-009",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "频闪喉镜的用途",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "用于评价声带振动、黏膜波与振动对称性的检查设备是",
+  "options": [
+   {
+    "label": "A",
+    "text": "电子鼻咽喉镜"
+   },
+   {
+    "label": "B",
+    "text": "频闪喉镜"
+   },
+   {
+    "label": "C",
+    "text": "硬性鼻内镜"
+   },
+   {
+    "label": "D",
+    "text": "耳内镜"
+   },
+   {
+    "label": "E",
+    "text": "前鼻镜"
+   }
+  ],
+  "answer": "B",
+  "explanation": "频闪喉镜可评价声带振动、黏膜波、振幅及振动对称性，对声带细微病变及嗓音疾病有价值；其余内镜主要用于观察相应腔隙的形态。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-A1-010",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "鼻窦CT的适应证",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "评估上颌窦与筛窦解剖、慢性炎症及骨质改变的首选影像检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "颈部超声检查"
+   },
+   {
+    "label": "B",
+    "text": "鼻窦MRI"
+   },
+   {
+    "label": "C",
+    "text": "鼻内镜检查"
+   },
+   {
+    "label": "D",
+    "text": "鼻窦CT"
+   },
+   {
+    "label": "E",
+    "text": "胸部X线检查"
+   }
+  ],
+  "answer": "D",
+  "explanation": "鼻窦CT用于评估鼻窦解剖、慢性炎症、真菌球、骨质改变及手术相关解剖；MRI对骨质显示不如CT，内镜与超声均不能替代其评估作用。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-A1-011",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "颈部彩色多普勒超声的评估内容",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "颈部彩色多普勒超声可以评估颈部肿块的",
+  "options": [
+   {
+    "label": "A",
+    "text": "病变的代谢活性"
+   },
+   {
+    "label": "B",
+    "text": "病理组织学类型"
+   },
+   {
+    "label": "C",
+    "text": "与颈部血管的关系"
+   },
+   {
+    "label": "D",
+    "text": "肿瘤标志物数值"
+   },
+   {
+    "label": "E",
+    "text": "大小、边界及囊实性"
+   }
+  ],
+  "answer": "E",
+  "explanation": "颈部彩色多普勒超声可评估肿块大小、边界、囊实性及血流情况；肿块性质的确诊需依靠组织病理学，超声仅能提供形态与血流信息。教材P14。",
+  "source_page": "教材P14",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M01-A1-012",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "增强CT或MRI的适应证",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "为明确颈部肿块与周围血管、神经的关系，宜进一步选择的检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "颈部彩色多普勒超声"
+   },
+   {
+    "label": "B",
+    "text": "增强CT或MRI"
+   },
+   {
+    "label": "C",
+    "text": "数字减影血管造影"
+   },
+   {
+    "label": "D",
+    "text": "PET-CT全身显像"
+   },
+   {
+    "label": "E",
+    "text": "颈部X线平片"
+   }
+  ],
+  "answer": "B",
+  "explanation": "增强CT或MRI可进一步评估病变与周围组织、血管及神经的关系，是判断颈部肿块与邻近重要结构关系的重要方法。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-A2-013",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "耳内镜检查的局限性",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男，45岁，双耳听力下降。医师用耳内镜检查见外耳道通畅、鼓膜完整。此时正确的判断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼓膜完整即可排除中耳病变"
+   },
+   {
+    "label": "B",
+    "text": "耳内镜可替代纯音测听检查"
+   },
+   {
+    "label": "C",
+    "text": "外耳道通畅即可排除感音神经性聋"
+   },
+   {
+    "label": "D",
+    "text": "尚不能判定听力损失类型"
+   },
+   {
+    "label": "E",
+    "text": "耳内镜可确定听力损失程度"
+   }
+  ],
+  "answer": "D",
+  "explanation": "耳内镜仅能观察外耳道和鼓膜，不能判定听力损失的类型与程度；判定听力损失类型需结合纯音测听等专门的听力学检查。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-A2-014",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "胸片对气道异物的局限性",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男，3岁，进食花生后突发剧烈呛咳，随后阵发性咳嗽。胸部X线检查未见明显异常。此时正确的认识是",
+  "options": [
+   {
+    "label": "A",
+    "text": "胸片正常可排除气管异物"
+   },
+   {
+    "label": "B",
+    "text": "胸片正常可诊断为喉软化"
+   },
+   {
+    "label": "C",
+    "text": "胸片正常可确诊为支气管炎"
+   },
+   {
+    "label": "D",
+    "text": "胸片正常提示为哮喘发作"
+   },
+   {
+    "label": "E",
+    "text": "胸片正常不能排除气管异物"
+   }
+  ],
+  "answer": "E",
+  "explanation": "气管支气管异物可因异物透光或停留位置而使胸片正常，正常胸片不能排除气道异物，须结合明确异物吸入史及支气管镜检查。教材P366。",
+  "source_page": "教材P366",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M01-A2-015",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "EB病毒检测不能代替鼻咽癌病理确诊",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男，50岁，回吸性血涕伴右耳闷1个月，鼻咽部见新生物，血EB病毒抗体阳性。明确病变性质最可靠的方法是",
+  "options": [
+   {
+    "label": "A",
+    "text": "再次检测EB病毒抗体"
+   },
+   {
+    "label": "B",
+    "text": "鼻咽部活组织病理检查"
+   },
+   {
+    "label": "C",
+    "text": "鼻咽部增强MRI检查"
+   },
+   {
+    "label": "D",
+    "text": "颈部彩色多普勒超声"
+   },
+   {
+    "label": "E",
+    "text": "血清EB病毒DNA检测"
+   }
+  ],
+  "answer": "B",
+  "explanation": "EB病毒抗体阳性仅提示相关感染，不能替代组织病理确诊鼻咽癌；明确病变性质最可靠的方法是对鼻咽部新生物行活组织病理检查。教材P277。",
+  "source_page": "教材P277",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-A2-016",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "颈部超声不能独立确诊肿块",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男，55岁，发现颈部无痛性肿块1个月，质地较硬。颈部彩色多普勒超声提示实性结节。下一步最恰当的处理是",
+  "options": [
+   {
+    "label": "A",
+    "text": "立即按良性结节随访观察"
+   },
+   {
+    "label": "B",
+    "text": "仅重复超声检查动态观察"
+   },
+   {
+    "label": "C",
+    "text": "行增强CT或MRI并考虑活检"
+   },
+   {
+    "label": "D",
+    "text": "经验性抗感染治疗后复查"
+   },
+   {
+    "label": "E",
+    "text": "直接手术切除不作病理"
+   }
+  ],
+  "answer": "C",
+  "explanation": "颈部超声不能独立确诊性质不明的肿块；对质硬、进行性增大的颈部肿块应进一步行增强CT或MRI评估，并考虑组织活检以明确性质。教材P14。",
+  "source_page": "教材P14",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M01-X-017",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "硬性内镜与软性内镜的比较",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于硬性内镜与软性内镜的比较，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "硬性内镜一般不能弯曲但图像清晰"
+   },
+   {
+    "label": "B",
+    "text": "软性内镜可弯曲，便于观察深在腔隙"
+   },
+   {
+    "label": "C",
+    "text": "软性内镜适用于部分儿童或张口受限患者"
+   },
+   {
+    "label": "D",
+    "text": "硬性内镜的柔韧性优于软性内镜"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "硬性内镜一般不能弯曲、图像清晰，适合精细观察；软性内镜可弯曲，便于观察深在腔隙，也适用于部分儿童或张口受限患者，其柔韧性优于硬性内镜。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M01-X-018",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "客观听力学检查方法",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "下列听力学检查中，属于客观检查的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "声导抗测试"
+   },
+   {
+    "label": "B",
+    "text": "听性脑干反应"
+   },
+   {
+    "label": "C",
+    "text": "纯音测听"
+   },
+   {
+    "label": "D",
+    "text": "耳声发射"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "声导抗、耳声发射和听性脑干反应属客观检查；纯音测听需受检者主观判断并应答，属主观检查。教材P13。",
+  "source_page": "教材P13",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M01-X-019",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "鼻窦CT与颈部超声的临床应用",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于鼻窦CT与颈部彩色多普勒超声的临床应用，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻窦CT可显示骨质改变与手术解剖"
+   },
+   {
+    "label": "B",
+    "text": "颈部超声可评估肿块大小与囊实性"
+   },
+   {
+    "label": "C",
+    "text": "鼻窦CT可评估鼻窦解剖与慢性炎症"
+   },
+   {
+    "label": "D",
+    "text": "颈部超声可替代病理确诊肿块性质"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "鼻窦CT可评估鼻窦解剖、慢性炎症、骨质改变及手术相关解剖；颈部彩色多普勒超声可评估肿块大小、边界、囊实性及血流，但不能替代组织病理确诊肿块性质。教材P13-14。",
+  "source_page": "教材P13-14",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M01-X-020",
+  "module": "M01",
+  "module_name": "总论与专科检查",
+  "topic": "检查设备的作用与局限",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "分析",
+  "stem": "关于耳鼻咽喉科检查设备的作用与局限，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "EB病毒检测不能代替鼻咽癌病理确诊"
+   },
+   {
+    "label": "B",
+    "text": "正常胸片不能排除气管支气管异物"
+   },
+   {
+    "label": "C",
+    "text": "颈部超声可独立确诊性质不明的颈部肿块"
+   },
+   {
+    "label": "D",
+    "text": "耳内镜不能直接判定听力损失类型"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "检查设备各有其适用范围，不能相互替代：耳内镜不能判定听力损失类型，颈部超声不能独立确诊性质不明的肿块，正常胸片不能排除气管支气管异物，EB病毒检测不能代替鼻咽癌的组织病理确诊。教材P13-14。",
+  "source_page": "教材P13-14",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M02-A1-001",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "外耳道的分部与检查牵拉方向",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "成人外耳道的分部及检查时的牵拉方向是",
+  "options": [
+   {
+    "label": "A",
+    "text": "外1/3软骨部，向后上牵拉"
+   },
+   {
+    "label": "B",
+    "text": "内1/3软骨部，向后上牵拉"
+   },
+   {
+    "label": "C",
+    "text": "外2/3软骨部，向前下牵拉"
+   },
+   {
+    "label": "D",
+    "text": "内2/3软骨部，向前下牵拉"
+   },
+   {
+    "label": "E",
+    "text": "外1/3骨部，向后下牵拉"
+   }
+  ],
+  "answer": "A",
+  "explanation": "外耳道全长约2.5～3.5cm，呈S形，外侧约1/3为软骨部、内侧约2/3为骨部；检查成人外耳道深部或鼓膜时，需将耳廓向后上牵拉使外耳道成一直线。教材P19。",
+  "source_page": "教材P19",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-002",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "耵聍腺的分布部位",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "耵聍腺主要分布于外耳道的",
+  "options": [
+   {
+    "label": "A",
+    "text": "外耳道软骨切迹"
+   },
+   {
+    "label": "B",
+    "text": "外耳道骨部"
+   },
+   {
+    "label": "C",
+    "text": "外耳道峡部"
+   },
+   {
+    "label": "D",
+    "text": "外耳道软骨部"
+   },
+   {
+    "label": "E",
+    "text": "外耳道鼓沟"
+   }
+  ],
+  "answer": "D",
+  "explanation": "外耳道软骨部皮肤较厚，富有毛囊和皮脂腺，并含有类似汗腺结构的耵聍腺，能分泌耵聍；骨部皮肤菲薄，耵聍腺较少。教材P19。",
+  "source_page": "教材P19",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-003",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "鼓膜光锥的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "正常鼓膜的光锥位于鼓膜的",
+  "options": [
+   {
+    "label": "A",
+    "text": "中央部"
+   },
+   {
+    "label": "B",
+    "text": "前上部"
+   },
+   {
+    "label": "C",
+    "text": "后下部"
+   },
+   {
+    "label": "D",
+    "text": "后上部"
+   },
+   {
+    "label": "E",
+    "text": "前下部"
+   }
+  ],
+  "answer": "E",
+  "explanation": "用耳镜检查鼓膜时，自脐向前下达鼓膜边缘有一三角形反光区即光锥，通常位于前下部，系光线被鼓膜凹面集中反射而成；鼓膜内陷时光锥可变形或消失。教材P21。",
+  "source_page": "教材P21",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M02-A1-004",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "听骨链的连接顺序",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "中耳听骨链自外向内连接的顺序是",
+  "options": [
+   {
+    "label": "A",
+    "text": "砧骨、锤骨、镫骨"
+   },
+   {
+    "label": "B",
+    "text": "锤骨、砧骨、镫骨"
+   },
+   {
+    "label": "C",
+    "text": "锤骨、镫骨、砧骨"
+   },
+   {
+    "label": "D",
+    "text": "镫骨、锤骨、砧骨"
+   },
+   {
+    "label": "E",
+    "text": "砧骨、镫骨、锤骨"
+   }
+  ],
+  "answer": "B",
+  "explanation": "听骨为人体最小的一组小骨，包括锤骨、砧骨和镫骨，三者相互衔接成听骨链，依次为锤骨—砧骨—镫骨，介于鼓膜与前庭窗之间传导声波。教材P22。",
+  "source_page": "教材P22",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-005",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "儿童咽鼓管的解剖特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "儿童咽鼓管易使鼻咽感染侵入中耳，是因为儿童咽鼓管",
+  "options": [
+   {
+    "label": "A",
+    "text": "短、窄、较陡直"
+   },
+   {
+    "label": "B",
+    "text": "长、窄、近水平"
+   },
+   {
+    "label": "C",
+    "text": "短、宽、近水平"
+   },
+   {
+    "label": "D",
+    "text": "长、宽、较陡直"
+   },
+   {
+    "label": "E",
+    "text": "短、宽、较陡直"
+   }
+  ],
+  "answer": "C",
+  "explanation": "小儿咽鼓管接近水平，管腔较短，约为成人的一半，且内径较宽，故小儿咽部感染较易经此管侵入中耳。教材P24。",
+  "source_page": "教材P24",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-006",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "壶腹嵴的感受功能",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "内耳半规管壶腹嵴感受的刺激是",
+  "options": [
+   {
+    "label": "A",
+    "text": "低频声波"
+   },
+   {
+    "label": "B",
+    "text": "直线加速度"
+   },
+   {
+    "label": "C",
+    "text": "旋转加速度"
+   },
+   {
+    "label": "D",
+    "text": "角加速度"
+   },
+   {
+    "label": "E",
+    "text": "高频声波"
+   }
+  ],
+  "answer": "D",
+  "explanation": "半规管主要感受正负角加速度的刺激；头部承受角加速度时内淋巴流动推动壶腹嵴帽，牵拉毛细胞纤毛产生神经冲动。教材P29、P43。",
+  "source_page": "教材P43",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-007",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "椭圆囊斑与球囊斑的感受功能",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "椭圆囊斑和球囊斑共同感受的刺激是",
+  "options": [
+   {
+    "label": "A",
+    "text": "低频声波"
+   },
+   {
+    "label": "B",
+    "text": "角加速度"
+   },
+   {
+    "label": "C",
+    "text": "旋转加速度"
+   },
+   {
+    "label": "D",
+    "text": "高频声波"
+   },
+   {
+    "label": "E",
+    "text": "直线加速度"
+   }
+  ],
+  "answer": "E",
+  "explanation": "球囊斑与椭圆囊斑构造相同，都有耳石膜，合称耳石器官，主要感受直线加速度及重力相关的位置变化。教材P29、P43。",
+  "source_page": "教材P43",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M02-A1-008",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "内耳各部分的主司功能",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "关于内耳结构功能的描述，正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "前庭负责听觉"
+   },
+   {
+    "label": "B",
+    "text": "耳蜗负责听觉"
+   },
+   {
+    "label": "C",
+    "text": "半规管负责听觉"
+   },
+   {
+    "label": "D",
+    "text": "椭圆囊负责听觉"
+   },
+   {
+    "label": "E",
+    "text": "球囊负责听觉"
+   }
+  ],
+  "answer": "B",
+  "explanation": "内耳包括耳蜗、前庭和半规管：耳蜗负责听觉，前庭中的椭圆囊和球囊感受直线加速度及头部位置，三个半规管感受角加速度。教材P28。",
+  "source_page": "教材P28",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-009",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "基底膜的频率定位特性",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "耳蜗基底膜的频率定位特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "蜗底感受低频声"
+   },
+   {
+    "label": "B",
+    "text": "蜗顶感受高频声"
+   },
+   {
+    "label": "C",
+    "text": "蜗底感受高频声"
+   },
+   {
+    "label": "D",
+    "text": "蜗顶感受中频声"
+   },
+   {
+    "label": "E",
+    "text": "蜗底感受中频声"
+   }
+  ],
+  "answer": "C",
+  "explanation": "基底膜具有频率定位功能：高频声主要使靠近前庭窗的基底部（蜗底）振动，低频声主要使靠近蜗顶的顶端部振动。教材P31。",
+  "source_page": "教材P31",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-010",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "鼓室顶壁的毗邻",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼓室顶壁（鼓室盖）分隔鼓室与",
+  "options": [
+   {
+    "label": "A",
+    "text": "颈静脉球"
+   },
+   {
+    "label": "B",
+    "text": "颅后窝"
+   },
+   {
+    "label": "C",
+    "text": "颅前窝"
+   },
+   {
+    "label": "D",
+    "text": "颅中窝"
+   },
+   {
+    "label": "E",
+    "text": "颈内动脉"
+   }
+  ],
+  "answer": "D",
+  "explanation": "鼓室上壁即鼓室盖，由颞骨岩部前面构成，将鼓室与颅中窝分开；其上的岩鳞裂在婴幼儿常未闭合，可成为中耳感染向颅内扩散的途径。教材P22。",
+  "source_page": "教材P22",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-011",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "鼓膜与镫骨足板的面积比",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼓膜有效振动面积约为镫骨足板面积的",
+  "options": [
+   {
+    "label": "A",
+    "text": "约10倍"
+   },
+   {
+    "label": "B",
+    "text": "约15倍"
+   },
+   {
+    "label": "C",
+    "text": "约17倍"
+   },
+   {
+    "label": "D",
+    "text": "约20倍"
+   },
+   {
+    "label": "E",
+    "text": "约25倍"
+   }
+  ],
+  "answer": "C",
+  "explanation": "鼓膜有效振动面积约为解剖面积的2/3即约55mm²，是镫骨足板面积（3.2mm²）的17倍，故声压可增强至原来的17倍，起阻抗匹配作用。教材P39。",
+  "source_page": "教材P39",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-012",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "面神经的腮腺内终末支",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "记忆",
+  "stem": "面神经出茎乳孔后进入腮腺的主要终末支**不包括**",
+  "options": [
+   {
+    "label": "A",
+    "text": "面神经镫骨肌支"
+   },
+   {
+    "label": "B",
+    "text": "面神经颧支"
+   },
+   {
+    "label": "C",
+    "text": "面神经颊支"
+   },
+   {
+    "label": "D",
+    "text": "面神经颈支"
+   },
+   {
+    "label": "E",
+    "text": "面神经颞支"
+   }
+  ],
+  "answer": "B",
+  "explanation": "面神经出茎乳孔后进入腮腺，在腮腺内分为颞支、颧支、颊支、下颌缘支和颈支五组终末支；镫骨肌支在颞骨面神经管的锥隆起平面发出，属颞骨内分支，不属腮腺终末支。教材P36。",
+  "source_page": "教材P36",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M02-A1-013",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "鼓索神经的味觉支配区域",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "面神经鼓索神经所传导味觉的舌部区域是",
+  "options": [
+   {
+    "label": "A",
+    "text": "舌前2/3"
+   },
+   {
+    "label": "B",
+    "text": "舌前1/3"
+   },
+   {
+    "label": "C",
+    "text": "舌后1/3"
+   },
+   {
+    "label": "D",
+    "text": "舌后2/3"
+   },
+   {
+    "label": "E",
+    "text": "舌根及舌缘"
+   }
+  ],
+  "answer": "A",
+  "explanation": "面神经的味觉纤维经舌神经、鼓索神经进入面神经主干，司舌前2/3的味觉；损伤鼓索神经可致患侧舌前味觉异常。教材P36。",
+  "source_page": "教材P36",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-014",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "镫骨肌支受损的表现",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "面神经镫骨肌支受损后，患者对强声刺激表现为",
+  "options": [
+   {
+    "label": "A",
+    "text": "听觉过敏"
+   },
+   {
+    "label": "B",
+    "text": "味觉丧失"
+   },
+   {
+    "label": "C",
+    "text": "溢泪增多"
+   },
+   {
+    "label": "D",
+    "text": "眼睑闭合不全"
+   },
+   {
+    "label": "E",
+    "text": "面部麻木"
+   }
+  ],
+  "answer": "A",
+  "explanation": "镫骨肌支功能障碍时镫骨肌反射消失，对强声刺激的保护作用丧失，患者对强声难以耐受，称为听觉过敏。教材P36、P136。",
+  "source_page": "教材P36",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-015",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "周围性面瘫与中枢性面瘫的鉴别",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "周围性面瘫与中枢性面瘫的重要区别是周围性面瘫出现",
+  "options": [
+   {
+    "label": "A",
+    "text": "对侧额纹消失"
+   },
+   {
+    "label": "B",
+    "text": "同侧额纹消失"
+   },
+   {
+    "label": "C",
+    "text": "双侧额纹保留"
+   },
+   {
+    "label": "D",
+    "text": "对侧额纹保留"
+   },
+   {
+    "label": "E",
+    "text": "双侧额纹增强"
+   }
+  ],
+  "answer": "B",
+  "explanation": "周围性面瘫表现为同侧额纹消失、闭眼不全、鼻唇沟变浅和口角歪斜；中枢性面瘫多为对侧下半面部无力而额纹相对保留。教材P136-137。",
+  "source_page": "教材P136-137",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-016",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "外耳道胆脂瘤与耵聍栓塞的鉴别",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "与外耳道耵聍栓塞相比，外耳道胆脂瘤的特征性表现是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耳内异物感明显"
+   },
+   {
+    "label": "B",
+    "text": "耳闷与听力下降"
+   },
+   {
+    "label": "C",
+    "text": "进行性骨质破坏"
+   },
+   {
+    "label": "D",
+    "text": "外耳道耵聍堆积"
+   },
+   {
+    "label": "E",
+    "text": "遇水膨胀后加重"
+   }
+  ],
+  "answer": "C",
+  "explanation": "耵聍栓塞仅为耵聍堆积，通常无进行性骨质破坏；外耳道胆脂瘤由角化上皮及角化碎屑积聚形成，可伴外耳道局部骨质侵蚀，较大者清除后可见骨部扩大。教材P79、P82。",
+  "source_page": "教材P82",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-017",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "耳郭化脓性软骨膜炎的致病菌",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "耳郭化脓性软骨膜炎最常见的致病菌是",
+  "options": [
+   {
+    "label": "A",
+    "text": "肺炎链球菌"
+   },
+   {
+    "label": "B",
+    "text": "金黄色葡萄球菌"
+   },
+   {
+    "label": "C",
+    "text": "溶血性链球菌"
+   },
+   {
+    "label": "D",
+    "text": "铜绿假单胞菌"
+   },
+   {
+    "label": "E",
+    "text": "变形杆菌"
+   }
+  ],
+  "answer": "D",
+  "explanation": "耳郭化脓性软骨膜炎常因外伤、手术、冻伤等继发感染所致，铜绿假单胞菌为最多见的致病菌，其次为金黄色葡萄球菌；延误治疗可致耳郭畸形。教材P78。",
+  "source_page": "教材P78",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-018",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "大疱性鼓膜炎的鼓膜体征",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "大疱性鼓膜炎最典型的鼓膜体征是鼓膜表面出现",
+  "options": [
+   {
+    "label": "A",
+    "text": "灰白色钙化斑"
+   },
+   {
+    "label": "B",
+    "text": "紧张部穿孔"
+   },
+   {
+    "label": "C",
+    "text": "松弛部内陷袋"
+   },
+   {
+    "label": "D",
+    "text": "琥珀色液平面"
+   },
+   {
+    "label": "E",
+    "text": "含液性大疱"
+   }
+  ],
+  "answer": "E",
+  "explanation": "大疱性鼓膜炎常于鼓膜后上方出现一个或多个淡黄色或紫色大疱，位于鼓膜上皮层内，内含血液或血浆，破裂后流出少许血性渗出液，无鼓膜穿孔。教材P83。",
+  "source_page": "教材P83",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M02-A1-019",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "急性化脓性中耳炎耳痛的变化",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "急性化脓性中耳炎鼓膜穿孔流脓后，耳痛的变化是",
+  "options": [
+   {
+    "label": "A",
+    "text": "明显减轻"
+   },
+   {
+    "label": "B",
+    "text": "明显加重"
+   },
+   {
+    "label": "C",
+    "text": "无明显变化"
+   },
+   {
+    "label": "D",
+    "text": "转为搏动性跳痛"
+   },
+   {
+    "label": "E",
+    "text": "向咽喉部放射"
+   }
+  ],
+  "answer": "A",
+  "explanation": "急性化脓性中耳炎鼓膜穿孔前耳痛剧烈、呈搏动性跳痛；鼓膜穿孔流脓后鼓室压力减低，耳痛明显减轻，全身症状也随之减轻。教材P86-87。",
+  "source_page": "教材P86-87",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-020",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "分泌性中耳炎的鼓室导抗图",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "分泌性中耳炎典型的鼓室导抗图是",
+  "options": [
+   {
+    "label": "A",
+    "text": "A型曲线"
+   },
+   {
+    "label": "B",
+    "text": "B型平坦曲线"
+   },
+   {
+    "label": "C",
+    "text": "As型曲线"
+   },
+   {
+    "label": "D",
+    "text": "C型负压曲线"
+   },
+   {
+    "label": "E",
+    "text": "Ad型曲线"
+   }
+  ],
+  "answer": "B",
+  "explanation": "分泌性中耳炎因鼓室积液，声导抗图为平坦型（B型），为其典型曲线；负压型（C型）示咽鼓管功能不良，部分有鼓室积液。教材P85。",
+  "source_page": "教材P85",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-021",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "中耳胆脂瘤的鼓膜穿孔部位",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "中耳胆脂瘤常见的鼓膜穿孔部位是",
+  "options": [
+   {
+    "label": "A",
+    "text": "紧张部前下"
+   },
+   {
+    "label": "B",
+    "text": "紧张部中央性"
+   },
+   {
+    "label": "C",
+    "text": "松弛部或边缘性"
+   },
+   {
+    "label": "D",
+    "text": "紧张部后下"
+   },
+   {
+    "label": "E",
+    "text": "鼓膜全层缺损"
+   }
+  ],
+  "answer": "C",
+  "explanation": "中耳胆脂瘤可见松弛部内陷袋入口或紧张部后上方内陷，鼓膜松弛部或边缘性穿孔是重要线索，常伴白色脱落上皮与恶臭分泌物。教材P90-91。",
+  "source_page": "教材P90-91",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A1-022",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "梅尼埃病眩晕的持续时间",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "梅尼埃病典型眩晕发作的持续时间通常是",
+  "options": [
+   {
+    "label": "A",
+    "text": "20分钟至12小时"
+   },
+   {
+    "label": "B",
+    "text": "数秒至1分钟"
+   },
+   {
+    "label": "C",
+    "text": "持续超过72小时"
+   },
+   {
+    "label": "D",
+    "text": "持续数周至数月"
+   },
+   {
+    "label": "E",
+    "text": "数分钟至数天"
+   }
+  ],
+  "answer": "A",
+  "explanation": "梅尼埃病临床诊断标准要求发作性旋转性眩晕2次或以上，每次持续20分钟至12小时，该病为特发性膜迷路积水。教材P113-114。",
+  "source_page": "教材P113-114",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-001",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "儿童急性化脓性中耳炎的感染途径",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，男，4岁，1周前上呼吸道感染，2天前出现耳痛、发热，检查见鼓膜充血膨隆。该患儿中耳感染最可能的途径是",
+  "options": [
+   {
+    "label": "A",
+    "text": "淋巴途径"
+   },
+   {
+    "label": "B",
+    "text": "外耳道鼓膜途径"
+   },
+   {
+    "label": "C",
+    "text": "血行途径"
+   },
+   {
+    "label": "D",
+    "text": "咽鼓管途径"
+   },
+   {
+    "label": "E",
+    "text": "颅内蔓延"
+   }
+  ],
+  "answer": "D",
+  "explanation": "急性化脓性中耳炎最常见经咽鼓管途径感染，儿童咽鼓管短、宽、近水平且免疫系统未成熟，上呼吸道感染后细菌易经咽鼓管侵入中耳。教材P86。",
+  "source_page": "教材P86",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-002",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "成人单侧分泌性中耳炎的病因排查",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "患者，男，45岁，单侧耳闷、听力下降3个月，鼓膜内陷，声导抗呈B型曲线。下一步最需要进行的检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "血常规检查"
+   },
+   {
+    "label": "B",
+    "text": "纯音测听复查"
+   },
+   {
+    "label": "C",
+    "text": "鼓膜置管术"
+   },
+   {
+    "label": "D",
+    "text": "颈部超声检查"
+   },
+   {
+    "label": "E",
+    "text": "电子鼻咽镜检查"
+   }
+  ],
+  "answer": "E",
+  "explanation": "成人单侧原因不明的分泌性中耳炎应注意排除鼻咽癌，因分泌性中耳炎可能是鼻咽癌的首发症状，电子鼻咽镜检查及鼻咽部CT或MRI有较高诊断价值。教材P84-85。",
+  "source_page": "教材P84-85",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M02-A2-003",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "良性阵发性位置性眩晕的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，55岁，反复发作短暂眩晕，多于起床翻身时出现，每次持续约30秒，无耳鸣及听力下降。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耳石症"
+   },
+   {
+    "label": "B",
+    "text": "梅尼埃病"
+   },
+   {
+    "label": "C",
+    "text": "前庭神经炎"
+   },
+   {
+    "label": "D",
+    "text": "突发性聋"
+   },
+   {
+    "label": "E",
+    "text": "迷路炎"
+   }
+  ],
+  "answer": "A",
+  "explanation": "BPPV又名耳石症，为头位改变诱发的短暂眩晕（通常不超过1分钟），无耳鸣、耳闷及听力下降；位置试验为主要诊断检查方法。教材P116。",
+  "source_page": "教材P116",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-004",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "梅尼埃病的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，40岁，反复发作旋转性眩晕，每次持续约2小时，伴波动性听力下降和耳鸣。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "良性阵发性位置性眩晕"
+   },
+   {
+    "label": "B",
+    "text": "梅尼埃病"
+   },
+   {
+    "label": "C",
+    "text": "前庭神经炎"
+   },
+   {
+    "label": "D",
+    "text": "突发性聋"
+   },
+   {
+    "label": "E",
+    "text": "迷路炎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "反复发作旋转性眩晕（20分钟至12小时）、波动性听力下降、耳鸣及耳胀满感为梅尼埃病典型症状，其病理为特发性膜迷路积水。教材P113-114。",
+  "source_page": "教材P113-114",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-005",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "周围性面瘫的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，35岁，3天前受凉后出现右侧口角歪斜、闭眼不全，查体见右侧额纹消失、鼻唇沟变浅。该患者最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "面肌痉挛"
+   },
+   {
+    "label": "B",
+    "text": "中枢性面瘫"
+   },
+   {
+    "label": "C",
+    "text": "周围性面瘫"
+   },
+   {
+    "label": "D",
+    "text": "三叉神经痛"
+   },
+   {
+    "label": "E",
+    "text": "面神经肿瘤"
+   }
+  ],
+  "answer": "C",
+  "explanation": "病变在面神经核或其以下者导致周围性面瘫，表现为同侧额纹消失、闭眼不全、鼻唇沟变浅和口角歪斜；中枢性面瘫额纹相对保留。教材P136-137。",
+  "source_page": "教材P136-137",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-006",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "儿童分泌性中耳炎的病因",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，男，6岁，反复耳闷、听力差半年，鼓膜内陷、呈琥珀色，声导抗呈B型。最可能的病因是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼓膜穿孔"
+   },
+   {
+    "label": "B",
+    "text": "外耳道异物"
+   },
+   {
+    "label": "C",
+    "text": "耵聍栓塞"
+   },
+   {
+    "label": "D",
+    "text": "腺样体肥大"
+   },
+   {
+    "label": "E",
+    "text": "听神经瘤"
+   }
+  ],
+  "answer": "D",
+  "explanation": "分泌性中耳炎核心为咽鼓管功能障碍、中耳负压及鼓室积液；儿童腺样体肥大是咽鼓管机械性阻塞的常见原因，儿童反复中耳积液应评估腺样体肥大。教材P84。",
+  "source_page": "教材P84",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-007",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "突发性聋的首选治疗",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，50岁，3天前突然出现左耳听力下降伴耳鸣，纯音测听示感音神经性听力损失。首选的治疗药物是",
+  "options": [
+   {
+    "label": "A",
+    "text": "抗真菌药物"
+   },
+   {
+    "label": "B",
+    "text": "血管收缩剂"
+   },
+   {
+    "label": "C",
+    "text": "氨基糖苷类滴耳液"
+   },
+   {
+    "label": "D",
+    "text": "广谱抗生素"
+   },
+   {
+    "label": "E",
+    "text": "糖皮质激素"
+   }
+  ],
+  "answer": "E",
+  "explanation": "突发性聋应作为耳科急症，激素是临床治疗突聋的一线用药，宜尽早使用；鼓室内注射激素可为首选或补救性治疗。教材P124-125。",
+  "source_page": "教材P124-125",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M02-A2-008",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "外耳道植物性异物的处理注意点",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，男，5岁，将豆粒塞入右耳1天，现出现耳闷胀感。取出前应特别注意，该异物可能",
+  "options": [
+   {
+    "label": "A",
+    "text": "遇水膨胀"
+   },
+   {
+    "label": "B",
+    "text": "腐蚀外耳道"
+   },
+   {
+    "label": "C",
+    "text": "走行骚动"
+   },
+   {
+    "label": "D",
+    "text": "刺破鼓膜"
+   },
+   {
+    "label": "E",
+    "text": "引发剧烈咳嗽"
+   }
+  ],
+  "answer": "A",
+  "explanation": "豆类等植物性异物遇水膨胀，可阻塞外耳道引起耳闷胀感、耳痛及听力减退；鼓膜情况不明或取出困难时不宜随意冲洗，应及时转专科处理。教材P79。",
+  "source_page": "教材P79",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-009",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "耳郭假性囊肿的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，30岁，发现右耳廓前面无痛性局限性隆起1个月，透光试验阳性，穿刺抽出淡黄色清亮液体。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耳廓化脓性软骨膜炎"
+   },
+   {
+    "label": "B",
+    "text": "耳廓假性囊肿"
+   },
+   {
+    "label": "C",
+    "text": "耳廓血肿"
+   },
+   {
+    "label": "D",
+    "text": "外耳道疖"
+   },
+   {
+    "label": "E",
+    "text": "耳廓软骨膜炎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "耳郭假性囊肿为软骨夹层内非化脓性浆液性积液，多位于耳郭前面，局部隆起、波动感、透光良好，穿刺抽出淡黄色清亮液体、无细菌生长，可与血肿区别。教材P77。",
+  "source_page": "教材P77",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-010",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "慢性化脓性中耳炎鼓膜穿孔时的局部用药",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，48岁，慢性化脓性中耳炎伴鼓膜大穿孔、耳内流脓。局部治疗中可安全选用的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "3%过氧化氢溶液"
+   },
+   {
+    "label": "B",
+    "text": "氨基糖苷类滴耳液"
+   },
+   {
+    "label": "C",
+    "text": "酚甘油滴耳液"
+   },
+   {
+    "label": "D",
+    "text": "乙醇制剂滴耳"
+   },
+   {
+    "label": "E",
+    "text": "粉剂堵塞耳道"
+   }
+  ],
+  "answer": "A",
+  "explanation": "鼓膜穿孔时应忌用氨基糖苷类等耳毒性药物滴耳，避免使用粉剂堵塞穿孔影响引流，也应避免酚类等腐蚀性制剂；可用3%过氧化氢溶液清洗拭净脓液。教材P88-89。",
+  "source_page": "教材P88-89",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-011",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "面神经损害部位的判断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，40岁，周围性面瘫伴患侧泪液分泌明显减少。提示面神经损伤部位在",
+  "options": [
+   {
+    "label": "A",
+    "text": "镫骨肌支以下"
+   },
+   {
+    "label": "B",
+    "text": "鼓索神经以下"
+   },
+   {
+    "label": "C",
+    "text": "膝状神经节以上"
+   },
+   {
+    "label": "D",
+    "text": "茎乳孔以下"
+   },
+   {
+    "label": "E",
+    "text": "腮腺内分支"
+   }
+  ],
+  "answer": "C",
+  "explanation": "岩浅大神经自膝状神经节前方发出，经蝶腭神经节参与泪腺分泌；当病变位于膝状神经节及以上时，患侧泪液分泌减少，Schirmer试验可协助判断。教材P137。",
+  "source_page": "教材P137",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-012",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "Hunt综合征的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，50岁，右侧耳痛、耳部疱疹伴周围性面瘫2天。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耳带状疱疹神经痛"
+   },
+   {
+    "label": "B",
+    "text": "贝尔氏面瘫"
+   },
+   {
+    "label": "C",
+    "text": "急性中耳炎"
+   },
+   {
+    "label": "D",
+    "text": "Hunt综合征"
+   },
+   {
+    "label": "E",
+    "text": "耳廓软骨膜炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "Hunt综合征表现为耳痛、耳部疱疹及周围性面瘫，由带状疱疹病毒感染、主要侵犯膝状神经节所致，耳疱疹是与其他周围性面瘫鉴别的关键。教材P139-140。",
+  "source_page": "教材P139-140",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M02-A2-013",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "前庭神经炎的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，30岁，急性起病持续眩晕、恶心呕吐3天，无听力下降，可见向健侧自发性眼震。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "迷路炎症"
+   },
+   {
+    "label": "B",
+    "text": "梅尼埃病"
+   },
+   {
+    "label": "C",
+    "text": "良性阵发性位置性眩晕"
+   },
+   {
+    "label": "D",
+    "text": "突发性聋"
+   },
+   {
+    "label": "E",
+    "text": "前庭神经炎"
+   }
+  ],
+  "answer": "E",
+  "explanation": "前庭神经炎以突发眩晕、向健侧自发性眼震、恶心呕吐为特征，前庭功能减弱而无耳鸣和听力损失，无耳蜗症状是与梅尼埃病的主要鉴别点。教材P115。",
+  "source_page": "教材P115",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M02-A3-001",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "中耳胆脂瘤的病例诊断",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者，男，45岁，右耳反复流脓10年，分泌物恶臭，伴听力下降，鼓膜松弛部穿孔。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "中耳胆脂瘤"
+   },
+   {
+    "label": "B",
+    "text": "慢性化脓性中耳炎"
+   },
+   {
+    "label": "C",
+    "text": "分泌性中耳炎"
+   },
+   {
+    "label": "D",
+    "text": "外耳道胆脂瘤"
+   },
+   {
+    "label": "E",
+    "text": "中耳胆固醇肉芽肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "反复流脓、恶臭分泌物、听力下降并见鼓膜松弛部穿孔，是中耳胆脂瘤的典型线索；胆脂瘤为角化鳞状上皮在中耳内形成的囊性结构，具局部侵蚀骨质能力。教材P90-91。",
+  "source_page": "教材P90-91",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "case_group": "M02-A3-01"
+ },
+ {
+  "id": "batch039-M02-A3-002",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "中耳胆脂瘤并发面瘫的原因",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "该患者近1个月出现右侧口角歪斜、闭眼不全。最可能的原因是",
+  "options": [
+   {
+    "label": "A",
+    "text": "三叉神经受压"
+   },
+   {
+    "label": "B",
+    "text": "面神经管破坏"
+   },
+   {
+    "label": "C",
+    "text": "耳大神经受损"
+   },
+   {
+    "label": "D",
+    "text": "迷走神经受刺激"
+   },
+   {
+    "label": "E",
+    "text": "舌咽神经受累"
+   }
+  ],
+  "answer": "B",
+  "explanation": "中耳胆脂瘤具局部侵蚀骨质能力，可破坏面神经管而致周围性面瘫；慢性胆脂瘤型中耳炎伴周围性面瘫时应警惕面神经管受侵，属需尽快评估处理的并发症。教材P91。",
+  "source_page": "教材P91",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "case_group": "M02-A3-01"
+ },
+ {
+  "id": "batch039-M02-A3-003",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "中耳胆脂瘤术前影像评估",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "为评估该患者病变范围及骨质破坏情况，术前最合适的检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "颈部彩色多普勒超声"
+   },
+   {
+    "label": "B",
+    "text": "头部MRI增强扫描"
+   },
+   {
+    "label": "C",
+    "text": "颞骨高分辨率CT"
+   },
+   {
+    "label": "D",
+    "text": "纯音测听检查"
+   },
+   {
+    "label": "E",
+    "text": "耳内镜检查术"
+   }
+  ],
+  "answer": "C",
+  "explanation": "颞骨高分辨率CT是中耳胆脂瘤术前评估的重要检查，可观察上鼓室、鼓窦和乳突区病变、骨质破坏、听骨链及面神经管等结构，为手术提供参考。教材P91。",
+  "source_page": "教材P91",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "case_group": "M02-A3-01"
+ },
+ {
+  "id": "batch039-M02-B1-001",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "耳部疾病诊断配伍（分泌性中耳炎）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "耳闷、听力下降，鼓膜内陷呈琥珀色，鼓室可见积液与气泡，声导抗呈B型。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耵聍栓塞"
+   },
+   {
+    "label": "B",
+    "text": "外耳道炎"
+   },
+   {
+    "label": "C",
+    "text": "分泌性中耳炎"
+   },
+   {
+    "label": "D",
+    "text": "化脓性中耳炎"
+   },
+   {
+    "label": "E",
+    "text": "中耳胆脂瘤"
+   }
+  ],
+  "answer": "C",
+  "explanation": "分泌性中耳炎以传导性听力损失及鼓室积液为特征，鼓膜呈琥珀色、可见液平面或气泡，声导抗为B型平坦曲线。教材P83-85。",
+  "source_page": "教材P84-85",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "b1_group": "N1-5"
+ },
+ {
+  "id": "batch039-M02-B1-002",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "耳部疾病诊断配伍（中耳胆脂瘤）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "鼓膜松弛部穿孔，耳内流出恶臭分泌物，听力下降，颞骨CT示骨质破坏。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耵聍栓塞"
+   },
+   {
+    "label": "B",
+    "text": "外耳道炎"
+   },
+   {
+    "label": "C",
+    "text": "分泌性中耳炎"
+   },
+   {
+    "label": "D",
+    "text": "化脓性中耳炎"
+   },
+   {
+    "label": "E",
+    "text": "中耳胆脂瘤"
+   }
+  ],
+  "answer": "E",
+  "explanation": "中耳胆脂瘤常伴恶臭分泌物、听力下降，鼓膜松弛部或边缘性穿孔是重要线索，颞骨高分辩率CT可见上鼓室、鼓窦及乳突区骨质破坏。教材P90-91。",
+  "source_page": "教材P90-91",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "b1_group": "N1-5"
+ },
+ {
+  "id": "batch039-M02-B1-003",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "耳部疾病诊断配伍（耵聍栓塞）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "外耳道内见棕黑色团块堵塞，耳闷、听力减退，遇水后加重。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耵聍栓塞"
+   },
+   {
+    "label": "B",
+    "text": "外耳道炎"
+   },
+   {
+    "label": "C",
+    "text": "分泌性中耳炎"
+   },
+   {
+    "label": "D",
+    "text": "化脓性中耳炎"
+   },
+   {
+    "label": "E",
+    "text": "中耳胆脂瘤"
+   }
+  ],
+  "answer": "A",
+  "explanation": "耵聍栓塞可出现听力减退、耳鸣、耳痛，遇水膨胀后加重；检查见棕黑色或黄褐色块状物堵塞外耳道，治疗可用耵聍钩取出或软化后冲洗。教材P79。",
+  "source_page": "教材P79",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "b1_group": "N1-5"
+ },
+ {
+  "id": "batch039-M02-B1-004",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "耳部疾病诊断配伍（外耳道炎）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "耳痛明显，牵拉耳廓及按压耳屏时加重，软骨部皮肤红肿，可见局限性隆起。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耵聍栓塞"
+   },
+   {
+    "label": "B",
+    "text": "外耳道炎"
+   },
+   {
+    "label": "C",
+    "text": "分泌性中耳炎"
+   },
+   {
+    "label": "D",
+    "text": "化脓性中耳炎"
+   },
+   {
+    "label": "E",
+    "text": "中耳胆脂瘤"
+   }
+  ],
+  "answer": "B",
+  "explanation": "外耳道炎表现为耳痛、外耳道红肿、分泌物增加，牵拉耳廓或按压耳屏时疼痛明显，为其典型体征。教材P80。",
+  "source_page": "教材P80",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "b1_group": "N1-5"
+ },
+ {
+  "id": "batch039-M02-B1-005",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "耳部疾病诊断配伍（化脓性中耳炎）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "长期反复耳流脓，鼓膜紧张部穿孔，伴传导性听力下降。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耵聍栓塞"
+   },
+   {
+    "label": "B",
+    "text": "外耳道炎"
+   },
+   {
+    "label": "C",
+    "text": "分泌性中耳炎"
+   },
+   {
+    "label": "D",
+    "text": "化脓性中耳炎"
+   },
+   {
+    "label": "E",
+    "text": "中耳胆脂瘤"
+   }
+  ],
+  "answer": "D",
+  "explanation": "慢性化脓性中耳炎以间断流脓、鼓膜穿孔和听力下降为特点，多为传导性听力损失，常因急性中耳炎未获恰当治疗迁延而来。教材P87-88。",
+  "source_page": "教材P87-88",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "b1_group": "N1-5"
+ },
+ {
+  "id": "batch039-M02-X-001",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "中耳结构的组成",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "下列属于中耳结构的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽鼓管"
+   },
+   {
+    "label": "B",
+    "text": "乳突气房"
+   },
+   {
+    "label": "C",
+    "text": "耳蜗螺旋器"
+   },
+   {
+    "label": "D",
+    "text": "鼓室腔"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "中耳介于外耳和内耳之间，包括鼓室、咽鼓管、鼓窦及乳突4部分；耳蜗螺旋器属内耳的听觉感受器，不属中耳。教材P20-25。",
+  "source_page": "教材P20-25",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M02-X-002",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "咽鼓管的生理功能",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "咽鼓管的主要功能包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "防止液体逆流"
+   },
+   {
+    "label": "B",
+    "text": "增强声波振动"
+   },
+   {
+    "label": "C",
+    "text": "引流鼓室分泌物"
+   },
+   {
+    "label": "D",
+    "text": "调节鼓室压力"
+   }
+  ],
+  "answer": "ACD",
+  "explanation": "咽鼓管具有调节鼓室压力、引流分泌物及防止咽部液体进入鼓室（活瓣作用）等功能；增强声波振动是鼓膜与听骨链的传音功能。教材P24。",
+  "source_page": "教材P24",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M02-X-003",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "感音神经性听力损失的常见病因",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "下列可引起感音神经性听力损失的病因有",
+  "options": [
+   {
+    "label": "A",
+    "text": "耵聍栓塞"
+   },
+   {
+    "label": "B",
+    "text": "氨基糖苷类药物"
+   },
+   {
+    "label": "C",
+    "text": "长期噪声暴露"
+   },
+   {
+    "label": "D",
+    "text": "遗传因素"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "感音神经性听力损失常见于药物性（氨基糖苷类等）、遗传性、噪声性、老年性等；耵聍栓塞为外耳病变，引起传导性听力损失。教材P121。",
+  "source_page": "教材P121",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M02-X-004",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "前庭与耳蜗感受器的功能配对",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "下列感受器与其所感受刺激对应正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "椭圆囊斑感受直线加速度"
+   },
+   {
+    "label": "B",
+    "text": "壶腹嵴感受角加速度"
+   },
+   {
+    "label": "C",
+    "text": "螺旋器感受角加速度"
+   },
+   {
+    "label": "D",
+    "text": "球囊斑感受直线加速度"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "半规管壶腹嵴感受角加速度，椭圆囊斑与球囊斑感受直线加速度及头部位置；螺旋器位于基底膜上，为听觉感受器，感受声波振动。教材P29-30。",
+  "source_page": "教材P29-30",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M02-X-005",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "外耳疾病的范畴",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "下列属于外耳疾病的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "外耳道胆脂瘤"
+   },
+   {
+    "label": "B",
+    "text": "耳廓假性囊肿"
+   },
+   {
+    "label": "C",
+    "text": "外耳道真菌病"
+   },
+   {
+    "label": "D",
+    "text": "大疱性鼓膜炎"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "耳郭假性囊肿、外耳道胆脂瘤、外耳道真菌病均属外耳疾病；大疱性鼓膜炎是鼓膜及邻近外耳道皮肤的急性炎症，教材归入中耳炎性疾病。教材P77-83。",
+  "source_page": "教材P77-83",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M02-X-006",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "周围性面瘫的临床表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于周围性面瘫的描述，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "患侧眼睑闭合不全"
+   },
+   {
+    "label": "B",
+    "text": "同侧额纹消失"
+   },
+   {
+    "label": "C",
+    "text": "对侧额纹消失"
+   },
+   {
+    "label": "D",
+    "text": "笑时口角偏向健侧"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "周围性面瘫表现为同侧额纹消失、患侧眼睑闭合不全、鼻唇沟变浅、笑或露齿时口角向健侧移动；对侧额纹消失不符合周围性面瘫。教材P136-137。",
+  "source_page": "教材P136-137",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M02-X-007",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "分泌性中耳炎的特点",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于分泌性中耳炎的描述，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "以传导性听力损失为特征"
+   },
+   {
+    "label": "B",
+    "text": "以鼓室积液为特征"
+   },
+   {
+    "label": "C",
+    "text": "儿童发病率较高"
+   },
+   {
+    "label": "D",
+    "text": "常伴高热寒战"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "分泌性中耳炎以传导性听力损失及鼓室积液为主要特征，属中耳非化脓性炎性疾病；儿童咽鼓管短而宽、近水平，发病率较高，一般不伴高热寒战。教材P83-85。",
+  "source_page": "教材P83-85",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M02-X-008",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "突发性聋的特点",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于突发性聋的描述，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "多为感音神经性听力损失"
+   },
+   {
+    "label": "B",
+    "text": "属耳科急症"
+   },
+   {
+    "label": "C",
+    "text": "糖皮质激素为一线用药"
+   },
+   {
+    "label": "D",
+    "text": "常反复多次发作"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "突发性聋指突然发生的感音神经性听力损失，应作为耳科急症，激素为其一线用药、宜尽早使用；该病一般单次发作、可有自愈倾向，极少反复多次发作。教材P122-125。",
+  "source_page": "教材P122-125",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M02-X-009",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "梅尼埃病的特点",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于梅尼埃病的描述，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "伴波动性听力下降"
+   },
+   {
+    "label": "B",
+    "text": "眩晕持续20分钟至12小时"
+   },
+   {
+    "label": "C",
+    "text": "基本病理为膜迷路积水"
+   },
+   {
+    "label": "D",
+    "text": "发作时多无自主神经症状"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "梅尼埃病典型病理为膜迷路积水，表现为反复发作旋转性眩晕（20分钟至12小时）、波动性听力下降、耳鸣及耳胀满感，发作时常伴恶心、呕吐等自主神经症状。教材P113-114。",
+  "source_page": "教材P113-114",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M02-X-010",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "中耳炎性疾病的范畴",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "下列属于中耳炎性疾病的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "慢性化脓性中耳炎"
+   },
+   {
+    "label": "B",
+    "text": "外耳道真菌病"
+   },
+   {
+    "label": "C",
+    "text": "中耳胆脂瘤"
+   },
+   {
+    "label": "D",
+    "text": "分泌性中耳炎"
+   }
+  ],
+  "answer": "ACD",
+  "explanation": "分泌性中耳炎、慢性化脓性中耳炎、中耳胆脂瘤均属中耳炎性疾病；外耳道真菌病为外耳道真菌感染，属外耳疾病。教材P83-93。",
+  "source_page": "教材P83-93",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M02-X-011",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "耵聍栓塞的特点与处理",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于耵聍栓塞的描述，正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "疑鼓膜穿孔时不宜冲洗"
+   },
+   {
+    "label": "B",
+    "text": "可引起听力减退"
+   },
+   {
+    "label": "C",
+    "text": "可致反射性咳嗽"
+   },
+   {
+    "label": "D",
+    "text": "长期嵌塞不继发外耳道炎"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "耵聍栓塞可出现听力减退、耳鸣、耳痛，并可因刺激外耳道迷走神经耳支引起反射性咳嗽；怀疑鼓膜穿孔等冲洗禁忌时不宜盲目冲洗，耵聍反复刺激可继发外耳道炎。教材P79。",
+  "source_page": "教材P79",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M02-X-012",
+  "module": "M02",
+  "module_name": "耳科学",
+  "topic": "氨基糖苷类药物的耳毒性表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "氨基糖苷类药物的耳毒性表现可包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "传导性听力下降"
+   },
+   {
+    "label": "B",
+    "text": "耳鸣"
+   },
+   {
+    "label": "C",
+    "text": "前庭功能损害"
+   },
+   {
+    "label": "D",
+    "text": "感音神经性听力下降"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "氨基糖苷类为常见耳毒性药物，可损伤耳蜗及前庭，表现为感音神经性听力下降、耳鸣以及前庭功能损害；其耳毒性靶点在内耳，不引起传导性听力下降。教材P121、P123。",
+  "source_page": "教材P121、P123",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M03-A1-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻中隔的支架构成",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻中隔的支架主要由哪些结构构成",
+  "options": [
+   {
+    "label": "A",
+    "text": "蝶骨体、翼突内侧板及腭骨"
+   },
+   {
+    "label": "B",
+    "text": "鼻中隔黏膜、上颌骨额突及腭骨"
+   },
+   {
+    "label": "C",
+    "text": "鼻骨、筛骨垂直板及犁骨"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔软骨、筛骨垂直板及犁骨"
+   },
+   {
+    "label": "E",
+    "text": "鼻中隔骨膜、上颌骨腭突及泪骨"
+   }
+  ],
+  "answer": "D",
+  "explanation": "鼻中隔由鼻中隔软骨、筛骨垂直板（筛骨正中板）、犁骨和上颌骨腭突构成，其中前三者为主要支架；其软骨膜、骨膜外覆黏膜。鼻骨属外鼻骨支架，不参与鼻中隔构成。教材P152。",
+  "source_page": "教材P152",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "骨性后鼻孔的周界构成",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "骨性后鼻孔的周界主要由哪些结构围成",
+  "options": [
+   {
+    "label": "A",
+    "text": "蝶骨大翼、颧骨及上颌骨"
+   },
+   {
+    "label": "B",
+    "text": "蝶骨体、翼突外侧板、腭骨及犁骨"
+   },
+   {
+    "label": "C",
+    "text": "额骨、上颌骨额突及鼻骨"
+   },
+   {
+    "label": "D",
+    "text": "上颌骨腭突、腭骨水平部及犁骨"
+   },
+   {
+    "label": "E",
+    "text": "蝶骨体、翼突内侧板、腭骨及犁骨"
+   }
+  ],
+  "answer": "E",
+  "explanation": "骨性后鼻孔（鼻后孔）主要由蝶骨体（顶）、蝶骨翼突内侧板（外）、腭骨水平部后缘（底）和犁骨后缘（内）围绕而成；双侧后鼻孔经鼻咽部交通。梨状孔才是鼻腔前部的骨性开口。教材P153。",
+  "source_page": "教材P153",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A1-003",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻泪管开口的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻泪管开口位于鼻腔的哪个部位",
+  "options": [
+   {
+    "label": "A",
+    "text": "下鼻道前部"
+   },
+   {
+    "label": "B",
+    "text": "下鼻道后部"
+   },
+   {
+    "label": "C",
+    "text": "中鼻道前部"
+   },
+   {
+    "label": "D",
+    "text": "中鼻道后部"
+   },
+   {
+    "label": "E",
+    "text": "上鼻道前部"
+   }
+  ],
+  "answer": "A",
+  "explanation": "下鼻道顶端呈穹窿状，其前部有鼻泪管开口，距前鼻孔约3～3.5cm，手术时应予保护。中鼻道为前组鼻窦开口所在，上鼻道为后组筛窦开口所在。教材P154。",
+  "source_page": "教材P154",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-004",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "蝶窦自然开口的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "蝶窦自然开口引流至鼻腔的哪个部位",
+  "options": [
+   {
+    "label": "A",
+    "text": "上鼻道"
+   },
+   {
+    "label": "B",
+    "text": "蝶筛隐窝"
+   },
+   {
+    "label": "C",
+    "text": "中鼻道"
+   },
+   {
+    "label": "D",
+    "text": "下鼻道"
+   },
+   {
+    "label": "E",
+    "text": "半月裂"
+   }
+  ],
+  "answer": "B",
+  "explanation": "蝶窦自然开口位于蝶窦前壁内上方，开口于上鼻甲（或最上鼻甲）后上方的蝶筛隐窝；后组筛窦开口于上鼻道，前组鼻窦（额窦、上颌窦、前组筛窦）开口于中鼻道。教材P156。",
+  "source_page": "教材P156",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-005",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "窦口鼻道复合体（OMC）的范围",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "理解",
+  "stem": "下列结构中，**不属于**窦口鼻道复合体（OMC）范围内的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "上颌窦自然开口"
+   },
+   {
+    "label": "B",
+    "text": "筛泡与半月裂"
+   },
+   {
+    "label": "C",
+    "text": "中鼻甲与钩突"
+   },
+   {
+    "label": "D",
+    "text": "蝶窦自然开口"
+   },
+   {
+    "label": "E",
+    "text": "前组筛窦自然开口"
+   }
+  ],
+  "answer": "A",
+  "explanation": "OMC是前组鼻窦引流的共同通道，为以筛漏斗为中心的一组解剖结构的共同称谓，包括中鼻甲、钩突、筛泡、半月裂以及额窦、前组筛窦和上颌窦的自然开口等，但不包括蝶窦自然开口（蝶窦引流至蝶筛隐窝）。教材P155。",
+  "source_page": "教材P155",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A1-006",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻周期的时间规律",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "正常人体鼻阻力呈左右交替的周期性变化，其周期约为",
+  "options": [
+   {
+    "label": "A",
+    "text": "每间隔1～2小时一个周期"
+   },
+   {
+    "label": "B",
+    "text": "每间隔2～7小时一个周期"
+   },
+   {
+    "label": "C",
+    "text": "每间隔8～12小时一个周期"
+   },
+   {
+    "label": "D",
+    "text": "每间隔12～18小时一个周期"
+   },
+   {
+    "label": "E",
+    "text": "每间隔19～24小时一个周期"
+   }
+  ],
+  "answer": "B",
+  "explanation": "鼻周期是鼻阻力的生理性昼夜及左右交替变化，主要受双侧下鼻甲黏膜内容量血管交替收缩与扩张的影响，每间隔2～7小时出现一个周期，受下丘脑调节，可促使睡眠时翻身。教材P161。",
+  "source_page": "教材P161",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-007",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "黏液纤毛系统的摆动方向",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "鼻腔黏膜纤毛的摆动方向是",
+  "options": [
+   {
+    "label": "A",
+    "text": "由内向外朝窦口方向摆动"
+   },
+   {
+    "label": "B",
+    "text": "由后向前朝前鼻孔方向摆动"
+   },
+   {
+    "label": "C",
+    "text": "由下向上朝鼻腔顶方向摆动"
+   },
+   {
+    "label": "D",
+    "text": "由前向后朝鼻咽方向摆动"
+   },
+   {
+    "label": "E",
+    "text": "双向无规则来回摆动"
+   }
+  ],
+  "answer": "D",
+  "explanation": "生理条件下鼻腔纤毛从前向后朝向鼻咽方向摆动，每根纤毛每分钟约摆动1000次，与黏液毯共同构成黏液纤毛清除系统，是鼻腔和鼻窦的重要防线；鼻窦纤毛则朝向自然窦口摆动。教材P161。",
+  "source_page": "教材P161",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-008",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "嗅区黏膜的分布部位",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "嗅区黏膜主要分布于鼻腔的哪个区域",
+  "options": [
+   {
+    "label": "A",
+    "text": "蝶筛隐窝后方的鼻咽顶壁"
+   },
+   {
+    "label": "B",
+    "text": "下鼻甲内侧面及鼻腔底"
+   },
+   {
+    "label": "C",
+    "text": "中鼻道及其下方的下鼻道"
+   },
+   {
+    "label": "D",
+    "text": "鼻前庭及其周围的鼻翼皮肤"
+   },
+   {
+    "label": "E",
+    "text": "上鼻甲内侧面及鼻中隔上部"
+   }
+  ],
+  "answer": "E",
+  "explanation": "嗅区黏膜分布于上鼻甲内侧面、筛板下表面、中鼻甲垂直部上部的内侧面及相应的鼻中隔上部，约占成人鼻黏膜的1/3，含嗅细胞、支持细胞及基底细胞，负责嗅觉感知。教材P156。",
+  "source_page": "教材P156",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A1-009",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "筛窦与眼眶的骨性分隔（纸样板）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "分隔筛窦与眼眶的菲薄骨壁是",
+  "options": [
+   {
+    "label": "A",
+    "text": "纸样板"
+   },
+   {
+    "label": "B",
+    "text": "筛骨水平板"
+   },
+   {
+    "label": "C",
+    "text": "蝶筛板"
+   },
+   {
+    "label": "D",
+    "text": "蝶骨小翼"
+   },
+   {
+    "label": "E",
+    "text": "上颌骨额突"
+   }
+  ],
+  "answer": "A",
+  "explanation": "筛窦外侧壁即眼眶内侧壁，大部分由泪骨和纸样板构成，手术损伤纸样板将出现眶内并发症，是鼻窦手术的重要解剖标志；筛骨水平板（筛板）为鼻腔顶壁，损伤可致脑脊液鼻漏。教材P159。",
+  "source_page": "教材P159",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-010",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻中隔利特尔动脉丛的组成",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "记忆",
+  "stem": "组成鼻中隔利特尔动脉丛的动脉**不包括**",
+  "options": [
+   {
+    "label": "A",
+    "text": "筛前动脉"
+   },
+   {
+    "label": "B",
+    "text": "鼻腭动脉"
+   },
+   {
+    "label": "C",
+    "text": "上唇动脉"
+   },
+   {
+    "label": "D",
+    "text": "腭大动脉"
+   },
+   {
+    "label": "E",
+    "text": "眼动脉主干"
+   }
+  ],
+  "answer": "A",
+  "explanation": "利特尔动脉丛由鼻腭动脉、筛前动脉、筛后动脉、上唇动脉和腭大动脉在鼻中隔前下部黏膜下吻合形成，该区称利特尔区，是鼻出血最常见部位。眼动脉主干位于眶内并分出筛前、筛后动脉，其本身不直接参与该动脉丛。教材P157。",
+  "source_page": "教材P157",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-011",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻疖最常见的致病菌",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻疖最常见的致病菌是",
+  "options": [
+   {
+    "label": "A",
+    "text": "流感嗜血杆菌"
+   },
+   {
+    "label": "B",
+    "text": "乙型溶血性链球菌"
+   },
+   {
+    "label": "C",
+    "text": "金黄色葡萄球菌"
+   },
+   {
+    "label": "D",
+    "text": "肺炎链球菌"
+   },
+   {
+    "label": "E",
+    "text": "铜绿假单胞菌"
+   }
+  ],
+  "answer": "C",
+  "explanation": "鼻疖为鼻前庭、鼻尖和鼻翼部毛囊、皮脂腺或汗腺的局限性急性化脓性炎症，以鼻前庭最常见，金黄色葡萄球菌是主要致病菌；乙型溶血性链球菌所致者多为鼻部丹毒。教材P186。",
+  "source_page": "教材P186",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-012",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻疖最严重的颅内并发症",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "鼻疖最严重的颅内并发症是",
+  "options": [
+   {
+    "label": "A",
+    "text": "眶内蜂窝织炎"
+   },
+   {
+    "label": "B",
+    "text": "鼻翼软骨膜炎"
+   },
+   {
+    "label": "C",
+    "text": "上唇蜂窝织炎"
+   },
+   {
+    "label": "D",
+    "text": "海绵窦血栓性静脉炎"
+   },
+   {
+    "label": "E",
+    "text": "颊部蜂窝织炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "面部静脉无瓣膜，血液可双向流动，鼻部皮肤感染经内眦静脉、眼上下静脉可扩散入海绵窦，故海绵窦血栓性静脉炎是鼻疖最严重的颅内并发症，表现为寒战、高热、剧烈头痛、眼睑及结膜水肿、眼球突出固定等，多因挤压疖肿所致。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-013",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "变应性鼻炎的发病机制",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "变应性鼻炎的主要发病机制属于",
+  "options": [
+   {
+    "label": "A",
+    "text": "非免疫性神经源性炎症"
+   },
+   {
+    "label": "B",
+    "text": "IgG介导的Ⅱ型变态反应"
+   },
+   {
+    "label": "C",
+    "text": "免疫复合物介导的Ⅲ型变态反应"
+   },
+   {
+    "label": "D",
+    "text": "T细胞介导的Ⅳ型变态反应"
+   },
+   {
+    "label": "E",
+    "text": "IgE介导的Ⅰ型变态反应"
+   }
+  ],
+  "answer": "E",
+  "explanation": "变应性鼻炎是特应性个体接触致敏原后由IgE介导组胺等炎性介质释放、多种免疫细胞和细胞因子参与的鼻黏膜慢性炎症，属IgE介导的Ⅰ型变态反应，有致敏和激发两个阶段。非免疫性神经源性炎症多见于血管运动性鼻炎。教材P196。",
+  "source_page": "教材P196",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A1-014",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "含牙囊肿的诊断依据",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "上颌骨囊性病变若含有未萌出牙齿的牙冠，应考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "含牙囊肿"
+   },
+   {
+    "label": "B",
+    "text": "牙根囊肿"
+   },
+   {
+    "label": "C",
+    "text": "鼻前庭囊肿"
+   },
+   {
+    "label": "D",
+    "text": "鼻窦黏液囊肿"
+   },
+   {
+    "label": "E",
+    "text": "鼻窦黏膜囊肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "含牙囊肿（滤泡囊肿）环绕未萌出牙或额外牙的牙冠并附着于牙颈部，影像学显示囊肿阴影内含牙影，常伴一牙缺如；牙根囊肿则起因于牙根感染、牙髓坏死，囊肿与病牙根尖相关。教材P230。",
+  "source_page": "教材P230",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A1-015",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "真菌球型鼻窦炎的CT特征",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者鼻窦CT示单侧上颌窦腔内不规则高密度影及点状钙化，最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性化脓性鼻窦炎"
+   },
+   {
+    "label": "B",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "上颌窦黏液囊肿"
+   },
+   {
+    "label": "D",
+    "text": "内翻性乳头状瘤"
+   },
+   {
+    "label": "E",
+    "text": "上颌窦恶性肿瘤"
+   }
+  ],
+  "answer": "B",
+  "explanation": "真菌球型鼻窦炎单窦发病、上颌窦最多见，鼻窦CT显示单窦不均匀密度增高，约70%可见高密度钙化斑，可伴窦壁膨隆或压迫性吸收，是术前重要诊断参考，最终诊断需依据病理。教材P209。",
+  "source_page": "教材P209",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "变应性鼻炎的典型病例诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，26岁，每年春季出现阵发性喷嚏、大量清水样鼻涕伴鼻痒和眼痒，查鼻黏膜苍白水肿，最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "血管运动性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性鼻炎"
+   },
+   {
+    "label": "C",
+    "text": "变应性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "慢性肥厚性鼻炎"
+   },
+   {
+    "label": "E",
+    "text": "萎缩性鼻炎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "发作性喷嚏、大量清水样涕、鼻痒、眼痒，鼻黏膜苍白水肿，变应原检测阳性，符合变应性鼻炎（本例呈季节性发作）；急性鼻炎有发热等全身症状，血管运动性鼻炎变应原检测阴性。教材P196-197。",
+  "source_page": "教材P196-197",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "急性细菌性鼻窦炎的判断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，30岁，感冒后脓涕、面颊部胀痛持续12天无好转，最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "慢性鼻窦炎急性发作"
+   },
+   {
+    "label": "B",
+    "text": "病毒性急性鼻炎"
+   },
+   {
+    "label": "C",
+    "text": "慢性单纯性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "E",
+    "text": "真菌球型鼻窦炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "急性细菌性鼻窦炎常见病原为肺炎链球菌、流感嗜血杆菌及卡他莫拉菌；症状持续至少10天无改善，或先改善后再次明显加重，应考虑急性细菌性鼻窦炎。单纯病毒性上呼吸道感染不应常规使用抗菌药物。教材P189-195。",
+  "source_page": "教材P189-195",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-003",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "慢性鼻窦炎的病程与诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，45岁，鼻塞、黏脓性鼻涕伴头面部胀痛已持续4个月，鼻内镜见中鼻道黏脓性分泌物，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "B",
+    "text": "急性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "变应性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "萎缩性鼻炎"
+   },
+   {
+    "label": "E",
+    "text": "慢性鼻窦炎"
+   }
+  ],
+  "answer": "E",
+  "explanation": "慢性鼻窦炎指鼻窦黏膜慢性炎症持续超过12周，以鼻塞、黏脓性或黏脓性鼻涕为主要症状，伴头面部胀痛或嗅觉减退，并需鼻内镜或影像学等客观证据支持；本例病程4个月，符合慢性鼻窦炎。教材P201。",
+  "source_page": "教材P201",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A2-004",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "真菌球型鼻窦炎的治疗",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，50岁，左侧单侧鼻塞、涕血伴恶臭，CT示左上颌窦内团块状影伴点状钙化，首选的治疗方式是",
+  "options": [
+   {
+    "label": "A",
+    "text": "手术清除窦内真菌团块"
+   },
+   {
+    "label": "B",
+    "text": "全身抗真菌药物治疗"
+   },
+   {
+    "label": "C",
+    "text": "口服糖皮质激素治疗"
+   },
+   {
+    "label": "D",
+    "text": "长期鼻用减充血剂"
+   },
+   {
+    "label": "E",
+    "text": "单纯鼻腔生理盐水冲洗"
+   }
+  ],
+  "answer": "A",
+  "explanation": "真菌球型鼻窦炎属非侵袭性，治疗以手术清除窦内真菌团块、建立宽敞通气和引流为主，术后不需抗真菌药物；抗真菌药物主要用于侵袭性真菌性鼻窦炎。教材P209-210。",
+  "source_page": "教材P209-210",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-005",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "挤压鼻疖致海绵窦血栓性静脉炎",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，22岁，鼻前庭疖肿5天，自行挤压后出现寒战、高热和患侧眼睑水肿，最可能的并发症是",
+  "options": [
+   {
+    "label": "A",
+    "text": "眶内蜂窝织炎"
+   },
+   {
+    "label": "B",
+    "text": "海绵窦血栓性静脉炎"
+   },
+   {
+    "label": "C",
+    "text": "上唇蜂窝织炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻翼软骨膜炎"
+   },
+   {
+    "label": "E",
+    "text": "面颊部蜂窝织炎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "鼻疖治疗原则为严禁挤压；挤压疖肿可使感染经内眦静脉、眼上下静脉扩散入海绵窦，引起海绵窦血栓性静脉炎，表现为寒战、高热、剧烈头痛、患侧眼睑及结膜水肿、眼球突出固定等。教材P187。",
+  "source_page": "教材P187",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-006",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻源性眶内并发症的危险信号",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "患儿，男，8岁，急性鼻窦炎5天，突发右眼睑红肿、眼球突出且活动受限，此时最应警惕的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性卡他性结膜炎"
+   },
+   {
+    "label": "B",
+    "text": "单纯眼睑过敏水肿"
+   },
+   {
+    "label": "C",
+    "text": "眶蜂窝织炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻前庭疖肿"
+   },
+   {
+    "label": "E",
+    "text": "分泌性中耳炎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "鼻窦与眼眶关系密切，儿童急性鼻窦炎尤其需警惕感染扩散。眼睑红肿、眼球突出、眼球活动受限、视力下降提示鼻源性眶内并发症（眶内炎性水肿、眶蜂窝织炎或眶骨膜下脓肿），视力下降和眼球活动障碍属重要危险信号，需结合增强CT或MRI鉴别。教材P203。",
+  "source_page": "教材P203",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-007",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "慢性单纯性鼻炎与肥厚性鼻炎的鉴别",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者，男，35岁，双侧间歇性、交替性鼻塞，下鼻甲充血肿胀，用减充血剂后鼻甲明显缩小，最符合的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "萎缩性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "慢性肥厚性鼻炎"
+   },
+   {
+    "label": "C",
+    "text": "变应性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "慢性单纯性鼻炎"
+   },
+   {
+    "label": "E",
+    "text": "药物性鼻炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "单纯性鼻炎鼻塞为间歇性、交替性，下鼻甲黏膜充血肿胀但收缩能力较好，用减充血剂后鼻甲明显缩小；肥厚性鼻炎多为持续性鼻塞，下鼻甲肥厚、表面可呈结节状或桑葚状，减充血剂收缩较差。教材P174。",
+  "source_page": "教材P174",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-008",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻中隔血肿的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者，男，20岁，鼻部外伤后2天出现双侧鼻塞，检查见鼻腔内对称性暗红色隆起、触之有波动感，应诊断为",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻骨骨折"
+   },
+   {
+    "label": "B",
+    "text": "鼻中隔脓肿"
+   },
+   {
+    "label": "C",
+    "text": "鼻中隔偏曲"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔穿孔"
+   },
+   {
+    "label": "E",
+    "text": "鼻中隔血肿"
+   }
+  ],
+  "answer": "E",
+  "explanation": "鼻外伤后鼻中隔出现对称性暗红色隆起、触之柔软有波动感、对血管收缩剂无反应，穿刺抽出血液者为鼻中隔血肿；抽出脓液者为鼻中隔脓肿。血肿需及时引流，以防软骨缺血坏死、感染及鞍鼻畸形。教材P220。",
+  "source_page": "教材P220",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-A2-009",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻骨骨折的临床表现与诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "患者，男，25岁，鼻部外伤后鼻梁偏斜、局部压痛并鼻塞，最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻骨骨折"
+   },
+   {
+    "label": "B",
+    "text": "鼻中隔血肿"
+   },
+   {
+    "label": "C",
+    "text": "鼻中隔脱位"
+   },
+   {
+    "label": "D",
+    "text": "鼻腔异物"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭囊肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "鼻骨上部窄厚、下部宽薄，受暴力作用易发生骨折并多累及鼻骨下部向下方塌陷，表现为鼻部畸形、鼻梁偏斜、压痛、肿胀及鼻塞；鼻中隔血肿以鼻腔内对称性暗红色隆起、波动感为特征。教材P181。",
+  "source_page": "教材P181",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A2-010",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "老年后鼻出血的出血部位",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，男，68岁，高血压病史，突发右侧鼻腔大量出血，血液持续经咽部流出，出血部位最可能是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻腔前部鼻中隔利特尔区"
+   },
+   {
+    "label": "B",
+    "text": "鼻腔后段蝶腭动脉分支"
+   },
+   {
+    "label": "C",
+    "text": "鼻腔后部下鼻道静脉丛"
+   },
+   {
+    "label": "D",
+    "text": "鼻腔前庭浅表静脉"
+   },
+   {
+    "label": "E",
+    "text": "中鼻道黏膜下动脉丛"
+   }
+  ],
+  "answer": "B",
+  "explanation": "中、老年患者鼻出血多发生在鼻腔后段下鼻道的吴氏鼻-鼻咽静脉丛，亦可为鼻中隔后部动脉（约90%来自蝶腭动脉）出血，出血多较凶猛、不易止血；儿童、青少年的鼻出血多位于鼻中隔前下部利特尔区。教材P222。",
+  "source_page": "教材P222",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A3-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "后鼻出血的出血来源判断",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "应用",
+  "case_group": "M03-A3-01",
+  "stem": "（共用题干）患者，男，66岁，高血压病史10年，突发右侧鼻腔大量出血，血液部分经咽部流出，鼻腔前部未见明确出血点。此时出血最可能来源于",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻腔前部前庭黏膜糜烂面"
+   },
+   {
+    "label": "B",
+    "text": "鼻腔前部鼻中隔出血点"
+   },
+   {
+    "label": "C",
+    "text": "鼻腔后部动脉性出血"
+   },
+   {
+    "label": "D",
+    "text": "下鼻甲黏膜糜烂处"
+   },
+   {
+    "label": "E",
+    "text": "鼻腔上部嗅裂毛细血管网"
+   }
+  ],
+  "answer": "C",
+  "explanation": "血液持续向咽部流出、鼻腔前部未见出血点，提示鼻腔后部出血；鼻腔后部出血多来源于动脉（约90%来自蝶腭动脉），出血量较大且难以控制，多见于中老年及高血压患者。教材P222。",
+  "source_page": "教材P222",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-A3-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "出血部位不明的鼻出血止血方法",
+  "type": "A3",
+  "polarity": "positive",
+  "bloom": "应用",
+  "case_group": "M03-A3-01",
+  "stem": "（共用题干）该患者出血量较大且出血部位不明确，首选的止血方法是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻内镜下探查电凝止血"
+   },
+   {
+    "label": "B",
+    "text": "鼻腔可吸收材料填塞"
+   },
+   {
+    "label": "C",
+    "text": "化学药物烧灼出血点"
+   },
+   {
+    "label": "D",
+    "text": "前鼻孔凡士林纱条填塞"
+   },
+   {
+    "label": "E",
+    "text": "前额和后颈局部冷敷"
+   }
+  ],
+  "answer": "D",
+  "explanation": "填塞法适用于出血较剧、渗血面较大或出血部位不明者，前鼻孔纱条填塞是较常用的有效止血方法；烧灼法适用于反复少量出血且出血点明确者，可吸收材料填塞适用于弥漫性、出血量较少者。教材P223。",
+  "source_page": "教材P223",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（变应性鼻炎）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N6-10",
+  "stem": "每年春季出现阵发性喷嚏、清水样涕、鼻痒和鼻塞，鼻黏膜苍白水肿，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "阵发性喷嚏、清水样涕、鼻痒、鼻塞，鼻黏膜苍白水肿，呈季节性发作，为季节性变应性鼻炎，属IgE介导的Ⅰ型变态反应，常与哮喘共存。教材P196-197。",
+  "source_page": "教材P196-197",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（急性细菌性鼻窦炎）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N6-10",
+  "stem": "症状持续10天以上无改善，或好转后再次加重，脓涕伴面部胀痛，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "B",
+  "explanation": "急性细菌性鼻窦炎常见病原为肺炎链球菌、流感嗜血杆菌及卡他莫拉菌；症状持续至少10天无改善，或先改善后再次明显加重时，应考虑急性细菌性鼻窦炎。教材P189-195。",
+  "source_page": "教材P189-195",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-003",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（真菌球型鼻窦炎）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N6-10",
+  "stem": "单侧鼻塞、涕血伴恶臭，CT示单窦腔内不规则高密度影及点状钙化，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "C",
+  "explanation": "真菌球型鼻窦炎单窦发病、上颌窦最多见，表现为单侧鼻塞、流脓涕、涕血或恶臭，鼻窦CT可见单窦不均匀密度增高及高密度钙化斑，治疗以手术清除真菌团块为主。教材P208-209。",
+  "source_page": "教材P208-209",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-004",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（鼻中隔血肿）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N6-10",
+  "stem": "鼻部外伤后出现双侧鼻塞，鼻腔内对称性暗红色隆起、触之波动感，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "D",
+  "explanation": "鼻部外伤后鼻中隔出现对称性暗红色隆起、触之柔软有波动感、对血管收缩剂无反应，穿刺抽出血液者为鼻中隔血肿，需及时引流以防软骨缺血坏死、感染及鞍鼻畸形。教材P220。",
+  "source_page": "教材P220",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M03-B1-005",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻部疾病的识别（鼻前庭疖肿）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "b1_group": "N6-10",
+  "stem": "外鼻红肿热痛，顶部出现黄白色脓点，首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "季节性变应性鼻炎"
+   },
+   {
+    "label": "B",
+    "text": "急性细菌性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "D",
+    "text": "鼻中隔血肿形成"
+   },
+   {
+    "label": "E",
+    "text": "鼻前庭局限性疖肿"
+   }
+  ],
+  "answer": "E",
+  "explanation": "鼻前庭、鼻尖和鼻翼部毛囊、皮脂腺或汗腺的局限性急性化脓性炎症即鼻疖，最常见于鼻前庭，表现为局部红肿热痛、局限性隆起，约1周成熟后顶部出现黄白色脓点；治疗原则严禁挤压。教材P186。",
+  "source_page": "教材P186",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M03-X-001",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "利特尔动脉丛的组成动脉",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "参与构成鼻中隔利特尔动脉丛的动脉有",
+  "options": [
+   {
+    "label": "A",
+    "text": "筛前动脉"
+   },
+   {
+    "label": "B",
+    "text": "腭大动脉"
+   },
+   {
+    "label": "C",
+    "text": "鼻腭动脉"
+   },
+   {
+    "label": "D",
+    "text": "上唇动脉"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "鼻腭动脉、筛前动脉、筛后动脉、上唇动脉和腭大动脉在鼻中隔前下部黏膜下交互吻合，形成利特尔动脉丛，该区称利特尔区，是鼻出血最常见部位，故A、B、C、D均参与构成。教材P157。",
+  "source_page": "教材P157",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M03-X-002",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻中隔支架的组成骨与软骨",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "鼻中隔支架的组成结构包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻中隔软骨"
+   },
+   {
+    "label": "B",
+    "text": "犁骨"
+   },
+   {
+    "label": "C",
+    "text": "鼻骨"
+   },
+   {
+    "label": "D",
+    "text": "筛骨垂直板"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "鼻中隔由鼻中隔软骨、筛骨垂直板（筛骨正中板）、犁骨和上颌骨腭突构成，前三者为鼻中隔主要支架，故A、B、C正确；鼻骨属外鼻骨支架，不参与鼻中隔构成，故不答D。教材P152。",
+  "source_page": "教材P152",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M03-X-003",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "变应性鼻炎的典型症状",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "变应性鼻炎的典型临床表现有",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻痒与眼痒"
+   },
+   {
+    "label": "B",
+    "text": "头面部剧烈胀痛"
+   },
+   {
+    "label": "C",
+    "text": "大量清水样鼻涕"
+   },
+   {
+    "label": "D",
+    "text": "阵发性连续喷嚏"
+   }
+  ],
+  "answer": "ACD",
+  "explanation": "变应性鼻炎以鼻痒、阵发性连续喷嚏、大量水样鼻涕和鼻塞为主要特征，合并变应性结膜炎时可有眼痒和结膜充血。头面部胀痛属鼻窦炎表现，不是变应性鼻炎的典型症状，故不答D。教材P196-197。",
+  "source_page": "教材P196-197",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M03-X-004",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "急性细菌性鼻窦炎的常见致病菌",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "急性细菌性鼻窦炎的常见致病菌有",
+  "options": [
+   {
+    "label": "A",
+    "text": "卡他莫拉菌"
+   },
+   {
+    "label": "B",
+    "text": "流感嗜血杆菌"
+   },
+   {
+    "label": "C",
+    "text": "肺炎链球菌"
+   },
+   {
+    "label": "D",
+    "text": "铜绿假单胞菌"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "急性细菌性鼻窦炎常见病原为肺炎链球菌、流感嗜血杆菌及卡他莫拉菌，临床上也可表现为球菌与杆菌、需氧菌与厌氧菌的混合感染，故A、B、C正确；铜绿假单胞菌多见于医院获得性感染，非本病常见致病菌。教材P192。",
+  "source_page": "教材P192",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M03-X-005",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "功能性内镜鼻窦手术（FESS）的适应证",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "功能性内镜鼻窦手术（FESS）的适应证包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "真菌球型鼻窦炎"
+   },
+   {
+    "label": "B",
+    "text": "规范药物治疗无效的慢性鼻窦炎"
+   },
+   {
+    "label": "C",
+    "text": "部分伴鼻息肉的病例"
+   },
+   {
+    "label": "D",
+    "text": "无症状的鼻窦黏膜小囊肿"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "FESS主要用于规范药物治疗效果不佳的慢性鼻窦炎、部分伴鼻息肉的病例、真菌球型鼻窦炎及部分需外科处理的眶内或颅内并发症，故A、B、C正确；健康体检发现的无临床症状鼻窦内小囊肿一般无须处理，不是手术适应证。教材P204-210。",
+  "source_page": "教材P204-210",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M03-X-006",
+  "module": "M03",
+  "module_name": "鼻科学",
+  "topic": "鼻腔鼻窦手术的解剖风险",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "分析",
+  "stem": "关于鼻腔鼻窦手术的解剖风险，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "中鼻甲基板在手术中可不予辨识"
+   },
+   {
+    "label": "B",
+    "text": "气化良好的蝶窦外侧壁紧邻视神经"
+   },
+   {
+    "label": "C",
+    "text": "损伤眶纸样板可致眶内并发症"
+   },
+   {
+    "label": "D",
+    "text": "损伤筛骨水平板可致脑脊液鼻漏"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "筛窦外侧壁即纸样板，损伤可致眶内并发症；鼻腔顶壁中段为菲薄而脆的筛骨水平板（筛板），损伤可致脑脊液鼻漏；气化良好的蝶窦外侧壁菲薄甚或缺损，与视神经管、颈内动脉毗邻，手术易损伤视神经致失明，故A、B、C正确。中鼻甲及其基板是重要手术标志，术中不可不辨识。教材P159-160。",
+  "source_page": "教材P159-160",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M04-A1-001",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽的分部与分界平面",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "咽的三部分中，鼻咽与口咽之间的分界平面是",
+  "options": [
+   {
+    "label": "A",
+    "text": "软腭平面"
+   },
+   {
+    "label": "B",
+    "text": "会厌上缘平面"
+   },
+   {
+    "label": "C",
+    "text": "环状软骨下缘平面"
+   },
+   {
+    "label": "D",
+    "text": "舌骨平面"
+   },
+   {
+    "label": "E",
+    "text": "第6颈椎平面"
+   }
+  ],
+  "answer": "A",
+  "explanation": "咽以软腭平面和会厌上缘平面为界，自上而下分为鼻咽、口咽、喉咽三部分。鼻咽位于软腭平面以上，口咽位于软腭平面与会厌上缘平面之间，喉咽位于会厌上缘至环状软骨下缘之间，故鼻咽与口咽的分界为软腭平面。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-002",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽的下界与食管移行平面",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "咽的下端在哪个平面向下移行为食管",
+  "options": [
+   {
+    "label": "A",
+    "text": "第4颈椎平面"
+   },
+   {
+    "label": "B",
+    "text": "第5颈椎平面"
+   },
+   {
+    "label": "C",
+    "text": "第6颈椎平面"
+   },
+   {
+    "label": "D",
+    "text": "第7颈椎平面"
+   },
+   {
+    "label": "E",
+    "text": "第1胸椎平面"
+   }
+  ],
+  "answer": "C",
+  "explanation": "咽上起颅底，下至环状软骨下缘平面（约平第6颈椎），成人全长约12cm，向下移行为食管；其后方邻近颈椎及椎前筋膜，前方分别与鼻腔、口腔和喉腔相通。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-003",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽隐窝的位置与临床意义",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻咽癌好发部位之一，位于咽鼓管圆枕后上方与咽后壁之间的凹陷区是",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽侧索"
+   },
+   {
+    "label": "B",
+    "text": "咽鼓管咽口"
+   },
+   {
+    "label": "C",
+    "text": "咽鼓管圆枕"
+   },
+   {
+    "label": "D",
+    "text": "咽鼓管扁桃体"
+   },
+   {
+    "label": "E",
+    "text": "咽隐窝"
+   }
+  ],
+  "answer": "E",
+  "explanation": "咽隐窝位于咽鼓管圆枕后上方与咽后壁之间，其上方与颅底破裂孔邻接，是鼻咽癌的好发部位之一。咽鼓管咽口位于下鼻甲后端后方1.0～1.5cm处，咽口上方隆起为咽鼓管圆枕，周围散在淋巴组织为咽鼓管扁桃体，咽侧索属口咽侧壁淋巴组织。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M04-A1-004",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽淋巴环内环的组成",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "理解",
+  "stem": "下列结构中，**不属于** Waldeyer 环内环组成部分的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "腭扁桃体"
+   },
+   {
+    "label": "B",
+    "text": "咽扁桃体"
+   },
+   {
+    "label": "C",
+    "text": "舌扁桃体"
+   },
+   {
+    "label": "D",
+    "text": "咽后壁淋巴滤泡"
+   },
+   {
+    "label": "E",
+    "text": "颈深上淋巴结"
+   }
+  ],
+  "answer": "A",
+  "explanation": "咽淋巴环内环主要由咽扁桃体（腺样体）、咽鼓管扁桃体、腭扁桃体、咽侧索、咽后壁淋巴滤泡及舌扁桃体构成，具有黏膜免疫防御功能；颈深上淋巴结属咽部淋巴引流的颈部淋巴结，构成外环，不属于内环。教材P251。",
+  "source_page": "教材P251",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-005",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽提肌群的组成",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "咽壁肌层中，咽提肌群包括下列哪一组肌肉",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽上缩肌、咽中缩肌及咽下缩肌"
+   },
+   {
+    "label": "B",
+    "text": "茎突咽肌、咽腭肌及咽鼓管咽肌"
+   },
+   {
+    "label": "C",
+    "text": "腭帆提肌、腭帆张肌及悬雍垂肌"
+   },
+   {
+    "label": "D",
+    "text": "腭舌肌、腭帆提肌及腭咽肌"
+   },
+   {
+    "label": "E",
+    "text": "茎突咽肌、舌骨舌肌及茎突舌肌"
+   }
+  ],
+  "answer": "B",
+  "explanation": "咽壁肌层分咽缩肌组、咽提肌组和腭帆肌组三组。咽提肌组包括茎突咽肌、咽腭肌及咽鼓管咽肌三对，收缩时可使咽、喉上提并协助完成吞咽；咽上缩肌等属咽缩肌组，腭帆提肌、腭帆张肌、悬雍垂肌等属腭帆肌组。教材P250。",
+  "source_page": "教材P250",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-006",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "腭咽闭合的生理作用",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "吞咽时软腭向后上方抬起并与咽后壁接触，其主要的生理作用是",
+  "options": [
+   {
+    "label": "A",
+    "text": "开放咽鼓管咽口，平衡中耳气压"
+   },
+   {
+    "label": "B",
+    "text": "封闭喉口，防止食物误吸入气管"
+   },
+   {
+    "label": "C",
+    "text": "封闭鼻咽峡，防止食物反流至鼻咽"
+   },
+   {
+    "label": "D",
+    "text": "上提喉咽，协助完成吞咽动作"
+   },
+   {
+    "label": "E",
+    "text": "收缩咽缩肌，将食物压入食管"
+   }
+  ],
+  "answer": "C",
+  "explanation": "吞咽时软腭向后上方抬起与咽后壁接触，关闭鼻咽峡，使鼻咽与口咽暂时隔开，防止食物反流至鼻咽，即腭咽闭合；封闭喉口由会厌及喉肌完成，开放咽鼓管咽口主要与平衡中耳气压有关，咽缩肌自上而下收缩将食物压入食管。教材P248、P252。",
+  "source_page": "教材P248",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-007",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "腺样体的退化年龄",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻咽顶后壁的腺样体一般在哪个年龄段以后逐渐退化萎缩",
+  "options": [
+   {
+    "label": "A",
+    "text": "5岁以后"
+   },
+   {
+    "label": "B",
+    "text": "6岁以后"
+   },
+   {
+    "label": "C",
+    "text": "8岁以后"
+   },
+   {
+    "label": "D",
+    "text": "10岁以后"
+   },
+   {
+    "label": "E",
+    "text": "14岁以后"
+   }
+  ],
+  "answer": "D",
+  "explanation": "腺样体又称咽扁桃体，位于鼻咽顶壁与后壁交界处，出生后即存在，6～7岁时增生最显著，10岁以后逐渐退化萎缩，成人基本消失。教材P251、P266。",
+  "source_page": "教材P251",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-008",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "慢性咽炎的检查所见",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "慢性咽炎患者最常见、最具特征性的检查所见是",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉入口充血水肿"
+   },
+   {
+    "label": "B",
+    "text": "扁桃体隐窝口脓栓"
+   },
+   {
+    "label": "C",
+    "text": "咽隐窝饱满隆起"
+   },
+   {
+    "label": "D",
+    "text": "咽后壁淋巴滤泡增生"
+   },
+   {
+    "label": "E",
+    "text": "腭弓弥漫性充血"
+   }
+  ],
+  "answer": "D",
+  "explanation": "慢性咽炎检查可见咽黏膜慢性充血，咽后壁淋巴滤泡增生（肥厚性者尤为显著），可伴少量黏稠分泌物附着；扁桃体隐窝口脓栓见于慢性扁桃体炎，咽隐窝饱满隆起需警惕鼻咽癌，喉入口充血水肿多见于急性喉炎。教材P259。",
+  "source_page": "教材P259",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-009",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "急性扁桃体炎的主要致病菌",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "急性扁桃体炎最主要的致病菌是",
+  "options": [
+   {
+    "label": "A",
+    "text": "白喉棒状杆菌"
+   },
+   {
+    "label": "B",
+    "text": "金黄色葡萄球菌"
+   },
+   {
+    "label": "C",
+    "text": "甲型溶血性链球菌"
+   },
+   {
+    "label": "D",
+    "text": "流感嗜血杆菌"
+   },
+   {
+    "label": "E",
+    "text": "乙型溶血性链球菌"
+   }
+  ],
+  "answer": "E",
+  "explanation": "乙型溶血性链球菌为急性扁桃体炎的主要致病菌；非溶血性链球菌、葡萄球菌、肺炎链球菌、流感杆菌以及腺病毒、鼻病毒等亦可引起本病，细菌与病毒混合感染者不少见。教材P260。",
+  "source_page": "教材P260",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M04-A1-010",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "扁桃体切除术后继发性出血的时间",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "扁桃体切除术后继发性出血最常发生于下列哪个时间段",
+  "options": [
+   {
+    "label": "A",
+    "text": "术后24小时内"
+   },
+   {
+    "label": "B",
+    "text": "术后1～2天"
+   },
+   {
+    "label": "C",
+    "text": "术后5～6天"
+   },
+   {
+    "label": "D",
+    "text": "术后2周"
+   },
+   {
+    "label": "E",
+    "text": "术后3～4周"
+   }
+  ],
+  "answer": "C",
+  "explanation": "扁桃体切除术后24小时内出血为原发性，最常见原因为术中止血不彻底或咽部活动过甚（咳嗽、吞咽等）；继发性出血常发生于术后5～6天，此时创面白膜开始脱落，进食不慎擦伤创面可致出血，合并感染亦可引起。教材P264。",
+  "source_page": "教材P264",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-001",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "腺样体肥大的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "6岁男童，长期鼻塞、张口呼吸、夜间打鼾，见上颌骨变长、腭骨高拱、牙列不齐，伴传导性听力下降。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "腺样体肥大"
+   },
+   {
+    "label": "B",
+    "text": "急性腺样体炎"
+   },
+   {
+    "label": "C",
+    "text": "慢性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "分泌性中耳炎"
+   },
+   {
+    "label": "E",
+    "text": "咽后脓肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "患儿长期鼻塞、张口呼吸、打鼾并出现上颌骨变长、腭骨高拱、牙列不齐等腺样体面容表现，伴传导性听力下降，最符合腺样体肥大：肥大的腺样体阻塞鼻后孔并压迫咽鼓管咽口，可并发分泌性中耳炎及听力减退。教材P266-267。",
+  "source_page": "教材P266-267",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-002",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "OSAHS 的诊断检查",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "50岁男性，体型肥胖，夜间打鼾并反复出现呼吸暂停，白天嗜睡伴高血压。为明确诊断与病情程度评估，应首选",
+  "options": [
+   {
+    "label": "A",
+    "text": "纤维鼻咽镜检查"
+   },
+   {
+    "label": "B",
+    "text": "多导睡眠监测"
+   },
+   {
+    "label": "C",
+    "text": "鼻咽侧位X线片"
+   },
+   {
+    "label": "D",
+    "text": "头颅增强CT扫描"
+   },
+   {
+    "label": "E",
+    "text": "嗜睡程度问卷评分"
+   }
+  ],
+  "answer": "B",
+  "explanation": "整夜多导睡眠监测（PSG）是诊断OSA（OSAHS）的标准手段，可监测口鼻气流、胸腹呼吸运动、血氧饱和度并计算AHI，用于定性诊断和判断病情程度。纤维鼻咽镜结合Müller试验用于阻塞平面的定位。教材P287。",
+  "source_page": "教材P287",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-003",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "扁桃体周脓肿的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "青年男性，咽痛加重伴吞咽困难，讲话含糊呈“口含汤圆音”，检查见患侧软腭及腭弓膨隆、悬雍垂偏向健侧。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽旁脓肿"
+   },
+   {
+    "label": "B",
+    "text": "咽后脓肿"
+   },
+   {
+    "label": "C",
+    "text": "扁桃体周脓肿"
+   },
+   {
+    "label": "D",
+    "text": "急性会厌炎"
+   },
+   {
+    "label": "E",
+    "text": "扁桃体恶性肿瘤"
+   }
+  ],
+  "answer": "C",
+  "explanation": "扁桃体周脓肿常继发于急性扁桃体炎，典型表现为剧烈咽痛、吞咽困难、张口受限、讲话含糊呈“口含汤圆音”，患侧软腭或腭弓膨隆、悬雍垂水肿并偏向健侧。咽旁脓肿患侧扁桃体及咽侧壁被推向对侧但其本身无病变，咽后脓肿以咽后壁一侧隆起为主。教材P269。",
+  "source_page": "教材P269",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-004",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "急性扁桃体炎的抗生素选择",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "青年女性，急性扁桃体炎，双侧扁桃体充血肿大伴散在脓点，咽痛剧烈，体温39℃。首选的抗生素是",
+  "options": [
+   {
+    "label": "A",
+    "text": "阿奇霉素"
+   },
+   {
+    "label": "B",
+    "text": "庆大霉素"
+   },
+   {
+    "label": "C",
+    "text": "甲硝唑"
+   },
+   {
+    "label": "D",
+    "text": "青霉素"
+   },
+   {
+    "label": "E",
+    "text": "万古霉素"
+   }
+  ],
+  "answer": "D",
+  "explanation": "急性扁桃体炎的抗生素治疗为主要疗法，首选青霉素，根据病情轻重决定给药途径；若治疗2～3天后病情无好转、高热不退，应分析原因并改用其他种类抗生素，可酌情使用糖皮质激素。教材P262。",
+  "source_page": "教材P262",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-005",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "单侧扁桃体肿大的恶性排查",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "中年男性，单侧扁桃体明显肿大、表面溃烂坏死、质地偏硬且固定，伴同侧下颌下淋巴结肿大。为明确诊断，最恰当的处理是",
+  "options": [
+   {
+    "label": "A",
+    "text": "取病变组织活检送病理"
+   },
+   {
+    "label": "B",
+    "text": "按慢性扁桃体炎抗感染治疗"
+   },
+   {
+    "label": "C",
+    "text": "直接行扁桃体切除无需病理"
+   },
+   {
+    "label": "D",
+    "text": "观察随访3个月"
+   },
+   {
+    "label": "E",
+    "text": "给予糖皮质激素消肿治疗"
+   }
+  ],
+  "answer": "A",
+  "explanation": "成人出现单侧扁桃体明显肿大、表面溃烂坏死、质地较硬且不活动，并伴同侧淋巴结肿大时，应警惕扁桃体恶性肿瘤，不能简单按慢性炎症处理；病理诊断为金标准，故应取病变组织活检送病理。教材P263、P281。",
+  "source_page": "教材P263",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-006",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "鼻咽癌的确诊方法",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "男性，45岁，晨起回吸涕中带血，右耳闷塞感伴听力下降，右颈上段可触及无痛性肿大淋巴结。为进一步明确诊断，应优先选择",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽拭子细菌培养"
+   },
+   {
+    "label": "B",
+    "text": "颈部淋巴结超声检查"
+   },
+   {
+    "label": "C",
+    "text": "EB病毒血清学检测"
+   },
+   {
+    "label": "D",
+    "text": "鼻咽部增强CT扫描"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部活组织病理检查"
+   }
+  ],
+  "answer": "E",
+  "explanation": "鼻咽癌临床易漏诊误诊，病理诊断为金标准，应行纤维鼻咽镜或鼻咽内镜观察病变并取活组织病理检查；EB病毒血清学检测与CT、MRI仅作辅助，颈部淋巴结超声不能替代病理确诊。教材P280、P282。",
+  "source_page": "教材P280",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M04-B1-001",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "鼻咽癌的好发部位",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N11-15",
+  "stem": "鼻咽癌最常发生于鼻咽部的哪个结构",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "A",
+  "explanation": "鼻咽癌好发于鼻咽顶后壁及咽隐窝；咽隐窝位于咽鼓管圆枕后上方与咽后壁之间，其上方与颅底破裂孔邻接。教材P248、P277。",
+  "source_page": "教材P248",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-B1-002",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "喉咽异物的易嵌顿部位",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N11-15",
+  "stem": "吞咽时尖细异物常易嵌顿的深窝状结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "B",
+  "explanation": "梨状窝位于喉入口两侧，是异物容易嵌顿的部位，其黏膜下有喉上神经内支通过，异物损伤可能引起咽部感觉异常。教材P249。",
+  "source_page": "教材P249",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-B1-003",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "会厌谷的位置",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N11-15",
+  "stem": "舌根后方正中矢状位黏膜皱襞两侧、常为异物滞留之处的浅凹陷结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "C",
+  "explanation": "舌根与会厌之间有一正中矢状位的黏膜皱襞为舌会厌正中襞，其左右各有一浅凹陷称会厌谷，常为异物滞留之处。教材P249。",
+  "source_page": "教材P249",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-B1-004",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "扁桃体窝的位置",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N11-15",
+  "stem": "腭舌弓与腭咽弓之间的三角形凹陷结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "D",
+  "explanation": "口咽侧壁由软腭向下分出腭舌弓（前腭弓）与腭咽弓（后腭弓），两弓之间为三角形凹陷称扁桃体窝，腭扁桃体即位于其中，为咽淋巴组织中最大者。教材P248、P252。",
+  "source_page": "教材P248",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-B1-005",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽鼓管咽口的功能与位置",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N11-15",
+  "stem": "连通鼻咽与中耳、参与调节中耳气压的结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "E",
+  "explanation": "咽鼓管咽口位于下鼻甲后端后方1.0～1.5cm处，连接鼻咽与中耳，参与调节中耳压力；其周围散在淋巴组织称咽鼓管扁桃体，咽口上方隆起为咽鼓管圆枕。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-001",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽的分部与界面",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于咽的分部与界面，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉咽位于会厌上缘附近至环状软骨下缘之间"
+   },
+   {
+    "label": "B",
+    "text": "鼻咽位于鼻腔后方、软腭平面以上"
+   },
+   {
+    "label": "C",
+    "text": "咽隐窝位于口咽的侧壁"
+   },
+   {
+    "label": "D",
+    "text": "口咽位于软腭平面与会厌上缘平面之间"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "咽以软腭平面、会厌上缘平面为界分为鼻咽、口咽、喉咽。鼻咽位于鼻腔后方、软腭平面以上；口咽位于软腭平面与会厌上缘平面之间；喉咽位于会厌上缘附近至环状软骨下缘之间。咽隐窝位于鼻咽侧壁（咽鼓管圆枕后上方与咽后壁之间），并非口咽侧壁，故D错误。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-002",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "腺样体肥大的表现与评估",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于腺样体肥大，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "确诊需常规行鼻咽部活组织病理检查"
+   },
+   {
+    "label": "B",
+    "text": "可并发分泌性中耳炎而致听力减退"
+   },
+   {
+    "label": "C",
+    "text": "可引起鼻塞、张口呼吸及闭塞性鼻音"
+   },
+   {
+    "label": "D",
+    "text": "睡眠时打鼾，严重者可出现睡眠呼吸暂停"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "腺样体肥大可引起鼻塞、张口呼吸、闭塞性鼻音及睡眠打鼾，重者出现阻塞性睡眠呼吸暂停；压迫咽鼓管咽口可并发分泌性中耳炎而致听力减退。其诊断依靠症状、纤维鼻咽镜、鼻咽侧位X线片及多导睡眠监测等，一般不需活组织病理检查，故C错误。教材P266-267。",
+  "source_page": "教材P266-267",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-003",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "慢性咽炎的临床与治疗",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于慢性咽炎，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "常有咽干、咽痒、咽部异物感及频繁清嗓"
+   },
+   {
+    "label": "B",
+    "text": "无细菌感染证据时仍应长期使用广谱抗生素"
+   },
+   {
+    "label": "C",
+    "text": "检查可见咽后壁慢性充血或淋巴滤泡增生"
+   },
+   {
+    "label": "D",
+    "text": "常与吸烟、饮酒、粉尘刺激及鼻后滴流有关"
+   }
+  ],
+  "answer": "ACD",
+  "explanation": "慢性咽炎常表现为咽干、咽痒、咽部异物感及频繁清嗓，检查可见咽后壁慢性充血或淋巴滤泡增生，多与吸烟、饮酒、粉尘刺激、长期用声及鼻后滴流等有关；没有明确细菌感染证据时不应常规长期使用全身大剂量广谱抗生素，故B错误。教材P259。",
+  "source_page": "教材P259",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-004",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "OSAHS 的机制与治疗",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "关于阻塞性睡眠呼吸暂停低通气综合征（OSAHS），下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "一经确诊即应首选手术治疗"
+   },
+   {
+    "label": "B",
+    "text": "可引起间歇性低氧及睡眠结构紊乱"
+   },
+   {
+    "label": "C",
+    "text": "睡眠时上气道反复塌陷引起呼吸暂停和低通气"
+   },
+   {
+    "label": "D",
+    "text": "成人患者的一线治疗是经鼻持续正压通气"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "OSAHS的核心病理生理机制是睡眠时上气道反复发生部分或完全性机械性阻塞，引起呼吸暂停、低通气、间歇性低氧和睡眠结构紊乱；成人患者的一线治疗为经鼻持续正压通气（CPAP）。治疗应根据病情程度、阻塞平面和全身情况个体化选择，手术并非一经确诊即首选，故D错误。教材P285、P287。",
+  "source_page": "教材P285-287",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-005",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "鼻咽癌的临床与诊断",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于鼻咽癌，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "血清EB病毒抗体阳性即可确诊"
+   },
+   {
+    "label": "B",
+    "text": "与EB病毒感染密切相关"
+   },
+   {
+    "label": "C",
+    "text": "可出现回吸性血涕、单侧耳鸣耳闷及颈部无痛性淋巴结肿大"
+   },
+   {
+    "label": "D",
+    "text": "好发于鼻咽顶后壁及咽隐窝"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "鼻咽癌好发于鼻咽顶后壁及咽隐窝，与EB病毒感染密切相关，常表现为回吸性血涕、单侧耳鸣耳闷、听力下降及颈部无痛性淋巴结肿大，肿瘤阻塞咽鼓管咽口可致分泌性中耳炎。确诊依靠鼻咽部活组织病理检查，EB病毒血清学检测为辅助指标，不能替代病理确诊，故D错误。教材P277、P280。",
+  "source_page": "教材P277-280",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M05-A1-001",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉的位置与上下界",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "成人喉位于颈前正中，其下界约平下列哪一颈椎平面？",
+  "options": [
+   {
+    "label": "A",
+    "text": "第3颈椎"
+   },
+   {
+    "label": "B",
+    "text": "第4颈椎"
+   },
+   {
+    "label": "C",
+    "text": "第5颈椎"
+   },
+   {
+    "label": "D",
+    "text": "第6颈椎"
+   },
+   {
+    "label": "E",
+    "text": "第7颈椎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "喉位于颈前正中，上通喉咽，下接气管。成人喉上界为会厌上缘（约平第4～5颈椎），下界为环状软骨下缘（约平第6颈椎）；女性及儿童喉的位置较男性稍高。教材P290。",
+  "source_page": "教材P290",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-002",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "甲状软骨的特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "成人喉部体积最大的软骨是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状软骨"
+   },
+   {
+    "label": "B",
+    "text": "会厌软骨"
+   },
+   {
+    "label": "C",
+    "text": "环状软骨"
+   },
+   {
+    "label": "D",
+    "text": "杓状软骨"
+   },
+   {
+    "label": "E",
+    "text": "小角软骨"
+   }
+  ],
+  "answer": "A",
+  "explanation": "甲状软骨是喉部最大的软骨，由两块对称的四边形软骨板在前方正中融合而成，男性上端向前突出形成喉结，是成年男性的特征之一。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-003",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "环状软骨的特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "喉与气管支架中唯一呈完整环形的软骨是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状软骨"
+   },
+   {
+    "label": "B",
+    "text": "环状软骨"
+   },
+   {
+    "label": "C",
+    "text": "会厌软骨"
+   },
+   {
+    "label": "D",
+    "text": "杓状软骨"
+   },
+   {
+    "label": "E",
+    "text": "楔状软骨"
+   }
+  ],
+  "answer": "B",
+  "explanation": "环状软骨位于甲状软骨下方、第1气管环之上，前部较窄为弓、后部较宽为板，是喉气管中唯一完整的环形软骨，对维持气道通畅至关重要，损伤后易致喉气管狭窄。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-004",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "杓状软骨及其附属结构",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "关于杓状软骨及其附属结构，下列描述正确的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "位于环状软骨板下方"
+   },
+   {
+    "label": "B",
+    "text": "肌突位于其底部前方"
+   },
+   {
+    "label": "C",
+    "text": "声带突有甲杓肌附着"
+   },
+   {
+    "label": "D",
+    "text": "与喉结直接相连构成支架"
+   },
+   {
+    "label": "E",
+    "text": "属喉部唯一完整环形软骨"
+   }
+  ],
+  "answer": "C",
+  "explanation": "杓状软骨位于环状软骨板上外缘，底部与环状软骨构成环杓关节；底部前端突起为声带突，有甲杓肌和声韧带附着，底部外侧突起为肌突，环杓后肌附着其后下方；环状软骨才是唯一完整环形的软骨。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-005",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉腔分区",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "喉腔被声带分为三个区域，其中下连气管的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "声门上区"
+   },
+   {
+    "label": "B",
+    "text": "声门区"
+   },
+   {
+    "label": "C",
+    "text": "喉前庭区"
+   },
+   {
+    "label": "D",
+    "text": "声门下区"
+   },
+   {
+    "label": "E",
+    "text": "喉室区"
+   }
+  ],
+  "answer": "D",
+  "explanation": "以声带为界，喉腔分为声门上区、声门区和声门下区；声门上区上通喉咽，声门区为两侧声带之间的区域，声门下区位于声带以下并下连气管。教材P294。",
+  "source_page": "教材P294",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-006",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉上神经内支的功能",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "分布至声门上区黏膜、司该处感觉的神经是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "舌下神经"
+   },
+   {
+    "label": "B",
+    "text": "喉上神经外支"
+   },
+   {
+    "label": "C",
+    "text": "喉返神经"
+   },
+   {
+    "label": "D",
+    "text": "舌咽神经"
+   },
+   {
+    "label": "E",
+    "text": "喉上神经内支"
+   }
+  ],
+  "answer": "E",
+  "explanation": "喉上神经为迷走神经分支，分内、外两支；内支与喉上动、静脉伴行穿过舌甲膜，分布于声门上区黏膜司该处感觉；外支支配环甲肌运动。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M05-A1-007",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉返神经的支配范围",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "支配除环甲肌以外喉内肌运动的神经是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉返神经"
+   },
+   {
+    "label": "B",
+    "text": "喉上神经外支"
+   },
+   {
+    "label": "C",
+    "text": "喉上神经内支"
+   },
+   {
+    "label": "D",
+    "text": "舌咽神经"
+   },
+   {
+    "label": "E",
+    "text": "副神经"
+   }
+  ],
+  "answer": "A",
+  "explanation": "喉返神经是喉的主要运动神经，左侧绕主动脉弓、右侧绕锁骨下动脉上行，在环甲关节后方入喉，支配除环甲肌以外的喉内各肌，并有感觉支司声门下区黏膜感觉；环甲肌由喉上神经外支支配。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-008",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "双侧喉返神经损伤",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "喉返神经双侧损伤时，患者最可能出现的危重表现是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "持续性高音发声困难"
+   },
+   {
+    "label": "B",
+    "text": "严重吸气性呼吸困难"
+   },
+   {
+    "label": "C",
+    "text": "发声耐力明显下降"
+   },
+   {
+    "label": "D",
+    "text": "喉部干燥伴异物感"
+   },
+   {
+    "label": "E",
+    "text": "吞咽疼痛伴流涎"
+   }
+  ],
+  "answer": "B",
+  "explanation": "喉返神经单侧损伤多表现为声音嘶哑，双侧损伤时因声门开放受限可导致严重吸气性呼吸困难，需及时建立气道；高音发声困难、发声耐力下降多见于喉上神经外支损伤。教材P315。",
+  "source_page": "教材P315",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-009",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "频闪喉镜的评估内容",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "长期用声过度者行频闪喉镜（动态喉镜）检查，其主要评估内容是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "声门下有无肿瘤"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨钙化程度"
+   },
+   {
+    "label": "C",
+    "text": "声带振动及黏膜波"
+   },
+   {
+    "label": "D",
+    "text": "喉返神经传导速度"
+   },
+   {
+    "label": "E",
+    "text": "环杓关节有无脱位"
+   }
+  ],
+  "answer": "C",
+  "explanation": "频闪喉镜（动态喉镜）可评估声带振动周期、振幅、对称性和黏膜波，是判断声带振动功能的重要方法，常用于声带小结等嗓音疾病的病情评估。教材P296。",
+  "source_page": "教材P296",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A1-010",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "小儿急性喉炎的咳嗽特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "小儿急性喉炎最具特征性的咳嗽特点是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "咳大量脓痰"
+   },
+   {
+    "label": "B",
+    "text": "金属音咳嗽"
+   },
+   {
+    "label": "C",
+    "text": "阵发性痉挛性咳嗽"
+   },
+   {
+    "label": "D",
+    "text": "犬吠样咳嗽"
+   },
+   {
+    "label": "E",
+    "text": "干咳伴胸痛"
+   }
+  ],
+  "answer": "D",
+  "explanation": "小儿急性喉炎起病急，主要症状为声嘶、犬吠样咳嗽、吸气性喉喘鸣和吸气性呼吸困难；当炎症向声门下发展、黏膜水肿加重时，出现特征性的犬吠样咳嗽。教材P311。",
+  "source_page": "教材P311",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-011",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "急性会厌炎的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，45岁。突发剧烈咽喉疼痛伴吞咽困难、流涎，发热39℃，口咽部检查无明显异常。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性喉炎"
+   },
+   {
+    "label": "B",
+    "text": "急性扁桃体炎"
+   },
+   {
+    "label": "C",
+    "text": "慢性咽炎"
+   },
+   {
+    "label": "D",
+    "text": "扁桃体周脓肿"
+   },
+   {
+    "label": "E",
+    "text": "急性会厌炎"
+   }
+  ],
+  "answer": "E",
+  "explanation": "成人突发剧烈咽喉痛、吞咽困难、流涎伴高热，而口咽部检查无明显异常时，应高度警惕急性会厌炎，须行间接喉镜或纤维（电子）鼻咽喉镜检查，可见会厌明显充血肿胀甚至呈球形。该病可迅速引起喉阻塞，气道保障优先。教材P309。",
+  "source_page": "教材P309",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M05-A2-012",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "四度喉阻塞的处理",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，3岁。极度呼吸困难，明显发绀，随后出现意识障碍、脉搏细数。此时最恰当的处理是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "立即气管切开"
+   },
+   {
+    "label": "B",
+    "text": "口服糖皮质激素"
+   },
+   {
+    "label": "C",
+    "text": "雾化吸入肾上腺素"
+   },
+   {
+    "label": "D",
+    "text": "密切观察病情变化"
+   },
+   {
+    "label": "E",
+    "text": "应用抗生素治疗"
+   }
+  ],
+  "answer": "A",
+  "explanation": "该患儿表现为喉阻塞四度（极度呼吸困难、发绀、意识障碍），应立即建立可靠气道、行气管切开术；若病情十分紧急可先行环甲膜切开。药物保守观察不能替代气道的紧急建立。教材P339。",
+  "source_page": "教材P339",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-013",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉阻塞的分度判定",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "喉阻塞患者安静时即出现吸气性呼吸困难及喉鸣，活动时加重，但不影响睡眠和进食、无烦躁不安。应判定为？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉阻塞Ⅰ度"
+   },
+   {
+    "label": "B",
+    "text": "喉阻塞Ⅱ度"
+   },
+   {
+    "label": "C",
+    "text": "喉阻塞Ⅲ度"
+   },
+   {
+    "label": "D",
+    "text": "喉阻塞Ⅳ度"
+   },
+   {
+    "label": "E",
+    "text": "无喉阻塞"
+   }
+  ],
+  "answer": "B",
+  "explanation": "喉阻塞二度为安静时也有轻度吸气性呼吸困难、喉喘鸣及软组织凹陷，活动时加重，但不影响睡眠和进食、无烦躁不安等缺氧症状；与三度的区别在于后者已出现烦躁不安、脉搏加快等缺氧症状。教材P339。",
+  "source_page": "教材P339",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-014",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "气管切开术的切开部位",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，50岁。因喉癌致Ⅲ度喉阻塞拟行气管切开术，术中切开气管的适宜部位是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "第1～2气管环"
+   },
+   {
+    "label": "B",
+    "text": "第2～3气管环"
+   },
+   {
+    "label": "C",
+    "text": "第3～4气管环"
+   },
+   {
+    "label": "D",
+    "text": "第5～6气管环"
+   },
+   {
+    "label": "E",
+    "text": "第7～8气管环"
+   }
+  ],
+  "answer": "C",
+  "explanation": "常规气管切开术多在第3～4气管环处纵行切开气管（教师重点述第2～4气管软骨环附近，具体位置应结合解剖条件判断）；避免切开第1气管环以免损伤环状软骨致喉狭窄，切口不应低于第5气管环，以免损伤大血管和胸膜顶。教材P342。",
+  "source_page": "教材P342",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-015",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉癌的确诊方法",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，60岁，吸烟40年。声音嘶哑进行性加重3个月，伴痰中带血。喉部检查见声带菜花样肿物。明确诊断最有价值的方法是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉部触诊判断活动度"
+   },
+   {
+    "label": "B",
+    "text": "颈部超声检查淋巴结"
+   },
+   {
+    "label": "C",
+    "text": "喉镜下活组织病理检查"
+   },
+   {
+    "label": "D",
+    "text": "纯音测听判断听力"
+   },
+   {
+    "label": "E",
+    "text": "血常规判断感染"
+   }
+  ],
+  "answer": "C",
+  "explanation": "喉癌确诊的金标准是活组织病理检查，可在间接喉镜、纤维（电子）鼻咽喉镜或直接喉镜下取组织送检；中老年重度吸烟者出现进行性声嘶伴痰中带血，须高度警惕喉癌。教材P327。",
+  "source_page": "教材P327",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-A2-016",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉癌与声带小结的鉴别",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "男性，55岁，重度吸烟20年，进行性声嘶3个月，伴吞咽不适。与声带小结鉴别，最支持喉癌诊断的依据是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "声嘶病程较短"
+   },
+   {
+    "label": "B",
+    "text": "双侧声带对称性结节"
+   },
+   {
+    "label": "C",
+    "text": "用声过度病史"
+   },
+   {
+    "label": "D",
+    "text": "颈部无痛性肿块"
+   },
+   {
+    "label": "E",
+    "text": "颈部淋巴结质软活动"
+   }
+  ],
+  "answer": "D",
+  "explanation": "持续性、进行性声嘶伴痰中带血、吞咽不适或颈部肿块者应高度怀疑喉癌；声带小结表现为双侧声带前中1/3交界处对称性结节，多与长期用声过度有关，一般不伴颈部肿块。教材P326。",
+  "source_page": "教材P326",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-017",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N16-20",
+  "stem": "甲状软骨的主要特点是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "A",
+  "explanation": "甲状软骨是喉部最大的软骨，前方正中融合处男性形成喉结，符合选项A。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-018",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N16-20",
+  "stem": "环状软骨的主要特点是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "B",
+  "explanation": "环状软骨是喉气管中唯一呈完整环形的软骨，对维持气道通畅至关重要，符合选项B。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-019",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N16-20",
+  "stem": "会厌软骨的主要作用是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "C",
+  "explanation": "会厌软骨表面覆以黏膜构成会厌，吞咽时会厌向后下盖住喉入口，防止食物进入喉腔，符合选项C。教材P291。",
+  "source_page": "教材P291",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-020",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N16-20",
+  "stem": "喉上神经内支的功能是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "D",
+  "explanation": "喉上神经内支司声门上区黏膜的感觉，其外支支配环甲肌运动，符合选项D。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-B1-021",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉软骨与喉神经的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N16-20",
+  "stem": "喉返神经的功能是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉软骨中体积最大"
+   },
+   {
+    "label": "B",
+    "text": "喉软骨中唯一完整环形"
+   },
+   {
+    "label": "C",
+    "text": "吞咽时遮盖喉入口"
+   },
+   {
+    "label": "D",
+    "text": "司声门上区黏膜感觉"
+   },
+   {
+    "label": "E",
+    "text": "支配除环甲肌外的喉内肌"
+   }
+  ],
+  "answer": "E",
+  "explanation": "喉返神经支配除环甲肌以外的喉内各肌运动，并有感觉支司声门下区黏膜感觉，符合选项E。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M05-X-022",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "成对的喉软骨",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "属于成对喉软骨的有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "杓状软骨"
+   },
+   {
+    "label": "B",
+    "text": "环状软骨"
+   },
+   {
+    "label": "C",
+    "text": "小角软骨"
+   },
+   {
+    "label": "D",
+    "text": "甲状软骨"
+   },
+   {
+    "label": "E",
+    "text": "楔状软骨"
+   }
+  ],
+  "answer": "ACE",
+  "explanation": "喉软骨共9块：不成对的有甲状软骨、环状软骨和会厌软骨，成对的有杓状软骨、小角软骨和楔状软骨。教材P290。",
+  "source_page": "教材P290",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M05-X-023",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉腔的分区",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "喉腔以声带为界可分为？",
+  "options": [
+   {
+    "label": "A",
+    "text": "声门区"
+   },
+   {
+    "label": "B",
+    "text": "声门上区"
+   },
+   {
+    "label": "C",
+    "text": "喉咽区"
+   },
+   {
+    "label": "D",
+    "text": "声门下区"
+   },
+   {
+    "label": "E",
+    "text": "喉前庭区"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "以声带为界，喉腔分为声门上区、声门区和声门下区；喉前庭属于声门上区内的结构，喉咽则属咽腔、不属于喉腔分区。教材P294。",
+  "source_page": "教材P294",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-X-024",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉返神经的描述",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于喉返神经的描述，正确的有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "右侧绕锁骨下动脉上行"
+   },
+   {
+    "label": "B",
+    "text": "左侧绕主动脉弓上行"
+   },
+   {
+    "label": "C",
+    "text": "属迷走神经分支"
+   },
+   {
+    "label": "D",
+    "text": "支配除环甲肌以外的喉内肌"
+   },
+   {
+    "label": "E",
+    "text": "主要支配环甲肌运动"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "喉返神经是迷走神经分支，左侧绕主动脉弓、右侧绕锁骨下动脉上行，在环甲关节后方入喉，支配除环甲肌以外的喉内各肌；环甲肌由喉上神经外支支配，故E错误。教材P295。",
+  "source_page": "教材P295",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-X-025",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉阻塞的临床表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "喉阻塞的典型临床表现包括？",
+  "options": [
+   {
+    "label": "A",
+    "text": "吸气性软组织凹陷"
+   },
+   {
+    "label": "B",
+    "text": "声嘶"
+   },
+   {
+    "label": "C",
+    "text": "吸气性喉喘鸣"
+   },
+   {
+    "label": "D",
+    "text": "吸气性呼吸困难"
+   },
+   {
+    "label": "E",
+    "text": "呼气期哮鸣音"
+   }
+  ],
+  "answer": "ABCD",
+  "explanation": "喉阻塞典型表现为吸气性呼吸困难、吸气性喉喘鸣、吸气性软组织凹陷（三凹征）、声嘶及发绀等；呼气期哮鸣音多见于支气管哮喘等呼气性呼吸困难，故E错误。教材P338。",
+  "source_page": "教材P338",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M05-X-026",
+  "module": "M05",
+  "module_name": "喉部疾病及危重气道处理",
+  "topic": "喉癌的临床警示表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "提示喉癌需高度警惕的临床表现有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "吞咽不适"
+   },
+   {
+    "label": "B",
+    "text": "持续进行性声嘶"
+   },
+   {
+    "label": "C",
+    "text": "痰中带血"
+   },
+   {
+    "label": "D",
+    "text": "突发剧烈咽痛伴流涎"
+   },
+   {
+    "label": "E",
+    "text": "颈部无痛性肿块"
+   }
+  ],
+  "answer": "ABCE",
+  "explanation": "中老年重度吸烟者出现持续性、进行性声嘶，尤其伴痰中带血、吞咽不适或颈部无痛性肿块时，应高度怀疑喉癌；突发剧烈咽痛伴流涎更提示急性会厌炎，故E错误。教材P326。",
+  "source_page": "教材P326",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M06-A1-001",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气管隆嵴的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "气管隆嵴（又称气管隆突）位于气管分叉处，其位置通常投影于下列哪一胸椎水平？",
+  "options": [
+   {
+    "label": "A",
+    "text": "第2～3胸椎"
+   },
+   {
+    "label": "B",
+    "text": "第3～4胸椎"
+   },
+   {
+    "label": "C",
+    "text": "第4～5胸椎"
+   },
+   {
+    "label": "D",
+    "text": "第5～6胸椎"
+   },
+   {
+    "label": "E",
+    "text": "第6～7胸椎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "气管起自环状软骨下缘（约第6颈椎水平），向下延伸到第4～5胸椎水平，在气管隆嵴处分叉为左、右主支气管。气管隆嵴边缘光滑锐利，是支气管镜检查的重要解剖标志，其实际位置可随呼吸和体位变化。教材P352。",
+  "source_page": "教材P352",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-002",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气管支气管异物的好发年龄",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "气管、支气管异物绝大多数发生于儿童，其中尤其好发于下列哪个年龄段？",
+  "options": [
+   {
+    "label": "A",
+    "text": "1岁以下"
+   },
+   {
+    "label": "B",
+    "text": "1～3岁"
+   },
+   {
+    "label": "C",
+    "text": "4～6岁"
+   },
+   {
+    "label": "D",
+    "text": "7～9岁"
+   },
+   {
+    "label": "E",
+    "text": "10岁以上"
+   }
+  ],
+  "answer": "B",
+  "explanation": "气管、支气管异物是儿童耳鼻咽喉科最常见的急症之一，绝大多数发生于儿童，尤其以1～3岁多见。此年龄段儿童磨牙未萌出、咀嚼功能不完善、吞咽协调与喉保护功能不健全，在哭笑、惊恐深吸气时极易将异物吸入气管。教材P366。",
+  "source_page": "教材P366",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-003",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "右主支气管解剖特点与异物易入右侧",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "气管异物更容易进入右侧主支气管，其主要解剖学原因是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "右主支气管较短、较粗且走向较垂直"
+   },
+   {
+    "label": "B",
+    "text": "右主支气管较长、较细且走向较倾斜"
+   },
+   {
+    "label": "C",
+    "text": "右主支气管较长、较粗且走向较垂直"
+   },
+   {
+    "label": "D",
+    "text": "右主支气管较短、较细且走向较倾斜"
+   },
+   {
+    "label": "E",
+    "text": "右主支气管与气管夹角约45°"
+   }
+  ],
+  "answer": "A",
+  "explanation": "右主支气管较粗短（约2.5cm），与气管纵轴延长线成20°～25°角、走向较垂直；左主支气管细而长（约5cm），约成45°角。故气管异物更容易进入右侧主支气管，但并非绝对。教材P353。",
+  "source_page": "教材P353",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-004",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "支气管异物不完全性阻塞的病理生理",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "支气管异物造成不完全性阻塞并形成活瓣（单向）作用时，最常出现的病理生理改变是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "患侧胸腔积液"
+   },
+   {
+    "label": "B",
+    "text": "患侧阻塞性肺不张"
+   },
+   {
+    "label": "C",
+    "text": "患侧代偿性肺气肿"
+   },
+   {
+    "label": "D",
+    "text": "双侧弥漫性肺气肿"
+   },
+   {
+    "label": "E",
+    "text": "患侧局限性肺气肿"
+   }
+  ],
+  "answer": "E",
+  "explanation": "异物形成只进不出的活瓣性阻塞时，吸气时支气管腔扩大、异物与管壁间出现空隙，空气可进入；呼气时异物被气流冲击而封闭管腔，气体排出受阻，远端肺组织形成局限性肺气肿，患侧肺透亮度增高、横膈下移。教材P366。",
+  "source_page": "教材P366",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M06-A1-005",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "支气管异物全阻塞的病理生理",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "支气管异物引起既不能进也不能出的全阻塞时，其远端肺组织最可能发生？",
+  "options": [
+   {
+    "label": "A",
+    "text": "阻塞性肺不张"
+   },
+   {
+    "label": "B",
+    "text": "局限性肺气肿"
+   },
+   {
+    "label": "C",
+    "text": "阻塞性肺气肿"
+   },
+   {
+    "label": "D",
+    "text": "张力性气胸"
+   },
+   {
+    "label": "E",
+    "text": "阻塞性肺脓肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "既不能进也不能出的全阻塞型，远端气体逐渐被吸收而不能再充入，形成阻塞性肺不张，影像上表现为肺叶或肺段密度增高、体积缩小，纵隔向患侧移位，邻近肺叶可出现代偿性肺气肿。教材P367。",
+  "source_page": "教材P367",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-006",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管第二生理性狭窄的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "成人食管第二生理性狭窄位于主动脉弓与左主支气管相关区域，其距中切牙约为？",
+  "options": [
+   {
+    "label": "A",
+    "text": "15～16 cm"
+   },
+   {
+    "label": "B",
+    "text": "19～20 cm"
+   },
+   {
+    "label": "C",
+    "text": "24～25 cm"
+   },
+   {
+    "label": "D",
+    "text": "39～40 cm"
+   },
+   {
+    "label": "E",
+    "text": "44～45 cm"
+   }
+  ],
+  "answer": "C",
+  "explanation": "成人食管有三个常考的生理性狭窄，距中切牙约为15～16 cm、25 cm和40 cm，依次位于食管入口、主动脉弓及左主支气管相关区域、膈食管裂孔处（上述距离为教学记忆用近似值）。第二狭窄邻近主动脉弓及左主支气管，是尖硬异物易损伤、穿孔的危险部位。教材P354。",
+  "source_page": "教材P354",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-007",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管异物最常嵌顿的部位",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "食管异物最常嵌顿的部位是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "食管入口"
+   },
+   {
+    "label": "B",
+    "text": "食管中段第2狭窄处"
+   },
+   {
+    "label": "C",
+    "text": "食管下段第3狭窄处"
+   },
+   {
+    "label": "D",
+    "text": "膈食管裂孔处"
+   },
+   {
+    "label": "E",
+    "text": "贲门处"
+   }
+  ],
+  "answer": "A",
+  "explanation": "食管入口由环咽肌收缩而致，是食管最狭窄的部位，也是异物最易嵌顿之处；其次为食管中段第2狭窄处，发生于食管下段者相对少见。教材P372。",
+  "source_page": "教材P372",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-008",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管腐蚀伤碱性损伤的特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "关于食管腐蚀伤，碱性腐蚀剂所致损伤的特点是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "引起黏膜干性坏死、穿透力弱"
+   },
+   {
+    "label": "B",
+    "text": "引起组织液化坏死、穿透力强"
+   },
+   {
+    "label": "C",
+    "text": "仅致黏膜浅表充血、不留瘢痕"
+   },
+   {
+    "label": "D",
+    "text": "引起广泛出血、不累及肌层"
+   },
+   {
+    "label": "E",
+    "text": "造成食管蠕动增强、无坏死"
+   }
+  ],
+  "answer": "B",
+  "explanation": "碱性腐蚀剂有强烈的吸水性，并有脂肪皂化和蛋白质溶解作用，引起组织液化坏死，病变易向深层发展、穿透力强；酸性腐蚀剂则易引起局部黏膜干性坏死、穿透力较弱，但高浓度强酸亦可引起食管的严重损伤。教材P375。",
+  "source_page": "教材P375",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A2-001",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "儿童气管支气管异物的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，男，2岁，进食花生米时突发剧烈呛咳、憋气、面色发绀，数分钟后缓解，此后反复阵发性咳嗽、喘息，查体右肺呼吸音减弱。该患儿最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "支气管哮喘急性发作"
+   },
+   {
+    "label": "B",
+    "text": "急性感染性喉炎"
+   },
+   {
+    "label": "C",
+    "text": "气管、支气管异物"
+   },
+   {
+    "label": "D",
+    "text": "急性支气管炎"
+   },
+   {
+    "label": "E",
+    "text": "自发性张力性气胸"
+   }
+  ],
+  "answer": "C",
+  "explanation": "该患儿有明确进食花生米病史，进食时突发剧烈呛咳、憋气、面色发绀（异物进入期症状剧烈），缓解后出现阵发性咳嗽、喘息及单侧呼吸音减弱（症状再发期），符合气管、支气管异物的典型表现。教材P366-367。",
+  "source_page": "教材P366-367",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A2-002",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "胸片正常不能排除气道异物",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿进食瓜子后突发呛咳，胸部X线片未见明显异常，但仍高度怀疑气管异物。此时最恰当的处理是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "胸片正常即可排除气管异物"
+   },
+   {
+    "label": "B",
+    "text": "口服镇咳药物后观察"
+   },
+   {
+    "label": "C",
+    "text": "立即给予足量抗生素"
+   },
+   {
+    "label": "D",
+    "text": "进一步行支气管镜检查"
+   },
+   {
+    "label": "E",
+    "text": "立即行开胸手术探查"
+   }
+  ],
+  "answer": "D",
+  "explanation": "许多有机异物（如花生、瓜子等）本身不显影，胸片可正常，故正常胸片不能排除气道异物；对可透光异物需结合胸部透视观察纵隔摆动、肺气肿、肺不张等间接征象。高度怀疑时应在适当麻醉及气道保障下行支气管镜检查以明确诊断并取出异物。教材P368。",
+  "source_page": "教材P368",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A2-003",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管异物的临床表现与诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，55岁，进食鱼后自觉咽部及胸骨后疼痛，吞咽时明显加重，伴流涎、吞咽困难。该患者最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "反流性食管炎"
+   },
+   {
+    "label": "B",
+    "text": "急性咽炎"
+   },
+   {
+    "label": "C",
+    "text": "急性喉炎"
+   },
+   {
+    "label": "D",
+    "text": "食管癌"
+   },
+   {
+    "label": "E",
+    "text": "食管异物"
+   }
+  ],
+  "answer": "E",
+  "explanation": "食管异物常表现为吞咽困难、吞咽疼痛与流涎；异物位于食管上段者疼痛多在颈根部或胸骨上窝，位于中段者常表现为胸骨后疼痛。该患者有明确进食鱼（尖锐异物）病史，症状典型。教材P372。",
+  "source_page": "教材P372",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M06-A2-004",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管穿孔并发纵隔感染",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者误吞枣核3天后出现进行性胸骨后疼痛、发热，颈部可触及皮下气肿，胸部CT提示纵隔气体。该患者最可能的并发症是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "食管穿孔并纵隔感染"
+   },
+   {
+    "label": "B",
+    "text": "急性化脓性咽炎"
+   },
+   {
+    "label": "C",
+    "text": "食管周围炎累及纵隔"
+   },
+   {
+    "label": "D",
+    "text": "食管腐蚀伤狭窄期"
+   },
+   {
+    "label": "E",
+    "text": "纵隔淋巴结反应性增生"
+   }
+  ],
+  "answer": "A",
+  "explanation": "尖锐异物（如枣核、鱼刺、骨片、假牙）可穿破食管壁；食管穿孔后咽下的空气经穿孔外溢，可进入颈部皮下组织形成皮下气肿，或进入纵隔形成纵隔气肿并继发纵隔感染。进行性胸骨后疼痛、发热、颈部皮下气肿及纵隔气体是食管穿孔并发纵隔感染的重要线索。教材P373。",
+  "source_page": "教材P373",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A4-001",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气道异物活瓣性阻塞的病理生理分析",
+  "type": "A4",
+  "polarity": "positive",
+  "bloom": "分析",
+  "case_group": "M06-A4-01",
+  "stem": "（共用题干）患儿，男，3岁，进食花生米时突发剧烈呛咳、憋气，随后反复阵发性咳嗽伴喘息。胸部X线片示右肺透亮度增高、横膈下移，纵隔向左侧偏移。据此判断，该患儿右侧支气管的阻塞类型为？",
+  "options": [
+   {
+    "label": "A",
+    "text": "只出不进的活瓣性阻塞"
+   },
+   {
+    "label": "B",
+    "text": "只进不出的活瓣性阻塞"
+   },
+   {
+    "label": "C",
+    "text": "既不能进也不能出的全阻塞"
+   },
+   {
+    "label": "D",
+    "text": "两侧支气管均通畅"
+   },
+   {
+    "label": "E",
+    "text": "气管声门区闭塞"
+   }
+  ],
+  "answer": "B",
+  "explanation": "患侧（右）肺透亮度增高、横膈下移提示患侧肺气肿，纵隔向健侧（左侧）偏移，符合只进不出（吸气性）活瓣性阻塞的特征：吸气时气体可进入远端，呼气时异物封闭管腔致气体排出受阻，形成局限性肺气肿。教材P366。",
+  "source_page": "教材P366",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-X-001",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气管支气管异物常见的异物种类",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "下列哪些属于儿童气管、支气管异物常见的异物种类？",
+  "options": [
+   {
+    "label": "A",
+    "text": "笔帽、铁钉等金属类"
+   },
+   {
+    "label": "B",
+    "text": "果核、小玩具零件"
+   },
+   {
+    "label": "C",
+    "text": "鱼刺、枣核等尖锐类"
+   },
+   {
+    "label": "D",
+    "text": "花生、瓜子等坚果类"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "气管、支气管异物按来源分外源性和内源性，外源性常见花生、瓜子等坚果类，以及果核、小玩具零件、笔帽、铁钉等。鱼刺、枣核、骨片等尖锐异物主要见于食管异物，故选ABC。教材P366。",
+  "source_page": "教材P366",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M06-X-002",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气道与食管异物的预防措施",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "为预防气道与食管异物，下列措施中正确的有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "避免给3岁以下儿童整粒坚果"
+   },
+   {
+    "label": "B",
+    "text": "误咽异物后禁吞饭团馒头"
+   },
+   {
+    "label": "C",
+    "text": "进食时保持安静坐位"
+   },
+   {
+    "label": "D",
+    "text": "进食时逗笑以锻炼吞咽"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "预防重点是避免给低龄儿童进食整粒坚果等高风险食物，进食时保持安静坐位、避免哭闹跑跳和逗笑；误咽异物后严禁吞咽饭团、馒头或饮醋强行处理，以免加重食管壁及邻近大血管损伤。进食时逗笑会增加误吸风险，不是预防措施。教材P370。",
+  "source_page": "教材P370",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M06-X-003",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气管支气管异物的临床表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "气管、支气管异物患者可出现下列哪些临床表现？",
+  "options": [
+   {
+    "label": "A",
+    "text": "突发剧烈呛咳、憋气"
+   },
+   {
+    "label": "B",
+    "text": "阵发性咳嗽、喘息"
+   },
+   {
+    "label": "C",
+    "text": "单侧呼吸音减弱"
+   },
+   {
+    "label": "D",
+    "text": "持续高热伴寒战为首发症状"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "气管、支气管异物的典型病史为进食或玩耍时突然剧烈呛咳、憋气、面色发绀，随后出现阵发性咳嗽、喘息或单侧呼吸音减弱。发热多为异物刺激继发感染（症状再发期、并发症期）后出现，一般不是首发表现，故选ABC。教材P367。",
+  "source_page": "教材P367",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M06-X-004",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气道异物与食管异物的鉴别",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于气道异物与食管异物的鉴别，下列描述正确的有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "两者检查与治疗方式可互相替代"
+   },
+   {
+    "label": "B",
+    "text": "食管异物以吞咽困难、吞咽痛为主要线索"
+   },
+   {
+    "label": "C",
+    "text": "气道异物以突发呛咳、喘息为主要线索"
+   },
+   {
+    "label": "D",
+    "text": "气道异物可有单侧呼吸音减弱"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "气道异物通常以突发呛咳、喘息、憋气及单侧呼吸音减弱为主要线索；食管异物则常以吞咽困难、吞咽痛和胸骨后疼痛为主要线索。两者的检查与治疗方式侧重点不同，不能混淆或互相替代，故选ABD。教材P367、P372。",
+  "source_page": "教材P367",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M07-A1-001",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈深筋膜的分层",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "颈深筋膜由浅至深的分层依次是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "椎前筋膜、内脏筋膜、封套筋膜"
+   },
+   {
+    "label": "B",
+    "text": "内脏筋膜、封套筋膜、椎前筋膜"
+   },
+   {
+    "label": "C",
+    "text": "封套筋膜、内脏筋膜、椎前筋膜"
+   },
+   {
+    "label": "D",
+    "text": "封套筋膜、椎前筋膜、内脏筋膜"
+   },
+   {
+    "label": "E",
+    "text": "内脏筋膜、椎前筋膜、封套筋膜"
+   }
+  ],
+  "answer": "C",
+  "explanation": "颈筋膜可分为颈浅筋膜和颈深筋膜；颈深筋膜又分浅、中、深三层：浅层（封套筋膜）呈套状环包胸锁乳突肌、斜方肌等，中层（内脏筋膜）包绕气管、食管、甲状腺并形成颈动脉鞘，深层（椎前筋膜）覆盖椎体及椎前肌群浅面。教材P384。",
+  "source_page": "教材P384",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-A1-002",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈动脉鞘的内容",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "颈动脉鞘内包含的结构是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "颈总动脉、颈内静脉、副神经"
+   },
+   {
+    "label": "B",
+    "text": "颈总动脉、颈外静脉、膈神经"
+   },
+   {
+    "label": "C",
+    "text": "颈内动脉、颈内静脉、舌下神经"
+   },
+   {
+    "label": "D",
+    "text": "颈总动脉、颈内静脉、迷走神经"
+   },
+   {
+    "label": "E",
+    "text": "颈外动脉、颈内静脉、交感干"
+   }
+  ],
+  "answer": "D",
+  "explanation": "颈动脉鞘由颈深筋膜中层（内脏筋膜）形成，鞘内走行颈总动脉（分叉以上为颈内动脉）、颈内静脉和迷走神经三者，因此颈部手术分离该区时应连同鞘膜一并保护。教材P384。",
+  "source_page": "教材P384",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-A1-003",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈深淋巴结的分布血管",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "颈深淋巴结主要沿哪一血管排列，并以肩胛舌骨肌与该血管交叉处为界分为颈深上、颈深下两组？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状腺上动脉"
+   },
+   {
+    "label": "B",
+    "text": "颈外静脉"
+   },
+   {
+    "label": "C",
+    "text": "颈总动脉"
+   },
+   {
+    "label": "D",
+    "text": "锁骨下动脉"
+   },
+   {
+    "label": "E",
+    "text": "颈内静脉"
+   }
+  ],
+  "answer": "E",
+  "explanation": "颈深淋巴结位于胸锁乳突肌深面，主要沿颈内静脉排列，以肩胛舌骨肌与颈内静脉交叉处为界，分为颈深上淋巴结和颈深下淋巴结；颈深下淋巴结延伸至锁骨上区者即锁骨上淋巴结。教材P386。",
+  "source_page": "教材P386",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M07-A1-004",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "Robbins 分区Ⅵ区的组成",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "按头颈淋巴结 Robbins 分区，颈前中央区（Ⅵ区）主要包括下列哪组淋巴结？",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉前、气管前及气管旁淋巴结"
+   },
+   {
+    "label": "B",
+    "text": "颏下及下颌下淋巴结"
+   },
+   {
+    "label": "C",
+    "text": "颈内静脉上组淋巴结"
+   },
+   {
+    "label": "D",
+    "text": "颈内静脉中、下组淋巴结"
+   },
+   {
+    "label": "E",
+    "text": "颈后三角区淋巴结群"
+   }
+  ],
+  "answer": "A",
+  "explanation": "Robbins 分区中，Ⅰ区为颏下区及下颌下区，Ⅱ区为颈内静脉上组，Ⅲ区为颈内静脉中组，Ⅳ区为颈内静脉下组，Ⅴ区为颈后三角，Ⅵ区为颈前中央区（主要包括喉前、气管前及气管旁淋巴结）；咽后淋巴结不属于Ⅵ区，临床分期与颈清扫范围据此确定。教材P386。",
+  "source_page": "教材P386",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-A1-005",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "角淋巴结（颈二腹肌淋巴结）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "颈部淋巴结中，又称角淋巴结、鼻咽癌及口咽部肿瘤常转移至此的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "颈肩胛舌骨肌淋巴结"
+   },
+   {
+    "label": "B",
+    "text": "颈二腹肌淋巴结"
+   },
+   {
+    "label": "C",
+    "text": "颈深下淋巴结"
+   },
+   {
+    "label": "D",
+    "text": "颈前淋巴结"
+   },
+   {
+    "label": "E",
+    "text": "颈浅淋巴结"
+   }
+  ],
+  "answer": "B",
+  "explanation": "颈二腹肌淋巴结又称角淋巴结，位于二腹肌后腹附近（约平舌骨大角水平），属颈深上淋巴结，鼻咽癌及口咽部肿瘤常转移至此。教材P386。",
+  "source_page": "教材P386",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-A1-006",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈肩胛舌骨肌淋巴结（颈内静脉淋巴结）",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "又称颈肩胛舌骨肌淋巴结、与舌癌淋巴转移密切相关的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "颈深下淋巴结"
+   },
+   {
+    "label": "B",
+    "text": "颈二腹肌淋巴结"
+   },
+   {
+    "label": "C",
+    "text": "颈内静脉淋巴结"
+   },
+   {
+    "label": "D",
+    "text": "下颌下淋巴结"
+   },
+   {
+    "label": "E",
+    "text": "颏下淋巴结"
+   }
+  ],
+  "answer": "C",
+  "explanation": "颈肩胛舌骨肌淋巴结即颈内静脉淋巴结，位于颈内静脉表面、肩胛舌骨肌附近，属颈深上淋巴结，为舌癌淋巴转移的重要相关区域。教材P386。",
+  "source_page": "教材P386",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-A1-007",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "怀疑颈动脉体瘤的处理原则",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "对于颈部性质不明、怀疑为颈动脉体瘤的肿块，下列处理原则更恰当的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "口服抗生素后短期观察"
+   },
+   {
+    "label": "B",
+    "text": "立即行细针穿刺活检确诊"
+   },
+   {
+    "label": "C",
+    "text": "立即行开放性切除活检"
+   },
+   {
+    "label": "D",
+    "text": "先行影像学评估后再决定方案"
+   },
+   {
+    "label": "E",
+    "text": "局部热敷并定期随访"
+   }
+  ],
+  "answer": "D",
+  "explanation": "颈动脉体瘤位于颈总动脉分叉处、血供极其丰富，怀疑为血管性肿块时必须先行彩色多普勒超声及增强CT/MRI等影像学评估（可见颈内外动脉间距增宽、造影呈“高脚杯征”），不应盲目穿刺或贸然活检，以免引起严重出血。教材P398。",
+  "source_page": "教材P398",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-A1-008",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈动脉窦与颈动脉体的性质",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "颈动脉分叉附近有颈动脉窦和颈动脉体，二者分别属于？",
+  "options": [
+   {
+    "label": "A",
+    "text": "压力感受器、渗透压感受器"
+   },
+   {
+    "label": "B",
+    "text": "化学感受器、压力感受器"
+   },
+   {
+    "label": "C",
+    "text": "压力感受器、压力感受器"
+   },
+   {
+    "label": "D",
+    "text": "化学感受器、化学感受器"
+   },
+   {
+    "label": "E",
+    "text": "压力感受器、化学感受器"
+   }
+  ],
+  "answer": "E",
+  "explanation": "颈动脉窦为颈内动脉起始处的膨大，内含压力感受器，感受血压变化以反射性调节血压；颈动脉体位于颈内、外动脉分叉处后方，属化学感受器，感受血液中二氧化碳浓度变化、反射性调节呼吸运动。教材P385。",
+  "source_page": "教材P385",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M07-A2-001",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "甲状舌管囊肿的识别",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，男，6岁。家长发现其颈前正中有一逐渐增大的无痛性肿物，质地中等、有囊性感，嘱其做伸舌动作时肿物明显上移。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状舌管囊肿"
+   },
+   {
+    "label": "B",
+    "text": "第二鳃裂囊肿"
+   },
+   {
+    "label": "C",
+    "text": "颈动脉体瘤"
+   },
+   {
+    "label": "D",
+    "text": "颈部淋巴结炎"
+   },
+   {
+    "label": "E",
+    "text": "皮样囊肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "甲状舌管囊肿是颈部最常见的先天性疾病，由甲状舌管退化不全所致，典型位于颈前正中线，可随吞咽及伸舌运动上下移动，经典术式为 Sistrunk 术（切除囊肿及舌骨体中份）；皮样囊肿虽可位于颈前正中，但不随吞咽上下运动。教材P393。",
+  "source_page": "教材P393",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-A2-002",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "第二鳃裂囊肿的识别",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "青年女性，颈侧胸锁乳突肌前缘中1/3处可触及一圆形、边界清楚、可活动的无痛性囊性肿块，超声示单房囊性病变。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状舌管囊肿"
+   },
+   {
+    "label": "B",
+    "text": "第二鳃裂囊肿"
+   },
+   {
+    "label": "C",
+    "text": "颈动脉体瘤"
+   },
+   {
+    "label": "D",
+    "text": "颈部淋巴结结核"
+   },
+   {
+    "label": "E",
+    "text": "颈部淋巴管畸形"
+   }
+  ],
+  "answer": "B",
+  "explanation": "第二鳃裂囊肿及瘘管由第2鳃沟闭合不全引起，占鳃裂畸形绝大多数；囊肿多位于胸锁乳突肌前缘中1/3处，表现为无痛性囊性肿块，继发感染时可迅速增大并压痛。教材P394。",
+  "source_page": "教材P394",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-A2-003",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "成人质硬固定颈部肿块的评估",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "男性，55岁，吸烟30年。近期发现左颈中部一质硬、固定、进行性增大的无痛性肿块，伴体重下降。为明确肿块性质，下列处理更恰当的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "先行影像检查并行细针穿刺取材"
+   },
+   {
+    "label": "B",
+    "text": "立即行开放性肿块切除活检"
+   },
+   {
+    "label": "C",
+    "text": "若细针穿刺阴性即可排除恶性"
+   },
+   {
+    "label": "D",
+    "text": "口服抗生素2周后复查"
+   },
+   {
+    "label": "E",
+    "text": "局部热敷并定期随访观察"
+   }
+  ],
+  "answer": "A",
+  "explanation": "成人出现持续性、质硬、固定或进行性增大的颈部肿块，尤其伴吸烟饮酒史、体重下降时，应优先排查恶性肿瘤，宜安排增强CT或MRI、上呼吸消化道内镜检查及细针穿刺抽吸活检（FNAB）；FNAB 假阴性率约10%，穿刺阴性不能据此排除恶性，也不宜常规直接行开放性切除活检。教材P404。",
+  "source_page": "教材P404",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-A2-004",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "下颌下区手术保护面神经下颌缘支",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "男性，40岁。因左侧颌下腺及颌下淋巴结区肿块拟行切除术。为避免术后下唇运动障碍，术中应重点保护下列哪支神经？",
+  "options": [
+   {
+    "label": "A",
+    "text": "面神经颧支"
+   },
+   {
+    "label": "B",
+    "text": "面神经颞支"
+   },
+   {
+    "label": "C",
+    "text": "面神经下颌缘支"
+   },
+   {
+    "label": "D",
+    "text": "面神经颊支"
+   },
+   {
+    "label": "E",
+    "text": "面神经颈支"
+   }
+  ],
+  "answer": "C",
+  "explanation": "面神经出茎乳孔后进入腮腺，分颞支、颧支、颊支、下颌缘支及颈支；下颌缘支支配下唇肌群，位置较浅表，处理下颌下腺及颌下淋巴结区域时应注意保护，损伤后可致口角下垂、下唇运动障碍。教材P36。",
+  "source_page": "教材P36",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-B1-001",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈部常见肿块的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N21-25",
+  "stem": "常位于颈前正中、可随吞咽及伸舌运动上下移动的颈部先天性疾病是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状舌管囊肿"
+   },
+   {
+    "label": "B",
+    "text": "第二鳃裂囊肿"
+   },
+   {
+    "label": "C",
+    "text": "颈动脉体瘤"
+   },
+   {
+    "label": "D",
+    "text": "角淋巴结"
+   },
+   {
+    "label": "E",
+    "text": "锁骨上淋巴结"
+   }
+  ],
+  "answer": "A",
+  "explanation": "甲状舌管囊肿由甲状舌管退化不全引起，典型位于颈前正中线，可随吞咽及伸舌运动上下移动，符合选项A。教材P393。",
+  "source_page": "教材P393",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-B1-002",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈部常见肿块的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N21-25",
+  "stem": "常位于胸锁乳突肌前缘附近、可表现为侧颈囊性肿块或反复流出黏液瘘口的先天性疾病是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状舌管囊肿"
+   },
+   {
+    "label": "B",
+    "text": "第二鳃裂囊肿"
+   },
+   {
+    "label": "C",
+    "text": "颈动脉体瘤"
+   },
+   {
+    "label": "D",
+    "text": "角淋巴结"
+   },
+   {
+    "label": "E",
+    "text": "锁骨上淋巴结"
+   }
+  ],
+  "answer": "B",
+  "explanation": "第二鳃裂囊肿及瘘管由第2鳃沟闭合不全引起，囊肿多位于胸锁乳突肌前缘中1/3处，瘘管外口常在胸锁乳突肌前缘，符合选项B。教材P394。",
+  "source_page": "教材P394",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-B1-003",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈部常见肿块的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N21-25",
+  "stem": "位于颈部大血管分叉处、横向活动较明显而上下活动受限、可闻及血管杂音的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状舌管囊肿"
+   },
+   {
+    "label": "B",
+    "text": "第二鳃裂囊肿"
+   },
+   {
+    "label": "C",
+    "text": "颈动脉体瘤"
+   },
+   {
+    "label": "D",
+    "text": "角淋巴结"
+   },
+   {
+    "label": "E",
+    "text": "锁骨上淋巴结"
+   }
+  ],
+  "answer": "C",
+  "explanation": "颈动脉体瘤位于颈总动脉分叉处，质硬、边界清楚，可左右活动而上下活动受限，常可扪及搏动或闻及血管杂音，造影呈“高脚杯征”，符合选项C。教材P398。",
+  "source_page": "教材P398",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-B1-004",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈部常见肿块的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N21-25",
+  "stem": "鼻咽癌及口咽部肿瘤常转移至二腹肌后腹附近，该处所对应的结构是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状舌管囊肿"
+   },
+   {
+    "label": "B",
+    "text": "第二鳃裂囊肿"
+   },
+   {
+    "label": "C",
+    "text": "颈动脉体瘤"
+   },
+   {
+    "label": "D",
+    "text": "角淋巴结"
+   },
+   {
+    "label": "E",
+    "text": "锁骨上淋巴结"
+   }
+  ],
+  "answer": "D",
+  "explanation": "位于二腹肌后腹附近的颈二腹肌淋巴结又称角淋巴结，属颈深上淋巴结，鼻咽癌及口咽部肿瘤常转移至此，符合选项D。教材P386。",
+  "source_page": "教材P386",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M07-B1-005",
+  "module": "M07",
+  "module_name": "头颈外科学与颈部肿块",
+  "topic": "颈部常见肿块的特点（配伍）",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N21-25",
+  "stem": "其肿大可能提示胸腹部恶性肿瘤转移、位于左侧颈根部静脉角附近的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状舌管囊肿"
+   },
+   {
+    "label": "B",
+    "text": "第二鳃裂囊肿"
+   },
+   {
+    "label": "C",
+    "text": "颈动脉体瘤"
+   },
+   {
+    "label": "D",
+    "text": "角淋巴结"
+   },
+   {
+    "label": "E",
+    "text": "锁骨上淋巴结"
+   }
+  ],
+  "answer": "E",
+  "explanation": "Virchow 淋巴结即左侧锁骨上淋巴结，位于胸导管汇入左静脉角附近的淋巴引流区，其肿大可能提示胸腹部恶性肿瘤转移，但不能据此认定唯一原发部位，符合选项E。教材P386。",
+  "source_page": "教材P386",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ }
+]

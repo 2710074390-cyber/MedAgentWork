@@ -1,0 +1,1100 @@
+[
+ {
+  "id": "batch039-M04-A1-001",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽的分部与分界平面",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "咽的三部分中，鼻咽与口咽之间的分界平面是",
+  "options": [
+   {
+    "label": "A",
+    "text": "软腭平面"
+   },
+   {
+    "label": "B",
+    "text": "会厌上缘平面"
+   },
+   {
+    "label": "C",
+    "text": "环状软骨下缘平面"
+   },
+   {
+    "label": "D",
+    "text": "舌骨平面"
+   },
+   {
+    "label": "E",
+    "text": "第6颈椎平面"
+   }
+  ],
+  "answer": "A",
+  "explanation": "咽以软腭平面和会厌上缘平面为界，自上而下分为鼻咽、口咽、喉咽三部分。鼻咽位于软腭平面以上，口咽位于软腭平面与会厌上缘平面之间，喉咽位于会厌上缘至环状软骨下缘之间，故鼻咽与口咽的分界为软腭平面。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-002",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽的下界与食管移行平面",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "咽的下端在哪个平面向下移行为食管",
+  "options": [
+   {
+    "label": "A",
+    "text": "第4颈椎平面"
+   },
+   {
+    "label": "B",
+    "text": "第5颈椎平面"
+   },
+   {
+    "label": "C",
+    "text": "第6颈椎平面"
+   },
+   {
+    "label": "D",
+    "text": "第7颈椎平面"
+   },
+   {
+    "label": "E",
+    "text": "第1胸椎平面"
+   }
+  ],
+  "answer": "C",
+  "explanation": "咽上起颅底，下至环状软骨下缘平面（约平第6颈椎），成人全长约12cm，向下移行为食管；其后方邻近颈椎及椎前筋膜，前方分别与鼻腔、口腔和喉腔相通。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-003",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽隐窝的位置与临床意义",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻咽癌好发部位之一，位于咽鼓管圆枕后上方与咽后壁之间的凹陷区是",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽侧索"
+   },
+   {
+    "label": "B",
+    "text": "咽鼓管咽口"
+   },
+   {
+    "label": "C",
+    "text": "咽鼓管圆枕"
+   },
+   {
+    "label": "D",
+    "text": "咽鼓管扁桃体"
+   },
+   {
+    "label": "E",
+    "text": "咽隐窝"
+   }
+  ],
+  "answer": "E",
+  "explanation": "咽隐窝位于咽鼓管圆枕后上方与咽后壁之间，其上方与颅底破裂孔邻接，是鼻咽癌的好发部位之一。咽鼓管咽口位于下鼻甲后端后方1.0～1.5cm处，咽口上方隆起为咽鼓管圆枕，周围散在淋巴组织为咽鼓管扁桃体，咽侧索属口咽侧壁淋巴组织。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M04-A1-004",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽淋巴环内环的组成",
+  "type": "A1",
+  "polarity": "negative",
+  "bloom": "理解",
+  "stem": "下列结构中，**不属于** Waldeyer 环内环组成部分的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "腭扁桃体"
+   },
+   {
+    "label": "B",
+    "text": "咽扁桃体"
+   },
+   {
+    "label": "C",
+    "text": "舌扁桃体"
+   },
+   {
+    "label": "D",
+    "text": "咽后壁淋巴滤泡"
+   },
+   {
+    "label": "E",
+    "text": "颈深上淋巴结"
+   }
+  ],
+  "answer": "A",
+  "explanation": "咽淋巴环内环主要由咽扁桃体（腺样体）、咽鼓管扁桃体、腭扁桃体、咽侧索、咽后壁淋巴滤泡及舌扁桃体构成，具有黏膜免疫防御功能；颈深上淋巴结属咽部淋巴引流的颈部淋巴结，构成外环，不属于内环。教材P251。",
+  "source_page": "教材P251",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-005",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽提肌群的组成",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "咽壁肌层中，咽提肌群包括下列哪一组肌肉",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽上缩肌、咽中缩肌及咽下缩肌"
+   },
+   {
+    "label": "B",
+    "text": "茎突咽肌、咽腭肌及咽鼓管咽肌"
+   },
+   {
+    "label": "C",
+    "text": "腭帆提肌、腭帆张肌及悬雍垂肌"
+   },
+   {
+    "label": "D",
+    "text": "腭舌肌、腭帆提肌及腭咽肌"
+   },
+   {
+    "label": "E",
+    "text": "茎突咽肌、舌骨舌肌及茎突舌肌"
+   }
+  ],
+  "answer": "B",
+  "explanation": "咽壁肌层分咽缩肌组、咽提肌组和腭帆肌组三组。咽提肌组包括茎突咽肌、咽腭肌及咽鼓管咽肌三对，收缩时可使咽、喉上提并协助完成吞咽；咽上缩肌等属咽缩肌组，腭帆提肌、腭帆张肌、悬雍垂肌等属腭帆肌组。教材P250。",
+  "source_page": "教材P250",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-006",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "腭咽闭合的生理作用",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "吞咽时软腭向后上方抬起并与咽后壁接触，其主要的生理作用是",
+  "options": [
+   {
+    "label": "A",
+    "text": "开放咽鼓管咽口，平衡中耳气压"
+   },
+   {
+    "label": "B",
+    "text": "封闭喉口，防止食物误吸入气管"
+   },
+   {
+    "label": "C",
+    "text": "封闭鼻咽峡，防止食物反流至鼻咽"
+   },
+   {
+    "label": "D",
+    "text": "上提喉咽，协助完成吞咽动作"
+   },
+   {
+    "label": "E",
+    "text": "收缩咽缩肌，将食物压入食管"
+   }
+  ],
+  "answer": "C",
+  "explanation": "吞咽时软腭向后上方抬起与咽后壁接触，关闭鼻咽峡，使鼻咽与口咽暂时隔开，防止食物反流至鼻咽，即腭咽闭合；封闭喉口由会厌及喉肌完成，开放咽鼓管咽口主要与平衡中耳气压有关，咽缩肌自上而下收缩将食物压入食管。教材P248、P252。",
+  "source_page": "教材P248",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-007",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "腺样体的退化年龄",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "鼻咽顶后壁的腺样体一般在哪个年龄段以后逐渐退化萎缩",
+  "options": [
+   {
+    "label": "A",
+    "text": "5岁以后"
+   },
+   {
+    "label": "B",
+    "text": "6岁以后"
+   },
+   {
+    "label": "C",
+    "text": "8岁以后"
+   },
+   {
+    "label": "D",
+    "text": "10岁以后"
+   },
+   {
+    "label": "E",
+    "text": "14岁以后"
+   }
+  ],
+  "answer": "D",
+  "explanation": "腺样体又称咽扁桃体，位于鼻咽顶壁与后壁交界处，出生后即存在，6～7岁时增生最显著，10岁以后逐渐退化萎缩，成人基本消失。教材P251、P266。",
+  "source_page": "教材P251",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-008",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "慢性咽炎的检查所见",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "慢性咽炎患者最常见、最具特征性的检查所见是",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉入口充血水肿"
+   },
+   {
+    "label": "B",
+    "text": "扁桃体隐窝口脓栓"
+   },
+   {
+    "label": "C",
+    "text": "咽隐窝饱满隆起"
+   },
+   {
+    "label": "D",
+    "text": "咽后壁淋巴滤泡增生"
+   },
+   {
+    "label": "E",
+    "text": "腭弓弥漫性充血"
+   }
+  ],
+  "answer": "D",
+  "explanation": "慢性咽炎检查可见咽黏膜慢性充血，咽后壁淋巴滤泡增生（肥厚性者尤为显著），可伴少量黏稠分泌物附着；扁桃体隐窝口脓栓见于慢性扁桃体炎，咽隐窝饱满隆起需警惕鼻咽癌，喉入口充血水肿多见于急性喉炎。教材P259。",
+  "source_page": "教材P259",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A1-009",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "急性扁桃体炎的主要致病菌",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "急性扁桃体炎最主要的致病菌是",
+  "options": [
+   {
+    "label": "A",
+    "text": "白喉棒状杆菌"
+   },
+   {
+    "label": "B",
+    "text": "金黄色葡萄球菌"
+   },
+   {
+    "label": "C",
+    "text": "甲型溶血性链球菌"
+   },
+   {
+    "label": "D",
+    "text": "流感嗜血杆菌"
+   },
+   {
+    "label": "E",
+    "text": "乙型溶血性链球菌"
+   }
+  ],
+  "answer": "E",
+  "explanation": "乙型溶血性链球菌为急性扁桃体炎的主要致病菌；非溶血性链球菌、葡萄球菌、肺炎链球菌、流感杆菌以及腺病毒、鼻病毒等亦可引起本病，细菌与病毒混合感染者不少见。教材P260。",
+  "source_page": "教材P260",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M04-A1-010",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "扁桃体切除术后继发性出血的时间",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "扁桃体切除术后继发性出血最常发生于下列哪个时间段",
+  "options": [
+   {
+    "label": "A",
+    "text": "术后24小时内"
+   },
+   {
+    "label": "B",
+    "text": "术后1～2天"
+   },
+   {
+    "label": "C",
+    "text": "术后5～6天"
+   },
+   {
+    "label": "D",
+    "text": "术后2周"
+   },
+   {
+    "label": "E",
+    "text": "术后3～4周"
+   }
+  ],
+  "answer": "C",
+  "explanation": "扁桃体切除术后24小时内出血为原发性，最常见原因为术中止血不彻底或咽部活动过甚（咳嗽、吞咽等）；继发性出血常发生于术后5～6天，此时创面白膜开始脱落，进食不慎擦伤创面可致出血，合并感染亦可引起。教材P264。",
+  "source_page": "教材P264",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-001",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "腺样体肥大的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "6岁男童，长期鼻塞、张口呼吸、夜间打鼾，见上颌骨变长、腭骨高拱、牙列不齐，伴传导性听力下降。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "腺样体肥大"
+   },
+   {
+    "label": "B",
+    "text": "急性腺样体炎"
+   },
+   {
+    "label": "C",
+    "text": "慢性鼻炎"
+   },
+   {
+    "label": "D",
+    "text": "分泌性中耳炎"
+   },
+   {
+    "label": "E",
+    "text": "咽后脓肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "患儿长期鼻塞、张口呼吸、打鼾并出现上颌骨变长、腭骨高拱、牙列不齐等腺样体面容表现，伴传导性听力下降，最符合腺样体肥大：肥大的腺样体阻塞鼻后孔并压迫咽鼓管咽口，可并发分泌性中耳炎及听力减退。教材P266-267。",
+  "source_page": "教材P266-267",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-002",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "OSAHS 的诊断检查",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "50岁男性，体型肥胖，夜间打鼾并反复出现呼吸暂停，白天嗜睡伴高血压。为明确诊断与病情程度评估，应首选",
+  "options": [
+   {
+    "label": "A",
+    "text": "纤维鼻咽镜检查"
+   },
+   {
+    "label": "B",
+    "text": "多导睡眠监测"
+   },
+   {
+    "label": "C",
+    "text": "鼻咽侧位X线片"
+   },
+   {
+    "label": "D",
+    "text": "头颅增强CT扫描"
+   },
+   {
+    "label": "E",
+    "text": "嗜睡程度问卷评分"
+   }
+  ],
+  "answer": "B",
+  "explanation": "整夜多导睡眠监测（PSG）是诊断OSA（OSAHS）的标准手段，可监测口鼻气流、胸腹呼吸运动、血氧饱和度并计算AHI，用于定性诊断和判断病情程度。纤维鼻咽镜结合Müller试验用于阻塞平面的定位。教材P287。",
+  "source_page": "教材P287",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-003",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "扁桃体周脓肿的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "青年男性，咽痛加重伴吞咽困难，讲话含糊呈“口含汤圆音”，检查见患侧软腭及腭弓膨隆、悬雍垂偏向健侧。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽旁脓肿"
+   },
+   {
+    "label": "B",
+    "text": "咽后脓肿"
+   },
+   {
+    "label": "C",
+    "text": "扁桃体周脓肿"
+   },
+   {
+    "label": "D",
+    "text": "急性会厌炎"
+   },
+   {
+    "label": "E",
+    "text": "扁桃体恶性肿瘤"
+   }
+  ],
+  "answer": "C",
+  "explanation": "扁桃体周脓肿常继发于急性扁桃体炎，典型表现为剧烈咽痛、吞咽困难、张口受限、讲话含糊呈“口含汤圆音”，患侧软腭或腭弓膨隆、悬雍垂水肿并偏向健侧。咽旁脓肿患侧扁桃体及咽侧壁被推向对侧但其本身无病变，咽后脓肿以咽后壁一侧隆起为主。教材P269。",
+  "source_page": "教材P269",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-004",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "急性扁桃体炎的抗生素选择",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "青年女性，急性扁桃体炎，双侧扁桃体充血肿大伴散在脓点，咽痛剧烈，体温39℃。首选的抗生素是",
+  "options": [
+   {
+    "label": "A",
+    "text": "阿奇霉素"
+   },
+   {
+    "label": "B",
+    "text": "庆大霉素"
+   },
+   {
+    "label": "C",
+    "text": "甲硝唑"
+   },
+   {
+    "label": "D",
+    "text": "青霉素"
+   },
+   {
+    "label": "E",
+    "text": "万古霉素"
+   }
+  ],
+  "answer": "D",
+  "explanation": "急性扁桃体炎的抗生素治疗为主要疗法，首选青霉素，根据病情轻重决定给药途径；若治疗2～3天后病情无好转、高热不退，应分析原因并改用其他种类抗生素，可酌情使用糖皮质激素。教材P262。",
+  "source_page": "教材P262",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-005",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "单侧扁桃体肿大的恶性排查",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "中年男性，单侧扁桃体明显肿大、表面溃烂坏死、质地偏硬且固定，伴同侧下颌下淋巴结肿大。为明确诊断，最恰当的处理是",
+  "options": [
+   {
+    "label": "A",
+    "text": "取病变组织活检送病理"
+   },
+   {
+    "label": "B",
+    "text": "按慢性扁桃体炎抗感染治疗"
+   },
+   {
+    "label": "C",
+    "text": "直接行扁桃体切除无需病理"
+   },
+   {
+    "label": "D",
+    "text": "观察随访3个月"
+   },
+   {
+    "label": "E",
+    "text": "给予糖皮质激素消肿治疗"
+   }
+  ],
+  "answer": "A",
+  "explanation": "成人出现单侧扁桃体明显肿大、表面溃烂坏死、质地较硬且不活动，并伴同侧淋巴结肿大时，应警惕扁桃体恶性肿瘤，不能简单按慢性炎症处理；病理诊断为金标准，故应取病变组织活检送病理。教材P263、P281。",
+  "source_page": "教材P263",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-A2-006",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "鼻咽癌的确诊方法",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "分析",
+  "stem": "男性，45岁，晨起回吸涕中带血，右耳闷塞感伴听力下降，右颈上段可触及无痛性肿大淋巴结。为进一步明确诊断，应优先选择",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽拭子细菌培养"
+   },
+   {
+    "label": "B",
+    "text": "颈部淋巴结超声检查"
+   },
+   {
+    "label": "C",
+    "text": "EB病毒血清学检测"
+   },
+   {
+    "label": "D",
+    "text": "鼻咽部增强CT扫描"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部活组织病理检查"
+   }
+  ],
+  "answer": "E",
+  "explanation": "鼻咽癌临床易漏诊误诊，病理诊断为金标准，应行纤维鼻咽镜或鼻咽内镜观察病变并取活组织病理检查；EB病毒血清学检测与CT、MRI仅作辅助，颈部淋巴结超声不能替代病理确诊。教材P280、P282。",
+  "source_page": "教材P280",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M04-B1-001",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "鼻咽癌的好发部位",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N11-15",
+  "stem": "鼻咽癌最常发生于鼻咽部的哪个结构",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "A",
+  "explanation": "鼻咽癌好发于鼻咽顶后壁及咽隐窝；咽隐窝位于咽鼓管圆枕后上方与咽后壁之间，其上方与颅底破裂孔邻接。教材P248、P277。",
+  "source_page": "教材P248",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-B1-002",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "喉咽异物的易嵌顿部位",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N11-15",
+  "stem": "吞咽时尖细异物常易嵌顿的深窝状结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "B",
+  "explanation": "梨状窝位于喉入口两侧，是异物容易嵌顿的部位，其黏膜下有喉上神经内支通过，异物损伤可能引起咽部感觉异常。教材P249。",
+  "source_page": "教材P249",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-B1-003",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "会厌谷的位置",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "b1_group": "N11-15",
+  "stem": "舌根后方正中矢状位黏膜皱襞两侧、常为异物滞留之处的浅凹陷结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "C",
+  "explanation": "舌根与会厌之间有一正中矢状位的黏膜皱襞为舌会厌正中襞，其左右各有一浅凹陷称会厌谷，常为异物滞留之处。教材P249。",
+  "source_page": "教材P249",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-B1-004",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "扁桃体窝的位置",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N11-15",
+  "stem": "腭舌弓与腭咽弓之间的三角形凹陷结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "D",
+  "explanation": "口咽侧壁由软腭向下分出腭舌弓（前腭弓）与腭咽弓（后腭弓），两弓之间为三角形凹陷称扁桃体窝，腭扁桃体即位于其中，为咽淋巴组织中最大者。教材P248、P252。",
+  "source_page": "教材P248",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M04-B1-005",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽鼓管咽口的功能与位置",
+  "type": "B1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "b1_group": "N11-15",
+  "stem": "连通鼻咽与中耳、参与调节中耳气压的结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻咽部咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部梨状窝"
+   },
+   {
+    "label": "C",
+    "text": "口咽部会厌谷"
+   },
+   {
+    "label": "D",
+    "text": "口咽部扁桃体窝"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽部咽鼓管咽口"
+   }
+  ],
+  "answer": "E",
+  "explanation": "咽鼓管咽口位于下鼻甲后端后方1.0～1.5cm处，连接鼻咽与中耳，参与调节中耳压力；其周围散在淋巴组织称咽鼓管扁桃体，咽口上方隆起为咽鼓管圆枕。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-001",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "咽的分部与界面",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于咽的分部与界面，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉咽位于会厌上缘附近至环状软骨下缘之间"
+   },
+   {
+    "label": "B",
+    "text": "鼻咽位于鼻腔后方、软腭平面以上"
+   },
+   {
+    "label": "C",
+    "text": "咽隐窝位于口咽的侧壁"
+   },
+   {
+    "label": "D",
+    "text": "口咽位于软腭平面与会厌上缘平面之间"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "咽以软腭平面、会厌上缘平面为界分为鼻咽、口咽、喉咽。鼻咽位于鼻腔后方、软腭平面以上；口咽位于软腭平面与会厌上缘平面之间；喉咽位于会厌上缘附近至环状软骨下缘之间。咽隐窝位于鼻咽侧壁（咽鼓管圆枕后上方与咽后壁之间），并非口咽侧壁，故D错误。教材P248。",
+  "source_page": "教材P248",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-002",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "腺样体肥大的表现与评估",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于腺样体肥大，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "确诊需常规行鼻咽部活组织病理检查"
+   },
+   {
+    "label": "B",
+    "text": "可并发分泌性中耳炎而致听力减退"
+   },
+   {
+    "label": "C",
+    "text": "可引起鼻塞、张口呼吸及闭塞性鼻音"
+   },
+   {
+    "label": "D",
+    "text": "睡眠时打鼾，严重者可出现睡眠呼吸暂停"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "腺样体肥大可引起鼻塞、张口呼吸、闭塞性鼻音及睡眠打鼾，重者出现阻塞性睡眠呼吸暂停；压迫咽鼓管咽口可并发分泌性中耳炎而致听力减退。其诊断依靠症状、纤维鼻咽镜、鼻咽侧位X线片及多导睡眠监测等，一般不需活组织病理检查，故C错误。教材P266-267。",
+  "source_page": "教材P266-267",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-003",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "慢性咽炎的临床与治疗",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于慢性咽炎，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "常有咽干、咽痒、咽部异物感及频繁清嗓"
+   },
+   {
+    "label": "B",
+    "text": "无细菌感染证据时仍应长期使用广谱抗生素"
+   },
+   {
+    "label": "C",
+    "text": "检查可见咽后壁慢性充血或淋巴滤泡增生"
+   },
+   {
+    "label": "D",
+    "text": "常与吸烟、饮酒、粉尘刺激及鼻后滴流有关"
+   }
+  ],
+  "answer": "ACD",
+  "explanation": "慢性咽炎常表现为咽干、咽痒、咽部异物感及频繁清嗓，检查可见咽后壁慢性充血或淋巴滤泡增生，多与吸烟、饮酒、粉尘刺激、长期用声及鼻后滴流等有关；没有明确细菌感染证据时不应常规长期使用全身大剂量广谱抗生素，故B错误。教材P259。",
+  "source_page": "教材P259",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-004",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "OSAHS 的机制与治疗",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "应用",
+  "stem": "关于阻塞性睡眠呼吸暂停低通气综合征（OSAHS），下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "一经确诊即应首选手术治疗"
+   },
+   {
+    "label": "B",
+    "text": "可引起间歇性低氧及睡眠结构紊乱"
+   },
+   {
+    "label": "C",
+    "text": "睡眠时上气道反复塌陷引起呼吸暂停和低通气"
+   },
+   {
+    "label": "D",
+    "text": "成人患者的一线治疗是经鼻持续正压通气"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "OSAHS的核心病理生理机制是睡眠时上气道反复发生部分或完全性机械性阻塞，引起呼吸暂停、低通气、间歇性低氧和睡眠结构紊乱；成人患者的一线治疗为经鼻持续正压通气（CPAP）。治疗应根据病情程度、阻塞平面和全身情况个体化选择，手术并非一经确诊即首选，故D错误。教材P285、P287。",
+  "source_page": "教材P285-287",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M04-X-005",
+  "module": "M04",
+  "module_name": "咽部疾病与睡眠呼吸障碍",
+  "topic": "鼻咽癌的临床与诊断",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于鼻咽癌，下列叙述正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "血清EB病毒抗体阳性即可确诊"
+   },
+   {
+    "label": "B",
+    "text": "与EB病毒感染密切相关"
+   },
+   {
+    "label": "C",
+    "text": "可出现回吸性血涕、单侧耳鸣耳闷及颈部无痛性淋巴结肿大"
+   },
+   {
+    "label": "D",
+    "text": "好发于鼻咽顶后壁及咽隐窝"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "鼻咽癌好发于鼻咽顶后壁及咽隐窝，与EB病毒感染密切相关，常表现为回吸性血涕、单侧耳鸣耳闷、听力下降及颈部无痛性淋巴结肿大，肿瘤阻塞咽鼓管咽口可致分泌性中耳炎。确诊依靠鼻咽部活组织病理检查，EB病毒血清学检测为辅助指标，不能替代病理确诊，故D错误。教材P277、P280。",
+  "source_page": "教材P277-280",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ }
+]

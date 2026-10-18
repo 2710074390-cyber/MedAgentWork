@@ -1,0 +1,714 @@
+[
+ {
+  "id": "batch039-M06-A1-001",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气管隆嵴的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "气管隆嵴（又称气管隆突）位于气管分叉处，其位置通常投影于下列哪一胸椎水平？",
+  "options": [
+   {
+    "label": "A",
+    "text": "第2～3胸椎"
+   },
+   {
+    "label": "B",
+    "text": "第3～4胸椎"
+   },
+   {
+    "label": "C",
+    "text": "第4～5胸椎"
+   },
+   {
+    "label": "D",
+    "text": "第5～6胸椎"
+   },
+   {
+    "label": "E",
+    "text": "第6～7胸椎"
+   }
+  ],
+  "answer": "C",
+  "explanation": "气管起自环状软骨下缘（约第6颈椎水平），向下延伸到第4～5胸椎水平，在气管隆嵴处分叉为左、右主支气管。气管隆嵴边缘光滑锐利，是支气管镜检查的重要解剖标志，其实际位置可随呼吸和体位变化。教材P352。",
+  "source_page": "教材P352",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-002",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气管支气管异物的好发年龄",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "气管、支气管异物绝大多数发生于儿童，其中尤其好发于下列哪个年龄段？",
+  "options": [
+   {
+    "label": "A",
+    "text": "1岁以下"
+   },
+   {
+    "label": "B",
+    "text": "1～3岁"
+   },
+   {
+    "label": "C",
+    "text": "4～6岁"
+   },
+   {
+    "label": "D",
+    "text": "7～9岁"
+   },
+   {
+    "label": "E",
+    "text": "10岁以上"
+   }
+  ],
+  "answer": "B",
+  "explanation": "气管、支气管异物是儿童耳鼻咽喉科最常见的急症之一，绝大多数发生于儿童，尤其以1～3岁多见。此年龄段儿童磨牙未萌出、咀嚼功能不完善、吞咽协调与喉保护功能不健全，在哭笑、惊恐深吸气时极易将异物吸入气管。教材P366。",
+  "source_page": "教材P366",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-003",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "右主支气管解剖特点与异物易入右侧",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "气管异物更容易进入右侧主支气管，其主要解剖学原因是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "右主支气管较短、较粗且走向较垂直"
+   },
+   {
+    "label": "B",
+    "text": "右主支气管较长、较细且走向较倾斜"
+   },
+   {
+    "label": "C",
+    "text": "右主支气管较长、较粗且走向较垂直"
+   },
+   {
+    "label": "D",
+    "text": "右主支气管较短、较细且走向较倾斜"
+   },
+   {
+    "label": "E",
+    "text": "右主支气管与气管夹角约45°"
+   }
+  ],
+  "answer": "A",
+  "explanation": "右主支气管较粗短（约2.5cm），与气管纵轴延长线成20°～25°角、走向较垂直；左主支气管细而长（约5cm），约成45°角。故气管异物更容易进入右侧主支气管，但并非绝对。教材P353。",
+  "source_page": "教材P353",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-004",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "支气管异物不完全性阻塞的病理生理",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "支气管异物造成不完全性阻塞并形成活瓣（单向）作用时，最常出现的病理生理改变是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "患侧胸腔积液"
+   },
+   {
+    "label": "B",
+    "text": "患侧阻塞性肺不张"
+   },
+   {
+    "label": "C",
+    "text": "患侧代偿性肺气肿"
+   },
+   {
+    "label": "D",
+    "text": "双侧弥漫性肺气肿"
+   },
+   {
+    "label": "E",
+    "text": "患侧局限性肺气肿"
+   }
+  ],
+  "answer": "E",
+  "explanation": "异物形成只进不出的活瓣性阻塞时，吸气时支气管腔扩大、异物与管壁间出现空隙，空气可进入；呼气时异物被气流冲击而封闭管腔，气体排出受阻，远端肺组织形成局限性肺气肿，患侧肺透亮度增高、横膈下移。教材P366。",
+  "source_page": "教材P366",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M06-A1-005",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "支气管异物全阻塞的病理生理",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "支气管异物引起既不能进也不能出的全阻塞时，其远端肺组织最可能发生？",
+  "options": [
+   {
+    "label": "A",
+    "text": "阻塞性肺不张"
+   },
+   {
+    "label": "B",
+    "text": "局限性肺气肿"
+   },
+   {
+    "label": "C",
+    "text": "阻塞性肺气肿"
+   },
+   {
+    "label": "D",
+    "text": "张力性气胸"
+   },
+   {
+    "label": "E",
+    "text": "阻塞性肺脓肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "既不能进也不能出的全阻塞型，远端气体逐渐被吸收而不能再充入，形成阻塞性肺不张，影像上表现为肺叶或肺段密度增高、体积缩小，纵隔向患侧移位，邻近肺叶可出现代偿性肺气肿。教材P367。",
+  "source_page": "教材P367",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-006",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管第二生理性狭窄的位置",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "成人食管第二生理性狭窄位于主动脉弓与左主支气管相关区域，其距中切牙约为？",
+  "options": [
+   {
+    "label": "A",
+    "text": "15～16 cm"
+   },
+   {
+    "label": "B",
+    "text": "19～20 cm"
+   },
+   {
+    "label": "C",
+    "text": "24～25 cm"
+   },
+   {
+    "label": "D",
+    "text": "39～40 cm"
+   },
+   {
+    "label": "E",
+    "text": "44～45 cm"
+   }
+  ],
+  "answer": "C",
+  "explanation": "成人食管有三个常考的生理性狭窄，距中切牙约为15～16 cm、25 cm和40 cm，依次位于食管入口、主动脉弓及左主支气管相关区域、膈食管裂孔处（上述距离为教学记忆用近似值）。第二狭窄邻近主动脉弓及左主支气管，是尖硬异物易损伤、穿孔的危险部位。教材P354。",
+  "source_page": "教材P354",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-007",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管异物最常嵌顿的部位",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "记忆",
+  "stem": "食管异物最常嵌顿的部位是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "食管入口"
+   },
+   {
+    "label": "B",
+    "text": "食管中段第2狭窄处"
+   },
+   {
+    "label": "C",
+    "text": "食管下段第3狭窄处"
+   },
+   {
+    "label": "D",
+    "text": "膈食管裂孔处"
+   },
+   {
+    "label": "E",
+    "text": "贲门处"
+   }
+  ],
+  "answer": "A",
+  "explanation": "食管入口由环咽肌收缩而致，是食管最狭窄的部位，也是异物最易嵌顿之处；其次为食管中段第2狭窄处，发生于食管下段者相对少见。教材P372。",
+  "source_page": "教材P372",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A1-008",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管腐蚀伤碱性损伤的特点",
+  "type": "A1",
+  "polarity": "positive",
+  "bloom": "理解",
+  "stem": "关于食管腐蚀伤，碱性腐蚀剂所致损伤的特点是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "引起黏膜干性坏死、穿透力弱"
+   },
+   {
+    "label": "B",
+    "text": "引起组织液化坏死、穿透力强"
+   },
+   {
+    "label": "C",
+    "text": "仅致黏膜浅表充血、不留瘢痕"
+   },
+   {
+    "label": "D",
+    "text": "引起广泛出血、不累及肌层"
+   },
+   {
+    "label": "E",
+    "text": "造成食管蠕动增强、无坏死"
+   }
+  ],
+  "answer": "B",
+  "explanation": "碱性腐蚀剂有强烈的吸水性，并有脂肪皂化和蛋白质溶解作用，引起组织液化坏死，病变易向深层发展、穿透力强；酸性腐蚀剂则易引起局部黏膜干性坏死、穿透力较弱，但高浓度强酸亦可引起食管的严重损伤。教材P375。",
+  "source_page": "教材P375",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A2-001",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "儿童气管支气管异物的诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿，男，2岁，进食花生米时突发剧烈呛咳、憋气、面色发绀，数分钟后缓解，此后反复阵发性咳嗽、喘息，查体右肺呼吸音减弱。该患儿最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "支气管哮喘急性发作"
+   },
+   {
+    "label": "B",
+    "text": "急性感染性喉炎"
+   },
+   {
+    "label": "C",
+    "text": "气管、支气管异物"
+   },
+   {
+    "label": "D",
+    "text": "急性支气管炎"
+   },
+   {
+    "label": "E",
+    "text": "自发性张力性气胸"
+   }
+  ],
+  "answer": "C",
+  "explanation": "该患儿有明确进食花生米病史，进食时突发剧烈呛咳、憋气、面色发绀（异物进入期症状剧烈），缓解后出现阵发性咳嗽、喘息及单侧呼吸音减弱（症状再发期），符合气管、支气管异物的典型表现。教材P366-367。",
+  "source_page": "教材P366-367",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A2-002",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "胸片正常不能排除气道异物",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患儿进食瓜子后突发呛咳，胸部X线片未见明显异常，但仍高度怀疑气管异物。此时最恰当的处理是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "胸片正常即可排除气管异物"
+   },
+   {
+    "label": "B",
+    "text": "口服镇咳药物后观察"
+   },
+   {
+    "label": "C",
+    "text": "立即给予足量抗生素"
+   },
+   {
+    "label": "D",
+    "text": "进一步行支气管镜检查"
+   },
+   {
+    "label": "E",
+    "text": "立即行开胸手术探查"
+   }
+  ],
+  "answer": "D",
+  "explanation": "许多有机异物（如花生、瓜子等）本身不显影，胸片可正常，故正常胸片不能排除气道异物；对可透光异物需结合胸部透视观察纵隔摆动、肺气肿、肺不张等间接征象。高度怀疑时应在适当麻醉及气道保障下行支气管镜检查以明确诊断并取出异物。教材P368。",
+  "source_page": "教材P368",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A2-003",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管异物的临床表现与诊断",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者，女，55岁，进食鱼后自觉咽部及胸骨后疼痛，吞咽时明显加重，伴流涎、吞咽困难。该患者最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "反流性食管炎"
+   },
+   {
+    "label": "B",
+    "text": "急性咽炎"
+   },
+   {
+    "label": "C",
+    "text": "急性喉炎"
+   },
+   {
+    "label": "D",
+    "text": "食管癌"
+   },
+   {
+    "label": "E",
+    "text": "食管异物"
+   }
+  ],
+  "answer": "E",
+  "explanation": "食管异物常表现为吞咽困难、吞咽疼痛与流涎；异物位于食管上段者疼痛多在颈根部或胸骨上窝，位于中段者常表现为胸骨后疼痛。该患者有明确进食鱼（尖锐异物）病史，症状典型。教材P372。",
+  "source_page": "教材P372",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  }
+ },
+ {
+  "id": "batch039-M06-A2-004",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "食管穿孔并发纵隔感染",
+  "type": "A2",
+  "polarity": "positive",
+  "bloom": "应用",
+  "stem": "患者误吞枣核3天后出现进行性胸骨后疼痛、发热，颈部可触及皮下气肿，胸部CT提示纵隔气体。该患者最可能的并发症是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "食管穿孔并纵隔感染"
+   },
+   {
+    "label": "B",
+    "text": "急性化脓性咽炎"
+   },
+   {
+    "label": "C",
+    "text": "食管周围炎累及纵隔"
+   },
+   {
+    "label": "D",
+    "text": "食管腐蚀伤狭窄期"
+   },
+   {
+    "label": "E",
+    "text": "纵隔淋巴结反应性增生"
+   }
+  ],
+  "answer": "A",
+  "explanation": "尖锐异物（如枣核、鱼刺、骨片、假牙）可穿破食管壁；食管穿孔后咽下的空气经穿孔外溢，可进入颈部皮下组织形成皮下气肿，或进入纵隔形成纵隔气肿并继发纵隔感染。进行性胸骨后疼痛、发热、颈部皮下气肿及纵隔气体是食管穿孔并发纵隔感染的重要线索。教材P373。",
+  "source_page": "教材P373",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-A4-001",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气道异物活瓣性阻塞的病理生理分析",
+  "type": "A4",
+  "polarity": "positive",
+  "bloom": "分析",
+  "case_group": "M06-A4-01",
+  "stem": "（共用题干）患儿，男，3岁，进食花生米时突发剧烈呛咳、憋气，随后反复阵发性咳嗽伴喘息。胸部X线片示右肺透亮度增高、横膈下移，纵隔向左侧偏移。据此判断，该患儿右侧支气管的阻塞类型为？",
+  "options": [
+   {
+    "label": "A",
+    "text": "只出不进的活瓣性阻塞"
+   },
+   {
+    "label": "B",
+    "text": "只进不出的活瓣性阻塞"
+   },
+   {
+    "label": "C",
+    "text": "既不能进也不能出的全阻塞"
+   },
+   {
+    "label": "D",
+    "text": "两侧支气管均通畅"
+   },
+   {
+    "label": "E",
+    "text": "气管声门区闭塞"
+   }
+  ],
+  "answer": "B",
+  "explanation": "患侧（右）肺透亮度增高、横膈下移提示患侧肺气肿，纵隔向健侧（左侧）偏移，符合只进不出（吸气性）活瓣性阻塞的特征：吸气时气体可进入远端，呼气时异物封闭管腔致气体排出受阻，形成局限性肺气肿。教材P366。",
+  "source_page": "教材P366",
+  "difficulty": "较难",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  }
+ },
+ {
+  "id": "batch039-M06-X-001",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气管支气管异物常见的异物种类",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "记忆",
+  "stem": "下列哪些属于儿童气管、支气管异物常见的异物种类？",
+  "options": [
+   {
+    "label": "A",
+    "text": "笔帽、铁钉等金属类"
+   },
+   {
+    "label": "B",
+    "text": "果核、小玩具零件"
+   },
+   {
+    "label": "C",
+    "text": "鱼刺、枣核等尖锐类"
+   },
+   {
+    "label": "D",
+    "text": "花生、瓜子等坚果类"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "气管、支气管异物按来源分外源性和内源性，外源性常见花生、瓜子等坚果类，以及果核、小玩具零件、笔帽、铁钉等。鱼刺、枣核、骨片等尖锐异物主要见于食管异物，故选ABC。教材P366。",
+  "source_page": "教材P366",
+  "difficulty": "基础",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": false,
+   "D": true
+  }
+ },
+ {
+  "id": "batch039-M06-X-002",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气道与食管异物的预防措施",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "为预防气道与食管异物，下列措施中正确的有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "避免给3岁以下儿童整粒坚果"
+   },
+   {
+    "label": "B",
+    "text": "误咽异物后禁吞饭团馒头"
+   },
+   {
+    "label": "C",
+    "text": "进食时保持安静坐位"
+   },
+   {
+    "label": "D",
+    "text": "进食时逗笑以锻炼吞咽"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "预防重点是避免给低龄儿童进食整粒坚果等高风险食物，进食时保持安静坐位、避免哭闹跑跳和逗笑；误咽异物后严禁吞咽饭团、馒头或饮醋强行处理，以免加重食管壁及邻近大血管损伤。进食时逗笑会增加误吸风险，不是预防措施。教材P370。",
+  "source_page": "教材P370",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M06-X-003",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气管支气管异物的临床表现",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "气管、支气管异物患者可出现下列哪些临床表现？",
+  "options": [
+   {
+    "label": "A",
+    "text": "突发剧烈呛咳、憋气"
+   },
+   {
+    "label": "B",
+    "text": "阵发性咳嗽、喘息"
+   },
+   {
+    "label": "C",
+    "text": "单侧呼吸音减弱"
+   },
+   {
+    "label": "D",
+    "text": "持续高热伴寒战为首发症状"
+   }
+  ],
+  "answer": "ABC",
+  "explanation": "气管、支气管异物的典型病史为进食或玩耍时突然剧烈呛咳、憋气、面色发绀，随后出现阵发性咳嗽、喘息或单侧呼吸音减弱。发热多为异物刺激继发感染（症状再发期、并发症期）后出现，一般不是首发表现，故选ABC。教材P367。",
+  "source_page": "教材P367",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": false
+  }
+ },
+ {
+  "id": "batch039-M06-X-004",
+  "module": "M06",
+  "module_name": "气管、支气管与食管异物",
+  "topic": "气道异物与食管异物的鉴别",
+  "type": "X",
+  "polarity": "multi",
+  "bloom": "理解",
+  "stem": "关于气道异物与食管异物的鉴别，下列描述正确的有？",
+  "options": [
+   {
+    "label": "A",
+    "text": "两者检查与治疗方式可互相替代"
+   },
+   {
+    "label": "B",
+    "text": "食管异物以吞咽困难、吞咽痛为主要线索"
+   },
+   {
+    "label": "C",
+    "text": "气道异物以突发呛咳、喘息为主要线索"
+   },
+   {
+    "label": "D",
+    "text": "气道异物可有单侧呼吸音减弱"
+   }
+  ],
+  "answer": "BCD",
+  "explanation": "气道异物通常以突发呛咳、喘息、憋气及单侧呼吸音减弱为主要线索；食管异物则常以吞咽困难、吞咽痛和胸骨后疼痛为主要线索。两者的检查与治疗方式侧重点不同，不能混淆或互相替代，故选ABD。教材P367、P372。",
+  "source_page": "教材P367",
+  "difficulty": "中等",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": true,
+   "D": true
+  }
+ }
+]
