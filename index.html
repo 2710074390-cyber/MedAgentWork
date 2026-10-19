@@ -1149,30 +1149,24 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
       <h3>五阶段管线</h3>
       <span class="cap-meta">PIPELINE · CORDIS 式编排</span>
       <p>编排 → 出题 → 质检 → 修复 → 成册；阶段门禁强制，批次全程可追溯。</p>
-      <div class="cap-flow"><em><b>medgen</b></em><em>→</em><em><b>medqc</b></em><em>→</em><em><b>medfix</b></em><em>→</em><em><b>medreview</b></em>
-      </div>
+      <div class="cap-flow"><em><b>medgen</b></em><em>→</em><em><b>medqc</b></em><em>→</em><em><b>medfix</b></em><em>→</em><em><b>medreview</b></em></div>
       <button class="cap-more" type="button" data-film="pipeline" aria-label="播放科普短片：五阶段管线（40 秒）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>了解更多 <i>· 40s</i></button>
-    </div>
     </div>
     <div class="cap-card reveal">
       <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></div>
       <h3>质量门禁</h3>
       <span class="cap-meta">GATE · D1–D20 质检矩阵</span>
       <p>选项硬校验 FAIL==0 才放行 · 二十维质检 · GoldenSet 真题锚定 · 改动可回放。</p>
-      <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>fact_check</em>
-      </div>
+      <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>fact_check</em></div>
       <button class="cap-more" type="button" data-film="gate" aria-label="播放科普短片：质量门禁（42 秒）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>了解更多 <i>· 42s</i></button>
-    </div>
     </div>
     <div class="cap-card reveal">
       <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-brain"/></svg></div>
       <h3>个性化学科 RAG</h3>
       <span class="cap-meta">KNOWLEDGE · 23 学科配置</span>
       <p>23 学科独立分块与检索 · 向量 + 关键词混合 · 重排 · 考频蓝图配平。</p>
-      <div class="cap-flow"><em>hybrid</em><em>rerank</em><em>calibrated_p</em>
-      </div>
+      <div class="cap-flow"><em>hybrid</em><em>rerank</em><em>calibrated_p</em></div>
       <button class="cap-more" type="button" data-film="rag" aria-label="播放科普短片：个性化学科 RAG（38 秒）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>了解更多 <i>· 38s</i></button>
-    </div>
     </div>
   </div>
 </section>
@@ -2692,7 +2686,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
     if(el.requestFullscreen){ el.requestFullscreen().catch(function(){}); }
   }
 
-  openBtn.addEventListener('click', open);
+  openBtn.addEventListener('click', function(){ openFilm('intro'); });
   closeBtn.addEventListener('click', close);
   ft.addEventListener('click', function(e){
     if(e.target === ft || (e.target.classList && e.target.classList.contains('ft-scrim'))){ close(); }
