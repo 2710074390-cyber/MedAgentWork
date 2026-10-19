@@ -168,7 +168,7 @@ body.modal-open { overflow:hidden; }
 .lg-body,
 .card, .deck-tile, .cap-card, .sw-card, .quick,
 .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip,
-.nav-term-tabs, .search, .mm-term-btn,
+.term-pick-tabs, .nav-term-tabs, .search, .mm-term-btn,
 .modal-bar .m-btn, .sw-ver, .to-top {
   background-image:var(--lg-glow-layer), var(--lg-fill);
   box-shadow:inset 0 1px 0 var(--lg-hi), inset 0 -1px 0 var(--lg-lo);
@@ -181,14 +181,14 @@ body.modal-open { overflow:hidden; }
 .lg-edge,
 .card, .deck-tile, .cap-card, .sw-card, .quick,
 .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip,
-.nav-term-tabs, .search, .mm-term-btn,
+.term-pick-tabs, .nav-term-tabs, .search, .mm-term-btn,
 .modal-bar .m-btn, .sw-ver, .modal-card, #toast, .to-top {
   position:relative; border-color:transparent;
 }
 .lg-edge::after,
 .card::after, .deck-tile::after, .cap-card::after, .sw-card::after, .quick::after,
 .btn-sec::after, .btn-ghost::after, .icon-btn::after, .fx-toggle::after, .chip::after,
-.nav-term-tabs::after, .search::after, .mm-term-btn::after,
+.term-pick-tabs::after, .nav-term-tabs::after, .search::after, .mm-term-btn::after,
 .modal-bar .m-btn::after, .sw-ver::after, .modal-card::after, #toast::after, .to-top::after {
   content:""; position:absolute; inset:0; border-radius:inherit; padding:1px; pointer-events:none;
   background:var(--lg-stroke);
@@ -219,7 +219,7 @@ body.modal-open { overflow:hidden; }
   .modal-card, #toast, .search { background:var(--surface); }
   .terminal { background:var(--term-bg-solid); }
   .card, .deck-tile, .cap-card, .sw-card, .quick,
-  .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip, .nav-term-tabs,
+  .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip, .term-pick-tabs, .nav-term-tabs,
   .mm-term-btn, .modal-bar .m-btn, .sw-ver { background:var(--surface); }
 }
 
@@ -263,6 +263,8 @@ body.modal-open { overflow:hidden; }
 .icon-btn:hover { color:var(--text); }
 .nav-burger { display:none; }
 .nav-cta { display:inline-flex; }
+/* 学期快选：桌面端由导航 Tab 承担，默认隐藏；窄屏（≤520px）在主页暴露（见响应式） */
+.term-pick { display:none; }
 
 /* 移动端全屏菜单 */
 .mobile-menu {
@@ -691,7 +693,12 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
   .search { max-width:none; }
 }
 @media (max-width:520px) {
-  .nav-term-tabs { display:none; }   /* 学期切换收进汉堡菜单（P0·触控目标+防溢出，菜单内已有 mm-term 切换） */
+  .nav-term-tabs { display:none; }   /* 导航 Tab 收进汉堡菜单（P0·触控目标+防溢出，菜单内已有 mm-term 切换） */
+  /* 主页学期快选：窄屏下直接暴露，免开套餐单即可切学期（触控 44px） */
+  .term-pick { display:flex; flex-direction:column; gap:9px; }
+  .term-pick-label { font-family:var(--f-mono); font-size:var(--fs-xs); letter-spacing:0.14em; color:var(--text-3); }
+  .term-pick-tabs { display:flex; gap:3px; padding:4px; border-radius:var(--r-pill); }
+  .term-pick-tabs .nav-term { flex:1; min-height:44px; padding:9px 10px; font-size:var(--fs-sm); }
 }
 @media (max-width:400px) {
   .brand .name { display:none; }
@@ -709,7 +716,7 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
   .nav { background:var(--bg); }
   .modal-card, #toast, .search { background:var(--surface); background-image:none; }
   .terminal { background:var(--term-bg-solid); }
-  .card, .deck-tile, .cap-card, .sw-card, .quick, .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip, .nav-term-tabs, .mm-term-btn, .modal-bar .m-btn, .sw-ver, .to-top { background-image:none; background-color:var(--surface); }
+  .card, .deck-tile, .cap-card, .sw-card, .quick, .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip, .term-pick-tabs, .nav-term-tabs, .mm-term-btn, .modal-bar .m-btn, .sw-ver, .to-top { background-image:none; background-color:var(--surface); }
 }
 /* ---------- 12 幕后管线 · 介绍动画（六镜 40 秒无声 · 零外部依赖） ----------
    手法参考：Stripe 路径描线与光点流动 · GitHub landing 分阶段错峰入场 ·
@@ -799,7 +806,7 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
 @media (max-width:640px) { .intro-film .film-meta { order:3; width:100%; } }
 
 @media print {
-  .deep-sea, .nav, .hero-canvas, .intro-film, .stats, #modal, #toast, .footer, .grid-tools, .fx-toggle { display:none !important; }
+  .deep-sea, .nav, .hero-canvas, .intro-film, .stats, #modal, #toast, .footer, .grid-tools, .fx-toggle, .term-pick { display:none !important; }
   body { background:#fff; color:#111; }
   .hero { min-height:auto; padding:40px 0; }
   .hero h1, .hero-desc, .hero-cta, .hero-badge { animation:none; opacity:1; transform:none; }
@@ -935,6 +942,15 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
           <a class="btn btn-pri" href="/drill"><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg>网页刷题</a>
           <a class="btn btn-sec btn-sm" href="#/s2/reviews"><svg class="ic" aria-hidden="true"><use href="#i-book"/></svg>复习手册</a>
           <a class="btn btn-sec btn-sm" href="#/s2/banks"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>题库 PDF</a>
+        </div>
+        <!-- 学期快选：窄屏（≤520px）显示，无需打开汉堡菜单即可切学期；与导航 Tab 同源（.nav-term 自动同步态与路由） -->
+        <div class="term-pick">
+          <span class="term-pick-label">选择学期 · SEMESTER</span>
+          <div class="term-pick-tabs" role="tablist" aria-label="学期切换">
+            <button class="nav-term active" data-term="home" role="tab">主页</button>
+            <button class="nav-term" data-term="junior2" role="tab">大三下</button>
+            <button class="nav-term" data-term="senior1" role="tab">大四上</button>
+          </div>
         </div>
       </div>
       <div class="hero-visual">
