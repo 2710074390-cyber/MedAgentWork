@@ -772,8 +772,8 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
 .ft-scrim{position:absolute;inset:0;background:rgba(3,5,9,.9);
   -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
 .ft-shell{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;outline:none;
-  width:min(1360px,94vw,150vh);transform:translateY(10px) scale(.985);
-  transition:transform .32s cubic-bezier(.2,.7,.2,1)}
+  width:min(1360px,94vw,150vh);transform:translateY(8px) scale(1.03);
+  transition:transform .46s cubic-bezier(.16,1,.3,1)}
 .ft.open .ft-shell{transform:none}
 .ft[data-fmt="tall"] .ft-shell{width:min(92vw,62vh);margin:0 auto}
 .ft-close{position:absolute;right:12px;top:12px;z-index:6;width:40px;height:40px;border-radius:50%;
@@ -850,6 +850,58 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
 @media (prefers-reduced-motion:reduce){
   .film-play::before{display:none}
   .film-open img,.ft-shell,.ft{transition:none}
+}
+
+/* ---------- 科普短片：卡片入口 + 剧场换片 + 丝滑过渡 ---------- */
+.cap-card{transition:transform .42s cubic-bezier(.16,1,.3,1), opacity .42s ease,
+  border-color .3s, box-shadow .3s}
+/* 点击后卡片先「推近」再交给剧场，读起来像同一块画面在放大 */
+.cap-card.is-launching{transform:scale(1.035);opacity:.3;border-color:rgba(103,153,254,.5)}
+.cap-more{
+  margin-top:18px;align-self:flex-start;display:inline-flex;align-items:center;gap:9px;
+  padding:9px 15px 9px 11px;border-radius:100px;cursor:pointer;
+  border:1px solid rgba(103,153,254,.34);background:rgba(103,153,254,.10);
+  color:var(--brand);font-family:var(--f-sans);font-size:14px;font-weight:500;
+  letter-spacing:.01em;transition:background .22s,border-color .22s,transform .22s,color .22s;
+}
+.cap-more svg{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+.cap-more i{font-style:normal;font-family:var(--f-mono);font-size:12.5px;opacity:.72}
+.cap-more:hover{background:rgba(103,153,254,.2);border-color:var(--brand);color:var(--text);transform:translateY(-1px)}
+.cap-more:active{transform:translateY(0) scale(.98)}
+.cap-more:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+
+.ft-badge{
+  position:absolute;top:16px;left:20px;z-index:6;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;
+  color:rgba(255,255,255,.62);background:rgba(8,10,16,.6);
+  border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:6px 13px;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  opacity:0;transform:translateY(-6px);transition:opacity .3s ease,transform .3s ease;
+}
+.ft.open .ft-badge{opacity:1;transform:translateY(0)}
+
+/* 剧场入场：从 1.035 收到 1，与卡片的推近衔接 */
+
+.ft .ft-frame{transition:opacity .26s ease}
+.ft.ft-switching .ft-frame{opacity:.15}
+.ft-swap{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.ft-swap button{
+  padding:9px 16px;border-radius:100px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.8);font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em;
+  transition:background .2s,border-color .2s,color .2s,transform .2s;
+}
+.ft-swap button:hover{background:rgba(103,153,254,.2);border-color:rgba(103,153,254,.6);color:#fff;transform:translateY(-1px)}
+.ft-swap button[aria-current="true"]{border-color:rgba(103,153,254,.6);color:var(--brand-2)}
+
+@media (max-width:600px){
+  .cap-more{width:100%;justify-content:center;margin-top:14px}
+  .ft-badge{top:12px;left:12px;font-size:10px;padding:5px 11px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cap-card,.ft-shell,.cap-more,.ft-swap button{transition:none !important}
+  .cap-card.is-launching{transform:none}
+  .ft-shell,.ft.open .ft-shell{transform:none}
 }
 
 /* 影片在终端面板内固定 16:9；剧场再按 600px 断点切 4:5 视频 */
@@ -1097,21 +1149,30 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
       <h3>五阶段管线</h3>
       <span class="cap-meta">PIPELINE · CORDIS 式编排</span>
       <p>编排 → 出题 → 质检 → 修复 → 成册；阶段门禁强制，批次全程可追溯。</p>
-      <div class="cap-flow"><em><b>medgen</b></em><em>→</em><em><b>medqc</b></em><em>→</em><em><b>medfix</b></em><em>→</em><em><b>medreview</b></em></div>
+      <div class="cap-flow"><em><b>medgen</b></em><em>→</em><em><b>medqc</b></em><em>→</em><em><b>medfix</b></em><em>→</em><em><b>medreview</b></em>
+      </div>
+      <button class="cap-more" type="button" data-film="pipeline" aria-label="播放科普短片：五阶段管线（40 秒）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>了解更多 <i>· 40s</i></button>
+    </div>
     </div>
     <div class="cap-card reveal">
       <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></div>
       <h3>质量门禁</h3>
       <span class="cap-meta">GATE · D1–D20 质检矩阵</span>
       <p>选项硬校验 FAIL==0 才放行 · 二十维质检 · GoldenSet 真题锚定 · 改动可回放。</p>
-      <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>fact_check</em></div>
+      <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>fact_check</em>
+      </div>
+      <button class="cap-more" type="button" data-film="gate" aria-label="播放科普短片：质量门禁（42 秒）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>了解更多 <i>· 42s</i></button>
+    </div>
     </div>
     <div class="cap-card reveal">
       <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-brain"/></svg></div>
       <h3>个性化学科 RAG</h3>
       <span class="cap-meta">KNOWLEDGE · 23 学科配置</span>
       <p>23 学科独立分块与检索 · 向量 + 关键词混合 · 重排 · 考频蓝图配平。</p>
-      <div class="cap-flow"><em>hybrid</em><em>rerank</em><em>calibrated_p</em></div>
+      <div class="cap-flow"><em>hybrid</em><em>rerank</em><em>calibrated_p</em>
+      </div>
+      <button class="cap-more" type="button" data-film="rag" aria-label="播放科普短片：个性化学科 RAG（38 秒）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>了解更多 <i>· 38s</i></button>
+    </div>
     </div>
   </div>
 </section>
@@ -1421,7 +1482,8 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
 <!-- ============ 介绍片 · 剧场播放层 ============ -->
 <div class="ft" id="ft" data-fmt="wide" hidden aria-hidden="true">
   <div class="ft-scrim" data-close></div>
-  <div class="ft-shell" role="dialog" aria-modal="true" aria-label="MedAgentWork 介绍片" tabindex="-1">
+  <div class="ft-shell" role="dialog" aria-modal="true" aria-label="MedAgentWork 影片播放器" tabindex="-1">
+    <span class="ft-badge" id="ft-badge">介绍片 · 58s</span>
     <button class="ft-close" id="ft-close" type="button" aria-label="关闭播放器">✕</button>
     <div class="ft-frame" id="ft-frame">
       <video id="ft-video" playsinline preload="none" controlslist="nodownload" disablepictureinpicture></video>
@@ -1429,13 +1491,14 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
       <div class="ft-loading" id="ft-loading" aria-hidden="true"><span></span></div>
       <div class="ft-endcard" id="ft-endcard">
         <div class="ft-end-inner">
-          <span class="ft-eyebrow">INTRO FILM · 完</span>
-          <b>现在，开始刷题</b>
-          <p>5,791 道题 · 23 个学科 · 判错自动回流</p>
+          <span class="ft-eyebrow" id="ft-eyebrow">INTRO FILM · 完</span>
+          <b id="ft-end-title">现在，开始刷题</b>
+          <p id="ft-end-sub">5,791 道题 · 23 个学科 · 判错自动回流</p>
           <div class="ft-actions">
             <a class="btn btn-pri btn-sm" href="/drill">去网页刷题</a>
             <button class="btn btn-sec btn-sm" id="ft-replay" type="button">再看一遍</button>
           </div>
+          <div class="ft-swap" id="ft-swap" hidden></div>
         </div>
       </div>
     </div>
@@ -2467,18 +2530,95 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
     return Math.floor(sec / 60) + ':' + (sec % 60 < 10 ? '0' : '') + (sec % 60);
   }
   function fmtFor(){ return mq.matches ? 'tall' : 'wide'; }
-  function srcFor(f){ return 'assets/intro/medagentwork-intro-' + (f === 'tall' ? '4x5' : '16x9') + '.mp4'; }
-  function posterFor(f){ return 'assets/intro/poster-' + (f === 'tall' ? '4x5' : '16x9') + '.jpg'; }
+
+  /* 影片注册表：intro 为首屏主片，另三支是幕后管线栏目的科普短片 */
+  var FILMS = {
+    intro: {
+      badge: '介绍片 · 58s', eyebrow: 'INTRO FILM · 完',
+      title: '现在，开始刷题', sub: '5,791 道题 · 23 个学科 · 判错自动回流'
+    },
+    pipeline: {
+      badge: '科普短片 · 五阶段管线 · 40s', eyebrow: 'PIPELINE · 完',
+      title: '慢一点，但每一步都算得清', sub: '五个角色各管一段 · 契约先行 · 门禁强制'
+    },
+    gate: {
+      badge: '科普短片 · 质量门禁 · 42s', eyebrow: 'QUALITY GATE · 完',
+      title: '不是让模型更准，是让错误出不来', sub: 'R1–R13 硬规则 · D1–D20 维度 · 全绿才发布'
+    },
+    rag: {
+      badge: '科普短片 · 个性化学科 RAG · 38s', eyebrow: 'SUBJECT RAG · 完',
+      title: '检索到的质量，决定后面所有的质量', sub: '逐科分块 · 向量+关键词混合检索 · 命中缓存零调用'
+    }
+  };
+  var ORDER = ['intro', 'pipeline', 'gate', 'rag'];
+  var current = 'intro', loadedKey = '';
+
+  function srcFor(f, key){
+    var sfx = f === 'tall' ? '4x5' : '16x9';
+    return key === 'intro'
+      ? 'assets/intro/medagentwork-intro-' + sfx + '.mp4'
+      : 'assets/shorts/' + key + '-' + sfx + '.mp4';
+  }
+  function posterFor(f, key){
+    var sfx = f === 'tall' ? '4x5' : '16x9';
+    return key === 'intro'
+      ? 'assets/intro/poster-' + sfx + '.jpg'
+      : 'assets/shorts/poster-' + key + '-' + sfx + '.jpg';
+  }
 
   function ensureSource(){
     var f = fmtFor();
-    if(loadedFmt === f) return;
+    if(loadedFmt === f && loadedKey === current) return;
     loadedFmt = f;
+    loadedKey = current;
     ft.setAttribute('data-fmt', f);
-    posterEl.style.backgroundImage = 'url("' + posterFor(f) + '")';
-    video.setAttribute('poster', posterFor(f));
-    video.src = srcFor(f);
+    ft.setAttribute('data-film', current);
+    posterEl.style.backgroundImage = 'url("' + posterFor(f, current) + '")';
+    video.setAttribute('poster', posterFor(f, current));
+    video.src = srcFor(f, current);
     video.load();
+  }
+
+  function applyFilmMeta(){
+    var m = FILMS[current];
+    ft.querySelector('#ft-eyebrow').textContent = m.eyebrow;
+    ft.querySelector('#ft-end-title').textContent = m.title;
+    ft.querySelector('#ft-end-sub').textContent = m.sub;
+    ft.querySelector('#ft-badge').textContent = m.badge;
+    var swap = ft.querySelector('#ft-swap');
+    if(current === 'intro'){ swap.hidden = true; swap.innerHTML = ''; return; }
+    swap.hidden = false;
+    swap.innerHTML = ORDER.filter(function(k){ return k !== 'intro'; }).map(function(k){
+      return '<button type="button" data-film="' + k + '"' +
+        (k === current ? ' aria-current="true"' : '') + '>' +
+        FILMS[k].badge.replace('科普短片 · ', '').replace(/ · \d+s$/, '') + '</button>';
+    }).join('');
+  }
+
+  /* 从任意入口打开某支影片：卡片按钮 / 结束卡换片 */
+  function openFilm(key){
+    var next = FILMS[key] ? key : 'intro';
+    if(next === current){ open(); return; }
+    var wasOpen = isOpen;
+    current = next;
+    applyFilmMeta();
+    if(!wasOpen){
+      var card = document.activeElement && document.activeElement.closest
+        ? document.activeElement.closest('.cap-card') : null;
+      if(card) card.classList.add('is-launching');
+      open();
+      setTimeout(function(){ if(card) card.classList.remove('is-launching'); }, 520);
+    }else{
+      /* 换片：黑场过渡 260ms 后再切源，避免画面硬跳 */
+      ft.classList.add('ft-switching');
+      setTimeout(function(){
+        ft.classList.remove('ft-ended');
+        ensureSource();
+        var pv = video.play();
+        if(pv && pv.catch) pv.catch(function(){});
+        setTimeout(function(){ ft.classList.remove('ft-switching'); }, 60);
+      }, 260);
+    }
   }
   function setPlayerUI(playing){
     playBtn.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
@@ -2492,7 +2632,7 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
   function resetEnd(){
     ft.classList.remove('ft-ended');
     card.setAttribute('data-watched','0');
-    noteEl.textContent = 'MEDAGENTWORK · INTRO 2026';
+    if(current === 'intro') noteEl.textContent = 'MEDAGENTWORK · INTRO 2026';
   }
   function open(){
     if(isOpen) return;
@@ -2591,8 +2731,10 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
   });
   video.addEventListener('ended', function(){
     ft.classList.add('ft-ended');
-    card.setAttribute('data-watched','1');
-    noteEl.textContent = '已看完 · 点击重看';
+    if(current === 'intro'){
+      card.setAttribute('data-watched','1');
+      noteEl.textContent = '已看完 · 点击重看';
+    }
     setPlayerUI(false);
     progEl.style.width = '100%';
   });
@@ -2633,9 +2775,22 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
     }
   });
 
+  /* 卡片「了解更多」：推近 → 剧场淡入 */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest && e.target.closest('.cap-more');
+    if(t){ openFilm(t.getAttribute('data-film')); return; }
+    var sw = e.target.closest && e.target.closest('#ft-swap button');
+    if(sw){ openFilm(sw.getAttribute('data-film')); }
+  });
+  /* 视口跨过 600px 时切换画幅 */
+  if(mq.addEventListener) mq.addEventListener('change', function(){
+    if(isOpen && loadedFmt !== fmtFor()) ensureSource();
+  });
+
+  applyFilmMeta();
   setPlayerUI(false);
   setMuteUI();
-  window.__film = { open: open, close: close, el: ft, video: video };
+  window.__film = { open: open, close: close, openFilm: openFilm, el: ft, video: video };
 })();
 </script>
 </body>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MedAgentWork — Short Films</title>
+<script>
+  var Q = new URLSearchParams(location.search);
+  var FMT = Q.get('format') === 'tall' ? 'tall' : 'wide';
+  document.documentElement.className = FMT;
+</script>
+<style>
+/* ============================================================
+   MedAgentWork 科普短片 — 画布（1920×1080 / 1080×1350）
+   与主介绍片同一套视觉语言：黑蓝深海 · 发丝线 · 等宽标签
+   暖色仅用于「避坑 / 撤回」警示
+   所有运动由 window.__seek(ms) 驱动，无 CSS 动画（逐帧可复现）
+   ============================================================ */
+:root{
+  --bg:#07080c;
+  --ink:#f4f7ff;
+  --muted:rgba(224,234,255,.62);
+  --dim:rgba(224,234,255,.34);
+  --brand:#679efe;
+  --brand-2:#9cc0ff;
+  --ok:#4ade80;
+  --warn:#f5c86b;
+  --line:rgba(255,255,255,.10);
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code",Consolas,"SF Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#000;overflow:hidden}
+body{font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);isolation:isolate}
+html.tall #stage{width:1080px;height:1350px}
+
+/* ---------------- 背景 ---------------- */
+.bg-base{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(1000px 700px at 74% 14%,rgba(45,95,158,.28),transparent 62%),
+  radial-gradient(1200px 900px at 6% 106%,rgba(26,56,112,.5),transparent 66%),
+  linear-gradient(180deg,#080a10 0%,#07090e 54%,#04060a 100%)}
+html.tall .bg-base{background:
+  radial-gradient(760px 760px at 80% 6%,rgba(45,95,158,.30),transparent 64%),
+  radial-gradient(900px 900px at -8% 104%,rgba(26,56,112,.52),transparent 68%),
+  linear-gradient(180deg,#080a10 0%,#07090e 55%,#04060a 100%)}
+.grid{position:absolute;inset:-12%;opacity:.5;z-index:0;
+  background-image:linear-gradient(rgba(255,255,255,.036) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.036) 1px,transparent 1px);
+  background-size:96px 96px;
+  -webkit-mask-image:radial-gradient(ellipse 72% 64% at 50% 38%,#000 8%,transparent 76%);
+  mask-image:radial-gradient(ellipse 72% 64% at 50% 38%,#000 8%,transparent 76%)}
+html.tall .grid{background-size:64px 64px}
+.horizon{position:absolute;left:6%;right:6%;top:86%;height:1px;z-index:0;
+  background:linear-gradient(90deg,transparent,rgba(103,153,254,.34) 22%,rgba(200,222,255,.6) 50%,rgba(103,153,254,.34) 78%,transparent)}
+.vignette{position:absolute;inset:0;z-index:6;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 46%,transparent 52%,rgba(0,0,0,.55) 100%)}
+
+/* ---------------- 通用排版 ---------------- */
+#acts{position:absolute;inset:0;z-index:2}
+.scene{position:absolute;inset:0;padding:132px 132px 116px;display:flex;flex-direction:column;justify-content:center}
+html.tall .scene{padding:112px 76px 104px}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:15px;
+  letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--brand);
+  box-shadow:0 0 14px rgba(103,158,254,.8);flex-shrink:0}
+.eyebrow b{color:var(--brand-2);font-weight:400}
+h2.big{font-size:104px;font-weight:600;line-height:1.1;letter-spacing:-.036em;margin-top:26px}
+html.tall h2.big{font-size:84px;line-height:1.14}
+.sub{margin-top:26px;font-size:27px;line-height:1.6;color:var(--muted);font-weight:300;max-width:1180px}
+html.tall .sub{font-size:26px;line-height:1.55;margin-top:18px}
+.mask{display:block;overflow:hidden}
+.mask>span{display:block}
+
+.act-head{margin-top:44px;padding-bottom:18px;border-bottom:1px solid var(--line);
+  display:flex;align-items:baseline;justify-content:space-between;gap:20px}
+html.tall .act-head{margin-top:30px;padding-bottom:14px}
+.act-head b{font-size:42px;font-weight:500;letter-spacing:-.01em}
+html.tall .act-head b{font-size:40px;line-height:1.25}
+.act-head span{font-family:var(--mono);font-size:14px;letter-spacing:.16em;color:var(--dim);white-space:nowrap}
+html.tall .act-head span{font-size:15px}
+
+/* 列表行（角色 / 规则） */
+.rows{margin-top:8px}
+.row{display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:baseline;
+  padding:23px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+.row:last-child{border-bottom:0}
+.row .k{font-family:var(--mono);font-size:17px;letter-spacing:.05em;color:var(--brand-2)}
+.row .v{font-size:24px;line-height:1.55;color:var(--muted);font-weight:300}
+html.tall .row{grid-template-columns:1fr;gap:6px;padding:16px 0}
+html.tall .row .k{font-size:18px}
+html.tall .row .v{font-size:25px;line-height:1.45}
+.foot-note{margin-top:22px;font-family:var(--mono);font-size:15px;letter-spacing:.05em;color:var(--dim)}
+html.tall .foot-note{font-size:17px;margin-top:18px}
+
+/* 决策卡 */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:36px}
+html.tall .cards{grid-template-columns:1fr;gap:22px;margin-top:24px}
+.card{position:relative;padding:30px 30px 28px;border:1px solid var(--line);border-radius:14px;
+  background:rgba(255,255,255,.028)}
+.card .no{font-family:var(--mono);font-size:13px;letter-spacing:.16em;color:var(--brand)}
+.card h3{margin-top:15px;font-size:29px;font-weight:500;line-height:1.3;letter-spacing:-.01em}
+.card p{margin-top:12px;font-size:19px;line-height:1.6;color:var(--muted);font-weight:300}
+.card .pit{margin-top:20px;padding-top:16px;border-top:1px dashed rgba(245,200,107,.28);
+  font-size:17.5px;line-height:1.55;color:rgba(245,200,107,.88)}
+.card .pit b{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--warn);
+  display:block;margin-bottom:5px;font-weight:400}
+html.tall .card{padding:22px 22px 20px}
+html.tall .card h3{font-size:29px}
+html.tall .card p{font-size:21px;margin-top:8px}
+html.tall .card .pit{font-size:19px;margin-top:14px;padding-top:12px}
+
+/* 收束 */
+.close-wrap{margin-top:52px;display:flex;flex-direction:column;align-items:center;text-align:center}
+html.tall .close-wrap{margin-top:38px}
+.stats{display:flex;gap:64px;justify-content:center}
+html.tall .stats{gap:40px;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--mono);font-size:62px;line-height:1;
+  background:linear-gradient(180deg,#ffffff 24%,#a9c4ff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{display:block;margin-top:10px;font-family:var(--mono);font-size:14px;
+  letter-spacing:.14em;color:var(--dim)}
+html.tall .stat b{font-size:48px}
+html.tall .stat span{font-size:15px}
+.punch{margin-top:60px;font-size:56px;font-weight:500;line-height:1.32;letter-spacing:-.02em;color:rgba(255,255,255,.92)}
+html.tall .punch{margin-top:44px;font-size:50px;line-height:1.34;padding:0 12px}
+.recall{margin-top:34px;padding:12px 22px;border:1px solid rgba(245,200,107,.3);
+  border-radius:100px;background:rgba(245,200,107,.07);color:#f5c86b;
+  font-family:var(--mono);font-size:16px;letter-spacing:.06em}
+html.tall .recall{margin-top:24px;font-size:18px}
+
+/* 角标 */
+.chapter{position:absolute;right:132px;top:112px;z-index:5;text-align:right}
+.chapter b{display:block;font-family:var(--mono);font-size:96px;line-height:1;
+  color:rgba(255,255,255,.07);letter-spacing:-.04em}
+.chapter span{display:block;margin-top:10px;font-family:var(--mono);font-size:13px;
+  letter-spacing:.2em;color:var(--dim)}
+html.tall .chapter{right:76px;top:96px}
+html.tall .chapter b{font-size:78px}
+
+/* 进度条 */
+.progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.07);z-index:7}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-2));
+  box-shadow:0 0 18px rgba(103,153,254,.5)}
+.ss-tag{position:absolute;left:132px;bottom:36px;z-index:5;font-family:var(--mono);
+  font-size:13px;letter-spacing:.2em;color:rgba(255,255,255,.22)}
+html.tall .ss-tag{left:76px;bottom:32px;font-size:14px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="bg-base"></div>
+  <div class="grid"></div>
+  <div class="horizon"></div>
+  <div class="chapter" id="chapter"><b>01</b><span id="chapter-name">PIPELINE</span></div>
+  <div class="ss-tag" id="ss-tag">MEDAGENTWORK · 科普短片</div>
+  <div id="acts"></div>
+  <div class="vignette"></div>
+  <div class="progress"><i id="progress"></i></div>
+</div>
+
+<script>
+"use strict";
+/* ============================================================
+   三支科普短片的数据与渲染
+   - 一页承载三片：?f=pipeline|gate|rag
+   - 每片 4 幕：hook → list → decide → close
+   - window.__seek(ms) 可定位任意时刻，逐帧渲染可复现
+   ============================================================ */
+const $ = id => document.getElementById(id);
+
+/* ---------------- 文案数据（全部来自项目真实记录） ---------------- */
+const FILMS = {
+  pipeline: {
+    name: 'PIPELINE', idx: '01', dur: 40,
+    hook: {
+      eyebrow: '五阶段管线',
+      l1: '为什么不让一个模型', l2: '一口气写完？',
+      sub: '一个 Agent 从零写到成册，速度很快；但没人知道它在哪一步跑偏了。'
+    },
+    list: {
+      title: '拆成五个角色，各管一段', tag: '05 ROLES',
+      rows: [
+        { k: '编排 MedMaster', v: '先回显意图：科目、目标题数、模块划分，你确认之后才动手。' },
+        { k: '出题 MedGen', v: '题目写入中间产物，每一批都带自己的批次号。' },
+        { k: '质检 MedQC', v: '输出质检报告，问题逐条落盘，不靠“应该没问题”。' },
+        { k: '修复 MedFix', v: '按报告改，改完写进最终产物。' },
+        { k: '成册 MedReview', v: '排版、插图、章节结构，最后才生成复习资料。' }
+      ],
+      foot: '每一步都留下可读的文件 —— 不存在“只在对话里”的状态。'
+    },
+    decide: {
+      title: '契约先行，门禁强制', tag: 'CONTRACT + GATE',
+      cards: [
+        { no: 'DECISION 01', h: '输入输出写成 schema',
+          d: '每个阶段的契约落成 JSON Schema，产物摄入时直接用 jsonschema 校验。',
+          pit: '避坑', pt: '格式漂移：上一阶段少一个字段，下一阶段整批返工。' },
+        { no: 'DECISION 02', h: '状态机原子写入',
+          d: '批次状态原子写、留血缘；门禁不过就地 HALT，不允许带病往下走。',
+          pit: '避坑', pt: '并发写覆盖，以及半成品被当成成品发布。' },
+        { no: 'DECISION 03', h: 'BLOCKED 就地回退',
+          d: '门禁判定 BLOCKED → 回退到对应角色修完重跑，而不是手工把它推过去。',
+          pit: '避坑', pt: '“先往下走，回头再补”——补不回来的批次。' }
+      ]
+    },
+    close: {
+      stats: [['5', '阶段'], ['4', '道门禁'], ['1', '状态机'], ['2', '脚本校验点']],
+      punch: '慢一点，但每一步都算得清。'
+    }
+  },
+
+  gate: {
+    name: 'QUALITY GATE', idx: '02', dur: 42,
+    hook: {
+      eyebrow: '质量门禁',
+      l1: '让模型检查自己，', l2: '靠谱吗？',
+      sub: '模型很会解释“应该没问题”——但它也是被检查的对象。所以判定必须交给代码。'
+    },
+    list: {
+      title: '能被规则抓住的，先用规则抓', tag: 'RULES',
+      rows: [
+        { k: 'R9 数值缺单位', v: '0.5 与 0.5 mg 只有一个是对的；缺单位的数值从警告升级为失败。' },
+        { k: 'R2 正确选项显著更长', v: '正确答案总是最长——这是选择题里最典型的破绽。' },
+        { k: 'R6 数值区分度', v: '四个选项数值挨得太近，等于没给区分度。' },
+        { k: 'R10 / R11 线索检测', v: '按 NBME 出题习惯，反向排除词重复线索与收敛策略。' }
+      ],
+      foot: '规则先行，是为了让机器去干人眼会看漏的活。'
+    },
+    decide: {
+      title: '事实也要机械核对', tag: 'FACT + DEPLOY',
+      cards: [
+        { no: 'DECISION 01', h: '页码反查',
+          d: 'fact_check 把引用翻回原书的那一页，对不上就不算数。',
+          pit: '避坑', pt: '段落跨页断链、PDF 来源对不上号。' },
+        { no: 'DECISION 02', h: '真题交叉验证',
+          d: 'GoldenSet 9,616 条真题解析逐条比对，考研原题 100% 核对。',
+          pit: '避坑', pt: '内容看着专业，答案却和真题库冲突。' },
+        { no: 'DECISION 03', h: 'FAIL == 0 才放行',
+          d: '选项硬校验 FAIL=0；gate_check 不合格，直接拒绝部署。',
+          pit: '避坑', pt: '“先上线再说”——线上的错误收不回来。' }
+      ]
+    },
+    close: {
+      stats: [['R1–R13', '硬规则'], ['D1–D20', '质检维度'], ['90', '项测试'], ['164', '项巡检']],
+      punch: '不是让模型更准，是让错误出不来。',
+      recall: '批次 039 · 199 题主动撤回，待并集后再发'
+    }
+  },
+
+  rag: {
+    name: 'SUBJECT RAG', idx: '03', dur: 38,
+    hook: {
+      eyebrow: '个性化学科 RAG',
+      l1: '23 个学科，', l2: '能用同一套检索吗？',
+      sub: '不能。方剂组成、影像分期、数值参考值，压根不是一类东西。'
+    },
+    list: {
+      title: '分块按学科走，检索双通道', tag: 'CHUNK + RETRIEVE',
+      rows: [
+        { k: '逐科分块策略', v: '方剂组成不切碎；表格、对照表按语义保护规则保形。' },
+        { k: '向量 + 关键词', v: '向量负责“意思像”，关键词负责“字面准”。' },
+        { k: 'rerank 重排', v: '两路召回合并后，再按相关度重排一次。' },
+        { k: '23 学科独立配置', v: '分块大小、检索条数、重排阈值，逐科调，不共用一套。' }
+      ],
+      foot: '一刀切的配置，等于把某个学科的信息结构毁掉。'
+    },
+    decide: {
+      title: '检索既要稳，也要算得过账', tag: 'COST + RED LINE',
+      cards: [
+        { no: 'DECISION 01', h: '双层磁盘缓存',
+          d: '查询结果与向量都落盘，同一个查询第二次零调用。',
+          pit: '真实事故', pt: 'batch027 期间 API 余额不足（402），管线一度卡死。' },
+        { no: 'DECISION 02', h: '降级而不是中断',
+          d: '余额不足时 --no-rerank 跳过付费重排，成本约减半，管线继续跑。',
+          pit: '为什么', pt: '检索质量可以降级，批次不能因为余额停摆。' },
+        { no: 'RED LINE', h: '先验不是实测',
+          d: '校准难度 calibrated_p 是先验估计，用于组卷配平。',
+          pit: '红线', pt: '宁可标记“待审”，也不静默覆盖成“实测难度”。' }
+      ]
+    },
+    close: {
+      stats: [['23', '学科配置'], ['26', '个索引'], ['双通道', '混合检索'], ['零调用', '命中缓存']],
+      punch: '检索到的质量，决定了后面所有的质量。'
+    }
+  }
+};
+
+/* ---------------- 幕的 DOM（由数据生成） ---------------- */
+function el(tag, cls, html) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (html != null) n.innerHTML = html;
+  return n;
+}
+
+function buildActs(film) {
+  const host = $('acts');
+  host.innerHTML = '';
+
+  /* 钩子 */
+  const h = el('section', 'scene', '');
+  h.id = 'act-hook';
+  h.appendChild(el('div', 'eyebrow', `<i></i><b>${film.hook.eyebrow}</b>`));
+  const h2 = el('h2', 'big', `<span class="mask"><span id="h-l1">${film.hook.l1}</span></span><span class="mask"><span id="h-l2">${film.hook.l2}</span></span>`);
+  h.appendChild(h2);
+  h.appendChild(el('p', 'sub', film.hook.sub));
+  host.appendChild(h);
+
+  /* 列表 */
+  const a = el('section', 'scene', '');
+  a.id = 'act-list';
+  a.appendChild(el('div', 'act-head', `<b>${film.list.title}</b><span>${film.list.tag}</span>`));
+  const rows = el('div', 'rows', '');
+  film.list.rows.forEach((r, i) => {
+    rows.appendChild(el('div', 'row', `<span class="k">${r.k}</span><span class="v">${r.v}</span>`));
+  });
+  a.appendChild(rows);
+  a.appendChild(el('div', 'foot-note', film.list.foot));
+  host.appendChild(a);
+
+  /* 决策 */
+  const b = el('section', 'scene', '');
+  b.id = 'act-decide';
+  b.appendChild(el('div', 'act-head', `<b>${film.decide.title}</b><span>${film.decide.tag}</span>`));
+  const cards = el('div', 'cards', '');
+  film.decide.cards.forEach(c => {
+    cards.appendChild(el('div', 'card', `<span class="no">${c.no}</span><h3>${c.h}</h3><p>${c.d}</p><div class="pit"><b>${c.pit}</b>${c.pt}</div>`));
+  });
+  b.appendChild(cards);
+  host.appendChild(b);
+
+  /* 收束 */
+  const c = el('section', 'scene', '');
+  c.id = 'act-close';
+  const wrap = el('div', 'close-wrap', '');
+  const stats = el('div', 'stats', '');
+  film.close.stats.forEach(s => stats.appendChild(el('div', 'stat', `<b>${s[0]}</b><span>${s[1]}</span>`)));
+  wrap.appendChild(stats);
+  wrap.appendChild(el('p', 'punch', film.close.punch));
+  if (film.close.recall) wrap.appendChild(el('div', 'recall', film.close.recall));
+  c.appendChild(wrap);
+  host.appendChild(c);
+
+  return { hook: h, list: a, decide: b, close: c };
+}
+
+/* ---------------- 时间轴 ---------------- */
+let FILM = null, DUR = 0, ACTS = null;
+
+function clamp(v, a = 0, b = 1) { return v < a ? a : v > b ? b : v; }
+function seg(t, a, dur) { return clamp((t - a) / dur, 0, 1); }
+function easeOut(x) { return 1 - Math.pow(1 - x, 3); }
+function easeInOut(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+function actTimes() {
+  /* 四幕的边界：钩子 → 列表 → 决策 → 收束 */
+  const d = DUR;
+  if (FILM.key === 'pipeline') return [0, 7, 17, 29];
+  if (FILM.key === 'gate') return [0, 7, 20, 33];
+  return [0, 7, 20, 30];
+}
+
+function setO(n, v) { n.style.opacity = v.toFixed(3); }
+function setT(n, v) { n.style.transform = v; }
+
+function render(t) {
+  const [b0, b1, b2, b3] = actTimes();
+  const nodes = [ACTS.hook, ACTS.list, ACTS.decide, ACTS.close];
+  const bounds = [b0, b1, b2, b3, DUR];
+  const cur = nodes.map((n, i) => {
+    const s = bounds[i], e = bounds[i + 1];
+    return s <= t && t < e ? i : -1;
+  });
+
+  nodes.forEach((n, i) => {
+    const s = bounds[i], e = bounds[i + 1];
+    const local = t - s, len = e - s;
+    const din = clamp((local + .12) / .38);
+    const dout = clamp((len - local + .15) / .34);
+    const op = clamp(Math.min(din, dout));
+    n.style.visibility = (t >= s - .3 && t < e + .3) ? 'visible' : 'hidden';
+    setO(n, op);
+    setT(n, `translateY(${((1 - easeOut(op)) * 22).toFixed(2)}px)`);
+    if (cur[i] !== i) return;
+    renderAct(i, local, len, op);
+  });
+
+  $('progress').style.width = (clamp(t / DUR) * 100).toFixed(3) + '%';
+}
+
+function renderAct(i, L, len, op) {
+  if (i === 0) {
+    setO(document.querySelector('#act-hook .eyebrow'), seg(L, .05, .45) * op);
+    setT($('h-l1'), `translateY(${(1 - easeOut(seg(L, .12, .75))) * 110}%)`);
+    setT($('h-l2'), `translateY(${(1 - easeOut(seg(L, .24, .75))) * 110}%)`);
+    setO(document.querySelector('#act-hook .sub'), easeOut(seg(L, .5, .6)) * op);
+    return;
+  }
+  if (i === 1) {
+    const head = document.querySelector('#act-list .act-head');
+    setO(head, easeOut(seg(L, .04, .45)) * op);
+    document.querySelectorAll('#act-list .row').forEach((r, k) => {
+      const p = easeOut(seg(L, .3 + k * .34, .5));
+      setO(r, p * op);
+      setT(r, `translateX(${(1 - p) * 18}px)`);
+    });
+    setO(document.querySelector('#act-list .foot-note'), easeOut(seg(L, 2.1, .5)) * op);
+    return;
+  }
+  if (i === 2) {
+    setO(document.querySelector('#act-decide .act-head'), easeOut(seg(L, .04, .45)) * op);
+    document.querySelectorAll('#act-decide .card').forEach((c, k) => {
+      const p = easeOut(seg(L, .34 + k * .52, .55));
+      setO(c, p * op);
+      setT(c, `translateY(${(1 - p) * 22}px)`);
+    });
+    return;
+  }
+  /* 收束 */
+  document.querySelectorAll('#act-close .stat').forEach((s, k) => {
+    const p = easeOut(seg(L, .12 + k * .28, .5));
+    setO(s, p * op);
+    setT(s, `translateY(${(1 - p) * 16}px)`);
+  });
+  setO(document.querySelector('#act-close .punch'), easeOut(seg(L, 1.5, .8)) * op);
+  const rc = document.querySelector('#act-close .recall');
+  if (rc) setO(rc, easeOut(seg(L, 2.4, .6)) * op);
+}
+
+function seek(ms) {
+  const t = clamp(ms / 1000, 0, DUR);
+  render(t);
+}
+
+function boot() {
+  const key = Q.get('f') && FILMS[Q.get('f')] ? Q.get('f') : 'pipeline';
+  FILM = Object.assign({ key }, FILMS[key]);
+  DUR = FILM.dur;
+  ACTS = buildActs(FILM);
+  $('chapter').innerHTML = `<b>${FILM.idx}</b><span>${FILM.name}</span>`;
+  window.__ready = true;
+  seek(0);
+}
+
+window.__seek = seek;
+window.__films = FILMS;
+boot();
+</script>
+</body>
+</html>

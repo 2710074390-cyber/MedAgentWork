@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>MedAgentWork — Short Film Soundtrack</title></head>
+<body style="background:#08090d;color:#9cc0ff;font-family:monospace;padding:24px">
+<div id="log">rendering…</div>
+<script>
+"use strict";
+/* 三支科普短片的氛围音轨：低频铺底 + 和弦垫 + 幕间铃 + 收束冲击
+   用法：audio.html?f=pipeline|gate|rag   （不依赖任何外部素材） */
+const F = new URLSearchParams(location.search).get('f') || 'pipeline';
+
+/* 与 index.html 的幕边界保持一致 */
+const FILMS = {
+  pipeline: { dur: 40, marks: [7, 17, 29], sub: 55.0, pad: [110, 261.63, 329.63, 392.0, 493.88] },
+  gate:     { dur: 42, marks: [7, 20, 33], sub: 49.0, pad: [87.31, 220.0, 261.63, 329.63, 392.0] },
+  rag:      { dur: 38, marks: [7, 20, 30], sub: 65.41, pad: [98.0, 246.94, 293.66, 329.63, 392.0] }
+};
+const C = FILMS[F] || FILMS.pipeline;
+const SR = 44100, DUR = C.dur;
+const ctx = new OfflineAudioContext(2, Math.floor(SR * DUR), SR);
+
+const master = ctx.createGain(); master.gain.value = 0.85;
+const comp = ctx.createDynamicsCompressor();
+comp.threshold.value = -20; comp.knee.value = 24; comp.ratio.value = 2.2;
+comp.attack.value = .02; comp.release.value = .35;
+master.connect(comp).connect(ctx.destination);
+
+/* 混响 */
+const rev = ctx.createConvolver();
+(function () {
+  const len = Math.floor(SR * 2.4);
+  const ir = ctx.createBuffer(2, len, SR);
+  for (let ch = 0; ch < 2; ch++) {
+    const d = ir.getChannelData(ch); let lp = 0;
+    for (let i = 0; i < len; i++) {
+      const t = i / SR;
+      lp = lp * .86 + (Math.random() * 2 - 1) * .14;
+      d[i] = lp * Math.exp(-t * 2.3) * (1 - t / 2.4);
+    }
+  }
+  rev.buffer = ir;
+})();
+const revGain = ctx.createGain(); revGain.gain.value = .5;
+rev.connect(revGain).connect(master);
+const dry = ctx.createGain(); dry.gain.value = 1; dry.connect(master);
+function send(node, amt) {
+  const g = ctx.createGain(); g.gain.value = amt;
+  node.connect(g); g.connect(rev); g.connect(dry);
+}
+
+/* 低频铺底 */
+function sub(freq, t0, t1, level) {
+  const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = freq;
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0, t0);
+  g.gain.linearRampToValueAtTime(level, t0 + 1.2);
+  g.gain.setValueAtTime(level, Math.max(t0 + 1.3, t1 - 1.4));
+  g.gain.linearRampToValueAtTime(0, t1);
+  o.connect(g); g.connect(master);
+  o.start(t0); o.stop(t1 + .1);
+}
+
+/* 和弦垫 */
+function pad(freqs, t0, t1, level) {
+  freqs.forEach((f, i) => {
+    const o = ctx.createOscillator();
+    o.type = i % 2 ? 'triangle' : 'sawtooth';
+    o.frequency.value = f;
+    const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900;
+    const g = ctx.createGain();
+    const st = t0 + i * .18;
+    g.gain.setValueAtTime(0, st);
+    g.gain.linearRampToValueAtTime(level, st + 2.4);
+    g.gain.setValueAtTime(level, Math.max(st + 2.5, t1 - 2.0));
+    g.gain.linearRampToValueAtTime(0, t1);
+    o.connect(lp); lp.connect(g); g.connect(master); send(g, .5);
+    o.start(st); o.stop(t1 + .1);
+  });
+}
+
+/* 转场铃 */
+function bell(freq, t, level, dec) {
+  const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = freq;
+  const g = ctx.createGain();
+  const D = dec || 2.2;
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(level, t + .02);
+  g.gain.exponentialRampToValueAtTime(.0001, t + D);
+  o.connect(g); g.connect(master); send(g, .8);
+  o.start(t); o.stop(t + D + .1);
+}
+
+/* 收束前的上扬 */
+function riser(t0, t1, level) {
+  const src = ctx.createBufferSource();
+  const len = Math.floor(SR * (t1 - t0));
+  const buf = ctx.createBuffer(1, len, SR);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (i / len);
+  src.buffer = buf;
+  const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 1.4;
+  bp.frequency.setValueAtTime(260, t0);
+  bp.frequency.exponentialRampToValueAtTime(2400, t1);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0, t0);
+  g.gain.linearRampToValueAtTime(level, t1 - .12);
+  g.gain.linearRampToValueAtTime(0, t1 + .05);
+  src.connect(bp); bp.connect(g); g.connect(master); send(g, .6);
+  src.start(t0); src.stop(t1 + .1);
+}
+
+/* 低频冲击（收束幕入场） */
+function impact(t) {
+  const o = ctx.createOscillator(); o.type = 'sine';
+  o.frequency.setValueAtTime(96, t);
+  o.frequency.exponentialRampToValueAtTime(38, t + .5);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(.5, t + .03);
+  g.gain.exponentialRampToValueAtTime(.0001, t + .9);
+  o.connect(g); g.connect(master);
+  o.start(t); o.stop(t + 1);
+  const n = ctx.createBufferSource();
+  const len = Math.floor(SR * .3), buf = ctx.createBuffer(1, len, SR);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2.5);
+  n.buffer = buf;
+  const ng = ctx.createGain(); ng.gain.value = .16;
+  n.connect(ng); ng.connect(master);
+  n.start(t); n.stop(t + .35);
+}
+
+/* ---- 编排 ---- */
+sub(C.sub, 0.2, DUR - 3.2, .13);
+sub(C.sub / 1.5, DUR * .45, DUR - 3.0, .08);
+pad(C.pad, 0.4, C.marks[1] + .6, .038);
+pad([C.sub * 2, 196.0, 246.94, 293.66], C.marks[1] - .6, C.marks[2] + .6, .040);
+pad(C.pad, C.marks[2] - .6, DUR - 2.4, .046);
+
+bell(880.0, C.marks[0], .06);                       /* 第一幕收 → 列表 */
+bell(1174.66, C.marks[1], .05);                     /* 列表 → 决策 */
+bell(880.0, C.marks[2], .055);                      /* 决策 → 收束 */
+riser(C.marks[2] + 2.6, C.marks[2] + 3.5, .10);
+impact(C.marks[2] + 3.6);
+bell(1318.5, C.marks[2] + 6.2, .05, 4);             /* 收束句落点 */
+
+master.gain.setValueAtTime(0, 0);
+master.gain.linearRampToValueAtTime(.85, 1.4);
+master.gain.setValueAtTime(.85, DUR - 3.0);
+master.gain.linearRampToValueAtTime(0, DUR);
+
+ctx.startRendering().then(buf => {
+  const bytes = encodeWav(buf);
+  window.__ready = true;
+  window.__wav = bytes;
+  document.getElementById('log').textContent =
+    `${F} · ${DUR}s · ${(bytes.length / 1024 / 1024).toFixed(2)} MB`;
+}).catch(e => { window.__err = String(e); });
+
+function encodeWav(buf) {
+  const ch = buf.numberOfChannels, n = buf.length, rate = buf.sampleRate;
+  const ab = new ArrayBuffer(44 + n * ch * 2), v = new DataView(ab);
+  const ws = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+  ws(0, 'RIFF'); v.setUint32(4, 36 + n * ch * 2, true); ws(8, 'WAVEfmt ');
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, ch, true);
+  v.setUint32(24, rate, true); v.setUint32(28, rate * ch * 2, true);
+  v.setUint16(32, ch * 2, true); v.setUint16(34, 16, true);
+  ws(36, 'data'); v.setUint32(40, n * ch * 2, true);
+  const chans = []; for (let c = 0; c < ch; c++) chans.push(buf.getChannelData(c));
+  let off = 44;
+  for (let i = 0; i < n; i++) for (let c = 0; c < ch; c++) {
+    const s = Math.max(-1, Math.min(1, chans[c][i]));
+    v.setInt16(off, s < 0 ? s * 0x8000 : s * 0x7fff, true); off += 2;
+  }
+  let bin = ''; const u8 = new Uint8Array(ab);
+  for (let i = 0; i < u8.length; i += 0x8000) bin += String.fromCharCode.apply(null, u8.subarray(i, i + 0x8000));
+  return btoa(bin);
+}
+</script>
+</body>
+</html>
