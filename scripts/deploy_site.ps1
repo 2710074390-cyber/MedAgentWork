@@ -26,7 +26,11 @@ param(
   [string]$Branch = "main",
   [string]$Commit = "HEAD",
   [switch]$Keep,
-  [switch]$Force
+  [switch]$Force,
+  # -AllowAhead：允许在「本地领先 origin/<Branch>」时部署（默认拒绝）。
+  # 见 HC-21：本地未推送的提交部署出去，会被他人/CI 从 origin 发起的部署顶掉
+  # （batch040 实证：部署后 3 分钟被更晚的生产部署覆盖，线上回到旧版）。
+  [switch]$AllowAhead
 )
 
 $ErrorActionPreference = "Stop"
@@ -88,6 +92,20 @@ if (-not $remoteSha -or -not $localSha) {
     Write-Host "    确实要拿本地版本覆盖线上时，加 -Force。" -ForegroundColor Red
     exit 2
   }
+  # ---------- HC-21：部署源必须与 origin 同源 ----------
+  # 本地领先（ahead>0）说明这些提交还没 push。此时本地部署虽然内容是新的，
+  # 但他人/CI 一旦从 origin 部署，就会把线上打回旧版（batch040 事故形态）。
+  # 故默认拒绝；先 `git push` 令 ahead=0，再部署。
+  if ($ahead -gt 0 -and -not $AllowAhead) {
+    Write-Host "[X] 拒绝部署：本地领先 origin/$Branch $ahead 个提交（尚未 push）。" -ForegroundColor Red
+    Write-Host "    未 push 的提交一旦部署，会被他人/CI 从 origin 的部署顶掉（HC-21，batch040 事故）。" -ForegroundColor Red
+    Write-Host "    正确做法：先 git push，令本地与 origin 同源后再部署。" -ForegroundColor Red
+    Write-Host "    确需仅本地部署（会被后续部署覆盖，风险自负）时，加 -AllowAhead。" -ForegroundColor Red
+    exit 2
+  }
+  if ($ahead -gt 0 -and $AllowAhead) {
+    Write-Host "[!] 已加 -AllowAhead：本次部署源领先 origin/$Branch $ahead 个提交，后续他人/CI 部署可能把线上顶回旧版。" -ForegroundColor Yellow
+  }
 }
 
 # ---------- 1) 清理可能残留的旧 worktree ----------
@@ -132,6 +150,20 @@ try {
     Pop-Location
   }
   Write-Host "`n[OK] 部署完成：https://med-review-site.pages.dev" -ForegroundColor Green
+
+  # ---------- 5) 部署后置校验（HC-21 最新性契约） ----------
+  # 校验：① 本地 index.html 文案与数据一致；② 线上指纹与本地一致；
+  #       ③ 线上「最新 Production 部署的 Source」== 本次提交（防被更晚的部署顶替）。
+  Write-Step "部署后置校验（HC-21 站点最新性）..."
+  $fresh = Join-Path $repo "scripts\check_site_freshness.py"
+  if (Test-Path $fresh) {
+    & python $fresh --expect-commit $localSha
+    if ($LASTEXITCODE -ne 0) {
+      throw "线上最新性校验未通过：可能已被更晚的部署顶替（HC-21）。请核对部署清单并重部署。"
+    }
+  } else {
+    Write-Host "[!] 未找到 scripts/check_site_freshness.py，跳过最新性校验（HC-21 未生效）" -ForegroundColor Yellow
+  }
 }
 catch {
   Write-Host "`n[X] 部署失败：$($_.Exception.Message)" -ForegroundColor Red

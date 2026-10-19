@@ -46,3 +46,34 @@ MedAgentWork 操作流程（DSH 版 · 2026-08-13 重构）
 save.py / ingest.py 仍可用：产物存文件后运行
   python ingest.py <文件> --batch {batchID} --stage agent2
 （不再依赖剪贴板；save.py 的剪贴板模式保留兼容）。
+
+──────────────────────────────────────────
+四、站点发布（Cloudflare Pages · HC-21 最新性契约）
+──────────────────────────────────────────
+
+目标：保证「线上内容 == 最新已推送版本」，且页面文案与数据不出现半更新。
+
+发布前置（缺一即拒绝）
+  1) git fetch origin main
+     → 要求 behind=0 且 ahead=0（本地与 origin 完全同源）
+     → ahead>0（有未推送提交）先 git push；否则他人/CI 从 origin 的部署会把线上顶回旧版
+  2) 页面一致性门禁（离线）
+     python scripts/check_site_freshness.py --offline
+     → index.html 的硬编码「N 科 / N 题」文案必须与 REVIEWS_S1 / BANKS_S1 数据数组一致
+     → 新增/下线条目时，同一提交内须同步：数据数组 + 分区大标题 + 分区副标题 + 页面统计数字
+  3) 站点链接门禁
+     node scripts/check_site_links.mjs index.html
+  4) 产物形态门禁
+     python scripts/verify_produce_rules.py          # FAIL==0
+
+发布
+  powershell scripts\deploy_site.ps1                # 自动执行上述前置闸 + 部署 + 后置校验
+  （仅本地手动部署：powershell scripts\deploy_site.ps1 -AllowAhead   # 显式逃生阀，会打警告）
+
+发布后置（脚本自动执行；也可手动复跑）
+  python scripts/check_site_freshness.py --expect-commit <本次提交>
+     L1 本地文案/数据一致 · L2 线上指纹（数组条目数/统计数字/pdf 路径）与本地一致
+     L3 线上最新 Production/main 部署的 Source == 本次提交（防被更晚的部署顶替）
+  FAIL → 视为部署失败或被顶替 → 告警并重部署；禁止用旧内容覆盖线上更新的版本（先合并再部署）
+
+并发发布：同一窗口只允许一个发布者；发现线上已有更新部署，先 merge 再发布。

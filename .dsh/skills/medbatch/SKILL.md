@@ -51,12 +51,51 @@ MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_
 终审      python gate_check.py --batch {batchID} --stage final
 ```
 
+### 门禁输入字段形状契约（2026-10-19 加固 · 防门禁误判）
+
+> batch040 实证：三处「下游产物字段形状 ≠ 门禁解析形状」导致门禁假 BLOCKED（内容本身合格），须由编排者在跑门禁前核对。
+
+| 产物字段 | 门禁解析形状 | 常见错误形状 | 后果 |
+|---|---|---|---|
+| `A3_质检报告.json` → `bloom_distribution.actual` | 扁平百分数 或 `{"actual":{...}}` / `{"actual_pct":{...}}` | `{"记忆":{"count":n,"ratio":r}}` 嵌套计数 | GATE-A3（BLOOM / BLOOM-RECOMPUTE）误判自述 0.0% → BLOCKED |
+| `AGENT4_追溯日志.json` → `source_file_synced` | **顶层** `source_file_synced`/`source_files_synced`（或 `patches[]` 全员 true） | 写在 `execution_metadata` 内部 | GATE-A4-HC13 误判 false → BLOCKED |
+| 主复习资料 MD → `📌 重点原文（第X条）` | `--keypoints` **文件第四节连续编号**，落点行逐字照录该条原文 | 沿用来源文档印刷标号（源文档常跳号/重号） | 落点整体错位 → `partial_facts` 失败 |
+
+**编排者动作**：GATE-A3/A4 前先按上表核对形状；不符时**先判明是「形状不符」还是「内容不合格」**——形状不符可归一化（须留痕），内容不合格必须回退重做。
+
+### 站点发布门禁（HC-21 · 2026-10-19 新增 · 签收后执行）
+
+签收后把交付物上线时必须按 HC-21（SOUL.md）执行，**禁止绕过**：
+
+```text
+发布前置  git fetch origin main                     # 要求 behind=0 且 ahead=0（ahead>0 先 git push）
+页面一致性  python scripts/check_site_freshness.py --offline    # 硬编码「N 科/N 题」== 数据数组
+链接门禁    node scripts/check_site_links.mjs index.html
+发布        powershell scripts\deploy_site.ps1      # 自动前置闸 + 部署 + 后置校验
+```
+- 部署脚本**默认拒绝**「本地领先 origin（未 push）」——未推送的提交部署出去会被他人/CI 从 origin 的部署顶掉（batch040 实证：部署后 3 分钟被顶掉，线上回到旧版）。确需本地部署用 `-AllowAhead`（会打警告）。
+- 部署后置校验 **不可跳过**：`python scripts/check_site_freshness.py --expect-commit <提交>` → L1 本地文案/数据一致 · L2 线上指纹与本地一致 · L3 线上最新 Production 部署的 Source == 本次提交。FAIL → 告警并重部署；**禁止用旧内容覆盖线上更新的版本**（先 merge 再发）。
+- 新增/下线任一条目，**同一提交内**必须同步四处：数据数组 + 分区大标题「N 科」+ 分区副标题 + 页面统计数字（batch040 教训：漏改分区大标题 → 线上「卡片有了、标题还写 8 科」）。
+
+
 - 已签收（APPROVED）批次重跑门禁只作参考，不写 HALT
 - `python gate_check.py --batch {batchID} --clear-halt` 清除该批次 HALT（修复后使用）
 - validate 报告输出在 `reports/validate/`，gate 报告在 `reports/gate/`
 - **MD 导出是最终交付格式**：GATE-A4 通过后必须运行 export-md 生成 `ALL_questions_FIXED.md`（JSON 为机器可读源，MD 为用户可读交付），与 JSON 同目录交付
 - **考研真题配额（HC-18）**：批次启动前运行 `kaoyan_picker.py pick`（检索该章节真题候选，注入 Agent 2 调用指令）；终审前运行 `kaoyan_picker.py check`（占比 ≥15% 通过；<15% 时核对候选，确无真题覆盖则标注"无真题覆盖"后放行）
 - **教师重点覆盖（HC-20/D0 · 2026-10-18）**：有教师重点/复习大纲输入的批次，Agent 5 交付前必须产出 `中间产物/{batchID}/{科目}_教师重点覆盖矩阵.md`（未覆盖/部分覆盖行数=0）；编排者在门禁A5 与终审前跑 `check_keypoint_coverage.py`，数值/时间窗/分级界值缺失或重点条目缺 `📌 重点原文（第X条）` 锚点 → exit 1 → 回退 Agent 5 补写（batch039 突发性聋时间窗丢失教训）
+
+### 押题卷交付（2026-10-19 · HC-18 修订）
+
+> 押题卷**交付形态由 HTML 改为 MD**，供「大四上刷题」（MedKit 网页版）等刷题软件导入。
+
+```text
+组卷导出  python scripts/paper_builder.py --subject {科目} --count {N} [--md-out …]   # JSON（机器源）+ 押题卷_{科目}_{N}题.md（交付）
+形态门禁  python scripts/verify_produce_rules.py    # 押题卷 MD：题型标签仅 单选/多选/判断 + `**答案：X**` 行；FAIL==0 才放行
+```
+- **题型归一为三标签**：`单选题` / `多选题` / `判断题`（A1/A2/A3/A4/B1 → 单选题；X → 多选题；判断 → 判断题；判断题固定两选项 `正确`/`错误`、答案 A/B）
+- **HTML 交付已下线**（`quiz_template.html` 仅历史遗留，不再产出）
+- 押题卷不参与批次端到端生命周期（可对已签收批次按需组卷）；MD 进 `大三下/押题卷/`（或 `大四上/押题卷/`）前必须过 `verify_produce_rules.py`；PDF 一律人工导出上传
 
 ### 事实校验（P1-1 · 2026-08-13，GATE-A2 前执行）
 

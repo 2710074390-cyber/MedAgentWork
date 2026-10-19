@@ -99,13 +99,13 @@
 > 读：`ws.load_state()`（含旧数据迁移）；写：`ws.save_state()`（tmp+os.replace 原子写）。
 > 新批次：`ws.new_batch()` / `ws.ensure_batch()`；HALT：一律 `ws.set_halt/clear_halt/check_halt`（按批次作用域）。
 
-## HC-18 产物形态契约（2026-08-22 固化 · 详见 docs/产物格式规范.md）
+## HC-18 产物形态契约（2026-08-22 固化 · 2026-10-19 押题卷改 MD 修订 · 详见 docs/产物格式规范.md）
 
-> 线上站（med-review-site.pages.dev）只接受以下三种产物形态，**任何 Agent/脚本不得偏离**：
+> 线上站（med-review-site.pages.dev）与「大四上刷题」（MedKit 网页版）只接受以下三种产物形态，**任何 Agent/脚本不得偏离**：
 
 | 产物 | 交付格式 | PDF |
 |------|---------|-----|
-| 押题卷 | **仅 HTML**（quiz_template.html 统一模板 + QUESTIONS 数组） | **一律人工上传**，管线/脚本禁止生成 |
+| 押题卷 | **仅 MD**（`scripts/paper_builder.py` 导出 `押题卷_{科目}_{N}题.md`；题型归一为 **单选题/多选题/判断题**，供「大四上刷题」导入）。**HTML 交付已下线**（`quiz_template.html` 仅历史遗留，不再产出） | **一律人工上传**，管线/脚本禁止生成 |
 | 题库 | **MD + HTML**（MD：ALL_questions_FIXED.md；HTML：render_qbank_html.py） | **一律人工上传**（用户手动提供） |
 | 复习资料 | **MD + HTML**（MD：MedReview；HTML：render_review.py） | **一律人工上传** |
 
@@ -113,7 +113,7 @@
 - 复习资料 MD 仅使用站端渲染器子集：h1-h6/表格/粗斜体/代码块/**Obsidian Callout（> [!TYPE]）**/**`<details open>`**/列表/hr；**禁 Mermaid**（用 ASCII 图）、禁其它 HTML 标签、禁 YAML front matter。
 - **复习资料导出保真（E4 · 2026-10-15 新增）**：强调一律写 `<b>`（E1），**打印 CSS 必须**对其显式 `font-weight:700 !important` 且字面落在**有真粗体**的字体（雅黑/思源黑），**禁止**正文只落在无粗体字面的宋体系（SimSun/宋体）——否则 Obsidian/Chromium 导出 PDF 时**内联加粗整体消失**；打印样式须全局 `print-color-adjust: exact` 且字体栈带 emoji 字体，保 🔴🟡🟢 **彩色**（否则导出/阅读器中丢色）。导出后必须抽检：1 处 `<b>` 关键术语为真粗体 + 🔴🟡🟢 为彩色（用 Chromium 内核阅读器核验）。实现：`scripts/obsidian-snippets/medagentwork-print.css` 的 `@media print` §7.0；回归防护：`tests/test_obsidian_snippet.py`。
 - 交付前清理流程残留（`📦 复习资料批次 X/Y`、`✅ 批次完成`、`⏭️ 下一批`、`V1-V13 自检报告`）—— 用 `scripts/clean_produce_markup.py`。
-- 押题卷副标题 `PAPER_META.sub` 只允许成品文案（`按考频组卷 · N 题 · 日期`）；**禁止** "统一模板"、"TEST"、内部版本号。
+- 押题卷 MD 题目标题只允许 `### N. [单选题｜多选题｜判断题｜Bloom] qid` 形态，题型标签仅取 **单选题/多选题/判断题** 三值；标题与元信息行**禁止**出现 "统一模板"、"TEST"、内部版本号。
 - 门禁：产物进入 `大三下/` 前必须 `python scripts/verify_produce_rules.py`（FAIL==0）。
 
 ## HC-20 教师重点原文锚定与逐条覆盖（2026-10-18 新增 · Agent 5 主责 · 不可违反）
@@ -126,9 +126,24 @@
   1. **逐条覆盖**：交付前产出 `中间产物/{batchID}/{科目}_教师重点覆盖矩阵.md`（过程产物，**严禁写入交付 MD**），「未覆盖 / 部分覆盖」行数必须为 0；
   2. **原文锚定**：重点条目的数值、时间窗、分级/分期界值、剂量、百分比、比例、专业术语、并列（顿号/分号）与禁止（严禁/不宜/不应/不能）结构，以**原文字面**出现在对应考点内，强制落点行 `📌 重点原文（第X条）：{照录原文关键句}`；
   3. **来源标记**：来自教师重点的考点加锚点 `（教师重点第X条）`。
+- **条号基准（2026-10-19 加固）**：`第X条` 一律取 **`--keypoints` 文件第四节「统一锚定清单」的连续编号**（唯一坐标）。来源文档自身标号常有**跳号/重号**（batch040 实证：源①缺 13、37，78 与 86 各重复一次），**禁止直接沿用印刷标号**——否则落点整体错位（batch040 返工重编 72 行）；锚定清单每行尾部以 `〔源X原标号N〕` 供倒查。落点行正文须**逐字照录该条原文**（全部数值/时间窗/界值/百分比/并列与禁止结构须完整落在该行内）。
 - **冲突裁决**：**原文锚定 > 原创性**。行为约束"不逐字复制任何单一来源"仅约束教材/RAG 正文的叙述性文字，**不适用于教师重点条目**——教师重点是范围与强调的唯一权威载体。
 - **机械化门禁（HC-12 扩展）**：`python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD> [--allowlist <文件>]` → 数值/时间窗类硬事实缺失 → **FAIL，退出码 1 → 回退 Agent 5 补写，不得放行**；无教师重点输入的批次 → 显式 `SKIPPED`，**不视为通过**。终审前由 Agent 1 执行。
 - **规则文本**：完整 D0 段、V17 自检见 `Prompt版本/Agent5_MedReview_Prompt.md`；DSH 侧执行细则见 `.dsh/skills/medreview/SKILL.md` 与 `.dsh/skills/medbatch/SKILL.md` §3。
+
+## HC-21 站点发布最新性契约（2026-10-19 新增 · Agent 1 主责 · 不可违反）
+
+> 驱动事故（batch040 实证）：本地把新题库/复习资料部署到生产后 **3 分钟**，被另一次生产部署（来源提交 `4531093`，本地没有）顶掉 → 线上 index.html 回到旧版（5,791 题 / 8 科 / 无「教师重点版」条目），用户打开网站看不到新资料。另叠加一处隐性半更新：index.html 里**硬编码**的「8 科」文案没跟着数据数组改（卡片有了、标题还写 8 科）。
+
+- **单一事实源**：站点内容只认 `origin/main`。部署前必须 `git fetch`，且 **behind=0 且 ahead=0**（本地与 origin 完全同源）。`ahead>0`（未 push）→ 默认**拒绝部署**，先 `git push`；`-AllowAhead` 是显式逃生阀（会打警告：后续他人/CI 部署可能把线上顶回旧版）。
+- **部署后置校验（机械化，不可跳过）**：`python scripts/check_site_freshness.py --expect-commit <本次提交>` 必须 PASS：
+  - **L1 本地**：index.html 里「N 科 / N 题」**硬编码文案**与 `REVIEWS_S1` / `BANKS_S1` 数据数组长度一致；每条 pdf 路径在仓库内存在；
+  - **L2 线上**：线上 index.html 的数组条目数、统计数字集合、每条 pdf 路径 与本地一致（防「卡片没上线」）；
+  - **L3 最新部署**：线上「最新 Production/main 部署的 Source」== 本次提交（防被更晚的部署顶替）。
+  - FAIL → 视为部署失败/被顶替 → 立即告警并重部署；**禁止用旧内容覆盖**线上更新的版本，应先合并再部署。
+- **文案与数据同源（同一提交内）**：新增/下线任一条目，必须同时改：① 数据数组；② 分区大标题「N 科」；③ 分区副标题（教学计划版 N 科 / 教师重点版 N 科）；④ 页面统计数字（题库注册量、学科数）。缺一即半更新。
+- **并发发布**：同一发布窗口只允许一个发布者；线上出现更新的部署时先合并。
+- **实现**：`scripts/check_site_freshness.py`（门禁）；`scripts/deploy_site.ps1`（前置 ahead/behind 闸 + 部署后自动调用门禁）。CI 侧同样以 `origin/main` 为唯一源。
 
 ## 插图生成分工（2026-09-07 固化 · 详见 .dsh/skills/medillustration/）
 
