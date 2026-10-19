@@ -1,0 +1,5 @@
+# 开发/构建依赖（站点本身零依赖，以下仅本地工具需要）
+
+# 主页介绍片渲染：tools/intro-film/render.py
+playwright>=1.42.0
+imageio-ffmpeg>=0.6.0

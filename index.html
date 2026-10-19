@@ -806,6 +806,142 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
   .card, .deck-tile { break-inside:avoid; border-color:#ddd; }
   .reveal { opacity:1 !important; transform:none !important; }
 }
+
+/* ---------- 介绍片卡片 ---------- */
+.film-card{position:relative;border-radius:16px;overflow:hidden;background:#080b11;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 40px 90px -34px rgba(0,0,0,.9),0 0 70px rgba(26,56,112,.28)}
+.film-open{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;
+  background:none;cursor:pointer;overflow:hidden;text-align:left;isolation:isolate}
+.film-open picture{display:block;position:absolute;inset:0}
+.film-open img{width:100%;height:100%;object-fit:cover;transform:scale(1.015);
+  transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.film-open:hover img{transform:scale(1.045)}
+.film-open::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(4,6,10,.42) 0%,rgba(4,6,10,0) 34%,rgba(4,6,10,.52) 100%)}
+.film-open:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+.film-tag{position:absolute;left:12px;top:12px;z-index:3;display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.86);
+  background:rgba(6,10,17,.55);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:4px 9px;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.film-tag i{width:5px;height:5px;border-radius:50%;background:var(--brand);box-shadow:0 0 8px var(--brand)}
+.film-tag b{font-weight:500;color:rgba(255,255,255,.55);letter-spacing:.1em}
+.film-dur{position:absolute;right:12px;top:12px;z-index:3;font-family:var(--f-mono);font-size:10px;
+  letter-spacing:.08em;color:rgba(255,255,255,.74);background:rgba(6,10,17,.55);
+  border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:4px 8px}
+.film-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;
+  width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.94);color:#080d16;
+  box-shadow:0 10px 34px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.4) inset;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1),background .25s}
+.film-play svg{width:20px;height:20px;margin-left:2px;fill:currentColor}
+.film-play::before{content:"";position:absolute;inset:-9px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.38);animation:filmPulse 3s cubic-bezier(.2,.7,.2,1) infinite}
+@keyframes filmPulse{0%{transform:scale(.9);opacity:.9}70%{transform:scale(1.4);opacity:0}100%{opacity:0}}
+.film-open:hover .film-play{transform:translate(-50%,-50%) scale(1.07);background:#fff}
+.film-progress{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.16);z-index:4}
+.film-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),#cfe0ff);
+  box-shadow:0 0 12px rgba(103,153,254,.7);transition:width .25s linear}
+.film-meta{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;padding:0 2px}
+.film-meta b{display:block;font-size:14px;font-weight:500;color:var(--text);letter-spacing:.01em}
+.film-meta span{display:block;margin-top:4px;font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.14em;color:var(--text-3)}
+.film-meta .film-len{font-size:11px;color:var(--text-3);letter-spacing:.1em;flex:none}
+.film-card[data-watched="1"] .film-dur{color:var(--brand-2);border-color:rgba(103,153,254,.35)}
+.film-card[data-watched="1"] .film-play{background:rgba(103,153,254,.95);color:#06101f}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- 剧场播放层 ---------- */
+.ft{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:none;opacity:0;visibility:hidden;transition:opacity .28s ease,visibility 0s linear .28s}
+.ft.open{opacity:1;visibility:visible;transition:opacity .28s ease,visibility 0s}
+.ft[hidden]{display:none !important}
+.ft-scrim{position:absolute;inset:0;background:rgba(3,5,9,.9);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.ft-shell{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;outline:none;
+  width:min(1360px,94vw,150vh);transform:translateY(10px) scale(.985);
+  transition:transform .32s cubic-bezier(.2,.7,.2,1)}
+.ft.open .ft-shell{transform:none}
+.ft[data-fmt="tall"] .ft-shell{width:min(92vw,62vh);margin:0 auto}
+.ft-close{position:absolute;right:12px;top:12px;z-index:6;width:40px;height:40px;border-radius:50%;
+  display:grid;place-items:center;color:rgba(255,255,255,.86);background:rgba(6,10,16,.62);
+  border:1px solid rgba(255,255,255,.18);font-size:17px;line-height:1;cursor:pointer;transition:all .2s;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.ft-close:hover{background:rgba(255,255,255,.16);color:#fff}
+.ft-frame{position:relative;border-radius:14px;overflow:hidden;background:#000;
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 60px 160px -30px rgba(0,0,0,.95),0 0 0 1px rgba(103,153,254,.06) inset}
+.ft[data-fmt="wide"] .ft-frame{aspect-ratio:16/9}
+.ft[data-fmt="tall"] .ft-frame{aspect-ratio:4/5}
+.ft-frame video{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.ft-poster{position:absolute;inset:0;z-index:0;background:center/cover no-repeat;transition:opacity .35s}
+.ft[data-playing="1"] .ft-poster{opacity:0}
+.ft-loading{position:absolute;inset:0;z-index:2;display:grid;place-items:center;background:rgba(4,6,10,.35);
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.ft-loading.on{opacity:1}
+.ft-loading span{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.25);
+  border-top-color:#fff;animation:spin .8s linear infinite}
+.ft-bar{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:12px;
+  background:rgba(15,19,28,.82);border:1px solid rgba(255,255,255,.1);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.ft-btn{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;padding:0;
+  background:none;border:0;font:inherit;
+  color:rgba(255,255,255,.85);cursor:pointer;flex:none}
+.ft-btn:hover{background:rgba(255,255,255,.1);color:#fff}
+.ft-btn svg{width:16px;height:16px;fill:currentColor}
+.ft-time{font-family:var(--f-mono);font-size:11px;color:var(--text-2);min-width:34px;text-align:center;flex:none}
+.ft-seek{flex:1;height:22px;-webkit-appearance:none;appearance:none;background:none;cursor:pointer;min-width:40px}
+.ft-seek::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:rgba(255,255,255,.18)}
+.ft-seek::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;
+  background:#fff;margin-top:-4.5px;box-shadow:0 0 0 4px rgba(103,153,254,.22)}
+.ft-seek::-moz-range-track{height:3px;border-radius:2px;background:rgba(255,255,255,.18)}
+.ft-seek::-moz-range-thumb{width:12px;height:12px;border:none;border-radius:50%;background:#fff}
+.ft-endcard{position:absolute;inset:0;z-index:3;display:grid;place-items:center;text-align:center;
+  background:radial-gradient(ellipse at center,rgba(7,11,18,.90),rgba(3,5,9,.975));
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s,visibility 0s linear .35s}
+.ft-ended .ft-endcard{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .35s,visibility 0s}
+.ft-end-inner{padding:24px}
+.ft-eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.24em;color:var(--brand-2)}
+.ft-end-inner b{display:block;font-size:clamp(27px,3.6vw,42px);font-weight:600;margin:16px 0 10px;letter-spacing:-.01em}
+.ft-end-inner p{font-size:14.5px;color:var(--text-2);margin-bottom:24px}
+.ft-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.ft-actions .btn{font-size:14.5px;padding:12px 22px;min-height:46px}
+@media (max-width:1500px){
+  .nav-in { gap:12px; }
+  .nav-links a { padding:7px 9px; font-size:12.6px; }
+  .nav-term { padding:5px 9px; font-size:12px; }
+  .nav-right { gap:8px; }
+  .nav-right .btn-sec[title] { display:none; }
+  .nav-right .btn-sm { padding:8px 11px; font-size:12.5px; }
+}
+@media (max-width:1120px){
+  .nav-links { display:none; }
+  .nav-burger { display:flex; width:44px; height:44px; }
+}
+@media (max-width:600px){
+  .film-open{aspect-ratio:4/5}
+  .film-play{width:64px;height:64px}
+  .film-meta b{font-size:13.5px}
+}
+@media (max-width:760px){
+  .ft{padding:10px}
+  .ft-close{top:10px;right:10px;width:44px;height:44px}
+  .ft[data-fmt="tall"] .ft-shell{width:100%;max-width:96vw}
+  .ft-bar{gap:6px;padding:6px 8px}
+  .ft-btn{width:44px;height:44px}
+  .ft-time{font-size:10.5px;min-width:30px}
+  .ft-close{width:44px;height:44px;top:10px;right:10px}
+  .ft-end-inner{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .film-play::before{display:none}
+  .film-open img,.ft-shell,.ft{transition:none}
+}
+
+/* 影片在终端面板内固定 16:9；剧场再按 600px 断点切 4:5 视频 */
+.term-body .film-open{aspect-ratio:16/9}
+@media (max-width:600px){.term-body .film-open{aspect-ratio:16/9}}
 </style>
 </head>
 <body>
@@ -939,17 +1075,39 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
       </div>
       <div class="hero-visual">
         <div class="term-tabs">
-          <button class="term-tab active" data-t="guide">三步上手</button>
+          <button class="term-tab active" data-t="film">介绍片</button>
+          <button class="term-tab" data-t="guide">三步上手</button>
           <button class="term-tab" data-t="run">命令演示</button>
         </div>
         <div class="terminal">
           <div class="term-bar">
             <div class="term-dots"><i></i><i></i><i></i></div>
-            <span class="term-title">使用指南 · 学生向三步教程</span>
+            <span class="term-title">MEDAGENTWORK · INTRO FILM · 58s</span>
             <button class="term-copy" data-act="copy" aria-label="复制命令" style="visibility:hidden"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
           </div>
           <div class="term-body">
-<div class="guide-panel term-pane" id="term-guide">
+<div class="film-pane term-pane" id="term-film">
+    <div class="film-card" id="film-card">
+              <button class="film-open" id="film-open" type="button" aria-label="播放 MedAgentWork 介绍片（58 秒）" aria-haspopup="dialog">
+                <picture>
+                  <source srcset="assets/intro/poster-16x9.webp" type="image/webp">
+                  <img src="assets/intro/poster-16x9.jpg" alt="MedAgentWork 介绍片封面：粒子构成的 MW 标识与「备考题严选 复习可溯源」" width="1920" height="1080" decoding="async">
+                </picture>
+                <span class="film-tag"><i></i>介绍片 <b>INTRO FILM</b></span>
+                <span class="film-dur" id="film-dur">00:58</span>
+                <span class="film-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg></span>
+                <span class="film-progress" aria-hidden="true"><i id="film-progress"></i></span>
+              </button>
+            </div>
+            <div class="film-meta">
+              <div>
+                <b>58 秒，看懂 MedAgentWork</b>
+                <span id="film-note">MEDAGENTWORK · INTRO 2026</span>
+              </div>
+              <span class="film-len" id="film-len">00:58</span>
+            </div>
+</div>
+<div class="guide-panel term-pane" id="term-guide" style="display:none">
   <div class="g-guide-title">⚡ 三步上手 · 全部资料即开即用</div>
   <div class="g-step">
     <span class="g-no">01</span>
@@ -1664,6 +1822,45 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
 </div>
 <div id="toast" role="status" aria-live="polite"></div>
 
+
+<!-- ============ 介绍片 · 剧场播放层 ============ -->
+<div class="ft" id="ft" data-fmt="wide" hidden aria-hidden="true">
+  <div class="ft-scrim" data-close></div>
+  <div class="ft-shell" role="dialog" aria-modal="true" aria-label="MedAgentWork 介绍片" tabindex="-1">
+    <button class="ft-close" id="ft-close" type="button" aria-label="关闭播放器">✕</button>
+    <div class="ft-frame" id="ft-frame">
+      <video id="ft-video" playsinline preload="none" controlslist="nodownload" disablepictureinpicture></video>
+      <div class="ft-poster" id="ft-poster" aria-hidden="true"></div>
+      <div class="ft-loading" id="ft-loading" aria-hidden="true"><span></span></div>
+      <div class="ft-endcard" id="ft-endcard">
+        <div class="ft-end-inner">
+          <span class="ft-eyebrow">INTRO FILM · 完</span>
+          <b>现在，开始刷题</b>
+          <p>5,791 道题 · 23 个学科 · 判错自动回流</p>
+          <div class="ft-actions">
+            <a class="btn btn-pri btn-sm" href="/drill">去网页刷题</a>
+            <button class="btn btn-sec btn-sm" id="ft-replay" type="button">再看一遍</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bar">
+      <button class="ft-btn" id="ft-play" type="button" aria-label="暂停">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <span class="ft-time" id="ft-cur">0:00</span>
+      <input class="ft-seek" id="ft-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度">
+      <span class="ft-time" id="ft-total">0:58</span>
+      <button class="ft-btn" id="ft-mute" type="button" aria-label="静音">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a4.5 4.5 0 00-2-3.7v7.4a4.5 4.5 0 002-3.7z"/></svg>
+      </button>
+      <button class="ft-btn" id="ft-full" type="button" aria-label="全屏">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5v2H6v3zm11-5h5v5h-2V6h-3zM4 15h2v3h3v2H4zm14 3v-3h2v5h-5v-2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
 <script>
 /* ============================================================
    MedAgentWork v2 — 数据层与交互逻辑
@@ -2288,7 +2485,7 @@ safe('term-tab',()=>{
     const pane=document.getElementById('term-'+t);
     if(pane)pane.style.display='block';
     const tt=term.querySelector('.term-title');
-    if(tt)tt.textContent=(t==='run')?'medagentwork — zsh':'使用指南 · 学生向三步教程';
+    if(tt)tt.textContent=(t==='run')?'medagentwork — zsh':(t==='film')?'MEDAGENTWORK · INTRO FILM · 58s':'使用指南 · 学生向三步教程';
     const cp=term.querySelector('.term-copy');
     if(cp)cp.style.visibility=(t==='run')?'visible':'hidden';
   }));
@@ -2712,6 +2909,216 @@ safe('intro-film',()=>{
 if('serviceWorker' in navigator && location.protocol==='https:'){
   window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{});});
 }
+
+/* ================= 介绍片：封面卡 + 剧场播放器 =================
+   视频不进入首屏加载：<video> 无 src、preload=none，首次点击才注入地址。
+   桌面 16:9 / 移动 4:5 两版，切画幅只在「未开始播放」时生效。 */
+(function(){
+  var card = document.getElementById('film-card');
+  var openBtn = document.getElementById('film-open');
+  var ft = document.getElementById('ft');
+  if(!card || !openBtn || !ft) return;
+  var video = document.getElementById('ft-video');
+  var frame = document.getElementById('ft-frame');
+  var posterEl = document.getElementById('ft-poster');
+  var loading = document.getElementById('ft-loading');
+  var playBtn = document.getElementById('ft-play');
+  var muteBtn = document.getElementById('ft-mute');
+  var fullBtn = document.getElementById('ft-full');
+  var seek = document.getElementById('ft-seek');
+  var curEl = document.getElementById('ft-cur');
+  var totalEl = document.getElementById('ft-total');
+  var noteEl = document.getElementById('film-note');
+  var durEl = document.getElementById('film-dur');
+  var lenEl = document.getElementById('film-len');
+  var progEl = document.getElementById('film-progress');
+  var closeBtn = document.getElementById('ft-close');
+  var replayBtn = document.getElementById('ft-replay');
+
+  var shell = ft.querySelector('.ft-shell');
+  var mq = window.matchMedia('(max-width: 600px)');
+  var isOpen = false, loadedFmt = '', lastFocus = null, hideTimer = null, bodyOverflow = '';
+
+  var ICON_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  var ICON_PAUSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
+  var ICON_VOL = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a4.5 4.5 0 00-2-3.7v7.4a4.5 4.5 0 002-3.7z"/></svg>';
+  var ICON_MUTE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.2 9.4l1.4-1.4 2.1 2.1 2.1-2.1 1.4 1.4-2.1 2.1 2.1 2.1-1.4 1.4-2.1-2.1-2.1 2.1-1.4-1.4 2.1-2.1z"/></svg>';
+
+  function fmtTime(sec){
+    sec = Math.max(0, Math.floor(sec || 0));
+    return Math.floor(sec / 60) + ':' + (sec % 60 < 10 ? '0' : '') + (sec % 60);
+  }
+  function fmtFor(){ return mq.matches ? 'tall' : 'wide'; }
+  function srcFor(f){ return 'assets/intro/medagentwork-intro-' + (f === 'tall' ? '4x5' : '16x9') + '.mp4'; }
+  function posterFor(f){ return 'assets/intro/poster-' + (f === 'tall' ? '4x5' : '16x9') + '.jpg'; }
+
+  function ensureSource(){
+    var f = fmtFor();
+    if(loadedFmt === f) return;
+    loadedFmt = f;
+    ft.setAttribute('data-fmt', f);
+    posterEl.style.backgroundImage = 'url("' + posterFor(f) + '")';
+    video.setAttribute('poster', posterFor(f));
+    video.src = srcFor(f);
+    video.load();
+  }
+  function setPlayerUI(playing){
+    playBtn.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+    playBtn.setAttribute('aria-label', playing ? '暂停' : '播放');
+    ft.setAttribute('data-playing', playing ? '1' : '0');
+  }
+  function setMuteUI(){
+    muteBtn.innerHTML = video.muted ? ICON_MUTE : ICON_VOL;
+    muteBtn.setAttribute('aria-label', video.muted ? '取消静音' : '静音');
+  }
+  function resetEnd(){
+    ft.classList.remove('ft-ended');
+    card.setAttribute('data-watched','0');
+    noteEl.textContent = 'MEDAGENTWORK · INTRO 2026';
+  }
+  function open(){
+    if(isOpen) return;
+    lastFocus = document.activeElement;
+    ensureSource();
+    clearTimeout(hideTimer);
+    ft.hidden = false;
+    ft.setAttribute('aria-hidden','false');
+    openBtn.setAttribute('aria-expanded','true');
+    bodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(function(){ ft.classList.add('open'); });
+    isOpen = true;
+    if(video.ended){
+      resetEnd();
+      video.currentTime = 0;
+    }
+    var p = video.play();
+    if(p && p.catch){ p.catch(function(){ setPlayerUI(false); }); }
+    setTimeout(function(){ try{ shell.focus({preventScroll:true}); }catch(e){} }, 80);
+  }
+  function close(){
+    if(!isOpen) return;
+    isOpen = false;
+    video.pause();
+    ft.classList.remove('open');
+    ft.setAttribute('aria-hidden','true');
+    openBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow = bodyOverflow;
+    hideTimer = setTimeout(function(){ ft.hidden = true; }, 320);
+    if(document.fullscreenElement){ try{ document.exitFullscreen(); }catch(e){} }
+    if(lastFocus && lastFocus.focus){ try{ lastFocus.focus(); }catch(e){} }
+  }
+  function toggle(){
+    if(video.paused){
+      if(ft.classList.contains('ft-ended')){ replay(); return; }
+      var p = video.play();
+      if(p && p.catch){ p.catch(function(){}); }
+    }else{
+      video.pause();
+    }
+  }
+  function replay(){
+    resetEnd();
+    video.currentTime = 0;
+    var p = video.play();
+    if(p && p.catch){ p.catch(function(){}); }
+  }
+  function toggleMute(){
+    video.muted = !video.muted;
+    setMuteUI();
+  }
+  function toggleFull(){
+    if(document.fullscreenElement){ try{ document.exitFullscreen(); }catch(e){} return; }
+    if(video.webkitEnterFullscreen && mq.matches){ try{ video.webkitEnterFullscreen(); return; }catch(e){} }
+    var el = ft;
+    if(el.requestFullscreen){ el.requestFullscreen().catch(function(){}); }
+  }
+
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  ft.addEventListener('click', function(e){
+    if(e.target === ft || (e.target.classList && e.target.classList.contains('ft-scrim'))){ close(); }
+  });
+  playBtn.addEventListener('click', toggle);
+  video.addEventListener('click', toggle);
+  video.addEventListener('dblclick', toggleFull);
+  muteBtn.addEventListener('click', toggleMute);
+  fullBtn.addEventListener('click', toggleFull);
+  replayBtn.addEventListener('click', replay);
+
+  seek.addEventListener('input', function(){
+    if(!video.duration) return;
+    video.currentTime = video.duration * (parseInt(seek.value, 10) / 1000);
+  });
+
+  video.addEventListener('play', function(){ setPlayerUI(true); });
+  video.addEventListener('pause', function(){ setPlayerUI(false); });
+  video.addEventListener('waiting', function(){ loading.classList.add('on'); });
+  video.addEventListener('playing', function(){ loading.classList.remove('on'); setPlayerUI(true); });
+  video.addEventListener('canplay', function(){ loading.classList.remove('on'); });
+  video.addEventListener('loadedmetadata', function(){
+    var t = fmtTime(video.duration);
+    totalEl.textContent = t;
+    durEl.textContent = t;
+    lenEl.textContent = t;
+    openBtn.setAttribute('aria-label', '播放 MedAgentWork 介绍片（' + t + '）');
+  });
+  video.addEventListener('timeupdate', function(){
+    var d = video.duration || 0;
+    if(!d) return;
+    var ratio = video.currentTime / d;
+    if(!seek.matches(':active')){ seek.value = String(Math.round(ratio * 1000)); }
+    curEl.textContent = fmtTime(video.currentTime);
+    progEl.style.width = (ratio * 100).toFixed(2) + '%';
+  });
+  video.addEventListener('ended', function(){
+    ft.classList.add('ft-ended');
+    card.setAttribute('data-watched','1');
+    noteEl.textContent = '已看完 · 点击重看';
+    setPlayerUI(false);
+    progEl.style.width = '100%';
+  });
+  video.addEventListener('error', function(){
+    loading.classList.remove('on');
+    if(typeof toast === 'function') toast('视频加载失败，请检查网络后重试');
+  });
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden && isOpen && !video.paused) video.pause();
+  });
+  document.addEventListener('keydown', function(e){
+    if(!isOpen) return;
+    var k = e.key;
+    if(k === 'Escape'){
+      if(document.fullscreenElement) return;
+      e.preventDefault(); close();
+    }else if(k === ' ' || k.toLowerCase() === 'k'){
+      if(e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      if(e.target && e.target.closest && e.target.closest('button, a')) return;
+      e.preventDefault(); toggle();
+    }else if(k === 'ArrowRight'){
+      e.preventDefault(); video.currentTime = Math.min(video.duration || 0, video.currentTime + 5);
+    }else if(k === 'ArrowLeft'){
+      e.preventDefault(); video.currentTime = Math.max(0, video.currentTime - 5);
+    }else if(k.toLowerCase() === 'm'){
+      e.preventDefault(); toggleMute();
+    }else if(k.toLowerCase() === 'f'){
+      e.preventDefault(); toggleFull();
+    }else if(k === 'Tab'){
+      var items = Array.prototype.filter.call(
+        ft.querySelectorAll('button, a[href], input'),
+        function(el){ return !el.disabled && el.offsetParent !== null; }
+      );
+      if(!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+
+  setPlayerUI(false);
+  setMuteUI();
+  window.__film = { open: open, close: close, el: ft, video: video };
+})();
 </script>
 </body>
 </html>

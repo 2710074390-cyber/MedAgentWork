@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MedAgentWork — Intro Film</title>
+<script>
+  var FMT = new URLSearchParams(location.search).get('format') === 'tall' ? 'tall' : 'wide';
+  document.documentElement.className = FMT;
+</script>
+<style>
+/* ============================================================
+   MedAgentWork 介绍片 — 画布（1920×1080 / 1080×1350）
+   视觉语言沿用站点：黑蓝深海 · 玻璃拟态 · ASCII 原子像素
+   所有运动由 window.__seek(ms) 驱动，无 CSS 动画（逐帧可复现）
+   ============================================================ */
+:root{
+  --bg:#07080c;
+  --ink:#f4f7ff;
+  --muted:rgba(224,234,255,.62);
+  --dim:rgba(224,234,255,.34);
+  --brand:#679efe;
+  --brand-2:#9cc0ff;
+  --deep:#1a3870;
+  --ok:#4ade80;
+  --bad:#ff7070;
+  --warn:#f5c86b;
+  --line:rgba(255,255,255,.10);
+  --glass:rgba(255,255,255,.045);
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code",Consolas,"SF Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#000;overflow:hidden}
+body{font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);isolation:isolate}
+html.tall #stage{width:1080px;height:1350px}
+
+/* ---------------- 背景 ---------------- */
+.bg{position:absolute;inset:0;z-index:0}
+.bg-base{position:absolute;inset:0;background:
+  radial-gradient(1000px 700px at 76% 16%,rgba(45,95,158,.30),transparent 62%),
+  radial-gradient(1200px 900px at 8% 106%,rgba(26,56,112,.55),transparent 66%),
+  radial-gradient(900px 700px at 96% 96%,rgba(45,95,158,.18),transparent 70%),
+  linear-gradient(180deg,#080a10 0%,#07090e 52%,#04060a 100%)}
+html.tall .bg-base{background:
+  radial-gradient(760px 760px at 82% 6%,rgba(45,95,158,.34),transparent 64%),
+  radial-gradient(900px 900px at -10% 104%,rgba(26,56,112,.58),transparent 68%),
+  linear-gradient(180deg,#080a10 0%,#07090e 55%,#04060a 100%)}
+.grid{position:absolute;inset:-12%;opacity:.55;
+  background-image:linear-gradient(rgba(255,255,255,.038) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.038) 1px,transparent 1px);
+  background-size:96px 96px;
+  -webkit-mask-image:radial-gradient(ellipse 72% 64% at 50% 38%,#000 8%,transparent 76%);
+  mask-image:radial-gradient(ellipse 72% 64% at 50% 38%,#000 8%,transparent 76%)}
+html.tall .grid{background-size:64px 64px}
+.horizon{position:absolute;left:0;right:0;top:84%;height:1px;transform-origin:50% 50%;
+  background:linear-gradient(90deg,transparent,rgba(103,153,254,.42) 22%,rgba(200,222,255,.7) 50%,rgba(103,153,254,.42) 78%,transparent);
+  box-shadow:0 0 26px rgba(103,153,254,.28)}
+.orbits{position:absolute;inset:0}
+.orbits .ring{position:absolute;border-radius:50%;border:1px solid rgba(103,153,254,.10);left:50%;top:52%;transform:translate(-50%,-50%)}
+.orbits .r1{width:1280px;height:1280px;border-color:rgba(103,153,254,.09)}
+.orbits .r2{width:940px;height:940px;border-style:dashed;border-color:rgba(255,255,255,.05)}
+.orbits .r3{width:1680px;height:1680px;border-color:rgba(103,153,254,.05)}
+#dust{position:absolute;inset:0;width:100%;height:100%}
+.vignette{position:absolute;inset:0;z-index:30;pointer-events:none;
+  background:radial-gradient(ellipse 82% 76% at 50% 46%,transparent 42%,rgba(0,0,0,.42) 100%),
+             linear-gradient(180deg,rgba(0,0,0,.34) 0%,transparent 16%,transparent 82%,rgba(0,0,0,.5) 100%)}
+
+/* ---------------- 场景容器 ---------------- */
+.scenes{position:absolute;inset:0;z-index:10}
+.scene{position:absolute;inset:0;opacity:0;visibility:visible;will-change:opacity,transform,filter}
+.eyebrow{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:19px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--brand-2)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 14px var(--brand);flex:none}
+.mono{font-family:var(--mono);letter-spacing:.08em}
+em{font-style:normal;background:linear-gradient(100deg,var(--brand) 4%,#b9d2ff 52%,#5f92e8 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.mask{display:block;overflow:hidden;padding-bottom:.09em;margin-bottom:-.03em}
+.mask>span{display:block}
+
+/* ---------------- S1 开场 ---------------- */
+.s1{display:grid;grid-template-columns:1.06fr .94fr;align-items:center;gap:30px;padding:0 132px}
+.s1-copy{max-width:900px;position:relative;z-index:2}
+.s1 .eyebrow{margin-bottom:38px}
+.s1 h1{font-size:132px;font-weight:600;line-height:1.05;letter-spacing:-.038em}
+.s1 .lede{margin-top:42px;font-size:29px;color:var(--muted);font-weight:300;letter-spacing:.01em}
+.s1 .lede b{color:var(--ink);font-weight:500}
+.s1-art{position:relative;width:720px;height:460px;justify-self:center}
+.s1-art::before{content:"";position:absolute;left:50%;top:50%;width:520px;height:340px;transform:translate(-50%,-50%);
+  background:radial-gradient(closest-side,rgba(103,153,254,.20),transparent 72%);filter:blur(6px)}
+#logo-canvas{position:relative;width:100%;height:100%}
+
+/* ---------------- S2 命题 ---------------- */
+.s2{padding:0 132px;display:grid;grid-template-columns:1.04fr .96fr;align-items:center}
+.s2-copy{max-width:960px;position:relative;z-index:3}
+.s2 .q{font-size:43px;font-weight:300;color:var(--muted);letter-spacing:.01em;margin-bottom:30px}
+.s2 h2{font-size:112px;font-weight:600;line-height:1.1;letter-spacing:-.035em}
+.s2 .s2-tag{margin-top:48px;display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);
+  font-size:18px;letter-spacing:.1em;color:var(--brand-2);padding:12px 20px;border:1px solid rgba(103,153,254,.26);
+  border-radius:100px;background:rgba(103,153,254,.07)}
+.s2 .s2-tag i{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+.s2-pages{position:absolute;inset:0;z-index:1;pointer-events:none}
+.s2-page{position:absolute;width:214px;height:290px;border-radius:14px;padding:26px 22px;
+  background:linear-gradient(160deg,rgba(255,255,255,.085),rgba(255,255,255,.018));
+  border:1px solid rgba(255,255,255,.10);box-shadow:0 36px 90px rgba(0,0,0,.5);
+  transform-origin:50% 50%}
+.s2-page .ln{height:7px;border-radius:4px;background:rgba(255,255,255,.15);margin-bottom:13px}
+.s2-page .ln.s{background:rgba(103,153,254,.35)}
+.s2-page .tab{position:absolute;top:22px;right:22px;width:26px;height:4px;border-radius:3px;background:var(--brand);opacity:.65}
+.s2-page .pg{position:absolute;left:22px;bottom:20px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.28)}
+
+/* ---------------- S3 网页刷题 ---------------- */
+.s3{display:grid;grid-template-columns:600px 1fr;gap:70px;align-items:center;padding:0 132px}
+.s3-copy .h2{font-size:98px;font-weight:600;line-height:1.08;letter-spacing:-.035em;margin:30px 0 40px}
+.bullets{list-style:none;display:flex;flex-direction:column;gap:20px;font-size:27px;color:var(--muted);font-weight:300}
+.bullets li{display:flex;align-items:center;gap:16px}
+.bullets .ck{width:30px;height:30px;border-radius:50%;flex:none;display:grid;place-items:center;
+  border:1px solid rgba(103,153,254,.42);background:rgba(103,153,254,.12)}
+.bullets .ck svg{width:14px;height:14px}
+.s3-stage{position:relative;justify-self:center;width:890px;z-index:2}
+.qcard{position:relative;border-radius:26px;padding:40px 44px 36px;
+  background:linear-gradient(168deg,rgba(19,27,41,.96),rgba(9,13,21,.985));
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 60px 130px -36px rgba(0,0,0,.9),0 0 0 1px rgba(103,153,254,.05) inset,0 -1px 0 rgba(255,255,255,.10) inset;
+  transform-origin:50% 50%}
+.qcard::before{content:"";position:absolute;left:44px;right:44px;top:-1px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(156,192,255,.7),transparent)}
+.qcard-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.qcard-head .mono{font-size:17px;color:var(--dim);letter-spacing:.12em}
+.pill{font-family:var(--mono);font-size:14px;letter-spacing:.08em;color:var(--brand-2);
+  border:1px solid rgba(103,153,254,.3);border-radius:100px;padding:5px 13px;background:rgba(103,153,254,.08)}
+.qstem{font-size:31px;font-weight:500;line-height:1.62;letter-spacing:.01em;margin-bottom:14px}
+.opt{display:flex;align-items:center;gap:18px;height:82px;padding:0 20px;margin-top:13px;
+  border:1px solid rgba(255,255,255,.10);border-radius:14px;background:rgba(255,255,255,.022);
+  font-size:28px;font-weight:300;color:rgba(235,241,255,.9);transition:none}
+.opt .k{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.22);font-family:var(--mono);font-size:20px;color:var(--muted)}
+.opt.correct{border-color:rgba(74,222,128,.72);background:rgba(74,222,128,.10)}
+.opt.correct .k{background:var(--ok);border-color:var(--ok);color:#05130a;font-weight:700}
+.opt.wrong{border-color:rgba(255,112,112,.70);background:rgba(255,112,112,.10)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:#1a0505;font-weight:700}
+.verdict{display:flex;align-items:center;gap:16px;margin-top:22px;padding:16px 20px;border-radius:12px;
+  background:rgba(255,112,112,.10);border:1px solid rgba(255,112,112,.26);font-size:22px;color:var(--muted)}
+.verdict b{color:#ff9a9a;font-weight:600;font-size:24px}
+.verdict span{font-family:var(--mono);font-size:20px;letter-spacing:.04em}
+.explain{margin-top:14px;padding:18px 20px;border-radius:12px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);display:flex;gap:16px;align-items:flex-start}
+.explain .mono{font-size:14px;color:var(--brand-2);letter-spacing:.16em;margin-top:5px;flex:none}
+.explain p{font-size:20px;line-height:1.75;color:var(--muted);font-weight:300}
+.mistake{position:absolute;top:-38px;right:-14px;z-index:8;display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:17px;letter-spacing:.06em;color:var(--muted);
+  padding:14px 20px;border-radius:100px;background:rgba(16,22,33,.92);
+  border:1px solid rgba(103,153,254,.3);box-shadow:0 22px 50px rgba(0,0,0,.55);white-space:nowrap}
+.mistake b{color:var(--ink);font-weight:600}
+.mistake i{color:var(--brand);font-style:normal}
+.mistake.hot{border-color:rgba(74,222,128,.55);box-shadow:0 0 34px rgba(74,222,128,.16),0 22px 50px rgba(0,0,0,.55)}
+.cursor{position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
+  background:rgba(255,255,255,.92);box-shadow:0 0 0 6px rgba(255,255,255,.12),0 0 30px rgba(156,192,255,.75);
+  z-index:6;pointer-events:none}
+.cursor i{position:absolute;inset:-18px;border-radius:50%;border:1px solid rgba(156,192,255,.55)}
+
+/* ---------------- S4 复习手册 ---------------- */
+.s4{display:grid;grid-template-columns:600px 1fr;gap:60px;align-items:center;padding:0 132px}
+.s4-copy .h2{font-size:98px;font-weight:600;line-height:1.08;letter-spacing:-.035em;margin:30px 0 40px}
+.s4-stage{position:relative;justify-self:center;width:780px;height:830px;perspective:1700px}
+.book{position:absolute;inset:0;transform-style:preserve-3d}
+.sheet{position:absolute;left:0;top:0;width:720px;height:800px;border-radius:18px;overflow:hidden;
+  background:linear-gradient(172deg,#141b26 0%,#0d121a 62%,#0a0e15 100%);
+  border:1px solid rgba(255,255,255,.11);box-shadow:0 60px 120px -30px rgba(0,0,0,.9);
+  transform-origin:0% 50%}
+.sheet.back{padding:52px 56px;opacity:.5;transform:translate(58px,30px) rotate(2.4deg)}
+.sheet.front{padding:50px 56px 44px;backface-visibility:hidden}
+.doc-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:15px;
+  letter-spacing:.12em;color:var(--dim);border-bottom:1px solid rgba(255,255,255,.09);padding-bottom:20px}
+.sheet h3{font-size:48px;font-weight:600;letter-spacing:-.02em;margin:30px 0 6px}
+.doc-sub{font-family:var(--mono);font-size:15px;letter-spacing:.1em;color:var(--brand-2);margin-bottom:26px}
+.doc-p{font-size:21px;line-height:2.05;color:rgba(226,236,255,.66);font-weight:300;margin-bottom:18px}
+.doc-p mark{color:var(--ink);font-weight:400;background:linear-gradient(90deg,rgba(103,153,254,.34),rgba(103,153,254,.34)) no-repeat 0 62%;
+  background-size:0% 44%;padding:2px 0}
+.doc-tags{display:flex;gap:10px;margin-top:26px}
+.doc-tags span{font-family:var(--mono);font-size:13px;letter-spacing:.08em;padding:6px 12px;border-radius:100px;border:1px solid}
+.t-master{color:#9cc0ff;border-color:rgba(103,153,254,.45);background:rgba(103,153,254,.12)}
+.t-familiar{color:#7fe0c0;border-color:rgba(127,224,192,.4);background:rgba(127,224,192,.09)}
+.t-learn{color:#f5c86b;border-color:rgba(245,200,107,.38);background:rgba(245,200,107,.08)}
+.doc-note{margin-top:22px;padding:16px 18px;border-radius:12px;background:rgba(103,153,254,.06);
+  border:1px solid rgba(103,153,254,.16)}
+.note-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.note-h .mono{font-size:12px;letter-spacing:.14em;color:var(--brand-2)}
+.note-h i{width:6px;height:6px;border-radius:50%;background:var(--brand);box-shadow:0 0 10px var(--brand)}
+.note-row{display:flex;gap:8px;flex-wrap:wrap}
+.note-row span{font-size:15px;color:rgba(226,236,255,.75);background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);border-radius:7px;padding:5px 10px}
+.sheet.back .doc-foot{display:none}
+.doc-foot{position:absolute;left:56px;right:56px;bottom:24px;display:flex;justify-content:space-between;
+  font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.26);
+  border-top:1px solid rgba(255,255,255,.07);padding-top:12px}
+html.tall .doc-note{margin-top:16px;padding:13px 15px}
+html.tall .doc-tags{margin-top:18px}
+html.tall .note-h .mono{font-size:16px}
+html.tall .note-row span{font-size:20px;padding:6px 12px}
+html.tall .doc-foot{left:38px;right:38px;bottom:18px;font-size:14px;padding-top:10px}
+html.tall .s6-stat span{font-size:22px}
+
+.origin{position:absolute;right:-132px;bottom:132px;display:flex;align-items:center;gap:10px;
+  font-family:var(--mono);font-size:15px;letter-spacing:.06em;color:var(--brand-2);white-space:nowrap}
+.origin::before{content:"";width:104px;height:1px;background:linear-gradient(90deg,transparent,rgba(103,153,254,.65))}
+.origin i{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 12px var(--brand)}
+.s4-flipshadow{position:absolute;inset:0;border-radius:18px;background:linear-gradient(90deg,rgba(0,0,0,.55),transparent 55%);opacity:0;pointer-events:none}
+
+/* ---------------- S5 幕后管线 ---------------- */
+.s5{padding:0 132px}
+.s5-head{padding-top:132px}
+.s5-head .h2{font-size:104px;font-weight:600;line-height:1.06;letter-spacing:-.038em;margin-top:26px}
+.s5-head .sub{margin-top:22px;font-size:25px;color:var(--muted);font-weight:300}
+.pipe{position:absolute;left:132px;right:132px;top:492px;z-index:2;display:flex;align-items:center}
+.node{width:216px;flex:none;padding:24px 22px 22px;border-radius:16px;position:relative;
+  background:linear-gradient(165deg,rgba(255,255,255,.085),rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+.node .no{position:absolute;right:18px;top:16px;font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.1em}
+.node .ic{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;margin-bottom:20px;
+  background:rgba(103,153,254,.12);border:1px solid rgba(103,153,254,.32)}
+.node .ic svg{width:19px;height:19px}
+.node b{display:block;font-size:27px;font-weight:500;letter-spacing:.01em}
+.node span{display:block;margin-top:6px;font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--dim)}
+.node .tick{position:absolute;right:16px;bottom:16px;width:20px;height:20px;border-radius:50%;
+  display:grid;place-items:center;background:rgba(74,222,128,.14);border:1px solid rgba(74,222,128,.4);opacity:0}
+.node .tick svg{width:11px;height:11px}
+.node.lit{border-color:rgba(103,153,254,.45);box-shadow:0 0 50px rgba(103,153,254,.10),0 30px 70px -30px rgba(0,0,0,.9)}
+.link{flex:1;height:1px;position:relative;margin:0 12px;background:linear-gradient(90deg,rgba(103,153,254,.18),rgba(255,255,255,.16),rgba(103,153,254,.18))}
+.link .flow{position:absolute;top:-2px;left:0;width:5px;height:5px;border-radius:50%;background:#cfe0ff;
+  box-shadow:0 0 14px 3px rgba(103,153,254,.85);opacity:0}
+.gate{position:absolute;left:50%;top:742px;transform:translateX(-50%);display:flex;align-items:center;gap:18px;
+  font-family:var(--mono);font-size:19px;letter-spacing:.1em;color:var(--ink);
+  padding:16px 26px;border-radius:100px;background:rgba(74,222,128,.08);
+  border:1px solid rgba(74,222,128,.28);white-space:nowrap}
+.gate b{color:#6ee79a;font-weight:600;font-size:22px}
+.gate span{color:var(--dim);font-size:16px}
+.trace{position:absolute;left:0;right:0;top:886px;text-align:center;font-family:var(--mono);font-size:14px;
+  letter-spacing:.16em;color:rgba(255,255,255,.30);opacity:0}
+.trace span{color:rgba(103,153,254,.65);margin-right:12px}
+.trace i{display:inline-block;width:1px;height:11px;background:rgba(255,255,255,.2);margin-right:12px;vertical-align:-1px}
+html.tall .trace{display:none}
+
+.matrix{position:absolute;left:132px;right:132px;top:352px;height:392px;display:grid;
+  grid-template-columns:repeat(20,1fr);grid-auto-rows:1fr;z-index:1;pointer-events:none}
+.matrix i{width:3px;height:3px;border-radius:1px;background:rgba(255,255,255,.16);justify-self:center;align-self:center}
+html.tall .matrix{left:76px;right:76px;top:330px;height:820px;grid-template-columns:repeat(10,1fr)}
+
+/* ---------------- SR 规则与演进 ---------------- */
+.sr{padding:96px 132px 0}
+.sr-head .eyebrow{margin-bottom:20px}
+.sr-head h2{font-size:94px;font-weight:600;line-height:1.08;letter-spacing:-.038em}
+.sr-sub{margin-top:20px;font-size:24px;color:var(--muted);font-weight:300;letter-spacing:.01em}
+.sr-body{position:relative;margin-top:44px;height:640px}
+.sr-beat{position:absolute;left:0;right:0;top:0}
+.rule-head,.log-head{display:flex;align-items:center;justify-content:space-between;
+  font-family:var(--mono);font-size:14px;letter-spacing:.18em;color:var(--dim);
+  padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)}
+.rule-head span:last-child,.log-head span:last-child{color:rgba(255,255,255,.26)}
+
+/* A 拍：规则 2×2 */
+.sr-rules{display:grid;grid-template-columns:1fr 1fr;gap:0 96px}
+.rule{display:grid;grid-template-columns:52px 1fr;gap:18px;padding:29px 0;
+  border-bottom:1px solid rgba(255,255,255,.07)}
+.rule .rno{font-family:var(--mono);font-size:14px;letter-spacing:.14em;color:var(--brand);padding-top:8px}
+.rule b{display:block;font-size:32px;font-weight:500;letter-spacing:.01em}
+.rule p{margin-top:7px;font-size:19px;line-height:1.6;color:var(--muted);font-weight:300}
+
+/* B 拍：演进 + 证据 + 收束 */
+#sr-beat-b{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:96px}
+.sr-log{position:relative}
+.log-row{display:grid;grid-template-columns:92px 1fr auto;gap:20px;align-items:start;
+  padding:21px 0;border-bottom:1px solid rgba(255,255,255,.07);position:relative}
+.log-row .v{font-family:var(--mono);font-size:16px;letter-spacing:.06em;color:var(--brand-2);padding-top:5px}
+.log-row b{display:block;font-size:25px;font-weight:500;letter-spacing:.01em}
+.log-row p{margin-top:4px;font-size:17px;line-height:1.5;color:var(--muted);font-weight:300}
+.log-row .tag{font-family:var(--mono);font-size:13px;letter-spacing:.05em;color:var(--warn);
+  border:1px solid rgba(245,200,107,.36);background:rgba(245,200,107,.08);border-radius:100px;
+  padding:4px 10px;opacity:0;white-space:nowrap}
+.log-row.warn{border-bottom-color:rgba(245,200,107,.22)}
+.log-row.warn::before{content:"";position:absolute;left:-1px;top:-1px;bottom:-1px;width:2px;
+  background:var(--warn);opacity:0}
+.log-row.warn.on::before{opacity:.85}
+.log-note{margin-top:10px;font-family:var(--mono);font-size:13px;letter-spacing:.04em;
+  color:rgba(245,200,107,.84);opacity:0}
+.sr-side{display:flex;flex-direction:column}
+.sr-proof{display:flex;flex-direction:column;gap:22px;padding-bottom:28px;
+  border-bottom:1px solid rgba(255,255,255,.1)}
+.sr-proof .sp{display:grid;grid-template-columns:9px 1fr;gap:14px;
+  font-family:var(--mono);font-size:15px;line-height:1.65;letter-spacing:.04em;color:var(--dim)}
+.sr-proof .sp i{width:5px;height:5px;border-radius:50%;background:var(--brand-2);
+  box-shadow:0 0 10px rgba(103,158,254,.7);margin-top:11px}
+.sr-proof .sp-foot{display:flex;align-items:center;gap:10px;font-family:var(--mono);
+  font-size:14px;letter-spacing:.08em;color:var(--muted);opacity:0}
+.sr-proof .sp-foot .ok{width:18px;height:18px;border-radius:50%;display:grid;place-items:center;flex-shrink:0;
+  background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.42);color:var(--ok);font-size:10px}
+.sr-punch{margin-top:36px;font-size:44px;font-weight:500;line-height:1.32;letter-spacing:-.02em;
+  color:rgba(255,255,255,.9)}
+
+html.tall .sr{padding:96px 76px 0}
+html.tall .sr-head .eyebrow{font-size:20px;margin-bottom:14px}
+html.tall .sr-head h2{font-size:80px;line-height:1.12}
+html.tall .sr-sub{font-size:25px;line-height:1.5;margin-top:14px}
+html.tall .sr-body{margin-top:34px;height:1080px}
+html.tall .rule-head,html.tall .log-head{font-size:16px;padding-bottom:12px}
+html.tall .sr-rules{grid-template-columns:1fr;gap:0}
+html.tall .rule{padding:19px 0;grid-template-columns:48px 1fr;gap:14px}
+html.tall .rule .rno{font-size:16px;padding-top:6px}
+html.tall .rule b{font-size:31px}
+html.tall .rule p{font-size:22px;line-height:1.45;margin-top:4px}
+html.tall #sr-beat-b{display:block}
+html.tall .sr-log{margin-top:26px}
+html.tall .log-row{padding:13px 0;grid-template-columns:74px 1fr auto;gap:14px}
+html.tall .log-row .v{font-size:17px;padding-top:3px}
+html.tall .log-row b{font-size:27px}
+html.tall .log-row p{font-size:19px;line-height:1.4;margin-top:3px}
+html.tall .log-row .tag{font-size:14px;padding:3px 8px}
+html.tall .log-note{font-size:15px;margin-top:8px}
+html.tall .sr-side{margin-top:26px}
+html.tall .sr-proof{gap:14px;padding-bottom:18px}
+html.tall .sr-proof .sp{grid-template-columns:8px 1fr;gap:12px;font-size:16px;line-height:1.5}
+html.tall .sr-proof .sp i{margin-top:9px}
+html.tall .sr-proof .sp-foot{font-size:16px}
+html.tall .sr-punch{margin-top:24px;font-size:40px;line-height:1.3}
+
+/* ---------------- S6 收束 ---------------- */
+.s6{display:block}
+.s6-top{position:absolute;left:0;right:0;top:176px;text-align:center}
+.s6-top::before{content:'';position:absolute;left:50%;top:40px;width:900px;height:520px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(45,95,158,.22),transparent 72%);filter:blur(10px);z-index:-1}
+.s6-num{display:flex;align-items:baseline;justify-content:center}
+.s6-num b{font-family:var(--sans);font-size:232px;font-weight:600;line-height:1;letter-spacing:-.05em;font-variant-numeric:tabular-nums;
+  background:linear-gradient(180deg,#ffffff 20%,#a9c4ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 80px rgba(103,153,254,.25)}
+.s6-cap{margin-top:14px;font-size:26px;color:var(--muted);font-weight:300;letter-spacing:.2em}
+.s6-stats{display:flex;justify-content:center;margin-top:58px}
+.s6-stat{text-align:center;padding:0 58px;border-left:1px solid rgba(255,255,255,.12)}
+.s6-stat:first-child{border-left:0}
+.s6-stat b{display:block;font-family:var(--sans);font-size:40px;font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.s6-stat span{display:block;margin-top:8px;font-size:17px;color:var(--dim);letter-spacing:.12em}
+.s6-end{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);text-align:center}
+.s6-lockup{display:flex;align-items:center;justify-content:center;gap:24px}
+.s6-lockup .mw{width:76px;height:76px;border-radius:20px;display:grid;place-items:center;
+  font-family:var(--mono);font-weight:700;font-size:25px;color:#08101f;
+  background:linear-gradient(135deg,#a9c6ff 0%,#679efe 55%,#3767d0 100%);
+  box-shadow:0 0 60px rgba(103,153,254,.45)}
+.s6-lockup b{font-size:66px;font-weight:600;letter-spacing:-.025em}
+.s6-tag{font-size:40px;font-weight:300;letter-spacing:.08em;color:var(--muted);margin-top:34px}
+.s6-tag em{font-weight:400}
+.s6-url{margin-top:52px;display:inline-flex;align-items:center;gap:18px;font-family:var(--mono);font-size:19px;
+  letter-spacing:.06em;color:var(--brand-2);padding:15px 26px;border-radius:100px;
+  border:1px solid rgba(103,153,254,.26);background:rgba(103,153,254,.06)}
+.s6-url .sep{width:1px;height:16px;background:rgba(255,255,255,.16)}
+.s6-url .hint{color:var(--dim)}
+.s6-fine{margin-top:22px;font-family:var(--mono);font-size:15px;letter-spacing:.22em;color:rgba(255,255,255,.4)}
+html.tall .s6-fine{font-size:18px;margin-top:26px;letter-spacing:.2em}
+
+/* ---------------- 常驻信息 / 过场 ---------------- */
+.brand-bug{position:absolute;left:132px;top:64px;z-index:25;display:flex;align-items:center;gap:12px;opacity:0}
+.brand-bug .m{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font-family:var(--mono);
+  font-size:11px;font-weight:700;color:#08101f;background:linear-gradient(135deg,#a9c6ff,#679efe 60%,#2d5f9e)}
+.brand-bug span{font-family:var(--mono);font-size:13px;letter-spacing:.24em;color:rgba(255,255,255,.55)}
+.film-meta{position:absolute;right:132px;bottom:26px;z-index:25;font-family:var(--mono);font-size:13px;
+  letter-spacing:.2em;color:rgba(255,255,255,.34);opacity:0}
+.progress{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.07);z-index:35}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#2d5f9e,#679efe,#cfe0ff);box-shadow:0 0 16px rgba(103,153,254,.6)}
+.wipe{position:absolute;top:-15%;bottom:-15%;left:0;width:260px;z-index:40;opacity:0;pointer-events:none;
+  background:linear-gradient(90deg,transparent,rgba(103,153,254,.10) 38%,rgba(207,224,255,.30) 50%,rgba(103,153,254,.10) 62%,transparent)}
+.wipe::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);
+  background:linear-gradient(180deg,transparent,#eaf2ff 35%,#fff 50%,#eaf2ff 65%,transparent);
+  box-shadow:0 0 40px 6px rgba(103,153,254,.55)}
+.flash{position:absolute;inset:0;z-index:39;background:rgba(180,210,255,.055);opacity:0;pointer-events:none}
+
+/* ---------------- 竖屏覆盖 ---------------- */
+html.tall .brand-bug{left:76px;top:58px}
+html.tall .film-meta{right:76px;top:auto;bottom:26px;font-size:12px}
+html.tall .s1{display:flex;flex-direction:column;justify-content:flex-start;padding:648px 76px 0;align-items:stretch}
+html.tall .s1-art{position:absolute;left:calc(50% - 340px);top:112px;width:680px;height:440px;justify-self:auto}
+html.tall .s1 .eyebrow{font-size:22px;margin-bottom:26px}
+html.tall .s1 h1{font-size:116px;line-height:1.1}
+html.tall .s1 .lede{font-size:35px;line-height:1.7;margin-top:30px}
+html.tall .s2{display:block;padding:150px 76px 0}
+html.tall .s2-copy{max-width:none}
+html.tall .s2 .q{font-size:42px;margin-bottom:22px}
+html.tall .s2 h2{font-size:94px;line-height:1.16}
+html.tall .s2 .s2-tag{margin-top:32px;font-size:19px}
+html.tall .s2-pages{top:auto;bottom:0;height:640px}
+html.tall .s2-page{width:170px;height:230px;padding:20px 18px;border-radius:12px}
+html.tall .s3{display:block;padding:120px 76px 0}
+html.tall .s3-copy .h2{font-size:92px;margin:20px 0 22px}
+html.tall .bullets{font-size:28px;gap:12px}
+html.tall .s3-stage{width:100%;margin-top:38px}
+html.tall .qcard{padding:32px 32px 28px;border-radius:22px}
+html.tall .qcard-head{margin-bottom:18px}
+html.tall .qstem{font-size:40px;line-height:1.5;margin-bottom:8px}
+html.tall .opt{height:92px;font-size:40px;margin-top:10px;gap:16px}
+html.tall .opt .k{width:48px;height:48px;font-size:24px}
+html.tall .verdict{font-size:24px;padding:15px 18px;margin-top:16px;gap:12px}
+html.tall .verdict b{font-size:27px}
+html.tall .verdict span{font-size:19px}
+html.tall .explain{padding:16px 18px;margin-top:12px}
+html.tall .explain p{font-size:22px;line-height:1.65}
+html.tall .mistake{top:-30px;right:0;font-size:19px;padding:12px 18px}
+html.tall .s4{display:block;padding:120px 76px 0}
+html.tall .s4-copy .h2{font-size:92px;margin:20px 0 22px}
+html.tall .s4-stage{width:100%;height:760px;margin-top:34px}
+html.tall .sheet{width:100%;height:720px}
+html.tall .sheet.front{padding:40px 38px 34px}
+html.tall .sheet h3{font-size:48px;margin:24px 0 4px}
+html.tall .doc-p{font-size:24px;line-height:1.82}
+html.tall .doc-top{font-size:18px;padding-bottom:16px}
+html.tall .doc-sub{font-size:18px;margin-bottom:18px}
+html.tall .origin{display:none}
+html.tall .doc-tags span{font-size:20px}
+html.tall .origin::before{width:40px}
+html.tall .sheet.back{transform:translate(26px,22px) rotate(1.8deg)}
+html.tall .s5{padding:0 76px}
+html.tall .s5-head{padding-top:120px}
+html.tall .s5-head .h2{font-size:88px;margin-top:20px}
+html.tall .s5-head .sub{font-size:26px;margin-top:16px}
+html.tall .pipe{left:76px;right:76px;top:520px;display:flex;flex-direction:column;align-items:stretch}
+html.tall .node{width:100%;padding:20px 24px;display:flex;align-items:center;gap:20px}
+html.tall .node .ic{margin-bottom:0;flex:none;width:34px;height:34px;order:0}
+html.tall .node b{order:1}
+html.tall .node span{order:2}
+html.tall .node .no{order:3}
+html.tall .node .tick{order:4}
+html.tall .node b{font-size:32px}
+html.tall .node span{margin-top:2px;font-size:17px}
+html.tall .node .no{position:static;margin-left:auto;font-size:16px}
+html.tall .node .tick{position:static;margin-left:6px;flex:none}
+html.tall .link{flex:none;width:1px;height:26px;margin:0 0 0 39px}
+html.tall .link .flow{left:-2px;top:0;width:5px;height:5px}
+html.tall .gate{top:1230px;font-size:20px;padding:14px 20px;gap:12px}
+html.tall .gate b{font-size:22px}
+html.tall .gate span{font-size:16px}
+html.tall .s6-top{top:242px}
+html.tall .s6-num{flex-direction:column;align-items:center;gap:0}
+html.tall .s6-num b{font-size:300px}
+html.tall .s6-cap{font-size:30px;margin-top:10px}
+html.tall .s6-stats{display:grid;grid-template-columns:1fr 1fr;margin-top:64px;padding:0 76px;gap:34px 0}
+html.tall .s6-stat{min-width:0;text-align:center;padding:0 10px}
+html.tall .s6-stat:nth-child(3){border-left:0}
+html.tall .s6-stat b{font-size:54px}
+html.tall .s6-lockup b{font-size:62px}
+html.tall .s6-lockup .mw{width:62px;height:62px;border-radius:16px;font-size:21px}
+html.tall .s6-tag{font-size:40px;margin-top:30px}
+html.tall .s6-url{font-size:21px;padding:14px 20px;gap:12px;margin-top:44px;flex-wrap:wrap;justify-content:center}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="bg">
+    <div class="bg-base"></div>
+    <div class="grid"></div>
+    <div class="horizon" id="horizon"></div>
+    <div class="orbits" id="orbits">
+      <span class="ring r1"></span><span class="ring r2"></span><span class="ring r3"></span>
+    </div>
+    <canvas id="dust" width="1920" height="1080"></canvas>
+  </div>
+
+  <div class="scenes">
+    <!-- S1 品牌 -->
+    <section class="scene s1" id="s1">
+      <div class="s1-copy">
+        <div class="eyebrow" id="s1-eyebrow"><i class="dot"></i>MedAgentWork · 医学复习资料库</div>
+        <h1>
+          <span class="mask"><span id="s1-l1">备考题严选</span></span>
+          <span class="mask"><span id="s1-l2">复习<em>可溯源</em></span></span>
+        </h1>
+        <p class="lede" id="s1-lede"><b>5,791</b> 道题 · <b>23</b> 个学科 · 为临床医学生备考而辑</p>
+      </div>
+      <div class="s1-art"><canvas id="logo-canvas" width="720" height="460"></canvas></div>
+    </section>
+
+    <!-- S2 命题 -->
+    <section class="scene s2" id="s2">
+      <div class="s2-pages" id="s2-pages"></div>
+      <div class="s2-copy">
+        <p class="q" id="s2-q">备考最难的不是背不完</p>
+        <h2>
+          <span class="mask"><span id="s2-a">是不知道——</span></span>
+          <span class="mask"><span id="s2-b">哪一页<em>值得背</em>。</span></span>
+        </h2>
+        <div class="s2-tag" id="s2-tag"><i></i>按考频排序 · 5,791 题</div>
+      </div>
+    </section>
+
+    <!-- S3 网页刷题 -->
+    <section class="scene s3" id="s3">
+      <div class="s3-copy">
+        <div class="eyebrow">01 / 网页刷题</div>
+        <h2 class="h2">点选，<em>即判分</em></h2>
+        <ul class="bullets">
+          <li><span class="ck"><svg viewBox="0 0 16 16" fill="none" stroke="#9cc0ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 8.4l3 3 6.6-7"/></svg></span>答对自动下一题</li>
+          <li><span class="ck"><svg viewBox="0 0 16 16" fill="none" stroke="#9cc0ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v7M5 7.4l3 3 3-3M3.4 13h9.2"/></svg></span>判错自动回流错题本</li>
+        </ul>
+      </div>
+      <div class="s3-stage">
+        <div class="mistake" id="s3-mistake">错题本 <b>12</b><i> → </i><b id="s3-mk-n">13</b></div>
+        <div class="qcard" id="s3-card">
+          <div class="qcard-head"><span class="mono">外科学 · 第 128 题</span><span class="pill">单选</span></div>
+          <p class="qstem">急性阑尾炎最典型的体征是？</p>
+          <div class="opts" id="s3-opts">
+            <div class="opt"><span class="k">A</span>转移性右下腹痛</div>
+            <div class="opt"><span class="k">B</span>麦氏点压痛</div>
+            <div class="opt"><span class="k">C</span>腹肌紧张</div>
+            <div class="opt"><span class="k">D</span>肠鸣音亢进</div>
+            <div class="opt"><span class="k">E</span>体温升高</div>
+          </div>
+          <div class="verdict" id="s3-verdict"><b>✗ 回答错误</b><span>正确答案 B · 麦氏点压痛</span></div>
+          <div class="explain" id="s3-explain"><span class="mono">解析</span><p>麦氏点（McBurney 点）压痛是急性阑尾炎最常见、最典型的体征。</p></div>
+        </div>
+        <div class="cursor" id="s3-cursor"><i></i></div>
+      </div>
+    </section>
+
+    <!-- S4 复习手册 -->
+    <section class="scene s4" id="s4">
+      <div class="s4-copy">
+        <div class="eyebrow">02 / 复习手册</div>
+        <h2 class="h2">先背<em>最该背的</em></h2>
+        <ul class="bullets">
+          <li><span class="ck"><svg viewBox="0 0 16 16" fill="none" stroke="#9cc0ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2.6l1.7 3.4 3.7.5-2.7 2.6.7 3.7L8 11.1l-3.4 1.7.7-3.7-2.7-2.6 3.7-.5z"/></svg></span>掌握 / 熟悉 / 理解 三级标注</li>
+          <li><span class="ck"><svg viewBox="0 0 16 16" fill="none" stroke="#9cc0ff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.6h5.4L13 6.2v7.2H4z"/><path d="M9.2 2.8v3.6H13"/></svg></span>每个结论都能回到原文那一页</li>
+        </ul>
+      </div>
+      <div class="s4-stage">
+        <div class="book">
+          <div class="sheet back" id="s4-back">
+            <div class="doc-top"><span class="mono">外科学 · 第三章</span><span class="mono">P.247</span></div>
+            <h3>阑尾切除术</h3>
+            <div class="doc-sub">APPENDECTOMY · 适应证与术式</div>
+            <p class="doc-p">急性阑尾炎一经确诊，应尽早手术。手术方式包括开腹与腹腔镜两种，后者创伤小、恢复快。</p>
+            <p class="doc-p">术后需关注切口感染、腹腔脓肿、粘连性肠梗阻等并发症。</p>
+            <div class="doc-tags"><span class="t-master">掌握</span><span class="t-familiar">熟悉</span></div>
+            <div class="doc-note">
+              <div class="note-h"><span class="mono">术后并发症 · COMPLICATIONS</span><i></i></div>
+              <div class="note-row"><span>切口感染</span><span>腹腔脓肿</span><span>粘连性肠梗阻</span></div>
+            </div>
+            <div class="doc-foot"><span class="mono">来源 · 外科学（第 9 版）P.247</span><span class="mono">MEDREVIEW · 03</span></div>
+          </div>
+          <div class="sheet front" id="s4-front">
+            <div class="doc-top"><span class="mono">外科学 · 第三章</span><span class="mono">P.246</span></div>
+            <h3>急性阑尾炎</h3>
+            <div class="doc-sub">ACUTE APPENDICITIS · 诊断要点</div>
+            <p class="doc-p">典型表现为转移性右下腹痛，始于上腹或脐周，数小时后固定于右下腹。</p>
+            <p class="doc-p"><mark id="s4-mark">麦氏点压痛是急性阑尾炎最典型的体征。</mark>当炎症波及腹膜时，可出现腹肌紧张与反跳痛。</p>
+            <p class="doc-p">辅助检查：血白细胞计数升高，超声可见肿大阑尾。</p>
+            <div class="doc-tags"><span class="t-master">掌握</span><span class="t-familiar">熟悉</span><span class="t-learn">理解</span></div>
+            <div class="doc-note" id="s4-note">
+              <div class="note-h"><span class="mono">考点速记 · KEY POINTS</span><i></i></div>
+              <div class="note-row"><span>转移性右下腹痛</span><span>麦氏点压痛</span><span>白细胞升高</span></div>
+            </div>
+            <div class="doc-foot"><span class="mono">来源 · 外科学（第 9 版）P.246</span><span class="mono">MEDREVIEW · 03</span></div>
+            <div class="origin" id="s4-origin"><i></i>P.246 · 教材溯源</div>
+            <div class="s4-flipshadow" id="s4-shadow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S5 幕后管线 -->
+    <section class="scene s5" id="s5">
+      <div class="s5-head">
+        <div class="eyebrow">03 / 幕后管线</div>
+        <h2 class="h2">错一题，<em>改一册</em></h2>
+        <p class="sub">五阶段 Agent 管线 · 阶段门禁强制执行</p>
+      </div>
+      <div class="matrix" id="matrix"></div>
+      <div class="pipe" id="s5-pipe">
+        <div class="node" data-i="0">
+          <div class="no">01</div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9cc0ff" stroke-width="1.4" stroke-linecap="round"><path d="M4 19.5V5.5A1.5 1.5 0 015.5 4H18a1 1 0 011 1v14a1 1 0 01-1 1H6"/><path d="M9 8h6M9 12h6"/></svg></div>
+          <b>出题</b><span>medgen</span>
+          <div class="tick"><svg viewBox="0 0 16 16" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M3 8.4l3.2 3.2L13 4.8"/></svg></div>
+        </div>
+        <div class="link"><span class="flow"></span></div>
+        <div class="node" data-i="1">
+          <div class="no">02</div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9cc0ff" stroke-width="1.4" stroke-linecap="round"><path d="M9 3h6M10 3v6.2L5.4 18a1.8 1.8 0 001.5 2.7h10.2A1.8 1.8 0 0018.6 18L14 9.2V3"/><path d="M7.6 15h8.8"/></svg></div>
+          <b>质检</b><span>medqc</span>
+          <div class="tick"><svg viewBox="0 0 16 16" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M3 8.4l3.2 3.2L13 4.8"/></svg></div>
+        </div>
+        <div class="link"><span class="flow"></span></div>
+        <div class="node" data-i="2">
+          <div class="no">03</div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9cc0ff" stroke-width="1.4" stroke-linecap="round"><path d="M14.2 6.2l3.6 3.6M4.5 19.5l3.1-.6L19.2 7.3a1.6 1.6 0 000-2.3l-.2-.2a1.6 1.6 0 00-2.3 0L5.1 16.4z"/></svg></div>
+          <b>修复</b><span>medfix</span>
+          <div class="tick"><svg viewBox="0 0 16 16" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M3 8.4l3.2 3.2L13 4.8"/></svg></div>
+        </div>
+        <div class="link"><span class="flow"></span></div>
+        <div class="node" data-i="3">
+          <div class="no">04</div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9cc0ff" stroke-width="1.4" stroke-linecap="round"><path d="M4 5.5A2.5 2.5 0 016.5 3H20v15.5H6.5A2.5 2.5 0 004 21z"/><path d="M9 8h6M9 12h4"/></svg></div>
+          <b>主编</b><span>medreview</span>
+          <div class="tick"><svg viewBox="0 0 16 16" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M3 8.4l3.2 3.2L13 4.8"/></svg></div>
+        </div>
+        <div class="link"><span class="flow"></span></div>
+        <div class="node" data-i="4">
+          <div class="no">05</div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#9cc0ff" stroke-width="1.4" stroke-linecap="round"><path d="M12 3.5l8 4.5-8 4.5-8-4.5z"/><path d="M4 12.5l8 4.5 8-4.5M4 16.5l8 4.5 8-4.5"/></svg></div>
+          <b>成册</b><span>publish</span>
+          <div class="tick"><svg viewBox="0 0 16 16" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round"><path d="M3 8.4l3.2 3.2L13 4.8"/></svg></div>
+        </div>
+      </div>
+      <div class="gate" id="s5-gate"><b>FAIL == 0</b><span>D1–D20 二十维质检 · 全程可溯源</span></div>
+      <div class="trace" id="s5-trace"><span>TRACE LOG</span><i></i>每一条修改记录可回放 · 全批次可追溯</div>
+    </section>
+
+    <!-- SR 规则与演进 -->
+    <section class="scene sr" id="sr">
+      <div class="sr-head">
+        <div class="eyebrow"><i class="dot"></i>04 / 规则与演进</div>
+        <h2>
+          <span class="mask"><span id="sr-l1">不赌模型零失误，</span></span>
+          <span class="mask"><span id="sr-l2">只赌管线兜得住。</span></span>
+        </h2>
+        <p class="sr-sub" id="sr-sub">模型仍有概率出错 —— Harness 收住自由度，管线兜住结果。</p>
+      </div>
+      <div class="sr-body" id="sr-body">
+        <div class="sr-beat" id="sr-beat-a">
+          <div class="rule-head"><span>RULES · 工程约束</span><span>04</span></div>
+          <div class="sr-rules">
+            <div class="rule"><span class="rno">R1</span><div><b>先管线，后模型</b><p>五阶段固定输入输出，模型只填其中一段。</p></div></div>
+            <div class="rule"><span class="rno">R2</span><div><b>Harness 收口</b><p>结构、格式、判分口径由代码校验，不靠模型自觉。</p></div></div>
+            <div class="rule"><span class="rno">R3</span><div><b>引用可查</b><p>页码反查 + GoldenSet 交叉验证，来源不合格即 FAIL。</p></div></div>
+            <div class="rule"><span class="rno">R4</span><div><b>每步可回放</b><p>中间产物、批次状态与日志留痕，错了能定位。</p></div></div>
+          </div>
+        </div>
+
+        <div class="sr-beat" id="sr-beat-b">
+          <div class="sr-log">
+            <div class="log-head"><span>CHANGELOG · 演进</span><span>2026</span></div>
+            <div class="log-row"><span class="v">V1.0</span><div><b>技能包首发</b><p>第一次跑通从出题到成册的完整链路。</p></div><span></span></div>
+            <div class="log-row"><span class="v">V2.x</span><div><b>契约化重构</b><p>阶段输入输出写成 schema，摄入即校验。</p></div><span></span></div>
+            <div class="log-row"><span class="v">HC-18</span><div><b>真题锚定</b><p>每批约 1/5 考研原题，逐条比对一致性。</p></div><span></span></div>
+            <div class="log-row"><span class="v">GATE</span><div><b>门禁上线</b><p>断链、来源不合格，直接拒绝部署。</p></div><span></span></div>
+            <div class="log-row warn" id="sr-warn"><span class="v">V5.1</span><div><b>7 科 1,848 题</b><p>资料重排；批次 039 主动撤回。</p></div><span class="tag" id="sr-tag">撤回 039</span></div>
+            <div class="log-note" id="sr-note">199 题 · 主动撤回，待并集后再发</div>
+          </div>
+          <div class="sr-side">
+            <div class="sr-proof" id="sr-proof">
+              <div class="sp"><i></i><span>每批约 1/5 考研原题<br>GoldenSet 9,616 条比对</span></div>
+              <div class="sp"><i></i><span>页码反查 · 断链与不合格来源<br>一律拒绝部署</span></div>
+              <div class="sp-foot" id="sr-foot"><span class="ok">✓</span>90 项测试 + 门禁 · 全绿才发布</div>
+            </div>
+            <p class="sr-punch" id="sr-punch"><span class="mask"><span id="sr-punch-in">不是让模型更准，<br>是让错误出不来。</span></span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- S6 收束 -->
+    <section class="scene s6" id="s6">
+      <div class="s6-top" id="s6-top">
+        <div class="s6-num"><b id="s6-big">0</b></div>
+        <div class="s6-cap">道题 · 逐题质检</div>
+        <div class="s6-stats">
+          <div class="s6-stat"><b id="s6-1">0</b><span>学科覆盖</span></div>
+          <div class="s6-stat"><b id="s6-2">0</b><span>阶段管线</span></div>
+          <div class="s6-stat"><b id="s6-3">0</b><span>难度锚点</span></div>
+          <div class="s6-stat"><b id="s6-4">0</b><span>在线重点题</span></div>
+        </div>
+      </div>
+      <div class="s6-end" id="s6-end">
+        <div class="s6-lockup"><span class="mw">MW</span><b>MedAgentWork</b></div>
+        <p class="s6-tag">备考题严选，复习<em>可溯源</em></p>
+        <div class="s6-url"><span class="hint">打开即用 · 零安装</span><span class="sep"></span>med-review-site.pages.dev</div>
+        <div class="s6-fine">网页刷题 · 复习手册 · 题库 PDF</div>
+      </div>
+    </section>
+  </div>
+
+  <div class="brand-bug" id="brand-bug"><span class="m">MW</span><span>MEDAGENTWORK</span></div>
+  <div class="film-meta" id="film-meta">INTRO FILM · 2026</div>
+  <div class="flash" id="flash"></div>
+  <div class="wipe" id="wipe"></div>
+  <div class="progress"><i id="progress"></i></div>
+  <div class="vignette"></div>
+</div>
+
+<script>
+"use strict";
+/* ============================================================
+   时间轴引擎
+   - 所有视觉状态由 seek(t) 计算：同一时刻永远得到同一帧
+   - 场景重叠 0.6s 做交叉溶解，另有过场光带 wipe
+   ============================================================ */
+const TALL = FMT === "tall";
+const W = TALL ? 1080 : 1920;
+const H = TALL ? 1350 : 1080;
+const DUR = 58.0;
+const BOUNDARIES = [5.9, 11.6, 19.0, 26.0, 32.5, 47.5];
+
+const $ = (id) => document.getElementById(id);
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const E = {
+  out: (t) => 1 - Math.pow(1 - clamp(t), 3),
+  expo: (t) => (clamp(t) >= 1 ? 1 : 1 - Math.pow(2, -10 * clamp(t))),
+  inOut: (t) => { t = clamp(t); return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; },
+  back: (t) => { t = clamp(t); const c1 = 1.4, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); }
+};
+function seg(t, start, dur) { return E.out((t - start) / dur); }
+function fmtNum(n) { return Math.round(n).toLocaleString("en-US"); }
+function setT(el, v) { if (el) el.style.transform = v; }
+function setO(el, v) { if (el) el.style.opacity = v; }
+
+/* 固定种子随机（保证每帧一致） */
+function rng(seed) {
+  let s = seed >>> 0;
+  return function () {
+    s = (s * 1664525 + 1013904223) >>> 0;
+    return s / 4294967296;
+  };
+}
+
+/* ---------- 背景 ---------- */
+const dust = $("dust");
+const dctx = dust.getContext("2d");
+dust.width = W; dust.height = H;
+const rand = rng(20261019);
+const motes = [];
+for (let i = 0; i < (TALL ? 54 : 76); i++) {
+  motes.push({
+    x: rand() * W, y: rand() * H, r: rand() * (TALL ? 2.6 : 2.2) + 0.6,
+    v: rand() * 10 + 4, tw: rand() * Math.PI * 2, sp: rand() * 1.4 + .5,
+    a: rand() * .35 + .12
+  });
+}
+const bokeh = [];
+for (let i = 0; i < 5; i++) {
+  bokeh.push({ x: rand() * W, y: rand() * H, r: rand() * 90 + 60, a: rand() * .05 + .025 });
+}
+function drawBg(t) {
+  dctx.clearRect(0, 0, W, H);
+  for (const b of bokeh) {
+    const g = dctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+    g.addColorStop(0, "rgba(103,153,254," + b.a + ")");
+    g.addColorStop(1, "rgba(103,153,254,0)");
+    dctx.fillStyle = g;
+    dctx.beginPath(); dctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); dctx.fill();
+  }
+  for (const m of motes) {
+    const y = (m.y + t * m.v) % (H + 40) - 20;
+    const a = m.a * (0.45 + 0.55 * Math.abs(Math.sin(t * m.sp + m.tw)));
+    dctx.fillStyle = "rgba(196,216,255," + a.toFixed(3) + ")";
+    dctx.fillRect(m.x, y, m.r, m.r);
+  }
+}
+/* 轨道环与地平线随场景轻微漂移 */
+const orbits = $("orbits");
+const horizon = $("horizon");
+function drawStageMeta(t) {
+  const sw = TALL ? 0.9 : 1;
+  orbits.style.transform = "rotate(" + (t * 0.9) + "deg) scale(" + (1 + 0.02 * Math.sin(t * .2)) + ")";
+  orbits.style.opacity = 0.55 + 0.1 * Math.sin(t * .4);
+  horizon.style.opacity = 0.35 + 0.25 * Math.sin(t * .3);
+  horizon.style.transform = "scaleX(" + sw + ")";
+}
+
+/* ---------- 品牌粒子字 ---------- */
+const logoCv = $("logo-canvas");
+const LW = 720, LH = 460;
+logoCv.width = LW; logoCv.height = LH;
+const lctx = logoCv.getContext("2d");
+let logoParts = [];
+(function buildLogo() {
+  const off = document.createElement("canvas");
+  off.width = LW; off.height = LH;
+  const c = off.getContext("2d");
+  const fs = 300;
+  c.font = "800 " + fs + 'px "Segoe UI","Noto Sans SC",sans-serif';
+  c.textAlign = "center"; c.textBaseline = "middle";
+  c.fillStyle = "#fff";
+  c.fillText("MW", LW / 2, LH / 2 + fs * .04);
+  const d = c.getImageData(0, 0, LW, LH).data;
+  const step = 5;
+  const r = rng(777);
+  for (let y = 0; y < LH; y += step) {
+    for (let x = 0; x < LW; x += step) {
+      if (d[(y * LW + x) * 4 + 3] > 128) {
+        const ang = r() * Math.PI * 2, rad = 260 + r() * 420;
+        logoParts.push({
+          hx: x + (r() - .5) * 2, hy: y + (r() - .5) * 2,
+          sx: LW / 2 + Math.cos(ang) * rad, sy: LH / 2 + Math.sin(ang) * rad * .6,
+          s: r() * 1.5 + 1.7, d: r() * .35, ph: r() * Math.PI * 2, v: r() * .35 + .5
+        });
+      }
+    }
+  }
+})();
+function drawLogo(p, t) {
+  lctx.clearRect(0, 0, LW, LH);
+  if (p <= 0) return;
+  for (const q of logoParts) {
+    const pp = E.expo(clamp((p - q.d) / (1 - q.d)));
+    const x = lerp(q.sx, q.hx, pp);
+    const y = lerp(q.sy, q.hy, pp);
+    const a = pp * (0.20 + 0.42 * Math.abs(Math.sin(t * q.v + q.ph)));
+    lctx.fillStyle = "rgba(124,166,255," + a.toFixed(3) + ")";
+    lctx.fillRect(x, y, q.s, q.s);
+  }
+  /* 高光扫过 */
+  const sweep = clamp((t - 2.3) / 1.4);
+  if (sweep > 0 && sweep < 1) {
+    const sx = lerp(-80, LW + 80, E.inOut(sweep));
+    const g = lctx.createLinearGradient(sx - 90, 0, sx + 90, 0);
+    g.addColorStop(0, "rgba(207,224,255,0)");
+    g.addColorStop(.5, "rgba(240,247,255,.55)");
+    g.addColorStop(1, "rgba(207,224,255,0)");
+    lctx.globalCompositeOperation = "source-atop";
+    lctx.fillStyle = g;
+    lctx.fillRect(0, 0, LW, LH);
+    lctx.globalCompositeOperation = "source-over";
+  }
+}
+
+/* ---------- S2 纸张 ---------- */
+const pagesBox = $("s2-pages");
+const pages = [];
+(function buildPages() {
+  const r = rng(4242);
+  const N = 12;
+  for (let i = 0; i < N; i++) {
+    const el = document.createElement("div");
+    el.className = "s2-page";
+    let html = '<span class="tab"></span>';
+    const lines = 5 + Math.floor(r() * 3);
+    for (let j = 0; j < lines; j++) {
+      html += '<div class="ln' + (j === 1 || j === 3 ? " s" : "") + '" style="width:' + (55 + r() * 45) + '%"></div>';
+    }
+    html += '<span class="pg">P.' + (200 + Math.floor(r() * 500)) + "</span>";
+    el.innerHTML = html;
+    pagesBox.appendChild(el);
+    const side = r() < .5 ? -1 : 1;
+    pages.push({
+      el,
+      bx: TALL ? (0.12 + r() * .76) : (0.56 + r() * .36),
+      by: TALL ? (0.09 + r() * .34) : (0.10 + r() * .78),
+      rot: (r() - .5) * 34,
+      rz: (r() - .5) * 16,
+      sc: .78 + r() * .34,
+      drift: r() * Math.PI * 2,
+      bs: side
+    });
+  }
+})();
+
+/* ---------- S5 质检矩阵 ---------- */
+const matrix = $("matrix");
+for (let i = 0; i < 120; i++) matrix.appendChild(document.createElement("i"));
+const mDots = Array.prototype.slice.call(matrix.children);
+
+/* ---------- S3 选项 / 光标位置 ---------- */
+const optEls = Array.prototype.slice.call(document.querySelectorAll("#s3-opts .opt"));
+const cursor = $("s3-cursor");
+const card = $("s3-card");
+let measured = null;
+function measure() {
+  const st = document.querySelector(".s3-stage").getBoundingClientRect();
+  const c3 = optEls[2].getBoundingClientRect();
+  const c1 = optEls[0].getBoundingClientRect();
+  const pill = $("s3-mistake").getBoundingClientRect();
+  const vd = $("s3-verdict").getBoundingClientRect();
+  measured = {
+    start: { x: st.width * (TALL ? .80 : .72), y: st.height * (TALL ? .92 : .88) },
+    tap: { x: c3.left - st.left + c3.width * .69, y: c3.top - st.top + c3.height * .58 },
+    optTop: c1.top - st.top,
+    optH: c3.height,
+    pill: { x: pill.left - st.left + pill.width * .2, y: pill.top - st.top + pill.height * .5 },
+    verdict: { x: vd.left - st.left + 30, y: vd.top - st.top + vd.height * .5 }
+  };
+}
+
+/* ---------- 渲染 ---------- */
+const s1 = $("s1"), s2 = $("s2"), s3 = $("s3"), s4 = $("s4"), s5 = $("s5"), sr = $("sr"), s6 = $("s6");
+const scenes = [
+  { el: s1, start: 0, end: 5.9, fn: renderS1 },
+  { el: s2, start: 5.9, end: 11.6, fn: renderS2 },
+  { el: s3, start: 11.6, end: 19.0, fn: renderS3 },
+  { el: s4, start: 19.0, end: 26.0, fn: renderS4 },
+  { el: s5, start: 26.0, end: 32.5, fn: renderS5 },
+  { el: sr, start: 32.5, end: 47.5, fn: renderSR },
+  { el: s6, start: 47.5, end: 62.0, fn: renderS6 }
+];
+
+function renderS1(L) {
+  const p = E.expo(clamp((L - .35) / 2.0));
+  drawLogo(p, L);
+  setO($("s1-eyebrow"), seg(L, .85, .7));
+  const l1 = seg(L, 1.25, 1.0), l2 = seg(L, 1.45, 1.0);
+  setT($("s1-l1"), "translateY(" + ((1 - l1) * 112).toFixed(2) + "%)");
+  setT($("s1-l2"), "translateY(" + ((1 - l2) * 112).toFixed(2) + "%)");
+  const lede = seg(L, 2.55, .8);
+  setO($("s1-lede"), lede);
+  setT($("s1-lede"), "translateY(" + ((1 - lede) * 16).toFixed(2) + "px)");
+  const art = seg(L, .2, 1.2);
+  setO(document.querySelector(".s1-art"), art);
+  setT(document.querySelector(".s1-art"), "scale(" + (0.94 + .06 * art).toFixed(4) + ")");
+  /* 出场时整体轻微上浮 */
+  const out = seg(L, 4.9, 1.0);
+  setT(document.querySelector(".s1-copy"), "translateY(" + (-26 * out).toFixed(2) + "px)");
+}
+
+function renderS2(L) {
+  const q = seg(L, .05, .5);
+  setO($("s2-q"), q);
+  setT($("s2-q"), "translateY(" + ((1 - q) * 22).toFixed(2) + "px)");
+  const a = seg(L, .3, .9), b = seg(L, .45, .9);
+  setT($("s2-a"), "translateY(" + ((1 - a) * 112).toFixed(2) + "%)");
+  setT($("s2-b"), "translateY(" + ((1 - b) * 112).toFixed(2) + "%)");
+  const tag = seg(L, 3.55, .7);
+  setO($("s2-tag"), tag);
+  setT($("s2-tag"), "translateY(" + ((1 - tag) * 14).toFixed(2) + "px)");
+
+  const align = E.inOut(clamp((L - 3.05) / 1.5));
+  pages.forEach((p, i) => {
+    const driftX = Math.sin(L * .5 + p.drift) * 16;
+    const driftY = Math.cos(L * .42 + p.drift) * 12;
+    const top = i >= 7;
+    const k = i - 9;
+    const x = lerp(p.bx * W + driftX, W * (TALL ? .5 : .665) - 110 + k * 9, align);
+    const y = lerp(p.by * H + driftY, H * (TALL ? .695 : .385) - 140 + k * 11, align);
+    const rot = lerp(p.rot, k * 3.2, align);
+    const rz = lerp(p.rz, k * 1.6, align);
+    const sc = lerp(p.sc, top ? 1 : .96, align);
+    const op = seg(L, .02 + i * .03, .6) * lerp(1, top ? .98 : 0, align);
+    p.el.style.zIndex = String(i);
+    const pg = p.el.querySelector(".pg");
+    if (pg) pg.style.opacity = (1 - align).toFixed(3);
+    p.el.style.opacity = op.toFixed(3);
+    p.el.style.transform =
+      "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0) rotate(" + rz + "deg) rotateY(" + rot + "deg) scale(" + sc + ")";
+  });
+}
+
+function renderS3(L) {
+  const cIn = seg(L, .12, .95);
+  setO($("s3-card"), cIn);
+  setT($("s3-card"),
+    "perspective(1500px) translateY(" + ((1 - cIn) * 64).toFixed(1) + "px) rotateY(" + ((1 - cIn) * 9).toFixed(2) + "deg) scale(" + (0.94 + .06 * cIn).toFixed(3) + ")");
+  setO(document.querySelector(".s3-copy .eyebrow"), seg(L, .5, .6));
+  const h2 = seg(L, .68, .8);
+  setO(document.querySelector(".s3-copy .h2"), h2);
+  setT(document.querySelector(".s3-copy .h2"), "translateY(" + ((1 - h2) * 26).toFixed(1) + "px)");
+  document.querySelectorAll(".s3-copy .bullets li").forEach((li, i) => {
+    const p = seg(L, 1.25 + i * .18, .7);
+    li.style.opacity = p;
+    li.style.transform = "translateY(" + ((1 - p) * 14).toFixed(1) + "px)";
+  });
+  optEls.forEach((el, i) => {
+    const p = seg(L, .95 + i * .085, .55);
+    el.style.opacity = p;
+    el.style.transform = "translateX(" + ((1 - p) * 24).toFixed(1) + "px)";
+  });
+
+  /* 光标：移入 → 点击 → 停留 */
+  const move = E.inOut(clamp((L - 1.7) / 1.0));
+  const tap = L > 2.72;
+  const cx = lerp(measured.start.x, measured.tap.x, move);
+  const cy = lerp(measured.start.y, measured.tap.y, move);
+  const cs = (tap ? 0.86 : 1) * (L < 1.45 ? 0 : 1);
+  setO(cursor, seg(L, 1.45, .3));
+  cursor.style.transform = "translate(" + cx.toFixed(1) + "px," + cy.toFixed(1) + "px) scale(" + cs.toFixed(2) + ")";
+  const ring = cursor.querySelector("i");
+  const rp = clamp((L - 2.72) / .5);
+  ring.style.opacity = (1 - rp) * (tap ? 1 : .25);
+  ring.style.transform = "scale(" + (0.7 + rp * 1.6).toFixed(2) + ")";
+
+  /* 选项判定 */
+  optEls[2].className = "opt" + (L > 2.8 ? " wrong" : "");
+  optEls[1].className = "opt" + (L > 2.86 ? " correct" : "");
+  const vd = seg(L, 3.0, .55);
+  setO($("s3-verdict"), vd);
+  setT($("s3-verdict"), "translateY(" + ((1 - vd) * 12).toFixed(1) + "px)");
+  const ex = seg(L, 3.75, .6);
+  setO($("s3-explain"), ex);
+  setT($("s3-explain"), "translateY(" + ((1 - ex) * 12).toFixed(1) + "px)");
+
+  /* 错题计数 */
+  const mk = seg(L, 3.35, .5);
+  setO($("s3-mistake"), seg(L, .2, .5));
+  const hot = L > 4.15;
+  $("s3-mistake").classList.toggle("hot", hot);
+  $("s3-mk-n").textContent = hot ? "13" : "12";
+  const fly = clamp((L - 3.45) / .8);
+  if (fly > 0 && fly < 1) {
+    const x = lerp(measured.verdict.x, measured.pill.x, E.inOut(fly));
+    const y = lerp(measured.verdict.y, measured.pill.y, E.inOut(fly));
+    setO($("s3-mistake"), Math.max(seg(L, .2, .5), 0));
+  }
+
+  /* 卡片推进：末段向右滑出，交给下一幕 */
+  const out = seg(L, 6.4, 1.0);
+  setT($("s3-card"),
+    "perspective(1500px) translateX(" + (out * 90).toFixed(1) + "px) translateY(" + ((1 - cIn) * 64 - out * 26).toFixed(1) + "px) rotateY(" + ((1 - cIn) * 9 - out * 7).toFixed(2) + "deg) scale(" + (0.94 + .06 * cIn) + ")");
+}
+
+function renderS4(L) {
+  const copyIn = seg(L, 0, .6);
+  document.querySelectorAll(".s4-copy .eyebrow, .s4-copy .h2").forEach((el) => {
+    el.style.opacity = copyIn;
+    el.style.transform = "translateY(" + ((1 - copyIn) * 22).toFixed(1) + "px)";
+  });
+  document.querySelectorAll(".s4-copy .bullets li").forEach((li, i) => {
+    const p = seg(L, .45 + i * .16, .7);
+    li.style.opacity = p;
+    li.style.transform = "translateY(" + ((1 - p) * 14).toFixed(1) + "px)";
+  });
+
+  const fin = seg(L, 0, .8);
+  const back = $("s4-back"), front = $("s4-front");
+  setO(back, fin * .55);
+  setT(back, "translate(" + (58 - 10 * fin).toFixed(1) + "px," + (30 - 6 * fin).toFixed(1) + "px) rotate(" + (2.4 - 1.0 * fin).toFixed(2) + "deg)");
+  setO(front, seg(L, .25, .9));
+  setT(front, "translateY(" + ((1 - fin) * 46).toFixed(1) + "px) rotateX(" + ((1 - fin) * 4).toFixed(2) + "deg)");
+
+  /* 高亮划线 */
+  const hp = clamp((L - 1.9) / 1.05);
+  const mark = $("s4-mark");
+  mark.style.backgroundSize = (E.inOut(hp) * 100).toFixed(1) + "% 44%";
+
+  const org = seg(L, 2.95, .7);
+  setO($("s4-origin"), org);
+  setT($("s4-origin"), "translateX(" + ((1 - org) * 18).toFixed(1) + "px)");
+
+  const note = seg(L, 2.15, .65);
+  const noteEl = $("s4-note");
+  if (noteEl) {
+    noteEl.style.opacity = note;
+    noteEl.style.transform = "translateY(" + ((1 - note) * 12).toFixed(1) + "px)";
+  }
+  document.querySelectorAll(".doc-tags span").forEach((el, i) => {
+    const p = seg(L, 3.2 + i * .13, .5);
+    el.style.opacity = p;
+    el.style.transform = "translateY(" + ((1 - p) * 10).toFixed(1) + "px)";
+  });
+
+  /* 揭页：整叠向左掀起 */
+  const flip = E.inOut(clamp((L - 4.35) / 1.5));
+  setT(front, "translateY(" + ((1 - fin) * 46).toFixed(1) + "px) rotateY(" + (-flip * 118).toFixed(2) + "deg) translateZ(" + (flip * 30).toFixed(1) + "px)");
+  setO($("s4-shadow"), flip * .9);
+  setO(back, Math.max(fin * .55, flip * .9));
+  setT(back, "translate(" + (58 - 58 * flip).toFixed(1) + "px," + (30 - 30 * flip).toFixed(1) + "px) rotate(" + (2.4 - 3.6 * flip).toFixed(2) + "deg)");
+}
+
+function renderS5(L) {
+  const head = seg(L, 0, .7);
+  document.querySelectorAll(".s5-head > *").forEach((el, i) => {
+    const p = seg(L, .02 + i * .12, .6);
+    el.style.opacity = p;
+    el.style.transform = "translateY(" + ((1 - p) * 24).toFixed(1) + "px)";
+  });
+
+  const nodes = document.querySelectorAll("#s5-pipe .node");
+  const links = document.querySelectorAll("#s5-pipe .link .flow");
+  const cols = TALL ? 10 : 20;
+  mDots.forEach((d, i) => {
+    const col = i % cols, row = Math.floor(i / cols);
+    const v = Math.sin((L * 2.1) - col * .38 - row * .5) * .5 + .5;
+    const lit = clamp((v - .55) / .45);
+    d.style.opacity = seg(L, .45, .8).toFixed(3);
+    d.style.background = lit > .2
+      ? "rgba(103,153,254," + (.22 + .55 * lit).toFixed(3) + ")"
+      : "rgba(255,255,255,.14)";
+    d.style.boxShadow = lit > .55 ? "0 0 8px rgba(103,153,254,.55)" : "none";
+    d.style.transform = "scale(" + (1 + lit * .9).toFixed(2) + ")";
+  });
+  const base = TALL ? 880 : 1265;
+  nodes.forEach((n, i) => {
+    const p = seg(L, .2 + i * .15, .65);
+    const active = L > 1.0 + i * .4;
+    n.style.opacity = p;
+    n.style.transform = "translateY(" + ((1 - p) * (TALL ? 26 : 20)).toFixed(1) + "px) scale(" + (0.96 + .04 * p).toFixed(3) + ")";
+    n.classList.toggle("lit", active);
+    n.querySelector(".tick").style.opacity = active ? 1 : 0;
+  });
+  links.forEach((f, i) => {
+    const start = 1.1 + i * .4;
+    if (L < start) { f.style.opacity = 0; return; }
+    const p = ((L - start) % 1.5) / 1.5;
+    f.style.opacity = .95;
+    if (TALL) { f.style.top = (p * 100).toFixed(2) + "%"; f.style.left = "-2px"; }
+    else { f.style.left = (p * 100).toFixed(2) + "%"; f.style.top = "-2px"; }
+  });
+
+  const gate = seg(L, 3.0, .7);
+  setO($("s5-gate"), gate);
+  const trace = seg(L, 3.4, .7);
+  setO($("s5-trace"), trace);
+  setT($("s5-trace"), "translateY(" + ((1 - trace) * 8).toFixed(1) + "px)");
+  setT($("s5-gate"), "translateX(-50%) translateY(" + ((1 - gate) * 16).toFixed(1) + "px) scale(" + (0.94 + .06 * E.back(gate)).toFixed(3) + ")");
+
+  /* 末段：整组向后收，淡出 */
+  const out = seg(L, 6.0, 1.0);
+  setO($("s5-pipe"), 1 - out);
+  setT($("s5-pipe"), "scale(" + (1 - out * .06).toFixed(3) + ")");
+  setO($("s5-gate"), gate * (1 - out));
+  setO($("s5-trace"), trace * (1 - out));
+}
+
+function renderSR(L) {
+  /* 标题：两拍共用 */
+  const eb = seg(L, .02, .5);
+  const eyebrow = document.querySelector(".sr-head .eyebrow");
+  setO(eyebrow, eb);
+  setT(eyebrow, "translateY(" + ((1 - eb) * 14).toFixed(1) + "px)");
+  const l1 = seg(L, .08, .9), l2 = seg(L, .2, .9);
+  setT($("sr-l1"), "translateY(" + ((1 - l1) * 112).toFixed(2) + "%)");
+  setT($("sr-l2"), "translateY(" + ((1 - l2) * 112).toFixed(2) + "%)");
+  const sub = seg(L, .45, .7);
+  setO($("sr-sub"), sub);
+  setT($("sr-sub"), "translateY(" + ((1 - sub) * 12).toFixed(1) + "px)");
+
+  /* A 拍：规则 */
+  const aIn = seg(L, 7.05, .7), bIn = seg(L, 7.45, .85);
+  setO($("sr-beat-a"), 1 - aIn);
+  setT($("sr-beat-a"), "translateY(" + (-aIn * 22).toFixed(1) + "px)");
+  setO($("sr-beat-b"), bIn);
+  setT($("sr-beat-b"), "translateY(" + ((1 - bIn) * 26).toFixed(1) + "px)");
+
+  setO(document.querySelector(".rule-head"), seg(L, .6, .5));
+  document.querySelectorAll(".sr-rules .rule").forEach((el, i) => {
+    const q = seg(L, .75 + i * .45, .7);
+    el.style.opacity = q;
+    el.style.transform = "translateX(" + ((1 - q) * 20).toFixed(1) + "px)";
+  });
+
+  /* B 拍：演进 */
+  setO(document.querySelector(".log-head"), seg(L, 7.7, .6));
+  document.querySelectorAll(".sr-log .log-row").forEach((el, i) => {
+    const q = seg(L, 8.0 + i * .5, .6);
+    el.style.opacity = q;
+    el.style.transform = "translateX(" + ((1 - q) * 16).toFixed(1) + "px)";
+  });
+  const warn = seg(L, 10.6, .55);
+  $("sr-warn").classList.toggle("on", L > 10.5);
+  setO($("sr-tag"), warn);
+  setT($("sr-tag"), "scale(" + (0.9 + .1 * E.back(warn)).toFixed(3) + ")");
+  const note = seg(L, 11.1, .6);
+  setO($("sr-note"), note);
+  setT($("sr-note"), "translateY(" + ((1 - note) * 6).toFixed(1) + "px)");
+
+  /* 证据条 */
+  const pf = seg(L, 11.5, .7);
+  setT($("sr-proof"), "translateY(" + ((1 - pf) * 14).toFixed(1) + "px)");
+  document.querySelectorAll(".sr-proof .sp").forEach((el, i) => {
+    el.style.opacity = seg(L, 11.6 + i * .25, .6);
+  });
+  const foot = seg(L, 12.15, .6);
+  setO($("sr-foot"), foot);
+  setT($("sr-foot"), "translateY(" + ((1 - foot) * 8).toFixed(1) + "px)");
+
+  /* 收束句 */
+  const punch = seg(L, 12.5, 1.15);
+  setT($("sr-punch-in"), "translateY(" + ((1 - punch) * 112).toFixed(2) + "%)");
+}
+
+function renderS6(L) {
+  const p = E.inOut(clamp(L / 2.2));
+  const big = 5791 * p;
+  $("s6-big").textContent = fmtNum(big);
+  $("s6-1").textContent = Math.round(23 * E.out(clamp((L - .2) / 1.2)));
+  $("s6-2").textContent = Math.round(5 * E.out(clamp((L - .35) / 1.2)));
+  $("s6-3").textContent = Math.round(280 * E.out(clamp((L - .5) / 1.4)));
+  $("s6-4").textContent = fmtNum(1848 * E.out(clamp((L - .65) / 1.6)));
+
+  const topIn = seg(L, .05, .8);
+  setO($("s6-top"), topIn);
+  setT($("s6-top"), "translateY(" + ((1 - topIn) * 26).toFixed(1) + "px)");
+
+  const topOut = seg(L, 4.35, .8);
+  setO($("s6-top"), topIn * (1 - topOut));
+
+  const end = seg(L, 4.55, .95);
+  setO($("s6-end"), end);
+  setT($("s6-end"), "translateY(-50%) scale(" + (0.96 + .04 * end).toFixed(3) + ")");
+  const zoom = 1 + clamp((L - 6.0) / 6.0) * .02;
+  $("s6-end").style.transform = "translateY(-50%) scale(" + (zoom * (0.96 + .04 * end)).toFixed(4) + ")";
+}
+
+/* 常驻元素 */
+function renderMeta(t) {
+  const bug = seg(t, 4.15, .8);
+  setO($("brand-bug"), bug);
+  setT($("brand-bug"), "translateY(" + ((1 - bug) * 10).toFixed(1) + "px)");
+  setO($("film-meta"), seg(t, 4.35, .8));
+  $("progress").style.width = (clamp(t / DUR) * 100).toFixed(3) + "%";
+
+  /* 过场光带 */
+  let wi = 0, wp = 0;
+  for (const b of BOUNDARIES) {
+    const d = Math.abs(t - b);
+    if (d < .48) { wi = 1; wp = clamp((t - (b - .48)) / .96); }
+  }
+  const wipeEl = $("wipe"), flash = $("flash");
+  if (wi) {
+    wipeEl.style.opacity = (Math.sin(Math.PI * wp) * .95).toFixed(3);
+    wipeEl.style.transform = "translateX(" + lerp(-280, W, E.inOut(wp)).toFixed(1) + "px)";
+    flash.style.opacity = (Math.sin(Math.PI * wp) * .55).toFixed(3);
+  } else {
+    wipeEl.style.opacity = 0; flash.style.opacity = 0;
+  }
+}
+
+/* 场景显隐：叠化 + 轻微缩放/模糊 */
+function applyScenes(t) {
+  scenes.forEach((s) => {
+    const local = t - s.start;
+    const dur = s.end - s.start;
+    const visible = local > -.4 && local < dur + .4;
+    s.el.style.visibility = visible ? "visible" : "hidden";
+    if (!visible) { s.el.style.opacity = 0; return; }
+    /* 旧幕在新幕开始前就退净：避免两幕内容叠在一起（转场由光带遮住） */
+    const din = clamp((local + .15) / .45), dout = clamp((dur - local + .18) / .42);
+    const op = Math.min(din, dout);
+    s.el.style.opacity = clamp(op).toFixed(3);
+    s.el.style.transform = "scale(" + (1.015 - .015 * E.out(op)).toFixed(4) + ")";
+    s.el.style.filter = "blur(" + ((1 - op) * 10).toFixed(2) + "px)";
+    if (s.fn) s.fn(local);
+  });
+}
+
+function seek(ms) {
+  const t = clamp(ms / 1000, 0, DUR);
+  drawBg(t);
+  drawStageMeta(t);
+  applyScenes(t);
+  renderMeta(t);
+}
+
+/* 就绪：等字体 + 完成一次测量 */
+window.__ready = false;
+window.__seek = seek;
+window.__meta = { width: W, height: H, duration: DUR, format: FMT };
+if (new URLSearchParams(location.search).get("clean") === "1") {
+  var st0 = document.createElement("style");
+  st0.textContent = ".progress,.brand-bug,.film-meta{display:none}";
+  document.head.appendChild(st0);
+}
+document.fonts.ready.then(() => {
+  measure();
+  seek(0);
+  requestAnimationFrame(() => { window.__ready = true; });
+});
+/* 预览用：未接 renderer 时自动播放（?play=1） */
+if (new URLSearchParams(location.search).get("play") === "1") {
+  document.fonts.ready.then(() => {
+    const t0 = performance.now();
+    (function loop(now) { seek(now - t0); requestAnimationFrame(loop); })(t0);
+  });
+}
+</script>
+</body>
+</html>

@@ -98,3 +98,8 @@ Thumbs.db
 # ── 本地工具产物（Trae / WorkBuddy 生成，仅本机有效，不入库）──
 .trae-html-share-packages/
 .workbuddy/
+
+# Agent 本地记忆与渲染期临时产物（不入库、不上站）
+.workbuddy-ai/
+tools/_srpreview/
+tools/_shots*/

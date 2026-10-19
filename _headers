@@ -21,3 +21,7 @@
   Cache-Control: public, max-age=86400
 /icon-512.png
   Cache-Control: public, max-age=86400
+
+# 介绍片静态资源（封面 + MP4）：容许浏览器缓存一周，避免重复拉 7.8MB 视频
+/assets/intro/*
+  Cache-Control: public, max-age=604800
