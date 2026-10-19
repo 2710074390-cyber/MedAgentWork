@@ -44,6 +44,10 @@ self.addEventListener('fetch', e => {
   try { u = new URL(req.url); } catch (_) { return; }
   if (u.origin !== location.origin) return;
 
+  /* /drill 自 2026-10-20 起是 302 跳到刷题源站。SW 用 fetch() 跟随重定向会把页面
+     URL 留在 /drill、相对路径 /api/* 全打回本站——必须放行，让浏览器原生跳转。 */
+  if (u.pathname === '/drill' || u.pathname.startsWith('/drill/')) return;
+
   /* 导航：network-first，离线回退应用壳（首页） */
   if (req.mode === 'navigate') {
     const isShell = u.pathname === '/' || u.pathname === '/index.html';

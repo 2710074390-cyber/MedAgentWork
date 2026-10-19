@@ -1,21 +1,20 @@
 /**
- * /drill/* → MedKit 刷题网页版（agentos 沙箱）反向代理。
+ * /drill/* → MedKit 刷题网页版（agentos 沙箱）。
  *
- * 为什么用代理而不是直接给外部链接：
- * - 同域：cookie（会话）落在 pages.dev 上，Set-Cookie 原样透传即生效；
- * - 用户看到的是 med-review-site.pages.dev/drill，与本站一体。
+ * 2026-10-20 起：**页面直接 302 到源站**，不再把整站反代过来。
+ * 原因：反代链路是「浏览器 → Cloudflare 边缘 → 北京沙箱」，每次 API 往返实测
+ * 1.4~7.5 秒；直连源站同一次调用只要 0.45 秒。刷题页一次会话要打几十次接口，
+ * 这笔过路费省不得。站点上的「做题」入口链接不必改——点 /drill 就跳过去。
  *
- * 路径映射：/drill → / ；/drill/api/x → /api/x（查询串原样保留）。
+ * 仍保留反代的部分：/drill/api/*。
+ * 旧缓存页（SW 或浏览器里的 /drill 页面）仍在 pages.dev 域上，它的相对路径
+ * 请求会打到 /drill/api/*；这条通道留着，老页面不会被一脚踢死。
+ *
+ * 路径映射：/drill → 302 → UPSTREAM/ ；/drill/api/x → 反代到 UPSTREAM/api/x。
  * 注意剥掉 content-encoding / content-length：Workers fetch 会自动解压，
  * 原样透传这两个头会让浏览器按压缩流解已解压的 body（花屏）。
  *
- * 2026-10-19：源站是单实例沙箱，空闲会休眠/重启，那一刻 Cloudflare 连不上
- * 源站就直接甩 522 官方错误页——用户只看到 “Connection timed out”，
- * 且页面不会自己恢复。这里兜住三件事：
- *   1) GET/HEAD 失败重试（300ms / 900ms 退避），挡住瞬断与刚唤醒的第一跳；
- *   2) 每个子请求 12s 超时，避免一次卡死把整个边缘请求拖穿；
- *   3) 仍旧失败时回自己的 503：页面站给一张「正在唤醒，几秒后自动重试」的卡，
- *      接口路径给 JSON 503（前端 toast 能直接显示 detail）。
+ * 2026-10-19 的 522 兜底（GET 重试 / 12s 超时 / 「正在唤醒」页）保留在反代分支上。
  */
 
 const UPSTREAM = "https://senior-quiz-app.app.workbuddy.host";
@@ -31,6 +30,19 @@ export async function onRequest(context) {
   const { request } = context;
   const url = new URL(request.url);
   const path = url.pathname.replace(/^\/drill/, "") || "/";
+
+  /* 页面类请求（GET/HEAD 且非 /api/）→ 直接跳源站，浏览器之后所有请求都在
+     源站同域直连，不再经过 Cloudflare → 北京这一跳。302 让源站域名变更时
+     不用等浏览器缓存过期太久。 */
+  if ((request.method === "GET" || request.method === "HEAD") && !path.startsWith("/api/")) {
+    return new Response(null, {
+      status: 302,
+      headers: {
+        location: UPSTREAM + path + url.search,
+        "cache-control": "public, max-age=300",
+      },
+    });
+  }
 
   const headers = new Headers(request.headers);
   headers.delete("host");           // Host 由 fetch 目标决定，别把 pages.dev 的 Host 带给上游
