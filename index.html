@@ -718,101 +718,202 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
   .terminal { background:var(--term-bg-solid); }
   .card, .deck-tile, .cap-card, .sw-card, .quick, .btn-sec, .btn-ghost, .icon-btn, .fx-toggle, .chip, .term-pick-tabs, .nav-term-tabs, .mm-term-btn, .modal-bar .m-btn, .sw-ver, .to-top { background-image:none; background-color:var(--surface); }
 }
-/* ---------- 12 幕后管线 · 介绍动画（六镜 40 秒无声 · 零外部依赖） ----------
-   手法参考：Stripe 路径描线与光点流动 · GitHub landing 分阶段错峰入场 ·
-            Linear/Apple 的缓动与节奏；编排方法论取自项目内 gsap skill，未引入任何库
-   降级：无 JS → 六镜平铺静态全图；reduced-motion → 不自动播放（动画瞬时完成） */
-.intro-film {
-  position:relative; margin-top:22px; overflow:hidden;
-  background:radial-gradient(120% 90% at 50% 0%, var(--glow-1) 0%, transparent 62%), var(--surface);
-  border:1px solid var(--border); border-radius:var(--r);
-  padding:clamp(12px,2vw,18px) clamp(12px,2vw,18px) clamp(44px,5.5vw,56px);
-}
-.intro-film[data-armed="true"] .stage { display:grid; grid-template-columns:minmax(0,1fr); }
-.intro-film[data-armed="true"] .scene { grid-area:1 / 1; opacity:0; visibility:hidden; transition:opacity .42s ease, transform .42s ease; transform:translateY(10px) scale(.995); }
-.intro-film[data-armed="true"] .scene.is-active { opacity:1; visibility:visible; transform:none; }
-.intro-film .scene svg.scene-svg { display:block; width:100%; height:auto; }
-.intro-film .stamp { position:absolute; top:12px; right:14px; color:var(--text-3); font:500 12px/1.4 var(--f-mono); letter-spacing:.08em; }
-.intro-film .caption { position:absolute; left:0; right:0; bottom:12px; margin:0; padding:0 16px; text-align:center; color:var(--text); font-size:clamp(13px,1.4vw,16px); }
-.intro-film .caption::before { content:""; display:block; width:28px; height:2px; margin:0 auto 8px; background:var(--brand); opacity:.7; border-radius:var(--r-pill); }
-
-/* 动画基元：仅"武装后"才隐藏初态，无 JS 时六镜为静态全图 */
-.intro-film [data-anim] { transform-box:fill-box; transform-origin:center; }
-.intro-film[data-armed="true"] [data-anim] { opacity:0; }
-.intro-film .scene.is-active .a-pop { animation:ifPop .62s cubic-bezier(.22,1.2,.36,1) both; }
-.intro-film .scene.is-active .a-in { animation:ifUp .6s cubic-bezier(.2,.8,.3,1) both; }
-.intro-film .scene.is-active .a-drop { animation:ifDrop .6s cubic-bezier(.24,1.18,.34,1) both; }
-.intro-film .scene.is-active .a-fly { animation:ifFly .78s cubic-bezier(.2,.9,.28,1) both; }
-.intro-film .scene.is-active .a-draw { animation:ifDraw 1.05s cubic-bezier(.4,0,.2,1) both; }
-.intro-film .scene.is-active .a-drift { animation:ifDrift 5.2s ease-in-out infinite alternate; }
-.intro-film .scene.is-active .a-spin { animation:ifSpin 26s linear infinite; }
-.intro-film .scene.is-active .a-spin-rev { animation:ifSpin 34s linear infinite reverse; }
-.intro-film .scene.is-active .a-breathe { animation:ifBreathe 3.6s ease-in-out infinite; }
-.intro-film .scene.is-active .a-sweep { animation:ifSweep 2.6s cubic-bezier(.5,0,.3,1) 2.4s infinite; }
-/* 绕场景中心旋转的标签：用 view-box 让 transform-origin 落在用户坐标系 */
-.intro-film .scene svg g.a-spin,
-.intro-film .scene svg g.a-spin-rev { transform-box:view-box; }
-/* 暂停只冻结"持续型"动画；一次性入场动画照常走完，避免暂停中跳镜后画面空白 */
-.intro-film[data-paused="true"] .a-spin,
-.intro-film[data-paused="true"] .a-spin-rev,
-.intro-film[data-paused="true"] .a-breathe,
-.intro-film[data-paused="true"] .a-drift,
-.intro-film[data-paused="true"] .a-sweep { animation-play-state:paused; }
-
-@keyframes ifPop { 0%{opacity:0;transform:scale(.55) translateY(16px)} 62%{opacity:1;transform:scale(1.06) translateY(0)} 100%{opacity:1;transform:scale(1)} }
-@keyframes ifUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
-@keyframes ifDrop { 0%{opacity:0;transform:translateY(-26px) scale(.9)} 70%{opacity:1;transform:translateY(3px) scale(1.02)} 100%{opacity:1;transform:none} }
-@keyframes ifFly { 0%{opacity:0;transform:translate(var(--fx,0),var(--fy,0)) rotate(var(--fr,0deg)) scale(var(--fs,.9))} 100%{opacity:1;transform:none} }
-@keyframes ifDraw { from{stroke-dashoffset:var(--len,120)} to{stroke-dashoffset:0} }
-@keyframes ifDrift { from{transform:translateY(-5px) rotate(-1.1deg)} to{transform:translateY(6px) rotate(1.1deg)} }
-@keyframes ifSpin { to{transform:rotate(360deg)} }
-@keyframes ifBreathe { 0%,100%{opacity:.28;transform:scale(.94)} 50%{opacity:.92;transform:scale(1.04)} }
-@keyframes ifSweep { 0%{transform:translateY(0);opacity:0} 12%{opacity:.9} 88%{opacity:.9} 100%{transform:translateY(190px);opacity:0} }
-
-/* 描线：未激活 / 无 JS 时保持完整可见 */
-.intro-film .svg-draw { fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:var(--len,120); }
-.intro-film[data-armed="true"] .svg-draw { stroke-dashoffset:var(--len,120); }
-.intro-film .scene.is-active .svg-draw { stroke-dashoffset:0; }
-
-/* SVG 图形与文字（配色全部走站点令牌） */
-.intro-film .s-num { fill:var(--brand); font:500 11px var(--f-mono); letter-spacing:.06em; }
-.intro-film .s-label { fill:var(--text); font:500 13px var(--f-sans); }
-.intro-film .s-sub { fill:var(--text-3); font:400 11px var(--f-sans); }
-.intro-film .s-note { fill:var(--text-3); font:400 11px var(--f-mono); letter-spacing:.04em; }
-.intro-film .s-card { fill:var(--surface-2); stroke:var(--border-strong); }
-.intro-film .s-card-hot { fill:var(--brand-soft); stroke:var(--brand); }
-.intro-film .s-chip { fill:var(--surface-2); stroke:var(--border); }
-.intro-film .s-line { stroke:var(--border-strong); stroke-width:1.4; fill:none; }
-.intro-film .s-ring { fill:none; stroke:var(--brand); stroke-width:1; opacity:.45; }
-.intro-film .s-ring-dim { fill:none; stroke:var(--border-strong); stroke-width:1; }
-.intro-film .s-blocked { fill:var(--surface-2); stroke:var(--err); }
-.intro-film .s-dot { fill:var(--brand); }
-.intro-film .grid-bg { fill:url(#mawGrid); opacity:.85; }
-.intro-film .flow-dot { fill:var(--brand); filter:drop-shadow(0 0 6px var(--brand)); }
-.intro-film .flow-dot.teal { fill:var(--teal); filter:drop-shadow(0 0 6px var(--teal)); }
-
-/* 播放控制条 */
-.intro-film .film-hud { display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin-top:12px; }
-.intro-film .film-btn { display:grid; place-items:center; width:36px; height:36px; border-radius:var(--r-pill); background:var(--brand); color:#0b1220; border:none; cursor:pointer; font-size:13px; transition:filter .18s, transform .18s; }
-.intro-film .film-btn.ghost { background:var(--surface-2); color:var(--text-2); border:1px solid var(--border); }
-.intro-film .film-btn:hover { filter:brightness(1.07); transform:translateY(-1px); }
-.intro-film .film-btn:focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
-.intro-film .film-progress { position:relative; flex:1 1 240px; min-width:150px; height:24px; cursor:pointer; display:flex; align-items:center; }
-.intro-film .film-track { position:relative; display:block; width:100%; height:5px; border-radius:var(--r-pill); background:var(--border-strong); overflow:hidden; }
-.intro-film .film-fill { position:absolute; inset:0 auto 0 0; display:block; width:0; background:linear-gradient(90deg, var(--brand-2), var(--brand)); border-radius:var(--r-pill); }
-.intro-film .film-marks { position:absolute; inset:0; display:block; }
-.intro-film .film-mark { position:absolute; top:50%; width:2px; height:12px; margin-top:-6px; background:var(--bg); opacity:.6; }
-.intro-film .film-meta { color:var(--text-3); font:500 12px/1.4 var(--f-mono); letter-spacing:.05em; white-space:nowrap; }
-@media (max-width:640px) { .intro-film .film-meta { order:3; width:100%; } }
-
 @media print {
-  .deep-sea, .nav, .hero-canvas, .intro-film, .stats, #modal, #toast, .footer, .grid-tools, .fx-toggle, .term-pick { display:none !important; }
+  .deep-sea, .nav, .hero-canvas, .stats, #modal, #toast, .footer, .grid-tools, .fx-toggle, .term-pick { display:none !important; }
   body { background:#fff; color:#111; }
   .hero { min-height:auto; padding:40px 0; }
   .hero h1, .hero-desc, .hero-cta, .hero-badge { animation:none; opacity:1; transform:none; }
   .card, .deck-tile { break-inside:avoid; border-color:#ddd; }
   .reveal { opacity:1 !important; transform:none !important; }
 }
+
+/* ---------- 介绍片卡片 ---------- */
+.film-card{position:relative;border-radius:16px;overflow:hidden;background:#080b11;
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 40px 90px -34px rgba(0,0,0,.9),0 0 70px rgba(26,56,112,.28)}
+.film-open{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;
+  background:none;cursor:pointer;overflow:hidden;text-align:left;isolation:isolate}
+.film-open picture{display:block;position:absolute;inset:0}
+.film-open img{width:100%;height:100%;object-fit:cover;transform:scale(1.015);
+  transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.film-open:hover img{transform:scale(1.045)}
+.film-open::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(4,6,10,.42) 0%,rgba(4,6,10,0) 34%,rgba(4,6,10,.52) 100%)}
+.film-open:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+.film-tag{position:absolute;left:12px;top:12px;z-index:3;display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;color:rgba(255,255,255,.86);
+  background:rgba(6,10,17,.55);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:4px 9px;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.film-tag i{width:5px;height:5px;border-radius:50%;background:var(--brand);box-shadow:0 0 8px var(--brand)}
+.film-tag b{font-weight:500;color:rgba(255,255,255,.55);letter-spacing:.1em}
+.film-dur{position:absolute;right:12px;top:12px;z-index:3;font-family:var(--f-mono);font-size:10px;
+  letter-spacing:.08em;color:rgba(255,255,255,.74);background:rgba(6,10,17,.55);
+  border:1px solid rgba(255,255,255,.14);border-radius:100px;padding:4px 8px}
+.film-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:4;
+  width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(255,255,255,.94);color:#080d16;
+  box-shadow:0 10px 34px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.4) inset;
+  transition:transform .3s cubic-bezier(.2,.7,.2,1),background .25s}
+.film-play svg{width:20px;height:20px;margin-left:2px;fill:currentColor}
+.film-play::before{content:"";position:absolute;inset:-9px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.38);animation:filmPulse 3s cubic-bezier(.2,.7,.2,1) infinite}
+@keyframes filmPulse{0%{transform:scale(.9);opacity:.9}70%{transform:scale(1.4);opacity:0}100%{opacity:0}}
+.film-open:hover .film-play{transform:translate(-50%,-50%) scale(1.07);background:#fff}
+.film-progress{position:absolute;left:0;right:0;bottom:0;height:2px;background:rgba(255,255,255,.16);z-index:4}
+.film-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),#cfe0ff);
+  box-shadow:0 0 12px rgba(103,153,254,.7);transition:width .25s linear}
+.film-meta{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;padding:0 2px}
+.film-meta b{display:block;font-size:14px;font-weight:500;color:var(--text);letter-spacing:.01em}
+.film-meta span{display:block;margin-top:4px;font-family:var(--f-mono);font-size:10.5px;
+  letter-spacing:.14em;color:var(--text-3)}
+.film-meta .film-len{font-size:11px;color:var(--text-3);letter-spacing:.1em;flex:none}
+.film-card[data-watched="1"] .film-dur{color:var(--brand-2);border-color:rgba(103,153,254,.35)}
+.film-card[data-watched="1"] .film-play{background:rgba(103,153,254,.95);color:#06101f}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- 剧场播放层 ---------- */
+.ft{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:none;opacity:0;visibility:hidden;transition:opacity .28s ease,visibility 0s linear .28s}
+.ft.open{opacity:1;visibility:visible;transition:opacity .28s ease,visibility 0s}
+.ft[hidden]{display:none !important}
+.ft-scrim{position:absolute;inset:0;background:rgba(3,5,9,.9);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.ft-shell{position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;outline:none;
+  width:min(1360px,94vw,150vh);transform:translateY(8px) scale(1.03);
+  transition:transform .46s cubic-bezier(.16,1,.3,1)}
+.ft.open .ft-shell{transform:none}
+.ft[data-fmt="tall"] .ft-shell{width:min(92vw,62vh);margin:0 auto}
+.ft-close{position:absolute;right:12px;top:12px;z-index:6;width:40px;height:40px;border-radius:50%;
+  display:grid;place-items:center;color:rgba(255,255,255,.86);background:rgba(6,10,16,.62);
+  border:1px solid rgba(255,255,255,.18);font-size:17px;line-height:1;cursor:pointer;transition:all .2s;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.ft-close:hover{background:rgba(255,255,255,.16);color:#fff}
+.ft-frame{position:relative;border-radius:14px;overflow:hidden;background:#000;
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 60px 160px -30px rgba(0,0,0,.95),0 0 0 1px rgba(103,153,254,.06) inset}
+.ft[data-fmt="wide"] .ft-frame{aspect-ratio:16/9}
+.ft[data-fmt="tall"] .ft-frame{aspect-ratio:4/5}
+.ft-frame video{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.ft-poster{position:absolute;inset:0;z-index:0;background:center/cover no-repeat;transition:opacity .35s}
+.ft[data-playing="1"] .ft-poster{opacity:0}
+.ft-loading{position:absolute;inset:0;z-index:2;display:grid;place-items:center;background:rgba(4,6,10,.35);
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.ft-loading.on{opacity:1}
+.ft-loading span{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.25);
+  border-top-color:#fff;animation:spin .8s linear infinite}
+.ft-bar{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:12px;
+  background:rgba(15,19,28,.82);border:1px solid rgba(255,255,255,.1);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.ft-btn{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;padding:0;
+  background:none;border:0;font:inherit;
+  color:rgba(255,255,255,.85);cursor:pointer;flex:none}
+.ft-btn:hover{background:rgba(255,255,255,.1);color:#fff}
+.ft-btn svg{width:16px;height:16px;fill:currentColor}
+.ft-time{font-family:var(--f-mono);font-size:11px;color:var(--text-2);min-width:34px;text-align:center;flex:none}
+.ft-seek{flex:1;height:22px;-webkit-appearance:none;appearance:none;background:none;cursor:pointer;min-width:40px}
+.ft-seek::-webkit-slider-runnable-track{height:3px;border-radius:2px;background:rgba(255,255,255,.18)}
+.ft-seek::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;
+  background:#fff;margin-top:-4.5px;box-shadow:0 0 0 4px rgba(103,153,254,.22)}
+.ft-seek::-moz-range-track{height:3px;border-radius:2px;background:rgba(255,255,255,.18)}
+.ft-seek::-moz-range-thumb{width:12px;height:12px;border:none;border-radius:50%;background:#fff}
+.ft-endcard{position:absolute;inset:0;z-index:3;display:grid;place-items:center;text-align:center;
+  background:radial-gradient(ellipse at center,rgba(7,11,18,.90),rgba(3,5,9,.975));
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .35s,visibility 0s linear .35s}
+.ft-ended .ft-endcard{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .35s,visibility 0s}
+.ft-end-inner{padding:24px}
+.ft-eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.24em;color:var(--brand-2)}
+.ft-end-inner b{display:block;font-size:clamp(27px,3.6vw,42px);font-weight:600;margin:16px 0 10px;letter-spacing:-.01em}
+.ft-end-inner p{font-size:14.5px;color:var(--text-2);margin-bottom:24px}
+.ft-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.ft-actions .btn{font-size:14.5px;padding:12px 22px;min-height:46px}
+@media (max-width:1500px){
+  .nav-in { gap:12px; }
+  .nav-links a { padding:7px 9px; font-size:12.6px; }
+  .nav-term { padding:5px 9px; font-size:12px; }
+  .nav-right { gap:8px; }
+  .nav-right .btn-sec[title] { display:none; }
+  .nav-right .btn-sm { padding:8px 11px; font-size:12.5px; }
+}
+@media (max-width:1120px){
+  .nav-links { display:none; }
+  .nav-burger { display:flex; width:44px; height:44px; }
+}
+@media (max-width:600px){
+  .film-open{aspect-ratio:4/5}
+  .film-play{width:64px;height:64px}
+  .film-meta b{font-size:13.5px}
+}
+@media (max-width:760px){
+  .ft{padding:10px}
+  .ft-close{top:10px;right:10px;width:44px;height:44px}
+  .ft[data-fmt="tall"] .ft-shell{width:100%;max-width:96vw}
+  .ft-bar{gap:6px;padding:6px 8px}
+  .ft-btn{width:44px;height:44px}
+  .ft-time{font-size:10.5px;min-width:30px}
+  .ft-close{width:44px;height:44px;top:10px;right:10px}
+  .ft-end-inner{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .film-play::before{display:none}
+  .film-open img,.ft-shell,.ft{transition:none}
+}
+
+/* ---------- 科普短片：卡片入口 + 剧场换片 + 丝滑过渡 ---------- */
+.cap-card{transition:transform .42s cubic-bezier(.16,1,.3,1), opacity .42s ease,
+  border-color .3s, box-shadow .3s}
+/* 点击后卡片先「推近」再交给剧场，读起来像同一块画面在放大 */
+.cap-card.is-launching{transform:scale(1.035);opacity:.3;border-color:rgba(103,153,254,.5)}
+.cap-more{
+  margin-top:18px;align-self:flex-start;display:inline-flex;align-items:center;gap:9px;
+  padding:9px 15px 9px 11px;border-radius:100px;cursor:pointer;
+  border:1px solid rgba(103,153,254,.34);background:rgba(103,153,254,.10);
+  color:var(--brand);font-family:var(--f-sans);font-size:14px;font-weight:500;
+  letter-spacing:.01em;transition:background .22s,border-color .22s,transform .22s,color .22s;
+}
+.cap-more svg{width:20px;height:20px;fill:currentColor;flex-shrink:0}
+.cap-more i{font-style:normal;font-family:var(--f-mono);font-size:12.5px;opacity:.72}
+.cap-more:hover{background:rgba(103,153,254,.2);border-color:var(--brand);color:var(--text);transform:translateY(-1px)}
+.cap-more:active{transform:translateY(0) scale(.98)}
+.cap-more:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+
+.ft-badge{
+  position:absolute;top:16px;left:20px;z-index:6;
+  font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;
+  color:rgba(255,255,255,.62);background:rgba(8,10,16,.6);
+  border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:6px 13px;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  opacity:0;transform:translateY(-6px);transition:opacity .3s ease,transform .3s ease;
+}
+.ft.open .ft-badge{opacity:1;transform:translateY(0)}
+
+/* 剧场入场：从 1.035 收到 1，与卡片的推近衔接 */
+
+.ft .ft-frame{transition:opacity .26s ease}
+.ft.ft-switching .ft-frame{opacity:.15}
+.ft-swap{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.ft-swap button{
+  padding:9px 16px;border-radius:100px;cursor:pointer;
+  border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);
+  color:rgba(255,255,255,.8);font-family:var(--f-mono);font-size:12.5px;letter-spacing:.06em;
+  transition:background .2s,border-color .2s,color .2s,transform .2s;
+}
+.ft-swap button:hover{background:rgba(103,153,254,.2);border-color:rgba(103,153,254,.6);color:#fff;transform:translateY(-1px)}
+.ft-swap button[aria-current="true"]{border-color:rgba(103,153,254,.6);color:var(--brand-2)}
+
+@media (max-width:600px){
+  .cap-more{width:100%;justify-content:center;margin-top:14px}
+  .ft-badge{top:12px;left:12px;font-size:10px;padding:5px 11px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cap-card,.ft-shell,.cap-more,.ft-swap button{transition:none !important}
+  .cap-card.is-launching{transform:none}
+  .ft-shell,.ft.open .ft-shell{transform:none}
+}
+
+/* 影片在终端面板内固定 16:9；剧场再按 600px 断点切 4:5 视频 */
+.term-body .film-open{aspect-ratio:16/9}
+@media (max-width:600px){.term-body .film-open{aspect-ratio:16/9}}
 </style>
 </head>
 <body>
@@ -955,17 +1056,39 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
       </div>
       <div class="hero-visual">
         <div class="term-tabs">
-          <button class="term-tab active" data-t="guide">三步上手</button>
+          <button class="term-tab active" data-t="film">介绍片</button>
+          <button class="term-tab" data-t="guide">三步上手</button>
           <button class="term-tab" data-t="run">命令演示</button>
         </div>
         <div class="terminal">
           <div class="term-bar">
             <div class="term-dots"><i></i><i></i><i></i></div>
-            <span class="term-title">使用指南 · 学生向三步教程</span>
+            <span class="term-title">MEDAGENTWORK · INTRO FILM · 58s</span>
             <button class="term-copy" data-act="copy" aria-label="复制命令" style="visibility:hidden"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy</button>
           </div>
           <div class="term-body">
-<div class="guide-panel term-pane" id="term-guide">
+<div class="film-pane term-pane" id="term-film">
+    <div class="film-card" id="film-card">
+              <button class="film-open" id="film-open" type="button" aria-label="播放 MedAgentWork 介绍片（58 秒）" aria-haspopup="dialog">
+                <picture>
+                  <source srcset="assets/intro/poster-16x9.webp" type="image/webp">
+                  <img src="assets/intro/poster-16x9.jpg" alt="MedAgentWork 介绍片封面：粒子构成的 MW 标识与「备考题严选 复习可溯源」" width="1920" height="1080" decoding="async">
+                </picture>
+                <span class="film-tag"><i></i>介绍片 <b>INTRO FILM</b></span>
+                <span class="film-dur" id="film-dur">00:58</span>
+                <span class="film-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg></span>
+                <span class="film-progress" aria-hidden="true"><i id="film-progress"></i></span>
+              </button>
+            </div>
+            <div class="film-meta">
+              <div>
+                <b>58 秒，看懂 MedAgentWork</b>
+                <span id="film-note">MEDAGENTWORK · INTRO 2026</span>
+              </div>
+              <span class="film-len" id="film-len">00:58</span>
+            </div>
+</div>
+<div class="guide-panel term-pane" id="term-guide" style="display:none">
   <div class="g-guide-title">⚡ 三步上手 · 全部资料即开即用</div>
   <div class="g-step">
     <span class="g-no">01</span>
@@ -1036,324 +1159,6 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
     </div>
     <div class="right"><b>BACKSTAGE</b>管线 · 门禁 · 知识库<br><span class="right-sub">支撑以上全部内容</span></div>
   </div>
-  <!-- 幕后管线 · 介绍动画（六镜 40 秒无声 · 纯 SVG/CSS/SMIL · 零外部依赖）
-       手法：路径描线 + 光点沿路径流动（Stripe）· 分阶段错峰入场（GitHub landing）· 缓动与节奏（Linear/Apple）
-       降级：无 JS 时六镜平铺为静态全图；prefers-reduced-motion 时不自动播放 -->
-  <div class="intro-film" id="intro-film" data-armed="false">
-    <div class="stage" id="intro-stage">
-
-      <div class="scene" data-shot="1" aria-label="镜头一：资料散落各处">
-        <span class="stamp">01 / 06 · 资料</span>
-        <svg class="scene-svg" viewBox="0 0 720 340" role="img" aria-label="散落的复习资料，来源不明">
-          <defs>
-            <pattern id="mawGrid" width="26" height="26" patternUnits="userSpaceOnUse">
-              <path d="M26 0H0v26" fill="none" style="stroke:var(--grid)" stroke-width="1"/>
-            </pattern>
-          </defs>
-          <rect class="grid-bg" x="0" y="0" width="720" height="340"/>
-          <g data-anim class="a-fly" style="--fx:-90px;--fy:-40px;--fr:-14deg;animation-delay:.10s">
-            <rect class="s-card" x="150" y="96" width="74" height="52" rx="7" transform="rotate(-9 187 122)"/>
-            <path class="s-line" d="M164 114h46M164 126h30" stroke-width="2" opacity=".5"/>
-          </g>
-          <g data-anim class="a-fly" style="--fx:80px;--fy:-56px;--fr:12deg;animation-delay:.22s">
-            <rect class="s-card" x="404" y="88" width="74" height="52" rx="7" transform="rotate(8 441 114)"/>
-            <path class="s-line" d="M418 106h46M418 118h34" stroke-width="2" opacity=".5"/>
-          </g>
-          <g data-anim class="a-fly" style="--fx:-120px;--fy:30px;--fr:16deg;animation-delay:.34s">
-            <rect class="s-card" x="112" y="196" width="74" height="52" rx="7" transform="rotate(7 149 222)"/>
-            <path class="s-line" d="M126 214h44M126 226h28" stroke-width="2" opacity=".5"/>
-          </g>
-          <g data-anim class="a-fly" style="--fx:110px;--fy:40px;--fr:-13deg;animation-delay:.46s">
-            <rect class="s-card" x="452" y="204" width="74" height="52" rx="7" transform="rotate(-8 489 230)"/>
-            <path class="s-line" d="M466 222h44M466 234h30" stroke-width="2" opacity=".5"/>
-          </g>
-          <g data-anim class="a-fly" style="--fx:0px;--fy:-70px;--fr:-4deg;animation-delay:.58s">
-            <rect class="s-card" x="286" y="72" width="66" height="46" rx="7" transform="rotate(-3 319 95)"/>
-            <path class="s-line" d="M298 88h42M298 99h26" stroke-width="2" opacity=".5"/>
-          </g>
-          <g data-anim class="a-fly" style="--fx:-40px;--fy:70px;--fr:5deg;animation-delay:.70s">
-            <rect class="s-card" x="300" y="222" width="66" height="46" rx="7" transform="rotate(4 333 245)"/>
-            <path class="s-line" d="M312 238h42M312 249h30" stroke-width="2" opacity=".5"/>
-          </g>
-          <g data-anim class="a-in" style="animation-delay:1.05s">
-            <rect class="s-chip" x="56" y="150" width="92" height="30" rx="15"/>
-            <text class="s-note" x="72" y="170">来源？</text>
-          </g>
-          <g data-anim class="a-in" style="animation-delay:1.20s">
-            <rect class="s-chip" x="572" y="150" width="92" height="30" rx="15"/>
-            <text class="s-note" x="588" y="170">出处？</text>
-          </g>
-          <g data-anim class="a-in" style="animation-delay:1.35s">
-            <rect class="s-chip" x="314" y="282" width="92" height="30" rx="15"/>
-            <text class="s-note" x="330" y="302">版本？</text>
-          </g>
-          <rect class="s-ring-dim a-drift" data-anim x="150" y="120" width="420" height="150" rx="20" stroke-dasharray="6 7"/>
-        </svg>
-        <p class="caption">资料散落各处，来源说不清。</p>
-      </div>
-
-      <div class="scene" data-shot="2" aria-label="镜头二：把出题做成流水线">
-        <span class="stamp">02 / 06 · 流水线</span>
-        <svg class="scene-svg" viewBox="0 0 720 340" role="img" aria-label="素材经流水线加工为成品题">
-          <rect class="grid-bg" x="0" y="0" width="720" height="340"/>
-          <path class="svg-draw a-draw s-line" style="--len:600;stroke-width:2.4;stroke:var(--brand);opacity:.55" d="M60 186H660"/>
-          <path class="svg-draw a-draw s-line" style="--len:600;stroke-width:1;opacity:.5" d="M60 200H660" opacity=".35"/>
-          <g data-anim class="a-in" style="animation-delay:.65s">
-            <circle class="s-ring-dim" cx="150" cy="193" r="7"/><circle class="s-ring-dim" cx="300" cy="193" r="7"/>
-            <circle class="s-ring-dim" cx="450" cy="193" r="7"/><circle class="s-ring-dim" cx="600" cy="193" r="7"/>
-          </g>
-          <g data-anim class="a-fly" style="--fx:-60px;--fy:-96px;--fr:-10deg;animation-delay:.30s">
-            <rect class="s-card" x="216" y="112" width="132" height="62" rx="12"/>
-            <text class="s-num" x="234" y="138">01 编排</text>
-            <text class="s-sub" x="234" y="158">检索 · 配平</text>
-          </g>
-          <g data-anim class="a-fly" style="--fx:0px;--fy:104px;--fr:8deg;animation-delay:.52s">
-            <rect class="s-card-hot" x="294" y="118" width="120" height="62" rx="12"/>
-            <text class="s-num" x="312" y="144">02 出题</text>
-            <text class="s-sub" x="312" y="164">批量生成</text>
-          </g>
-          <g data-anim class="a-fly" style="--fx:66px;--fy:-88px;--fr:11deg;animation-delay:.74s">
-            <rect class="s-card" x="368" y="110" width="126" height="62" rx="12"/>
-            <text class="s-num" x="386" y="136">03 质检</text>
-            <text class="s-sub" x="386" y="156">硬校验</text>
-          </g>
-          <circle data-anim class="a-breathe" cx="360" cy="150" r="76" style="fill:none;stroke:var(--brand);stroke-width:1;animation-delay:1.15s"/>
-          <g data-anim class="a-pop" style="animation-delay:1.45s"><rect class="s-chip" x="524" y="120" width="52" height="34" rx="8"/><path class="s-line" d="M534 132h30M534 142h20" stroke-width="1.6" opacity=".6"/></g>
-          <g data-anim class="a-pop" style="animation-delay:1.58s"><rect class="s-chip" x="588" y="120" width="52" height="34" rx="8"/><path class="s-line" d="M598 132h30M598 142h20" stroke-width="1.6" opacity=".6"/></g>
-          <g data-anim class="a-pop" style="animation-delay:1.71s"><rect class="s-chip" x="556" y="230" width="52" height="34" rx="8"/><path class="s-line" d="M566 242h30M566 252h20" stroke-width="1.6" opacity=".6"/></g>
-          <g data-anim class="a-pop" style="animation-delay:1.84s"><rect class="s-chip" x="620" y="230" width="40" height="34" rx="8"/><path class="s-line" d="M630 242h20M630 252h12" stroke-width="1.6" opacity=".6"/></g>
-          <g data-anim class="a-pop" style="animation-delay:.14s">
-            <rect class="s-card" x="66" y="150" width="62" height="44" rx="8" transform="rotate(-6 97 172)"/>
-            <rect class="s-card" x="78" y="146" width="62" height="44" rx="8" transform="rotate(4 109 168)"/>
-          </g>
-          <text class="s-note a-in" data-anim x="66" y="286" style="animation-delay:2.0s">素材 → 加工 → 成品</text>
-        </svg>
-        <p class="caption">把出题，做成一条流水线。</p>
-      </div>
-
-      <div class="scene" data-shot="3" aria-label="镜头三：五阶段接力与阶段门禁">
-        <span class="stamp">03 / 06 · 五阶段</span>
-        <svg class="scene-svg" viewBox="0 0 720 340" role="img" aria-label="编排、出题、质检、修复、成册五步接力，每步之间有门禁">
-          <defs>
-            <linearGradient id="railGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0" style="stop-color:var(--brand-2)"/>
-              <stop offset="1" style="stop-color:var(--teal)"/>
-            </linearGradient>
-          </defs>
-          <rect class="grid-bg" x="0" y="0" width="720" height="340"/>
-          <path id="mainRail" class="svg-draw a-draw" style="--len:632;stroke:url(#railGrad);stroke-width:2.2;opacity:.7" d="M48 168H680"/>
-          <g data-anim class="a-in" style="animation-delay:.9s">
-            <circle class="flow-dot" r="4.6"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0s" path="M48 168 H680"/></circle>
-            <circle class="flow-dot teal" r="4.6"><animateMotion dur="3.4s" repeatCount="indefinite" begin="0.85s" path="M48 168 H680"/></circle>
-            <circle class="flow-dot" r="4"><animateMotion dur="3.4s" repeatCount="indefinite" begin="1.7s" path="M48 168 H680"/></circle>
-            <circle class="flow-dot teal" r="4"><animateMotion dur="3.4s" repeatCount="indefinite" begin="2.55s" path="M48 168 H680"/></circle>
-          </g>
-          <g data-anim class="a-pop" style="animation-delay:.40s">
-            <rect class="s-card" x="48" y="128" width="96" height="80" rx="13"/>
-            <text class="s-num" x="62" y="152">01</text>
-            <text class="s-label" x="62" y="176">编排</text>
-            <text class="s-sub" x="62" y="194">配平检索</text>
-          </g>
-          <g data-anim class="a-pop" style="animation-delay:.85s">
-            <rect class="s-card" x="182" y="128" width="96" height="80" rx="13"/>
-            <text class="s-num" x="196" y="152">02</text>
-            <text class="s-label" x="196" y="176">出题</text>
-            <text class="s-sub" x="196" y="194">批量生成</text>
-          </g>
-          <g data-anim class="a-pop" style="animation-delay:1.30s">
-            <rect class="s-card-hot" x="316" y="128" width="96" height="80" rx="13"/>
-            <text class="s-num" x="330" y="152">03</text>
-            <text class="s-label" x="330" y="176">质检</text>
-            <text class="s-sub" x="330" y="194">硬校验</text>
-          </g>
-          <g data-anim class="a-pop" style="animation-delay:1.75s">
-            <rect class="s-card" x="450" y="128" width="96" height="80" rx="13"/>
-            <text class="s-num" x="464" y="152">04</text>
-            <text class="s-label" x="464" y="176">修复</text>
-            <text class="s-sub" x="464" y="194">定向回补</text>
-          </g>
-          <g data-anim class="a-pop" style="animation-delay:2.20s">
-            <rect class="s-card" x="584" y="128" width="96" height="80" rx="13"/>
-            <text class="s-num" x="598" y="152">05</text>
-            <text class="s-label" x="598" y="176">成册</text>
-            <text class="s-sub" x="598" y="194">题库手册</text>
-          </g>
-          <g data-anim class="a-spin" style="animation-delay:.5s">
-            <circle class="s-ring" cx="360" cy="168" r="196" stroke-dasharray="3 14"/>
-          </g>
-          <g data-anim class="a-spin-rev" style="animation-delay:.5s">
-            <circle class="s-ring" cx="360" cy="168" r="222" stroke-dasharray="2 22" opacity=".22"/>
-          </g>
-          <g data-anim class="a-drop" style="animation-delay:2.75s">
-            <path class="s-chip" style="fill:var(--teal-soft);stroke:var(--teal)" d="M160 236v-15l9-6 9 6v15l-9 6z"/>
-            <text class="s-note" x="146" y="268" style="fill:var(--teal)">门禁</text>
-          </g>
-          <g data-anim class="a-drop" style="animation-delay:2.95s">
-            <path class="s-chip" style="fill:var(--teal-soft);stroke:var(--teal)" d="M294 236v-15l9-6 9 6v15l-9 6z"/>
-            <text class="s-note" x="280" y="268" style="fill:var(--teal)">门禁</text>
-          </g>
-          <g data-anim class="a-drop" style="animation-delay:3.15s">
-            <path class="s-chip" style="fill:var(--teal-soft);stroke:var(--teal)" d="M428 236v-15l9-6 9 6v15l-9 6z"/>
-            <text class="s-note" x="414" y="268" style="fill:var(--teal)">门禁</text>
-          </g>
-          <g data-anim class="a-drop" style="animation-delay:3.35s">
-            <path class="s-chip" style="fill:var(--teal-soft);stroke:var(--teal)" d="M562 236v-15l9-6 9 6v15l-9 6z"/>
-            <text class="s-note" x="548" y="268" style="fill:var(--teal)">门禁</text>
-          </g>
-          <g data-anim class="a-breathe" style="animation-delay:3.6s">
-            <path class="s-line" style="stroke:var(--teal);stroke-width:2" d="M70 300l6 6 12-13"/>
-            <path class="s-line" style="stroke:var(--teal);stroke-width:2" d="M204 300l6 6 12-13"/>
-            <path class="s-line" style="stroke:var(--teal);stroke-width:2" d="M338 300l6 6 12-13"/>
-            <path class="s-line" style="stroke:var(--teal);stroke-width:2" d="M472 300l6 6 12-13"/>
-            <path class="s-line" style="stroke:var(--teal);stroke-width:2" d="M606 300l6 6 12-13"/>
-          </g>
-        </svg>
-        <p class="caption">五步接力，步步卡关。</p>
-      </div>
-
-      <div class="scene" data-shot="4" aria-label="镜头四：质检矩阵拦截不合格题目">
-        <span class="stamp">04 / 06 · 质检</span>
-        <svg class="scene-svg" viewBox="0 0 720 340" role="img" aria-label="质检矩阵逐格点亮，扫描线拦下不合格项">
-          <rect class="grid-bg" x="0" y="0" width="720" height="340"/>
-          <g>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.20s" x="62" y="72" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.28s" x="112" y="72" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.36s" x="162" y="72" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.44s" x="212" y="72" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.52s" x="262" y="72" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card-hot" style="animation-delay:.26s" x="62" y="122" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.34s" x="112" y="122" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.42s" x="162" y="122" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.50s" x="212" y="122" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.58s" x="262" y="122" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.32s" x="62" y="172" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card-hot" style="animation-delay:.40s" x="112" y="172" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.48s" x="162" y="172" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.56s" x="212" y="172" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.64s" x="262" y="172" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.38s" x="62" y="222" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.46s" x="112" y="222" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.54s" x="162" y="222" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.62s" x="212" y="222" width="42" height="42" rx="8"/>
-            <rect data-anim class="a-pop s-card" style="animation-delay:.70s" x="262" y="222" width="42" height="42" rx="8"/>
-          </g>
-          <text class="s-note a-in" data-anim x="62" y="296" style="animation-delay:.9s">逐项检查 · 不合格即拦下</text>
-          <g clip-path="url(#scanClip)">
-            <rect data-anim class="a-sweep" style="fill:var(--brand);opacity:.8" x="48" y="60" width="272" height="2"/>
-          </g>
-          <clipPath id="scanClip"><rect x="48" y="60" width="272" height="216" rx="10"/></clipPath>
-          <g data-anim class="a-pop" style="animation-delay:3.4s">
-            <rect class="s-blocked" x="212" y="172" width="42" height="42" rx="8"/>
-            <path d="M224 184l18 18M242 184l-18 18" style="stroke:var(--err);stroke-width:2.4;fill:none;stroke-linecap:round"/>
-          </g>
-          <g data-anim class="a-pop" style="animation-delay:3.7s">
-            <rect class="s-blocked" x="112" y="222" width="42" height="42" rx="8"/>
-            <path d="M124 234l18 18M142 234l-18 18" style="stroke:var(--err);stroke-width:2.4;fill:none;stroke-linecap:round"/>
-          </g>
-          <g data-anim class="a-fly" style="--fx:70px;--fy:0;animation-delay:1.6s">
-            <rect class="s-card-hot" x="392" y="84" width="270" height="56" rx="13"/>
-            <text class="s-label" x="412" y="118">选项硬校验 · 零缺陷放行</text>
-          </g>
-          <g data-anim class="a-fly" style="--fx:70px;--fy:0;animation-delay:1.85s">
-            <rect class="s-card" x="392" y="152" width="270" height="56" rx="13"/>
-            <text class="s-label" x="412" y="186">真题锚定 · 金标准比对</text>
-          </g>
-          <g data-anim class="a-fly" style="--fx:70px;--fy:0;animation-delay:2.10s">
-            <rect class="s-card" x="392" y="220" width="270" height="56" rx="13"/>
-            <text class="s-label" x="412" y="254">改动可回放 · 可追溯来源</text>
-          </g>
-        </svg>
-        <p class="caption">不过关的题，不放行。</p>
-      </div>
-
-      <div class="scene" data-shot="5" aria-label="镜头五：考纲、原文、真题三类依据">
-        <span class="stamp">05 / 06 · 依据</span>
-        <svg class="scene-svg" viewBox="0 0 720 340" role="img" aria-label="三类依据环绕中心锚点">
-          <rect class="grid-bg" x="0" y="0" width="720" height="340"/>
-          <g data-anim class="a-in" style="animation-delay:.1s">
-            <circle class="s-ring" cx="360" cy="170" r="62" stroke-dasharray="4 10"/>
-          </g>
-          <g data-anim class="a-in" style="animation-delay:.22s">
-            <circle class="s-ring" cx="360" cy="170" r="104" stroke-dasharray="4 12" opacity=".34"/>
-          </g>
-          <g data-anim class="a-in" style="animation-delay:.34s">
-            <circle class="s-ring" cx="360" cy="170" r="146" stroke-dasharray="4 14" opacity=".22"/>
-          </g>
-          <g data-anim class="a-pop" style="animation-delay:.5s">
-            <circle class="s-dot" cx="360" cy="170" r="11"/>
-            <circle class="s-ring" cx="360" cy="170" r="22" stroke-dasharray="2 6"/>
-          </g>
-          <g data-anim class="a-spin" style="animation-delay:.6s;transform-origin:360px 170px">
-            <rect class="s-card-hot" x="312" y="96" width="96" height="30" rx="15"/>
-            <text class="s-num" x="330" y="116">考纲配平</text>
-          </g>
-          <g data-anim class="a-spin-rev" style="animation-delay:.6s;transform-origin:360px 170px">
-            <rect class="s-card" x="410" y="150" width="96" height="30" rx="15"/>
-            <text class="s-num" x="428" y="170">原文锚定</text>
-          </g>
-          <g data-anim class="a-spin" style="animation-delay:1.4s;transform-origin:360px 170px">
-            <rect class="s-card" x="228" y="206" width="96" height="30" rx="15"/>
-            <text class="s-num" x="246" y="226">真题配额</text>
-          </g>
-          <path class="svg-draw a-draw" style="--len:130;stroke:var(--brand);stroke-width:1.4;opacity:.5;animation-delay:1.0s" d="M360 148V112"/>
-          <path class="svg-draw a-draw" style="--len:130;stroke:var(--brand);stroke-width:1.4;opacity:.5;animation-delay:1.2s" d="M382 172l40-6"/>
-          <path class="svg-draw a-draw" style="--len:130;stroke:var(--brand);stroke-width:1.4;opacity:.5;animation-delay:1.4s" d="M338 178l-44 12"/>
-          <text class="s-note a-in" data-anim x="52" y="300" style="animation-delay:1.8s">23 学科独立检索与配平</text>
-        </svg>
-        <p class="caption">考纲、原文、真题，各自有据。</p>
-      </div>
-
-      <div class="scene" data-shot="6" aria-label="镜头六：四类成品交付">
-        <span class="stamp">06 / 06 · 成品</span>
-        <svg class="scene-svg" viewBox="0 0 720 340" role="img" aria-label="四类成品从中心展开">
-          <rect class="grid-bg" x="0" y="0" width="720" height="340"/>
-          <g data-anim class="a-breathe" style="animation-delay:.2s">
-            <circle cx="360" cy="170" r="40" style="fill:none;stroke:var(--brand);stroke-width:1"/>
-          </g>
-          <g data-anim class="a-in" style="animation-delay:.45s">
-            <circle cx="360" cy="170" r="9" class="s-dot"/>
-          </g>
-          <g data-anim class="a-fly" style="--fx:-150px;--fy:-90px;--fr:-8deg;animation-delay:.62s">
-            <rect class="s-card-hot" x="96" y="56" width="150" height="84" rx="14"/>
-            <text class="s-label" x="116" y="92">在线刷题</text>
-            <text class="s-sub" x="116" y="116">点选项即判分</text>
-          </g>
-          <g data-anim class="a-fly" style="--fx:150px;--fy:-90px;--fr:8deg;animation-delay:.78s">
-            <rect class="s-card" x="474" y="56" width="150" height="84" rx="14"/>
-            <text class="s-label" x="494" y="92">题库 PDF</text>
-            <text class="s-sub" x="494" y="116">直链下载打印</text>
-          </g>
-          <g data-anim class="a-fly" style="--fx:-150px;--fy:90px;--fr:7deg;animation-delay:.94s">
-            <rect class="s-card" x="96" y="212" width="150" height="84" rx="14"/>
-            <text class="s-label" x="116" y="248">复习手册</text>
-            <text class="s-sub" x="116" y="272">系统研读</text>
-          </g>
-          <g data-anim class="a-fly" style="--fx:150px;--fy:90px;--fr:-7deg;animation-delay:1.10s">
-            <rect class="s-card" x="474" y="212" width="150" height="84" rx="14"/>
-            <text class="s-label" x="494" y="248">出题软件</text>
-            <text class="s-sub" x="494" y="272">MedKit</text>
-          </g>
-          <path class="svg-draw a-draw" style="--len:160;stroke:var(--brand);stroke-width:1.3;opacity:.4;animation-delay:1.3s" d="M246 98l96 60"/>
-          <path class="svg-draw a-draw" style="--len:160;stroke:var(--brand);stroke-width:1.3;opacity:.4;animation-delay:1.4s" d="M474 98l-96 60"/>
-          <path class="svg-draw a-draw" style="--len:160;stroke:var(--brand);stroke-width:1.3;opacity:.4;animation-delay:1.5s" d="M246 254l96-62"/>
-          <path class="svg-draw a-draw" style="--len:160;stroke:var(--brand);stroke-width:1.3;opacity:.4;animation-delay:1.6s" d="M474 254l-96-62"/>
-        </svg>
-        <p class="caption">题、册、卷，都在这里。</p>
-      </div>
-
-    </div>
-
-    <div class="film-hud">
-      <button class="film-btn" type="button" id="film-play" aria-label="播放或暂停">▶</button>
-      <button class="film-btn ghost" type="button" id="film-replay" aria-label="从头重播">↺</button>
-      <div class="film-progress" id="film-progress" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="40" aria-valuenow="0">
-        <span class="film-track"><span class="film-fill" id="film-fill"></span></span>
-        <span class="film-marks" id="film-marks" aria-hidden="true"></span>
-      </div>
-      <span class="film-meta" id="film-meta">镜头 1 / 6 · 00s / 40s</span>
-    </div>
-  </div>
-
   <div class="cap-grid">
     <div class="cap-card reveal">
       <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-pipeline"/></svg></div>
@@ -1361,6 +1166,7 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
       <span class="cap-meta">PIPELINE · CORDIS 式编排</span>
       <p>编排 → 出题 → 质检 → 修复 → 成册；阶段门禁强制，批次全程可追溯。</p>
       <div class="cap-flow"><em><b>medgen</b></em><em>→</em><em><b>medqc</b></em><em>→</em><em><b>medfix</b></em><em>→</em><em><b>medreview</b></em></div>
+      <button class="cap-more" type="button" data-film="pipeline" aria-label="播放科普短片：五阶段管线（40 秒）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>了解更多 <i>· 40s</i></button>
     </div>
     <div class="cap-card reveal">
       <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-shield"/></svg></div>
@@ -1368,6 +1174,7 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
       <span class="cap-meta">GATE · D1–D20 质检矩阵</span>
       <p>选项硬校验 FAIL==0 才放行 · 二十维质检 · GoldenSet 真题锚定 · 改动可回放。</p>
       <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>fact_check</em></div>
+      <button class="cap-more" type="button" data-film="gate" aria-label="播放科普短片：质量门禁（42 秒）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>了解更多 <i>· 42s</i></button>
     </div>
     <div class="cap-card reveal">
       <div class="cap-icon"><svg class="ic" aria-hidden="true"><use href="#i-brain"/></svg></div>
@@ -1375,6 +1182,7 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
       <span class="cap-meta">KNOWLEDGE · 23 学科配置</span>
       <p>23 学科独立分块与检索 · 向量 + 关键词混合 · 重排 · 考频蓝图配平。</p>
       <div class="cap-flow"><em>hybrid</em><em>rerank</em><em>calibrated_p</em></div>
+      <button class="cap-more" type="button" data-film="rag" aria-label="播放科普短片：个性化学科 RAG（38 秒）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>了解更多 <i>· 38s</i></button>
     </div>
   </div>
 </section>
@@ -1679,6 +1487,47 @@ html { -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
   </div>
 </div>
 <div id="toast" role="status" aria-live="polite"></div>
+
+
+<!-- ============ 介绍片 · 剧场播放层 ============ -->
+<div class="ft" id="ft" data-fmt="wide" hidden aria-hidden="true">
+  <div class="ft-scrim" data-close></div>
+  <div class="ft-shell" role="dialog" aria-modal="true" aria-label="MedAgentWork 影片播放器" tabindex="-1">
+    <span class="ft-badge" id="ft-badge">介绍片 · 58s</span>
+    <button class="ft-close" id="ft-close" type="button" aria-label="关闭播放器">✕</button>
+    <div class="ft-frame" id="ft-frame">
+      <video id="ft-video" playsinline preload="none" controlslist="nodownload" disablepictureinpicture></video>
+      <div class="ft-poster" id="ft-poster" aria-hidden="true"></div>
+      <div class="ft-loading" id="ft-loading" aria-hidden="true"><span></span></div>
+      <div class="ft-endcard" id="ft-endcard">
+        <div class="ft-end-inner">
+          <span class="ft-eyebrow" id="ft-eyebrow">INTRO FILM · 完</span>
+          <b id="ft-end-title">现在，开始刷题</b>
+          <p id="ft-end-sub">5,791 道题 · 23 个学科 · 判错自动回流</p>
+          <div class="ft-actions">
+            <a class="btn btn-pri btn-sm" href="/drill">去网页刷题</a>
+            <button class="btn btn-sec btn-sm" id="ft-replay" type="button">再看一遍</button>
+          </div>
+          <div class="ft-swap" id="ft-swap" hidden></div>
+        </div>
+      </div>
+    </div>
+    <div class="ft-bar">
+      <button class="ft-btn" id="ft-play" type="button" aria-label="暂停">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+      </button>
+      <span class="ft-time" id="ft-cur">0:00</span>
+      <input class="ft-seek" id="ft-seek" type="range" min="0" max="1000" value="0" step="1" aria-label="播放进度">
+      <span class="ft-time" id="ft-total">0:58</span>
+      <button class="ft-btn" id="ft-mute" type="button" aria-label="静音">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a4.5 4.5 0 00-2-3.7v7.4a4.5 4.5 0 002-3.7z"/></svg>
+      </button>
+      <button class="ft-btn" id="ft-full" type="button" aria-label="全屏">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5v2H6v3zm11-5h5v5h-2V6h-3zM4 15h2v3h3v2H4zm14 3v-3h2v5h-5v-2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
 
 <script>
 /* ============================================================
@@ -2304,7 +2153,7 @@ safe('term-tab',()=>{
     const pane=document.getElementById('term-'+t);
     if(pane)pane.style.display='block';
     const tt=term.querySelector('.term-title');
-    if(tt)tt.textContent=(t==='run')?'medagentwork — zsh':'使用指南 · 学生向三步教程';
+    if(tt)tt.textContent=(t==='run')?'medagentwork — zsh':(t==='film')?'MEDAGENTWORK · INTRO FILM · 58s':'使用指南 · 学生向三步教程';
     const cp=term.querySelector('.term-copy');
     if(cp)cp.style.visibility=(t==='run')?'visible':'hidden';
   }));
@@ -2647,87 +2496,312 @@ safe('medkit-release',()=>{
 window.addEventListener('error',e=>{console.error('[MAW:runtime]',e.error||e.message);});
 window.addEventListener('unhandledrejection',e=>{console.error('[MAW:promise]',e.reason);});
 
-/* ---------- I2 幕后管线 · 介绍动画（六镜 40 秒 · 视口门控 · 页面隐藏即停） ----------
-   与 hero 粒子同源：单一 rAF 驱动 + IntersectionObserver 门控 + 隐藏暂停 + reduced 不自动播放。
-   镜 3 的流动光点由 SMIL 驱动，CSS 管不到，故单独暂停与归零重放。 */
-safe('intro-film',()=>{
-  const film=$('#intro-film'),stage=$('#intro-stage');
-  if(!film||!stage)return;
-  const scenes=[...stage.querySelectorAll('.scene')];
-  if(!scenes.length)return;
-  const SHOTS=[{n:1,t:0,d:4},{n:2,t:4,d:5},{n:3,t:9,d:14},{n:4,t:23,d:7},{n:5,t:30,d:5},{n:6,t:35,d:5}];
-  const TOTAL=40;
-  const fill=$('#film-fill'),bar=$('#film-progress'),marks=$('#film-marks'),meta=$('#film-meta');
-  const btnPlay=$('#film-play'),btnReplay=$('#film-replay');
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  SHOTS.forEach(s=>{if(!marks)return;const m=document.createElement('span');m.className='film-mark';m.style.left=(s.t/TOTAL*100)+'%';marks.appendChild(m);});
-  const shotAt=sec=>SHOTS.find(s=>sec>=s.t&&sec<s.t+s.d)||SHOTS[SHOTS.length-1];
-  const pad=n=>String(Math.floor(n)).padStart(2,'0');
-  const svg3=stage.querySelector('.scene[data-shot="3"] .scene-svg');
-  let elapsed=0,playing=!reduced,inView=false,hidden=false,raf=0,last=0,prev=0,smilArmed=false;
-  film.dataset.armed='true';
-  const running=()=>playing&&inView&&!hidden&&!reduced;
-  function syncSmil(){
-    if(!svg3)return;
-    if(shotAt(elapsed).n===3&&running()){
-      if(!smilArmed){try{svg3.setCurrentTime(0);}catch(e){}smilArmed=true;}
-      try{svg3.unpauseAnimations();}catch(e){}
-    }else{
-      try{svg3.pauseAnimations();}catch(e){}
-      smilArmed=false;
-    }
-  }
-  function render(){
-    const cur=shotAt(elapsed);
-    if(cur.n!==prev){
-      scenes.forEach(el=>el.classList.toggle('is-active',Number(el.dataset.shot)===cur.n));
-      prev=cur.n;
-    }
-    if(fill)fill.style.width=(Math.min(100,elapsed/TOTAL*100))+'%';
-    if(bar)bar.setAttribute('aria-valuenow',Math.round(elapsed));
-    if(meta)meta.textContent='镜头 '+cur.n+' / 6 · '+pad(elapsed)+'s / '+TOTAL+'s';
-    syncSmil();
-  }
-  function sync(){
-    const want=running();
-    film.dataset.paused=want?'false':'true';
-    if(btnPlay){btnPlay.textContent=want?'❚❚':'▶';btnPlay.setAttribute('aria-label',want?'暂停':'播放');}
-    if(want&&!raf){last=0;raf=requestAnimationFrame(tick);}
-    if(!want&&raf){cancelAnimationFrame(raf);raf=0;}
-    syncSmil();
-  }
-  function tick(now){
-    raf=0;
-    if(!last)last=now;
-    elapsed+=(now-last)/1000;last=now;
-    if(elapsed>=TOTAL){elapsed=TOTAL;render();playing=false;sync();return;}
-    render();
-    if(running())raf=requestAnimationFrame(tick);
-  }
-  function seek(sec){
-    elapsed=Math.max(0,Math.min(TOTAL,sec));
-    prev=0;smilArmed=false;   /* 跳镜：CSS 动画与 SMIL 光点均从头重放 */
-    render();
-  }
-  if(btnPlay)btnPlay.addEventListener('click',()=>{playing=!playing;if(playing&&elapsed>=TOTAL)seek(0);sync();});
-  if(btnReplay)btnReplay.addEventListener('click',()=>{seek(0);playing=true;sync();});
-  if(bar){
-    bar.addEventListener('click',e=>{const r=bar.getBoundingClientRect();seek((e.clientX-r.left)/r.width*TOTAL);});
-    bar.addEventListener('keydown',e=>{
-      if(e.key==='ArrowRight'){seek(elapsed+3);e.preventDefault();}
-      if(e.key==='ArrowLeft'){seek(elapsed-3);e.preventDefault();}
-    });
-  }
-  new IntersectionObserver(es=>{es.forEach(en=>{inView=en.isIntersecting;sync();});},{threshold:.25}).observe(film);
-  document.addEventListener('visibilitychange',()=>{hidden=document.hidden;sync();});
-  window.addEventListener('resize',debounce(render,150),{passive:true});
-  render();sync();
-});
-
 /* ---------- D 渐进式离线（P2·PWA）：仅 https 注册，本地预览不干扰 ---------- */
 if('serviceWorker' in navigator && location.protocol==='https:'){
   window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').catch(()=>{});});
 }
+
+/* ================= 介绍片：封面卡 + 剧场播放器 =================
+   视频不进入首屏加载：<video> 无 src、preload=none，首次点击才注入地址。
+   桌面 16:9 / 移动 4:5 两版，切画幅只在「未开始播放」时生效。 */
+(function(){
+  var card = document.getElementById('film-card');
+  var openBtn = document.getElementById('film-open');
+  var ft = document.getElementById('ft');
+  if(!card || !openBtn || !ft) return;
+  var video = document.getElementById('ft-video');
+  var frame = document.getElementById('ft-frame');
+  var posterEl = document.getElementById('ft-poster');
+  var loading = document.getElementById('ft-loading');
+  var playBtn = document.getElementById('ft-play');
+  var muteBtn = document.getElementById('ft-mute');
+  var fullBtn = document.getElementById('ft-full');
+  var seek = document.getElementById('ft-seek');
+  var curEl = document.getElementById('ft-cur');
+  var totalEl = document.getElementById('ft-total');
+  var noteEl = document.getElementById('film-note');
+  var durEl = document.getElementById('film-dur');
+  var lenEl = document.getElementById('film-len');
+  var progEl = document.getElementById('film-progress');
+  var closeBtn = document.getElementById('ft-close');
+  var replayBtn = document.getElementById('ft-replay');
+
+  var shell = ft.querySelector('.ft-shell');
+  var mq = window.matchMedia('(max-width: 600px)');
+  var isOpen = false, loadedFmt = '', lastFocus = null, hideTimer = null, bodyOverflow = '';
+
+  var ICON_PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  var ICON_PAUSE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>';
+  var ICON_VOL = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4zm11.5 3a4.5 4.5 0 00-2-3.7v7.4a4.5 4.5 0 002-3.7z"/></svg>';
+  var ICON_MUTE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.2 9.4l1.4-1.4 2.1 2.1 2.1-2.1 1.4 1.4-2.1 2.1 2.1 2.1-1.4 1.4-2.1-2.1-2.1 2.1-1.4-1.4 2.1-2.1z"/></svg>';
+
+  function fmtTime(sec){
+    sec = Math.max(0, Math.floor(sec || 0));
+    return Math.floor(sec / 60) + ':' + (sec % 60 < 10 ? '0' : '') + (sec % 60);
+  }
+  function fmtFor(){ return mq.matches ? 'tall' : 'wide'; }
+
+  /* 影片注册表：intro 为首屏主片，另三支是幕后管线栏目的科普短片 */
+  var FILMS = {
+    intro: {
+      badge: '介绍片 · 58s', eyebrow: 'INTRO FILM · 完',
+      title: '现在，开始刷题', sub: '5,791 道题 · 23 个学科 · 判错自动回流'
+    },
+    pipeline: {
+      badge: '科普短片 · 五阶段管线 · 40s', eyebrow: 'PIPELINE · 完',
+      title: '慢一点，但每一步都算得清', sub: '五个角色各管一段 · 契约先行 · 门禁强制'
+    },
+    gate: {
+      badge: '科普短片 · 质量门禁 · 42s', eyebrow: 'QUALITY GATE · 完',
+      title: '不是让模型更准，是让错误出不来', sub: 'R1–R13 硬规则 · D1–D20 维度 · 全绿才发布'
+    },
+    rag: {
+      badge: '科普短片 · 个性化学科 RAG · 38s', eyebrow: 'SUBJECT RAG · 完',
+      title: '检索到的质量，决定后面所有的质量', sub: '逐科分块 · 向量+关键词混合检索 · 命中缓存零调用'
+    }
+  };
+  var ORDER = ['intro', 'pipeline', 'gate', 'rag'];
+  var current = 'intro', loadedKey = '';
+
+  function srcFor(f, key){
+    var sfx = f === 'tall' ? '4x5' : '16x9';
+    return key === 'intro'
+      ? 'assets/intro/medagentwork-intro-' + sfx + '.mp4'
+      : 'assets/shorts/' + key + '-' + sfx + '.mp4';
+  }
+  function posterFor(f, key){
+    var sfx = f === 'tall' ? '4x5' : '16x9';
+    return key === 'intro'
+      ? 'assets/intro/poster-' + sfx + '.jpg'
+      : 'assets/shorts/poster-' + key + '-' + sfx + '.jpg';
+  }
+
+  function ensureSource(){
+    var f = fmtFor();
+    if(loadedFmt === f && loadedKey === current) return;
+    loadedFmt = f;
+    loadedKey = current;
+    ft.setAttribute('data-fmt', f);
+    ft.setAttribute('data-film', current);
+    posterEl.style.backgroundImage = 'url("' + posterFor(f, current) + '")';
+    video.setAttribute('poster', posterFor(f, current));
+    video.src = srcFor(f, current);
+    video.load();
+  }
+
+  function applyFilmMeta(){
+    var m = FILMS[current];
+    ft.querySelector('#ft-eyebrow').textContent = m.eyebrow;
+    ft.querySelector('#ft-end-title').textContent = m.title;
+    ft.querySelector('#ft-end-sub').textContent = m.sub;
+    ft.querySelector('#ft-badge').textContent = m.badge;
+    var swap = ft.querySelector('#ft-swap');
+    if(current === 'intro'){ swap.hidden = true; swap.innerHTML = ''; return; }
+    swap.hidden = false;
+    swap.innerHTML = ORDER.filter(function(k){ return k !== 'intro'; }).map(function(k){
+      return '<button type="button" data-film="' + k + '"' +
+        (k === current ? ' aria-current="true"' : '') + '>' +
+        FILMS[k].badge.replace('科普短片 · ', '').replace(/ · \d+s$/, '') + '</button>';
+    }).join('');
+  }
+
+  /* 从任意入口打开某支影片：卡片按钮 / 结束卡换片 */
+  function openFilm(key){
+    var next = FILMS[key] ? key : 'intro';
+    if(next === current){ open(); return; }
+    var wasOpen = isOpen;
+    current = next;
+    applyFilmMeta();
+    if(!wasOpen){
+      var card = document.activeElement && document.activeElement.closest
+        ? document.activeElement.closest('.cap-card') : null;
+      if(card) card.classList.add('is-launching');
+      open();
+      setTimeout(function(){ if(card) card.classList.remove('is-launching'); }, 520);
+    }else{
+      /* 换片：黑场过渡 260ms 后再切源，避免画面硬跳 */
+      ft.classList.add('ft-switching');
+      setTimeout(function(){
+        ft.classList.remove('ft-ended');
+        ensureSource();
+        var pv = video.play();
+        if(pv && pv.catch) pv.catch(function(){});
+        setTimeout(function(){ ft.classList.remove('ft-switching'); }, 60);
+      }, 260);
+    }
+  }
+  function setPlayerUI(playing){
+    playBtn.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+    playBtn.setAttribute('aria-label', playing ? '暂停' : '播放');
+    ft.setAttribute('data-playing', playing ? '1' : '0');
+  }
+  function setMuteUI(){
+    muteBtn.innerHTML = video.muted ? ICON_MUTE : ICON_VOL;
+    muteBtn.setAttribute('aria-label', video.muted ? '取消静音' : '静音');
+  }
+  function resetEnd(){
+    ft.classList.remove('ft-ended');
+    card.setAttribute('data-watched','0');
+    if(current === 'intro') noteEl.textContent = 'MEDAGENTWORK · INTRO 2026';
+  }
+  function open(){
+    if(isOpen) return;
+    lastFocus = document.activeElement;
+    ensureSource();
+    clearTimeout(hideTimer);
+    ft.hidden = false;
+    ft.setAttribute('aria-hidden','false');
+    openBtn.setAttribute('aria-expanded','true');
+    bodyOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(function(){ ft.classList.add('open'); });
+    isOpen = true;
+    if(video.ended){
+      resetEnd();
+      video.currentTime = 0;
+    }
+    var p = video.play();
+    if(p && p.catch){ p.catch(function(){ setPlayerUI(false); }); }
+    setTimeout(function(){ try{ shell.focus({preventScroll:true}); }catch(e){} }, 80);
+  }
+  function close(){
+    if(!isOpen) return;
+    isOpen = false;
+    video.pause();
+    ft.classList.remove('open');
+    ft.setAttribute('aria-hidden','true');
+    openBtn.setAttribute('aria-expanded','false');
+    document.body.style.overflow = bodyOverflow;
+    hideTimer = setTimeout(function(){ ft.hidden = true; }, 320);
+    if(document.fullscreenElement){ try{ document.exitFullscreen(); }catch(e){} }
+    if(lastFocus && lastFocus.focus){ try{ lastFocus.focus(); }catch(e){} }
+  }
+  function toggle(){
+    if(video.paused){
+      if(ft.classList.contains('ft-ended')){ replay(); return; }
+      var p = video.play();
+      if(p && p.catch){ p.catch(function(){}); }
+    }else{
+      video.pause();
+    }
+  }
+  function replay(){
+    resetEnd();
+    video.currentTime = 0;
+    var p = video.play();
+    if(p && p.catch){ p.catch(function(){}); }
+  }
+  function toggleMute(){
+    video.muted = !video.muted;
+    setMuteUI();
+  }
+  function toggleFull(){
+    if(document.fullscreenElement){ try{ document.exitFullscreen(); }catch(e){} return; }
+    if(video.webkitEnterFullscreen && mq.matches){ try{ video.webkitEnterFullscreen(); return; }catch(e){} }
+    var el = ft;
+    if(el.requestFullscreen){ el.requestFullscreen().catch(function(){}); }
+  }
+
+  openBtn.addEventListener('click', function(){ openFilm('intro'); });
+  closeBtn.addEventListener('click', close);
+  ft.addEventListener('click', function(e){
+    if(e.target === ft || (e.target.classList && e.target.classList.contains('ft-scrim'))){ close(); }
+  });
+  playBtn.addEventListener('click', toggle);
+  video.addEventListener('click', toggle);
+  video.addEventListener('dblclick', toggleFull);
+  muteBtn.addEventListener('click', toggleMute);
+  fullBtn.addEventListener('click', toggleFull);
+  replayBtn.addEventListener('click', replay);
+
+  seek.addEventListener('input', function(){
+    if(!video.duration) return;
+    video.currentTime = video.duration * (parseInt(seek.value, 10) / 1000);
+  });
+
+  video.addEventListener('play', function(){ setPlayerUI(true); });
+  video.addEventListener('pause', function(){ setPlayerUI(false); });
+  video.addEventListener('waiting', function(){ loading.classList.add('on'); });
+  video.addEventListener('playing', function(){ loading.classList.remove('on'); setPlayerUI(true); });
+  video.addEventListener('canplay', function(){ loading.classList.remove('on'); });
+  video.addEventListener('loadedmetadata', function(){
+    var t = fmtTime(video.duration);
+    totalEl.textContent = t;
+    durEl.textContent = t;
+    lenEl.textContent = t;
+    openBtn.setAttribute('aria-label', '播放 MedAgentWork 介绍片（' + t + '）');
+  });
+  video.addEventListener('timeupdate', function(){
+    var d = video.duration || 0;
+    if(!d) return;
+    var ratio = video.currentTime / d;
+    if(!seek.matches(':active')){ seek.value = String(Math.round(ratio * 1000)); }
+    curEl.textContent = fmtTime(video.currentTime);
+    progEl.style.width = (ratio * 100).toFixed(2) + '%';
+  });
+  video.addEventListener('ended', function(){
+    ft.classList.add('ft-ended');
+    if(current === 'intro'){
+      card.setAttribute('data-watched','1');
+      noteEl.textContent = '已看完 · 点击重看';
+    }
+    setPlayerUI(false);
+    progEl.style.width = '100%';
+  });
+  video.addEventListener('error', function(){
+    loading.classList.remove('on');
+    if(typeof toast === 'function') toast('视频加载失败，请检查网络后重试');
+  });
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden && isOpen && !video.paused) video.pause();
+  });
+  document.addEventListener('keydown', function(e){
+    if(!isOpen) return;
+    var k = e.key;
+    if(k === 'Escape'){
+      if(document.fullscreenElement) return;
+      e.preventDefault(); close();
+    }else if(k === ' ' || k.toLowerCase() === 'k'){
+      if(e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
+      if(e.target && e.target.closest && e.target.closest('button, a')) return;
+      e.preventDefault(); toggle();
+    }else if(k === 'ArrowRight'){
+      e.preventDefault(); video.currentTime = Math.min(video.duration || 0, video.currentTime + 5);
+    }else if(k === 'ArrowLeft'){
+      e.preventDefault(); video.currentTime = Math.max(0, video.currentTime - 5);
+    }else if(k.toLowerCase() === 'm'){
+      e.preventDefault(); toggleMute();
+    }else if(k.toLowerCase() === 'f'){
+      e.preventDefault(); toggleFull();
+    }else if(k === 'Tab'){
+      var items = Array.prototype.filter.call(
+        ft.querySelectorAll('button, a[href], input'),
+        function(el){ return !el.disabled && el.offsetParent !== null; }
+      );
+      if(!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+      else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* 卡片「了解更多」：推近 → 剧场淡入 */
+  document.addEventListener('click', function(e){
+    var t = e.target.closest && e.target.closest('.cap-more');
+    if(t){ openFilm(t.getAttribute('data-film')); return; }
+    var sw = e.target.closest && e.target.closest('#ft-swap button');
+    if(sw){ openFilm(sw.getAttribute('data-film')); }
+  });
+  /* 视口跨过 600px 时切换画幅 */
+  if(mq.addEventListener) mq.addEventListener('change', function(){
+    if(isOpen && loadedFmt !== fmtFor()) ensureSource();
+  });
+
+  applyFilmMeta();
+  setPlayerUI(false);
+  setMuteUI();
+  window.__film = { open: open, close: close, openFilm: openFilm, el: ft, video: video };
+})();
 </script>
 </body>
 </html>

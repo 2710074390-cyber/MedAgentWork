@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>MedAgentWork — Soundtrack</title></head>
+<body style="background:#08090d;color:#9cc0ff;font-family:monospace;padding:24px">
+<div id="log">rendering…</div>
+<script>
+"use strict";
+/* 用 OfflineAudioContext 合成 58s 氛围音轨：低频铺底 + 和弦垫 + 转场铃 + 收束低频冲击 */
+const SR = 44100, DUR = 58.0;
+const ctx = new OfflineAudioContext(2, Math.floor(SR * DUR), SR);
+
+const master = ctx.createGain();
+master.gain.value = 0.9;
+const comp = ctx.createDynamicsCompressor();
+comp.threshold.value = -20; comp.knee.value = 24; comp.ratio.value = 2.2;
+comp.attack.value = .02; comp.release.value = .35;
+master.connect(comp).connect(ctx.destination);
+
+/* 混响 */
+const rev = ctx.createConvolver();
+(function(){
+  const len = Math.floor(SR * 2.8);
+  const ir = ctx.createBuffer(2, len, SR);
+  for (let ch = 0; ch < 2; ch++) {
+    const d = ir.getChannelData(ch);
+    let lp = 0;
+    for (let i = 0; i < len; i++) {
+      const t = i / SR;
+      lp = lp * .86 + (Math.random() * 2 - 1) * .14;
+      d[i] = lp * Math.exp(-t * 2.15) * (1 - t / 2.8);
+    }
+  }
+  rev.buffer = ir;
+})();
+const revGain = ctx.createGain(); revGain.gain.value = .55;
+rev.connect(revGain).connect(master);
+
+const dry = ctx.createGain(); dry.gain.value = 1; dry.connect(master);
+function send(node, amount) {
+  const g = ctx.createGain(); g.gain.value = amount;
+  node.connect(g); g.connect(rev);
+}
+
+/* 噪声源 */
+function noiseBuffer(seconds) {
+  const b = ctx.createBuffer(1, Math.floor(SR * seconds), SR);
+  const d = b.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  return b;
+}
+const NOISE = noiseBuffer(6);
+
+/* 和弦垫 */
+const padFilter = ctx.createBiquadFilter();
+padFilter.type = "lowpass"; padFilter.frequency.value = 1350; padFilter.Q.value = .4;
+padFilter.connect(dry); send(padFilter, .5);
+
+function pad(freqs, t0, t1, level, bright) {
+  freqs.forEach((f, i) => {
+    [-7, 0, 7].forEach((det, k) => {
+      const o = ctx.createOscillator();
+      o.type = k === 1 ? "triangle" : "sine";
+      o.frequency.value = f; o.detune.value = det;
+      const g = ctx.createGain();
+      g.gain.setValueAtTime(0, t0);
+      g.gain.linearRampToValueAtTime(level * (k === 1 ? .5 : .8), t0 + 2.4);
+      g.gain.setValueAtTime(level * (k === 1 ? .5 : .8), Math.max(t0 + 2.5, t1 - 2.8));
+      g.gain.linearRampToValueAtTime(0, t1 + .2);
+      const p = ctx.createStereoPanner();
+      p.pan.value = (k - 1) * .45;
+      o.connect(g).connect(p).connect(padFilter);
+      o.start(t0); o.stop(t1 + .4);
+    });
+  });
+}
+
+/* 低音铺底 */
+function sub(freq, t0, t1, level) {
+  const o = ctx.createOscillator(); o.type = "sine"; o.frequency.value = freq;
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0, t0);
+  g.gain.linearRampToValueAtTime(level, t0 + 3);
+  g.gain.setValueAtTime(level, Math.max(t0 + 3.2, t1 - 3));
+  g.gain.linearRampToValueAtTime(0, t1);
+  o.connect(g).connect(dry); send(g, .25);
+  o.start(t0); o.stop(t1 + .2);
+}
+
+/* 铃声 */
+function bell(freq, t, level, dur) {
+  dur = dur || 4.5;
+  const o = ctx.createOscillator(); o.type = "sine"; o.frequency.value = freq;
+  const o2 = ctx.createOscillator(); o2.type = "sine"; o2.frequency.value = freq * 2.01;
+  const g = ctx.createGain(), g2 = ctx.createGain();
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(level, t + .02);
+  g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+  g2.gain.setValueAtTime(0, t);
+  g2.gain.linearRampToValueAtTime(level * .28, t + .02);
+  g2.gain.exponentialRampToValueAtTime(.0001, t + dur * .55);
+  const p = ctx.createStereoPanner(); p.pan.value = Math.sin(freq) * .25;
+  o.connect(g).connect(p); o2.connect(g2).connect(p);
+  p.connect(dry); p.connect(rev);
+  o.start(t); o.stop(t + dur + .1);
+  o2.start(t); o2.stop(t + dur + .1);
+}
+
+/* 低频冲击 */
+function impact(t) {
+  const o = ctx.createOscillator(); o.type = "sine";
+  o.frequency.setValueAtTime(92, t);
+  o.frequency.exponentialRampToValueAtTime(34, t + 1.4);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(.55, t + .04);
+  g.gain.exponentialRampToValueAtTime(.0001, t + 2.6);
+  o.connect(g).connect(dry); send(g, .5);
+  o.start(t); o.stop(t + 2.7);
+
+  const n = ctx.createBufferSource(); n.buffer = NOISE;
+  const bp = ctx.createBiquadFilter(); bp.type = "lowpass"; bp.frequency.value = 420;
+  const ng = ctx.createGain();
+  ng.gain.setValueAtTime(0, t);
+  ng.gain.linearRampToValueAtTime(.18, t + .02);
+  ng.gain.exponentialRampToValueAtTime(.0001, t + .9);
+  n.connect(bp).connect(ng).connect(dry); send(ng, .4);
+  n.start(t); n.stop(t + 1);
+}
+
+/* 上升噪声 */
+function riser(t0, t1, level) {
+  const n = ctx.createBufferSource(); n.buffer = NOISE; n.loop = true;
+  const bp = ctx.createBiquadFilter(); bp.type = "bandpass"; bp.Q.value = 1.2;
+  bp.frequency.setValueAtTime(240, t0);
+  bp.frequency.exponentialRampToValueAtTime(3400, t1);
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0, t0);
+  g.gain.linearRampToValueAtTime(level, t1 - .15);
+  g.gain.linearRampToValueAtTime(0, t1 + .05);
+  n.connect(bp).connect(g).connect(dry); send(g, .45);
+  n.start(t0); n.stop(t1 + .2);
+}
+
+/* ---- 编曲 ---- */
+sub(55, 0, 12.6, .16);
+sub(43.65, 12.0, 20.0, .13);
+sub(65.4, 19.0, 27.0, .14);
+sub(49.0, 26.0, 34.0, .12);
+sub(55.0, 32.4, 43.0, .13);
+sub(49.0, 42.6, 50.0, .13);
+sub(43.65, 49.4, 58.0, .15);
+
+pad([110, 261.63, 329.63, 392.0, 493.88], 0.0, 13.2, .042, 1);
+pad([87.31, 220.0, 261.63, 329.63], 11.4, 20.4, .045, 1);
+pad([130.81, 329.63, 392.0, 493.88, 587.33], 18.6, 27.4, .040, 1);
+pad([98.0, 246.94, 293.66, 329.63], 25.6, 34.2, .042, 1);
+pad([110, 261.63, 329.63, 392.0, 493.88], 32.4, 42.6, .046, 1);
+pad([98.0, 246.94, 293.66, 329.63, 392.0], 42.2, 50.8, .050, 1);
+pad([130.81, 329.63, 392.0, 493.88, 587.33], 50.2, 58.4, .056, 1);
+
+bell(880.0, 5.92, .075);     /* S2 */
+bell(1046.5, 11.64, .08);    /* S3 */
+bell(659.25, 19.02, .07);    /* S4 */
+bell(783.99, 26.02, .07);    /* S5 */
+bell(880.0, 32.58, .07);     /* 规则与演进 A 拍 */
+bell(1174.66, 39.98, .055);  /* B 拍：演进 */
+bell(1318.5, 45.1, .05, 5);   /* 收束句 */
+riser(44.9, 47.44, .13);
+impact(47.52);               /* 数字幕 */
+bell(1046.5, 47.62, .10, 6);
+bell(1567.98, 52.3, .06, 5);
+
+/* 极轻的节拍脉动，只在 S3/S4 段 */
+for (let t = 12.6; t < 25.5; t += 2.0) {
+  const o = ctx.createOscillator(); o.type = "sine"; o.frequency.value = 66;
+  const g = ctx.createGain();
+  g.gain.setValueAtTime(0, t);
+  g.gain.linearRampToValueAtTime(.05, t + .03);
+  g.gain.exponentialRampToValueAtTime(.0001, t + .55);
+  o.connect(g).connect(dry); send(g, .3);
+  o.start(t); o.stop(t + .6);
+}
+
+/* 总淡入淡出 */
+master.gain.setValueAtTime(0, 0);
+master.gain.linearRampToValueAtTime(.9, 1.6);
+master.gain.setValueAtTime(.9, 55.4);
+master.gain.linearRampToValueAtTime(0, 58.0);
+
+/* 导出 WAV */
+function wavBase64(buf) {
+  const ch0 = buf.getChannelData(0), ch1 = buf.getChannelData(1);
+  const n = ch0.length;
+  const ab = new ArrayBuffer(44 + n * 4);
+  const v = new DataView(ab);
+  function s(off, str) { for (let i = 0; i < str.length; i++) v.setUint8(off + i, str.charCodeAt(i)); }
+  s(0, "RIFF"); v.setUint32(4, 36 + n * 4, true); s(8, "WAVE");
+  s(12, "fmt "); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, 2, true);
+  v.setUint32(24, SR, true); v.setUint32(28, SR * 4, true); v.setUint16(32, 4, true); v.setUint16(34, 16, true);
+  s(36, "data"); v.setUint32(40, n * 4, true);
+  let o = 44;
+  for (let i = 0; i < n; i++) {
+    let a = Math.max(-1, Math.min(1, ch0[i])), b = Math.max(-1, Math.min(1, ch1[i]));
+    v.setInt16(o, a < 0 ? a * 0x8000 : a * 0x7fff, true);
+    v.setInt16(o + 2, b < 0 ? b * 0x8000 : b * 0x7fff, true);
+    o += 4;
+  }
+  const bytes = new Uint8Array(ab);
+  let bin = "";
+  const CH = 0x8000;
+  for (let i = 0; i < bytes.length; i += CH) {
+    bin += String.fromCharCode.apply(null, bytes.subarray(i, i + CH));
+  }
+  return btoa(bin);
+}
+
+ctx.startRendering().then((buf) => {
+  window.__wav = wavBase64(buf);
+  document.getElementById("log").textContent = "ready " + window.__wav.length;
+  window.__ready = true;
+}).catch((e) => { window.__err = String(e); document.getElementById("log").textContent = "ERR " + e; });
+</script>
+</body>
+</html>

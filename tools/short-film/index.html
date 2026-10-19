@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>MedAgentWork — Short Films</title>
+<script>
+  var Q = new URLSearchParams(location.search);
+  var FMT = Q.get('format') === 'tall' ? 'tall' : 'wide';
+  document.documentElement.className = FMT;
+</script>
+<style>
+/* ============================================================
+   MedAgentWork 科普短片 — 画布（1920×1080 / 1080×1350）
+   与主介绍片同一套视觉语言：黑蓝深海 · 发丝线 · 等宽标签
+   暖色仅用于「避坑 / 撤回」警示
+   所有运动由 window.__seek(ms) 驱动，无 CSS 动画（逐帧可复现）
+   ============================================================ */
+:root{
+  --bg:#07080c;
+  --ink:#f4f7ff;
+  --muted:rgba(224,234,255,.62);
+  --dim:rgba(224,234,255,.34);
+  --brand:#679efe;
+  --brand-2:#9cc0ff;
+  --ok:#4ade80;
+  --warn:#f5c86b;
+  --line:rgba(255,255,255,.10);
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"Cascadia Code",Consolas,"SF Mono",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:#000;overflow:hidden}
+body{font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);isolation:isolate}
+html.tall #stage{width:1080px;height:1350px}
+
+/* ---------------- 背景 ---------------- */
+.bg-base{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(1000px 700px at 74% 14%,rgba(45,95,158,.28),transparent 62%),
+  radial-gradient(1200px 900px at 6% 106%,rgba(26,56,112,.5),transparent 66%),
+  linear-gradient(180deg,#080a10 0%,#07090e 54%,#04060a 100%)}
+html.tall .bg-base{background:
+  radial-gradient(760px 760px at 80% 6%,rgba(45,95,158,.30),transparent 64%),
+  radial-gradient(900px 900px at -8% 104%,rgba(26,56,112,.52),transparent 68%),
+  linear-gradient(180deg,#080a10 0%,#07090e 55%,#04060a 100%)}
+.grid{position:absolute;inset:-12%;opacity:.5;z-index:0;
+  background-image:linear-gradient(rgba(255,255,255,.036) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.036) 1px,transparent 1px);
+  background-size:96px 96px;
+  -webkit-mask-image:radial-gradient(ellipse 72% 64% at 50% 38%,#000 8%,transparent 76%);
+  mask-image:radial-gradient(ellipse 72% 64% at 50% 38%,#000 8%,transparent 76%)}
+html.tall .grid{background-size:64px 64px}
+.horizon{position:absolute;left:6%;right:6%;top:86%;height:1px;z-index:0;
+  background:linear-gradient(90deg,transparent,rgba(103,153,254,.34) 22%,rgba(200,222,255,.6) 50%,rgba(103,153,254,.34) 78%,transparent)}
+.vignette{position:absolute;inset:0;z-index:6;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 46%,transparent 52%,rgba(0,0,0,.55) 100%)}
+
+/* ---------------- 通用排版 ---------------- */
+#acts{position:absolute;inset:0;z-index:2}
+.scene{position:absolute;inset:0;padding:132px 132px 116px;display:flex;flex-direction:column;justify-content:center}
+html.tall .scene{padding:112px 76px 104px}
+.eyebrow{display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:15px;
+  letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--brand);
+  box-shadow:0 0 14px rgba(103,158,254,.8);flex-shrink:0}
+.eyebrow b{color:var(--brand-2);font-weight:400}
+h2.big{font-size:104px;font-weight:600;line-height:1.1;letter-spacing:-.036em;margin-top:26px}
+html.tall h2.big{font-size:84px;line-height:1.14}
+.sub{margin-top:26px;font-size:27px;line-height:1.6;color:var(--muted);font-weight:300;max-width:1180px}
+html.tall .sub{font-size:26px;line-height:1.55;margin-top:18px}
+.mask{display:block;overflow:hidden}
+.mask>span{display:block}
+
+.act-head{margin-top:44px;padding-bottom:18px;border-bottom:1px solid var(--line);
+  display:flex;align-items:baseline;justify-content:space-between;gap:20px}
+html.tall .act-head{margin-top:30px;padding-bottom:14px}
+.act-head b{font-size:42px;font-weight:500;letter-spacing:-.01em}
+html.tall .act-head b{font-size:40px;line-height:1.25}
+.act-head span{font-family:var(--mono);font-size:14px;letter-spacing:.16em;color:var(--dim);white-space:nowrap}
+html.tall .act-head span{font-size:15px}
+
+/* 列表行（角色 / 规则） */
+.rows{margin-top:8px}
+.row{display:grid;grid-template-columns:230px 1fr;gap:28px;align-items:baseline;
+  padding:23px 0;border-bottom:1px solid rgba(255,255,255,.055)}
+.row:last-child{border-bottom:0}
+.row .k{font-family:var(--mono);font-size:17px;letter-spacing:.05em;color:var(--brand-2)}
+.row .v{font-size:24px;line-height:1.55;color:var(--muted);font-weight:300}
+html.tall .row{grid-template-columns:1fr;gap:6px;padding:16px 0}
+html.tall .row .k{font-size:18px}
+html.tall .row .v{font-size:25px;line-height:1.45}
+.foot-note{margin-top:22px;font-family:var(--mono);font-size:15px;letter-spacing:.05em;color:var(--dim)}
+html.tall .foot-note{font-size:17px;margin-top:18px}
+
+/* 决策卡 */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:36px}
+html.tall .cards{grid-template-columns:1fr;gap:22px;margin-top:24px}
+.card{position:relative;padding:30px 30px 28px;border:1px solid var(--line);border-radius:14px;
+  background:rgba(255,255,255,.028)}
+.card .no{font-family:var(--mono);font-size:13px;letter-spacing:.16em;color:var(--brand)}
+.card h3{margin-top:15px;font-size:29px;font-weight:500;line-height:1.3;letter-spacing:-.01em}
+.card p{margin-top:12px;font-size:19px;line-height:1.6;color:var(--muted);font-weight:300}
+.card .pit{margin-top:20px;padding-top:16px;border-top:1px dashed rgba(245,200,107,.28);
+  font-size:17.5px;line-height:1.55;color:rgba(245,200,107,.88)}
+.card .pit b{font-family:var(--mono);font-size:13px;letter-spacing:.12em;color:var(--warn);
+  display:block;margin-bottom:5px;font-weight:400}
+html.tall .card{padding:22px 22px 20px}
+html.tall .card h3{font-size:29px}
+html.tall .card p{font-size:21px;margin-top:8px}
+html.tall .card .pit{font-size:19px;margin-top:14px;padding-top:12px}
+
+/* 收束 */
+.close-wrap{margin-top:52px;display:flex;flex-direction:column;align-items:center;text-align:center}
+html.tall .close-wrap{margin-top:38px}
+.stats{display:flex;gap:64px;justify-content:center}
+html.tall .stats{gap:40px;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--mono);font-size:62px;line-height:1;
+  background:linear-gradient(180deg,#ffffff 24%,#a9c4ff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{display:block;margin-top:10px;font-family:var(--mono);font-size:14px;
+  letter-spacing:.14em;color:var(--dim)}
+html.tall .stat b{font-size:48px}
+html.tall .stat span{font-size:15px}
+.punch{margin-top:60px;font-size:56px;font-weight:500;line-height:1.32;letter-spacing:-.02em;color:rgba(255,255,255,.92)}
+html.tall .punch{margin-top:44px;font-size:50px;line-height:1.34;padding:0 12px}
+.recall{margin-top:34px;padding:12px 22px;border:1px solid rgba(245,200,107,.3);
+  border-radius:100px;background:rgba(245,200,107,.07);color:#f5c86b;
+  font-family:var(--mono);font-size:16px;letter-spacing:.06em}
+html.tall .recall{margin-top:24px;font-size:18px}
+
+/* 角标 */
+.chapter{position:absolute;right:132px;top:112px;z-index:5;text-align:right}
+.chapter b{display:block;font-family:var(--mono);font-size:96px;line-height:1;
+  color:rgba(255,255,255,.07);letter-spacing:-.04em}
+.chapter span{display:block;margin-top:10px;font-family:var(--mono);font-size:13px;
+  letter-spacing:.2em;color:var(--dim)}
+html.tall .chapter{right:76px;top:96px}
+html.tall .chapter b{font-size:78px}
+
+/* 进度条 */
+.progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.07);z-index:7}
+.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-2));
+  box-shadow:0 0 18px rgba(103,153,254,.5)}
+.ss-tag{position:absolute;left:132px;bottom:36px;z-index:5;font-family:var(--mono);
+  font-size:13px;letter-spacing:.2em;color:rgba(255,255,255,.22)}
+html.tall .ss-tag{left:76px;bottom:32px;font-size:14px}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="bg-base"></div>
+  <div class="grid"></div>
+  <div class="horizon"></div>
+  <div class="chapter" id="chapter"><b>01</b><span id="chapter-name">PIPELINE</span></div>
+  <div class="ss-tag" id="ss-tag">MEDAGENTWORK · 科普短片</div>
+  <div id="acts"></div>
+  <div class="vignette"></div>
+  <div class="progress"><i id="progress"></i></div>
+</div>
+
+<script>
+"use strict";
+/* ============================================================
+   三支科普短片的数据与渲染
+   - 一页承载三片：?f=pipeline|gate|rag
+   - 每片 4 幕：hook → list → decide → close
+   - window.__seek(ms) 可定位任意时刻，逐帧渲染可复现
+   ============================================================ */
+const $ = id => document.getElementById(id);
+
+/* ---------------- 文案数据（全部来自项目真实记录） ---------------- */
+const FILMS = {
+  pipeline: {
+    name: 'PIPELINE', idx: '01', dur: 40,
+    hook: {
+      eyebrow: '幕后管线',
+      l1: '一批题，五个角色', l2: '各写一段。',
+      sub: '出题只管出题，质检只管质检。中间不留一句「你看着办」。'
+    },
+    list: {
+      title: '谁做什么', tag: 'ROLES',
+      rows: [
+        { k: '编排 MedMaster', v: '先把科目、题数、模块说清楚，你点头才开跑。' },
+        { k: 'MedGen 出题', v: '写完落盘到 中间产物/{批次}/，文件名带批次号。' },
+        { k: 'MedQC 质检', v: '出报告：哪一条规则没过，写清楚。' },
+        { k: 'MedFix 修复', v: '只改报告里点名的题，不顺手改别的。' },
+        { k: 'MedReview 成册', v: '排版、插图、章节结构，最后才出复习资料。' }
+      ],
+      foot: '每一步都能单独重跑，不用整批重来。'
+    },
+    decide: {
+      title: '卡住的时候怎么办', tag: 'BLOCKED',
+      cards: [
+        { no: '契约', h: '输入输出写死成 schema',
+          d: '产物一摄入就用 jsonschema 校验，字段对不上当场拒收。',
+          pit: '以前', pt: '字段对不上，只能整批返工。' },
+        { no: '状态', h: '状态存一个文件，原子写',
+          d: '批次状态连着血缘一起写；门禁不过就 HALT。',
+          pit: '以前', pt: '并发写互相覆盖，出过丢更新。' },
+        { no: '回退', h: 'BLOCKED 就地退回',
+          d: '回到出问题的那个角色，修完重跑门禁。',
+          pit: '以前', pt: '手工往下推的结果，是半成品上线。' }
+      ]
+    },
+    close: {
+      stats: [['5', '角色'], ['4', '门禁'], ['1', '状态机'], ['40', '秒']],
+      punch: '慢，但每一步都算数。'
+    }
+  },
+
+  gate: {
+    name: 'QUALITY GATE', idx: '02', dur: 42,
+    hook: {
+      eyebrow: '质量门禁',
+      l1: '「看起来没问题」', l2: '不算通过。',
+      sub: '选题库里最危险的就是这句：讲得顺，答案错。判定得写死在代码里。'
+    },
+    list: {
+      title: '先写死的规则', tag: 'RULES',
+      rows: [
+        { k: 'R9 数值缺单位', v: '0.5 还是 0.5 mg，只能有一个对；缺单位直接判 FAIL。' },
+        { k: 'R2 正确选项最长', v: '正确项总是最长的，这是选择题里最常见的破绽。' },
+        { k: 'R6 数值太挨', v: '四个选项数值接近，区分度就没了。' },
+        { k: 'R10 / R11 线索', v: '按 NBME 的出题习惯，反着排除。' }
+      ],
+      foot: '这类规则不需要模型参与，跑一遍就有结果。'
+    },
+    decide: {
+      title: '事实也要核', tag: 'FACT',
+      cards: [
+        { no: '反查', h: '引用翻回原书那一页',
+          d: 'fact_check 把每个引用翻回 PDF，对不上页码就作废。',
+          pit: '以前', pt: '段落跨页会断链，来源经常对不上号。' },
+        { no: '真题', h: '和 GoldenSet 交叉验证',
+          d: '9,616 条真题解析逐条比；考研原题 100% 核对。',
+          pit: '以前', pt: '内容看着专业，答案可能和真题库打架。' },
+        { no: '放行', h: 'FAIL == 0 才部署',
+          d: 'gate_check 不过，流水线直接停在这一步。',
+          pit: '以前', pt: '上线再改，所有门禁得重跑一遍。' }
+      ]
+    },
+    close: {
+      stats: [['R1–R13', '硬规则'], ['D1–D20', '维度'], ['90', '项测试'], ['164', '项巡检']],
+      punch: '错题出不去。',
+      recall: '批次 039 · 199 题主动撤回，等并集'
+    }
+  },
+
+  rag: {
+    name: 'SUBJECT RAG', idx: '03', dur: 38,
+    hook: {
+      eyebrow: '个性化学科 RAG',
+      l1: '23 个学科，', l2: '一套配置不管用。',
+      sub: '方剂组成、影像分期、参考值区间，切法和检索词都不一样。'
+    },
+    list: {
+      title: '分块跟着学科走', tag: 'CHUNK',
+      rows: [
+        { k: '方剂组成不切碎', v: '一味药一段，别和功效混在一起。' },
+        { k: '向量 + 关键词', v: '向量找意思，关键词找药名和数值。' },
+        { k: 'rerank 再收一次', v: '两路召回合并之后重排。' },
+        { k: '23 科各自调', v: '分块大小、召回条数、阈值都不同。' }
+      ],
+      foot: '统一配置省事，但会把某个学科的信息切坏。'
+    },
+    decide: {
+      title: '别让检索拖死管线', tag: 'COST',
+      cards: [
+        { no: '缓存', h: '查询和向量都落盘',
+          d: '同一条查询，第二次不花钱。',
+          pit: '那次', pt: 'batch027 余额见底，整条管线停过。' },
+        { no: '降级', h: '余额不够就跳 rerank',
+          d: '成本约减半，批次继续往下走。',
+          pit: '取舍', pt: '检索质量可以降，批次不能停。' },
+        { no: '红线', h: '先验不是实测',
+          d: 'calibrated_p 只用于组卷配平。',
+          pit: '红线', pt: '标成实测难度，等于骗自己。' }
+      ]
+    },
+    close: {
+      stats: [['23', '学科'], ['26', '索引'], ['双路', '检索'], ['0', '调用']],
+      punch: '检索先对，后面才对。'
+    }
+  }
+};
+
+/* ---------------- 幕的 DOM（由数据生成） ---------------- */
+function el(tag, cls, html) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (html != null) n.innerHTML = html;
+  return n;
+}
+
+function buildActs(film) {
+  const host = $('acts');
+  host.innerHTML = '';
+
+  /* 钩子 */
+  const h = el('section', 'scene', '');
+  h.id = 'act-hook';
+  h.appendChild(el('div', 'eyebrow', `<i></i><b>${film.hook.eyebrow}</b>`));
+  const h2 = el('h2', 'big', `<span class="mask"><span id="h-l1">${film.hook.l1}</span></span><span class="mask"><span id="h-l2">${film.hook.l2}</span></span>`);
+  h.appendChild(h2);
+  h.appendChild(el('p', 'sub', film.hook.sub));
+  host.appendChild(h);
+
+  /* 列表 */
+  const a = el('section', 'scene', '');
+  a.id = 'act-list';
+  a.appendChild(el('div', 'act-head', `<b>${film.list.title}</b><span>${film.list.tag}</span>`));
+  const rows = el('div', 'rows', '');
+  film.list.rows.forEach((r, i) => {
+    rows.appendChild(el('div', 'row', `<span class="k">${r.k}</span><span class="v">${r.v}</span>`));
+  });
+  a.appendChild(rows);
+  a.appendChild(el('div', 'foot-note', film.list.foot));
+  host.appendChild(a);
+
+  /* 决策 */
+  const b = el('section', 'scene', '');
+  b.id = 'act-decide';
+  b.appendChild(el('div', 'act-head', `<b>${film.decide.title}</b><span>${film.decide.tag}</span>`));
+  const cards = el('div', 'cards', '');
+  film.decide.cards.forEach(c => {
+    cards.appendChild(el('div', 'card', `<span class="no">${c.no}</span><h3>${c.h}</h3><p>${c.d}</p><div class="pit"><b>${c.pit}</b>${c.pt}</div>`));
+  });
+  b.appendChild(cards);
+  host.appendChild(b);
+
+  /* 收束 */
+  const c = el('section', 'scene', '');
+  c.id = 'act-close';
+  const wrap = el('div', 'close-wrap', '');
+  const stats = el('div', 'stats', '');
+  film.close.stats.forEach(s => stats.appendChild(el('div', 'stat', `<b>${s[0]}</b><span>${s[1]}</span>`)));
+  wrap.appendChild(stats);
+  wrap.appendChild(el('p', 'punch', film.close.punch));
+  if (film.close.recall) wrap.appendChild(el('div', 'recall', film.close.recall));
+  c.appendChild(wrap);
+  host.appendChild(c);
+
+  return { hook: h, list: a, decide: b, close: c };
+}
+
+/* ---------------- 时间轴 ---------------- */
+let FILM = null, DUR = 0, ACTS = null;
+
+function clamp(v, a = 0, b = 1) { return v < a ? a : v > b ? b : v; }
+function seg(t, a, dur) { return clamp((t - a) / dur, 0, 1); }
+function easeOut(x) { return 1 - Math.pow(1 - x, 3); }
+function easeInOut(x) { return x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; }
+
+function actTimes() {
+  /* 四幕的边界：钩子 → 列表 → 决策 → 收束 */
+  const d = DUR;
+  if (FILM.key === 'pipeline') return [0, 7, 17, 29];
+  if (FILM.key === 'gate') return [0, 7, 20, 33];
+  return [0, 7, 20, 30];
+}
+
+function setO(n, v) { n.style.opacity = v.toFixed(3); }
+function setT(n, v) { n.style.transform = v; }
+
+function render(t) {
+  const [b0, b1, b2, b3] = actTimes();
+  const nodes = [ACTS.hook, ACTS.list, ACTS.decide, ACTS.close];
+  const bounds = [b0, b1, b2, b3, DUR];
+  const cur = nodes.map((n, i) => {
+    const s = bounds[i], e = bounds[i + 1];
+    return s <= t && t < e ? i : -1;
+  });
+
+  nodes.forEach((n, i) => {
+    const s = bounds[i], e = bounds[i + 1];
+    const local = t - s, len = e - s;
+    const din = clamp((local + .12) / .38);
+    const dout = clamp((len - local + .15) / .34);
+    const op = clamp(Math.min(din, dout));
+    n.style.visibility = (t >= s - .3 && t < e + .3) ? 'visible' : 'hidden';
+    setO(n, op);
+    setT(n, `translateY(${((1 - easeOut(op)) * 22).toFixed(2)}px)`);
+    if (cur[i] !== i) return;
+    renderAct(i, local, len, op);
+  });
+
+  $('progress').style.width = (clamp(t / DUR) * 100).toFixed(3) + '%';
+}
+
+function renderAct(i, L, len, op) {
+  if (i === 0) {
+    setO(document.querySelector('#act-hook .eyebrow'), seg(L, .05, .45) * op);
+    setT($('h-l1'), `translateY(${(1 - easeOut(seg(L, .12, .75))) * 110}%)`);
+    setT($('h-l2'), `translateY(${(1 - easeOut(seg(L, .24, .75))) * 110}%)`);
+    setO(document.querySelector('#act-hook .sub'), easeOut(seg(L, .5, .6)) * op);
+    return;
+  }
+  if (i === 1) {
+    const head = document.querySelector('#act-list .act-head');
+    setO(head, easeOut(seg(L, .04, .45)) * op);
+    document.querySelectorAll('#act-list .row').forEach((r, k) => {
+      const p = easeOut(seg(L, .3 + k * .34, .5));
+      setO(r, p * op);
+      setT(r, `translateX(${(1 - p) * 18}px)`);
+    });
+    setO(document.querySelector('#act-list .foot-note'), easeOut(seg(L, 2.1, .5)) * op);
+    return;
+  }
+  if (i === 2) {
+    setO(document.querySelector('#act-decide .act-head'), easeOut(seg(L, .04, .45)) * op);
+    document.querySelectorAll('#act-decide .card').forEach((c, k) => {
+      const p = easeOut(seg(L, .34 + k * .52, .55));
+      setO(c, p * op);
+      setT(c, `translateY(${(1 - p) * 22}px)`);
+    });
+    return;
+  }
+  /* 收束 */
+  document.querySelectorAll('#act-close .stat').forEach((s, k) => {
+    const p = easeOut(seg(L, .12 + k * .28, .5));
+    setO(s, p * op);
+    setT(s, `translateY(${(1 - p) * 16}px)`);
+  });
+  setO(document.querySelector('#act-close .punch'), easeOut(seg(L, 1.5, .8)) * op);
+  const rc = document.querySelector('#act-close .recall');
+  if (rc) setO(rc, easeOut(seg(L, 2.4, .6)) * op);
+}
+
+function seek(ms) {
+  const t = clamp(ms / 1000, 0, DUR);
+  render(t);
+}
+
+function boot() {
+  const key = Q.get('f') && FILMS[Q.get('f')] ? Q.get('f') : 'pipeline';
+  FILM = Object.assign({ key }, FILMS[key]);
+  DUR = FILM.dur;
+  ACTS = buildActs(FILM);
+  $('chapter').innerHTML = `<b>${FILM.idx}</b><span>${FILM.name}</span>`;
+  window.__ready = true;
+  seek(0);
+}
+
+window.__seek = seek;
+window.__films = FILMS;
+boot();
+</script>
+</body>
+</html>
