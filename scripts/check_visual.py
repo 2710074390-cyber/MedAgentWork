@@ -51,7 +51,9 @@ FONT_TOLERANCE = 0.51
 
 HEX_RE = re.compile(r"#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\b")
 ROOT_RE = re.compile(r":root(?:\s*\[[^\]]*\])?\s*\{([^}]*)\}", re.S)
-DARK_ROOT_RE = re.compile(r":root\[data-theme=\"(dark|obsidian)\"\]\s*\{([^}]*)\}", re.S)
+DARK_ROOT_RE = re.compile(
+    r'(?::root(?:\s*\[[^\]]*\])?\s*,\s*)*:root\s*\[data-theme="(dark|obsidian)"\]\s*\{([^}]*)\}',
+    re.S)
 VAR_DEF_RE = re.compile(r"(--[\w-]+)\s*:")
 VAR_USE_RE = re.compile(r"var\((--[\w-]+)")
 FONT_SIZE_RE = re.compile(r"font-size\s*:\s*([\d.]+)px")
@@ -68,6 +70,29 @@ ALLOW_LINE_PATTERNS = [
 
 def is_allowed_line(line: str) -> bool:
     return any(p.search(line) for p in ALLOW_LINE_PATTERNS)
+
+
+ROOT_OPEN_RE = re.compile(r':root(?:\s*\[[^\]]*\])?(?:\s*,\s*:root(?:\s*\[[^\]]*\])?)*\s*\{')
+
+
+def token_block_lines(text: str) -> set[int]:
+    """返回位于 :root 设计令牌声明块内的行号（0 基）。
+
+    令牌定义本身就是全站配色的「单一事实来源」，不属于"绕过令牌的硬编码色值"——
+    若把令牌块自身计为硬编码，门禁会把自己的规范源头判成违规。
+    """
+    nums: set[int] = set()
+    for m in ROOT_OPEN_RE.finditer(text):
+        i, depth = m.end(), 1
+        while i < len(text) and depth > 0:
+            ch = text[i]
+            if ch == '{':
+                depth += 1
+            elif ch == '}':
+                depth -= 1
+            i += 1
+        nums.update(range(text.count('\n', 0, m.start()), text.count('\n', 0, i) + 1))
+    return nums
 
 
 def extract_vars(css: str) -> set[str]:
@@ -105,9 +130,10 @@ def check_file(path: Path, max_hardcoded: int) -> dict:
         if absent:
             res["fail"].append(f"深色主题缺 {len(absent)} 个语义令牌：{', '.join(absent[:8])}")
 
-    # ---- 4. 硬编码色值
+    # ---- 4. 硬编码色值（令牌块自身不计：那是配色的单一事实来源）
+    tok_lines = token_block_lines(text)
     hard = [(i + 1, l.strip()) for i, l in enumerate(lines)
-            if HEX_RE.search(l) and not is_allowed_line(l)]
+            if HEX_RE.search(l) and not is_allowed_line(l) and i not in tok_lines]
     res["info"]["hardcoded"] = len(hard)
     if len(hard) > max_hardcoded:
         res["warn"].append(f"硬编码色值 {len(hard)} 处（阈值 {max_hardcoded}）")

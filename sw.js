@@ -6,8 +6,10 @@
    - 版本号变更即整体换血：旧缓存自动清理
    2026-10-19：修复"任意导航响应都写成 /index.html"的缓存串台问题——
    此前 /drill 等路由的响应会覆写首页离线副本；现在只缓存真正的首页。
+   2026-10-20：v3 改版（Clinical Ledger 设计系统）——bump 版本让新应用壳换血，
+   避免老用户继续拿到 v2 的旧首页缓存。
 */
-const VERSION = 'maw-v2';
+const VERSION = 'maw-v3';
 const SHELL_CACHE = VERSION + '-shell';
 const ASSET_CACHE = VERSION + '-assets';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];

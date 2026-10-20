@@ -10,12 +10,13 @@
     的机械校验；③ index.html 里硬编码的「N 科 / N 题」文案与数据数组各自维护，
     漏改一处就会出现「卡片有了、标题还写 8 科」的半更新状态。
 
-本脚本三层校验
-    L1 本地一致性（离线可跑）：index.html 硬编码「N 科 / N 题」文案必须与
-       REVIEWS_S1 / BANKS_S1 数据数组长度、以及全局统计数字一致；每条 pdf 路径
-       必须在仓库内存在。
-    L2 线上指纹一致性：拉取站点 index.html，比对数据数组条目数、统计数字集合、
-       以及本地每条 pdf 路径是否都出现在线上（防「卡片没上线」）。
+本脚本三层校验（2026-10-20 契约更新：计数改由数据派生）
+    L1 本地一致性（离线可跑）：① markup（<script>/<style> 之外）内**不得**出现
+       任何「N 科 / N 题 / N,NNN」硬编码计数文案——它们一律由数据数组在渲染时派生，
+       杜绝「卡片有了、标题还写 8 科」的半更新形态；② 必须存在 `const SITE_STATS`
+       派生入口；③ 每条 pdf/md 路径必须在仓库内存在。
+    L2 线上指纹一致性：拉取站点 index.html，比对数据数组条目数、本地每条路径是否
+       都出现在线上、对外统计数字集合是否一致、派生入口是否存在（防「卡片没上线」）。
     L3 最新生产部署来源：要求「最新 Production/main 部署的 Source」== 期望提交
        （--expect-commit），否则说明已被更晚的部署顶替。
 
@@ -43,6 +44,15 @@ UA = ('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
       '(KHTML, like Gecko) Chrome/139.0 Safari/537.36')
 
 KEY_TAG = '教师重点版'   # 与 index.html 中 S1_KEY_TAG 一致
+SITE_STATS_RE = re.compile(r'\bconst\s+SITE_STATS\s*=')
+# markup 内禁止出现的计数文案：N 科 / N 题 / N,NNN
+COUNT_LIT_RE = re.compile(r'\d+\s*[科题]|\d{1,3},\d{3}')
+
+
+def markup_region(html: str) -> str:
+    """去掉 <script> / <style> 区块，只留下写给人看的静态文案区。"""
+    out = re.sub(r'<script\b[\s\S]*?</script>', '', html, flags=re.I)
+    return re.sub(r'<style\b[\s\S]*?</style>', '', out, flags=re.I)
 
 
 # ────────────────────────── 解析工具 ──────────────────────────
@@ -78,34 +88,20 @@ def stats_set(html: str):
 
 def problems_local(html: str, reviews, banks):
     p = []
-    # 1) 分区大标题「N 科」== 数据数组条目数
-    m = re.search(r'<h2>复习资料 <span class="accent">(\d+) 科', html)
-    if not m:
-        p.append('未找到「复习资料 … N 科」分区标题')
-    elif int(m.group(1)) != len(reviews):
-        p.append(f'复习资料分区标题 {m.group(1)} 科 ≠ REVIEWS_S1 实际 {len(reviews)} 条')
-    m = re.search(r'<h2>大四上题库 <span class="accent">(\d+) 科', html)
-    if not m:
-        p.append('未找到「大四上题库 … N 科」分区标题')
-    elif int(m.group(1)) != len(banks):
-        p.append(f'大四上题库分区标题 {m.group(1)} 科 ≠ BANKS_S1 实际 {len(banks)} 条')
-    # 2) 分区副标题「教学计划版 N 科」「教学题库 N 科」「教师重点版 N 科」
-    n_all_r, n_key_r, n_teach_r = counts(html, reviews)
-    n_all_b, n_key_b, n_teach_b = counts(html, banks)
-    for pat, expect, label in (
-            (r'教学计划版 (\d+) 科', n_teach_r, '教学计划版'),
-            (r'教学题库 (\d+) 科', n_teach_b, '教学题库'),
-            (r'教师重点版 (\d+) 科', n_key_r, '教师重点版')):
-        for v in set(re.findall(pat, html)):
-            if int(v) != expect:
-                p.append(f'「{label} {v} 科」≠ 实际 {expect} 条（数据数组）')
-    # 3) 统计数字：页面另有 RAG/知识库等其它统计口径，属不同指标，不做跨口径比较；
-    #    同口径多处写法一致性由 L2（线上 vs 本地集合比对）兜住。
-    # 4) 每条 pdf 路径必须在仓库内存在
+    # 1) 计数单一事实来源：markup 内不得存在可漂移的硬编码计数文案
+    lits = sorted({m.group(0) for m in COUNT_LIT_RE.finditer(markup_region(html))})
+    if lits:
+        p.append('markup 内仍有硬编码计数文案（应改为数据派生）：' + ', '.join(lits[:8]))
+    # 2) 派生入口必须存在
+    if not SITE_STATS_RE.search(html):
+        p.append('未找到 const SITE_STATS —— 对外计数没有从数据数组派生（HC-21）')
+    # 3) 每条 pdf/md 路径必须在仓库内存在
     for label, arr in (('复习资料', reviews), ('题库', banks)):
         for it in arr:
             if not (ROOT / it['path']).exists():
                 p.append(f'{label}条目「{it["name"]}」的本地文件缺失：{it["path"]}')
+    n_all_r, n_key_r, n_teach_r = counts(html, reviews)
+    n_all_b, n_key_b, n_teach_b = counts(html, banks)
     return p, (n_all_r, n_key_r, n_teach_r), (n_all_b, n_key_b, n_teach_b)
 
 
@@ -122,6 +118,8 @@ def problems_online(local_html: str, online_html: str, reviews, banks):
     ls, os_ = stats_set(local_html), stats_set(online_html)
     if ls != os_:
         p.append(f'线上/本地对外统计数字不一致：仅本地 {sorted(ls - os_)}；仅线上 {sorted(os_ - ls)}')
+    if not SITE_STATS_RE.search(online_html):
+        p.append('线上 index.html 缺少 const SITE_STATS 派生入口')
     return p
 
 
