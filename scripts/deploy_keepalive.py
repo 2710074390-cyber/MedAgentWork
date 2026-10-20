@@ -32,17 +32,26 @@ CRON = "*/5 * * * *"
 API = "https://api.cloudflare.com/client/v4"
 
 
-def token() -> str:
-    t = os.environ.get("CF_API_TOKEN", "").strip()
-    if not t:
-        sys.exit("缺少 CF_API_TOKEN 环境变量（Account → Workers Scripts → Edit 权限即可）")
-    return t
+def auth_headers() -> dict[str, str]:
+    """两种凭据都支持：
+    - CF_API_TOKEN       推荐，Scoped Token，Bearer 认证
+    - CF_API_KEY + CF_API_EMAIL   Global API Key（32 位十六进制）必须配邮箱，权限是整号，不推荐
+    """
+    tok = os.environ.get("CF_API_TOKEN", "").strip()
+    if tok:
+        return {"Authorization": f"Bearer {tok}"}
+    key = os.environ.get("CF_API_KEY", "").strip()
+    email = os.environ.get("CF_API_EMAIL", "").strip()
+    if key and email:
+        return {"X-Auth-Key": key, "X-Auth-Email": email}
+    sys.exit("缺少凭据：CF_API_TOKEN（推荐），或 CF_API_KEY + CF_API_EMAIL")
 
 
 def call(method: str, path: str, body: bytes | None = None,
          content_type: str | None = None) -> dict:
     req = urllib.request.Request(API + path, data=body, method=method)
-    req.add_header("Authorization", f"Bearer {token()}")
+    for k, v in auth_headers().items():
+        req.add_header(k, v)
     if content_type:
         req.add_header("Content-Type", content_type)
     try:
