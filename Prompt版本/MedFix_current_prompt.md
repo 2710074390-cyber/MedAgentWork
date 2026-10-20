@@ -211,6 +211,11 @@ FOR EACH patch IN 执行队列:
 ### B. 修改追溯日志 JSON
 ```json
 {
+  "source_file_synced": true,
+  "source_files_synced": true,
+  "source_files": [
+    "中间产物/{batchID}/parts/M0X_questions.json"
+  ],
   "execution_metadata": {
     "execution_id": "MODEXEC-{日期}-{序号}",
     "qc_report_id": "QC-{关联报告ID}",
@@ -263,6 +268,15 @@ FOR EACH patch IN 执行队列:
   "final_gate": "PASS" | "PARTIAL_WITH_ESCALATIONS" | "FAILED"
 }
 ```
+
+### B-1. `source_file_synced` 位置契约（HC-13 门禁机械输入 · 2026-10-19 加固）
+
+> 驱动缺陷（batch040 实证）：追溯日志把 `source_file_synced` 写在 `execution_metadata` 内部，`gate_check.py` 只读**顶层** `source_file_synced` / `source_files_synced`（或 `patches[]` 全员 true），读不到 → GATE-A4-HC13 误判 false → BLOCKED。
+
+- `source_file_synced` / `source_files_synced` **必须出现在 JSON 顶层**，值为布尔 `true`（确实已把补丁回写到分系统源文件时才可置 true；未同步则置 false 并说明）。
+- 同时在 `source_files` 顶层数组列出实际回写的源文件路径（如 `中间产物/{batchID}/parts/M0X_questions.json`）。
+- 每条 `patch_log` 条目也应带 `source_file_synced`；若全部为 true，门禁亦可据此放行。
+- `execution_metadata` 内部可保留同名字段做自述，但**不可替代顶层键**。
 
 ### C. 升级告警 Markdown
 写入人类可读的告警清单，包含每项告警的完整上下文和建议操作。

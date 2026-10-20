@@ -21,7 +21,7 @@ whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出
    - `ALL_questions_FIXED.md` — **最终交付格式（2026-08-20 起强制）**：复检 FAIL==0 后运行
      `python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json --out 最终产物/{batchID}/ALL_questions_FIXED.md --title "{科目}·{模块}（{batchID}）"`
      生成可读 MD（✅ 答案标记/解析/页码），JSON 与 MD 同目录交付
-   - `AGENT4_追溯日志.json` — 逐项 patch 记录，**必须含 `source_file_synced: true`**（HC-13：修复聚合文件必须同步回溯源文件，batch014 教训）
+   - `AGENT4_追溯日志.json` — 逐项 patch 记录，**必须含 `source_file_synced: true`**（HC-13：修复聚合文件必须同步回溯源文件，batch014 教训）。**位置契约**：`source_file_synced` / `source_files_synced` 必须在 **JSON 顶层**（另附顶层 `source_files` 数组；每条 `patch_log` 亦可带同名布尔）；写在 `execution_metadata` 内部不算通过（gate_check 只读顶层/`patches[]`；batch040 实证 → GATE-A4-HC13 误判 false）
    - `AGENT4_修改声明.md`、`escalations_for_human.md`
 3. **修复纪律**：
    - 只扩充短选项（加领域限定词），**绝不 `text[:n]` 暴力截断**（batch014 教训）

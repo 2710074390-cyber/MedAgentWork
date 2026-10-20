@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-10-19T20:19:22.677023+08:00",
+  "files": {
+    "MedMaster_current_prompt.md": "30322e540d1e0871d75384f17807bf3d",
+    "MedGen_current_prompt.md": "e127ac98a39750572c198d94f9b38703",
+    "MedQC_current_prompt.md": "48af613e615f40a935a4f6422a1fd614",
+    "MedFix_current_prompt.md": "c5949707acecfb208d49965607696408",
+    "Agent5_MedReview_Prompt.md": "f4a52a71715cdc9e1a6d8ec70c8456e0"
+  },
+  "note": "batch040 防复发加固：①MedQC bloom_distribution 形状契约（嵌 actual 百分数，禁嵌套计数形态）②MedFix source_file_synced 顶层键契约 ③Agent5 条号基准契约（以锚定清单连续编号为准 + 落点行逐字照录）"
+}

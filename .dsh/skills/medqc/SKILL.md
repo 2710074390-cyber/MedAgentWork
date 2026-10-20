@@ -20,7 +20,7 @@ whenToUse: 编排者（MedMaster）下发质检任务时加载；任务会给出
 2. **输出**：质检报告 JSON 写入 `质检报告/{batchID}/`（如 `A3_质检报告.json`），必须包含：
    - `report_metadata`（含 `gate_decision`：PASS / PASS_WITH_FIXES / BLOCKED、`overall_score`）
    - `dimensions`（含 **D20 评分**，B1 型题 D20=0 时必须 BLOCKED，不得 PASS_WITH_FIXES）
-   - `bloom_distribution`（记忆/理解/应用/分析 实际占比，供 Bloom 门禁判定）
+   - `bloom_distribution`（供 Bloom 门禁判定）——**形状契约**：`{"actual":{"记忆":0.0,"理解":0.0,"应用":0.0,"分析":0.0},"target":{...},"counts":{...},"max_deviation":0.0,"gate_note":"…"}`；`actual` 为**百分数**（0–100）且由题库 `bloom` 字段**重算**。**禁**嵌套计数形态 `{"层级":{"count":n,"ratio":r}}`（gate_check 读不到 → 自述值被当 0.0 → GATE-A3 误判 BLOCKED；batch040 实证）。
    - 逐题 issues（question_id / severity / rule / detail）
 3. **格式纪律**：纯 JSON，禁止 YAML frontmatter；输出前用 `json.load()` 自验。
 4. **Bloom 门禁数据**：记忆层 ≥50% 或偏差 >15% 时在报告内显式标注（供 gate_check 判定）。
