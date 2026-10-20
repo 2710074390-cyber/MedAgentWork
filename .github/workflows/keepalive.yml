@@ -1,0 +1,40 @@
+name: keepalive
+
+# 每 5 分钟戳一次刷题应用，防止 WorkBuddy 沙箱空闲休眠。
+# 跑在 GitHub 的机器上 —— 关电脑、断网都不影响。
+# 注意：GitHub 公开仓的定时任务在「60 天无仓库活动」后会自动停用；
+#       正常开发有提交就不会触发，若发现停了，手动 workflow_dispatch 一次即可。
+# 定时任务的准点率不保证（高峰期可能延迟 5~15 分钟），所以一次跑里连打 4 次，
+# 尽量把「无人访问的空窗」压在沙箱休眠阈值之下。
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: drill-keepalive
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Ping drill app
+        env:
+          URL: https://senior-quiz-app.app.workbuddy.host/api/ping
+        run: |
+          for i in 1 2 3 4; do
+            code=$(curl -s -o /tmp/body -w "%{http_code}" --max-time 30 "$URL" || true)
+            echo "attempt $i -> HTTP ${code:-000} $(cat /tmp/body 2>/dev/null)"
+            if [ "$code" = "200" ]; then
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::刷题应用连不上（4 次尝试都失败），请检查沙箱是否被回收"
+          exit 1
