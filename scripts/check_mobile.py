@@ -76,7 +76,11 @@ VIEWPORTS = [
 ROUTES = [("/", "home"), ("/#/s2", "大三下"), ("/#/s1", "大四上")]
 TAP_MIN = 44          # Apple HIG / ColorOS 人因研究基线（pt）
 ZOOM_MIN_FS = 16.0    # iOS 聚焦自动放大阈值（px）
-CONSOLE_NOISE = ("/api/visits", "favicon")
+# 引擎噪声白名单：这些是站点「已优雅降级」的路径，不是页面缺陷——
+#   /api/visits           静态预览环境没有 Functions，必然 404（线上有 KV，正常）
+#   api.github.com        MedKit 版本号查询；国内常被限流/不可达，代码已回落
+#                         「最新版见 GitHub」文案，属设计内的失败分支
+CONSOLE_NOISE = ("/api/visits", "favicon", "api.github.com")
 
 # 触控目标只算"控件"，正文内联文字链接豁免（HIG 的 44pt 针对可点控件）
 TAP_SELECTOR = (
@@ -287,6 +291,7 @@ def main() -> int:
     ap.add_argument("--quick", action="store_true", help="只跑前 3 档视口")
     ap.add_argument("--width", type=int, help="只跑指定宽度（用默认高度）")
     ap.add_argument("--channel", help="Chromium 通道：msedge / chrome（缺省用内置）")
+    ap.add_argument("--base", help="直接验证线上站点（跳过本地静态服务器），如 https://med-review-site.pages.dev/")
     ap.add_argument("--json", action="store_true", help="输出 JSON")
     args = ap.parse_args()
 
@@ -301,7 +306,10 @@ def main() -> int:
     if args.width:
         viewports = [(args.width, 844, f"指定 {args.width}px")]
 
-    base, shutdown = serve_repo()
+    if args.base:
+        base, shutdown = args.base.rstrip("/"), (lambda: None)   # 直连线上，无需本地服务器
+    else:
+        base, shutdown = serve_repo()
     rows, fails, warns = [], 0, 0
 
     try:
