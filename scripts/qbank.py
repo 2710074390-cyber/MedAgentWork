@@ -545,6 +545,17 @@ def check(ignore_pairs=None):
     for h, group in by_hash.items():
         if len(group) < 2:
             continue
+        # v1.3 (2026-10-19): 非活动条目（status != 'active'，即 superseded /
+        # source_archived）与新题重合属预期，降级为 INFO，不再计入 WARN
+        # （batch040 实证：batch039 被取代后其 199 条与新版本 1 条重合，
+        #  曾被报为"跨批次重复 1 组（需人工裁决）"）。
+        if any(str(e.get('status', 'active')) != 'active' for e in group):
+            infos.append(
+                f'与非活动条目重合 x{len(group)}: 「{group[0].get("stem_snippet", "")}」'
+                f' 批次={sorted({e.get("batch") for e in group})}'
+                f' 状态={sorted({str(e.get("status", "active")) for e in group})}'
+            )
+            continue
         batches = {e.get('batch') for e in group}
         if len(batches) > 1:
             sample = group[0]
@@ -576,8 +587,12 @@ def check(ignore_pairs=None):
                 f' 批次={sample.get("batch")} (stage={sorted({e.get("stage") for e in group})})'
             )
     # 完整性: 引用文件存在（支持 archive/ 归档回退，2026-08-20）
+    # v1.3 (2026-10-19): 仅校验 status == 'active' 的条目——已取代/源已归档
+    # 的条目其源文件按学期归档制度本就可能不在工作区，继续硬报会让 H1 长期 FAIL。
     missing = set()
     for e in entries:
+        if str(e.get('status', 'active')) != 'active':
+            continue
         if resolve_entry_path(e.get('file', '')) is None:
             missing.add(e.get('file'))
     if missing:
