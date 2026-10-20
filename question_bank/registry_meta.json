@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-16T23:31:21.288633",
+  "updated_at": "2026-10-19T21:10:00",
   "stats": {
-    "total": 5990,
+    "total": 6190,
     "by_batch": {
       "batch033": 443,
       "batch004": 388,
@@ -21,6 +21,7 @@
       "batch007": 216,
       "batch010": 208,
       "batch008": 207,
+      "batch040": 200,
       "batch039": 199,
       "batch036": 163,
       "psychiatry-merged": 142,
@@ -35,25 +36,32 @@
       "batch013": 65
     },
     "by_type": {
-      "A1": 2806,
-      "A2": 1388,
-      "X": 793,
+      "A1": 2859,
+      "A2": 1415,
+      "X": 819,
       "B1": 514,
-      "A3": 284,
-      "判断": 116,
-      "A4": 89
+      "A3": 297,
+      "判断": 143,
+      "A4": 103,
+      "案例": 40
     },
     "by_bloom": {
-      "理解": 2031,
-      "记忆": 1717,
-      "应用": 1321,
-      "分析": 290,
+      "理解": 2111,
+      "记忆": 1777,
+      "应用": 1371,
+      "分析": 300,
       "comprehension": 219,
       "memory": 210,
       "application": 169,
       "analysis": 33
     },
-    "schema_version": 1
+    "schema_version": 1,
+    "by_status": {
+      "source_archived": 4296,
+      "active": 1695,
+      "superseded": 199
+    },
+    "active_total": 1695
   },
   "ignore_pairs": [
     [
@@ -116,5 +124,12 @@
       "batch010",
       "batch012"
     ]
-  ]
+  ],
+  "notes": {
+    "status_semantics": {
+      "active": "源文件在工作区且未被取代",
+      "superseded": "批次被新版本取代（batch039，2026-10-19 由 batch040 取代）",
+      "source_archived": "源 JSON 已随学期归档清理而不在工作区（22 条路径 / 4296 题）；条目保留作历史索引，check() 不再硬报缺失"
+    }
+  }
 }

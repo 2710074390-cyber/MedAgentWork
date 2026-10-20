@@ -1,5 +1,5 @@
 {
-  "active_batch": "batch039",
+  "active_batch": "batch040",
   "halt": {
     "active": false
   },
@@ -4967,7 +4967,7 @@
   },
   "batch039": {
     "batch_id": "batch039",
-    "status": "APPROVED",
+    "status": "SUPERSEDED",
     "created": "2026-10-16T20:09:33.524800",
     "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
     "steps": {
@@ -5027,7 +5027,7 @@
     "plan_questions": 200,
     "modules": 7,
     "kaoyan_target_pct": 0,
-    "note": "大四上 耳鼻咽喉头颈外科学 期末题库/复习资料（依据教师重点讲义 20261014 七板块：总论与检查/耳科学/鼻科学/咽部疾病与OSAHS/喉部疾病及危重气道/气管支气管与食管异物/头颈外科学与颈部肿块）；源：《耳鼻咽喉头颈外科学》第10版（张欣/张罗）+ 教师重点讲义；页偏移 印刷页=PDF页−23；HC-18 配额清零（耳鼻喉不属西综306考纲，真题覆盖<5%，100%原创并如实标注，沿用 batch036 先例） | 复习资料置于「耳鼻咽喉头颈外科学教师重点版/」目录（与教学计划版原目录分离）",
+    "note": "大四上 耳鼻咽喉头颈外科学 期末题库/复习资料（依据教师重点讲义 20261014 七板块：总论与检查/耳科学/鼻科学/咽部疾病与OSAHS/喉部疾病及危重气道/气管支气管与食管异物/头颈外科学与颈部肿块）；源：《耳鼻咽喉头颈外科学》第10版（张欣/张罗）+ 教师重点讲义；页偏移 印刷页=PDF页−23；HC-18 配额清零（耳鼻喉不属西综306考纲，真题覆盖<5%，100%原创并如实标注，沿用 batch036 先例） | 复习资料置于「耳鼻咽喉头颈外科学教师重点版/」目录（与教学计划版原目录分离） | 2026-10-19：用户撤回线上版本并确认「线上以新版为准」，本批次由 batch040 取代（batch040 = 三份教师重点原文 HC-20 锚定 + 75题蓝图按比例放大 200 题）。",
     "gate_results": {
       "GATE-A3": {
         "status": "PASS",
@@ -5057,6 +5057,246 @@
       "hc11_outline_page_marking": "PASS — 全部来源锚点为真实教材页",
       "json_valid": true
     },
-    "approved_at": "2026-10-16T23:31:20.992225"
+    "approved_at": "2026-10-16T23:31:20.992225",
+    "superseded_by": "batch040",
+    "superseded_at": "2026-10-19"
+  },
+  "batch040": {
+    "batch_id": "batch040",
+    "status": "APPROVED",
+    "created": "2026-10-19T17:59:25.054341",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "output": "中间产物/batch040/ALL_questions.json",
+        "md5": "17a3963b53491e10e19460b2b5894689",
+        "model": "MedGen(7 子 agent 并行)",
+        "prompt_version": "MedGen_current_prompt.md",
+        "question_count": 200,
+        "modules": "M01=12/M02=42/M03=38/M04=28/M05=32/M06=18/M07=30",
+        "types": "A1 53/A2 27/A3 13/A4 14/判断 27/X 26/案例 40",
+        "blueprint_match": "与源②蓝图比例放大配额精确一致（200 题）",
+        "case_groups": 8,
+        "bloom_actual": {
+          "记忆": 30.0,
+          "理解": 40.0,
+          "应用": 25.0,
+          "分析": 5.0
+        },
+        "kaoyan_pct": 0,
+        "parts": "中间产物/batch040/parts/M01..M07_questions.json"
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "output": "A3_质检报告.json",
+        "md5": "14c28dc5ebc69d9dd3f434fae9452d98",
+        "model": "MedQC",
+        "prompt_version": "MedQC_current_prompt.md",
+        "gate_decision": "PASS_WITH_FIXES",
+        "overall_score": 9.4
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "output": "最终产物/batch040/ALL_questions_FIXED.json + .md + AGENT4_追溯日志.json + AGENT4_修改声明.md + escalations_for_human.md",
+        "md5": "9a398ca5850e130f1a7b071c198b5b4b",
+        "model": "MedFix",
+        "prompt_version": "MedFix_current_prompt.md",
+        "question_count": 200,
+        "md_export": "ALL_questions_FIXED.md（200 题 / 3541 行）",
+        "fixes": "PATCH-QC-001(极性) + PATCH-QC-002(HC-20 逐字锚文) + PATCH-QC-003(答案位置再平衡 54 题 → A–E 各 28) + D17 长度 12 题 + M05-A1-005 表述 + M06-A1-001 干扰项 + 判断题极性 4 题 + R11 2 题",
+        "validate": "FAIL=0 / WARN=0",
+        "source_file_synced": true
+      },
+      "AGENT5": {
+        "status": "COMPLETED",
+        "output": "复习资料/耳鼻咽喉头颈外科学教师重点版/耳鼻咽喉头颈外科学教师重点版_主复习资料.md + .html（3101 行 / 7 模块）",
+        "md5": "3556a97e0fc534c750be08f07e3748f7",
+        "model": "MedReview（3 子 agent 分模块 + 编排者合成）",
+        "prompt_version": "Agent5_MedReview_Prompt.md",
+        "modules": 7,
+        "lines": 3101,
+        "callouts": 103,
+        "expands": 42,
+        "images": 0,
+        "text_only": true,
+        "hc_checks": {
+          "HC-9": "PASS — 附录二 术语同义异名对照表（18 组）",
+          "HC-10": "PASS — 附录一 教材知识点页码索引（102 条真实印刷页，无占位符）",
+          "HC-11": "PASS — 各模块来源锚点为真实教材印刷页",
+          "HC-20/D0": "PASS — 落点行 1..125 全覆盖；硬事实缺失 0；覆盖矩阵 125 行全「已覆盖」（未覆盖 0 / 部分覆盖 0）"
+        },
+        "coverage_matrix": "中间产物/batch040/耳鼻咽喉头颈外科学_教师重点覆盖矩阵.md"
+      }
+    },
+    "lineage": [
+      {
+        "stage": "agent2_DONE",
+        "input_file": "中间产物/batch040/ALL_questions.json",
+        "input_md5": "17a3963b53491e10e19460b2b5894689",
+        "agent_model": "MedGen(7 子 agent 并行)",
+        "prompt_version": "MedGen_current_prompt.md",
+        "timestamp": "2026-10-19T18:54:23.179535"
+      },
+      {
+        "stage": "agent3_DONE",
+        "input_file": "质检报告/batch040/A3_质检报告.json",
+        "input_md5": "14c28dc5ebc69d9dd3f434fae9452d98",
+        "agent_model": "MedQC",
+        "prompt_version": "MedQC_current_prompt.md",
+        "timestamp": "2026-10-19T19:04:10.724019"
+      },
+      {
+        "stage": "agent4_DONE",
+        "input_file": "最终产物/batch040/ALL_questions_FIXED.json",
+        "input_md5": "9a398ca5850e130f1a7b071c198b5b4b",
+        "agent_model": "MedFix",
+        "prompt_version": "MedFix_current_prompt.md",
+        "timestamp": "2026-10-19T19:28:14.535952"
+      },
+      {
+        "stage": "agent5_DONE",
+        "input_file": "复习资料\\耳鼻咽喉头颈外科学教师重点版\\耳鼻咽喉头颈外科学教师重点版_主复习资料.md",
+        "input_md5": "3556a97e0fc534c750be08f07e3748f7",
+        "agent_model": "MedReview（3 子 agent 分模块 + 编排者合成）",
+        "prompt_version": "Agent5_MedReview_Prompt.md",
+        "timestamp": "2026-10-19T19:51:11.164524"
+      }
+    ],
+    "subject": "耳鼻咽喉头颈外科学",
+    "task_type": "期末题库 + 主复习资料（教师重点蓝图版）",
+    "plan_questions": 200,
+    "modules": 7,
+    "kaoyan_target_pct": 0,
+    "supersedes": "batch039",
+    "exam_blueprint": {
+      "source": "源② 26秋期末复习重点——原卷 75 题 / 100 分（判断10 / 单选A1 20 / 单选A2 10 / A3·A4 10 / 多选10 / 案例分析3案例×5小题=15）",
+      "scaling": "按原卷题型比例放大至 200 题",
+      "quota": {
+        "A1": 53,
+        "A2": 27,
+        "A3": 13,
+        "A4": 14,
+        "判断": 27,
+        "X": 26,
+        "案例": 40
+      },
+      "case_analysis": "8 个临床案例 × 5 小题 = 40 题（不定项选择题）",
+      "bloom_target": {
+        "记忆": 30,
+        "理解": 40,
+        "应用": 25,
+        "分析": 5
+      },
+      "kaoyan_quota_pct": 0,
+      "kaoyan_note": "耳鼻咽喉头颈外科学不属西综306考纲，真题覆盖 <5%，配额清零，100% 原创并如实标注（沿用 batch036/037/039 先例）"
+    },
+    "modules_split": {
+      "M01": "总论与专科检查",
+      "M02": "耳科学（含耳源性眩晕）",
+      "M03": "鼻科学",
+      "M04": "咽部疾病与睡眠呼吸障碍",
+      "M05": "喉部疾病及危重气道处理",
+      "M06": "气管、支气管与食管异物",
+      "M07": "头颈外科学与颈部肿块"
+    },
+    "keypoints_anchor": "输入素材/大四上/耳鼻咽喉头颈外科学/耳鼻咽喉头颈外科学_教师重点_锚定清单_20261019.md",
+    "note": "大四上 耳鼻咽喉头颈外科学 期末题库/复习资料（教师重点蓝图版）。权威范围 = 三份教师重点原文（HC-20）：源①《耳鼻咽喉头颈外科》考试复习重点110条（带教材印刷页码）；源② 26秋期末复习重点（考试题型蓝图）；源③ 复习重点·打印背诵版（7模块+附录重点）。统一锚定清单 125 条 = HC-20 --keypoints 基准。纯文字无图（用户指定）。教材页偏移 印刷页 = PDF页 − 23。取代 batch039（用户已撤回其线上版本）。",
+    "gate_results": {
+      "GATE-A2": {
+        "status": "PASS",
+        "reason": "validate FAIL=0（WARN 2，R11 收敛提示）；fact_check pages FAIL=0；GoldenSet 重复0/数值冲突0；bloom 偏差 0.0%",
+        "checked_at": "2026-10-19T18:54:23.179535"
+      },
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
+        "checked_at": "2026-10-19T19:04:49.025512"
+      },
+      "halt": {
+        "active": false
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-10-19T19:28:55.750787"
+      },
+      "GATE-A5": {
+        "status": "PASS",
+        "reason": "HC-20/D0 check_keypoint_coverage.py PASS（硬事实缺失 0 / 落点行 1..125 全覆盖）；插图检查 N/A（纯文字无图，用户指定）",
+        "checked_at": "2026-10-19T19:51:11.164524"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
+        "checked_at": "2026-10-19T20:34:08.876861"
+      }
+    },
+    "final_review": {
+      "hc9": "PASS — 附录二 术语同义异名对照表（18 组）",
+      "hc10": "PASS — 附录一 教材知识点页码索引（102 条真实印刷页 P16–P404，0 占位符）",
+      "hc11": "PASS — 各模块来源锚点均标注真实教材印刷页",
+      "hc9_terminology_appendix": "PASS — 术语同义异名对照表 18 组（梅尼埃/美尼尔、分泌性中耳炎/渗出性中耳炎、腺样体/咽扁桃体、利特尔区/Little 区 等）",
+      "hc10_page_authenticity": "PASS — 附录一页码 P16–P404 真实印刷页，0 占位符（由锚定清单源①条目机械生成）",
+      "hc11_outline_page_marking": "PASS — 全部来源锚点为真实教材印刷页",
+      "hc20_d0_keypoint_anchor": "PASS — check_keypoint_coverage.py 缺失项 0；落点行 1..125 全覆盖；覆盖矩阵 125 行全「已覆盖」",
+      "json_valid": true
+    },
+    "deliverables": {
+      "final_dir": "最终产物/batch040/",
+      "qbank": [
+        "ALL_questions_FIXED.json",
+        "ALL_questions_FIXED.md",
+        "ALL_questions_FIXED.html"
+      ],
+      "review": [
+        "复习资料/耳鼻咽喉头颈外科学教师重点版/耳鼻咽喉头颈外科学教师重点版_主复习资料.md",
+        "复习资料/耳鼻咽喉头颈外科学教师重点版/耳鼻咽喉头颈外科学教师重点版_主复习资料.html"
+      ],
+      "coverage_matrix": "中间产物/batch040/耳鼻咽喉头颈外科学_教师重点覆盖矩阵.md",
+      "pdf": "未产出（HC-18：PDF 一律人工上传）"
+    },
+    "orchestrator_normalizations": [
+      {
+        "target": "质检报告/batch040/A3_质检报告.json#bloom_distribution",
+        "at": "2026-10-19T19:53:32.750916",
+        "by": "MedMaster",
+        "reason": "MedQC 输出 {\"层级\":{\"count\":n,\"ratio\":r}} 嵌套形态，gate_check 仅支持扁平或 {\"actual\":{...}} → 自述值被读为 0.0 并误阻断 GATE-A3；仅归一化形状，数值/结论未改（原值保留于 _shape_normalized）"
+      },
+      {
+        "target": "最终产物/batch040/AGENT4_追溯日志.json#source_file_synced",
+        "at": "2026-10-19T19:53:32.750916",
+        "by": "MedMaster",
+        "reason": "MedFix 将 source_file_synced 置于 execution_metadata 下，gate_check 读顶层键/patches[]；仅补顶层键（值与 execution_metadata 一致=true），patch 记录未改"
+      },
+      {
+        "target": "复习资料/…教师重点版_主复习资料.md#锚点编号",
+        "at": "2026-10-19T19:53:32.750916",
+        "by": "MedMaster",
+        "reason": "源①原文自身编号存在跳号（缺 13/37）与重号（78、86 各两次），与统一锚定清单的文档序编号不一致，导致 3 个 MedReview 子代理按印刷号落点产生偏移；改为按落点行文本与锚定清单条目做内容匹配后重编号并照录原文 → HC-20 覆盖门禁 PASS（缺失 0）"
+      }
+    ],
+    "approved_at": "2026-10-19T20:34:26.545294",
+    "signed_off_by": "用户（手动签收）"
+  },
+  "batch041": {
+    "batch_id": "batch041",
+    "status": "IN_PROGRESS",
+    "created": "2026-10-19T18:27:36.221088",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {},
+    "lineage": [],
+    "subject": "耳鼻咽喉头颈外科学（期末押题卷）",
+    "chapter": "26秋教师重点·100题押题卷（总论/耳/鼻/咽/喉/气管食管/颈部 7 模块）",
+    "exam_type": "期末考试（雨课堂线上）",
+    "question_types": [
+      "A1",
+      "A2",
+      "X",
+      "判断"
+    ],
+    "target_count": 100,
+    "supplements": "batch039",
+    "source_note": "C:/Users/38063/Downloads/26秋耳鼻咽喉头颈外科-期末复习重点.doc"
   }
 }

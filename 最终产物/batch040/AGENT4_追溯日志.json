@@ -1,0 +1,1454 @@
+{
+  "execution_metadata": {
+    "execution_id": "MODEXEC-20261019-batch040",
+    "qc_report_id": "QC-20261019-batch040",
+    "execution_time": "2026-10-19T19:25:24",
+    "total_patches_received": 3,
+    "safe_auto_executed": 0,
+    "auto_with_review_executed": 24,
+    "must_escalate_skipped": 0,
+    "rolled_back": 0,
+    "polarity_violations": 0,
+    "source_file_synced": true,
+    "source_files": [
+      "中间产物/batch040/parts/M01_questions.json",
+      "中间产物/batch040/parts/M02_questions.json",
+      "中间产物/batch040/parts/M03_questions.json",
+      "中间产物/batch040/parts/M04_questions.json",
+      "中间产物/batch040/parts/M05_questions.json",
+      "中间产物/batch040/parts/M06_questions.json",
+      "中间产物/batch040/parts/M07_questions.json"
+    ]
+  },
+  "patch_log": [
+    {
+      "patch_id": "PATCH-QC-001",
+      "status": "EXECUTED",
+      "target": "batch040-M03-A4-003.option_polarities",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": {
+          "A": false,
+          "B": false,
+          "C": true,
+          "D": false,
+          "E": false
+        },
+        "after": {
+          "A": true,
+          "B": true,
+          "C": false,
+          "D": true,
+          "E": true
+        }
+      },
+      "precondition_results": [
+        {
+          "condition": "polarity == negative（题干为「不恰当的是」）",
+          "passed": true
+        },
+        {
+          "condition": "current_value 与报告一致 {A:false,B:false,C:true,D:false,E:false}",
+          "passed": true
+        },
+        {
+          "condition": "答案键为 C 且 C 项为「不恰当」陈述（长期口服抗生素）",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "极性分布为 1 false + 4 true",
+          "passed": true
+        },
+        {
+          "check": "答案键 C 未变",
+          "passed": true
+        },
+        {
+          "check": "C 项极性=false（反选题答案项）",
+          "passed": true
+        },
+        {
+          "check": "HC-3 三项回归：答案项为 false、其余为 true、polarities 与文本一致",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "反选题答案项(C)=false，其余(A/B/D/E)=true；答案键 C 未变"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "C 项文本未改动，仍为唯一不恰当处理"
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-002",
+      "status": "EXECUTED",
+      "target": "batch040-M05-案例-002.teacher_anchor",
+      "operation": "add_source_anchor",
+      "diff": {
+        "before": "四度：呼吸极度困难。患者坐卧不安、手足乱动、出冷汗、面色苍白或发绀、定向力丧失、心律不齐、脉搏细数、昏迷；而Ⅳ度患者已出现呼吸衰竭征象，必须紧急开放气道",
+        "after": "喉阻塞的临床分度是指导治疗的关键：Ⅰ度于安静时无症状，仅活动后出现，以病因治疗为主；Ⅱ度在安静时即有症状，需严密观察并积极病因治疗；Ⅲ度则表现为安静时明显呼吸困难，伴烦躁、发绀，若病因无法迅速解除，需立即行气管切开术；而Ⅳ度患者已出现..."
+      },
+      "precondition_results": [
+        {
+          "condition": "keypoint_ref 含第110条",
+          "passed": true
+        },
+        {
+          "condition": "锚定清单第110条原文可定位且含「Ⅳ度患者已出现呼吸衰竭征象，必须紧急开放气道」",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "teacher_anchor 为第110条原文的连续逐字片段",
+          "passed": true
+        },
+        {
+          "check": "含必须原句「Ⅳ度患者已出现呼吸衰竭征象，必须紧急开放气道」",
+          "passed": true
+        },
+        {
+          "check": "无残句/省略号残留",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true
+    },
+    {
+      "patch_id": "PATCH-QC-005",
+      "status": "EXECUTED",
+      "target": "batch040-M05-A1-005.teacher_anchor",
+      "operation": "replace_text",
+      "diff": {
+        "before": "喉返神经支配除环甲肌以外全部喉内肌；喉上神经外支支配环甲肌。",
+        "after": "喉返神经支配除环甲肌外的大多数喉内肌；喉上神经外支支配环甲肌。"
+      },
+      "precondition_results": [
+        {
+          "condition": "第120条含「喉返神经支配除环甲肌外的大多数喉内肌」",
+          "passed": true
+        },
+        {
+          "condition": "当前 teacher_anchor 含「全部喉内肌」",
+          "passed": true
+        },
+        {
+          "condition": "答案键 C=喉返神经，与原文一致",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "teacher_anchor 不再含「全部」",
+          "passed": true
+        },
+        {
+          "check": "含原文「大多数」",
+          "passed": true
+        },
+        {
+          "check": "答案键 C 未变（联动检查通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "题干/选项与答案语义为「喉返神经」，与「大多数」原文一致，答案键 C 不变"
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-006",
+      "status": "EXECUTED",
+      "target": "batch040-M06-A1-001.optionE",
+      "operation": "replace_text",
+      "diff": {
+        "before": "60岁以上老年人",
+        "after": "18岁以上成年人"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键 A=3岁以下婴幼儿",
+          "passed": true
+        },
+        {
+          "condition": "E 当前为「60岁以上老年人」",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "E 已替换为实质性干扰项",
+          "passed": true
+        },
+        {
+          "check": "答案键 A 未变",
+          "passed": true
+        },
+        {
+          "check": "数值选项仍递增（R3 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "仅替换干扰项 E，正确项 A（3岁以下婴幼儿）未动"
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M02-A2-004.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"C\": \"良性阵发性位置性眩晕\"}",
+        "after": "{\"C\": \"良性位置性眩晕\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 2.5,
+        "after": 1.75
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M02-A3-001.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"B\": \"良性阵发性位置性眩晕\", \"E\": \"迷路炎\"}",
+        "after": "{\"B\": \"良性位置性眩晕\", \"E\": \"内耳迷路炎\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 3.33,
+        "after": 1.75
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M02-案例-001.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"B\": \"良性阵发性位置性眩晕\", \"E\": \"迷路炎\"}",
+        "after": "{\"B\": \"良性位置性眩晕\", \"E\": \"内耳迷路炎\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 3.33,
+        "after": 1.75
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M03-A1-004.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"B\": \"腭骨水平部后缘\", \"C\": \"蝶骨翼突内侧板\"}",
+        "after": "{\"B\": \"腭骨水平部\", \"C\": \"翼突内侧板\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 2.33,
+        "after": 1.67
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M03-X-002.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"E\": \"血常规\"}",
+        "after": "{\"E\": \"血常规检查\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 2.33,
+        "after": 1.4
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M03-X-003.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"A\": \"流感\"}",
+        "after": "{\"A\": \"流行性感冒\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 4.0,
+        "after": 1.6
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M03-X-005.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"A\": \"鼻痒\", \"D\": \"鼻塞\"}",
+        "after": "{\"A\": \"鼻腔瘙痒\", \"D\": \"鼻腔堵塞\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 3.5,
+        "after": 1.75
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M04-案例-004.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"A\": \"咽旁脓肿\", \"B\": \"咽后脓肿\"}",
+        "after": "{\"A\": \"咽旁间隙脓肿\", \"B\": \"咽后间隙脓肿\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 2.5,
+        "after": 2.0
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M05-A2-002.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"E\": \"喉软化症\"}",
+        "after": "{\"E\": \"先天性喉软化症\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 2.25,
+        "after": 1.8
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M05-X-003.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"E\": \"急性鼻炎\"}",
+        "after": "{\"E\": \"急性鼻炎发作期\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 2.75,
+        "after": 1.57
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M07-X-002.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"D\": \"咽后淋巴结属于Ⅵ区\"}",
+        "after": "{\"D\": \"咽后淋巴结属于颈前中央Ⅵ区\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 2.22,
+        "after": 1.67
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-004",
+      "status": "EXECUTED",
+      "target": "batch040-M07-X-005.options",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"B\": \"属于血供丰富的肿瘤\"}",
+        "after": "{\"B\": \"属于血供丰富的良性肿瘤\"}"
+      },
+      "precondition_results": [
+        {
+          "condition": "答案键不涉及被改标签",
+          "passed": true
+        },
+        {
+          "condition": "目标选项存在",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "零字符截断（新文本为标准术语/区分子句，非 text[:n]）",
+          "passed": true
+        },
+        {
+          "check": "无「(相关表现)」类无意义后缀",
+          "passed": true
+        },
+        {
+          "check": "长度比已降至 <=2.0",
+          "passed": true
+        },
+        {
+          "check": "答案键语义未变",
+          "passed": true
+        },
+        {
+          "check": "无括号说明后缀（R1 保持通过）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "d17_ratio": {
+        "before": 2.11,
+        "after": 1.9
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-008-a",
+      "status": "EXECUTED",
+      "target": "batch040-M03-A3-001.optionE",
+      "operation": "replace_text",
+      "diff": {
+        "before": "真菌球型鼻窦炎",
+        "after": "双侧真菌球型鼻窦炎"
+      },
+      "precondition_results": [
+        {
+          "condition": "正确项非被改项（不触碰答案选项）",
+          "passed": true
+        },
+        {
+          "condition": "目标干扰项存在且文本匹配",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "正确项文本未改动",
+          "passed": true
+        },
+        {
+          "check": "干扰项已引入题干术语、收敛优势被稀释",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true
+    },
+    {
+      "patch_id": "PATCH-QC-008-b",
+      "status": "EXECUTED",
+      "target": "batch040-M03-A3-003.optionA",
+      "operation": "replace_text",
+      "diff": {
+        "before": "继续原方案药物治疗",
+        "after": "继续原方案药物治疗并复查鼻窦CT"
+      },
+      "precondition_results": [
+        {
+          "condition": "正确项非被改项（不触碰答案选项）",
+          "passed": true
+        },
+        {
+          "condition": "目标干扰项存在且文本匹配",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "正确项文本未改动",
+          "passed": true
+        },
+        {
+          "check": "干扰项已引入题干术语、收敛优势被稀释",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true
+    },
+    {
+      "patch_id": "PATCH-QC-007",
+      "status": "EXECUTED",
+      "target": "batch040-M01-判断-004.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "当前 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "答案键 B 指向「该表述错误」",
+          "passed": true
+        },
+        {
+          "condition": "opts[1].text == 该表述错误",
+          "passed": true
+        },
+        {
+          "condition": "option_polarities == {A:false,B:true}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity 已统一为 positive（同批判断题约定）",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 与 answer 自洽（答案项 B=true，其余 false）",
+          "passed": true
+        },
+        {
+          "check": "答案键 B 未变",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "判断题统一为正问约定：正确答案「该表述错误」为 true 陈述；与同批 batch041 判断题（answer=B 亦标 positive）一致"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "答案仍为 B，题干陈述仍为假，仅题型极性字段统一"
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-007",
+      "status": "EXECUTED",
+      "target": "batch040-M04-判断-003.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "当前 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "答案键 B 指向「该表述错误」",
+          "passed": true
+        },
+        {
+          "condition": "opts[1].text == 该表述错误",
+          "passed": true
+        },
+        {
+          "condition": "option_polarities == {A:false,B:true}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity 已统一为 positive（同批判断题约定）",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 与 answer 自洽（答案项 B=true，其余 false）",
+          "passed": true
+        },
+        {
+          "check": "答案键 B 未变",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "判断题统一为正问约定：正确答案「该表述错误」为 true 陈述；与同批 batch041 判断题（answer=B 亦标 positive）一致"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "答案仍为 B，题干陈述仍为假，仅题型极性字段统一"
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-007",
+      "status": "EXECUTED",
+      "target": "batch040-M06-判断-002.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "当前 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "答案键 B 指向「该表述错误」",
+          "passed": true
+        },
+        {
+          "condition": "opts[1].text == 该表述错误",
+          "passed": true
+        },
+        {
+          "condition": "option_polarities == {A:false,B:true}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity 已统一为 positive（同批判断题约定）",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 与 answer 自洽（答案项 B=true，其余 false）",
+          "passed": true
+        },
+        {
+          "check": "答案键 B 未变",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "判断题统一为正问约定：正确答案「该表述错误」为 true 陈述；与同批 batch041 判断题（answer=B 亦标 positive）一致"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "答案仍为 B，题干陈述仍为假，仅题型极性字段统一"
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-007",
+      "status": "EXECUTED",
+      "target": "batch040-M07-判断-001.polarity",
+      "operation": "fix_polarity",
+      "diff": {
+        "before": "negative",
+        "after": "positive"
+      },
+      "precondition_results": [
+        {
+          "condition": "当前 polarity=negative",
+          "passed": true
+        },
+        {
+          "condition": "答案键 B 指向「该表述错误」",
+          "passed": true
+        },
+        {
+          "condition": "opts[1].text == 该表述错误",
+          "passed": true
+        },
+        {
+          "condition": "option_polarities == {A:false,B:true}",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "polarity 已统一为 positive（同批判断题约定）",
+          "passed": true
+        },
+        {
+          "check": "option_polarities 与 answer 自洽（答案项 B=true，其余 false）",
+          "passed": true
+        },
+        {
+          "check": "答案键 B 未变",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "polarity_regression": {
+        "applicable": true,
+        "passed": true,
+        "detail": "判断题统一为正问约定：正确答案「该表述错误」为 true 陈述；与同批 batch041 判断题（answer=B 亦标 positive）一致"
+      },
+      "answer_key_check": {
+        "applicable": true,
+        "key_still_valid": true,
+        "detail": "答案仍为 B，题干陈述仍为假，仅题型极性字段统一"
+      }
+    },
+    {
+      "patch_id": "PATCH-QC-003",
+      "status": "EXECUTED",
+      "target": "batch-wide.answer_position",
+      "operation": "fix_format",
+      "diff": {
+        "before": "{\"A\": 82, \"B\": 19, \"C\": 18, \"D\": 12, \"E\": 9}",
+        "after": "{\"A\": 28, \"B\": 28, \"C\": 28, \"D\": 28, \"E\": 28}"
+      },
+      "precondition_results": [
+        {
+          "condition": "重排后题干/选项文本/答案语义/解析不变",
+          "passed": true
+        },
+        {
+          "condition": "option_polarities 随重排同步",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "答案键与原选项语义一一对应",
+          "passed": true
+        },
+        {
+          "check": "解析未引用选项字母（重排题解析内无独立 A-E 字母）",
+          "passed": true
+        },
+        {
+          "check": "A 占比 <=35%",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "reorder_count": 54,
+      "distribution_before": {
+        "A": 82,
+        "B": 19,
+        "C": 18,
+        "D": 12,
+        "E": 9
+      },
+      "distribution_after": {
+        "A": 28,
+        "B": 28,
+        "C": 28,
+        "D": 28,
+        "E": 28
+      },
+      "reordered_questions": [
+        {
+          "qid": "batch040-M01-A1-002",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M01-A1-004",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M01-A1-005",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M01-A1-006",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "qid": "batch040-M02-A1-001",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M02-A1-002",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M02-A1-006",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M02-A1-010",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "qid": "batch040-M02-A2-001",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M02-A2-002",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M02-A2-004",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M02-A2-005",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "qid": "batch040-M02-A2-006",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M02-A3-001",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M02-A3-002",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M02-A4-001",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "qid": "batch040-M02-A4-002",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M02-案例-001",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M02-案例-002",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M02-案例-003",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "qid": "batch040-M02-案例-004",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M02-案例-005",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M02-案例-006",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M02-案例-007",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "qid": "batch040-M02-案例-008",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M02-案例-009",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M02-案例-010",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M03-A1-006",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "qid": "batch040-M03-A1-008",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M03-A1-010",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M03-A4-002",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M03-案例-001",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "qid": "batch040-M03-案例-003",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M03-案例-004",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M04-A1-004",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M04-A1-008",
+          "from": "A",
+          "to": "B"
+        },
+        {
+          "qid": "batch040-M04-A2-001",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M04-A2-003",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M04-A2-004",
+          "from": "A",
+          "to": "C"
+        },
+        {
+          "qid": "batch040-M04-A3-001",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M04-A4-002",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M04-案例-002",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M04-案例-003",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M05-A1-003",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M05-A1-004",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M05-A1-006",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M05-A2-001",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M05-A2-002",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M05-A2-003",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M05-A2-004",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M05-A3-001",
+          "from": "A",
+          "to": "D"
+        },
+        {
+          "qid": "batch040-M05-A3-002",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M05-A4-002",
+          "from": "A",
+          "to": "E"
+        },
+        {
+          "qid": "batch040-M05-A4-003",
+          "from": "A",
+          "to": "E"
+        }
+      ]
+    },
+    {
+      "patch_id": "INDEPENDENT-FINDING",
+      "status": "EXECUTED",
+      "target": "batch-wide (抽查 919/919 选项)",
+      "operation": "audit",
+      "diff": {
+        "before": "-",
+        "after": "-"
+      },
+      "precondition_results": [
+        {
+          "condition": "抽查比例 >=5%",
+          "passed": true
+        }
+      ],
+      "post_check_results": [
+        {
+          "check": "未发现无意义括号后缀（R12）",
+          "passed": true
+        },
+        {
+          "check": "未发现括号说明后缀（R1 尾括号）",
+          "passed": true
+        }
+      ],
+      "risk_level": "auto_with_review",
+      "source_file_synced": true,
+      "sample_ratio": "100%",
+      "flagged": []
+    }
+  ],
+  "escalations_for_human": [],
+  "consistency_scan": {
+    "scan_targets": [
+      "全部喉内肌",
+      "60岁以上老年人",
+      "四度：呼吸极度困难。患者坐卧不安",
+      "（如        异物"
+    ],
+    "residual_hits": {
+      "全部喉内肌": 0,
+      "60岁以上老年人": 0,
+      "四度：呼吸极度困难。患者坐卧不安": 0
+    },
+    "note": "所有旧值 0 残留；新锚文为第110条逐字片段"
+  },
+  "final_gate": "PASS",
+  "source_file_synced": true,
+  "source_files_synced": true,
+  "source_files": [
+    "中间产物/batch040/parts/M01_questions.json",
+    "中间产物/batch040/parts/M02_questions.json",
+    "中间产物/batch040/parts/M03_questions.json",
+    "中间产物/batch040/parts/M04_questions.json",
+    "中间产物/batch040/parts/M05_questions.json",
+    "中间产物/batch040/parts/M06_questions.json",
+    "中间产物/batch040/parts/M07_questions.json"
+  ],
+  "_shape_normalized": {
+    "by": "orchestrator (MedMaster)",
+    "at": "2026-10-19T19:28:55.474159",
+    "reason": "MedFix 将 source_file_synced 写在 execution_metadata 下，gate_check 读取顶层 source_file_synced/source_files_synced 或 patches[]；此处仅补顶层键（值与 execution_metadata 一致，均为 true），未改动任何 patch 记录或结论"
+  }
+}

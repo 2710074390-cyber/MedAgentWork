@@ -1,0 +1,375 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20261019-batch040",
+    "batch_source": "Agent 2 输出批次 / 中间产物/batch040/ALL_questions.json",
+    "batch_id": "batch040",
+    "subject": "耳鼻咽喉头颈外科学（大四上）",
+    "question_count": 200,
+    "total_questions": 200,
+    "gate_decision": "PASS_WITH_FIXES",
+    "overall_score": 9.4,
+    "_score_methodology": "加权平均: 维度分×(该维度影响题数/总题数)之和 / 权重之和。全量覆盖维度权=1；D6 影响5题(权0.025)、D17 影响12题(权0.06)。D20=0 且仅影响 B1 题时总分扣分≤0.3 的规则本批不触发（本批无 B1，D20=10 满分）。禁止简单平均。",
+    "checked_at": "2026-10-19",
+    "kaoyan_quota": 0,
+    "kaoyan_note": "本课程无西综真题覆盖，kaoyan_origin 全为空 → 100% 原创，D21 N/A",
+    "type_distribution": {
+      "A1": 53,
+      "A2": 27,
+      "A3": 13,
+      "A4": 14,
+      "判断": 27,
+      "X": 26,
+      "案例": 40
+    },
+    "module_distribution": {
+      "M01": 12,
+      "M02": 42,
+      "M03": 38,
+      "M04": 28,
+      "M05": 32,
+      "M06": 18,
+      "M07": 30
+    },
+    "case_group_note": "案例题 8 组 × 5 小题 = 40；A3/A4 共 27 题（共用题干 group，group_stem 组内唯一）"
+  },
+  "dimensions": [
+    {
+      "dimension": "D1_术语规范性",
+      "score": 10,
+      "detail": "术语标准（如 BPPV、FESS、Robbins 分区、OMC、利特尔区）；缩写首次出现多数已注释，未发现非标准译名。"
+    },
+    {
+      "dimension": "D2_语法与拼写",
+      "score": 10,
+      "detail": "未检出错别字/截断/「..」双点/选项以句号结尾等残留；标点与选项编号一致。"
+    },
+    {
+      "dimension": "D3_结构完整性",
+      "score": 10,
+      "detail": "200/200 含题型/题干/选项/answer/explanation/元数据；explanation 无空值，answer 均落在 options 内；无重复 id/stem。"
+    },
+    {
+      "dimension": "D4_格式一致性",
+      "score": 10,
+      "detail": "选项编号 A–E / A–B 风格统一；id 命名 batch040-Mxx-type-nnn 统一；JSON 字段名全批一致。"
+    },
+    {
+      "dimension": "D5_事实准确性",
+      "score": 9.5,
+      "detail": "抽查 + 教师重点数值全量对照：6～8周、12周、20分钟至12小时、不超过1分钟、90%、3～5天/5～6天、腺样体四度(25/26～50/51～75/>75%)、声门型60%、食管15～16/25/40cm、2～4气管软骨环等均原样保留；未发现答案性事实错误。扣分点见 ISSUE-006。"
+    },
+    {
+      "dimension": "D6_题型极性自洽",
+      "score": 7.0,
+      "detail": "7 道 negative 题中 5 道极性约定与 HC-1/D6 不符：M03-A4-003 反选题 option_polarities 反转（答案C=true、其余=false，与同批 A1 反选题相反）→ major；4 道负向判断题答案项(B)＝true（内部自洽但与 HC-1 字面不符）→ minor。详见 ISSUE-001/002。"
+    },
+    {
+      "dimension": "D7_选项互斥性",
+      "score": 9.5,
+      "detail": "未发现语义包含/穷举缺陷；M02-A1-011「10/15/20/30/40dB或以上」为阈值型有序选项，属判断标准题，非互斥性缺陷；选项按数值单调排列。"
+    },
+    {
+      "dimension": "D8_答案唯一性",
+      "score": 9.0,
+      "detail": "未发现双选项均成立；但正确答案位置严重偏 A（见 ISSUE-003），影响猜测难度（非答案唯一性本身）。"
+    },
+    {
+      "dimension": "D9_解析完整度",
+      "score": 9.5,
+      "detail": "解析均与答案键一致，多数逐项说明对/错（如 M03-A1-003、M06-X 类明确贬述干扰项）；个别为综述式但信息完整。"
+    },
+    {
+      "dimension": "D10_认知层级校准",
+      "score": 9.0,
+      "detail": "标注层级与题干复杂度基本匹配（长情境题标应用/分析）；未发现「题干>100字含3+变量却标记忆」的明显错标。"
+    },
+    {
+      "dimension": "D11_干扰项质量",
+      "score": 9.0,
+      "detail": "干扰项基于常见误区/近邻概念设计；数值比>5 仅 2 处且为年龄区间口径误报（M04-A1-005、M06-A1-001）；M06-A1-001 干扰项E偏弱见 ISSUE-007。"
+    },
+    {
+      "dimension": "D12_考点溯源",
+      "score": 9.5,
+      "detail": "source_page 200/200、keypoint_ref 200/200 均存在；192 条指向统一锚定清单第N条，7 条指向源③补充模块（合理）。见 ISSUE-005。"
+    },
+    {
+      "dimension": "D13_跨题一致性",
+      "score": 9.0,
+      "detail": "同一概念跨题一致为主；梅尼埃病眩晕时长「20分钟至12小时」(诊断标准) 与「20分钟至数小时」(典型症状) 并存属源①/源③口径差异，解析已调和，风险低。"
+    },
+    {
+      "dimension": "D14_跨章节一致性",
+      "score": 9.5,
+      "detail": "7 模块（M01–M07）内部概念陈述一致，无「A说X对、B说X错」矛盾。"
+    },
+    {
+      "dimension": "D15_外来素材事实验证",
+      "score": 10,
+      "detail": "N/A —— 本批 100% Agent 2 原创，无外来合并素材（HC-5/HC-8 不触发）。"
+    },
+    {
+      "dimension": "D16_认知层级覆盖率",
+      "score": 10,
+      "detail": "实测 记忆30.0%/理解40.0%/应用25.0%/分析5.0%，与目标 30/40/25/5 完全吻合（记忆≤30、理解≥35、应用≥25、分析≤10 全部达标），偏差 0%，远小于 10% 阈值。"
+    },
+    {
+      "dimension": "D17_选项同质性",
+      "score": 8.5,
+      "detail": "类别/语法结构一致（HC-14 结构模板达标）；无绝对化用语（「均/仅/全部」命中均为「平均/仅隔薄纸样板/全部舌骨」等实义词，非绝对化断言）、无括号后缀变体、无视觉突出项；唯 12 题最长/最短字符比>2.0（术语长度异质所致，非答案线索）→ should_fix 见 ISSUE-004。"
+    },
+    {
+      "dimension": "D18_词重复线索",
+      "score": 10,
+      "detail": "自动检测：题干关键词仅出现于正确选项的情况 0 例（R10 达标）。"
+    },
+    {
+      "dimension": "D19_收敛策略",
+      "score": 9.5,
+      "detail": "未发现正确选项术语共享计数显著高于干扰项均值（>+1）的收敛线索（R11 达标）。"
+    },
+    {
+      "dimension": "D20_B1型题专项",
+      "score": 10,
+      "detail": "本批无 B1 型题，D20 不适用，按满分计入（B1 共用选项笼统度/答案位置集中度/干扰项有效性/子题覆盖均无适用对象）。D20 非 0。"
+    },
+    {
+      "dimension": "D21_考研原题一致性",
+      "score": 10,
+      "detail": "N/A —— 本批 kaoyan_origin 全为空，配额 0，无真题引用，无需比对 GoldenSet 源。"
+    },
+    {
+      "dimension": "D22_插图引用完整性",
+      "score": 10,
+      "detail": "N/A —— 本批为纯文字题库，无插图/图片引用交付物。"
+    }
+  ],
+  "bloom_distribution": {
+    "actual": {
+      "记忆": 30.0,
+      "理解": 40.0,
+      "应用": 25.0,
+      "分析": 5.0
+    },
+    "target": {
+      "记忆": 30.0,
+      "理解": 40.0,
+      "应用": 25.0,
+      "分析": 5.0
+    },
+    "counts": {
+      "记忆": 60,
+      "理解": 80,
+      "应用": 50,
+      "分析": 10
+    },
+    "max_deviation": 0.0,
+    "gate_note": "记忆 30.0%、理解 40.0%、应用 25.0%、分析 5.0，与目标 30/40/25/5 完全一致；记忆 <50%、偏差 0.0% → Bloom 门禁不触发",
+    "_shape_normalized": {
+      "by": "orchestrator (MedMaster)",
+      "at": "2026-10-19T19:04:48.739801",
+      "reason": "MedQC 原输出为 {\"层级\":{\"count\":n,\"ratio\":r}} 嵌套形态，gate_check 仅支持 扁平 或 {\"actual\":{...}}，导致自述值被读为 0.0 并误阻断 GATE-A3；此处仅归一化形状，未改动任何数值/结论",
+      "original": {
+        "记忆": {
+          "count": 60,
+          "ratio": 0.3
+        },
+        "理解": {
+          "count": 80,
+          "ratio": 0.4
+        },
+        "应用": {
+          "count": 50,
+          "ratio": 0.25
+        },
+        "分析": {
+          "count": 10,
+          "ratio": 0.05
+        },
+        "target": {
+          "记忆": 0.3,
+          "理解": 0.4,
+          "应用": 0.25,
+          "分析": 0.05
+        },
+        "max_deviation": 0.0,
+        "gate_note": "记忆 30.0% <50%、理解 40.0% >25%，Bloom 门禁不触发（BLOCKED 条件不成立）"
+      }
+    }
+  },
+  "sampling_gate": {
+    "external_material": "N/A —— 本批卡 100% Agent 2 自产（无外来素材合并），HC-5/HC-8/D15 不触发",
+    "agent2_numeric_check": {
+      "coverage": "100%（全量）",
+      "method": "教师重点锚定清单第1–125条 数值/时间窗/分级界值 逐条 grep 回检题库",
+      "result": "全部关键数值原样保留，未发现偏差>5%"
+    },
+    "agent2_distractor_check": {
+      "sample_ratio": "100%（≥10% 要求达标）",
+      "flagged_numeric_ratio_gt5": 2,
+      "result": "2 处均为年龄区间口径误报（M04-A1-005: 2岁 vs 14岁；M06-A1-001: 3岁 vs 60岁），非真实区分度缺陷"
+    },
+    "agent2_traceability_check": {
+      "sample_ratio": "100%",
+      "result": "source_page 200/200、keypoint_ref 200/200 均有值；指向统一锚定清单「第N条」的引用 179 条中 151 条与 teacher_anchor 精确对齐，其余 28 条为同条后段或源③补充模块文本"
+    },
+    "hc20_anchor_verbatim": {
+      "checked": 200,
+      "verbatim_hit": 199,
+      "not_verbatim": [
+        "batch040-M05-案例-002"
+      ],
+      "note": "teacher_anchor 逐字照录率 99.5%"
+    }
+  },
+  "issues": [
+    {
+      "question_id": "batch040-M03-A4-003",
+      "severity": "major",
+      "rule": "D6/HC-1 题型极性自洽",
+      "detail": "反选（negative）A4 题「关于该患儿的诊治，下列处理**不恰当**的是」的 option_polarities 反转：正确答案 C 标 true、其余 A/B/D/E 标 false；而同批 A1 反选题（M03-A1-003/M04-A1-003）采用「答案项=false、其余=true」。本批负向题约定自相矛盾（1 true+4 false vs 1 false+4 true）。建议将 C=false、A/B/D/E=true（答案键不变，A/B/D/E 内容本身无误）。"
+    },
+    {
+      "question_id": "batch040-M01-判断-004",
+      "severity": "minor",
+      "rule": "D6/HC-1 题型极性自洽",
+      "detail": "负向判断题：题干陈述为假，答案 B「该表述错误」option_polarity=true、A=false；与 HC-1「答案项极性=false」字面不符，但与 M04-判断-003/M06-判断-002/M07-判断-001 一致（答案=正确判断恒为 true）。属内部自洽的判断题约定，建议在元数据统一注明。「患者右耳气导升高而骨导正常提示感音神经性听力损失」判定为错误——事实正确。"
+    },
+    {
+      "question_id": "batch040-M04-判断-003",
+      "severity": "minor",
+      "rule": "D6/HC-1 题型极性自洽",
+      "detail": "同上，负向判断题答案项 B=true；教学内容正确（前上型扁桃体周脓肿悬雍垂偏向健侧，故题干「偏向患侧」为错误）。"
+    },
+    {
+      "question_id": "batch040-M06-判断-002",
+      "severity": "minor",
+      "rule": "D6/HC-1 题型极性自洽",
+      "detail": "同上，负向判断题答案项 B=true；教学内容正确（食管第一狭窄 15～16cm，题干 25cm 为错误）。"
+    },
+    {
+      "question_id": "batch040-M07-判断-001",
+      "severity": "minor",
+      "rule": "D6/HC-1 题型极性自洽",
+      "detail": "同上，负向判断题答案项 B=true；教学内容正确（咽后淋巴结不属于 Robbins Ⅵ区）。"
+    },
+    {
+      "question_id": "batch-wide",
+      "severity": "should_fix",
+      "rule": "D8/D17 答案位置分布",
+      "detail": "正确答案位置偏倚：5 选项单答案题（A1+A2+A3+A4+案例单答 共 140 题）中，A 占 82 题（58.6%）；全批 200 题 A=101（50.5%）、E 仅 11。虽不构成答案唯一性错误，但显著降低猜测难度（testwiseness）。建议 Agent 4 对部分题重排选项顺序（保持题干/答案内容不变）。"
+    },
+    {
+      "question_id": "batch040-M02-A2-004;batch040-M02-A3-001;batch040-M02-案例-001;batch040-M03-A1-004;batch040-M03-X-002;batch040-M03-X-003;batch040-M03-X-005;batch040-M04-案例-004;batch040-M05-A2-002;batch040-M05-X-003;batch040-M07-X-002;batch040-M07-X-005",
+      "severity": "should_fix",
+      "rule": "D17 选项长度偏差",
+      "detail": "12 题选项最长/最短字符比 >2.0（最甚 M03-X-003 4.0、M03-X-005 3.5、M02-A3-001/M02-案例-001 3.33），超过 ≤1.5 的展示阈值。经核，各题 5 选项已满足 HC-14 结构模板一致（同为疾病名/检查名/临床特征），长度差源于术语固有长短（如「良性阵发性位置性眩晕」vs「迷路炎」）且多数题答案项非最长选项（无视觉答案线索），属低风险展示问题，建议在保持答项不变的前提下小幅平衡或标注豁免。"
+    },
+    {
+      "question_id": "batch040-M05-案例-002",
+      "severity": "minor",
+      "rule": "D12/HC-20 原文锚定",
+      "detail": "teacher_anchor 非全文照录：「四度：呼吸极度困难。患者坐卧不安、手足乱动、出冷汗、面色苍白或发绀、定向力丧失、心律不齐、脉搏细数、昏迷；而Ⅳ度患者已出…」为源①第110条（原文含「Ⅳ度患者已出现呼吸衰竭征象」）拼接重构，是全批 200 题中唯一未在锚定源逐字命中的锚文。建议按原文回填。"
+    },
+    {
+      "question_id": "batch040-M05-A1-005",
+      "severity": "minor",
+      "rule": "D5/D12 教师重点原文保真",
+      "detail": "teacher_anchor 写「喉返神经支配除环甲肌以外全部喉内肌」，教师重点锚定清单第120条原文为「喉返神经支配除环甲肌外的大多数喉内肌」；「全部」与「大多数」措辞不一致（解剖学通行说法支持「除环甲肌外全部」，但违反 HC-20 原文字面锚定）。建议与原文对齐或在旁标注。"
+    },
+    {
+      "question_id": "batch040-M06-A1-001",
+      "severity": "minor",
+      "rule": "D11 干扰项质量",
+      "detail": "题干「气管、支气管异物绝大多数发生于儿童，最高发年龄段」，干扰项 E「60岁以上老年人」与儿科好发病量级差距过大，plausibility 偏低。建议替换为更接近的年龄区间（如 6～12 岁学龄期）以提升区分度。"
+    }
+  ],
+  "modification_instructions": [
+    {
+      "patch_id": "PATCH-QC-001",
+      "target": "batch040-M03-A4-003.option_polarities",
+      "operation": "fix_polarity",
+      "current_value": "{\"A\": false, \"B\": false, \"C\": true, \"D\": false, \"E\": false}",
+      "proposed_value": "{\"A\": true, \"B\": true, \"C\": false, \"D\": true, \"E\": true}",
+      "reason": "反选题答案项极性应为 false、其余为 true，与同批 A1 反选题约定对齐（答案键 C 不变）",
+      "linked_issue_ids": [
+        "ISSUE-001"
+      ],
+      "preconditions": [
+        "修改后该选项真值极性不得改变。原始极性=false。",
+        "确认本题 polarity=negative 属实（题干为「不恰当的是」）"
+      ],
+      "post_checks": [
+        "重新验证本题选项极性分布：1 false + 4 true",
+        "option_polarities JSON 已更新",
+        "答案键 C 未变且指向的选项存在",
+        "解析无需改动"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-QC-002",
+      "target": "batch040-M05-案例-002.teacher_anchor",
+      "operation": "add_source_anchor",
+      "current_value": "四度：呼吸极度困难。患者坐卧不安…昏迷；而Ⅳ度患者已出…",
+      "proposed_value": "照录教师重点锚定清单第110条原文（含「Ⅳ度患者已出现呼吸衰竭征象，必须紧急开放气道」）",
+      "reason": "HC-20 要求 teacher_anchor 逐字照录原文，本处为重构文本，为全批唯一未命中项",
+      "linked_issue_ids": [
+        "ISSUE-008"
+      ],
+      "preconditions": [
+        "核对源①第110条原文"
+      ],
+      "post_checks": [
+        "teacher_anchor 与清单第110条逐字一致"
+      ],
+      "risk_level": "auto_with_review"
+    },
+    {
+      "patch_id": "PATCH-QC-003",
+      "target": "batch-wide.answer_position",
+      "operation": "fix_format",
+      "current_value": "5选项单答案题 A 占 82/140 (58.6%)",
+      "proposed_value": "重排部分题选项顺序，使 A–E 答案分布趋于均衡（目标各约 20%）",
+      "reason": "降低答案位置猜测线索（testwiseness）",
+      "linked_issue_ids": [
+        "ISSUE-006"
+      ],
+      "preconditions": [
+        "重排后题干/选项文本/答案内容与解析均不改变",
+        "option_polarities 同步跟随重排"
+      ],
+      "post_checks": [
+        "答案键与原选项语义一一对应",
+        "解析引用的选项字母已同步更新"
+      ],
+      "risk_level": "auto_with_review"
+    }
+  ],
+  "escalations": [],
+  "cot_selfcheck": [
+    "D1 术语规范性:      PASS — 术语标准，缩写多数有注释",
+    "D2 语法与拼写:      PASS — 无错别字/截断/残留",
+    "D3 结构完整性:      PASS — 字段齐全，解析非空",
+    "D4 格式一致性:      PASS — 编号/ID/字段统一",
+    "D5 事实准确性:      PASS — 数值锚点全量保留，无答案性错误",
+    "D6 题型极性自洽:    FAIL — M03-A4-003 极性反转 major + 4 判断约定 minor",
+    "D7 选项互斥性:      PASS — 无包含/穷举缺陷",
+    "D8 答案唯一性:      PASS — 无歧义（位置偏倚另计）",
+    "D9 解析完整度:      PASS — 解析与答案键一致",
+    "D10 认知层级校准:   PASS — 层级与题干复杂度匹配",
+    "D11 干扰项质量:     PASS — 仅 1 处弱干扰项(minor)",
+    "D12 考点溯源完整性: PASS — 溯源全量存在",
+    "D13 跨题一致性:     PASS — 口径差异已解析调和",
+    "D14 跨章节一致性:   PASS — 7 模块内部一致",
+    "D15 外来素材验证:   N/A  — 100% 原创，无外来素材",
+    "D16 认知层级覆盖率: PASS — 30/40/25/5 完全吻合",
+    "D17 选项同质性:     PASS — 12 题长度比>2.0(should_fix，低风险)",
+    "D18 词重复线索:     PASS — 0 例",
+    "D19 收敛策略:       PASS — 无收敛线索",
+    "D20 B1型题专项:     N/A  — 无 B1 型题，按满分 10 计",
+    "D21 考研原题一致性: N/A  — 配额 0，无真题引用",
+    "D22 插图引用完整性: N/A  — 纯文字题库，无插图"
+  ],
+  "overall_score": 9.4
+}
