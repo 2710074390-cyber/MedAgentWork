@@ -1183,7 +1183,9 @@ function invRow(x){
     +'</div>';
 }
 const TIP_PRINT='打开浏览器打印对话框，可另存为 PDF（由浏览器生成，非原生 PDF）';
-function renderGrids(){
+/* 渲染入口写成 safe('…',()=>{…}) 箭头回调：内容渲染最先执行，且是单点容错边界
+   （链路门禁 check_site_links.mjs 在此处截取"渲染语句之前"的前缀执行，故保持此形态） */
+safe('render-grids',()=>{
   const s2=[...BANKS.map(it=>({term:'大三下',kind:'题库',it,file:it.pdf})),
             ...REVIEWS.map(it=>({term:'大三下',kind:'复习手册',it,file:it.md}))];
   const s1=[...REVIEWS_S1.map(it=>({term:'大四上',kind:'复习资料',it,file:it.pdf})),
@@ -1213,8 +1215,7 @@ function renderGrids(){
     const grid=document.getElementById(el.dataset.count);
     if(grid)el.textContent='共 '+grid.querySelectorAll('[data-q]').length+' 项';
   });
-}
-safe('render',renderGrids);
+});
 
 safe('reveal',()=>{
   const io=new IntersectionObserver(es=>{

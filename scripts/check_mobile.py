@@ -194,10 +194,19 @@ PROBE_JS = """() => {
     };
   }
 
+  // 7) 内容渲染完整性：渲染块被改写后最容易出现的失效是"页面看着完好、其实一行都没渲染"
+  const activeView = document.querySelector('.view.active') || document;
+  const content = {
+    invRows: document.querySelectorAll('#inv-list .inv-row').length,
+    viewRows: activeView.querySelectorAll('.res-list .res-row').length,
+    deskStat: (document.querySelector('#desk-stat') || {}).textContent || '',
+    chips: activeView.querySelectorAll('.chip-btn').length,
+  };
+
   return {
     viewportW: W, viewportH: H, scrollW: de.scrollWidth,
     overflowPx: Math.max(0, de.scrollWidth - W),
-    over, small, zoom, firstView, navOverlap, sticky,
+    over, small, zoom, firstView, navOverlap, sticky, content,
   };
 }"""
 
@@ -373,6 +382,22 @@ def main() -> int:
                         if st["height"] > 120:
                             issues.append(("WARN", "MOBILE-STICKY",
                                            f"常驻筛选条高 {st['height']}px（>120px，占用首屏偏多）"))
+                    # 内容渲染完整性：下限阈值（只防"渲染块被改写后一行都没出来"，
+                    # 不用精确值——精确值由 check_site_freshness 的数据数组一致性兜住）
+                    c = d.get("content") or {}
+                    if rlabel == "home":
+                        if c.get("invRows", 0) < 28:
+                            issues.append(("FAIL", "MOBILE-CONTENT",
+                                           f"首页检索台只渲染出 {c.get('invRows')} 行（应≥28）"))
+                        if not (c.get("deskStat") or "").strip():
+                            issues.append(("FAIL", "MOBILE-CONTENT", "检索台计数文案为空"))
+                    else:
+                        if c.get("viewRows", 0) < 10:
+                            issues.append(("FAIL", "MOBILE-CONTENT",
+                                           f"{rlabel} 只渲染出 {c.get('viewRows')} 行资源（应≥10）"))
+                        if c.get("chips", 0) < 2:
+                            issues.append(("FAIL", "MOBILE-CONTENT",
+                                           f"{rlabel} 筛选芯片只有 {c.get('chips')} 个（应≥2）"))
                     r["issues"] = issues
                     rows.append(r)
                 ctx.close()

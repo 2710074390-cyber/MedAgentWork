@@ -26,10 +26,19 @@ const realTimers = {                       // undici 内部依赖真实的定时
   setInterval: globalThis.setInterval, clearInterval: globalThis.clearInterval,
 };
 
-/* ---------- 1. 抽出唯一一段 <script> ---------- */
+/* ---------- 1. 抽出脚本段 ----------
+   2026-10-20：v3 起 index.html 允许**两段** <script>，执行时只取最后一段：
+     ① <head> 内的主题预置脚本（在样式解析前定档 data-theme，消除首帧深→浅闪变）
+     ② </body> 前的主脚本（数据 + 渲染 + 交互）
+   段数不在 1~2、或两段时前者不含 data-theme，一律 fail-closed。 */
 const scripts = [...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(m => m[1]);
-if (scripts.length !== 1) { console.error(`[X] 期望 1 段 script，实际 ${scripts.length} 段`); process.exit(2); }
-const src = scripts[0];
+if (scripts.length < 1 || scripts.length > 2) {
+  console.error(`[X] 期望 1~2 段 script，实际 ${scripts.length} 段`); process.exit(2);
+}
+if (scripts.length === 2 && !/data-theme/.test(scripts[0])) {
+  console.error("[X] 两段 script 时，前一段应是 <head> 主题预置脚本（含 data-theme）"); process.exit(2);
+}
+const src = scripts[scripts.length - 1];
 
 /* ---------- 2. 切到卡片渲染完成处（之后全是 DOM 副作用） ----------
    2026-10-16 修：原切点写死 `$('#grid-exam').innerHTML=`，删分区后该语句不复存在即 exit 2。
@@ -132,10 +141,20 @@ const DRIVER = `
   /* 2026-10-16 修：按「当前页面真实存在的卡片族」扫描。原实现写死 scan(examCard, EXAMS)
      扫押题卷；押题卷分区已随站点大换血删除 ⇒ 求值到这一行会 ReferenceError，门禁失效。
      用 typeof 守卫（对未声明标识符安全），存在才扫；一条目标都扫不到时下游仍会 fail-closed。 */
+  /* v2 及以前：卡片渲染器 bankCard / reviewCard / reviewS1Card */
   if (typeof bankCard === "function" && typeof BANKS !== "undefined") scan(bankCard, BANKS, "大三下·题库");
   if (typeof reviewCard === "function" && typeof REVIEWS !== "undefined") scan(reviewCard, REVIEWS, "大三下·复习资料");
   if (typeof reviewS1Card === "function" && typeof REVIEWS_S1 !== "undefined") scan(reviewS1Card, REVIEWS_S1, "大四上·复习资料");
   if (typeof bankCard === "function" && typeof BANKS_S1 !== "undefined") scan(bankCard, BANKS_S1, "大四上·题库");
+  /* 2026-10-20：v3 把卡片渲染收敛成一个 resRow(x)，x = {term, kind, it}（旧渲染器名已不存在）。
+     按新约定适配；与上面旧分支同时保留 typeof 守卫，两套只有一套会命中。 */
+  if (typeof resRow === "function") {
+    const pack = (term, kind) => (it) => resRow({ term, kind, it });
+    if (typeof BANKS !== "undefined") scan(pack("大三下", "题库"), BANKS, "大三下·题库");
+    if (typeof REVIEWS !== "undefined") scan(pack("大三下", "复习手册"), REVIEWS, "大三下·复习手册");
+    if (typeof REVIEWS_S1 !== "undefined") scan(pack("大四上", "复习资料"), REVIEWS_S1, "大四上·复习资料");
+    if (typeof BANKS_S1 !== "undefined") scan(pack("大四上", "题库"), BANKS_S1, "大四上·题库");
+  }
   return { BASE: ROOTBASE, convention: HAS_URLAT ? "BASE+urlAt（旧）" : "仓库根相对（新）", targets };
 })();
 `;
