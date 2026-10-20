@@ -10,6 +10,10 @@ name: keepalive
 on:
   schedule:
     - cron: "*/5 * * * *"
+  # 只改本文件时顺带跑一次：既是自检入口，也能在调度器延迟时立刻验证
+  push:
+    paths:
+      - ".github/workflows/keepalive.yml"
   workflow_dispatch:
 
 permissions:
