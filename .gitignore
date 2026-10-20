@@ -103,3 +103,6 @@ Thumbs.db
 .workbuddy-ai/
 tools/_srpreview/
 tools/_shots*/
+
+# WorkBuddy 会话产物（.genie 快照，仅本机可读）
+.wbapp_*.genie
