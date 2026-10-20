@@ -76,16 +76,17 @@ try{
   --radius-control:6px; --radius-inline:10px; --radius-panel:14px; --radius-pill:999px;
   --font-sans:"MiSans","OPPO Sans","HarmonyOS Sans SC","PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
   --font-mono:"Cascadia Code","JetBrains Mono","SF Mono",Consolas,"Noto Sans Mono CJK SC",Menlo,monospace;
-  --nav-h:60px; --container:1120px; --measure:720px;
+  --nav-h:60px; --container:1120px; --measure:720px; --wrap-pad:24px;
 }
 
 /* ---------- 4 基础 ---------- */
 * { margin:0; padding:0; box-sizing:border-box; }
 :focus-visible { outline:2px solid var(--brand); outline-offset:2px; border-radius:var(--radius-control); }
-html { scroll-behavior:smooth; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+html { scroll-behavior:smooth; -webkit-text-size-adjust:100%; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
 body {
   font-family:var(--font-sans); font-size:var(--fs-md); line-height:var(--lh-body);
-  background:var(--bg); color:var(--fg); min-height:100vh; overflow-x:hidden;
+  background:var(--bg); color:var(--fg); min-height:100vh;
+  overflow-x:hidden; overflow-x:clip;   /* clip 不建滚动容器，position:sticky 才不会被 body 吃掉 */
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   transition:background .3s, color .3s;
 }
@@ -102,7 +103,11 @@ a { color:var(--brand); }
 }
 .skip:focus { top:14px; }
 .ic { width:1.15em; height:1.15em; flex-shrink:0; vertical-align:-0.22em; fill:none; stroke:currentColor; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round; }
-.wrap { position:relative; max-width:var(--container); margin:0 auto; padding:0 var(--sp-5); }
+.wrap {
+  position:relative; max-width:var(--container); margin:0 auto; padding:0 var(--wrap-pad);
+  padding-left:max(var(--wrap-pad), env(safe-area-inset-left));
+  padding-right:max(var(--wrap-pad), env(safe-area-inset-right));
+}
 .eyebrow {
   display:inline-flex; align-items:center; gap:var(--sp-2);
   font-family:var(--font-mono); font-size:var(--fs-xs); font-weight:var(--w-500);
@@ -114,6 +119,7 @@ a { color:var(--brand); }
 .nav {
   position:fixed; top:0; left:0; right:0; z-index:100; height:var(--nav-h);
   background:var(--bg); border-bottom:1px solid var(--border);
+  padding-left:env(safe-area-inset-left); padding-right:env(safe-area-inset-right);
 }
 .nav-in { max-width:var(--container); margin:0 auto; height:100%; padding:0 var(--sp-5); display:flex; align-items:center; gap:var(--sp-4); }
 .brand { display:flex; align-items:center; gap:var(--sp-2); text-decoration:none; color:var(--fg); }
@@ -181,6 +187,10 @@ a { color:var(--brand); }
   line-height:1.4; color:var(--fg); background:transparent;
 }
 .btn:active { transform:scale(.96); }
+/* 统一按压反馈：任何可点控件按下即「受力挤压、灵动回弹」（Apple HIG / ColorOS 柔性反馈） */
+.icon-btn:active, .icon-act:active, .nav-term:active, .chip-btn:active, .cap-more:active,
+.term-copy:active, .search-clear:active, .desk-clear:active, .m-btn:active, .mm-term-btn:active,
+.to-top:active, .film-open:active, .ft-btn:active, .act-go:active { transform:scale(.96); }
 .btn-pri { background:var(--brand); color:var(--fg-on-brand); }
 .btn-pri:hover { background:var(--brand-hover); }
 .btn-pri:active { box-shadow:inset 0 2px 8px rgba(3,10,20,0.28); }
@@ -227,7 +237,7 @@ a { color:var(--brand); }
 .desk-bar { display:flex; align-items:center; justify-content:space-between; gap:var(--sp-4); padding:var(--sp-3) var(--sp-5); border-bottom:1px solid var(--border); background:var(--bg-subtle); }
 .desk-stat { font-size:var(--fs-sm); color:var(--fg-muted); font-variant-numeric:tabular-nums; }
 .desk-hint { font-family:var(--font-mono); font-size:var(--fs-xs); color:var(--fg-subtle); letter-spacing:0.04em; }
-.desk-list { max-height:min(46vh,380px); overflow-y:auto; }
+.desk-list { max-height:min(46vh,380px); max-height:min(46dvh,380px); overflow-y:auto; overscroll-behavior:contain; }
 .inv-row {
   display:grid; grid-template-columns:64px 58px minmax(0,1fr) auto auto; align-items:center; gap:var(--sp-3);
   padding:var(--sp-3) var(--sp-5); border-bottom:1px solid var(--border); cursor:default;
@@ -462,6 +472,7 @@ a { color:var(--brand); }
 .foot-links a:hover { color:var(--brand); }
 #toast {
   position:fixed; bottom:26px; left:50%; transform:translateX(-50%) translateY(80px);
+  bottom:max(26px, env(safe-area-inset-bottom));
   background:var(--bg-elevated); border:1px solid var(--border-strong); color:var(--fg);
   padding:11px 22px; border-radius:var(--radius-pill); font-size:var(--fs-sm); font-weight:var(--w-500);
   opacity:0; transition:opacity .3s, transform .3s; z-index:2000; pointer-events:none; box-shadow:var(--shadow-float);
@@ -469,6 +480,7 @@ a { color:var(--brand); }
 #toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
 .to-top {
   position:fixed; right:22px; bottom:26px; z-index:90; width:46px; height:46px; border-radius:50%;
+  right:max(22px, env(safe-area-inset-right)); bottom:max(26px, env(safe-area-inset-bottom));
   display:flex; align-items:center; justify-content:center; border:1px solid var(--border-strong);
   background:var(--bg-elevated); color:var(--fg-muted); cursor:pointer; opacity:0; pointer-events:none;
   transform:translateY(10px); transition:opacity .3s, transform .3s, color .2s, border-color .2s;
@@ -537,20 +549,38 @@ a { color:var(--brand); }
   .nav-links { display:none; }
   .nav-burger { display:flex; }
   .nav-cta { display:none; }
+  /* 触控基线 44px —— Apple HIG / ColorOS 人因研究基线；平板竖屏一律按触控处理 */
+  .icon-btn, .nav-burger, .icon-act { width:44px; height:44px; }
+  .nav-term { min-height:44px; padding:8px 13px; }
+  .chip-btn, .cap-more, .term-copy, .film-open { min-height:44px; }
+  .modal-bar .m-btn { min-height:44px; }   /* 复合选择器需与基础规则同权重才能覆盖 */
+  .btn { min-height:44px; }
+  .search-clear, .desk-clear { width:44px; height:44px; margin-right:-10px; }
+  .cap-more { padding:10px 15px; }
+  .search { min-height:44px; padding:10px 14px; }
+  /* iOS：输入框字号 < 16px 时聚焦会把整页自动放大，故移动端提到 16px */
+  .search input { font-size:var(--fs-lg); }
+  /* 类型芯片：单行横滑（不因换行占掉两三行），把首屏留给内容 */
+  .chips { flex:1 1 100%; min-width:0; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+  .chips::-webkit-scrollbar { display:none; }
+  .chip-btn { flex:0 0 auto; }
+  /* 筛选条常驻：滚到列表底部也能直接换类型 / 改关键词，不必回滚 */
+  .tools {
+    position:sticky; top:var(--nav-h); z-index:40;
+    background:var(--bg); border-bottom:1px solid var(--border);
+    margin-left:calc(-1 * var(--wrap-pad)); margin-right:calc(-1 * var(--wrap-pad));
+    padding:var(--sp-2) var(--wrap-pad); margin-bottom:var(--sp-3); gap:var(--sp-2);
+  }
 }
 @media (max-width:720px) {
-  :root { --nav-h:56px; }
-  .wrap { padding:0 var(--sp-4); }
+  :root { --nav-h:56px; --wrap-pad:16px; }
   .nav-in { gap:var(--sp-2); padding:0 var(--sp-3); }
-  .icon-btn { width:44px; height:44px; }
   .btn { min-height:44px; }
-  .icon-act { width:44px; height:44px; }
-  .nav-term { min-height:36px; }
-  .hero { padding-top:calc(var(--nav-h) + var(--sp-6)); }
-  .section { padding:var(--sp-7) 0 0; }
+  .hero { padding-top:calc(var(--nav-h) + var(--sp-5)); padding-bottom:var(--sp-5); }
+  .section { padding:var(--sp-6) 0 0; }
   .section-head { flex-direction:column; align-items:flex-start; }
   .section-head .right { display:none; }
-  .desk-list { max-height:52vh; }
+  .desk-list { max-height:46vh; max-height:46dvh; }
   .inv-row { grid-template-columns:58px minmax(0,1fr) auto; padding:var(--sp-3) var(--sp-4); }
   .inv-row .iv-term, .inv-row .iv-meta { display:none; }
   .iv-kind { font-size:var(--fs-xs); }
@@ -567,13 +597,26 @@ a { color:var(--brand); }
   .ft-close { top:10px; right:10px; width:44px; height:44px; }
   .ft-btn { width:44px; height:44px; }
   .foot-in { flex-direction:column; align-items:flex-start; text-align:left; gap:var(--sp-2); }
-  .to-top { right:16px; bottom:18px; width:44px; height:44px; }
+  .foot-links a { padding:8px 0; }
+  .to-top {
+    right:16px; bottom:18px; width:44px; height:44px;
+    right:max(16px, env(safe-area-inset-right)); bottom:max(18px, env(safe-area-inset-bottom));
+  }
 }
 @media (max-width:560px) {
   .nav-term-tabs { display:none; }
   .desk-hint { display:none; }
   .film-sub { display:none; }
+  .grid-count { display:none; }
   .nav-in { padding:0 var(--sp-2); }
+  .modal-card { width:96vw; height:92vh; height:92dvh; }
+  .modal-bar { flex-wrap:wrap; gap:var(--sp-2); padding:var(--sp-3) var(--sp-4); }
+  .modal-bar .m-title { flex-basis:100%; }
+  .modal-bar .m-actions { width:100%; justify-content:flex-end; }
+}
+@media (max-width:430px) {
+  .rr-acts { width:100%; }
+  .rr-acts .btn { flex:1 1 auto; }
 }
 @media (max-width:400px) {
   .brand .name { display:none; }
