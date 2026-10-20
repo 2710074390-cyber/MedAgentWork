@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="deep">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>耳鼻咽喉头颈外科学押题卷 · MedAgentWork 统一模板 v1.0</title>
+<!--
+  ============================================================================
+  quiz_template.html — MedAgentWork 统一押题卷模板 v1.0 (2026-08-20)
+  ============================================================================
+  用途：五套押题卷（内/外/神经/精神/医患）统一迁移到此模板。
+  设计令牌：沿用复习资料模板命名体系（--bg-primary/--text-primary/...），
+            新增押题卷语义令牌（--correct/--wrong/--picked）。
+  达标项：CSS变量化 / 亮暗双主题(localStorage maw-theme，与index.html打通) /
+          640px响应式 / print保色 / 对错三通道反馈(颜色+✓✗+文字) /
+          localStorage作答采集+JSON导出+错题重刷。
+  题目注入：替换下方 <script id="quiz-data"> 中的 QUESTIONS 数组。
+  验收标准：见 AGENT_TASKS.md V-P0-1。
+  ============================================================================
+-->
+<style>
+  :root {
+    /* 基础（亮色） */
+    --bg-primary: #fafbfc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f0f2f5;
+    --text-primary: #1a1a2e;
+    --text-secondary: #4a5568;
+    --text-tertiary: #5A6675;   /* 修复：原 #718096 对比 3.71:1 不达标 */
+    --border: #e2e8f0;
+    --accent: #2563eb;
+    --accent-light: #dbeafe;
+    /* 押题卷语义令牌 */
+    --correct: #047857;         /* 修复：原 #059669 对比不足，加深 */
+    --correct-bg: #ecfdf5;
+    --correct-border: #6ee7b7;
+    --wrong: #dc2626;
+    --wrong-bg: #fef2f2;
+    --wrong-border: #fca5a5;
+    --picked: #7c3aed;
+    --picked-bg: #f5f3ff;
+    --picked-border: #c4b5fd;
+    /* 组件规格（全站统一） */
+    --radius-card: 12px;
+    --radius-option: 8px;
+    --radius-bar: 6px;
+    --hover-shift: 3px;
+    --shadow: 0 2px 12px rgba(0,0,0,.06);
+    --font-body: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    --topbar-bg: linear-gradient(135deg, #1a3a5f, #2563eb);
+    --topbar-border: transparent;
+  }
+  [data-theme="dark"] {
+    --bg-primary: #0f1117;
+    --bg-secondary: #161822;
+    --bg-tertiary: #1e2030;
+    --text-primary: #e2e4e9;
+    --text-secondary: #a0a6b5;
+    --text-tertiary: #8A93A3;   /* 修复：原 #6b7280 对比 4.21:1 不达标 */
+    --border: #2a2d3a;
+    --accent: #60a5fa;
+    --accent-light: #1a2e4a;
+    --correct: #34d399;
+    --correct-bg: #0a2e1f;
+    --correct-border: #1a4a30;
+    --wrong: #f87171;
+    --wrong-bg: #3b1219;
+    --wrong-border: #5c1f24;
+    --picked: #a78bfa;
+    --picked-bg: #1e123b;
+    --picked-border: #3a2560;
+    --shadow: 0 2px 12px rgba(0,0,0,.3);
+  }
+  [data-theme="deep"] {
+    /* 深海·未来主义（与 index.html 新站风格统一：黑蓝深海 + 玻璃 UI） */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #101113;
+    --bg-tertiary: #1a1c20;
+    --text-primary: rgba(255,255,255,0.92);
+    --text-secondary: rgba(255,255,255,0.60);
+    --text-tertiary: rgba(255,255,255,0.42);
+    --border: rgba(255,255,255,0.12);
+    --accent: #679efe;
+    --accent-light: rgba(103,153,254,0.14);
+    --correct: #34d399;
+    --correct-bg: rgba(16,185,129,0.10);
+    --correct-border: rgba(52,211,153,0.40);
+    --wrong: #f87171;
+    --wrong-bg: rgba(248,113,113,0.09);
+    --wrong-border: rgba(248,113,113,0.40);
+    --picked: #8ab2ff;
+    --picked-bg: rgba(103,153,254,0.13);
+    --picked-border: rgba(103,153,254,0.50);
+    --shadow: 0 2px 18px rgba(0,0,0,0.55);
+    --topbar-bg: rgba(10,10,10,0.72);
+    --topbar-border: rgba(255,255,255,0.08);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-body); font-size: 15px; line-height: 1.8;
+    background: var(--bg-primary); color: var(--text-primary);
+    transition: background .25s ease, color .25s ease;
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 20px 40px; }
+
+  /* ---------- 顶栏 ---------- */
+  #topbar {
+    position: relative; z-index: 1;
+    background: var(--topbar-bg);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--topbar-border);
+    color: #fff; padding: 12px 20px 10px;
+  }
+  #topbar h1 { font-size: 18px; font-weight: 700; }
+  #topbar .sub { font-size: 12px; opacity: .85; margin-top: 2px; }
+  .bar-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+  .score { font-size: 13px; font-variant-numeric: tabular-nums; }
+  .btn {
+    font-size: 12px; padding: 5px 12px; border-radius: 14px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.45); background: rgba(255,255,255,.12);
+    color: #fff; font-family: inherit; transition: background .15s;
+  }
+  .btn:hover { background: rgba(255,255,255,.25); }
+  .btn.active { background: #fff; color: #1a3a5f; border-color: #fff; font-weight: 700; }
+  #progress { height: 6px; border-radius: var(--radius-bar); background: rgba(255,255,255,.2); margin-top: 8px; overflow: hidden; }
+  #progress-fill { height: 100%; width: 0; border-radius: var(--radius-bar); background: #34d399; transition: width .3s ease; }
+
+  /* ---------- 系统筛选（可选功能：题目带 system 字段时自动启用） ---------- */
+  #system-tags { display: none; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  #system-tags.show { display: flex; }
+  .system-tag {
+    font-size: 12px; padding: 3px 10px; border-radius: 12px; cursor: pointer;
+    border: 1px solid rgba(255,255,255,.4); color: #fff; background: transparent;
+    font-family: inherit;
+  }
+  .system-tag.active { background: #fff; color: #1a3a5f; font-weight: 700; }
+
+  /* ---------- 题卡 ---------- */
+  .question {
+    background: var(--bg-secondary); border-radius: var(--radius-card);
+    box-shadow: var(--shadow); padding: 22px 24px; margin: 18px 0;
+    border-left: 4px solid transparent; transition: background .2s;
+    break-inside: avoid;
+  }
+  .question.is-correct { border-left-color: var(--correct); background: var(--correct-bg); }
+  .question.is-wrong { border-left-color: var(--wrong); background: var(--wrong-bg); }
+  .q-meta { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+  .q-num { font-size: 13px; font-weight: 700; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+  .q-type {
+    font-size: 12px; font-weight: 700; padding: 1px 8px; border-radius: 4px;
+    background: var(--accent-light); color: var(--accent);
+  }
+  .q-bloom { font-size: 12px; color: var(--text-tertiary); }
+  .q-verdict { font-size: 12px; font-weight: 700; margin-left: auto; }
+  .q-verdict.ok { color: var(--correct); }
+  .q-verdict.no { color: var(--wrong); }
+  .q-stem { font-size: 15.5px; line-height: 1.85; margin-bottom: 14px; }
+  .q-stem b { font-weight: 700; } /* 否定词加粗（R4 规范） */
+
+  /* ---------- 选项（三通道反馈：颜色 + ✓/✗ + 文字） ---------- */
+  .option {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14.5px; line-height: 1.7; padding: 10px 14px; margin: 8px 0;
+    border: 2px solid var(--border); border-radius: var(--radius-option);
+    cursor: pointer; background: var(--bg-tertiary);
+    transition: transform .15s ease, border-color .15s, background .15s;
+  }
+  .option:hover { border-color: var(--accent); transform: translateX(var(--hover-shift)); }
+  .opt-label { font-weight: 700; font-size: 13px; color: var(--accent); min-width: 18px; padding-top: 1px; }
+  .opt-mark { font-weight: 700; font-size: 14px; margin-left: auto; min-width: 16px; text-align: right; }
+  .option.picked { border-color: var(--picked); background: var(--picked-bg); }
+  .option.picked .opt-label { color: var(--picked); }
+  .option.correct-show { border-color: var(--correct); background: var(--correct-bg); }
+  .option.correct-show .opt-label { color: var(--correct); }
+  .option.correct-show .opt-mark { color: var(--correct); }
+  .option.wrong-pick { border-color: var(--wrong); background: var(--wrong-bg); }
+  .option.wrong-pick .opt-label { color: var(--wrong); }
+  .option.wrong-pick .opt-mark { color: var(--wrong); }
+
+  /* ---------- 押题卷分节标题 / 试卷说明 ---------- */
+  .section-head {
+    margin: 30px 0 6px; padding: 12px 18px; border-radius: var(--radius-card);
+    background: var(--accent-light); color: var(--accent);
+    font-size: 15px; font-weight: 700; letter-spacing: .02em;
+    border-left: 4px solid var(--accent); break-inside: avoid;
+  }
+  .section-head:first-child { margin-top: 2px; }
+  .paper-intro {
+    background: var(--bg-secondary); border: 1px solid var(--border);
+    border-radius: var(--radius-card); box-shadow: var(--shadow);
+    padding: 18px 22px; margin: 18px 0; font-size: 13.5px; line-height: 1.9;
+    color: var(--text-secondary); break-inside: avoid;
+  }
+  .paper-intro h2 { font-size: 16px; color: var(--text-primary); margin-bottom: 10px; }
+  .paper-intro table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 13px; }
+  .paper-intro th, .paper-intro td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; }
+  .paper-intro th { background: var(--bg-tertiary); color: var(--text-secondary); font-weight: 700; }
+  body.mode-focus #paper-intro { display: none; }
+  @media print {
+    .section-head { background: #eef4ff !important; color: #0b4f8a !important;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .paper-intro { box-shadow: none; }
+  }
+
+  /* ---------- 解析 ---------- */
+  .answer-box {
+    display: none; margin-top: 12px; padding: 14px 16px;
+    border-radius: var(--radius-option); font-size: 13.5px; line-height: 1.8;
+    background: var(--bg-tertiary); animation: fadeIn .2s ease;
+  }
+  .answer-box.show { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+  .ans-head { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .answer-box.ok .ans-head { color: var(--correct); }
+  .answer-box.no .ans-head { color: var(--wrong); }
+  .exp { color: var(--text-secondary); }
+  .src { font-size: 12px; color: var(--text-tertiary); margin-top: 6px; }
+
+  /* ---------- X 型多选确认（2026-08-21 迁移补全：原模板只切换不判分） ---------- */
+  .multi-confirm { margin-top: 10px; display: flex; align-items: center; gap: 10px; }
+  .btn-confirm {
+    font-size: 13px; padding: 6px 18px; border-radius: 8px; cursor: pointer;
+    border: 1px solid var(--accent); background: var(--accent); color: #fff;
+    font-family: inherit; transition: background .15s, opacity .15s;
+  }
+  .btn-confirm:hover { opacity: .88; }
+  .btn-confirm:disabled { opacity: .45; cursor: default; }
+
+  /* ---------- 主题切换 ---------- */
+  .theme-fab {
+    position: fixed; right: 16px; bottom: 16px; z-index: 99;
+    width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border);
+    background: var(--bg-secondary); color: var(--text-primary); cursor: pointer;
+    font-size: 17px; box-shadow: var(--shadow); font-family: inherit;
+  }
+
+  /* ============================================================
+     v2 · 教育学升级：专注刷题 / 答题卡 / 元认知自评 / 结算复盘
+     ============================================================ */
+  .mode-switch { display: inline-flex; gap: 4px; padding: 3px; border-radius: 16px;
+    background: rgba(255,255,255,0.1); }
+  .mode-btn { font-size: 12px; padding: 4px 12px; border-radius: 13px; cursor: pointer;
+    border: none; background: transparent; color: #fff; opacity: .75; font-family: inherit;
+    transition: all .15s; }
+  .mode-btn.active { background: #fff; color: #1a3a5f; font-weight: 700; opacity: 1; }
+
+  #focus-view { display: none; }
+  body.mode-focus #quiz { display: none; }
+  body.mode-focus #focus-view { display: block; }
+
+  .fq-progress-row { display: flex; align-items: center; gap: 14px; margin: 16px 0 12px; flex-wrap: wrap; }
+  .fq-pos { font-size: 14px; font-weight: 700; color: var(--text-secondary); font-variant-numeric: tabular-nums; }
+  .fq-streak { font-size: 13px; font-weight: 700; color: #f59e0b; }
+  .fq-rate { font-size: 12.5px; color: var(--text-tertiary); margin-left: auto; }
+  .fq-stem { font-size: 16.5px; line-height: 1.9; margin-bottom: 16px; }
+  .fq-stem b { font-weight: 700; }
+
+  /* 答题卡 */
+  .answer-sheet { margin-top: 22px; padding: 14px 16px; border-radius: var(--radius-card);
+    background: var(--bg-tertiary); border: 1px solid var(--border); }
+  .answer-sheet .as-title { font-size: 12px; font-weight: 700; color: var(--text-tertiary); margin-bottom: 10px; letter-spacing: .05em; }
+  .as-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .as-cell { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border);
+    background: var(--bg-secondary); color: var(--text-secondary); font-size: 12.5px; font-weight: 600;
+    cursor: pointer; font-family: inherit; transition: all .15s; font-variant-numeric: tabular-nums; }
+  .as-cell:hover { border-color: var(--accent); }
+  .as-cell.cur { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-light); color: var(--text-primary); }
+  .as-cell.ok { background: var(--correct-bg); border-color: var(--correct-border); color: var(--correct); }
+  .as-cell.no { background: var(--wrong-bg); border-color: var(--wrong-border); color: var(--wrong); }
+
+  /* 元认知自评（作答后） */
+  .conf-bar { margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--border); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .conf-bar .q-t { font-size: 12.5px; color: var(--text-tertiary); }
+  .btn-conf {
+    font-size: 12.5px; padding: 6px 14px; border-radius: 14px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--bg-secondary); color: var(--text-secondary);
+    font-family: inherit; transition: all .15s;
+  }
+  .btn-conf:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-conf.ok2 { border-color: var(--correct); color: var(--correct); background: var(--correct-bg); }
+  .btn-conf.no2 { border-color: var(--wrong); color: var(--wrong); background: var(--wrong-bg); }
+
+  .fq-next { margin-top: 14px; }
+  .btn-next {
+    font-size: 14px; font-weight: 700; padding: 10px 26px; border-radius: 12px; cursor: pointer;
+    border: none; background: var(--accent); color: #fff; font-family: inherit;
+    box-shadow: 0 4px 16px rgba(37,99,235,.25); transition: all .15s;
+  }
+  .btn-next:hover { opacity: .88; transform: translateY(-1px); }
+  .btn-next.ghost { background: transparent; border: 1px solid var(--border); color: var(--text-secondary); box-shadow: none; }
+  .btn-next.ghost:hover { color: var(--text-primary); }
+
+  /* 答对自动跳题提示（2 秒倒计时条） */
+  .auto-note {
+    display: flex; align-items: center; gap: 9px; margin-bottom: 10px;
+    font-size: 12.5px; color: var(--correct); font-weight: 600;
+  }
+  .auto-bar { width: 80px; height: 4px; border-radius: 2px; background: var(--bg-tertiary); overflow: hidden; }
+  .auto-bar i { display: block; height: 100%; width: 100%; background: var(--correct); animation: autoShrink 2s linear forwards; }
+  @keyframes autoShrink { from { width: 100%; } to { width: 0; } }
+
+  /* 结算报告 */
+  #focus-results { display: none; }
+  .results-card { background: var(--bg-secondary); border-radius: var(--radius-card);
+    border: 1px solid var(--border); padding: 26px; margin-top: 16px; }
+  .results-card h3 { font-size: 20px; margin-bottom: 4px; }
+  .results-card .r-sub { font-size: 12.5px; color: var(--text-tertiary); margin-bottom: 18px; }
+  .r-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .r-stat { background: var(--bg-tertiary); border: 1px solid var(--border); border-radius: 10px; padding: 14px; text-align: center; }
+  .r-stat b { display: block; font-size: 24px; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+  .r-stat span { font-size: 11.5px; color: var(--text-tertiary); }
+  .r-stat.good b { color: var(--correct); }
+  .r-stat.bad b { color: var(--wrong); }
+  .r-table { width: 100%; border-collapse: collapse; margin: 6px 0 18px; font-size: 13px; }
+  .r-table th, .r-table td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; }
+  .r-table th { background: var(--bg-tertiary); font-weight: 700; color: var(--text-secondary); }
+  .r-weak { border-left: 3px solid var(--wrong); padding: 9px 12px; background: var(--wrong-bg);
+    border-radius: 6px; margin: 7px 0; font-size: 13px; color: var(--text-secondary); }
+  .r-weak b { color: var(--text-primary); }
+  .r-weak .w-tag { font-size: 11px; color: var(--wrong); margin-left: 6px; }
+  .r-advice { background: var(--accent-light); border: 1px solid var(--border); border-radius: 10px; padding: 13px 15px; font-size: 13px; color: var(--text-secondary); line-height: 1.8; }
+  .r-advice b { color: var(--text-primary); }
+  .r-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+
+  /* ---------- 响应式（640px） ---------- */
+  @media (max-width: 640px) {
+    body { font-size: 14.5px; }
+    #topbar { padding: 10px 14px 8px; }
+    #topbar h1 { font-size: 16px; }
+    .container { padding: 0 12px 24px; }
+    .question { padding: 16px 14px; }
+    .q-stem { font-size: 14.5px; }
+    .option { font-size: 13.5px; padding: 9px 12px; }
+  }
+
+  /* ---------- 打印（保色 + 防断裂 + 默认展开解析） ---------- */
+  .print-hint {
+    display: block; margin: 16px 20px 0; padding: 11px 16px; border-radius: 10px;
+    background: #eef4ff; border: 1px solid #c6d8f5; color: #0b4f8a; font-size: 13.5px; line-height: 1.7;
+  }
+  @media print {
+    body { background: #fff; padding-top: 0; font-size: 12px; }
+    body.mode-focus #quiz { display: block !important; }
+    #focus-view { display: none !important; }
+    #topbar, .theme-fab, .no-print, .print-hint { display: none !important; }
+    .question { box-shadow: none; border: 1px solid #ddd; border-left: 4px solid #999; background: #fff !important; }
+    .answer-box { display: block !important; }
+    .option { cursor: default; pointer-events: none; }
+    .option.correct-show { border-color: #047857 !important; background: #ecfdf5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .option.wrong-pick { border-color: #dc2626 !important; background: #fef2f2 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header id="topbar">
+  <h1 id="paper-title">{科目}押题卷</h1>
+  <div class="sub" id="paper-sub">MedAgentWork 统一模板 v1.0</div>
+  <div class="bar-row">
+    <span class="score" id="score">已答 0 · 正确 0 · 正确率 --</span>
+    <span class="bar-btns no-print">
+      <span class="mode-switch" role="group" aria-label="答题模式">
+        <button class="mode-btn active" id="mode-focus">📖 专注刷题</button>
+        <button class="mode-btn" id="mode-paper">📋 试卷模式</button>
+      </span>
+      <button class="btn" id="btn-wrong" title="仅重刷错题">错题重刷</button>
+      <button class="btn" id="btn-all" title="恢复全部题目">全部题目</button>
+      <button class="btn" id="btn-export" title="导出作答JSON">导出作答</button>
+      <button class="btn" id="btn-reset" title="清空本地作答记录">清空记录</button>
+    </span>
+  </div>
+  <div id="system-tags"></div>
+  <div id="progress"><div id="progress-fill"></div></div>
+</header>
+
+<div class="container">
+  <div class="paper-intro" id="paper-intro">
+  <h2>耳鼻咽喉头颈外科学 · 期末押题卷（100题）</h2>
+  <p>出题源：《<b>耳鼻咽喉头颈外科学期末综合复习讲义</b>》。本卷共 <b>100</b> 道客观题，分两部分：第一部分 <b>75</b> 题按考试大纲题型分配（合计 100 分），第二部分为 <b>25</b> 道拓展题（合计 40 分）。</p>
+  <table>
+    <thead><tr><th>题型</th><th>题量</th><th>分值</th><th>小计</th></tr></thead>
+    <tbody>
+      <tr><td>一、单项选择题（A1型 · 基本概念/解剖/生理）</td><td>20</td><td>1分/题</td><td>20分</td></tr>
+      <tr><td>二、单项选择题（A2型 · 病例摘要最佳选择）</td><td>10</td><td>1分/题</td><td>10分</td></tr>
+      <tr><td>三、单项选择题（A3/A4型 · 病例组/串型）</td><td>10</td><td>1分/题</td><td>10分</td></tr>
+      <tr><td>四、判断题</td><td>10</td><td>1分/题</td><td>10分</td></tr>
+      <tr><td>五、多项选择题（X型）</td><td>10</td><td>2分/题</td><td>20分</td></tr>
+      <tr><td>六、案例分析题（不定项选择 · 3案例×5小题）</td><td>15</td><td>2分/小题</td><td>30分</td></tr>
+      <tr><td colspan="3"><b>第一部分合计</b></td><td><b>75题 · 100分</b></td></tr>
+      <tr><td>七、判断题（进阶）</td><td>10</td><td>1分/题</td><td>10分</td></tr>
+      <tr><td>八、案例分析题（进阶 · 1案例×5小题）</td><td>5</td><td>2分/小题</td><td>10分</td></tr>
+      <tr><td>九、多项选择题（进阶 · X型）</td><td>10</td><td>2分/题</td><td>20分</td></tr>
+      <tr><td colspan="3"><b>第二部分合计</b></td><td><b>25题 · 40分</b></td></tr>
+      <tr><td colspan="3"><b>全卷合计</b></td><td><b>100题 · 140分</b></td></tr>
+    </tbody>
+  </table>
+  <p>说明：题型标签显示于每题上方（A1 / A2 / A4 / 判断 / X）。<b>X 型与案例分析（不定项）为多选</b>，请选齐全部正确项后点击「确认作答」。判断题选项为「正确 / 错误」。每题均附答案解析与讲义溯源，可打印为 PDF。</p>
+</div>
+  <div id="quiz"></div>
+  <div id="focus-view">
+    <div class="fq-progress-row">
+      <span class="fq-pos" id="fq-pos">第 1 / 0 题</span>
+      <span class="fq-streak" id="fq-streak"></span>
+      <span class="fq-rate" id="fq-rate"></span>
+    </div>
+    <div id="fq-card"></div>
+    <div id="focus-results"></div>
+  </div>
+</div>
+
+<div class="print-hint">📄 请在弹出的打印对话框中将「目标打印机」选择为 <b>另存为 PDF</b>，即可把本卷保存成 PDF 文件（答题解析已默认展开）。</div>
+
+<button class="theme-fab" id="theme-toggle" title="切换主题（深海/亮/暗 · localStorage maw-theme）">☀️</button>
+
+<!-- ==================== 题目注入点：替换 QUESTIONS 数组 ==================== -->
+<script id="quiz-data">
+const PAPER_META = {
+  "title": "耳鼻咽喉头颈外科学押题卷（100题）",
+  "sub": "期末押题卷 · 100题（第一部分75题·100分 + 第二部分25题·40分）· 出题源：耳鼻咽喉头颈外科学期末综合复习讲义"
+};
+const QUESTIONS = [
+  {
+    "qid": "EBH-A1-001",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "检查成人外耳道时，通常牵拉耳廓的方向是：",
+    "options": [
+      "向前上方",
+      "向后上方",
+      "向前下方",
+      "向后下方",
+      "垂直向上"
+    ],
+    "answer": "B",
+    "explanation": "成人外耳道全长约2.5～3.5cm，呈S形，检查时通常向后上方牵拉耳廓使外耳道变直，便于观察鼓膜。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-A1-002",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "听骨链由外向内依次为：",
+    "options": [
+      "锤骨、砧骨、镫骨",
+      "砧骨、锤骨、镫骨",
+      "锤骨、镫骨、砧骨",
+      "镫骨、砧骨、锤骨",
+      "砧骨、镫骨、锤骨"
+    ],
+    "answer": "A",
+    "explanation": "听骨链依次为锤骨、砧骨和镫骨，主要传递并增强声波振动，镫骨底板与内耳前庭窗相接。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-A1-003",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "感受角加速度的前庭终末器是：",
+    "options": [
+      "椭圆囊斑",
+      "球囊斑",
+      "半规管壶腹嵴",
+      "耳蜗基底膜",
+      "柯蒂器"
+    ],
+    "answer": "C",
+    "explanation": "三个半规管的壶腹嵴感受角加速度；椭圆囊斑、球囊斑感受直线加速度及重力相关的位置变化。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-A1-004",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "感受直线加速度及头部位置变化的前庭终末器是：",
+    "options": [
+      "半规管壶腹嵴",
+      "椭圆囊斑和球囊斑",
+      "柯蒂器",
+      "基底膜",
+      "咽鼓管"
+    ],
+    "answer": "B",
+    "explanation": "椭圆囊斑、球囊斑主要感受直线加速度及重力相关的位置变化；半规管壶腹嵴感受角加速度。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-A1-005",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "咽鼓管连接鼓室与鼻咽部，其主要功能是：",
+    "options": [
+      "调节鼓室压力并引流分泌物",
+      "感受头部角加速度",
+      "传导舌前2/3味觉",
+      "增强声波振动",
+      "封闭蜗窗"
+    ],
+    "answer": "A",
+    "explanation": "咽鼓管具有调节鼓室压力、引流分泌物及防止逆流等功能；感受角加速度为半规管功能，味觉由鼓索神经传导。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-A1-006",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "儿童较成人更易患中耳炎，其咽鼓管的解剖特点是：",
+    "options": [
+      "短、宽、位置较水平",
+      "长、窄、位置较垂直",
+      "短、窄、位置较垂直",
+      "长、宽、位置较水平",
+      "短、宽、位置较垂直"
+    ],
+    "answer": "A",
+    "explanation": "儿童咽鼓管较短、较宽且位置较水平，细菌或分泌物更易经咽鼓管进入中耳，故更易发生中耳炎。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-A1-007",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "耳蜗基底膜对高频声产生振动的主要部位是：",
+    "options": [
+      "靠近蜗顶的顶端部",
+      "靠近前庭窗的基底部",
+      "蜗管中部",
+      "球囊斑附近",
+      "半规管壶腹附近"
+    ],
+    "answer": "B",
+    "explanation": "基底膜具有频率定位功能：高频声主要使靠近前庭窗的基底部振动，低频声主要使靠近蜗顶的顶端部振动。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-A1-008",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "面神经是第几对脑神经？",
+    "options": [
+      "第Ⅴ对",
+      "第Ⅶ对",
+      "第Ⅷ对",
+      "第Ⅸ对",
+      "第Ⅹ对"
+    ],
+    "answer": "B",
+    "explanation": "面神经为第Ⅶ对脑神经，具有运动、味觉感觉及副交感功能，主要运动功能是支配面部表情肌。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-A1-009",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "传导舌前2/3味觉的面神经分支是：",
+    "options": [
+      "镫骨肌神经",
+      "鼓索神经",
+      "大岩神经",
+      "颞支",
+      "颊支"
+    ],
+    "answer": "B",
+    "explanation": "鼓索神经传导舌前2/3味觉，并携带副交感节前纤维参与下颌下腺和舌下腺分泌。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-A1-010",
+    "type": "A1",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "下列听力检查中属于客观检查的是：",
+    "options": [
+      "纯音测听",
+      "音叉试验",
+      "声导抗",
+      "耳语检查",
+      "言语测听"
+    ],
+    "answer": "C",
+    "explanation": "纯音测听属于主观听力测试；声导抗、耳声发射（OAE）和听性脑干反应（ABR）属于客观检查。",
+    "source": "讲义·一、总论与专科检查"
+  },
+  {
+    "qid": "EBH-A1-011",
+    "type": "A1",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "鼻出血最常见的出血部位是：",
+    "options": [
+      "鼻中隔前下部利特尔区",
+      "中鼻道",
+      "下鼻道后部",
+      "嗅裂",
+      "蝶筛隐窝"
+    ],
+    "answer": "A",
+    "explanation": "利特尔区位于鼻中隔前下部，血管丰富，是儿童、青少年及一般人群最常见的前鼻出血部位。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-A1-012",
+    "type": "A1",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "鼻泪管开口于鼻腔的哪个部位？",
+    "options": [
+      "上鼻道",
+      "中鼻道",
+      "下鼻道前部",
+      "蝶筛隐窝",
+      "鼻前庭"
+    ],
+    "answer": "C",
+    "explanation": "鼻泪管开口于下鼻道前部；额窦、上颌窦、前组筛窦主要开口于中鼻道。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-A1-013",
+    "type": "A1",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "蝶窦的自然开口位于：",
+    "options": [
+      "上鼻道",
+      "中鼻道",
+      "下鼻道",
+      "蝶筛隐窝",
+      "半月裂"
+    ],
+    "answer": "D",
+    "explanation": "蝶窦开口于蝶筛隐窝；后组筛窦开口于上鼻道。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-A1-014",
+    "type": "A1",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "后组筛窦的引流开口位于：",
+    "options": [
+      "上鼻道",
+      "中鼻道",
+      "下鼻道",
+      "蝶筛隐窝",
+      "鼻阈"
+    ],
+    "answer": "A",
+    "explanation": "后组筛窦主要开口于上鼻道，不属于中鼻道；中鼻道是前组鼻窦引流的重要区域。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-A1-015",
+    "type": "A1",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "额窦、上颌窦及前组筛窦主要开口于：",
+    "options": [
+      "上鼻道",
+      "中鼻道",
+      "下鼻道",
+      "蝶筛隐窝",
+      "嗅裂"
+    ],
+    "answer": "B",
+    "explanation": "额窦、上颌窦、前组筛窦主要开口于中鼻道；中鼻道是鼻窦引流的重要区域。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-A1-016",
+    "type": "A1",
+    "system": "咽科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "咽隐窝是下列哪种恶性肿瘤的好发部位？",
+    "options": [
+      "喉癌",
+      "鼻咽癌",
+      "扁桃体癌",
+      "下咽癌",
+      "食管癌"
+    ],
+    "answer": "B",
+    "explanation": "咽隐窝位于鼻咽，是鼻咽癌的好发部位之一；鼻咽癌好发于鼻咽顶后壁及咽隐窝。",
+    "source": "讲义·四、咽部疾病与睡眠呼吸障碍"
+  },
+  {
+    "qid": "EBH-A1-017",
+    "type": "A1",
+    "system": "喉科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "喉部唯一呈完整环形的软骨是：",
+    "options": [
+      "甲状软骨",
+      "环状软骨",
+      "会厌软骨",
+      "杓状软骨",
+      "舌骨"
+    ],
+    "answer": "B",
+    "explanation": "环状软骨位于甲状软骨下方，是喉部唯一呈完整环形的软骨，对维持气道通畅具有重要作用。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-A1-018",
+    "type": "A1",
+    "system": "喉科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "喉返神经支配的喉内肌范围是：",
+    "options": [
+      "仅环甲肌",
+      "环甲肌以外的绝大多数喉内肌",
+      "仅喉上神经支配区的肌肉",
+      "仅杓状软骨相关肌肉",
+      "全部喉内肌"
+    ],
+    "answer": "B",
+    "explanation": "喉返神经支配除环甲肌以外的绝大多数喉内肌，并负责声门下区及声门区的重要感觉传入；环甲肌由喉上神经外支支配。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-A1-019",
+    "type": "A1",
+    "system": "气道与食管",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "成人食管三个生理性狭窄距中切牙的距离约为：",
+    "options": [
+      "约15～16cm、25cm、40cm",
+      "约10cm、20cm、30cm",
+      "约15cm、30cm、45cm",
+      "约20cm、35cm、50cm",
+      "约12cm、22cm、32cm"
+    ],
+    "answer": "A",
+    "explanation": "成人食管三个生理性狭窄分别约距中切牙15～16cm、25cm和40cm，位于食管入口、主动脉弓及左主支气管相关区域、膈食管裂孔处。",
+    "source": "讲义·六、气管、支气管与食管异物"
+  },
+  {
+    "qid": "EBH-A1-020",
+    "type": "A1",
+    "system": "喉科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 一、单项选择题（A1型）·20题·每题1分",
+    "stem": "声带小结的典型发生部位是：",
+    "options": [
+      "双侧声带前、中1/3交界处",
+      "单侧声带后1/3",
+      "声门上区",
+      "声带后联合",
+      "室带"
+    ],
+    "answer": "A",
+    "explanation": "声带小结通常与长期用声过度或发声不当有关，典型位置为双侧声带前、中1/3交界处。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-A2-001",
+    "type": "A2",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患儿男，4岁。1周前患上呼吸道感染，近2日出现发热、右耳痛，查体见右鼓膜充血、膨隆、尚未穿孔。该患儿最可能的诊断是：",
+    "options": [
+      "分泌性中耳炎",
+      "急性化脓性中耳炎",
+      "慢性化脓性中耳炎",
+      "外耳道炎",
+      "中耳胆脂瘤"
+    ],
+    "answer": "B",
+    "explanation": "急性化脓性中耳炎多经咽鼓管途径感染，儿童因咽鼓管短、宽、较水平且免疫系统尚未成熟更易发生，典型为耳痛、发热、鼓膜充血膨隆，穿孔后可出现耳流脓。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-A2-002",
+    "type": "A2",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患者男，45岁。单侧耳闷、听力下降2个月，无耳痛。查体见鼓膜呈琥珀色、内陷，声导抗呈B型平坦曲线。下一步最应进行的是：",
+    "options": [
+      "立即行鼓膜置管",
+      "行鼻咽部检查以排除鼻咽病变",
+      "长期口服抗生素",
+      "单纯观察等待",
+      "行乳突根治术"
+    ],
+    "answer": "B",
+    "explanation": "成人单侧原因不明的分泌性中耳炎应进行鼻咽部检查，以排除鼻咽肿瘤等病变，再决定后续处理。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-A2-003",
+    "type": "A2",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患者女，52岁。反复发作旋转性眩晕，每次持续约30分钟至数小时，伴波动性听力下降、耳鸣及耳胀满感，间歇期症状缓解。最可能的诊断是：",
+    "options": [
+      "良性阵发性位置性眩晕",
+      "梅尼埃病",
+      "前庭神经炎",
+      "突发性聋",
+      "中枢性眩晕"
+    ],
+    "answer": "B",
+    "explanation": "梅尼埃病典型症状包括反复发作的旋转性眩晕、波动性听力下降、耳鸣及耳胀满感，眩晕通常持续20分钟至12小时，意识清醒。",
+    "source": "讲义·二、耳科学（六）眩晕与前庭疾病"
+  },
+  {
+    "qid": "EBH-A2-004",
+    "type": "A2",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患者女，60岁。起床翻身时突发短暂旋转性眩晕，持续约30秒，无耳鸣及听力下降，Dix-Hallpike试验诱发出短暂眩晕及特征性眼震。最可能的诊断是：",
+    "options": [
+      "梅尼埃病",
+      "良性阵发性位置性眩晕",
+      "前庭神经炎",
+      "迷路炎",
+      "椎基底动脉供血不足"
+    ],
+    "answer": "B",
+    "explanation": "BPPV由头位相对于重力方向改变诱发短暂旋转性眩晕，通常不超过1分钟，一般无耳鸣及持续性听力下降；后半规管BPPV常用Dix-Hallpike试验检查。",
+    "source": "讲义·二、耳科学（六）眩晕与前庭疾病"
+  },
+  {
+    "qid": "EBH-A2-005",
+    "type": "A2",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患者男，38岁。突发左侧面部表情肌无力，查体：左侧额纹消失、闭眼不全、鼻唇沟变浅、口角歪斜，四肢肌力正常。该患者的诊断是：",
+    "options": [
+      "中枢性面瘫",
+      "周围性面瘫",
+      "重症肌无力",
+      "三叉神经痛",
+      "面肌痉挛"
+    ],
+    "answer": "B",
+    "explanation": "周围性面瘫常表现为同侧额纹消失、闭眼不全、鼻唇沟变浅和口角歪斜；中枢性面瘫较常见对侧下半面部无力而额纹相对保留。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-A2-006",
+    "type": "A2",
+    "system": "鼻科学",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患者男，25岁。鼻前庭红肿疼痛，可见脓栓，自行挤压后出现眼睑肿胀、眼球突出、剧烈头痛及发热。应首先警惕的并发症是：",
+    "options": [
+      "眶内炎性水肿",
+      "海绵窦血栓性静脉炎",
+      "鼻中隔血肿",
+      "脑脊液鼻漏",
+      "上颌窦真菌球"
+    ],
+    "answer": "B",
+    "explanation": "鼻疖严禁挤压，因鼻部静脉与眼眶及海绵窦静脉系统存在交通；出现眼睑肿胀、剧烈头痛或明显全身症状时应警惕海绵窦血栓性静脉炎等严重并发症。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-A2-007",
+    "type": "A2",
+    "system": "鼻科学",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患者男，35岁。持续性鼻塞1年余，查体见下鼻甲肥厚、表面呈桑葚状，使用鼻用减充血剂后鼻甲收缩较差。最可能的诊断是：",
+    "options": [
+      "慢性单纯性鼻炎",
+      "慢性肥厚性鼻炎",
+      "变应性鼻炎",
+      "鼻中隔偏曲",
+      "萎缩性鼻炎"
+    ],
+    "answer": "B",
+    "explanation": "慢性肥厚性鼻炎多表现为持续性鼻塞，下鼻甲肥厚、表面呈结节状或桑葚状，使用减充血剂后收缩较差；慢性单纯性鼻炎鼻甲收缩良好。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-A2-008",
+    "type": "A2",
+    "system": "气道与食管",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患儿男，2岁。进食花生时突发剧烈呛咳、面色发绀，随后出现阵发性咳嗽及喘息，查体右肺呼吸音减弱，胸片未见明显异物影。该患儿最可能的诊断是：",
+    "options": [
+      "急性支气管炎",
+      "气管支气管异物",
+      "支气管哮喘",
+      "急性喉炎",
+      "肺炎"
+    ],
+    "answer": "B",
+    "explanation": "3岁以下婴幼儿为气管支气管异物高发人群，典型为进食时突发剧烈呛咳；右侧主支气管相对较短、较粗、走向较垂直，异物更易进入右侧；正常胸片不能完全排除气道异物。",
+    "source": "讲义·六、气管、支气管与食管异物"
+  },
+  {
+    "qid": "EBH-A2-009",
+    "type": "A2",
+    "system": "气道与食管",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患者男，50岁。误吞鱼刺后出现进行性胸骨后疼痛、发热及颈部皮下气肿，影像提示纵隔气体。最可能发生的是：",
+    "options": [
+      "急性咽炎",
+      "食管穿孔并纵隔感染",
+      "急性胃炎",
+      "气管异物",
+      "扁桃体周围脓肿"
+    ],
+    "answer": "B",
+    "explanation": "误吞尖锐异物后出现进行性胸骨后疼痛、发热、颈部皮下气肿或纵隔气体，应高度怀疑食管穿孔并发纵隔感染。",
+    "source": "讲义·六、气管、支气管与食管异物"
+  },
+  {
+    "qid": "EBH-A2-010",
+    "type": "A2",
+    "system": "喉科学",
+    "bloom": "应用",
+    "section": "第一部分 · 二、单项选择题（A2型·病例摘要）·10题·每题1分",
+    "stem": "患者男，30岁。突起剧烈咽痛、吞咽困难、流涎及高热，检查见会厌明显肿胀。最恰当的处理是：",
+    "options": [
+      "门诊口服抗生素观察",
+      "立即给予抗感染并优先评估、保障气道",
+      "仅给予止痛药",
+      "单纯雾化吸入观察",
+      "立即行扁桃体切除"
+    ],
+    "answer": "B",
+    "explanation": "急性会厌炎重症时可能迅速出现吸气性呼吸困难甚至窒息，疑似重症患者应优先评估和保障气道，避免在缺乏气道保障条件下强行刺激咽喉。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-A4-001",
+    "type": "A4",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例一】患者女，45岁。右耳反复流脓10余年，脓液有恶臭，渐进性听力下降，查体见右耳鼓膜松弛部穿孔，外耳道可见灰白色角化样物质。该患者最可能的诊断是：",
+    "options": [
+      "慢性单纯型化脓性中耳炎",
+      "中耳胆脂瘤",
+      "分泌性中耳炎",
+      "外耳道胆脂瘤",
+      "大疱性鼓膜炎"
+    ],
+    "answer": "B",
+    "explanation": "中耳胆脂瘤表现为反复耳流脓、恶臭分泌物、听力下降，鼓膜松弛部或边缘性穿孔是重要线索，并非恶性肿瘤。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-A4-002",
+    "type": "A4",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例一】患者女，45岁，右耳反复流脓伴恶臭，鼓膜松弛部穿孔。该患者最有价值的鼓膜体征是：",
+    "options": [
+      "鼓膜紧张部中央性穿孔",
+      "鼓膜松弛部或边缘性穿孔",
+      "鼓膜呈琥珀色内陷",
+      "鼓膜表面含液性大疱",
+      "鼓膜完整但活动度下降"
+    ],
+    "answer": "B",
+    "explanation": "鼓膜松弛部或边缘性穿孔是中耳胆脂瘤的重要线索；紧张部中央性穿孔多见于慢性单纯型化脓性中耳炎。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-A4-003",
+    "type": "A4",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例一】患者女，45岁，右耳反复流脓伴恶臭，考虑中耳胆脂瘤。术前评估病变范围、骨质破坏及听骨链情况，最重要的检查是：",
+    "options": [
+      "纯音测听",
+      "颞骨高分辨率CT",
+      "颈部彩色多普勒超声",
+      "鼻咽侧位X线",
+      "耳声发射"
+    ],
+    "answer": "B",
+    "explanation": "颞骨高分辨率CT是术前评估的重要检查，可观察上鼓室、鼓窦和乳突区的病变、骨质破坏、听骨链及面神经管等结构。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-A4-004",
+    "type": "A4",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例一】患者女，45岁，中耳胆脂瘤。若其出现同侧额纹消失、闭眼不全、口角歪斜，提示可能出现的并发症是：",
+    "options": [
+      "面神经管受侵或破坏",
+      "迷路瘘管",
+      "颅内感染",
+      "听骨链破坏",
+      "颈内动脉损伤"
+    ],
+    "answer": "A",
+    "explanation": "慢性胆脂瘤型中耳炎伴周围性面瘫时，应警惕面神经管受侵或破坏；面神经管受损可导致同侧额纹消失、闭眼不全、口角歪斜。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-A4-005",
+    "type": "A4",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例一】患者女，45岁，确诊中耳胆脂瘤。关于该病的治疗，正确的是：",
+    "options": [
+      "以手术清除病灶为核心",
+      "单纯长期滴耳即可根治",
+      "首选放射治疗",
+      "以静脉抗生素治愈为主",
+      "必须依赖病理确诊后方可开始治疗"
+    ],
+    "answer": "A",
+    "explanation": "中耳胆脂瘤治疗通常以手术清除病灶为核心，术式根据病变范围、听力状态和解剖条件个体化选择；临床诊断和术前范围评估不能只依赖病理。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-A4-006",
+    "type": "A4",
+    "system": "喉科学",
+    "bloom": "应用",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例二】患儿男，3岁。夜间突发犬吠样咳嗽、声音嘶哑及吸气性喉鸣，伴三凹征及烦躁不安，查体见明显吸气性呼吸困难及轻度发绀。按喉阻塞分度，该患儿属于：",
+    "options": [
+      "Ⅰ度",
+      "Ⅱ度",
+      "Ⅲ度",
+      "Ⅳ度",
+      "未达喉阻塞"
+    ],
+    "answer": "C",
+    "explanation": "喉阻塞Ⅲ度表现为明显吸气性呼吸困难、喉鸣、三凹征及缺氧体征，患者常烦躁不安；Ⅳ度为极度呼吸困难、严重发绀、意识障碍或濒死状态。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-A4-007",
+    "type": "A4",
+    "system": "喉科学",
+    "bloom": "理解",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例二】患儿男，3岁，出现喉阻塞。其喉阻塞进展迅速的解剖学基础是：",
+    "options": [
+      "儿童喉腔相对狭窄、黏膜下组织较疏松易水肿",
+      "儿童声带较短",
+      "儿童会厌软骨发育不良",
+      "儿童喉腔宽大",
+      "儿童气管柔软"
+    ],
+    "answer": "A",
+    "explanation": "儿童喉腔相对狭窄、黏膜下组织较疏松，发生炎症时容易水肿，因此小儿喉阻塞可能进展迅速。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-A4-008",
+    "type": "A4",
+    "system": "喉科学",
+    "bloom": "应用",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例二】患儿男，3岁，喉阻塞若进展至极度呼吸困难、严重发绀、意识障碍（Ⅳ度），其处理原则是：",
+    "options": [
+      "立即迅速评估气道并由有经验的团队建立可靠通气",
+      "继续药物保守观察",
+      "门诊随诊",
+      "单纯雾化吸入即可",
+      "仅口服糖皮质激素"
+    ],
+    "answer": "A",
+    "explanation": "Ⅲ度或Ⅳ度喉阻塞应迅速评估气道并由具备经验的团队建立可靠通气，不能仅采用药物保守观察。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-A4-009",
+    "type": "A4",
+    "system": "喉科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例二】患儿男，3岁，经评估需行常规气管切开。常规选择的部位是：",
+    "options": [
+      "第1～2气管软骨环",
+      "第2～4气管软骨环附近",
+      "第5～6气管软骨环",
+      "环甲膜",
+      "第7气管软骨环"
+    ],
+    "answer": "B",
+    "explanation": "常规气管切开通常选择第2～4气管软骨环附近，具体位置应结合解剖条件判断；紧急环甲膜切开为濒临窒息时的救命操作。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-A4-010",
+    "type": "A4",
+    "system": "喉科学",
+    "bloom": "理解",
+    "section": "第一部分 · 三、单项选择题（A3/A4型·病例串）·10题·每题1分",
+    "stem": "【病例二】患儿男，3岁，行气管切开术后。术后护理的重点是：",
+    "options": [
+      "加强气道湿化并维持套管通畅",
+      "限制每日饮水量",
+      "长期使用镇静药物",
+      "每日更换金属套管",
+      "鼓励剧烈咳嗽排痰"
+    ],
+    "answer": "A",
+    "explanation": "气管切开后呼吸道绕过鼻腔，加温、加湿及过滤作用减弱，分泌物易脱水结痂堵塞套管，术后重点是保持气道湿化、及时清除分泌物、维持套管通畅。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-TF-001",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "纯音测听属于客观听力检查。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。纯音测听属于主观听力测试；声导抗、耳声发射（OAE）和听性脑干反应（ABR）属于客观检查。",
+    "source": "讲义·一、总论与专科检查"
+  },
+  {
+    "qid": "EBH-TF-002",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "耵聍腺主要分布于外耳道骨部。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。耵聍腺主要分布于外耳道软骨部，可与皮脂及脱落上皮共同形成耵聍。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-TF-003",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "正常情况下，气导听阈通常优于骨导。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确。空气传导是正常听觉的主要途径，正常情况下气导听阈优于骨导；骨导大于气导（气骨导差）提示传导性聋。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-TF-004",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "韦伯试验中，单侧传导性聋通常偏向健耳。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。韦伯试验中单侧传导性聋偏向患耳，单侧感音神经性聋偏向健耳，口诀为“传导性聋偏患侧，感音神经性聋偏健侧”。",
+    "source": "讲义·二、耳科学（三）听力检查与耳聋分类"
+  },
+  {
+    "qid": "EBH-TF-005",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "儿童咽鼓管较短、较宽且位置较水平，故更易发生中耳炎。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确。儿童咽鼓管较短、较宽且位置较水平，故更易发生中耳炎。",
+    "source": "讲义·二、耳科学（一）耳的解剖与声音传导"
+  },
+  {
+    "qid": "EBH-TF-006",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "中耳胆脂瘤属于恶性肿瘤。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。中耳胆脂瘤不是恶性肿瘤，而是角化上皮及脱落角化物在中耳或乳突内异常积聚，具有局部侵蚀骨质的能力。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-TF-007",
+    "type": "判断",
+    "system": "鼻科学",
+    "bloom": "理解",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "鼻疖可挤压以促进脓液排出。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。鼻部静脉与眼眶及海绵窦静脉系统存在交通，挤压病灶可能促使感染扩散，因此严禁挤压。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-TF-008",
+    "type": "判断",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "蝶窦自然开口位于中鼻道。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。蝶窦开口于蝶筛隐窝；后组筛窦开口于上鼻道，中鼻道为额窦、上颌窦及前组筛窦引流区。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-TF-009",
+    "type": "判断",
+    "system": "喉科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "环状软骨是喉部唯一呈完整环形的软骨。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确。环状软骨位于甲状软骨下方，是喉部唯一呈完整环形的软骨，对维持气道通畅具有重要作用。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-TF-010",
+    "type": "判断",
+    "system": "喉科学",
+    "bloom": "理解",
+    "section": "第一部分 · 四、判断题·10题·每题1分",
+    "stem": "气管切开术后应加强气道湿化，以防分泌物结痂堵塞套管。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确。气管切开后呼吸道绕过鼻腔，分泌物容易脱水、结痂并堵塞套管，术后重点是保持气道湿化、维持套管通畅。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-X-001",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "分析",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "关于分泌性中耳炎，下列叙述正确的有：",
+    "options": [
+      "核心病理为咽鼓管功能障碍、中耳负压及鼓室积液",
+      "鼓膜可呈琥珀色、内陷或见液平面、气泡",
+      "声导抗可呈B型平坦曲线",
+      "成人单侧原因不明者应进行鼻咽部检查",
+      "所有鼓室积液患者均应行鼓膜置管"
+    ],
+    "answer": "ABCD",
+    "explanation": "分泌性中耳炎核心病理为咽鼓管功能障碍、中耳负压及鼓室积液；置管需结合年龄、听力、病程及风险因素决定，不能将所有积液都直接置管，故E错误。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-X-002",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "分析",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "面神经在颞骨面神经管内发出的分支包括：",
+    "options": [
+      "镫骨肌神经",
+      "鼓索神经",
+      "大岩神经",
+      "颞支",
+      "下颌缘支"
+    ],
+    "answer": "ABC",
+    "explanation": "面神经在面神经管内发出镫骨肌神经、鼓索神经和大岩神经；颞支、颧支、颊支、下颌缘支和颈支为出茎乳孔后于腮腺内分出的终末支。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-X-003",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "构成鼻中隔的主要结构包括：",
+    "options": [
+      "鼻中隔软骨",
+      "筛骨垂直板",
+      "犁骨",
+      "上颌骨额突",
+      "蝶骨体"
+    ],
+    "answer": "ABC",
+    "explanation": "鼻中隔主要由鼻中隔软骨、筛骨垂直板和犁骨构成；上颌骨额突参与围成梨状孔，蝶骨体参与围成后鼻孔。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-X-004",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "下列鼻窦中，自然开口于中鼻道的有：",
+    "options": [
+      "额窦",
+      "上颌窦",
+      "前组筛窦",
+      "后组筛窦",
+      "蝶窦"
+    ],
+    "answer": "ABC",
+    "explanation": "额窦、上颌窦及前组筛窦主要开口于中鼻道；后组筛窦开口于上鼻道，蝶窦开口于蝶筛隐窝。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-X-005",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "急性细菌性鼻窦炎常见的病原菌包括：",
+    "options": [
+      "肺炎链球菌",
+      "流感嗜血杆菌",
+      "卡他莫拉菌",
+      "铜绿假单胞菌",
+      "白喉棒状杆菌"
+    ],
+    "answer": "ABC",
+    "explanation": "急性细菌性鼻窦炎常见病原包括肺炎链球菌、流感嗜血杆菌及卡他莫拉菌。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-X-006",
+    "type": "X",
+    "system": "咽科学",
+    "bloom": "分析",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "关于鼻咽癌，下列叙述正确的有：",
+    "options": [
+      "好发于鼻咽顶后壁及咽隐窝",
+      "与EB病毒感染密切相关",
+      "可出现清晨回吸性血涕",
+      "确诊依靠鼻咽部活组织病理检查",
+      "EB病毒检测可替代病理确诊"
+    ],
+    "answer": "ABCD",
+    "explanation": "鼻咽癌好发于鼻咽顶后壁及咽隐窝，与EB病毒感染密切相关，典型表现为回吸性血涕等；EB病毒相关检测是辅助信息，不能替代病理确诊，故E错误。",
+    "source": "讲义·四、咽部疾病与睡眠呼吸障碍"
+  },
+  {
+    "qid": "EBH-X-007",
+    "type": "X",
+    "system": "喉科学",
+    "bloom": "理解",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "喉阻塞的典型临床表现包括：",
+    "options": [
+      "吸气性呼吸困难",
+      "喉鸣",
+      "三凹征",
+      "发绀",
+      "以呼气性呼吸困难为主"
+    ],
+    "answer": "ABCD",
+    "explanation": "喉阻塞典型表现为吸气性呼吸困难、喉鸣、三凹征、烦躁不安及发绀；其呼吸困难以吸气性为主，故E错误。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-X-008",
+    "type": "X",
+    "system": "气道与食管",
+    "bloom": "分析",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "关于气管支气管异物，下列叙述正确的有：",
+    "options": [
+      "好发于3岁以下婴幼儿",
+      "右侧主支气管因较短、较粗、走向较垂直而易嵌顿",
+      "不完全性阻塞可形成单向活瓣导致局限性肺气肿",
+      "正常胸片不能完全排除气道异物",
+      "可通过让患儿进食饭团将异物推入胃内"
+    ],
+    "answer": "ABCD",
+    "explanation": "气管支气管异物好发于3岁以下婴幼儿，右侧主支气管解剖特点使异物易入右侧；不完全阻塞形成单向活瓣致局限性肺气肿；胸片正常不能排除异物。经口喂食饭团等强行处理是错误且危险的，故E错误。",
+    "source": "讲义·六、气管、支气管与食管异物"
+  },
+  {
+    "qid": "EBH-X-009",
+    "type": "X",
+    "system": "头颈外科",
+    "bloom": "记忆",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "关于颈部淋巴结Robbins分区，下列叙述正确的有：",
+    "options": [
+      "Ⅰ区包括颏下区和下颌下区",
+      "Ⅱ区为颈内静脉上组",
+      "Ⅵ区为颈前中央区，包括喉前、气管前和气管旁淋巴结",
+      "咽后淋巴结属于Ⅵ区",
+      "Ⅴ区位于颈后三角"
+    ],
+    "answer": "ABCE",
+    "explanation": "Ⅰ区为颏下区和下颌下区，Ⅱ～Ⅳ区为颈内静脉上、中、下组，Ⅴ区位于颈后三角，Ⅵ区为颈前中央区（喉前、气管前和气管旁淋巴结）。咽后淋巴结不属于Ⅵ区，故D错误。",
+    "source": "讲义·七、头颈外科学与颈部肿块"
+  },
+  {
+    "qid": "EBH-X-010",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "记忆",
+    "section": "第一部分 · 五、多项选择题（X型）·10题·每题2分",
+    "stem": "利特尔区的动脉分支包括：",
+    "options": [
+      "鼻腭动脉",
+      "筛前动脉",
+      "上唇动脉",
+      "腭大动脉",
+      "眼动脉主干"
+    ],
+    "answer": "ABCD",
+    "explanation": "利特尔区由鼻腭动脉、筛前动脉、上唇动脉及腭大动脉等分支在黏膜下吻合形成血管丛；眼动脉主干不直接参与该血管丛构成。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-CA-001",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例一】患者女，45岁。右耳反复流脓10余年，近1周出现右侧面部表情肌无力、额纹消失、闭眼不全。结合病史，该患者最可能考虑的诊断是：",
+    "options": [
+      "慢性化脓性中耳炎伴面神经受侵",
+      "急性化脓性中耳炎",
+      "分泌性中耳炎",
+      "外耳道炎",
+      "梅尼埃病"
+    ],
+    "answer": "A",
+    "explanation": "慢性胆脂瘤型中耳炎伴周围性面瘫时，应警惕面神经管受侵或破坏，属于需尽快评估和处理的并发症。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-CA-002",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例一】患者女，45岁，右耳反复流脓，出现右侧额纹消失、闭眼不全、口角歪斜。该面瘫的类型是：",
+    "options": [
+      "周围性面瘫",
+      "中枢性面瘫",
+      "核性面瘫",
+      "肌源性面瘫",
+      "功能性面瘫"
+    ],
+    "answer": "A",
+    "explanation": "周围性面瘫常表现为同侧额纹消失、闭眼不全、鼻唇沟变浅和口角歪斜；中枢性面瘫较常见对侧下半面部无力而额纹相对保留。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-CA-003",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例一】患者女，45岁，慢性化脓性中耳炎并周围性面瘫。为进一步评估病变范围及面神经管情况，最有价值的检查是：",
+    "options": [
+      "颞骨高分辨率CT",
+      "颈部彩色多普勒超声",
+      "鼻咽镜",
+      "纯音测听",
+      "胸部X线片"
+    ],
+    "answer": "A",
+    "explanation": "颞骨高分辨率CT可观察上鼓室、鼓窦和乳突区病变、骨质破坏、听骨链及面神经管等结构，是术前评估的重要检查。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-CA-004",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "分析",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例一】患者女，45岁，慢性化脓性中耳炎并周围性面瘫。关于该患者面神经损伤表现的叙述，正确的有：",
+    "options": [
+      "可出现同侧额纹消失",
+      "可出现闭眼不全",
+      "可出现口角歪斜",
+      "可出现听觉过敏",
+      "可出现对侧下半面部无力而额纹保留"
+    ],
+    "answer": "ABCD",
+    "explanation": "面神经损伤可引起面部表情肌无力、味觉异常、听觉过敏或泪液、唾液分泌变化，具体表现取决于损伤部位。对侧下半面部无力而额纹保留为中枢性面瘫的表现，故E错误。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-CA-005",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例一】患者女，45岁，慢性化脓性中耳炎并周围性面瘫。该患者的处理原则是：",
+    "options": [
+      "尽快评估并处理面神经管受侵等并发症",
+      "仅局部滴耳观察即可",
+      "长期随诊无需处理",
+      "首选放射治疗",
+      "口服抗生素即可治愈骨破坏"
+    ],
+    "answer": "A",
+    "explanation": "慢性胆脂瘤型中耳炎伴面神经管受侵或破坏属于需尽快评估和处理的并发症，通常以手术清除病灶为核心。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-CA-006",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "应用",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例二】患者男，25岁。鼻前庭红肿疼痛，有脓栓，自行挤压后出现眼睑肿胀、眼球突出、剧烈头痛及高热。该患者最初的原发病最可能是：",
+    "options": [
+      "鼻疖",
+      "变应性鼻炎",
+      "鼻中隔血肿",
+      "急性鼻窦炎",
+      "鼻出血"
+    ],
+    "answer": "A",
+    "explanation": "鼻疖为鼻前庭毛囊及相关皮脂腺结构的局限性化脓性炎症，最常见致病菌为金黄色葡萄球菌，可出现脓栓。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-CA-007",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "应用",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例二】患者男，25岁，挤压鼻疖后出现眼睑肿胀、眼球突出及剧烈头痛。应高度警惕的严重并发症是：",
+    "options": [
+      "海绵窦血栓性静脉炎",
+      "单纯眶内炎性水肿",
+      "鼻中隔偏曲",
+      "脑脊液鼻漏",
+      "蝶窦真菌球"
+    ],
+    "answer": "A",
+    "explanation": "出现眼睑肿胀、眼球运动异常、剧烈头痛或明显全身症状时，应警惕海绵窦血栓性静脉炎等严重并发症。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-CA-008",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "理解",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例二】患者男，25岁，鼻疖挤压后出现眼睑肿胀、头痛。其感染易向眼眶及颅内扩散的解剖学基础是：",
+    "options": [
+      "鼻部静脉与眼眶及海绵窦静脉系统存在交通",
+      "鼻腔与中耳相通",
+      "鼻窦与气管直接相通",
+      "鼻腔淋巴仅引流至颈部",
+      "鼻部感觉神经来自迷走神经"
+    ],
+    "answer": "A",
+    "explanation": "鼻腔上部静脉可经眼静脉等通路与海绵窦相通，因此鼻部严重感染存在向眼眶及颅内扩散的风险。",
+    "source": "讲义·三、鼻科学（一）鼻腔解剖与生理"
+  },
+  {
+    "qid": "EBH-CA-009",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "分析",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例二】患者男，25岁，鼻疖。关于鼻疖的处理，下列叙述正确的有：",
+    "options": [
+      "最常见致病菌为金黄色葡萄球菌",
+      "严禁挤压病灶",
+      "出现眼睑肿胀或眼球活动异常时应警惕严重并发症",
+      "可自行挤压以促进排脓",
+      "早期应积极手术切开引流"
+    ],
+    "answer": "ABC",
+    "explanation": "鼻疖最常见致病菌为金黄色葡萄球菌，严禁挤压；出现眼睑肿胀、眼球运动异常或剧烈头痛应警惕海绵窦血栓性静脉炎。自行挤压是明确禁忌，故D错误。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-CA-010",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "应用",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例二】患者男，25岁，鼻疖后病情加重。若其出现视力下降、眼球活动受限，提示可能合并：",
+    "options": [
+      "鼻源性眶内并发症",
+      "单纯变应性鼻炎",
+      "慢性咽炎",
+      "分泌性中耳炎",
+      "喉阻塞"
+    ],
+    "answer": "A",
+    "explanation": "鼻窦与眼眶关系密切，眼睑红肿、眼球突出、眼球活动受限、视力下降提示可能存在眶内并发症，视力下降和眼球活动障碍属于重要危险信号。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-CA-011",
+    "type": "X",
+    "system": "头颈外科",
+    "bloom": "应用",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例三】患者男，58岁。吸烟饮酒30年，发现左侧颈部无痛性肿块3个月，质硬、固定、进行性增大。最优先考虑排查的是：",
+    "options": [
+      "头颈部恶性肿瘤及其淋巴结转移",
+      "单纯淋巴结炎",
+      "甲状舌管囊肿",
+      "第二鳃裂囊肿",
+      "颈动脉体瘤"
+    ],
+    "answer": "A",
+    "explanation": "成人出现持续性、质硬、固定或进行性增大的颈部肿块，尤其伴吸烟饮酒史时，应优先排查恶性肿瘤。",
+    "source": "讲义·七、头颈外科学与颈部肿块"
+  },
+  {
+    "qid": "EBH-CA-012",
+    "type": "X",
+    "system": "头颈外科",
+    "bloom": "应用",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例三】患者男，58岁，左侧颈部性质不明、怀疑恶性的肿块。其初步病理取材的常用方式是：",
+    "options": [
+      "细针穿刺抽吸活检（FNAB）",
+      "直接开放性切除活检",
+      "不做取材仅观察",
+      "自行热敷促进消退",
+      "单纯超声随访"
+    ],
+    "answer": "A",
+    "explanation": "对性质不明且怀疑恶性的成人颈部肿块，细针穿刺抽吸活检（FNAB）通常是重要的初步病理取材方式，不宜常规直接进行开放性切除活检。",
+    "source": "讲义·七、头颈外科学与颈部肿块"
+  },
+  {
+    "qid": "EBH-CA-013",
+    "type": "X",
+    "system": "头颈外科",
+    "bloom": "理解",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例三】患者男，58岁，左侧颈部肿块若为鼻咽癌颈部转移，最常累及的淋巴结区域是：",
+    "options": [
+      "颈二腹肌淋巴结（角淋巴结）",
+      "Virchow淋巴结",
+      "锁骨上淋巴结",
+      "颏下淋巴结",
+      "耳后淋巴结"
+    ],
+    "answer": "A",
+    "explanation": "颈二腹肌淋巴结（角淋巴结）位于二腹肌后腹附近，鼻咽癌及口咽部肿瘤可转移至此。",
+    "source": "讲义·七、头颈外科学与颈部肿块"
+  },
+  {
+    "qid": "EBH-CA-014",
+    "type": "X",
+    "system": "头颈外科",
+    "bloom": "分析",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例三】患者男，58岁，左侧颈部肿块。关于颈部肿块的评估，下列叙述正确的有：",
+    "options": [
+      "颈部彩色多普勒超声可评估肿块大小、囊实性、边界和血流",
+      "成人持续性、质硬、固定的颈部肿块应优先排查恶性",
+      "怀疑颈动脉体瘤时应谨慎穿刺以避免严重出血",
+      "FNAB常用于性质不明肿块的初步病理取材",
+      "怀疑颈动脉体瘤时可直接穿刺活检确诊"
+    ],
+    "answer": "ABCD",
+    "explanation": "颈部彩色多普勒超声可初步评估肿块特征并可辅助超声引导下穿刺；成人持续硬质肿块优先排查恶性；怀疑颈动脉体瘤等血管性肿块时必须先行影像学评估，不应盲目穿刺，故E错误。",
+    "source": "讲义·七、头颈外科学与颈部肿块"
+  },
+  {
+    "qid": "EBH-CA-015",
+    "type": "X",
+    "system": "头颈外科",
+    "bloom": "理解",
+    "section": "第一部分 · 六、案例分析题（不定项选择）·3案例×5小题·每题2分",
+    "stem": "【案例三】患者男，58岁，若检查发现左侧锁骨上淋巴结肿大（Virchow淋巴结）。其经典临床意义是：",
+    "options": [
+      "可能提示胃肠道等胸腹部恶性肿瘤转移",
+      "提示急性扁桃体炎",
+      "提示鼻出血",
+      "提示分泌性中耳炎",
+      "提示喉阻塞"
+    ],
+    "answer": "A",
+    "explanation": "Virchow淋巴结经典上指左侧锁骨上淋巴结，位于胸导管汇入左静脉角附近的淋巴引流区域，其肿大可能提示胃肠道等胸腹部恶性肿瘤转移。",
+    "source": "讲义·七、头颈外科学与颈部肿块"
+  },
+  {
+    "qid": "EBH-TF2-001",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "成年人一次急性中耳炎病程达到某个时长，即可机械地判定为慢性化脓性中耳炎。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。教材常以持续流脓超过数周至6～8周作为慢性化脓性中耳炎的临床描述之一，但不能仅因一次急性中耳炎病程达到某个时长就机械判断，需结合持续或反复耳流脓、鼓膜穿孔及中耳状态。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-TF2-002",
+    "type": "判断",
+    "system": "气道与食管",
+    "bloom": "理解",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "儿童疑似气管支气管异物时，胸片正常即可完全排除异物。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。许多有机异物本身不显影，正常胸片不能完全排除气道异物，高度怀疑时应由专科团队进一步评估。",
+    "source": "讲义·六、气管、支气管与食管异物"
+  },
+  {
+    "qid": "EBH-TF2-003",
+    "type": "判断",
+    "system": "气道与食管",
+    "bloom": "理解",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "误吞尖锐异物后可吞咽饭团、馒头或饮醋以帮助异物排出。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。严禁通过吞咽饭团、馒头或饮醋等方式强行处理异物，以免加重损伤。",
+    "source": "讲义·六、气管、支气管与食管异物"
+  },
+  {
+    "qid": "EBH-TF2-004",
+    "type": "判断",
+    "system": "喉科学",
+    "bloom": "记忆",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "声带小结常位于双侧声带前、中1/3交界处。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确。声带小结通常与长期用声过度或发声不当有关，典型位置为双侧声带前、中1/3交界处。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-TF2-005",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "韦伯试验中，单侧感音神经性聋偏向健耳。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确。韦伯试验中，单侧传导性聋偏向患耳，单侧感音神经性聋偏向健耳。",
+    "source": "讲义·二、耳科学（三）听力检查与耳聋分类"
+  },
+  {
+    "qid": "EBH-TF2-006",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "林纳试验阴性典型提示传导性聋。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确。林纳试验气导大于骨导为阳性；骨导大于或等于气导为阴性，典型提示传导性聋。",
+    "source": "讲义·二、耳科学（三）听力检查与耳聋分类"
+  },
+  {
+    "qid": "EBH-TF2-007",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "成人单侧原因不明的分泌性中耳炎应进行鼻咽部检查，以排除鼻咽肿瘤等病变。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确。成人单侧原因不明的分泌性中耳炎应进行鼻咽部检查，以排除鼻咽肿瘤等病变。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-TF2-008",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "大岩神经直接支配泪腺。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。大岩神经携带副交感节前纤维，经翼腭神经节及相关通路参与泪腺和鼻腭腺体分泌调节，不宜简单表述为大岩神经直接支配泪腺。",
+    "source": "讲义·二、耳科学（二）面神经解剖与临床意义"
+  },
+  {
+    "qid": "EBH-TF2-009",
+    "type": "判断",
+    "system": "耳科学",
+    "bloom": "理解",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "外耳道异物中，电池等具有腐蚀性的异物应紧急取出。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "A",
+    "explanation": "正确。电池等具有腐蚀性的异物应紧急取出；遇水膨胀的植物性异物或鼓膜情况不明时不宜随意冲洗。",
+    "source": "讲义·二、耳科学（四）外耳疾病"
+  },
+  {
+    "qid": "EBH-TF2-010",
+    "type": "判断",
+    "system": "鼻科学",
+    "bloom": "理解",
+    "section": "第二部分 · 七、判断题（进阶）·10题·每题1分",
+    "stem": "鼻中隔血肿一般可自行吸收，无需专科处理。",
+    "options": [
+      "正确",
+      "错误"
+    ],
+    "answer": "B",
+    "explanation": "错误。外伤后鼻中隔出现暗红色膨隆、触之有波动感，应考虑鼻中隔血肿，需及时由专科医师处理，通常需引流，以防软骨缺血坏死、感染及鞍鼻畸形。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-CA2-001",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第二部分 · 八、案例分析题（进阶·不定项）·1案例×5小题·每题2分",
+    "stem": "【案例四】患者女，50岁。反复发作性旋转性眩晕1年，每次持续数小时，伴波动性听力下降、耳鸣及耳胀满感，发作间歇期基本正常。该患者最可能的诊断是：",
+    "options": [
+      "梅尼埃病",
+      "良性阵发性位置性眩晕",
+      "前庭神经炎",
+      "突发性聋",
+      "中枢性眩晕"
+    ],
+    "answer": "A",
+    "explanation": "梅尼埃病典型症状包括反复发作的旋转性眩晕、波动性听力下降、耳鸣及耳胀满感，眩晕通常持续20分钟至12小时，意识清醒。",
+    "source": "讲义·二、耳科学（六）眩晕与前庭疾病"
+  },
+  {
+    "qid": "EBH-CA2-002",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第二部分 · 八、案例分析题（进阶·不定项）·1案例×5小题·每题2分",
+    "stem": "【案例四】患者女，50岁，考虑梅尼埃病。该病典型的病理改变是：",
+    "options": [
+      "膜迷路积水",
+      "耳石进入半规管",
+      "前庭神经炎症",
+      "螺旋器毛细胞变性",
+      "内耳血管闭塞"
+    ],
+    "answer": "A",
+    "explanation": "梅尼埃病典型病理改变是膜迷路积水；耳石进入半规管见于BPPV，前庭神经炎症见于前庭神经炎。",
+    "source": "讲义·二、耳科学（六）眩晕与前庭疾病"
+  },
+  {
+    "qid": "EBH-CA2-003",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "记忆",
+    "section": "第二部分 · 八、案例分析题（进阶·不定项）·1案例×5小题·每题2分",
+    "stem": "【案例四】患者女，50岁，梅尼埃病。其眩晕发作的典型持续时间是：",
+    "options": [
+      "数秒至1分钟",
+      "20分钟至12小时",
+      "持续数天不缓解",
+      "持续数周",
+      "仅瞬间发作"
+    ],
+    "answer": "B",
+    "explanation": "梅尼埃病眩晕通常持续20分钟至12小时；BPPV通常不超过1分钟；前庭神经炎症状可持续数天。",
+    "source": "讲义·二、耳科学（六）眩晕与前庭疾病"
+  },
+  {
+    "qid": "EBH-CA2-004",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "分析",
+    "section": "第二部分 · 八、案例分析题（进阶·不定项）·1案例×5小题·每题2分",
+    "stem": "【案例四】患者女，50岁，梅尼埃病。关于其与前庭神经炎的鉴别，下列叙述正确的有：",
+    "options": [
+      "梅尼埃病常伴波动性听力下降",
+      "前庭神经炎通常无急性听力下降",
+      "两者均可有恶心、呕吐及步态不稳",
+      "前庭神经炎症状常持续数天",
+      "梅尼埃病眩晕通常不超过1分钟"
+    ],
+    "answer": "ABCD",
+    "explanation": "梅尼埃病常伴波动性听力下降；前庭神经炎通常无急性听力下降、症状可持续数天；两者均属周围性眩晕，可有恶心、呕吐及步态不稳。眩晕不超过1分钟为BPPV特征，故E错误。",
+    "source": "讲义·二、耳科学（六）眩晕与前庭疾病"
+  },
+  {
+    "qid": "EBH-CA2-005",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "应用",
+    "section": "第二部分 · 八、案例分析题（进阶·不定项）·1案例×5小题·每题2分",
+    "stem": "【案例四】患者女，50岁，梅尼埃病急性发作期。下列处理正确的有：",
+    "options": [
+      "可短期使用前庭抑制剂和止吐药",
+      "长期治疗需根据病情采取个体化措施并调整生活方式",
+      "应长期不间断使用前庭抑制剂",
+      "首选鼓膜置管",
+      "应立即行乳突根治术"
+    ],
+    "answer": "AB",
+    "explanation": "梅尼埃病急性发作期可短期使用前庭抑制剂和止吐药，长期治疗需根据病情采取生活方式调整、药物治疗及其他个体化措施。长期不间断使用前庭抑制剂及乳突根治术均不恰当，故C、D、E错误。",
+    "source": "讲义·二、耳科学（六）眩晕与前庭疾病"
+  },
+  {
+    "qid": "EBH-X2-001",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "分析",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于外耳道炎，下列叙述正确的有：",
+    "options": [
+      "常与进水、局部皮肤损伤、频繁挖耳有关",
+      "常见细菌包括铜绿假单胞菌和金黄色葡萄球菌",
+      "牵拉耳廓或按压耳屏时疼痛明显",
+      "鼓膜穿孔时可用耳毒性滴耳剂治疗",
+      "应保持耳道干燥并清理分泌物"
+    ],
+    "answer": "ABCE",
+    "explanation": "外耳道炎常与进水、局部皮肤损伤、频繁挖耳、助听器或耳塞使用有关，常见细菌包括铜绿假单胞菌和金黄色葡萄球菌，牵拉耳廓或按压耳屏时疼痛明显。鼓膜穿孔或无法确认鼓膜完整性时应避免耳毒性滴耳制剂，故D错误。",
+    "source": "讲义·二、耳科学（四）外耳疾病"
+  },
+  {
+    "qid": "EBH-X2-002",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "分析",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于中耳胆脂瘤，下列叙述正确的有：",
+    "options": [
+      "不是恶性肿瘤",
+      "为角化上皮及脱落角化物在中耳或乳突内异常积聚",
+      "具有局部侵蚀骨质的能力",
+      "鼓膜松弛部或边缘性穿孔是重要线索",
+      "术前病变范围评估只能依赖病理检查"
+    ],
+    "answer": "ABCD",
+    "explanation": "中耳胆脂瘤不是恶性肿瘤，为角化上皮及脱落角化物异常积聚，具有局部侵蚀骨质能力；病理可提供组织学证据，但临床诊断和术前范围评估不能只依赖病理，故E错误。",
+    "source": "讲义·二、耳科学（五）中耳炎性疾病"
+  },
+  {
+    "qid": "EBH-X2-003",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "分析",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于良性阵发性位置性眩晕（BPPV），下列叙述正确的有：",
+    "options": [
+      "由头位相对于重力方向改变时诱发",
+      "发作通常不超过1分钟",
+      "后半规管BPPV最常见",
+      "常伴持续听力下降及耳鸣",
+      "治疗首选针对受累半规管的耳石复位手法"
+    ],
+    "answer": "ABCE",
+    "explanation": "BPPV由头位相对于重力方向改变诱发短暂旋转性眩晕，通常不超过1分钟，后半规管最常见，治疗首选耳石复位手法；通常无耳鸣、耳闷及持续性听力下降，故D错误。",
+    "source": "讲义·二、耳科学（六）眩晕与前庭疾病"
+  },
+  {
+    "qid": "EBH-X2-004",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "分析",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于梅尼埃病，下列叙述正确的有：",
+    "options": [
+      "典型病理改变是膜迷路积水",
+      "典型症状包括旋转性眩晕、波动性听力下降、耳鸣及耳胀满感",
+      "眩晕通常持续20分钟至12小时",
+      "发作时意识丧失",
+      "甘油试验等脱水试验不能替代临床诊断标准"
+    ],
+    "answer": "ABCE",
+    "explanation": "梅尼埃病典型病理改变是膜迷路积水，典型症状包括旋转性眩晕、波动性听力下降、耳鸣及耳胀满感，眩晕通常持续20分钟至12小时，患者意识清醒；甘油试验等属传统辅助检查，不能替代临床诊断标准，故D错误。",
+    "source": "讲义·二、耳科学（六）眩晕与前庭疾病"
+  },
+  {
+    "qid": "EBH-X2-005",
+    "type": "X",
+    "system": "鼻科学",
+    "bloom": "分析",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于变应性鼻炎，下列叙述正确的有：",
+    "options": [
+      "常与IgE介导的Ⅰ型超敏反应有关",
+      "典型表现为阵发性喷嚏、鼻痒、清水样鼻涕及鼻塞",
+      "鼻甲黏膜可呈苍白或水肿",
+      "常与哮喘共存",
+      "首选长期全身抗生素治疗"
+    ],
+    "answer": "ABCD",
+    "explanation": "变应性鼻炎常与IgE介导的Ⅰ型超敏反应有关，典型表现为阵发性喷嚏、鼻痒、清水样鼻涕及鼻塞，鼻甲黏膜可呈苍白或水肿，常与哮喘共存；治疗包括避免过敏原、鼻用糖皮质激素及第二代抗组胺药等，非长期全身抗生素，故E错误。",
+    "source": "讲义·三、鼻科学（二）鼻部常见疾病"
+  },
+  {
+    "qid": "EBH-X2-006",
+    "type": "X",
+    "system": "咽科学",
+    "bloom": "分析",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于急性扁桃体炎及其并发症，下列叙述正确的有：",
+    "options": [
+      "常表现为咽痛、吞咽痛、发热和扁桃体充血肿大",
+      "乙型溶血性链球菌是传统教材强调的重要致病菌之一",
+      "扁桃体周围脓肿可表现为张口受限及“口含汤圆音”",
+      "扁桃体周围脓肿时悬雍垂偏向患侧",
+      "扁桃体切除术后应重点观察原发性和继发性出血"
+    ],
+    "answer": "ABCE",
+    "explanation": "急性扁桃体炎常表现为咽痛、吞咽痛、发热和扁桃体充血肿大，乙型溶血性链球菌是传统教材强调的重要致病菌之一；扁桃体周围脓肿时患侧软腭或腭弓膨隆、悬雍垂偏向健侧，故D错误；术后应重点观察原发性和继发性出血。",
+    "source": "讲义·四、咽部疾病与睡眠呼吸障碍"
+  },
+  {
+    "qid": "EBH-X2-007",
+    "type": "X",
+    "system": "咽科学",
+    "bloom": "理解",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于阻塞性睡眠呼吸暂停低通气综合征（OSAHS），下列叙述正确的有：",
+    "options": [
+      "核心机制是睡眠时上气道反复部分或完全性机械性阻塞",
+      "可引起间歇性低氧和睡眠结构紊乱",
+      "多导睡眠监测（PSG）是重要的诊断依据",
+      "治疗可根据严重程度及阻塞部位选择正压通气等",
+      "所有患者均首选手术治疗"
+    ],
+    "answer": "ABCD",
+    "explanation": "OSAHS核心机制是睡眠时上气道反复部分或完全性机械性阻塞，引起呼吸暂停、低通气、间歇性低氧和睡眠结构紊乱；PSG是重要诊断依据，治疗根据严重程度及阻塞部位选择正压通气、生活方式干预、口腔矫治器或适当手术，并非所有患者均首选手术，故E错误。",
+    "source": "讲义·四、咽部疾病与睡眠呼吸障碍"
+  },
+  {
+    "qid": "EBH-X2-008",
+    "type": "X",
+    "system": "耳科学",
+    "bloom": "分析",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于外耳道异物的处理，下列叙述正确的有：",
+    "options": [
+      "处理原则是充分照明、直视下取出",
+      "避免反复盲目夹取造成异物嵌顿或鼓膜损伤",
+      "电池等腐蚀性异物应紧急取出",
+      "遇水膨胀的植物性异物宜立即冲洗",
+      "鼓膜情况不明或取出困难时应及时转专科处理"
+    ],
+    "answer": "ABCE",
+    "explanation": "外耳道异物处理原则是充分照明、直视下取出，避免反复盲目夹取；电池等腐蚀性异物应紧急取出；遇水膨胀的植物性异物、鼓膜情况不明或取出困难时不宜随意冲洗，故D错误，应及时转专科处理。",
+    "source": "讲义·二、耳科学（四）外耳疾病"
+  },
+  {
+    "qid": "EBH-X2-009",
+    "type": "X",
+    "system": "喉科学",
+    "bloom": "分析",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于喉癌，下列叙述正确的有：",
+    "options": [
+      "最常见的病理类型为鳞状细胞癌",
+      "中老年男性长期重度吸烟者出现持续性、进行性声音嘶哑应高度怀疑",
+      "确诊需要喉镜检查及组织病理",
+      "治疗可根据肿瘤部位、分期选择手术、放疗或综合治疗",
+      "长期声音嘶哑多由慢性喉炎引起，无需喉镜检查"
+    ],
+    "answer": "ABCD",
+    "explanation": "喉癌最常见病理类型为鳞状细胞癌；中老年患者有长期重度吸烟史，出现持续性、进行性声音嘶哑尤其伴痰中带血、吞咽不适或颈部肿块时，应高度怀疑喉癌，确诊需喉镜检查及组织病理，治疗根据部位、分期选择手术、放疗或综合治疗，故E错误。",
+    "source": "讲义·五、喉部疾病及危重气道处理"
+  },
+  {
+    "qid": "EBH-X2-010",
+    "type": "X",
+    "system": "头颈外科",
+    "bloom": "记忆",
+    "section": "第二部分 · 九、多项选择题（进阶·X型）·10题·每题2分",
+    "stem": "关于甲状舌管囊肿与鳃裂囊肿，下列叙述正确的有：",
+    "options": [
+      "甲状舌管囊肿典型位于颈前正中线",
+      "甲状舌管囊肿常随吞咽及伸舌运动上下移动",
+      "第二鳃裂囊肿常位于胸锁乳突肌前缘附近",
+      "甲状舌管囊肿经典手术为Sistrunk术",
+      "第二鳃裂囊肿属于恶性肿瘤"
+    ],
+    "answer": "ABCD",
+    "explanation": "甲状舌管囊肿由胚胎期甲状舌管退化不全引起，典型位于颈前正中线，常随吞咽及伸舌运动上下移动，经典手术为Sistrunk术；第二鳃裂囊肿或瘘管属先天性发育异常，常位于胸锁乳突肌前缘附近，非恶性肿瘤，故E错误。",
+    "source": "讲义·七、头颈外科学与颈部肿块"
+  }
+];
+</script>
+<!-- ==================== 模板逻辑 v2（教育学升级） ==================== -->
+<script>
+(function () {
+  var STORAGE_KEY = 'maw-theme';        // 与 index.html 共享主题记忆
+  var RECORD_KEY = 'maw-quiz-record-' + (PAPER_META.title || 'default');
+
+  // ---- 主题（三态循环：深海 → 亮 → 暗；默认深海） ----
+  var html = document.documentElement;
+  var ORDER = ['deep', 'light', 'dark'];
+  var NEXT = { deep: 'light', light: 'dark', dark: 'deep' };
+  var ICON = { deep: '🌊', light: '☀️', dark: '🌙' };
+  function applyTheme(t) {
+    html.setAttribute('data-theme', t);
+    document.getElementById('theme-toggle').textContent = ICON[NEXT[t]];
+    try { localStorage.setItem(STORAGE_KEY, t); } catch (e) {}
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+  applyTheme(ORDER.indexOf(saved) >= 0 ? saved : 'deep');
+  document.getElementById('theme-toggle').addEventListener('click', function () {
+    applyTheme(NEXT[html.getAttribute('data-theme')]);
+  });
+
+  // ---- 作答记录（v2：confidence 元认知 / wrongCount 错误计数） ----
+  var records = {};
+  try { records = JSON.parse(localStorage.getItem(RECORD_KEY) || '{}'); } catch (e) { records = {}; }
+  function saveRecords() {
+    try { localStorage.setItem(RECORD_KEY, JSON.stringify(records)); } catch (e) {}
+  }
+
+  // ---- 状态 ----
+  var state = { filterSystem: null, wrongOnly: false, mode: 'focus', idx: 0, autoT: null };
+  var streak = 0, maxStreak = 0, fqT0 = Date.now(), fqMulti = [];
+
+  function visibleQuestions() {
+    return QUESTIONS.filter(function (q) {
+      if (state.wrongOnly) {
+        var r = records[q.qid];
+        return r && !r.correct;
+      }
+      if (state.filterSystem && q.system && q.system !== state.filterSystem) return false;
+      return true;
+    });
+  }
+  function recordAnswer(q, picked, correct, seconds) {
+    var old = records[q.qid] || {};
+    var wrongCount = old.wrongCount || 0;
+    if (!correct) wrongCount += 1;
+    records[q.qid] = {
+      qid: q.qid, picked: picked, correct: correct,
+      seconds: seconds, ts: new Date().toISOString(),
+      confidence: old.confidence || null,
+      wrongCount: wrongCount
+    };
+    saveRecords();
+    if (correct) { streak += 1; if (streak > maxStreak) maxStreak = streak; }
+    else { streak = 0; }
+  }
+  function setConfidence(qid, v) {
+    var r = records[qid];
+    if (!r) return;
+    r.confidence = v;
+    saveRecords();
+    updateFocusMeta();
+  }
+
+  /* ============================================================
+     试卷模式（全部题目一屏，打印友好）
+     ============================================================ */
+  var quizEl = document.getElementById('quiz');
+  function buildSectionHead(title) {
+    var d = document.createElement('div');
+    d.className = 'section-head';
+    d.textContent = title;
+    return d;
+  }
+  function render() {
+    var list = visibleQuestions();
+    quizEl.innerHTML = '';
+    var lastSec = null;
+    list.forEach(function (q, i) {
+      if (q.section && q.section !== lastSec) { lastSec = q.section; quizEl.appendChild(buildSectionHead(q.section)); }
+      quizEl.appendChild(buildCard(q, i + 1));
+    });
+    updateScore();
+  }
+  function buildCard(q, n) {
+    var rec = records[q.qid] || null;
+    var card = document.createElement('div');
+    card.className = 'question';
+    card.dataset.qid = q.qid;
+
+    var meta = document.createElement('div');
+    meta.className = 'q-meta';
+    var verdict = '';
+    if (rec) {
+      card.classList.add(rec.correct ? 'is-correct' : 'is-wrong');
+      verdict = '<span class="q-verdict ' + (rec.correct ? 'ok' : 'no') + '">' +
+        (rec.correct ? '✓ 已答对' : '✗ 答错') + '</span>';
+      if (rec.wrongCount > 1) {
+        verdict += '<span class="q-bloom" style="color:var(--wrong)">已错 ' + rec.wrongCount + ' 次</span>';
+      }
+      if (rec.confidence === 'unsure') {
+        verdict += '<span class="q-bloom" style="color:#f59e0b">没把握</span>';
+      }
+    }
+    meta.innerHTML =
+      '<span class="q-num">第 ' + n + ' 题</span>' +
+      '<span class="q-type">' + q.type + (q.type === 'X' ? ' ·多选' : '') + '</span>' +
+      (q.bloom ? '<span class="q-bloom">' + q.bloom + '</span>' : '') + verdict;
+    card.appendChild(meta);
+
+    var stem = document.createElement('div');
+    stem.className = 'q-stem';
+    stem.innerHTML = q.stem;
+    card.appendChild(stem);
+
+    var multi = q.type === 'X';
+    var multiPicks = [];
+    q.options.forEach(function (opt, idx) {
+      var letter = String.fromCharCode(65 + idx);
+      var el = document.createElement('div');
+      el.className = 'option';
+      el.innerHTML = '<span class="opt-label">' + letter + '.</span><span>' + opt + '</span><span class="opt-mark"></span>';
+      if (rec) {
+        var pickedNow = multi ? rec.picked.indexOf(letter) >= 0 : rec.picked === letter;
+        var isAnswer = q.answer.indexOf(letter) >= 0;
+        if (pickedNow) el.classList.add(multi && !isAnswer ? 'wrong-pick' : 'picked');
+        if (isAnswer) { el.classList.add('correct-show'); el.querySelector('.opt-mark').textContent = '✓'; }
+        if (pickedNow && !isAnswer) el.querySelector('.opt-mark').textContent = '✗';
+      } else {
+        el.addEventListener('click', (function (letter) {
+          return function () { handlePick(q, card, letter, el, multi, multiPicks); };
+        })(letter));
+      }
+      card.appendChild(el);
+    });
+
+    var box = document.createElement('div');
+    box.className = 'answer-box';
+    if (rec) {
+      box.classList.add(rec.correct ? 'ok' : 'no');
+      box.classList.add('show');
+    }
+    box.innerHTML =
+      '<div class="ans-head">' + (rec ? (rec.correct ? '✓ 回答正确' : '✗ 回答错误') : '') + '　正确答案：' + q.answer + '</div>' +
+      '<div class="exp">' + q.explanation + '</div>' +
+      (q.source ? '<div class="src">来源：' + q.source + '　用时：' + ((rec && rec.seconds) || '-') + 's</div>' : '');
+    card.appendChild(box);
+
+    if (multi) {
+      var bar = document.createElement('div');
+      bar.className = 'multi-confirm';
+      var cbtn = document.createElement('button');
+      cbtn.className = 'btn-confirm';
+      cbtn.textContent = '确认作答';
+      cbtn.disabled = true;
+      cbtn.addEventListener('click', function () { judgeMulti(q, card, multiPicks); });
+      bar.appendChild(cbtn);
+      var hint = document.createElement('span');
+      hint.className = 'q-bloom';
+      hint.textContent = '已选 0 项';
+      bar.appendChild(hint);
+      bar.style.display = 'none';
+      card.appendChild(bar);
+    }
+    return card;
+  }
+
+  var startTime = Date.now();
+  function handlePick(q, card, letter, el, multi, multiPicks) {
+    if (multi) {
+      var pos = multiPicks.indexOf(letter);
+      if (pos >= 0) { multiPicks.splice(pos, 1); el.classList.remove('picked'); }
+      else { multiPicks.push(letter); el.classList.add('picked'); }
+      var bar = card.querySelector('.multi-confirm');
+      if (bar) {
+        bar.style.display = 'block';
+        bar.querySelector('.btn-confirm').disabled = multiPicks.length === 0;
+        bar.querySelector('span').textContent = '已选 ' + multiPicks.length + ' 项';
+      }
+      return;
+    }
+    var correct = q.answer === letter;
+    var seconds = Math.round((Date.now() - startTime) / 1000);
+    startTime = Date.now();
+    recordAnswer(q, letter, correct, seconds);
+    render();
+  }
+  function judgeMulti(q, card, multiPicks) {
+    if (multiPicks.length === 0) return;
+    var picked = multiPicks.slice().sort().join('');
+    var ans = (q.answer || '').split('').sort().join('');
+    var correct = picked === ans;
+    var seconds = Math.round((Date.now() - startTime) / 1000);
+    startTime = Date.now();
+    recordAnswer(q, picked, correct, seconds);
+    render();
+  }
+
+  function updateScore() {
+    var answered = 0, right = 0;
+    QUESTIONS.forEach(function (q) {
+      var r = records[q.qid];
+      if (r) { answered++; if (r.correct) right++; }
+    });
+    var rate = answered ? Math.round(right * 100 / answered) + '%' : '--';
+    document.getElementById('score').textContent =
+      '已答 ' + answered + '/' + QUESTIONS.length + ' · 正确 ' + right + ' · 正确率 ' + rate;
+    document.getElementById('progress-fill').style.width =
+      (answered * 100 / Math.max(QUESTIONS.length, 1)) + '%';
+  }
+
+  /* ============================================================
+     专注刷题模式（检索练习 · 一题一屏 · 答题卡 · 元认知自评）
+     ============================================================ */
+  var fqCard = document.getElementById('fq-card');
+  var fqResults = document.getElementById('focus-results');
+  var fqPos = document.getElementById('fq-pos');
+  var fqStreak = document.getElementById('fq-streak');
+  var fqRate = document.getElementById('fq-rate');
+
+  function fqState(q, i, total) {
+    var rec = records[q.qid] || null;
+    var answered = !!rec;
+    var multi = q.type === 'X';
+    var isCorrect = rec ? rec.correct : null;
+    var html = '<div class="question" style="margin-top:0">';
+    html += '<div class="q-meta"><span class="q-num">第 ' + (i + 1) + ' / ' + total + ' 题</span>' +
+      '<span class="q-type">' + q.type + (multi ? ' ·多选' : '') + '</span>' +
+      (q.bloom ? '<span class="q-bloom">' + q.bloom + '</span>' : '') +
+      (q.system ? '<span class="q-bloom">' + q.system + '</span>' : '') +
+      (q.section ? '<span class="q-bloom">' + q.section + '</span>' : '') +
+      (answered ? '<span class="q-verdict ' + (isCorrect ? 'ok' : 'no') + '">' + (isCorrect ? '✓ 答对' : '✗ 答错') + '</span>' : '') +
+      '</div>';
+    html += '<div class="fq-stem">' + q.stem + '</div>';
+    q.options.forEach(function (opt, idx) {
+      var letter = String.fromCharCode(65 + idx);
+      var cls = 'option';
+      var mark = '';
+      if (answered) {
+        var pickedNow = multi ? rec.picked.indexOf(letter) >= 0 : rec.picked === letter;
+        var isAnswer = q.answer.indexOf(letter) >= 0;
+        if (pickedNow && !isAnswer) cls += ' wrong-pick';
+        else if (pickedNow) cls += ' picked';
+        if (isAnswer) { cls += ' correct-show'; mark = '✓'; }
+        if (pickedNow && !isAnswer) mark = '✗';
+      } else {
+        var sel = fqMulti.indexOf(letter) >= 0;
+        if (sel) cls += ' picked';
+      }
+      html += '<div class="' + cls + '" data-act="opt" data-letter="' + letter + '"><span class="opt-label">' + letter + '.</span><span>' + opt + '</span><span class="opt-mark">' + mark + '</span></div>';
+    });
+    if (!answered && multi) {
+      html += '<div class="multi-confirm"><button class="btn-confirm" data-act="confirm" ' + (fqMulti.length ? '' : 'disabled') + '>确认作答</button><span class="q-bloom">已选 ' + fqMulti.length + ' 项</span></div>';
+    }
+    if (answered) {
+      html += '<div class="answer-box show ' + (isCorrect ? 'ok' : 'no') + '">';
+      html += '<div class="ans-head">' + (isCorrect ? '✓ 回答正确' : '✗ 回答错误') + '　正确答案：' + q.answer +
+        (rec.confidence ? (rec.confidence === 'sure' ? '　💪 有信心' : '　😟 没把握') : '') + '</div>';
+      html += '<div class="exp">' + q.explanation + '</div>';
+      html += (q.source ? '<div class="src">来源：' + q.source + '　用时：' + rec.seconds + 's</div>' : '');
+      html += '</div>';
+      html += '<div class="conf-bar">';
+      html += '<span class="q-t">自评把握度（用于制定复习重点）</span>';
+      html += '<button class="btn-conf ' + (rec.confidence === 'sure' ? 'ok2' : '') + '" data-act="conf" data-v="sure">💪 有信心</button>';
+      html += '<button class="btn-conf ' + (rec.confidence === 'unsure' ? 'no2' : '') + '" data-act="conf" data-v="unsure">😟 没把握</button>';
+      html += '</div>';
+      html += '<div class="fq-next">';
+      if (isCorrect) html += '<div class="auto-note">✓ 答对 <span class="auto-bar"><i></i></span> 即将自动进入下一题</div>';
+      html += '<button class="btn-next" data-act="next">下一题 →</button>';
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function fqSheetHtml(list, current) {
+    var out = '<div class="answer-sheet"><div class="as-title">答题卡 · 点击跳题</div><div class="as-grid">';
+    list.forEach(function (q, i) {
+      var r = records[q.qid] || null;
+      var cls = 'as-cell';
+      if (i === current) cls += ' cur';
+      if (r) cls += r.correct ? ' ok' : ' no';
+      out += '<button class="' + cls + '" data-act="sheet" data-i="' + i + '">' + (i + 1) + '</button>';
+    });
+    out += '</div></div>';
+    return out;
+  }
+
+  function updateFocusMeta(list) {
+    list = list || visibleQuestions();
+    var answered = 0, right = 0;
+    list.forEach(function (q) {
+      var r = records[q.qid];
+      if (r) { answered++; if (r.correct) right++; }
+    });
+    fqPos.textContent = '第 ' + (state.idx + 1) + ' / ' + list.length + ' 题';
+    fqStreak.textContent = streak >= 2 ? '🔥 连对 ' + streak : '';
+    fqRate.textContent = '已答 ' + answered + ' · 正确率 ' + (answered ? Math.round(right * 100 / answered) + '%' : '--');
+  }
+
+  function renderFocus() {
+    var list = visibleQuestions();
+    if (!list.length) {
+      fqCard.innerHTML = '<div class="results-card"><h3>暂无题目</h3><p style="color:var(--text-secondary)">当前筛选下没有题目，试试「全部题目」。</p></div>';
+      fqResults.style.display = 'none';
+      return;
+    }
+    if (state.idx >= list.length) state.idx = list.length - 1;
+    if (state.idx < 0) state.idx = 0;
+    fqT0 = Date.now();
+    fqResults.style.display = 'none';
+    fqCard.innerHTML = fqState(list[state.idx], state.idx, list.length) + fqSheetHtml(list, state.idx);
+    updateFocusMeta(list);
+    updateScore();
+    /* 答对自动跳题：2 秒后进入下一道未答题（答错停留读解析） */
+    if (state.autoT) { clearTimeout(state.autoT); state.autoT = null; }
+    var cur = list[state.idx];
+    var rec = cur ? records[cur.qid] : null;
+    var hasUnanswered = list.some(function (q) { return !records[q.qid]; });
+    if (rec && rec.correct && hasUnanswered) {
+      state.autoT = setTimeout(function () { state.autoT = null; fqNext(); }, 2000);
+    }
+  }
+
+  function fqPick(letter) {
+    var list = visibleQuestions();
+    var q = list[state.idx];
+    if (!q || records[q.qid]) return;
+    if (q.type === 'X') {
+      var pos = fqMulti.indexOf(letter);
+      if (pos >= 0) fqMulti.splice(pos, 1); else fqMulti.push(letter);
+      renderFocus();
+      return;
+    }
+    var correct = q.answer === letter;
+    var seconds = Math.round((Date.now() - fqT0) / 1000);
+    recordAnswer(q, letter, correct, seconds);
+    fqMulti = [];
+    renderFocus();
+  }
+  function fqConfirmMulti() {
+    var list = visibleQuestions();
+    var q = list[state.idx];
+    if (!q || records[q.qid] || !fqMulti.length) return;
+    var picked = fqMulti.slice().sort().join('');
+    var ans = (q.answer || '').split('').sort().join('');
+    var correct = picked === ans;
+    var seconds = Math.round((Date.now() - fqT0) / 1000);
+    recordAnswer(q, picked, correct, seconds);
+    fqMulti = [];
+    renderFocus();
+  }
+  function fqSetConf(v) {
+    var list = visibleQuestions();
+    var q = list[state.idx];
+    if (!q) return;
+    setConfidence(q.qid, v);
+    renderFocus();
+  }
+  function fqNext() {
+    if (state.autoT) { clearTimeout(state.autoT); state.autoT = null; }
+    var list = visibleQuestions();
+    if (!list.length) return;
+    /* 优先跳转到下一道未答的题；全答完 → 结算报告 */
+    var next = -1;
+    for (var i = state.idx + 1; i < list.length; i++) {
+      if (!records[list[i].qid]) { next = i; break; }
+    }
+    if (next === -1) {
+      var allAnswered = list.every(function (q) { return !!records[q.qid]; });
+      if (allAnswered) { renderResults(); return; }
+      /* 回头找未答的 */
+      for (var j = 0; j <= state.idx; j++) {
+        if (!records[list[j].qid]) { next = j; break; }
+      }
+    }
+    if (next === -1) next = Math.min(state.idx + 1, list.length - 1);
+    state.idx = next;
+    renderFocus();
+  }
+  function renderResults() {
+    var list = visibleQuestions();
+    var answered = list.filter(function (q) { return !!records[q.qid]; });
+    var right = answered.filter(function (q) { return records[q.qid].correct; });
+    var rate = answered.length ? Math.round(right.length * 100 / answered.length) : 0;
+    var totalTime = 0;
+    answered.forEach(function (q) { totalTime += (records[q.qid].seconds || 0); });
+    var mins = Math.round(totalTime / 6) / 10;
+
+    /* 分系统统计 */
+    var sysMap = {};
+    answered.forEach(function (q) {
+      var sys = q.system || '未分类';
+      if (!sysMap[sys]) sysMap[sys] = { n: 0, ok: 0 };
+      sysMap[sys].n++;
+      if (records[q.qid].correct) sysMap[sys].ok++;
+    });
+
+    /* 薄弱清单：答错 或 没把握 */
+    var weak = answered.filter(function (q) {
+      var r = records[q.qid];
+      return !r.correct || r.confidence === 'unsure';
+    });
+
+    var h = '<div class="results-card"><h3>📊 本轮复盘</h3><div class="r-sub">' + PAPER_META.title + ' · ' + new Date().toLocaleString('zh-CN') + '</div>';
+    h += '<div class="r-stats">';
+    h += '<div class="r-stat"><b>' + answered.length + '/' + list.length + '</b><span>已答</span></div>';
+    h += '<div class="r-stat ' + (rate >= 60 ? 'good' : 'bad') + '"><b>' + rate + '%</b><span>正确率</span></div>';
+    h += '<div class="r-stat"><b>' + mins + ' 分</b><span>总用时</span></div>';
+    h += '<div class="r-stat ' + (maxStreak >= 3 ? 'good' : '') + '"><b>' + maxStreak + '</b><span>最长连对</span></div>';
+    h += '</div>';
+    if (Object.keys(sysMap).length > 1) {
+      h += '<table class="r-table"><thead><tr><th>系统</th><th>题数</th><th>正确</th><th>正确率</th></tr></thead><tbody>';
+      Object.keys(sysMap).forEach(function (sys) {
+        var s = sysMap[sys];
+        h += '<tr><td>' + sys + '</td><td>' + s.n + '</td><td>' + s.ok + '</td><td>' + Math.round(s.ok * 100 / s.n) + '%</td></tr>';
+      });
+      h += '</tbody></table>';
+    }
+    if (weak.length) {
+      h += '<div class="r-sub" style="margin-bottom:8px">⚠️ 需要重点复习（答错 / 没把握）：' + weak.length + ' 题</div>';
+      weak.slice(0, 10).forEach(function (q) {
+        var r = records[q.qid];
+        h += '<div class="r-weak"><b>' + (q.system || '') + '</b> ' + q.stem.replace(/<[^>]+>/g, '').slice(0, 46) + '…' +
+          '<span class="w-tag">' + (r.correct ? '没把握' : '答错') + '</span></div>';
+      });
+      if (weak.length > 10) h += '<div class="r-weak" style="border-left-color:var(--border);background:var(--bg-tertiary)">… 还有 ' + (weak.length - 10) + ' 题，可在「试卷模式」或「错题重刷」中查看</div>';
+    }
+    var advice = '';
+    if (rate >= 80) advice = '掌握不错！建议 <b>3 天后</b>重刷错题巩固，把「没把握」的题目对照复习手册再过一遍。';
+    else if (rate >= 60) advice = '基础尚可但需巩固：建议 <b>1 天后</b>重刷错题，并按上面「薄弱系统」针对性复习。';
+    else advice = '本轮正确率偏低：建议 <b>今天</b>先重刷错题，<b>3 天后</b>再做一遍；对照复习手册对应的「掌握」级考点强化记忆。';
+    if (weak.length && answered.length) advice += ' 复习时优先处理「答错 + 没把握」的题目（间隔重复效果最好）。';
+    h += '<div class="r-advice">🧠 <b>复习建议：</b>' + advice + '</div>';
+    h += '<div class="r-actions"><button class="btn-confirm" data-act="rerun" style="font-size:14px;padding:9px 22px">🔄 重刷错题</button><button class="btn-next ghost" data-act="paper" style="font-size:14px;padding:9px 22px">📋 查看试卷模式</button></div>';
+    h += '</div>';
+    fqCard.innerHTML = h;
+    fqResults.style.display = 'block';
+  }
+
+  /* 专注模式事件委托 */
+  fqCard.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-act]');
+    if (!t) return;
+    var act = t.dataset.act;
+    if (act === 'opt') fqPick(t.dataset.letter);
+    else if (act === 'confirm') fqConfirmMulti();
+    else if (act === 'conf') fqSetConf(t.dataset.v);
+    else if (act === 'next') fqNext();
+    else if (act === 'sheet') { state.idx = +t.dataset.i; renderFocus(); }
+    else if (act === 'rerun') { state.wrongOnly = true; document.getElementById('btn-wrong').classList.add('active'); state.idx = 0; renderFocus(); }
+    else if (act === 'paper') { setMode('paper'); }
+  });
+
+  function setMode(m) {
+    state.mode = m;
+    document.body.classList.toggle('mode-focus', m === 'focus');
+    document.getElementById('mode-focus').classList.toggle('active', m === 'focus');
+    document.getElementById('mode-paper').classList.toggle('active', m === 'paper');
+    if (m === 'focus') { renderFocus(); } else { render(); }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  document.getElementById('mode-focus').addEventListener('click', function () { setMode('focus'); });
+  document.getElementById('mode-paper').addEventListener('click', function () { setMode('paper'); });
+
+  /* 键盘（桌面端）：A-E 选答案 · ←→ 切题 · Enter 下一题 */
+  document.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (state.mode !== 'focus') return;
+    var list = visibleQuestions();
+    var q = list[state.idx];
+    if (!q) return;
+    var key = e.key.toUpperCase();
+    if (records[q.qid]) {
+      if (e.key === 'Enter' || e.key === 'ArrowRight') { e.preventDefault(); fqNext(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); if (state.idx > 0) { state.idx--; renderFocus(); } }
+      return;
+    }
+    if (/^[A-E]$/.test(key)) {
+      var idx = key.charCodeAt(0) - 65;
+      if (idx < q.options.length) { e.preventDefault(); fqPick(String.fromCharCode(65 + idx)); }
+    } else if (/^[1-5]$/.test(key)) {
+      var i2 = +key - 1;
+      if (i2 < q.options.length) { e.preventDefault(); fqPick(String.fromCharCode(65 + i2)); }
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (q.type === 'X' && fqMulti.length) fqConfirmMulti();
+    }
+  });
+
+  // ---- 系统筛选标签（可选功能） ----
+  var systems = [];
+  QUESTIONS.forEach(function (q) { if (q.system && systems.indexOf(q.system) < 0) systems.push(q.system); });
+  if (systems.length > 1) {
+    var tagBox = document.getElementById('system-tags');
+    tagBox.classList.add('show');
+    systems.forEach(function (s) {
+      var b = document.createElement('button');
+      b.className = 'system-tag';
+      b.textContent = s;
+      b.addEventListener('click', function () {
+        state.filterSystem = (state.filterSystem === s) ? null : s;
+        state.wrongOnly = false;
+        state.idx = 0;
+        if (state.mode === 'focus') renderFocus(); else render();
+        document.querySelectorAll('.system-tag').forEach(function (t) {
+          t.classList.toggle('active', t.textContent === state.filterSystem);
+        });
+      });
+      tagBox.appendChild(b);
+    });
+  }
+
+  // ---- 工具栏 ----
+  document.getElementById('btn-wrong').addEventListener('click', function () {
+    state.wrongOnly = !state.wrongOnly;
+    state.idx = 0;
+    this.classList.toggle('active', state.wrongOnly);
+    if (state.mode === 'focus') renderFocus(); else render();
+  });
+  document.getElementById('btn-all').addEventListener('click', function () {
+    state.wrongOnly = false; state.filterSystem = null; state.idx = 0;
+    document.getElementById('btn-wrong').classList.remove('active');
+    document.querySelectorAll('.system-tag').forEach(function (t) { t.classList.remove('active'); });
+    if (state.mode === 'focus') renderFocus(); else render();
+  });
+  document.getElementById('btn-reset').addEventListener('click', function () {
+    if (!confirm('确认清空本卷作答记录？（错题本与自评也会清空）')) return;
+    records = {};
+    streak = 0; maxStreak = 0; fqMulti = [];
+    saveRecords();
+    if (state.mode === 'focus') renderFocus(); else render();
+  });
+  document.getElementById('btn-export').addEventListener('click', function () {
+    var payload = {
+      paper: PAPER_META.title,
+      exported_at: new Date().toISOString(),
+      stats: (function () {
+        var a = 0, r = 0;
+        Object.keys(records).forEach(function (k) { a++; if (records[k].correct) r++; });
+        return { answered: a, correct: r };
+      })(),
+      records: records
+    };
+    var blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (PAPER_META.title || 'quiz') + '_作答记录.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  // ---- 标题 ----
+  document.getElementById('paper-title').textContent = PAPER_META.title;
+  document.getElementById('paper-sub').textContent = PAPER_META.sub;
+
+  // ---- 启动：默认专注刷题模式 ----
+  document.body.classList.add('mode-focus');
+  renderFocus();
+})();
+</script>
+</body>
+</html>
