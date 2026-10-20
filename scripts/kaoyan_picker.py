@@ -35,6 +35,7 @@ BASE = Path(__file__).resolve().parent.parent
 GS_DIR = BASE / 'GoldenSet' / 'structured'
 UP_FILE = GS_DIR / 'GS_上册_2024.json'
 LOW_FILE = GS_DIR / 'GS_下册_2025_1994.json'
+ANS_FILE = BASE / 'question_bank' / 'kaoyan_answers.json'
 
 QUALIFIED_MIN = 0.15   # HC-18 合格带下限
 TARGET = 0.20          # HC-18 目标比例（1/5）
@@ -54,12 +55,28 @@ def norm_text(s):
     return s
 
 
-def build_joined():
+def load_verified_answers():
+    """读取 kaoyan_answer_fix.py 产出的可信答案表。"""
+    if not ANS_FILE.exists():
+        return {}
+    try:
+        return load_json(ANS_FILE)
+    except Exception:
+        return {}
+
+
+def build_joined(verified=None, require_verified=True):
     """上册 × 下册 按 gs_id 配对；返回 [{gs_id, year, question_no, type, subject,
-    stem, options, answer, explanation, source_file}]（仅保留有答案且含题干/选项者）"""
+    stem, options, answer, explanation, source_file, answer_confidence}]。
+
+    v1.1（2026-10-20）：answer 优先取 question_bank/kaoyan_answers.json 的
+    answer_recovered，而不是下册行首前缀（ABCD/ABCDE）。默认跳过无可信答案题；
+    --allow-unverified 可回退旧行为（仅用于诊断，不建议生产）。
+    """
     upper = load_json(UP_FILE)
     lower = load_json(LOW_FILE)
     lower_by_id = {q['gs_id']: q for q in lower if q.get('answer')}
+    verified = verified or {}
     out = []
     for q in upper:
         qid = q.get('gs_id', '')
@@ -68,8 +85,18 @@ def build_joined():
         options = q.get('options') or []
         if not stem or not options or not low:
             continue
-        # 上册无答案 → 答案取下册（官方公布/贺银成精析）
-        answer = (low.get('answer') or '').strip()
+        # 解析损坏：选项 >5 或选项里混入下一题题号
+        if len(options) > 5 or any(re.match(r'^\s*\d{1,3}\s*[\.、]', str(o)) for o in options):
+            continue
+        rec = verified.get(qid) or {}
+        answer = (rec.get('answer_recovered') or '').strip()
+        confidence = rec.get('confidence', '')
+        if not answer:
+            if require_verified:
+                continue
+            # 诊断回退：保留旧答案，但明确标记 low，不得当可信真题
+            answer = (low.get('answer') or '').strip()
+            confidence = 'low'
         if not answer:
             continue
         out.append({
@@ -81,6 +108,7 @@ def build_joined():
             'stem': stem,
             'options': options,
             'answer': answer,
+            'answer_confidence': confidence,
             'explanation': (low.get('explanation') or '').strip(),
             'source_file': '真题上册.md(题干)+真题下册.md(答案解析)',
         })
@@ -109,7 +137,11 @@ def cmd_pick(args):
         print(f'✗ 缺少 GoldenSet 解析产物：{GS_DIR}')
         print('  请先运行 python GoldenSet/parse_goldenset.py（或用 tools/goldenset/parse_goldenset.py）')
         sys.exit(2)
-    joined = build_joined()
+    verified = load_verified_answers()
+    joined = build_joined(verified=verified, require_verified=not getattr(args, 'allow_unverified', False))
+    if not verified:
+        print(f'⚠️ 未找到可信答案表 {ANS_FILE.name}；建议先运行 '
+              f'python scripts/kaoyan_answer_fix.py --out question_bank/kaoyan_answers.json')
     keyword_terms = [k.strip() for k in re.split(r'[,，;；\s]+', args.keywords or '') if k.strip()]
     subject_aliases = [a.strip() for a in re.split(r'[,，;；\s]+', args.subject or '') if a.strip()]
     # 学科名派生短别名：内科学 → 内科；外科学 → 外科；神经病学 → 神经
@@ -142,6 +174,7 @@ def cmd_pick(args):
             'year': q['year'],
             'source': f"{q['year']}考研西综·第{q['question_no']}题",
             'mode': '原题',   # MedGen 引用后按实际改为 原题/改编
+            'answer_confidence': q.get('answer_confidence', ''),
         }
         picked.append(rec)
 
@@ -237,6 +270,8 @@ def main():
     p_pick.add_argument('--keywords', default='', help='章节关键词，逗号分隔（如 "心衰,心力衰竭"）')
     p_pick.add_argument('--target', type=int, default=10, help='目标候选数（= 批次题数 × 0.2）')
     p_pick.add_argument('--out', required=True, help='输出 JSON 路径（中间产物/{batchID}/kaoyan_candidates.json）')
+    p_pick.add_argument('--allow-unverified', action='store_true',
+                        help='诊断用：允许输出无可信答案的题（answer_confidence=low，不建议生产）')
     p_pick.set_defaults(func=cmd_pick)
 
     p_check = sub.add_parser('check', help='终审校验题库 kaoyan_origin 占比')

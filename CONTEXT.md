@@ -373,6 +373,42 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 - **红线**：真题答案以官方公布为准（发现与教材冲突 → 升级告警，不得静默修改）；数值/诊断标准零改动
 - 无真题覆盖章节（如中医方剂、医患沟通、部分皮肤性病学）：配额清零、以原创补齐，批次统计如实标注
 
+### 真题检索 v2（HC-22 · 2026-10-20 起，下一次题库批次生效）
+
+> 旧 `kaoyan_picker.py pick/check` 为 HC-18 legacy，仅保留兼容；新批次一律走 v2。
+
+**资产（只读/可重建）**
+
+| 文件 | 内容 |
+|------|------|
+| `question_bank/real_questions/kaoyan_items.jsonl` | 考研 306 题目级索引（题干/选项/答案/解析/学科/答案可信度） |
+| `question_bank/real_questions/zhiyi_items.jsonl` | 执业医师 CMExam 题目级索引（test 高可信 + train 中可信） |
+| `question_bank/real_questions/manifest.json` | 来源/学科/可信度统计 |
+| `question_bank/kaoyan_answers.json` | 考研答案总表（`answer_recovered` + confidence + evidence） |
+| `question_bank/kaoyan_manual_answers.json` | 人工转录答案键（2023 扫描件，165 题） |
+
+**命令**
+
+```text
+PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 抽取标准答案（2013-2022/2024），合并进 kaoyan_answers.json
+扫描答案  python scripts/kaoyan_green_scan.py --apply --merge   # 扫描版下册绿色字母识别（1994-2004），合并进 kaoyan_answers.json
+建索引  python scripts/real_question_cli.py build
+选题    python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json
+终审    python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单} --out reports/validate/real_question_check_{batchID}.json
+诊断    python scripts/real_question_cli.py stats / recover
+```
+
+**硬规则**
+
+- 配额：考研 20% + 执业医师 20%（各 15%–25% 合格带）；检索不足 → `quota_status=insufficient`，原创补齐，禁止无关题凑数。
+- 答案来源优先级：**扫描版绿色标记（high/medium） ≈ PDF 标准答案/人工转录（high） > PDF 绿色标记（medium） > 解析规则（high/medium） > 无**。考研答案禁止再用下册行首前缀 `ABCD/ABCDE`。
+- 当前答案覆盖：整体 **4765/5168 ≈ 92.2%**；1994–2004 用扫描版绿色标记补齐（约 64%–88%/年，B 型题组与部分 X 型仍缺）；2005–2024 约 96.8%。
+- 扫描版识别精度自检：与「解析写明故答」的题一致率 90.8%；强信号（绿字明显且唯一）记 high，弱信号记 medium。
+- 已知风险：不同版本真题 PDF 的题号可能整体错位（如 2015 文都版第 1 题答案与原书不符）；冲突时以**扫描版原书绿色标记**为准。
+- 标注：`kaoyan_origin` / `zhiyi_origin` + `[源:...]` + `keypoint_ref` + `license` 四件套。
+- 公开构建：CMExam/考研题 `license=public_noncommercial`（用户已确认非商业个人刷题）；授权题 `public`；未知/内部源不得进公开构建。
+- 教师重点：`keypoints` 必须是 HC-20 锚定清单第四节连续编号，不用印刷标号。
+
 ## 工具路径
 
 > Agent 不要重新下载这些工具。使用表中路径直接调用。

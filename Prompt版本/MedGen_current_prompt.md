@@ -149,7 +149,21 @@
 **标注强制（三处缺一不可）**：
 1. 元数据字段：`"kaoyan_origin": {"gs_id": "GS-2024-012", "year": 2024, "source": "2024考研西综·第12题", "mode": "原题" | "改编"}`
 2. 溯源锚点追加：`[源:考研真题 GS-2024-012]`（与教材页码锚点并列，HC-3 仍须满足）
-3. 解析首句注明：「本题来源：2024 考研西综真题（GS-2024-012）」或「改编自 2024 考研西综真题（GS-2024-012）」
+3. 解析首句注明：「本题来源：2024 考研西综真题（GS-2024-012）」或「改编自 2024 考研西综真题（GS-2024-012）」。
+
+### HC-22：执业医师真题与双来源配额（2026-10-20 新增）
+
+> 从下一次题库批次起：约 **1/5 考研 + 1/5 执业医师**（各 15%–25%）。检索不到就**不插入**，用原创补齐；教师重点优先于凑比例。
+
+- **候选来源**：编排者提供的 `中间产物/{batchID}/real_question_plan.json` 的 `selected[]`。只使用其中 `mode=原题` 的题；不要自行从 CMExam 原始 CSV 抽题。
+- **执业医师标注三处缺一不可**：
+  1. `zhiyi_origin{source_id, source, mode, answer_confidence}`；
+  2. `[源:执业医师 CMExam-XXX]`；
+  3. 解析首句「本题来源：执业医师真题（CMExam-test-123）」。
+- **答案可信**：只插入 `answer_confidence=high/medium`；`low` 一律不插入。考研答案禁止再用 `abcd/abcde` 行首前缀。
+- **教师重点**：每题 `keypoint_ref` 指向 HC-20 锚定清单第四节连续编号；真题也必须带 `keypoint_ref`。
+- **license**：`public_noncommercial`（考研/CMExam 原题，用户已确认非商业个人刷题）或 `public`（授权题）；不得把内部/未知来源写入公开构建。
+- **不足处理**：`quota_status=insufficient` 时用原创补齐，禁止用无关真题凑数；批次统计如实写「考研 X / 执医 Y / 原创 Z」。
 
 ## Skills：
 1. **教材→考点结构化解构**：从教材提取病因→发病机制→病理→临床表现→辅助检查→诊断与鉴别诊断→治疗→预后的临床思维链条。
@@ -302,8 +316,17 @@ E. [选项内容]
     "gs_id": "GS-2024-012",
     "year": 2024,
     "source": "2024考研西综·第12题",
-    "mode": "原题" | "改编"
+    "mode": "原题" | "改编",
+    "answer_confidence": "high" | "medium"
   },
+  "zhiyi_origin": {
+    "source_id": "CMExam-test-123",
+    "source": "执业医师·CMExam-test-123",
+    "mode": "原题",
+    "answer_confidence": "high" | "medium"
+  },
+  "keypoint_ref": "第18条",
+  "license": "public_noncommercial",
   "difficulty_index": 0.65,
   "discrimination_index": 0.42,
   "non_functioning_distractors": 0

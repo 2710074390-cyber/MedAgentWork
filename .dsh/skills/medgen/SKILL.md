@@ -22,5 +22,10 @@ whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务
    - 如产出备考资料 MD，写入同一目录。
 4. **产出门禁（不可跳过）**：交付前运行 `python -m scripts.validate --file <你的JSON路径>` 或 `python validate_options.py --file <你的JSON路径>`；输出中 `✗ 失败: N` 的 N>0 时必须**自行修正后重新生成**，直到 FAIL==0（batch006 教训：未自检即交付导致二次回调）。
 5. **数值纪律**：所有数值型选项必须带完整单位（次/分、mmHg、%、个月）；诊断/疾病名不可截断，使用完整标准术语（batch014 教训）。
-6. **考研真题配额（HC-18）**：题库中约 1/5（目标 20%，区间 15%–25%）为考研原题——从编排者提供的 kaoyan_candidates.json 或 `GoldenSet/structured/` 按 gs_id 选取引用/改编；知识点/答案/数值不得改动；每题标注 `kaoyan_origin` + `[源:考研真题 GS-XXX]` + 解析来源句。无真题覆盖章节以原创补齐并如实标注。
+6. **真题双配额（HC-22 · 2026-10-20 起）**：题库中约 1/5 考研 + 1/5 执业医师（各 15%–25%）。优先读取编排者提供的 `中间产物/{batchID}/real_question_plan.json` 的 `selected`：
+   - 考研：`kaoyan_origin{gs_id,year,source,mode,answer_confidence}` + `[源:考研真题 GS-XXX]`；
+   - 执业医师：`zhiyi_origin{source_id,source,mode,answer_confidence}` + `[源:执业医师 CMExam-XXX]`；
+   - **每题必须带 `keypoint_ref`（HC-20 统一锚定编号）与 `license`**；只使用 `answer_confidence=high/medium`；
+   - 原题题干/选项/答案/数值不得改动；配额不足（`quota_status=insufficient`）时用原创补齐，禁止用无关题凑数。
+   - 旧 `kaoyan_candidates.json` 仅兼容旧批次；不要再用 `answer=ABCD/ABCDE` 的行首前缀。
 7. **完成后报告**：文件路径 + 题目总数 + Bloom 分布摘要 + 考研真题占比 + 自检结果（通过/失败数）。

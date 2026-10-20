@@ -204,6 +204,29 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 
 **HC-5/6/8 交叉触发说明**：考研原题引用属于「外来素材合并」范畴——对引用题执行 HC-5 数值抽查（≥10%）、HC-8 GoldenSet 比对（100% 与 gs_id 源比对，Agent 3 D21 覆盖）；「引用真题」的答案本身以官方公布为准，发现与教材冲突 → 升级告警，不静默修改（HC-6/8 的修正范围限于改编题自行设计的干扰项）。
 
+### HC-22：真题双来源配额编排（2026-10-20 新增 · 新题库批次）
+
+> **从下一次题库批次起**：约 1/5 考研 + 1/5 执业医师（各 15%–25%）。检索不到就不插入，原创补齐；教师重点优先于凑比例。押题卷暂不适用。
+
+1. **批次启动（替代 HC-18 的 pick 步骤）**：
+   ```
+   python scripts/real_question_cli.py plan --subject {科目} --target {目标题数} --batch {batchID} \
+     --keypoints {教师重点锚定清单} --blueprint {出题蓝图} \
+     --out 中间产物/{batchID}/real_question_plan.json
+   ```
+   - 无教师重点清单时，`--keypoints` 传空并改用章节关键词模式（退化为 §HC-18 的检索能力）；
+   - `quota_status=insufficient` 允许，但必须在批次报告中写明「考研 X/40、执医 Y/40，原因」。
+2. **配额注入**：Agent 2 指令中给 `real_question_plan.json` 路径 + `selected[]` 的逐题 `source_id/keypoint_refs/answer_confidence/license/mode`；禁止注入原始 CMExam CSV。
+3. **终审校验（GATE-FINAL 前）**：
+   ```
+   python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json \
+     --plan 中间产物/{batchID}/real_question_plan.json \
+     --keypoints {教师重点锚定清单} \
+     --out reports/validate/real_question_check_{batchID}.json
+   ```
+   FAIL（比例/答案/重复/覆盖/license/溯源任一）→ halt；不得用 `--golden-absent` 绕过。
+4. **旧 HC-18 工具**：`kaoyan_picker.py` 仅旧批次兼容；已改为读取可信答案表，`--allow-unverified` 仅诊断。
+
 ### HC-19：插图契约（2026-09-XX 新增 · 生图功能接入）
 
 > 主复习资料的图片内容全部由**豆包（Doubao 图片 Agent）**按 `medillustration` skill 负责（生图/标注/压缩；DSH 不调用 image_gen）；DSH 侧文字 Agent（Agent 2/5）只写占位符与配图清单，MedMaster 做打包交接与门禁校验。穿插原则见「工作流执行模板 · 阶段五·五」。
@@ -229,9 +252,10 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 2. 你读取 输入素材/ 目录，识别章节范围和目标科目
 3. 【必须】运行知识库检索：
    python 知识库素材/search_kb.py "【章节核心知识点】" --subject 【科目代码】 --top 10 --hybrid
-4. 【必须】运行考研真题配额检索（HC-18，2026-08-21 新增）：
-   python scripts/kaoyan_picker.py pick --subject 【科目】 --keywords "【章节关键词,逗号分隔】" --target 【ceil(目标题数×0.2)】 --out 中间产物/{batchID}/kaoyan_candidates.json
-   - 命中为 0 → 该章节无考研真题覆盖，Agent 2 指令标注「无真题覆盖，以原创补齐」
+4. 【必须】运行真题双配额检索（HC-22，2026-10-20 起；新题库批次）：
+   python scripts/real_question_cli.py plan --subject 【科目】 --target 【目标题数】 --batch 【batchID】 --keypoints 【教师重点锚定清单】 --blueprint 【出题蓝图】 --out 中间产物/{batchID}/real_question_plan.json
+   - 无教师重点清单时，改用 HC-18 legacy 的 `kaoyan_picker.py pick`，并只把 `answer_confidence=high/medium` 的题注入 Agent 2
+   - `quota_status=insufficient` → 该来源不足，Agent 2 指令标注「不足部分原创补齐」，禁止无关题凑数
 5. 【必须】运行页码验证（2026-06-17 新增）：
    python verify_page_numbers.py --subject 【科目】
    - 如果输出 WARN → 该科目索引仍为旧 PDF 页码，Agent 2 调用指令中必须附带偏移量提示
@@ -271,11 +295,16 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 【命题双向细目表】：
 [从 HC-7 生成的知识领域×Bloom层级矩阵，含目标比例和题型分配]
 
-【考研真题配额】（HC-18）：
-- 目标：本批约 20% 题目（N 题）为考研原题（允许区间 15%–25%）
-- 候选文件：中间产物/{batchID}/kaoyan_candidates.json（kaoyan_picker.py 已按章节检索并配对答案）
-- 无真题覆盖章节：[列出，无则写"无"]
-- 引用方式：原题引用或轻度改编（知识点/答案/数值不得改动）；每道标注 kaoyan_origin 元数据 + 解析首句注明来源
+【真题双配额】（HC-22，新题库批次）：
+- 目标：考研约 20%（N 题）+ 执业医师约 20%（M 题），各允许 15%–25%
+- 候选文件：中间产物/{batchID}/real_question_plan.json 的 selected[]（含 source_id/keypoint_refs/answer_confidence/license/mode）
+- 无真题覆盖/不足：quota_status=insufficient，按实际可用量插入，剩余原创补齐；禁止无关题凑数
+- 标注：kaoyan_origin / zhiyi_origin + [源:...] + keypoint_ref + license；只使用 answer_confidence=high/medium
+- 引用方式：原题引用；知识点/答案/数值不得改动；解析首句注明来源
+
+【考研真题配额】（HC-18 legacy，仅旧批次或无教师重点清单时）：
+- 候选文件：中间产物/{batchID}/kaoyan_candidates.json（kaoyan_picker.py 已改为读取可信答案表）
+- 只注入 answer_confidence=high/medium 的题；`answer=ABCD/ABCDE` 前缀题禁止使用
 
 【目标考试】：[你确认的考试类型]
 

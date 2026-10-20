@@ -27,6 +27,12 @@ sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 BASE = Path(__file__).resolve().parent.parent
 GS_DIR = BASE / 'GoldenSet' / 'structured'
 
+# 复用 real_question 的扩展规则（显式答案短语 + 逐项正误 + 排除法）
+try:
+    from real_question.answer_recovery import recover_answer
+except ImportError:  # 以 scripts.xxx 模块方式导入时
+    from scripts.real_question.answer_recovery import recover_answer
+
 # 正面向标记：解析正文中明确给出正确选项
 POS_PATTERNS = [
     re.compile(r'故答\s*([A-E]{1,5})(?![A-E])'),
@@ -51,43 +57,15 @@ def extract_answer(entry):
     """
     从单条下册条目恢复答案。
     返回 (answer:str|None, confidence:str, evidence:str)
+
+    v1.1（2026-10-20）：改为调用 real_question.answer_recovery，新增
+    「应选/本题选/正确答案」与「X对/X错/故不答」证据，并支持排除法。
     """
-    expl = entry.get('explanation') or ''
-    raw = (entry.get('answer') or '').strip()
-    prefix = raw if PREFIX_RE.match(raw) else ''
-
-    hits = []  # (pattern_idx, letters)
-    for i, p in enumerate(POS_PATTERNS):
-        for m in p.finditer(expl):
-            hits.append((i, m.group(1), m.group(0)))
-
-    if not hits:
-        return None, '', ''
-
-    letters = set(prefix) if prefix else set('ABCDE')
-    valid = [(i, g, e) for i, g, e in hits if set(g) <= letters]
-    if not valid:
-        return None, '', ''
-
-    # 排除被「故不答」否定的字母（仅当候选为单字母时应用）
-    negs = set()
-    for m in NEG_PATTERN.finditer(expl):
-        negs |= set(m.group(1))
-
-    # 取优先级最高（模式序号最小）且信息最完整的命中
-    best = None
-    for i, g, e in sorted(valid, key=lambda x: (x[0], -len(x[1]))):
-        if len(g) == 1 and g in negs:
-            continue  # 与「故不答」冲突，跳过
-        best = (g, e)
-        break
-    if not best:
-        return None, '', ''
-
-    ans, ev = best
-    # 置信度：前缀内唯一命中 + 单字母 → high；多字母 → medium（多选需人工复核）
-    conf = 'high' if (len(ans) == 1 and prefix) else 'medium'
-    return ''.join(sorted(ans)), conf, ev
+    result = recover_answer(
+        entry.get('explanation') or '',
+        raw_answer=entry.get('answer'),
+    )
+    return result.answer, result.confidence, result.evidence
 
 
 def load_lower():

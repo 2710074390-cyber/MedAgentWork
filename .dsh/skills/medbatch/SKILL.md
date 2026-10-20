@@ -45,7 +45,8 @@ GATE-A2   python -m scripts.validate --batch {batchID}          # FAIL==0 才放
 GATE-A3   python gate_check.py --batch {batchID} --stage agent3_done
 GATE-A4   python gate_check.py --batch {batchID} --stage agent4_done
 MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json   # 最终交付 MD（2026-08-20 起强制）
-真题配额  python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json   # HC-18 考研真题占比（2026-08-21 起，终审前执行）
+真题配额  python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json   # HC-18 legacy（旧批次兼容）
+真题双配额 python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单} --out reports/validate/real_question_check_{batchID}.json   # HC-22 考研+执医 20%+20%（新题库批次终审前执行）
 插图门禁  python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp --list 复习资料/{科目}教学计划版/{科目}_配图清单.md   # GATE-A6 / HC-19 插图占位一致性（配图范围科目，生图验收后与终审前各跑一次；exit 1 → 回退豆包补图）
 重点覆盖  python scripts/check_keypoint_coverage.py --keypoints 输入素材/{科目}/{科目}_教师重点_*.md --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md   # HC-20/D0 教师重点原文锚定（有教师重点输入的批次，门禁A5 与终审前各跑一次；exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED）
 终审      python gate_check.py --batch {batchID} --stage final
@@ -82,7 +83,8 @@ MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_
 - `python gate_check.py --batch {batchID} --clear-halt` 清除该批次 HALT（修复后使用）
 - validate 报告输出在 `reports/validate/`，gate 报告在 `reports/gate/`
 - **MD 导出是最终交付格式**：GATE-A4 通过后必须运行 export-md 生成 `ALL_questions_FIXED.md`（JSON 为机器可读源，MD 为用户可读交付），与 JSON 同目录交付
-- **考研真题配额（HC-18）**：批次启动前运行 `kaoyan_picker.py pick`（检索该章节真题候选，注入 Agent 2 调用指令）；终审前运行 `kaoyan_picker.py check`（占比 ≥15% 通过；<15% 时核对候选，确无真题覆盖则标注"无真题覆盖"后放行）
+- **真题双配额（HC-22 · 2026-10-20 起，新题库批次）**：批次启动前运行 `python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json`，把 `selected` 逐题注入 Agent 2；终审前运行 `real_question_cli.py check`（考研/执医各 15%–25%，答案可信/重复/覆盖/license/溯源任一 FAIL → halt）。`quota_status=insufficient` 允许，但必须保留检索日志并用原创补齐。
+- **考研真题旧配额（HC-18 legacy）**：仅旧批次兼容；`kaoyan_picker.py pick/check` 已改为读取可信答案表，`--allow-unverified` 仅诊断。
 - **教师重点覆盖（HC-20/D0 · 2026-10-18）**：有教师重点/复习大纲输入的批次，Agent 5 交付前必须产出 `中间产物/{batchID}/{科目}_教师重点覆盖矩阵.md`（未覆盖/部分覆盖行数=0）；编排者在门禁A5 与终审前跑 `check_keypoint_coverage.py`，数值/时间窗/分级界值缺失或重点条目缺 `📌 重点原文（第X条）` 锚点 → exit 1 → 回退 Agent 5 补写（batch039 突发性聋时间窗丢失教训）
 
 ### 押题卷交付（2026-10-19 · HC-18 修订）

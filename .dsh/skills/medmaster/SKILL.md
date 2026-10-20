@@ -22,7 +22,9 @@ whenToUse: 用户要求开始新批次、继续推进管线、终审签收或处
 
 ## DSH 编排规则（替代 Cherry Studio 剪贴板接力）
 
-1. **批次启动**：用户说"开始新批次：科目+章节" → 按 HC-0 回显意图 → 用户确认 → 在 `workflow_state.json` 登记批次（参照既有批次结构）。启动检索阶段增加：`python scripts/kaoyan_picker.py pick --subject {科目} --keywords "..." --target {ceil(题数×0.2)} --out 中间产物/{batchID}/kaoyan_candidates.json`（HC-18）。
+1. **批次启动**：用户说"开始新批次：科目+章节" → 按 HC-0 回显意图 → 用户确认 → 在 `workflow_state.json` 登记批次（参照既有批次结构）。启动检索阶段：
+   - **新题库批次（HC-22，2026-10-20 起）**：`python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json`；把 `selected` 逐题注入 Agent 2。
+   - 旧批次兼容（HC-18 legacy）：`python scripts/kaoyan_picker.py pick --subject {科目} --keywords "..." --target {ceil(题数×0.2)} --out 中间产物/{batchID}/kaoyan_candidates.json`。
 2. **阶段调用**：用 subagent 工具（后台运行）调用下游 Agent，prompt 必须包含：
    - 角色 skill 名（medgen / medqc / medfix / medreview），子代理会自行加载
    - 批次号、科目、章节、模块划分、目标题数

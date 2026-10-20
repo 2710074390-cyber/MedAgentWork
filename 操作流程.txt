@@ -14,6 +14,8 @@ MedAgentWork 操作流程（DSH 版 · 2026-08-13 重构）
 2. 输入：「开始新批次：{科目}+{章节}」（如 开始新批次：医患沟通）
    → 编排者回显意图（科目/目标题数/模块划分）→ 你确认
 3. 编排者自动执行（无需你干预）：
+   - 真题双配额检索（HC-22，新题库批次）：
+     python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json
    - 调用 MedGen（subagent）→ 题库写入 中间产物/{batchID}/
    - 运行门禁：python validate_options.py --batch {batchID}
    - 调用 MedQC → 质检报告写入 质检报告/{batchID}/
@@ -35,6 +37,7 @@ MedAgentWork 操作流程（DSH 版 · 2026-08-13 重构）
   python gate_check.py --batch {batchID} --stage auto   # 自动检测阶段门禁
   python gate_check.py --batch {batchID} --clear-halt   # 修复后清除 HALT
   python validate_options.py --batch {batchID}  # 选项质量校验（报告在 reports/validate/）
+  python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单}  # HC-22 真题双配额（考研+执医，各15%–25%）
 
 门禁 BLOCKED → 回退对应 Agent 修复 → 重跑门禁。详见 .dsh/skills/medbatch/SKILL.md。
 

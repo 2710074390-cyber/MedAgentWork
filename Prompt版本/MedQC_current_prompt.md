@@ -77,7 +77,8 @@
 | D18 词重复线索检测（NBME Testwiseness） | 提取题干中≥2字的专业术语/关键词 → 检查是否仅出现在正确答案选项中而未出现在任何干扰项中。如是 → 标记should_fix，建议在至少2个干扰项中加入该词或近义表达 |
 | D19 收敛策略检测（NBME Convergence） | 提取5个选项的关键术语（疾病名、机制词、数值区间等）→ 计算每个选项的术语在其他4个选项中出现的"共享计数" → 如果正确选项的共享计数显著最高（>干扰项均值+1）→ 标记should_fix，考生可凭术语重叠猜测 |
 | D20 B1型题专项检查（2026-06-18 新增·batch005 ISSUE-007） | 对 B1 型题组逐组检查：① 共用选项笼统度——≥3 个选项 ≤2 字则标记 should_fix（过于宽泛）；② 答案位置集中度——≥60% 子题答案为同一字母则标记 should_fix；③ 干扰项有效性——每个共用选项至少对组内 1 道子题构成有效干扰（plausibility ≥ 0.3），完全不干扰任何子题的选项标记 should_fix；④ 子题知识点覆盖——组内子题是否考查不同维度。校验脚本：`python validate_options.py --batch {batchID}`（B1-1/B1-2/B1-3 机械化检测） |
-| D21 考研原题一致性（2026-08-21 新增·HC-18） | 对带 `kaoyan_origin` 的题目**100%** 比对 GoldenSet 源（`GoldenSet/structured/`，按 gs_id 配对）：① 题干知识点与真题一致；② 答案与官方公布/贺银成精析一致（发现不一致→标记 must_escalate，**不得**建议改真题答案）；③ 数值/诊断标准未被改动；④ mode="改编" 时改编幅度合理（换问法/换情境/调干扰项），未变更考点；⑤ kaoyan_origin 元数据完整（gs_id/year/source/mode）。另统计 kaoyan_origin 占比（目标≈20%，<15% 标记 should_fix 提示补充真题，≥25% 提示原创题比例偏低） |
+| D21a 考研原题一致性（2026-08-21 新增·HC-18；2026-10-20 并入 HC-22） | 对带 `kaoyan_origin` 的题目**100%** 比对 GoldenSet 源（`GoldenSet/structured/`，按 gs_id 配对）：① 题干知识点与真题一致；② 答案与 `question_bank/kaoyan_answers.json` 的 `answer_recovered` 一致（发现不一致→标记 must_escalate，**不得**建议改真题答案）；③ 数值/诊断标准未被改动；④ mode="改编" 时改编幅度合理；⑤ 元数据完整（gs_id/year/source/mode/answer_confidence），`answer_confidence=low` 一律 must_fix。另统计考研占比（目标≈20%，<15% 提示补充，≥25% 提示原创偏低）。 |
+| D21b 执业医师原题一致性（2026-10-20 新增·HC-22） | 对带 `zhiyi_origin` 的题目**100%** 比对 `question_bank/real_questions/zhiyi_items.jsonl`（按 source_id）：① 题干/选项/答案与源题一致；② 答案与 CMExam 答案一致（冲突 must_escalate，不得擅改）；③ 数值/诊断标准未改动；④ 元数据完整（source_id/source/mode/answer_confidence/license）；⑤ `answer_confidence=medium` 的题 100% 抽检，`low` 一律 must_fix；⑥ 统计执医占比（目标≈20%，15%–25%）。 |
 | D22 插图引用完整性（2026-09-XX 新增·HC-19，可选） | 仅当调用指令传入含插图的 Markdown 交付物（主复习资料/备考资料 MD，或图片质检任务）时执行：① `![...](...)` 占位符语法正确、alt 符合「图N：图注」；② 引用的图片文件存在；③ 图号全文唯一且连续、无「（此处应有图）」等残留；④ 配图清单条目与占位符一一对应（若传入）。无图片引用/未传 MD 时写 N/A，不影响门禁判定 |
 
 ### 抽查门机制（2026-06-16 新增·题填25+题245事件后，2026-06-18 扩展至全量）
@@ -139,7 +140,8 @@ D17 选项同质性:      [PASS/FAIL] — [简述，≤20字]
 D18 词重复线索:      [PASS/FAIL] — [简述，≤20字]
 D19 收敛策略:        [PASS/FAIL] — [简述，≤20字]
 D20 B1型题专项:      [PASS/FAIL] — [简述/如无B1型题写N/A，≤20字]
-D21 考研原题一致性:  [PASS/FAIL] — [简述/如无考研原题写N/A，≤20字]
+D21a 考研原题一致性: [PASS/FAIL] — [简述/如无考研原题写N/A，≤20字]
+D21b 执业医师原题一致性: [PASS/FAIL] — [简述/如无执医原题写N/A，≤20字]
 D22 插图引用完整性:  [PASS/FAIL/N-A] — [无插图交付物写N/A，≤20字]
 ```
 
@@ -234,7 +236,8 @@ D22 插图引用完整性:  [PASS/FAIL/N-A] — [无插图交付物写N/A，≤2
       "D18_词重复线索": { "pass": 0, "fail": 0 },
       "D19_收敛策略": { "pass": 0, "fail": 0 },
       "D20_B1型题专项": { "pass": 0, "fail": 0 },
-      "D21_考研原题一致性": { "pass": 0, "fail": 0 },
+      "D21a_考研原题一致性": { "pass": 0, "fail": 0 },
+      "D21b_执业医师原题一致性": { "pass": 0, "fail": 0, "note": "无执医原题时 N/A" },
       "D22_插图引用完整性": { "pass": 0, "fail": 0, "note": "无插图交付物时 N/A" }
     }
   },

@@ -89,7 +89,8 @@
 |------|------|----------|
 | bloom_sampler.py | Bloom 认知层级实时采样，≥50题时偏差检测 | `python scripts/bloom_sampler.py --batch {batchID} --threshold 15` |
 | frequency_analyzer.py | 考点频率分析+押题数据注入 | `python scripts/frequency_analyzer.py --golden GoldenSet/ --rag-index --subject {code}` |
-| kaoyan_picker.py | 考研真题配额（HC-18）：pick 检索真题候选 / check 校验占比 | `python scripts/kaoyan_picker.py pick --subject {科目} --keywords "..." --target N --out ...`；`check --file ...`（占比<15% exit 1） |
+| kaoyan_picker.py | 考研真题旧工具（HC-18 legacy）：已改为读取可信答案表 | `pick --subject ... --keywords ... --target N --out ...`；`check --file ...`；`--allow-unverified` 仅诊断 |
+| real_question_cli.py | 真题双来源配额（HC-22）：build 建索引 / plan 选题 / check 终审 | `python scripts/real_question_cli.py build`；`plan --subject ... --target ... --keypoints ... --blueprint ...`；`check --file ... --plan ... --keypoints ...` |
 | workflow_state.py | workflow_state.json 统一读写/校验/迁移（2026-08-13 重构） | `python scripts/workflow_state.py --check / --migrate / --show {batchID}` |
 
 ## HC-17 状态写入单一入口（2026-08-13 正式重构新增）
@@ -144,6 +145,31 @@
 - **文案与数据同源（同一提交内）**：新增/下线任一条目，必须同时改：① 数据数组；② 分区大标题「N 科」；③ 分区副标题（教学计划版 N 科 / 教师重点版 N 科）；④ 页面统计数字（题库注册量、学科数）。缺一即半更新。
 - **并发发布**：同一发布窗口只允许一个发布者；线上出现更新的部署时先合并。
 - **实现**：`scripts/check_site_freshness.py`（门禁）；`scripts/deploy_site.ps1`（前置 ahead/behind 闸 + 部署后自动调用门禁）。CI 侧同样以 `origin/main` 为唯一源。
+
+## HC-22 真题检索与双来源配额（2026-10-20 新增 · Agent 1/2/3/4 共同执行）
+
+> 从下一次**题库**批次起：约 **1/5 考研真题 + 1/5 执业医师真题**；检索不到就**不插入**，用原创补齐；教师重点优先于凑比例。押题卷暂不适用本配额。
+> 旧 HC-18 的「考研 20%」条款由本节接管；HC-18 仍保留「产物形态契约」含义，避免编号双用继续扩散。
+
+- **数据源（只读）**：
+  - 考研：`GoldenSet/structured/` → `question_bank/real_questions/kaoyan_items.jsonl`；
+  - 执业医师：`知识库素材/cmexam/` → `question_bank/real_questions/zhiyi_items.jsonl`（原题；用户已确认仅非商业个人刷题使用，`license=public_noncommercial`）；
+  - 可选授权源：人卫题库（有授权时 `license=public`）。
+- **批次启动（Agent 1）**：
+  `python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json`
+  - 产出逐题 `source_id / keypoint_refs / answer_confidence / license / mode`；
+  - `quota_status=insufficient` 允许存在，但必须保留检索日志，禁止用无关题凑数。
+- **答案可信**：只有 `answer_confidence=high/medium` 的题可入选；`low` 一律不插入。考研答案以 `question_bank/kaoyan_answers.json` 的 `answer_recovered` 为准，**禁止**再用下册行首前缀 `ABCD/ABCDE`。来源优先级：扫描版绿色标记（high/medium）≈ PDF 标准答案/人工转录（high）> PDF 绿色标记（medium）> 解析规则（high/medium）；跨版本 PDF 题号可能错位，冲突时以扫描版原书绿色标记为准。
+- **真题标注（三处缺一不可）**：
+  1. 元数据：`kaoyan_origin{gs_id,year,source,mode,answer_confidence}` 或 `zhiyi_origin{source_id,source,mode,answer_confidence}`；
+  2. 溯源锚点：`[源:考研真题 GS-XXX]` / `[源:执业医师 CMExam-XXX]`；
+  3. 每题 `keypoint_ref`（HC-20 统一锚定清单编号）与 `license`。
+- **MedGen**：只插入 plan 中 `selected` 的题；保留原题题干/选项/答案/数值；不得把 `考点重构` 标成 `原题`；配额不足部分由原创补齐。
+- **MedQC**：D21 扩展为 D21a（考研）/ D21b（执业医师）：答案、考点、数值、选项映射、license 全比对；`medium` 答案 100% 抽检；冲突 `must_escalate`。
+- **终审门禁（Agent 1）**：
+  `python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {教师重点锚定清单} --out reports/validate/real_question_check_{batchID}.json`
+  FAIL（比例/答案/重复/覆盖/license/溯源任一）→ **halt**，不得用旧 `--golden-absent` 绕过。
+- **旧工具**：`scripts/kaoyan_picker.py` 已改为读取可信答案表；`--allow-unverified` 仅诊断用，不得进入生产。
 
 ## 插图生成分工（2026-09-07 固化 · 详见 .dsh/skills/medillustration/）
 

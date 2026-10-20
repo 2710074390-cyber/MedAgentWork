@@ -31,6 +31,9 @@ reports/
 # registry 写前自动备份（安全快照，不入库；git 历史即最终备份）
 question_bank/registry_backup_*.jsonl
 
+# 真题题目级索引（可由 GoldenSet + 本地 CMExam 重建；CMExam 本身不入库，2026-10-20）
+question_bank/real_questions/
+
 # 本地快捷方式（指向外部路径，仅本机有效）
 *.lnk
 
