@@ -26,8 +26,10 @@ v1.1 变更（《交接终审报告_20260821.md》§四 #6）：
   6. 难度配平：卷面 P=mean(calibrated_p) 目标区间 [--p-min, --p-max]
 
 输出：
-  --output 默认 最终产物/押题卷_{subject}_{N}题.json
-    格式兼容 scripts/quiz_template.html 的 QUESTIONS 数组
+  --output 默认 最终产物/押题卷_{subject}_{N}题.json（机器可读源）
+  --md-out 默认 同目录同名 .md —— **押题卷交付形态**（2026-10-19 起）：
+    题型归一为 单选题/多选题/判断题，供「大四上刷题」等刷题软件导入。
+    HTML 交付已下线（quiz_template.html 仅历史遗留，不再产出）
   （stats 字段带 paper_meta 供报告参考；统计报告写 reports/paper/）
 
 用法:
@@ -377,6 +379,101 @@ def to_template_questions(paper):
     return out
 
 
+# ── MD 导出（2026-10-19 · 押题卷交付形态，供「大四上刷题」导入）────────
+# 押题卷交付由 HTML 改为 MD；题型归一为 单选/多选/判断 三标签
+# （A1/A2/A3/A4/B1 皆单字母答案 → 单选题；X → 多选题；判断 → 判断题）。
+PAPER_TYPE_LABEL = {'A1': '单选题', 'A2': '单选题', 'A3': '单选题', 'A4': '单选题',
+                    'B1': '单选题', 'X': '多选题', '判断': '判断题'}
+_LETTERS = 'ABCDEFGHIJ'
+
+
+def _paper_type(q):
+    """题目 → 单选/多选/判断 三标签（刷题软件口径）。"""
+    t = str(q.get('type') or '').strip()
+    if t == '判断':
+        return '判断题'
+    opts = [str(o).strip() for o in (q.get('options') or [])]
+    if len(opts) == 2 and set(opts) == {'正确', '错误'}:
+        return '判断题'
+    if t in PAPER_TYPE_LABEL:
+        return PAPER_TYPE_LABEL[t]
+    letters = ''.join(c for c in str(q.get('answer') or '').upper() if 'A' <= c <= 'J')
+    return '多选题' if len(letters) >= 2 else '单选题'
+
+
+def export_paper_md(questions, meta, outpath):
+    """押题卷 → MD（交付形态）。
+
+    格式与题库 MD（ALL_questions_FIXED.md）同族，便于本地规则导入刷题软件：
+      ### {n}. [{题型}｜{Bloom}] {qid}
+      > 模块：{system}｜页码：{source}
+      **{题干}**
+      - **{字母}. {选项}** ✅（正确项加粗打勾）
+      **答案：{answer}**
+      解析：{explanation}
+    题型仅取 单选题 / 多选题 / 判断题。
+    """
+    from collections import OrderedDict, Counter
+
+    by_mod = OrderedDict()
+    for q in questions:
+        mod = str(q.get('system') or '').strip() or '未分组'
+        by_mod.setdefault(mod, []).append(q)
+
+    type_counter = Counter(_paper_type(q) for q in questions)
+    lines = []
+    lines.append(f'# {meta.get("subject") or "综合"}押题卷（{len(questions)}题）')
+    lines.append('')
+    lines.append('> 组卷口径：考频权重 × 难度配平（calibrated_p）'
+                 f' | 生成：{datetime.now().strftime("%Y-%m-%d %H:%M")}')
+    lines.append(f'> 题型分布：{"、".join(f"{k}×{v}" for k, v in type_counter.most_common())}')
+    lines.append('')
+    lines.append('---')
+    lines.append('')
+
+    seq = 0
+    for mod, qs in by_mod.items():
+        lines.append(f'## {mod}（{len(qs)}题）')
+        lines.append('')
+        for q in qs:
+            seq += 1
+            qt = _paper_type(q)
+            bl = str(q.get('bloom') or '').strip() or '未标注'
+            qid = q.get('qid') or f'Q{seq}'
+            lines.append(f'### {seq}. [{qt}｜{bl}] {qid}')
+            lines.append('')
+            src = str(q.get('source') or '').strip()
+            meta_line = f'模块：{mod}'
+            if src:
+                meta_line += f'｜页码：{src}'
+            lines.append(f'> {meta_line}')
+            lines.append('')
+            lines.append(f'**{q.get("stem") or ""}**')
+            lines.append('')
+            ans = str(q.get('answer') or '').upper()
+            correct = {c for c in ans if 'A' <= c <= 'J'}
+            for i, opt in enumerate(q.get('options') or []):
+                letter = _LETTERS[i] if i < len(_LETTERS) else str(i + 1)
+                if letter in correct:
+                    lines.append(f'- **{letter}. {opt}** ✅')
+                else:
+                    lines.append(f'- {letter}. {opt}')
+            lines.append('')
+            lines.append(f'**答案：{ans}**')
+            lines.append('')
+            exp = str(q.get('explanation') or '').strip()
+            if exp:
+                lines.append(f'解析：{exp}')
+                lines.append('')
+            lines.append('---')
+            lines.append('')
+
+    out_path = Path(outpath)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text('\n'.join(lines), encoding='utf-8')
+    return out_path, type_counter
+
+
 # ── CLI ─────────────────────────────────────────────────
 
 def main():
@@ -387,7 +484,8 @@ def main():
                         help='类型配额，如 A1:0.4,A2:0.25,A3:0.15,B1:0.1,X:0.1')
     parser.add_argument('--p-min', type=float, default=P_MIN, help='卷面 P 下限（默认 0.55）')
     parser.add_argument('--p-max', type=float, default=P_MAX, help='卷面 P 上限（默认 0.65）')
-    parser.add_argument('--output', '-o', default=None, help='输出 JSON 路径')
+    parser.add_argument('--output', '-o', default=None, help='输出 JSON 路径（机器可读源）')
+    parser.add_argument('--md-out', default=None, help='押题卷 MD 交付路径（默认同 JSON 同名 .md）')
     parser.add_argument('--dry-run', action='store_true', help='只出统计，不写卷')
     args = parser.parse_args()
 
@@ -443,10 +541,10 @@ def main():
         print('（dry-run：未写卷）')
         return
 
-    # 输出卷（quiz_template QUESTIONS 兼容）
+    # 输出卷（JSON 为机器可读源 + MD 为交付形态）
     questions = to_template_questions(paper)
     paper_meta = {
-        'title': f'{args.subject or "综合"}押题卷（组卷公式 v1.1）',
+        'title': f'{args.subject or "综合"}押题卷',
         'generated_at': datetime.now().isoformat(),
         'subject': args.subject or '全部',
         'count': len(questions),
@@ -467,7 +565,13 @@ def main():
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
-    print(f'\n✅ 试卷已输出: {out_path}')
+    print(f'\n✅ 试卷 JSON（源）已输出: {out_path}')
+
+    # MD 交付（2026-10-19 起：押题卷交付形态 = MD，供「大四上刷题」导入；HTML 下线）
+    md_path = args.md_out or str(Path(out_path).with_suffix('.md'))
+    md_path, type_counter = export_paper_md(questions, paper_meta, md_path)
+    print(f'✅ 押题卷 MD（交付）已输出: {md_path}')
+    print(f'   题型分布（单选/多选/判断）: {dict(type_counter)}')
 
     # 统计报告
     REPORT_DIR.mkdir(parents=True, exist_ok=True)

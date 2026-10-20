@@ -165,7 +165,7 @@ archive/
 | gate_check.py | 门禁报告 | `reports/gate/` |
 | save.py | 题库 MD/JSON | `中间产物/{batchID}/` 或 `最终产物/{batchID}/` |
 | qbank.py export-md | 最终交付题库 MD | 默认 `最终产物/{batchID}/ALL_questions_FIXED.md`（2026-08-20 起 GATE-A4 强制） |
-| inject_obsidian_theme.py | Obsidian 树主题注入/移除（`--remove` 反注入）| 就地修改 `最终产物/*押题卷*.html` 与 `index.html`（⚠️ 2026-08-12 已从线上站移除 Obsidian 主题，站点恢复三主题；脚本保留备用） |
+| inject_obsidian_theme.py | Obsidian 树主题注入/移除（`--remove` 反注入）| 就地修改 `最终产物/*押题卷*.html` 与 `index.html`（⚠️ 2026-08-12 已从线上站移除 Obsidian 主题，站点恢复三主题；2026-10-19 押题卷 HTML 交付已下线，本脚本仅对遗留 HTML 有效、保留备用） |
 | verify_obsidian_theme.py | 主题浏览器实测截图 | `reports/theme_shots/` |
 
 脚本不可将报告写入根目录。maintenance.py 每次运行检测并修正。
@@ -405,11 +405,11 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 | **blueprint.py** | 1.0.0 | `scripts/blueprint.py` | `python scripts/blueprint.py` — 考频蓝图（2026-08-20 第三方交付）：GS 下册 + 贺银成引用 → 学科权重 + 高频真题，输出 `知识库素材/blueprint.json`（标准库） |
 | **anchor_bank.py** | 1.0.0 | `scripts/anchor_bank.py` | `C:/Users/38063/AppData/Local/Programs/Python/Python312/python.exe scripts/anchor_bank.py download/embed/anchor/check` — CMExam 锚点难度体系（2026-08-20 第三方交付）。⚠️ **必须用 Python312**（torch+sentence-transformers 已装，默认 python 3.10 无 torch）；embed 已缓存可跳过；重跑 anchor 后必须 `python scripts/apply_calibrated_difficulty.py` 回写 registry |
 | **apply_calibrated_difficulty.py** | 1.1.0 | `scripts/apply_calibrated_difficulty.py` | `python scripts/apply_calibrated_difficulty.py [--dry-run]` — **expanded 校准值回写 registry（2026-08-21 终审修订）**：默认读 `calibrated_difficulty.expanded.jsonl`，按 qid join 刷新 calibrated_p/calibration_confidence/calibration_flag/max_sim/prior_key + 补 anchor_source；写前自动备份 registry.jsonl；registry 已去重为 qid 唯一，qid join 安全 |
-| **paper_builder.py** | 1.0.0 | `scripts/paper_builder.py` | `python scripts/paper_builder.py --subject 内科学 --count 100 [--dry-run]` — 组卷公式 v1.0（2026-08-20）：考频权重 × 难度配平(calibrated_p) × NFD 过滤；输出兼容 `scripts/quiz_template.html` QUESTIONS 数组 |
-| **clean_produce_markup.py** | 1.0.0 | `scripts/clean_produce_markup.py` | `python scripts/clean_produce_markup.py [--dry-run]` — 交付物清理（2026-08-22）：清除复习资料 MD/HTML 的批次标记/自检报告残留 + 押题卷副标题成品化（去「统一模板/TEST」）；备份至 `archive/交付物清理前备份_*` |
-| **verify_produce_rules.py** | 1.1.0 | `scripts/verify_produce_rules.py` | `python scripts/verify_produce_rules.py` — 产物形态门禁（2026-08-22，FAIL==0 才放行）：扩展名白名单（押题卷=仅html / 题库=md+html+pdf / 复习资料=md+html）、押题卷副标题质检、复习资料无流程残留/无 Mermaid、**PDF 来源断言（2026-09-28 新增，覆盖 `大三下/` + `大四上/`：每个 PDF 必须 ≤25 MiB 且 `/Creator` 不含 `HeadlessChrome` —— 后者是 `chrome --headless=new --print-to-pdf` 的脚本指纹）**。规则源：`docs/产物格式规范.md`（HC-18） |
+| **paper_builder.py** | 1.1.0 | `scripts/paper_builder.py` | `python scripts/paper_builder.py --subject 内科学 --count 100 [--md-out …]` — 组卷公式 v1.1：考频权重 × 难度配平(calibrated_p) × NFD 过滤；输出 JSON（机器可读源）+ **押题卷 MD（交付形态，题型归一 单选题/多选题/判断题，2026-10-19 起）**，供「大四上刷题」导入 |
+| **clean_produce_markup.py** | 1.0.0 | `scripts/clean_produce_markup.py` | `python scripts/clean_produce_markup.py [--dry-run]` — 交付物清理（2026-08-22）：清除复习资料 MD/HTML 的批次标记/自检报告残留 + 押题卷副标题成品化（去「统一模板/TEST」；⚠️ 押题卷 HTML 已下线，该分支仅对 v1 遗留 HTML 生效）；备份至 `archive/交付物清理前备份_*` |
+| **verify_produce_rules.py** | 1.2.0 | `scripts/verify_produce_rules.py` | `python scripts/verify_produce_rules.py` — 产物形态门禁（FAIL==0 才放行）：扩展名白名单（**押题卷=md 交付 / .html 为 v1 遗留** / 题库=md+html+pdf / 复习资料=md+html）、**押题卷 MD 题型标签（单选/多选/判断）与 `**答案：X**` 行校验（2026-10-19 起）**、复习资料无流程残留/无 Mermaid、**PDF 来源断言（2026-09-28 新增，覆盖 `大三下/` + `大四上/`：每个 PDF 必须 ≤25 MiB 且 `/Creator` 不含 `HeadlessChrome`）**。规则源：`docs/产物格式规范.md`（HC-18） |
 | **render_qbank_html.py** | 1.0.0 | `scripts/render_qbank_html.py` | `python scripts/render_qbank_html.py --input <题库JSON> --output <out.html> [--title ...]` — 题库最终产物 HTML 交付版（2026-08-22）：题库 PDF 一律人工上传，本脚本只产 HTML |
-| **quiz_template.html** | 1.0.0 | `scripts/quiz_template.html` | 统一押题卷模板（2026-08-20 第三方交付）：CSS 变量化/亮暗主题/响应式/作答采集；题目注入 `<script id="quiz-data">` 的 QUESTIONS 数组 |
+| **quiz_template.html** | 1.0.0（**已下线**） | `scripts/quiz_template.html` | ⚠️ 2026-10-19 起押题卷交付形态改为 **MD**，本 HTML 模板**仅历史遗留**，新产物不再使用（押题卷导出走 `paper_builder.py`） |
 | **validate** (validate_options.py) | 2.0.0 | `scripts/validate/` | `python -m scripts.validate --batch {batchID}` 或 `python validate_options.py --batch {batchID}` — 选项设计机械化校验器（R1-R13+B1+JS1+S3+S4）。v2.0 模块化拆分（2026-09-09）：`scripts/validate/` 包含 parsers/rules_numeric/rules_structural/rules_static/engine/reporter，根目录 validate_options.py 为向后兼容入口 |
 | **dsh** (DeepSeek Harness) | 0.1.0-rc.7 | `C:\Users\38063\Desktop\Web-AI\tools\dsh\node_modules\.bin\dsh` | `cd C:\Users\38063\Desktop\Web-AI\tools\dsh && npx dsh web`（需 API key） |
 

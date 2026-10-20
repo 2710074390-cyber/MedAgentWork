@@ -10,7 +10,7 @@
 ## 1. 项目是什么
 
 - **位置**：`C:\Users\38063\Desktop\MedAgentWork`（Windows，中文路径，命令中加英文双引号）
-- **目标**：把临床医学教材章节 + 1994–2025 考研西综真题，量产为三类产物：**题库**（JSON→MD/HTML）、**主复习资料**（MD→HTML→PDF）、**押题卷**（HTML）→ 上架到站点 `大三下/`（已发布 https://med-review-site.pages.dev）与 `大四上/`
+- **目标**：把临床医学教材章节 + 1994–2025 考研西综真题，量产为三类产物：**题库**（JSON→MD/HTML）、**主复习资料**（MD→HTML→PDF）、**押题卷**（MD，题型归一 单选/多选/判断，供「大四上刷题」导入）→ 上架到站点 `大三下/`（已发布 https://med-review-site.pages.dev）与 `大四上/`
 - **生产系统**：5 个角色 Agent 串行管线 + 机械化门禁。角色完整提示词是核心资产，见 §3「角色提示词」行
 - **输入**：用户教材全文 txt（带页码锚点）+ 本地 RAG 索引（付费 API，成本纪律见 §9）
 
@@ -164,7 +164,7 @@ python 知识库素材/validate_configs.py       # RAG 配置校验（改配置�
 | 考研真题 | `GoldenSet/`（只读）：上册 5,168 题题干/选项 + 下册 4,448 条答案/解析（gs_id 配对）+ `GoldenSet/structured/` | 仅题库批次使用（HC-18）；答权威性以官方为准 |
 | 贺银成讲义/真题、昭昭题眼 | `知识库素材/` 索引 jy1/jy2/jy3、zt1/zt2、zhaozhao-part1/2 | 复习资料补充上下文用**本地 grep**（0 API 费用），行内标注「贺银成讲义补充」 |
 | 校准难度/考频蓝图 | `scripts/blueprint.py` → `知识库素材/blueprint.json`；`question_bank/` calibrated 字段 | 组卷/押题用；**calibrated_p 是先验估计，禁止对外标注实测难度** |
-| 统一押题卷模板 | `scripts/quiz_template.html`（QUESTIONS 数组注入） | 押题卷 = 仅 HTML；PDF 一律人工 |
+| 押题卷导出 | `scripts/paper_builder.py`（JSON 源 + MD 交付，题型归一 单选/多选/判断） | 押题卷 = 仅 MD（HTML 已下线）；PDF 一律人工 |
 
 **学科 RAG code 速查**（subject_config.json 23 入口）：内科学 internal-med / 外科学 surgery / 妇产 obgyn / 急诊 emergency / 耳鼻喉 ent / **传染病 infectious-diseases / 口腔 stomatology / 眼科 ophthalmology**（新增三科均为 chunk 800 / top_n 5 / hybrid ✓ / kw 0.3~0.4）。
 

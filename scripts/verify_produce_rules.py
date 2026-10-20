@@ -2,9 +2,10 @@
 # -*- coding: utf-8 -*-
 """verify_produce_rules.py — 产物形态门禁（2026-08-22）
 
-按 docs/产物格式规范.md 校验交付目录与押题卷模板：
-  1. 扩展名白名单：押题卷=仅 .html；题库=仅 .md/.html/.pdf；复习资料=仅 .md/.html
-  2. 押题卷：PAPER_META.sub 无「统一模板/TEST/v1.x」；QUESTIONS 字段契约（options 纯数组）
+按 docs/产物格式规范.md 校验交付目录与押题卷产物：
+  1. 扩展名白名单：押题卷=仅 .md（.html 为 v1 遗留）；题库=仅 .md/.html/.pdf；复习资料=仅 .md/.html
+  2. 押题卷 MD：题目标题 `### N. [单选题|多选题|判断题｜Bloom] qid`（题型标签仅三值）、含 `**答案：X**`、无内部标记
+     （.html 为 v1 遗留：按旧契约只提示，不判 FAIL）
   3. 复习资料 MD：无批次/流程标记残留；无 Mermaid；无 YAML front matter
   4. 复习资料 HTML：无批次标记残留
   5. PDF 来源断言（2026-09-28 新增）：`大三下/` + `大四上/` 下每个 PDF 必须
@@ -28,7 +29,7 @@ SITE = ROOT / "大三下"
 SITE_ROOTS = [SITE, ROOT / "大四上"]
 
 ALLOWED = {
-    "押题卷": {".html"},
+    "押题卷": {".md", ".html"},     # .md = 交付形态（2026-10-19 起）；.html = v1 遗留，仅提示
     "题库": {".md", ".html", ".pdf"},
     "复习资料": {".md", ".html"},
 }
@@ -116,10 +117,27 @@ def main():
         check(f"PDF 来源 · {rel}", not issues,
               "; ".join(issues) if issues else f"{size/1048576:.2f} MiB · Creator={creator[:38]}")
 
-    # 2) 押题卷
+    # 2) 押题卷（2026-10-19 起交付形态 = MD；.html 为 v1 遗留，仅提示不判 FAIL）
     quiz = SITE / "押题卷"
     if quiz.exists():
-        for f in sorted(quiz.glob("*.html")):
+        for f in sorted(quiz.glob("*.md")):
+            t = f.read_text(encoding="utf-8")
+            issues = []
+            labels = {x.strip() for x in re.findall(r"\[([^\]｜|]{1,12})[｜|]", t)}
+            bad = sorted(labels - {"单选题", "多选题", "判断题"})
+            if bad:
+                issues.append("题型标签越界（仅允许 单选题/多选题/判断题）: " + ",".join(bad[:6]))
+            if not re.search(r"^\s*###\s+\d+\.\s*\[(?:单选题|多选题|判断题)", t, re.M):
+                issues.append("缺 `### N. [单选题|多选题|判断题｜Bloom] qid` 题目标题")
+            if "**答案：" not in t:
+                issues.append("缺 `**答案：X**` 行")
+            if BANNED_SUB.search(t):
+                issues.append("含内部标记（统一模板/TEST/v1.x）")
+            check(f"押题卷 MD · {f.name}", not issues, "; ".join(issues) if issues else "")
+        html_files = sorted(quiz.glob("*.html"))
+        if html_files:
+            print(f"  ⚠️ 押题卷有 {len(html_files)} 份 HTML 为 v1 遗留（新产物须为 .md，HTML 已下线）")
+        for f in html_files:
             t = f.read_text(encoding="utf-8")
             issues = []
             m = re.search(r'"sub"\s*:\s*"([^"]+)"', t)
@@ -129,7 +147,7 @@ def main():
                 issues.append("缺 QUESTIONS 数组")
             if "options" in t and re.search(r'"options"\s*:\s*\[\s*\{', t):
                 issues.append("options 为对象数组（应为纯文本数组）")
-            check(f"押题卷 · {f.name}", not issues, "; ".join(issues) if issues else
+            check(f"押题卷 HTML（遗留）· {f.name}", not issues, "; ".join(issues) if issues else
                   (f"sub={m.group(1) if m else '?'}"))
 
     # 3) 复习资料 MD
