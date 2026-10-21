@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教师重点蓝图版 · 样板页｜耳鼻咽喉头颈外科学</title>
+<style>
+/* ============================================================
+   MedAgentWork · BPA v1.0 样板页
+   设计基线：14.5px / 1.75 / 720px / 4.5:1 / 三色五 callout
+   零外部依赖，离线可用；浅色为默认，可切换深色
+   ============================================================ */
+:root{
+  --bg:#f5f6f8;
+  --surface:#ffffff;
+  --surface-2:#eef1f5;
+  --surface-3:#e6ebf1;
+  --ink:#17202a;
+  --ink-2:#46525f;
+  --ink-3:#5f6b7a;
+  --line:#dfe5ec;
+  --line-strong:#c8d2dd;
+  --brand:#1f4e79;
+  --brand-2:#2b6cb0;
+  --brand-soft:#e8f1fb;
+  --red:#b83a3a;
+  --red-bg:#fdf2f2;
+  --red-line:#f0c9c9;
+  --amber:#a56a12;
+  --amber-bg:#fff8e8;
+  --amber-line:#f0d9a8;
+  --green:#2f6f4e;
+  --green-bg:#eef8f1;
+  --green-line:#bfe0cb;
+  --shadow-sm:0 1px 2px rgba(20,30,45,.06),0 1px 3px rgba(20,30,45,.05);
+  --shadow-md:0 8px 24px rgba(20,30,45,.08),0 2px 6px rgba(20,30,45,.04);
+  --radius:14px;
+  --radius-sm:9px;
+  --measure:720px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Hiragino Sans GB",sans-serif;
+  --mono:"SF Mono","Cascadia Code","Consolas","Liberation Mono",monospace;
+}
+[data-theme="dark"]{
+  --bg:#0d1117;
+  --surface:#151a22;
+  --surface-2:#1b222c;
+  --surface-3:#222b37;
+  --ink:#e6e8eb;
+  --ink-2:#b3bdc9;
+  --ink-3:#7f8b99;
+  --line:#2a3340;
+  --line-strong:#3a4656;
+  --brand:#8ab4e8;
+  --brand-2:#79c0ff;
+  --brand-soft:#12233a;
+  --red:#ff7b72;
+  --red-bg:#2a1618;
+  --red-line:#4a2427;
+  --amber:#e3b341;
+  --amber-bg:#2a2213;
+  --amber-line:#4a3b1c;
+  --green:#7ee787;
+  --green-bg:#12261a;
+  --green-line:#22452f;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  --shadow-md:0 10px 30px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--font);font-size:14.5px;line-height:1.75;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(900px 420px at 8% -8%, color-mix(in srgb, var(--brand-2) 10%, transparent), transparent 70%),
+    radial-gradient(700px 380px at 100% 0%, color-mix(in srgb, var(--green) 7%, transparent), transparent 70%);
+}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+.shell{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 24px 64px}
+.measure{max-width:var(--measure)}
+
+/* ---------- topbar ---------- */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-inner{max-width:1180px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+.logo{
+  width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--brand),var(--brand-2));color:#fff;
+  font-size:13px;font-weight:800;letter-spacing:.5px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35);
+}
+.brand small{display:block;font-size:11px;color:var(--ink-3);font-weight:500;letter-spacing:.3px}
+.top-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.btn{
+  appearance:none;border:1px solid var(--line-strong);background:var(--surface);
+  color:var(--ink-2);border-radius:999px;padding:6px 12px;font:inherit;font-size:12.5px;
+  cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.18s ease;
+}
+.btn:hover{border-color:var(--brand-2);color:var(--brand-2);transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-primary{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand-2);border-color:var(--brand-2);color:#fff}
+.tag{
+  display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;
+  font-size:11.5px;font-weight:600;letter-spacing:.2px;border:1px solid var(--line);
+  background:var(--surface);color:var(--ink-2);
+}
+.tag-brand{background:var(--brand-soft);border-color:color-mix(in srgb,var(--brand-2) 25%,var(--line));color:var(--brand-2)}
+.tag-red{background:var(--red-bg);border-color:var(--red-line);color:var(--red)}
+.tag-amber{background:var(--amber-bg);border-color:var(--amber-line);color:var(--amber)}
+.tag-green{background:var(--green-bg);border-color:var(--green-line);color:var(--green)}
+.tag-muted{color:var(--ink-3)}
+
+/* ---------- hero ---------- */
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:end;padding:46px 0 26px}
+.eyebrow{font-size:11.5px;letter-spacing:1.6px;text-transform:uppercase;color:var(--brand-2);font-weight:700;margin-bottom:10px}
+h1{font-size:34px;line-height:1.22;margin:0 0 12px;letter-spacing:-.5px}
+h1 em{font-style:normal;color:var(--brand-2)}
+.lede{font-size:16px;line-height:1.8;color:var(--ink-2);margin:0 0 18px;max-width:640px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px}
+.spec{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 18px 16px;box-shadow:var(--shadow-sm);
+}
+.spec h3{margin:0 0 10px;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-3)}
+.spec dl{display:grid;grid-template-columns:auto 1fr;gap:7px 12px;margin:0;font-size:12.5px}
+.spec dt{color:var(--ink-3)}
+.spec dd{margin:0;color:var(--ink);font-weight:600}
+.spec .note{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--ink-3);line-height:1.6}
+
+/* ---------- kpi ---------- */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:16px 0 34px}
+.kpi{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px 16px 14px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;
+}
+.kpi::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--brand-2);opacity:.75}
+.kpi.k-red::after{background:var(--red)}
+.kpi.k-amber::after{background:var(--amber)}
+.kpi.k-green::after{background:var(--green)}
+.kpi .label{font-size:11.5px;color:var(--ink-3);letter-spacing:.4px}
+.kpi .value{font-size:30px;line-height:1.15;font-weight:800;letter-spacing:-.8px;margin:4px 0 2px;font-variant-numeric:tabular-nums}
+.kpi .sub{font-size:11.5px;color:var(--ink-3)}
+.kpi .delta{font-size:11.5px;font-weight:600;color:var(--green);margin-top:4px}
+
+/* ---------- sections ---------- */
+section{margin:42px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:16px}
+.section-head h2{font-size:22px;line-height:1.3;margin:0;letter-spacing:-.2px}
+.section-head p{margin:4px 0 0;color:var(--ink-3);font-size:12.5px}
+.panel{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;box-shadow:var(--shadow-sm);
+}
+.panel.pad-lg{padding:26px}
+.muted{color:var(--ink-3)}
+.small{font-size:12px}
+.tiny{font-size:11px}
+
+/* ---------- blueprint table ---------- */
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius-sm)}
+table{border-collapse:collapse;width:100%;font-size:12.5px;line-height:1.55}
+th,td{padding:9px 11px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--surface-2);font-size:11.5px;color:var(--ink-2);letter-spacing:.3px;font-weight:700;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tbody tr:hover{background:color-mix(in srgb,var(--brand-soft) 45%,transparent)}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{height:6px;border-radius:999px;background:var(--surface-3);overflow:hidden;min-width:70px}
+.bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--brand-2),var(--green))}
+.status{display:inline-flex;align-items:center;gap:5px;font-weight:600;white-space:nowrap}
+.status.ok{color:var(--green)}
+.status.part{color:var(--amber)}
+.status.bad{color:var(--red)}
+
+/* ---------- module cover ---------- */
+.module-cover{
+  position:relative;overflow:hidden;border-radius:18px;color:#f4f8fc;
+  background:
+    radial-gradient(700px 260px at 88% -10%, rgba(121,192,255,.32), transparent 65%),
+    radial-gradient(500px 240px at 8% 110%, rgba(126,231,135,.18), transparent 65%),
+    linear-gradient(135deg,#12314f 0%,#1f4e79 52%,#2b6b8f 100%);
+  padding:30px 30px 26px;box-shadow:var(--shadow-md);
+}
+.module-cover::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.16;
+  background-image:linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px);
+  background-size:26px 26px;
+  mask-image:linear-gradient(120deg,transparent 35%,#000 100%);
+  -webkit-mask-image:linear-gradient(120deg,transparent 35%,#000 100%);
+}
+.module-cover .mc-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
+.module-cover .mc-kicker{font-size:11.5px;letter-spacing:2px;text-transform:uppercase;opacity:.72}
+.module-cover h2{font-size:30px;line-height:1.2;margin:8px 0 4px;letter-spacing:-.4px;position:relative;z-index:1}
+.module-cover .mc-sub{opacity:.82;font-size:13px;position:relative;z-index:1}
+.mc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px;position:relative;z-index:1}
+.mc-item{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:11px 12px}
+.mc-item .n{font-size:10.5px;letter-spacing:1.2px;opacity:.65}
+.mc-item .t{font-size:12.8px;font-weight:650;margin-top:3px;line-height:1.5}
+.mc-stats{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;position:relative;z-index:1;font-size:12px;opacity:.88}
+.mc-stats b{font-weight:750}
+
+/* ---------- summary ---------- */
+.summary-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.summary-item{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 13px 12px;
+  box-shadow:var(--shadow-sm);position:relative;
+}
+.summary-item .idx{font-size:10.5px;font-weight:800;color:var(--brand-2);letter-spacing:.8px}
+.summary-item p{margin:4px 0 0;font-size:12.6px;line-height:1.6;font-weight:560}
+
+/* ---------- cards ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand-2);
+  border-radius:var(--radius);padding:20px 20px 18px;box-shadow:var(--shadow-sm);
+  break-inside:avoid;
+}
+.card.red{border-left-color:var(--red)}
+.card.amber{border-left-color:var(--amber)}
+.card.green{border-left-color:var(--green)}
+.card-head{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.card-id{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.4px;color:var(--ink-3);
+  background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:2px 6px;white-space:nowrap;
+}
+.card h3{font-size:17.5px;line-height:1.4;margin:0;letter-spacing:-.1px;flex:1 1 260px}
+.card h3 .lvl{font-size:11px;vertical-align:2px;margin-right:6px}
+.card .src{font-size:11px;color:var(--ink-3);white-space:nowrap}
+.anchor{
+  background:var(--red-bg);border:1px solid var(--red-line);border-left:3px solid var(--red);
+  border-radius:8px;padding:10px 12px;margin:10px 0 12px;font-size:12.8px;line-height:1.7;color:var(--ink);
+}
+.anchor b{color:var(--red)}
+.anchor.amber{background:var(--amber-bg);border-color:var(--amber-line);border-left-color:var(--amber)}
+.anchor.amber b{color:var(--amber)}
+.field{display:grid;grid-template-columns:84px 1fr;gap:8px 10px;margin:8px 0;font-size:12.8px;line-height:1.7}
+.field dt{color:var(--ink-3);font-weight:650;white-space:nowrap}
+.field dd{margin:0}
+.field dd b{font-weight:750}
+.kicker{font-size:13px;font-weight:750;color:var(--brand-2);letter-spacing:.1px}
+.chain{
+  font-family:var(--mono);font-size:11.5px;line-height:1.65;white-space:pre;overflow-x:auto;
+  background:var(--surface-2);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:8px 0;
+  color:var(--ink-2);
+}
+.chain b{color:var(--red);font-weight:700}
+.redline{background:var(--red-bg);border:1px solid var(--red-line);border-radius:8px;padding:9px 11px;font-size:12.5px;margin:10px 0}
+.redline b{color:var(--red)}
+.next{background:var(--green-bg);border:1px solid var(--green-line);border-radius:8px;padding:9px 11px;font-size:12.5px;margin:10px 0}
+.next b{color:var(--green)}
+.quiz-line{font-size:12.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:10px;margin-top:10px}
+.quiz-line b{color:var(--brand-2)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+/* ---------- comparison table ---------- */
+.cmp th:first-child,.cmp td:first-child{font-weight:700;color:var(--ink);background:color-mix(in srgb,var(--surface-2) 55%,transparent)}
+.cmp td{font-size:12.2px}
+.cmp .yes{color:var(--green);font-weight:700}
+.cmp .no{color:var(--red);font-weight:700}
+
+/* ---------- one pager ---------- */
+.one-pager{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.op{
+  border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--surface);
+  position:relative;overflow:hidden;min-height:118px;
+}
+.op::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--brand-2)}
+.op.red::before{background:var(--red)}.op.amber::before{background:var(--amber)}.op.green::before{background:var(--green)}
+.op .n{font-size:10.5px;font-weight:800;letter-spacing:1px;color:var(--ink-3)}
+.op h4{margin:4px 0 6px;font-size:13.5px;line-height:1.4}
+.op p{margin:0;font-size:11.8px;color:var(--ink-2);line-height:1.6}
+
+/* ---------- quiz ---------- */
+.quiz{display:grid;gap:12px}
+.q{border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:15px 16px}
+.q .qh{display:flex;gap:9px;align-items:flex-start}
+.q .qn{font-family:var(--mono);font-size:11px;color:var(--brand-2);font-weight:700;padding-top:3px}
+.q p{margin:0;font-size:13px;line-height:1.7}
+.q .btns{display:flex;gap:8px;margin-top:10px}
+.q .ans{display:none;margin-top:10px;padding:10px 12px;border-radius:8px;background:var(--green-bg);border:1px solid var(--green-line);font-size:12.3px;line-height:1.7}
+.q.open .ans{display:block}
+.q .ans b{color:var(--green)}
+
+/* ---------- callout ---------- */
+.callout{border-radius:10px;padding:12px 14px;font-size:12.6px;line-height:1.7;border:1px solid var(--line);background:var(--surface-2)}
+.callout .ct{font-weight:750;margin-bottom:3px;display:flex;align-items:center;gap:6px}
+.callout.warn{background:var(--amber-bg);border-color:var(--amber-line)}
+.callout.warn .ct{color:var(--amber)}
+.callout.info{background:var(--brand-soft);border-color:color-mix(in srgb,var(--brand-2) 22%,var(--line))}
+.callout.info .ct{color:var(--brand-2)}
+.callout.tip{background:var(--green-bg);border-color:var(--green-line)}
+.callout.tip .ct{color:var(--green)}
+
+/* ---------- design notes ---------- */
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.note-item{display:flex;gap:10px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.note-item:last-child{border-bottom:none}
+.note-item .dot{width:8px;height:8px;border-radius:99px;background:var(--brand-2);margin-top:8px;flex:none}
+.note-item .dot.red{background:var(--red)}.note-item .dot.amber{background:var(--amber)}.note-item .dot.green{background:var(--green)}
+.note-item b{display:block;font-size:12.8px;margin-bottom:2px}
+.note-item span{font-size:11.8px;color:var(--ink-3);line-height:1.6}
+
+/* ---------- footer ---------- */
+.footer{margin-top:48px;padding-top:20px;border-top:1px solid var(--line);color:var(--ink-3);font-size:11.5px;line-height:1.8}
+.footer b{color:var(--ink-2)}
+
+/* ---------- print ---------- */
+@media print{
+  @page{size:A4;margin:16mm 14mm}
+  body{background:#fff;color:#111;font-size:10.5pt;line-height:1.65}
+  body::before{display:none}
+  .topbar,.top-actions,.hero .spec,.notes,.quiz .btns,.footer .no-print{display:none!important}
+  .shell{max-width:none;padding:0}
+  .hero{padding:0 0 10px;display:block}
+  h1{font-size:22pt}
+  .lede{font-size:11pt}
+  .kpis{grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0 14px}
+  .kpi{padding:8px;border:1px solid #ccc;box-shadow:none}
+  .kpi .value{font-size:18pt}
+  .panel,.card,.summary-item,.op,.q{box-shadow:none;border:1px solid #ccc;break-inside:avoid}
+  .module-cover{background:#1f4e79!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;break-inside:avoid}
+  .anchor{background:#fdf2f2!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .redline{background:#fdf2f2!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .next{background:#eef8f1!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .chain{background:#f4f6f8!important;color:#111!important}
+  .q .ans{display:block!important;background:#f4f6f8!important}
+  section{margin:18px 0}
+  .section-head h2{font-size:14pt}
+  a{color:#111;text-decoration:none}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;align-items:start}
+  .kpis{grid-template-columns:1fr 1fr}
+  .summary-grid{grid-template-columns:1fr 1fr}
+  .grid-2,.notes{grid-template-columns:1fr}
+  .mc-grid{grid-template-columns:1fr}
+  .one-pager{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .shell{padding:0 14px 40px}
+  .topbar-inner{padding:9px 14px}
+  .brand small{display:none}
+  h1{font-size:26px}
+  .kpis{grid-template-columns:1fr 1fr;gap:10px}
+  .summary-grid{grid-template-columns:1fr}
+  .one-pager{grid-template-columns:1fr}
+  .field{grid-template-columns:1fr;gap:2px}
+  .field dt{font-size:11px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="logo">M</div>
+      <div>MedAgentWork <small>BPA v1.0 · 教师重点蓝图版</small></div>
+    </div>
+    <div class="top-actions">
+      <span class="tag tag-brand">样板页</span>
+      <button class="btn" id="themeBtn" type="button" aria-label="切换深浅色">◐ 深色</button>
+      <button class="btn btn-primary" onclick="window.print()" type="button">打印 / PDF</button>
+    </div>
+  </div>
+</div>
+
+<main class="shell">
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Blueprint-Anchored Architecture · 样板</div>
+      <h1>不是把重点抄一遍，<br>而是把重点变成<em>可调用的临床脚本</em>。</h1>
+      <p class="lede">
+        以教师重点为范围契约，以考题蓝图为权重函数，以疾病脚本为知识单元，
+        以检索练习为记忆引擎，以信号化版式为注意力预算。
+        这一页用「耳鼻咽喉头颈外科学 · 模块 2 耳科学」演示最终呈现形态。
+      </p>
+      <div class="hero-meta">
+        <span class="tag tag-red">🔴 掌握</span>
+        <span class="tag tag-amber">🟡 鉴别</span>
+        <span class="tag tag-green">🟢 了解</span>
+        <span class="tag tag-muted">7 模块 · 125 条重点 · 100 页</span>
+      </div>
+    </div>
+    <aside class="spec" aria-label="设计规格">
+      <h3>Design Spec</h3>
+      <dl>
+        <dt>正文</dt><dd>14.5px / 1.75</dd>
+        <dt>行宽</dt><dd>720px</dd>
+        <dt>对比度</dt><dd>≥ 4.5:1</dd>
+        <dt>语义色</dt><dd>3 色 + 5 Callout</dd>
+        <dt>图形语法</dt><dd>谱系 / 因果 / 决策 / 对比 / 概念</dd>
+        <dt>锚点</dt><dd>逐字原文 · 单读可答</dd>
+      </dl>
+      <div class="note">样板内容用于演示版式与结构，事实以教师重点原文与教材为准。</div>
+    </aside>
+  </header>
+
+  <!-- ================= KPI ================= -->
+  <div class="kpis" aria-label="关键指标">
+    <div class="kpi k-red">
+      <div class="label">重点覆盖</div>
+      <div class="value">125/125</div>
+      <div class="sub">教师重点条目 · 逐条落点</div>
+      <div class="delta">100% · 0 缺失</div>
+    </div>
+    <div class="kpi k-amber">
+      <div class="label">锚点自足</div>
+      <div class="value">132/132</div>
+      <div class="sub">单读即可答题的锚点行</div>
+      <div class="delta">↑ 从 102/132 提升</div>
+    </div>
+    <div class="kpi k-green">
+      <div class="label">硬事实匹配</div>
+      <div class="value">100%</div>
+      <div class="sub">数值 / 时间窗 / 剂量 / 界值</div>
+      <div class="delta">行级校验 · 0 改写</div>
+    </div>
+    <div class="kpi">
+      <div class="label">30 分钟自测</div>
+      <div class="value">≥80%</div>
+      <div class="sub">产出型检索 · 闭卷</div>
+      <div class="delta">每模块 ≥8 题</div>
+    </div>
+  </div>
+
+  <!-- ================= BLUEPRINT ================= -->
+  <section id="blueprint">
+    <div class="section-head">
+      <div>
+        <h2>01 · 蓝图仪表盘</h2>
+        <p>内容蓝图 × 测评蓝图：先看“考什么”，再看“投多少”。权重只调配篇幅，不决定是否覆盖。</p>
+      </div>
+      <span class="tag tag-muted">示意数据</span>
+    </div>
+    <div class="panel pad-lg">
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>模块</th><th class="num">权重</th><th class="num">卡片</th>
+              <th class="num">判断</th><th class="num">A1/A2</th><th class="num">A3/A4</th>
+              <th class="num">多选</th><th class="num">案例</th><th>覆盖</th><th>状态</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>M01</b> 总论与专科检查</td><td class="num">8%</td><td class="num">8</td>
+              <td class="num">2</td><td class="num">4</td><td class="num">0</td><td class="num">1</td><td class="num">0</td>
+              <td><div class="bar"><span style="width:100%"></span></div></td>
+              <td><span class="status ok">✅ 完整</span></td>
+            </tr>
+            <tr>
+              <td><b>M02</b> 耳科学（含耳源性眩晕）</td><td class="num">28%</td><td class="num">28</td>
+              <td class="num">3</td><td class="num">8</td><td class="num">3</td><td class="num">3</td><td class="num">1</td>
+              <td><div class="bar"><span style="width:100%"></span></div></td>
+              <td><span class="status ok">✅ 完整</span></td>
+            </tr>
+            <tr>
+              <td><b>M03</b> 鼻科学</td><td class="num">24%</td><td class="num">24</td>
+              <td class="num">2</td><td class="num">7</td><td class="num">3</td><td class="num">2</td><td class="num">1</td>
+              <td><div class="bar"><span style="width:100%"></span></div></td>
+              <td><span class="status ok">✅ 完整</span></td>
+            </tr>
+            <tr>
+              <td><b>M04</b> 咽科学</td><td class="num">18%</td><td class="num">18</td>
+              <td class="num">1</td><td class="num">5</td><td class="num">2</td><td class="num">2</td><td class="num">1</td>
+              <td><div class="bar"><span style="width:100%"></span></div></td>
+              <td><span class="status part">🟡 2 条待补</span></td>
+            </tr>
+            <tr>
+              <td><b>M05</b> 喉科学</td><td class="num">14%</td><td class="num">14</td>
+              <td class="num">1</td><td class="num">4</td><td class="num">2</td><td class="num">1</td><td class="num">0</td>
+              <td><div class="bar"><span style="width:100%"></span></div></td>
+              <td><span class="status ok">✅ 完整</span></td>
+            </tr>
+            <tr>
+              <td><b>M06</b> 气道 / 食管异物</td><td class="num">5%</td><td class="num">5</td>
+              <td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0</td>
+              <td><div class="bar"><span style="width:100%"></span></div></td>
+              <td><span class="status ok">✅ 完整</span></td>
+            </tr>
+            <tr>
+              <td><b>M07</b> 头颈外科</td><td class="num">3%</td><td class="num">3</td>
+              <td class="num">0</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">0</td>
+              <td><div class="bar"><span style="width:100%"></span></div></td>
+              <td><span class="status ok">✅ 完整</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout info" style="margin-top:14px">
+        <div class="ct">📐 怎么读这张表</div>
+        权重 × 题型是“测评蓝图”，卡片数是“内容蓝图”。两者偏差超过 ±20% 时，要么补卡，要么调整篇幅；<b>但不能因为权重低就删条目</b>——M07 只占 3%，仍必须有 3 张卡。
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MODULE COVER ================= -->
+  <section id="module">
+    <div class="section-head">
+      <div>
+        <h2>02 · 模块封面</h2>
+        <p>一个模块 = 一张封面 + 7 个区块。封面先给“位置、权重、三个题眼”，让读者在 10 秒内知道这章怎么考。</p>
+      </div>
+    </div>
+
+    <div class="module-cover">
+      <div class="mc-top">
+        <span class="mc-kicker">Module 02 · Otology</span>
+        <span class="tag" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#eaf3fb">权重 28%</span>
+        <span class="tag" style="background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.25);color:#eaf3fb">期末 + 执医高频</span>
+      </div>
+      <h2>耳科学（含耳源性眩晕）</h2>
+      <div class="mc-sub">谱系位置：外耳 → 中耳 → 内耳 → 耳源性眩晕；从“传导障碍”到“感音/平衡障碍”，再到“颅内外并发症”。</div>
+      <div class="mc-grid">
+        <div class="mc-item">
+          <div class="n">题眼 01</div>
+          <div class="t">传导性 vs 感音神经性聋：Rinne / Weber / 气骨导差</div>
+        </div>
+        <div class="mc-item">
+          <div class="n">题眼 02</div>
+          <div class="t">胆脂瘤三大征：松弛部穿孔、恶臭豆渣样脓、CT 骨质破坏</div>
+        </div>
+        <div class="mc-item">
+          <div class="n">题眼 03</div>
+          <div class="t">眩晕三病：BPPV / 梅尼埃 / 前庭神经炎的时间轴</div>
+        </div>
+      </div>
+      <div class="mc-stats">
+        <span><b>28</b> 张考点卡</span>
+        <span><b>10</b> 道模块自测</span>
+        <span><b>2</b> 张对比表</span>
+        <span><b>1</b> 张因果链</span>
+        <span><b>1</b> 棵决策树</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SUMMARY ================= -->
+  <section id="summary">
+    <div class="section-head">
+      <div>
+        <h2>03 · 30 秒摘要</h2>
+        <p>五条，每条 ≤30 字。摘要里的每个短句，都能在下面卡片里找到“原文 + 解释 + 自测”。</p>
+      </div>
+      <span class="tag tag-muted">考前最后一眼</span>
+    </div>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="idx">01</div><p>外耳集音、中耳传音、内耳感音；任何一环坏了，听力就掉。</p></div>
+      <div class="summary-item"><div class="idx">02</div><p>传导性聋：Rinne 阴性、气骨导差；感音神经性：气骨导同降。</p></div>
+      <div class="summary-item"><div class="idx">03</div><p>胆脂瘤：松弛部穿孔 + 恶臭豆渣样脓 + CT 骨质破坏。</p></div>
+      <div class="summary-item"><div class="idx">04</div><p>突发性聋：一天内骤降，2 周内激素，2～6 周挽救。</p></div>
+      <div class="summary-item"><div class="idx">05</div><p>眩晕先看时间：秒级 BPPV，小时级梅尼埃，天级前庭神经炎。</p></div>
+    </div>
+  </section>
+
+  <!-- ================= CARDS ================= -->
+  <section id="cards">
+    <div class="section-head">
+      <div>
+        <h2>04 · 考点卡</h2>
+        <p>一张卡 = 一个可背诵单元。六字段：锚点 / 题眼 / 为什么 / 鉴别 / 红线 / 下一步；每张卡自带 2–3 道自测。</p>
+      </div>
+      <span class="tag tag-red">🔴 掌握级</span>
+    </div>
+
+    <div class="grid-2">
+
+      <!-- Card 1 -->
+      <article class="card red">
+        <div class="card-head">
+          <span class="card-id">K-M02-015</span>
+          <h3><span class="lvl">🔴</span>突发性聋</h3>
+          <span class="src">第 125 条 · 教材 P###</span>
+        </div>
+
+        <div class="anchor">
+          <b>📌 重点原文（第125条）：</b>突发性聋应尽早进行听力学检查和专科评估，可在发病 <b>2 周内</b>考虑糖皮质激素初始治疗；初始治疗后恢复不完全者，可在发病 <b>2～6 周</b>评估鼓室内糖皮质激素挽救治疗。
+        </div>
+
+        <dl class="field">
+          <dt>🎯 题眼</dt>
+          <dd><b>一天内听力骤降 → 越早激素越好；2 周内初始，2～6 周挽救。</b></dd>
+
+          <dt>🧬 为什么</dt>
+          <dd>内耳供血依赖终末动脉，栓塞/痉挛 → 毛细胞缺氧。越早恢复灌注，听力挽救概率越高；超过窗口，毛细胞不可逆丢失。</dd>
+
+          <dt>🔗 机制链</dt>
+          <dd>
+            <div class="chain">病毒感染 / 血管因素
+        ↓
+内耳供血障碍 → 毛细胞缺氧/损伤
+        ↓                ↓
+高频听力下降      耳鸣 / 眩晕
+        ↓                ↓
+言语识别下降      需排除后循环卒中</div>
+          </dd>
+
+          <dt>⚖️ 鉴别</dt>
+          <dd><b>vs 梅尼埃：</b>突发性聋多为单次、数分钟–数小时达峰；梅尼埃反复发作、波动性、伴耳闷。<br>
+          <b>vs 听神经瘤：</b>进行性单侧感音神经性聋，MRI 可查。</dd>
+        </dl>
+
+        <div class="redline"><b>🚨 红线：</b>伴眩晕/神经体征 → 先排后循环卒中；不能只按“耳科”处理。</div>
+        <div class="next"><b>🩺 下一步：</b>① 纯音测听 + 声导抗；② MRI/增强排除桥小脑角病变；③ 2 周内激素，2～6 周挽救。</div>
+
+        <div class="quiz-line"><b>🔄 自测：</b>突发性聋激素初始治疗的时间窗是？挽救治疗的时间窗是？为什么越早越好？<span class="muted">（答案见附录五）</span></div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card amber">
+        <div class="card-head">
+          <span class="card-id">K-M02-021</span>
+          <h3><span class="lvl">🟡</span>梅尼埃病 vs BPPV</h3>
+          <span class="src">第 26–28 条 · 教材 P###</span>
+        </div>
+
+        <div class="anchor amber">
+          <b>📌 重点原文（第26、27、28条）：</b>梅尼埃病病理基础为<b>膜迷路积水</b>，典型表现为<b>反复发作</b>旋转性眩晕，持续<b>数小时</b>，伴耳闷、低频耳鸣、<b>波动性低-中频感音神经性聋</b>；BPPV 由<b>翻身/头位变动</b>诱发，眩晕持续<b>十余秒</b>，静止后缓解，<b>无耳鸣、耳闷和听力下降</b>。
+        </div>
+
+        <dl class="field">
+          <dt>🎯 题眼</dt>
+          <dd><b>看时间轴：秒级 → BPPV；小时级 + 耳部症状 → 梅尼埃。</b></dd>
+
+          <dt>🧬 为什么</dt>
+          <dd>膜迷路积水 → 内淋巴压力波动 → 反复发作的眩晕与低频听力下降；耳石脱落进入半规管 → 头位变动时短暂眩晕。</dd>
+
+          <dt>⚖️ 鉴别</dt>
+          <dd>
+            <div class="table-wrap" style="margin-top:2px">
+              <table class="cmp">
+                <thead><tr><th>鉴别轴</th><th>梅尼埃病</th><th>BPPV</th></tr></thead>
+                <tbody>
+                  <tr><td>诱因</td><td>自发性，反复发作</td><td>翻身 / 头位变动</td></tr>
+                  <tr><td>持续时间</td><td>20 分钟–12 小时</td><td>十余秒，通常 &lt;1 分钟</td></tr>
+                  <tr><td>听力</td><td><span class="yes">波动性低-中频感音神经性聋</span></td><td><span class="no">正常</span></td></tr>
+                  <tr><td>伴随</td><td>耳闷、低频耳鸣</td><td>无耳鸣、耳闷、听力下降</td></tr>
+                  <tr><td>关键检查</td><td>甘油试验、听力学</td><td>Dix-Hallpike / 滚转试验</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </dd>
+        </dl>
+
+        <div class="redline" style="background:var(--amber-bg);border-color:var(--amber-line)"><b style="color:var(--amber)">🚨 红线：</b>首次发作、伴神经体征或进行性听力下降 → 先排中枢/桥小脑角病变，不要直接诊断梅尼埃。</div>
+        <div class="next"><b>🩺 下一步：</b>梅尼埃急性期用前庭抑制剂/镇静剂控制眩晕；BPPV 首选手法复位（Epley 等）。</div>
+
+        <div class="quiz-line"><b>🔄 自测：</b>一位患者翻身时出现旋转性眩晕 10 秒，无耳鸣耳闷，听力学正常。最可能的诊断与首选处理是？<span class="muted">（答案见附录五）</span></div>
+      </article>
+    </div>
+
+    <div class="callout warn" style="margin-top:16px">
+      <div class="ct">⚠️ 易错陷阱</div>
+      梅尼埃病的“数小时”不是“数天”；BPPV 的“十余秒”不是“数分钟”。看到“持续时间”先定位，再看听力，不要先背病名。
+    </div>
+  </section>
+
+  <!-- ================= COMPARISON ================= -->
+  <section id="compare">
+    <div class="section-head">
+      <div>
+        <h2>05 · 对比速查</h2>
+        <p>表给数据，树给路径。对比表只放“鉴别轴”，不写完整疾病描述。</p>
+      </div>
+      <span class="tag tag-amber">3–5 列 · 每格 ≤20 字</span>
+    </div>
+    <div class="panel">
+      <div class="table-wrap">
+        <table class="cmp">
+          <thead>
+            <tr><th>鉴别轴</th><th>传导性聋</th><th>感音神经性聋</th><th>混合性聋</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Rinne 试验</td><td><span class="no">阴性</span>（骨导 &gt; 气导）</td><td>阳性（气导 &gt; 骨导）</td><td>可阴性 / 阳性</td></tr>
+            <tr><td>气导</td><td>下降</td><td>下降</td><td>下降</td></tr>
+            <tr><td>骨导</td><td><span class="yes">基本正常</span></td><td>下降</td><td>下降</td></tr>
+            <tr><td>气骨导差</td><td><span class="yes">有</span></td><td><span class="no">无</span></td><td>有</td></tr>
+            <tr><td>病变部位</td><td>外耳 / 中耳</td><td>内耳 / 听神经</td><td>两者兼有</td></tr>
+            <tr><td>典型病因</td><td>耵聍、中耳炎、鼓膜穿孔</td><td>突发性聋、梅尼埃、听神经瘤</td><td>慢性化脓性中耳炎累及内耳</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout tip" style="margin-top:14px">
+        <div class="ct">💡 记忆钩子</div>
+        “传导差的是‘路’，感音差的是‘耳’；有气骨导差 → 路的问题；气骨导一起掉 → 耳/神经的问题。”
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DIAGRAMS ================= -->
+  <section id="diagrams">
+    <div class="section-head">
+      <div>
+        <h2>06 · 因果链与决策树</h2>
+        <p>机制用因果链，鉴别用决策树。节点 5–9 个，箭头必须写“导致/抑制/代偿”，不画装饰流程。</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="kicker">🔗 因果链 · 咽鼓管功能障碍 → 分泌性中耳炎</div>
+        <div class="chain" style="margin-top:10px">上呼吸道感染 / 过敏 / 鼻咽部肿瘤
+                ↓
+        咽鼓管咽口阻塞
+                ↓
+        中耳负压 → 黏膜静脉扩张 → 渗出
+                ↓
+        鼓室积液 → 传导性听力下降
+                ↓
+        长期不愈 → 粘连性中耳炎 / 胆脂瘤</div>
+        <p class="small muted" style="margin:8px 0 0">读图：为什么“单侧分泌性中耳炎”要查鼻咽？因为咽鼓管咽口被肿瘤压迫是常见诱因。</p>
+      </div>
+
+      <div class="panel">
+        <div class="kicker">🌳 决策树 · 眩晕的时间轴</div>
+        <div class="chain" style="margin-top:10px">眩晕
+├─ 翻身/头位变动诱发、十余秒、无听力下降
+│    → BPPV（Dix-Hallpike / 滚转试验）
+├─ 反复发作、20 分钟–12 小时、波动性听力下降
+│    → 梅尼埃病（甘油试验、听力学）
+├─ 持续数天、近期上感、无听力下降
+│    → 前庭神经炎
+└─ 伴复视/构音障碍/共济失调/中枢眼震
+     → 先排后循环卒中（急诊影像）</div>
+        <p class="small muted" style="margin:8px 0 0">读图：第一分支不是“病名”，而是“时间 + 诱因 + 听力”三个轴。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ONE PAGER ================= -->
+  <section id="onepager">
+    <div class="section-head">
+      <div>
+        <h2>07 · 一页纸</h2>
+        <p>考前最后一眼：3 个必考 + 2 个易混 + 1 个红线。每格只放一个“能直接说出口”的句子。</p>
+      </div>
+      <span class="tag tag-green">30 秒可复述</span>
+    </div>
+    <div class="one-pager">
+      <div class="op red"><div class="n">必考 01</div><h4>传导性 vs 感音神经性聋</h4><p>Rinne 阴性 + 气骨导差 → 传导性；气骨导同降 → 感音神经性。</p></div>
+      <div class="op red"><div class="n">必考 02</div><h4>胆脂瘤三大征</h4><p>松弛部穿孔、恶臭豆渣样脓、CT 骨质破坏伴硬化边缘。</p></div>
+      <div class="op red"><div class="n">必考 03</div><h4>突发性聋时间窗</h4><p>2 周内激素初始；2～6 周鼓室内挽救；越早越好。</p></div>
+      <div class="op amber"><div class="n">易混 01</div><h4>梅尼埃 vs BPPV</h4><p>小时级 + 耳部症状 vs 秒级 + 无听力下降。</p></div>
+      <div class="op amber"><div class="n">易混 02</div><h4>中枢 vs 周围性眩晕</h4><p>伴神经体征/中枢眼震 → 先排卒中，不做耳科对症。</p></div>
+      <div class="op green"><div class="n">红线</div><h4>突发性聋伴神经体征</h4><p>先排后循环卒中；不能只按“耳科”处理。</p></div>
+    </div>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section id="quiz">
+    <div class="section-head">
+      <div>
+        <h2>08 · 主动回忆</h2>
+        <p>产出型，不是选择题。先闭卷想 30 秒，再点“显示答案”；答案放附录，正文只给问题。</p>
+      </div>
+      <span class="tag tag-red">每模块 ≥8 题</span>
+    </div>
+    <div class="quiz">
+      <div class="q" id="q1">
+        <div class="qh"><span class="qn">Q1</span><p>患者 45 岁，突发左耳听力下降 3 天，纯音测听示左耳中高频感音神经性聋，无眩晕。请说出：诊断、激素初始治疗时间窗、挽救治疗时间窗。</p></div>
+        <div class="btns"><button class="btn" type="button" onclick="toggleAns('q1',this)">显示答案</button></div>
+        <div class="ans"><b>答案：</b>突发性聋。初始治疗在发病 <b>2 周内</b>；恢复不完全者在 <b>2～6 周</b>评估鼓室内激素挽救。越早恢复内耳灌注，毛细胞不可逆损伤越少。<br><span class="muted">易错：把“2 周”写成“尽早”而不给具体窗；把“2～6 周”漏掉。</span></div>
+      </div>
+      <div class="q" id="q2">
+        <div class="qh"><span class="qn">Q2</span><p>一位患者翻身时出现旋转性眩晕 10 秒，静止后缓解，无耳鸣、耳闷，听力学正常。最可能的诊断？首选检查与处理？</p></div>
+        <div class="btns"><button class="btn" type="button" onclick="toggleAns('q2',this)">显示答案</button></div>
+        <div class="ans"><b>答案：</b>良性阵发性位置性眩晕（BPPV）。首选 <b>Dix-Hallpike 试验</b>（后半规管）或 <b>滚转试验</b>（外半规管）；处理首选<b>手法复位</b>（如 Epley 法）。<br><span class="muted">易错：把“十余秒”记成“数分钟”；把梅尼埃的听力下降套到 BPPV。</span></div>
+      </div>
+      <div class="q" id="q3">
+        <div class="qh"><span class="qn">Q3</span><p>为什么“单侧分泌性中耳炎”要特别关注鼻咽部？请用一条因果链说明。</p></div>
+        <div class="btns"><button class="btn" type="button" onclick="toggleAns('q3',this)">显示答案</button></div>
+        <div class="ans"><b>答案：</b>鼻咽部肿瘤（如鼻咽癌）压迫<b>咽鼓管咽口</b> → 咽鼓管功能障碍 → 中耳负压 → 鼓室积液 → 传导性听力下降。因此成人单侧分泌性中耳炎应查鼻咽，排除鼻咽癌。<br><span class="muted">易错：只写“咽鼓管功能不良”，不写“肿瘤压迫”这一可考因果。</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DESIGN NOTES ================= -->
+  <section id="notes">
+    <div class="section-head">
+      <div>
+        <h2>09 · 这页为什么这样排</h2>
+        <p>每个版式决策都对应一条学习科学证据；不是“好看”，是“可读、可记、可查”。</p>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="notes">
+        <div class="note-item"><span class="dot red"></span><div><b>红色锚点块 = 原文冻结</b><span>教师重点的数值/时间窗/并列结构原样保留；锚点行单读可答，避免“主题名锚点”。</span></div></div>
+        <div class="note-item"><span class="dot"></span><div><b>卡片左侧色条 = 重要性信号</b><span>三色只标“掌握/鉴别/了解”，并与文字标签同时出现；黑白打印仍可辨。</span></div></div>
+        <div class="note-item"><span class="dot green"></span><div><b>绿色“下一步” = 临床行动</b><span>每张 🔴 卡必须落到“首选检查/确诊/治疗”，把知识点变成可执行的决策。</span></div></div>
+        <div class="note-item"><span class="dot amber"></span><div><b>对比表只放鉴别轴</b><span>表给数据，树给路径；不用大段文字描述鉴别，降低认知负荷。</span></div></div>
+        <div class="note-item"><span class="dot"></span><div><b>每 3–5 行一个断点</b><span>callout、表格、代码块、分隔线交替出现，维持阅读节奏；长段落是记忆的敌人。</span></div></div>
+        <div class="note-item"><span class="dot red"></span><div><b>自测答案不在正文</b><span>先产出再核对，利用测试效应；答案放附录，正文只留问题，避免“看一眼就会”的错觉。</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <b>MedAgentWork · 教师重点蓝图版（BPA v1.0）样板页</b><br>
+    配套文档：<code>docs/教师重点蓝图版复习资料设计方案_v1.0.md</code> ·
+    形态契约：<code>docs/产物格式规范.md v1.2</code> ·
+    视觉基线：<code>docs/视觉设计规范.md v1.0</code><br>
+    <span class="no-print">本页内容仅用于版式与结构演示；具体事实以教师重点原文、教材与题库溯源为准。</span>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var btn=document.getElementById('themeBtn');
+  var saved=null;
+  try{saved=localStorage.getItem('bpa-theme')}catch(e){}
+  if(saved){root.setAttribute('data-theme',saved)}
+  function sync(){
+    var dark=root.getAttribute('data-theme')==='dark';
+    btn.textContent=dark?'◑ 浅色':'◐ 深色';
+  }
+  sync();
+  btn.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('bpa-theme',next)}catch(e){}
+    sync();
+  });
+})();
+function toggleAns(id,btn){
+  var q=document.getElementById(id);
+  q.classList.toggle('open');
+  btn.textContent=q.classList.contains('open')?'收起答案':'显示答案';
+}
+</script>
+</body>
+</html>

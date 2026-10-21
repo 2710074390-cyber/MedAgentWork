@@ -474,10 +474,14 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 > `sw-ver` 版本徽标与下载直链由 GitHub API 动态取（`releases/latest`），**无需手工改**；
 > 会过期的是上面三处**手写文案**。
 
-### 复习资料渲染（2026-06-21 新增）
-- `python 知识库素材/render_review.py "复习资料/XXX_主复习资料.md"` → 生成精美自包含 HTML
-- 选项：`-o output.html` 指定输出路径，`--dark` 默认暗色模式
-- 特性：暗色/亮色模式、固定侧栏导航、填空点击显示、打印优化、零外部依赖
+### 复习资料生成路由（2026-10-22 更新 · BPA v1.0 强制）
+
+- **有教师重点 / 复习大纲 / 锚定清单 → 必须走 BPA v1.0**（1+7 模块模板 + 八行卡片 + 附录五件套）。
+  规则：`docs/教师重点蓝图版_生成规则_v1.0.md`（工作区版）与 `medagentwork-skill/skills/medagentwork/references/bpa-v1.md`（分发版）。
+  基线：`Obsidian产物/教师重点蓝图版/耳鼻咽喉头颈外科学_教师重点蓝图版_主复习资料.md`（7 模块 / 85 卡 / 132 锚点 / 125 条全覆盖）。
+- 无教师重点 → medreview 教学计划版流程（D1–D5）。
+- **交付只出 MD**，PDF 由用户从 Obsidian 人工导出；**复习资料不再产出 HTML**（`render_review.py` 仅历史遗留，不用于交付）。
+- 门禁：`check_keypoint_coverage.py` 必须 PASS（硬事实缺失 0 + 落点行内事实缺失 0）。
 
 ### 全局 npm 包
 `@anthropic-ai/claude-code@2.1.167` `@mermaid-js/mermaid-cli@11.15.0` `playwright@1.60.0`
