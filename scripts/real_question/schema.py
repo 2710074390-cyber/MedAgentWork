@@ -134,15 +134,17 @@ def prepare_item(item: RealQuestion) -> RealQuestion:
 def dedupe_items(items: Iterable[RealQuestion], max_hamming: int = 3) -> tuple[list[RealQuestion], int]:
     """精确 + SimHash 近重复去重。
 
-    保留优先级：source=kaoyan > zhiyi test（有标签）> zhiyi train；
-    同来源时 answer_confidence=high 优先。
+    保留优先级：kaoyan > zhiyi_pdf（执医历年真题/印刷答案）> zhiyi test（CMExam 有标签）
+    > zhiyi train；同来源时 answer_confidence=high 优先、年份新者优先。
     """
     def _priority(x: RealQuestion) -> int:
         if x.source == "kaoyan":
             return 0
-        if x.source_file == "CMExam-test":
+        if x.source == "zhiyi_pdf":
             return 1
-        return 2
+        if x.source_file == "CMExam-test":
+            return 2
+        return 3
 
     ordered = sorted(
         items,

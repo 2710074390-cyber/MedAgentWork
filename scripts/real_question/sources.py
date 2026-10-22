@@ -11,7 +11,7 @@ import re
 from pathlib import Path
 
 from .answer_recovery import recover_answer
-from .schema import RealQuestion, exact_hash, prepare_item, simhash64
+from .schema import RealQuestion, exact_hash, prepare_item, read_jsonl, simhash64
 
 BASE = Path(__file__).resolve().parent.parent.parent
 GS_DIR = BASE / "GoldenSet" / "structured"
@@ -21,6 +21,8 @@ ANSWER_FILE = BASE / "question_bank" / "kaoyan_answers.json"
 CMEXAM_DIR = BASE / "知识库素材" / "cmexam" / "data"
 CMEXAM_TEST = CMEXAM_DIR / "test_with_annotations.csv"
 CMEXAM_TRAIN = CMEXAM_DIR / "train.csv"
+# 执业医师历年真题（扫描册 OCR 解析产物，由 scripts/zhiyi_pdf_parse.py 生成）
+ZHIYI_PDF_RAW = BASE / "question_bank" / "real_questions" / "zhiyi_pdf_raw.jsonl"
 
 # 项目学科与关键词（用于补 306 未分类、给 CMExam train 打标）
 SUBJECT_KEYWORDS: dict[str, list[str]] = {
@@ -443,3 +445,47 @@ def build_zhiyi_items() -> tuple[list[RealQuestion], dict]:
 
     stats["usable"] = sum(1 for x in items if x.selectable)
     return [x for x in items if x.selectable], stats
+
+
+def _zhiyi_pdf_license_note() -> str:
+    return "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用"
+
+
+def build_zhiyi_pdf_items(raw_path: str | Path | None = None) -> tuple[list[RealQuestion], dict]:
+    """执业医师历年真题（2010–2023 扫描册，OCR 解析产物）。
+
+    解析链路见 `scripts/zhiyi_pdf_ocr.py`（RapidOCR）与 `scripts/zhiyi_pdf_parse.py`
+    （版面重建 + 题目切分）。本函数只做入库前的字段补全，可重复执行。
+    """
+    p = Path(raw_path or ZHIYI_PDF_RAW)
+    if not p.exists():
+        return [], {
+            "available": 0,
+            "hint": "未找到 zhiyi_pdf_raw.jsonl；先跑 scripts/zhiyi_pdf_ocr.py run 与 scripts/zhiyi_pdf_parse.py",
+        }
+
+    items: list[RealQuestion] = []
+    stats = {"raw": 0, "dropped": 0}
+    for item in read_jsonl(p):
+        stats["raw"] += 1
+        if not item.selectable:
+            stats["dropped"] += 1
+            continue
+        if item.source != "zhiyi_pdf":
+            item.source = "zhiyi_pdf"
+        if not item.license or item.license == "unknown":
+            item.license = "public_noncommercial"
+            item.license_note = _zhiyi_pdf_license_note()
+        if not item.subject or item.subject == "未分类":
+            subject, _ = classify_subject(item.stem + " " + " ".join(item.options), min_score=2)
+            if subject != "未分类":
+                item.subject = _norm_subject(subject)
+                item.subject_aliases = [item.subject]
+        item = prepare_item(item)
+        if item.selectable:
+            items.append(item)
+        else:
+            stats["dropped"] += 1
+    stats["usable"] = len(items)
+    stats["years"] = len({x.year for x in items if x.year})
+    return items, stats

@@ -12,7 +12,7 @@ from .answer_recovery import recover_answer
 from .check import print_report, run_check
 from .planner import build_plan, write_plan
 from .schema import dedupe_items, read_jsonl, write_jsonl
-from .sources import GS_LOW, build_kaoyan_items, build_zhiyi_items
+from .sources import GS_LOW, build_kaoyan_items, build_zhiyi_items, build_zhiyi_pdf_items
 
 BASE = Path(__file__).resolve().parent.parent.parent
 DEFAULT_OUT = BASE / "question_bank" / "real_questions"
@@ -31,6 +31,10 @@ def cmd_build(args) -> int:
         zhiyi, zs = build_zhiyi_items()
         all_items.extend(zhiyi)
         stats["zhiyi"] = zs
+        if not getattr(args, "no_zhiyi_pdf", False):
+            zpdf, ps = build_zhiyi_pdf_items()
+            all_items.extend(zpdf)
+            stats["zhiyi_pdf"] = ps
 
     kept, removed = dedupe_items(all_items)
     by_source = Counter(x.source for x in kept)
@@ -40,13 +44,16 @@ def cmd_build(args) -> int:
 
     ky = [x for x in kept if x.source == "kaoyan"]
     zy = [x for x in kept if x.source == "zhiyi"]
+    zp = [x for x in kept if x.source == "zhiyi_pdf"]
     n_ky = write_jsonl(out_dir / "kaoyan_items.jsonl", ky)
     n_zy = write_jsonl(out_dir / "zhiyi_items.jsonl", zy)
+    n_zp = write_jsonl(out_dir / "zhiyi_pdf_items.jsonl", zp)
 
     manifest = {
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "out_dir": str(out_dir),
-        "counts": {"kaoyan": n_ky, "zhiyi": n_zy, "total": len(kept), "dedup_removed": removed},
+        "counts": {"kaoyan": n_ky, "zhiyi": n_zy, "zhiyi_pdf": n_zp,
+                   "total": len(kept), "dedup_removed": removed},
         "by_source": dict(by_source),
         "by_confidence": dict(by_confidence),
         "by_subject": dict(by_subject.most_common()),
@@ -55,12 +62,13 @@ def cmd_build(args) -> int:
         "notes": [
             "考研答案仅保留可恢复 high/medium；low 不进入可选池",
             "CMExam test 答案 high；train 答案 medium；train 学科为关键词标注",
+            "zhiyi_pdf = 执业医师历年真题扫描册 OCR（印刷答案 high；无答案不入库）",
             "license=public_noncommercial：用户声明仅非商业个人刷题使用",
         ],
     }
     (out_dir / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"✅ 题目索引已生成：{out_dir}")
-    print(f"  考研 {n_ky}；执医 {n_zy}；合计 {len(kept)}；去重移除 {removed}")
+    print(f"  考研 {n_ky}；执医历年真题 {n_zp}；CMExam {n_zy}；合计 {len(kept)}；去重移除 {removed}")
     print("  学科分布：")
     for subject, n in by_subject.most_common(20):
         print(f"    {subject}: {n}")
@@ -81,9 +89,12 @@ def cmd_plan(args) -> int:
     )
     out = write_plan(plan, args.out)
     print(f"✅ 选题计划已生成：{out}")
-    print(f"  目标 {plan['target']}；已选 {plan['counts']['selected']}（考研 {plan['counts']['kaoyan']} / 执医 {plan['counts']['zhiyi']}）")
+    c = plan["counts"]
+    print(f"  目标 {plan['target']}；已选 {c['selected']}（考研 {c['kaoyan']} / 执医 {c['zhiyi']}"
+          f" = 历年真题 {c.get('zhiyi_pdf', 0)} + CMExam {c.get('zhiyi_cmexam', 0)}）")
     for source, st in plan["quota_status"].items():
-        print(f"  {source}: {st['selected']}/{st['requested']} [{st['status']}]，可用 {st['available']}")
+        print(f"  {source}: {st['selected']}/{st['requested']} [{st['status']}]，可用 {st['available']}，"
+              f"有效配额 {st['effective_quota']}")
     kp = plan["keypoint_coverage"]
     if kp["total"]:
         print(f"  教师重点：{kp['covered_by_plan']}/{kp['total']}；未覆盖 {len(kp['uncovered'])}")
@@ -141,7 +152,7 @@ def cmd_recover(args) -> int:
 def cmd_stats(args) -> int:
     index_dir = Path(args.index_dir)
     items = []
-    for name in ("kaoyan_items.jsonl", "zhiyi_items.jsonl"):
+    for name in ("kaoyan_items.jsonl", "zhiyi_pdf_items.jsonl", "zhiyi_items.jsonl"):
         p = index_dir / name
         if p.exists():
             items.extend(read_jsonl(p))
@@ -152,13 +163,14 @@ def cmd_stats(args) -> int:
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description="真题检索与双配额工具（考研 / 执业医师）")
+    parser = argparse.ArgumentParser(description="真题检索与双族配额工具（考研 / 执业医师：历年真题 + CMExam）")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     p_build = sub.add_parser("build", help="构建题目级索引（JSONL）")
     p_build.add_argument("--out-dir", default=str(DEFAULT_OUT))
     p_build.add_argument("--kaoyan-only", action="store_true")
     p_build.add_argument("--zhiyi-only", action="store_true")
+    p_build.add_argument("--no-zhiyi-pdf", action="store_true", help="跳过执业医师历年真题索引")
     p_build.set_defaults(func=cmd_build)
 
     p_plan = sub.add_parser("plan", help="按教师重点/蓝图检索并选题")

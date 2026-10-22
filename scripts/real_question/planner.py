@@ -157,6 +157,17 @@ def _candidate_kp_refs(
     return out
 
 
+SOURCE_FAMILY = {"kaoyan": "kaoyan", "zhiyi_pdf": "zhiyi", "zhiyi": "zhiyi"}
+# 同族内的选优加分：考研 > 执医历年真题(PDF) > CMExam
+TIER_BONUS = {"kaoyan": 0.02, "zhiyi_pdf": 0.03, "zhiyi": 0.0}
+TIER_OF = {"kaoyan": "kaoyan", "zhiyi_pdf": "pdf", "zhiyi": "cmexam"}
+FAMILY_QUOTA_NAME = {"kaoyan": "考研", "zhiyi": "执业医师"}
+
+
+def _family(source: str) -> str:
+    return SOURCE_FAMILY.get(source, source)
+
+
 def build_plan(
     subject: str,
     target: int,
@@ -168,9 +179,15 @@ def build_plan(
     batch: str = "",
     top_k_per_keypoint: int = 40,
 ) -> dict:
+    """教师重点驱动 + 双族配额选题（HC-22 / HC-23）。
+
+    配额按「来源族」计：考研族（kaoyan）、执业医师族（zhiyi_pdf 历年真题 + CMExam 题库）。
+    执业医师族内**先 PDF 历年真题、再 CMExam 补位**；候选不足时按可用量减量（reduced），
+    完全无候选则取消该族配额（cancelled），由原创补齐。
+    """
     index_dir = Path(index_dir)
     items: list[RealQuestion] = []
-    for name in ("kaoyan_items.jsonl", "zhiyi_items.jsonl"):
+    for name in ("kaoyan_items.jsonl", "zhiyi_pdf_items.jsonl", "zhiyi_items.jsonl"):
         p = index_dir / name
         if p.exists():
             items.extend(read_jsonl(p))
@@ -190,8 +207,10 @@ def build_plan(
     # 选题按目标配额封顶；15%–25% 合格带只用于终审容忍，不用于多选
     max_kaoyan = req_kaoyan
     max_zhiyi = req_zhiyi
-    kaoyan_caps = _allocate_source(req_kaoyan, modules)
-    zhiyi_caps = _allocate_source(req_zhiyi, modules)
+    caps = {
+        "kaoyan": _allocate_source(req_kaoyan, modules),
+        "zhiyi": _allocate_source(req_zhiyi, modules),
+    }
 
     selected: list[dict] = []
     used_ids: set[str] = set()
@@ -203,6 +222,24 @@ def build_plan(
     }
     search_log: list[dict] = []
     source_counts = {"kaoyan": 0, "zhiyi": 0}
+    pool_index: dict[str, tuple[dict, str]] = {}
+    fam_here_map: dict[str, dict] = {}
+    tier_counts = {"kaoyan": 0, "pdf": 0, "cmexam": 0}
+
+    def _take(rec: dict, module: "Module", fam_here: dict) -> None:
+        item: RealQuestion = rec["item"]
+        fam = _family(item.source)
+        used_ids.add(item.item_id)
+        module_selected[module.module_id].append(item)
+        fam_here[fam] = fam_here.get(fam, 0) + 1
+        source_counts[fam] += 1
+        tier_counts[TIER_OF.get(item.source, item.source)] += 1
+        active_refs = set(sorted(
+            rec.get("kp_scores", {}),
+            key=lambda r: -rec["kp_scores"].get(r, 0.0),
+        )[:3])
+        uncovered_by_module[module.module_id] -= active_refs
+        selected.append(_selected_record(item, module, rec["score"], active_refs, rec["matched"]))
 
     for module in modules:
         pool: dict[str, dict] = {}
@@ -238,35 +275,52 @@ def build_plan(
                     "kp_scores": {},
                     "matched": list(matched),
                 })
-                if item.source in candidate_ids:
-                    candidate_ids[item.source].add(item.item_id)
+                fam = _family(item.source)
+                if fam in candidate_ids:
+                    candidate_ids[fam].add(item.item_id)
                 rec["score"] = max(rec["score"], score)
                 rec["relevance"] = max(rec.get("relevance", 0.0), rel)
                 if kp is not None:
                     rec["kp_scores"][kp.ref] = max(rec["kp_scores"].get(kp.ref, 0.0), rel)
 
-        # 贪心：先覆盖未覆盖考点，再取相关性
+        for iid, rec in pool.items():
+            pool_index.setdefault(iid, (rec, module.module_id))
+
+        # 贪心：先覆盖未覆盖考点，再取相关性；执业医师族内 PDF 优先于 CMExam
         module_target = module.target
-        selected_here = module_selected[module.module_id]
-        source_here = {"kaoyan": 0, "zhiyi": 0}
-        # 小模块至少允许 1 题/来源，避免 floor 后为 0 导致整模块无真题
+        fam_here = {"kaoyan": 0, "zhiyi": 0}
+        fam_here_map[module.module_id] = fam_here
         local_cap = {
-            "kaoyan": max(1, kaoyan_caps.get(module.module_id, 0)) if module_target >= 5 else 0,
-            "zhiyi": max(1, zhiyi_caps.get(module.module_id, 0)) if module_target >= 5 else 0,
+            f: (max(1, caps[f].get(module.module_id, 0)) if module_target >= 5 else 0)
+            for f in caps
         }
-        while len(selected_here) < module_target:
+
+        def _pdf_left() -> bool:
+            if fam_here["zhiyi"] >= local_cap.get("zhiyi", 0):
+                return False
+            if source_counts["zhiyi"] >= max_zhiyi:
+                return False
+            return any(
+                r["item"].source == "zhiyi_pdf" and r["item"].item_id not in used_ids
+                for r in pool.values()
+            )
+
+        while len(module_selected[module.module_id]) < module_target:
+            pdf_only = _pdf_left()
             best = None
             best_gain = -1.0
             for rec in pool.values():
                 item: RealQuestion = rec["item"]
+                fam = _family(item.source)
+                if fam not in ("kaoyan", "zhiyi"):
+                    continue
                 if item.item_id in used_ids:
                     continue
-                if item.source not in ("kaoyan", "zhiyi"):
+                if fam_here.get(fam, 0) >= local_cap.get(fam, 0):
                     continue
-                if source_here[item.source] >= local_cap.get(item.source, 0):
-                    # 本地来源配额已满，但另一来源可补足模块目标
+                if source_counts[fam] >= (max_kaoyan if fam == "kaoyan" else max_zhiyi):
                     continue
-                if source_counts[item.source] >= (max_kaoyan if item.source == "kaoyan" else max_zhiyi):
+                if fam == "zhiyi" and pdf_only and item.source != "zhiyi_pdf":
                     continue
                 uncovered = uncovered_by_module.get(module.module_id, set())
                 # 一题最多认领 3 个考点，避免长考点文本导致「一题覆盖 30 条」
@@ -280,66 +334,103 @@ def build_plan(
                     + rec.get("relevance", 0.0) * 0.6
                     + year_bonus(item.year)
                     + answer_bonus(item.answer_confidence)
+                    + TIER_BONUS.get(item.source, 0.0)
                 )
-                if item.source == "kaoyan":
-                    relevance += 0.02
                 gain = relevance + 0.8 * coverage_gain
                 if gain > best_gain:
                     best_gain = gain
                     best = rec
             if best is None:
                 break
-            item = best["item"]
-            used_ids.add(item.item_id)
-            selected_here.append(item)
-            source_here[item.source] += 1
-            source_counts[item.source] += 1
-            active_refs = set(sorted(
-                best.get("kp_scores", {}),
-                key=lambda r: -best["kp_scores"].get(r, 0.0),
-            )[:3])
-            uncovered_by_module[module.module_id] -= active_refs
-            selected.append(_selected_record(item, module, best["score"], active_refs, best["matched"]))
+            _take(best, module, fam_here)
 
-        # 本地来源配额没填满时，允许另一来源补足模块目标（受全局 25% 上限约束）
-        if len(selected_here) < module_target:
+        # 本模块族配额没填满时，允许另一族补足模块目标（受全局配额上限约束）
+        if len(module_selected[module.module_id]) < module_target:
+            # 模块补位阶段只关心「本模块池里还有没有未用的执医 PDF 真题」，
+            # 不受族配额是否已满影响（否则 CMExam 会抢走 PDF 的位置）
+            pdf_only = any(
+                r["item"].source == "zhiyi_pdf" and r["item"].item_id not in used_ids
+                for r in pool.values()
+            )
             for rec in sorted(pool.values(), key=lambda r: -(r["score"] * 10 + r.get("relevance", 0.0))):
-                if len(selected_here) >= module_target:
+                if len(module_selected[module.module_id]) >= module_target:
                     break
                 item: RealQuestion = rec["item"]
+                fam = _family(item.source)
+                if fam not in ("kaoyan", "zhiyi"):
+                    continue
                 if item.item_id in used_ids:
                     continue
-                if source_counts[item.source] >= (max_kaoyan if item.source == "kaoyan" else max_zhiyi):
+                if source_counts[fam] >= (max_kaoyan if fam == "kaoyan" else max_zhiyi):
                     continue
-                # 另一来源可补足模块目标，但不得让单模块超过题数上限
-                if source_here[item.source] >= module_target:
+                if fam == "zhiyi" and pdf_only and item.source != "zhiyi_pdf":
                     continue
-                used_ids.add(item.item_id)
-                selected_here.append(item)
-                source_here[item.source] += 1
-                source_counts[item.source] += 1
-                active_refs = set(sorted(
-                    rec.get("kp_scores", {}),
-                    key=lambda r: -rec["kp_scores"].get(r, 0.0),
-                )[:3])
-                uncovered_by_module[module.module_id] -= active_refs
-                selected.append(_selected_record(item, module, rec["score"], active_refs, rec["matched"]))
+                # 另一族可补足模块目标，但不得让单模块超过题数上限
+                if fam_here.get(fam, 0) >= module_target:
+                    continue
+                _take(rec, module, fam_here)
 
-    # 配额状态
+    # 全局补齐：模块级分配可能因候选分布不均而留空，用同一批候选把族配额补足
+    module_free = {m.module_id: m.target - len(module_selected[m.module_id]) for m in modules}
+    for fam, req in (("kaoyan", req_kaoyan), ("zhiyi", req_zhiyi)):
+        while source_counts[fam] < req:
+            pdf_only = fam == "zhiyi" and any(
+                rec["item"].source == "zhiyi_pdf" and rec["item"].item_id not in used_ids
+                for rec, _mid in pool_index.values()
+            )
+            best = None
+            best_gain = -1.0
+            for iid, (rec, mid) in pool_index.items():
+                item: RealQuestion = rec["item"]
+                if _family(item.source) != fam or item.item_id in used_ids:
+                    continue
+                if module_free.get(mid, 0) <= 0:
+                    continue
+                if pdf_only and item.source != "zhiyi_pdf":
+                    continue
+                gain = rec["score"] * 10 + rec.get("relevance", 0.0) * 0.6 + TIER_BONUS.get(item.source, 0.0)
+                if gain > best_gain:
+                    best_gain, best = gain, (rec, mid)
+            if best is None:
+                break
+            rec, mid = best
+            _take(rec, next(m for m in modules if m.module_id == mid), fam_here_map[mid])
+            module_free[mid] -= 1
+
+    # 配额状态：met / reduced（候选不足按比例减量）/ cancelled（无候选，取消配额）/ underfilled（异常）
     def status(req: int, got: int, available: int) -> dict:
-        if got >= req:
+        """met / reduced（按可用量减量）/ cancelled（无候选，取消配额）/ disabled（配额为 0）。
+
+        真题数量不足时不再阻断批次：`reduced` 由原创补齐，`reason` 记录短缺根因，
+        批次统计须如实上报（HC-23）。
+        """
+        eff = min(req, available)
+        reason = ""
+        if req <= 0:
+            s = "disabled"
+        elif got >= req:
             s = "met"
         elif available == 0:
-            s = "unavailable"
-        elif got >= available:
-            s = "insufficient"   # 相关候选已全部用上
+            s = "cancelled"
+            reason = "no_candidate"
         else:
-            s = "underfilled"    # 还有候选但未选，属异常
-        return {"requested": req, "selected": got, "available": available, "status": s}
+            s = "reduced"
+            reason = "candidates_exhausted" if got >= available else "keypoint_or_module_limit"
+        return {
+            "requested": req,
+            "selected": got,
+            "available": available,
+            "effective_quota": eff,
+            "status": s,
+            "reason": reason,
+            "ratio_of_target": round(got / target, 4) if target else 0.0,
+        }
 
     # 可用量 = 本次检索实际进入候选池的题目数（按学科/相关性过滤后），不是全库数量
-    available_kaoyan = len(candidate_ids["kaoyan"])
-    available_zhiyi = len(candidate_ids["zhiyi"])
+    available = {f: len(candidate_ids[f]) for f in candidate_ids}
+    got_kaoyan = sum(1 for x in selected if x["source"] == "kaoyan")
+    got_pdf = sum(1 for x in selected if x["source"] == "zhiyi_pdf")
+    got_cm = sum(1 for x in selected if x["source"] == "zhiyi")
     uncovered = sorted({ref for refs in uncovered_by_module.values() for ref in refs})
     covered = [kp.ref for kp in keypoints if kp.ref not in uncovered]
 
@@ -350,15 +441,27 @@ def build_plan(
         "keypoints_file": str(keypoints_path or ""),
         "blueprint_file": str(blueprint_path or ""),
         "quotas": {"kaoyan": req_kaoyan, "zhiyi": req_zhiyi},
+        "quota_policy": {
+            "family": "kaoyan / zhiyi",
+            "zhiyi_tiers": ["zhiyi_pdf（历年真题 PDF）", "zhiyi（CMExam 题库补位）"],
+            "shortfall": "reduced=按可用量减量；cancelled=无候选取消配额；均由原创补齐，禁止无关题凑数",
+        },
         "counts": {
             "selected": len(selected),
-            "kaoyan": sum(1 for x in selected if x["source"] == "kaoyan"),
-            "zhiyi": sum(1 for x in selected if x["source"] == "zhiyi"),
+            "kaoyan": got_kaoyan,
+            "zhiyi": got_pdf + got_cm,
+            "zhiyi_pdf": got_pdf,
+            "zhiyi_cmexam": got_cm,
             "remaining_slots": max(0, target - len(selected)),
         },
         "quota_status": {
-            "kaoyan": status(req_kaoyan, sum(1 for x in selected if x["source"] == "kaoyan"), available_kaoyan),
-            "zhiyi": status(req_zhiyi, sum(1 for x in selected if x["source"] == "zhiyi"), available_zhiyi),
+            "kaoyan": status(req_kaoyan, got_kaoyan, available["kaoyan"]),
+            "zhiyi": status(req_zhiyi, got_pdf + got_cm, available["zhiyi"]),
+        },
+        "tier_status": {
+            "pdf": {"selected": got_pdf, "available": available["zhiyi"],
+                    "requested": req_zhiyi, "role": "primary"},
+            "cmexam": {"selected": got_cm, "role": "fallback"},
         },
         "keypoint_coverage": {
             "total": len(keypoints),
@@ -384,6 +487,8 @@ def _selected_record(item: RealQuestion, module: Module, score: float, kp_refs: 
     return {
         "item_id": item.item_id,
         "source": item.source,
+        "family": _family(item.source),
+        "tier": TIER_OF.get(item.source, item.source),
         "source_id": item.source_id,
         "exam": item.exam,
         "year": item.year,

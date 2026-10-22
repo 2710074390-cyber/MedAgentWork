@@ -34,6 +34,9 @@ question_bank/registry_backup_*.jsonl
 # 真题题目级索引（可由 GoldenSet + 本地 CMExam 重建；CMExam 本身不入库，2026-10-20）
 question_bank/real_questions/
 
+# 执业医师历年真题 OCR/MinerU 语料（可由原 PDF 重建；原 PDF 与缓存均不入库，2026-10-22）
+知识库素材/执业医师真题/
+
 # 本地快捷方式（指向外部路径，仅本机有效）
 *.lnk
 
@@ -97,6 +100,9 @@ Thumbs.db
 
 # 检索工作产物（瞬态，不入库）
 中间产物/kb_search_result.json
+
+# BPA v1.0 分片合并产物（可由 head+M01-M07+appendix 用 cat 重建，2026-10-22 巡检）
+中间产物/bpa_v1/combined.md
 
 # ── 本地工具产物（Trae / WorkBuddy 生成，仅本机有效，不入库）──
 .trae-html-share-packages/

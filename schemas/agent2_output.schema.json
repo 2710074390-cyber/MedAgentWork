@@ -48,7 +48,11 @@
       "non_functioning_distractors": { "type": "integer" },
       "kaoyan_origin": {
         "type": ["object", "string"],
-        "description": "考研原题来源标注（HC-18，2026-08-21）：{gs_id: GS-2024-012, year: 2024, source: '2024考研西综·第12题', mode: '原题'|'改编'}；非考研原题可省略"
+        "description": "考研原题来源标注（HC-22，2026-08-21；2026-10-22 归入 HC-22）：{gs_id: GS-2024-012, year: 2024, source: '2024考研西综·第12题', mode: '原题'|'改编'}；非考研原题可省略"
+      },
+      "zhiyi_origin": {
+        "type": ["object", "string"],
+        "description": "执业医师真题来源标注（HC-22 修订 · 2026-10-22）：{source_id, source, corpus: 'pdf_paper'|'cmexam', mode: '原题'|'改编', answer_confidence: 'high'|'medium'}；corpus=pdf_paper 表示执业医师历年真题（2010–2023 扫描册），cmexam 表示 CMExam 题库补位；非执业医师真题可省略"
       },
       "exam_focus": { "type": ["string", "boolean"] },
       "topic": { "type": "string" }

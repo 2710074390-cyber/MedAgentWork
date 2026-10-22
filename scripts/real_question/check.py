@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
-"""check.py — 真题双配额 / 教师重点覆盖 / 答案可信 / 去重 / license 终审门禁。"""
+"""check.py — 真题双族配额 / 教师重点覆盖 / 答案可信 / 去重 / license 终审门禁。
+
+执业医师族 = 历年真题（zhiyi_pdf）+ CMExam（zhiyi），比例按族结算（15%–25%）。
+"""
 from __future__ import annotations
 
 import json
@@ -34,10 +37,16 @@ def _refs(q: dict) -> list[str]:
 
 
 def _source(q: dict) -> str:
+    """返回 kaoyan | zhiyi_pdf | zhiyi | original（zhiyi_pdf=执业医师历年真题）。"""
     if q.get("kaoyan_origin"):
         return "kaoyan"
-    if q.get("zhiyi_origin") or q.get("source") == "zhiyi":
-        return "zhiyi"
+    if q.get("zhiyi_pdf_origin"):
+        return "zhiyi_pdf"
+    origin = q.get("zhiyi_origin") or {}
+    if isinstance(origin, dict) and origin.get("corpus") in ("pdf_paper", "zhiyi_pdf"):
+        return "zhiyi_pdf"
+    if origin or q.get("source") in ("zhiyi", "zhiyi_pdf"):
+        return "zhiyi_pdf" if q.get("source") == "zhiyi_pdf" else "zhiyi"
     return "original"
 
 
@@ -56,7 +65,7 @@ def run_check(
         str(x.get("source_id")): x for x in plan.get("selected", [])
     }
 
-    counts = {"kaoyan": 0, "zhiyi": 0, "original": 0}
+    counts = {"kaoyan": 0, "zhiyi_pdf": 0, "zhiyi": 0, "original": 0}
     low_confidence: list[str] = []
     license_violations: list[str] = []
     missing_trace: list[str] = []
@@ -64,23 +73,29 @@ def run_check(
         source = _source(q)
         counts[source] += 1
         qid = str(q.get("id") or q.get("qid") or "")
-        origin = q.get("kaoyan_origin") or q.get("zhiyi_origin") or {}
+        origin = q.get("kaoyan_origin") or q.get("zhiyi_pdf_origin") or q.get("zhiyi_origin") or {}
         source_id = str(origin.get("gs_id") or origin.get("source_id") or "")
         plan_item = selected_by_source_id.get(source_id)
         # 答案可信：优先看题库字段，其次看 plan
         conf = q.get("answer_confidence") or (plan_item or {}).get("answer_confidence")
-        if source in ("kaoyan", "zhiyi") and conf not in ("high", "medium"):
+        if source in ("kaoyan", "zhiyi", "zhiyi_pdf") and conf not in ("high", "medium"):
             low_confidence.append(qid or source_id)
         # license：公开构建只允许 public / public_noncommercial；缺失也视为不合格
         lic = q.get("license") or (plan_item or {}).get("license")
-        if build == "public" and source in ("kaoyan", "zhiyi") and lic not in PUBLIC_LICENSES:
+        if build == "public" and source in ("kaoyan", "zhiyi", "zhiyi_pdf") and lic not in PUBLIC_LICENSES:
             license_violations.append(qid or source_id)
         # 溯源
-        if source in ("kaoyan", "zhiyi"):
+        if source in ("kaoyan", "zhiyi", "zhiyi_pdf"):
             if not source_id or not _refs(q):
                 missing_trace.append(qid or source_id)
 
     ratios = {k: round(v / total, 4) if total else 0.0 for k, v in counts.items()}
+    family_counts = {
+        "kaoyan": counts["kaoyan"],
+        "zhiyi": counts["zhiyi_pdf"] + counts["zhiyi"],
+        "original": counts["original"],
+    }
+    family_ratios = {k: round(v / total, 4) if total else 0.0 for k, v in family_counts.items()}
     kp_total = 0
     uncovered: list[str] = []
     invalid_refs: list[str] = []
@@ -122,17 +137,17 @@ def run_check(
     if total == 0:
         failures.append("empty_question_bank")
     else:
-        for source in ("kaoyan", "zhiyi"):
-            ratio = counts[source] / total
-            st = plan_status.get(source, {}) if plan else {}
-            # 只有「相关候选已全部用上」或「完全不可用」才允许低于 15%
-            shortfall_ok = st.get("status") in ("insufficient", "unavailable")
+        for fam in ("kaoyan", "zhiyi"):
+            ratio = family_counts[fam] / total
+            st = plan_status.get(fam, {}) if plan else {}
+            # 只有「候选不足（减量/取消/用尽）」才允许低于 15%
+            shortfall_ok = st.get("status") in ("reduced", "cancelled", "insufficient", "unavailable")
             if ratio < require_ratio and not shortfall_ok:
-                failures.append(f"{source}_ratio_below_{require_ratio}")
+                failures.append(f"{fam}_ratio_below_{require_ratio}")
             if ratio < require_ratio and shortfall_ok:
-                allowed_shortfalls.append(source)
+                allowed_shortfalls.append(fam)
             if ratio > max_ratio:
-                failures.append(f"{source}_ratio_above_{max_ratio}")
+                failures.append(f"{fam}_ratio_above_{max_ratio}")
     if low_confidence:
         failures.append("low_answer_confidence")
     if license_violations:
@@ -152,6 +167,8 @@ def run_check(
         "total": total,
         "counts": counts,
         "ratios": ratios,
+        "family_counts": family_counts,
+        "family_ratios": family_ratios,
         "quota_target": {"kaoyan": 0.20, "zhiyi": 0.20, "band": [require_ratio, max_ratio]},
         "keypoint_coverage": {
             "total": kp_total,
@@ -172,9 +189,10 @@ def run_check(
 
 def print_report(report: dict) -> None:
     print(f"📊 真题终审：{report['file']}")
-    print(f"  总题数：{report['total']}；考研 {report['counts']['kaoyan']}（{report['ratios']['kaoyan']*100:.1f}%）；"
-          f"执医 {report['counts']['zhiyi']}（{report['ratios']['zhiyi']*100:.1f}%）；"
-          f"原创 {report['counts']['original']}")
+    c, r = report["counts"], report["ratios"]
+    print(f"  总题数：{report['total']}；考研 {c['kaoyan']}（{r['kaoyan']*100:.1f}%）；"
+          f"执医 {c['zhiyi'] + c['zhiyi_pdf']}（{(r['zhiyi'] + r['zhiyi_pdf'])*100:.1f}%"
+          f" = 历年真题 {c['zhiyi_pdf']} + CMExam {c['zhiyi']}）；原创 {c['original']}")
     kp = report["keypoint_coverage"]
     if kp["total"]:
         print(f"  教师重点覆盖：{kp['total']-len(kp['uncovered'])}/{kp['total']}（{kp['rate']*100:.1f}%）")
