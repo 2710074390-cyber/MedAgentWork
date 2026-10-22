@@ -19,6 +19,7 @@ import argparse
 import json
 import re
 import sys
+from collections import deque
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -163,9 +164,36 @@ class QBlock:
     shared_options: list[str] = field(default_factory=list)
 
 
+EMBED_Q_SPLIT = re.compile(r"(?<=[\u4e00-\u9fff])(?=\d{1,3}[.．](?!\d))")
+
+
+OPT_MARK_ANY = re.compile(r"(?<![A-Za-z0-9])[A-Ea-e]\s*[．.、)）]")
+
+
+def _expand_embedded(text: str) -> list[str]:
+    """MinerU 会把「上一题最后选项 + 下一题题号」并成一段，在 中文+题号+点 处切开。
+
+    只在切点前缀像「选项列表」（含 A–E 标号）时才切，避免把解析正文里的
+    「…治疗3.5周」这类普通数字误当题号（配合点后非数字的防小数判断双保险）。
+    """
+    ms = list(EMBED_Q_SPLIT.finditer(text))
+    if not ms:
+        return [text]
+    out: list[str] = []
+    prev = 0
+    for m in ms:
+        prefix = text[prev:m.start()]
+        if OPT_MARK_ANY.search(prefix):
+            out.append(prefix)
+            prev = m.start()
+    out.append(text[prev:])
+    return [x for x in out if x.strip()]
+
+
 def _sections_and_blocks(rows: list[str]) -> tuple[list[QBlock], dict[tuple[int, int], str]]:
     blocks: list[QBlock] = []
     answers: dict[tuple[int, int], str] = {}
+    ans_seq: dict[int, list[tuple[int, str]]] = {}
     unit = 0
     section = ""
     cur: QBlock | None = None
@@ -187,8 +215,13 @@ def _sections_and_blocks(rows: list[str]) -> tuple[list[QBlock], dict[tuple[int,
             in_shared = False
             shared_buf = []
 
-    for text in rows:
-        s = text.strip()
+    queue: deque[str] = deque(rows)
+    while queue:
+        text = queue.popleft()
+        parts = _expand_embedded(text)
+        if len(parts) > 1:
+            queue.extendleft(reversed(parts[1:]))
+        s = parts[0].strip()
         if not s:
             continue
 
@@ -209,7 +242,9 @@ def _sections_and_blocks(rows: list[str]) -> tuple[list[QBlock], dict[tuple[int,
             continue
         if ans_mode:
             for no, a in ANS_PAIR_RE.findall(s):
-                answers.setdefault((unit, int(no)), a.upper())
+                no = int(no)
+                answers.setdefault((unit, no), a.upper())
+                ans_seq.setdefault(unit, []).append((no, a.upper()))
             continue
 
         if (len(s) <= 40 and HEADER_RE.search(s)) or PAGE_NO_RE.match(s):
@@ -294,7 +329,7 @@ def _sections_and_blocks(rows: list[str]) -> tuple[list[QBlock], dict[tuple[int,
                     ctx_stem.append(s)
     if cur:
         blocks.append(cur)
-    return blocks, answers
+    return blocks, answers, ans_seq
 
 
 def _split_options(text: str) -> tuple[str, list[str]]:
@@ -307,7 +342,7 @@ def _split_options(text: str) -> tuple[str, list[str]]:
     pos = 0
     for ch in "ABCDE":
         # OCR 常把小写字母混进选项标号（如 "c.感染"），大小写都要认
-        m = re.search(rf"[{ch}{ch.lower()}]\s*[．.、]\s*", text[pos:])
+        m = re.search(rf"[{ch}{ch.lower()}]\s*[．.、)）]\s*", text[pos:])
         if not m:
             break
         st, en = pos + m.start(), pos + m.end()
@@ -355,11 +390,22 @@ def _items_from_rows(rows: list[str], p: Path, meta: dict, book_stats: dict) -> 
     """行序列 → RealQuestion 列表（OCR 与 MinerU 两条通道共用）。"""
     items: list[RealQuestion] = []
     slug = p.stem
-    blocks, key_answers = _sections_and_blocks(rows)
+    blocks, key_answers, ans_seq = _sections_and_blocks(rows)
     book_stats["blocks"] = len(blocks)
     # 全年册的答案区可能只标一次单元号；单元对不上时按题号兜底（仅单一单元时）
     key_units = {u for (u, _no) in key_answers}
     key_by_no = {no: a for (_u, no), a in key_answers.items()} if len(key_units) == 1 else {}
+    # A3/A4、B1 组内题号会重排回 1，(单元,题号) 键会互相覆盖；
+    # 当「某单元答案条数 == 该单元题块数」时，按出现顺序一一配对（试卷顺序=答案顺序）
+    blocks_by_unit: dict[int, list[QBlock]] = {}
+    for b in blocks:
+        blocks_by_unit.setdefault(b.unit, []).append(b)
+    pos_answer: dict[int, str] = {}
+    for u, lst in ans_seq.items():
+        qs = blocks_by_unit.get(u, [])
+        if qs and len(qs) == len(lst):
+            for b, (_no, a) in zip(qs, lst):
+                pos_answer[id(b)] = a
 
     for b in blocks:
         body = _join(b.rows)
@@ -378,7 +424,8 @@ def _items_from_rows(rows: list[str], p: Path, meta: dict, book_stats: dict) -> 
             opts = list(b.shared_options)
             book_stats["shared_options"] += 1
 
-        answer = inline_answer or key_answers.get((b.unit, b.no), "") or key_by_no.get(b.no, "")
+        answer = (inline_answer or pos_answer.get(id(b))
+                  or key_answers.get((b.unit, b.no), "") or key_by_no.get(b.no, ""))
         if inline_answer:
             conf = "high"
             evidence = "印刷答案（册内逐题）"
@@ -480,7 +527,13 @@ def build_items(paths: list[Path], pdf_dir: Path | None = None,
             if ws and pg.get("w"):
                 meds.append(ws[len(ws) // 2] / float(pg["w"]))
         meds.sort()
-        book_two_col = bool(meds) and meds[len(meds) // 2] < 0.35
+        # 双栏册要求两个条件同时成立：行宽中位数小 + 绝大多数页能分出左右栏
+        # （2010–2016 单栏册行虽短，但只有 ~65% 的页能「分栏」，2017 则是 100%）
+        split_ok = sum(1 for pg in pages if _split_columns(pg.get("lines") or [], float(pg.get("w") or 1)))
+        book_two_col = (
+            bool(meds) and meds[len(meds) // 2] < 0.35
+            and pages and split_ok / len(pages) >= 0.9
+        )
         rows: list[str] = []
         for pg in pages:
             rows.extend(page_rows(pg, two_col=book_two_col))

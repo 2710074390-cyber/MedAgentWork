@@ -12,7 +12,8 @@
 - [x] **检索规则修订（HC-22）**：执业医师配额总量不变（20%），族内改为两层——历年真题 `zhiyi_pdf` 优先、CMExam `zhiyi` 补位；配额按族结算；新增 `reduced`（按可用量减量）/`cancelled`（无候选取消配额）状态与 `reason`，不再阻断批次，缺口由原创补齐
 - [x] **代码改动**：`scripts/real_question/{sources,planner,check,cli,schema}.py`（三来源加载、族/层选择、全局补齐、族比例校验、`zhiyi_origin.corpus` 识别）；`scripts/zhiyi_pdf_ocr.py`、`scripts/zhiyi_pdf_parse.py` 新增
 - [x] **文档同步**：`SOUL.md`（HC-22 修订 + 新增 HC-23）、`CONTEXT.md`（真题检索 v3 + 工具表 + 资产表）、`.dsh/skills/{medgen,medmaster,medbatch}`、`Prompt版本/{MedGen,MedMaster}_current_prompt.md`、`docs/交接文档_新Agent接手_v1.0.md`、`.gitignore`（OCR 缓存不入库）
-- [x] **验证**：`plan` 实测（内科学 50 题：考研 10/10 met、执医 10/10 = 历年真题 7 + CMExam 3）；`check` 实测（族比例 20%+20%，溯源/license/去重/覆盖判定正常）；配额不可满足时 `reduced` 正确降级
+- [x] **双通道实测定版**：单栏册（44 册）RapidOCR 有效率 0.97–1.00；双栏册（2017–2021，5 册）改走 MinerU API（RapidOCR 会把左右栏并成一行，无法还原），有效率 0.70–0.94；全库 `zhiyi_pdf_raw` 9,053 题 → 去重入库 8,918 题（18 个年份），真题索引总量 21,589
+- [x] **验证**：`plan` 实测（内科学 50 题：考研 7/10 reduced、执医 10/10 met = 历年真题 10 + CMExam 0，执医配额已可完全由历年真题承担）；`check` 实测（族比例 20%+20%，溯源/license/去重/覆盖判定正常）；配额不可满足时 `reduced` 正确降级；run_tests 105/105 全绿
 
 ## 🟢 已完成 (2026-08-30 · 大四上生产准备 · 整理归档 + 自检生成链路)
 

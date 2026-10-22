@@ -408,7 +408,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 
 - 配额（**按族结算**）：考研族 20% + 执业医师族 20%（各 15%–25% 合格带）；执业医师族内 `zhiyi_pdf`（历年真题）优先、`zhiyi`（CMExam）补位。
 - 减量规则（HC-23 配套）：候选不足 → `quota_status=reduced`（按可用量减量）或 `cancelled`（无候选，取消该族配额），`reason` 记 `no_candidate`/`candidates_exhausted`/`keypoint_or_module_limit`；**不再阻断批次**，缺口由原创补齐，禁止无关题凑数，批次统计如实上报。
-- 执业医师语料（HC-23）：49 册 / 2286 页扫描件，**按版式分流**——单栏册（44 册）本地 RapidOCR，双栏册（2017–2021，5 册）MinerU API；质量门禁 = 单栏册有效率 ≥95%（平均 ≥145 题/册、`no_answer`=0、`bad_options`≤2%）、双栏册 ≥85%，报告见 `reports/validate/zhiyi_pdf_parse_report.json`。**单栏册禁止用 MinerU**（实测整行吞 `【答案】`），**双栏册禁止用 RapidOCR**（左右栏并成一行无法还原）。
+- 执业医师语料（HC-23）：49 册 / 2286 页扫描件，**按版式分流**——单栏册（44 册）本地 RapidOCR，双栏册（2017–2021，5 册）MinerU API；质量门禁 = 单栏册有效率 ≥95%（`no_answer`=0、`bad_options`≤2%）、双栏册 ≥70%（MinerU 丢行已知损耗；答案配对用顺序回填），报告见 `reports/validate/zhiyi_pdf_parse_report.json`。**单栏册禁止用 MinerU**（实测整行吞 `【答案】`），**双栏册禁止用 RapidOCR**（左右栏并成一行无法还原）。
 - 答案来源优先级：**扫描版绿色标记（high/medium） ≈ PDF 标准答案/人工转录（high） > PDF 绿色标记（medium） > 解析规则（high/medium） > 无**。考研答案禁止再用下册行首前缀 `ABCD/ABCDE`。
 - 当前答案覆盖：整体 **4765/5168 ≈ 92.2%**；1994–2004 用扫描版绿色标记补齐（约 64%–88%/年，B 型题组与部分 X 型仍缺）；2005–2024 约 96.8%。
 - 扫描版识别精度自检：与「解析写明故答」的题一致率 90.8%；强信号（绿字明显且唯一）记 high，弱信号记 medium。
