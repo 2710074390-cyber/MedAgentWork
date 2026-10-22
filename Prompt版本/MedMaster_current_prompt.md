@@ -204,9 +204,10 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 
 **HC-5/6/8 交叉触发说明**：考研原题引用属于「外来素材合并」范畴——对引用题执行 HC-5 数值抽查（≥10%）、HC-8 GoldenSet 比对（100% 与 gs_id 源比对，Agent 3 D21 覆盖）；「引用真题」的答案本身以官方公布为准，发现与教材冲突 → 升级告警，不静默修改（HC-6/8 的修正范围限于改编题自行设计的干扰项）。
 
-### HC-22：真题双来源配额编排（2026-10-20 新增 · 新题库批次）
+### HC-22：真题双族配额编排（2026-10-20 新增 · 2026-10-22 修订 · 新题库批次）
 
 > **从下一次题库批次起**：约 1/5 考研 + 1/5 执业医师（各 15%–25%）。检索不到就不插入，原创补齐；教师重点优先于凑比例。押题卷暂不适用。
+> **2026-10-22 修订**：执业医师配额总量不变（20%），族内两层——历年真题 `zhiyi_pdf`（2010–2023 扫描册，印刷答案）**优先**，取不满再用 CMExam `zhiyi` 补位。
 
 1. **批次启动（替代 HC-18 的 pick 步骤）**：
    ```
@@ -215,8 +216,8 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
      --out 中间产物/{batchID}/real_question_plan.json
    ```
    - 无教师重点清单时，`--keypoints` 传空并改用章节关键词模式（退化为 §HC-18 的检索能力）；
-   - `quota_status=insufficient` 允许，但必须在批次报告中写明「考研 X/40、执医 Y/40，原因」。
-2. **配额注入**：Agent 2 指令中给 `real_question_plan.json` 路径 + `selected[]` 的逐题 `source_id/keypoint_refs/answer_confidence/license/mode`；禁止注入原始 CMExam CSV。
+   - `quota_status`：`met` 达标；`reduced` 按可用量减量；`cancelled` 无候选取消该族配额。`reduced`/`cancelled` **不阻断批次**，但必须在批次报告中写明「考研 X、执医 Y（历年真题 a + CMExam b），减量/取消原因」。
+2. **配额注入**：Agent 2 指令中给 `real_question_plan.json` 路径 + `selected[]` 的逐题 `source_id/family/tier/keypoint_refs/answer_confidence/license/mode`；禁止注入原始 CMExam CSV 或原始 OCR 文本。
 3. **终审校验（GATE-FINAL 前）**：
    ```
    python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json \
@@ -226,6 +227,7 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
    ```
    FAIL（比例/答案/重复/覆盖/license/溯源任一）→ halt；不得用 `--golden-absent` 绕过。
 4. **旧 HC-18 工具**：`kaoyan_picker.py` 仅旧批次兼容；已改为读取可信答案表，`--allow-unverified` 仅诊断。
+5. **语料维护（HC-23，非批次内动作）**：历年真题索引缺失或需重建时，按 `zhiyi_pdf_ocr.py run` → `zhiyi_pdf_parse.py` → `real_question_cli.py build` 三步执行，并核对 `reports/validate/zhiyi_pdf_parse_report.json` 的质量门禁（有效率 ≥95%、`no_answer`=0、`bad_options`≤2%）。批次内**不得**跑 OCR。
 
 ### HC-19：插图契约（2026-09-XX 新增 · 生图功能接入）
 
@@ -252,10 +254,10 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 2. 你读取 输入素材/ 目录，识别章节范围和目标科目
 3. 【必须】运行知识库检索：
    python 知识库素材/search_kb.py "【章节核心知识点】" --subject 【科目代码】 --top 10 --hybrid
-4. 【必须】运行真题双配额检索（HC-22，2026-10-20 起；新题库批次）：
+4. 【必须】运行真题双族配额检索（HC-22 修订版，2026-10-22 起；新题库批次）：
    python scripts/real_question_cli.py plan --subject 【科目】 --target 【目标题数】 --batch 【batchID】 --keypoints 【教师重点锚定清单】 --blueprint 【出题蓝图】 --out 中间产物/{batchID}/real_question_plan.json
    - 无教师重点清单时，改用 HC-18 legacy 的 `kaoyan_picker.py pick`，并只把 `answer_confidence=high/medium` 的题注入 Agent 2
-   - `quota_status=insufficient` → 该来源不足，Agent 2 指令标注「不足部分原创补齐」，禁止无关题凑数
+   - `quota_status=reduced/cancelled` → 该族候选不足，Agent 2 指令标注「不足部分原创补齐」，禁止无关题凑数
 5. 【必须】运行页码验证（2026-06-17 新增）：
    python verify_page_numbers.py --subject 【科目】
    - 如果输出 WARN → 该科目索引仍为旧 PDF 页码，Agent 2 调用指令中必须附带偏移量提示

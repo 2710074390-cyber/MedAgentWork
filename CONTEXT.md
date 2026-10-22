@@ -373,16 +373,19 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 - **红线**：真题答案以官方公布为准（发现与教材冲突 → 升级告警，不得静默修改）；数值/诊断标准零改动
 - 无真题覆盖章节（如中医方剂、医患沟通、部分皮肤性病学）：配额清零、以原创补齐，批次统计如实标注
 
-### 真题检索 v2（HC-22 · 2026-10-20 起，下一次题库批次生效）
+### 真题检索 v3（HC-22 修订 + HC-23 · 2026-10-22 起，下一次题库批次生效）
 
-> 旧 `kaoyan_picker.py pick/check` 为 HC-18 legacy，仅保留兼容；新批次一律走 v2。
+> 旧 `kaoyan_picker.py pick/check` 为 HC-18 legacy，仅保留兼容；新批次一律走 v3。
+> v3 变更：执业医师族改为**两层**——历年真题（`zhiyi_pdf`）优先、CMExam（`zhiyi`）补位；执业医师配额总量仍 20%，总真题占比维持 40%。
 
 **资产（只读/可重建）**
 
 | 文件 | 内容 |
 |------|------|
 | `question_bank/real_questions/kaoyan_items.jsonl` | 考研 306 题目级索引（题干/选项/答案/解析/学科/答案可信度） |
-| `question_bank/real_questions/zhiyi_items.jsonl` | 执业医师 CMExam 题目级索引（test 高可信 + train 中可信） |
+| `question_bank/real_questions/zhiyi_pdf_items.jsonl` | **执业医师历年真题**题目级索引（2007–2024 扫描册 OCR，印刷答案，族内第一层） |
+| `question_bank/real_questions/zhiyi_pdf_raw.jsonl` | 历年真题解析原始产物（`zhiyi_pdf_parse.py` 输出，未去重） |
+| `question_bank/real_questions/zhiyi_items.jsonl` | 执业医师 CMExam 题目级索引（test 高可信 + train 中可信，族内第二层=补位） |
 | `question_bank/real_questions/manifest.json` | 来源/学科/可信度统计 |
 | `question_bank/kaoyan_answers.json` | 考研答案总表（`answer_recovered` + confidence + evidence） |
 | `question_bank/kaoyan_manual_answers.json` | 人工转录答案键（2023 扫描件，165 题） |
@@ -390,6 +393,9 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 **命令**
 
 ```text
+执医OCR  python scripts/zhiyi_pdf_ocr.py scan / run --workers 8   # 单栏册（2007-2016/2022-2024）→ 知识库素材/执业医师真题/_ocr/（本地 RapidOCR，缓存不入库）
+执医双栏 python scripts/zhiyi_pdf_mineru.py                       # 双栏册（2017-2021）→ 知识库素材/执业医师真题/_mineru/<册>.md（MinerU，不入库）
+执医解析 python scripts/zhiyi_pdf_parse.py                        # 版面重建 + 题目切分（自动优先 _mineru/*.md）→ zhiyi_pdf_raw.jsonl + reports/validate/zhiyi_pdf_parse_report.json
 PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 抽取标准答案（2013-2022/2024），合并进 kaoyan_answers.json
 扫描答案  python scripts/kaoyan_green_scan.py --apply --merge   # 扫描版下册绿色字母识别（1994-2004），合并进 kaoyan_answers.json
 建索引  python scripts/real_question_cli.py build
@@ -400,12 +406,14 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 
 **硬规则**
 
-- 配额：考研 20% + 执业医师 20%（各 15%–25% 合格带）；检索不足 → `quota_status=insufficient`，原创补齐，禁止无关题凑数。
+- 配额（**按族结算**）：考研族 20% + 执业医师族 20%（各 15%–25% 合格带）；执业医师族内 `zhiyi_pdf`（历年真题）优先、`zhiyi`（CMExam）补位。
+- 减量规则（HC-23 配套）：候选不足 → `quota_status=reduced`（按可用量减量）或 `cancelled`（无候选，取消该族配额），`reason` 记 `no_candidate`/`candidates_exhausted`/`keypoint_or_module_limit`；**不再阻断批次**，缺口由原创补齐，禁止无关题凑数，批次统计如实上报。
+- 执业医师语料（HC-23）：49 册 / 2286 页扫描件，**按版式分流**——单栏册（44 册）本地 RapidOCR，双栏册（2017–2021，5 册）MinerU API；质量门禁 = 单栏册有效率 ≥95%（平均 ≥145 题/册、`no_answer`=0、`bad_options`≤2%）、双栏册 ≥85%，报告见 `reports/validate/zhiyi_pdf_parse_report.json`。**单栏册禁止用 MinerU**（实测整行吞 `【答案】`），**双栏册禁止用 RapidOCR**（左右栏并成一行无法还原）。
 - 答案来源优先级：**扫描版绿色标记（high/medium） ≈ PDF 标准答案/人工转录（high） > PDF 绿色标记（medium） > 解析规则（high/medium） > 无**。考研答案禁止再用下册行首前缀 `ABCD/ABCDE`。
 - 当前答案覆盖：整体 **4765/5168 ≈ 92.2%**；1994–2004 用扫描版绿色标记补齐（约 64%–88%/年，B 型题组与部分 X 型仍缺）；2005–2024 约 96.8%。
 - 扫描版识别精度自检：与「解析写明故答」的题一致率 90.8%；强信号（绿字明显且唯一）记 high，弱信号记 medium。
 - 已知风险：不同版本真题 PDF 的题号可能整体错位（如 2015 文都版第 1 题答案与原书不符）；冲突时以**扫描版原书绿色标记**为准。
-- 标注：`kaoyan_origin` / `zhiyi_origin` + `[源:...]` + `keypoint_ref` + `license` 四件套。
+- 标注：`kaoyan_origin` / `zhiyi_origin{...,corpus:"pdf_paper"|"cmexam"}` + `[源:...]` + `keypoint_ref` + `license` 四件套。
 - 公开构建：CMExam/考研题 `license=public_noncommercial`（用户已确认非商业个人刷题）；授权题 `public`；未知/内部源不得进公开构建。
 - 教师重点：`keypoints` 必须是 HC-20 锚定清单第四节连续编号，不用印刷标号。
 
@@ -437,6 +445,9 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | **qbank.py** | 1.1.0 | `scripts/qbank.py` | `python scripts/qbank.py init / register / query / stats / check / export-md / rehome` — 统一题库注册表 + 最终交付 MD 导出 + 归档路径重定位（2026-08-20 升级） |
 | **run_tests.py** | 1.0.0 | `scripts/run_tests.py` | `python scripts/run_tests.py` — 零依赖测试运行器（P0-2，2026-08-13）；有 pytest 时可用 `python -m pytest tests/ -q` |
 | **fact_check.py** | 1.0.0 | `scripts/fact_check.py` | `python scripts/fact_check.py pages --file X --subject neurology` / `golden --file X` — 事实校验机械化（P1-1，2026-08-13）：页码反查 + GoldenSet 交叉验证 |
+| **zhiyi_pdf_mineru.py** | 1.0.0 | `scripts/zhiyi_pdf_mineru.py` | `python scripts/zhiyi_pdf_mineru.py [--force]` — 双栏册（2017–2021）MinerU 解析（HC-23，2026-10-22）：产物 `知识库素材/执业医师真题/_mineru/<册>.md`（不入库），`zhiyi_pdf_parse.py` 自动优先采用；token 走 `MINERU_TOKEN` 环境变量或内置默认 |
+| **zhiyi_pdf_ocr.py** | 1.0.0 | `scripts/zhiyi_pdf_ocr.py` | `python scripts/zhiyi_pdf_ocr.py scan` / `run --workers 8 [--only 2014] [--force]` / `stats` — 执业医师历年真题扫描册 OCR（HC-23，2026-10-22）：本地 RapidOCR + 并行分页，缓存 `知识库素材/执业医师真题/_ocr/<册>.jsonl`（断点续跑、可重建、不入库）。⚠️ 必须用 Python312 |
+| **zhiyi_pdf_parse.py** | 1.0.0 | `scripts/zhiyi_pdf_parse.py` | `python scripts/zhiyi_pdf_parse.py [--only 2014] [--dump 5]` — 扫描册版面重建 + 题目切分（单/双栏、A1–A4、B1 共用备选答案、册末答案区），输出 `question_bank/real_questions/zhiyi_pdf_raw.jsonl` 与解析质量报告；质量门禁见 HC-23 |
 | **kaoyan_picker.py** | 1.0.0 | `scripts/kaoyan_picker.py` | `python scripts/kaoyan_picker.py pick --subject 内科学 --keywords "心衰,心力衰竭" --target 20 --out ...` / `check --file ...` — 考研真题配额（HC-18，2026-08-21）：pick 按章节检索真题候选（上册题干+下册答案按 gs_id 配对），check 校验 kaoyan_origin 占比（<15% exit 1） |
 | **blueprint.py** | 1.0.0 | `scripts/blueprint.py` | `python scripts/blueprint.py` — 考频蓝图（2026-08-20 第三方交付）：GS 下册 + 贺银成引用 → 学科权重 + 高频真题，输出 `知识库素材/blueprint.json`（标准库） |
 | **anchor_bank.py** | 1.0.0 | `scripts/anchor_bank.py` | `C:/Users/38063/AppData/Local/Programs/Python/Python312/python.exe scripts/anchor_bank.py download/embed/anchor/check` — CMExam 锚点难度体系（2026-08-20 第三方交付）。⚠️ **必须用 Python312**（torch+sentence-transformers 已装，默认 python 3.10 无 torch）；embed 已缓存可跳过；重跑 anchor 后必须 `python scripts/apply_calibrated_difficulty.py` 回写 registry |

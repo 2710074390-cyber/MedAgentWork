@@ -146,30 +146,59 @@
 - **并发发布**：同一发布窗口只允许一个发布者；线上出现更新的部署时先合并。
 - **实现**：`scripts/check_site_freshness.py`（门禁）；`scripts/deploy_site.ps1`（前置 ahead/behind 闸 + 部署后自动调用门禁）。CI 侧同样以 `origin/main` 为唯一源。
 
-## HC-22 真题检索与双来源配额（2026-10-20 新增 · Agent 1/2/3/4 共同执行）
+## HC-22 真题检索与双族配额（2026-10-20 新增 · **2026-10-22 修订：执业医师改「历年真题优先 + CMExam 补位」**）
 
-> 从下一次**题库**批次起：约 **1/5 考研真题 + 1/5 执业医师真题**；检索不到就**不插入**，用原创补齐；教师重点优先于凑比例。押题卷暂不适用本配额。
+> 从下一次**题库**批次起：约 **1/5 考研真题 + 1/5 执业医师真题**；检索不到就**减量或不插入**，用原创补齐；教师重点优先于凑比例。押题卷暂不适用本配额。
 > 旧 HC-18 的「考研 20%」条款由本节接管；HC-18 仍保留「产物形态契约」含义，避免编号双用继续扩散。
+> 2026-10-22 修订要点：执业医师配额**总量不变（仍 20%）**，族内改为两层——先取历年真题（`zhiyi_pdf`），取不满再用 CMExam（`zhiyi`）补位；语料建设见 HC-23。
 
-- **数据源（只读）**：
-  - 考研：`GoldenSet/structured/` → `question_bank/real_questions/kaoyan_items.jsonl`；
-  - 执业医师：`知识库素材/cmexam/` → `question_bank/real_questions/zhiyi_items.jsonl`（原题；用户已确认仅非商业个人刷题使用，`license=public_noncommercial`）；
+- **数据源（只读，三层）**：
+  - 考研真题：`GoldenSet/structured/` → `question_bank/real_questions/kaoyan_items.jsonl`；
+  - **执业医师历年真题（族内第一层）**：2010–2023 扫描册（另含 2007–2009、2024）→ `question_bank/real_questions/zhiyi_pdf_items.jsonl`（印刷答案，`answer_confidence=high`）；
+  - 执业医师 CMExam（族内第二层，**仅补位**）：`知识库素材/cmexam/` → `question_bank/real_questions/zhiyi_items.jsonl`；
   - 可选授权源：人卫题库（有授权时 `license=public`）。
+  - 配额按**来源族**结算：考研族 = `kaoyan`；执业医师族 = `zhiyi_pdf` + `zhiyi`。
 - **批次启动（Agent 1）**：
   `python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json`
-  - 产出逐题 `source_id / keypoint_refs / answer_confidence / license / mode`；
-  - `quota_status=insufficient` 允许存在，但必须保留检索日志，禁止用无关题凑数。
-- **答案可信**：只有 `answer_confidence=high/medium` 的题可入选；`low` 一律不插入。考研答案以 `question_bank/kaoyan_answers.json` 的 `answer_recovered` 为准，**禁止**再用下册行首前缀 `ABCD/ABCDE`。来源优先级：扫描版绿色标记（high/medium）≈ PDF 标准答案/人工转录（high）> PDF 绿色标记（medium）> 解析规则（high/medium）；跨版本 PDF 题号可能错位，冲突时以扫描版原书绿色标记为准。
+  - 产出逐题 `source_id / family / tier / keypoint_refs / answer_confidence / license / mode`；
+  - `quota_status` 取值：`met` 达标｜`reduced` 按可用量减量｜`cancelled` 无候选取消该族配额｜`disabled` 配额为 0；
+  - `reduced` / `cancelled` **不再阻断批次**，但必须保留 `reason`（`no_candidate` / `candidates_exhausted` / `keypoint_or_module_limit`）与检索日志，**禁止用无关题凑数**，缺口由原创补齐。
+- **答案可信**：只有 `answer_confidence=high/medium` 的题可入选；`low` 一律不插入。考研答案以 `question_bank/kaoyan_answers.json` 的 `answer_recovered` 为准，**禁止**再用下册行首前缀 `ABCD/ABCDE`。来源优先级：扫描版绿色标记（high/medium）≈ PDF 标准答案/人工转录（high）> PDF 绿色标记（medium）> 解析规则（high/medium）；跨版本 PDF 题号可能错位，冲突时以扫描版原书绿色标记为准。执业医师历年真题以**扫描册印刷答案**为唯一依据，OCR 未取到答案的题一律不入库（`answer_confidence` 不足即不可选）。
 - **真题标注（三处缺一不可）**：
-  1. 元数据：`kaoyan_origin{gs_id,year,source,mode,answer_confidence}` 或 `zhiyi_origin{source_id,source,mode,answer_confidence}`；
-  2. 溯源锚点：`[源:考研真题 GS-XXX]` / `[源:执业医师 CMExam-XXX]`；
+  1. 元数据：`kaoyan_origin{gs_id,year,source,mode,answer_confidence}`，或 `zhiyi_origin{source_id,source,corpus,mode,answer_confidence}`，其中 `corpus = "pdf_paper"`（历年真题）/`"cmexam"`（CMExam）；
+  2. 溯源锚点：`[源:考研真题 GS-XXX]` / `[源:执业医师真题 {YYYY}年第{单元}单元第{题号}题]` / `[源:执业医师 CMExam-XXX]`；
   3. 每题 `keypoint_ref`（HC-20 统一锚定清单编号）与 `license`。
 - **MedGen**：只插入 plan 中 `selected` 的题；保留原题题干/选项/答案/数值；不得把 `考点重构` 标成 `原题`；配额不足部分由原创补齐。
-- **MedQC**：D21 扩展为 D21a（考研）/ D21b（执业医师）：答案、考点、数值、选项映射、license 全比对；`medium` 答案 100% 抽检；冲突 `must_escalate`。
+- **MedQC**：D21 扩展为 D21a（考研）/ D21b（执业医师，含 `corpus=pdf_paper` 与 `cmexam` 两类）：答案、考点、数值、选项映射、license 全比对；`medium` 答案 100% 抽检；冲突 `must_escalate`。
 - **终审门禁（Agent 1）**：
   `python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {教师重点锚定清单} --out reports/validate/real_question_check_{batchID}.json`
-  FAIL（比例/答案/重复/覆盖/license/溯源任一）→ **halt**，不得用旧 `--golden-absent` 绕过。
+  FAIL（比例/答案/重复/覆盖/license/溯源任一）→ **halt**，不得用旧 `--golden-absent` 绕过。比例校验按**族**结算（执医族 = 历年真题 + CMExam 之和，15%–25%）。
 - **旧工具**：`scripts/kaoyan_picker.py` 已改为读取可信答案表；`--allow-unverified` 仅诊断用，不得进入生产。
+
+## HC-23 执业医师历年真题语料（2026-10-22 新增 · 扫描册 OCR → 题目索引）
+
+> 把「执业医师真题及答案（2007–2024）」扫描册转成可检索的题目级索引。语料跑一次、长期复用；批次只读索引，不在批次内跑 OCR。
+
+- **原始素材（只读，仓库外）**：`C:/Users/38063/Desktop/27网盘/执业医师真题及答案（2010-2023年）/`，49 册 / 2286 页（2007–2016 单元册 + 2017–2023 全年册 + 2024）。全部为无文本层扫描件，**必须 OCR**。
+- **OCR 引擎按版式分流（实测结论，不得随意更换）**：
+  - **单栏册（2007–2016、2022–2024，44 册）**：本地 `RapidOCR`（onnxruntime）。实测同一册（2014 三单元）MinerU pipeline 与 vlm 模型均整行吞掉 4 条 `【答案】` 行，故单栏册**禁止**用 MinerU；
+  - **双栏册（2017–2021，5 册）**：必须用 **MinerU API**。RapidOCR 的检测器会把同一行的左右栏并成一条长行（题目与答案区都被污染），无法还原；MinerU 按版面还原段落，题目顺序正确。MinerU 会丢个别选项/答案行（约 10%），由下方质量门禁拦截，宁缺毋滥。
+- **流水线（三段，可断点重跑）**：
+  ```text
+  清点   python scripts/zhiyi_pdf_ocr.py scan
+  OCR    python scripts/zhiyi_pdf_ocr.py run --workers 8        # 单栏册 → 知识库素材/执业医师真题/_ocr/<册>.jsonl（不入库）
+  双栏   python scripts/zhiyi_pdf_mineru.py                # 2017–2021 → 知识库素材/执业医师真题/_mineru/<册>.md（MinerU，不入库）
+  解析   python scripts/zhiyi_pdf_parse.py                        # 自动优先用 _mineru/<册>.md → zhiyi_pdf_raw.jsonl
+  入库   python scripts/real_question_cli.py build                # 去重 + 学科标注 → zhiyi_pdf_items.jsonl
+  ```
+  换素材目录：`set ZHIYI_PDF_DIR=<新目录>`（或 `--pdf-dir`）。
+- **解析质量门禁（每次重建后必须看 `reports/validate/zhiyi_pdf_parse_report.json`，按通道分别判定）**：
+  - 单栏册（rapidocr）：单册有效率（`kept / blocks`）≥ 95%，全库平均 ≥ 145 题/册，`no_answer` = 0，`bad_options` ≤ 2%；
+  - 双栏册（mineru）：单册有效率 ≥ 85%（MinerU 丢行导致，已知损耗），`no_answer` 允许少量但须在报告中核对；
+  - 任何一项不达标 → 先修解析规则再重跑，**禁止手工挑题绕过**。
+- **版面规则（已覆盖，改动需回归全部 49 册）**：单栏同行选项／单栏分行选项／双栏（2017–2021 试卷部分）／`（共用题干｜共用题目｜共用病例）` A3·A4 病例组（题号在每个病例内从 1 重排）／`（共用备选答案）` B1 组（选项只印一次，逐题只印空 A–E）／册末「参考答案与解析」区（题号+字母配对回填）。
+- **数据形态**：`source=zhiyi_pdf`，`exam=执业医师`，带 `year` / `module="第N单元"` / `question_no`；`license=public_noncommercial`（用户声明仅非商业个人刷题）；学科由关键词标注，基础/人文类（生理、生化、病理、人文、预防）可能落 `未分类`，不参与临床学科配额，属预期。
+- **红线**：原题题干/选项/答案/数值零改动；OCR 可疑（选项缺字母、答案越界、题干截断）→ 该题不入库，不得猜补。
 
 ## 插图生成分工（2026-09-07 固化 · 详见 .dsh/skills/medillustration/）
 

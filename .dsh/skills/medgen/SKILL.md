@@ -1,6 +1,6 @@
 ---
 name: medgen
-description: MedGen 临床医学题库生成专家（Agent 2）。根据教材章节/输入素材生成结构化题库 JSON（纯数组）+ 备考资料，遵守 HC-1~HC-7 等全部出题硬约束与 HC-18 考研真题配额（≈1/5 真题引用/改编），交付前必须通过 validate_options.py 产出门禁自检（FAIL==0）。
+description: MedGen 临床医学题库生成专家（Agent 2）。根据教材章节/输入素材生成结构化题库 JSON（纯数组）+ 备考资料，遵守 HC-1~HC-7 等全部出题硬约束与 HC-22 真题双族配额（考研 1/5 + 执业医师 1/5，执医族内历年真题优先、CMExam 补位），交付前必须通过 validate_options.py 产出门禁自检（FAIL==0）。
 whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务会给出批次号、科目、章节、模块、目标题数与素材路径。
 ---
 
@@ -22,10 +22,12 @@ whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务
    - 如产出备考资料 MD，写入同一目录。
 4. **产出门禁（不可跳过）**：交付前运行 `python -m scripts.validate --file <你的JSON路径>` 或 `python validate_options.py --file <你的JSON路径>`；输出中 `✗ 失败: N` 的 N>0 时必须**自行修正后重新生成**，直到 FAIL==0（batch006 教训：未自检即交付导致二次回调）。
 5. **数值纪律**：所有数值型选项必须带完整单位（次/分、mmHg、%、个月）；诊断/疾病名不可截断，使用完整标准术语（batch014 教训）。
-6. **真题双配额（HC-22 · 2026-10-20 起）**：题库中约 1/5 考研 + 1/5 执业医师（各 15%–25%）。优先读取编排者提供的 `中间产物/{batchID}/real_question_plan.json` 的 `selected`：
+6. **真题双族配额（HC-22 · 2026-10-22 修订）**：题库中约 1/5 考研 + 1/5 执业医师（各 15%–25%）。优先读取编排者提供的 `中间产物/{batchID}/real_question_plan.json` 的 `selected`：
    - 考研：`kaoyan_origin{gs_id,year,source,mode,answer_confidence}` + `[源:考研真题 GS-XXX]`；
-   - 执业医师：`zhiyi_origin{source_id,source,mode,answer_confidence}` + `[源:执业医师 CMExam-XXX]`；
+   - 执业医师（**族内两层**，按 `tier` 字段）：
+     - `tier="pdf"`（历年真题，**优先**）：`zhiyi_origin{source_id,source,corpus:"pdf_paper",mode,answer_confidence}` + `[源:执业医师真题 {YYYY}年第{单元}单元第{题号}题]`；
+     - `tier="cmexam"`（CMExam 补位）：`zhiyi_origin{source_id,source,corpus:"cmexam",mode,answer_confidence}` + `[源:执业医师 CMExam-XXX]`；
    - **每题必须带 `keypoint_ref`（HC-20 统一锚定编号）与 `license`**；只使用 `answer_confidence=high/medium`；
-   - 原题题干/选项/答案/数值不得改动；配额不足（`quota_status=insufficient`）时用原创补齐，禁止用无关题凑数。
+   - 原题题干/选项/答案/数值不得改动；`quota_status=reduced`（减量）或 `cancelled`（取消配额）时用原创补齐，禁止用无关题凑数；批次统计写明「考研 X / 执医 Y（历年真题 a + CMExam b）/ 原创 Z」。
    - 旧 `kaoyan_candidates.json` 仅兼容旧批次；不要再用 `answer=ABCD/ABCDE` 的行首前缀。
 7. **完成后报告**：文件路径 + 题目总数 + Bloom 分布摘要 + 考研真题占比 + 自检结果（通过/失败数）。

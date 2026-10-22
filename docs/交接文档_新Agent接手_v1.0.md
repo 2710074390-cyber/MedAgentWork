@@ -70,7 +70,7 @@ S9  人工：导出 PDF（Chrome 打印对话框 / Obsidian）→ 超 25 MiB 先
 - `复习资料/内科学教学计划版/内科学_主复习资料_合订本.md`（23 模块纯连续版排版范本）
 - `中间产物/ent_review/02_格式契约_v5.1.md`（格式契约）
 
-**注意**：本阶段只产复习资料，**不产题库**，因此**不执行 HC-18 考研真题配额**（配额仅适用于题库批次，见 §5）。
+**注意**：本阶段只产复习资料，**不产题库**，因此**不执行 HC-22 真题双族配额**（配额仅适用于题库批次，见 §5）。
 
 ---
 
@@ -120,7 +120,9 @@ MedAgentWork/
 **阶段与目录**：Agent2 出题 → `中间产物/{batchID}/ALL_questions.json`；Agent3 质检 → `质检报告/{batchID}/`；Agent4 修复 → `最终产物/{batchID}/ALL_questions_FIXED.json + ALL_questions_FIXED.md（最终交付 MD，强制）+ AGENT4_追溯日志.json + AGENT4_修改声明.md`；Agent5 复习手册 → `复习资料/`。批次号 `batch{NNN}`。
 
 **出题硬约束**（全文在 SOUL.md，要点）：
-- HC-1~4b 题型极性/Schema/溯源锚点/禁幻觉/真题答案保护；HC-7 双向细目表（Bloom 30/40/25/5）；HC-14 选项用**结构模板**（同语法结构）而非字数范围；HC-15 Bloom 每 50 题采样（`bloom_sampler.py`）；HC-16 押题考频增强；**HC-18 考研真题配额：约 1/5（目标 20%，合格带 15–25%）为考研原题引用/改编，标注 `kaoyan_origin` + `[源:考研真题 GS-XXX]`；无真题覆盖章节以原创补齐并如实标注**
+- HC-1~4b 题型极性/Schema/溯源锚点/禁幻觉/真题答案保护；HC-7 双向细目表（Bloom 30/40/25/5）；HC-14 选项用**结构模板**（同语法结构）而非字数范围；HC-15 Bloom 每 50 题采样（`bloom_sampler.py`）；HC-16 押题考频增强
+- **HC-22 真题双族配额（现行）**：考研族 1/5 + 执业医师族 1/5（各 15%–25%）；执业医师族内**历年真题 `zhiyi_pdf` 优先、CMExam `zhiyi` 补位**；标注 `kaoyan_origin` / `zhiyi_origin{...,corpus}` + `[源:...]` + `keypoint_ref` + `license`；候选不足 → `quota_status=reduced/cancelled`，原创补齐并如实标注（HC-18 的「考研 20%」条款已由 HC-22 接管）
+- **HC-23 执业医师语料**：2010–2023（含 2007–2009、2024）扫描册 → `zhiyi_pdf_ocr.py`（本地 RapidOCR）→ `zhiyi_pdf_parse.py` → `real_question_cli.py build`；质量门禁见 `reports/validate/zhiyi_pdf_parse_report.json`
 - 选项设计 NBME 八项：禁绝对词/长度比 ≤1.5/语法一致/数值排序/词重复/收敛策略/B1 共用选项专项
 
 **门禁不可跳过（HC-12 教训：5 起绕过事件）**：每阶段转换前实测门禁，BLOCKED → halt → 回退上游修复 → 清 halt（`--clear-halt`）→ 重跑，绝不"相信下游自觉"。
@@ -135,13 +137,16 @@ python validate_options.py --batch {batchID}           # GATE-A2，FAIL==0 才�
 python gate_check.py --batch {batchID} --stage agent3_done   # GATE-A3
 python gate_check.py --batch {batchID} --stage agent4_done   # GATE-A4
 python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json  # 最终交付 MD（强制）
-python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json  # HC-18 占比，<15% exit 1
+python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单} --out reports/validate/real_question_check_{batchID}.json  # HC-22 双族占比/答案/去重/覆盖/license/溯源
+python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json  # HC-18 legacy，仅旧批次兼容
 python gate_check.py --batch {batchID} --stage final   # 终审（先跑第 5 行）
 python scripts/fact_check.py pages --file 中间产物/{batchID}/*.json --subject {code}  # 页码反查（GATE-A2 前）
 python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json                  # GoldenSet 交叉验证
 python scripts/workflow_state.py --show {batchID} / --check        # 状态读写（唯一入口，HC-17）
 ```
-批次启动时：`python scripts/kaoyan_picker.py pick --subject {科目} --keywords "..." --target {ceil(题数×0.2)} --out 中间产物/{batchID}/kaoyan_candidates.json`
+批次启动时（现行）：`python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json`
+旧批次兼容：`python scripts/kaoyan_picker.py pick --subject {科目} --keywords "..." --target {ceil(题数×0.2)} --out 中间产物/{batchID}/kaoyan_candidates.json`
+语料重建（HC-23）：`python scripts/zhiyi_pdf_ocr.py run --workers 8` → `python scripts/zhiyi_pdf_parse.py` → `python scripts/real_question_cli.py build`
 
 ### 复习资料（当前主线）
 ```text

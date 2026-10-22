@@ -4,6 +4,16 @@
 
 ---
 
+## 🟢 已完成 (2026-10-22 · 执业医师历年真题纳入出题检索 · HC-23)
+
+- [x] **真题语料建设（HC-23）**：`27网盘/执业医师真题及答案（2010-2023年）` 49 册 / 2286 页全为无文本层扫描件；本地 RapidOCR（`scripts/zhiyi_pdf_ocr.py`，8 进程并行、逐册缓存、断点续跑）→ 版面重建与题目切分（`scripts/zhiyi_pdf_parse.py`）→ `question_bank/real_questions/zhiyi_pdf_raw.jsonl`
+- [x] **OCR 引擎选型实测**：MinerU API（pipeline 与 vlm 两种模型）实测整行吞掉 `【答案】`（2014 三单元第 3–6 题共 4 条），不可作唯一通道；RapidOCR 同页答案全中，定为唯一主通道
+- [x] **版面规则覆盖**：单栏同行选项／单栏分行选项／双栏（2017–2021 试卷部分）／A3·A4「共用题干｜共用题目｜共用病例」病例组／B1「共用备选答案」共享选项／册末「参考答案与解析」回填
+- [x] **检索规则修订（HC-22）**：执业医师配额总量不变（20%），族内改为两层——历年真题 `zhiyi_pdf` 优先、CMExam `zhiyi` 补位；配额按族结算；新增 `reduced`（按可用量减量）/`cancelled`（无候选取消配额）状态与 `reason`，不再阻断批次，缺口由原创补齐
+- [x] **代码改动**：`scripts/real_question/{sources,planner,check,cli,schema}.py`（三来源加载、族/层选择、全局补齐、族比例校验、`zhiyi_origin.corpus` 识别）；`scripts/zhiyi_pdf_ocr.py`、`scripts/zhiyi_pdf_parse.py` 新增
+- [x] **文档同步**：`SOUL.md`（HC-22 修订 + 新增 HC-23）、`CONTEXT.md`（真题检索 v3 + 工具表 + 资产表）、`.dsh/skills/{medgen,medmaster,medbatch}`、`Prompt版本/{MedGen,MedMaster}_current_prompt.md`、`docs/交接文档_新Agent接手_v1.0.md`、`.gitignore`（OCR 缓存不入库）
+- [x] **验证**：`plan` 实测（内科学 50 题：考研 10/10 met、执医 10/10 = 历年真题 7 + CMExam 3）；`check` 实测（族比例 20%+20%，溯源/license/去重/覆盖判定正常）；配额不可满足时 `reduced` 正确降级
+
 ## 🟢 已完成 (2026-08-30 · 大四上生产准备 · 整理归档 + 自检生成链路)
 
 - [x] **生成链路运行时恢复**（自检发现 2026-08-20/22 重构后缺失，从 git 历史 2b0912c 还原）：.dsh/skills 6 技能、根目录 gate_check/validate_options/healthcheck/save/ingest/verify_page_numbers、schemas/ 3 契约、tests/ 7 文件、工作区知识库素材 search_kb/embed_index/embed_md/embed_zhaozhao/validate_configs/render_review（取自 b463687^ 即移除前最后版）、GoldenSet 4 工具、workflow_state.json、USER.md；63 个 .py py_compile 全绿

@@ -151,19 +151,20 @@
 2. 溯源锚点追加：`[源:考研真题 GS-2024-012]`（与教材页码锚点并列，HC-3 仍须满足）
 3. 解析首句注明：「本题来源：2024 考研西综真题（GS-2024-012）」或「改编自 2024 考研西综真题（GS-2024-012）」。
 
-### HC-22：执业医师真题与双来源配额（2026-10-20 新增）
+### HC-22：执业医师真题与双族配额（2026-10-20 新增 · 2026-10-22 修订）
 
-> 从下一次题库批次起：约 **1/5 考研 + 1/5 执业医师**（各 15%–25%）。检索不到就**不插入**，用原创补齐；教师重点优先于凑比例。
+> 从下一次题库批次起：约 **1/5 考研 + 1/5 执业医师**（各 15%–25%）。检索不到就**减量或不插入**，用原创补齐；教师重点优先于凑比例。
+> **执业医师族内两层**：`tier="pdf"`（历年真题，2010–2023 扫描册）**优先**；`tier="cmexam"`（CMExam 题库）仅在 PDF 候选不足时补位。
 
-- **候选来源**：编排者提供的 `中间产物/{batchID}/real_question_plan.json` 的 `selected[]`。只使用其中 `mode=原题` 的题；不要自行从 CMExam 原始 CSV 抽题。
+- **候选来源**：编排者提供的 `中间产物/{batchID}/real_question_plan.json` 的 `selected[]`。只使用其中 `mode=原题` 的题；不要自行从 CMExam 原始 CSV 或原始 OCR 文本抽题。
 - **执业医师标注三处缺一不可**：
-  1. `zhiyi_origin{source_id, source, mode, answer_confidence}`；
-  2. `[源:执业医师 CMExam-XXX]`；
-  3. 解析首句「本题来源：执业医师真题（CMExam-test-123）」。
+  1. `zhiyi_origin{source_id, source, corpus, mode, answer_confidence}`，`corpus="pdf_paper"`（历年真题）/`"cmexam"`（CMExam），按 plan 的 `tier` 字段填写；
+  2. 溯源锚点：历年真题 `[源:执业医师真题 {YYYY}年第{单元}单元第{题号}题]`；CMExam `[源:执业医师 CMExam-XXX]`；
+  3. 解析首句：「本题来源：{YYYY} 年执业医师资格考试第{单元}单元第{题号}题」或「本题来源：执业医师真题（CMExam-test-123）」。
 - **答案可信**：只插入 `answer_confidence=high/medium`；`low` 一律不插入。考研答案禁止再用 `abcd/abcde` 行首前缀。
 - **教师重点**：每题 `keypoint_ref` 指向 HC-20 锚定清单第四节连续编号；真题也必须带 `keypoint_ref`。
-- **license**：`public_noncommercial`（考研/CMExam 原题，用户已确认非商业个人刷题）或 `public`（授权题）；不得把内部/未知来源写入公开构建。
-- **不足处理**：`quota_status=insufficient` 时用原创补齐，禁止用无关真题凑数；批次统计如实写「考研 X / 执医 Y / 原创 Z」。
+- **license**：`public_noncommercial`（考研/执业医师历年真题/CMExam 原题，用户已确认非商业个人刷题）或 `public`（授权题）；不得把内部/未知来源写入公开构建。
+- **减量处理**：`quota_status=reduced`（按可用量减量）或 `cancelled`（无候选取消配额）时用原创补齐，禁止用无关真题凑数；批次统计如实写「考研 X / 执医 Y（历年真题 a + CMExam b）/ 原创 Z」并说明减量原因。
 
 ## Skills：
 1. **教材→考点结构化解构**：从教材提取病因→发病机制→病理→临床表现→辅助检查→诊断与鉴别诊断→治疗→预后的临床思维链条。
@@ -320,8 +321,9 @@ E. [选项内容]
     "answer_confidence": "high" | "medium"
   },
   "zhiyi_origin": {
-    "source_id": "CMExam-test-123",
-    "source": "执业医师·CMExam-test-123",
+    "source_id": "2014年临床执业医师考试_第三单元_真题及答案#3-12",  // 历年真题
+    "source": "2014年执业医师资格考试第3单元第12题",
+    "corpus": "pdf_paper" | "cmexam",
     "mode": "原题",
     "answer_confidence": "high" | "medium"
   },
