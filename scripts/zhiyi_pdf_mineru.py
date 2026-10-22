@@ -6,9 +6,9 @@ RapidOCR 的检测器会把双栏页同一行的左右栏并成一条长行，�
 `知识库素材/执业医师真题/_mineru/`，由 `scripts/zhiyi_pdf_parse.py` 自动优先采用。
 
 用法：
-  python scripts/zhiyi_pdf_mineru.py            # 处理默认 5 册（已存在则跳过）
+  python scripts/zhiyi_pdf_mineru.py            # 处理默认 6 册（已存在则跳过）
   python scripts/zhiyi_pdf_mineru.py --force    # 强制重跑
-Token 从环境变量 MINERU_TOKEN 读取（默认使用项目内置 token）。
+Token：环境变量 MINERU_TOKEN 或本地文件 知识库素材/执业医师真题/_mineru_token.txt（不入库）。
 """
 from __future__ import annotations
 
@@ -29,7 +29,22 @@ except Exception:
 BASE = Path(__file__).resolve().parent.parent
 DEFAULT_PDF_DIR = Path(r"C:/Users/38063/Desktop/27网盘/执业医师真题及答案（2010-2023年）")
 OUT_DIR = BASE / "知识库素材" / "执业医师真题" / "_mineru"
-DEFAULT_TOKEN = "sk-c1Yw875wINVKtvVUPcDJCWb0zO6OzESNhUdU2nROms1shDRk"
+# token 不入库：读环境变量 MINERU_TOKEN，或本地未跟踪文件 知识库素材/执业医师真题/_mineru_token.txt
+LOCAL_TOKEN_FILE = BASE / "知识库素材" / "执业医师真题" / "_mineru_token.txt"
+
+
+def _load_token() -> str:
+    import os
+
+    tok = os.environ.get("MINERU_TOKEN", "").strip()
+    if tok:
+        return tok
+    if LOCAL_TOKEN_FILE.exists():
+        tok = LOCAL_TOKEN_FILE.read_text(encoding="utf-8").strip()
+        if tok:
+            return tok
+    raise SystemExit("缺少 MinerU token：请设置环境变量 MINERU_TOKEN，或把 token 写入 "
+                     f"{LOCAL_TOKEN_FILE}（该路径已被 .gitignore 忽略）")
 DEFAULT_FILES = [
     "2017年临床执业医师考试真题及答案.pdf",
     "2018年临床执业医师考试真题及答案.pdf",
@@ -51,7 +66,7 @@ def main(argv=None) -> int:
     ap.add_argument("--token", default="")
     args = ap.parse_args(argv)
 
-    token = args.token or __import__("os").environ.get("MINERU_TOKEN", DEFAULT_TOKEN)
+    token = args.token or _load_token()
     H = {"Authorization": f"Bearer {token}"}
     pdf_dir = Path(args.pdf_dir)
     out_dir = Path(args.out)
