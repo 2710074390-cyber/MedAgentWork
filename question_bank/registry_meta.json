@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-10-19T21:10:00",
+  "updated_at": "2026-10-22T12:13:31.052832",
   "stats": {
-    "total": 6190,
+    "total": 6290,
     "by_batch": {
       "batch033": 443,
       "batch004": 388,
@@ -28,6 +28,7 @@
       "batch037": 122,
       "batch020": 117,
       "batch027": 100,
+      "batch042": 100,
       "predict": 98,
       "batch021": 95,
       "batch015": 89,
@@ -36,14 +37,15 @@
       "batch013": 65
     },
     "by_type": {
-      "A1": 2859,
-      "A2": 1415,
-      "X": 819,
+      "A1": 2927,
+      "A2": 1441,
+      "X": 823,
       "B1": 514,
-      "A3": 297,
+      "A3": 298,
       "判断": 143,
       "A4": 103,
-      "案例": 40
+      "案例": 40,
+      "A3/A4": 1
     },
     "by_bloom": {
       "理解": 2111,
@@ -53,15 +55,10 @@
       "comprehension": 219,
       "memory": 210,
       "application": 169,
+      "未标注": 100,
       "analysis": 33
     },
-    "schema_version": 1,
-    "by_status": {
-      "source_archived": 4296,
-      "active": 1695,
-      "superseded": 199
-    },
-    "active_total": 1695
+    "schema_version": 1
   },
   "ignore_pairs": [
     [
@@ -124,12 +121,5 @@
       "batch010",
       "batch012"
     ]
-  ],
-  "notes": {
-    "status_semantics": {
-      "active": "源文件在工作区且未被取代",
-      "superseded": "批次被新版本取代（batch039，2026-10-19 由 batch040 取代）",
-      "source_archived": "源 JSON 已随学期归档清理而不在工作区（22 条路径 / 4296 题）；条目保留作历史索引，check() 不再硬报缺失"
-    }
-  }
+  ]
 }

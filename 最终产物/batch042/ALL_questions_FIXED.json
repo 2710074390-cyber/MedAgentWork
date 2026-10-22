@@ -1,0 +1,6000 @@
+[
+ {
+  "id": "batch042-M02-A1-001",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "声波由鼓膜经听骨链传向卵圆窗时出现的振动变化是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "声波由鼓膜经听骨链传向卵圆窗时出现的振动变化是",
+  "options": [
+   {
+    "label": "A",
+    "text": "幅度增大,压强增大"
+   },
+   {
+    "label": "B",
+    "text": "幅度减小,压强减小"
+   },
+   {
+    "label": "C",
+    "text": "幅度增大,压强减小"
+   },
+   {
+    "label": "D",
+    "text": "幅度减小,压强增大"
+   }
+  ],
+  "answer": "D",
+  "explanation": "声波传入内耳的主要途径为气传导,即声波→外耳道→鼓膜振动→听骨链(锤骨→砧骨→镫骨)→卵圆窗膜→耳蜗。鼓膜是一个压力承受装置。锤骨柄附着于鼓膜,镫骨与卵圆窗膜相贴,砧骨居中。由于听骨链的杠杆作用,声波由鼓膜经听骨链到达卵圆窗膜时,其振动的压强增大,振幅减小,此为中耳的增压作用。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2013-017",
+   "exam": "306西综",
+   "year": 2013,
+   "question_no": 17
+  },
+  "source_label": "考研真题 2013（GS-2013-017）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "PDF 标准答案",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-002",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "关于耳蜗声波频率分析的行波学说, 错误的叙述是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "关于耳蜗声波频率分析的行波学说, 错误的叙述是",
+  "options": [
+   {
+    "label": "A",
+    "text": "不同频率的声波引起的行波均从基底膜底部开始"
+   },
+   {
+    "label": "B",
+    "text": "声波频率愈低,行波的传播距离愈远"
+   },
+   {
+    "label": "C",
+    "text": "行波的起点与终点之间有一个振幅最大的部位"
+   },
+   {
+    "label": "D",
+    "text": "高频声波的最大行波振幅出现在蜗顶部附近"
+   }
+  ],
+  "answer": "D",
+  "explanation": "声波震动从鼓膜 $\\rightarrow$ 卵圆窗膜 $\\rightarrow$ 外淋巴 $\\rightarrow$ 前庭阶、鼓阶 $\\rightarrow$ 前庭膜、基底膜振动。按行波理论，不同频率的声波引起的行波都是从基底膜的底部开始，向耳蜗顶部方向传播。声波频率越高，行波传播越近，行波最大振幅的部位越接近耳蜗底部，故答 D；声波频率越低，行波传播越远，行波最大振幅的部位越接近耳蜗顶部。因此，对于每一个振动频率来说，在基底膜上都有一个特定的行波最大振幅区，且位于行波的起点与终点之间。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2012-017",
+   "exam": "306西综",
+   "year": 2012,
+   "question_no": 17
+  },
+  "source_label": "考研真题 2012（GS-2012-017）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "PDF 标准答案",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-X-003",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "耳蜗微音器电位的特点有",
+  "type": "X",
+  "type_cn": "多选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "耳蜗微音器电位的特点有",
+  "options": [
+   {
+    "label": "A",
+    "text": "其频率和幅度与声波一致"
+   },
+   {
+    "label": "B",
+    "text": "不发生适应"
+   },
+   {
+    "label": "C",
+    "text": "有一定的阈值"
+   },
+   {
+    "label": "D",
+    "text": "有一定的不应期"
+   }
+  ],
+  "answer": "AB",
+  "explanation": "当耳蜗受到声音刺激时,在耳蜗及其附近结构所记录到的一种与声波的频率和幅度完全一致的电位变化,称为耳蜗微音器电位。耳蜗微音器电位呈等级式反应,即其电位随刺激强度的增强而增大。耳蜗微音器电位无真正的阈值,没有潜伏期和不应期,不易疲劳,不发生适应现象。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2010-155",
+   "exam": "306西综",
+   "year": 2010,
+   "question_no": 155
+  },
+  "source_label": "考研真题 2010（GS-2010-155）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "PDF 绿色标记（单证据）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-004",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "在平衡鼓膜内外两侧压力中具有重要作用的结构是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "在平衡鼓膜内外两侧压力中具有重要作用的结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "外耳道"
+   },
+   {
+    "label": "B",
+    "text": "听骨链"
+   },
+   {
+    "label": "C",
+    "text": "咽鼓管"
+   },
+   {
+    "label": "D",
+    "text": "鼓膜张肌"
+   }
+  ],
+  "answer": "C",
+  "explanation": "①中耳由鼓膜、听骨链、鼓室、咽鼓管等结构组成。咽鼓管为连接鼓室和鼻咽部的管道,其鼻咽部开口常处于闭合状态,当吞咽、打哈欠时开放,空气经咽鼓管进入鼓室,使鼓室内气压与外界大气压相等,以维持鼓膜内外两侧压力和正常位置。②外耳道是声波传导的通道。听骨链主要在声音传递过程中起作用。鼓膜张肌主要作用是降低中耳传音效能,保护内耳的感音装置。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2020-013",
+   "exam": "306西综",
+   "year": 2020,
+   "question_no": 13
+  },
+  "source_label": "考研真题 2020（GS-2020-013）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "PDF 标准答案",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-X-005",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "听觉骨传导的结构包括",
+  "type": "X",
+  "type_cn": "多选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "听觉骨传导的结构包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "颅骨"
+   },
+   {
+    "label": "B",
+    "text": "圆窗膜"
+   },
+   {
+    "label": "C",
+    "text": "听骨链"
+   },
+   {
+    "label": "D",
+    "text": "耳蜗骨壁"
+   }
+  ],
+  "answer": "AD",
+  "explanation": "声波传入内耳包括气传导和骨传导两条途径。①气传导的主要途径为声波→外耳道→鼓膜振动→三块听小骨(锤骨→砧骨→镫骨)→卵圆窗膜→耳蜗;次要传导途径为声波→鼓膜振动→鼓室空气振动→圆窗膜→耳蜗。②骨传导途径是指声波直接作用于颅骨,经颅骨和耳蜗骨壁传入耳蜗。可见,A、D属于听觉骨传导的结构,B、C属于听觉气传导的结构。参阅【2016NO155】。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2022-140",
+   "exam": "306西综",
+   "year": 2022,
+   "question_no": 140
+  },
+  "source_label": "考研真题 2022（GS-2022-140）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "PDF 标准答案",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-006",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "人体进行加速运动时出现眼震颤,感受刺激的器官是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "人体进行加速运动时出现眼震颤,感受刺激的器官是",
+  "options": [
+   {
+    "label": "A",
+    "text": "耳蜗"
+   },
+   {
+    "label": "B",
+    "text": "球囊"
+   },
+   {
+    "label": "C",
+    "text": "椭圆囊"
+   },
+   {
+    "label": "D",
+    "text": "半规管"
+   }
+  ],
+  "answer": "D",
+  "explanation": "①眼震颤是指身体做正、负角加速度运动时,出现的眼球不自主的节律性运动,是半规管受刺激引起的一种特殊的前庭反应。当绕身体纵轴旋转时,两侧水平半规管受刺激,引起水平方向的眼震颤。当侧身翻转时,上半规管受刺激,引起垂直方向的眼震颤。当前、后翻滚时,后半规管受刺激,引起旋转性眼震颤。②耳蜗是听觉感受器,与眼震颤无关。球囊、椭圆囊主要感受直线加速运动,以维持姿势、保持自身平衡。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2019-011",
+   "exam": "306西综",
+   "year": 2019,
+   "question_no": 11
+  },
+  "source_label": "考研真题 2019（GS-2019-011）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "PDF 标准答案",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A2-007",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "患者，男性，车祸伤及头部，伤后出现左侧鼻唇沟变浅",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "患者，男性，车祸伤及头部，伤后出现左侧鼻唇沟变浅，鼻出血，左耳听力下降，左外耳道流出淡血性液体。诊断首先考虑",
+  "options": [
+   {
+    "label": "A",
+    "text": "颅前窝骨折"
+   },
+   {
+    "label": "B",
+    "text": "颅中窝骨折"
+   },
+   {
+    "label": "C",
+    "text": "颅后窝骨折"
+   },
+   {
+    "label": "D",
+    "text": "左颞骨骨折"
+   },
+   {
+    "label": "E",
+    "text": "脑震荡"
+   }
+  ],
+  "answer": "B",
+  "explanation": "颅中窝骨折的临床表现有：①鼻出血或脑脊液鼻漏：骨折累及蝶骨，脑脊液经蝶窦由鼻孔流出。②脑脊液耳漏及面听神经损伤：骨折累及颞骨岩部，脑膜、骨膜及鼓膜均破裂,脑脊液经中耳由外耳道流出。若鼓膜未破裂，脑脊液经咽鼓管流往鼻咽部，可误认为脑脊液鼻漏。③垂体或第Ⅱ、ⅢI、IV、V、VI脑神经损伤：骨折累及蝶骨和颞骨的内侧部。④海绵窦症状：骨折伤及颈内动脉海绵窦段，造成动静脉瘘的形成而出现搏动性突眼及颅内杂音。 ③致命性鼻出血或耳出血：颈内动脉海绵窦段、破裂孔处及颈内动脉管处破裂。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2024年临床执业真题-学#4-41",
+   "exam": "执业医师",
+   "year": 2024,
+   "question_no": 41,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2024（2024年临床执业真题-学#4-41）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A2-008",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "男，20岁，早上起来之后突感右乳突区疼痛，刷牙时",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男，20岁，早上起来之后突感右乳突区疼痛，刷牙时漱口水从右口角流出，吃饭时感食物滞留右颊部，右耳听觉过敏，既往史无异常。查体:右眼闭合无力，右鼻唇沟变浅，右鼓腮漏气，口角左歪。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "面神经麻痹"
+   },
+   {
+    "label": "B",
+    "text": "乳突炎"
+   },
+   {
+    "label": "C",
+    "text": "腮腺炎"
+   },
+   {
+    "label": "D",
+    "text": "中耳炎"
+   },
+   {
+    "label": "E",
+    "text": "脑干脑炎"
+   }
+  ],
+  "answer": "A",
+  "explanation": "特发性面神经麻痹=额纹消失+眼裂不能闭合+鼻唇沟消失+口角偏向健侧。该患者查体“右眼闭合无力，右鼻唇沟变浅，右鼓腮漏气，口角左歪。\"为面神经麻痹典型表现。乳突炎、腮腺炎、中耳炎等炎症性疾病，懒人医考通常不会直接引起面部肌肉无力或口角歪斜。脑干脑炎虽然也可能影响面部肌肉功能，但通常伴有更广泛的神经系统症状，且病情较重。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2024年临床执业真题-学#4-44",
+   "exam": "执业医师",
+   "year": 2024,
+   "question_no": 44,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2024（2024年临床执业真题-学#4-44）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-009",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "用于治疗鼓膜未穿孔的急性中耳炎，外耳道炎的药品是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "用于治疗鼓膜未穿孔的急性中耳炎，外耳道炎的药品是",
+  "options": [
+   {
+    "label": "A",
+    "text": "过氧乙酸溶液"
+   },
+   {
+    "label": "B",
+    "text": "酚甘油滴耳液"
+   },
+   {
+    "label": "C",
+    "text": "高锰酸钾溶液"
+   },
+   {
+    "label": "D",
+    "text": "苯酚溶液"
+   },
+   {
+    "label": "E",
+    "text": "碳酸氢钠滴耳液"
+   }
+  ],
+  "answer": "B",
+  "explanation": "本题考查酚甘油滴耳液。酚甘油滴耳液（B对）适应证：用于鼓膜未穿孔的急性中耳炎，外耳道炎的治疗。过氧乙酸溶液（A错）可用于对物体表面、皮肤、黏膜、食具、蔬菜、水果、环境的消毒。高锰酸钾溶液（C错）是一种强氧化剂，可以杀灭细菌，为家庭必备的常用消毒药。苯酚溶液（D错）用于牙髓炎﹑龋齿窝及牙根管消毒。碳酸氢钠滴耳液（E错）用于软化耵聍(耳垢）及冲洗耳道。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-47000",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-47000）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A2-010",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "鼓膜是一半透明薄膜，分隔外耳与中耳，能感应很宽频",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "鼓膜是一半透明薄膜，分隔外耳与中耳，能感应很宽频谱内的微小声压变化，并将声音空气传递转变为机械振动。临床上检查成人鼓膜时，须将耳廓拉向",
+  "options": [
+   {
+    "label": "A",
+    "text": "前上"
+   },
+   {
+    "label": "B",
+    "text": "前下"
+   },
+   {
+    "label": "C",
+    "text": "后上"
+   },
+   {
+    "label": "D",
+    "text": "后下"
+   },
+   {
+    "label": "E",
+    "text": "上"
+   }
+  ],
+  "answer": "C",
+  "explanation": "检查鼓膜时，成人需将耳郭向后上方（C对）牵拉，使外耳道变直，方可窥见。婴儿鼓膜近于水平位，检查时须将耳郭拉向后下方（D错）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34628",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34628）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-011",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "某患儿感冒几天后哭闹不安，医生检查见外耳道有脓液",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "某患儿感冒几天后哭闹不安，医生检查见外耳道有脓液流出，诊断为中耳炎，问炎症破坏何结构出现外耳道流脓",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼓室后壁"
+   },
+   {
+    "label": "B",
+    "text": "鼓室下壁"
+   },
+   {
+    "label": "C",
+    "text": "鼓室外侧壁"
+   },
+   {
+    "label": "D",
+    "text": "鼓室前壁"
+   },
+   {
+    "label": "E",
+    "text": "鼓室上壁"
+   }
+  ],
+  "answer": "C",
+  "explanation": "中耳向外借鼓膜与外耳道相隔，中耳炎导致的流脓可能的是破坏了鼓室外侧壁（C对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34617",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34617）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A2-012",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "男性，25岁。间断左耳流脓5个月，两个月来左外耳",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男性，25岁。间断左耳流脓5个月，两个月来左外耳道干燥。近一个月来出现持续性头痛，体温38℃左右。入院前两周头痛加重，伴呕吐。三小时前呼之不应，急诊入院。入院查体，中度昏迷，瞳孔左：右＝4：2，对光反应消失，右侧肢体力弱，以上肢为著，右侧霍夫曼氏征（+）。最可能的临床诊断为",
+  "options": [
+   {
+    "label": "A",
+    "text": "自发性颅内出血"
+   },
+   {
+    "label": "B",
+    "text": "脑栓塞"
+   },
+   {
+    "label": "C",
+    "text": "脑脓肿继发脑疝"
+   },
+   {
+    "label": "D",
+    "text": "脑肿瘤"
+   },
+   {
+    "label": "E",
+    "text": "急性梗阻性脑积水"
+   }
+  ],
+  "answer": "C",
+  "explanation": "青年患者，间断左耳流脓5个月，两个月来左外耳道干燥（提示患者有慢性中耳炎），近一个月来出现持续性头痛，体温38℃左右，入院前两周头痛加重，伴呕吐，提示患者有明显的颅内压增高症状，且已经表现出呼之不应、中度昏迷，左侧瞳孔散大，对光反应消失（左侧动眼神经麻痹），右侧肢体力弱，上肢为著，右侧霍夫曼氏征（+）等脑干受压的症状。根据病史诊断为耳源性脑脓肿继发脑疝（C对）。自发性颅内出血（A错）、脑肿瘤（D错）多见于中老年人，青年人少见，且一般无发热等感染症状。脑栓塞（B错）多在活动中急骤起病，无前驱症状，多变现为完全性卒中（P185）。 急性梗阻性脑积水（E错）急性起病，不会出现长达一个月的持续性头痛。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-28884",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-28884）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-013",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "声波从外耳道传至耳内，其传导的途径是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "声波从外耳道传至耳内，其传导的途径是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼓膜→听骨链→蜗窗"
+   },
+   {
+    "label": "B",
+    "text": "鼓膜→听骨链→前庭窗"
+   },
+   {
+    "label": "C",
+    "text": "鼓膜→中耳→耳蜗→内耳"
+   },
+   {
+    "label": "D",
+    "text": "鼓膜→外耳道→听骨链→内耳"
+   },
+   {
+    "label": "E",
+    "text": "外"
+   }
+  ],
+  "answer": "B",
+  "explanation": "正常情况下声音以空气传导为主。声波引起鼓膜震动，使听小骨运动，放大声音，经镫骨底到前庭窗，再引起前庭阶的外淋巴波动，传入内耳（B对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34692",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34692）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-014",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "某病人慢性左中耳炎5年，近来因感冒加重，发烧并头",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "某病人慢性左中耳炎5年，近来因感冒加重，发烧并头痛，医生检查见耳后乳突明显压痛，局部皮肤水肿，其他无异常，考虑原因为",
+  "options": [
+   {
+    "label": "A",
+    "text": "中耳炎致咽鼓管感染"
+   },
+   {
+    "label": "B",
+    "text": "中耳炎引起脑膜炎"
+   },
+   {
+    "label": "C",
+    "text": "中耳炎引起内耳炎症"
+   },
+   {
+    "label": "D",
+    "text": "中耳炎通过乳突窦引起乳突炎"
+   },
+   {
+    "label": "E",
+    "text": "中耳炎伴有外耳道皮肤疖肿"
+   }
+  ],
+  "answer": "D",
+  "explanation": "检查见耳后乳突明显压痛，局部皮肤水肿，其他无异常，可推测乳突炎，慢性左中耳炎5年，可考虑长期炎症导致后壁损伤侵入乳突小房（D对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34536",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34536）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-015",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "下列有关中耳鼓室的描述,不正确的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列有关中耳鼓室的描述,不正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "盖壁骨板较薄，故中耳炎症可侵入颅内"
+   },
+   {
+    "label": "B",
+    "text": "向后经乳突窦口通乳突窦及乳突小房，故鼓室的炎症可侵入乳突深部"
+   },
+   {
+    "label": "C",
+    "text": "内侧壁，岬的后上方有前庭窗，直接与耳蜗的前庭阶相通"
+   },
+   {
+    "label": "D",
+    "text": "内侧壁，岬的后下方有蜗窗，被第二鼓膜封闭，不直接与耳蜗的鼓阶相通"
+   },
+   {
+    "label": "E",
+    "text": "缺乏皮下组织，皮肤与骨(及软骨)膜紧密结合，炎症肿胀时疼痛明显"
+   }
+  ],
+  "answer": "C",
+  "explanation": "盖壁向后延伸形成乳突窦的上壁。中耳疾患时可侵犯此壁，引起耳源性颅内并发症（A对）。中耳炎可经乳突窦侵犯乳突小房而引起乳突炎（B对）。岬的后上方有一卵圆形小孔，称前庭窗或卵圆窗，通向前庭。在活体，由镫骨底及其周缘的韧带将前庭窗封闭（C错，为本题正确答案）。岬的后下方有一圆形小孔，称蜗窗或圆窗，在活体上由第二鼓膜封闭（D对）。因皮下组织少，皮肤与软骨膜、骨膜结合紧密，不易移动，故外耳道皮肤疖肿时，疼痛剧烈”（E对，但这是描述外耳道的，与题干不符合）",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34584",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34584）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-016",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "有关外耳道错误的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "有关外耳道错误的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "是外耳门至鼓膜的管道"
+   },
+   {
+    "label": "B",
+    "text": "外1/3为软骨部，内2/3为骨部"
+   },
+   {
+    "label": "C",
+    "text": "为一弯曲管道，故作外耳道检查时，向后下方牵拉耳廓可使外耳道变直"
+   },
+   {
+    "label": "D",
+    "text": "婴儿外耳道短而直，鼓膜位置近水平位"
+   },
+   {
+    "label": "E",
+    "text": "无"
+   }
+  ],
+  "answer": "C",
+  "explanation": "外耳门至鼓膜的管道外耳道（A对) 。外耳道外1/3为软骨部，内 2/ 1为骨性部（B对) 。外耳道为一弯曲管道，只有做鼓膜检查时（C错，为本题正确答案），才需向后下方牵拉耳廓可使外耳道变直。婴儿因颞骨尚未骨化，其外耳道几乎全由软骨支持，短而直，鼓膜近于水平位（D对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34543",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34543）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-017",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "关于中耳鼓室壁的描述中，错误的为",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "关于中耳鼓室壁的描述中，错误的为",
+  "options": [
+   {
+    "label": "A",
+    "text": "上壁为鼓室盖，分隔鼓室与颅中窝"
+   },
+   {
+    "label": "B",
+    "text": "后壁为乳突壁"
+   },
+   {
+    "label": "C",
+    "text": "内侧壁也叫迷路壁"
+   },
+   {
+    "label": "D",
+    "text": "外侧壁为鼓膜"
+   },
+   {
+    "label": "E",
+    "text": "咽鼓管咽口位于鼻咽部的侧壁,鼓室口开口于鼓室的前壁"
+   }
+  ],
+  "answer": "E",
+  "explanation": "鼓室有6个壁，分别为上壁，又称盖壁，分隔鼓室与颅中窝（A错）。外侧壁大部分由鼓膜构成，故又名鼓膜壁（D错）。内侧壁又称迷路壁（C错），与内耳相隔。后壁为乳突壁（B错）。咽鼓管咽口位于鼻咽部的侧壁，咽鼓管鼓室口开口于鼓室前壁（E对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34701",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34701）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-018",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "下列有关外耳道的描述何者错误",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列有关外耳道的描述何者错误",
+  "options": [
+   {
+    "label": "A",
+    "text": "外1／3为软骨部"
+   },
+   {
+    "label": "B",
+    "text": "内2／3为骨部"
+   },
+   {
+    "label": "C",
+    "text": "在成人，检查鼓膜时应将耳郭拉向后上方"
+   },
+   {
+    "label": "D",
+    "text": "因婴儿的外耳道宽阔，鼓膜近水平位，故检查时应将耳郭拉向后下方"
+   },
+   {
+    "label": "E",
+    "text": "除平衡鼓膜内外大气压外，无其他重要功能"
+   }
+  ],
+  "answer": "D",
+  "explanation": "外耳道外 1/3 为软骨部（A对）。内2/3 为骨性部（B对）。检查鼓膜时，成人需将耳郭向后上方（C对）牵拉，使外耳道变直，方可窥见。婴儿外耳道短而直，鼓膜近于水平位，检查时须将耳郭拉向后下方（D对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34700",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34700）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-019",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "乳突窦(鼓窦)是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "乳突窦(鼓窦)是",
+  "options": [
+   {
+    "label": "A",
+    "text": "不含气的小腔"
+   },
+   {
+    "label": "B",
+    "text": "向上与鼓室相通"
+   },
+   {
+    "label": "C",
+    "text": "向后与乳突小房相通连"
+   },
+   {
+    "label": "D",
+    "text": "中耳炎绝不累及它"
+   },
+   {
+    "label": "E",
+    "text": "直而长"
+   }
+  ],
+  "answer": "C",
+  "explanation": "乳突窦位于鼓室上隐窝的后方，向前开口于鼓室后壁的上部（B错），向后与乳突小房相连通（C对），为鼓室和乳突小房之间的通道。中耳炎可经乳突窦（D错）侵犯乳突小房而引起乳突炎。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34550",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34550）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-020",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "咽鼓管鼓室口开口于鼓室的哪个壁",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "咽鼓管鼓室口开口于鼓室的哪个壁",
+  "options": [
+   {
+    "label": "A",
+    "text": "上壁"
+   },
+   {
+    "label": "B",
+    "text": "下壁"
+   },
+   {
+    "label": "C",
+    "text": "前壁"
+   },
+   {
+    "label": "D",
+    "text": "后壁"
+   },
+   {
+    "label": "E",
+    "text": "膜半规管"
+   }
+  ],
+  "answer": "C",
+  "explanation": "咽鼓管鼓室口开口于鼓室的前壁（C对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34709",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34709）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-021",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "内耳是颞骨内呈盘卷状充满液体的管腔。内有感知位置",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "内耳是颞骨内呈盘卷状充满液体的管腔。内有感知位置觉和听觉的感受器，是前庭蜗器的功能中心结构。膜迷路不包括",
+  "options": [
+   {
+    "label": "A",
+    "text": "蜗管"
+   },
+   {
+    "label": "B",
+    "text": "膜半规管"
+   },
+   {
+    "label": "C",
+    "text": "前庭"
+   },
+   {
+    "label": "D",
+    "text": "椭圆囊"
+   },
+   {
+    "label": "E",
+    "text": "球囊"
+   }
+  ],
+  "answer": "C",
+  "explanation": "膜迷路由椭圆囊（D对）和球囊（E对）、膜半规管（B对）和蜗管（A对，故C为本题正确答案）3 部分组成。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34596",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34596）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-022",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "骨传导将声波传入内耳经",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "骨传导将声波传入内耳经",
+  "options": [
+   {
+    "label": "A",
+    "text": "颅骨"
+   },
+   {
+    "label": "B",
+    "text": "第二鼓膜"
+   },
+   {
+    "label": "C",
+    "text": "蜗孔"
+   },
+   {
+    "label": "D",
+    "text": "前庭窗"
+   },
+   {
+    "label": "E",
+    "text": "基底膜"
+   }
+  ],
+  "answer": "A",
+  "explanation": "声音的传导分分空气传导和骨传导两条路径，而骨传导指声波经颅骨（A对）传入内耳的过程。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34712",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34712）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-023",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "正常情况声波传向内耳的主要途径是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "正常情况声波传向内耳的主要途径是",
+  "options": [
+   {
+    "label": "A",
+    "text": "外耳道→鼓膜→蜗窗→内耳"
+   },
+   {
+    "label": "B",
+    "text": "外耳道→鼓膜→听小骨→蜗窗→内耳"
+   },
+   {
+    "label": "C",
+    "text": "外耳道→鼓膜→听小骨→前庭窗→内耳"
+   },
+   {
+    "label": "D",
+    "text": "颅骨→内耳"
+   },
+   {
+    "label": "E",
+    "text": "以上都不是"
+   }
+  ],
+  "answer": "C",
+  "explanation": "声音的传导分空气传导和骨传导两条路径，正常情况下以空气传导（D错）为主。空气传导为声波经外耳道传至鼓膜，然后听小骨链随之运动，将声波转换成机械振动并加以放大，传至前庭窗，最后到内耳（C对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-6377",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-6377）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-024",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "属于中耳的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "属于中耳的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "蜗管"
+   },
+   {
+    "label": "B",
+    "text": "椭圆囊"
+   },
+   {
+    "label": "C",
+    "text": "咽鼓管"
+   },
+   {
+    "label": "D",
+    "text": "膜半规管"
+   },
+   {
+    "label": "E",
+    "text": "球囊"
+   }
+  ],
+  "answer": "C",
+  "explanation": "中耳由鼓膜、听骨链、鼓室和咽鼓管（C对）等结构组成，其中咽鼓管的主要功能是调节鼓室内的压力，使之与外界大气压保持平衡。内耳又称迷路，在功能上可分为耳蜗和前庭器官两部分：耳蜗在横断面上，可见其被前庭膜和基底膜分为前庭阶、蜗管（A错）和鼓阶三个腔；前庭器官由半规管（D错）、椭圆囊（B错）和球囊（E错）组成。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-6676",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-6676）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-025",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "右侧胸锁乳突肌收缩时",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "右侧胸锁乳突肌收缩时",
+  "options": [
+   {
+    "label": "A",
+    "text": "头向左侧倾斜，面转向左侧"
+   },
+   {
+    "label": "B",
+    "text": "头向右侧倾斜，面转向左侧"
+   },
+   {
+    "label": "C",
+    "text": "头向右侧倾斜，面转向右侧"
+   },
+   {
+    "label": "D",
+    "text": "头向左侧倾斜，面转向右侧"
+   },
+   {
+    "label": "E",
+    "text": "头后仰，面转向右侧"
+   }
+  ],
+  "answer": "B",
+  "explanation": "胸锁乳突肌起于胸骨柄前面和锁骨的胸骨端，止于颞骨的乳突。由副神经支配，一侧收缩，使头向同侧屈，同时面转向对侧，因此当右侧胸锁乳突肌收缩时，头向右侧倾斜，面转向左侧（B对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-5593",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-5593）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-026",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "不是内耳的结构",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "不是内耳的结构",
+  "options": [
+   {
+    "label": "A",
+    "text": "耳蜗"
+   },
+   {
+    "label": "B",
+    "text": "前庭"
+   },
+   {
+    "label": "C",
+    "text": "骨半规管"
+   },
+   {
+    "label": "D",
+    "text": "蜗管"
+   },
+   {
+    "label": "E",
+    "text": "前庭窗"
+   }
+  ],
+  "answer": "E",
+  "explanation": "内耳形状不规则，构造复杂，又称迷路，由骨迷路和膜迷路两部分组成。骨迷路分为耳蜗（A对）、前庭（B对）和骨半规管（C对）3 部分组成。膜迷路由椭圆囊和球囊、膜半规管和蜗管（D对）3 部分组成。前庭窗（E错，为本题正确答案）是岬的后上方一卵圆形小孔，岬是内侧壁中部的圆形隆起，内侧壁为鼓室的组成部分，鼓室属于中耳。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34714",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34714）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-027",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "描述中耳错误的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "描述中耳错误的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "位于外耳和内耳之间"
+   },
+   {
+    "label": "B",
+    "text": "为一含气空腔，大部位于颞骨岩部"
+   },
+   {
+    "label": "C",
+    "text": "包括鼓室、咽鼓管、乳突窦和乳突小房"
+   },
+   {
+    "label": "D",
+    "text": "有三块听小骨位于中耳鼓室内"
+   },
+   {
+    "label": "E",
+    "text": "外耳道软骨部有可动性"
+   }
+  ],
+  "answer": "E",
+  "explanation": "中耳由鼓室、咽鼓管、乳突窦和乳突小房组成（C对），为一含气的不规则腔道，大部分位于颞骨岩部内（B对）。中耳向外借鼓膜与外耳道相隔，向内毗邻内耳（C对）。鼓室内的听小骨有3 块（D对），即锤骨、砧骨和镫骨。外耳道软骨部有可动性所描述的不是中耳（E错，为本题正确答案）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34641",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34641）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A2-001",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "女，26岁。因车祸撞击头部，头部疼痛15小时。醒",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "女，26岁。因车祸撞击头部，头部疼痛15小时。醒后出现头晕，呕吐，神志清，眼脸青紫，眼结膜下出血，嗅觉丧失，鼻腔可见淡红色液体流出。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "颅顶骨凹陷性骨折"
+   },
+   {
+    "label": "B",
+    "text": "颅底前窝骨折"
+   },
+   {
+    "label": "C",
+    "text": "颅底中窝骨折"
+   },
+   {
+    "label": "D",
+    "text": "颅底后窝骨折"
+   },
+   {
+    "label": "E",
+    "text": "鼻骨骨折"
+   }
+  ],
+  "answer": "B",
+  "explanation": "",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2023年全国执业医师考试真题及答案#0-497",
+   "exam": "执业医师",
+   "year": 2023,
+   "question_no": 497,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2023（2023年全国执业医师考试真题及答案#0-497）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A2-002",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "女性，22岁，车祸后鼻腔流血性液1h，查体:鼻腔",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "女性，22岁，车祸后鼻腔流血性液1h，查体:鼻腔内可见淡红色血性液流出，CT显示颅前窝骨折，该骨折损伤的神经是",
+  "options": [
+   {
+    "label": "A",
+    "text": "眶上神经"
+   },
+   {
+    "label": "B",
+    "text": "视神经"
+   },
+   {
+    "label": "C",
+    "text": "鼻睫神经"
+   },
+   {
+    "label": "D",
+    "text": "动眼神经"
+   },
+   {
+    "label": "E",
+    "text": "嗅神经"
+   }
+  ],
+  "answer": "E",
+  "explanation": "颅前窝骨折可能导致鼻腔流血性液，这种现象通常与脑脊液鼻漏有关。脑脊液是一种淡红色的液体，当颅前窝骨折时，可能会损伤到嗅神经（CNI)，因为嗅神经是唯一穿过颅前窝的神经，负责传递嗅觉信号。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2024年临床执业真题-学#1-76",
+   "exam": "执业医师",
+   "year": 2024,
+   "question_no": 76,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2024（2024年临床执业真题-学#1-76）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-003",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "鼻咽癌的好发部位是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "鼻咽癌的好发部位是",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽鼓管圆枕"
+   },
+   {
+    "label": "B",
+    "text": "咽隐窝"
+   },
+   {
+    "label": "C",
+    "text": "梨状隐窝"
+   },
+   {
+    "label": "D",
+    "text": "扁桃体隐窝"
+   },
+   {
+    "label": "E",
+    "text": "无"
+   }
+  ],
+  "answer": "B",
+  "explanation": "咽鼓管圆枕(A错)是寻找咽鼓管咽口的标志，咽隐窝(B对)是鼻咽癌的好发部位，梨状隐窝(C错)是异物容易滞留的部位，扁桃体隐窝(D错)则容易存留细菌，引发感染。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-6757",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-6757）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-004",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "鼻咽侧壁上的结构是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "鼻咽侧壁上的结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽鼓管咽口"
+   },
+   {
+    "label": "B",
+    "text": "腭扁桃体"
+   },
+   {
+    "label": "C",
+    "text": "扁桃体上窝"
+   },
+   {
+    "label": "D",
+    "text": "梨状隐窝"
+   },
+   {
+    "label": "E",
+    "text": "会厌谷"
+   }
+  ],
+  "answer": "A",
+  "explanation": "咽鼓管咽口(A对)位于鼻咽部的侧壁上，腭扁桃体(B错)位于口咽侧壁上，扁桃体上窝(C错)位于口咽侧壁的扁桃体窝上部，梨状隐窝(D错)位于喉咽部，会厌谷(E错)位于口咽舌会厌正中襞两侧。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34731",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34731）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-005",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "位于鼻咽顶后壁粘膜下的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "位于鼻咽顶后壁粘膜下的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "舌扁桃体"
+   },
+   {
+    "label": "B",
+    "text": "咽扁桃体"
+   },
+   {
+    "label": "C",
+    "text": "咽鼓管扁桃体"
+   },
+   {
+    "label": "D",
+    "text": "腭扁桃体"
+   },
+   {
+    "label": "E",
+    "text": "咽淋巴环"
+   }
+  ],
+  "answer": "B",
+  "explanation": "腭扁桃体(D错)位于扁桃体窝内，舌扁桃体(A错)位于舌根背面粘膜表面，咽扁桃体(B对)位于鼻咽部，咽鼓管扁桃体(C错)位于鼻咽部，咽淋巴环(E错)由鼻咽和口咽的结构和舌扁桃体构成。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34852",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34852）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-006",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "不属鼻咽的结构是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "不属鼻咽的结构是",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽鼓管圆枕"
+   },
+   {
+    "label": "B",
+    "text": "咽隐窝"
+   },
+   {
+    "label": "C",
+    "text": "咽鼓管咽口"
+   },
+   {
+    "label": "D",
+    "text": "咽扁桃体"
+   },
+   {
+    "label": "E",
+    "text": "腭扁桃体"
+   }
+  ],
+  "answer": "E",
+  "explanation": "咽鼓管圆枕(A错)、咽隐窝(B错)、咽鼓管咽口(C错)、咽扁桃体(D错)均为鼻咽的结构，腭扁桃体(E对)位于口咽部。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34969",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34969）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-007",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "下列哪项属于双侧侧腭突及鼻中隔未融合或部分融合的",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列哪项属于双侧侧腭突及鼻中隔未融合或部分融合的结果",
+  "options": [
+   {
+    "label": "A",
+    "text": "腭裂"
+   },
+   {
+    "label": "B",
+    "text": "唇裂"
+   },
+   {
+    "label": "C",
+    "text": "颌裂"
+   },
+   {
+    "label": "D",
+    "text": "下颌裂"
+   },
+   {
+    "label": "E",
+    "text": "斜面裂"
+   }
+  ],
+  "answer": "A",
+  "explanation": "腭裂是口腔较常见的畸形，为一侧侧腭突和对侧侧腭突及鼻中隔未融合或部分融合的结果。掌握“腭部与舌的发育”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-9821",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-9821）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-008",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "位于下鼻甲后方约1cm处的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "位于下鼻甲后方约1cm处的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "梨状隐窝"
+   },
+   {
+    "label": "C",
+    "text": "扁桃体窝"
+   },
+   {
+    "label": "D",
+    "text": "咽鼓管咽口"
+   },
+   {
+    "label": "E",
+    "text": "扁桃体小窝"
+   }
+  ],
+  "answer": "D",
+  "explanation": "咽鼓管咽口(D对)位于鼻咽部侧壁，下鼻甲后方约1cm处。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34780",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34780）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-009",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "鼻咽与鼓室相连的小管是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "鼻咽与鼓室相连的小管是",
+  "options": [
+   {
+    "label": "A",
+    "text": "内耳道"
+   },
+   {
+    "label": "B",
+    "text": "外耳道"
+   },
+   {
+    "label": "C",
+    "text": "耳蜗"
+   },
+   {
+    "label": "D",
+    "text": "蜗螺旋管"
+   },
+   {
+    "label": "E",
+    "text": "咽鼓管"
+   }
+  ],
+  "answer": "E",
+  "explanation": "咽鼓管为连通鼻咽部与鼓室的通道（E对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34595",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34595）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-010",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "下列有关上颌窦癌的诊治，不正确的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列有关上颌窦癌的诊治，不正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "上颌窦较晚才有明显的骨质破坏"
+   },
+   {
+    "label": "B",
+    "text": "早期易与牙周病、根尖病、上颌窦炎混淆"
+   },
+   {
+    "label": "C",
+    "text": "CT片有助于早期明确诊断"
+   },
+   {
+    "label": "D",
+    "text": "治疗以放射治疗为主"
+   },
+   {
+    "label": "E",
+    "text": "肿瘤局限于上颌窦内无骨质破坏者，可施行上颌骨全切除术"
+   }
+  ],
+  "answer": "D",
+  "explanation": "上颌窦癌的早期诊断常常是治疗能否成功的关键。临床医师应有高度的警惕性，应与牙周病、根尖周病、慢性上颌窦炎等注意鉴别。上颌窦较晚才有明显的骨质破坏，早期如临床鉴别诊断困难时，可借助于曲面体层X线片、CT检查等方法明确诊断。治疗最好采用综合疗法，而以外科治疗为主。早期肿瘤局限于上颌窦内无骨质破坏者，可施行上颌骨全切除术。掌握“中央性颌骨癌及上颌窦癌”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-4906",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-4906）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-011",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "描述上颌窦正确的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "描述上颌窦正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "在上颌骨体内"
+   },
+   {
+    "label": "B",
+    "text": "窦顶为颧弓"
+   },
+   {
+    "label": "C",
+    "text": "底通口腔"
+   },
+   {
+    "label": "D",
+    "text": "窦口低于窦底部"
+   },
+   {
+    "label": "E",
+    "text": "开口于下鼻道"
+   }
+  ],
+  "answer": "A",
+  "explanation": "上颌窦位于上颌骨的上颌体内（A对）。窦顶为眶下壁（B错），底为上颌骨牙槽突（C错），与第 1 、2 磨牙及第 2 前磨牙紧邻 ，窦口高于窦底（D错），故窦内积液时直立位不易引流。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34477",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34477）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M03-A1-012",
+  "module": "M03 鼻科学",
+  "module_name": "M03 鼻科学",
+  "ent_domain": "鼻",
+  "topic": "上颌窦口位于",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "上颌窦口位于",
+  "options": [
+   {
+    "label": "A",
+    "text": "上颌骨体内侧面"
+   },
+   {
+    "label": "B",
+    "text": "上颌骨体上面"
+   },
+   {
+    "label": "C",
+    "text": "上颌骨的颞下面"
+   },
+   {
+    "label": "D",
+    "text": "上颌骨牙槽突"
+   },
+   {
+    "label": "E",
+    "text": "上颌骨腭突"
+   }
+  ],
+  "answer": "A",
+  "explanation": "上颌骨鼻面构成鼻腔外侧壁，后份有大的上颌窦裂孔，通入上颌窦（A对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34290",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34290）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A2-001",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "男.9个月发热3天，烦躁、流涎1天查体：---般",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男.9个月发热3天，烦躁、流涎1天查体：---般状态可，前囟平坦，咽部充血，咽峡及软腭部可见直径2~3cm的疱疹及溃疡，颈部无抵抗，心肺听诊正常，其病原体最可能为",
+  "options": [
+   {
+    "label": "A",
+    "text": "溶血性链球菌"
+   },
+   {
+    "label": "B",
+    "text": "腺病毒"
+   },
+   {
+    "label": "C",
+    "text": "柯萨奇病毒"
+   },
+   {
+    "label": "D",
+    "text": ". 副流感病毒"
+   },
+   {
+    "label": "E",
+    "text": "流感嗜血杆菌"
+   }
+  ],
+  "answer": "C",
+  "explanation": "",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2020年临床执业医师考试真题及答案_第二部分#4-75",
+   "exam": "执业医师",
+   "year": 2020,
+   "question_no": 75,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2020（2020年临床执业医师考试真题及答案_第二部分#4-75）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册末参考答案区）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A2-002",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "女孩，8岁。发热伴头痛及肌肉酸痛4天。查体：咽充",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "女孩，8岁。发热伴头痛及肌肉酸痛4天。查体：咽充血，扁桃体I度肿大。同学中有熟人发病，最可能的诊断是（）。",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性上呼吸道感染"
+   },
+   {
+    "label": "B",
+    "text": "急性扁桃体炎"
+   },
+   {
+    "label": "C",
+    "text": "疱疹性咽峡炎"
+   },
+   {
+    "label": "D",
+    "text": "流行性感冒"
+   },
+   {
+    "label": "E",
+    "text": "川崎病"
+   }
+  ],
+  "answer": "B",
+  "explanation": "患者出现发热伴头痛及肌肉酸痛、扁桃体肿大症状，结合有传染性的特点，诊断为急性扁桃体炎。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2013年临床执业医师考试_第四单元_真题及答案#4-18",
+   "exam": "执业医师",
+   "year": 2013,
+   "question_no": 18,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2013（2013年临床执业医师考试_第四单元_真题及答案#4-18）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A1-003",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "疱疹性咽峡炎的病原体为（）。",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "疱疹性咽峡炎的病原体为（）。",
+  "options": [
+   {
+    "label": "A",
+    "text": "流感病毒"
+   },
+   {
+    "label": "B",
+    "text": "副流感病毒"
+   },
+   {
+    "label": "C",
+    "text": "柯萨奇病毒"
+   },
+   {
+    "label": "D",
+    "text": "单纯疱疹病毒"
+   },
+   {
+    "label": "E",
+    "text": "腺病毒"
+   }
+  ],
+  "answer": "C",
+  "explanation": "疱疹性咽峡炎是柯萨奇病毒所致，腺病毒是咽结膜热的病原体。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2009年临床执业医师考试_第三单元_真题及答案#3-123",
+   "exam": "执业医师",
+   "year": 2009,
+   "question_no": 123,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2009（2009年临床执业医师考试_第三单元_真题及答案#3-123）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A2-004",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "男，17岁。双耳聋4年。诉出生后至2岁时听力、说",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男，17岁。双耳聋4年。诉出生后至2岁时听力、说话正常。12岁时因患急性扁桃体炎，在当地医疗机构接受庆大霉素治疗。此后，患者听力逐渐下降至完全不能与人交流。该患者最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "药物性耳聋"
+   },
+   {
+    "label": "B",
+    "text": "突发性耳聋"
+   },
+   {
+    "label": "C",
+    "text": "遗传性耳聋"
+   },
+   {
+    "label": "D",
+    "text": "感染性耳聋"
+   },
+   {
+    "label": "E",
+    "text": "功能性耳聋"
+   }
+  ],
+  "answer": "A",
+  "explanation": "本题考查氨基苷类抗生素药物的不良反应。男，17岁。双耳聋4年。诉出生后至2岁时听力、说话正常（C错）。12岁时因患急性扁桃体炎，在当地医疗机构接受庆大霉素（氨基苷类抗生素）治疗。此后，患者听力逐渐下降至完全不能与人交流。该患者最可能的诊断是药物性耳聋（A对）。庆大霉素为氨基苷类抗生素，氨基苷类的主要不良反应是耳毒性和肾毒性，尤其在儿童和老人更易引起。毒性产生与服药剂量和疗程有关，也随药物不同而异，甚至在停药以后也可出现不可逆的毒性反应。耳毒性包括前庭神经和耳蜗听神经损伤。突发性耳聋（B错），又称特发性突聋，指在72小时内突然出现的、原因不明的听力下降.患者一般没有耳部传音结构的明显破坏，主要表现为对声音的感受和感觉受损。感染性聋（D错）又称传染性聋，指听觉系统在孕期或出生后受病毒、细菌、立克次体等病原微生物侵袭后，结构和功能受到损害所致的听力下降。常见的病因有风疹、麻疹、梅毒、巨细胞病毒感染、流行性脑膜炎、流行性腮腺炎、伤寒、疟疾、流行性感冒、猩红热等。特别是孕期的感染，还容易导致听觉器官的畸形。功能性耳聋（E错）系指无听觉系统器质性病变的假性听觉障碍，或称心理性聋，癔症性聋，非器质性耳聋，假性神经性聋，假性器质性聋，精神性聋等，为精神心理因素或神经官能症、癔症等所致的精神性耳聋。功能性耳聋也可在原有轻度器质疾患的基础上发生，但患者表现的听觉障碍超过实际听敏度，此类情况也可称之为夸大聋。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-11555",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-11555）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A1-005",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "腭扁桃体位于",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "腭扁桃体位于",
+  "options": [
+   {
+    "label": "A",
+    "text": "口腔前庭"
+   },
+   {
+    "label": "B",
+    "text": "腭舌弓与腭咽弓之间的窝内"
+   },
+   {
+    "label": "C",
+    "text": "咽隐窝内"
+   },
+   {
+    "label": "D",
+    "text": "腭咽弓后方的窝内"
+   },
+   {
+    "label": "E",
+    "text": "咽鼓管圆枕深面"
+   }
+  ],
+  "answer": "B",
+  "explanation": "腭扁桃体位于腭舌弓与腭咽弓之间的扁桃体窝内(B对)。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34798",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34798）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A2-006",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "男，13岁。2天来出现咽痛、发热。查体：咽充血，",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男，13岁。2天来出现咽痛、发热。查体：咽充血，软腭、腭垂、咽及扁桃体表面有灰白色疱疹及浅表溃疡，周围有红晕，最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "疱疹性咽峡炎"
+   },
+   {
+    "label": "B",
+    "text": "支气管炎"
+   },
+   {
+    "label": "C",
+    "text": "流行性感冒"
+   },
+   {
+    "label": "D",
+    "text": "肺结核"
+   },
+   {
+    "label": "E",
+    "text": "肺炎"
+   }
+  ],
+  "answer": "A",
+  "explanation": "男性青少年患者，2天来出现咽痛、发热。查体：咽充血，软腭、腭垂、咽及扁桃体表面有灰白色疱疹及浅表溃疡，周围有红晕，综合患者的症状、体征，最可能的诊断是疱疹性咽峡炎（A对）。软腭、腭垂、咽及扁桃体表面有灰白色疱疹及浅表溃疡，周围有红晕，可排除支气管炎（B错）、流行性感冒（C错）、肺炎（E错）。肺结核（D错）可有低热、食欲缺乏、疲乏、盗汗等结核中毒症状。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-32057",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-32057）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A2-007",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "女性，42岁。右颈侧肿块二月余，如蚕豆大、可活动",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "女性，42岁。右颈侧肿块二月余，如蚕豆大、可活动，无压痛，无发热及咳嗽。鼻咽部无异常。甲状腺峡部可及直径0.5cm大小结节，其最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "慢性淋巴结炎"
+   },
+   {
+    "label": "B",
+    "text": "甲状腺癌转移"
+   },
+   {
+    "label": "C",
+    "text": "淋巴结结核"
+   },
+   {
+    "label": "D",
+    "text": "肺癌转移"
+   },
+   {
+    "label": "E",
+    "text": "鼻咽癌转移"
+   }
+  ],
+  "answer": "B",
+  "explanation": "青年女性患者，右颈侧肿块二月余，蚕豆大小、可活动，无压痛（无痛性淋巴结肿大多为癌性），甲状腺峡部可及直径0.5cm大小结节（存在甲状腺结节，提示原发灶在甲状腺），最可能的诊断是甲状腺癌转移（B对）。慢性淋巴结炎（A错）为慢性炎症引起的局部淋巴结肿大，质地较硬，压痛不明显，但单纯慢性淋巴结炎并不能解释甲状腺结节，因此不作优先考虑。淋巴结结核（C错）多表现为颈部串珠样肿大，并有低热、盗汗、食欲不振、消瘦等结核中毒症状，与患者临床表现不符。肺癌（D错）常见临床表现包括咳嗽、血痰、胸痛、发热、气促，与患者临床表现不符。患者鼻咽部检查未见异常，暂不考虑鼻咽癌转移（E错）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-2362",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-2362）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A1-008",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "下列何结构位于口咽部",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列何结构位于口咽部",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽鼓管圆枕"
+   },
+   {
+    "label": "B",
+    "text": "咽扁桃体"
+   },
+   {
+    "label": "C",
+    "text": "咽隐窝"
+   },
+   {
+    "label": "D",
+    "text": "腭扁桃体"
+   },
+   {
+    "label": "E",
+    "text": "无"
+   }
+  ],
+  "answer": "D",
+  "explanation": "咽鼓管圆枕(A错)、咽扁桃体(B错)和咽隐窝(C错)都位于鼻咽部，腭扁桃体(D对)位于口咽部。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34815",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34815）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A2-009",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "咽为前后略扁的漏斗状肌性管道，是消化道与呼吸道的",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "咽为前后略扁的漏斗状肌性管道，是消化道与呼吸道的共同通道，以软腭与会厌上缘为界，分为鼻咽、口咽和喉咽。咽的交通关系，错误的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "口咽部经咽峡通口腔"
+   },
+   {
+    "label": "B",
+    "text": "喉咽部经喉口通喉腔"
+   },
+   {
+    "label": "C",
+    "text": "鼻咽部经鼻后孔通鼻腔"
+   },
+   {
+    "label": "D",
+    "text": "经咽鼓管咽口通内耳"
+   },
+   {
+    "label": "E",
+    "text": "向下通食管"
+   }
+  ],
+  "answer": "D",
+  "explanation": "口咽向前经咽峡通口腔(A对)，喉咽经喉口通喉腔(B对)，鼻咽向前经鼻后孔通鼻腔(C对)，经咽鼓管咽口通中耳(D错，为本题正确答案)，咽向下通食管(E对)。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34796",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34796）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A1-010",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "下列关于咽旁间隙感染叙述中，正确的一项是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列关于咽旁间隙感染叙述中，正确的一项是",
+  "options": [
+   {
+    "label": "A",
+    "text": "为咽侧壁红肿、腭扁桃体突出"
+   },
+   {
+    "label": "B",
+    "text": "患者自觉吞咽疼痛、进食困难"
+   },
+   {
+    "label": "C",
+    "text": "可有开口受限"
+   },
+   {
+    "label": "D",
+    "text": "若伴有喉水肿，可出现声音嘶哑"
+   },
+   {
+    "label": "E",
+    "text": "以上均正确"
+   }
+  ],
+  "answer": "E",
+  "explanation": "咽旁间隙感染临床特点：症状主要表现为咽侧壁红肿、腭扁桃体突出，肿胀可波及同侧软腭、腭舌弓和腭咽弓，悬雍垂被推向健侧；如伴有翼下颌间隙、下颌下间隙炎症时，则咽侧和颈上部肿胀更为广泛明显。患者自觉吞咽疼痛、进食困难、开口受限；若伴有喉水肿，可出现声音嘶哑，以及不同程度呼吸困难和进食呛咳。咽旁间隙感染如处理不及时，可导致严重的肺部感染、菌血症和颈内静脉血栓性静脉炎等并发症。掌握“颞间隙、咽旁间隙感染”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-3751",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-3751）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A1-011",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "形成硬腭之大部分、软腭和悬雍垂约在",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "形成硬腭之大部分、软腭和悬雍垂约在",
+  "options": [
+   {
+    "label": "A",
+    "text": "胚胎第3个月"
+   },
+   {
+    "label": "B",
+    "text": "胚胎第6个月"
+   },
+   {
+    "label": "C",
+    "text": "胚胎第8个月"
+   },
+   {
+    "label": "D",
+    "text": "胚胎第10个月"
+   },
+   {
+    "label": "E",
+    "text": "胚胎第12个月"
+   }
+  ],
+  "answer": "A",
+  "explanation": "左右侧腭突在中缝处自前向后逐渐融合，并与向下生长的鼻中隔发生融合。这是口腔颌面部发育中唯一发生融合的部位。侧腭突的融合，形成硬腭之大部分、软腭和悬雍垂约在胚胎第3个月，腭部发育完成，口腔与鼻腔完全隔开。掌握“腭部与舌的发育”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-4116",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-4116）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A1-012",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "咽旁间隙感染途径多为",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "咽旁间隙感染途径多为",
+  "options": [
+   {
+    "label": "A",
+    "text": "牙源性"
+   },
+   {
+    "label": "B",
+    "text": "血源性"
+   },
+   {
+    "label": "C",
+    "text": "损伤性"
+   },
+   {
+    "label": "D",
+    "text": "腺源性"
+   },
+   {
+    "label": "E",
+    "text": "医源性"
+   }
+  ],
+  "answer": "A",
+  "explanation": "咽旁间隙感染途径：多为牙源性，特别是下颌智牙冠周炎，以及腭扁桃体和相邻间隙感染的扩散。偶尔继发于腮腺炎耳源性炎症和颈深上巴结炎。掌握“颞间隙、咽旁间隙感染”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-1593",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-1593）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A1-013",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "关于咽旁间隙感染的临床特点，错误的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "关于咽旁间隙感染的临床特点，错误的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "常由下颌智齿冠周炎引起"
+   },
+   {
+    "label": "B",
+    "text": "可出现吞咽疼痛、张口受限、进食困难等症状"
+   },
+   {
+    "label": "C",
+    "text": "一般采用穿刺方法确定是否形成脓肿"
+   },
+   {
+    "label": "D",
+    "text": "咽侧壁红肿、腭扁桃体突出"
+   },
+   {
+    "label": "E",
+    "text": "一旦形成脓肿，一般常选用口外切口进行切开引流"
+   }
+  ],
+  "answer": "E",
+  "explanation": "一般选择口内切开引流。掌握“颞间隙、咽旁间隙感染”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-6467",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-6467）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A1-014",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "下列哪项的轻度为悬雍垂裂",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列哪项的轻度为悬雍垂裂",
+  "options": [
+   {
+    "label": "A",
+    "text": "唇裂"
+   },
+   {
+    "label": "B",
+    "text": "腭裂"
+   },
+   {
+    "label": "C",
+    "text": "颌裂"
+   },
+   {
+    "label": "D",
+    "text": "下颌裂"
+   },
+   {
+    "label": "E",
+    "text": "斜面裂"
+   }
+  ],
+  "answer": "B",
+  "explanation": "腭裂的程度在轻者可仅为悬雍垂裂。掌握“腭部与舌的发育”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-9802",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-9802）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M04-A2-015",
+  "module": "M04 咽部疾病",
+  "module_name": "M04 咽部疾病",
+  "ent_domain": "咽",
+  "topic": "某男，29岁。咽部红肿、咽痛较剧、吞咽困难。发热",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "某男，29岁。咽部红肿、咽痛较剧、吞咽困难。发热，口渴，心烦，尿赤，便秘；舌红苔黄，脉数有力。诊断为咽喉肿痛，证属火毒上攻，宜选用的中成药是",
+  "options": [
+   {
+    "label": "A",
+    "text": "玄麦甘桔含片"
+   },
+   {
+    "label": "B",
+    "text": "六神丸"
+   },
+   {
+    "label": "C",
+    "text": "知柏地黄丸"
+   },
+   {
+    "label": "D",
+    "text": "金参润喉合剂"
+   },
+   {
+    "label": "E",
+    "text": "金嗓开音丸"
+   }
+  ],
+  "answer": "B",
+  "explanation": "本题考查咽喉肿痛之火毒上攻证的常用中成药应用。诊断为咽喉肿痛，证属火毒上攻，宜选用的中成药是六神丸（B对）。咽喉肿痛之火毒上攻证【症状】咽喉疼痛红肿，吞咽困难，咽喉如梗，咽部红肿明显，颌下有臖核、压痛，伴发热，口渴喜饮，疼痛剧烈，小便短赤，大便秘结。舌质红，苔黄，脉数有力。【中成药应用】常用中成药板蓝根颗粒、六神丸。咽喉肿痛之虚火上炎证【症状】咽部干燥，微痛，干痒，灼热，有异物感，干咳少痰，或痰中带血；或伴颧红潮热，耳鸣多梦。舌红，苔少，脉细数。【中成药应用】常用中成药玄麦甘桔含片（A错）、知柏地黄丸（C错）、金参润喉合剂（D错）。咽喉肿痛之风热外袭证【症状】咽部疼痛，逐渐加重，吞咽或咳嗽时疼痛加剧，咽部红肿，颌下有券核；伴见发热恶风，头痛，咳嗽痰黄。舌质红，苔黄，脉浮数。【中成药应用】常用中成药清咽利膈丸、金嗓开音丸（E错）、复方鱼腥草片。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-52839",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-52839）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A2-001",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "男,5岁玩耍时将一小跳棋子误吸入于喉咙部，出现严",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男,5岁玩耍时将一小跳棋子误吸入于喉咙部，出现严重窒息其父亲速将其送至邻居周某开设的中医诊所就诊。周某即刻用桌上的一把水果刀将李某的气管切开，并用手伸入切口将棋子取出李某的生命虽得救，但伤口感染。经抗炎治疗后，伤口愈合，瘢痕形成，管狭窄。周某的行为属于",
+  "options": [
+   {
+    "label": "A",
+    "text": "违规操作，构成医疗事故"
+   },
+   {
+    "label": "B",
+    "text": "非法行医，不属于医疗事故"
+   },
+   {
+    "label": "C",
+    "text": "超范围执业，构成医疗事故"
+   },
+   {
+    "label": "D",
+    "text": "超范围执业，不构成医疗事故"
+   },
+   {
+    "label": "E",
+    "text": "虽造成不良后果，但不属于医疗事故"
+   }
+  ],
+  "answer": "E",
+  "explanation": "",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2021年临床执业医师考试真题及答案#1-115",
+   "exam": "执业医师",
+   "year": 2021,
+   "question_no": 115,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2021（2021年临床执业医师考试真题及答案#1-115）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册末参考答案区）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A1-002",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "受损后造成软腰、咽喉部肌肉麻痹的神经是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "受损后造成软腰、咽喉部肌肉麻痹的神经是",
+  "options": [
+   {
+    "label": "A",
+    "text": "叉神经运动核"
+   },
+   {
+    "label": "B",
+    "text": "面神经核"
+   },
+   {
+    "label": "C",
+    "text": "下涎核"
+   },
+   {
+    "label": "D",
+    "text": "迷走神经背核F"
+   },
+   {
+    "label": "E",
+    "text": "疑核"
+   }
+  ],
+  "answer": "E",
+  "explanation": "",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2020年临床执业医师考试真题及答案_第二部分#4-14",
+   "exam": "执业医师",
+   "year": 2020,
+   "question_no": 14,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2020（2020年临床执业医师考试真题及答案_第二部分#4-14）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册末参考答案区）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A2-003",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "出生4周，妊娠42周男婴，出生时烦躁声嘶，喂食情",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "出生4周，妊娠42周男婴，出生时烦躁声嘶，喂食情况不好，脐周膨隆，肌张力弱，可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "缺血缺氧性脑病"
+   },
+   {
+    "label": "B",
+    "text": "先天性巨结肠"
+   },
+   {
+    "label": "C",
+    "text": "脑出血"
+   },
+   {
+    "label": "D",
+    "text": "脑梗死"
+   },
+   {
+    "label": "E",
+    "text": "脓毒血症"
+   }
+  ],
+  "answer": "A",
+  "explanation": "",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2023年全国执业医师考试真题及答案#0-62",
+   "exam": "执业医师",
+   "year": 2023,
+   "question_no": 62,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2023（2023年全国执业医师考试真题及答案#0-62）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A3/A4-004",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "2.男婴，4个月，反复发作性吸气性呼吸困难伴吸气",
+  "type": "A3/A4",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "2.男婴，4个月，反复发作性吸气性呼吸困难伴吸气时喉鸣，口唇青紫三次，无发热，发作间隔一般情况良好，枕部指压有乒乓球样感，肺、心未见异常。该患儿再次出现发作性呼吸困难缺氧时，首要的急救措施是（）。",
+  "options": [
+   {
+    "label": "A",
+    "text": "气管插管"
+   },
+   {
+    "label": "B",
+    "text": "补充维生素D"
+   },
+   {
+    "label": "C",
+    "text": "静注钙剂"
+   },
+   {
+    "label": "D",
+    "text": "应用甘露醇"
+   },
+   {
+    "label": "E",
+    "text": "应用地西洋，保持呼吸道畅通"
+   }
+  ],
+  "answer": "E",
+  "explanation": "维生素D缺乏性手足抽搐症呼吸困难的急救处理：①氧气吸入：惊厥期应立即吸氧，喉痉挛者须立即将舌头拉出口外，并进行口对口呼吸或加压给氧，必要时进行气管插管以保证呼吸道通畅；②迅速控制惊厥或喉痉挛：可用10%水合氯醛，每次40～50mg/kg，保留灌肠；或地西泮每次0.1～0.3mg/kg，肌内或缓慢静脉注射。保持呼吸道通畅是急救中压倒一切的任务。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2016年临床执业医师考试_第四单元_真题及答案#4-3",
+   "exam": "执业医师",
+   "year": 2016,
+   "question_no": 3,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2016（2016年临床执业医师考试_第四单元_真题及答案#4-3）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A2-005",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "某女，35岁。自觉咽喉部不适，常感咽部干燥，微痛",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "某女，35岁。自觉咽喉部不适，常感咽部干燥，微痛，干痒，灼热，有异物感，干咳少痰，伴颧红潮热，耳鸣多梦；舌红苔少，脉细数。宜选用的中成药是",
+  "options": [
+   {
+    "label": "A",
+    "text": "清咽利膈丸"
+   },
+   {
+    "label": "B",
+    "text": "六神丸"
+   },
+   {
+    "label": "C",
+    "text": "板蓝根颗粒"
+   },
+   {
+    "label": "D",
+    "text": "知柏地黄丸"
+   },
+   {
+    "label": "E",
+    "text": "金嗓开音丸"
+   }
+  ],
+  "answer": "D",
+  "explanation": "本题考查的是咽喉肿痛虚火上炎证的方剂应用。某女，35岁。自觉咽喉部不适，常感咽部干燥，微痛，干痒，灼热，有异物感，干咳少痰，伴颧红潮热，耳鸣多梦；舌红苔少，脉细数。宜选用的中成药是知柏地黄丸（D对）。咽喉肿痛虚火上炎证【症状】咽部干燥，微痛，干痒，灼热，有异物感，干咳少痰，或痰中带血；或伴颧红潮热，耳鸣多梦。舌红，苔少，脉细数。【方剂应用】基础方剂养阴清肺汤（玄参、甘草、白芍、麦冬、生地、薄荷、贝母、丹皮）或知柏地黄丸（知母、黄柏、熟地、山药、茯苓、泽泻、丹皮、山茱萸）加减。咽喉肿痛火毒上攻证【症状】咽喉疼痛红肿，吞咽困难，咽喉如梗，咽部红肿明显，颌下有臖核、压痛，伴发热，口渴喜饮，疼痛剧烈，小便短赤，大便秘结。舌质红，苔黄，脉数有力。【方剂应用】基础方剂清咽利膈汤（A错）（玄参、升麻、桔梗、甘草、茯苓、黄连、黄芩、牛蒡子、防风、芍药）加减。【中成药应用】合理用药与用药指导阴虚火旺者、老人及素体脾胃虚弱者慎用板蓝根颗粒（C错）和六神丸（B错）。六神丸含蟾酥、雄黄有毒物质，不宜过量、久用。咽喉肿痛风热外袭证【症状】咽部疼痛，逐渐加重，吞咽或咳嗽时疼痛加剧，咽部红肿，颌下有臖核；伴见发热恶风，头痛，咳嗽痰黄。舌质红，苔黄，脉浮数。【中成药应用】合理用药与用药指导孕妇禁用清咽利膈丸，老人、儿童及虚火喉痹、脾胃虚弱者慎用。虚火喉痹、喉喑者慎用金嗓开音丸（E错）。虚火喉痹、乳蛾者慎用复方鱼腥草片。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-52851",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-52851）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A1-006",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "下列不属于临床行气管切开时注意事项的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列不属于临床行气管切开时注意事项的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "采取头正中后仰位，以免伤及颈总动脉"
+   },
+   {
+    "label": "B",
+    "text": "一般在第3～5气管软骨环的范围内切开"
+   },
+   {
+    "label": "C",
+    "text": "勿切第1气管软骨环，以免术后发生喉部狭窄"
+   },
+   {
+    "label": "D",
+    "text": "切开时注意深度，以免伤及气管后壁，甚至伤及食管"
+   },
+   {
+    "label": "E",
+    "text": "切口不应低于第3气管软骨环，以免伤及无名动脉"
+   }
+  ],
+  "answer": "E",
+  "explanation": "临床行气管切开时注意点：①采取头正中后仰位，以免伤及颈总动脉，并使气管位置变浅；②一般在第3～5气管软骨环的范围内切开；③切开时注意深度，以免伤及气管后壁，甚至伤及食管；④勿切第1气管软骨环，以免术后发生喉部狭窄；⑤切开不应低于第5气管软骨环，以免引起无名动脉等损伤。掌握“气管颈段、颈动脉三角的解剖特点及临床应用”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-2622",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-2622）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A1-007",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "严重吸气性呼吸困难最主要的特点是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "严重吸气性呼吸困难最主要的特点是",
+  "options": [
+   {
+    "label": "A",
+    "text": "鼻翼扇动"
+   },
+   {
+    "label": "B",
+    "text": "发绀明显"
+   },
+   {
+    "label": "C",
+    "text": "哮鸣音"
+   },
+   {
+    "label": "D",
+    "text": "呼吸加深加快"
+   },
+   {
+    "label": "E",
+    "text": "三凹征"
+   }
+  ],
+  "answer": "E",
+  "explanation": "严重吸气性呼吸困难最主要的特点是三凹征（E对），表现为胸骨上窝、锁骨上窝和肋间隙明显凹陷，此时亦可伴有干咳及高调吸气性喉鸣，主要是由于呼吸肌极度用力，胸腔负压增加所致，常见于喉部、气管、大支气管的狭窄与阻塞。鼻翼扇动（A错）表现为吸气时鼻孔张大，呼气时鼻孔回缩，多见于高热性疾病所致的呼吸困难，如大叶肺炎，以及支气管哮喘等。发绀明显（B错）一般见于缺氧性疾病。哮鸣音（C错）一般见于支气管哮喘等疾病。呼吸加深加快（D错）一般多见于剧烈运动后、缺氧等情况。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-1471",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-1471）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A1-008",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "下列哪种病变可引起吸气性呼吸困难",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列哪种病变可引起吸气性呼吸困难",
+  "options": [
+   {
+    "label": "A",
+    "text": "胸膜疾病"
+   },
+   {
+    "label": "B",
+    "text": "大块肺不张"
+   },
+   {
+    "label": "C",
+    "text": "支气管哮喘"
+   },
+   {
+    "label": "D",
+    "text": "气管肿瘤"
+   },
+   {
+    "label": "E",
+    "text": "慢性阻塞性肺气肿"
+   }
+  ],
+  "answer": "D",
+  "explanation": "吸气性呼吸困难的特点是吸气显著困难，气道高度狭窄时呼吸肌极度紧张，胸骨上窝、锁骨上窝、肋间隙在吸气时明显凹陷，称为三凹征，常伴有频繁干咳及高调的吸气性喘鸣音。其可见于各种原因引起的喉、气管、大致器官的狭窄与梗阻，如气管肿瘤（D对）、气管异物等。胸膜疾病（A错）、大块肺不张（B错）主要表现为混合性呼吸困难，混合性呼吸困难的主要特点为吸气期及呼气期均感呼吸费力、呼吸频率加快、深度变浅，可伴有呼吸音异常或病理性呼吸音。支气管哮喘（C错）、慢性阻塞性肺气肿（E错）主要表现为呼气性呼吸困难，呼气性呼吸困难的主要特点为呼气费力、呼气缓慢、呼吸时间明显延长，常伴有呼气期哮鸣音。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-14307",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-14307）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A1-009",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "引起吸气性呼吸困难的疾病是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "引起吸气性呼吸困难的疾病是",
+  "options": [
+   {
+    "label": "A",
+    "text": "气管肿瘤"
+   },
+   {
+    "label": "B",
+    "text": "慢性阻塞性肺气肿"
+   },
+   {
+    "label": "C",
+    "text": "支气管哮喘"
+   },
+   {
+    "label": "D",
+    "text": "气胸"
+   },
+   {
+    "label": "E",
+    "text": "大块肺不张"
+   }
+  ],
+  "answer": "A",
+  "explanation": "吸气性呼吸困难的特点是吸气显著困难，气道高度狭窄时呼吸肌极度紧张，胸骨上窝、锁骨上窝、肋间隙在吸气时明显凹陷，称为三凹征，常伴有频繁干咳及高调的吸气性喘鸣音。其可见于各种原因引起的喉、气管、大支气管的狭窄与梗阻，如气管肿瘤（A对）、气管异物等。慢性阻塞性肺气肿（B错）、支气管哮喘（C错）主要表现为呼气性呼吸困难，呼气性呼吸困难的主要特点为呼气费力、呼气缓慢、呼吸时间明显延长，常伴有呼气期哮鸣音。气胸（D错）、大块肺不张（E错）主要表现为混合性呼吸困难，混合性呼吸困难的主要特点为吸气期及呼气期均感呼吸费力、呼吸频率加快、深度变浅，可伴有呼吸音异常或病理性呼吸音。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-14310",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-14310）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A1-010",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "下列哪项不属于吸气性呼吸困难",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列哪项不属于吸气性呼吸困难",
+  "options": [
+   {
+    "label": "A",
+    "text": "喉头水肿"
+   },
+   {
+    "label": "B",
+    "text": "气管受压"
+   },
+   {
+    "label": "C",
+    "text": "气管异物"
+   },
+   {
+    "label": "D",
+    "text": "支气管哮喘"
+   },
+   {
+    "label": "E",
+    "text": "喉癌"
+   }
+  ],
+  "answer": "D",
+  "explanation": "吸气性呼吸困难表现为吸气显著费力，严重者吸气时可见“三凹征”，表现为胸骨上窝、锁骨上窝和肋间隙明显凹陷，此时亦可伴有干咳和高调性喉鸣。三凹征的出现主要是由于呼吸肌极度费力，胸腔负压增加所致，常见于气道狭窄与阻塞。气管受压（B对）、气管异物（C对）均可导致气管狭窄，因此二者引起的呼吸困难属于吸气性呼吸困难。喉头水肿（A对）、喉癌（E对）均可以导致喉部狭窄，因此二者导致的呼吸困难属于吸气性呼吸困难。支气管哮喘（D错，为本题正确答案）是气管慢性炎症，其导致的呼吸困难是呼气性呼吸困难。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-35",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-35）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A1-011",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "下列最常表现为吸气性呼吸困难的疾病是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列最常表现为吸气性呼吸困难的疾病是",
+  "options": [
+   {
+    "label": "A",
+    "text": "胸腔积液"
+   },
+   {
+    "label": "B",
+    "text": "支气管哮喘"
+   },
+   {
+    "label": "C",
+    "text": "气管肿物"
+   },
+   {
+    "label": "D",
+    "text": "慢性阻塞性肺疾病"
+   },
+   {
+    "label": "E",
+    "text": "自发性气胸"
+   }
+  ],
+  "answer": "C",
+  "explanation": "吸气性呼气困难主要见于喉部、气管、大支气管阻塞与狭窄，如气管肿物（C对）等。胸腔积液（A错）和自发性气胸（E错）时，患者表现为混合性呼吸困难，支气管哮喘（B错）和COPD（慢性阻塞性肺疾病）（D错），患者表现为呼气性呼吸困难。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-39383",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-39383）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M05-A1-012",
+  "module": "M05 喉部疾病",
+  "module_name": "M05 喉部疾病",
+  "ent_domain": "喉",
+  "topic": "吸气性呼吸困难常见于",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "吸气性呼吸困难常见于",
+  "options": [
+   {
+    "label": "A",
+    "text": "慢性支气管炎"
+   },
+   {
+    "label": "B",
+    "text": "气管异物"
+   },
+   {
+    "label": "C",
+    "text": "支气管哮喘"
+   },
+   {
+    "label": "D",
+    "text": "肺炎球菌肺炎"
+   },
+   {
+    "label": "E",
+    "text": "阻塞性肺气肿"
+   }
+  ],
+  "answer": "B",
+  "explanation": "吸气性呼气困难主要见于喉部、气管、大支气管阻塞与狭窄，如气管异物（B对）等。慢性支气管炎（A错）、支气管哮喘（C错）、肺炎球菌肺炎（D错）和阻塞性肺气肿（E错）时，患者表现为呼气性呼吸困难（P23）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-39380",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-39380）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-X-001",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "关于先天性肌性斜颈,下列描述不正确的有",
+  "type": "X",
+  "type_cn": "多选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "关于先天性肌性斜颈,下列描述不正确的有",
+  "options": [
+   {
+    "label": "A",
+    "text": "头部向健侧倾斜"
+   },
+   {
+    "label": "B",
+    "text": "下颌转向健侧"
+   },
+   {
+    "label": "C",
+    "text": "患侧面部发育较大"
+   },
+   {
+    "label": "D",
+    "text": "健侧面部发育较大"
+   }
+  ],
+  "answer": "AC",
+  "explanation": "①先天性肌性斜颈是一侧胸锁乳突肌纤维性挛缩所致,可导致头部向患侧偏斜。②胸锁乳突肌挛缩,可牵拉枕部并偏向患侧,下颌转向健侧肩部。随着小儿生长发育,双侧面部不对称,健侧饱满,患侧变小。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2013-180",
+   "exam": "306西综",
+   "year": 2013,
+   "question_no": 180
+  },
+  "source_label": "考研真题 2013（GS-2013-180）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "PDF 标准答案",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-002",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "先天性肌性斜颈,最佳手术时间是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "先天性肌性斜颈,最佳手术时间是",
+  "options": [
+   {
+    "label": "A",
+    "text": "3 个月以内"
+   },
+   {
+    "label": "B",
+    "text": "6个月以内"
+   },
+   {
+    "label": "C",
+    "text": "1 岁以内"
+   },
+   {
+    "label": "D",
+    "text": "1岁以上"
+   },
+   {
+    "label": "E",
+    "text": "12岁以上"
+   }
+  ],
+  "answer": "D",
+  "explanation": "先天性肌性斜颈非手术治疗适用于1 岁的患儿应手术治疗,最佳手术年龄为 1\\~4 岁,常用手术方法为胸锁乳突肌切断术。术后头放矫正位,头颈胸石膏固定 4\\~5 周。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-1995-075",
+   "exam": "306西综",
+   "year": 1995,
+   "question_no": 75
+  },
+  "source_label": "考研真题 1995（GS-1995-075）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "扫描版绿色标记",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-003",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "女性,32岁,右颈部无痛性淋巴结肿大半个月,发热",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "女性,32岁,右颈部无痛性淋巴结肿大半个月,发热1周,最高体温38.3℃。查体:右颈部和左腋下各触及1个3.0cm×2.0cm的淋巴结,其余部位淋巴结未见肿大,肝肋下刚触及,脾肋下1cm。颈部淋巴结活检为非霍奇金淋巴瘤。骨髓检查示:淋巴瘤细胞占12%。按Ann Arbor提出的淋巴瘤临床分期方案,该患者的分期属于",
+  "options": [
+   {
+    "label": "A",
+    "text": "II A"
+   },
+   {
+    "label": "B",
+    "text": "III B"
+   },
+   {
+    "label": "C",
+    "text": "IVA"
+   },
+   {
+    "label": "D",
+    "text": "IVB"
+   }
+  ],
+  "answer": "D",
+  "explanation": "(1)淋巴瘤临床分4期: ①I期病变仅限于1个淋巴结(I)或单个结外器官局部受累(IE)。②II期病变累及横膈同侧2个或更多的淋巴结区(II),或病变局限侵犯淋巴结以外器官及横膈同侧1个以上淋巴结区(II E)。③III期为横膈上下均有淋巴结病变(III),可伴脾累及(IIIS)、结外器官局限受累(IIIE),或脾与局限性结外器官受累(IIISE)。④IV期为1个或多个结外器官受到广泛性或播散性侵犯,伴或不伴淋巴结肿大,肝或骨髓受累属IV期。(2)全身症状分为A、B两组。凡无以下症状者为A组,有以下症状之一者为B组: ①不明原因发热>38℃; ②盗汗; ③半年内体重下降10%以上。本例有发热T>38℃,属于B组;有右颈部、左腋淋巴结和肝、脾、骨髓受累,属于IV期。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2010-072",
+   "exam": "306西综",
+   "year": 2010,
+   "question_no": 72
+  },
+  "source_label": "考研真题 2010（GS-2010-072）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "PDF 绿色标记（单证据）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-004",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "下列关于颈部肿块的叙述,哪项不正确?",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列关于颈部肿块的叙述,哪项不正确?",
+  "options": [
+   {
+    "label": "A",
+    "text": "甲状腺腺瘤是颈部原发性肿瘤之一"
+   },
+   {
+    "label": "B",
+    "text": "甲状腺舌骨囊肿是先天性畸形"
+   },
+   {
+    "label": "C",
+    "text": "颈部恶性肿瘤的 3/4 是转移性肿瘤"
+   },
+   {
+    "label": "D",
+    "text": "颈部肿块发生坏死、溃破、感染时是颈部淋巴结结核"
+   },
+   {
+    "label": "E",
+    "text": "囊状淋巴管瘤是位于颈侧区的单发性肿物"
+   }
+  ],
+  "answer": "D",
+  "explanation": "在颈部肿块中,甲状腺腺瘤为原发性肿瘤之一。甲状舌管囊肿(原称甲状舌骨囊肿)是与甲状腺发育有关的先天性畸形。在颈部恶性肿瘤中,转移性肿瘤约占3/4。颈部肿块发生坏死、溃破、感染时不全是颈部淋巴结结核,其他如肿瘤等也可发生。囊状淋巴管瘤多位于颈侧区,常单发。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2000-081",
+   "exam": "306西综",
+   "year": 2000,
+   "question_no": 81
+  },
+  "source_label": "考研真题 2000（GS-2000-081）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "扫描版绿色标记",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-X-005",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "甲状腺手术时不慎将甲状旁腺切除后可出现",
+  "type": "X",
+  "type_cn": "多选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "甲状腺手术时不慎将甲状旁腺切除后可出现",
+  "options": [
+   {
+    "label": "A",
+    "text": "血钙过低"
+   },
+   {
+    "label": "B",
+    "text": "手足抽搐"
+   },
+   {
+    "label": "C",
+    "text": "血磷酸盐过低"
+   },
+   {
+    "label": "D",
+    "text": "呼吸困难"
+   }
+  ],
+  "answer": "ABD",
+  "explanation": "甲状旁腺主细胞分泌的甲状旁腺激素是调节钙磷代谢的最重要激素,可升高血钙、降低血磷。因此,甲状腺手术不慎误切甲状腺旁腺后,由于甲状旁腺激素分泌减少,患者血钙水平降低、血磷增高。低钙血症可引起手足抽搐,也可因喉部肌肉痉挛而发生呼吸困难。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false
+  },
+  "kaoyan_origin": {
+   "gs_id": "GS-2007-132",
+   "exam": "306西综",
+   "year": 2007,
+   "question_no": 132
+  },
+  "source_label": "考研真题 2007（GS-2007-132）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "PDF 绿色标记（单证据）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-006",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "男，50岁。右侧颈部肿块3个月。查体：右侧颈部胸",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男，50岁。右侧颈部肿块3个月。查体：右侧颈部胸锁乳突肌上部前缘触及直径约2cm肿块。肿块有膨胀性搏动。下一步处理措施正确的是（）。",
+  "options": [
+   {
+    "label": "A",
+    "text": "局麻下手术活检"
+   },
+   {
+    "label": "B",
+    "text": "切开引流"
+   },
+   {
+    "label": "C",
+    "text": "穿刺细胞学检查"
+   },
+   {
+    "label": "D",
+    "text": "超声多普勒检查"
+   },
+   {
+    "label": "E",
+    "text": "局部热敷、按摩"
+   }
+  ],
+  "answer": "D",
+  "explanation": "肿块临近颈部动脉血管有膨胀性搏动，故下一步应使用无创的超声多普勒检查以确诊肿物性质。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2015年临床执业医师考试_第三单元_真题及答案#3-46",
+   "exam": "执业医师",
+   "year": 2015,
+   "question_no": 46,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2015（2015年临床执业医师考试_第三单元_真题及答案#3-46）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-007",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "男，30岁。颈部包块6个月。查体：甲状腺右叶可触",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男，30岁。颈部包块6个月。查体：甲状腺右叶可触及直径2cm质硬结节。B超检查示：甲状腺右叶下极实性结节，2cm×1.5cm，边界不规则，内可见细小钙化。行穿刺活检，最可能的病理类型是（()。确",
+  "options": [
+   {
+    "label": "A",
+    "text": "鳞癌"
+   },
+   {
+    "label": "B",
+    "text": "滤泡状癌"
+   },
+   {
+    "label": "C",
+    "text": "未分化癌"
+   },
+   {
+    "label": "D",
+    "text": "乳头状癌"
+   },
+   {
+    "label": "E",
+    "text": "髓样癌"
+   }
+  ],
+  "answer": "D",
+  "explanation": "甲状腺癌以乳头状癌最多见，乳头状癌常伴有出血、坏死、纤维化和钙化。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2014年临床执业医师考试_第一单元_真题及答案#1-36",
+   "exam": "执业医师",
+   "year": 2014,
+   "question_no": 36,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2014（2014年临床执业医师考试_第一单元_真题及答案#1-36）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A3-008",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "8.男，55岁。颈部淋巴结进行性肿大2个月，发热",
+  "type": "A3",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "8.男，55岁。颈部淋巴结进行性肿大2个月，发热2周。发病以来体重减轻14kg。查体：T肝脾肋下未触及，血常规和骨髓检查均未见异常，左颈部淋巴结活检确诊为弥漫性大B细胞淋巴瘤。该患者治疗方案应首选（）。",
+  "options": [
+   {
+    "label": "A",
+    "text": "ABVD"
+   },
+   {
+    "label": "B",
+    "text": "R-CHOP"
+   },
+   {
+    "label": "C",
+    "text": "MOPP"
+   },
+   {
+    "label": "D",
+    "text": "DA"
+   },
+   {
+    "label": "E",
+    "text": "VDLP"
+   }
+  ],
+  "answer": "B",
+  "explanation": "弥漫大B细胞淋巴瘤是NHL中最常见的类型，几乎占所有病例的1/3。研究表明，弥漫大B细胞淋巴瘤标准的一线治疗方案应当是利妥昔单抗（Rituximab，R）十CHOP方案，并且通过增加方案的剂量密度，缩短疗程间隙时间，从而获得更好的疗效，如R-CHOP14方案。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2016年临床执业医师考试_第三单元_真题及答案#3-3",
+   "exam": "执业医师",
+   "year": 2016,
+   "question_no": 3,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2016（2016年临床执业医师考试_第三单元_真题及答案#3-3）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-009",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "女孩，4岁，发热咳嗽流涕4天，发疹1天，体温39",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "女孩，4岁，发热咳嗽流涕4天，发疹1天，体温39.5°℃，心率130次/分，呼吸38次/分，精神萎靡，头颈部出现红疹，疹间皮肤正常，眼结膜充血有分泌物，淋巴结未触及，口腔充血粗糙，心肺正常，肝触及边，脾未触及，血红蛋白115g/L，白细胞6.5×10°/L，中性粒细胞0.35，淋巴细胞0.6，血小板261×10°/L，最可能的合并症是",
+  "options": [
+   {
+    "label": "A",
+    "text": "肺炎"
+   },
+   {
+    "label": "B",
+    "text": "脓气胸"
+   },
+   {
+    "label": "C",
+    "text": "肺脓肿"
+   },
+   {
+    "label": "D",
+    "text": "心肌炎"
+   },
+   {
+    "label": "E",
+    "text": "肺脓肿"
+   }
+  ],
+  "answer": "A",
+  "explanation": "",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2023年全国执业医师考试真题及答案#0-568",
+   "exam": "执业医师",
+   "year": 2023,
+   "question_no": 568,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2023（2023年全国执业医师考试真题及答案#0-568）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-010",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "男，28岁，近2月间断性发热，咳嗽，伴乏力，食欲",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男，28岁，近2月间断性发热，咳嗽，伴乏力，食欲不振，体重下降。抗生素无效，有同性伴侣。查体发现颈部及腹股沟部多个淋巴结肿大，口腔有白膜。血常规检查显示红细胞4.8×1012/L，白细胞3.1×109/L，血小板131×10\"/L。该患者可能的原发病是",
+  "options": [
+   {
+    "label": "A",
+    "text": "支原体感染"
+   },
+   {
+    "label": "B",
+    "text": "细菌感染"
+   },
+   {
+    "label": "C",
+    "text": "真菌感染"
+   },
+   {
+    "label": "D",
+    "text": "原虫感染"
+   },
+   {
+    "label": "E",
+    "text": "病毒感染"
+   }
+  ],
+  "answer": "E",
+  "explanation": "某些病毒感染，尤其是 HIV，可以引起类似的症状，包括淋巴结肿大、口腔念珠菌病（白膜）、发热、体重下降和白细胞减少。患者有同性伴侣，增加了HIV感染的可能性。考虑患者的症状、体征和实验室检查结果，最可能的原发病是病毒感染，特别是HIV感染。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_pdf_origin": {
+   "source_id": "2024年临床执业真题-学#2-105",
+   "exam": "执业医师",
+   "year": 2024,
+   "question_no": 105,
+   "corpus": "pdf_paper"
+  },
+  "source_label": "执业医师历年真题 2024（2024年临床执业真题-学#2-105）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "印刷答案（册内逐题）",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-011",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "流行性腮腺炎肿大的部位是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "流行性腮腺炎肿大的部位是",
+  "options": [
+   {
+    "label": "A",
+    "text": "两侧颈部"
+   },
+   {
+    "label": "B",
+    "text": "两侧耳后"
+   },
+   {
+    "label": "C",
+    "text": "两侧颌下"
+   },
+   {
+    "label": "D",
+    "text": "两侧面部"
+   },
+   {
+    "label": "E",
+    "text": "以耳垂为中心"
+   }
+  ],
+  "answer": "E",
+  "explanation": "流行性腮腺炎的临床表现为腮腺肿大通常先于一侧，2～4天又累及对侧。双侧腮腺肿大者约占75%。腮腺肿胀是以耳垂为中心，向前、后、下发展，边缘不清、触之有弹性感及触痛，表面不红，张口、咀嚼困难，当进食酸性食物促使唾液腺分泌时疼痛加剧。腮肿约1～3天达高峰，1周左右逐渐消退。有时舌下腺或颌下腺可以同时受累，也有部分病例仅有颌下腺肿大而腮腺不大。腮腺管口可有红肿（E对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-1015",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-1015）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-012",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "以下关于急性化脓性腮腺炎病因的说法哪项不对",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "以下关于急性化脓性腮腺炎病因的说法哪项不对",
+  "options": [
+   {
+    "label": "A",
+    "text": "主要致病菌是链球菌及肺炎双球菌"
+   },
+   {
+    "label": "B",
+    "text": "常见于腹部大型外科手术后"
+   },
+   {
+    "label": "C",
+    "text": "长期服用抗组织胺制剂的病员可能发生"
+   },
+   {
+    "label": "D",
+    "text": "体质虚弱、长期卧床、高热或禁食的病员可能"
+   },
+   {
+    "label": "E",
+    "text": "长期服用抗胆碱剂的病员可能发生"
+   }
+  ],
+  "answer": "A",
+  "explanation": "本题考查急性化脓性腮腺炎的病因。急性化脓性腮腺炎的病原菌是葡萄球菌，主要是金黄色葡萄球菌，少数是链球菌，而肺炎双球菌、文森螺旋体少见（A错，为本题的正确答案）。腹部大型外科手术后（B对）和体质虚弱、长期卧床、高热或禁食的病员（D对）会造成严重的代谢紊乱，由于禁食，反射性唾液腺功能降低或停止，唾液分泌明显减少，且机体抵抗力下降，易发生逆行性感染，称之为术后腮腺炎。长期服用抗组织胺制剂（C对）和抗胆碱剂的病员（E对）唾液分泌受到抑制，口内致病菌可逆行侵入导管，发生逆行性感染。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-4586",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-4586）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-013",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "男，45岁。发现颈部肿物3个月，无不适，无结核病",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男，45岁。发现颈部肿物3个月，无不适，无结核病史。查体：左颈部外侧中部有肿块，2.5cm大小，活动，无压痛，甲状腺未触及结节。对该患者确诊最有意义的检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "MRI检查"
+   },
+   {
+    "label": "B",
+    "text": "PPD试验"
+   },
+   {
+    "label": "C",
+    "text": "B超检查"
+   },
+   {
+    "label": "D",
+    "text": "CT检查"
+   },
+   {
+    "label": "E",
+    "text": "细针穿刺细胞检查"
+   }
+  ],
+  "answer": "E",
+  "explanation": "细针穿刺细胞学检查（E对）可取得组织小块用于病理诊断，为该患者确诊最有意义的检查。MRI检查（A错）、B超检查（C错）、CT检查（D错）均为影像学检查，可了解肿块结构及毗邻，但不能明确肿块性质。PPD试验（B错）（结核菌素试验）只能提示是否曾感染结核杆菌，不能确诊结核病，更不能确诊颈部肿块性质。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-1456",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-1456）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-014",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "面颈部淋巴结感染扩散而引起",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "面颈部淋巴结感染扩散而引起",
+  "options": [
+   {
+    "label": "A",
+    "text": "牙源性"
+   },
+   {
+    "label": "B",
+    "text": "血源性"
+   },
+   {
+    "label": "C",
+    "text": "损伤性"
+   },
+   {
+    "label": "D",
+    "text": "腺源性"
+   },
+   {
+    "label": "E",
+    "text": "医源性"
+   }
+  ],
+  "answer": "D",
+  "explanation": "本题考查面颈部淋巴结炎。腺源性（D对）由面颈部淋巴结感染扩散而引起。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-2674",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-2674）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-015",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "男性，50岁，左腮腺区无痛性肿块数年。患者有吸烟",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男性，50岁，左腮腺区无痛性肿块数年。患者有吸烟史，扪诊肿瘤呈圆形或卵圆形，表面光滑，质地较软，有时有弹性感，镜下见由肿瘤性上皮和大量淋巴样间质所组成。此患者可诊断为",
+  "options": [
+   {
+    "label": "A",
+    "text": "多形性腺瘤"
+   },
+   {
+    "label": "B",
+    "text": "肌上皮瘤"
+   },
+   {
+    "label": "C",
+    "text": "基底细胞腺瘤"
+   },
+   {
+    "label": "D",
+    "text": "嗜酸性腺瘤"
+   },
+   {
+    "label": "E",
+    "text": "沃辛瘤"
+   }
+  ],
+  "answer": "E",
+  "explanation": "沃辛瘤具有下列临床特点：①多见于男性；②好发于年龄在40～70岁的中老年；③患者常有吸烟史，其发病可能与吸烟有关；④可有消长史，这是因为沃辛瘤由肿瘤性上皮和大量淋巴样间质所组成，淋巴样间质很容易发生炎症反应；⑤绝大多数肿瘤位于腮腺后下极，可能系该部位分布的淋巴结较多所致；⑥扪诊肿瘤呈圆形或卵圆形，表面光滑，质地较软，有时有弹性感；⑦肿瘤常呈多发性，约有12%患者为双侧腮腺肿瘤，也可以在一侧腮腺出现多个肿瘤。有些患者术后又出现肿瘤，不是复发而是多发；⑧术中可见肿瘤呈紫褐色，剖面可见囊腔形成，内含干酪样或黏稠液体，易被误诊为结核或囊肿；⑨99mTc核素显像呈“热”结节，具有特征性。掌握“沃辛瘤”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-4301",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-4301）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-016",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "关于腮腺浅叶肿瘤手术切除，不正确的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "关于腮腺浅叶肿瘤手术切除，不正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "术前美蓝导管注入"
+   },
+   {
+    "label": "B",
+    "text": "可行区域切除术"
+   },
+   {
+    "label": "C",
+    "text": "需行面神经解剖术"
+   },
+   {
+    "label": "D",
+    "text": "可行浅叶切除术"
+   },
+   {
+    "label": "E",
+    "text": "需行腮腺全叶切除术"
+   }
+  ],
+  "answer": "E",
+  "explanation": "本题考查腮腺浅叶肿瘤手术切除。关于腮腺浅叶肿瘤手术切除不正确的是需行腮腺全叶切除术（E错，为本题的正确答案）。唾液腺肿瘤的治疗以手术为主，若良性肿瘤位于腮腺浅叶，则作肿瘤及腮腺浅叶切除（D对），可保留腮腺深叶，无需行腮腺全叶切除术。多数肿瘤，即使是良性肿瘤，包膜也不完整，采用单纯沿包膜剥离的方法，常有复发，故手术原则应从包膜外正常组织进行，同时切除部分或整个腺体，可行区域性切除术（B对）。腮腺肿瘤除高度恶性肿瘤以外，应尽量保留面神经，故在切除的同时还应行面神经解剖术（C对）。术前美蓝导管注入（A对）可协助判断肿瘤的范围。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-1649",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-1649）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-017",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "一患者因腮腺区外伤，临床检查出现额纹消失，常为面",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "一患者因腮腺区外伤，临床检查出现额纹消失，常为面神经哪个分支损伤",
+  "options": [
+   {
+    "label": "A",
+    "text": "下颌缘支"
+   },
+   {
+    "label": "B",
+    "text": "额支"
+   },
+   {
+    "label": "C",
+    "text": "上颊支"
+   },
+   {
+    "label": "D",
+    "text": "颞支"
+   },
+   {
+    "label": "E",
+    "text": "颧支"
+   }
+  ],
+  "answer": "D",
+  "explanation": "面神经为混合性神经，含有运动纤维、副交感纤维、味觉纤维及一般躯体感觉纤维。其中运动纤维为主要组成部分，支配面部表情肌等。在腮腺内分支有五支：①颞支，分布于额肌等，受损后，同侧额纹消失；②颧支，分布于上下眼轮匝肌等，受损后眼睑不能闭合；③颊支，分布于上唇肌、鼻翼肌等，受损后出现鼻唇沟变浅、鼓腮无力等；④下颌缘支，分布于降口角肌等，受损后患侧口角下垂和流口水；⑤颈支，分布于颈阔肌，受损后，影响颈阔肌运动。掌握“面神经、舌咽神经、舌下神经的分支与分布”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-6643",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-6643）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-018",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "腮腺区肿块如要做穿刺检查，可能会损伤其他的结构，",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "腮腺区肿块如要做穿刺检查，可能会损伤其他的结构，其中最不可能损伤的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "颞浅动静脉"
+   },
+   {
+    "label": "B",
+    "text": "下颌后静脉"
+   },
+   {
+    "label": "C",
+    "text": "面神经颊支"
+   },
+   {
+    "label": "D",
+    "text": "舌下神经"
+   },
+   {
+    "label": "E",
+    "text": "耳颞神经"
+   }
+  ],
+  "answer": "D",
+  "explanation": "本题考查舌下神经的分支分布。舌下神经行走于下颌角水平时，即弯曲向前，行于二腹肌、茎突舌骨肌与舌骨舌肌之间，行走过程中与腮腺区相距较远（D错，为本题的正确答案）。腮腺咬肌区有许多重要的神经血管通过，可分为纵行和横行两组：纵形组为颞浅动静脉（A对）、耳颞神经（E对）、下颌后静脉（B对）及颈外动脉；横行组为面神经（C对）、上颌动静脉及面横动脉，腮腺区肿块如要做穿刺检查，可能损伤这些结构。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-4532",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-4532）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-019",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "男性，14岁，左腮腺肿大3年。观察切除标本的病理",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男性，14岁，左腮腺肿大3年。观察切除标本的病理切片见除较多的淋巴细胞浸润外，腺体内纤维组织增生明显，特别是在腺导管周围。最可能的病理诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "慢性涎腺炎"
+   },
+   {
+    "label": "B",
+    "text": "坏死性涎腺化生"
+   },
+   {
+    "label": "C",
+    "text": "涎腺症"
+   },
+   {
+    "label": "D",
+    "text": "舍格伦综合征"
+   },
+   {
+    "label": "E",
+    "text": "涎腺结核"
+   }
+  ],
+  "answer": "A",
+  "explanation": "慢性唾液腺炎以慢性化脓性唾液腺炎多见，其主要病理变化是淋巴细胞或者浆细胞浸润，部分腺泡破坏。其中主要的变化是纤维组织修复性增生。这种增生在腺管周围更明显。舍格伦综合征、坏死性涎腺化生和涎腺症中一般无纤维性修复变化。涎腺结核以肉芽肿样病变为主要表现。掌握“慢性唾液腺炎的病理变化”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-4629",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-4629）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-020",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "男性，46岁，右侧腮腺区无痛性肿大4年，近半年起",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "男性，46岁，右侧腮腺区无痛性肿大4年，近半年起左侧腮腺也显肿大，两侧面部不对称，并伴口干不适，在行腮腺扪诊检查时，正确的方法是",
+  "options": [
+   {
+    "label": "A",
+    "text": "拇指、示指夹住作提拉式扪诊"
+   },
+   {
+    "label": "B",
+    "text": "食指、中指、环指作平触扪诊"
+   },
+   {
+    "label": "C",
+    "text": "拇指、示指相对触诊扪诊"
+   },
+   {
+    "label": "D",
+    "text": "拇指扪诊"
+   },
+   {
+    "label": "E",
+    "text": "双合诊"
+   }
+  ],
+  "answer": "B",
+  "explanation": "本题考查口外一般检查及辅助检查。双指合诊适用于唇、颊、舌部检查。双手合诊适用于口底、下颌下的检查，按“由后向前”的顺序。腮腺和下颌下腺及其导管主要是采用扪诊检查。腮腺的扪诊一般以食、中、无名指三指平触（B对）为宜。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-4884",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-4884）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A2-021",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "患者，女，50岁。右耳垂下无痛性肿物，缓慢生长6",
+  "type": "A2",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "患者，女，50岁。右耳垂下无痛性肿物，缓慢生长6年。触诊肿块界限清，可活动，约4.0cm×4.0cm×3.0cm大小，质地中等，扪诊呈结节状，高起处常较软，与皮肤无粘连。根据上述症状，该患者最可能的诊断是右侧腮腺",
+  "options": [
+   {
+    "label": "A",
+    "text": "皮脂腺囊肿"
+   },
+   {
+    "label": "B",
+    "text": "皮样囊肿"
+   },
+   {
+    "label": "C",
+    "text": "腺淋巴瘤"
+   },
+   {
+    "label": "D",
+    "text": "混合瘤"
+   },
+   {
+    "label": "E",
+    "text": "淋巴结炎"
+   }
+  ],
+  "answer": "D",
+  "explanation": "本题考查唾液腺疾病。患者女，50岁，右耳垂下无痛性肿物（无自觉症状），缓慢生长6年（病史长）。触诊肿块界限清，可活动（活动性），约4.0cm×4.0cm×3.0cm大小，质地中等，扪诊呈结节状，高起处常较软，与皮肤无粘连。上述症状，该患者最可能的诊断是右侧腮腺混合瘤（D对）。混合瘤又叫多形性腺瘤，多发于30～50岁女性，最常见于腮腺，可有囊性变，低凹处较硬，多为实质性组织。腺淋巴瘤（C错）多见于男性，患者常有吸烟史，多数位于腮腺后下极，扪诊肿瘤呈圆形或卵圆形，表面光滑，质地较软，有时有弹性感。皮脂腺囊肿（A错）好发于皮脂腺丰富部位，未合并感染时，患者一般无自觉症状，肿物呈球形，单发或多发，大小不等，中等硬度，有弹性，与皮肤有粘连，不易推动。皮样囊肿（B错）主要表现为皮下无痛性结节，结节可以随着年龄增长而缓慢增大，直径一般为0.5～5厘米，通常单个出现，呈圆形，活动度较小，患者通常没有明显的症状。淋巴结炎（E错）主要表现为淋巴结肿大和疼痛，可出现如玻璃球大小的结节，触感坚硬，局部红肿压痛。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-4538",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-4538）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-022",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "某患者因腮腺良性肿瘤将于明日行腮腺浅叶切除术加面",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "某患者因腮腺良性肿瘤将于明日行腮腺浅叶切除术加面神经解剖术，今日术前家属签字时，谈话中以下哪项是不必要的",
+  "options": [
+   {
+    "label": "A",
+    "text": "术后可能出现面瘫"
+   },
+   {
+    "label": "B",
+    "text": "耳垂麻木"
+   },
+   {
+    "label": "C",
+    "text": "涎瘘"
+   },
+   {
+    "label": "D",
+    "text": "Frey综合征"
+   },
+   {
+    "label": "E",
+    "text": "可能出现半侧下颌骨麻木"
+   }
+  ],
+  "answer": "E",
+  "explanation": "本题考查腮腺浅叶切除术加面神经解剖术。下牙槽神经受损可能出现半侧下颌骨麻木（E错，为本题的正确答案），但腮腺浅叶切除术不会损伤下牙槽神经。在行腮腺浅叶切除术和面神经解剖术时，若术中损伤面神经，术后可能出现面瘫（A对）；若术中损伤耳大神经，术后有可能出现耳垂麻木（B对）；若术中损伤了腮腺导管，术后可能发生涎瘘（C对）；若术中切断的耳颞神经中的副交感神经纤维与支配皮肤汗腺、表浅血管的交感神经纤维错位愈合，术后会出现Frey综合征（D对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-4619",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-4619）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-028",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "关于中耳的说法何者正确",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "关于中耳的说法何者正确",
+  "options": [
+   {
+    "label": "A",
+    "text": "向内与内耳道相连通"
+   },
+   {
+    "label": "B",
+    "text": "向外与外耳道相通"
+   },
+   {
+    "label": "C",
+    "text": "向上与颅腔相通"
+   },
+   {
+    "label": "D",
+    "text": "向前借半规管与鼻咽相通"
+   },
+   {
+    "label": "E",
+    "text": "岬的后下方有蜗窗"
+   }
+  ],
+  "answer": "E",
+  "explanation": "中耳向外借鼓膜与外耳道相隔（B错），向内毗邻内耳（A错），向前以咽鼓管通向鼻咽部（D错）。鼓室上壁又称盖壁，由颞骨岩部前外侧面的鼓室盖构成，分隔鼓室与颅中窝（C错）。鼓室内侧壁有岬，其后下方有一圆形小孔，称蜗窗或圆窗（E对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34546",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34546）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-029",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "上呼吸道感染可引起中耳发炎，其途径可能是经过",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "上呼吸道感染可引起中耳发炎，其途径可能是经过",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽隐窝"
+   },
+   {
+    "label": "B",
+    "text": "面神经管"
+   },
+   {
+    "label": "C",
+    "text": "咽鼓管"
+   },
+   {
+    "label": "D",
+    "text": "颈动脉管"
+   },
+   {
+    "label": "E",
+    "text": "骨半规管可分为前、后、外侧3个"
+   }
+  ],
+  "answer": "C",
+  "explanation": "上呼吸道主要指鼻腔，咽，喉。中耳由鼓室、咽鼓管、乳突窦和乳突小房组成。因为咽鼓管为连通鼻咽部与鼓室的通道，所以此题选C。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34665",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34665）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-030",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "骨半规管叙述正确的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "骨半规管叙述正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "由骨迷路和膜迷路构成"
+   },
+   {
+    "label": "B",
+    "text": "有前庭、骨半规管和耳蜗"
+   },
+   {
+    "label": "C",
+    "text": "六个孔开口于前庭"
+   },
+   {
+    "label": "D",
+    "text": "外骨半规管形成乳突窦入口处的隆起"
+   },
+   {
+    "label": "E",
+    "text": "后骨半规管与颞骨岩部长轴相平行"
+   }
+  ],
+  "answer": "E",
+  "explanation": "由骨迷路和膜迷路构成内耳（A错）。骨迷路分为耳蜗、前庭和骨半规管3 部分（B错）。因前、后半规管的单骨脚合成一个总骨脚，故3 个骨半规管共有5个口（C错）连于前庭。外骨半规管弓向外侧，当头前倾30°角时，呈水平位（D错）。后骨半规管与颞骨岩部的长轴平行（E对）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-5496",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-5496）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-031",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "下列何结构不属于鼓室内侧壁上的结构",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "下列何结构不属于鼓室内侧壁上的结构",
+  "options": [
+   {
+    "label": "A",
+    "text": "前庭窗"
+   },
+   {
+    "label": "B",
+    "text": "蜗窗"
+   },
+   {
+    "label": "C",
+    "text": "岬"
+   },
+   {
+    "label": "D",
+    "text": "锥隆起"
+   },
+   {
+    "label": "E",
+    "text": "无"
+   }
+  ],
+  "answer": "D",
+  "explanation": "前庭窗（A对）是内侧壁的岬的后上方的一卵圆形小孔。蜗窗（B对）是内侧壁的岬的后下方的一卵圆形小孔。岬（C对）是内侧壁中部的圆形隆起。锥隆起（D错，为本题正确答案）为乳突壁上的乳突窦入口下方的一锥状突起。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-5343",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-5343）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-032",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "第二鼓膜位于",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "第二鼓膜位于",
+  "options": [
+   {
+    "label": "A",
+    "text": "外耳道与中耳鼓室之间"
+   },
+   {
+    "label": "B",
+    "text": "迷路壁岬的后上方"
+   },
+   {
+    "label": "C",
+    "text": "迷路壁岬的后下方"
+   },
+   {
+    "label": "D",
+    "text": "迷路壁岬的前上方"
+   },
+   {
+    "label": "E",
+    "text": "无"
+   }
+  ],
+  "answer": "C",
+  "explanation": "外耳道与中耳鼓室之间的是鼓膜（A错）。迷路壁岬的后上方的卵圆形小孔为前庭窗（B错），有镫骨底及其周缘的韧带将其封闭。迷路壁岬的后下方（C对）有一圆形小孔，称蜗窗或圆窗，在活体上由第二鼓膜封闭。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-4847",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-4847）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-033",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "关于鼓室内侧壁的描述何者正确",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "关于鼓室内侧壁的描述何者正确",
+  "options": [
+   {
+    "label": "A",
+    "text": "中部有圆形隆凸称岬"
+   },
+   {
+    "label": "B",
+    "text": "封闭前庭窗的是第二鼓膜"
+   },
+   {
+    "label": "C",
+    "text": "镫骨底封闭蜗窗"
+   },
+   {
+    "label": "D",
+    "text": "岬的深面有面神经通过"
+   },
+   {
+    "label": "E",
+    "text": "眼盼、眶脂体、泪器和眼肌（这个选项有问题）"
+   }
+  ],
+  "answer": "A",
+  "explanation": "鼓室内侧壁其中部有圆形隆起，称岬（A对）。封闭前庭窗的是镫骨底及其周缘的韧带（B错）。在活体上由第二鼓膜（C错）封闭蜗窗。前庭窗的后上方有一弓形隆起，称面神经管凸，内藏面神经（D错）。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-5191",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-5191）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-034",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "鼓室内侧壁上有",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "鼓室内侧壁上有",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽鼓管半管的开口"
+   },
+   {
+    "label": "B",
+    "text": "乳突窦(鼓窦)开口"
+   },
+   {
+    "label": "C",
+    "text": "鼓室盖"
+   },
+   {
+    "label": "D",
+    "text": "鼓室上隐窝"
+   },
+   {
+    "label": "E",
+    "text": "迷路壁"
+   }
+  ],
+  "answer": "E",
+  "explanation": "咽鼓管半管的开口（A错）于鼓室前壁。乳突窦(鼓窦)开口（B错）于鼓室后壁。鼓室盖（C错）为鼓室上壁。鼓室上隐窝（D错）外侧壁即鼓室外侧壁。迷路壁（E对）即鼓室内侧壁。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-5338",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-5338）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-035",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "开口于鼓室前壁的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "开口于鼓室前壁的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽鼓管咽口"
+   },
+   {
+    "label": "B",
+    "text": "咽鼓管的外1/3"
+   },
+   {
+    "label": "C",
+    "text": "咽鼓管鼓室口"
+   },
+   {
+    "label": "D",
+    "text": "咽鼓管内侧2/3部"
+   },
+   {
+    "label": "E",
+    "text": "咽隐窝"
+   }
+  ],
+  "answer": "C",
+  "explanation": "咽鼓管鼓室口（C对）向后外侧开口于鼓室前壁。咽鼓管咽口（A错）向前内侧开口于鼻咽部侧壁。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-6304",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-6304）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-036",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "咽鼓管咽口位于",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "咽鼓管咽口位于",
+  "options": [
+   {
+    "label": "A",
+    "text": "下鼻甲后方1cm"
+   },
+   {
+    "label": "B",
+    "text": "中鼻道后方1cm"
+   },
+   {
+    "label": "C",
+    "text": "中鼻甲后方1cm"
+   },
+   {
+    "label": "D",
+    "text": "上鼻道后方1cm"
+   },
+   {
+    "label": "E",
+    "text": "上鼻甲后方1cm"
+   }
+  ],
+  "answer": "A",
+  "explanation": "咽鼓管咽口位于下鼻甲后方约1cm处(A对)。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-test-5478",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-test-5478）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "high",
+  "answer_evidence": "CMExam test answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-037",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "关于咽鼓管的说法何者错误",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "关于咽鼓管的说法何者错误",
+  "options": [
+   {
+    "label": "A",
+    "text": "向后外借咽鼓管鼓室口与中耳鼓室相通"
+   },
+   {
+    "label": "B",
+    "text": "向前内借咽鼓管咽口开口于鼻咽部的侧壁"
+   },
+   {
+    "label": "C",
+    "text": "外2／3段为骨部，内1／3段为软骨部"
+   },
+   {
+    "label": "D",
+    "text": "小儿咽鼓管比较短而平，故咽部感染易致中耳感染"
+   },
+   {
+    "label": "E",
+    "text": "在吞咽、打哈欠时开放，以调节鼓室内、外的压力"
+   }
+  ],
+  "answer": "C",
+  "explanation": "咽鼓管向后外借咽鼓管鼓室口与中耳鼓室相通(A对)，向前内侧由咽鼓管咽口开口于鼻咽部侧壁(B对)，外1/3段为骨部，内2/3为软骨部(C错，为本题正确答案)，幼儿的咽鼓管短而平，所以咽部的感染容易通过咽鼓管导致中耳感染(D对)，咽鼓管咽口在吞咽或打哈欠时开放，使空气进入鼓室，以调节鼓室内、外的压力(E对)。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34921",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34921）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M02-A1-038",
+  "module": "M02 耳科学",
+  "module_name": "M02 耳科学",
+  "ent_domain": "耳",
+  "topic": "有关鼓膜的叙述正确的是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "有关鼓膜的叙述正确的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "是外耳道与鼓室之间的椭圆形半透明薄膜"
+   },
+   {
+    "label": "B",
+    "text": "呈向前、向下、向外的位置，与矢状面和水平面各成40°角"
+   },
+   {
+    "label": "C",
+    "text": "前上部较小为松弛部，下部较大为紧张部"
+   },
+   {
+    "label": "D",
+    "text": "凸面对向中耳，中心为鼓膜脐"
+   },
+   {
+    "label": "E",
+    "text": "又称许莱姆(Schlemm)管"
+   }
+  ],
+  "answer": "A",
+  "explanation": "鼓膜位于外耳道与鼓室之间，为椭圆形半透明薄膜（A对），直径约 1cm, 与外耳道底形成约 45°~ 50° 的倾斜角（B错）。鼓膜上1/4 的三角形区，称为松弛部，下3/4 区，为紧张部（C对）。鼓膜边缘的大部分附着于颞骨上，中心向内凹陷（D错），称鼓膜脐。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-34598",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-34598）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ },
+ {
+  "id": "batch042-M07-A1-023",
+  "module": "M07 头颈外科",
+  "module_name": "M07 头颈外科",
+  "ent_domain": "头颈",
+  "topic": "为防止甲状舌管囊肿或瘘的术后复发，手术的关键是",
+  "type": "A1",
+  "type_cn": "单选题",
+  "polarity": "positive",
+  "bloom": "",
+  "group": null,
+  "group_stem": null,
+  "case_id": null,
+  "stem": "为防止甲状舌管囊肿或瘘的术后复发，手术的关键是",
+  "options": [
+   {
+    "label": "A",
+    "text": "完整摘除囊肿"
+   },
+   {
+    "label": "B",
+    "text": "追踪瘘管到舌骨表面结扎"
+   },
+   {
+    "label": "C",
+    "text": "囊肿在舌骨表面剥离干净"
+   },
+   {
+    "label": "D",
+    "text": "除囊肿或瘘管外一般应将舌骨中份一并切除"
+   },
+   {
+    "label": "E",
+    "text": "以上都不正确"
+   }
+  ],
+  "answer": "D",
+  "explanation": "甲状舌管囊肿应手术切除囊肿或瘘管，而且应彻底，否则容易复发。手术的关键是，除囊肿或瘘管外一般应将舌骨中份一并切除。若仅切除囊肿或瘘管，由于舌骨中可能存在微细的副管，从而导致复发。掌握“甲状舌管囊肿及鳃裂囊肿”知识点。",
+  "source_page": "",
+  "keypoint_ref": [],
+  "difficulty": "",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-4980",
+   "exam": "执业医师",
+   "corpus": "cmexam"
+  },
+  "source_label": "执业医师题库 CMExam（CMExam-train-4980）",
+  "license": "public_noncommercial",
+  "license_note": "公开题库真题；用户声明仅非商业个人刷题使用",
+  "answer_confidence": "medium",
+  "answer_evidence": "CMExam train answer",
+  "mode": "原题（真题原样，未改编）"
+ }
+]
