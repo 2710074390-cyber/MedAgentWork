@@ -4,7 +4,7 @@
   "kind": "engineering-governance-pilot-baseline",
   "content_release": false,
   "batch040": "APPROVED; pilot baseline only; R3 release gate BLOCKED",
-  "batch041": "IN_PROGRESS; GATE-FINAL BLOCKED; excluded from release tag",
+  "batch041": "IN_PROGRESS; GATE-FINAL BLOCKED; not released/deployed; WIP snapshot archived in repository",
   "verification": {
     "tests": "142 passed / 0 failed / 0 errors",
     "policy": "PASS (3 profiles, v1.0.0)",
@@ -20,7 +20,7 @@
     "7 self-tests missing appendix answers (M02); documented, not fabricated",
     "content_only 19/85 (22.4%); question-bank coverage gap",
     "scorecard 3.63 < release 3.8; batch040 remains pilot/approved old product",
-    "batch041 WIP data snapshot is committed after the release tag, not part of it"
+    "batch041 WIP snapshot archived in repository; not released/deployed"
   ],
   "deployment": {
     "channel": "GitHub Actions -> Cloudflare Pages",
@@ -203,6 +203,10 @@
     "reports/research/medical-review-material-optimization-research-20261022/专项研讨会纪要.md": {
       "sha256": "a3fd40eb4ed1ec3eacee1fc02e96c01153f06633d383a8ac3cfec3cdcdff66c6",
       "bytes": 11339
+    },
+    "reports\\release\\20261026_v0.4.0-pilot\\RELEASE.md": {
+      "sha256": "26f2cd29f23930c59b6dec4e97fc7859f9c90a5416dc9feff995f2a65aa249de",
+      "bytes": 3264
     }
   }
 }

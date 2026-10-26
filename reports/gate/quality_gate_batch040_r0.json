@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "batch": "batch040",
+  "stage": "r0",
+  "profile": "pilot",
+  "mode": "advisory",
+  "generated_at": "2026-10-23T15:24:03",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "r0.spec",
+      "status": "PASS",
+      "required": true,
+      "reason": "质量管控规范：C:\\Users\\38063\\Desktop\\MedAgentWork\\docs\\质量管控规范.md",
+      "details": {
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\docs\\质量管控规范.md"
+      }
+    },
+    {
+      "id": "r0.policy",
+      "status": "PASS",
+      "required": true,
+      "reason": "质量基准 policy：C:\\Users\\38063\\Desktop\\MedAgentWork\\scripts\\quality_policy.json",
+      "details": {
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\scripts\\quality_policy.json"
+      }
+    },
+    {
+      "id": "r0.plan",
+      "status": "PASS",
+      "required": true,
+      "reason": "试点实施计划：C:\\Users\\38063\\Desktop\\MedAgentWork\\reports\\research\\medical-review-material-optimization-research-20261022\\试点项目实施计划.md",
+      "details": {
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\reports\\research\\medical-review-material-optimization-research-20261022\\试点项目实施计划.md"
+      }
+    },
+    {
+      "id": "r0.review",
+      "status": "PASS",
+      "required": true,
+      "reason": "复习资料 MD：C:\\Users\\38063\\Desktop\\MedAgentWork\\复习资料\\耳鼻咽喉头颈外科学教师重点版\\耳鼻咽喉头颈外科学教师重点版_主复习资料.md",
+      "details": {
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\复习资料\\耳鼻咽喉头颈外科学教师重点版\\耳鼻咽喉头颈外科学教师重点版_主复习资料.md"
+      }
+    },
+    {
+      "id": "r0.keypoints",
+      "status": "PASS",
+      "required": true,
+      "reason": "教师重点锚定清单：C:\\Users\\38063\\Desktop\\MedAgentWork\\输入素材\\大四上\\耳鼻咽喉头颈外科学\\耳鼻咽喉头颈外科学_教师重点_锚定清单_20261019.md",
+      "details": {
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\输入素材\\大四上\\耳鼻咽喉头颈外科学\\耳鼻咽喉头颈外科学_教师重点_锚定清单_20261019.md"
+      }
+    },
+    {
+      "id": "r0.blueprint",
+      "status": "PASS",
+      "required": true,
+      "reason": "出题蓝图：C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\出题蓝图_batch040.md",
+      "details": {
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\出题蓝图_batch040.md"
+      }
+    },
+    {
+      "id": "r0.rubric",
+      "status": "PASS",
+      "required": true,
+      "reason": "人工 rubric：C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\pilot\\review_score_rubric.json",
+      "details": {
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\pilot\\review_score_rubric.json"
+      }
+    }
+  ],
+  "blocking": [],
+  "warnings": [],
+  "policy_version": "1.0.0"
+}

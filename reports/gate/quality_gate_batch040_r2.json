@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "batch": "batch040",
+  "stage": "r2",
+  "profile": "pilot",
+  "mode": "advisory",
+  "generated_at": "2026-10-23T15:42:44",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "r1.baseline",
+      "status": "PASS",
+      "required": true,
+      "reason": "基线冻结校验 PASS",
+      "details": {
+        "command": "C:\\Users\\38063\\AppData\\Local\\Programs\\Python\\Python312\\python.exe scripts/pilot_baseline.py verify --manifest C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\pilot\\baseline_manifest.json",
+        "returncode": 0,
+        "stdout": "=== 基线校验 PASS：6 个输入 SHA256 与关键计数一致 ===\n",
+        "stderr": ""
+      }
+    },
+    {
+      "id": "r2.kc_registry",
+      "status": "WARN",
+      "required": true,
+      "reason": "content_only 19/85=22.4% 超过 warn 阈值",
+      "details": {
+        "content_only": 19,
+        "content_only_ratio": 0.2235,
+        "provisional_kcs": 3,
+        "provisional_ratio": 0.05,
+        "mapped": 200,
+        "questions": 200,
+        "command": {
+          "command": "C:\\Users\\38063\\AppData\\Local\\Programs\\Python\\Python312\\python.exe scripts/kc_registry.py check --file C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\pilot\\kc_registry.json --strict",
+          "returncode": 0,
+          "stdout": "=== KC 注册表校验 ===\n  卡片 85 ｜ provisional 3 ｜ 题目 200 ｜ 已映射 200 ｜ 重点 125\n  content_only 19 (22.4%) ｜ provisional 题 5.0% ｜ 需复核 15\n  ⚠️ content_only 卡片 19/85（22.4%）\n  ⚠️ provisional KC 3 个，覆盖 10 题（5.0%）\n  ⚠️ 需人工复核映射 15 题（7.5%）\n  ⚠️ content_only 超过 15% 目标（22.4%）\n=== 结果: PASS ===\n",
+          "stderr": ""
+        }
+      }
+    },
+    {
+      "id": "r2.item_learning_value",
+      "status": "WARN",
+      "required": true,
+      "reason": "anchor verified=77.0% < warn",
+      "details": {
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\reports\\validate\\learning_value_v2_batch040_20261022.json",
+        "summary": {
+          "total": 200,
+          "pass": 132,
+          "warn": 68,
+          "fail": 0,
+          "per_option_coverage": 1.0,
+          "misconception_coverage": 1.0,
+          "source_quote_exact_rate": 1.0,
+          "anchor_verified_rate": 0.77,
+          "anchor_low_overlap_count": 24
+        }
+      }
+    },
+    {
+      "id": "r2.scorecard",
+      "status": "WARN",
+      "required": true,
+      "reason": "overall=3.63；warnings=13",
+      "details": {
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\reports\\validate\\review_scorecard_ent_20261022.json",
+        "overall": 3.63,
+        "warnings": [
+          "anchor_verified_rate=77.0%（warn，阈值 ≥90%）",
+          "r18_low_overlap_count=24 题（warn，阈值 =0）",
+          "source_anchor_rate=80/85（warn，阈值 ≥95%）",
+          "recall_answer_coverage=75/82 匹配（缺口 7，多余 15）（fail，阈值 ≥95%）",
+          "callout_density=3.14/模块（warn，阈值 ≥4/模块）",
+          "expand_density=0.00/模块（fail，阈值 ≥2/模块）",
+          "image_count=0 张（warn，阈值 —）",
+          "blueprint_max_rel_dev=518.1%（fail，阈值 ≤20%）",
+          "content_only_ratio=19/85（warn，阈值 ≤15%）",
+          "illness_script_count=0 个（warn，阈值 ≥10 个（P2））",
+          "html_available=无（warn，阈值 教师版 HTML）",
+          "diagnostic_available=未实现（unknown，后续阶段）",
+          "learner_outcome_available=未实现（unknown，后续阶段）"
+        ],
+        "critical": [
+          {
+            "id": 2,
+            "score": 3.8
+          },
+          {
+            "id": 3,
+            "score": 4.3
+          },
+          {
+            "id": 8,
+            "score": 4.0
+          }
+        ]
+      }
+    },
+    {
+      "id": "r2.review_items",
+      "status": "PASS",
+      "required": false,
+      "reason": "卡片 200（keypoint 125 / recall 75）",
+      "details": {
+        "total": 200,
+        "keypoint": 125,
+        "recall": 75,
+        "path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\pilot\\review_items.jsonl"
+      }
+    }
+  ],
+  "blocking": [],
+  "warnings": [
+    "content_only 19/85=22.4% 超过 warn 阈值",
+    "anchor verified=77.0% < warn",
+    "overall=3.63；warnings=13"
+  ],
+  "policy_version": "1.0.0"
+}
