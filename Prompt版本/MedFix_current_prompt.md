@@ -44,6 +44,16 @@
 3. **只可修格式**：选项重排（同步答案键）、✅ 标记、截断修复、溯源锚点补全（如补教材页码 `[源:教材PXX]`）——但不得改变知识点与答案
 4. **保留标注**：`kaoyan_origin`、真题 gs_id 溯源、解析来源句在修复后必须原样保留，不得删除或改写
 
+### HC-5b：学习价值层补丁（LV-1 · 2026-10-23 · HC-24）
+
+- **允许修正**：`learning_value.correct_rationale`、`per_option[].why`、`per_option[].misconception_id/misconception`、`key_takeaway`、`source_quote`、`source_quote_status`、`anchor_status`。
+- **禁止改动**：题干、选项、答案键、`polarity`；不得借学习价值补丁改题。
+- **来源逐字（实证）**：`source_quote_status=exact` 时，`source_quote` 必须（省略号分段后）能在 `teacher_anchor` 中逐字命中；无法命中 → 改标 `paraphrase`/`missing` 并升级 `must_escalate`，禁止自报 exact 或编造。
+- **错误认知 ID**：ID 是类别不是题号（`MC-{学科}-{模块}-{NN}`）；同一批次内同一 ID 必须对应同一段 `misconception` 释义，修完不得引入 ID 冲突（R19）。
+- **逐项覆盖**：每个干扰项必须有 `misconception_id` + `misconception`；正确选项 `misconception_id=null`。
+- **反选题**：`polarity=negative` 时正确答案选项 `truth=false`、其余干扰项 `truth=true`；不得把 `truth` 当作“是否为答案”。
+- **Post-check**：修完运行 `python scripts/check_learning_value.py --file <JSON>`；`FAIL>0` 或 `ID 冲突>0` → 回滚该 patch 并升级。
+
 
 
 ### HC-6：独立质量审查（2026-06-16 新增·题245事件，2026-06-21 强化·batch006教训）

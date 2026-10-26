@@ -19,6 +19,19 @@
 ### HC-2：所有输出必须包含 Schema 化元数据
 每道题附带 JSON 元数据块，包含：题目ID、题型标记、认知层级、考点溯源、答案键、每个选项的真值极性、教育测量指标（difficulty_index / discrimination_index / non_functioning_distractors）。
 
+### HC-24：学习价值层强制（2026-10-23 新增 · schema v2）
+
+从本批次起，题库 JSON 的每道题必须输出 `"schema_version": "2.0"` 与 `"learning_value"` 对象。旧批次不追溯，但新批次缺此项即不合格。
+
+- `correct_rationale`：正确答案的机制/依据，≥60 字，不得只复述答案。
+- `per_option`：覆盖全部选项。正确选项 `truth=true`、`misconception_id=null`；每个干扰项 `truth=false`、`why`≥20 字、`misconception_id` 与 `misconception` 非空。
+- **反选题**：`polarity=negative` 时，`truth` 表示“陈述本身真假”；正确答案选项 `truth=false`，其余干扰项 `truth=true`；`misconception` 解释学生为何忽略“不包括/错误/除外”。
+- `key_takeaway`：可迁移的鉴别规则/记忆钩子，≥30 字。
+- **错误认知 ID 是类别，不是题号**：格式 `MC-{学科缩写}-{模块}-{NN}`；同一批次内同一 ID 必须对应同一段 `misconception` 释义，不得跨题复用为不同含义（R19）。
+- `source_quote`：逐字来自教师重点/教材/RAG 原文；必须写入该题的 `teacher_anchor` 中。`source_quote_status=exact` 时，引文（省略号分段后）必须能在 `teacher_anchor` 中逐字找到；找不到就改标 `paraphrase` 或 `missing`，禁止自报 exact 或编造。
+- `anchor_status`：`verified|partial|mismatch|missing`；`mismatch` 必须回退重做。
+- **自检**：生成后运行 `python scripts/check_learning_value.py --file <你的JSON路径>`；`FAIL>0` 或 `ID 冲突>0` 不得交付。
+
 ### HC-3：知识溯源强制
 每个知识点主张必须有来源锚点：`[源:教材名 章.节/页码]` 或 `[源:笔记 PX]`。**数值型答案必须标注具体页码**（如「P142」）。
 
@@ -200,6 +213,7 @@
 - **R4（否定词加粗）**：题干中"不包括/不是/错误/除外"等否定词须加 **粗体**
 - **R6（干扰项区分度）**：数值型干扰项与正确值比值 ≤5x
 - **R8（最小长度与截断防护·batch007新增）**：选项不得以虚词结尾（的/和/与/或/于等），数值选项必须有单位。**R8 FAIL 时必须修正后再交付**
+- **HC-24（学习价值层·2026-10-23）**：运行 `python scripts/check_learning_value.py --file <你的JSON路径>`；`FAIL>0` 必须修正后再交付；逐项覆盖与错误认知覆盖必须 100%。
 
 如 R2>2.0、R3/R4/R8 有 FAIL，必须在输出前修正。不通过则不交付（避免 ESC 升级导致 Agent 二次回调 +20min）。
 
@@ -299,6 +313,7 @@ E. [选项内容]
 ### 元数据 (JSON)
 {
   "question_id": "{章节缩写}-{题型}-{序号}",
+  "schema_version": "2.0",
   "question_type": "A1" | "A2" | "B1" | "X",
   "polarity": "positive" | "negative" | "multi",
   "bloom_level": "memory" | "comprehension" | "application" | "analysis",
@@ -331,7 +346,20 @@ E. [选项内容]
   "license": "public_noncommercial",
   "difficulty_index": 0.65,
   "discrimination_index": 0.42,
-  "non_functioning_distractors": 0
+  "non_functioning_distractors": 0,
+  "learning_value": {
+    "correct_rationale": "正确答案的机制/依据（≥60字）",
+    "per_option": [
+      {"label": "A", "truth": false, "why": "该选项为什么错（≥20字）", "misconception_id": "MC-ENT-M01-01", "misconception": "学生为什么会选它（同批次同 ID 必须同一释义）"},
+      {"label": "B", "truth": true, "why": "该选项为什么对（≥20字）", "misconception_id": null, "misconception": null}
+    ],
+    "key_takeaway": "可迁移的鉴别规则/记忆钩子（≥30字）",
+    "source_quote": "teacher_anchor 中逐字存在的原文",
+    "source_quote_status": "exact",
+    "anchor_status": "verified",
+    "quality_flags": [],
+    "review_status": "draft"
+  }
 }
 ```
 说明：

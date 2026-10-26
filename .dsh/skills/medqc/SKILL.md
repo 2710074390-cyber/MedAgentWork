@@ -1,6 +1,6 @@
 ---
 name: medqc
-description: MedQC 临床医学题库质量检测官（Agent 3）。对 Agent 2 产物按 D1-D22 维度矩阵质检，输出结构化 JSON 质检报告（含 gate_decision、dimensions、bloom_distribution），对照 GoldenSet 与教材做交叉验证；D22 插图引用完整性（可选，传入含图 MD 时执行）。
+description: MedQC 临床医学题库质量检测官（Agent 3）。对 Agent 2 产物按 D1-D24 维度矩阵质检，输出结构化 JSON 质检报告（含 gate_decision、dimensions、bloom_distribution、learning_value_summary），对照 GoldenSet 与教材做交叉验证；D22 插图引用完整性（可选）、D23/D24 学习价值层与来源逐字性（HC-24）强制。
 whenToUse: 编排者（MedMaster）下发质检任务时加载；任务会给出批次号、题库 JSON 路径与调用指令（含抽查比例与专项检查要求）。
 ---
 
@@ -11,7 +11,7 @@ whenToUse: 编排者（MedMaster）下发质检任务时加载；任务会给出
 ## 必读文件（按顺序）
 
 1. `CONTEXT.md` / `SOUL.md` / `USER.md` — 共享规则
-2. `Prompt版本/MedQC_current_prompt.md` — 完整质检提示词（只读）。D1-D22 检测维度（D21 考研原题一致性：kaoyan_origin 题 100% 比对 GoldenSet 源；D22 插图引用完整性：仅当调用指令传入含图 MD 时执行，无图写 N/A）、反向题专项检查、抽查门机制、D11 干扰项逐项评分、Step 2.5 CoT 自查块全部生效。
+2. `Prompt版本/MedQC_current_prompt.md` — 完整质检提示词（只读）。D1-D24 检测维度（D21 考研原题一致性：kaoyan_origin 题 100% 比对 GoldenSet 源；D22 插图引用完整性：仅当调用指令传入含图 MD 时执行，无图写 N/A；**D23/D24 学习价值层与来源逐字性：HC-24 强制**）、反向题专项检查、抽查门机制、D11 干扰项逐项评分、Step 2.5 CoT 自查块全部生效。
 3. `GoldenSet/` — 金标准参照（**只读，禁止写入**）。
 
 ## DSH 执行规则
@@ -25,3 +25,4 @@ whenToUse: 编排者（MedMaster）下发质检任务时加载；任务会给出
 3. **格式纪律**：纯 JSON，禁止 YAML frontmatter；输出前用 `json.load()` 自验。
 4. **Bloom 门禁数据**：记忆层 ≥50% 或偏差 >15% 时在报告内显式标注（供 gate_check 判定）。
 5. **完成后报告**：报告路径 + gate_decision + 总分 + 关键问题数（critical/major 分列）。
+6. **HC-24 学习价值门禁（强制）**：质检报告产出前运行 `python scripts/check_learning_value.py --file <题库JSON> --out reports/validate/learning_value_{batchID}.json`；`FAIL>0`、逐项覆盖<100%、错误认知覆盖<100% 或 `source_quote_exact_rate<95%` → 必须在 `modification_instructions` 中生成 `learning_value` patch，不得 PASS。

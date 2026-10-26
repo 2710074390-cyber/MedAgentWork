@@ -38,6 +38,10 @@ DEFAULTS: dict[str, object] = {
     "option_avg_max": 18,        # R13 选项平均字数上限（WARN）
     "bloom_deviation_max": 15,   # Bloom 单层偏差上限（%），超过则 BLOCKED
     "bloom_recompute_tolerance": 5,  # 门禁独立重算 Bloom 与质检报告自述值的允许偏差（%）
+    "learning_value_min_source_exact": 0.95,   # HC-24: source_quote_status=exact 的最低占比
+    "learning_value_min_quote_verified": 0.95,   # HC-24: exact 引文能在 teacher_anchor 逐字命中的最低占比
+    "learning_value_max_misconception_conflicts": 0,  # HC-24: 同一 misconception_id 多种释义的允许数
+    "learning_value_min_anchor_verified": 0.80,  # HC-24: anchor_status=verified 的最低占比
     "r8_legit_terms_default": [
         "妄想", "幻觉", "障碍", "减退", "缺乏", "低落", "焦虑", "恐惧",
         "躁狂", "抑郁", "木僵", "违拗", "缄默", "痴呆", "谵妄", "强迫",

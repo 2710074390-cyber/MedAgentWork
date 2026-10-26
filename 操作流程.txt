@@ -18,10 +18,12 @@ MedAgentWork 操作流程（DSH 版 · 2026-08-13 重构）
      python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json
    - 调用 MedGen（subagent）→ 题库写入 中间产物/{batchID}/
    - 运行门禁：python validate_options.py --batch {batchID}
+   - 运行学习价值自检（HC-24，新批次 schema v2）：python scripts/check_learning_value.py --file 中间产物/{batchID}/ALL_questions.json
    - 调用 MedQC → 质检报告写入 质检报告/{batchID}/
    - 运行门禁：python gate_check.py --batch {batchID} --stage agent3_done
    - 调用 MedFix → 修复版写入 最终产物/{batchID}/
    - 运行门禁：python gate_check.py --batch {batchID} --stage agent4_done
+   - 运行学习价值门禁（HC-24）：python gate_check.py --batch {batchID} --stage learning_value
    - 调用 MedReview → 复习资料写入 复习资料/
    - 终审门禁：python gate_check.py --batch {batchID} --stage final
 4. 你审查产物 → 输入「签收 {batchID}」→ 批次置 APPROVED
@@ -35,11 +37,35 @@ MedAgentWork 操作流程（DSH 版 · 2026-08-13 重构）
   python scripts/workflow_state.py --migrate    # 旧数据迁移（一次性）
   python scripts/workflow_state.py --show batch026  # 查看批次
   python gate_check.py --batch {batchID} --stage auto   # 自动检测阶段门禁
+  python gate_check.py --batch {batchID} --stage learning_value   # HC-24 学习价值层（新批次 v2）
   python gate_check.py --batch {batchID} --clear-halt   # 修复后清除 HALT
   python validate_options.py --batch {batchID}  # 选项质量校验（报告在 reports/validate/）
   python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单}  # HC-22 真题双配额（考研+执医，各15%–25%）
 
 门禁 BLOCKED → 回退对应 Agent 修复 → 重跑门禁。详见 .dsh/skills/medbatch/SKILL.md。
+
+门禁适用范围（2026-10-26 加固）：
+  题库/押题卷  A2 选项 → A3 质检 → A4 修复 →（schema v2）学习价值 → final（JSON 有效性）
+  复习资料    A2/A3/A4 不适用；final 只查 HC-9/10/11
+  product_types 可显式声明 question_bank|prediction_paper|review_material；缺失时按产物形状推断
+  --stage auto 按上述矩阵自动路由，v2 批次不会跳过 learning_value
+
+──────────────────────────────────────────
+二·五、全流程质量阶段门禁（HC-25 · 2026-10-23）
+──────────────────────────────────────────
+
+  标准来源  scripts/quality_policy.json + docs/质量管控规范.md
+  阶段       R0 需求评审 → R1 开发实现 → R2 测试验证 → R3 发布上线 → R4 运行复盘
+
+  R0  python scripts/quality_gate.py --stage r0 --batch {batchID} --mode advisory
+  R1  python scripts/quality_gate.py --stage r1 --batch {batchID} --profile pilot --mode advisory
+  R2  python scripts/quality_gate.py --stage r2 --batch {batchID} --profile pilot --mode advisory --with-tests
+  R3  python scripts/quality_gate.py --stage r3 --batch {batchID} --profile release_teacher_keypoint --mode enforce
+  R4  python scripts/quality_gate.py --stage r4 --batch {batchID} --commit {commit}
+
+  报告  reports/gate/quality_gate_{batchID}_{stage}_{timestamp}.json|md
+  规则  R2 未过不得进 R3；R3 enforce BLOCKED 禁止发布；WARN 必须记录豁免理由/补做计划；
+        旧批次/旧产物冻结，不追溯、不回改；新批次/新版本必须过 R0–R4。
 
 ──────────────────────────────────────────
 三、备用流程（Cherry Studio 手动接力，已弃用）

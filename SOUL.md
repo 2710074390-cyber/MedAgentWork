@@ -201,6 +201,33 @@
 - **数据形态**：`source=zhiyi_pdf`，`exam=执业医师`，带 `year` / `module="第N单元"` / `question_no`；`license=public_noncommercial`（用户声明仅非商业个人刷题）；学科由关键词标注，基础/人文类（生理、生化、病理、人文、预防）可能落 `未分类`，不参与临床学科配额，属预期。
 - **红线**：原题题干/选项/答案/数值零改动；OCR 可疑（选项缺字母、答案越界、题干截断）→ 该题不入库，不得猜补。
 
+## HC-24 题目学习价值层契约（2026-10-23 新增 · Agent 2/3/4 共同主责 · 不可违反）
+
+> 驱动缺陷（batch040 实证）：旧产物解析中位 85 字、逐项干扰项结构 0%、错误认知字段 0%、难度校准仅先验；学生“会选”但不会“辨错”。**旧产物不追溯重写**（用户 2026-10-23 明确）；从下一批次起，新题库默认 `schema_version=2.0`，学习价值层为交付必需项。
+
+- **适用范围**：新创建的题库批次（`item_schema_version=2.0`）。已签收批次与既有产物不追溯；如需增强，另开新批次或显式修订单。
+- **每道题必须包含 `learning_value`**：
+  1. `correct_rationale`：正确答案的机制/依据，≥60 字；不得只复述答案。
+  2. `per_option`：覆盖全部选项。正确选项 `truth=true`、`misconception_id=null`；每个干扰项 `truth=false`、`why`≥20 字、`misconception_id` 与 `misconception` 非空。`misconception_id` 是**错误认知类别**（`MC-{学科}-{模块}-{NN}`），同批次同一 ID 必须对应同一释义（R19）。
+  3. **反选题不变式**：`polarity=negative` 时，`truth` 表示“陈述本身真假”；正确答案选项 `truth=false`，其余干扰项 `truth=true`；`misconception` 解释学生为何忽略“不包括/错误/除外”。
+  4. `key_takeaway`：可迁移的鉴别规则/记忆钩子，≥30 字。
+  5. `source_quote`：逐字来自教师重点/教材/RAG 原文，并写入该题 `teacher_anchor`；`source_quote_status=exact` 时引文（省略号分段后）必须能在 `teacher_anchor` 中逐字命中；找不到就写 `paraphrase`/`missing`，**禁止自报 exact 或编造**。
+  6. `anchor_status`：`verified|partial|mismatch|missing`；`mismatch` 必须回退重做。
+- **机械化门禁**：`python scripts/check_learning_value.py --file <JSON>`；`FAIL>0` 不得交付；终审纳入 `gate_check.py --stage final` 的 `GATE-ITEM-LEARNING-VALUE`。
+- **通过阈值**：逐项覆盖=100%，错误认知覆盖=100%，`source_quote_exact_rate≥95%`，`quote_verified_rate≥95%`，`misconception_id_conflicts=0`，`anchor_verified_rate≥80%`，`FAIL=0`；低于阈值 → halt → 回退 MedGen/MedFix。
+- **与 HC-20 的分工**：HC-20 管复习资料对教师重点的原文锚定；HC-24 管题库每道题的学习价值层与逐项反馈，两者不得互相替代。
+
+## HC-25 全流程质量基准与阶段门禁（2026-10-23 新增 · MedMaster 主责 · 不可违反）
+
+> 驱动：T1–T6 已验证（基线冻结、KC 双向映射、题目学习价值层、12 维评分卡、advisory/enforce）。**旧产物不追溯**；新批次/新版本必须按 R0–R4 执行。
+
+- **单一事实来源**：`scripts/quality_policy.json`（profile/阈值）；流程标准：`docs/质量管控规范.md`；门禁编排：`scripts/quality_gate.py`。
+- **阶段**：R0 需求评审 → R1 开发实现 → R2 测试验证 → R3 发布上线 → R4 运行复盘。每阶段必须跑 `python scripts/quality_gate.py --stage rX --batch {batchID} --profile {profile} --mode {advisory|enforce}`，输出 PASS/WARN/BLOCKED/SKIPPED；**SKIPPED 不得视为 PASS**。
+- **准入**：R2 未通过不得进 R3；R3 `enforce` BLOCKED 禁止发布；WARN 必须在 `reports/gate/*.md` 记录豁免理由、影响、补做计划、责任人；同一问题连续两个版本 WARN → 自动升级 BLOCKED。
+- **门禁适用范围（2026-10-26 加固）**：批次 `product_types` 取 `question_bank|prediction_paper|review_material`（缺失时按产物形状推断）。A2/A3/A4 只对题库/押题卷生效；HC-9/10/11 只对复习资料生效；JSON 有效性只对题库/押题卷生效；复习资料批次 `--stage auto` 直达 final；v2 题库/押题卷批次在 A4 后自动插入 `learning_value` 阶段。
+- **旧产物**：已签收/已发布产物冻结，不因标准升级回改；如需增强，另开新批次或显式修订单，并重新过 R0–R4。
+- **与 HC-24 分工**：HC-24 管题库每道题的学习价值层；HC-25 管全流程阶段门禁、发布基准与证据留存，两者不得互相替代。
+
 ## 插图生成分工（2026-09-07 固化 · 详见 .dsh/skills/medillustration/）
 
 > 解决：纯文本复习资料规模化增加写实插图时的角色分工、工具选型和质量门禁。
@@ -228,4 +255,5 @@
 - ❌ **不跳过质检步骤** — 5 步工作流不可省略（MedGen→MedQC→MedFix→MedReview→签收）
 - ❌ **不手改 workflow_state.json** — 走 scripts/workflow_state.py（HC-17）
 - ❌ **不产出 PDF** — 押题卷/题库/复习资料 PDF 一律人工上传（HC-18）
+- ❌ **不以“旧批次未追溯”为由跳过新批次 HC-24/HC-25** — 旧产物冻结，新批次/新版本必须过门禁
 - ✅ **可以**：出题、质检、修改、追溯、汇总统计

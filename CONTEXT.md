@@ -71,6 +71,14 @@
 网络超时=切镜像|编码报错=utf-8|路径中文=双引号|二进制=Python替代|大任务=分步验证
 ```
 
+### 质量基准与阶段门禁（HC-25 · 2026-10-23）
+
+- **单一事实来源**：`scripts/quality_policy.json`（profile/阈值）；流程标准：`docs/质量管控规范.md`；门禁编排：`scripts/quality_gate.py`。
+- **阶段**：R0 需求评审 → R1 开发实现 → R2 测试验证 → R3 发布上线 → R4 运行复盘。
+- **命令**：`python scripts/quality_gate.py --stage r2 --batch {batchID} --profile pilot --mode advisory`；正式发布用 `r3 --profile release_teacher_keypoint --mode enforce`。
+- **报告**：`reports/gate/quality_gate_{batchID}_{stage}_{timestamp}.json|md`；PASS/WARN/BLOCKED/SKIPPED 必须显式记录，SKIP≠PASS。
+- **旧产物不追溯**；新批次/新版本必须过 R0–R4；WARN 需写豁免理由/补做计划，BLOCKED 禁止发布。
+
 ## 跨 Agent 工具同步规则
 
 > 安装/下载任何新工具后，必须同步更新全部 6 个工作区的 CONTEXT.md 工具路径表。
@@ -443,7 +451,16 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | **r2_balancer.py** | 2.0.0 | `scripts/r2_balancer.py` | `python scripts/r2_balancer.py --file <path>` — **只扩充不截断**的R2选项长度平衡器 |
 | **workflow_state.py** | 1.0.0 | `scripts/workflow_state.py` | `python scripts/workflow_state.py --check / --migrate / --show {batchID}` — 状态统一读写/校验/迁移（2026-08-13 重构） |
 | **qbank.py** | 1.1.0 | `scripts/qbank.py` | `python scripts/qbank.py init / register / query / stats / check / export-md / rehome` — 统一题库注册表 + 最终交付 MD 导出 + 归档路径重定位（2026-08-20 升级） |
+| **check_learning_value.py** | 1.0.0 | `scripts/check_learning_value.py` | `python scripts/check_learning_value.py --file <题库JSON> [--out reports/validate/xxx.json]` — HC-24 学习价值层校验（逐项覆盖/错误认知/原文精确/锚点核验/反选极性），FAIL=0 才可交付 |
+| **backfill_learning_value.py** | 1.0.0 | `scripts/backfill_learning_value.py` | `python scripts/backfill_learning_value.py --batch batchNNN --chunk-size 3 [--resume]` — 用 DSH headless 批量补写 learning_value；增量保存、可续跑 |
+| **repair_anchor_quotes.py** | 1.0.0 | `scripts/repair_anchor_quotes.py` | `python scripts/repair_anchor_quotes.py --queue ... --anchor ... --out ... --report ...` — 从教师重点锚定清单找逐字原文，产出可审计 anchor_overrides |
+| **apply_learning_value.py** | 1.0.0 | `scripts/apply_learning_value.py` | `python scripts/apply_learning_value.py --final ... --v2 ... [--ids-file ...]` — 把已审 v2 学习价值层合并回最终 JSON；渲染 explanation 并保留 legacy_explanation |
+| **item_v2.draft.schema.json** | 草案 | `schemas/item_v2.draft.schema.json` | HC-24 详细题目契约；生产契约以 `schemas/agent2_output.schema.json` 的 `schema_version/learning_value` 为准 |
 | **run_tests.py** | 1.0.0 | `scripts/run_tests.py` | `python scripts/run_tests.py` — 零依赖测试运行器（P0-2，2026-08-13）；有 pytest 时可用 `python -m pytest tests/ -q` |
+| **quality_policy.py** | 1.0.0 | `scripts/quality_policy.py` | `python scripts/quality_policy.py --validate` / `--show pilot` — HC-25 质量基准单一事实来源加载器（2026-10-23） |
+| **quality_gate.py** | 1.0.0 | `scripts/quality_gate.py` | `python scripts/quality_gate.py --stage r0/r1/r2/r3/r4 --batch {batchID} --profile pilot/release_* --mode advisory/enforce` — R0–R4 全流程门禁编排（HC-25，2026-10-23）；报告落 `reports/gate/` |
+| **spaced_schedule.py** | 1.0.0 | `scripts/spaced_schedule.py` | `build / schedule / grade / stats / export-anki / simulate` — D3 复习卡片 + SM-2 调度（2026-10-23）；缺答案不编造，写入 answer_reconciliation.md |
+| **render_pilot_review.py** | 1.0.0 | `scripts/render_pilot_review.py` | `python scripts/render_pilot_review.py --items review_items.jsonl --out pilot_review.html` — 离线复习 HTML（localStorage 进度，无外部请求） |
 | **fact_check.py** | 1.0.0 | `scripts/fact_check.py` | `python scripts/fact_check.py pages --file X --subject neurology` / `golden --file X` — 事实校验机械化（P1-1，2026-08-13）：页码反查 + GoldenSet 交叉验证 |
 | **zhiyi_pdf_mineru.py** | 1.0.0 | `scripts/zhiyi_pdf_mineru.py` | `python scripts/zhiyi_pdf_mineru.py [--force]` — 双栏册（2017–2021）MinerU 解析（HC-23，2026-10-22）：产物 `知识库素材/执业医师真题/_mineru/<册>.md`（不入库），`zhiyi_pdf_parse.py` 自动优先采用；token 走 `MINERU_TOKEN` 环境变量或内置默认 |
 | **zhiyi_pdf_ocr.py** | 1.0.0 | `scripts/zhiyi_pdf_ocr.py` | `python scripts/zhiyi_pdf_ocr.py scan` / `run --workers 8 [--only 2014] [--force]` / `stats` — 执业医师历年真题扫描册 OCR（HC-23，2026-10-22）：本地 RapidOCR + 并行分页，缓存 `知识库素材/执业医师真题/_ocr/<册>.jsonl`（断点续跑、可重建、不入库）。⚠️ 必须用 Python312 |

@@ -1,6 +1,6 @@
 ---
 name: medfix
-description: MedFix 结构化修改执行 Agent（Agent 4）。按质检报告逐项修复题库，同步回溯源文件（HC-13），输出最终产物 + 追溯日志 + 修改声明 + 升级告警；修改后必须通过 validate_options.py 复检。
+description: MedFix 结构化修改执行 Agent（Agent 4）。按质检报告逐项修复题库，同步回溯源文件（HC-13），输出最终产物 + 追溯日志 + 修改声明 + 升级告警；支持 HC-24 学习价值层补丁（LV-1），修改后必须通过 validate_options.py 与 check_learning_value.py 双复检。
 whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出批次号、题库 JSON 路径、质检报告 JSON 路径与调用指令。
 ---
 
@@ -11,7 +11,7 @@ whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出
 ## 必读文件（按顺序）
 
 1. `CONTEXT.md` / `SOUL.md` / `USER.md` — 共享规则
-2. `Prompt版本/MedFix_current_prompt.md` — 完整修复提示词（只读）。HC-0 仅执行结构化指令、HC-1 Precondition 验证、HC-2 Post-check 回归、HC-3 反向题保护、HC-6 独立质量审查、HC-7 全局一致性、HC-5 输出即成品 + 追溯日志全部生效。
+2. `Prompt版本/MedFix_current_prompt.md` — 完整修复提示词（只读）。HC-0 仅执行结构化指令、HC-1 Precondition 验证、HC-2 Post-check 回归、HC-3 反向题保护、**HC-5b 学习价值层补丁（HC-24）**、HC-6 独立质量审查、HC-7 全局一致性、HC-5 输出即成品 + 追溯日志全部生效。
 
 ## DSH 执行规则
 
@@ -27,6 +27,7 @@ whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出
    - 只扩充短选项（加领域限定词），**绝不 `text[:n]` 暴力截断**（batch014 教训）
    - 禁止"（相关表现）""（相关类型）"等无意义后缀凑长度，干扰项修复必须增加实质性区分信息
    - 反向题极性不可翻转；答案键联动检查
-4. **复检**：修改后运行 `python -m scripts.validate --file <ALL_questions_FIXED.json>` 或 `python validate_options.py --file <ALL_questions_FIXED.json>`，FAIL==0 才交付。
+4. **复检**：修改后运行 `python -m scripts.validate --file <ALL_questions_FIXED.json>` 或 `python validate_options.py --file <ALL_questions_FIXED.json>`，FAIL==0 才交付；再运行 `python scripts/check_learning_value.py --file <ALL_questions_FIXED.json>`，`FAIL>0` 不得交付。
 5. **MD 交付**：复检通过后运行 `python scripts/qbank.py export-md --file <ALL_questions_FIXED.json> --out <同目录 .md>` 生成最终交付 MD（见第 2 节命令）。
-6. **完成后报告**：文件路径 + 修复题数 + 复检结果 + MD 导出结果 + 升级项清单。
+6. **学习价值层补丁（HC-24/LV-1）**：仅按质检报告的 `learning_value` patch 修改 `correct_rationale/per_option.why/misconception/key_takeaway/source_quote`；不得改题干/选项/答案键；`source_quote` 必须逐字来自教师重点/教材/RAG，无法逐字 → `must_escalate`，禁止编造。
+7. **完成后报告**：文件路径 + 修复题数 + 复检结果 + MD 导出结果 + 升级项清单。

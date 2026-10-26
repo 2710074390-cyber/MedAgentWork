@@ -44,7 +44,7 @@
 - `auto_with_review`：措辞修改但不改变事实极性 → 自动执行+日志标记
 - `must_escalate`：事实内容修改、极性可能翻转 → 停止并告警
 
-## 检测维度清单（22 项全覆盖 · D1-D22）
+## 检测维度清单（24 项全覆盖 · D1-D24）
 
 ### 文本与格式层 (D1-D4)
 | 维度 | 检查内容 |
@@ -80,6 +80,12 @@
 | D21a 考研原题一致性（2026-08-21 新增·HC-18；2026-10-20 并入 HC-22） | 对带 `kaoyan_origin` 的题目**100%** 比对 GoldenSet 源（`GoldenSet/structured/`，按 gs_id 配对）：① 题干知识点与真题一致；② 答案与 `question_bank/kaoyan_answers.json` 的 `answer_recovered` 一致（发现不一致→标记 must_escalate，**不得**建议改真题答案）；③ 数值/诊断标准未被改动；④ mode="改编" 时改编幅度合理；⑤ 元数据完整（gs_id/year/source/mode/answer_confidence），`answer_confidence=low` 一律 must_fix。另统计考研占比（目标≈20%，<15% 提示补充，≥25% 提示原创偏低）。 |
 | D21b 执业医师原题一致性（2026-10-20 新增·HC-22） | 对带 `zhiyi_origin` 的题目**100%** 比对 `question_bank/real_questions/zhiyi_items.jsonl`（按 source_id）：① 题干/选项/答案与源题一致；② 答案与 CMExam 答案一致（冲突 must_escalate，不得擅改）；③ 数值/诊断标准未改动；④ 元数据完整（source_id/source/mode/answer_confidence/license）；⑤ `answer_confidence=medium` 的题 100% 抽检，`low` 一律 must_fix；⑥ 统计执医占比（目标≈20%，15%–25%）。 |
 | D22 插图引用完整性（2026-09-XX 新增·HC-19，可选） | 仅当调用指令传入含插图的 Markdown 交付物（主复习资料/备考资料 MD，或图片质检任务）时执行：① `![...](...)` 占位符语法正确、alt 符合「图N：图注」；② 引用的图片文件存在；③ 图号全文唯一且连续、无「（此处应有图）」等残留；④ 配图清单条目与占位符一一对应（若传入）。无图片引用/未传 MD 时写 N/A，不影响门禁判定 |
+| D23 学习价值层完整性（2026-10-23 新增·HC-24） | 每题必须有 `learning_value`：`correct_rationale`≥60字；`per_option` 覆盖全部选项且每个 `why`≥20字；每个干扰项有 `misconception_id` + `misconception`；`key_takeaway`≥30字。缺项/占位词 → must_fix。 |
+| D24 来源逐字性、错误认知 ID 与反选极性（2026-10-23 新增·HC-24） | `source_quote_status=exact` 时 `source_quote` 必须非空，且（省略号分段后）能在 `teacher_anchor` 中逐字命中，否则 must_fix；`anchor_status=mismatch` → must_escalate；同批次同一 `misconception_id` 出现多种释义 → must_fix（R19）；`polarity=negative` 时 `truth` 必须与 `is_correct` 相反。 |
+
+> **D23/D24 机械化校验（强制）**：质检报告产出前运行
+> `python scripts/check_learning_value.py --file <题库JSON> --out reports/validate/learning_value_{batchID}.json`
+> `FAIL>0`、`ID 冲突>0`、逐项覆盖<100% 或错误认知覆盖<100% → 必须在 `modification_instructions` 中生成 `learning_value` patch（must_fix）。
 
 ### 抽查门机制（2026-06-16 新增·题填25+题245事件后，2026-06-18 扩展至全量）
 质检开始前，**对所有内容执行**（区分两种抽查比例）：
@@ -113,13 +119,13 @@ D11 不再仅给出全局分。对每个干扰项逐项评分，在报告中输�
 接收 Agent 2 的完整产物（备考资料 + 题库）。
 
 ### Step 2：逐题/逐段检测
-对每道题和每段资料执行 D1-D22 全部维度检测。
+对每道题和每段资料执行 D1-D24 全部维度检测。
 
 ### Step 2.5：显式 Chain-of-Thought 自查块（2026-06-20 新增·防御性 CoT）
-**在输出 JSON 之前，你必须先输出以下自查块。** 这是强制步骤，不可跳过。逐条列出 D1 到 D21 的检查结果，标注 PASS/FAIL，并简述理由（≤20字）。
+**在输出 JSON 之前，你必须先输出以下自查块。** 这是强制步骤，不可跳过。逐条列出 D1 到 D24 的检查结果，标注 PASS/FAIL，并简述理由（≤20字）。
 
 ```
-【D1-D22 逐项自查】
+【D1-D24 逐项自查】
 D1  术语规范性:      [PASS/FAIL] — [简述，≤20字]
 D2  语法与拼写:      [PASS/FAIL] — [简述，≤20字]
 D3  结构完整性:      [PASS/FAIL] — [简述，≤20字]
@@ -143,6 +149,8 @@ D20 B1型题专项:      [PASS/FAIL] — [简述/如无B1型题写N/A，≤20字
 D21a 考研原题一致性: [PASS/FAIL] — [简述/如无考研原题写N/A，≤20字]
 D21b 执业医师原题一致性: [PASS/FAIL] — [简述/如无执医原题写N/A，≤20字]
 D22 插图引用完整性:  [PASS/FAIL/N-A] — [无插图交付物写N/A，≤20字]
+D23 学习价值层完整性: [PASS/FAIL] — [per_option 覆盖/错误认知/key_takeaway，≤20字]
+D24 来源逐字性与极性: [PASS/FAIL] — [source_quote 逐字/反选题 truth，≤20字]
 ```
 
 **FAIL 的判断标准**：该维度下存在 ≥1 个 `severity: critical` 或 `severity: major` 的问题。仅有 minor 问题可标注 PASS。
@@ -183,7 +191,7 @@ D22 插图引用完整性:  [PASS/FAIL/N-A] — [无插图交付物写N/A，≤2
 
 2. **每批格式**：
    - 开头：`---\n## 🔍 质检批次 {X}/{Y}：题目 {N1}-{N2}\n---`
-   - 先输出该批的「D1-D22 逐项自查」CoT 块
+   - 先输出该批的「D1-D24 逐项自查」CoT 块
    - 再输出该批的部分 issues + patches
    - 结尾：
      ```
@@ -203,7 +211,7 @@ D22 插图引用完整性:  [PASS/FAIL/N-A] — [无插图交付物写N/A，≤2
 
 ## OutputFormat
 
-**输出顺序**：先输出「D1-D22 逐项自查」CoT 块（见 Step 2.5），再输出以下 JSON。两者之间用 `---` 分隔线隔开。
+**输出顺序**：先输出「D1-D24 逐项自查」CoT 块（见 Step 2.5），再输出以下 JSON。两者之间用 `---` 分隔线隔开。
 
 ```json
 {

@@ -129,6 +129,7 @@ def parse_question(raw: dict[str, Any]) -> dict[str, Any] | None:
         'explanation': str(raw.get('explanation') or raw.get('analysis') or raw.get('解析') or ''),
         'source_pages': _norm_pages(raw),
         'source_pages_raw': (raw.get('source_pages') or raw.get('source_page') or raw.get('page') or ''),
+        'learning_value': raw.get('learning_value') or {},
     }
     return q
 
@@ -339,6 +340,7 @@ def register_file(filepath, batch, stage='standalone', base=None):
             })
         else:
             seen_in_file[h] = rel
+        lv = q.get('learning_value') or {}
         entry = {
             'schema_version': REGISTRY_VERSION,
             'qid': q['qid'],
@@ -353,6 +355,13 @@ def register_file(filepath, batch, stage='standalone', base=None):
             'bloom_level': q['bloom_level'],
             'answer': q['answer'],
             'source_pages': q['source_pages'][:8],
+            'learning_value_status': lv.get('review_status', ''),
+            'source_quote_status': lv.get('source_quote_status', ''),
+            'anchor_status': lv.get('anchor_status', ''),
+            'misconception_count': len({
+                p.get('misconception_id') for p in (lv.get('per_option') or [])
+                if isinstance(p, dict) and p.get('misconception_id')
+            }),
             'status': 'active',
             'registered_at': datetime.now().isoformat(),
         }
@@ -755,7 +764,9 @@ def export_md(filepath, outpath=None, title=None):
             expl = q.get('explanation') or ''
             if expl:
                 lines.append('')
-                lines.append(f'> 解析：{expl}')
+                # 多行解析（v2 学习价值层）在 Markdown blockquote 中保持换行
+                expl_md = str(expl).replace('\n', '\n> ')
+                lines.append(f'> 解析：{expl_md}')
             lines.append('')
             lines.append('---')
             lines.append('')

@@ -5297,6 +5297,21 @@
     ],
     "target_count": 100,
     "supplements": "batch039",
-    "source_note": "C:/Users/38063/Downloads/26秋耳鼻咽喉头颈外科-期末复习重点.doc"
+    "source_note": "C:/Users/38063/Downloads/26秋耳鼻咽喉头颈外科-期末复习重点.doc",
+    "gate_results": {
+      "GATE-LV": {
+        "status": "PASS",
+        "reason": "批次未声明 item_schema_version=2.0（当前=缺失），HC-24 跳过，不追溯旧产物",
+        "checked_at": "2026-10-26T22:16:06.335773"
+      },
+      "GATE-FINAL": {
+        "status": "BLOCKED",
+        "reason": "终审门禁阻断 (4项)",
+        "checked_at": "2026-10-23T15:22:37.204930"
+      },
+      "halt": {
+        "active": false
+      }
+    }
   }
 }

@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "medagentwork-review-scorecard",
+  "title": "MedAgentWork Review Learning Value Scorecard",
+  "description": "复习资料 12 维学习价值评分卡契约。",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "subject",
+    "batch",
+    "generated_at",
+    "overall",
+    "target",
+    "gate",
+    "gate_mode",
+    "dimensions",
+    "metrics"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "const": 1 },
+    "subject": { "type": "string", "minLength": 1 },
+    "batch": { "type": "string", "minLength": 1 },
+    "generated_at": { "type": "string", "minLength": 1 },
+    "review_path": { "type": "string" },
+    "rubric_path": { "type": "string" },
+    "overall": { "type": "number", "minimum": 0, "maximum": 5 },
+    "target": { "type": "number", "minimum": 0, "maximum": 5 },
+    "gate": {
+      "type": "string",
+      "enum": ["ADVISORY_PASS", "ADVISORY_WARN", "ADVISORY_FAIL", "ENFORCE_PASS", "ENFORCE_BLOCKED"]
+    },
+    "gate_mode": { "type": "string", "enum": ["advisory", "enforce"] },
+    "dimensions": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "weight", "score", "weighted", "evidence"],
+        "properties": {
+          "id": { "type": "integer", "minimum": 1, "maximum": 12 },
+          "name": { "type": "string", "minLength": 1 },
+          "weight": { "type": "number", "minimum": 0, "maximum": 100 },
+          "score": { "type": "number", "minimum": 0, "maximum": 5 },
+          "weighted": { "type": "number", "minimum": 0, "maximum": 5 },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "notes": { "type": "string" },
+          "method": { "type": "string" },
+          "metric_refs": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "metrics": { "type": "object", "additionalProperties": true },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "blocking_issues": { "type": "array", "items": { "type": "string" } },
+    "reviewers": { "type": "array", "items": { "type": "string" } },
+    "limitations": { "type": "string" }
+  },
+  "additionalProperties": true
+}

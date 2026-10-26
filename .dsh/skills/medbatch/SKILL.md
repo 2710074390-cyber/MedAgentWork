@@ -12,16 +12,36 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 
 ```
 启动(登记批次) → 阶段2 MedGen → 门禁A2 → 阶段3 MedQC → 门禁A3
-→ 阶段4 MedFix → 门禁A4 → 阶段5 MedReview → 门禁A5*
+→ 阶段4 MedFix → 门禁A4 → **门禁LV** → 阶段5 MedReview → 门禁A5*
 → 阶段6 生图(豆包·HC-19，仅配图范围科目) → 门禁GATE-A6
 → 终审门禁 → 用户签收(APPROVED) → 归档
 ```
+
+- **门禁LV（HC-24 · 2026-10-23 新增）**：`item_schema_version=2.0` 的新批次，MedFix 后必须跑 `python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --out reports/validate/learning_value_{batchID}.json`；`FAIL>0`、逐项覆盖<100%、错误认知覆盖<100%、`source_quote_exact_rate<95%`、`quote_verified_rate<95%`、`misconception_id_conflicts>0` 或 `anchor_verified_rate<80%` → **halt**，回退 MedGen/MedFix。已签收旧批次（无 `item_schema_version`）显式 SKIPPED，不追溯。
+- **门禁适用范围（2026-10-26 加固）**：批次可显式声明 `product_types`（`question_bank`/`prediction_paper`/`review_material`），缺失时按产物形状推断。A2/A3/A4 只对题库/押题卷生效；HC-9/10/11 只对复习资料生效；JSON 有效性只对题库/押题卷生效。`--stage auto` 按此矩阵路由：复习资料批次直达 final；v2 题库/押题卷批次在 A4 后自动插入 `learning_value`，不会被跳过。
 
 - 门禁未通过 → **halt** → 回退对应 Agent 修复 → 重跑门禁（不可跳过，HC-12）
 - GoldenSet 签收只由用户手动执行，任何 Agent 禁止写入
 - *门禁A5：MedReview 产出主复习资料 MD + 配图清单，编排者核对占位符与清单一致（`python scripts/check_inline_images.py --md … --list …`，首次跑允许 0 张占位 = MD 无图）后进入阶段 6
 - **门禁A5 附加（HC-20/D0 · 2026-10-18，有教师重点/复习大纲输入的批次强制）**：跑 `python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD>`（数值/时间窗类硬事实缺失或重点条目缺锚点 → exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED，不视为通过）
 - **阶段 6（HC-19）**：生图主责在豆包（Doubao 图片 Agent，调用 `medillustration` skill），DSH 不调用 image_gen；编排者打包交接（配图清单 + skill 要点 + 图谱索引 + 可复用图路径 + 科目目录规范），豆包回传 `images_webp/*.webp` 后运行 GATE-A6 并人工质检（解剖准确性抽查）
+
+## 1.5 全流程质量阶段（HC-25 · 2026-10-23 新增）
+
+> 标准：`docs/质量管控规范.md`；阈值：`scripts/quality_policy.json`；编排：`scripts/quality_gate.py`。
+> 旧批次/旧产物冻结、不追溯；新批次/新版本必须按 R0–R4 执行。
+
+```
+R0 需求评审  python scripts/quality_gate.py --stage r0 --batch {batchID} --mode advisory
+R1 开发实现  python scripts/quality_gate.py --stage r1 --batch {batchID} --profile pilot --mode advisory
+R2 测试验证  python scripts/quality_gate.py --stage r2 --batch {batchID} --profile pilot --mode advisory --with-tests
+R3 发布上线  python scripts/quality_gate.py --stage r3 --batch {batchID} --profile release_teacher_keypoint --mode enforce
+R4 运行复盘  python scripts/quality_gate.py --stage r4 --batch {batchID} --commit {commit}
+```
+
+- R2 未通过不得进 R3；R3 `enforce` BLOCKED 禁止发布；WARN 必须在 `reports/gate/*.md` 写豁免理由/影响/补做计划/责任人。
+- SKIPPED 不得视为 PASS；同一问题连续两个版本 WARN → 自动升级 BLOCKED。
+- `quality_gate.py` 只读源产物与既有报告，不修改源题库/源复习资料/workflow_state。
 
 ## 2. 目录与命名（铁律，详见 CONTEXT.md）
 
@@ -44,12 +64,15 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 GATE-A2   python -m scripts.validate --batch {batchID}          # FAIL==0 才放行
 GATE-A3   python gate_check.py --batch {batchID} --stage agent3_done
 GATE-A4   python gate_check.py --batch {batchID} --stage agent4_done
+学习价值  python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --out reports/validate/learning_value_{batchID}.json   # HC-24（新批次 schema v2 强制；FAIL>0 → 回退）
+GATE-LV   python gate_check.py --batch {batchID} --stage learning_value
 MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json   # 最终交付 MD（2026-08-20 起强制）
 真题配额  python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json   # HC-18 legacy（旧批次兼容）
 真题双族配额 python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单} --out reports/validate/real_question_check_{batchID}.json   # HC-22 考研族+执医族 20%+20%（执医族=历年真题优先/CMExam补位；新题库批次终审前执行）
 插图门禁  python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp --list 复习资料/{科目}教学计划版/{科目}_配图清单.md   # GATE-A6 / HC-19 插图占位一致性（配图范围科目，生图验收后与终审前各跑一次；exit 1 → 回退豆包补图）
 重点覆盖  python scripts/check_keypoint_coverage.py --keypoints 输入素材/{科目}/{科目}_教师重点_*.md --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md   # HC-20/D0 教师重点原文锚定（有教师重点输入的批次，门禁A5 与终审前各跑一次；exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED）
 终审      python gate_check.py --batch {batchID} --stage final
+质量阶段  python scripts/quality_gate.py --stage r2 --batch {batchID} --profile pilot --mode advisory --with-tests   # HC-25 R0–R4；正式发布用 r3 + enforce
 ```
 
 ### 门禁输入字段形状契约（2026-10-19 加固 · 防门禁误判）

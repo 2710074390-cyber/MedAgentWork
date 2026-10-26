@@ -55,7 +55,43 @@
         "description": "执业医师真题来源标注（HC-22 修订 · 2026-10-22）：{source_id, source, corpus: 'pdf_paper'|'cmexam', mode: '原题'|'改编', answer_confidence: 'high'|'medium'}；corpus=pdf_paper 表示执业医师历年真题（2010–2023 扫描册），cmexam 表示 CMExam 题库补位；非执业医师真题可省略"
       },
       "exam_focus": { "type": ["string", "boolean"] },
-      "topic": { "type": "string" }
+      "topic": { "type": "string" },
+      "schema_version": {
+        "type": "string",
+        "enum": ["1.0", "2.0"],
+        "description": "题目契约版本。2.0 起 learning_value 为交付必需项（HC-24）；1.0 为历史产物。"
+      },
+      "learning_value": {
+        "type": "object",
+        "description": "HC-24 学习价值层。schema_version=2.0 的批次每道题必须提供；详细草案见 schemas/item_v2.draft.schema.json。",
+        "required": ["correct_rationale", "per_option", "key_takeaway", "source_quote", "source_quote_status", "anchor_status", "review_status"],
+        "properties": {
+          "correct_rationale": { "type": "string", "minLength": 60 },
+          "per_option": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "object",
+              "required": ["label", "truth", "why"],
+              "properties": {
+                "label": { "type": "string" },
+                "truth": { "type": "boolean" },
+                "why": { "type": "string", "minLength": 20 },
+                "misconception_id": { "type": ["string", "null"], "description": "错误认知类别 ID；同批次同一 ID 必须对应同一释义（R19）" },
+                "misconception": { "type": ["string", "null"] }
+              },
+              "additionalProperties": false
+            }
+          },
+          "key_takeaway": { "type": "string", "minLength": 30 },
+          "source_quote": { "type": "string", "description": "exact 时必须能在 teacher_anchor 中逐字命中（R16 实证）" },
+          "source_quote_status": { "type": "string", "enum": ["exact", "paraphrase", "missing", "mismatch"] },
+          "anchor_status": { "type": "string", "enum": ["verified", "partial", "mismatch", "missing"] },
+          "quality_flags": { "type": "array", "items": { "type": "string" } },
+          "review_status": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
     },
     "additionalProperties": true
   }

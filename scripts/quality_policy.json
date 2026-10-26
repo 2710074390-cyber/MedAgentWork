@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "policy_version": "1.1.0",
+  "updated_at": "2026-10-26",
+  "owner": "MedMaster",
+  "source": "SOUL.md#HC-25 · docs/质量管控规范.md",
+  "profiles": {
+    "pilot": {
+      "description": "试点/研究性版本：advisory 为主，不阻断旧交付；新批次仍须显式记录 WARN。",
+      "required_checks": ["baseline", "kc_registry", "item_learning_value", "scorecard"],
+      "thresholds": {
+        "kc_mapped_ratio": 1.0,
+        "keypoint_coverage": 1.0,
+        "provisional_ratio_max": 0.10,
+        "content_only_ratio_warn": 0.15,
+        "content_only_ratio_block": 0.25,
+        "source_quote_exact_min": 0.95,
+        "quote_verified_min": 0.95,
+        "misconception_conflict_max": 0,
+        "anchor_verified_warn": 0.80,
+        "anchor_verified_block": 0.70,
+        "scorecard_overall_advisory": 3.5,
+        "scorecard_overall_enforce": 3.8,
+        "critical_dim_min": 3.5,
+        "blueprint_dev_warn": 0.20,
+        "blueprint_dev_block": 0.50,
+        "review_items_min_total": 190,
+        "review_keypoint_min": 125
+      }
+    },
+    "release_teacher_keypoint": {
+      "description": "教师重点版正式发布：范围锚定优先，内容/题目/评分卡/发布链全部 enforce。",
+      "required_checks": ["baseline", "kc_registry", "item_learning_value", "scorecard", "produce_rules", "site_freshness", "site_links"],
+      "thresholds": {
+        "kc_mapped_ratio": 1.0,
+        "keypoint_coverage": 1.0,
+        "provisional_ratio_max": 0.10,
+        "content_only_ratio_warn": 0.10,
+        "content_only_ratio_block": 0.15,
+        "source_quote_exact_min": 0.95,
+        "quote_verified_min": 0.95,
+        "misconception_conflict_max": 0,
+        "anchor_verified_warn": 0.90,
+        "anchor_verified_block": 0.80,
+        "scorecard_overall_advisory": 3.8,
+        "scorecard_overall_enforce": 3.8,
+        "critical_dim_min": 3.5,
+        "blueprint_dev_warn": 0.20,
+        "blueprint_dev_block": 0.50,
+        "review_items_min_total": 190,
+        "review_keypoint_min": 125
+      }
+    },
+    "release_teaching_plan": {
+      "description": "教学计划版正式发布：深度/案例/配图/形态门禁。",
+      "required_checks": ["keypoint_coverage", "produce_rules", "inline_images", "scorecard"],
+      "thresholds": {
+        "keypoint_coverage": 1.0,
+        "source_quote_exact_min": 0.95,
+        "quote_verified_min": 0.95,
+        "misconception_conflict_max": 0,
+        "anchor_verified_warn": 0.90,
+        "anchor_verified_block": 0.80,
+        "scorecard_overall_advisory": 3.8,
+        "scorecard_overall_enforce": 3.8,
+        "critical_dim_min": 3.5,
+        "expand_density_min": 2.0,
+        "callout_density_min": 4.0
+      }
+    }
+  }
+}

@@ -112,7 +112,7 @@ h1 {{ font-size:26px; margin:8px 0 4px; }}
   border-radius:8px; font-size:13.5px; }}
 .ans.show {{ display:block; }}
 .ans-head {{ font-weight:700; margin-bottom:4px; }}
-.exp {{ color:var(--ink-soft); }}
+.exp {{ color:var(--ink-soft); white-space:pre-line; }}
 .src {{ font-size:12px; color:#94a3b8; margin-top:6px; }}
 @media print {{ body {{ background:#fff; padding:0; max-width:none; }} .q {{ border-color:#cbd5e1; }}
   .ans {{ display:block; }} }}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "medagentwork-item-v2-draft",
+  "title": "题目学习价值契约 v2 草案（batch040 试点）",
+  "description": "在现有题库字段之上，增加逐项解析、错误认知、知识点与来源核验字段。草案阶段允许 additionalProperties；正式版将收紧 required 与 enum。",
+  "type": "object",
+  "required": ["id", "type", "stem", "options", "answer", "learning_value"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "type": { "type": "string", "enum": ["A1", "A2", "A3", "A4", "B1", "X", "判断", "案例"] },
+    "module": { "type": "string" },
+    "module_name": { "type": "string" },
+    "kc_id": { "type": "string", "description": "知识点唯一标识（试点使用可读 slug；正式版接 KC 图谱）" },
+    "kc_path": { "type": "array", "items": { "type": "string" }, "description": "模块 → 子主题 → 知识点" },
+    "stem": { "type": "string", "minLength": 1 },
+    "options": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["label", "text", "is_correct"],
+        "properties": {
+          "label": { "type": "string", "pattern": "^[A-H]$" },
+          "text": { "type": "string", "minLength": 1 },
+          "is_correct": { "type": "boolean" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "answer": { "type": "string", "minLength": 1 },
+    "learning_value": {
+      "type": "object",
+      "required": [
+        "correct_rationale", "per_option", "key_takeaway",
+        "source_quote", "source_quote_status", "anchor_status", "review_status"
+      ],
+      "properties": {
+        "correct_rationale": { "type": "string", "minLength": 60, "description": "正确答案的机制/依据，不是复述答案（≥60字）" },
+        "per_option": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": ["label", "truth", "why"],
+            "properties": {
+              "label": { "type": "string", "pattern": "^[A-H]$" },
+              "truth": { "type": "boolean" },
+              "why": { "type": "string", "minLength": 20, "description": "该选项为什么对/错（≥20字）" },
+              "misconception_id": { "type": ["string", "null"], "description": "错误认知类别 ID；正确选项为 null；同批次同一 ID 必须对应同一释义（R19）" },
+              "misconception": { "type": ["string", "null"], "description": "学生为什么会选它的错误认知描述" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "key_takeaway": { "type": "string", "minLength": 30, "description": "可迁移到同类题的鉴别规则/记忆钩子（≥30字）" },
+        "source_quote": { "type": "string", "description": "支持正确答案的原文摘录；exact 时必须能在 teacher_anchor 中逐字命中；missing/mismatch 时可为空" },
+        "source_quote_status": { "type": "string", "enum": ["exact", "paraphrase", "missing", "mismatch"] },
+        "anchor_status": { "type": "string", "enum": ["verified", "partial", "mismatch", "missing"] },
+        "quality_flags": { "type": "array", "items": { "type": "string" } },
+        "review_status": { "type": "string", "enum": ["pilot_unreviewed", "pilot_reviewed", "approved"] }
+      },
+      "additionalProperties": true
+    },
+    "difficulty": { "type": "string" },
+    "bloom": { "type": "string" },
+    "source_page": { "type": "string" },
+    "keypoint_ref": { "type": "array", "items": { "type": "string" } },
+    "legacy_explanation": { "type": "string", "description": "升级前解析，保留用于前后对比" },
+    "review_status": { "type": "string" }
+  },
+  "additionalProperties": true
+}

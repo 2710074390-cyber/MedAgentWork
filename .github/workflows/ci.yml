@@ -52,6 +52,10 @@ jobs:
       - name: Run tests
         run: |
           python -m pytest tests/ -v --cov=scripts --cov-report=xml --cov-report=term-missing
+
+      - name: Validate quality policy (HC-25)
+        run: |
+          python scripts/quality_policy.py --validate
       
       - name: Upload coverage to Codecov
         if: matrix.python-version == '3.12'
