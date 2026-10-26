@@ -105,9 +105,14 @@ def compute_metrics(review_path: Path, kc_path: Path, learning_value_path: Path)
     cards = kc.parse_review_cards(md_text)
     registry = read_json(kc_path)
     meta_kp = registry.get("metadata", {}).get("keypoints_path")
-    kp_path = repo_path(meta_kp) if meta_kp else (
-        BASE / "输入素材/大四上/耳鼻咽喉头颈外科学/耳鼻咽喉头颈外科学_教师重点_锚定清单_20261019.md"
-    )
+    if meta_kp:
+        # 显式归一化 Windows 反斜杠，避免 POSIX runner 把整段当作单个文件名。
+        kp_path = Path(str(meta_kp).replace("\\", "/"))
+        if not kp_path.is_absolute():
+            kp_path = BASE / kp_path
+    else:
+        kp_path = (BASE / "输入素材" / "大四上" / "耳鼻咽喉头颈外科学"
+                   / "耳鼻咽喉头颈外科学_教师重点_锚定清单_20261019.md")
     keypoint_items = kc.parse_keypoint_items(read_text(kp_path))
     map_path = kc_path.with_name("kc_question_map.jsonl")
     qmap = []
