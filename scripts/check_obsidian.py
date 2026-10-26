@@ -410,7 +410,8 @@ def check_file(md_path: Path, vault: Path, idx: dict[str, list[str]],
     if md_idx:
         amb_links: list[str] = []
         for mm in WIKILINK_RE.finditer(masked):
-            target = mm.group(1).strip()
+            # 表格内别名分隔符写作 \|，Obsidian 视为合法转义；解析前需剥离尾部反斜杠
+            target = mm.group(1).strip().rstrip("\\").strip()
             if not target:
                 continue
             cand = vault / (target if target.endswith(".md") else target + ".md")

@@ -25,6 +25,14 @@ ROOT = Path(__file__).resolve().parent.parent
 WIKI_RE = re.compile(r"!?\[\[([^\]\|#]+)(?:#[^\]\|]*)?(?:\|[^\]]*)?\]\]")
 MDLINK_RE = re.compile(r"(?<!!)\[[^\]]*\]\(([^)]+)\)")
 CODE_FENCE_RE = re.compile(r"^```.*?^```", re.M | re.S)
+INLINE_CODE_RE = re.compile(r"`[^`]*`")
+
+# 已知附件后缀：只有这些才当文件路径处理，避免把 v1.0 之类当扩展名
+ASSET_EXTS = {
+    ".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg", ".bmp", ".avif",
+    ".pdf", ".docx", ".doc", ".xlsx", ".csv", ".mp4", ".html", ".json",
+    ".txt", ".pptx", ".zip",
+}
 
 # 与 .obsidian/app.json 的 userIgnoreFilters 对齐（硬编码一份，避免解析复杂过滤语法）
 IGNORE_PREFIX = [
@@ -47,13 +55,35 @@ IGNORE_NAMES = {
 ASSET_DIRS = {"知识库素材", "assets", "复习资料", "Obsidian产物"}
 
 
+def _load_filters() -> list[str]:
+    """从 .obsidian/app.json 读取真实排除规则，脚本与 Obsidian 视图保持一致。"""
+    cfg = ROOT / ".obsidian" / "app.json"
+    try:
+        data = json.loads(cfg.read_text(encoding="utf-8"))
+        return list(data.get("userIgnoreFilters", []))
+    except Exception:
+        return []
+
+
 def is_ignored(rel: Path) -> bool:
     s = rel.as_posix()
     if rel.name in IGNORE_NAMES:
         return True
-    for p in IGNORE_PREFIX:
-        if s == p or s.startswith(p + "/"):
-            return True
+    for raw in _load_filters():
+        r = raw.strip()
+        if not r or any(ch in r for ch in "*?[]"):
+            continue
+        rooted = r.startswith("/")          # "/xxx" = 相对 vault 根的路径规则
+        p = r.strip("/")
+        if not p:
+            continue
+        if rooted:
+            if s == p or s.startswith(p + "/"):
+                return True
+        else:
+            # 无前导斜杠：Obsidian 按文件名匹配（任意目录下同名文件）
+            if rel.name == p or s == p or s.startswith(p + "/"):
+                return True
     return False
 
 
@@ -68,7 +98,9 @@ def iter_notes(include_assets: bool):
 
 
 def strip_code(text: str) -> str:
-    return CODE_FENCE_RE.sub("", text)
+    """去掉围栏代码块与行内代码——里面的 [[...]] 是示例而非真链接。"""
+    text = CODE_FENCE_RE.sub("", text)
+    return INLINE_CODE_RE.sub("", text)
 
 
 def main() -> int:
@@ -87,6 +119,12 @@ def main() -> int:
         rel = p.relative_to(ROOT)
         by_basename[p.stem].append(rel)
         by_relpath[rel.with_suffix("").as_posix()] = rel
+
+    # 附件文件名索引（供 wikilink 按名兜底解析）
+    asset_names = set()
+    for p in ROOT.rglob("*"):
+        if p.is_file() and p.suffix.lower() in ASSET_EXTS:
+            asset_names.add(p.name)
 
     notes = list(iter_notes(args.include_assets))
     note_rels = {rel for _, rel in notes}
@@ -116,11 +154,15 @@ def main() -> int:
             key = t
             if key.endswith(".md"):
                 key = key[:-3]
-            # 非 md 目标（图片/附件）：直接按文件系统判断，不再拼 .md
+            # 非 md 目标（图片/附件）：只有已知附件后缀才按文件系统判断，
+            # 否则 `xxx_v1.0` 这类带点号的名字会被误当成文件扩展名。
             suffix = Path(t).suffix.lower()
-            if suffix and suffix != ".md":
+            if suffix in ASSET_EXTS:
                 local_file = (rel.parent / t)
                 if local_file.exists() or (ROOT / t).exists():
+                    continue
+                # wikilink 图片可只写文件名，Obsidian 会全库按名兜底解析
+                if kind == "wiki" and "/" not in t and t in asset_names:
                     continue
                 broken.append({"note": rel.as_posix(), "target": t, "kind": "asset"})
                 continue
