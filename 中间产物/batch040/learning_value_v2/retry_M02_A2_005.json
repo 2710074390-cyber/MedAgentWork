@@ -1,0 +1,108 @@
+[
+  {
+    "id": "batch040-M02-A2-005",
+    "module": "M02",
+    "module_name": "耳科学",
+    "topic": "良性阵发性位置性眩晕的病例诊断",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "group": null,
+    "group_stem": null,
+    "case_id": null,
+    "stem": "患者女，60岁，起床或翻身时出现短暂旋转性眩晕，持续约20秒钟，无耳鸣及听力下降，Dix-Hallpike试验阳性，该患者最可能受累的半规管是",
+    "options": [
+      {
+        "label": "A",
+        "text": "外半规管",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "后半规管",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "前半规管",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "上、后半规管",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "三个半规管",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "explanation": "头位改变诱发的短暂眩晕（通常不超过1分钟）、无耳蜗症状，为良性阵发性位置性眩晕；Dix-Hallpike试验是后半规管BPPV的特异性检查，阳性提示后半规管受累（教材P116）。",
+    "source_page": "教材P116",
+    "keypoint_ref": [
+      "第33条",
+      "第32条"
+    ],
+    "teacher_anchor": "BPPV的诊断标准：（1）相对于重力方向改变头位后出现反复发作的、短暂的眩晕或头晕（通常持续不超过1分钟）。（2）位置试验中出现眩晕及特征性位置性眼震。",
+    "difficulty": "较难",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "learning_value": {
+      "correct_rationale": "良性阵发性位置性眩晕的本质是耳石（碳酸钙结晶）从椭圆囊斑脱落，进入某一半规管的内淋巴液中；当头位相对重力方向改变时，耳石碎屑在管内移动带动内淋巴流动，使壶腹嵴帽发生偏斜，从而诱发短暂的旋转性眩晕与特征性位置性眼震。题干中眩晕仅持续约20秒、不超过1分钟，且无耳鸣及听力下降等耳蜗症状，符合BPPV的典型表现；Dix-Hallpike试验是后半规管BPPV最常用的特异性位置试验，诱发出短暂的旋转性眩晕伴垂直-扭转性眼震即提示后半规管受累，因此最可能受累的是后半规管。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "外（水平）半规管BPPV的典型诱发试验是Roll test（仰卧侧头试验），表现为水平性位置性眼震，而题干所述Dix-Hallpike试验阳性主要指向后半规管，故不选。",
+          "misconception_id": "MC-ENT-01",
+          "misconception": "学生只记住BPPV可累及水平半规管这一常见类型，误以为最常见即本题答案，忽略了题干给出的Dix-Hallpike试验这一关键定位线索。"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "Dix-Hallpike试验是后半规管的特异性位置试验，头位改变诱发的短暂眩晕、无耳蜗症状且该试验阳性，正符合后半规管BPPV的典型表现，故为正确答案。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "前半规管（上半规管）BPPV临床少见，其定位需依靠特征性的下跳性位置性眼震等表现，单凭Dix-Hallpike阳性不能定位到前半规管，故不选。",
+          "misconception_id": "MC-ENT-02",
+          "misconception": "学生把“前半规管”与“后半规管”名称混淆，或按解剖顺序臆测，未能把Dix-Hallpike试验与后半规管这一特定对应关系建立联系。"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "前半规管与后半规管同时受累属于多管受累的少见情形，题干只有Dix-Hallpike试验阳性这一条定位信息，不足以支持两个半规管同时受累，故不选。",
+          "misconception_id": "MC-ENT-03",
+          "misconception": "学生担心遗漏解剖结构，倾向于选择包含更多半规管的“更全面”选项，把单管受累的典型表现扩大化为多管受累。"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "三个半规管全部受累在临床上极为罕见，通常为单一半规管受累，且题干缺乏支持广泛受累的多项位置试验阳性证据，故不选。",
+          "misconception_id": "MC-ENT-04",
+          "misconception": "学生误认为“位置性眩晕”意味着整个前庭系统都受影响，从而选择范围最大的选项，忽视了BPPV多为单一半规管耳石症的定位特点。"
+        }
+      ],
+      "key_takeaway": "遇到位置性眩晕题，先抓住三点：头位改变诱发、持续时间短（通常不超过1分钟）、无耳蜗症状，即锁定BPPV；再用位置试验定位——Dix-Hallpike试验阳性对应后半规管，Roll test（仰卧侧头试验）阳性对应外半规管。",
+      "source_quote": "BPPV的诊断标准：（1）相对于重力方向改变头位后出现反复发作的、短暂的眩晕或头晕（通常持续不超过1分钟）。（2）位置试验中出现眩晕及特征性位置性眼震。",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "锚点仅支持BPPV的诊断，未直接点明后半规管及Dix-Hallpike试验，半规管定位主要依赖题干信息，建议补充教材P116关于后半规管BPPV的原文"
+      ],
+      "review_status": "pilot_unreviewed"
+    },
+    "legacy_explanation": "头位改变诱发的短暂眩晕（通常不超过1分钟）、无耳蜗症状，为良性阵发性位置性眩晕；Dix-Hallpike试验是后半规管BPPV的特异性检查，阳性提示后半规管受累（教材P116）。",
+    "review_status": "pilot_unreviewed"
+  }
+]

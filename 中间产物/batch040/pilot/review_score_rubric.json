@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "subject": "ent",
+  "batch": "batch040",
+  "review": "复习资料/耳鼻咽喉头颈外科学教师重点版/耳鼻咽喉头颈外科学教师重点版_主复习资料.md",
+  "rubric_version": "1.0",
+  "reviewed_at": "2026-10-22",
+  "reviewers": [
+    "学习科学顾问（角色化评审）",
+    "医学内容专家（角色化评审）"
+  ],
+  "scale": "1–5 专家 rubric；1=明显不足，3=基本达标，5=优秀；分数不是学习者结果测量。",
+  "dimensions": [
+    {
+      "id": 1,
+      "name": "内容专业性与深度",
+      "weight": 12,
+      "score": 4.0,
+      "evidence": [
+        "教师版 0 个展开区；教学版 40 个展开区；内科学合订本 93 个展开区",
+        "7 模块均具备 D2 因果链/D3 谱系/D4 决策树/D5 概念地图结构"
+      ],
+      "notes": "范围与结构强，但教师版为控制篇幅牺牲了 D1–D5 的展开深度。",
+      "metric_refs": ["cards", "content_chars"]
+    },
+    {
+      "id": 2,
+      "name": "知识点准确性与一致性",
+      "weight": 14,
+      "score": 3.8,
+      "evidence": [
+        "125/125 条教师重点覆盖，44 类硬事实缺失 0",
+        "200 题 v2 初检：原文精确 96.5%，锚点已核 74%"
+      ],
+      "notes": "HC-20 锚点强；锚点已核率仅 74%，仍有 26 题 R18 低主题覆盖。",
+      "metric_refs": ["source_quote_exact_rate", "anchor_verified_rate"]
+    },
+    {
+      "id": 3,
+      "name": "考点匹配度与覆盖面",
+      "weight": 14,
+      "score": 4.3,
+      "evidence": [
+        "125/125 条教师重点覆盖；蓝图权重 M01–M07 完整",
+        "卡片/字数/题量三口径偏差：M05 +26.1%、M07 字数 +509.1%、M07 题量 +400%"
+      ],
+      "notes": "范围契约满足；但内容投入与卷面权重未完全配平。",
+      "metric_refs": ["keypoint_coverage_rate", "blueprint_max_rel_dev"]
+    },
+    {
+      "id": 4,
+      "name": "知识体系逻辑性",
+      "weight": 10,
+      "score": 4.2,
+      "evidence": [
+        "7 模块疾病谱系、因果链、决策树、概念地图齐全",
+        "21 个 fenced ASCII 图承载谱系/决策/对比结构"
+      ],
+      "notes": "结构完整；部分长卡（如 M07）信息密度过高，层级不够清晰。",
+      "metric_refs": ["callout_density", "expand_density"]
+    },
+    {
+      "id": 5,
+      "name": "记忆强化设计",
+      "weight": 12,
+      "score": 3.4,
+      "evidence": [
+        "82 道主动回忆 + 90 行附录答案 + 7 张一页纸 + 5 个记忆主轴 + 10 个陷阱",
+        "尚无间隔重复调度与错题回链"
+      ],
+      "notes": "有检索练习的雏形；缺调度、反馈与掌握度，记忆保持未闭环。",
+      "metric_refs": ["recall_answer_coverage", "schedule_coverage"]
+    },
+    {
+      "id": 6,
+      "name": "学习效率与认知负荷",
+      "weight": 8,
+      "score": 3.0,
+      "evidence": [
+        "87,358 字符、820 行表格、3 条阅读路径",
+        "无掌握度诊断，无法按薄弱点跳过已会内容"
+      ],
+      "notes": "分层阅读有帮助；但整体篇幅与表格密度对考前碎片时间不友好。",
+      "metric_refs": ["content_chars", "table_density"]
+    },
+    {
+      "id": 7,
+      "name": "临床关联与推理迁移",
+      "weight": 10,
+      "score": 3.2,
+      "evidence": [
+        "题库 40 道案例题；教师版有决策树与鉴别表",
+        "无 illness script 卡、无对比病例组；病例提及仅 7 处"
+      ],
+      "notes": "有临床情境，但缺“疾病脚本 + 对比病例”的迁移训练。",
+      "metric_refs": ["case_question_count", "illness_script_count"]
+    },
+    {
+      "id": 8,
+      "name": "可溯源性与时效性",
+      "weight": 8,
+      "score": 4.0,
+      "evidence": [
+        "125 个 📌 落点行；85 卡中 80 卡有重点条号；教材页码可反查",
+        "指南版本/证据等级/复查日期尚未结构化"
+      ],
+      "notes": "考试范围溯源强；临床指南时效性尚未分层。",
+      "metric_refs": ["source_anchor_rate", "source_quote_exact_rate"]
+    },
+    {
+      "id": 9,
+      "name": "格式易用性与可访问性",
+      "weight": 5,
+      "score": 3.8,
+      "evidence": [
+        "教师版有 MD + 站点 PDF；教学版有 HTML",
+        "教师版无独立 HTML、无搜索/进度；PDF 5.5 MB"
+      ],
+      "notes": "打印与移动阅读可用；交互与检索弱于教学版。",
+      "metric_refs": ["html_available", "image_count"]
+    },
+    {
+      "id": 10,
+      "name": "交互性与反馈",
+      "weight": 3,
+      "score": 2.0,
+      "evidence": [
+        "82 道自测答案在附录五，需要翻页对答案",
+        "无答案展开、无即时反馈、无错题本"
+      ],
+      "notes": "静态文档形态限制了反馈闭环。",
+      "metric_refs": ["feedback_coverage"]
+    },
+    {
+      "id": 11,
+      "name": "个性化适配",
+      "weight": 2,
+      "score": 1.5,
+      "evidence": [
+        "无诊断性自测、无掌握度画像、无个性化路径"
+      ],
+      "notes": "当前是“同一本文档服务所有人”。",
+      "metric_refs": ["diagnostic_available"]
+    },
+    {
+      "id": 12,
+      "name": "学习效果证据",
+      "weight": 2,
+      "score": 1.5,
+      "evidence": [
+        "无 pre/post、无延迟测验、无真实考试分数"
+      ],
+      "notes": "所有评分为专家 rubric，不是学习者结果。",
+      "metric_refs": ["learner_outcome_available"]
+    }
+  ]
+}

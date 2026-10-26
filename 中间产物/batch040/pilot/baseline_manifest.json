@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-23T15:18:00",
+  "batch": "batch040",
+  "scope": "耳鼻咽喉头颈外科学教师重点版（batch040）",
+  "inputs": {
+    "review": {
+      "path": "复习资料/耳鼻咽喉头颈外科学教师重点版/耳鼻咽喉头颈外科学教师重点版_主复习资料.md",
+      "exists": true,
+      "sha256": "3ad51ee24f863922e78c3c3f212421dd622cd2dff6e773f93bccf5e0370b5bd4",
+      "bytes": 204966,
+      "lines": 3119,
+      "stats": {
+        "chars": 87358,
+        "lines": 3120,
+        "modules": 7,
+        "cards": 85,
+        "card_id_occurrences": 85,
+        "keypoints": 125,
+        "selftests": 82,
+        "appendix_answer_rows": 90,
+        "callouts": 22,
+        "expand_blocks": 0,
+        "images": 0,
+        "table_rows": 820,
+        "ascii_blocks": 21,
+        "k_id_occurrences": 178
+      }
+    },
+    "questions": {
+      "path": "最终产物/batch040/ALL_questions_FIXED.json",
+      "exists": true,
+      "sha256": "539bcd1947efa776a0994aca972ae51bbdd44adf533ae1fe18b4582401496463",
+      "bytes": 1058782,
+      "lines": null,
+      "stats": {
+        "total": 200,
+        "keypoint_ref_present": 200,
+        "modules": {
+          "M01": 12,
+          "M02": 42,
+          "M03": 38,
+          "M04": 28,
+          "M05": 32,
+          "M06": 18,
+          "M07": 30
+        },
+        "types": {
+          "A1": 53,
+          "A2": 27,
+          "A3": 13,
+          "A4": 14,
+          "X": 26,
+          "判断": 27,
+          "案例": 40
+        },
+        "supplemental_refs": 56,
+        "supplemental_questions": 56,
+        "with_kc_slug": 0
+      }
+    },
+    "keypoints": {
+      "path": "输入素材/大四上/耳鼻咽喉头颈外科学/耳鼻咽喉头颈外科学_教师重点_锚定清单_20261019.md",
+      "exists": true,
+      "sha256": "7783751b0ec5f43c39622e59075c13c7bdf6e0c618646bec79e3080306255d63",
+      "bytes": 179833,
+      "lines": 705,
+      "stats": {
+        "items": 125,
+        "first_id": 1,
+        "last_id": 125,
+        "continuous": true,
+        "sources": {
+          "源①": 110,
+          "源③": 15
+        }
+      }
+    },
+    "blueprint": {
+      "path": "中间产物/batch040/出题蓝图_batch040.md",
+      "exists": true,
+      "sha256": "919818002062927b4fdb41e105308fe14db0034d84204bcaba7a7f1f4b1ff229",
+      "bytes": 5474,
+      "lines": 87,
+      "stats": {
+        "modules": {
+          "M01": 12,
+          "M02": 42,
+          "M03": 38,
+          "M04": 28,
+          "M05": 32,
+          "M06": 18,
+          "M07": 30
+        },
+        "total": 200
+      }
+    },
+    "learning_value": {
+      "path": "中间产物/batch040/learning_value_v2/items_v2_progress.json",
+      "exists": true,
+      "sha256": "4b39fa30377ade6687c3f859fcfadf9b61d76abc5cf4199da095ee43759d6a3e",
+      "bytes": 1079328,
+      "lines": null,
+      "stats": {
+        "total": 200,
+        "review_status": {
+          "pilot_reviewed": 2,
+          "pilot_unreviewed": 198
+        },
+        "source_quote_status": {
+          "exact": 200
+        },
+        "anchor_status": {
+          "partial": 46,
+          "verified": 154
+        },
+        "with_kc_slug": 12
+      }
+    },
+    "pilot": {
+      "path": "中间产物/batch040/learning_value_pilot/item_v2_pilot.json",
+      "exists": true,
+      "sha256": "f6abb3f12c264afd416ba032be96d20605373cf072ffe76356811b7c50c2899a",
+      "bytes": 48426,
+      "lines": null,
+      "stats": {
+        "total": 12,
+        "review_status": {
+          "pilot_reviewed": 2,
+          "pilot_unreviewed": 10
+        },
+        "source_quote_status": {
+          "exact": 12
+        },
+        "anchor_status": {
+          "verified": 12
+        }
+      }
+    }
+  },
+  "summary": {
+    "review_cards": 85,
+    "review_keypoints": 125,
+    "review_selftests": 82,
+    "review_appendix_rows": 90,
+    "questions": 200,
+    "questions_with_keypoint_ref": 200,
+    "supplemental_questions": 56,
+    "keypoint_items": 125,
+    "blueprint_total": 200,
+    "learning_value_total": 200,
+    "pilot_total": 12
+  }
+}

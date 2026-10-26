@@ -1,0 +1,79 @@
+{
+  "pilot_id": "batch040-learning-value-v2",
+  "created_at": "2026-10-22",
+  "updated_at": "2026-10-22",
+  "source_batches": ["batch040"],
+  "scope": "耳鼻咽喉头颈外科学 batch040（200 题）中的 12 题代表性样本",
+  "selection": {
+    "modules": ["M01", "M02", "M03", "M04", "M05", "M06", "M07"],
+    "types": ["A1", "A2", "X", "判断", "案例"],
+    "item_ids": [
+      "batch040-M01-A1-001",
+      "batch040-M02-A1-010",
+      "batch040-M02-X-001",
+      "batch040-M02-案例-001",
+      "batch040-M03-A1-001",
+      "batch040-M03-A2-001",
+      "batch040-M03-判断-001",
+      "batch040-M04-A2-001",
+      "batch040-M05-A1-001",
+      "batch040-M05-A2-001",
+      "batch040-M06-A1-001",
+      "batch040-M07-A1-001"
+    ]
+  },
+  "contract": "schemas/item_v2.draft.schema.json",
+  "checker": "scripts/check_learning_value.py",
+  "checker_report": "reports/validate/learning_value_pilot_batch040.json",
+  "metrics": {
+    "total": 12,
+    "pass": 10,
+    "warn": 2,
+    "fail": 0,
+    "per_option_coverage": 1.0,
+    "misconception_coverage": 1.0,
+    "source_quote_exact_rate": 1.0,
+    "anchor_verified_rate": 1.0,
+    "anchor_low_overlap_count": 2
+  },
+  "resolved": [
+    {
+      "id": "batch040-M01-A1-001",
+      "type": "anchor_mismatch",
+      "resolution": "keypoint_ref 由第1条（内耳）改为源②补充条目「3. 常用基础检查器械」；teacher_anchor/source_quote 补为‘额镜：耳鼻咽喉最基础通用照明反光器械。’",
+      "status": "resolved"
+    },
+    {
+      "id": "batch040-M02-A1-010",
+      "type": "option_overlap",
+      "resolution": "C 由‘头位相关+耳聋’改为‘头位相关+垂直性眼震’，消除与 B 的双答案风险；source_quote 补为源③眩晕诊断段落原文",
+      "status": "resolved"
+    }
+  ],
+  "open_findings": [
+    {
+      "id": "batch040-M04-A2-001",
+      "type": "anchor_too_generic",
+      "detail": "R18 主题覆盖度 0.036：锚文只讲‘3~10岁/腺样体’，未覆盖题干的高热、渗出等急性特征；不是错配，但解析需自行补足病例特异性。"
+    },
+    {
+      "id": "batch040-M05-A2-001",
+      "type": "anchor_too_generic",
+      "detail": "R18 主题覆盖度 0.086：锚文只讲‘剧烈咽痛/气道梗阻’，未覆盖‘症状重、体征轻、声门上区球形肿胀’；需补病例特异性来源。"
+    },
+    {
+      "type": "batch_anchor_scan",
+      "detail": "batch040 200 题中，题干与 teacher_anchor 的 2-gram 主题覆盖度 <0.10 的题目建议逐题复核；batch041 100 题全部没有 teacher_anchor 字段，需从锚定清单/RAG 取原文。"
+    },
+    {
+      "type": "metadata_gap",
+      "detail": "batch042 有 16 道执业医师历年真题只写 source_label，没有 zhiyi_origin；公开种子过滤必须同时看字段与来源标签。"
+    }
+  ],
+  "next": [
+    "以本试点为模板，先回填 batch040 200 题；每 20 题一批，跑 R14–R18 并抽 10% 人工复核。",
+    "batch041 先补 teacher_anchor/source_quote（锚定清单或 RAG），再做结构化解析。",
+    "将 R14–R18 接入 gate_check 的 learning_value 阶段；正式版要求 FAIL=0，WARN 进入复核队列。",
+    "回填顺序：batch040 200 题 → batch041 100 题 → MedKit 2,159 题。"
+  ]
+}

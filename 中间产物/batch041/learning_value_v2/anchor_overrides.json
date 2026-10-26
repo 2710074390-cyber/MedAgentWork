@@ -1,0 +1,1007 @@
+{
+  "batch041-M01-A1-001": {
+    "teacher_anchor": "额镜：耳鼻咽喉最基础通用照明反光器械。",
+    "keypoint_ref": [
+      "补充·源②·3.常用基础检查器械"
+    ],
+    "note": "源②直接点明额镜为最基础通用照明反光器械",
+    "source_quote": "耳鼻咽喉最基础通用照明反光器械",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M01-A1-002": {
+    "teacher_anchor": "硬性内镜：镜体不可弯曲；软性 / 电子纤维内镜：柔软可弯曲，痛苦小，适合张口困难、儿童，可录像、可活检。",
+    "keypoint_ref": [
+      "补充·源②·3.常用基础检查器械"
+    ],
+    "note": "原文明确软性镜适合张口困难与儿童且可活检",
+    "source_quote": "软性 / 电子纤维内镜：柔软可弯曲，痛苦小，适合张口困难、儿童，可录像、可活检",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M01-A1-003": {
+    "teacher_anchor": "客观听力测试（无需患者主观反应）：声导抗、听性脑干反应 ABR、耳声发射 OAE。",
+    "keypoint_ref": [
+      "补充·源②·4.听力测试分类"
+    ],
+    "note": "ABR列入客观听力测试，无需主观反应",
+    "source_quote": "客观听力测试（无需患者主观反应）：声导抗、听性脑干反应 ABR、耳声发射 OAE",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M01-A2-001": {
+    "teacher_anchor": "眩晕不只是耳鼻喉疾病，神经内科、骨科疾病也可引起眩晕，不能只局限耳科考虑。",
+    "keypoint_ref": [
+      "补充·源②·5.眩晕的学科归属"
+    ],
+    "note": "原文说明眩晕涉及耳科、神经内科与骨科",
+    "source_quote": "眩晕不只是耳鼻喉疾病，神经内科、骨科疾病也可引起眩晕，不能只局限耳科考虑",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M01-X-001": {
+    "teacher_anchor": "学科特点：耳鼻咽喉头颈器官腔隙深、解剖毗邻紧密，器官互相连通，病变可互相蔓延；兼顾形态疾病治疗 + 听觉、平衡、发声、呼吸等生理功能保护；急症多（气道梗阻、颅内眶内并发症可危及生命）；与全身系统疾病密切相关，例如变应性鼻炎‑哮喘共病。",
+    "keypoint_ref": [
+      "补充·源②·1.学科特点"
+    ],
+    "note": "逐条对应ABDE，C与兼顾功能保护相悖",
+    "source_quote": "学科特点：耳鼻咽喉头颈器官腔隙深、解剖毗邻紧密，器官互相连通，病变可互相蔓延；兼顾形态疾病治疗 + 听觉、平衡、发声、呼吸等生理功能保护；急症多（气道梗阻、颅内眶内并发症可危及生命）；与全身系统疾病密切相关，例如变应性鼻炎‑哮喘共病",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M01-判断-001": {
+    "teacher_anchor": "诊疗范围：耳、鼻、咽、喉、气管、食管、头颈部软组织、颈部先天性疾病、头颈部浅表肿瘤。",
+    "keypoint_ref": [
+      "补充·源②·一-2.诊疗范围"
+    ],
+    "note": "源②诊疗范围条逐字列头颈软组织及浅表肿瘤",
+    "source_quote": "诊疗范围：耳、鼻、咽、喉、气管、食管、头颈部软组织、颈部先天性疾病、头颈部浅表肿瘤。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M01-判断-002": {
+    "teacher_anchor": "耳内镜、频闪喉镜（动态喉镜，观察声带黏膜波，看声带细微病变）。",
+    "keypoint_ref": [
+      "补充·源②·一-3.常用基础检查器械"
+    ],
+    "note": "源②器械条明示频闪喉镜观察黏膜波与细微病变",
+    "source_quote": "耳内镜、频闪喉镜（动态喉镜，观察声带黏膜波，看声带细微病变）。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A1-001": {
+    "teacher_anchor": "1）外耳道：软骨部有耵聍腺，骨部无耵聍腺；耵聍作用保护皮肤、黏附异物。",
+    "keypoint_ref": [
+      "补充·源②·二-1-1）外耳道"
+    ],
+    "note": "源②外耳道条明示耵聍保护皮肤、黏附异物",
+    "source_quote": "耵聍作用保护皮肤、黏附异物。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A1-002": {
+    "teacher_anchor": "2）鼓膜：光锥在前下部，鼓膜内陷时光锥变形、消失。",
+    "keypoint_ref": [
+      "补充·源②·二-1-2）鼓膜"
+    ],
+    "note": "源②鼓膜条明示内陷时光锥变形、消失",
+    "source_quote": "鼓膜内陷时光锥变形、消失。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A1-003": {
+    "teacher_anchor": "听骨链依次为锤骨、砧骨、镫骨；耵聍腺主要位于外耳道软骨部；前庭终末器包括椭圆囊斑、球囊斑和半规管壶腹嵴。",
+    "keypoint_ref": [
+      "第111条"
+    ],
+    "note": "第111条明示听骨链依次为锤骨、砧骨、镫骨",
+    "source_quote": "听骨链依次为锤骨、砧骨、镫骨",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A1-004": {
+    "teacher_anchor": "椭圆囊斑和球囊斑感受直线加速度，半规管壶腹嵴感受角加速度",
+    "keypoint_ref": [
+      "第119条"
+    ],
+    "note": "原文明确壶腹嵴感受角加速度，另二斑为直线加速",
+    "source_quote": "半规管壶腹嵴感受角加速度",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A1-005": {
+    "teacher_anchor": "传导性聋：Rinne 试验阴性（骨导＞气导）；气导下降，骨导基本正常，存在气骨导差。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·2.听力损失分型"
+    ],
+    "note": "逐字给出气导降、骨导正常与气骨导差",
+    "source_quote": "气导下降，骨导基本正常，存在气骨导差",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A1-006": {
+    "teacher_anchor": "感冒后出现耳闷和传导性听力下降，鼓膜内陷，声导抗呈B型曲线，符合分泌性中耳炎诊断，其主要病因是咽鼓管功能障碍，常由过敏性鼻炎导致咽鼓管咽口黏膜肿胀所诱发，而急性化脓性中耳炎则多伴耳痛、发热、鼓膜充血膨隆及穿孔流脓。",
+    "keypoint_ref": [
+      "第106条"
+    ],
+    "note": "原文点明分泌性中耳炎主因为咽鼓管功能障碍",
+    "source_quote": "其主要病因是咽鼓管功能障碍",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A1-007": {
+    "teacher_anchor": "体征：鼓膜松弛部穿孔，耳流脓，脓液恶臭豆渣样；CT 可见骨质破坏伴硬化边缘。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·3.中耳疾病·1）胆脂瘤型慢性中耳炎"
+    ],
+    "note": "胆脂瘤体征首记鼓膜松弛部穿孔",
+    "source_quote": "鼓膜松弛部穿孔",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A1-008": {
+    "teacher_anchor": "梅尼埃病的基本病理表现为膜迷路积水膨大，膜蜗管和球囊较椭圆囊和壶腹明显。",
+    "keypoint_ref": [
+      "第31条"
+    ],
+    "note": "原文直接给出病理基础为膜迷路积水膨大",
+    "source_quote": "膜迷路积水膨大",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A1-009": {
+    "teacher_anchor": "5. 突发性聋：听力一天内急剧下降；越早治疗越好，一线糖皮质激素 + 改善微循环药物。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·5.突发性聋"
+    ],
+    "note": "源②明示一线为激素加改善微循环药",
+    "source_quote": "一线糖皮质激素 + 改善微循环药物",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A2-001": {
+    "teacher_anchor": "体征：鼓膜松弛部穿孔，耳流脓，脓液恶臭豆渣样；CT 可见骨质破坏伴硬化边缘。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·3.中耳疾病·1）胆脂瘤型慢性中耳炎"
+    ],
+    "note": "三联体征逐字对应胆脂瘤诊断",
+    "source_quote": "鼓膜松弛部穿孔，耳流脓，脓液恶臭豆渣样；CT 可见骨质破坏伴硬化边缘。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A2-002": {
+    "teacher_anchor": "并发症：周围性面瘫（额纹消失、闭眼不全）、眩晕、颅内并发症；治疗核心：尽早手术清除病灶，探查面神经，不能单纯保守输液。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·3.中耳疾病·1）胆脂瘤型慢性中耳炎·并发症"
+    ],
+    "note": "原文列周围性面瘫为胆脂瘤并发症",
+    "source_quote": "周围性面瘫（额纹消失、闭眼不全）、眩晕、颅内并发症",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A2-003": {
+    "teacher_anchor": "2）分泌性中耳炎：咽鼓管功能障碍为核心，可由鼻咽部肿瘤压迫咽鼓管咽口诱发，表现耳闷、耳鸣、传导性听力下降。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·3.中耳疾病·2）分泌性中耳炎"
+    ],
+    "note": "原文点明鼻咽部肿瘤压迫咽口可诱发",
+    "source_quote": "可由鼻咽部肿瘤压迫咽鼓管咽口诱发",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A2-004": {
+    "teacher_anchor": "典型表现：反复发作旋转性眩晕，持续数小时；耳闷、低频耳鸣",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·4.眩晕相关疾病·1）梅尼埃病"
+    ],
+    "note": "原文列发作性眩晕数小时伴耳闷低频耳鸣",
+    "source_quote": "反复发作旋转性眩晕，持续数小时；耳闷、低频耳鸣",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A2-005": {
+    "teacher_anchor": "2）良性阵发性位置性眩晕（耳石症 BPPV）：翻身、头位变动诱发，眩晕持续十余秒，静止后缓解*。",
+    "keypoint_ref": [
+      "补充·源②·二-4-2）良性阵发性位置性眩晕"
+    ],
+    "note": "源②逐字写翻身头位变动诱发、十余秒缓解",
+    "source_quote": "翻身、头位变动诱发，眩晕持续十余秒，静止后缓解",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-A2-006": {
+    "teacher_anchor": "5. 突发性聋：听力一天内急剧下降；越早治疗越好，一线糖皮质激素 + 改善微循环药物。",
+    "keypoint_ref": [
+      "补充·源②·二-5.突发性聋"
+    ],
+    "note": "源②明示一线激素加改善微循环、越早越好",
+    "source_quote": "听力一天内急剧下降；越早治疗越好，一线糖皮质激素 + 改善微循环药物",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-X-001": {
+    "teacher_anchor": "典型表现：反复发作旋转性眩晕，持续数小时；耳闷、低频耳鸣；听力波动性低‑中频感音神经性聋，反复发作后听力逐步下降。",
+    "keypoint_ref": [
+      "补充·源②·二-4-1）梅尼埃病"
+    ],
+    "note": "源②典型表现逐字覆盖A至D，E属耳石症",
+    "source_quote": "反复发作旋转性眩晕，持续数小时；耳闷、低频耳鸣；听力波动性低‑中频感音神经性聋，反复发作后听力逐步下降",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-X-002": {
+    "teacher_anchor": "体征：鼓膜松弛部穿孔，耳流脓，脓液恶臭豆渣样；CT 可见骨质破坏伴硬化边缘。",
+    "keypoint_ref": [
+      "补充·源②·二-3-1）胆脂瘤型慢性中耳炎"
+    ],
+    "note": "源②体征逐字覆盖A/B/C；D见同条并发症",
+    "source_quote": "鼓膜松弛部穿孔，耳流脓，脓液恶臭豆渣样；CT 可见骨质破坏伴硬化边缘",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-X-003": {
+    "teacher_anchor": "2）分泌性中耳炎：咽鼓管功能障碍为核心，可由鼻咽部肿瘤压迫咽鼓管咽口诱发，表现耳闷、耳鸣、传导性听力下降。",
+    "keypoint_ref": [
+      "补充·源②·二-3-2）分泌性中耳炎",
+      "第118条"
+    ],
+    "note": "源②覆盖A/B/C，D另见第118条查鼻咽",
+    "source_quote": "咽鼓管功能障碍为核心，可由鼻咽部肿瘤压迫咽鼓管咽口诱发，表现耳闷、耳鸣、传导性听力下降",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-X-004": {
+    "teacher_anchor": "传导性聋：Rinne 试验阴性（骨导＞气导）；气导下降，骨导基本正常，存在气骨导差。\n- 感音神经性聋：气骨导同时下降，气骨导无明显差距。\n- 混合性聋：两者兼有。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·2.听力损失分型"
+    ],
+    "note": "源②原文并列列出三型，支持A、B、C。",
+    "source_quote": "传导性聋：Rinne 试验阴性（骨导＞气导）；气导下降，骨导基本正常，存在气骨导差。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-X-005": {
+    "teacher_anchor": "听觉感受器：螺旋器（Corti 器）。\n- 平衡感受器：椭圆囊斑、球囊斑（感受直线加速度、重力）；半规管壶腹嵴（感受角加速度）。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·1.耳部解剖·4）内耳迷路"
+    ],
+    "note": "源②明列听觉与平衡感受器及其功能，支持A、B、C。",
+    "source_quote": "平衡感受器：椭圆囊斑、球囊斑（感受直线加速度、重力）；半规管壶腹嵴（感受角加速度）。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-判断-001": {
+    "teacher_anchor": "听骨链依次为锤骨、砧骨、镫骨；耵聍腺主要位于外耳道软骨部；前庭终末器包括椭圆囊斑、球囊斑和半规管壶腹嵴。",
+    "keypoint_ref": [
+      "第111条"
+    ],
+    "note": "第111条载耵聍腺位于软骨部，故骨部无腺。",
+    "source_quote": "耵聍腺主要位于外耳道软骨部",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-判断-002": {
+    "teacher_anchor": "光锥在前下部，鼓膜内陷时光锥变形、消失。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·1.耳部解剖·2）鼓膜"
+    ],
+    "note": "源②原文明确内陷时光锥变形、消失。",
+    "source_quote": "鼓膜内陷时光锥变形、消失",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-判断-003": {
+    "teacher_anchor": "急性发作处理：前庭抑制剂、镇静剂控制眩晕。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·4.眩晕相关疾病·1）梅尼埃病"
+    ],
+    "note": "源②载急性发作期用前庭抑制剂与镇静剂。",
+    "source_quote": "急性发作处理：前庭抑制剂、镇静剂控制眩晕。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-判断-004": {
+    "teacher_anchor": "2）良性阵发性位置性眩晕（耳石症 BPPV）：翻身、头位变动诱发，眩晕持续十余秒，静止后缓解*。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·4.眩晕相关疾病·2）良性阵发性位置性眩晕"
+    ],
+    "note": "源②明确BPPV仅持续十余秒",
+    "source_quote": "翻身、头位变动诱发，眩晕持续十余秒，静止后缓解",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M02-判断-005": {
+    "teacher_anchor": "3）上半规管裂综合征：强声刺激诱发眩晕（Tullio 现象）。",
+    "keypoint_ref": [
+      "补充·源②·二、耳科学·4.眩晕相关疾病·3）上半规管裂综合征"
+    ],
+    "note": "源②明示Tullio现象属上半规管裂",
+    "source_quote": "强声刺激诱发眩晕（Tullio 现象）",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A1-001": {
+    "teacher_anchor": "1）骨性鼻中隔：筛骨垂直板 + 犁骨。",
+    "keypoint_ref": [
+      "补充·源②·三、鼻科学·1.鼻腔鼻窦解剖·1）骨性鼻中隔"
+    ],
+    "note": "源②骨性鼻中隔仅此两骨",
+    "source_quote": "骨性鼻中隔：筛骨垂直板 + 犁骨",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A1-002": {
+    "teacher_anchor": "鼻腭动脉、筛前动脉、筛后动脉、上唇动脉和腭大动脉，在鼻中隔前下部的黏膜下交互吻合，形成动脉丛，称之为利特尔动脉丛，此区称为利特尔区（Little’s area），是临床上鼻出血最常见的部位。（P156）",
+    "keypoint_ref": [
+      "第42条"
+    ],
+    "note": "利特尔区位于鼻中隔前下部",
+    "source_quote": "鼻中隔前下部的黏膜下交互吻合，形成动脉丛，称之为利特尔动脉丛，此区称为利特尔区",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A1-003": {
+    "teacher_anchor": "3）出血部位：利特尔区（Kiesselbach）鼻中隔前下部，青少年鼻出血最常见；老年人后鼻出血多见吴氏静脉丛（Woodruff）。",
+    "keypoint_ref": [
+      "补充·源②·三、鼻科学·1.鼻腔鼻窦解剖·3）出血部位"
+    ],
+    "note": "老年人后鼻出血多见吴氏静脉丛",
+    "source_quote": "老年人后鼻出血多见吴氏静脉丛（Woodruff）",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A1-004": {
+    "teacher_anchor": "4）嗅觉黏膜：上鼻甲内侧面及鼻中隔上部。",
+    "keypoint_ref": [
+      "补充·源②·三、鼻科学 1-4）嗅觉黏膜"
+    ],
+    "note": "逐字给出嗅觉黏膜定位，直接对应B",
+    "source_quote": "嗅觉黏膜：上鼻甲内侧面及鼻中隔上部",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A1-005": {
+    "teacher_anchor": "OMC涉及上颌窦、前组筛窦及额窦的相关引流通道，不包括蝶窦自然开口；后组筛窦开口于上鼻道，蝶窦开口于蝶筛隐窝。",
+    "keypoint_ref": [
+      "第116条"
+    ],
+    "note": "第四条明确蝶窦开口于蝶筛隐窝",
+    "source_quote": "蝶窦开口于蝶筛隐窝",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A1-006": {
+    "teacher_anchor": "常见致病菌：肺炎链球菌、流感嗜血杆菌。",
+    "keypoint_ref": [
+      "补充·源②·三、鼻科学 3-1）急性鼻窦炎"
+    ],
+    "note": "源②急性鼻窦炎条逐字列出两菌",
+    "source_quote": "常见致病菌：肺炎链球菌、流感嗜血杆菌",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A1-007": {
+    "teacher_anchor": "2）真菌球型鼻窦炎：CT 特征窦腔内 高密度钙化 / 金属样亮点 。",
+    "keypoint_ref": [
+      "补充·源②·三、鼻科学 3-2）真菌球型鼻窦炎"
+    ],
+    "note": "原文CT特征即高密度钙化/金属样亮点",
+    "source_quote": "高密度钙化 / 金属样亮点",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A1-008": {
+    "teacher_anchor": "3）鼻疖：位于鼻前庭，严禁挤压，危险并发症海绵窦血栓性静脉炎；不可盲目切开。",
+    "keypoint_ref": [
+      "补充·源②·三、鼻科学 4-3）鼻疖"
+    ],
+    "note": "原文点名海绵窦血栓性静脉炎为危险并发症",
+    "source_quote": "位于鼻前庭，严禁挤压，危险并发症海绵窦血栓性静脉炎",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A2-001": {
+    "teacher_anchor": "眶并发症：儿童急性鼻窦炎易穿破眶纸样板，最常见眶蜂窝织炎，可出现眼睑红肿、眼球突出。",
+    "keypoint_ref": [
+      "补充·源②·三、鼻科学·3. 鼻窦炎·1）急性鼻窦炎·眶并发症"
+    ],
+    "note": "源②眶并发症条逐字对应眶蜂窝织炎表现",
+    "source_quote": "儿童急性鼻窦炎易穿破眶纸样板，最常见眶蜂窝织炎，可出现眼睑红肿、眼球突出",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A2-002": {
+    "teacher_anchor": "急性细菌性鼻窦炎应根据持续时间及病程变化判断；慢性鼻窦炎通常需症状至少12周并有客观证据；真菌球CT可见不规则高密度及钙化影。",
+    "keypoint_ref": [
+      "第117条"
+    ],
+    "note": "第117条明载真菌球CT高密度钙化影",
+    "source_quote": "真菌球CT可见不规则高密度及钙化影",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A2-003": {
+    "teacher_anchor": "鼻骨骨折：外伤后鼻梁塌陷、鼻塞、鼻背压痛。",
+    "keypoint_ref": [
+      "补充·源②·三、鼻科学·4. 鼻部其他疾病·1）鼻骨骨折"
+    ],
+    "note": "源②鼻骨骨折表现与题干逐字一致",
+    "source_quote": "外伤后鼻梁塌陷、鼻塞、鼻背压痛",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A2-004": {
+    "teacher_anchor": "出现眼睑肿胀、眼球运动异常、剧烈头痛或明显全身症状时，应警惕海绵窦血栓性静脉炎等严重并发症。",
+    "keypoint_ref": [
+      "补充·源③·三、鼻科学·（二）鼻部常见疾病·2．鼻疖"
+    ],
+    "note": "源③鼻疖段支持海绵窦血栓性静脉炎",
+    "source_quote": "应警惕海绵窦血栓性静脉炎等严重并发症",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-A2-005": {
+    "teacher_anchor": "功能性内镜鼻窦手术 FESS 适应证：规范药物无效慢性鼻窦炎、多发鼻息肉、真菌球鼻窦炎、合并眶 / 颅内并发症；普通感冒不做手术。",
+    "keypoint_ref": [
+      "补充·源②·三、鼻科学·3. 鼻窦炎·3）功能性内镜鼻窦手术 FESS 适应证"
+    ],
+    "note": "源②FESS适应证含药物无效与多发鼻息肉",
+    "source_quote": "规范药物无效慢性鼻窦炎、多发鼻息肉、真菌球鼻窦炎、合并眶 / 颅内并发症",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-X-001": {
+    "teacher_anchor": "慢性单纯性鼻炎常表现为间歇性、交替性鼻塞，下鼻甲黏膜充血肿胀但收缩能力较好，使用鼻用减充血剂后鼻甲通常缩小明显；慢性肥厚性鼻炎多表现为持续性鼻塞，下鼻甲肥厚、表面可呈结节状或桑葚状，使用减充血剂后收缩较差。",
+    "keypoint_ref": [
+      "补充·源③·三（二）4．慢性单纯性鼻炎与慢性肥厚性鼻炎"
+    ],
+    "note": "源③正文逐字对比两型鼻炎的鼻塞与减充血剂反应",
+    "source_quote": "慢性单纯性鼻炎常表现为间歇性、交替性鼻塞，下鼻甲黏膜充血肿胀但收缩能力较好，使用鼻用减充血剂后鼻甲通常缩小明显；慢性肥厚性鼻炎多表现为持续性鼻塞，下鼻甲肥厚、表面可呈结节状或桑葚状，使用减充血剂后收缩较差。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-X-002": {
+    "teacher_anchor": "症状：持续性鼻塞、大量黏脓涕、面部胀痛 / 头痛、嗅觉减退、鼻后滴漏。",
+    "keypoint_ref": [
+      "补充·源②·三-3-1）急性鼻窦炎"
+    ],
+    "note": "源②急性鼻窦炎症状条目逐字含A至D四项",
+    "source_quote": "症状：持续性鼻塞、大量黏脓涕、面部胀痛 / 头痛、嗅觉减退、鼻后滴漏。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-X-003": {
+    "teacher_anchor": "3）功能性内镜鼻窦手术 FESS 适应证：规范药物无效慢性鼻窦炎、多发鼻息肉、真菌球鼻窦炎、合并眶 / 颅内并发症；普通感冒不做手术。手术风险：眶损伤、脑脊液鼻漏、视神经损伤、颈内动脉大出血。",
+    "keypoint_ref": [
+      "补充·源②·三-3-3）FESS适应证"
+    ],
+    "note": "源②逐字列出四项适应证并排除普通感冒",
+    "source_quote": "3）功能性内镜鼻窦手术 FESS 适应证：规范药物无效慢性鼻窦炎、多发鼻息肉、真菌球鼻窦炎、合并眶 / 颅内并发症；普通感冒不做手术。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-X-004": {
+    "teacher_anchor": "3）功能性内镜鼻窦手术 FESS 适应证：规范药物无效慢性鼻窦炎、多发鼻息肉、真菌球鼻窦炎、合并眶 / 颅内并发症；普通感冒不做手术。手术风险：眶损伤、脑脊液鼻漏、视神经损伤、颈内动脉大出血。",
+    "keypoint_ref": [
+      "补充·源②·三-3-3）FESS手术风险"
+    ],
+    "note": "同条紧邻句逐字列出四项FESS主要风险",
+    "source_quote": "手术风险：眶损伤、脑脊液鼻漏、视神经损伤、颈内动脉大出血。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-判断-001": {
+    "teacher_anchor": "2）下鼻甲：富含海绵体血管，充血肿胀调节温湿度。",
+    "keypoint_ref": [
+      "补充·源②·三-1-2）下鼻甲"
+    ],
+    "note": "源②下鼻甲条目逐字含海绵体血管与温湿度调节",
+    "source_quote": "2）下鼻甲：富含海绵体血管，充血肿胀调节温湿度。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-判断-002": {
+    "teacher_anchor": "3）鼻疖：位于鼻前庭，严禁挤压，危险并发症海绵窦血栓性静脉炎；不可盲目切开。",
+    "keypoint_ref": [
+      "第114条",
+      "补充·源②·三-4-3）鼻疖"
+    ],
+    "note": "源②鼻疖条逐字含严禁挤压与不可盲目切开",
+    "source_quote": "严禁挤压，危险并发症海绵窦血栓性静脉炎；不可盲目切开",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-判断-003": {
+    "teacher_anchor": "外伤后鼻中隔出现暗红色膨隆、触之有波动感，应考虑鼻中隔血肿。鼻中隔血肿需要及时由专科医师处理，通常需引流，以防软骨缺血坏死、感染及鞍鼻畸形。",
+    "keypoint_ref": [
+      "补充·源③·三（二）3．鼻中隔血肿"
+    ],
+    "note": "源③逐字述暗红色膨隆、触之有波动感",
+    "source_quote": "外伤后鼻中隔出现暗红色膨隆、触之有波动感，应考虑鼻中隔血肿",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M03-判断-004": {
+    "teacher_anchor": "4）含牙囊肿：囊内包含未萌出牙冠牙根，上颌骨多见。",
+    "keypoint_ref": [
+      "补充·源②·三-4-4）含牙囊肿"
+    ],
+    "note": "源②含牙囊肿条逐字含牙冠牙根与上颌骨多见",
+    "source_quote": "囊内包含未萌出牙冠牙根，上颌骨多见",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A1-001": {
+    "teacher_anchor": "1）咽淋巴环 Waldeyer 环：腭扁桃体、咽扁桃体（腺样体）、舌扁桃体、咽侧索；腭扁桃体体积最大。",
+    "keypoint_ref": [
+      "补充·源②·四-1-1）咽淋巴环"
+    ],
+    "note": "源②逐字点明腭扁桃体体积最大",
+    "source_quote": "腭扁桃体、咽扁桃体（腺样体）、舌扁桃体、咽侧索；腭扁桃体体积最大",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A1-002": {
+    "teacher_anchor": "鼻咽癌好发于咽隐窝，与EB病毒密切相关，确诊依靠组织病理；单侧分泌性中耳炎需关注鼻咽部病变。",
+    "keypoint_ref": [
+      "第118条",
+      "补充·源②·四-1-2）鼻咽侧壁"
+    ],
+    "note": "第118条逐字写明鼻咽癌好发于咽隐窝",
+    "source_quote": "鼻咽癌好发于咽隐窝，与EB病毒密切相关，确诊依靠组织病理",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A1-003": {
+    "teacher_anchor": "儿童长期张口呼吸打鼾，造成腺样体面容：硬腭高拱、上颌变长、唇厚上翻。",
+    "keypoint_ref": [
+      "补充·源②·四、咽科学·2.咽部疾病·1）腺样体肥大"
+    ],
+    "note": "源②逐字列出腺样体面容三大面部体征，与A项一致。",
+    "source_quote": "硬腭高拱、上颌变长、唇厚上翻",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A1-004": {
+    "teacher_anchor": "无创筛查：鼻咽侧位 X 线片、纤维 / 电子鼻咽镜。",
+    "keypoint_ref": [
+      "补充·源②·四、咽科学·2.咽部疾病·1）腺样体肥大"
+    ],
+    "note": "源②明确无创筛查手段为侧位X线片与纤维鼻咽镜。",
+    "source_quote": "鼻咽侧位 X 线片、纤维 / 电子鼻咽镜",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A1-005": {
+    "teacher_anchor": "慢性扁桃体炎：主要致病菌乙型溶血性链球菌；反复咽痛发热。",
+    "keypoint_ref": [
+      "补充·源②·四、咽科学·2.咽部疾病·3）慢性扁桃体炎"
+    ],
+    "note": "源②点明慢性扁桃体炎主要致病菌为乙型溶血性链球菌。",
+    "source_quote": "主要致病菌乙型溶血性链球菌",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A1-006": {
+    "teacher_anchor": "鼻咽癌诊断金标准为病理活检，应先行鼻咽镜+活检，颈部淋巴结细针穿刺可确认转移，MRI用于评估肿瘤范围及颅底侵犯，EB病毒检测（如EBV-VCA IgA、EBV-EA IgA及EB病毒DNA载量）为重要辅助诊断",
+    "keypoint_ref": [
+      "第105条"
+    ],
+    "note": "第105条明载鼻咽癌诊断金标准为病理活检。",
+    "source_quote": "鼻咽癌诊断金标准为病理活检",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A1-007": {
+    "teacher_anchor": "治疗上，首选根治性放疗，中晚期需同步放化疗，靶向治疗可联合放疗增强疗效，手术仅用于放疗后复发或残留，单纯化疗疗效差。",
+    "keypoint_ref": [
+      "第105条"
+    ],
+    "note": "第105条明确首选根治性放疗、中晚期同步放化疗。",
+    "source_quote": "首选根治性放疗，中晚期需同步放化疗",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A2-001": {
+    "teacher_anchor": "患者如有吸烟史、耳部症状（耳鸣、听力下降）、颈部淋巴结无痛、质硬、活动差，合并回吸性涕血和鼻咽溃疡型肿物，符合鼻咽癌伴颈淋巴结转移的典型临床表现",
+    "keypoint_ref": [
+      "第105条"
+    ],
+    "note": "原文写明符合鼻咽癌伴颈淋巴结转移",
+    "source_quote": "患者如有吸烟史、耳部症状（耳鸣、听力下降）、颈部淋巴结无痛、质硬、活动差，合并回吸性涕血和鼻咽溃疡型肿物，符合鼻咽癌伴颈淋巴结转移的典型临床表现",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A2-002": {
+    "teacher_anchor": "儿童长期张口呼吸打鼾，造成腺样体面容：硬腭高拱、上颌变长、唇厚上翻。",
+    "keypoint_ref": [
+      "补充·源②·四-2-1）腺样体肥大"
+    ],
+    "note": "源②三项面容特征与题干逐字一致",
+    "source_quote": "儿童长期张口呼吸打鼾，造成腺样体面容：硬腭高拱、上颌变长、唇厚上翻。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A2-003": {
+    "teacher_anchor": "扁桃体周围脓肿：急性扁桃体炎进展，咽痛剧烈、吞咽困难，说话含物感，软腭隆起，悬雍垂偏移",
+    "keypoint_ref": [
+      "补充·源②·四-2-4）扁桃体周围脓肿"
+    ],
+    "note": "源②原文逐项对应题干症状与体征",
+    "source_quote": "扁桃体周围脓肿：急性扁桃体炎进展，咽痛剧烈、吞咽困难，说话含物感，软腭隆起，悬雍垂偏移",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-A2-004": {
+    "teacher_anchor": "慢性咽炎：咽部异物感、咽干咽痒，咽后壁淋巴滤泡增生；不常规长期大剂量静脉抗生素；治疗：去除诱因、雾化、含片、生活习惯调整。",
+    "keypoint_ref": [
+      "补充·源②·四-2-2）慢性咽炎"
+    ],
+    "note": "原文明确不常规静脉抗生素并给出雾化含片治疗",
+    "source_quote": "慢性咽炎：咽部异物感、咽干咽痒，咽后壁淋巴滤泡增生；不常规长期大剂量静脉抗生素；治疗：去除诱因、雾化、含片、生活习惯调整。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-X-001": {
+    "teacher_anchor": "典型表现：回吸性血涕、单侧鼻塞、耳鸣耳闷（压迫咽鼓管→分泌性中耳炎）、颈部无痛质硬固定淋巴结转移。",
+    "keypoint_ref": [
+      "补充·源②·四-2-5）鼻咽癌"
+    ],
+    "note": "原文典型表现逐条覆盖ABCD四项",
+    "source_quote": "典型表现：回吸性血涕、单侧鼻塞、耳鸣耳闷（压迫咽鼓管→分泌性中耳炎）、颈部无痛质硬固定淋巴结转移。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-X-002": {
+    "teacher_anchor": "扁桃体周围脓肿：急性扁桃体炎进展，咽痛剧烈、吞咽困难，说话含物感，软腭隆起，悬雍垂偏移；处理：穿刺抽脓 + 切开引流。",
+    "keypoint_ref": [
+      "补充·源②·四-2-4）扁桃体周围脓肿"
+    ],
+    "note": "源②逐条列出ABCD表现与穿刺+切开引流",
+    "source_quote": "急性扁桃体炎进展，咽痛剧烈、吞咽困难，说话含物感，软腭隆起，悬雍垂偏移；处理：穿刺抽脓 + 切开引流。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-X-003": {
+    "teacher_anchor": "儿童长期张口呼吸打鼾，造成腺样体面容：硬腭高拱、上颌变长、唇厚上翻。\n- 无创筛查：鼻咽侧位 X 线片、纤维 / 电子鼻咽镜。",
+    "keypoint_ref": [
+      "补充·源②·四-2-1）腺样体肥大"
+    ],
+    "note": "源②载面容三特征及无创筛查两项",
+    "source_quote": "儿童长期张口呼吸打鼾，造成腺样体面容：硬腭高拱、上颌变长、唇厚上翻。\n- 无创筛查：鼻咽侧位 X 线片、纤维 / 电子鼻咽镜。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-X-004": {
+    "teacher_anchor": "咽淋巴环 Waldeyer 环：腭扁桃体、咽扁桃体（腺样体）、舌扁桃体、咽侧索；腭扁桃体体积最大。",
+    "keypoint_ref": [
+      "补充·源②·四-1-1）咽淋巴环"
+    ],
+    "note": "源②列全四组成且明腭扁桃体最大",
+    "source_quote": "咽淋巴环 Waldeyer 环：腭扁桃体、咽扁桃体（腺样体）、舌扁桃体、咽侧索；腭扁桃体体积最大。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-判断-001": {
+    "teacher_anchor": "高危因素：EB 病毒感染，地域聚集，广东高发。",
+    "keypoint_ref": [
+      "补充·源②·四-2-5）鼻咽癌"
+    ],
+    "note": "源②高危因素与题干三要点逐字对应",
+    "source_quote": "EB 病毒感染，地域聚集，广东高发。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-判断-002": {
+    "teacher_anchor": "慢性扁桃体炎：主要致病菌乙型溶血性链球菌；反复咽痛发热。",
+    "keypoint_ref": [
+      "补充·源②·四-2-3）慢性扁桃体炎"
+    ],
+    "note": "源②明载该病主要致病菌为乙型溶血性链球菌",
+    "source_quote": "主要致病菌乙型溶血性链球菌",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M04-判断-003": {
+    "teacher_anchor": "软腭：吞咽时上抬，防止食物反流鼻咽。",
+    "keypoint_ref": [
+      "补充·源②·四、咽科学·1.咽部解剖·3）软腭"
+    ],
+    "note": "源②明确软腭上抬可防反流鼻咽",
+    "source_quote": "吞咽时上抬，防止食物反流鼻咽",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-A1-001": {
+    "teacher_anchor": "环状软骨是喉气管中唯一完整的环形软骨，对保持喉气管的通畅至关重要。如果外伤或疾病引起环状软骨损伤，常可引起喉及气管狭窄，两侧声带之间的区域称为声门区，为喉腔中最狭窄的部位。（P290）",
+    "keypoint_ref": [
+      "第92条"
+    ],
+    "note": "第92条原文直接支持维持气道通畅",
+    "source_quote": "环状软骨是喉气管中唯一完整的环形软骨，对保持喉气管的通畅至关重要。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-A1-002": {
+    "teacher_anchor": "喉腔分为声门上区、声门区和声门下区三部分，其中声门裂是喉腔最狭窄的部位。",
+    "keypoint_ref": [
+      "第109条"
+    ],
+    "note": "第109条明示声门裂为最狭窄部位",
+    "source_quote": "声门裂是喉腔最狭窄的部位",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-A1-003": {
+    "teacher_anchor": "神经：喉返神经支配除环甲肌以外全部喉内肌；喉上神经外支支配环甲肌。",
+    "keypoint_ref": [
+      "补充·源②·五、喉科学·1.喉解剖·3）神经"
+    ],
+    "note": "源②明确外支支配环甲肌",
+    "source_quote": "喉上神经外支支配环甲肌",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-A1-004": {
+    "teacher_anchor": "声带小结：喉镜检查见双侧声带前、中1/3交界处有对称性结节状隆起。",
+    "keypoint_ref": [
+      "第100条"
+    ],
+    "note": "第100条点明前、中1/3交界处位置",
+    "source_quote": "双侧声带前、中1/3交界处有对称性结节状隆起",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-A1-005": {
+    "teacher_anchor": "重症急性会厌炎和III～IV度喉阻塞必须优先评估和保障气道；气管切开常在第2～4气管软骨环附近；气管切开术后需重视气道湿化和套管通畅。",
+    "keypoint_ref": [
+      "第121条"
+    ],
+    "note": "原文明确气管切开的部位为第2～4环",
+    "source_quote": "气管切开常在第2～4气管软骨环附近",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-A1-006": {
+    "teacher_anchor": "喉癌：长期吸烟中老年，进行性声音嘶哑、痰中带血；最常见病理类型鳞状细胞癌。",
+    "keypoint_ref": [
+      "补充·源②·五、喉科学·3）喉癌"
+    ],
+    "note": "原文直述喉癌最常见为鳞状细胞癌",
+    "source_quote": "最常见病理类型鳞状细胞癌",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-A2-001": {
+    "teacher_anchor": "特点：剧烈咽痛，但口咽检查无明显异常（症状体征不相称）；流涎、吸气喘鸣提示危重，可快速窒息；不能只看口咽就放患者回家；优先评估气道安全。",
+    "keypoint_ref": [
+      "补充·源②·五、喉科学·3）1）急性会厌炎"
+    ],
+    "note": "症状体征不相称且需优先保障气道",
+    "source_quote": "流涎、吸气喘鸣提示危重，可快速窒息；不能只看口咽就放患者回家；优先评估气道安全。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-A2-002": {
+    "teacher_anchor": "炎性时容易发生肿胀；喉黏膜下组织疏松；咳嗽力量不够，下呼吸道分泌物不易咳出；声嘶、犬吠样咳及吸气性呼吸困难是小儿急性喉炎的典型表现",
+    "keypoint_ref": [
+      "第98条"
+    ],
+    "note": "犬吠样咳、声嘶为该病典型表现",
+    "source_quote": "声嘶、犬吠样咳及吸气性呼吸困难是小儿急性喉炎的典型表现",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-A2-003": {
+    "teacher_anchor": "喉癌：长期吸烟中老年，进行性声音嘶哑、痰中带血；最常见病理类型鳞状细胞癌。",
+    "keypoint_ref": [
+      "补充·源②·五、喉科学·3）喉癌"
+    ],
+    "note": "长期吸烟、进行性声嘶伴痰中带血指向喉癌",
+    "source_quote": "长期吸烟中老年，进行性声音嘶哑、痰中带血",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-X-001": {
+    "teacher_anchor": "1）典型表现：吸气性呼吸困难、吸气三凹征、喉鸣、发绀。",
+    "keypoint_ref": [
+      "补充·源②·五、喉科学·2.喉阻塞·1）典型表现"
+    ],
+    "note": "源②中喉阻塞的典型表现共四条，逐条对应ABCD",
+    "source_quote": "吸气性呼吸困难、吸气三凹征、喉鸣、发绀",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-X-002": {
+    "teacher_anchor": "2）分度：Ⅰ‑Ⅳ 度；Ⅳ 度喉阻塞窒息濒死状态。\n3）急救：标准气管切开位置第 2‑4 气管软骨环；现场来不及气管切开，首选环甲膜切开救命。\n4）气管切开术后护理关键点：气道湿化，防止分泌物结痂堵管。",
+    "keypoint_ref": [
+      "补充·源②·五、喉科学·2.喉阻塞·2）～4）"
+    ],
+    "note": "源②连续三条原文（分度、急救、术后护理）支持ABCD",
+    "source_quote": "标准气管切开位置第 2‑4 气管软骨环；现场来不及气管切开，首选环甲膜切开救命",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-X-003": {
+    "teacher_anchor": "1）急性会厌炎\n- 特点：剧烈咽痛，但口咽检查无明显异常（症状体征不相称）；流涎、吸气喘鸣提示危重，可快速窒息；不能只看口咽就放患者回家；优先评估气道安全。",
+    "keypoint_ref": [
+      "补充·源②·五、喉科学·3.重点疾病·1）急性会厌炎"
+    ],
+    "note": "源②原文含症状体征不相称、病情危重及优先保障气道",
+    "source_quote": "剧烈咽痛，但口咽检查无明显异常（症状体征不相称）；流涎、吸气喘鸣提示危重，可快速窒息；不能只看口咽就放患者回家；优先评估气道安全",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-判断-001": {
+    "teacher_anchor": "3）神经：喉返神经支配除环甲肌以外全部喉内肌；喉上神经外支支配环甲肌。",
+    "keypoint_ref": [
+      "补充·源②·五、喉科学·1.喉解剖·3）神经"
+    ],
+    "note": "源②明确：喉返神经支配除环甲肌以外的喉内肌，喉上神经外支仅支配环甲肌",
+    "source_quote": "喉返神经支配除环甲肌以外全部喉内肌；喉上神经外支支配环甲肌",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M05-判断-002": {
+    "teacher_anchor": "1）急性会厌炎\n- 特点：剧烈咽痛，但口咽检查无明显异常（症状体征不相称）；流涎、吸气喘鸣提示危重，可快速窒息；不能只看口咽就放患者回家；优先评估气道安全。",
+    "keypoint_ref": [
+      "补充·源②·五、喉科学·3.重点疾病·1）急性会厌炎"
+    ],
+    "note": "源②原文即指出口咽检查无明显异常，症状体征不相称",
+    "source_quote": "剧烈咽痛，但口咽检查无明显异常（症状体征不相称）",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M06-A1-001": {
+    "teacher_anchor": "食管第一狭窄（食管入口）：距成人中切牙约 16cm。",
+    "keypoint_ref": [
+      "补充·源③·六·1）解剖狭窄"
+    ],
+    "note": "源③解剖狭窄直接写明第一狭窄距中切牙16cm",
+    "source_quote": "食管第一狭窄（食管入口）：距成人中切牙约 16cm。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M06-A1-002": {
+    "teacher_anchor": "右侧主支气管相对较短、较粗、走向较垂直；气道异物不完全性阻塞可形成单向活瓣，导致局限性肺气肿；儿童疑似气道异物不能因胸片正常而排除。",
+    "keypoint_ref": [
+      "第122条"
+    ],
+    "note": "第122条明确右主支气管短、粗、走向垂直",
+    "source_quote": "右侧主支气管相对较短、较粗、走向较垂直",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M06-A1-003": {
+    "teacher_anchor": "气管隆嵴大约第 4‑5 胸椎水平。",
+    "keypoint_ref": [
+      "补充·源③·六·1）解剖狭窄"
+    ],
+    "note": "源③解剖狭窄载明隆嵴位于第4‑5胸椎水平",
+    "source_quote": "气管隆嵴大约第 4‑5 胸椎水平。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M06-A2-001": {
+    "teacher_anchor": "病史：进食坚果时大笑、哭闹，突发呛咳发绀，之后阵发性咳嗽喘息；患侧呼吸音减弱。",
+    "keypoint_ref": [
+      "补充·源③·六·2）气管支气管异物"
+    ],
+    "note": "源③异物典型病史与题干表现逐字对应",
+    "source_quote": "进食坚果时大笑、哭闹，突发呛咳发绀，之后阵发性咳嗽喘息；患侧呼吸音减弱",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M06-A2-002": {
+    "teacher_anchor": "食管三处生理性狭窄距成人中切牙约15～16cm、25cm、40cm；食管穿孔可能导致纵隔感染和皮下气肿，严禁吞咽饭团、馒头或饮醋强行处理异物。",
+    "keypoint_ref": [
+      "第123条"
+    ],
+    "note": "第123条载食管穿孔致皮下气肿及纵隔感染",
+    "source_quote": "食管穿孔可能导致纵隔感染和皮下气肿",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M06-X-001": {
+    "teacher_anchor": "- 病史：进食坚果时大笑、哭闹，突发呛咳发绀，之后阵发性咳嗽喘息；患侧呼吸音减弱。\n- X 线：活瓣效应→局限性肺气肿（透亮度增高）；完全阻塞→肺不张。",
+    "keypoint_ref": [
+      "补充·源②·六-2）气管支气管异物"
+    ],
+    "note": "含进食坚果大笑哭闹、呛咳发绀、阵发咳嗽及X线肺气肿",
+    "source_quote": "病史：进食坚果时大笑、哭闹，突发呛咳发绀，之后阵发性咳嗽喘息；患侧呼吸音减弱。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M06-X-002": {
+    "teacher_anchor": "- 危险并发症：食管穿孔，皮下气肿、纵隔感染。\n- 绝对禁忌：吞饭团、馒头强行把异物压下去。\n- 处理：禁食禁水，CT 定位，硬性食管镜取出。",
+    "keypoint_ref": [
+      "补充·源②·六-3）食管异物"
+    ],
+    "note": "并发症、禁忌与禁食CT定位硬镜取出逐条对应",
+    "source_quote": "危险并发症：食管穿孔，皮下气肿、纵隔感染。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M06-判断-001": {
+    "teacher_anchor": "X 线：活瓣效应→局限性肺气肿（透亮度增高）；完全阻塞→肺不张。",
+    "keypoint_ref": [
+      "补充·源②·六-2）气管支气管异物"
+    ],
+    "note": "完全阻塞后气体吸收致肺不张，故判断正确",
+    "source_quote": "完全阻塞→肺不张。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M07-A1-001": {
+    "teacher_anchor": "2）颈淋巴结：颈内静脉淋巴结链引流范围最广最重要；Robbins 分区：Ⅰ 区颏下下颌下；Ⅱ‑Ⅳ 颈内静脉上中下；Ⅵ 中央区（甲状腺周围）。",
+    "keypoint_ref": [
+      "补充·源②·七-1-2）颈淋巴结"
+    ],
+    "note": "源②明确Ⅵ区即中央区甲状腺周围",
+    "source_quote": "Ⅵ 中央区（甲状腺周围）。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M07-A1-002": {
+    "teacher_anchor": "1）甲状舌管囊肿 / 瘘：颈中线，随吞咽、伸舌上下移动。",
+    "keypoint_ref": [
+      "补充·源②·七-2-1）甲状舌管囊肿"
+    ],
+    "note": "颈中线且随吞咽伸舌移动，符合B项",
+    "source_quote": "颈中线，随吞咽、伸舌上下移动。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M07-A2-001": {
+    "teacher_anchor": "3）颈动脉体瘤\n- 位置：颈总动脉分叉（下颌角下方）；Fontaine 征：侧向活动好，上下移动受限；听诊有血管搏动杂音；DSA / 增强 CT：颈动脉分叉呈高脚杯样增宽分开。",
+    "keypoint_ref": [
+      "补充·源②·七-3-3）颈动脉体瘤"
+    ],
+    "note": "位置、Fontaine征、杂音、高脚杯四要素齐备",
+    "source_quote": "位置：颈总动脉分叉（下颌角下方）；Fontaine 征：侧向活动好，上下移动受限；听诊有血管搏动杂音；DSA / 增强 CT：颈动脉分叉呈高脚杯样增宽分开。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M07-A2-002": {
+    "teacher_anchor": "2）第二鳃裂瘘管：胸锁乳突肌前缘中下 1/3 瘘口，流出黏液，属于先天性发育畸形。",
+    "keypoint_ref": [
+      "补充·源②·七-2-2）第二鳃裂瘘管"
+    ],
+    "note": "瘘口位于中下1/3、流出黏液，逐字对应",
+    "source_quote": "第二鳃裂瘘管：胸锁乳突肌前缘中下 1/3 瘘口，流出黏液，属于先天性发育畸形。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M07-X-001": {
+    "teacher_anchor": "1）颈深筋膜：封套筋膜（浅层，包绕胸锁乳突肌、斜方肌）；内脏筋膜（中层，包绕气管食管甲状腺）；椎前筋膜（深层）。\n2）颈淋巴结：颈内静脉淋巴结链引流范围最广最重要",
+    "keypoint_ref": [
+      "补充·源②·七-1-1）颈深筋膜",
+      "补充·源②·七-1-2）颈淋巴结"
+    ],
+    "note": "三层筋膜加颈内静脉链，支持ABC排E",
+    "source_quote": "1）颈深筋膜：封套筋膜（浅层，包绕胸锁乳突肌、斜方肌）；内脏筋膜（中层，包绕气管食管甲状腺）；椎前筋膜（深层）。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M07-X-002": {
+    "teacher_anchor": "1）首选无创筛查：颈部彩色多普勒超声，看大小、边界、囊实性、血流；可超声引导细针穿刺。\n2）细针穿刺抽吸活检 FNAB：微创，判断颈部肿块病理性质首选（非开放切除活检）；注意：不能单凭血流直接断定良恶性。",
+    "keypoint_ref": [
+      "补充·源②·七-3-1）首选无创筛查",
+      "补充·源②·七-3-2）细针穿刺抽吸活检 FNAB"
+    ],
+    "note": "覆盖A/B/C/E，D另见七-1-3Virchow条",
+    "source_quote": "2）细针穿刺抽吸活检 FNAB：微创，判断颈部肿块病理性质首选（非开放切除活检）；注意：不能单凭血流直接断定良恶性。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  },
+  "batch041-M07-判断-001": {
+    "teacher_anchor": "4）颈部转移癌\n- 特点：中老年，无痛、质硬、固定、进行性增大。",
+    "keypoint_ref": [
+      "补充·源②·七-3-4）颈部转移癌"
+    ],
+    "note": "中老年无痛质硬固定进行性增大，逐字支持",
+    "source_quote": "特点：中老年，无痛、质硬、固定、进行性增大。",
+    "source_quote_status": "exact",
+    "anchor_status": "verified"
+  }
+}

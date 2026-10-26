@@ -1,0 +1,208 @@
+{
+  "release": "v0.4.0-pilot",
+  "date": "2026-10-26",
+  "kind": "engineering-governance-pilot-baseline",
+  "content_release": false,
+  "batch040": "APPROVED; pilot baseline only; R3 release gate BLOCKED",
+  "batch041": "IN_PROGRESS; GATE-FINAL BLOCKED; excluded from release tag",
+  "verification": {
+    "tests": "142 passed / 0 failed / 0 errors",
+    "policy": "PASS (3 profiles, v1.0.0)",
+    "baseline": "PASS",
+    "kc_registry": "PASS; 200/200 primary; 125/125 keypoints; content_only 19/85 recorded",
+    "scorecard": "3.63/5; ADVISORY_PASS; 13 warnings; 0 blocking",
+    "r0": "PASS",
+    "r2": "WARN (advisory, non-blocking)",
+    "r3": "BLOCKED (release gate, expected)",
+    "site_offline": "PASS"
+  },
+  "known_exceptions": [
+    "7 self-tests missing appendix answers (M02); documented, not fabricated",
+    "content_only 19/85 (22.4%); question-bank coverage gap",
+    "scorecard 3.63 < release 3.8; batch040 remains pilot/approved old product",
+    "batch041 WIP data snapshot is committed after the release tag, not part of it"
+  ],
+  "deployment": {
+    "channel": "GitHub Actions -> Cloudflare Pages",
+    "site_content_changed": false,
+    "rollback_base": "dd60730"
+  },
+  "artifacts": {
+    "docs/质量管控规范.md": {
+      "sha256": "803b00e466849f1d8ba37a0960c2df06d6c8f23d3232b0ee801d2abf15863069",
+      "bytes": 13621
+    },
+    "reports/release/20261026_v0.4.0-pilot/RELEASE.md": {
+      "sha256": "8aa3a35058cb2c9786dc1863a895c613ae4d0ce1a9a8b585f5b2efed275ab470",
+      "bytes": 3158
+    },
+    "scripts/quality_policy.json": {
+      "sha256": "abc555f8bddab9d833511056ca420c54bf6452973f2094fe14ccf78fe5b7f233",
+      "bytes": 2754
+    },
+    "scripts/quality_policy.py": {
+      "sha256": "42adeae9539dd3e2d7bab5bed9859cbbc30eca91c6510998ac7c2e190559843c",
+      "bytes": 3149
+    },
+    "scripts/quality_gate.py": {
+      "sha256": "02170f86795ce7fe5feba9ae0e4a19e634142e53c3059acc269b27f99475e639",
+      "bytes": 31011
+    },
+    "scripts/pilot_baseline.py": {
+      "sha256": "6a127e52ef174debe267c85309188832a0fc0c17ddab9df7739dbc84ac63bb1a",
+      "bytes": 16079
+    },
+    "scripts/kc_registry.py": {
+      "sha256": "ee4dd68f573add22fc3a6e7b69b6b5b1045e95187e5710f0e0666a87b75ff7dd",
+      "bytes": 44246
+    },
+    "scripts/review_scorecard.py": {
+      "sha256": "5bd308364bc0a71992e8cbf289aacd008ba116a9614910fee581f85a268e2494",
+      "bytes": 21965
+    },
+    "scripts/spaced_schedule.py": {
+      "sha256": "eba81a6ce7271dd6843e189a939ade0a1d74ed532fb3ca59fab0d65f270e2bf8",
+      "bytes": 19723
+    },
+    "scripts/render_pilot_review.py": {
+      "sha256": "8496b6c14e11843dfa4d7f83bd9a864dd41ebf8b8a84554fc3200f5634ffef1f",
+      "bytes": 8725
+    },
+    "scripts/check_learning_value.py": {
+      "sha256": "25d4bf7e984210c3a6e9b318f32ce9d64626e1be9902a9e26d6131b680c96e9c",
+      "bytes": 18045
+    },
+    "scripts/apply_learning_value.py": {
+      "sha256": "e57b5046870e209334eead62dbb80fb2197c578d5cd161b493174b96b40b26d0",
+      "bytes": 5582
+    },
+    "scripts/backfill_learning_value.py": {
+      "sha256": "4d72e8d222d69cb675ec32dedeb02ab72919860c7d9dd94de1ba5defff40ec73",
+      "bytes": 11930
+    },
+    "scripts/repair_anchor_quotes.py": {
+      "sha256": "e5eb6dc5d63d0ca570b4ced135e3b7db3102c03e32a57bc2b3095a03f534f5dc",
+      "bytes": 8677
+    },
+    "schemas/kc.schema.json": {
+      "sha256": "640a629daf7a49920d76615002485aa95a432d14190fbfa8ef38f62ec24e33d2",
+      "bytes": 2883
+    },
+    "schemas/review_score.schema.json": {
+      "sha256": "f2c275c3db860cbf350a068144e5c163404c4ced81c9eef484c6a665416507d3",
+      "bytes": 2319
+    },
+    "schemas/item_v2.draft.schema.json": {
+      "sha256": "ef5f5fd70c4615fd07b009e71c7b909a71b0f098934dc923f41cdbc7d4b45119",
+      "bytes": 3836
+    },
+    "tests/test_quality_policy.py": {
+      "sha256": "b52f087e87551559ef220025b3b237fcb2fcdd95b976096319ab7dad685d524c",
+      "bytes": 1565
+    },
+    "tests/test_quality_gate.py": {
+      "sha256": "82a8837ef76142b45030db3244dc1b22651ef7d8f37b53341993218d4fe291d0",
+      "bytes": 2796
+    },
+    "tests/test_review_scorecard.py": {
+      "sha256": "bbd0b8f6595929573d65126ef71f14eb573d95bf64a324a4921ddf282ad7ac43",
+      "bytes": 1485
+    },
+    "tests/test_spaced_schedule.py": {
+      "sha256": "1c6b78b55b60a5943811784cf0e8899d7cefb391c79e4a938767ac40d094ca26",
+      "bytes": 2941
+    },
+    "tests/test_kc_registry.py": {
+      "sha256": "3301fc1b3921e62570b9e826f14c44b512840c7280e1a0741a967ff70ced679e",
+      "bytes": 4786
+    },
+    "tests/test_pilot_baseline.py": {
+      "sha256": "11a25cdfe8db2b4dee0dfa6bdf83a8517bda75de334febe7b1267fb78dc9b858",
+      "bytes": 2779
+    },
+    "tests/test_learning_value.py": {
+      "sha256": "ac356c8efb6a7d264205bf17a76d10f1e9fc6e718e3ba2a57c5a7526c3329b94",
+      "bytes": 5717
+    },
+    "中间产物/batch040/pilot/review_items.jsonl": {
+      "sha256": "01bd22a6d830e6e47294de617500958e5dad258f86592ca8da5b4049ab0bb335",
+      "bytes": 186410
+    },
+    "中间产物/batch040/pilot/kc_registry.json": {
+      "sha256": "47f47edcdaaa37244cfbb711a5b8854b0b025f2d270968e201da0d5546785357",
+      "bytes": 59429
+    },
+    "中间产物/batch040/pilot/kc_question_map.jsonl": {
+      "sha256": "5a07c93d05b46b5160849079862cc81cd97d1d69001c9ebc24e9166bebfad967",
+      "bytes": 68550
+    },
+    "中间产物/batch040/pilot/kc_mapping_report.md": {
+      "sha256": "16ccc380a25127268504333ef90e5790003112d1a8d7011a8689ca3c6fca0f89",
+      "bytes": 7068
+    },
+    "中间产物/batch040/pilot/answer_reconciliation.md": {
+      "sha256": "06b26012329a98972dceb2689e74b8baad3fbc15a610b1ccc4119a1b449ef537",
+      "bytes": 3371
+    },
+    "中间产物/batch040/pilot/anki_ent_pilot.csv": {
+      "sha256": "1b1b4c85de24bc3ef082535351826dfaa180e26e08ea6d3d08d7df41328735a8",
+      "bytes": 92592
+    },
+    "中间产物/batch040/pilot/pilot_review.html": {
+      "sha256": "e18a8780094144c2c82e1834ef97355324a912b77117ee3e7731521be865a829",
+      "bytes": 193331
+    },
+    "中间产物/batch040/pilot/baseline_manifest.json": {
+      "sha256": "5087361e7bd06e3893a7fe9eba8c036c8e5818754f4df36d1223dc40c3069ba9",
+      "bytes": 4242
+    },
+    "中间产物/batch040/pilot/review_score_rubric.json": {
+      "sha256": "632f23a382a6bfd18086554c5a580c56ad2817a804b89a10c79612326243843c",
+      "bytes": 5550
+    },
+    "中间产物/batch040/pilot/schedule_state.json": {
+      "sha256": "985641549c97aa9b8ad107974f16d77fbdfa5f64dcb89aa66b008e15f9b9130c",
+      "bytes": 39486
+    },
+    "reports/validate/learning_value_v2_batch040_20261022.json": {
+      "sha256": "06f66c5a0d47f125673add1313bbb3d3d71f6bb55403feec19541ffc2d676560",
+      "bytes": 121049
+    },
+    "reports/validate/review_scorecard_ent_20261022.json": {
+      "sha256": "0b66d3e034aaf0efa57a8690ef6462483a730f9d18322d17cc33b96d9eee1e54",
+      "bytes": 14210
+    },
+    "reports/validate/review_scorecard_ent_20261022.md": {
+      "sha256": "1876a733c637773c1b6597eeb4b32b1b6555e15df68071bf62a7ba0383439ea5",
+      "bytes": 6374
+    },
+    "reports/gate/quality_gate_batch040_r0.json": {
+      "sha256": "8b2b3605f861bbd42c35887ae37bc43e98e080e0f5c7142ed9763cd6c5cca444",
+      "bytes": 3105
+    },
+    "reports/gate/quality_gate_batch040_r2.json": {
+      "sha256": "bb2adfa3cd8c88ba21463485870da66566f73062c7a66be5008789cfe4aa5fa4",
+      "bytes": 4596
+    },
+    "reports/gate/quality_gate_batch040_r3.json": {
+      "sha256": "f2e31442db391f0bc82e017c57549bacb0c6a39c0efc503681ae7f76a7a57e2a",
+      "bytes": 11798
+    },
+    "reports/research/medical-review-material-optimization-research-20261022/medical-review-material-optimization-research-20261022.html": {
+      "sha256": "03e5291df332e78c562c14aa15b5f2cc42b389f84fa807f6f5369f810b6e45e7",
+      "bytes": 146115
+    },
+    "reports/research/medical-review-material-optimization-research-20261022/试点项目实施计划.md": {
+      "sha256": "4357c218aa1305a5a6de6408153a5b8cacb24340bbe97cdc2099b11b132addeb",
+      "bytes": 59917
+    },
+    "reports/research/medical-review-material-optimization-research-20261022/项目现状基线.md": {
+      "sha256": "dbad629fface3af48ced2daf148e4f4466e0025058842213e37978c70c6cf40d",
+      "bytes": 16691
+    },
+    "reports/research/medical-review-material-optimization-research-20261022/专项研讨会纪要.md": {
+      "sha256": "a3fd40eb4ed1ec3eacee1fc02e96c01153f06633d383a8ac3cfec3cdcdff66c6",
+      "bytes": 11339
+    }
+  }
+}

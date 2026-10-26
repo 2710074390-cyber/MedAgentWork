@@ -1,0 +1,431 @@
+{
+  "merged_at": "2026-10-22T21:47:16",
+  "final_source": "最终产物\\batch040\\ALL_questions_FIXED.json",
+  "v2_source": "中间产物/batch040/learning_value_v2/items_v2_progress.json",
+  "out": "最终产物\\batch040\\ALL_questions_FIXED.json",
+  "requested": 20,
+  "merged": 20,
+  "missing": [],
+  "items": [
+    {
+      "id": "batch040-M02-A1-006",
+      "before": {
+        "explanation_len": 631,
+        "teacher_anchor": "耳廓化脓性软骨膜炎： 可由耳廓外伤、穿孔、手术或感染引起，常见病原菌包括铜绿假单胞菌和金黄色葡萄球菌。",
+        "keypoint_ref": [
+          "补充·源③模块正文·外耳疾病"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 633,
+        "teacher_anchor": "耳廓化脓性软骨膜炎： 可由耳廓外伤、穿孔、手术或感染引起，常见病原菌包括铜绿假单胞菌和金黄色葡萄球菌。",
+        "keypoint_ref": [
+          "补充·源③模块正文·外耳疾病"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "partial"
+      }
+    },
+    {
+      "id": "batch040-M02-A1-008",
+      "before": {
+        "explanation_len": 611,
+        "teacher_anchor": "分泌性中耳炎的典型临床表现、咽鼓管功能障碍及过敏性鼻炎的病因、鼓室负压与积液对传导性听力的影响、诊断检查方法及治疗原则：感冒后出现耳闷和传导性听力下降，鼓膜内陷，声导抗呈B型曲线，符合分泌性中耳炎诊断",
+        "keypoint_ref": [
+          "第106条"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 613,
+        "teacher_anchor": "分泌性中耳炎的典型临床表现、咽鼓管功能障碍及过敏性鼻炎的病因、鼓室负压与积液对传导性听力的影响、诊断检查方法及治疗原则：感冒后出现耳闷和传导性听力下降，鼓膜内陷，声导抗呈B型曲线，符合分泌性中耳炎诊断",
+        "keypoint_ref": [
+          "第106条"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M02-A2-001",
+      "before": {
+        "explanation_len": 643,
+        "teacher_anchor": "可由耳廓外伤、穿孔、手术或感染引起，常见病原菌包括铜绿假单胞菌和金黄色葡萄球菌。表现为耳廓红、肿、热、痛，严重时形成脓肿并破坏软骨，耳垂因不含软骨可相对不受累。",
+        "keypoint_ref": [
+          "补充·源③模块正文·外耳疾病"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 645,
+        "teacher_anchor": "可由耳廓外伤、穿孔、手术或感染引起，常见病原菌包括铜绿假单胞菌和金黄色葡萄球菌。表现为耳廓红、肿、热、痛，严重时形成脓肿并破坏软骨，耳垂因不含软骨可相对不受累。",
+        "keypoint_ref": [
+          "补充·源③模块正文·外耳疾病"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M02-A2-002",
+      "before": {
+        "explanation_len": 825,
+        "teacher_anchor": "表现为鼓膜表面出现含液性大疱，常伴明显耳痛，可与急性中耳炎同时存在或相互重叠。病原可能涉及病毒或细菌感染",
+        "keypoint_ref": [
+          "补充·源③模块正文·（五）中耳炎性疾病·1．大疱性鼓膜炎"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 827,
+        "teacher_anchor": "表现为鼓膜表面出现含液性大疱，常伴明显耳痛，可与急性中耳炎同时存在或相互重叠。病原可能涉及病毒或细菌感染",
+        "keypoint_ref": [
+          "补充·源③模块正文·（五）中耳炎性疾病·1．大疱性鼓膜炎"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M02-A3-003",
+      "before": {
+        "explanation_len": 728,
+        "teacher_anchor": "梅尼埃病的病因、梅尼埃病的主要病理改变、及临床表现、诊断标准，眩晕的特点，诊断主要依靠翔实的病史、全面的检查和仔细的鉴别诊断，甘油试验阳性有助于对本病的诊断。（P114）",
+        "keypoint_ref": [
+          "第26条"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 730,
+        "teacher_anchor": "梅尼埃病的病因、梅尼埃病的主要病理改变、及临床表现、诊断标准，眩晕的特点，诊断主要依靠翔实的病史、全面的检查和仔细的鉴别诊断，甘油试验阳性有助于对本病的诊断。（P114）",
+        "keypoint_ref": [
+          "第26条"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "missing",
+        "anchor_status": "partial"
+      }
+    },
+    {
+      "id": "batch040-M02-X-002",
+      "before": {
+        "explanation_len": 722,
+        "teacher_anchor": "2．良性阵发性位置性眩晕（BPPV）： 多由耳石碎屑进入半规管或附着于壶腹嵴引起，常为特发性，也可继发于头部外伤、前庭神经炎、梅尼埃病、突发性聋、中耳或内耳感染、耳部手术及长期卧床等。典型表现为头位相对于重力方向改变时突然发生短暂旋转性眩晕，通常不超过1分钟，可伴恶心、呕吐，但通常无耳鸣、耳闷及持续性听力下降。后半规管BPPV最常见（约占90%），外半规管次之，前半规管较少见。",
+        "keypoint_ref": [
+          "补充·源③·眩晕与前庭疾病·良性阵发性位置性眩晕"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 724,
+        "teacher_anchor": "2．良性阵发性位置性眩晕（BPPV）： 多由耳石碎屑进入半规管或附着于壶腹嵴引起，常为特发性，也可继发于头部外伤、前庭神经炎、梅尼埃病、突发性聋、中耳或内耳感染、耳部手术及长期卧床等。典型表现为头位相对于重力方向改变时突然发生短暂旋转性眩晕，通常不超过1分钟，可伴恶心、呕吐，但通常无耳鸣、耳闷及持续性听力下降。后半规管BPPV最常见（约占90%），外半规管次之，前半规管较少见。",
+        "keypoint_ref": [
+          "补充·源③·眩晕与前庭疾病·良性阵发性位置性眩晕"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M02-案例-004",
+      "before": {
+        "explanation_len": 762,
+        "teacher_anchor": "梅尼埃病的病因、梅尼埃病的主要病理改变、及临床表现、诊断标准，眩晕的特点，诊断主要依靠翔实的病史、全面的检查和仔细的鉴别诊断，甘油试验阳性有助于对本病的诊断。（P114）",
+        "keypoint_ref": [
+          "第26条"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 764,
+        "teacher_anchor": "梅尼埃病的病因、梅尼埃病的主要病理改变、及临床表现、诊断标准，眩晕的特点，诊断主要依靠翔实的病史、全面的检查和仔细的鉴别诊断，甘油试验阳性有助于对本病的诊断。（P114）",
+        "keypoint_ref": [
+          "第26条"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "mismatch",
+        "anchor_status": "partial"
+      }
+    },
+    {
+      "id": "batch040-M02-案例-008",
+      "before": {
+        "explanation_len": 837,
+        "teacher_anchor": "临床可见反复耳流脓、恶臭分泌物、听力下降，鼓膜松弛部或边缘性穿孔是重要线索。并发症包括听骨链破坏、面神经管受损、迷路瘘管、眩晕、迷路炎及颅内感染等。",
+        "keypoint_ref": [
+          "补充·源③·（五）中耳炎性疾病·5．中耳胆脂瘤"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 839,
+        "teacher_anchor": "临床可见反复耳流脓、恶臭分泌物、听力下降，鼓膜松弛部或边缘性穿孔是重要线索。并发症包括听骨链破坏、面神经管受损、迷路瘘管、眩晕、迷路炎及颅内感染等。",
+        "keypoint_ref": [
+          "补充·源③·（五）中耳炎性疾病·5．中耳胆脂瘤"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "partial"
+      }
+    },
+    {
+      "id": "batch040-M02-案例-009",
+      "before": {
+        "explanation_len": 712,
+        "teacher_anchor": "并发症：周围性面瘫（额纹消失、闭眼不全）、眩晕、颅内并发症；治疗核心：尽早手术清除病灶，探查面神经，不能单纯保守输液。",
+        "keypoint_ref": [
+          "补充·源②·二、耳科学·3. 中耳疾病·1）胆脂瘤型慢性中耳炎"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 714,
+        "teacher_anchor": "并发症：周围性面瘫（额纹消失、闭眼不全）、眩晕、颅内并发症；治疗核心：尽早手术清除病灶，探查面神经，不能单纯保守输液。",
+        "keypoint_ref": [
+          "补充·源②·二、耳科学·3. 中耳疾病·1）胆脂瘤型慢性中耳炎"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M03-案例-004",
+      "before": {
+        "explanation_len": 722,
+        "teacher_anchor": "鼻窦与眼眶关系密切，儿童急性鼻窦炎尤其需警惕感染扩散。眼睑红肿、眼球突出、眼球活动受限、视力下降或明显全身症状提示可能存在眶内并发症。眶内炎性水肿、眶蜂窝织炎和眶骨膜下脓肿需结合临床及增强CT或MRI鉴别，视力下降和眼球活动障碍属于重要危险信号。",
+        "keypoint_ref": [
+          "补充·源③模块正文·鼻源性眶内并发症"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 724,
+        "teacher_anchor": "鼻窦与眼眶关系密切，儿童急性鼻窦炎尤其需警惕感染扩散。眼睑红肿、眼球突出、眼球活动受限、视力下降或明显全身症状提示可能存在眶内并发症。眶内炎性水肿、眶蜂窝织炎和眶骨膜下脓肿需结合临床及增强CT或MRI鉴别，视力下降和眼球活动障碍属于重要危险信号。",
+        "keypoint_ref": [
+          "补充·源③模块正文·鼻源性眶内并发症"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M04-A1-003",
+      "before": {
+        "explanation_len": 830,
+        "teacher_anchor": "咽淋巴环是上呼吸道免疫防线，参与病原体识别与免疫应答;“上咽鼓，两侧腭，下舌旁”（上：咽扁桃体；咽鼓管旁：咽鼓管扁桃体；两侧：腭扁桃体；下：舌扁桃体；旁：咽侧索）（P251）",
+        "keypoint_ref": [
+          "第83条"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 832,
+        "teacher_anchor": "咽淋巴环是上呼吸道免疫防线，参与病原体识别与免疫应答;“上咽鼓，两侧腭，下舌旁”（上：咽扁桃体；咽鼓管旁：咽鼓管扁桃体；两侧：腭扁桃体；下：舌扁桃体；旁：咽侧索）（P251）",
+        "keypoint_ref": [
+          "第83条"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "partial"
+      }
+    },
+    {
+      "id": "batch040-M04-A3-002",
+      "before": {
+        "explanation_len": 765,
+        "teacher_anchor": "部位分类：梨状窝型（piriform recess type）；环状软骨后区型（postcricoid type）；喉咽后壁型（posterior wall type） 早期症状特点：喉咽肿瘤早期常无明显症状，容易被忽视，导致就诊时多为中晚期。",
+        "keypoint_ref": [
+          "第91条"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 767,
+        "teacher_anchor": "部位分类：梨状窝型（piriform recess type）；环状软骨后区型（postcricoid type）；喉咽后壁型（posterior wall type） 早期症状特点：喉咽肿瘤早期常无明显症状，容易被忽视，导致就诊时多为中晚期。",
+        "keypoint_ref": [
+          "第91条"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "mismatch",
+        "anchor_status": "partial"
+      }
+    },
+    {
+      "id": "batch040-M04-案例-003",
+      "before": {
+        "explanation_len": 866,
+        "teacher_anchor": "腭扁桃体位于扁桃体窝内，内侧面有隐窝，外侧与咽上缩肌及咽旁间隙相邻，急性扁桃体炎可引起局部疼痛，感染向周围扩展可形成扁桃体周围脓肿。",
+        "keypoint_ref": [
+          "补充·源③模块正文·咽科学"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 868,
+        "teacher_anchor": "腭扁桃体位于扁桃体窝内，内侧面有隐窝，外侧与咽上缩肌及咽旁间隙相邻，急性扁桃体炎可引起局部疼痛，感染向周围扩展可形成扁桃体周围脓肿。",
+        "keypoint_ref": [
+          "补充·源③模块正文·咽科学"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "mismatch",
+        "anchor_status": "mismatch"
+      }
+    },
+    {
+      "id": "batch040-M05-A2-003",
+      "before": {
+        "explanation_len": 978,
+        "teacher_anchor": "喉癌最常见的类型是声门型，约占60%；声门上癌早期症状不明显，或仅表现为咽异物感、吞咽不适、口臭、咽痛、咯血或呛咳等非特异症状；",
+        "keypoint_ref": [
+          "第103条"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 980,
+        "teacher_anchor": "喉癌最常见的类型是声门型，约占60%；声门上癌早期症状不明显，或仅表现为咽异物感、吞咽不适、口臭、咽痛、咯血或呛咳等非特异症状；",
+        "keypoint_ref": [
+          "第103条"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M05-案例-003",
+      "before": {
+        "explanation_len": 889,
+        "teacher_anchor": "重症急性会厌炎和III～IV度喉阻塞必须优先评估和保障气道；气管切开常在第2～4气管软骨环附近；气管切开术后需重视气道湿化和套管通畅。",
+        "keypoint_ref": [
+          "第121条"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 891,
+        "teacher_anchor": "重症急性会厌炎和III～IV度喉阻塞必须优先评估和保障气道；气管切开常在第2～4气管软骨环附近；气管切开术后需重视气道湿化和套管通畅。",
+        "keypoint_ref": [
+          "第121条"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M05-案例-007",
+      "before": {
+        "explanation_len": 756,
+        "teacher_anchor": "喉癌： 最常见的病理类型为鳞状细胞癌，最常见的类型是声门型，约占60%。",
+        "keypoint_ref": [
+          "补充·源③模块正文·喉科学"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 758,
+        "teacher_anchor": "喉癌： 最常见的病理类型为鳞状细胞癌，最常见的类型是声门型，约占60%。",
+        "keypoint_ref": [
+          "补充·源③模块正文·喉科学"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M05-案例-009",
+      "before": {
+        "explanation_len": 905,
+        "teacher_anchor": "确诊需要喉镜检查及组织病理，治疗根据肿瘤部位、分期及患者状况选择手术、放射治疗或综合治疗。",
+        "keypoint_ref": [
+          "补充·源③模块正文·喉科学"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 907,
+        "teacher_anchor": "确诊需要喉镜检查及组织病理，治疗根据肿瘤部位、分期及患者状况选择手术、放射治疗或综合治疗。",
+        "keypoint_ref": [
+          "补充·源③模块正文·喉科学"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "verified"
+      }
+    },
+    {
+      "id": "batch040-M06-案例-003",
+      "before": {
+        "explanation_len": 833,
+        "teacher_anchor": "高度怀疑时应由专科团队进一步评估，儿童气道异物通常在适当麻醉和气道保障下通过硬性支气管镜确诊并取出。",
+        "keypoint_ref": [
+          "补充·源③·气管、支气管与食管异物"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 835,
+        "teacher_anchor": "高度怀疑时应由专科团队进一步评估，儿童气道异物通常在适当麻醉和气道保障下通过硬性支气管镜确诊并取出。",
+        "keypoint_ref": [
+          "补充·源③·气管、支气管与食管异物"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "exact",
+        "anchor_status": "partial"
+      }
+    },
+    {
+      "id": "batch040-M06-案例-004",
+      "before": {
+        "explanation_len": 691,
+        "teacher_anchor": "气管支气管异物是儿童常见急症，尤其好发于3岁以下婴幼儿，常见异物包括花生、坚果、瓜子、果核和小玩具零件等。",
+        "keypoint_ref": [
+          "补充·源③模块六正文·气管支气管与食管异物"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 693,
+        "teacher_anchor": "气管支气管异物是儿童常见急症，尤其好发于3岁以下婴幼儿，常见异物包括花生、坚果、瓜子、果核和小玩具零件等。",
+        "keypoint_ref": [
+          "补充·源③模块六正文·气管支气管与食管异物"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "mismatch",
+        "anchor_status": "mismatch"
+      }
+    },
+    {
+      "id": "batch040-M07-A3-002",
+      "before": {
+        "explanation_len": 705,
+        "teacher_anchor": "甲状舌管囊肿： 由胚胎期甲状舌管退化不全引起，典型位于颈前正中线，常随吞咽及伸舌运动上下移动，经典手术为Sistrunk术。",
+        "keypoint_ref": [
+          "补充·源③模块正文·头颈外科与颈部肿块"
+        ],
+        "review_status": "approved"
+      },
+      "after": {
+        "explanation_len": 707,
+        "teacher_anchor": "甲状舌管囊肿： 由胚胎期甲状舌管退化不全引起，典型位于颈前正中线，常随吞咽及伸舌运动上下移动，经典手术为Sistrunk术。",
+        "keypoint_ref": [
+          "补充·源③模块正文·头颈外科与颈部肿块"
+        ],
+        "review_status": "approved",
+        "source_quote_status": "missing",
+        "anchor_status": "partial"
+      }
+    }
+  ]
+}

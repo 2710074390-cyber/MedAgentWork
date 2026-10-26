@@ -1,0 +1,2430 @@
+{
+  "schema_version": 1,
+  "subject": "ENT",
+  "batch": "batch040",
+  "generated_at": "2026-10-23T15:18:01",
+  "cards": [
+    {
+      "kc_id": "ENT:K-M01-001",
+      "display_id": "K-M01-001",
+      "subject": "ENT",
+      "module": "M01",
+      "title": "耳的三部分与内耳结构",
+      "keypoints": [
+        1,
+        111
+      ],
+      "question_ids": [
+        "batch040-M01-A1-002",
+        "batch040-M02-A1-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        16
+      ],
+      "review_anchor": "L149",
+      "content_chars": 886,
+      "blueprint_weight": 8,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M01-002",
+      "display_id": "K-M01-002",
+      "subject": "ENT",
+      "module": "M01",
+      "title": "空气传导与骨传导",
+      "keypoints": [
+        2
+      ],
+      "question_ids": [
+        "batch040-M01-A1-003",
+        "batch040-M01-A1-006"
+      ],
+      "secondary_question_ids": [
+        "batch040-M01-A1-001",
+        "batch040-M01-X-001",
+        "batch040-M01-X-002",
+        "batch040-M01-判断-001",
+        "batch040-M01-判断-004"
+      ],
+      "source_pages": [
+        37
+      ],
+      "review_anchor": "L173",
+      "content_chars": 805,
+      "blueprint_weight": 8,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M01-003",
+      "display_id": "K-M01-003",
+      "subject": "ENT",
+      "module": "M01",
+      "title": "耳蜗、基底膜与毛细胞的换能",
+      "keypoints": [
+        3,
+        6
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        40,
+        41
+      ],
+      "review_anchor": "L207",
+      "content_chars": 738,
+      "blueprint_weight": 8,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M01-004",
+      "display_id": "K-M01-004",
+      "subject": "ENT",
+      "module": "M01",
+      "title": "面神经的纤维成分与五个终末支",
+      "keypoints": [
+        4,
+        5
+      ],
+      "question_ids": [
+        "batch040-M02-X-005",
+        "batch040-M07-A1-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        34
+      ],
+      "review_anchor": "L232",
+      "content_chars": 765,
+      "blueprint_weight": 8,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M01-005",
+      "display_id": "K-M01-005",
+      "subject": "ENT",
+      "module": "M01",
+      "title": "周围性面瘫与中枢性面瘫",
+      "keypoints": [
+        113
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [
+        "batch040-M02-X-005"
+      ],
+      "source_pages": [],
+      "review_anchor": "L258",
+      "content_chars": 582,
+      "blueprint_weight": 8,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M01-006",
+      "display_id": "K-M01-006",
+      "subject": "ENT",
+      "module": "M01",
+      "title": "前庭系统与三个终末器",
+      "keypoints": [
+        7
+      ],
+      "question_ids": [
+        "batch040-M01-判断-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        43
+      ],
+      "review_anchor": "L282",
+      "content_chars": 529,
+      "blueprint_weight": 8,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M01-007",
+      "display_id": "K-M01-007",
+      "subject": "ENT",
+      "module": "M01",
+      "title": "耳部解剖生理的综合串联",
+      "keypoints": [
+        107
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        16
+      ],
+      "review_anchor": "L304",
+      "content_chars": 810,
+      "blueprint_weight": 8,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M01-008",
+      "display_id": "K-M01-008",
+      "subject": "ENT",
+      "module": "M01",
+      "title": "专科检查方法学（教材背景，不单列条号）",
+      "keypoints": [],
+      "question_ids": [
+        "batch040-M01-A1-001",
+        "batch040-M01-X-001",
+        "batch040-M01-X-002",
+        "batch040-M01-判断-001",
+        "batch040-M01-判断-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L327",
+      "content_chars": 2011,
+      "blueprint_weight": 8,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M01-检查器械-额镜"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-001",
+      "display_id": "K-M02-001",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "耳郭假性囊肿",
+      "keypoints": [
+        8
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        77
+      ],
+      "review_anchor": "L459",
+      "content_chars": 504,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-002",
+      "display_id": "K-M02-002",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "耳郭化脓性软骨膜炎",
+      "keypoints": [
+        9
+      ],
+      "question_ids": [
+        "batch040-M02-A1-006",
+        "batch040-M02-A2-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        78
+      ],
+      "review_anchor": "L481",
+      "content_chars": 597,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-003",
+      "display_id": "K-M02-003",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "外耳湿疹",
+      "keypoints": [
+        10
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        78
+      ],
+      "review_anchor": "L503",
+      "content_chars": 359,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-004",
+      "display_id": "K-M02-004",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "耵聍栓塞与外耳道胆脂瘤",
+      "keypoints": [
+        11,
+        14,
+        104
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        37,
+        79,
+        82
+      ],
+      "review_anchor": "L515",
+      "content_chars": 1256,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-005",
+      "display_id": "K-M02-005",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "外耳道异物",
+      "keypoints": [
+        12
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        79
+      ],
+      "review_anchor": "L542",
+      "content_chars": 358,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-006",
+      "display_id": "K-M02-006",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "外耳道真菌病",
+      "keypoints": [
+        13
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        81
+      ],
+      "review_anchor": "L554",
+      "content_chars": 350,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-007",
+      "display_id": "K-M02-007",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "外耳道胆脂瘤的临床要点",
+      "keypoints": [
+        14
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L568",
+      "content_chars": 348,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-008",
+      "display_id": "K-M02-008",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "大疱性鼓膜炎及其鉴别",
+      "keypoints": [
+        15,
+        16
+      ],
+      "question_ids": [
+        "batch040-M02-A2-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        83
+      ],
+      "review_anchor": "L580",
+      "content_chars": 656,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-009",
+      "display_id": "K-M02-009",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "分泌性中耳炎",
+      "keypoints": [
+        17,
+        106
+      ],
+      "question_ids": [
+        "batch040-M02-A1-008",
+        "batch040-M02-A2-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        83,
+        85
+      ],
+      "review_anchor": "L605",
+      "content_chars": 1184,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-010",
+      "display_id": "K-M02-010",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "婴幼儿易患化脓性中耳炎的原因",
+      "keypoints": [
+        18
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        86
+      ],
+      "review_anchor": "L631",
+      "content_chars": 402,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-011",
+      "display_id": "K-M02-011",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "急性化脓性中耳炎",
+      "keypoints": [
+        19
+      ],
+      "question_ids": [
+        "batch040-M02-A1-009"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        88
+      ],
+      "review_anchor": "L645",
+      "content_chars": 562,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-012",
+      "display_id": "K-M02-012",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "慢性化脓性中耳炎",
+      "keypoints": [
+        20
+      ],
+      "question_ids": [
+        "batch040-M02-A2-006"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        88
+      ],
+      "review_anchor": "L667",
+      "content_chars": 751,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-013",
+      "display_id": "K-M02-013",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "中耳胆脂瘤",
+      "keypoints": [
+        21
+      ],
+      "question_ids": [
+        "batch040-M02-A1-007",
+        "batch040-M02-A4-001",
+        "batch040-M02-A4-002",
+        "batch040-M02-X-004",
+        "batch040-M02-判断-005",
+        "batch040-M02-案例-006",
+        "batch040-M02-案例-007",
+        "batch040-M02-案例-008",
+        "batch040-M02-案例-009",
+        "batch040-M02-案例-010"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        91
+      ],
+      "review_anchor": "L690",
+      "content_chars": 828,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-014",
+      "display_id": "K-M02-014",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "中耳胆固醇肉芽肿",
+      "keypoints": [
+        22
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        93
+      ],
+      "review_anchor": "L729",
+      "content_chars": 670,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-015",
+      "display_id": "K-M02-015",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "音叉试验与三型听力损失",
+      "keypoints": [
+        112
+      ],
+      "question_ids": [
+        "batch040-M01-A1-004",
+        "batch040-M01-A1-005",
+        "batch040-M01-判断-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L752",
+      "content_chars": 541,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-016",
+      "display_id": "K-M02-016",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "眩晕的诊断框架",
+      "keypoints": [
+        23,
+        24,
+        25
+      ],
+      "question_ids": [
+        "batch040-M02-A1-010"
+      ],
+      "secondary_question_ids": [
+        "batch040-M02-X-002"
+      ],
+      "source_pages": [
+        110,
+        111,
+        112
+      ],
+      "review_anchor": "L773",
+      "content_chars": 865,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M02-眩晕-周围性与中枢性鉴别"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-017",
+      "display_id": "K-M02-017",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "梅尼埃病的病理与机制",
+      "keypoints": [
+        26,
+        28,
+        31
+      ],
+      "question_ids": [
+        "batch040-M02-A1-002",
+        "batch040-M02-A1-011",
+        "batch040-M02-A3-002",
+        "batch040-M02-A3-003",
+        "batch040-M02-X-001",
+        "batch040-M02-判断-001",
+        "batch040-M02-案例-002",
+        "batch040-M02-案例-003",
+        "batch040-M02-案例-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        112,
+        114
+      ],
+      "review_anchor": "L801",
+      "content_chars": 787,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M02-梅尼埃病-临床与病理"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-018",
+      "display_id": "K-M02-018",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "梅尼埃病的临床表现",
+      "keypoints": [
+        29,
+        30,
+        119
+      ],
+      "question_ids": [
+        "batch040-M02-A1-003",
+        "batch040-M02-A1-005",
+        "batch040-M02-A2-004",
+        "batch040-M02-A3-001",
+        "batch040-M02-X-003",
+        "batch040-M02-判断-003",
+        "batch040-M02-判断-004",
+        "batch040-M02-案例-001",
+        "batch040-M02-案例-005"
+      ],
+      "secondary_question_ids": [
+        "batch040-M02-X-001"
+      ],
+      "source_pages": [
+        112
+      ],
+      "review_anchor": "L827",
+      "content_chars": 926,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M02-眩晕-病例诊断"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-019",
+      "display_id": "K-M02-019",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "良性阵发性位置性眩晕",
+      "keypoints": [
+        27,
+        32,
+        33,
+        34
+      ],
+      "question_ids": [
+        "batch040-M02-A1-004",
+        "batch040-M02-A2-005",
+        "batch040-M02-X-002",
+        "batch040-M02-判断-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        116
+      ],
+      "review_anchor": "L854",
+      "content_chars": 1479,
+      "blueprint_weight": 28,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-020",
+      "display_id": "K-M02-020",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "突发性聋",
+      "keypoints": [
+        125
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L900",
+      "content_chars": 658,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M02-021",
+      "display_id": "K-M02-021",
+      "subject": "ENT",
+      "module": "M02",
+      "title": "外耳道炎与外耳道疖（教材背景，不单列条号）",
+      "keypoints": [],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L923",
+      "content_chars": 2074,
+      "blueprint_weight": 28,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-001",
+      "display_id": "K-M03-001",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻腔的三个\"门\"：鼻阈、梨状孔、后鼻孔",
+      "keypoints": [
+        38,
+        46,
+        47,
+        108
+      ],
+      "question_ids": [
+        "batch040-M03-A1-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        150,
+        152,
+        159
+      ],
+      "review_anchor": "L1045",
+      "content_chars": 1174,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-002",
+      "display_id": "K-M03-002",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻甲、鼻道与中鼻甲",
+      "keypoints": [
+        36,
+        43
+      ],
+      "question_ids": [
+        "batch040-M03-A1-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        158,
+        160
+      ],
+      "review_anchor": "L1073",
+      "content_chars": 604,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M03-鼻腔解剖-鼻甲"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-003",
+      "display_id": "K-M03-003",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻中隔、利特尔区与鼻出血",
+      "keypoints": [
+        42,
+        80,
+        114
+      ],
+      "question_ids": [
+        "batch040-M03-A1-003",
+        "batch040-M03-A2-003",
+        "batch040-M03-X-002"
+      ],
+      "secondary_question_ids": [
+        "batch040-M03-判断-005"
+      ],
+      "source_pages": [
+        156,
+        222
+      ],
+      "review_anchor": "L1098",
+      "content_chars": 1133,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-004",
+      "display_id": "K-M03-004",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻腔黏膜、黏液纤毛系统与鼻周期",
+      "keypoints": [
+        35,
+        48,
+        115
+      ],
+      "question_ids": [
+        "batch040-M03-A1-002",
+        "batch040-M03-A1-011",
+        "batch040-M03-判断-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        161,
+        162
+      ],
+      "review_anchor": "L1125",
+      "content_chars": 1043,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M03-鼻生理-鼻周期"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-005",
+      "display_id": "K-M03-005",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "嗅区黏膜",
+      "keypoints": [
+        49,
+        51,
+        52
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        162,
+        163
+      ],
+      "review_anchor": "L1160",
+      "content_chars": 609,
+      "blueprint_weight": 24,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-006",
+      "display_id": "K-M03-006",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻腔血供、静脉与感染扩散",
+      "keypoints": [
+        37,
+        39,
+        54
+      ],
+      "question_ids": [
+        "batch040-M03-A2-004",
+        "batch040-M03-判断-006"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        151,
+        157
+      ],
+      "review_anchor": "L1186",
+      "content_chars": 763,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-007",
+      "display_id": "K-M03-007",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻腔的神经支配",
+      "keypoints": [
+        40,
+        41,
+        44
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        158
+      ],
+      "review_anchor": "L1213",
+      "content_chars": 800,
+      "blueprint_weight": 24,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-008",
+      "display_id": "K-M03-008",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻窦开口与 OMC",
+      "keypoints": [
+        116
+      ],
+      "question_ids": [
+        "batch040-M03-判断-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L1240",
+      "content_chars": 486,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-009",
+      "display_id": "K-M03-009",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻窦与眼眶的解剖关系",
+      "keypoints": [
+        45,
+        50
+      ],
+      "question_ids": [
+        "batch040-M03-案例-001",
+        "batch040-M03-案例-002",
+        "batch040-M03-案例-003",
+        "batch040-M03-案例-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        157,
+        159
+      ],
+      "review_anchor": "L1264",
+      "content_chars": 719,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-010",
+      "display_id": "K-M03-010",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻肺反射",
+      "keypoints": [
+        53
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        164
+      ],
+      "review_anchor": "L1289",
+      "content_chars": 427,
+      "blueprint_weight": 24,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-011",
+      "display_id": "K-M03-011",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻窦的解剖特点",
+      "keypoints": [
+        55,
+        61
+      ],
+      "question_ids": [
+        "batch040-M03-A1-005"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        189,
+        191
+      ],
+      "review_anchor": "L1303",
+      "content_chars": 481,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-012",
+      "display_id": "K-M03-012",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "急性鼻炎",
+      "keypoints": [
+        56,
+        58,
+        59,
+        60
+      ],
+      "question_ids": [
+        "batch040-M03-A1-006",
+        "batch040-M03-X-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        189
+      ],
+      "review_anchor": "L1319",
+      "content_chars": 780,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-013",
+      "display_id": "K-M03-013",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "急性鼻窦炎",
+      "keypoints": [
+        57,
+        62,
+        63,
+        64,
+        65,
+        66,
+        68
+      ],
+      "question_ids": [
+        "batch040-M03-A1-009",
+        "batch040-M03-A2-001",
+        "batch040-M03-X-001",
+        "batch040-M03-案例-005"
+      ],
+      "secondary_question_ids": [
+        "batch040-M03-案例-003",
+        "batch040-M03-案例-004"
+      ],
+      "source_pages": [
+        189,
+        191
+      ],
+      "review_anchor": "L1348",
+      "content_chars": 1030,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M03-鼻窦炎-急性鼻窦炎诊断"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-014",
+      "display_id": "K-M03-014",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "诊断性上颌窦穿刺冲洗",
+      "keypoints": [
+        67
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        201
+      ],
+      "review_anchor": "L1383",
+      "content_chars": 280,
+      "blueprint_weight": 24,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-015",
+      "display_id": "K-M03-015",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "变应性鼻炎与色甘酸钠",
+      "keypoints": [
+        69,
+        70,
+        71
+      ],
+      "question_ids": [
+        "batch040-M03-A1-008",
+        "batch040-M03-A1-010",
+        "batch040-M03-A4-001",
+        "batch040-M03-A4-002",
+        "batch040-M03-A4-003",
+        "batch040-M03-X-005"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        196
+      ],
+      "review_anchor": "L1395",
+      "content_chars": 1014,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-016",
+      "display_id": "K-M03-016",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "血管运动性鼻炎",
+      "keypoints": [
+        72
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        196
+      ],
+      "review_anchor": "L1423",
+      "content_chars": 410,
+      "blueprint_weight": 24,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-017",
+      "display_id": "K-M03-017",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "萎缩性鼻炎",
+      "keypoints": [
+        73,
+        74
+      ],
+      "question_ids": [
+        "batch040-M03-A2-002",
+        "batch040-M03-X-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        199
+      ],
+      "review_anchor": "L1437",
+      "content_chars": 948,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-018",
+      "display_id": "K-M03-018",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "慢性鼻窦炎",
+      "keypoints": [
+        75,
+        79,
+        117
+      ],
+      "question_ids": [
+        "batch040-M03-A1-007",
+        "batch040-M03-A3-001",
+        "batch040-M03-A3-002",
+        "batch040-M03-判断-002",
+        "batch040-M03-判断-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        201,
+        204
+      ],
+      "review_anchor": "L1462",
+      "content_chars": 1020,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-019",
+      "display_id": "K-M03-019",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻息肉与生物制剂",
+      "keypoints": [
+        76,
+        78
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [
+        201,
+        204
+      ],
+      "review_anchor": "L1489",
+      "content_chars": 562,
+      "blueprint_weight": 24,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-020",
+      "display_id": "K-M03-020",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "功能性鼻内镜鼻窦手术（FESS）",
+      "keypoints": [
+        77
+      ],
+      "question_ids": [
+        "batch040-M03-A3-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        204
+      ],
+      "review_anchor": "L1505",
+      "content_chars": 482,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M03-021",
+      "display_id": "K-M03-021",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "鼻疖",
+      "keypoints": [
+        114
+      ],
+      "question_ids": [
+        "batch040-M03-判断-005"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L1519",
+      "content_chars": 2154,
+      "blueprint_weight": 24,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-001",
+      "display_id": "K-M04-001",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "咽的分部、喉咽与梨状窝",
+      "keypoints": [
+        81,
+        109
+      ],
+      "question_ids": [
+        "batch040-M04-A1-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        248
+      ],
+      "review_anchor": "L1643",
+      "content_chars": 1122,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-002",
+      "display_id": "K-M04-002",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "咽肌与吞咽",
+      "keypoints": [
+        81,
+        109
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [
+        "batch040-M04-A1-001"
+      ],
+      "source_pages": [
+        248
+      ],
+      "review_anchor": "L1667",
+      "content_chars": 530,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-003",
+      "display_id": "K-M04-003",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "咽旁间隙的四大神经",
+      "keypoints": [
+        82
+      ],
+      "question_ids": [
+        "batch040-M04-A1-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        251
+      ],
+      "review_anchor": "L1689",
+      "content_chars": 549,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-004",
+      "display_id": "K-M04-004",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "咽淋巴环",
+      "keypoints": [
+        83
+      ],
+      "question_ids": [
+        "batch040-M04-A1-003",
+        "batch040-M04-判断-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        251
+      ],
+      "review_anchor": "L1712",
+      "content_chars": 699,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-005",
+      "display_id": "K-M04-005",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "咽的生理功能",
+      "keypoints": [
+        84
+      ],
+      "question_ids": [
+        "batch040-M04-X-001",
+        "batch040-M04-判断-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        253
+      ],
+      "review_anchor": "L1745",
+      "content_chars": 345,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-006",
+      "display_id": "K-M04-006",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "急性扁桃体炎",
+      "keypoints": [
+        85
+      ],
+      "question_ids": [
+        "batch040-M04-A1-004",
+        "batch040-M04-A2-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        260
+      ],
+      "review_anchor": "L1759",
+      "content_chars": 603,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-007",
+      "display_id": "K-M04-007",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "慢性扁桃体炎",
+      "keypoints": [
+        86
+      ],
+      "question_ids": [
+        "batch040-M04-X-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        262
+      ],
+      "review_anchor": "L1782",
+      "content_chars": 420,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-008",
+      "display_id": "K-M04-008",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "腺样体肥大",
+      "keypoints": [
+        87
+      ],
+      "question_ids": [
+        "batch040-M04-A1-005",
+        "batch040-M04-A1-006",
+        "batch040-M04-A4-001",
+        "batch040-M04-A4-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        266
+      ],
+      "review_anchor": "L1796",
+      "content_chars": 1063,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-009",
+      "display_id": "K-M04-009",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "急性腺样体炎",
+      "keypoints": [
+        88
+      ],
+      "question_ids": [
+        "batch040-M04-A2-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        266
+      ],
+      "review_anchor": "L1828",
+      "content_chars": 332,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M04-腺样体-急性腺样体炎"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-010",
+      "display_id": "K-M04-010",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "鼻咽纤维血管瘤",
+      "keypoints": [
+        89
+      ],
+      "question_ids": [
+        "batch040-M04-A1-007",
+        "batch040-M04-A2-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        277
+      ],
+      "review_anchor": "L1842",
+      "content_chars": 748,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-011",
+      "display_id": "K-M04-011",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "扁桃体恶性肿瘤",
+      "keypoints": [
+        90
+      ],
+      "question_ids": [
+        "batch040-M04-判断-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        281
+      ],
+      "review_anchor": "L1865",
+      "content_chars": 406,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-012",
+      "display_id": "K-M04-012",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "喉咽恶性肿瘤",
+      "keypoints": [
+        91
+      ],
+      "question_ids": [
+        "batch040-M04-A1-008",
+        "batch040-M04-A3-001",
+        "batch040-M04-A3-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        282
+      ],
+      "review_anchor": "L1879",
+      "content_chars": 668,
+      "blueprint_weight": 18,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M04-013",
+      "display_id": "K-M04-013",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "鼻咽癌",
+      "keypoints": [
+        118
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L1901",
+      "content_chars": 2356,
+      "blueprint_weight": 18,
+      "status": "content_only",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-001",
+      "display_id": "K-M05-001",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "喉的软骨支架",
+      "keypoints": [
+        92,
+        120
+      ],
+      "question_ids": [
+        "batch040-M05-A1-001",
+        "batch040-M05-X-001"
+      ],
+      "secondary_question_ids": [
+        "batch040-M05-A1-005",
+        "batch040-M05-A2-004"
+      ],
+      "source_pages": [
+        290
+      ],
+      "review_anchor": "L2047",
+      "content_chars": 628,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M05-喉解剖-环状软骨"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-002",
+      "display_id": "K-M05-002",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "喉腔分部与声门区",
+      "keypoints": [
+        92,
+        109
+      ],
+      "question_ids": [
+        "batch040-M05-A1-002"
+      ],
+      "secondary_question_ids": [
+        "batch040-M05-A1-001",
+        "batch040-M05-A1-005",
+        "batch040-M05-X-001"
+      ],
+      "source_pages": [
+        290
+      ],
+      "review_anchor": "L2072",
+      "content_chars": 797,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-003",
+      "display_id": "K-M05-003",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "喉内肌的功能分组",
+      "keypoints": [
+        93
+      ],
+      "question_ids": [
+        "batch040-M05-A1-003"
+      ],
+      "secondary_question_ids": [
+        "batch040-M05-A1-006"
+      ],
+      "source_pages": [
+        290
+      ],
+      "review_anchor": "L2094",
+      "content_chars": 673,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-004",
+      "display_id": "K-M05-004",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "会厌的解剖与临床",
+      "keypoints": [
+        93
+      ],
+      "question_ids": [],
+      "secondary_question_ids": [
+        "batch040-M05-A1-003",
+        "batch040-M05-A1-006"
+      ],
+      "source_pages": [
+        290
+      ],
+      "review_anchor": "L2125",
+      "content_chars": 329,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-005",
+      "display_id": "K-M05-005",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "喉的淋巴分区",
+      "keypoints": [
+        94
+      ],
+      "question_ids": [
+        "batch040-M05-A1-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        295
+      ],
+      "review_anchor": "L2139",
+      "content_chars": 490,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-006",
+      "display_id": "K-M05-006",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "喉的神经与血供",
+      "keypoints": [
+        109
+      ],
+      "question_ids": [
+        "batch040-M05-A1-005"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        290
+      ],
+      "review_anchor": "L2161",
+      "content_chars": 558,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-007",
+      "display_id": "K-M05-007",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "喉阻塞的分度",
+      "keypoints": [
+        95,
+        110
+      ],
+      "question_ids": [
+        "batch040-M05-A4-003",
+        "batch040-M05-判断-002",
+        "batch040-M05-案例-002"
+      ],
+      "secondary_question_ids": [
+        "batch040-M05-A4-001",
+        "batch040-M05-A4-002",
+        "batch040-M05-X-003"
+      ],
+      "source_pages": [
+        339,
+        340
+      ],
+      "review_anchor": "L2183",
+      "content_chars": 1502,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-008",
+      "display_id": "K-M05-008",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "气管切开术",
+      "keypoints": [
+        110,
+        121
+      ],
+      "question_ids": [
+        "batch040-M05-A4-002",
+        "batch040-M05-X-003",
+        "batch040-M05-案例-003",
+        "batch040-M05-案例-004"
+      ],
+      "secondary_question_ids": [
+        "batch040-M05-A4-003",
+        "batch040-M05-判断-002",
+        "batch040-M05-案例-002"
+      ],
+      "source_pages": [
+        340
+      ],
+      "review_anchor": "L2218",
+      "content_chars": 1020,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-009",
+      "display_id": "K-M05-009",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "急性会厌炎",
+      "keypoints": [
+        96
+      ],
+      "question_ids": [
+        "batch040-M05-A1-006",
+        "batch040-M05-A2-001",
+        "batch040-M05-X-002",
+        "batch040-M05-案例-001",
+        "batch040-M05-案例-005"
+      ],
+      "secondary_question_ids": [
+        "batch040-M05-案例-004"
+      ],
+      "source_pages": [
+        309
+      ],
+      "review_anchor": "L2252",
+      "content_chars": 683,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M05-急性会厌炎-诊断"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-010",
+      "display_id": "K-M05-010",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "小儿急性喉炎",
+      "keypoints": [
+        97,
+        98
+      ],
+      "question_ids": [
+        "batch040-M05-A2-002",
+        "batch040-M05-A4-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        311
+      ],
+      "review_anchor": "L2276",
+      "content_chars": 811,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-011",
+      "display_id": "K-M05-011",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "慢性喉炎",
+      "keypoints": [
+        99
+      ],
+      "question_ids": [
+        "batch040-M05-A3-001",
+        "batch040-M05-A3-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        314
+      ],
+      "review_anchor": "L2302",
+      "content_chars": 493,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-012",
+      "display_id": "K-M05-012",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "声带小结",
+      "keypoints": [
+        100,
+        120
+      ],
+      "question_ids": [
+        "batch040-M05-A2-004"
+      ],
+      "secondary_question_ids": [
+        "batch040-M05-A1-001",
+        "batch040-M05-X-001"
+      ],
+      "source_pages": [
+        315
+      ],
+      "review_anchor": "L2316",
+      "content_chars": 765,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-013",
+      "display_id": "K-M05-013",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "喉任克间隙",
+      "keypoints": [
+        101
+      ],
+      "question_ids": [
+        "batch040-M05-判断-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        290
+      ],
+      "review_anchor": "L2339",
+      "content_chars": 315,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-014",
+      "display_id": "K-M05-014",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "环杓关节炎与环甲关节炎",
+      "keypoints": [
+        102
+      ],
+      "question_ids": [
+        "batch040-M05-判断-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        317
+      ],
+      "review_anchor": "L2353",
+      "content_chars": 795,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M05-015",
+      "display_id": "K-M05-015",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "喉癌",
+      "keypoints": [
+        103
+      ],
+      "question_ids": [
+        "batch040-M05-A2-003",
+        "batch040-M05-案例-006",
+        "batch040-M05-案例-007",
+        "batch040-M05-案例-008",
+        "batch040-M05-案例-009",
+        "batch040-M05-案例-010"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        325
+      ],
+      "review_anchor": "L2375",
+      "content_chars": 2337,
+      "blueprint_weight": 14,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M06-001",
+      "display_id": "K-M06-001",
+      "subject": "ENT",
+      "module": "M06",
+      "title": "气管支气管异物",
+      "keypoints": [
+        122
+      ],
+      "question_ids": [
+        "batch040-M06-A1-001",
+        "batch040-M06-A1-002",
+        "batch040-M06-A1-003",
+        "batch040-M06-A1-004",
+        "batch040-M06-A2-001",
+        "batch040-M06-A2-003",
+        "batch040-M06-A3-001",
+        "batch040-M06-A4-001",
+        "batch040-M06-X-001",
+        "batch040-M06-判断-001",
+        "batch040-M06-案例-001",
+        "batch040-M06-案例-002",
+        "batch040-M06-案例-003",
+        "batch040-M06-案例-004",
+        "batch040-M06-案例-005"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L2503",
+      "content_chars": 807,
+      "blueprint_weight": 5,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M06-气管支气管异物-年龄分布"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M06-002",
+      "display_id": "K-M06-002",
+      "subject": "ENT",
+      "module": "M06",
+      "title": "食管异物与三处生理性狭窄",
+      "keypoints": [
+        123
+      ],
+      "question_ids": [
+        "batch040-M06-A2-002",
+        "batch040-M06-X-002",
+        "batch040-M06-判断-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L2539",
+      "content_chars": 638,
+      "blueprint_weight": 5,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M06-003",
+      "display_id": "K-M06-003",
+      "subject": "ENT",
+      "module": "M06",
+      "title": "异物急症的通用处理原则（教材背景，不单列条号）",
+      "keypoints": [],
+      "question_ids": [],
+      "secondary_question_ids": [
+        "batch040-M06-A1-001",
+        "batch040-M06-A2-001",
+        "batch040-M06-A2-003",
+        "batch040-M06-判断-001",
+        "batch040-M06-案例-001",
+        "batch040-M06-案例-002",
+        "batch040-M06-案例-003",
+        "batch040-M06-案例-004",
+        "batch040-M06-案例-005"
+      ],
+      "source_pages": [],
+      "review_anchor": "L2563",
+      "content_chars": 1475,
+      "blueprint_weight": 5,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M07-001",
+      "display_id": "K-M07-001",
+      "subject": "ENT",
+      "module": "M07",
+      "title": "颈部肿块的诊断路径与鼻咽癌颈部转移",
+      "keypoints": [
+        105,
+        124
+      ],
+      "question_ids": [
+        "batch040-M07-A1-004",
+        "batch040-M07-A2-003",
+        "batch040-M07-A2-005",
+        "batch040-M07-X-003",
+        "batch040-M07-X-006",
+        "batch040-M07-判断-003",
+        "batch040-M07-案例-001",
+        "batch040-M07-案例-002",
+        "batch040-M07-案例-004",
+        "batch040-M07-案例-005"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L2667",
+      "content_chars": 1399,
+      "blueprint_weight": 3,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M07-002",
+      "display_id": "K-M07-002",
+      "subject": "ENT",
+      "module": "M07",
+      "title": "颈部淋巴结分区与转移规律（教材背景，不列条号）",
+      "keypoints": [],
+      "question_ids": [
+        "batch040-M07-A1-003",
+        "batch040-M07-X-002",
+        "batch040-M07-判断-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L2693",
+      "content_chars": 550,
+      "blueprint_weight": 3,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M07-003",
+      "display_id": "K-M07-003",
+      "subject": "ENT",
+      "module": "M07",
+      "title": "颈深筋膜三层（教材背景，不列条号）",
+      "keypoints": [],
+      "question_ids": [
+        "batch040-M07-A1-001",
+        "batch040-M07-X-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "L2716",
+      "content_chars": 348,
+      "blueprint_weight": 3,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [
+        "ENT-M07-颈解剖-颈深筋膜"
+      ],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:K-M07-004",
+      "display_id": "K-M07-004",
+      "subject": "ENT",
+      "module": "M07",
+      "title": "先天性颈部肿块三病",
+      "keypoints": [
+        124
+      ],
+      "question_ids": [
+        "batch040-M07-A1-005",
+        "batch040-M07-A1-006",
+        "batch040-M07-A2-001",
+        "batch040-M07-A2-002",
+        "batch040-M07-A2-004",
+        "batch040-M07-A3-001",
+        "batch040-M07-A3-002",
+        "batch040-M07-A4-001",
+        "batch040-M07-A4-002",
+        "batch040-M07-A4-003",
+        "batch040-M07-X-004",
+        "batch040-M07-X-005",
+        "batch040-M07-判断-002",
+        "batch040-M07-案例-003"
+      ],
+      "secondary_question_ids": [
+        "batch040-M07-A1-004",
+        "batch040-M07-A2-003",
+        "batch040-M07-X-003",
+        "batch040-M07-X-006",
+        "batch040-M07-判断-003",
+        "batch040-M07-案例-001",
+        "batch040-M07-案例-004",
+        "batch040-M07-案例-005"
+      ],
+      "source_pages": [],
+      "review_anchor": "L2736",
+      "content_chars": 12534,
+      "blueprint_weight": 3,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    }
+  ],
+  "provisional": [
+    {
+      "kc_id": "ENT:SUPP-M03-慢性肥厚性鼻炎",
+      "display_id": "SUPP-M03-慢性肥厚性鼻炎",
+      "subject": "ENT",
+      "module": "M03",
+      "title": "慢性肥厚性鼻炎",
+      "keypoints": [],
+      "question_ids": [
+        "batch040-M03-A2-005"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "",
+      "content_chars": 0,
+      "blueprint_weight": 24,
+      "status": "question_only",
+      "needs_content": true,
+      "aliases": [],
+      "notes": "题库覆盖但复习资料暂无独立卡；列入下一批补卡清单",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:SUPP-M04-扁桃体周围脓肿",
+      "display_id": "SUPP-M04-扁桃体周围脓肿",
+      "subject": "ENT",
+      "module": "M04",
+      "title": "扁桃体周围脓肿",
+      "keypoints": [],
+      "question_ids": [
+        "batch040-M04-A2-002",
+        "batch040-M04-X-003",
+        "batch040-M04-判断-003",
+        "batch040-M04-案例-001",
+        "batch040-M04-案例-002",
+        "batch040-M04-案例-003",
+        "batch040-M04-案例-004",
+        "batch040-M04-案例-005"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "",
+      "content_chars": 0,
+      "blueprint_weight": 18,
+      "status": "question_only",
+      "needs_content": true,
+      "aliases": [],
+      "notes": "题库覆盖但复习资料暂无独立卡；列入下一批补卡清单",
+      "version": 1
+    },
+    {
+      "kc_id": "ENT:SUPP-M05-喉专科检查",
+      "display_id": "SUPP-M05-喉专科检查",
+      "subject": "ENT",
+      "module": "M05",
+      "title": "喉",
+      "keypoints": [],
+      "question_ids": [
+        "batch040-M05-A1-007"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [],
+      "review_anchor": "",
+      "content_chars": 0,
+      "blueprint_weight": 14,
+      "status": "question_only",
+      "needs_content": true,
+      "aliases": [],
+      "notes": "题库覆盖但复习资料暂无独立卡；列入下一批补卡清单",
+      "version": 1
+    }
+  ],
+  "metadata": {
+    "review_path": "复习资料\\耳鼻咽喉头颈外科学教师重点版\\耳鼻咽喉头颈外科学教师重点版_主复习资料.md",
+    "questions_path": "最终产物\\batch040\\ALL_questions_FIXED.json",
+    "keypoints_path": "输入素材\\大四上\\耳鼻咽喉头颈外科学\\耳鼻咽喉头颈外科学_教师重点_锚定清单_20261019.md",
+    "rules_path": "中间产物\\batch040\\pilot\\kc_mapping_rules.json",
+    "learning_value_path": "中间产物\\batch040\\learning_value_v2\\items_v2_progress.json",
+    "anchor_overrides_path": "中间产物\\batch040\\learning_value_v2\\anchor_overrides.json",
+    "question_overrides_path": "中间产物\\batch040\\pilot\\kc_question_overrides.json",
+    "card_count": 85,
+    "provisional_count": 3,
+    "question_count": 200,
+    "keypoint_items": 125,
+    "blueprint_weights": {
+      "M01": 8,
+      "M02": 28,
+      "M03": 24,
+      "M04": 18,
+      "M05": 14,
+      "M06": 5,
+      "M07": 3
+    }
+  }
+}

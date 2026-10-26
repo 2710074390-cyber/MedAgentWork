@@ -1,0 +1,444 @@
+[
+  {
+    "id": "batch040-M01-A1-003",
+    "module": "M01",
+    "module_name": "总论与专科检查",
+    "topic": "骨传导的特点",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "group": null,
+    "group_stem": null,
+    "case_id": null,
+    "stem": "声音传入内耳有空气传导和骨传导两种途径，其中骨传导的特点是",
+    "options": [
+      {
+        "label": "A",
+        "text": "需要外耳和中耳结构完整",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "不依赖外耳和中耳的结构",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "是正常听觉的主要途径",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "听阈优于空气传导",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "经听骨链传导至卵圆窗",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "explanation": "骨传导是声波经颅骨振动传入内耳，不依赖外耳和中耳的结构，是临床上判断传导性与感音神经性耳聋的重要依据；需要外耳中耳完整、听阈优于骨传导、经听骨链传导至卵圆窗均属空气传导的特点（教材P37）。",
+    "source_page": "教材P37",
+    "keypoint_ref": [
+      "第2条"
+    ],
+    "teacher_anchor": "骨传导（Bone Conduction, BC）：声波或振动→颅骨振动→内耳外淋巴及基底膜振动→毛细胞受刺激→听神经→大脑听觉中枢。特点：不依赖外耳和中耳的结构。是临床上用于判断传导性耳聋与感音神经性耳聋的重要依据（如Rinne试验、Weber试验）（P37）。",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "anchor_override_note": "原锚点只有空气/骨传导的总起句，未包含骨传导‘不依赖外耳中耳’的关键特点；补为源①第2条完整段落",
+    "learning_value": {
+      "correct_rationale": "骨传导是声波振动直接经颅骨传至内耳，引起外淋巴及基底膜振动而兴奋毛细胞，整个路径绕过了外耳道、鼓膜与听骨链，因此不依赖外耳和中耳结构的完整性。正因如此，当外耳道堵塞或中耳病变使气导受阻时，骨导仍可保留，二者的差值成为Rinne试验、Weber试验鉴别传导性聋与感音神经性聋的基础。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "需要外耳和中耳结构完整是空气传导的前提，气导依次经耳廓、外耳道、鼓膜、听骨链传入内耳，故A描述的是气导而不是骨传导。",
+          "misconception_id": "MC-ENT-01",
+          "misconception": "学生把两条传导途径的解剖前提混在一起，认为只要最终到达内耳就都需要外耳和中耳完好。"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "骨传导由声波直接振动颅骨，经颅骨将振动传至内耳淋巴液与基底膜，不经过外耳道、鼓膜和听骨链，故不依赖外耳和中耳的结构。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "正常听觉以空气传导为主，骨传导只占很小一部分，说“主要途径”是把气导的特点错安在骨传导上。",
+          "misconception_id": "MC-ENT-02",
+          "misconception": "学生知道骨传导也能引起听觉，便把“能听到”误等同于“是正常听觉的主要途径”。"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "生理状态下骨导听阈并不优于气导，气导借助鼓膜与听骨链的增压作用听阈更低；只有气导受阻时骨导才相对显得更好。",
+          "misconception_id": "MC-ENT-03",
+          "misconception": "学生把传导性聋时“骨导相对保留”误记成骨导本身比气导更灵敏，从而认为骨导听阈更优。"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "经听骨链传导至卵圆窗正是空气传导的经典路径，骨传导不经听骨链，故E描述的是气导。",
+          "misconception_id": "MC-ENT-04",
+          "misconception": "学生只记住“最终都在卵圆窗/内耳起作用”，忽略了经听骨链这一段属于气导通路。"
+        }
+      ],
+      "key_takeaway": "记住“气导靠外耳中耳、骨导靠颅骨”：凡涉及外耳道、鼓膜、听骨链完整性的描述都归空气传导；出现“不依赖外耳和中耳”即是骨传导，二者听阈差（气骨导差）是鉴别传导性与感音神经性聋的关键。",
+      "source_quote": "特点：不依赖外耳和中耳的结构。",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "quality_flags": [],
+      "review_status": "pilot_unreviewed"
+    },
+    "legacy_explanation": "骨传导是声波经颅骨振动传入内耳，不依赖外耳和中耳的结构，是临床上判断传导性与感音神经性耳聋的重要依据；需要外耳中耳完整、听阈优于骨传导、经听骨链传导至卵圆窗均属空气传导的特点（教材P37）。",
+    "review_status": "pilot_unreviewed"
+  },
+  {
+    "id": "batch040-M01-判断-001",
+    "module": "M01",
+    "module_name": "总论与专科检查",
+    "topic": "主观与客观听力检查",
+    "type": "判断",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "group": null,
+    "group_stem": null,
+    "case_id": null,
+    "stem": "纯音听阈测试属于主观听力检查方法",
+    "options": [
+      {
+        "label": "A",
+        "text": "该表述正确",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "该表述错误",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "explanation": "临床听力检查分为主观测听法与客观测听法，纯音听阈测试需受检者主观判断并通过反馈配合完成，属主观测听；声导抗、耳声发射及听性脑干反应无须受检者配合，属客观测听（教材P49）。",
+    "source_page": "教材P49",
+    "keypoint_ref": [
+      "补充·源②·4·听力测试分类"
+    ],
+    "teacher_anchor": "主观测听：纯音听阈测听（需要患者配合反馈）。客观听力测试（无需患者主观反应）：声导抗、听性脑干反应 ABR、耳声发射 OAE。",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false
+    },
+    "anchor_override_note": "原锚点为林纳/韦伯试验，与本题‘纯音测听属主观检查’无关；改用源②听力测试分类",
+    "learning_value": {
+      "correct_rationale": "纯音听阈测试要求受检者在听到测试音时主动做出应答，所测阈值依赖受试者自身的听觉判断与配合程度，因此归入主观测听法。而声导抗、耳声发射、听性脑干反应记录的是耳蜗、中耳或听神经通路的客观生理反应，不需要受检者主观反馈，属客观测听，临床正是按“是否需要受检者配合”来划分这两类检查。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "纯音听阈测试须由受检者听到声音后主动示意，结果依赖其主观判断与配合，符合主观测听的定义，故该表述正确。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "若判其错误，等于把纯音听阈测试归入客观测听，但客观测听如声导抗、ABR、耳声发射均无需受检者主观反应，与纯音测听的特点不符。",
+          "misconception_id": "MC-ENT-05",
+          "misconception": "学生把“用听力计、耳机等仪器检查”误当作客观检查，或把“主观”误解为“不准确、不可靠”而否定该表述。"
+        }
+      ],
+      "key_takeaway": "判断主客观测听只看“是否需要受检者配合反馈”：纯音听阈、言语测听属主观测听；声导抗、耳声发射、听性脑干反应属客观测听，无需患者主观反应。",
+      "source_quote": "主观测听：纯音听阈测听（需要患者配合反馈）。",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "quality_flags": [],
+      "review_status": "pilot_unreviewed"
+    },
+    "legacy_explanation": "临床听力检查分为主观测听法与客观测听法，纯音听阈测试需受检者主观判断并通过反馈配合完成，属主观测听；声导抗、耳声发射及听性脑干反应无须受检者配合，属客观测听（教材P49）。",
+    "review_status": "pilot_unreviewed"
+  },
+  {
+    "id": "batch040-M01-判断-004",
+    "module": "M01",
+    "module_name": "总论与专科检查",
+    "topic": "气骨导差与听力损失类型",
+    "type": "判断",
+    "polarity": "positive",
+    "bloom": "应用",
+    "group": null,
+    "group_stem": null,
+    "case_id": null,
+    "stem": "患者右耳气导听阈升高而骨导听阈正常，提示为感音神经性听力损失",
+    "options": [
+      {
+        "label": "A",
+        "text": "该表述正确",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "该表述错误",
+        "is_correct": true
+      }
+    ],
+    "answer": "B",
+    "explanation": "气导听阈升高而骨导正常提示存在气骨导差，属传导性听力损失；感音神经性听力损失时气导与骨导听阈同时升高且无明显气骨导差（教材P37）。",
+    "source_page": "教材P37",
+    "keypoint_ref": [
+      "补充·源③·听力检查与耳聋分类"
+    ],
+    "teacher_anchor": "传导性聋主要由外耳或中耳病变引起，常表现为气导听阈升高、骨导相对保留并存在气骨导差；感音神经性聋主要与耳蜗毛细胞、听神经或相关听觉通路病变有关，气导和骨导听阈均升高且无明显气骨导差。",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true
+    },
+    "anchor_override_note": "原锚点仅讲空气/骨传导途径，未涉及气骨导差与耳聋分类；改用源③听力检查与耳聋分类",
+    "learning_value": {
+      "correct_rationale": "气导听阈升高而骨导听阈正常，说明声音经外耳、中耳传导的气导通路受阻，而经颅骨直接传至内耳的骨导通路仍然完好，两者之间形成气骨导差，这正是外耳或中耳病变所致传导性听力损失的典型表现。感音神经性听力损失病变位于耳蜗毛细胞、听神经或听觉通路，气导与骨导听阈同时升高且无明显气骨导差，故原表述判断错误。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "该描述实为传导性听力损失的表现，气骨导差提示病变在外耳或中耳，把它判为感音神经性聋会造成定位与分类错误。",
+          "misconception_id": "MC-ENT-06",
+          "misconception": "学生只抓住“听阈升高”就联想到感音神经性聋，忽略了骨导正常这一关键信息以及气骨导差的定位意义。"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "气导升高而骨导正常即构成气骨导差，病变定位在外耳或中耳，属传导性听力损失，故原表述“提示感音神经性听力损失”是错误的，应选B。",
+          "misconception_id": null,
+          "misconception": null
+        }
+      ],
+      "key_takeaway": "按气骨导关系定位：气导差而骨导好＝传导性（外耳/中耳）；气导与骨导同时差、无气骨导差＝感音神经性（耳蜗/听神经）；两者兼有＝混合性听力损失。",
+      "source_quote": "传导性聋主要由外耳或中耳病变引起，常表现为气导听阈升高、骨导相对保留并存在气骨导差",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "quality_flags": [],
+      "review_status": "pilot_unreviewed"
+    },
+    "legacy_explanation": "气导听阈升高而骨导正常提示存在气骨导差，属传导性听力损失；感音神经性听力损失时气导与骨导听阈同时升高且无明显气骨导差（教材P37）。",
+    "review_status": "pilot_unreviewed"
+  },
+  {
+    "id": "batch040-M01-X-001",
+    "module": "M01",
+    "module_name": "总论与专科检查",
+    "topic": "客观听力学检查的项目",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "应用",
+    "group": null,
+    "group_stem": null,
+    "case_id": null,
+    "stem": "为客观评估患者的听觉传导通路功能，下列可选用的客观听力学检查有",
+    "options": [
+      {
+        "label": "A",
+        "text": "纯音听阈测试",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "声导抗测试",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "耳声发射",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "听性脑干反应",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "音叉试验",
+        "is_correct": false
+      }
+    ],
+    "answer": "BCD",
+    "explanation": "客观测听法无须受检者行为配合，包括声导抗测试、耳声发射及听性脑干反应；纯音听阈测试与音叉试验需受检者主观判断和配合，属主观测听法（教材P49）。",
+    "source_page": "教材P49",
+    "keypoint_ref": [
+      "补充·源②·4·听力测试分类"
+    ],
+    "teacher_anchor": "主观测听：纯音听阈测听（需要患者配合反馈）。客观听力测试（无需患者主观反应）：声导抗、听性脑干反应 ABR、耳声发射 OAE。",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    },
+    "anchor_override_note": "原锚点为林纳/韦伯试验，与本题客观听力学检查无关；改用源②听力测试分类",
+    "learning_value": {
+      "correct_rationale": "客观测听法的共同特征是记录声刺激诱发的人体生物电或声学物理反应，不需要受检者主动判断“听到了没有”，因此结果不受主观意愿、注意力或伪装的影响。声导抗测试记录鼓膜与中耳传音系统的声顺变化，耳声发射记录耳蜗外毛细胞主动产生的微弱音频能量，听性脑干反应记录听觉通路神经电活动，三者均属客观评估听觉传导通路的手段；而纯音听阈与音叉试验都依赖受检者对声音有无的自我报告，属主观测听。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "纯音听阈测试要求受检者听到声音后按键或举手反馈，属于需要主观判断与配合的主观测听法，无法客观反映听觉通路功能。",
+          "misconception_id": "MC-ENT-01",
+          "misconception": "学生把“纯音听阈”当作仪器检测的客观指标，误以为只要能画出听力图就是客观检查，忽略了其必须依赖受检者主动应答这一关键前提。"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "声导抗测试通过探测音测量中耳传音系统的声顺与压力变化，由仪器自动记录鼓膜反射与中耳阻抗，无须受检者主观应答，属客观测听。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "耳声发射由耳蜗外毛细胞主动产生并被探头记录，反映耳蜗及其中耳传音结构的完整性，全过程不需要受检者反馈，是典型的客观测听项目。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "听性脑干反应记录声刺激后听觉通路诱发的神经电活动波形，属于电生理检查，可客观评估听觉传导通路状态，尤其适用于不能配合者。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "音叉试验需要受检者回答是否听到声音及气导骨导比较时的主观感受，依赖患者配合，属主观测听法，不能作为客观评估手段。",
+          "misconception_id": "MC-ENT-02",
+          "misconception": "学生认为音叉是实物工具、检查者操作即得结果，便把它归为客观检查，忽视了气导骨导比较的结论来自受检者的主观听觉陈述。"
+        }
+      ],
+      "key_takeaway": "判断是否为客观测听，只看一条：结果是否需要受检者主动应答。需要应答（纯音听阈、音叉试验）即主观；由仪器记录生理/声学信号的（声导抗、耳声发射、听性脑干反应）即客观，客观法尤适用于婴幼儿、伪聋及不能配合者。",
+      "source_quote": "客观听力测试（无需患者主观反应）：声导抗、听性脑干反应 ABR、耳声发射 OAE。",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "quality_flags": [],
+      "review_status": "pilot_unreviewed"
+    },
+    "legacy_explanation": "客观测听法无须受检者行为配合，包括声导抗测试、耳声发射及听性脑干反应；纯音听阈测试与音叉试验需受检者主观判断和配合，属主观测听法（教材P49）。",
+    "review_status": "pilot_unreviewed"
+  },
+  {
+    "id": "batch040-M01-X-002",
+    "module": "M01",
+    "module_name": "总论与专科检查",
+    "topic": "常用检查器械的特点",
+    "type": "X",
+    "polarity": "multi",
+    "bloom": "记忆",
+    "group": null,
+    "group_stem": null,
+    "case_id": null,
+    "stem": "关于耳鼻咽喉科检查器械，下列描述正确的有",
+    "options": [
+      {
+        "label": "A",
+        "text": "额镜可将光源反射聚焦于受检部位",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "硬性内镜不能弯曲、图像清晰",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "软性内镜适用于张口受限患者",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "压舌板用于暴露口咽部",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "耳内镜可直接判定听力损失类型",
+        "is_correct": false
+      }
+    ],
+    "answer": "ABCD",
+    "explanation": "额镜经反射将光源聚焦于受检部位，硬性内镜不能弯曲而图像清晰，软性内镜可弯曲、适用于张口受限或部分儿童，压舌板用于暴露口咽部；耳内镜仅能观察外耳道与鼓膜，不能直接判定听力损失类型（教材P11）。",
+    "source_page": "教材P11",
+    "keypoint_ref": [
+      "补充·源③·总论·常用基础检查器械"
+    ],
+    "teacher_anchor": "常用基础检查器械包括额镜、耳窥镜、鼻镜、压舌板等。额镜是传统耳鼻咽喉科检查常用照明器械利用反射光源照亮检查部位；压舌板用于暴露口咽部。硬性内镜一般不能弯曲，图像清晰、适合精细观察；软性纤维内镜或电子内镜可以弯曲，便于观察鼻腔深部、鼻咽、喉及部分下咽结构，也适用于部分儿童或张口受限患者。耳内镜用于观察外耳道和鼓膜。",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": true,
+      "C": true,
+      "D": true,
+      "E": false
+    },
+    "anchor_override_note": "原锚点为内耳解剖，与本题检查器械无关；改用源③总论常用基础检查器械",
+    "learning_value": {
+      "correct_rationale": "本题把检查器械的形态特点与适用场景一一对应即可：额镜的作用是借凹面镜反射并聚焦光源，从而照亮狭窄的受检部位；硬性内镜因镜体不能弯曲，光导与镜片固定，故成像清晰、适合精细观察，但视野受腔道走行限制；软性内镜镜体可弯曲，能顺应鼻腔、鼻咽、喉及部分下咽的解剖弯曲，因此也适用于儿童或张口受限、无法摆放常规体位者；压舌板的基本用途就是压舌、暴露口咽部。耳内镜只是把外耳道与鼓膜放大，看到的仅是形态，听力损失类型须靠听力学检查判断。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "额镜是凹面反光镜，检查者通过中央小孔观察，可将光源反射并聚焦到受检部位，是耳鼻咽喉科传统的基础照明器械。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "硬性内镜镜体为刚性结构不能弯曲，光导纤维与透镜排列固定，因此光通量与成像质量好、图像清晰，适合需要精细观察的操作。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "软性纤维内镜或电子内镜可随解剖腔道弯曲，能观察鼻腔深部、鼻咽、喉及部分下咽结构，也适用于部分儿童或张口受限、难以配合常规体位的患者。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "压舌板的基本功能是压迫舌体、避免舌根遮挡视野，从而暴露口咽部，便于观察扁桃体、咽后壁等结构。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "耳内镜只能观察外耳道与鼓膜的形态，如充血、穿孔、积液等，不能直接判定听力损失是传导性还是感音神经性，需依靠听力学检查。",
+          "misconception_id": "MC-ENT-03",
+          "misconception": "学生把“看到鼓膜异常”等同于“确定听力损失类型”，误以为形态学观察可以替代听力学功能检查，混淆了结构所见与功能诊断。"
+        }
+      ],
+      "key_takeaway": "器械题按“形态—用途”配对记忆：额镜反射聚焦照明，压舌板暴露口咽，硬镜不能弯曲但图像清晰，软镜可弯曲故适用于儿童与张口受限者；形态学器械（耳内镜、鼻内镜）只解决“看得到”，听力损失类型等功能判断必须交给听力学检查。",
+      "source_quote": "硬性内镜一般不能弯曲，图像清晰、适合精细观察；软性纤维内镜或电子内镜可以弯曲，便于观察鼻腔深部、鼻咽、喉及部分下咽结构，也适用于部分儿童或张口受限患者。耳内镜用于观察外耳道和鼓膜。",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "quality_flags": [],
+      "review_status": "pilot_unreviewed"
+    },
+    "legacy_explanation": "额镜经反射将光源聚焦于受检部位，硬性内镜不能弯曲而图像清晰，软性内镜可弯曲、适用于张口受限或部分儿童，压舌板用于暴露口咽部；耳内镜仅能观察外耳道与鼓膜，不能直接判定听力损失类型（教材P11）。",
+    "review_status": "pilot_unreviewed"
+  }
+]
