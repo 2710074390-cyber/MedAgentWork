@@ -123,7 +123,7 @@ MedAgentWork/
 
 **出题硬约束**（全文在 SOUL.md，要点）：
 - HC-1~4b 题型极性/Schema/溯源锚点/禁幻觉/真题答案保护；HC-7 双向细目表（Bloom 30/40/25/5）；HC-14 选项用**结构模板**（同语法结构）而非字数范围；HC-15 Bloom 每 50 题采样（`bloom_sampler.py`）；HC-16 押题考频增强
-- **HC-22 真题双族配额（现行）**：考研族 1/5 + 执业医师族 1/5（各 15%–25%）；执业医师族内**历年真题 `zhiyi_pdf` 优先、CMExam `zhiyi` 补位**；标注 `kaoyan_origin` / `zhiyi_origin{...,corpus}` + `[源:...]` + `keypoint_ref` + `license`；候选不足 → `quota_status=reduced/cancelled`，原创补齐并如实标注（HC-18 的「考研 20%」条款已由 HC-22 接管）
+- **HC-22 真题双族配额（现行 · 2026-10-26 修订）**：考研族 1/5 + 执业医师族 1/5（各 15%–25%）；执业医师族内**历年真题 `zhiyi_pdf` 与 CMExam `zhiyi` 双源均可直接入选**（同等相关时 PDF 轻微优先，不再强制先用完 PDF）；标注 `kaoyan_origin` / `zhiyi_origin{...,corpus}` + `[源:...]` + `keypoint_ref` + `license`；候选不足 → `quota_status=reduced/cancelled`，原创补齐并如实标注（HC-18 的「考研 20%」条款已由 HC-22 接管）
 - **HC-23 执业医师语料**：2010–2023（含 2007–2009、2024）扫描册 → `zhiyi_pdf_ocr.py`（本地 RapidOCR）→ `zhiyi_pdf_parse.py` → `real_question_cli.py build`；质量门禁见 `reports/validate/zhiyi_pdf_parse_report.json`
 - 选项设计 NBME 八项：禁绝对词/长度比 ≤1.5/语法一致/数值排序/词重复/收敛策略/B1 共用选项专项
 

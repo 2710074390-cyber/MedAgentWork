@@ -384,16 +384,16 @@ Stage 2: 重排后候选 → rerank API → top-N结果（≥threshold）
 ### 真题检索 v3（HC-22 修订 + HC-23 · 2026-10-22 起，下一次题库批次生效）
 
 > 旧 `kaoyan_picker.py pick/check` 为 HC-18 legacy，仅保留兼容；新批次一律走 v3。
-> v3 变更：执业医师族改为**两层**——历年真题（`zhiyi_pdf`）优先、CMExam（`zhiyi`）补位；执业医师配额总量仍 20%，总真题占比维持 40%。
+> v3 变更（2026-10-26）：执业医师族为**双源**——历年真题（`zhiyi_pdf`）与 CMExam（`zhiyi`）均可直接入选；同等相关时 PDF 有轻微优先加分，但不再强制先用完 PDF。执业医师配额总量仍 20%，总真题占比维持 40%。
 
 **资产（只读/可重建）**
 
 | 文件 | 内容 |
 |------|------|
 | `question_bank/real_questions/kaoyan_items.jsonl` | 考研 306 题目级索引（题干/选项/答案/解析/学科/答案可信度） |
-| `question_bank/real_questions/zhiyi_pdf_items.jsonl` | **执业医师历年真题**题目级索引（2007–2024 扫描册 OCR，印刷答案，族内第一层） |
+| `question_bank/real_questions/zhiyi_pdf_items.jsonl` | **执业医师历年真题**题目级索引（2007–2024 扫描册 OCR，印刷答案，族内来源一） |
 | `question_bank/real_questions/zhiyi_pdf_raw.jsonl` | 历年真题解析原始产物（`zhiyi_pdf_parse.py` 输出，未去重） |
-| `question_bank/real_questions/zhiyi_items.jsonl` | 执业医师 CMExam 题目级索引（test 高可信 + train 中可信，族内第二层=补位） |
+| `question_bank/real_questions/zhiyi_items.jsonl` | 执业医师 CMExam 题目级索引（test 高可信 + train 中可信；族内合法来源，可直接入选） |
 | `question_bank/real_questions/manifest.json` | 来源/学科/可信度统计 |
 | `question_bank/kaoyan_answers.json` | 考研答案总表（`answer_recovered` + confidence + evidence） |
 | `question_bank/kaoyan_manual_answers.json` | 人工转录答案键（2023 扫描件，165 题） |
@@ -414,7 +414,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 
 **硬规则**
 
-- 配额（**按族结算**）：考研族 20% + 执业医师族 20%（各 15%–25% 合格带）；执业医师族内 `zhiyi_pdf`（历年真题）优先、`zhiyi`（CMExam）补位。
+- 配额（**按族结算**）：考研族 20% + 执业医师族 20%（各 15%–25% 合格带）；执业医师族内 `zhiyi_pdf`（历年真题）与 `zhiyi`（CMExam）均可直接入选，同等相关时 PDF 有轻微优先加分，不再强制先用完 PDF。
 - 减量规则（HC-23 配套）：候选不足 → `quota_status=reduced`（按可用量减量）或 `cancelled`（无候选，取消该族配额），`reason` 记 `no_candidate`/`candidates_exhausted`/`keypoint_or_module_limit`；**不再阻断批次**，缺口由原创补齐，禁止无关题凑数，批次统计如实上报。
 - 执业医师语料（HC-23）：49 册 / 2286 页扫描件，**按版式分流**——单栏册（44 册）本地 RapidOCR，双栏册（2017–2021，5 册）MinerU API；质量门禁 = 单栏册有效率 ≥95%（`no_answer`=0、`bad_options`≤2%）、双栏册 ≥70%（MinerU 丢行已知损耗；答案配对用顺序回填），报告见 `reports/validate/zhiyi_pdf_parse_report.json`。**单栏册禁止用 MinerU**（实测整行吞 `【答案】`），**双栏册禁止用 RapidOCR**（左右栏并成一行无法还原）。
 - 答案来源优先级：**扫描版绿色标记（high/medium） ≈ PDF 标准答案/人工转录（high） > PDF 绿色标记（medium） > 解析规则（high/medium） > 无**。考研答案禁止再用下册行首前缀 `ABCD/ABCDE`。

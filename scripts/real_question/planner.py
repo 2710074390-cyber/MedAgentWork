@@ -182,8 +182,9 @@ def build_plan(
     """教师重点驱动 + 双族配额选题（HC-22 / HC-23）。
 
     配额按「来源族」计：考研族（kaoyan）、执业医师族（zhiyi_pdf 历年真题 + CMExam 题库）。
-    执业医师族内**先 PDF 历年真题、再 CMExam 补位**；候选不足时按可用量减量（reduced），
-    完全无候选则取消该族配额（cancelled），由原创补齐。
+    执业医师族内两源均可直接入选；同等相关时历年真题有轻微优先加分（TIER_BONUS），
+    但不再强制先用完 PDF。候选不足时按可用量减量（reduced），完全无候选则取消该族配额
+    （cancelled），由原创补齐。
     """
     index_dir = Path(index_dir)
     items: list[RealQuestion] = []
@@ -295,18 +296,7 @@ def build_plan(
             for f in caps
         }
 
-        def _pdf_left() -> bool:
-            if fam_here["zhiyi"] >= local_cap.get("zhiyi", 0):
-                return False
-            if source_counts["zhiyi"] >= max_zhiyi:
-                return False
-            return any(
-                r["item"].source == "zhiyi_pdf" and r["item"].item_id not in used_ids
-                for r in pool.values()
-            )
-
         while len(module_selected[module.module_id]) < module_target:
-            pdf_only = _pdf_left()
             best = None
             best_gain = -1.0
             for rec in pool.values():
@@ -319,8 +309,6 @@ def build_plan(
                 if fam_here.get(fam, 0) >= local_cap.get(fam, 0):
                     continue
                 if source_counts[fam] >= (max_kaoyan if fam == "kaoyan" else max_zhiyi):
-                    continue
-                if fam == "zhiyi" and pdf_only and item.source != "zhiyi_pdf":
                     continue
                 uncovered = uncovered_by_module.get(module.module_id, set())
                 # 一题最多认领 3 个考点，避免长考点文本导致「一题覆盖 30 条」
@@ -346,12 +334,6 @@ def build_plan(
 
         # 本模块族配额没填满时，允许另一族补足模块目标（受全局配额上限约束）
         if len(module_selected[module.module_id]) < module_target:
-            # 模块补位阶段只关心「本模块池里还有没有未用的执医 PDF 真题」，
-            # 不受族配额是否已满影响（否则 CMExam 会抢走 PDF 的位置）
-            pdf_only = any(
-                r["item"].source == "zhiyi_pdf" and r["item"].item_id not in used_ids
-                for r in pool.values()
-            )
             for rec in sorted(pool.values(), key=lambda r: -(r["score"] * 10 + r.get("relevance", 0.0))):
                 if len(module_selected[module.module_id]) >= module_target:
                     break
@@ -363,8 +345,6 @@ def build_plan(
                     continue
                 if source_counts[fam] >= (max_kaoyan if fam == "kaoyan" else max_zhiyi):
                     continue
-                if fam == "zhiyi" and pdf_only and item.source != "zhiyi_pdf":
-                    continue
                 # 另一族可补足模块目标，但不得让单模块超过题数上限
                 if fam_here.get(fam, 0) >= module_target:
                     continue
@@ -374,10 +354,6 @@ def build_plan(
     module_free = {m.module_id: m.target - len(module_selected[m.module_id]) for m in modules}
     for fam, req in (("kaoyan", req_kaoyan), ("zhiyi", req_zhiyi)):
         while source_counts[fam] < req:
-            pdf_only = fam == "zhiyi" and any(
-                rec["item"].source == "zhiyi_pdf" and rec["item"].item_id not in used_ids
-                for rec, _mid in pool_index.values()
-            )
             best = None
             best_gain = -1.0
             for iid, (rec, mid) in pool_index.items():
@@ -385,8 +361,6 @@ def build_plan(
                 if _family(item.source) != fam or item.item_id in used_ids:
                     continue
                 if module_free.get(mid, 0) <= 0:
-                    continue
-                if pdf_only and item.source != "zhiyi_pdf":
                     continue
                 gain = rec["score"] * 10 + rec.get("relevance", 0.0) * 0.6 + TIER_BONUS.get(item.source, 0.0)
                 if gain > best_gain:

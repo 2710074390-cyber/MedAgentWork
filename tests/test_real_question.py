@@ -340,8 +340,8 @@ def _pdf_item(item_id, stem, year=2014):
     ))
 
 
-def test_plan_prefers_zhiyi_pdf_over_cmexam():
-    """执业医师族内：历年真题（zhiyi_pdf）优先，CMExam 只补位。"""
+def test_plan_soft_prefers_pdf_over_cmexam_when_equal():
+    """同等相关时历年真题有轻微优先加分；CMExam 不再是“补位专用”。"""
     stems = [
         "心力衰竭的诊断标准是脑钠肽升高",
         "冠心病治疗原则包括抗血小板",
@@ -365,6 +365,31 @@ def test_plan_prefers_zhiyi_pdf_over_cmexam():
     assert plan["counts"]["zhiyi"] == 2
     assert plan["counts"]["zhiyi_pdf"] == 2
     assert plan["counts"]["zhiyi_cmexam"] == 0
+
+
+def test_plan_uses_cmexam_as_zhiyi_quota_source():
+    """CMExam 可独立承担执业医师配额（不要求 PDF 存在）。"""
+    stems = [
+        "心力衰竭的诊断标准是脑钠肽升高",
+        "冠心病治疗原则包括抗血小板",
+        "肺炎的抗感染治疗首选",
+        "糖尿病的诊断标准是空腹血糖",
+    ]
+    with _workdir() as tmp:
+        cm = [_item(f"C{i}", "zhiyi", s) for i, s in enumerate(stems, start=1)]
+        write_jsonl(tmp / "zhiyi_items.jsonl", cm)
+        kp = tmp / "kp.md"
+        kp.write_text(
+            "## 四、统一锚定清单\n1. 心力衰竭的诊断标准\n2. 冠心病的治疗原则\n"
+            "3. 肺炎的抗感染治疗\n4. 糖尿病的诊断标准\n",
+            encoding="utf-8",
+        )
+        plan = build_plan(subject="内科学", target=10, index_dir=tmp,
+                          keypoints_path=kp, quota_kaoyan=0.0, quota_zhiyi=0.2,
+                          batch="TEST", top_k_per_keypoint=10)
+    assert plan["counts"]["zhiyi"] == 2
+    assert plan["counts"]["zhiyi_cmexam"] == 2
+    assert plan["counts"]["zhiyi_pdf"] == 0
 
 
 def test_plan_quota_reduced_when_candidates_short():

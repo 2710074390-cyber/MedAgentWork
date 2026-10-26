@@ -10,6 +10,7 @@
 - [x] **OCR 引擎选型实测**：MinerU API（pipeline 与 vlm 两种模型）实测整行吞掉 `【答案】`（2014 三单元第 3–6 题共 4 条），不可作唯一通道；RapidOCR 同页答案全中，定为唯一主通道
 - [x] **版面规则覆盖**：单栏同行选项／单栏分行选项／双栏（2017–2021 试卷部分）／A3·A4「共用题干｜共用题目｜共用病例」病例组／B1「共用备选答案」共享选项／册末「参考答案与解析」回填
 - [x] **检索规则修订（HC-22）**：执业医师配额总量不变（20%），族内改为两层——历年真题 `zhiyi_pdf` 优先、CMExam `zhiyi` 补位；配额按族结算；新增 `reduced`（按可用量减量）/`cancelled`（无候选取消配额）状态与 `reason`，不再阻断批次，缺口由原创补齐
+- [x] **检索规则二次修订（HC-22 · 2026-10-26）**：执业医师族改为**双源**——`zhiyi_pdf` 与 CMExam `zhiyi` 均可直接入选；移除 planner 的 PDF 独占优先闸（`_pdf_left`/`pdf_only`），同等相关时保留 `TIER_BONUS` 轻微加分；新增 CMExam 独立承担执业医师配额的回归测试
 - [x] **代码改动**：`scripts/real_question/{sources,planner,check,cli,schema}.py`（三来源加载、族/层选择、全局补齐、族比例校验、`zhiyi_origin.corpus` 识别）；`scripts/zhiyi_pdf_ocr.py`、`scripts/zhiyi_pdf_parse.py` 新增
 - [x] **文档同步**：`SOUL.md`（HC-22 修订 + 新增 HC-23）、`CONTEXT.md`（真题检索 v3 + 工具表 + 资产表）、`.dsh/skills/{medgen,medmaster,medbatch}`、`Prompt版本/{MedGen,MedMaster}_current_prompt.md`、`docs/交接文档_新Agent接手_v1.0.md`、`.gitignore`（OCR 缓存不入库）
 - [x] **双通道实测定版**：单栏册（44 册）RapidOCR 有效率 0.97–1.00；双栏册（2017–2021，5 册）改走 MinerU API（RapidOCR 会把左右栏并成一行，无法还原），有效率 0.70–0.94；全库 `zhiyi_pdf_raw` 9,053 题 → 去重入库 8,918 题（18 个年份），真题索引总量 21,589

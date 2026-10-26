@@ -40,7 +40,7 @@ MedAgentWork 操作流程（DSH 版 · 2026-08-13 重构）
   python gate_check.py --batch {batchID} --stage learning_value   # HC-24 学习价值层（新批次 v2）
   python gate_check.py --batch {batchID} --clear-halt   # 修复后清除 HALT
   python validate_options.py --batch {batchID}  # 选项质量校验（报告在 reports/validate/）
-  python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单}  # HC-22 真题双配额（考研+执医，各15%–25%）
+  python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单}  # HC-22 真题双配额（考研+执医，各15%–25%；执医=PDF+CMExam 双源）
 
 门禁 BLOCKED → 回退对应 Agent 修复 → 重跑门禁。详见 .dsh/skills/medbatch/SKILL.md。
 

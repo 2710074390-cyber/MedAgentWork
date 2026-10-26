@@ -146,16 +146,16 @@
 - **并发发布**：同一发布窗口只允许一个发布者；线上出现更新的部署时先合并。
 - **实现**：`scripts/check_site_freshness.py`（门禁）；`scripts/deploy_site.ps1`（前置 ahead/behind 闸 + 部署后自动调用门禁）。CI 侧同样以 `origin/main` 为唯一源。
 
-## HC-22 真题检索与双族配额（2026-10-20 新增 · **2026-10-22 修订：执业医师改「历年真题优先 + CMExam 补位」**）
+## HC-22 真题检索与双族配额（2026-10-20 新增 · **2026-10-26 修订：CMExam 可直接用于执业医师配额**）
 
 > 从下一次**题库**批次起：约 **1/5 考研真题 + 1/5 执业医师真题**；检索不到就**减量或不插入**，用原创补齐；教师重点优先于凑比例。押题卷暂不适用本配额。
 > 旧 HC-18 的「考研 20%」条款由本节接管；HC-18 仍保留「产物形态契约」含义，避免编号双用继续扩散。
-> 2026-10-22 修订要点：执业医师配额**总量不变（仍 20%）**，族内改为两层——先取历年真题（`zhiyi_pdf`），取不满再用 CMExam（`zhiyi`）补位；语料建设见 HC-23。
+> 2026-10-26 修订要点：执业医师配额**总量不变（仍 20%）**；`zhiyi_pdf`（历年真题）与 `zhiyi`（CMExam）均为族内合法来源、可直接入选；同等相关时历年真题有轻微优先加分（`TIER_BONUS`），但**不再强制先用完 PDF**。语料建设见 HC-23。
 
-- **数据源（只读，三层）**：
+- **数据源（只读）**：
   - 考研真题：`GoldenSet/structured/` → `question_bank/real_questions/kaoyan_items.jsonl`；
-  - **执业医师历年真题（族内第一层）**：2010–2023 扫描册（另含 2007–2009、2024）→ `question_bank/real_questions/zhiyi_pdf_items.jsonl`（印刷答案，`answer_confidence=high`）；
-  - 执业医师 CMExam（族内第二层，**仅补位**）：`知识库素材/cmexam/` → `question_bank/real_questions/zhiyi_items.jsonl`；
+  - **执业医师历年真题（族内来源一）**：2010–2023 扫描册（另含 2007–2009、2024）→ `question_bank/real_questions/zhiyi_pdf_items.jsonl`（印刷答案，`answer_confidence=high`）；
+  - **执业医师 CMExam（族内来源二，可直接入选）**：`知识库素材/cmexam/` → `question_bank/real_questions/zhiyi_items.jsonl`（test 高可信 / train 中可信，train 按 D21b 抽检）；
   - 可选授权源：人卫题库（有授权时 `license=public`）。
   - 配额按**来源族**结算：考研族 = `kaoyan`；执业医师族 = `zhiyi_pdf` + `zhiyi`。
 - **批次启动（Agent 1）**：
