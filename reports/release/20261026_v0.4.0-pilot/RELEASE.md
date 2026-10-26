@@ -25,7 +25,7 @@
 
 | 项 | 结果 |
 |---|---|
-| 全量测试 | **142 passed / 0 failed / 0 errors** |
+| 全量测试 | **168 passed（pytest CI）/ 142 passed（run_tests.py）** |
 | quality policy | PASS（3 profiles / v1.0.0） |
 | 基线冻结 | PASS |
 | KC 注册表 | PASS（200/200 主映射；125/125 重点；content_only 19/85 记录） |

@@ -58,6 +58,14 @@ def read_json(path: Path):
     return json.loads(read_text(path))
 
 
+def repo_path(value) -> Path:
+    """把仓库内相对路径跨平台解析：兼容 Windows 反斜杠与 POSIX 斜杠。"""
+    if not value:
+        return Path("")
+    p = Path(str(value).replace("\\", "/"))
+    return p if p.is_absolute() else BASE / p
+
+
 def atomic_write(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_suffix(path.suffix + ".tmp")
@@ -97,7 +105,7 @@ def compute_metrics(review_path: Path, kc_path: Path, learning_value_path: Path)
     cards = kc.parse_review_cards(md_text)
     registry = read_json(kc_path)
     meta_kp = registry.get("metadata", {}).get("keypoints_path")
-    kp_path = BASE / meta_kp if meta_kp else (
+    kp_path = repo_path(meta_kp) if meta_kp else (
         BASE / "输入素材/大四上/耳鼻咽喉头颈外科学/耳鼻咽喉头颈外科学_教师重点_锚定清单_20261019.md"
     )
     keypoint_items = kc.parse_keypoint_items(read_text(kp_path))
@@ -194,7 +202,7 @@ def compute_metrics(review_path: Path, kc_path: Path, learning_value_path: Path)
     questions_path = None
     meta_q = registry.get("metadata", {}).get("questions_path")
     if meta_q:
-        p = BASE / meta_q
+        p = repo_path(meta_q)
         if p.exists():
             questions_path = p
     case_count = 0

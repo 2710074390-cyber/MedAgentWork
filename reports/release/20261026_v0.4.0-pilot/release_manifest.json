@@ -6,7 +6,7 @@
   "batch040": "APPROVED; pilot baseline only; R3 release gate BLOCKED",
   "batch041": "IN_PROGRESS; GATE-FINAL BLOCKED; not released/deployed; WIP snapshot archived in repository",
   "verification": {
-    "tests": "142 passed / 0 failed / 0 errors",
+    "tests": "168 passed (pytest CI) / 142 passed (run_tests.py)",
     "policy": "PASS (3 profiles, v1.0.0)",
     "baseline": "PASS",
     "kc_registry": "PASS; 200/200 primary; 125/125 keypoints; content_only 19/85 recorded",
@@ -33,8 +33,8 @@
       "bytes": 13621
     },
     "reports/release/20261026_v0.4.0-pilot/RELEASE.md": {
-      "sha256": "8aa3a35058cb2c9786dc1863a895c613ae4d0ce1a9a8b585f5b2efed275ab470",
-      "bytes": 3158
+      "sha256": "3a28c82cfec2fd09e53e0c12aef27ccf205cc3f90eaa79699ba00520e61f7b38",
+      "bytes": 3287
     },
     "scripts/quality_policy.json": {
       "sha256": "abc555f8bddab9d833511056ca420c54bf6452973f2094fe14ccf78fe5b7f233",
@@ -57,8 +57,8 @@
       "bytes": 44246
     },
     "scripts/review_scorecard.py": {
-      "sha256": "5bd308364bc0a71992e8cbf289aacd008ba116a9614910fee581f85a268e2494",
-      "bytes": 21965
+      "sha256": "ec4eb69bab47beabb662b4e50b6a89f8a8726a80bacf8229db162e0bcff8679c",
+      "bytes": 22233
     },
     "scripts/spaced_schedule.py": {
       "sha256": "eba81a6ce7271dd6843e189a939ade0a1d74ed532fb3ca59fab0d65f270e2bf8",
@@ -105,8 +105,8 @@
       "bytes": 2796
     },
     "tests/test_review_scorecard.py": {
-      "sha256": "bbd0b8f6595929573d65126ef71f14eb573d95bf64a324a4921ddf282ad7ac43",
-      "bytes": 1485
+      "sha256": "933fda69b83fb6ba804d60269c3cf928a71eeb2f990524010221e2b0f40c2767",
+      "bytes": 1729
     },
     "tests/test_spaced_schedule.py": {
       "sha256": "1c6b78b55b60a5943811784cf0e8899d7cefb391c79e4a938767ac40d094ca26",
@@ -169,11 +169,11 @@
       "bytes": 121049
     },
     "reports/validate/review_scorecard_ent_20261022.json": {
-      "sha256": "0b66d3e034aaf0efa57a8690ef6462483a730f9d18322d17cc33b96d9eee1e54",
+      "sha256": "60cdb05e062ff73babbe15c43adcaab14655c1f6932c12448b9615a15fba5fc5",
       "bytes": 14210
     },
     "reports/validate/review_scorecard_ent_20261022.md": {
-      "sha256": "1876a733c637773c1b6597eeb4b32b1b6555e15df68071bf62a7ba0383439ea5",
+      "sha256": "5a2821bc00eed1898f75e44205642aa86ff069be52fff1c80a8ed3493bf22963",
       "bytes": 6374
     },
     "reports/gate/quality_gate_batch040_r0.json": {

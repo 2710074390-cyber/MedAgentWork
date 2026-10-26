@@ -26,6 +26,11 @@ def test_actual_scorecard_baseline():
     assert card["blocking_issues"] == []
 
 
+def test_repo_path_normalizes_windows_backslashes():
+    p = rs.repo_path("输入素材\\大四上\\耳鼻咽喉头颈外科学\\锚定清单.md")
+    assert p == rs.BASE / "输入素材/大四上/耳鼻咽喉头颈外科学/锚定清单.md"
+
+
 def test_bad_rubric_rejected():
     data = json.loads(rs.DEFAULT_RUBRIC.read_text(encoding="utf-8"))
     data["dimensions"][0]["weight"] = 1
