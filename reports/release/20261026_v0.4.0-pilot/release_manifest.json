@@ -57,8 +57,8 @@
       "bytes": 44246
     },
     "scripts/review_scorecard.py": {
-      "sha256": "ec4eb69bab47beabb662b4e50b6a89f8a8726a80bacf8229db162e0bcff8679c",
-      "bytes": 22233
+      "sha256": "5c9b5b942a856b32c7c399607aecf82dd0fa322388f1a31db753161a563ca08c",
+      "bytes": 22476
     },
     "scripts/spaced_schedule.py": {
       "sha256": "eba81a6ce7271dd6843e189a939ade0a1d74ed532fb3ca59fab0d65f270e2bf8",
@@ -207,6 +207,10 @@
     "reports\\release\\20261026_v0.4.0-pilot\\RELEASE.md": {
       "sha256": "26f2cd29f23930c59b6dec4e97fc7859f9c90a5416dc9feff995f2a65aa249de",
       "bytes": 3264
+    },
+    "scripts/vault_audit.py": {
+      "sha256": "7a3cc8960c83961d5efd55a8b73f6f27b568ac355e35f98beaa0bb17d659e831",
+      "bytes": 7972
     }
   }
 }
