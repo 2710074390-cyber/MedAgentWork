@@ -46,6 +46,7 @@ MAX_HEADING_JUMP = 1
 DEFAULT_GLOBS = [
     "Obsidian产物/*.md",
     "Obsidian产物/[!_]*/*.md",
+    "Obsidian产物/[!_]*/*/[!_]*.md",   # 二级子目录（概念卡/学科/*.md）不能落在检查盲区
     "_MOC/*.md",          # 导航笔记含大量 wikilink，是歧义检查的重点对象
 ]
 
