@@ -171,6 +171,10 @@ def derive_batch_defaults(args) -> None:
         # 没有批次专属产物时也落到批次专属路径（缺失），避免误用 batch040 的报告。
         setattr(args, attr, str(hit or paths[0]))
 
+    # 评分卡同理：默认文件是 batch040 的冻结报告，直接复用会把别批分数算到本批头上
+    if str(args.scorecard) == str(DEFAULT_SCORECARD):
+        args.scorecard = str(BASE / "reports/validate" / f"review_scorecard_{batch}.json")
+
     if str(args.review) == str(DEFAULT_REVIEW):
         subject = _batch_subject(batch)
         products = infer_batch_products(batch)
@@ -181,7 +185,11 @@ def derive_batch_defaults(args) -> None:
                 pass
             else:
                 hits = sorted(review_dir.rglob(f"{subject}*主复习资料.md")) if review_dir.exists() else []
-                args.review = str(hits[0]) if hits else str(review_dir / f"{subject}_主复习资料.md")
+                # 同一科目可能有历史版本（如 _BPA_ / _v5）：优先标准文件名，其次排除历史版本，最后才退回首个命中
+                canonical = [p for p in hits if p.name == f"{subject}教师重点版_主复习资料.md"]
+                current = [p for p in hits if "_BPA_" not in p.name]
+                pick = canonical or current or hits
+                args.review = str(pick[0]) if pick else str(review_dir / f"{subject}_主复习资料.md")
         elif "review_material" not in products:
             args.review = str(BASE / "复习资料" / "__no_review_product__.md")
 
