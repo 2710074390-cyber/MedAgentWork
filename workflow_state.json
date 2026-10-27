@@ -5313,5 +5313,122 @@
         "active": false
       }
     }
+  },
+  "batch043": {
+    "batch_id": "batch043",
+    "status": "AGENT4_DONE",
+    "created": "2026-10-26T23:18:22.924136",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "item_schema_version": "2.0",
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "output": "batch043_A2_题库.json",
+        "md5": "110e1f77408c5fbda594f7b441d92f15",
+        "model": "unknown",
+        "prompt_version": "unknown"
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "output": "batch043_A3_质检报告.json",
+        "md5": "5ec4f63a9d3b5fdc578e2271e1fba7bd",
+        "model": "unknown",
+        "prompt_version": "unknown"
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "output": "batch043_A4_修复版.json；追溯日志=AGENT4_追溯日志.json",
+        "md5": "b9ef2f0ae70614755176bfe3f88f3d48",
+        "model": "unknown",
+        "prompt_version": "unknown",
+        "trace_log": "最终产物/batch043/AGENT4_追溯日志.json"
+      },
+      "AGENT5": {
+        "status": "COMPLETED",
+        "output": "急诊与灾难医学_教师重点蓝图版_主复习资料.md（扩写版）",
+        "hc_checks": {
+          "HC-9": "PASS：附录二术语同义异名 14 组，缩写首次出现均注全称",
+          "HC-10": "PASS：页码均为教材印刷页（P1-P309），无占位符、无全篇同页",
+          "HC-11": "PASS：61 条锚点均带真实印刷页，来源为教师重点+人卫第4版"
+        }
+      }
+    },
+    "lineage": [
+      {
+        "stage": "agent2_DONE",
+        "input_file": "C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch043\\batch043_A2_题库.json",
+        "input_md5": "110e1f77408c5fbda594f7b441d92f15",
+        "agent_model": "unknown",
+        "prompt_version": "unknown",
+        "timestamp": "2026-10-26T23:18:22.924184"
+      },
+      {
+        "stage": "agent3_DONE",
+        "input_file": "C:\\Users\\38063\\Desktop\\MedAgentWork\\质检报告\\batch043\\batch043_A3_质检报告.json",
+        "input_md5": "5ec4f63a9d3b5fdc578e2271e1fba7bd",
+        "agent_model": "unknown",
+        "prompt_version": "unknown",
+        "timestamp": "2026-10-26T23:19:50.854300"
+      },
+      {
+        "stage": "agent4_DONE",
+        "input_file": "C:\\Users\\38063\\Desktop\\MedAgentWork\\最终产物\\batch043\\batch043_A4_修复版.json",
+        "input_md5": "2a168b789528752971df43c367bce200",
+        "agent_model": "unknown",
+        "prompt_version": "unknown",
+        "timestamp": "2026-10-26T23:20:53.863270"
+      },
+      {
+        "stage": "agent4_DONE",
+        "input_file": "C:\\Users\\38063\\Desktop\\MedAgentWork\\最终产物\\batch043\\batch043_A4_修复版.json",
+        "input_md5": "b9ef2f0ae70614755176bfe3f88f3d48",
+        "agent_model": "unknown",
+        "prompt_version": "unknown",
+        "timestamp": "2026-10-26T23:21:07.950309"
+      }
+    ],
+    "gate_results": {
+      "GATE-A2": {
+        "status": "PASS",
+        "reason": "产出门禁通过 (FAIL=0, PASS=93, WARN=107)",
+        "checked_at": "2026-10-27T00:26:47.804882"
+      },
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
+        "checked_at": "2026-10-27T00:26:52.227773"
+      },
+      "halt": {
+        "active": false
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-10-27T00:26:52.793696"
+      },
+      "GATE-LV": {
+        "status": "PASS",
+        "reason": "HC-24 通过：FAIL=0，逐项=100.0%，错误认知=100.0%，标注 exact=100.0%，引文实证=100.0%，ID 冲突=0，锚点已核=100.0%",
+        "checked_at": "2026-10-26T23:21:38.574849"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
+        "checked_at": "2026-10-27T00:27:09.066227"
+      }
+    },
+    "subject": "急诊与灾难医学",
+    "chapter": "教师重点版 BPA v1.0（61 条 / 8 模块 / 200 题）",
+    "exam_type": "期末考试",
+    "product_types": [
+      "question_bank",
+      "review_material"
+    ],
+    "final_review": {
+      "hc9_terminology_appendix": "PASS：附录二 14 组术语同义异名",
+      "hc10_page_authenticity": "PASS：P1-P309 分散真实页码，无占位",
+      "hc11_outline_page_marking": "PASS：61 条锚点逐条带印刷页",
+      "json_valid": true
+    }
   }
 }

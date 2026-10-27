@@ -852,11 +852,12 @@ def cmd_build(args) -> int:
         Path(args.anchor_overrides) if args.anchor_overrides else None,
         Path(args.question_overrides) if args.question_overrides else None,
     )
+    md = registry.get('metadata', {})
     check = check_registry(
         registry, question_map,
-        expect_cards=args.expect_cards,
-        expect_keypoints=args.expect_keypoints,
-        expect_questions=args.expect_questions,
+        expect_cards=args.expect_cards if args.expect_cards is not None else md.get('card_count'),
+        expect_keypoints=args.expect_keypoints if args.expect_keypoints is not None else md.get('keypoint_items'),
+        expect_questions=args.expect_questions if args.expect_questions is not None else md.get('question_count'),
         strict=False,
     )
     write_json(output / "kc_registry.json", registry)
@@ -877,11 +878,12 @@ def cmd_build(args) -> int:
 
 def cmd_check(args) -> int:
     registry, question_map = load_registry(Path(args.file))
+    md = registry.get('metadata', {})
     result = check_registry(
         registry, question_map,
-        expect_cards=args.expect_cards,
-        expect_keypoints=args.expect_keypoints,
-        expect_questions=args.expect_questions,
+        expect_cards=args.expect_cards if args.expect_cards is not None else md.get('card_count'),
+        expect_keypoints=args.expect_keypoints if args.expect_keypoints is not None else md.get('keypoint_items'),
+        expect_questions=args.expect_questions if args.expect_questions is not None else md.get('question_count'),
         strict=args.strict,
     )
     print_check(result)
@@ -948,15 +950,15 @@ def main() -> int:
     b.add_argument("--anchor-overrides", default=str(DEFAULT_ANCHOR_OVERRIDES))
     b.add_argument("--question-overrides", default=str(DEFAULT_QUESTION_OVERRIDES))
     b.add_argument("--out", default=str(DEFAULT_OUT))
-    b.add_argument("--expect-cards", type=int, default=85)
-    b.add_argument("--expect-keypoints", type=int, default=125)
-    b.add_argument("--expect-questions", type=int, default=200)
+    b.add_argument("--expect-cards", type=int, default=None)
+    b.add_argument("--expect-keypoints", type=int, default=None)
+    b.add_argument("--expect-questions", type=int, default=None)
 
     c = sub.add_parser("check", help="校验注册表")
     c.add_argument("--file", required=True)
-    c.add_argument("--expect-cards", type=int, default=85)
-    c.add_argument("--expect-keypoints", type=int, default=125)
-    c.add_argument("--expect-questions", type=int, default=200)
+    c.add_argument("--expect-cards", type=int, default=None)
+    c.add_argument("--expect-keypoints", type=int, default=None)
+    c.add_argument("--expect-questions", type=int, default=None)
     c.add_argument("--strict", action="store_true")
 
     r = sub.add_parser("report", help="生成映射报告")

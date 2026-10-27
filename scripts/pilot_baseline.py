@@ -48,6 +48,19 @@ INPUTS = {
     "pilot": "中间产物/batch040/learning_value_pilot/item_v2_pilot.json",
 }
 
+
+BATCH_INPUTS = {
+    "batch040": INPUTS,
+    "batch043": {
+        "review": "复习资料/急诊与灾难医学教师重点版/急诊与灾难医学教师重点版_BPA_主复习资料.md",
+        "questions": "最终产物/batch043/ALL_questions_FIXED.json",
+        "keypoints": "输入素材/大四上/急诊与灾难医学/急诊与灾难医学_教师重点_锚定清单_20261026.md",
+        "blueprint": "中间产物/batch043/出题蓝图_batch043.md",
+        "learning_value": "reports/validate/learning_value_batch043.json",
+        "pilot": "中间产物/batch043/pilot/kc_registry.json",
+    },
+}
+
 TEXT_INPUTS = {"review", "keypoints", "blueprint"}
 JSON_INPUTS = {"questions", "learning_value", "pilot"}
 
@@ -236,7 +249,7 @@ def stats_for(name: str, path: Path):
 
 def build_manifest(batch: str = DEFAULT_BATCH) -> dict:
     inputs = {}
-    for name, rel in INPUTS.items():
+    for name, rel in BATCH_INPUTS.get(batch, INPUTS).items():
         path = BASE / rel
         if not path.exists():
             raise FileNotFoundError(f"missing input[{name}]: {path}")
