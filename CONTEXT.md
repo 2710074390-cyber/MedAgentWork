@@ -87,6 +87,16 @@
 - **命令**：`python scripts/check_review_detail.py --md <MD> --mode auto --profile release_teacher_keypoint`；已接入 `quality_gate.py` 的 R2/R3 `review_detail` 检查。
 - **标准全文**：`docs/复习资料详细度标准.md`；基线报告 `reports/validate/review_detail_ent_baseline_20261027.json|md`。
 
+### 概念标注契约（HC-27 · 2026-10-27）
+
+- **定性**：每道题必须写明它测到哪几个概念。**这是生成期属性**，不是事后从解析文本反推的；反推在"一题一锚点"的题库上只能到 5%，且不可复核。
+- **版本开关**：`schema_version=2.1` 起 `concepts` 为必填；1.0/2.0 为历史产物，**不追溯**（`batch044` 起生效）。
+- **字段**：`concepts: [{role: primary|differential|related, keypoint: "第N条", title: "概念名", evidence: "为什么这题测到它"}]`；每题**恰好 1 条 primary**，其 `keypoint` 必须等于本题 `keypoint_ref`；A2/A3/A4/X **≥2 条**；`evidence` ≥8 字。
+- **命令**：`python scripts/check_source_concepts.py --file <题库JSON> --batch {batchID}`（零依赖，默认 `--min-batch 44`；旧批次输出 SKIP、退出码 2，不阻断）。
+- **门禁**：MedGen 阶段四自检必跑；`quality_gate.py` 的 `r2.source_concepts`（已写入 pilot / release_teacher_keypoint 的 `required_checks`）。
+- **下游**：`label_concepts.py` 优先解析 `concepts`（`source=declared`），无源标注才回退推断（`source=inferred`）；`build_concept_graph.py --labels` 据此重建 `measures` 边；`check_concept_graph.py` 的 C4 对源标注批次按「A2+ ≥98% 解析成功」判，C8 报未解析概念。
+- **契约 schema**：`schemas/agent2_output.schema.json`（if/then 条件必填，仅对 2.1 生效）。⚠️ 本机默认 python 无 `jsonschema`，`ingest.py` 的 schema 校验会静默跳过，所以**不能只靠 schema**，必须跑上面那条零依赖命令。
+
 ## 跨 Agent 工具同步规则
 
 > 安装/下载任何新工具后，必须同步更新全部 6 个工作区的 CONTEXT.md 工具路径表。
@@ -468,6 +478,12 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | **quality_policy.py** | 1.0.0 | `scripts/quality_policy.py` | `python scripts/quality_policy.py --validate` / `--show pilot` — HC-25 质量基准单一事实来源加载器（2026-10-23） |
 | **quality_gate.py** | 1.0.0 | `scripts/quality_gate.py` | `python scripts/quality_gate.py --stage r0/r1/r2/r3/r4 --batch {batchID} --profile pilot/release_* --mode advisory/enforce` — R0–R4 全流程门禁编排（HC-25，2026-10-23）；报告落 `reports/gate/` |
 | **check_review_detail.py** | 1.0.0 | `scripts/check_review_detail.py` | `python scripts/check_review_detail.py --md <MD> --mode auto/teacher_keypoint/course_schedule/module --profile release_*` — 复习资料详细度契约（HC-26，2026-10-27）：九槽位/分级阈值/模块八块/课程安排八块；报告落 `reports/validate/review_detail_*` |
+| **build_concept_graph.py** | 1.0.0 | `scripts/build_concept_graph.py` | `python scripts/build_concept_graph.py [--subject 急诊] [--no-prereq]` — 概念图建图（2026-10-27）：合并各批次 `kc_registry.json` → `question_bank/concept_graph.json`；**从 `display_id` 重解析模块**（急诊注册表 `module` 全为 M00，不可信）；建 measures/prereq/ref 三类边 + 模块级 `module_prereq`；支持 `concept_prereq_overrides.json` 人工加删边 |
+| **check_source_concepts.py** | 1.0.0 | `scripts/check_source_concepts.py` | `python scripts/check_source_concepts.py --file <题库JSON> --batch batchNNN [--require]` — **HC-27 生成期概念标注门禁**（2026-10-27，零依赖）：S1–S6 校验 `concepts`（存在/唯一 primary/A2+ ≥2 条/字段长度/锚点一致/标题去重）；`--min-batch 44` 起强制 `schema_version=2.1`，旧批次 SKIP（退出码 2）；报告 `reports/validate/source_concepts_*.json` |
+| **label_concepts.py** | 1.0.0 | `scripts/label_concepts.py` | `python scripts/label_concepts.py [--subject X] [--max-secondary 2]` — 一题多概念标注：**优先解析 HC-27 源标注**（`source=declared`，按 keypoint 共属→标题重叠→标题回退解析），无源标注才回退三信号推断（`source=inferred`）；输出 `question_bank/concept_labels.jsonl` + 人工队列 `reports/validate/concept_label_manual_queue.csv` |
+| **check_concept_graph.py** | 1.0.0 | `scripts/check_concept_graph.py` | `python scripts/check_concept_graph.py [--subject X] [--strict]` — 概念图门禁 C1–C7（无环/孤立/每题有主概念/多标签率/边证据/自环重复/无题卡）；报告 `reports/validate/concept_graph_check_*.json|md`；已接入 `quality_gate.py` 的 `concept_graph`（pilot 与 release_teacher_keypoint profile） |
+| **build_concept_cards.py** | 1.0.0 | `scripts/build_concept_cards.py` | `python scripts/build_concept_cards.py --subject 急诊` — 生成 Obsidian 概念卡 `Obsidian产物/概念卡/<学科全称>/<学科>-K-Mxx-xxx.md` + `Obsidian产物/概念索引/` 索引页 + `_MOC/<学科>.md` 回链；**幂等**，重跑覆盖；不复制卡片正文（铁律④） |
+| **render_concept_atlas.py** | 1.0.0 | `scripts/render_concept_atlas.py` | `python scripts/render_concept_atlas.py` — 单文件概念地图 `reports/atlas/concept_atlas.html`（0 外部请求，双击即看）：按模块分组 + 前置/后继 + 关联题证据；学习器静态预览，非站点交付物 |
 | **spaced_schedule.py** | 1.0.0 | `scripts/spaced_schedule.py` | `build / schedule / grade / stats / export-anki / simulate` — D3 复习卡片 + SM-2 调度（2026-10-23）；缺答案不编造，写入 answer_reconciliation.md |
 | **render_pilot_review.py** | 1.0.0 | `scripts/render_pilot_review.py` | `python scripts/render_pilot_review.py --items review_items.jsonl --out pilot_review.html` — 离线复习 HTML（localStorage 进度，无外部请求） |
 | **fact_check.py** | 1.0.0 | `scripts/fact_check.py` | `python scripts/fact_check.py pages --file X --subject neurology` / `golden --file X` — 事实校验机械化（P1-1，2026-08-13）：页码反查 + GoldenSet 交叉验证 |
@@ -494,7 +510,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | **bge-small-zh-v1.5** | 已缓存 `~/.cache/huggingface/hub`，离线可跑；如需重下走 `HF_ENDPOINT=https://hf-mirror.com` |
 | **GitHub 镜像序** | `gh-proxy.com` → `ghproxy.net` → `mirror.ghproxy.com` → 直连（实测 gh-proxy.com 可用，mirror.ghproxy.com 超时） |
 | **calibrated_p 性质** | CMExam 人工标注锚点 + 先验表的外部先验估计，**非本库实测**。允许：组卷配平/异常筛查/推送排序；禁止：对外标注「实测难度」 |
-| **注册表覆盖** | registry 现 **5,276** 题（`question_bank/registry_meta.json` 的 `stats.total`，2026-09-07 随 batch035 刷新；2026-08-20 曾补齐 batch004/006/007/008/009/010/011/012/013/014/016/020/021/023/027 注册）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
+| **注册表覆盖** | registry 现 **6,490** 题 / 32 个批次（`question_bank/registry_meta.json` 的 `stats.total`，2026-10-27 实测）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
 | **学科数** | **23**（`知识库素材/subject_config.json` 的 `subjects` 条目数，v2.0 · 2026-09-01） |
 
 ### ⚠️ index.html 对外数字（2026-10-27 改版后仅剩一处）
@@ -505,7 +521,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 
 | 位置 | 还需手工同步吗 | 真身来源 |
 |---|---|---|
-| 首页统计条（题库注册 / 学科覆盖） | **否**——改版后已移除 | 原 `question_bank/registry_meta.json` → `stats.total`（2026-10-27 实测 **6,190**）；`知识库素材/subject_config.json` → `subjects`（**23**） |
+| 首页统计条（题库注册 / 学科覆盖） | **否**——改版后已移除 | 原 `question_bank/registry_meta.json` → `stats.total`（2026-10-27 实测 **6,490**）；`知识库素材/subject_config.json` → `subjects`（**23**） |
 | 软件工坊 `sw-tags` 安装包体积 | **否**——`sw-tags` 已移除 | Release 资产 `MedKit-Setup-*.exe` 实测 49.8 MB |
 | 软件工坊 `sw-desc` 版本亮点文案 | **是**——每次发版补一句本版改了什么 | `medkit` 仓库 CHANGELOG / GitHub Release |
 | 软件工坊 `sw-ver` 版本基线 | **是**——发版时同改两处：`#sw-ver` 初始文本 + 脚本内 `BASE={tag,mb}` | Release 最新 tag 与 `MedKit-Setup-*.exe` 实测体积 |

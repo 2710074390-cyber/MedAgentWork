@@ -96,6 +96,32 @@ SCHEMA_MAP = {
 }
 
 
+def _fallback_checks(filepath, stage):
+    """jsonschema 缺失时的零依赖兜底。
+
+    本机默认解释器没有 jsonschema，原先这里直接 return []，
+    等于「摄入即校验」静默失效。HC-27（concepts）不依赖任何库，
+    这里补上，至少保证 schema 2.1 的概念标注在摄入时能被拦下。
+    """
+    if stage != 'agent2':
+        return []
+    try:
+        sys.path.insert(0, str(BASE / 'scripts'))
+        import check_source_concepts as csc
+        data = json.loads(Path(filepath).read_text(encoding='utf-8'))
+        if not isinstance(data, list):
+            return []
+        errs = []
+        for q in data:
+            if str(q.get('schema_version') or '') != '2.1':
+                continue
+            fails, _ = csc.check_question(q)
+            errs += [f'schema[agent2]: {x}' for x in fails]
+        return errs[:20]
+    except Exception:
+        return []
+
+
 def validate_schema(filepath, stage):
     """契约 schema 校验（jsonschema）。schema 缺失/解析失败/库不可用时静默跳过。"""
     schema_file = BASE / 'schemas' / SCHEMA_MAP.get(stage, '')
@@ -111,7 +137,7 @@ def validate_schema(filepath, stage):
         errors = sorted(validator.iter_errors(data), key=lambda e: list(e.path))
         return [f'schema[{stage}]: {"/".join(map(str, e.path)) or "$"}: {e.message}' for e in errors[:20]]
     except ImportError:
-        return []
+        return _fallback_checks(filepath, stage)
     except Exception:
         return []
 

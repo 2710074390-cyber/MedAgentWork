@@ -58,8 +58,41 @@
       "topic": { "type": "string" },
       "schema_version": {
         "type": "string",
-        "enum": ["1.0", "2.0"],
-        "description": "题目契约版本。2.0 起 learning_value 为交付必需项（HC-24）；1.0 为历史产物。"
+        "enum": ["1.0", "2.0", "2.1"],
+        "description": "题目契约版本。2.0 起 learning_value 为交付必需项（HC-24）；2.1 起 concepts 为交付必需项（HC-27，2026-10-27）。1.0/2.0 为历史产物，不追溯。"
+      },
+      "concepts": {
+        "type": "array",
+        "description": "HC-27 概念标注（schema 2.1 必填）：这道题测到的概念，1 条 primary + 至少 1 条 differential。keypoint 用教师重点条号（如「第2条」）作为与 KC 卡片的连接键，title 写概念名，evidence 写为什么会测到它。A2/A3/A4/X 至少 2 条；A1/B1/判断 可只写 1 条。",
+        "minItems": 1,
+        "maxItems": 4,
+        "items": {
+          "type": "object",
+          "required": ["role", "keypoint", "title", "evidence"],
+          "properties": {
+            "role": {
+              "type": "string",
+              "enum": ["primary", "differential", "related"],
+              "description": "primary=本题主概念（每题唯一）；differential=干扰项对应的鉴别概念；related=解析中提到但非干扰项"
+            },
+            "keypoint": {
+              "type": "string",
+              "minLength": 2,
+              "description": "教师重点条号，与 keypoint_ref 同格式（如「第2条」）。primary 必须与本题 keypoint_ref 一致。"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 2,
+              "description": "概念名，尽量用教师重点原文的词，便于回查 KC 卡片标题"
+            },
+            "evidence": {
+              "type": "string",
+              "minLength": 8,
+              "description": "为什么这道题测到这个概念：指出题干/选项/解析中的具体线索，不得只写「相关」"
+            }
+          },
+          "additionalProperties": true
+        }
       },
       "learning_value": {
         "type": "object",
@@ -93,6 +126,27 @@
         "additionalProperties": true
       }
     },
+    "allOf": [
+      {
+        "if": {
+          "required": ["schema_version"],
+          "properties": { "schema_version": { "const": "2.1" } }
+        },
+        "then": { "required": ["concepts"] }
+      },
+      {
+        "if": {
+          "required": ["schema_version", "type"],
+          "properties": {
+            "schema_version": { "const": "2.1" },
+            "type": { "enum": ["A2", "A3", "A4", "X"] }
+          }
+        },
+        "then": {
+          "properties": { "concepts": { "minItems": 2 } }
+        }
+      }
+    ],
     "additionalProperties": true
   }
 }

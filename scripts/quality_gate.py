@@ -473,6 +473,65 @@ def check_review_detail(args, profile: dict, mode: str) -> dict:
     )
 
 
+def check_source_concepts(args) -> dict:
+    """HC-27 生成期概念标注门禁：按批次号判定，旧批次 SKIP。"""
+    out = BASE / "reports/validate" / f"source_concepts_{args.batch}_{args.stage}.json"
+    r = run_cmd([sys.executable, "scripts/check_source_concepts.py",
+                 "--file", str(args.questions), "--batch", str(args.batch), "--out", str(out)])
+    code = r["returncode"]
+    status = {0: "PASS", 1: "FAIL", 2: "SKIP"}.get(code, "FAIL")
+    detail = ""
+    try:
+        d = read_json(out)
+        if d.get("status") == "SKIP":
+            detail = str(d.get("reason") or "SKIP")
+        else:
+            detail = (f"{d.get('status')}：2.1 题 {d.get('checked')}/{d.get('total')}；"
+                      f"A2+ 双概念率 {d.get('multi_type_rate')}；"
+                      f"{'; '.join((d.get('fails') or [])[:3])}")
+    except Exception:
+        detail = f"退出码 {code}"
+    return check_item("r2.source_concepts", status, f"HC-27 {detail}",
+                      required=(status != "SKIP"), details=r)
+
+
+def check_concept_graph(args, profile: dict, mode: str) -> dict:
+    """概念图门禁（可选）：profile.required_checks 含 concept_graph 才触发。"""
+    graph_path = BASE / "question_bank/concept_graph.json"
+    if not graph_path.exists():
+        return check_item("r2.concept_graph", "SKIP",
+                          "未建概念图（先跑 scripts/build_concept_graph.py）", required=False)
+    out = BASE / "reports/validate" / f"concept_graph_check_{args.batch}_{args.stage}.json"
+    cmd = [sys.executable, "scripts/check_concept_graph.py", "--out", str(out)]
+    try:
+        subjects = {str(n.get("subject", "")).lower(): n.get("subject")
+                    for n in read_json(graph_path).get("nodes") or []}
+        subj = subjects.get(str(args.subject).lower())
+        if subj:
+            cmd += ["--subject", str(subj)]
+            out = BASE / "reports/validate" / f"concept_graph_check_{args.batch}_{args.stage}_{args.subject}.json"
+            cmd += ["--out", str(out)]
+    except Exception:
+        pass
+    r = run_cmd(cmd)
+    try:
+        s = read_json(out)
+    except Exception:
+        return check_item("r2.concept_graph", "FAIL", "门禁报告不可读", details=r)
+    status = str(s.get("status") or "FAIL")
+    fails = [c["id"] for c in s.get("checks") or [] if c["status"] == "FAIL"]
+    warns = [c["id"] for c in s.get("checks") or [] if c["status"] == "WARN"]
+    if mode == "advisory" and status == "FAIL":
+        status = "WARN"
+        fails = [f"{x}(advisory)" for x in fails]
+    stats = s.get("stats") or {}
+    return check_item(
+        "r2.concept_graph", status,
+        f"节点 {stats.get('nodes')}；边 {stats.get('edges')}；"
+        f"多标签率 {stats.get('multi_label_rate_A2plus')}；FAIL {fails}；WARN {warns}",
+        details=r)
+
+
 def check_review_items(args, profile: dict, mode: str) -> dict:
     """D3 复习卡片/Anki/HTML 的轻量验收；未生成则 SKIP，不阻断其他批次。"""
     base = Path(args.kc).parent
@@ -579,6 +638,10 @@ def build_stage_checks(args, profile: dict, mode: str) -> list[dict]:
         checks.append(check_scorecard(args, profile, mode))
     if "review_detail" in req:
         checks.append(check_review_detail(args, profile, mode))
+    if "source_concepts" in req:
+        checks.append(check_source_concepts(args))
+    if "concept_graph" in req:
+        checks.append(check_concept_graph(args, profile, mode))
     checks.append(check_review_items(args, profile, mode))
 
     if stage == "r3":

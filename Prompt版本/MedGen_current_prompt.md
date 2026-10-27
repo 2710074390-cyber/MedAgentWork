@@ -32,6 +32,29 @@
 - `anchor_status`：`verified|partial|mismatch|missing`；`mismatch` 必须回退重做。
 - **自检**：生成后运行 `python scripts/check_learning_value.py --file <你的JSON路径>`；`FAIL>0` 或 `ID 冲突>0` 不得交付。
 
+### HC-27：概念标注强制（2026-10-27 新增 · schema v2.1）
+
+从 batch044 起，每道题必须输出 `"schema_version": "2.1"` 与 `"concepts"` 数组。**旧批次不追溯**，但新批次缺此项即不合格。
+
+为什么要有这一条：错题归因靠"这题到底考了哪几个概念"。一题只挂一个概念时，A3 病例题答错无法区分是"概念不会"还是"没读懂题"；一个概念只出现在一处时，也没法统计它被考了几次。这件事**只能在出题时标**，事后拿解析文本去猜，准确率很低且不可复核。
+
+- 每题 **恰好 1 条** `role="primary"`，其 `keypoint` 必须与本题 `keypoint_ref` 一致。
+- **A2/A3/A4/X 至少 2 条**：1 条 primary + 至少 1 条 `differential`（干扰项对应的鉴别概念）。A1/B1/判断 可以只写 1 条。
+- `title` 写概念名，尽量用教师重点原文里的词（便于回查 KC 卡片标题），≥2 字。
+- `evidence` 写"为什么这题测到它"，要具体到题干或某个选项，≥8 字；写"相关"不算。
+- 只写 `related` 不算数：`differential` 才是"干扰项在考什么"，这是错题归因的抓手。
+- 同一题内 `title` 不得重复；`concepts` 最多 4 条。
+- **自检**：`python scripts/check_source_concepts.py --file <你的JSON路径> --batch {batchID}`；`FAIL>0` 不得交付。
+
+```json
+"concepts": [
+  {"role": "primary", "keypoint": "第2条", "title": "急诊五级分诊",
+   "evidence": "题干直接问Ⅱ类病人的评估时限"},
+  {"role": "differential", "keypoint": "第3条", "title": "灾难检伤分类与四色标签",
+   "evidence": "C 项把Ⅲ类的 30 分钟时限套到Ⅱ类上"}
+]
+```
+
 ### HC-3：知识溯源强制
 每个知识点主张必须有来源锚点：`[源:教材名 章.节/页码]` 或 `[源:笔记 PX]`。**数值型答案必须标注具体页码**（如「P142」）。
 
@@ -214,6 +237,7 @@
 - **R6（干扰项区分度）**：数值型干扰项与正确值比值 ≤5x
 - **R8（最小长度与截断防护·batch007新增）**：选项不得以虚词结尾（的/和/与/或/于等），数值选项必须有单位。**R8 FAIL 时必须修正后再交付**
 - **HC-24（学习价值层·2026-10-23）**：运行 `python scripts/check_learning_value.py --file <你的JSON路径>`；`FAIL>0` 必须修正后再交付；逐项覆盖与错误认知覆盖必须 100%。
+- **HC-27（概念标注·2026-10-27）**：运行 `python scripts/check_source_concepts.py --file <你的JSON路径> --batch {batchID}`；`FAIL>0` 必须修正后再交付（A2/A3/A4/X 少于 2 条概念、primary 锚点与 `keypoint_ref` 不一致、evidence 少于 8 字，都会被判 FAIL）。
 
 如 R2>2.0、R3/R4/R8 有 FAIL，必须在输出前修正。不通过则不交付（避免 ESC 升级导致 Agent 二次回调 +20min）。
 
@@ -313,7 +337,7 @@ E. [选项内容]
 ### 元数据 (JSON)
 {
   "question_id": "{章节缩写}-{题型}-{序号}",
-  "schema_version": "2.0",
+  "schema_version": "2.1",
   "question_type": "A1" | "A2" | "B1" | "X",
   "polarity": "positive" | "negative" | "multi",
   "bloom_level": "memory" | "comprehension" | "application" | "analysis",
@@ -343,6 +367,10 @@ E. [选项内容]
     "answer_confidence": "high" | "medium"
   },
   "keypoint_ref": "第18条",
+  "concepts": [
+    {"role": "primary", "keypoint": "第18条", "title": "概念名（用教师重点原文的词）", "evidence": "题干/选项中的具体线索"},
+    {"role": "differential", "keypoint": "第12条", "title": "干扰项对应的概念", "evidence": "哪个选项在考它、怎么错的"}
+  ],
   "license": "public_noncommercial",
   "difficulty_index": 0.65,
   "discrimination_index": 0.42,
