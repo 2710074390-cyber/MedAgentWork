@@ -488,19 +488,20 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | **注册表覆盖** | registry 现 **5,276** 题（`question_bank/registry_meta.json` 的 `stats.total`，2026-09-07 随 batch035 刷新；2026-08-20 曾补齐 batch004/006/007/008/009/010/011/012/013/014/016/020/021/023/027 注册）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
 | **学科数** | **23**（`知识库素材/subject_config.json` 的 `subjects` 条目数，v2.0 · 2026-09-01） |
 
-### ⚠️ index.html 两处「会漂移」的数字（每次发版/扩容后必须同步）
+### ⚠️ index.html 对外数字（2026-10-27 改版后仅剩一处）
 
-`index.html` 的对外数字**不在任何守卫的扫描面内**（链接门禁只看 URL 可达性），靠人记得改。
-2026-10-12 实测抓到两处已漂移：题库数停在 4,917（真身 5,276）、学科数停在 15（真身 23）。
+2026-10-27 首页整体重写（212 文件 +118k/−79k）后，**原「统计条」整块移除**：
+`题库注册 / 学科覆盖 / 安装包体积 / sw-tags` 四处硬编码数字**已不在页面上**——
+本节原先登记的漂移点有两个随之消失，别再照着旧表去页面上找。
 
-| 位置 | 现状写法 | 真身来源 |
+| 位置 | 还需手工同步吗 | 真身来源 |
 |---|---|---|
-| hero 徽标 / 终端动画 / 统计条 / 三处 right-sub | `5,276 题 · 23 学科` | `question_bank/registry_meta.json` → `stats.total`；`知识库素材/subject_config.json` → `subjects` 条数 |
-| 软件工坊（`#software`）的 `sw-desc` 正文 | `v0.12.0 新发布：…` | `medkit` 仓库的 CHANGELOG / GitHub Release |
-| 软件工坊 `sw-tags` 的安装包体积 | `安装包 ≈ 50 MB` | Release 资产里 `MedKit-Setup-*.exe` 的实际体积 |
+| 首页统计条（题库注册 / 学科覆盖） | **否**——改版后已移除 | 原 `question_bank/registry_meta.json` → `stats.total`（2026-10-27 实测 **6,190**）；`知识库素材/subject_config.json` → `subjects`（**23**） |
+| 软件工坊 `sw-tags` 安装包体积 | **否**——`sw-tags` 已移除 | Release 资产 `MedKit-Setup-*.exe` 实测 49.8 MB |
+| 软件工坊 `sw-desc` 版本亮点文案 | **是**——每次发版补一句本版改了什么 | `medkit` 仓库 CHANGELOG / GitHub Release |
 
-> `sw-ver` 版本徽标与下载直链由 GitHub API 动态取（`releases/latest`），**无需手工改**；
-> 会过期的是上面三处**手写文案**。
+> `sw-ver` 版本徽标与下载直链由 GitHub API 动态取（`releases/latest`），**无需手工改**。
+> 页面里剩下的 `364 题 / 242 题 / 200 题` 是各批次/章节自己的数量，不是全局统计——别当成漂移。
 
 ### 复习资料生成路由（2026-10-22 更新 · BPA v1.0 强制）
 
