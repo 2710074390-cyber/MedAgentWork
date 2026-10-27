@@ -68,6 +68,25 @@ MedAgentWork 操作流程（DSH 版 · 2026-08-13 重构）
         旧批次/旧产物冻结，不追溯、不回改；新批次/新版本必须过 R0–R4。
 
 ──────────────────────────────────────────
+二·六、复习资料详细度门禁（HC-26 · 2026-10-27）
+──────────────────────────────────────────
+
+  标准来源  docs/复习资料详细度标准.md + scripts/quality_policy.json 的 review_detail_* 阈值
+  判定      掌握级九槽位 + 案例；熟悉级七槽位；了解级四槽位；每卡自测必须有答案；
+            每模块八块（前置/摘要/对比表/因果链/案例/自测/小结/展开≥2）；
+            课程安排版每讲八块（目标/课前/重点/机制/案例/自测/时间/衔接）。
+
+  教师重点版
+    python scripts/check_review_detail.py --md "复习资料/{科目}教师重点版/{科目}教师重点版_主复习资料.md" --mode auto --profile release_teacher_keypoint --json-out reports/validate/review_detail_{科目}.json --md-out reports/validate/review_detail_{科目}.md
+  教学计划版
+    python scripts/check_review_detail.py --md <教学计划版 MD> --mode module --profile release_teaching_plan
+  课程安排版
+    python scripts/check_review_detail.py --md <课程安排版 MD> --mode course_schedule --profile release_teaching_plan
+
+  规则  FAIL → 回退 Agent 5 补写；正式发布必须 PASS；advisory 只用于试点，不得用于发布。
+        R2/R3 已自动包含 review_detail 检查，无需单独再跑。
+
+──────────────────────────────────────────
 三、备用流程（Cherry Studio 手动接力，已弃用）
 ──────────────────────────────────────────
 

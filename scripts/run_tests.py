@@ -11,8 +11,10 @@ run_tests.py — MedAgentWork 零依赖测试运行器 v1.0 (2026-08-13 · P0-2)
   python scripts/run_tests.py test_qbank # 按文件名过滤
 """
 import importlib.util
+import inspect
 import sys
 import traceback
+import unittest
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding='utf-8', errors='replace')
@@ -37,7 +39,7 @@ def main():
     if filt:
         test_files = [f for f in test_files if filt in f.name]
 
-    passed = failed = errors = 0
+    passed = failed = errors = skipped = 0
     failures = []
     for tf in test_files:
         try:
@@ -49,6 +51,18 @@ def main():
         funcs = [(n, f) for n, f in sorted(vars(mod).items())
                  if n.startswith('test_') and callable(f)]
         for name, fn in funcs:
+            # 依赖 pytest 内置夹具（tmp_path/monkeypatch）的用例，本运行器无法注入 → 交给 pytest
+            try:
+                params = [p for p in inspect.signature(fn).parameters.values()
+                          if p.default is inspect.Parameter.empty
+                          and p.kind in (p.POSITIONAL_ONLY, p.POSITIONAL_OR_KEYWORD, p.KEYWORD_ONLY)]
+            except (TypeError, ValueError):
+                params = []
+            if params:
+                skipped += 1
+                if verbose:
+                    print(f'  s {tf.name}::{name} (pytest 夹具: {", ".join(p.name for p in params)})')
+                continue
             try:
                 fn()
                 passed += 1
@@ -58,12 +72,18 @@ def main():
                 failed += 1
                 failures.append((tf.name, name, f'AssertionError: {e}'))
             except Exception as e:
+                # pytest.skip / unittest.SkipTest：夹具缺失时显式跳过，不算失败
+                if isinstance(e, unittest.SkipTest) or type(e).__name__ in ("Skipped", "SkipTest"):
+                    skipped += 1
+                    if verbose:
+                        print(f'  s {tf.name}::{name} ({e})')
+                    continue
                 errors += 1
                 failures.append((tf.name, name, f'{type(e).__name__}: {e}'))
 
     print(f'\n{"─"*60}')
     print(f'  MedAgentWork 测试套件 ({len(test_files)} 个文件)')
-    print(f'  ✅ {passed} 通过  ✗ {failed} 失败  ⚠️ {errors} 错误')
+    print(f'  ✅ {passed} 通过  ✗ {failed} 失败  ⚠️ {errors} 错误  s {skipped} 跳过')
     if failures:
         print(f'\n  失败详情:')
         for fname, tname, detail in failures:

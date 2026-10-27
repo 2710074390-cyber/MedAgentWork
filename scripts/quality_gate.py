@@ -423,6 +423,48 @@ def check_scorecard(args, profile: dict, mode: str) -> dict:
     )
 
 
+def check_review_detail(args, profile: dict, mode: str) -> dict:
+    """HC-26 复习资料详细度：九槽位/模块块/自测答案/课程安排八块。"""
+    md = Path(args.review)
+    if not md.exists():
+        return check_item("r2.review_detail", "SKIP",
+                          f"批次无复习资料产物，详细度检查不适用：{args.review}", required=False)
+    out = BASE / "reports/validate" / f"review_detail_{args.batch}_{args.stage}.json"
+    cmd = [sys.executable, "scripts/check_review_detail.py",
+           "--md", str(md), "--mode", "auto", "--profile", args.profile,
+           "--json-out", str(out), "--md-out", str(out.with_suffix(".md")), "--quiet"]
+    if mode == "advisory":
+        cmd.append("--advisory")
+    r = run_cmd(cmd)
+    if not out.exists():
+        return check_item("r2.review_detail", "FAIL",
+                          "详细度检查未产出报告", details=r)
+    try:
+        data = read_json(out)
+    except Exception as exc:
+        return check_item("r2.review_detail", "FAIL",
+                          f"详细度报告解析失败：{exc}", details={"path": str(out)})
+    s = data.get("summary", {})
+    status = str(s.get("status") or "FAIL")
+    if status == "SKIP":
+        return check_item("r2.review_detail", "SKIP",
+                          str((data.get("warnings") or ["未解析到考点卡"])[0]),
+                          required=False, details={"path": str(out), "summary": s})
+    issues = list(data.get("blocking") or [])
+    if status == "FAIL" and mode == "advisory":
+        status = "WARN"
+        issues.append("advisory 模式：FAIL 降级为 WARN")
+    reason = "; ".join(issues) or (
+        f"详细度 {s.get('overall')}；核心槽位 {s.get('core_slot_ratio')}；"
+        f"卡片达标 {s.get('card_pass_ratio')}"
+    )
+    return check_item(
+        "r2.review_detail", status, reason,
+        details={"path": str(out), "mode": data.get("mode"), "summary": s,
+                 "command": r},
+    )
+
+
 def check_review_items(args, profile: dict, mode: str) -> dict:
     """D3 复习卡片/Anki/HTML 的轻量验收；未生成则 SKIP，不阻断其他批次。"""
     base = Path(args.kc).parent
@@ -527,6 +569,8 @@ def build_stage_checks(args, profile: dict, mode: str) -> list[dict]:
         checks.append(check_item_learning_value(args, profile, mode))
     if "scorecard" in req:
         checks.append(check_scorecard(args, profile, mode))
+    if "review_detail" in req:
+        checks.append(check_review_detail(args, profile, mode))
     checks.append(check_review_items(args, profile, mode))
 
     if stage == "r3":
@@ -625,6 +669,7 @@ def main() -> int:
     args = ap.parse_args()
 
     profile_name = args.profile or ("release_teacher_keypoint" if args.stage == "r3" else "pilot")
+    args.profile = profile_name
     try:
         policy = _load_policy(Path(args.policy))
         profile = policy["profiles"][profile_name]

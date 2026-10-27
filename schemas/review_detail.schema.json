@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Review Detail Contract Report (HC-26)",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "generated_at",
+    "subject",
+    "profile",
+    "md_path",
+    "mode",
+    "summary",
+    "cards",
+    "modules",
+    "blocking",
+    "warnings"
+  ],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "generated_at": {"type": "string"},
+    "subject": {"type": "string"},
+    "profile": {"type": "string"},
+    "md_path": {"type": "string"},
+    "mode": {
+      "type": "string",
+      "enum": ["teacher_keypoint", "course_schedule", "module"]
+    },
+    "thresholds": {"type": "object"},
+    "summary": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"type": "string", "enum": ["PASS", "WARN", "FAIL", "SKIP"]},
+        "cards": {"type": "integer", "minimum": 0},
+        "modules": {"type": "integer", "minimum": 0},
+        "units": {"type": "integer", "minimum": 0},
+        "overall": {"type": "number", "minimum": 0, "maximum": 1},
+        "core_slot_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "card_pass_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "selftest_answer_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "module_block_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "case_module_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+        "avg_chars": {"type": "number", "minimum": 0}
+      }
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "module", "tier", "chars", "units", "slots", "missing_slots", "pass"],
+        "properties": {
+          "id": {"type": "string"},
+          "module": {"type": "string"},
+          "tier": {"type": "string", "enum": ["core", "familiar", "aware"]},
+          "title": {"type": "string"},
+          "chars": {"type": "integer", "minimum": 0},
+          "units": {"type": "integer", "minimum": 0},
+          "slot_ratio": {"type": "number", "minimum": 0, "maximum": 1},
+          "slots": {"type": "object", "additionalProperties": {"type": "boolean"}},
+          "missing_slots": {"type": "array", "items": {"type": "string"}},
+          "pass": {"type": "boolean"},
+          "deficits": {"type": "array", "items": {"type": "string"}},
+          "warnings": {"type": "array", "items": {"type": "string"}},
+          "keypoints": {"type": "array", "items": {"type": "integer"}}
+        }
+      }
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "blocks", "missing_blocks", "pass"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "chars": {"type": "integer", "minimum": 0},
+          "tables": {"type": "integer", "minimum": 0},
+          "callouts": {"type": "integer", "minimum": 0},
+          "expand_blocks": {"type": "integer", "minimum": 0},
+          "selftests": {"type": "integer", "minimum": 0},
+          "blocks": {"type": "object", "additionalProperties": {"type": "boolean"}},
+          "missing_blocks": {"type": "array", "items": {"type": "string"}},
+          "pass": {"type": "boolean"}
+        }
+      }
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "chars", "units", "blocks", "missing_blocks", "pass"],
+        "properties": {
+          "id": {"type": "string"},
+          "title": {"type": "string"},
+          "chars": {"type": "integer", "minimum": 0},
+          "units": {"type": "integer", "minimum": 0},
+          "blocks": {"type": "object", "additionalProperties": {"type": "boolean"}},
+          "missing_blocks": {"type": "array", "items": {"type": "string"}},
+          "pass": {"type": "boolean"},
+          "deficits": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "blocking": {"type": "array", "items": {"type": "string"}},
+    "warnings": {"type": "array", "items": {"type": "string"}}
+  }
+}

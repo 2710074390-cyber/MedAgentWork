@@ -79,6 +79,14 @@
 - **报告**：`reports/gate/quality_gate_{batchID}_{stage}_{timestamp}.json|md`；PASS/WARN/BLOCKED/SKIPPED 必须显式记录，SKIP≠PASS。
 - **旧产物不追溯**；新批次/新版本必须过 R0–R4；WARN 需写豁免理由/补做计划，BLOCKED 禁止发布。
 
+### 复习资料详细度契约（HC-26 · 2026-10-27）
+
+- **定性**：详细度 = 读一遍能独立回答九问（定位/机制/识别/诊断/处置/鉴别/易错/记忆/自测），掌握级另加案例；不是字数堆砌。
+- **模式**：`teacher_keypoint`（教师重点）｜`course_schedule`（周/讲/课时）｜`module`（常规模块版）。
+- **阈值（release）**：掌握 ≥900 字符/≥12 单元；熟悉 ≥550/≥7；了解 ≥250/≥4；掌握级九槽位+案例 100%；自测答案 100%；模块八块 100%。
+- **命令**：`python scripts/check_review_detail.py --md <MD> --mode auto --profile release_teacher_keypoint`；已接入 `quality_gate.py` 的 R2/R3 `review_detail` 检查。
+- **标准全文**：`docs/复习资料详细度标准.md`；基线报告 `reports/validate/review_detail_ent_baseline_20261027.json|md`。
+
 ## 跨 Agent 工具同步规则
 
 > 安装/下载任何新工具后，必须同步更新全部 6 个工作区的 CONTEXT.md 工具路径表。
@@ -459,6 +467,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | **run_tests.py** | 1.0.0 | `scripts/run_tests.py` | `python scripts/run_tests.py` — 零依赖测试运行器（P0-2，2026-08-13）；有 pytest 时可用 `python -m pytest tests/ -q` |
 | **quality_policy.py** | 1.0.0 | `scripts/quality_policy.py` | `python scripts/quality_policy.py --validate` / `--show pilot` — HC-25 质量基准单一事实来源加载器（2026-10-23） |
 | **quality_gate.py** | 1.0.0 | `scripts/quality_gate.py` | `python scripts/quality_gate.py --stage r0/r1/r2/r3/r4 --batch {batchID} --profile pilot/release_* --mode advisory/enforce` — R0–R4 全流程门禁编排（HC-25，2026-10-23）；报告落 `reports/gate/` |
+| **check_review_detail.py** | 1.0.0 | `scripts/check_review_detail.py` | `python scripts/check_review_detail.py --md <MD> --mode auto/teacher_keypoint/course_schedule/module --profile release_*` — 复习资料详细度契约（HC-26，2026-10-27）：九槽位/分级阈值/模块八块/课程安排八块；报告落 `reports/validate/review_detail_*` |
 | **spaced_schedule.py** | 1.0.0 | `scripts/spaced_schedule.py` | `build / schedule / grade / stats / export-anki / simulate` — D3 复习卡片 + SM-2 调度（2026-10-23）；缺答案不编造，写入 answer_reconciliation.md |
 | **render_pilot_review.py** | 1.0.0 | `scripts/render_pilot_review.py` | `python scripts/render_pilot_review.py --items review_items.jsonl --out pilot_review.html` — 离线复习 HTML（localStorage 进度，无外部请求） |
 | **fact_check.py** | 1.0.0 | `scripts/fact_check.py` | `python scripts/fact_check.py pages --file X --subject neurology` / `golden --file X` — 事实校验机械化（P1-1，2026-08-13）：页码反查 + GoldenSet 交叉验证 |

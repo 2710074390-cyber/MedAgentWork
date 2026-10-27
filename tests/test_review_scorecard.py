@@ -2,6 +2,7 @@
 """T5–T6 12 维学习价值评分卡测试。"""
 import json
 import tempfile
+import unittest
 from pathlib import Path
 import sys
 
@@ -10,7 +11,18 @@ sys.path.insert(0, str(BASE / "scripts"))
 import review_scorecard as rs  # noqa: E402
 
 
+def _skip_if_missing(path: Path) -> bool:
+    """基线夹具是未跟踪的过程产物；缺失时显式跳过，不伪造数据。"""
+    if path.exists():
+        return False
+    raise unittest.SkipTest(f"fixture missing: {path}")
+
+
 def test_actual_scorecard_baseline():
+    if _skip_if_missing(rs.DEFAULT_RUBRIC):
+        return
+    if _skip_if_missing(rs.DEFAULT_KC):
+        return
     card = rs.build_scorecard(
         "ent", "batch040",
         rs.DEFAULT_REVIEW, rs.DEFAULT_RUBRIC, rs.DEFAULT_KC, rs.DEFAULT_LEARNING_VALUE,
@@ -32,6 +44,8 @@ def test_repo_path_normalizes_windows_backslashes():
 
 
 def test_bad_rubric_rejected():
+    if _skip_if_missing(rs.DEFAULT_RUBRIC):
+        return
     data = json.loads(rs.DEFAULT_RUBRIC.read_text(encoding="utf-8"))
     data["dimensions"][0]["weight"] = 1
     with tempfile.TemporaryDirectory() as td:
