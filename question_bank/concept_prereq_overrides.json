@@ -1,0 +1,9 @@
+{
+  "_comment": "概念图人工覆盖。add 用于补建图上推不出的前提边，remove 用于删掉明显错误的前置。每条必须写 reason，否则门禁 C5 会判证据缺失。",
+  "_example": {
+    "add": [{"from": "急诊:K-M01-001", "to": "急诊:K-M02-002", "reason": "EMSS 是 CPR 流程的前置", "strength": "hard"}],
+    "remove": [{"from": "急诊:K-M05-001", "to": "急诊:K-M05-002", "reason": "两卡页码连续但无依赖"}]
+  },
+  "add": [],
+  "remove": []
+}
