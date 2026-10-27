@@ -8,8 +8,10 @@
    此前 /drill 等路由的响应会覆写首页离线副本；现在只缓存真正的首页。
    2026-10-20：v3 改版（Clinical Ledger 设计系统）——bump 版本让新应用壳换血，
    避免老用户继续拿到 v2 的旧首页缓存。
+   2026-10-27：v4 —— 软件工坊版本徽章改为「基线直出 + API 校正」，并把 API 请求
+   设为 no-store；bump 版本让老客户端立刻换掉带旧徽章逻辑的应用壳。
 */
-const VERSION = 'maw-v3';
+const VERSION = 'maw-v4';
 const SHELL_CACHE = VERSION + '-shell';
 const ASSET_CACHE = VERSION + '-assets';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];

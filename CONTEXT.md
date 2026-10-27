@@ -499,8 +499,13 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | 首页统计条（题库注册 / 学科覆盖） | **否**——改版后已移除 | 原 `question_bank/registry_meta.json` → `stats.total`（2026-10-27 实测 **6,190**）；`知识库素材/subject_config.json` → `subjects`（**23**） |
 | 软件工坊 `sw-tags` 安装包体积 | **否**——`sw-tags` 已移除 | Release 资产 `MedKit-Setup-*.exe` 实测 49.8 MB |
 | 软件工坊 `sw-desc` 版本亮点文案 | **是**——每次发版补一句本版改了什么 | `medkit` 仓库 CHANGELOG / GitHub Release |
+| 软件工坊 `sw-ver` 版本基线 | **是**——发版时同改两处：`#sw-ver` 初始文本 + 脚本内 `BASE={tag,mb}` | Release 最新 tag 与 `MedKit-Setup-*.exe` 实测体积 |
 
-> `sw-ver` 版本徽标与下载直链由 GitHub API 动态取（`releases/latest`），**无需手工改**。
+> `sw-ver` 徽标：先按写死的 `BASE` 基线直出（首屏不等网络、无网也正确），再用 GitHub API
+> `releases/latest` 校正。API 超时、被浏览器/边缘缓存、或返回比基线更旧的版本时，一律保持基线——
+> **不允许把更旧的版本号显示出来**（2026-10-27 修的就是「文案 v0.20.0、徽标 v0.17.0」这种新老混排：
+> 徽标吃到了 `sessionStorage` / HTTP 缓存里的旧 release JSON）。下载直链仍全部由 API 提供，不写死。
+> 另：`sw.js` 的 `VERSION` 每次改首页都要 bump，否则老访客的 SW 应用壳不会换血。
 > 页面里剩下的 `364 题 / 242 题 / 200 题` 是各批次/章节自己的数量，不是全局统计——别当成漂移。
 
 ### 复习资料生成路由（2026-10-22 更新 · BPA v1.0 强制）
