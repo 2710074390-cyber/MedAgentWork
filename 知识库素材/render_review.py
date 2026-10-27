@@ -17,7 +17,7 @@ import json
 import base64
 import html as html_module
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timedelta
 
 # Windows UTF-8 encoding fix
 if sys.platform == 'win32':
@@ -835,13 +835,389 @@ document.addEventListener('keydown',(e)=>{
 
 
 # ============================================================
+# 刷题层（--quiz）：仅在显式启用时注入，不影响既有静态渲染
+# ============================================================
+
+QUIZ_CSS = r"""
+/* ---------- 刷题入口 ---------- */
+.quiz-toggle{width:auto !important;padding:0 12px !important;font-size:13px !important;font-weight:600;gap:4px}
+#quiz-overlay{position:fixed;inset:0;z-index:2000;background:var(--bg-primary);overflow-y:auto;display:none}
+#quiz-overlay.open{display:block}
+body.quiz-open{overflow:hidden}
+.quiz-shell{max-width:1160px;margin:0 auto;padding:16px 24px 64px}
+.quiz-top{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;padding:12px 0;margin-bottom:18px;
+  background:color-mix(in srgb,var(--bg-primary) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border)}
+.quiz-back{font:inherit;font-size:13px;background:var(--bg-tertiary);border:1px solid var(--border);color:var(--text-secondary);
+  border-radius:8px;padding:7px 12px;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.quiz-back:hover{border-color:var(--accent);color:var(--accent)}
+.quiz-title{font-weight:700;font-size:15px;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.quiz-count{margin-left:auto;font-size:13px;font-weight:600;color:var(--text-secondary);white-space:nowrap}
+.quiz-count.urgent{color:var(--color-master)}
+.quiz-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:start}
+.quiz-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:12px;padding:28px;box-shadow:var(--shadow-sm)}
+.quiz-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.quiz-q{font-size:21px;font-weight:700;line-height:1.6;margin-bottom:16px;color:var(--text-primary)}
+.quiz-label{display:block;font-size:12px;color:var(--text-tertiary);margin-bottom:6px}
+.quiz-input{width:100%;min-height:76px;resize:vertical;border:1px solid var(--border);border-radius:8px;
+  background:var(--bg-primary);color:var(--text-primary);padding:10px 12px;font:inherit;font-size:14px;line-height:1.7}
+.quiz-input:focus{outline:2px solid var(--accent);outline-offset:1px}
+.quiz-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.qbtn{font:inherit;font-size:13px;border-radius:8px;padding:9px 16px;border:1px solid transparent;cursor:pointer;min-height:24px}
+.qbtn:disabled{opacity:.45;cursor:not-allowed}
+.qbtn.primary{background:var(--accent);color:#fff}
+.qbtn.primary:hover{background:#1d4ed8}
+.qbtn.ghost{background:var(--bg-tertiary);border-color:var(--border);color:var(--text-secondary)}
+.qbtn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.quiz-answer{margin-top:16px;border-top:1px dashed var(--border);padding-top:14px}
+.quiz-answer[hidden]{display:none !important}
+.quiz-answer-label{font-size:11px;font-weight:700;color:var(--text-tertiary);letter-spacing:.05em;margin-bottom:6px}
+.quiz-answer-text{font-size:15px;line-height:1.85;color:var(--text-primary)}
+.quiz-source{margin-top:8px;font-size:12px;color:var(--text-tertiary);line-height:1.6}
+.quiz-rate{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.quiz-rate[hidden]{display:none !important}
+.quiz-rate .qbtn{flex:1;min-width:110px}
+.q0{background:var(--color-master-bg);color:var(--color-master);border-color:var(--color-master-border)}
+.q1{background:var(--color-familiar-bg);color:var(--color-familiar);border-color:var(--color-familiar-border)}
+.q2{background:var(--color-success-bg);color:var(--color-success);border-color:var(--color-success-border)}
+.q3{background:var(--accent-light);color:var(--accent);border-color:var(--color-info-border)}
+.quiz-feedback{margin-top:12px;font-size:13px;line-height:1.7;color:var(--text-secondary);min-height:20px}
+.quiz-progress{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:12px;color:var(--text-tertiary)}
+.quiz-bar{flex:1;height:6px;background:var(--bg-tertiary);border-radius:999px;overflow:hidden}
+.quiz-bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.quiz-side{position:sticky;top:80px;display:flex;flex-direction:column;gap:10px}
+.quiz-side-title{font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--text-tertiary);margin-top:6px}
+.quiz-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quiz-stat{background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:10px}
+.quiz-stat b{display:block;font-size:20px;line-height:1.1;color:var(--accent)}
+.quiz-stat span{font-size:11px;color:var(--text-tertiary)}
+.quiz-setting{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px;color:var(--text-secondary);
+  background:var(--bg-secondary);border:1px solid var(--border);border-radius:8px;padding:8px 10px}
+.quiz-setting input{width:64px;font:inherit;border:1px solid var(--border);border-radius:6px;background:var(--bg-primary);
+  color:var(--text-primary);padding:3px 6px}
+.quiz-modules{display:flex;flex-direction:column;gap:5px}
+.quiz-module{display:grid;grid-template-columns:42px 1fr 64px;gap:8px;align-items:center;font-size:12px;color:var(--text-secondary);
+  background:var(--bg-secondary);border:1px solid var(--border);border-radius:6px;padding:6px 8px}
+.quiz-module .bar{height:5px;background:var(--bg-tertiary);border-radius:999px;overflow:hidden}
+.quiz-module .bar i{display:block;height:100%;background:var(--color-success);width:0}
+.quiz-module .num{text-align:right;font-family:var(--font-mono);font-size:11px;color:var(--text-tertiary)}
+.quiz-tools{display:flex;gap:6px;flex-wrap:wrap}
+.quiz-tools .qbtn{font-size:12px;padding:6px 10px}
+.quiz-note{font-size:11.5px;line-height:1.6;color:var(--text-tertiary);background:var(--bg-tertiary);border-radius:6px;padding:8px 10px}
+.quiz-highlight{outline:3px solid var(--accent);outline-offset:4px;transition:outline .2s}
+@media(max-width:900px){
+  .quiz-layout{grid-template-columns:1fr}
+  .quiz-side{position:static}
+  .quiz-shell{padding:12px 14px 48px}
+  .quiz-card{padding:18px 16px}
+  .quiz-q{font-size:18px}
+  .quiz-rate .qbtn{min-width:44%}
+  .quiz-title{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto !important;transition:none !important;animation:none !important}}
+@media print{#quiz-overlay{display:none !important}.quiz-toggle{display:none !important}}
+"""
+
+QUIZ_JS = r"""
+(function(){
+"use strict";
+var overlay=document.getElementById('quiz-overlay');
+if(!overlay)return;
+var itemsEl=document.getElementById('quiz-items');
+var configEl=document.getElementById('quiz-config');
+var toggle=document.getElementById('quiz-toggle');
+var ITEMS=[],CONFIG={};
+try{ITEMS=JSON.parse(itemsEl.textContent);}catch(e){}
+try{CONFIG=JSON.parse(configEl.textContent);}catch(e){}
+if(!Array.isArray(ITEMS)||!ITEMS.length)return;
+
+var $=function(id){return document.getElementById(id);};
+var memoryOnly=false;
+function lsGet(k){try{return localStorage.getItem(k);}catch(e){memoryOnly=true;return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,v);}catch(e){memoryOnly=true;}}
+var KEY='maw.reviewquiz.v1.'+(CONFIG.subject||'review')+'.'+(CONFIG.build_id||'dev');
+var EF_MIN=1.3,EF0=2.5,CAP=14,SMQ=[1,3,4,5];
+
+function pad(n){return n<10?'0'+n:''+n;}
+function todayISO(){var d=new Date();return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+function parseISO(iso){var p=(iso||'').split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+function addDays(iso,n){var d=parseISO(iso);d.setDate(d.getDate()+n);return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());}
+function dateDiff(a,b){return Math.round((parseISO(a)-parseISO(b))/86400000);}
+function examDate(){return CONFIG.exam_date||S.examDate||addDays(todayISO(),6);}
+function remainingDays(){return Math.max(0,dateDiff(examDate(),todayISO()));}
+function clampByDeadline(iv){
+  if(iv<=0)return 0;
+  var rem=remainingDays();
+  var cap=Math.max(1,Math.ceil(rem/2));
+  var out=Math.min(iv,CAP,cap);
+  if(rem<=2)out=1;
+  return Math.max(1,out);
+}
+
+function fresh(){
+  return {schema:1,subject:CONFIG.subject||'review',buildId:CONFIG.build_id||'dev',examDate:CONFIG.exam_date||'',
+    sessionDate:todayISO(),items:{},session:{done:0,lapses:0,skipped:0,newDone:0},
+    settings:{dailyNew:CONFIG.daily_new||0},lastNote:''};
+}
+var S=null;
+try{S=JSON.parse(lsGet(KEY)||'null');}catch(e){S=null;}
+if(!S||S.schema!==1||!S.items){S=fresh();}
+if(!S.session)S.session={done:0,lapses:0,skipped:0,newDone:0};
+if(!S.settings)S.settings={dailyNew:CONFIG.daily_new||0};
+if(!S.sessionDate)S.sessionDate=todayISO();
+if(S.sessionDate!==todayISO()){S.sessionDate=todayISO();S.session={done:0,lapses:0,skipped:0,newDone:0};}
+S.examDate=CONFIG.exam_date||S.examDate||'';
+function persist(){if(memoryOnly)return;lsSet(KEY,JSON.stringify(S));}
+function prog(id){return S.items[id]||null;}
+
+function applyRating(item,q){
+  var p=S.items[item.item_id]||{ef:EF0,interval:0,reps:0,lapses:0,last:null,due:todayISO(),seen:false};
+  var smq=SMQ[q];
+  p.ef=Math.max(EF_MIN,p.ef+(0.1-(5-smq)*(0.08+(5-smq)*0.02)));
+  var raw_iv;
+  if(q===0){
+    p.reps=0;p.lapses=(p.lapses||0)+1;p.interval=0;p.seen=true;p.due=todayISO();p.last=q;
+    p.lastAt=new Date().toISOString();
+    S.items[item.item_id]=p;return {reappear:true,p:p};
+  }
+  if(q===1){
+    p.reps=Math.max(1,p.reps||0);
+    raw_iv=(p.reps<=1)?1:Math.max(1,Math.round((p.interval||1)*1.2));
+  }else if(q===2){
+    p.reps=(p.reps||0)+1;
+    raw_iv=p.reps===1?1:(p.reps===2?3:Math.round((p.interval||3)*p.ef));
+  }else{
+    p.reps=(p.reps||0)+1;
+    raw_iv=p.reps===1?2:(p.reps===2?5:Math.round((p.interval||5)*p.ef*1.3));
+  }
+  var iv=clampByDeadline(raw_iv);
+  p.interval=iv;p.seen=true;p.last=q;p.due=addDays(todayISO(),iv);p.lastAt=new Date().toISOString();
+  S.items[item.item_id]=p;
+  return {reappear:false,raw:raw_iv,p:p};
+}
+function unseen(){return ITEMS.filter(function(it){return !prog(it.item_id);});}
+function due(){return ITEMS.filter(function(it){var p=prog(it.item_id);return p&&p.due<=todayISO();});}
+function tierRank(it){return it.tier==='core'?0:(it.tier==='familiar'?1:2);}
+function newQuota(){
+  var rem=Math.max(1,remainingDays());
+  var auto=Math.ceil(unseen().length/rem);
+  var configured=(S.settings&&S.settings.dailyNew)||CONFIG.daily_new||0;
+  var cap=configured>0?configured:30;
+  return Math.max(1,Math.min(cap,Math.max(auto,5)));
+}
+function compareNew(a,b){
+  return (a.module||'').localeCompare(b.module||'')||tierRank(a)-tierRank(b)||(a.card_id||'').localeCompare(b.card_id||'')||(a.q_index||0)-(b.q_index||0);
+}
+function interleaveByModule(arr){
+  var by={},order=[],out=[],guard=0;
+  arr.forEach(function(it){var m=it.module||'';if(!by[m]){by[m]=[];order.push(m);}by[m].push(it);});
+  order.sort();
+  while(out.length<arr.length&&guard<1000){
+    guard++;
+    for(var i=0;i<order.length;i++){var a=by[order[i]];if(a.length)out.push(a.shift());}
+  }
+  return out;
+}
+var queue=[],qIdx=0,lock=false;
+function buildQueue(){
+  var d=due().slice().sort(function(a,b){return (a.due||'').localeCompare(b.due||'')||tierRank(a)-tierRank(b);});
+  if(CONFIG.interleave!==false)d=interleaveByModule(d);
+  var quota=newQuota();
+  var u=unseen().slice().sort(compareNew);
+  var byModule={},order=[];
+  u.forEach(function(it){
+    var m=it.module||'';
+    if(!byModule[m]){byModule[m]=[];order.push(m);}
+    byModule[m].push(it);
+  });
+  order.sort();
+  var news=[];
+  // 6 天冲刺：新题按模块轮转，保证 8 个模块都被覆盖（模块内仍按掌握→熟悉排序）。
+  while(news.length<quota){
+    var added=false;
+    for(var mi=0;mi<order.length&&news.length<quota;mi++){
+      var arr=byModule[order[mi]];
+      if(arr.length){news.push(arr.shift());added=true;}
+    }
+    if(!added)break;
+  }
+  var head=d.slice(0,8),tail=d.slice(8);
+  queue=head.concat(news,tail);
+  qIdx=0;
+}
+function cur(){return queue[qIdx]||null;}
+function esc(s){return String(s==null?'':s);}
+function stat(label,value){return '<div class="quiz-stat"><b>'+esc(value)+'</b><span>'+esc(label)+'</span></div>';}
+function updateStats(){
+  var seen=ITEMS.filter(function(it){return prog(it.item_id);}).length;
+  var dueN=due().length;
+  var unseenN=unseen().length;
+  var mature=ITEMS.filter(function(it){var p=prog(it.item_id);return p&&(p.interval||0)>=7;}).length;
+  $('quiz-stats').innerHTML=stat('已学',seen+'/'+ITEMS.length)+stat('到期',dueN)+stat('新题',Math.min(newQuota(),unseenN))+stat('成熟 ≥7d',mature);
+  var rem=remainingDays();
+  $('quiz-countdown').textContent='距考试 '+rem+' 天'+(rem<=2?' · 考前压缩':'');
+  $('quiz-countdown').classList.toggle('urgent',rem<=2);
+  $('quiz-progress-text').textContent=queue.length?((qIdx+1)+' / '+queue.length+' · 今日已答 '+S.session.done):('今日已答 '+S.session.done);
+  $('quiz-progress-bar').style.width=queue.length?Math.min(100,Math.round((qIdx/queue.length)*100))+'%':'0%';
+  var mods=[];
+  ITEMS.forEach(function(it){if(mods.indexOf(it.module)<0)mods.push(it.module);});
+  mods.sort();
+  $('quiz-modules').innerHTML=mods.map(function(m){
+    var total=ITEMS.filter(function(it){return it.module===m;}).length;
+    var s=ITEMS.filter(function(it){return it.module===m&&prog(it.item_id);}).length;
+    var dueM=ITEMS.filter(function(it){var p=prog(it.item_id);return it.module===m&&p&&p.due<=todayISO();}).length;
+    var pct=total?Math.round(s/total*100):0;
+    return '<div class="quiz-module"><span>'+esc(m)+'</span><span class="bar"><i style="width:'+pct+'%"></i></span><span class="num">'+s+'/'+total+(dueM?' · '+dueM+' 到期':'')+'</span></div>';
+  }).join('');
+  var note=$('quiz-store-note');
+  if(note){
+    note.textContent=memoryOnly
+      ?'当前浏览器不允许本地保存（多见于 file:// 打开的 Firefox/Safari）。请用「导出进度」保存，换设备时再导入。'
+      :'进度已保存在本机浏览器；不联网、不上传。换设备请导出/导入 JSON。';
+  }
+}
+function render(){
+  var it=cur();
+  var ans=$('quiz-answer'),rate=$('quiz-rate'),fb=$('quiz-feedback'),input=$('quiz-input');
+  if(ans)ans.hidden=true;if(rate)rate.hidden=true;if(fb)fb.textContent='';if(input)input.value='';
+  $('quiz-show').disabled=false;$('quiz-skip').disabled=false;
+  if(!it){
+    $('quiz-meta').innerHTML='';
+    $('quiz-question').textContent='今日队列完成。点击「返回阅读」继续看书，或明天再来。';
+    $('quiz-show').disabled=true;$('quiz-skip').disabled=true;
+    updateStats();persist();return;
+  }
+  var p=prog(it.item_id);
+  var tier=it.tier==='core'?'<span class="importance-badge imp-master">掌握</span>':(it.tier==='familiar'?'<span class="importance-badge imp-familiar">熟悉</span>':'<span class="importance-badge imp-understand">了解</span>');
+  var state=p?(p.due<=todayISO()?'<span class="badge badge-familiar">到期复习</span>':'<span class="badge badge-understand">复习</span>'):'<span class="badge badge-master">新题</span>';
+  $('quiz-meta').innerHTML=tier+'<span class="badge badge-understand">'+esc(it.module)+'</span>'+state+'<span class="badge badge-master">'+esc(it.card_id)+'</span>'+(p?'<span class="badge badge-familiar">EF '+p.ef.toFixed(2)+'</span>':'');
+  $('quiz-question').textContent=it.q;
+  $('quiz-card-link').dataset.card=it.card_id;
+  updateStats();
+}
+function showAnswer(){
+  var it=cur();if(!it)return;
+  $('quiz-answer-text').textContent=it.a;
+  $('quiz-source').textContent=it.src+' · 卡片 '+it.card_id;
+  $('quiz-answer').hidden=false;
+  $('quiz-rate').hidden=false;
+  $('quiz-show').disabled=true;
+  var first=$('quiz-rate').querySelector('button');
+  if(first)first.focus();
+}
+function rate(q){
+  if(lock)return;
+  var it=cur();if(!it)return;
+  lock=true;
+  var r=applyRating(it,q);
+  S.session.done++;
+  $('quiz-rate').hidden=true;$('quiz-show').disabled=true;
+  var fb=$('quiz-feedback');
+  if(r.reappear){
+    S.session.lapses++;
+    queue.push(it);
+    fb.textContent='已标记「忘了」：本题回到本会话末尾（约数分钟后重见），EF 降至 '+r.p.ef.toFixed(2)+'。';
+  }else{
+    var extra=(r.raw!==r.p.interval)?('（原值 '+r.raw+' 天，按距考天数钳制为 '+r.p.interval+' 天）'):'';
+    fb.textContent='下次：'+r.p.interval+' 天后（'+r.p.due+'）· EF '+r.p.ef.toFixed(2)+extra;
+  }
+  qIdx++;persist();
+  setTimeout(function(){lock=false;render();},900);
+}
+function skip(){
+  var it=cur();if(!it)return;
+  S.session.skipped++;qIdx++;persist();render();
+}
+function goToCard(cardId){
+  if(!cardId)return;
+  closeQuiz();
+  var el=document.getElementById('card-'+cardId);
+  if(el){
+    el.scrollIntoView({behavior:'smooth',block:'start'});
+    el.classList.add('quiz-highlight');
+    setTimeout(function(){el.classList.remove('quiz-highlight');},2200);
+  }
+}
+function openQuiz(){
+  if(!queue.length)buildQueue();
+  overlay.classList.add('open');overlay.setAttribute('aria-hidden','false');
+  document.body.classList.add('quiz-open');
+  render();
+  var c=$('quiz-close');if(c)c.focus();
+}
+function closeQuiz(){
+  overlay.classList.remove('open');overlay.setAttribute('aria-hidden','true');
+  document.body.classList.remove('quiz-open');
+  if(toggle)toggle.focus();
+}
+function exportProgress(){
+  var blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='急诊与灾难医学_刷题进度_'+todayISO()+'.json';a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);},800);
+}
+function importProgress(file){
+  if(!file)return;
+  var rd=new FileReader();
+  rd.onload=function(){
+    var v=null;
+    try{v=JSON.parse(rd.result);}catch(e){alert('导入失败：JSON 无法解析');return;}
+    if(!v||!v.items){alert('导入失败：缺少 items 字段');return;}
+    if(!confirm('导入将合并进度：同一题以较新的记录为准。继续？'))return;
+    Object.keys(v.items).forEach(function(id){
+      var a=v.items[id],b=S.items[id];
+      if(!b||((a.lastAt||'')>(b.lastAt||'')))S.items[id]=a;
+    });
+    persist();buildQueue();render();
+  };
+  rd.readAsText(file);
+}
+if(toggle)toggle.addEventListener('click',openQuiz);
+$('quiz-close').addEventListener('click',closeQuiz);
+$('quiz-show').addEventListener('click',showAnswer);
+$('quiz-skip').addEventListener('click',skip);
+Array.prototype.forEach.call(document.querySelectorAll('#quiz-rate .qbtn'),function(b){
+  b.addEventListener('click',function(){rate(parseInt(b.getAttribute('data-grade'),10));});
+});
+$('quiz-card-link').addEventListener('click',function(){goToCard(this.dataset.card);});
+$('quiz-export').addEventListener('click',exportProgress);
+$('quiz-import').addEventListener('click',function(){$('quiz-file').click();});
+$('quiz-file').addEventListener('change',function(e){importProgress(e.target.files[0]);});
+$('quiz-reset').addEventListener('click',function(){
+  if(confirm('清空本机刷题进度？此操作不影响复习资料正文。')){S=fresh();persist();buildQueue();render();}
+});
+var dn=$('quiz-daily-new');
+if(dn){
+  dn.value=(S.settings&&S.settings.dailyNew)||newQuota();
+  dn.addEventListener('change',function(){
+    var v=parseInt(this.value,10)||20;
+    S.settings.dailyNew=Math.max(1,Math.min(30,v));
+    this.value=S.settings.dailyNew;
+    persist();buildQueue();render();
+  });
+}
+document.addEventListener('keydown',function(e){
+  if(!overlay.classList.contains('open'))return;
+  var t=e.target;
+  if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA'))return;
+  if(e.key==='Escape'){e.preventDefault();closeQuiz();}
+  else if(e.code==='Space'){e.preventDefault();if(!$('quiz-show').disabled)showAnswer();}
+  else if(/^[1-4]$/.test(e.key)){if(!$('quiz-rate').hidden)rate(parseInt(e.key,10)-1);}
+  else if(e.key==='ArrowRight'){e.preventDefault();skip();}
+});
+buildQueue();render();
+})();
+"""
+
+
+# ============================================================
 # Markdown → HTML 转换器
 # ============================================================
 
 class ReviewRenderer:
     """将 MedAgentWork 主复习资料 Markdown 转换为精美 HTML"""
 
-    def __init__(self, md_path: Path, embed_images: bool = False):
+    def __init__(self, md_path: Path, embed_images: bool = False,
+                 quiz: bool = False, exam_date: str = "", daily_new: int = 0):
         self.md_path = md_path
         self.embed_images = embed_images
         self.md_text = md_path.read_text(encoding='utf-8')
@@ -850,6 +1226,52 @@ class ReviewRenderer:
         self.batch_id = ""
         self.sidebar_links = []  # (id, text, badge_class, badge_text)
         self.modules = []  # module info for sidebar
+        self._used_ids: set[str] = set()
+        self.quiz_enabled = False
+        self.quiz_payload = None
+        self.quiz_config = None
+        self.extract_metadata()
+        if quiz:
+            self._init_quiz(exam_date, daily_new)
+
+    def _init_quiz(self, exam_date: str, daily_new: int):
+        """加载 scripts/review_quiz.py，抽取卡内自测题；失败时抛出 ValueError。"""
+        scripts_dir = Path(__file__).resolve().parent.parent / "scripts"
+        if str(scripts_dir) not in sys.path:
+            sys.path.insert(0, str(scripts_dir))
+        from review_quiz import build_payload
+        payload = build_payload(self.md_text, str(self.md_path))
+        items = payload.get("items") or []
+        if not items:
+            raise ValueError("未抽取到任何卡内自测题（检查自测行与附录五）")
+        if not exam_date:
+            exam_date = (datetime.now() + timedelta(days=6)).strftime("%Y-%m-%d")
+        subject = "emergency" if "急诊" in self.md_path.name else self.md_path.stem
+        self.quiz_payload = payload
+        self.quiz_enabled = True
+        self.quiz_config = {
+            "schema_version": 1,
+            "subject": subject,
+            "subject_name": self.subject_name or self.md_path.stem,
+            "build_id": payload.get("content_hash", ""),
+            "exam_date": exam_date,
+            "daily_new": max(0, int(daily_new or 0)),
+            "total_items": len(items),
+            "generated_at": payload.get("generated_at", ""),
+        }
+
+    def _unique_id(self, sid: str) -> str:
+        """重复标题自动追加 -2/-3，避免长文 HTML 出现重复 id。"""
+        base = sid or "section"
+        if base not in self._used_ids:
+            self._used_ids.add(base)
+            return base
+        i = 2
+        while f"{base}-{i}" in self._used_ids:
+            i += 1
+        out = f"{base}-{i}"
+        self._used_ids.add(out)
+        return out
 
     def extract_metadata(self):
         """从 MD 头部提取科目名和批次"""
@@ -1183,8 +1605,9 @@ class ReviewRenderer:
             level = len(heading_match.group(1))
             text = heading_match.group(2).strip()
 
-            # Generate ID
-            sid = self.make_id(text)
+            # Generate ID（卡片标题优先使用稳定锚点 card-K-...，供刷题反馈回链）
+            card_match = re.search(r'(K-[A-Z0-9]+-\d+)', text)
+            sid = self._unique_id(f"card-{card_match.group(1)}" if card_match else self.make_id(text))
 
             # Detect module headings for special styling (H2 or H3)
             if level in (2, 3) and (text.startswith('模块') or re.match(r'M\d', text)):
@@ -1358,7 +1781,8 @@ class ReviewRenderer:
         html_parts.append('<meta charset="UTF-8">')
         html_parts.append('<meta name="viewport" content="width=device-width, initial-scale=1.0">')
         html_parts.append(f'<title>{html_module.escape(self.subject_name)} · 高效复习手册</title>')
-        html_parts.append(f'<style>{CSS}</style>')
+        style_extra = QUIZ_CSS if self.quiz_enabled else ''
+        html_parts.append(f'<style>{CSS}{style_extra}</style>')
         html_parts.append('</head>')
         html_parts.append('<body>')
 
@@ -1368,6 +1792,8 @@ class ReviewRenderer:
         html_parts.append('<button id="sidebar-toggle" aria-label="目录">☰</button>')
         html_parts.append(f'<span class="title">📖 {html_module.escape(self.subject_name)} · 高效复习手册</span>')
         html_parts.append('<div class="actions">')
+        if self.quiz_enabled:
+            html_parts.append('<button class="theme-toggle quiz-toggle" id="quiz-toggle" type="button" aria-label="打开刷题模式" title="刷题模式">刷题</button>')
         html_parts.append('<button class="theme-toggle" id="theme-toggle" aria-label="切换暗色模式" title="切换暗色/亮色模式">🌙</button>')
         html_parts.append('</div>')
         html_parts.append('</header>')
@@ -1449,12 +1875,20 @@ class ReviewRenderer:
         html_parts.extend(content_buf)
 
         html_parts.append('</main>')
+        if self.quiz_enabled:
+            html_parts.append(self.render_quiz_overlay())
 
         # Back to top button
         html_parts.append('<button id="back-to-top" aria-label="回到顶部" title="回到顶部">↑</button>')
 
         # JavaScript
-        html_parts.append(f'<script>{JS}</script>')
+        if self.quiz_enabled:
+            items_json = json.dumps(self.quiz_payload.get('items', []), ensure_ascii=False).replace('</', '<\\/')
+            config_json = json.dumps(self.quiz_config or {}, ensure_ascii=False).replace('</', '<\\/')
+            html_parts.append(f'<script type="application/json" id="quiz-items">{items_json}</script>')
+            html_parts.append(f'<script type="application/json" id="quiz-config">{config_json}</script>')
+        script_extra = QUIZ_JS if self.quiz_enabled else ''
+        html_parts.append(f'<script>{JS}{script_extra}</script>')
 
         html_parts.append('</body>')
         html_parts.append('</html>')
@@ -1462,9 +1896,69 @@ class ReviewRenderer:
         return '\n'.join(html_parts)
 
 
+    def render_quiz_overlay(self) -> str:
+        subject = html_module.escape((self.quiz_config or {}).get("subject_name", ""))
+        tpl = r'''
+<div id="quiz-overlay" class="quiz-overlay" role="dialog" aria-modal="true" aria-labelledby="quiz-title" aria-hidden="true">
+  <div class="quiz-shell">
+    <div class="quiz-top">
+      <button class="quiz-back" id="quiz-close" type="button">← 返回阅读</button>
+      <div class="quiz-title" id="quiz-title">__SUBJECT__ · 刷题</div>
+      <div class="quiz-count" id="quiz-countdown">距考试 — 天</div>
+    </div>
+    <div class="quiz-layout">
+      <section class="quiz-card" aria-labelledby="quiz-question">
+        <div class="quiz-meta" id="quiz-meta"></div>
+        <div class="quiz-q" id="quiz-question">正在载入题目…</div>
+        <label class="quiz-label" for="quiz-input">先写下关键词（可选），再显示答案</label>
+        <textarea class="quiz-input" id="quiz-input" rows="3" placeholder="例如：时间窗、剂量、禁忌、鉴别轴……"></textarea>
+        <div class="quiz-actions">
+          <button class="qbtn primary" id="quiz-show" type="button">显示答案</button>
+          <button class="qbtn ghost" id="quiz-skip" type="button">跳过</button>
+        </div>
+        <div class="quiz-answer" id="quiz-answer" hidden>
+          <div class="quiz-answer-label">参考答案</div>
+          <div class="quiz-answer-text" id="quiz-answer-text"></div>
+          <div class="quiz-source" id="quiz-source"></div>
+          <button class="qbtn ghost" id="quiz-card-link" type="button">回到卡片</button>
+        </div>
+        <div class="quiz-rate" id="quiz-rate" hidden>
+          <button class="qbtn q0" data-grade="0" type="button">0 忘了</button>
+          <button class="qbtn q1" data-grade="1" type="button">1 模糊</button>
+          <button class="qbtn q2" data-grade="2" type="button">2 记得</button>
+          <button class="qbtn q3" data-grade="3" type="button">3 很熟</button>
+        </div>
+        <div class="quiz-feedback" id="quiz-feedback" role="status" aria-live="polite"></div>
+        <div class="quiz-progress"><span id="quiz-progress-text"></span><div class="quiz-bar"><i id="quiz-progress-bar"></i></div></div>
+      </section>
+      <aside class="quiz-side">
+        <div class="quiz-side-title">今日计划</div>
+        <div class="quiz-stat-grid" id="quiz-stats"></div>
+        <label class="quiz-setting">每日新题 <input id="quiz-daily-new" type="number" min="1" max="30" inputmode="numeric"></label>
+        <div class="quiz-note">新题按模块轮转，保证 8 个模块覆盖；到期题交错；距考 ≤2 天全部转 1 天。</div>
+        <div class="quiz-side-title">模块覆盖</div>
+        <div class="quiz-modules" id="quiz-modules"></div>
+        <div class="quiz-side-title">进度备份</div>
+        <div class="quiz-tools">
+          <button class="qbtn ghost" id="quiz-export" type="button">导出进度</button>
+          <button class="qbtn ghost" id="quiz-import" type="button">导入进度</button>
+          <button class="qbtn ghost" id="quiz-reset" type="button">重置</button>
+          <input id="quiz-file" type="file" accept="application/json" hidden>
+        </div>
+        <div class="quiz-note" id="quiz-store-note"></div>
+      </aside>
+    </div>
+  </div>
+</div>
+'''
+        return tpl.replace("__SUBJECT__", subject)
+
 # ============================================================
 # Main
 # ============================================================
+
+
+
 
 def main():
     import argparse
@@ -1484,6 +1978,9 @@ def main():
     parser.add_argument('--dark', action='store_true', help='默认使用暗色模式')
     parser.add_argument('--embed-images', action='store_true',
                         help='将图片以 base64 内联进 HTML（自包含单文件，适合打印PDF）')
+    parser.add_argument('--quiz', action='store_true', help='生成卡内自测 + 间隔调度刷题层')
+    parser.add_argument('--exam-date', default='', help='考试日期 YYYY-MM-DD（--quiz 时使用；默认今天+6 天）')
+    parser.add_argument('--daily-new', type=int, default=0, help='每日新题上限；0=按剩余天数自动')
     args = parser.parse_args()
 
     input_path = Path(args.input)
@@ -1499,7 +1996,13 @@ def main():
 
     # Render
     print(f'📖 读取: {input_path}')
-    renderer = ReviewRenderer(input_path, embed_images=args.embed_images)
+    try:
+        renderer = ReviewRenderer(input_path, embed_images=args.embed_images,
+                                  quiz=args.quiz, exam_date=args.exam_date,
+                                  daily_new=args.daily_new)
+    except Exception as exc:
+        print(f'[FAIL] 刷题层初始化失败: {exc}')
+        sys.exit(1)
     html_content = renderer.convert()
 
     # Write
@@ -1514,6 +2017,12 @@ def main():
     if img_count:
         print(f'   插图: {img_count} 张')
     print(f'   模块: {len([l for l in renderer.sidebar_links if l[0].startswith("m") and l[0][1:].isdigit()])} 个')
+    if renderer.quiz_enabled:
+        stats = (renderer.quiz_payload or {}).get('stats', {})
+        print(f"   刷题: {stats.get('items', 0)} 题 / {stats.get('cards', 0)} 卡 / 模块 {stats.get('modules', 0)}")
+        warnings = (renderer.quiz_payload or {}).get('warnings', [])
+        if warnings:
+            print(f"   警告: {len(warnings)} 条（详见 check_quiz_parity）")
 
 
 if __name__ == '__main__':

@@ -1,0 +1,52 @@
+{
+ "batch_id": "batch043",
+ "subject": "急诊与灾难医学（教师重点版）",
+ "fixed_at": "2026-10-26",
+ "source": "中间产物/batch043/ALL_questions.json",
+ "total": 200,
+ "qc_report": "质检报告/batch043/A3_质检报告.json",
+ "summary": {
+  "semantic_changes": 0,
+  "option_normalization": 47,
+  "bloom_relabel": 27,
+  "id_changes": 0,
+  "answer_changes": 0
+ },
+ "entries": [
+  {
+   "type": "option_normalization",
+   "count": 47,
+   "reason": "GATE-A2 R13/R2 选项长度与配平（仅压缩表述、补足短干扰项，不改变答案与考点）",
+   "result": "FAIL=0"
+  },
+  {
+   "type": "bloom_relabel",
+   "count": 27,
+   "reason": "HC-7 认知层级分布校准（记忆30.0/理解43.3/应用22.5/分析4.2）",
+   "result": "与题库重算一致"
+  },
+  {
+   "type": "answer_protection",
+   "count": 10,
+   "reason": "真题答案零改动（kaoyan_origin/zhiyi_origin 保留原答案键与 source_id）",
+   "result": "real_question check PASS"
+  },
+  {
+   "type": "learning_value",
+   "count": 200,
+   "reason": "HC-24 学习价值层校验",
+   "result": "FAIL=0，per_option/misconception/source_quote 均 100%"
+  }
+ ],
+ "unchanged": [
+  "stem 语义",
+  "answer",
+  "keypoint_ref",
+  "teacher_anchor",
+  "source_page",
+  "learning_value.correct_rationale"
+ ],
+ "source_file_synced": true,
+ "source_files_synced": true,
+ "trace_log": "最终产物/batch043/AGENT4_追溯日志.json"
+}
