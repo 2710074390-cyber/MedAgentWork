@@ -32,6 +32,7 @@ whenToUse: 编排者（MedMaster）下发复习资料任务时加载；任务会
    - 每模块八块：前置知识、摘要/目标、对比表（≥3 行）、因果链、案例推演（≥1）、主动回忆（答案可检索）、本章小结、展开区（≥2）。
    - 有课程安排输入时，每讲八块：学习目标、课前准备、课堂重点、机制、案例、课后自测、时间预算、前后衔接；每讲 ≥1200 字符/≥12 单元。
    - 完成后自跑 `python scripts/check_review_detail.py --md <主复习资料 MD> --mode auto --profile release_teacher_keypoint`（教学计划版 `release_teaching_plan`；课程安排版 `--mode course_schedule`）；FAIL 按 `cards[].missing_slots` / `modules[].missing_blocks` 补写后重跑。标准全文 `docs/复习资料详细度标准.md`。
+   - **单一交付文件（D6.8 · 强制）**：模块可分批写（`中间产物/{batchID}/bpa_v6/M01.md…`），但交付只能是一份文件。写完必须运行 `python scripts/merge_review_shards.py --shards 中间产物/{batchID}/bpa_v6 --appendix 中间产物/{batchID}/bpa/appendix.md --out "复习资料/{科目}教师重点版/{科目}教师重点版_主复习资料.md"`；合并须带附录一–五（页码索引/术语/口诀/数字锚/自测答案）。门禁与 V14/V17 只对合并后的文件运行；分片 PASS 不算交付通过，禁止把 M01…Mnn 散着交付。
 5. **附录必含**：
    - 教材知识点页码索引（**真实页码，禁止占位符**，如全模块同一页码即视为占位，HC-10）
    - 术语同意异名对照表（HC-9）

@@ -85,6 +85,9 @@ MedAgentWork 操作流程（DSH 版 · 2026-08-13 重构）
 
   规则  FAIL → 回退 Agent 5 补写；正式发布必须 PASS；advisory 只用于试点，不得用于发布。
         R2/R3 已自动包含 review_detail 检查，无需单独再跑。
+        分片写完必须合并成单一交付文件（D6.8）：
+        python scripts/merge_review_shards.py --shards 中间产物/{batchID}/bpa_v6 --appendix 中间产物/{batchID}/bpa/appendix.md --out "复习资料/{科目}教师重点版/{科目}教师重点版_主复习资料.md"
+        合并须带附录一–五；门禁只对合并文件运行，禁止把 M01…Mnn 散着交付。
 
 ──────────────────────────────────────────
 三、备用流程（Cherry Studio 手动接力，已弃用）
