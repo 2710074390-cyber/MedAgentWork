@@ -834,9 +834,9 @@ a { color:var(--brand); }
     <div class="sw-body">
       <div class="sw-title-row">
         <b>MedKit · 医学题库工坊</b>
-        <span class="sw-ver ok" id="sw-ver">v0.22.0 · 49.9 MB</span>
+        <span class="sw-ver ok" id="sw-ver">v0.22.1 · 49.9 MB</span>
       </div>
-      <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点 → 本地一键生成<b>题库 / 押题卷 / 复习手册</b>。数据留在本机，只花自己的 API Key。<br><span class="dim">v0.22.0：答题真正进入学习者模型（答对也涨掌握度）、题目挂到稳定考点、解析逐选项讲「为什么错、你为什么会想错」、复习排期换成 FSRS。</span></p>
+      <p class="sw-desc">本站全部资料的<b>开源桌面生成器</b>：自备教材 + 老师重点 → 本地一键生成<b>题库 / 押题卷 / 复习手册</b>。数据留在本机，只花自己的 API Key。<br><span class="dim">v0.22.1：出题工坊提示词已与 MedAgentWork 生成链路同步升级（选项同质性 / NBME 反线索 / 干扰项科学设计 / B1 专项 / 修复纪律）；题库可一键同步 MedAgentWork 远端批次。</span></p>
       <p class="sw-note">MEDKIT → MEDGEN → MEDQC → MEDFIX → MEDREVIEW</p>
       <div class="sw-actions">
         <a class="btn btn-pri" id="sw-dl" href="https://github.com/2710074390-cyber/medkit/releases/latest" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg>下载 Windows 安装包</a>
@@ -1775,7 +1775,7 @@ safe('medkit-release',()=>{
   /* 版本基线（唯一维护点）：升级 MedKit 时只改这里 + 上方 sw-desc 文案。
      徽章先按基线直出，再用 GitHub API 校正；任何一环拿不到更新的数据都保持基线，
      绝不回退成更旧的号——此前会把上个版本的缓存数据（v0.17.0）显示在新文案旁边。 */
-  const BASE={tag:'0.22.0',mb:'49.9'};
+  const BASE={tag:'0.22.1',mb:'49.9'};
   const parts=t=>String(t||'').split('.').map(n=>parseInt(n,10)||0);
   function notOlder(tag){                 /* tag >= BASE */
     const a=parts(tag),b=parts(BASE.tag);
