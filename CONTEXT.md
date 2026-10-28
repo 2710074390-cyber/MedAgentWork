@@ -522,7 +522,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | 位置 | 还需手工同步吗 | 真身来源 |
 |---|---|---|
 | 首页统计条（题库注册 / 学科覆盖） | **否**——改版后已移除 | 原 `question_bank/registry_meta.json` → `stats.total`（2026-10-27 实测 **6,490**）；`知识库素材/subject_config.json` → `subjects`（**23**） |
-| 软件工坊 `sw-tags` 安装包体积 | **否**——`sw-tags` 已移除 | Release 资产 `MedKit-Setup-*.exe` 实测 49.8 MB |
+| 软件工坊 `sw-tags` 安装包体积 | **否**——`sw-tags` 已移除 | Release 资产 `MedKit-Setup-*.exe` 实测 49.9 MB（v0.22.0） |
 | 软件工坊 `sw-desc` 版本亮点文案 | **是**——每次发版补一句本版改了什么 | `medkit` 仓库 CHANGELOG / GitHub Release |
 | 软件工坊 `sw-ver` 版本基线 | **是**——发版时同改两处：`#sw-ver` 初始文本 + 脚本内 `BASE={tag,mb}` | Release 最新 tag 与 `MedKit-Setup-*.exe` 实测体积 |
 

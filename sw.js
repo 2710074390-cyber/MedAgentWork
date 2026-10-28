@@ -11,7 +11,7 @@
    2026-10-27：v4 —— 软件工坊版本徽章改为「基线直出 + API 校正」，并把 API 请求
    设为 no-store；bump 版本让老客户端立刻换掉带旧徽章逻辑的应用壳。
 */
-const VERSION = 'maw-v4';
+const VERSION = 'maw-v5';
 const SHELL_CACHE = VERSION + '-shell';
 const ASSET_CACHE = VERSION + '-assets';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
