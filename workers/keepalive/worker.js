@@ -9,7 +9,9 @@
  * 部署：scripts/deploy_keepalive.py（走 Workers API，不需要 wrangler/账号登录态）。
  */
 
-const PING_URL = "https://senior-quiz-app.app.workbuddy.host/api/ping";
+// 2026-10-29：刷题应用换为参赛版（medkit-web-contest）。它没有 /api/ping，
+// 就戳入口页（带 sharecode；应用宿主逐请求校验 sharecode，不带即 403）。
+const PING_URL = "https://medkit-study-app.app.workbuddy.host/?sharecode=A3MSLC6PSQ";
 
 async function ping() {
   const started = Date.now();

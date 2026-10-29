@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-"""同步「网页刷题」代理上游（/drill → WorkBuddy Sites 沙箱）。
+"""同步「网页刷题」跳转目标（/drill → 参赛版入口）。
 
-背景：`functions/drill/[[path]].js` 把 `/drill/*` 反代到外部「发布应用(Sites)」应用。
-每当在 WorkBuddy 重新发布 `medkit-web-v2` 拿到新的分享链接（sandbox 域名）时，
-若域名与当前 UPSTREAM 不同，须同步本文件，否则 /drill 仍指向旧应用。
+背景：`functions/drill/[[path]].js` 把 `/drill/*` 302 到参赛版（medkit-web-contest）
+的分享链接。2026-10-29 起常量名是 `ENTRY`（旧版叫 `UPSTREAM`，两者都认）；
+参赛版链接含 sharecode 且宿主逐请求校验，换链接时整串替换即可。
 
 用法：
   python scripts/sync_drill_upstream.py --url https://senior-quiz-app.app.workbuddy.host
@@ -21,7 +21,7 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 TARGET = BASE / "functions" / "drill" / "[[path]].js"
-_PAT = re.compile(r'(const\s+UPSTREAM\s*=\s*")([^"]*)(";)')
+_PAT = re.compile(r'(const\s+(?:UPSTREAM|ENTRY)\s*=\s*")([^"]*)(";)')
 
 
 def main() -> int:
