@@ -10,8 +10,10 @@
    避免老用户继续拿到 v2 的旧首页缓存。
    2026-10-27：v4 —— 软件工坊版本徽章改为「基线直出 + API 校正」，并把 API 请求
    设为 no-store；bump 版本让老客户端立刻换掉带旧徽章逻辑的应用壳。
+   2026-10-31：v5 —— 技能包链接由 releases/tag/v2.1 改指向仓库主页；
+   bump 版本让老客户端换掉带旧链接的应用壳。
 */
-const VERSION = 'maw-v5';
+const VERSION = 'maw-v6';
 const SHELL_CACHE = VERSION + '-shell';
 const ASSET_CACHE = VERSION + '-assets';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
