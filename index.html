@@ -857,7 +857,7 @@ a { color:var(--brand); }
   </div>
 
   <details class="fold">
-    <summary>五阶段 Agent 管线 · 门禁 · 知识库<span class="fold-hint">3 支科普短片</span></summary>
+    <summary>五阶段 Agent 管线 · 门禁 · 知识库<span class="fold-hint">技术说明</span></summary>
     <div class="fold-body">
       <div class="cap-list">
         <article class="cap">
@@ -865,21 +865,18 @@ a { color:var(--brand); }
           <span class="cap-meta">PIPELINE · CORDIS 式编排</span>
           <p>编排 → 出题 → 质检 → 修复 → 成册；阶段门禁强制，批次全程可追溯。</p>
           <div class="cap-flow"><em><b>medgen</b></em><em>→</em><em><b>medqc</b></em><em>→</em><em><b>medfix</b></em><em>→</em><em><b>medreview</b></em></div>
-          <button class="cap-more" type="button" data-film="pipeline" aria-label="播放科普短片：五阶段管线"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>看短片 <i>· 40s</i></button>
         </article>
         <article class="cap">
           <h4>质量门禁</h4>
           <span class="cap-meta">GATE · D1–D20 质检矩阵</span>
           <p>选项硬校验 FAIL 归零才放行 · 二十维质检 · 真题锚定 · 改动可回放。</p>
           <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>fact_check</em></div>
-          <button class="cap-more" type="button" data-film="gate" aria-label="播放科普短片：质量门禁"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>看短片 <i>· 42s</i></button>
         </article>
         <article class="cap">
           <h4>个性化学科 RAG</h4>
           <span class="cap-meta">KNOWLEDGE · 逐科配置</span>
           <p>各学科独立分块与检索 · 向量与关键词混合 · 重排 · 考频蓝图配平。</p>
           <div class="cap-flow"><em>hybrid</em><em>rerank</em><em>calibrated_p</em></div>
-          <button class="cap-more" type="button" data-film="rag" aria-label="播放科普短片：个性化学科 RAG"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6.2l9.4 5.8-9.4 5.8z"/></svg>看短片 <i>· 38s</i></button>
         </article>
       </div>
     </div>
@@ -1869,39 +1866,22 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
   }
   function fmtFor(){ return mq.matches ? 'tall' : 'wide'; }
 
-  /* 影片注册表：intro 为主片，另三支是幕后管线栏目的科普短片 */
+  /* 影片注册表：只保留介绍片。三支幕后科普短片（pipeline / gate / rag）已于 2026-10-31 下架 */
   var FILMS = {
     intro: {
       badge: '介绍片 · 58s', eyebrow: 'INTRO FILM · 完',
       title: '现在，开始刷题', sub: '判错自动回流 · 换设备同步 · 资料可打印'
-    },
-    pipeline: {
-      badge: '科普短片 · 五阶段管线 · 40s', eyebrow: 'PIPELINE · 完',
-      title: '慢一点，但每一步都算得清', sub: '五个角色各管一段 · 契约先行 · 门禁强制'
-    },
-    gate: {
-      badge: '科普短片 · 质量门禁 · 42s', eyebrow: 'QUALITY GATE · 完',
-      title: '不是让模型更准，是让错误出不来', sub: '硬规则校验 · 二十维质检 · 全绿才发布'
-    },
-    rag: {
-      badge: '科普短片 · 个性化学科 RAG · 38s', eyebrow: 'SUBJECT RAG · 完',
-      title: '检索到的质量，决定后面所有的质量', sub: '逐科分块 · 向量与关键词混合检索 · 命中缓存零调用'
     }
   };
-  var ORDER = ['intro', 'pipeline', 'gate', 'rag'];
   var current = 'intro', loadedKey = '';
 
-  function srcFor(f, key){
+  function srcFor(f){
     var sfx = f === 'tall' ? '4x5' : '16x9';
-    return key === 'intro'
-      ? 'assets/intro/medagentwork-intro-' + sfx + '.mp4'
-      : 'assets/shorts/' + key + '-' + sfx + '.mp4';
+    return 'assets/intro/medagentwork-intro-' + sfx + '.mp4';
   }
-  function posterFor(f, key){
+  function posterFor(f){
     var sfx = f === 'tall' ? '4x5' : '16x9';
-    return key === 'intro'
-      ? 'assets/intro/poster-' + sfx + '.jpg'
-      : 'assets/shorts/poster-' + key + '-' + sfx + '.jpg';
+    return 'assets/intro/poster-' + sfx + '.jpg';
   }
 
   function ensureSource(){
@@ -1911,9 +1891,9 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
     loadedKey = current;
     ft.setAttribute('data-fmt', f);
     ft.setAttribute('data-film', current);
-    posterEl.style.backgroundImage = 'url("' + posterFor(f, current) + '")';
-    video.setAttribute('poster', posterFor(f, current));
-    video.src = srcFor(f, current);
+    posterEl.style.backgroundImage = 'url("' + posterFor(f) + '")';
+    video.setAttribute('poster', posterFor(f));
+    video.src = srcFor(f);
     video.load();
   }
 
@@ -1924,13 +1904,8 @@ if('serviceWorker' in navigator && location.protocol==='https:'){
     ft.querySelector('#ft-end-sub').textContent = m.sub;
     ft.querySelector('#ft-badge').textContent = m.badge;
     var swap = ft.querySelector('#ft-swap');
-    if(current === 'intro'){ swap.hidden = true; swap.innerHTML = ''; return; }
-    swap.hidden = false;
-    swap.innerHTML = ORDER.filter(function(k){ return k !== 'intro'; }).map(function(k){
-      return '<button type="button" data-film="' + k + '"' +
-        (k === current ? ' aria-current="true"' : '') + '>' +
-        FILMS[k].badge.replace('科普短片 · ', '').replace(/ · \d+s$/, '') + '</button>';
-    }).join('');
+    swap.hidden = true;
+    swap.innerHTML = '';
   }
 
   function openFilm(key){
