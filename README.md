@@ -16,7 +16,6 @@ powershell scripts\deploy_site.ps1
 
 - **未来主义设计** — 黑蓝深海配色 · 玻璃拟态 UI · ASCII 原子像素星域（粒子特效可开关，localStorage 记忆）
 - **58 秒品牌介绍片** — 首屏右栏终端的第 3 个 Tab（默认展示）：封面先行、点击才加载视频，进剧场全屏播放（详见下节）
-- **三支科普短片** — 幕后管线三张卡各挂一支 38–42 秒短片（管线 / 质量门禁 / 学科 RAG），点「了解更多」丝滑过渡进剧场，可一键换片（详见下节）
 - **五阶段 Agent 管线** — MedGen 出题 → MedQC 质检 → MedFix 修复 → MedReview 成册，门禁强制校验
 - **三视图导航** — 主页（介绍与软件下载）/ 大三下（押题卷 · 题库 · 复习手册）/ 大四上（5 科教学版资料 PDF）
 - **访问计数** — 首页统计条实时显示累计访问次数（Cloudflare Pages Function + KV，一次页面打开 +1；站长打开 `?noself=1` 可将自己本机访问设为免计）
@@ -65,42 +64,6 @@ python tools/intro-film/render.py --format both --skip-frames
 - `tools/intro-film/index.html` 是一条**可定位时间轴**：`window.__seek(ms)` 可在任意时刻复现同一帧；Playwright 逐帧截图（30fps）后交 ffmpeg 编码，因此转场/动效完全可复现。
 - `tools/intro-film/audio.html` 用 OfflineAudioContext 合成 58s 氛围音轨（低频铺底 + 和弦垫 + 转场铃 + 收束冲击），不依赖任何外部素材。
 - 发布：CI 与 `scripts/deploy_site.ps1` 的白名单已加入 `assets`；`_headers` 对 `/assets/intro/*` 设 7 天缓存。
-
-
-## 🎞️ 科普短片（2026-10-19 上线 / 2026-10-31 下架）
-
-> **已下架**：`pipeline`（五阶段管线）/ `gate`（质量门禁）/ `rag`（个性化学科 RAG）三支短片已从站点撤下，`assets/shorts/` 下 18 个文件（6 支 MP4 + 12 张封面，合计 12.97MB）同时从仓库删除；播放器注册表只保留首屏介绍片，幕后三张能力卡保留文字说明、不再带播放入口。需要复播时从 git 历史取回删除前的提交即可（下架前 HEAD：`9120ef0`）。以下内容保留为制作备忘。
-
-首屏介绍片回答「这是什么、为什么可信」；三支短片回答「具体怎么做的、踩过什么坑」。每支 38–42 秒，双画幅各 2–3MB，点击才加载。**文案里的规则、编号、事故全部来自项目真实记录**（`操作流程.txt`、`docs/TODO.md`、`docs/交接文档_新Agent接手_v1.0.md`、`scripts/validate/rules_*.py`、`scripts/fact_check.py`），不编造。
-
-| 短片 | 时长 | 讲什么 | 出现的真实细节 |
-|---|---|---|---|
-| `pipeline` 五阶段管线 | 40s | 为什么不让一个模型一口气写完；契约先行、状态机、BLOCKED 就地回退 | MedMaster/MedGen/MedQC/MedFix/MedReview 五角色、jsonschema 摄入即校验、原子写与血缘、HALT |
-| `gate` 质量门禁 | 42s | 让模型检查自己靠不靠谱；机械规则 + 事实反查 + 不达标不发布 | R2 正确选项显著更长、R6 数值区分度、R9 数值缺单位、R10/R11 NBME 线索、GoldenSet 9,616 条、批次 039 撤回 199 题 |
-| `rag` 个性化学科 RAG | 38s | 23 个学科不能用同一套检索；逐科分块、混合检索、成本降级 | 方剂组成不切碎、向量+关键词+rerank、batch027 余额不足 402、`--no-rerank` 降级、`calibrated_p` 是先验不是实测 |
-
-- **入口（下架前）**：幕后管线三张能力卡右下角的「看短片」胶囊按钮；现仅保留三张卡的文字说明。
-- **过渡**：点击后卡片先 `scale(1.035)` 推近并淡出，剧场同时从 `translateY(8px) scale(1.03)` 收到原位（0.46s `cubic-bezier(.16,1,.3,1)`），读起来是同一块画面在放大；`prefers-reduced-motion` 下全部关掉。
-- **换片（下架前）**：结束卡下方列出另两支，点击时先黑场 260ms 再切源，避免画面硬跳；左上角常驻徽标显示当前片名与时长。注册表现只剩 `intro`，换片条已停用。
-- **懒加载**：`<video>` 无 src、`preload=none`，首屏与滚动到该栏目都不会产生任何 MP4 请求（Playwright 实测：点击前 0）。
-
-历史产物（`assets/shorts/`，已随下架删除）：
-
-| 文件 | 规格 | 体积 |
-|---|---|---|
-| `{pipeline,gate,rag}-16x9.mp4` | 1920×1080 · H.264 High · AAC 96k | 2.3–2.6 MB |
-| `{pipeline,gate,rag}-4x5.mp4` | 1080×1350 · 同上 | 2.2–2.5 MB |
-| `poster-{film}-{16x9,4x5}.webp/.jpg` | 封面（4.2s 定格） | 20–80 KB |
-
-工程 `tools/short-film/`（与主片同一套方法：`window.__seek(ms)` 可定位时间轴 → Playwright 逐帧 30fps → ffmpeg 编码；`audio.html` 合成音轨）：
-
-```bash
-python tools/short-film/render.py --film all --format both
-python tools/short-film/render.py --film gate --format wide      # 只渲一支
-python tools/short-film/render.py --skip-frames --no-audio       # 只重新编码
-```
-
-文案与分镜：`tools/short-film/SCRIPT.md`（改文案只改这里，渲染前先跑 `_chk.py` 看排版是否溢出）。
 
 ## 📂 目录结构
 
