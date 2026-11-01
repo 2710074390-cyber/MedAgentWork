@@ -1097,6 +1097,7 @@ const BANKS_S1=[
   {name:'妇产科学',pdf:'大四上/题库/妇产教学题库.pdf',count:250,format:'PDF',size:'1.2 MB',tags:['教学题库'],desc:'生殖生理 · 妊娠 · 分娩 · 产褥 · 妇科疾病'},
   {name:'急诊与灾难医学',pdf:'大四上/题库/急诊教学题库.pdf',count:220,format:'PDF',size:'3.4 MB',tags:['教学题库'],desc:'急性中毒 · 休克 · 心肺脑复苏 · 创伤急救 · 灾难救援'},
   {name:'急诊与灾难医学（教师重点版）',pdf:'大四上/题库/急诊与灾难医学·教师重点版题库.pdf',count:200,format:'PDF',size:'3.4 MB',tags:['教师重点版'],desc:'严格按教师蓝图 · 单选/多选/判断/案例 · 200 题'},
+  {name:'急诊与灾难医学',pdf:'大四上/题库/急诊新版押题卷.pdf',title:'急诊新版押题卷',count:100,format:'PDF',size:'2.0 MB',tags:['押题卷','batch046'],desc:'新版押题卷 · 100 题 · 教师重点逐字锚定 · 偏考研 · A1 30 / A2 45 / A3 25'},
   {name:'耳鼻咽喉头颈外科学',pdf:'大四上/题库/耳鼻喉教学题库.pdf',count:163,format:'PDF',size:'0.9 MB',tags:['教学题库'],desc:'耳 · 鼻 · 咽 · 喉 · 头颈 五模块'},
   {name:'耳鼻咽喉头颈外科学（教师重点版）',pdf:'大四上/题库/耳鼻咽喉头颈外科学教师重点版题库.pdf',count:200,format:'PDF',size:'3.1 MB',tags:['教师重点版'],desc:'严格按教师蓝图 · 判断/单选/多选/案例分析 · 200 题'},
   {name:'耳鼻咽喉头颈外科学（真题专项）',pdf:'大四上/题库/耳鼻咽喉头颈外科学·真题专项题库.pdf',count:100,format:'PDF',size:'2.5 MB',tags:['真题专项'],desc:'考研 11 · 执医历年真题 16 · 执医题库 73（原题未改编）· 耳鼻咽喉头颈 五域'},
@@ -1131,7 +1132,7 @@ const SITE_STATS=(()=>{
 
 /* ---------- C 渲染层 ---------- */
 function itQ(it,kind){
-  return esc((it.name+' '+kind+' '+(it.desc||'')+' '+((it.tags||[]).join(' '))).toLowerCase());
+  return esc(((it.title||'')+' '+it.name+' '+kind+' '+(it.desc||'')+' '+((it.tags||[]).join(' '))).toLowerCase());
 }
 function itSpec(it){
   const p=[];
@@ -1162,7 +1163,7 @@ function resRow(x){
   }
   return '<div class="res-row reveal'+(isKey?' key':'')+'" data-q="'+itQ(it,kind)+'" data-kind="'+esc(kind)+'" data-key="'+(isKey?'1':'0')+'">'
     +'<span class="rr-tag">'+esc(kind)+'</span>'
-    +'<div class="rr-main"><b>'+esc(it.name)+'</b><span>'+esc(it.desc||'')+'</span></div>'
+    +'<div class="rr-main"><b>'+esc(it.title||it.name)+'</b><span>'+esc(it.desc||'')+'</span></div>'
     +'<span class="rr-spec">'+esc(itSpec(it))+'</span>'
     +'<span class="rr-size">'+esc(itSize(it))+'</span>'
     +'<div class="rr-acts">'+acts+'</div>'
@@ -1177,7 +1178,7 @@ function invRow(x){
   return '<div class="inv-row" tabindex="0" role="option" data-q="'+itQ(it,x.kind)+'">'
     +'<span class="iv-term">'+esc(x.term)+'</span>'
     +'<span class="iv-kind">'+esc(x.kind)+'</span>'
-    +'<span class="iv-name">'+esc(it.name)+'</span>'
+    +'<span class="iv-name">'+esc(it.title||it.name)+'</span>'
     +'<span class="iv-meta">'+esc(meta)+'</span>'
     +'<span class="iv-act">'+act+'</span>'
     +'</div>';
