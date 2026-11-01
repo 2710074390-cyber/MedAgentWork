@@ -3,6 +3,7 @@ reporter.py — 报告输出（控制台 + JSON）
 从 validate_options.py 拆分而来
 """
 import json
+import hashlib
 from pathlib import Path
 from datetime import datetime
 from collections import Counter
@@ -104,7 +105,16 @@ def save_json_report(all_issues, summary, filepath, batch_id, mode='basic'):
                 'detail': issue['detail'],
             })
 
-    output_path = OUTPUT_BASE / f"validate_options_report_{batch_id or filepath.stem}.json"
+    source_path = Path(filepath).resolve()
+    batch_parts = [part for part in source_path.parts if part.startswith('batch')]
+    declared_batch = batch_parts[-1] if len(batch_parts) == 1 else (batch_id or '')
+    report['report_metadata']['source_file'] = str(source_path)
+    report['report_metadata']['source_sha256'] = hashlib.sha256(source_path.read_bytes()).hexdigest()
+    report['report_metadata']['batch_id'] = declared_batch
+    stage = 'A2' if '中间产物' in source_path.parts else ('A4' if '最终产物' in source_path.parts else '')
+    report['report_metadata']['stage'] = stage
+    report_name = f'{declared_batch}_A4' if stage == 'A4' else declared_batch
+    output_path = OUTPUT_BASE / f"validate_options_report_{report_name}.json"
     OUTPUT_BASE.mkdir(parents=True, exist_ok=True)
     with open(output_path, 'w', encoding='utf-8') as f:
         json.dump(report, f, ensure_ascii=False, indent=2)

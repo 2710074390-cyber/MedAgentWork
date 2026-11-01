@@ -1,0 +1,1414 @@
+{
+  "schema_version": 1,
+  "subject": "急诊",
+  "batch": "batch043",
+  "generated_at": "2026-10-27T00:26:15",
+  "cards": [
+    {
+      "kc_id": "急诊:K-M01-001",
+      "display_id": "K-M01-001",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "急诊医学的定位与 EMSS",
+      "keypoints": [
+        1
+      ],
+      "question_ids": [
+        "batch043-M01-A1-005",
+        "batch043-M01-A1-007",
+        "batch043-M01-A1-008",
+        "batch043-M01-X-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        1
+      ],
+      "review_anchor": "L125",
+      "content_chars": 727,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M01-002",
+      "display_id": "K-M01-002",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "急诊五级分诊",
+      "keypoints": [
+        2
+      ],
+      "question_ids": [
+        "batch043-M01-A1-001",
+        "batch043-M01-JUD-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        2
+      ],
+      "review_anchor": "L145",
+      "content_chars": 618,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M01-003",
+      "display_id": "K-M01-003",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "灾难检伤分类与四色标签",
+      "keypoints": [
+        3,
+        6
+      ],
+      "question_ids": [
+        "batch043-M01-A1-002",
+        "batch043-M01-A2-003",
+        "batch043-M01-JUD-001",
+        "batch043-M01-X-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        285
+      ],
+      "review_anchor": "L165",
+      "content_chars": 817,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M01-004",
+      "display_id": "K-M01-004",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "START 与 SALT",
+      "keypoints": [
+        4,
+        5
+      ],
+      "question_ids": [
+        "batch043-M01-A1-003",
+        "batch043-M01-A1-004",
+        "batch043-M01-A1-009",
+        "batch043-M01-A2-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        286
+      ],
+      "review_anchor": "L187",
+      "content_chars": 856,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M01-005",
+      "display_id": "K-M01-005",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "GCS 格拉斯哥昏迷评分",
+      "keypoints": [
+        7
+      ],
+      "question_ids": [
+        "batch043-M01-A1-006",
+        "batch043-M01-A2-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        18
+      ],
+      "review_anchor": "L209",
+      "content_chars": 2940,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M02-001",
+      "display_id": "K-M02-001",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "心搏骤停的识别与时间窗",
+      "keypoints": [
+        8
+      ],
+      "question_ids": [
+        "batch043-M02-A1-001",
+        "batch043-M02-A1-002",
+        "batch043-M02-A1-012",
+        "batch043-M02-A1-013",
+        "batch043-M02-A1-017"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        231
+      ],
+      "review_anchor": "L331",
+      "content_chars": 687,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M02-002",
+      "display_id": "K-M02-002",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "成人高质量 CPR",
+      "keypoints": [
+        9,
+        10,
+        11
+      ],
+      "question_ids": [
+        "batch043-M02-A1-003",
+        "batch043-M02-A1-004",
+        "batch043-M02-A1-005",
+        "batch043-M02-A1-014",
+        "batch043-M02-A2-005",
+        "batch043-M02-A3-001",
+        "batch043-M02-A3-002",
+        "batch043-M02-JUD-003",
+        "batch043-M02-X-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        235,
+        236
+      ],
+      "review_anchor": "L351",
+      "content_chars": 799,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M02-003",
+      "display_id": "K-M02-003",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "电除颤与 AED",
+      "keypoints": [
+        12,
+        13
+      ],
+      "question_ids": [
+        "batch043-M02-A1-006",
+        "batch043-M02-A1-007",
+        "batch043-M02-A1-008",
+        "batch043-M02-A2-001",
+        "batch043-M02-A2-002",
+        "batch043-M02-JUD-001",
+        "batch043-M02-X-002",
+        "batch043-M02-X-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        237
+      ],
+      "review_anchor": "L375",
+      "content_chars": 757,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M02-004",
+      "display_id": "K-M02-004",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "创伤性心脏骤停与高级气道",
+      "keypoints": [
+        14
+      ],
+      "question_ids": [
+        "batch043-M02-A1-009",
+        "batch043-M02-A1-016",
+        "batch043-M02-A2-004",
+        "batch043-M02-JUD-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        244,
+        256
+      ],
+      "review_anchor": "L397",
+      "content_chars": 677,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M02-005",
+      "display_id": "K-M02-005",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "气道异物梗阻与海姆立克",
+      "keypoints": [
+        15
+      ],
+      "question_ids": [
+        "batch043-M02-A1-010",
+        "batch043-M02-A1-011",
+        "batch043-M02-A1-015",
+        "batch043-M02-A2-003",
+        "batch043-M02-A2-006",
+        "batch043-M02-X-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        239
+      ],
+      "review_anchor": "L417",
+      "content_chars": 2893,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M03-001",
+      "display_id": "K-M03-001",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "休克的本质与分型",
+      "keypoints": [
+        16,
+        17
+      ],
+      "question_ids": [
+        "batch043-M03-A1-001",
+        "batch043-M03-A1-002",
+        "batch043-M03-A3-003",
+        "batch043-M03-X-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        148
+      ],
+      "review_anchor": "L537",
+      "content_chars": 662,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M03-002",
+      "display_id": "K-M03-002",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "四型休克的临床特点",
+      "keypoints": [
+        18
+      ],
+      "question_ids": [
+        "batch043-M03-A1-003",
+        "batch043-M03-A1-004",
+        "batch043-M03-A1-005",
+        "batch043-M03-A1-006",
+        "batch043-M03-A1-010",
+        "batch043-M03-A1-011",
+        "batch043-M03-A1-012",
+        "batch043-M03-A2-001",
+        "batch043-M03-A2-003",
+        "batch043-M03-A3-004",
+        "batch043-M03-X-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        153,
+        154,
+        155
+      ],
+      "review_anchor": "L559",
+      "content_chars": 1019,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M03-003",
+      "display_id": "K-M03-003",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "休克治疗原则与血管活性药时机",
+      "keypoints": [
+        19,
+        20
+      ],
+      "question_ids": [
+        "batch043-M03-A1-007",
+        "batch043-M03-A1-008",
+        "batch043-M03-A1-009",
+        "batch043-M03-A2-004",
+        "batch043-M03-JUD-001",
+        "batch043-M03-X-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        152,
+        153
+      ],
+      "review_anchor": "L579",
+      "content_chars": 904,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M03-004",
+      "display_id": "K-M03-004",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "MODS 多器官功能障碍综合征",
+      "keypoints": [
+        21
+      ],
+      "question_ids": [
+        "batch043-M03-A2-002",
+        "batch043-M03-JUD-002",
+        "batch043-M03-X-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        209,
+        228
+      ],
+      "review_anchor": "L601",
+      "content_chars": 3034,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M04-001",
+      "display_id": "K-M04-001",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "急性中毒总则与毒物清除",
+      "keypoints": [
+        22
+      ],
+      "question_ids": [
+        "batch043-M04-A1-001",
+        "batch043-M04-A2-002",
+        "batch043-M04-A2-003",
+        "batch043-M04-JUD-001",
+        "batch043-M04-X-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        159
+      ],
+      "review_anchor": "L724",
+      "content_chars": 677,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M04-002",
+      "display_id": "K-M04-002",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "特异性解毒剂配对",
+      "keypoints": [
+        23
+      ],
+      "question_ids": [
+        "batch043-M04-A1-002",
+        "batch043-M04-A1-003",
+        "batch043-M04-A1-011",
+        "batch043-M04-A1-012",
+        "batch043-M04-A3-002",
+        "batch043-M04-A3-003",
+        "batch043-M04-A3-004",
+        "batch043-M04-X-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        161
+      ],
+      "review_anchor": "L744",
+      "content_chars": 801,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M04-003",
+      "display_id": "K-M04-003",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "有机磷中毒与瞳孔变化",
+      "keypoints": [
+        24,
+        26
+      ],
+      "question_ids": [
+        "batch043-M04-A1-004",
+        "batch043-M04-A1-005",
+        "batch043-M04-A1-007",
+        "batch043-M04-A1-010",
+        "batch043-M04-A3-001",
+        "batch043-M04-JUD-002",
+        "batch043-M04-X-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        158,
+        162
+      ],
+      "review_anchor": "L764",
+      "content_chars": 871,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M04-004",
+      "display_id": "K-M04-004",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "中间综合征与迟发性脑病",
+      "keypoints": [
+        25,
+        27
+      ],
+      "question_ids": [
+        "batch043-M04-A1-006",
+        "batch043-M04-A1-008",
+        "batch043-M04-A1-013",
+        "batch043-M04-A2-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        163,
+        176
+      ],
+      "review_anchor": "L786",
+      "content_chars": 945,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M04-005",
+      "display_id": "K-M04-005",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "中毒昏迷的气道管理",
+      "keypoints": [
+        28
+      ],
+      "question_ids": [
+        "batch043-M04-A1-009",
+        "batch043-M04-A2-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        160,
+        176,
+        256
+      ],
+      "review_anchor": "L808",
+      "content_chars": 2926,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M05-001",
+      "display_id": "K-M05-001",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "中暑的分级",
+      "keypoints": [
+        29,
+        30,
+        31
+      ],
+      "question_ids": [
+        "batch043-M05-A1-001",
+        "batch043-M05-A1-002",
+        "batch043-M05-A1-003",
+        "batch043-M05-A1-013",
+        "batch043-M05-A2-004",
+        "batch043-M05-A3-001",
+        "batch043-M05-A3-002",
+        "batch043-M05-X-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        178
+      ],
+      "review_anchor": "L932",
+      "content_chars": 865,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M05-002",
+      "display_id": "K-M05-002",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "热射病与快速降温",
+      "keypoints": [
+        32
+      ],
+      "question_ids": [
+        "batch043-M05-A1-004",
+        "batch043-M05-A1-005",
+        "batch043-M05-A2-001",
+        "batch043-M05-X-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        179
+      ],
+      "review_anchor": "L956",
+      "content_chars": 690,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M05-003",
+      "display_id": "K-M05-003",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "溺水与现场急救",
+      "keypoints": [
+        33,
+        34
+      ],
+      "question_ids": [
+        "batch043-M05-A1-006",
+        "batch043-M05-A1-007",
+        "batch043-M05-A1-014",
+        "batch043-M05-JUD-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        177
+      ],
+      "review_anchor": "L976",
+      "content_chars": 775,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M05-004",
+      "display_id": "K-M05-004",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "电击伤与断电",
+      "keypoints": [
+        35
+      ],
+      "question_ids": [
+        "batch043-M05-A1-008",
+        "batch043-M05-A1-009",
+        "batch043-M05-A2-005",
+        "batch043-M05-JUD-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        189
+      ],
+      "review_anchor": "L998",
+      "content_chars": 623,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M05-005",
+      "display_id": "K-M05-005",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "烧烫伤急救与面积估算",
+      "keypoints": [
+        36
+      ],
+      "question_ids": [
+        "batch043-M05-A1-010",
+        "batch043-M05-A3-003",
+        "batch043-M05-A3-004",
+        "batch043-M05-JUD-002",
+        "batch043-M05-X-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        186,
+        309
+      ],
+      "review_anchor": "L1018",
+      "content_chars": 689,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M05-006",
+      "display_id": "K-M05-006",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "犬咬伤与狂犬病暴露后处置",
+      "keypoints": [
+        37
+      ],
+      "question_ids": [
+        "batch043-M05-A1-011",
+        "batch043-M05-A2-003",
+        "batch043-M05-X-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        192
+      ],
+      "review_anchor": "L1038",
+      "content_chars": 747,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M05-007",
+      "display_id": "K-M05-007",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "止血带的使用",
+      "keypoints": [
+        38
+      ],
+      "question_ids": [
+        "batch043-M05-A1-012",
+        "batch043-M05-A1-015",
+        "batch043-M05-A1-016",
+        "batch043-M05-A2-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        282
+      ],
+      "review_anchor": "L1058",
+      "content_chars": 2960,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M06-001",
+      "display_id": "K-M06-001",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "多发伤的概念与死亡高峰",
+      "keypoints": [
+        39
+      ],
+      "question_ids": [
+        "batch043-M06-A1-001",
+        "batch043-M06-A1-010",
+        "batch043-M06-X-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        255
+      ],
+      "review_anchor": "L1182",
+      "content_chars": 639,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M06-002",
+      "display_id": "K-M06-002",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "创伤初级评估 ABCDE",
+      "keypoints": [
+        40,
+        41
+      ],
+      "question_ids": [
+        "batch043-M06-A1-002",
+        "batch043-M06-A1-003",
+        "batch043-M06-A1-009",
+        "batch043-M06-A3-001",
+        "batch043-M06-X-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        256,
+        307
+      ],
+      "review_anchor": "L1202",
+      "content_chars": 781,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M06-003",
+      "display_id": "K-M06-003",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "连枷胸",
+      "keypoints": [
+        42
+      ],
+      "question_ids": [
+        "batch043-M06-A1-004",
+        "batch043-M06-A2-005",
+        "batch043-M06-JUD-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        257
+      ],
+      "review_anchor": "L1224",
+      "content_chars": 585,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M06-004",
+      "display_id": "K-M06-004",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "开放性气胸",
+      "keypoints": [
+        43
+      ],
+      "question_ids": [
+        "batch043-M06-A1-005",
+        "batch043-M06-A2-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        257,
+        282
+      ],
+      "review_anchor": "L1244",
+      "content_chars": 614,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M06-005",
+      "display_id": "K-M06-005",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "张力性气胸",
+      "keypoints": [
+        44
+      ],
+      "question_ids": [
+        "batch043-M06-A1-006",
+        "batch043-M06-A1-011",
+        "batch043-M06-A2-001",
+        "batch043-M06-A3-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        257,
+        282
+      ],
+      "review_anchor": "L1264",
+      "content_chars": 637,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M06-006",
+      "display_id": "K-M06-006",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "骨盆骨折",
+      "keypoints": [
+        45
+      ],
+      "question_ids": [
+        "batch043-M06-A1-007",
+        "batch043-M06-A2-003",
+        "batch043-M06-A3-003",
+        "batch043-M06-A3-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        255,
+        284
+      ],
+      "review_anchor": "L1284",
+      "content_chars": 586,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M06-007",
+      "display_id": "K-M06-007",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "现场禁忌操作",
+      "keypoints": [
+        46
+      ],
+      "question_ids": [
+        "batch043-M06-A1-008",
+        "batch043-M06-A1-012",
+        "batch043-M06-A2-002",
+        "batch043-M06-JUD-002",
+        "batch043-M06-X-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        282,
+        284,
+        317
+      ],
+      "review_anchor": "L1304",
+      "content_chars": 2729,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M07-001",
+      "display_id": "K-M07-001",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "急性冠脉综合征 ACS",
+      "keypoints": [
+        47
+      ],
+      "question_ids": [
+        "batch043-M07-A1-001",
+        "batch043-M07-A2-001",
+        "batch043-M07-X-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        87
+      ],
+      "review_anchor": "L1425",
+      "content_chars": 839,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M07-002",
+      "display_id": "K-M07-002",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "高血压急症",
+      "keypoints": [
+        48
+      ],
+      "question_ids": [
+        "batch043-M07-A1-002",
+        "batch043-M07-A1-010",
+        "batch043-M07-A1-011",
+        "batch043-M07-A3-003",
+        "batch043-M07-A3-004",
+        "batch043-M07-JUD-002",
+        "batch043-M07-X-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        82
+      ],
+      "review_anchor": "L1445",
+      "content_chars": 690,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M07-003",
+      "display_id": "K-M07-003",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "急性左心衰",
+      "keypoints": [
+        49
+      ],
+      "question_ids": [
+        "batch043-M07-A1-003",
+        "batch043-M07-A1-004",
+        "batch043-M07-A3-001",
+        "batch043-M07-A3-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        55
+      ],
+      "review_anchor": "L1465",
+      "content_chars": 694,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M07-004",
+      "display_id": "K-M07-004",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "心源性晕厥",
+      "keypoints": [
+        50
+      ],
+      "question_ids": [
+        "batch043-M07-A1-005"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        15
+      ],
+      "review_anchor": "L1485",
+      "content_chars": 656,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M07-005",
+      "display_id": "K-M07-005",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "重症哮喘",
+      "keypoints": [
+        51
+      ],
+      "question_ids": [
+        "batch043-M07-A1-006",
+        "batch043-M07-A2-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        50
+      ],
+      "review_anchor": "L1505",
+      "content_chars": 737,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M07-006",
+      "display_id": "K-M07-006",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "ARDS",
+      "keypoints": [
+        52
+      ],
+      "question_ids": [
+        "batch043-M07-A1-007",
+        "batch043-M07-A2-004",
+        "batch043-M07-JUD-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        59
+      ],
+      "review_anchor": "L1525",
+      "content_chars": 709,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M07-007",
+      "display_id": "K-M07-007",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "社区获得性肺炎 CAP",
+      "keypoints": [
+        53
+      ],
+      "question_ids": [
+        "batch043-M07-A1-009"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        203
+      ],
+      "review_anchor": "L1545",
+      "content_chars": 669,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M07-008",
+      "display_id": "K-M07-008",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "肺栓塞的栓子来源与诊断",
+      "keypoints": [
+        54
+      ],
+      "question_ids": [
+        "batch043-M07-A1-008",
+        "batch043-M07-A1-012",
+        "batch043-M07-A2-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        57
+      ],
+      "review_anchor": "L1565",
+      "content_chars": 3109,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M08-001",
+      "display_id": "K-M08-001",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "上消化道大出血",
+      "keypoints": [
+        55
+      ],
+      "question_ids": [
+        "batch043-M08-A1-005",
+        "batch043-M08-A1-006",
+        "batch043-M08-A1-007",
+        "batch043-M08-A2-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        116
+      ],
+      "review_anchor": "L1687",
+      "content_chars": 743,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M08-002",
+      "display_id": "K-M08-002",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "急性胰腺炎",
+      "keypoints": [
+        56
+      ],
+      "question_ids": [
+        "batch043-M08-A1-001",
+        "batch043-M08-A1-008",
+        "batch043-M08-A2-003",
+        "batch043-M08-X-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        101
+      ],
+      "review_anchor": "L1707",
+      "content_chars": 738,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M08-003",
+      "display_id": "K-M08-003",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "糖尿病酮症酸中毒 DKA",
+      "keypoints": [
+        57
+      ],
+      "question_ids": [
+        "batch043-M08-A1-002",
+        "batch043-M08-A1-009"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        36
+      ],
+      "review_anchor": "L1727",
+      "content_chars": 769,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M08-004",
+      "display_id": "K-M08-004",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "高渗高血糖综合征 HHS",
+      "keypoints": [
+        58
+      ],
+      "question_ids": [
+        "batch043-M08-A1-003",
+        "batch043-M08-X-001",
+        "batch043-M08-X-003"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        39
+      ],
+      "review_anchor": "L1747",
+      "content_chars": 677,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M08-005",
+      "display_id": "K-M08-005",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "低血糖",
+      "keypoints": [
+        59
+      ],
+      "question_ids": [
+        "batch043-M08-A1-010",
+        "batch043-M08-A2-002",
+        "batch043-M08-JUD-002"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        34
+      ],
+      "review_anchor": "L1767",
+      "content_chars": 732,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M08-006",
+      "display_id": "K-M08-006",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "急性脑卒中",
+      "keypoints": [
+        60
+      ],
+      "question_ids": [
+        "batch043-M08-A1-004",
+        "batch043-M08-A3-003",
+        "batch043-M08-A3-004"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        29
+      ],
+      "review_anchor": "L1787",
+      "content_chars": 732,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    },
+    {
+      "kc_id": "急诊:K-M08-007",
+      "display_id": "K-M08-007",
+      "subject": "急诊",
+      "module": "M00",
+      "title": "蛛网膜下腔出血 SAH",
+      "keypoints": [
+        61
+      ],
+      "question_ids": [
+        "batch043-M08-JUD-001"
+      ],
+      "secondary_question_ids": [],
+      "source_pages": [
+        27,
+        31
+      ],
+      "review_anchor": "L1807",
+      "content_chars": 8493,
+      "blueprint_weight": 0,
+      "status": "active",
+      "needs_content": false,
+      "aliases": [],
+      "notes": "",
+      "version": 1
+    }
+  ],
+  "provisional": [],
+  "metadata": {
+    "review_path": "Obsidian产物\\教师重点蓝图版\\急诊与灾难医学_教师重点蓝图版_主复习资料.md",
+    "questions_path": "最终产物\\batch043\\ALL_questions_FIXED.json",
+    "keypoints_path": "输入素材\\大四上\\急诊与灾难医学\\急诊与灾难医学_教师重点_锚定清单_20261026.md",
+    "rules_path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\pilot\\kc_mapping_rules.json",
+    "learning_value_path": "reports\\validate\\learning_value_batch043.json",
+    "anchor_overrides_path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\learning_value_v2\\anchor_overrides.json",
+    "question_overrides_path": "C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch040\\pilot\\kc_question_overrides.json",
+    "card_count": 48,
+    "provisional_count": 0,
+    "question_count": 200,
+    "keypoint_items": 61,
+    "blueprint_weights": {
+      "M01": 8,
+      "M02": 28,
+      "M03": 24,
+      "M04": 18,
+      "M05": 14,
+      "M06": 5,
+      "M07": 3
+    }
+  }
+}

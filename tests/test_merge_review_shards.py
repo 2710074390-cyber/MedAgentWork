@@ -65,3 +65,47 @@ def test_merge_rejects_missing_module_heading():
         )
         assert r.returncode == 1
         assert "缺少" in r.stderr
+
+
+def test_adaptive_preserves_content_and_order():
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        shards = root / "shards"
+        _write(shards / "head.md", "# 总标题\n")
+        _write(shards / "M01.md", "## 第一章\n\n第一章正文\n")
+        _write(shards / "M02.md", "## 第二章\n\n第二章正文\n")
+        appendix = root / "appendix.md"
+        _write(appendix, "## 自定义附录\n\n附录正文\n")
+        _write(shards / "answers" / "M01.md", "答案内容\n")
+        out = root / "out.md"
+        r = subprocess.run([sys.executable, "scripts/merge_review_shards.py", "--mode", "adaptive",
+                            "--shards", str(shards), "--appendix", str(appendix), "--out", str(out)],
+                           cwd=BASE, capture_output=True, text=True, encoding="utf-8")
+        assert r.returncode == 0, r.stderr
+        text = out.read_text(encoding="utf-8")
+        items = ["# 总标题", "第一章正文", "第二章正文", "附录正文", "答案内容"]
+        assert [text.index(item) for item in items] == sorted(text.index(item) for item in items)
+
+
+def test_adaptive_rejects_invalid_inputs_without_overwriting():
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        shards = root / "shards"
+        _write(shards / "head.md", "# 标题\n")
+        _write(shards / "M01.md", "## 第一章\n\n正文\n")
+        out = root / "out.md"
+        _write(out, "原有内容")
+        cmd = [sys.executable, "scripts/merge_review_shards.py", "--mode", "adaptive",
+               "--shards", str(shards), "--out", str(out)]
+        for extra in (["--expect-modules", "2"], ["--appendix", str(root / "missing.md")]):
+            r = subprocess.run(cmd + extra, cwd=BASE, capture_output=True, text=True, encoding="utf-8")
+            assert r.returncode == 1
+            assert out.read_text(encoding="utf-8") == "原有内容"
+        _write(shards / "M01.md", "## 只有标题\n")
+        r = subprocess.run(cmd, cwd=BASE, capture_output=True, text=True, encoding="utf-8")
+        assert r.returncode == 1
+        assert out.read_text(encoding="utf-8") == "原有内容"
+        _write(shards / "M01.md", "# 第二个标题\n正文\n")
+        r = subprocess.run(cmd, cwd=BASE, capture_output=True, text=True, encoding="utf-8")
+        assert r.returncode == 1
+        assert out.read_text(encoding="utf-8") == "原有内容"

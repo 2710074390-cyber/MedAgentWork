@@ -97,6 +97,7 @@ def new_batch(batch_id, **fields):
         'created': datetime.now().isoformat(),
         'workflow': 'Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)',
         'item_schema_version': '2.0',
+        'evidence_binding_mode': 'strict',
         'steps': {},
         'lineage': [],
     }

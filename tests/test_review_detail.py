@@ -265,3 +265,90 @@ def test_course_schedule_missing_time_fails():
     report = crd.evaluate([], [], units, "course_schedule", th, set())
     assert "time" in report["units"][0]["missing_blocks"]
     assert report["summary"]["status"] == "FAIL"
+
+
+def test_info_units_counts_bullets_once_and_excludes_tables_and_code():
+    text = """- 这是一个足够长的测试句子。
+- 这是另一条足够长的测试句子。
+
+| 表头 | 内容 |
+|---|---|
+| 数据 | 一行 |
+
+```text
+代码中的足够长句子不另计。
+```
+"""
+    assert crd.info_units(text) == 5
+    assert crd.info_units("- 短句。\n- 短句。") == 0
+
+
+def test_info_units_retains_legacy_table_row_counting():
+    table = "| 表头 | 内容 |\n|---|---|\n| 数据 | 一行 |\n| 数据 | 一行 |"
+    assert crd.count_tables(table) == 3
+    assert crd.info_units(table) == 3
+    assert crd.info_units("```text\n| 示例 | 内容 |\n```") == 2
+
+
+def test_duplicate_paragraph_warning_does_not_block_and_is_rendered():
+    paragraph = FACTS[0]
+    doc = _doc(_card_body() + "\n\n" + paragraph + "\n\n" + paragraph)
+    _, _, _, report = _evaluate(doc)
+    assert report["summary"]["status"] == "PASS"
+    assert report["cards"][0]["pass"]
+    assert any("完全重复" in warning for warning in report["warnings"])
+    report.update(md_path="test.md", profile="pilot", generated_at="now")
+    assert "完全重复" in crd.render_md(report)
+
+
+def test_duplicate_warning_ignores_short_text_tables_and_code():
+    text = "短句。\n\n短句。\n\n| " + FACTS[0] + " |\n\n| " + FACTS[0] + " |"
+    text += "\n\n```text\n" + FACTS[0] + "\n```\n\n```text\n" + FACTS[0] + "\n```"
+    assert crd.duplicate_body_warning(text) is None
+
+
+def test_schedule_duplicate_warning_does_not_block():
+    paragraph = FACTS[0]
+    units = crd.parse_schedule_units("## 第1周：测试\n\n" + paragraph + "\n\n" + paragraph)
+    th = dict(crd.DEFAULT_THRESHOLDS, schedule_min_chars=0, schedule_min_units=0)
+    report = crd.evaluate([], [], units, "course_schedule", th)
+    assert any("第1周" in warning and "完全重复" in warning for warning in report["warnings"])
+    assert not any("重复" in item for item in report["blocking"])
+
+
+def test_adaptive_short_content_requires_manual_review_without_template_failures():
+    report = crd.evaluate_adaptive("# 解剖\n\n神经位于动脉内侧。\n\n来源：教材第10页", "module")
+    assert report["summary"]["status"] == "FAIL"
+    assert report["summary"]["manual_review"] == "pending"
+    assert report["summary"]["recognizable_content"]
+    assert report["summary"]["source_marker"]
+    assert not any("槽位" in x or "字符" in x for x in report["blocking"])
+    report.update(md_path="test.md", profile="pilot", generated_at="now")
+    rendered = crd.render_md(report)
+    assert "人工审核未完成" in rendered
+    assert "九个学习槽位" not in rendered
+
+
+def test_adaptive_empty_and_missing_source_are_not_pass():
+    report = crd.evaluate_adaptive("# 标题\n\n| 表头 |\n|---|", "module")
+    assert report["summary"]["status"] == "FAIL"
+    assert not report["summary"]["recognizable_content"]
+    assert not report["summary"]["source_marker"]
+    assert any("未识别到正文" in x for x in report["warnings"])
+    assert any("未识别到来源" in x for x in report["warnings"])
+
+
+def test_adaptive_cli_cannot_be_made_successful_by_advisory(tmp_path):
+    import json
+    import subprocess
+    doc = tmp_path / "review.md"
+    out = tmp_path / "report.json"
+    doc.write_text("# 分类\n\n按病因分类。\n\n来源：教材", encoding="utf-8")
+    result = subprocess.run([sys.executable, str(BASE / "scripts/check_review_detail.py"),
+                             "--md", str(doc), "--detail-standard", "adaptive",
+                             "--advisory", "--json-out", str(out), "--quiet"],
+                            capture_output=True, text=True)
+    assert result.returncode == 1, result.stderr
+    report = json.loads(out.read_text(encoding="utf-8"))
+    assert report["detail_standard"] == "adaptive"
+    assert report["summary"]["manual_review"] == "pending"

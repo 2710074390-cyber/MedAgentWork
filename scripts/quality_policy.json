@@ -54,6 +54,36 @@
         "review_keypoint_min": 125
       }
     },
+    "release_adaptive": {
+      "description": "自适应资料正式发布：仅显式选择；自适应覆盖、来源绑定及人工审核证据全部 enforce。",
+      "required_checks": [
+        "adaptive_coverage",
+        "adaptive_manual_review",
+        "produce_rules",
+        "site_freshness",
+        "site_links"
+      ],
+      "thresholds": {
+        "keypoint_coverage": 1.0
+      },
+      "adaptive_contract": {
+        "coverage_command": "scripts/check_keypoint_coverage.py --adaptive --json --source-text",
+        "manual_review_status": "APPROVED",
+        "manual_review_decision": "PASS",
+        "manual_review_required_fields": [
+          "batch",
+          "review_sha256",
+          "keypoints_sha256",
+          "status",
+          "reviewer",
+          "decision",
+          "evidence",
+          "reviewed_at",
+          "source_paths",
+          "source_sha256"
+        ]
+      }
+    },
     "release_teacher_keypoint": {
       "description": "教师重点版正式发布：范围锚定优先，内容/题目/评分卡/发布链全部 enforce。",
       "required_checks": [

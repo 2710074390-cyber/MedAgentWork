@@ -86,5 +86,8 @@ def validate_batch(batch_id, mode='full', verbose=False):
 
     all_issues, summary = validate_questions(all_questions, verbose, mode=mode, filepath=str(files[0]))
     print_report(all_issues, summary, files[0])
-    save_json_report(all_issues, summary, files[0], batch_id, mode=mode)
+    if len(files) == 1:
+        save_json_report(all_issues, summary, files[0], batch_id, mode=mode)
+    else:
+        print('  ⚠️ 多文件校验结果不能作为单一题库绑定证据，请单独校验聚合题库')
     return summary

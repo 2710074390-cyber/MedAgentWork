@@ -61,6 +61,8 @@ def main() -> int:
     ap.add_argument("--answers", help="自测答案目录（默认 <shards>/answers）")
     ap.add_argument("--out", required=True, help="合并后的交付文件")
     ap.add_argument("--expect-modules", type=int, help="期望模块数；缺省按分片文件数推断")
+    ap.add_argument("--mode", choices=("legacy", "adaptive"), default="legacy",
+                    help="合并模式：legacy 使用固定模板，adaptive 保留分片原有结构")
     args = ap.parse_args()
 
     shards = Path(args.shards)
@@ -69,27 +71,54 @@ def main() -> int:
         print(f"✗ {shards} 下没有 Mnn.md 分片", file=sys.stderr)
         return 1
 
+    if args.expect_modules is not None and args.expect_modules < 1:
+        print("✗ 期望模块数必须大于零", file=sys.stderr)
+        return 1
+    if args.mode == "adaptive":
+        expect = args.expect_modules if args.expect_modules is not None else len(modules)
+        expected_names = [f"M{i:02d}.md" for i in range(1, expect + 1)]
+        if [m.name for m in modules] != expected_names:
+            print("✗ 模块分片缺失或数量不符", file=sys.stderr)
+            return 1
+        for label, path in (("附录", Path(args.appendix) if args.appendix else None),
+                            ("答案目录", Path(args.answers) if args.answers else None)):
+            if path is not None and (not path.is_file() if label == "附录" else not path.is_dir()):
+                print(f"✗ {label}不存在：{path}", file=sys.stderr)
+                return 1
+
     parts = []
     head = shards / "head.md"
     if head.exists():
         parts.append(read(head).rstrip() + "\n")
     for m in modules:
         text = read(m).strip()
-        if not MODULE_HEAD_RE.search(text):
+        if args.mode == "legacy" and not MODULE_HEAD_RE.search(text):
             print(f"✗ {m.name} 缺少 `## 模块N：` 标题", file=sys.stderr)
             return 1
+        if args.mode == "adaptive" and not any(
+            line.strip() and not re.match(r"^\s*#{1,6}(?:\s|$)", line)
+            for line in text.splitlines()
+        ):
+            print(f"✗ {m.name} 缺少正文内容", file=sys.stderr)
+            return 1
         parts.append(text + "\n")
-    appendix = build_appendix(Path(args.appendix) if args.appendix else None,
-                              Path(args.answers) if args.answers else shards / "answers")
-    if appendix:
-        parts.append(appendix.rstrip() + "\n")
+    if args.mode == "adaptive":
+        appendix = read(Path(args.appendix)) if args.appendix else ""
+        answers_dir = Path(args.answers) if args.answers else shards / "answers"
+        answer_parts = [read(f).strip() for f in sorted(answers_dir.glob("M[0-9][0-9].md"))]
+        if appendix:
+            parts.append(appendix.rstrip() + "\n")
+        parts.extend(text + "\n" for text in answer_parts if text)
+    else:
+        appendix = build_appendix(Path(args.appendix) if args.appendix else None,
+                                  Path(args.answers) if args.answers else shards / "answers")
+        if appendix:
+            parts.append(appendix.rstrip() + "\n")
 
     merged = "\n".join(parts)
     out = Path(args.out)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(merged, encoding="utf-8")
 
-    # 合并完整性校验：写盘后立刻核验，不合格即失败
+    # 在写盘前完成完整性校验，避免覆盖已有交付文件。
     expect = args.expect_modules or len(modules)
     problems = []
     h1 = len(re.findall(r"^# .+$", merged, re.M))
@@ -97,15 +126,20 @@ def main() -> int:
     cards = len(CARD_RE.findall(merged))
     if h1 != 1:
         problems.append(f"一级标题 {h1} 个（应为 1）")
-    if found != expect:
-        problems.append(f"模块 {found} 个（应为 {expect}）")
-    if cards == 0:
-        problems.append("未解析到考点卡")
-    if appendix and merged.count(APPENDIX5) != 1:
-        problems.append(f"附录五出现 {merged.count(APPENDIX5)} 次（应为 1）")
+    if args.mode == "legacy":
+        if found != expect:
+            problems.append(f"模块 {found} 个（应为 {expect}）")
+        if cards == 0:
+            problems.append("未解析到考点卡")
+        if appendix and merged.count(APPENDIX5) != 1:
+            problems.append(f"附录五出现 {merged.count(APPENDIX5)} 次（应为 1）")
+    else:
+        found = len(modules)
     if problems:
         print("✗ 合并结果不合格：" + "；".join(problems), file=sys.stderr)
         return 1
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(merged, encoding="utf-8")
     print(f"✓ 合并完成：{out}")
     print(f"  模块 {found}｜卡片 {cards}｜字符 {len(merged)}｜行 {merged.count(chr(10)) + 1}")
     return 0

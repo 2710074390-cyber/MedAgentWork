@@ -17,8 +17,11 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
+import tempfile
 import io
 import json
+import re
 import subprocess
 import sys
 from datetime import datetime
@@ -44,6 +47,28 @@ DEFAULT_KEYPOINTS = BASE / "输入素材/大四上/耳鼻咽喉头颈外科学/�
 DEFAULT_BLUEPRINT = BASE / "中间产物/batch040/出题蓝图_batch040.md"
 
 
+ADAPTIVE_REVIEW_STATUS = "APPROVED"
+
+
+def _nonempty_text(value) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def _json_from_command_stdout(stdout: str) -> dict:
+    decoder = json.JSONDecoder()
+    for index in range(len(stdout) - 1, -1, -1):
+        if stdout[index] != "{":
+            continue
+        try:
+            data, end = decoder.raw_decode(stdout[index:])
+        except json.JSONDecodeError:
+            continue
+        if stdout[index + end:].strip():
+            continue
+        if not isinstance(data, dict):
+            raise ValueError("命令 JSON 输出必须是对象")
+        return data
+    raise ValueError("命令未输出可解析 JSON")
 def read_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -152,8 +177,10 @@ def derive_batch_defaults(args) -> None:
     pilot_dir = BASE / "中间产物" / batch / "pilot"
     candidates = {
         "questions": [final_dir / "ALL_questions_FIXED.json"],
-        "learning_value": [BASE / "reports/validate" / f"learning_value_{batch}.json",
-                           BASE / "reports/validate" / f"learning_value_{batch}_final.json"],
+        "learning_value": ([BASE / "reports/validate" / f"learning_value_{batch}_final.json"]
+                           if _strict_batch(batch) else
+                           [BASE / "reports/validate" / f"learning_value_{batch}.json",
+                            BASE / "reports/validate" / f"learning_value_{batch}_final.json"]),
         "kc": [pilot_dir / "kc_registry.json", BASE / "中间产物" / batch / "kc_registry.json"],
         "baseline": [pilot_dir / "baseline_manifest.json",
                      BASE / "中间产物" / batch / "baseline_manifest.json"],
@@ -170,6 +197,15 @@ def derive_batch_defaults(args) -> None:
         hit = next((p for p in paths if p.exists()), None)
         # 没有批次专属产物时也落到批次专属路径（缺失），避免误用 batch040 的报告。
         setattr(args, attr, str(hit or paths[0]))
+
+    if _strict_batch(batch) and str(args.keypoints) == str(DEFAULT_KEYPOINTS):
+        args.keypoints = str(BASE / "中间产物" / batch / "教师重点_锚定清单.md")
+    if _strict_batch(batch) and str(args.blueprint) == str(DEFAULT_BLUEPRINT):
+        args.blueprint = str(BASE / "中间产物" / batch / f"出题蓝图_{batch}.md")
+    if _strict_batch(batch) and str(args.rubric) == str(DEFAULT_RUBRIC):
+        args.rubric = str(pilot_dir / "review_score_rubric.json")
+    if _strict_batch(batch) and str(args.subject) == "ent":
+        args.subject = _batch_subject(batch) or batch
 
     # 评分卡同理：默认文件是 batch040 的冻结报告，直接复用会把别批分数算到本批头上
     if str(args.scorecard) == str(DEFAULT_SCORECARD):
@@ -190,7 +226,7 @@ def derive_batch_defaults(args) -> None:
                 current = [p for p in hits if "_BPA_" not in p.name]
                 pick = canonical or current or hits
                 args.review = str(pick[0]) if pick else str(review_dir / f"{subject}_主复习资料.md")
-        elif "review_material" not in products:
+        elif "review_material" not in products or _strict_batch(batch):
             args.review = str(BASE / "复习资料" / "__no_review_product__.md")
 
 
@@ -329,25 +365,65 @@ def check_kc_registry(args, profile: dict, mode: str) -> dict:
     )
 
 
+def _strict_batch(batch: str) -> bool:
+    match = re.fullmatch(r"batch(\d+)(?:-[A-Za-z0-9]+)?", str(batch or ""))
+    mode = _batch_state(batch).get("evidence_binding_mode")
+    return mode == "strict" or not (match and int(match.group(1)) <= 44 and mode in (None, "legacy"))
+
+
+def _input_hash(path: str) -> str:
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def _bound_report(path: Path, batch: str, input_path: str, hash_key: str) -> dict:
+    data = read_json(path)
+    if not isinstance(data, dict) or data.get("batch") != batch or data.get(hash_key) != _input_hash(input_path):
+        raise ValueError("报告批次或输入哈希不匹配")
+    return data
+
+
 def check_item_learning_value(args, profile: dict, mode: str) -> dict:
     path = Path(args.learning_value)
-    checks = []
+    if _strict_batch(args.batch):
+        if not path.exists() and Path(args.questions).exists():
+            if path.resolve() == Path(args.questions).resolve():
+                return check_item("r2.item_learning_value", "FAIL", "报告路径不得覆盖题库")
+            with tempfile.TemporaryDirectory() as td:
+                fresh = Path(td) / "learning_value.json"
+                r = run_cmd([sys.executable, "scripts/check_learning_value.py",
+                             "--file", str(args.questions), "--batch", str(args.batch), "--out", str(fresh)])
+                if r["returncode"] not in (0, 1) or not fresh.exists():
+                    return check_item("r2.item_learning_value", "FAIL", "学习价值报告生成失败", details=r)
+                try:
+                    data = _bound_report(fresh, args.batch, args.questions, "input_sha256")
+                    write_json(path, data)
+                except (OSError, ValueError, TypeError) as exc:
+                    return check_item("r2.item_learning_value", "FAIL", f"学习价值报告生成无效：{exc}")
+        try:
+            data = _bound_report(path, args.batch, args.questions, "input_sha256")
+        except (OSError, ValueError, TypeError) as exc:
+            cmd = [sys.executable, "scripts/check_learning_value.py", "--file", str(args.questions),
+                   "--batch", str(args.batch), "--out", str(path)]
+            return check_item("r2.item_learning_value", "FAIL", f"学习价值报告缺失或过期：{exc}；重新生成：{subprocess.list2cmdline(cmd)}")
+    else:
+        data = None
     if not path.exists():
         # 只在显式允许时尝试生成；默认不重跑，避免覆盖报告
         if args.questions and Path(args.questions).exists():
             out = BASE / "reports/validate" / f"learning_value_{args.batch}.json"
             r = run_cmd([sys.executable, "scripts/check_learning_value.py",
-                         "--file", str(args.questions), "--out", str(out)])
+                         "--file", str(args.questions), "--batch", str(args.batch), "--out", str(out)])
             if r["returncode"] != 0:
                 return check_item("r2.item_learning_value", "FAIL",
                                   "check_learning_value.py 执行失败", details=r)
             path = out
         else:
             return check_item("r2.item_learning_value", "SKIP", f"学习价值报告缺失：{path}", required=False)
-    try:
-        data = read_json(path)
-    except Exception as exc:
-        return check_item("r2.item_learning_value", "FAIL", f"报告解析失败：{exc}", details={"path": str(path)})
+    if data is None:
+        try:
+            data = read_json(path)
+        except Exception as exc:
+            return check_item("r2.item_learning_value", "FAIL", f"报告解析失败：{exc}", details={"path": str(path)})
     s = data.get("summary", {})
     th = profile["thresholds"]
     fail_count = int(s.get("fail", 0))
@@ -384,10 +460,41 @@ def check_item_learning_value(args, profile: dict, mode: str) -> dict:
 
 
 def check_scorecard(args, profile: dict, mode: str) -> dict:
+    strict = _strict_batch(args.batch)
     if not Path(args.review).exists():
+        if strict and "review_material" in infer_batch_products(args.batch):
+            return check_item("r2.scorecard", "FAIL", f"复习资料缺失：{args.review}")
         return check_item("r2.scorecard", "SKIP",
                           f"批次无复习资料产物，评分卡不适用：{args.review}", required=False)
     path = Path(args.scorecard)
+    if strict:
+        if not path.exists():
+            try:
+                registry = read_json(Path(args.kc))
+                if not registry.get("metadata", {}).get("keypoints_path"):
+                    raise ValueError("KC 注册表缺少当前批次 keypoints_path")
+                _bound_report(Path(args.learning_value), args.batch, args.questions, "input_sha256")
+            except (OSError, ValueError, TypeError, AttributeError) as exc:
+                return check_item("r2.scorecard", "FAIL", f"评分卡输入缺失或无效：{exc}")
+            cmd = [sys.executable, "scripts/review_scorecard.py", "--subject", args.subject,
+                   "--batch", args.batch, "--review", args.review, "--kc", args.kc,
+                   "--learning-value", args.learning_value, "--rubric", args.rubric,
+                   "--out", str(path), "--md-out", str(path.with_suffix(".md"))]
+            return check_item("r2.scorecard", "FAIL", "评分卡缺失；确认所有输入属于当前批次后执行：" + subprocess.list2cmdline(cmd))
+        try:
+            from review_scorecard import scorecard_inputs
+            card = _bound_report(path, args.batch, args.review, "review_sha256")
+            registry = read_json(Path(args.kc))
+            if not registry.get("metadata", {}).get("keypoints_path"):
+                raise ValueError("当前批次 KC 注册表缺少 keypoints_path，禁止沿用旧科目默认值")
+            current = scorecard_inputs(Path(args.review), Path(args.rubric), Path(args.kc), Path(args.learning_value))
+            if card.get("input_hashes") != current:
+                raise ValueError("评分卡依赖输入不匹配")
+            _bound_report(Path(args.learning_value), args.batch, args.questions, "input_sha256")
+        except (OSError, ValueError, TypeError) as exc:
+            return check_item("r2.scorecard", "FAIL", f"评分卡缺失或过期：{exc}")
+    else:
+        card = None
     if not path.exists():
         r = run_cmd([sys.executable, "scripts/review_scorecard.py",
                      "--subject", args.subject, "--batch", args.batch,
@@ -396,10 +503,11 @@ def check_scorecard(args, profile: dict, mode: str) -> dict:
                      "--out", str(path), "--md-out", str(path.with_suffix(".md"))])
         if r["returncode"] != 0:
             return check_item("r2.scorecard", "FAIL", "评分卡生成失败", details=r)
-    try:
-        card = read_json(path)
-    except Exception as exc:
-        return check_item("r2.scorecard", "FAIL", f"评分卡解析失败：{exc}", details={"path": str(path)})
+    if card is None:
+        try:
+            card = read_json(path)
+        except Exception as exc:
+            return check_item("r2.scorecard", "FAIL", f"评分卡解析失败：{exc}", details={"path": str(path)})
     th = profile["thresholds"]
     overall = float(card.get("overall", -1))
     dims = card.get("dimensions") or []
@@ -435,29 +543,33 @@ def check_review_detail(args, profile: dict, mode: str) -> dict:
     """HC-26 复习资料详细度：九槽位/模块块/自测答案/课程安排八块。"""
     md = Path(args.review)
     if not md.exists():
+        if "review_material" in infer_batch_products(args.batch):
+            return check_item("r2.review_detail", "FAIL", f"复习资料缺失：{args.review}")
         return check_item("r2.review_detail", "SKIP",
                           f"批次无复习资料产物，详细度检查不适用：{args.review}", required=False)
-    out = BASE / "reports/validate" / f"review_detail_{args.batch}_{args.stage}.json"
-    cmd = [sys.executable, "scripts/check_review_detail.py",
-           "--md", str(md), "--mode", "auto", "--profile", args.profile,
-           "--json-out", str(out), "--md-out", str(out.with_suffix(".md")), "--quiet"]
-    if mode == "advisory":
-        cmd.append("--advisory")
-    r = run_cmd(cmd)
-    if not out.exists():
-        return check_item("r2.review_detail", "FAIL",
-                          "详细度检查未产出报告", details=r)
-    try:
-        data = read_json(out)
-    except Exception as exc:
-        return check_item("r2.review_detail", "FAIL",
-                          f"详细度报告解析失败：{exc}", details={"path": str(out)})
+    with tempfile.TemporaryDirectory() as td:
+        fresh = Path(td) / "review_detail.json"
+        cmd = [sys.executable, "scripts/check_review_detail.py",
+               "--md", str(md), "--mode", "auto", "--profile", args.profile,
+               "--json-out", str(fresh), "--quiet"]
+        if mode == "advisory":
+            cmd.append("--advisory")
+        r = run_cmd(cmd)
+        if r["returncode"] not in (0, 1):
+            return check_item("r2.review_detail", "FAIL", "详细度检查执行失败", details=r)
+        try:
+            data = read_json(fresh)
+        except Exception as exc:
+            return check_item("r2.review_detail", "FAIL",
+                              f"详细度报告解析失败：{exc}", details=r)
     s = data.get("summary", {})
     status = str(s.get("status") or "FAIL")
+    if r["returncode"] == 1 and status != "FAIL":
+        return check_item("r2.review_detail", "FAIL", "详细度检查退出码与报告不一致", details=r)
     if status == "SKIP":
-        return check_item("r2.review_detail", "SKIP",
+        return check_item("r2.review_detail", "FAIL",
                           str((data.get("warnings") or ["未解析到考点卡"])[0]),
-                          required=False, details={"path": str(out), "summary": s})
+                          details={"summary": s, "command": r})
     issues = list(data.get("blocking") or [])
     if status == "FAIL" and mode == "advisory":
         status = "WARN"
@@ -468,31 +580,35 @@ def check_review_detail(args, profile: dict, mode: str) -> dict:
     )
     return check_item(
         "r2.review_detail", status, reason,
-        details={"path": str(out), "mode": data.get("mode"), "summary": s,
+        details={"mode": data.get("mode"), "summary": s,
                  "command": r},
     )
 
 
 def check_source_concepts(args) -> dict:
     """HC-27 生成期概念标注门禁：按批次号判定，旧批次 SKIP。"""
-    out = BASE / "reports/validate" / f"source_concepts_{args.batch}_{args.stage}.json"
-    r = run_cmd([sys.executable, "scripts/check_source_concepts.py",
-                 "--file", str(args.questions), "--batch", str(args.batch), "--out", str(out)])
-    code = r["returncode"]
-    status = {0: "PASS", 1: "FAIL", 2: "SKIP"}.get(code, "FAIL")
-    detail = ""
-    try:
-        d = read_json(out)
-        if d.get("status") == "SKIP":
-            detail = str(d.get("reason") or "SKIP")
-        else:
-            detail = (f"{d.get('status')}：2.1 题 {d.get('checked')}/{d.get('total')}；"
-                      f"A2+ 双概念率 {d.get('multi_type_rate')}；"
-                      f"{'; '.join((d.get('fails') or [])[:3])}")
-    except Exception:
-        detail = f"退出码 {code}"
+    with tempfile.TemporaryDirectory() as td:
+        out = Path(td) / "source_concepts.json"
+        r = run_cmd([sys.executable, "scripts/check_source_concepts.py",
+                     "--file", str(args.questions), "--batch", str(args.batch), "--out", str(out)])
+        code = r["returncode"]
+        if code not in (0, 1, 2):
+            return check_item("r2.source_concepts", "FAIL", f"HC-27 执行失败：退出码 {code}", details=r)
+        try:
+            d = read_json(out)
+            current_hash = hashlib.sha256(Path(args.questions).read_bytes()).hexdigest()
+            expected = {0: ("PASS", "WARN"), 1: ("FAIL",), 2: ("SKIP",)}
+            if (d.get("input_sha256") != current_hash or d.get("batch") != args.batch
+                    or d.get("status") not in expected[code]):
+                raise ValueError("报告状态、批次或输入哈希不匹配")
+        except (OSError, ValueError, TypeError, AttributeError) as exc:
+            return check_item("r2.source_concepts", "FAIL", f"HC-27 报告无效：{exc}", details=r)
+    status = d["status"]
+    detail = str(d.get("reason") or (f"{status}：2.1 题 {d.get('checked')}/{d.get('total')}；"
+                  f"A2+ 双概念率 {d.get('multi_type_rate')}；"
+                  f"{'; '.join((d.get('fails') or [])[:3])}"))
     return check_item("r2.source_concepts", status, f"HC-27 {detail}",
-                      required=(status != "SKIP"), details=r)
+                      required=(status != "SKIP"), details={**r, "report": d})
 
 
 def check_concept_graph(args, profile: dict, mode: str) -> dict:
@@ -513,12 +629,19 @@ def check_concept_graph(args, profile: dict, mode: str) -> dict:
             cmd += ["--out", str(out)]
     except Exception:
         pass
-    r = run_cmd(cmd)
-    try:
-        s = read_json(out)
-    except Exception:
-        return check_item("r2.concept_graph", "FAIL", "门禁报告不可读", details=r)
+    with tempfile.TemporaryDirectory() as td:
+        fresh = Path(td) / "concept_graph.json"
+        cmd += ["--out", str(fresh)]
+        r = run_cmd(cmd)
+        if r["returncode"] not in (0, 1):
+            return check_item("r2.concept_graph", "FAIL", "门禁执行失败", details=r)
+        try:
+            s = read_json(fresh)
+        except Exception:
+            return check_item("r2.concept_graph", "FAIL", "门禁报告不可读", details=r)
     status = str(s.get("status") or "FAIL")
+    if r["returncode"] == 1 and status != "FAIL":
+        return check_item("r2.concept_graph", "FAIL", "门禁退出码与报告不一致", details=r)
     fails = [c["id"] for c in s.get("checks") or [] if c["status"] == "FAIL"]
     warns = [c["id"] for c in s.get("checks") or [] if c["status"] == "WARN"]
     if mode == "advisory" and status == "FAIL":
@@ -601,6 +724,79 @@ def check_keypoint_coverage(args) -> dict:
                       "教师重点覆盖 " + ("PASS" if r["returncode"] == 0 else "FAIL"), details=r)
 
 
+def check_adaptive_coverage(args, profile: dict) -> dict:
+    keypoints = Path(args.keypoints)
+    review = Path(args.review)
+    sources = [Path(p) for p in (args.source_text or [])]
+    if not keypoints.exists() or not review.exists():
+        return check_item("r3.adaptive_coverage", "FAIL", "自适应覆盖输入缺失", details={
+            "keypoints": str(keypoints), "review": str(review),
+        })
+    if len(sources) != 1 or not sources[0].exists():
+        return check_item("r3.adaptive_coverage", "FAIL", "自适应教师原文来源必须恰有一个且可读取",
+                          details={"sources": [str(p) for p in sources]})
+    command = [sys.executable, "scripts/check_keypoint_coverage.py",
+               "--keypoints", str(keypoints), "--md", str(review),
+               "--source-text", str(sources[0]), "--adaptive", "--json"]
+    result = run_cmd(command)
+    if result["returncode"] != 0:
+        return check_item("r3.adaptive_coverage", "FAIL", "自适应覆盖命令未通过；预检 FAIL 不得视为通过",
+                          details={"command": result, "sources": [str(sources[0])]})
+    try:
+        report = _json_from_command_stdout(result["stdout"])
+        if report.get("verdict") != "PASS":
+            raise ValueError("coverage verdict 不是 PASS")
+        if report.get("errors") or report.get("partial_facts"):
+            raise ValueError("coverage 报告含错误或未覆盖事实")
+    except (ValueError, json.JSONDecodeError) as exc:
+        return check_item("r3.adaptive_coverage", "FAIL", f"自适应覆盖报告不可验证：{exc}",
+                          details={"command": result})
+    return check_item("r3.adaptive_coverage", "PASS", "自适应覆盖命令及原文来源核验通过",
+                      details={"command": result, "report": report,
+                               "source": str(sources[0]),
+                               "source_sha256": _input_hash(str(sources[0]))})
+
+
+def check_adaptive_manual_review(args) -> dict:
+    evidence_path = Path(args.human_review)
+    if not evidence_path.exists():
+        return check_item("r3.adaptive_manual_review", "FAIL", "人工审核证据缺失",
+                          details={"path": str(evidence_path)})
+    try:
+        evidence = read_json(evidence_path)
+        expected = {
+            "batch": args.batch,
+            "review_sha256": _input_hash(args.review),
+            "keypoints_sha256": _input_hash(args.keypoints),
+        }
+        for key, value in expected.items():
+            if evidence.get(key) != value:
+                raise ValueError(f"{key} 不匹配")
+        required = ("status", "reviewer", "decision", "evidence", "reviewed_at")
+        if any(not _nonempty_text(evidence.get(key)) for key in required):
+            raise ValueError("人工审核字段缺失或为空")
+        if evidence["status"] != ADAPTIVE_REVIEW_STATUS or evidence["decision"] != "PASS":
+            raise ValueError("人工审核未完成或未通过")
+        sources = evidence.get("source_paths")
+        source_hashes = evidence.get("source_sha256")
+        expected_sources = [str(Path(p).resolve()) for p in (args.source_text or [])]
+        actual_sources = [str(Path(p).resolve()) for p in sources] if isinstance(sources, list) else []
+        if actual_sources != expected_sources:
+            raise ValueError("人工审核原文来源与实际覆盖命令来源不匹配")
+        if not isinstance(sources, list) or not sources or not isinstance(source_hashes, dict):
+            raise ValueError("原文来源证据缺失")
+        if any(not _nonempty_text(p) for p in sources):
+            raise ValueError("原文来源路径为空")
+        for source in sources:
+            if source_hashes.get(source) != _input_hash(source):
+                raise ValueError(f"原文来源哈希不匹配：{source}")
+    except (OSError, ValueError, TypeError, json.JSONDecodeError) as exc:
+        return check_item("r3.adaptive_manual_review", "FAIL", f"人工审核证据不可验证：{exc}",
+                          details={"path": str(evidence_path)})
+    return check_item("r3.adaptive_manual_review", "PASS", "人工审核证据已完成并与当前批次/资料绑定",
+                      details={"path": str(evidence_path), "reviewer": evidence["reviewer"]})
+
+
 def check_inline_images(args) -> dict:
     md = Path(args.review)
     if not md.exists():
@@ -638,13 +834,18 @@ def build_stage_checks(args, profile: dict, mode: str) -> list[dict]:
         checks.append(check_scorecard(args, profile, mode))
     if "review_detail" in req:
         checks.append(check_review_detail(args, profile, mode))
-    if "source_concepts" in req:
+    if ("question_bank" in infer_batch_products(args.batch)
+            and ("source_concepts" in req or (stage == "r3" and args.profile.startswith("release_")))):
         checks.append(check_source_concepts(args))
     if "concept_graph" in req:
         checks.append(check_concept_graph(args, profile, mode))
     checks.append(check_review_items(args, profile, mode))
 
     if stage == "r3":
+        if "adaptive_coverage" in req:
+            checks.append(check_adaptive_coverage(args, profile))
+        if "adaptive_manual_review" in req:
+            checks.append(check_adaptive_manual_review(args))
         if "produce_rules" in req:
             checks.append(check_produce_rules(args))
         if "site_freshness" in req:
@@ -732,6 +933,8 @@ def main() -> int:
     ap.add_argument("--scorecard", default=str(DEFAULT_SCORECARD))
     ap.add_argument("--rubric", default=str(DEFAULT_RUBRIC))
     ap.add_argument("--keypoints", default=str(DEFAULT_KEYPOINTS))
+    ap.add_argument("--source-text", action="append", default=[])
+    ap.add_argument("--human-review", default="")
     ap.add_argument("--blueprint", default=str(DEFAULT_BLUEPRINT))
     ap.add_argument("--policy", default=str(DEFAULT_POLICY))
     ap.add_argument("--commit", default="")
@@ -739,7 +942,13 @@ def main() -> int:
     ap.add_argument("--out", default="")
     args = ap.parse_args()
 
+    if args.stage == "r3":
+        args.mode = "enforce"
+
     profile_name = args.profile or ("release_teacher_keypoint" if args.stage == "r3" else "pilot")
+    if args.stage == "r3" and not profile_name.startswith("release_"):
+        print("[FAIL] R3 必须使用 release profile", file=sys.stderr)
+        return 2
     args.profile = profile_name
     try:
         policy = _load_policy(Path(args.policy))
@@ -749,6 +958,13 @@ def main() -> int:
         return 2
 
     derive_batch_defaults(args)
+
+    input_hashes = {}
+    for name in ("questions", "review"):
+        try:
+            input_hashes[name] = _input_hash(getattr(args, name))
+        except OSError:
+            input_hashes[name] = None
 
     checks: list[dict] = []
     if args.stage == "r0":
@@ -775,6 +991,7 @@ def main() -> int:
         "blocking": blocking,
         "warnings": warnings,
         "policy_version": policy.get("policy_version"),
+        "input_sha256": input_hashes,
     }
     write_json(out, report)
     md = out.with_suffix(".md")

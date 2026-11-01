@@ -1,0 +1,591 @@
+{
+ "batch": "batch043",
+ "subject": "急诊与灾难医学",
+ "target": 120,
+ "keypoints_file": "输入素材/大四上/急诊与灾难医学/急诊与灾难医学_教师重点_锚定清单_20261026.md",
+ "blueprint_file": "",
+ "quotas": {
+  "kaoyan": 24,
+  "zhiyi": 24
+ },
+ "quota_policy": {
+  "family": "kaoyan / zhiyi",
+  "zhiyi_tiers": [
+   "zhiyi_pdf（历年真题 PDF）",
+   "zhiyi（CMExam 题库补位）"
+  ],
+  "shortfall": "reduced=按可用量减量；cancelled=无候选取消配额；均由原创补齐，禁止无关题凑数"
+ },
+ "counts": {
+  "selected": 2,
+  "kaoyan": 2,
+  "zhiyi": 8,
+  "zhiyi_pdf": 7,
+  "zhiyi_cmexam": 1,
+  "remaining_slots": 88
+ },
+ "quota_status": {
+  "kaoyan": {
+   "requested": 24,
+   "selected": 2,
+   "available": 2,
+   "effective_quota": 2,
+   "status": "reduced",
+   "reason": "keypoint_or_module_limit",
+   "ratio_of_target": 0.0167
+  },
+  "zhiyi": {
+   "requested": 24,
+   "selected": 8,
+   "available": 8,
+   "effective_quota": 8,
+   "status": "reduced",
+   "reason": "keypoint_or_module_limit",
+   "ratio_of_target": 0.0667
+  }
+ },
+ "tier_status": {
+  "pdf": {
+   "selected": 16,
+   "available": 204,
+   "requested": 24,
+   "role": "primary"
+  },
+  "cmexam": {
+   "selected": 8,
+   "role": "fallback"
+  }
+ },
+ "keypoint_coverage": {
+  "total": 61,
+  "covered_by_plan": 54,
+  "uncovered": [
+   "第10条",
+   "第11条",
+   "第13条",
+   "第36条",
+   "第3条",
+   "第40条",
+   "第46条"
+  ]
+ },
+ "modules": [
+  {
+   "module_id": "ALL",
+   "name": "急诊与灾难医学",
+   "target": 120,
+   "selected": 32,
+   "keypoints": [
+    "第1条",
+    "第2条",
+    "第3条",
+    "第4条",
+    "第5条",
+    "第6条",
+    "第7条",
+    "第8条",
+    "第9条",
+    "第10条",
+    "第11条",
+    "第12条",
+    "第13条",
+    "第14条",
+    "第15条",
+    "第16条",
+    "第17条",
+    "第18条",
+    "第19条",
+    "第20条",
+    "第21条",
+    "第22条",
+    "第23条",
+    "第24条",
+    "第25条",
+    "第26条",
+    "第27条",
+    "第28条",
+    "第29条",
+    "第30条",
+    "第31条",
+    "第32条",
+    "第33条",
+    "第34条",
+    "第35条",
+    "第36条",
+    "第37条",
+    "第38条",
+    "第39条",
+    "第40条",
+    "第41条",
+    "第42条",
+    "第43条",
+    "第44条",
+    "第45条",
+    "第46条",
+    "第47条",
+    "第48条",
+    "第49条",
+    "第50条",
+    "第51条",
+    "第52条",
+    "第53条",
+    "第54条",
+    "第55条",
+    "第56条",
+    "第57条",
+    "第58条",
+    "第59条",
+    "第60条",
+    "第61条"
+   ]
+  }
+ ],
+ "selected": [
+  {
+   "item_id": "KY-GS-1997-006",
+   "source": "kaoyan",
+   "family": "kaoyan",
+   "tier": "kaoyan",
+   "source_id": "GS-1997-006",
+   "exam": "306西综",
+   "year": 1997,
+   "question_no": 6,
+   "subject": "急诊与灾难医学",
+   "module": "ALL",
+   "module_name": "急诊与灾难医学",
+   "keypoint_refs": [
+    "第18条",
+    "第31条",
+    "第48条"
+   ],
+   "stem": "关于急性失血引起的变化,下列哪一项是错误的?",
+   "options": [
+    "动脉血压下降",
+    "红细胞的比容升高",
+    "心率加快",
+    "中心静脉压下降",
+    "皮肤苍白湿冷"
+   ],
+   "answer": "B",
+   "explanation": "①红细胞比容是指红细胞在血液中所占容积百分比。急性失血时,由于大量红细胞丢失,红细胞比容将降低,故答 B。②也可使用排他法解题:急性失血的极端就是失血性休克,失血性休克常表现为心率加快、动脉血压下降、中心静脉压下降、皮肤苍白湿冷,排除 A、C、D、E、B 即为正确答案。",
+   "question_type": "A1",
+   "answer_confidence": "high",
+   "license": "public_noncommercial",
+   "license_note": "考研真题；用户声明仅非商业个人刷题使用",
+   "mode": "原题",
+   "score": 0.062996,
+   "matched_queries": [
+    "低血容量性休克：失血或脱水致有效循环血量减少，中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快；治疗关键是补充血容量、控制出血和去除病因（P153-154）；心源性休克：心脏指数<2.2L/(m²·min)、肺动脉楔压>18mmHg，收缩压较基础下降 40mmHg 以上并脉压缩小应警惕（P154）；感染性休克：6 小时内中心静脉压 8～12mmHg、平均动脉压≥65mmHg、尿量≥0.5ml/(kg·h)、中心静脉血氧饱和度≥70%（P155）；过敏性休克：接触过敏原后 15 分钟内发生严重反应，重者 10 分钟内死亡，首选肾上腺素肌内注射（P155）",
+    "低血容量性休克：失血或脱水致有效循环血量减少，中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快；治疗关键是补充血容量、控制出血和去除病因 ；心源性休克：心脏指数<2.2L/ 、肺动脉楔压>18mmHg，收缩压较基础下降 40mmHg 以上并脉压缩小应警惕 ；感染性休克：6 小时内中心静脉压 8～12mmHg、平均动脉压≥65mmHg、尿量≥0.5ml/ 、中心静脉血氧饱和度≥70% ；过敏性休克：接触过敏原后 15 分钟内发生严重反应，重者 10 分钟内死亡，首选肾上腺素肌内注射",
+    "低血容量性休克：失血或脱水致有效循环血量减少，中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快；治疗关键是补充血容量、控制出血和去除病因（P153-154）；心源性休克：心脏指数<2.2L/(m²·min)、肺动脉楔压>18mmHg，收缩压较基础下降 40mmHg 以上并脉压缩小应警惕（P154）；感染性休克：6 小时内中心静脉压 8～12mmHg、平均动脉压≥65mmHg、尿量≥0.5ml/(kg·h)、中心静脉血氧饱和度≥70%（P155）；过敏性休克：接触过敏原后 15 分钟内发生严重反应，重者 10 分钟内死亡，首选肾上腺素肌内注射（P155） 循环衰竭"
+   ]
+  },
+  {
+   "item_id": "KY-GS-1996-051",
+   "source": "kaoyan",
+   "family": "kaoyan",
+   "tier": "kaoyan",
+   "source_id": "GS-1996-051",
+   "exam": "306西综",
+   "year": 1996,
+   "question_no": 51,
+   "subject": "急诊与灾难医学",
+   "module": "ALL",
+   "module_name": "急诊与灾难医学",
+   "keypoint_refs": [
+    "第20条",
+    "第47条",
+    "第9条"
+   ],
+   "stem": "男,25岁。节律性间断上腹隐痛3年,加重2天。10天前开始自解黑便3次,量约1000g左右,血压9.16/6.0kPa,脉率120次/分。Hb90g/L。首选下列哪种治疗?",
+   "options": [
+    "大量输液",
+    "输右旋糖酐",
+    "外科手术",
+    "急诊内镜止血",
+    "输血、补液"
+   ],
+   "answer": "E",
+   "explanation": "①血压 kPa 与 mmHg 的换算关系: mmHg = 7.5 × kPa, 故患者血压为 69/45mmHg。②患者上消化道大出血伴失血性休克, 收缩压 <70mmHg, 应诊断为重度休克, 故首选补液、输血抗休克治疗 (E 对)。③患者重度休克, 估计失血量大于总血量的 40%, 即 1600ml 以上。急性失血量超过 30% 者, 可输全血, 故不答 A。抢救失血性休克时, 应首先输入平衡盐溶液, 故不答 B。④只有在积极内科治疗, 短时间内输血 800ml 以上仍不能纠正休克时, 才考虑外科手术, 故不答 C。若不纠正休克, 急诊行内镜止血, 则可能患者难以耐受胃镜检查而死亡, 故不答 D。",
+   "question_type": "A2",
+   "answer_confidence": "medium",
+   "license": "public_noncommercial",
+   "license_note": "考研真题；用户声明仅非商业个人刷题使用",
+   "mode": "原题",
+   "score": 0.063492,
+   "matched_queries": [
+    "急诊医学特点：核心是急危重症、创伤快速评估处置；构建院前-院内急诊-EICU 一体化 EMSS 体系；承担突发公共事件救援；不负责慢性病长期随访管理。——①EMSS＝院前急救、医院急诊、危重症监护三位一体；②院前急救反应时间国际目标 5～10 分钟；③急诊科全年 24 小时开放，留观时间原则上不超过 72 小时（P1-2）",
+    "急诊医学特点：核心是急危重症、创伤快速评估处置；构建院前-院内急诊-EICU 一体化 EMSS 体系；承担突发公共事件救援；不负责慢性病长期随访管理。——①EMSS＝院前急救、医院急诊、危重症监护三位一体；②院前急救反应时间国际目标 5～10 分钟；③急诊科全年 24 小时开放，留观时间原则上不超过 72 小时"
+   ]
+  }
+ ],
+ "search_log": [
+  {
+   "module": "ALL",
+   "keypoint": "第1条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第2条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第3条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第4条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第5条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第6条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第7条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第8条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第9条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第10条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第11条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第12条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第13条",
+   "queries": 2,
+   "hits": 5
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第14条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第15条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第16条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第17条",
+   "queries": 5,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第18条",
+   "queries": 5,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第19条",
+   "queries": 5,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第20条",
+   "queries": 5,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第21条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第22条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第23条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第24条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第25条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第26条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第27条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第28条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第29条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第30条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第31条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第32条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第33条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第34条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第35条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第36条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第37条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第38条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第39条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第40条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第41条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第42条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第43条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第44条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第45条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第46条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第47条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第48条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第49条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第50条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第51条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第52条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第53条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第54条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第55条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第56条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第57条",
+   "queries": 5,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第58条",
+   "queries": 3,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第59条",
+   "queries": 4,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第60条",
+   "queries": 2,
+   "hits": 40
+  },
+  {
+   "module": "ALL",
+   "keypoint": "第61条",
+   "queries": 3,
+   "hits": 40
+  }
+ ],
+ "curation_note": "题库初筛含大量与急诊教师重点仅弱相关的题（腹膜炎、肺心病利尿、分娩、马钱子等）；按“禁止无关题凑数”仅保留10道直接对应锚点的真题（考研2+执医8），两族均记 reduced，缺口由原创补齐并在质检报告如实标注。"
+}

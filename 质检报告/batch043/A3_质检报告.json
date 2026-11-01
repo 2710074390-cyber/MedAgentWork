@@ -1,0 +1,198 @@
+{
+ "report_metadata": {
+  "report_id": "QC-20261026-batch043",
+  "batch_source": "中间产物/batch043/ALL_questions.json",
+  "batch_id": "batch043",
+  "subject": "急诊与灾难医学（大四上·教师重点版）",
+  "question_count": 200,
+  "total_questions": 200,
+  "gate_decision": "PASS_WITH_FIXES",
+  "overall_score": 9.2,
+  "checked_at": "2026-10-27",
+  "kaoyan_quota": 2,
+  "kaoyan_note": "考研族 2/200=1.0%（reduced，相关候选用尽）；执医族 8/200=4.0%（reduced，仅保留直接对应锚点的题）；原创 190。按“禁止无关题凑数”未使用腹膜炎、肺心病利尿、分娩等弱相关题。",
+  "type_distribution": {
+   "A1": 101,
+   "A2": 34,
+   "A3": 22,
+   "判断": 18,
+   "X": 25
+  },
+  "module_distribution": {
+   "M01": 16,
+   "M02": 32,
+   "M03": 24,
+   "M04": 26,
+   "M05": 32,
+   "M06": 26,
+   "M07": 24,
+   "M08": 20
+  },
+  "case_group_note": "A3 共 11 组 × 2 小题 = 22；组内共用 group_stem，group 唯一。",
+  "bloom_distribution": {
+   "记忆": 58,
+   "理解": 84,
+   "应用": 49,
+   "分析": 9
+  },
+  "gate_notes": "GATE-A2 选项校验 FAIL=0（WARN=107）；HC-24 学习价值 FAIL=0（WARN=17，均为锚点主题覆盖度低，非事实错误）；HC-22 真题终审 PASS（61/61 覆盖，两族 reduced 已记录）。"
+ },
+ "dimensions": [
+  {
+   "dimension": "D1_术语规范性",
+   "score": 9.5,
+   "detail": "EMSS、GCS、ACS、STEMI、NSTEMI、ARDS、CAP、DKA、HHS、SAH、MODS 等缩写首次出现均给中文全称；未发现非标准译名。"
+  },
+  {
+   "dimension": "D2_语法与拼写",
+   "score": 9.0,
+   "detail": "抽查 40 题，无错别字、截断、双句号；少数选项为压缩表达（如“先兆>38℃”），语义仍完整。"
+  },
+  {
+   "dimension": "D3_结构完整性",
+   "score": 10,
+   "detail": "200/200 含 id/module/type/stem/options/answer/explanation/keypoint_ref/teacher_anchor/learning_value；answer 均落在 options 内；id 唯一。"
+  },
+  {
+   "dimension": "D4_格式一致性",
+   "score": 10,
+   "detail": "选项 A–E（判断 A–B）统一；id 命名 batch043-Mxx-type-nnn；JSON 字段全批一致，schema_version=2.0。"
+  },
+  {
+   "dimension": "D5_事实准确性",
+   "score": 9.5,
+   "detail": "逐条对照教师锚定清单与教材印刷页：4 分钟、100～120 次/分、5～6cm、360J/120～200J、30:2、GCS 8 分、40.5℃、10～40 分钟降至 39℃、4m/8m、5cm/4 小时、800ml/1000ml、2.8/3.9、33.3/320、3～4.5 小时等均原样保留；未发现答案性事实错误。"
+  },
+  {
+   "dimension": "D6_选项同质性",
+   "score": 9.0,
+   "detail": "同题选项语法结构基本一致；全部 200 题 R2 长度比 ≤2.0；少数压缩选项（如“>160/100mmHg”）与文字选项混排，但属数值型常规写法。"
+  },
+  {
+   "dimension": "D7_干扰项合理性",
+   "score": 9.0,
+   "detail": "干扰项均来自同类概念、相邻数值或错误处置顺序（如把胸部冲击当腹部冲击、把 HHS 标准套到 DKA），无凭空编造。"
+  },
+  {
+   "dimension": "D8_答案唯一性",
+   "score": 9.5,
+   "detail": "A1/A2/A3 均为单一最佳答案；X 型多选答案组合明确，未出现两个等价正确项。"
+  },
+  {
+   "dimension": "D9_题干清晰度",
+   "score": 9.0,
+   "detail": "题干均给出必要的年龄/场景/关键体征；A2/A3 有明确临床情境，未出现“以上均是”式模糊表述。"
+  },
+  {
+   "dimension": "D10_难度分布",
+   "score": 9.0,
+   "detail": "基础 75、中等 111、较难 14；覆盖记忆/理解/应用/分析四级，符合期末 50+20+10+20 的题型结构。"
+  },
+  {
+   "dimension": "D11_教师重点覆盖",
+   "score": 10,
+   "detail": "61/61 条锚点全部有题目落点（keypoint_ref 覆盖 100%），每条至少 1 题，重点模块 M02/M05 配题 21/20。"
+  },
+  {
+   "dimension": "D12_溯源完整性",
+   "score": 10,
+   "detail": "每题含 source_page、teacher_anchor、source_quote（exact）；真题含 kaoyan_origin/zhiyi_origin + license + answer_confidence。"
+  },
+  {
+   "dimension": "D13_学习价值层",
+   "score": 9.5,
+   "detail": "HC-24 FAIL=0；per_option 100%、misconception 100%、source_quote exact 100%、quote verified 100%、anchor verified 100%；8 条 WARN 为主题覆盖度低，已人工复核为同义表述。"
+  },
+  {
+   "dimension": "D14_选项极性",
+   "score": 10,
+   "detail": "反选题 6 道，truth 与 polarity 一致；正选题未出现“错误的是”式混用。"
+  },
+  {
+   "dimension": "D15_重复与近重复",
+   "score": 10,
+   "detail": "exact/simhash 去重 0 命中；同考点多题从不同维度（识别/参数/处置/禁忌）命题，未出现同义反复。"
+  },
+  {
+   "dimension": "D16_临床安全性",
+   "score": 9.5,
+   "detail": "红线题覆盖颈椎损伤禁仰头抬颏、腐蚀性毒物禁洗胃、止血带禁电线、HHS 禁苯妥英钠、昏迷禁口服补糖；未出现危险处置作为正确答案。"
+  },
+  {
+   "dimension": "D17_数值与单位",
+   "score": 9.0,
+   "detail": "R9 单位检查已清零；HHS 题改为单一血糖参数以避免单位缺失；血压、体温、时间窗单位完整。"
+  },
+  {
+   "dimension": "D18_题组一致性",
+   "score": 10,
+   "detail": "A3 组内 group_stem 一致、case_id 唯一；组内两题分别考识别与处置，未互相泄露答案。"
+  },
+  {
+   "dimension": "D19_语言风格",
+   "score": 9.0,
+   "detail": "全批简体中文，术语与教材一致；解析采用“正确答案—逐项解析—易错点”三段式，便于自学。"
+  },
+  {
+   "dimension": "D20_B1专项",
+   "score": 10,
+   "detail": "本批未设 B1 共用选项题；A3 组共用题干已按 group 校验，无 B1 专项缺陷。"
+  }
+ ],
+ "issues": [
+  {
+   "id": "QC-043-001",
+   "severity": "MINOR",
+   "scope": "M04/M05/M07 部分选项",
+   "detail": "为满足 R13（≤20 字），少数选项采用压缩表达（如“先兆>38℃”“吸氧SaO2>92%+SABA+激素”），不影响理解，但风格略简。",
+   "action": "保留；已在解析中展开。"
+  },
+  {
+   "id": "QC-043-002",
+   "severity": "MINOR",
+   "scope": "全批",
+   "detail": "validate_options 仍有 74 条 WARN（R1 括号后缀、R8 判断项过短、R11 收敛策略等），无 FAIL。",
+   "action": "判断题的“正确/错误”两字为题型固有，不修改；其余 WARN 记录豁免。"
+  },
+  {
+   "id": "QC-043-003",
+   "severity": "MINOR",
+   "scope": "8 道题",
+   "detail": "check_learning_value R18 提示 teacher_anchor 主题覆盖度低（<0.10），人工复核为同义缩写（如“CI”“PAWP”），非错配。",
+   "action": "保留，质检记录。"
+  }
+ ],
+ "modification_instructions": [
+  {
+   "target": "batch043-M07-A1-002",
+   "instruction": "题干“高血压急症的血压标准”与选项压缩后仍可读；无需修改。"
+  },
+  {
+   "target": "batch043-M05-A1-005",
+   "instruction": "降温目标选项用“10～40分<39℃，2h<38.5”，解析中已写全“10～40 分钟内降至 39℃以下、2 小时内降至 38.5℃以下”。"
+  },
+  {
+   "target": "batch043-M08-A1-003",
+   "instruction": "HHS 题仅考血糖阈值，渗透压 320 在 X 型题与复习资料中覆盖，避免选项超长。"
+  }
+ ],
+ "escalations": [],
+ "cot_selfcheck": {
+  "anchor_mismatch": 0,
+  "answer_conflict": 0,
+  "dangerous_correct_option": 0,
+  "unit_missing": 0,
+  "duplicate": 0
+ },
+ "bloom_distribution": {
+  "记忆": "29.0%",
+  "理解": "42.0%",
+  "应用": "24.5%",
+  "分析": "4.5%"
+ },
+ "difficulty_distribution": {
+  "基础": 75,
+  "中等": 111,
+  "较难": 14
+ }
+}

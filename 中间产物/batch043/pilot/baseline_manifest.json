@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-27T00:33:11",
+  "batch": "batch043",
+  "scope": "耳鼻咽喉头颈外科学教师重点版（batch040）",
+  "inputs": {
+    "review": {
+      "path": "复习资料/急诊与灾难医学教师重点版/急诊与灾难医学教师重点版_BPA_主复习资料.md",
+      "exists": true,
+      "sha256": "79b8b7d64c8f3e57fb228f2281f055c55d034dfd140dca2ff959862afba41942",
+      "bytes": 150440,
+      "lines": 1988,
+      "stats": {
+        "chars": 64440,
+        "lines": 1989,
+        "modules": 0,
+        "cards": 48,
+        "card_id_occurrences": 48,
+        "keypoints": 61,
+        "selftests": 0,
+        "appendix_answer_rows": 0,
+        "callouts": 0,
+        "expand_blocks": 0,
+        "images": 0,
+        "table_rows": 262,
+        "ascii_blocks": 18,
+        "k_id_occurrences": 70
+      }
+    },
+    "questions": {
+      "path": "最终产物/batch043/ALL_questions_FIXED.json",
+      "exists": true,
+      "sha256": "9c669c9a868e7c0cbc7026ca362c40d528e577d5d053e666a40c04fa9a8dc9d9",
+      "bytes": 792738,
+      "lines": null,
+      "stats": {
+        "total": 200,
+        "keypoint_ref_present": 200,
+        "modules": {
+          "M01": 16,
+          "M02": 32,
+          "M03": 24,
+          "M04": 26,
+          "M05": 32,
+          "M06": 26,
+          "M07": 24,
+          "M08": 20
+        },
+        "types": {
+          "A1": 101,
+          "A2": 34,
+          "A3": 22,
+          "X": 25,
+          "判断": 18
+        },
+        "supplemental_refs": 0,
+        "supplemental_questions": 0,
+        "with_kc_slug": 0
+      }
+    },
+    "keypoints": {
+      "path": "输入素材/大四上/急诊与灾难医学/急诊与灾难医学_教师重点_锚定清单_20261026.md",
+      "exists": true,
+      "sha256": "54529a56dfc6ee6a6ce6493b3d902af0d3d8093eb1c6cdf1743d16eeb2f00c19",
+      "bytes": 21871,
+      "lines": 117,
+      "stats": {
+        "items": 0,
+        "first_id": null,
+        "last_id": null,
+        "continuous": true,
+        "sources": {}
+      }
+    },
+    "blueprint": {
+      "path": "中间产物/batch043/出题蓝图_batch043.md",
+      "exists": true,
+      "sha256": "fce419a117ca073356c89de70ddaf41f85435a12d58ce7d3c368ba324e12e61f",
+      "bytes": 1866,
+      "lines": 40,
+      "stats": {
+        "modules": {
+          "M01": 16,
+          "M02": 32,
+          "M03": 24,
+          "M04": 26,
+          "M05": 32,
+          "M06": 26,
+          "M07": 24,
+          "M08": 20
+        },
+        "total": 200
+      }
+    },
+    "learning_value": {
+      "path": "reports/validate/learning_value_batch043.json",
+      "exists": true,
+      "sha256": "0f7bc74fc8817b980ce15b1c69ba7987ced78f723f1ea6166205390025734dcb",
+      "bytes": 112884,
+      "lines": null,
+      "stats": {
+        "total": 4,
+        "review_status": {},
+        "source_quote_status": {},
+        "anchor_status": {},
+        "with_kc_slug": 0
+      }
+    },
+    "pilot": {
+      "path": "中间产物/batch043/pilot/kc_registry.json",
+      "exists": true,
+      "sha256": "5f0746947a22d4c6292bdb5b24508cabefb691ce3a13a9636890127a41fdbf43",
+      "bytes": 34663,
+      "lines": null,
+      "stats": {
+        "total": 7,
+        "review_status": {},
+        "source_quote_status": {},
+        "anchor_status": {}
+      }
+    }
+  },
+  "summary": {
+    "review_cards": 48,
+    "review_keypoints": 61,
+    "review_selftests": 0,
+    "review_appendix_rows": 0,
+    "questions": 200,
+    "questions_with_keypoint_ref": 200,
+    "supplemental_questions": 0,
+    "keypoint_items": 0,
+    "blueprint_total": 200,
+    "learning_value_total": 4,
+    "pilot_total": 7
+  }
+}

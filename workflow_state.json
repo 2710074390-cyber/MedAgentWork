@@ -5430,5 +5430,38 @@
       "hc11_outline_page_marking": "PASS：61 条锚点逐条带印刷页",
       "json_valid": true
     }
+  },
+  "batch044": {
+    "batch_id": "batch044",
+    "status": "COMPLETED",
+    "revision": "v3",
+    "created": "2026-10-29T22:23:00",
+    "reworked": "2026-10-29T23:20:00",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "steps": {},
+    "lineage": [],
+    "subject": "急诊与灾难医学（期末押题卷）",
+    "chapter": "2023级教师重点·100题押题卷（总论/CPCR/休克/中毒/理化/创伤/内科急症 7 模块）",
+    "exam_type": "期末考试",
+    "question_types": [
+      "A1",
+      "A2",
+      "X",
+      "判断",
+      "A3"
+    ],
+    "target_count": 100,
+    "supplements": "batch043（仅作去重参照，经内容级比对无题目级重复）",
+    "source_note": "C:/Users/38063/Downloads/2023级《急诊与灾难医学》考试重点 (1).doc",
+    "gate_results": {
+      "GATE-VERIFY": {
+        "status": "PASS",
+        "reason": "产物形态门禁通过：题型标签仅三值、题目标题合规、答案行齐全、无内部标记；JSON 结构有效（单选50/多选20/判断10/案例20）；v3 100% 原创改版（非题库抽题），与 batch043 题库经内容级去重核验（题干+选项双阈值）无题目级重复",
+        "checked_at": "2026-10-29T23:20:00"
+      },
+      "halt": {
+        "active": false
+      }
+    }
   }
 }

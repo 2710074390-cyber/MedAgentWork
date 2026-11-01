@@ -17,7 +17,7 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 → 终审门禁 → 用户签收(APPROVED) → 归档
 ```
 
-- **门禁LV（HC-24 · 2026-10-23 新增）**：`item_schema_version=2.0` 的新批次，MedFix 后必须跑 `python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --out reports/validate/learning_value_{batchID}.json`；`FAIL>0`、逐项覆盖<100%、错误认知覆盖<100%、`source_quote_exact_rate<95%`、`quote_verified_rate<95%`、`misconception_id_conflicts>0` 或 `anchor_verified_rate<80%` → **halt**，回退 MedGen/MedFix。已签收旧批次（无 `item_schema_version`）显式 SKIPPED，不追溯。
+- **门禁LV（HC-24 · 2026-10-23 新增）**：`item_schema_version=2.0` 的新批次，MedFix 后必须跑 `python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --batch {batchID} --out reports/validate/learning_value_{batchID}_final.json`；`FAIL>0`、逐项覆盖<100%、错误认知覆盖<100%、`source_quote_exact_rate<95%`、`quote_verified_rate<95%`、`misconception_id_conflicts>0` 或 `anchor_verified_rate<80%` → **halt**，回退 MedGen/MedFix。已签收旧批次（无 `item_schema_version`）显式 SKIPPED，不追溯。
 - **门禁适用范围（2026-10-26 加固）**：批次可显式声明 `product_types`（`question_bank`/`prediction_paper`/`review_material`），缺失时按产物形状推断。A2/A3/A4 只对题库/押题卷生效；HC-9/10/11 只对复习资料生效；JSON 有效性只对题库/押题卷生效。`--stage auto` 按此矩阵路由：复习资料批次直达 final；v2 题库/押题卷批次在 A4 后自动插入 `learning_value`，不会被跳过。
 
 - 门禁未通过 → **halt** → 回退对应 Agent 修复 → 重跑门禁（不可跳过，HC-12）
@@ -62,10 +62,10 @@ R4 运行复盘  python scripts/quality_gate.py --stage r4 --batch {batchID} --c
 ## 3. 门禁命令（每个阶段转换前强制执行）
 
 ```text
-GATE-A2   python -m scripts.validate --batch {batchID}          # FAIL==0 才放行
+GATE-A2   python -m scripts.validate --file 中间产物/{batchID}/ALL_questions.json   # FAIL==0 才放行，禁止返工时误扫最终产物
 GATE-A3   python gate_check.py --batch {batchID} --stage agent3_done
 GATE-A4   python gate_check.py --batch {batchID} --stage agent4_done
-学习价值  python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --out reports/validate/learning_value_{batchID}.json   # HC-24（新批次 schema v2 强制；FAIL>0 → 回退）
+学习价值  python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --batch {batchID} --out reports/validate/learning_value_{batchID}_final.json   # HC-24（新批次 schema v2 强制；FAIL>0 → 回退）
 GATE-LV   python gate_check.py --batch {batchID} --stage learning_value
 MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json   # 最终交付 MD（2026-08-20 起强制）
 真题配额  python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json   # HC-18 legacy（旧批次兼容）

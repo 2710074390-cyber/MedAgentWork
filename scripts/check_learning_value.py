@@ -22,6 +22,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -350,19 +351,29 @@ def audit_batch(data: list[dict]) -> tuple[list[dict], dict]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--file", required=True, help="item_v2 JSON 文件（数组）")
+    ap.add_argument("--batch", default="", help="报告所属批次")
     ap.add_argument("--out", default=str(DEFAULT_OUT / "learning_value_pilot.json"), help="报告输出路径")
     args = ap.parse_args()
 
     src = Path(args.file)
-    data = json.loads(src.read_text(encoding="utf-8"))
+    raw = src.read_bytes()
+    data = json.loads(raw.decode("utf-8"))
     if not isinstance(data, list):
         print("[FAIL] 输入必须是 JSON 数组", file=sys.stderr)
         return 2
+
+    batch = args.batch
+    if not batch:
+        match = re.fullmatch(r"learning_value_(batch\d+)\.json", Path(args.out).name, re.IGNORECASE)
+        if match and int(match.group(1)[5:]) >= 44:
+            batch = match.group(1)
 
     results, summary = audit_batch(data)
     report = {
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "file": str(src),
+        "batch": batch,
+        "input_sha256": hashlib.sha256(raw).hexdigest(),
         "summary": summary,
         "items": results,
     }

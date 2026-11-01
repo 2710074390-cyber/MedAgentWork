@@ -1,0 +1,20 @@
+{
+ "schema_version": 1,
+ "subject": "急诊与灾难医学",
+ "batch": "batch043",
+ "reviewers": ["MedReview（BPA v1.0）", "人工抽检待签收"],
+ "dimensions": [
+  {"id": 1, "name": "范围覆盖", "weight": 8, "score": 5.0, "evidence": ["教师重点 61/61 条全部落点，check_keypoint_coverage PASS", "8 模块 / 48 卡 / 61 锚点"], "metric_refs": ["keypoint_coverage"], "notes": "判定即承诺，一条不少"},
+  {"id": 2, "name": "事实准确", "weight": 12, "score": 4.8, "evidence": ["105 类带单位硬事实缺失 0；数值逐条回源教材印刷页", "教师口径与教材口径冲突处（上消化道 800/1000ml）显式并列"], "metric_refs": ["source_quote_exact"], "notes": "关键维度"},
+  {"id": 3, "name": "锚点自足", "weight": 12, "score": 4.7, "evidence": ["52 条主题名条目已按 §3 回源补足为 ① ② ③", "遮住正文只读锚点可答；5 条 <60 字但事实完整"], "metric_refs": ["anchor_verified"], "notes": "关键维度"},
+  {"id": 4, "name": "结构与可读", "weight": 8, "score": 4.8, "evidence": ["每模块 1+7 区块齐全；卡片八行顺序固定", "ASCII 谱系图/概念地图，无 Mermaid"], "metric_refs": [], "notes": ""},
+  {"id": 5, "name": "记忆装置", "weight": 10, "score": 4.7, "evidence": ["每模块 2–4 张对比表、1 条因果链、1 棵决策树、1 张一页纸", "附录五四套：页码/术语/口诀/数字锚"], "metric_refs": [], "notes": ""},
+  {"id": 6, "name": "鉴别与决策", "weight": 8, "score": 4.6, "evidence": ["每卡 ⚖️ 鉴别给轴不给全文；🌳 决策树首分支为关键鉴别轴", "胸痛/呼吸困难/休克/意识障碍四套决策树"], "metric_refs": [], "notes": ""},
+  {"id": 7, "name": "自测与反馈", "weight": 8, "score": 4.6, "evidence": ["8 模块共 80 道主动回忆题，答案在附录五", "题库 120 题逐项解析 + 错误认知"], "metric_refs": [], "notes": ""},
+  {"id": 8, "name": "临床安全", "weight": 10, "score": 4.9, "evidence": ["红线行覆盖颈椎损伤、腐蚀性毒物、止血带、HHS 苯妥英钠、昏迷补糖", "无危险操作被写成正确答案"], "metric_refs": [], "notes": "关键维度"},
+  {"id": 9, "name": "术语规范", "weight": 6, "score": 4.8, "evidence": ["EMSS/GCS/ACS/ARDS/CAP/DKA/HHS/SAH 首次出现给全称", "附录二 14 组同义异名"], "metric_refs": [], "notes": ""},
+  {"id": 10, "name": "页码可回源", "weight": 6, "score": 4.7, "evidence": ["61 条锚点均带印刷页（P1–P309），无占位符", "页码口径 = TXT 标记 −17，已四处交叉核对"], "metric_refs": [], "notes": ""},
+  {"id": 11, "name": "与题库一致", "weight": 6, "score": 4.8, "evidence": ["48 卡 ↔ 120 题，KC 映射 120/120", "61 条锚点 keypoint_ref 全覆盖"], "metric_refs": ["kc_mapped_ratio"], "notes": ""},
+  {"id": 12, "name": "更新与版本", "weight": 6, "score": 4.6, "evidence": ["源分片 head/M01–M08/appendix 与交付 MD 同源", "BPA v1.0 规则与 skill 同源"], "metric_refs": [], "notes": ""}
+ ]
+}

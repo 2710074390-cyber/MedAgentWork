@@ -9,8 +9,8 @@
 
 判定口径（按批次号，不追溯旧产物）
     batch < --min-batch（默认 44）且没有 2.1 题  → SKIP（退出码 2，显式降级，不当通过）
-    batch >= --min-batch 且没有 2.1 题           → FAIL（新批次必须声明 schema_version=2.1）
-    --require 强制要求（不论批次号）
+    batch >= --min-batch 或 --require              → 每题必须声明 schema_version=2.1
+    输入错误退出码 3；历史不适用退出码 2
 
 检查项
     S1 concepts 存在且是数组、1–4 条
@@ -28,6 +28,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import io
 import json
 import re
@@ -136,13 +137,16 @@ def main(argv: list[str] | None = None) -> int:
     args = ap.parse_args(argv)
 
     path = Path(args.file)
-    if not path.exists():
-        print(f"ERROR —— 文件不存在：{path}")
-        return 2
-    data = read_json(path)
-    if not isinstance(data, list):
-        print(f"ERROR —— 应为 JSON 数组，实际 {type(data).__name__}")
-        return 2
+    try:
+        raw = path.read_bytes()
+        data = json.loads(raw.decode("utf-8"))
+    except (OSError, UnicodeError, ValueError) as exc:
+        print(f"ERROR —— 输入不可读：{exc}", file=sys.stderr)
+        return 3
+    if not isinstance(data, list) or not data or any(not isinstance(q, dict) for q in data):
+        print("ERROR —— 输入必须是非空题目对象数组", file=sys.stderr)
+        return 3
+    input_sha256 = hashlib.sha256(raw).hexdigest()
 
     versions = Counter(str(q.get("schema_version") or "未声明") for q in data)
     has_21 = any(str(q.get("schema_version") or "") == "2.1" for q in data)
@@ -153,7 +157,7 @@ def main(argv: list[str] | None = None) -> int:
                f"HC-27 不追溯")
         print(msg)
         report = {"generated_at": datetime.now().isoformat(timespec="seconds"),
-                  "file": str(path), "batch": args.batch, "status": "SKIP",
+                  "file": str(path), "input_sha256": input_sha256, "batch": args.batch, "status": "SKIP",
                   "reason": msg, "versions": dict(versions)}
         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
         Path(args.out).write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -164,13 +168,15 @@ def main(argv: list[str] | None = None) -> int:
                f"但没有任何题声明 schema_version=2.1（实际 {dict(versions)}）")
         print(msg)
         report = {"generated_at": datetime.now().isoformat(timespec="seconds"),
-                  "file": str(path), "batch": args.batch, "status": "FAIL",
+                  "file": str(path), "input_sha256": input_sha256, "batch": args.batch, "status": "FAIL",
                   "reason": msg, "versions": dict(versions)}
         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
         Path(args.out).write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
         return 1
 
     fails: list[str] = []
+    if need_21 and versions.get("2.1", 0) != len(data):
+        fails.append(f"schema_version=2.1 覆盖不足：{versions.get('2.1', 0)}/{len(data)}")
     warns: list[str] = []
     checked = 0
     by_type = Counter()
@@ -180,7 +186,8 @@ def main(argv: list[str] | None = None) -> int:
             continue
         checked += 1
         by_type[str(q.get("type") or "?")] += 1
-        concept_counts[len(q.get("concepts") or [])] += 1
+        concepts = q.get("concepts")
+        concept_counts[len(concepts) if isinstance(concepts, list) else 0] += 1
         f, w = check_question(q)
         fails += f
         warns += w
@@ -189,14 +196,15 @@ def main(argv: list[str] | None = None) -> int:
     multi_ok = sum(1 for q in data
                    if str(q.get("schema_version") or "") == "2.1"
                    and str(q.get("type") or "") in MULTI_TYPES
-                   and len(q.get("concepts") or []) >= 2)
+                   and isinstance(q.get("concepts"), list)
+                   and len(q["concepts"]) >= 2)
     multi_pool = sum(1 for q in data
                      if str(q.get("schema_version") or "") == "2.1"
                      and str(q.get("type") or "") in MULTI_TYPES)
     report = {
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "generator": "scripts/check_source_concepts.py",
-        "file": str(path), "batch": args.batch, "status": status,
+        "file": str(path), "input_sha256": input_sha256, "batch": args.batch, "status": status,
         "versions": dict(versions), "checked": checked, "total": len(data),
         "by_type": dict(by_type), "concepts_per_question": dict(sorted(concept_counts.items())),
         "multi_type_total": multi_pool, "multi_type_with_2plus": multi_ok,

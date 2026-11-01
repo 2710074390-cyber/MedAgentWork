@@ -108,6 +108,25 @@ def test_batch_gate_skip_and_enforce():
         assert json.loads(out.read_text(encoding="utf-8"))["status"] == "PASS"
 
 
+def test_input_errors_and_mixed_versions():
+    with tempfile.TemporaryDirectory() as td:
+        path = Path(td) / "q.json"
+        out = Path(td) / "out.json"
+        args = ["--file", str(path), "--batch", "batch044", "--out", str(out)]
+        assert csc.main(args) == 3
+        for invalid in ("{", "[]", "[null]", "{}"):
+            path.write_text(invalid, encoding="utf-8")
+            assert csc.main(args) == 3
+        good = _q(schema_version="2.1", type="A1", keypoint_ref="第1条",
+                  concepts=[_c("primary", "第1条", "甲概念")])
+        path.write_text(json.dumps([good, _q(schema_version="2.0")], ensure_ascii=False), encoding="utf-8")
+        assert csc.main(args) == 1
+        assert "覆盖不足" in json.loads(out.read_text(encoding="utf-8"))["fails"][0]
+        args[3] = "batch043"
+        assert csc.main(args) == 0
+        assert csc.main(args + ["--require"]) == 1
+
+
 def test_label_from_source_resolution():
     """源标注要能解析到 kc_id，并保留 role 与证据。"""
     titles = {

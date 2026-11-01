@@ -253,17 +253,45 @@ def has_chain(text: str) -> bool:
 
 
 def info_units(text: str) -> int:
-    """信息单元 = 句子/条目 + 表格数据行 + 代码图块（去重计数）。"""
+    """信息单元 = 不重复的句子/条目、原口径表格行与不重复的代码图块。"""
     body = "\n".join(line for line in text.splitlines() if not ANCHOR_RE.search(line))
+    fences = {re.sub(r"[ \t]+", " ", block.strip())
+              for block in re.findall(r"^```[^\n]*\n.*?^```[^\n]*$", body, re.M | re.S)}
+    no_code = re.sub(r"```.*?```", "", body, flags=re.S)
+    lines = no_code.splitlines()
     tables = count_tables(body)
-    fences = len(re.findall(r"^```", body, re.M)) // 2
-    no_tables = "\n".join(line for line in body.splitlines() if not line.strip().startswith("|"))
-    no_code = re.sub(r"```.*?```", "", no_tables, flags=re.S)
-    plain = strip_inline(no_code)
-    sentences = [s for s in re.split(r"[。；！？\n]", plain) if len(s.strip()) >= 6]
-    bullets = [ln for ln in no_code.splitlines()
-               if re.match(r"^\s*(?:[-+*]|\d+[.、])\s+\S", ln) and len(strip_inline(ln)) >= 6]
-    return max(len(sentences), len(bullets)) + tables + fences
+    no_tables = "\n".join(line for line in lines if not line.strip().startswith("|"))
+    plain = strip_inline(no_tables)
+    normalize = lambda value: re.sub(r"\s+", " ", value.strip())
+    sentences = set()
+    for sentence in re.split(r"[。；！？\n]", plain):
+        sentence = re.sub(r"^\s*(?:[-+*]|\d+[.、])\s+", "", sentence)
+        if len(sentence.strip()) >= 6:
+            sentences.add(normalize(sentence))
+    bullets = {normalize(re.sub(r"^\s*(?:[-+*]|\d+[.、])\s+", "", strip_inline(line)))
+               for line in no_tables.splitlines()
+               if re.match(r"^\s*(?:[-+*]|\d+[.、])\s+\S", line)
+               and len(strip_inline(line)) >= 6}
+    return max(len(sentences), len(bullets)) + tables + len(fences)
+
+
+def duplicate_body_warning(text: str) -> str | None:
+    """仅提示完全重复的较长正文段落，不判断语义相似性。"""
+    paragraphs = re.split(r"\n\s*\n", re.sub(r"```.*?```", "", text, flags=re.S))
+    seen = set()
+    duplicates = set()
+    for paragraph in paragraphs:
+        lines = [line for line in paragraph.splitlines()
+                 if not ANCHOR_RE.search(line) and not line.strip().startswith(("|", "#"))]
+        normalized = re.sub(r"\s+", "", strip_inline("\n".join(lines)))
+        if len(normalized) < 40:
+            continue
+        if normalized in seen:
+            duplicates.add(normalized)
+        seen.add(normalized)
+    if duplicates:
+        return f"发现 {len(duplicates)} 组完全重复的较长正文段落（忽略空白，至少40字符），建议人工核查"
+    return None
 
 
 def detect_tier(title: str) -> str:
@@ -443,6 +471,9 @@ def analyze_card(card: dict, answer_keys: set[tuple[str, str]], th: dict) -> dic
     if card["units"] < min_units:
         deficits.append(f"信息单元 {card['units']} < {min_units}")
     warnings = []
+    duplicate_warning = duplicate_body_warning(body)
+    if duplicate_warning:
+        warnings.append(duplicate_warning)
     if card["chars"] > max_chars:
         warnings.append(f"正文 {card['chars']} > {max_chars} 字符，建议拆分（认知负荷）")
     slot_ratio = (len(required) - len(missing)) / max(1, len(required))
@@ -538,6 +569,34 @@ def load_thresholds(profile: str, policy_path: Path) -> dict:
     return th
 
 
+def evaluate_adaptive(md_text: str, mode: str) -> dict:
+    """只提供自适应资料预检，不能替代人工审核和正式门禁。"""
+    body_lines = [line for line in re.sub(r"```.*?```", "", md_text, flags=re.S).splitlines()
+                  if line.strip() and not line.lstrip().startswith(("#", "|"))
+                  and not ANCHOR_RE.search(line)
+                  and not re.match(r"\s*(?:来源|教材|参考文献)[：:]", line)]
+    content = "\n".join(body_lines)
+    has_content = bool(re.search(r"[\u4e00-\u9fffA-Za-z0-9]", strip_inline(content)))
+    has_source = bool(re.search(r"📌\s*重点原文[（(]第\s*\d+\s*条|(?:来源|教材|参考文献)[：:]\s*\S+|https?://\S+", md_text))
+    warnings = ["人工审核未完成：须核对内容、来源、覆盖、医学安全及答案；本预检不能用于正式发布"]
+    if not has_content:
+        warnings.append("未识别到正文内容，需人工核查")
+    if not has_source:
+        warnings.append("未识别到来源标记，需人工核查；不代表实际无来源")
+    duplicate = duplicate_body_warning(md_text)
+    if duplicate:
+        warnings.append(duplicate)
+    return {
+        "mode": mode,
+        "detail_standard": "adaptive",
+        "summary": {"status": "FAIL", "manual_review": "pending",
+                    "recognizable_content": has_content, "source_marker": has_source},
+        "cards": [], "modules": [], "units": [],
+        "blocking": ["自适应预检不能判定质量通过，人工审核及现有正式发布门禁仍须完成"],
+        "warnings": warnings,
+    }
+
+
 def evaluate(cards: list[dict], modules: list[dict], units: list[dict],
              mode: str, th: dict, answer_keys: set[tuple[str, str]] | None = None) -> dict:
     answer_keys = answer_keys or set()
@@ -551,6 +610,10 @@ def evaluate(cards: list[dict], modules: list[dict], units: list[dict],
         status = "PASS"
         blocking = []
         warnings = []
+        for unit in units:
+            duplicate_warning = duplicate_body_warning(unit["text"])
+            if duplicate_warning:
+                warnings.append(f"{unit['id']}：{duplicate_warning}")
         if overall < float(th["overall_warn"]):
             status = "FAIL"
             blocking.append(f"课程安排版详细度 {overall:.1%} < {th['overall_warn']:.0%}")
@@ -721,6 +784,13 @@ def render_md(report: dict) -> str:
             lines.append(f"| {key} | {value} |")
     lines += ["", "## 2. 阻断项", ""]
     lines += [f"- {x}" for x in report.get("blocking") or []] or ["无。"]
+    lines += ["", "## 提示", ""]
+    lines += [f"- {x}" for x in report.get("warnings") or []] or ["无。"]
+    if report.get("detail_standard") == "adaptive":
+        lines += ["", "## 判定口径", "", "- 自适应预检不使用固定槽位、区块或字数阈值。",
+                  "- 人工审核未完成；来源标记只表示识别到文本，不验证真实性或充分性。",
+                  "- 本报告不能替代现有正式发布门禁。", ""]
+        return "\n".join(lines)
     lines += ["", "## 3. 卡片缺口（Top 20）", "",
               "| 卡片 | 层级 | 字符 | 单元 | 缺失槽位 | 其他缺口 |",
               "|---|---|---:|---:|---|---|"]
@@ -763,6 +833,8 @@ def main() -> int:
     ap.add_argument("--md", required=True, help="主复习资料 MD")
     ap.add_argument("--mode", choices=["auto", "teacher_keypoint", "course_schedule", "module"],
                     default="auto")
+    ap.add_argument("--detail-standard", choices=["legacy", "adaptive"], default="legacy",
+                    help="adaptive 仅供人工审核预检，不替代正式发布门禁")
     ap.add_argument("--profile", default="release_teacher_keypoint",
                     choices=["pilot", "release_teacher_keypoint", "release_teaching_plan"])
     ap.add_argument("--policy", default=str(BASE / "scripts/quality_policy.json"))
@@ -783,10 +855,13 @@ def main() -> int:
     mode = detect_mode(md_text, args.mode)
     th = load_thresholds(args.profile, Path(args.policy))
 
-    cards, modules = parse_cards(md_text)
-    units = parse_schedule_units(md_text) if mode == "course_schedule" else []
-    answer_keys = selftest_answer_keys(md_text)
-    report = evaluate(cards, modules, units, mode, th, answer_keys)
+    if args.detail_standard == "adaptive":
+        report = evaluate_adaptive(md_text, mode)
+    else:
+        cards, modules = parse_cards(md_text)
+        units = parse_schedule_units(md_text) if mode == "course_schedule" else []
+        answer_keys = selftest_answer_keys(md_text)
+        report = evaluate(cards, modules, units, mode, th, answer_keys)
     report.update({
         "schema_version": SCHEMA_VERSION,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
@@ -822,12 +897,14 @@ def main() -> int:
                 print(f"  {key}: {s[key]}")
         for x in report["blocking"]:
             print(f"  [BLOCK] {x}")
+        for x in report["warnings"]:
+            print(f"  [WARN] {x}")
         if args.json_out:
             print(f"  JSON: {args.json_out}")
         if args.md_out:
             print(f"  MD  : {args.md_out}")
 
-    if s["status"] == "FAIL" and not args.advisory:
+    if s["status"] == "FAIL" and (args.detail_standard == "adaptive" or not args.advisory):
         return 1
     return 0
 

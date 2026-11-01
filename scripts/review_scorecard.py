@@ -25,6 +25,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import io
 import json
 import re
@@ -301,10 +302,50 @@ def load_rubric(path: Path) -> dict:
     return data
 
 
+def scorecard_inputs(review_path: Path, rubric_path: Path, kc_path: Path, learning_value_path: Path) -> dict:
+    registry = read_json(kc_path)
+    metadata = registry.get("metadata", {})
+    kp = metadata.get("keypoints_path")
+    keypoints = repo_path(kp) if kp else (BASE / "输入素材" / "大四上" / "耳鼻咽喉头颈外科学"
+                                               / "耳鼻咽喉头颈外科学_教师重点_锚定清单_20261019.md")
+    paths = {"review": review_path, "rubric": rubric_path, "kc": kc_path,
+             "learning_value": learning_value_path, "keypoints": keypoints,
+             "question_map": kc_path.with_name("kc_question_map.jsonl"),
+             "aliases": kc_path.with_name("kc_aliases.json")}
+    meta_q = metadata.get("questions_path")
+    if meta_q:
+        paths["questions"] = repo_path(meta_q)
+    required = {"review", "rubric", "kc", "learning_value", "keypoints"}
+    hashes = {}
+    for name, path in paths.items():
+        try:
+            hashes[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+        except FileNotFoundError:
+            if name in required:
+                raise
+            hashes[name] = None
+    pilot = BASE / "中间产物/batch040/pilot"
+    hashes["availability"] = {
+        "html": bool(list(review_path.parent.glob("*.html"))),
+        "schedule": (pilot / "review_items.jsonl").exists(),
+        "feedback": (pilot / "pilot_review.html").exists(),
+        "diagnostic": bool(list(pilot.glob("diagnostic*"))),
+        "learner_outcome": bool(list((BASE / "reports/validate").glob("pilot_analysis*.md"))),
+    }
+    return hashes
+
+
 def build_scorecard(subject: str, batch: str, review_path: Path, rubric_path: Path,
                     kc_path: Path, learning_value_path: Path) -> dict:
+    from check_source_concepts import batch_num
+    strict = batch_num(batch) >= 44
+    inputs = scorecard_inputs(review_path, rubric_path, kc_path, learning_value_path) if strict else None
+    review_hash = hashlib.sha256(review_path.read_bytes()).hexdigest()
     rubric = load_rubric(rubric_path)
     metrics = compute_metrics(review_path, kc_path, learning_value_path)
+    if (hashlib.sha256(review_path.read_bytes()).hexdigest() != review_hash
+            or (strict and scorecard_inputs(review_path, rubric_path, kc_path, learning_value_path) != inputs)):
+        raise ValueError("评分期间输入发生变化")
     dims = []
     for d in rubric["dimensions"]:
         score = float(d["score"])
@@ -349,6 +390,8 @@ def build_scorecard(subject: str, batch: str, review_path: Path, rubric_path: Pa
         "schema_version": 1,
         "subject": subject.upper(),
         "batch": batch,
+        "review_sha256": review_hash,
+        "input_hashes": inputs,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "review_path": str(review_path.relative_to(BASE)) if review_path.is_relative_to(BASE) else str(review_path),
         "rubric_path": str(rubric_path.relative_to(BASE)) if rubric_path.is_relative_to(BASE) else str(rubric_path),
