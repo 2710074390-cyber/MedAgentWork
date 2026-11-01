@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "evidence_bundle.schema.json",
+  "title": "Evidence bundle record contracts",
+  "$defs": {
+    "nonempty": {"type": "string", "minLength": 1, "pattern": "\\S"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+    "manifest": {
+      "type": "object",
+      "required": ["schema_version", "batch", "status", "sources_file", "claims_file", "conflicts_file", "created_at", "enabled_for_generation"],
+      "properties": {
+        "schema_version": {"$ref": "#/$defs/nonempty"}, "batch": {"$ref": "#/$defs/nonempty"},
+        "status": {"$ref": "#/$defs/nonempty"}, "sources_file": {"$ref": "#/$defs/nonempty"},
+        "claims_file": {"$ref": "#/$defs/nonempty"}, "conflicts_file": {"$ref": "#/$defs/nonempty"},
+        "created_at": {"$ref": "#/$defs/nonempty"}, "enabled_for_generation": {"type": "boolean"},
+        "bundle_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["source_id", "source_type", "publisher", "title", "url", "accessed_at", "status"],
+      "properties": {
+        "source_id": {"$ref": "#/$defs/nonempty"}, "source_type": {"$ref": "#/$defs/nonempty"},
+        "publisher": {"$ref": "#/$defs/nonempty"}, "title": {"$ref": "#/$defs/nonempty"},
+        "url": {"$ref": "#/$defs/nonempty"}, "accessed_at": {"$ref": "#/$defs/nonempty"},
+        "status": {"$ref": "#/$defs/nonempty"}, "snapshot_path": {"$ref": "#/$defs/nonempty"},
+        "snapshot_sha256": {"$ref": "#/$defs/sha256"}, "extracted_path": {"$ref": "#/$defs/nonempty"},
+        "extracted_sha256": {"$ref": "#/$defs/sha256"}
+      },
+      "dependentRequired": {"snapshot_path": ["snapshot_sha256"], "snapshot_sha256": ["snapshot_path"], "extracted_path": ["extracted_sha256"], "extracted_sha256": ["extracted_path"]}
+    },
+    "claim": {
+      "type": "object",
+      "required": ["claim_id", "batch", "claim", "source_ids", "support_quote", "support_scope", "evidence_level", "conflict_status", "review_status"],
+      "properties": {
+        "claim_id": {"$ref": "#/$defs/nonempty"}, "batch": {"$ref": "#/$defs/nonempty"},
+        "claim": {"$ref": "#/$defs/nonempty"}, "source_ids": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/nonempty"}},
+        "support_quote": {"$ref": "#/$defs/nonempty"}, "support_scope": {"$ref": "#/$defs/nonempty"},
+        "evidence_level": {"$ref": "#/$defs/nonempty"}, "conflict_status": {"$ref": "#/$defs/nonempty"},
+        "review_status": {"$ref": "#/$defs/nonempty"}, "risk_level": {"enum": ["low", "high"]}
+      }
+    },
+    "conflicts": {
+      "type": "array", "items": {"type": "object", "required": ["claim_id", "status"], "properties": {"claim_id": {"$ref": "#/$defs/nonempty"}, "status": {"$ref": "#/$defs/nonempty"}}}
+    }
+  }
+}
