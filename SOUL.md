@@ -161,8 +161,9 @@
 - **批次启动（Agent 1）**：
   `python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json`
   - 产出逐题 `source_id / family / tier / keypoint_refs / answer_confidence / license / mode`；
-  - `quota_status` 取值：`met` 达标｜`reduced` 按可用量减量｜`cancelled` 无候选取消该族配额｜`disabled` 配额为 0；
-  - `reduced` / `cancelled` **不再阻断批次**，但必须保留 `reason`（`no_candidate` / `candidates_exhausted` / `keypoint_or_module_limit`）与检索日志，**禁止用无关题凑数**，缺口由原创补齐。
+  - `quota_status` 取值：`met` 达标｜`reduced` 按可用量减量｜`cancelled` 无候选取消该族配额｜`deferred` 候选存在但人类专属核验未完成（HC-28，必须写 `hc28_update`）｜`disabled` 配额为 0；
+  - `reduced` / `cancelled` / `deferred` **不再阻断批次**，但必须保留 `reason`（`no_candidate` / `candidates_exhausted` / `keypoint_or_module_limit` / `human_verification_deferred`）与检索日志，**禁止用无关题凑数**，缺口由原创补齐。
+  - **状态自洽硬约束**：`cancelled` 只能用于“确实没有候选”（`available=0` 且 `plan.selected` 无该族候选）；候选存在却未落位必须用 `deferred`，禁止用 `cancelled` 冒充无候选；`check` 对 status/reason/available/selected 不一致直接 FAIL。
 - **答案可信**：只有 `answer_confidence=high/medium` 的题可入选；`low` 一律不插入。考研答案以 `question_bank/kaoyan_answers.json` 的 `answer_recovered` 为准，**禁止**再用下册行首前缀 `ABCD/ABCDE`。来源优先级：扫描版绿色标记（high/medium）≈ PDF 标准答案/人工转录（high）> PDF 绿色标记（medium）> 解析规则（high/medium）；跨版本 PDF 题号可能错位，冲突时以扫描版原书绿色标记为准。执业医师历年真题以**扫描册印刷答案**为唯一依据，OCR 未取到答案的题一律不入库（`answer_confidence` 不足即不可选）。
 - **真题标注（三处缺一不可）**：
   1. 元数据：`kaoyan_origin{gs_id,year,source,mode,answer_confidence}`，或 `zhiyi_origin{source_id,source,corpus,mode,answer_confidence}`，其中 `corpus = "pdf_paper"`（历年真题）/`"cmexam"`（CMExam）；
@@ -241,6 +242,23 @@
 - **机械化门禁**：`python scripts/check_review_detail.py --md <主复习资料 MD> --mode auto --profile release_teacher_keypoint`（正式发布必须 PASS；`release_teaching_plan` 用同脚本）。报告落 `reports/validate/review_detail_*.json|md`，并接入 `quality_gate.py` 的 R2/R3 `review_detail` 检查。
 - **不追溯**：旧产物冻结；新批次/新版本必须过 V18 自检。标准全文与证据见 `docs/复习资料详细度标准.md`。
 
+## HC-28 一次跑完与人工复核队列分离（2026-11-01 新增 · MedMaster/MedGen/MedQC/MedFix 共同主责 · 不可违反）
+
+> 驱动缺陷（batch046 实证）：新管线把「原卷真伪、答案原页、版权授权、医学专家裁定」等人类专属核验写成生成的前置条件，模型无法完成 → 反复输出「待核验」、整批 BLOCKED，72 题原创 + 28 条候选全部停在待审稿。根因不是模型能力不足，而是**把「不可发布」误当成「不可完成」**，且提示词仍保留 Cherry Studio 时代的「回复确认 / 输入确认」交互门。
+
+- **完成定义**：管线完成 = `generation_status=DONE`（全部题目已生成、确定性门禁已跑、复核队列已产出），不以「所有医学主张已人工核验」为前提。`release_status=PENDING_HUMAN_REVIEW` 不是管线失败。
+- **问题分级**：
+  - `AUTO_FIX`：结构、格式、配额、重复、学习价值字段等确定性可修复问题 → 自动修复；单题最多 2 轮，整批最多 3 轮；超限则隔离该题并继续。
+  - `AGENT_VERIFY`：可用输入素材、教师重点、GoldenSet、RAG 片段做逐字/定位核验的问题 → 修复或隔离；不得升级为「等待人类」。
+  - `HUMAN_ONLY`：原卷/答案原页/版权授权/医学专家裁定/指南冲突 → 只写复核队列，不阻断生成。
+- **硬停止条件（仅限）**：输入缺失/不可读/损坏；输出连续 2 次无法解析为契约 JSON；工具/预算/权限故障。**可发布核心集为空不是停止条件**：仍输出完整待审稿 + 复核队列，标 `release_status=BLOCKED`（题目数量完整时 `generation_status` 仍为 DONE），交由人类处理。
+- **状态分离**：`generation_status=DONE|PARTIAL|FAILED`；`release_status=READY|PENDING_HUMAN_REVIEW|BLOCKED`；批次报告必须同时给出两者，禁止用单一 `gate_decision` 混淆生成与发布。
+- **每题 `release` 对象**：`disposition=publishable|pending_human|quarantined`、`evidence_grade=A|B|C`、`risk_level=high|medium|low`、`reason_code`、`agent_checks[]`、`human_check`、`suggested_action`。
+- **证据分级与发布底线**：A = 输入素材/教师重点/教材原文逐字可定位；B = 教师重点覆盖或教材口径一致但无逐字引文；C = 仅模型知识、无可定位来源。高风险题（剂量/时间窗/复苏/禁忌/儿科/急救）C 级 → `quarantined`；低风险 C 级 → `pending_human`；A/B 且确定性门禁通过 → `publishable`。
+- **输出契约**：批次必须输出 `review_queue.json`；最终交付 MD 末尾附「人工复核队列」；队列每条含题号、处置、证据等级、风险、原因、已做检查、人工需核、建议动作。最终回复只报告状态、数量、路径，不得以「请确认 / 待核验」结束本轮执行。
+- **交互门废弃**：DSH/subagent 模式下，MedGen HC-6 回显、MedQC Step 5「输入确认」、MedFix/MedMaster「等待用户确认」一律视为旧 Cherry Studio 遗留，**不得实际等待**；批次启动时由用户一次性确认范围，之后连续执行到交付。
+- **机制依据**：MAST（Cemri et al., 2025, arXiv:2503.13657）把「不知道终止条件」「验证失败」列为高频失败模式；Anthropic《Building effective agents》要求 evaluator-optimizer 有明确终止条件；Guardrails AI 的 `on_fail` 提供 fix/reask/filter 等非中断动作；OR-Bench（Cui et al., 2024, arXiv:2405.20947）证明过度拒答是独立失败模式；Self-Refine（Madaan et al., 2023）要求最大轮次与停止指标。结论：**不确定应作为数据向下游传递，不应作为控制流中断**。
+
 ## 插图生成分工（2026-09-07 固化 · 详见 .dsh/skills/medillustration/）
 
 > 解决：纯文本复习资料规模化增加写实插图时的角色分工、工具选型和质量门禁。
@@ -269,4 +287,6 @@
 - ❌ **不手改 workflow_state.json** — 走 scripts/workflow_state.py（HC-17）
 - ❌ **不产出 PDF** — 押题卷/题库/复习资料 PDF 一律人工上传（HC-18）
 - ❌ **不以“旧批次未追溯”为由跳过新批次 HC-24/HC-25** — 旧产物冻结，新批次/新版本必须过门禁
+- ❌ **不因人类专属核验（原卷/版权/专家裁定）停止生成** — 写入复核队列并继续（HC-28）
+- ✅ **可以**：交付带 `PENDING_HUMAN_REVIEW` 标记的完整产物与复核队列
 - ✅ **可以**：出题、质检、修改、追溯、汇总统计

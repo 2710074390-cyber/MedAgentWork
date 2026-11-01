@@ -1,0 +1,2612 @@
+[
+  {
+    "id": "batch045-M12-001",
+    "module": "M01",
+    "topic": "急救医疗服务体系",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 根据教材，急救医疗服务体系的三位一体模式包括院前急救、医院急诊和",
+    "options": [
+      {
+        "label": "A",
+        "text": "危重症监护"
+      },
+      {
+        "label": "B",
+        "text": "社区慢病随访"
+      },
+      {
+        "label": "C",
+        "text": "健康体检管理"
+      },
+      {
+        "label": "D",
+        "text": "长期康复治疗"
+      },
+      {
+        "label": "E",
+        "text": "家庭护理服务"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教材将院前急救、医院急诊、危重症监护列为急救医疗服务体系的三位一体模式。",
+    "source_page": "教材P1",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第1章，TXT第18页"
+    ],
+    "keypoint_ref": [
+      "第1条"
+    ],
+    "teacher_anchor": "EMSS＝院前急救、医院急诊、危重症监护三位一体",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第1条",
+        "title": "急救医疗服务体系",
+        "evidence": "题干直接考查急救医疗服务体系，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材将院前急救、医院急诊、危重症监护列为急救医疗服务体系的三位一体模式。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（危重症监护）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（社区慢病随访）不是本题答案，不能与题干限定的急救医疗服务体系判断相匹配。",
+          "misconception_id": "MC-EM-M12-01-B",
+          "misconception": "将急救医疗服务体系与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（健康体检管理）不是本题答案，不能与题干限定的急救医疗服务体系判断相匹配。",
+          "misconception_id": "MC-EM-M12-01-C",
+          "misconception": "将急救医疗服务体系与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（长期康复治疗）不是本题答案，不能与题干限定的急救医疗服务体系判断相匹配。",
+          "misconception_id": "MC-EM-M12-01-D",
+          "misconception": "将急救医疗服务体系与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（家庭护理服务）不是本题答案，不能与题干限定的急救医疗服务体系判断相匹配。",
+          "misconception_id": "MC-EM-M12-01-E",
+          "misconception": "将急救医疗服务体系与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于急救医疗服务体系的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "EMSS＝院前急救、医院急诊、危重症监护三位一体",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-002",
+    "module": "M01",
+    "topic": "急诊五级分诊",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 教材五级分诊中，存在危及生命状况的Ⅲ类病人应在多久内评估治疗？",
+    "options": [
+      {
+        "label": "A",
+        "text": "10分钟内"
+      },
+      {
+        "label": "B",
+        "text": "30分钟内"
+      },
+      {
+        "label": "C",
+        "text": "60分钟内"
+      },
+      {
+        "label": "D",
+        "text": "90分钟内"
+      },
+      {
+        "label": "E",
+        "text": "120分钟内"
+      }
+    ],
+    "answer": "B",
+    "explanation": "教材规定Ⅲ类存在危及生命状况者30分钟内评估治疗；Ⅱ类为10分钟内，Ⅳ类为1小时内。",
+    "source_page": "教材P2",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第1章，TXT第19页"
+    ],
+    "keypoint_ref": [
+      "第2条"
+    ],
+    "teacher_anchor": "Ⅲ类存在危及生命状况，30 分钟内评估治疗",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第2条",
+        "title": "急诊五级分诊",
+        "evidence": "题干直接考查急诊五级分诊，正确选项为B，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定Ⅲ类存在危及生命状况者30分钟内评估治疗；Ⅱ类为10分钟内，Ⅳ类为1小时内。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（10分钟内）不是本题答案，不能与题干限定的急诊五级分诊判断相匹配。",
+          "misconception_id": "MC-EM-M12-02-A",
+          "misconception": "将急诊五级分诊与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "选项B（30分钟内）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（60分钟内）不是本题答案，不能与题干限定的急诊五级分诊判断相匹配。",
+          "misconception_id": "MC-EM-M12-02-C",
+          "misconception": "将急诊五级分诊与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（90分钟内）不是本题答案，不能与题干限定的急诊五级分诊判断相匹配。",
+          "misconception_id": "MC-EM-M12-02-D",
+          "misconception": "将急诊五级分诊与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（120分钟内）不是本题答案，不能与题干限定的急诊五级分诊判断相匹配。",
+          "misconception_id": "MC-EM-M12-02-E",
+          "misconception": "将急诊五级分诊与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于急诊五级分诊的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "Ⅲ类存在危及生命状况，30 分钟内评估治疗",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-003",
+    "module": "M01",
+    "topic": "灾难检伤分类",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 灾难现场四色分类中，第二优先、允许延迟救治的伤员使用的标识颜色是",
+    "options": [
+      {
+        "label": "A",
+        "text": "红色"
+      },
+      {
+        "label": "B",
+        "text": "黄色"
+      },
+      {
+        "label": "C",
+        "text": "绿色"
+      },
+      {
+        "label": "D",
+        "text": "黑色"
+      },
+      {
+        "label": "E",
+        "text": "蓝色"
+      }
+    ],
+    "answer": "B",
+    "explanation": "按教材四色分类，红色第一优先、黄色第二优先、绿色第三优先、黑色零优先。",
+    "source_page": "教材P285-287",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版灾难检伤分类，TXT第302-304页"
+    ],
+    "keypoint_ref": [
+      "第3条"
+    ],
+    "teacher_anchor": "红色第一优先紧急救治、黄色第二优先延迟救治、绿色第三优先等待救治、黑色零优先期待救治",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第3条",
+        "title": "灾难检伤分类",
+        "evidence": "题干直接考查灾难检伤分类，正确选项为B，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "按教材四色分类，红色第一优先、黄色第二优先、绿色第三优先、黑色零优先。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（红色）不是本题答案，不能与题干限定的灾难检伤分类判断相匹配。",
+          "misconception_id": "MC-EM-M12-03-A",
+          "misconception": "将灾难检伤分类与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "选项B（黄色）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（绿色）不是本题答案，不能与题干限定的灾难检伤分类判断相匹配。",
+          "misconception_id": "MC-EM-M12-03-C",
+          "misconception": "将灾难检伤分类与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（黑色）不是本题答案，不能与题干限定的灾难检伤分类判断相匹配。",
+          "misconception_id": "MC-EM-M12-03-D",
+          "misconception": "将灾难检伤分类与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（蓝色）不是本题答案，不能与题干限定的灾难检伤分类判断相匹配。",
+          "misconception_id": "MC-EM-M12-03-E",
+          "misconception": "将灾难检伤分类与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于灾难检伤分类的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "红色第一优先紧急救治、黄色第二优先延迟救治、绿色第三优先等待救治、黑色零优先期待救治",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-004",
+    "module": "M01",
+    "topic": "成人START分诊",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 成人START快速检伤中的循环评估指标包括",
+    "options": [
+      {
+        "label": "A",
+        "text": "毛细血管再充盈时间"
+      },
+      {
+        "label": "B",
+        "text": "血清肌钙蛋白水平"
+      },
+      {
+        "label": "C",
+        "text": "血红蛋白浓度"
+      },
+      {
+        "label": "D",
+        "text": "动脉血乳酸浓度"
+      },
+      {
+        "label": "E",
+        "text": "中心静脉压"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教师重点按教材概括START使用呼吸频率、毛细血管再充盈时间和能否遵从指挥等快速现场指标。",
+    "source_page": "教材P286",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版灾难检伤分类，TXT第303页"
+    ],
+    "keypoint_ref": [
+      "第4条"
+    ],
+    "teacher_anchor": "呼吸频率 30 次/分、毛细血管再充盈时间 2 秒、能否遵从指挥",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第4条",
+        "title": "成人START分诊",
+        "evidence": "题干直接考查成人START分诊，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教师重点按教材概括START使用呼吸频率、毛细血管再充盈时间和能否遵从指挥等快速现场指标。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（毛细血管再充盈时间）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（血清肌钙蛋白水平）不是本题答案，不能与题干限定的成人START分诊判断相匹配。",
+          "misconception_id": "MC-EM-M12-04-B",
+          "misconception": "将成人START分诊与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（血红蛋白浓度）不是本题答案，不能与题干限定的成人START分诊判断相匹配。",
+          "misconception_id": "MC-EM-M12-04-C",
+          "misconception": "将成人START分诊与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（动脉血乳酸浓度）不是本题答案，不能与题干限定的成人START分诊判断相匹配。",
+          "misconception_id": "MC-EM-M12-04-D",
+          "misconception": "将成人START分诊与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（中心静脉压）不是本题答案，不能与题干限定的成人START分诊判断相匹配。",
+          "misconception_id": "MC-EM-M12-04-E",
+          "misconception": "将成人START分诊与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于成人START分诊的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "呼吸频率 30 次/分、毛细血管再充盈时间 2 秒、能否遵从指挥",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-005",
+    "module": "M01",
+    "topic": "SALT分类",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 按教师补充的SALT分类，字母L代表",
+    "options": [
+      {
+        "label": "A",
+        "text": "全局排序"
+      },
+      {
+        "label": "B",
+        "text": "伤情评估"
+      },
+      {
+        "label": "C",
+        "text": "救命干预"
+      },
+      {
+        "label": "D",
+        "text": "治疗转运"
+      },
+      {
+        "label": "E",
+        "text": "长期随访"
+      }
+    ],
+    "answer": "C",
+    "explanation": "教师补充将SALT依次表述为全局排序、评估、救命干预和治疗转运；该内容教材未载。",
+    "source_page": "教师补充，教材未载",
+    "source_anchors": [
+      "急诊与灾难医学教师重点锚定清单第5条；教材未载"
+    ],
+    "keypoint_ref": [
+      "第5条"
+    ],
+    "teacher_anchor": "Lifesaving interventions 救命干预",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第5条",
+        "title": "SALT分类",
+        "evidence": "题干直接考查SALT分类，正确选项为C，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教师补充将SALT依次表述为全局排序、评估、救命干预和治疗转运；该内容教材未载。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（全局排序）不是本题答案，不能与题干限定的SALT分类判断相匹配。",
+          "misconception_id": "MC-EM-M12-05-A",
+          "misconception": "将SALT分类与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（伤情评估）不是本题答案，不能与题干限定的SALT分类判断相匹配。",
+          "misconception_id": "MC-EM-M12-05-B",
+          "misconception": "将SALT分类与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "选项C（救命干预）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（治疗转运）不是本题答案，不能与题干限定的SALT分类判断相匹配。",
+          "misconception_id": "MC-EM-M12-05-D",
+          "misconception": "将SALT分类与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（长期随访）不是本题答案，不能与题干限定的SALT分类判断相匹配。",
+          "misconception_id": "MC-EM-M12-05-E",
+          "misconception": "将SALT分类与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于SALT分类的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "Lifesaving interventions 救命干预",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-006",
+    "module": "M01",
+    "topic": "灾难救援原则",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 灾难现场危险尚未解除，实施救援时教材强调的先后原则是",
+    "options": [
+      {
+        "label": "A",
+        "text": "先抢后救"
+      },
+      {
+        "label": "B",
+        "text": "先救后抢"
+      },
+      {
+        "label": "C",
+        "text": "先登记后转运"
+      },
+      {
+        "label": "D",
+        "text": "先检查后撤离"
+      },
+      {
+        "label": "E",
+        "text": "先诊断后脱险"
+      }
+    ],
+    "answer": "A",
+    "explanation": "灾难医学强调先使伤员脱离危险环境，再进行分拣与救治；不能在危险未控制时只顾检查而忽视脱险。",
+    "source_page": "教材P3、P285",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，TXT第20页、第302页"
+    ],
+    "keypoint_ref": [
+      "第6条"
+    ],
+    "teacher_anchor": "先抢后救，先使伤员脱离危险环境再分拣急救",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第6条",
+        "title": "灾难救援原则",
+        "evidence": "题干直接考查灾难救援原则，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "灾难医学强调先使伤员脱离危险环境，再进行分拣与救治；不能在危险未控制时只顾检查而忽视脱险。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（先抢后救）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（先救后抢）不是本题答案，不能与题干限定的灾难救援原则判断相匹配。",
+          "misconception_id": "MC-EM-M12-06-B",
+          "misconception": "将灾难救援原则与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（先登记后转运）不是本题答案，不能与题干限定的灾难救援原则判断相匹配。",
+          "misconception_id": "MC-EM-M12-06-C",
+          "misconception": "将灾难救援原则与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（先检查后撤离）不是本题答案，不能与题干限定的灾难救援原则判断相匹配。",
+          "misconception_id": "MC-EM-M12-06-D",
+          "misconception": "将灾难救援原则与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（先诊断后脱险）不是本题答案，不能与题干限定的灾难救援原则判断相匹配。",
+          "misconception_id": "MC-EM-M12-06-E",
+          "misconception": "将灾难救援原则与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于灾难救援原则的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "先抢后救，先使伤员脱离危险环境再分拣急救",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-007",
+    "module": "M01",
+    "topic": "格拉斯哥昏迷评分",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 格拉斯哥昏迷评分量表包含睁眼反应、言语反应以及",
+    "options": [
+      {
+        "label": "A",
+        "text": "运动反应"
+      },
+      {
+        "label": "B",
+        "text": "瞳孔反应"
+      },
+      {
+        "label": "C",
+        "text": "呼吸频率"
+      },
+      {
+        "label": "D",
+        "text": "肌张力"
+      },
+      {
+        "label": "E",
+        "text": "血压水平"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教材GCS由睁眼、言语和运动三项构成，最高15分、最低3分；评分越低提示昏迷程度越深。",
+    "source_page": "教材P18",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版表3-3，TXT第35页"
+    ],
+    "keypoint_ref": [
+      "第7条"
+    ],
+    "teacher_anchor": "睁眼反应 E 4～1 分、言语反应 V 5～1 分、运动反应 M 6～1 分",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第7条",
+        "title": "格拉斯哥昏迷评分",
+        "evidence": "题干直接考查格拉斯哥昏迷评分，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材GCS由睁眼、言语和运动三项构成，最高15分、最低3分；评分越低提示昏迷程度越深。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（运动反应）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（瞳孔反应）不是本题答案，不能与题干限定的格拉斯哥昏迷评分判断相匹配。",
+          "misconception_id": "MC-EM-M12-07-B",
+          "misconception": "将格拉斯哥昏迷评分与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（呼吸频率）不是本题答案，不能与题干限定的格拉斯哥昏迷评分判断相匹配。",
+          "misconception_id": "MC-EM-M12-07-C",
+          "misconception": "将格拉斯哥昏迷评分与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（肌张力）不是本题答案，不能与题干限定的格拉斯哥昏迷评分判断相匹配。",
+          "misconception_id": "MC-EM-M12-07-D",
+          "misconception": "将格拉斯哥昏迷评分与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（血压水平）不是本题答案，不能与题干限定的格拉斯哥昏迷评分判断相匹配。",
+          "misconception_id": "MC-EM-M12-07-E",
+          "misconception": "将格拉斯哥昏迷评分与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于格拉斯哥昏迷评分的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "睁眼反应 E 4～1 分、言语反应 V 5～1 分、运动反应 M 6～1 分",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-008",
+    "module": "M01",
+    "topic": "格拉斯哥昏迷评分",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "[正选] 患者GCS睁眼2分、言语3分、运动4分，其总分为",
+    "options": [
+      {
+        "label": "A",
+        "text": "7分"
+      },
+      {
+        "label": "B",
+        "text": "8分"
+      },
+      {
+        "label": "C",
+        "text": "9分"
+      },
+      {
+        "label": "D",
+        "text": "10分"
+      },
+      {
+        "label": "E",
+        "text": "11分"
+      }
+    ],
+    "answer": "C",
+    "explanation": "GCS总分为睁眼、言语和运动三项之和：2＋3＋4＝9分。",
+    "source_page": "教材P18",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版表3-3，TXT第35页"
+    ],
+    "keypoint_ref": [
+      "第7条"
+    ],
+    "teacher_anchor": "睁眼反应 E 4～1 分、言语反应 V 5～1 分、运动反应 M 6～1 分",
+    "review_status": "draft",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第7条",
+        "title": "格拉斯哥昏迷评分",
+        "evidence": "题干直接考查格拉斯哥昏迷评分，正确选项为C，依据题目所列教材锚点。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第7条",
+        "title": "鉴别：7分",
+        "evidence": "选项A“7分”作为干扰项，用于区分格拉斯哥昏迷评分与相近处置或判断。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "GCS总分为睁眼、言语和运动三项之和：2＋3＋4＝9分。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（7分）不是本题答案，不能与题干限定的格拉斯哥昏迷评分判断相匹配。",
+          "misconception_id": "MC-EM-M12-08-A",
+          "misconception": "将格拉斯哥昏迷评分与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（8分）不是本题答案，不能与题干限定的格拉斯哥昏迷评分判断相匹配。",
+          "misconception_id": "MC-EM-M12-08-B",
+          "misconception": "将格拉斯哥昏迷评分与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "选项C（9分）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（10分）不是本题答案，不能与题干限定的格拉斯哥昏迷评分判断相匹配。",
+          "misconception_id": "MC-EM-M12-08-D",
+          "misconception": "将格拉斯哥昏迷评分与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（11分）不是本题答案，不能与题干限定的格拉斯哥昏迷评分判断相匹配。",
+          "misconception_id": "MC-EM-M12-08-E",
+          "misconception": "将格拉斯哥昏迷评分与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于格拉斯哥昏迷评分的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "睁眼反应 E 4～1 分、言语反应 V 5～1 分、运动反应 M 6～1 分",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-009",
+    "module": "M02",
+    "topic": "心搏骤停识别",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 心脏骤停三联征包括突发意识丧失、呼吸停止及",
+    "options": [
+      {
+        "label": "A",
+        "text": "大动脉搏动消失"
+      },
+      {
+        "label": "B",
+        "text": "体温明显升高"
+      },
+      {
+        "label": "C",
+        "text": "瞳孔不等大"
+      },
+      {
+        "label": "D",
+        "text": "肢体局部瘫痪"
+      },
+      {
+        "label": "E",
+        "text": "颈静脉明显怒张"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教师重点所述三联征为突发意识丧失、呼吸停止和大动脉搏动消失；临床识别还需注意无正常呼吸。",
+    "source_page": "教材P231-233",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第248-250页"
+    ],
+    "keypoint_ref": [
+      "第8条"
+    ],
+    "teacher_anchor": "心脏骤停三联征为突发意识丧失、呼吸停止、大动脉搏动消失",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第8条",
+        "title": "心搏骤停识别",
+        "evidence": "题干直接考查心搏骤停识别，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教师重点所述三联征为突发意识丧失、呼吸停止和大动脉搏动消失；临床识别还需注意无正常呼吸。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（大动脉搏动消失）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（体温明显升高）不是本题答案，不能与题干限定的心搏骤停识别判断相匹配。",
+          "misconception_id": "MC-EM-M12-09-B",
+          "misconception": "将心搏骤停识别与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（瞳孔不等大）不是本题答案，不能与题干限定的心搏骤停识别判断相匹配。",
+          "misconception_id": "MC-EM-M12-09-C",
+          "misconception": "将心搏骤停识别与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（肢体局部瘫痪）不是本题答案，不能与题干限定的心搏骤停识别判断相匹配。",
+          "misconception_id": "MC-EM-M12-09-D",
+          "misconception": "将心搏骤停识别与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（颈静脉明显怒张）不是本题答案，不能与题干限定的心搏骤停识别判断相匹配。",
+          "misconception_id": "MC-EM-M12-09-E",
+          "misconception": "将心搏骤停识别与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于心搏骤停识别的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "心脏骤停三联征为突发意识丧失、呼吸停止、大动脉搏动消失",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-010",
+    "module": "M02",
+    "topic": "高质量胸外按压",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 按教材成人高质量心肺复苏，胸外按压频率为",
+    "options": [
+      {
+        "label": "A",
+        "text": "60～80次/分"
+      },
+      {
+        "label": "B",
+        "text": "80～100次/分"
+      },
+      {
+        "label": "C",
+        "text": "100～120次/分"
+      },
+      {
+        "label": "D",
+        "text": "120～140次/分"
+      },
+      {
+        "label": "E",
+        "text": "140～160次/分"
+      }
+    ],
+    "answer": "C",
+    "explanation": "教材成人高质量胸外按压频率为100～120次/分，并应让胸廓在每次按压后充分回弹。",
+    "source_page": "教材P235",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第252页"
+    ],
+    "keypoint_ref": [
+      "第9条"
+    ],
+    "teacher_anchor": "按压频率 100～120 次/分",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第9条",
+        "title": "高质量胸外按压",
+        "evidence": "题干直接考查高质量胸外按压，正确选项为C，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材成人高质量胸外按压频率为100～120次/分，并应让胸廓在每次按压后充分回弹。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（60～80次/分）不是本题答案，不能与题干限定的高质量胸外按压判断相匹配。",
+          "misconception_id": "MC-EM-M12-10-A",
+          "misconception": "将高质量胸外按压与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（80～100次/分）不是本题答案，不能与题干限定的高质量胸外按压判断相匹配。",
+          "misconception_id": "MC-EM-M12-10-B",
+          "misconception": "将高质量胸外按压与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "选项C（100～120次/分）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（120～140次/分）不是本题答案，不能与题干限定的高质量胸外按压判断相匹配。",
+          "misconception_id": "MC-EM-M12-10-D",
+          "misconception": "将高质量胸外按压与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（140～160次/分）不是本题答案，不能与题干限定的高质量胸外按压判断相匹配。",
+          "misconception_id": "MC-EM-M12-10-E",
+          "misconception": "将高质量胸外按压与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于高质量胸外按压的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "按压频率 100～120 次/分",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-011",
+    "module": "M02",
+    "topic": "高质量胸外按压",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 成人胸外按压的放松阶段，教材推荐",
+    "options": [
+      {
+        "label": "A",
+        "text": "让胸廓完全回弹"
+      },
+      {
+        "label": "B",
+        "text": "持续倚靠胸壁"
+      },
+      {
+        "label": "C",
+        "text": "抬手离开胸壁"
+      },
+      {
+        "label": "D",
+        "text": "维持胸骨下陷"
+      },
+      {
+        "label": "E",
+        "text": "延长按压中断"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教材要求每次按压后让胸廓完全回弹，放松时手掌不离开胸壁，且不要倚靠在患者胸部。",
+    "source_page": "教材P235-236",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第252-253页"
+    ],
+    "keypoint_ref": [
+      "第9条"
+    ],
+    "teacher_anchor": "每次按压后让胸廓完全回弹",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第9条",
+        "title": "高质量胸外按压",
+        "evidence": "题干直接考查高质量胸外按压，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材要求每次按压后让胸廓完全回弹，放松时手掌不离开胸壁，且不要倚靠在患者胸部。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（让胸廓完全回弹）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（持续倚靠胸壁）不是本题答案，不能与题干限定的高质量胸外按压判断相匹配。",
+          "misconception_id": "MC-EM-M12-11-B",
+          "misconception": "将高质量胸外按压与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（抬手离开胸壁）不是本题答案，不能与题干限定的高质量胸外按压判断相匹配。",
+          "misconception_id": "MC-EM-M12-11-C",
+          "misconception": "将高质量胸外按压与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（维持胸骨下陷）不是本题答案，不能与题干限定的高质量胸外按压判断相匹配。",
+          "misconception_id": "MC-EM-M12-11-D",
+          "misconception": "将高质量胸外按压与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（延长按压中断）不是本题答案，不能与题干限定的高质量胸外按压判断相匹配。",
+          "misconception_id": "MC-EM-M12-11-E",
+          "misconception": "将高质量胸外按压与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于高质量胸外按压的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "每次按压后让胸廓完全回弹",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-012",
+    "module": "M02",
+    "topic": "成人胸外按压部位",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 教材所述成人胸外按压部位是",
+    "options": [
+      {
+        "label": "A",
+        "text": "胸骨上段中央"
+      },
+      {
+        "label": "B",
+        "text": "胸骨中下三分之一"
+      },
+      {
+        "label": "C",
+        "text": "左侧肋弓下缘"
+      },
+      {
+        "label": "D",
+        "text": "右侧锁骨中点"
+      },
+      {
+        "label": "E",
+        "text": "剑突下方正中"
+      }
+    ],
+    "answer": "B",
+    "explanation": "教材规定按压部位为胸骨中下1/3或两乳头连线和胸骨交界点中央。",
+    "source_page": "教材P235",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第252页"
+    ],
+    "keypoint_ref": [
+      "第10条"
+    ],
+    "teacher_anchor": "胸骨中下 1/3 或两乳头连线和胸骨交界点中央",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第10条",
+        "title": "成人胸外按压部位",
+        "evidence": "题干直接考查成人胸外按压部位，正确选项为B，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定按压部位为胸骨中下1/3或两乳头连线和胸骨交界点中央。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（胸骨上段中央）不是本题答案，不能与题干限定的成人胸外按压部位判断相匹配。",
+          "misconception_id": "MC-EM-M12-12-A",
+          "misconception": "将成人胸外按压部位与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "选项B（胸骨中下三分之一）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（左侧肋弓下缘）不是本题答案，不能与题干限定的成人胸外按压部位判断相匹配。",
+          "misconception_id": "MC-EM-M12-12-C",
+          "misconception": "将成人胸外按压部位与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（右侧锁骨中点）不是本题答案，不能与题干限定的成人胸外按压部位判断相匹配。",
+          "misconception_id": "MC-EM-M12-12-D",
+          "misconception": "将成人胸外按压部位与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（剑突下方正中）不是本题答案，不能与题干限定的成人胸外按压部位判断相匹配。",
+          "misconception_id": "MC-EM-M12-12-E",
+          "misconception": "将成人胸外按压部位与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于成人胸外按压部位的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "胸骨中下 1/3 或两乳头连线和胸骨交界点中央",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-013",
+    "module": "M02",
+    "topic": "按压通气比",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 按教材成人单人心肺复苏且未建立高级气道时，胸外按压与通气次数之比为",
+    "options": [
+      {
+        "label": "A",
+        "text": "15次∶1次"
+      },
+      {
+        "label": "B",
+        "text": "15次∶2次"
+      },
+      {
+        "label": "C",
+        "text": "30次∶1次"
+      },
+      {
+        "label": "D",
+        "text": "30次∶2次"
+      },
+      {
+        "label": "E",
+        "text": "30次∶3次"
+      }
+    ],
+    "answer": "D",
+    "explanation": "教材成人基础复苏按压通气比为30∶2；建立人工气道后不再按该比例进行。",
+    "source_page": "教材P236",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第253页"
+    ],
+    "keypoint_ref": [
+      "第11条"
+    ],
+    "teacher_anchor": "单人按压通气比 30:2",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第11条",
+        "title": "按压通气比",
+        "evidence": "题干直接考查按压通气比，正确选项为D，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材成人基础复苏按压通气比为30∶2；建立人工气道后不再按该比例进行。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（15次∶1次）不是本题答案，不能与题干限定的按压通气比判断相匹配。",
+          "misconception_id": "MC-EM-M12-13-A",
+          "misconception": "将按压通气比与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（15次∶2次）不是本题答案，不能与题干限定的按压通气比判断相匹配。",
+          "misconception_id": "MC-EM-M12-13-B",
+          "misconception": "将按压通气比与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（30次∶1次）不是本题答案，不能与题干限定的按压通气比判断相匹配。",
+          "misconception_id": "MC-EM-M12-13-C",
+          "misconception": "将按压通气比与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "选项D（30次∶2次）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（30次∶3次）不是本题答案，不能与题干限定的按压通气比判断相匹配。",
+          "misconception_id": "MC-EM-M12-13-E",
+          "misconception": "将按压通气比与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于按压通气比的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "单人按压通气比 30:2",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-014",
+    "module": "M02",
+    "topic": "胸外按压轮换",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 两人以上实施成人心肺复苏时，为避免疲劳降低按压质量，教材建议按压者轮换间隔约为",
+    "options": [
+      {
+        "label": "A",
+        "text": "1分钟"
+      },
+      {
+        "label": "B",
+        "text": "2分钟"
+      },
+      {
+        "label": "C",
+        "text": "4分钟"
+      },
+      {
+        "label": "D",
+        "text": "6分钟"
+      },
+      {
+        "label": "E",
+        "text": "8分钟"
+      }
+    ],
+    "answer": "B",
+    "explanation": "教材建议两人以上复苏时每隔2分钟轮换，轮换动作要快，尽量减少按压中断。",
+    "source_page": "教材P236",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第253页"
+    ],
+    "keypoint_ref": [
+      "第11条"
+    ],
+    "teacher_anchor": "2 人以上 CPR 每 2 分钟轮换一次",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第11条",
+        "title": "胸外按压轮换",
+        "evidence": "题干直接考查胸外按压轮换，正确选项为B，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材建议两人以上复苏时每隔2分钟轮换，轮换动作要快，尽量减少按压中断。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（1分钟）不是本题答案，不能与题干限定的胸外按压轮换判断相匹配。",
+          "misconception_id": "MC-EM-M12-14-A",
+          "misconception": "将胸外按压轮换与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "选项B（2分钟）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（4分钟）不是本题答案，不能与题干限定的胸外按压轮换判断相匹配。",
+          "misconception_id": "MC-EM-M12-14-C",
+          "misconception": "将胸外按压轮换与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（6分钟）不是本题答案，不能与题干限定的胸外按压轮换判断相匹配。",
+          "misconception_id": "MC-EM-M12-14-D",
+          "misconception": "将胸外按压轮换与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（8分钟）不是本题答案，不能与题干限定的胸外按压轮换判断相匹配。",
+          "misconception_id": "MC-EM-M12-14-E",
+          "misconception": "将胸外按压轮换与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于胸外按压轮换的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "2 人以上 CPR 每 2 分钟轮换一次",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-015",
+    "module": "M02",
+    "topic": "除颤后处理",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 按教材，成人室颤患者接受一次电击后，紧接着应",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即继续胸外按压"
+      },
+      {
+        "label": "B",
+        "text": "立即停止复苏观察"
+      },
+      {
+        "label": "C",
+        "text": "立即反复检查心律"
+      },
+      {
+        "label": "D",
+        "text": "立即连续再次电击"
+      },
+      {
+        "label": "E",
+        "text": "立即测量中心静脉压"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教材要求电击后立即进行约2分钟心肺复苏，随后检查心律和脉搏，必要时再次除颤。",
+    "source_page": "教材P237",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第254页"
+    ],
+    "keypoint_ref": [
+      "第12条"
+    ],
+    "teacher_anchor": "电击后立刻胸外按压 2 分钟",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第12条",
+        "title": "除颤后处理",
+        "evidence": "题干直接考查除颤后处理，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材要求电击后立即进行约2分钟心肺复苏，随后检查心律和脉搏，必要时再次除颤。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（立即继续胸外按压）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（立即停止复苏观察）不是本题答案，不能与题干限定的除颤后处理判断相匹配。",
+          "misconception_id": "MC-EM-M12-15-B",
+          "misconception": "将除颤后处理与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（立即反复检查心律）不是本题答案，不能与题干限定的除颤后处理判断相匹配。",
+          "misconception_id": "MC-EM-M12-15-C",
+          "misconception": "将除颤后处理与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（立即连续再次电击）不是本题答案，不能与题干限定的除颤后处理判断相匹配。",
+          "misconception_id": "MC-EM-M12-15-D",
+          "misconception": "将除颤后处理与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（立即测量中心静脉压）不是本题答案，不能与题干限定的除颤后处理判断相匹配。",
+          "misconception_id": "MC-EM-M12-15-E",
+          "misconception": "将除颤后处理与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于除颤后处理的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "电击后立刻胸外按压 2 分钟",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-016",
+    "module": "M02",
+    "topic": "除颤能量",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 按《急诊与灾难医学》第4版教材口径，单相波除颤使用的能量为",
+    "options": [
+      {
+        "label": "A",
+        "text": "120J"
+      },
+      {
+        "label": "B",
+        "text": "150J"
+      },
+      {
+        "label": "C",
+        "text": "200J"
+      },
+      {
+        "label": "D",
+        "text": "300J"
+      },
+      {
+        "label": "E",
+        "text": "360J"
+      }
+    ],
+    "answer": "E",
+    "explanation": "教材第4版记载单相波除颤使用360J；本题考教材口径，实际操作应遵循设备说明和现行规范。",
+    "source_page": "教材P237",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第254页"
+    ],
+    "keypoint_ref": [
+      "第12条"
+    ],
+    "teacher_anchor": "单相波首次360J",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第12条",
+        "title": "除颤能量",
+        "evidence": "题干直接考查除颤能量，正确选项为E，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材第4版记载单相波除颤使用360J；本题考教材口径，实际操作应遵循设备说明和现行规范。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（120J）不是本题答案，不能与题干限定的除颤能量判断相匹配。",
+          "misconception_id": "MC-EM-M12-16-A",
+          "misconception": "将除颤能量与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（150J）不是本题答案，不能与题干限定的除颤能量判断相匹配。",
+          "misconception_id": "MC-EM-M12-16-B",
+          "misconception": "将除颤能量与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（200J）不是本题答案，不能与题干限定的除颤能量判断相匹配。",
+          "misconception_id": "MC-EM-M12-16-C",
+          "misconception": "将除颤能量与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（300J）不是本题答案，不能与题干限定的除颤能量判断相匹配。",
+          "misconception_id": "MC-EM-M12-16-D",
+          "misconception": "将除颤能量与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "选项E（360J）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于除颤能量的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "单相波首次360J",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-017",
+    "module": "M02",
+    "topic": "除颤电极位置",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 按教材成人常规除颤电极放置方法，右侧电极的位置为",
+    "options": [
+      {
+        "label": "A",
+        "text": "右锁骨下区"
+      },
+      {
+        "label": "B",
+        "text": "左锁骨下区"
+      },
+      {
+        "label": "C",
+        "text": "右侧腋中线"
+      },
+      {
+        "label": "D",
+        "text": "胸骨剑突处"
+      },
+      {
+        "label": "E",
+        "text": "左侧肩胛下区"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教材记载右侧电极置于右锁骨下区，左侧电极置于左乳头侧腋中线处。",
+    "source_page": "教材P237",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第254页"
+    ],
+    "keypoint_ref": [
+      "第13条"
+    ],
+    "teacher_anchor": "右侧电极置于右锁骨下区，左侧电极置于左乳头侧腋中线处",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第13条",
+        "title": "除颤电极位置",
+        "evidence": "题干直接考查除颤电极位置，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材记载右侧电极置于右锁骨下区，左侧电极置于左乳头侧腋中线处。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（右锁骨下区）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（左锁骨下区）不是本题答案，不能与题干限定的除颤电极位置判断相匹配。",
+          "misconception_id": "MC-EM-M12-17-B",
+          "misconception": "将除颤电极位置与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（右侧腋中线）不是本题答案，不能与题干限定的除颤电极位置判断相匹配。",
+          "misconception_id": "MC-EM-M12-17-C",
+          "misconception": "将除颤电极位置与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（胸骨剑突处）不是本题答案，不能与题干限定的除颤电极位置判断相匹配。",
+          "misconception_id": "MC-EM-M12-17-D",
+          "misconception": "将除颤电极位置与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（左侧肩胛下区）不是本题答案，不能与题干限定的除颤电极位置判断相匹配。",
+          "misconception_id": "MC-EM-M12-17-E",
+          "misconception": "将除颤电极位置与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于除颤电极位置的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "右侧电极置于右锁骨下区，左侧电极置于左乳头侧腋中线处",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-018",
+    "module": "M02",
+    "topic": "除颤电极位置",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 按教材成人常规除颤电极放置方法，左侧电极的位置为",
+    "options": [
+      {
+        "label": "A",
+        "text": "右侧锁骨下区"
+      },
+      {
+        "label": "B",
+        "text": "左侧锁骨下区"
+      },
+      {
+        "label": "C",
+        "text": "左乳头侧腋中线"
+      },
+      {
+        "label": "D",
+        "text": "右乳头侧腋中线"
+      },
+      {
+        "label": "E",
+        "text": "胸骨上窝正中"
+      }
+    ],
+    "answer": "C",
+    "explanation": "教材记载左侧电极放于左乳头侧腋中线，右侧电极放于右锁骨下区。",
+    "source_page": "教材P237",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第254页"
+    ],
+    "keypoint_ref": [
+      "第13条"
+    ],
+    "teacher_anchor": "右侧电极置于右锁骨下区，左侧电极置于左乳头侧腋中线处",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第13条",
+        "title": "除颤电极位置",
+        "evidence": "题干直接考查除颤电极位置，正确选项为C，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材记载左侧电极放于左乳头侧腋中线，右侧电极放于右锁骨下区。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "选项A（右侧锁骨下区）不是本题答案，不能与题干限定的除颤电极位置判断相匹配。",
+          "misconception_id": "MC-EM-M12-18-A",
+          "misconception": "将除颤电极位置与选项A所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（左侧锁骨下区）不是本题答案，不能与题干限定的除颤电极位置判断相匹配。",
+          "misconception_id": "MC-EM-M12-18-B",
+          "misconception": "将除颤电极位置与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "选项C（左乳头侧腋中线）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（右乳头侧腋中线）不是本题答案，不能与题干限定的除颤电极位置判断相匹配。",
+          "misconception_id": "MC-EM-M12-18-D",
+          "misconception": "将除颤电极位置与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（胸骨上窝正中）不是本题答案，不能与题干限定的除颤电极位置判断相匹配。",
+          "misconception_id": "MC-EM-M12-18-E",
+          "misconception": "将除颤电极位置与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于除颤电极位置的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "右侧电极置于右锁骨下区，左侧电极置于左乳头侧腋中线处",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-019",
+    "module": "M02",
+    "topic": "颈椎损伤时开放气道",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "[正选] 创伤患者意识丧失，怀疑颈椎损伤，急救者在保持头颈部固定的前提下开放气道，教材推荐的方法是",
+    "options": [
+      {
+        "label": "A",
+        "text": "双手托颌法"
+      },
+      {
+        "label": "B",
+        "text": "仰头抬颏法"
+      },
+      {
+        "label": "C",
+        "text": "头颈过伸法"
+      },
+      {
+        "label": "D",
+        "text": "侧转头颈法"
+      },
+      {
+        "label": "E",
+        "text": "屈颈抬颏法"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教材在怀疑颈椎受伤时采用双手托颌法，操作中保证头部和颈部固定。",
+    "source_page": "教材P236",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第253页"
+    ],
+    "keypoint_ref": [
+      "第14条"
+    ],
+    "teacher_anchor": "怀疑颈椎损伤时开放气道用双手托颌法",
+    "review_status": "draft",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第14条",
+        "title": "颈椎损伤时开放气道",
+        "evidence": "题干直接考查颈椎损伤时开放气道，正确选项为A，依据题目所列教材锚点。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第14条",
+        "title": "鉴别：仰头抬颏法",
+        "evidence": "选项B“仰头抬颏法”作为干扰项，用于区分颈椎损伤时开放气道与相近处置或判断。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材在怀疑颈椎受伤时采用双手托颌法，操作中保证头部和颈部固定。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（双手托颌法）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（仰头抬颏法）不是本题答案，不能与题干限定的颈椎损伤时开放气道判断相匹配。",
+          "misconception_id": "MC-EM-M12-19-B",
+          "misconception": "将颈椎损伤时开放气道与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（头颈过伸法）不是本题答案，不能与题干限定的颈椎损伤时开放气道判断相匹配。",
+          "misconception_id": "MC-EM-M12-19-C",
+          "misconception": "将颈椎损伤时开放气道与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（侧转头颈法）不是本题答案，不能与题干限定的颈椎损伤时开放气道判断相匹配。",
+          "misconception_id": "MC-EM-M12-19-D",
+          "misconception": "将颈椎损伤时开放气道与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（屈颈抬颏法）不是本题答案，不能与题干限定的颈椎损伤时开放气道判断相匹配。",
+          "misconception_id": "MC-EM-M12-19-E",
+          "misconception": "将颈椎损伤时开放气道与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于颈椎损伤时开放气道的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "怀疑颈椎损伤时开放气道用双手托颌法",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-020",
+    "module": "M02",
+    "topic": "建立人工气道",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 教师重点将哪种方法列为建立人工气道最可靠的方法？",
+    "options": [
+      {
+        "label": "A",
+        "text": "气管插管"
+      },
+      {
+        "label": "B",
+        "text": "口咽通气道"
+      },
+      {
+        "label": "C",
+        "text": "鼻咽通气道"
+      },
+      {
+        "label": "D",
+        "text": "面罩通气"
+      },
+      {
+        "label": "E",
+        "text": "口对口通气"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教师重点按教材口径将气管插管列为建立人工气道最可靠的方法；是否采用应由具备资质的人员结合情境判断。",
+    "source_page": "教材P244、P256",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，TXT第261页、第273页；教师重点第14条"
+    ],
+    "keypoint_ref": [
+      "第14条"
+    ],
+    "teacher_anchor": "建立人工气道最可靠的方法是气管插管",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第14条",
+        "title": "建立人工气道",
+        "evidence": "题干直接考查建立人工气道，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教师重点按教材口径将气管插管列为建立人工气道最可靠的方法；是否采用应由具备资质的人员结合情境判断。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（气管插管）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（口咽通气道）不是本题答案，不能与题干限定的建立人工气道判断相匹配。",
+          "misconception_id": "MC-EM-M12-20-B",
+          "misconception": "将建立人工气道与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（鼻咽通气道）不是本题答案，不能与题干限定的建立人工气道判断相匹配。",
+          "misconception_id": "MC-EM-M12-20-C",
+          "misconception": "将建立人工气道与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（面罩通气）不是本题答案，不能与题干限定的建立人工气道判断相匹配。",
+          "misconception_id": "MC-EM-M12-20-D",
+          "misconception": "将建立人工气道与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（口对口通气）不是本题答案，不能与题干限定的建立人工气道判断相匹配。",
+          "misconception_id": "MC-EM-M12-20-E",
+          "misconception": "将建立人工气道与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于建立人工气道的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "建立人工气道最可靠的方法是气管插管",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-021",
+    "module": "M02",
+    "topic": "成人异物梗阻急救",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 教师重点所述成人腹部冲击法，冲击部位位于",
+    "options": [
+      {
+        "label": "A",
+        "text": "剑突与脐之间腹中线"
+      },
+      {
+        "label": "B",
+        "text": "剑突与胸骨柄之间"
+      },
+      {
+        "label": "C",
+        "text": "脐与耻骨之间腹中线"
+      },
+      {
+        "label": "D",
+        "text": "左侧肋弓下外侧"
+      },
+      {
+        "label": "E",
+        "text": "右侧肋弓下外侧"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教师重点规定腹部冲击位置为剑突与脐之间的腹中线，向内、向上快速冲击；妊娠末期或过度肥胖者改用胸部冲击。",
+    "source_page": "教材P239-240",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第256-257页"
+    ],
+    "keypoint_ref": [
+      "第15条"
+    ],
+    "teacher_anchor": "剑突与脐之间的腹中线，快速向内、向上冲击腹部",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第15条",
+        "title": "成人异物梗阻急救",
+        "evidence": "题干直接考查成人异物梗阻急救，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教师重点规定腹部冲击位置为剑突与脐之间的腹中线，向内、向上快速冲击；妊娠末期或过度肥胖者改用胸部冲击。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（剑突与脐之间腹中线）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（剑突与胸骨柄之间）不是本题答案，不能与题干限定的成人异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-21-B",
+          "misconception": "将成人异物梗阻急救与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（脐与耻骨之间腹中线）不是本题答案，不能与题干限定的成人异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-21-C",
+          "misconception": "将成人异物梗阻急救与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（左侧肋弓下外侧）不是本题答案，不能与题干限定的成人异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-21-D",
+          "misconception": "将成人异物梗阻急救与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（右侧肋弓下外侧）不是本题答案，不能与题干限定的成人异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-21-E",
+          "misconception": "将成人异物梗阻急救与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于成人异物梗阻急救的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "剑突与脐之间的腹中线，快速向内、向上冲击腹部",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-022",
+    "module": "M02",
+    "topic": "妊娠期异物梗阻急救",
+    "type": "A2",
+    "polarity": "positive",
+    "bloom": "应用",
+    "stem": "[正选] 妊娠末期患者进食时突然严重气道异物梗阻，仍有反应但不能有效咳嗽，按教师重点应选择",
+    "options": [
+      {
+        "label": "A",
+        "text": "胸部冲击"
+      },
+      {
+        "label": "B",
+        "text": "腹部冲击"
+      },
+      {
+        "label": "C",
+        "text": "单纯拍击头部"
+      },
+      {
+        "label": "D",
+        "text": "盲目手指探取"
+      },
+      {
+        "label": "E",
+        "text": "饮水协助吞咽"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教师重点将妊娠末期和过度肥胖者列为改用胸部冲击的情形，部位为胸骨中线并避开剑突及肋骨下缘。",
+    "source_page": "教材P239-240",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第256-257页"
+    ],
+    "keypoint_ref": [
+      "第15条"
+    ],
+    "teacher_anchor": "妊娠末期或过度肥胖者改用胸部冲击",
+    "review_status": "draft",
+    "difficulty": "中等",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第15条",
+        "title": "妊娠期异物梗阻急救",
+        "evidence": "题干直接考查妊娠期异物梗阻急救，正确选项为A，依据题目所列教材锚点。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第15条",
+        "title": "鉴别：腹部冲击",
+        "evidence": "选项B“腹部冲击”作为干扰项，用于区分妊娠期异物梗阻急救与相近处置或判断。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教师重点将妊娠末期和过度肥胖者列为改用胸部冲击的情形，部位为胸骨中线并避开剑突及肋骨下缘。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（胸部冲击）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（腹部冲击）不是本题答案，不能与题干限定的妊娠期异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-22-B",
+          "misconception": "将妊娠期异物梗阻急救与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（单纯拍击头部）不是本题答案，不能与题干限定的妊娠期异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-22-C",
+          "misconception": "将妊娠期异物梗阻急救与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（盲目手指探取）不是本题答案，不能与题干限定的妊娠期异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-22-D",
+          "misconception": "将妊娠期异物梗阻急救与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（饮水协助吞咽）不是本题答案，不能与题干限定的妊娠期异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-22-E",
+          "misconception": "将妊娠期异物梗阻急救与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于妊娠期异物梗阻急救的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "妊娠末期或过度肥胖者改用胸部冲击",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-023",
+    "module": "M02",
+    "topic": "婴儿异物梗阻急救",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "记忆",
+    "stem": "[正选] 教师重点对婴儿严重气道异物梗阻推荐的处理方法为",
+    "options": [
+      {
+        "label": "A",
+        "text": "拍背与胸部冲击"
+      },
+      {
+        "label": "B",
+        "text": "腹部向上冲击"
+      },
+      {
+        "label": "C",
+        "text": "饮水促进吞咽"
+      },
+      {
+        "label": "D",
+        "text": "倒置摇晃躯干"
+      },
+      {
+        "label": "E",
+        "text": "盲目手指清扫"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教师重点所述婴儿异物梗阻推荐拍背／冲胸法，不照搬成人腹部冲击。",
+    "source_page": "教材P239-240",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第256-257页"
+    ],
+    "keypoint_ref": [
+      "第15条"
+    ],
+    "teacher_anchor": "婴儿推荐拍背／冲胸法",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第15条",
+        "title": "婴儿异物梗阻急救",
+        "evidence": "题干直接考查婴儿异物梗阻急救，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教师重点所述婴儿异物梗阻推荐拍背／冲胸法，不照搬成人腹部冲击。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（拍背与胸部冲击）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（腹部向上冲击）不是本题答案，不能与题干限定的婴儿异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-23-B",
+          "misconception": "将婴儿异物梗阻急救与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（饮水促进吞咽）不是本题答案，不能与题干限定的婴儿异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-23-C",
+          "misconception": "将婴儿异物梗阻急救与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（倒置摇晃躯干）不是本题答案，不能与题干限定的婴儿异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-23-D",
+          "misconception": "将婴儿异物梗阻急救与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（盲目手指清扫）不是本题答案，不能与题干限定的婴儿异物梗阻急救判断相匹配。",
+          "misconception_id": "MC-EM-M12-23-E",
+          "misconception": "将婴儿异物梗阻急救与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于婴儿异物梗阻急救的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "婴儿推荐拍背／冲胸法",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  },
+  {
+    "id": "batch045-M12-024",
+    "module": "M02",
+    "topic": "人工气道建立后的复苏",
+    "type": "A1",
+    "polarity": "positive",
+    "bloom": "理解",
+    "stem": "[正选] 按教材，成人心肺复苏建立人工气道后，对按压与通气的安排是",
+    "options": [
+      {
+        "label": "A",
+        "text": "持续按压并进行通气"
+      },
+      {
+        "label": "B",
+        "text": "每按压15次停下通气"
+      },
+      {
+        "label": "C",
+        "text": "每按压30次停下通气"
+      },
+      {
+        "label": "D",
+        "text": "停止按压仅进行通气"
+      },
+      {
+        "label": "E",
+        "text": "停止通气仅进行按压"
+      }
+    ],
+    "answer": "A",
+    "explanation": "教材指出建立人工气道后按压频率维持100～120次/分，通气频率10次/分，不再需要按30∶2的比例交替。",
+    "source_page": "教材P236-237",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版第15章，TXT第253-254页"
+    ],
+    "keypoint_ref": [
+      "第11条"
+    ],
+    "teacher_anchor": "单人按压通气比 30:2",
+    "review_status": "draft",
+    "difficulty": "基础",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "schema_version": "2.1",
+    "license": "public_noncommercial",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第11条",
+        "title": "人工气道建立后的复苏",
+        "evidence": "题干直接考查人工气道建立后的复苏，正确选项为A，依据题目所列教材锚点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材指出建立人工气道后按压频率维持100～120次/分，通气频率10次/分，不再需要按30∶2的比例交替。 本题应结合题干限定条件和教材锚点进行判断，不能仅凭相近术语或一般经验替代题目所考知识。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "选项A（持续按压并进行通气）与题干所问一致，符合本题给出的教材依据和知识点。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "选项B（每按压15次停下通气）不是本题答案，不能与题干限定的人工气道建立后的复苏判断相匹配。",
+          "misconception_id": "MC-EM-M12-24-B",
+          "misconception": "将人工气道建立后的复苏与选项B所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "选项C（每按压30次停下通气）不是本题答案，不能与题干限定的人工气道建立后的复苏判断相匹配。",
+          "misconception_id": "MC-EM-M12-24-C",
+          "misconception": "将人工气道建立后的复苏与选项C所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "选项D（停止按压仅进行通气）不是本题答案，不能与题干限定的人工气道建立后的复苏判断相匹配。",
+          "misconception_id": "MC-EM-M12-24-D",
+          "misconception": "将人工气道建立后的复苏与选项D所代表的相近概念或处置方式混淆"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "选项E（停止通气仅进行按压）不是本题答案，不能与题干限定的人工气道建立后的复苏判断相匹配。",
+          "misconception_id": "MC-EM-M12-24-E",
+          "misconception": "将人工气道建立后的复苏与选项E所代表的相近概念或处置方式混淆"
+        }
+      ],
+      "key_takeaway": "解题时先抓住题干中的关键限定，再用教材关于人工气道建立后的复苏的明确规则核对选项，避免把相近概念、时间或处置方式混为一谈。",
+      "source_quote": "单人按压通气比 30:2",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "quality_flags": [
+        "待独立医学复核"
+      ],
+      "review_status": "draft"
+    }
+  }
+]

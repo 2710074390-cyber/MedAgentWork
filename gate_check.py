@@ -283,10 +283,21 @@ def find_validate_report(batch_id):
 
 
 def _is_strict_batch(batch_id, batch_data):
-    """既有 batch044 及以前保留兼容，其他批次不可静默降级。"""
+    """新批次（batch045+）默认 strict；batch044 及以前与非标准批次 ID 保留兼容。
+
+    非标准 ID（batchMDT、_review_only_batch 等测试/复核伪批次）不在批次号域内，
+    按旧批次兼容处理，避免把“旧批次 SKIP”语义误伤成 BLOCKED；
+    显式 strict 或未知 mode 仍按严格处理，由 _binding_mode_error 拦截非法值。
+    """
     mode = batch_data.get('evidence_binding_mode') if isinstance(batch_data, dict) else None
+    if mode == 'strict':
+        return True
     match = re.fullmatch(r'batch(\d+)(?:-[A-Za-z0-9]+)?', str(batch_id or ''))
-    return mode == 'strict' or not (match and int(match.group(1)) <= 44 and mode in (None, 'legacy'))
+    if not match:
+        return mode not in (None, 'legacy')
+    if int(match.group(1)) <= 44 and mode in (None, 'legacy'):
+        return False
+    return True
 
 
 def _binding_mode_error(batch_id, batch_data):
@@ -1158,8 +1169,20 @@ def gate_item_learning_value(batch_id, batch_data):
         }
 
     # 仅题库产物适用 HC-24，显式产物类型优先。
+    # infer_product_types 在“三者都无证据”时会兜底为 question_bank（兼容旧批次），
+    # 因此这里额外要求存在题库证据，避免把 _review_only_batch 这类复核伪批次误判为题库。
     final_dir = BASE / '最终产物' / batch_id
-    if PRODUCT_QUESTION_BANK not in infer_product_types(batch_id, batch_data):
+    raw_steps = batch_data.get('steps') if isinstance(batch_data.get('steps'), dict) else {}
+    explicit = batch_data.get('product_types')
+    if isinstance(explicit, str):
+        explicit = [explicit]
+    explicit_qbank = (
+        isinstance(explicit, (list, tuple, set))
+        and PRODUCT_QUESTION_BANK in {str(x).strip() for x in explicit}
+    )
+    candidates = sorted(final_dir.glob('ALL_questions_FIXED*.json')) if final_dir.exists() else []
+    has_qbank_evidence = explicit_qbank or 'AGENT2' in raw_steps or bool(candidates)
+    if PRODUCT_QUESTION_BANK not in infer_product_types(batch_id, batch_data) or not has_qbank_evidence:
         return {
             'gate_sub': 'GATE-ITEM-LEARNING-VALUE',
             'status': 'PASS',
@@ -1167,7 +1190,6 @@ def gate_item_learning_value(batch_id, batch_data):
             'reason': '无 AGENT2 步骤且无最终题库目录，判定为非题库批次，HC-24 跳过',
         }
 
-    candidates = sorted(final_dir.glob('ALL_questions_FIXED*.json')) if final_dir.exists() else []
     if not candidates:
         return {
             'gate_sub': 'GATE-ITEM-LEARNING-VALUE',
@@ -1247,6 +1269,87 @@ def gate_item_learning_value(batch_id, batch_data):
     }
 
 
+def gate_question_blueprint(batch_id, batch_data):
+    """显式配置时，对实际题库执行蓝图硬检查。"""
+    if 'question_blueprint_gate' not in batch_data:
+        return None
+    result = {'gate_sub': 'GATE-QUESTION-BLUEPRINT', 'status': 'BLOCKED'}
+    config = batch_data['question_blueprint_gate']
+    try:
+        if not isinstance(config, dict):
+            raise ValueError('question_blueprint_gate 必须为对象')
+        targets = [config['bloom_targets'], config['type_targets']]
+        group_targets = config.get('type_group_targets', {})
+        for target in targets:
+            if not isinstance(target, dict) or not target:
+                raise ValueError('目标必须为非空对象')
+            for bounds in target.values():
+                if (not isinstance(bounds, list) or len(bounds) != 2 or
+                        any(type(x) is not int or x < 0 or x > 100 for x in bounds) or bounds[0] > bounds[1]):
+                    raise ValueError('目标范围必须为 0–100 的整数 [最小题数, 最大题数]')
+        if group_targets is None:
+            group_targets = {}
+        if not isinstance(group_targets, dict):
+            raise ValueError('type_group_targets 必须为对象')
+        for group, bounds in group_targets.items():
+            members = [item.strip() for item in str(group).split('+') if item.strip()]
+            if not members or len(members) != len(set(members)) or any(item not in targets[1] for item in members):
+                raise ValueError(f'题型组合配置无效: {group!r}')
+            if (not isinstance(bounds, list) or len(bounds) != 2 or
+                    any(type(x) is not int or x < 0 or x > 100 for x in bounds) or bounds[0] > bounds[1]):
+                raise ValueError('组合目标范围必须为 0–100 的整数 [最小题数, 最大题数]')
+        if set(targets[0]) != set(_BLOOM_LEVELS):
+            raise ValueError('Bloom 目标必须包含记忆、理解、应用、分析')
+        path = find_question_bank(batch_id)
+        if not path:
+            raise ValueError('未找到题库 JSON')
+        data = json.loads(path.read_text(encoding='utf-8'))
+        questions = data if isinstance(data, list) else (data.get('questions', data.get('items')) if isinstance(data, dict) else None)
+        if not isinstance(questions, list) or len(questions) != 100:
+            raise ValueError('题库必须恰有 100 题')
+        plan_path = BASE / '中间产物' / batch_id / 'answer_position_plan.json'
+        plan = json.loads(plan_path.read_text(encoding='utf-8'))
+        if not isinstance(plan, list) or len(plan) != 100 or any(not isinstance(x, str) or x not in ('A', 'B', 'C', 'D', 'E') for x in plan):
+            raise ValueError('答案位置计划必须是 100 个 A–E 字母组成的数组')
+        answers, blooms, types = [], Counter(), Counter()
+        for index, q in enumerate(questions):
+            if not isinstance(q, dict):
+                raise ValueError(f'第 {index + 1} 题不是对象')
+            answer = q.get('answer')
+            if not isinstance(answer, str) or answer not in ('A', 'B', 'C', 'D', 'E'):
+                raise ValueError(f'第 {index + 1} 题答案无效')
+            if answer != plan[index]:
+                raise ValueError(f'第 {index + 1} 题答案与位置计划不一致')
+            answers.append(answer)
+            bloom = _BLOOM_ALIASES.get(str(q.get('bloom') or q.get('bloom_level') or q.get('cognitive_level') or '').strip())
+            if not bloom:
+                raise ValueError(f'第 {index + 1} 题 Bloom 缺失或无效')
+            blooms[bloom] += 1
+            kind = str(q.get('type', '')).strip()
+            if kind not in targets[1]:
+                raise ValueError(f'第 {index + 1} 题题型未配置: {kind!r}')
+            types[kind] += 1
+        counts = Counter(answers)
+        if any(not 15 <= counts[x] <= 25 for x in 'ABCDE'):
+            raise ValueError(f'答案分布不符合 15–25: {dict(counts)}')
+        if any(answers[i] == answers[i+1] == answers[i+2] for i in range(98)):
+            raise ValueError('存在连续三题答案相同')
+        for name, actual, target in [('Bloom', blooms, targets[0]), ('题型', types, targets[1])]:
+            for key, (low, high) in target.items():
+                if not low <= actual[key] <= high:
+                    raise ValueError(f'{name} {key} 题数 {actual[key]} 不在 [{low}, {high}]')
+        for group, (low, high) in group_targets.items():
+            members = [item.strip() for item in str(group).split('+') if item.strip()]
+            actual = sum(types[item] for item in members)
+            if not low <= actual <= high:
+                raise ValueError(f'题型组合 {group} 题数 {actual} 不在 [{low}, {high}]')
+    except (ValueError, TypeError, KeyError, OSError) as exc:
+        result['reason'] = f'题库蓝图检查失败: {exc}'
+        return result
+    result.update(status='PASS', reason='题库蓝图检查通过')
+    return result
+
+
 def gate_final(batch_id, batch_data, learning_value_mode='off'):
     """
     终审前全量检查: HC-9/10/11 + JSON完整性 + Bloom终态
@@ -1260,6 +1363,10 @@ def gate_final(batch_id, batch_data, learning_value_mode='off'):
     batch_steps = normalized['steps']
     agent5 = batch_steps.get('AGENT5', {})
     final_review = normalized['final_review']
+    blueprint_result = gate_question_blueprint(batch_id, batch_data)
+    if blueprint_result and blueprint_result['status'] == 'BLOCKED':
+        return {'gate': 'GATE-FINAL', 'status': 'BLOCKED',
+                'reason': '终审门禁阻断：题库蓝图检查失败', 'sub_gates': [blueprint_result]}
     lv_result = gate_learning_value(batch_id, batch_data, learning_value_mode)
     item_lv_result = gate_item_learning_value(batch_id, batch_data)
 

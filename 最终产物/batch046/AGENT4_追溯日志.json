@@ -1,0 +1,81 @@
+{
+  "report_metadata": {
+    "batch_id": "batch046",
+    "stage": "A4",
+    "source_file": "最终产物/batch046/ALL_questions_FIXED.json",
+    "source_sha256": "819cc043feda01b5511f9259ade4dfdf8c34b061c7b0cacdddaa5fc2d9aa9f58",
+    "a2_input_file": "中间产物/batch046/ALL_questions.json",
+    "a2_input_sha256": "819cc043feda01b5511f9259ade4dfdf8c34b061c7b0cacdddaa5fc2d9aa9f58",
+    "a3_report_file": "质检报告/batch046/A3_质检报告.json",
+    "a3_report_sha256": "02583054c964f2979ce76d0d0988876e605dabaadb0ca2bdf3bdf35006a33b33"
+  },
+  "source_file_synced": true,
+  "source_files_synced": true,
+  "source_files": [
+    "中间产物/batch046/ALL_questions.json",
+    "最终产物/batch046/ALL_questions_FIXED.json"
+  ],
+  "patches": [
+    {
+      "patch_id": "PATCH-MECH-001",
+      "target": "Q001-Q072.teacher_anchor/source_quote/anchor_status",
+      "operation": "reanchor_teacher_keypoint",
+      "source_file_synced": true,
+      "detail": "按教师重点锚定清单第1–61条机械回填 teacher_anchor/source_quote；source_quote_status=exact，anchor_status=verified；未改题干、选项、答案。"
+    },
+    {
+      "patch_id": "PATCH-MECH-002",
+      "target": "Q073-Q100",
+      "operation": "add_original_questions",
+      "source_file_synced": true,
+      "detail": "按蓝图生成 28 道原创题（A1 9 / A2 19），答案位置严格按 answer_position_plan.json；每题带 schema 2.1、concepts、learning_value、release。"
+    },
+    {
+      "patch_id": "PATCH-MECH-003",
+      "target": "batch046.release",
+      "operation": "apply_hc28_release",
+      "source_file_synced": true,
+      "detail": "100 题均按教师重点原文 A 级锚定，release.disposition=publishable；候选真题 28 条未落位，quota_status=cancelled，原创补齐。"
+    }
+  ],
+  "execution_metadata": {
+    "executed_at": "2026-11-01T18:09:23",
+    "summary": {
+      "total": 100,
+      "types": {
+        "A1": 30,
+        "A3": 25,
+        "A2": 45
+      },
+      "bloom": {
+        "理解": 25,
+        "应用": 35,
+        "记忆": 20,
+        "分析": 20
+      },
+      "answers": {
+        "C": 20,
+        "D": 20,
+        "E": 20,
+        "A": 20,
+        "B": 20
+      },
+      "release": {
+        "publishable": 100
+      },
+      "grades": {
+        "A": 100
+      },
+      "risk": {
+        "medium": 19,
+        "high": 81
+      },
+      "signoff": {
+        "approved_at": "2026-11-01T18:15:01",
+        "approved_by": "user",
+        "delivery_name": "急诊新版押题卷"
+      }
+    },
+    "notes": "HC-28 一次跑完：生成/发布状态分离；人工签收仍为发布前置条件。"
+  }
+}

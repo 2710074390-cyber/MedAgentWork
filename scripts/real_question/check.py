@@ -13,6 +13,90 @@ from .schema import PUBLIC_LICENSES, exact_hash, hamming, simhash64
 
 BASE = Path(__file__).resolve().parent.parent.parent
 
+QUOTA_STATUSES = {"met", "reduced", "cancelled", "deferred", "disabled"}
+SHORTFALL_STATUSES = {"reduced", "cancelled", "deferred"}
+REASON_BY_STATUS = {
+    "cancelled": {"no_candidate"},
+    "reduced": {"candidates_exhausted", "keypoint_or_module_limit"},
+    # HC-28：候选存在，但因原卷/答案原页/版权等人类专属核验未完成而不落位。
+    # 必须由 hc28_update 显式记录，不能借用 cancelled。
+    "deferred": {"human_verification_deferred"},
+}
+
+
+def _is_nonneg_int(value) -> bool:
+    return isinstance(value, int) and not isinstance(value, bool) and value >= 0
+
+
+def _quota_status_issues(family: str, status: dict, plan: dict) -> list[str]:
+    """校验 quota_status 的 status / reason / available / selected 是否自洽。
+
+    历史漏洞：batch046 在 available=8/204、候选已选 28 条的情况下标记 cancelled，
+    终审只认 status 不校验 reason，导致 0% 真题仍 PASS。这里把该漏洞收口：
+    cancelled 只能用于“确实没有候选”，候选存在但暂不落位必须用 deferred。
+    """
+    if not isinstance(status, dict):
+        return [f"{family}: quota_status 缺失或不是对象"]
+    issues: list[str] = []
+    state = str(status.get("status") or "")
+    reason = str(status.get("reason") or "")
+    requested = status.get("requested")
+    selected = status.get("selected")
+    available = status.get("available")
+    for key, value in (("requested", requested), ("selected", selected), ("available", available)):
+        if not _is_nonneg_int(value):
+            issues.append(f"{family}: {key} 必须是非负整数（当前={value!r}）")
+    if issues:
+        return issues
+    if state not in QUOTA_STATUSES:
+        issues.append(f"{family}: 未知 status={state!r}")
+        return issues
+    selected_candidates = [
+        x for x in (plan.get("selected") or [])
+        if isinstance(x, dict) and str(x.get("family") or "") == family
+    ]
+
+    if state == "disabled":
+        if requested != 0:
+            issues.append(f"{family}: disabled 但 requested={requested}（应为 0）")
+        return issues
+    if state == "met":
+        if selected < requested:
+            issues.append(f"{family}: met 但 selected={selected} < requested={requested}")
+        return issues
+    if state == "cancelled":
+        if available != 0:
+            issues.append(
+                f"{family}: cancelled 但 available={available}（候选存在，应记 reduced 或 deferred）"
+            )
+        if selected != 0:
+            issues.append(f"{family}: cancelled 但 selected={selected}（应为 0）")
+        if selected_candidates:
+            issues.append(f"{family}: cancelled 但 plan.selected 仍有 {len(selected_candidates)} 条候选")
+    elif state == "reduced":
+        if available <= 0:
+            issues.append(f"{family}: reduced 但 available=0（应记 cancelled）")
+        if not 0 < selected < requested:
+            issues.append(
+                f"{family}: reduced 但 selected={selected} 不在 (0, requested={requested})"
+            )
+    elif state == "deferred":
+        if available <= 0:
+            issues.append(f"{family}: deferred 但 available=0（应记 cancelled）")
+        if selected != 0:
+            issues.append(f"{family}: deferred 但 selected={selected}（落位核心应为 0）")
+        if not selected_candidates:
+            issues.append(f"{family}: deferred 但 plan.selected 没有该族候选")
+        hc28 = plan.get("hc28_update")
+        if not isinstance(hc28, dict) or hc28.get("placed_candidates") != 0:
+            issues.append(f"{family}: deferred 缺少 hc28_update.placed_candidates=0")
+    allowed_reasons = REASON_BY_STATUS.get(state)
+    if allowed_reasons is not None and reason not in allowed_reasons:
+        issues.append(
+            f"{family}: status={state} 的 reason={reason!r} 不合法（允许 {sorted(allowed_reasons)}）"
+        )
+    return issues
+
 
 def _load_questions(path: str | Path) -> list[dict]:
     data = json.loads(Path(path).read_text(encoding="utf-8"))
@@ -133,6 +217,7 @@ def run_check(
     # 判定
     failures = []
     allowed_shortfalls: list[str] = []
+    quota_status_issues: list[str] = []
     plan_status = plan.get("quota_status", {}) if plan else {}
     if total == 0:
         failures.append("empty_question_bank")
@@ -140,8 +225,13 @@ def run_check(
         for fam in ("kaoyan", "zhiyi"):
             ratio = family_counts[fam] / total
             st = plan_status.get(fam, {}) if plan else {}
-            # 只有「候选不足（减量/取消/用尽）」才允许低于 15%
-            shortfall_ok = st.get("status") in ("reduced", "cancelled", "insufficient", "unavailable")
+            # 未提供 plan 时只做实际占比校验（旧调用兼容）；提供 plan 才校验配额状态语义。
+            issues = _quota_status_issues(fam, st, plan) if plan else []
+            if issues:
+                quota_status_issues.extend(issues)
+                failures.append(f"{fam}_quota_status_invalid")
+            # 只有「候选不足（减量/取消/按 HC-28 延后核验）」才允许低于 15%
+            shortfall_ok = st.get("status") in SHORTFALL_STATUSES and not issues
             if ratio < require_ratio and not shortfall_ok:
                 failures.append(f"{fam}_ratio_below_{require_ratio}")
             if ratio < require_ratio and shortfall_ok:
@@ -181,6 +271,7 @@ def run_check(
         "missing_trace": missing_trace,
         "duplicates": duplicates,
         "plan_quota_status": plan.get("quota_status", {}),
+        "quota_status_issues": quota_status_issues,
         "allowed_shortfalls": allowed_shortfalls,
         "pass": not failures,
         "failures": failures,
@@ -204,8 +295,12 @@ def print_report(report: dict) -> None:
         print(f"  ⚠️ license 违规：{len(report['license_violations'])}")
     if report["missing_trace"]:
         print(f"  ⚠️ 缺溯源/keypoint：{len(report['missing_trace'])}")
+    if report.get("quota_status_issues"):
+        print("  ✗ 配额状态语义问题：")
+        for issue in report["quota_status_issues"]:
+            print(f"    - {issue}")
     if report.get("allowed_shortfalls"):
-        print(f"  ⚠️ 允许短缺（相关候选已用尽/不可用）：{', '.join(report['allowed_shortfalls'])}")
+        print(f"  ⚠️ 允许短缺（相关候选已用尽/不可用/延后核验）：{', '.join(report['allowed_shortfalls'])}")
     if report["pass"]:
         print("  ✅ PASS")
     else:

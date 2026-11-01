@@ -371,12 +371,15 @@ def build_plan(
             _take(rec, next(m for m in modules if m.module_id == mid), fam_here_map[mid])
             module_free[mid] -= 1
 
-    # 配额状态：met / reduced（候选不足按比例减量）/ cancelled（无候选，取消配额）/ underfilled（异常）
+    # 配额状态：met / reduced（候选不足按比例减量）/ cancelled（无候选，取消配额）/
+    # deferred（候选存在但人类专属核验未完成，由编排者按 HC-28 显式标记）/ disabled
     def status(req: int, got: int, available: int) -> dict:
         """met / reduced（按可用量减量）/ cancelled（无候选，取消配额）/ disabled（配额为 0）。
 
         真题数量不足时不再阻断批次：`reduced` 由原创补齐，`reason` 记录短缺根因，
-        批次统计须如实上报（HC-23）。
+        批次统计须如实上报（HC-23）。本函数不会自动产出 `deferred`：候选是否存在
+        由检索决定，但“候选存在却因原卷/版权核验未完成而不落位”必须由编排者显式标记，
+        并写入 `hc28_update`，禁止用 `cancelled` 冒充“无候选”。
         """
         eff = min(req, available)
         reason = ""
@@ -418,7 +421,9 @@ def build_plan(
         "quota_policy": {
             "family": "kaoyan / zhiyi",
             "zhiyi_tiers": ["zhiyi_pdf（历年真题 PDF）", "zhiyi（CMExam 题库补位）"],
-            "shortfall": "reduced=按可用量减量；cancelled=无候选取消配额；均由原创补齐，禁止无关题凑数",
+            "shortfall": "reduced=按可用量减量；cancelled=无候选取消配额；"
+                         "deferred=候选存在但人类专属核验未完成（HC-28）；"
+                         "均由原创补齐，禁止无关题凑数",
         },
         "counts": {
             "selected": len(selected),

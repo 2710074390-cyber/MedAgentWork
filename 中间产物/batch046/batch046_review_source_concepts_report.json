@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-11-01T16:42:21",
+  "generator": "scripts/check_source_concepts.py",
+  "file": "中间产物\\batch046\\batch046_validation_projection.json",
+  "input_sha256": "e28a6bd43a1ec5589e39d4fed135887b71274f21ac8e8f27245b6c7a8819ed66",
+  "batch": "batch046",
+  "status": "FAIL",
+  "versions": {
+    "2.1": 72,
+    "未声明": 28
+  },
+  "checked": 72,
+  "total": 100,
+  "by_type": {
+    "A1": 21,
+    "A3": 25,
+    "A2": 26
+  },
+  "concepts_per_question": {
+    "1": 19,
+    "2": 53
+  },
+  "multi_type_total": 51,
+  "multi_type_with_2plus": 51,
+  "multi_type_rate": 1.0,
+  "fails": [
+    "schema_version=2.1 覆盖不足：72/100"
+  ],
+  "warn_count": 0,
+  "warns": []
+}

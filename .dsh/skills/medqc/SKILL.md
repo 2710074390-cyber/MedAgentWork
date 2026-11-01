@@ -25,5 +25,6 @@ whenToUse: 编排者（MedMaster）下发质检任务时加载；任务会给出
 3. **格式纪律**：纯 JSON，禁止 YAML frontmatter；输出前用 `json.load()` 自验。
 4. **Bloom 门禁数据**：记忆层 ≥50% 或偏差 >15% 时在报告内显式标注（供 gate_check 判定）。
 5. **完成后报告**：报告路径 + gate_decision + 总分 + 关键问题数（critical/major 分列）。
-6. **逐题盲攻和分级门禁**：按主提示词 Step 2.4 先屏蔽答案、解析和泄露答案的元数据独立作答，再揭盲核对，检查语义线索并反向论证竞争项；将简洁证据、来源及未核验原因写入既有 `issues`。盲攻未完成、多解、答案争议、关键依据缺失或冲突均 `must_escalate`、整批 BLOCKED，等待人工医学复核并复审；仅形式/弱干扰问题可列修复并重新盲攻。不得声称自动保证医学正确。
-7. **HC-24 学习价值门禁（强制）**：质检报告产出前运行 `python scripts/check_learning_value.py --file <题库JSON> --batch {batchID} --out reports/validate/learning_value_{batchID}_qc.json`；`FAIL>0`、逐项覆盖<100%、错误认知覆盖<100% 或 `source_quote_exact_rate<95%` → 必须在 `modification_instructions` 中生成 `learning_value` patch，不得 PASS。
+6. **逐题盲攻和分级门禁**：按主提示词 Step 2.4 先屏蔽答案、解析和泄露答案的元数据独立作答，再揭盲核对，检查语义线索并反向论证竞争项；将简洁证据、来源及未核验原因写入既有 `issues`。盲攻未完成、多解、答案争议、关键依据缺失或冲突 → 该题标 `release.disposition=pending_human|quarantined` 并写入 `review_queue`，**不整批 BLOCKED**；继续审完其余题。仅形式/弱干扰问题可列修复并重新盲攻。不得声称自动保证医学正确。
+7. **一次跑完（HC-28）**：`gate_decision` 只决定能否继续生成；`review_queue` 非空时仍可 `PASS_WITH_FIXES`，同时 `release_status=PENDING_HUMAN_REVIEW`。只有 D20=0/Bloom 偏差/JSON 不可解析等确定性门禁 FAIL，或质检过程未完成时才 `BLOCKED`；可发布核心为空时用 `PASS_WITH_FIXES` + `release_status=BLOCKED`，仍输出复核队列。输出 `review_queue` 数组与 `generation_status`/`release_status`/三类计数；不得等待用户确认。
+8. **HC-24 学习价值门禁（强制）**：质检报告产出前运行 `python scripts/check_learning_value.py --file <题库JSON> --batch {batchID} --out reports/validate/learning_value_{batchID}_qc.json`；`FAIL>0`、逐项覆盖<100%、错误认知覆盖<100% 或 `source_quote_exact_rate<95%` → 必须在 `modification_instructions` 中生成 `learning_value` patch，不得 PASS。

@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-11-01T16:12:59",
+  "generator": "scripts/check_source_concepts.py",
+  "file": "中间产物\\batch046\\original_72_draft.json",
+  "input_sha256": "f3f9251357549cfd650732f5e581da8498414bc57a12b3fbc4fc4136b20ac4f6",
+  "batch": "batch046",
+  "status": "FAIL",
+  "versions": {
+    "2.1": 72
+  },
+  "checked": 72,
+  "total": 72,
+  "by_type": {
+    "A1": 21,
+    "A3": 25,
+    "A2": 26
+  },
+  "concepts_per_question": {
+    "1": 30,
+    "2": 42
+  },
+  "multi_type_total": 51,
+  "multi_type_with_2plus": 40,
+  "multi_type_rate": 0.7843,
+  "fails": [
+    "batch046-Q044: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q045: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q047: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q048: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q049: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q050: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q051: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q052: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q053: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q055: S3 A2 只有 1 条概念，需 ≥2",
+    "batch046-Q056: S3 A2 只有 1 条概念，需 ≥2"
+  ],
+  "warn_count": 0,
+  "warns": []
+}

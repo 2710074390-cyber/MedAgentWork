@@ -14,6 +14,47 @@ sys.path.insert(0, str(BASE / "scripts"))
 import quality_gate as qg  # noqa: E402
 
 
+def test_release_adaptive_rejects_non_r3_and_advisory(tmp_path):
+    for stage, mode in (("r2", "enforce"), ("r3", "advisory")):
+        argv = ["quality_gate.py", "--stage", stage, "--profile", "release_adaptive",
+                "--mode", mode, "--out", str(tmp_path / f"{stage}.json")]
+        with patch.object(sys, "argv", argv), patch.object(qg, "_configure_stdio"):
+            assert qg.main() == 2
+
+
+def test_release_adaptive_required_checks_cannot_be_removed(tmp_path):
+    policy = {"profiles": {"release_adaptive": {"required_checks": ["produce_rules"], "thresholds": {"x": 1}}}}
+    policy_path = tmp_path / "policy.json"
+    policy_path.write_text(json.dumps(policy), encoding="utf-8")
+    argv = ["quality_gate.py", "--stage", "r3", "--profile", "release_adaptive",
+            "--policy", str(policy_path), "--out", str(tmp_path / "out.json")]
+    with patch.object(sys, "argv", argv), patch.object(qg, "_configure_stdio"):
+        assert qg.main() == 2
+
+
+def test_adaptive_output_rejects_input_and_derived_md_paths(tmp_path):
+    review = tmp_path / "review.md"
+    keypoints = tmp_path / "keypoints.md"
+    source = tmp_path / "source.md"
+    human = tmp_path / "human.json"
+    for path in (review, keypoints, source, human):
+        path.write_text("x", encoding="utf-8")
+    args = SimpleNamespace(profile="release_adaptive", review=str(review), keypoints=str(keypoints),
+                           source_text=[str(source)], human_review=str(human))
+    assert qg._validate_output_paths(args, review)[0:] == "输出路径或派生 MD 路径不得覆盖自适应输入"
+    assert qg._validate_output_paths(args, tmp_path / "review").startswith("输出路径")
+    assert qg._validate_output_paths(args, tmp_path / "safe.json") is None
+
+
+def test_input_hash_change_blocks_aggregate(tmp_path):
+    review = tmp_path / "review.md"
+    review.write_text("before", encoding="utf-8")
+    args = SimpleNamespace(questions="", review=str(review), keypoints="", source_text=[], human_review="")
+    before = qg._hash_inputs(args)
+    review.write_text("after", encoding="utf-8")
+    unchanged, after = qg._inputs_unchanged(args, before)
+    assert not unchanged and after["review"] != before["review"]
+
 def test_release_adaptive_profile_is_explicit_and_enforce(monkeypatch):
     policy = qg._load_policy(BASE / "scripts" / "quality_policy.json")
     assert "release_adaptive" in policy["profiles"]
@@ -297,8 +338,8 @@ def test_release_forces_enforce():
             assert build.call_args.args[2] == "enforce"
         result = json.loads(out.read_text(encoding="utf-8"))
         assert result["mode"] == "enforce"
-        assert result["input_sha256"] == {"questions": hashlib.sha256(questions.read_bytes()).hexdigest(),
-                                          "review": hashlib.sha256(review.read_bytes()).hexdigest()}
+        assert result["input_sha256"]["questions"] == hashlib.sha256(questions.read_bytes()).hexdigest()
+        assert result["input_sha256"]["review"] == hashlib.sha256(review.read_bytes()).hexdigest()
 
 
 def test_aggregate_modes():

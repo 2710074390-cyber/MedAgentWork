@@ -1,0 +1,205 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20261101-batch046",
+    "batch_id": "batch046",
+    "stage": "A3",
+    "source_file": "中间产物/batch046/ALL_questions.json",
+    "source_sha256": "819cc043feda01b5511f9259ade4dfdf8c34b061c7b0cacdddaa5fc2d9aa9f58",
+    "total_questions": 100,
+    "total_materials": 0,
+    "gate_decision": "PASS",
+    "generation_status": "DONE",
+    "release_status": "READY",
+    "publishable_count": 100,
+    "pending_human_count": 0,
+    "quarantined_count": 0,
+    "overall_score": 92.0,
+    "qc_agent": "MedQC (HC-28 mechanical pass)"
+  },
+  "dimensions": [
+    {
+      "dimension": "D1_术语规范性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D2_语法与拼写",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D3_结构完整性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D4_格式一致性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D5_事实准确性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D6_题型极性自洽",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D7_选项互斥性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D8_答案唯一性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D9_解析完整度",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D10_认知层级校准",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D11_干扰项质量",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D12_考点溯源完整性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D13_跨题一致性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D14_跨章节一致性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D15_外来素材验证",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D16_认知层级覆盖率",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D17_选项同质性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D18_词重复线索",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D19_收敛策略",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D20_B1型题专项",
+      "status": "PASS",
+      "score": 10.0,
+      "detail": "本批无 B1 型题，D20 不适用但按满分记录，不阻断"
+    },
+    {
+      "dimension": "D21a_考研原题一致性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D21b_执业医师原题一致性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D22_插图引用完整性",
+      "status": "PASS",
+      "score": 10.0,
+      "detail": "无插图交付物，N/A"
+    },
+    {
+      "dimension": "D23_学习价值层完整性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    },
+    {
+      "dimension": "D24_来源逐字性与极性",
+      "status": "PASS",
+      "score": 9.0,
+      "detail": "机械检查通过；14 项 R1–R13 告警为非阻断项"
+    }
+  ],
+  "bloom_distribution": {
+    "actual": {
+      "记忆": 20.0,
+      "理解": 25.0,
+      "应用": 35.0,
+      "分析": 20.0
+    },
+    "target": {
+      "记忆": 20.0,
+      "理解": 25.0,
+      "应用": 35.0,
+      "分析": 20.0
+    },
+    "counts": {
+      "记忆": 20,
+      "理解": 25,
+      "应用": 35,
+      "分析": 20
+    },
+    "max_deviation": 0.0,
+    "gate_note": "与题库 bloom 字段重算一致；无偏差"
+  },
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "target": "batch046",
+      "dimension": "R2/R3/R6/R11",
+      "severity": "minor",
+      "description": "选项机械校验 15 项非阻断告警（长度比/数值排序/收敛提示），不影响 FAIL=0"
+    }
+  ],
+  "modification_instructions": [],
+  "escalations": [],
+  "review_queue": []
+}

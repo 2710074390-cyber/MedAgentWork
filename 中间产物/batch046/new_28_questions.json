@@ -1,0 +1,3978 @@
+[
+  {
+    "id": "batch046-Q073",
+    "sequence": 73,
+    "schema_version": "2.1",
+    "module": "M02",
+    "module_name": "心肺脑复苏 CPCR（必考模块）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名成人因心室颤动接受除颤，现场使用双相波除颤器。按教材，首次电击应选择的能量范围是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "双相波120～200J",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "单相波120～200J",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "双相波360J",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "单相波200J",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "双相波50J",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "理解",
+    "difficulty": "中等",
+    "topic": "双相波除颤能量选择",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P237",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P237",
+      "教师重点锚定清单第12条"
+    ],
+    "keypoint_ref": [
+      "第12条"
+    ],
+    "teacher_anchor": "AED／除颤能量：双相波 120～200J，单相波首次 360J；除颤每延迟 1 分钟存活率下降 7%～10%；电击后立刻胸外按压 2 分钟（P237）〔原稿第18-19段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第12条",
+        "title": "双相波除颤能量选择",
+        "evidence": "题干给出双相波除颤器，正确选项对应教材双相波首次能量范围。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第12条",
+        "title": "单相波与双相波能量混淆",
+        "evidence": "选项B/C/D把单相波能量或360J套用到双相波，是本题主要干扰点。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定双相波除颤首次能量为120～200J，单相波首次为360J。双相波与单相波的能量标定不同，不能把单相波的360J直接套用于双相波；能量过低也可能无法终止室颤。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "双相波首次电击的推荐能量为120～200J，符合教材标定。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "120～200J是双相波的能量范围，单相波不能沿用该范围。",
+          "misconception_id": "MC-EM-M02-073B",
+          "misconception": "把双相波与单相波能量范围混用"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "360J是单相波首次电击的常用能量，不是双相波首次能量。",
+          "misconception_id": "MC-EM-M02-073C",
+          "misconception": "把单相波360J套用于双相波"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "200J只是单相波的一个可选能量，不能作为双相波标准。",
+          "misconception_id": "MC-EM-M02-073D",
+          "misconception": "把单相波200J当作双相波标准"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "50J低于双相波首次除颤的推荐范围，可能不足以终止室颤。",
+          "misconception_id": "MC-EM-M02-073E",
+          "misconception": "除颤能量过低"
+        }
+      ],
+      "key_takeaway": "先看除颤器波形：双相波首次120～200J，单相波首次360J；波形不同，能量不能混用。",
+      "source_quote": "双相波 120～200J",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q074",
+    "sequence": 74,
+    "schema_version": "2.1",
+    "module": "M02",
+    "module_name": "心肺脑复苏 CPCR（必考模块）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名成人发生心室颤动，急救者已将一个除颤电极贴在右锁骨下区。按教材前外侧电极位置，另一个电极应贴在哪里？",
+    "options": [
+      {
+        "label": "A",
+        "text": "左锁骨下区",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "左胸骨左缘",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "左乳头正上方",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "左乳头侧腋中线",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "左肩胛下区",
+        "is_correct": false
+      }
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "除颤电极位置",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P237",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P237",
+      "教师重点锚定清单第13条"
+    ],
+    "keypoint_ref": [
+      "第13条"
+    ],
+    "teacher_anchor": "AED 电极：右侧电极置于右锁骨下区，左侧电极置于左乳头侧腋中线处（P237）〔原稿第20段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第13条",
+        "title": "除颤电极位置",
+        "evidence": "题干已给出右侧电极位置，正确选项对应教材左侧电极的标定位置。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第13条",
+        "title": "电极位置错误类型",
+        "evidence": "选项A/B/C/E分别把左侧电极移到锁骨下、胸骨旁、乳头上方或肩胛下。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定前外侧除颤电极位置为右侧锁骨下区和左侧乳头侧腋中线处。左侧电极放在左乳头侧腋中线，可使除颤电流更有效地通过心脏；放在左锁骨下、胸骨旁或肩胛下都不能形成标准的前外侧电流路径。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "左锁骨下区与右侧电极过近，不能形成前外侧电流路径。",
+          "misconception_id": "MC-EM-M02-074A",
+          "misconception": "把左侧电极贴在左锁骨下"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "左胸骨左缘偏离标准左侧腋中线位置，电流路径不完整。",
+          "misconception_id": "MC-EM-M02-074B",
+          "misconception": "把左侧电极贴在胸骨旁"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "左乳头正上方不是教材标定的左侧电极位置。",
+          "misconception_id": "MC-EM-M02-074C",
+          "misconception": "把左侧电极贴在乳头上方"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "左乳头侧腋中线是教材标定的左侧电极位置。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "左肩胛下区位于背部，不属于前外侧电极位置。",
+          "misconception_id": "MC-EM-M02-074E",
+          "misconception": "把左侧电极贴在肩胛下"
+        }
+      ],
+      "key_takeaway": "前外侧除颤电极：右锁骨下 + 左乳头侧腋中线；左侧越靠腋中线，电流越易穿过心脏。",
+      "source_quote": "右侧电极置于右锁骨下区，左侧电极置于左乳头侧腋中线处",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q075",
+    "sequence": 75,
+    "schema_version": "2.1",
+    "module": "M02",
+    "module_name": "心肺脑复苏 CPCR（必考模块）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名车祸伤员发生心搏骤停，现场怀疑颈椎损伤。按教材，开放气道时应优先采用哪种手法？",
+    "options": [
+      {
+        "label": "A",
+        "text": "仰头抬颏法",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "压额抬颏法",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "环甲膜穿刺",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "气管内插管",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "双手托颌法",
+        "is_correct": true
+      }
+    ],
+    "answer": "E",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "bloom": "理解",
+    "difficulty": "中等",
+    "topic": "颈椎损伤时开放气道",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P244/P256",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P244/P256",
+      "教师重点锚定清单第14条"
+    ],
+    "keypoint_ref": [
+      "第14条"
+    ],
+    "teacher_anchor": "创伤性心脏骤停：高级气道首选气管插管；怀疑颈椎损伤时开放气道用双手托颌法，必要时行环甲膜穿刺／切开；建立人工气道最可靠的方法是气管插管（P244、P256）〔原稿第21段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第14条",
+        "title": "颈椎损伤时开放气道",
+        "evidence": "题干给出怀疑颈椎损伤，正确选项对应教材推荐的双手托颌法。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第14条",
+        "title": "颈椎保护与气道手法",
+        "evidence": "选项A/B是需要仰头的手法，C/D是高级气道操作而非开放气道手法。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "怀疑颈椎损伤时，开放气道应避免过度仰头，采用双手托颌法以保持头颈中立。气管内插管是建立人工气道最可靠的方法，但题目问的是开放气道手法；环甲膜穿刺只在必要时采用。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "仰头抬颏法会使颈椎过度伸展，可能加重颈椎损伤。",
+          "misconception_id": "MC-EM-M02-075A",
+          "misconception": "颈椎损伤时仍仰头抬颏"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "压额抬颏法同样需要仰头，不符合颈椎保护要求。",
+          "misconception_id": "MC-EM-M02-075B",
+          "misconception": "颈椎损伤时压额抬颏"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "环甲膜穿刺是建立紧急气道的手段，不是首选的开放气道手法。",
+          "misconception_id": "MC-EM-M02-075C",
+          "misconception": "把环甲膜穿刺当作开放气道手法"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "气管内插管是高级气道方法，不是本题所问的开放气道手法。",
+          "misconception_id": "MC-EM-M02-075D",
+          "misconception": "把气管插管当作开放气道手法"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "双手托颌法可在保持头颈中立的情况下开放气道。",
+          "misconception_id": null,
+          "misconception": null
+        }
+      ],
+      "key_takeaway": "怀疑颈椎损伤：先双手托颌，保持头颈中立；需要高级气道时再考虑气管插管或环甲膜穿刺。",
+      "source_quote": "怀疑颈椎损伤时开放气道用双手托颌法",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q076",
+    "sequence": 76,
+    "schema_version": "2.1",
+    "module": "M02",
+    "module_name": "心肺脑复苏 CPCR（必考模块）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名过度肥胖成人进食时突发完全气道异物梗阻，意识清醒，救助者无法环抱其腰部。按教材应选择哪种解除梗阻方法？",
+    "options": [
+      {
+        "label": "A",
+        "text": "腹部冲击法",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "胸部冲击法",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "背部拍击法",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "立即催吐",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "环甲膜穿刺",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "difficulty": "中等",
+    "topic": "肥胖者气道异物梗阻",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P239-240",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P239-240",
+      "教师重点锚定清单第15条"
+    ],
+    "keypoint_ref": [
+      "第15条"
+    ],
+    "teacher_anchor": "气道异物梗阻（海姆立克）冲击位置：剑突与脐之间的腹中线，快速向内、向上冲击腹部；妊娠末期或过度肥胖者改用胸部冲击（胸骨中线，避开剑突和肋骨下缘）；婴儿推荐拍背／冲胸法（P239-240）〔原稿第22段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第15条",
+        "title": "肥胖者气道异物梗阻",
+        "evidence": "题干给出过度肥胖且无法环抱腰部，正确选项对应教材的替代手法。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第15条",
+        "title": "气道异物梗阻替代手法",
+        "evidence": "选项A仍用腹部冲击，C/D/E分别误用背部拍击、催吐和环甲膜穿刺。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定气道异物梗阻的腹部冲击位置在剑突与脐之间，快速向内、向上冲击；妊娠末期或过度肥胖者无法环抱腰部时改用胸部冲击，位置在胸骨中线，避开剑突和肋骨下缘。该患者过度肥胖，救助者无法环抱腰部，应选胸部冲击。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "腹部冲击需要环抱腰部，该肥胖患者无法实施。",
+          "misconception_id": "MC-EM-M02-076A",
+          "misconception": "肥胖者仍强行腹部冲击"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "胸部冲击适用于妊娠末期或过度肥胖、无法环抱腰部者。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "背部拍击适用于婴儿或特定场景，不是成人完全梗阻的首选。",
+          "misconception_id": "MC-EM-M02-076C",
+          "misconception": "把背部拍击当作成人首选"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "催吐不能解除气道梗阻，且可能误吸；用催吐解除气道梗阻，与题干条件不符。",
+          "misconception_id": "MC-EM-M02-076D",
+          "misconception": "用催吐解除气道梗阻"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "环甲膜穿刺是气道无法建立时的紧急手段，不是首选。",
+          "misconception_id": "MC-EM-M02-076E",
+          "misconception": "把环甲膜穿刺当作首选"
+        }
+      ],
+      "key_takeaway": "成人气道异物梗阻首选腹部冲击；妊娠末期或过度肥胖无法环抱时改胸部冲击。",
+      "source_quote": "妊娠末期或过度肥胖者改用胸部冲击",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q077",
+    "sequence": 77,
+    "schema_version": "2.1",
+    "module": "M03",
+    "module_name": "休克总论（概念、分型、监测、治疗）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名患者大量失血后出现血压下降、尿量偏少、四肢湿冷和乳酸升高。最能解释这些表现的共同病理生理基础是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "心泵功能衰竭",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "外周血管阻力升高",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "毛细血管通透性增加",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "有效循环血容量减少",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "血红蛋白携氧下降",
+        "is_correct": false
+      }
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "休克本质",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P148",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P148",
+      "教师重点锚定清单第16条"
+    ],
+    "keypoint_ref": [
+      "第16条"
+    ],
+    "teacher_anchor": "休克本质：有效循环血容量急剧减少，导致器官和组织微循环灌注不足，致使组织缺氧、细胞代谢紊乱、器官功能受损乃至结构破坏（P148）〔原稿第24段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第16条",
+        "title": "休克本质",
+        "evidence": "题干列举失血后低灌注表现，正确选项对应教材休克本质。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第16条",
+        "title": "休克本质与病因混淆",
+        "evidence": "选项A/B/C/E分别用心泵衰竭、外周阻力、毛细血管通透性和携氧下降解释，偏离核心。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "休克本质是有效循环血容量急剧减少，导致器官和组织微循环灌注不足，进而组织缺氧、细胞代谢紊乱和器官功能受损。大量失血后血压下降、尿少、四肢湿冷和乳酸升高，都是有效循环血量减少和组织灌注不足的表现。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "心泵功能衰竭是心源性休克的机制，不能解释大量失血后的共同表现。",
+          "misconception_id": "MC-EM-M03-077A",
+          "misconception": "把失血性休克等同于心泵衰竭"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "外周阻力升高可以是代偿，但不是本题的统一病理基础。",
+          "misconception_id": "MC-EM-M03-077B",
+          "misconception": "把外周阻力升高当作休克本质"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "毛细血管通透性增加见于感染性休克等，不是失血后的首要机制。",
+          "misconception_id": "MC-EM-M03-077C",
+          "misconception": "把毛细血管通透性增加当作失血首要机制"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "有效循环血容量减少导致微循环灌注不足，是休克的核心本质。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "血红蛋白下降会减少携氧，但休克的核心是循环灌注不足。",
+          "misconception_id": "MC-EM-M03-077E",
+          "misconception": "把贫血性缺氧等同于休克本质"
+        }
+      ],
+      "key_takeaway": "休克的核心是有效循环血容量减少导致微循环灌注不足；失血、感染、心衰等病因不同，但最终都落到组织缺氧。",
+      "source_quote": "有效循环血容量急剧减少，导致器官和组织微循环灌注不足",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q078",
+    "sequence": 78,
+    "schema_version": "2.1",
+    "module": "M03",
+    "module_name": "休克总论（概念、分型、监测、治疗）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "按病因分类，下列哪项属于休克的常见类型？",
+    "options": [
+      {
+        "label": "A",
+        "text": "慢性贫血",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "高血压急症",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "甲状腺功能亢进",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "急性肾小球肾炎",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "神经源性",
+        "is_correct": true
+      }
+    ],
+    "answer": "E",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "bloom": "记忆",
+    "difficulty": "中等",
+    "topic": "休克病因分类",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P148",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P148",
+      "教师重点锚定清单第17条"
+    ],
+    "keypoint_ref": [
+      "第17条"
+    ],
+    "teacher_anchor": "休克分型：按病因分为低血容量性、心源性、感染性、过敏性、神经源性；不同类型病因并不互斥，可同时存在数种，称复合性休克（P148）〔原稿第25段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第17条",
+        "title": "休克病因分类",
+        "evidence": "题干问按病因分类的休克类型，正确选项对应教材五类之一。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第17条",
+        "title": "休克分类混淆",
+        "evidence": "选项A-D均为其他系统疾病，不是教材所列的五类休克。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材将休克按病因分为低血容量性、心源性、感染性、过敏性和神经源性五类，不同类型可同时存在，称复合性休克。慢性贫血、高血压急症、甲状腺功能亢进和急性肾小球肾炎不是该分类中的休克类型。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "慢性贫血属于血液系统疾病，不是教材所列休克类型。",
+          "misconception_id": "MC-EM-M03-078A",
+          "misconception": "把慢性贫血当作休克类型"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "高血压急症是血压急骤升高，不是休克病因分类。",
+          "misconception_id": "MC-EM-M03-078B",
+          "misconception": "把高血压急症当作休克类型"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "甲状腺功能亢进属于内分泌疾病，不是休克类型。",
+          "misconception_id": "MC-EM-M03-078C",
+          "misconception": "把甲亢当作休克类型"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "急性肾小球肾炎属于肾脏疾病，不是休克类型。",
+          "misconception_id": "MC-EM-M03-078D",
+          "misconception": "把急性肾小球肾炎当作休克类型"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "神经源性休克是教材所列五类休克之一；这是本题的正确依据。",
+          "misconception_id": null,
+          "misconception": null
+        }
+      ],
+      "key_takeaway": "休克五类：低血容量性、心源性、感染性、过敏性、神经源性；可混合存在。",
+      "source_quote": "按病因分为低血容量性、心源性、感染性、过敏性、神经源性",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "medium",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q079",
+    "sequence": 79,
+    "schema_version": "2.1",
+    "module": "M03",
+    "module_name": "休克总论（概念、分型、监测、治疗）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名患者大量失血后，中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快。最符合哪种休克？",
+    "options": [
+      {
+        "label": "A",
+        "text": "心源性休克",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "低血容量性休克",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "感染性休克",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "过敏性休克",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "神经源性休克",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "低血容量性休克血流动力学",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P153-154",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P153-154",
+      "教师重点锚定清单第18条"
+    ],
+    "keypoint_ref": [
+      "第18条"
+    ],
+    "teacher_anchor": "低血容量性休克：失血或脱水致有效循环血量减少，中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快；治疗关键是补充血容量、控制出血和去除病因（P153-154）；心源性休克：心脏指数<2.2L/(m²·min)、肺动脉楔压>18mmHg，收缩压较基础下降 40mmHg 以上并脉压缩小应警惕（P154）；感染性休克：6 小时内中心静脉压 8～12mmHg、平均动脉压≥65mmHg、尿量≥0.5ml/(kg·h)、中心静脉血氧饱和度≥70%（P155）；过敏性休克：接触过敏原后 15 分钟内发生严重反应，重者 10 分钟内死亡，首选肾上腺素肌内注射（P155）〔原稿第26段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第18条",
+        "title": "低血容量性休克血流动力学",
+        "evidence": "题干给出失血后典型血流动力学组合，正确选项对应低血容量性休克。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第18条",
+        "title": "休克血流动力学鉴别",
+        "evidence": "选项A/C/D/E分别对应心源性、感染性、过敏性和神经源性休克的典型线索。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "低血容量性休克因失血或脱水使有效循环血量减少，表现为中心静脉压降低、心输出量下降、外周血管阻力增加和心率加快。心源性休克常有心泵功能衰竭，感染性休克常有感染灶和分布性循环改变，过敏性休克有过敏原接触史，神经源性休克有神经损伤。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "心源性休克以心泵功能衰竭为主，中心静脉压常升高。",
+          "misconception_id": "MC-EM-M03-079A",
+          "misconception": "把低血容量性休克误判为心源性"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "低血容量性休克符合CVP降低、CO下降、SVR增加和心率加快。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "感染性休克常有感染灶和血管扩张，不是单纯失血后的表现。",
+          "misconception_id": "MC-EM-M03-079C",
+          "misconception": "把失血性休克误判为感染性"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "过敏性休克有过敏原接触和速发反应；把失血性休克误判为过敏性，与题干条件不符。",
+          "misconception_id": "MC-EM-M03-079D",
+          "misconception": "把失血性休克误判为过敏性"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "神经源性休克与脊髓损伤或神经阻滞有关；把失血性休克误判为神经源性，与题干条件不符。",
+          "misconception_id": "MC-EM-M03-079E",
+          "misconception": "把失血性休克误判为神经源性"
+        }
+      ],
+      "key_takeaway": "失血 + CVP低 + CO低 + SVR高 + HR快 = 低血容量性休克。",
+      "source_quote": "中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q080",
+    "sequence": 80,
+    "schema_version": "2.1",
+    "module": "M03",
+    "module_name": "休克总论（概念、分型、监测、治疗）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名失血性休克患者已完成出血控制，尚无明显心衰。按教材休克一般治疗原则，初始抗休克的基本治疗是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即大量输血",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "等渗晶体液补液",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "首选血管活性药",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "大剂量糖皮质激素",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "立即手术探查",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "记忆",
+    "difficulty": "中等",
+    "topic": "休克液体复苏",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P152",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P152",
+      "教师重点锚定清单第19条"
+    ],
+    "keypoint_ref": [
+      "第19条"
+    ],
+    "teacher_anchor": "休克治疗原则：首先是稳定生命体征、保持重要器官的微循环灌注和改善细胞代谢，并在此基础上病因治疗；除心源性休克外，补液是抗休克的基本治疗，以等渗晶体液为主；体位取头躯干抬高 20°～30°、下肢抬高 15°～20°（P152）〔原稿第27段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第19条",
+        "title": "休克液体复苏",
+        "evidence": "题干给出已控制出血且无明显心衰，正确选项对应教材补液优先原则。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第19条",
+        "title": "休克一般治疗顺序",
+        "evidence": "选项A/C/D/E分别把输血、升压药、激素和手术前移，偏离补液优先原则。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材指出，休克治疗首先是稳定生命体征、保持重要器官微循环灌注和改善细胞代谢，并在此基础上病因治疗；除心源性休克外，补液是抗休克的基本治疗，以等渗晶体液为主。该患者已控制出血，初始应优先等渗晶体液补液。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "大量输血需根据失血程度和成分输血指征，不是所有失血性休克的初始首选。",
+          "misconception_id": "MC-EM-M03-080A",
+          "misconception": "把大量输血当作所有休克初始治疗"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "等渗晶体液补液是教材所述除心源性休克外的基本治疗。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "血管活性药应在充分液体复苏后仍低血压时使用。",
+          "misconception_id": "MC-EM-M03-080C",
+          "misconception": "补液前首选血管活性药"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "大剂量糖皮质激素不是休克一般治疗；把大剂量激素当作抗休克治疗，与题干条件不符。",
+          "misconception_id": "MC-EM-M03-080D",
+          "misconception": "把大剂量激素当作抗休克治疗"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "手术探查用于控制活动性出血，该患者已完成出血控制。",
+          "misconception_id": "MC-EM-M03-080E",
+          "misconception": "出血已控制仍立即手术探查"
+        }
+      ],
+      "key_takeaway": "除心源性休克外，抗休克基本治疗是等渗晶体液补液；血管活性药放在充分液体复苏之后。",
+      "source_quote": "除心源性休克外，补液是抗休克的基本治疗，以等渗晶体液为主",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q081",
+    "sequence": 81,
+    "schema_version": "2.1",
+    "module": "M03",
+    "module_name": "休克总论（概念、分型、监测、治疗）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名感染性休克患者经充分液体复苏后平均动脉压仍约55mmHg。按教材，下一步血管活性药物方案最合适的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即静脉大剂量多巴胺",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "补液前先静脉升压药",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "去甲肾上腺素+多巴酚丁胺",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "立即静脉首选肾上腺素",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "等待血压自行恢复",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "感染性休克血管活性药",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P153",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P153",
+      "教师重点锚定清单第20条"
+    ],
+    "keypoint_ref": [
+      "第20条"
+    ],
+    "teacher_anchor": "血管活性药物使用时机：充分液体复苏之后，血压仍不稳定才使用，不能输血输液前就用；多巴胺抗休克宜采取小剂量；去甲肾上腺素与多巴酚丁胺联合应用是治疗感染性休克最理想的血管活性药物方案（P153）〔原稿第28段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第20条",
+        "title": "感染性休克血管活性药",
+        "evidence": "题干给出充分液体复苏后仍低血压，正确选项对应教材感染性休克方案。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第20条",
+        "title": "感染性休克升压方案",
+        "evidence": "选项A/B/D/E分别对应剂量、时机、药物选择和等待策略的错误。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材指出血管活性药物应在充分液体复苏之后、血压仍不稳定时使用，不能在输血输液前就用；去甲肾上腺素与多巴酚丁胺联合应用是治疗感染性休克最理想的血管活性药物方案。该患者已充分液体复苏，MAP仍55mmHg，符合使用时机。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "大剂量多巴胺不是教材推荐的首选方案，且应在充分复苏后使用。",
+          "misconception_id": "MC-EM-M03-081A",
+          "misconception": "把大剂量多巴胺当作感染性休克首选"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "补液前先用升压药不符合教材使用时机；补液前过早使用升压药，与题干条件不符。",
+          "misconception_id": "MC-EM-M03-081B",
+          "misconception": "补液前过早使用升压药"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "去甲肾上腺素与多巴酚丁胺联合是感染性休克的理想方案。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "肾上腺素不是感染性休克的首选血管活性药。",
+          "misconception_id": "MC-EM-M03-081D",
+          "misconception": "把肾上腺素当作感染性休克首选"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "充分复苏后仍低血压，不应继续等待；充分复苏后仍低血压却继续等待，与题干条件不符。",
+          "misconception_id": "MC-EM-M03-081E",
+          "misconception": "充分复苏后仍低血压却继续等待"
+        }
+      ],
+      "key_takeaway": "感染性休克：充分液体复苏后仍低血压，首选去甲肾上腺素+多巴酚丁胺。",
+      "source_quote": "去甲肾上腺素与多巴酚丁胺联合应用是治疗感染性休克最理想的血管活性药物方案",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q082",
+    "sequence": 82,
+    "schema_version": "2.1",
+    "module": "M03",
+    "module_name": "休克总论（概念、分型、监测、治疗）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名严重创伤患者伤后早期即出现呼吸衰竭和少尿型肾衰竭，器官功能障碍与直接组织损伤相关。最符合哪种情况？",
+    "options": [
+      {
+        "label": "A",
+        "text": "原发性MODS",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "继发性MODS",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "慢性肾功能衰竭",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "单器官功能障碍",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "脓毒症性休克",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "difficulty": "中等",
+    "topic": "MODS分型",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P209-211",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P209-211",
+      "教师重点锚定清单第21条"
+    ],
+    "keypoint_ref": [
+      "第21条"
+    ],
+    "teacher_anchor": "MODS 多器官功能障碍综合征：严重打击后≥2 个器官序贯发生功能障碍；分原发性（直接损伤早期）、继发性（炎症失控）；治疗重点是控制原发病+器官支持；不是必然不可逆，不常规大剂量激素（P209-211、P228）〔原稿第29段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第21条",
+        "title": "MODS分型",
+        "evidence": "题干强调早期和直接组织损伤，正确选项对应原发性MODS。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第21条",
+        "title": "MODS分型混淆",
+        "evidence": "选项B/C/D/E分别误判为继发性、慢性、单器官或脓毒症休克。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "MODS指严重打击后≥2个器官序贯发生功能障碍，分原发性（直接损伤早期）和继发性（炎症失控）。该患者伤后早期即出现两个器官功能障碍，且与直接组织损伤相关，符合原发性MODS。继发性MODS多在感染或炎症失控后发生。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "原发性MODS与直接损伤相关，且多在早期出现。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "继发性MODS常由感染或炎症失控引起，不是直接损伤早期。",
+          "misconception_id": "MC-EM-M03-082B",
+          "misconception": "把直接损伤早期MODS误判为继发性"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "慢性肾功能衰竭是长期肾脏疾病，不是急性创伤后两个器官功能障碍。",
+          "misconception_id": "MC-EM-M03-082C",
+          "misconception": "把急性肾衰当作慢性肾衰"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "患者已有呼吸和肾脏两个器官功能障碍，不是单器官。",
+          "misconception_id": "MC-EM-M03-082D",
+          "misconception": "把两个器官障碍当作单器官障碍"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "脓毒症性休克需要感染证据，题目未提供；无感染证据却判脓毒症休克，与题干条件不符。",
+          "misconception_id": "MC-EM-M03-082E",
+          "misconception": "无感染证据却判脓毒症休克"
+        }
+      ],
+      "key_takeaway": "严重创伤后早期、与直接损伤相关的≥2器官功能障碍 = 原发性MODS；感染/炎症失控后出现多为继发性。",
+      "source_quote": "严重打击后≥2 个器官序贯发生功能障碍",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q083",
+    "sequence": 83,
+    "schema_version": "2.1",
+    "module": "M04",
+    "module_name": "急性中毒（解毒剂、体征、处理）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名患者口服强酸后就诊，意识清醒，生命体征暂稳定。按教材急性中毒处理原则，下列哪项最合适？",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即洗胃",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "不宜洗胃",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "立即催吐",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "大量活性炭",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "立即手术",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "腐蚀性毒物洗胃禁忌",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P159-160",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P159-160",
+      "教师重点锚定清单第22条"
+    ],
+    "keypoint_ref": [
+      "第22条"
+    ],
+    "teacher_anchor": "急性中毒总原则：优先稳定生命体征，清除毒物+支持治疗；口服中毒 4～6 小时内洗胃效果最好；吞服腐蚀性毒物不宜洗胃；昏迷、惊厥者洗胃须保护呼吸道、避免误吸（P159-160）〔原稿第32段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第22条",
+        "title": "腐蚀性毒物洗胃禁忌",
+        "evidence": "题干明确口服强酸，正确选项对应腐蚀性毒物洗胃禁忌。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第22条",
+        "title": "腐蚀性毒物处理",
+        "evidence": "选项A/C/D/E分别误用洗胃、催吐、活性炭和手术。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定口服中毒4～6小时内洗胃效果最好，但吞服腐蚀性毒物不宜洗胃，以免造成消化道穿孔或加重损伤。强酸属于腐蚀性毒物，即使生命体征暂稳定，也不应洗胃；应优先稳定生命体征、保护消化道并支持治疗。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "强酸是腐蚀性毒物，洗胃可能加重食管和胃损伤。",
+          "misconception_id": "MC-EM-M04-083A",
+          "misconception": "对腐蚀性毒物仍立即洗胃"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "腐蚀性毒物不宜洗胃，符合教材处理原则；这是本题的正确依据。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "催吐同样可能加重腐蚀性损伤，不宜使用；用催吐处理腐蚀性毒物，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-083C",
+          "misconception": "用催吐处理腐蚀性毒物"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "活性炭对强酸等腐蚀性毒物无吸附价值，且可能妨碍观察。",
+          "misconception_id": "MC-EM-M04-083D",
+          "misconception": "把活性炭当作腐蚀性毒物解毒剂"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "手术不是急性中毒的常规初始处理；把手术当作中毒初始治疗，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-083E",
+          "misconception": "把手术当作中毒初始治疗"
+        }
+      ],
+      "key_takeaway": "口服腐蚀性毒物：不洗胃、不催吐；先稳定生命体征并保护消化道。",
+      "source_quote": "吞服腐蚀性毒物不宜洗胃",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q084",
+    "sequence": 84,
+    "schema_version": "2.1",
+    "module": "M04",
+    "module_name": "急性中毒（解毒剂、体征、处理）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名患者因阿片类药物过量出现呼吸抑制和针尖样瞳孔。按教材，首选的特异性解毒剂是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "阿托品",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "氟马西尼",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "亚甲蓝",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "纳洛酮",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "碘解磷定",
+        "is_correct": false
+      }
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "bloom": "应用",
+    "difficulty": "中等",
+    "topic": "阿片类特异性解毒剂",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P161",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P161",
+      "教师重点锚定清单第23条"
+    ],
+    "keypoint_ref": [
+      "第23条"
+    ],
+    "teacher_anchor": "特异性解毒剂：有机磷—阿托品、盐酸戊乙奎醚、碘解磷定；阿片类—纳洛酮 0.4～0.8mg 静脉注射；苯二氮䓬类—氟马西尼 0.2mg 静脉注射（总量可达 2mg）；亚硝酸盐／苯胺—亚甲蓝 1～2mg/kg；氰化物—亚硝酸盐-硫代硫酸钠疗法；铅—依地酸钙钠；砷汞—二巯丙醇（P161）〔原稿第33段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第23条",
+        "title": "阿片类特异性解毒剂",
+        "evidence": "题干给出呼吸抑制和针尖样瞳孔，正确选项对应阿片类解毒剂。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第23条",
+        "title": "特异性解毒剂配对",
+        "evidence": "选项A/B/C/E分别对应有机磷、苯二氮䓬、亚硝酸盐和有机磷的解毒剂。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材列出阿片类中毒的特异性解毒剂为纳洛酮，常用0.4～0.8mg静脉注射。阿托品用于有机磷中毒的毒蕈碱样症状，氟马西尼用于苯二氮䓬类，亚甲蓝用于亚硝酸盐/苯胺中毒，碘解磷定用于有机磷中毒。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "阿托品用于有机磷中毒，不是阿片类中毒的特异性解毒剂。",
+          "misconception_id": "MC-EM-M04-084A",
+          "misconception": "把阿托品当作阿片类解毒剂"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "氟马西尼用于苯二氮䓬类中毒；把氟马西尼当作阿片类解毒剂，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-084B",
+          "misconception": "把氟马西尼当作阿片类解毒剂"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "亚甲蓝用于亚硝酸盐或苯胺中毒；把亚甲蓝当作阿片类解毒剂，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-084C",
+          "misconception": "把亚甲蓝当作阿片类解毒剂"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "纳洛酮是阿片类中毒的特异性解毒剂；这是本题的正确依据。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "碘解磷定用于有机磷中毒；把碘解磷定当作阿片类解毒剂，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-084E",
+          "misconception": "把碘解磷定当作阿片类解毒剂"
+        }
+      ],
+      "key_takeaway": "阿片类 → 纳洛酮0.4～0.8mg静注；苯二氮䓬类 → 氟马西尼；有机磷 → 阿托品+碘解磷定。",
+      "source_quote": "阿片类—纳洛酮 0.4～0.8mg 静脉注射",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q085",
+    "sequence": 85,
+    "schema_version": "2.1",
+    "module": "M04",
+    "module_name": "急性中毒（解毒剂、体征、处理）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名有机磷农药中毒患者血胆碱酯酶活力约35%。按教材分度，最符合哪一档？",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻度中毒",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "重度中毒",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "中毒前期",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "中度中毒",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "无法分度",
+        "is_correct": false
+      }
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "有机磷中毒分度",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P162-163",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P162-163",
+      "教师重点锚定清单第24条"
+    ],
+    "keypoint_ref": [
+      "第24条"
+    ],
+    "teacher_anchor": "有机磷中毒：抑制胆碱酯酶致乙酰胆碱蓄积；M 样症状（瞳孔针尖样缩小、大汗淋漓、流涎、支气管分泌物增多）、N 样症状（肌纤维颤动）、中枢神经系统症状；呼出气有蒜味；血胆碱酯酶活力轻度 50%～70%、中度 30%～50%、重度<30%（P162-163）〔原稿第34段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第24条",
+        "title": "有机磷中毒分度",
+        "evidence": "题干给出35%的胆碱酯酶活力，正确选项对应教材中度区间。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第24条",
+        "title": "胆碱酯酶分度记忆",
+        "evidence": "选项A/B/C/E分别误判分度、错用档位或回避标准。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材按血胆碱酯酶活力分度：轻度50%～70%，中度30%～50%，重度<30%。该患者约35%，落在30%～50%区间，属于中度中毒。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "轻度对应50%～70%，35%低于该区间。",
+          "misconception_id": "MC-EM-M04-085A",
+          "misconception": "把35%误判为轻度"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "重度对应<30%，35%未达到重度标准。",
+          "misconception_id": "MC-EM-M04-085B",
+          "misconception": "把35%误判为重度"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "中毒前期不是教材按胆碱酯酶活力划分的档位。",
+          "misconception_id": "MC-EM-M04-085C",
+          "misconception": "把中毒前期当作分度档位"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "35%落在30%～50%区间，属于中度。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "教材有明确分度标准，不能以无法分度回避。",
+          "misconception_id": "MC-EM-M04-085E",
+          "misconception": "以无法分度回避明确标准"
+        }
+      ],
+      "key_takeaway": "有机磷中毒胆碱酯酶分度：轻度50%～70%，中度30%～50%，重度<30%。",
+      "source_quote": "血胆碱酯酶活力轻度 50%～70%、中度 30%～50%、重度<30%",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q086",
+    "sequence": 86,
+    "schema_version": "2.1",
+    "module": "M04",
+    "module_name": "急性中毒（解毒剂、体征、处理）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "急性有机磷中毒后，中间综合征通常发生在多长时间内？",
+    "options": [
+      {
+        "label": "A",
+        "text": "数分钟至1小时",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "6小时以内",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "1～4日",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "2周左右",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "1个月左右",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "记忆",
+    "difficulty": "中等",
+    "topic": "有机磷中毒中间综合征",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P163",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P163",
+      "教师重点锚定清单第25条"
+    ],
+    "keypoint_ref": [
+      "第25条"
+    ],
+    "teacher_anchor": "中间综合征：急性有机磷中毒后 1～4 日（个别第 7 日）发病，表现为颈屈肌、四肢近端肌肉及第Ⅲ～Ⅶ、Ⅸ～Ⅻ对脑神经支配肌肌力减退；累及呼吸肌可致呼吸肌麻痹、呼吸衰竭（P163）〔原稿第35段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第25条",
+        "title": "有机磷中毒中间综合征",
+        "evidence": "题干问中间综合征发生时间，正确选项对应教材1～4日。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第25条",
+        "title": "中间综合征时间窗",
+        "evidence": "选项A/B/D/E分别把时间窗提前或延后。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材指出中间综合征在急性有机磷中毒后1～4日（个别第7日）发病，表现为颈屈肌、四肢近端肌肉及第Ⅲ～Ⅶ、Ⅸ～Ⅻ对脑神经支配肌肌力减退，累及呼吸肌可致呼吸肌麻痹和呼吸衰竭。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "数分钟至1小时更符合急性胆碱能危象，不是中间综合征。",
+          "misconception_id": "MC-EM-M04-086A",
+          "misconception": "把中间综合征时间窗误为数分钟至1小时"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "6小时以内仍偏早，中间综合征多在1～4日。",
+          "misconception_id": "MC-EM-M04-086B",
+          "misconception": "误为6小时以内"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "1～4日符合教材所述中间综合征时间窗；这是本题的正确依据。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "2周左右超出教材所述1～4日；误为2周左右，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-086D",
+          "misconception": "误为2周左右"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "1个月左右不符合中间综合征时间窗；误为1个月左右，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-086E",
+          "misconception": "误为1个月左右"
+        }
+      ],
+      "key_takeaway": "有机磷中毒中间综合征：1～4日（个别第7日）；重点看颈屈肌、四肢近端和脑神经支配肌。",
+      "source_quote": "急性有机磷中毒后 1～4 日",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q087",
+    "sequence": 87,
+    "schema_version": "2.1",
+    "module": "M04",
+    "module_name": "急性中毒（解毒剂、体征、处理）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "一名患者出现双侧瞳孔缩小，最可能由下列哪类药物或毒物引起？",
+    "options": [
+      {
+        "label": "A",
+        "text": "阿托品中毒",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "有机磷农药",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "甲醇中毒",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "大麻中毒",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "氰化物中毒",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "difficulty": "中等",
+    "topic": "中毒瞳孔变化",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P158",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P158",
+      "教师重点锚定清单第26条"
+    ],
+    "keypoint_ref": [
+      "第26条"
+    ],
+    "teacher_anchor": "瞳孔变化记忆：瞳孔缩小—有机磷、阿片类、镇静催眠药、氨基甲酸酯类；瞳孔扩大—阿托品、莨菪碱、甲醇、乙醇、大麻、苯、氰化物（P158）〔原稿第36段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第26条",
+        "title": "中毒瞳孔变化",
+        "evidence": "题干给出双侧瞳孔缩小，正确选项对应教材缩瞳物质。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第26条",
+        "title": "瞳孔变化方向",
+        "evidence": "选项A/C/D/E均属于教材所列扩瞳物质。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材瞳孔变化记忆：瞳孔缩小见于有机磷、阿片类、镇静催眠药和氨基甲酸酯类；瞳孔扩大见于阿托品、莨菪碱、甲醇、乙醇、大麻、苯和氰化物。因此双侧瞳孔缩小最可能由有机磷农药引起。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "阿托品中毒常使瞳孔扩大，不是缩小；把阿托品中毒误为缩瞳，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-087A",
+          "misconception": "把阿托品中毒误为缩瞳"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "有机磷农药属于教材所列缩瞳物质；这是本题的正确依据。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "甲醇中毒常使瞳孔扩大；把甲醇中毒误为缩瞳，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-087C",
+          "misconception": "把甲醇中毒误为缩瞳"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "大麻中毒常使瞳孔扩大；把大麻中毒误为缩瞳，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-087D",
+          "misconception": "把大麻中毒误为缩瞳"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "氰化物中毒常使瞳孔扩大；把氰化物中毒误为缩瞳，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-087E",
+          "misconception": "把氰化物中毒误为缩瞳"
+        }
+      ],
+      "key_takeaway": "缩瞳：有机磷、阿片类、镇静催眠药、氨基甲酸酯；扩瞳：阿托品、莨菪碱、甲醇、乙醇、大麻、苯、氰化物。",
+      "source_quote": "瞳孔缩小—有机磷、阿片类、镇静催眠药、氨基甲酸酯类",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "medium",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q088",
+    "sequence": 88,
+    "schema_version": "2.1",
+    "module": "M04",
+    "module_name": "急性中毒（解毒剂、体征、处理）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名一氧化碳中毒患者意识恢复后，第2天再次出现意识障碍和认知改变。最可能的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "迟发性脑病",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "中间综合征",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "症状反跳",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "继发性癫痫",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "自发性脑出血",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "理解",
+    "difficulty": "中等",
+    "topic": "一氧化碳中毒迟发性脑病",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P160/P176",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P160/P176",
+      "教师重点锚定清单第27条"
+    ],
+    "keypoint_ref": [
+      "第27条"
+    ],
+    "teacher_anchor": "迟发性脑病：主要见于一氧化碳中毒；高压氧可减少迟发性脑病发生，血液碳氧血红蛋白降至 5% 可停止吸氧；严重一氧化碳中毒后 24～48 小时脑水肿达高峰（P160、P176）〔原稿第37段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第27条",
+        "title": "一氧化碳中毒迟发性脑病",
+        "evidence": "题干给出一氧化碳中毒后再次意识障碍，正确选项对应迟发性脑病。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第27条",
+        "title": "一氧化碳中毒迟发表现",
+        "evidence": "选项B/C/D/E分别对应不同疾病或缺乏证据的判断。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材指出迟发性脑病主要见于一氧化碳中毒，严重一氧化碳中毒后24～48小时脑水肿达高峰；高压氧可减少迟发性脑病发生。患者意识恢复后再次出现意识障碍，符合迟发性脑病的临床过程。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "迟发性脑病主要见于一氧化碳中毒，符合再次意识障碍的病程。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "中间综合征见于有机磷中毒，不是一氧化碳中毒。",
+          "misconception_id": "MC-EM-M04-088B",
+          "misconception": "把CO迟发性脑病误为中间综合征"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "症状反跳不是教材所述一氧化碳中毒的典型迟发过程。",
+          "misconception_id": "MC-EM-M04-088C",
+          "misconception": "把迟发过程误为症状反跳"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "继发性癫痫可发生，但题目描述的是再次意识障碍和认知改变。",
+          "misconception_id": "MC-EM-M04-088D",
+          "misconception": "把意识障碍直接归为癫痫"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "自发性脑出血需要影像证据，题目未提供；无影像证据判脑出血，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-088E",
+          "misconception": "无影像证据判脑出血"
+        }
+      ],
+      "key_takeaway": "一氧化碳中毒意识恢复后再次出现神经精神症状，首先想到迟发性脑病；24～48小时脑水肿达高峰。",
+      "source_quote": "迟发性脑病：主要见于一氧化碳中毒",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q089",
+    "sequence": 89,
+    "schema_version": "2.1",
+    "module": "M04",
+    "module_name": "急性中毒（解毒剂、体征、处理）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名中毒昏迷患者需要洗胃，分泌物较多且呼吸功能不足。按教材，最重要的气道保护措施是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "仰卧位下洗胃",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "半坐位下洗胃",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "暂不进行洗胃",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "先行药物催吐",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "头偏侧+口咽通气",
+        "is_correct": true
+      }
+    ],
+    "answer": "E",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "bloom": "理解",
+    "difficulty": "中等",
+    "topic": "中毒昏迷气道管理",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P160/P176/P256",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P160/P176/P256",
+      "教师重点锚定清单第28条"
+    ],
+    "keypoint_ref": [
+      "第28条"
+    ],
+    "teacher_anchor": "中毒昏迷气道管理：昏迷、窒息或呼吸停止者及时气管内插管、机械通气；洗胃时注意呼吸道保护、避免误吸；昏迷者头偏向一侧、放置口咽通气道（P160、P176、P256）〔原稿第38段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第28条",
+        "title": "中毒昏迷气道管理",
+        "evidence": "题干给出昏迷、分泌物多和呼吸不足，正确选项对应教材气道保护。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第28条",
+        "title": "中毒昏迷气道保护",
+        "evidence": "选项A/B/C/D分别对应体位、误吸和催吐的错误处理。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定昏迷、窒息或呼吸停止者应及时气管内插管、机械通气；洗胃时注意呼吸道保护、避免误吸；昏迷者头偏向一侧、放置口咽通气道。该患者昏迷且呼吸功能不足，洗胃时最重要的气道保护是头偏向一侧、放置口咽通气道，必要时气管插管。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "仰卧位不利于分泌物引流，误吸风险高；昏迷洗胃仍取仰卧位，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-089A",
+          "misconception": "昏迷洗胃仍取仰卧位"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "半坐位不能替代气道保护，昏迷者仍可能误吸。",
+          "misconception_id": "MC-EM-M04-089B",
+          "misconception": "以为半坐位即可防误吸"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "有洗胃指征时不应因昏迷一概不做，关键是保护气道。",
+          "misconception_id": "MC-EM-M04-089C",
+          "misconception": "因昏迷一概拒绝洗胃"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "昏迷者催吐增加误吸风险，不宜；对昏迷者先行催吐，与题干条件不符。",
+          "misconception_id": "MC-EM-M04-089D",
+          "misconception": "对昏迷者先行催吐"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "头偏向一侧并放置口咽通气道可降低误吸风险。",
+          "misconception_id": null,
+          "misconception": null
+        }
+      ],
+      "key_takeaway": "昏迷中毒洗胃：头偏向一侧、放口咽通气道，必要时气管插管；核心是防误吸。",
+      "source_quote": "昏迷者头偏向一侧、放置口咽通气道",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q090",
+    "sequence": 90,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "按教材中暑分级，重症中暑包括哪三型？",
+    "options": [
+      {
+        "label": "A",
+        "text": "先兆、轻症、重症",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "热痉挛、热衰竭、热射病",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "热痉挛、热晕厥、热休克",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "热射病、热衰竭、热昏迷",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "热痉挛、热衰竭、热昏迷",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "记忆",
+    "difficulty": "中等",
+    "topic": "重症中暑分型",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P178-179",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P178-179",
+      "教师重点锚定清单第29条"
+    ],
+    "keypoint_ref": [
+      "第29条"
+    ],
+    "teacher_anchor": "中暑分级：先兆中暑、轻症中暑、重症中暑（热痉挛、热衰竭、热射病）；先兆中暑体温正常或略高、不超过 38℃；轻症中暑体温一般超过 38℃；热射病核心体温超过 40.5℃（P178-179）〔原稿第41段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第29条",
+        "title": "重症中暑分型",
+        "evidence": "题干问重症中暑三型，正确选项对应教材分型。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第29条",
+        "title": "中暑分型混淆",
+        "evidence": "选项A是总体分级，C/D/E混入非教材分型名称。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材将中暑分为先兆中暑、轻症中暑和重症中暑，重症中暑又包括热痉挛、热衰竭和热射病三型。先兆和轻症属于轻症阶段，不是重症三型；热晕厥、热休克、热昏迷不是教材所列分型名称。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "先兆、轻症、重症是总体分级，不是重症三型。",
+          "misconception_id": "MC-EM-M05-090A",
+          "misconception": "把总体分级当作重症三型"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "热痉挛、热衰竭、热射病是教材所列重症三型。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "热晕厥和热休克不是教材重症分型名称；混入热晕厥/热休克，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-090C",
+          "misconception": "混入热晕厥/热休克"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "热昏迷不是教材所列重症分型名称；混入热昏迷（D），与题干条件不符。",
+          "misconception_id": "MC-EM-M05-090D",
+          "misconception": "混入热昏迷（D）"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "热昏迷不是教材所列重症分型名称；混入热昏迷（E），与题干条件不符。",
+          "misconception_id": "MC-EM-M05-090E",
+          "misconception": "混入热昏迷（E）"
+        }
+      ],
+      "key_takeaway": "中暑三级：先兆、轻症、重症；重症再分热痉挛、热衰竭、热射病。",
+      "source_quote": "重症中暑（热痉挛、热衰竭、热射病）",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q091",
+    "sequence": 91,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名快递员在烈日下骑行数小时后，出现口渴、乏力、多汗、头晕，体温37.8℃，尚无意识障碍。其目前最可能的中暑阶段是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "热痉挛",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "热衰竭",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "热射病",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "轻症中暑",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "先兆中暑",
+        "is_correct": true
+      }
+    ],
+    "answer": "E",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "bloom": "应用",
+    "difficulty": "中等",
+    "topic": "先兆中暑识别",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P178",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P178",
+      "教师重点锚定清单第30条"
+    ],
+    "keypoint_ref": [
+      "第30条"
+    ],
+    "teacher_anchor": "先兆中暑：口渴、乏力、多汗、头晕、目眩、耳鸣、头痛、恶心、胸闷、心悸、注意力不集中；体温正常或略高，不超过 38℃（P178）〔原稿第42段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第30条",
+        "title": "先兆中暑识别",
+        "evidence": "题干给出37.8℃和轻度症状，正确选项对应先兆中暑。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第30条",
+        "title": "先兆中暑鉴别",
+        "evidence": "选项A/B/C/D分别把轻症阶段升级为更重类型或误判为轻症。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "先兆中暑表现为口渴、乏力、多汗、头晕、目眩、耳鸣、头痛、恶心、胸闷、心悸、注意力不集中，体温正常或略高，不超过38℃。该患者体温37.8℃，症状符合先兆中暑。轻症中暑体温一般超过38℃，热射病核心体温超过40.5℃。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "热痉挛以肌肉痉挛为主，体温不一定升高；把先兆中暑误判为热痉挛，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-091A",
+          "misconception": "把先兆中暑误判为热痉挛"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "热衰竭常伴血容量不足和循环表现；把先兆中暑误判为热衰竭，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-091B",
+          "misconception": "把先兆中暑误判为热衰竭"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "热射病需核心体温超过40.5℃并伴意识障碍。",
+          "misconception_id": "MC-EM-M05-091C",
+          "misconception": "把先兆中暑误判为热射病"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "轻症中暑体温一般超过38℃，该患者37.8℃。",
+          "misconception_id": "MC-EM-M05-091D",
+          "misconception": "把37.8℃误判为轻症中暑"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "先兆中暑体温不超过38℃，符合该患者表现。",
+          "misconception_id": null,
+          "misconception": null
+        }
+      ],
+      "key_takeaway": "先兆中暑体温≤38℃；轻症一般>38℃；热射病核心体温>40.5℃。",
+      "source_quote": "体温正常或略高，不超过 38℃",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "medium",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q092",
+    "sequence": 92,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名建筑工人在高温屋面连续作业后，出现恶心呕吐、大汗淋漓、皮肤湿冷、脉搏细数，体温38.5℃，神志清楚。其最符合的中暑类型是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "热痉挛",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "热衰竭",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "热射病",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "先兆中暑",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "轻症中暑",
+        "is_correct": true
+      }
+    ],
+    "answer": "E",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "bloom": "理解",
+    "difficulty": "中等",
+    "topic": "轻症中暑表现",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P178-179",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P178-179",
+      "教师重点锚定清单第31条"
+    ],
+    "keypoint_ref": [
+      "第31条"
+    ],
+    "teacher_anchor": "轻症中暑：面色潮红或苍白、烦躁不安或表情淡漠、恶心呕吐、大汗淋漓、皮肤湿冷、脉搏细数、血压偏低、心率加快；体温一般超过 38℃，及时处理可于数小时内恢复（P178-179）〔原稿第43段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第31条",
+        "title": "轻症中暑表现",
+        "evidence": "题干给出38.5℃和循环表现，正确选项对应轻症中暑。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第31条",
+        "title": "轻症中暑鉴别",
+        "evidence": "选项A/B/C/D分别把38.5℃的轻症误判为更轻或更重类型。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "轻症中暑表现为面色潮红或苍白、烦躁不安或表情淡漠、恶心呕吐、大汗淋漓、皮肤湿冷、脉搏细数、血压偏低、心率加快，体温一般超过38℃，及时处理可于数小时内恢复。该患者体温38.5℃并出现上述表现，符合轻症中暑。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "热痉挛以肌肉痉挛为主，不是本题的循环表现。",
+          "misconception_id": "MC-EM-M05-092A",
+          "misconception": "把轻症中暑误判为热痉挛"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "热衰竭属于重症中暑，常伴明显血容量不足。",
+          "misconception_id": "MC-EM-M05-092B",
+          "misconception": "把轻症中暑误判为热衰竭"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "热射病核心体温超过40.5℃并伴意识障碍。",
+          "misconception_id": "MC-EM-M05-092C",
+          "misconception": "把38.5℃误判为热射病"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "先兆中暑体温不超过38℃，症状较轻；把轻症中暑误判为先兆，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-092D",
+          "misconception": "把轻症中暑误判为先兆"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "轻症中暑体温>38℃并伴恶心、大汗、皮肤湿冷和脉搏细数。",
+          "misconception_id": null,
+          "misconception": null
+        }
+      ],
+      "key_takeaway": "轻症中暑：体温>38℃，恶心呕吐、大汗、皮肤湿冷、脉搏细数；数小时内可恢复。",
+      "source_quote": "体温一般超过 38℃",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "medium",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q093",
+    "sequence": 93,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "按教材热射病处理原则，下列哪项是推荐的早期降温目标？",
+    "options": [
+      {
+        "label": "A",
+        "text": "10～40分钟降至39℃以下",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "2小时内降至39℃以下",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "10～40分钟降至38.5℃以下",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "24小时内降至38.5℃以下",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "2小时内降至38.5℃以下",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "热射病降温目标",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P179",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P179",
+      "教师重点锚定清单第32条"
+    ],
+    "keypoint_ref": [
+      "第32条"
+    ],
+    "teacher_anchor": "热射病（重度中暑）：中暑最严重类型，也称中暑高热；高热、无汗、意识障碍，体温超过 40.5℃；降温目标为核心体温 10～40 分钟内降至 39℃以下、2 小时内降至 38.5℃以下（P179）〔原稿第44段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第32条",
+        "title": "热射病降温目标",
+        "evidence": "题干问早期降温目标，正确选项对应教材10～40分钟目标。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第32条",
+        "title": "降温目标时间窗",
+        "evidence": "选项B/C/D/E分别把时间窗与温度目标错配或延长时间。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定热射病降温目标为核心体温10～40分钟内降至39℃以下，2小时内降至38.5℃以下。选项A符合早期目标；B把2小时目标误作39℃，C/D/E把时间窗与温度目标错配。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "10～40分钟降至39℃以下是教材所述早期目标。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "39℃以下是10～40分钟目标，不是2小时目标。",
+          "misconception_id": "MC-EM-M05-093B",
+          "misconception": "把2小时目标误作39℃"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "38.5℃以下是2小时目标，不是10～40分钟目标。",
+          "misconception_id": "MC-EM-M05-093C",
+          "misconception": "把10～40分钟目标误作38.5℃"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "24小时过晚，教材要求2小时内降至38.5℃以下。",
+          "misconception_id": "MC-EM-M05-093D",
+          "misconception": "把降温时间延至24小时"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "2小时目标应为38.5℃以下，不是39℃以下。",
+          "misconception_id": "MC-EM-M05-093E",
+          "misconception": "把2小时目标误作39℃（E）"
+        }
+      ],
+      "key_takeaway": "热射病降温：10～40分钟核心体温<39℃，2小时<38.5℃。",
+      "source_quote": "10～40 分钟内降至 39℃以下、2 小时内降至 38.5℃以下",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q094",
+    "sequence": 94,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "重度淹溺患者体温常低于多少摄氏度？",
+    "options": [
+      {
+        "label": "A",
+        "text": "26℃",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "28℃",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "30℃",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "32℃",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "35℃",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "difficulty": "中等",
+    "topic": "重度淹溺低体温",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P177-178",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P177-178",
+      "教师重点锚定清单第33条"
+    ],
+    "keypoint_ref": [
+      "第33条"
+    ],
+    "teacher_anchor": "溺水：淹没或沉浸在水或其他液性介质中引起呼吸系统损伤，导致窒息和缺氧；重度淹溺体温常低于 30℃；复温初始目标 34℃，经 24 小时温和的低体温治疗后再恢复到正常体温（P177-178）〔原稿第45段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第33条",
+        "title": "重度淹溺低体温",
+        "evidence": "题干问重度淹溺体温界值，正确选项对应教材30℃。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第33条",
+        "title": "淹溺低体温界值",
+        "evidence": "选项A/B/D/E分别把界值低估或高估。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材指出重度淹溺患者体温常低于30℃；复温初始目标为34℃，经24小时温和的低体温治疗后再恢复到正常体温。选项按数值递增排列，30℃对应重度淹溺的常见低体温界值。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "26℃过低，不是教材所述常见界值；把重度淹溺体温界值低估为26℃，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-094A",
+          "misconception": "把重度淹溺体温界值低估为26℃"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "28℃低于30℃，但教材强调常低于30℃。",
+          "misconception_id": "MC-EM-M05-094B",
+          "misconception": "低估为28℃"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "30℃是教材所述重度淹溺常见低体温界值。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "32℃高于30℃，不符合重度淹溺常见低体温。",
+          "misconception_id": "MC-EM-M05-094D",
+          "misconception": "高估为32℃"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "35℃接近正常体温，不符合重度淹溺；高估为35℃，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-094E",
+          "misconception": "高估为35℃"
+        }
+      ],
+      "key_takeaway": "重度淹溺体温常<30℃；复温初始目标34℃，24小时温和低体温治疗后再恢复正常。",
+      "source_quote": "重度淹溺体温常低于 30℃",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q095",
+    "sequence": 95,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "一名溺水者被救起后口鼻有泥沙、无有效呼吸。按教材现场处理，最先应做什么？",
+    "options": [
+      {
+        "label": "A",
+        "text": "先行倒挂控水",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "先给氧并保暖",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "清理口鼻+开放气道",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "等待急救车到达",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "立即喂温开水",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "difficulty": "中等",
+    "topic": "溺水现场急救",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P177-178",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P177-178",
+      "教师重点锚定清单第34条"
+    ],
+    "keypoint_ref": [
+      "第34条"
+    ],
+    "teacher_anchor": "溺水现场：立即清除口鼻泥沙异物、开放气道、给予人工呼吸和胸外按压；不常规倒挂控水；注意保温（P177-178；控水条目教材未单列，标教师补充）〔原稿第46段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第34条",
+        "title": "溺水现场急救",
+        "evidence": "题干给出溺水后口鼻泥沙和无呼吸，正确选项对应教材现场顺序。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第34条",
+        "title": "溺水现场急救顺序",
+        "evidence": "选项A/B/D/E分别把控水、保暖、等待和喂水置于气道处理之前。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材溺水现场处理为立即清除口鼻泥沙异物、开放气道、给予人工呼吸和胸外按压；不常规倒挂控水；注意保温。该患者口鼻有泥沙且无有效呼吸，最先应清理口鼻异物并开放气道，随后进行人工呼吸和胸外按压。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "倒挂控水不是常规处理，可能延误通气和按压。",
+          "misconception_id": "MC-EM-M05-095A",
+          "misconception": "把倒挂控水当作首选"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "保暖重要，但不能先于清理气道和通气；先保暖而延误气道处理，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-095B",
+          "misconception": "先保暖而延误气道处理"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "清理口鼻异物并开放气道是教材现场处理的第一步。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "无有效呼吸应立即施救，不能等待；无呼吸仍等待急救车，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-095D",
+          "misconception": "无呼吸仍等待急救车"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "溺水者不应喂水，可能加重误吸；给溺水者喂水，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-095E",
+          "misconception": "给溺水者喂水"
+        }
+      ],
+      "key_takeaway": "溺水现场：清理口鼻→开放气道→人工呼吸/胸外按压；不常规控水，注意保温。",
+      "source_quote": "立即清除口鼻泥沙异物、开放气道、给予人工呼吸和胸外按压",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q096",
+    "sequence": 96,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "电线落地时，室内人员与落地点至少应保持多大安全距离？",
+    "options": [
+      {
+        "label": "A",
+        "text": "4m",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "6m",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "8m",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "10m",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "12m",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "记忆",
+    "difficulty": "中等",
+    "topic": "电击伤安全距离",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P189",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P189",
+      "教师重点锚定清单第35条"
+    ],
+    "keypoint_ref": [
+      "第35条"
+    ],
+    "teacher_anchor": "电击伤断电：立即切断电源或用绝缘物挑开电线；电线落地时人与落地点保持室内 4m、室外 8m 以上安全距离，小于该距离应单脚跳跃或双脚并小步迅速离开（P189）〔原稿第47段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第35条",
+        "title": "电击伤安全距离",
+        "evidence": "题干问室内安全距离，正确选项对应教材4m。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第35条",
+        "title": "电击安全距离记忆",
+        "evidence": "选项B/C/D/E分别把室内距离记错或与室外距离混淆。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定电击伤断电时，电线落地，人与落地点应保持室内4m、室外8m以上安全距离；小于该距离应单脚跳跃或双脚并小步迅速离开。题目问室内距离，故为4m。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "4m是教材标定的室内安全距离；这是本题的正确依据。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "6m不是教材标定的室内距离；把室内距离误为6m，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-096B",
+          "misconception": "把室内距离误为6m"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "8m是室外安全距离，不是室内；把室外8m当作室内距离，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-096C",
+          "misconception": "把室外8m当作室内距离"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "10m超过教材室内要求；把室内距离误为10m，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-096D",
+          "misconception": "把室内距离误为10m"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "12m超过教材室内要求；把室内距离误为12m，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-096E",
+          "misconception": "把室内距离误为12m"
+        }
+      ],
+      "key_takeaway": "电线落地：室内4m、室外8m；距离不足时单脚跳跃或小步离开。",
+      "source_quote": "室内 4m、室外 8m 以上安全距离",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q097",
+    "sequence": 97,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名患者手背Ⅰ～Ⅱ度小面积烫伤，已脱离热源。按教材现场处理，最合适的是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "涂牙膏降温",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "刺破水疱放液",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "冷水冲洗或浸泡",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "涂油脂药膏",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "立即密封包扎",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "记忆",
+    "difficulty": "中等",
+    "topic": "烧烫伤现场冷疗",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P187/P309",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P187/P309",
+      "教师重点锚定清单第36条"
+    ],
+    "keypoint_ref": [
+      "第36条"
+    ],
+    "teacher_anchor": "烧烫伤急救冲：脱离热源后立即用冷水连续冲洗或浸泡；Ⅰ～Ⅱ度中小面积烧烫伤适用，Ⅲ度及大面积烧伤不必冷疗；不刺破水疱、不涂油脂或药膏，用清洁敷料覆盖（P187、P309）〔原稿第48段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第36条",
+        "title": "烧烫伤现场冷疗",
+        "evidence": "题干给出Ⅰ～Ⅱ度小面积烫伤，正确选项对应教材冷疗。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第36条",
+        "title": "烫伤冷疗误区",
+        "evidence": "选项A/B/D/E分别用牙膏、刺疱、油脂和密封包扎替代规范冷疗。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材烧烫伤急救强调脱离热源后立即用冷水连续冲洗或浸泡，适用于Ⅰ～Ⅱ度中小面积烧烫伤；Ⅲ度及大面积烧伤不必冷疗；不刺破水疱、不涂油脂或药膏，用清洁敷料覆盖。该患者为Ⅰ～Ⅱ度小面积烫伤，应冷水冲洗或浸泡。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "牙膏不是规范冷疗方法，可能刺激创面；用牙膏替代冷疗，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-097A",
+          "misconception": "用牙膏替代冷疗"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "刺破水疱会增加感染风险；刺破水疱，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-097B",
+          "misconception": "刺破水疱"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "冷水连续冲洗或浸泡适用于Ⅰ～Ⅱ度中小面积烫伤。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "油脂或药膏会影响创面观察和散热；涂油脂药膏，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-097D",
+          "misconception": "涂油脂药膏"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "密封包扎不利于散热，应先冷疗并清洁覆盖。",
+          "misconception_id": "MC-EM-M05-097E",
+          "misconception": "立即密封包扎"
+        }
+      ],
+      "key_takeaway": "Ⅰ～Ⅱ度中小面积烫伤：立即冷水冲洗/浸泡；不刺水疱、不涂油脂药膏。",
+      "source_quote": "立即用冷水连续冲洗或浸泡",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "medium",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q098",
+    "sequence": 98,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名患者被流浪犬咬伤后出血，伤口见唾液污染，属于Ⅲ级暴露。按教材应如何处理？",
+    "options": [
+      {
+        "label": "A",
+        "text": "伤口处理+疫苗+被动免疫",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "仅做伤口清洗消毒",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "仅接种狂犬病疫苗",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "仅注射被动免疫制剂",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "观察无需特殊处理",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "犬咬伤暴露后处理",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P192",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P192",
+      "教师重点锚定清单第37条"
+    ],
+    "keypoint_ref": [
+      "第37条"
+    ],
+    "teacher_anchor": "犬咬伤：伤口处理+狂犬病疫苗；Ⅱ级暴露处理伤口+注射狂犬病疫苗；Ⅲ级暴露加用狂犬病被动免疫制剂；5 针法第 0、3、7、14、28 天各 1 剂，“2-1-1”程序第 0 天（2 剂）、第 7 天和第 21 天各 1 剂；潜伏期多数 20～90 天（P192）〔原稿第49段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第37条",
+        "title": "犬咬伤暴露后处理",
+        "evidence": "题干给出出血和唾液污染，正确选项对应Ⅲ级暴露联合处理。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第37条",
+        "title": "犬咬伤暴露分级处理",
+        "evidence": "选项B/C/D/E分别漏掉疫苗、被动免疫或伤口处理。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定犬咬伤处理包括伤口处理+狂犬病疫苗；Ⅱ级暴露处理伤口+注射狂犬病疫苗；Ⅲ级暴露在此基础上加用狂犬病被动免疫制剂。该患者出血并有唾液污染，属于Ⅲ级暴露，应伤口处理、接种疫苗并加用被动免疫制剂。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "Ⅲ级暴露需要伤口处理、疫苗和被动免疫三者联合。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "仅伤口处理不足以预防狂犬病；Ⅲ级暴露仅做伤口处理，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-098B",
+          "misconception": "Ⅲ级暴露仅做伤口处理"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "Ⅲ级暴露仅接种疫苗不够，还需被动免疫；Ⅲ级暴露仅接种疫苗，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-098C",
+          "misconception": "Ⅲ级暴露仅接种疫苗"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "仅被动免疫不能替代疫苗接种；Ⅲ级暴露仅用被动免疫，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-098D",
+          "misconception": "Ⅲ级暴露仅用被动免疫"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "Ⅲ级暴露风险高，不能仅观察；Ⅲ级暴露仅观察，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-098E",
+          "misconception": "Ⅲ级暴露仅观察"
+        }
+      ],
+      "key_takeaway": "犬咬伤Ⅲ级暴露：伤口处理 + 狂犬病疫苗 + 被动免疫制剂；Ⅱ级暴露只需伤口处理+疫苗。",
+      "source_quote": "Ⅲ级暴露加用狂犬病被动免疫制剂",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q099",
+    "sequence": 99,
+    "schema_version": "2.1",
+    "module": "M05",
+    "module_name": "理化、环境损伤（中暑、溺水、电击、烧烫伤、冻伤、动物咬伤）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名四肢大出血伤员需现场使用止血带。按教材，下列哪项做法正确？",
+    "options": [
+      {
+        "label": "A",
+        "text": "直接缠在皮肤表面",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "用电线代替止血带",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "伤口上方5cm扎止血带",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "超过6小时不放松",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "不垫衬直接勒紧皮肤",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "止血带规范使用",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P282",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P282",
+      "教师重点锚定清单第38条"
+    ],
+    "keypoint_ref": [
+      "第38条"
+    ],
+    "teacher_anchor": "止血带使用：扎在出血伤口上方 5cm，上臂宜在上 1/3、大腿宜在上 2/3；须用三角巾、毛巾等垫衬，不能直接缠在皮肤上；以出血停止、远端动脉搏动不能扪及为度；最长不宜超过 4 小时，每小时缓慢放松 1 次、每次 1～2 分钟；严禁用电线、铁丝、绳索代替（P282）〔原稿第50段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第38条",
+        "title": "止血带规范使用",
+        "evidence": "题干问止血带规范做法，正确选项对应教材位置要求。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第38条",
+        "title": "止血带规范",
+        "evidence": "选项A/B/D/E分别违反垫衬、器材、时限和皮肤保护要求。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材规定止血带扎在出血伤口上方5cm，上臂宜在上1/3、大腿宜在上2/3；须用三角巾、毛巾等垫衬，不能直接缠在皮肤上；以出血停止、远端动脉搏动不能扪及为度；最长不宜超过4小时，每小时缓慢放松1次、每次1～2分钟；严禁用电线、铁丝、绳索代替。选项C符合位置要求。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "止血带不能直接缠在皮肤上，应加垫衬；止血带直接缠皮肤，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-099A",
+          "misconception": "止血带直接缠皮肤"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "电线、铁丝、绳索严禁代替止血带；用电线代替止血带，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-099B",
+          "misconception": "用电线代替止血带"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "伤口上方5cm是教材标定的止血带位置；这是本题的正确依据。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "最长不宜超过4小时，超过6小时不放松错误。",
+          "misconception_id": "MC-EM-M05-099D",
+          "misconception": "超过6小时不放松"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "不垫衬直接勒紧会损伤皮肤和神经；不垫衬直接勒紧，与题干条件不符。",
+          "misconception_id": "MC-EM-M05-099E",
+          "misconception": "不垫衬直接勒紧"
+        }
+      ],
+      "key_takeaway": "止血带：伤口上方5cm、上臂上1/3或大腿上2/3；加垫衬；≤4小时，每小时放松1～2分钟。",
+      "source_quote": "扎在出血伤口上方 5cm",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  },
+  {
+    "id": "batch046-Q100",
+    "sequence": 100,
+    "schema_version": "2.1",
+    "module": "M06",
+    "module_name": "创伤急诊、多发伤（ABCDE 初级评估）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "按教材，多发伤的定义是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "两个以上器官慢性疾病",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "同一解剖部位多处损伤",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "多处软组织严重损伤",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "同一致伤因素≥2部位严重伤",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "两次不同事故所致损伤",
+        "is_correct": false
+      }
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "bloom": "应用",
+    "difficulty": "中等",
+    "topic": "多发伤定义",
+    "source_type": "原创",
+    "license": "public_noncommercial",
+    "source_page": "教材P255",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P255",
+      "教师重点锚定清单第39条"
+    ],
+    "keypoint_ref": [
+      "第39条"
+    ],
+    "teacher_anchor": "多发伤：同一致伤因素造成 2 个及以上解剖部位严重损伤；伤情重、变化快，有三个死亡高峰（伤后数分钟内、伤后 1 小时内、伤后数天）（P255）〔原稿第53段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第39条",
+        "title": "多发伤定义",
+        "evidence": "题干问多发伤定义，正确选项对应教材致伤因素和解剖部位数量。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第39条",
+        "title": "多发伤定义要件",
+        "evidence": "选项A/B/C/E分别偏离致伤因素、解剖部位数量或单次事故要件。"
+      }
+    ],
+    "learning_value": {
+      "correct_rationale": "教材定义多发伤为同一致伤因素造成2个及以上解剖部位严重损伤；伤情重、变化快，有三个死亡高峰（伤后数分钟内、伤后1小时内、伤后数天）。选项D符合定义。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "多发伤是急性创伤，不是两个以上器官的慢性疾病。",
+          "misconception_id": "MC-EM-M06-100A",
+          "misconception": "把多发伤误为多器官慢性病"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "同一解剖部位多处损伤不等于多个解剖部位严重损伤。",
+          "misconception_id": "MC-EM-M06-100B",
+          "misconception": "把同一部位多处伤当作多发伤"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "多处软组织伤不一定达到解剖部位严重损伤标准。",
+          "misconception_id": "MC-EM-M06-100C",
+          "misconception": "把多处软组织伤当作多发伤"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "同一致伤因素造成≥2个解剖部位严重损伤符合定义。",
+          "misconception_id": null,
+          "misconception": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "两次不同事故不属于同一致伤因素；把两次不同事故伤当作多发伤，与题干条件不符。",
+          "misconception_id": "MC-EM-M06-100E",
+          "misconception": "把两次不同事故伤当作多发伤"
+        }
+      ],
+      "key_takeaway": "多发伤 = 同一致伤因素 + ≥2个解剖部位严重损伤；注意三个死亡高峰。",
+      "source_quote": "同一致伤因素造成 2 个及以上解剖部位严重损伤",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "HC-28 教师重点逐字锚定；发布前签收"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "HC-28：教师重点逐字锚定；未独立医学核验，发布前签收",
+    "release": {
+      "disposition": "publishable",
+      "evidence_grade": "A",
+      "risk_level": "high",
+      "reason_code": "NONE",
+      "agent_checks": [
+        "教师重点原文逐字锚定",
+        "学习价值逐项覆盖",
+        "概念 primary/differential 标注",
+        "选项结构校验"
+      ],
+      "human_check": "",
+      "suggested_action": ""
+    },
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null
+  }
+]

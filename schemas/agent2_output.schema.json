@@ -124,6 +124,24 @@
           "review_status": { "type": "string" }
         },
         "additionalProperties": true
+      },
+      "release": {
+        "type": "object",
+        "description": "HC-28 发布处置标注。人类专属核验不阻断生成；高风险 C 级隔离，低风险 C 级待人工，A/B 且门禁通过才可发布。",
+        "required": ["disposition", "evidence_grade", "risk_level"],
+        "properties": {
+          "disposition": { "type": "string", "enum": ["publishable", "pending_human", "quarantined"] },
+          "evidence_grade": { "type": "string", "enum": ["A", "B", "C"] },
+          "risk_level": { "type": "string", "enum": ["high", "medium", "low"] },
+          "reason_code": {
+            "type": "string",
+            "enum": ["NONE", "HUMAN_MEDICAL_REVIEW", "COPYRIGHT", "ORIGINAL_PAPER", "GUIDELINE_CONFLICT", "SOURCE_MISSING"]
+          },
+          "agent_checks": { "type": "array", "items": { "type": "string" } },
+          "human_check": { "type": "string" },
+          "suggested_action": { "type": "string" }
+        },
+        "additionalProperties": true
       }
     },
     "allOf": [

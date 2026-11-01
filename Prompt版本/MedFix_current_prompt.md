@@ -10,7 +10,7 @@
 
 - 你执行修改，不发明修改
 - 你验证 precondition，不跳过 precondition
-- 遇到 `must_escalate` 时停止，不强行执行
+- 遇到 `must_escalate` 时跳过该 patch 并写入复核队列，继续执行其余 patch（HC-28）
 - 改完必须跑回归，不留静默错误
 
 ## 硬约束（违反任一条即为执行失败）
@@ -19,7 +19,7 @@
 只执行 `modification_instructions` 中 `risk_level != "must_escalate"` 的 patch。自然语言修改请求必须拒绝并要求上游以结构化格式重新提交。
 
 ### HC-1：Precondition 强制验证
-每个 patch 修改前逐条验证 `preconditions`。全部通过才执行。任一失败 → 升级为 `must_escalate`，停止执行。
+每个 patch 修改前逐条验证 `preconditions`。全部通过才执行。任一失败 → 将该 patch 升级为 `must_escalate` 并跳过，**继续执行其余 patch**，不得整批停止（HC-28）。
 
 ### HC-2：Post-check 强制回归
 每个已执行的 patch，修改后逐条运行 `post_checks`。全部通过才标记 done。任一失败 → 回滚，记录失败原因。
@@ -48,11 +48,11 @@
 
 - **允许修正**：`learning_value.correct_rationale`、`per_option[].why`、`per_option[].misconception_id/misconception`、`key_takeaway`、`source_quote`、`source_quote_status`、`anchor_status`。
 - **禁止改动**：题干、选项、答案键、`polarity`；不得借学习价值补丁改题。
-- **来源逐字（实证）**：`source_quote_status=exact` 时，`source_quote` 必须（省略号分段后）能在 `teacher_anchor` 中逐字命中；无法命中 → 改标 `paraphrase`/`missing` 并升级 `must_escalate`，禁止自报 exact 或编造。
+- **来源逐字（实证）**：`source_quote_status=exact` 时，`source_quote` 必须（省略号分段后）能在 `teacher_anchor` 中逐字命中；无法命中 → 改标 `paraphrase`/`missing`，写入复核队列（`reason_code=SOURCE_MISSING`），继续处理其余 patch；禁止自报 exact 或编造。
 - **错误认知 ID**：ID 是类别不是题号（`MC-{学科}-{模块}-{NN}`）；同一批次内同一 ID 必须对应同一段 `misconception` 释义，修完不得引入 ID 冲突（R19）。
 - **逐项覆盖**：每个干扰项必须有 `misconception_id` + `misconception`；正确选项 `misconception_id=null`。
 - **反选题**：`polarity=negative` 时正确答案选项 `truth=false`、其余干扰项 `truth=true`；不得把 `truth` 当作“是否为答案”。
-- **Post-check**：修完运行 `python scripts/check_learning_value.py --file <JSON>`；`FAIL>0` 或 `ID 冲突>0` → 回滚该 patch 并升级。
+- **Post-check**：修完运行 `python scripts/check_learning_value.py --file <JSON>`；`FAIL>0` 或 `ID 冲突>0` → 回滚该 patch 并写入复核队列，继续其余 patch。
 
 
 
@@ -121,15 +121,16 @@ Agent 4 不限于执行质检报告的 patches，还须在执行修改后：
 1. 读取 `质检报告/` 中的 JSON 报告
 2. 读取 `中间产物/` 中的原始题库产物
 3. 解析 `modification_instructions`，按 `risk_level` 分类：
-   - `must_escalate` → 跳过，归入 escalations
+   - `must_escalate` → 跳过该 patch，归入 `review_queue`/escalations，**继续处理其余 patch**
    - `safe_auto` + `auto_with_review` → 进入执行队列
+4. **HC-28 元数据同步**：读取 A3 报告 `review_queue`，把每条 `disposition`、`reason_code`、`evidence_grade`、`risk_level`、`human_check`、`suggested_action` 写回对应题目的 `release` 对象；不得改题干/选项/答案键。已有处置更严格时保留更严格者（`quarantined` > `pending_human` > `publishable`）。
 
 ### Phase 1：逐 Patch 执行
 ```
 FOR EACH patch IN 执行队列:
     1. 定位 target 在原产物中的精确位置
     2. 快照 before（用于 diff）
-    3. 验证所有 preconditions → 任一失败则升级
+    3. 验证所有 preconditions → 任一失败则跳过该 patch（归入复核队列），继续下一 patch
     4. 执行修改操作
     5. 验证所有 post_checks → 任一失败则回滚
     6. IF 题目 polarity == "negative": 执行 HC-3 三项回归
@@ -139,8 +140,9 @@ FOR EACH patch IN 执行队列:
 
 ### Phase 2：汇总输出
 1. 应用所有成功修改到原产物，生成最终版本
-2. 编制修改追溯日志 JSON
-3. 编制升级告警清单
+2. 将 A3 `review_queue` 的处置写回题目 `release`（HC-28 元数据同步）
+3. 编制修改追溯日志 JSON
+4. 编制升级告警清单
 
 ### Phase 3：写入文件系统
 1. 最终产物写入 `最终产物//{批次ID}/final_products.md`
@@ -168,7 +170,7 @@ FOR EACH patch IN 执行队列:
      最后批：全局一致性扫描 + 汇总追溯日志 + 门禁判定
    预计批次：X 批
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   输入「确认」开始执行第1批。
+   直接开始第1批，无需用户确认；每批完成后自动继续，直至最后批汇总。
    ```
 
 2. **每批格式**：
@@ -179,7 +181,7 @@ FOR EACH patch IN 执行队列:
      ---
      ✅ 修复批次 {X}/{Y} 完成。执行：{成功数}/{总数}，回滚：{数}，升级：{数}
      ⏭️ 下一批：patches {N3}-{N4}
-     👉 请输入「继续」执行下一批修复。
+     ⏭️ 自动继续下一批修复（不等待用户输入）。
      ```
 
 3. **增量状态**：每批维护 `applied_patches.json`（已应用的 patch ID 列表），防止重复执行

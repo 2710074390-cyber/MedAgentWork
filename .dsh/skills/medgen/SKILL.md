@@ -15,7 +15,7 @@ whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务
 
 ## DSH 执行规则（替代 Cherry Studio 对话式交互）
 
-1. **免确认回显**：HC-6 的"意图确认回显"已由编排者在主会话完成，收到调用指令即视为已确认，**直接开始生成，不要反问**。
+1. **免确认回显**：HC-6 的"意图确认回显"已由编排者在主会话完成，收到调用指令即视为已确认，**直接开始生成，不要反问、不要等待用户确认**（HC-28）。
 2. **输入**：用 read 工具读取编排者给出的素材路径（`输入素材/` 章节原文、RAG 检索结果、`中间产物/{batchID}/kaoyan_candidates.json` 真题候选、调用指令中的配额与细目表）。
 3. **输出**：
    - 题库 JSON 直接写入 `中间产物/{batchID}/`（如 `ALL_questions.json`）。**必须为纯 JSON 数组**，禁止 YAML frontmatter 或修改声明混入（batch006 教训）。
@@ -30,7 +30,8 @@ whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务
      - `tier="pdf"`（历年真题，同等相关时有轻微优先）：`zhiyi_origin{source_id,source,corpus:"pdf_paper",mode,answer_confidence}` + `[源:执业医师真题 {YYYY}年第{单元}单元第{题号}题]`；
      - `tier="cmexam"`（CMExam 题库，可直接入选）：`zhiyi_origin{source_id,source,corpus:"cmexam",mode,answer_confidence}` + `[源:执业医师 CMExam-XXX]`；
    - **每题必须带 `keypoint_ref`（HC-20 统一锚定编号）与 `license`**；只使用 `answer_confidence=high/medium`；
-   - 原题题干/选项/答案/数值不得改动；`quota_status=reduced`（减量）或 `cancelled`（取消配额）时用原创补齐，禁止用无关题凑数；批次统计写明「考研 X / 执医 Y（历年真题 a + CMExam b）/ 原创 Z」。
+   - 原题题干/选项/答案/数值不得改动；`quota_status=reduced`（减量）、`cancelled`（无候选取消配额）或 `deferred`（候选存在但人类专属核验未完成，HC-28）时用原创补齐，禁止用无关题凑数；批次统计写明「考研 X / 执医 Y（历年真题 a + CMExam b）/ 原创 Z」及减量/延后原因。
    - 旧 `kaoyan_candidates.json` 仅兼容旧批次；不要再用 `answer=ABCD/ABCDE` 的行首前缀。
-7. **后续批次命题质量**：遵守主提示词「后续批次命题质量补充约定」，逐项设计同类且有依据的干扰项，证明单选唯一或最优；关键依据缺失、冲突、多解或不能排除竞争项时不交付该题，升级人工医学复核。原题保持不变，不能为凑格式或配额改写。脚本通过不代表医学正确。
-8. **完成后报告**：文件路径 + 题目总数 + Bloom 分布摘要 + 考研真题占比 + 自检结果（通过/失败数）。
+7. **后续批次命题质量**：遵守主提示词「后续批次命题质量补充约定」，逐项设计同类且有依据的干扰项，证明单选唯一或最优。关键依据缺失、冲突、多解或不能排除竞争项时：先重写一次；仍不能解决则将该题标 `release.disposition=quarantined`、写复核队列并继续生成其余题，**不得停止整批、不得等待人工**（HC-28）。原题保持不变，不能为凑格式或配额改写。脚本通过不代表医学正确。
+8. **一次跑完（HC-28）**：每题输出 `release` 对象（`disposition`/`evidence_grade`/`risk_level`/`reason_code`/`agent_checks`/`human_check`/`suggested_action`）；批次报告给出 `generation_status`、`release_status`、`review_queue` 计数。人类专属核验（原卷/版权/专家裁定）只入队列，不阻断生成；最终回复不得以「请确认 / 待核验」结束。
+9. **完成后报告**：文件路径 + 题目总数 + Bloom 分布摘要 + 考研真题占比 + 自检结果（通过/失败数）+ 生成/发布状态与复核队列计数。

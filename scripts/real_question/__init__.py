@@ -12,6 +12,7 @@
 设计原则：
   - 只读原始素材，不修改 GoldenSet / CMExam；
   - 答案不可核的题不进入可选池；
-  - 检索不到时输出 insufficient，不用无关题凑数；
+  - 候选不足时输出 reduced / cancelled；候选存在但按 HC-28 延后人类核验时输出 deferred，
+    不用无关题凑数；
   - 所有产物带 source_id / keypoint_ref / answer_confidence / license。
 """

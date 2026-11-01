@@ -1,5 +1,5 @@
 {
-  "active_batch": "batch040",
+  "active_batch": null,
   "halt": {
     "active": false
   },
@@ -4858,7 +4858,7 @@
   },
   "batch038": {
     "batch_id": "batch038",
-    "status": "AGENT5_COMPLETED",
+    "status": "COMPLETED",
     "created": "2026-10-14T18:54:01.949541",
     "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
     "steps": {
@@ -4955,7 +4955,7 @@
       "GATE-FINAL": {
         "status": "PASS",
         "reason": "终审门禁通过 (HC-9/10/11 OK, JSON有效)",
-        "checked_at": "2026-10-14T20:23:43.768295"
+        "checked_at": "2026-11-01T18:41:55.505370"
       }
     },
     "final_review": {
@@ -4963,7 +4963,13 @@
       "hc10_page_authenticity": "PASS — 全部页码为真实印刷页(印刷页=PDF页−17)，0 占位符；check_inline_images 0 占位/0 缺失/FAIL 0",
       "hc11_outline_page_marking": "PASS — 来源锚点均标注教材印刷页",
       "json_valid": true
-    }
+    },
+    "product_types": [
+      "question_bank",
+      "review_material"
+    ],
+    "reconciled_at": "2026-11-01T18:41:22",
+    "reconcile_note": "四阶段均 COMPLETED、GATE-FINAL PASS；阶段态归一为 COMPLETED。题库未注册（archive 无最终 JSON）；公开 PDF 已上站。"
   },
   "batch039": {
     "batch_id": "batch039",
@@ -5281,7 +5287,7 @@
   },
   "batch041": {
     "batch_id": "batch041",
-    "status": "IN_PROGRESS",
+    "status": "BLOCKED",
     "created": "2026-10-19T18:27:36.221088",
     "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
     "steps": {},
@@ -5312,11 +5318,19 @@
       "halt": {
         "active": false
       }
-    }
+    },
+    "product_types": [
+      "prediction_paper"
+    ],
+    "published_artifacts": [
+      "大四上/押题卷/耳鼻咽喉头颈外科学押题卷_100题.md"
+    ],
+    "reconciled_at": "2026-11-01T18:41:22",
+    "reconcile_note": "押题卷 100 题已人工发布，但批次记录无 steps、GATE-FINAL BLOCKED；无法补签为 APPROVED，状态保留 BLOCKED 作为流程债。"
   },
   "batch043": {
     "batch_id": "batch043",
-    "status": "AGENT4_DONE",
+    "status": "COMPLETED",
     "created": "2026-10-26T23:18:22.924136",
     "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
     "item_schema_version": "2.0",
@@ -5429,7 +5443,9 @@
       "hc10_page_authenticity": "PASS：P1-P309 分散真实页码，无占位",
       "hc11_outline_page_marking": "PASS：61 条锚点逐条带印刷页",
       "json_valid": true
-    }
+    },
+    "reconciled_at": "2026-11-01T18:41:22",
+    "reconcile_note": "AGENT2-5 均 COMPLETED、GATE-FINAL PASS；AGENT4_DONE 阶段态归一为 COMPLETED。题库已注册，复习资料已发布。"
   },
   "batch044": {
     "batch_id": "batch044",
@@ -5462,6 +5478,225 @@
       "halt": {
         "active": false
       }
-    }
+    },
+    "product_types": [
+      "prediction_paper"
+    ],
+    "published_artifacts": [
+      "大四上/押题卷/急诊与灾难医学押题卷_100题.md"
+    ],
+    "reconciled_at": "2026-11-01T18:41:22",
+    "reconcile_note": "急诊押题卷 100 题已发布；该批为独立组卷流程，无 steps / GATE-FINAL 记录，状态维持 COMPLETED。"
+  },
+  "batch046": {
+    "batch_id": "batch046",
+    "status": "APPROVED",
+    "created": "2026-11-01T14:54:43.957750",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "item_schema_version": "2.1",
+    "evidence_binding_mode": "strict",
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "output": "ALL_questions.json",
+        "md5": "819cc043feda01b5511f9259ade4dfdf8c34b061c7b0cacdddaa5fc2d9aa9f58",
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedGen_current_prompt"
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "output": "A3_质检报告.json",
+        "md5": "02583054c964f2979ce76d0d0988876e605dabaadb0ca2bdf3bdf35006a33b33",
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedQC_current_prompt"
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "output": "ALL_questions_FIXED.json + AGENT4_追溯日志.json",
+        "md5": "819cc043feda01b5511f9259ade4dfdf8c34b061c7b0cacdddaa5fc2d9aa9f58",
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedFix_current_prompt",
+        "trace_log": "AGENT4_追溯日志.json"
+      }
+    },
+    "lineage": [
+      {
+        "stage": "agent2_DONE",
+        "input_file": "中间产物/batch046/ALL_questions.json",
+        "input_md5": "819cc043feda01b5511f9259ade4dfdf8c34b061c7b0cacdddaa5fc2d9aa9f58",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedGen_current_prompt",
+        "timestamp": "2026-11-01T18:09:23.254815"
+      },
+      {
+        "stage": "agent3_DONE",
+        "input_file": "质检报告/batch046/A3_质检报告.json",
+        "input_md5": "02583054c964f2979ce76d0d0988876e605dabaadb0ca2bdf3bdf35006a33b33",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedQC_current_prompt",
+        "timestamp": "2026-11-01T18:09:23.254815"
+      },
+      {
+        "stage": "agent4_DONE",
+        "input_file": "最终产物/batch046/ALL_questions_FIXED.json",
+        "input_md5": "819cc043feda01b5511f9259ade4dfdf8c34b061c7b0cacdddaa5fc2d9aa9f58",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedFix_current_prompt",
+        "timestamp": "2026-11-01T18:09:23.254815"
+      }
+    ],
+    "subject": "急诊与灾难医学",
+    "product_types": [
+      "question_bank"
+    ],
+    "target_count": 100,
+    "target_bloom": {
+      "记忆": 20,
+      "理解": 25,
+      "应用": 35,
+      "分析": 20
+    },
+    "question_blueprint_gate": {
+      "bloom_targets": {
+        "记忆": [
+          0,
+          20
+        ],
+        "理解": [
+          20,
+          30
+        ],
+        "应用": [
+          30,
+          40
+        ],
+        "分析": [
+          15,
+          25
+        ]
+      },
+      "type_targets": {
+        "A1": [
+          25,
+          35
+        ],
+        "A2": [
+          40,
+          50
+        ],
+        "A3": [
+          15,
+          25
+        ],
+        "A4": [
+          0,
+          10
+        ]
+      },
+      "type_group_targets": {
+        "A3+A4": [
+          25,
+          25
+        ]
+      }
+    },
+    "real_question_targets": {
+      "kaoyan": 20,
+      "zhiyi": 20
+    },
+    "original_policy": "regenerate",
+    "model": "unknown",
+    "gate_results": {
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "批次已签收 (APPROVED)，人工审核已覆盖终审",
+        "checked_at": "2026-11-01T18:41:54.087760"
+      },
+      "halt": {
+        "active": false
+      },
+      "GATE-A2": {
+        "status": "PASS",
+        "reason": "产出门禁通过 (FAIL=0, PASS=85, WARN=15)",
+        "checked_at": "2026-11-01T18:09:29.662773"
+      },
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS, D20 OK, Bloom OK)",
+        "checked_at": "2026-11-01T18:09:29.891501"
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-11-01T18:15:58.597097"
+      },
+      "GATE-LV": {
+        "status": "PASS",
+        "reason": "HC-24 通过：FAIL=0，逐项=100.0%，错误认知=100.0%，标注 exact=100.0%，引文实证=100.0%，ID 冲突=0，锚点已核=100.0%",
+        "checked_at": "2026-11-01T18:10:46.518546"
+      }
+    },
+    "final_review": {
+      "json_valid": true,
+      "hc9": "SKIPPED",
+      "hc10": "SKIPPED",
+      "hc11": "SKIPPED"
+    },
+    "generation_status": "DONE",
+    "release_status": "READY",
+    "medical_review_status": "USER_SIGNED_OFF",
+    "review_queue": {
+      "path": "最终产物/batch046/review_queue.json",
+      "publishable": 100,
+      "pending_human": 0,
+      "quarantined": 0
+    },
+    "approved_at": "2026-11-01T18:15:01",
+    "approved_by": "user",
+    "signoff_note": "用户签收；交付名称：急诊新版押题卷",
+    "site_deploy": {
+      "deployed_at": "2026-11-01T18:24:23",
+      "commit": "3154575",
+      "url": "https://med-review-site.pages.dev",
+      "pdf": "大四上/题库/急诊新版押题卷.pdf",
+      "pdf_status": 200,
+      "index_card": true,
+      "hc21_l3": "3154575 == 315457506e55097771a08701bc80ca745a69b09d"
+    },
+    "published_artifacts": [
+      "大四上/题库/急诊新版押题卷.pdf"
+    ],
+    "reconciled_at": "2026-11-01T18:41:22",
+    "reconcile_note": "已签收并上站（commit 3154575）；配额状态由 cancelled 修订为 deferred，候选保留在 real_question_plan.json 的 hc28_update/deferred_candidates。"
+  },
+  "batch042": {
+    "batch_id": "batch042",
+    "status": "COMPLETED",
+    "created": "2026-11-01T18:41:22",
+    "subject": "耳鼻咽喉头颈外科学（真题专项）",
+    "product_types": [
+      "question_bank"
+    ],
+    "target_count": 100,
+    "steps": {},
+    "lineage": [],
+    "registry_status": "registered",
+    "reconciled_at": "2026-11-01T18:41:22",
+    "reconcile_note": "最终产物与注册表均存在（100 题），旧记录缺失；补登记为 COMPLETED。"
+  },
+  "batch045": {
+    "batch_id": "batch045",
+    "status": "PILOT",
+    "created": "2026-11-01T18:41:22",
+    "subject": "急诊与灾难医学（试点留档）",
+    "product_types": [
+      "question_bank"
+    ],
+    "steps": {},
+    "lineage": [],
+    "pilot_only": true,
+    "publishable": false,
+    "reconciled_at": "2026-11-01T18:41:22",
+    "reconcile_note": "batch045 v5 为试点留档，不进入正式发布；补登记为 PILOT，避免产物目录成为孤儿。"
   }
 }

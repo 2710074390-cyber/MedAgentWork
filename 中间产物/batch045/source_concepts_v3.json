@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-11-01T13:44:20",
+  "generator": "scripts/check_source_concepts.py",
+  "file": "中间产物\\batch045\\ALL_questions_pilot_revised_v3.json",
+  "input_sha256": "ef33b0200a02adaefc937fa7400b5d9a7bc1f8fb3eb9c3c05a2976b8fd7eb93b",
+  "batch": "",
+  "status": "WARN",
+  "versions": {
+    "2.1": 109
+  },
+  "checked": 109,
+  "total": 109,
+  "by_type": {
+    "A1": 90,
+    "A2": 19
+  },
+  "concepts_per_question": {
+    "1": 90,
+    "2": 19
+  },
+  "multi_type_total": 19,
+  "multi_type_with_2plus": 19,
+  "multi_type_rate": 1.0,
+  "fails": [],
+  "warn_count": 10,
+  "warns": [
+    "batch045-M05-A1-019: A2 有多个概念但没有 differential（可能都写成 related）",
+    "batch045-M06-A2-004: A2 有多个概念但没有 differential（可能都写成 related）",
+    "batch045-M06-A2-006: A2 有多个概念但没有 differential（可能都写成 related）",
+    "batch045-M06-A2-008: A2 有多个概念但没有 differential（可能都写成 related）",
+    "batch045-M06-A2-011: A2 有多个概念但没有 differential（可能都写成 related）",
+    "batch045-M07-A2-005: A2 有多个概念但没有 differential（可能都写成 related）",
+    "batch045-M07-A2-014: A2 有多个概念但没有 differential（可能都写成 related）",
+    "batch045-M08-A2-002: A2 有多个概念但没有 differential（可能都写成 related）",
+    "batch045-M08-A2-010: A2 有多个概念但没有 differential（可能都写成 related）",
+    "batch045-M08-A2-013: A2 有多个概念但没有 differential（可能都写成 related）"
+  ]
+}

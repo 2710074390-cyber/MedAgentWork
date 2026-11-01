@@ -1,0 +1,3807 @@
+{
+  "generated_at": "2026-11-01T13:44:11",
+  "file": "中间产物\\batch045\\ALL_questions_pilot_revised_v3.json",
+  "batch": "",
+  "input_sha256": "ef33b0200a02adaefc937fa7400b5d9a7bc1f8fb3eb9c3c05a2976b8fd7eb93b",
+  "summary": {
+    "total": 109,
+    "pass": 0,
+    "warn": 109,
+    "fail": 0,
+    "per_option_coverage": 1.0,
+    "misconception_coverage": 1.0,
+    "source_quote_exact_rate": 0.578,
+    "quote_verified_rate": 1.0,
+    "misconception_id_conflicts": 0,
+    "anchor_verified_rate": 0.0,
+    "anchor_low_overlap_count": 47
+  },
+  "items": [
+    {
+      "id": "batch045-M01-A1-001",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 32,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2051,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-002",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1379,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "干扰项有效性待复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-003",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1923,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M01-A1-004",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 28,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2143,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-005",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 32,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0323,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.032 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-006",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.129,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-001",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 40,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3448,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-002",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3793,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-003",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1935,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-004",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 42,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-005",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-006",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0385,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.038 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-007",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2273,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-008",
+      "type": "A2",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2273,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-009",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.7143,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-010",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 43,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.15,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-011",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 39,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0625,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.062 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-012",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 40,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-013",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0909,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.091 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-014",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 35,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0811,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.081 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-015",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 39,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0952,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.095 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-016",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0741,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.074 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-017",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1304,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-018",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1304,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-019",
+      "type": "A2",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 40,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1905,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-020",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.4783,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-021",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 42,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1053,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-022",
+      "type": "A2",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 41,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0769,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-023",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 40,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0833,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.083 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M12-024",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 46,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0741,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.074 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-101",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 27,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3158,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "干扰项有效性待复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "授权待核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-102",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 25,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0588,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "授权待核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.059 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-103",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 28,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1818,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "选项同质性待复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "授权待核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-104",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 28,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "授权待核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-001",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 41,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1429,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径，非现行指南"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "授权待核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-002",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.375,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径，非现行指南"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-003",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 31,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2308,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径，非现行指南"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-004",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 21,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-005",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 21,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3548,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径，非现行指南"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-006",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1765,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径，非现行指南"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-007",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2105,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材列无汗但并非诊断必需"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-008",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 26,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材数值，非现行指南"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-009",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 20,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-010",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 21,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0667,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.067 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-011",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0526,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "控水为教师补充，非教材原文"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.053 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-012",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1071,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "控水为教师补充"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-013",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 39,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-014",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1053,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材距离非普适安全界限"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-015",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 31,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1818,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "大面积烧伤须防低体温并及时就医"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-016",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0556,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.056 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-017",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1905,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径，具体按现行规范"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-018",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1905,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需结合免疫史和现行规范"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-019",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 21,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0571,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材操作细节不作为现行规范"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M05-A1-020",
+      "type": "A1",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材建议存在安全风险，本题未采用"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "现行规范待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-001",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-002",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材三峰模式为教学概括"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-003",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A2-004",
+      "type": "A2",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 39,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0769,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-005",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 39,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3333,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A2-006",
+      "type": "A2",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0476,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-007",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 35,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A2-008",
+      "type": "A2",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 35,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0476,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-009",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1667,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-010",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0909,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材口径，敷料方式存在争议"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.091 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A2-011",
+      "type": "A2",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.03），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-012",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "具体减压操作依现行规范"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-013",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2353,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-014",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 33,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0588,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.059 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-015",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 39,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0526,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.053 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M06-A1-016",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1176,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-001",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.125,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-002",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 40,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1579,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径需结合现行诊断定义"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-003",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 35,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1875,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "阈值和诊疗按现行规范"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-004",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0667,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材特定病种数值需按现行指南复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.067 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A2-005",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 39,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.4667,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-006",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 35,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材剂量和首选表述需按个体及现行规范复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-007",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材心率阈值不应作为排除标准"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-008",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 35,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材对24小时监测的诊断效能表述需结合发作频率"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A2-009",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.36,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-010",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-011",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0455,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材ARDS定义和呼吸支持条件待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.045 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-012",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材通气数值待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-013",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A2-014",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3421,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材标准待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-015",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1429,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材来源比例待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M07-A1-016",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材首选表述需结合适应证待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-001",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 25,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1818,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教师与教材口径不同"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A2-002",
+      "type": "A2",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.03），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-003",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0714,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.071 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A2-004",
+      "type": "A2",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 27,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2083,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-005",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径与正常血糖DKA需医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-006",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "治疗细节依现行规范待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-007",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0769,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材诊断阈值待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.077 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-008",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0455,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材口径待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.045 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-009",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3214,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A2-010",
+      "type": "A2",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.08,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "持续昏迷病因及教材脑水肿表述待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-011",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.4,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-012",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.4,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材时间窗及血压阈值与现行规范差异待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A2-013",
+      "type": "A2",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2632,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M08-A1-014",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "影像选择及阴性后的诊断路径待医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-repair-020",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 25,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0294,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "旧教材时序表述存在争议：严重休克可能需在液体复苏同时给予升压药；待现行指南及独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.029 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-repair-021",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 26,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3103,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核；器官障碍发生顺序表述需与现行定义对照"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-repair-022",
+      "type": "A1",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2692,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-repair-023",
+      "type": "A1",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1111,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-repair-024",
+      "type": "A1",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-repair-025",
+      "type": "A1",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 26,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-repair-026",
+      "type": "A1",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.125,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "瞳孔表现受病程及混合暴露影响，教材分类不能视为绝对规律；待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-repair-027",
+      "type": "A1",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3182,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "部分干扰项区分度可能不足，待命题复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "高压氧预防效果的证据及适应证需按现行指南复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-repair-028",
+      "type": "A1",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1481,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核；急救处置需结合现场条件和专业人员判断"
+        }
+      ],
+      "status": "WARN"
+    }
+  ]
+}

@@ -79,7 +79,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 以上理解是否正确？请回复「确认」继续，或指出需要修正的地方。
 ```
-用户必须明确确认后才能进入下一步。
+**批次启动时一次性确认**；确认后连续执行到交付，中途不再询问。DSH 模式下用户给出明确任务即视为已确认，直接进入执行（HC-28）。
 
 ### HC-1：所有下游调用指令必须结构化
 你生成给 Agent 2/3/4 的指令必须包含：
@@ -216,7 +216,7 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
      --out 中间产物/{batchID}/real_question_plan.json
    ```
    - 无教师重点清单时，`--keypoints` 传空并改用章节关键词模式（退化为 §HC-18 的检索能力）；
-   - `quota_status`：`met` 达标；`reduced` 按可用量减量；`cancelled` 无候选取消该族配额。`reduced`/`cancelled` **不阻断批次**，但必须在批次报告中写明「考研 X、执医 Y（历年真题 a + CMExam b），减量/取消原因」。
+   - `quota_status`：`met` 达标；`reduced` 按可用量减量；`cancelled` 无候选取消该族配额；`deferred` 候选存在但人类专属核验未完成（HC-28，必须写 `hc28_update`）。`reduced`/`cancelled`/`deferred` **不阻断批次**，但必须在批次报告中写明「考研 X、执医 Y（历年真题 a + CMExam b），减量/取消/延后原因」。`cancelled` 只能用于 `available=0` 且无候选。
 2. **配额注入**：Agent 2 指令中给 `real_question_plan.json` 路径 + `selected[]` 的逐题 `source_id/family/tier/keypoint_refs/answer_confidence/license/mode`；禁止注入原始 CMExam CSV 或原始 OCR 文本。
 3. **终审校验（GATE-FINAL 前）**：
    ```
@@ -257,7 +257,7 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 4. 【必须】运行真题双族配额检索（HC-22 修订版，2026-10-22 起；新题库批次）：
    python scripts/real_question_cli.py plan --subject 【科目】 --target 【目标题数】 --batch 【batchID】 --keypoints 【教师重点锚定清单】 --blueprint 【出题蓝图】 --out 中间产物/{batchID}/real_question_plan.json
    - 无教师重点清单时，改用 HC-18 legacy 的 `kaoyan_picker.py pick`，并只把 `answer_confidence=high/medium` 的题注入 Agent 2
-   - `quota_status=reduced/cancelled` → 该族候选不足，Agent 2 指令标注「不足部分原创补齐」，禁止无关题凑数
+   - `quota_status=reduced/cancelled/deferred` → 该族候选不足或按 HC-28 延后核验，Agent 2 指令标注「不足部分原创补齐」，禁止无关题凑数
 5. 【必须】运行页码验证（2026-06-17 新增）：
    python verify_page_numbers.py --subject 【科目】
    - 如果输出 WARN → 该科目索引仍为旧 PDF 页码，Agent 2 调用指令中必须附带偏移量提示
@@ -265,12 +265,12 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 6. 读取检索结果，提取关键教材原文片段作为验证依据
 7. 生成 HC-7 命题双向细目表（知识领域×Bloom层级矩阵）
 8. 输出「意图确认回显」，附带检索覆盖度简报
-9. 等待用户确认
+9. 批次启动确认后直接进入阶段二；不重复等待确认
 ```
 
 ### 阶段二：调用 Agent 2（文本生成执行者）
 
-用户确认后，你生成 Agent 2 的调用指令：
+批次启动确认后，你生成 Agent 2 的调用指令：
 
 ```
 ═══════════════════════════════════════
@@ -300,7 +300,7 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 【真题双配额】（HC-22，新题库批次）：
 - 目标：考研约 20%（N 题）+ 执业医师约 20%（M 题），各允许 15%–25%
 - 候选文件：中间产物/{batchID}/real_question_plan.json 的 selected[]（含 source_id/keypoint_refs/answer_confidence/license/mode）
-- 无真题覆盖/不足：quota_status=insufficient，按实际可用量插入，剩余原创补齐；禁止无关题凑数
+- 无真题覆盖/不足：quota_status=cancelled（无候选）/reduced（按可用量减量）/deferred（候选存在但人类专属核验未完成，HC-28），按实际可用量插入，剩余原创补齐；禁止无关题凑数
 - 标注：kaoyan_origin / zhiyi_origin + [源:...] + keypoint_ref + license；只使用 answer_confidence=high/medium
 - 引用方式：原题引用；知识点/答案/数值不得改动；解析首句注明来源
 
@@ -339,15 +339,16 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 ### 阶段四：接收 Agent 3 报告 → 调用 Agent 4
 
 1. 你读取 `质检报告/` 中的 JSON
-2. 解析 `gate_decision`：
+2. 解析 `gate_decision`（只决定「能否继续生成」，不决定「能否发布」，HC-28）：
    - `PASS` → 告知用户无需修改，直接进入终审
-   - `PASS_WITH_FIXES` → 生成 Agent 4 调用指令
-   - `BLOCKED` → 告警用户，列出 `must_escalate` 项
-3. 生成 Agent 4 调用指令时，你必须包含「原始产物全文」+「质检 JSON 报告」+ RAG检索验证片段
-4. 调用指令中必须明确指定：【输出路径】：最终产物/{batchID}/
+   - `PASS_WITH_FIXES` → 生成 Agent 4 调用指令；`review_queue`/`must_escalate` 项随产物交付，不阻断
+   - `BLOCKED` → 仅确定性门禁 FAIL 时告警并回退；若只是 `release_status=BLOCKED`（可发布核心为空），按 `PASS_WITH_FIXES` 继续修复/导出复核包
+3. 读取 `report_metadata` 的 `generation_status`、`release_status`、`publishable_count`、`pending_human_count`、`quarantined_count`，写入批次汇总
+4. 生成 Agent 4 调用指令时，你必须包含「原始产物全文」+「质检 JSON 报告」+ RAG检索验证片段
+5. 调用指令中必须明确指定：【输出路径】：最终产物/{batchID}/
    - 修复后产物：最终产物/{batchID}/ALL_questions_FIXED.json
    - **最终交付 MD（2026-08-20 起强制）**：复检 FAIL==0 后运行
-     `python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json --out 最终产物/{batchID}/ALL_questions_FIXED.md --title "{科目}·{模块}（{batchID}）"`
+     `python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json --out 最终产物/{batchID}/ALL_questions_FIXED.md --review-queue-out 最终产物/{batchID}/review_queue.json --title "{科目}·{模块}（{batchID}）"`
    - 追溯日志：最终产物/{batchID}/AGENT4_追溯日志.json
    - 人工告警：最终产物/{batchID}/escalations_for_human.md
 
@@ -380,16 +381,18 @@ Agent 5 交付主复习资料 MD + 配图清单后。**生图主责在豆包（D
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    题目总数：XX
    自动修改：XX（safe_auto: X, auto_with_review: X）
-   升级告警：XX（需人工处理）
    回滚：XX
-   门禁状态：PASS / PARTIAL / FAILED
+   生成状态：DONE / PARTIAL / FAILED（generation_status）
+   发布状态：READY / PENDING_HUMAN_REVIEW / BLOCKED（release_status）
+   可发布核心：XX 题｜待人工复核：XX 题｜已隔离：XX 题
+   复核队列：最终产物/[批次ID]/review_queue.json
    考研真题占比：X%（目标≈20%，PASS / 未达标⚠️ / 无真题覆盖）
    术语附录：已生成 / 缺失⚠️
    页码附录：真实 / 占位符⚠️ / 缺失⚠️
    插图：X 张（图谱复用 Y / AI 生成 Z / 缺失⚠️；配图范围科目）
    最终产物位置：最终产物/\[批次ID]\（JSON + MD 双格式）
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   🔴 请审查升级告警项后签收。
+   ✅ 生成阶段已完成；发布前请审查复核队列并签收。
    ```
 
 ## 与用户交互规则

@@ -48,10 +48,59 @@ DEFAULT_BLUEPRINT = BASE / "中间产物/batch040/出题蓝图_batch040.md"
 
 
 ADAPTIVE_REVIEW_STATUS = "APPROVED"
+ADAPTIVE_REQUIRED_CHECKS = frozenset(("adaptive_coverage", "adaptive_manual_review"))
 
 
 def _nonempty_text(value) -> bool:
     return isinstance(value, str) and bool(value.strip())
+
+
+def _path_aliases(path: Path) -> set[Path]:
+    aliases = {path.absolute()}
+    try:
+        aliases.add(path.resolve(strict=False))
+    except OSError:
+        pass
+    return aliases
+
+
+def _output_overlaps_inputs(output: Path, inputs: list[Path]) -> bool:
+    output_aliases = _path_aliases(output)
+    return any(output_aliases & _path_aliases(input_path) for input_path in inputs)
+
+
+def _adaptive_output_inputs(args) -> list[Path]:
+    values = [args.review, args.keypoints, args.human_review]
+    values.extend(args.source_text or [])
+    return [Path(value) for value in values if value]
+
+
+def _validate_output_paths(args, out: Path) -> str | None:
+    outputs = [out, out.with_suffix(".md")]
+    inputs = _adaptive_output_inputs(args) if args.profile == "release_adaptive" else []
+    if any(_output_overlaps_inputs(path, inputs) for path in outputs):
+        return "输出路径或派生 MD 路径不得覆盖自适应输入"
+    return None
+
+
+def _hash_inputs(args) -> dict:
+    hashes = {}
+    for name in ("questions", "review", "keypoints", "source_text", "human_review"):
+        values = getattr(args, name, []) if name == "source_text" else [getattr(args, name, "")]
+        if name == "source_text":
+            hashes[name] = [_input_hash(value) for value in values if value and Path(value).exists()]
+        else:
+            value = values[0]
+            try:
+                hashes[name] = _input_hash(value) if value else None
+            except OSError:
+                hashes[name] = None
+    return hashes
+
+
+def _inputs_unchanged(args, before: dict) -> tuple[bool, dict]:
+    after = _hash_inputs(args)
+    return before == after, after
 
 
 def _json_from_command_stdout(stdout: str) -> dict:
@@ -69,6 +118,8 @@ def _json_from_command_stdout(stdout: str) -> dict:
             raise ValueError("命令 JSON 输出必须是对象")
         return data
     raise ValueError("命令未输出可解析 JSON")
+
+
 def read_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -366,9 +417,19 @@ def check_kc_registry(args, profile: dict, mode: str) -> dict:
 
 
 def _strict_batch(batch: str) -> bool:
-    match = re.fullmatch(r"batch(\d+)(?:-[A-Za-z0-9]+)?", str(batch or ""))
+    """与 gate_check._is_strict_batch 保持同一判定口径。
+
+    新批次（batch045+）默认 strict；batch044 及以前与非标准批次 ID 保留兼容。
+    """
     mode = _batch_state(batch).get("evidence_binding_mode")
-    return mode == "strict" or not (match and int(match.group(1)) <= 44 and mode in (None, "legacy"))
+    if mode == "strict":
+        return True
+    match = re.fullmatch(r"batch(\d+)(?:-[A-Za-z0-9]+)?", str(batch or ""))
+    if not match:
+        return mode not in (None, "legacy")
+    if int(match.group(1)) <= 44 and mode in (None, "legacy"):
+        return False
+    return True
 
 
 def _input_hash(path: str) -> str:
@@ -912,6 +973,7 @@ def render_md(report: dict) -> str:
         "",
         "- 本报告由 `scripts/quality_gate.py` 生成，只读源产物与既有报告；不修改源题库/源复习资料/workflow_state。",
         "- SKIP 不代表 PASS；enforce 模式下 required FAIL 会阻断发布。",
+        "- 人工审核证据仅用于校验字段、范围与输入哈希，不认证审核人员身份或授权资格。",
         "",
     ]
     return "\n".join(lines)
@@ -941,10 +1003,13 @@ def main() -> int:
     ap.add_argument("--with-tests", action="store_true")
     ap.add_argument("--out", default="")
     args = ap.parse_args()
+    requested_mode = args.mode
 
+    if args.profile == "release_adaptive" and (args.stage != "r3" or requested_mode != "enforce"):
+        print("[FAIL] release_adaptive 只允许 R3 enforce", file=sys.stderr)
+        return 2
     if args.stage == "r3":
         args.mode = "enforce"
-
     profile_name = args.profile or ("release_teacher_keypoint" if args.stage == "r3" else "pilot")
     if args.stage == "r3" and not profile_name.startswith("release_"):
         print("[FAIL] R3 必须使用 release profile", file=sys.stderr)
@@ -953,18 +1018,24 @@ def main() -> int:
     try:
         policy = _load_policy(Path(args.policy))
         profile = policy["profiles"][profile_name]
+        if profile_name == "release_adaptive":
+            required = set(profile.get("required_checks") or [])
+            if not ADAPTIVE_REQUIRED_CHECKS <= required:
+                raise ValueError("release_adaptive 必须包含 adaptive_coverage 和 adaptive_manual_review")
     except Exception as exc:
         print(f"[FAIL] 质量基准加载失败：{type(exc).__name__}: {exc}", file=sys.stderr)
         return 2
 
     derive_batch_defaults(args)
 
-    input_hashes = {}
-    for name in ("questions", "review"):
-        try:
-            input_hashes[name] = _input_hash(getattr(args, name))
-        except OSError:
-            input_hashes[name] = None
+    input_hashes = _hash_inputs(args)
+    output_path = Path(args.out) if args.out else (
+        BASE / "reports/gate" / f"quality_gate_{args.batch}_{args.stage}_{datetime.now().strftime('%Y%m%dT%H%M%S')}.json"
+    )
+    output_error = _validate_output_paths(args, output_path)
+    if output_error:
+        print(f"[FAIL] {output_error}", file=sys.stderr)
+        return 2
 
     checks: list[dict] = []
     if args.stage == "r0":
@@ -975,10 +1046,12 @@ def main() -> int:
         checks += build_stage_checks(args, profile, args.mode)
 
     status, blocking, warnings = aggregate(checks, args.mode)
+    unchanged, final_input_hashes = _inputs_unchanged(args, input_hashes)
+    if not unchanged:
+        status = "BLOCKED"
+        blocking.append("门禁执行前后输入文件哈希发生变化，阻断发布")
     now = datetime.now()
-    out = Path(args.out) if args.out else (
-        BASE / "reports/gate" / f"quality_gate_{args.batch}_{args.stage}_{now.strftime('%Y%m%dT%H%M%S')}.json"
-    )
+    out = output_path
     report = {
         "schema_version": 1,
         "batch": args.batch,
@@ -992,6 +1065,7 @@ def main() -> int:
         "warnings": warnings,
         "policy_version": policy.get("policy_version"),
         "input_sha256": input_hashes,
+        "input_sha256_after": final_input_hashes,
     }
     write_json(out, report)
     md = out.with_suffix(".md")

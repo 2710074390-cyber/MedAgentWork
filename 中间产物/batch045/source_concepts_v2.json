@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-11-01T13:03:46",
+  "generator": "scripts/check_source_concepts.py",
+  "file": "中间产物\\batch045\\ALL_questions_pilot_revised_v2.json",
+  "input_sha256": "9945e2011dd6c4f66cde8870be90d0f02c0c688306ed29ab08685eb6a2f2c259",
+  "batch": "batch045",
+  "status": "FAIL",
+  "versions": {
+    "2.1": 109
+  },
+  "checked": 109,
+  "total": 109,
+  "by_type": {
+    "A1": 90,
+    "A2": 19
+  },
+  "concepts_per_question": {
+    "1": 106,
+    "2": 3
+  },
+  "multi_type_total": 19,
+  "multi_type_with_2plus": 3,
+  "multi_type_rate": 0.1579,
+  "fails": [
+    "batch045-M05-A1-003: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M05-A1-005: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M05-A1-007: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M05-A1-012: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M05-A1-019: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M06-A1-003: S4 第1条 evidence 少于 8 字（「辨别A步骤」）",
+    "batch045-M06-A2-004: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M06-A2-006: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M06-A2-008: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M06-A2-011: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M06-A1-013: S4 第1条 evidence 少于 8 字（「合并休克」）",
+    "batch045-M06-A1-016: S4 第1条 evidence 少于 8 字（「不自行还纳」）",
+    "batch045-M07-A1-001: S4 第1条 evidence 少于 8 字（「区分三类ACS」）",
+    "batch045-M07-A2-005: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M07-A2-009: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M07-A2-014: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M07-A1-015: S4 第1条 evidence 少于 8 字（「下肢深静脉血栓」）",
+    "batch045-M07-A1-016: S4 第1条 evidence 少于 8 字（「CT肺动脉造影」）",
+    "batch045-M08-A2-002: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M08-A2-004: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M08-A1-008: S4 第1条 evidence 少于 8 字（「纠正容量不足」）",
+    "batch045-M08-A2-010: S3 A2 只有 1 条概念，需 ≥2",
+    "batch045-M08-A1-011: S4 第1条 evidence 少于 8 字（「缺血性与出血性」）",
+    "batch045-M08-A2-013: S3 A2 只有 1 条概念，需 ≥2"
+  ],
+  "warn_count": 0,
+  "warns": []
+}

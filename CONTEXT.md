@@ -97,6 +97,16 @@
 - **下游**：`label_concepts.py` 优先解析 `concepts`（`source=declared`），无源标注才回退推断（`source=inferred`）；`build_concept_graph.py --labels` 据此重建 `measures` 边；`check_concept_graph.py` 的 C4 对源标注批次按「A2+ ≥98% 解析成功」判，C8 报未解析概念。
 - **契约 schema**：`schemas/agent2_output.schema.json`（if/then 条件必填，仅对 2.1 生效）。⚠️ 本机默认 python 无 `jsonschema`，`ingest.py` 的 schema 校验会静默跳过，所以**不能只靠 schema**，必须跑上面那条零依赖命令。
 
+### 一次跑完与复核队列契约（HC-28 · 2026-11-01）
+
+- **完成定义**：`generation_status=DONE`（题目全部生成、确定性门禁已跑、`review_queue.json` 已产出）；`release_status=PENDING_HUMAN_REVIEW` 不是失败。
+- **三分法**：`AUTO_FIX`（确定性可修复，自动修复，单题≤2轮/整批≤3轮）｜`AGENT_VERIFY`（可用素材/教师重点/GoldenSet/RAG 核验，修复或隔离）｜`HUMAN_ONLY`（原卷/版权/专家裁定/指南冲突，仅入队列，不阻断）。
+- **硬停止只限**：输入缺失/损坏；连续 2 次输出不可解析；工具/预算/权限故障。可发布核心为空不是停止条件：仍交付完整待审稿 + 队列，标 `release_status=BLOCKED`（题目数量完整时 `generation_status` 仍为 DONE）。
+- **每题 `release`**：`disposition=publishable|pending_human|quarantined`、`evidence_grade=A|B|C`、`risk_level=high|medium|low`、`reason_code`、`agent_checks[]`、`human_check`、`suggested_action`。
+- **发布底线**：高风险 C 级 → `quarantined`；低风险 C 级 → `pending_human`；A/B 且确定性门禁通过 → `publishable`。
+- **输出**：`review_queue.json` + 最终 MD 末尾「人工复核队列」；最终回复只报状态/数量/路径，不等待确认、不以「待核验」结束。
+- **规则全文**：`SOUL.md` HC-28。
+
 ## 跨 Agent 工具同步规则
 
 > 安装/下载任何新工具后，必须同步更新全部 6 个工作区的 CONTEXT.md 工具路径表。
@@ -190,7 +200,7 @@ archive/
 | maintenance.py | 维护报告 | `reports/maintenance/` |
 | gate_check.py | 门禁报告 | `reports/gate/` |
 | save.py | 题库 MD/JSON | `中间产物/{batchID}/` 或 `最终产物/{batchID}/` |
-| qbank.py export-md | 最终交付题库 MD | 默认 `最终产物/{batchID}/ALL_questions_FIXED.md`（2026-08-20 起 GATE-A4 强制） |
+| qbank.py export-md | 最终交付题库 MD + 复核队列 | 默认 `最终产物/{batchID}/ALL_questions_FIXED.md`（2026-08-20 起 GATE-A4 强制）；加 `--review-queue-out 最终产物/{batchID}/review_queue.json` 产出 HC-28 人工复核队列 |
 | inject_obsidian_theme.py | Obsidian 树主题注入/移除（`--remove` 反注入）| 就地修改 `最终产物/*押题卷*.html` 与 `index.html`（⚠️ 2026-08-12 已从线上站移除 Obsidian 主题，站点恢复三主题；2026-10-19 押题卷 HTML 交付已下线，本脚本仅对遗留 HTML 有效、保留备用） |
 | verify_obsidian_theme.py | 主题浏览器实测截图 | `reports/theme_shots/` |
 
@@ -433,7 +443,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 **硬规则**
 
 - 配额（**按族结算**）：考研族 20% + 执业医师族 20%（各 15%–25% 合格带）；执业医师族内 `zhiyi_pdf`（历年真题）与 `zhiyi`（CMExam）均可直接入选，同等相关时 PDF 有轻微优先加分，不再强制先用完 PDF。
-- 减量规则（HC-23 配套）：候选不足 → `quota_status=reduced`（按可用量减量）或 `cancelled`（无候选，取消该族配额），`reason` 记 `no_candidate`/`candidates_exhausted`/`keypoint_or_module_limit`；**不再阻断批次**，缺口由原创补齐，禁止无关题凑数，批次统计如实上报。
+- 减量规则（HC-23 配套）：候选不足 → `quota_status=reduced`（按可用量减量）或 `cancelled`（无候选，取消该族配额）；候选存在但人类专属核验未完成 → `deferred`（HC-28，必须写 `hc28_update`）。`reason` 记 `no_candidate`/`candidates_exhausted`/`keypoint_or_module_limit`/`human_verification_deferred`；**不再阻断批次**，缺口由原创补齐，禁止无关题凑数，批次统计如实上报。`cancelled` 只能用于 `available=0` 且无候选；候选存在却标记 `cancelled` 会被 `check` 直接判 FAIL。
 - 执业医师语料（HC-23）：49 册 / 2286 页扫描件，**按版式分流**——单栏册（44 册）本地 RapidOCR，双栏册（2017–2021，5 册）MinerU API；质量门禁 = 单栏册有效率 ≥95%（`no_answer`=0、`bad_options`≤2%）、双栏册 ≥70%（MinerU 丢行已知损耗；答案配对用顺序回填），报告见 `reports/validate/zhiyi_pdf_parse_report.json`。**单栏册禁止用 MinerU**（实测整行吞 `【答案】`），**双栏册禁止用 RapidOCR**（左右栏并成一行无法还原）。
 - 答案来源优先级：**扫描版绿色标记（high/medium） ≈ PDF 标准答案/人工转录（high） > PDF 绿色标记（medium） > 解析规则（high/medium） > 无**。考研答案禁止再用下册行首前缀 `ABCD/ABCDE`。
 - 当前答案覆盖：整体 **4765/5168 ≈ 92.2%**；1994–2004 用扫描版绿色标记补齐（约 64%–88%/年，B 型题组与部分 X 型仍缺）；2005–2024 约 96.8%。

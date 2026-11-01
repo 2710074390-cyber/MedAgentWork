@@ -1,0 +1,6248 @@
+{
+  "generated_at": "2026-11-01T16:42:21",
+  "file": "中间产物\\batch046\\batch046_validation_projection.json",
+  "batch": "batch046",
+  "input_sha256": "e28a6bd43a1ec5589e39d4fed135887b71274f21ac8e8f27245b6c7a8819ed66",
+  "summary": {
+    "total": 100,
+    "pass": 0,
+    "warn": 53,
+    "fail": 47,
+    "per_option_coverage": 0.72,
+    "misconception_coverage": 0.7254,
+    "source_quote_exact_rate": 0.54,
+    "quote_verified_rate": 1.0,
+    "misconception_id_conflicts": 0,
+    "anchor_verified_rate": 0.14,
+    "anchor_low_overlap_count": 41
+  },
+  "items": [
+    {
+      "id": "batch046-Q001",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 33,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.1667,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q002",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 31,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.0938,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "A1题型与应用层级的区分待复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.094 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q003",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 32,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.1562,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q004",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 31,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q005",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 33,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2973,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材未载SALT，独立权威来源待核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q006",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 32,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.1111,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "A1题型与分析层级的区分待复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q007",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 30,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.1515,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q008",
+      "type": "A3",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "原文引文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q009",
+      "type": "A3",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 35,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "原文引文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q010",
+      "type": "A3",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 32,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "原文引文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q011",
+      "type": "A3",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "原文引文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q012",
+      "type": "A3",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 35,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "原文引文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q013",
+      "type": "A2",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 30,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.2381,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "与batch045同考点但重新设计右侧已定位的情境，区分度待核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q014",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 32,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.2,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "与batch045同考点且表述接近，原创区分度待核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q015",
+      "type": "A2",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 33,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.0638,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q016",
+      "type": "A3",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.0571,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q017",
+      "type": "A3",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.1154,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q018",
+      "type": "A3",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 33,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.3611,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q019",
+      "type": "A3",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.122,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "实际输血及液体策略须结合创伤指南复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q020",
+      "type": "A3",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "verified",
+      "anchor_overlap": 0.1282,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "严重休克用药时序应结合现场条件及现行指南独立复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "医学及答案唯一性待独立复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q021",
+      "type": "A2",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 25,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2143,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q022",
+      "type": "A1",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 25,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0465,
+      "anchor_threshold": 0.1,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.047 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q023",
+      "type": "A1",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 26,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0541,
+      "anchor_threshold": 0.1,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.054 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q024",
+      "type": "A3",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 25,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0714,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q025",
+      "type": "A3",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 28,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2188,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q026",
+      "type": "A3",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 30,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0769,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q027",
+      "type": "A3",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 25,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0952,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q028",
+      "type": "A3",
+      "module": "M04",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0417,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q029",
+      "type": "A3",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 27,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.125,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q030",
+      "type": "A3",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 22,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.44,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q031",
+      "type": "A3",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 30,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2903,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q032",
+      "type": "A3",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 40,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1667,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q033",
+      "type": "A3",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q034",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 21,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1724,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q035",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 23,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1034,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q036",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2143,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q037",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 18,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1538,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q038",
+      "type": "A2",
+      "module": "M05",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 20,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1364,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q039",
+      "type": "A3",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 24,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1176,
+      "anchor_threshold": 0.03,
+      "issues": [
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q040",
+      "type": "A3",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 40,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1905,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材真实页码待核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q041",
+      "type": "A3",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0484,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学及答案唯一性复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "与batch045同考点但情境不同，近重复待人工复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q042",
+      "type": "A3",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 33,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1053,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材对该具体处理的原文位置待进一步核实"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q043",
+      "type": "A3",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1458,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "课程教材处置口径，临床应用须结合现行规范"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学及查重复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q044",
+      "type": "A2",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0656,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q045",
+      "type": "A2",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0862,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "体位须结合实际伤情"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q046",
+      "type": "A1",
+      "module": "M06",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0417,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.042 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q047",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 37,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2059,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "时间口径需对照现行规范"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q048",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 39,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1967,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q049",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 41,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3175,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q050",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.03），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q051",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.375,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q052",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2588,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q053",
+      "type": "A2",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0851,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q054",
+      "type": "A1",
+      "module": "M07",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 35,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1364,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q055",
+      "type": "A2",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 38,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1702,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "出血量为估计值"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q056",
+      "type": "A2",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 36,
+      "source_quote_status": "missing",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.44,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "source_quote_status=missing，需补原文"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "draft"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文未逐字核验"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "需独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q057",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.3226,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q058",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 30,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1724,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材治疗原文待逐字复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q059",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 30,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2368,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q060",
+      "type": "A2",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 28,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1818,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材历史口径，需对照现行指南及本地流程复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q061",
+      "type": "A1",
+      "module": "M08",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 31,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.4194,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q062",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2941,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文待逐字复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q063",
+      "type": "A2",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 27,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0926,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文待逐字复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q064",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 28,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1071,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文待逐字复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q065",
+      "type": "A2",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0462,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文和适用版本待复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q066",
+      "type": "A2",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1091,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教师补充，教材未载"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q067",
+      "type": "A2",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 31,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1333,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文待逐字复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q068",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 27,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.5625,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文待逐字复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q069",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文待逐字复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.000 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q070",
+      "type": "A1",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.24,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文及生理机制待独立复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q071",
+      "type": "A2",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 28,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0244,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教材原文待逐字复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "与本批其他复苏题的相似性待复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.024 < 0.03），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q072",
+      "type": "A2",
+      "module": "M02",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0385,
+      "anchor_threshold": 0.03,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "教师重点单人比例对双人成人适用性需教材或指南独立复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "未经独立医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "与本批其他复苏题相似性待复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch046-Q073",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q074",
+      "type": null,
+      "module": null,
+      "options": 4,
+      "per_option": 0,
+      "distractors": 3,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q075",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q076",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q077",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q078",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q079",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q080",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q081",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q082",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q083",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q084",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q085",
+      "type": null,
+      "module": null,
+      "options": 4,
+      "per_option": 0,
+      "distractors": 3,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q086",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q087",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q088",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q089",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q090",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q091",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q092",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q093",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q094",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q095",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q096",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q097",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q098",
+      "type": null,
+      "module": null,
+      "options": 4,
+      "per_option": 0,
+      "distractors": 3,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q099",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    },
+    {
+      "id": "batch046-Q100",
+      "type": null,
+      "module": null,
+      "options": 5,
+      "per_option": 0,
+      "distractors": 4,
+      "distractors_covered": 0,
+      "misconceptions": 0,
+      "info_units": 0,
+      "median_chars": 0,
+      "source_quote_status": "",
+      "quote_checked": false,
+      "quote_supported": false,
+      "anchor_status": "",
+      "anchor_overlap": 0.0,
+      "anchor_threshold": 0.05,
+      "issues": [
+        {
+          "rule": "R14",
+          "detail": "per_option 未覆盖全部选项；缺失=['A', 'B', 'C', 'D', 'E'] 多余=无"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "A 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "A 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "B 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "B 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "C 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "C 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R15",
+          "detail": "D 的 truth=None 与极性不符（polarity=positive, 期望 True）"
+        },
+        {
+          "rule": "R17",
+          "detail": "D 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 的 truth=None 与极性不符（polarity=positive, 期望 False）"
+        },
+        {
+          "rule": "R17",
+          "detail": "E 的 why 为空或信息量不足（<20字）"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception_id"
+        },
+        {
+          "rule": "R15",
+          "detail": "E 为干扰项但缺 misconception 描述"
+        },
+        {
+          "rule": "R17",
+          "detail": "correct_rationale 为空或信息量不足（<60字）"
+        },
+        {
+          "rule": "R17",
+          "detail": "key_takeaway 为空或信息量不足（<30字）"
+        },
+        {
+          "rule": "R16",
+          "detail": "source_quote_status 非法：空"
+        },
+        {
+          "rule": "R16",
+          "detail": "anchor_status 非法：空"
+        }
+      ],
+      "warnings": [
+        {
+          "rule": "R18",
+          "detail": "缺 teacher_anchor，无法做主题对齐"
+        }
+      ],
+      "status": "FAIL"
+    }
+  ]
+}

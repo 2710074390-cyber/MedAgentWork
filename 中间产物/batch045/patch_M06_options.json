@@ -1,0 +1,173 @@
+[
+  {
+    "id": "batch045-M06-A1-002",
+    "stem": "按教师重点对多发伤死亡高峰的教学概括，三个时段依次为",
+    "options": [
+      {"label": "A", "text": "伤后数分钟、1小时内、数天", "is_correct": true},
+      {"label": "B", "text": "伤后数分钟、数周、数月", "is_correct": false},
+      {"label": "C", "text": "伤后1小时内、数月、1年", "is_correct": false},
+      {"label": "D", "text": "伤后数天、数周、数月", "is_correct": false},
+      {"label": "E", "text": "伤后数周、数月、1年", "is_correct": false}
+    ],
+    "explanation": "教师重点将死亡高峰概括为伤后数分钟内、1小时内及数天。该三峰模式是教学概括，并非所有创伤人群均严格符合。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "三个时段与教师重点的教学概括一致。"},
+      {"label": "B", "truth": false, "why": "数周和数月不能替代所列的1小时内及数天。", "misconception_id": "MC-batch045-M06-A1-002-B", "misconception": "将后两个死亡高峰推迟至数周和数月"},
+      {"label": "C", "truth": false, "why": "遗漏数分钟内的高峰，且数月和1年不属所列时段。", "misconception_id": "MC-batch045-M06-A1-002-C", "misconception": "遗漏早期高峰并将后续高峰推迟"},
+      {"label": "D", "truth": false, "why": "遗漏数分钟和1小时内的早期高峰。", "misconception_id": "MC-batch045-M06-A1-002-D", "misconception": "忽视创伤后的早期死亡高峰"},
+      {"label": "E", "truth": false, "why": "所列时段均晚于教师重点概括的三个时段。", "misconception_id": "MC-batch045-M06-A1-002-E", "misconception": "将死亡高峰均理解为远期事件"}
+    ]}
+  },
+  {
+    "id": "batch045-M06-A2-004",
+    "stem": "创伤患者肢体喷射状大量出血，现场初评时应优先采取哪项措施？",
+    "options": [
+      {"label": "A", "text": "立即止血并启动急救", "is_correct": true},
+      {"label": "B", "text": "先完成影像检查再止血", "is_correct": false},
+      {"label": "C", "text": "先详细询问既往病史", "is_correct": false},
+      {"label": "D", "text": "先包扎轻微皮肤擦伤", "is_correct": false},
+      {"label": "E", "text": "先转运途中再考虑止血", "is_correct": false}
+    ],
+    "explanation": "喷射状大量外出血可迅速危及生命，应立即控制出血并启动急救，同时评估其他生命威胁。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "立即止血和启动急救针对最紧迫的生命威胁。"},
+      {"label": "B", "truth": false, "why": "等待影像检查会延误控制致命出血。", "misconception_id": "MC-batch045-M06-A2-004-B", "misconception": "将影像检查置于控制致命出血之前"},
+      {"label": "C", "truth": false, "why": "详细病史采集不能优先于控制危及生命的出血。", "misconception_id": "MC-batch045-M06-A2-004-C", "misconception": "将详细病史采集置于紧急止血之前"},
+      {"label": "D", "truth": false, "why": "轻微擦伤的处理优先级低于大量出血。", "misconception_id": "MC-batch045-M06-A2-004-D", "misconception": "优先处理轻微擦伤而延误止血"},
+      {"label": "E", "truth": false, "why": "先转运再考虑止血会使患者持续失血。", "misconception_id": "MC-batch045-M06-A2-004-E", "misconception": "将控制大量出血推迟至转运途中"}
+    ]}
+  },
+  {
+    "id": "batch045-M06-A2-006",
+    "stem": "交通伤后患者骨盆疼痛、血压下降、皮肤湿冷，首先应警惕哪种情况？",
+    "options": [
+      {"label": "A", "text": "骨盆骨折伴失血性休克", "is_correct": true},
+      {"label": "B", "text": "骨盆挫伤伴迷走神经反应", "is_correct": false},
+      {"label": "C", "text": "骨盆陈旧损伤伴慢性疼痛", "is_correct": false},
+      {"label": "D", "text": "骨盆软组织损伤伴局部水肿", "is_correct": false},
+      {"label": "E", "text": "骨盆稳定骨折伴局限疼痛", "is_correct": false}
+    ],
+    "explanation": "骨盆创伤后低血压、皮肤湿冷提示严重出血和休克，应立即救治并同时排查其他出血来源。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "骨盆损伤可致大量出血，低血压和湿冷支持休克可能。"},
+      {"label": "B", "truth": false, "why": "创伤后循环不稳定须优先排查失血，不能先归因于迷走反应。", "misconception_id": "MC-batch045-M06-A2-006-B", "misconception": "将创伤后循环不稳定首先归因于迷走反应"},
+      {"label": "C", "truth": false, "why": "陈旧损伤及慢性疼痛不能充分解释急性灌注异常。", "misconception_id": "MC-batch045-M06-A2-006-C", "misconception": "以陈旧损伤解释急性休克征象"},
+      {"label": "D", "truth": false, "why": "局部水肿不能充分解释血压下降和皮肤湿冷。", "misconception_id": "MC-batch045-M06-A2-006-D", "misconception": "将全身循环异常仅归因于局部软组织肿胀"},
+      {"label": "E", "truth": false, "why": "局限疼痛不足以解释低血压和湿冷，须警惕严重失血。", "misconception_id": "MC-batch045-M06-A2-006-E", "misconception": "忽略循环不稳定而低估潜在失血"}
+    ]}
+  },
+  {
+    "id": "batch045-M06-A1-007",
+    "stem": "造成连枷胸浮动胸壁的典型损伤是",
+    "options": [
+      {"label": "A", "text": "多根肋骨各有多处骨折", "is_correct": true},
+      {"label": "B", "text": "单根肋骨仅有一处骨折", "is_correct": false},
+      {"label": "C", "text": "多根肋骨各有一处骨折", "is_correct": false},
+      {"label": "D", "text": "胸壁软组织局部挫伤", "is_correct": false},
+      {"label": "E", "text": "单侧锁骨中段闭合骨折", "is_correct": false}
+    ],
+    "explanation": "多根相邻肋骨各有多处骨折可形成失去正常支撑的浮动胸壁，出现反常呼吸。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "多根相邻肋骨多处骨折可形成游离胸壁。"},
+      {"label": "B", "truth": false, "why": "单根单处骨折通常不能形成浮动胸壁。", "misconception_id": "MC-batch045-M06-A1-007-B", "misconception": "认为单根肋骨单处骨折即可形成连枷胸"},
+      {"label": "C", "truth": false, "why": "每根仅一处骨折通常不能形成游离胸壁段。", "misconception_id": "MC-batch045-M06-A1-007-C", "misconception": "忽视形成浮动胸壁所需的多处骨折"},
+      {"label": "D", "truth": false, "why": "局部软组织挫伤本身不构成游离胸壁段。", "misconception_id": "MC-batch045-M06-A1-007-D", "misconception": "将软组织挫伤等同于胸壁骨性支撑中断"},
+      {"label": "E", "truth": false, "why": "孤立锁骨骨折不符合所问的典型机制。", "misconception_id": "MC-batch045-M06-A1-007-E", "misconception": "将孤立锁骨骨折视为连枷胸典型机制"}
+    ]}
+  },
+  {
+    "id": "batch045-M06-A2-008",
+    "stem": "胸部外伤后，局部胸壁吸气时内陷、呼气时外凸。该表现最符合",
+    "options": [
+      {"label": "A", "text": "连枷胸的反常呼吸", "is_correct": true},
+      {"label": "B", "text": "正常胸壁呼吸运动", "is_correct": false},
+      {"label": "C", "text": "膈肌活动减弱表现", "is_correct": false},
+      {"label": "D", "text": "胸壁整体活动减弱", "is_correct": false},
+      {"label": "E", "text": "一侧胸廓活动受限", "is_correct": false}
+    ],
+    "explanation": "局部浮动胸壁与正常胸壁运动方向相反，是连枷胸的反常呼吸表现，应评估通气并及时救治。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "局部胸壁吸气内陷、呼气外凸符合反常呼吸。"},
+      {"label": "B", "truth": false, "why": "正常胸壁吸气时向外扩张，方向与题述相反。", "misconception_id": "MC-batch045-M06-A2-008-B", "misconception": "将局部反向运动误认为正常呼吸运动"},
+      {"label": "C", "truth": false, "why": "膈肌活动减弱不能特异解释局部胸壁反向运动。", "misconception_id": "MC-batch045-M06-A2-008-C", "misconception": "将局部浮动胸壁归因于单纯膈肌活动减弱"},
+      {"label": "D", "truth": false, "why": "整体活动幅度减小不等同于局部运动方向反常。", "misconception_id": "MC-batch045-M06-A2-008-D", "misconception": "混淆胸壁活动减弱与局部反向运动"},
+      {"label": "E", "truth": false, "why": "单侧活动受限不必然出现题述局部反向运动。", "misconception_id": "MC-batch045-M06-A2-008-E", "misconception": "将单侧活动受限等同于连枷胸反常呼吸"}
+    ]}
+  },
+  {
+    "id": "batch045-M06-A1-009",
+    "stem": "开放性气胸与闭合性气胸的关键区别是",
+    "options": [
+      {"label": "A", "text": "胸膜腔经胸壁伤口与外界相通", "is_correct": true},
+      {"label": "B", "text": "胸膜腔内积气但胸壁没有伤口", "is_correct": false},
+      {"label": "C", "text": "胸膜腔内积液但没有空气进入", "is_correct": false},
+      {"label": "D", "text": "胸壁出现挫伤但胸膜腔未相通", "is_correct": false},
+      {"label": "E", "text": "胸腔内压力升高但胸壁未开放", "is_correct": false}
+    ],
+    "explanation": "开放性气胸的胸壁伤口使胸膜腔与外界相通，影响通气，需要紧急处理。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "胸膜腔经胸壁伤口与外界相通是其核心特点。"},
+      {"label": "B", "truth": false, "why": "胸膜腔积气但胸壁无开放通道更符合闭合性气胸。", "misconception_id": "MC-batch045-M06-A1-009-B", "misconception": "混淆闭合性和开放性气胸"},
+      {"label": "C", "truth": false, "why": "仅有积液而无积气不符合气胸的特征。", "misconception_id": "MC-batch045-M06-A1-009-C", "misconception": "将胸膜腔积液等同于气胸"},
+      {"label": "D", "truth": false, "why": "胸壁挫伤未与胸膜腔相通不构成开放性气胸的特征。", "misconception_id": "MC-batch045-M06-A1-009-D", "misconception": "将胸壁挫伤本身视为开放性气胸"},
+      {"label": "E", "truth": false, "why": "胸壁未开放不能体现胸膜腔经伤口与外界相通。", "misconception_id": "MC-batch045-M06-A1-009-E", "misconception": "仅凭胸腔压力升高判断开放性气胸"}
+    ]}
+  },
+  {
+    "id": "batch045-M06-A1-010",
+    "stem": "按本课程旧教材，开放性气胸的处理顺序是",
+    "options": [
+      {"label": "A", "text": "先封闭伤口，再行胸腔闭式引流", "is_correct": true},
+      {"label": "B", "text": "先行胸腔引流，再考虑封闭伤口", "is_correct": false},
+      {"label": "C", "text": "先观察呼吸变化，再考虑处理伤口", "is_correct": false},
+      {"label": "D", "text": "先处理表浅擦伤，再考虑胸部处置", "is_correct": false},
+      {"label": "E", "text": "先完成影像检查，再考虑胸部处置", "is_correct": false}
+    ],
+    "explanation": "教师重点依据旧教材概括先封闭开放伤口，再行胸腔闭式引流。实际现场敷料选择和张力性气胸监测处置应遵循现行规范，由专业人员实施；2024 AHA急救指南允许开放伤口暴露、使用清洁非封闭敷料或专用排气胸封贴。参考：https://cpr.heart.org/en/resuscitation-science/2024-first-aid-guidelines/",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "符合本课程旧教材先封闭伤口、后引流的教学顺序。"},
+      {"label": "B", "truth": false, "why": "该顺序与题设要求的旧教材教学顺序相反。", "misconception_id": "MC-batch045-M06-A1-010-B", "misconception": "颠倒旧教材所列封闭伤口与引流的顺序"},
+      {"label": "C", "truth": false, "why": "单纯观察而推迟伤口处理不符合题设教学顺序。", "misconception_id": "MC-batch045-M06-A1-010-C", "misconception": "以观察替代及时处理胸壁开放伤口"},
+      {"label": "D", "truth": false, "why": "表浅擦伤处理不应优先于危及呼吸的胸部伤情。", "misconception_id": "MC-batch045-M06-A1-010-D", "misconception": "将表浅擦伤处置置于严重胸伤之前"},
+      {"label": "E", "truth": false, "why": "不应为等待影像检查而延误严重胸部损伤的紧急处置。", "misconception_id": "MC-batch045-M06-A1-010-E", "misconception": "等待影像检查后才考虑紧急胸伤处置"}
+    ]}
+  },
+  {
+    "id": "batch045-M06-A1-012",
+    "stem": "高度怀疑张力性气胸且循环不稳定，专业人员应优先采取",
+    "options": [
+      {"label": "A", "text": "立即减压并给予呼吸支持", "is_correct": true},
+      {"label": "B", "text": "等待复查影像后再行减压", "is_correct": false},
+      {"label": "C", "text": "先处理擦伤再评估呼吸", "is_correct": false},
+      {"label": "D", "text": "先观察数小时再决定减压", "is_correct": false},
+      {"label": "E", "text": "先安排转运再考虑减压", "is_correct": false}
+    ],
+    "explanation": "高度怀疑张力性气胸并伴循环不稳定时，应由具备资质的人员立即减压，给予必要呼吸支持，并进行后续确定性处理。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "及时减压和呼吸支持可针对危及生命的病情。"},
+      {"label": "B", "truth": false, "why": "高度怀疑且循环不稳定时等待影像可延误救治。", "misconception_id": "MC-batch045-M06-A1-012-B", "misconception": "等待影像确诊后才处理危重张力性气胸"},
+      {"label": "C", "truth": false, "why": "表浅擦伤的优先级低于危及生命的胸部病情。", "misconception_id": "MC-batch045-M06-A1-012-C", "misconception": "将轻微擦伤处置置于危重胸伤之前"},
+      {"label": "D", "truth": false, "why": "循环不稳定时长时间观察会延误减压。", "misconception_id": "MC-batch045-M06-A1-012-D", "misconception": "对循环不稳定的疑似张力性气胸延迟处置"},
+      {"label": "E", "truth": false, "why": "先转运再考虑减压可能延误紧急救命处理。", "misconception_id": "MC-batch045-M06-A1-012-E", "misconception": "将紧急减压推迟至转运之后"}
+    ]}
+  },
+  {
+    "id": "batch045-M06-A1-014",
+    "stem": "疑似骨盆骨折患者需要转运，合理的搬运原则是",
+    "options": [
+      {"label": "A", "text": "稳定骨盆并多人协同平托", "is_correct": true},
+      {"label": "B", "text": "反复挤压骨盆后协助平托", "is_correct": false},
+      {"label": "C", "text": "扶患者站立后协助其行走", "is_correct": false},
+      {"label": "D", "text": "牵拉患者双下肢拖行转运", "is_correct": false},
+      {"label": "E", "text": "让患者扭转躯干配合搬运", "is_correct": false}
+    ],
+    "explanation": "教师重点强调适当稳定骨盆、多人协同平托，减少不必要搬动；避免反复挤压、拖拽或强行活动。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "稳定损伤部位并协同平托可减少不必要活动。"},
+      {"label": "B", "truth": false, "why": "反复挤压可能加重损伤或出血，不应作为搬运前常规操作。", "misconception_id": "MC-batch045-M06-A1-014-B", "misconception": "通过反复挤压检查疑似骨盆骨折"},
+      {"label": "C", "truth": false, "why": "站立行走可能使不稳定损伤移位并加重出血。", "misconception_id": "MC-batch045-M06-A1-014-C", "misconception": "让疑似骨盆骨折患者站立行走转运"},
+      {"label": "D", "truth": false, "why": "拖拽双下肢可能造成骨盆及其他损伤部位的不必要运动。", "misconception_id": "MC-batch045-M06-A1-014-D", "misconception": "通过牵拉双下肢拖行转运骨盆伤者"},
+      {"label": "E", "truth": false, "why": "扭转躯干会增加损伤部位活动，不利于稳定。", "misconception_id": "MC-batch045-M06-A1-014-E", "misconception": "要求疑似骨盆骨折患者扭转躯干配合搬运"}
+    ]}
+  }
+]

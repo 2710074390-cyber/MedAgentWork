@@ -1,0 +1,116 @@
+[
+  {
+    "id": "batch045-M05-A1-009",
+    "stem": "淹溺的核心定义是",
+    "options": [
+      {"label": "A", "text": "浸入液体引起呼吸损害的过程", "is_correct": true},
+      {"label": "B", "text": "任何饮水后的腹胀", "is_correct": false},
+      {"label": "C", "text": "所有在水中发生的骨折", "is_correct": false},
+      {"label": "D", "text": "只有死亡才可称为淹溺", "is_correct": false},
+      {"label": "E", "text": "单纯皮肤接触水而无呼吸损害", "is_correct": false}
+    ],
+    "explanation": "教材定义以液体介质浸没或浸入引起呼吸系统损伤为核心；淹溺并非仅指死亡。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "液体介质浸没或浸入导致呼吸损害符合定义。"},
+      {"label": "B", "truth": false, "why": "饮水腹胀不等同于浸入液体引起的呼吸损害。", "misconception_id": "MC-EM-M05-009-B", "misconception": "把饮水腹胀等同于淹溺的呼吸损害"},
+      {"label": "C", "truth": false, "why": "水中骨折本身不等于液体浸入导致呼吸损害。", "misconception_id": "MC-EM-M05-009-C", "misconception": "把水中骨折本身视为淹溺定义"},
+      {"label": "D", "truth": false, "why": "淹溺可有非致死结局，死亡不是定义的必要条件。", "misconception_id": "MC-EM-M05-009-D", "misconception": "认为死亡是淹溺的必要结局"},
+      {"label": "E", "truth": false, "why": "仅接触水且没有呼吸损害不能满足所述定义。", "misconception_id": "MC-EM-M05-009-E", "misconception": "将无呼吸损害的皮肤接水视为淹溺"}
+    ]}
+  },
+  {
+    "id": "batch045-M05-A1-011",
+    "stem": "对溺水者现场处理，下列哪项不应作为常规措施？",
+    "options": [
+      {"label": "A", "text": "倒挂控水以等待水流尽", "is_correct": true},
+      {"label": "B", "text": "清除口鼻可见异物", "is_correct": false},
+      {"label": "C", "text": "及时开放患者气道", "is_correct": false},
+      {"label": "D", "text": "根据呼吸循环情况实施复苏", "is_correct": false},
+      {"label": "E", "text": "采取措施注意保温", "is_correct": false}
+    ],
+    "explanation": "教师补充强调不常规倒挂控水，以免延误通气与复苏；清除可见异物、开放气道及按情况复苏和保温均为相关处理。 考试关注不常规倒挂控水；现代淹溺复苏重视及时通气与心肺复苏，不应为排水延误救治。参考AHA淹溺复苏更新（链接本次访问受限，待人工核对）：https://cpr.heart.org/-/media/CPR2-Files/Tools-and-Resources/Training-Updates/2024-Training-Updates/2024FUDrowning241105FINAL110524-002-v2.pdf",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "倒挂控水不是常规措施，还可能延误必要复苏。"},
+      {"label": "B", "truth": false, "why": "可见口鼻异物影响气道时应予清除，不应盲目掏取。", "misconception_id": "MC-EM-M05-011-B", "misconception": "误认为清除可见口鼻异物不属于现场处理"},
+      {"label": "C", "truth": false, "why": "开放气道有助于后续呼吸评估和必要的通气。", "misconception_id": "MC-EM-M05-011-C", "misconception": "误认为开放气道不属于现场处理"},
+      {"label": "D", "truth": false, "why": "无正常呼吸等情况应按复苏流程给予必要帮助。", "misconception_id": "MC-EM-M05-011-D", "misconception": "忽视依呼吸循环情况实施复苏"},
+      {"label": "E", "truth": false, "why": "淹溺后应注意保温，避免进一步热量丢失。", "misconception_id": "MC-EM-M05-011-E", "misconception": "忽视淹溺后保温的必要性"}
+    ]}
+  },
+  {
+    "id": "batch045-M05-A1-012",
+    "stem": "溺水者已被安全救出，口鼻有泥沙且无正常呼吸。现场应优先考虑",
+    "options": [
+      {"label": "A", "text": "清除可见异物、开放气道并呼救复苏", "is_correct": true},
+      {"label": "B", "text": "倒挂数分钟后再检查呼吸", "is_correct": false},
+      {"label": "C", "text": "先反复挤压腹部使水排尽", "is_correct": false},
+      {"label": "D", "text": "只保温并等待自行恢复呼吸", "is_correct": false},
+      {"label": "E", "text": "先喂水并观察患者吞咽情况", "is_correct": false}
+    ],
+    "explanation": "清除可见异物、开放气道并呼救，按呼吸循环状态实施复苏；不应因控水、等待或喂水耽误必要救护。 本题沿用教师关于清除可见异物和开放气道的教学口径；现场应及时呼救并依受训情况提供通气及复苏，不为控水延误。参考AHA淹溺复苏更新（链接本次访问受限，待人工核对）：https://cpr.heart.org/-/media/CPR2-Files/Tools-and-Resources/Training-Updates/2024-Training-Updates/2024FUDrowning241105FINAL110524-002-v2.pdf",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "清理可见异物、开放气道、呼救及启动复苏符合救护重点。"},
+      {"label": "B", "truth": false, "why": "倒挂数分钟会延误对无正常呼吸者的紧急处理。", "misconception_id": "MC-EM-M05-012-B", "misconception": "先倒挂等待排水而延迟评估和复苏"},
+      {"label": "C", "truth": false, "why": "反复挤压腹部排水不是常规复苏前提且延误救护。", "misconception_id": "MC-EM-M05-012-C", "misconception": "将反复腹部挤压排水视为复苏前提"},
+      {"label": "D", "truth": false, "why": "保温重要但不能替代对无正常呼吸者的复苏。", "misconception_id": "MC-EM-M05-012-D", "misconception": "以单纯保温替代无正常呼吸时的复苏"},
+      {"label": "E", "truth": false, "why": "无正常呼吸者喂水有误吸风险，也耽误复苏。", "misconception_id": "MC-EM-M05-012-E", "misconception": "对无正常呼吸者先行喂水观察"}
+    ]}
+  },
+  {
+    "id": "batch045-M05-A1-017",
+    "stem": "按课程教材和教师重点，Ⅱ级狂犬病暴露的基本处理是",
+    "options": [
+      {"label": "A", "text": "处理伤口并接种狂犬病疫苗", "is_correct": true},
+      {"label": "B", "text": "仅观察伤口，不评估狂犬病暴露", "is_correct": false},
+      {"label": "C", "text": "仅接种破伤风疫苗", "is_correct": false},
+      {"label": "D", "text": "仅缝合伤口，不需疫苗", "is_correct": false},
+      {"label": "E", "text": "等待出现恐水后再处理", "is_correct": false}
+    ],
+    "explanation": "教师重点列Ⅱ级暴露需处理伤口并接种狂犬病疫苗；具体分级、疫苗方案及其他预防由专业人员按现行规范评估。",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "处理伤口和接种疫苗均为所列Ⅱ级暴露处理内容。"},
+      {"label": "B", "truth": false, "why": "仅观察不能替代暴露后伤口处置和疫苗评估。", "misconception_id": "MC-EM-M05-017-B", "misconception": "仅观察伤口而忽视狂犬病暴露评估"},
+      {"label": "C", "truth": false, "why": "破伤风预防需另行评估，不能替代狂犬病疫苗。", "misconception_id": "MC-EM-M05-017-C", "misconception": "以破伤风疫苗代替狂犬病疫苗"},
+      {"label": "D", "truth": false, "why": "仅缝合不能替代狂犬病暴露后的疫苗预防。", "misconception_id": "MC-EM-M05-017-D", "misconception": "以单纯缝合代替狂犬病暴露预防"},
+      {"label": "E", "truth": false, "why": "暴露后应及时处理，不应等待出现临床症状。", "misconception_id": "MC-EM-M05-017-E", "misconception": "等待出现恐水才启动暴露后处理"}
+    ]}
+  },
+  {
+    "id": "batch045-M05-A1-019",
+    "stem": "患者四肢严重外出血，直接压迫仍无法控制，现场备有合适的止血带。下列认识正确的是",
+    "options": [
+      {"label": "A", "text": "可考虑用止血带控制肢体出血", "is_correct": true},
+      {"label": "B", "text": "用细铁丝代替止血带更安全", "is_correct": false},
+      {"label": "C", "text": "止血带可用于治疗患者胸痛", "is_correct": false},
+      {"label": "D", "text": "可将止血带系在患者颈部", "is_correct": false},
+      {"label": "E", "text": "暂不止血，等待自行缓解", "is_correct": false}
+    ],
+    "explanation": "危及生命的肢体出血在直接压迫不能控制时可考虑使用合适止血带；不能用铁丝替代，也不能用于颈部。 本题描述直接压迫无效时的选择；2024 AHA急救指南针对危及生命的出血建议直接压迫，随后依据伤口位置使用止血带或填塞，具体依现场条件及培训执行。参考：https://cpr.heart.org/en/resuscitation-science/2024-first-aid-guidelines/",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "严重肢体出血压迫无效时可考虑使用合适止血带。"},
+      {"label": "B", "truth": false, "why": "细铁丝易造成组织损伤，不能替代合适止血带。", "misconception_id": "MC-EM-M05-019-B", "misconception": "以细铁丝替代合适止血带"},
+      {"label": "C", "truth": false, "why": "止血带是控制肢体外出血的工具，不治疗胸痛。", "misconception_id": "MC-EM-M05-019-C", "misconception": "误把止血带用于治疗胸痛"},
+      {"label": "D", "truth": false, "why": "颈部不能使用止血带，可能危及气道及脑供血。", "misconception_id": "MC-EM-M05-019-D", "misconception": "把止血带应用于颈部"},
+      {"label": "E", "truth": false, "why": "严重出血需要尽快采取适当止血措施，不能等待自行缓解。", "misconception_id": "MC-EM-M05-019-E", "misconception": "对严重出血等待自行缓解而不止血"}
+    ]}
+  },
+  {
+    "id": "batch045-M05-A1-020",
+    "stem": "关于已成功控制严重肢体出血的止血带，下列哪项处理最恰当？",
+    "options": [
+      {"label": "A", "text": "记录时间，不自行定时松解，尽快移交救治", "is_correct": true},
+      {"label": "B", "text": "按固定时间自行反复松开以检查出血", "is_correct": false},
+      {"label": "C", "text": "用电线加固止血带以维持止血", "is_correct": false},
+      {"label": "D", "text": "覆盖并隐瞒止血带使用情况", "is_correct": false},
+      {"label": "E", "text": "出血停止后立即丢弃止血带并独自离开", "is_correct": false}
+    ],
+    "explanation": "应记录使用时间并及时移交专业人员；旧教材所述定时松解不能直接当作现行现场常规，应避免自行松解导致再出血。 旧教材的每小时定时松解属于历史考试口径，不应套用为现场常规；本题以不自行定时松解及及时移交为原则。参考2024 AHA急救指南：https://cpr.heart.org/en/resuscitation-science/2024-first-aid-guidelines/",
+    "learning_value": {"per_option": [
+      {"label": "A", "truth": true, "why": "记录并告知使用时间，保持止血并移交专业救治。"},
+      {"label": "B", "truth": false, "why": "自行定时松解可能造成再出血，不宜照搬旧教材。", "misconception_id": "MC-EM-M05-020-B", "misconception": "自行定时松解已控制出血的止血带"},
+      {"label": "C", "truth": false, "why": "电线可能造成局部损伤，不能代替或加固止血带。", "misconception_id": "MC-EM-M05-020-C", "misconception": "用电线加固止血带以维持止血"},
+      {"label": "D", "truth": false, "why": "隐瞒止血带会影响后续评估及安全交接。", "misconception_id": "MC-EM-M05-020-D", "misconception": "向后续医护隐瞒止血带使用情况"},
+      {"label": "E", "truth": false, "why": "移除器械或离开可能导致再出血并延误救治。", "misconception_id": "MC-EM-M05-020-E", "misconception": "止血后立即移除器械并独自离开"}
+    ]}
+  }
+]

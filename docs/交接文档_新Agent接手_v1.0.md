@@ -123,11 +123,12 @@ MedAgentWork/
 
 **出题硬约束**（全文在 SOUL.md，要点）：
 - HC-1~4b 题型极性/Schema/溯源锚点/禁幻觉/真题答案保护；HC-7 双向细目表（Bloom 30/40/25/5）；HC-14 选项用**结构模板**（同语法结构）而非字数范围；HC-15 Bloom 每 50 题采样（`bloom_sampler.py`）；HC-16 押题考频增强
-- **HC-22 真题双族配额（现行 · 2026-10-26 修订）**：考研族 1/5 + 执业医师族 1/5（各 15%–25%）；执业医师族内**历年真题 `zhiyi_pdf` 与 CMExam `zhiyi` 双源均可直接入选**（同等相关时 PDF 轻微优先，不再强制先用完 PDF）；标注 `kaoyan_origin` / `zhiyi_origin{...,corpus}` + `[源:...]` + `keypoint_ref` + `license`；候选不足 → `quota_status=reduced/cancelled`，原创补齐并如实标注（HC-18 的「考研 20%」条款已由 HC-22 接管）
+- **HC-22 真题双族配额（现行 · 2026-10-26 修订）**：考研族 1/5 + 执业医师族 1/5（各 15%–25%）；执业医师族内**历年真题 `zhiyi_pdf` 与 CMExam `zhiyi` 双源均可直接入选**（同等相关时 PDF 轻微优先，不再强制先用完 PDF）；标注 `kaoyan_origin` / `zhiyi_origin{...,corpus}` + `[源:...]` + `keypoint_ref` + `license`；候选不足 → `quota_status=reduced/cancelled`；候选存在但人类专属核验未完成 → `deferred`（HC-28）；原创补齐并如实标注（HC-18 的「考研 20%」条款已由 HC-22 接管）
 - **HC-23 执业医师语料**：2010–2023（含 2007–2009、2024）扫描册 → `zhiyi_pdf_ocr.py`（本地 RapidOCR）→ `zhiyi_pdf_parse.py` → `real_question_cli.py build`；质量门禁见 `reports/validate/zhiyi_pdf_parse_report.json`
 - 选项设计 NBME 八项：禁绝对词/长度比 ≤1.5/语法一致/数值排序/词重复/收敛策略/B1 共用选项专项
 
-**门禁不可跳过（HC-12 教训：5 起绕过事件）**：每阶段转换前实测门禁，BLOCKED → halt → 回退上游修复 → 清 halt（`--clear-halt`）→ 重跑，绝不"相信下游自觉"。
+**门禁不可跳过（HC-12 教训：5 起绕过事件）**：每阶段转换前实测门禁，确定性门禁 BLOCKED → 回退上游修复（单题 2 轮/整批 3 轮，超限隔离并继续）→ 清 halt（`--clear-halt`）→ 重跑，绝不"相信下游自觉"。
+**HC-28 一次跑完（2026-11-01）**：人类专属核验（原卷/答案原页/版权/专家裁定/指南冲突）只写 `review_queue`，不触发 halt；`generation_status=DONE` 即生成完成，`release_status=PENDING_HUMAN_REVIEW` 不是失败。最终交付 MD 必须附人工复核队列，`qbank.py export-md --review-queue-out` 产出 `review_queue.json`。
 
 ---
 
@@ -138,7 +139,7 @@ MedAgentWork/
 python validate_options.py --batch {batchID}           # GATE-A2，FAIL==0 才放行
 python gate_check.py --batch {batchID} --stage agent3_done   # GATE-A3
 python gate_check.py --batch {batchID} --stage agent4_done   # GATE-A4
-python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json  # 最终交付 MD（强制）
+python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json --review-queue-out 最终产物/{batchID}/review_queue.json  # 最终交付 MD + 人工复核队列（HC-28 强制）
 python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单} --out reports/validate/real_question_check_{batchID}.json  # HC-22 双族占比/答案/去重/覆盖/license/溯源
 python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json  # HC-18 legacy，仅旧批次兼容
 python gate_check.py --batch {batchID} --stage final   # 终审（先跑第 5 行）

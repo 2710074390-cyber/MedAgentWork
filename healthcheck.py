@@ -181,6 +181,9 @@ def check_state_consistency():
             # 按科目代码命名、非批次目录，不参与批次状态一致性检查。
             if batch_dir.name.endswith('_review'):
                 continue
+            # 非批次产物目录（海报等设计物料），不属于批次生命周期
+            if batch_dir.name in ('视觉海报',):
+                continue
             if batch_dir.name not in batches:
                 parent_id = _re.sub(r'-[A-Z]$', '', batch_dir.name)
                 if parent_id in batches:

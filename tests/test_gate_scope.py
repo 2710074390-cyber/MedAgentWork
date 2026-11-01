@@ -59,6 +59,10 @@ def test_mode_fail_closed_and_legacy_boundary(tmp_path, monkeypatch):
     monkeypatch.setattr(gate_check, 'BASE', tmp_path)
     assert not gate_check._is_strict_batch('batch044', {})
     assert not gate_check._is_strict_batch('batch044-A', {})
+    # 非标准批次 ID（测试/复核伪批次）不得被误判为新批次
+    assert not gate_check._is_strict_batch('batchMDT', {})
+    assert not gate_check._is_strict_batch('_review_only_batch', {})
+    assert not gate_check._is_strict_batch('batch-legacy-test', {})
     for mode in (None, '', 'legacy', 'Strict', 1):
         batch = {'product_types': ['question_bank'], 'steps': {'AGENT3': {}, 'AGENT4': {}}}
         if mode is not None:
@@ -295,3 +299,64 @@ def test_quality_gate_flags_misconception_conflicts(tmp_path):
     r = check_item_learning_value(args, profile, 'enforce')
     assert r['status'] == 'FAIL'
     assert '冲突=1' in r['reason']
+
+
+def test_question_blueprint_hard_gate(tmp_path, monkeypatch):
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    folder = tmp_path / '中间产物' / 'batch046'
+    folder.mkdir(parents=True)
+    plan = list('ABCDE' * 20)
+    questions = [{'answer': a, 'bloom': b, 'type': t} for a, b, t in zip(
+        plan, ['记忆'] * 20 + ['理解'] * 25 + ['应用'] * 35 + ['分析'] * 20,
+        ['A1'] * 30 + ['A2'] * 45 + ['A3'] * 25)]
+    config = {'bloom_targets': {'记忆': [0, 20], '理解': [25, 25], '应用': [35, 35], '分析': [20, 20]},
+              'type_targets': {'A1': [30, 30], 'A2': [45, 45], 'A3': [25, 25], 'A4': [0, 0]},
+              'type_group_targets': {'A3+A4': [25, 25]}}
+    batch = {'question_blueprint_gate': config}
+    def write():
+        (folder / 'ALL_questions.json').write_text(json.dumps(questions, ensure_ascii=False), encoding='utf-8')
+        (folder / 'answer_position_plan.json').write_text(json.dumps(plan), encoding='utf-8')
+    write()
+    assert gate_check.gate_question_blueprint('batch046', batch)['status'] == 'PASS'
+    assert gate_check.gate_question_blueprint('batch046', {}) is None
+    questions[0]['bloom'] = ''
+    write()
+    assert 'Bloom' in gate_check.gate_question_blueprint('batch046', batch)['reason']
+    questions[0]['bloom'] = '记忆'
+    questions[0]['answer'] = 'B'
+    write()
+    assert '计划' in gate_check.gate_question_blueprint('batch046', batch)['reason']
+    plan[0:3] = ['A', 'A', 'A']
+    for i in range(3):
+        questions[i]['answer'] = 'A'
+    write()
+    assert '连续三题' in gate_check.gate_question_blueprint('batch046', batch)['reason']
+    questions.pop()
+    write()
+    assert gate_check.gate_final('batch046', {**batch, 'status': 'APPROVED'})['status'] == 'BLOCKED'
+    assert gate_check.gate_question_blueprint('batch046', {'question_blueprint_gate': {}})['status'] == 'BLOCKED'
+
+
+def test_question_blueprint_type_group_gate_over_limit_and_legacy_compat(tmp_path, monkeypatch):
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    folder = tmp_path / '中间产物' / 'batch046'
+    folder.mkdir(parents=True)
+    plan = list('ABCDE' * 20)
+    questions = [{'answer': answer, 'bloom': bloom, 'type': kind} for answer, bloom, kind in zip(
+        plan, ['记忆'] * 20 + ['理解'] * 25 + ['应用'] * 35 + ['分析'] * 20,
+        ['A1'] * 30 + ['A2'] * 45 + ['A3'] * 25)]
+    (folder / 'ALL_questions.json').write_text(json.dumps(questions, ensure_ascii=False), encoding='utf-8')
+    (folder / 'answer_position_plan.json').write_text(json.dumps(plan), encoding='utf-8')
+    base = {'bloom_targets': {'记忆': [0, 20], '理解': [25, 25], '应用': [35, 35], '分析': [20, 20]},
+            'type_targets': {'A1': [29, 30], 'A2': [45, 45], 'A3': [25, 25], 'A4': [0, 2]}}
+    assert gate_check.gate_question_blueprint('batch046', {'question_blueprint_gate': base})['status'] == 'PASS'
+    grouped = {**base, 'type_group_targets': {'A3+A4': [25, 25]}}
+    result = gate_check.gate_question_blueprint('batch046', {'question_blueprint_gate': grouped})
+    assert result['status'] == 'PASS'
+    questions[0]['type'] = 'A4'
+    (folder / 'ALL_questions.json').write_text(json.dumps(questions, ensure_ascii=False), encoding='utf-8')
+    result = gate_check.gate_question_blueprint('batch046', {'question_blueprint_gate': grouped})
+    assert result['status'] == 'BLOCKED'
+    assert '题型组合 A3+A4 题数 26' in result['reason']
+    grouped['type_group_targets'] = {}
+    assert gate_check.gate_question_blueprint('batch046', {'question_blueprint_gate': grouped})['status'] == 'PASS'

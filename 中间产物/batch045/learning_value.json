@@ -1,0 +1,209 @@
+{
+  "generated_at": "2026-11-01T11:56:40",
+  "file": "中间产物\\batch045\\ALL_questions.json",
+  "batch": "batch045",
+  "input_sha256": "cdfe6d3b390033fbec4c9fb9181b82d161a5d8256217263b3585d5a151a17fa8",
+  "summary": {
+    "total": 6,
+    "pass": 0,
+    "warn": 6,
+    "fail": 0,
+    "per_option_coverage": 1.0,
+    "misconception_coverage": 1.0,
+    "source_quote_exact_rate": 1.0,
+    "quote_verified_rate": 1.0,
+    "misconception_id_conflicts": 0,
+    "anchor_verified_rate": 0.0,
+    "anchor_low_overlap_count": 1
+  },
+  "items": [
+    {
+      "id": "batch045-M01-A1-001",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 32,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2051,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-002",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1379,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "干扰项有效性待复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-003",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 29,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.1923,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M01-A1-004",
+      "type": "A1",
+      "module": "M01",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 28,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.2143,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-005",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 32,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.0323,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        },
+        {
+          "rule": "R18",
+          "detail": "teacher_anchor 对题干主题覆盖度低（0.032 < 0.10），需复核是否错配"
+        }
+      ],
+      "status": "WARN"
+    },
+    {
+      "id": "batch045-M03-A1-006",
+      "type": "A1",
+      "module": "M03",
+      "options": 5,
+      "per_option": 5,
+      "distractors": 4,
+      "distractors_covered": 4,
+      "misconceptions": 4,
+      "info_units": 7,
+      "median_chars": 34,
+      "source_quote_status": "exact",
+      "quote_checked": true,
+      "quote_supported": true,
+      "anchor_status": "partial",
+      "anchor_overlap": 0.129,
+      "anchor_threshold": 0.1,
+      "issues": [],
+      "warnings": [
+        {
+          "rule": "R16",
+          "detail": "anchor_status=partial，需复核锚点"
+        },
+        {
+          "rule": "QUALITY_FLAG",
+          "detail": "待独立医学复核"
+        }
+      ],
+      "status": "WARN"
+    }
+  ]
+}

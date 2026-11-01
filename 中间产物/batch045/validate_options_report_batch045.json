@@ -1,0 +1,777 @@
+{
+  "report_metadata": {
+    "report_id": "OPTVAL-20261101-ALL_questions_pilot_draft",
+    "validation_date": "2026-11-01T12:31:14.179893",
+    "source_file": "C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch045\\ALL_questions_pilot_draft.json",
+    "validator_version": "2.0",
+    "check_mode": "full (R1-R13+B1+JS1+S3)",
+    "source_sha256": "94f3b5fbaa20debde399314588b108171e8a5dd9240fa6d022794f7222520128",
+    "batch_id": "batch045",
+    "stage": "A2"
+  },
+  "summary": {
+    "total_questions": 100,
+    "pass": 41,
+    "warn": 21,
+    "fail": 38,
+    "b1_groups_checked": 0
+  },
+  "issues": [
+    {
+      "question_id": "batch045-M12-003",
+      "rule": "R8",
+      "severity": "WARN",
+      "target": "batch045-M12-003.optionA",
+      "detail": "选项过短(2字): \"红色\""
+    },
+    {
+      "question_id": "batch045-M12-003",
+      "rule": "R8",
+      "severity": "WARN",
+      "target": "batch045-M12-003.optionB",
+      "detail": "选项过短(2字): \"黄色\""
+    },
+    {
+      "question_id": "batch045-M12-003",
+      "rule": "R8",
+      "severity": "WARN",
+      "target": "batch045-M12-003.optionC",
+      "detail": "选项过短(2字): \"绿色\""
+    },
+    {
+      "question_id": "batch045-M12-003",
+      "rule": "R8",
+      "severity": "WARN",
+      "target": "batch045-M12-003.optionD",
+      "detail": "选项过短(2字): \"黑色\""
+    },
+    {
+      "question_id": "batch045-M12-003",
+      "rule": "R8",
+      "severity": "WARN",
+      "target": "batch045-M12-003.optionE",
+      "detail": "选项过短(2字): \"蓝色\""
+    },
+    {
+      "question_id": "batch045-M12-004",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M12-004.options",
+      "detail": "正确选项(A)长度(9字)显著长于其他选项(最短5字)"
+    },
+    {
+      "question_id": "batch045-M12-007",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M12-007.options",
+      "detail": "正确选项(A)术语共享数(1)显著高于其他选项(均0.2)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M12-011",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M12-011.optionA",
+      "detail": "绝对化用语: \"让胸廓完全回弹\""
+    },
+    {
+      "question_id": "batch045-M03-A1-103",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M03-A1-103.options",
+      "detail": "正确选项(A)术语共享数(2)显著高于其他选项(均0.5)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M05-A1-004",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-004.options",
+      "detail": "正确选项(A)长度(11字)显著长于其他选项(最短7字)"
+    },
+    {
+      "question_id": "batch045-M05-A1-005",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-005.options",
+      "detail": "正确选项(B)长度(4字)显著长于其他选项(最短2字)"
+    },
+    {
+      "question_id": "batch045-M05-A1-005",
+      "rule": "R8",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-005.optionD",
+      "detail": "选项过短(2字): \"冻伤\""
+    },
+    {
+      "question_id": "batch045-M05-A1-005",
+      "rule": "R8",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-005.optionE",
+      "detail": "选项过短(2字): \"淹溺\""
+    },
+    {
+      "question_id": "batch045-M05-A1-006",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-006.optionB",
+      "detail": "绝对化用语: \"一定在数分钟内死亡\""
+    },
+    {
+      "question_id": "batch045-M05-A1-006",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-006.optionE",
+      "detail": "绝对化用语: \"无需处理且绝不会加重\""
+    },
+    {
+      "question_id": "batch045-M05-A1-008",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-008.options",
+      "detail": "正确选项(A)长度(19字)显著长于其他选项(最短10字)"
+    },
+    {
+      "question_id": "batch045-M05-A1-009",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-009.options",
+      "detail": "正确选项(A)长度比2.2x (>2.0): 18字 vs 8字"
+    },
+    {
+      "question_id": "batch045-M05-A1-011",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-011.options",
+      "detail": "正确选项(A)长度比2.5x (>2.0): 10字 vs 4字"
+    },
+    {
+      "question_id": "batch045-M05-A1-012",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-012.options",
+      "detail": "正确选项(A)长度比3.1x (>2.0): 22字 vs 7字"
+    },
+    {
+      "question_id": "batch045-M05-A1-012",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-012.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 可见"
+    },
+    {
+      "question_id": "batch045-M05-A1-012",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-012.optionA",
+      "detail": "选项过长(22字 > 20字)，疑似矫枉过正: \"清除可见异物并开放气道，呼救及按复苏流程施救...\""
+    },
+    {
+      "question_id": "batch045-M05-A1-013",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-013.options",
+      "detail": "正确选项(A)长度(11字)显著长于其他选项(最短6字)"
+    },
+    {
+      "question_id": "batch045-M05-A1-013",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-013.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 电源"
+    },
+    {
+      "question_id": "batch045-M05-A1-016",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-016.options",
+      "detail": "正确选项(A)长度(14字)显著长于其他选项(最短7字)"
+    },
+    {
+      "question_id": "batch045-M05-A1-016",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-016.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 完整"
+    },
+    {
+      "question_id": "batch045-M05-A1-016",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-016.options",
+      "detail": "正确选项(A)术语共享数(2)显著高于其他选项(均0.8)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M05-A1-017",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-017.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 狂犬病"
+    },
+    {
+      "question_id": "batch045-M05-A1-017",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-017.options",
+      "detail": "正确选项(A)术语共享数(2)显著高于其他选项(均0.2)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M05-A1-018",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-018.options",
+      "detail": "正确选项(A)长度(11字)显著长于其他选项(最短6字)"
+    },
+    {
+      "question_id": "batch045-M05-A1-018",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-018.options",
+      "detail": "正确选项(A)术语共享数(1)显著高于其他选项(均0.2)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M05-A1-019",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M05-A1-019.optionE",
+      "detail": "绝对化用语: \"出血已危及生命仍应完全放弃止血\""
+    },
+    {
+      "question_id": "batch045-M05-A1-019",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-019.options",
+      "detail": "正确选项(A)长度比2.4x (>2.0): 19字 vs 8字"
+    },
+    {
+      "question_id": "batch045-M05-A1-020",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-020.options",
+      "detail": "正确选项(A)长度比2.9x (>2.0): 23字 vs 8字"
+    },
+    {
+      "question_id": "batch045-M05-A1-020",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M05-A1-020.optionA",
+      "detail": "选项过长(23字 > 20字)，疑似矫枉过正: \"记录使用时间，尽快转交专业救治，不自行定时松解...\""
+    },
+    {
+      "question_id": "batch045-M06-A1-001",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-001.options",
+      "detail": "正确选项(A)长度比2.6x (>2.0): 21字 vs 8字"
+    },
+    {
+      "question_id": "batch045-M06-A1-001",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-001.optionA",
+      "detail": "选项过长(21字 > 20字)，疑似矫枉过正: \"同一致伤因素造成两个及以上解剖部位严重损伤...\""
+    },
+    {
+      "question_id": "batch045-M06-A1-002",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-002.options",
+      "detail": "正确选项(A)长度比3.6x (>2.0): 18字 vs 5字"
+    },
+    {
+      "question_id": "batch045-M06-A1-003",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M06-A1-003.options",
+      "detail": "正确选项(A)长度(7字)显著长于其他选项(最短4字)"
+    },
+    {
+      "question_id": "batch045-M06-A2-004",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A2-004.options",
+      "detail": "正确选项(A)长度比2.1x (>2.0): 19字 vs 9字"
+    },
+    {
+      "question_id": "batch045-M06-A2-004",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M06-A2-004.options",
+      "detail": "正确选项(A)术语共享数(1)显著高于其他选项(均0.2)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M06-A2-006",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A2-006.options",
+      "detail": "正确选项(A)长度比3.2x (>2.0): 13字 vs 4字"
+    },
+    {
+      "question_id": "batch045-M06-A2-006",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M06-A2-006.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 骨盆"
+    },
+    {
+      "question_id": "batch045-M06-A1-007",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-007.options",
+      "detail": "正确选项(A)长度比2.3x (>2.0): 14字 vs 6字"
+    },
+    {
+      "question_id": "batch045-M06-A1-007",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-007.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 形成"
+    },
+    {
+      "question_id": "batch045-M06-A2-008",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A2-008.options",
+      "detail": "正确选项(A)长度比2.5x (>2.0): 10字 vs 4字"
+    },
+    {
+      "question_id": "batch045-M06-A1-009",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-009.options",
+      "detail": "正确选项(A)长度比2.2x (>2.0): 13字 vs 6字"
+    },
+    {
+      "question_id": "batch045-M06-A1-010",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M06-A1-010.optionB",
+      "detail": "绝对化用语: \"保持伤口长期完全敞开\""
+    },
+    {
+      "question_id": "batch045-M06-A1-010",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-010.options",
+      "detail": "正确选项(A)长度比2.4x (>2.0): 19字 vs 8字"
+    },
+    {
+      "question_id": "batch045-M06-A1-012",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-012.options",
+      "detail": "正确选项(A)长度比3.3x (>2.0): 23字 vs 7字"
+    },
+    {
+      "question_id": "batch045-M06-A1-012",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-012.optionA",
+      "detail": "选项过长(23字 > 20字)，疑似矫枉过正: \"立即由具备资质的人员紧急减压并给予必要呼吸支持...\""
+    },
+    {
+      "question_id": "batch045-M06-A1-013",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M06-A1-013.options",
+      "detail": "正确选项(A)长度(9字)显著长于其他选项(最短5字)"
+    },
+    {
+      "question_id": "batch045-M06-A1-014",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-014.options",
+      "detail": "正确选项(A)长度比3.0x (>2.0): 21字 vs 7字"
+    },
+    {
+      "question_id": "batch045-M06-A1-014",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-014.optionA",
+      "detail": "选项过长(21字 > 20字)，疑似矫枉过正: \"尽量减少搬动，适当稳定骨盆并由多人协同平托...\""
+    },
+    {
+      "question_id": "batch045-M06-A1-015",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M06-A1-015.options",
+      "detail": "正确选项(A)长度(11字)显著长于其他选项(最短6字)"
+    },
+    {
+      "question_id": "batch045-M06-A1-015",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-015.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 外露, 骨端"
+    },
+    {
+      "question_id": "batch045-M06-A1-016",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M06-A1-016.options",
+      "detail": "正确选项(A)长度(11字)显著长于其他选项(最短6字)"
+    },
+    {
+      "question_id": "batch045-M06-A1-016",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M06-A1-016.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 内脏"
+    },
+    {
+      "question_id": "batch045-M06-A1-016",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M06-A1-016.options",
+      "detail": "正确选项(A)术语共享数(2)显著高于其他选项(均0.5)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M07-A1-001",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-001.options",
+      "detail": "正确选项(A)长度比7.5x (>2.0): 30字 vs 4字"
+    },
+    {
+      "question_id": "batch045-M07-A1-001",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-001.optionA",
+      "detail": "选项过长(30字 > 20字)，疑似矫枉过正: \"不稳定型心绞痛、非ST段抬高型心肌梗死和ST段抬高型心肌梗死...\""
+    },
+    {
+      "question_id": "batch045-M07-A1-002",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-002.options",
+      "detail": "正确选项(A)长度比4.2x (>2.0): 34字 vs 8字"
+    },
+    {
+      "question_id": "batch045-M07-A1-002",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-002.optionA",
+      "detail": "选项过长(34字 > 20字)，疑似矫枉过正: \"超过第99百分位参考上限提示心肌损伤，仍需结合动态变化与临床...\""
+    },
+    {
+      "question_id": "batch045-M07-A1-003",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M07-A1-003.optionC",
+      "detail": "绝对化用语: \"必须有发热\""
+    },
+    {
+      "question_id": "batch045-M07-A1-003",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M07-A1-003.optionD",
+      "detail": "绝对化用语: \"必须有四肢骨折\""
+    },
+    {
+      "question_id": "batch045-M07-A1-003",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M07-A1-003.optionE",
+      "detail": "绝对化用语: \"必须发生低血糖\""
+    },
+    {
+      "question_id": "batch045-M07-A1-003",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-003.options",
+      "detail": "正确选项(A)长度比2.4x (>2.0): 12字 vs 5字"
+    },
+    {
+      "question_id": "batch045-M07-A1-004",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-004.options",
+      "detail": "正确选项(A)长度比3.4x (>2.0): 27字 vs 8字"
+    },
+    {
+      "question_id": "batch045-M07-A1-004",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-004.optionA",
+      "detail": "选项过长(27字 > 20字)，疑似矫枉过正: \"需及时治疗，但不宜一律立即降至正常，目标应按病因个体化...\""
+    },
+    {
+      "question_id": "batch045-M07-A2-005",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M07-A2-005.options",
+      "detail": "正确选项(A)长度(10字)显著长于其他选项(最短5字)"
+    },
+    {
+      "question_id": "batch045-M07-A1-007",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-007.options",
+      "detail": "正确选项(A)长度比2.2x (>2.0): 13字 vs 6字"
+    },
+    {
+      "question_id": "batch045-M07-A1-008",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-008.options",
+      "detail": "正确选项(A)长度比3.5x (>2.0): 14字 vs 4字"
+    },
+    {
+      "question_id": "batch045-M07-A2-009",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M07-A2-009.optionC",
+      "detail": "绝对化用语: \"哮喘完全缓解\""
+    },
+    {
+      "question_id": "batch045-M07-A1-010",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-010.options",
+      "detail": "正确选项(A)长度比2.3x (>2.0): 16字 vs 7字"
+    },
+    {
+      "question_id": "batch045-M07-A1-011",
+      "rule": "R8",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-011.optionE",
+      "detail": "选项以\"和\"结尾且长度7字，疑似截断: \"尿素与肌酐总和\""
+    },
+    {
+      "question_id": "batch045-M07-A1-012",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M07-A1-012.options",
+      "detail": "正确选项(A)长度(13字)显著长于其他选项(最短8字)"
+    },
+    {
+      "question_id": "batch045-M07-A1-013",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M07-A1-013.options",
+      "detail": "正确选项(A)长度(14字)显著长于其他选项(最短9字)"
+    },
+    {
+      "question_id": "batch045-M07-A1-015",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M07-A1-015.options",
+      "detail": "正确选项(A)长度(7字)显著长于其他选项(最短4字)"
+    },
+    {
+      "question_id": "batch045-M07-A1-015",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M07-A1-015.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 血栓"
+    },
+    {
+      "question_id": "batch045-M07-A1-016",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M07-A1-016.options",
+      "detail": "正确选项(A)长度(7字)显著长于其他选项(最短4字)"
+    },
+    {
+      "question_id": "batch045-M08-A1-001",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-001.optionE",
+      "detail": "绝对化用语: \"血压正常即可完全排除严重出血\""
+    },
+    {
+      "question_id": "batch045-M08-A1-001",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-001.options",
+      "detail": "正确选项(A)长度比5.1x (>2.0): 41字 vs 8字"
+    },
+    {
+      "question_id": "batch045-M08-A1-001",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-001.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 口径"
+    },
+    {
+      "question_id": "batch045-M08-A1-001",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-001.options",
+      "detail": "正确选项(A)术语共享数(2)显著高于其他选项(均0.2)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M08-A1-001",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-001.optionA",
+      "detail": "选项过长(41字 > 20字)，疑似矫枉过正: \"教师口径为超过800ml，教材另述超过1000ml或血容量减...\""
+    },
+    {
+      "question_id": "batch045-M08-A1-001",
+      "rule": "R13",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-001.options",
+      "detail": "选项平均长度19.4字 > 18字，整体偏长（防过度加长）"
+    },
+    {
+      "question_id": "batch045-M08-A2-002",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M08-A2-002.options",
+      "detail": "正确选项(A)长度(14字)显著长于其他选项(最短9字)"
+    },
+    {
+      "question_id": "batch045-M08-A1-003",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-003.optionB",
+      "detail": "绝对化用语: \"胰岛素分泌使胰腺完全停止血供\""
+    },
+    {
+      "question_id": "batch045-M08-A1-003",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-003.optionD",
+      "detail": "绝对化用语: \"胃酸完全消失导致所有腹痛\""
+    },
+    {
+      "question_id": "batch045-M08-A2-004",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M08-A2-004.options",
+      "detail": "正确选项(A)长度(12字)显著长于其他选项(最短7字)"
+    },
+    {
+      "question_id": "batch045-M08-A1-005",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-005.optionE",
+      "detail": "绝对化用语: \"必须始终存在明显低血糖\""
+    },
+    {
+      "question_id": "batch045-M08-A1-005",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-005.options",
+      "detail": "正确选项(A)长度比2.5x (>2.0): 15字 vs 6字"
+    },
+    {
+      "question_id": "batch045-M08-A1-005",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-005.options",
+      "detail": "正确选项(A)术语共享数(2)显著高于其他选项(均0.5)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M08-A1-006",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-006.options",
+      "detail": "正确选项(A)长度(14字)显著长于其他选项(最短9字)"
+    },
+    {
+      "question_id": "batch045-M08-A1-007",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-007.optionD",
+      "detail": "绝对化用语: \"完全不存在液体缺失\""
+    },
+    {
+      "question_id": "batch045-M08-A1-007",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-007.options",
+      "detail": "正确选项(A)长度比2.2x (>2.0): 20字 vs 9字"
+    },
+    {
+      "question_id": "batch045-M08-A1-007",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-007.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 高渗, 高血糖"
+    },
+    {
+      "question_id": "batch045-M08-A1-008",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-008.optionE",
+      "detail": "绝对化用语: \"完全忽略诱发疾病\""
+    },
+    {
+      "question_id": "batch045-M08-A1-008",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-008.options",
+      "detail": "正确选项(A)长度比2.1x (>2.0): 17字 vs 8字"
+    },
+    {
+      "question_id": "batch045-M08-A1-009",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-009.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 血糖"
+    },
+    {
+      "question_id": "batch045-M08-A2-010",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M08-A2-010.options",
+      "detail": "正确选项(A)长度比2.5x (>2.0): 15字 vs 6字"
+    },
+    {
+      "question_id": "batch045-M08-A2-010",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M08-A2-010.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 静脉"
+    },
+    {
+      "question_id": "batch045-M08-A2-010",
+      "rule": "R11",
+      "severity": "WARN",
+      "target": "batch045-M08-A2-010.options",
+      "detail": "正确选项(A)术语共享数(1)显著高于其他选项(均0.2)(收敛策略/NBME D19)"
+    },
+    {
+      "question_id": "batch045-M08-A1-011",
+      "rule": "R10",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-011.stem",
+      "detail": "题干关键词仅出现在正确选项(A)中(词重复线索/NBME D18): 脑卒中"
+    },
+    {
+      "question_id": "batch045-M08-A1-012",
+      "rule": "R2",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-012.options",
+      "detail": "正确选项(A)长度比2.1x (>2.0): 27字 vs 13字"
+    },
+    {
+      "question_id": "batch045-M08-A1-012",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-012.optionA",
+      "detail": "选项过长(27字 > 20字)，疑似矫枉过正: \"需明确发病或最后正常时间、影像和禁忌证，由卒中团队评估...\""
+    },
+    {
+      "question_id": "batch045-M08-A1-014",
+      "rule": "R1",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-014.optionE",
+      "detail": "绝对化用语: \"局灶神经体征缺失可完全排除本病\""
+    },
+    {
+      "question_id": "batch045-M08-A1-014",
+      "rule": "R2",
+      "severity": "WARN",
+      "target": "batch045-M08-A1-014.options",
+      "detail": "正确选项(A)长度(23字)显著长于其他选项(最短12字)"
+    },
+    {
+      "question_id": "batch045-M08-A1-014",
+      "rule": "R13",
+      "severity": "FAIL",
+      "target": "batch045-M08-A1-014.optionA",
+      "detail": "选项过长(23字 > 20字)，疑似矫枉过正: \"头颅CT有助于诊断，血管造影可帮助明确血管病因...\""
+    }
+  ]
+}

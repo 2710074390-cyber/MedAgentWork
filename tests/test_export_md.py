@@ -95,6 +95,60 @@ def test_export_md_x_type_all_letters_marked():
         assert '**答案：ABCD**' in md                  # 与 ✅ 标记一致
 
 
+def test_export_md_review_queue_hc28():
+    """HC-28: 交付 MD 必须带发布状态与人工复核队列，且不因队列判生成失败。"""
+    with tempfile.TemporaryDirectory() as tmp:
+        questions = [
+            {'id': 'T1', 'module': 'M1', 'type': 'A1', 'bloom_level': '记忆',
+             'stem': '可发布题？', 'options': {'A': 'a', 'B': 'b'}, 'answer': 'A',
+             'release': {'disposition': 'publishable', 'evidence_grade': 'A',
+                         'risk_level': 'low', 'reason_code': 'NONE',
+                         'agent_checks': ['锚点逐字命中'], 'human_check': '',
+                         'suggested_action': ''}},
+            {'id': 'T2', 'module': 'M1', 'type': 'A1', 'bloom_level': '理解',
+             'stem': '待人工复核题？', 'options': {'A': 'a', 'B': 'b'}, 'answer': 'A',
+             'release': {'disposition': 'pending_human', 'evidence_grade': 'C',
+                         'risk_level': 'medium', 'reason_code': 'HUMAN_MEDICAL_REVIEW',
+                         'agent_checks': ['盲攻一次'], 'human_check': '核对答案唯一性',
+                         'suggested_action': '复核后改为 publishable'}},
+            {'id': 'T3', 'module': 'M1', 'type': 'A2', 'bloom_level': '应用',
+             'stem': '高风险隔离题？', 'options': {'A': 'a', 'B': 'b'}, 'answer': 'A',
+             'release': {'disposition': 'quarantined', 'evidence_grade': 'C',
+                         'risk_level': 'high', 'reason_code': 'GUIDELINE_CONFLICT',
+                         'agent_checks': ['已查教师重点'], 'human_check': '裁决指南冲突',
+                         'suggested_action': '专家裁定后再入库'}},
+        ]
+        src = _mk(tmp, 'q.json', questions)
+        out = str(Path(tmp) / 'q.md')
+        queue = str(Path(tmp) / 'review_queue.json')
+        outpath, n = qbank.export_md(str(src), out, title='测试题库', review_queue_out=queue)
+        assert n == 3
+        md = Path(outpath).read_text(encoding='utf-8')
+        assert '生成状态：DONE｜发布状态：PENDING_HUMAN_REVIEW' in md
+        assert '可发布核心：1 题｜待人工复核：1 题｜已隔离：1 题' in md
+        assert '## 人工复核队列（2 条）' in md
+        assert '| T2 | pending_human | C | 中 | HUMAN_MEDICAL_REVIEW |' in md
+        assert '| T3 | quarantined | C | 高 | GUIDELINE_CONFLICT |' in md
+        payload = json.loads(Path(queue).read_text(encoding='utf-8'))
+        assert payload['generation_status'] == 'DONE'
+        assert payload['release_status'] == 'PENDING_HUMAN_REVIEW'
+        assert payload['summary'] == {
+            'total': 3, 'publishable': 1, 'pending_human': 1,
+            'quarantined': 1, 'review_queue': 2,
+        }
+        assert [item['question_id'] for item in payload['items']] == ['T2', 'T3']
+
+
+def test_release_info_legacy_fallback():
+    """无 release 字段时保守补齐：draft→pending_human，approved→publishable。"""
+    draft = qbank._release_info({'stem': '测试题', 'review_status': 'draft'})
+    assert draft['disposition'] == 'pending_human'
+    assert draft['derived'] is True
+    approved = qbank._release_info({'stem': '测试题', 'review_status': 'approved'})
+    assert approved['disposition'] == 'publishable'
+    assert approved['derived'] is True
+
+
 def test_norm_answer_multi_letter_and_compound():
     assert qbank._norm_answer('ABD') == 'ABD'
     assert qbank._norm_answer('答案：ABC') == 'ABC'

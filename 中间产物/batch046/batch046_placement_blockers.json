@@ -1,0 +1,320 @@
+{
+  "batch": "batch046",
+  "status": "BLOCKED_NOT_RELEASED",
+  "method": "仅按答案字母、计划记载题型与检索重点交集进行最大权重一对一建议；计划检索标签不证明实际适配。所有建议均非落位。",
+  "counts": {
+    "original_draft": 72,
+    "candidates": 28,
+    "placed_candidates": 0,
+    "qualified_candidates": 0,
+    "quarantine": 14
+  },
+  "global_blockers": [
+    "28条均未完成原卷、答案、医学或版权独立核验",
+    "题型与考点的语义适配未获得证据",
+    "全部建议仅为候选对应，不作为题库落位或合格数"
+  ],
+  "slots": [
+    {
+      "slot_id": "batch046-Q073",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2018-3-57-270",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q074",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "KY-GS-2019-049",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原候选4选项，与五选项模板冲突；未补项",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q075",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZY-T-6583",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q076",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2016-2-3-121",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q077",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZY-T-860",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q078",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "KY-GS-2002-048",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q079",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2009-3-87-84",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点有交集，但语义适配未经核实",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q080",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2016-2-43-86",
+      "candidate_status": "quarantine",
+      "differences": [
+        "答案字母不符",
+        "计划检索考点有交集，但语义适配未经核实",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q081",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "KY-GS-1996-051",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "答案字母不符",
+        "计划检索考点有交集，但语义适配未经核实",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q082",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2019-3-6-72",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q083",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2012-1-3-115",
+      "candidate_status": "quarantine",
+      "differences": [
+        "答案字母不符",
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点有交集，但语义适配未经核实",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q084",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZY-T-3043",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q085",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "KY-GS-2010-086",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原候选4选项，与五选项模板冲突；未补项",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q086",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "KY-GS-2006-064",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "答案字母不符",
+        "计划检索考点有交集，但语义适配未经核实",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q087",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZY-T-1375",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "答案字母不符",
+        "计划检索考点有交集，但语义适配未经核实",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q088",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "KY-GS-2002-057",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q089",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZY-T-3468",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q090",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "KY-GS-1997-006",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q091",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2015-4-9-8",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q092",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZY-R-22673",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划记载题型与题位不同，原题型未独立确认",
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q093",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2020-3-49-56",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q094",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2009-2-140-138",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q095",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2022-0-31-144",
+      "candidate_status": "quarantine",
+      "differences": [
+        "答案字母不符",
+        "计划检索考点有交集，但语义适配未经核实",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q096",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZY-T-747",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q097",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2015-2-47-88",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q098",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "KY-GS-2020-108",
+      "candidate_status": "quarantine",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原候选4选项，与五选项模板冲突；未补项",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q099",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2023-0-462-454",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划检索考点与题位不同",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    },
+    {
+      "slot_id": "batch046-Q100",
+      "status": "blocked_unfilled",
+      "proposed_candidate_id": "ZP-2021-4-50-360",
+      "candidate_status": "unplaced_review_candidate",
+      "differences": [
+        "计划检索考点有交集，但语义适配未经核实",
+        "原卷、答案、医学、授权尚未完成独立核验"
+      ]
+    }
+  ]
+}

@@ -304,8 +304,11 @@ def test_check_allows_documented_shortfall():
         f.write_text(json.dumps(questions, ensure_ascii=False), encoding="utf-8")
         plan = {
             "quota_status": {
-                "kaoyan": {"requested": 4, "selected": 0, "available": 0, "status": "reduced"},
-                "zhiyi": {"requested": 4, "selected": 4, "available": 6, "status": "met"},
+                "kaoyan": {
+                    "requested": 4, "selected": 0, "available": 0,
+                    "status": "cancelled", "reason": "no_candidate",
+                },
+                "zhiyi": {"requested": 4, "selected": 4, "available": 6, "status": "met", "reason": ""},
             }
         }
         p = tmp / "plan.json"
@@ -313,6 +316,108 @@ def test_check_allows_documented_shortfall():
         report = run_check(f, plan_path=p, keypoints_path=kp)
     assert report["pass"], report["failures"]
     assert "kaoyan" in report["allowed_shortfalls"]
+    assert report["quota_status_issues"] == []
+
+
+def test_check_rejects_cancelled_with_available_candidates():
+    """候选存在却标记 cancelled 是语义错误（batch046 漏洞回归）。"""
+    with _workdir() as tmp:
+        kp = tmp / "kp.md"
+        kp.write_text(
+            "## 四、统一锚定清单\n1. 心力衰竭\n2. 冠心病\n3. 肺炎\n4. 糖尿病\n",
+            encoding="utf-8",
+        )
+        questions = []
+        for i in range(4):
+            questions.append(_question(f"Z{i}", "zhiyi", f"执医题{i}", [f"第{i+1}条"]))
+        for i in range(16):
+            questions.append(_question(f"O{i}", "original", f"原创题{i}", [f"第{i%4+1}条"]))
+        f = tmp / "bank.json"
+        f.write_text(json.dumps(questions, ensure_ascii=False), encoding="utf-8")
+        plan = {
+            "quota_status": {
+                "kaoyan": {
+                    "requested": 4, "selected": 0, "available": 4,
+                    "status": "cancelled", "reason": "no_candidate",
+                },
+                "zhiyi": {"requested": 4, "selected": 4, "available": 6, "status": "met", "reason": ""},
+            },
+            "selected": [{"item_id": "K1", "family": "kaoyan", "source_id": "K1"}],
+        }
+        p = tmp / "plan.json"
+        p.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+        report = run_check(f, plan_path=p, keypoints_path=kp)
+    assert "kaoyan_quota_status_invalid" in report["failures"]
+    assert any("available=4" in issue for issue in report["quota_status_issues"])
+
+
+def test_check_rejects_reduced_with_zero_available():
+    """无候选却标记 reduced 同样是语义错误，应改为 cancelled。"""
+    with _workdir() as tmp:
+        kp = tmp / "kp.md"
+        kp.write_text(
+            "## 四、统一锚定清单\n1. 心力衰竭\n2. 冠心病\n3. 肺炎\n4. 糖尿病\n",
+            encoding="utf-8",
+        )
+        questions = []
+        for i in range(4):
+            questions.append(_question(f"Z{i}", "zhiyi", f"执医题{i}", [f"第{i+1}条"]))
+        for i in range(16):
+            questions.append(_question(f"O{i}", "original", f"原创题{i}", [f"第{i%4+1}条"]))
+        f = tmp / "bank.json"
+        f.write_text(json.dumps(questions, ensure_ascii=False), encoding="utf-8")
+        plan = {
+            "quota_status": {
+                "kaoyan": {
+                    "requested": 4, "selected": 0, "available": 0,
+                    "status": "reduced", "reason": "candidates_exhausted",
+                },
+                "zhiyi": {"requested": 4, "selected": 4, "available": 6, "status": "met", "reason": ""},
+            },
+        }
+        p = tmp / "plan.json"
+        p.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+        report = run_check(f, plan_path=p, keypoints_path=kp)
+    assert "kaoyan_quota_status_invalid" in report["failures"]
+    assert any("reduced 但 available=0" in issue for issue in report["quota_status_issues"])
+
+
+def test_check_accepts_deferred_human_verification():
+    """HC-28：候选存在但人类专属核验未完成时，显式 deferred 允许短缺。"""
+    with _workdir() as tmp:
+        kp = tmp / "kp.md"
+        kp.write_text(
+            "## 四、统一锚定清单\n1. 心力衰竭\n2. 冠心病\n3. 肺炎\n4. 糖尿病\n",
+            encoding="utf-8",
+        )
+        questions = []
+        for i in range(4):
+            questions.append(_question(f"Z{i}", "zhiyi", f"执医题{i}", [f"第{i+1}条"]))
+        for i in range(16):
+            questions.append(_question(f"O{i}", "original", f"原创题{i}", [f"第{i%4+1}条"]))
+        f = tmp / "bank.json"
+        f.write_text(json.dumps(questions, ensure_ascii=False), encoding="utf-8")
+        plan = {
+            "quota_status": {
+                "kaoyan": {
+                    "requested": 4, "selected": 0, "available": 4,
+                    "status": "deferred", "reason": "human_verification_deferred",
+                },
+                "zhiyi": {"requested": 4, "selected": 4, "available": 6, "status": "met", "reason": ""},
+            },
+            "selected": [{"item_id": "K1", "family": "kaoyan", "source_id": "K1"}],
+            "hc28_update": {
+                "decision": "候选人选不进入可发布核心",
+                "placed_candidates": 0,
+                "original_replacements": 4,
+            },
+        }
+        p = tmp / "plan.json"
+        p.write_text(json.dumps(plan, ensure_ascii=False), encoding="utf-8")
+        report = run_check(f, plan_path=p, keypoints_path=kp)
+    assert report["pass"], report["failures"]
+    assert "kaoyan" in report["allowed_shortfalls"]
+    assert report["quota_status_issues"] == []
 
 
 # ── 执业医师历年真题（HC-22 修订 / HC-23）──

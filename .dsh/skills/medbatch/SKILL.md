@@ -21,6 +21,8 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 - **门禁适用范围（2026-10-26 加固）**：批次可显式声明 `product_types`（`question_bank`/`prediction_paper`/`review_material`），缺失时按产物形状推断。A2/A3/A4 只对题库/押题卷生效；HC-9/10/11 只对复习资料生效；JSON 有效性只对题库/押题卷生效。`--stage auto` 按此矩阵路由：复习资料批次直达 final；v2 题库/押题卷批次在 A4 后自动插入 `learning_value`，不会被跳过。
 
 - 门禁未通过 → **halt** → 回退对应 Agent 修复 → 重跑门禁（不可跳过，HC-12）
+- **HC-28 一次跑完（2026-11-01）**：只有**确定性门禁**（schema/JSON、R1–R13、D20=0、Bloom 偏差、ID 冲突、答案唯一性硬检查）FAIL 才回退；单题最多修 2 轮、整批最多 3 轮，仍失败则隔离该题并继续。**人类专属核验**（原卷/答案原页/版权授权/医学专家裁定/指南冲突）只写 `review_queue`，不触发 halt。`generation_status=DONE` 即生成完成；`release_status=PENDING_HUMAN_REVIEW` 不是失败。**可发布核心为空也不是停止条件**：仍交付完整待审稿 + 队列，标 `release_status=BLOCKED`（题目数量完整时 `generation_status` 仍为 DONE）。只有输入损坏、连续 2 次不可解析或工具故障才终止批次。
+- **交付必须带队列**：`review_queue.json` 由 `qbank.py export-md --review-queue-out` 生成；最终 MD 末尾附「人工复核队列」；签收前用户审查队列，签收只改变发布状态，不改变已完成的生成产物。
 - GoldenSet 签收只由用户手动执行，任何 Agent 禁止写入
 - *门禁A5：MedReview 产出主复习资料 MD + 配图清单，编排者核对占位符与清单一致（`python scripts/check_inline_images.py --md … --list …`，首次跑允许 0 张占位 = MD 无图）后进入阶段 6
 - **门禁A5 附加（HC-20/D0 · 2026-10-18，有教师重点/复习大纲输入的批次强制）**：跑 `python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD>`（数值/时间窗类硬事实缺失或重点条目缺锚点 → exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED，不视为通过）
@@ -51,7 +53,7 @@ R4 运行复盘  python scripts/quality_gate.py --stage r4 --batch {batchID} --c
 | 输入 | `输入素材/{科目}/` | 用户放入教材/笔记 |
 | Agent 2 | `中间产物/{batchID}/` | `ALL_questions.json`、备考资料 .md |
 | Agent 3 | `质检报告/{batchID}/` | `A3_质检报告.json` |
-| Agent 4 | `最终产物/{batchID}/` | `ALL_questions_FIXED.json`、**`ALL_questions_FIXED.md`（最终交付格式，2026-08-20 起强制）**、`AGENT4_追溯日志.json`、`AGENT4_修改声明.md`、`escalations_for_human.md` |
+| Agent 4 | `最终产物/{batchID}/` | `ALL_questions_FIXED.json`、**`ALL_questions_FIXED.md`（最终交付格式，2026-08-20 起强制）**、`AGENT4_追溯日志.json`、`AGENT4_修改声明.md`、`escalations_for_human.md`、`review_queue.json`（HC-28） |
 | Agent 5 | `复习资料/{科目}教学计划版/` | `{科目}_主复习资料.md`、**`{科目}_配图清单.md`（HC-19 强制）** |
 | Agent 6 生图 | `复习资料/{科目}教学计划版/` | `raw/`（无字底图）、`annotate_configs/*.yaml`（标注）、`annotated/`（标注版 PNG）、`images_webp/*.webp`（MD 引用此目录，1600px q=82） |
 | 金标准 | `GoldenSet/` | 仅用户手动移入 |
@@ -67,7 +69,7 @@ GATE-A3   python gate_check.py --batch {batchID} --stage agent3_done
 GATE-A4   python gate_check.py --batch {batchID} --stage agent4_done
 学习价值  python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --batch {batchID} --out reports/validate/learning_value_{batchID}_final.json   # HC-24（新批次 schema v2 强制；FAIL>0 → 回退）
 GATE-LV   python gate_check.py --batch {batchID} --stage learning_value
-MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json   # 最终交付 MD（2026-08-20 起强制）
+MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json --review-queue-out 最终产物/{batchID}/review_queue.json   # 最终交付 MD + 复核队列（HC-28）
 真题配额  python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json   # HC-18 legacy（旧批次兼容）
 真题双族配额 python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单} --out reports/validate/real_question_check_{batchID}.json   # HC-22 考研族+执医族 20%+20%（执医族=历年真题+CMExam 双源；新题库批次终审前执行）
 插图门禁  python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp --list 复习资料/{科目}教学计划版/{科目}_配图清单.md   # GATE-A6 / HC-19 插图占位一致性（配图范围科目，生图验收后与终审前各跑一次；exit 1 → 回退豆包补图）
@@ -108,7 +110,7 @@ MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_
 - `python gate_check.py --batch {batchID} --clear-halt` 清除该批次 HALT（修复后使用）
 - validate 报告输出在 `reports/validate/`，gate 报告在 `reports/gate/`
 - **MD 导出是最终交付格式**：GATE-A4 通过后必须运行 export-md 生成 `ALL_questions_FIXED.md`（JSON 为机器可读源，MD 为用户可读交付），与 JSON 同目录交付
-- **真题双族配额（HC-22 · 2026-10-22 修订，新题库批次）**：批次启动前运行 `python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json`，把 `selected` 逐题注入 Agent 2；终审前运行 `real_question_cli.py check`（考研族/执医族各 15%–25%，答案可信/重复/覆盖/license/溯源任一 FAIL → halt）。执业医师族内**历年真题（tier=pdf）优先、CMExam（tier=cmexam）补位**；`quota_status=reduced/cancelled` 允许，但必须保留检索日志与减量原因并用原创补齐。
+- **真题双族配额（HC-22 · 2026-10-22 修订，新题库批次）**：批次启动前运行 `python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json`，把 `selected` 逐题注入 Agent 2；终审前运行 `real_question_cli.py check`（考研族/执医族各 15%–25%，答案可信/重复/覆盖/license/溯源任一 FAIL → halt）。执业医师族内**历年真题（tier=pdf）优先、CMExam（tier=cmexam）补位**；`quota_status=reduced/cancelled/deferred` 允许，但必须保留检索日志与减量/延后原因并用原创补齐。`cancelled` 仅用于 `available=0` 且无候选；候选存在但人类专属核验未完成时必须用 `deferred` 并写 `hc28_update`，`check` 会校验 status/reason/available/selected 自洽。
 - **执业医师语料维护（HC-23，非批次内动作）**：`python scripts/zhiyi_pdf_ocr.py run --workers 8` → `python scripts/zhiyi_pdf_parse.py` → `python scripts/real_question_cli.py build`；重建后核对 `reports/validate/zhiyi_pdf_parse_report.json`（单册有效率 ≥95%、`no_answer`=0、`bad_options`≤2%），不达标先修解析规则。
 - **考研真题旧配额（HC-18 legacy）**：仅旧批次兼容；`kaoyan_picker.py pick/check` 已改为读取可信答案表，`--allow-unverified` 仅诊断。
 - **教师重点覆盖（HC-20/D0 · 2026-10-18）**：有教师重点/复习大纲输入的批次，Agent 5 交付前必须产出 `中间产物/{batchID}/{科目}_教师重点覆盖矩阵.md`（未覆盖/部分覆盖行数=0）；编排者在门禁A5 与终审前跑 `check_keypoint_coverage.py`，数值/时间窗/分级界值缺失或重点条目缺 `📌 重点原文（第X条）` 锚点 → exit 1 → 回退 Agent 5 补写（batch039 突发性聋时间窗丢失教训）

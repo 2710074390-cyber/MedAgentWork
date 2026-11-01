@@ -1,0 +1,190 @@
+[
+  {
+    "id":"batch046-Q057", "sequence":57, "schema_version":"2.1", "module":"M08", "type":"A1", "case_group":null,
+    "stem":"[正选] 糖尿病酮症酸中毒时，哪种激素变化最能解释酮体生成增加及代谢紊乱？",
+    "options":[{"label":"A","text":"胰岛素增多、升糖激素减少","is_correct":false},{"label":"B","text":"胰岛素缺乏、升糖激素增多","is_correct":true},{"label":"C","text":"胰岛素增多、升糖激素增多","is_correct":false},{"label":"D","text":"胰岛素正常、升糖激素减少","is_correct":false},{"label":"E","text":"胰岛素减少、升糖激素减少","is_correct":false}],
+    "answer":"B", "polarity":"positive", "option_polarities":{"A":false,"B":true,"C":false,"D":false,"E":false}, "bloom":"理解", "difficulty":"中等", "topic":"糖尿病酮症酸中毒病理机制", "source_type":"原创", "source_page":"教材印刷页P36", "source_anchors":["《急诊与灾难医学》第4版第三章第五节糖尿病急症，印刷页P36，TXT第53页", "教师重点锚定清单第57条"], "teacher_anchor":"糖尿病酮症酸中毒 DKA：胰岛素缺乏、升糖激素增多致高血糖、高血酮、酮尿、脱水、电解质紊乱、代谢性酸中毒", "keypoint_ref":["第57条"],
+    "concepts":[{"role":"primary","keypoint":"第57条","title":"糖尿病酮症酸中毒","evidence":"题目要求联系胰岛素和升糖激素变化解释酮症酸中毒。"}],
+    "learning_value":{"correct_rationale":"胰岛素缺乏与升糖激素增多共同造成糖、脂肪和蛋白质代谢紊乱，脂肪分解及酮体生成增加，进而产生高血酮和代谢性酸中毒；同时可有高血糖、脱水和电解质紊乱。", "per_option":[{"label":"A","truth":false,"why":"胰岛素增多且升糖激素减少与教材描述的酮症酸中毒激素背景相反。","misconception_id":"MC-EM-M08-057A","misconception":"把酮症酸中毒中的激素变化整体颠倒。"},{"label":"B","truth":true,"why":"胰岛素缺乏并伴升糖激素增多，推动脂肪分解及酮体生成。","misconception_id":null,"misconception":null},{"label":"C","truth":false,"why":"虽然升糖激素增多符合病理变化，但胰岛素增多不符合本题机制。","misconception_id":"MC-EM-M08-057C","misconception":"仅识别升糖激素升高而忽略胰岛素缺乏。"},{"label":"D","truth":false,"why":"该组合既未体现胰岛素缺乏，也未体现升糖激素增多的代谢背景。","misconception_id":"MC-EM-M08-057D","misconception":"误认为正常胰岛素水平即可解释典型酮症酸中毒。"},{"label":"E","truth":false,"why":"胰岛素减少符合部分机制，但升糖激素减少与教材所述变化不符。","misconception_id":"MC-EM-M08-057E","misconception":"忽略升糖激素增多对酮症酸中毒的作用。"}],"key_takeaway":"理解糖尿病酮症酸中毒应同时把握胰岛素不足与升糖激素增多，再联系酮体、酸中毒和水电解质变化。","source_quote":"胰岛素缺乏、升糖激素增多致高血糖、高血酮、酮尿、脱水、电解质紊乱、代谢性酸中毒","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["未经独立医学复核"]}, "review_status":"draft", "medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q058", "sequence":58, "schema_version":"2.1", "module":"M08", "type":"A1", "case_group":null,
+    "stem":"[正选] 依据教材，高渗高血糖状态且有明显脱水时，初始治疗的主要环节是？",
+    "options":[{"label":"A","text":"单独给予降糖药","is_correct":false},{"label":"B","text":"及时补充液体","is_correct":true},{"label":"C","text":"常规限制液体","is_correct":false},{"label":"D","text":"单独纠正酸中毒","is_correct":false},{"label":"E","text":"常规给予利尿药","is_correct":false}],
+    "answer":"B", "polarity":"positive", "option_polarities":{"A":false,"B":true,"C":false,"D":false,"E":false}, "bloom":"应用", "difficulty":"中等", "topic":"高渗高血糖状态补液", "source_type":"原创", "source_page":"教材印刷页P39-40", "source_anchors":["《急诊与灾难医学》第4版第三章第五节糖尿病急症，印刷页P39-40，教材具体治疗段落待逐字复核", "教师重点锚定清单第58条"], "teacher_anchor":"高渗高血糖综合征 HHS：血糖≥33.3mmol/L、有效血浆渗透压≥320mOsm/(kg·H2O)、尿酮阴性或弱阳性、神志木僵或昏迷；治疗以积极补液为主", "keypoint_ref":["第58条"],
+    "concepts":[{"role":"primary","keypoint":"第58条","title":"高渗高血糖综合征","evidence":"题干要求将明显脱水与初始补液处理相联系。"}],
+    "learning_value":{"correct_rationale":"高渗高血糖状态可伴显著水分丢失及循环容量不足，及时补液有助于恢复灌注并逐步纠正高渗状态。具体液体选择和速度须依据循环状态、钠水平及心肾功能动态调整，不能仅依靠降糖药。", "per_option":[{"label":"A","truth":false,"why":"单独使用降糖药不能充分处理明显脱水和可能存在的循环容量不足。","misconception_id":"MC-EM-M08-058A","misconception":"把高血糖纠正视为唯一治疗任务。"},{"label":"B","truth":true,"why":"及时补液有助于恢复血容量和改善脱水，是初始治疗的重要环节。","misconception_id":null,"misconception":null},{"label":"C","truth":false,"why":"对已明确明显脱水的患者常规限制液体不能解决容量不足问题。","misconception_id":"MC-EM-M08-058C","misconception":"不区分脱水与容量过负荷而常规限液。"},{"label":"D","truth":false,"why":"单独纠正酸中毒不能代替补充液体，且本状态不一定存在明显酸中毒。","misconception_id":"MC-EM-M08-058D","misconception":"将高渗状态的首要问题误认为单纯酸中毒。"},{"label":"E","truth":false,"why":"常规使用利尿药可能加重水分丢失，不符合明显脱水时的初始重点。","misconception_id":"MC-EM-M08-058E","misconception":"将高渗状态误认为应常规利尿的容量过负荷。"}],"key_takeaway":"辨认高渗高血糖状态时既看血糖和渗透压，也要评估脱水和循环，治疗中动态监测并个体化补液。","source_quote":"治疗以积极补液为主","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材治疗原文待逐字复核","未经独立医学复核"]}, "review_status":"draft", "medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q059", "sequence":59, "schema_version":"2.1", "module":"M08", "type":"A1", "case_group":null,
+    "stem":"[正选] 判断一组反复发作的心悸、出汗是否符合Whipple三联征，哪组证据最有鉴别价值？",
+    "options":[{"label":"A","text":"发作时高血糖，补糖后缓解","is_correct":false},{"label":"B","text":"发作时低血糖，补糖后持续不变","is_correct":false},{"label":"C","text":"发作间血糖偏低，症状与血糖无关","is_correct":false},{"label":"D","text":"发作时血糖正常，休息后缓解","is_correct":false},{"label":"E","text":"发作时低血糖，血糖升高后缓解","is_correct":true}],
+    "answer":"E", "polarity":"positive", "option_polarities":{"A":false,"B":false,"C":false,"D":false,"E":true}, "bloom":"分析", "difficulty":"中等", "topic":"低血糖Whipple三联征", "source_type":"原创", "source_page":"教材印刷页P34-35", "source_anchors":["《急诊与灾难医学》第4版第三章第四节低血糖，印刷页P34-35", "教师重点锚定清单第59条"], "teacher_anchor":"低血糖：非糖尿病者血糖<2.8mmol/L、糖尿病者<3.9mmol/L；具 Whipple 三联征；先有自主神经症状、继而中枢神经症状", "keypoint_ref":["第59条"],
+    "concepts":[{"role":"primary","keypoint":"第59条","title":"Whipple三联征","evidence":"题目同时比较发作期血糖、症状及升糖后的变化。"}],
+    "learning_value":{"correct_rationale":"Whipple三联征强调存在符合低血糖的症状、症状发生时测得低血糖，以及血糖升高后症状缓解。三者的时间关联有助于判断症状是否与低血糖相关，孤立的异常血糖值不能替代完整判断。", "per_option":[{"label":"A","truth":false,"why":"发作时为高血糖而非低血糖，即使补糖后缓解也不符合三联征。","misconception_id":"MC-EM-M08-059A","misconception":"忽略症状发生时必须同时存在低血糖。"},{"label":"B","truth":false,"why":"虽然发作时血糖低，但补糖后症状持续不变，缺少症状随升糖缓解。","misconception_id":"MC-EM-M08-059B","misconception":"只依据发作时低血糖而不考虑补糖后的症状变化。"},{"label":"C","truth":false,"why":"间歇期血糖偏低不能证明症状发作时血糖也低，时间对应关系缺失。","misconception_id":"MC-EM-M08-059C","misconception":"将非发作期血糖直接代替发作期血糖。"},{"label":"D","truth":false,"why":"发作时血糖正常且休息后缓解，无法支持低血糖与症状的因果联系。","misconception_id":"MC-EM-M08-059D","misconception":"将非特异性休息后缓解误当作升糖后的症状缓解。"},{"label":"E","truth":true,"why":"症状发作时血糖低且随血糖升高缓解，与题干症状共同符合三联征。","misconception_id":null,"misconception":null}],"key_takeaway":"判断Whipple三联征要把症状、发作时血糖和升糖后症状变化按时间对应，不能只看某一次低血糖值。","source_quote":"具 Whipple 三联征","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["未经独立医学复核"]}, "review_status":"draft", "medical_verification":"未经独立医学核验"
+  },
+  {
+    "id": "batch046-Q060",
+    "sequence": 60,
+    "schema_version": "2.1",
+    "module": "M08",
+    "type": "A2",
+    "case_group": null,
+    "stem": "[正选] 依据《急诊与灾难医学》第4版的静脉溶栓禁忌证，一名患者突发右侧肢体无力2小时，头颅CT未见出血，拟评估静脉溶栓。反复测得血压190/115 mmHg，尚未降压。此时最恰当的判断是？",
+    "options": [
+      {"label": "A", "text": "影像无出血即可直接溶栓", "is_correct": false},
+      {"label": "B", "text": "发病两小时即可直接溶栓", "is_correct": false},
+      {"label": "C", "text": "血压超出教材所列溶栓界限", "is_correct": true},
+      {"label": "D", "text": "肢体无力排除缺血性卒中", "is_correct": false},
+      {"label": "E", "text": "头颅CT正常排除急性卒中", "is_correct": false}
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {"A": false, "B": false, "C": true, "D": false, "E": false},
+    "bloom": "分析",
+    "difficulty": "中等",
+    "topic": "缺血性卒中溶栓前血压评估",
+    "source_type": "原创",
+    "source_page": "教材印刷页P30",
+    "source_anchors": ["《急诊与灾难医学》第4版第三章脑梗死，印刷页P30，TXT第47页", "急诊与灾难医学教师重点锚定清单第60条"],
+    "teacher_anchor": "急性脑卒中：分缺血性与出血性；缺血性卒中静脉溶栓时间窗 3～4.5 小时（rt-PA 0.9mg/kg，最大 90mg）或 6 小时内尿激酶 100 万～150 万 IU；收缩压≥180mmHg 或舒张压≥110mmHg 为溶栓禁忌（P29-30）",
+    "keypoint_ref": ["第60条"],
+    "concepts": [
+      {"role": "primary", "keypoint": "第60条", "title": "静脉溶栓血压禁忌", "evidence": "病例须同时整合发病时间、影像和当前血压判断溶栓条件。"},
+      {"role": "differential", "keypoint": "第60条", "title": "早期脑梗死影像", "evidence": "E项将早期未显示梗死病灶错误理解为排除急性卒中。"}
+    ],
+    "learning_value": {
+      "correct_rationale": "教材将收缩压≥180 mmHg或舒张压≥110 mmHg列为溶栓禁忌；本例两项均超出该书界限，虽然处于早期且CT未见出血，仍不能仅凭这些条件立即溶栓。应进一步控制血压并按现行方案全面评估。",
+      "per_option": [
+        {"label": "A", "truth": false, "why": "CT未见出血只是评估的一部分，不能抵消当前明显升高的血压。", "misconception_id": "MC-EM-M08-060A", "misconception": "将影像排除出血误认为溶栓全部条件满足。"},
+        {"label": "B", "truth": false, "why": "处于发病早期有助于评估治疗，但不能代替出血风险及血压评估。", "misconception_id": "MC-EM-M08-060B", "misconception": "只依据发病时间决定是否立即溶栓。"},
+        {"label": "C", "truth": true, "why": "本例血压超过教材所列收缩压和舒张压界限，应先处理并复评。", "misconception_id": null, "misconception": null},
+        {"label": "D", "truth": false, "why": "突发单侧肢体无力可见于缺血性卒中，不能以此排除该诊断。", "misconception_id": "MC-EM-M08-060D", "misconception": "误将局灶性神经功能缺损视为排除缺血性卒中的依据。"},
+        {"label": "E", "truth": false, "why": "早期CT未见出血或明显梗死灶并不排除缺血性卒中，须结合临床判断。", "misconception_id": "MC-EM-M08-060E", "misconception": "将早期CT未见异常等同于没有急性卒中。"}
+      ],
+      "key_takeaway": "卒中再灌注评估须综合发病时间、影像、血压及其他禁忌，早期CT未见出血不等于已满足全部溶栓条件。",
+      "source_quote": "收缩压≥180mmHg 或舒张压≥110mmHg 为溶栓禁忌",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "review_status": "draft",
+      "quality_flags": ["教材历史口径，需对照现行指南及本地流程复核", "未经独立医学复核"]
+    },
+    "review_status": "draft",
+    "medical_verification": "未进行独立医学核验；教材血压界限与现行临床适用性待核"
+  },
+  {
+    "id": "batch046-Q061",
+    "sequence": 61,
+    "schema_version": "2.1",
+    "module": "M08",
+    "type": "A1",
+    "case_group": null,
+    "stem": "[正选] 自发性蛛网膜下腔出血可首先出现明显脑膜刺激征，其最直接的解释是？",
+    "options": [
+      {"label": "A", "text": "血液首先侵入脑实质", "is_correct": false},
+      {"label": "B", "text": "血液首先侵入硬膜外", "is_correct": false},
+      {"label": "C", "text": "血液首先侵入硬膜下", "is_correct": false},
+      {"label": "D", "text": "血液进入蛛网膜下腔", "is_correct": true},
+      {"label": "E", "text": "血液首先侵入脊髓内", "is_correct": false}
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {"A": false, "B": false, "C": false, "D": true, "E": false},
+    "bloom": "理解",
+    "difficulty": "中等",
+    "topic": "蛛网膜下腔出血的脑膜刺激征",
+    "source_type": "原创",
+    "source_page": "教材印刷页P27",
+    "source_anchors": ["《急诊与灾难医学》第4版第三章意识障碍与抽搐，印刷页P27，TXT第44页", "急诊与灾难医学教师重点锚定清单第61条"],
+    "teacher_anchor": "蛛网膜下腔出血：起病急骤，剧烈头痛、呕吐、一过性意识障碍；有明显脑膜刺激征、很少出现局限性神经系统体征；脑脊液呈血性；CT 可助诊，脑血管造影／DSA 明确病因（P27、P31-33）",
+    "keypoint_ref": ["第61条"],
+    "concepts": [{"role": "primary", "keypoint": "第61条", "title": "蛛网膜下腔出血", "evidence": "题干要求解释出血后脑膜刺激征可先于局灶性体征出现。"}],
+    "learning_value": {
+      "correct_rationale": "教材指出动脉瘤和动静脉畸形破裂时血液可直接进入蛛网膜下腔，故可先出现脑膜刺激征；相对地，脑实质出血可先出现局灶性体征，继而在血液进入脑室或蛛网膜下腔后出现脑膜刺激征。",
+      "per_option": [
+        {"label": "A", "truth": false, "why": "脑实质出血可先有局灶性功能障碍，不能直接解释蛛网膜下腔血液刺激。", "misconception_id": "MC-EM-M08-061A", "misconception": "把脑实质出血的首发部位等同于蛛网膜下腔出血。"},
+        {"label": "B", "truth": false, "why": "硬膜外是另一解剖间隙，不是本题所问血液直接进入的部位。", "misconception_id": "MC-EM-M08-061B", "misconception": "混淆硬膜外腔与蛛网膜下腔的解剖位置。"},
+        {"label": "C", "truth": false, "why": "硬膜下出血与蛛网膜下腔出血部位不同，不能替代本题的机制。", "misconception_id": "MC-EM-M08-061C", "misconception": "混淆硬膜下出血与蛛网膜下腔出血。"},
+        {"label": "D", "truth": true, "why": "破裂血管流出的血液进入蛛网膜下腔，可刺激脑膜而出现相应体征。", "misconception_id": null, "misconception": null},
+        {"label": "E", "truth": false, "why": "脊髓实质内出血属于不同部位病变，不能解释本题所描述的首发机制。", "misconception_id": "MC-EM-M08-061E", "misconception": "将脊髓实质内出血与颅内蛛网膜下腔出血混为一谈。"}
+      ],
+      "key_takeaway": "急性剧烈头痛伴脑膜刺激征时应考虑血液进入蛛网膜下腔；解剖定位需结合影像，不能仅凭症状确诊。",
+      "source_quote": "有明显脑膜刺激征、很少出现局限性神经系统体征",
+      "source_quote_status": "exact",
+      "anchor_status": "partial",
+      "review_status": "draft",
+      "quality_flags": ["未经独立医学复核"]
+    },
+    "review_status": "draft",
+    "medical_verification": "未进行独立医学核验"
+  },
+  {
+    "id":"batch046-Q062","sequence":62,"schema_version":"2.1","module":"M01","type":"A1","case_group":null,
+    "stem":"[正选] 急诊医疗服务体系强调院前急救、医院急诊和重症监护相衔接，其主要目的是什么？",
+    "options":[{"label":"A","text":"将院前救治替换为长期随访","is_correct":false},{"label":"B","text":"将重症监护替换为择期门诊","is_correct":false},{"label":"C","text":"将医院急诊替换为社区慢病管理","is_correct":false},{"label":"D","text":"实现危重患者救治环节连续衔接","is_correct":true},{"label":"E","text":"实现危重患者只在现场接受救治","is_correct":false}],
+    "answer":"D","polarity":"positive","option_polarities":{"A":false,"B":false,"C":false,"D":true,"E":false},"bloom":"理解","difficulty":"中等","topic":"急诊医疗服务体系","source_type":"原创","source_page":"教材印刷页P1-2，原文待核","source_anchors":["急诊与灾难医学教师重点锚定清单第1条；教材第4版P1-2待逐字核对"],"teacher_anchor":"EMSS＝院前急救、医院急诊、危重症监护三位一体","keypoint_ref":["第1条"],"concepts":[{"role":"primary","keypoint":"第1条","title":"急诊医疗服务体系","evidence":"题干要求解释院前急救、院内急诊与监护连续衔接的意义。"}],
+    "learning_value":{"correct_rationale":"急诊医疗服务体系把院前急救、医院急诊和危重症监护联系起来，使患者从现场初步处置到院内进一步救治及重症监护能够连续衔接，而不是用慢病随访或择期门诊替代这些环节。","per_option":[{"label":"A","truth":false,"why":"长期随访不能替代现场或转运过程中的急救与病情稳定。","misconception_id":"MC-EM-M01-062A","misconception":"把长期随访当作院前急救的替代环节。"},{"label":"B","truth":false,"why":"择期门诊与危重症监护的救治对象和职责不同，不能互相替换。","misconception_id":"MC-EM-M01-062B","misconception":"把择期门诊视为危重症监护的替代。"},{"label":"C","truth":false,"why":"社区慢病管理有其作用，但不能替代急诊对急危重症的即时处理。","misconception_id":"MC-EM-M01-062C","misconception":"把慢病管理视为医院急诊的替代。"},{"label":"D","truth":true,"why":"三个救治环节协同衔接，支持患者从现场至院内监护的连续救治。","misconception_id":null,"misconception":null},{"label":"E","truth":false,"why":"危重患者常需后续院内处理和监护，不能限定为仅接受现场救治。","misconception_id":"MC-EM-M01-062E","misconception":"只重视现场抢救而忽略后续院内救治。"}],"key_takeaway":"急诊体系的关键不是单一机构，而是院前、院内急诊和重症监护相互衔接，形成连续救治链。","source_quote":"EMSS＝院前急救、医院急诊、危重症监护三位一体","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材原文待逐字复核","未经独立医学复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q063","sequence":63,"schema_version":"2.1","module":"M01","type":"A2","case_group":null,
+    "stem":"[正选] 患者在急诊候诊区突然意识丧失，呼之不应，无正常呼吸，未触及颈动脉搏动。根据教师重点中的急诊五级分诊，应优先采取何种处理？",
+    "options":[{"label":"A","text":"安排非紧急门诊评估","is_correct":false},{"label":"B","text":"安排潜在危重常规候诊","is_correct":false},{"label":"C","text":"安排延迟评估后再处理","is_correct":false},{"label":"D","text":"安排生命体征复查后候诊","is_correct":false},{"label":"E","text":"归为生命垂危立即抢救","is_correct":true}],
+    "answer":"E","polarity":"positive","option_polarities":{"A":false,"B":false,"C":false,"D":false,"E":true},"bloom":"分析","difficulty":"中等","topic":"急诊五级分诊","source_type":"原创","source_page":"教材印刷页P2，原文待核","source_anchors":["急诊与灾难医学教师重点锚定清单第2、8条；教材第4版P2、P231-233待逐字核对"],"teacher_anchor":"急诊五级分诊：Ⅰ类生命垂危病人立即抢救；Ⅱ类随时危及生命，10 分钟内评估治疗","keypoint_ref":["第2条"],"concepts":[{"role":"primary","keypoint":"第2条","title":"急诊五级分诊","evidence":"由骤停线索判断生命垂危等级及应采取的抢救优先级。"},{"role":"differential","keypoint":"第8条","title":"心搏骤停识别","evidence":"题干的无反应、无正常呼吸与无大动脉搏动支持紧急识别骤停。"}],
+    "learning_value":{"correct_rationale":"患者突然无反应、无正常呼吸且无大动脉搏动，提示心搏骤停，属于需要立即抢救的生命垂危状态。教师重点将此类患者列为Ⅰ类，不能因候诊流程而推迟基础生命支持。","per_option":[{"label":"A","truth":false,"why":"非紧急评估不能满足疑似心搏骤停患者对立即复苏的需求。","misconception_id":"MC-EM-M01-063A","misconception":"将骤停患者按非紧急患者排队处理。"},{"label":"B","truth":false,"why":"患者已有生命垂危征象，不应按仅潜在危重的标准继续候诊。","misconception_id":"MC-EM-M01-063B","misconception":"把现实存在的生命危险降级为潜在危重。"},{"label":"C","truth":false,"why":"心搏骤停提示立即抢救，延迟评估会使关键救治时机流失。","misconception_id":"MC-EM-M01-063C","misconception":"将生命垂危状态误判为可延迟处理。"},{"label":"D","truth":false,"why":"已有无反应、无正常呼吸及无脉搏等信息，不应继续候诊等待。","misconception_id":"MC-EM-M01-063D","misconception":"过度依赖后续复查而忽视已具备的骤停征象。"},{"label":"E","truth":true,"why":"骤停提示生命垂危，应立即启动抢救并组织相应复苏资源。","misconception_id":null,"misconception":null}],"key_takeaway":"分诊应依据当前生理危险而非先来后到；出现无反应、无正常呼吸和无大动脉搏动时立即启动抢救。","source_quote":"Ⅰ类生命垂危病人立即抢救","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材原文待逐字复核","未经独立医学复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q064","sequence":64,"schema_version":"2.1","module":"M01","type":"A1","case_group":null,
+    "stem":"[正选] 灾难检伤分类中的黄色标记，表示伤员应获得怎样的救治优先级？",
+    "options":[{"label":"A","text":"第二优先，延迟救治","is_correct":true},{"label":"B","text":"第一优先，紧急救治","is_correct":false},{"label":"C","text":"第三优先，等待救治","is_correct":false},{"label":"D","text":"零优先，期待救治","is_correct":false},{"label":"E","text":"第一优先，等待救治","is_correct":false}],
+    "answer":"A","polarity":"positive","option_polarities":{"A":true,"B":false,"C":false,"D":false,"E":false},"bloom":"理解","difficulty":"中等","topic":"灾难检伤四色标记","source_type":"原创","source_page":"教材印刷页P285-287，原文待核","source_anchors":["急诊与灾难医学教师重点锚定清单第3条；教材第4版P285-287待逐字核对"],"teacher_anchor":"红色第一优先紧急救治、黄色第二优先延迟救治、绿色第三优先等待救治、黑色零优先期待救治","keypoint_ref":["第3条"],"concepts":[{"role":"primary","keypoint":"第3条","title":"灾难现场检伤分类","evidence":"题目要求把黄色标记与相应的救治优先级联系起来。"}],
+    "learning_value":{"correct_rationale":"灾难现场资源有限，检伤分类通过颜色传达伤情紧迫程度与救治顺序。教师重点将黄色归为第二优先、延迟救治，与红色紧急救治和绿色等待救治区分；分类应随病情变化动态重评。","per_option":[{"label":"A","truth":true,"why":"黄色对应第二优先的延迟救治，仍需监测并根据变化重新分检。","misconception_id":null,"misconception":null},{"label":"B","truth":false,"why":"第一优先的紧急救治对应红色标记，不是本题所问的黄色。","misconception_id":"MC-EM-M01-064B","misconception":"混淆黄色延迟救治与红色紧急救治。"},{"label":"C","truth":false,"why":"第三优先等待救治对应绿色标记，不能按此降低黄色伤员的优先级。","misconception_id":"MC-EM-M01-064C","misconception":"混淆黄色延迟救治与绿色等待救治。"},{"label":"D","truth":false,"why":"零优先期待救治对应黑色标记，并非黄色标记的意义。","misconception_id":"MC-EM-M01-064D","misconception":"混淆黄色延迟救治与黑色期待救治。"},{"label":"E","truth":false,"why":"第一优先与等待救治的组合本身不对应教师重点中的分类。","misconception_id":"MC-EM-M01-064E","misconception":"混淆优先顺序与救治紧迫程度的对应关系。"}],"key_takeaway":"记住颜色须同时记住优先级与救治时限的含义；灾难现场病情可变化，检伤结果需要动态复评。","source_quote":"黄色第二优先延迟救治","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材原文待逐字复核","未经独立医学复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q065","sequence":65,"schema_version":"2.1","module":"M01","type":"A2","case_group":null,
+    "stem":"[正选] 地震后成人伤员不能自行行走，呼吸频率每分钟24次，桡动脉搏动可触及，能按指令握手，且无其他立即危及生命的伤情。按成人START检伤，宜归为何类？",
+    "options":[{"label":"A","text":"黄色，延迟救治","is_correct":true},{"label":"B","text":"红色，立即救治","is_correct":false},{"label":"C","text":"绿色，轻伤救治","is_correct":false},{"label":"D","text":"黑色，期待救治","is_correct":false},{"label":"E","text":"红色，期待救治","is_correct":false}],"answer":"A","polarity":"positive","option_polarities":{"A":true,"B":false,"C":false,"D":false,"E":false},"bloom":"应用","difficulty":"中等","topic":"成人START检伤","source_type":"原创","source_page":"教材印刷页P286，待逐字核对","source_anchors":["教师重点锚定清单第4条；《急诊与灾难医学》第4版P286待逐字核对"],"teacher_anchor":"呼吸<30 次/分、再充盈<2 秒、能遵从指挥行走为轻伤；满足 30-2 但不能行走为延迟救治","keypoint_ref":["第4条"],"concepts":[{"role":"primary","keypoint":"第4条","title":"成人START检伤","evidence":"整合不能行走、呼吸、循环及服从指令能力确定分拣类别。"},{"role":"differential","keypoint":"第3条","title":"四色检伤标记","evidence":"B、C项分别混淆红色立即救治和绿色轻伤标记。"}],
+    "learning_value":{"correct_rationale":"按所给条件，伤员不能行走，呼吸频率低于每分钟30次、桡动脉搏动存在且能遵从指令，未见立即分类为红色的已给指征，符合START中延迟救治类别；检伤是动态过程，恶化时须重评。","per_option":[{"label":"A","truth":true,"why":"无法行走但呼吸、循环和意识筛查未见红色指征，归黄色延迟救治。","misconception_id":null,"misconception":null},{"label":"B","truth":false,"why":"题目未给出呼吸过快、循环不足或不能服从指令等红色分检依据。","misconception_id":"MC-EM-M01-065B","misconception":"仅因不能行走就直接认定为红色。"},{"label":"C","truth":false,"why":"初始绿色轻伤分类要求能够行走，本例已明确不能自行行走。","misconception_id":"MC-EM-M01-065C","misconception":"只看意识和呼吸而忽略行走能力。"},{"label":"D","truth":false,"why":"伤员有自主呼吸、脉搏且能服从指令，不符合此处黑色分类。","misconception_id":"MC-EM-M01-065D","misconception":"把不能行走误认为无存活可能。"},{"label":"E","truth":false,"why":"红色与期待救治并不是对应组合，不能据此表示延迟救治。","misconception_id":"MC-EM-M01-065E","misconception":"混淆检伤颜色与救治优先级的配对。"}],"key_takeaway":"START应先筛查能否行走，再依次评估呼吸、灌注和意识；分类依据不完整或伤情变化时重新评估。","source_quote":"满足 30-2 但不能行走为延迟救治","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材原文和适用版本待复核","未经独立医学复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q066","sequence":66,"schema_version":"2.1","module":"M01","type":"A2","case_group":null,
+    "stem":"[正选] 大规模事故现场实施SALT分类，救援者首先要求伤员自行走向指定区域，以便快速区分能走者与其他伤员。这一步属于哪一环节？",
+    "options":[{"label":"A","text":"伤员详细诊断","is_correct":false},{"label":"B","text":"治疗及转运","is_correct":false},{"label":"C","text":"全局排序","is_correct":true},{"label":"D","text":"个体生命评估","is_correct":false},{"label":"E","text":"救命干预","is_correct":false}],"answer":"C","polarity":"positive","option_polarities":{"A":false,"B":false,"C":true,"D":false,"E":false},"bloom":"应用","difficulty":"中等","topic":"SALT全局排序","source_type":"原创","source_page":"教师补充，教材未载","source_anchors":["急诊与灾难医学教师重点锚定清单第5条：教师补充，教材未载"],"teacher_anchor":"SALT 分类：Sort 全局排序（能走／能挥手／无反应）→ Assess 评估呼吸、脉搏、意识→ Lifesaving interventions 救命干预（止血、开放气道、针刺减压）→ Treatment/Transport 治疗与转运","keypoint_ref":["第5条"],"concepts":[{"role":"primary","keypoint":"第5条","title":"SALT全局排序","evidence":"题干以能否行走开展群体初筛，要求识别Sort环节。"},{"role":"differential","keypoint":"第5条","title":"SALT个体评估","evidence":"D项指呼吸、脉搏、意识的个体评估，区别于先期全局排序。"}],
+    "learning_value":{"correct_rationale":"教师补充资料将SALT的Sort描述为全局排序，通过能走、能挥手或无反应等初步指令分组。随后还需对个体进行评估，提供适当救命干预，并决定治疗和转运；不能把初筛当作全部检伤。","per_option":[{"label":"A","truth":false,"why":"识别能否走动是迅速分组，不是对每名患者完成详细病因诊断。","misconception_id":"MC-EM-M01-066A","misconception":"把灾难现场初筛当作详细病因诊断。"},{"label":"B","truth":false,"why":"治疗与转运属于后续环节，而题干描述的是首先开展的全局排序。","misconception_id":"MC-EM-M01-066B","misconception":"混淆初筛排序和后续治疗转运。"},{"label":"C","truth":true,"why":"要求能走者走向指定区域是对现场人群进行初步全局排序。","misconception_id":null,"misconception":null},{"label":"D","truth":false,"why":"个体生命评估关注呼吸、脉搏及意识，不等同于先让能走者分组。","misconception_id":"MC-EM-M01-066D","misconception":"混淆人群全局排序与个体生命评估。"},{"label":"E","truth":false,"why":"止血或开放气道等才属于救命干预，让伤员行走属于初始排序。","misconception_id":"MC-EM-M01-066E","misconception":"把服从行走指令误认为救命干预。"}],"key_takeaway":"SALT先对伤员作全局排序，再进行个体评估和适当救命干预，最终确定治疗及转运；本题依据教师补充。","source_quote":"Sort 全局排序（能走／能挥手／无反应）","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教师补充，教材未载","未经独立医学复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q067","sequence":67,"schema_version":"2.1","module":"M01","type":"A2","case_group":null,
+    "stem":"[正选] 建筑坍塌后仍有坠落危险，现场多名伤员，救援资源有限。专业人员完成自身防护并确认可安全实施转移后，哪项总体策略最符合灾难医学原则？",
+    "options":[{"label":"A","text":"停留危险区逐人完成全部手术","is_correct":false},{"label":"B","text":"集中全部资源救治单名重伤员","is_correct":false},{"label":"C","text":"忽略其余伤员先处理轻伤人员","is_correct":false},{"label":"D","text":"所有伤员按抵达顺序统一救治","is_correct":false},{"label":"E","text":"先脱离危险再分检并分配资源","is_correct":true}],"answer":"E","polarity":"positive","option_polarities":{"A":false,"B":false,"C":false,"D":false,"E":true},"bloom":"分析","difficulty":"中等","topic":"灾难救援与资源分配","source_type":"原创","source_page":"教材印刷页P3、P285，原文待核","source_anchors":["教师重点锚定清单第6条；《急诊与灾难医学》第4版P3、P285待逐字核对"],"teacher_anchor":"最好的医疗资源用于最大多数的伤员；灾难医学原则是“先抢后救”，先使伤员脱离危险环境再分拣急救","keypoint_ref":["第6条"],"concepts":[{"role":"primary","keypoint":"第6条","title":"灾难医学核心原则","evidence":"题目要求综合场景安全、脱离险境及资源有限下的分诊。"},{"role":"differential","keypoint":"第3条","title":"灾难现场检伤分类","evidence":"D项按到达顺序处理，忽略伤情紧迫程度对应的分类优先级。"}],
+    "learning_value":{"correct_rationale":"危险持续存在时，应先评估现场安全并由具备防护条件的人员转移伤员，再进行检伤和救治；资源有限时通过分类动态分配，以使尽可能多的伤员获益，而非将全部资源投入单个伤员。","per_option":[{"label":"A","truth":false,"why":"在持续危险区域开展完整手术既增加救援风险，也延误其他人员脱险。","misconception_id":"MC-EM-M01-067A","misconception":"忽略现场安全并在危险区完成全部救治。"},{"label":"B","truth":false,"why":"资源有限时应结合整体伤员需求分配，不能无条件集中于单人。","misconception_id":"MC-EM-M01-067B","misconception":"将平时个体救治模式直接用于资源不足的灾难现场。"},{"label":"C","truth":false,"why":"仅选择轻伤人员而忽略其他伤员，不能实现基于紧迫程度的合理分配。","misconception_id":"MC-EM-M01-067C","misconception":"误以为最大多数原则等于只救轻伤员。"},{"label":"D","truth":false,"why":"按抵达先后统一处理会忽视伤情严重程度及救治时效。","misconception_id":"MC-EM-M01-067D","misconception":"将普通排队顺序替代灾难现场检伤分类。"},{"label":"E","truth":true,"why":"在救援安全前提下先脱险，再分检和分配资源符合题设原则。","misconception_id":null,"misconception":null}],"key_takeaway":"灾难救援先保障救援人员及现场安全，安全脱险后按紧迫程度分检，并在资源限制下动态分配救治。","source_quote":"先使伤员脱离危险环境再分拣急救","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材原文待逐字复核","未经独立医学复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q068","sequence":68,"schema_version":"2.1","module":"M01","type":"A1","case_group":null,
+    "stem":"[正选] 格拉斯哥昏迷评分中，患者睁眼反应3分、言语反应4分、运动反应5分，其总分为？",
+    "options":[{"label":"A","text":"11分","is_correct":false},{"label":"B","text":"12分","is_correct":true},{"label":"C","text":"13分","is_correct":false},{"label":"D","text":"14分","is_correct":false},{"label":"E","text":"15分","is_correct":false}],"answer":"B","polarity":"positive","option_polarities":{"A":false,"B":true,"C":false,"D":false,"E":false},"bloom":"应用","difficulty":"中等","topic":"GCS评分计算","source_type":"原创","source_page":"教材印刷页P18，原文待核","source_anchors":["教师重点锚定清单第7条；《急诊与灾难医学》第4版P18待逐字核对"],"teacher_anchor":"GCS 格拉斯哥昏迷评分：睁眼反应 E 4～1 分、言语反应 V 5～1 分、运动反应 M 6～1 分；最高 15 分（无昏迷）、最低 3 分","keypoint_ref":["第7条"],"concepts":[{"role":"primary","keypoint":"第7条","title":"GCS格拉斯哥昏迷评分","evidence":"题目要求将给定的睁眼、言语和运动三个分项相加。"}],
+    "learning_value":{"correct_rationale":"GCS由睁眼、言语和运动三个分项组成，分项之和即总分。本题给出的E3、V4、M5相加为12分；记录时除总分外保留分项，可以减少不同反应组合造成的信息丢失。","per_option":[{"label":"A","truth":false,"why":"3加4加5等于12，而非11，不能遗漏或减少任何一个分项。","misconception_id":"MC-EM-M01-068A","misconception":"相加时少计一个分值。"},{"label":"B","truth":true,"why":"睁眼3分、言语4分和运动5分相加，GCS总分为12分。","misconception_id":null,"misconception":null},{"label":"C","truth":false,"why":"三个分项相加得到12分，13分高估了题设给出的总分。","misconception_id":"MC-EM-M01-068C","misconception":"相加时多计一个分值。"},{"label":"D","truth":false,"why":"14分不等于给定的3、4、5分项之和，应逐项重新相加。","misconception_id":"MC-EM-M01-068D","misconception":"将分项靠近正常值误当成14分。"},{"label":"E","truth":false,"why":"15分是GCS总分上限，题设三个分项均未达到各自满分。","misconception_id":"MC-EM-M01-068E","misconception":"把任意可评估的患者当作GCS满分。"}],"key_takeaway":"GCS先分别记录睁眼、言语、运动反应，再将三个分项相加；总分相同也应保留各分项信息。","source_quote":"睁眼反应 E 4～1 分、言语反应 V 5～1 分、运动反应 M 6～1 分","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材原文待逐字复核","未经独立医学复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q069","sequence":69,"schema_version":"2.1","module":"M02","type":"A1","case_group":null,
+    "stem":"[正选] 判断成人是否发生心搏骤停时，哪组表现应促使现场人员立即启动复苏？",
+    "options":[{"label":"A","text":"意识清楚、呼吸急促、脉搏快","is_correct":false},{"label":"B","text":"意识清楚、呼吸平稳、脉搏弱","is_correct":false},{"label":"C","text":"无反应、无正常呼吸、无大动脉搏动","is_correct":true},{"label":"D","text":"能回应、呼吸缓慢、有大动脉搏动","is_correct":false},{"label":"E","text":"能回应、呼吸急促、有大动脉搏动","is_correct":false}],"answer":"C","polarity":"positive","option_polarities":{"A":false,"B":false,"C":true,"D":false,"E":false},"bloom":"应用","difficulty":"中等","topic":"心搏骤停识别","source_type":"原创","source_page":"教材印刷页P231-233，原文待核","source_anchors":["教师重点锚定清单第8条；《急诊与灾难医学》第4版P231-233待逐字核对"],"teacher_anchor":"突发意识丧失、大动脉搏动消失、无有效呼吸","keypoint_ref":["第8条"],"concepts":[{"role":"primary","keypoint":"第8条","title":"心搏骤停识别","evidence":"题干要求结合意识、呼吸与大动脉搏动识别骤停。"}],
+    "learning_value":{"correct_rationale":"心搏骤停的识别结合突发无反应、无正常或有效呼吸和大动脉搏动消失；发现后须立即呼救并启动复苏。喘息不等于正常呼吸，不能因等待进一步检查而延误救治。","per_option":[{"label":"A","truth":false,"why":"患者意识清楚且有脉搏，题设不足以判定已经发生心搏骤停。","misconception_id":"MC-EM-M02-069A","misconception":"仅凭呼吸急促或心率快诊断心搏骤停。"},{"label":"B","truth":false,"why":"脉搏弱可提示循环问题，但意识清楚且有搏动不符合本题骤停组合。","misconception_id":"MC-EM-M02-069B","misconception":"把脉搏减弱直接等同大动脉搏动消失。"},{"label":"C","truth":true,"why":"无反应、无正常呼吸及无大动脉搏动共同提示心搏骤停。","misconception_id":null,"misconception":null},{"label":"D","truth":false,"why":"能回应且有大动脉搏动，虽需评估呼吸缓慢，不能据此认定骤停。","misconception_id":"MC-EM-M02-069D","misconception":"将任何呼吸减慢均判为心搏骤停。"},{"label":"E","truth":false,"why":"能回应且存在大动脉搏动，不符合心搏骤停的题设识别组合。","misconception_id":"MC-EM-M02-069E","misconception":"仅凭呼吸急促而忽略意识与循环检查。"}],"key_takeaway":"迅速整合反应、正常呼吸与大动脉搏动判断骤停；濒死喘息不能当作正常呼吸，识别后及时启动复苏。","source_quote":"突发意识丧失、大动脉搏动消失、无有效呼吸","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材原文待逐字复核","未经独立医学复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q070","sequence":70,"schema_version":"2.1","module":"M02","type":"A1","case_group":null,
+    "stem":"[正选] 成人胸外按压时，为什么应在每次按压后允许胸廓充分回弹？",
+    "options":[{"label":"A","text":"减少按压频率波动","is_correct":false},{"label":"B","text":"减少除颤电量损失","is_correct":false},{"label":"C","text":"避免监护电极脱落","is_correct":false},{"label":"D","text":"避免人工通气中断","is_correct":false},{"label":"E","text":"促进静脉回流及心脏充盈","is_correct":true}],"answer":"E","polarity":"positive","option_polarities":{"A":false,"B":false,"C":false,"D":false,"E":true},"bloom":"理解","difficulty":"中等","topic":"胸外按压胸廓回弹","source_type":"原创","source_page":"教材印刷页P235，原文待核","source_anchors":["教师重点锚定清单第9条；《急诊与灾难医学》第4版P235待逐字核对"],"teacher_anchor":"每次按压后让胸廓完全回弹；尽量减少中断","keypoint_ref":["第9条"],"concepts":[{"role":"primary","keypoint":"第9条","title":"高质量胸外按压","evidence":"题目要求解释按压间隙充分胸廓回弹对循环的意义。"}],
+    "learning_value":{"correct_rationale":"按压释放后胸廓回弹有助于降低胸内压力并促进静脉回流和心脏充盈，为下一次按压产生血流提供条件。持续倚压胸壁会妨碍回弹，即使频率合适也可能降低复苏质量。","per_option":[{"label":"A","truth":false,"why":"维持频率是按压质量的一项要求，但不是充分回弹的主要循环机制。","misconception_id":"MC-EM-M02-070A","misconception":"将回弹目的仅理解为稳定按压频率。"},{"label":"B","truth":false,"why":"胸廓回弹主要作用于循环充盈，不是为了降低除颤器电量损失。","misconception_id":"MC-EM-M02-070B","misconception":"把按压回弹与除颤能量传递混为一谈。"},{"label":"C","truth":false,"why":"固定电极另有操作要求，胸廓回弹的关键作用不是维持电极黏附。","misconception_id":"MC-EM-M02-070C","misconception":"用电极固定取代回弹的循环生理解释。"},{"label":"D","truth":false,"why":"按压与通气需要协调，但允许回弹不是为了避免人工通气中断。","misconception_id":"MC-EM-M02-070D","misconception":"混淆胸廓回弹与按压通气配合。"},{"label":"E","truth":true,"why":"胸廓回弹促进静脉回流及心脏充盈，有利于下一次按压产生血流。","misconception_id":null,"misconception":null}],"key_takeaway":"高质量按压不仅要求频率和深度合适，还要避免倚压胸壁，保证每次释放后胸廓充分回弹。","source_quote":"每次按压后让胸廓完全回弹","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材原文及生理机制待独立复核","未经独立医学复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q071","sequence":71,"schema_version":"2.1","module":"M02","type":"A2","case_group":null,
+    "stem":"[正选] 一名成人突然倒地，确认心搏骤停。救护者准备实施胸外按压，为选择推荐的掌根位置，应置于何处？",
+    "options":[{"label":"A","text":"胸骨中下三分之一处","is_correct":true},{"label":"B","text":"胸骨柄上端正中处","is_correct":false},{"label":"C","text":"胸骨剑突正中处","is_correct":false},{"label":"D","text":"左侧腋中线第五肋间","is_correct":false},{"label":"E","text":"右侧锁骨下方胸壁处","is_correct":false}],"answer":"A","polarity":"positive","option_polarities":{"A":true,"B":false,"C":false,"D":false,"E":false},"bloom":"理解","difficulty":"中等","topic":"成人胸外按压部位","source_type":"原创","source_page":"教材印刷页P235，原文待核","source_anchors":["教师重点锚定清单第10条；《急诊与灾难医学》第4版P235待逐字核对"],"teacher_anchor":"按压部位：胸骨中下 1/3 或两乳头连线和胸骨交界点中央","keypoint_ref":["第10条"],"concepts":[{"role":"primary","keypoint":"第10条","title":"胸外按压部位","evidence":"题目以成人骤停情境选择实施胸外按压的掌根定位。"},{"role":"differential","keypoint":"第13条","title":"除颤电极位置","evidence":"D和E项分别接近侧胸与右锁骨下电极部位，不是胸骨按压定位。"}],
+    "learning_value":{"correct_rationale":"教师重点将成人胸外按压定位于胸骨中下三分之一，或两乳头连线与胸骨交界点中央。按压部位与除颤电极位置不同，偏向胸骨柄、剑突或侧胸均不能替代推荐的胸骨定位。","per_option":[{"label":"A","truth":true,"why":"胸骨中下三分之一处是教师重点所列成人胸外按压部位。","misconception_id":null,"misconception":null},{"label":"B","truth":false,"why":"胸骨柄上端的位置偏高，不符合教材所列胸骨中下部按压定位。","misconception_id":"MC-EM-M02-071B","misconception":"误以为胸骨任意位置均可用于按压。"},{"label":"C","truth":false,"why":"剑突位于胸骨下端，不是推荐掌根按压点，可能增加局部损伤。","misconception_id":"MC-EM-M02-071C","misconception":"将胸骨最低处的剑突误当作掌根定位。"},{"label":"D","truth":false,"why":"左侧腋中线属于侧胸区域，不是推荐的胸骨中央按压位置。","misconception_id":"MC-EM-M02-071D","misconception":"把侧胸电极区域与胸骨按压区域混淆。"},{"label":"E","truth":false,"why":"右锁骨下方接近电极放置区域，不能代替胸骨中下部掌根定位。","misconception_id":"MC-EM-M02-071E","misconception":"把右侧除颤电极位置当作胸外按压位置。"}],"key_takeaway":"成人胸外按压应确认胸骨推荐部位，区分掌根位置与除颤电极位置，并避免直接压在剑突。","source_quote":"胸骨中下 1/3 或两乳头连线和胸骨交界点中央","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教材原文待逐字复核","未经独立医学复核","与本批其他复苏题的相似性待复核"]},"review_status":"draft","medical_verification":"未经独立医学核验"
+  },
+  {
+    "id":"batch046-Q072","sequence":72,"schema_version":"2.1","module":"M02","type":"A2","case_group":null,
+    "stem":"[正选] 院内两名受训人员对成人心搏骤停患者实施心肺复苏，患者尚未建立高级气道，球囊面罩通气有效。应采用哪种按压与通气配合？",
+    "options":[{"label":"A","text":"每5次按压后通气1次","is_correct":false},{"label":"B","text":"每10次按压后通气1次","is_correct":false},{"label":"C","text":"每15次按压后通气2次","is_correct":false},{"label":"D","text":"每30次按压后通气2次","is_correct":true},{"label":"E","text":"仅按压而停止所有通气","is_correct":false}],"answer":"D","polarity":"positive","option_polarities":{"A":false,"B":false,"C":false,"D":true,"E":false},"bloom":"应用","difficulty":"中等","topic":"成人未建立高级气道时按压通气比","source_type":"原创","source_page":"教材印刷页P236，原文待核","source_anchors":["教师重点锚定清单第11条；《急诊与灾难医学》第4版P236待逐字核对"],"teacher_anchor":"单人按压通气比 30:2；每 5 组（约 2 分钟）30:2 的 CPR 为一个周期；2 人以上 CPR 每 2 分钟轮换一次","keypoint_ref":["第11条"],"concepts":[{"role":"primary","keypoint":"第11条","title":"成人按压通气配合","evidence":"题目明确成人、双人救护且尚未建立高级气道，选择同步比例。"},{"role":"differential","keypoint":"第11条","title":"儿童双人复苏比例","evidence":"C项的15比2需与成人未建立高级气道时的配合区分。"}],
+    "learning_value":{"correct_rationale":"成人心搏骤停尚未建立高级气道时，受训救护者按30次胸外按压后给予2次通气的比例配合。两人可定期快速轮换按压者以减轻疲劳，通气和轮换时尽量减少胸外按压中断。","per_option":[{"label":"A","truth":false,"why":"5比1并非该成人未建立高级气道时的推荐按压通气比例。","misconception_id":"MC-EM-M02-072A","misconception":"采用不适用于成人当前情境的旧式比例。"},{"label":"B","truth":false,"why":"10比1不符合本例成人未建立高级气道时推荐的按压通气配合。","misconception_id":"MC-EM-M02-072B","misconception":"错误地把成人按压与通气数量设为十比一。"},{"label":"C","truth":false,"why":"15比2可见于儿童双人复苏教学，不能直接套用于本题成人情境。","misconception_id":"MC-EM-M02-072C","misconception":"将儿童双人复苏比例直接用于成人。"},{"label":"D","truth":true,"why":"成人尚未建立高级气道时，每30次按压后给予2次有效通气。","misconception_id":null,"misconception":null},{"label":"E","truth":false,"why":"题目有受训人员和有效通气设备，应配合通气而非停止全部通气。","misconception_id":"MC-EM-M02-072E","misconception":"不区分受训人员条件而将单纯按压适用于所有场景。"}],"key_takeaway":"按压通气配合要先区分成人或儿童、施救条件及高级气道状态；切换操作时减少按压中断。","source_quote":"单人按压通气比 30:2","source_quote_status":"exact","anchor_status":"partial","review_status":"draft","quality_flags":["教师重点单人比例对双人成人适用性需教材或指南独立复核","未经独立医学复核","与本批其他复苏题相似性待复核"]},"review_status":"draft","medical_verification":"未经独立医学核验；双人成人比例证据待补"
+  }
+]

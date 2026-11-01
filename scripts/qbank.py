@@ -19,7 +19,7 @@ qbank.py — MedAgentWork 统一题库数据层 v1.0 (2026-08-13 · 架构 P0-1)
   python scripts/qbank.py stats                          # 全库统计
   python scripts/qbank.py query --stem 心衰 --type A1 --limit 10    # 查询
   python scripts/qbank.py check                          # 去重报告 + 完整性
-  python scripts/qbank.py export-md --file <json> [--out <md>]  # 题库 → 可读 Markdown（最终交付格式）
+  python scripts/qbank.py export-md --file <json> [--out <md>] [--review-queue-out <json>]  # 题库 → 可读 Markdown + HC-28 复核队列
   python scripts/qbank.py rehome [--dry-run]             # 修复归档后失效的注册路径
   python scripts/qbank.py --selftest                     # 解析器自检
 
@@ -666,8 +666,105 @@ def rehome(dry_run=False):
 TYPE_NAMES = {'A1': 'A1型题', 'A2': 'A2型题', 'A3': 'A3型题', 'A4': 'A4型题',
               'B1': 'B1型题', 'X': 'X型题', '判断': '判断题'}
 
+RELEASE_DISPOSITIONS = ('publishable', 'pending_human', 'quarantined')
+HIGH_RISK_KEYWORDS = ('剂量', '时间窗', '复苏', '按压', '除颤', '禁忌', '中毒', '溺水',
+                      '卒中', '烧伤', '儿童', '小儿', '妊娠')
 
-def export_md(filepath, outpath=None, title=None):
+
+def _release_info(raw: dict) -> dict:
+    """读取/补全题目的 HC-28 release 标注。
+
+    显式 `release` 优先；缺失时按 `review_status` 保守补齐（draft→pending_human，
+    approved→publishable），并标记 `derived=True`，保证旧批次导出也有复核队列，
+    而不是把「没有标注」伪装成「已核验」。
+    """
+    release = raw.get('release') if isinstance(raw, dict) else None
+    derived = not isinstance(release, dict)
+    release = release if isinstance(release, dict) else {}
+
+    disposition = str(release.get('disposition') or '').strip().lower()
+    if disposition not in RELEASE_DISPOSITIONS:
+        review = str(raw.get('review_status') or '').strip().lower()
+        disposition = 'publishable' if review in ('approved', 'published', 'ready') else 'pending_human'
+        derived = True
+
+    grade = str(release.get('evidence_grade') or '').strip().upper()
+    if grade not in ('A', 'B', 'C'):
+        grade = 'B' if disposition == 'publishable' else 'C'
+        derived = True
+
+    risk = str(release.get('risk_level') or '').strip().lower()
+    if risk not in ('high', 'medium', 'low'):
+        text = ' '.join(str(raw.get(key) or '') for key in
+                        ('stem', 'question', 'question_text', 'topic'))
+        risk = 'high' if any(word in text for word in HIGH_RISK_KEYWORDS) else 'medium'
+        derived = True
+
+    # HC-28 发布底线：高风险 + 证据 C 不得进入可发布核心，即使 agent 自报 publishable。
+    if risk == 'high' and grade == 'C' and disposition in ('publishable', 'pending_human'):
+        disposition = 'quarantined'
+        derived = True
+
+    reason = str(release.get('reason_code') or '').strip()
+    if not reason or (reason == 'NONE' and disposition != 'publishable'):
+        reason = 'NONE' if disposition == 'publishable' else 'HUMAN_MEDICAL_REVIEW'
+        derived = True
+
+    human_check = str(release.get('human_check') or '').strip()
+    if disposition != 'publishable' and not human_check:
+        human_check = ('核查医学事实、答案唯一性、指南口径与来源（原题未提供结构化 release 标注）'
+                       if derived else '核查该题医学事实与答案唯一性')
+        derived = True
+
+    checks = release.get('agent_checks')
+    if not isinstance(checks, list):
+        checks = []
+        derived = True
+    suggested = str(release.get('suggested_action') or '').strip()
+    if disposition != 'publishable' and not suggested:
+        suggested = '人工复核后改为 publishable 或 quarantined，并保留队列记录'
+        derived = True
+
+    return {
+        'disposition': disposition,
+        'evidence_grade': grade,
+        'risk_level': risk,
+        'reason_code': reason,
+        'agent_checks': [str(item) for item in checks if str(item).strip()],
+        'human_check': human_check,
+        'suggested_action': suggested,
+        'derived': derived,
+    }
+
+
+def collect_review_queue(questions: list[dict]) -> tuple[list[dict], dict[str, int]]:
+    """从已解析题目收集人工复核队列；publishable 项不进入队列。"""
+    counts = {key: 0 for key in RELEASE_DISPOSITIONS}
+    items = []
+    for question in questions:
+        raw = question.get('_raw') or {}
+        info = _release_info(raw)
+        counts[info['disposition']] += 1
+        if info['disposition'] == 'publishable':
+            continue
+        items.append({
+            'question_id': question.get('qid') or f'Q{question.get("_index", 0) + 1}',
+            **info,
+            'severity': ('blocking_release' if info['disposition'] == 'quarantined'
+                         or info['risk_level'] == 'high' else 'advisory'),
+        })
+    return items, counts
+
+
+def _batch_release_status(counts: dict[str, int], total: int) -> str:
+    if total == 0 or counts.get('publishable', 0) == 0:
+        return 'BLOCKED'
+    if counts.get('pending_human', 0) == 0 and counts.get('quarantined', 0) == 0:
+        return 'READY'
+    return 'PENDING_HUMAN_REVIEW'
+
+
+def export_md(filepath, outpath=None, title=None, review_queue_out=None):
     """题库 JSON → 可读 Markdown（最终交付格式）。
 
     基于统一解析器 parse_question（兼容 6 种历史字段变体），
@@ -707,11 +804,21 @@ def export_md(filepath, outpath=None, title=None):
     from collections import Counter
     type_counter = Counter(q['type'] or '?' for q in questions)
     bloom_counter = Counter(q['bloom_level'] or '未标注' for q in questions)
+    review_items, release_counts = collect_review_queue(questions)
+    release_status = _batch_release_status(release_counts, len(questions))
 
     lines = []
     lines.append(f'# {title} 题库（{len(questions)}题）')
     lines.append('')
     lines.append(f'> 来源：{_rel(filepath)} | 导出：{datetime.now().strftime("%Y-%m-%d %H:%M")}')
+    lines.append(f'> 生成状态：DONE｜发布状态：{release_status}')
+    lines.append(f'> 可发布核心：{release_counts["publishable"]} 题｜'
+                 f'待人工复核：{release_counts["pending_human"]} 题｜'
+                 f'已隔离：{release_counts["quarantined"]} 题')
+    lines.append('> 注：发布前仍需用户签收；生成完成/READY 不等于医学发布授权（HC-28）。')
+    if release_status == 'BLOCKED':
+        lines.append('> 注：发布状态 BLOCKED 表示当前没有可发布核心（全部题待人工/隔离），'
+                     '生成阶段仍已完成（HC-28）。')
     lines.append(f'> 题型分布：{"、".join(f"{k}×{v}" for k, v in type_counter.most_common())}')
     lines.append(f'> Bloom分布：{"、".join(f"{k}×{v}" for k, v in bloom_counter.most_common())}')
     lines.append('')
@@ -740,9 +847,17 @@ def export_md(filepath, outpath=None, title=None):
             lines.append('')
             lines.append(f'**{q["stem"]}**')
             lines.append('')
-            ans = q.get('answer') or ''
-            raw_ans = ''
             raw = q.get('_raw') or {}
+            release = _release_info(raw)
+            if release['disposition'] != 'publishable':
+                label = '已隔离（不进入可发布核心）' if release['disposition'] == 'quarantined' else '待人工复核'
+                risk_cn = {'high': '高', 'medium': '中', 'low': '低'}.get(release['risk_level'], release['risk_level'])
+                lines.append(f'> 复核状态：{label}｜证据等级 {release["evidence_grade"]}｜'
+                             f'风险 {risk_cn}｜原因 {release["reason_code"]}')
+                if release['human_check']:
+                    lines.append(f'> 人工需核：{release["human_check"]}')
+                lines.append('')
+            ans = q.get('answer') or ''
             raw_ans = str(raw.get('answer') or raw.get('answer_key') or raw.get('correct_answer') or '')
             opts = q.get('options') or {}
             if opts:
@@ -771,8 +886,52 @@ def export_md(filepath, outpath=None, title=None):
             lines.append('---')
             lines.append('')
 
+    if review_items:
+        lines.append(f'## 人工复核队列（{len(review_items)} 条）')
+        lines.append('')
+        lines.append('> 生成已完成；以下条目不影响生成状态，但发布前必须由人类处理。'
+                     '`pending_human` 可保留在待审稿，`quarantined` 不进入可发布核心。')
+        lines.append('')
+        lines.append('| 题号 | 处置 | 证据等级 | 风险 | 原因 | 人工需核 | 建议动作 |')
+        lines.append('|---|---|---|---|---|---|---|')
+        for item in review_items:
+            risk_cn = {'high': '高', 'medium': '中', 'low': '低'}.get(item['risk_level'], item['risk_level'])
+            cells = [
+                item['question_id'],
+                item['disposition'],
+                item['evidence_grade'],
+                risk_cn,
+                item['reason_code'],
+                item['human_check'].replace('|', '\\|'),
+                item['suggested_action'].replace('|', '\\|'),
+            ]
+            lines.append('| ' + ' | '.join(str(cell) for cell in cells) + ' |')
+        lines.append('')
+
     with open(outpath, 'w', encoding='utf-8') as f:
         f.write('\n'.join(lines))
+
+    if review_queue_out:
+        payload = {
+            'source_file': _rel(filepath),
+            'source_sha256': hashlib.sha256(Path(filepath).read_bytes()).hexdigest(),
+            'generated_at': datetime.now().isoformat(timespec='seconds'),
+            'generation_status': 'DONE',
+            'release_status': release_status,
+            'summary': {
+                'total': len(questions),
+                'publishable': release_counts['publishable'],
+                'pending_human': release_counts['pending_human'],
+                'quarantined': release_counts['quarantined'],
+                'review_queue': len(review_items),
+            },
+            'items': review_items,
+        }
+        queue_path = Path(review_queue_out)
+        queue_path.parent.mkdir(parents=True, exist_ok=True)
+        queue_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
+        print(f'✅ 复核队列: {queue_path}（{len(review_items)} 条）')
+
     size_kb = os.path.getsize(outpath) / 1024
     print(f'✅ MD 导出: {outpath}（{len(questions)}题 / {len(lines)}行 / {size_kb:.1f}KB）')
     return outpath, len(questions)
@@ -843,6 +1002,8 @@ def main():
     p_md.add_argument('--file', '-f', required=True, help='题库 JSON 路径')
     p_md.add_argument('--out', '-o', default=None, help='输出 .md 路径（默认同目录同名）')
     p_md.add_argument('--title', '-t', default=None, help='MD 标题（默认取文件名）')
+    p_md.add_argument('--review-queue-out', default=None,
+                      help='HC-28 复核队列 JSON 输出路径（可选；MD 末尾始终附人类可读队列）')
 
     p_rehome = sub.add_parser('rehome', help='重写注册表中归档后失效的文件路径')
     p_rehome.add_argument('--dry-run', action='store_true', help='只报告不写入')
@@ -937,7 +1098,7 @@ def main():
         return
 
     if args.cmd == 'export-md':
-        out, n = export_md(args.file, args.out, args.title)
+        out, n = export_md(args.file, args.out, args.title, args.review_queue_out)
         if out is None:
             sys.exit(1)
         return
