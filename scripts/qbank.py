@@ -826,6 +826,7 @@ def export_md(filepath, outpath=None, title=None, review_queue_out=None):
     lines.append('')
 
     seq = 0
+    seen_cases = set()
     for mod, qs in by_module.items():
         lines.append(f'## {mod}（{len(qs)}题）')
         lines.append('')
@@ -834,6 +835,15 @@ def export_md(filepath, outpath=None, title=None, review_queue_out=None):
             qt = TYPE_NAMES.get(q.get('type', ''), q.get('type') or '未知')
             bl = q.get('bloom_level') or '未标注'
             qid = q.get('qid') or f'Q{q["_index"]+1}'
+            raw = q.get('_raw') or {}
+            case_group = str(raw.get('case_group') or '').strip()
+            shared_case = str(raw.get('shared_case') or '').strip()
+            if case_group and shared_case and case_group not in seen_cases:
+                seen_cases.add(case_group)
+                lines.append(f'**共用病例（{case_group}）**')
+                lines.append('')
+                lines.append(f'> {shared_case}')
+                lines.append('')
             lines.append(f'### {seq}. [{qt}｜{bl}] {qid}')
             lines.append('')
             # 溯源/页码
@@ -847,7 +857,6 @@ def export_md(filepath, outpath=None, title=None, review_queue_out=None):
             lines.append('')
             lines.append(f'**{q["stem"]}**')
             lines.append('')
-            raw = q.get('_raw') or {}
             release = _release_info(raw)
             if release['disposition'] != 'publishable':
                 label = '已隔离（不进入可发布核心）' if release['disposition'] == 'quarantined' else '待人工复核'

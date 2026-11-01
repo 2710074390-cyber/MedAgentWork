@@ -139,6 +139,30 @@ def test_export_md_review_queue_hc28():
         assert [item['question_id'] for item in payload['items']] == ['T2', 'T3']
 
 
+def test_export_md_shared_case_once():
+    """A3/A4 共用病例必须在组内首题前出现且只出现一次。"""
+    with tempfile.TemporaryDirectory() as tmp:
+        shared = "一名58岁男性在候诊时突发倒地，呼之不应，仅偶发喘息，10秒内未触及颈动脉搏动。"
+        questions = [
+            {'id': 'C1', 'type': 'A3', 'case_group': 'A3-01', 'shared_case': shared,
+             'bloom': '记忆', 'stem': '最可能的初始心律是？',
+             'options': [{'label': 'A', 'text': '窦性心动过缓', 'is_correct': False},
+                         {'label': 'B', 'text': '心室颤动', 'is_correct': True}], 'answer': 'B'},
+            {'id': 'C2', 'type': 'A3', 'case_group': 'A3-01', 'shared_case': shared,
+             'bloom': '理解', 'stem': '首次除颤能量应选择？',
+             'options': [{'label': 'A', 'text': '50J', 'is_correct': False},
+                         {'label': 'B', 'text': '360J', 'is_correct': True}], 'answer': 'B'},
+        ]
+        src = _mk(tmp, 'q.json', questions)
+        out = str(Path(tmp) / 'q.md')
+        outpath, n = qbank.export_md(str(src), out, title='共用病例测试')
+        assert n == 2
+        md = Path(outpath).read_text(encoding='utf-8')
+        assert md.count('共用病例（A3-01）') == 1
+        assert md.count(shared) >= 1
+        assert md.find('共用病例（A3-01）') < md.find('C1')
+
+
 def test_release_info_legacy_fallback():
     """无 release 字段时保守补齐：draft→pending_human，approved→publishable。"""
     draft = qbank._release_info({'stem': '测试题', 'review_status': 'draft'})

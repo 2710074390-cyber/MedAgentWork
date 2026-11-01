@@ -97,6 +97,10 @@ h1 {{ font-size:26px; margin:8px 0 4px; }}
 .stats {{ font-family:var(--mono); font-size:12px; color:var(--ink-soft); margin-bottom:28px; }}
 .q {{ background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; margin:14px 0;
   break-inside:avoid; }}
+.case {{ background:#fff7ed; border:1px solid #fdba74; border-left:4px solid #ea580c; border-radius:10px;
+  padding:14px 18px; margin:16px 0 8px; break-inside:avoid; }}
+.case-head {{ font-size:13px; font-weight:700; color:#9a3412; margin-bottom:6px; }}
+.case-body {{ font-size:14.5px; color:#431407; line-height:1.9; }}
 .q-meta {{ display:flex; gap:8px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }}
 .q-num {{ font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; }}
 .q-type {{ font-size:12px; font-weight:700; padding:1px 9px; border-radius:10px; color:#fff; }}
@@ -130,9 +134,17 @@ h1 {{ font-size:26px; margin:8px 0 4px; }}
 
 def build_questions(raw_list):
     parts = []
+    seen_cases = set()
     for i, raw in enumerate(raw_list, 1):
         if not isinstance(raw, dict):
             continue
+        case_group = str(raw.get("case_group") or "").strip()
+        shared_case = str(raw.get("shared_case") or "").strip()
+        if case_group and shared_case and case_group not in seen_cases:
+            seen_cases.add(case_group)
+            body = esc(shared_case).replace("\n", "<br>")
+            parts.append(f'<div class="case"><div class="case-head">共用病例（{esc(case_group)}）</div>'
+                         f'<div class="case-body">{body}</div></div>')
         stem = raw.get("stem") or raw.get("question") or raw.get("question_text") or raw.get("题干") or ""
         stem = esc(stem)
         options = norm_options(raw.get("options"))
