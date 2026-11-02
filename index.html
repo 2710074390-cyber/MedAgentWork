@@ -488,6 +488,26 @@ a { color:var(--brand); }
 .to-top.show { opacity:1; pointer-events:auto; transform:none; }
 .to-top:hover { color:var(--brand); border-color:var(--brand); }
 .to-top .ic { width:19px; height:19px; }
+/* 常驻刷题悬浮按钮：全站左下角，滚动时始终可点直达 /drill */
+.drill-fab {
+  position:fixed; left:22px; bottom:26px; z-index:95;
+  left:max(22px, env(safe-area-inset-left)); bottom:max(26px, env(safe-area-inset-bottom));
+  display:inline-flex; align-items:center; gap:8px;
+  padding:12px 18px; border-radius:var(--radius-pill);
+  background:var(--brand); color:var(--fg-on-brand);
+  font-size:var(--fs-sm); font-weight:var(--w-600); text-decoration:none;
+  box-shadow:var(--shadow-float); cursor:pointer;
+  transition:background .2s, transform .12s, box-shadow .2s;
+  animation:fabIn .5s .4s both;
+}
+.drill-fab:hover { background:var(--brand-hover); transform:translateY(-2px); box-shadow:0 26px 60px -22px rgba(14,31,42,0.5); }
+.drill-fab:active { transform:scale(.96); }
+.drill-fab .ic { width:18px; height:18px; }
+@keyframes fabIn { from { opacity:0; transform:translateY(16px) scale(.96); } to { opacity:1; transform:none; } }
+@media (prefers-reduced-motion:reduce) {
+  .drill-fab { animation:none; }
+  .drill-fab:hover { transform:none; }
+}
 .view { display:none; }
 .view.active { display:block; animation:viewIn .16s ease; }
 @keyframes viewIn { from { opacity:0; } }
@@ -731,6 +751,9 @@ a { color:var(--brand); }
 </div>
 
 <button id="to-top" class="to-top" type="button" aria-label="回到顶部" title="回到顶部"><svg class="ic" aria-hidden="true"><use href="#i-up"/></svg></button>
+
+<!-- 常驻刷题悬浮按钮：全站可见，一步直达 /drill -->
+<a class="drill-fab" id="drill-fab" href="/drill" aria-label="开始网页刷题"><svg class="ic" aria-hidden="true"><use href="#i-brain"/></svg><span>开始刷题</span></a>
 
 <!-- ============ 主页 ============ -->
 <div class="view active" id="view-home">

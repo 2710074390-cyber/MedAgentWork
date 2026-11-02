@@ -13,7 +13,7 @@
    2026-10-31：v5 —— 技能包链接由 releases/tag/v2.1 改指向仓库主页；
    bump 版本让老客户端换掉带旧链接的应用壳。
 */
-const VERSION = 'maw-v6';
+const VERSION = 'maw-v7';
 const SHELL_CACHE = VERSION + '-shell';
 const ASSET_CACHE = VERSION + '-assets';
 const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png'];
