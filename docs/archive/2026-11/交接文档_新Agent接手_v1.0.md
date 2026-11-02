@@ -25,7 +25,7 @@
 | 大四上题库/押题卷 | 🟡 题库：batch031 内科 460 / batch032 外科二 300 / batch034 妇产 280 / batch035 急诊 220 / batch036 耳鼻喉 200 / batch040 耳鼻喉教师重点 200（均已注册）；押题卷：batch041 耳鼻喉 100 题（v2） |
 | 学习价值层（HC-24） | ✅ 2026-10-23 起新批次默认 `item_schema_version=2.0`；batch040 已回填 143 题、batch041 100/100 题，逐项覆盖 100%、原文精确 100% |
 
-**历史主线（2026-09-04 记录）：大四上 3 科复习资料生成**，执行依据：`docs/大四复习资料生成方案_v1.0.md`（含用户待确认决策清单 §9）。**最新状态以上表与 `workflow_state.json` 为准。**
+**历史主线（2026-09-04 记录）：大四上 3 科复习资料生成**，执行依据：`./大四复习资料生成方案_v1.0.md`（含用户待确认决策清单 §9）。**最新状态以上表与 `workflow_state.json` 为准。**
 
 ---
 
@@ -212,8 +212,8 @@ python 知识库素材/validate_configs.py       # RAG 配置校验（改配置�
 ## 9. 交接 Checklist（新 Agent 第一天按此执行）
 
 - [ ] 1. 读本文件 + `CONTEXT.md` + `SOUL.md`（工具路径/硬约束）
-- [ ] 2. 跑 `python scripts/run_tests.py` 与 `python scripts/healthcheck.py`，确认基线全绿（若有红项先读 `docs/TODO.md` P0-P3）
-- [ ] 3. 与用户确认 `docs/大四复习资料生成方案_v1.0.md` §9 决策清单：**A. 传染病学立即开工？B. 口腔科学教学大纲？C. 眼科 10 模块确认？D. Phase 2 深度版？E. Phase 3 题库+押题卷？**
+- [ ] 2. 跑 `python scripts/run_tests.py` 与 `python scripts/healthcheck.py`，确认基线全绿（若有红项先读 `./TODO.md` P0-P3）
+- [ ] 3. 与用户确认 `./大四复习资料生成方案_v1.0.md` §9 决策清单：**A. 传染病学立即开工？B. 口腔科学教学大纲？C. 眼科 10 模块确认？D. Phase 2 深度版？E. Phase 3 题库+押题卷？**
 - [ ] 4. 确认后按 §2 生产配方执行（每科 1 个独立会话/批次，先建 `中间产物/{code}_review/` 并测页偏移）
 - [ ] 5. 交付收尾：`verify_produce_rules.py`（FAIL==0）→ 工作区清洁 → 站点 `index.html` 大四上区加 3 科入口（如需）→ 事件记入 `memory/JOURNAL.jsonl` → git commit（GitHub Actions 自动部署）
 - [ ] 6. 全程遵守：门禁不跳过 / PDF 不脚本生成 / 页码不占位 / 真题不静默改答
@@ -224,8 +224,8 @@ python 知识库素材/validate_configs.py       # RAG 配置校验（改配置�
 
 - **Phase 2 深度版**（内科/外科二/急诊/耳鼻喉各 ≈150 页，用户时间允许时）
 - **Phase 3 题库+押题卷**：题库已完成 5 科（batch031/032/034/035/036）；**剩余 3 科题库（传染病学、眼科学、口腔科学）+ 全部押题卷**仍未启动，按 §4 流程 + HC-18 配额执行（单科 3–5 天；非 306 考纲科目按 batch036 先例办配额清零）
-- 工程待办（P2）：门禁逻辑黄金用例 / exit code 语义统一 / healthcheck 精度修复 / qbank register 一致性 / Anki CSV 导出等（`docs/TODO.md`）
+- 工程待办（P2）：门禁逻辑黄金用例 / exit code 语义统一 / healthcheck 精度修复 / qbank register 一致性 / Anki CSV 导出等（`./TODO.md`）
 
 ---
 
-*本文档由 DSH 主会话（MedMaster）编制。数据核对：2026-09-04。若与 `docs/工作区目录结构与资源路径说明.md`、`docs/产物格式规范.md`、`docs/TODO.md` 冲突，以后三者为准（它们是被维护的权威源）。docs 活跃数上限 5（铁律⑦）：「项目介绍 v4.0」已于 2026-09-04 归档至 `archive/docs/`，本文档成为新的仓库入口文档。*
+*本文档由 DSH 主会话（MedMaster）编制。数据核对：2026-09-04。若与 `./工作区目录结构与资源路径说明.md`、`docs/产物格式规范.md`、`./TODO.md` 冲突，以后三者为准（它们是被维护的权威源）。docs 活跃数上限 5（铁律⑦）：「项目介绍 v4.0」已于 2026-09-04 归档至 `archive/docs/`，本文档成为新的仓库入口文档。*

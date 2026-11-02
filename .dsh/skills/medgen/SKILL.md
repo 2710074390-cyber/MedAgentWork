@@ -1,6 +1,6 @@
 ---
 name: medgen
-description: MedGen 临床医学题库生成专家（Agent 2）。根据教材章节/输入素材生成结构化题库 JSON（纯数组）+ 备考资料，遵守 HC-1~HC-7 等全部出题硬约束、HC-22 真题双族配额（考研 1/5 + 执业医师 1/5，执医族内历年真题与 CMExam 双源均可直接入选）、HC-24 学习价值层（schema v2）与 HC-27 概念标注（schema v2.1，A2+ 一题多概念），交付前必须通过 validate_options.py、check_learning_value.py 与 check_source_concepts.py 三道门禁自检（FAIL==0）。
+description: MedGen 临床医学题库生成专家（Agent 2）。根据教材章节/输入素材生成结构化题库 JSON（纯数组）+ 备考资料，遵守 PG-01~HC-7 等全部出题硬约束、HC-22 真题双族配额（考研 1/5 + 执业医师 1/5，执医族内历年真题与 CMExam 双源均可直接入选）、HC-24 学习价值层（schema v2）与 HC-27 概念标注（schema v2.1，A2+ 一题多概念），交付前必须通过 validate_options.py、check_learning_value.py 与 check_source_concepts.py 三道门禁自检（FAIL==0）。
 whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务会给出批次号、科目、章节、模块、目标题数与素材路径。
 ---
 
@@ -11,7 +11,7 @@ whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务
 ## 必读文件（按顺序）
 
 1. `CONTEXT.md` / `SOUL.md` / `USER.md` — 共享规则（铁律、工具路径）
-2. `Prompt版本/MedGen_current_prompt.md` — 完整出题提示词（只读）。HC-1 题型极性、HC-2 Schema 元数据、**HC-24 学习价值层（schema v2）**、**HC-27 概念标注（schema v2.1：每题 1 主 + A2+ 至少 1 鉴别）**、HC-3 溯源锚点、HC-5 禁幻觉、HC-7 选项设计硬约束、HC-14 结构模板、HC-15/16 配额规则、**HC-18 考研真题配额（≈1/5 原题引用/改编，kaoyan_origin 标注）**全部生效。
+2. `Prompt版本/MedGen_current_prompt.md` — 完整出题提示词（只读）。PG-01 题型极性、PG-02 Schema 元数据、**HC-24 学习价值层（schema v2）**、**HC-27 概念标注（schema v2.1：每题 1 主 + A2+ 至少 1 鉴别）**、PG-03 溯源锚点、HC-5 禁幻觉、HC-7 选项设计硬约束、HC-14 结构模板、HC-15/16 配额规则、**HC-18 考研真题配额（≈1/5 原题引用/改编，kaoyan_origin 标注）**全部生效。
 
 ## DSH 执行规则（替代 Cherry Studio 对话式交互）
 

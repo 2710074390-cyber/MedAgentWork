@@ -27,6 +27,12 @@
 - 部署提交：`3154575`；站点：`https://med-review-site.pages.dev`。
 - HC-21：L1/L2/L3 PASS（最新 Production Source = 3154575）；线上 PDF HTTP 200；线上 index 命中「急诊新版押题卷」。
 
+## 签收后病例题修复（2026-11-01）
+
+- 问题：A3 病例组只渲染子题，未渲染母病例（`shared_case` 存在于 JSON，但 MD/HTML 渲染器未读取）。
+- 修复：`qbank.export_md` 与 `render_qbank_html.py` 按 `case_group` 在组内首题前输出 `shared_case` 一次；25 道 A3 题覆盖 5 个病例组（A3-01～A3-05）。
+- 站点：`急诊新版押题卷` 改为「MD 在线阅读 + 打印 PDF」；下载 PDF 不再自动提供，按项目规则由用户用站内「打印 PDF」按钮人工导出。
+
 ## 未做的事
 
 - 未把 URL 可访问或教师重点标签等同于医学专家独立核验；签收前的机械通过不等于专家复核。

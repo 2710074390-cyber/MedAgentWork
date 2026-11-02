@@ -1,20 +1,35 @@
 # -*- coding: utf-8 -*-
-"""真题检索子系统测试：答案恢复 / 考点解析 / 选题 / 门禁。"""
+"""真题检索子系统测试：答案恢复 / 考点解析 / 选题 / 门禁。
+
+P1-S4 变更（2026-11-02）：real_question.retrieval 依赖 rank_bm25（可选依赖，
+本机未安装，工作指令 §0.2 禁止装新依赖）。原先顶层 import 失败会让整个模块
+ImportError，模块内 21 个用例**从未执行**。现改为：缺依赖时每个用例显式 skip。
+"""
 import contextlib
 import json
 import shutil
 import sys
 import tempfile
+import unittest
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE / "scripts"))
 
-from real_question.answer_recovery import recover_answer
-from real_question.check import run_check
-from real_question.planner import build_plan
-from real_question.retrieval import parse_keypoints
-from real_question.schema import RealQuestion, dedupe_items, prepare_item, write_jsonl
+_IMPORT_ERROR = None
+try:
+    from real_question.answer_recovery import recover_answer
+    from real_question.check import run_check
+    from real_question.planner import build_plan
+    from real_question.retrieval import parse_keypoints
+    from real_question.schema import RealQuestion, dedupe_items, prepare_item, write_jsonl
+except ModuleNotFoundError as _e:  # 缺 rank_bm25 等可选依赖
+    _IMPORT_ERROR = _e
+
+
+def _skip_without_deps():
+    if _IMPORT_ERROR is not None:
+        raise unittest.SkipTest(f"缺可选依赖（§0.2 禁止安装新依赖）：{_IMPORT_ERROR}")
 
 
 @contextlib.contextmanager
@@ -559,3 +574,19 @@ def test_check_counts_zhiyi_pdf_as_zhiyi_family():
     assert report["counts"]["zhiyi_pdf"] == 2
     assert report["counts"]["zhiyi"] == 2
     assert report["family_ratios"]["zhiyi"] == 0.2
+
+
+# ── 缺依赖时统一显式 skip（P1-S4）────────────────────────────
+def _guard(fn):
+    def wrapper(*args, **kwargs):
+        _skip_without_deps()
+        return fn(*args, **kwargs)
+    wrapper.__name__ = getattr(fn, "__name__", "test")
+    wrapper.__doc__ = getattr(fn, "__doc__", None)
+    return wrapper
+
+
+for _n, _f in list(globals().items()):
+    if _n.startswith("test_") and callable(_f):
+        globals()[_n] = _guard(_f)
+del _n, _f

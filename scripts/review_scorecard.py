@@ -475,7 +475,33 @@ def main() -> int:
     ap.add_argument("--rubric", default=str(DEFAULT_RUBRIC))
     ap.add_argument("--out", default=str(DEFAULT_OUT))
     ap.add_argument("--md-out", default=str(DEFAULT_MD))
+    # P3-S2（2026-11-02）：一致性统计模式。评分卡看「这份资料好不好」，
+    # --agreement 看「两名评分者是否一致」，两者是不同问题，因此独立开关。
+    ap.add_argument("--agreement", action="store_true",
+                    help="改跑评分者一致性（加权 κ / ICC / Bland–Altman），需配 --ratings")
+    ap.add_argument("--ratings", default="", help="--agreement 的输入：评分 JSON")
+    ap.add_argument("--intra", action="store_true", help="标记为 intra-rater（同一评分者两轮）")
     args = ap.parse_args()
+
+    if args.agreement:
+        if not args.ratings:
+            print("[FAIL] --agreement 需要 --ratings <评分JSON>", file=sys.stderr)
+            return 2
+        import agreement
+
+        data = read_json(repo_path(args.ratings))
+        rep = agreement.build_report(data, intra=args.intra)
+        rep["source"] = str(args.ratings)
+        write_json(Path(args.out), rep)
+        atomic_write(Path(args.md_out), agreement.render_md(rep))
+        print(f"一致性（{rep['mode']}）: {rep['status']}")
+        if rep.get("reason"):
+            print(f"  {rep['reason']}")
+        for r in rep["per_dim"]:
+            print(f"  {r['dim']:<4} κ={r.get('kappa')} ICC={r.get('icc')} → {r['status']}")
+        print(f"   JSON: {args.out}")
+        print(f"   MD  : {args.md_out}")
+        return 0
 
     try:
         card = build_scorecard(

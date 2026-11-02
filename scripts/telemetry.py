@@ -19,6 +19,8 @@ telemetry.py — MedAgentWork 结构化日志模块 v1.0
 
 import json
 import logging
+import os
+import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -297,7 +299,116 @@ def log_warning(message: str, **kwargs: Any) -> None:
 def log_debug(message: str, **kwargs: Any) -> None:
     """记录DEBUG级别日志"""
     logger = get_logger("medagent")
-    logger.debug(message, extra=kwargs)
+    logger.debug(message, exc_info=False, extra=kwargs)
+
+
+# ══════════════════════════════════════════════════════════
+# P6-S1：按批 JSONL 事件 sink（字段白名单，零用户数据）
+# ══════════════════════════════════════════════════════════
+#
+# 设计要点：
+#   1. 一 batch 一文件：reports/obs/<batch>_telemetry.jsonl，追加写；
+#   2. 字段白名单：只允许系统维度（批次/阶段/规则/严重度/动作/重试/耗时/
+#      token/模型/产物与提示词哈希），**任何用户维度字段一律拒收**；
+#   3. 开关：环境变量 TELEMETRY_FILE=0 关闭落盘（回滚手段）；
+#   4. 不抛异常：遥测失败不能拖垮管线，但必须能在 stderr 看见。
+
+OBS_DIR = Path(__file__).resolve().parent.parent / 'reports' / 'obs'
+
+#: 允许写入事件白名单（系统数据）
+EVENT_FIELDS = frozenset({
+    'ts', 'batch', 'stage', 'event', 'gate', 'status', 'rule_id', 'severity',
+    'action', 'retry', 'duration_ms', 'tokens', 'count',
+    'model_id', 'prompt_sha256', 'artifact_sha256', 'config_hash', 'source',
+})
+
+#: 出现即拒收的键（用户/会话/交互维度）——防的是「顺手把用户数据写进日志」
+FORBIDDEN_FIELD_HINTS = (
+    'user', 'session', 'attempt_by', 'student', 'account', 'phone', 'email',
+    'name', 'device', 'ip', 'cookie', 'token_user', 'nickname', 'wechat',
+)
+
+
+def telemetry_enabled() -> bool:
+    """TELEMETRY_FILE=0 关闭落盘（默认开启）。"""
+    return os.environ.get('TELEMETRY_FILE', '1').strip().lower() not in ('0', 'false', 'off', 'no')
+
+
+def jsonl_path(batch: str) -> Path:
+    """批次事件文件路径。批次名做白名单化，防路径穿越。"""
+    safe = re.sub(r'[^A-Za-z0-9_.\-]', '_', str(batch or 'unknown'))[:64]
+    safe = safe.replace('..', '_').lstrip('.') or 'unknown'
+    return OBS_DIR / f'{safe}_telemetry.jsonl'
+
+
+def _reject_reason(fields: dict) -> str | None:
+    for k in fields:
+        low = str(k).lower()
+        if k not in EVENT_FIELDS:
+            for hint in FORBIDDEN_FIELD_HINTS:
+                if hint in low:
+                    return f'拒绝写入疑似用户维度字段 {k!r}'
+            return f'字段不在白名单内 {k!r}（见 EVENT_FIELDS）'
+    return None
+
+
+def record_event(batch: str, event: str, **fields: Any) -> dict | None:
+    """记录一条系统事件到该批次的 JSONL。
+
+    返回写入的记录（被拒收/关闭时返回 None）。字段不合规时**拒收并报错到 stderr**，
+    不会静默丢弃。
+    """
+    payload = {'ts': datetime.now(CST).isoformat(timespec='seconds'),
+               'batch': str(batch), 'event': str(event)}
+    payload.update(fields)
+
+    bad = _reject_reason({k: v for k, v in payload.items() if k not in ('ts', 'batch', 'event')})
+    if bad:
+        print(f'  ⚠️ telemetry 事件被拒收：{bad}', file=sys.stderr)
+        return None
+    if not telemetry_enabled():
+        return None
+    try:
+        OBS_DIR.mkdir(parents=True, exist_ok=True)
+        with open(jsonl_path(batch), 'a', encoding='utf-8') as f:
+            f.write(json.dumps(payload, ensure_ascii=False) + '\n')
+        return payload
+    except Exception as e:
+        print(f'  ⚠️ telemetry 写入失败({e})，事件未落盘', file=sys.stderr)
+        return None
+
+
+def read_events(batch: str | None = None) -> list[dict]:
+    """读取事件：给定 batch 读单文件，否则读全部批次文件。"""
+    paths = [jsonl_path(batch)] if batch else sorted(OBS_DIR.glob('*_telemetry.jsonl'))
+    out = []
+    for p in paths:
+        if not p.exists():
+            continue
+        for line in p.read_text(encoding='utf-8').splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                obj = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if isinstance(obj, dict):
+                out.append(obj)
+    return out
+
+
+def validate_event_schema(events: list[dict]) -> list[str]:
+    """字段白名单体检：返回违规说明列表（空 = 合规）。用于 AC-P6-01 证据。"""
+    issues = []
+    for i, e in enumerate(events):
+        if not isinstance(e, dict):
+            issues.append(f'[{i}] 不是对象')
+            continue
+        for k in e:
+            if k not in EVENT_FIELDS:
+                issues.append(f'[{i}] 非白名单字段 {k!r}')
+    return issues
 
 
 if __name__ == "__main__":

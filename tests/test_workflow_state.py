@@ -188,3 +188,151 @@ def test_lineage_records_model_info():
     lineage = state['batch001']['lineage'][0]
     assert lineage['agent_model'] == 'qwen3.7-max'
     assert lineage['prompt_version'] == 'v2.0'
+
+
+# ── P1-S5：版本血缘五元组 ───────────────────────────────────
+
+_SHA = 'a' * 64
+
+
+def test_batch_number_parsing():
+    assert ws.batch_number('batch046') == 46
+    assert ws.batch_number('batch047-a') == 47
+    assert ws.batch_number('_review_only_batch') is None
+    assert ws.batch_number(None) is None
+
+
+def test_lineage_required_boundary():
+    assert ws.lineage_required('batch046') is False
+    assert ws.lineage_required('batch047') is True
+    assert ws.lineage_required('batch100') is True
+    assert ws.lineage_required('batchMDT') is False
+
+
+def test_lineage_records_five_tuple():
+    state = {}
+    batch = ws.add_lineage(
+        state, 'batch047', 'agent2', 'f.json', 'md5',
+        model='qwen', model_id='qwen-3.7-max', prompt_sha256=_SHA,
+        config_hash=_SHA, input_hash=_SHA, artifact_sha256=_SHA)
+    entry = batch['lineage'][0]
+    for f in ws.LINEAGE_FIELDS:
+        assert entry[f], f"五元组缺 {f}"
+    assert batch['steps']['AGENT2']['lineage']['prompt_sha256'] == _SHA
+
+
+def test_lineage_strict_raises_when_incomplete():
+    state = {}
+    try:
+        ws.add_lineage(state, 'batch047', 'agent2', 'f.json', 'md5', strict=True)
+        raise AssertionError('严格批次缺五元组应抛 LineageIncomplete')
+    except ws.LineageIncomplete as e:
+        assert 'prompt_sha256' in str(e)
+
+
+def test_lineage_legacy_batch_not_blocked():
+    """历史批次 ≤046 不得因缺五元组被阻断（只读、不追溯）。"""
+    state = {}
+    batch = ws.add_lineage(state, 'batch046', 'agent2', 'f.json', 'md5')
+    assert batch['lineage'][0]['prompt_sha256'] == ''
+    assert ws._lineage_gaps(batch['lineage'][0]), "历史批次应能如实暴露缺口"
+
+
+def test_lineage_unknown_counts_as_missing():
+    state = {}
+    try:
+        ws.add_lineage(state, 'batch047', 'agent2', 'f.json', 'md5',
+                       model='unknown', model_id='unknown',
+                       prompt_sha256=_SHA, config_hash=_SHA,
+                       input_hash=_SHA, artifact_sha256=_SHA, strict=True)
+        raise AssertionError("model_id='unknown' 应视为缺失")
+    except ws.LineageIncomplete as e:
+        assert 'model_id' in str(e)
+
+
+def test_lineage_non_sha_value_rejected():
+    state = {}
+    try:
+        ws.add_lineage(state, 'batch047', 'agent2', 'f.json', 'md5',
+                       model_id='m', prompt_sha256='not-a-sha',
+                       config_hash=_SHA, input_hash=_SHA, artifact_sha256=_SHA, strict=True)
+        raise AssertionError('非 sha256 值应被拒绝')
+    except ws.LineageIncomplete as e:
+        assert 'prompt_sha256' in str(e)
+
+
+def test_lineage_strict_switch_off_for_new_batch():
+    """显式 strict=False 可降级（给迁移期留口子，但必须显式）。"""
+    state = {}
+    batch = ws.add_lineage(state, 'batch047', 'agent2', 'f.json', 'md5', strict=False)
+    assert batch['lineage'][0]['stage'] == 'agent2_DONE'
+
+
+# ── P5-S1：重试计数与自动隔离（AC-P5-03）─────────────────────
+
+def test_retry_item_quarantine_threshold():
+    """单题重试 >2 次 → 该题 QUARANTINE。"""
+    state = {}
+    state_batch = ws.new_batch('batch900')
+    state['batch900'] = state_batch
+    for _ in range(ws.RETRY_ITEM_MAX):
+        r = ws.record_retry(state, 'batch900', 'Q1', stage='agent4', rule_id='R12')
+        assert not r['quarantined'], '未超阈值不应隔离'
+    r = ws.record_retry(state, 'batch900', 'Q1', stage='agent4', rule_id='R12')
+    assert r['quarantined'] is True
+    assert r['scope'] == ws.QUARANTINE_SCOPE_ITEM
+    assert state['batch900']['status'] == ws.STATUS_QUARANTINE
+    assert ws.is_quarantined(state, 'batch900', 'Q1') is True
+    assert ws.is_quarantined(state, 'batch900', 'Q2') is False
+
+
+def test_retry_batch_quarantine_threshold():
+    """整批重试 >3 次 → 整批 QUARANTINE（覆盖单题）。"""
+    state = {'batch901': ws.new_batch('batch901')}
+    last = None
+    for i in range(ws.RETRY_BATCH_MAX + 1):
+        last = ws.record_retry(state, 'batch901', f'Q{i}', stage='agent4')
+    assert last['quarantined'] is True
+    assert last['scope'] == ws.QUARANTINE_SCOPE_BATCH
+    assert ws.is_quarantined(state, 'batch901', 'Q99') is True
+
+
+def test_retry_events_are_auditable():
+    state = {'batch902': ws.new_batch('batch902')}
+    ws.record_retry(state, 'batch902', 'Q1', stage='agent4', rule_id='R2', reason='长度比')
+    ev = state['batch902']['retries']['events'][-1]
+    assert ev['rule_id'] == 'R2' and ev['reason'] == '长度比'
+    assert 'timestamp' in ev and ev['item_id'] == 'Q1'
+    # 不含任何用户维度字段
+    assert not ({'user', 'user_id', 'session', 'attempt_by'} & set(ev))
+
+
+def test_retry_summary_shape():
+    state = {'batch903': ws.new_batch('batch903')}
+    ws.record_retry(state, 'batch903', 'Q1')
+    ws.record_retry(state, 'batch903', 'Q1')
+    s = ws.retry_summary(state, 'batch903')
+    assert s['exists'] is True
+    assert s['batch_retries'] == 2
+    assert s['items_retried'] == 1
+    assert s['top_items'][0][0] == 'Q1'
+    assert s['limits'] == {'item': 2, 'batch': 3}
+
+
+def test_clear_quarantine_item_and_batch():
+    state = {'batch904': ws.new_batch('batch904')}
+    for _ in range(3):
+        ws.record_retry(state, 'batch904', 'Q1')
+    assert ws.is_quarantined(state, 'batch904')
+    ws.clear_quarantine(state, 'batch904', by='reviewer', reason='人工确认可放行')
+    assert ws.is_quarantined(state, 'batch904') is False
+    assert state['batch904']['status'] == 'IN_PROGRESS'
+    assert state['batch904']['quarantine']['released_by'] == 'reviewer'
+
+
+def test_retry_does_not_touch_other_batches():
+    state = {'batch905': ws.new_batch('batch905'), 'batch906': ws.new_batch('batch906')}
+    for _ in range(4):
+        ws.record_retry(state, 'batch905', 'Q1')
+    assert ws.is_quarantined(state, 'batch906') is False
+    assert state['batch906']['status'] == 'IN_PROGRESS'

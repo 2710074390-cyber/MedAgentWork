@@ -27,7 +27,8 @@ def parse_json_file(filepath):
         if not stem:
             continue
         q = {
-            'id': item.get('id', '?'),
+            'id': item.get('id') or item.get('question_id', '?'),
+            'question_id': item.get('question_id') or item.get('id', '?'),
             'type': item.get('type') or item.get('question_type', 'A1'),
             'question': stem,
             'options_raw': item.get('options', []),
@@ -36,6 +37,12 @@ def parse_json_file(filepath):
             'module': item.get('module', ''),
             'bloom': item.get('bloom') or item.get('bloom_level', ''),
             'difficulty': item.get('difficulty', ''),
+            # 2026-11-02（P2-S5）：保留来源标记。此前投影把这些字段丢掉，
+            # 导致 R13 无法判断"这是真题、选项不可改写"，只能按长度一刀切。
+            'kaoyan_origin': item.get('kaoyan_origin'),
+            'zhiyi_origin': item.get('zhiyi_origin'),
+            'zhiyi_pdf_origin': item.get('zhiyi_pdf_origin'),
+            'source_type': item.get('source_type', ''),
         }
         opts = {}
         for opt in q['options_raw']:

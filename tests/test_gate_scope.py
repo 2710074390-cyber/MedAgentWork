@@ -360,3 +360,93 @@ def test_question_blueprint_type_group_gate_over_limit_and_legacy_compat(tmp_pat
     assert '题型组合 A3+A4 题数 26' in result['reason']
     grouped['type_group_targets'] = {}
     assert gate_check.gate_question_blueprint('batch046', {'question_blueprint_gate': grouped})['status'] == 'PASS'
+
+
+# ═══════════════════════════════════════════════════════════
+# P1-S5：版本血缘五元组门禁（batch047+；≤046 不受影响）
+# 说明：以下用例不依赖 pytest 夹具，可直接被 scripts/run_tests.py 执行。
+# ═══════════════════════════════════════════════════════════
+
+_SHA64 = 'b' * 64
+
+
+def _lineage_entry(**over):
+    entry = {'stage': 'agent2_DONE', 'prompt_sha256': _SHA64, 'model_id': 'qwen-3.7-max',
+             'config_hash': _SHA64, 'input_hash': _SHA64, 'artifact_sha256': _SHA64}
+    entry.update(over)
+    return entry
+
+
+def test_lineage_skip_for_historical_batch():
+    """batch046 及以前：SKIP，不阻断（只读历史，不追溯）。"""
+    issues, report = gate_check._lineage_issues('batch046', {'lineage': []})
+    assert issues == []
+    assert report['status'] == 'SKIP'
+    assert report['required'] is False
+
+
+def test_lineage_blocks_when_missing_entries():
+    issues, report = gate_check._lineage_issues('batch047', {})
+    assert report['status'] == 'BLOCKED'
+    assert issues and 'lineage' in issues[0]
+
+
+def test_lineage_blocks_when_field_unknown():
+    issues, report = gate_check._lineage_issues(
+        'batch047', {'lineage': [_lineage_entry(model_id='unknown')]})
+    assert report['status'] == 'BLOCKED'
+    assert any('model_id' in i for i in issues)
+
+
+def test_lineage_blocks_non_sha256():
+    issues, report = gate_check._lineage_issues(
+        'batch047', {'lineage': [_lineage_entry(prompt_sha256='deadbeef')]})
+    assert report['status'] == 'BLOCKED'
+    assert any('prompt_sha256' in i for i in issues)
+
+
+def test_lineage_passes_with_full_tuple():
+    issues, report = gate_check._lineage_issues(
+        'batch047', {'lineage': [_lineage_entry()]})
+    assert issues == []
+    assert report['status'] == 'PASS'
+    assert report['entries'] == 1
+
+
+def test_lineage_config_hash_mismatch_is_warning_only():
+    """阈值调参后重跑门禁是合法场景：只告警，不阻断。"""
+    issues, report = gate_check._lineage_issues('batch047', {
+        'lineage': [_lineage_entry(config_hash='c' * 64)]})
+    assert issues == [], f"不应阻断: {issues}"
+    assert report['status'] == 'PASS'
+    assert report['warnings'], "config_hash 不一致必须留痕"
+    # 仅当当前配置指纹可得时才可能产生告警
+    if not report['current_config_hash']:
+        raise AssertionError('未能读取当前 config_hash，说明 pipeline_config 接入失败')
+
+
+def test_lineage_report_written(tmpdir=None):
+    """AC-P1-06 证据：reports/gate/<batch>_lineage.json 必须落盘。"""
+    import tempfile
+    from pathlib import Path as _P
+
+    saved = gate_check.BASE
+    d = _P(tempfile.mkdtemp())
+    try:
+        gate_check.BASE = d
+        _, report = gate_check._lineage_issues('batch047', {'lineage': [_lineage_entry()]})
+        path = gate_check._write_lineage_report('batch047', report)
+        assert path and path.exists()
+        data = json.loads(path.read_text(encoding='utf-8'))
+        assert data['batch'] == 'batch047' and data['status'] == 'PASS'
+        assert 'checked_at' in data
+    finally:
+        gate_check.BASE = saved
+
+
+def test_gate_final_blocks_on_lineage_for_new_batch():
+    """终审门禁：batch047 缺五元组直接阻断（不再靠人肉检查）。"""
+    batch = {'product_types': ['question_bank'], 'steps': {}, 'lineage': []}
+    r = gate_check.gate_final('batch047', batch, 'off')
+    assert r['status'] == 'BLOCKED'
+    assert '血缘' in r['reason']

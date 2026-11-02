@@ -9,19 +9,36 @@
 """
 import sys
 import tempfile
+import unittest
 from pathlib import Path
-
-import numpy as np
 
 BASE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE / 'scripts'))
 
 import importlib.util
 
+# P1-S4（2026-11-02）：numpy 是可选依赖（本机未装，工作指令 §0.2 禁止装新依赖）。
+# 原先顶层 import 失败导致整个模块 ImportError、5 个用例从未执行；现改为显式 skip。
+_IMPORT_ERROR = None
+try:
+    import numpy as np
+except ModuleNotFoundError as _e:
+    _IMPORT_ERROR = _e
+
 _spec = importlib.util.spec_from_file_location(
     'search_kb', BASE / '知识库素材' / 'search_kb.py')
-search_kb = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(search_kb)
+search_kb = None
+if _IMPORT_ERROR is None:
+    try:
+        search_kb = importlib.util.module_from_spec(_spec)
+        _spec.loader.exec_module(search_kb)
+    except ModuleNotFoundError as _e:
+        _IMPORT_ERROR = _e
+
+
+def _skip_without_deps():
+    if _IMPORT_ERROR is not None:
+        raise unittest.SkipTest(f"缺可选依赖（§0.2 禁止安装新依赖）：{_IMPORT_ERROR}")
 
 
 def _use_tmp_cache(tmp):
@@ -84,3 +101,19 @@ def test_no_rerank_search_signature():
     sig = inspect.signature(search_kb.search)
     assert 'no_rerank' in sig.parameters
     assert sig.parameters['no_rerank'].default is False
+
+
+# ── 缺依赖时统一显式 skip（P1-S4）────────────────────────────
+def _guard(fn):
+    def wrapper(*args, **kwargs):
+        _skip_without_deps()
+        return fn(*args, **kwargs)
+    wrapper.__name__ = getattr(fn, "__name__", "test")
+    wrapper.__doc__ = getattr(fn, "__doc__", None)
+    return wrapper
+
+
+for _n, _f in list(globals().items()):
+    if _n.startswith("test_") and callable(_f):
+        globals()[_n] = _guard(_f)
+del _n, _f

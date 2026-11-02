@@ -47,7 +47,7 @@ ROOT_ALLOWED = {
     '操作流程.txt', '.gitignore',
     'validate_options.py', 'verify_page_numbers.py', 'ingest.py', 'healthcheck.py', 'save.py', 'gate_check.py',
     # v1.2 (2026-10-19): 补入长期存在的仓库级文件（此前白名单与实况不符，
-    # 属 docs/TODO.md 记录的 M12 漂移；README 为部署/在线入口说明，
+    # 属 docs/archive/2026-11/TODO.md 记录的 M12 漂移；README 为部署/在线入口说明，
     # requirements.txt 为依赖清单，二者均为仓库必需，非"多余文件"）。
     'README.md', 'requirements.txt',
 }
@@ -177,7 +177,7 @@ def check_state_consistency():
             if batch_dir.name == 'archive' or not batch_dir.is_dir():
                 continue
             # v1.2 (2026-10-19): `{code}_review/` 是文档规定的复习资料草稿工作目录
-            # （见 docs/大四复习资料生成方案_v1.0.md S1 步骤、交接文档），
+            # （见 docs/archive/2026-11/大四复习资料生成方案_v1.0.md S1 步骤、交接文档），
             # 按科目代码命名、非批次目录，不参与批次状态一致性检查。
             if batch_dir.name.endswith('_review'):
                 continue

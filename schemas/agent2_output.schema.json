@@ -2,6 +2,8 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "medagentwork-agent2-output",
   "title": "MedGen 题库产物契约 (agent2_output)",
+  "x-schema-version": "2.2",
+  "x-schema-version-note": "2.2（2026-11-02，P2-S1/S2）：新增 difficulty_tier / step_count / competing_dx / negative_cues / conditionals 与 per_option.distractor_mechanism；difficulty_index 标 deprecated。新字段在 schema 内为 optional（可回滚），交付覆盖率为 100% 的要求由 scripts/validate/rules_batch.py 的结构检查按 schema_version>=2.2 强制。",
   "description": "Agent 2 (MedGen) 产出题库 JSON 的结构契约。纯数组；兼容历史字段名（question/question_type/answer_key），required 项为核心契约。由 ingest.py 在摄入时用 jsonschema 校验。",
   "type": "array",
   "items": {
@@ -43,7 +45,41 @@
       "source": { "type": ["string", "array"] },
       "source_pages": { "type": "array", "items": { "type": "string" } },
       "priority_level": { "type": "string", "description": "考点优先级" },
-      "difficulty_index": { "type": "number", "description": "预估难度（LLM 估算，非实测）" },
+      "difficulty_index": {
+        "type": "number",
+        "deprecated": true,
+        "description": "【已弃用 · schema 2.2】原为 LLM 的主观难度估值（0–1），无法复核；命题者自评难度与实际 p 值的一致性在文献中显著不符（p=0.002，见 reports/research/命题认知难度与干扰项设计调研_20261102.md）。请改用 difficulty_tier + step_count 的结构化口径。历史产物继续保留，不追溯改写。"
+      },
+      "difficulty_tier": {
+        "type": "string",
+        "enum": ["L1", "L2", "L3", "L4"],
+        "description": "【schema 2.2 新增】难度层级，按结构判定而非主观打分：L1=单点记忆（直接回忆一个事实）；L2=理解辨析（同一概念内区分相近表述）；L3=应用推理（把规则套到具体病例，1–2 步推理）；L4=综合决策（多因素冲突、需要权衡或排除竞争诊断，≥3 步）。判定只题干与解析，不看选项长度。"
+      },
+      "step_count": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 8,
+        "description": "【schema 2.2 新增】从读完题干到锁定答案所需的推理步数（整数）。计数口径：每做一次「取信息 → 套规则 → 得中间结论」记 1 步，直接回忆记 1 步。L1 通常 1 步、L2 为 2 步、L3 为 2–3 步、L4 为 ≥3 步。用于替代 difficulty_index。"
+      },
+      "competing_dx": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 5,
+        "items": { "type": "string", "minLength": 2 },
+        "description": "【schema 2.2 新增 · HC-29】鉴别诊断/竞争概念 top-3（按可能性从高到低排序）。第 1 条即「最强竞争者」，必须用于干扰项①；其余用于干扰项②③。只写病名/概念名，不写解释。"
+      },
+      "negative_cues": {
+        "type": "array",
+        "maxItems": 5,
+        "items": { "type": "string", "minLength": 1 },
+        "description": "【schema 2.2 新增】题干中的反选线索原文摘录（如「不属于」「错误的是」「除……外」）。polarity=negative 时不得为空，且必须能在 stem 中逐字命中；positive 题留空数组。用于把「反选题漏读」变成可机器核查的字段。"
+      },
+      "conditionals": {
+        "type": "array",
+        "maxItems": 5,
+        "items": { "type": "string", "minLength": 2 },
+        "description": "【schema 2.2 新增】题干中的条件从句原文（如「若合并肾功能不全」「妊娠期」「发病 4.5 小时内」）。这些条件会改变正确答案，P2-S5 的条件从句豁免与 L4 判定都依赖它。无条件下拉空数组。"
+      },
       "discrimination_index": { "type": "number", "description": "预估区分度（LLM 估算，非实测）" },
       "non_functioning_distractors": { "type": "integer" },
       "kaoyan_origin": {
@@ -58,8 +94,8 @@
       "topic": { "type": "string" },
       "schema_version": {
         "type": "string",
-        "enum": ["1.0", "2.0", "2.1"],
-        "description": "题目契约版本。2.0 起 learning_value 为交付必需项（HC-24）；2.1 起 concepts 为交付必需项（HC-27，2026-10-27）。1.0/2.0 为历史产物，不追溯。"
+        "enum": ["1.0", "2.0", "2.1", "2.2"],
+        "description": "题目契约版本。2.0 起 learning_value 为交付必需项（HC-24）；2.1 起 concepts 为交付必需项（HC-27，2026-10-27）；2.2 起结构字段（difficulty_tier / step_count / competing_dx / negative_cues / conditionals）与干扰项机制标签 distractor_mechanism 纳入交付必需项（P2-S1/S2，2026-11-02），字段本身在 schema 内保持 optional 以便回滚，覆盖率由 rules_batch.py 的结构检查强制。1.0/2.0/2.1 为历史产物，不追溯。"
       },
       "concepts": {
         "type": "array",
@@ -111,7 +147,14 @@
                 "truth": { "type": "boolean" },
                 "why": { "type": "string", "minLength": 20 },
                 "misconception_id": { "type": ["string", "null"], "description": "错误认知类别 ID；同批次同一 ID 必须对应同一释义（R19）" },
-                "misconception": { "type": ["string", "null"] }
+                "misconception": { "type": ["string", "null"] },
+                "distractor_mechanism": {
+                  "type": ["string", "null"],
+                  "enum": ["similar_presentation", "adjacent_concept", "direction_error", "timing_error",
+                           "population_mismatch", "mechanism_confusion", "overgeneralization",
+                           "outdated_guideline", null],
+                  "description": "HC-29 干扰项机制标签（schema 2.2 起 truth=false 的选项必填）：similar_presentation=表现相似，adjacent_concept=邻近概念，direction_error=方向颠倒，timing_error=时机/顺序错误，population_mismatch=人群不匹配，mechanism_confusion=机制混淆（含因果倒置），overgeneralization=以偏概全，outdated_guideline=旧指南/旧观念。正确选项（truth=true）留 null。"
+                }
               },
               "additionalProperties": false
             }

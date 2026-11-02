@@ -15,20 +15,28 @@ pipeline_config.py — pipeline.yaml 阈值「单一事实来源」加载器（�
     - 不可用时使用内置「最小解析器」，只解析顶层 `thresholds:` 段
       （扁平 `key: value` 与行内列表 `key: [a, b, c]` 两种形态）。
 
-主工作区说明（2026-10-13）：根目录当前没有 pipeline.yaml —— 全部走内置默认值，
-    行为与改造前完全一致。如需调参，在根目录创建 pipeline.yaml 并按
-    「扁平 key: 值」写法提供 thresholds: 段即可全局生效（遵守文件铁律，
-    本模块不自动创建该文件）。
+主工作区说明（2026-11-02 修订 · P1-S3）：
+    此前本模块指向「仓库根目录」的 pipeline.yaml，而真实配置文件一直在
+    `scripts/pipeline.yaml` —— 结果是 thresholds 段**从未被读取**，
+    所有阈值静默走内置默认值，与 gate_check.py 注释宣称的
+    「pipeline.yaml 阈值单一事实来源」不符（规则漂移）。
+    现改为读取与本模块同目录的 `scripts/pipeline.yaml`，并在该文件的
+    顶层 `thresholds:` 段写入与内置默认**完全一致**的取值，
+    因此本次修复对运行时行为零变化（见 reports/registry/config_snapshot_20261102.json）。
+    如需调参，直接改 `scripts/pipeline.yaml` 的 thresholds 段即可全局生效。
 """
 from __future__ import annotations
 
+import hashlib
+import json
 import os
 import re
+import sys
 from pathlib import Path
 
-# scripts/ 的上级目录 = 工作区根目录（pipeline.yaml 约定位置）
-WORKSPACE_ROOT = Path(__file__).resolve().parent.parent
-PIPELINE_YAML = WORKSPACE_ROOT / "pipeline.yaml"
+# scripts/ 目录内的 pipeline.yaml = 本文件同级（P1-S3 修订：原先指向仓库根，文件不存在）
+_SCRIPTS_DIR = Path(__file__).resolve().parent
+PIPELINE_YAML = _SCRIPTS_DIR / "pipeline.yaml"
 
 # ── 内置默认值（与改造前各脚本硬编码值保持一致；缺失时回退）──
 DEFAULTS: dict[str, object] = {
@@ -36,12 +44,21 @@ DEFAULTS: dict[str, object] = {
     "r2_ratio_warn": 1.5,        # R2 长度比 WARN 阈值
     "option_length_max": 20,     # R13 单选项字数上限（FAIL）
     "option_avg_max": 18,        # R13 选项平均字数上限（WARN）
+    "option_length_target": 18,  # 生成目标（提示词口径），与 option_length_max 不同：18 是「写多长」，20 是「超过即 FAIL」
     "bloom_deviation_max": 15,   # Bloom 单层偏差上限（%），超过则 BLOCKED
     "bloom_recompute_tolerance": 5,  # 门禁独立重算 Bloom 与质检报告自述值的允许偏差（%）
     "learning_value_min_source_exact": 0.95,   # HC-24: source_quote_status=exact 的最低占比
     "learning_value_min_quote_verified": 0.95,   # HC-24: exact 引文能在 teacher_anchor 逐字命中的最低占比
     "learning_value_max_misconception_conflicts": 0,  # HC-24: 同一 misconception_id 多种释义的允许数
     "learning_value_min_anchor_verified": 0.80,  # HC-24: anchor_status=verified 的最低占比
+    "retry_item_max": 2,         # P5-S1: 单题重试超过该次数 → 该题 QUARANTINE
+    "retry_batch_max": 3,        # P5-S1: 整批重试超过该次数 → 整批 QUARANTINE
+    # P2-S3 批次级规则 X1/X2/X6（默认 advisory，阈值与门禁状态解耦）
+    "x1_letter_min": 0.15,       # X1: 单个答案字母的最低占比
+    "x1_letter_max": 0.30,       # X1: 单个答案字母的最高占比
+    "x2_unique_longest_max": 0.30,   # X2: 正确项为「唯一最长项」的题目占比上限
+    "x6_misconception_reuse_min": 0.20,  # X6: 被复用的错误认知 ID 占干扰项的最低比例
+    "x5_reverse_max": 0.15,      # X5: 反选题（polarity=negative）占已标注题的占比上限
     "r8_legit_terms_default": [
         "妄想", "幻觉", "障碍", "减退", "缺乏", "低落", "焦虑", "恐惧",
         "躁狂", "抑郁", "木僵", "违拗", "缄默", "痴呆", "谵妄", "强迫",
@@ -191,9 +208,94 @@ def get_r8_legit_terms(subject: str | None = None) -> frozenset:
     return result
 
 
-if __name__ == "__main__":  # 便于人工核对配置是否被正确读取
-    import json
+def config_hash(force_reload: bool = False) -> str:
+    """生效阈值的稳定指纹（供 lineage 五元组 / gate 校验使用）。
 
-    print(f"pipeline.yaml: {PIPELINE_YAML} (exists={PIPELINE_YAML.exists()})")
-    print(json.dumps({k: v for k, v in load_thresholds().items()},
-                     ensure_ascii=False, indent=2, default=str))
+    对「合并后的生效配置」做 canonical JSON（排序键、UTF-8）sha256，
+    因此默认值与配置项顺序变化不会改变指纹，只有取值变化才会。
+    """
+    cfg = load_thresholds(force_reload)
+    payload = json.dumps(cfg, ensure_ascii=False, sort_keys=True, default=str)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def file_sha256(path: Path | str | None = None) -> str:
+    """配置文件本身的 sha256；文件缺失返回空串（显式可辨，不伪装成有效值）。"""
+    p = Path(path) if path else PIPELINE_YAML
+    if not p.exists():
+        return ""
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+
+def snapshot() -> dict:
+    """配置快照：路径、来源、生效值、双指纹。--print-config 与证据文件共用。"""
+    cfg = load_thresholds()
+    return {
+        "config_path": str(PIPELINE_YAML),
+        "config_exists": PIPELINE_YAML.exists(),
+        "config_file_sha256": file_sha256(),
+        "config_hash": config_hash(),
+        "source": "pipeline.yaml thresholds 段（缺失键回退内置默认）",
+        "effective": cfg,
+        "defaults": dict(DEFAULTS),
+        "overridden_keys": sorted(k for k, v in cfg.items() if k in DEFAULTS and v != DEFAULTS.get(k)),
+    }
+
+
+def main(argv: list[str] | None = None) -> int:
+    """CLI：--print-config 打印生效阈值与指纹；--check 只做可读性校验。"""
+    import argparse
+
+    ap = argparse.ArgumentParser(
+        description="pipeline.yaml 阈值加载器（P1-S3 配置单一事实来源）",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="示例:\n"
+               "  python scripts/pipeline_config.py --print-config\n"
+               "  python scripts/pipeline_config.py --print-config --json reports/registry/config_snapshot.json\n"
+               "  python scripts/pipeline_config.py --check\n")
+    ap.add_argument("--print-config", action="store_true", help="打印配置路径、生效阈值、config_hash")
+    ap.add_argument("--json", default="", help="把快照写入 JSON 文件")
+    ap.add_argument("--key", default="", help="只打印单个阈值")
+    ap.add_argument("--check", action="store_true", help="校验配置文件存在且可解析（不可解析返回 2）")
+    ap.add_argument("--quiet", action="store_true", help="不打印正文（配合 --json 使用）")
+    args = ap.parse_args(argv)
+
+    if args.check:
+        if not PIPELINE_YAML.exists():
+            print(f"[FAIL] 配置文件不存在: {PIPELINE_YAML}", file=sys.stderr)
+            return 2
+        try:
+            load_thresholds(force_reload=True)
+        except Exception as exc:  # pragma: no cover
+            print(f"[FAIL] 配置解析失败: {exc}", file=sys.stderr)
+            return 2
+        if not args.quiet:
+            print(f"[PASS] {PIPELINE_YAML} 可读，config_hash={config_hash()[:12]}")
+
+    if args.key:
+        if not args.quiet:
+            print(get_threshold(args.key))
+        return 0
+
+    if args.print_config or args.json or not (args.check or args.key):
+        snap = snapshot()
+        if not args.quiet:
+            print(f"配置文件: {snap['config_path']} (exists={snap['config_exists']})")
+            print(f"文件 sha256: {snap['config_file_sha256'][:16] or '(文件缺失)'}")
+            print(f"config_hash: {snap['config_hash']}")
+            if snap["overridden_keys"]:
+                print(f"⚠ 相对内置默认被覆盖的键: {', '.join(snap['overridden_keys'])}")
+            else:
+                print("相对内置默认无覆盖（生效值 == 内置默认）")
+            print(json.dumps(snap["effective"], ensure_ascii=False, indent=2, default=str))
+        if args.json:
+            out = Path(args.json)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(json.dumps(snap, ensure_ascii=False, indent=2, default=str), encoding="utf-8")
+            if not args.quiet:
+                print(f"📄 快照: {out}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

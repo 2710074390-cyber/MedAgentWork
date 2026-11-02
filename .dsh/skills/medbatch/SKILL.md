@@ -13,21 +13,22 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 ```
 启动(登记批次) → 阶段2 MedGen → 门禁A2 → 阶段3 MedQC → 门禁A3
 → 阶段4 MedFix → 门禁A4 → **门禁LV** → 阶段5 MedReview → 门禁A5*
-→ 阶段6 生图(豆包·HC-19，仅配图范围科目) → 门禁GATE-A6
 → 终审门禁 → 用户签收(APPROVED) → 归档
 ```
 
+> HC-19 插图管线（原阶段6 生图 + GATE-A5 配图项 + GATE-A6）已于 2026-11-02 整体下线，见 `SOUL.md § HC-19`。复习资料产出**纯文本**，不写占位符、不出配图清单。
+
 - **门禁LV（HC-24 · 2026-10-23 新增）**：`item_schema_version=2.0` 的新批次，MedFix 后必须跑 `python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --batch {batchID} --out reports/validate/learning_value_{batchID}_final.json`；`FAIL>0`、逐项覆盖<100%、错误认知覆盖<100%、`source_quote_exact_rate<95%`、`quote_verified_rate<95%`、`misconception_id_conflicts>0` 或 `anchor_verified_rate<80%` → **halt**，回退 MedGen/MedFix。已签收旧批次（无 `item_schema_version`）显式 SKIPPED，不追溯。
-- **门禁适用范围（2026-10-26 加固）**：批次可显式声明 `product_types`（`question_bank`/`prediction_paper`/`review_material`），缺失时按产物形状推断。A2/A3/A4 只对题库/押题卷生效；HC-9/10/11 只对复习资料生效；JSON 有效性只对题库/押题卷生效。`--stage auto` 按此矩阵路由：复习资料批次直达 final；v2 题库/押题卷批次在 A4 后自动插入 `learning_value`，不会被跳过。
+- **门禁适用范围（2026-10-26 加固）**：批次可显式声明 `product_types`（`question_bank`/`prediction_paper`/`review_material`），缺失时按产物形状推断。A2/A3/A4 只对题库/押题卷生效；PG-09/10/11 只对复习资料生效；JSON 有效性只对题库/押题卷生效。`--stage auto` 按此矩阵路由：复习资料批次直达 final；v2 题库/押题卷批次在 A4 后自动插入 `learning_value`，不会被跳过。
 
 - 门禁未通过 → **halt** → 回退对应 Agent 修复 → 重跑门禁（不可跳过，HC-12）
 - **HC-28 一次跑完（2026-11-01）**：只有**确定性门禁**（schema/JSON、R1–R13、D20=0、Bloom 偏差、ID 冲突、答案唯一性硬检查）FAIL 才回退；单题最多修 2 轮、整批最多 3 轮，仍失败则隔离该题并继续。**人类专属核验**（原卷/答案原页/版权授权/医学专家裁定/指南冲突）只写 `review_queue`，不触发 halt。`generation_status=DONE` 即生成完成；`release_status=PENDING_HUMAN_REVIEW` 不是失败。**可发布核心为空也不是停止条件**：仍交付完整待审稿 + 队列，标 `release_status=BLOCKED`（题目数量完整时 `generation_status` 仍为 DONE）。只有输入损坏、连续 2 次不可解析或工具故障才终止批次。
 - **交付必须带队列**：`review_queue.json` 由 `qbank.py export-md --review-queue-out` 生成；最终 MD 末尾附「人工复核队列」；签收前用户审查队列，签收只改变发布状态，不改变已完成的生成产物。
 - GoldenSet 签收只由用户手动执行，任何 Agent 禁止写入
-- *门禁A5：MedReview 产出主复习资料 MD + 配图清单，编排者核对占位符与清单一致（`python scripts/check_inline_images.py --md … --list …`，首次跑允许 0 张占位 = MD 无图）后进入阶段 6
+- *门禁A5：MedReview 产出主复习资料 MD（纯文本，HC-19 已下线不出配图清单）
 - **门禁A5 附加（HC-20/D0 · 2026-10-18，有教师重点/复习大纲输入的批次强制）**：跑 `python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD>`（数值/时间窗类硬事实缺失或重点条目缺锚点 → exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED，不视为通过）
 - **门禁A5 附加（HC-26 · 2026-10-27，所有复习资料批次强制）**：跑 `python scripts/check_review_detail.py --md <主复习资料 MD> --mode auto --profile <release_teacher_keypoint|release_teaching_plan>`（掌握级九槽位+案例/卡片达标/自测答案/模块八块/课程八块任一 FAIL → 回退 Agent 5 补写；报告 `reports/validate/review_detail_*.json|md`）
-- **阶段 6（HC-19）**：生图主责在豆包（Doubao 图片 Agent，调用 `medillustration` skill），DSH 不调用 image_gen；编排者打包交接（配图清单 + skill 要点 + 图谱索引 + 可复用图路径 + 科目目录规范），豆包回传 `images_webp/*.webp` 后运行 GATE-A6 并人工质检（解剖准确性抽查）
+- **阶段 6 生图（HC-19）已下线（2026-11-02）**：不再有豆包交接、配图清单与 GATE-A6。复习资料到门禁A5（含 HC-20/D0 与 HC-26 附加项）通过即进入终审。
 
 ## 1.5 全流程质量阶段（HC-25 · 2026-10-23 新增）
 
@@ -54,8 +55,7 @@ R4 运行复盘  python scripts/quality_gate.py --stage r4 --batch {batchID} --c
 | Agent 2 | `中间产物/{batchID}/` | `ALL_questions.json`、备考资料 .md |
 | Agent 3 | `质检报告/{batchID}/` | `A3_质检报告.json` |
 | Agent 4 | `最终产物/{batchID}/` | `ALL_questions_FIXED.json`、**`ALL_questions_FIXED.md`（最终交付格式，2026-08-20 起强制）**、`AGENT4_追溯日志.json`、`AGENT4_修改声明.md`、`escalations_for_human.md`、`review_queue.json`（HC-28） |
-| Agent 5 | `复习资料/{科目}教学计划版/` | `{科目}_主复习资料.md`、**`{科目}_配图清单.md`（HC-19 强制）** |
-| Agent 6 生图 | `复习资料/{科目}教学计划版/` | `raw/`（无字底图）、`annotate_configs/*.yaml`（标注）、`annotated/`（标注版 PNG）、`images_webp/*.webp`（MD 引用此目录，1600px q=82） |
+| Agent 5 | `复习资料/{科目}教学计划版/` | `{科目}_主复习资料.md`（纯文本；配图清单已随 HC-19 下线，不再产出） |
 | 金标准 | `GoldenSet/` | 仅用户手动移入 |
 | 归档 | `archive/{类别}/{batchID}/` | 签收后由 maintenance 归档 |
 
@@ -72,7 +72,6 @@ GATE-LV   python gate_check.py --batch {batchID} --stage learning_value
 MD导出    python scripts/qbank.py export-md --file 最终产物/{batchID}/ALL_questions_FIXED.json --review-queue-out 最终产物/{batchID}/review_queue.json   # 最终交付 MD + 复核队列（HC-28）
 真题配额  python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json   # HC-18 legacy（旧批次兼容）
 真题双族配额 python scripts/real_question_cli.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json --plan 中间产物/{batchID}/real_question_plan.json --keypoints {锚定清单} --out reports/validate/real_question_check_{batchID}.json   # HC-22 考研族+执医族 20%+20%（执医族=历年真题+CMExam 双源；新题库批次终审前执行）
-插图门禁  python scripts/check_inline_images.py --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md --img-dir 复习资料/{科目}教学计划版/images_webp --list 复习资料/{科目}教学计划版/{科目}_配图清单.md   # GATE-A6 / HC-19 插图占位一致性（配图范围科目，生图验收后与终审前各跑一次；exit 1 → 回退豆包补图）
 重点覆盖  python scripts/check_keypoint_coverage.py --keypoints 输入素材/{科目}/{科目}_教师重点_*.md --md 复习资料/{科目}教学计划版/{科目}_主复习资料.md   # HC-20/D0 教师重点原文锚定（有教师重点输入的批次，门禁A5 与终审前各跑一次；exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED）
 详细度    python scripts/check_review_detail.py --md 复习资料/{科目}教师重点版/{科目}教师重点版_主复习资料.md --mode auto --profile release_teacher_keypoint --json-out reports/validate/review_detail_{科目}.json --md-out reports/validate/review_detail_{科目}.md   # HC-26 九槽位/模块八块/课程八块（门禁A5 与终审前各跑一次；FAIL → 回退 Agent 5）
 终审      python gate_check.py --batch {batchID} --stage final
@@ -141,7 +140,7 @@ python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
 
 - `workflow_state.json`：批次状态/步骤/血缘/门禁结果。由编排者或 ingest/save/gate_check 更新，**子代理不得直接改写**
 - 批次关键事件（启动/门禁/halt/签收）记入 `memory/JOURNAL.jsonl`（UTF-8 JSONL，一行一条）
-- 新教训 → 更新 SOUL.md HC-* 表 + `memory/FACT.md`；完成项 → 更新 `docs/TODO.md`
+- 新教训 → 更新 SOUL.md HC-* 表 + `memory/FACT.md`；完成项 → 更新 `docs/archive/2026-11/TODO.md`
 
 ## 5. 常见故障处置
 
@@ -155,11 +154,8 @@ python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
 | 签收 | 用户确认 → 状态置 APPROVED → 用户手动移入 GoldenSet → 归档 |
 | RAG 余额不足(402) | 降级：`search_kb.py --no-rerank`（跳过付费 rerank，用 Stage1 余弦）；查询优先复用缓存结果（batch027 教训） |
 | 注册表报"文件不存在" | 已归档批次属预期：`qbank.py check` 已归档感知；如需修正路径用 `qbank.py rehome`（2026-08-20） |
-| 插图缺失/占位符与文件不一致 | GATE-A6 exit 1 → 读输出定位（C2 文件缺失 / C3 图号断号 / C5 清单不一致）→ 回退豆包补图或修正清单 → 重跑门禁（HC-19） |
 | 复习资料丢失教师重点细节（时间窗/分级界值被概括成"大概意思"） | 跑 `scripts/check_keypoint_coverage.py --keypoints <原文> --md <MR MD>` 定位缺失硬事实 → 回退 Agent 5：在对应考点补 `📌 重点原文（第X条）：…` 落点行并原样保留数值/并列/禁止结构（HC-20/D0，batch039 突发性聋教训）；确属非命题范围的细节 → 写入 `--allowlist` 并注明理由，禁默认忽略 |
 | 复习资料"读一遍仍不会"（缺诊断/处置/案例/自测答案） | 跑 `scripts/check_review_detail.py --md <MR MD> --mode auto --profile release_*` → 读 `cards[].missing_slots` 与 `modules[].missing_blocks` → 回退 Agent 5 按 D6 九槽位/模块八块补写；不得用加字数、重复段落或"详见教材"糊弄（HC-26） |
-| 豆包回传图片解剖错误 | 试点 2/2 首轮出错（肝画成肾、视神经放大图画成尿道样结构）→ 打回豆包重生成，提示词加强形态特征描述（如"楔形、右叶大于左叶"）；AI 图内中文标注一律禁用（乱码），改 annotate_image.py 程序叠加 |
-| 配图标注错位（文字/引线与结构位置不符） | 2026-09-30 实证（面神经腮腺标在鼻上、五支/溃疡/修复体全偏）→ ①先跑 `scripts/_analyze_annot_pos.py` 量化底图结构坐标（颜色掩膜网格热区/角度端点/xband），禁止目测估算；②重写 annotate YAML：label 一律带 `anchor` 引线指向实测坐标、文字放空白区、`output` 字段写 `annotated/xxx.png` 正确名；③侧脸图先 Read 底图判五官朝向（鼻/耳/腮腺相对位，腮腺=耳前神经主干根部）；④重标后逐张 Read 成品核验引线端点，再导出 webp → 重渲染 HTML（--embed-images，MD 先规范化无 BOM+LF）→ 重跑 check_inline_images exit 0 → 重新交付 |
 
 ## 6. 成本纪律（2026-08-20 · 余额不足事件后新增）
 

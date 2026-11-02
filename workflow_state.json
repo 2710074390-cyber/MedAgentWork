@@ -5667,7 +5667,17 @@
       "大四上/题库/急诊新版押题卷.pdf"
     ],
     "reconciled_at": "2026-11-01T18:41:22",
-    "reconcile_note": "已签收并上站（commit 3154575）；配额状态由 cancelled 修订为 deferred，候选保留在 real_question_plan.json 的 hc28_update/deferred_candidates。"
+    "reconcile_note": "已签收并上站（commit 3154575）；配额状态由 cancelled 修订为 deferred，候选保留在 real_question_plan.json 的 hc28_update/deferred_candidates。",
+    "post_signoff_fixes": [
+      {
+        "at": "2026-11-01T21:53:07",
+        "issue": "A3 病例题只显示子题，未显示母病例 shared_case",
+        "fix": "qbank.export_md / render_qbank_html 按 case_group 在组内首题前渲染 shared_case 一次",
+        "coverage": "25 道 A3，5 个病例组 A3-01～A3-05",
+        "site": "卡片改为 MD 在线阅读 + 打印 PDF；PDF 由用户用站内打印按钮人工导出",
+        "commit": "5df8ca7"
+      }
+    ]
   },
   "batch042": {
     "batch_id": "batch042",

@@ -11,7 +11,7 @@ MedAgentWork 产物摄入脚本 v1.0 — 自动化中转 + 血缘追溯
   agent4 → 最终产物/{batchID}/
   agent5 → 复习资料/
 """
-import sys, json, shutil, argparse, re
+import sys, json, os, shutil, argparse, re
 from pathlib import Path
 from datetime import datetime
 
@@ -95,51 +95,129 @@ SCHEMA_MAP = {
     'agent4': 'agent4_output.schema.json',
 }
 
+# P1-S4（2026-11-02）：schema 校验不得静默跳过。
+# strict 模式：缺 jsonschema 直接判 FAIL，拒绝放行；
+# degrade 模式（默认）：用零依赖兜底校验，但必须「显式告警 + 落盘证据」，
+#   绝不允许像旧实现那样 except Exception: return [] 假装校验通过。
+SCHEMA_STRICT_ENV = 'MEDAGENTWORK_SCHEMA_STRICT'
+_DEGRADED_LOG = BASE / 'reports' / 'validate' / 'schema_degraded.jsonl'
+
+
+def schema_strict() -> bool:
+    return os.environ.get(SCHEMA_STRICT_ENV, '').strip().lower() in ('1', 'true', 'yes', 'on')
+
+
+def _audit_degraded(stage, filepath, mode, detail):
+    """把降级校验落成证据（一行一条），让「没跑完整校验」可被审计发现。"""
+    try:
+        _DEGRADED_LOG.parent.mkdir(parents=True, exist_ok=True)
+        rec = {
+            'timestamp': datetime.now().isoformat(timespec='seconds'),
+            'stage': stage,
+            'file': str(filepath),
+            'mode': mode,
+            'detail': detail,
+        }
+        with open(_DEGRADED_LOG, 'a', encoding='utf-8') as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + '\n')
+    except Exception as e:  # 证据落盘失败不应阻断摄入，但必须喊出来
+        print(f"  ⚠️ 降级校验证据写入失败({e})，请手工记录：stage={stage} file={filepath}",
+              file=sys.stderr)
+
 
 def _fallback_checks(filepath, stage):
-    """jsonschema 缺失时的零依赖兜底。
+    """jsonschema 缺失时的零依赖兜底校验。
 
-    本机默认解释器没有 jsonschema，原先这里直接 return []，
-    等于「摄入即校验」静默失效。HC-27（concepts）不依赖任何库，
-    这里补上，至少保证 schema 2.1 的概念标注在摄入时能被拦下。
+    覆盖范围（刻意保持窄）：agent2 的数组顶层 + HC-27 概念标注 + 必填字段。
+    不实现 JSON Schema 的 $ref/oneOf 等高级关键字 —— 因此它不是等价的 schema 校验，
+    每次执行都会被 _audit_degraded 记录（P1-S4：可降级，但不可静默）。
     """
-    if stage != 'agent2':
-        return []
+    errs = []
     try:
-        sys.path.insert(0, str(BASE / 'scripts'))
-        import check_source_concepts as csc
         data = json.loads(Path(filepath).read_text(encoding='utf-8'))
-        if not isinstance(data, list):
-            return []
-        errs = []
-        for q in data:
-            if str(q.get('schema_version') or '') != '2.1':
+    except Exception as e:
+        return [f'schema[{stage}]: 兜底校验无法解析 JSON: {e}']
+    if not isinstance(data, list):
+        return [f'schema[{stage}]: 顶层必须是题目数组，实际 {type(data).__name__}']
+
+    if stage == 'agent2':
+        required = ('id', 'type')
+        for i, q in enumerate(data):
+            if not isinstance(q, dict):
+                errs.append(f'schema[agent2]: [{i}] 条目必须是对象')
                 continue
-            fails, _ = csc.check_question(q)
-            errs += [f'schema[agent2]: {x}' for x in fails]
-        return errs[:20]
-    except Exception:
-        return []
+            missing = [k for k in required if q.get(k) in (None, '')]
+            if missing:
+                errs.append(f'schema[agent2]: [{i}] 缺少必填字段 {missing}')
+        # HC-27 概念标注（v2.1 起必填，零依赖可判定）
+        try:
+            sys.path.insert(0, str(BASE / 'scripts'))
+            import check_source_concepts as csc
+            for q in data:
+                if not isinstance(q, dict):
+                    continue
+                if str(q.get('schema_version') or '') != '2.1':
+                    continue
+                fails, _ = csc.check_question(q)
+                errs += [f'schema[agent2]: {x}' for x in fails]
+        except Exception as e:
+            errs.append(f'schema[agent2]: 兜底校验(concepts)不可用: {e}')
+    return errs[:20]
 
 
 def validate_schema(filepath, stage):
-    """契约 schema 校验（jsonschema）。schema 缺失/解析失败/库不可用时静默跳过。"""
-    schema_file = BASE / 'schemas' / SCHEMA_MAP.get(stage, '')
-    if not schema_file.exists():
+    """契约 schema 校验。
+
+    返回错误列表（空 = 通过）。语义边界（P1-S4 起固定）：
+      1. schema 文件缺失       → 显式 SKIP，stderr 告警 + 证据落盘，**不视为通过**
+      2. schema/数据解析失败   → 返回错误（FAIL），不再吞成 []
+      3. jsonschema 不可用     → strict: FAIL；degrade: 零依赖兜底 + 显式告警 + 证据
+      4. 校验器自身异常        → 返回错误（FAIL）
+    """
+    schema_name = SCHEMA_MAP.get(stage, '')
+    if not schema_name:
+        print(f"  ⚠️ schema[{stage}]: 该阶段无契约文件（SKIP，不作为通过证据）", file=sys.stderr)
+        _audit_degraded(stage, filepath, 'skip_no_contract', 'stage 无 SCHEMA_MAP 条目')
         return []
+    schema_file = BASE / 'schemas' / schema_name
+    if not schema_file.exists():
+        print(f"  ⚠️ schema[{stage}]: 契约文件缺失 {schema_file}（SKIP，不作为通过证据）",
+              file=sys.stderr)
+        _audit_degraded(stage, filepath, 'skip_missing_schema', str(schema_file))
+        return []
+
     try:
-        import jsonschema
         with open(schema_file, 'r', encoding='utf-8') as f:
             schema = json.load(f)
+    except Exception as e:
+        return [f'schema[{stage}]: 契约文件解析失败（{schema_name}）: {e}']
+
+    try:
         with open(filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
+    except Exception as e:
+        return [f'schema[{stage}]: 待校验数据无法解析: {e}']
+
+    try:
+        import jsonschema
+    except ImportError:
+        if schema_strict():
+            return [f'schema[{stage}]: 缺少 jsonschema 依赖，strict 模式拒绝放行'
+                    f'（装 jsonschema 或设 {SCHEMA_STRICT_ENV}=0 降级）']
+        errs = _fallback_checks(filepath, stage)
+        print(f"  ⚠️ schema[{stage}]: 缺 jsonschema，已降级为零依赖兜底校验"
+              f"（{len(errs)} 个问题）；设 {SCHEMA_STRICT_ENV}=1 可强制 FAIL",
+              file=sys.stderr)
+        _audit_degraded(stage, filepath, 'degraded_fallback', f'errors={len(errs)}')
+        return errs
+
+    try:
         validator = jsonschema.Draft7Validator(schema)
         errors = sorted(validator.iter_errors(data), key=lambda e: list(e.path))
-        return [f'schema[{stage}]: {"/".join(map(str, e.path)) or "$"}: {e.message}' for e in errors[:20]]
-    except ImportError:
-        return _fallback_checks(filepath, stage)
-    except Exception:
-        return []
+        return [f'schema[{stage}]: {"/".join(map(str, e.path)) or "$"}: {e.message}'
+                for e in errors[:20]]
+    except Exception as e:
+        return [f'schema[{stage}]: 校验器执行失败: {e}']
 
 
 def load_state():
@@ -164,12 +242,67 @@ def save_state(state):
     print(f"  📄 workflow_state.json 已更新")
 
 
-def add_lineage(state, batch_id, stage, filepath, file_md5):
-    """添加血缘记录（统一模块）；保留 Prompt 版本内容推断"""
+STAGE_PROMPT = {
+    'agent2': 'Prompt版本/MedGen_current_prompt.md',
+    'agent3': 'Prompt版本/MedQC_current_prompt.md',
+    'agent4': 'Prompt版本/MedFix_current_prompt.md',
+    'agent5': 'Prompt版本/Agent5_MedReview_Prompt.md',
+}
+
+
+def _sha256_file(path):
+    import hashlib
+    h = hashlib.sha256()
+    with open(path, 'rb') as f:
+        for chunk in iter(lambda: f.read(1 << 20), b''):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def lineage_five_tuple(stage, input_path, artifact_path):
+    """计算版本五元组（P1-S5）。
+
+    prompt_sha256   —— 该阶段实际所用提示词文件的内容指纹（文件缺失则为空，由 gate 判定）
+    config_hash     —— 当前生效阈值指纹（pipeline_config.config_hash）
+    input_hash      —— 摄入源文件 sha256
+    artifact_sha256 —— 落盘产物 sha256（未移动时与 input 相同）
+    model_id        —— 由 --model 传入；strict 批次要求不得为 unknown
+    """
+    prompt_rel = STAGE_PROMPT.get(stage, '')
+    prompt_path = BASE / prompt_rel if prompt_rel else None
+    prompt_sha = ''
+    if prompt_path and prompt_path.exists():
+        try:
+            prompt_sha = _sha256_file(prompt_path)
+        except Exception as e:
+            print(f"  ⚠️ 提示词指纹计算失败({e})，prompt_sha256 留空")
+    try:
+        import pipeline_config as pc
+        cfg_hash = pc.config_hash()
+    except Exception as e:
+        print(f"  ⚠️ config_hash 计算失败({e})，留空")
+        cfg_hash = ''
+    try:
+        input_hash = _sha256_file(input_path)
+    except Exception:
+        input_hash = ''
+    try:
+        artifact_sha = _sha256_file(artifact_path)
+    except Exception:
+        artifact_sha = input_hash
+    return {'prompt_sha256': prompt_sha, 'config_hash': cfg_hash,
+            'input_hash': input_hash, 'artifact_sha256': artifact_sha}
+
+
+def add_lineage(state, batch_id, stage, filepath, file_md5, source=None, model='unknown'):
+    """添加血缘记录（统一模块）：模型/Prompt 版本 + 版本五元组。
+
+    P1-S5：batch047+ 走 strict —— 五元组缺项直接抛 LineageIncomplete，
+    逼操作者显式声明 --model 与提示词版本，而不是让 unknown 一路流到交付。
+    """
     if batch_id not in state:
         print(f"  ⚠️ 批次 {batch_id} 在 workflow_state.json 中不存在，创建新条目")
 
-    model = 'unknown'
     prompt_version = 'unknown'
 
     # 尝试从内容中提取 Prompt 版本标记
@@ -182,8 +315,11 @@ def add_lineage(state, batch_id, stage, filepath, file_md5):
     except Exception:
         pass
 
+    five = lineage_five_tuple(stage, source or filepath, filepath)
     return ws.add_lineage(state, batch_id, stage, filepath, file_md5,
-                          model=model, prompt_version=prompt_version)
+                          model=model, prompt_version=prompt_version,
+                          model_id=model if model != 'unknown' else '',
+                          strict=ws.lineage_required(batch_id), **five)
 
 
 def run_precheck(filepath, batch_id):
@@ -334,11 +470,20 @@ def main():
 
     # 7. 更新 workflow_state.json
     state = load_state()
-    batch = add_lineage(state, args.batch, args.stage, dest, file_md5)
+    try:
+        batch = add_lineage(state, args.batch, args.stage, dest, file_md5,
+                            model=args.model)
+    except ws.LineageIncomplete as e:
+        print(f"\n  🛑 血缘五元组不完整，已拒绝写入状态：")
+        print(f"     {e}")
+        print(f"     修正：重跑并显式指定 --model <模型ID>")
+        print(f"     历史批次（≤batch{ws.LINEAGE_REQUIRED_SINCE - 1:03d}）不受此约束。")
+        sys.exit(3)
 
     # 补充模型和 Prompt 版本（如果用户指定）
     if args.model != 'unknown':
         batch['lineage'][-1]['agent_model'] = args.model
+        batch['lineage'][-1]['model_id'] = args.model
     if args.prompt_version != 'unknown':
         batch['lineage'][-1]['prompt_version'] = args.prompt_version
     if args.model != 'unknown' or args.prompt_version != 'unknown':

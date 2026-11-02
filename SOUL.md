@@ -49,8 +49,8 @@
 | 规则 | 负责 Agent | 内容 |
 |------|-----------|------|
 | **HC-5** | Agent 1 | 外来素材数值交叉验证：合并外部题库时，数值答案 >=10% 抽查核对教材 |
-| **HC-6** | Agent 1 | 干扰项区分度审查：数值型干扰项与正确值差距不可过大（<=5倍）。**所有批次均触发**：外来素材全量，Agent 2 自产≥10% |
-| **HC-7** | Agent 1 | 命题双向细目表：知识x认知层次矩阵，目标比例 30/40/25/5 |
+| **HC-6.A1** | Agent 1 | 干扰项区分度审查：数值型干扰项与正确值差距不可过大（<=5倍）。**所有批次均触发**：外来素材全量，Agent 2 自产≥10% |
+| **HC-7.A1** | Agent 1 | 命题双向细目表：知识x认知层次矩阵，目标比例 30/40/25/5 |
 | **HC-8** | Agent 1 | GoldenSet交叉验证：仅在「外来素材合并」时触发，>=5% 题目比对术语/数值一致性。正常Agent 2 产物跳过——Agent 3 D5/D13/D14 已覆盖 |
 | **D15** | Agent 3 | 外来素材事实验证：逐值核验非Agent2生产的内容 |
 | **D16** | Agent 3 | 认知层级覆盖率：Bloom分布偏差>10%标记 |
@@ -60,11 +60,11 @@
 | **D20** | Agent 3 | B1型题专项检查：共用选项笼统度/答案位置集中度/干扰项有效性/子题覆盖度（batch005 ISSUE-007） |
 | **抽查门** | Agent 3 | 质检前抽查：外来素材数值10%/干扰项5%/溯源10%；Agent 2 自产干扰项≥10%/溯源10% |
 | **D11强化** | Agent 3 | 干扰项逐选项评分，plausibility<0.3标记should_fix |
-| **HC-6** | Agent 4 | 独立质量审查：>=5%选项干扰项独立评估 |
-| **HC-7** | Agent 4 | 修改后全局一致性检查：扫描残留旧值 |
-| **HC-7(Gen)** | Agent 2 | NBME 8项选项设计硬约束：禁止绝对词/1.5x长度/语法一致/数值排序/词重复防护/收敛防护/模糊术语控制/B1型共用选项专项 |
+| **HC-6.A4** | Agent 4 | 独立质量审查：>=5%选项干扰项独立评估 |
+| **HC-7.A4** | Agent 4 | 修改后全局一致性检查：扫描残留旧值 |
+| **HC-7.GEN** | Agent 2 | NBME 8项选项设计硬约束：禁止绝对词/1.5x长度/语法一致/数值排序/词重复防护/收敛防护/模糊术语控制/B1型共用选项专项 |
 | **产出门禁** | Agent 2 | 生成题库后必须运行 `python validate_options.py --batch {batchID}` 自检。R2>2.0 或 R3/R4 fail>0 时不输出，必须修正后再交付（batch006教训：ESC升级导致二次回调+20min） |
-| **HC-6(修复)** | Agent 4 | 禁止用"(相关表现)""(相关类型)"等无意义后缀凑长度。干扰项修复必须增加实质性区分信息（如具体特征/机制/时间范围）（batch006教训） |
+| **HC-6.A4FIX** | Agent 4 | 禁止用"(相关表现)""(相关类型)"等无意义后缀凑长度。干扰项修复必须增加实质性区分信息（如具体特征/机制/时间范围）（batch006教训） |
 | **D20门禁** | Agent 3 | B1型题D20评分=0时，gate_decision必须为BLOCKED（非PASS_WITH_FIXES）。B1设计完全不合格时不可放行 |
 | **JSON输出** | Agent 4 | 产出JSON文件必须为纯JSON数组，禁止添加YAML前置元数据（`---`块）。修改声明单独写入`AGENT4_修改声明.md`。输出后须`json.load()`验证（batch006教训） |
 | **R7截断检测** | validate | `validate_options.py` R7规则：检测以句号结尾的短选项（<8字）、".."双点截断残留、1-2字残片。FAIL时阻塞保存（batch006 272截断教训） |
@@ -82,7 +82,7 @@
 | **R9 升级** | validate | `validate_options.py` R9 v2：临床参数/生理阈值/CPR急救类缺单位 → FAIL（非WARN）。新增15个检验参数检测（CRP/ESR/CK-MB/cTnI/血气等）。batch014事实错误升级驱动 |
 | **HC-15 Bloom实时采样** | Agent 1 | Agent 2 生成过程中每50题运行 `python bloom_sampler.py --batch {batchID}`。偏差>15% → halt → Agent 1 注入配额修正指令（禁止A1、强制A2/A3/X型）。Agent 1 在每次 GATE-A2 转换前运行，非仅终检 |
 | **HC-16 押题增强** | Agent 1 | 启动新批次时运行 `python frequency_analyzer.py --golden GoldenSet/ --rag-index --subject {code}`。高频考点配额×1.5（增加变体题），零频考点配额×0.5。注入数据写入 Agent 2 调用指令 |
-| **HC-18 考研真题配额** | Agent 1+2+3+4 | 每批题库约 1/5（目标 20%，合格带 15%–25%）为考研原题（GoldenSet 真题引用/改编）。Agent 1：批次启动跑 `scripts/kaoyan_picker.py pick` 注入真题候选与配额、终审跑 `check` 验证占比；Agent 2：按 HC-18 引用/改编并标注 `kaoyan_origin`+`[源:考研真题 GS-XXX]`+解析来源句（知识点/答案/数值不可改动）；Agent 3：D21 对引用题 100% 比对 GS 源（答案冲突 must_escalate，不得改真题答案）；Agent 4：HC-4b 真题答案保护（KAOYAN_ANSWER_CONFLICT 升级告警）。无真题覆盖章节以原创补齐并如实标注 |
+| **HC-18（配额·已废止，由 HC-22 接管）** | Agent 1+2+3+4 | 每批题库约 1/5（目标 20%，合格带 15%–25%）为考研原题（GoldenSet 真题引用/改编）。Agent 1：批次启动跑 `scripts/kaoyan_picker.py pick` 注入真题候选与配额、终审跑 `check` 验证占比；Agent 2：按 HC-18 引用/改编并标注 `kaoyan_origin`+`[源:考研真题 GS-XXX]`+解析来源句（知识点/答案/数值不可改动）；Agent 3：D21 对引用题 100% 比对 GS 源（答案冲突 must_escalate，不得改真题答案）；Agent 4：HC-4b 真题答案保护（KAOYAN_ANSWER_CONFLICT 升级告警）。无真题覆盖章节以原创补齐并如实标注 |
 
 ## 工具速查（v2026-06-26 新增 · 2026-08-13 补 workflow_state）
 | 工具 | 用途 | 调用方式 |
@@ -242,6 +242,19 @@
 - **机械化门禁**：`python scripts/check_review_detail.py --md <主复习资料 MD> --mode auto --profile release_teacher_keypoint`（正式发布必须 PASS；`release_teaching_plan` 用同脚本）。报告落 `reports/validate/review_detail_*.json|md`，并接入 `quality_gate.py` 的 R2/R3 `review_detail` 检查。
 - **不追溯**：旧产物冻结；新批次/新版本必须过 V18 自检。标准全文与证据见 `docs/复习资料详细度标准.md`。
 
+## HC-27 概念标注强制（2026-10-27 新增 · Agent 2/3/4 共同主责 · schema 2.1 起必填）
+
+> **回写说明（P1-S6 · 2026-11-02）**：本条此前只存在于 `Prompt版本/MedGen_current_prompt.md`
+> 与 `scripts/check_source_concepts.py`，SOUL 里没有定义——新 Agent 读 SOUL 不知道有这条约束。
+> 现补入，与提示词对齐。
+
+- **字段**：每题 `concepts: [{role: primary|differential|related, keypoint: "第N条", title, evidence}]`。
+- **硬性**：恰好 1 条 `primary`，其 `keypoint` 必须等于该题 `keypoint_ref`；A2/A3/A4/X 型 ≥2 条；`evidence` ≥8 字。
+- **生成期给，不做事后推断**：事后推断在「一题一锚点」的题库上封顶 5%（急诊批次实测 4.9%）——
+  多标签是生成期属性，补不出来。
+- **门禁**：`python scripts/check_source_concepts.py --file <JSON> --batch <batch>`，`FAIL>0` 不得交付。
+- **不追溯**：schema < 2.1 的历史产物不改写。
+
 ## HC-28 一次跑完与人工复核队列分离（2026-11-01 新增 · MedMaster/MedGen/MedQC/MedFix 共同主责 · 不可违反）
 
 > 驱动缺陷（batch046 实证）：新管线把「原卷真伪、答案原页、版权授权、医学专家裁定」等人类专属核验写成生成的前置条件，模型无法完成 → 反复输出「待核验」、整批 BLOCKED，72 题原创 + 28 条候选全部停在待审稿。根因不是模型能力不足，而是**把「不可发布」误当成「不可完成」**，且提示词仍保留 Cherry Studio 时代的「回复确认 / 输入确认」交互门。
@@ -259,24 +272,34 @@
 - **交互门废弃**：DSH/subagent 模式下，MedGen HC-6 回显、MedQC Step 5「输入确认」、MedFix/MedMaster「等待用户确认」一律视为旧 Cherry Studio 遗留，**不得实际等待**；批次启动时由用户一次性确认范围，之后连续执行到交付。
 - **机制依据**：MAST（Cemri et al., 2025, arXiv:2503.13657）把「不知道终止条件」「验证失败」列为高频失败模式；Anthropic《Building effective agents》要求 evaluator-optimizer 有明确终止条件；Guardrails AI 的 `on_fail` 提供 fix/reask/filter 等非中断动作；OR-Bench（Cui et al., 2024, arXiv:2405.20947）证明过度拒答是独立失败模式；Self-Refine（Madaan et al., 2023）要求最大轮次与停止指标。结论：**不确定应作为数据向下游传递，不应作为控制流中断**。
 
-## 插图生成分工（2026-09-07 固化 · 详见 .dsh/skills/medillustration/）
+## HC-19 插图管线 —— 已整体下线（2026-11-02 人工裁定，编号保留不复用）
 
-> 解决：纯文本复习资料规模化增加写实插图时的角色分工、工具选型和质量门禁。
+> **状态：RETIRED / 禁止启用。** 用户 2026-11-02 明确「以后不需要插图相关」。原 HC-19 插图契约
+> （生图阶段 6 / 配图清单 / GATE-A5 配图项 / GATE-A6 插图门禁 / `medillustration` skill / 豆包交接）
+> 全部退役，与 `medagentwork-skill/CHANGELOG.md` 所记「插图管线 v2.2 已整体移除」口径一致——
+> 此前的「两者谁为准」矛盾由此关闭，**以本条为准**。
 
-| 职责 | 负责方 | 说明 |
-|------|--------|------|
-| **文字内容**（复习资料 MD / 题库 / 解析） | DSH / Trae Work / 其他内容 Agent | 按现有 5-Agent 流程生成 |
-| **图片内容**（写实底图 / 质检 / 中文标注 / 压缩 / 嵌入） | Doubao 图片 Agent | 调用 `.dsh/skills/medillustration/` |
+- **禁止**：任何新批次在复习资料 / 题库 / 解析中写入插图占位符 `![图N：…](images_webp/…)`、输出 `*_配图清单.md`、创建 `images_webp/`、调用 `annotate_image` 标注、做图谱选图或 AI 生图交接。涉及配图的历史提示词条款、门禁项、skill 均已同步移除。
+- **不追溯**：已交付/已签收历史产物中的图片与配图清单原样保留（历史产物不可篡改），不回改、不删除、不作为新批次参照。
+- **保留兼容**：`render_review.py` 对既有 `![]()` 语法的渲染支持不变（老 MD 仍可正常导出），这只是渲染兼容，不是插图能力。
+- **留档位置**：脚本与配置 → `archive/retired/illustration/`；skill 全文 → `archive/retired_skills/medillustration/`。
+- **编号纪律**：HC-19 号位保留，不回收给新条款，避免历史文档引用歧义。
 
-- **交接方式**：内容 Agent 在 MD 中写 `![图N：图注](images_webp/xxx.webp)` 占位，图片 Agent 按占位生成对应图片文件，互不越界。
-- **底图来源决策**：解剖结构类（骨骼/肌肉/器官/神经/眼球）优先用《人体解剖学彩色图谱》`images/`（148 张，出版级准确，自带中英标注）；机制/病理/进展类（无现成图）用 AI 生成无字底图。
-  - **图谱图片索引**：`知识库素材/图谱图片索引/image_index.json` + `image_index.md`（148张全量：图号·中英图名·页码·分辨率·系统分类；109个图号有图，神经系统115/视器12/前庭蜗器12/运动系统6/其他3；76%长边≥1600px）
-- **标注工具**：`scripts/annotate_image.py`，YAML 驱动，box 千分比坐标。
-  - `label` 模式（**默认**）：深色文字 + 白色描边，无背景块，**不遮挡图片**——干净底图/图谱图一律用此模式。
-  - `overlay` 模式：白底覆盖块 + 文字——**仅用于**修复 AI 图内乱码英文标注。
-- **质检硬门禁**：AI 生成底图必须人工核对解剖准确性（实证：AI 写实解剖 >99% 含虚构解剖，试点 2/2 首轮出错）；发现错误重生成，不得带病标注。
-- **标注错位铁律（2026-09-30 教训）**：标注坐标禁止目测估算——写 YAML 前先跑 `scripts/_analyze_annot_pos.py` 量化结构坐标；label 一律带 `anchor` 引线指向实测坐标；标后逐张 Read 成品核验引线端点；侧脸图先判五官朝向（神经最远端≠腮腺，腮腺=耳前神经主干根部）；专业形态序列（修复体种类谱等 ≥5 形态）AI 两版失败即改判通道③确定性渲染。
-- **压缩部署**：PNG → WebP（1600px 宽，q=82），单张约 80-150KB；`render_review.py` 已支持 `![]()` 图片语法。
+## HC-29 干扰项生成协议（2026-11-02 新增 · Agent 2 主责 · schema 2.2 起必填）
+
+> **回写说明（P1-S6 · 2026-11-02）**：本条此前只写在提示词里（`### HC-29`），SOUL 无定义。
+> 现补入；提示词里的完整操作细则（top-3 鉴别表、机制枚举释义）仍以提示词为准，本条只钉义务与门禁。
+
+- **先列鉴别再写选项**：`competing_dx` 按可能性降序列 3 个竞争诊断，第 1 条必须用作干扰项①；
+  列不出 3 个说明这题只考记忆（按 L1 处理，或补条件重写题干）。
+- **每个干扰项带机制标签**：`learning_value.per_option[].distractor_mechanism` ∈
+  {`similar_presentation`, `adjacent_concept`, `direction_error`, `timing_error`,
+  `population_mismatch`, `mechanism_confusion`, `overgeneralization`, `outdated_guideline`}；正确项留 `null`。
+- **错误认知必须可复用**：同一 `misconception_id` 只能有一种释义（R19）；同一错误认知跨题必须复用同 ID。
+  历史上 645/645 个 ID 全不重复 —— 标签退化为题内私有，沉淀不出任何概念（X6 实测 0%）。
+- **反选题另有三条**（P2-S4 追加）：整批占比 ≤15%（X5）；`polarity` 如实标注；4 个为真干扰项逐项 `source_anchor`。
+  反选题的干扰项是**正确说法**，要求的是「这句对的话出自哪段」，不是 `misconception_id`。
+- **门禁**：`python scripts/validate/rules_batch.py --file <JSON>`（S-STRUCT 必须 PASS）+ `check_learning_value.py`（R15/R19）。
 
 ## Boundaries
 

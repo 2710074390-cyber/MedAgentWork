@@ -600,35 +600,29 @@ def check_scorecard(args, profile: dict, mode: str) -> dict:
     )
 
 
-def check_review_detail(args, profile: dict, mode: str) -> dict:
-    """HC-26 复习资料详细度：九槽位/模块块/自测答案/课程安排八块。"""
-    md = Path(args.review)
-    if not md.exists():
-        if "review_material" in infer_batch_products(args.batch):
-            return check_item("r2.review_detail", "FAIL", f"复习资料缺失：{args.review}")
-        return check_item("r2.review_detail", "SKIP",
-                          f"批次无复习资料产物，详细度检查不适用：{args.review}", required=False)
+def _review_detail_result(md: Path, profile_name: str, mode: str, check_id: str) -> dict:
+    """运行 HC-26 详细度脚本并归一为 check_item。"""
     with tempfile.TemporaryDirectory() as td:
         fresh = Path(td) / "review_detail.json"
         cmd = [sys.executable, "scripts/check_review_detail.py",
-               "--md", str(md), "--mode", "auto", "--profile", args.profile,
+               "--md", str(md), "--mode", "auto", "--profile", profile_name,
                "--json-out", str(fresh), "--quiet"]
         if mode == "advisory":
             cmd.append("--advisory")
         r = run_cmd(cmd)
         if r["returncode"] not in (0, 1):
-            return check_item("r2.review_detail", "FAIL", "详细度检查执行失败", details=r)
+            return check_item(check_id, "FAIL", "详细度检查执行失败", details=r)
         try:
             data = read_json(fresh)
         except Exception as exc:
-            return check_item("r2.review_detail", "FAIL",
+            return check_item(check_id, "FAIL",
                               f"详细度报告解析失败：{exc}", details=r)
     s = data.get("summary", {})
     status = str(s.get("status") or "FAIL")
     if r["returncode"] == 1 and status != "FAIL":
-        return check_item("r2.review_detail", "FAIL", "详细度检查退出码与报告不一致", details=r)
+        return check_item(check_id, "FAIL", "详细度检查退出码与报告不一致", details=r)
     if status == "SKIP":
-        return check_item("r2.review_detail", "FAIL",
+        return check_item(check_id, "FAIL",
                           str((data.get("warnings") or ["未解析到考点卡"])[0]),
                           details={"summary": s, "command": r})
     issues = list(data.get("blocking") or [])
@@ -640,10 +634,31 @@ def check_review_detail(args, profile: dict, mode: str) -> dict:
         f"卡片达标 {s.get('card_pass_ratio')}"
     )
     return check_item(
-        "r2.review_detail", status, reason,
+        check_id, status, reason,
         details={"mode": data.get("mode"), "summary": s,
                  "command": r},
     )
+
+
+def check_review_detail(args, profile: dict, mode: str) -> dict:
+    """HC-26 复习资料详细度：九槽位/模块块/自测答案/课程安排八块。"""
+    md = Path(args.review)
+    if not md.exists():
+        if "review_material" in infer_batch_products(args.batch):
+            return check_item("r2.review_detail", "FAIL", f"复习资料缺失：{args.review}")
+        return check_item("r2.review_detail", "SKIP",
+                          f"批次无复习资料产物，详细度检查不适用：{args.review}", required=False)
+    return _review_detail_result(md, args.profile, mode, "r2.review_detail")
+
+
+def check_review_detail_obsidian(args, profile: dict, mode: str) -> dict:
+    """HC-26 对 Obsidian 交付件复检：用户实际打开的那份也必须达标。"""
+    subject = _batch_subject(args.batch)
+    path = BASE / "Obsidian产物" / "教师重点蓝图版" / f"{subject}_教师重点蓝图版_主复习资料.md"
+    if not subject or not path.exists():
+        return check_item("r2.review_detail_obsidian", "SKIP",
+                          f"无 Obsidian 教师重点交付件：{path}", required=False)
+    return _review_detail_result(path, args.profile, mode, "r2.review_detail_obsidian")
 
 
 def check_source_concepts(args) -> dict:
@@ -858,15 +873,6 @@ def check_adaptive_manual_review(args) -> dict:
                       details={"path": str(evidence_path), "reviewer": evidence["reviewer"]})
 
 
-def check_inline_images(args) -> dict:
-    md = Path(args.review)
-    if not md.exists():
-        return check_item("r3.inline_images", "SKIP", f"复习资料缺失，跳过：{md}", required=False)
-    r = run_cmd([sys.executable, "scripts/check_inline_images.py", "--md", str(md)])
-    return check_item("r3.inline_images", "PASS" if r["returncode"] == 0 else "FAIL",
-                      "插图引用 " + ("PASS" if r["returncode"] == 0 else "FAIL"), details=r)
-
-
 def check_tests(args) -> dict:
     r = run_cmd([sys.executable, "scripts/run_tests.py"], timeout=600)
     return check_item("r2.tests", "PASS" if r["returncode"] == 0 else "FAIL",
@@ -895,6 +901,8 @@ def build_stage_checks(args, profile: dict, mode: str) -> list[dict]:
         checks.append(check_scorecard(args, profile, mode))
     if "review_detail" in req:
         checks.append(check_review_detail(args, profile, mode))
+        if "review_material" in infer_batch_products(args.batch):
+            checks.append(check_review_detail_obsidian(args, profile, mode))
     if ("question_bank" in infer_batch_products(args.batch)
             and ("source_concepts" in req or (stage == "r3" and args.profile.startswith("release_")))):
         checks.append(check_source_concepts(args))
@@ -915,8 +923,6 @@ def build_stage_checks(args, profile: dict, mode: str) -> list[dict]:
             checks.append(check_site_links(args))
         if "keypoint_coverage" in req:
             checks.append(check_keypoint_coverage(args))
-        if "inline_images" in req:
-            checks.append(check_inline_images(args))
 
     if args.with_tests:
         checks.append(check_tests(args))

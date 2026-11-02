@@ -9,7 +9,7 @@
 1. `references/runbook.md` — 批次生命周期、门禁命令、目录规范
 2. `references/hard-constraints.md` — 共享硬约束 HC-* 与门禁规则
 3. `references/prompts/MedMaster_current_prompt.md` — 你的完整角色提示词（HC-0~HC-11、HC-18 配额编排、工作流状态机、调用指令模板全部生效）
-4. 工作区 `docs/TODO.md` 与 `memory/FACT.md`（若存在）— 当前待办与历史教训
+4. 工作区 `docs/archive/2026-11/TODO.md` 与 `memory/FACT.md`（若存在）— 当前待办与历史教训
 
 ## 编排规则
 

@@ -137,11 +137,10 @@
       }
     },
     "release_teaching_plan": {
-      "description": "教学计划版正式发布：深度/案例/配图/形态门禁。",
+      "description": "教学计划版正式发布：深度/案例/形态门禁（配图门禁已随 HC-19 于 2026-11-02 移除）。",
       "required_checks": [
         "keypoint_coverage",
         "produce_rules",
-        "inline_images",
         "scorecard",
         "review_detail"
       ],
@@ -177,5 +176,13 @@
         "callout_density_min": 4.0
       }
     }
-  }
+  },
+  "severity_actions": {
+    "FAIL": "REPAIR",
+    "WARN": "WARN",
+    "INFO": "PASS",
+    "SKIPPED": "HUMAN"
+  },
+  "action_fallback": "HALT",
+  "action_note": "P6-S4 预置（阶段 0 只做审计，不接线）：severity → 动作。未知/缺失 severity 一律落到 action_fallback=HALT，禁止隐式放行。"
 }

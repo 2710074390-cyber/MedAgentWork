@@ -68,7 +68,7 @@ python {SKILL}/scripts/fact_check.py golden --file 中间产物/{batchID}/ALL_qu
 
 - `workflow_state.json`：批次状态/步骤/血缘/门禁结果。由编排者或 ingest/save/gate_check 更新，**子代理不得直接改写**（HC-17，统一走 `workflow_state.py`）
 - 批次关键事件（启动/门禁/halt/签收）建议记入工作区 `memory/JOURNAL.jsonl`（UTF-8 JSONL，一行一条）
-- 新教训 → 更新 `references/hard-constraints.md`；完成项 → 更新工作区 `docs/TODO.md`
+- 新教训 → 更新 `references/hard-constraints.md`；完成项 → 更新工作区 `docs/archive/2026-11/TODO.md`
 
 ## 5. 常见故障处置
 

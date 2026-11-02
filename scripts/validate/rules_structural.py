@@ -154,8 +154,71 @@ def check_r12_meaningless_suffix(q):
     return issues
 
 
+REAL_SOURCE_TYPES = ('考研真题', '执业医师真题', '真题', '考研原题', '执医真题')
+
+
+def origin_kind(q: dict) -> str:
+    """返回真题来源类型（空串=原创）。
+
+    存在意义：真题的题干/选项**不允许为了满足形式规则而改写**（HC-4b / 原题保真），
+    因此长度类规则对真题必须整体豁免——否则规则会逼着人改原题。
+    """
+    if q.get('kaoyan_origin'):
+        return '考研真题'
+    if q.get('zhiyi_origin'):
+        return '执业医师真题'
+    if q.get('zhiyi_pdf_origin'):
+        return '执业医师历年真题'
+    st = str(q.get('source_type') or '')
+    return st if st in REAL_SOURCE_TYPES else ''
+
+
+CONDITIONAL_PATTERNS = [
+    ('时间/年龄窗', r'\d+\s*[～~\-－至]\s*\d+\s*(小时|分钟|天|日|周|月|年|岁)'),
+    ('适用人群', r'^(?:[^，。；]{0,12})?(者|病人|患者)[，,：:]'),
+    ('特殊人群', r'(妊娠|哺乳|孕妇|儿童|小儿|婴儿|婴幼儿|新生儿|老年|产妇)'),
+    ('器官功能', r'(肝|肾|心|肺|脑)功能(不全|损害|衰竭|减退)'),
+    ('合并症', r'(合并|伴有|伴|继发|并发)[^，。；]{0,10}(不全|障碍|衰竭|感染|休克|出血|疾病|高血压|糖尿病)'),
+    ('条件从句', r'(若|如果|假如|一旦|如|当|在)[^，。；]{0,16}(时|者|则|应|需|可|不|，)'),
+    ('目的从句', r'(以免|以防|避免|防止)[^，。；]{2,}'),
+    ('因果从句', r'(因|由于)[^，。；]{2,}(故|因此|所以)'),
+    ('时段限定', r'(在|于)[^，。；]{0,10}(时|情况下|条件下|期间)'),
+]
+
+
+def conditional_feature(text: str) -> str:
+    """判断选项是否含"删短就改变医学含义"的限定，返回特征名（空串=无）。
+
+    只认**改变结论**的限定，不认任意长句：见 check_r13_length_ceiling 的说明。
+    模式按特异性从高到低排列，返回第一个命中项，便于在证据里写清"豁免理由"。
+    """
+    t = str(text or '').strip()
+    if not t:
+        return ''
+    for name, pat in CONDITIONAL_PATTERNS:
+        if re.search(pat, t):
+            return name
+    return ''
+
+
 def check_r13_length_ceiling(q):
-    """R13: 选项长度上限检测"""
+    """R13: 选项长度上限检测（2026-11-02 降级 + 条件从句豁免，P2-S5）
+
+    变更理由（AC-P2-06）：原实现把"超过 20 字"一律判 FAIL，但医学选项里有一类
+    **删短就错**的长选项——它们长在限定条件上：
+
+        「嵌顿3～4小时内、无腹膜刺激征者可行手法复位」   ← 时间窗 + 适用人群
+        「一旦形成脓肿，一般常选用口外切口进行切开引流」  ← 条件从句
+        「切开时注意深度，以免伤及气管后壁」             ← 目的从句（防并发症）
+
+    把这三类判 FAIL，等于要求作者删掉安全边界，属于误伤。因此：
+      - 命中条件/因果/时间窗/人群限定时 → `exempted=True` + severity=INFO（只记录，不拦）
+      - 其余超长 → severity=**WARN**（降级，不再 FAIL）
+
+    为什么是降级而不是删规则：R13 防的是"矫枉过正"（把选项硬凑长来掩盖区分度不足），
+    这类问题真实存在；但它的严重度低于 R2（正确项/最短干扰项长度比）——R2 保留为 FAIL，
+    由它守住"靠长度猜答案"这条硬线。
+    """
     issues = []
     if q.get('type', '') in ('X', 'X型'):
         return issues
@@ -171,12 +234,41 @@ def check_r13_length_ceiling(q):
     length_max = get_number('option_length_max', 20)
     avg_max = get_number('option_avg_max', 18)
 
+    oversize = [(lab, txt) for lab, txt in opts.items() if txt and len(txt) > length_max]
+
+    # 第一层豁免：真题原题。选项不可改写，长度规则无从施加（HC-4b 原题保真）。
+    # 注意：只有**确实有选项超长**时才出具豁免记录；否则每道真题都会冒一条 INFO，
+    # 把校验输出淹掉（这是初版的实现错误，2026-11-02 修正）。
+    origin = origin_kind(q)
+    if origin and (oversize or avg_len > avg_max):
+        return [{
+            'rule': 'R13',
+            'severity': 'INFO',
+            'exempted': True,
+            'origin_exempt': origin,
+            'target': f"{q['id']}.options",
+            'detail': (f'真题原题（{origin}）：超长 {len(oversize)} 项、均长 {avg_len:.1f} 字，'
+                       f'但选项不得改写 → R13 整体豁免'),
+        }]
+
     for letter, text in opts.items():
         tlen = len(text)
-        if tlen > length_max:
+        if tlen <= length_max:
+            continue
+        feature = conditional_feature(text)
+        if feature:
             issues.append({
                 'rule': 'R13',
-                'severity': 'FAIL',
+                'severity': 'INFO',
+                'exempted': True,
+                'target': f"{q['id']}.option{letter}",
+                'detail': (f'选项 {tlen} 字超过 {length_max:g} 字，但含「{feature}」限定，'
+                           f'删短会改变医学含义 → 豁免'),
+            })
+        else:
+            issues.append({
+                'rule': 'R13',
+                'severity': 'WARN',
                 'target': f"{q['id']}.option{letter}",
                 'detail': f'选项过长({tlen}字 > {length_max:g}字)，疑似矫枉过正: "{text[:30]}..."',
             })

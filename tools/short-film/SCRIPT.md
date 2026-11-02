@@ -8,7 +8,7 @@
 - 不用「DECISION 01」「避坑」这类模板标签，标签就用事实词（契约 / 状态 / 回退 / 反查 / 真题 / 放行 / 缓存 / 降级 / 红线）
 - 警示行不用「避坑」，用「以前」「那次」「取舍」「红线」
 - 句子短、少形容词、不排比、不喊口号；数字和名词直接摆出来
-- 事实全部来自项目真实记录，不编造：`操作流程.txt`、`docs/TODO.md`、`docs/交接文档_新Agent接手_v1.0.md`、`docs/产物格式规范.md`、`scripts/validate/rules_*.py`、`scripts/fact_check.py`
+- 事实全部来自项目真实记录，不编造：`操作流程.txt`、`docs/archive/2026-11/TODO.md`、`docs/archive/2026-11/交接文档_新Agent接手_v1.0.md`、`docs/产物格式规范.md`、`scripts/validate/rules_*.py`、`scripts/fact_check.py`
 
 ---
 

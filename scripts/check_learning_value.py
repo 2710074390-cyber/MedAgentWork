@@ -13,6 +13,9 @@
       不许用“同上/见解析/略”等占位词。
   R19 错误认知 ID 一致性：同一批次内，同一 misconception_id 必须对应同一释义；
       同一 ID 出现多种释义 → WARN + 汇总冲突数（gate 对 v2 批次按 0 冲突阻断）。
+  R20 干扰项机制（HC-29 · 2026-11-02）：schema_version ≥ 2.2 的批次，
+      每个干扰项的 distractor_mechanism 必须存在且属合法枚举（缺失/非法 → FAIL）；
+      2.1 及以下为历史批次，只统计覆盖率不判定（SKIP，不追溯）。
   ANSWER 答案一致性：is_correct 标记必须与 answer 完全一致，per_option.truth 必须与 is_correct 一致。
 
 用法：
@@ -38,6 +41,27 @@ BASE = Path(__file__).resolve().parent.parent
 DEFAULT_OUT = BASE / "reports" / "validate"
 
 PLACEHOLDERS = {"同上", "见解析", "见上", "略", "略述", "无", "n/a", "N/A", "-"}
+
+# HC-29 机制枚举的唯一事实来源是 scripts/validate/rules_batch.py（schema 由
+# test_distractor_mechanism_enum_matches_rule_module 保证一致）。这里只做引用，
+# 缺模块时才退回本地副本——绝不各写一份然后漂移。
+try:
+    from validate.rules_batch import MECHANISMS as DISTRACTOR_MECHANISMS
+except ImportError:  # pragma: no cover
+    try:
+        from scripts.validate.rules_batch import MECHANISMS as DISTRACTOR_MECHANISMS
+    except ImportError:
+        DISTRACTOR_MECHANISMS = (
+            "similar_presentation", "adjacent_concept", "direction_error", "timing_error",
+            "population_mismatch", "mechanism_confusion", "overgeneralization", "outdated_guideline",
+        )
+
+MECHANISM_SINCE = (2, 2)
+
+
+def _schema_version(q: dict) -> tuple:
+    m = re.match(r"^(\d+)\.(\d+)$", str(q.get("schema_version") or "").strip())
+    return (int(m.group(1)), int(m.group(2))) if m else (0, 0)
 
 
 def _nonempty(s) -> bool:
@@ -154,6 +178,15 @@ def check_item(q: dict) -> dict:
     misconception_ids: list[str] = []
     distractor_count = 0
     distractor_covered = 0
+    # 正选题的「错误认知覆盖」与反选题的「为真项锚点覆盖」分开统计：
+    # 混在一个分母里，两种完全不同的要求会被平均成一个看不出问题的数字。
+    mc_total = 0
+    mc_covered = 0
+    ra_total = 0
+    ra_covered = 0
+    mech_covered = 0
+    mech_missing: list[str] = []
+    mech_invalid: list[str] = []
     per_by_label = {str(p.get("label", "")).strip(): p for p in per if isinstance(p, dict)}
     for o in opts:
         lab = str(o.get("label", "")).strip()
@@ -171,15 +204,64 @@ def check_item(q: dict) -> dict:
         if lab not in distractor_labels:
             continue
         distractor_count += 1
-        mid = p.get("misconception_id")
-        mtext = p.get("misconception")
-        if not _nonempty(mid):
-            issues.append({"rule": "R15", "detail": f"{lab} 为干扰项但缺 misconception_id"})
+        if negative:
+            # 反选题（P2-S4）：非答案项是**为真说法**。
+            #   必填 = 逐项锚点（这句对的话出自教材哪段）
+            #   可选 = misconception（描述「学生为什么误选它」，通常是忽略否定词）
+            # 原口径把两者都按正选题处理，既漏了锚点，又把 misconception 当成
+            # 「这句话错在哪」——语义上反了。
+            ra_total += 1
+            opt_anchor = str(p.get("source_anchor") or p.get("anchor") or "").strip()
+            item_anchor = str(lv.get("answer_evidence") or "").strip()
+            if opt_anchor or item_anchor:
+                ra_covered += 1
+                distractor_covered += 1
+            elif _schema_version(q) >= MECHANISM_SINCE:
+                issues.append({
+                    "rule": "R15",
+                    "detail": f"{lab} 为反选题的为真干扰项，缺逐项锚点 source_anchor（P2-S4）",
+                })
+            else:
+                warnings.append({
+                    "rule": "R15",
+                    "detail": f"{lab} 为反选题的为真干扰项但无锚点（历史批次不追溯）",
+                })
+            # 写了就收：R19 的 ID 一致性也要覆盖反选题，否则这里成盲区。
+            mid = p.get("misconception_id")
+            if _nonempty(mid):
+                misconception_ids.append(str(mid).strip())
         else:
-            misconception_ids.append(str(mid).strip())
-            distractor_covered += 1
-        if not _nonempty(mtext):
-            issues.append({"rule": "R15", "detail": f"{lab} 为干扰项但缺 misconception 描述"})
+            mc_total += 1
+            mid = p.get("misconception_id")
+            mtext = p.get("misconception")
+            if not _nonempty(mid):
+                issues.append({"rule": "R15", "detail": f"{lab} 为干扰项但缺 misconception_id"})
+            else:
+                misconception_ids.append(str(mid).strip())
+                distractor_covered += 1
+                mc_covered += 1
+            if not _nonempty(mtext):
+                issues.append({"rule": "R15", "detail": f"{lab} 为干扰项但缺 misconception 描述"})
+
+        # R20（HC-29）：干扰项机制标签
+        mech = p.get("distractor_mechanism")
+        if _nonempty(mech):
+            mstr = str(mech).strip()
+            if mstr in DISTRACTOR_MECHANISMS:
+                mech_covered += 1
+            else:
+                mech_invalid.append(f"{lab}:{mstr}")
+        else:
+            mech_missing.append(lab)
+
+    # R20 判定按版本分档：2.2+ 缺标签/非法标签 → FAIL；历史批次只统计不判定
+    # （不逐题挂 WARN，否则 200 题全变 WARN，把真正的告警淹掉；批次汇总里有覆盖率）。
+    mech_required = _schema_version(q) >= MECHANISM_SINCE
+    if mech_required:
+        for lab in mech_missing:
+            issues.append({"rule": "R20", "detail": f"{lab} 为干扰项但缺 distractor_mechanism（HC-29）"})
+        for item in mech_invalid:
+            issues.append({"rule": "R20", "detail": f"distractor_mechanism 非法：{item}"})
 
     # 同一题内多个干扰项可以共享一个错误认知类别（如“器械功能混淆”），
     # 因此不把重复 ID 当问题；真正要防的是“每个错误选项都没有标签”。
@@ -264,6 +346,15 @@ def check_item(q: dict) -> dict:
         "per_option": len(per),
         "distractors": distractor_count,
         "distractors_covered": distractor_covered,
+        "mc_total": mc_total,
+        "mc_covered": mc_covered,
+        "reverse_anchor_total": ra_total,
+        "reverse_anchor_covered": ra_covered,
+        "negative": negative,
+        "mechanism_covered": mech_covered,
+        "mechanism_missing": len(mech_missing),
+        "mechanism_invalid": len(mech_invalid),
+        "mechanism_required": mech_required,
         "misconceptions": len(set(misconception_ids)),
         "info_units": info_units,
         "median_chars": round(statistics.median(chars), 1) if chars else 0,
@@ -322,15 +413,26 @@ def audit_batch(data: list[dict]) -> tuple[list[dict], dict]:
 
     total = len(results)
     per_cov = sum(1 for r in results if r["per_option"] == r["options"]) / total if total else 0
-    false_total = sum(r["distractors"] for r in results)
-    false_covered = sum(r["distractors_covered"] for r in results)
+    # 错误认知覆盖只算正选题；反选题的为真干扰项另算锚点覆盖（P2-S4）。
+    false_total = sum(r.get("mc_total", 0) for r in results)
+    false_covered = sum(r.get("mc_covered", 0) for r in results)
     misconception_cov = false_covered / false_total if false_total else 0
+    ra_total_all = sum(r.get("reverse_anchor_total", 0) for r in results)
+    ra_cov_all = sum(r.get("reverse_anchor_covered", 0) for r in results)
+    reverse_anchor_cov = ra_cov_all / ra_total_all if ra_total_all else 1.0
+    reverse_items = sum(1 for r in results if r.get("negative"))
     source_exact = sum(1 for r in results if r["source_quote_status"] == "exact") / total if total else 0
     quote_total = sum(1 for r in results if r["quote_checked"])
     quote_ok = sum(1 for r in results if r["quote_checked"] and r["quote_supported"])
     quote_rate = quote_ok / quote_total if quote_total else 1.0
     anchor_verified = sum(1 for r in results if r["anchor_status"] == "verified") / total if total else 0
     anchor_low = sum(1 for r in results if r["anchor_overlap"] < r["anchor_threshold"])
+
+    mech_total = sum(r["distractors"] for r in results)
+    mech_ok = sum(r["mechanism_covered"] for r in results)
+    mech_cov = mech_ok / mech_total if mech_total else 0
+    mech_required = any(r.get("mechanism_required") for r in results)
+    mech_status = ("PASS" if mech_cov >= 1.0 else "FAIL") if mech_required else "SKIP"
 
     summary = {
         "total": total,
@@ -339,6 +441,15 @@ def audit_batch(data: list[dict]) -> tuple[list[dict], dict]:
         "fail": len(fails),
         "per_option_coverage": round(per_cov, 4),
         "misconception_coverage": round(misconception_cov, 4),
+        "misconception_denominator": false_total,
+        "reverse_items": reverse_items,
+        "reverse_anchor_coverage": round(reverse_anchor_cov, 4),
+        "reverse_anchor_denominator": ra_total_all,
+        "distractor_mechanism_coverage": round(mech_cov, 4),
+        "distractor_mechanism_required": mech_required,
+        "distractor_mechanism_status": mech_status,
+        "distractor_mechanism_tagged": mech_ok,
+        "distractor_mechanism_total": mech_total,
         "source_quote_exact_rate": round(source_exact, 4),
         "quote_verified_rate": round(quote_rate, 4),
         "misconception_id_conflicts": len(conflict_ids),
@@ -387,6 +498,13 @@ def main() -> int:
         f"逐项覆盖 {summary['per_option_coverage']:.1%} | 错误认知覆盖 {summary['misconception_coverage']:.1%} | "
         f"标注 exact {summary['source_quote_exact_rate']:.1%} | 引文实证 {summary['quote_verified_rate']:.1%} | "
         f"ID 冲突 {summary['misconception_id_conflicts']} | 锚点已核 {summary['anchor_verified_rate']:.1%}"
+    )
+    print(
+        f"干扰项机制标签 {summary['distractor_mechanism_coverage']:.1%}"
+        f"（{summary['distractor_mechanism_tagged']}/{summary['distractor_mechanism_total']}）"
+        f" | R20 判定 {summary['distractor_mechanism_status']}"
+        + ("" if summary["distractor_mechanism_required"]
+           else "（历史批次 schema<2.2，不追溯，仅统计）")
     )
     print(f"报告：{out}")
     for r in results:

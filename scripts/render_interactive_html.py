@@ -3,7 +3,7 @@
 
 ⚠️ 2026-08-20 审查标注: 本脚本与 render_predict_html.py / build_html_final.py
 共用输出 最终产物/神经病学押题卷_2026.html（last-writer-wins，输出冲突未收敛，
-收敛为单一入口列入 docs/TODO.md P3）。输入数据在 中间产物/ 已随学期切换归档，
+收敛为单一入口列入 docs/archive/2026-11/TODO.md P3）。输入数据在 中间产物/ 已随学期切换归档，
 需先反归档或改路径再运行。v2.0 起转义已补齐（esc/esc_js）。
 """
 import json, os, re

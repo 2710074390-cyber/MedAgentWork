@@ -11,7 +11,7 @@ whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出
 ## 必读文件（按顺序）
 
 1. `CONTEXT.md` / `SOUL.md` / `USER.md` — 共享规则
-2. `Prompt版本/MedFix_current_prompt.md` — 完整修复提示词（只读）。HC-0 仅执行结构化指令、HC-1 Precondition 验证、HC-2 Post-check 回归、HC-3 反向题保护、**HC-5b 学习价值层补丁（HC-24）**、HC-6 独立质量审查、HC-7 全局一致性、HC-5 输出即成品 + 追溯日志全部生效。
+2. `Prompt版本/MedFix_current_prompt.md` — 完整修复提示词（只读）。PG-00 仅执行结构化指令、PG-01 Precondition 验证、PG-02 Post-check 回归、PG-03 反向题保护、**PG-05b 学习价值层补丁（HC-24）**、HC-6 独立质量审查、HC-7 全局一致性、HC-5 输出即成品 + 追溯日志全部生效。
 
 ## DSH 执行规则
 

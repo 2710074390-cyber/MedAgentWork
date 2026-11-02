@@ -628,7 +628,7 @@ powershell scripts\deploy_site.ps1
 | `docs/质量管控规范.md` | HC-25 流程标准（阈值表、适用范围矩阵） |
 | `docs/产物格式规范.md` | 产物形态唯一契约 |
 | `docs/复习资料详细度标准.md` | HC-26 九槽位定义 |
-| `docs/概念层改造方案_v1.0.md` | 概念图设计（含 F1–F3 三个实测发现） |
+| `./概念层改造方案_v1.0.md` | 概念图设计（含 F1–F3 三个实测发现） |
 | `scripts/quality_policy.json` | 阈值单一事实来源（v1.2.0） |
 | `question_bank/registry_meta.json` | 题库统计真身 |
 | `workflow_state.json` | 批次状态机 |

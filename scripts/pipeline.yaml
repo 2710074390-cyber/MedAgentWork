@@ -415,3 +415,42 @@ observability:
     - name: option_length_oscillation
       condition: "连续 2 批次选项 avg 波动 > 50%"
       action: "通知用户 + 建议参数化约束校准"
+
+# ═══════════════════════════════════════════════════════════
+# thresholds — 运行时阈值「单一事实来源」（P1-S3，2026-11-02）
+#
+# 由 scripts/pipeline_config.py 读取（同目录），gate_check.py /
+# rules_numeric.py / rules_structural.py 通过 get_number() 消费。
+#
+# ⚠️ 本段初始取值 **严格等于** pipeline_config.DEFAULTS，
+#    因此落地时运行时行为零变化（此前该文件从未被读取，全部走内置默认）。
+#    改这里即全局生效，无需改 Python 代码。
+# ⚠️ 必须保持「扁平 key: 值」写法——未装 PyYAML 的环境走内置最小解析器，
+#    只认顶层 thresholds 段下的扁平键值。
+# ═══════════════════════════════════════════════════════════
+
+thresholds:
+  # R2 正确选项 / 最短干扰项 长度比
+  r2_ratio_fail: 2.0
+  r2_ratio_warn: 1.5
+  # R13 选项长度口径
+  option_length_max: 20        # 校验上限：超过即 FAIL
+  option_length_target: 18     # 生成目标：提示词让模型写多长（≠ 校验上限）
+  option_avg_max: 18           # 平均字数上限：超过即 WARN
+  # Bloom 门禁
+  bloom_deviation_max: 15      # 单层偏差上限（%）
+  bloom_recompute_tolerance: 5 # 门禁独立重算与自述值的允许偏差（%）
+  # HC-24 学习价值层
+  learning_value_min_source_exact: 0.95
+  learning_value_min_quote_verified: 0.95
+  learning_value_max_misconception_conflicts: 0
+  learning_value_min_anchor_verified: 0.80
+  # P5-S1 重试与自动隔离（单题 >2 / 整批 >3 → QUARANTINE）
+  retry_item_max: 2
+  retry_batch_max: 3
+  # P2-S3 批次级规则 X1/X2/X6（advisory 起步；阈值与是否阻断解耦）
+  x1_letter_min: 0.15              # X1 单个答案字母最低占比
+  x1_letter_max: 0.30              # X1 单个答案字母最高占比
+  x2_unique_longest_max: 0.30      # X2 正确项「唯一最长」占比上限
+  x6_misconception_reuse_min: 0.20 # X6 被复用的 misconception_id 占干扰项最低比例
+  x5_reverse_max: 0.15             # X5 反选题占比上限（分母只含已标注 polarity 的题，P2-S4）

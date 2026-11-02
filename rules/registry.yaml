@@ -1,0 +1,968 @@
+# MedAgentWork 规则单一事实来源（SSOT）注册表
+#
+# 目的：把散落在 SOUL.md、提示词、validate_options.py、check_learning_value.py、
+#       gate_check.py、quality_policy.json、pipeline.yaml 中的规则收敛成一张可 lint、
+#       可渲染、可被门禁消费的清单。
+#
+# 约束：
+#   1. 本文件是「规则语义」的唯一事实来源；代码里的判定逻辑仍以 detector 指向的实现为准。
+#   2. 只登记，不改行为。任何行为变更必须走 detectors 指向的代码 PR + golden set 回归。
+#   3. 历史批次（batch046 及以前）只读体检，不受本表新增条目影响。
+#
+# 关联：P1-S1（清单）→ P1-S2（lint/渲染）→ P1-S3（config_keys）→ P1-S5（lineage）
+
+schema_version: 1
+registry_version: "1.0.0"
+updated_at: "2026-11-02"
+owner: medagentwork
+scope_note: "本表只覆盖「判定规则」，不含用户数据相关条款（本项目硬约束：零用户数据）。"
+
+# ── 事实来源 ────────────────────────────────────────────────
+sources:
+  SOUL:
+    path: SOUL.md
+    kind: doc
+  PROMPT:
+    path: Prompt版本/MedGen_current_prompt.md
+    kind: prompt
+  VALIDATE:
+    path: validate_options.py
+    kind: code
+  LV:
+    path: scripts/check_learning_value.py
+    kind: code
+  GATE:
+    path: gate_check.py
+    kind: code
+  POLICY:
+    path: scripts/quality_policy.json
+    kind: config
+  CONFIG:
+    path: scripts/pipeline.yaml
+    kind: config
+  SCHEMA:
+    path: schemas/agent2_output.schema.json
+    kind: contract
+
+# ── 判定规则 ────────────────────────────────────────────────
+#
+# 字段说明
+#   id         全局唯一 ID（本表主键，永不复用）
+#   aliases    旧编号/别名（如 R1、HC-20），必须全局唯一
+#   kind       item 单题 / group 组题 / file 文件级 / batch 批次级 / gate 阶段门禁 / process 流程约束
+#   severity   hard 违规即阻断 / soft 告警 / process 无机器判定，靠编排与人工
+#   detector   type: python（file+symbol[+tag]）/ command（cmd）/ semantic（无实现，需人工评审）
+#   target     被约束的字段名（用于 lint 检测同字段双向约束）
+#   direction  min / max / eq / set（配 target 使用）
+#   range_with 声明与哪条规则构成区间（min+max 配对），避免误判为双向冲突
+#   source_refs 出处（文件:行号 或 章节）
+#   status     active / deprecated / draft
+
+rules:
+
+  # ── 单题结构规则 R1–R13（validate_options.py）────────────────
+  - id: R-ITEM-FORBIDDEN
+    aliases: [R1]
+    title: 禁止项与绝对化用语
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r1_forbidden, engine: basic}
+    source_refs: ["scripts/validate/rules_numeric.py:19", "SOUL.md:65"]
+    status: active
+    notes: "「以上都是/都不是」变体 = FAIL；绝对化用语 = WARN，故本条目实际含 hard+soft 双档，门禁取 FAIL。"
+
+  - id: R-ITEM-LENRATIO
+    aliases: [R2]
+    title: 正确选项与最短干扰项长度比
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r2_length_ratio, engine: basic}
+    target: option_len_ratio
+    direction: max
+    source_refs: ["scripts/validate/rules_numeric.py:46", "SOUL.md:65"]
+    status: active
+    notes: "阈值 r2_ratio_fail=2.0 / r2_ratio_warn=1.5，见 config_keys。"
+
+  - id: R-ITEM-NUMSORT
+    aliases: [R3]
+    title: 数值选项排序
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r3_numeric_sort, engine: basic}
+    source_refs: ["scripts/validate/rules_numeric.py:90", "SOUL.md:65"]
+    status: active
+
+  - id: R-ITEM-NEGBOLD
+    aliases: [R4]
+    title: 否定词加粗
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r4_negation_bold, engine: basic}
+    source_refs: ["scripts/validate/rules_numeric.py:117", "SOUL.md:65"]
+    status: active
+
+  - id: R-ITEM-OPTCOUNT
+    aliases: [R5]
+    title: 选项数量
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r5_option_count, engine: basic}
+    source_refs: ["scripts/validate/rules_numeric.py:139", "SOUL.md:65"]
+    status: active
+    notes: "工作指令 §0.5 明确「R5 从 5 选项改 3 选项」属需用户决策事项，本次不动。"
+
+  - id: R-ITEM-NUMDISCRIM
+    aliases: [R6]
+    title: 数值型干扰项区分度（≤5 倍）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r6_numeric_discrimination, engine: basic}
+    source_refs: ["scripts/validate/rules_numeric.py:164", "SOUL.md:52"]
+    status: active
+
+  - id: R-ITEM-TRUNC
+    aliases: [R7]
+    title: 文本截断
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r7_truncation, engine: basic}
+    source_refs: ["scripts/validate/rules_numeric.py:194", "SOUL.md:65"]
+    status: active
+
+  - id: R-ITEM-MINLEN
+    aliases: [R8]
+    title: 选项最小字数
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r8_min_length, engine: basic}
+    target: option_len_chars
+    direction: min
+    range_with: R-ITEM-LENCEIL
+    source_refs: ["scripts/validate/rules_numeric.py:229", "SOUL.md:77"]
+    status: active
+
+  - id: R-ITEM-UNIT
+    aliases: [R9]
+    title: 数值缺单位
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r9_missing_unit, engine: basic}
+    source_refs: ["scripts/validate/rules_numeric.py:284", "SOUL.md:65"]
+    status: active
+
+  - id: R-ITEM-CLUEREPEAT
+    aliases: [R10]
+    title: 题干与选项线索重复
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_structural.py, symbol: check_r10_clue_repetition, engine: full}
+    source_refs: ["scripts/validate/rules_structural.py:48", "SOUL.md:65"]
+    status: active
+
+  - id: R-ITEM-CONVERGE
+    aliases: [R11]
+    title: 选项收敛（互为同义）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_structural.py, symbol: check_r11_convergence, engine: full}
+    source_refs: ["scripts/validate/rules_structural.py:91", "SOUL.md:65"]
+    status: active
+
+  - id: R-ITEM-SUFFIX
+    aliases: [R12]
+    title: 无意义括号后缀
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_structural.py, symbol: check_r12_meaningless_suffix, engine: full}
+    source_refs: ["scripts/validate/rules_structural.py:131", "SOUL.md:67", "SOUL.md:80"]
+    status: active
+
+  - id: R-ITEM-LENCEIL
+    aliases: [R13]
+    title: 选项长度上限
+    kind: item
+    severity: soft
+    detector: {type: python, file: scripts/validate/rules_structural.py, symbol: check_r13_length_ceiling, engine: full}
+    target: option_len_chars
+    direction: max
+    range_with: R-ITEM-MINLEN
+    source_refs: ["scripts/validate/rules_structural.py:185", "SOUL.md:77"]
+    status: active
+    notes: "上限 20（校验口径）≠ 生成目标 18（pipeline.yaml prompt_constraints.option_length.max_chars），两者是不同口径，见 config_keys.option_length_target。2026-11-02（P2-S5）：severity 由 hard 降为 soft，逐项超长 FAIL→WARN；真题原题（kaoyan_origin/zhiyi_origin）与含条件/因果/时间窗/人群限定的选项整体或逐项豁免（脚本内 origin_kind / conditional_feature）。「靠长度猜答案」的硬约束由 R2 继续以 FAIL 守住。回测见 reports/validate/r13_backtest_20261102.md。"
+
+  # ── 组题 / 文件级规则 ───────────────────────────────────────
+  - id: R-GROUP-B1
+    aliases: [B1]
+    title: A3/A4/B1 组题结构完整性
+    kind: group
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_structural.py, symbol: check_b1_groups, engine: full}
+    source_refs: ["scripts/validate/rules_structural.py:194"]
+    status: active
+
+  - id: R-FILE-JSON
+    aliases: [JS1]
+    title: JSON 完整性（截断/括号/编码）
+    kind: file
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_structural.py, symbol: check_js1_json_integrity, engine: full}
+    source_refs: ["scripts/validate/rules_structural.py:244"]
+    status: active
+
+  - id: R-FILE-SCHEMAFIELDS
+    aliases: [S1]
+    title: 字段完整性与必填项
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_static.py, symbol: check_s1_schema_completeness}
+    source_refs: ["scripts/validate/rules_static.py:9", "SCHEMA"]
+    status: active
+
+  - id: R-FILE-NULL
+    aliases: [S2]
+    title: 空值与非空约束
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_static.py, symbol: check_s2_null_values}
+    source_refs: ["scripts/validate/rules_static.py:60"]
+    status: active
+
+  - id: R-FILE-PLACEHOLDER
+    aliases: [S3]
+    title: 占位页码（P??/待补）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_structural.py, symbol: check_s3_placeholder_pages, engine: full}
+    source_refs: ["scripts/validate/rules_structural.py:315"]
+    status: active
+
+  - id: R-ITEM-ABSLANG
+    aliases: [S4]
+    title: 绝对化语言（静态扫描）
+    kind: item
+    severity: soft
+    detector: {type: python, file: scripts/validate/rules_static.py, symbol: check_s4_absolute_language}
+    source_refs: ["scripts/validate/rules_static.py:96"]
+    status: active
+
+  # ── 学习价值层 R14–R19（check_learning_value.py，HC-24）──────
+  - id: R-LV-PEROPTION
+    aliases: [R14]
+    title: 逐项覆盖（per_option 与 options 标签集一致）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/check_learning_value.py, symbol: check_item, tag: R14}
+    source_refs: ["scripts/check_learning_value.py:5", "SOUL.md:205"]
+    status: active
+
+  - id: R-LV-MISCONCEPTION
+    aliases: [R15]
+    title: 错误选项必须带 misconception_id + 描述且题内唯一
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/check_learning_value.py, symbol: check_item, tag: R15}
+    source_refs: ["scripts/check_learning_value.py:6", "SOUL.md:205"]
+    status: active
+
+  - id: R-LV-SOURCEVERIFY
+    aliases: [R16]
+    title: 来源实证核验（source_quote / anchor）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/check_learning_value.py, symbol: check_item, tag: R16}
+    source_refs: ["scripts/check_learning_value.py:7", "SOUL.md:205"]
+    status: active
+
+  - id: R-LV-INFOVOLUME
+    aliases: [R17]
+    title: 信息量下限（correct_rationale≥60 / why≥20 / key_takeaway≥30）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/check_learning_value.py, symbol: check_item, tag: R17}
+    target: correct_rationale_chars
+    direction: min
+    source_refs: ["scripts/check_learning_value.py:12", "SOUL.md:205"]
+    status: active
+
+  - id: R-LV-ANCHOROVERLAP
+    aliases: [R18]
+    title: 锚点主题覆盖度（题干 2-gram 被 teacher_anchor 覆盖）
+    kind: item
+    severity: soft
+    detector: {type: python, file: scripts/check_learning_value.py, symbol: check_item, tag: R18}
+    source_refs: ["scripts/check_learning_value.py:232", "SOUL.md:205"]
+    status: active
+
+  - id: R-LV-MISCONSISTENCY
+    aliases: [R19]
+    title: 同一 misconception_id 的跨题释义一致性
+    kind: batch
+    severity: hard
+    detector: {type: python, file: scripts/check_learning_value.py, symbol: audit_batch, tag: R19}
+    target: misconception_consistency
+    direction: eq
+    source_refs: ["scripts/check_learning_value.py:14", "SOUL.md:205"]
+    status: active
+
+  - id: R-LV-MECHANISM
+    aliases: [R20]
+    title: 干扰项机制标签（HC-29）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/check_learning_value.py, symbol: check_item, tag: R20}
+    notes: "仅对 schema_version ≥ 2.2 生效；2.1 及以下返回 SKIP，不追溯（覆盖率仍在批次汇总里统计）。"
+    source_refs: ["Prompt版本/MedGen_current_prompt.md", "schemas/agent2_output.schema.json"]
+    status: active
+
+  # ── 阶段门禁 GATE ─────────────────────────────────────────
+  - id: GATE-A2
+    aliases: [GATE-A2]
+    title: Agent2 产出门禁（validate_options FAIL=0）
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_agent2}
+    source_refs: ["gate_check.py:501", "SOUL.md:74"]
+    status: active
+
+  - id: GATE-A3
+    aliases: [GATE-A3]
+    title: Agent3 质检门禁（D20 硬阻断 + Bloom 偏差）
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_agent3}
+    source_refs: ["gate_check.py:588", "SOUL.md:74"]
+    status: active
+
+  - id: GATE-A3-D20
+    aliases: [D20]
+    title: 关键缺陷零容忍（D20_score ≠ 0 即阻断）
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_agent3, tag: GATE-A3-D20}
+    source_refs: ["gate_check.py:780"]
+    status: active
+
+  - id: GATE-A3-BLOOM
+    aliases: [BLOOM]
+    title: Bloom 单层偏差 ≤15%
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_agent3, tag: GATE-A3-BLOOM}
+    target: bloom_deviation_pct
+    direction: max
+    source_refs: ["gate_check.py:819", "SOUL.md:83"]
+    status: active
+
+  - id: GATE-A3-BLOOM-RECOMPUTE
+    aliases: [BLOOM-RECOMPUTE]
+    title: Bloom 门禁独立重算交叉验证（偏差 >5% 阻断）
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_agent3, tag: GATE-A3-BLOOM-RECOMPUTE}
+    source_refs: ["gate_check.py:864"]
+    status: active
+
+  - id: GATE-A4
+    aliases: [GATE-A4]
+    title: Agent4 修复门禁（source_file_synced 溯源，HC-13）
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_agent4}
+    source_refs: ["gate_check.py:910", "SOUL.md:75"]
+    status: active
+
+  - id: GATE-LV
+    aliases: [GATE-LV]
+    title: 学习价值层门禁（HC-24，advisory/enforce 双模）
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_learning_value}
+    source_refs: ["gate_check.py:1098", "SOUL.md:205"]
+    status: active
+
+  - id: GATE-ITEM-LV
+    aliases: []
+    title: 单题学习价值门禁
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_item_learning_value}
+    source_refs: ["gate_check.py:1152"]
+    status: active
+
+  - id: GATE-BLUEPRINT
+    aliases: []
+    title: 蓝图偏差门禁
+    kind: gate
+    severity: soft
+    detector: {type: python, file: gate_check.py, symbol: gate_question_blueprint}
+    source_refs: ["gate_check.py:1272", "SOUL.md:53"]
+    status: active
+
+  - id: GATE-FINAL
+    aliases: [GATE-FINAL]
+    title: 终审前全量门禁
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_final}
+    source_refs: ["gate_check.py:1353", "SOUL.md:221"]
+    status: active
+
+  # ── 合规发布 P8（2026-11-02 新增）─────────────────────────
+  - id: P8-PUBLIC-GATE
+    aliases: [PUBLIC-GATE]
+    title: 公开闸门（license_status=cleared 才可上公开站）
+    kind: gate
+    severity: hard
+    detector: {type: python, file: scripts/public_gate.py, symbol: main}
+    source_refs: ["scripts/public_gate.py", "reports/实施步骤与验收标准_无用户数据约束版_20261102.md:529"]
+    status: active
+    notes: "G1 白名单双通道一致｜G2 构建输出目录不得为仓库根（WARN）｜G3 白名单内真题必须 cleared｜G4 白名单内不得含裸题面｜G5 白名单外未清权清单｜G6 线上探测按 content_type 判 SPA 兜底。数据源现扫题库，扫不到即 FAIL（reports/ 不进 git）。"
+
+  # ── 修复闭环 P5（2026-11-02 新增）─────────────────────────
+  - id: P5-RETRY-ITEM
+    aliases: []
+    title: 单题重试上限（>2 次自动 QUARANTINE）
+    kind: batch
+    severity: hard
+    detector: {type: python, file: scripts/workflow_state.py, symbol: record_retry}
+    target: retry_item_count
+    direction: max
+    source_refs: ["scripts/workflow_state.py", "CONFIG"]
+    status: active
+    notes: "阈值 retry_item_max=2（pipeline.yaml thresholds）。超限把该题置 QUARANTINE，不再自动重试。"
+
+  - id: P5-RETRY-BATCH
+    aliases: []
+    title: 整批重试上限（>3 次自动 QUARANTINE）
+    kind: batch
+    severity: hard
+    detector: {type: python, file: scripts/workflow_state.py, symbol: record_retry}
+    target: retry_batch_count
+    direction: max
+    source_refs: ["scripts/workflow_state.py", "CONFIG"]
+    status: active
+    notes: "阈值 retry_batch_max=3。批次级隔离覆盖题目级。"
+
+  - id: P5-IMMUTABLE
+    aliases: [IMMUTABLE]
+    title: Patch 不可变字段（答案 / 真题题干与答案 / HC-20 引文 / 溯源）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/check_patch_integrity.py, symbol: audit}
+    target: immutable_fields
+    direction: set
+    source_refs: ["scripts/check_patch_integrity.py", "SOUL.md:85"]
+    status: active
+    notes: "声明文件不能豁免本约束：即使 declared 里写了 answer，也照判违例。"
+
+  - id: P5-DIFF
+    aliases: [DIFF]
+    title: 声明字段 vs 实际变更字段（未声明变化即拒收）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/check_patch_integrity.py, symbol: audit}
+    target: declared_change_scope
+    direction: set
+    source_refs: ["scripts/check_patch_integrity.py"]
+    status: active
+
+  - id: P5-NOOP
+    aliases: [NOOP]
+    title: no-op 修复检测（声称修复但零变化）
+    kind: batch
+    severity: hard
+    detector: {type: python, file: scripts/check_patch_integrity.py, symbol: detect_noop}
+    target: effective_change
+    direction: min
+    source_refs: ["scripts/check_patch_integrity.py", "SOUL.md:75"]
+    status: active
+    notes: "batch046 的 A2→A4 是真实命中样本（字节完全相同）。no-op 不得算 PASS。"
+
+  # ── 硬约束 HC（SOUL.md）─────────────────────────────────────
+  - id: HC-5
+    aliases: []
+    title: 外来素材数值交叉验证（≥10% 抽查）
+    kind: process
+    severity: process
+    detector: {type: semantic, reviewer: 内容专家}
+    source_refs: ["SOUL.md:51"]
+    status: active
+
+  - id: HC-6-NUMDISCRIM
+    aliases: []
+    title: 干扰项区分度审查（数值型差值 ≤5 倍）
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_numeric.py, symbol: check_r6_numeric_discrimination}
+    source_refs: ["SOUL.md:52"]
+    status: active
+    notes: "SOUL 中 HC-6 被三个 Agent 各自定义（A1/A4/A4-修复），本 ID 只承载 A1 语义；其余见 HC-6-A4 / HC-6-FIX-A4。"
+
+  - id: HC-6-A4
+    aliases: []
+    title: Agent4 独立质量审查（≥5% 干扰项独立评估）
+    kind: process
+    severity: process
+    detector: {type: semantic, reviewer: 内容专家}
+    source_refs: ["SOUL.md:63"]
+    status: active
+
+  - id: HC-6-FIX-A4
+    aliases: []
+    title: 干扰项修复必须增加实质区分信息，禁止无意义后缀
+    kind: item
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_structural.py, symbol: check_r12_meaningless_suffix}
+    target: option_suffix
+    direction: set
+    source_refs: ["SOUL.md:67"]
+    status: active
+
+  - id: HC-7-BLUEPRINT
+    aliases: []
+    title: 命题双向细目表（知识×认知层次，目标 30/40/25/5）
+    kind: batch
+    severity: soft
+    detector: {type: command, cmd: "python scripts/bloom_sampler.py --batch <batch>"}
+    target: bloom_distribution
+    direction: set
+    source_refs: ["SOUL.md:53", "SOUL.md:83"]
+    status: active
+
+  - id: HC-7-A4
+    aliases: []
+    title: 修改后全局一致性检查（扫描残留旧值）
+    kind: process
+    severity: process
+    detector: {type: semantic, reviewer: 质量/合规}
+    source_refs: ["SOUL.md:64"]
+    status: active
+
+  - id: HC-7-GEN-NBME
+    aliases: []
+    title: NBME 8 项选项设计硬约束
+    kind: item
+    severity: hard
+    detector: {type: command, cmd: "python validate_options.py --file <json>"}
+    source_refs: ["SOUL.md:65", "PROMPT"]
+    status: active
+    notes: "8 项分别由 R1/R2/R4/R3/R10/R11/R12/B1 机械化覆盖，本条目是提示词侧的合并表述。"
+
+  - id: HC-8
+    aliases: []
+    title: GoldenSet 交叉验证（仅外来素材合并时触发，≥5%）
+    kind: process
+    severity: process
+    detector: {type: semantic, reviewer: 内容专家}
+    source_refs: ["SOUL.md:54"]
+    status: active
+
+  - id: HC-12
+    aliases: []
+    title: 门禁强制（每次状态转换前跑确定性验证，不得凭下游自觉）
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_final}
+    source_refs: ["SOUL.md:74"]
+    status: active
+
+  - id: HC-13
+    aliases: []
+    title: 补丁溯源（source_file_synced）
+    kind: gate
+    severity: hard
+    detector: {type: python, file: gate_check.py, symbol: gate_agent4, tag: source_file_synced}
+    source_refs: ["SOUL.md:75"]
+    status: active
+
+  - id: HC-14
+    aliases: []
+    title: 结构模板（5 选项共享同一语法结构，替代字数参数化）
+    kind: item
+    severity: process
+    detector: {type: semantic, reviewer: 内容专家}
+    source_refs: ["SOUL.md:77"]
+    status: active
+    notes: "无机器判定。P2-S5 计划为其增加「机制/条件」行，但仍需人工核验结构一致性。"
+
+  - id: HC-15
+    aliases: []
+    title: Bloom 实时采样（每 50 题，偏差 >15% 即 halt）
+    kind: batch
+    severity: hard
+    detector: {type: command, cmd: "python scripts/bloom_sampler.py --batch <batch>"}
+    target: bloom_deviation_pct
+    direction: max
+    source_refs: ["SOUL.md:83"]
+    status: active
+
+  - id: HC-16
+    aliases: []
+    title: 押题增强（高频考点配额 ×1.5，零频 ×0.5）
+    kind: batch
+    severity: soft
+    detector: {type: command, cmd: "python scripts/frequency_analyzer.py --golden GoldenSet/ --rag-index --subject <code>"}
+    source_refs: ["SOUL.md:84"]
+    status: active
+
+  - id: HC-17
+    aliases: []
+    title: 状态写入单一入口（禁止手改 workflow_state.json）
+    kind: process
+    severity: hard
+    detector: {type: python, file: scripts/workflow_state.py, symbol: add_lineage}
+    source_refs: ["SOUL.md:96"]
+    status: active
+    notes: "机械保障靠「只有 workflow_state.py 提供写接口」；手改无法被静态检测，故 detector 为写入口存在性断言。"
+
+  - id: HC-18-QUOTA
+    aliases: []
+    title: 考研真题配额（目标 20%，合格带 15%–25%）——已被 HC-22 接管
+    kind: batch
+    severity: hard
+    detector: {type: command, cmd: "python scripts/real_question_cli.py check --file <json> --plan <plan>"}
+    target: real_question_ratio
+    direction: range
+    source_refs: ["SOUL.md:85", "SOUL.md:152"]
+    status: deprecated
+    notes: "SOUL.md:152 明确「旧 HC-18 的考研 20% 条款由 HC-22 接管」，此处保留仅为别名溯源。"
+
+  - id: HC-18-FORM
+    aliases: []
+    title: 产物形态契约（不产 PDF / 押题卷 MD / 文件命名）
+    kind: process
+    severity: hard
+    detector: {type: semantic, reviewer: 维护者}
+    source_refs: ["SOUL.md:103", "SOUL.md:288"]
+    status: active
+    notes: "编号 HC-18 与 HC-18-QUOTA 双定义，是已知编号事故；本表用后缀区分，不改原文编号（改编号属阶段 1 P1-S6）。"
+
+  - id: HC-20
+    aliases: []
+    title: 教师重点原文锚定与逐条覆盖
+    kind: doc
+    severity: hard
+    detector: {type: command, cmd: "python scripts/check_keypoint_coverage.py --keypoints <keypoints> --md <md>"}
+    target: keypoint_coverage
+    direction: min
+    source_refs: ["SOUL.md:120", "SOUL.md:132"]
+    status: active
+    notes: "无教师重点输入的批次 → 显式 SKIPPED，不视为通过。"
+
+  - id: HC-21
+    aliases: []
+    title: 站点发布最新性契约
+    kind: doc
+    severity: hard
+    detector: {type: command, cmd: "python scripts/check_site_freshness.py"}
+    source_refs: ["SOUL.md:135"]
+    status: active
+
+  - id: HC-22
+    aliases: []
+    title: 真题检索与双族配额（考研族 / 执医族各 20%）
+    kind: batch
+    severity: hard
+    detector: {type: command, cmd: "python scripts/real_question_cli.py check --file <json> --plan <plan>"}
+    target: real_question_ratio
+    direction: range
+    source_refs: ["SOUL.md:149"]
+    status: active
+
+  - id: HC-23
+    aliases: []
+    title: 执业医师真题语料通道分流（单栏 RapidOCR / 双栏 MinerU）
+    kind: process
+    severity: process
+    detector: {type: semantic, reviewer: 维护者}
+    source_refs: ["SOUL.md:179"]
+    status: active
+
+  - id: HC-24
+    aliases: []
+    title: 题目学习价值层契约（R14–R19 总纲）
+    kind: item
+    severity: hard
+    detector: {type: command, cmd: "python scripts/check_learning_value.py --file <json>"}
+    source_refs: ["SOUL.md:205"]
+    status: active
+
+  - id: HC-25
+    aliases: []
+    title: 全流程质量基准与阶段门禁
+    kind: gate
+    severity: hard
+    detector: {type: command, cmd: "python gate_check.py --batch <batch> --stage all"}
+    source_refs: ["SOUL.md:221", "POLICY"]
+    status: active
+
+  - id: HC-26
+    aliases: []
+    title: 复习资料详细度契约
+    kind: doc
+    severity: hard
+    detector: {type: command, cmd: "python scripts/check_review_detail.py <args>"}
+    source_refs: ["SOUL.md:232"]
+    status: active
+
+  - id: HC-28
+    aliases: []
+    title: 一次跑完与人工复核队列分离
+    kind: process
+    severity: process
+    detector: {type: semantic, reviewer: 维护者}
+    source_refs: ["SOUL.md:245"]
+    status: active
+
+  # ── 概念标注（HC-27）────────────────────────────────────────
+  - id: R-CONCEPT-SOURCE
+    aliases: [HC-27]
+    title: 生成期概念多标签（concepts[] 必填，恰好 1 条 primary）
+    kind: item
+    severity: hard
+    detector: {type: command, cmd: "python scripts/check_source_concepts.py --file <json> --batch <batch>"}
+    source_refs: ["PROMPT", "scripts/check_source_concepts.py:72"]
+    status: active
+
+  # ── 批次级规则（P2-S3，2026-11-02）──────────────────────────
+  #
+  # 与 R 系列的区别：X 系列在整批分布上判定，单题永远看不出。
+  # 起步状态 advisory（违例记录但不阻断），转 enforce 的前置见 AC-P2-09。
+  - id: X-BATCH-ANSDIST
+    aliases: [X1]
+    title: 答案字母分布（每字母 15%–30%）
+    kind: batch
+    severity: soft
+    detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_answer_distribution}
+    notes: "只统计单选（答案恰 1 个字母）；多选/判断单列不混分母。advisory 阶段 status=VIOLATED 但不阻断。"
+    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:299"]
+    status: active
+
+  - id: X-BATCH-UNIQLONGEST
+    aliases: [X2]
+    title: 正确项为唯一最长项的题目占比 ≤30%
+    kind: batch
+    severity: soft
+    detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_unique_longest}
+    notes: "与 R2 长度比是不同口径：R2 看单题比值，X2 看整批「靠长度猜答案」的可利用度。"
+    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:299"]
+    status: active
+
+  - id: X-BATCH-MISREUSE
+    aliases: [X6]
+    title: 错误认知复用率 ≥20%
+    kind: batch
+    severity: soft
+    detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_misconception_reuse}
+    notes: "分母为全部干扰项；复用 = 同一 misconception_id 被 ≥2 题使用。每题全新 ID 等于把错误认知降级为题内私有标签。"
+    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:299", "SOUL.md:200"]
+    status: active
+
+  - id: X-BATCH-STRUCTCOV
+    aliases: [S-STRUCT]
+    title: schema 2.2 结构字段覆盖率 100%
+    kind: batch
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_structural_coverage}
+    notes: "只对 schema_version ≥ 2.2 生效；历史批次返回 SKIP，不追溯。覆盖 difficulty_tier/step_count/competing_dx/negative_cues/conditionals + per_option.distractor_mechanism。"
+    source_refs: ["schemas/agent2_output.schema.json", "reports/实施步骤与验收标准_无用户数据约束版_20261102.md:297"]
+    status: active
+
+  - id: X-BATCH-REVERSE
+    aliases: [X5]
+    title: 反选题占比 ≤15%
+    kind: batch
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_reverse_selection}
+    target: reverse_selection_ratio
+    direction: max
+    notes: "分子 = polarity=negative 与题干设问的**并集**（宁可高估）；分母 = 全部题。只看 polarity 会被漏标掩盖（batch042 的 18 道反选全标了 positive → 算出 0%），只看题干会被加粗标签打断（batch037 的 `<b>不属于</b>` 整批漏检）。"
+    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:413", "reports/validate/reverse_selection_20261102.md"]
+    status: active
+
+  - id: X-BATCH-REVANCHOR
+    aliases: [X5-A]
+    title: 反选题的为真干扰项逐项锚点
+    kind: batch
+    severity: hard
+    detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_reverse_option_anchors}
+    notes: "反选题的非答案项是**正确说法**，要求 source_anchor（题级 answer_evidence 可兜底），不要求 misconception_id。只对 schema_version ≥ 2.2 生效，历史批次 SKIP。"
+    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:413"]
+    status: active
+
+  - id: X-BATCH-POLARITY
+    aliases: [X5-P]
+    title: 极性标注与题干设问一致性（advisory）
+    kind: batch
+    severity: soft
+    detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_polarity_consistency}
+    notes: "不一致项不必然是标注错：也可能是题干正则把「禁忌证是？」这类定语用法误判。故只出样本、不阻断、不改数据。"
+    source_refs: ["scripts/validate/rules_batch.py"]
+    status: active
+
+# ── quality_policy 绑定（哪些检查属于哪个发布 profile）──────────
+#
+# 这里登记的是「绑定关系」，不是规则本体——避免与上面 rules 重复定义。
+policy_bindings:
+  check_commands:
+    baseline: {cmd: "python scripts/pilot_baseline.py", symbol: scripts/pilot_baseline.py:main}
+    kc_registry: {cmd: "python scripts/kc_registry.py check", symbol: scripts/kc_registry.py:check_registry}
+    item_learning_value: {cmd: "python scripts/check_learning_value.py --file <json>", rule: HC-24}
+    scorecard: {cmd: "python scripts/review_scorecard.py <args>", symbol: scripts/review_scorecard.py:main}
+    review_detail: {cmd: "python scripts/check_review_detail.py <args>", rule: HC-26}
+    source_concepts: {cmd: "python scripts/check_source_concepts.py --file <json> --batch <batch>", rule: R-CONCEPT-SOURCE}
+    concept_graph: {cmd: "python scripts/check_concept_graph.py --subject <subject>", symbol: scripts/check_concept_graph.py:main}
+    produce_rules: {cmd: "python scripts/verify_produce_rules.py", symbol: scripts/verify_produce_rules.py:main}
+    site_freshness: {cmd: "python scripts/check_site_freshness.py", rule: HC-21}
+    site_links: {cmd: "node scripts/check_site_links.mjs", symbol: scripts/check_site_links.mjs}
+    keypoint_coverage: {cmd: "python scripts/check_keypoint_coverage.py --keypoints <keypoints> --md <md>", rule: HC-20}
+    adaptive_coverage: {cmd: "python scripts/check_keypoint_coverage.py --adaptive --json --source-text", rule: HC-20}
+    adaptive_manual_review: {cmd: "python scripts/quality_gate.py <args>", symbol: scripts/quality_gate.py}
+    batch_rules: {cmd: "python scripts/validate/rules_batch.py --file <json>", symbol: scripts/validate/rules_batch.py:main}
+    r13_backtest: {cmd: "python scripts/backtest_r13.py", rule: R-ITEM-LENCEIL}
+    agreement: {cmd: "python scripts/agreement.py --ratings <json>", symbol: scripts/agreement.py:main}
+    wording: {cmd: "python scripts/check_wording.py", symbol: scripts/check_wording.py:main}
+    license_matrix: {cmd: "python scripts/license_matrix.py", symbol: scripts/license_matrix.py:main}
+    public_gate: {cmd: "python scripts/public_gate.py", rule: P8-PUBLIC-GATE}
+    hc_audit: {cmd: "python scripts/hc_audit.py", symbol: scripts/hc_audit.py:main}
+    docs_inventory: {cmd: "ls docs/*.md | wc -l", note: "AC-P1-09：活跃 docs ≤5；台账见 reports/registry/docs_inventory_20261102.md"}
+    reverse_backtest: {cmd: "python scripts/backtest_reverse.py", rule: X-BATCH-REVERSE}
+    public_risk: {cmd: "python scripts/public_risk.py", symbol: scripts/public_risk.py:main}
+    review_sample: {cmd: "python scripts/review_sample.py", symbol: scripts/review_sample.py:main}
+  profiles:
+    pilot: [baseline, kc_registry, item_learning_value, scorecard, review_detail, source_concepts, concept_graph]
+    release_teacher_keypoint: [baseline, kc_registry, item_learning_value, scorecard, review_detail, source_concepts, concept_graph, produce_rules, site_freshness, site_links]
+    release_teaching_plan: [keypoint_coverage, produce_rules, scorecard, review_detail]
+    release_adaptive: [adaptive_coverage, adaptive_manual_review, produce_rules, site_freshness, site_links]
+
+# ── 配置键（pipeline.yaml thresholds 的生效口径）───────────────
+#
+# default 必须等于 scripts/pipeline_config.py 的 DEFAULTS，
+# 否则 lint 报 config_default_drift。
+config_keys:
+  - key: r2_ratio_fail
+    default: 2.0
+    rule: R-ITEM-LENRATIO
+  - key: r2_ratio_warn
+    default: 1.5
+    rule: R-ITEM-LENRATIO
+  - key: option_length_max
+    default: 20
+    rule: R-ITEM-LENCEIL
+    distinct_from: option_length_target
+    note: "校验上限（R13 FAIL 线）。生成目标 18 是另一口径，见 option_length_target。"
+  - key: option_length_target
+    default: 18
+    rule: null
+    yaml_probe: stages.0.prompt_constraints.option_length.max_chars
+    distinct_from: option_length_max
+    note: "来自 scripts/pipeline.yaml prompt_constraints.option_length.max_chars，属生成提示，不是校验阈值。"
+  - key: option_avg_max
+    default: 18
+    rule: R-ITEM-LENCEIL
+    yaml_probe: stages.0.slo.option_avg_max
+  - key: bloom_deviation_max
+    default: 15
+    rule: GATE-A3-BLOOM
+  - key: bloom_recompute_tolerance
+    default: 5
+    rule: GATE-A3-BLOOM-RECOMPUTE
+  - key: learning_value_min_source_exact
+    default: 0.95
+    rule: R-LV-SOURCEVERIFY
+  - key: learning_value_min_quote_verified
+    default: 0.95
+    rule: R-LV-SOURCEVERIFY
+  - key: learning_value_max_misconception_conflicts
+    default: 0
+    rule: R-LV-MISCONSISTENCY
+  - key: learning_value_min_anchor_verified
+    default: 0.80
+    rule: R-LV-SOURCEVERIFY
+  # P5-S1 重试与自动隔离
+  - key: retry_item_max
+    default: 2
+    rule: P5-RETRY-ITEM
+  - key: retry_batch_max
+    default: 3
+    rule: P5-RETRY-BATCH
+  # P2-S3 批次级规则 X1/X2/X6
+  - key: x1_letter_min
+    default: 0.15
+    rule: X-BATCH-ANSDIST
+    note: "与 x1_letter_max 是同一约束的下界/上界，成对使用，不属重复约束。"
+  - key: x1_letter_max
+    default: 0.30
+    rule: X-BATCH-ANSDIST
+    distinct_from: x1_letter_min
+    note: "与 x1_letter_min 成对：一个是下界一个是上界，不冲突。"
+  - key: x2_unique_longest_max
+    default: 0.30
+    rule: X-BATCH-UNIQLONGEST
+  - key: x6_misconception_reuse_min
+    default: 0.20
+    rule: X-BATCH-MISREUSE
+  - key: x5_reverse_max
+    default: 0.15
+    rule: X-BATCH-REVERSE
+    note: "P2-S4：反选题占比上限。分子取 polarity 与题干设问的并集，分母为全部题。"
+
+# ── 已知编号事故（供 P1-S6 治理，不改原文）─────────────────────
+# ── 编号治理结果（P1-S6 · 2026-11-02 处理完毕，保留记录供追溯）──
+#
+# 治理前有 3 个编号被多处定义。处理原则：**不删原文、不改义务内容**，
+# 只把编号拆开——同一编号在不同 Agent 下指不同义务时加作用域后缀，
+# 已失效的条款标「已废止」并保留为别名（grep 旧编号仍能命中）。
+#
+# 判定依据见 `python scripts/hc_audit.py`：活定义 ≥2 才算编号事故。
+# 2026-11-02 治理后 output = duplicate 0 / orphan 0。
+duplicate_numbers: []
+resolved_numbers:
+  - number: HC-6
+    holders: [HC-6.A1, HC-6.A4, HC-6.A4FIX]
+    resolution: "拆为作用域后缀：Agent1 区分度审查 / Agent4 独立质量审查 / Agent4 修复后缀禁令。"
+  - number: HC-7
+    holders: [HC-7.A1, HC-7.A4, HC-7.GEN]
+    resolution: "拆为作用域后缀：Agent1 双向细目表 / Agent4 全局一致性 / Agent2 NBME 八项。"
+  - number: HC-18
+    holders: [HC-18, HC-18-FORM]
+    resolution: "配额条款标记「已废止，由 HC-22 接管」（SOUL 保留原文与别名）；HC-18 仅保留产物形态契约一义。"
+  - number: HC-27
+    holders: [R-CONCEPT-SOURCE]
+    resolution: "已回写 SOUL（`## HC-27 概念标注强制`），与提示词、check_source_concepts 对齐。"
+  - number: HC-29
+    holders: [X-BATCH-REVERSE, X-BATCH-REVANCHOR]
+    resolution: "已落 SOUL + 提示词（PG 之前的 `### HC-29` 保留为全局约束编号）+ registry 三条 X5 规则。"
+
+# ── 提示词内部编号（PG-）与全局硬约束（HC-）的映射 ────────────
+#
+# 两套编号不共用命名空间：`PG-` 是「这一节在提示词里怎么操作」，`HC-` 是 SOUL 的全局义务。
+# 历史上提示词也用 HC- 编内部规则，导致同一个 HC-1 在 SOUL 与提示词里指两件事。
+# 2026-11-02 起提示词内部规则用 PG-，旧编号保留为别名（各提示词文件顶部有对照表）。
+prompt_numbering:
+  scope: ["Prompt版本/*.md", ".dsh/skills/*/SKILL.md"]
+  mapping:
+    PG-00: {was: HC-0, note: "意图回显/仅执行结构化指令"}
+    PG-01: {was: HC-1, note: "语义随 Agent 不同（MedGen 题型极性 / MedFix Precondition）"}
+    PG-02: {was: HC-2, note: "Schema 化元数据"}
+    PG-03: {was: HC-3, note: "知识溯源"}
+    PG-03a: {was: HC-3a, note: "溯源补充条款"}
+    PG-04: {was: HC-4, note: "选项互斥与唯一性"}
+    PG-05b: {was: HC-5b, note: "学习价值层补丁"}
+    PG-09: {was: HC-9, note: "提示词内部规则"}
+    PG-10: {was: HC-10, note: "提示词内部规则"}
+    PG-11: {was: HC-11, note: "提示词内部规则"}
+  not_migrated:
+    note: "HC-4b/5/6/7/8/12~HC-29 在 SOUL 有定义，属全局硬约束，保留 HC 前缀。"
+    submodule: "medagentwork-skill/ 是 Git 子模块，其中的提示词副本仍用旧编号；需在子模块内单独提交，主仓 rg 无法跨仓校验。"
+
+# ── 尚未落到代码的规则（登记但无 detector，需人工评审）────────
+semantic_backlog:
+  - HC-5
+  - HC-6-A4
+  - HC-7-A4
+  - HC-8
+  - HC-14
+  - HC-18-FORM
+  - HC-23
+  - HC-28

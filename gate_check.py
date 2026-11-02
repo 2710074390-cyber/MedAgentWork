@@ -358,6 +358,67 @@ def _batch_binding_issues(batch_id, report, report_path, stage, strict):
     return issues
 
 
+def _lineage_issues(batch_id, batch_data):
+    """版本血缘五元组校验（P1-S5，仅 batch047+，历史批次 ≤046 不受影响）。
+
+    五元组：prompt_sha256 / model_id / config_hash / input_hash / artifact_sha256。
+    'unknown' 与空串一律视为缺失 —— 「填了 unknown」正是本项要消灭的状态。
+    返回 (issues, report)。
+    """
+    if not ws.lineage_required(batch_id):
+        return [], {'batch': batch_id, 'status': 'SKIP', 'reason': '历史批次（<batch047），不做五元组断言',
+                    'required': False, 'entries': 0, 'issues': []}
+    entries = batch_data.get('lineage') if isinstance(batch_data, dict) else None
+    if not isinstance(entries, list) or not entries:
+        return (['lineage 缺失或不含任何记录'],
+                {'batch': batch_id, 'status': 'BLOCKED', 'required': True,
+                 'entries': 0, 'issues': ['lineage 缺失或不含任何记录']})
+
+    issues = []
+    warns = []
+    try:
+        from pipeline_config import config_hash as _cfg_hash
+
+        current_config_hash = _cfg_hash()
+    except Exception:
+        current_config_hash = ''
+
+    for i, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            issues.append(f'lineage[{i}] 结构无效')
+            continue
+        stage = entry.get('stage', f'#{i}')
+        for gap in ws._lineage_gaps(entry):
+            issues.append(f'{stage}: 缺少或无效 {gap}')
+        # config_hash 不一致只告警不阻断：调参后重跑门禁是合法场景，
+        # 但必须留痕（说明该产物是在旧阈值下生成的）。
+        if current_config_hash and entry.get('config_hash') \
+                and entry['config_hash'] != current_config_hash:
+            warns.append(f'{stage}: config_hash 与当前 pipeline.yaml 不一致'
+                         f'（产物生成时的阈值指纹 ≠ 现行配置）')
+
+    report = {'batch': batch_id, 'status': 'PASS' if not issues else 'BLOCKED',
+              'required': True, 'entries': len(entries),
+              'current_config_hash': current_config_hash,
+              'issues': issues, 'warnings': warns}
+    return issues, report
+
+
+def _write_lineage_report(batch_id, report):
+    """把血缘校验结果落盘为 AC-P1-06 证据。"""
+    try:
+        out_dir = BASE / 'reports' / 'gate'
+        out_dir.mkdir(parents=True, exist_ok=True)
+        path = out_dir / f'{batch_id}_lineage.json'
+        payload = dict(report)
+        payload['checked_at'] = datetime.now().isoformat(timespec='seconds')
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
+        return path
+    except Exception as e:  # 证据落盘失败不改变门禁结论，但必须可见
+        print(f"  ⚠️ 血缘证据写入失败: {e}", file=sys.stderr)
+        return None
+
+
 def _strict_a3_a4_binding(batch_id, report, stage):
     if not isinstance(report, dict):
         return [f'{stage} 报告结构无效']
@@ -1367,6 +1428,14 @@ def gate_final(batch_id, batch_data, learning_value_mode='off'):
     if blueprint_result and blueprint_result['status'] == 'BLOCKED':
         return {'gate': 'GATE-FINAL', 'status': 'BLOCKED',
                 'reason': '终审门禁阻断：题库蓝图检查失败', 'sub_gates': [blueprint_result]}
+
+    # P1-S5：版本血缘五元组（仅 batch047+；历史批次返回 SKIP，不阻断）
+    lineage_issues, lineage_report = _lineage_issues(batch_id, batch_data)
+    if lineage_issues:
+        return {'gate': 'GATE-FINAL', 'status': 'BLOCKED',
+                'reason': f'终审门禁阻断：版本血缘五元组不完整（{len(lineage_issues)} 项）',
+                'sub_gates': [{'gate_sub': 'GATE-FINAL-LINEAGE', 'status': 'BLOCKED',
+                               'reason': '; '.join(lineage_issues[:5])}]}
     lv_result = gate_learning_value(batch_id, batch_data, learning_value_mode)
     item_lv_result = gate_item_learning_value(batch_id, batch_data)
 
@@ -1788,6 +1857,23 @@ def run_gate_check(batch_id: str, stage: str, run_regression: bool = True,
         for sub in r.get('sub_gates', []):
             sub_icon = '  ✅' if sub['status'] == 'PASS' else '  🛑'
             print(f"  {sub_icon} {sub.get('gate_sub', '?')}: {sub.get('reason', '')}")
+
+    # P1-S5：版本血缘五元组证据（AC-P1-06）；SKIP 表示历史批次，不阻断
+    lineage_issues, lineage_report = _lineage_issues(batch_id, batch_data)
+    lineage_path = _write_lineage_report(batch_id, lineage_report)
+    if lineage_report['status'] == 'SKIP':
+        print(f"  ⏭️  血缘五元组: SKIP（{lineage_report['reason']}）")
+    else:
+        icon = '✅' if lineage_report['status'] == 'PASS' else '🛑'
+        print(f"  {icon} 血缘五元组: {lineage_report['status']}（{lineage_report['entries']} 条记录）")
+        for li in lineage_issues[:5]:
+            print(f"      - {li}")
+        for lw in (lineage_report.get('warnings') or [])[:3]:
+            print(f"      ⚠ {lw}")
+        if lineage_issues:
+            all_pass = False
+    if lineage_path:
+        print(f"      ↳ 证据: {lineage_path}")
 
     # 更新 state 中的 gate_results
     batch = state[batch_id]
