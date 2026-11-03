@@ -38,6 +38,11 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 BASE = Path(__file__).resolve().parent.parent
+
+# 2026-11-03 政策：取消“逐题人工医学核验”作为发布前置。
+# 下列 quality_flag 属流程/状态说明，不再计入 WARN；真正的风险标记仍会告警。
+POLICY_INFO_FLAGS = ("draft", "待独立复核", "未经独立医学核验",
+                     "管线v2.2测试", "机制标签已标注")
 DEFAULT_OUT = BASE / "reports" / "validate"
 
 PLACEHOLDERS = {"同上", "见解析", "见上", "略", "略述", "无", "n/a", "N/A", "-"}
@@ -306,10 +311,15 @@ def check_item(q: dict) -> dict:
     if anchor in {"partial", "mismatch", "missing"}:
         warnings.append({"rule": "R16", "detail": f"anchor_status={anchor}，需复核锚点"})
 
-    # 质量标记本身也是复核队列
+    # 质量标记：政策/流程类信息只记录不告警（2026-11-03）；其余仍进复核队列
     flags = lv.get("quality_flags") or []
+    informational_flags = []
     for f in flags:
-        warnings.append({"rule": "QUALITY_FLAG", "detail": str(f)})
+        text = str(f)
+        if any(key in text for key in POLICY_INFO_FLAGS):
+            informational_flags.append(text)
+        else:
+            warnings.append({"rule": "QUALITY_FLAG", "detail": text})
 
     # R18：锚点主题覆盖度（题干 2-gram 被 teacher_anchor 覆盖的比例）
     # 病例题（A2/A3/A4/案例）题干含大量病例细节，锚文通常是通用规则，
@@ -366,6 +376,7 @@ def check_item(q: dict) -> dict:
         "anchor_threshold": anchor_threshold,
         "issues": issues,
         "warnings": warnings,
+        "informational_flags": informational_flags,
         "status": "FAIL" if issues else ("WARN" if warnings else "PASS"),
     }
 
@@ -455,6 +466,7 @@ def audit_batch(data: list[dict]) -> tuple[list[dict], dict]:
         "misconception_id_conflicts": len(conflict_ids),
         "anchor_verified_rate": round(anchor_verified, 4),
         "anchor_low_overlap_count": anchor_low,
+        "informational_flag_count": sum(len(r.get("informational_flags") or []) for r in results),
     }
     return results, summary
 

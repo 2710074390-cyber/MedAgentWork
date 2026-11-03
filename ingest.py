@@ -40,8 +40,15 @@ STAGE_NEXT = {
 }
 
 
-def validate_json_structure(filepath):
-    """S1/S2 级快速预检：JSON 合法性 + 必填字段"""
+def validate_json_structure(filepath, stage=None):
+    """S1/S2 级快速预检：JSON 合法性 + 必填字段
+
+    stage 用于区分「对象形态」的两类产物口径（2026-11-03 修正）：
+      - agent3 质检报告：report_metadata + gate_decision
+      - agent4 追溯日志：report_metadata + source_file_synced/source_files_synced（HC-13）
+    此前不区分阶段，一律按质检报告要求 gate_decision，导致 A4 追溯日志被误判为
+    「缺少 gate_decision」并卡在交互确认上。
+    """
     issues = []
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
@@ -72,11 +79,19 @@ def validate_json_structure(filepath):
             if not ans:
                 issues.append(f'[{i}] 缺少必填字段: answer/answer_key')
     elif isinstance(data, dict):
-        # 质检报告 JSON
-        if 'report_metadata' not in data:
-            issues.append('质检报告缺少 report_metadata')
-        if 'gate_decision' not in data.get('report_metadata', {}):
-            issues.append('质检报告缺少 gate_decision')
+        meta = data.get('report_metadata')
+        if stage == 'agent4':
+            # A4 追溯日志（HC-12 追溯 / HC-13 溯源）
+            if not isinstance(meta, dict):
+                issues.append('A4 追溯日志缺少 report_metadata')
+            if not (data.get('source_file_synced') or data.get('source_files_synced')):
+                issues.append('A4 追溯日志缺少 source_file_synced/source_files_synced（HC-13）')
+        else:
+            # 质检报告 JSON
+            if 'report_metadata' not in data:
+                issues.append('质检报告缺少 report_metadata')
+            if 'gate_decision' not in (meta if isinstance(meta, dict) else {}):
+                issues.append('质检报告缺少 gate_decision')
     else:
         issues.append('JSON 顶层结构不是数组或对象')
 
@@ -389,7 +404,7 @@ def main():
     # 2. JSON 结构预检（仅 JSON 文件）
     if source.suffix == '.json':
         print(f"\n  🩺 JSON 结构预检...")
-        issues = validate_json_structure(source)
+        issues = validate_json_structure(source, args.stage)
         # 2a. 契约 schema 校验（正式重构: schemas/*.schema.json 实时生效）
         schema_issues = validate_schema(source, args.stage)
         if schema_issues:
@@ -425,7 +440,9 @@ def main():
     stage_name_map = {
         'agent2': 'A2_题库',
         'agent3': 'A3_质检报告',
-        'agent4': 'A4_修复版',
+        # A4 的产物是追溯日志（HC-12/HC-13），命名保留「追溯日志」语义：
+        # 此前叫 A4_修复版，导致 GATE-A4-TRACE 按 output 里是否含「追溯日志」判定时误判缺失
+        'agent4': 'A4_追溯日志',
         'agent5': 'A5_主复习资料',
     }
     dest_name = f"{args.batch}_{stage_name_map.get(args.stage, args.stage)}{ext}"

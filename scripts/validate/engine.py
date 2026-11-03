@@ -3,6 +3,7 @@ engine.py — 主校验引擎
 从 validate_options.py 拆分而来
 """
 import os
+import re
 import sys
 from pathlib import Path
 from .rules_numeric import BASIC_NUMERIC_CHECKS
@@ -17,15 +18,18 @@ _SCRIPTS_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _SCRIPTS_DIR not in sys.path:
     sys.path.insert(0, _SCRIPTS_DIR)
 try:
-    from scripts.telemetry import log_validation, log_info, log_error
+    from scripts.telemetry import log_validation, log_info, log_error, record_event
     TELEMETRY_AVAILABLE = True
 except ImportError:
     try:
-        from telemetry import log_validation, log_info, log_error
+        from telemetry import log_validation, log_info, log_error, record_event
         TELEMETRY_AVAILABLE = True
     except ImportError as _e:
         print(f"  ⚠️ telemetry 模块不可用({_e})，事件日志已跳过（不影响校验结果）", file=sys.stderr)
         TELEMETRY_AVAILABLE = False
+
+        def record_event(*a, **k):
+            return None
 
         def log_validation(*a, **k):
             pass
@@ -109,6 +113,13 @@ def validate_questions(questions: list[dict], verbose: bool = False, mode: str =
 
     if TELEMETRY_AVAILABLE:
         log_validation(filepath or 'unknown', mode, total_fail, total_warn, total_pass, summary)
+        # 2026-11-03 P6：把校验结果落 JSONL，供 aggregate_metrics 计算 FPY/拦截率
+        match = re.search(r'(batch\d{3}[A-Za-z0-9_\-]*)', str(filepath or ''))
+        if match:
+            record_event(match.group(1), 'validate_done', stage=mode,
+                         count=len(questions),
+                         status='FAIL' if total_fail else ('WARN' if total_warn else 'PASS'),
+                         action=f'fail={total_fail},warn={total_warn},pass={total_pass}')
 
     return all_issues, summary
 

@@ -19,13 +19,14 @@
   GATE-A3: D20 != 0 且 Bloom 偏差 <= 15%（D20 硬阻断 + Bloom 门禁，batch005+011 教训）
   GATE-A4: source_file_synced == true（补丁溯源，batch014 教训）
   GATE-FINAL: HC-9/10/11 全通过 + JSON 完整性
+              + HC-22 配额 / R0–R3 / P9 模式元数据 / Bloom 目标（batch048+）
 
 返回:
   exit 0 = GATE_PASS（可以推进）
   exit 1 = GATE_BLOCKED（必须修复后重试）
   exit 2 = GATE_FAIL（脚本/数据错误）
 """
-import sys, json, re, argparse, subprocess, hashlib, tempfile
+import sys, json, re, argparse, subprocess, hashlib, tempfile, math, time
 from collections import Counter
 from pathlib import Path
 from datetime import datetime
@@ -43,14 +44,17 @@ from pipeline_config import get_number
 
 # 集成 telemetry 模块（2026-09-09 新增；v2.1 回灌加固：降级可见，不再静默）
 try:
-    from scripts.telemetry import log_gate_check, log_info, log_error
+    from scripts.telemetry import log_gate_check, log_info, log_error, record_event
     TELEMETRY_AVAILABLE = True
 except ImportError:
     try:
-        from telemetry import log_gate_check, log_info, log_error
+        from telemetry import log_gate_check, log_info, log_error, record_event
         TELEMETRY_AVAILABLE = True
     except ImportError as _e:
         print(f"  ⚠️ telemetry 模块不可用({_e})，事件日志已跳过（不影响门禁结果）", file=sys.stderr)
+
+        def record_event(*a, **k):
+            return None
 
         def log_gate_check(*a, **k):
             pass
@@ -251,6 +255,236 @@ def infer_product_types(batch_id, batch_data) -> set[str]:
 
 def is_question_bearing(types: set[str]) -> bool:
     return bool(types & {PRODUCT_QUESTION_BANK, PRODUCT_PREDICTION_PAPER})
+
+
+# ── 发布前置契约（2026-11-03）──────────────────────────────
+# HC-22 配额 / R0–R4 / P9 模式元数据 / Bloom 目标，四项都在 final 门禁里机械判定。
+QUOTA_MIN = 0.15
+QUOTA_MAX = 0.25
+QUALITY_STAGE_MIN_BATCH = 48
+P9_MODE_MIN_BATCH = 48
+BLOOM_MIN_BATCH = 48
+BLOOM_SHORTFALL_PP = 0.05
+P9_MODES = {'teacher_keypoint', 'course_schedule', 'module'}
+
+
+def _batch_number(batch_id):
+    m = re.fullmatch(r'batch(\d+)(?:-[A-Za-z0-9]+)?', str(batch_id or ''))
+    return int(m.group(1)) if m else None
+
+
+def _final_questions(batch_id):
+    final_dir = BASE / '最终产物' / batch_id
+    if not final_dir.exists():
+        return [], None
+    for p in sorted(final_dir.glob('ALL_questions_FIXED*.json')):
+        try:
+            data = json.loads(p.read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            continue
+        if isinstance(data, list) and data:
+            return data, p
+    return [], None
+
+
+def _real_family(q):
+    if not isinstance(q, dict):
+        return 'original'
+    if q.get('kaoyan_origin'):
+        return 'kaoyan'
+    if q.get('zhiyi_pdf_origin'):
+        return 'zhiyi'
+    if isinstance(q.get('zhiyi_origin'), dict):
+        return 'zhiyi'
+    if q.get('source') in ('zhiyi', 'zhiyi_pdf'):
+        return 'zhiyi'
+    return 'original'
+
+
+def _quota_shortfall_ok(status, plan):
+    if not isinstance(status, dict):
+        return False, 'quota_status 缺失'
+    state = str(status.get('status') or '')
+    reason = str(status.get('reason') or '')
+    if state not in ('reduced', 'cancelled', 'deferred'):
+        return False, f'status={state or "空"}（需 reduced/cancelled/deferred）'
+    if not reason:
+        return False, 'reason 缺失'
+    try:
+        requested = int(status.get('requested'))
+        selected = int(status.get('selected'))
+        available = int(status.get('available'))
+    except (TypeError, ValueError):
+        return False, 'requested/selected/available 缺失或非整数'
+    if state == 'cancelled':
+        if available != 0 or selected != 0:
+            return False, f'cancelled 但 available={available}, selected={selected}'
+        if reason != 'no_candidate':
+            return False, f'cancelled 的 reason 应为 no_candidate（当前 {reason}）'
+    elif state == 'reduced':
+        if available <= 0 or not (0 < selected < requested):
+            return False, f'reduced 但 available={available}, selected={selected}, requested={requested}'
+    elif state == 'deferred':
+        hc28 = plan.get('hc28_update') if isinstance(plan, dict) else None
+        if available <= 0 or selected != 0:
+            return False, f'deferred 但 available={available}, selected={selected}'
+        if not isinstance(hc28, dict) or hc28.get('placed_candidates') != 0:
+            return False, 'deferred 但缺 hc28_update.placed_candidates=0'
+    return True, ''
+
+
+def check_real_question_quota(batch_id, batch_data):
+    """HC-22：无 plan 或配额不足且无 reduced/cancelled 理由 → BLOCKED。"""
+    result = {'gate_sub': 'GATE-QUOTA', 'status': 'SKIP', 'reason': ''}
+    types = infer_product_types(batch_id, batch_data)
+    if PRODUCT_QUESTION_BANK not in types:
+        result['reason'] = f'非题库批次（{", ".join(sorted(types))}），HC-22 配额不适用'
+        return result
+    if not _is_strict_batch(batch_id, batch_data):
+        result['reason'] = '历史批次（<=batch044）不追溯 HC-22'
+        return result
+    questions, _ = _final_questions(batch_id)
+    if not questions:
+        result['reason'] = '无最终产物 ALL_questions_FIXED*.json，配额检查跳过'
+        return result
+    plan_path = BASE / '中间产物' / batch_id / 'real_question_plan.json'
+    if not plan_path.exists():
+        result.update(status='BLOCKED',
+                      reason=f'缺少真题选题计划 {plan_path.relative_to(BASE)}：'
+                             '新批次必须先跑 real_question_cli.py plan，或按 HC-22 记录 reduced/cancelled 理由')
+        return result
+    try:
+        plan = json.loads(plan_path.read_text(encoding='utf-8'))
+    except (OSError, ValueError) as exc:
+        result.update(status='BLOCKED', reason=f'真题选题计划不可读：{exc}')
+        return result
+    total = len(questions)
+    counts = Counter(_real_family(q) for q in questions)
+    quota_status = plan.get('quota_status') if isinstance(plan, dict) else None
+    if not isinstance(quota_status, dict):
+        result.update(status='BLOCKED',
+                      reason='选题计划缺 quota_status（需 met/reduced/cancelled/deferred 记录）')
+        return result
+    failures, details = [], []
+    for fam, label in (('kaoyan', '考研族'), ('zhiyi', '执业医师族')):
+        ratio = counts[fam] / total if total else 0.0
+        details.append(f'{label} {counts[fam]}/{total}={ratio:.1%}')
+        if ratio < QUOTA_MIN:
+            ok, why = _quota_shortfall_ok(quota_status.get(fam), plan)
+            if not ok:
+                failures.append(f'{label}占比 {ratio:.1%} < {QUOTA_MIN:.0%}（{why}）')
+        elif ratio > QUOTA_MAX:
+            details.append(f'{label} 超上限 {QUOTA_MAX:.0%}')
+    result['reason'] = '；'.join(details)
+    if failures:
+        result.update(status='BLOCKED', reason='HC-22 配额未达标：' + '；'.join(failures))
+    else:
+        result.update(status='PASS')
+    return result
+
+
+def check_quality_stages(batch_id, batch_data):
+    """HC-25：batch048 起 R0–R3 报告必须齐全，且 R3 必须是 enforce。"""
+    result = {'gate_sub': 'GATE-R0-R4', 'status': 'SKIP', 'reason': ''}
+    number = _batch_number(batch_id)
+    if number is None or number < QUALITY_STAGE_MIN_BATCH:
+        result['reason'] = 'batch048 起强制 R0–R4；本批次不适用'
+        return result
+    gate_dir = BASE / 'reports' / 'gate'
+    missing, bad = [], []
+    for stage in ('r0', 'r1', 'r2', 'r3'):
+        files = sorted(gate_dir.glob(f'quality_gate_{batch_id}_{stage}_*.json')) if gate_dir.exists() else []
+        if not files:
+            exact = gate_dir / f'quality_gate_{batch_id}_{stage}.json'
+            files = [exact] if exact.exists() else []
+        if not files:
+            missing.append(stage.upper())
+            continue
+        try:
+            data = json.loads(files[-1].read_text(encoding='utf-8'))
+        except (OSError, ValueError) as exc:
+            bad.append(f'{stage.upper()} 报告不可读：{exc}')
+            continue
+        status = str(data.get('status') or '').upper()
+        if status in ('BLOCKED', 'SKIPPED', 'FAIL', ''):
+            bad.append(f'{stage.upper()} status={status or "空"}')
+        if stage == 'r3' and str(data.get('mode') or '').lower() != 'enforce':
+            bad.append(f'R3 mode={data.get("mode") or "空"}（发布前置必须是 enforce）')
+    if missing:
+        result.update(status='BLOCKED', reason='缺少 R0–R3 质量门禁报告：' + '、'.join(missing))
+    elif bad:
+        result.update(status='BLOCKED', reason='R0–R3 报告未通过：' + '；'.join(bad))
+    else:
+        result.update(status='PASS', reason='R0–R3 报告齐全；R3=enforce 且非 BLOCKED')
+    return result
+
+
+def check_p9_metadata(batch_id, batch_data):
+    """P9：batch048 起题库每题必须有模式元数据（teacher_keypoint/course_schedule/module）。"""
+    result = {'gate_sub': 'GATE-P9-MODE', 'status': 'SKIP', 'reason': ''}
+    number = _batch_number(batch_id)
+    if number is None or number < P9_MODE_MIN_BATCH:
+        result['reason'] = 'batch048 起强制 P9 模式元数据；本批次不适用'
+        return result
+    types = infer_product_types(batch_id, batch_data)
+    if PRODUCT_QUESTION_BANK not in types:
+        result['reason'] = '非题库批次，P9 模式元数据不适用'
+        return result
+    questions, _ = _final_questions(batch_id)
+    if not questions:
+        result['reason'] = '无最终产物，P9 模式元数据检查跳过'
+        return result
+    missing = [str(q.get('id') or q.get('question_id') or '?') for q in questions
+               if str(q.get('p9_mode') or '') not in P9_MODES]
+    if missing:
+        result.update(status='BLOCKED',
+                      reason=f'{len(missing)}/{len(questions)} 题缺 P9 模式元数据（p9_mode 须为 '
+                             f'{" / ".join(sorted(P9_MODES))}）：' + '、'.join(missing[:8]))
+    else:
+        result.update(status='PASS', reason=f'{len(questions)} 题模式元数据齐全')
+    return result
+
+
+def check_bloom_target(batch_id, batch_data):
+    """P9/Bloom：batch048 起，理解/分析型占比低于 target_bloom 5pp → BLOCKED 并要求补题。"""
+    result = {'gate_sub': 'GATE-BLOOM-TARGET', 'status': 'SKIP', 'reason': ''}
+    number = _batch_number(batch_id)
+    if number is None or number < BLOOM_MIN_BATCH:
+        result['reason'] = 'batch048 起强制 Bloom 目标；本批次不适用'
+        return result
+    types = infer_product_types(batch_id, batch_data)
+    if PRODUCT_QUESTION_BANK not in types:
+        result['reason'] = '非题库批次，Bloom 目标不适用'
+        return result
+    target = batch_data.get('target_bloom') if isinstance(batch_data, dict) else None
+    if not isinstance(target, dict) or not target:
+        result['reason'] = '未声明 target_bloom，Bloom 目标检查跳过'
+        return result
+    questions, _ = _final_questions(batch_id)
+    if not questions:
+        result['reason'] = '无最终产物，Bloom 目标检查跳过'
+        return result
+    total = len(questions)
+    bloom_alias = {'memory': '记忆', 'comprehension': '理解',
+                  'application': '应用', 'analysis': '分析'}
+    counts = Counter(bloom_alias.get(str(q.get('bloom') or '').strip().lower(),
+                                     str(q.get('bloom') or '').strip())
+                     for q in questions)
+    gaps = []
+    for level in ('理解', '分析'):
+        try:
+            want = float(target.get(level) or 0) / 100.0
+        except (TypeError, ValueError):
+            continue
+        actual = counts.get(level, 0) / total
+        if actual + BLOOM_SHORTFALL_PP < want:
+            need = math.ceil((want - actual) * total)
+            gaps.append(f'{level} {actual:.0%} < 目标 {want:.0%}（至少补 {need} 题）')
+    if gaps:
+        result.update(status='BLOCKED', reason='Bloom 结构未达教师重点目标：' + '；'.join(gaps))
+    else:
+        result.update(status='PASS', reason='理解/分析型占比达到 target_bloom')
+    return result
 
 
 # 正式重构 (2026-08-13): load_state/save_state/set_halt/clear_halt/check_halt
@@ -1117,6 +1351,66 @@ def gate_agent4(batch_id, batch_data):
             except Exception:
                 pass
 
+    # ── 修复空转检测（2026-11-03 P0）──────────────────────────
+    # MedFix 必须真的改动产物：A2 输入与 A4 输出字节完全相同 = 没有修复。
+    # 历史教训：batch043/046 的 ALL_questions_FIXED.json 与 ALL_questions.json
+    # sha256 一致，却照常通过门禁并签收。这里把 no-op 设为阻断项，只对 strict
+    # 批次（batch045+）生效；历史批次不追溯。确无缺陷可修时，必须在
+    # workflow_state 的该批次写 medfix_noop_waiver.reason 显式豁免。
+    if _is_strict_batch(batch_id, batch_data) and final_dir.exists():
+        a2_input = BASE / '中间产物' / batch_id / 'ALL_questions.json'
+        fixed_files = sorted(final_dir.glob('ALL_questions_FIXED*.json'))
+        if a2_input.exists() and fixed_files:
+            try:
+                a2_sha = _sha256_file(a2_input)
+                noop_files = [f.name for f in fixed_files if _sha256_file(f) == a2_sha]
+            except OSError:
+                noop_files = []
+            if noop_files:
+                waiver = batch_data.get('medfix_noop_waiver') if isinstance(batch_data, dict) else None
+                waived = isinstance(waiver, dict) and str(waiver.get('reason') or '').strip() != ''
+                if not waived:
+                    issues.append({
+                        'gate_sub': 'GATE-A4-NOOP',
+                        'status': 'BLOCKED',
+                        'reason': f'修复空转：{", ".join(noop_files)} 与 A2 输入 ALL_questions.json '
+                                  f'字节完全相同（sha256 {a2_sha[:12]}…），说明 MedFix 未改动任何内容。'
+                                  f'如确认无缺陷可修，请在 workflow_state 写入 medfix_noop_waiver.reason 后重跑。',
+                        'rule': 'no-op 修复检测 (batch043/046 教训)',
+                    })
+
+    # ── Patch 契约（不可变字段）接入门禁（2026-11-03 P0）──────────
+    # 与 no-op 检测互补：no-op 抓「什么都没改」，这里抓「改了不该改的」
+    # （answer / 真题题干 / teacher_anchor / source_* / keypoint_ref / license / schema_version 等）。
+    # 规则源：scripts/check_patch_integrity.py 的 IMMUTABLE_FIELDS。
+    if _is_strict_batch(batch_id, batch_data) and final_dir.exists():
+        a2_input = BASE / '中间产物' / batch_id / 'ALL_questions.json'
+        fixed_files = sorted(final_dir.glob('ALL_questions_FIXED*.json'))
+        if a2_input.exists() and fixed_files:
+            try:
+                import check_patch_integrity as _cpi
+                patch_rep = _cpi.audit(a2_input, fixed_files[0], tag=batch_id)
+                counts = patch_rep.get('counts') or {}
+                viol = int(counts.get('immutable_violations') or 0)
+                dups = patch_rep.get('duplicate_ids') or []
+                if viol or dups:
+                    detail = []
+                    if viol:
+                        detail.append(f'不可变字段被改动 {viol} 题')
+                    if dups:
+                        detail.append(f'重复 id {len(dups)} 个')
+                    issues.append({
+                        'gate_sub': 'GATE-A4-PATCH-AUDIT',
+                        'status': 'BLOCKED',
+                        'reason': f'Patch 契约违例：{"；".join(detail)}。'
+                                  f'答案/真题题干/锚点/溯源/keypoint_ref/license/schema_version 不允许被修复环节改动；'
+                                  f'确需改答案请走人工复核并显式留痕。',
+                        'rule': 'Patch 不可变字段（P5-S2 / HC-13）',
+                    })
+            except Exception:
+                # 审计器自身异常不改变门禁结论；no-op 检测仍会生效。
+                pass
+
     if issues:
         return {
             'gate': 'GATE-A4',
@@ -1411,6 +1705,43 @@ def gate_question_blueprint(batch_id, batch_data):
     return result
 
 
+def _verify_final_json(batch_id, batch_data):
+    """机械校验最终产物题库 JSON 的有效性。
+
+    GATE-FINAL-JSON 原先只认 Agent5 在 final_review 里自报的 json_valid 布尔值。
+    纯题库批次（question_bank）没有 Agent5，final_review 缺失 → json_valid=None →
+    终审必然 BLOCKED，形成死锁。这里改为：自报缺失时直接解析交付 JSON 求值，
+    判定强度高于自报（真解析 + 逐题必填字段检查），失败仍 BLOCKED。
+    """
+    final_dir = BASE / '最终产物' / batch_id
+    if not final_dir.is_dir():
+        return False, f'最终产物目录不存在：{final_dir}'
+    cands = sorted(final_dir.glob('ALL_questions_FIXED*.json'))
+    if not cands:
+        cands = [p for p in sorted(final_dir.glob('*.json'))
+                 if '追溯日志' not in p.name and '补丁明细' not in p.name]
+    if len(cands) != 1:
+        return False, f'最终产物题库缺失或存在歧义（{len(cands)} 个 json）'
+    path = cands[0]
+    try:
+        data = json.loads(path.read_text(encoding='utf-8'))
+    except (OSError, ValueError) as exc:
+        return False, f'{path.name} 解析失败：{type(exc).__name__}: {exc}'
+    if not isinstance(data, list) or not data:
+        return False, f'{path.name} 顶层不是非空数组'
+    bad = []
+    for i, q in enumerate(data):
+        if not isinstance(q, dict):
+            bad.append(f'[{i}] 非对象')
+            continue
+        for key in ('id', 'stem', 'options', 'answer'):
+            if not q.get(key):
+                bad.append(f'[{i}] 缺 {key}')
+    if bad:
+        return False, f'{path.name} 结构异常 {len(bad)} 处（如 {bad[0]}）'
+    return True, f'{path.name} 解析成功，{len(data)} 题，id/stem/options/answer 齐备'
+
+
 def gate_final(batch_id, batch_data, learning_value_mode='off'):
     """
     终审前全量检查: HC-9/10/11 + JSON完整性 + Bloom终态
@@ -1436,6 +1767,22 @@ def gate_final(batch_id, batch_data, learning_value_mode='off'):
                 'reason': f'终审门禁阻断：版本血缘五元组不完整（{len(lineage_issues)} 项）',
                 'sub_gates': [{'gate_sub': 'GATE-FINAL-LINEAGE', 'status': 'BLOCKED',
                                'reason': '; '.join(lineage_issues[:5])}]}
+
+    # ── 发布前置契约（2026-11-03）──────────────────────────────
+    # HC-22 配额 / R0–R3 / P9 模式元数据 / Bloom 目标，四项在 APPROVED 早退之前判定，
+    # 避免「先签收再补门禁」绕过。
+    contract_results = [
+        check_real_question_quota(batch_id, batch_data),
+        check_quality_stages(batch_id, batch_data),
+        check_p9_metadata(batch_id, batch_data),
+        check_bloom_target(batch_id, batch_data),
+    ]
+    blocked_contract = [r for r in contract_results if r.get('status') == 'BLOCKED']
+    if blocked_contract:
+        return {'gate': 'GATE-FINAL', 'status': 'BLOCKED',
+                'reason': '终审门禁阻断：发布前置契约未满足',
+                'sub_gates': blocked_contract}
+
     lv_result = gate_learning_value(batch_id, batch_data, learning_value_mode)
     item_lv_result = gate_item_learning_value(batch_id, batch_data)
 
@@ -1446,7 +1793,7 @@ def gate_final(batch_id, batch_data, learning_value_mode='off'):
             'gate': 'GATE-FINAL',
             'status': 'PASS',
             'reason': f'批次已签收 ({batch_status})，人工审核已覆盖终审',
-            'sub_gates': [g for g in (lv_result, item_lv_result) if g],
+            'sub_gates': [g for g in (contract_results + [lv_result, item_lv_result]) if g],
         }
 
     issues = []
@@ -1504,11 +1851,21 @@ def gate_final(batch_id, batch_data, learning_value_mode='off'):
     if needs_json:
         json_valid = final_review.get('json_valid', None)
         if not (isinstance(json_valid, bool) and json_valid):
-            issues.append({
-                'gate_sub': 'GATE-FINAL-JSON',
-                'status': 'BLOCKED',
-                'reason': f'最终产物 JSON 有效性未证实（json_valid={json_valid!r}，必须为布尔 true）',
-            })
+            # 自报缺失（典型：纯题库批次无 Agent5）→ 改为机械解析交付 JSON 求值
+            mech_ok, mech_detail = _verify_final_json(batch_id, batch_data)
+            if mech_ok:
+                warn_gates.append({
+                    'gate_sub': 'GATE-FINAL-JSON',
+                    'status': 'PASS',
+                    'reason': f'Agent5 未自报 json_valid（{json_valid!r}），已改用机械校验：{mech_detail}',
+                })
+            else:
+                issues.append({
+                    'gate_sub': 'GATE-FINAL-JSON',
+                    'status': 'BLOCKED',
+                    'reason': f'最终产物 JSON 有效性未证实（自报 json_valid={json_valid!r}；'
+                              f'机械校验失败：{mech_detail}）',
+                })
     else:
         warn_gates.append({
             'gate_sub': 'GATE-FINAL-JSON',
@@ -1529,6 +1886,7 @@ def gate_final(batch_id, batch_data, learning_value_mode='off'):
             issues.append(item_lv_result)
         else:
             warn_gates.append(item_lv_result)
+    warn_gates.extend(contract_results)
     subject = batch_data.get('subject', '')
     if needs_review and subject and subject in ('内科学', '儿科学', '外科学', '神经病学', '精神病学',
                                                  '皮肤性病学', '中医学', '医患沟通'):
@@ -1760,6 +2118,7 @@ def detect_current_stage(state, batch_id):
 def run_gate_check(batch_id: str, stage: str, run_regression: bool = True,
                    learning_value_mode: str = 'off') -> None:
     """执行门禁检查"""
+    started_at = time.time()
     if TELEMETRY_AVAILABLE:
         log_info(f"Starting gate check for {batch_id}", batch_id=batch_id, stage=stage)
     
@@ -1855,8 +2214,25 @@ def run_gate_check(batch_id: str, stage: str, run_regression: bool = True,
 
         # 子门禁
         for sub in r.get('sub_gates', []):
-            sub_icon = '  ✅' if sub['status'] == 'PASS' else '  🛑'
+            sub_status = sub.get('status', '')
+            sub_icon = {'PASS': '  ✅', 'SKIPPED': '  ⏭️ ', 'WARN': '  ⚠️ '}.get(sub_status, '  🛑')
             print(f"  {sub_icon} {sub.get('gate_sub', '?')}: {sub.get('reason', '')}")
+
+    # P6：本阶段门禁事件写入 reports/obs/<batch>_telemetry.jsonl（每批一份）
+    if TELEMETRY_AVAILABLE:
+        elapsed_ms = round((time.time() - started_at) * 1000, 1)
+        for r in results:
+            try:
+                record_event(batch_id, 'gate_check', stage=stage, gate=r.get('gate'),
+                             status=r.get('status'), reason=str(r.get('reason') or '')[:300],
+                             duration_ms=elapsed_ms)
+            except Exception:
+                pass
+        try:
+            record_event(batch_id, 'gate_stage_done', stage=stage,
+                         status='PASS' if all_pass else 'BLOCKED', count=len(results))
+        except Exception:
+            pass
 
     # P1-S5：版本血缘五元组证据（AC-P1-06）；SKIP 表示历史批次，不阻断
     lineage_issues, lineage_report = _lineage_issues(batch_id, batch_data)
@@ -1911,6 +2287,15 @@ def run_gate_check(batch_id: str, stage: str, run_regression: bool = True,
             print(f"\n  🛑 HALT 信号已设置（批次 {batch_id}）")
 
     ws.save_state(state)
+
+    # P6：final 阶段刷新聚合指标（SQLite + metrics.json），事件在上一段已落盘
+    if stage == 'final':
+        try:
+            import aggregate_metrics as _am
+            _am.build(_am.DEFAULT_DB, _am.DEFAULT_OUT)
+            print(f"  📊 指标已聚合：{_am.DEFAULT_OUT}")
+        except Exception as exc:
+            print(f"  ⚠️ 指标聚合失败（不阻断门禁）：{type(exc).__name__}: {exc}")
 
     # 汇总
     print(f"\n{'─'*60}")

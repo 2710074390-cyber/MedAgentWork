@@ -104,8 +104,8 @@ def _write(tmp: Path, rel: str, text: str) -> Path:
     return p
 
 
-def test_g3_blocks_question_bank_in_whitelist(tmp_path=None):
-    """白名单里混入题库文件 → FAIL。这是闸门存在的原因。"""
+def test_g3_lists_question_bank_in_whitelist(tmp_path=None):
+    """白名单里混入题库文件 → 只清点，不阻断（2026-11-03 授权不再作门禁）。"""
     import tempfile
 
     tmp = Path(tmp_path or tempfile.mkdtemp())
@@ -113,19 +113,20 @@ def test_g3_blocks_question_bank_in_whitelist(tmp_path=None):
     idx = {"batch032_M1_A1_021": {"real": True, "status": "unclear",
                                   "license": "unknown", "origin_kind": "kaoyan"}}
     r = pg.check_qid_exposure([f], idx, root=tmp)
-    assert r["status"] == "FAIL"
+    assert r["status"] == "INFO"
     assert r["blocked_count"] == 1
     assert r["blocked"][0]["qid"] == "batch032_M1_A1_021"
+    assert "不再阻断" in r["note"]
 
 
 def test_g3_ignores_original_questions(tmp_path=None):
-    """原创题不涉及清权，不该被拦。"""
+    """原创题不进真题索引（清点为空）。"""
     import tempfile
 
     tmp = Path(tmp_path or tempfile.mkdtemp())
     f = _write(tmp, "site/bank.md", "见 batch032_M1_A1_999 此题")
     r = pg.check_qid_exposure([f], {}, root=tmp)
-    assert r["status"] == "PASS"
+    assert r["status"] == "INFO" and r["blocked_count"] == 0
 
 
 def test_g3_cleared_passes(tmp_path=None):
@@ -136,18 +137,18 @@ def test_g3_cleared_passes(tmp_path=None):
     idx = {"batch032_M1_A1_021": {"real": True, "status": "cleared",
                                   "license": "cleared", "origin_kind": "kaoyan"}}
     r = pg.check_qid_exposure([f], idx, root=tmp)
-    assert r["status"] == "PASS" and r["cleared"] == 1
+    assert r["status"] == "INFO" and r["cleared"] == 1
 
 
-def test_g3_declared_still_blocks(tmp_path=None):
-    """public_noncommercial 也拦 —— 有声明无凭证。"""
+def test_g3_declared_is_informational(tmp_path=None):
+    """public_noncommercial 只清点，不再拦截（授权门禁已取消）。"""
     import tempfile
 
     tmp = Path(tmp_path or tempfile.mkdtemp())
     f = _write(tmp, "site/bank.md", "见 batch032_M1_A1_021 此题")
     idx = {"batch032_M1_A1_021": {"real": True, "status": "declared",
                                   "license": "public_noncommercial", "origin_kind": "kaoyan"}}
-    assert pg.check_qid_exposure([f], idx, root=tmp)["status"] == "FAIL"
+    assert pg.check_qid_exposure([f], idx, root=tmp)["status"] == "INFO"
 
 
 def test_real_whitelist_is_clean():
@@ -156,7 +157,8 @@ def test_real_whitelist_is_clean():
     files = pg.expand_whitelist(entries)
     idx = pg.qid_index(pg.load_matrix()["rows"])
     r = pg.check_qid_exposure(files, idx)
-    assert r["status"] == "PASS", r["blocked"][:5]
+    assert r["status"] == "INFO", r["blocked"][:5]
+    assert r["blocked_count"] == 0, r["blocked"][:5]
 
 
 # ── G4 裸题面 ──────────────────────────────────────────────
@@ -215,29 +217,32 @@ def test_run_returns_ok_on_real_repo(tmp_path=None):
     assert ids[:4] == ["G1", "G2", "G3", "G4"]
 
 
-def test_run_extra_path_triggers_fail():
-    """模拟把 最终产物 加进白名单 → 整闸 FAIL，public_unclear > 0。"""
+def test_run_extra_path_is_inventoried_not_blocked():
+    """模拟把 最终产物 加进白名单 → 授权只清点，不再整闸 FAIL（2026-11-03）。"""
     rep = pg.run(extra=["最终产物"])
-    assert rep["status"] == "FAIL"
+    assert rep["status"] != "FAIL"
     assert rep["public_unclear"] > 0
+    g3 = next(c for c in rep["checks"] if c["id"] == "G3")
+    assert g3["real_qids_in_whitelist"] > 0
 
 
-def test_main_exit_code_fails_on_violation(tmp_path=None):
+def test_main_exit_code_ok_when_only_license_inventory(tmp_path=None):
+    """授权内容不再导致非 0 退出码。"""
     import tempfile
 
     tmp = Path(tempfile.mkdtemp())
     code = pg.main(["--extra", "最终产物", "--quiet",
                     "--json", str(tmp / "r.json"), "--md", str(tmp / "r.md")])
-    assert code == 1
+    assert code == 0
     data = json.loads((tmp / "r.json").read_text(encoding="utf-8"))
-    assert data["status"] == "FAIL"
+    assert data["status"] != "FAIL"
 
 
-def test_report_md_mentions_stricter_contract():
+def test_report_md_mentions_license_policy():
     rep = pg.run()
     md = pg.render_md(rep)
     assert "declared" in md and "cleared" in md
-    assert "公开站里根本没有题" in md, "报告必须点明 AC-P8-04 的 0 是「没有题」不是「已清权」"
+    assert "不再" in md and "授权" in md, "报告必须写明授权已不作门禁"
 
 
 # ── 数据源可得性（CI 上 reports/ 不进 git，这是关键）────────────
@@ -262,13 +267,14 @@ def test_live_scan_matches_snapshot_when_available():
            sum(1 for v in snap.values() if v["status"] == "cleared")
 
 
-def test_matrix_unavailable_fails_closed():
-    """拿不到 license 数据必须拦，否则 CI 上闸门静默通过。"""
+def test_matrix_unavailable_is_informational():
+    """授权数据取不到只影响清点，不再阻断部署（2026-11-03）。"""
     from unittest.mock import patch
 
     with patch.object(pg, "load_matrix",
                       return_value={"rows": [], "missing": True,
                                     "error": "boom", "summary": {}, "source": "failed"}):
         rep = pg.run()
-    assert rep["status"] == "FAIL"
+    assert rep["status"] != "FAIL"
     assert rep["checks"][0]["id"] == "G0"
+    assert rep["checks"][0]["status"] == "INFO"

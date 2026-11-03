@@ -164,13 +164,47 @@ def test_export_md_shared_case_once():
 
 
 def test_release_info_legacy_fallback():
-    """无 release 字段时保守补齐：draft→pending_human，approved→publishable。"""
-    draft = qbank._release_info({'stem': '测试题', 'review_status': 'draft'})
-    assert draft['disposition'] == 'pending_human'
-    assert draft['derived'] is True
+    """无 release 字段：历史批次保守（draft→pending_human），v2.2 新批次默认发布。"""
+    legacy = qbank._release_info({'stem': '测试题', 'review_status': 'draft'})
+    assert legacy['disposition'] == 'pending_human'
+    assert legacy['derived'] is True
+    # 2026-11-03：取消逐题人工核验前置，v2.2 新批次 agent 自检后可默认发布
+    v22 = qbank._release_info({'stem': '测试题', 'review_status': 'draft', 'schema_version': '2.2'})
+    assert v22['disposition'] == 'publishable'
+    assert v22['evidence_grade'] == 'B'
+    assert v22['derived'] is True
     approved = qbank._release_info({'stem': '测试题', 'review_status': 'approved'})
     assert approved['disposition'] == 'publishable'
     assert approved['derived'] is True
+
+
+def test_export_md_review_queue_md_is_human_readable():
+    """2026-11-03：需要人工审核时，必须同时产出人可读 review_queue.md。"""
+    with tempfile.TemporaryDirectory() as tmp:
+        questions = [
+            {'id': 'T1', 'module': 'M1', 'type': 'A1', 'bloom_level': '记忆',
+             'stem': '可发布题？', 'options': {'A': 'a', 'B': 'b'}, 'answer': 'A',
+             'release': {'disposition': 'publishable', 'evidence_grade': 'A',
+                         'risk_level': 'low', 'reason_code': 'NONE'}},
+            {'id': 'T2', 'module': 'M1', 'type': 'A2', 'bloom_level': '应用',
+             'stem': '需要人工复核的题干内容？', 'options': {'A': 'a', 'B': 'b'}, 'answer': 'A',
+             'release': {'disposition': 'pending_human', 'evidence_grade': 'C',
+                         'risk_level': 'medium', 'reason_code': 'SOURCE_MISSING',
+                         'human_check': '核对来源与答案唯一性',
+                         'suggested_action': '复核后改为 publishable'}},
+        ]
+        src = _mk(tmp, 'q.json', questions)
+        out = str(Path(tmp) / 'q.md')
+        queue = str(Path(tmp) / 'review_queue.json')
+        qbank.export_md(str(src), out, title='测试题库', review_queue_out=queue)
+        md_path = Path(tmp) / 'review_queue.md'
+        assert md_path.exists()
+        md = md_path.read_text(encoding='utf-8')
+        assert '# 人工复核队列' in md
+        assert '待人工复核：1 题' in md
+        assert 'T2' in md and '需要人工复核的题干内容' in md
+        assert '核对来源与答案唯一性' in md
+        assert '不再要求逐题人工核验' in md
 
 
 def test_norm_answer_multi_letter_and_compound():

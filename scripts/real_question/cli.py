@@ -109,6 +109,8 @@ def cmd_check(args) -> int:
         build=args.build,
         require_ratio=args.require_ratio,
         max_ratio=args.max_ratio,
+        enforce_quota=not args.no_enforce_quota,
+        enforce_license=args.enforce_license,
     )
     if args.out:
         out = Path(args.out)
@@ -163,7 +165,7 @@ def cmd_stats(args) -> int:
 
 
 def main(argv=None) -> int:
-    parser = argparse.ArgumentParser(description="真题检索与双族配额工具（考研 / 执业医师：历年真题 + CMExam）")
+    parser = argparse.ArgumentParser(description="真题检索与双族配额工具（配额保留；授权自 2026-11-03 起不设门禁）")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     p_build = sub.add_parser("build", help="构建题目级索引（JSONL）")
@@ -194,6 +196,10 @@ def main(argv=None) -> int:
     p_check.add_argument("--require-ratio", type=float, default=0.15)
     p_check.add_argument("--max-ratio", type=float, default=0.25)
     p_check.add_argument("--out", default="")
+    p_check.add_argument("--no-enforce-quota", action="store_true",
+                         help="关闭 15%%–25%% 真题配额校验（默认校验）")
+    p_check.add_argument("--enforce-license", action="store_true",
+                         help="旧口径：license 不合规也判 FAIL（默认不判，2026-11-03 取消上架授权门禁）")
     p_check.set_defaults(func=cmd_check)
 
     p_rec = sub.add_parser("recover", help="用扩展规则重算考研答案表")

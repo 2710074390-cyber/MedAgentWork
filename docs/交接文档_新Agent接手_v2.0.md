@@ -14,24 +14,24 @@
 | 项 | 值 |
 |---|---|
 | 工作区 | `C:\Users\38063\Desktop\MedAgentWork`（Windows，中文路径，命令加英文双引号） |
-| Python | 默认 `python`（3.13）；torch 系仍需 `Python312/python.exe` |
-| 测试基线 | **两种解释器口径不同，都要看**（数字随新增用例增长，**不变量是 0 失败 / 0 错误**）：<br>① 默认 `python` 3.13（**无** jsonschema/numpy）→ 2026-11-02 17:25 实测 **318 通过 / 0 失败 / 0 错误 / 86 跳过**<br>② `Python312/python.exe`（**有** jsonschema+numpy）→ **354 通过 / 0 失败 / 0 错误 / 50 跳过** |
-| 规则注册表 | **70 条**（hard 55 / soft 8 / process 7），lint `exit 0`，硬规则检测器覆盖 **98.2%** |
-| 题库注册表 | **6,590 题**（`question_bank/registry_meta.json`） |
+| Python | 默认 `python` 现为 **3.12.10（有 jsonschema/numpy）**；3.13 在 `C:/Users/38063/.workbuddy/binaries/python/versions/3.13.12/python.exe`（无这些依赖）；torch 系用 Python312 |
+| 测试基线 | **两种解释器口径不同，都要看**（数字随新增用例增长，**不变量是 0 失败 / 0 错误**）：<br>① 默认 `python` 3.12.10（**有** jsonschema+numpy）→ 2026-11-03 实测 **422 通过 / 0 失败 / 0 错误 / 61 跳过**<br>② 3.13（`.workbuddy`，**无** jsonschema/numpy）→ **386 通过 / 0 失败 / 0 错误 / 97 跳过** |
+| 规则注册表 | **74 条**（hard 57 / soft 10 / process 7），lint `exit 0`，硬规则检测器覆盖 **98.2%** |
+| 题库注册表 | **6,640 题**（`question_bank/registry_meta.json`，含 batch047 +50） |
 | 本轮改动 | **未提交 git**（working tree 55 项，含本轮新增文档；提交前先看 §9 第 6 步） |
 
 ### 1.2 阶段 0 完成情况（本轮交付）
 
 | 线 | 内容 | 状态 |
 |---|---|---|
-| P1 知识治理 | 规则注册表 / lint 与渲染 / 配置 SSOT / schema fail-loud / lineage 五元组 | ✅ AC-P1-01~05、07 通过，06 待 batch047 |
+| P1 知识治理 | 规则注册表 / lint 与渲染 / 配置 SSOT / schema fail-loud / lineage 五元组 | ✅ AC-P1-01~07 通过（06 由 batch047 闭合，2026-11-03） |
 | P5 修复闭环 | 重试隔离 / patch 契约 / diff 审计 / no-op 检测 | ✅ AC-P5-01~05 |
 | P6 可观测 | 按批遥测 / 指标聚合 / 黄金缺陷集 / 策略动作 | ✅ AC-P6-01~05 |
-| P2 题目质量 | schema v2.2 / HC-29 干扰项协议 / X1·X2·X6 批次门禁 | ⚠️ 01·03 通过；02 需 batch047；04 历史批次 SKIP |
+| P2 题目质量 | schema v2.2 / HC-29 干扰项协议 / X1·X2·X6 批次门禁 | ✅ 01·02·03·04 通过（02/04 由 batch047 闭合，2026-11-03） |
 | P3 评估证据 | 50 题回填 / κ·ICC·BA / 7 维 rubric / 措辞核查 | ⚠️ 原清单 BLOCKED；κ 单评分者 BLOCKED；措辞 PASS |
 | P8 合规 | license matrix / 公开风险清单 | ✅ AC-P8-02、03；01 按"显式授权 29.3%"如实报 |
 
-**下一步第一优先**：开 **batch047**，把 v2.2 全链路跑一遍——它同时闭掉 AC-P1-06（lineage 真实批次）与 AC-P2-02（结构字段覆盖 100%）。
+**下一步第一优先**：batch047 已**签收并归档**（`status=APPROVED`，50 题 `publishable`、`release_status=READY`），四道门禁全 PASS。交付物已移入 **`archive/最终产物/batch047/`**（`ALL_questions_FIXED.json/.md`、`batch047_A4_追溯日志.json`、`A4_补丁明细.json`、`batch047_医师试读卷.md`、`batch047_签收单.md`、`review_queue.json`，签收/修复前备份在 `_backup/`），源文件与质检报告分别在 `archive/中间产物/batch047/`、`archive/质检报告/batch047/`；路径映射见 **`archive/batch047_归档说明.md`**。证据见 `reports/implementation/batch047_验收证据_20261103.md`（§7 A4、§8 签收）。**接力点只剩一件**：若要满足 AC-P3-02，需第二位医师独立评分算 κ。
 
 ---
 
@@ -39,7 +39,7 @@
 
 ### 2.1 规则有了单一事实来源
 
-`rules/registry.yaml`——70 条规则的唯一清单，覆盖 R1–R20、S1–S4、B1、JS1、**X1/X2/X6/S-STRUCT**、10 个 GATE、20 条 HC、quality_policy 绑定、config_keys。
+`rules/registry.yaml`——74 条规则的唯一清单，覆盖 R1–R20、S1–S4、B1、JS1、**X1/X2/X6/S-STRUCT**、10 个 GATE、20 条 HC、quality_policy 绑定、config_keys。
 
 ```bash
 python scripts/render_rules.py --check --coverage   # 门禁口径：exit 0
@@ -151,8 +151,8 @@ Git Bash 的 `/tmp` 与 Python 看到的不一样。脚本输出一律用**仓�
 
 | 检查 | 命令 | 期望 |
 |---|---|---|
-| 单元/回归 | `python scripts/run_tests.py` | 318 通过 / 0 失败 / **0 错误** / 86 跳过 |
-| 同上（有依赖的解释器） | `"Python312/python.exe" scripts/run_tests.py` | 354 通过 / 0 失败 / **0 错误** / 50 跳过 |
+| 单元/回归 | `python scripts/run_tests.py` | 421 通过 / 0 失败 / **0 错误** / 52 跳过 |
+| 同上（3.13，无依赖） | `.workbuddy/.../3.13.12/python.exe scripts/run_tests.py` | 385 通过 / 0 失败 / **0 错误** / 88 跳过 |
 | 规则一致性 | `python scripts/render_rules.py --check` | exit 0，warn ≤1（HC-18-FORM 语义项） |
 | 配置可读 | `python scripts/pipeline_config.py --print-config` | `overridden_keys` 与你改动的键一致 |
 | 门禁自测 | `python scripts/gate_selftest.py` | hard 检出 1.0、好题误报 0.0 |
@@ -176,12 +176,13 @@ Git Bash 的 `/tmp` 与 Python 看到的不一样。脚本输出一律用**仓�
 
 | 项 | 为什么没闭 | 闭的条件 |
 |---|---|---|
-| AC-P1-06 lineage 真实批次 | 证据是 batch046 SKIP + batch047 干跑 BLOCKED | 开 batch047 |
-| AC-P2-02 结构字段覆盖 100% | 无 v2.2 批次；历史批次 `SKIP` | batch047 走 v2.2 |
-| AC-P2-04 机制标签覆盖 | 历史批次 0%，按设计 SKIP | 同上 |
+| AC-P1-06 lineage 真实批次 | ✅ batch047 已闭（2026-11-03，A2/A3/A4 三段） | 证据 `reports/gate/batch047_lineage.json`：PASS / required=true / entries=3，五元组逐条齐全 |
+| AC-P2-02 结构字段覆盖 100% | ✅ batch047 已闭（2026-11-03，A2 与 A4 双版本各测一次） | 证据 `reports/validate/batch047_structural.json`：5 字段各 1.0，items=50，historical=0（path 指向 A4 交付 `ALL_questions_FIXED.json`） |
+| AC-P2-04 机制标签覆盖 | ✅ batch047 已闭（2026-11-03） | 同报告 `mechanism_coverage=1.0`（195/195）＋ R20 PASS |
+| batch047 医学核验 | **2026-11-03 政策更新：逐题人工核验不再作为发布前置**（A/B + 确定性门禁通过即可发布）；batch047 的「无逐题记录」不再算未闭环 | 仅剩第二评分者盲评（κ），属独立评估项，不影响发布 |
 | AC-P3-01 50 题回填 | **原清单 20/20 来源文件已不在仓库**（batch004–027） | 找回文件，或接受"新样本 ≠ 原清单" |
 | AC-P3-02 κ ≥0.61 | 只有机器一个评分者 | 第二名独立评分者（人） |
-| AC-P8-01 显式授权 100% | 266 题 unknown | 人工补授权状态 |
+| AC-P8-01 显式授权 100% | **2026-11-03 用户裁定：不用管上架版权，授权不再作为发布门禁** | 本项关闭（license 仅作来源记录） |
 
 **红线**：以上任何一项都**不要**用"造一个数据"的方式闭环。这批验收本身就是在测"你会不会造假"。
 
@@ -189,28 +190,30 @@ Git Bash 的 `/tmp` 与 Python 看到的不一样。脚本输出一律用**仓�
 
 ## 6. 下一步路线
 
-### 6.1 首选：开 batch047（半天到一天）
+### 6.1 batch047 已完成并签收（2026-11-03）
 
 ```
-启动批次 → MedGen 按 HC-29 出题（schema_version=2.2）
-→ python -m scripts.validate --file 中间产物/batch047/ALL_questions.json --batch-mode
-→ 检查 S-STRUCT 是否 PASS（5 字段 + 每个干扰项 mechanism）
-→ ingest.py 摄入（lineage 五元组必须齐，strict 会拦）
-→ gate_check.py --stage final（血缘门禁 batch047+ 生效）
+A2 出题（schema 2.2）→ GATE-A2 PASS
+→ A3 质检（PASS_WITH_FIXES，25 维）
+→ A4 修复（MOD-002：9 题 11 处缩写补全称）→ GATE-A4 PASS
+→ GATE-FINAL PASS
+→ 签收：50 题 pending_human → publishable，status=APPROVED，release_status=READY
 ```
 
-产出 `reports/validate/batch047_structural.json` 与 `reports/gate/batch047_lineage.json`，两个 BLOCKED 一次闭掉。
+交付物已归档至 `archive/最终产物/batch047/`，签收回执 `batch047_签收单.md`。**剩下的只有第二评分者盲评（κ）**。管线侧不要再对 batch047 做结构性改动——A2 已冻结，签收后的交付 sha 是 `35c4dc28…`，任何改动都会让追溯日志、签收回执、MD 三方 sha 失配。⚠️ 归档后**不要再对该批跑 `gate_check`**（文件已不在原路径，会判 BLOCKED）；确需复核先按 `archive/batch047_归档说明.md` 的映射临时还原。
 
 ### 6.2 阶段 1 待办（按性价比排序）
 
 | 优先 | 项 | 说明 |
 |---|---|---|
-| 高 | P8-S3 公开闸门 | `license_status=cleared` 才进公开站；7 个可部署文件已列出，需用户确认处置 |
+| ✅ | P8-S3 公开闸门 | 2026-11-03 用户裁定「不用管上架版权」：G0/G3 改为 INFO，只清点不阻断；G1/G4/G6 仍 fail-closed |
 | 高 | P2-S5 R13 降级 + 条件从句豁免 | 当前 R13 误伤"条件从句长选项"，需回测误伤率 <5% |
 | 中 | P2-S4 反选题封顶 ≤15% | 需提示词 + schema 配合 |
 | 中 | P3-S3 → 注册表 | 把 7 维 rubric 正式并入 `rules/registry.yaml` |
-| 中 | P6-S4 策略引擎接线 | `resolve_action` 已实现但未接 gate，接线属语义变更 |
-| 低 | P2-S6 X3/X4、P3-S4 golden set、P9 教师重点 | 依赖更多人工资源 |
+| ✅ | HC-22 配额接入 final | 无 plan 或配额不足且无 reduced/cancelled 理由 → BLOCKED（2026-11-03） |
+| ✅ | batch048+ R0–R3 强制 | final 检查 `quality_gate_{batch}_r0..r3` 报告齐全、R3=enforce；签收同样前置检查 |
+| ✅ | P6 遥测/指标接线 | `gate_check` 每阶段自动写 `reports/obs/<batch>_telemetry.jsonl`；final 自动跑 `aggregate_metrics` |
+| ✅ | P9 模式元数据 / Bloom 补题门禁 | batch048 起 `p9_mode` 覆盖 100%、理解/分析型达 `target_bloom`（低 5pp → BLOCKED）；配套 `scripts/bloom_gap.py` |
 
 ---
 
@@ -246,7 +249,7 @@ reports/{registry,validate,repair,obs,calibration,compliance,gate}/   ★ 各类
 
 1. **零用户数据**：不采集、不存储学习者标识；遥测字段白名单强制。
 2. **不造数**：无专家就写 `BLOCKED`，无数据就写 `null`，不填 0 充数。
-3. **不做法律定性**：`license=unknown` 只表示"仓库没记录"，下架/改写需用户确认。
+3. **不做法律定性**：`license=unknown` 只表示"仓库没记录"；2026-11-03 起授权不再作为上架门禁，仅保留来源记录。
 4. **历史不追溯**：≤batch046 只读体检，不改写产物。
 5. **PDF 一律人工**：任何脚本禁止生成 PDF。
 
@@ -255,12 +258,12 @@ reports/{registry,validate,repair,obs,calibration,compliance,gate}/   ★ 各类
 ## 9. 交接 Checklist（第一天按序执行）
 
 - [ ] 1. 读本文件 + `CONTEXT.md` + `SOUL.md`（v1.0 交接文档 §3–§7 仍是生产流程权威）
-- [ ] 2. `python scripts/run_tests.py` → 确认 307/0/0/86
+- [ ] 2. `python scripts/run_tests.py` → 确认 422/0/0/61（3.13 口径 386/0/0/97）
 - [ ] 3. `python scripts/render_rules.py --check` → exit 0
 - [ ] 4. `python scripts/pipeline_config.py --print-config` → 确认阈值来源是 `scripts/pipeline.yaml`
 - [ ] 5. 读 `reports/implementation/worklog_20261102.md` 的任务板，确认哪些是 DONE / BLOCKED / TODO
 - [ ] 6. **提交前先与用户确认**：本轮 54 项改动未提交；`workflow_state.json`、`Obsidian产物/`、`最终产物/` 里的改动不是本轮产生，不要一并提交
-- [ ] 7. 与用户确认三件事：**A. 是否现在开 batch047？B. 7 个含 unclear 真题的可部署文件如何处置？C. 是否有专家资源做 50 题盲评？**
+- [ ] 7. 与用户确认：**A. 是否需要第二评分者做 κ 盲评（不影响发布，仅评估项）；B. 是否仍要对 7 个含 unclear 真题的文件做版权处置（不再阻断发布）；C. 是否继续按抽样盲攻执行 MedQC。**
 - [ ] 8. 任意改规则/阈值前，先跑一遍 §4 的五个检查留基线，改完再跑一遍对比
 
 ---

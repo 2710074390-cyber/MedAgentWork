@@ -410,13 +410,13 @@ rules:
   # ── 合规发布 P8（2026-11-02 新增）─────────────────────────
   - id: P8-PUBLIC-GATE
     aliases: [PUBLIC-GATE]
-    title: 公开闸门（license_status=cleared 才可上公开站）
+    title: 公开闸门（白名单一致 / 裸题面 / 线上探测；授权不设门禁）
     kind: gate
     severity: hard
     detector: {type: python, file: scripts/public_gate.py, symbol: main}
     source_refs: ["scripts/public_gate.py", "reports/实施步骤与验收标准_无用户数据约束版_20261102.md:529"]
     status: active
-    notes: "G1 白名单双通道一致｜G2 构建输出目录不得为仓库根（WARN）｜G3 白名单内真题必须 cleared｜G4 白名单内不得含裸题面｜G5 白名单外未清权清单｜G6 线上探测按 content_type 判 SPA 兜底。数据源现扫题库，扫不到即 FAIL（reports/ 不进 git）。"
+    notes: "G1 白名单双通道一致｜G2 构建输出目录不得为仓库根（WARN）｜G3 真题引用清点（2026-11-03 起恒 INFO，授权不再阻断）｜G4 白名单内不得含裸题面｜G5 白名单外清单｜G6 线上探测按 content_type 判 SPA 兜底。G0 授权数据缺失也只记 INFO。"
 
   # ── 修复闭环 P5（2026-11-02 新增）─────────────────────────
   - id: P5-RETRY-ITEM
@@ -625,7 +625,7 @@ rules:
     direction: range
     source_refs: ["SOUL.md:85", "SOUL.md:152"]
     status: deprecated
-    notes: "SOUL.md:152 明确「旧 HC-18 的考研 20% 条款由 HC-22 接管」，此处保留仅为别名溯源。"
+    notes: "SOUL.md:152 明确「旧 HC-18 的考研 20% 条款由 HC-22 接管」，此处保留仅为别名溯源。2026-11-03 仅取消授权门禁，配额仍按 HC-22 执行。"
 
   - id: HC-18-FORM
     aliases: []
@@ -668,6 +668,7 @@ rules:
     direction: range
     source_refs: ["SOUL.md:149"]
     status: active
+    notes: "2026-11-03：配额保留；仅取消上架授权/license 门禁（real_question check 默认不判 license）。"
 
   - id: HC-23
     aliases: []

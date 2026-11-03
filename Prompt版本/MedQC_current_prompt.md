@@ -94,7 +94,7 @@
 | D19 收敛策略检测（NBME Convergence） | 提取5个选项的关键术语（疾病名、机制词、数值区间等）→ 计算每个选项的术语在其他4个选项中出现的"共享计数" → 如果正确选项的共享计数显著最高（>干扰项均值+1）→ 标记should_fix，考生可凭术语重叠猜测 |
 | D20 B1型题专项检查（2026-06-18 新增·batch005 ISSUE-007） | 对 B1 型题组逐组检查：① 共用选项笼统度——≥3 个选项 ≤2 字则标记 should_fix（过于宽泛）；② 答案位置集中度——≥60% 子题答案为同一字母则标记 should_fix；③ 干扰项有效性——每个共用选项至少对组内 1 道子题构成有效干扰（plausibility ≥ 0.3），完全不干扰任何子题的选项标记 should_fix；④ 子题知识点覆盖——组内子题是否考查不同维度。校验脚本：`python validate_options.py --batch {batchID}`（B1-1/B1-2/B1-3 机械化检测） |
 | D21a 考研原题一致性（2026-08-21 新增·HC-18；2026-10-20 并入 HC-22） | 对带 `kaoyan_origin` 的题目**100%** 比对 GoldenSet 源（`GoldenSet/structured/`，按 gs_id 配对）：① 题干知识点与真题一致；② 答案与 `question_bank/kaoyan_answers.json` 的 `answer_recovered` 一致（发现不一致→标记 must_escalate，**不得**建议改真题答案）；③ 数值/诊断标准未被改动；④ mode="改编" 时改编幅度合理；⑤ 元数据完整（gs_id/year/source/mode/answer_confidence），`answer_confidence=low` 一律 must_fix。另统计考研占比（目标≈20%，<15% 提示补充，≥25% 提示原创偏低）。 |
-| D21b 执业医师原题一致性（2026-10-20 新增·HC-22） | 对带 `zhiyi_origin` 的题目**100%** 比对 `question_bank/real_questions/zhiyi_items.jsonl`（按 source_id）：① 题干/选项/答案与源题一致；② 答案与 CMExam 答案一致（冲突 must_escalate，不得擅改）；③ 数值/诊断标准未改动；④ 元数据完整（source_id/source/mode/answer_confidence/license）；⑤ `answer_confidence=medium` 的题 100% 抽检，`low` 一律 must_fix；⑥ 统计执医占比（目标≈20%，15%–25%；`corpus=pdf_paper` 与 `cmexam` 两源均计入该族，均可直接入选）。 |
+| D21b 执业医师原题一致性（2026-10-20 新增·HC-22） | 对带 `zhiyi_origin` 的题目**100%** 比对 `question_bank/real_questions/zhiyi_items.jsonl`（按 source_id）：① 题干/选项/答案与源题一致；② 答案与 CMExam 答案一致（冲突 must_escalate，不得擅改）；③ 数值/诊断标准未改动；④ 元数据完整（source_id/source/mode/answer_confidence）；license 仅记录、不判 FAIL；⑤ `answer_confidence=medium` 的题 100% 抽检，`low` 一律 must_fix；⑥ 统计执医占比（目标≈20%，15%–25%；`corpus=pdf_paper` 与 `cmexam` 两源均计入该族，均可直接入选）。 |
 | D22 插图引用完整性（**2026-11-02 随 HC-19 下线**，编号保留不复用） | **恒记 N/A**。插图管线（占位符/配图清单/images_webp/GATE-A6）已整体退役，新产物不应出现图片引用。若输入含历史插图 MD，仅作提示不判 FAIL、不阻断门禁；图像语法残留不作为质量问题上报 |
 | D23 学习价值层完整性（2026-10-23 新增·HC-24） | 每题必须有 `learning_value`：`correct_rationale`≥60字；`per_option` 覆盖全部选项且每个 `why`≥20字；每个干扰项有 `misconception_id` + `misconception`；`key_takeaway`≥30字。缺项/占位词 → must_fix。 |
 | D24 来源逐字性、错误认知 ID 与反选极性（2026-10-23 新增·HC-24） | `source_quote_status=exact` 时 `source_quote` 必须非空，且（省略号分段后）能在 `teacher_anchor` 中逐字命中，否则 must_fix；`anchor_status=mismatch` → must_escalate；同批次同一 `misconception_id` 出现多种释义 → must_fix（R19）；`polarity=negative` 时 `truth` 必须与 `is_correct` 相反。 |
@@ -137,8 +137,8 @@ D11 不再仅给出全局分。对每个干扰项逐项评分，在报告中输�
 ### Step 2：逐题/逐段检测
 对每道题和每段资料执行 D1-D24 全部维度检测。
 
-### Step 2.4：逐题独立盲攻及医学证据核验（后续批次强制）
-先仅向独立审题者或独立审题轮次提供题干、题型、选项和必要的共用题干，屏蔽答案键、正确标记、解析、学习价值及会泄露答案的元数据；先记录独立选择、依据题干的关键限定和每个竞争项的排除理由，再揭盲对照答案与解析。同一模型的分轮审查仅为模拟盲审，不声称真正独立。无法隔离答案时如实标记未完成，不得视为通过；该题进入复核队列，不阻断其余题。
+### Step 2.4：抽样独立盲攻与医学证据核验（按风险抽样；2026-11-03 起不再逐题强制）
+**抽样口径（2026-11-03 用户裁定：取消逐题核验）**：不再要求每道题都做盲攻。必须抽中的是：高风险题（剂量/时间窗/复苏/禁忌/儿科/急救）100%、证据等级 C 题 100%、D5/D7/D8 命中疑点的题 100%；其余题按 ≥10%（且至少 5 题）分层抽样，覆盖全部模块。对抽中的题，先仅提供题干/题型/选项和必要共用题干，屏蔽答案键、正确标记、解析、学习价值及会泄露答案的元数据；记录独立选择、依据题干的关键限定和每个竞争项的排除理由，再揭盲对照答案与解析。同一模型的分轮审查仅为模拟盲审，不声称真正独立。抽中的题无法隔离答案时如实标记未完成；未抽中的题不因此进入复核队列。
 逐项检查同一临床类别、决策层级和语法，干扰项是否在该情境有合理迷惑性；检查词汇、语法、长度、绝对词、数值排列等表面线索，也检查语义线索：包含或互斥关系、明显不合情境、唯一过度具体、选项组合隐含答案。反向论证最强竞争项：哪些题干事实或可核验来源排除它？改变哪一关键条件它可能成立？若无法排除则有歧义。B1 按子题、X 逐项、反选按陈述真假与应选性分别判断。
 揭盲后逐项核查关键医学主张和排除依据，记录来源名称、版本、章节和真实页码或可定位原文，以及支持范围；教师重点或来源标签不等同已核验。不能访问原文、无法定位、来源冲突或证据不支持时标记 `evidence_grade=C` 并写入复核队列，不得编造。保留原题，不为消除缺陷擅改；疑点隔离后继续审其余题，**不得整批停下来等人**（HC-28）。
 在现有 `issues` 中按题记录盲审结论、竞争项、线索、来源定位和未核验原因；对应结构化 patch 与 `escalations`，不新增必需 schema 字段。仅输出简洁可复核依据，不要求披露内部推理。
@@ -177,12 +177,13 @@ D24 来源逐字性与极性: [PASS/FAIL] — [source_quote 逐字/反选题 tru
 
 **FAIL 的判断标准**：该维度下存在 ≥1 个 `severity: critical` 或 `severity: major` 的问题。仅有 minor 问题可标注 PASS。
 
-未完成的检查标记 N/A 并说明原因，不得标 PASS；盲攻或关键证据未完成按 Step 4 进入复核队列（`pending_human|quarantined`），不阻断整批。确认摘要完整后，再输出完整 JSON 质检报告。
+未完成的检查标记 N/A 并说明原因，不得标 PASS；**被抽中的**盲攻或关键证据未完成按 Step 4 进入复核队列（`pending_human|quarantined`），不阻断整批。未抽中的题不因「未做盲攻」降级。确认摘要完整后，再输出完整 JSON 质检报告。
 
 ### Step 3：生成结构化 JSON 报告
 
 ### Step 4：门禁判定
-- 未完成逐题盲攻、关键依据无法核验、来源冲突、疑似多解或答案冲突、事实/极性可能有误、医学争议或原题缺陷 → 对相关题标 `release.disposition=pending_human|quarantined` 并写入 `review_queue`，**不整批 BLOCKED**；继续审完其余题目（HC-28）。分级：高风险（剂量/时间窗/复苏/禁忌/儿科/急救）且 `evidence_grade=C` → `quarantined`；低风险 C → `pending_human`。
+- **被抽中的**盲攻未完成、关键依据无法核验、来源冲突、疑似多解或答案冲突、事实/极性可能有误、医学争议或原题缺陷 → 对相关题标 `release.disposition=pending_human|quarantined` 并写入 `review_queue`，**不整批 BLOCKED**；继续审完其余题目（HC-28）。分级：高风险（剂量/时间窗/复苏/禁忌/儿科/急救）且 `evidence_grade=C` → `quarantined`；低风险 C → `pending_human`。
+- **A/B 级 + 确定性门禁通过 → `publishable`（默认）**；不得因「没有逐题人工核验/盲攻」把 A/B 批量降为 pending_human。
 - 不影响医学事实和唯一性的结构、语义线索或弱干扰项问题，标注 `major`/`minor` 并提出不改变事实的修正；仍有待修问题时最多 `PASS_WITH_FIXES`，修复后重新盲攻并复核。
 - 仅在检查范围完整、无未解决问题且可核验证据已核验时可 `PASS`；该结果不是医学正确性保证。未检题目不得计为通过。
 - **`gate_decision` 只反映「生成/质检能否继续」，不反映「能否发布」**：

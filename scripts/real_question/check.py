@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
-"""check.py — 真题双族配额 / 教师重点覆盖 / 答案可信 / 去重 / license 终审门禁。
+"""check.py — 真题质量终审：教师重点覆盖 / 答案可信 / 去重 / 溯源。
 
-执业医师族 = 历年真题（zhiyi_pdf）+ CMExam（zhiyi），比例按族结算（15%–25%）。
+2026-11-03 用户裁定：**真题配额保留；仅取消“上架版权/授权”门禁**。
+- 仍执行 20%（15%–25%）双族配额校验；配额不足按 HC-22 的 reduced/cancelled 语义处理；
+- license/授权只作来源记录，**不再作为通过条件**（--enforce-license 可恢复旧口径）；
+- 答案可信度、教师重点覆盖、去重、溯源等质量检查保持不变。
+- 可用 --no-enforce-quota 临时关闭配额校验（默认开启）。
 """
 from __future__ import annotations
 
@@ -141,6 +145,8 @@ def run_check(
     build: str = "public",
     require_ratio: float = 0.15,
     max_ratio: float = 0.25,
+    enforce_quota: bool = True,
+    enforce_license: bool = False,
 ) -> dict:
     questions = _load_questions(file_path)
     total = len(questions)
@@ -232,15 +238,19 @@ def run_check(
                 failures.append(f"{fam}_quota_status_invalid")
             # 只有「候选不足（减量/取消/按 HC-28 延后核验）」才允许低于 15%
             shortfall_ok = st.get("status") in SHORTFALL_STATUSES and not issues
-            if ratio < require_ratio and not shortfall_ok:
-                failures.append(f"{fam}_ratio_below_{require_ratio}")
+            # 2026-11-03：配额仍默认强制（用户裁定配额保留）；
+            # 仅授权/版权门禁被取消。比例照常统计并写入报告。
+            if enforce_quota:
+                if ratio < require_ratio and not shortfall_ok:
+                    failures.append(f"{fam}_ratio_below_{require_ratio}")
+                if ratio > max_ratio:
+                    failures.append(f"{fam}_ratio_above_{max_ratio}")
             if ratio < require_ratio and shortfall_ok:
                 allowed_shortfalls.append(fam)
-            if ratio > max_ratio:
-                failures.append(f"{fam}_ratio_above_{max_ratio}")
     if low_confidence:
         failures.append("low_answer_confidence")
-    if license_violations:
+    # 授权不再作为门禁（2026-11-03）。license_violations 仅保留为清单。
+    if enforce_license and license_violations:
         failures.append("license_violation")
     if missing_trace:
         failures.append("missing_source_or_keypoint_trace")
@@ -259,7 +269,9 @@ def run_check(
         "ratios": ratios,
         "family_counts": family_counts,
         "family_ratios": family_ratios,
-        "quota_target": {"kaoyan": 0.20, "zhiyi": 0.20, "band": [require_ratio, max_ratio]},
+        "quota_target": {"kaoyan": 0.20, "zhiyi": 0.20, "band": [require_ratio, max_ratio],
+                         "enforced": bool(enforce_quota)},
+        "license_enforced": bool(enforce_license),
         "keypoint_coverage": {
             "total": kp_total,
             "uncovered": uncovered,
@@ -292,7 +304,8 @@ def print_report(report: dict) -> None:
     if report["low_answer_confidence"]:
         print(f"  ⚠️ 低可信答案：{len(report['low_answer_confidence'])}")
     if report["license_violations"]:
-        print(f"  ⚠️ license 违规：{len(report['license_violations'])}")
+        # 2026-11-03：授权不再作门禁，这里只做记录（是否 FAIL 由 --enforce-license 决定）
+        print(f"  ⚠️ license 差异（仅记录，不判 FAIL）：{len(report['license_violations'])}")
     if report["missing_trace"]:
         print(f"  ⚠️ 缺溯源/keypoint：{len(report['missing_trace'])}")
     if report.get("quota_status_issues"):

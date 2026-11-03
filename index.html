@@ -292,6 +292,7 @@ a { color:var(--brand); }
 .sw-ver.ok { color:var(--success); border-color:var(--success-border); }
 .sw-desc { font-size:var(--fs-sm); color:var(--fg-muted); line-height:var(--lh-body); max-width:72ch; margin-bottom:var(--sp-4); }
 .sw-desc b { color:var(--fg); font-weight:var(--w-600); }
+.fold-body > .sw-desc { margin-top:var(--sp-5); }
 .sw-note { font-family:var(--font-mono); font-size:var(--fs-xs); color:var(--fg-subtle); letter-spacing:0.05em; margin-bottom:var(--sp-4); }
 .sw-actions { display:flex; flex-wrap:wrap; gap:var(--sp-3); align-items:center; }
 .sw-mirror { display:none; }
@@ -344,6 +345,31 @@ a { color:var(--brand); }
 .page-head .eyebrow { margin-bottom:var(--sp-3); }
 .page-head h2 { margin-bottom:6px; }
 .page-head p { font-size:var(--fs-md); color:var(--fg-muted); max-width:var(--measure); }
+/* 更新条：资源列表顶部的一条 changelog，可关闭并记住 */
+.notice {
+  display:flex; align-items:flex-start; gap:var(--sp-3);
+  margin-bottom:var(--sp-4); padding:var(--sp-3) var(--sp-4);
+  border:1px solid var(--info-border); background:var(--info-bg);
+  border-radius:var(--radius-inline);
+}
+.notice[hidden] { display:none; }
+.notice-tag {
+  flex:none; padding-top:2px; color:var(--info); white-space:nowrap;
+  font-size:var(--fs-xs); font-weight:var(--w-600); letter-spacing:.02em;
+  font-variant-numeric:tabular-nums;
+}
+.notice-txt { min-width:0; margin:0; font-size:var(--fs-sm); line-height:var(--lh-table); color:var(--fg-muted); }
+.notice-txt b { color:var(--fg); font-weight:var(--w-600); }
+.notice-txt a { color:var(--info); text-decoration:none; border-bottom:1px solid var(--info-border); padding-bottom:1px; }
+.notice-txt a:hover { border-bottom-color:currentColor; }
+.notice-x {
+  flex:none; margin:-2px -6px 0 auto; width:28px; height:28px;
+  display:grid; place-items:center; border:0; border-radius:var(--radius-control);
+  background:transparent; color:var(--fg-subtle); cursor:pointer;
+  transition:color .2s, background .2s;
+}
+.notice-x:hover { color:var(--fg); background:var(--border); }
+.notice-x .ic { width:13px; height:13px; }
 .res-list { border-top:1px solid var(--border); }
 .res-row {
   display:grid; grid-template-columns:64px minmax(0,1fr) 150px 96px auto;
@@ -625,6 +651,8 @@ a { color:var(--brand); }
 }
 @media (max-width:560px) {
   .nav-term-tabs { display:none; }
+  .notice { flex-wrap:wrap; padding:var(--sp-3); }
+  .notice-txt { flex:1 1 100%; order:3; }
   .desk-hint { display:none; }
   .film-sub { display:none; }
   .grid-count { display:none; }
@@ -891,9 +919,9 @@ a { color:var(--brand); }
         </article>
         <article class="cap">
           <h4>质量门禁</h4>
-          <span class="cap-meta">GATE · D1–D20 质检矩阵</span>
-          <p>选项硬校验 FAIL 归零才放行 · 二十维质检 · 真题锚定 · 改动可回放。</p>
-          <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>fact_check</em></div>
+          <span class="cap-meta">GATE · 25 维质检 + 四道阶段门</span>
+          <p>选项硬校验 FAIL 归零才放行 · 二十五维质检 · 教师重点逐字锚定 · 每批留版本血缘与签收记录。</p>
+          <div class="cap-flow"><em>validate_options</em><em>gate_check</em><em>lineage</em></div>
         </article>
         <article class="cap">
           <h4>个性化学科 RAG</h4>
@@ -902,6 +930,30 @@ a { color:var(--brand); }
           <div class="cap-flow"><em>hybrid</em><em>rerank</em><em>calibrated_p</em></div>
         </article>
       </div>
+    </div>
+  </details>
+
+  <details class="fold">
+    <summary>2026 · 11 这一版改了什么<span class="fold-hint">题库质量</span></summary>
+    <div class="fold-body">
+      <div class="cap-list">
+        <article class="cap">
+          <h4>干扰项写清「错在哪」</h4>
+          <span class="cap-meta">DISTRACTOR · 八类误区标签</span>
+          <p>每个错误选项都标出错因与所属误区：方向颠倒、时机错位、邻近概念混淆、机制混淆、人群错配等。错因与解析同源，可逐项复核，而不是为凑选项硬编一个似是而非的说法。</p>
+        </article>
+        <article class="cap">
+          <h4>每道题都落回老师划的重点</h4>
+          <span class="cap-meta">ANCHOR · 逐条对应 + 原文页码</span>
+          <p>题目绑定教师重点的具体条目，附原文与教材页码，可逐字比对；而不是照着目录凭印象出题。</p>
+        </article>
+        <article class="cap">
+          <h4>结构变成硬字段，改动会被拦住</h4>
+          <span class="cap-meta">SCHEMA · 覆盖率 100% · GUARD</span>
+          <p>鉴别诊断、阴性线索、附加条件、思维步数、难度层级必须填满才放行；答案与锚点列入不可改清单，修复环节若把文件原样交回，门禁直接判不通过。</p>
+        </article>
+      </div>
+      <p class="sw-desc">这些机制保证的是<b>可追溯、可复核</b>，不等于医学结论已由临床专家审定。若发现题目有误，请告知题号，我们会回溯到具体批次与出处订正。</p>
     </div>
   </details>
 
@@ -943,6 +995,11 @@ a { color:var(--brand); }
     <h2>题库 PDF 与复习手册</h2>
     <p id="head-s2"></p>
   </header>
+  <div class="notice" data-notice="2026-11" hidden>
+    <span class="notice-tag">2026 · 11</span>
+    <p class="notice-txt"><b>题库升级</b>：每个错误选项都注明属于哪类误区，题目能追到教师重点的原文与页码。<a href="#/home/backstage">看这一版改了什么 →</a></p>
+    <button class="notice-x" type="button" data-notice-close aria-label="关闭更新提示" title="关闭后不再显示"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
   <div class="tools">
     <div class="chips" role="tablist" aria-label="按类型筛选" id="chips-s2"></div>
     <label class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="搜索科目，如：内科 / 神经 / 中医…" aria-label="搜索大三下资源" data-filter="grid-s2"><button class="search-clear" type="button" data-clear="grid-s2" aria-label="清空搜索" hidden><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button></label>
@@ -963,6 +1020,11 @@ a { color:var(--brand); }
     <h2>复习资料与题库</h2>
     <p id="head-s1"></p>
   </header>
+  <div class="notice" data-notice="2026-11" hidden>
+    <span class="notice-tag">2026 · 11</span>
+    <p class="notice-txt"><b>题库升级</b>：每个错误选项都注明属于哪类误区，题目能追到教师重点的原文与页码。<a href="#/home/backstage">看这一版改了什么 →</a></p>
+    <button class="notice-x" type="button" data-notice-close aria-label="关闭更新提示" title="关闭后不再显示"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
   <div class="tools">
     <div class="chips" role="tablist" aria-label="按类型筛选" id="chips-s1"></div>
     <label class="search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><input type="search" placeholder="搜索科目，如：妇产 / 眼科 / 耳鼻喉…" aria-label="搜索大四上资源" data-filter="grid-s1"><button class="search-clear" type="button" data-clear="grid-s1" aria-label="清空搜索" hidden><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button></label>
@@ -1300,6 +1362,22 @@ safe('term-tabs',()=>{
     if(location.hash===h)applyView(t.dataset.term,null,true);
     else location.hash=h;
   }));
+});
+
+/* ---------- 更新条（列表顶部 changelog，关闭后记住） ---------- */
+safe('notice',()=>{
+  const bars=$$('[data-notice]');
+  if(!bars.length)return;
+  const key='maw-notice-'+bars[0].getAttribute('data-notice');
+  if(store.get(key)==='1')return;
+  bars.forEach(b=>{
+    b.hidden=false;
+    const x=b.querySelector('[data-notice-close]');
+    if(x)x.addEventListener('click',()=>{
+      store.set(key,'1');
+      bars.forEach(o=>{o.hidden=true;});
+    });
+  });
 });
 
 /* ---------- E 筛选（类型 chips + 关键词，两个维度叠加） ---------- */

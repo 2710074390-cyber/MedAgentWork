@@ -131,7 +131,7 @@ def render_md(rows: list[dict], meta: dict) -> str:
         if r["exposure"] == "公开站":
             continue
         lines.append(
-            f"| `{r['file']}` | {r['unclear_qids']} 题 license 不明；发布前须①补授权状态 ②或替换为原创题 ③或从构建产物中剔除 |")
+            f"| `{r['file']}` | {r['unclear_qids']} 题 license 不明；**仅记录，不阻断发布**（2026-11-03 起上架版权不设门禁） |")
     if not any(r["exposure"] == "可部署未发布" and r["unclear_qids"] for r in exposed):
         lines.append("| — | 无 |")
     lines += [

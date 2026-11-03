@@ -1,0 +1,3168 @@
+[
+  {
+    "id": "TEST-EM-20261102-Q001",
+    "question_id": "TEST-EM-20261102-Q001",
+    "sequence": 1,
+    "schema_version": "2.2",
+    "module": "M01",
+    "module_name": "急诊医学总论、EMSS、灾难与检伤分类",
+    "type": "A2",
+    "case_group": null,
+    "stem": "急诊分诊护士将一名患者定为Ⅲ类。按急诊五级分诊，该患者应在多长时间内完成评估和治疗？",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即抢救",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "10分钟内",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "30分钟内",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "60分钟内",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "120分钟内",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "理解",
+    "bloom_level": "comprehension",
+    "difficulty": "中等",
+    "topic": "急诊五级分诊",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P2",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P2",
+      "教师重点锚定清单第2条"
+    ],
+    "keypoint_ref": [
+      "第2条"
+    ],
+    "teacher_anchor": "急诊五级分诊：Ⅰ类生命垂危病人立即抢救；Ⅱ类随时危及生命，10 分钟内评估治疗；Ⅲ类存在危及生命状况，30 分钟内评估治疗；Ⅳ类潜在危重，1 小时内急诊处理；Ⅴ类非紧急，一般 2 小时内处理（P2）〔原稿第6段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第2条",
+        "title": "急诊五级分诊",
+        "evidence": "把已确定的Ⅲ类级别转换成对应的评估治疗时限。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第2条",
+        "title": "Ⅱ类分诊",
+        "evidence": "Ⅱ类随时危及生命，时限更短，是本题的主要竞争级别。"
+      }
+    ],
+    "difficulty_tier": "L2",
+    "step_count": 2,
+    "competing_dx": [
+      "Ⅰ类（立即抢救）",
+      "Ⅱ类（10分钟）",
+      "Ⅳ类（60分钟）"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "急诊五级分诊按病情紧迫程度设定时限：Ⅰ类立即、Ⅱ类10分钟、Ⅲ类30分钟、Ⅳ类60分钟、Ⅴ类120分钟。已定为Ⅲ类说明存在危及生命的状况，应在30分钟内评估治疗，不能按更宽松的Ⅳ或Ⅴ类处理。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "立即抢救是Ⅰ类生命垂危患者的要求，不是Ⅲ类的标定时限。",
+          "misconception_id": "MC-EM-01",
+          "misconception": "混淆急诊分诊级别或灾难检伤优先级与对应时限",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "10分钟内对应Ⅱ类随时危及生命患者的评估时限，早于Ⅲ类。",
+          "misconception_id": "MC-EM-01",
+          "misconception": "混淆急诊分诊级别或灾难检伤优先级与对应时限",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "教材明确Ⅲ类存在危及生命状况，应在30分钟内评估治疗。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "60分钟内对应Ⅳ类潜在危重患者，晚于Ⅲ类的30分钟。",
+          "misconception_id": "MC-EM-01",
+          "misconception": "混淆急诊分诊级别或灾难检伤优先级与对应时限",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "120分钟内对应Ⅴ类非紧急患者，不能用于Ⅲ类。",
+          "misconception_id": "MC-EM-01",
+          "misconception": "混淆急诊分诊级别或灾难检伤优先级与对应时限",
+          "distractor_mechanism": "timing_error"
+        }
+      ],
+      "key_takeaway": "先确认分诊级别，再匹配该级别对应的评估治疗时限；级别越低，允许等待时间越长。",
+      "source_quote": "30 分钟内评估治疗",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q002",
+    "question_id": "TEST-EM-20261102-Q002",
+    "sequence": 2,
+    "schema_version": "2.2",
+    "module": "M01",
+    "module_name": "急诊医学总论、EMSS、灾难与检伤分类",
+    "type": "A2",
+    "case_group": null,
+    "stem": "下列哪项属于急诊医学的核心任务？",
+    "options": [
+      {
+        "label": "A",
+        "text": "慢性病长期随访管理",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "择期门诊服务",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "常规健康体检",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "长期慢性病管理",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "突发公共事件救援",
+        "is_correct": true
+      }
+    ],
+    "answer": "E",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "bloom": "理解",
+    "bloom_level": "comprehension",
+    "difficulty": "中等",
+    "topic": "急诊医学核心任务",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P1-2",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P1-2",
+      "教师重点锚定清单第1条"
+    ],
+    "keypoint_ref": [
+      "第1条"
+    ],
+    "teacher_anchor": "急诊医学特点：核心是急危重症、创伤快速评估处置；构建院前-院内急诊-EICU 一体化 EMSS 体系；承担突发公共事件救援；不负责慢性病长期随访管理。——①EMSS＝院前急救、医院急诊、危重症监护三位一体；②院前急救反应时间国际目标 5～10 分钟；③急诊科全年 24 小时开放，留观时间原则上不超过 72 小时（P1-2）〔原稿第5段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第1条",
+        "title": "急诊医学核心任务",
+        "evidence": "从五项任务中识别属于急诊医学核心职责的一项。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第1条",
+        "title": "慢性病长期随访",
+        "evidence": "慢性病随访属于慢病管理，是本题的主要竞争概念。"
+      }
+    ],
+    "difficulty_tier": "L2",
+    "step_count": 2,
+    "competing_dx": [
+      "慢性病长期随访",
+      "择期门诊服务",
+      "常规健康体检"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "急诊医学的核心是急危重症与创伤的快速评估处置，构建院前-院内-EICU一体化 EMSS，并承担突发公共事件救援；慢性病长期随访、择期门诊、常规体检和长期慢病管理属于慢病或健康管理，不是急诊医学的核心任务。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "慢性病长期随访管理属于慢病管理，不是急诊医学的核心任务。",
+          "misconception_id": "MC-EM-10",
+          "misconception": "急诊医学核心任务边界混淆",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "择期门诊服务面向非紧急需求，不是急诊医学的核心任务。",
+          "misconception_id": "MC-EM-10",
+          "misconception": "急诊医学核心任务边界混淆",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "常规健康体检属于健康管理，不是急诊医学的核心任务。",
+          "misconception_id": "MC-EM-10",
+          "misconception": "急诊医学核心任务边界混淆",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "长期慢性病管理属于慢病管理，不是急诊医学的核心任务。",
+          "misconception_id": "MC-EM-10",
+          "misconception": "急诊医学核心任务边界混淆",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "承担突发公共事件救援是急诊医学的核心任务之一。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        }
+      ],
+      "key_takeaway": "急诊医学的核心任务是急危重症、创伤、EMSS 和突发公共事件救援；慢病长期随访不属于核心任务。",
+      "source_quote": "承担突发公共事件救援",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q003",
+    "question_id": "TEST-EM-20261102-Q003",
+    "sequence": 3,
+    "schema_version": "2.2",
+    "module": "M01",
+    "module_name": "急诊医学总论、EMSS、灾难与检伤分类",
+    "type": "A2",
+    "case_group": null,
+    "stem": "灾难现场一名伤员无意识，呼吸32次/分，毛细血管再充盈时间>2秒，桡动脉脉搏摸不到。按START检伤分类，应标记为？",
+    "options": [
+      {
+        "label": "A",
+        "text": "红色·立即救治",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "黄色·延迟救治",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "绿色·轻伤",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "黑色·期待救治",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "蓝色·自行就医",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "START检伤分类",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P286",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P286",
+      "教师重点锚定清单第4条"
+    ],
+    "keypoint_ref": [
+      "第4条"
+    ],
+    "teacher_anchor": "START（成人）：按“30-2-可以-做”在 30～60 秒内分拣——呼吸频率 30 次/分、毛细血管再充盈时间 2 秒、能否遵从指挥；呼吸<30 次/分、再充盈<2 秒、能遵从指挥行走为轻伤；满足 30-2 但不能行走为延迟救治；无意识、呼吸急促、再充盈延迟、桡动脉脉搏缺失为立即救治（P286）〔原稿第8段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第4条",
+        "title": "START检伤分类",
+        "evidence": "根据呼吸、灌注和意识三项指标判定伤员分拣级别。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第3条",
+        "title": "灾难四色分拣",
+        "evidence": "四色标签是灾难现场分拣结果的表达方式。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "黄色（延迟救治）",
+      "绿色（轻伤）",
+      "黑色（期待救治）"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "START 用呼吸频率、毛细血管再充盈和能否遵从指挥快速分拣。该伤员无意识、呼吸急促、再充盈延迟且桡动脉脉搏摸不到，符合立即救治标准，应标红色第一优先。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "无意识、呼吸急促、再充盈延迟和桡动脉缺失符合立即救治标准。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "延迟救治对应满足部分指标但仍能行走或伤情较轻的伤员，不符合本例。",
+          "misconception_id": "MC-EM-01",
+          "misconception": "混淆急诊分诊级别或灾难检伤优先级与对应时限",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "绿色轻伤可等待救治，本例已有危及生命的循环和意识异常。",
+          "misconception_id": "MC-EM-01",
+          "misconception": "混淆急诊分诊级别或灾难检伤优先级与对应时限",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "黑色用于存活可能极小的期待救治，本例仍有救治机会。",
+          "misconception_id": "MC-EM-01",
+          "misconception": "混淆急诊分诊级别或灾难检伤优先级与对应时限",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "蓝色自行就医不是 START 的四色分拣类别。",
+          "misconception_id": "MC-EM-01",
+          "misconception": "混淆急诊分诊级别或灾难检伤优先级与对应时限",
+          "distractor_mechanism": "overgeneralization"
+        }
+      ],
+      "key_takeaway": "START 先看呼吸、灌注和意识；无意识、呼吸急促、再充盈延迟、桡动脉缺失均指向立即救治。",
+      "source_quote": "无意识、呼吸急促、再充盈延迟、桡动脉脉搏缺失为立即救治",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q004",
+    "question_id": "TEST-EM-20261102-Q004",
+    "sequence": 4,
+    "schema_version": "2.2",
+    "module": "M02",
+    "module_name": "心肺脑复苏 CPCR",
+    "type": "A1",
+    "case_group": null,
+    "stem": "成人高质量心肺复苏，胸外按压频率应为？",
+    "options": [
+      {
+        "label": "A",
+        "text": "80～100次/分",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "100～120次/分",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "120～140次/分",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "140～160次/分",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "160～180次/分",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "记忆",
+    "bloom_level": "memory",
+    "difficulty": "简单",
+    "topic": "成人高质量CPR",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P235",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P235",
+      "教师重点锚定清单第9条"
+    ],
+    "keypoint_ref": [
+      "第9条"
+    ],
+    "teacher_anchor": "成人高质量 CPR 要点：按压频率 100～120 次/分；按压幅度 5～6cm；每次按压后让胸廓完全回弹；尽量减少中断，中断时间<10 秒（P235）〔原稿第15段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第9条",
+        "title": "成人高质量CPR",
+        "evidence": "直接回忆高质量 CPR 的胸外按压频率。"
+      }
+    ],
+    "difficulty_tier": "L1",
+    "step_count": 1,
+    "competing_dx": [
+      "80～100次/分",
+      "120～140次/分",
+      "140～160次/分"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "成人高质量心肺复苏要求胸外按压频率保持在100～120次/分，同时保证按压深度5～6cm、胸廓完全回弹并尽量减少中断。频率过低影响灌注，过高则影响回弹和按压质量。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "80～100次/分低于推荐下限，不能保证足够的按压循环。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "100～120次/分是教材推荐的成人高质量按压频率。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "120～140次/分高于推荐上限，可能影响胸廓回弹。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "140～160次/分明显过快，按压质量和回弹都会下降。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "160～180次/分过快，不符合高质量 CPR 的频率要求。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "direction_error"
+        }
+      ],
+      "key_takeaway": "成人高质量 CPR 的按压频率是100～120次/分；记数值时要同时记住深度和回弹要求。",
+      "source_quote": "按压频率 100～120 次/分",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q005",
+    "question_id": "TEST-EM-20261102-Q005",
+    "sequence": 5,
+    "schema_version": "2.2",
+    "module": "M02",
+    "module_name": "心肺脑复苏 CPCR",
+    "type": "A2",
+    "case_group": null,
+    "stem": "单人施救成人心脏骤停，完成30次胸外按压后应给予几次人工呼吸？",
+    "options": [
+      {
+        "label": "A",
+        "text": "1次",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "2次",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "3次",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "5次",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "15次",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "理解",
+    "bloom_level": "comprehension",
+    "difficulty": "中等",
+    "topic": "单人CPR按压通气比",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P236",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P236",
+      "教师重点锚定清单第11条"
+    ],
+    "keypoint_ref": [
+      "第11条"
+    ],
+    "teacher_anchor": "单人按压通气比 30:2；每 5 组（约 2 分钟）30:2 的 CPR 为一个周期；2 人以上 CPR 每 2 分钟轮换一次（P236）〔原稿第17段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第11条",
+        "title": "单人CPR按压通气比",
+        "evidence": "把30:2的按压通气比转换成每次循环的通气次数。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第11条",
+        "title": "双人CPR轮换",
+        "evidence": "双人以上 CPR 每2分钟轮换，但通气比仍按30:2。"
+      }
+    ],
+    "difficulty_tier": "L2",
+    "step_count": 2,
+    "competing_dx": [
+      "1次",
+      "3次",
+      "5次"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "单人成人心肺复苏采用30:2的按压通气比，即每完成30次胸外按压给予2次人工呼吸；每5组约2分钟为一个周期。不能把按压次数与通气次数混为1:1或15:2。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "30:2意味着每30次按压对应2次通气，不是1次。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "30次按压后给予2次人工呼吸，符合30:2。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "3次通气会改变30:2的比例，造成通气过多。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "5次通气对应旧版或不同场景的比例，不适用于成人单人 CPR。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "outdated_guideline"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "15次通气接近15:2的旧比例，不符合当前30:2。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "outdated_guideline"
+        }
+      ],
+      "key_takeaway": "单人 CPR 是30次按压后2次通气；每5组约2分钟为一个周期。",
+      "source_quote": "单人按压通气比 30:2",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q006",
+    "question_id": "TEST-EM-20261102-Q006",
+    "sequence": 6,
+    "schema_version": "2.2",
+    "module": "M02",
+    "module_name": "心肺脑复苏 CPCR",
+    "type": "A2",
+    "case_group": null,
+    "stem": "使用单相波AED为成人除颤，首次电击能量应为？",
+    "options": [
+      {
+        "label": "A",
+        "text": "120J",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "150J",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "200J",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "300J",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "360J",
+        "is_correct": true
+      }
+    ],
+    "answer": "E",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "bloom": "理解",
+    "bloom_level": "comprehension",
+    "difficulty": "中等",
+    "topic": "AED除颤能量",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P237",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P237",
+      "教师重点锚定清单第12条"
+    ],
+    "keypoint_ref": [
+      "第12条"
+    ],
+    "teacher_anchor": "AED／除颤能量：双相波 120～200J，单相波首次 360J；除颤每延迟 1 分钟存活率下降 7%～10%；电击后立刻胸外按压 2 分钟（P237）〔原稿第18-19段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第12条",
+        "title": "AED除颤能量",
+        "evidence": "直接回忆单相波 AED 的首次除颤能量。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第12条",
+        "title": "双相波除颤",
+        "evidence": "双相波能量范围与单相波不同，是本题的主要竞争概念。"
+      }
+    ],
+    "difficulty_tier": "L2",
+    "step_count": 2,
+    "competing_dx": [
+      "120J",
+      "150J",
+      "200J"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "教材规定双相波除颤能量为120～200J，单相波首次为360J。题干明确使用单相波，因此首次电击应选360J；电击后应立即恢复胸外按压2分钟。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "120J属于双相波能量范围下限，不是单相波首次能量。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "150J属于双相波常用能量，不适用于单相波首次电击。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "200J是双相波范围上限，不是单相波首次能量。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "300J接近但未达到单相波首次360J的要求。",
+          "misconception_id": "MC-EM-02",
+          "misconception": "CPR 按压频率、按压通气比或除颤能量数值记错",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "单相波首次电击能量为360J，符合教材要求。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        }
+      ],
+      "key_takeaway": "先看波形再选能量：双相波120～200J，单相波首次360J。",
+      "source_quote": "单相波首次 360J",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q007",
+    "question_id": "TEST-EM-20261102-Q007",
+    "sequence": 7,
+    "schema_version": "2.2",
+    "module": "M03",
+    "module_name": "休克总论",
+    "type": "A2",
+    "case_group": null,
+    "stem": "一名患者接触过敏原后10分钟出现呼吸困难、血压下降、全身风团。首选药物是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "去甲肾上腺素静滴",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "多巴胺静滴",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "快速补液",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "肾上腺素肌注",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "糖皮质激素",
+        "is_correct": false
+      }
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "bloom": "理解",
+    "bloom_level": "comprehension",
+    "difficulty": "中等",
+    "topic": "过敏性休克",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P155",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P155",
+      "教师重点锚定清单第18条"
+    ],
+    "keypoint_ref": [
+      "第18条"
+    ],
+    "teacher_anchor": "低血容量性休克：失血或脱水致有效循环血量减少，中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快；治疗关键是补充血容量、控制出血和去除病因（P153-154）；心源性休克：心脏指数<2.2L/(m²·min)、肺动脉楔压>18mmHg，收缩压较基础下降 40mmHg 以上并脉压缩小应警惕（P154）；感染性休克：6 小时内中心静脉压 8～12mmHg、平均动脉压≥65mmHg、尿量≥0.5ml/(kg·h)、中心静脉血氧饱和度≥70%（P155）；过敏性休克：接触过敏原后 15 分钟内发生严重反应，重者 10 分钟内死亡，首选肾上腺素肌内注射（P155）〔原稿第26段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第18条",
+        "title": "过敏性休克",
+        "evidence": "接触过敏原后快速出现气道、循环和皮肤表现，指向过敏性休克。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第18条",
+        "title": "感染性休克",
+        "evidence": "感染性休克也可低血压，但缺少过敏原暴露和风团。"
+      }
+    ],
+    "difficulty_tier": "L2",
+    "step_count": 2,
+    "competing_dx": [
+      "去甲肾上腺素静滴",
+      "多巴胺静滴",
+      "糖皮质激素"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "过敏性休克的首选药物是肾上腺素肌内注射，它可迅速收缩血管、缓解支气管痉挛并抑制介质释放。去甲肾上腺素、多巴胺和糖皮质激素都不是首选用药；补液是辅助治疗。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "去甲肾上腺素可用于部分休克，但不是过敏性休克的首选。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "mechanism_confusion"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "多巴胺不是过敏性休克的首选药物，可能延误肾上腺素使用。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "mechanism_confusion"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "快速补液是辅助措施，不能替代肾上腺素，不能作为首选。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "肾上腺素肌内注射是过敏性休克的首选药物。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "糖皮质激素起效慢，不能作为过敏性休克的首选急救药。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "mechanism_confusion"
+        }
+      ],
+      "key_takeaway": "过敏性休克首选肾上腺素肌注；不要先用升压药或激素替代，以免延误抢救。",
+      "source_quote": "首选肾上腺素肌内注射",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q008",
+    "question_id": "TEST-EM-20261102-Q008",
+    "sequence": 8,
+    "schema_version": "2.2",
+    "module": "M03",
+    "module_name": "休克总论",
+    "type": "A2",
+    "case_group": null,
+    "stem": "感染性休克患者经液体复苏后，6小时内平均动脉压目标应维持在？",
+    "options": [
+      {
+        "label": "A",
+        "text": "≥55mmHg",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "≥60mmHg",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "≥65mmHg",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "≥70mmHg",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "≥75mmHg",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "感染性休克复苏目标",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P155",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P155",
+      "教师重点锚定清单第18条"
+    ],
+    "keypoint_ref": [
+      "第18条"
+    ],
+    "teacher_anchor": "低血容量性休克：失血或脱水致有效循环血量减少，中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快；治疗关键是补充血容量、控制出血和去除病因（P153-154）；心源性休克：心脏指数<2.2L/(m²·min)、肺动脉楔压>18mmHg，收缩压较基础下降 40mmHg 以上并脉压缩小应警惕（P154）；感染性休克：6 小时内中心静脉压 8～12mmHg、平均动脉压≥65mmHg、尿量≥0.5ml/(kg·h)、中心静脉血氧饱和度≥70%（P155）；过敏性休克：接触过敏原后 15 分钟内发生严重反应，重者 10 分钟内死亡，首选肾上腺素肌内注射（P155）〔原稿第26段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第18条",
+        "title": "感染性休克复苏目标",
+        "evidence": "把感染性休克6小时复苏目标转换为平均动脉压阈值。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第18条",
+        "title": "低血容量性休克",
+        "evidence": "低血容量性休克以补液和控制出血为主，复苏目标不同。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "≥55mmHg",
+      "≥60mmHg",
+      "≥70mmHg"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "感染性休克6小时内复苏目标包括中心静脉压8～12mmHg、平均动脉压≥65mmHg、尿量≥0.5ml/(kg·h)、中心静脉血氧饱和度≥70%。平均动脉压低于65mmHg会增加器官低灌注风险。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "55mmHg低于感染性休克复苏目标，器官灌注不足。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "60mmHg仍低于教材推荐的65mmHg目标。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "平均动脉压≥65mmHg是感染性休克6小时复苏目标之一。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "70mmHg高于目标下限，可能增加血管活性药需求。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "75mmHg明显高于目标下限，不是常规复苏目标。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "direction_error"
+        }
+      ],
+      "key_takeaway": "感染性休克6小时复苏的 MAP 目标是≥65mmHg，同时看 CVP、尿量和 ScvO2。",
+      "source_quote": "平均动脉压≥65mmHg",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q009",
+    "question_id": "TEST-EM-20261102-Q009",
+    "sequence": 9,
+    "schema_version": "2.2",
+    "module": "M03",
+    "module_name": "休克总论",
+    "type": "A3",
+    "case_group": "CASE-EM-TRAUMA",
+    "stem": "骨盆骨折患者，血压85/50mmHg，中心静脉压低、心输出量低、外周血管阻力高、心率快。最符合哪种休克？",
+    "options": [
+      {
+        "label": "A",
+        "text": "低血容量性休克",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "心源性休克",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "感染性休克",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "过敏性休克",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "神经源性休克伴脊髓损伤",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "低血容量性休克",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P153-154",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P153-154",
+      "教师重点锚定清单第18条"
+    ],
+    "keypoint_ref": [
+      "第18条"
+    ],
+    "teacher_anchor": "低血容量性休克：失血或脱水致有效循环血量减少，中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快；治疗关键是补充血容量、控制出血和去除病因（P153-154）；心源性休克：心脏指数<2.2L/(m²·min)、肺动脉楔压>18mmHg，收缩压较基础下降 40mmHg 以上并脉压缩小应警惕（P154）；感染性休克：6 小时内中心静脉压 8～12mmHg、平均动脉压≥65mmHg、尿量≥0.5ml/(kg·h)、中心静脉血氧饱和度≥70%（P155）；过敏性休克：接触过敏原后 15 分钟内发生严重反应，重者 10 分钟内死亡，首选肾上腺素肌内注射（P155）〔原稿第26段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第18条",
+        "title": "低血容量性休克",
+        "evidence": "创伤失血后 CVP 低、CO 低、外周阻力高、心率快，符合低血容量性休克。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第18条",
+        "title": "心源性休克",
+        "evidence": "心源性休克常伴肺动脉楔压升高，与本例低 CVP 不同。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "心源性休克",
+      "感染性休克",
+      "过敏性休克"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "低血容量性休克因失血或脱水导致有效循环血量减少，表现为中心静脉压降低、心输出量下降、外周血管阻力增加和心率加快。骨盆骨折可大量失血，血压85/50mmHg支持失血性休克；心源性休克通常肺动脉楔压升高。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "骨盆骨折失血、低 CVP、低 CO、高外周阻力和心率快符合低血容量性休克。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "心源性休克常伴肺动脉楔压升高，本例 CVP 低不支持。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "mechanism_confusion"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "感染性休克常为分布性休克，外周阻力降低，与本例高阻力不符。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "mechanism_confusion"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "过敏性休克属分布性休克，常伴过敏原暴露和风团，本例无。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "mechanism_confusion"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "神经源性休克常伴脊髓损伤和心动过缓，本例心率快。",
+          "misconception_id": "MC-EM-03",
+          "misconception": "休克分型、血流动力学或复苏目标错配",
+          "distractor_mechanism": "mechanism_confusion"
+        }
+      ],
+      "key_takeaway": "创伤失血 + CVP 低 + CO 低 + 外周阻力高 + 心率快，先考虑低血容量性休克。",
+      "source_quote": "中心静脉压降低、心输出量下降、外周血管阻力增加、心率加快",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q010",
+    "question_id": "TEST-EM-20261102-Q010",
+    "sequence": 10,
+    "schema_version": "2.2",
+    "module": "M04",
+    "module_name": "急性中毒",
+    "type": "A3",
+    "case_group": "CASE-EM-OP",
+    "stem": "该患者确诊有机磷农药中毒，出现瞳孔针尖样缩小、大汗、流涎。缓解M样症状应首选？",
+    "options": [
+      {
+        "label": "A",
+        "text": "阿托品",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "纳洛酮",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "亚甲蓝",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "氟马西尼",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "亚硝酸钠",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "理解",
+    "bloom_level": "comprehension",
+    "difficulty": "中等",
+    "topic": "有机磷中毒解毒剂",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P161",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P161",
+      "教师重点锚定清单第23条"
+    ],
+    "keypoint_ref": [
+      "第23条"
+    ],
+    "teacher_anchor": "特异性解毒剂：有机磷—阿托品、盐酸戊乙奎醚、碘解磷定；阿片类—纳洛酮 0.4～0.8mg 静脉注射；苯二氮䓬类—氟马西尼 0.2mg 静脉注射（总量可达 2mg）；亚硝酸盐／苯胺—亚甲蓝 1～2mg/kg；氰化物—亚硝酸盐-硫代硫酸钠疗法；铅—依地酸钙钠；砷汞—二巯丙醇（P161）〔原稿第33段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第23条",
+        "title": "有机磷中毒解毒剂",
+        "evidence": "瞳孔针尖样缩小、大汗、流涎提示 M 样症状，需选抗胆碱药。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第23条",
+        "title": "阿片类中毒",
+        "evidence": "阿片类中毒也可瞳孔缩小，但解毒剂是纳洛酮。"
+      }
+    ],
+    "difficulty_tier": "L2",
+    "step_count": 2,
+    "competing_dx": [
+      "纳洛酮",
+      "亚甲蓝",
+      "氟马西尼"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "有机磷中毒使胆碱酯酶受抑，乙酰胆碱蓄积产生 M 样症状。阿托品阻断 M 胆碱受体，可缓解瞳孔缩小、大汗、流涎和支气管分泌物增多；碘解磷定等胆碱酯酶复能剂针对 N 样症状和酶恢复。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "阿托品阻断 M 受体，是有机磷中毒 M 样症状的首选。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "纳洛酮用于阿片类中毒，不缓解有机磷的 M 样症状。",
+          "misconception_id": "MC-EM-04",
+          "misconception": "解毒剂与毒物配对错误",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "亚甲蓝用于亚硝酸盐或苯胺中毒，不用于有机磷。",
+          "misconception_id": "MC-EM-04",
+          "misconception": "解毒剂与毒物配对错误",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "氟马西尼用于苯二氮䓬类中毒，不用于有机磷。",
+          "misconception_id": "MC-EM-04",
+          "misconception": "解毒剂与毒物配对错误",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "亚硝酸钠用于氰化物解毒，不用于有机磷，二者解毒谱不同。",
+          "misconception_id": "MC-EM-04",
+          "misconception": "解毒剂与毒物配对错误",
+          "distractor_mechanism": "adjacent_concept"
+        }
+      ],
+      "key_takeaway": "有机磷中毒的 M 样症状首选阿托品；N 样症状需联用胆碱酯酶复能剂。",
+      "source_quote": "有机磷—阿托品",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q011",
+    "question_id": "TEST-EM-20261102-Q011",
+    "sequence": 11,
+    "schema_version": "2.2",
+    "module": "M04",
+    "module_name": "急性中毒",
+    "type": "A3",
+    "case_group": "CASE-EM-OP",
+    "stem": "该有机磷中毒患者血胆碱酯酶活力为25%，按教材分级应属于？",
+    "options": [
+      {
+        "label": "A",
+        "text": "轻度中毒",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "中度中毒",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "重度中毒",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "正常范围",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "无法判断",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "有机磷中毒分级",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P162-163",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P162-163",
+      "教师重点锚定清单第24条"
+    ],
+    "keypoint_ref": [
+      "第24条"
+    ],
+    "teacher_anchor": "有机磷中毒：抑制胆碱酯酶致乙酰胆碱蓄积；M 样症状（瞳孔针尖样缩小、大汗淋漓、流涎、支气管分泌物增多）、N 样症状（肌纤维颤动）、中枢神经系统症状；呼出气有蒜味；血胆碱酯酶活力轻度 50%～70%、中度 30%～50%、重度<30%（P162-163）〔原稿第34段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第24条",
+        "title": "有机磷中毒分级",
+        "evidence": "把胆碱酯酶活力25%映射到教材的轻、中、重分级。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第25条",
+        "title": "中间综合征",
+        "evidence": "中间综合征发生在中毒后1～4日，需与急性分级区分。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "轻度",
+      "中度",
+      "正常"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "教材按血胆碱酯酶活力分级：轻度50%～70%，中度30%～50%，重度<30%。25%低于30%，属于重度有机磷中毒。分级用于指导阿托品和复能剂用量及监护强度。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "轻度对应50%～70%，25%明显低于该范围。",
+          "misconception_id": "MC-EM-05",
+          "misconception": "有机磷中毒分级或中间综合征识别错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "中度对应30%～50%，25%已低于30%下限。",
+          "misconception_id": "MC-EM-05",
+          "misconception": "有机磷中毒分级或中间综合征识别错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "25%低于30%，按教材属于重度有机磷中毒。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "正常胆碱酯酶活力接近100%，25%显著降低。",
+          "misconception_id": "MC-EM-05",
+          "misconception": "有机磷中毒分级或中间综合征识别错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "已有明确胆碱酯酶数值和分级标准，可以判断。",
+          "misconception_id": "MC-EM-05",
+          "misconception": "有机磷中毒分级或中间综合征识别错误",
+          "distractor_mechanism": "overgeneralization"
+        }
+      ],
+      "key_takeaway": "有机磷中毒看胆碱酯酶活力：50%～70%轻度、30%～50%中度、<30%重度。",
+      "source_quote": "血胆碱酯酶活力轻度 50%～70%、中度 30%～50%、重度<30%",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q012",
+    "question_id": "TEST-EM-20261102-Q012",
+    "sequence": 12,
+    "schema_version": "2.2",
+    "module": "M04",
+    "module_name": "急性中毒",
+    "type": "A3",
+    "case_group": "CASE-EM-OP",
+    "stem": "该患者有机磷中毒后第3天出现颈屈肌和四肢近端肌无力，伴吞咽困难、呼吸费力。最可能的诊断是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "迟发性脑病",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "症状反跳",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "阿托品中毒",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "呼吸衰竭",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "中间综合征",
+        "is_correct": true
+      }
+    ],
+    "answer": "E",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "bloom": "分析",
+    "bloom_level": "analysis",
+    "difficulty": "较难",
+    "topic": "中间综合征",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P163",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P163",
+      "教师重点锚定清单第25条"
+    ],
+    "keypoint_ref": [
+      "第25条"
+    ],
+    "teacher_anchor": "中间综合征：急性有机磷中毒后 1～4 日（个别第 7 日）发病，表现为颈屈肌、四肢近端肌肉及第Ⅲ～Ⅶ、Ⅸ～Ⅻ对脑神经支配肌肌力减退；累及呼吸肌可致呼吸肌麻痹、呼吸衰竭（P163）〔原稿第35段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第25条",
+        "title": "中间综合征",
+        "evidence": "中毒后1～4日出现颈屈肌、四肢近端和颅神经支配肌无力，符合中间综合征。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第27条",
+        "title": "迟发性脑病",
+        "evidence": "迟发性脑病主要见于一氧化碳中毒，以神经系统后遗症为主。"
+      }
+    ],
+    "difficulty_tier": "L4",
+    "step_count": 4,
+    "competing_dx": [
+      "迟发性脑病",
+      "反跳",
+      "阿托品中毒"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "中间综合征发生在急性有机磷中毒后1～4日，典型表现为颈屈肌、四肢近端肌及第Ⅲ～Ⅶ、Ⅸ～Ⅻ对脑神经支配肌肌力减退，累及呼吸肌可致呼吸衰竭。第3天出现上述肌无力最符合中间综合征。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "迟发性脑病主要见于一氧化碳中毒，不是本例典型表现。",
+          "misconception_id": "MC-EM-05",
+          "misconception": "有机磷中毒分级或中间综合征识别错误",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "反跳是症状重新加重，不表现为特定肌群无力。",
+          "misconception_id": "MC-EM-05",
+          "misconception": "有机磷中毒分级或中间综合征识别错误",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "阿托品中毒多表现为瞳孔扩大、口干、谵妄等，不符合本例。",
+          "misconception_id": "MC-EM-05",
+          "misconception": "有机磷中毒分级或中间综合征识别错误",
+          "distractor_mechanism": "mechanism_confusion"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "呼吸衰竭是中间综合征的后果之一，不是最可能的原诊断。",
+          "misconception_id": "MC-EM-05",
+          "misconception": "有机磷中毒分级或中间综合征识别错误",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "中毒后1～4日出现颈屈肌和近端肌无力，符合中间综合征。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        }
+      ],
+      "key_takeaway": "有机磷中毒后1～4日出现颈屈肌和近端肌无力，先想到中间综合征并警惕呼吸肌麻痹。",
+      "source_quote": "急性有机磷中毒后 1～4 日",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q013",
+    "question_id": "TEST-EM-20261102-Q013",
+    "sequence": 13,
+    "schema_version": "2.2",
+    "module": "M05",
+    "module_name": "理化、环境损伤",
+    "type": "A1",
+    "case_group": null,
+    "stem": "热射病的核心体温阈值是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "36.0℃",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "38.0℃",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "39.0℃",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "40.0℃",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "40.5℃",
+        "is_correct": true
+      }
+    ],
+    "answer": "E",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": true
+    },
+    "bloom": "记忆",
+    "bloom_level": "memory",
+    "difficulty": "简单",
+    "topic": "热射病体温阈值",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P179",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P179",
+      "教师重点锚定清单第32条"
+    ],
+    "keypoint_ref": [
+      "第32条"
+    ],
+    "teacher_anchor": "热射病（重度中暑）：中暑最严重类型，也称中暑高热；高热、无汗、意识障碍，体温超过 40.5℃；降温目标为核心体温 10～40 分钟内降至 39℃以下、2 小时内降至 38.5℃以下（P179）〔原稿第44段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第32条",
+        "title": "热射病体温阈值",
+        "evidence": "直接回忆热射病的核心体温界值。"
+      }
+    ],
+    "difficulty_tier": "L1",
+    "step_count": 1,
+    "competing_dx": [
+      "38.0℃",
+      "38.5℃",
+      "39.0℃"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "热射病是中暑最严重类型，表现为高热、无汗和意识障碍，核心体温超过40.5℃。38.0℃、38.5℃和39.0℃分别对应先兆、轻症或普通发热，不能达到热射病的阈值。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "36.0℃远低于热射病阈值，不能据此诊断。",
+          "misconception_id": "MC-EM-06",
+          "misconception": "热射病或溺水等环境损伤的阈值与现场处理错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "38.0℃属于先兆中暑或普通发热范围，远低于热射病阈值。",
+          "misconception_id": "MC-EM-06",
+          "misconception": "热射病或溺水等环境损伤的阈值与现场处理错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "39.0℃仍未达到热射病核心体温阈值，不能据此诊断。",
+          "misconception_id": "MC-EM-06",
+          "misconception": "热射病或溺水等环境损伤的阈值与现场处理错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "40.0℃接近但未超过40.5℃的热射病阈值。",
+          "misconception_id": "MC-EM-06",
+          "misconception": "热射病或溺水等环境损伤的阈值与现场处理错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "E",
+          "truth": true,
+          "why": "热射病核心体温超过40.5℃，是本例的唯一正确阈值。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        }
+      ],
+      "key_takeaway": "热射病核心体温超过40.5℃，并伴无汗和意识障碍；不要与普通高热混淆。",
+      "source_quote": "体温超过 40.5℃",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q014",
+    "question_id": "TEST-EM-20261102-Q014",
+    "sequence": 14,
+    "schema_version": "2.2",
+    "module": "M05",
+    "module_name": "理化、环境损伤",
+    "type": "A2",
+    "case_group": null,
+    "stem": "溺水者被救上岸后无呼吸，现场急救首先应？",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即倒挂控水并拍背排液",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "先进行保温处理并观察",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "先转运至最近医院救治",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "清除口鼻异物并开放气道",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "先测量核心体温并记录",
+        "is_correct": false
+      }
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "溺水现场处理",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P177-178",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P177-178",
+      "教师重点锚定清单第34条"
+    ],
+    "keypoint_ref": [
+      "第34条"
+    ],
+    "teacher_anchor": "溺水现场：立即清除口鼻泥沙异物、开放气道、给予人工呼吸和胸外按压；不常规倒挂控水；注意保温（P177-178；控水条目教材未单列，标教师补充）〔原稿第46段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第34条",
+        "title": "溺水现场处理",
+        "evidence": "溺水后无呼吸，首要措施是开放气道并开始人工呼吸和胸外按压。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第32条",
+        "title": "热射病",
+        "evidence": "热射病以高热和意识障碍为主，现场处理重点不同。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "立即倒挂控水并拍背排液",
+      "先进行保温处理",
+      "先转运到最近医院"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "溺水现场急救应立刻清除口鼻泥沙异物、开放气道、给予人工呼吸和胸外按压，不常规倒挂控水，并注意保温。控水会延误通气和按压；保温是后续措施，不是首要动作。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "倒挂控水并拍背会延误开放气道和通气，不是常规现场处理。",
+          "misconception_id": "MC-EM-06",
+          "misconception": "热射病或溺水等环境损伤的阈值与现场处理错误",
+          "distractor_mechanism": "outdated_guideline"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "保温重要，但在无呼吸时应先开放气道和通气。",
+          "misconception_id": "MC-EM-06",
+          "misconception": "热射病或溺水等环境损伤的阈值与现场处理错误",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "先转运会延误现场心肺复苏，现场应先进行基础生命支持。",
+          "misconception_id": "MC-EM-06",
+          "misconception": "热射病或溺水等环境损伤的阈值与现场处理错误",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "清除口鼻异物、开放气道并给予人工呼吸是首要现场措施。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "测核心体温不是溺水无呼吸患者的首要急救动作。",
+          "misconception_id": "MC-EM-06",
+          "misconception": "热射病或溺水等环境损伤的阈值与现场处理错误",
+          "distractor_mechanism": "timing_error"
+        }
+      ],
+      "key_takeaway": "溺水后无呼吸先开放气道并人工呼吸/胸外按压；不要先倒挂控水。",
+      "source_quote": "不常规倒挂控水",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q015",
+    "question_id": "TEST-EM-20261102-Q015",
+    "sequence": 15,
+    "schema_version": "2.2",
+    "module": "M06",
+    "module_name": "创伤急诊、多发伤",
+    "type": "A3",
+    "case_group": "CASE-EM-TRAUMA",
+    "stem": "该多发伤患者到达急诊，按ABCDE初级评估，首先应处理？",
+    "options": [
+      {
+        "label": "A",
+        "text": "气道与颈椎保护",
+        "is_correct": true
+      },
+      {
+        "label": "B",
+        "text": "呼吸与通气支持",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "循环与止血处理",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "意识状态评估",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "暴露与保温处理",
+        "is_correct": false
+      }
+    ],
+    "answer": "A",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": true,
+      "B": false,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "创伤ABCDE",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P256-257",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P256-257",
+      "教师重点锚定清单第40条"
+    ],
+    "keypoint_ref": [
+      "第40条"
+    ],
+    "teacher_anchor": "创伤初级评估 ABCDE 顺序和处理原则：A 气道与颈椎保护、B 呼吸与通气、C 循环与止血、D 意识（GCS）、E 暴露与保温；先救命后治伤，致命性外出血优先控制（P256-257、P307）〔原稿第54段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第40条",
+        "title": "创伤ABCDE",
+        "evidence": "按ABCDE顺序，A 代表气道与颈椎保护。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第44条",
+        "title": "张力性气胸",
+        "evidence": "张力性气胸属致命伤，但应在气道和呼吸评估后紧急处理。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "呼吸与通气支持",
+      "循环与止血处理",
+      "意识评估"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "创伤初级评估按ABCDE顺序：A 气道与颈椎保护、B 呼吸与通气、C 循环与止血、D 意识、E 暴露与保温。先救命后治伤，致命性外出血优先控制，但气道始终是第一步。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": true,
+          "why": "ABCDE 的 A 是气道与颈椎保护，是初级评估的第一步。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "呼吸与通气是 B，应在气道建立后评估，不能先于气道。",
+          "misconception_id": "MC-EM-07",
+          "misconception": "创伤 ABCDE 顺序或致命伤优先处理错误",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "循环与止血是 C，排在气道和呼吸之后，顺序不能提前。",
+          "misconception_id": "MC-EM-07",
+          "misconception": "创伤 ABCDE 顺序或致命伤优先处理错误",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "意识评估是 D，排在 C 之后，不是第一步。",
+          "misconception_id": "MC-EM-07",
+          "misconception": "创伤 ABCDE 顺序或致命伤优先处理错误",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "暴露与保温是 E，是初级评估最后一步，不能提前。",
+          "misconception_id": "MC-EM-07",
+          "misconception": "创伤 ABCDE 顺序或致命伤优先处理错误",
+          "distractor_mechanism": "timing_error"
+        }
+      ],
+      "key_takeaway": "创伤评估先A后B再C；气道与颈椎保护永远排在呼吸和循环之前。",
+      "source_quote": "A 气道与颈椎保护",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q016",
+    "question_id": "TEST-EM-20261102-Q016",
+    "sequence": 16,
+    "schema_version": "2.2",
+    "module": "M06",
+    "module_name": "创伤急诊、多发伤",
+    "type": "A3",
+    "case_group": "CASE-EM-TRAUMA",
+    "stem": "该骨盆骨折患者若出现开放性气胸，现场处理应首选？",
+    "options": [
+      {
+        "label": "A",
+        "text": "立即胸腔闭式引流并固定",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "5～6层凡士林油纱封闭",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "无菌敷料加压包扎固定",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "粗针头穿刺排气减压",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "立即气管插管并通气",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "开放性气胸",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P257、P282",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P257、P282",
+      "教师重点锚定清单第43条"
+    ],
+    "keypoint_ref": [
+      "第43条"
+    ],
+    "teacher_anchor": "开放性气胸：立即用 5～6 层凡士林油纱布封闭伤口，外用无菌敷料严密包扎，使开放性伤口变为闭合性，再行胸腔闭式引流（P257、P282）〔原稿第57段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第43条",
+        "title": "开放性气胸",
+        "evidence": "开放性气胸现场先用油纱封闭伤口，使其变为闭合性。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第44条",
+        "title": "张力性气胸",
+        "evidence": "张力性气胸需针刺排气，与开放性气胸处理不同。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "立即胸腔闭式引流并固定",
+      "无菌敷料加压包扎",
+      "粗针头穿刺排气"
+    ],
+    "negative_cues": [],
+    "conditionals": [
+      "若出现开放性气胸"
+    ],
+    "learning_value": {
+      "correct_rationale": "开放性气胸现场应立即用5～6层凡士林油纱布封闭伤口，外用无菌敷料严密包扎，使开放性伤口变为闭合性，再行胸腔闭式引流。直接闭式引流或单纯加压包扎不能先解决开放性通道。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "闭式引流是后续措施，现场应先用油纱封闭开放伤口。",
+          "misconception_id": "MC-EM-07",
+          "misconception": "创伤 ABCDE 顺序或致命伤优先处理错误",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "5～6层凡士林油纱封闭伤口是开放性气胸的现场首选。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "单纯无菌敷料加压包扎不能有效封闭开放性气胸。",
+          "misconception_id": "MC-EM-07",
+          "misconception": "创伤 ABCDE 顺序或致命伤优先处理错误",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "针刺排气用于张力性气胸，不是开放性气胸的首选。",
+          "misconception_id": "MC-EM-07",
+          "misconception": "创伤 ABCDE 顺序或致命伤优先处理错误",
+          "distractor_mechanism": "mechanism_confusion"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "气管插管用于气道管理，不能替代胸壁伤口封闭。",
+          "misconception_id": "MC-EM-07",
+          "misconception": "创伤 ABCDE 顺序或致命伤优先处理错误",
+          "distractor_mechanism": "adjacent_concept"
+        }
+      ],
+      "key_takeaway": "开放性气胸先油纱封闭伤口变闭合性，再行胸腔闭式引流；张力性气胸才先针刺排气。",
+      "source_quote": "立即用 5～6 层凡士林油纱布封闭伤口",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q017",
+    "question_id": "TEST-EM-20261102-Q017",
+    "sequence": 17,
+    "schema_version": "2.2",
+    "module": "M07",
+    "module_name": "常见急危重症内科疾病（心血管、呼吸）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "STEMI患者若预计120分钟内可完成PCI，首选再灌注策略是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "静脉溶栓治疗",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "单纯抗凝治疗",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "急诊冠脉搭桥",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "直接冠脉介入",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "保守观察治疗",
+        "is_correct": false
+      }
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "STEMI再灌注",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P87-90",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P87-90",
+      "教师重点锚定清单第47条"
+    ],
+    "keypoint_ref": [
+      "第47条"
+    ],
+    "teacher_anchor": "急性冠脉综合征 ACS：包括不稳定型心绞痛、非 ST 段抬高型心肌梗死、ST 段抬高型心肌梗死；心肌肌钙蛋白>99th ULN；STEMI 预计 120 分钟内可完成 PCI 首选直接 PCI，溶栓适用于无 PCI 条件且发病 12 小时内（P87-90）〔原稿第64段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第47条",
+        "title": "STEMI再灌注",
+        "evidence": "预计120分钟内可完成PCI时，首选直接PCI。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第47条",
+        "title": "不稳定型心绞痛",
+        "evidence": "不稳定型心绞痛属ACS，但再灌注策略依风险分层不同。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "静脉溶栓治疗",
+      "单纯抗凝治疗",
+      "急诊冠脉搭桥"
+    ],
+    "negative_cues": [],
+    "conditionals": [
+      "若预计120分钟内可完成PCI"
+    ],
+    "learning_value": {
+      "correct_rationale": "STEMI 再灌注强调时间窗。若预计120分钟内可完成PCI，首选直接PCI；溶栓适用于无PCI条件且发病12小时内的患者。单纯抗凝或保守观察不能替代再灌注。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "静脉溶栓适用于无PCI条件且发病12小时内，不是本例首选。",
+          "misconception_id": "MC-EM-08",
+          "misconception": "ACS 再灌注或高血压急症降压目标错误",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "单纯抗凝不能开通闭塞血管，不是再灌注策略。",
+          "misconception_id": "MC-EM-08",
+          "misconception": "ACS 再灌注或高血压急症降压目标错误",
+          "distractor_mechanism": "mechanism_confusion"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "急诊冠脉搭桥适用于特定解剖或PCI失败等情况，不是首选。",
+          "misconception_id": "MC-EM-08",
+          "misconception": "ACS 再灌注或高血压急症降压目标错误",
+          "distractor_mechanism": "adjacent_concept"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "预计120分钟内可完成PCI时，直接冠脉介入是首选。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "保守观察会延误再灌注，增加心肌坏死风险，不可取。",
+          "misconception_id": "MC-EM-08",
+          "misconception": "ACS 再灌注或高血压急症降压目标错误",
+          "distractor_mechanism": "timing_error"
+        }
+      ],
+      "key_takeaway": "STEMI 能120分钟内做PCI就直接PCI；无PCI条件且12小时内才考虑溶栓。",
+      "source_quote": "STEMI 预计 120 分钟内可完成 PCI 首选直接 PCI",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q018",
+    "question_id": "TEST-EM-20261102-Q018",
+    "sequence": 18,
+    "schema_version": "2.2",
+    "module": "M07",
+    "module_name": "常见急危重症内科疾病（心血管、呼吸）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "主动脉夹层患者需紧急降压，目标收缩压应控制在？",
+    "options": [
+      {
+        "label": "A",
+        "text": "90～100mmHg",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "100～110mmHg",
+        "is_correct": true
+      },
+      {
+        "label": "C",
+        "text": "110～120mmHg",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "120～130mmHg",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "130～140mmHg",
+        "is_correct": false
+      }
+    ],
+    "answer": "B",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": true,
+      "C": false,
+      "D": false,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "高血压急症",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P82-83",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P82-83",
+      "教师重点锚定清单第48条"
+    ],
+    "keypoint_ref": [
+      "第48条"
+    ],
+    "teacher_anchor": "高血压急症：收缩压>180mmHg、舒张压>120mmHg 伴急性进行性靶器官损害，需立即降压但不宜立即降至正常；主动脉夹层目标收缩压 100～110mmHg；高血压合并脑出血维持收缩压 130～180mmHg（P82-83）〔原稿第65段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第48条",
+        "title": "高血压急症",
+        "evidence": "主动脉夹层需迅速但有控制地降压，目标收缩压100～110mmHg。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第48条",
+        "title": "主动脉夹层",
+        "evidence": "夹层降压目标比一般高血压急症更严格，需同时控制心率和疼痛。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "90～100mmHg",
+      "110～120mmHg",
+      "120～130mmHg"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "高血压急症需立即降压但不宜立即降至正常。主动脉夹层的目标收缩压为100～110mmHg；高血压合并脑出血则维持收缩压130～180mmHg。不能把夹层目标套用到所有高血压急症。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "90～100mmHg过低，可能影响重要器官灌注。",
+          "misconception_id": "MC-EM-08",
+          "misconception": "ACS 再灌注或高血压急症降压目标错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "B",
+          "truth": true,
+          "why": "主动脉夹层目标收缩压为100～110mmHg。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "110～120mmHg高于夹层目标上限。",
+          "misconception_id": "MC-EM-08",
+          "misconception": "ACS 再灌注或高血压急症降压目标错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "120～130mmHg仍偏高，不能有效降低夹层撕裂风险。",
+          "misconception_id": "MC-EM-08",
+          "misconception": "ACS 再灌注或高血压急症降压目标错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "130～140mmHg接近脑出血目标，不适用于主动脉夹层。",
+          "misconception_id": "MC-EM-08",
+          "misconception": "ACS 再灌注或高血压急症降压目标错误",
+          "distractor_mechanism": "population_mismatch"
+        }
+      ],
+      "key_takeaway": "主动脉夹层收缩压目标100～110mmHg；不同高血压急症的降压目标不同。",
+      "source_quote": "主动脉夹层目标收缩压 100～110mmHg",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q019",
+    "question_id": "TEST-EM-20261102-Q019",
+    "sequence": 19,
+    "schema_version": "2.2",
+    "module": "M08",
+    "module_name": "常见急危重症内科疾病（消化、内分泌、神经）",
+    "type": "A1",
+    "case_group": null,
+    "stem": "重度糖尿病酮症酸中毒的血清HCO3-阈值是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "<1mmol/L",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "<3mmol/L",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "<5mmol/L",
+        "is_correct": true
+      },
+      {
+        "label": "D",
+        "text": "<10mmol/L",
+        "is_correct": false
+      },
+      {
+        "label": "E",
+        "text": "<15mmol/L",
+        "is_correct": false
+      }
+    ],
+    "answer": "C",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": true,
+      "D": false,
+      "E": false
+    },
+    "bloom": "记忆",
+    "bloom_level": "memory",
+    "difficulty": "简单",
+    "topic": "重度DKA",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P36-38",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P36-38",
+      "教师重点锚定清单第57条"
+    ],
+    "keypoint_ref": [
+      "第57条"
+    ],
+    "teacher_anchor": "糖尿病酮症酸中毒 DKA：胰岛素缺乏、升糖激素增多致高血糖、高血酮、酮尿、脱水、电解质紊乱、代谢性酸中毒；重度 DKA 血清 HCO3-<5mmol/L 或伴意识障碍；治疗为补液+小剂量胰岛素+纠正电解质（P36-38）〔原稿第77段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第57条",
+        "title": "重度DKA",
+        "evidence": "直接回忆重度DKA的血清碳酸氢根阈值。"
+      }
+    ],
+    "difficulty_tier": "L1",
+    "step_count": 1,
+    "competing_dx": [
+      "<1mmol/L",
+      "<3mmol/L",
+      "<10mmol/L"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "重度糖尿病酮症酸中毒的判断标准包括血清HCO3-<5mmol/L或伴意识障碍。HCO3-越低说明代谢性酸中毒越重；<10mmol/L或<15mmol/L不能单独定义为重度。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "<1mmol/L极度降低，但教材重度界值是<5mmol/L。",
+          "misconception_id": "MC-EM-09",
+          "misconception": "DKA/HHS/低血糖补液与降糖处理错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "<3mmol/L低于重度界值，不能作为教材定义。",
+          "misconception_id": "MC-EM-09",
+          "misconception": "DKA/HHS/低血糖补液与降糖处理错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "C",
+          "truth": true,
+          "why": "重度DKA的血清HCO3-阈值为<5mmol/L。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "D",
+          "truth": false,
+          "why": "<10mmol/L高于重度界值，不能定义重度。",
+          "misconception_id": "MC-EM-09",
+          "misconception": "DKA/HHS/低血糖补液与降糖处理错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "<15mmol/L更宽松，不能定义重度DKA。",
+          "misconception_id": "MC-EM-09",
+          "misconception": "DKA/HHS/低血糖补液与降糖处理错误",
+          "distractor_mechanism": "direction_error"
+        }
+      ],
+      "key_takeaway": "重度DKA的HCO3-阈值是<5mmol/L，或伴意识障碍；不要用<10或<15作为重度界值。",
+      "source_quote": "重度 DKA 血清 HCO3-<5mmol/L",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  },
+  {
+    "id": "TEST-EM-20261102-Q020",
+    "question_id": "TEST-EM-20261102-Q020",
+    "sequence": 20,
+    "schema_version": "2.2",
+    "module": "M08",
+    "module_name": "常见急危重症内科疾病（消化、内分泌、神经）",
+    "type": "A2",
+    "case_group": null,
+    "stem": "糖尿病患者血糖2.6mmol/L，神志不清，首要处理是？",
+    "options": [
+      {
+        "label": "A",
+        "text": "口服葡萄糖溶液",
+        "is_correct": false
+      },
+      {
+        "label": "B",
+        "text": "皮下注射胰岛素",
+        "is_correct": false
+      },
+      {
+        "label": "C",
+        "text": "静脉注射胰岛素",
+        "is_correct": false
+      },
+      {
+        "label": "D",
+        "text": "静脉补充葡萄糖",
+        "is_correct": true
+      },
+      {
+        "label": "E",
+        "text": "继续观察血糖变化",
+        "is_correct": false
+      }
+    ],
+    "answer": "D",
+    "polarity": "positive",
+    "option_polarities": {
+      "A": false,
+      "B": false,
+      "C": false,
+      "D": true,
+      "E": false
+    },
+    "bloom": "应用",
+    "bloom_level": "application",
+    "difficulty": "较难",
+    "topic": "低血糖昏迷",
+    "source_type": "原创",
+    "license": "internal_only",
+    "source_page": "教材P34-36",
+    "source_anchors": [
+      "《急诊与灾难医学》第4版，印刷页P34-36",
+      "教师重点锚定清单第59条"
+    ],
+    "keypoint_ref": [
+      "第59条"
+    ],
+    "teacher_anchor": "低血糖：非糖尿病者血糖<2.8mmol/L、糖尿病者<3.9mmol/L；具 Whipple 三联征；先有自主神经症状、继而中枢神经症状，严重者昏迷；昏迷者静脉补糖，血糖恢复后 30 分钟神志仍未清醒提示脑水肿（P34-36）〔原稿第79段〕",
+    "concepts": [
+      {
+        "role": "primary",
+        "keypoint": "第59条",
+        "title": "低血糖昏迷",
+        "evidence": "糖尿病患者血糖2.6mmol/L且神志不清，属低血糖昏迷。"
+      },
+      {
+        "role": "differential",
+        "keypoint": "第57条",
+        "title": "DKA",
+        "evidence": "DKA为高血糖和酮症酸中毒，与本例低血糖方向相反。"
+      }
+    ],
+    "difficulty_tier": "L3",
+    "step_count": 3,
+    "competing_dx": [
+      "口服葡萄糖",
+      "皮下注射胰岛素",
+      "静脉注射胰岛素"
+    ],
+    "negative_cues": [],
+    "conditionals": [],
+    "learning_value": {
+      "correct_rationale": "糖尿病患者血糖<3.9mmol/L即为低血糖，2.6mmol/L且神志不清属严重低血糖。昏迷者不能口服，应静脉补充葡萄糖；血糖恢复后30分钟神志仍未清醒需警惕脑水肿。",
+      "per_option": [
+        {
+          "label": "A",
+          "truth": false,
+          "why": "昏迷患者不能安全口服葡萄糖，可能误吸，应静脉补糖。",
+          "misconception_id": "MC-EM-09",
+          "misconception": "DKA/HHS/低血糖补液与降糖处理错误",
+          "distractor_mechanism": "timing_error"
+        },
+        {
+          "label": "B",
+          "truth": false,
+          "why": "皮下注射胰岛素会进一步降低血糖，方向完全相反。",
+          "misconception_id": "MC-EM-09",
+          "misconception": "DKA/HHS/低血糖补液与降糖处理错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "C",
+          "truth": false,
+          "why": "静脉注射胰岛素会加重低血糖，绝对不能用。",
+          "misconception_id": "MC-EM-09",
+          "misconception": "DKA/HHS/低血糖补液与降糖处理错误",
+          "distractor_mechanism": "direction_error"
+        },
+        {
+          "label": "D",
+          "truth": true,
+          "why": "昏迷者应静脉补充葡萄糖，快速纠正低血糖。",
+          "misconception_id": null,
+          "misconception": null,
+          "distractor_mechanism": null
+        },
+        {
+          "label": "E",
+          "truth": false,
+          "why": "继续观察会延误低血糖纠正，可能造成脑损伤。",
+          "misconception_id": "MC-EM-09",
+          "misconception": "DKA/HHS/低血糖补液与降糖处理错误",
+          "distractor_mechanism": "timing_error"
+        }
+      ],
+      "key_takeaway": "低血糖昏迷首选静脉补糖；不要给胰岛素，也不要等患者自己口服。",
+      "source_quote": "昏迷者静脉补糖",
+      "source_quote_status": "exact",
+      "anchor_status": "verified",
+      "review_status": "pilot_unreviewed",
+      "quality_flags": [
+        "draft",
+        "管线v2.2测试",
+        "医学核验待完成"
+      ]
+    },
+    "review_status": "draft",
+    "medical_verification": "draft：未经独立医学核验",
+    "difficulty_index": null,
+    "discrimination_index": null,
+    "non_functioning_distractors": null,
+    "release": {
+      "disposition": "pending_human",
+      "evidence_grade": "C",
+      "risk_level": "medium",
+      "reason_code": "HUMAN_MEDICAL_REVIEW",
+      "agent_checks": [
+        "教师重点锚点",
+        "结构字段",
+        "学习价值逐项覆盖",
+        "管线v2.2测试"
+      ],
+      "human_check": "管线测试批次，未医学核验",
+      "suggested_action": "仅用于管线验证，不进入题库"
+    }
+  }
+]

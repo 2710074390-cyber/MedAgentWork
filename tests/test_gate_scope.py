@@ -98,7 +98,112 @@ def test_strict_stage_bindings_and_ambiguity(tmp_path, monkeypatch):
     assert gate_check._batch_binding_issues(batch_id, report('A2', intermediate), None, 'A2', True)
 
 
-def test_a4_strict_trace_and_new_batch(tmp_path, monkeypatch):
+def _write_final(tmp, batch_id, items):
+    d = tmp / '最终产物' / batch_id
+    d.mkdir(parents=True, exist_ok=True)
+    (d / 'ALL_questions_FIXED.json').write_text(json.dumps(items, ensure_ascii=False), encoding='utf-8')
+    return d
+
+
+def _q(i, bloom='记忆'):
+    return {'id': f'Q{i}', 'stem': f'题{i}', 'options': {'A': '甲', 'B': '乙'},
+            'answer': 'A', 'bloom': bloom, 'type': 'A1'}
+
+
+def test_quota_blocks_without_plan(tmp_path, monkeypatch):
+    """HC-22：题量完整但没有真题选题计划 → BLOCKED（2026-11-03 接入 final）。"""
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    _write_final(tmp_path, 'batch100', [_q(i) for i in range(10)])
+    r = gate_check.check_real_question_quota(
+        'batch100', {'product_types': ['question_bank'], 'evidence_binding_mode': 'strict'})
+    assert r['status'] == 'BLOCKED'
+    assert '缺少真题选题计划' in r['reason']
+
+
+def test_quota_blocks_below_min_without_shortfall(tmp_path, monkeypatch):
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    _write_final(tmp_path, 'batch100', [_q(i) for i in range(10)])
+    plan = tmp_path / '中间产物' / 'batch100' / 'real_question_plan.json'
+    plan.parent.mkdir(parents=True)
+    plan.write_text(json.dumps({'quota_status': {
+        'kaoyan': {'requested': 2, 'selected': 0, 'available': 0,
+                   'status': 'met', 'reason': ''},
+        'zhiyi': {'requested': 2, 'selected': 0, 'available': 0,
+                  'status': 'met', 'reason': ''},
+    }}), encoding='utf-8')
+    r = gate_check.check_real_question_quota(
+        'batch100', {'product_types': ['question_bank'], 'evidence_binding_mode': 'strict'})
+    assert r['status'] == 'BLOCKED'
+    assert '配额未达标' in r['reason']
+
+
+def test_quota_allows_reduced_with_reason(tmp_path, monkeypatch):
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    _write_final(tmp_path, 'batch100', [_q(i) for i in range(10)])
+    plan = tmp_path / '中间产物' / 'batch100' / 'real_question_plan.json'
+    plan.parent.mkdir(parents=True)
+    plan.write_text(json.dumps({'quota_status': {
+        'kaoyan': {'requested': 2, 'selected': 1, 'available': 1,
+                   'status': 'reduced', 'reason': 'candidates_exhausted'},
+        'zhiyi': {'requested': 2, 'selected': 1, 'available': 1,
+                  'status': 'reduced', 'reason': 'candidates_exhausted'},
+    }}), encoding='utf-8')
+    r = gate_check.check_real_question_quota(
+        'batch100', {'product_types': ['question_bank'], 'evidence_binding_mode': 'strict'})
+    assert r['status'] == 'PASS', r
+
+
+def test_quality_stages_block_missing_for_batch048(tmp_path, monkeypatch):
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    r = gate_check.check_quality_stages('batch048', {})
+    assert r['status'] == 'BLOCKED'
+    assert 'R0' in r['reason'] and 'R3' in r['reason']
+
+
+def test_quality_stages_pass_with_enforce_r3(tmp_path, monkeypatch):
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    d = tmp_path / 'reports' / 'gate'
+    d.mkdir(parents=True)
+    for stage in ('r0', 'r1', 'r2', 'r3'):
+        (d / f'quality_gate_batch048_{stage}_20261103T000000.json').write_text(
+            json.dumps({'status': 'PASS', 'mode': 'enforce'}), encoding='utf-8')
+    r = gate_check.check_quality_stages('batch048', {})
+    assert r['status'] == 'PASS', r
+
+
+def test_quality_stages_block_advisory_r3(tmp_path, monkeypatch):
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    d = tmp_path / 'reports' / 'gate'
+    d.mkdir(parents=True)
+    for stage in ('r0', 'r1', 'r2', 'r3'):
+        (d / f'quality_gate_batch048_{stage}_20261103T000000.json').write_text(
+            json.dumps({'status': 'PASS', 'mode': 'advisory'}), encoding='utf-8')
+    r = gate_check.check_quality_stages('batch048', {})
+    assert r['status'] == 'BLOCKED' and 'enforce' in r['reason']
+
+
+def test_p9_metadata_blocks_missing_mode(tmp_path, monkeypatch):
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    _write_final(tmp_path, 'batch048', [_q(i) for i in range(3)])
+    r = gate_check.check_p9_metadata('batch048', {'product_types': ['question_bank']})
+    assert r['status'] == 'BLOCKED' and '模式元数据' in r['reason']
+
+
+def test_bloom_target_blocks_short_understanding(tmp_path, monkeypatch):
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    items = [_q(i, '记忆') for i in range(15)] + [_q(100 + i, '应用') for i in range(25)] + \
+            [_q(200 + i, '理解') for i in range(5)] + [_q(300 + i, '分析') for i in range(5)]
+    _write_final(tmp_path, 'batch048', items)
+    r = gate_check.check_bloom_target('batch048', {
+        'product_types': ['question_bank'],
+        'target_bloom': {'记忆': 20, '理解': 20, '应用': 45, '分析': 15},
+    })
+    assert r['status'] == 'BLOCKED'
+    assert '理解' in r['reason'] and '补' in r['reason']
+
+
+def test_a4_noop_blocks_unless_waived(tmp_path, monkeypatch):
+    """2026-11-03 P0：A2 与 A4 字节相同 = 修复空转，必须 BLOCKED；显式豁免才放行。"""
     import workflow_state
     monkeypatch.setattr(gate_check, 'BASE', tmp_path)
     batch = workflow_state.new_batch('batch100', product_types=['question_bank'])
@@ -106,6 +211,36 @@ def test_a4_strict_trace_and_new_batch(tmp_path, monkeypatch):
     final = tmp_path / '最终产物' / 'batch100' / 'ALL_questions_FIXED.json'
     final.parent.mkdir(parents=True)
     final.write_text('[]', encoding='utf-8')
+    final.with_suffix('.md').write_text('ok', encoding='utf-8')
+    source = tmp_path / '中间产物' / 'batch100' / 'ALL_questions.json'
+    source.parent.mkdir(parents=True)
+    source.write_text('[]', encoding='utf-8')
+    qc = tmp_path / '质检报告' / 'batch100' / 'A3_质检报告.json'
+    qc.parent.mkdir(parents=True)
+    qc.write_text(json.dumps({'report_metadata': {'batch_id': 'batch100', 'stage': 'A3',
+                  'source_file': str(source), 'source_sha256': hashlib.sha256(source.read_bytes()).hexdigest()}}), encoding='utf-8')
+    trace = final.parent / 'AGENT4_追溯日志.json'
+    evidence = {'report_metadata': {'batch_id': 'batch100', 'stage': 'A4', 'source_file': str(final),
+                'source_sha256': hashlib.sha256(final.read_bytes()).hexdigest(),
+                'a2_input_file': str(source), 'a2_input_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
+                'a3_report_file': str(qc), 'a3_report_sha256': hashlib.sha256(qc.read_bytes()).hexdigest()}, 'source_file_synced': True}
+    trace.write_text(json.dumps(evidence), encoding='utf-8')
+    blocked = gate_check.gate_agent4('batch100', batch)
+    assert blocked['status'] == 'BLOCKED'
+    assert any(sub.get('gate_sub') == 'GATE-A4-NOOP' for sub in blocked.get('sub_gates', []))
+    batch['medfix_noop_waiver'] = {'reason': 'A2 经复检无缺陷，确认无需修改'}
+    assert gate_check.gate_agent4('batch100', batch)['status'] == 'PASS'
+
+
+def test_a4_strict_trace_and_new_batch(tmp_path, monkeypatch):
+    import workflow_state
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    batch = workflow_state.new_batch('batch100', product_types=['question_bank'])
+    batch['steps']['AGENT4'] = {'output': '追溯日志'}
+    final = tmp_path / '最终产物' / 'batch100' / 'ALL_questions_FIXED.json'
+    final.parent.mkdir(parents=True)
+    # 与 A2 输入必须不同，否则会命中 2026-11-03 新增的 no-op 阻断项
+    final.write_text('[{"id": "A4-FIXED"}]', encoding='utf-8')
     final.with_suffix('.md').write_text('ok', encoding='utf-8')
     source = tmp_path / '中间产物' / 'batch100' / 'ALL_questions.json'
     source.parent.mkdir(parents=True)
@@ -450,3 +585,17 @@ def test_gate_final_blocks_on_lineage_for_new_batch():
     r = gate_check.gate_final('batch047', batch, 'off')
     assert r['status'] == 'BLOCKED'
     assert '血缘' in r['reason']
+
+
+def test_gate_final_blocks_on_missing_quota_plan(tmp_path, monkeypatch):
+    """final 门禁：batch100 有交付物、有血缘，但没有真题 plan → BLOCKED（HC-22）。"""
+    import workflow_state
+
+    monkeypatch.setattr(gate_check, 'BASE', tmp_path)
+    batch = workflow_state.new_batch('batch100', product_types=['question_bank'])
+    batch['lineage'] = [_lineage_entry()]
+    batch['evidence_binding_mode'] = 'strict'
+    _write_final(tmp_path, 'batch100', [_q(i) for i in range(10)])
+    r = gate_check.gate_final('batch100', batch, 'off')
+    assert r['status'] == 'BLOCKED'
+    assert any(s.get('gate_sub') == 'GATE-QUOTA' for s in r.get('sub_gates', [])), r

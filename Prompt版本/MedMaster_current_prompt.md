@@ -245,7 +245,7 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
      --keypoints {教师重点锚定清单} \
      --out reports/validate/real_question_check_{batchID}.json
    ```
-   FAIL（比例/答案/重复/覆盖/license/溯源任一）→ halt；不得用 `--golden-absent` 绕过。
+   FAIL（比例/答案/重复/覆盖/溯源任一）→ halt；**license 自 2026-11-03 起仅记录，不再判 FAIL**；不得用 `--golden-absent` 绕过。
 4. **旧 HC-18 工具**：`kaoyan_picker.py` 仅旧批次兼容；已改为读取可信答案表，`--allow-unverified` 仅诊断。
 5. **语料维护（HC-23，非批次内动作）**：历年真题索引缺失或需重建时，按 `zhiyi_pdf_ocr.py run` → `zhiyi_pdf_parse.py` → `real_question_cli.py build` 三步执行，并核对 `reports/validate/zhiyi_pdf_parse_report.json` 的质量门禁（有效率 ≥95%、`no_answer`=0、`bad_options`≤2%）。批次内**不得**跑 OCR。
 
@@ -259,6 +259,19 @@ Golden Set 路径：05_GoldenSet\golden_set_v1.json
 
 ## 工作流执行模板
 
+### HC-25 全流程质量门禁（batch048 起强制）
+
+- batch048+ 在每个阶段转换前按序跑 R0–R3，报告落 `reports/gate/quality_gate_{batchID}_rX_*.json`；R3 必须 `--mode enforce`。`gate_check.py --stage final` 会检查 R0–R3 报告是否存在、非 BLOCKED/SKIPPED、R3 是否 enforce；缺一即 BLOCKED。R4 归档后补。
+- 发布前置四项（final 机械判定）：① HC-22 配额（无 plan 或配额不足且无 reduced/cancelled 理由 → BLOCKED）；② R0–R3；③ 每题 `p9_mode` 覆盖 100%；④ 理解/分析型达到 `target_bloom`（低 5pp → BLOCKED，需补题）。
+- 批次登记时必须写 `target_bloom`（教师重点 20/20/45/15；100 题大卷 10/25/35/20）与 `p9_mode`（teacher_keypoint/course_schedule/module），否则 final 的 Bloom 检查会 SKIP、P9 无依据。
+- Bloom 补题：出题前用 `scripts/bloom_gap.py --file 中间产物/{batchID}/ALL_questions.json --target 20,20,45,15`（教师重点）或 `10,25,35,20`（100 题大卷）计算各层题数；final 门禁按 `target_bloom` 校验。
+
+```bash
+python scripts/quality_gate.py --stage r0 --batch {batchID} --mode advisory
+python scripts/quality_gate.py --stage r1 --batch {batchID} --profile pilot --mode advisory
+python scripts/quality_gate.py --stage r2 --batch {batchID} --profile pilot --mode advisory --with-tests
+python scripts/quality_gate.py --stage r3 --batch {batchID} --profile release_teacher_keypoint --mode enforce
+```
 ### 阶段一：启动、检索与意图确认
 
 ```

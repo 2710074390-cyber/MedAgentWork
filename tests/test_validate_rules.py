@@ -636,3 +636,14 @@ def test_x5p_reports_polarity_mismatch():
     assert r['mismatch'] == 1 and r['agree'] == 1
     assert r['sample'][0]['qid'] == 'A1'
     assert r['sample'][0]['stem_says'] == 'negative'
+
+
+# ── 2026-11-03：WARN 不再导致非零退出码 ──────────────────
+
+def test_warn_only_does_not_fail_exit_code():
+    from scripts.validate.__main__ import exit_code
+
+    assert exit_code({'fail': 0, 'warn': 3}) == 0
+    assert exit_code({'fail': 0, 'warn': 3}, strict_warn=True) == 1
+    assert exit_code({'fail': 1, 'warn': 0}) == 1
+    assert exit_code(None) == 0

@@ -25,6 +25,7 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 MODULE_HEAD_RE = re.compile(r"^## 模块(\d+)：", re.M)
 CARD_RE = re.compile(r"^####\s*[🔴🟡🟢].*?K-M\d{2}-\d{3}", re.M)

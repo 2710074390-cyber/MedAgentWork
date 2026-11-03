@@ -11,14 +11,15 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 ## 1. 批次生命周期
 
 ```
-启动(登记批次) → 阶段2 MedGen → 门禁A2 → 阶段3 MedQC → 门禁A3
+batch048+：R0/R1 → 启动(登记批次) → 阶段2 MedGen → 门禁A2 → 阶段3 MedQC → 门禁A3
 → 阶段4 MedFix → 门禁A4 → **门禁LV** → 阶段5 MedReview → 门禁A5*
-→ 终审门禁 → 用户签收(APPROVED) → 归档
+→ R2 测试验证 → R3 发布上线（enforce）→ 终审门禁（检查 HC-22/R0–R3/P9/Bloom 四项）
+→ 用户签收(可选) → 归档 → R4 复盘
 ```
 
 > HC-19 插图管线（原阶段6 生图 + GATE-A5 配图项 + GATE-A6）已于 2026-11-02 整体下线，见 `SOUL.md § HC-19`。复习资料产出**纯文本**，不写占位符、不出配图清单。
 
-- **门禁LV（HC-24 · 2026-10-23 新增）**：`item_schema_version=2.0` 的新批次，MedFix 后必须跑 `python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --batch {batchID} --out reports/validate/learning_value_{batchID}_final.json`；`FAIL>0`、逐项覆盖<100%、错误认知覆盖<100%、`source_quote_exact_rate<95%`、`quote_verified_rate<95%`、`misconception_id_conflicts>0` 或 `anchor_verified_rate<80%` → **halt**，回退 MedGen/MedFix。已签收旧批次（无 `item_schema_version`）显式 SKIPPED，不追溯。
+- **门禁LV（HC-24 · 2026-10-23 新增）**：`item_schema_version≥2.0` 的新批次（batch047 起为 2.2），MedFix 后必须跑 `python scripts/check_learning_value.py --file 最终产物/{batchID}/ALL_questions_FIXED.json --batch {batchID} --out reports/validate/learning_value_{batchID}_final.json`；`FAIL>0`、逐项覆盖<100%、错误认知覆盖<100%、`source_quote_exact_rate<95%`、`quote_verified_rate<95%`、`misconception_id_conflicts>0` 或 `anchor_verified_rate<80%` → **halt**，回退 MedGen/MedFix。已签收旧批次（无 `item_schema_version`）显式 SKIPPED，不追溯。
 - **门禁适用范围（2026-10-26 加固）**：批次可显式声明 `product_types`（`question_bank`/`prediction_paper`/`review_material`），缺失时按产物形状推断。A2/A3/A4 只对题库/押题卷生效；PG-09/10/11 只对复习资料生效；JSON 有效性只对题库/押题卷生效。`--stage auto` 按此矩阵路由：复习资料批次直达 final；v2 题库/押题卷批次在 A4 后自动插入 `learning_value`，不会被跳过。
 
 - 门禁未通过 → **halt** → 回退对应 Agent 修复 → 重跑门禁（不可跳过，HC-12）
@@ -30,10 +31,11 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 - **门禁A5 附加（HC-26 · 2026-10-27，所有复习资料批次强制）**：跑 `python scripts/check_review_detail.py --md <主复习资料 MD> --mode auto --profile <release_teacher_keypoint|release_teaching_plan>`（掌握级九槽位+案例/卡片达标/自测答案/模块八块/课程八块任一 FAIL → 回退 Agent 5 补写；报告 `reports/validate/review_detail_*.json|md`）
 - **阶段 6 生图（HC-19）已下线（2026-11-02）**：不再有豆包交接、配图清单与 GATE-A6。复习资料到门禁A5（含 HC-20/D0 与 HC-26 附加项）通过即进入终审。
 
-## 1.5 全流程质量阶段（HC-25 · 2026-10-23 新增）
+## 1.5 全流程质量阶段（HC-25 · 2026-10-23 新增 · 2026-11-03 batch048 起强制）
 
 > 标准：`docs/质量管控规范.md`；阈值：`scripts/quality_policy.json`；编排：`scripts/quality_gate.py`。
 > 旧批次/旧产物冻结、不追溯；新批次/新版本必须按 R0–R4 执行。
+> **2026-11-03 起（batch048+）**：R0–R3 必须全部落报告，且 R3 必须 `--mode enforce`；`gate_check.py --stage final` 会检查 `reports/gate/quality_gate_{batchID}_r0..r3_*.json` 是否存在、非 BLOCKED/SKIPPED、R3 是否为 enforce。缺任一 → BLOCKED。R4 在归档后补。
 
 ```
 R0 需求评审  python scripts/quality_gate.py --stage r0 --batch {batchID} --mode advisory
@@ -44,6 +46,10 @@ R4 运行复盘  python scripts/quality_gate.py --stage r4 --batch {batchID} --c
 ```
 
 - R2 未通过不得进 R3；R3 `enforce` BLOCKED 禁止发布；WARN 必须在 `reports/gate/*.md` 写豁免理由/影响/补做计划/责任人。
+
+> **批次登记（batch048+）**：在 `workflow_state.json` 的批次对象写 `target_bloom`（教师重点 20/20/45/15；100 题大卷 10/25/35/20）与 `p9_mode`，否则 Bloom 目标检查会 SKIP、P9 检查无依据。
+>
+> **发布前置四项（batch048+，final 门禁机械判定）**：① HC-22 配额（无 plan 或配额不足且无 reduced/cancelled 理由 → BLOCKED）；② R0–R3 报告齐全 + R3=enforce；③ 每题 `p9_mode`（teacher_keypoint/course_schedule/module）覆盖 100%；④ 理解/分析型占比低于 `target_bloom` 5pp → BLOCKED 并要求补题。
 - SKIPPED 不得视为 PASS；同一问题连续两个版本 WARN → 自动升级 BLOCKED。
 - `quality_gate.py` 只读源产物与既有报告，不修改源题库/源复习资料/workflow_state。
 

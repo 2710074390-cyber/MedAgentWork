@@ -75,7 +75,7 @@
 
 - **单一事实来源**：`scripts/quality_policy.json`（profile/阈值）；流程标准：`docs/质量管控规范.md`；门禁编排：`scripts/quality_gate.py`。
 - **阶段**：R0 需求评审 → R1 开发实现 → R2 测试验证 → R3 发布上线 → R4 运行复盘。
-- **命令**：`python scripts/quality_gate.py --stage r2 --batch {batchID} --profile pilot --mode advisory`；正式发布用 `r3 --profile release_teacher_keypoint --mode enforce`。
+- **命令**：`python scripts/quality_gate.py --stage r2 --batch {batchID} --profile pilot --mode advisory`；正式发布用 `r3 --profile release_teacher_keypoint --mode enforce`。**batch048 起强制**：R0–R3 报告齐全且 R3=enforce，`gate_check --stage final` 会机械检查；缺一 → BLOCKED。另见 final 的 HC-22 / P9 p9_mode / Bloom 目标四项。
 - **报告**：`reports/gate/quality_gate_{batchID}_{stage}_{timestamp}.json|md`；PASS/WARN/BLOCKED/SKIPPED 必须显式记录，SKIP≠PASS。
 - **旧产物不追溯**；新批次/新版本必须过 R0–R4；WARN 需写豁免理由/补做计划，BLOCKED 禁止发布。
 
@@ -99,12 +99,12 @@
 
 ### 一次跑完与复核队列契约（HC-28 · 2026-11-01）
 
-- **完成定义**：`generation_status=DONE`（题目全部生成、确定性门禁已跑、`review_queue.json` 已产出）；`release_status=PENDING_HUMAN_REVIEW` 不是失败。
+- **完成定义**：`generation_status=DONE`（题目全部生成、确定性门禁已跑、`review_queue.json` 已产出）；`release_status=PENDING_HUMAN_REVIEW` 不是失败。**2026-11-03 用户裁定：取消逐题人工医学核验作为发布前置。**
 - **三分法**：`AUTO_FIX`（确定性可修复，自动修复，单题≤2轮/整批≤3轮）｜`AGENT_VERIFY`（可用素材/教师重点/GoldenSet/RAG 核验，修复或隔离）｜`HUMAN_ONLY`（原卷/版权/专家裁定/指南冲突，仅入队列，不阻断）。
 - **硬停止只限**：输入缺失/损坏；连续 2 次输出不可解析；工具/预算/权限故障。可发布核心为空不是停止条件：仍交付完整待审稿 + 队列，标 `release_status=BLOCKED`（题目数量完整时 `generation_status` 仍为 DONE）。
 - **每题 `release`**：`disposition=publishable|pending_human|quarantined`、`evidence_grade=A|B|C`、`risk_level=high|medium|low`、`reason_code`、`agent_checks[]`、`human_check`、`suggested_action`。
-- **发布底线**：高风险 C 级 → `quarantined`；低风险 C 级 → `pending_human`；A/B 且确定性门禁通过 → `publishable`。
-- **输出**：`review_queue.json` + 最终 MD 末尾「人工复核队列」；最终回复只报状态/数量/路径，不等待确认、不以「待核验」结束。
+- **发布底线**：高风险 C 级 → `quarantined`；低风险 C 级 → `pending_human`；**A/B 且确定性门禁通过 → `publishable`（默认，无需逐题人工核验/签收）**。`review_status` 默认 `agent_verified`，不再默认 `draft`。
+- **输出**：`review_queue.json` **+ 同名 `review_queue.md`（人可读，2026-11-03 起强制）** + 最终 MD 末尾「人工复核队列」；队列为空时 MD 也要写「无待人工复核项」。最终回复只报状态/数量/路径，不等待确认、不以「待核验」结束。
 - **规则全文**：`SOUL.md` HC-28。
 
 ## 跨 Agent 工具同步规则
@@ -200,7 +200,7 @@ archive/
 | maintenance.py | 维护报告 | `reports/maintenance/` |
 | gate_check.py | 门禁报告 | `reports/gate/` |
 | save.py | 题库 MD/JSON | `中间产物/{batchID}/` 或 `最终产物/{batchID}/` |
-| qbank.py export-md | 最终交付题库 MD + 复核队列 | 默认 `最终产物/{batchID}/ALL_questions_FIXED.md`（2026-08-20 起 GATE-A4 强制）；加 `--review-queue-out 最终产物/{batchID}/review_queue.json` 产出 HC-28 人工复核队列 |
+| qbank.py export-md | 最终交付题库 MD + 复核队列 | 默认 `最终产物/{batchID}/ALL_questions_FIXED.md`（2026-08-20 起 GATE-A4 强制）；加 `--review-queue-out 最终产物/{batchID}/review_queue.json` 产出 HC-28 人工复核队列，并自动生成人可读同名 `.md`（可用 `--review-queue-md-out` 指定） |
 | inject_obsidian_theme.py | Obsidian 树主题注入/移除（`--remove` 反注入）| 就地修改 `最终产物/*押题卷*.html` 与 `index.html`（⚠️ 2026-08-12 已从线上站移除 Obsidian 主题，站点恢复三主题；2026-10-19 押题卷 HTML 交付已下线，本脚本仅对遗留 HTML 有效、保留备用） |
 | verify_obsidian_theme.py | 主题浏览器实测截图 | `reports/theme_shots/` |
 
@@ -449,8 +449,8 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 - 当前答案覆盖：整体 **4765/5168 ≈ 92.2%**；1994–2004 用扫描版绿色标记补齐（约 64%–88%/年，B 型题组与部分 X 型仍缺）；2005–2024 约 96.8%。
 - 扫描版识别精度自检：与「解析写明故答」的题一致率 90.8%；强信号（绿字明显且唯一）记 high，弱信号记 medium。
 - 已知风险：不同版本真题 PDF 的题号可能整体错位（如 2015 文都版第 1 题答案与原书不符）；冲突时以**扫描版原书绿色标记**为准。
-- 标注：`kaoyan_origin` / `zhiyi_origin{...,corpus:"pdf_paper"|"cmexam"}` + `[源:...]` + `keypoint_ref` + `license` 四件套。
-- 公开构建：CMExam/考研题 `license=public_noncommercial`（用户已确认非商业个人刷题）；授权题 `public`；未知/内部源不得进公开构建。
+- 标注：`kaoyan_origin` / `zhiyi_origin{...,corpus:"pdf_paper"|"cmexam"}` + `[源:...]` + `keypoint_ref` + `license`（`license` 仅作来源记录，可选，不再作为门禁）。
+- 公开构建（2026-11-03 用户裁定：**不用管上架版权**）：`license` 仍按来源填写（`public_noncommercial` / `public` / 未知），但**不再作为发布门禁**；未知/内部源也可上架，版权风险由用户承担。真题**配额（15%–25%）保留**。
 - 教师重点：`keypoints` 必须是 HC-20 锚定清单第四节连续编号，不用印刷标号。
 
 ## 工具路径
@@ -487,6 +487,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | **run_tests.py** | 1.0.0 | `scripts/run_tests.py` | `python scripts/run_tests.py` — 零依赖测试运行器（P0-2，2026-08-13）；有 pytest 时可用 `python -m pytest tests/ -q` |
 | **quality_policy.py** | 1.0.0 | `scripts/quality_policy.py` | `python scripts/quality_policy.py --validate` / `--show pilot` — HC-25 质量基准单一事实来源加载器（2026-10-23） |
 | **quality_gate.py** | 1.0.0 | `scripts/quality_gate.py` | `python scripts/quality_gate.py --stage r0/r1/r2/r3/r4 --batch {batchID} --profile pilot/release_* --mode advisory/enforce` — R0–R4 全流程门禁编排（HC-25，2026-10-23）；报告落 `reports/gate/` |
+| **bloom_gap.py** | 1.0.0 | `scripts/bloom_gap.py` | `python scripts/bloom_gap.py --file <题库JSON> --target 20,20,45,15 [--out reports/validate/<batch>_bloom_gap.md]` — Bloom 补题计划（2026-11-03）：按教师重点目标或 100 题蓝图计算各层应出/需补题数；final 门禁按 target_bloom 校验理解/分析型，低 5pp 即 BLOCKED |
 | **check_review_detail.py** | 1.0.0 | `scripts/check_review_detail.py` | `python scripts/check_review_detail.py --md <MD> --mode auto/teacher_keypoint/course_schedule/module --profile release_*` — 复习资料详细度契约（HC-26，2026-10-27）：九槽位/分级阈值/模块八块/课程安排八块；报告落 `reports/validate/review_detail_*` |
 | **build_concept_graph.py** | 1.0.0 | `scripts/build_concept_graph.py` | `python scripts/build_concept_graph.py [--subject 急诊] [--no-prereq]` — 概念图建图（2026-10-27）：合并各批次 `kc_registry.json` → `question_bank/concept_graph.json`；**从 `display_id` 重解析模块**（急诊注册表 `module` 全为 M00，不可信）；建 measures/prereq/ref 三类边 + 模块级 `module_prereq`；支持 `concept_prereq_overrides.json` 人工加删边 |
 | **check_source_concepts.py** | 1.0.0 | `scripts/check_source_concepts.py` | `python scripts/check_source_concepts.py --file <题库JSON> --batch batchNNN [--require]` — **HC-27 生成期概念标注门禁**（2026-10-27，零依赖）：S1–S6 校验 `concepts`（存在/唯一 primary/A2+ ≥2 条/字段长度/锚点一致/标题去重）；`--min-batch 44` 起强制 `schema_version=2.1`，旧批次 SKIP（退出码 2）；报告 `reports/validate/source_concepts_*.json` |

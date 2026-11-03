@@ -72,6 +72,21 @@ def _run_structural(path: str, out: str = '') -> str:
     return target
 
 
+def exit_code(summary: dict | None, strict_warn: bool = False) -> int:
+    """WARN 不再产生非零退出码（2026-11-03）。
+
+    历史问题：VALID=FAIL=0、仅 WARN 时也 exit 1，自动化脚本会把 WARN 误判成失败。
+    需要旧口径时显式传 --strict-warn。
+    """
+    if not summary:
+        return 0
+    if int(summary.get('fail', 0) or 0) > 0:
+        return 1
+    if strict_warn and int(summary.get('warn', 0) or 0) > 0:
+        return 1
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(
         description="选项设计机械化校验器 — HC-7 子规则硬编码检测"
@@ -86,6 +101,8 @@ def main(argv=None):
     parser.add_argument("--batch-enforce", action="store_true",
                         help="批次规则违例即 FAIL（需先完成历史回测与误伤确认）")
     parser.add_argument("--no-report", action="store_true", help="不落 reports/validate 证据文件")
+    parser.add_argument("--strict-warn", action="store_true",
+                        help="旧口径：出现 WARN 也返回非 0（默认 WARN 不阻断）")
     args = parser.parse_args(argv)
 
     if not args.batch and not args.file:
@@ -96,12 +113,11 @@ def main(argv=None):
         print('[FAIL] --batch-mode 目前只支持 --file（需要确定单一产物文件）', file=sys.stderr)
         sys.exit(2)
 
-    had_issues = False
+    exit_status = 0
 
     if args.file:
         summary = validate_file(args.file, mode=args.mode, verbose=args.verbose)
-        if summary and (summary['fail'] > 0 or summary['warn'] > 0):
-            had_issues = True
+        exit_status = max(exit_status, exit_code(summary, strict_warn=args.strict_warn))
         if not args.no_report:
             try:
                 sp = _run_structural(args.file)
@@ -110,14 +126,13 @@ def main(argv=None):
                 print(f'  ⚠️ 结构覆盖率证据落盘失败: {exc}', file=sys.stderr)
     elif args.batch:
         summary = validate_batch(args.batch, mode=args.mode, verbose=args.verbose)
-        if summary and (summary['fail'] > 0 or summary['warn'] > 0):
-            had_issues = True
+        exit_status = max(exit_status, exit_code(summary, strict_warn=args.strict_warn))
 
     if args.batch_mode and args.file:
         if _run_batch_mode(args.file, enforce=args.batch_enforce) != 0:
-            had_issues = True
+            exit_status = 1
 
-    sys.exit(1 if had_issues else 0)
+    sys.exit(exit_status)
 
 
 if __name__ == '__main__':

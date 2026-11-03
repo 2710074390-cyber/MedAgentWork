@@ -29,6 +29,11 @@
       },
       "bloom": { "type": "string", "description": "旧字段名" },
       "module": { "type": "string", "description": "模块编号，如 M1" },
+      "p9_mode": {
+        "type": "string",
+        "enum": ["teacher_keypoint", "course_schedule", "module"],
+        "description": "P9 模式元数据（batch048 起必填）：teacher_keypoint=教师重点驱动；course_schedule=课程安排驱动；module=常规模块版。gate_check final 会校验覆盖率 100%。"
+      },
       "stem": { "type": "string", "minLength": 1 },
       "question": { "type": "string", "description": "旧字段名" },
       "question_text": { "type": "string", "description": "旧字段名" },
@@ -46,7 +51,7 @@
       "source_pages": { "type": "array", "items": { "type": "string" } },
       "priority_level": { "type": "string", "description": "考点优先级" },
       "difficulty_index": {
-        "type": "number",
+        "type": ["number", "null"],
         "deprecated": true,
         "description": "【已弃用 · schema 2.2】原为 LLM 的主观难度估值（0–1），无法复核；命题者自评难度与实际 p 值的一致性在文献中显著不符（p=0.002，见 reports/research/命题认知难度与干扰项设计调研_20261102.md）。请改用 difficulty_tier + step_count 的结构化口径。历史产物继续保留，不追溯改写。"
       },
@@ -191,7 +196,7 @@
       {
         "if": {
           "required": ["schema_version"],
-          "properties": { "schema_version": { "const": "2.1" } }
+          "properties": { "schema_version": { "enum": ["2.1", "2.2"] } }
         },
         "then": { "required": ["concepts"] }
       },
@@ -199,7 +204,7 @@
         "if": {
           "required": ["schema_version", "type"],
           "properties": {
-            "schema_version": { "const": "2.1" },
+            "schema_version": { "enum": ["2.1", "2.2"] },
             "type": { "enum": ["A2", "A3", "A4", "X"] }
           }
         },

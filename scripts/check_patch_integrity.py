@@ -35,6 +35,15 @@
 退出码：0 = 无违例；1 = 存在 immutable 违例 / 未声明变化；2 = 输入不可读。
 """
 from __future__ import annotations
+# ── UTF-8 输出兜底（2026-11-03）：Windows 默认 GBK 控制台下 emoji 会抛 UnicodeEncodeError，
+#    导致门禁命令“时绿时红”。仅在脚本直接运行时生效，pytest 捕获下跳过。
+import sys as _sys
+if "pytest" not in _sys.modules and "_pytest" not in _sys.modules:
+    for _stream in (_sys.stdout, _sys.stderr):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
 
 import argparse
 import hashlib
@@ -54,6 +63,8 @@ ALLOWED_FIELDS = frozenset({
     'stem', 'options', 'explanation', 'learning_value', 'option_polarities',
     'difficulty', 'bloom', 'concepts', 'review_status', 'topic', 'module_name',
     'distractors', 'explanation_v2',
+    # 2026-11-03：发布状态属于签收/复核动作，不是医学内容，允许在 A4 之后变更
+    'release', 'medical_verification', 'quality_flags',
 })
 
 #: 永远不可变（答案、锚定引文、溯源、契约字段）
@@ -64,7 +75,10 @@ IMMUTABLE_FIELDS = frozenset({
 })
 
 #: 真题标记字段（命中则题干/答案一并 immutable）
-REAL_QUESTION_KEYS = ('kaoyan_origin', 'real_question', 'is_real', 'source_type')
+REAL_QUESTION_KEYS = ('kaoyan_origin', 'real_question', 'is_real')
+#: source_type 是分类标签而非布尔，只有取值为真题类才算真题
+#: （2026-11-03 修正：此前把 source_type='原创' 也算真题，导致原创题题干被误锁）
+REAL_SOURCE_TYPE_TOKENS = ('真题', '考研', '执医', 'kaoyan', 'zhiyi', 'real')
 REAL_QUESTION_MARKERS = ('[源:考研真题', '[源：考研真题', '真题引用', '真题改编')
 
 #: 既不在白名单也不在 immutable 的字段（新增字段需显式登记）
@@ -87,11 +101,20 @@ def _norm(v):
 
 
 def is_real_question(q: dict) -> bool:
+    """是否为真题（决定题干/答案是否不可改）。
+
+    source_type 只作分类标签用：'原创' 不是真题；只有含真题类语素才算。
+    旧实现 `if q.get(k)` 把任何非空 source_type（包括 '原创'）都判为真题，
+    24 批之后的原创题因此被误锁题干，A4 连补一个中文全称都会被判违例。
+    """
     if not isinstance(q, dict):
         return False
     for k in REAL_QUESTION_KEYS:
         if q.get(k):
             return True
+    st = str(q.get('source_type') or '').strip().lower()
+    if st and any(tok in st for tok in REAL_SOURCE_TYPE_TOKENS) and '原创' not in st:
+        return True
     blob = f"{q.get('stem', '')}{q.get('explanation', '')}"
     return any(m in blob for m in REAL_QUESTION_MARKERS)
 

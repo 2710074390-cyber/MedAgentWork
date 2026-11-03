@@ -309,6 +309,14 @@ def _v22(**over):
         'competing_dx': ['急性心衰', '肺炎'], 'negative_cues': [],
         'conditionals': ['若合并肾功能不全'],
         'options': {'A': '甲', 'B': '乙', 'C': '丙', 'D': '丁', 'E': '戊'},
+        # 2026-11-03：schema 2.2 起 concepts 仍是必填（HC-27），此前夹具漏带，
+        # 只在装了 jsonschema 的解释器上暴露；补上主概念 + 鉴别概念。
+        'concepts': [
+            {'role': 'primary', 'keypoint': '第1条', 'title': '急性心衰',
+             'evidence': '题干描述呼吸困难与端坐呼吸，指向急性心衰'},
+            {'role': 'differential', 'keypoint': '第1条', 'title': '肺炎',
+             'evidence': '肺炎同样可表现为呼吸困难与肺部啰音，需鉴别'},
+        ],
         'learning_value': _lv(),
     }
     q.update(over)

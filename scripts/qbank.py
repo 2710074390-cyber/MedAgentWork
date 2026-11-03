@@ -671,6 +671,14 @@ HIGH_RISK_KEYWORDS = ('剂量', '时间窗', '复苏', '按压', '除颤', '禁�
                       '卒中', '烧伤', '儿童', '小儿', '妊娠')
 
 
+def _schema_version_tuple(raw: dict) -> tuple:
+    value = str(raw.get('schema_version') or '').strip()
+    try:
+        return tuple(int(x) for x in value.split('.'))
+    except (TypeError, ValueError):
+        return ()
+
+
 def _release_info(raw: dict) -> dict:
     """读取/补全题目的 HC-28 release 标注。
 
@@ -685,7 +693,14 @@ def _release_info(raw: dict) -> dict:
     disposition = str(release.get('disposition') or '').strip().lower()
     if disposition not in RELEASE_DISPOSITIONS:
         review = str(raw.get('review_status') or '').strip().lower()
-        disposition = 'publishable' if review in ('approved', 'published', 'ready') else 'pending_human'
+        verified_states = ('agent_verified', 'auto_verified', 'verified',
+                           'approved', 'published', 'ready')
+        # 2026-11-03：取消逐题人工核验前置。agent 自检通过，或 schema>=2.2 的新批次，
+        # 默认 publishable；历史批次保持保守（draft -> pending_human）。
+        if review in verified_states or _schema_version_tuple(raw) >= (2, 2):
+            disposition = 'publishable'
+        else:
+            disposition = 'pending_human'
         derived = True
 
     grade = str(release.get('evidence_grade') or '').strip().upper()
@@ -747,9 +762,12 @@ def collect_review_queue(questions: list[dict]) -> tuple[list[dict], dict[str, i
         counts[info['disposition']] += 1
         if info['disposition'] == 'publishable':
             continue
+        stem = ' '.join(str(raw.get('stem') or raw.get('question') or '').split())
         items.append({
             'question_id': question.get('qid') or f'Q{question.get("_index", 0) + 1}',
             **info,
+            'type': str(raw.get('type') or question.get('type') or ''),
+            'stem': stem[:200],
             'severity': ('blocking_release' if info['disposition'] == 'quarantined'
                          or info['risk_level'] == 'high' else 'advisory'),
         })
@@ -764,7 +782,69 @@ def _batch_release_status(counts: dict[str, int], total: int) -> str:
     return 'PENDING_HUMAN_REVIEW'
 
 
-def export_md(filepath, outpath=None, title=None, review_queue_out=None):
+def render_review_queue_md(payload: dict, json_path: str = '') -> str:
+    """把 review_queue.json 渲染成人可读 Markdown（2026-11-03 要求）。
+
+    只做展示，不改变任何判定；队列为空时也输出一份「无待审项」的说明。
+    """
+    summary = payload.get('summary') or {}
+    items = payload.get('items') or []
+    pending = [x for x in items if x.get('disposition') == 'pending_human']
+    isolated = [x for x in items if x.get('disposition') == 'quarantined']
+    risk_cn = {'high': '高', 'medium': '中', 'low': '低'}
+    L = [
+        '# 人工复核队列',
+        '',
+        '> 来源：' + str(payload.get('source_file', '')),
+        '> 生成时间：' + str(payload.get('generated_at', '')),
+        '> 发布状态：' + str(payload.get('release_status', '')) + '｜'
+        + f"总题数 {summary.get('total', 0)}｜可发布 {summary.get('publishable', 0)}｜"
+        + f"待人工 {summary.get('pending_human', 0)}｜已隔离 {summary.get('quarantined', 0)}",
+        '',
+        '> 政策（2026-11-03）：A/B 级 + 确定性门禁通过默认 publishable，'
+        '不再要求逐题人工核验；本队列只列需要人类判断的题。',
+        '',
+    ]
+    if not items:
+        L += [
+            '## 无待人工复核项',
+            '',
+            f"本批 {summary.get('total', 0)} 题在当前政策下全部可发布，无需人工逐题签字。",
+            '',
+            '> 机器可读版见同目录 review_queue.json（本文件由它渲染）。',
+            '',
+        ]
+        return '\n'.join(L)
+
+    L += ['## 汇总', '',
+          f'- 待人工复核：{len(pending)} 题（保留在待审稿，不阻断生成）',
+          f'- 已隔离：{len(isolated)} 题（不进入可发布核心）', '']
+    for label, group in (('待人工复核', pending), ('已隔离', isolated)):
+        if not group:
+            continue
+        L += [f'## {label}（{len(group)}）', '']
+        for i, item in enumerate(group, 1):
+            L += [
+                f"### {i}. {item.get('question_id', '')}（{item.get('type') or '题型未标注'}）",
+                '',
+                f"- 证据等级：{item.get('evidence_grade', '')}｜"
+                f"风险：{risk_cn.get(item.get('risk_level'), item.get('risk_level', ''))}",
+                f"- 原因：{item.get('reason_code', '')}",
+            ]
+            if item.get('stem'):
+                L.append(f"- 题干：{item['stem']}")
+            L.append(f"- 人工需核：{item.get('human_check') or '（未填写）'}")
+            L.append(f"- 建议动作：{item.get('suggested_action') or '复核后改为 publishable 或 quarantined'}")
+            L.append('')
+    L += ['---', '',
+          '> 说明：本文件只列需要人类判断的条目；其余题目的发布依据是确定性门禁与证据等级，'
+          '不构成医学正确性背书。',
+          '', '> 机器可读版：' + (json_path or 'review_queue.json'), '']
+    return '\n'.join(L)
+
+
+def export_md(filepath, outpath=None, title=None, review_queue_out=None,
+              review_queue_md_out=None):
     """题库 JSON → 可读 Markdown（最终交付格式）。
 
     基于统一解析器 parse_question（兼容 6 种历史字段变体），
@@ -815,7 +895,11 @@ def export_md(filepath, outpath=None, title=None, review_queue_out=None):
     lines.append(f'> 可发布核心：{release_counts["publishable"]} 题｜'
                  f'待人工复核：{release_counts["pending_human"]} 题｜'
                  f'已隔离：{release_counts["quarantined"]} 题')
-    lines.append('> 注：发布前仍需用户签收；生成完成/READY 不等于医学发布授权（HC-28）。')
+    if release_status == 'READY':
+        lines.append('> 注：全部题目已转为可发布；签收人与依据见批次签收回执（workflow_state 的 signoff 字段）。'
+                     'READY 表示发布门槛已过，不等于医学正确性背书（HC-28）。')
+    else:
+        lines.append('> 注：发布前仍需用户签收；生成完成/READY 不等于医学发布授权（HC-28）。')
     if release_status == 'BLOCKED':
         lines.append('> 注：发布状态 BLOCKED 表示当前没有可发布核心（全部题待人工/隔离），'
                      '生成阶段仍已完成（HC-28）。')
@@ -940,6 +1024,12 @@ def export_md(filepath, outpath=None, title=None, review_queue_out=None):
         queue_path.parent.mkdir(parents=True, exist_ok=True)
         queue_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
         print(f'✅ 复核队列: {queue_path}（{len(review_items)} 条）')
+        queue_md_path = (Path(review_queue_md_out) if review_queue_md_out
+                         else queue_path.with_suffix('.md'))
+        queue_md_path.parent.mkdir(parents=True, exist_ok=True)
+        queue_md_path.write_text(render_review_queue_md(payload, json_path=str(queue_path)),
+                                 encoding='utf-8')
+        print(f'✅ 人读复核队列: {queue_md_path}')
 
     size_kb = os.path.getsize(outpath) / 1024
     print(f'✅ MD 导出: {outpath}（{len(questions)}题 / {len(lines)}行 / {size_kb:.1f}KB）')
@@ -1011,6 +1101,8 @@ def main():
     p_md.add_argument('--file', '-f', required=True, help='题库 JSON 路径')
     p_md.add_argument('--out', '-o', default=None, help='输出 .md 路径（默认同目录同名）')
     p_md.add_argument('--title', '-t', default=None, help='MD 标题（默认取文件名）')
+    p_md.add_argument('--review-queue-md-out', default=None,
+                      help='人可读复核队列 MD 输出路径（缺省为 --review-queue-out 同名 .md）')
     p_md.add_argument('--review-queue-out', default=None,
                       help='HC-28 复核队列 JSON 输出路径（可选；MD 末尾始终附人类可读队列）')
 
@@ -1107,7 +1199,8 @@ def main():
         return
 
     if args.cmd == 'export-md':
-        out, n = export_md(args.file, args.out, args.title, args.review_queue_out)
+        out, n = export_md(args.file, args.out, args.title, args.review_queue_out,
+                       args.review_queue_md_out)
         if out is None:
             sys.exit(1)
         return

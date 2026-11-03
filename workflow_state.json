@@ -134,7 +134,7 @@
         "completed_at": "2026-06-29T18:15:00+08:00",
         "output": "batch023_质检报告.json",
         "gate_decision": "PASS_WITH_FIXES",
-        "overall_score": 9.0,
+        "overall_score": 9,
         "issues": "1 major + 4 minor (0 critical, 0 must_escalate)",
         "safe_auto": 0,
         "auto_with_review": 5,
@@ -3143,7 +3143,7 @@
       "model": "BAAI/bge-m3",
       "chunk_size": 800,
       "hybrid": "ON (forced)",
-      "kw_weight": 0.0
+      "kw_weight": 0
     },
     "agent2_completed": "2026-06-26T23:54:24.936957",
     "agent2_output": "中间产物/batch019/batch019_questions.json",
@@ -3191,7 +3191,7 @@
     },
     "agent4_invoked": "2026-06-27T10:15:00+08:00",
     "agent3_gate_decision": "PASS_WITH_FIXES",
-    "agent3_overall_score": 82.0,
+    "agent3_overall_score": 82,
     "agent3_issues_summary": {
       "critical": 1,
       "major": 26,
@@ -3452,7 +3452,7 @@
       }
     },
     "agent3_gate_decision": "PASS_WITH_FIXES",
-    "agent3_overall_score": 85.0,
+    "agent3_overall_score": 85,
     "agent3_issues_summary": {
       "critical": 0,
       "major": 0,
@@ -4175,7 +4175,7 @@
         "completed_at": "2026-09-04T12:18:00+08:00",
         "output": "质检报告/batch033_质检报告.json（正式落盘 2026-09-06，overall 9.9/10，PASS_WITH_FIXES，0 critical；由 中间产物/batch033/gen_qc_report.py 对最终 FIXED 产物全维度实测生成）",
         "gate_decision": "PASS_WITH_FIXES",
-        "overall_score": 99.0,
+        "overall_score": 99,
         "issues": "6轮170+项修复，最终 FAIL=0，答案-解析冲突 0/0",
         "key_validations": "极性/题型/标签/截断题干/答案错误/字母漂移 全部修复"
       },
@@ -4666,9 +4666,9 @@
         "types": "A1 81/A2 58/A3 10/A4 10/B1 22/X 19",
         "bloom_actual": {
           "记忆": 30.5,
-          "理解": 40.0,
+          "理解": 40,
           "应用": 24.5,
-          "分析": 5.0
+          "分析": 5
         },
         "bloom_deviation": "记忆+0.5%，理解0%，应用-0.5%，分析0%",
         "model": "MedGen(8 子 agent 并行)",
@@ -4767,7 +4767,7 @@
         "bloom_actual": {
           "记忆": 29.2,
           "理解": 37.5,
-          "应用": 28.0,
+          "应用": 28,
           "分析": 5.4
         },
         "model": "MedGen(主会话+构建器)",
@@ -4985,7 +4985,7 @@
         "types": "A1 85/A2 47/A3 5/A4 1/B1 25/X 36",
         "bloom_actual": {
           "记忆": 31.3,
-          "理解": 40.0,
+          "理解": 40,
           "应用": 23.3,
           "分析": 5.3
         },
@@ -5085,10 +5085,10 @@
         "blueprint_match": "与源②蓝图比例放大配额精确一致（200 题）",
         "case_groups": 8,
         "bloom_actual": {
-          "记忆": 30.0,
-          "理解": 40.0,
-          "应用": 25.0,
-          "分析": 5.0
+          "记忆": 30,
+          "理解": 40,
+          "应用": 25,
+          "分析": 5
         },
         "kaoyan_pct": 0,
         "parts": "中间产物/batch040/parts/M01..M07_questions.json"
@@ -5677,7 +5677,10 @@
         "site": "卡片改为 MD 在线阅读 + 打印 PDF；PDF 由用户用站内打印按钮人工导出",
         "commit": "5df8ca7"
       }
-    ]
+    ],
+    "archived_at": "2026-11-03T06:31:05.107Z",
+    "archive_path": "archive/{中间产物,最终产物,质检报告}/batch046",
+    "archive_note": "2026-11-03 用户裁定：batch046 不再修改，全量归档；不参与后续门禁与发布。"
   },
   "batch042": {
     "batch_id": "batch042",
@@ -5708,5 +5711,230 @@
     "publishable": false,
     "reconciled_at": "2026-11-01T18:41:22",
     "reconcile_note": "batch045 v5 为试点留档，不进入正式发布；补登记为 PILOT，避免产物目录成为孤儿。"
+  },
+  "batch047": {
+    "batch_id": "batch047",
+    "status": "APPROVED",
+    "created": "2026-11-03T22:33:24.686808",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)→Agent 5(MedReview)",
+    "item_schema_version": "2.2",
+    "evidence_binding_mode": "strict",
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "output": "batch047_A2_题库.json",
+        "md5": "ac540f6fa6d701872c408ddddfee26f1",
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedGen_current_prompt",
+        "lineage": {
+          "prompt_sha256": "3fdbc451fa4a99efb1565db8dcdd83ffda20f1131274ceb462403a3268427682",
+          "model_id": "DeepSeek-V4.1-Flash",
+          "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+          "input_hash": "f55706615be548bb320cf709eaea9af6967c2f82e1ba60927c5b786650e56dd5",
+          "artifact_sha256": "f55706615be548bb320cf709eaea9af6967c2f82e1ba60927c5b786650e56dd5"
+        }
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "output": "batch047_A3_质检报告.json",
+        "md5": "9266e1c47e820cdaffc956ae1f5ffcb2",
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedQC_current_prompt",
+        "lineage": {
+          "prompt_sha256": "997f81e2b258832055a621383474e762cc4d2b56071a016e8a348a4a68dea0b2",
+          "model_id": "DeepSeek-V4.1-Flash",
+          "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+          "input_hash": "c2ee67366313f5d9f8f02cd7b1bb1b044ee6c382cf95c5834fad630fa43a820d",
+          "artifact_sha256": "c2ee67366313f5d9f8f02cd7b1bb1b044ee6c382cf95c5834fad630fa43a820d"
+        }
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "output": "batch047_A4_追溯日志.json",
+        "md5": "fc0135cd723bdff33c5ff081322f1556",
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedFix_current_prompt",
+        "lineage": {
+          "prompt_sha256": "b74f4df8cca514c68c13aefd0582da95d9fc92af9c338a51c7e88122fa0bba2e",
+          "model_id": "DeepSeek-V4.1-Flash",
+          "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+          "input_hash": "1df96cc78ef631b1227b90aa7fe46757232e261ebbafad7611863ce18fe259fe",
+          "artifact_sha256": "1df96cc78ef631b1227b90aa7fe46757232e261ebbafad7611863ce18fe259fe"
+        }
+      }
+    },
+    "lineage": [
+      {
+        "stage": "agent2_DONE",
+        "input_file": "C:\\Users\\38063\\Desktop\\MedAgentWork\\中间产物\\batch047\\batch047_A2_题库.json",
+        "input_md5": "ac540f6fa6d701872c408ddddfee26f1",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedGen_current_prompt",
+        "prompt_sha256": "3fdbc451fa4a99efb1565db8dcdd83ffda20f1131274ceb462403a3268427682",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+        "input_hash": "f55706615be548bb320cf709eaea9af6967c2f82e1ba60927c5b786650e56dd5",
+        "artifact_sha256": "f55706615be548bb320cf709eaea9af6967c2f82e1ba60927c5b786650e56dd5",
+        "timestamp": "2026-11-03T22:44:18.393480"
+      },
+      {
+        "stage": "agent3_DONE",
+        "input_file": "C:\\Users\\38063\\Desktop\\MedAgentWork\\质检报告\\batch047\\batch047_A3_质检报告.json",
+        "input_md5": "9266e1c47e820cdaffc956ae1f5ffcb2",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedQC_current_prompt",
+        "prompt_sha256": "997f81e2b258832055a621383474e762cc4d2b56071a016e8a348a4a68dea0b2",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+        "input_hash": "c2ee67366313f5d9f8f02cd7b1bb1b044ee6c382cf95c5834fad630fa43a820d",
+        "artifact_sha256": "c2ee67366313f5d9f8f02cd7b1bb1b044ee6c382cf95c5834fad630fa43a820d",
+        "timestamp": "2026-11-03T22:53:57.555465"
+      },
+      {
+        "stage": "agent4_DONE",
+        "input_file": "C:\\Users\\38063\\Desktop\\MedAgentWork\\最终产物\\batch047\\batch047_A4_追溯日志.json",
+        "input_md5": "a3ce4fdd17e722e3a8359fca402305b9",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedFix_current_prompt",
+        "prompt_sha256": "b74f4df8cca514c68c13aefd0582da95d9fc92af9c338a51c7e88122fa0bba2e",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+        "input_hash": "a9930bd1b539351a456eecea13086835db204bffd802aca2b5cf2caa52aa4001",
+        "artifact_sha256": "a9930bd1b539351a456eecea13086835db204bffd802aca2b5cf2caa52aa4001",
+        "timestamp": "2026-11-03T23:05:03.554809"
+      },
+      {
+        "stage": "agent4_DONE",
+        "input_file": "C:\\Users\\38063\\Desktop\\MedAgentWork\\最终产物\\batch047\\batch047_A4_追溯日志.json",
+        "input_md5": "fc0135cd723bdff33c5ff081322f1556",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedFix_current_prompt",
+        "prompt_sha256": "b74f4df8cca514c68c13aefd0582da95d9fc92af9c338a51c7e88122fa0bba2e",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+        "input_hash": "1df96cc78ef631b1227b90aa7fe46757232e261ebbafad7611863ce18fe259fe",
+        "artifact_sha256": "1df96cc78ef631b1227b90aa7fe46757232e261ebbafad7611863ce18fe259fe",
+        "timestamp": "2026-11-03T23:20:47.501118"
+      }
+    ],
+    "subject": "急诊与灾难医学",
+    "product_types": [
+      "question_bank"
+    ],
+    "target_count": 50,
+    "note": "HC-29/schema 2.2 全链路验证批次：闭合 AC-P1-06 / AC-P2-02 / AC-P2-04",
+    "gate_results": {
+      "GATE-A2": {
+        "status": "PASS",
+        "reason": "产出门禁通过 (FAIL=0, PASS=37, WARN=13)",
+        "checked_at": "2026-11-03T22:44:23.361908"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "批次已签收 (APPROVED)，人工审核已覆盖终审",
+        "checked_at": "2026-11-03T23:24:42.323287"
+      },
+      "halt": {
+        "active": false
+      },
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
+        "checked_at": "2026-11-03T22:54:15.547453"
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-11-03T23:21:00.737865"
+      }
+    },
+    "target_bloom": {
+      "记忆": 20,
+      "理解": 20,
+      "应用": 45,
+      "分析": 15
+    },
+    "target_bloom_note": "开批时未声明 Bloom 目标（本批为 50 题教师重点专项，非 100 题大卷结构）。此处按专项卷口径补声明：A1 承担记忆与理解、A2 承担应用、X 与综合题承担分析。与项目 question_blueprint 的 100 题口径（10/25/35/20）相比，本批记忆偏高 20pp、理解偏低 15pp，已在 A3 报告中列为 WARN。",
+    "human_verification": {
+      "reviewer": "用户本人（项目负责人）",
+      "reviewed_at": "2026-11-03",
+      "scope": "batch047 全部 50 题的医学内容",
+      "evidence": "会话内口头确认「已核验」；未提供逐题核验记录、执业资质编号或签名",
+      "effect": "仅记录核验事件；release.disposition 未改，仍为 pending_human，待 A3/A4 完成后再统一处置",
+      "recorded_by": "Agent 2 会话（2026-11-03 22:47）"
+    },
+    "signoff": {
+      "signed_by": "用户本人（项目负责人）",
+      "signed_at": "2026-11-03T23:20:30",
+      "scope": "50 题（batch047）",
+      "basis": "HC-28 发布底线：证据 B 级 / 风险 medium / 四道确定性门禁 PASS",
+      "not_done": [
+        "逐题医学核验记录",
+        "第二评分者盲评（κ 不可计算）"
+      ],
+      "note": "会话内指示「签收」；未提供逐题核验记录与第二评分者",
+      "delivery_file": "最终产物/batch047/ALL_questions_FIXED.json",
+      "delivery_sha256_before": "5fc553436be8de007da737dd0196fce172487d6fac305dd1234915530fb56919",
+      "delivery_sha256_after": "35c4dc28b7abb3a2441642f7f11a0bcb7a67be7f45c044d1da17ab4dcd341288",
+      "backup": ".tmp/batch047_fixed_before_signoff.json",
+      "archived_path": "archive/最终产物/batch047"
+    },
+    "archived": {
+      "archived_at": "2026-11-03T23:25:08",
+      "archived_by": "Agent（用户指示「归档」）",
+      "mapping": [
+        {
+          "kind": "中间产物",
+          "from": "中间产物/batch047",
+          "to": "archive/中间产物/batch047"
+        },
+        {
+          "kind": "质检报告",
+          "from": "质检报告/batch047",
+          "to": "archive/质检报告/batch047"
+        },
+        {
+          "kind": "最终产物",
+          "from": "最终产物/batch047",
+          "to": "archive/最终产物/batch047"
+        },
+        {
+          "kind": "备份",
+          "from": ".tmp/batch047_a2_before.json",
+          "to": "archive/最终产物/batch047/_backup/batch047_a2_before.json"
+        },
+        {
+          "kind": "备份",
+          "from": ".tmp/batch047_A4_追溯日志_v1_修复阶段.json",
+          "to": "archive/最终产物/batch047/_backup/batch047_A4_追溯日志_v1_修复阶段.json"
+        },
+        {
+          "kind": "备份",
+          "from": ".tmp/batch047_fixed_before_signoff.json",
+          "to": "archive/最终产物/batch047/_backup/batch047_fixed_before_signoff.json"
+        }
+      ],
+      "backups": [
+        {
+          "from": ".tmp/batch047_a2_before.json",
+          "to": "archive/最终产物/batch047/_backup/batch047_a2_before.json"
+        },
+        {
+          "from": ".tmp/batch047_A4_追溯日志_v1_修复阶段.json",
+          "to": "archive/最终产物/batch047/_backup/batch047_A4_追溯日志_v1_修复阶段.json"
+        },
+        {
+          "from": ".tmp/batch047_fixed_before_signoff.json",
+          "to": "archive/最终产物/batch047/_backup/batch047_fixed_before_signoff.json"
+        }
+      ],
+      "note": "reports/ 下的门禁与校验证据保持原样不改写；其中 source_file 字段仍指向归档前路径，需要复核时按本表的 to 路径还原。"
+    },
+    "policy_update": {
+      "at": "2026-11-03T23:30:00+08:00",
+      "decision": "用户裁定：取消“逐题人工医学核验”作为发布前置；A/B 级 + 确定性门禁通过默认 publishable；签收改为可选的批次级授权留痕。",
+      "impact": "batch047 签收单中的“逐题医学核验记录”不再是未完成项；仅第二评分者/κ 仍为开项。历史 release 字段（pending_human→publishable、review_status=draft）保持原样作为当时记录，不回写。",
+      "applies_to": "batch048+；batch047 为归档历史，不追溯改写"
+    }
   }
 }

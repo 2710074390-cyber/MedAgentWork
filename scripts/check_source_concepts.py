@@ -46,6 +46,7 @@ BASE = Path(__file__).resolve().parent.parent
 DEFAULT_OUT = BASE / "reports/validate/source_concepts_check.json"
 MULTI_TYPES = {"A2", "A3", "A4", "X"}
 ROLES = {"primary", "differential", "related"}
+CURRENT_VERSIONS = ("2.1", "2.2")  # schema 2.2 沿用 HC-27 概念契约；不再只认 2.1
 BATCH_RE = re.compile(r"(\d+)")
 
 
@@ -149,11 +150,11 @@ def main(argv: list[str] | None = None) -> int:
     input_sha256 = hashlib.sha256(raw).hexdigest()
 
     versions = Counter(str(q.get("schema_version") or "未声明") for q in data)
-    has_21 = any(str(q.get("schema_version") or "") == "2.1" for q in data)
-    need_21 = args.require or batch_num(args.batch) >= args.min_batch
+    has_current = any(str(q.get("schema_version") or "") in CURRENT_VERSIONS for q in data)
+    need_current = args.require or batch_num(args.batch) >= args.min_batch
 
-    if not has_21 and not need_21:
-        msg = (f"SKIP —— 本批 {len(data)} 题无 schema_version=2.1（历史契约 {dict(versions)}），"
+    if not has_current and not need_current:
+        msg = (f"SKIP —— 本批 {len(data)} 题无 schema_version=2.1/2.2（历史契约 {dict(versions)}），"
                f"HC-27 不追溯")
         print(msg)
         report = {"generated_at": datetime.now().isoformat(timespec="seconds"),
@@ -163,9 +164,9 @@ def main(argv: list[str] | None = None) -> int:
         Path(args.out).write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
         return 2
 
-    if not has_21 and need_21:
+    if not has_current and need_current:
         msg = (f"FAIL —— 批次 {args.batch or '(未提供)'} 属于 HC-27 生效范围，"
-               f"但没有任何题声明 schema_version=2.1（实际 {dict(versions)}）")
+               f"但没有任何题声明 schema_version=2.1/2.2（实际 {dict(versions)}）")
         print(msg)
         report = {"generated_at": datetime.now().isoformat(timespec="seconds"),
                   "file": str(path), "input_sha256": input_sha256, "batch": args.batch, "status": "FAIL",
@@ -175,14 +176,15 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     fails: list[str] = []
-    if need_21 and versions.get("2.1", 0) != len(data):
-        fails.append(f"schema_version=2.1 覆盖不足：{versions.get('2.1', 0)}/{len(data)}")
+    current_count = sum(1 for q in data if str(q.get("schema_version") or "") in CURRENT_VERSIONS)
+    if need_current and current_count != len(data):
+        fails.append(f"schema_version=2.1/2.2 覆盖不足：{current_count}/{len(data)}")
     warns: list[str] = []
     checked = 0
     by_type = Counter()
     concept_counts = Counter()
     for q in data:
-        if str(q.get("schema_version") or "") != "2.1":
+        if str(q.get("schema_version") or "") not in CURRENT_VERSIONS:
             continue
         checked += 1
         by_type[str(q.get("type") or "?")] += 1
@@ -194,12 +196,12 @@ def main(argv: list[str] | None = None) -> int:
 
     status = "FAIL" if fails else ("WARN" if warns else "PASS")
     multi_ok = sum(1 for q in data
-                   if str(q.get("schema_version") or "") == "2.1"
+                   if str(q.get("schema_version") or "") in CURRENT_VERSIONS
                    and str(q.get("type") or "") in MULTI_TYPES
                    and isinstance(q.get("concepts"), list)
                    and len(q["concepts"]) >= 2)
     multi_pool = sum(1 for q in data
-                     if str(q.get("schema_version") or "") == "2.1"
+                     if str(q.get("schema_version") or "") in CURRENT_VERSIONS
                      and str(q.get("type") or "") in MULTI_TYPES)
     report = {
         "generated_at": datetime.now().isoformat(timespec="seconds"),

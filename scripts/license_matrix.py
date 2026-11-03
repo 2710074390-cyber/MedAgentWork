@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""license_matrix.py — 权利盘点（P8-S1，2026-11-02）
+"""license_matrix.py — 权利盘点（P8-S1，2026-11-02；仅盘点，不作发布门禁）
 
 只做**盘点**，不做法律定性。判定"能不能发"是人的事；本工具只回答三件事：
 

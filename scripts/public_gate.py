@@ -1,23 +1,12 @@
 # -*- coding: utf-8 -*-
 """P8-S3 · 公开闸门（public gate）
 
-只回答一个问题：**准备上公开站的东西里，有没有未清权的真题？**
+把「上公开站的文件里引用了哪些真题」列出来，供人工知情。
+**授权（license/cleared）不再作为门禁**（2026-11-03 用户裁定：「全量取消真题限制，不用管授权」）。
 
-判定口径（比 license matrix 更严，故意如此）
---------------------------------------------------
-`license` 字段记录的是「题目自带的声明」，不是「可发布的凭证」。
-本闸门只认 `license_status == cleared` 为放行，其余一律 blocked：
-
-| 现值 | 含义 | 闸门判定 |
-|---|---|---|
-| `public` / `public_noncommercial` | 有公开使用声明 | **declared**（不是 cleared，仍 blocked） |
-| `unknown` / 缺失 | 仓库无记录 | **unclear**（blocked） |
-| `cleared`（P8-S4 起由 provenance 提供） | 有授权凭证 | cleared（放行） |
-
-因此当前仓库的实际情况是：**376 道真题里 0 道 cleared**。这不是「7 个文件有问题、
-其余没问题」，而是「按凭证口径，一道真题都不许上公开站」。AC-P8-04「公开 unclear = 0」
-现在之所以成立，是因为公开站里根本没有题——不是因为题都清权了。这个区别必须写进报告，
-否则下一任会以为「只要不动那 7 个文件就安全」。
+历史口径（2026-11-02 起）曾要求真题必须 `license_status=cleared` 才可上站，
+导致 376 道真题里 0 道可发布。该限制已取消；本脚本保留 G3 仅作**引用清点**，
+状态恒为 INFO，不阻断发布。
 
 检查项
 ------
@@ -237,10 +226,12 @@ def check_qid_exposure(files: list[Path], idx: dict[str, dict], root: Path = BAS
                 blocked.append(rec)
             hits.append(rec)
     return {
-        "id": "G3", "name": "白名单内真题必须 cleared",
-        "status": "FAIL" if blocked else "PASS",
+        "id": "G3", "name": "白名单内真题引用清点（授权不设门禁）",
+        # 2026-11-03：用户裁定「不用管授权」——只清点，不阻断。
+        "status": "INFO",
         "real_qids_in_whitelist": len(hits),
         "cleared": cleared, "blocked": blocked[:50], "blocked_count": len(blocked),
+        "note": "license 仅作来源记录；public/public_noncommercial/unclear 均不再阻断发布。",
     }
 
 
@@ -367,10 +358,10 @@ def run(extra: list[str] | None = None, do_probe: bool = False,
 
     checks = []
     if mx.get("missing"):
-        # 拿不到 license 数据 = 无法证明白名单干净 = 必须拦（fail-closed）。
-        # 否则 CI 上 matrix 缺失会静默通过，闸门形同虚设。
+        # 授权不再作门禁（2026-11-03）：取不到 license 数据只影响 G3 清点，
+        # 不影响发布。保留 INFO 留痕，避免把“盘点缺失”误读成“已清权”。
         checks.append({
-            "id": "G0", "name": "license 数据源可得", "status": "FAIL",
+            "id": "G0", "name": "授权数据可得（仅盘点，不阻断）", "status": "INFO",
             "note": f"无法获取题目 license 状态：{mx.get('error')}",
         })
     checks += [
@@ -402,15 +393,16 @@ def run(extra: list[str] | None = None, do_probe: bool = False,
         "generated_at": datetime.now().isoformat(timespec="seconds"),
         "tool": "scripts/public_gate.py",
         "contract": {
-            "cleared_only": True,
+            "cleared_only": False,
+            "license_gate": "disabled（2026-11-03 用户裁定：不用管授权）",
             "status_mapping": {
-                "cleared": "放行（需有授权凭证，P8-S4 起由 provenance 提供）",
-                "declared": "blocked（只有公开使用声明，无授权凭证）",
-                "unclear": "blocked（仓库无记录）",
+                "cleared": "有授权凭证（仅记录）",
+                "declared": "有公开使用声明（仅记录）",
+                "unclear": "仓库无记录（仅记录）",
             },
-            "why_stricter_than_matrix": (
-                "matrix 记录「题目自带的声明」，闸门要的是「可发布的凭证」。"
-                "public_noncommercial 说明作者允许公开使用，但不等于已取得著作权人授权。"
+            "why_still_report": (
+                "授权不再是发布前置条件；保留清点是为了回答“站上引用了哪些真题”，"
+                "而不是用它阻断部署。"
             ),
         },
         "whitelist": {"ci": yml, "local": ps1, "effective": entries,
@@ -439,15 +431,15 @@ def render_md(rep: dict) -> str:
          f"- 结论：**{rep['status']}**　公开路径内未清权真题 **{rep['public_unclear']}** 题",
          "",
          "---", "",
-         "## 0. 先看清一件事", "",
+         "## 0. 授权口径（2026-11-03 起）", "",
          f"矩阵里 {rep['matrix']['real_questions']} 道真题：**cleared {rep['matrix']['cleared']}** / "
          f"declared {rep['matrix']['declared']} / unclear {rep['matrix']['unclear']}。",
          "",
-         "`declared`（`public` / `public_noncommercial`）**不是** cleared。它只说明题目带有"
-         "「公开使用」声明，不等于已取得著作权人授权。所以按本闸门口径：**一道真题都还不能上公开站**。",
+         "用户 2026-11-03 明确「全量取消真题限制，不用管授权」：**license 不再是发布门禁**，"
+         "只作为来源记录保留。G3 状态恒为 INFO，不阻断部署。",
          "",
-         "这意味着 AC-P8-04「公开 unclear = 0」现在成立，是因为**公开站里根本没有题**，"
-         "不是因为题都清权了。下一任别把这个 0 读成「已经安全」。",
+         "历史口径（2026-11-02 起）曾要求 cleared 才可上站，当时 376 道真题 0 道 cleared；"
+         "该限制已取消，但保留清点数字，避免下一任误读为「全部已清权」。",
          "", "---", "", "## 1. 检查项", "",
          "| 项 | 名称 | 结果 | 关键值 |", "|---|---|---|---|"]
 
@@ -459,8 +451,7 @@ def render_md(rep: dict) -> str:
         elif c["id"] == "G2":
             v = f"`{c['value'] or '(未配置)'}`"
         elif c["id"] == "G3":
-            v = (f"白名单内真题 {c['real_qids_in_whitelist']} 题，"
-                 f"cleared {c['cleared']} / blocked {c['blocked_count']}")
+            v = (f"白名单内真题 {c['real_qids_in_whitelist']} 题（仅清点，不阻断）")
         elif c["id"] == "G4":
             v = f"可疑文件 {len(c['suspects'])} 个"
         elif c["id"] == "G5":
@@ -513,8 +504,9 @@ def render_md(rep: dict) -> str:
           "      - name: Public gate (fail-closed)",
           "        run: python scripts/public_gate.py",
           "```", "",
-          "闸门退出码非 0 时部署中止。这是 AC-P8-04 的机械保证：任何人把 `最终产物/` 加进白名单，",
-          "下一次部署会直接失败，而不是悄悄把 266 道 license 不明的真题推上线。", "",
+          "闸门退出码非 0 时部署中止。但**授权不再触发失败**（2026-11-03 起）：",
+          "把 `最终产物/` 加进白名单只会进入 G5 清点，不再因 license 被拦。",
+          "仍会失败的是：白名单双通道不一致（G1）、白名单内裸题面（G4）、线上真暴露（G6）。", "",
           "---", "",
           "*本报告只含文件路径、qid 与计数，不含任何用户数据。*"]
     return "\n".join(L)

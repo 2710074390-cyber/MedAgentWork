@@ -34,6 +34,8 @@
 **反向题不变式**：`[反选]`题中，正确答案选项的内容必须可被权威知识判定为假；其余四个干扰选项的内容必须可被权威知识判定为真。生成时逐选项验证。
 
 ### PG-02：所有输出必须包含 Schema 化元数据
+
+> **P9 模式元数据（batch048 起必填）**：每题输出 `"p9_mode"`，取值 `teacher_keypoint`（有教师重点/锚定清单）、`course_schedule`（有课程安排）、`module`（常规模块版）。`gate_check --stage final` 会校验覆盖率 100%，缺失即 BLOCKED。
 每道题附带 JSON 元数据块，包含：题目ID、题型标记、认知层级、考点溯源、答案键、每个选项的真值极性、教育测量指标（difficulty_index / discrimination_index / non_functioning_distractors）。
 
 ### HC-24：学习价值层强制（2026-10-23 新增 · schema v2）
@@ -190,9 +192,10 @@ X1/X2/X5/X6 目前是 advisory（违例记录但不阻断），但**结构字段
 ### HC-28：一次跑完与复核队列（2026-11-01 新增）
 - 每题必须带 `release` 对象：`disposition`（`publishable|pending_human|quarantined`）、`evidence_grade`（`A|B|C`）、`risk_level`（`high|medium|low`）、`reason_code`、`agent_checks[]`、`human_check`、`suggested_action`。
 - 证据等级：A=输入素材/教师重点/教材原文逐字可定位；B=教师重点覆盖或教材口径一致但无逐字引文；C=仅模型知识、无可定位来源。
-- 高风险题（剂量/时间窗/复苏/禁忌/儿科/急救）C 级 → `quarantined`；低风险 C 级 → `pending_human`；A/B 且确定性门禁通过 → `publishable`。
+- 高风险题（剂量/时间窗/复苏/禁忌/儿科/急救）C 级 → `quarantined`；低风险 C 级 → `pending_human`；**A/B 且确定性门禁通过 → `publishable`（默认，不需要逐题人工核验/签收）**。
+- **2026-11-03 用户裁定**：取消逐题人工医学核验作为发布前置。不要因为「没有人工逐题看过」而把 A/B 级题批量写成 `pending_human`；`review_status` 默认写 `agent_verified`，`medical_verification` 写「agent 自检通过」而不是「待人工」。只有 C 级、明确冲突或高风险题才进队列。
 - **禁止硬停**：单题歧义、来源不足、人类专属核验（原卷/版权/专家裁定）只写队列，不停止整批；连续生成直到目标题数完成。
-- 最终报告必须给出 `generation_status`（`DONE|PARTIAL|FAILED`）、`release_status`（`READY|PENDING_HUMAN_REVIEW|BLOCKED`）、`review_queue` 路径与计数。
+- 最终报告必须给出 `generation_status`（`DONE|PARTIAL|FAILED`）、`release_status`（`READY|PENDING_HUMAN_REVIEW|BLOCKED`）、`review_queue` 路径与计数。编排器导出时会同时生成人可读的 `review_queue.md`。
 
 ### HC-7：选项设计硬约束（2026-06-16 新增·依据 NBME 第6版 + 北大命题规范）
 
@@ -309,7 +312,7 @@ X1/X2/X5/X6 目前是 advisory（违例记录但不阻断），但**结构字段
   3. 解析首句：「本题来源：{YYYY} 年执业医师资格考试第{单元}单元第{题号}题」或「本题来源：执业医师真题（CMExam-test-123）」。
 - **答案可信**：只插入 `answer_confidence=high/medium`；`low` 一律不插入。考研答案禁止再用 `abcd/abcde` 行首前缀。
 - **教师重点**：每题 `keypoint_ref` 指向 HC-20 锚定清单第四节连续编号；真题也必须带 `keypoint_ref`。
-- **license**：`public_noncommercial`（考研/执业医师历年真题/CMExam 原题，用户已确认非商业个人刷题）或 `public`（授权题）；不得把内部/未知来源写入公开构建。
+- **license**：按来源如实填写（`public_noncommercial` / `public` / 未知均可），**仅作来源记录**；2026-11-03 起上架版权不再作为门禁，未知/内部来源也可发布（风险由用户承担）。
 - **减量处理**：`quota_status=reduced`（按可用量减量）、`cancelled`（无候选取消配额）或 `deferred`（候选存在但人类专属核验未完成，HC-28）时用原创补齐，禁止用无关真题凑数；批次统计如实写「考研 X / 执医 Y（历年真题 a + CMExam b）/ 原创 Z」并说明减量/延后原因。
 
 ## Skills：
@@ -449,7 +452,9 @@ E. [选项内容]
 ### 元数据 (JSON)
 {
   "question_id": "{章节缩写}-{题型}-{序号}",
-  "schema_version": "2.1",
+  "schema_version": "2.2",
+  "module": "M01",
+  "p9_mode": "teacher_keypoint | course_schedule | module",
   "question_type": "A1" | "A2" | "B1" | "X",
   "polarity": "positive" | "negative" | "multi",
   "bloom_level": "memory" | "comprehension" | "application" | "analysis",
@@ -498,7 +503,7 @@ E. [选项内容]
     "source_quote_status": "exact",
     "anchor_status": "verified",
     "quality_flags": [],
-    "review_status": "draft"
+    "review_status": "agent_verified"
   },
   "release": {
     "disposition": "publishable | pending_human | quarantined",

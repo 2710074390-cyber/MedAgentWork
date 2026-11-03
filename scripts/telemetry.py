@@ -319,7 +319,7 @@ OBS_DIR = Path(__file__).resolve().parent.parent / 'reports' / 'obs'
 EVENT_FIELDS = frozenset({
     'ts', 'batch', 'stage', 'event', 'gate', 'status', 'rule_id', 'severity',
     'action', 'retry', 'duration_ms', 'tokens', 'count',
-    'model_id', 'prompt_sha256', 'artifact_sha256', 'config_hash', 'source',
+    'model_id', 'prompt_sha256', 'artifact_sha256', 'config_hash', 'source', 'reason',
 })
 
 #: 出现即拒收的键（用户/会话/交互维度）——防的是「顺手把用户数据写进日志」

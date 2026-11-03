@@ -11,6 +11,15 @@
 + `keypoint_ref` + `license`。
 """
 from __future__ import annotations
+# ── UTF-8 输出兜底（2026-11-03）：Windows 默认 GBK 控制台下 emoji 会抛 UnicodeEncodeError，
+#    导致门禁命令“时绿时红”。仅在脚本直接运行时生效，pytest 捕获下跳过。
+import sys as _sys
+if "pytest" not in _sys.modules and "_pytest" not in _sys.modules:
+    for _stream in (_sys.stdout, _sys.stderr):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
 
 import json
 import re

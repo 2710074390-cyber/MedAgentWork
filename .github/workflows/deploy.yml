@@ -19,13 +19,10 @@ jobs:
       - name: Quality policy gate (HC-25)
         run: python scripts/quality_policy.py --validate
 
-      # 公开闸门（P8-S3 · AC-P8-04）：只放行 license_status=cleared 的真题。
-      # 现状是 376 道真题里 0 道 cleared，所以闸门的实际作用是：
-      # 任何人想把 最终产物/ 加进下面的白名单，都会在这里失败，
-      # 而不是把 266 道 license 不明的真题悄悄推上线。
-      # 数据源现扫题库（reports/ 不进 git，CI 上没有 license_matrix 快照）；
-      # 扫不出来 → G0 FAIL → 阻断，不做「没数据就放过」。
-      - name: Public gate (fail-closed)
+      # 公开闸门（P8-S3）：检查白名单双通道一致 / 白名单内裸题面 / 线上真暴露。
+      # 授权口径：2026-11-03 用户裁定「不用管授权」，license 仅清点，不再阻断部署
+      # （G0/G3 恒 INFO）。仍会失败的是 G1/G4/G6 三类结构/暴露问题。
+      - name: Public gate (structure/exposure fail-closed; license informational)
         run: python scripts/public_gate.py
 
       # 部署前门禁：把 index.html 里每个按钮的真实请求路径解析出来，
