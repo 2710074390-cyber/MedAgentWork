@@ -414,7 +414,7 @@ rules:
     kind: gate
     severity: hard
     detector: {type: python, file: scripts/public_gate.py, symbol: main}
-    source_refs: ["scripts/public_gate.py", "reports/实施步骤与验收标准_无用户数据约束版_20261102.md:529"]
+    source_refs: ["scripts/public_gate.py", "SOUL.md:177"]
     status: active
     notes: "G1 白名单双通道一致｜G2 构建输出目录不得为仓库根（WARN）｜G3 真题引用清点（2026-11-03 起恒 INFO，授权不再阻断）｜G4 白名单内不得含裸题面｜G5 白名单外清单｜G6 线上探测按 content_type 判 SPA 兜底。G0 授权数据缺失也只记 INFO。"
 
@@ -736,7 +736,7 @@ rules:
     severity: soft
     detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_answer_distribution}
     notes: "只统计单选（答案恰 1 个字母）；多选/判断单列不混分母。advisory 阶段 status=VIOLATED 但不阻断。"
-    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:299"]
+    source_refs: ["scripts/validate/rules_batch.py", "tests/test_validate_rules.py"]
     status: active
 
   - id: X-BATCH-UNIQLONGEST
@@ -746,7 +746,7 @@ rules:
     severity: soft
     detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_unique_longest}
     notes: "与 R2 长度比是不同口径：R2 看单题比值，X2 看整批「靠长度猜答案」的可利用度。"
-    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:299"]
+    source_refs: ["scripts/validate/rules_batch.py", "tests/test_validate_rules.py"]
     status: active
 
   - id: X-BATCH-MISREUSE
@@ -756,7 +756,7 @@ rules:
     severity: soft
     detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_misconception_reuse}
     notes: "分母为全部干扰项；复用 = 同一 misconception_id 被 ≥2 题使用。每题全新 ID 等于把错误认知降级为题内私有标签。"
-    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:299", "SOUL.md:200"]
+    source_refs: ["scripts/validate/rules_batch.py", "SOUL.md:200"]
     status: active
 
   - id: X-BATCH-STRUCTCOV
@@ -766,7 +766,7 @@ rules:
     severity: hard
     detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_structural_coverage}
     notes: "只对 schema_version ≥ 2.2 生效；历史批次返回 SKIP，不追溯。覆盖 difficulty_tier/step_count/competing_dx/negative_cues/conditionals + per_option.distractor_mechanism。"
-    source_refs: ["schemas/agent2_output.schema.json", "reports/实施步骤与验收标准_无用户数据约束版_20261102.md:297"]
+    source_refs: ["schemas/agent2_output.schema.json", "tests/test_validate_rules.py"]
     status: active
 
   - id: X-BATCH-REVERSE
@@ -778,7 +778,7 @@ rules:
     target: reverse_selection_ratio
     direction: max
     notes: "分子 = polarity=negative 与题干设问的**并集**（宁可高估）；分母 = 全部题。只看 polarity 会被漏标掩盖（batch042 的 18 道反选全标了 positive → 算出 0%），只看题干会被加粗标签打断（batch037 的 `<b>不属于</b>` 整批漏检）。"
-    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:413", "reports/validate/reverse_selection_20261102.md"]
+    source_refs: ["SOUL.md:303", "scripts/validate/rules_batch.py"]
     status: active
 
   - id: X-BATCH-REVANCHOR
@@ -788,7 +788,7 @@ rules:
     severity: hard
     detector: {type: python, file: scripts/validate/rules_batch.py, symbol: check_reverse_option_anchors}
     notes: "反选题的非答案项是**正确说法**，要求 source_anchor（题级 answer_evidence 可兜底），不要求 misconception_id。只对 schema_version ≥ 2.2 生效，历史批次 SKIP。"
-    source_refs: ["reports/实施步骤与验收标准_无用户数据约束版_20261102.md:413"]
+    source_refs: ["SOUL.md:303", "scripts/validate/rules_batch.py"]
     status: active
 
   - id: X-BATCH-POLARITY
