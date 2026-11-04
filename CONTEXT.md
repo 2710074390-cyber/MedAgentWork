@@ -521,7 +521,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 | **bge-small-zh-v1.5** | 已缓存 `~/.cache/huggingface/hub`，离线可跑；如需重下走 `HF_ENDPOINT=https://hf-mirror.com` |
 | **GitHub 镜像序** | `gh-proxy.com` → `ghproxy.net` → `mirror.ghproxy.com` → 直连（实测 gh-proxy.com 可用，mirror.ghproxy.com 超时） |
 | **calibrated_p 性质** | CMExam 人工标注锚点 + 先验表的外部先验估计，**非本库实测**。允许：组卷配平/异常筛查/推送排序；禁止：对外标注「实测难度」 |
-| **注册表覆盖** | registry 现 **6,490** 题 / 32 个批次（`question_bank/registry_meta.json` 的 `stats.total`，2026-10-27 实测）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
+| **注册表覆盖** | registry 现 **6,640** 题 / 32 个批次（`question_bank/registry_meta.json` 的 `stats.total`，2026-11-04 复核）；batch003(SUPERSEDED)/005/024/025 无结构化 JSON 未注册 |
 | **学科数** | **23**（`知识库素材/subject_config.json` 的 `subjects` 条目数，v2.0 · 2026-09-01） |
 
 ### ⚠️ index.html 对外数字（2026-10-27 改版后仅剩一处）
@@ -532,7 +532,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 
 | 位置 | 还需手工同步吗 | 真身来源 |
 |---|---|---|
-| 首页统计条（题库注册 / 学科覆盖） | **否**——改版后已移除 | 原 `question_bank/registry_meta.json` → `stats.total`（2026-10-27 实测 **6,490**）；`知识库素材/subject_config.json` → `subjects`（**23**） |
+| 首页统计条（题库注册 / 学科覆盖） | **否**——改版后已移除 | 原 `question_bank/registry_meta.json` → `stats.total`（2026-11-04 复核 **6,640**）；`知识库素材/subject_config.json` → `subjects`（**23**） |
 | 软件工坊 `sw-tags` 安装包体积 | **否**——`sw-tags` 已移除 | Release 资产 `MedKit-Setup-*.exe` 实测 49.9 MB（v0.22.0） |
 | 软件工坊 `sw-desc` 版本亮点文案 | **是**——每次发版补一句本版改了什么 | `medkit` 仓库 CHANGELOG / GitHub Release |
 | 软件工坊 `sw-ver` 版本基线 | **是**——发版时同改两处：`#sw-ver` 初始文本 + 脚本内 `BASE={tag,mb}` | Release 最新 tag 与 `MedKit-Setup-*.exe` 实测体积 |

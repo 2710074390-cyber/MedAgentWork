@@ -1065,6 +1065,58 @@ def selftest():
 
 
 # ──────────────────────────────────────────
+# SA-7：子集抽取（只读视图）
+# ──────────────────────────────────────────
+
+def subselect(items, ids=None, from_report=None, with_case_group=False):
+    """按题号 / 质检报告抽取子集：**只做子集，字段原样**，不写注册表、不改源文件。
+
+    用途：MedFix 只读「A3 标记题 + 同 case_group 相邻题」而不是全库（SA-7）。
+    from_report 会从 issues / review_queue / modification_instructions 里收集题号候选，
+    **并与题库现有 id 取交集**（报告里的批次级 id 如 MOD-001 / RQ-001 会被自动忽略）。
+    """
+    def key(x):
+        return str(x.get('id') or x.get('qid') or '') if isinstance(x, dict) else ''
+
+    item_ids = {key(x) for x in items if isinstance(x, dict)}
+    cand = {str(x).strip() for x in (ids or []) if str(x).strip()}
+    if from_report:
+        rep = json.loads(Path(from_report).read_text(encoding='utf-8'))
+        for it in rep.get('issues') or []:
+            if not isinstance(it, dict):
+                continue
+            for k in ('question_id', 'qid', 'target'):
+                v = it.get(k)
+                if isinstance(v, str) and v.strip():
+                    cand.add(v.strip())
+        for it in rep.get('review_queue') or []:
+            if isinstance(it, str):
+                cand.add(it)
+            elif isinstance(it, dict):
+                for k in ('question_id', 'qid', 'id', 'target'):
+                    v = it.get(k)
+                    if isinstance(v, str) and v.strip():
+                        cand.add(v.strip())
+        for it in rep.get('modification_instructions') or []:
+            if isinstance(it, dict):
+                for k in ('question_id', 'qid', 'target'):
+                    v = it.get(k)
+                    if isinstance(v, str) and v.strip():
+                        cand.add(v.strip())
+
+    wanted = (cand & item_ids) if item_ids else cand
+    picked = [x for x in items if key(x) in wanted]
+    if with_case_group:
+        groups = {x.get('case_group') for x in picked if isinstance(x, dict) and x.get('case_group')}
+        if groups:
+            seen = {key(x) for x in picked}
+            picked += [x for x in items
+                       if isinstance(x, dict) and x.get('case_group') in groups and key(x) not in seen]
+    order = {key(x): i for i, x in enumerate(items)}
+    picked.sort(key=lambda x: order.get(key(x), 10 ** 9))
+    return picked
+
+# ──────────────────────────────────────────
 # CLI
 # ──────────────────────────────────────────
 
@@ -1108,6 +1160,14 @@ def main():
 
     p_rehome = sub.add_parser('rehome', help='重写注册表中归档后失效的文件路径')
     p_rehome.add_argument('--dry-run', action='store_true', help='只报告不写入')
+    p_sel = sub.add_parser('subselect', help='按题号/质检报告抽取子集（只读视图，字段原样）')
+    p_sel.add_argument('--file', '-f', required=True, help='题库 JSON 路径')
+    p_sel.add_argument('--ids', default='', help='逗号分隔题号')
+    p_sel.add_argument('--ids-file', default='', help='每行一个题号的文本文件')
+    p_sel.add_argument('--from-report', default='', help='质检报告 JSON（抽 issues/review_queue 的 question_id）')
+    p_sel.add_argument('--with-case-group', action='store_true', help='同 case_group 的相邻题一并纳入')
+    p_sel.add_argument('--out', '-o', default='', help='输出 JSON（缺省打印到 stdout）')
+    p_sel.add_argument('--json', action='store_true', help='额外打印计数摘要')
 
     parser.add_argument('--selftest', action='store_true', help='解析器自检')
     args = parser.parse_args()
@@ -1205,6 +1265,33 @@ def main():
             sys.exit(1)
         return
 
+    if args.cmd == 'subselect':
+        try:
+            items = json.loads(Path(args.file).read_text(encoding='utf-8'))
+        except Exception as exc:
+            print(f'✗ 读取题库失败: {exc}', file=sys.stderr)
+            sys.exit(2)
+        if not isinstance(items, list):
+            print('✗ 输入必须是 JSON 数组', file=sys.stderr)
+            sys.exit(2)
+        ids = [s.strip() for s in args.ids.split(',') if s.strip()]
+        if args.ids_file:
+            ids += [ln.strip() for ln in Path(args.ids_file).read_text(encoding='utf-8').splitlines() if ln.strip()]
+        try:
+            picked = subselect(items, ids, args.from_report or None, args.with_case_group)
+        except Exception as exc:
+            print(f'✗ 抽取失败: {exc}', file=sys.stderr)
+            sys.exit(2)
+        payload = json.dumps(picked, ensure_ascii=False, indent=2)
+        if args.out:
+            Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+            Path(args.out).write_text(payload, encoding='utf-8')
+            print(f'✅ 子集 {len(picked)} 题 → {args.out}')
+        else:
+            print(payload)
+        if args.json:
+            print(json.dumps({'selected': len(picked), 'source_total': len(items)}, ensure_ascii=False))
+        return
     if args.cmd == 'rehome':
         rewritten, missing = rehome(dry_run=args.dry_run)
         if args.dry_run:

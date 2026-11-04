@@ -1,0 +1,225 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "batch_driver result",
+  "type": "object",
+  "required": [
+    "batch",
+    "stage",
+    "verdict",
+    "generated_at",
+    "halt",
+    "passed",
+    "failed",
+    "skipped",
+    "unparsed"
+  ],
+  "properties": {
+    "batch": {
+      "type": "string",
+      "pattern": "^batch[0-9]{3}(-[A-Z])?$"
+    },
+    "product_types": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "question_bank",
+          "prediction_paper",
+          "review_material"
+        ]
+      }
+    },
+    "stage": {
+      "type": "string"
+    },
+    "plan": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "verdict": {
+      "enum": [
+        "PASS",
+        "BLOCKED",
+        "SKIP",
+        "ERROR"
+      ]
+    },
+    "exit_code": {
+      "type": "integer",
+      "enum": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "next_stage": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "halt": {
+      "type": "object",
+      "required": [
+        "active"
+      ],
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "enum": [
+            "gate",
+            "driver",
+            null
+          ]
+        }
+      }
+    },
+    "passed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "gate"
+        ],
+        "properties": {
+          "gate": {
+            "type": "string"
+          },
+          "duration_ms": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "failed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "gate",
+          "code",
+          "severity"
+        ],
+        "properties": {
+          "gate": {
+            "type": "string"
+          },
+          "code": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "FAIL",
+              "WARN",
+              "SKIP"
+            ]
+          },
+          "file": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "locator": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "fix_hint": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "owner": {
+            "enum": [
+              "MedGen",
+              "MedQC",
+              "MedFix",
+              "MedReview",
+              "orchestrator",
+              null
+            ]
+          },
+          "evidence": {
+            "type": "object"
+          },
+          "raw": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 2000
+          }
+        }
+      }
+    },
+    "skipped": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "gate",
+          "reason"
+        ],
+        "properties": {
+          "gate": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "unparsed": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "gate"
+        ],
+        "properties": {
+          "gate": {
+            "type": "string"
+          },
+          "exit_code": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "raw": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object"
+    }
+  }
+}

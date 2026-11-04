@@ -2048,8 +2048,14 @@ def stage_sequence(batch_id, batch_data) -> list[str]:
     seq: list[str] = []
     if is_question_bearing(types):
         seq += ['agent2_done', 'agent3_done', 'agent4_done']
-        schema_version = str(batch_data.get('item_schema_version') or '')
-        if schema_version == '2.0' or batch_data.get('learning_value_required'):
+        # SA-B-F1（2026-11-04 修复）：原实现只认 == '2.0'，导致 schema 2.1/2.2 批次
+        # 的 --stage auto 永远不会进入 learning_value（batch047 实证）。改为数值比较。
+        schema_version = str(batch_data.get('item_schema_version') or '').strip()
+        try:
+            needs_lv = float(schema_version) >= 2.0
+        except (TypeError, ValueError):
+            needs_lv = False
+        if needs_lv or batch_data.get('learning_value_required'):
             seq.append('learning_value')
     seq.append('final')
     return seq
@@ -2116,7 +2122,15 @@ def detect_current_stage(state, batch_id):
 
 
 def run_gate_check(batch_id: str, stage: str, run_regression: bool = True,
-                   learning_value_mode: str = 'off') -> None:
+                   learning_value_mode: str = 'off', json_out: str | None = None,
+                   write_state: bool = True, set_halt: bool = True) -> None:
+    """执行门禁检查。
+
+    SA-4（2026-11-04）：追加三个**关键字**参数供 batch_driver.py 使用（默认行为不变）：
+      json_out   —— 把阶段结果写成结构化 JSON（driver 消费），不影响 stdout 与退出码
+      write_state—— False 时不写 workflow_state.json（AC-SA4-05）
+      set_halt   —— False 时不写 HALT 信号（只读/CI 场景）
+    """
     """执行门禁检查"""
     started_at = time.time()
     if TELEMETRY_AVAILABLE:
@@ -2251,6 +2265,28 @@ def run_gate_check(batch_id: str, stage: str, run_regression: bool = True,
     if lineage_path:
         print(f"      ↳ 证据: {lineage_path}")
 
+    # SA-4（2026-11-04）：结构化输出，供 scripts/batch_driver.py 消费。
+    # 只序列化已有结果，不新增任何判定。
+    if json_out:
+        approved_now = batch_data.get('status') == 'APPROVED'
+        payload = {
+            'batch': batch_id,
+            'stage': stage,
+            'generated_at': datetime.now().isoformat(timespec='seconds'),
+            'approved_mode': approved_now,
+            'verdict': 'PASS' if (all_pass or approved_now) else 'BLOCKED',
+            'exit_code': 0 if (all_pass or approved_now) else 1,
+            'gates': results,
+            'lineage': lineage_report,
+        }
+        try:
+            out_path = Path(json_out)
+            out_path.parent.mkdir(parents=True, exist_ok=True)
+            out_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
+            print(f"  📄 结构化结果: {json_out}")
+        except Exception as exc:
+            print(f"  ⚠️ 写 --json-out 失败（不阻断门禁）：{exc}")
+
     # 更新 state 中的 gate_results
     batch = state[batch_id]
     if 'gate_results' not in batch:
@@ -2281,12 +2317,18 @@ def run_gate_check(batch_id: str, stage: str, run_regression: bool = True,
             # 修复前曾因历史门禁误判停掉整条管线（batch024 事件）。
             print(f"\n  ⚠️ 批次 {batch_id} 已签收（APPROVED），门禁结果仅作参考，不写入 HALT。")
         else:
-            ws.set_halt(state, batch_id,
-                        f'{stage} 门禁未通过: ' + '; '.join(r['reason'] for r in results if r['status'] != 'PASS'),
-                        'MedMaster/gate_check.py')
-            print(f"\n  🛑 HALT 信号已设置（批次 {batch_id}）")
+            if set_halt:
+                ws.set_halt(state, batch_id,
+                            f'{stage} 门禁未通过: ' + '; '.join(r['reason'] for r in results if r['status'] != 'PASS'),
+                            'MedMaster/gate_check.py')
+                print(f"\n  🛑 HALT 信号已设置（批次 {batch_id}）")
+            else:
+                print(f"\n  ⏭️  --no-halt：跳过 HALT 写入（批次 {batch_id}）")
 
-    ws.save_state(state)
+    if write_state:
+        ws.save_state(state)
+    else:
+        print("  ⏭️  --no-state-write：跳过 workflow_state.json 写入")
 
     # P6：final 阶段刷新聚合指标（SQLite + metrics.json），事件在上一段已落盘
     if stage == 'final':
@@ -2347,6 +2389,12 @@ def main():
     parser.add_argument('--learning-value-mode', choices=['off', 'advisory', 'enforce'],
                         default='off',
                         help='学习价值评分卡门禁模式（默认 off，不影响现有批次）')
+    parser.add_argument('--json-out', default=None,
+                        help='SA-4: 结构化结果输出（供 scripts/batch_driver.py 消费；不影响退出码）')
+    parser.add_argument('--no-state-write', action='store_true',
+                        help='SA-4: 不写 workflow_state.json（只读/CI 场景）')
+    parser.add_argument('--no-halt', action='store_true',
+                        help='SA-4: 不写 HALT 信号（只读/CI 场景）')
     args = parser.parse_args()
 
     if args.clear_halt:
@@ -2359,7 +2407,10 @@ def main():
         print(f"  ✅ HALT 信号已清除")
         sys.exit(0)
 
-    run_gate_check(args.batch, args.stage, learning_value_mode=args.learning_value_mode)
+    run_gate_check(args.batch, args.stage, learning_value_mode=args.learning_value_mode,
+                   json_out=args.json_out,
+                   write_state=not args.no_state_write,
+                   set_halt=not args.no_halt)
 
 
 if __name__ == '__main__':

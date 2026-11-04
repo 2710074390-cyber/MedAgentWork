@@ -71,7 +71,7 @@
 | **R8最小长度** | validate | `validate_options.py` R8规则：检测选项以连接词/助词结尾（的/和/与/于）、逗号顿号截断、含数值缺时间/剂量单位。FAIL阻塞保存（batch007 系统10字截断教训：Agent2产96题含截断，74题受影响） |
 | **防过度加长** | Agent 2 | Prompt中「≥8字+不足附加释义」会致矫枉过正（batch007 v2：8.1字→18.9字，0%<10字）。修正：自然短术语（药名/受体/疾病名3-7字）豁免长度下限，以「能否独立朗读」区分截断vs完整术语 |
 | **MD答案标记** | save.py | 保存.md文件时自动统计 ✅ 标记覆盖率。覆盖率 <50% 时告警（batch003 52%缺失教训） |
-| **HC-12 门禁强制** | Agent 1 | Orchestrator-as-Enforcer 模式。每次状态转换前必须运行确定性验证（validate_options.py / gate_check.py），验证未通过→halt→不可推进。Agent 1 不可在此检查上"相信下游自觉"（batch006+005+014+011联合教训：5起管线绕过事件） |
+| **HC-12 门禁强制** | Agent 1 | Orchestrator-as-Enforcer（2026-11-04 重述：**执行义务不变，执行面收窄**）。每次状态转换前必须运行确定性验证（validate_options.py / gate_check.py），验证未通过→halt→不可推进；Agent 1 不可在此检查上"相信下游自觉"（batch006+005+014+011联合教训：5起管线绕过事件）。**自 2026-11-04 起（SA-4 已落地）**，题库/复习资料批次的阶段门禁一律通过 `python scripts/batch_driver.py check --batch {batchID} [--stage auto]` 一次调用完成；编排者不得直接调用被 driver 纳管的门禁脚本（清单见 `batch_driver.py plan` 输出）。只读诊断命令（read / grep / git status / --help）不受限 |
 | **HC-13 补丁溯源** | Agent 4 | 修复 COMPLETE.json 时必须同步修改对应分系统源文件。追溯日志新增 `source_file_synced` 字段。禁止只打补丁到聚合文件而留源文件污染（batch014 教训：补丁不溯源→下次合并回归19处截断） |
 | **Bloom门禁** | Agent 3 | 认知层级Bloom分布偏差 >15% vs 目标比例（30/40/25/5）→ gate_decision 自动降为 BLOCKED。记忆层 ≥50% 或理解层 ≤25% 触发（batch011 v1记忆54.1%教训） |
 | **HC-14 结构模板** | Agent 2 | 选项长度统一靠结构一致性，不靠字数范围。每道题的5个选项必须共享相同语法结构（如都是[部位]+[疾病名]、都是[数字]+[单位]）。LLM 理解"结构模板"远强于理解"min=4 max=15"（batch007→010 3次振荡教训：字数约束致 3.9字↔18.9字 反复摇摆）。替代旧「选项长度参数化」规则 |
@@ -272,6 +272,7 @@
 - **每题 `release` 对象**：`disposition=publishable|pending_human|quarantined`、`evidence_grade=A|B|C`、`risk_level=high|medium|low`、`reason_code`、`agent_checks[]`、`human_check`、`suggested_action`。
 - **证据分级与发布底线**：A = 输入素材/教师重点/教材原文逐字可定位；B = 教师重点覆盖或教材口径一致但无逐字引文；C = 仅模型知识、无可定位来源。高风险题（剂量/时间窗/复苏/禁忌/儿科/急救）C 级 → `quarantined`；低风险 C 级 → `pending_human`；**A/B 且确定性门禁通过 → `publishable`（默认，无需逐题人工核验/签收）**。`pending_human` 只用于 C 级或明确冲突，不得因为「没有人工逐题看过」而批量把 A/B 降级。
 - **输出契约**：批次必须输出 `review_queue.json` **和同名 `review_queue.md`（人可读，2026-11-03 起强制）**；最终交付 MD 末尾附「人工复核队列」；队列每条含题号、处置、证据等级、风险、原因、已做检查、人工需核、建议动作。队列为空时 MD 也要输出「无待人工复核项」。最终回复只报告状态、数量、路径，不得以「请确认 / 待核验」结束本轮执行。
+- **输出模板（2026-11-04 起 · HC-28 输出契约）**：**BLOCKED 固定三行**——`阻断码` / `落点文件` / `下一步命令`；**正常完成固定四行**——`批次` / `产物` / `门禁` / `待办`。模板全文见 `reports/实施步骤与验收标准_调度与上下文层_20261104.md` §1.3；不写分析散文。
 - **交互门废弃**：DSH/subagent 模式下，MedGen HC-6 回显、MedQC Step 5「输入确认」、MedFix/MedMaster「等待用户确认」一律视为旧 Cherry Studio 遗留，**不得实际等待**；批次启动时由用户一次性确认范围，之后连续执行到交付。
 - **机制依据**：MAST（Cemri et al., 2025, arXiv:2503.13657）把「不知道终止条件」「验证失败」列为高频失败模式；Anthropic《Building effective agents》要求 evaluator-optimizer 有明确终止条件；Guardrails AI 的 `on_fail` 提供 fix/reask/filter 等非中断动作；OR-Bench（Cui et al., 2024, arXiv:2405.20947）证明过度拒答是独立失败模式；Self-Refine（Madaan et al., 2023）要求最大轮次与停止指标。结论：**不确定应作为数据向下游传递，不应作为控制流中断**。
 

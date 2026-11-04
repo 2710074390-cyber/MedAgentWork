@@ -10,11 +10,11 @@ whenToUse: 用户要求开始新批次、继续推进管线、终审签收或处
 
 ## 必读文件（每次任务开始先读，按此顺序）
 
-1. `CONTEXT.md` — 文件规范、工具路径、铁律
-2. `SOUL.md` — 共享硬约束 HC-* 与门禁规则
+1. `中间产物/{batchID}/_ctx.md` — 本批上下文（≤8k chars：批次参数 / 门禁状态 / 路径契约 / 教师重点 KP-ID 索引 / 硬约束 / 待办）。**不存在时先运行** `python scripts/build_batch_context.py --batch {batchID}`
+2. `Prompt版本/MedMaster_current_prompt.md` — 你的完整角色提示词（只读，PG-00~PG-11、HC-22 真题双族配额编排（含 HC-23 语料）、工作流状态机、调用指令模板全部生效）
 3. `USER.md` — 用户画像
-4. `Prompt版本/MedMaster_current_prompt.md` — 你的完整角色提示词（只读，PG-00~PG-11、HC-22 真题双族配额编排（含 HC-23 语料）、工作流状态机、调用指令模板全部生效）
-5. `docs/archive/2026-11/TODO.md` 与 `memory/FACT.md` — 当前待办与历史教训
+4. `memory/TODO_ACTIVE.md`（当前待办）与 `memory/FACT.md`（历史教训 + 已闭环政策）— 历史待办见 `docs/archive/2026-11/TODO.md`（已归档，不再追加）
+5. **不再整份读** `CONTEXT.md` / `SOUL.md`：规则原文按 `_ctx.md` 的指针取 —— `python scripts/ctx_fetch.py --id '§SOUL#HC-22'`（≤2,000 chars/次）
 
 ## 完整角色提示词
 
@@ -31,9 +31,10 @@ whenToUse: 用户要求开始新批次、继续推进管线、终审签收或处
    - **输入文件路径**（不是粘贴内容）
    - **输出文件路径**约定
    - **【真题双族配额】小节**（HC-22）：目标题数、考研族/执业医师族配额、`real_question_plan.json` 路径、`quota_status` 与减量/延后原因（reduced/cancelled/deferred）、无真题覆盖章节清单
-3. **门禁强制（HC-12 Orchestrator-as-Enforcer）**：每个阶段转换前必须实际运行门禁命令（见 `medbatch` skill 第 3 节）。**batch048+：先跑 R0/R1，R2/R3 落报告；final 门禁还会检查 HC-22 配额 / R0–R3 / P9 模式元数据 / Bloom 目标四项，缺一即 BLOCKED。****确定性门禁**（schema/JSON、R1–R13、D20=0、Bloom 偏差、ID 冲突、答案唯一性硬检查）FAIL → 回退上游修复，单题最多 2 轮、整批最多 3 轮；仍失败则隔离该题并继续，不整批停止。**人类专属核验**（原卷/版权/专家裁定）不触发 halt，只写 `review_queue`（HC-28）。可发布核心为空也不终止：交付待审稿 + 队列并标 `release_status=BLOCKED`；只有输入损坏、连续 2 次不可解析或工具故障才终止批次。终审前加跑 `python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json`（HC-18，exit 1 → 核对覆盖情况后处理）。**有教师重点/复习大纲输入的批次：门禁A5 与终审前加跑 `python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD>`（HC-20/D0 教师重点原文锚定，exit 1 → 回退 Agent 5 补写被概括丢失的数值/时间窗；无教师重点输入 → SKIPPED）**。
-4. **文件传递与核对**：subagent 完成后用 read 工具核对产物（JSON 可解析、必填字段齐全），再把路径传给下一 Agent。
+   - 该阶段结束后的门禁入口见第 3 条（`batch_driver.py check --batch {batchID} --stage auto`），不要把门禁命令写进 subagent prompt。
+3. **门禁强制（HC-12 Orchestrator-as-Enforcer）**：每个阶段转换前必须实际运行门禁命令（见 `medbatch` skill 第 3 节）。**batch048+：先跑 R0/R1，R2/R3 落报告；final 门禁还会检查 HC-22 配额 / R0–R3 / P9 模式元数据 / Bloom 目标四项，缺一即 BLOCKED。****确定性门禁**（schema/JSON、R1–R13、D20=0、Bloom 偏差、ID 冲突、答案唯一性硬检查）FAIL → 回退上游修复，单题最多 2 轮、整批最多 3 轮；仍失败则隔离该题并继续，不整批停止。**人类专属核验**（原卷/版权/专家裁定）不触发 halt，只写 `review_queue`（HC-28）。可发布核心为空也不终止：交付待审稿 + 队列并标 `release_status=BLOCKED`；只有输入损坏、连续 2 次不可解析或工具故障才终止批次。终审前加跑 `python scripts/kaoyan_picker.py check --file 最终产物/{batchID}/ALL_questions_FIXED.json`（HC-18，exit 1 → 核对覆盖情况后处理）。**有教师重点/复习大纲输入的批次：门禁A5 与终审前加跑 `python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD>`（HC-20/D0 教师重点原文锚定，exit 1 → 回退 Agent 5 补写被概括丢失的数值/时间窗；无教师重点输入 → SKIPPED）**。**门禁执行入口 = `batch_driver.py`（唯一，2026-11-04 起）**：阶段门禁一律 `python scripts/batch_driver.py check --batch {batchID} [--stage auto] [--json-out reports/gate/driver_{batchID}.json]` 一次调用完成。编排者**不得**直接执行被 driver 纳管的脚本：validate / validate_options / gate_check / quality_gate / check_learning_value / check_source_concepts / check_keypoint_coverage / check_review_detail / real_question_cli / check_patch_integrity；只读诊断命令（read / grep / git status / --help）不受限。driver 返回 BLOCKED 时按 HC-28 三行模板回报，并按其 `failed[].owner/fix_hint` 派给对应 Agent。
+4. **文件传递与核对（2026-11-04 直读契约）**：**不读产物正文**。subagent 完成后只做三项机械核对：① 文件存在；② JSON 可解析（`python -c "import json,sys;json.load(open(sys.argv[1],encoding='utf-8'))" <路径>`）；③ 上游回报的门禁摘要字段（`gate_decision` / 计数 / `sha256`）。交接只传「路径 + 必跑断言命令」，不粘贴内容、不做摘要转述。下游 Agent 的第一动作是按给定路径**直读**上游落盘产物，不接受主会话摘要；Worker 回报固定三行：`结论 / 落点路径 / 阻断原因`。
 5. **签收**：用户签收后批次置 APPROVED；GoldenSet 只允许用户手动移入，任何 Agent 不得写入。
-6. **会话卫生**：每批次建议独立会话；批次关键事件记入 `memory/JOURNAL.jsonl`（UTF-8 JSONL，一行一条）。
+6. **会话卫生**：每批次建议独立会话；批次关键事件记入 `memory/JOURNAL.jsonl`（UTF-8 JSONL，一行一条）。最终回复严格按 SOUL 的 HC-28 模板（BLOCKED 三行 / 完成四行），不写分析散文。
 7. save.py / ingest.py 保留给非 DSH 手工流程使用；DSH 流程下子代理直接写文件，由你校验并更新血缘。
 8. **生图阶段（HC-19）已下线（2026-11-02）**：不再有豆包交接、`*_配图清单.md`、`images_webp/` 与 GATE-A6 门禁。复习资料为纯文本产物；门禁A5（HC-20/D0 + HC-26）通过后直接终审。见 `SOUL.md § HC-19`。

@@ -1,0 +1,11 @@
+{
+  "batch": "batch047",
+  "stage": "agent3_done",
+  "gates": [
+    {
+      "gate": "GATE-A3",
+      "status": "PASS",
+      "reason": "D20=0, bloom ok"
+    }
+  ]
+}

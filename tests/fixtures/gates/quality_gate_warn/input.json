@@ -1,0 +1,15 @@
+{
+  "batch": "batch048",
+  "stage": "r2",
+  "status": "WARN",
+  "checks": [
+    {
+      "id": "AC-P6-02",
+      "status": "WARN"
+    }
+  ],
+  "warnings": [
+    "w"
+  ],
+  "blocking": []
+}

@@ -10,12 +10,15 @@ whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出
 
 ## 必读文件（按顺序）
 
-1. `CONTEXT.md` / `SOUL.md` / `USER.md` — 共享规则
+1. `中间产物/{batchID}/_ctx.md` — 本批上下文（路径契约 / 本批 HC 列表 / 待办）
 2. `Prompt版本/MedFix_current_prompt.md` — 完整修复提示词（只读）。PG-00 仅执行结构化指令、PG-01 Precondition 验证、PG-02 Post-check 回归、PG-03 反向题保护、**PG-05b 学习价值层补丁（HC-24）**、HC-6 独立质量审查、HC-7 全局一致性、HC-5 输出即成品 + 追溯日志全部生效。
+
+> 共享规则（CONTEXT / SOUL / USER）不整份读：需要某条时用 `python scripts/ctx_fetch.py --id '§SOUL#HC-xx'` 取（≤2,000 chars/次）。
 
 ## DSH 执行规则
 
-1. **输入**：读取编排者给出的两个文件路径（题库 + 质检报告）；仅执行质检报告中的结构化指令，Precondition 不符则跳过该 patch 并写入复核队列，**继续其余 patch**，不得整批停止（HC-28；不可自行扩大修改范围）。
+1. **输入**：读取编排者给出的两个文件路径（题库 + 质检报告）——上游产物**按路径直读**，不接受编排者摘要；不读 A3 报告 `dimensions`/`issues` 全量散文（只读结构化指令与 `review_queue`）。仅执行质检报告中的结构化指令，Precondition 不符则跳过该 patch 并写入复核队列，**继续其余 patch**，不得整批停止（HC-28；不可自行扩大修改范围）。完成只回三行 `结论 / 落点路径 / 阻断原因`。
+   - **只读范围内题（SA-7）**：用 `python scripts/qbank.py subselect --file <题库> --from-report <A3报告> --with-case-group --out 中间产物/{batchID}/_fix_scope.json` 取出被标记题（含同 `case_group` 相邻题），按该子集逐条 patch；**不把整库搬进上下文**。
 2. **输出到 `最终产物/{batchID}/`**：
    - `ALL_questions_FIXED.json` — 修复后题库，**纯 JSON 数组，禁止 YAML frontmatter**（batch006 教训；修改声明单独成文件）
    - `ALL_questions_FIXED.md` — **最终交付格式（2026-08-20 起强制）**：复检 FAIL==0 后运行

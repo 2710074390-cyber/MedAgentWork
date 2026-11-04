@@ -1,0 +1,11 @@
+{
+  "batch": "batch048",
+  "stage": "agent3_done",
+  "gates": [
+    {
+      "gate": "GATE-A3",
+      "status": "BLOCKED",
+      "reason": "D20=0"
+    }
+  ]
+}

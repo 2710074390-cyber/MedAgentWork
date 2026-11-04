@@ -1,0 +1,22 @@
+{
+  "bloom_distribution": {
+    "actual": {
+      "记忆": {
+        "count": 10,
+        "ratio": 0.2
+      },
+      "理解": {
+        "count": 10,
+        "ratio": 0.2
+      },
+      "应用": {
+        "count": 22,
+        "ratio": 0.44
+      },
+      "分析": {
+        "count": 8,
+        "ratio": 0.16
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "summary": {
+    "fail": 1,
+    "warn": 0,
+    "pass": 9,
+    "total_questions": 10
+  },
+  "issues": [
+    {
+      "question_id": "batch048-Q001",
+      "rule": "R7",
+      "severity": "FAIL",
+      "target": "options[2]",
+      "detail": "截断"
+    }
+  ]
+}

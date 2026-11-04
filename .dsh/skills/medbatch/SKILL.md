@@ -69,6 +69,11 @@ R4 运行复盘  python scripts/quality_gate.py --stage r4 --batch {batchID} --c
 
 ## 3. 门禁命令（每个阶段转换前强制执行）
 
+> **2026-11-04 起（SA-4）**：编排者**不得直接执行**本节命令——阶段门禁一律通过
+> `python scripts/batch_driver.py check --batch {batchID} [--stage auto]` 一次调用完成
+> （driver 内部按本节命令调用各脚本，并给出 `passed/failed[code,fix_hint,owner]/next_stage`）。
+> 本节保留为 **driver 内部实现参考 + 审计清单**；`batch_driver.py plan --batch {batchID}` 可打印该批次的实际执行序列。
+
 ```text
 GATE-A2   python -m scripts.validate --file 中间产物/{batchID}/ALL_questions.json   # FAIL==0 才放行，禁止返工时误扫最终产物
 GATE-A3   python gate_check.py --batch {batchID} --stage agent3_done
@@ -145,14 +150,16 @@ python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
 ## 4. 状态与记忆
 
 - `workflow_state.json`：批次状态/步骤/血缘/门禁结果。由编排者或 ingest/save/gate_check 更新，**子代理不得直接改写**
+- **本批上下文（SA-6 · 2026-11-04）**：`python scripts/build_batch_context.py --batch {batchID}` 生成 `中间产物/{batchID}/_ctx.md`（≤8,000 chars）与 `_kpidx.jsonl`（教师重点原文的 ID 索引，**sidecar，不替代原文**——`check_keypoint_coverage.py` 仍直接读原文）。A2 冻结或教师重点变更后需重建；归档后 `ctx_fetch.py` 自动回退 `archive/` 取数。Agent 起步只读 `_ctx.md`，规则/原文按指针用 `ctx_fetch.py --id` 取。
 - 批次关键事件（启动/门禁/halt/签收）记入 `memory/JOURNAL.jsonl`（UTF-8 JSONL，一行一条）
-- 新教训 → 更新 SOUL.md HC-* 表 + `memory/FACT.md`；完成项 → 更新 `docs/archive/2026-11/TODO.md`
+- 新教训 → 更新 SOUL.md HC-* 表 + `memory/FACT.md`；完成项 → 更新 `memory/TODO_ACTIVE.md`（历史待办板 `docs/archive/2026-11/TODO.md` 已归档，不再追加）
 
 ## 5. 常见故障处置
 
 | 症状 | 处置 |
 |---|---|
 | 门禁 BLOCKED | 读 gate 的 reason → 回退对应 Agent 修复 → 重新运行门禁 |
+| 门禁连续 BLOCKED 同一失败原因 / 补丁反复改同样字段 | 跑 `python scripts/batch_watchdog.py --batch {batchID}`：判「无进展」时按 `actions` 隔离该题 + 入 `review_queue` + 继续其余题（HC-28），只有反复无进展才升级人工 |
 | JSON 解析失败 / YAML 前置 | 要求 Agent 输出纯 JSON 数组，元数据单独 .md（batch006 教训） |
 | 选项截断/缺单位 | validate R7/R8/R9 → MedFix 修复，禁止暴力截断（batch014 教训） |
 | Bloom 偏差 >15% | 回退 Agent 2 按配额修正（`scripts/bloom_sampler.py`，HC-15） |

@@ -1,0 +1,28 @@
+{
+  "report_metadata": {
+    "report_id": "QC-test",
+    "batch_id": "batch045",
+    "gate_decision": "PASS_WITH_FIXES"
+  },
+  "issues": [
+    {
+      "question_id": "batch045-M01-A1-001",
+      "rule": "R13",
+      "severity": "minor",
+      "detail": "略长"
+    }
+  ],
+  "review_queue": [
+    {
+      "question_id": "batch045-M03-A1-002",
+      "reason": "待复核"
+    }
+  ],
+  "modification_instructions": [
+    {
+      "id": "MOD-001",
+      "question_id": "batch045-M01-A1-001",
+      "instruction": "压缩选项"
+    }
+  ]
+}

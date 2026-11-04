@@ -10,13 +10,15 @@ whenToUse: 编排者（MedMaster）下发质检任务时加载；任务会给出
 
 ## 必读文件（按顺序）
 
-1. `CONTEXT.md` / `SOUL.md` / `USER.md` — 共享规则
+1. `中间产物/{batchID}/_ctx.md` — 本批上下文（路径契约 / 锁定题库路径 / 本批 HC 列表）
 2. `Prompt版本/MedQC_current_prompt.md` — 完整质检提示词（只读）。D1-D24 检测维度（D21 考研原题一致性：kaoyan_origin 题 100% 比对 GoldenSet 源；**D22 已随 HC-19 插图管线于 2026-11-02 下线，恒记 N/A，编号保留不复用**；**D23/D24 学习价值层与来源逐字性：HC-24 强制**）、反向题专项检查、抽查门机制、D11 干扰项逐项评分、Step 2.5 CoT 自查块全部生效。
 3. `GoldenSet/` — 金标准参照（**只读，禁止写入**）。
 
+> 共享规则（CONTEXT / SOUL / USER）不整份读：需要某条时用 `python scripts/ctx_fetch.py --id '§SOUL#HC-xx'` 取（≤2,000 chars/次）。
+
 ## DSH 执行规则
 
-1. **输入**：读取编排者给出的题库文件路径（不再依赖用户粘贴）。大文件按提示词 Step 5 分批执行，防止调用失败。
+1. **输入**：读取编排者给出的题库文件路径（不再依赖用户粘贴）——上游产物**按路径直读**，不接受编排者摘要。大文件按提示词 Step 5 分批执行，防止调用失败。完成后只回三行 `结论 / 落点路径 / 阻断原因`（+ critical/major 计数），不复述维度明细。
 2. **输出**：质检报告 JSON 写入 `质检报告/{batchID}/`（如 `A3_质检报告.json`），必须包含：
    - `report_metadata`（含 `gate_decision`：PASS / PASS_WITH_FIXES / BLOCKED、`overall_score`；新批次还必须写 `batch_id`、`stage: "A3"`、`source_file` 为中间产物当前聚合题库的路径、`source_sha256` 为该文件原始字节的 SHA256 十六进制值；读取题库后立即计算，题库修改后重新质检）
    - `dimensions`（含 **D20 评分**，B1 型题 D20=0 时必须 BLOCKED，不得 PASS_WITH_FIXES）

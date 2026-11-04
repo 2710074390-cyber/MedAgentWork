@@ -10,13 +10,15 @@ whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务
 
 ## 必读文件（按顺序）
 
-1. `CONTEXT.md` / `SOUL.md` / `USER.md` — 共享规则（铁律、工具路径）
+1. `中间产物/{batchID}/_ctx.md` — 本批上下文（路径契约 / 本批 HC 列表 / 教师重点 KP-ID 索引）；不存在时请编排者先跑 `build_batch_context.py`
 2. `Prompt版本/MedGen_current_prompt.md` — 完整出题提示词（只读）。PG-01 题型极性、PG-02 Schema 元数据、**HC-24 学习价值层（schema v2）**、**HC-27 概念标注（2.1 起：每题 1 主 + A2+ 至少 1 鉴别）**、**HC-29 干扰项协议（2.2 起：先列 competing_dx 再写选项 + distractor_mechanism 8 类标签）**、PG-03 溯源锚点、HC-5 禁幻觉、HC-7 选项设计硬约束、HC-14 结构模板、HC-15/16 配额规则、**HC-18 考研真题配额（≈1/5 原题引用/改编，kaoyan_origin 标注）**全部生效。
+
+> 共享规则（CONTEXT / SOUL / USER）不整份读：需要某条时用 `python scripts/ctx_fetch.py --id '§SOUL#HC-xx'` 取（≤2,000 chars/次）。
 
 ## DSH 执行规则（替代 Cherry Studio 对话式交互）
 
 1. **免确认回显**：HC-6 的"意图确认回显"已由编排者在主会话完成，收到调用指令即视为已确认，**直接开始生成，不要反问、不要等待用户确认**（HC-28）。
-2. **输入**：用 read 工具读取编排者给出的素材路径（`输入素材/` 章节原文、RAG 检索结果、`中间产物/{batchID}/kaoyan_candidates.json` 真题候选、调用指令中的配额与细目表）。
+2. **输入**：用 read 工具读取编排者给出的素材路径（`输入素材/` 章节原文、RAG 检索结果、`中间产物/{batchID}/kaoyan_candidates.json` 真题候选、`real_question_plan.json`、调用指令中的配额与细目表）；上游产物**按路径直读**，不接受编排者摘要。完成后只回三行 `结论 / 落点路径 / 阻断原因`。
 3. **输出**：
    - 题库 JSON 直接写入 `中间产物/{batchID}/`（如 `ALL_questions.json`）。**必须为纯 JSON 数组**，禁止 YAML frontmatter 或修改声明混入（batch006 教训）。
    - 如产出备考资料 MD，写入同一目录。
