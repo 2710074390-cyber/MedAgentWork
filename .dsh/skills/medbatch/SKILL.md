@@ -160,6 +160,7 @@ python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
 |---|---|
 | 门禁 BLOCKED | 读 gate 的 reason → 回退对应 Agent 修复 → 重新运行门禁 |
 | 门禁连续 BLOCKED 同一失败原因 / 补丁反复改同样字段 | 跑 `python scripts/batch_watchdog.py --batch {batchID}`：判「无进展」时按 `actions` 隔离该题 + 入 `review_queue` + 继续其余题（HC-28），只有反复无进展才升级人工 |
+| 报 `CHAIN-*` / `STAGE_MISSING` / `ARTIFACT_MISMATCH`（上游没跑门禁就想往下走） | driver 的 verify-before-consume 拦住了：按提示跑 `batch_driver.py check --batch {batchID} --stage <上游>` 补上回执。**不要用 `--no-preflight` 绕过**（它会绕过防跳过机制，并把 `preflight.enabled=false` 写进证据）。回执链在 `最终产物/{batchID}/_gate_ledger.json`；事后复核用 `gate_audit.py --batch {batchID} --recheck`，单阶段验真用 `gate_verify.py --batch {batchID} --stage <阶段>` |
 | JSON 解析失败 / YAML 前置 | 要求 Agent 输出纯 JSON 数组，元数据单独 .md（batch006 教训） |
 | 选项截断/缺单位 | validate R7/R8/R9 → MedFix 修复，禁止暴力截断（batch014 教训） |
 | Bloom 偏差 >15% | 回退 Agent 2 按配额修正（`scripts/bloom_sampler.py`，HC-15） |

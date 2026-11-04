@@ -13,13 +13,16 @@
     2. 不改既有脚本退出码；per-script 映射见 EXIT_MAP；
     3. 解析失败 → unparsed[] + BLOCKED，绝不默认 PASS；
     4. --dry-run 只做存在性/可读性预检，不执行门禁、不写任何文件；
-    5. 阶段图复用 gate_check.stage_sequence / infer_product_types，不另立第二套。
+    5. 阶段图复用 gate_check.stage_sequence / infer_product_types，不另立第二套；
+    6. PASS 才写回执：回执按 chain_prev 链式绑定「产物字节哈希 + 门禁证据哈希」，下游消费前
+       先验上游回执（P0 防跳过，原语见 scripts/gate_stamp.py）。
 
 用法：
     python scripts/batch_driver.py plan  --batch batch048 [--json]
     python scripts/batch_driver.py check --batch batch048 [--stage auto|r0|r1|a2|a3|a4|lv|a5|r2|r3|final|r4]
                                          [--json-out P] [--dry-run] [--no-halt] [--no-state-write]
                                          [--timeout 300] [--fail-fast]
+                                         [--no-stamp] [--no-preflight] [--ledger P] [--base P]
     python scripts/batch_driver.py selftest [--fixture tests/fixtures/gates] [--json]
 
 退出码：0 PASS / 1 BLOCKED / 2 ERROR / 3 仅 SKIP-WARN
@@ -51,10 +54,14 @@ if "pytest" not in sys.modules:
             pass
 
 import gate_check as gc          # noqa: E402  阶段图与产品类型唯一来源
+import gate_stamp as gs          # noqa: E402  门禁回执链（P0 防跳过）
 import workflow_state as ws      # noqa: E402
 
 DEFAULT_TIMEOUT = 300
 FIXTURE_DIR = BASE / "tests" / "fixtures" / "gates"
+DRIVER_VERSION = "batch_driver/2026-11-04"
+# 必须构成回执链的阶段：交付物阶段。r* 是过程门禁（报告在 reports/ 不入库），不强制。
+HARD_CHAIN_STAGES = ("a2", "a3", "a4", "lv", "a5", "final")
 
 # ── per-script 退出码映射（不改既有脚本，只在这里解释）────────────
 # 值含义：PASS / WARN / FAIL / SKIP / ERROR
@@ -84,6 +91,8 @@ FIX_HINTS = {
     "UNPARSABLE": "人工: 报告不可解析，先检查文件编码与 JSON 完整性",
     "MISSING": "上游: 先产出该阶段产物再跑门禁",
     "DRIVER": "编排者: driver 环境/参数问题，先看 unparsed[].raw",
+    "CHAIN": "编排者: 上游缺回执/回执与产物不符 → 不要跳过，先跑 batch_driver.py check --stage <上游阶段>",
+    "STAMP": "编排者: 回执写不进去 → 检查 最终产物/<batch>/ 可写，再重跑本 boundary",
 }
 
 
@@ -259,6 +268,126 @@ def _paths(batch_id: str):
         "a4_log": BASE / "最终产物" / batch_id / "AGENT4_追溯日志.json",
         "plan": BASE / "中间产物" / batch_id / "real_question_plan.json",
     }
+
+
+# ── 回执链：让「跳过门禁」在下游硬阻断（P0）──────────────
+def _gate_report_paths(results):
+    """从门禁结果里收集可入库的证据文件（reports/ 下的报告）；库存的才算数。"""
+    out = []
+    for r in results:
+        rep = (r.get("evidence") or {}).get("report")
+        if not rep:
+            continue
+        p = Path(rep) if Path(str(rep)).is_absolute() else BASE / rep
+        if p.is_file() and str(p) not in out:
+            out.append(str(p))
+    return out
+
+
+def boundary_artifacts(ctx, boundary):
+    """该 boundary 的交付物（写回执时按字节绑定）；a5 是复习资料 md。"""
+    if boundary == "a5":
+        md = _find_review_md(ctx.data)
+        return [md] if md else []
+    return gs.expected_artifacts(ctx.batch, boundary, ctx.base)
+
+
+def preflight(ctx, boundary, plan):
+    """verify-before-consume：消费上游产物前，先验上游阶段回执。
+
+    返回 (results, evidence)。只要有一条前置回执不成立，调用方就不再执行 boundary
+    ——「跳过 a3 直接跑 a4」在下游就是硬阻断，不指望 Agent 自觉。
+    """
+    evidence = {}
+    if ctx.dry_run or not ctx.preflight or boundary not in plan:
+        return [], evidence
+    preds = [b for b in plan[: plan.index(boundary)] if b in HARD_CHAIN_STAGES]
+    if not preds:
+        return [], evidence
+
+    ledger, err = gs.load_ledger(ctx.batch, ctx.base, ctx.ledger)
+    if err:
+        return [_result("CHAIN", "FAIL", code="LEDGER_CORRUPT", owner="orchestrator",
+                        fix_hint=FIX_HINTS["CHAIN"], evidence={"detail": err})], evidence
+    if ledger is None:
+        if not gs.required_for(ctx.batch):
+            evidence["chain_legacy"] = True
+            print(f"ℹ️  {ctx.batch} 属历史批次（<{gs.STAMP_REQUIRED_MIN_BATCH:03d}），不强制回执链")
+            return [], evidence
+        # 回执链首次建立：为「已经存在产物」的上游阶段补录，链才能继续往下走。
+        # 补录 = provenance=backfill，audit 会标 WARN——不假装它们验过门禁。
+        ledger = gs.new_ledger(ctx.batch)
+        backfilled = []
+        for p in preds:
+            arts = boundary_artifacts(ctx, p)
+            if not arts:
+                continue
+            gs.append_stamp(ledger, p, artifacts=arts, gates=[], provenance="backfill",
+                            note="P0 上线前已存在的阶段，补录；门禁当时是否真跑过无法证明",
+                            driver_version=DRIVER_VERSION)
+            backfilled.append(p)
+        if backfilled:
+            gs.write_ledger(ledger, ctx.base, ctx.ledger)
+            evidence["chain_backfill"] = backfilled
+            print(f"⚠️  回执链首次建立：补录 {', '.join(backfilled)}（provenance=backfill）")
+        # 补录不了的阶段（产物已不存在）= 无法证明门禁执行过 → 仍然阻断，别把补录当免责
+        missing = [p for p in preds if gs.find_stamp(ledger, p) is None]
+        if missing:
+            return [_result(f"CHAIN-{p}", "FAIL", code="STAGE_MISSING",
+                            owner=owner_for_gate(f"GATE-{p.upper()}"), fix_hint=FIX_HINTS["CHAIN"],
+                            evidence={"stage": p,
+                                      "detail": f"{p} 阶段没有可补录的产物，无法证明门禁执行过"})
+                    for p in missing], evidence
+        return [_result("CHAIN", "PASS", code="CHAIN_BACKFILL",
+                        evidence={"backfill": backfilled})], evidence
+
+    rows, backfill = [], []
+    for p in preds:
+        rep = gs.verify(ctx.batch, p, base=ctx.base, path=ctx.ledger)
+        if rep["verdict"] == "FAIL":
+            detail = "; ".join(i["detail"] for i in rep["issues"]) or rep["code"]
+            rows.append(_result(f"CHAIN-{p}", "FAIL", code=rep["code"],
+                                owner=owner_for_gate(f"GATE-{p.upper()}"),
+                                fix_hint=FIX_HINTS["CHAIN"],
+                                evidence={"stage": p, "detail": detail,
+                                          "next": f"batch_driver.py check --batch {ctx.batch} --stage {p}"}))
+        elif rep["verdict"] == "WARN":
+            backfill.append(p)
+            rows.append(_result(f"CHAIN-{p}", "PASS", code="CHAIN_BACKFILL",
+                                evidence={"stage": p, "seq": rep.get("stamp_seq")}))
+        else:
+            rows.append(_result(f"CHAIN-{p}", "PASS",
+                                evidence={"stage": p, "seq": rep.get("stamp_seq")}))
+    if backfill:
+        evidence["chain_backfill"] = backfill
+    return rows, evidence
+
+
+def stamp_pass(ctx, boundary, results):
+    """PASS 时把「本阶段产物 + 门禁证据」写入回执链。返回 (stamp_info, error)。"""
+    if ctx.dry_run or not ctx.stamp:
+        return None, None
+    if not gs.required_for(ctx.batch):
+        return {"skipped": f"legacy_batch<{gs.STAMP_REQUIRED_MIN_BATCH:03d}"}, None
+    try:
+        ledger, err = gs.load_ledger(ctx.batch, ctx.base, ctx.ledger)
+        if err:
+            return None, err
+        if ledger is None:
+            ledger = gs.new_ledger(ctx.batch)
+        st = gs.append_stamp(
+            ledger, boundary,
+            artifacts=boundary_artifacts(ctx, boundary),
+            gate_reports=_gate_report_paths(results),
+            gates=[r["gate"] for r in results if r["status"] == "PASS"],
+            driver_version=DRIVER_VERSION,
+        )
+        path = gs.write_ledger(ledger, ctx.base, ctx.ledger)
+        return {"path": gs.rel(path, ctx.base), "seq": st["seq"], "stage": boundary,
+                "artifacts": [a["path"] for a in st["artifacts"]],
+                "gate_reports": len(st["gate_reports"]), "head": ledger["head"]}, None
+    except Exception as exc:  # 回执写不进去 = 证据缺失，必须显式失败，不能静默 PASS
+        return None, f"{type(exc).__name__}: {exc}"
 
 
 def _find_keypoints(batch_id: str, batch_data: dict):
@@ -465,6 +594,10 @@ class Ctx:
         self.write_state = not bool(args.no_state_write)
         self.set_halt = not bool(args.no_halt)
         self.timeout = int(args.timeout)
+        self.stamp = not bool(getattr(args, "no_stamp", False))
+        self.preflight = not bool(getattr(args, "no_preflight", False))
+        self.base = Path(getattr(args, "base", None) or BASE)
+        self.ledger = getattr(args, "ledger", None)
         self.tmp = Path(tempfile.mkdtemp(prefix="batch_driver_"))
         self.started = time.time()
 
@@ -824,14 +957,27 @@ def cmd_check(args):
         return 2
 
     ctx = Ctx(args.batch, data, args)
+    extra = {"dry_run": ctx.dry_run}
     try:
-        results = run_boundary(ctx, boundary)
+        # 先验上游回执：不成立就不跑本 boundary（跳过门禁 → 下游硬阻断）
+        results, chain_ev = preflight(ctx, boundary, plan)
+        extra.update(chain_ev)
+        extra["preflight"] = {"enabled": ctx.preflight, "rows": len(results)}
+        if not any(r["status"] == "FAIL" for r in results):
+            results += run_boundary(ctx, boundary)
     finally:
         ctx.close()
+    extra["duration_ms"] = round((time.time() - started) * 1000, 1)
     verdict, exit_code = aggregate(results)
-    payload = build_payload(args.batch, boundary, plan, types, results, verdict, exit_code,
-                            {"duration_ms": round((time.time() - started) * 1000, 1),
-                             "dry_run": ctx.dry_run})
+    if verdict == "PASS":
+        stamp, err = stamp_pass(ctx, boundary, results)
+        if err:
+            results.append(_result("STAMP", "FAIL", code="STAMP_WRITE_FAILED", owner="orchestrator",
+                                   fix_hint=FIX_HINTS["CHAIN"], raw=err))
+            verdict, exit_code = aggregate(results)
+        elif stamp:
+            extra["stamp"] = stamp
+    payload = build_payload(args.batch, boundary, plan, types, results, verdict, exit_code, extra)
     _emit(payload, args.json_out)
     _print_summary(payload)
     return exit_code
@@ -861,6 +1007,12 @@ def _print_summary(payload):
         print(f"  ➡️  next: 修复后重跑 boundary {payload['next_stage']}")
     if payload["verdict"] == "BLOCKED":
         print("  🩺 若同一失败原因重复出现，跑 scripts/batch_watchdog.py --batch " + payload["batch"] + " 判进展")
+    ev = payload.get("evidence") or {}
+    st = ev.get("stamp") or {}
+    if st.get("path"):
+        print(f"  🔖 回执 seq={st['seq']} → {st['path']}（绑定产物 {len(st.get('artifacts') or [])} 个）")
+    if ev.get("chain_backfill"):
+        print(f"  ⚠️  回执补录 {', '.join(ev['chain_backfill'])}（provenance=backfill，audit 会标 WARN）")
 
 
 # ── selftest：归一化器与解析器的固定夹具回归 ──────────────
@@ -959,6 +1111,12 @@ def build_parser():
     p_check.add_argument("--no-state-write", action="store_true")
     p_check.add_argument("--timeout", type=int, default=DEFAULT_TIMEOUT)
     p_check.add_argument("--fail-fast", action="store_true", default=True)
+    p_check.add_argument("--no-stamp", action="store_true",
+                         help="不写门禁回执（仅调试用；会让下游无法验证本次执行）")
+    p_check.add_argument("--no-preflight", action="store_true",
+                         help="跳过上游回执验真（绕过防跳过机制，风险自负，payload 会留痕）")
+    p_check.add_argument("--ledger", default=None, help="回执链路径覆盖（测试用；默认最终产物/<batch>/_gate_ledger.json）")
+    p_check.add_argument("--base", default=None, help="仓库根覆盖（仅用于回执链解析，测试用）")
 
     p_self = sub.add_parser("selftest", help="判定器自测（固定夹具）")
     p_self.add_argument("--fixture", default=str(FIXTURE_DIR.relative_to(BASE)))

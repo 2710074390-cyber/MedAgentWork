@@ -86,3 +86,36 @@ jobs:
       - name: Check imports（告警，不阻断）
         continue-on-error: true
         run: ruff check scripts/ --select I --output-format=github
+
+  # P0-C（2026-11-05）：中央兜底审计。只审计「本次改动涉及」的批次，强制回执链 +
+  # 重跑确定性门禁（scripts/gate_audit.py）。checkout 的 fetch-depth: 2 是为了让
+  # --changed-only 能拿到 HEAD~1 基线；基线不可解时脚本自动回退到「所有已有回执链的
+  # 批次」并在输出标注 FALLBACK。本 job 与上面的 test / lint 完全独立，不互相影响。
+  batch-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Audit changed batches（回执链 + 确定性门禁复检）
+        run: |
+          python scripts/gate_audit.py --changed-only --recheck --json-out reports/gate/audit_ci.json
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-audit-report
+          path: reports/gate/audit_ci.json
+          if-no-files-found: ignore

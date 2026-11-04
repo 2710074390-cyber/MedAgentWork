@@ -22,6 +22,22 @@
 | SA-C-4 | DONE-STATIC | MedMaster | SA-6 MedMaster 起步读入实测（≤32k tok） | `reports/implementation/` | AC-SA6-06 | |
 | SA-D-1 | DONE | MedMaster | SA-7 `qbank.py subselect` | `scripts/qbank.py`、`tests/test_qbank.py` | AC-SA7-01..03 | 阶段 C |
 
+## 防跳过门禁（P0 · 2026-11-05）
+
+> 问题：别的 Agent 会「跳过门禁直接写产物」。方案见 `reports/P0_防跳过门禁_实施记录_20261105.md`。
+> AC 定义：AC-P0-01..10（同上文档 §4）。
+
+| ID | 状态 | 认领 | 任务 | 落点 | 验收 | 提交 |
+|---|---|---|---|---|---|---|
+| SA-P0-1 | DONE | MedMaster | 回执链原语（产物字节绑定 + chain_prev + 原子写） | `scripts/gate_stamp.py`、`tests/test_gate_bypass.py` | AC-P0-01..03 | 2026-11-05 |
+| SA-P0-2 | DONE | MedMaster | driver 接线：PASS 写回执 + preflight 验全部前置阶段 | `scripts/batch_driver.py` | AC-P0-04..06 | 2026-11-05 |
+| SA-P0-3 | DONE | verify-builder | 消费方验真 CLI（exit 0/1/2 + 「下一步命令」） | `scripts/gate_verify.py`、`tests/test_gate_verify.py` | AC-P0-07 | 2026-11-05 |
+| SA-P0-4 | DONE | audit-builder | 中央审计 + STAGE_MISSING 覆盖检查 + CI `batch-gate` job | `scripts/gate_audit.py`、`.github/workflows/ci.yml`、`tests/test_gate_audit.py` | AC-P0-08..09 | 2026-11-05 |
+| SA-P1-1 | TODO | — | 4 个 worker SKILL 第一步改为「先 `gate_verify` 上游回执」 | `{medqc,medfix,medgen,medreview}/SKILL.md` | AC-P1-01 | |
+| SA-P1-2 | TODO | — | 发布前追加 `gate_audit --changed-only --recheck`；分支保护要求 `batch-gate` 必绿 | `.github/workflows/deploy.yml`、仓库设置 | AC-P1-02 | |
+| SA-P1-3 | TODO | — | 签收批次的「产物 + 回执链」入库策略（否则 CI 只能看已提交部分） | 入库边界决策 | AC-P1-03 | |
+| SA-P2-1 | TODO | — | hooks 层拦截（仅可控宿主：DSH / Claude Code PreToolUse 拦 `最终产物/` 写入） | — | AC-P2-01 | |
+
 ## 条件项（触发后再认领）
 
 | ID | 触发条件 | 任务 |
@@ -40,5 +56,5 @@
 
 | ID | 状态 | 任务 | 说明 |
 |---|---|---|---|
-| SA-B-F1 | TODO | 修 `gate_check.stage_sequence`：`== '2.0'` → `float(version) >= 2.0` | schema 2.1/2.2 批次 `--stage auto` 会漏 LV；driver 已补插并注释 |
+| SA-B-F1 | DONE | 修 `gate_check.stage_sequence`：`== '2.0'` → `float(version) >= 2.0` | 已修（2026-11-04，回归见 `tests/test_batch_driver.py::test_stage_sequence_lv_for_schema_2x`） |
 | SA-B-F2 | TODO | `verify_produce_rules` / `fact_check` / `check_keypoint_coverage` 加可选 `--json-out` | 目前 driver 用退出码映射 + 人读兜底（解析失败进 unparsed） |
