@@ -44,7 +44,7 @@
 |---|---|---|---|---|---|---|
 | SA-P1-1R | DONE | Lead | medgen 去掉 r0/r1 前置（advisory 无回执→会卡死）；gate_verify 加阶段适用性（NOT_APPLICABLE exit 0）；batch_artifacts 证据改回执驱动 + 追溯日志后缀匹配；删 4 个重复用例 | `scripts/gate_verify.py`、`scripts/batch_artifacts.py`、`gate_verify` 测试、`medgen/medreview SKILL` | 633 passed / 5 skipped | 2026-11-05 |
 | SA-P1-4 | DONE | Lead | 已启用 main 分支保护：required check=`batch-gate`、`enforce_admins=true`、禁 force push/删除（2026-11-05，`gh api` 设置；实证 027bb37 上 batch-gate=success） | GitHub 仓库设置 | 直推 main 现被拒，见 AGENTS.md §5 | 2026-11-05 |
-| SA-P1-5 | TODO | — | 宿主 skill 路径不互通（`.dsh/skills/` vs `.workbuddy/skills/`）：AGENTS.md 已补路由；若长期在 WorkBuddy 跑批次，需决定镜像方案（复制/脚本同步） | — | AC-P1-05 | |
+| SA-P1-5 | DONE | Lead | 三宿主适配：`scripts/host_bootstrap.py`（check/install/uninstall）+ Trae 项目规则 + WorkBuddy 用户级技能桩（sha256 防漂移）；AGENTS.md §0 自检 | `scripts/host_bootstrap.py`、`.trae/rules/`、`tests/test_host_bootstrap.py` | AC-H-01..07 | 2026-11-05 |
 | SA-P1-6 | DONE | Lead | `--no-verify` 绕过本地钩子的问题已由 SA-P1-4（分支保护要求 batch-gate）闭环：即使跳过本地钩子，PR 上的 batch-gate 仍会判红 | 仓库设置 | 见 SA-P1-4 | 2026-11-05 |
 
 ### 分支保护：临时解除 / 恢复（紧急直推用，事后必须恢复）

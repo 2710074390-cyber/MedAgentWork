@@ -109,7 +109,10 @@ Thumbs.db
 
 # ── 本地工具产物（Trae / WorkBuddy 生成，仅本机有效，不入库）──
 .trae-html-share-packages/
-.workbuddy/
+# WorkBuddy 会往 .workbuddy/ 写 memory / applications.yaml（本地状态，不入库）；
+# 但 .workbuddy/skills/ 是我们生成的三宿主入口桩（见 scripts/host_bootstrap.py），必须入库。
+.workbuddy/*
+!.workbuddy/skills/
 
 # Agent 本地记忆与渲染期临时产物（不入库、不上站）
 .workbuddy-ai/

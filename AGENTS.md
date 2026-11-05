@@ -4,6 +4,27 @@
 > 它不定义业务规则，只做两件事：告诉你规则在哪，告诉你哪些红线是**脚本判定**的。
 > 规则原文真源是 `SOUL.md` 的 `HC-*`；本文件只做路由，不新增规则。
 
+## 0. 宿主自检（DSH / WorkBuddy / Trae 三通用）
+
+开工第一条命令：
+
+```bash
+python scripts/host_bootstrap.py check     # exit 0 = 三个宿主入口都就绪
+```
+
+缺入口 → `python scripts/host_bootstrap.py install`（幂等；只写**路由桩**，不复制规则正文）。
+默认装**项目级**（Trae 规则 + WorkBuddy 项目技能，随仓库入库，换机器零步骤）；想同时装用户级 WorkBuddy 技能就加 `--scope both`。
+源文件（`AGENTS.md` / `.dsh/skills/*/SKILL.md`）改过而没重生成 → `check` 判 `STALE`，重跑 install 即可。
+
+| 宿主 | 自动加载什么 | 入口从哪来 |
+|---|---|---|
+| **DSH**（DeepSeek Harness） | 仓库根 `AGENTS.md` + `.dsh/skills/<name>/SKILL.md` | 原生，无需生成 |
+| **WorkBuddy**（腾讯） | 项目级 `.workbuddy/skills/<name>/SKILL.md`（或用户级 `~/.workbuddy/skills/`） | 本脚本生成（项目级入库；`--scope both` 追加用户级） |
+| **Trae**（字节） | 项目级 `.trae/rules/*.md`（`alwaysApply: true`） | 本脚本生成（项目级，随仓库入库） |
+
+三宿主执行的是**同一套脚本门禁**（`batch_driver` / `gate_stamp` / `gate_audit`）与同一个 git 钩子，
+所以「跳过门禁」在任何宿主上都会在 downstream / 提交 / CI 处被拦——入口只负责让 Agent 找到规则。
+
 ## 1. 跑批次之前读什么
 
 按顺序读（都是文件，直接 `read` 即可，不需要特定宿主的 skill 加载器）：
