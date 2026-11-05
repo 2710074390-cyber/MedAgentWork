@@ -64,7 +64,22 @@ python scripts/gate_audit.py --staged --require-tracked
 - 不要把未经 `batch_artifacts.py check` 的批次产物直接 commit。
 - 不要修改 `archive/`（已归档批次只读）、`GoldenSet/`（只允许用户手动移入）。
 
-## 5. 规则冲突怎么办
+## 5. 怎么推到 main（2026-11-05 起 branch protection 已启用）
+
+main 受保护：required check = `batch-gate`，`enforce_admins=true` —— **直接 `git push origin main` 会被拒（管理员也一样）**。
+
+正确姿势（走 PR，让 CI 在合并前跑一遍）：
+
+```bash
+git checkout -b <branch> && git push -u origin <branch>
+gh pr create --fill
+gh pr merge --squash --delete-branch        # 等 batch-gate 绿再合
+```
+
+紧急直推（需临时解除保护、事后立即恢复）的命令见 `memory/TODO_ACTIVE.md` 的 SA-P1-4。
+**不要用 `--admin` 强合、也不要在 batch-gate 红时合**：红 = 批次证据有问题，先修批次再推。
+
+## 6. 规则冲突怎么办
 
 `SOUL.md` 的 `HC-*` 原文 > `CONTEXT.md` > SKILL > 本文件。
 冲突时按左边的执行，并把冲突写进 `memory/FACT.md`，不要自行折中。
