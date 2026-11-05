@@ -50,6 +50,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+from datetime import datetime
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
@@ -60,7 +61,7 @@ for _p in (str(BASE), str(SCRIPTS)):
 
 import gate_stamp as gs  # noqa: E402  回执链唯一事实来源（记录 + 验真原语）
 
-VERDICT_ICON = {"PASS": "✅", "WARN": "⚠️", "FAIL": "🛑"}
+VERDICT_ICON = {"PASS": "✅", "WARN": "⚠️", "FAIL": "🛑", "SKIP": "⏭️"}
 CHECK_ICON = {"PASS": "✓", "WARN": "!", "FAIL": "✗", "SKIP": "-"}
 
 
@@ -110,6 +111,9 @@ def fix_hint_for(code: str, batch: str, stage: str, strict: bool = False):
     if code == "LEDGER_MISSING":
         return ("该批次没有回执链（门禁执行未被记录，下游无法验真）："
                 "先跑上游阶段生成回执，再重跑本阶段", driver_cmd(batch, upstream))
+    if code == "LEGACY_UNSTAMPED":
+        return (f"历史批次（<{gs.STAMP_REQUIRED_MIN_BATCH:03d}）不强制回执链，"
+                "缺链/缺阶段属正常；新批次不得据此放宽（--strict 仍判失败）", None)
     if code == "LEDGER_CORRUPT":
         return (f"回执链 JSON 无法解析：检查 最终产物/{batch}/_gate_ledger.json 的编码/完整性"
                 "（可从版本库恢复，禁止手工编辑）", audit_cmd(batch))
@@ -136,6 +140,32 @@ def fix_hint_for(code: str, batch: str, stage: str, strict: bool = False):
     return ("回执验真未通过：按 checks / issues 里的失败项修复后重跑该阶段门禁", rerun)
 
 
+# ── 阶段适用性：不属于本批计划就别要求回执 ─────────────
+def stage_applicable(batch: str, stage: str, base=BASE):
+    """该阶段是否在本批计划的阶段矩阵内。返回 (applicable, plan, note)。
+
+    为什么必须有：worker 的前置验真不能要求「本批根本不存在的阶段」。例如纯复习资料
+    批次没有 a2–a4/lv，押题卷批次的阶段矩阵也不同；否则 worker 会被一个永不存在的
+    回执卡死。判据唯一来源是 batch_driver.plan_boundaries（复用阶段图，不另立一套）。
+
+    applicable=None 表示「无法判断」（批次未登记 / 读不到 workflow_state）——此时
+    不做适用性判断，交回原有验真流程，避免把「查不到」误判成「不适用」。
+    """
+    try:
+        import workflow_state as ws
+        import batch_driver as bd
+        state, err = ws.load_state(base)
+        if err or not isinstance(state, dict):
+            return None, None, f"读不到 workflow_state：{err}"
+        data = state.get(batch)
+        if not isinstance(data, dict):
+            return None, None, f"{batch} 未在 workflow_state 登记"
+        plan, _types = bd.plan_boundaries(batch, data)
+        return (stage in plan), plan, None
+    except Exception as exc:  # 计划推导失败不阻断验真主流程
+        return None, None, f"阶段矩阵不可用：{type(exc).__name__}: {exc}"
+
+
 # ── 核心：委托 gate_stamp.verify + 覆盖校验分支选择 ──────
 def verify_stage(batch: str, stage: str, base=BASE, ledger=None, artifacts=(), strict=False) -> dict:
     """验真一个阶段，返回可直接序列化的完整报告（不写任何文件）。
@@ -146,6 +176,22 @@ def verify_stage(batch: str, stage: str, base=BASE, ledger=None, artifacts=(), s
     - 该阶段本无预期产物（a5/r* 等）或产物均不存在：覆盖校验 SKIP，不判失败。
     """
     base = Path(base)
+    applicable, plan, why = stage_applicable(batch, stage, base)
+    if applicable is False:
+        # 阶段不属于本批：要求回执只会把 worker 卡死。exit 0，但结论写清「不适用」。
+        return {
+            "batch": batch, "stage": stage, "verdict": "SKIP", "code": "NOT_APPLICABLE",
+            "ledger": None, "stamp_seq": None,
+            "checks": [{"id": "plan", "status": "SKIP",
+                        "detail": f"{stage} 不在本批计划阶段矩阵内（plan={plan}）"}],
+            "issues": [], "checked_at": datetime.now().isoformat(timespec="seconds"),
+            "base": str(base), "strict": bool(strict),
+            "coverage_mode": "skip", "required_artifacts": [],
+            "coverage": {"mode": "skip", "status": "SKIP",
+                         "detail": "阶段不在本批计划内，覆盖校验不适用"},
+            "fix_hint": None, "next_command": None, "exit_code": 0,
+        }
+
     ledger_arg = normalize_path(ledger, base) if ledger else None
     explicit = list(artifacts or ())
 
@@ -183,6 +229,24 @@ def verify_stage(batch: str, stage: str, base=BASE, ledger=None, artifacts=(), s
         "required_artifacts": [gs.rel(p, base) for p in required],
         "coverage": {"mode": mode, "status": coverage["status"], "detail": coverage["detail"]},
     })
+
+    # 历史批次（< STAMP_REQUIRED_MIN_BATCH）本就不强制回执链：缺链/缺阶段降级为
+    # WARN + LEGACY_UNSTAMPED（非 --strict 时 exit 0），否则 worker 在 047 及更早
+    # 批次上会被误卡。只降级「缺失类」——有链但被改过（ARTIFACT_MISMATCH /
+    # CHAIN_BROKEN）仍判失败，不给出「历史批次」这个口子。
+    if (not gs.required_for(batch) and not strict
+            and report["code"] in ("LEDGER_MISSING", "STAGE_MISSING")):
+        for c in report["checks"]:
+            if c["status"] == "FAIL":
+                c["status"] = "SKIP"
+                c["detail"] = f"[历史批次豁免] {c['detail']}"
+        report["verdict"] = "WARN"
+        report["code"] = "LEGACY_UNSTAMPED"
+        report["checks"].append({
+            "id": "legacy", "status": "WARN",
+            "detail": f"批次号 < {gs.STAMP_REQUIRED_MIN_BATCH:03d}，回执链不强制；"
+                      "新批次不适用此豁免",
+        })
 
     report["fix_hint"], report["next_command"] = (None, None)
     if report["verdict"] in ("FAIL", "WARN"):

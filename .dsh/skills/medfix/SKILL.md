@@ -15,6 +15,19 @@ whenToUse: 编排者（MedMaster）下发修复任务时加载；任务会给出
 
 > 共享规则（CONTEXT / SOUL / USER）不整份读：需要某条时用 `python scripts/ctx_fetch.py --id '§SOUL#HC-xx'` 取（≤2,000 chars/次）。
 
+## 0. 先验上游回执（P0 防跳过 · batch048 起强制）
+
+**在读取题库 / 质检报告之前**先用验真器确认 A3 门禁真的跑过（回执链 `最终产物/{batchID}/_gate_ledger.json`）：
+
+```bash
+python scripts/gate_verify.py --batch {batchID} --stage a3 --quiet   # exit 0 才继续
+```
+
+- `exit 1`（`LEDGER_MISSING` / `STAGE_MISSING` / `ARTIFACT_MISMATCH` / `CHAIN_BROKEN`）→ **不读、不修复、不写 `最终产物/`**，按输出里的「下一步命令」回报编排者：`BLOCKED / — / 上游 a3 回执不成立：{code}`。
+- `exit 0` 才读两个输入文件；报告里注明「上游 a3 回执 seq=N」。`WARN LEGACY_UNSTAMPED`（批次号 < 048 的自动豁免）可直接继续，但新批次不会得到这个豁免。
+- 只读了 A3 报告还不够：回执同时绑定 `source_sha256`，报告改动后回执即失效（`ARTIFACT_MISMATCH`）。
+- 回执只能由 `batch_driver.py` 在门禁 PASS 后写入。**不要手写 `_gate_ledger.json`**：伪造会被 `gate_audit.py --recheck` 判红。
+
 ## DSH 执行规则
 
 1. **输入**：读取编排者给出的两个文件路径（题库 + 质检报告）——上游产物**按路径直读**，不接受编排者摘要；不读 A3 报告 `dimensions`/`issues` 全量散文（只读结构化指令与 `review_queue`）。仅执行质检报告中的结构化指令，Precondition 不符则跳过该 patch 并写入复核队列，**继续其余 patch**，不得整批停止（HC-28；不可自行扩大修改范围）。完成只回三行 `结论 / 落点路径 / 阻断原因`。

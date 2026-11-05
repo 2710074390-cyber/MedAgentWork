@@ -15,6 +15,20 @@ whenToUse: 编排者（MedMaster）下发复习资料任务时加载；任务提
 
 > 共享规则（CONTEXT / SOUL / USER）不整份读：需要某条时用 `python scripts/ctx_fetch.py --id '§SOUL#HC-xx'` 取（≤2,000 chars/次）。
 
+## 0. 先验上游回执（P0 防跳过 · batch048 起强制）
+
+**在读取题库 / 教师重点之前**先确认修复与学习价值两道门禁真的跑过（回执链 `最终产物/{batchID}/_gate_ledger.json`）：
+
+```bash
+python scripts/gate_verify.py --batch {batchID} --stage a4 --quiet   # 修复后门禁
+python scripts/gate_verify.py --batch {batchID} --stage lv --quiet   # HC-24 学习价值
+```
+
+- 任一条 `exit 1`（`LEDGER_MISSING` / `STAGE_MISSING` / `ARTIFACT_MISMATCH` / `CHAIN_BROKEN`）→ **不生成、不写复习资料**，按输出里的「下一步命令」回报编排者：`BLOCKED / — / 上游 {stage} 回执不成立：{code}`。
+- 两条都 `exit 0` 才开始生成；报告里注明「上游回执 a4=seq{n} / lv=seq{m}」。`WARN LEGACY_UNSTAMPED`（批次号 < 048 的自动豁免）可直接继续，但新批次不会得到这个豁免。
+- 阶段是否属于本批由验真器**机械判定**：不属于本批计划矩阵的阶段返回 `SKIP NOT_APPLICABLE`（exit 0），不需要你自己按 `product_types` 推断（纯复习资料批次就没有 a2–a4/lv）。
+- 回执只能由 `batch_driver.py` 在门禁 PASS 后写入。**不要手写 `_gate_ledger.json`**：伪造会被 `gate_audit.py --recheck` 判红。
+
 ## 执行规则
 
 - 读取实际输入（**按路径直读**编排者给出的素材，不接受主会话摘要）；课程安排按周/讲组织。教师重点是范围契约，逐条建覆盖矩阵，按输入锚定清单编号设置 `📌 重点原文（第X条）：` 独立落点，逐字保留关键句及全部数值、时间窗、界值、并列和禁止结构。无教师重点标记覆盖检查 SKIPPED。完成后只回三行 `结论 / 落点路径 / 阻断原因`（+ 覆盖与详细度两门禁的真实结论）。

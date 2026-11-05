@@ -278,6 +278,11 @@ def main() -> int:
     print('    --model "DeepSeek-V4.1-Flash" --prompt-version "MedFix_current_prompt"')
     print(f'  python gate_check.py --batch {batch_id} --stage agent4_done')
     print(f'  python gate_check.py --batch {batch_id} --stage final')
+    # P1-3：入库必须排在回执重建之后 —— 签收改了 FIXED 字节，回执按旧字节写的话，
+    # 提交上去就是一份「产物与回执对不上」的证据，CI 会判 ARTIFACT_MISMATCH。
+    print('\n入库（务必在回执重建后执行，否则会提交过期回执）：')
+    print(f'  python scripts/batch_artifacts.py stage --batch {batch_id}')
+    print(f'  python scripts/batch_artifacts.py check --batch {batch_id}')
     return 0
 
 

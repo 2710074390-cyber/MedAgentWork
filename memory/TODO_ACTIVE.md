@@ -33,10 +33,19 @@
 | SA-P0-2 | DONE | MedMaster | driver 接线：PASS 写回执 + preflight 验全部前置阶段 | `scripts/batch_driver.py` | AC-P0-04..06 | 2026-11-05 |
 | SA-P0-3 | DONE | verify-builder | 消费方验真 CLI（exit 0/1/2 + 「下一步命令」） | `scripts/gate_verify.py`、`tests/test_gate_verify.py` | AC-P0-07 | 2026-11-05 |
 | SA-P0-4 | DONE | audit-builder | 中央审计 + STAGE_MISSING 覆盖检查 + CI `batch-gate` job | `scripts/gate_audit.py`、`.github/workflows/ci.yml`、`tests/test_gate_audit.py` | AC-P0-08..09 | 2026-11-05 |
-| SA-P1-1 | TODO | — | 4 个 worker SKILL 第一步改为「先 `gate_verify` 上游回执」 | `{medqc,medfix,medgen,medreview}/SKILL.md` | AC-P1-01 | |
-| SA-P1-2 | TODO | — | 发布前追加 `gate_audit --changed-only --recheck`；分支保护要求 `batch-gate` 必绿 | `.github/workflows/deploy.yml`、仓库设置 | AC-P1-02 | |
-| SA-P1-3 | TODO | — | 签收批次的「产物 + 回执链」入库策略（否则 CI 只能看已提交部分） | 入库边界决策 | AC-P1-03 | |
-| SA-P2-1 | TODO | — | hooks 层拦截（仅可控宿主：DSH / Claude Code PreToolUse 拦 `最终产物/` 写入） | — | AC-P2-01 | |
+| SA-P1-1 | DONE | MedMaster | 4 个 worker SKILL 第一步改为「先 `gate_verify` 上游回执」 | `{medqc,medfix,medgen,medreview}/SKILL.md` | AC-P1-01 | 2026-11-05 |
+| SA-P1-2 | DONE-CODE | MedMaster | 发布前追加 `gate_audit --changed-only --recheck`；分支保护要求 `batch-gate` 必绿 | `.github/workflows/deploy.yml`、仓库设置 | AC-P1-02 | 2026-11-05（分支保护仍需仓库设置，非代码可改） |
+| SA-P1-3 | DONE | MedMaster | 签收批次的「产物 + 回执链」入库策略（否则 CI 只能看已提交部分） | `scripts/batch_artifacts.py`、`.github/workflows/{ci,deploy}.yml`、`AGENTS.md` | AC-P1-03 | 2026-11-05（用户裁定：历史不回填，batch048+ 强制） |
+| SA-P2-1 | DONE | MedMaster | hooks 层拦截（改走 git pre-commit + `gate_audit --staged`，宿主无关，不依赖 DSH/Claude PreToolUse） | `scripts/install_git_hooks.py`、`.pre-commit-config.yaml`、`scripts/gate_audit.py` | AC-P2-01 | 2026-11-05 |
+
+## P1/P2 复核修正（Lead，2026-11-05）
+
+| ID | 状态 | 认领 | 任务 | 落点 | 验收 | 提交 |
+|---|---|---|---|---|---|---|
+| SA-P1-1R | DONE | Lead | medgen 去掉 r0/r1 前置（advisory 无回执→会卡死）；gate_verify 加阶段适用性（NOT_APPLICABLE exit 0）；batch_artifacts 证据改回执驱动 + 追溯日志后缀匹配；删 4 个重复用例 | `scripts/gate_verify.py`、`scripts/batch_artifacts.py`、`gate_verify` 测试、`medgen/medreview SKILL` | 633 passed / 5 skipped | 2026-11-05 |
+| SA-P1-4 | TODO | — | 把 `batch-gate` 设为 required status check（GitHub 仓库设置，人工勾选，代码改不了） | Settings → Branches | 未勾选前「本地钩子+CI 红」仍需人看 | |
+| SA-P1-5 | TODO | — | 宿主 skill 路径不互通（`.dsh/skills/` vs `.workbuddy/skills/`）：AGENTS.md 已补路由；若长期在 WorkBuddy 跑批次，需决定镜像方案（复制/脚本同步） | — | AC-P1-05 | |
+| SA-P1-6 | TODO | — | `git commit --no-verify` 可绕过本地钩子（本地无解），必须在分支保护里要求 `batch-gate` 才算闭环 | 仓库设置 | 见 SA-P1-4 | |
 
 ## 条件项（触发后再认领）
 

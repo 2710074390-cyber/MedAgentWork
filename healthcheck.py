@@ -50,6 +50,9 @@ ROOT_ALLOWED = {
     # 属 docs/archive/2026-11/TODO.md 记录的 M12 漂移；README 为部署/在线入口说明，
     # requirements.txt 为依赖清单，二者均为仓库必需，非"多余文件"）。
     'README.md', 'requirements.txt',
+    # 2026-11-05：Agent 宿主无关入口（P1 防跳过）。说明规则在哪、哪些红线由脚本判定，
+    # 不承载业务规则正文，属仓库必需文件。
+    'AGENTS.md',
 }
 
 ROOT_FORBIDDEN_EXT = {'.exe', '.msi', '.log', '.dll', '.bin'}

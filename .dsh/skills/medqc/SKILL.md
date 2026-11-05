@@ -16,6 +16,19 @@ whenToUse: 编排者（MedMaster）下发质检任务时加载；任务会给出
 
 > 共享规则（CONTEXT / SOUL / USER）不整份读：需要某条时用 `python scripts/ctx_fetch.py --id '§SOUL#HC-xx'` 取（≤2,000 chars/次）。
 
+## 0. 先验上游回执（P0 防跳过 · batch048 起强制）
+
+**在读取任何上游产物之前**先用验真器确认上游门禁真的跑过（回执链 `最终产物/{batchID}/_gate_ledger.json`）：
+
+```bash
+python scripts/gate_verify.py --batch {batchID} --stage a2 --quiet   # exit 0 才继续
+```
+
+- `exit 1`（`LEDGER_MISSING` / `STAGE_MISSING` / `ARTIFACT_MISMATCH` / `CHAIN_BROKEN`）→ **不读产物、不写产物**，按输出里的「下一步命令」回报编排者：`BLOCKED / — / 上游 a2 回执不成立：{code}`。
+- `exit 0` 才读题库；报告里注明「上游 a2 回执 seq=N」。
+- 批次号 < 048 的历史批次由验真器**自动豁免**（`WARN LEGACY_UNSTAMPED`，exit 0），直接继续；新批次不会豁免，**不要拿「历史批次」当跳过理由**。
+- 回执只能由 `batch_driver.py` 在门禁 PASS 后写入。**不要手写 `_gate_ledger.json`**：伪造会被 `gate_audit.py --recheck` 判红。
+
 ## DSH 执行规则
 
 1. **输入**：读取编排者给出的题库文件路径（不再依赖用户粘贴）——上游产物**按路径直读**，不接受编排者摘要。大文件按提示词 Step 5 分批执行，防止调用失败。完成后只回三行 `结论 / 落点路径 / 阻断原因`（+ critical/major 计数），不复述维度明细。

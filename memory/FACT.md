@@ -13,6 +13,9 @@
 ## 2. 已闭环政策（不要再推翻）
 
 - **2026-11-05**：门禁回执链（自 batch048 起强制）。PASS 才写回执（`最终产物/{batch}/_gate_ledger.json`），回执把「产物字节 sha256 + 门禁证据 sha256」按 `chain_prev` 链式绑定；下游 boundary 先验上游回执（verify-before-consume），跳过阶段 → `BLOCKED`；CI `batch-gate` job 对改动批次跑 `gate_audit.py --recheck`。历史批次（≤047）不追溯、只告警。
+- **2026-11-05**：P1 消费方验真落地。worker SKILL 首节（`## 0.`）先跑 `gate_verify.py`：medqc←a2、medfix←a3、medreview←a4/lv；`deploy.yml` 发布前追加 `gate_audit --changed-only --recheck`（fail-closed，checkout 需 `fetch-depth: 2`）。**medgen 无上游回执可验**：r0/r1 是 advisory 门禁，WARN 不写回执，拿它当强制前置会把正常批次卡死（batch046 的 r0 实测 WARN）。`gate_verify` 对不属于本批计划的阶段返回 `SKIP NOT_APPLICABLE`（exit 0，机械判定，不需要 Agent 自己看 product_types）。**worker 侧验真只是尽早失败，真防线仍是 driver preflight + audit 复检。**
+- **2026-11-05 入库政策（用户裁定）**：历史批次（≤047）**不回填**；**batch048 起签收后「产物 + 回执链」必须入库**。清单真源是 `scripts/batch_artifacts.py` 的白名单（回执链 / FIXED.json / A4 追溯日志 / review_queue + 交付件），`_backup/`、`*.html`、`*.tmp` 不入库。顺序：签收 → 重建 A4 追溯日志 → 重跑 A4/FINAL → `batch_artifacts.py stage` → `check` exit 0 → 归档。**先入库后重建回执 = 提交一份产物与回执对不上的证据。** CI 与 deploy 均带 `--require-tracked`，未入库判 `ARTIFACT_UNTRACKED`。
+- **2026-11-05 P2 提交拦截**：`gate_audit.py` 新增 `--staged`（读 `git diff --cached`，**不能复用 `--changed-only` 的 `HEAD~1`**——pre-commit 时提交还没发生）。本机 `.git/hooks/pre-commit` 由 `scripts/install_git_hooks.py` 写入（零依赖，不依赖 pre-commit 框架；框架版配置在 `.pre-commit-config.yaml` 的 `batch-gate-staged`，两者择一）。⚠️ **`git` 输出中文路径必须加 `-c core.quotepath=false`**，否则批次解析全落空、审计静默跳过（`git_changed_paths` 同样已修）。
 - **2026-11-03**：取消「逐题人工医学核验」作为发布前置；A/B + 确定性门禁通过即 `publishable`，人工只处理 C 级/高风险/明确冲突，且只入队列、不阻断。
 - **2026-11-03**：上架版权（license）不再作门禁，仅作来源记录（`public_gate` G0/G3 恒 INFO）。
 - **2026-11-02**：插图管线（HC-19）整体下线；复习资料为纯文本，不出配图清单/占位符。
@@ -26,6 +29,7 @@
 - **选项截断 / 缺单位**（batch007/batch014）：禁止 `text[:n]` 暴力截断；数值选项必须带完整单位；自然短术语（药名/受体）豁免长度下限。
 - **转述失真**（2026-11 起）：主会话**不读产物正文、不摘要转述**；交接只传「路径 + 断言命令」，下游按路径直读。
 - **证据靠路径**（2026-11）：`reports/` 被 gitignore、归档会搬走产物目录；跨阶段引用用「批次号 + 文件角色」，不要只记绝对路径。
+- **按文件名白名单认证据必漏**（2026-11）：追溯日志真实命名两种（`AGENT4_追溯日志.json` / `{batch}_A4_追溯日志.json`），`*A4_追溯日志.json` 匹配不到前者；押题卷产物名也不固定。证据归属改由**回执绑定**决定（`batch_artifacts.ledger_bound_paths`），白名单只做兜底。
 - **「写了规则」≠「会执行」**（2026-11）：提示词/纪律是建议，不是约束。要让别的 Agent 不跳门禁，只能靠三层：产物带回执（`gate_stamp.py`）、下游拒收（`batch_driver` preflight）、中央审计变红（`gate_audit.py` + CI）。`--no-preflight`/`--no-stamp` 是调试口子，用了一定在 payload 留痕。
 
 ## 4. 长期有效的小坑

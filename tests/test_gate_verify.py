@@ -286,3 +286,90 @@ def test_invalid_stage_exits_two(tmp_path):
     with pytest.raises(SystemExit) as exc:
         _run(["--batch", BATCH, "--stage", "nope", "--base", str(tmp_path)])
     assert exc.value.code == 2
+
+
+# ── 历史批次豁免（< batch048）─────────────────────────────
+# 回执链从 batch048 起强制；更早批次没有链属正常，验真器不能把它们判成「跳过门禁」，
+# 否则 worker 会把「历史批次」和「新批次跳门禁」混为一谈，豁免就变成后门。
+LEGACY = "batch047"
+
+
+def _verify_legacy(tmp_path, stage, **kwargs):
+    return gv.verify_stage(LEGACY, stage, base=tmp_path, **kwargs)
+
+
+def test_legacy_batch_without_ledger_warns_and_exits_zero(tmp_path):
+    report = _verify_legacy(tmp_path, "a4")
+    assert report["verdict"] == "WARN"
+    assert report["code"] == "LEGACY_UNSTAMPED"
+    assert report["exit_code"] == 0
+    # 原始失败项降级为 SKIP 并保留原因，不再以 FAIL 呈现
+    assert not [c for c in report["checks"] if c["status"] == "FAIL"]
+    assert any("历史批次豁免" in c["detail"] for c in report["checks"])
+    assert report["next_command"] is None
+
+
+def test_legacy_batch_stage_missing_also_exempt(tmp_path):
+    ledger = gs.new_ledger(LEGACY)
+    a2 = _write(tmp_path / "中间产物" / LEGACY / "ALL_questions.json")
+    gs.append_stamp(ledger, "a2", artifacts=[a2])
+    gs.write_ledger(ledger, base=tmp_path)
+    report = _verify_legacy(tmp_path, "a3")
+    assert report["code"] == "LEGACY_UNSTAMPED"
+    assert report["exit_code"] == 0
+
+
+def test_legacy_exemption_not_applied_in_strict_mode(tmp_path):
+    report = _verify_legacy(tmp_path, "a4", strict=True)
+    assert report["verdict"] == "FAIL"
+    assert report["code"] == "LEDGER_MISSING"
+    assert report["exit_code"] == 1
+
+
+def test_legacy_tampered_chain_still_fails(tmp_path):
+    """豁免只覆盖「缺失类」：有链但被改过仍是硬失败，不给历史批次开口子。"""
+    ledger = gs.new_ledger(LEGACY)
+    a2 = _write(tmp_path / "中间产物" / LEGACY / "ALL_questions.json")
+    gs.append_stamp(ledger, "a2", artifacts=[a2])
+    ledger["stamps"][0]["verdict"] = "FAIL"  # 改内容 → 自带哈希不符
+    gs.write_ledger(ledger, base=tmp_path)
+    report = _verify_legacy(tmp_path, "a2")
+    assert report["verdict"] == "FAIL"
+    assert report["code"] == "CHAIN_BROKEN"
+    assert report["exit_code"] == 1
+
+
+# ── 阶段适用性：本批不存在的阶段不该要求回执 ───────────────
+def _state(tmp_path, batch, product_types):
+    import json as _json
+    (tmp_path / "workflow_state.json").write_text(
+        _json.dumps({"schema_version": 2,
+                     batch: {"product_types": product_types, "status": "PILOT"}},
+                    ensure_ascii=False),
+        encoding="utf-8")
+
+
+def test_stage_not_in_plan_skips_instead_of_blocking(tmp_path):
+    """纯复习资料批次没有 a2–a4/lv：worker 前置验真必须 exit 0（不适用），否则永久卡死。"""
+    _state(tmp_path, BATCH, ["review_material"])
+    report = _verify(tmp_path, "a4")
+    assert report["verdict"] == "SKIP"
+    assert report["code"] == "NOT_APPLICABLE"
+    assert report["exit_code"] == 0
+    detail = report["checks"][0]["detail"]
+    assert "plan=" in detail and "a5" in detail   # 给出该批真实的阶段矩阵，便于排查
+    assert gv.main(["--batch", BATCH, "--stage", "a4", "--base", str(tmp_path)]) == 0
+
+
+def test_stage_in_plan_still_checks_ledger(tmp_path):
+    """题目批次 a4 属于本批计划：没回执仍然 FAIL，不因适用性检查而放行。"""
+    _state(tmp_path, BATCH, ["question_bank"])
+    report = _verify(tmp_path, "a4")
+    assert report["verdict"] == "FAIL" and report["code"] == "LEDGER_MISSING"
+
+
+def test_unregistered_batch_falls_back_to_normal_check(tmp_path):
+    """批次未登记（查不到阶段矩阵）→ 不做适用性判断，按原逻辑报缺失，不能当「不适用」。"""
+    report = _verify(tmp_path, "a4")
+    assert report["code"] == "LEDGER_MISSING"
+    assert report["exit_code"] == 1

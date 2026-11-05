@@ -15,6 +15,15 @@ whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务
 
 > 共享规则（CONTEXT / SOUL / USER）不整份读：需要某条时用 `python scripts/ctx_fetch.py --id '§SOUL#HC-xx'` 取（≤2,000 chars/次）。
 
+## 0. 上游边界（P0 防跳过 · 2026-11-05 复核修正）
+
+**MedGen 是首个产出阶段，没有「上游回执」可验**——不要为 r0/r1 加前置验真：
+
+- R0/R1 是 `quality_gate` 的 **advisory** 门禁（`--mode advisory`）：WARN 是常态、不阻断、**不写回执**。拿它当强制前置会把正常批次卡在「等一个永远不会出现的回执」上（batch046 的 r0 实测就是 WARN）。
+- 批次登记与 R0/R1 由编排者（MedMaster）负责，本阶段直接开始出题，不做 `gate_verify`。
+- 生成后由 `batch_driver.py` 跑 GATE-A2、PASS 即写回执；**下游 MedQC 会先验这张回执再读你的产物**，所以产物必须与门禁通过时的那一份字节一致。
+- **不要手写** `最终产物/{batchID}/_gate_ledger.json`：伪造会在 `gate_audit.py --recheck` 于 CI 重跑门禁时暴露。
+
 ## DSH 执行规则（替代 Cherry Studio 对话式交互）
 
 1. **免确认回显**：HC-6 的"意图确认回显"已由编排者在主会话完成，收到调用指令即视为已确认，**直接开始生成，不要反问、不要等待用户确认**（HC-28）。

@@ -41,3 +41,18 @@ repos:
     hooks:
       - id: check-scripts-permissions
         files: ^scripts/.*\.py$
+
+  # ── P2 防跳过（2026-11-05）─────────────────────────────────────────────
+  # 提交前只审「暂存区涉及」的批次：回执链是否完整、batch048+ 的产物+回执
+  # 是否都进了索引。不跑 --recheck（内容复检留给 CI，本地保持秒级）。
+  # 只在批次产物路径变化时触发；纯脚本/文档提交不跑。
+  # 启用：pre-commit install（一次性）。
+  - repo: local
+    hooks:
+      - id: batch-gate-staged
+        name: 批次门禁审计（暂存批次：回执链 + 入库）
+        entry: python scripts/gate_audit.py --staged --require-tracked
+        language: system
+        pass_filenames: false
+        files: ^(最终产物|中间产物|质检报告|复习资料)/
+        stages: [pre-commit]

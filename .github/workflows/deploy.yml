@@ -15,6 +15,26 @@ jobs:
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          # --changed-only 需要 HEAD~1 基线；取不到时 gate_audit 会回退到
+          # 「所有已有回执链的批次」并在输出标 FALLBACK。
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # P0 防跳过（2026-11-05）：发布前对「本次改动涉及的批次」复核门禁回执链，
+      # 并用 --recheck 重跑确定性门禁。回执缺失 / 断链 / 产物字节不符 / 复检不过
+      # → 拒绝部署（fail-closed）。只审改动批次，纯站点改动不受影响。
+      # --require-tracked（P1-3）：batch048+ 的产物与回执链必须已入库，否则 CI 看不见
+      # 这批证据，中央兜底形同虚设。
+      # 与 ci.yml 的 batch-gate job 同一套脚本，这里是最后一道闸。
+      - name: Batch gate audit (fail-closed)
+        run: |
+          python scripts/gate_audit.py --changed-only --recheck --require-tracked \
+            --json-out reports/gate/audit_deploy.json
 
       - name: Quality policy gate (HC-25)
         run: python scripts/quality_policy.py --validate

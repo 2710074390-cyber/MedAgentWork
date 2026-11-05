@@ -108,9 +108,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Audit changed batches（回执链 + 确定性门禁复检）
+      - name: Audit changed batches（回执链 + 确定性门禁复检 + 入库检查）
         run: |
-          python scripts/gate_audit.py --changed-only --recheck --json-out reports/gate/audit_ci.json
+          python scripts/gate_audit.py --changed-only --recheck --require-tracked \
+            --json-out reports/gate/audit_ci.json
 
       - name: Upload audit report
         if: always()

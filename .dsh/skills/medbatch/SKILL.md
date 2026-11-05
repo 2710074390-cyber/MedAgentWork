@@ -14,7 +14,7 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 batch048+：R0/R1 → 启动(登记批次) → 阶段2 MedGen → 门禁A2 → 阶段3 MedQC → 门禁A3
 → 阶段4 MedFix → 门禁A4 → **门禁LV** → 阶段5 MedReview → 门禁A5*
 → R2 测试验证 → R3 发布上线（enforce）→ 终审门禁（检查 HC-22/R0–R3/P9/Bloom 四项）
-→ 用户签收(可选) → 归档 → R4 复盘
+→ 用户签收(可选) → 回执重建 → 入库(batch048+) → 归档 → R4 复盘
 ```
 
 > HC-19 插图管线（原阶段6 生图 + GATE-A5 配图项 + GATE-A6）已于 2026-11-02 整体下线，见 `SOUL.md § HC-19`。复习资料产出**纯文本**，不写占位符、不出配图清单。
@@ -26,6 +26,8 @@ batch048+：R0/R1 → 启动(登记批次) → 阶段2 MedGen → 门禁A2 → �
 - **HC-28 一次跑完（2026-11-01）**：只有**确定性门禁**（schema/JSON、R1–R13、D20=0、Bloom 偏差、ID 冲突、答案唯一性硬检查）FAIL 才回退；单题最多修 2 轮、整批最多 3 轮，仍失败则隔离该题并继续。**人类专属核验**（原卷/答案原页/版权授权/医学专家裁定/指南冲突）只写 `review_queue`，不触发 halt。`generation_status=DONE` 即生成完成；`release_status=PENDING_HUMAN_REVIEW` 不是失败。**可发布核心为空也不是停止条件**：仍交付完整待审稿 + 队列，标 `release_status=BLOCKED`（题目数量完整时 `generation_status` 仍为 DONE）。只有输入损坏、连续 2 次不可解析或工具故障才终止批次。
 - **交付必须带队列**：`review_queue.json` 由 `qbank.py export-md --review-queue-out` 生成；最终 MD 末尾附「人工复核队列」；签收前用户审查队列，签收只改变发布状态，不改变已完成的生成产物。
 - GoldenSet 签收只由用户手动执行，任何 Agent 禁止写入
+- **产物入库（P1-3 · 2026-11-05 · batch048+ 强制）**：顺序是「签收 → 重建 A4 追溯日志 → 重跑 A4/FINAL 门禁 → `python scripts/batch_artifacts.py stage --batch {batchID}` → `check --batch {batchID}`（exit 0）→ 归档」。**顺序不可颠倒**：签收改了 FIXED 字节，先入库再重建回执 = 提交一份产物与回执对不上的证据（CI 判 `ARTIFACT_MISMATCH`）。历史批次（≤047）不回填；`_backup/`、`*.html`、`*.tmp` 一律不入库。CI 与发布前审计都带 `--require-tracked`，未入库的批次会被判 `ARTIFACT_UNTRACKED`。
+- **提交前拦截（P2 · 2026-11-05）**：本机 `.git/hooks/pre-commit` 已由 `scripts/install_git_hooks.py` 安装，提交批次产物时自动跑 `gate_audit.py --staged --require-tracked`（只审暂存批次，不跑 `--recheck`，秒级）。手工等价命令同一行；绕过用 `git commit --no-verify` 属**违规**，CI 仍会判红但要事后追溯。换机器后重跑一次 `python scripts/install_git_hooks.py`。
 - *门禁A5：MedReview 产出主复习资料 MD（纯文本，HC-19 已下线不出配图清单）
 - **门禁A5 附加（HC-20/D0 · 2026-10-18，有教师重点/复习大纲输入的批次强制）**：跑 `python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD>`（数值/时间窗类硬事实缺失或重点条目缺锚点 → exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED，不视为通过）
 - **门禁A5 附加（HC-26 · 2026-10-27，所有复习资料批次强制）**：跑 `python scripts/check_review_detail.py --md <主复习资料 MD> --mode auto --profile <release_teacher_keypoint|release_teaching_plan>`（掌握级九槽位+案例/卡片达标/自测答案/模块八块/课程八块任一 FAIL → 回退 Agent 5 补写；报告 `reports/validate/review_detail_*.json|md`）

@@ -65,9 +65,10 @@ from datetime import datetime
 from pathlib import Path
 
 try:  # 以脚本方式运行 / 单测把 scripts/ 加进 sys.path 时
+    import batch_artifacts
     import gate_stamp
 except ImportError:  # pragma: no cover - 包上下文（python -m scripts.gate_audit）
-    from scripts import gate_stamp
+    from scripts import batch_artifacts, gate_stamp
 
 BASE = Path(__file__).resolve().parent.parent
 
@@ -93,9 +94,10 @@ CODE_PRIORITY = {
     "ARTIFACT_MISMATCH": 5,
     "RECHECK_FAILED": 6,
     "RECHECK_ERROR": 7,
-    "LEGACY_UNSTAMPED": 8,
-    "ARTIFACT_ABSENT": 9,
-    "STAGE_BACKFILL": 10,
+    "ARTIFACT_UNTRACKED": 8,
+    "LEGACY_UNSTAMPED": 9,
+    "ARTIFACT_ABSENT": 10,
+    "STAGE_BACKFILL": 11,
 }
 
 # 「产物在、回执不在」检查覆盖的交付物阶段。lv/a5 与 a4 共用产物或按 schema 条件出现，
@@ -179,7 +181,8 @@ def batches_from_changed_paths(paths):
 
 def git_changed_paths(since: str = DEFAULT_SINCE, base: Path = BASE):
     """跑 git diff --name-only <since> HEAD。返回 (paths, error)；失败时 paths 为 None。"""
-    cmd = ["git", "diff", "--name-only", str(since), "HEAD"]
+    # core.quotepath=false：中文路径不被转义，否则批次解析全部落空（见 git_staged_paths）。
+    cmd = ["git", "-c", "core.quotepath=false", "diff", "--name-only", str(since), "HEAD"]
     try:
         proc = subprocess.run(
             cmd, cwd=str(base), capture_output=True, text=True,
@@ -194,6 +197,34 @@ def git_changed_paths(since: str = DEFAULT_SINCE, base: Path = BASE):
     if proc.returncode != 0:
         tail = ((proc.stderr or "").strip().splitlines() or [""])[-1][:200]
         return None, f"git diff {since} HEAD 失败(rc={proc.returncode})：{tail}"
+    return [ln.strip() for ln in (proc.stdout or "").splitlines() if ln.strip()], None
+
+
+def git_staged_paths(base: Path = BASE):
+    """读暂存区（`git diff --cached`）。pre-commit 阶段用。
+
+    为什么不能复用 `--changed-only`：pre-commit 时提交还没发生，`HEAD~1..HEAD` 看不到
+    本次将要提交的内容；而 `--cached` 正好是「这次要提交的东西」。
+    只取新增/修改/重命名（ACMR）：删除文件不该触发「产物未入库」检查。
+    """
+    # core.quotepath=false：否则 git 把中文目录转义成 "\346\234\200..."，
+    # batches_from_changed_paths 的首段比对（最终产物/…）会全部落空，审计静默跳过。
+    cmd = ["git", "-c", "core.quotepath=false", "diff", "--cached",
+           "--name-only", "--diff-filter=ACMR"]
+    try:
+        proc = subprocess.run(
+            cmd, cwd=str(base), capture_output=True, text=True,
+            encoding="utf-8", errors="replace", timeout=GIT_TIMEOUT,
+        )
+    except FileNotFoundError:
+        return None, "git 不可用（未安装或不在 PATH）"
+    except subprocess.TimeoutExpired:
+        return None, f"git diff --cached 超时（>{GIT_TIMEOUT}s）"
+    except OSError as exc:
+        return None, f"git 调用失败：{exc}"
+    if proc.returncode != 0:
+        tail = ((proc.stderr or "").strip().splitlines() or [""])[-1][:200]
+        return None, f"git diff --cached 失败(rc={proc.returncode})：{tail}"
     return [ln.strip() for ln in (proc.stdout or "").splitlines() if ln.strip()], None
 
 
@@ -273,7 +304,8 @@ def check_stage_coverage(entry: dict, batch_id: str, ledger: dict, base: Path,
                    "（该阶段门禁可能被跳过；先跑 batch_driver.py check --stage " + stage + "）")
 
 
-def evaluate_batch(batch_id: str, base: Path = BASE, strict: bool = False):
+def evaluate_batch(batch_id: str, base: Path = BASE, strict: bool = False,
+                   require_tracked: bool = False):
     """判定一个批次。返回 (entry, recheck_candidates)。
 
     entry 形如 {batch, verdict, code, issues, stamps, recheck}；
@@ -339,6 +371,20 @@ def evaluate_batch(batch_id: str, base: Path = BASE, strict: bool = False):
         seqs = ",".join(str(s) for s in backfill_seqs)
         _add_issue(entry, "STAGE_BACKFILL", "WARN",
                    f"seq={seqs} 为补录回执（门禁是否真正执行过无法证明）")
+
+    # P1-3：回执链在、产物没入库 → CI 根本看不见这个批次，中央兜底等于失效。
+    # 只对 batch048+ 生效（batch_artifacts.check 内部对历史/已归档批次返回 SKIP）。
+    if require_tracked:
+        art = batch_artifacts.check(batch_id, base)
+        if art["verdict"] == "FAIL":
+            tail = ""
+            if art["untracked_required"]:
+                tail += "；未入库：" + "、".join(art["untracked_required"][:5])
+            if art["missing_required"]:
+                tail += "；缺失：" + "、".join(art["missing_required"][:5])
+            _add_issue(entry, "ARTIFACT_UNTRACKED", "FAIL",
+                       f"{art['detail']}{tail}（未入库的产物 CI 不可见，"
+                       f"先跑 batch_artifacts.py stage --batch {batch_id} 再提交）")
 
     finalize(entry)
     return entry, candidates
@@ -475,10 +521,14 @@ def _build_parser() -> argparse.ArgumentParser:
                       help="审计 最终产物/中间产物/质检报告 下的全部批次")
     mode.add_argument("--changed-only", action="store_true",
                       help="只审计本次 git diff 涉及的批次（基线不可解时回退为有回执的批次）")
+    mode.add_argument("--staged", action="store_true",
+                      help="只审计暂存区涉及的批次（pre-commit 用；看的是「这次要提交什么」）")
     ap.add_argument("--strict", action="store_true",
                     help="把历史遗留缺回执（LEGACY_UNSTAMPED）从 WARN 升为 FAIL")
     ap.add_argument("--recheck", action="store_true",
                     help="对存在的题目数组产物重跑 python -m scripts.validate")
+    ap.add_argument("--require-tracked", action="store_true",
+                    help="要求 batch048+ 的产物已入库（git 跟踪）；未入库 → FAIL ARTIFACT_UNTRACKED")
     ap.add_argument("--json-out", metavar="F", default=None, help="JSON 报告输出路径")
     ap.add_argument("--base", metavar="PATH", default=None,
                     help="仓库根（默认脚本所在仓库；临时目录审计用）")
@@ -523,6 +573,15 @@ def main(argv=None) -> int:
     elif args.all:
         mode = "all"
         batches = discover_batches(base)
+    elif args.staged:
+        # pre-commit 用：审「即将提交」的批次。读不到暂存区就报错退出，
+        # 不回退到 --all（那会在每次 commit 时扫全部批次，慢且噪音大）。
+        mode = "staged"
+        paths, err = git_staged_paths(base)
+        if err:
+            print(f"[ERROR] 读取暂存区失败：{err}", file=sys.stderr)
+            return 2
+        batches = batches_from_changed_paths(paths)
     else:
         mode = "changed-only"
         since = args.since or DEFAULT_SINCE
@@ -539,7 +598,8 @@ def main(argv=None) -> int:
 
     entries = []
     for batch_id in batches:
-        entry, candidates = evaluate_batch(batch_id, base, strict=args.strict)
+        entry, candidates = evaluate_batch(batch_id, base, strict=args.strict,
+                                           require_tracked=args.require_tracked)
         if args.recheck:
             items, issues = recheck_batch(batch_id, candidates, base=base)
             entry["recheck"] = items
@@ -565,6 +625,7 @@ def main(argv=None) -> int:
         "fallback_reason": fallback_reason,
         "strict": bool(args.strict),
         "recheck_enabled": bool(args.recheck),
+        "require_tracked": bool(args.require_tracked),
         "has_error": any(e["verdict"] == "ERROR" for e in entries),
         "batches": entries,
         "summary": summary,

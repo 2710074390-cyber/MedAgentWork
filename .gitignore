@@ -118,3 +118,6 @@ tools/_shots*/
 
 # WorkBuddy 会话产物（.genie 快照，仅本机可读）
 .wbapp_*.genie
+
+# 批次产物备份目录（签收前快照，可重建；入库白名单见 scripts/batch_artifacts.py）
+最终产物/**/_backup/

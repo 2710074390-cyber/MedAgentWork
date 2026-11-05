@@ -8,6 +8,7 @@
       --json-out 报告形状 / exit code 契约 / --recheck 只挑题目数组。
 """
 import json
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -331,3 +332,234 @@ def test_stage_missing_ignores_absent_artifacts():
     assert entry["verdict"] == "PASS", entry
     assert rc == 0
 
+
+
+# ---------------------------------------------------------------------------
+# P1-3：产物入库（--require-tracked）
+# ---------------------------------------------------------------------------
+def _final_files(base, batch):
+    """在 最终产物/{batch}/ 下造齐全的四件套（回执链 + FIXED + 追溯日志 + 队列）。"""
+    d = base / "最终产物" / batch
+    d.mkdir(parents=True, exist_ok=True)
+    fixed = d / "ALL_questions_FIXED.json"
+    fixed.write_text("[]", encoding="utf-8")
+    (d / f"{batch}_A4_追溯日志.json").write_text("{}", encoding="utf-8")
+    (d / "review_queue.json").write_text("{}", encoding="utf-8")
+    return fixed
+
+
+def _git(base):
+    subprocess.run(["git", "init", "-q"], cwd=str(base), check=True, capture_output=True)
+
+
+def _git_add(base, batch, names):
+    subprocess.run(["git", "add", "--"] + [f"最终产物/{batch}/{n}" for n in names],
+                   cwd=str(base), check=True, capture_output=True)
+
+
+def _issue_ids(entry):
+    return [i["id"] for i in entry["issues"]]
+
+
+def test_require_tracked_fails_when_artifacts_not_committed():
+    """回执链在、产物也在，但没入库 → FAIL ARTIFACT_UNTRACKED（CI 看不见这批）。"""
+    base = _tmp()
+    fixed = _final_files(base, "batch048")
+    _make_ledger(base, "batch048", stages=("a4",), artifacts=[fixed])
+    rc, rep = _audit(base, "--batch", "048", "--require-tracked")
+    entry = _entry(rep, "batch048")
+    assert entry["verdict"] == "FAIL"
+    assert "ARTIFACT_UNTRACKED" in _issue_ids(entry)
+    assert rc == 1
+    assert rep["require_tracked"] is True
+
+
+def test_require_tracked_passes_after_git_add():
+    base = _tmp()
+    _git(base)
+    fixed = _final_files(base, "batch048")
+    _make_ledger(base, "batch048", stages=("a4",), artifacts=[fixed])
+    _git_add(base, "batch048", ["_gate_ledger.json", "ALL_questions_FIXED.json",
+                                "batch048_A4_追溯日志.json", "review_queue.json"])
+    rc, rep = _audit(base, "--batch", "048", "--require-tracked")
+    entry = _entry(rep, "batch048")
+    assert "ARTIFACT_UNTRACKED" not in _issue_ids(entry)
+
+
+def test_require_tracked_does_not_touch_legacy_batch():
+    """历史批次不回填：--require-tracked 不得把它们判成未入库。"""
+    base = _tmp()
+    fixed = _final_files(base, "batch047")
+    _make_ledger(base, "batch047", stages=("a4",), artifacts=[fixed])
+    rc, rep = _audit(base, "--batch", "047", "--require-tracked")
+    entry = _entry(rep, "batch047")
+    assert "ARTIFACT_UNTRACKED" not in _issue_ids(entry)
+
+
+def test_require_tracked_reports_missing_required_artifact():
+    """只有回执链、一条产物都没绑定 → 报「门禁证据不完整」，而不是静默放过。
+
+    2026-11-05 复核修正：必需产物不再按文件名硬编码（押题卷/复习资料命名不同），
+    改由回执绑定决定；「未绑定任何产物」同样必须是 FAIL。
+    """
+    base = _tmp()
+    _git(base)
+    _make_ledger(base, "batch048", stages=("a2",))
+    rc, rep = _audit(base, "--all", "--require-tracked")
+    entry = _entry(rep, "batch048")
+    assert "ARTIFACT_UNTRACKED" in _issue_ids(entry)
+    assert rc == 1
+    detail = " ".join(i["detail"] for i in entry["issues"] if i["id"] == "ARTIFACT_UNTRACKED")
+    assert "未绑定任何产物" in detail
+
+
+# ---------------------------------------------------------------------------
+# P2：--staged（pre-commit 口径）
+# ---------------------------------------------------------------------------
+def test_git_staged_paths_reads_index(tmp_path):
+    """--staged 读的是暂存区：只 add 的文件算，工作区改了没 add 的不算。"""
+    _git(tmp_path)
+    (tmp_path / "最终产物" / "batch048").mkdir(parents=True)
+    staged = tmp_path / "最终产物" / "batch048" / "ALL_questions_FIXED.json"
+    staged.write_text("[]", encoding="utf-8")
+    unstaged = tmp_path / "最终产物" / "batch048" / "review_queue.json"
+    unstaged.write_text("{}", encoding="utf-8")
+    subprocess.run(["git", "add", "--", "最终产物/batch048/ALL_questions_FIXED.json"],
+                   cwd=str(tmp_path), check=True, capture_output=True)
+
+    paths, err = ga.git_staged_paths(tmp_path)
+    assert err is None
+    assert any("ALL_questions_FIXED.json" in p for p in paths)
+    assert not any("review_queue.json" in p for p in paths)
+
+
+def test_staged_mode_only_audits_staged_batches():
+    base = _tmp()
+    _git(base)
+    _final_files(base, "batch048")
+    _final_files(base, "batch049")
+    subprocess.run(["git", "add", "--", "最终产物/batch048/ALL_questions_FIXED.json"],
+                   cwd=str(base), check=True, capture_output=True)
+
+    rc, rep = _audit(base, "--staged")
+    assert rep["mode"] == "staged"
+    assert [e["batch"] for e in rep["batches"]] == ["batch048"]
+
+
+def test_staged_mode_flags_ledger_left_out_of_index():
+    """典型漏提交：FIXED 进了暂存区，回执链没进 → 必须拦住。"""
+    base = _tmp()
+    _git(base)
+    fixed = _final_files(base, "batch048")
+    _make_ledger(base, "batch048", stages=("a4",), artifacts=[fixed])
+    subprocess.run(["git", "add", "--", "最终产物/batch048/ALL_questions_FIXED.json"],
+                   cwd=str(base), check=True, capture_output=True)
+
+    rc, rep = _audit(base, "--staged", "--require-tracked")
+    entry = _entry(rep, "batch048")
+    ids = _issue_ids(entry)
+    assert "ARTIFACT_UNTRACKED" in ids
+    detail = " ".join(i["detail"] for i in entry["issues"] if i["id"] == "ARTIFACT_UNTRACKED")
+    assert "_gate_ledger.json" in detail
+    assert rc == 1
+
+
+def test_staged_mode_passes_when_all_artifacts_staged():
+    base = _tmp()
+    _git(base)
+    fixed = _final_files(base, "batch048")
+    _make_ledger(base, "batch048", stages=("a4",), artifacts=[fixed])
+    _git_add(base, "batch048", ["_gate_ledger.json", "ALL_questions_FIXED.json",
+                                "batch048_A4_追溯日志.json", "review_queue.json"])
+    rc, rep = _audit(base, "--staged", "--require-tracked")
+    entry = _entry(rep, "batch048")
+    assert "ARTIFACT_UNTRACKED" not in _issue_ids(entry)
+
+
+def test_staged_mode_empty_index_is_noop():
+    """没有批次文件在暂存区（例如只改脚本）→ 不审计、不阻断。"""
+    base = _tmp()
+    _git(base)
+    (base / "scripts").mkdir()
+    (base / "scripts" / "x.py").write_text("print(1)\n", encoding="utf-8")
+    subprocess.run(["git", "add", "--", "scripts/x.py"], cwd=str(base),
+                   check=True, capture_output=True)
+    rc, rep = _audit(base, "--staged", "--require-tracked")
+    assert rc == 0
+    assert rep["batches"] == []
+
+
+# ---------------------------------------------------------------------------
+# P2：--staged（pre-commit 口径）
+# ---------------------------------------------------------------------------
+def test_git_staged_paths_reads_index(tmp_path):
+    """--staged 读的是暂存区：只 add 的文件算，工作区改了没 add 的不算。"""
+    _git(tmp_path)
+    (tmp_path / "最终产物" / "batch048").mkdir(parents=True)
+    staged = tmp_path / "最终产物" / "batch048" / "ALL_questions_FIXED.json"
+    staged.write_text("[]", encoding="utf-8")
+    unstaged = tmp_path / "最终产物" / "batch048" / "review_queue.json"
+    unstaged.write_text("{}", encoding="utf-8")
+    subprocess.run(["git", "add", "--", "最终产物/batch048/ALL_questions_FIXED.json"],
+                   cwd=str(tmp_path), check=True, capture_output=True)
+
+    paths, err = ga.git_staged_paths(tmp_path)
+    assert err is None
+    assert any("ALL_questions_FIXED.json" in p for p in paths)
+    assert not any("review_queue.json" in p for p in paths)
+
+
+def test_staged_mode_only_audits_staged_batches():
+    base = _tmp()
+    _git(base)
+    _final_files(base, "batch048")
+    _final_files(base, "batch049")
+    subprocess.run(["git", "add", "--", "最终产物/batch048/ALL_questions_FIXED.json"],
+                   cwd=str(base), check=True, capture_output=True)
+
+    rc, rep = _audit(base, "--staged")
+    assert rep["mode"] == "staged"
+    assert [e["batch"] for e in rep["batches"]] == ["batch048"]
+
+
+def test_staged_mode_flags_ledger_left_out_of_index():
+    """典型漏提交：FIXED 进了暂存区，回执链没进 → 必须拦住。"""
+    base = _tmp()
+    _git(base)
+    fixed = _final_files(base, "batch048")
+    _make_ledger(base, "batch048", stages=("a4",), artifacts=[fixed])
+    subprocess.run(["git", "add", "--", "最终产物/batch048/ALL_questions_FIXED.json"],
+                   cwd=str(base), check=True, capture_output=True)
+
+    rc, rep = _audit(base, "--staged", "--require-tracked")
+    entry = _entry(rep, "batch048")
+    ids = _issue_ids(entry)
+    assert "ARTIFACT_UNTRACKED" in ids
+    detail = " ".join(i["detail"] for i in entry["issues"] if i["id"] == "ARTIFACT_UNTRACKED")
+    assert "_gate_ledger.json" in detail
+    assert rc == 1
+
+
+def test_staged_mode_passes_when_all_artifacts_staged():
+    base = _tmp()
+    _git(base)
+    fixed = _final_files(base, "batch048")
+    _make_ledger(base, "batch048", stages=("a4",), artifacts=[fixed])
+    _git_add(base, "batch048", ["_gate_ledger.json", "ALL_questions_FIXED.json",
+                                "batch048_A4_追溯日志.json", "review_queue.json"])
+    rc, rep = _audit(base, "--staged", "--require-tracked")
+    entry = _entry(rep, "batch048")
+    assert "ARTIFACT_UNTRACKED" not in _issue_ids(entry)
+
+
+def test_staged_mode_empty_index_is_noop():
+    """没有批次文件在暂存区（例如只改脚本）→ 不审计、不阻断。"""
+    base = _tmp()
+    _git(base)
+    (base / "scripts").mkdir()
+    (base / "scripts" / "x.py").write_text("print(1)\n", encoding="utf-8")
+    subprocess.run(["git", "add", "--", "scripts/x.py"], cwd=str(base),
+                   check=True, capture_output=True)
+    rc, rep = _audit(base, "--staged", "--require-tracked")
+    assert rc == 0
+    assert rep["batches"] == []
