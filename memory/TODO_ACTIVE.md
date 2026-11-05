@@ -43,9 +43,24 @@
 | ID | 状态 | 认领 | 任务 | 落点 | 验收 | 提交 |
 |---|---|---|---|---|---|---|
 | SA-P1-1R | DONE | Lead | medgen 去掉 r0/r1 前置（advisory 无回执→会卡死）；gate_verify 加阶段适用性（NOT_APPLICABLE exit 0）；batch_artifacts 证据改回执驱动 + 追溯日志后缀匹配；删 4 个重复用例 | `scripts/gate_verify.py`、`scripts/batch_artifacts.py`、`gate_verify` 测试、`medgen/medreview SKILL` | 633 passed / 5 skipped | 2026-11-05 |
-| SA-P1-4 | TODO | — | 把 `batch-gate` 设为 required status check（GitHub 仓库设置，人工勾选，代码改不了） | Settings → Branches | 未勾选前「本地钩子+CI 红」仍需人看 | |
+| SA-P1-4 | DONE | Lead | 已启用 main 分支保护：required check=`batch-gate`、`enforce_admins=true`、禁 force push/删除（2026-11-05，`gh api` 设置；实证 027bb37 上 batch-gate=success） | GitHub 仓库设置 | 直推 main 现被拒，见 AGENTS.md §5 | 2026-11-05 |
 | SA-P1-5 | TODO | — | 宿主 skill 路径不互通（`.dsh/skills/` vs `.workbuddy/skills/`）：AGENTS.md 已补路由；若长期在 WorkBuddy 跑批次，需决定镜像方案（复制/脚本同步） | — | AC-P1-05 | |
-| SA-P1-6 | TODO | — | `git commit --no-verify` 可绕过本地钩子（本地无解），必须在分支保护里要求 `batch-gate` 才算闭环 | 仓库设置 | 见 SA-P1-4 | |
+| SA-P1-6 | DONE | Lead | `--no-verify` 绕过本地钩子的问题已由 SA-P1-4（分支保护要求 batch-gate）闭环：即使跳过本地钩子，PR 上的 batch-gate 仍会判红 | 仓库设置 | 见 SA-P1-4 | 2026-11-05 |
+
+### 分支保护：临时解除 / 恢复（紧急直推用，事后必须恢复）
+
+```bash
+# 1) 临时解除（push 完立刻执行第 2 步）
+gh api -X DELETE repos/2710074390-cyber/MedAgentWork/branches/main/protection
+# 2) 恢复（required check = batch-gate，管理员不可绕过）
+gh api -X PUT repos/2710074390-cyber/MedAgentWork/branches/main/protection \
+  --input - <<'JSON'
+{"required_status_checks":{"strict":false,"contexts":["batch-gate"]},"enforce_admins":true,
+ "required_pull_request_reviews":null,"restrictions":null,"allow_force_pushes":false,"allow_deletions":false}
+JSON
+```
+
+> 优先走 PR（`AGENTS.md §5`）；解除保护只用于「CI 本身坏了推不进去」的抢修场景。
 
 ## 条件项（触发后再认领）
 
