@@ -36,5 +36,6 @@
 
 - **Windows 控制台 GBK**：脚本输出中文/emoji 需 UTF-8 兜底，否则命令「时红时绿」。
 - **`reports/` 不入库**：验收证据可落 `reports/`，但 schema / 脚本 / 测试 / 夹具**必须入库**。
+- **schema 与 gate 同源**（2026-11-05）：gate_check 强制的字段必须在 `schemas/agent2_output.schema.json` 声明（枚举与 `gate_check.P9_MODES` 一致）。曾出现 schema 删 `p9_mode` 而 gate 仍判 BLOCKED 的脱节；`tests/test_schemas.py::test_p9_mode_declared_and_matches_gate_check` 已锁。
 - **`docs/` 活跃文档 ≤5**（铁律⑦）：新计划/证据一律放 `reports/`（本文件与待办板属 `memory/`，不受该限制）。
 - **门禁「参考模式」**：APPROVED 批次重跑门禁只作参考、不写 HALT（`gate_check.py:2276-2282`）；改动门禁时别把参考模式当 PASS 证据。

@@ -245,6 +245,23 @@ def test_difficulty_index_marked_deprecated():
     di = _items_props()['difficulty_index']
     assert di.get('deprecated') is True
     assert '弃用' in di['description']
+    # 2026-11-05：类型由 ["number","null"] 收紧为 number（新产物不得再写 null；
+    # 历史产物实测 2,647 题全部为数值，收紧不追溯改写）。
+    assert di['type'] == 'number'
+
+
+def test_p9_mode_declared_and_matches_gate_check():
+    """gate_check final 会强制每题 p9_mode（batch048+）；schema 必须声明同一枚举。
+
+    2026-11-05：该字段曾被从 schema 删掉，而 gate_check 仍在检查——契约与门禁脱节，
+    MedGen 按 schema 产题就会在 final 被判 BLOCKED。此用例锁住两处同源。
+    """
+    import gate_check as gc  # gate_check.py 在仓库根（schema 的强制性判定者）
+
+    props = _items_props()
+    assert 'p9_mode' in props, 'schema 缺 p9_mode：gate_check final 仍按它判 BLOCKED'
+    assert set(props['p9_mode']['enum']) == set(gc.P9_MODES), (
+        props['p9_mode']['enum'], gc.P9_MODES)
 
 
 def test_distractor_mechanism_enum_matches_rule_module():
