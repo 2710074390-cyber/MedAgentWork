@@ -25,6 +25,14 @@ jobs:
         with:
           python-version: '3.12'
 
+      # 与 ci.yml 的 batch-gate job 同一套脚本 + 同一套依赖（2026-11-07 统一）：
+      # 缺 requirements.txt 时 `python -m scripts.validate` 会因缺 jsonschema/numpy
+      # 走不同分支，导致同一份产物在 PR 门禁 PASS、在 deploy 复检 RECHECK_FAILED。
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
       # P0 防跳过（2026-11-05）：发布前对「本次改动涉及的批次」复核门禁回执链，
       # 并用 --recheck 重跑确定性门禁。回执缺失 / 断链 / 产物字节不符 / 复检不过
       # → 拒绝部署（fail-closed）。只审改动批次，纯站点改动不受影响。
