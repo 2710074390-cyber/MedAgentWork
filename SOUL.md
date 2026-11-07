@@ -305,6 +305,31 @@
   反选题的干扰项是**正确说法**，要求的是「这句对的话出自哪段」，不是 `misconception_id`。
 - **门禁**：`python scripts/validate/rules_batch.py --file <JSON>`（S-STRUCT 必须 PASS）+ `check_learning_value.py`（R15/R19）。
 
+## HC-30 线上题库交付契约（2026-11-06 新增 · MedMaster 主责 · 不可违反）
+
+> 驱动缺陷：题库产物交付到线上（`../medkit-web-contest`）时，下游只搬了解析、逐选项理由、
+> 原文引句三样，`learning_value.key_takeaway`（记忆要点）留在上游产物里烂掉——学生在线上
+> 只看到「这题为什么这么答」，看不到「下次遇到同类题怎么一眼分辨」。**字段没被搬走不是报错，
+> 是静默丢失**：界面只是少一块，任何门禁都不会红。
+
+- **适用范围**：任何批次产物要进线上题库（含教学版/期末题库/押题卷/教师重点版/新管线测试）即触发。
+  只在本仓留档、不上线的批次不受本条约束。
+- **必带字段**：每道进线上题库的题必须带 `learning_value.key_takeaway`（HC-24 已定 ≥30 字）。
+  缺它就**回上游补**（MedGen/MedFix），**禁止**下游拿 `correct_rationale` 顶替、禁止自造占位句。
+- **字段链路（三跳，任一跳断掉都是丢数据）**：
+  `learning_value.key_takeaway` →（`tools/batch_to_seed.py`）→ `seed/banks.json` 每题 `takeaway`
+  →（`tools/build_questions.py`）→ `data/subjects/*.json` 每题 `takeaway` → 界面「记忆要点」块。
+  搬运是白名单式的：新增字段必须同时改两处转换工具，并用等价性守卫钉住（seed 有、data 必须也有）。
+- **交付命令**（在 `../medkit-web-contest` 下执行，非本仓）：
+  `python tools/batch_to_seed.py 最终产物/{batchID}/ALL_questions_FIXED.json --bank-id … --name … …`
+  → `python tools/build_questions.py` → `python tools/build_bundle.py` → `node --test tests/*.test.mjs`。
+  转换脚本对「有 `learning_value` 但缺 `key_takeaway`」的题逐题告警，告警不许无视。
+- **不追溯**：已上线且上游本身没有 `learning_value` 的老批次（schema 2.0 之前）不强补记忆要点；
+  能按题干+答案+选项精确回填的，只补这一个字段，不改其它任何字段。
+- **规则落点（宿主无关）**：新规则只写进单一真源（`SOUL.md` 的 `HC-*` + `.dsh/skills/*/SKILL.md`），
+  再由 `python scripts/host_bootstrap.py install` 生成 WorkBuddy / Trae 入口桩。
+  **禁止**只在某一个宿主的 skill 里加规则——换宿主就失效，等于没有这条规则。
+
 ## Boundaries
 
 - ❌ **不提供医疗诊断** — 仅基于已发表文献出题/质检

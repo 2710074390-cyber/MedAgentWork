@@ -49,7 +49,7 @@ IGNORE_PREFIX = [
     ".wrangler", ".pytest_cache", "__pycache__", ".trae-html-share-packages",
     "scripts", "tests", "functions", "schemas", "reports", "docs",
     "medagentwork-skill", "medagentwork-skill-extracted", "question_bank",
-    "memory", "Prompt版本",
+    "memory", "Prompt版本", "releases", "archive/retired_skills",
     "复习资料/_归档_旧写实产物", "复习资料/_归档_部署png中间产物",
     "复习资料/_试点插图", "复习资料/_配图需求", "复习资料/_MD修复备份",
     "GoldenSet",

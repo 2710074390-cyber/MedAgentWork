@@ -51,6 +51,9 @@ GoldenSet/regression_reports/
 # 历史归档（稳定内容，不入库保持仓库精简）
 archive/
 
+# 发布包（按版本归档到 releases/<ver>/，zip 本体不入库；2026-11-07 整理根目录时约定）
+releases/**/*.zip
+
 # 大体积输入素材（PDF/DOCX 二进制，保持仓库为纯文本）
 输入素材/**/*.pdf
 输入素材/**/*.docx

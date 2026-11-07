@@ -1,0 +1,4683 @@
+[
+ {
+  "id": "batch048-Q001",
+  "sequence": 1,
+  "schema_version": "2.2",
+  "module": "M01",
+  "module_name": "泌尿系统疾病总论（解剖、生理、检查）",
+  "type": "A2",
+  "case_group": null,
+  "stem": "男，24 岁。双下肢水肿 2 周，24 小时尿蛋白定量 6.8g，血浆白蛋白 21g/L，光镜下肾小球结构未见明显异常。该患者大量蛋白尿主要源于滤过屏障中哪一结构的损伤？",
+  "options": [
+   {
+    "label": "A",
+    "text": "毛细血管内皮细胞窗孔",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "肾小球基底膜致密层",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "系膜细胞及系膜基质",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "足细胞及裂孔膜",
+    "is_correct": true
+   },
+   {
+    "label": "E",
+    "text": "肾小囊壁层上皮细胞",
+    "is_correct": false
+   }
+  ],
+  "answer": "D",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "bloom": "记忆",
+  "bloom_level": "记忆",
+  "difficulty_tier": "L2",
+  "step_count": 2,
+  "competing_dx": [
+   "膜性肾病（基底膜上皮侧病变为主）",
+   "毛细血管内增生性肾小球肾炎（内皮与系膜增生为主）",
+   "IgA 肾病（系膜区沉积为主）"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "光镜下肾小球结构未见明显异常"
+  ],
+  "topic": "肾小球滤过屏障三层结构与蛋白尿的定位",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P466",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第一章/P466",
+   "大纲/教材P466"
+  ],
+  "keypoint_ref": [
+   "第1条"
+  ],
+  "teacher_anchor": "教材P466：内皮细胞呈扁平状覆盖于毛细血管壁内侧，胞体布满小孔（窗孔），是肾小球滤过屏障的首层。内皮细胞带有负电荷，与肾小球基底膜（glomerular basement membrane，GBM）、脏层上皮细胞的足突构成肾小球的滤过屏障。……足细胞对于维持肾小球滤过屏障的完整性至关重要。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第1条",
+    "title": "肾小球滤过屏障三层结构",
+    "evidence": "题干给出大量蛋白尿伴光镜阴性、电镜足突融合，要求把损伤定位到滤过屏障的具体层次"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第1条",
+    "title": "足细胞相关蛋白与分子屏障",
+    "evidence": "A、B 项把损伤部位落在内皮窗孔或基底膜致密层，忽视足细胞裂孔膜构成的分子筛"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "滤过屏障由毛细血管内皮细胞、基底膜和脏层上皮细胞足突三层构成，其中足细胞相关蛋白构成分子筛，是维持屏障完整性的关键。本例光镜下肾小球结构未见明显异常而尿蛋白已达肾病范围，说明并非基底膜或内皮的明显结构破坏，而是足细胞裂孔膜及其相关蛋白受损、电荷与分子屏障失守所致，故损伤定位在足细胞及裂孔膜。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "内皮细胞窗孔受损多见于毛细血管内增生性病变，本例光镜阴性且无内皮增生表现，不是该患者大量蛋白尿的定位。",
+     "misconception_id": "MC-NEP-M01-01",
+     "misconception": "把滤过屏障层次定位错，认为内皮或基底膜才是蛋白尿的主要受损部位",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "基底膜致密层损伤会出现非选择性蛋白尿并伴光镜下基底膜增厚，与本例光镜下结构无明显异常不符。",
+     "misconception_id": "MC-NEP-M01-01",
+     "misconception": "把滤过屏障层次定位错，认为内皮或基底膜才是蛋白尿的主要受损部位",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "系膜细胞与基质只起支撑毛细血管丛、调节滤过率的作用，不属于滤过屏障的组成，其增生不直接造成大量蛋白尿。",
+     "misconception_id": "MC-NEP-M01-02",
+     "misconception": "把系膜组织误当作滤过屏障的组成部分",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "D",
+     "truth": true,
+     "why": "光镜基本正常而尿蛋白达 6.8g/d，提示足细胞裂孔膜及足细胞相关蛋白受损、分子筛失守，是大量蛋白尿的定位。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "肾小囊壁层上皮细胞构成鲍曼囊外壁，不参与滤过屏障；其增生形成新月体，与蛋白尿的产生无关。",
+     "misconception_id": "MC-NEP-M01-03",
+     "misconception": "把肾小囊壁层上皮细胞误当作滤过屏障的一部分",
+     "distractor_mechanism": "adjacent_concept"
+    }
+   ],
+   "key_takeaway": "光镜阴性而蛋白尿达肾病范围时先想到足细胞（电荷屏障与分子筛）损伤；基底膜或内皮的结构性损伤在光镜下通常已有可见改变。",
+   "source_quote": "足细胞对于维持肾小球滤过屏障的完整性至关重要",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P466",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q002",
+  "sequence": 2,
+  "schema_version": "2.2",
+  "module": "M01",
+  "module_name": "泌尿系统疾病总论（解剖、生理、检查）",
+  "type": "A3",
+  "case_group": "CG-M01-01",
+  "stem": "（共用题干）男，52 岁。慢性肾脏病 5 期，eGFR 9ml/（min·1.73m²），血肌酐 486μmol/L；血红蛋白 82g/L，红细胞呈正细胞正色素性，血清铁蛋白、叶酸及维生素 B12 水平均正常，无呕血与黑便；尿沉渣镜检见变形红细胞占 60%。该患者贫血最主要的机制是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "红细胞破坏增多致溶血",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "肾脏促红细胞生成素生成减少",
+    "is_correct": true
+   },
+   {
+    "label": "C",
+    "text": "铁缺乏致血红蛋白合成障碍",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "叶酸缺乏致红细胞核发育障碍",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "慢性失血致铁丢失过多",
+    "is_correct": false
+   }
+  ],
+  "answer": "B",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "记忆",
+  "bloom_level": "记忆",
+  "difficulty_tier": "L2",
+  "step_count": 2,
+  "competing_dx": [
+   "缺铁性贫血",
+   "巨幼细胞性贫血",
+   "溶血性贫血"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "血清铁蛋白、叶酸及维生素 B12 水平均正常",
+   "无呕血与黑便"
+  ],
+  "topic": "肾脏内分泌功能与肾性贫血",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P468",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第一章/P468",
+   "大纲/教材P468"
+  ],
+  "keypoint_ref": [
+   "第2条"
+  ],
+  "teacher_anchor": "教材P468：3. 肾脏的内分泌功能 肾脏具有重要的内分泌功能，能够参与合成和分泌肾素、促红细胞生成素（EPO）、1，25- 二羟维生素D3、前列腺素和激肽类物质。参与人体的血流动力学调节，红细胞生成，钙、磷代谢及骨代谢等。肾脏产生EPO 受肾脏皮质和外髓部局部组织氧含量调节",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第2条",
+    "title": "肾脏内分泌功能",
+    "evidence": "题干给出慢性肾脏病 5 期、血红蛋白 82g/L 与正细胞正色素性贫血，指向促红细胞生成素生成不足"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第2条",
+    "title": "造血原料缺乏性贫血",
+    "evidence": "C、D、E 项把肾性贫血归因于缺铁、叶酸缺乏或慢性失血，而题干已注明铁蛋白与叶酸正常"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "肾脏是促红细胞生成素的主要产生部位，EPO 受肾皮质与外髓部氧含量调节，经血液作用于骨髓红系祖细胞促进红细胞增生。慢性肾脏病 5 期肾实质大量减少，EPO 生成不足，骨髓红系增生受抑，形成正细胞正色素性贫血。题干已排除缺铁、叶酸缺乏与失血，故最主要机制是 EPO 生成减少。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "溶血会伴网织红细胞升高与胆红素异常，本例为正细胞正色素性贫血且无任何溶血证据。",
+     "misconception_id": "MC-NEP-M01-04",
+     "misconception": "把肾性贫血归因于红细胞破坏增多或造血原料缺乏，忽视肾脏促红细胞生成素生成减少",
+     "distractor_mechanism": "mechanism_confusion"
+    },
+    {
+     "label": "B",
+     "truth": true,
+     "why": "肾实质减少使促红细胞生成素生成不足，骨髓红系祖细胞增生受抑，是慢性肾脏病贫血的主要机制。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "血清铁蛋白正常已排除缺铁，且缺铁性贫血应表现为小细胞低色素性，与本例不符。",
+     "misconception_id": "MC-NEP-M01-04",
+     "misconception": "把肾性贫血归因于红细胞破坏增多或造血原料缺乏，忽视肾脏促红细胞生成素生成减少",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "叶酸与维生素 B12 水平均正常，缺乏时表现为大细胞性贫血，与本例正细胞性不符。",
+     "misconception_id": "MC-NEP-M01-04",
+     "misconception": "把肾性贫血归因于红细胞破坏增多或造血原料缺乏，忽视肾脏促红细胞生成素生成减少",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "无呕血与黑便、血清铁蛋白正常，均不支持慢性失血导致的铁丢失。",
+     "misconception_id": "MC-NEP-M01-04",
+     "misconception": "把肾性贫血归因于红细胞破坏增多或造血原料缺乏，忽视肾脏促红细胞生成素生成减少",
+     "distractor_mechanism": "adjacent_concept"
+    }
+   ],
+   "key_takeaway": "慢性肾脏病贫血先想 EPO 生成不足：正细胞正色素性、铁蛋白与叶酸正常、无失血证据，就是肾性贫血的典型组合。",
+   "source_quote": "肾脏产生EPO 受肾脏皮质和外髓部局部组织氧含量调节",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P468",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q003",
+  "sequence": 3,
+  "schema_version": "2.2",
+  "module": "M01",
+  "module_name": "泌尿系统疾病总论（解剖、生理、检查）",
+  "type": "A3",
+  "case_group": "CG-M01-01",
+  "stem": "（共用题干）男，52 岁。慢性肾脏病 5 期，eGFR 9ml/（min·1.73m²），血肌酐 486μmol/L；血红蛋白 82g/L，红细胞呈正细胞正色素性，血清铁蛋白、叶酸及维生素 B12 水平均正常，无呕血与黑便；尿沉渣镜检见变形红细胞占 60%。关于其肾功能与尿检结果的判读，下列正确的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "提示肾功能仅为轻度减退",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "血肌酐可早期反映滤过功能损害",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "属估算值，准确性低于菊糖清除率",
+    "is_correct": true
+   },
+   {
+    "label": "D",
+    "text": "均一形态红细胞提示肾小球源性血尿",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "变形红细胞提示血尿来自肾小管",
+    "is_correct": false
+   }
+  ],
+  "answer": "C",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "bloom": "理解",
+  "bloom_level": "理解",
+  "difficulty_tier": "L2",
+  "step_count": 2,
+  "competing_dx": [
+   "血清肌酐直接判读",
+   "内生肌酐清除率测定",
+   "尿红细胞形态判别"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "尿沉渣镜检见变形红细胞占 60%"
+  ],
+  "topic": "eGFR 的准确性定位与肾小球源性血尿判别",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P470",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第一章/P470",
+   "大纲/教材P470"
+  ],
+  "keypoint_ref": [
+   "第3条",
+   "第4条"
+  ],
+  "teacher_anchor": "教材P470：以上测定肾小球滤过率的方法按准确性由高到低依次为菊糖清除率、同位素法测定、内生肌酐清除率、eGFR 和血肌酐，可根据需要选择适当的方法。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第3条",
+    "title": "肾小球滤过率与肾功能评估",
+    "evidence": "题干给出 eGFR 9ml/（min·1.73m²）与血肌酐 486μmol/L，要求判断各指标的准确性次序"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第4条",
+    "title": "肾小球源性血尿的判别",
+    "evidence": "D 项把均一形态红细胞说成肾小球源性，E 项把变形红细胞说成肾小管来源，方向均颠倒"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "教材按准确性由高到低排列为菊糖清除率、同位素法测定、内生肌酐清除率、eGFR 和血肌酐，菊糖清除率是既往公认的金标准。eGFR 由公式估算，属估测值，准确性低于菊糖清除率；血肌酐敏感性低，常在滤过功能损害约一半时才升高。故五项判断中只有把 eGFR 定位为估算值、准确性低于菊糖清除率这一项成立。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "eGFR 9ml/（min·1.73m²）已属慢性肾脏病 5 期、终末期肾病范围，不是轻度减退。",
+     "misconception_id": "MC-NEP-M01-05",
+     "misconception": "把明显下降的 eGFR 判读为轻度肾功能减退，忽视慢性肾脏病分期",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "血清肌酐敏感性较低，常在肾小球滤过功能损害约 50% 时才升高，不能早期反映损害。",
+     "misconception_id": "MC-NEP-M01-06",
+     "misconception": "误认为血清肌酐能早期、敏感地反映肾小球滤过功能下降",
+     "distractor_mechanism": "mechanism_confusion"
+    },
+    {
+     "label": "C",
+     "truth": true,
+     "why": "教材明确 eGFR 为公式估算值，准确性排序中低于菊糖清除率与同位素法测定，此判断成立。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "均一形态正常红细胞尿多提示非肾小球源性血尿，本选项把判别方向说反了。",
+     "misconception_id": "MC-NEP-M01-07",
+     "misconception": "把肾小球源性血尿的红细胞形态判别方向弄反，认为均一形态提示肾小球来源",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "变形红细胞提示血尿为肾小球源性，源于基底膜断裂后红细胞受挤压与渗透压作用变形，而非肾小管来源。",
+     "misconception_id": "MC-NEP-M01-07",
+     "misconception": "把肾小球源性血尿的红细胞形态判别方向弄反，认为均一形态提示肾小球来源",
+     "distractor_mechanism": "direction_error"
+    }
+   ],
+   "key_takeaway": "记准确性梯队：菊糖清除率＞同位素法＞内生肌酐清除率＞eGFR＞血肌酐；记形态方向：变形红细胞＝肾小球源性，均一形态＝多为非肾小球源性。",
+   "source_quote": "按准确性由高到低依次为菊糖清除率、同位素法测定、内生肌酐清除率、eGFR 和血肌酐",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P470",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q004",
+  "sequence": 4,
+  "schema_version": "2.2",
+  "module": "M02",
+  "module_name": "原发性肾小球疾病（概述、急性肾炎、急进性肾炎、IgA 肾病）",
+  "type": "A1",
+  "case_group": null,
+  "stem": "急性肾小球肾炎最常见的临床表现为",
+  "options": [
+   {
+    "label": "A",
+    "text": "咽痛、蛋白尿、水肿、血浆白蛋白下降",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "蛋白尿、血尿、心功能不全",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "血尿、蛋白尿、水肿、高血压",
+    "is_correct": true
+   },
+   {
+    "label": "D",
+    "text": "血尿、肾区叩痛、发烧",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "血尿、蛋白尿、尿路刺激征",
+    "is_correct": false
+   }
+  ],
+  "answer": "C",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "bloom": "记忆",
+  "bloom_level": "记忆",
+  "difficulty_tier": "L1",
+  "step_count": 1,
+  "competing_dx": [
+   "肾病综合征",
+   "急性肾盂肾炎",
+   "慢性肾小球肾炎"
+  ],
+  "negative_cues": [],
+  "conditionals": [],
+  "topic": "急性肾小球肾炎的临床表现",
+  "source_type": "考研真题",
+  "license": "public_noncommercial",
+  "source_page": "P476",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第二章/P476",
+   "大纲/教材P476",
+   "[源:考研真题 GS-1997-054]"
+  ],
+  "kaoyan_origin": {
+   "gs_id": "GS-1997-054",
+   "year": 1997,
+   "source": "1997考研西综·第54题",
+   "mode": "原题",
+   "answer_confidence": "medium"
+  },
+  "keypoint_ref": [
+   "第6条"
+  ],
+  "teacher_anchor": "教材P476：急性肾小球肾炎（acute glomerulonephritis）简称急性肾炎（AGN），是以急性肾炎综合征为主要临床表现的一组疾病。特点为急性起病，血尿、蛋白尿、水肿和高血压，可伴有一过性肾功能不全。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第6条",
+    "title": "急性肾小球肾炎临床表现",
+    "evidence": "题干直接问最常见的临床表现，正确项列出教材所述的血尿、蛋白尿、水肿和高血压四项"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第10条",
+    "title": "肾病综合征的四联征",
+    "evidence": "A 项把血浆白蛋白下降混入，属肾病综合征的低白蛋白血症表现"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "教材指出急性肾小球肾炎以急性肾炎综合征为主要表现，特点为急性起病，出现血尿、蛋白尿、水肿和高血压，可伴一过性肾功能不全，其中血尿几乎见于全部病人、约三成为肉眼血尿，水肿与一过性高血压也属常见。选项中以血尿、蛋白尿、水肿、高血压四项组合最符合教材表述，故为最常见表现。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "血浆白蛋白下降是肾病综合征低白蛋白血症的特征，急性肾炎蛋白尿多为轻中度，不出现低白蛋白血症。",
+     "misconception_id": "MC-NEP-M03-01",
+     "misconception": "把肾病综合征的常见伴随表现（水肿、高脂血症、高血压、血尿）一并当作诊断的必备条件",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "心功能不全仅见于少数重症伴水钠潴留的病人，不属最常见的临床表现组合。",
+     "misconception_id": "MC-NEP-M02-05",
+     "misconception": "把心功能不全列入急性肾小球肾炎的常见临床表现",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "C",
+     "truth": true,
+     "why": "教材明确急性肾炎特点为血尿、蛋白尿、水肿和高血压，与本病名所指的急性肾炎综合征完全对应。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "肾区叩痛与发热是上尿路感染的表现，急性肾炎不以肾区叩痛为特征。",
+     "misconception_id": "MC-NEP-M02-04",
+     "misconception": "把急性肾炎综合征的典型表现记成尿路感染表现（尿路刺激征、肾区叩痛、发热）",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "尿路刺激征属尿路感染表现，急性肾炎病人无尿频尿急尿痛，本项混入了错误症候群。",
+     "misconception_id": "MC-NEP-M02-04",
+     "misconception": "把急性肾炎综合征的典型表现记成尿路感染表现（尿路刺激征、肾区叩痛、发热）",
+     "distractor_mechanism": "similar_presentation"
+    }
+   ],
+   "key_takeaway": "急性肾炎综合征四联＝血尿、蛋白尿、水肿、高血压；一旦出现血浆白蛋白下降要转念肾病综合征，出现尿路刺激征或肾区叩痛要转念尿路感染。",
+   "source_quote": "特点为急性起病，血尿、蛋白尿、水肿和高血压",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "原题题干与选项逐字保真（GS-1997-054）",
+    "teacher_anchor 逐字核对教材 P476",
+    "结构字段与机制标签完整",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q005",
+  "sequence": 5,
+  "schema_version": "2.2",
+  "module": "M02",
+  "module_name": "原发性肾小球疾病（概述、急性肾炎、急进性肾炎、IgA 肾病）",
+  "type": "A2",
+  "case_group": null,
+  "stem": "男，26岁。急起血尿、少尿、水肿、高血压，肾功能急剧恶化。B超双肾增大，肾活检可见70%肾小球的肾小囊中有大新月体形成。下列病例最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性链球菌感染后肾小球肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "原发性肾病综合征",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "紫癜性肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "急进性肾炎",
+    "is_correct": true
+   },
+   {
+    "label": "E",
+    "text": "狼疮性肾炎",
+    "is_correct": false
+   }
+  ],
+  "answer": "D",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 3,
+  "competing_dx": [
+   "急性链球菌感染后肾小球肾炎",
+   "紫癜性肾炎",
+   "狼疮性肾炎"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "肾活检可见70%肾小球的肾小囊中有大新月体形成"
+  ],
+  "topic": "急进性肾小球肾炎的诊断",
+  "source_type": "执业医师真题",
+  "license": "public_noncommercial",
+  "source_page": "P477",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第二章/P477",
+   "大纲/教材P477",
+   "[源:执业医师 CMExam-31254]"
+  ],
+  "zhiyi_origin": {
+   "source_id": "CMExam-train-31254",
+   "source": "执业医师 CMExam-31254",
+   "corpus": "cmexam",
+   "mode": "原题",
+   "answer_confidence": "medium"
+  },
+  "keypoint_ref": [
+   "第8条"
+  ],
+  "teacher_anchor": "教材P477：急进性肾小球肾炎（rapidly progressive glomerulonephritis，RPGN）即急进性肾炎，是在急性肾炎综合征基础上，肾功能快速进展，病理类型为新月体肾炎的一组疾病。……光镜下多数（50% 以上）肾小球大新月体形成（占肾小球囊腔50% 以上）",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第8条",
+    "title": "急进性肾小球肾炎诊断",
+    "evidence": "题干肾功能急剧恶化并见 70% 肾小球大新月体，正对应急进性肾炎的定义"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第6条",
+    "title": "链球菌感染后急性肾小球肾炎",
+    "evidence": "A 项为最强竞争者，但急性肾炎不会在短期内形成广泛新月体并使肾功能急剧恶化"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "急进性肾炎是在急性肾炎综合征基础上肾功能快速进展、病理为新月体肾炎的一组疾病，光镜下多数肾小球形成占囊腔 50% 以上的大新月体。本例急起血尿、少尿、水肿与高血压，肾功能急剧恶化，B 超双肾增大，肾活检 70% 肾小球有大新月体，完全符合急进性肾炎，故最可能的诊断是急进性肾炎。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "急性链球菌感染后肾炎可有血尿、少尿与高血压，但不会在短期内形成 70% 肾小球的大新月体并使肾功能急剧恶化。",
+     "misconception_id": "MC-NEP-M02-13",
+     "misconception": "把短期内肾功能急剧恶化伴广泛新月体形成仍按急性链球菌感染后肾炎解释",
+     "distractor_mechanism": "timing_error"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "原发性肾病综合征以大量蛋白尿与低白蛋白血症为核心，本例以血尿、少尿和肾功能急剧恶化为主，不符合。",
+     "misconception_id": "MC-NEP-M02-14",
+     "misconception": "把以血尿、少尿、肾功能急剧恶化为主的新月体肾炎误判为原发性肾病综合征",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "紫癜性肾炎需有皮肤紫癜等肾外表现，题干未提供任何皮疹或关节腹痛线索。",
+     "misconception_id": "MC-NEP-M02-15",
+     "misconception": "在缺乏皮肤紫癜等肾外表现时考虑紫癜性肾炎",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "D",
+     "truth": true,
+     "why": "肾功能急剧恶化加 70% 肾小球大新月体，正是新月体肾炎即急进性肾炎的诊断依据。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "狼疮性肾炎多见于育龄女性，伴发热、皮疹、关节痛与自身抗体阳性，题干无相应线索。",
+     "misconception_id": "MC-NEP-M02-16",
+     "misconception": "在缺乏狼疮系统表现与自身抗体证据时考虑狼疮性肾炎",
+     "distractor_mechanism": "overgeneralization"
+    }
+   ],
+   "key_takeaway": "急性肾炎综合征基础上肾功能急剧恶化＋广泛大新月体，即为急进性肾炎；诊断成立后须尽快肾活检明确免疫病理分型以指导强化治疗。",
+   "source_quote": "病理类型为新月体肾炎的一组疾病",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "原题题干与选项逐字保真（CMExam-31254）",
+    "teacher_anchor 逐字核对教材 P477",
+    "结构字段与机制标签完整",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q006",
+  "sequence": 6,
+  "schema_version": "2.2",
+  "module": "M02",
+  "module_name": "原发性肾小球疾病（概述、急性肾炎、急进性肾炎、IgA 肾病）",
+  "type": "A2",
+  "case_group": null,
+  "stem": "男，19 岁。咽痛 10 天后出现水肿与肉眼血尿，血压 150/95mmHg。3 周内尿量减至 400ml/d，血肌酐由 210μmol/L 升至 560μmol/L。肾活检示 60% 肾小球有大新月体形成，免疫荧光见 IgG 及 C3 呈颗粒状沉积于系膜区及毛细血管壁，血清抗 GBM 抗体与 ANCA 均阴性。该患者的免疫病理类型是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "Ⅱ型免疫复合物型",
+    "is_correct": true
+   },
+   {
+    "label": "B",
+    "text": "Ⅰ型抗肾小球基底膜型",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "Ⅲ型寡免疫复合物型",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "细胞免疫介导型",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "补体旁路激活型",
+    "is_correct": false
+   }
+  ],
+  "answer": "A",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "理解",
+  "bloom_level": "理解",
+  "difficulty_tier": "L3",
+  "step_count": 2,
+  "competing_dx": [
+   "抗肾小球基底膜病（Ⅰ型）",
+   "ANCA 相关性血管炎肾损害（Ⅲ型）",
+   "免疫复合物型急进性肾炎（Ⅱ型）"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "抗 GBM 抗体与 ANCA 均阴性",
+   "免疫荧光见 IgG 及 C3 呈颗粒状沉积"
+  ],
+  "topic": "急进性肾小球肾炎的免疫病理分型",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P477",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第二章/P477",
+   "大纲/教材P477"
+  ],
+  "keypoint_ref": [
+   "第5条"
+  ],
+  "teacher_anchor": "教材P477：根据免疫病理RPGN 可分为三型，每型病因和发病机制各异：①Ⅰ型，又称抗肾小球基底膜（GBM）型，因抗GBM 抗体与GBM 抗原结合诱发补体活化而致病；②Ⅱ型，又称免疫复合物型，因循环免疫复合物在肾小球沉积或原位免疫复合物形成而致病；③Ⅲ型，为寡免疫复合物沉积型，肾小球内无或仅微量免疫球蛋白沉积，多与ANCA 相关小血管炎相关。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第5条",
+    "title": "肾小球疾病免疫发病机制分型",
+    "evidence": "题干给出抗GBM抗体与ANCA阴性、IgG 和 C3 颗粒状沉积，要求判断免疫病理类型"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第8条",
+    "title": "急进性肾炎三型的免疫荧光特征",
+    "evidence": "B 项把颗粒状沉积误判为抗GBM型的线条状沉积，C 项忽略本例存在明显免疫沉积"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "急进性肾炎按免疫病理分三型：Ⅰ型为抗GBM型，免疫荧光呈线条状沉积；Ⅱ型为免疫复合物型，因循环或原位免疫复合物沉积致病，荧光呈颗粒状或团块状；Ⅲ型为寡免疫复合物型，肾小球内无或仅微量免疫沉积且多与 ANCA 相关。本例抗GBM抗体与 ANCA 均阴性、荧光见 IgG 及 C3 颗粒状沉积，符合Ⅱ型免疫复合物型。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": true,
+     "why": "颗粒状 IgG 与 C3 沉积、两种自身抗体均阴性，正是免疫复合物介导的Ⅱ型改变。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "Ⅰ型应有抗GBM抗体阳性且荧光呈线条状沉积，本例抗体阴性、沉积为颗粒状，方向相反。",
+     "misconception_id": "MC-NEP-M02-01",
+     "misconception": "对免疫病理分型与沉积模式的对应关系判断错误，把颗粒状、线条状与寡免疫沉积互换",
+     "distractor_mechanism": "mechanism_confusion"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "Ⅲ型要求肾小球内无或仅微量免疫沉积并多伴 ANCA 阳性，本例有明显颗粒状沉积且 ANCA 阴性。",
+     "misconception_id": "MC-NEP-M02-01",
+     "misconception": "对免疫病理分型与沉积模式的对应关系判断错误，把颗粒状、线条状与寡免疫沉积互换",
+     "distractor_mechanism": "mechanism_confusion"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "细胞免疫介导主要见于微小病变型肾病等，不是新月体肾炎免疫病理分型的类别。",
+     "misconception_id": "MC-NEP-M02-01",
+     "misconception": "对免疫病理分型与沉积模式的对应关系判断错误，把颗粒状、线条状与寡免疫沉积互换",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "补体旁路激活见于 C3 肾小球病等，不是急进性肾炎三型分型的依据。",
+     "misconception_id": "MC-NEP-M02-01",
+     "misconception": "对免疫病理分型与沉积模式的对应关系判断错误，把颗粒状、线条状与寡免疫沉积互换",
+     "distractor_mechanism": "adjacent_concept"
+    }
+   ],
+   "key_takeaway": "新月体肾炎分型看荧光：线条状＋抗GBM抗体阳性为Ⅰ型，颗粒状＋抗体阴性为Ⅱ型，无或微量沉积＋ANCA 阳性为Ⅲ型。",
+   "source_quote": "②Ⅱ型，又称免疫复合物型，因循环免疫复合物在肾小球沉积或原位免疫复合物形成而致病",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P477",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q007",
+  "sequence": 7,
+  "schema_version": "2.2",
+  "module": "M02",
+  "module_name": "原发性肾小球疾病（概述、急性肾炎、急进性肾炎、IgA 肾病）",
+  "type": "A2",
+  "case_group": null,
+  "stem": "女，8 岁。扁桃体炎后 12 天出现眼睑水肿、尿色加深，血压 128/86mmHg，24 小时尿量 500ml，血肌酐 96μmol/L，血清 C3 降低。该患者最合适的处理是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "静脉给予甲泼尼龙冲击治疗",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "限盐、利尿消肿并控制容量负荷",
+    "is_correct": true
+   },
+   {
+    "label": "C",
+    "text": "立即行血液透析清除代谢废物",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "常规静脉使用抗生素 2 周",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "输注白蛋白扩容后予呋塞米",
+    "is_correct": false
+   }
+  ],
+  "answer": "B",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 2,
+  "competing_dx": [
+   "急进性肾小球肾炎",
+   "急性肾损伤（肾前性）",
+   "肾病综合征"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "血清 C3 降低",
+   "24 小时尿量 500ml"
+  ],
+  "topic": "链球菌感染后急性肾小球肾炎的治疗原则",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P476",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第二章/P476",
+   "大纲/教材P476"
+  ],
+  "keypoint_ref": [
+   "第7条"
+  ],
+  "teacher_anchor": "教材P476：支持及对症治疗为主。急性期卧床休息，静待肉眼血尿消失、水肿消退及血压恢复正常。同时限盐、利尿消肿以降血压和预防心脑血管并发症的发生。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第7条",
+    "title": "急性肾小球肾炎治疗",
+    "evidence": "题干为儿童链球菌感染后急性肾炎伴高血压与少尿，问首选处理，正确项为限盐利尿降压"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第7条",
+    "title": "急性肾炎的抗生素使用指征",
+    "evidence": "D 项把无现症感染时的常规抗生素治疗当作必要措施，与教材不需使用抗生素相悖"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "儿童扁桃体炎后 12 天出现水肿、血尿与补体 C3 下降，符合链球菌感染后急性肾小球肾炎，属自限性疾病。教材规定治疗以支持及对症为主：急性期卧床休息，限盐、利尿消肿以降血压并预防心脑血管并发症。该患者血肌酐与尿量尚在可接受范围，无需激素冲击或透析，故限盐、利尿消肿、控制容量负荷最合适。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "甲泼尼龙冲击用于急进性肾炎等强化治疗，急性肾炎为自限性，激素冲击既无指征又增加风险。",
+     "misconception_id": "MC-NEP-M02-03",
+     "misconception": "把糖皮质激素冲击或透析当作急性肾小球肾炎的常规起始治疗",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "B",
+     "truth": true,
+     "why": "限盐与利尿可消除水钠潴留、降低容量负荷，是教材规定的对症治疗核心，可防止心脑血管并发症。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "该患者血肌酐 96μmol/L、尿量 500ml/d，未达透析指征，立即透析属过度治疗。",
+     "misconception_id": "MC-NEP-M02-03",
+     "misconception": "把糖皮质激素冲击或透析当作急性肾小球肾炎的常规起始治疗",
+     "distractor_mechanism": "timing_error"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "本病发作时感染灶多已控制，教材明确如无现症感染证据不需要使用抗生素，常规用药无益。",
+     "misconception_id": "MC-NEP-M02-09",
+     "misconception": "把清除前驱感染灶理解为必须常规足疗程使用抗生素",
+     "distractor_mechanism": "outdated_guideline"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "肾炎性水肿由球管失衡致水钠潴留、血容量偏高，输注白蛋白扩容会加重容量负荷与高血压。",
+     "misconception_id": "MC-NEP-M02-10",
+     "misconception": "把肾炎性水肿当作低血容量性水肿，误用白蛋白扩容后利尿",
+     "distractor_mechanism": "direction_error"
+    }
+   ],
+   "key_takeaway": "儿童链球菌感染后急性肾炎以限盐、利尿、降压为主；激素冲击留给新月体肾炎，透析只看指征，抗生素只在有现症感染时用。",
+   "source_quote": "同时限盐、利尿消肿以降血压和预防心脑血管并发症的发生",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P476",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q008",
+  "sequence": 8,
+  "schema_version": "2.2",
+  "module": "M02",
+  "module_name": "原发性肾小球疾病（概述、急性肾炎、急进性肾炎、IgA 肾病）",
+  "type": "A3",
+  "case_group": "CG-M02-01",
+  "stem": "（共用题干）男，22 岁。上呼吸道感染后 1 天出现全程无痛性肉眼血尿，血压 118/76mmHg，血肌酐 78μmol/L，血清免疫球蛋白 A 升高，血清 C3 正常，24 小时尿蛋白定量 0.6g。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性链球菌感染后肾小球肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "IgA 肾病",
+    "is_correct": true
+   },
+   {
+    "label": "C",
+    "text": "急进性肾小球肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "慢性肾小球肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "薄基底膜肾病",
+    "is_correct": false
+   }
+  ],
+  "answer": "B",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 2,
+  "competing_dx": [
+   "急性链球菌感染后肾小球肾炎",
+   "急进性肾小球肾炎",
+   "薄基底膜肾病"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "上呼吸道感染后 1 天",
+   "血清 C3 正常"
+  ],
+  "topic": "IgA 肾病的临床诊断",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P478",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第二章/P478",
+   "大纲/教材P478"
+  ],
+  "keypoint_ref": [
+   "第9条"
+  ],
+  "teacher_anchor": "教材P478：IgA 肾病起病隐匿，常表现为无症状性血尿，伴或不伴蛋白尿，往往体检时才发现。有些病人起病前数小时或数日内有上呼吸道或消化道感染等前驱症状，主要表现为发作性的肉眼血尿，可持续数小时或数日，肉眼血尿常为无痛性，可伴少量蛋白尿，多见于儿童和年轻人。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第9条",
+    "title": "IgA 肾病临床表现",
+    "evidence": "题干上呼吸道感染后 1 天出现无痛性肉眼血尿、血清 IgA 升高、C3 正常，指向 IgA 肾病"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第6条",
+    "title": "链球菌感染后急性肾小球肾炎",
+    "evidence": "A 项为最强竞争者，但其潜伏期应为 7～21 天且伴血清 C3 一过性下降"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "IgA 肾病多见于儿童和年轻人，起病前数小时至数日有上呼吸道或消化道感染等前驱症状，主要表现为发作性无痛性肉眼血尿，可伴少量蛋白尿，部分病人血清 IgA 升高而补体 C3 一般正常。本例上感后 1 天即出现无痛性肉眼血尿、IgA 升高、C3 正常、肾功能正常，与 IgA 肾病最相符。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "链球菌感染后肾炎潜伏期 7～21 天并有 C3 一过性下降，本例感染后 1 天起病且 C3 正常，时间与补体均不支持。",
+     "misconception_id": "MC-NEP-M02-06",
+     "misconception": "把上呼吸道感染后短期出现的血尿一律按链球菌感染后肾炎解释，忽视潜伏期与补体变化",
+     "distractor_mechanism": "timing_error"
+    },
+    {
+     "label": "B",
+     "truth": true,
+     "why": "感染后 1 天的无痛性肉眼血尿、血清 IgA 升高、C3 正常，正是 IgA 肾病的典型组合。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "急进性肾炎以短期内肾功能进行性恶化为特征，本例血肌酐 78μmol/L 完全正常，不符合。",
+     "misconception_id": "MC-NEP-M02-07",
+     "misconception": "仅凭肉眼血尿就考虑急进性肾小球肾炎，忽视肾功能是否快速恶化",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "慢性肾炎要求尿检异常持续 3 个月以上，本例病程仅 1 天，不符合慢性病程要求。",
+     "misconception_id": "MC-NEP-M02-08",
+     "misconception": "把病程仅数日的血尿判为慢性肾小球肾炎，忽视 3 个月以上的病程条件",
+     "distractor_mechanism": "timing_error"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "薄基底膜肾病表现为持续性镜下血尿、多有阳性家族史，不以感染后发作性肉眼血尿为特点。",
+     "misconception_id": "MC-NEP-M02-11",
+     "misconception": "把薄基底膜肾病当作感染后发作性肉眼血尿的常见原因",
+     "distractor_mechanism": "similar_presentation"
+    }
+   ],
+   "key_takeaway": "感染后 1～3 天出现无痛性肉眼血尿、IgA 升高而 C3 正常，先判 IgA 肾病；潜伏期 1～3 周、C3 下降才是链球菌感染后肾炎。",
+   "source_quote": "有些病人起病前数小时或数日内有上呼吸道或消化道感染等前驱症状，主要表现为发作性的肉眼血尿",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P478",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q009",
+  "sequence": 9,
+  "schema_version": "2.2",
+  "module": "M02",
+  "module_name": "原发性肾小球疾病（概述、急性肾炎、急进性肾炎、IgA 肾病）",
+  "type": "A3",
+  "case_group": "CG-M02-01",
+  "stem": "（共用题干）男，22 岁。上呼吸道感染后 1 天出现全程无痛性肉眼血尿，血压 118/76mmHg，血肌酐 78μmol/L，血清免疫球蛋白 A 升高，血清 C3 正常，24 小时尿蛋白定量 0.6g。与急性链球菌感染后肾小球肾炎鉴别时，最有价值的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "潜伏期长短与补体变化",
+    "is_correct": true
+   },
+   {
+    "label": "B",
+    "text": "有无血压升高及水肿",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "有无肉眼血尿发作",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "尿蛋白定量的高低",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "有无镜下血尿及管型",
+    "is_correct": false
+   }
+  ],
+  "answer": "A",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "分析",
+  "bloom_level": "分析",
+  "difficulty_tier": "L3",
+  "step_count": 3,
+  "competing_dx": [
+   "急性链球菌感染后肾小球肾炎",
+   "薄基底膜肾病",
+   "非 IgA 系膜增生性肾小球肾炎"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "血清 C3 正常",
+   "上呼吸道感染后 1 天"
+  ],
+  "topic": "IgA 肾病与链球菌感染后急性肾炎的鉴别",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P479",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第二章/P479",
+   "大纲/教材P479"
+  ],
+  "keypoint_ref": [
+   "第9条"
+  ],
+  "teacher_anchor": "教材P479：1. 急性链球菌感染后肾炎 此病潜伏期较长（7～21 天），有自愈倾向。IgA 肾病潜伏期短，呈反复发作，结合实验室检查（如血IgA 水平增高、血C3 水平的动态变化、ASO 试验阳性等），尤其是肾活检可资鉴别。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第9条",
+    "title": "IgA 肾病与急性链球菌感染后肾炎鉴别",
+    "evidence": "题干要求选出最有价值的鉴别点，D 项落在潜伏期与 C3 动态上"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第6条",
+    "title": "链球菌感染后肾炎的补体变化",
+    "evidence": "高血压、水肿、血尿与管型在两病中均可出现，不能起鉴别作用"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "教材指出急性链球菌感染后肾炎潜伏期较长，为 7～21 天，有自愈倾向；IgA 肾病潜伏期短、呈反复发作，并需结合血 IgA 水平、血 C3 水平的动态变化与 ASO 试验鉴别，确诊靠肾活检。两病均可有血尿、蛋白尿、水肿与高血压，因此潜伏期长短与补体 C3 是否一过性下降才是最有价值的鉴别点。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": true,
+     "why": "链球菌感染后肾炎潜伏期 7～21 天且 C3 一过性下降，IgA 肾病潜伏期短、C3 多正常，正是教材点明的鉴别要点。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "高血压与水肿在两种疾病中都可出现，属共有表现，无法据以区分。",
+     "misconception_id": "MC-NEP-M02-06",
+     "misconception": "把上呼吸道感染后短期出现的血尿一律按链球菌感染后肾炎解释，忽视潜伏期与补体变化",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "两病都可表现为肉眼血尿，有无肉眼血尿发作不具鉴别价值。",
+     "misconception_id": "MC-NEP-M02-06",
+     "misconception": "把上呼吸道感染后短期出现的血尿一律按链球菌感染后肾炎解释，忽视潜伏期与补体变化",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "两病蛋白尿都可为少量至中等量，尿蛋白定量高低重叠明显，不能作为关键鉴别点。",
+     "misconception_id": "MC-NEP-M02-06",
+     "misconception": "把上呼吸道感染后短期出现的血尿一律按链球菌感染后肾炎解释，忽视潜伏期与补体变化",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "镜下血尿与管型在两病中均可出现，作为鉴别指标缺乏特异性。",
+     "misconception_id": "MC-NEP-M02-06",
+     "misconception": "把上呼吸道感染后短期出现的血尿一律按链球菌感染后肾炎解释，忽视潜伏期与补体变化",
+     "distractor_mechanism": "overgeneralization"
+    }
+   ],
+   "key_takeaway": "两病共有的表现（血尿、水肿、高血压、蛋白尿）不能鉴别；能鉴别的是潜伏期长短、C3 动态与血 IgA 水平，最终靠肾活检。",
+   "source_quote": "此病潜伏期较长（7～21 天），有自愈倾向",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P479",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q010",
+  "sequence": 10,
+  "schema_version": "2.2",
+  "module": "M03",
+  "module_name": "肾病综合征与慢性肾小球肾炎",
+  "type": "A1",
+  "case_group": null,
+  "stem": "引起儿童肾病综合征的最常见肾小球疾病是",
+  "options": [
+   {
+    "label": "A",
+    "text": "脂性肾病",
+    "is_correct": true
+   },
+   {
+    "label": "B",
+    "text": "新月体性肾小球肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "IgA 肾病",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "节段性肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "弥漫增生型肾炎",
+    "is_correct": false
+   }
+  ],
+  "answer": "A",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "记忆",
+  "bloom_level": "记忆",
+  "difficulty_tier": "L1",
+  "step_count": 1,
+  "competing_dx": [
+   "新月体性肾炎",
+   "IgA 肾病",
+   "弥漫增生型肾炎"
+  ],
+  "negative_cues": [],
+  "conditionals": [],
+  "topic": "儿童原发性肾病综合征最常见的病理类型",
+  "source_type": "考研真题",
+  "license": "public_noncommercial",
+  "source_page": "P481",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第五章/P481",
+   "大纲/教材P481",
+   "[源:考研真题 GS-2002-037]"
+  ],
+  "kaoyan_origin": {
+   "gs_id": "GS-2002-037",
+   "year": 2002,
+   "source": "2002考研西综·第37题",
+   "mode": "原题",
+   "answer_confidence": "high"
+  },
+  "keypoint_ref": [
+   "第11条"
+  ],
+  "teacher_anchor": "教材P481：1. 微小病变型肾病（minimal change disease，MCD） 光镜下肾小球无明显病变，近端肾小管上皮细胞可见脂肪变性。……MCD 占儿童原发性肾病综合征的80%～90%，占成人原发性肾病综合征的5%～10%。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第11条",
+    "title": "肾病综合征病理类型的年龄分布",
+    "evidence": "题干直接问儿童肾病综合征最常见的病理类型，答案脂性肾病即微小病变型肾病"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第8条",
+    "title": "新月体性肾炎的临床定位",
+    "evidence": "B 项把新月体性肾炎当作儿童肾病综合征最常见类型，混淆了急进性肾炎的病理"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "脂性肾病即微小病变型肾病（MCD），光镜下肾小球无明显病变、近端肾小管上皮细胞可见脂肪变性，电镜下为足细胞足突广泛融合。教材明确 MCD 占儿童原发性肾病综合征的 80%～90%，占成人仅 5%～10%，故儿童肾病综合征最常见的肾小球疾病是脂性肾病。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": true,
+     "why": "脂性肾病即微小病变型肾病，占儿童原发性肾病综合征的 80%～90%，是儿童最常见的病理类型。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "新月体性肾小球肾炎属急进性肾炎的病理类型，以肾功能急剧恶化与广泛新月体为特征，儿童肾病综合征罕见。",
+     "misconception_id": "MC-NEP-M02-21",
+     "misconception": "把新月体性肾炎当作儿童肾病综合征最常见的病理类型",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "IgA 肾病是儿童与青年发作性血尿的常见原因，但儿童原发性肾病综合征仍以微小病变型为主。",
+     "misconception_id": "MC-NEP-M02-22",
+     "misconception": "把 IgA 肾病当作儿童肾病综合征最常见的病理类型",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "节段性病变即局灶节段性肾小球硬化，以青少年多见，占儿童肾病综合征比例远低于微小病变型。",
+     "misconception_id": "MC-NEP-M02-23",
+     "misconception": "把节段性病变当作儿童肾病综合征的主要病理类型",
+     "distractor_mechanism": "population_mismatch"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "弥漫增生型肾炎多为感染后毛细血管内增生，儿童肾病综合征的病理改变以微小病变占绝大多数。",
+     "misconception_id": "MC-NEP-M02-24",
+     "misconception": "把弥漫增生型肾炎当作儿童肾病综合征的主要类型",
+     "distractor_mechanism": "adjacent_concept"
+    }
+   ],
+   "key_takeaway": "儿童肾病综合征记「微小病变（脂性肾病）占 80%～90%」，成人仅 5%～10%；中老年则转向膜性肾病。",
+   "source_quote": "MCD 占儿童原发性肾病综合征的80%～90%",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "原题题干与选项逐字保真（GS-2002-037）",
+    "teacher_anchor 逐字核对教材 P481",
+    "结构字段与机制标签完整",
+    "answer 与 is_correct 一致",
+    "B 项按教材 P473 病理分型写为完整术语「新月体性肾小球肾炎」（原卷简写「新月体性肾炎」），答案与知识点未变"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q011",
+  "sequence": 11,
+  "schema_version": "2.2",
+  "module": "M03",
+  "module_name": "肾病综合征与慢性肾小球肾炎",
+  "type": "A1",
+  "case_group": null,
+  "stem": "原发性肾病综合征患者,首次治疗,每日用强的松60mg。三周后尿蛋白仍为(++++)，此时应",
+  "options": [
+   {
+    "label": "A",
+    "text": "改用地塞米松",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "将强的松加量到 80mg/日",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "改用环磷酰胺",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "用原量继续观察",
+    "is_correct": true
+   },
+   {
+    "label": "E",
+    "text": "减少强的松用量到 40mg/日, 加用免疫抑制剂",
+    "is_correct": false
+   }
+  ],
+  "answer": "D",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "bloom": "理解",
+  "bloom_level": "理解",
+  "difficulty_tier": "L2",
+  "step_count": 1,
+  "competing_dx": [
+   "激素抵抗型肾病综合征",
+   "激素依赖型肾病综合征",
+   "肾病综合征复发"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "三周后尿蛋白仍为(++++)"
+  ],
+  "topic": "肾病综合征糖皮质激素足量疗程的判断",
+  "source_type": "考研真题",
+  "license": "public_noncommercial",
+  "source_page": "P485",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第五章/P485",
+   "大纲/教材P485",
+   "[源:考研真题 GS-1997-053]"
+  ],
+  "kaoyan_origin": {
+   "gs_id": "GS-1997-053",
+   "year": 1997,
+   "source": "1997考研西综·第53题",
+   "mode": "原题",
+   "answer_confidence": "medium"
+  },
+  "keypoint_ref": [
+   "第13条"
+  ],
+  "teacher_anchor": "教材P485：糖皮质激素和细胞毒药物仍然是治疗肾病综合征的主要药物，原则上应根据肾活检病理结果选择治疗药物及确定疗程。……使用原则为：①起始足量，常用药物为泼尼松1mg/（kg·d），口服8 周，必要时可延长至12 周；②缓慢减药，足量治疗后每2～3 周减原用量的10%，当减至20mg/d 时病情易复发，应更加缓慢减量；③长期维持，最后以最小有效剂量（10mg/d）再维持半年左右。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第13条",
+    "title": "糖皮质激素治疗原则",
+    "evidence": "题干首次治疗仅 3 周、尿蛋白仍四个加号，考的是足量疗程未满时如何处理"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第13条",
+    "title": "激素抵抗的判定时机",
+    "evidence": "C、E 项在 3 周时即换用环磷酰胺或减量加免疫抑制剂，时机过早"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "教材规定激素起始足量，泼尼松 1mg/（kg·d）口服 8 周，必要时可延长至 12 周，之后再缓慢减药。本例首次治疗每日 60mg、仅用 3 周，远未达足量疗程，此时尿蛋白仍四个加号并不构成激素抵抗，正确做法是维持原量继续观察至足量 8 周再评价疗效，故选用原量继续观察。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "地塞米松半衰期长、副作用大，教材已指出其现已少用，不能作为疗效未显时的替换制剂。",
+     "misconception_id": "MC-NEP-M03-13",
+     "misconception": "把地塞米松当作激素疗效不佳时的首选替换制剂",
+     "distractor_mechanism": "outdated_guideline"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "泼尼松起始足量按体重 1mg/（kg·d）计算，盲目加量至 80mg/d 只增加副作用而不提高缓解率。",
+     "misconception_id": "MC-NEP-M03-14",
+     "misconception": "激素疗效不佳时靠加大剂量解决，而不是补足足量疗程",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "首次治疗仅 3 周，尚未用满 8 周足量疗程，此时换用环磷酰胺属判定激素抵抗过早。",
+     "misconception_id": "MC-NEP-M03-07",
+     "misconception": "在激素疗程未足、未判明激素抵抗前就换用二线免疫抑制剂",
+     "distractor_mechanism": "timing_error"
+    },
+    {
+     "label": "D",
+     "truth": true,
+     "why": "足量激素需口服 8 周、必要时延至 12 周，3 周未缓解仍应用原量继续观察。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "疗程未足即减量并加免疫抑制剂，会削弱诱导缓解强度，属时机错误且未排除依从性问题。",
+     "misconception_id": "MC-NEP-M03-07",
+     "misconception": "在激素疗程未足、未判明激素抵抗前就换用二线免疫抑制剂",
+     "distractor_mechanism": "timing_error"
+    }
+   ],
+   "key_takeaway": "激素疗效以足量 8 周为判断节点：疗程未满不换药、不加量、不减量；满 8 周未缓解可延至 12 周，仍不缓解才判激素抵抗并加二线药。",
+   "source_quote": "口服8 周，必要时可延长至12 周",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "原题题干与选项逐字保真（GS-1997-053）",
+    "teacher_anchor 逐字核对教材 P485",
+    "结构字段与机制标签完整",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q012",
+  "sequence": 12,
+  "schema_version": "2.2",
+  "module": "M03",
+  "module_name": "肾病综合征与慢性肾小球肾炎",
+  "type": "A2",
+  "case_group": null,
+  "stem": "男，58 岁。双下肢水肿 1 个月。24 小时尿蛋白定量 4.2g，血浆白蛋白 26g/L，血甘油三酯 3.1mmol/L，血肌酐 86μmol/L。该患者诊断肾病综合征的必备条件是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "尿蛋白>3.5g/d 一项即可确诊",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "血浆白蛋白<30g/L 一项即可确诊",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "血肌酐升高合并水肿两项即可确诊",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "水肿合并高脂血症两项即可确诊",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "尿蛋白>3.5g/d＋白蛋白<30g/L",
+    "is_correct": true
+   }
+  ],
+  "answer": "E",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 2,
+  "competing_dx": [
+   "肾炎综合征",
+   "无症状性蛋白尿",
+   "继发性肾病综合征"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "血浆白蛋白 26g/L",
+   "24 小时尿蛋白定量 4.2g"
+  ],
+  "topic": "肾病综合征诊断的两项必备条件",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P480",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第五章/P480",
+   "大纲/教材P480"
+  ],
+  "keypoint_ref": [
+   "第10条"
+  ],
+  "teacher_anchor": "教材P480：肾病综合征（nephrotic syndrome，NS）是一组以大量蛋白尿（＞3.5g/d）、低白蛋白血症（血清白蛋白＜30g/L）、水肿、高脂血症为基本特征的临床综合征。其中前两项为诊断的必备条件。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第10条",
+    "title": "肾病综合征诊断标准",
+    "evidence": "题干给出尿蛋白 4.2g/d、白蛋白 26g/L、甘油三酯 3.1mmol/L，要求挑出诊断必备条件"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第10条",
+    "title": "水肿与高脂血症的非必备性",
+    "evidence": "D 项把水肿与高脂血症当作诊断依据，忽视二者属常见而非必备条件"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "教材规定肾病综合征以大量蛋白尿（＞3.5g/d）、低白蛋白血症（血清白蛋白＜30g/L）、水肿、高脂血症为基本特征，其中前两项为诊断的必备条件。该患者尿蛋白 4.2g/d、白蛋白 26g/L，两项兼备即可诊断；单看大量蛋白尿或单看低白蛋白血症都不足以诊断，水肿与高脂血症只是常见伴随表现，故必备条件是尿蛋白＞3.5g/d 加白蛋白＜30g/L。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "只凭大量蛋白尿一项不能诊断，低白蛋白血症同样是必备条件，本例白蛋白已降至 26g/L。",
+     "misconception_id": "MC-NEP-M03-15",
+     "misconception": "只凭大量蛋白尿一项即诊断肾病综合征，漏掉低白蛋白血症这一必备条件",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "只凭低白蛋白血症也不够，必须同时具备大量蛋白尿，否则需先排除肝病、营养不良等原因。",
+     "misconception_id": "MC-NEP-M03-16",
+     "misconception": "只凭低白蛋白血症即诊断肾病综合征，漏掉大量蛋白尿这一必备条件",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "血肌酐升高反映肾功能损害、与诊断标准无关，本例血肌酐 86μmol/L 本就正常。",
+     "misconception_id": "MC-NEP-M03-18",
+     "misconception": "把肾功能损害的表现当作肾病综合征的诊断条件",
+     "distractor_mechanism": "mechanism_confusion"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "水肿与高脂血症属常见伴随表现，教材未将其列为诊断必备条件，不能作为诊断依据。",
+     "misconception_id": "MC-NEP-M03-17",
+     "misconception": "把水肿与高脂血症当作肾病综合征的诊断依据，忽视二者并非必备条件",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "E",
+     "truth": true,
+     "why": "大量蛋白尿与低白蛋白血症正是教材点明的两项必备条件，本例两项均已达到。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    }
+   ],
+   "key_takeaway": "肾病综合征诊断只认两项硬指标：尿蛋白＞3.5g/d 与白蛋白＜30g/L；水肿、高脂血症、血肌酐都只是伴随或无关指标。",
+   "source_quote": "其中前两项为诊断的必备条件",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P480",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q013",
+  "sequence": 13,
+  "schema_version": "2.2",
+  "module": "M03",
+  "module_name": "肾病综合征与慢性肾小球肾炎",
+  "type": "A2",
+  "case_group": null,
+  "stem": "女，26 岁。肾病综合征，24 小时尿蛋白 5.6g，血浆白蛋白 19g/L。3 天前突发右侧腰部持续性胀痛、肉眼血尿，尿量由 1500ml/d 减至 600ml/d，血肌酐由 78μmol/L 升至 132μmol/L。最可能的并发症是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性肾损伤",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "尿路感染",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "肾结石形成",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "低血容量状态",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "肾静脉血栓",
+    "is_correct": true
+   }
+  ],
+  "answer": "E",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "bloom": "分析",
+  "bloom_level": "分析",
+  "difficulty_tier": "L3",
+  "step_count": 3,
+  "competing_dx": [
+   "肾病综合征并发急性肾损伤",
+   "尿路感染",
+   "肾结石"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "3 天前突发右侧腰部持续性胀痛、肉眼血尿",
+   "血浆白蛋白 19g/L"
+  ],
+  "topic": "肾病综合征血栓栓塞并发症的识别",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P483",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第五章/P483",
+   "大纲/教材P483"
+  ],
+  "keypoint_ref": [
+   "第12条"
+  ],
+  "teacher_anchor": "教材P483：2. 血栓和栓塞 由于血液浓缩（有效血容量减少）及高脂血症造成血液黏稠度增加。……加之肾病综合征时血小板过度激活、应用利尿剂和糖皮质激素等进一步加重高凝状态。……因此，NS 容易发生血栓、栓塞并发症，以肾静脉血栓最为常见，发生率约10%～50%，其中3/4 病例因慢性形成，临床并无症状",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第12条",
+    "title": "肾病综合征血栓栓塞并发症",
+    "evidence": "题干突发单侧腰部胀痛、肉眼血尿伴肾功能恶化，指向肾静脉血栓"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第12条",
+    "title": "肾病综合征并发急性肾损伤",
+    "evidence": "A 项把少尿与血肌酐升高直接归为急性肾损伤，忽略腰痛与肉眼血尿的定位价值"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "肾病综合征因血液浓缩、高脂血症、抗凝与纤溶因子丢失以及血小板过度激活处于高凝状态，教材指出以肾静脉血栓最为常见，发生率约 10%～50%，突发腰痛或肋腹痛伴血尿、蛋白尿加重与肾功能损害是其典型提示。本例白蛋白仅 19g/L、突发单侧腰部持续性胀痛与肉眼血尿，随后尿量减少、血肌酐上升，最符合肾静脉血栓。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "急性肾损伤确可继发，但本例先有单侧腰部胀痛与肉眼血尿，提示血栓事件在先，急性肾损伤只是其结果。",
+     "misconception_id": "MC-NEP-M02-17",
+     "misconception": "把突发腰痛、肉眼血尿伴肾功能恶化直接归为急性肾损伤，忽视肾静脉血栓",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "无发热与尿路刺激征，尿路感染无法解释单侧持续性腰痛与大量蛋白尿背景下的肾功能恶化。",
+     "misconception_id": "MC-NEP-M02-18",
+     "misconception": "在无发热与尿路刺激征时把肉眼血尿伴腰痛归为尿路感染",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "肾结石多为阵发性绞痛并向会阴放射，本例为持续性胀痛，且肾病综合征并不增加结石风险。",
+     "misconception_id": "MC-NEP-M02-19",
+     "misconception": "把肾病综合征病人的突发腰痛与血尿归为肾结石",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "低血容量可致肾前性氮质血症，但不会引起单侧腰部剧痛与肉眼血尿，与本题表现不符。",
+     "misconception_id": "MC-NEP-M02-20",
+     "misconception": "把肾病综合征的容量不足当作本次急性加重的原因",
+     "distractor_mechanism": "mechanism_confusion"
+    },
+    {
+     "label": "E",
+     "truth": true,
+     "why": "高凝状态下以肾静脉血栓最常见，突发单侧腰痛伴肉眼血尿与肾功能恶化正是其特征性提示。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    }
+   ],
+   "key_takeaway": "肾病综合征病人突发单侧腰痛或肋腹痛＋血尿＋肾功能恶化，先想肾静脉血栓；白蛋白＜20g/L 即应开始预防性抗凝。",
+   "source_quote": "以肾静脉血栓最为常见，发生率约10%～50%",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P483",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q014",
+  "sequence": 14,
+  "schema_version": "2.2",
+  "module": "M03",
+  "module_name": "肾病综合征与慢性肾小球肾炎",
+  "type": "A3",
+  "case_group": "CG-M03-01",
+  "stem": "（共用题干）男，34 岁。14 个月前体检发现蛋白尿，24 小时尿蛋白定量 1.8g，尿沉渣红细胞 8 个/高倍视野；当时血压 118/76mmHg，近 3 个月血压升至 150/95mmHg，血肌酐 132μmol/L，血钾 4.2mmol/L；无皮疹与关节痛，无糖尿病史，乙型肝炎病毒标志物阴性。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性肾小球肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "无症状性血尿和/或蛋白尿",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "原发性高血压肾损害",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "糖尿病肾脏病",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "慢性肾小球肾炎",
+    "is_correct": true
+   }
+  ],
+  "answer": "E",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 2,
+  "competing_dx": [
+   "原发性高血压肾损害",
+   "无症状性血尿和/或蛋白尿",
+   "糖尿病肾脏病"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "14 个月前体检发现蛋白尿",
+   "近 3 个月血压升至 150/95mmHg"
+  ],
+  "topic": "慢性肾小球肾炎的诊断与鉴别",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P488",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第七章/P488",
+   "大纲/教材P488"
+  ],
+  "keypoint_ref": [
+   "第14条"
+  ],
+  "teacher_anchor": "教材P488：病人尿检异常（蛋白尿、血尿），伴或不伴水肿及高血压，病史达3 个月以上，无论有无肾功能损害均应考虑此病，在除外继发性肾小球肾炎及遗传性肾小球肾炎后，临床上可诊断为慢性肾炎。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第14条",
+    "title": "慢性肾小球肾炎诊断",
+    "evidence": "题干蛋白尿持续 14 个月、新出现高血压、血肌酐轻度升高，符合慢性肾炎的诊断条件"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第14条",
+    "title": "原发性高血压肾损害的鉴别",
+    "evidence": "C 项要求先有长期高血压史再出现肾损害，本例先有蛋白尿 14 个月而高血压仅 3 个月"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "慢性肾炎以蛋白尿、血尿、高血压和水肿为基本表现，病情迁延，诊断要求尿检异常病史达 3 个月以上，伴或不伴水肿与高血压，并除外继发性与遗传性肾小球疾病。本例蛋白尿已 14 个月、尿沉渣见血尿，近期出现高血压与血肌酐轻度升高，乙肝与糖尿病均已排除，符合慢性肾小球肾炎；高血压出现在蛋白尿之后，故不支持原发性高血压肾损害。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "急性肾炎病程在数周至数月内自限，本例蛋白尿已持续 14 个月，病程不支持急性起病。",
+     "misconception_id": "MC-NEP-M02-12",
+     "misconception": "把病程超过 3 个月的持续性蛋白尿与血尿判为急性肾小球肾炎",
+     "distractor_mechanism": "timing_error"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "无症状性血尿和/或蛋白尿要求无水肿、无高血压且无肾功能损害，本例已有高血压与血肌酐升高，不符合。",
+     "misconception_id": "MC-NEP-M03-09",
+     "misconception": "忽视高血压与血肌酐升高，仍把有症状的蛋白尿判为无症状性血尿和/或蛋白尿",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "原发性高血压肾损害先有较长期高血压史再出现肾损害，且以肾小管功能损害为先，本例顺序相反。",
+     "misconception_id": "MC-NEP-M03-10",
+     "misconception": "把先出现蛋白尿、后出现高血压的病例按原发性高血压肾损害解释，先后顺序颠倒",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "糖尿病肾脏病要求有糖尿病病史且常见于病程 10 年以上者，本例明确无糖尿病史。",
+     "misconception_id": "MC-NEP-M03-11",
+     "misconception": "在明确无糖尿病史的情况下仍把蛋白尿归因于糖尿病肾脏病",
+     "distractor_mechanism": "population_mismatch"
+    },
+    {
+     "label": "E",
+     "truth": true,
+     "why": "蛋白尿血尿持续 14 个月、伴新发高血压与血肌酐升高，且已排除继发性肾病，符合慢性肾小球肾炎。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    }
+   ],
+   "key_takeaway": "慢性肾炎的诊断三要素：尿检异常持续 3 个月以上、可伴高血压或肾功能损害、已除外继发性与遗传性肾病；高血压出现在肾损害之后更支持慢性肾炎。",
+   "source_quote": "病人尿检异常（蛋白尿、血尿），伴或不伴水肿及高血压，病史达3 个月以上",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P488",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q015",
+  "sequence": 15,
+  "schema_version": "2.2",
+  "module": "M03",
+  "module_name": "肾病综合征与慢性肾小球肾炎",
+  "type": "A3",
+  "case_group": "CG-M03-01",
+  "stem": "（共用题干）男，34 岁。14 个月前体检发现蛋白尿，24 小时尿蛋白定量 1.8g，尿沉渣红细胞 8 个/高倍视野；当时血压 118/76mmHg，近 3 个月血压升至 150/95mmHg，血肌酐 132μmol/L，血钾 4.2mmol/L；无皮疹与关节痛，无糖尿病史，乙型肝炎病毒标志物阴性。关于其血压与尿蛋白的控制目标及首选药物，下列正确的是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "利尿剂，血压<140、尿蛋白<3g",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "钙拮抗剂，血压<150、尿蛋白<2g",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "ACEI，血压<120、尿蛋白<1g",
+    "is_correct": true
+   },
+   {
+    "label": "D",
+    "text": "β阻滞剂，血压<130、尿蛋白<1g",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "α阻滞剂，血压<150、尿蛋白<2g",
+    "is_correct": false
+   }
+  ],
+  "answer": "C",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "bloom": "分析",
+  "bloom_level": "分析",
+  "difficulty_tier": "L4",
+  "step_count": 3,
+  "competing_dx": [
+   "原发性高血压（普通人群降压目标）",
+   "肾病综合征的大量蛋白尿控制",
+   "高血压合并慢性肾脏病的联合用药"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "血肌酐 132μmol/L",
+   "血钾 4.2mmol/L"
+  ],
+  "topic": "慢性肾小球肾炎的降压与降尿蛋白目标及首选药物",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P488-P489",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第七章/P488-P489",
+   "大纲/教材P488"
+  ],
+  "keypoint_ref": [
+   "第15条"
+  ],
+  "teacher_anchor": "教材P488：高血压的治疗目标：大多数成年病人目标收缩压应＜120mmHg。尿蛋白的治疗目标：争取减少至＜1g/d。教材P489：如无禁忌证，应尽量首选具有肾脏保护作用的降压药如ACEI 或ARB 类药物。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第15条",
+    "title": "慢性肾小球肾炎治疗",
+    "evidence": "题干问降压与降尿蛋白目标及首选药物，正确项给出收缩压＜120mmHg、尿蛋白＜1g/d 与 ACEI"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第15条",
+    "title": "普通高血压的降压目标与用药",
+    "evidence": "B、E 项把 150mmHg 与 2～3g/d 的宽松目标当作达标值，未用教材的收缩压＜120mmHg、尿蛋白＜1g/d"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "教材规定慢性肾炎高血压的治疗目标为大多数成年病人收缩压＜120mmHg、尿蛋白争取降至＜1g/d，并首选具肾脏保护作用的 ACEI 或 ARB：后者扩张出球小动脉、降低肾小球内高压，减少尿蛋白并延缓肾功能恶化。本例血肌酐 132μmol/L、血钾 4.2mmol/L，可安全使用 ACEI 并监测血钾与肾功能。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "140mmHg 与 3g/d 是普通高血压与一般蛋白尿的门槛，未达慢性肾炎更严格的靶目标，利尿剂也无降尿蛋白的肾脏保护作用。",
+     "misconception_id": "MC-NEP-M03-12",
+     "misconception": "把普通高血压的降压目标与一线药物套用到慢性肾炎伴蛋白尿的病人，忽视更严格的靶目标与 ACEI/ARB 首选",
+     "distractor_mechanism": "outdated_guideline"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "150mmHg 与 2g/d 均未达收缩压＜120mmHg、尿蛋白＜1g/d 的靶目标，钙拮抗剂降尿蛋白作用不及 ACEI 或 ARB。",
+     "misconception_id": "MC-NEP-M03-12",
+     "misconception": "把普通高血压的降压目标与一线药物套用到慢性肾炎伴蛋白尿的病人，忽视更严格的靶目标与 ACEI/ARB 首选",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "C",
+     "truth": true,
+     "why": "血压＜120、尿蛋白＜1g/d 与首选 ACEI 完全对应教材的靶目标与肾脏保护用药，本例血钾正常可安全使用。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "把目标定在＜130mmHg 仍未达到收缩压＜120mmHg 的靶目标，舒张压＜90mmHg 只是普通高血压门槛；β 受体阻滞剂也不是减少尿蛋白的首选药物。",
+     "misconception_id": "MC-NEP-M03-12",
+     "misconception": "把普通高血压的降压目标与一线药物套用到慢性肾炎伴蛋白尿的病人，忽视更严格的靶目标与 ACEI/ARB 首选",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "150mmHg 与 2g/d 明显偏离靶目标，α 受体阻滞剂不具减少尿蛋白的肾脏保护证据。",
+     "misconception_id": "MC-NEP-M03-12",
+     "misconception": "把普通高血压的降压目标与一线药物套用到慢性肾炎伴蛋白尿的病人，忽视更严格的靶目标与 ACEI/ARB 首选",
+     "distractor_mechanism": "overgeneralization"
+    }
+   ],
+   "key_takeaway": "慢性肾炎靶目标比普通高血压更严：收缩压＜120mmHg、尿蛋白＜1g/d，首选 ACEI 或 ARB；用药后血肌酐较基础值升幅超过 30% 需停药。",
+   "source_quote": "大多数成年病人目标收缩压应＜120mmHg",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "teacher_anchor 逐字核对教材 P488-P489",
+    "结构字段与机制标签完整",
+    "concepts 主/鉴别标注一致",
+    "answer 与 is_correct 一致"
+   ],
+   "human_check": "",
+   "suggested_action": "直接发布"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q016",
+  "sequence": 16,
+  "schema_version": "2.2",
+  "module": "M04",
+  "module_name": "继发性肾病（狼疮性肾炎、糖尿病肾脏病）",
+  "type": "A1",
+  "case_group": null,
+  "stem": "对于高血压合并2型糖尿病患者，下列药物中有利于延缓糖尿病肾病进展的是",
+  "options": [
+   {
+    "label": "A",
+    "text": "普萘洛尔",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "吲达帕胺",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "缬沙坦",
+    "is_correct": true
+   },
+   {
+    "label": "D",
+    "text": "硝苯地平",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "氢氯噻嗪",
+    "is_correct": false
+   }
+  ],
+  "answer": "C",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 2,
+  "competing_dx": [
+   "钙通道阻滞剂降压达标",
+   "噻嗪类利尿剂降压",
+   "β受体阻滞剂降压"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "高血压合并2型糖尿病"
+  ],
+  "topic": "糖尿病肾脏病的降压药物选择",
+  "source_type": "执业医师真题",
+  "license": "public_noncommercial",
+  "source_page": "P493",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第三章/P493",
+   "[源:执业医师真题 2017年第1单元第19题]"
+  ],
+  "keypoint_ref": [
+   "第17条"
+  ],
+  "teacher_anchor": "教材P493：控制血压 DKD 病人血压控制目标为＜130/80mmHg，以ACEI/ARB 为首选药物。ACEI/ARB 类药物不仅有降压作用，还有降低尿蛋白、延缓肾功能恶化、减少心血管事件并发症等作用，已成为DKD 病人控制血压、减少尿蛋白和延缓疾病进展的标准策略。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第17条",
+    "title": "糖尿病肾脏病的降压治疗",
+    "evidence": "题干限定高血压合并2型糖尿病，问哪类降压药可延缓糖尿病肾病进展。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第17条",
+    "title": "钙通道阻滞剂与利尿剂的肾脏作用",
+    "evidence": "D 项硝苯地平、B/E 项利尿剂只能降压，不具备降尿蛋白与延缓肾功能恶化的作用。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "糖尿病肾脏病病人肾内肾素-血管紧张素系统异常活跃，血管紧张素Ⅱ选择性收缩出球小动脉并破坏基底膜阴离子屏障，是蛋白尿与肾功能恶化的关键环节。缬沙坦属血管紧张素Ⅱ受体拮抗剂，可扩张出球小动脉、降低肾小球内压、减少尿蛋白，教材因此把ACEI/ARB 列为DKD 病人控制血压与减少尿蛋白的首选。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "普萘洛尔为β受体阻滞剂，虽能降压但不降低肾小球内压，也无减少尿蛋白的证据，不能延缓糖尿病肾脏病进展。",
+     "misconception_id": "MC-NEP-M04-01",
+     "misconception": "把降压达标等同于肾脏保护，忽略ACEI/ARB 降低尿蛋白、延缓肾功能恶化的独有作用",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "吲达帕胺为类噻嗪利尿剂，通过排钠利尿降压，可能激活肾素-血管紧张素系统，不具肾脏保护作用。",
+     "misconception_id": "MC-NEP-M04-02",
+     "misconception": "把利尿剂减轻水肿的作用当成延缓糖尿病肾脏病进展的肾脏保护作用",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "C",
+     "truth": true,
+     "why": "缬沙坦为血管紧张素Ⅱ受体拮抗剂，可降低肾小球内压与尿蛋白，教材明确以ACEI/ARB 作为DKD 病人降压与减少尿蛋白的首选。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "硝苯地平为二氢吡啶类钙通道阻滞剂，降压有效但不减少尿蛋白，对糖尿病肾脏病的肾脏终点无保护作用。",
+     "misconception_id": "MC-NEP-M04-03",
+     "misconception": "只按降压效力选药，忽略钙通道阻滞剂不具备降尿蛋白的肾脏保护作用",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "氢氯噻嗪仅通过利尿排钠降压，既不能降低肾小球内压也不能减少尿蛋白，还可能升高血尿酸。",
+     "misconception_id": "MC-NEP-M04-01",
+     "misconception": "把降压达标等同于肾脏保护，忽略ACEI/ARB 降低尿蛋白、延缓肾功能恶化的独有作用",
+     "distractor_mechanism": "overgeneralization"
+    }
+   ],
+   "key_takeaway": "糖尿病肾脏病合并高血压，降压药首选ACEI/ARB：既降压又降尿蛋白、延缓肾功能恶化；其他降压药只能作为联合用药。",
+   "source_quote": "以ACEI/ARB 为首选药物",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "真题题干/选项/答案逐字核对",
+    "教材P493 原文逐字锚定",
+    "结构字段完整性",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；纳入糖尿病肾脏病降压治疗考点"
+  },
+  "p9_mode": "course_schedule",
+  "zhiyi_origin": {
+   "source_id": "2017年临床执业医师考试真题及答案#1-19",
+   "source": "2017年执业医师资格考试第1单元第19题",
+   "corpus": "pdf_paper",
+   "mode": "原题",
+   "answer_confidence": "high"
+  }
+ },
+ {
+  "id": "batch048-Q017",
+  "sequence": 17,
+  "schema_version": "2.2",
+  "module": "M04",
+  "module_name": "继发性肾病（狼疮性肾炎、糖尿病肾脏病）",
+  "type": "A2",
+  "case_group": null,
+  "stem": "女，26岁，面部蝶形红斑3个月，双下肢水肿1周。血压145/90mmHg，24小时尿蛋白2.8g，尿红细胞12个/HPF，血白蛋白26g/L，血肌酐156μmol/L；抗dsDNA抗体阳性，补体C3、C4下降，抗核抗体1∶320阳性。肾活检示55%肾小球呈毛细血管内及血管外细胞增生。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "狼疮性肾炎Ⅴ型",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "狼疮性肾炎Ⅳ型",
+    "is_correct": true
+   },
+   {
+    "label": "C",
+    "text": "狼疮性肾炎Ⅲ型",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "原发性IgA肾病",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "过敏性紫癜性肾炎",
+    "is_correct": false
+   }
+  ],
+  "answer": "B",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "理解",
+  "bloom_level": "理解",
+  "difficulty_tier": "L3",
+  "step_count": 3,
+  "competing_dx": [
+   "狼疮性肾炎Ⅲ型（局灶性）",
+   "狼疮性肾炎Ⅴ型（膜性）",
+   "原发性IgA肾病"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "肾活检示55%肾小球呈毛细血管内及血管外细胞增生"
+  ],
+  "topic": "狼疮性肾炎的病理分型判读",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P490",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第三章第一节/P490"
+  ],
+  "keypoint_ref": [
+   "第16条"
+  ],
+  "teacher_anchor": "教材P490：Ⅲ型，局灶性LN——50% 以下肾小球表现为毛细血管内或血管外节段或球性细胞增生；Ⅳ型，弥漫性LN——50% 以上肾小球表现为毛细血管内或血管外节段或球性细胞增生。典型的免疫病理表现为肾小球IgA、IgG、IgM、C3、C4、C1q均阳性，称为“满堂亮”（full house）。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第16条",
+    "title": "狼疮性肾炎的ISN/RPS病理分型",
+    "evidence": "题干给出55%肾小球受累这一分型界值，要求判断属于Ⅲ型还是Ⅳ型。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第16条",
+    "title": "狼疮性肾炎与原发性肾小球疾病的鉴别",
+    "evidence": "D、E 两项考查在抗dsDNA 阳性、补体下降背景下仍误判为IgA肾病或紫癜性肾炎。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "病人为青年女性，有蝶形红斑、抗dsDNA 抗体阳性、补体C3与C4下降，符合系统性红斑狼疮活动；同时存在24小时尿蛋白2.8g与血尿，属狼疮性肾炎。ISN/RPS 分型以肾小球受累比例划线：Ⅲ型为50%以下，Ⅳ型为50%以上。本例活检55%肾小球呈毛细血管内及血管外细胞增生，超过50%，故为Ⅳ型弥漫性狼疮性肾炎。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "Ⅴ型为膜性狼疮性肾炎，以球性或节段上皮下免疫沉积物为特征，不以50%以上肾小球的细胞增生为判定依据。",
+     "misconception_id": "MC-NEP-M04-04",
+     "misconception": "混淆狼疮性肾炎病理分型的肾小球受累比例阈值（Ⅲ型＜50%、Ⅳ型＞50%）",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "B",
+     "truth": true,
+     "why": "55%肾小球受累已超过50%的分型界值，且为毛细血管内及血管外细胞增生，正符合Ⅳ型弥漫性狼疮性肾炎。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "Ⅲ型为局灶性，要求受累肾小球在50%以下，本例已达55%，按定义不能判为Ⅲ型。",
+     "misconception_id": "MC-NEP-M04-04",
+     "misconception": "混淆狼疮性肾炎病理分型的肾小球受累比例阈值（Ⅲ型＜50%、Ⅳ型＞50%）",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "IgA肾病以IgA 系膜区沉积为主，抗dsDNA 抗体阴性、补体多正常，与本例多项狼疮免疫学指标阳性不符。",
+     "misconception_id": "MC-NEP-M04-05",
+     "misconception": "见到青年女性蛋白尿伴血尿就想到IgA肾病，忽略抗dsDNA 抗体与补体下降提示狼疮活动",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "过敏性紫癜性肾炎需有可触及紫癜、关节痛、腹痛等表现，且无抗dsDNA 抗体与补体下降。",
+     "misconception_id": "MC-NEP-M04-05",
+     "misconception": "见到青年女性蛋白尿伴血尿就想到IgA肾病，忽略抗dsDNA 抗体与补体下降提示狼疮活动",
+     "distractor_mechanism": "similar_presentation"
+    }
+   ],
+   "key_takeaway": "狼疮性肾炎分型记两条线：受累肾小球＜50%为Ⅲ型、＞50%为Ⅳ型；青年女性多系统表现加抗dsDNA 阳性、补体下降，先想狼疮而不是IgA肾病。",
+   "source_quote": "Ⅳ型，弥漫性LN 50% 以上肾小球表现为毛细血管内或血管外节段或球性细胞增生",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "病理分型比例阈值与教材逐字核对",
+    "结构与概念字段完整性",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；与Q018 组成同一病例的连续设问"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q018",
+  "sequence": 18,
+  "schema_version": "2.2",
+  "module": "M04",
+  "module_name": "继发性肾病（狼疮性肾炎、糖尿病肾脏病）",
+  "type": "A2",
+  "case_group": null,
+  "stem": "女，26岁，系统性红斑狼疮病史2年，肾活检确诊为狼疮性肾炎Ⅳ型，24小时尿蛋白2.8g，血肌酐156μmol/L，无活动性感染及活动性结核。其诱导缓解治疗首选是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "单用足量糖皮质激素",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "糖皮质激素联合硫唑嘌呤",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "单用大剂量甲泼尼龙冲击",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "糖皮质激素联合环磷酰胺",
+    "is_correct": true
+   },
+   {
+    "label": "E",
+    "text": "单用羟氯喹对症治疗",
+    "is_correct": false
+   }
+  ],
+  "answer": "D",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 2,
+  "competing_dx": [
+   "单用足量糖皮质激素诱导",
+   "激素联合硫唑嘌呤维持方案",
+   "羟氯喹等对症支持治疗"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "肾活检确诊为狼疮性肾炎Ⅳ型"
+  ],
+  "topic": "增生性狼疮性肾炎的诱导缓解方案",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P491",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第三章第一节/P491"
+  ],
+  "keypoint_ref": [
+   "第16条"
+  ],
+  "teacher_anchor": "教材P491：增生性LN（Ⅲ型或Ⅳ型）：诱导治疗推荐激素联合免疫抑制剂，如激素联合吗替麦考酚酯 / 环磷酰胺 / 吗替麦考酚酯加贝利尤单抗 / 环磷酰胺加贝利尤单抗 / 吗替麦考酚酯加钙调磷酸酶抑制剂，待病情稳定后转入维持治疗。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第16条",
+    "title": "狼疮性肾炎诱导缓解治疗",
+    "evidence": "题干已明确Ⅳ型且无感染，问诱导缓解首选方案，落在激素联合免疫抑制剂上。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第16条",
+    "title": "诱导治疗与维持治疗的分期",
+    "evidence": "B 项硫唑嘌呤是维持期用药，被搬到诱导期，考查两期方案的区分。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "Ⅳ型属增生性狼疮性肾炎，肾脏病变活动、进展快，单用激素缓解率低且易复发。教材对增生性LN 的诱导治疗明确推荐激素联合免疫抑制剂，如激素联合吗替麦考酚酯或环磷酰胺，待病情稳定后再转入以小剂量激素联合硫唑嘌呤或吗替麦考酚酯的维持治疗，因此本例首选糖皮质激素联合环磷酰胺。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "单用足量激素虽能抑制炎症，但增生性LN 单药缓解率低、复发率高，教材要求联合免疫抑制剂。",
+     "misconception_id": "MC-NEP-M04-06",
+     "misconception": "认为单用糖皮质激素即可完成增生性狼疮性肾炎的诱导缓解，不必联合免疫抑制剂",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "硫唑嘌呤属维持期用药，多与小剂量激素搭配用于病情稳定后长期维持，不作为诱导缓解的首选组合。",
+     "misconception_id": "MC-NEP-M04-07",
+     "misconception": "把维持期小剂量激素联合硫唑嘌呤的方案错用于诱导缓解期",
+     "distractor_mechanism": "timing_error"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "甲泼尼龙冲击只是诱导方案中的强化手段，用于大量细胞性新月体或纤维素样坏死，不能替代激素联合免疫抑制剂的完整诱导。",
+     "misconception_id": "MC-NEP-M04-06",
+     "misconception": "认为单用糖皮质激素即可完成增生性狼疮性肾炎的诱导缓解，不必联合免疫抑制剂",
+     "distractor_mechanism": "mechanism_confusion"
+    },
+    {
+     "label": "D",
+     "truth": true,
+     "why": "教材对Ⅲ型或Ⅳ型增生性LN 的诱导治疗推荐激素联合环磷酰胺或吗替麦考酚酯，本项与之完全一致。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "羟氯喹属基础用药与对症支持，对非肾病水平蛋白尿的Ⅰ、Ⅱ、Ⅴ型可作为辅助，不能承担Ⅳ型的诱导缓解。",
+     "misconception_id": "MC-NEP-M04-09",
+     "misconception": "把羟氯喹等基础抗疟药当作增生性狼疮性肾炎的诱导缓解治疗",
+     "distractor_mechanism": "adjacent_concept"
+    }
+   ],
+   "key_takeaway": "狼疮性肾炎分期用药：诱导期＝激素＋环磷酰胺或吗替麦考酚酯，维持期＝小剂量激素＋硫唑嘌呤或吗替麦考酚酯，两期不可互换。",
+   "source_quote": "诱导治疗推荐激素联合免疫抑制剂",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "诱导/维持方案与教材P491 逐字核对",
+    "结构与概念字段完整性",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；建议与Q017 连排形成同一病例的两次设问"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q019",
+  "sequence": 19,
+  "schema_version": "2.2",
+  "module": "M05",
+  "module_name": "尿路感染",
+  "type": "A1",
+  "case_group": null,
+  "stem": "急性肾盂肾炎最常见的感染途径是",
+  "options": [
+   {
+    "label": "A",
+    "text": "上行性",
+    "is_correct": true
+   },
+   {
+    "label": "B",
+    "text": "血行性",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "淋巴道",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "直接感染",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "肠源性",
+    "is_correct": false
+   }
+  ],
+  "answer": "A",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "记忆",
+  "bloom_level": "记忆",
+  "difficulty_tier": "L1",
+  "step_count": 1,
+  "competing_dx": [
+   "血行感染",
+   "淋巴道感染",
+   "直接感染"
+  ],
+  "negative_cues": [],
+  "conditionals": [],
+  "topic": "尿路感染的感染途径",
+  "source_type": "考研真题",
+  "license": "public_noncommercial",
+  "source_page": "P499",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第五章/P499",
+   "[源:考研真题 GS-2023-052]"
+  ],
+  "keypoint_ref": [
+   "第18条"
+  ],
+  "teacher_anchor": "教材P499：上行感染：致病菌经尿道上行至膀胱、输尿管及肾盂肾盏的感染称为上行感染，约占尿路感染的95%。正常情况下阴道前庭和尿道口周围定居着少量肠道菌群，但并不致病。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第18条",
+    "title": "尿路感染的上行感染途径",
+    "evidence": "题干直接问急性肾盂肾炎最常见感染途径，对应教材上行感染约占95%的结论。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "肠道菌群定居于尿道口周围，在性生活、尿路梗阻或医源性操作等条件下沿尿道逆行上升，经膀胱、输尿管到达肾盂肾盏，即上行感染。教材明确指出上行感染约占尿路感染的95%，是包括急性肾盂肾炎在内的尿路感染最常见的感染途径。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": true,
+     "why": "致病菌经尿道逆行上升至膀胱、输尿管及肾盂肾盏，教材记载约占尿路感染的95%，故为最常见途径。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "血行感染指致病菌经血流播散至泌尿系统，教材记载不足2%，多见于慢性基础疾病或免疫抑制病人。",
+     "misconception_id": "MC-NEP-M05-01",
+     "misconception": "把血行感染当成尿路感染最常见的感染途径，忽略上行感染约占95%",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "淋巴道感染指盆腔和下腹部器官感染经淋巴道波及泌尿系统，教材明确其临床罕见。",
+     "misconception_id": "MC-NEP-M05-02",
+     "misconception": "把临床罕见的淋巴道感染或直接感染当成尿路感染的常见途径",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "直接感染指泌尿系统周围组织器官的炎症直接侵入，属少见途径，不是急性肾盂肾炎的主要来源。",
+     "misconception_id": "MC-NEP-M05-02",
+     "misconception": "把临床罕见的淋巴道感染或直接感染当成尿路感染的常见途径",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "教材将感染途径分为上行、血行、直接和淋巴道四类，并不存在肠源性途径；肠道只是致病菌的定居来源。",
+     "misconception_id": "MC-NEP-M05-03",
+     "misconception": "把致病菌来源（肠道菌群）误当成一种独立的感染途径",
+     "distractor_mechanism": "mechanism_confusion"
+    }
+   ],
+   "key_takeaway": "感染途径记比例：上行约占95%、血行不足2%、直接与淋巴道均罕见；大肠埃希菌来自肠道，但肠道不是一条独立的感染途径。",
+   "source_quote": "约占尿路感染的95%",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "真题A–D 选项与答案逐字保留（原题4选项，按A1 型5选项规范补E 项，mode 记改编）",
+    "教材P499 原文逐字锚定",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；补选项说明见 adaptation_note"
+  },
+  "p9_mode": "course_schedule",
+  "kaoyan_origin": {
+   "gs_id": "GS-2023-052",
+   "year": 2023,
+   "source": "2023考研西综·第52题",
+   "mode": "改编",
+   "answer_confidence": "high"
+  },
+  "adaptation_note": "原题4选项（A–D 逐字保留、答案A 不变），按A1 型5选项规范补干扰项E（肠源性），补项不改变知识点与答案。"
+ },
+ {
+  "id": "batch048-Q020",
+  "sequence": 20,
+  "schema_version": "2.2",
+  "module": "M05",
+  "module_name": "尿路感染",
+  "type": "A1",
+  "case_group": null,
+  "stem": "尿路感染的易感因素**不包括**",
+  "options": [
+   {
+    "label": "A",
+    "text": "膀胱输尿管反流",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "留置导尿管",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "神经源性膀胱",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "糖尿病",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "青年男性",
+    "is_correct": true
+   }
+  ],
+  "answer": "E",
+  "polarity": "negative",
+  "option_polarities": {
+   "A": true,
+   "B": true,
+   "C": true,
+   "D": true,
+   "E": false
+  },
+  "bloom": "理解",
+  "bloom_level": "理解",
+  "difficulty_tier": "L2",
+  "step_count": 2,
+  "competing_dx": [
+   "膀胱输尿管反流",
+   "留置导尿管",
+   "糖尿病等免疫力低下状态"
+  ],
+  "negative_cues": [
+   "不包括"
+  ],
+  "conditionals": [],
+  "topic": "尿路感染的易感因素",
+  "source_type": "执业医师真题",
+  "license": "public_noncommercial",
+  "source_page": "P500",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第五章/P500",
+   "[源:执业医师真题 2018年第1单元第7题]"
+  ],
+  "keypoint_ref": [
+   "第18条"
+  ],
+  "teacher_anchor": "教材P500：性别和性生活：女性尿路感染发生率高，性生活时可将尿道口周围的致病菌挤压入尿道和膀胱诱发感染。教材P499：男性尿道口到膀胱的距离较长，而女性尿道短而宽，致病菌易进入，且尿道口离肛门和阴道较近，易受粪便和阴道分泌物污染，故女性尿路感染的发病率远高于男性。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第18条",
+    "title": "尿路感染的易感因素",
+    "evidence": "题干列出五项因素，要求挑出不属于易感因素的一项，考查易感因素清单的边界。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第18条",
+    "title": "性别与尿路感染易感性",
+    "evidence": "E 项青年男性与教材相反：男性尿道长而窄，发病率远低于女性。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "教材列出的易感因素包括尿路梗阻、泌尿系统结构异常、机体免疫力低下（糖尿病等）、性别与性生活、膀胱输尿管反流、妊娠、医源性因素与神经源性膀胱。女性尿道短而宽、尿道口邻近肛门与阴道，发病率远高于男性；青年男性并无解剖或功能上的易感基础，因此不属易感因素。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": true,
+     "why": "膀胱输尿管反流使尿液自膀胱逆流至输尿管甚至肾盂，属教材明确列举的易感因素。",
+     "misconception_id": "MC-NEP-M05-04",
+     "misconception": "忽略题干否定词「不包括」，把确实属于易感因素的项目当作应选项",
+     "distractor_mechanism": "direction_error",
+     "source_anchor": "教材P500：膀胱输尿管反流：输尿管壁内段瓣膜及膀胱开口处黏膜可防止尿液从膀胱输尿管口反流至输尿管"
+    },
+    {
+     "label": "B",
+     "truth": true,
+     "why": "留置导尿管属医源性因素，单次导尿后感染率1%～2%，留置1天约50%，是公认的易感因素。",
+     "misconception_id": "MC-NEP-M05-04",
+     "misconception": "忽略题干否定词「不包括」，把确实属于易感因素的项目当作应选项",
+     "distractor_mechanism": "direction_error",
+     "source_anchor": "教材P500：医源性因素：导尿、留置导尿管、膀胱镜和输尿管镜检查、逆行性尿路造影等可损伤尿路，将致病菌带入泌尿系统"
+    },
+    {
+     "label": "C",
+     "truth": true,
+     "why": "神经源性膀胱导致排尿功能障碍与残余尿，属教材其他因素中明确列出的易感因素。",
+     "misconception_id": "MC-NEP-M05-04",
+     "misconception": "忽略题干否定词「不包括」，把确实属于易感因素的项目当作应选项",
+     "distractor_mechanism": "direction_error",
+     "source_anchor": "教材P500：其他因素：合并各种慢性肾脏病引起肾实质瘢痕，使部分肾单位尿流不通畅，易发生尿路感染；神经源性膀胱"
+    },
+    {
+     "label": "D",
+     "truth": true,
+     "why": "糖尿病属机体免疫力低下的典型病因，教材将其列入易感因素并提示易并发肾乳头坏死。",
+     "misconception_id": "MC-NEP-M05-04",
+     "misconception": "忽略题干否定词「不包括」，把确实属于易感因素的项目当作应选项",
+     "distractor_mechanism": "direction_error",
+     "source_anchor": "教材P500：机体免疫力低下：糖尿病、使用免疫抑制剂、长期卧床、肾移植术后、严重的慢性疾病"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "男性尿道口到膀胱距离较长、尿道较窄，反而降低上行感染机会，青年男性不属尿路感染易感因素。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    }
+   ],
+   "key_takeaway": "尿路感染易感因素记三类：梗阻与反流（尿流不畅）、免疫低下（糖尿病、免疫抑制剂）、医源性与结构功能异常；女性才是易感性别，男性在老年、留置导尿后才升高。",
+   "source_quote": "故女性尿路感染的发病率远高于男性",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "answer_evidence": "教材P499 明确女性发病率远高于男性；P500 把膀胱输尿管反流、留置导尿管、免疫力低下（糖尿病）、神经源性膀胱逐一列为易感因素，故只有青年男性不属于易感因素。",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "反选题逐项真值核对（A–D 为真、E 为假）",
+    "为真干扰项逐项教材锚点",
+    "教材P499–P500 原文逐字锚定"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；本批唯一反选题，占比6.7% 未超15%"
+  },
+  "p9_mode": "course_schedule",
+  "zhiyi_origin": {
+   "source_id": "2018年临床执业医师考试真题及答案#1-7",
+   "source": "2018年执业医师资格考试第1单元第7题",
+   "corpus": "pdf_paper",
+   "mode": "原题",
+   "answer_confidence": "high"
+  }
+ },
+ {
+  "id": "batch048-Q021",
+  "sequence": 21,
+  "schema_version": "2.2",
+  "module": "M05",
+  "module_name": "尿路感染",
+  "type": "A2",
+  "case_group": null,
+  "stem": "女性,40岁,5天来高热,腰痛伴尿频、尿痛、尿急,曾口服环丙沙星两天不见好转。既往无类似发作史,1个月前曾发现肾盂结石未积极治疗。查体:体温39℃,右肾区有叩击痛,尿蛋白(+),WBC 20~30个/HPF,偶见白细胞管型,尿密度1.025。最可能的诊断是",
+  "options": [
+   {
+    "label": "A",
+    "text": "非复杂性膀胱炎",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "非复杂性急性肾盂肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "复杂性膀胱炎",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "复杂性急性肾盂肾炎",
+    "is_correct": true
+   },
+   {
+    "label": "E",
+    "text": "慢性肾盂肾炎",
+    "is_correct": false
+   }
+  ],
+  "answer": "D",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 3,
+  "competing_dx": [
+   "非复杂性急性肾盂肾炎",
+   "复杂性膀胱炎",
+   "慢性肾盂肾炎"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "1个月前曾发现肾盂结石未积极治疗",
+   "体温39℃,右肾区有叩击痛"
+  ],
+  "topic": "复杂性急性肾盂肾炎的诊断判定",
+  "source_type": "考研真题",
+  "license": "public_noncommercial",
+  "source_page": "P499",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第五章/P499",
+   "教材《内科学》第10版 第五篇第五章/P501",
+   "教材《内科学》第10版 第五篇第五章/P502",
+   "[源:考研真题 GS-2006-076]"
+  ],
+  "keypoint_ref": [
+   "第20条",
+   "第21条"
+  ],
+  "teacher_anchor": "教材P499：根据病人感染发生时不同的尿路状态，分为非复杂性和复杂性尿路感染。前者主要发生在无尿路相关解剖或功能异常及合并症的女性病人。复杂性尿路感染病人常存在危险因素，如男性、孕妇、具有尿路解剖或功能异常、留置导尿管、合并糖尿病等免疫功能低下的疾病。教材P501：急性肾盂肾炎（1）泌尿系统症状：尿路刺激征、血尿，患侧或双侧腰部疼痛，肋脊角有明显压痛或叩击痛。（2）全身症状：寒战、高热，可伴头痛、恶心、呕吐和食欲减退等。教材P502：有急性非复杂性肾盂肾炎症状（寒战、发热和腰痛等），清洁中段尿细菌培养计数≥10⁴CFU/ml 即可诊断尿路感染；复杂性尿路感染的诊断包括两个条件：①清洁中段尿细菌培养计数≥10⁵CFU/ml；②伴有泌尿系统结构或功能异常，或合并其他易发感染的基础疾病。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第20条",
+    "title": "复杂性上尿路感染的诊断与疗程定位",
+    "evidence": "题干给出高热加肾区叩击痛的上尿路定位证据，另有肾盂结石这一复杂因素，要求判定为复杂性急性肾盂肾炎并据第20条分层进入足疗程抗感染。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第21条",
+    "title": "复杂性尿路感染的危险因素清单",
+    "evidence": "肾盂结石属尿路结构异常，是教材列出的复杂性危险因素；缺少这一条时同样的症状组合应判为非复杂性急性肾盂肾炎。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "病人有尿频、尿急、尿痛等尿路刺激征，同时体温39℃、右肾区叩击痛，尿中偶见白细胞管型，全身症状加肾区定位体征与白细胞管型共同把病灶定位在上尿路，而不是膀胱。定性则看尿路状态：1个月前已发现肾盂结石且未处理，属尿路结构异常，正是教材列举的复杂性尿路感染危险因素，因此诊断应为复杂性急性肾盂肾炎，而不是非复杂性急性肾盂肾炎。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "膀胱炎一般无全身感染症状，本例39℃高热、腰痛与肾区叩击痛已把病灶定在上尿路，不能只按尿路刺激征判为膀胱炎。",
+     "misconception_id": "MC-NEP-M05-11",
+     "misconception": "只凭尿频尿急尿痛与尿中白细胞诊断下尿路感染，忽略高热、腰痛、肾区叩击痛与白细胞管型提示上尿路受累",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "上尿路定位正确，但病人1个月前已发现肾盂结石且未治疗，存在尿路结构异常，按教材定义不能归入非复杂性尿路感染。",
+     "misconception_id": "MC-NEP-M05-12",
+     "misconception": "只凭女性、社区发病、既往无类似发作就把上尿路感染定为非复杂性，漏查结石、梗阻等尿路结构异常",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "复杂性判对了，定位却错：本例有高热、腰痛与肾区叩击痛，并有白细胞管型，属上尿路感染而非膀胱炎。",
+     "misconception_id": "MC-NEP-M05-11",
+     "misconception": "只凭尿频尿急尿痛与尿中白细胞诊断下尿路感染，忽略高热、腰痛、肾区叩击痛与白细胞管型提示上尿路受累",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "D",
+     "truth": true,
+     "why": "高热、腰痛、肾区叩击痛与白细胞管型定位在上尿路，肾盂结石属尿路结构异常这一复杂性危险因素，故为复杂性急性肾盂肾炎。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "慢性肾盂肾炎要求反复发作史并伴夜尿增多、低比重尿、肾外形凹凸不平或肾盂肾盏变形，本例病程仅5天、既往无类似发作，不符合。",
+     "misconception_id": "MC-NEP-M05-13",
+     "misconception": "把影像学已发现的结石等同于慢性肾盂肾炎，忽略慢性化需要反复发作史与肾盂肾盏变形等结构证据",
+     "distractor_mechanism": "timing_error"
+    }
+   ],
+   "key_takeaway": "先定位再定性：高热、腰痛、肾区叩击痛、白细胞管型＝上尿路；再查结石、梗阻、糖尿病、留置导尿等复杂因素，有其一即为复杂性肾盂肾炎，疗程按上尿路足疗程走。",
+   "source_quote": "复杂性尿路感染病人常存在危险因素",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "真题题干/选项/答案逐字核对（GS-2006-076）",
+    "教材P499/P501/P502 原文逐字锚定",
+    "结构与概念字段完整性",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；唯一区分点是肾盂结石这一复杂性因素，定位证据在选项间已充分给出"
+  },
+  "p9_mode": "course_schedule",
+  "kaoyan_origin": {
+   "gs_id": "GS-2006-076",
+   "year": 2006,
+   "source": "2006考研西综·第76题",
+   "mode": "原题",
+   "answer_confidence": "medium"
+  }
+ },
+ {
+  "id": "batch048-Q022",
+  "sequence": 22,
+  "schema_version": "2.2",
+  "module": "M05",
+  "module_name": "尿路感染",
+  "type": "A4",
+  "case_group": "CG-M05-A4",
+  "stem": "男，72岁，脑出血后卧床，留置导尿管3周。近2天寒战、发热，体温39.2℃，无尿频、尿急、尿痛。尿常规白细胞满视野，导尿标本培养大肠埃希菌≥10⁵CFU/ml。对该患者最恰当的判读是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "无症状细菌尿，无需抗生素",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "导管相关尿路感染",
+    "is_correct": true
+   },
+   {
+    "label": "C",
+    "text": "非复杂性膀胱炎，短程治疗",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "标本污染，应重新留取",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "细菌定植，仅需膀胱冲洗",
+    "is_correct": false
+   }
+  ],
+  "answer": "B",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "分析",
+  "bloom_level": "分析",
+  "difficulty_tier": "L4",
+  "step_count": 3,
+  "competing_dx": [
+   "无症状细菌尿（定植）",
+   "非复杂性膀胱炎",
+   "尿标本污染"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "留置导尿管3周",
+   "近2天寒战、发热，体温39.2℃"
+  ],
+  "topic": "导管相关尿路感染的诊断判读",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P502",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第五章/P501",
+   "教材《内科学》第10版 第五篇第五章/P502",
+   "教材《内科学》第10版 第五篇第五章/P504"
+  ],
+  "keypoint_ref": [
+   "第19条"
+  ],
+  "teacher_anchor": "教材P501：无症状细菌尿（asymptomatic bacteriuria，ASB）病人有真性细菌尿，常缺乏任何临床症状和体征，诊断依靠尿细菌培养。教材P502：凡是真性细菌尿者均可诊断为尿路感染；有急性非复杂性肾盂肾炎症状（寒战、发热和腰痛等），清洁中段尿细菌培养计数≥10⁴CFU/ml 即可诊断尿路感染；复杂性尿路感染的诊断包括两个条件：①清洁中段尿细菌培养计数≥10⁵CFU/ml；②伴有泌尿系统结构或功能异常，或合并其他易发感染的基础疾病。教材P504：大多数无症状导管相关细菌尿不推荐使用抗生素治疗，伴明显全身症状如寒战、发热等，按复杂性尿路感染治疗。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第19条",
+    "title": "尿路感染的尿细菌培养判读与诊断分层",
+    "evidence": "题干给出留置导尿背景、寒战高热与导尿标本菌落计数≥10⁵CFU/ml，要求按症状有无与菌落计数判定诊断类别。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第19条",
+    "title": "无症状细菌尿与症状性感染的边界",
+    "evidence": "教材要求无症状细菌尿须缺乏任何临床症状和体征，本例寒战、39.2℃高热与之相反，A 项据此被判为错误判读。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "病人留置导尿管3周，是教材列举的尿路感染医源性危险因素；出现寒战与39.2℃高热说明已有明显全身症状，不属无症状细菌尿。导尿标本培养大肠埃希菌≥10⁵CFU/ml 已超过真性细菌尿与复杂性尿路感染的菌落计数阈值（教材阈值为清洁中段尿≥10⁵CFU/ml，导尿标本阈值更低），加上留置导尿这一基础因素，判读应为导管相关尿路感染。教材对这类病人在有全身症状时按复杂性尿路感染处理，故该判读同时决定了全身抗感染而非观察等待。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "无症状细菌尿要求有真性细菌尿却缺乏任何临床症状与体征，本例寒战、39.2℃高热已属明显全身症状，不能按无症状处理。",
+     "misconception_id": "MC-NEP-M05-15",
+     "misconception": "把没有尿路刺激征等同于无症状，忽略寒战、高热本身就是导管相关感染的全身症状",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "B",
+     "truth": true,
+     "why": "留置导尿3周加寒战高热，导尿标本培养≥10⁵CFU/ml，符合导管相关尿路感染的症状与菌落计数条件，故为该判读。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "膀胱炎一般无全身感染症状，本例有寒战与高热；且留置导尿属复杂性因素，菌落计数≥10⁵也超出非复杂性的判读口径。",
+     "misconception_id": "MC-NEP-M05-16",
+     "misconception": "只用菌落计数对照膀胱炎阈值，忽略留置导尿管这一复杂因素与寒战高热的全身症状",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "大肠埃希菌是尿路感染最常见的致病菌，≥10⁵CFU/ml 加典型症状符合真性细菌尿；污染多见于标本收集不规范或未低温保存超过1小时。",
+     "misconception_id": "MC-NEP-M05-17",
+     "misconception": "见到留置导尿病人的培养阳性就一律当作标本污染，忽略菌落计数与临床表现已构成真性细菌尿",
+     "distractor_mechanism": "mechanism_confusion"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "教材明确抗生素或生理盐水冲洗膀胱无明显预防作用并可能增加感染机会；本例有全身症状，需全身抗感染而非局部冲洗。",
+     "misconception_id": "MC-NEP-M05-18",
+     "misconception": "用膀胱冲洗处理导管相关感染，把已废弃的局部冲洗当作定植或感染的处理手段",
+     "distractor_mechanism": "outdated_guideline"
+    }
+   ],
+   "key_takeaway": "导管相关感染判读抓两点：有无全身症状决定治不治，菌落计数加留置导尿决定归为复杂性尿路感染；无尿路刺激征不等于无症状，膀胱冲洗也不能替代全身抗感染。",
+   "source_quote": "大多数无症状导管相关细菌尿不推荐使用抗生素治疗",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "菌落计数阈值与教材P502 逐字核对",
+    "无症状细菌尿定义与教材P501 核对",
+    "A4 共用选项与结构字段完整性",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；本题只考判读，处理原则仅作干扰项，不与Q021 的疗程考点重复"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q023",
+  "sequence": 23,
+  "schema_version": "2.2",
+  "module": "M06",
+  "module_name": "急性肾损伤",
+  "type": "A1",
+  "case_group": null,
+  "stem": "按 KDIGO 标准，48 小时内血清肌酐升高至少多少即可诊断急性肾损伤？",
+  "options": [
+   {
+    "label": "A",
+    "text": "≥26.5μmol/L",
+    "is_correct": true
+   },
+   {
+    "label": "B",
+    "text": "≥10.0μmol/L",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "≥44.2μmol/L",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "≥88.4μmol/L",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "≥132.6μmol/L",
+    "is_correct": false
+   }
+  ],
+  "answer": "A",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "理解",
+  "bloom_level": "理解",
+  "difficulty_tier": "L2",
+  "step_count": 2,
+  "competing_dx": [
+   "7 天内较基础值升高≥50% 的相对标准",
+   "尿量＜0.5ml/（kg·h）持续 6 小时的尿量标准",
+   "3 期界值 353.6μmol/L"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "48 小时内"
+  ],
+  "topic": "急性肾损伤的KDIGO诊断阈值",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P520",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第九章/P520",
+   "教材《内科学》第10版 第五篇第九章/P521"
+  ],
+  "keypoint_ref": [
+   "第22条"
+  ],
+  "teacher_anchor": "教材P520：按照国际AKI 临床实践指南，符合以下情况之一者即可临床诊断AKI：①48 小时内Scr 升高≥0.3mg/dl（≥26.5μmol/L）；②7 天内Scr 较基础值升高≥50%；③尿量减少［＜0.5ml/（kg·h），持续时间≥6 小时］。教材P521 表5-9-1（2012 KDIGO 指南）：1 期 血清肌酐绝对值升高≥0.3mg/dl（≥26.5μmol/L）或较基础值相对升高≥50%，但＜1 倍；2 期 相对升高≥1 倍，但＜2 倍；3 期 升高至≥4.0mg/dl（≥353.6μmol/L）或相对升高≥2 倍。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第22条",
+    "title": "急性肾损伤的KDIGO血肌酐诊断阈值",
+    "evidence": "题干直接问48 小时内血清肌酐的绝对升高界值，对应教材0.3mg/dl 即26.5μmol/L 这一条诊断标准。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "KDIGO 把血肌酐的绝对变化作为首要诊断条件：48 小时内血肌酐绝对值升高≥0.3mg/dl，换算即≥26.5μmol/L，即可临床诊断急性肾损伤，不必等到升幅达到50%。另两条并列标准是7 天内较基础值升高≥50% 与尿量＜0.5ml/（kg·h）持续≥6 小时，三条满足其一即可；教材表5-9-1 也把同一数值列为1 期的绝对值界值。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": true,
+     "why": "教材明确48 小时内Scr 升高≥0.3mg/dl（≥26.5μmol/L）即可临床诊断AKI，与1 期绝对值界值一致。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "10.0μmol/L 只相当于血肌酐的日间正常波动幅度，远低于教材界值，按此阈值会把正常人误判为急性肾损伤。",
+     "misconception_id": "MC-NEP-M06-11",
+     "misconception": "把血肌酐的日间正常波动幅度（约10μmol/L）当成KDIGO 的绝对升高界值，凭经验取了一个更低的数",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "44.2μmol/L 是0.5mg/dl 的换算值，教材界值为0.3mg/dl；把0.5 记成0.3 会抬高诊断门槛、漏诊早期损伤。",
+     "misconception_id": "MC-NEP-M06-12",
+     "misconception": "把0.5mg/dl 的换算值（44.2μmol/L）当成48 小时绝对阈值，记错mg/dl 与μmol/L 的对应关系",
+     "distractor_mechanism": "mechanism_confusion"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "88.4μmol/L 即1mg/dl，属早已不用的旧口径；现行KDIGO 标准为0.3mg/dl，按1mg/dl 判断会漏掉大量轻症AKI。",
+     "misconception_id": "MC-NEP-M06-13",
+     "misconception": "沿用旧口径把血肌酐升高1mg/dl（88.4μmol/L）当作诊断线，未更新为KDIGO 的0.3mg/dl",
+     "distractor_mechanism": "outdated_guideline"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "132.6μmol/L 为1.5mg/dl 的换算值，既不等于诊断界值0.3mg/dl，也不等于3 期界值353.6μmol/L，属把不同分层数值混用。",
+     "misconception_id": "MC-NEP-M06-14",
+     "misconception": "把1.5mg/dl 这类分期举例值当成诊断阈值，混淆诊断界值与分期界值",
+     "distractor_mechanism": "mechanism_confusion"
+    }
+   ],
+   "key_takeaway": "AKI 三条标准记牢：48 小时肌酐绝对升高≥26.5μmol/L（0.3mg/dl）、7 天内相对升高≥50%、尿量＜0.5ml/（kg·h）持续6 小时，满足其一即可，不必等肌酐翻倍。",
+   "source_quote": "48 小时内Scr 升高≥0.3mg/dl（≥26.5μmol/L）",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "KDIGO 三条诊断标准与教材P520 逐字核对",
+    "教材P521 表5-9-1 分期界值核对",
+    "结构与概念字段完整性",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；与Q024 构成AKI 定义阈值与致死性并发症的配对考点"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q024",
+  "sequence": 24,
+  "schema_version": "2.2",
+  "module": "M06",
+  "module_name": "急性肾损伤",
+  "type": "A1",
+  "case_group": null,
+  "stem": "急性肾衰少尿或无尿期最危险的是（）。",
+  "options": [
+   {
+    "label": "A",
+    "text": "水中毒",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "血钠、血钙降低",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "高血钾",
+    "is_correct": true
+   },
+   {
+    "label": "D",
+    "text": "代谢性酸中毒",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "高血压",
+    "is_correct": false
+   }
+  ],
+  "answer": "C",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "bloom": "理解",
+  "bloom_level": "理解",
+  "difficulty_tier": "L2",
+  "step_count": 2,
+  "competing_dx": [
+   "水中毒",
+   "代谢性酸中毒",
+   "低钠血症与低钙血症"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "少尿或无尿期"
+  ],
+  "topic": "急性肾损伤少尿期的致死性并发症",
+  "source_type": "执业医师真题",
+  "license": "public_noncommercial",
+  "source_page": "P523",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第九章/P523",
+   "[源:执业医师真题 2009年第3单元第111题]"
+  ],
+  "keypoint_ref": [
+   "第25条"
+  ],
+  "teacher_anchor": "教材P520：部分病人可出现少尿（＜400ml/d）和无尿（＜100ml/d），但也有些病人尿量在400ml/d 以上，后者称为非少尿型AKI。水、电解质和酸碱平衡紊乱多表现为水过多、代谢性酸中毒、高钾血症、低钠血症、低钙和高磷血症等。教材P523：高钾血症是AKI 的主要死因之一，当血钾＞6mmol/L 或心电图有高钾表现或有神经、肌肉症状时需紧急处理。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第25条",
+    "title": "急性肾损伤少尿期高钾血症",
+    "evidence": "题干问少尿或无尿期最危险者，选项列出水中毒、低钠低钙、高血钾、酸中毒与高血压。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "少尿或无尿期钾排出显著减少，加之酸中毒与组织分解使钾向细胞外转移，血钾可在短时间内升至危险水平，直接抑制心肌传导、诱发室颤与心脏骤停。教材因此把高钾血症列为AKI 的主要死因之一，并规定血钾＞6mmol/L 或心电图出现高钾表现时须紧急处理，其致命速度远快于水中毒、低钠低钙或代谢性酸中毒。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "水中毒可引起稀释性低钠血症与肺水肿，进展相对可控，利尿或透析可缓解，致死速度不及高钾血症。",
+     "misconception_id": "MC-NEP-M06-03",
+     "misconception": "把少尿期各种水电解质紊乱的危险性等同看待，忽略高钾血症可迅速致心脏骤停",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "低钠与低钙主要引起乏力、抽搐等表现，虽需纠正但一般不作为少尿期首要致死原因。",
+     "misconception_id": "MC-NEP-M06-03",
+     "misconception": "把少尿期各种水电解质紊乱的危险性等同看待，忽略高钾血症可迅速致心脏骤停",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "C",
+     "truth": true,
+     "why": "教材明确高钾血症是AKI 的主要死因之一，血钾＞6mmol/L 或心电图有高钾表现需紧急处理，故最危险。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "代谢性酸中毒在少尿期常见，但可经补碱与透析逐步纠正，其急性致命性低于高钾血症。",
+     "misconception_id": "MC-NEP-M06-03",
+     "misconception": "把少尿期各种水电解质紊乱的危险性等同看待，忽略高钾血症可迅速致心脏骤停",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "少尿期高血压多由水钠潴留引起，随超滤脱水可下降，通常不构成最危急的致死因素。",
+     "misconception_id": "MC-NEP-M06-04",
+     "misconception": "把少尿期高血压当作最危险的并发症，忽略其多为容量依赖性且可通过透析清除",
+     "distractor_mechanism": "mechanism_confusion"
+    }
+   ],
+   "key_takeaway": "少尿期先看心电图再看血钾：高钾血症能在数分钟内诱发室颤，是AKI 首要可预防死因，血钾＞6mmol/L 即需紧急降钾或透析。",
+   "source_quote": "高钾血症是AKI 的主要死因之一",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "真题题干/选项/答案逐字核对",
+    "教材P523 原文逐字锚定",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；与Q023 构成AKI 实验室与并发症的配对考点"
+  },
+  "p9_mode": "course_schedule",
+  "zhiyi_origin": {
+   "source_id": "2009年临床执业医师考试_第三单元_真题及答案#3-111",
+   "source": "2009年执业医师资格考试第3单元第111题",
+   "corpus": "pdf_paper",
+   "mode": "原题",
+   "answer_confidence": "high"
+  }
+ },
+ {
+  "id": "batch048-Q025",
+  "sequence": 25,
+  "schema_version": "2.2",
+  "module": "M06",
+  "module_name": "急性肾损伤",
+  "type": "A2",
+  "case_group": null,
+  "stem": "男，58岁，急性胃肠炎腹泻3天，每日排水样便10余次，近24小时尿量300ml。查体：血压92/60mmHg，皮肤弹性差，眼窝凹陷。尿钠8mmol/L，FENa 0.6%，尿比重1.025，尿沉渣未见管型。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "肾前性急性肾损伤",
+    "is_correct": true
+   },
+   {
+    "label": "B",
+    "text": "急性肾小管坏死",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "急性间质性肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "肾后性急性肾损伤",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "急进性肾小球肾炎",
+    "is_correct": false
+   }
+  ],
+  "answer": "A",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": true,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 3,
+  "competing_dx": [
+   "急性肾小管坏死",
+   "肾后性急性肾损伤",
+   "急进性肾小球肾炎"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "每日排水样便10余次",
+   "FENa 0.6%"
+  ],
+  "topic": "肾前性急性肾损伤的识别",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P521",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第九章/P521",
+   "教材《内科学》第10版 第五篇第九章/P522"
+  ],
+  "keypoint_ref": [
+   "第23条"
+  ],
+  "teacher_anchor": "教材P521：肾前性AKI 时，实验室检查可见血尿素氮 / 血清肌酐比值常大于20∶1（需排除胃肠道出血所致尿素产生增多、消瘦所致肌酐生成减少等），尿沉渣常无异常改变，尿液浓缩伴尿钠下降，FENa常＜1%。教材P522 表5-9-2：尿比重 肾前性AKI ＞1.018 缺血性ATN ＜1.012；尿钠 肾前性AKI ＜10 缺血性ATN ＞20。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第23条",
+    "title": "肾前性急性肾损伤的尿液指标",
+    "evidence": "题干给出尿钠12mmol/L、FENa 0.6%、尿比重1.025 与尿沉渣无管型，需据此判断病因分类。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第24条",
+    "title": "肾前性与肾性急性肾损伤的鉴别",
+    "evidence": "B 项急性肾小管坏死靠尿钠增高、FENa＞1% 与颗粒管型区分，本例两项指标均相反。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "病人因腹泻丢失大量胃肠液，血压92/60mmHg、皮肤弹性差、眼窝凹陷提示有效循环血容量不足，肾灌注下降致少尿。此时肾小管结构完整、重吸收钠与水的能力保留，故尿钠降低、FENa 0.6%（＜1%）、尿比重1.025（＞1.018），尿沉渣无管型，符合肾前性急性肾损伤；补足容量后肾功能通常可恢复。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": true,
+     "why": "容量不足病史加尿钠降低、FENa＜1%、尿比重升高与尿沉渣无管型，正是肾前性AKI 的典型组合。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "ATN 时肾小管重吸收受损，尿钠＞20mmol/L、FENa≥1%、尿比重＜1.012 并见棕色颗粒管型，与本例相反。",
+     "misconception_id": "MC-NEP-M06-05",
+     "misconception": "只按血肌酐升高与少尿判断肾性损伤，忽略FENa＜1%、尿比重升高提示肾小管功能完好",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "急性间质性肾炎多有用药或感染过敏史，伴发热、皮疹、嗜酸性粒细胞增多，FENa 常＞1%，本例均缺如。",
+     "misconception_id": "MC-NEP-M06-06",
+     "misconception": "把无皮疹、无嗜酸性粒细胞增多的单纯容量不足病人误判为药物性间质性肾炎",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "肾后性AKI 需有尿路梗阻证据，如突然无尿、肾积水或结石，本例为逐渐少尿且无梗阻线索。",
+     "misconception_id": "MC-NEP-M06-07",
+     "misconception": "在没有尿路梗阻证据时把少尿型急性肾损伤诊断为肾后性",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "急进性肾小球肾炎以血尿、蛋白尿和肾功能数周内快速减退为特点，本例尿沉渣无管型、无蛋白尿描述。",
+     "misconception_id": "MC-NEP-M06-10",
+     "misconception": "忽略尿沉渣与尿钠等尿液指标，把少尿型急性肾损伤直接归为肾小球疾病",
+     "distractor_mechanism": "similar_presentation"
+    }
+   ],
+   "key_takeaway": "少尿先算尿钠与FENa：尿钠低、FENa＜1%、尿比重高、沉渣干净＝肾前性，先补容量；尿钠高、FENa≥1%、见棕色颗粒管型＝已进入ATN。",
+   "source_quote": "尿液浓缩伴尿钠下降，FENa常＜1%",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "尿液指标阈值与教材表5-9-2 逐项核对",
+    "结构与概念字段完整性",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；与Q026 形成肾前性/肾性鉴别对"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q026",
+  "sequence": 26,
+  "schema_version": "2.2",
+  "module": "M06",
+  "module_name": "急性肾损伤",
+  "type": "A2",
+  "case_group": null,
+  "stem": "男，65岁，因肺部感染静脉滴注阿米卡星10天。近3天尿量350ml/d，血肌酐由78μmol/L升至356μmol/L，尿钠60mmol/L，FENa 2.8%，尿沉渣见棕色颗粒管型。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "药物性急性间质性肾炎",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "急性肾小管坏死",
+    "is_correct": true
+   },
+   {
+    "label": "C",
+    "text": "肾前性急性肾损伤",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "肾后性急性肾损伤",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "急进性肾小球肾炎",
+    "is_correct": false
+   }
+  ],
+  "answer": "B",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": true,
+   "C": false,
+   "D": false,
+   "E": false
+  },
+  "bloom": "分析",
+  "bloom_level": "分析",
+  "difficulty_tier": "L4",
+  "step_count": 3,
+  "competing_dx": [
+   "肾前性急性肾损伤",
+   "药物性急性间质性肾炎",
+   "急进性肾小球肾炎"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "静脉滴注阿米卡星10天",
+   "FENa 2.8%"
+  ],
+  "topic": "肾毒性药物所致急性肾小管坏死的判断",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P520",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第九章/P520",
+   "教材《内科学》第10版 第五篇第九章/P522"
+  ],
+  "keypoint_ref": [
+   "第24条"
+  ],
+  "teacher_anchor": "教材P519：外源性肾毒性物质以药物最为常见，包括氨基糖苷类抗生素和铂类抗肿瘤药物等。教材P520：ATN 时可有少量蛋白尿，以小分子蛋白为主；尿沉渣检查可见肾小管上皮细胞、上皮细胞管型和颗粒管型及少许红细胞、白细胞等；因肾小管重吸收功能减退，尿比重降低且较固定，多在1.015 以下，尿渗透压＜350mOsm/（kg·H2O），尿与血渗透压之比＜1.1，尿钠含量增高，滤过钠排泄分数（FENa）＞1%。教材P522 表5-9-2：尿沉渣 肾前性AKI 透明管型 缺血性ATN 棕色颗粒管型。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第24条",
+    "title": "急性肾小管坏死的尿液诊断指标",
+    "evidence": "题干给出尿钠60mmol/L、FENa 2.8%、棕色颗粒管型三项，均指向肾小管上皮损伤。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第23条",
+    "title": "肾前性急性肾损伤的鉴别要点",
+    "evidence": "C 项肾前性要求FENa＜1%、尿钠降低、沉渣仅透明管型，与本例三项指标全部相反。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "阿米卡星属氨基糖苷类抗生素，是教材列出的典型外源性肾毒性药物，可直接损伤近端肾小管上皮。肾小管重吸收功能减退后，尿钠含量增高、FENa 升至2.8%（＞1%），脱落的肾小管上皮细胞在管腔内形成棕色颗粒管型，尿量减少伴血肌酐在数日内由78μmol/L 升至356μmol/L，均符合急性肾小管坏死。若为肾前性，尿钠应降低、FENa＜1% 且沉渣仅见透明管型。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "药物性间质性肾炎多有发热、皮疹、外周血嗜酸性粒细胞增多，尿沉渣以白细胞为主，与本例棕色颗粒管型不符。",
+     "misconception_id": "MC-NEP-M06-08",
+     "misconception": "只要有用药物史就诊断间质性肾炎，忽略无发热皮疹、嗜酸性粒细胞不增多且FENa＞2% 支持ATN",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "B",
+     "truth": true,
+     "why": "氨基糖苷类肾毒性加尿钠增高、FENa＞1%、棕色颗粒管型，正是急性肾小管坏死的典型组合。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "肾前性AKI 的FENa 常＜1%、尿钠降低、尿沉渣仅见透明管型，本例三项指标全部相反，不能判为肾前性。",
+     "misconception_id": "MC-NEP-M06-09",
+     "misconception": "认为有感染或容量不足诱因的急性肾损伤一定是肾前性，忽略肾小管已发生坏死",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "肾后性需有梗阻证据（突发无尿、肾积水、结石），本例为逐渐少尿且无梗阻线索，尿钠增高也不支持。",
+     "misconception_id": "MC-NEP-M06-07",
+     "misconception": "在没有尿路梗阻证据时把少尿型急性肾损伤诊断为肾后性",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "急进性肾小球肾炎尿沉渣以畸形红细胞和红细胞管型为主、蛋白尿显著，FENa 常＜1%，与本例不符。",
+     "misconception_id": "MC-NEP-M06-10",
+     "misconception": "忽略尿沉渣与尿钠等尿液指标，把少尿型急性肾损伤直接归为肾小球疾病",
+     "distractor_mechanism": "similar_presentation"
+    }
+   ],
+   "key_takeaway": "用肾毒性药物后肌酐上升，看三样定ATN：尿钠＞20mmol/L、FENa＞1%、棕色颗粒管型；三者同时出现即肾小管已坏死，不再是单纯肾前性。",
+   "source_quote": "尿钠含量增高，滤过钠排泄分数（FENa）＞1%",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "肾毒性药物清单与教材P519 核对",
+    "ATN 尿液指标与教材P520/P522 逐项核对",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；与Q025 形成肾前性/肾性鉴别对"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q027",
+  "sequence": 27,
+  "schema_version": "2.2",
+  "module": "M07",
+  "module_name": "慢性肾衰竭与肾脏替代治疗",
+  "type": "A1",
+  "case_group": null,
+  "stem": "下列有助于鉴别慢性和急性肾衰竭的检查是",
+  "options": [
+   {
+    "label": "A",
+    "text": "尿常规",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "尿酸化功能",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "肾脏超声",
+    "is_correct": true
+   },
+   {
+    "label": "D",
+    "text": "肾脏活检",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "血肌酐水平",
+    "is_correct": false
+   }
+  ],
+  "answer": "C",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": true,
+   "D": false,
+   "E": false
+  },
+  "bloom": "理解",
+  "bloom_level": "理解",
+  "difficulty_tier": "L2",
+  "step_count": 1,
+  "competing_dx": [
+   "血肌酐水平",
+   "尿常规",
+   "肾脏活检"
+  ],
+  "negative_cues": [],
+  "conditionals": [],
+  "topic": "急、慢性肾衰竭的影像学鉴别",
+  "source_type": "执业医师真题",
+  "license": "public_noncommercial",
+  "source_page": "P529",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第十章/P529",
+   "[源:执业医师真题 2024年第2单元第9题]"
+  ],
+  "keypoint_ref": [
+   "第26条"
+  ],
+  "teacher_anchor": "教材P529：CKD 与AKI 的鉴别多数情况下并不困难，往往根据病人病史即可作出鉴别。在病人病史欠详时，可借助影像学检查（如B 超，CT 等）或肾图检查结果进行分析，如双肾明显缩小（需注意糖尿病肾脏病、肾脏淀粉样变性、多囊肾、双肾多发囊肿等疾病肾脏往往不缩小），或肾图提示慢性病变，则支持CKD 的诊断。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第26条",
+    "title": "慢性肾脏病与急性肾损伤的鉴别",
+    "evidence": "题干问哪种检查有助于区分急慢性肾衰竭，五个选项分别为尿液、肾小管功能、影像与病理检查。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "慢性肾衰竭是长期病变的结果，肾实质萎缩、皮质变薄，超声可见双肾体积缩小、皮质回声增强；急性肾损伤时肾脏大小多正常或增大。教材因此把影像学检查（B 超、CT）与肾图列为病史欠详时鉴别CKD 与AKI 的可靠手段。血肌酐只反映滤过功能下降的程度，急慢性都可显著升高，无法区分病程长短。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "尿常规反映的是有无血尿、蛋白尿等活动性损伤，急慢性肾衰竭都可出现异常，不能判断病程长短。",
+     "misconception_id": "MC-NEP-M07-01",
+     "misconception": "用尿常规判断急慢性肾衰竭，忽略尿常规只反映活动性损伤、不反映肾脏大小与慢性化",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "尿酸化功能评价肾小管泌氢能力，慢性间质性病变与部分急性损伤均可异常，不能作为急慢性鉴别依据。",
+     "misconception_id": "MC-NEP-M07-02",
+     "misconception": "用尿酸化功能判断急慢性肾衰竭，把肾小管功能指标误当成病程长短指标",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "C",
+     "truth": true,
+     "why": "超声可直接显示肾脏大小与皮质厚度，双肾缩小支持慢性化，教材将影像学列为鉴别CKD 与AKI 的可靠方法。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "肾活检确能判断慢性化程度，但为有创操作、存在出血等风险，不作首选，教材首选无创影像学与肾图。",
+     "misconception_id": "MC-NEP-M07-03",
+     "misconception": "把有创的肾活检当作鉴别急慢性肾衰竭的首选检查",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "血肌酐只表明滤过功能受损程度，急性与慢性肾衰竭都可明显升高，单看数值无法区分。",
+     "misconception_id": "MC-NEP-M07-04",
+     "misconception": "用血肌酐水平鉴别急慢性肾衰竭，忽略急慢性都可表现为肌酐升高",
+     "distractor_mechanism": "direction_error"
+    }
+   ],
+   "key_takeaway": "鉴别急慢性看肾脏大小：超声见双肾缩小＝慢性，大小正常或增大＝急性；血肌酐只说明降了多少，不说明降了多久。",
+   "source_quote": "可借助影像学检查（如B 超，CT 等）或肾图检查结果进行分析，如双肾明显缩小",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "真题题干/选项/答案逐字核对",
+    "教材P529 原文逐字锚定",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；注意糖尿病肾脏病等肾脏不缩小的例外"
+  },
+  "p9_mode": "course_schedule",
+  "zhiyi_origin": {
+   "source_id": "2024年临床执业真题-学#2-9",
+   "source": "2024年执业医师资格考试第2单元第9题",
+   "corpus": "pdf_paper",
+   "mode": "原题",
+   "answer_confidence": "high"
+  }
+ },
+ {
+  "id": "batch048-Q028",
+  "sequence": 28,
+  "schema_version": "2.2",
+  "module": "M07",
+  "module_name": "慢性肾衰竭与肾脏替代治疗",
+  "type": "A2",
+  "case_group": null,
+  "stem": "男，62岁，慢性肾小球肾炎12年。eGFR 22ml/（min·1.73m²），血红蛋白88g/L，血磷2.1mmol/L，血钙2.02mmol/L，血白蛋白36g/L，血压150/92mmHg。最恰当的综合处理是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "输注红细胞、钙剂、正常蛋白饮食",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "促红细胞生成素、钙剂、高蛋白饮食",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "促红细胞生成素、活性维生素D、高蛋白饮食",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "促红细胞生成素、磷结合剂、低蛋白饮食",
+    "is_correct": true
+   },
+   {
+    "label": "E",
+    "text": "口服铁剂、磷结合剂、高蛋白饮食",
+    "is_correct": false
+   }
+  ],
+  "answer": "D",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "bloom": "应用",
+  "bloom_level": "应用",
+  "difficulty_tier": "L3",
+  "step_count": 3,
+  "competing_dx": [
+   "输血纠正肾性贫血",
+   "单纯补铁纠正贫血",
+   "以钙剂与高蛋白饮食为主的方案"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "eGFR 22ml/（min·1.73m²）",
+   "血磷2.1mmol/L"
+  ],
+  "topic": "CKD 4 期并发症与营养的综合处理",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P530",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第十章/P530",
+   "教材《内科学》第10版 第五篇第十章/P532",
+   "教材《内科学》第10版 第五篇第十章/P531"
+  ],
+  "keypoint_ref": [
+   "第27条",
+   "第28条"
+  ],
+  "teacher_anchor": "教材P530：从CKD 3 期起至没有进行透析治疗的病人，推荐蛋白摄入量0.6～0.8g/（kg·d）。教材P532：GFR＜30ml/（min·1.73m2）时，除限制磷摄入外，可应用磷结合剂口服，如碳酸钙（含钙40%）、醋酸钙（含钙25%）、司维拉姆、碳酸镧等，餐中服用效果最好。教材P531：非透析病人若血红蛋白＜100g/L，建议基于血红蛋白下降率、评估相关风险后，个体化决定是否开始使用rHuEPO 治疗。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第27条",
+    "title": "慢性肾衰竭的肾性贫血与钙磷代谢紊乱",
+    "evidence": "题干给出Hb 88g/L、血磷2.1mmol/L、血钙2.02mmol/L，要求同时处理贫血与CKD-MBD。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第28条",
+    "title": "CKD 非透析期的低蛋白饮食与磷结合剂",
+    "evidence": "B、C、E 三项均给高蛋白饮食，与CKD 3 期起0.6～0.8g/（kg·d）的限制蛋白原则冲突。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "病人eGFR 22ml/（min·1.73m²）属CKD 4 期，血红蛋白88g/L 提示肾性贫血，源于EPO 生成不足，需用重组人促红细胞生成素；血磷2.1mmol/L 偏高、血钙偏低，GFR＜30ml/（min·1.73m²）时应限制磷摄入并餐中服用磷结合剂；非透析病人蛋白摄入应为0.6～0.8g/（kg·d）。故综合处理为促红细胞生成素、磷结合剂与低蛋白饮食。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "慢性肾性贫血不宜常规输注红细胞，输血可致敏并影响日后肾移植，且正常蛋白饮食会加重氮质血症。",
+     "misconception_id": "MC-NEP-M07-05",
+     "misconception": "用输注红细胞来纠正肾性贫血，忽略输血致敏影响肾移植且非首选",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "高磷血症时补钙会加重钙磷沉积与转移性钙化，高蛋白饮食则增加磷与氮质负荷，方向相反。",
+     "misconception_id": "MC-NEP-M07-06",
+     "misconception": "高磷血症时仍补钙并给高蛋白饮食，加重钙磷紊乱与氮质血症",
+     "distractor_mechanism": "direction_error"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "活性维生素D 用于纠正低钙与继发性甲状旁腺功能亢进，不能替代磷结合剂，高蛋白饮食亦与限制蛋白原则冲突。",
+     "misconception_id": "MC-NEP-M07-07",
+     "misconception": "认为补充活性维生素D 即可代替磷结合剂与低蛋白饮食",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "D",
+     "truth": true,
+     "why": "EPO 纠正肾性贫血、磷结合剂控制高磷、低蛋白饮食减轻氮质负荷，三项与教材CKD 4 期处理完全一致。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "缺铁只是影响EPO 疗效的因素，单补铁不能纠正EPO 缺乏所致的肾性贫血，高蛋白饮食同样不恰当。",
+     "misconception_id": "MC-NEP-M07-08",
+     "misconception": "只补铁剂不补EPO，忽略肾性贫血的根本原因是EPO 生成不足",
+     "distractor_mechanism": "mechanism_confusion"
+    }
+   ],
+   "key_takeaway": "CKD 4 期三方并进：Hb＜100g/L 用EPO（先查铁）、GFR＜30ml/（min·1.73m²）加磷结合剂并限磷、非透析期限蛋白0.6～0.8g/（kg·d），高蛋白与常规输血都不对。",
+   "source_quote": "从CKD 3 期起至没有进行透析治疗的病人，推荐蛋白摄入量0.6～0.8g/（kg·d）",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "蛋白摄入量与磷结合剂指征与教材P530/P532 逐项核对",
+    "结构与概念字段完整性",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；血压控制在解析中提示但不入选项"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q029",
+  "sequence": 29,
+  "schema_version": "2.2",
+  "module": "M07",
+  "module_name": "慢性肾衰竭与肾脏替代治疗",
+  "type": "A4",
+  "case_group": "CG-M07-A4",
+  "stem": "男，45岁，慢性肾小球肾炎进展至终末期肾病，eGFR 8ml/（min·1.73m²），无活动性感染及恶性肿瘤，心肺功能良好，已找到组织配型相合的亲属供肾。最恰当的肾脏替代治疗方式是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "维持性血液透析",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "维持性腹膜透析",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "连续性肾脏替代治疗",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "保守治疗，暂不替代",
+    "is_correct": false
+   },
+   {
+    "label": "E",
+    "text": "同种异体肾移植",
+    "is_correct": true
+   }
+  ],
+  "answer": "E",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": false,
+   "E": true
+  },
+  "bloom": "分析",
+  "bloom_level": "分析",
+  "difficulty_tier": "L4",
+  "step_count": 4,
+  "competing_dx": [
+   "维持性血液透析",
+   "维持性腹膜透析",
+   "连续性肾脏替代治疗"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "无活动性感染及恶性肿瘤，心肺功能良好",
+   "已找到组织配型相合的亲属供肾"
+  ],
+  "topic": "终末期肾病的肾脏替代方式选择",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P532",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第十章/P532",
+   "教材《内科学》第10版 第五篇第十一章/P536"
+  ],
+  "keypoint_ref": [
+   "第29条"
+  ],
+  "teacher_anchor": "教材P532：肾脏替代治疗包括血液透析、腹膜透析和肾脏移植。血液透析和腹膜透析疗效相近，各有优缺点，临床上可互为补充。但透析疗法仅可部分替代肾脏的排泄功能（对小分子溶质的清除，仅相当于正常肾脏10%～15%），也不能代替肾脏内分泌和代谢功能。肾移植是目前最佳的肾脏替代疗法，成功的肾移植可恢复正常的肾功能（包括内分泌和代谢功能）。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第29条",
+    "title": "肾脏替代治疗方式的选择",
+    "evidence": "题干给出ESRD、无禁忌且已有合适供肾，要求在最优替代方式与透析之间抉择。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第29条",
+    "title": "血液透析与连续性肾脏替代治疗的适应证",
+    "evidence": "C 项CRRT 主要用于血流动力学不稳定的危重症，被误当作ESRD 的长期方案。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "病人已达终末期肾病，eGFR 8ml/（min·1.73m²）具备替代治疗指征，且无活动性感染、恶性肿瘤等移植禁忌，心肺功能良好，并有组织配型相合的亲属供肾。教材明确指出肾移植是目前最佳的肾脏替代疗法，成功的肾移植可恢复包括内分泌与代谢功能在内的正常肾功能；血液透析与腹膜透析只能部分替代排泄功能，不能替代EPO 与活性维生素D 的生成。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "血液透析只能部分替代小分子溶质清除，不能恢复EPO 与活性维生素D 的生成，在有合适供肾时不是最优。",
+     "misconception_id": "MC-NEP-M07-09",
+     "misconception": "把维持性血液透析或腹膜透析当作终末期肾病一律首选，忽略有合适供肾时肾移植疗效最佳",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "腹膜透析对残余肾功能影响小、适合心血管不稳定者，但仍不能替代肾脏内分泌功能，疗效不及肾移植。",
+     "misconception_id": "MC-NEP-M07-09",
+     "misconception": "把维持性血液透析或腹膜透析当作终末期肾病一律首选，忽略有合适供肾时肾移植疗效最佳",
+     "distractor_mechanism": "overgeneralization"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "CRRT 是持续缓慢的血液净化技术，主要用于血流动力学不稳定的危重症短期支持，不作ESRD 的长期替代方式。",
+     "misconception_id": "MC-NEP-M07-10",
+     "misconception": "把连续性肾脏替代治疗当作终末期肾病的长期替代方式，忽略其主要用于危重症短期支持",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "D",
+     "truth": false,
+     "why": "eGFR 8ml/（min·1.73m²）已低于非糖尿病肾病启动替代治疗的10ml/（min·1.73m²）界值，保守治疗会延误时机。",
+     "misconception_id": "MC-NEP-M07-11",
+     "misconception": "以保守治疗代替肾脏替代治疗，忽略eGFR 已降至替代治疗指征以下",
+     "distractor_mechanism": "timing_error"
+    },
+    {
+     "label": "E",
+     "truth": true,
+     "why": "无移植禁忌且有配型相合的供肾，教材明确肾移植是目前最佳的肾脏替代疗法，可全面恢复肾脏功能。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    }
+   ],
+   "key_takeaway": "选替代方式先看禁忌再看供肾：有合适供肾且无活动性感染、恶性肿瘤，肾移植最优（唯一能恢复内分泌功能）；CRRT 只用于危重症短期支持。",
+   "source_quote": "肾移植是目前最佳的肾脏替代疗法",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "替代治疗方式优劣与教材P532 逐字核对",
+    "A4 共用选项与结构字段完整性",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；case_group=CG-M07-A4"
+  },
+  "p9_mode": "course_schedule"
+ },
+ {
+  "id": "batch048-Q030",
+  "sequence": 30,
+  "schema_version": "2.2",
+  "module": "M08",
+  "module_name": "间质性肾炎与肾小管酸中毒",
+  "type": "A2",
+  "case_group": null,
+  "stem": "女，48岁，类风湿关节炎长期服布洛芬。近1周发热、躯干皮疹。查体：体温38.4℃，双下肢散在斑丘疹。血肌酐由72μmol/L升至268μmol/L，外周血嗜酸性粒细胞0.12，血钾3.1mmol/L，血氯112mmol/L，动脉血pH 7.30，HCO₃⁻ 16mmol/L，尿pH 6.0。最可能的诊断是？",
+  "options": [
+   {
+    "label": "A",
+    "text": "急性肾小管坏死，低钾性肾小管酸中毒",
+    "is_correct": false
+   },
+   {
+    "label": "B",
+    "text": "急性间质性肾炎，高钾性肾小管酸中毒",
+    "is_correct": false
+   },
+   {
+    "label": "C",
+    "text": "急进性肾小球肾炎，低钾性肾小管酸中毒",
+    "is_correct": false
+   },
+   {
+    "label": "D",
+    "text": "急性间质性肾炎，低钾性肾小管酸中毒",
+    "is_correct": true
+   },
+   {
+    "label": "E",
+    "text": "狼疮性肾炎，低钾性肾小管酸中毒",
+    "is_correct": false
+   }
+  ],
+  "answer": "D",
+  "polarity": "positive",
+  "option_polarities": {
+   "A": false,
+   "B": false,
+   "C": false,
+   "D": true,
+   "E": false
+  },
+  "bloom": "记忆",
+  "bloom_level": "记忆",
+  "difficulty_tier": "L3",
+  "step_count": 3,
+  "competing_dx": [
+   "急性肾小管坏死",
+   "急性间质性肾炎合并高钾性（Ⅳ型）肾小管酸中毒",
+   "急进性肾小球肾炎"
+  ],
+  "negative_cues": [],
+  "conditionals": [
+   "长期服布洛芬",
+   "血钾3.1mmol/L"
+  ],
+  "topic": "药物性急性间质性肾炎合并肾小管酸中毒",
+  "source_type": "原创",
+  "license": "public_noncommercial",
+  "source_page": "P497",
+  "source_anchors": [
+   "教材《内科学》第10版 第五篇第四章/P496",
+   "教材《内科学》第10版 第五篇第四章/P497",
+   "教材《内科学》第10版 第五篇第六章/P505"
+  ],
+  "keypoint_ref": [
+   "第30条",
+   "第31条"
+  ],
+  "teacher_anchor": "教材P496：NSAIDs 导致者肾小球在光镜下无明显改变，电镜下可见足细胞足突融合，与微小病变病理相似。教材P497：不到1/3 的病人可有过敏反应，表现为斑丘疹、发热和嗜酸性粒细胞增多。肾小管功能损害突出，常见肾性糖尿、小分子蛋白尿，尿β2 微球蛋白、N- 乙酰 -β-D- 氨基葡萄糖苷酶（NAG）等排出增多，尿比重及渗透压降低。可见Ⅰ型肾小管酸中毒，偶见Fanconi（范科尼）综合征，电解质紊乱。教材P505：肾小管性酸中毒（renal tubular acidosis，RTA）是各种病因导致肾脏酸化功能障碍引起的以阴离子间隙（anion gap，AG）正常的高氯性代谢性酸中毒为特点的临床综合征。",
+  "concepts": [
+   {
+    "role": "primary",
+    "keypoint": "第30条",
+    "title": "药物性急性间质性肾炎",
+    "evidence": "题干给出NSAIDs 用药史加发热、皮疹、嗜酸性粒细胞增多与肌酐升高，是典型药物过敏型AIN。"
+   },
+   {
+    "role": "differential",
+    "keypoint": "第31条",
+    "title": "肾小管酸中毒的分型",
+    "evidence": "B 项把合并的酸中毒判为高钾性Ⅳ型，而本例血钾3.1mmol/L 与教材所述Ⅰ型相符。"
+   }
+  ],
+  "learning_value": {
+   "correct_rationale": "布洛芬属非甾体抗炎药，是教材列出的急性间质性肾炎常见致病药物，机制为Ⅳ型变态反应；病人用药后出现发热、斑丘疹、外周血嗜酸性粒细胞升高，伴血肌酐由72μmol/L 升至268μmol/L，符合药物性急性间质性肾炎。同时血氯112mmol/L、HCO₃⁻ 16mmol/L、高氯性代谢性酸中毒（题干未提供血钠，未计算阴离子间隙）、尿pH 6.0 提示远端泌氢障碍，血钾3.1mmol/L 提示伴失钾，即教材所述AIN 常见的Ⅰ型（低钾性）肾小管酸中毒。",
+   "per_option": [
+    {
+     "label": "A",
+     "truth": false,
+     "why": "急性肾小管坏死以尿钠增高、FENa＞1%、棕色颗粒管型为特点，不伴发热、皮疹与嗜酸性粒细胞增多。",
+     "misconception_id": "MC-NEP-M08-01",
+     "misconception": "只用肾毒性药物史解释肾损伤，忽略发热、皮疹、嗜酸性粒细胞增多提示过敏机制",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "B",
+     "truth": false,
+     "why": "Ⅳ型肾小管酸中毒由醛固酮不足致排钾减少，表现为高血钾；本例血钾3.1mmol/L，与Ⅳ型方向相反。",
+     "misconception_id": "MC-NEP-M08-02",
+     "misconception": "把药物性间质性肾炎合并的肾小管酸中毒一律当作Ⅳ型高钾型，忽略其多为Ⅰ型伴低钾",
+     "distractor_mechanism": "adjacent_concept"
+    },
+    {
+     "label": "C",
+     "truth": false,
+     "why": "急进性肾小球肾炎以血尿、大量蛋白尿和红细胞管型为主，无发热皮疹与嗜酸性粒细胞增多，无低钾性酸中毒。",
+     "misconception_id": "MC-NEP-M08-03",
+     "misconception": "忽略药物史与过敏表现，把急性肾损伤伴尿检异常直接归为肾小球疾病",
+     "distractor_mechanism": "similar_presentation"
+    },
+    {
+     "label": "D",
+     "truth": true,
+     "why": "NSAIDs 用药后发热、皮疹、嗜酸性粒细胞增多加肌酐升高符合药物性AIN，低钾加高氯性酸中毒符合Ⅰ型RTA。",
+     "misconception_id": null,
+     "misconception": null,
+     "distractor_mechanism": null
+    },
+    {
+     "label": "E",
+     "truth": false,
+     "why": "狼疮性肾炎需有抗dsDNA 抗体阳性、补体下降等多系统表现，本例仅有关节炎病史与药物暴露，无狼疮免疫学证据。",
+     "misconception_id": "MC-NEP-M08-03",
+     "misconception": "忽略药物史与过敏表现，把急性肾损伤伴尿检异常直接归为肾小球疾病",
+     "distractor_mechanism": "similar_presentation"
+    }
+   ],
+   "key_takeaway": "用药后发热＋皮疹＋嗜酸性粒细胞增多＋肌酐升高＝药物性急性间质性肾炎；若同时低钾、高氯、尿pH＞5.5，是Ⅰ型肾小管酸中毒而非高钾的Ⅳ型。",
+   "source_quote": "不到1/3 的病人可有过敏反应，表现为斑丘疹、发热和嗜酸性粒细胞增多",
+   "source_quote_status": "exact",
+   "anchor_status": "verified",
+   "quality_flags": [
+    "HC-29 干扰项机制标签已标注"
+   ],
+   "review_status": "agent_verified"
+  },
+  "review_status": "agent_verified",
+  "medical_verification": "agent 自检通过（教材原文逐字锚定 + 机械门禁）",
+  "release": {
+   "disposition": "publishable",
+   "evidence_grade": "B",
+   "risk_level": "medium",
+   "reason_code": "NONE",
+   "agent_checks": [
+    "AIN 过敏三联征与教材P497 逐字核对",
+    "Ⅰ型/Ⅳ型RTA 血钾方向与教材P505 表核对",
+    "干扰项机制标签"
+   ],
+   "human_check": "",
+   "suggested_action": "可直接发布；M08 了解级唯一题"
+  },
+  "p9_mode": "course_schedule"
+ }
+]
