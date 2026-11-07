@@ -578,25 +578,30 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 
 ## 多 Agent 协作规则
 
-> 5 个 Agent 共享同一工作文件夹。**2026-08-13 起主流程为 DSH 自动编排**（角色技能 `.dsh/skills/`，编排在主会话完成）；Cherry Studio 用户中转接力（下节"旧调用链路"）保留为备用。
+> 5 个角色共享同一工作区。**2026-11-07 起为宿主无关的交接包编排（H1–H5）**：规则真源仍是
+> `.dsh/skills/*/SKILL.md`，三宿主入口由 `scripts/host_bootstrap.py` 生成路由桩；阶段派活由
+> `scripts/batch_driver.py` 生成的 `中间产物/{batch}/_handoff/{stage}.json` 驱动，宿主能力由桩的
+> `level=` 声明（L2 派生隔离子代理 / L1 单会话顺序 / L0 人工接力）。门禁回执链不记录宿主字段，
+> 因此 DSH、WorkBuddy、Trae 与 CI 产出的证据是同一份字节。
 
-### DSH 调用链路（主流程 · 2026-08-13 重构）
+### 当前调用链路（跨宿主 · 2026-11-07 起）
 ```
-用户 → 主会话 (MedMaster, medmaster skill) → 回显意图 → 用户确认
-      → 编排者后台调用 MedGen (medgen skill) → 题库直写 中间产物/{batchID}/
-      → 编排者运行 validate_options.py 门禁 (FAIL==0)
-      → 后台调用 MedQC (medqc skill) → 质检报告直写 质检报告/{batchID}/
-      → 编排者运行 gate_check.py --stage agent3_done
-      → 后台调用 MedFix (medfix skill) → 修复版直写 最终产物/{batchID}/
-      → 编排者运行 gate_check.py --stage agent4_done
-      → 后台调用 MedReview (medreview skill) → 复习资料直写 复习资料/
-      → 编排者运行 gate_check.py --stage final
-      → 用户审查 → 签收/打回 → 合格手动加入 GoldenSet/
+用户 → 主会话（MedMaster，读 AGENTS.md + 中间产物/{batch}/_ctx.md）→ 回显意图 → 用户确认
+      → python scripts/batch_driver.py check --batch {batch} --stage auto
+      → driver 给出 next_stage / next_action / next_bundle，并写下一阶段交接包
+      → 阶段执行方按入口桩 level= 消费 中间产物/{batch}/_handoff/{stage}.json
+      → 上游产物按 inputs[].path 直读（不接受主会话摘要），产物按 outputs[].path 直写
+      → driver 跑门禁 → PASS 写回执（产物字节绑定）→ 生成下一阶段交接包
+      → 循环至 final → 用户审查 → 签收/打回 → 合格手动加入 GoldenSet/
 ```
-批次运行手册：`.dsh/skills/medbatch/SKILL.md`（阶段序列/门禁命令/目录命名/故障处置）。
-每批次建议独立 DSH 会话；事件记入 `memory/JOURNAL.jsonl`。
+**唯一执行面**：`python scripts/batch_driver.py check --batch {batch} --stage auto`。
+`validate_options.py` / `gate_check.py` / `quality_gate.py` / `check_learning_value.py` 等是
+被 driver 纳管的**内部实现**，编排者不得直接执行（HC-12 / SA-4）。四个自检命令见
+`AGENTS.md §3`，三宿主能力与交接包命令见 `AGENTS.md §3.5`。
+批次运行手册：`.dsh/skills/medbatch/SKILL.md`（阶段序列 / 门禁 / 目录命名 / 故障处置）。
+每批次建议独立会话；事件记入 `memory/JOURNAL.jsonl`。
 
-### 旧调用链路（Cherry Studio 用户中转，已弃用）
+### 旧调用链路（Cherry Studio 用户中转 · 已弃用，仅存历史）
 ```
 用户 → Agent 1 (MedMaster) → 回显意图 → 用户确认
       → Agent 1 给出 Agent 2 调用指令 → 用户粘贴到 Agent 2

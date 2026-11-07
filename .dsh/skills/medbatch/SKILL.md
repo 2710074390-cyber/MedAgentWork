@@ -187,8 +187,13 @@ python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
 - 检索前先查 `中间产物/kb_search_result.json` 与 cache，避免 MedGen/MedReview 重复检索同一查询
 - MedMaster 检索尽量一次批量覆盖多考点（`-f queries.txt`），减少交互式单发调用
 
-## 6. DSH 流程差异（vs 旧 Cherry Studio 流程）
+## 7. 跨宿主执行差异（H1–H5 · 2026-11-07）
+
+> 本节编号从原「§6」改为「§7」：§6 已是「成本纪律」，两个 §6 会造成引用歧义。
+> 内容也从「DSH vs 旧 Cherry Studio」改为当前的宿主无关口径。
 
 - 无剪贴板接力：产物由阶段执行方直接写文件，编排者只传 `_handoff/{stage}.json` 路径
-- save.py / ingest.py 保留给手工流程；DSH 流程下编排者校验产物后直接更新血缘
+- `save.py` / `ingest.py` 保留给纯手工流程；自动化流程下编排者校验产物后直接更新血缘
 - 每批次建议独立会话，避免上下文膨胀与批次间污染
+- 宿主能力由入口桩 `level=` 声明：L2 派生隔离子代理 / L1 单会话顺序执行 / L0 人工接力；
+  三档的门禁用同一套 Python 脚本，回执链不记录宿主信息（见 `AGENTS.md §3.5`）

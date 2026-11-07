@@ -1,7 +1,8 @@
 # MedAgentWork 交接文档 —— 新 Agent 快速上手（v2.0 · 2026-11-02）
 
-> **读者**：接手本项目的任何 Agent（Claude Code / Cherry Studio / Cursor / 其他 harness 均可）。
-> **用法**：本文档作为新 Agent 的第一份上下文；先读 §1，再按 §9 的 Checklist 执行。
+> **读者**：接手本项目的任何 Agent（DSH / WorkBuddy / Trae / Claude Code / Cursor / 其他 harness 均可）。
+> **用法**：本文档作为新 Agent 的第一份上下文；先读 §1，再按 §9 的 Checklist 执行。**规则路由与四条硬约束以仓库根 `AGENTS.md` 为准**（三宿主通用入口）。
+> **最后校准**：2026-11-07（跨宿主交接包 H1–H5 落地、回归基线重测）。
 > **上一版**：`docs/archive/2026-11/交接文档_新Agent接手_v1.0.md`（2026-09-04，生产流程与资源清单仍有效，本文档不重复其内容，只写**变化**与**新坑**）。
 > **一句话**：v1.0 教你怎么**生产**；v2.0 记录的是把"生产"变成"**可验证的生产**"——规则有了单一事实来源，门禁有了自测，修复有了 no-op 检测，合规有了暴露面数字。
 
@@ -15,7 +16,7 @@
 |---|---|
 | 工作区 | `C:\Users\38063\Desktop\MedAgentWork`（Windows，中文路径，命令加英文双引号） |
 | Python | 默认 `python` 现为 **3.12.10（有 jsonschema/numpy）**；3.13 在 `C:/Users/38063/.workbuddy/binaries/python/versions/3.13.12/python.exe`（无这些依赖）；torch 系用 Python312 |
-| 测试基线 | **两种解释器口径不同，都要看**（数字随新增用例增长，**不变量是 0 失败 / 0 错误**）：<br>① 默认 `python` 3.12.10（**有** jsonschema+numpy）→ 2026-11-03 实测 **422 通过 / 0 失败 / 0 错误 / 61 跳过**<br>② 3.13（`.workbuddy`，**无** jsonschema/numpy）→ **386 通过 / 0 失败 / 0 错误 / 97 跳过** |
+| 测试基线 | **以当场实测为准**（数字随新增用例增长，**不变量是 0 失败 / 0 错误**）：<br>2026-11-07 实测 `python scripts/run_tests.py` → **469 通过 / 0 失败 / 0 错误 / 162 跳过**（44 文件）。<br>不同解释器（是否装 jsonschema/numpy）会改变跳过数，**不要引用历史基线数字**；验收只看 0 失败 / 0 错误。<br>配套：`host_bootstrap.py check` 三宿主 3/0、`host_matrix_check.py --matrix` 31/31、`batch_driver.py selftest` 15/15 |
 | 规则注册表 | **74 条**（hard 57 / soft 10 / process 7），lint `exit 0`，硬规则检测器覆盖 **98.2%** |
 | 题库注册表 | **6,640 题**（`question_bank/registry_meta.json`，含 batch047 +50） |
 | 本轮改动 | **未提交 git**（working tree 55 项，含本轮新增文档；提交前先看 §9 第 6 步） |
@@ -151,8 +152,9 @@ Git Bash 的 `/tmp` 与 Python 看到的不一样。脚本输出一律用**仓�
 
 | 检查 | 命令 | 期望 |
 |---|---|---|
-| 单元/回归 | `python scripts/run_tests.py` | 421 通过 / 0 失败 / **0 错误** / 52 跳过 |
-| 同上（3.13，无依赖） | `.workbuddy/.../3.13.12/python.exe scripts/run_tests.py` | 385 通过 / 0 失败 / **0 错误** / 88 跳过 |
+| 单元/回归 | `python scripts/run_tests.py` | **469 通过 / 0 失败 / 0 错误 / 162 跳过**（2026-11-07 实测；数字会增长，验收看 0 失败 / 0 错误） |
+| 三档宿主矩阵 | `python scripts/host_matrix_check.py --matrix` | PASS 31/31，L2/L1/L0 同一 bundle 哈希 |
+| 宿主入口 | `python scripts/host_bootstrap.py check` | PASS 3 / FAIL 0，桩未 STALE |
 | 规则一致性 | `python scripts/render_rules.py --check` | exit 0，warn ≤1（HC-18-FORM 语义项） |
 | 配置可读 | `python scripts/pipeline_config.py --print-config` | `overridden_keys` 与你改动的键一致 |
 | 门禁自测 | `python scripts/gate_selftest.py` | hard 检出 1.0、好题误报 0.0 |

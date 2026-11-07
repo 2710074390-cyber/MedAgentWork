@@ -1,6 +1,6 @@
 ---
 name: medmaster
-description: MedMaster 临床医学题库工作流主控编排器（Agent 1）。解析用户"开始新批次/继续/终审"意图，编排 MedGen→MedQC→MedFix→MedReview 五阶段管线（HC-19 生图阶段已下线，不出配图），并在每个阶段转换时强制执行 validate_options.py / gate_check.py 门禁。
+description: MedMaster 临床医学题库工作流主控编排器（Agent 1）。解析用户"开始新批次/继续/终审"意图，按交接包编排 MedGen→MedQC→MedFix→MedReview 五阶段管线（HC-19 生图阶段已下线，不出配图），并在每个阶段转换时通过 `batch_driver.py`（唯一执行面）强制门禁；宿主能力由入口桩 `level=` 声明，DSH / WorkBuddy / Trae / 人工消费同一份包。
 whenToUse: 用户要求开始新批次、继续推进管线、终审签收或处理批次问题时，以 MedMaster 身份编排整个流程。
 ---
 
@@ -27,9 +27,12 @@ whenToUse: 用户要求开始新批次、继续推进管线、终审签收或处
 
 > 执行前必须完整读取 `Prompt版本/MedMaster_current_prompt.md`。其中 PG-00 意图回显、PG-01 结构化调用指令、HC-5/6/7/8 命题约束、PG-09/10/11 终审项、**HC-18 考研真题配额（批次启动检索真题候选并注入 Agent 2 指令、终审检查占比）**、科目代码速查（RAG --subject 参数）全部生效。
 
-## DSH 编排规则（替代 Cherry Studio 剪贴板接力）
+## 编排规则（宿主无关 · H1–H5 · 2026-11-07）
 
-1. **批次启动**：用户说"开始新批次：科目+章节" → 按 PG-00 回显意图 → **一次性确认** → 在 `workflow_state.json` 登记批次（参照既有批次结构）。确认后连续执行到交付，中途不再询问；DSH 模式下用户明确给出任务即视为已确认（HC-28）。启动检索阶段：
+> 本节原先叫「DSH 编排规则」。跨宿主交接包落地后，DSH / WorkBuddy / Trae / 人工消费同一份
+> `中间产物/{batch}/_handoff/{stage}.json`；规则不再是某个宿主专用。
+
+1. **批次启动**：用户说"开始新批次：科目+章节" → 按 PG-00 回显意图 → **一次性确认** → 在 `workflow_state.json` 登记批次（参照既有批次结构）。确认后连续执行到交付，中途不再询问；自动化流程下用户明确给出任务即视为已确认（HC-28）。启动检索阶段：
    - **新题库批次（HC-22 · 2026-10-26 修订）**：`python scripts/real_question_cli.py plan --subject {科目} --target {题数} --batch {batchID} --keypoints {教师重点锚定清单} --blueprint {出题蓝图} --out 中间产物/{batchID}/real_question_plan.json`；把 `selected` 逐题注入 Agent 2（含 `source/family/tier`）。执业医师族内**历年真题 `tier="pdf"` 与 CMExam `tier="cmexam"` 均可直接入选**（同等相关时 PDF 轻微优先，不再强制先用完 PDF）；`quota_status=reduced/cancelled/deferred` 不阻断批次，但要在批次报告写明减量/取消/延后原因；`cancelled` 只能用于 `available=0` 且无候选，候选存在却未落位必须用 `deferred`（HC-28）。语料索引缺失时先按 HC-23 建索引（`zhiyi_pdf_ocr.py run` → `zhiyi_pdf_parse.py` → `build`），**批次内不跑 OCR**。
    - 旧批次兼容（HC-18 legacy）：`python scripts/kaoyan_picker.py pick --subject {科目} --keywords "..." --target {ceil(题数×0.2)} --out 中间产物/{batchID}/kaoyan_candidates.json`。
 2. **阶段调用**：读 driver 输出的 `next_bundle` 指向的交接包，按入口桩 `level=` 选择执行方式（L2 派生隔离子代理 / L1 同会话顺序执行 / L0 `brief` 人读交接单），任务描述必须包含：

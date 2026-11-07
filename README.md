@@ -22,6 +22,7 @@ powershell scripts\deploy_site.ps1
 - **未来主义设计** — 黑蓝深海配色 · 玻璃拟态 UI · ASCII 原子像素星域（粒子特效可开关，localStorage 记忆）
 - **58 秒品牌介绍片** — 首屏介绍片封面卡（默认展示）：封面先行、点击才加载视频，进剧场全屏播放（详见下节）
 - **五阶段 Agent 管线** — MedMaster 编排 → MedGen 出题 → MedQC 质检 → MedFix 修复 → MedReview 成册；阶段转换由门禁强制校验，产物与门禁回执字节绑定
+- **跨宿主（DSH / WorkBuddy / Trae / 人工）** — 规则真源 `.dsh/skills/`，三宿主入口由 `scripts/host_bootstrap.py` 生成路由桩；`scripts/batch_driver.py` 是门禁唯一执行面，并在 PASS 后生成宿主无关的交接包 `中间产物/{batch}/_handoff/{stage}.json`。宿主能力由桩的 `level=` 声明（L2 隔离子代理 / L1 单会话 / L0 人工接力），三档消费同一份包、产出同一份字节证据（见 `AGENTS.md §3.5`）。
 - **三视图导航** — 主页（介绍与 MedKit 下载）/ 大三下 / 大四上：
   - **大三下** — 5 套交互式押题卷 HTML · 6 科题库 PDF · 7 科复习手册 MD（中医 / 中医心理 / 外科 / 精神 4 科另含 HTML）
   - **大四上** — 复习资料 11 份 PDF：8 科教学版（内科学为 23 模块合订本）+ 妇产科深度版 + 急诊与耳鼻咽喉教师重点蓝图版；题库与押题 12 项（含教师重点版题库、耳鼻咽喉真题专项）

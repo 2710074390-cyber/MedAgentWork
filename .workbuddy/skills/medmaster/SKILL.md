@@ -1,8 +1,8 @@
 ---
 name: medmaster
-description: "MedMaster 临床医学题库工作流主控编排器（Agent 1）。解析用户\"开始新批次/继续/终审\"意图，编排 MedGen→MedQC→MedFix→MedReview 五阶段管线（HC-19 生图阶段已下线，不出配图），并在每个阶段转换时强制执行 validate_options.py / gate_check.py 门禁。"
+description: "MedMaster 临床医学题库工作流主控编排器（Agent 1）。解析用户\"开始新批次/继续/终审\"意图，按交接包编排 MedGen→MedQC→MedFix→MedReview 五阶段管线（HC-19 生图阶段已下线，不出配图），并在每个阶段转换时通过 `batch_driver.py`（唯一执行面）强制门禁；宿主能力由入口桩 `level=` 声明，DSH / WorkBuddy / Trae / 人工消费同一份包。"
 ---
-<!-- medagentwork-host-stub v2 source=.dsh/skills/medmaster/SKILL.md sha256=d9542a4bfdc549102505a630c13ba6fe4303e4967e4a40b0ffe681994c4b5081 level=L2 -->
+<!-- medagentwork-host-stub v2 source=.dsh/skills/medmaster/SKILL.md sha256=580e0168437929b81a0bacdc43c9fc42b4166b9d1687716fbaf6407ca0189714 level=L2 -->
 # medmaster（宿主路由占位，勿手改）
 
 本文件**只做路由**，不是规则正文；规则正文在仓库里：
