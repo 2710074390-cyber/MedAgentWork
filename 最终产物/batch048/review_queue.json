@@ -1,0 +1,15 @@
+{
+  "source_file": "最终产物\\batch048\\ALL_questions_FIXED.json",
+  "source_sha256": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+  "generated_at": "2026-11-05T23:40:48",
+  "generation_status": "DONE",
+  "release_status": "READY",
+  "summary": {
+    "total": 30,
+    "publishable": 30,
+    "pending_human": 0,
+    "quarantined": 0,
+    "review_queue": 0
+  },
+  "items": []
+}

@@ -1,5 +1,5 @@
 {
-  "active_batch": null,
+  "active_batch": "batch048",
   "halt": {
     "active": false
   },
@@ -5936,5 +5936,225 @@
       "impact": "batch047 签收单中的“逐题医学核验记录”不再是未完成项；仅第二评分者/κ 仍为开项。历史 release 字段（pending_human→publishable、review_status=draft）保持原样作为当时记录，不回写。",
       "applies_to": "batch048+；batch047 为归档历史，不追溯改写"
     }
+  },
+  "batch048": {
+    "batch_id": "batch048",
+    "status": "COMPLETED",
+    "created": "2026-11-05T22:44:17.339418",
+    "workflow": "Agent 2(MedGen)→Agent 3(MedQC)→Agent 4(MedFix)",
+    "item_schema_version": "2.2",
+    "evidence_binding_mode": "strict",
+    "subject": "内科学",
+    "product_types": [
+      "question_bank"
+    ],
+    "target_count": 30,
+    "p9_mode": "course_schedule",
+    "target_bloom": {
+      "记忆": 20,
+      "理解": 25,
+      "应用": 35,
+      "分析": 20
+    },
+    "syllabus_scope": {
+      "source": "内科学（第10版）第五篇 泌尿系统疾病 P465–538；按本科教学大纲重点版口径",
+      "modules": [
+        {
+          "id": "M01",
+          "name": "泌尿系统疾病总论与肾脏生理/检查",
+          "chapters": [
+            "第一章 总论"
+          ],
+          "level": "熟悉"
+        },
+        {
+          "id": "M02",
+          "name": "原发性肾小球疾病（概述、急性肾炎、急进性肾炎、IgA肾病）",
+          "chapters": [
+            "第二章第一至四节"
+          ],
+          "level": "掌握"
+        },
+        {
+          "id": "M03",
+          "name": "肾病综合征与慢性肾小球肾炎",
+          "chapters": [
+            "第二章第五、七节"
+          ],
+          "level": "掌握"
+        },
+        {
+          "id": "M04",
+          "name": "继发性肾病（狼疮性肾炎、糖尿病肾脏病）",
+          "chapters": [
+            "第三章第一、二节"
+          ],
+          "level": "熟悉"
+        },
+        {
+          "id": "M05",
+          "name": "尿路感染",
+          "chapters": [
+            "第五章"
+          ],
+          "level": "掌握"
+        },
+        {
+          "id": "M06",
+          "name": "急性肾损伤",
+          "chapters": [
+            "第九章"
+          ],
+          "level": "掌握"
+        },
+        {
+          "id": "M07",
+          "name": "慢性肾衰竭与肾脏替代治疗",
+          "chapters": [
+            "第十章",
+            "第十一章"
+          ],
+          "level": "掌握"
+        },
+        {
+          "id": "M08",
+          "name": "肾小管疾病/遗传性肾病/肾血管疾病/间质性肾炎（了解级）",
+          "chapters": [
+            "第四、六、七、八章"
+          ],
+          "level": "了解"
+        }
+      ]
+    },
+    "gate_results": {
+      "GATE-A2": {
+        "status": "PASS",
+        "reason": "validate 30/30 PASS，FAIL=0 WARN=0",
+        "checked_at": "2026-11-05T23:04:00"
+      },
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检 gate_decision=PASS_WITH_FIXES，总分 9.4，D20 N/A（无 B1）",
+        "checked_at": "2026-11-05T23:34:00"
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "追溯日志顶层 source_file_synced=true；补丁完整性 PASS；JSON/MD 齐备",
+        "checked_at": "2026-11-05T23:44:00"
+      },
+      "GATE-LV": {
+        "status": "PASS",
+        "reason": "HC-24 FAIL=0，逐项/错误认知/引文实证 100%",
+        "checked_at": "2026-11-05T23:44:30"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "HC-22 5+5；R0–R3 齐全 R3=enforce；P9 100%；Bloom 达标",
+        "checked_at": "2026-11-05T23:45:40"
+      },
+      "halt": {
+        "active": false
+      }
+    },
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "output": "ALL_questions.json",
+        "md5": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a",
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedGen_current_prompt",
+        "completed_at": "2026-11-05T23:34:10.643726",
+        "lineage": {
+          "artifact_sha256": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a",
+          "input_hash": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a"
+        }
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "output": "A3_质检报告.json",
+        "md5": "a6636cd59cd1050789b3f8fd8a3edeafc98160dce4e694d5556e37d1404f5cd6",
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedQC_current_prompt",
+        "completed_at": "2026-11-05T23:34:10.644334",
+        "lineage": {
+          "artifact_sha256": "a6636cd59cd1050789b3f8fd8a3edeafc98160dce4e694d5556e37d1404f5cd6",
+          "input_hash": "a6636cd59cd1050789b3f8fd8a3edeafc98160dce4e694d5556e37d1404f5cd6"
+        }
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "output": "ALL_questions_FIXED.json + AGENT4_追溯日志.json",
+        "md5": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedFix_current_prompt",
+        "trace_log": "AGENT4_追溯日志.json",
+        "lineage": {
+          "artifact_sha256": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+          "input_hash": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a"
+        }
+      }
+    },
+    "lineage": [
+      {
+        "stage": "agent2_DONE",
+        "input_file": "中间产物/batch048/ALL_questions.json",
+        "input_md5": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedGen_current_prompt",
+        "timestamp": "2026-11-05T23:34:10.644602",
+        "artifact_sha256": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a",
+        "input_hash": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a",
+        "prompt_sha256": "bbf9c7c67509c85b266cdb2af4f72f23e6d0dc23b0c1bf035513f4b13821f0dc",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208"
+      },
+      {
+        "stage": "agent3_DONE",
+        "input_file": "质检报告/batch048/A3_质检报告.json",
+        "input_md5": "a6636cd59cd1050789b3f8fd8a3edeafc98160dce4e694d5556e37d1404f5cd6",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedQC_current_prompt",
+        "timestamp": "2026-11-05T23:34:10.644771",
+        "artifact_sha256": "a6636cd59cd1050789b3f8fd8a3edeafc98160dce4e694d5556e37d1404f5cd6",
+        "input_hash": "a6636cd59cd1050789b3f8fd8a3edeafc98160dce4e694d5556e37d1404f5cd6",
+        "prompt_sha256": "8ade13da35f0fe52b68fb8a7935e233b1b264ba69799fa32fcff9e5b64a3bf66",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208"
+      },
+      {
+        "stage": "agent4_DONE",
+        "input_file": "最终产物/batch048/ALL_questions_FIXED.json",
+        "input_md5": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+        "artifact_sha256": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+        "input_hash": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+        "prompt_sha256": "c4fd8d75e81b62d7085ac6177b3148af69b2ca198e98080e1cd902d875a1408a",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+        "agent_model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedFix_current_prompt",
+        "timestamp": "2026-11-05T23:43:38.620476"
+      }
+    ],
+    "note": "内科学泌尿系统 30 题；无教师重点原文输入，p9_mode=course_schedule；真题双族按 HC-22 各 20%。",
+    "question_blueprint_note": "question_blueprint_gate 为 100 题大卷专用（gate_check 要求恰 100 题＋answer_position_plan），本批为 30 题课程大纲练习卷，不适用；Bloom 目标仍由 target_bloom 在终审校验。",
+    "target_bloom_actual": {
+      "记忆": 6,
+      "理解": 8,
+      "应用": 10,
+      "分析": 6
+    },
+    "quota_summary": {
+      "kaoyan": 5,
+      "zhiyi": 5,
+      "zhiyi_pdf": 4,
+      "zhiyi_cmexam": 1,
+      "original": 20
+    },
+    "escalations": [
+      "ESC-001 Q020 题干保留 R4 要求的否定词加粗（**不包括**），与 HC-22 逐字性呈现层冲突，已在 escalations_for_human.md 记录",
+      "ESC-002 Q030 Bloom 记忆→应用 需在 A2 层改（bloom_level 不在 A4 ALLOWED_FIELDS），本批保留记忆层并记录",
+      "ESC-003 negative_cues 覆盖不足（A3 ISSUE-014），建议下一版在 A2 补齐"
+    ],
+    "completed_at": "2026-11-05T23:45:49.497866"
   }
 }

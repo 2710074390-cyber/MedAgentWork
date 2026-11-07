@@ -2,7 +2,7 @@
 description: MedAgentWork 批次门禁与防跳过硬约束（始终生效；由 scripts/host_bootstrap.py 生成）
 alwaysApply: true
 ---
-<!-- medagentwork-host-stub v1 source=AGENTS.md sha256=7665ba63ffa155eaf65c1e28890cf59d25b9c2c6adc8eb4667915e3c8fd3a802 -->
+<!-- medagentwork-host-stub v2 source=AGENTS.md sha256=92edd85ba21bfe8ab395dc20b655c2a3e0763c51ed3f8198635f9b6bb8e96a63 level=L1 -->
 # MedAgentWork · 项目规则（路由，勿手改）
 
 本文件只做路由，规则正文在仓库 `AGENTS.md` 与 `.dsh/skills/`。
@@ -15,5 +15,6 @@ alwaysApply: true
    - 消费上游前先验回执：`python scripts/gate_verify.py --batch <id> --stage <阶段> --quiet`
    - 提交前：`python scripts/gate_audit.py --staged --require-tracked`（hook 已装；该命令等价）
 4. 动手前自检：`python scripts/host_bootstrap.py check`（exit 0 才继续）。
+5. 宿主能力 `level=L1`：本宿主按 L1 顺序执行 —— 每阶段读 `中间产物/{batch}/_handoff/{stage}.json`，先重读 `_ctx.md` 复位上下文，再按 `inputs[].read` 限定的范围直读；不派生子代理、不并发写 `write_scope=question_bank` 的阶段。
 
 重新生成：`python scripts/host_bootstrap.py install --hosts trae`

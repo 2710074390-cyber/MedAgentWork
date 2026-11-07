@@ -24,8 +24,15 @@
                                          [--timeout 300] [--fail-fast]
                                          [--no-stamp] [--no-preflight] [--ledger P] [--base P]
     python scripts/batch_driver.py selftest [--fixture tests/fixtures/gates] [--json]
+    python scripts/batch_driver.py brief   --batch batch048 --stage a3
 
-退出码：0 PASS / 1 BLOCKED / 2 ERROR / 3 仅 SKIP-WARN
+H1/H2（2026-11-07，跨宿主可移植编排）：
+    check 在 PASS 时按 plan 确定性给出 next_stage / next_action，并为下一阶段写
+    中间产物/{batch}/_handoff/{stage}.json。交接包只描述「读什么 / 写什么 / 过什么门禁」，
+    不含任何宿主工具名；哈希复用 gate_stamp.file_sha256。DSH / WorkBuddy / Trae / 人工
+    消费同一份包，差异只在 host_level（见 scripts/host_bootstrap.py 桩标记）。
+
+退出码：0 PASS / 1 BLOCKED / 2 ERROR / 3 仅 SKIP-WARN；brief 的 3 = 包已过期
 """
 from __future__ import annotations
 
@@ -876,6 +883,169 @@ def resolve_auto(batch_id, batch_data, plan):
     return None
 
 
+# ── Handoff bundle（H2）：宿主无关的「阶段执行包」──────────────
+# 纪律：
+#   1. 包里不含任何宿主工具名（subagent / read / bash…），只描述数据与命令；
+#   2. 哈希一律复用 gate_stamp.file_sha256，与回执链同一真相源；
+#   3. 内容完全确定（无时间戳），重复 check 产出同一字节；
+#   4. --dry-run 不写任何文件。
+STAGE_META = {
+    "a2": {"owner": "MedGen", "role": "medgen",
+           "prompt": "Prompt版本/MedGen_current_prompt.md",
+           "write_scope": "question_bank", "read": "full"},
+    "a3": {"owner": "MedQC", "role": "medqc",
+           "prompt": "Prompt版本/MedQC_current_prompt.md",
+           "write_scope": "report", "read": "by-id"},
+    "a4": {"owner": "MedFix", "role": "medfix",
+           "prompt": "Prompt版本/MedFix_current_prompt.md",
+           "write_scope": "question_bank", "read": "by-id"},
+    "a5": {"owner": "MedReview", "role": "medreview",
+           "prompt": "Prompt版本/Agent5_MedReview_Prompt.md",
+           "write_scope": "review_material", "read": "by-id"},
+}
+# r0/r1/lv/r2/r3/final/r4 是纯门禁阶段，不派角色 → 不生成交接包
+
+
+def _stage_io(batch_id, stage, data):
+    b = batch_id
+    ctx = f"中间产物/{b}/_ctx.md"
+    table = {
+        "a2": ([ctx, f"中间产物/{b}/real_question_plan.json"],
+               [f"中间产物/{b}/ALL_questions.json"]),
+        "a3": ([ctx, f"中间产物/{b}/ALL_questions.json"],
+               [f"质检报告/{b}/A3_质检报告.json"]),
+        "a4": ([ctx, f"中间产物/{b}/ALL_questions.json", f"质检报告/{b}/A3_质检报告.json"],
+               [f"最终产物/{b}/ALL_questions_FIXED.json",
+                f"最终产物/{b}/ALL_questions_FIXED.md",
+                f"最终产物/{b}/AGENT4_追溯日志.json"]),
+        "a5": ([ctx], []),
+    }
+    ins, outs = table.get(stage, ([], []))
+    if stage == "a5":
+        md = _find_review_md(data or {})
+        outs = [gs.rel(md, BASE)] if md else ["复习资料/<科目>教学计划版/<科目>_主复习资料.md"]
+    # 保留全部声明的输入（不因文件暂未入库而删条目）：契约要回答「该阶段该读什么」，
+    # 干净检出里中间产物不存在只是 exists=false，不能让 bundle 形状随环境变化。
+    return ins, outs
+
+
+def _fingerprint(rows):
+    import hashlib
+    body = json.dumps([r.get("sha256") for r in rows], ensure_ascii=False, separators=(",", ":"))
+    return hashlib.sha256(body.encode("utf-8")).hexdigest()
+
+
+def handoff_path(batch_id, stage, base=BASE):
+    return base / "中间产物" / batch_id / "_handoff" / f"{stage}.json"
+
+
+def handoff_stale(path):
+    """产物变了但包没重生成 → True；包不存在 → None；完好 → False。"""
+    p = Path(path)
+    if not p.is_file():
+        return None
+    d = _load_json(p)
+    if not d:
+        return True
+    rows = []
+    for i in d.get("inputs", []):
+        f = BASE / i["path"]
+        rows.append({"sha256": gs.file_sha256(f) if f.is_file() else None})
+    return _fingerprint(rows) != d.get("inputs_fingerprint")
+
+
+def build_handoff(batch_id, stage, plan, data):
+    meta = STAGE_META.get(stage)
+    if not meta:
+        return None
+    ins, outs = _stage_io(batch_id, stage, data)
+    inputs = []
+    for p in ins:
+        f = BASE / p
+        inputs.append({
+            "path": p,
+            "sha256": gs.file_sha256(f) if f.is_file() else None,
+            "exists": f.is_file(),
+            "read": meta["read"],
+            "selector": "scripts/qbank.py subselect" if meta["read"] == "by-id" else None,
+        })
+    try:
+        idx = plan.index(stage)
+        prev = plan[idx - 1] if idx > 0 else None
+    except ValueError:
+        prev = None
+    preflight = (f"python scripts/gate_verify.py --batch {batch_id} --stage {prev} --quiet"
+                 if prev in HARD_CHAIN_STAGES else None)
+    return {
+        "schema_version": "1.0",
+        "batch": batch_id,
+        "stage": stage,
+        "owner": meta["owner"],
+        "role_skill": f".dsh/skills/{meta['role']}/SKILL.md",
+        "prompt_ref": meta["prompt"],
+        "ctx": f"中间产物/{batch_id}/_ctx.md",
+        "inputs": inputs,
+        "outputs": [{"path": p, "schema": p.rsplit(".", 1)[-1]} for p in outs],
+        "preflight": preflight,
+        "gate": f"python scripts/batch_driver.py check --batch {batch_id} --stage {stage}",
+        "done": ([f"{outs[0]} 存在且可解析"] if outs else []) + ["gate 返回 exit 0"],
+        "report_format": "三行：结论 / 落点路径 / 阻断原因",
+        "write_scope": meta["write_scope"],
+        "parallel_safe": meta["write_scope"] != "question_bank",
+        "inputs_fingerprint": _fingerprint(inputs),
+        "rebuild_if": "inputs_fingerprint 与当前文件不符 → 丢弃本包，重跑 driver check",
+        "driver_version": DRIVER_VERSION,
+    }
+
+
+def write_handoff(bundle, base=BASE):
+    """幂等写入；内容相同则不碰磁盘（重复 check 不改 mtime）。"""
+    p = handoff_path(bundle["batch"], bundle["stage"], base)
+    text = json.dumps(bundle, ensure_ascii=False, indent=2, sort_keys=True)
+    if p.is_file() and p.read_text(encoding="utf-8") == text:
+        return {"path": gs.rel(p, base), "status": "unchanged", "stage": bundle["stage"]}
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(text, encoding="utf-8")
+    return {"path": gs.rel(p, base), "status": "written", "stage": bundle["stage"]}
+
+
+def cmd_brief(args):
+    """L0（纯手工宿主）用：把交接包打印成人读交接单，不调用任何 LLM。"""
+    p = Path(args.bundle) if args.bundle else handoff_path(args.batch, args.stage)
+    stale = handoff_stale(p)
+    if stale is None:
+        shown = gs.rel(p, BASE) if str(p).startswith(str(BASE)) else str(p)
+        print(f"[!] 没有 {shown}；先跑："
+              f"python scripts/batch_driver.py check --batch {args.batch} --stage auto")
+        return 1
+    d = _load_json(p)
+    if not d:
+        print(f"[!] 交接包无法解析：{p}")
+        return 2
+    print(f"══ 批次 {d['batch']} ｜ 阶段 {d['stage']} ｜ 执行者 {d['owner']}（宿主无关交接单）")
+    print(f"规则正文：{d['role_skill']}")
+    print(f"提示词：  {d['prompt_ref']}")
+    print(f"起步上下文：{d['ctx']}（≤8k；L1 单会话每阶段重读一次）")
+    print("读：")
+    for i in d["inputs"]:
+        mark = "OK" if i["exists"] else "缺失"
+        print(f"  - [{i['read']}] {i['path']}  sha256={str(i['sha256'])[:12]}  {mark}")
+    print("写：")
+    for o in d["outputs"]:
+        print(f"  - {o['path']}")
+    if d.get("preflight"):
+        print(f"先验回执：{d['preflight']}")
+    print(f"阶段门禁：{d['gate']}")
+    print("完成判据：" + "；".join(d["done"]))
+    print(f"回报格式：{d['report_format']}")
+    print(f"写范围：{d['write_scope']} ｜ 可并行：{d['parallel_safe']}")
+    if stale:
+        print("[!] 包已过期（产物 sha 变了）：重跑 driver check 后再使用")
+        return 3
+    print("[OK] 包完好")
+    return 0
+
+
 # ── 聚合与输出 ──────────────────────────────────────────
 def aggregate(results):
     statuses = [r["status"] for r in results]
@@ -890,8 +1060,27 @@ def aggregate(results):
     return "PASS", 0
 
 
+def next_boundary(boundary, plan):
+    """计划序列中 boundary 之后的下一阶段；末尾或不在计划里返回 None。
+
+    H1：以前「下一步派谁」由 LLM 读 SKILL 自行判断；这里把它变成确定性输出，
+    宿主只需照 payload 的 next_stage / next_bundle 行动。
+    """
+    try:
+        i = plan.index(boundary)
+    except ValueError:
+        return None
+    return plan[i + 1] if i + 1 < len(plan) else None
+
+
 def build_payload(batch_id, boundary, plan, types, results, verdict, exit_code, extra=None):
     failed = [r for r in results if r["status"] in ("FAIL", "WARN")]
+    if verdict in ("BLOCKED", "SKIP", "ERROR"):
+        next_stage = boundary
+        next_action = "retry"
+    else:
+        next_stage = next_boundary(boundary, plan)
+        next_action = "advance" if next_stage else "complete"
     return {
         "batch": batch_id,
         "product_types": sorted(types),
@@ -900,7 +1089,9 @@ def build_payload(batch_id, boundary, plan, types, results, verdict, exit_code, 
         "generated_at": _now(),
         "verdict": verdict,
         "exit_code": exit_code,
-        "next_stage": boundary if verdict in ("BLOCKED", "SKIP", "ERROR") else None,
+        "next_stage": next_stage,
+        "next_action": next_action,
+        "next_bundle": (extra or {}).get("handoff", {}).get("path"),
         "halt": {"active": verdict == "BLOCKED", "reason": None, "source": "gate" if verdict == "BLOCKED" else None},
         "passed": [{"gate": r["gate"], "duration_ms": r["evidence"].get("duration_ms")}
                    for r in results if r["status"] == "PASS"],
@@ -977,6 +1168,12 @@ def cmd_check(args):
             verdict, exit_code = aggregate(results)
         elif stamp:
             extra["stamp"] = stamp
+    if verdict == "PASS" and not ctx.dry_run:
+        ns = next_boundary(boundary, plan)
+        if ns:
+            bundle = build_handoff(args.batch, ns, plan, data)
+            if bundle:
+                extra["handoff"] = write_handoff(bundle, ctx.base)
     payload = build_payload(args.batch, boundary, plan, types, results, verdict, exit_code, extra)
     _emit(payload, args.json_out)
     _print_summary(payload)
@@ -1004,7 +1201,12 @@ def _print_summary(payload):
     for u in payload["unparsed"]:
         print(f"  ❓ {u['gate']}: 无法解析（exit {u['exit_code']}）")
     if payload["next_stage"]:
-        print(f"  ➡️  next: 修复后重跑 boundary {payload['next_stage']}")
+        _next_label = {"retry": "修复后重跑 boundary",
+                       "advance": "下一 boundary",
+                       "complete": "收尾"}.get(payload.get("next_action"), "下一步")
+        print(f"  ➡️  {_next_label}: {payload['next_stage']}")
+    if payload.get("next_bundle"):
+        print(f"  📦 交接包：{payload['next_bundle']}（按包执行，无需宿主 subagent）")
     if payload["verdict"] == "BLOCKED":
         print("  🩺 若同一失败原因重复出现，跑 scripts/batch_watchdog.py --batch " + payload["batch"] + " 判进展")
     ev = payload.get("evidence") or {}
@@ -1121,6 +1323,13 @@ def build_parser():
     p_self = sub.add_parser("selftest", help="判定器自测（固定夹具）")
     p_self.add_argument("--fixture", default=str(FIXTURE_DIR.relative_to(BASE)))
     p_self.add_argument("--json", default=None)
+
+    p_brief = sub.add_parser("brief", help="打印某阶段的人读交接单（L0 宿主 / 人工接力）")
+    p_brief.add_argument("--batch", "-b", required=True)
+    p_brief.add_argument("--stage", "-s", required=True,
+                         choices=["a2", "a3", "a4", "a5"])
+    p_brief.add_argument("--bundle", default=None,
+                         help="交接包路径覆盖（测试 / 自定义仓库用；默认按 batch+stage 推导）")
     return ap
 
 
@@ -1132,6 +1341,8 @@ def main(argv=None):
         return cmd_check(args)
     if args.cmd == "selftest":
         return cmd_selftest(args)
+    if args.cmd == "brief":
+        return cmd_brief(args)
     return 2
 
 

@@ -23,6 +23,11 @@
 - **真源**：`AGENTS.md`（规则路由与四条硬约束）与 `.dsh/skills/*/SKILL.md`（正文）。
 - **桩**：WorkBuddy / Trae 只放**路由占位文件**，正文让 Agent 按路径直读，避免「三份规则漂移」。
 - **防漂移**：每个桩里写源文件 `sha256`；源改了而桩没重生成 → `check` 判 `STALE`（exit 1）。
+- **H4（2026-11-07）**：桩标记行升级 `v2`，额外写 `level=` 能力等级（L2/L1/L0），
+  **不写 front-matter**——宿主不认识这个 YAML 键，塞进去是未经验证的兼容假设。
+  `check` 校验 level 存在且合法，并检测 WorkBuddy「项目级 / 用户级同名桩不同步」的
+  `SCOPE_CONFLICT`（WARN，不阻断；裁决为项目级优先）。
+  角色如何按 level 执行，见 `batch_driver.py` 的 handoff bundle 与 `AGENTS.md` §3.5。
 - **不静默覆盖**：目标文件不是本脚本写的（没有 MARKER）→ 拒绝覆盖 / 拒绝删除，需 `--force`。
 
 命令
@@ -50,8 +55,12 @@ BASE = Path(__file__).resolve().parent.parent
 SKILLS_DIR = ".dsh/skills"
 AGENTS_NAME = "AGENTS.md"
 TRAE_RULE_NAME = "medagentwork-gate.md"
-STUB_VERSION = "v1"
+STUB_VERSION = "v2"
 MARKER = "medagentwork-host-stub"
+# H4：能力等级写在 MARKER 行（不写 front-matter，避免宿主对未知 YAML 键的兼容风险）。
+# L2=可派生隔离子代理 / L1=单会话顺序执行 / L0=纯手工接力。
+HOST_LEVEL = {"dsh": "L2", "workbuddy": "L2", "trae": "L1"}
+VALID_LEVELS = ("L0", "L1", "L2")
 
 
 # ── 基础 ────────────────────────────────────────────────
@@ -124,35 +133,38 @@ def trae_rules_dir(base: Path) -> Path:
 
 
 # ── 桩内容 ──────────────────────────────────────────────
-def marker_line(source_rel: str, sha: str) -> str:
-    return f"<!-- {MARKER} {STUB_VERSION} source={source_rel} sha256={sha} -->"
+def marker_line(source_rel: str, sha: str, level: str) -> str:
+    return f"<!-- {MARKER} {STUB_VERSION} source={source_rel} sha256={sha} level={level} -->"
 
 
-def workbuddy_stub(skill) -> str:
+def workbuddy_stub(skill, level: str) -> str:
     return (
         "---\n"
         f"name: {skill['name']}\n"
         f"description: {json.dumps(skill['description'], ensure_ascii=False)}\n"
         "---\n"
-        f"{marker_line(skill['rel'], skill['sha256'])}\n"
+        f"{marker_line(skill['rel'], skill['sha256'], level)}\n"
         f"# {skill['name']}（宿主路由占位，勿手改）\n\n"
         "本文件**只做路由**，不是规则正文；规则正文在仓库里：\n\n"
         f"1. 先读仓库根 `{AGENTS_NAME}`（唯一入口：§1 读什么 / §2 四条硬约束 / §3 四个自检命令 / §5 推 main 走 PR）。\n"
         f"2. 再按路径直读 `{skill['rel']}`（正文，按需读，不要整份读 SOUL.md / CONTEXT.md）。\n"
         "3. 硬约束由**脚本**判定（batch_driver / gate_stamp / gate_audit），与提示词无关：\n"
         "   跳过门禁 → 下游 preflight 拒收；改产物不重跑 → ARTIFACT_MISMATCH；未入库 → CI 红。\n"
-        "4. 动手前自检：`python scripts/host_bootstrap.py check`（exit 0 才继续）。\n\n"
+        "4. 动手前自检：`python scripts/host_bootstrap.py check`（exit 0 才继续）。\n"
+        f"5. 宿主能力 `level={level}`：下游阶段按 `中间产物/{{batch}}/_handoff/{{stage}}.json` 执行"
+        "（L2 派生隔离子代理 / L1 同会话顺序执行、每阶段重读 `_ctx.md` / L0 用 `batch_driver.py brief`）。"
+        "交接包不含工具名，三种方式产出的门禁回执是同一份字节。\n\n"
         "重新生成：`python scripts/host_bootstrap.py install --hosts workbuddy`\n"
     )
 
 
-def trae_rule(agents_sha: str) -> str:
+def trae_rule(agents_sha: str, level: str) -> str:
     return (
         "---\n"
         "description: MedAgentWork 批次门禁与防跳过硬约束（始终生效；由 scripts/host_bootstrap.py 生成）\n"
         "alwaysApply: true\n"
         "---\n"
-        f"{marker_line(AGENTS_NAME, agents_sha)}\n"
+        f"{marker_line(AGENTS_NAME, agents_sha, level)}\n"
         "# MedAgentWork · 项目规则（路由，勿手改）\n\n"
         f"本文件只做路由，规则正文在仓库 `{AGENTS_NAME}` 与 `.dsh/skills/`。\n\n"
         f"1. **先读 `{AGENTS_NAME}`**：§1 决定读哪个角色 SKILL；§2 四条硬约束；§3 四个自检命令；§4 不要做的事；§5 推 main 走 PR。\n"
@@ -162,32 +174,37 @@ def trae_rule(agents_sha: str) -> str:
         "   - 产物与门禁执行字节绑定：改产物不重跑 → `ARTIFACT_MISMATCH`；伪造回执 → `CHAIN_BROKEN`\n"
         "   - 消费上游前先验回执：`python scripts/gate_verify.py --batch <id> --stage <阶段> --quiet`\n"
         "   - 提交前：`python scripts/gate_audit.py --staged --require-tracked`（hook 已装；该命令等价）\n"
-        "4. 动手前自检：`python scripts/host_bootstrap.py check`（exit 0 才继续）。\n\n"
+        "4. 动手前自检：`python scripts/host_bootstrap.py check`（exit 0 才继续）。\n"
+        f"5. 宿主能力 `level={level}`：本宿主按 L1 顺序执行 —— 每阶段读 "
+        "`中间产物/{batch}/_handoff/{stage}.json`，先重读 `_ctx.md` 复位上下文，再按 `inputs[].read` 限定的范围直读；"
+        "不派生子代理、不并发写 `write_scope=question_bank` 的阶段。\n\n"
         "重新生成：`python scripts/host_bootstrap.py install --hosts trae`\n"
     )
 
 
 # ── 目标计划 ────────────────────────────────────────────
-def plan(hosts, base: Path = BASE, home=None, scope: str = "project"):
-    """返回 [{host, name, path, content, source_rel, sha256}]。"""
+def plan(hosts, base: Path = BASE, home=None, scope: str = "project", level: str | None = None):
+    """返回 [{host, name, path, content, source_rel, sha256, level}]。"""
     base, home = Path(base), Path(home or Path.home())
     out = []
     if "trae" in hosts:
         agents = base / AGENTS_NAME
         if agents.is_file():
+            lv = level or HOST_LEVEL["trae"]
             agents_sha = sha256_text(agents)
             out.append({"host": "trae", "name": TRAE_RULE_NAME,
                         "path": trae_rules_dir(base) / TRAE_RULE_NAME,
-                        "content": trae_rule(agents_sha),
-                        "source_rel": AGENTS_NAME, "sha256": agents_sha})
+                        "content": trae_rule(agents_sha, lv),
+                        "source_rel": AGENTS_NAME, "sha256": agents_sha, "level": lv})
     if "workbuddy" in hosts:
+        lv = level or HOST_LEVEL["workbuddy"]
         scopes = ["project", "user"] if scope == "both" else [scope]
         for sc in scopes:
             for skill in skills(base):
                 out.append({"host": "workbuddy", "scope": sc, "name": skill["name"],
                             "path": workbuddy_skills_dir(base, home, sc) / skill["name"] / "SKILL.md",
-                            "content": workbuddy_stub(skill),
-                            "source_rel": skill["rel"], "sha256": skill["sha256"]})
+                            "content": workbuddy_stub(skill, lv),
+                            "source_rel": skill["rel"], "sha256": skill["sha256"], "level": lv})
     return out
 
 
@@ -204,6 +221,17 @@ def stub_sha(path: Path):
         for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
             if MARKER in line and "sha256=" in line:
                 return line.split("sha256=", 1)[1].split()[0].rstrip("->").strip()
+    except OSError:
+        return None
+    return None
+
+
+def stub_level(path: Path):
+    """从桩的 MARKER 行取 level=；v1 桩没有该字段 → None。"""
+    try:
+        for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+            if MARKER in line and "level=" in line:
+                return line.split("level=", 1)[1].split()[0].rstrip("->").strip()
     except OSError:
         return None
     return None
@@ -229,16 +257,17 @@ def _dsh_entry(base: Path):
     return entries
 
 
-def check(hosts, base: Path = BASE, home=None, scope: str = "project"):
+def check(hosts, base: Path = BASE, home=None, scope: str = "project", level: str | None = None):
     base, home = Path(base), Path(home or Path.home())
     report = {"generated_at": datetime.now().isoformat(timespec="seconds"),
               "base": str(base), "home": str(home), "hosts": []}
     for host in hosts:
+        lv = level or HOST_LEVEL.get(host, "L1")
         if host == "dsh":
             entries = _dsh_entry(base)
         else:
             entries = []
-            for item in plan([host], base, home, scope):
+            for item in plan([host], base, home, scope, level):
                 p = item["path"]
                 if not p.exists():
                     entries.append({"name": item["name"], "path": rel(p, base) if str(p).startswith(str(base)) else str(p),
@@ -249,14 +278,37 @@ def check(hosts, base: Path = BASE, home=None, scope: str = "project"):
                 elif stub_sha(p) != item["sha256"]:
                     entries.append({"name": item["name"], "path": str(p), "status": "STALE",
                                     "detail": f"源已变更（{item['source_rel']}）：重跑 install --hosts {host}"})
+                elif stub_level(p) not in VALID_LEVELS:
+                    entries.append({"name": item["name"], "path": str(p), "status": "LEVEL_MISSING",
+                                    "detail": "v1 桩缺 level= 声明：重跑 install 升级到 v2"})
+                elif stub_level(p) != item["level"]:
+                    entries.append({"name": item["name"], "path": str(p), "status": "LEVEL_MISMATCH",
+                                    "detail": f"level={stub_level(p)} ≠ 期望 {item['level']}：重跑 install"})
                 else:
                     entries.append({"name": item["name"], "path": str(p), "status": "PASS",
-                                    "detail": f"与 {item['source_rel']} 同步"})
-        bad = [e for e in entries if e["status"] != "PASS"]
+                                    "detail": f"与 {item['source_rel']} 同步 · level={stub_level(p)}"})
+            # SCOPE_CONFLICT：项目级与用户级同名桩内容/等级不一致 → 静默漂移（只告警，不阻断）
+            if host == "workbuddy":
+                for skill in skills(base):
+                    up = workbuddy_skills_dir(base, home, "user") / skill["name"] / "SKILL.md"
+                    pp = workbuddy_skills_dir(base, home, "project") / skill["name"] / "SKILL.md"
+                    if up.is_file() and pp.is_file() and (
+                            stub_sha(up) != stub_sha(pp) or stub_level(up) != stub_level(pp)):
+                        entries.append({"name": f"{skill['name']}@user", "path": str(up),
+                                        "status": "WARN",
+                                        "detail": "SCOPE_CONFLICT：项目级与用户级同名桩不同步，项目级优先；"
+                                                  "修复 `uninstall --hosts workbuddy --scope user`"})
+        blocking = [e for e in entries if e["status"] in
+                    ("MISSING", "STALE", "FOREIGN", "LEVEL_MISSING", "LEVEL_MISMATCH")]
+        warns = [e for e in entries if e["status"] == "WARN"]
+        summary = f"{len(entries) - len(blocking)}/{len(entries)} 就绪"
+        if warns:
+            summary += f"（{len(warns)} 条 WARN）"
         report["hosts"].append({
             "host": host,
-            "verdict": "FAIL" if any(e["status"] in ("MISSING", "STALE", "FOREIGN") for e in bad) else "PASS",
-            "summary": f"{len(entries) - len(bad)}/{len(entries)} 就绪",
+            "level": lv,
+            "verdict": "FAIL" if blocking else "PASS",
+            "summary": summary,
             "entries": entries,
         })
     report["summary"] = {"pass": sum(1 for h in report["hosts"] if h["verdict"] == "PASS"),
@@ -267,11 +319,11 @@ def check(hosts, base: Path = BASE, home=None, scope: str = "project"):
 
 # ── install / uninstall ─────────────────────────────────
 def install(hosts, base: Path = BASE, home=None, dry_run=False, force=False,
-            scope: str = "project"):
+            scope: str = "project", level: str | None = None):
     base, home = Path(base), Path(home or Path.home())
     result = {"generated_at": datetime.now().isoformat(timespec="seconds"),
               "dry_run": dry_run, "written": [], "unchanged": [], "skipped": [], "error": None}
-    for item in plan(hosts, base, home, scope):
+    for item in plan(hosts, base, home, scope, level):
         p, content = item["path"], item["content"]
         if p.exists() and not is_ours(p) and not force:
             result["skipped"].append({"path": str(p), "reason": "foreign",
@@ -293,10 +345,11 @@ def install(hosts, base: Path = BASE, home=None, dry_run=False, force=False,
     return result
 
 
-def uninstall(hosts, base: Path = BASE, home=None, dry_run=False, scope: str = "project"):
+def uninstall(hosts, base: Path = BASE, home=None, dry_run=False, scope: str = "project",
+              level: str | None = None):
     base, home = Path(base), Path(home or Path.home())
     result = {"dry_run": dry_run, "removed": [], "skipped": [], "error": None}
-    for item in plan(hosts, base, home, scope):
+    for item in plan(hosts, base, home, scope, level):
         p = item["path"]
         if not p.exists():
             continue
@@ -340,6 +393,8 @@ def main(argv=None) -> int:
                     help="WorkBuddy 技能位置：project=仓库内(默认，入库) / user=用户目录 / both")
     ap.add_argument("--dry-run", action="store_true", help="只显示会写/删什么")
     ap.add_argument("--force", action="store_true", help="install 时覆盖非本脚本生成的文件")
+    ap.add_argument("--level", default=None, choices=list(VALID_LEVELS),
+                    help="覆盖所有指定宿主的 level 声明（默认 dsh/workbuddy=L2、trae=L1）")
     ap.add_argument("--json", action="store_true", help="输出 JSON")
     args = ap.parse_args(argv)
 
@@ -354,17 +409,18 @@ def main(argv=None) -> int:
         return 2
 
     if args.action == "check":
-        report = check(hosts, base, home, args.scope)
+        report = check(hosts, base, home, args.scope, args.level)
         if args.json:
             print(json.dumps(report, ensure_ascii=False, indent=2))
         else:
             print(f"宿主入口自检（base={base} ｜ home={home}）")
             for h in report["hosts"]:
                 icon = "✅" if h["verdict"] == "PASS" else "🛑"
-                print(f"  {icon} [{h['host']}] {h['verdict']} {h['summary']}")
+                print(f"  {icon} [{h['host']}] {h['level']} {h['verdict']} {h['summary']}")
                 for e in h["entries"]:
                     if e["status"] != "PASS":
-                        print(f"       - {e['name']}: {e['status']} {e['detail']}")
+                        tag = "⚠️ " if e["status"] == "WARN" else "   - "
+                        print(f"       {tag}{e['name']}: {e['status']} {e['detail']}")
             print(f"合计：PASS {report['summary']['pass']} / FAIL {report['summary']['fail']}")
             if report["summary"]["fail"]:
                 print("  ↳ 修复: python scripts/host_bootstrap.py install")
@@ -372,7 +428,7 @@ def main(argv=None) -> int:
 
     if args.action == "install":
         result = install(hosts, base, home, dry_run=args.dry_run, force=args.force,
-                         scope=args.scope)
+                         scope=args.scope, level=args.level)
         if args.json:
             print(json.dumps(result, ensure_ascii=False, indent=2))
         else:
@@ -387,7 +443,8 @@ def main(argv=None) -> int:
                 print("所有入口已是最新")
         return 0 if result["error"] is None else 1
 
-    result = uninstall(hosts, base, home, dry_run=args.dry_run, scope=args.scope)
+    result = uninstall(hosts, base, home, dry_run=args.dry_run, scope=args.scope,
+                       level=args.level)
     if args.json:
         print(json.dumps(result, ensure_ascii=False, indent=2))
     else:

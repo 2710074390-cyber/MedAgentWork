@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0",
+  "batch": "batch048",
+  "created_at": "2026-11-05T23:26:31",
+  "head": "sha256:8f4c0428bbac58ac59b09bc17b9c71e0f48adcbda7808646cba70aff2b84e4dd",
+  "stamps": [
+    {
+      "seq": 1,
+      "stage": "a2",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-05T23:26:31",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "中间产物/batch048/ALL_questions.json",
+          "sha256": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a",
+          "bytes": 188060
+        }
+      ],
+      "gate_reports": [
+        {
+          "path": "reports/validate/validate_options_report_batch048.json",
+          "sha256": "be117e2c8441bb8569ec7cf6fff48cf6da3f1326454bae7d164b60aa20d6f8fc"
+        }
+      ],
+      "gates": [
+        "GATE-A2"
+      ],
+      "note": null,
+      "chain_prev": null,
+      "hash": "sha256:2fd2b06204102cf7c5caf733b3e5b36772db7f51081d797f1bcda53c5a61d5e3"
+    },
+    {
+      "seq": 2,
+      "stage": "a3",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-05T23:34:42",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "质检报告/batch048/A3_质检报告.json",
+          "sha256": "a6636cd59cd1050789b3f8fd8a3edeafc98160dce4e694d5556e37d1404f5cd6",
+          "bytes": 48658
+        }
+      ],
+      "gate_reports": [],
+      "gates": [
+        "CHAIN-a2",
+        "SHAPE-BLOOM",
+        "GATE-A3"
+      ],
+      "note": null,
+      "chain_prev": "sha256:2fd2b06204102cf7c5caf733b3e5b36772db7f51081d797f1bcda53c5a61d5e3",
+      "hash": "sha256:230adb234f45d3a820e296f39fa707ad0e22a97cad86ca85585e816047882af9"
+    },
+    {
+      "seq": 3,
+      "stage": "a4",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-05T23:44:12",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "最终产物/batch048/ALL_questions_FIXED.json",
+          "sha256": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+          "bytes": 188723
+        },
+        {
+          "path": "最终产物/batch048/ALL_questions_FIXED.md",
+          "sha256": "d8ed6b8d2a6b776a49a05d8296cf88fa4edbc403f310749bdda8fdebafb9db59",
+          "bytes": 15720
+        }
+      ],
+      "gate_reports": [],
+      "gates": [
+        "CHAIN-a2",
+        "CHAIN-a3",
+        "SHAPE-SYNCED",
+        "GATE-A4-PATCH",
+        "GATE-A4"
+      ],
+      "note": null,
+      "chain_prev": "sha256:230adb234f45d3a820e296f39fa707ad0e22a97cad86ca85585e816047882af9",
+      "hash": "sha256:3cd74cfe005f9da96c96328201f2a5346e62bfd95b71c7e016890ed1b6c0c0b7"
+    },
+    {
+      "seq": 4,
+      "stage": "lv",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-05T23:44:20",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "最终产物/batch048/ALL_questions_FIXED.json",
+          "sha256": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+          "bytes": 188723
+        }
+      ],
+      "gate_reports": [],
+      "gates": [
+        "CHAIN-a2",
+        "CHAIN-a3",
+        "CHAIN-a4",
+        "GATE-LV",
+        "GATE-LV"
+      ],
+      "note": null,
+      "chain_prev": "sha256:3cd74cfe005f9da96c96328201f2a5346e62bfd95b71c7e016890ed1b6c0c0b7",
+      "hash": "sha256:eb02a71f417756755412aae598feea6ce363d657b16ec68118f31dbfbda6398e"
+    },
+    {
+      "seq": 5,
+      "stage": "final",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-05T23:45:42",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "最终产物/batch048/ALL_questions_FIXED.json",
+          "sha256": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+          "bytes": 188723
+        }
+      ],
+      "gate_reports": [],
+      "gates": [
+        "CHAIN-a2",
+        "CHAIN-a3",
+        "CHAIN-a4",
+        "CHAIN-lv",
+        "GATE-REALQ",
+        "GATE-FINAL"
+      ],
+      "note": null,
+      "chain_prev": "sha256:eb02a71f417756755412aae598feea6ce363d657b16ec68118f31dbfbda6398e",
+      "hash": "sha256:8f4c0428bbac58ac59b09bc17b9c71e0f48adcbda7808646cba70aff2b84e4dd"
+    }
+  ]
+}

@@ -1,0 +1,936 @@
+{
+ "report_metadata": {
+  "report_id": "A4-20261105-batch048",
+  "batch_id": "batch048",
+  "stage": "A4",
+  "subject": "内科学·泌尿系统疾病（第10版 P465–P538）",
+  "source_file": "最终产物/batch048/ALL_questions_FIXED.json",
+  "source_sha256": "652dd487d93e707b8556032d57a7986e3b0cb745fc4a114a4d3223a1c35e57e1",
+  "a2_input_file": "中间产物/batch048/ALL_questions.json",
+  "a2_input_sha256": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a",
+  "a3_report_file": "质检报告/batch048/A3_质检报告.json",
+  "a3_report_sha256": "a6636cd59cd1050789b3f8fd8a3edeafc98160dce4e694d5556e37d1404f5cd6",
+  "upstream_receipts": {
+   "a3": {
+    "command": "gate_verify.py --batch batch048 --stage a3 --quiet",
+    "output": "batch048/a3: PASS STAMP_OK",
+    "exit_code": 0,
+    "source_sha256_bound": "9b875ed8ce55f930d53cbf8dcb3e2958797f2e5c3c78b97168a2d6eda6cd1c2a"
+   }
+  },
+  "executed_at": "2026-11-05T23:41:00+08:00",
+  "total_questions": 30,
+  "schema_version": "2.2",
+  "p9_mode_coverage": 1.0,
+  "tool_versions": {
+   "validate": "scripts.validate",
+   "learning_value": "check_learning_value.py",
+   "source_concepts": "check_source_concepts.py",
+   "rules_batch": "validate/rules_batch.py",
+   "patch_integrity": "check_patch_integrity.py"
+  }
+ },
+ "source_file_synced": true,
+ "source_files_synced": true,
+ "source_files": [
+  "最终产物/batch048/ALL_questions_FIXED.json"
+ ],
+ "sync_note": "batch048 为单文件聚合批次（中间产物/batch048 无 parts/ 分卷）：A2 聚合件即唯一源文件，全部补丁已落在最终聚合文件中并与 MD 同目录交付；按任务约束 中间产物/ 只读，不回写。",
+ "execution_metadata": {
+  "execution_id": "MODEXEC-20261105-048",
+  "qc_report_id": "QC-20261105-batch048",
+  "execution_time": "2026-11-05T23:41:00+08:00",
+  "total_patches_received": 13,
+  "safe_auto_executed": 1,
+  "auto_with_review_executed": 9,
+  "must_escalate_skipped": 3,
+  "derived_fixes_executed": 4,
+  "rolled_back": 0,
+  "polarity_violations": 0,
+  "questions_touched": 12
+ },
+ "patch_log": [
+  {
+   "patch_id": "PATCH-Q020-01",
+   "status": "SKIPPED",
+   "target": "Q020.stem",
+   "operation": "escalate_to_human",
+   "diff": {
+    "before": "尿路感染的易感因素**不包括**",
+    "after": "尿路感染的易感因素不包括（未执行）"
+   },
+   "precondition_results": [
+    {
+     "condition": "题干与源题逐字一致",
+     "passed": false
+    },
+    {
+     "condition": "确认题干无其他 Markdown 残留",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "题干与源题逐字相同",
+     "passed": false
+    },
+    {
+     "check": "polarity 仍为 negative 且答案仍为 E",
+     "passed": true
+    },
+    {
+     "check": "选项与解析无需联动修改",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": true,
+    "passed": true,
+    "detail": "Q020 为 polarity=negative（1 false+4 true），本 patch 未执行"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": "SKIPPED_CONTRACT：Q020 为执业医师真题（source_type 含“真题”），check_patch_integrity.IMMUTABLE_FIELDS 锁定真题题干；试改实测产生 1 项不可变违例 → gate_check GATE-A4-PATCH-AUDIT BLOCKED。已升级人工（ESC-001）。",
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q030-01",
+   "status": "SKIPPED",
+   "target": "Q030.bloom / bloom_level",
+   "operation": "escalate_to_human",
+   "diff": {
+    "before": "记忆 / 记忆",
+    "after": "记忆 / 记忆（未执行）"
+   },
+   "precondition_results": [
+    {
+     "condition": "bloom_level 与 bloom 同步改为分析",
+     "passed": false
+    },
+    {
+     "condition": "该题非纯术语回忆",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "bloom 分布重算",
+     "passed": false
+    },
+    {
+     "check": "最大偏差 ≤15pp",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": "SKIPPED_CONTRACT：patch 自身要求 bloom_level 同步，但 bloom_level 不在 ALLOWED_FIELDS（未分类字段 → 审计 FAIL）；只改 bloom 会造成 bloom/bloom_level 自相矛盾且 export-md 按 bloom_level 渲染。已升级人工（ESC-002）。",
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q025-01",
+   "status": "EXECUTED",
+   "target": "Q025.stem",
+   "operation": "replace_text",
+   "diff": {
+    "before": "尿钠12mmol/L",
+    "after": "尿钠8mmol/L"
+   },
+   "precondition_results": [
+    {
+     "condition": "表5-9-2 肾前性尿钠界值＜10mmol/L（P522）",
+     "passed": true
+    },
+    {
+     "condition": "改后四项指标仍唯一指向肾前性 AKI",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "答案仍为 A",
+     "passed": true
+    },
+    {
+     "check": "B（ATN）排除依据仍成立",
+     "passed": true
+    },
+    {
+     "check": "source_quote/teacher_anchor 不涉及该数值",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q012-01",
+   "status": "EXECUTED",
+   "target": "Q012.optionA",
+   "operation": "replace_text",
+   "diff": {
+    "before": "仅尿蛋白>3.5g/d 即可确诊",
+    "after": "尿蛋白>3.5g/d 一项即可确诊"
+   },
+   "precondition_results": [
+    {
+     "condition": "改写后 A 仍为假",
+     "passed": true
+    },
+    {
+     "condition": "B–D 同步改写、句式对齐",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "A 仍为假、E 仍为唯一真",
+     "passed": true
+    },
+    {
+     "check": "answer_key 仍为 E",
+     "passed": true
+    },
+    {
+     "check": "option_polarities 不变",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q012-02",
+   "status": "EXECUTED",
+   "target": "Q012.optionB",
+   "operation": "replace_text",
+   "diff": {
+    "before": "仅血浆白蛋白<30g/L 即可确诊",
+    "after": "血浆白蛋白<30g/L 一项即可确诊"
+   },
+   "precondition_results": [
+    {
+     "condition": "改写后 B 仍为假",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "B 仍为假",
+     "passed": true
+    },
+    {
+     "check": "长度与 A/C/D 相当",
+     "passed": true
+    },
+    {
+     "check": "answer_key 不变",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q012-03",
+   "status": "EXECUTED",
+   "target": "Q012.optionC",
+   "operation": "replace_text",
+   "diff": {
+    "before": "仅有血肌酐升高及水肿即可确诊",
+    "after": "血肌酐升高合并水肿两项即可确诊"
+   },
+   "precondition_results": [
+    {
+     "condition": "改写后 C 仍为假",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "C 仍为假",
+     "passed": true
+    },
+    {
+     "check": "answer_key 不变",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": "拟值微调：A3 原拟“血肌酐升高合并水肿即可确诊”（13 字）会使 R2 正解/最短比 = 20/13 = 1.54 > 1.5（WARN），补“两项”至 15 字后比值 1.43，语义与真值不变。",
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q012-04",
+   "status": "EXECUTED",
+   "target": "Q012.optionD",
+   "operation": "replace_text",
+   "diff": {
+    "before": "仅凭水肿合并高脂血症即可确诊",
+    "after": "水肿合并高脂血症两项即可确诊"
+   },
+   "precondition_results": [
+    {
+     "condition": "改写后 D 仍为假",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "D 仍为假",
+     "passed": true
+    },
+    {
+     "check": "五选项长度比 ≤1.5",
+     "passed": true
+    },
+    {
+     "check": "answer_key 不变",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": "拟值微调：A3 原拟 13 字同样触发 R2（20/13=1.54），补“两项”至 14 字。",
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q017-01",
+   "status": "EXECUTED",
+   "target": "Q017.learning_value.source_quote",
+   "operation": "replace_text",
+   "diff": {
+    "before": "Ⅳ型，弥漫性LN——50% 以上肾小球表现为毛细血管内或血管外节段或球性细胞增生",
+    "after": "Ⅳ型，弥漫性LN 50% 以上肾小球表现为毛细血管内或血管外节段或球性细胞增生"
+   },
+   "precondition_results": [
+    {
+     "condition": "教材 P490 表5-3-1 原文无破折号",
+     "passed": true
+    },
+    {
+     "condition": "teacher_anchor 内同段同步去破折号",
+     "passed": false
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "source_quote 规范化后可在 teacher_anchor 中逐字命中",
+     "passed": true
+    },
+    {
+     "check": "source_quote 可在教材原文中逐字命中",
+     "passed": true
+    },
+    {
+     "check": "exact 率仍为 100%",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": "teacher_anchor 为 IMMUTABLE 字段，-02 未执行；check_learning_value 规范化匹配（去标点/空格）后仍 exact，实测 source_quote_exact_rate=1.0。",
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q017-02",
+   "status": "SKIPPED",
+   "target": "Q017.teacher_anchor",
+   "operation": "escalate_to_human",
+   "diff": {
+    "before": "Ⅳ型，弥漫性LN——50% 以上…",
+    "after": "（未执行）"
+   },
+   "precondition_results": [
+    {
+     "condition": "已执行 PATCH-Q017-01",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "引文逐字命中锚点",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": "SKIPPED_CONTRACT：teacher_anchor ∈ IMMUTABLE_FIELDS，改动即 GATE-A4-PATCH-AUDIT BLOCKED；规范化匹配已使 source_quote 在现锚点内逐字命中，无需联动。",
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q029-01",
+   "status": "EXECUTED",
+   "target": "Q029.optionE",
+   "operation": "replace_text",
+   "diff": {
+    "before": "肾移植",
+    "after": "同种异体肾移植"
+   },
+   "precondition_results": [
+    {
+     "condition": "本例为亲属活体供肾的同种异体移植，术语成立",
+     "passed": true
+    },
+    {
+     "condition": "改写不改变选项真值",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "E 仍为唯一真、长度比 9/7=1.29 ≤1.5",
+     "passed": true
+    },
+    {
+     "check": "answer_key 仍为 E",
+     "passed": true
+    },
+    {
+     "check": "per_option E 条目仅同步文本",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q022-01",
+   "status": "EXECUTED",
+   "target": "Q022.learning_value.correct_rationale",
+   "operation": "replace_text",
+   "diff": {
+    "before": "导尿标本培养大肠埃希菌≥10⁵CFU/ml 已达真性细菌尿与复杂性尿路感染的菌落计数条件",
+    "after": "导尿标本培养大肠埃希菌≥10⁵CFU/ml 已超过真性细菌尿与复杂性尿路感染的菌落计数阈值（教材阈值为清洁中段尿≥10⁵CFU/ml，导尿标本阈值更低）"
+   },
+   "precondition_results": [
+    {
+     "condition": "教材 P502 的 ≥10⁵CFU/ml 属清洁中段尿标准",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "correct_rationale 仍 ≥60 字",
+     "passed": true
+    },
+    {
+     "check": "答案仍为 B",
+     "passed": true
+    },
+    {
+     "check": "不引入与教材冲突的新数值",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q030-02",
+   "status": "EXECUTED",
+   "target": "Q030.learning_value.correct_rationale",
+   "operation": "replace_text",
+   "diff": {
+    "before": "阴离子间隙正常的代谢性酸中毒",
+    "after": "高氯性代谢性酸中毒（题干未提供血钠，未计算阴离子间隙）"
+   },
+   "precondition_results": [
+    {
+     "condition": "题干未给出钠离子浓度",
+     "passed": true
+    },
+    {
+     "condition": "血氯112＋HCO₃⁻16 足以支持高氯性代酸",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "correct_rationale 仍 ≥60 字",
+     "passed": true
+    },
+    {
+     "check": "答案仍为 D",
+     "passed": true
+    },
+    {
+     "check": "per_option 真值不变",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q015-01",
+   "status": "EXECUTED",
+   "target": "Q015.optionD",
+   "operation": "replace_text",
+   "diff": {
+    "before": "β阻滞剂，血压<90、尿蛋白<1g",
+    "after": "β阻滞剂，血压<130、尿蛋白<1g"
+   },
+   "precondition_results": [
+    {
+     "condition": "β 阻滞剂非降蛋白首选（教材首选 ACEI/ARB）",
+     "passed": true
+    },
+    {
+     "condition": "改后 D 仍为假",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "D 仍为假",
+     "passed": true
+    },
+    {
+     "check": "answer_key 仍为 C",
+     "passed": true
+    },
+    {
+     "check": "五选项长度比 1.06 ≤1.5",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "PATCH-Q015-01-WHY",
+   "status": "EXECUTED",
+   "target": "Q015.learning_value.per_option[D].why",
+   "operation": "replace_text",
+   "diff": {
+    "before": "仅以舒张压＜90mmHg 为目标漏掉收缩压要求，β 受体阻滞剂也不是减少尿蛋白的首选药物。",
+    "after": "把目标定在＜130mmHg 仍未达到收缩压＜120mmHg 的靶目标，舒张压＜90mmHg 只是普通高血压门槛；β 受体阻滞剂也不是减少尿蛋白的首选药物。"
+   },
+   "precondition_results": [
+    {
+     "condition": "选项文本已改写",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "why 与改写后选项一致",
+     "passed": true
+    },
+    {
+     "check": "仍判 D 为假",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": "选项改写后同步逐项解析，避免解析与选项脱节。",
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "ISSUE-D3-CG-M01-01",
+   "status": "EXECUTED",
+   "target": "Q002.stem / Q003.stem（CG-M01-01）",
+   "operation": "replace_text",
+   "diff": {
+    "before": "Q002 含 Hb82＋铁代谢阴性；Q003 含血肌酐486＋变形红细胞60%（两段病史不同）",
+    "after": "同组共用一段病史：CKD5/eGFR9/血肌酐486＋Hb82＋铁代谢阴性＋无呕血黑便＋变形红细胞60%"
+   },
+   "precondition_results": [
+    {
+     "condition": "非真题（原创），stem 属 ALLOWED_FIELDS",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "两题病史段逐字一致、关键数据不丢",
+     "passed": true
+    },
+    {
+     "check": "两题答案均不变（B/C）",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "ISSUE-D3-CG-M02-01",
+   "status": "EXECUTED",
+   "target": "Q008.stem / Q009.stem（CG-M02-01）",
+   "operation": "replace_text",
+   "diff": {
+    "before": "Q008 给血压118/76、肌酐78、尿蛋白0.6g；Q009 简写为“血压及血肌酐正常”",
+    "after": "同组共用一段病史：上感后1天全程无痛性肉眼血尿＋血压118/76＋肌酐78＋IgA升高＋C3正常＋尿蛋白0.6g"
+   },
+   "precondition_results": [
+    {
+     "condition": "非真题（原创）",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "病史段逐字一致",
+     "passed": true
+    },
+    {
+     "check": "答案不变（B/A）",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "ISSUE-D3-CG-M03-01",
+   "status": "EXECUTED",
+   "target": "Q014.stem / Q015.stem（CG-M03-01）",
+   "operation": "replace_text",
+   "diff": {
+    "before": "Q014 为完整病史；Q015 压缩并写入结论性诊断“慢性肾小球肾炎”",
+    "after": "同组共用 Q014 完整病史（并补血钾 4.2mmol/L，供 ACEI 安全性判断）"
+   },
+   "precondition_results": [
+    {
+     "condition": "非真题（原创）",
+     "passed": true
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "病史段逐字一致",
+     "passed": true
+    },
+    {
+     "check": "答案不变（E/C）",
+     "passed": true
+    },
+    {
+     "check": "Q015 不再直接给出诊断，诊断推理归还 Q014",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": null,
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "ISSUE-014-NEGATIVE-CUES",
+   "status": "SKIPPED",
+   "target": "全批 negative_cues",
+   "operation": "escalate_to_human",
+   "diff": {
+    "before": "29/30 题为空数组",
+    "after": "（未执行）"
+   },
+   "precondition_results": [
+    {
+     "condition": "negative_cues 属可写字段",
+     "passed": false
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "Q001/Q014/Q018/Q022 补 1–2 条阴性线索",
+     "passed": false
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": "SKIPPED_CONTRACT：negative_cues 未登记于 ALLOWED_FIELDS 亦非 IMMUTABLE → 计入未分类字段，实测 1 题即令审计 FAIL。已升级人工（ESC-003），须在 A2 阶段沉淀。",
+   "source_file_synced": true
+  },
+  {
+   "patch_id": "ISSUE-003-004-BLOOM",
+   "status": "SKIPPED",
+   "target": "Q001.bloom / Q002.bloom",
+   "operation": "escalate_to_human",
+   "diff": {
+    "before": "记忆 / 记忆",
+    "after": "记忆 / 记忆（未改）"
+   },
+   "precondition_results": [
+    {
+     "condition": "A3 未生成 patch",
+     "passed": false
+    }
+   ],
+   "post_check_results": [
+    {
+     "check": "A3 明确建议保留（记忆层配额）",
+     "passed": true
+    }
+   ],
+   "polarity_regression": {
+    "applicable": false,
+    "passed": null,
+    "detail": "正向题，不适用"
+   },
+   "answer_key_check": {
+    "applicable": true,
+    "key_still_valid": true,
+    "detail": "不变且有效"
+   },
+   "failure_reason": "SKIPPED_NO_PATCH：A3 ISSUE-003/004 明确“保留并留痕，不生成 patch”，且改成理解会使记忆层降至 10%（偏差 10pp）。按 PG-00 仅执行结构化指令，不越权。",
+   "source_file_synced": true
+  }
+ ],
+ "consistency_scan": {
+  "scanned": [
+   "尿钠12mmol/L",
+   "血压<90、尿蛋白<1g",
+   "仅尿蛋白>3.5g/d",
+   "仅血浆白蛋白",
+   "仅有血肌酐升高及水肿",
+   "仅凭水肿合并高脂血症",
+   "弥漫性LN——",
+   "阴离子间隙正常的代谢性酸中毒",
+   "已达真性细菌尿"
+  ],
+  "residual_hits": {
+   "尿钠12mmol/L": 0,
+   "血压<90、尿蛋白<1g": 0,
+   "仅尿蛋白>3.5g/d": 0,
+   "仅血浆白蛋白": 0,
+   "仅有血肌酐升高及水肿": 0,
+   "仅凭水肿合并高脂血症": 0,
+   "弥漫性LN——": 0,
+   "阴离子间隙正常的代谢性酸中毒": 0,
+   "已达真性细菌尿": 0
+  },
+  "note": "旧值在最终题库中零残留；Q017 teacher_anchor 的破折号仍在（不可变字段），但 source_quote 已按 P490 逐字改正，规范化匹配 exact 率 100%。"
+ },
+ "recheck": {
+  "validate": {
+   "fail": 0,
+   "warn": 0,
+   "pass": 30,
+   "report": "reports/validate/validate_options_report_batch048.json"
+  },
+  "learning_value": {
+   "fail": 0,
+   "warn": 0,
+   "pass": 30,
+   "source_quote_exact_rate": 1.0,
+   "report": "reports/validate/learning_value_batch048_final.json"
+  },
+  "source_concepts": {
+   "status": "PASS",
+   "report": "reports/validate/source_concepts_check.json"
+  },
+  "rules_batch": {
+   "status": "PASS",
+   "report": null,
+   "note": "advisory 规则，仅 stdout，无独立报告文件"
+  },
+  "patch_integrity": {
+   "result": "PASS",
+   "immutable_violations": 0,
+   "unclassified_fields": 0,
+   "changed": 11,
+   "report": "reports/validate/patch_integrity_batch048.json"
+  },
+  "bloom_distribution": {
+   "记忆": 20.0,
+   "理解": 26.7,
+   "应用": 33.3,
+   "分析": 20.0,
+   "target": {
+    "记忆": 20,
+    "理解": 25,
+    "应用": 35,
+    "分析": 20
+   },
+   "max_deviation_pp": 1.7
+  }
+ },
+ "escalations_for_human": [
+  {
+   "escalation_id": "ESC-001",
+   "target": "batch048-Q020",
+   "escalation_reason": "HC-22 逐字性 vs Patch 不可变字段契约冲突：真题题干含 Markdown 加粗，回改为源题原文会触发 IMMUTABLE_FIELDS（真题题干）违例",
+   "context_snapshot": "stem=尿路感染的易感因素**不包括**；answer=E；polarity=negative；source_type=执业医师真题",
+   "evidence": "试改后 check_patch_integrity 输出：不可变违例 1（batch048-Q020: ['stem(真题题干)']）→ result=FAIL",
+   "recommendation": "在 A2 阶段纠正（源头 stem 应为“尿路感染的易感因素不包括”），或经人工签收后以 waiver 方式允许该题去标记重跑 A4；A4 不擅自改真题题干。"
+  },
+  {
+   "escalation_id": "ESC-002",
+   "target": "batch048-Q030",
+   "escalation_reason": "D10 层级校准无法在 A4 落地：bloom_level 未登记于 ALLOWED_FIELDS，patch 自身又要求 bloom/bloom_level 同步",
+   "context_snapshot": "bloom=记忆 / bloom_level=记忆；step_count=3；difficulty_tier=L3；stem 154 字/9 变量",
+   "evidence": "只改 bloom 会留 bloom≠bloom_level（export-md 按 bloom_level 渲染），同步改 bloom_level 则计入未分类字段 → 审计 FAIL",
+   "recommendation": "把 bloom_level 加入 check_patch_integrity.ALLOWED_FIELDS（或改为由 bloom 派生），再重跑 A4 将本题改判为“分析”；改判后分布 16.7/26.7/33.3/23.3，最大偏差 3.3pp。"
+  },
+  {
+   "escalation_id": "ESC-003",
+   "target": "全批 negative_cues（A3 ISSUE-014）",
+   "escalation_reason": "negative_cues 未登记于 ALLOWED_FIELDS 亦非 IMMUTABLE，A4 写入即判未分类字段",
+   "context_snapshot": "Q001“光镜下肾小球结构未见明显异常”、Q014“无皮疹与关节痛、乙肝阴性、无糖尿病史”、Q018“无活动性感染及活动性结核”、Q022“无尿频尿急尿痛”",
+   "evidence": "探针实测：仅 1 题写入 negative_cues 即令审计 未分类字段=1 → result=FAIL",
+   "recommendation": "在 A2 阶段沉淀 negative_cues，或把该字段纳入 ALLOWED_FIELDS 后由 A4 补录。"
+  }
+ ],
+ "final_gate": "PARTIAL_WITH_ESCALATIONS"
+}

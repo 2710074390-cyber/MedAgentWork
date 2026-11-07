@@ -14,8 +14,10 @@ whenToUse: 编排者开始新批次、推进管线阶段、遇到门禁阻断或
 batch048+：R0/R1 → 启动(登记批次) → 阶段2 MedGen → 门禁A2 → 阶段3 MedQC → 门禁A3
 → 阶段4 MedFix → 门禁A4 → **门禁LV** → 阶段5 MedReview → 门禁A5*
 → R2 测试验证 → R3 发布上线（enforce）→ 终审门禁（检查 HC-22/R0–R3/P9/Bloom 四项）
-→ 用户签收(可选) → 回执重建 → 入库(batch048+) → 归档 → R4 复盘
+→ 用户签收(可选) → 回执重建 → 入库(batch048+) → 线上题库交付(HC-30·需上线时) → 归档 → R4 复盘
 ```
+
+> **交接包（H2 · 2026-11-07，宿主无关）**：每个 boundary PASS 后，`batch_driver.py` 按 `plan` 给出 `next_stage` 并写 `中间产物/{batchID}/_handoff/{stage}.json`。包里给 `role_skill / inputs[].path / outputs[].path / preflight / gate / done / write_scope / parallel_safe`；执行方按入口桩 `level=` 选 L2（隔离子代理）/ L1（同会话顺序 + 每阶段重读 `_ctx.md`）/ L0（`brief` 人读交接单）。**任何宿主都不许在包里写工具名，也不许并发写 `write_scope=question_bank` 的阶段**。产物 sha 变了包即过期（`inputs_fingerprint`），重跑 `check` 再消费。
 
 > HC-19 插图管线（原阶段6 生图 + GATE-A5 配图项 + GATE-A6）已于 2026-11-02 整体下线，见 `SOUL.md § HC-19`。复习资料产出**纯文本**，不写占位符、不出配图清单。
 
@@ -27,6 +29,7 @@ batch048+：R0/R1 → 启动(登记批次) → 阶段2 MedGen → 门禁A2 → �
 - **交付必须带队列**：`review_queue.json` 由 `qbank.py export-md --review-queue-out` 生成；最终 MD 末尾附「人工复核队列」；签收前用户审查队列，签收只改变发布状态，不改变已完成的生成产物。
 - GoldenSet 签收只由用户手动执行，任何 Agent 禁止写入
 - **产物入库（P1-3 · 2026-11-05 · batch048+ 强制）**：顺序是「签收 → 重建 A4 追溯日志 → 重跑 A4/FINAL 门禁 → `python scripts/batch_artifacts.py stage --batch {batchID}` → `check --batch {batchID}`（exit 0）→ 归档」。**顺序不可颠倒**：签收改了 FIXED 字节，先入库再重建回执 = 提交一份产物与回执对不上的证据（CI 判 `ARTIFACT_MISMATCH`）。历史批次（≤047）不回填；`_backup/`、`*.html`、`*.tmp` 一律不入库。CI 与发布前审计都带 `--require-tracked`，未入库的批次会被判 `ARTIFACT_UNTRACKED`。
+- **线上题库交付（HC-30 · 2026-11-06 · 需上线的批次强制）**：产物要进线上题库（`../medkit-web-contest`）时，**记忆要点必须一起搬过去**——`learning_value.key_takeaway` → seed `takeaway` → data `takeaway` → 界面「记忆要点」。三跳都在下游工具里，缺一跳界面只是少一块、不会报错（静默丢失）。命令（在 `../medkit-web-contest` 执行）：`python tools/batch_to_seed.py 最终产物/{batchID}/ALL_questions_FIXED.json --bank-id … --name … --subject-id … --variant …` → `python tools/build_questions.py` → `python tools/build_bundle.py` → `node --test tests/*.test.mjs`。转换脚本对「有 `learning_value` 却缺 `key_takeaway`」逐题告警：告警必须回 MedGen/MedFix 补，**不许**拿 `correct_rationale` 顶替、不许自造占位句。只在 `seed/banks.json` 出现、没进 `data/` 的字段等于没交付。
 - **提交前拦截（P2 · 2026-11-05）**：本机 `.git/hooks/pre-commit` 已由 `scripts/install_git_hooks.py` 安装，提交批次产物时自动跑 `gate_audit.py --staged --require-tracked`（只审暂存批次，不跑 `--recheck`，秒级）。手工等价命令同一行；绕过用 `git commit --no-verify` 属**违规**，CI 仍会判红但要事后追溯。换机器后重跑一次 `python scripts/install_git_hooks.py`。
 - *门禁A5：MedReview 产出主复习资料 MD（纯文本，HC-19 已下线不出配图清单）
 - **门禁A5 附加（HC-20/D0 · 2026-10-18，有教师重点/复习大纲输入的批次强制）**：跑 `python scripts/check_keypoint_coverage.py --keypoints <教师重点原文> --md <主复习资料 MD>`（数值/时间窗类硬事实缺失或重点条目缺锚点 → exit 1 → 回退 Agent 5 补写；无教师重点输入 → SKIPPED，不视为通过）
@@ -151,7 +154,7 @@ python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
 
 ## 4. 状态与记忆
 
-- `workflow_state.json`：批次状态/步骤/血缘/门禁结果。由编排者或 ingest/save/gate_check 更新，**子代理不得直接改写**
+- `workflow_state.json`：批次状态/步骤/血缘/门禁结果。由编排者或 ingest/save/gate_check 更新，**阶段执行方不得直接改写**
 - **本批上下文（SA-6 · 2026-11-04）**：`python scripts/build_batch_context.py --batch {batchID}` 生成 `中间产物/{batchID}/_ctx.md`（≤8,000 chars）与 `_kpidx.jsonl`（教师重点原文的 ID 索引，**sidecar，不替代原文**——`check_keypoint_coverage.py` 仍直接读原文）。A2 冻结或教师重点变更后需重建；归档后 `ctx_fetch.py` 自动回退 `archive/` 取数。Agent 起步只读 `_ctx.md`，规则/原文按指针用 `ctx_fetch.py --id` 取。
 - 批次关键事件（启动/门禁/halt/签收）记入 `memory/JOURNAL.jsonl`（UTF-8 JSONL，一行一条）
 - 新教训 → 更新 SOUL.md HC-* 表 + `memory/FACT.md`；完成项 → 更新 `memory/TODO_ACTIVE.md`（历史待办板 `docs/archive/2026-11/TODO.md` 已归档，不再追加）
@@ -184,8 +187,13 @@ python scripts/fact_check.py golden --file 中间产物/{batchID}/*.json
 - 检索前先查 `中间产物/kb_search_result.json` 与 cache，避免 MedGen/MedReview 重复检索同一查询
 - MedMaster 检索尽量一次批量覆盖多考点（`-f queries.txt`），减少交互式单发调用
 
-## 6. DSH 流程差异（vs 旧 Cherry Studio 流程）
+## 7. 跨宿主执行差异（H1–H5 · 2026-11-07）
 
-- 无剪贴板接力：产物由子代理直接写文件，编排者传路径
-- save.py / ingest.py 保留给手工流程；DSH 流程下编排者校验产物后直接更新血缘
+> 本节编号从原「§6」改为「§7」：§6 已是「成本纪律」，两个 §6 会造成引用歧义。
+> 内容也从「DSH vs 旧 Cherry Studio」改为当前的宿主无关口径。
+
+- 无剪贴板接力：产物由阶段执行方直接写文件，编排者只传 `_handoff/{stage}.json` 路径
+- `save.py` / `ingest.py` 保留给纯手工流程；自动化流程下编排者校验产物后直接更新血缘
 - 每批次建议独立会话，避免上下文膨胀与批次间污染
+- 宿主能力由入口桩 `level=` 声明：L2 派生隔离子代理 / L1 单会话顺序执行 / L0 人工接力；
+  三档的门禁用同一套 Python 脚本，回执链不记录宿主信息（见 `AGENTS.md §3.5`）

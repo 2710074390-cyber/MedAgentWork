@@ -77,6 +77,22 @@ python scripts/gate_audit.py --staged --require-tracked
 本机已安装 pre-commit 钩子（`.git/hooks/pre-commit`，由 `scripts/install_git_hooks.py` 写入），
 提交批次产物时自动跑最后一条。换机器后重新执行一次 `python scripts/install_git_hooks.py`。
 
+## 3.5 跨宿主编排（H1–H5 · 2026-11-07）
+
+`batch_driver.py check` 在 PASS 时按 `plan` 确定性给出 `next_stage / next_action / next_bundle`，并为下一阶段写
+`中间产物/{batch}/_handoff/{stage}.json`。交接包**只描述数据与命令、不含任何宿主工具名**；DSH / WorkBuddy / Trae / 人工
+消费同一份包，门禁回执因此是同一份字节。
+
+| 想做什么 | 命令 |
+|---|---|
+| 查当前宿主能力等级（`L2` 可派生隔离子代理 / `L1` 单会话 / `L0` 手工） | `python scripts/host_bootstrap.py check` |
+| 推进一个阶段（PASS 后自动生成下一阶段交接包） | `python scripts/batch_driver.py check --batch batchNNN --stage auto` |
+| 打印人读交接单（L0 / 人工接力） | `python scripts/batch_driver.py brief --batch batchNNN --stage a3` |
+| 三档回归矩阵 | `python scripts/host_matrix_check.py --matrix` |
+
+三条纪律：① 不要把宿主工具名写进交接包或任务描述；② `write_scope=question_bank`（`parallel_safe=false`）的阶段
+**任何宿主都不许并发写**；③ 包里 `inputs_fingerprint` 与当前产物不符即视为过期，必须重跑 `check` 后再用。
+
 ## 4. 不要做的事
 
 - 不要手写 `最终产物/{batch}/_gate_ledger.json`——回执只能由 `batch_driver.py` 在 PASS 后写，
