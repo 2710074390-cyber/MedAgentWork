@@ -452,8 +452,10 @@ def recheck_batch(batch_id: str, candidates, base: Path = BASE,
                            "detail": f"{rel} 复检无法启动：{exc}"})
             continue
         rc = proc.returncode
-        tail = ((proc.stdout or "") + (proc.stderr or "")).strip().splitlines()
-        tail = tail[-1][:200] if tail else ""
+        lines = ((proc.stdout or "") + (proc.stderr or "")).strip().splitlines()
+        # 只留最后一行会丢掉「✗ 失败: N」这类关键摘要，CI 上无法定位复检失败原因。
+        # 保留末尾 4 行并截到 400 字：detail 进 JSON 报告与日志，长度仍可控。
+        tail = " | ".join(x.strip() for x in lines[-4:])[:400] if lines else ""
         if rc == 0:
             items.append({"path": rel, "rc": 0, "status": "PASS"})
         elif rc == 1:
