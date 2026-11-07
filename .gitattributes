@@ -1,0 +1,6 @@
+# 门禁回执按产物**裸字节**绑定（gate_stamp.file_sha256），不归一换行。
+# 若让 Git 做 CRLF→LF 转换，Windows 工作区与 Linux CI 检出的字节不同，
+# gate_audit --recheck 会判 ARTIFACT_MISMATCH（batch048 在 CI 上的实证）。
+# 因此被回执绑定的交付产物一律 -text：blob 存原始字节，两端 checkout 完全一致。
+最终产物/*/ALL_questions_FIXED.json -text
+最终产物/*/ALL_questions_FIXED.md -text

@@ -924,8 +924,9 @@ def _stage_io(batch_id, stage, data):
     if stage == "a5":
         md = _find_review_md(data or {})
         outs = [gs.rel(md, BASE)] if md else ["复习资料/<科目>教学计划版/<科目>_主复习资料.md"]
-    kept = [p for p in ins if (BASE / p).is_file() or p.endswith("_ctx.md")]
-    return kept, outs
+    # 保留全部声明的输入（不因文件暂未入库而删条目）：契约要回答「该阶段该读什么」，
+    # 干净检出里中间产物不存在只是 exists=false，不能让 bundle 形状随环境变化。
+    return ins, outs
 
 
 def _fingerprint(rows):
