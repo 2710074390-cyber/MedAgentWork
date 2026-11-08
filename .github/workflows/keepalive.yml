@@ -1,19 +1,30 @@
 name: keepalive
 
-# 每 5 分钟戳一次刷题应用，防止 WorkBuddy 沙箱空闲休眠。
+# 每 5 分钟戳一次刷题应用，防止 WorkBuddy 沙箱空闲休眠（冷启动实测 3.9s、热 0.6s）。
 # 跑在 GitHub 的机器上 —— 关电脑、断网都不影响。
 # 注意：GitHub 公开仓的定时任务在「60 天无仓库活动」后会自动停用；
 #       正常开发有提交就不会触发，若发现停了，手动 workflow_dispatch 一次即可。
 # 定时任务的准点率不保证（高峰期可能延迟 5~15 分钟），所以一次跑里连打 4 次，
 # 尽量把「无人访问的空窗」压在沙箱休眠阈值之下。
+#
+# ⚠️ 2026-11-08 修复：本文件曾把地址写死为 senior-quiz-app（带账号的 FastAPI 版）。
+#    该应用已于 2026-10-29 退役，/drill 改为跳转 medkit-study-app（参赛版），
+#    但保活地址没跟着改 → 每次定时任务都打到一个返回「链接已失效」的域名，
+#    从 10-29 起连续 41 次失败，全是同一个原因。
+#    现在地址不写死：运行时从 functions/drill/[[path]].js 的 ENTRY 解析 ——
+#    那是 /drill 跳转的唯一真源，换应用只改那一处，本文件自动跟随。
+#    另：200 不再等于健康（下线时宿主返回的是带「链接已失效」的占位页），
+#    所以改成校验 /api/ping 的 {"ok":true} 响应体。
 
 on:
   schedule:
     - cron: "*/5 * * * *"
-  # 只改本文件时顺带跑一次：既是自检入口，也能在调度器延迟时立刻验证
+  # 改本文件或 /drill 真源时顺带跑一次：既是自检入口，也能在调度器延迟时立刻验证。
+  # 真源必须一起监听 —— 保活地址是从它解析的，换了应用要马上验证新地址是活的。
   push:
     paths:
       - ".github/workflows/keepalive.yml"
+      - "functions/drill/[[path]].js"
   workflow_dispatch:
 
 permissions:
@@ -28,17 +39,47 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+      # 只需要 /drill 真源这一个文件；锥形 sparse-checkout 省掉整仓几十 MB 的图片
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: functions/drill
+
+      - name: Resolve drill entry from /drill 真源
+        id: entry
+        run: |
+          ping=$(python3 - <<'PY'
+          import re, pathlib, urllib.parse
+          src = pathlib.Path("functions/drill/[[path]].js").read_text(encoding="utf-8")
+          m = re.search(r'const\s+ENTRY\s*=\s*"([^"]+)"', src)
+          if not m:
+              raise SystemExit("未在 functions/drill/[[path]].js 找到 ENTRY 常量，"
+                               "保活地址无法确定——请修该文件或更新本工作流的解析规则")
+          u = urllib.parse.urlsplit(m.group(1))
+          # 应用宿主对每个请求都校验 ?sharecode=（不带即 403），健康端点也不例外
+          print(f"{u.scheme}://{u.netloc}/api/ping" + (f"?{u.query}" if u.query else ""))
+          PY
+          )
+          echo "url=$ping" >> "$GITHUB_OUTPUT"
+          echo "解析到保活地址: $ping"
+
       - name: Ping drill app
         env:
-          URL: https://senior-quiz-app.app.workbuddy.host/api/ping
+          URL: ${{ steps.entry.outputs.url }}
         run: |
           for i in 1 2 3 4; do
             code=$(curl -s -o /tmp/body -w "%{http_code}" --max-time 30 "$URL" || true)
-            echo "attempt $i -> HTTP ${code:-000} $(cat /tmp/body 2>/dev/null)"
-            if [ "$code" = "200" ]; then
+            body=$(head -c 200 /tmp/body 2>/dev/null | tr -d '\r' | tr '\n' ' ')
+            echo "attempt $i -> HTTP ${code:-000}  body=${body:0:120}"
+            if [ "$code" = "200" ] && grep -q '"ok":[[:space:]]*true' /tmp/body 2>/dev/null; then
+              echo "健康端点正常"
               exit 0
+            fi
+            if [ "$code" = "403" ] || grep -q "链接已失效" /tmp/body 2>/dev/null; then
+              echo "::error::刷题应用已下线或分享码失效（HTTP ${code:-000}）。地址取自 functions/drill/[[path]].js 的 ENTRY，当前为 $URL"
+              echo "::error::请确认该应用仍在发布、分享码未变更；换应用后本工作流会自动跟随，无需改本文件"
+              exit 1
             fi
             sleep 10
           done
-          echo "::error::刷题应用连不上（4 次尝试都失败），请检查沙箱是否被回收"
+          echo "::error::刷题应用连不上（4 次尝试均未拿到 {\"ok\":true}，最后 HTTP ${code:-000}），请检查沙箱是否被回收"
           exit 1
