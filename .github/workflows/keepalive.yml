@@ -21,10 +21,13 @@ on:
     - cron: "*/5 * * * *"
   # 改本文件或 /drill 真源时顺带跑一次：既是自检入口，也能在调度器延迟时立刻验证。
   # 真源必须一起监听 —— 保活地址是从它解析的，换了应用要马上验证新地址是活的。
+  # ⚠️ 用 functions/drill/** 而不是写死 "functions/drill/[[path]].js"：后者带方括号，
+  #    GitHub 每次 push 都要编译该 glob 才能决定是否触发，方括号会被当成字符类，
+  #    实测直接让整个工作流被判「workflow file issue」（run 0 秒失败、无 job）。
   push:
     paths:
       - ".github/workflows/keepalive.yml"
-      - "functions/drill/[[path]].js"
+      - "functions/drill/**"
   workflow_dispatch:
 
 permissions:
