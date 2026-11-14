@@ -40,7 +40,8 @@ concurrency:
 jobs:
   ping:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    # 10×(30s 超时 + 15s 间隔) ≈ 7.5 分钟重试窗口；上限给到 15 分钟，别让 job 被杀在重试中途
+    timeout-minutes: 15
     steps:
       # 只需要 /drill 真源这一个文件；锥形 sparse-checkout 省掉整仓几十 MB 的图片
       - uses: actions/checkout@v4
@@ -69,20 +70,54 @@ jobs:
         env:
           URL: ${{ steps.entry.outputs.url }}
         run: |
-          for i in 1 2 3 4; do
-            code=$(curl -s -o /tmp/body -w "%{http_code}" --max-time 30 "$URL" || true)
+          # 两种失败必须分开处置（2026-11-14 归因）：
+          #   403 / body 含「链接已失效」 = 应用真下线或分享码变了，立刻失败，不必重试；
+          #   000 且空 body             = 连接层就没建起来（沙箱唤醒窗口 / 跨境网络抖动），要等，不是故障。
+          # 旧版只有 4×(30s+10s)≈2 分钟窗口，吃不住唤醒 → 偶发误报（run 43595372430，4 次全 000）。
+          # 现改为 10×(30s+15s)≈7.5 分钟：单次超时保持 30s 不动（冷启动本身就要几秒，
+          # 压到 15s 反而会自己制造 000 —— 本地实测 3s 超时时 body 已完整返回却仍判 000）。
+          for i in $(seq 1 10); do
+            # ⚠️ 必须先清空 /tmp/body：否则本轮请求失败时会读到上一轮的残留 body 造成假阳性
+            : > /tmp/body
+            metrics=$(curl -s -o /tmp/body \
+              -w '%{http_code} dns=%{time_namelookup}s conn=%{time_connect}s tls=%{time_appconnect}s total=%{time_total}s' \
+              --max-time 30 "$URL" 2>/dev/null || true)
+            # curl 在 DNS/TCP 阶段就失败时可能一行都不输出，兜个底避免 code 变空串
+            metrics=${metrics:-000 dns=n/a conn=n/a tls=n/a total=n/a}
+            code=${metrics%% *}
             body=$(head -c 200 /tmp/body 2>/dev/null | tr -d '\r' | tr '\n' ' ')
-            echo "attempt $i -> HTTP ${code:-000}  body=${body:0:120}"
-            if [ "$code" = "200" ] && grep -q '"ok":[[:space:]]*true' /tmp/body 2>/dev/null; then
-              echo "健康端点正常"
-              exit 0
-            fi
+            echo "attempt $i/10 -> ${metrics}  body=${body:0:120}"
+
+            # 先判真故障：false 的 ok 值、失效占位页，不该浪费时间重试
             if [ "$code" = "403" ] || grep -q "链接已失效" /tmp/body 2>/dev/null; then
               echo "::error::刷题应用已下线或分享码失效（HTTP ${code:-000}）。地址取自 functions/drill/[[path]].js 的 ENTRY，当前为 $URL"
               echo "::error::请确认该应用仍在发布、分享码未变更；换应用后本工作流会自动跟随，无需改本文件"
               exit 1
             fi
-            sleep 10
+
+            # 判活只看应用是否真的应答了 ok:true —— 不强制 200：
+            # curl 因连接未干净收尾而报 000 时，body 里可能已经是完整的健康响应（本地实测过）。
+            if grep -q '"ok":[[:space:]]*true' /tmp/body 2>/dev/null; then
+              echo "健康端点正常（HTTP ${code:-000}，body 含 ok:true）"
+              exit 0
+            fi
+
+            [ "$i" -lt 10 ] && sleep 15
           done
-          echo "::error::刷题应用连不上（4 次尝试均未拿到 {\"ok\":true}，最后 HTTP ${code:-000}），请检查沙箱是否被回收"
+
+          # 10 次都没通：把「解析成什么 IP」打出来，一眼分清 DNS 问题还是连接被拦
+          host=$(printf '%s' "$URL" | sed -E 's#^https?://([^/:?]+).*#\1#')
+          echo "::group::诊断信息"
+          echo "目标主机: $host"
+          echo "--- getent hosts ---"
+          # 不要用 `getent ... || echo "解析失败"`：命令本身不存在时也会走到那个分支，把「没工具」误报成「解析失败」
+          if command -v getent >/dev/null 2>&1; then
+            getent hosts "$host" || echo "（DNS 解析不到该域名）"
+          else
+            echo "（环境无 getent，跳过）"
+          fi
+          echo "--- 最后一次 curl 详情 ---"
+          curl -sv --max-time 10 "$URL" 2>&1 | tail -20 || true
+          echo "::endgroup::"
+          echo "::error::刷题应用连不上（10 次尝试约 7.5 分钟内均未拿到 {\"ok\":true}，最后 HTTP ${code:-000}），请检查沙箱是否被回收"
           exit 1
