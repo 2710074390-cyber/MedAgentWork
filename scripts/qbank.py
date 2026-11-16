@@ -782,6 +782,90 @@ def _batch_release_status(counts: dict[str, int], total: int) -> str:
     return 'PENDING_HUMAN_REVIEW'
 
 
+# ──────────────────────────────────────────
+# 解析模板（schema 2.3 · 2026-11-16）
+# 订单：考点定位 → 解析 → 逐选项 → 鉴别 → 记忆要点 → 原文。
+# 只影响导出展示；不改源 JSON，也不改已签收批次的门禁绑定。
+# ──────────────────────────────────────────
+
+TAKEAWAY_FILLERS = (
+    '这是本题的核心鉴别点，需结合题干条件掌握。',
+    '这是本题的核心鉴别点，需结合题干条件掌握',
+)
+
+_OPTION_REASON_RE = re.compile(r'^([A-E])\s*[：:、.．)]\s*(.+)$')
+
+
+def _clean_takeaway(text: str) -> str:
+    """去掉历史批次写入的模板填充尾巴（仅展示层）。"""
+    t = str(text or '').strip()
+    for filler in TAKEAWAY_FILLERS:
+        t = t.replace('；' + filler, '').replace('，' + filler, '').replace(filler, '')
+    t = t.strip('；， ').strip()
+    if t and t[-1] not in '。！？!?':
+        t += '。'
+    return t
+
+
+def _split_explanation(explanation: str) -> tuple[str, list[tuple[str, str]]]:
+    """把 explanation 拆成（整题解析, 逐选项理由）。
+
+    兼容两种历史形态：
+      - 一条整段解析（无 A：… 行）；
+      - 解析 + 逐选项行（如 batch049 的 A：…/B：…）。
+    """
+    main: list[str] = []
+    opts: list[tuple[str, str]] = []
+    for raw in str(explanation or '').splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        m = _OPTION_REASON_RE.match(line)
+        if m:
+            opts.append((m.group(1), m.group(2).strip()))
+        elif opts:
+            label, text = opts[-1]
+            opts[-1] = (label, (text + ' ' + line).strip())
+        else:
+            main.append(line)
+    return '\n'.join(main).strip(), opts
+
+
+def _per_option_rows(lv: dict) -> list[tuple[str, str]]:
+    """从 learning_value.per_option 生成逐选项行；带误区时附在后面。"""
+    rows: list[tuple[str, str]] = []
+    for p in lv.get('per_option') or []:
+        if not isinstance(p, dict):
+            continue
+        label = str(p.get('label') or '').strip()
+        why = str(p.get('why') or '').strip()
+        if not label or not why:
+            continue
+        misconception = str(p.get('misconception') or '').strip()
+        if misconception:
+            why = f'{why}（误区：{misconception}）'
+        rows.append((label, why))
+    return rows
+
+
+def _primary_concept_title(raw: dict) -> str:
+    for c in raw.get('concepts') or []:
+        if isinstance(c, dict) and c.get('role') == 'primary':
+            title = str(c.get('title') or '').strip()
+            if title:
+                return title
+    return ''
+
+
+def _competing_items(raw: dict) -> list[str]:
+    out = []
+    for item in raw.get('competing_dx') or []:
+        text = str(item or '').strip()
+        if text:
+            out.append(text)
+    return out
+
+
 def render_review_queue_md(payload: dict, json_path: str = '') -> str:
     """把 review_queue.json 渲染成人可读 Markdown（2026-11-03 要求）。
 
@@ -937,6 +1021,11 @@ def export_md(filepath, outpath=None, title=None, review_queue_out=None,
             meta = f'模块：{mod}'
             if pages_raw:
                 meta += f'｜页码：{pages_raw}'
+            concept_title = _primary_concept_title(raw)
+            if concept_title:
+                meta += f'｜考点：{concept_title}'
+            elif str(raw.get('topic') or '').strip():
+                meta += f'｜考点：{str(raw.get("topic")).strip()}'
             lines.append(f'> {meta}')
             lines.append('')
             lines.append(f'**{q["stem"]}**')
@@ -970,11 +1059,39 @@ def export_md(filepath, outpath=None, title=None, review_queue_out=None,
             else:
                 lines.append(f'**答案：（未标注）**')
             expl = q.get('explanation') or ''
-            if expl:
+            lv = q.get('learning_value') or {}
+            expl_main, option_rows = _split_explanation(expl)
+            if not expl_main:
+                expl_main = str(lv.get('correct_rationale') or '').strip()
+            if not option_rows:
+                option_rows = _per_option_rows(lv)
+            takeaway = _clean_takeaway(lv.get('key_takeaway'))
+            quote = str(lv.get('source_quote') or '').strip()
+            competing = _competing_items(raw)
+
+            if expl_main:
                 lines.append('')
-                # 多行解析（v2 学习价值层）在 Markdown blockquote 中保持换行
-                expl_md = str(expl).replace('\n', '\n> ')
+                # 多行解析在 Markdown blockquote 中保持换行
+                expl_md = str(expl_main).replace('\n', '\n> ')
                 lines.append(f'> 解析：{expl_md}')
+            if option_rows:
+                lines.append('>')
+                lines.append('> 逐选项：')
+                for label, text in option_rows:
+                    one_line = ' '.join(str(text).split())
+                    lines.append(f'> - {label}：{one_line}')
+            if competing:
+                lines.append('>')
+                marks = '①②③④⑤'
+                parts = [f'{marks[i] if i < len(marks) else str(i + 1)} {item}'
+                         for i, item in enumerate(competing)]
+                lines.append('> 鉴别：' + '；'.join(parts))
+            if takeaway:
+                lines.append('>')
+                lines.append(f'> 记忆要点：{takeaway}')
+            if quote:
+                lines.append('>')
+                lines.append(f'> 原文：{quote}')
             lines.append('')
             lines.append('---')
             lines.append('')

@@ -221,10 +221,11 @@ def _items_props():
     return _load_schema('agent2_output.schema.json')['items']['properties']
 
 
-def test_schema_declares_v22():
+def test_schema_declares_v23():
     schema = _load_schema('agent2_output.schema.json')
-    assert schema.get('x-schema-version') == '2.2'
+    assert schema.get('x-schema-version') == '2.3'
     assert '2.2' in _items_props()['schema_version']['enum']
+    assert '2.3' in _items_props()['schema_version']['enum']
 
 
 def test_schema_v22_fields_present():

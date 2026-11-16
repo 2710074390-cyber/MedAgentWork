@@ -81,7 +81,7 @@
 ### 解析与认知层 (D9-D11)
 | 维度 | 检查内容 |
 |------|----------|
-| D9 解析完整度 | 解析是否逐项说明每个选项的对/错原因；是否与答案键一致 |
+| D9 解析完整度 | 解析是否逐项说明每个选项的对/错原因；是否与答案键一致；schema 2.3+ 是否按「考点定位→解析→逐选项→鉴别→记忆要点→原文」模板分块（见 `docs/产物格式规范.md` §2.1） |
 | D10 认知层级校准 | 题目实际难度与标记的Bloom层级是否匹配。规则：题干>100字且含3+临床变量→不应标记忆层；需两步以上推理→应用层起步 |
 | D11 干扰项质量 | 错误选项是否基于常见错误认知设计 |
 
@@ -96,7 +96,7 @@
 | D21a 考研原题一致性（2026-08-21 新增·HC-18；2026-10-20 并入 HC-22） | 对带 `kaoyan_origin` 的题目**100%** 比对 GoldenSet 源（`GoldenSet/structured/`，按 gs_id 配对）：① 题干知识点与真题一致；② 答案与 `question_bank/kaoyan_answers.json` 的 `answer_recovered` 一致（发现不一致→标记 must_escalate，**不得**建议改真题答案）；③ 数值/诊断标准未被改动；④ mode="改编" 时改编幅度合理；⑤ 元数据完整（gs_id/year/source/mode/answer_confidence），`answer_confidence=low` 一律 must_fix。另统计考研占比（目标≈20%，<15% 提示补充，≥25% 提示原创偏低）。 |
 | D21b 执业医师原题一致性（2026-10-20 新增·HC-22） | 对带 `zhiyi_origin` 的题目**100%** 比对 `question_bank/real_questions/zhiyi_items.jsonl`（按 source_id）：① 题干/选项/答案与源题一致；② 答案与 CMExam 答案一致（冲突 must_escalate，不得擅改）；③ 数值/诊断标准未改动；④ 元数据完整（source_id/source/mode/answer_confidence）；license 仅记录、不判 FAIL；⑤ `answer_confidence=medium` 的题 100% 抽检，`low` 一律 must_fix；⑥ 统计执医占比（目标≈20%，15%–25%；`corpus=pdf_paper` 与 `cmexam` 两源均计入该族，均可直接入选）。 |
 | D22 插图引用完整性（**2026-11-02 随 HC-19 下线**，编号保留不复用） | **恒记 N/A**。插图管线（占位符/配图清单/images_webp/GATE-A6）已整体退役，新产物不应出现图片引用。若输入含历史插图 MD，仅作提示不判 FAIL、不阻断门禁；图像语法残留不作为质量问题上报 |
-| D23 学习价值层完整性（2026-10-23 新增·HC-24） | 每题必须有 `learning_value`：`correct_rationale`≥60字；`per_option` 覆盖全部选项且每个 `why`≥20字；每个干扰项有 `misconception_id` + `misconception`；`key_takeaway`≥30字。缺项/占位词 → must_fix。 |
+| D23 学习价值层完整性（2026-10-23 新增·HC-24；2026-11-16 扩解析模板） | 每题必须有 `learning_value`：`correct_rationale`≥60字；`per_option` 覆盖全部选项且每个 `why`≥20字；每个干扰项有 `misconception_id` + `misconception`；`key_takeaway`≥30字。schema 2.3+ 还要求 `key_takeaway` 不含模板填充句、不得与 `correct_rationale` 相同或互为子串（R22）。缺项/占位词/填充句 → must_fix。 |
 | D24 来源逐字性、错误认知 ID 与反选极性（2026-10-23 新增·HC-24） | `source_quote_status=exact` 时 `source_quote` 必须非空，且（省略号分段后）能在 `teacher_anchor` 中逐字命中，否则 must_fix；`anchor_status=mismatch` → must_escalate；同批次同一 `misconception_id` 出现多种释义 → must_fix（R19）；`polarity=negative` 时 `truth` 必须与 `is_correct` 相反。 |
 
 > **D23/D24 机械化校验（强制）**：质检报告产出前运行

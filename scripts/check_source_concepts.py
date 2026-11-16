@@ -46,7 +46,7 @@ BASE = Path(__file__).resolve().parent.parent
 DEFAULT_OUT = BASE / "reports/validate/source_concepts_check.json"
 MULTI_TYPES = {"A2", "A3", "A4", "X"}
 ROLES = {"primary", "differential", "related"}
-CURRENT_VERSIONS = ("2.1", "2.2")  # schema 2.2 沿用 HC-27 概念契约；不再只认 2.1
+CURRENT_VERSIONS = ("2.1", "2.2", "2.3")  # schema 2.3 沿用 HC-27 概念契约；不再只认 2.1
 BATCH_RE = re.compile(r"(\d+)")
 
 
@@ -154,7 +154,7 @@ def main(argv: list[str] | None = None) -> int:
     need_current = args.require or batch_num(args.batch) >= args.min_batch
 
     if not has_current and not need_current:
-        msg = (f"SKIP —— 本批 {len(data)} 题无 schema_version=2.1/2.2（历史契约 {dict(versions)}），"
+        msg = (f"SKIP —— 本批 {len(data)} 题无 schema_version=2.1/2.2/2.3（历史契约 {dict(versions)}），"
                f"HC-27 不追溯")
         print(msg)
         report = {"generated_at": datetime.now().isoformat(timespec="seconds"),
@@ -166,7 +166,7 @@ def main(argv: list[str] | None = None) -> int:
 
     if not has_current and need_current:
         msg = (f"FAIL —— 批次 {args.batch or '(未提供)'} 属于 HC-27 生效范围，"
-               f"但没有任何题声明 schema_version=2.1/2.2（实际 {dict(versions)}）")
+               f"但没有任何题声明 schema_version=2.1/2.2/2.3（实际 {dict(versions)}）")
         print(msg)
         report = {"generated_at": datetime.now().isoformat(timespec="seconds"),
                   "file": str(path), "input_sha256": input_sha256, "batch": args.batch, "status": "FAIL",
@@ -178,7 +178,7 @@ def main(argv: list[str] | None = None) -> int:
     fails: list[str] = []
     current_count = sum(1 for q in data if str(q.get("schema_version") or "") in CURRENT_VERSIONS)
     if need_current and current_count != len(data):
-        fails.append(f"schema_version=2.1/2.2 覆盖不足：{current_count}/{len(data)}")
+        fails.append(f"schema_version=2.1/2.2/2.3 覆盖不足：{current_count}/{len(data)}")
     warns: list[str] = []
     checked = 0
     by_type = Counter()

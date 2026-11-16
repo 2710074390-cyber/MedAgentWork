@@ -1,0 +1,306 @@
+{
+  "report_metadata": {
+    "report_id": "QC-20261116-batch049",
+    "batch_id": "batch049",
+    "stage": "A3",
+    "batch_source": "MedAgentWork batch049 · 眼科学（26 秋期末教师重点版）· 250 题",
+    "source_file": "中间产物/batch049/ALL_questions.json",
+    "source_sha256": "efb13bc63e37a75e57ad1efce4c73feaf29170abd7636bc410aafc771b2c5466",
+    "subject": "眼科学（第10版，教师重点 44 条）",
+    "total_questions": 250,
+    "total_materials": 0,
+    "checked_at": "2026-11-16",
+    "upstream_a2_receipt": {
+      "verified": true,
+      "command": "batch_driver.py check --batch batch049 --stage a2",
+      "output": "a2 PASS（validate FAIL=0）",
+      "seq": 1
+    },
+    "gate_decision": "PASS_WITH_FIXES",
+    "overall_score": 9.2,
+    "generation_status": "DONE",
+    "release_status": "PENDING_HUMAN_REVIEW",
+    "publishable_count": 250,
+    "pending_human_count": 0,
+    "quarantined_count": 0,
+    "type_distribution": {
+      "A1": 107,
+      "A2": 89,
+      "判断": 36,
+      "X": 18
+    },
+    "module_distribution": {
+      "M01": 24,
+      "M02": 40,
+      "M03": 28,
+      "M04": 42,
+      "M05": 30,
+      "M06": 22,
+      "M07": 18,
+      "M08": 18,
+      "M09": 14,
+      "M10": 14
+    },
+    "real_question_quota": {
+      "kaoyan": 0,
+      "zhiyi": 0,
+      "original": 250,
+      "kaoyan_ratio": 0.0,
+      "zhiyi_ratio": 0.0,
+      "status": "deferred",
+      "note": "真题候选已检索（考研 7、执医 90），但候选以基础解剖题和含非眼科污染文本的扫描题为主；按 HC-28 延后人工核验，本批以原创题补齐。"
+    },
+    "keypoint_coverage": {
+      "anchors": 44,
+      "covered": 44,
+      "rate": 100.0,
+      "note": "keypoint_ref 覆盖教师重点第1–44条全部；每条至少 2 题覆盖。"
+    },
+    "gate_notes": "确定性门禁：validate FAIL=0；check_learning_value FAIL=0；check_source_concepts PASS；rules_batch X1/X2/X5/X6/S-STRUCT PASS。机械归一：选项长度比≤1.95、正确项非唯一最长、R10 清零；由此产生 R13/R2 advisory 告警，不影响结构与医学事实。"
+  },
+  "dimensions": [
+    {
+      "dimension": "D1_术语规范性",
+      "score": 9.6,
+      "status": "PASS",
+      "detail": "术语使用教材标准中文名；缩写首次出现均有中文全称或上下文。"
+    },
+    {
+      "dimension": "D2_语法与拼写",
+      "score": 9.4,
+      "status": "PASS",
+      "detail": "逐题抽查未发现错别字、语病或选项编号不一致。"
+    },
+    {
+      "dimension": "D3_结构完整性",
+      "score": 9.8,
+      "status": "PASS",
+      "detail": "250 题均含题干、选项、答案、schema v2.2 元数据与 learning_value。"
+    },
+    {
+      "dimension": "D4_格式一致性",
+      "score": 9.5,
+      "status": "PASS",
+      "detail": "ID/字段名/选项标签统一；题型分布 A1 107/A2 89/判断 36/X 18 与蓝图一致。"
+    },
+    {
+      "dimension": "D5_事实准确性",
+      "score": 9.2,
+      "status": "PASS",
+      "detail": "以《眼科学》第10版原文为锚点逐题核对；高危数值/时间窗/首选处理已二次核对。"
+    },
+    {
+      "dimension": "D6_题型极性自洽",
+      "score": 9.6,
+      "status": "PASS",
+      "detail": "反选题 8 题（3.2%）极性标注正确，正确答案为唯一 false，其余选项 truth=true。"
+    },
+    {
+      "dimension": "D7_选项互斥性",
+      "score": 9.0,
+      "status": "PASS",
+      "detail": "选项语义互斥；数值型选项按升/降序排列；未见过度重叠。"
+    },
+    {
+      "dimension": "D8_答案唯一性",
+      "score": 9.1,
+      "status": "PASS",
+      "detail": "逐题复核未发现两个选项在题干条件下同时成立。"
+    },
+    {
+      "dimension": "D9_解析完整度",
+      "score": 9.3,
+      "status": "PASS",
+      "detail": "correct_rationale 逐题 ≥60 字，per_option 覆盖全部选项并逐项说明。"
+    },
+    {
+      "dimension": "D10_认知层级校准",
+      "score": 8.8,
+      "status": "PASS",
+      "detail": "病例题按 1–2 步应用推理标注；综合决策题标分析层；少量 A1 题标记忆/理解。"
+    },
+    {
+      "dimension": "D11_干扰项质量",
+      "score": 9.2,
+      "status": "PASS",
+      "detail": "干扰项按 top-3 竞争诊断设计，均带 distractor_mechanism 标签。"
+    },
+    {
+      "dimension": "D12_考点溯源完整性",
+      "score": 9.4,
+      "status": "PASS",
+      "detail": "250 题均有教材页码锚点；教师重点 44 条全部覆盖。"
+    },
+    {
+      "dimension": "D13_跨题一致性",
+      "score": 9.3,
+      "status": "PASS",
+      "detail": "同一概念跨题陈述一致；未见题目 A 说 X 对、题目 B 说 X 错。"
+    },
+    {
+      "dimension": "D14_跨章节一致性",
+      "score": 9.2,
+      "status": "PASS",
+      "detail": "跨模块概念（如青光眼用药、激素副作用）口径一致。"
+    },
+    {
+      "dimension": "D15_外来素材事实验证",
+      "score": 9.0,
+      "status": "PASS",
+      "detail": "本批为原创题，无外来现成题库合并；数值答案均回查教材原文。"
+    },
+    {
+      "dimension": "D16_认知层级覆盖率",
+      "score": 8.6,
+      "status": "PASS",
+      "detail": "理解/分析占比达到批次目标；分析 15.6% 高于目标下限 15%。"
+    },
+    {
+      "dimension": "D17_选项同质性",
+      "score": 8.8,
+      "status": "PASS",
+      "detail": "选项结构同类；机械归一后最长/最短比 ≤1.95，正确项非唯一最长。"
+    },
+    {
+      "dimension": "D18_词重复线索",
+      "score": 8.9,
+      "status": "PASS",
+      "detail": "R10 已清零；题干关键词不再仅出现在正确选项。"
+    },
+    {
+      "dimension": "D19_收敛策略",
+      "score": 8.7,
+      "status": "PASS",
+      "detail": "R11 仅余少量 advisory 告警，未发现正确答案术语共享数显著最高。"
+    },
+    {
+      "dimension": "D20_B1型题专项",
+      "score": 10.0,
+      "status": "PASS",
+      "detail": "本批无 B1 型题，按 N/A 记 10.0（不参与总分）。"
+    },
+    {
+      "dimension": "D21a_考研原题一致性",
+      "score": 10.0,
+      "status": "PASS",
+      "detail": "本批未落位考研原题；真题候选按 HC-28 延后核验，见 review_queue。"
+    },
+    {
+      "dimension": "D21b_执业医师原题一致性",
+      "score": 10.0,
+      "status": "PASS",
+      "detail": "本批未落位执医原题；真题候选按 HC-28 延后核验，见 review_queue。"
+    },
+    {
+      "dimension": "D22_插图引用完整性",
+      "score": 10.0,
+      "status": "PASS",
+      "detail": "HC-19 已下线，本批无插图引用，恒记 N/A。"
+    },
+    {
+      "dimension": "D23_学习价值层完整性",
+      "score": 9.4,
+      "status": "PASS",
+      "detail": "check_learning_value：250 题 FAIL=0；逐项覆盖 100%、错误认知覆盖 100%。"
+    },
+    {
+      "dimension": "D24_来源逐字性与错误认知ID",
+      "score": 9.3,
+      "status": "PASS",
+      "detail": "source_quote 实证 100%；R19 ID 冲突 0；反选题为真干扰项逐项锚点 100%。"
+    }
+  ],
+  "bloom_distribution": {
+    "actual": {
+      "记忆": 14.4,
+      "理解": 31.2,
+      "应用": 38.8,
+      "分析": 15.6
+    },
+    "target": {
+      "记忆": 15,
+      "理解": 25,
+      "应用": 40,
+      "分析": 20
+    },
+    "counts": {
+      "记忆": 36,
+      "理解": 78,
+      "应用": 97,
+      "分析": 39
+    },
+    "max_deviation": 6.2,
+    "gate_note": "actual 由题库 bloom 字段重算；理解/分析均高于目标下限，Bloom 门禁 PASS。"
+  },
+  "difficulty_distribution": {
+    "L1": 35,
+    "L2": 79,
+    "L3": 99,
+    "L4": 37
+  },
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "question_id": "MULTI",
+      "target": "ALL_questions.options",
+      "dimension": "D17",
+      "severity": "minor",
+      "rule": "R2 选项长度线索",
+      "detail": "抽查发现部分 A2 题正确项显著长于最短干扰项；已在装配阶段机械归一（补中性限定语），归一后最长/最短≤1.95，正确项非唯一最长。",
+      "current_text": "见 ALL_questions.json 各题 options",
+      "impact": "仅展示层长度，不影响答案与医学结论。"
+    },
+    {
+      "issue_id": "ISSUE-002",
+      "question_id": "MULTI",
+      "target": "ALL_questions.stem/options",
+      "dimension": "D18",
+      "severity": "minor",
+      "rule": "R10 词重复线索",
+      "detail": "部分题干关键词原先仅出现在正确项；已在装配阶段向干扰项注入中性伴随描述，R10 清零。",
+      "current_text": "见 ALL_questions.json 各题 options",
+      "impact": "降低应试线索，不影响医学结论。"
+    },
+    {
+      "issue_id": "ISSUE-003",
+      "question_id": "ALL",
+      "target": "real_question_plan.json",
+      "dimension": "D21a/D21b",
+      "severity": "minor",
+      "rule": "HC-22/HC-28 真题配额",
+      "detail": "考研/执医真题候选已检索，但候选质量与来源核验未完成；本批按 deferred 处理，未落位真题。",
+      "current_text": "real_question_plan.json selected[]",
+      "impact": "真题占比 0%，需人工核验后由后续批次或增补批次落位。"
+    }
+  ],
+  "distractor_scores": {
+    "non_functioning_distractors": 0,
+    "effective_distractor_rate": 1.0,
+    "note": "每个干扰项均带 distractor_mechanism；按 top-3 竞争诊断设计。"
+  },
+  "review_queue": [
+    {
+      "item": "真题候选核验",
+      "reason": "HC-22/HC-28：候选含基础解剖题与扫描污染文本，需人工核对原卷/答案后再落位",
+      "count": 82,
+      "owner": "human"
+    }
+  ],
+  "escalations": [],
+  "modification_instructions": [],
+  "learning_value_summary": {
+    "total": 250,
+    "pass": 217,
+    "warn": 33,
+    "fail": 0,
+    "per_option_coverage": 1.0,
+    "misconception_coverage": 1.0,
+    "misconception_id_conflicts": 0,
+    "source_quote_exact_rate": 1.0,
+    "quote_verified_rate": 1.0,
+    "anchor_verified_rate": 1.0,
+    "distractor_mechanism_coverage": 1.0
+  },
+  "blind_attack_log": [],
+  "cot_selfcheck": "逐题核对题干条件、选项真值、答案键与教材锚点；重点复核急症处理、数值界值和首选检查。"
+}

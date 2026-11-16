@@ -570,7 +570,13 @@ def parse_validate_report(payload):
                         locator=locator, fix_hint=_hint(code or "R"), evidence={"summary": summary},
                         raw=json.dumps(summary, ensure_ascii=False))]
     if warn:
-        return [_result("GATE-A2", "WARN", code=code, owner="MedGen", evidence={"summary": summary})]
+        # 2026-11-16：validate_options 的既有口径是「WARN 不阻断」（见
+        # scripts/validate/__main__.py::exit_code：仅 fail>0 返回非 0）。driver 此前把
+        # advisory WARN 映射成 SKIP，导致这类批次永远无法写 a2 回执，只能在首次建链时
+        # 补录；补录后再改产物就陷入 ARTIFACT_MISMATCH 死锁。这里按校验器口径记为
+        # PASS，警告保留在 evidence.summary.warn 中，可审计但不阻断回执。
+        return [_result("GATE-A2", "PASS", code="ADVISORY_WARN", owner="MedGen",
+                        evidence={"summary": summary, "advisory_warnings": warn})]
     return [_result("GATE-A2", "PASS", evidence={"summary": summary})]
 
 
@@ -835,9 +841,12 @@ def boundary_final(ctx):
         else:
             failures = payload.get("failures") or []
             if failures:
-                code = str(failures[0].get("code") or "HC22")
+                first = failures[0]
+                code = str(first.get("code") if isinstance(first, dict) else first)
                 res.append(_result("GATE-REALQ", "FAIL", code=code, owner="orchestrator",
-                                   fix_hint=_hint(code), evidence={"failures": failures[:5]},
+                                   fix_hint=_hint(code),
+                                   evidence={"failures": failures[:5],
+                                             "duplicate_pairs": payload.get("duplicate_pairs") or []},
                                    raw=json.dumps(failures[:5], ensure_ascii=False)))
             else:
                 res.append(_result("GATE-REALQ", "PASS", evidence={"duration_ms": ms}))

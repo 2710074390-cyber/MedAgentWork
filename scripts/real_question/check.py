@@ -10,12 +10,18 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 from .retrieval import parse_keypoints
 from .schema import PUBLIC_LICENSES, exact_hash, hamming, simhash64
 
 BASE = Path(__file__).resolve().parent.parent.parent
+
+# 近重复判定：simhash 只负责“粗筛”，必须再叠一层词面相似度，否则中文短题干
+# 很容易因虚词/数字相同而误撞（batch049 实测 3 对完全不同的题被判近重复）。
+NEAR_DUP_HAMMING = 3
+NEAR_DUP_MIN_JACCARD = 0.5
 
 QUOTA_STATUSES = {"met", "reduced", "cancelled", "deferred", "disabled"}
 SHORTFALL_STATUSES = {"reduced", "cancelled", "deferred"}
@@ -26,6 +32,16 @@ REASON_BY_STATUS = {
     # 必须由 hc28_update 显式记录，不能借用 cancelled。
     "deferred": {"human_verification_deferred"},
 }
+
+
+def _stem_bigrams(text: str) -> set[str]:
+    s = re.sub(r"[^\u4e00-\u9fffA-Za-z0-9]+", "", str(text or ""))
+    return {s[i:i + 2] for i in range(len(s) - 1)} if len(s) >= 2 else set()
+
+
+def _stem_jaccard(a: str, b: str) -> float:
+    ga, gb = _stem_bigrams(a), _stem_bigrams(b)
+    return len(ga & gb) / len(ga | gb) if ga | gb else 0.0
 
 
 def _is_nonneg_int(value) -> bool:
@@ -206,17 +222,34 @@ def run_check(
     exact: dict[str, int] = {}
     sims: list[tuple[int, int]] = []
     duplicates = 0
+    duplicate_pairs: list[dict] = []
     for i, q in enumerate(questions):
         stem = str(q.get("stem") or "")
         opts = q.get("options") or []
         h = exact_hash(stem, opts if isinstance(opts, list) else [])
         if h in exact:
             duplicates += 1
+            duplicate_pairs.append({
+                "type": "exact", "a": questions[exact[h]].get("id"), "b": q.get("id"),
+            })
         else:
             exact[h] = i
         s = simhash64(stem + " " + " ".join(str(x) for x in opts))
-        if any(hamming(s, old) <= 3 for old, _ in sims):
+        near = None
+        for old, j in sims:
+            dist = hamming(s, old)
+            if dist > NEAR_DUP_HAMMING:
+                continue
+            jac = _stem_jaccard(stem, str(questions[j].get("stem") or ""))
+            if jac >= NEAR_DUP_MIN_JACCARD:
+                near = (j, dist, jac)
+                break
+        if near:
             duplicates += 1
+            duplicate_pairs.append({
+                "type": "near", "a": questions[near[0]].get("id"), "b": q.get("id"),
+                "hamming": near[1], "jaccard": round(near[2], 3),
+            })
         else:
             sims.append((s, i))
 
@@ -282,6 +315,7 @@ def run_check(
         "license_violations": license_violations,
         "missing_trace": missing_trace,
         "duplicates": duplicates,
+        "duplicate_pairs": duplicate_pairs,
         "plan_quota_status": plan.get("quota_status", {}),
         "quota_status_issues": quota_status_issues,
         "allowed_shortfalls": allowed_shortfalls,

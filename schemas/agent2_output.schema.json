@@ -2,8 +2,8 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "medagentwork-agent2-output",
   "title": "MedGen 题库产物契约 (agent2_output)",
-  "x-schema-version": "2.2",
-  "x-schema-version-note": "2.2（2026-11-02，P2-S1/S2）：新增 difficulty_tier / step_count / competing_dx / negative_cues / conditionals 与 per_option.distractor_mechanism；difficulty_index 标 deprecated。新字段在 schema 内为 optional（可回滚），交付覆盖率为 100% 的要求由 scripts/validate/rules_batch.py 的结构检查按 schema_version>=2.2 强制。",
+  "x-schema-version": "2.3",
+  "x-schema-version-note": "2.3（2026-11-16）：新增题目解析模板要求（考点定位→解析→逐选项→鉴别→记忆要点→原文），由 docs/产物格式规范.md §2.1 定义，check_learning_value.py 的 R22 对 schema_version>=2.3 强制。2.2（2026-11-02，P2-S1/S2）：新增 difficulty_tier / step_count / competing_dx / negative_cues / conditionals 与 per_option.distractor_mechanism；difficulty_index 标 deprecated。新字段在 schema 内为 optional（可回滚），交付覆盖率为 100% 的要求由 scripts/validate/rules_batch.py 的结构检查按 schema_version>=2.2 强制。",
   "description": "Agent 2 (MedGen) 产出题库 JSON 的结构契约。纯数组；兼容历史字段名（question/question_type/answer_key），required 项为核心契约。由 ingest.py 在摄入时用 jsonschema 校验。",
   "type": "array",
   "items": {
@@ -99,8 +99,8 @@
       "topic": { "type": "string" },
       "schema_version": {
         "type": "string",
-        "enum": ["1.0", "2.0", "2.1", "2.2"],
-        "description": "题目契约版本。2.0 起 learning_value 为交付必需项（HC-24）；2.1 起 concepts 为交付必需项（HC-27，2026-10-27）；2.2 起结构字段（difficulty_tier / step_count / competing_dx / negative_cues / conditionals）与干扰项机制标签 distractor_mechanism 纳入交付必需项（P2-S1/S2，2026-11-02），字段本身在 schema 内保持 optional 以便回滚，覆盖率由 rules_batch.py 的结构检查强制。1.0/2.0/2.1 为历史产物，不追溯。"
+        "enum": ["1.0", "2.0", "2.1", "2.2", "2.3"],
+        "description": "题目契约版本。2.0 起 learning_value 为交付必需项（HC-24）；2.1 起 concepts 为交付必需项（HC-27，2026-10-27）；2.2 起结构字段（difficulty_tier / step_count / competing_dx / negative_cues / conditionals）与干扰项机制标签 distractor_mechanism 纳入交付必需项（P2-S1/S2，2026-11-02），字段本身在 schema 内保持 optional 以便回滚，覆盖率由 rules_batch.py 的结构检查强制；2.3 起解析按题目解析模板分块（2026-11-16），由 check_learning_value.py R22 强制。1.0/2.0/2.1/2.2 为历史产物，不追溯。"
       },
       "concepts": {
         "type": "array",
@@ -196,7 +196,7 @@
       {
         "if": {
           "required": ["schema_version"],
-          "properties": { "schema_version": { "enum": ["2.1", "2.2"] } }
+          "properties": { "schema_version": { "enum": ["2.1", "2.2", "2.3"] } }
         },
         "then": { "required": ["concepts"] }
       },
@@ -204,7 +204,7 @@
         "if": {
           "required": ["schema_version", "type"],
           "properties": {
-            "schema_version": { "enum": ["2.1", "2.2"] },
+            "schema_version": { "enum": ["2.1", "2.2", "2.3"] },
             "type": { "enum": ["A2", "A3", "A4", "X"] }
           }
         },

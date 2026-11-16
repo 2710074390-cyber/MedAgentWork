@@ -205,6 +205,44 @@ def test_r20_batch_summary_skips_legacy():
     assert s['distractor_mechanism_status'] == 'SKIP'
 
 
+# ── R22 解析模板（2026-11-16 · schema 2.3+）────────────────────
+
+def test_r22_v23_clean_takeaway_passes():
+    r = check_item(_v22_item(schema_version='2.3'))
+    assert r['status'] == 'PASS', r['issues']
+
+
+def test_r22_v23_filler_fails():
+    q = _v22_item(schema_version='2.3')
+    q['learning_value']['key_takeaway'] += '这是本题的核心鉴别点，需结合题干条件掌握。'
+    r = check_item(q)
+    assert r['status'] == 'FAIL'
+    assert any(i['rule'] == 'R22' and '填充句' in i['detail'] for i in r['issues'])
+
+
+def test_r22_v23_duplicate_rationale_fails():
+    q = _v22_item(schema_version='2.3')
+    q['learning_value']['key_takeaway'] = q['learning_value']['correct_rationale']
+    r = check_item(q)
+    assert r['status'] == 'FAIL'
+    assert any(i['rule'] == 'R22' and '解析复读' in i['detail'] for i in r['issues'])
+
+
+def test_r22_v23_bennti_warns():
+    q = _v22_item(schema_version='2.3')
+    q['learning_value']['key_takeaway'] = (
+        '本题的答案是B，因为心衰诊断需要组合症状体征、利钠肽与结构证据，任何单一指标都不能作为金标准。')
+    r = check_item(q)
+    assert any(w['rule'] == 'R22' for w in r['warnings'])
+
+
+def test_r22_legacy_v22_not_retroactive():
+    q = _v22_item(schema_version='2.2')
+    q['learning_value']['key_takeaway'] = q['learning_value']['correct_rationale']
+    r = check_item(q)
+    assert not any(i['rule'] == 'R22' for i in r['issues'])
+
+
 # ── P2-S4：反选题的为真干扰项要锚点（不是错误认知）────────────
 
 def _reverse_item(schema_version=None, anchor='教材 P142'):

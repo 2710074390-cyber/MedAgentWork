@@ -16,6 +16,9 @@
   R20 干扰项机制（HC-29 · 2026-11-02）：schema_version ≥ 2.2 的批次，
       每个干扰项的 distractor_mechanism 必须存在且属合法枚举（缺失/非法 → FAIL）；
       2.1 及以下为历史批次，只统计覆盖率不判定（SKIP，不追溯）。
+  R22 解析模板（2026-11-16）：schema_version ≥ 2.3 的批次，key_takeaway 不得含
+      模板填充句、不得与 correct_rationale 相同/互为子串；含「本题」只告警。
+      规则原文见 docs/产物格式规范.md §2.1（题库解析模板）。
   ANSWER 答案一致性：is_correct 标记必须与 answer 完全一致，per_option.truth 必须与 is_correct 一致。
 
 用法：
@@ -62,6 +65,13 @@ except ImportError:  # pragma: no cover
         )
 
 MECHANISM_SINCE = (2, 2)
+
+# 解析模板（2026-11-16）：schema 2.3 起要求记忆要点是“能带走的规则”，不是填充句/解析复读。
+TEMPLATE_SINCE = (2, 3)
+TAKEAWAY_FILLERS = (
+    '这是本题的核心鉴别点',
+    '需结合题干条件掌握',
+)
 
 
 def _schema_version(q: dict) -> tuple:
@@ -277,6 +287,27 @@ def check_item(q: dict) -> dict:
     takeaway = lv.get("key_takeaway")
     if not _nonempty(takeaway) or len(str(takeaway).strip()) < 30:
         issues.append({"rule": "R17", "detail": "key_takeaway 为空或信息量不足（<30字）"})
+
+    # R22：解析模板（schema 2.3+）。旧批次不追溯。
+    if _schema_version(q) >= TEMPLATE_SINCE:
+        takeaway_text = str(takeaway or "").strip()
+        if any(filler in takeaway_text for filler in TAKEAWAY_FILLERS):
+            issues.append({
+                "rule": "R22",
+                "detail": "key_takeaway 含模板填充句，未写成可迁移规则（见 docs/产物格式规范.md §2.1）",
+            })
+        if takeaway_text and rationale:
+            t_norm = _norm_text(takeaway_text)
+            r_norm = _norm_text(rationale)
+            if t_norm == r_norm:
+                issues.append({"rule": "R22", "detail": "key_takeaway 与 correct_rationale 完全相同（解析复读）"})
+            elif t_norm and t_norm in r_norm:
+                issues.append({"rule": "R22", "detail": "key_takeaway 是 correct_rationale 的子串（解析复读）"})
+        if "本题" in takeaway_text:
+            warnings.append({
+                "rule": "R22",
+                "detail": "key_takeaway 含「本题」，可能是题内描述而非可迁移规则",
+            })
 
     # R16：来源核验（实证）
     sq_status = str(lv.get("source_quote_status") or "").strip()
