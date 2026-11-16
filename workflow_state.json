@@ -6357,7 +6357,7 @@
       "GATE-A3": {
         "status": "PASS",
         "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
-        "checked_at": "2026-11-16T19:27:06.536015"
+        "checked_at": "2026-11-16T19:36:53.740206"
       },
       "halt": {
         "active": false
@@ -6365,17 +6365,17 @@
       "GATE-A4": {
         "status": "PASS",
         "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
-        "checked_at": "2026-11-16T19:35:16.481855"
+        "checked_at": "2026-11-16T19:36:54.387773"
       },
       "GATE-LV": {
         "status": "PASS",
         "reason": "HC-24 通过：FAIL=0，逐项=100.0%，错误认知=100.0%，标注 exact=100.0%，引文实证=100.0%，ID 冲突=0，锚点已核=100.0%",
-        "checked_at": "2026-11-16T19:35:23.103092"
+        "checked_at": "2026-11-16T19:36:55.823029"
       },
       "GATE-FINAL": {
         "status": "PASS",
         "reason": "批次已签收 (APPROVED)，人工审核已覆盖终审",
-        "checked_at": "2026-11-16T19:35:32.681370"
+        "checked_at": "2026-11-16T19:36:58.401873"
       },
       "FINAL": {
         "status": "PASS",
