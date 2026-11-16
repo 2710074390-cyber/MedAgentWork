@@ -11,7 +11,7 @@ whenToUse: 编排者（MedMaster）下发复习资料任务时加载；任务提
 1. `中间产物/{batchID}/_ctx.md` — 本批上下文（教师重点 KP-ID 索引 / 本批 HC 列表 / 路径契约）。
 2. `Prompt版本/Agent5_MedReview_Prompt.md` — 完整生成提示词。
 3. `docs/复习资料详细度标准.md` — 自适应详细度、来源、安全及过渡标准。
-4. 有教师重点时读取 `docs/教师重点蓝图版_生成规则_v1.0.md`。**配图相关规则（`复习资料/_配图需求/`、`medillustration`）随 HC-19 于 2026-11-02 下线，不再读取、不再产出配图与清单。**
+4. 有教师重点时读取 `docs/教师重点浓缩版_生成规则_v1.0.md`（TKC v1.0）。**配图相关规则（`复习资料/_配图需求/`、`medillustration`）随 HC-19 于 2026-11-02 下线，不再读取、不再产出配图与清单。**
 
 > 共享规则（CONTEXT / SOUL / USER）不整份读：需要某条时用 `python scripts/ctx_fetch.py --id '§SOUL#HC-xx'` 取（≤2,000 chars/次）。
 
@@ -38,7 +38,8 @@ python scripts/gate_verify.py --batch {batchID} --stage lv --quiet   # HC-24 学
 - 主资料可分片生成但须合并为单一 MD，附录一至五随文保留，覆盖矩阵和其他过程产物不写入正文。主文件位置按 `Prompt版本/Agent5_MedReview_Prompt.md` 执行。
 - 保持导出兼容：强调用配对 `<b>`/`<i>`，禁用 `**`/`*` 强调及 `<details>`/`<summary>`；需展开时使用 `#### 🔬 展开：…`。**不写插图占位符、不出配图清单**（HC-19 已下线，主资料为纯文本）。
 
-- 教材检索入口为 `知识库素材/search_kb.py --subject {code} --hybrid`，先查 `知识库素材/学科个性化RAG方案.md`；附录保留真实页码索引与术语同义异名，PG-11 页码要求无法满足时如实报告而非虚构。
+- **检索双通道（资料库优先、可回落）**：宿主提供原生资料库语义检索时（WorkBuddy），主通道为 `scripts/kb_library.py`——`plan` 按锚点清单生成查询、宿主完成检索、`ingest` 归一化并反查页码、`merge` 与 `search_kb.py` 结果去重合并；检索用 `targets` 限定教材文件夹，避免产物题干污染原文召回。宿主无资料库能力（DSH / Trae / 手工）或主通道为空时回落 `知识库素材/search_kb.py --subject {code} --hybrid`，先查 `知识库素材/学科个性化RAG方案.md`；附录保留真实页码索引与术语同义异名，PG-11 页码要求无法满足时如实报告而非虚构。
+- **页码口径**：资料库只回片段、不给页码。`kb_library.py` 取片段自带的 `===== 第 N 页 =====` 为 TXT 页，再加学科偏移得印刷页；偏移由 `kb_library.py calibrate` 标定（全书页眉 + 目录/锚点三路互证，结论写入 `知识库素材/library_nodes.json`）。`verified` / `calibrated` 可写入产物（后者附录须注明标定方式），**`unverified` 一律不得写入**。
 - 教师重点版分片合并命令：`python scripts/merge_review_shards.py --shards 中间产物/{batchID}/bpa_v6 --appendix 中间产物/{batchID}/bpa/appendix.md --out "复习资料/{科目}教师重点版/{科目}教师重点版_主复习资料.md"`；合并失败真实记录，附录一至五不得遗漏。
 - V14 检查加粗标签配对及禁用语法；V16 人工 PDF 导出后抽检真粗体及彩色标识，打印 CSS 参考 `scripts/obsidian-snippets/medagentwork-print.css`。
 
