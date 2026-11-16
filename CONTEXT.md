@@ -548,7 +548,7 @@ PDF答案  python scripts/kaoyan_pdf_answers.py --merge   # 从原版解析 PDF 
 
 - **有教师重点 / 复习大纲 / 锚定清单 → 必须走 TKC v1.0（教师重点浓缩版）**：教材浓缩型结构 + 逐条原文锚点；不再使用 BPA v1.0 的九槽位模板。
   规则：`docs/教师重点浓缩版_生成规则_v1.0.md`（工作区版）与 `medagentwork-skill/skills/medagentwork/references/tkc-v1.md`（分发版）。
-  样板：`Obsidian产物/教师重点浓缩版/眼科学_M01_葡萄膜炎_浓缩型样板.md`。
+  首份产物：`Obsidian产物/教师重点浓缩版/眼科学_教师重点浓缩版_主复习资料.md`（44 条 / 10 模块）；样板：`..._M01_..._浓缩型样板.md`。
   存量：耳鼻喉 / 急诊 / 眼科旧版 BPA 产物保留原样，不追溯回改。
 - 无教师重点 → medreview 教学计划版流程（D1–D5）。
 - **交付只出 MD**，PDF 由用户从 Obsidian 人工导出；**复习资料不再产出 HTML**（`render_review.py` 仅历史遗留，不用于交付）。
