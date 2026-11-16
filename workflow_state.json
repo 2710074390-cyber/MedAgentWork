@@ -1,5 +1,5 @@
 {
-  "active_batch": "batch048",
+  "active_batch": "batch049",
   "halt": {
     "active": false
   },
@@ -6156,5 +6156,328 @@
       "ESC-003 negative_cues 覆盖不足（A3 ISSUE-014），建议下一版在 A2 补齐"
     ],
     "completed_at": "2026-11-05T23:45:49.497866"
+  },
+  "batch049": {
+    "batch_id": "batch049",
+    "subject": "眼科学",
+    "created": "2026-11-16T13:29:02.513197",
+    "status": "APPROVED",
+    "workflow": "Agent 2(MedGen)->Agent 3(MedQC)->Agent 4(MedFix)->Agent 5(MedReview)",
+    "product_types": [
+      "question_bank",
+      "review_material"
+    ],
+    "item_schema_version": "2.2",
+    "p9_mode": "teacher_keypoint",
+    "target_count": 250,
+    "type_distribution": {
+      "A1": 107,
+      "A2": 89,
+      "判断": 36,
+      "X": 18
+    },
+    "target_bloom": {
+      "记忆": 15,
+      "理解": 25,
+      "应用": 40,
+      "分析": 20
+    },
+    "difficulty_target": {
+      "L1": 10,
+      "L2": 30,
+      "L3": 40,
+      "L4": 20
+    },
+    "exam_profile": {
+      "A1": 30,
+      "A2": 25,
+      "判断": 10,
+      "X": 5,
+      "per_paper": 70,
+      "difficulty": "偏难"
+    },
+    "syllabus_scope": {
+      "source": "26秋眼科学-复习要点.doc（教师重点）+ 眼科学第10版（人卫2024）",
+      "modules": [
+        {
+          "id": "M01",
+          "name": "葡萄膜炎",
+          "chapters": [
+            "第八章 葡萄膜疾病 P105-115"
+          ],
+          "keypoints": "第1-5条"
+        },
+        {
+          "id": "M02",
+          "name": "青光眼",
+          "chapters": [
+            "第十章 青光眼 P128-143"
+          ],
+          "keypoints": "第6-12条"
+        },
+        {
+          "id": "M03",
+          "name": "白内障",
+          "chapters": [
+            "第九章 晶状体疾病 P116-127"
+          ],
+          "keypoints": "第13-17条"
+        },
+        {
+          "id": "M04",
+          "name": "视网膜疾病",
+          "chapters": [
+            "第十二章 视网膜疾病 P151-170"
+          ],
+          "keypoints": "第18-24条"
+        },
+        {
+          "id": "M05",
+          "name": "眼表与角膜病",
+          "chapters": [
+            "第六章 结膜疾病 P69-81",
+            "第七章 角膜疾病 P82-104"
+          ],
+          "keypoints": "第25-28条"
+        },
+        {
+          "id": "M06",
+          "name": "屈光与眼肌",
+          "chapters": [
+            "第十四章 屈光不正与老视 P182-200",
+            "第十五章 斜视与弱视 P201-216"
+          ],
+          "keypoints": "第29-32条"
+        },
+        {
+          "id": "M07",
+          "name": "眼外伤",
+          "chapters": [
+            "第十八章 眼外伤 P252-266"
+          ],
+          "keypoints": "第33-35条"
+        },
+        {
+          "id": "M08",
+          "name": "眼睑、泪器、眼眶",
+          "chapters": [
+            "第四章 眼睑疾病 P57-62",
+            "第五章 泪器疾病 P63-68",
+            "第十六章 眼眶疾病 P217-229"
+          ],
+          "keypoints": "第36-38条"
+        },
+        {
+          "id": "M09",
+          "name": "视神经与视路",
+          "chapters": [
+            "第十三章 视路疾病 P171-181"
+          ],
+          "keypoints": "第39-41条"
+        },
+        {
+          "id": "M10",
+          "name": "眼科基础、检查与用药",
+          "chapters": [
+            "第二章 眼科学基础 P5-29",
+            "第三章 眼科检查 P30-56"
+          ],
+          "keypoints": "第42-44条"
+        }
+      ]
+    },
+    "quota_plan": {
+      "target_kaoyan": 13,
+      "target_zhiyi": 50,
+      "original": 187,
+      "note": "考研眼科学语料仅 13 条（实有全用，约占 5%），执业医师眼科学 111 条（历年真题 17 + CMExam 94），执医族按 20% 选 50 条；差额原创补齐（HC-22 reduced）"
+    },
+    "steps": {
+      "AGENT2": {
+        "status": "COMPLETED",
+        "output": "ALL_questions.json",
+        "question_count": 250,
+        "md5": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "lineage": {
+          "artifact_sha256": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+          "input_hash": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e"
+        },
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedGen_current_prompt",
+        "Bloom_actual": {
+          "记忆": 14.4,
+          "理解": 31.2,
+          "应用": 38.8,
+          "分析": 15.6
+        },
+        "completed_at": "2026-11-16T14:05:05.256982"
+      },
+      "AGENT3": {
+        "status": "COMPLETED",
+        "output": "A3_质检报告.json",
+        "gate_decision": "PASS_WITH_FIXES",
+        "overall_score": 9.2,
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedQC_current_prompt",
+        "completed_at": "2026-11-16T14:05:05.256982"
+      },
+      "AGENT4": {
+        "status": "COMPLETED",
+        "output": "ALL_questions_FIXED.json + AGENT4_追溯日志.json",
+        "md5": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "lineage": {
+          "artifact_sha256": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+          "input_hash": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e"
+        },
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "MedFix_current_prompt",
+        "trace_log": "AGENT4_追溯日志.json",
+        "completed_at": "2026-11-16T14:06:25.135584"
+      },
+      "AGENT5": {
+        "status": "COMPLETED",
+        "output": "复习资料/眼科学_2026秋教师重点版/眼科学_2026秋教师重点版_主复习资料.md",
+        "md5": "d4d3531b8e0f2add3b0be489cf8a692965fd91b814a2ade9322c41868a1b99ea",
+        "lineage": {
+          "artifact_sha256": "d4d3531b8e0f2add3b0be489cf8a692965fd91b814a2ade9322c41868a1b99ea",
+          "input_hash": "d4d3531b8e0f2add3b0be489cf8a692965fd91b814a2ade9322c41868a1b99ea"
+        },
+        "model": "DeepSeek-V4.1-Flash",
+        "prompt_version": "Agent5_MedReview_Prompt",
+        "coverage_matrix": "中间产物/batch049/眼科学_教师重点覆盖矩阵.md",
+        "completed_at": "2026-11-16T14:13:36.791531",
+        "hc_checks": {
+          "HC-9": "已生成：术语同义异名对照表（附录一）",
+          "HC-10": "OK：页码索引按模块给出真实页码，无占位符",
+          "HC-11": "OK：44 条教师重点均标注教材页码与来源锚点"
+        }
+      }
+    },
+    "gate_results": {
+      "GATE-A3": {
+        "status": "PASS",
+        "reason": "质检门禁通过 (gate_decision=PASS_WITH_FIXES, D20 OK, Bloom OK)",
+        "checked_at": "2026-11-16T19:36:53.740206"
+      },
+      "halt": {
+        "active": false
+      },
+      "GATE-A4": {
+        "status": "PASS",
+        "reason": "修复门禁通过 (追溯日志存在, HC-13 source_file_synced OK, JSON纯净, MD交付齐全)",
+        "checked_at": "2026-11-16T19:36:54.387773"
+      },
+      "GATE-LV": {
+        "status": "PASS",
+        "reason": "HC-24 通过：FAIL=0，逐项=100.0%，错误认知=100.0%，标注 exact=100.0%，引文实证=100.0%，ID 冲突=0，锚点已核=100.0%",
+        "checked_at": "2026-11-16T19:36:55.823029"
+      },
+      "GATE-FINAL": {
+        "status": "PASS",
+        "reason": "批次已签收 (APPROVED)，人工审核已覆盖终审",
+        "checked_at": "2026-11-16T19:36:58.401873"
+      },
+      "FINAL": {
+        "status": "PASS",
+        "checked_at": "2026-11-16T14:23:22.392635",
+        "reason": "gate_check final PASS；driver final 因 3 道近重复题被 real_question check 阻断"
+      },
+      "GATE-A2": {
+        "status": "PASS",
+        "reason": "产出门禁通过 (FAIL=0, PASS=107, WARN=143)",
+        "checked_at": "2026-11-16T19:34:31.956039"
+      }
+    },
+    "lineage": [
+      {
+        "stage": "agent2_DONE",
+        "prompt_version": "MedGen_current_prompt",
+        "prompt_sha256": "2eca4a468b1de553aaa13af76acf9789d0f0f3af95d53f1e740922433860cdc6",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+        "input_file": "输入素材/大四上/眼科学/眼科学_教师重点_锚定清单_20261116.md",
+        "input_hash": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "input_md5": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "artifact_sha256": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "timestamp": "2026-11-16T14:00:00"
+      },
+      {
+        "stage": "agent3_DONE",
+        "prompt_version": "MedQC_current_prompt",
+        "prompt_sha256": "3a54c4ace36cfc15cc37adad61c6922456ce93d918dc2b4318e4ebb9b65c8a74",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+        "input_file": "中间产物/batch049/ALL_questions.json",
+        "input_hash": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "input_md5": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "artifact_sha256": "fb862c4151a45d643a058a1b56bb9b46eb0c0a6e3b4fd3b0b146a0b8efcb2419",
+        "timestamp": "2026-11-16T14:02:00"
+      },
+      {
+        "stage": "agent4_DONE",
+        "prompt_version": "MedFix_current_prompt",
+        "prompt_sha256": "3cde577807b2d0ba1a172cfdce4ac62d54c46098f8d2a140e1e9e4ad2725b80c",
+        "model_id": "DeepSeek-V4.1-Flash",
+        "config_hash": "0aedebd00be7ce3131e93e3266585f6e2ac31308417b2a195947453348709208",
+        "input_file": "中间产物/batch049/ALL_questions.json",
+        "input_hash": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "input_md5": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "artifact_sha256": "2d7b7a38e08fdb7a1fb9fb4766a7aa042a1131fb7a96281fb64cccb820ec266e",
+        "timestamp": "2026-11-16T14:06:00"
+      }
+    ],
+    "note": "26 秋眼科学期末；教师重点 44 条锚定；A1 107/A2 89/判断 36/X 18；偏难 L1 10/L2 30/L3 40/L4 20。",
+    "evidence_binding_mode": "strict",
+    "agent2_stats": {
+      "total": 250,
+      "bloom": {
+        "记忆": 14.4,
+        "理解": 31.2,
+        "应用": 38.8,
+        "分析": 15.6
+      }
+    },
+    "qc_result": {
+      "gate_decision": "PASS_WITH_FIXES",
+      "overall_score": 9.2
+    },
+    "medfix_noop_waiver": {
+      "reason": "A3 gate_decision=PASS_WITH_FIXES 但 modification_instructions 为空；无确定性 FAIL 需修复，NOOP 为预期行为。",
+      "approved_by": "MedMaster"
+    },
+    "final_review": {
+      "hc9_terminology_appendix": "OK",
+      "hc10_page_authenticity": "OK",
+      "hc11_outline_page_marking": "OK",
+      "json_valid": true
+    },
+    "completed_at": "2026-11-16T14:23:22.392635",
+    "target_bloom_actual": {
+      "记忆": 14.4,
+      "理解": 31.2,
+      "应用": 38.8,
+      "分析": 15.6
+    },
+    "quota_summary": {
+      "kaoyan": 0,
+      "zhiyi": 0,
+      "original": 250,
+      "status": "deferred",
+      "note": "真题候选按 HC-28 延后人工核验"
+    },
+    "signoff": {
+      "signed_by": "2710074390-cyber（项目负责人）",
+      "signed_at": "2026-11-16T19:34:54",
+      "scope": "250 题（batch049）",
+      "basis": "HC-28 发布底线：证据 A / 风险 high/low/medium / 四道确定性门禁 PASS（2026-11-03 起不再要求逐题人工核验）",
+      "not_done": [
+        "第二评分者盲评（κ 不可计算）"
+      ],
+      "note": "用户确认签收；本批已重跑 a2/a3/a4/lv/a5/final，记忆要点已清理并重新绑定回执。",
+      "delivery_file": "最终产物/batch049/ALL_questions_FIXED.json",
+      "delivery_sha256_before": "e92d2179e98215e0c558fd0a469dcd029be2ceb11018026cf2dbe6510029be05",
+      "delivery_sha256_after": "fcf9ea37c60576588db113dc0055c925b6c06fa2b1ff9384919e2227302d149a",
+      "backup": ".tmp/batch049_fixed_before_signoff.json"
+    }
   }
 }

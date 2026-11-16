@@ -4,3 +4,6 @@
 # 因此被回执绑定的交付产物一律 -text：blob 存原始字节，两端 checkout 完全一致。
 最终产物/*/ALL_questions_FIXED.json -text
 最终产物/*/ALL_questions_FIXED.md -text
+# A2/A3 也被回执链按裸字节绑定（a2/a3 stamp），同样禁止 CRLF→LF 转换。
+中间产物/*/ALL_questions.json -text
+质检报告/*/A3_质检报告.json -text

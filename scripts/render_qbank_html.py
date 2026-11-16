@@ -22,6 +22,8 @@ import sys
 from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import qbank  # 解析模板的单一实现（逐选项/记忆要点/原文），避免两处分叉
 
 TYPE_LABEL = {"A1": "A1", "A2": "A2", "A3": "A3", "A4": "A4", "B1": "B1", "X": "X", "判断": "判断"}
 TYPE_COLOR = {
@@ -117,6 +119,14 @@ h1 {{ font-size:26px; margin:8px 0 4px; }}
 .ans.show {{ display:block; }}
 .ans-head {{ font-weight:700; margin-bottom:4px; }}
 .exp {{ color:var(--ink-soft); white-space:pre-line; }}
+.opts-why {{ margin-top:8px; color:var(--ink-soft); }}
+.opts-why ul {{ margin:4px 0 0 18px; }}
+.opts-why li {{ margin:2px 0; }}
+.diff {{ margin-top:8px; color:var(--ink-soft); }}
+.takeaway {{ margin-top:8px; padding:8px 10px; background:#fff7ed; border-left:3px solid #c2711a;
+  border-radius:6px; color:#7a4c16; }}
+.quote {{ margin-top:8px; padding:8px 10px; background:#f8fafc; border-left:3px solid #94a3b8;
+  border-radius:6px; color:#475569; font-size:12.5px; }}
 .src {{ font-size:12px; color:#94a3b8; margin-top:6px; }}
 @media print {{ body {{ background:#fff; padding:0; max-width:none; }} .q {{ border-color:#cbd5e1; }}
   .ans {{ display:block; }} }}
@@ -150,6 +160,15 @@ def build_questions(raw_list):
         options = norm_options(raw.get("options"))
         answer = norm_answer(raw.get("answer") or raw.get("answer_key") or raw.get("correct_answer"))
         expl = raw.get("explanation") or raw.get("analysis") or raw.get("解析") or ""
+        lv = raw.get("learning_value") or {}
+        expl_main, option_rows = qbank._split_explanation(expl)
+        if not expl_main:
+            expl_main = str(lv.get("correct_rationale") or "").strip()
+        if not option_rows:
+            option_rows = qbank._per_option_rows(lv)
+        takeaway = qbank._clean_takeaway(lv.get("key_takeaway"))
+        quote = str(lv.get("source_quote") or "").strip()
+        competing = qbank._competing_items(raw)
         src = raw.get("source") or raw.get("source_page") or ""
         if isinstance(src, list):
             src = ", ".join(esc(x) for x in src)
@@ -157,6 +176,25 @@ def build_questions(raw_list):
             src = esc(src)
         if not stem:
             continue
+
+        exp_html = f'<div class="exp">{esc(expl_main)}</div>' if expl_main else ""
+        opt_html = ""
+        if option_rows:
+            items = "".join(
+                f'<li><b>{esc(label)}：</b>{esc(text)}</li>'
+                for label, text in option_rows
+            )
+            opt_html = f'<div class="opts-why"><b>逐选项</b><ul>{items}</ul></div>'
+        diff_html = ""
+        if competing:
+            marks = "①②③④⑤"
+            parts_cmp = [
+                f'{marks[i] if i < len(marks) else str(i + 1)} {esc(item)}'
+                for i, item in enumerate(competing)
+            ]
+            diff_html = f'<div class="diff"><b>鉴别</b>：{"；".join(parts_cmp)}</div>'
+        take_html = f'<div class="takeaway"><b>记忆要点</b>：{esc(takeaway)}</div>' if takeaway else ""
+        quote_html = f'<div class="quote"><b>原文</b>：{esc(quote)}</div>' if quote else ""
 
         parts.append(f'<div class="q">')
         parts.append(f'<div class="q-meta"><span class="q-num">第 {i} 题</span>'
@@ -169,7 +207,7 @@ def build_questions(raw_list):
             cls = "opt correct" if (answer and label in answer) else "opt"
             parts.append(f'<div class="{cls}"><span class="l">{esc(label)}.</span><span>{esc(text)}</span></div>')
         parts.append(f'<div class="ans"><div class="ans-head">答案：{esc(answer) or "—"}</div>'
-                     f'<div class="exp">{esc(expl)}</div>'
+                     f'{exp_html}{opt_html}{diff_html}{take_html}{quote_html}'
                      f'{"<div class=&#34;src&#34;>来源： " + src + "</div>" if src else ""}</div>')
         parts.append("</div>")
     return "\n".join(parts)

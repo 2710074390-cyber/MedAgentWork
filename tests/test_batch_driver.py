@@ -35,6 +35,24 @@ def test_exit_map_semantics():
     assert bd._mapped("gate_check", None) == "ERROR"
 
 
+def test_a2_advisory_warn_is_pass():
+    """validate_options 的 WARN 是 advisory（exit 0），driver 不得把它变成不可回执的 SKIP。"""
+    res = bd.parse_validate_report({"summary": {"fail": 0, "warn": 3}, "issues": []})
+    assert len(res) == 1
+    assert res[0]["status"] == "PASS"
+    assert res[0]["code"] == "ADVISORY_WARN"
+    assert res[0]["evidence"]["advisory_warnings"] == 3
+
+
+def test_a2_fail_still_blocks():
+    res = bd.parse_validate_report({
+        "summary": {"fail": 1, "warn": 0},
+        "issues": [{"severity": "FAIL", "rule": "R1", "question_id": "Q1"}],
+    })
+    assert res[0]["status"] == "FAIL"
+    assert res[0]["code"] == "R1"
+
+
 def test_plan_question_bank_order():
     data = {"product_types": ["question_bank"], "item_schema_version": "2.2", "status": "PILOT"}
     plan, types = bd.plan_boundaries("batch099", data)

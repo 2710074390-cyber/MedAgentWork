@@ -419,6 +419,17 @@ def _find_review_md(batch_data: dict):
     return hits[0] if hits else None
 
 
+def _review_profile(md) -> str:
+    """TKC v1.0 产物走 condensed 档；历史 BPA 产物继续走旧 profile。"""
+    try:
+        head = Path(md).read_text(encoding="utf-8", errors="replace")[:3000]
+    except Exception:
+        head = ""
+    if "教师重点浓缩版" in head or "TKC" in head:
+        return "release_teacher_keypoint_condensed"
+    return "release_teacher_keypoint"
+
+
 # ── 归一化器（SA-5 形状契约，纯函数，可 selftest）─────────────
 BLOOM_KEYS = ("记忆", "理解", "应用", "分析")
 
@@ -559,7 +570,13 @@ def parse_validate_report(payload):
                         locator=locator, fix_hint=_hint(code or "R"), evidence={"summary": summary},
                         raw=json.dumps(summary, ensure_ascii=False))]
     if warn:
-        return [_result("GATE-A2", "WARN", code=code, owner="MedGen", evidence={"summary": summary})]
+        # 2026-11-16：validate_options 的既有口径是「WARN 不阻断」（见
+        # scripts/validate/__main__.py::exit_code：仅 fail>0 返回非 0）。driver 此前把
+        # advisory WARN 映射成 SKIP，导致这类批次永远无法写 a2 回执，只能在首次建链时
+        # 补录；补录后再改产物就陷入 ARTIFACT_MISMATCH 死锁。这里按校验器口径记为
+        # PASS，警告保留在 evidence.summary.warn 中，可审计但不阻断回执。
+        return [_result("GATE-A2", "PASS", code="ADVISORY_WARN", owner="MedGen",
+                        evidence={"summary": summary, "advisory_warnings": warn})]
     return [_result("GATE-A2", "PASS", evidence={"summary": summary})]
 
 
@@ -768,7 +785,7 @@ def boundary_a5(ctx):
                            evidence={"reason": "无教师重点输入"}))
     out = ctx.tmp / "review_detail.json"
     argv = _py("scripts/check_review_detail.py", "--md", md, "--mode", "auto",
-               "--profile", "release_teacher_keypoint", "--json-out", out)
+               "--profile", _review_profile(md), "--json-out", out)
     rc, text, ms = _run(argv, ctx.timeout)
     payload = _load_json(out)
     status = _mapped("check_review_detail", rc)
@@ -787,7 +804,9 @@ def boundary_quality(ctx, stage):
     if ctx.dry_run:
         return [_result(f"QUALITY-{stage.upper()}", "SKIP", code="DRY_RUN", evidence={"dry_run": True})]
     mode = "enforce" if stage == "r3" else "advisory"
-    profile = "release_teacher_keypoint" if stage == "r3" else "pilot"
+    md = _find_review_md(ctx.data)
+    profile = (_review_profile(md) if (stage == "r3" and md) else
+               ("release_teacher_keypoint" if stage == "r3" else "pilot"))
     out = ctx.tmp / f"quality_{stage}.json"
     argv = _py("scripts/quality_gate.py", "--stage", stage, "--batch", ctx.batch,
                "--profile", profile, "--mode", mode, "--out", out)
@@ -822,9 +841,12 @@ def boundary_final(ctx):
         else:
             failures = payload.get("failures") or []
             if failures:
-                code = str(failures[0].get("code") or "HC22")
+                first = failures[0]
+                code = str(first.get("code") if isinstance(first, dict) else first)
                 res.append(_result("GATE-REALQ", "FAIL", code=code, owner="orchestrator",
-                                   fix_hint=_hint(code), evidence={"failures": failures[:5]},
+                                   fix_hint=_hint(code),
+                                   evidence={"failures": failures[:5],
+                                             "duplicate_pairs": payload.get("duplicate_pairs") or []},
                                    raw=json.dumps(failures[:5], ensure_ascii=False)))
             else:
                 res.append(_result("GATE-REALQ", "PASS", evidence={"duration_ms": ms}))
