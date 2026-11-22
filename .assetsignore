@@ -5,7 +5,7 @@
 #      · 本地：scripts/deploy_site.ps1   · CI：.github/workflows/deploy.yml
 #    二者均只上传 index.html / _headers / functions / 大三下 / 大四上 / assets / sw.js / manifest.webmanifest / icon-*.png。
 #    本文件保留，仅作「哪些内容不应上站」的说明之用。
-# 站点仅需：index.html、functions/、大三下/、大四上/、assets/（介绍片）、sw.js 与根目录引用的静态资源
+# 站点仅需：index.html、404.html、functions/、大三下/、大四上/、assets/（介绍片）、sw.js 与根目录引用的静态资源
 # 其余为 RAG/教材/脚本/测试/中间产物，体积大或涉版权，不上传
 
 # 大体积 RAG 教材与 CMExam 原始数据（含 100MB npz，Pages 单文件限 25MB）
