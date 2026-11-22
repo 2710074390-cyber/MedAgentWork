@@ -345,6 +345,12 @@ a { color:var(--brand); }
 .page-head .eyebrow { margin-bottom:var(--sp-3); }
 .page-head h2 { margin-bottom:6px; }
 .page-head p { font-size:var(--fs-md); color:var(--fg-muted); max-width:var(--measure); }
+/* 下载完整性提示（2026-11-22）：大文件断流会产出残缺 PDF，给用户可自查的口径 */
+.page-head .dl-tip { display:flex; gap:10px; align-items:flex-start; margin-top:var(--sp-4); padding:10px 14px;
+  border:1px solid var(--info-border); border-left:3px solid var(--info); border-radius:8px;
+  background:var(--info-bg); font-size:var(--fs-sm); line-height:var(--lh-table); color:var(--fg-muted); }
+.page-head .dl-tip .ic { flex:0 0 auto; width:15px; height:15px; color:var(--info); margin-top:2px; }
+.page-head .dl-tip b { color:var(--fg); font-weight:var(--w-600); }
 /* 更新条：资源列表顶部的一条 changelog，可关闭并记住 */
 .notice {
   display:flex; align-items:flex-start; gap:var(--sp-3);
@@ -994,6 +1000,7 @@ a { color:var(--brand); }
     <span class="eyebrow">大三下</span>
     <h2>题库 PDF 与复习手册</h2>
     <p id="head-s2"></p>
+    <p class="dl-tip"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg><span><b>下载完整性提示</b>：列表里标注的是文件应有的大小。若 PDF 打开时提示「文件损坏 / 格式不支持」，多半是网络中断没下完——对照大小，明显偏小就重新下载；10 MB 以上的文件建议在 Wi-Fi 下用支持断点续传的下载器。</span></p>
   </header>
   <div class="notice" data-notice="2026-11" hidden>
     <span class="notice-tag">2026 · 11</span>
@@ -1019,6 +1026,7 @@ a { color:var(--brand); }
     <span class="eyebrow">大四上</span>
     <h2>复习资料与题库</h2>
     <p id="head-s1"></p>
+    <p class="dl-tip"><svg class="ic" aria-hidden="true"><use href="#i-download"/></svg><span><b>下载完整性提示</b>：列表里标注的是文件应有的大小。若 PDF 打开时提示「文件损坏 / 格式不支持」，多半是网络中断没下完——对照大小，明显偏小就重新下载；10 MB 以上的文件建议在 Wi-Fi 下用支持断点续传的下载器。</span></p>
   </header>
   <div class="notice" data-notice="2026-11" hidden>
     <span class="notice-tag">2026 · 11</span>
@@ -1238,7 +1246,7 @@ function resRow(x){
   const it=x.it,kind=x.kind,isKey=(it.tags||[]).includes(S1_KEY_TAG);
   let acts='';
   if(it.pdf){
-    acts+='<button class="btn btn-pri btn-sm" data-act="download" data-path="'+esc(it.pdf)+'">'+icon('i-download')+'<span>下载 PDF</span></button>';
+    acts+='<button class="btn btn-pri btn-sm" data-act="download" data-path="'+esc(it.pdf)+'" data-size="'+esc(it.size||'')+'">'+icon('i-download')+'<span>下载 PDF</span></button>';
   }
   if(it.md){
     acts+='<button class="btn btn-pri btn-sm" data-act="preview" data-path="'+esc(it.md)+'" data-name="'+esc(it.name)+'">'+icon('i-book')+'<span>在线阅读</span></button>';
@@ -1259,7 +1267,7 @@ function resRow(x){
 function invRow(x){
   const it=x.it;
   let act='';
-  if(it.pdf)act='<button class="btn btn-xs btn-sec" data-act="download" data-path="'+esc(it.pdf)+'">下载</button>';
+  if(it.pdf)act='<button class="btn btn-xs btn-sec" data-act="download" data-path="'+esc(it.pdf)+'" data-size="'+esc(it.size||'')+'">下载</button>';
   else if(it.md)act='<button class="btn btn-xs btn-sec" data-act="preview" data-path="'+esc(it.md)+'" data-name="'+esc(it.name)+'">阅读</button>';
   const meta=[it.count?it.count+' 题':'',it.version||'',it.format||'',it.size||''].filter(Boolean).join(' · ');
   return '<div class="inv-row" tabindex="0" role="option" data-q="'+itQ(it,x.kind)+'">'
@@ -1684,15 +1692,28 @@ function mdToHtml(md){
 }
 
 /* ---------- G 下载与打印 ---------- */
-function downloadFile(path,btn){
+/* 2026-11-22：下载前先探一次 Content-Type。
+   站点对已下架/改名的路径会兜底返回首页 HTML（200），直接点下载会得到一个
+   名叫 xxx.pdf 的网页，任何阅读器都打不开——必须在点击前拦下来。 */
+async function downloadFile(path,btn){
   if(btn&&(btn.disabled||btn.dataset.loading))return;
   const orig=btn?btn.innerHTML:null;
   if(btn){btn.dataset.loading='1';btn.disabled=true;btn.classList.add('loading');}
   const restore=()=>{if(btn){delete btn.dataset.loading;btn.disabled=false;btn.classList.remove('loading');if(orig!==null)btn.innerHTML=orig;}};
   const fname=path.split('/').pop();
-  toast('⬇ 开始下载：'+fname+'（速度见浏览器下载栏）');
+  const size=btn&&btn.dataset.size?'（约 '+btn.dataset.size+'）':'';
+  toast('⬇ 开始下载：'+fname+size+' · 下完请核对大小，明显偏小说明断流，需重下');
+  const href=encPath(path);
+  try{
+    const r=await fetch(href,{method:'HEAD',cache:'no-store'});
+    const ct=(r.headers.get('content-type')||'').toLowerCase();
+    if(!r.ok||ct.indexOf('text/html')>=0){
+      toast('⚠ 该文件可能已下架或改名（服务器返回网页而非 PDF），请刷新页面后从列表重新下载');
+      restore();return;
+    }
+  }catch(_){/* 预检失败不阻断：网络异常时仍让浏览器自己试 */ }
   const a=document.createElement('a');
-  a.href=encPath(path);a.download=fname;a.rel='noopener';
+  a.href=href;a.download=fname;a.rel='noopener';
   document.body.appendChild(a);a.click();a.remove();
   setTimeout(restore,1200);
 }
