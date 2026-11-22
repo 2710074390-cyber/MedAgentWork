@@ -15,12 +15,21 @@
     WARN  = 未达目标但未触及阻断线（advisory 下 FAIL 也降级为 WARN）
     FAIL  = 核心考点缺关键推理槽位 / 自测无答案 / 模块缺块，enforce 下阻断
 
+两种口径
+    legacy（默认） = 九槽位 + 模块八块 + 自测答案；服务教学计划版、课程安排版与历史 BPA 产物。
+    condensed      = TKC v1.0 教师重点浓缩版：原文锚点 / 定义段 / 为什么重要 / 第一性原理 / 视觉断点，
+                     外加模块核心件套与「模板复读行占比」；不查九槽位。
+
 用法
     python scripts/check_review_detail.py \
         --md "复习资料/耳鼻咽喉头颈外科学教师重点版/耳鼻咽喉头颈外科学教师重点版_主复习资料.md" \
         --mode auto --profile release_teacher_keypoint \
         --json-out reports/validate/review_detail_ent.json \
         --md-out reports/validate/review_detail_ent.md
+
+    python scripts/check_review_detail.py \
+        --md "Obsidian产物/教师重点浓缩版/眼科学_教师重点浓缩版_主复习资料.md" \
+        --mode condensed --profile release_teacher_keypoint_condensed
 
     python scripts/check_review_detail.py --md <课程安排版.md> --mode course_schedule --profile release_teaching_plan
 """
@@ -59,6 +68,12 @@ SLOT_LABEL = {
     "mnemonic": "记忆钩子（怎么记）",
     "selftest": "自测（能否回忆）",
     "case": "案例（能否迁移）",
+    "definition": "定义段",
+    "why": "为什么重要",
+    "first": "第一性原理",
+    "anchor": "原文锚点",
+    "break": "视觉断点",
+    "page": "真实页码",
 }
 
 # 兼容旧版标签（v5.6 教师版）与新版契约标签（v6 / HC-26）
@@ -128,6 +143,18 @@ MODULE_BLOCKS = {
 }
 
 MODULE_REQUIRED = ("pre", "summary", "table", "chain", "case", "selftest", "wrapup", "expand")
+
+# TKC v1.0（教师重点浓缩版）：不查九槽位，查「考点块要素 + 模块节奏」
+CONDENSED_REQUIRED = {
+    "core": ("anchor", "definition", "why", "first", "break", "page"),
+    "familiar": ("anchor", "definition", "why", "break", "page"),
+    "aware": ("anchor", "definition", "page"),
+}
+CONDENSED_PHRASES = (
+    "考试落点：本题组常以",
+    "补充：本卡的复习顺序建议",
+    "本卡在期末中常以 A1 考",
+)
 MODULE_LABEL = {
     "pre": "前置知识", "summary": "模块摘要/学习目标", "table": "对比表（≥3 行）",
     "chain": "因果链", "case": "案例", "selftest": "自测", "wrapup": "本章小结",
@@ -229,6 +256,16 @@ def count_tables(text: str) -> int:
     return sum(1 for line in text.splitlines() if TABLE_ROW_RE.match(line.strip()))
 
 
+def count_table_blocks(text: str) -> int:
+    blocks, in_table = 0, False
+    for line in text.splitlines():
+        is_row = bool(TABLE_ROW_RE.match(line.strip()))
+        if is_row and not in_table:
+            blocks += 1
+        in_table = is_row
+    return blocks
+
+
 def count_callouts(text: str) -> int:
     return len(re.findall(r"^>\s*\[!", text, re.M))
 
@@ -250,6 +287,62 @@ def has_chain(text: str) -> bool:
         if ("→" in block or "->" in block) and ("↓" in block or "v" in block):
             return True
     return False
+
+
+def first_paragraph_chars(body: str) -> int:
+    """锚点之后第一段正文的有效字符数（排除标题/表格/Callout/代码/锚点）。"""
+    for para in re.split(r"\n\s*\n", body):
+        lines = []
+        for line in para.splitlines():
+            stripped = line.strip()
+            if not stripped or stripped.startswith(("#", "|", ">", "```")):
+                continue
+            if ANCHOR_RE.search(line):
+                continue
+            lines.append(line)
+        text = strip_inline(" ".join(lines)).strip()
+        if len(text) >= 20:
+            return len(text)
+    return 0
+
+
+def count_breaks(text: str) -> int:
+    return (count_table_blocks(text) + count_callouts(text) + count_expand(text)
+            + len(re.findall(r"^```", text, re.M)) // 2)
+
+
+def template_repetition(md_text: str) -> dict:
+    """长行模板复读：完全相同的 ≥40 字行出现 ≥3 次即计入。"""
+    counts: dict[str, int] = {}
+    total = 0
+    in_code = False
+    for line in md_text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("```"):
+            in_code = not in_code
+            continue
+        if in_code:
+            continue
+        if stripped.startswith(("|", "#")) or ANCHOR_RE.search(line):
+            continue
+        clean = strip_inline(stripped).strip()
+        if len(clean) < 40:
+            continue
+        if re.fullmatch(r"[\W_]+", clean):
+            continue
+        total += 1
+        counts[clean] = counts.get(clean, 0) + 1
+    repeated = {k: v for k, v in counts.items() if v >= 3}
+    repeated_lines = sum(repeated.values())
+    phrase_hits = {p: md_text.count(p) for p in CONDENSED_PHRASES if p in md_text}
+    return {
+        "lines": total,
+        "repeated_lines": repeated_lines,
+        "ratio": round(repeated_lines / max(1, total), 4),
+        "max_repeat": max(repeated.values(), default=0),
+        "repeated_samples": sorted(repeated.items(), key=lambda kv: -kv[1])[:3],
+        "phrase_hits": phrase_hits,
+    }
 
 
 def info_units(text: str) -> int:
@@ -363,6 +456,8 @@ def parse_cards(md_text: str) -> tuple[list[dict], list[dict]]:
         cid = cid_m.group(1) if cid_m else f"C-{mod_id}-{seq:03d}"
         kps = []
         km = re.search(r"教师重点第([0-9、,，/]+)条", heading)
+        if not km:
+            km = re.search(r"[（(]第\s*([0-9、,，/]+)\s*条", heading)
         if km:
             for x in re.split(r"[、,，/]", km.group(1)):
                 if x.strip().isdigit():
@@ -521,6 +616,84 @@ def analyze_module(module: dict) -> dict:
     }
 
 
+def analyze_card_condensed(card: dict, th: dict) -> dict:
+    """TKC 考点块：不查九槽位，查定义段/为什么重要/第一性原理/原文锚点/视觉断点。"""
+    body = card["body"]
+    tier = card["tier"]
+    slots = {
+        "anchor": bool(ANCHOR_RE.search(body)),
+        "definition": first_paragraph_chars(body) >= 20,
+        "why": "为什么重要" in body,
+        "first": "第一性原理" in body,
+        "break": count_breaks(body) >= 1,
+        "page": bool(re.search(r"P\d+", body)),
+    }
+    required = CONDENSED_REQUIRED[tier]
+    missing = [s for s in required if not slots.get(s)]
+    min_chars = int(th.get(f"{tier}_min_chars", DEFAULT_THRESHOLDS[f"{tier}_min_chars"]))
+    max_chars = int(th.get(f"{tier}_max_chars", DEFAULT_THRESHOLDS[f"{tier}_max_chars"]))
+    deficits = []
+    if missing:
+        deficits.append("缺要素：" + "、".join(SLOT_LABEL[s] for s in missing))
+    if card["chars"] < min_chars:
+        deficits.append(f"正文 {card['chars']} < {min_chars} 字符")
+    warnings = []
+    duplicate_warning = duplicate_body_warning(body)
+    if duplicate_warning:
+        warnings.append(duplicate_warning)
+    if card["chars"] > max_chars:
+        warnings.append(f"正文 {card['chars']} > {max_chars} 字符，建议拆分（认知负荷）")
+    slot_ratio = (len(required) - len(missing)) / max(1, len(required))
+    anchor_match = re.search(r"📌\s*重点原文[（(]第\s*\d+\s*条[）)][:：]?\s*(.*)", body)
+    short_anchor = bool(anchor_match and len(anchor_match.group(1).strip()) < 30)
+    return {
+        "id": card["id"],
+        "module": card["module"],
+        "tier": tier,
+        "tier_label": card["label"],
+        "title": card["title_clean"],
+        "chars": card["chars"],
+        "units": card["units"],
+        "slots": {k: bool(v) for k, v in slots.items()},
+        "missing_slots": missing,
+        "slot_ratio": round(slot_ratio, 4),
+        "pass": not deficits,
+        "deficits": deficits,
+        "warnings": warnings,
+        "keypoints": card["keypoints"],
+        "short_anchor": short_anchor,
+    }
+
+
+def analyze_module_condensed(module: dict, cards: list[dict]) -> dict:
+    text = module["text"]
+    present = {}
+    present["pre"] = has_label(text, ("前置知识", "课前准备"))
+    present["summary"] = has_label(text, ("高收益摘要", "30 秒摘要", "学习目标"))
+    present["notes"] = has_label(text, ("结构化笔记", "考点笔记")) or bool(cards)
+    present["recall"] = has_label(text, ("主动回忆", "自测")) or count_selftests(text) >= 1
+    anchors = {int(n) for n in ANCHOR_RE.findall(text)}
+    kps = {n for c in cards for n in c["keypoints"]}
+    present["anchors"] = (not kps) or len(anchors & kps) >= len(kps)
+    present["rhythm"] = (count_table_blocks(text) >= 2 and count_callouts(text) >= 4
+                         and count_expand(text) >= 2)
+    missing = [b for b in present if not present[b]]
+    return {
+        "id": module["id"],
+        "name": module["name"],
+        "chars": module["chars"],
+        "tables": count_table_blocks(text),
+        "callouts": count_callouts(text),
+        "expand_blocks": count_expand(text),
+        "selftests": count_selftests(text),
+        "anchors": len(anchors),
+        "keypoints": len(kps),
+        "blocks": present,
+        "missing_blocks": missing,
+        "pass": not missing,
+    }
+
+
 def analyze_schedule_unit(unit: dict, th: dict) -> dict:
     text = unit["text"]
     blocks = {name: has_label(text, aliases) for name, aliases in SCHEDULE_BLOCKS.items()}
@@ -593,6 +766,99 @@ def evaluate_adaptive(md_text: str, mode: str) -> dict:
                     "recognizable_content": has_content, "source_marker": has_source},
         "cards": [], "modules": [], "units": [],
         "blocking": ["自适应预检不能判定质量通过，人工审核及现有正式发布门禁仍须完成"],
+        "warnings": warnings,
+    }
+
+
+def evaluate_condensed(cards: list[dict], modules: list[dict],
+                       th: dict, md_text: str) -> dict:
+    """TKC v1.0：卡片要素 + 模块节奏 + 反模板复读；不查九槽位。"""
+    analyzed_cards = [analyze_card_condensed(c, th) for c in cards]
+    analyzed_modules = []
+    for module in modules:
+        own = [c for c in cards if c["module"] == module["id"]]
+        analyzed_modules.append(analyze_module_condensed(module, own))
+
+    total = len(analyzed_cards)
+    if not total:
+        return {
+            "mode": "condensed",
+            "summary": {"cards": 0, "modules": len(modules), "overall": 0.0,
+                        "status": "SKIP"},
+            "cards": [], "modules": analyzed_modules,
+            "blocking": [], "warnings": ["未解析到考点块（无 `#### 🔴 【掌握级】…` 标题）"],
+        }
+
+    tier_counts = {t: sum(1 for c in analyzed_cards if c["tier"] == t) for t in TIER_ORDER}
+    card_pass_ratio = sum(1 for c in analyzed_cards if c["pass"]) / total
+    core_cards = [c for c in analyzed_cards if c["tier"] == "core"]
+    core_pass_ratio = sum(1 for c in core_cards if c["pass"]) / max(1, len(core_cards))
+    module_ratio = (sum(1 for m in analyzed_modules if m["pass"]) / len(analyzed_modules)
+                    if analyzed_modules else 1.0)
+    repetition = template_repetition(md_text)
+    overall = 0.60 * card_pass_ratio + 0.25 * core_pass_ratio + 0.15 * module_ratio
+
+    blocking: list[str] = []
+    warnings: list[str] = []
+    status = "PASS"
+    if card_pass_ratio < float(th["card_pass_min"]):
+        status = "FAIL"
+        blocking.append(f"卡片达标率 {card_pass_ratio:.1%} < {th['card_pass_min']:.0%}")
+    if core_pass_ratio < float(th["core_slot_min"]):
+        status = "FAIL"
+        blocking.append(f"掌握级卡片达标率 {core_pass_ratio:.1%} < {th['core_slot_min']:.0%}")
+    if module_ratio < float(th["module_block_min"]):
+        status = "FAIL"
+        blocking.append(f"模块核心件套完整率 {module_ratio:.1%} < {th['module_block_min']:.0%}")
+    repeat_max = float(th.get("template_repeat_max", 0.05))
+    if repetition["ratio"] > repeat_max:
+        status = "FAIL"
+        blocking.append(f"模板复读行占比 {repetition['ratio']:.1%} > {repeat_max:.0%}")
+    if repetition["max_repeat"] >= 8:
+        status = "FAIL"
+        blocking.append(f"存在同一长句重复 {repetition['max_repeat']} 次（≥8 即返工）")
+    if repetition["phrase_hits"]:
+        status = "FAIL"
+        blocking.append("出现禁用模板句：" + "、".join(repetition["phrase_hits"]))
+    if overall < float(th["overall_warn"]):
+        status = "FAIL"
+        blocking.append(f"浓缩型总分 {overall:.1%} < {th['overall_warn']:.0%}")
+    elif overall < float(th["overall_pass"]) and status == "PASS":
+        status = "WARN"
+        warnings.append(f"浓缩型总分 {overall:.1%} < {th['overall_pass']:.0%}")
+
+    for c in analyzed_cards:
+        warnings.extend(f"{c['id']}：{w}" for w in c["warnings"])
+    short_anchors = [c["id"] for c in analyzed_cards if c.get("short_anchor")]
+    if short_anchors:
+        warnings.append(
+            f"{len(short_anchors)} 个考点使用主题名/短锚点：确认已按 TKC §3.1 回教材补全"
+            f"（{'、'.join(short_anchors[:5])}{'…' if len(short_anchors) > 5 else ''}）")
+
+    return {
+        "mode": "condensed",
+        "summary": {
+            "cards": total,
+            "modules": len(analyzed_modules),
+            "tier_counts": {TIER_LABEL[t]: tier_counts[t] for t in TIER_ORDER},
+            "card_slot_score": round(sum(c["slot_ratio"] for c in analyzed_cards) / total, 4),
+            "card_pass_ratio": round(card_pass_ratio, 4),
+            "core_slot_ratio": round(core_pass_ratio, 4),
+            "core_full_ratio": round(core_pass_ratio, 4),
+            "selftest_answer_ratio": 1.0,
+            "module_block_ratio": round(module_ratio, 4),
+            "case_module_ratio": round(module_ratio, 4),
+            "content_chars": sum(c["chars"] for c in analyzed_cards),
+            "avg_chars": round(sum(c["chars"] for c in analyzed_cards) / total, 1),
+            "template_repeat_ratio": repetition["ratio"],
+            "template_max_repeat": repetition["max_repeat"],
+            "overall": round(overall, 4),
+            "status": status,
+        },
+        "cards": analyzed_cards,
+        "modules": analyzed_modules,
+        "template_repetition": repetition,
+        "blocking": blocking,
         "warnings": warnings,
     }
 
@@ -776,7 +1042,7 @@ def render_md(report: dict) -> str:
     for key in ("cards", "modules", "tier_counts", "content_chars", "avg_chars",
                 "card_slot_score", "card_pass_ratio", "core_slot_ratio",
                 "core_full_ratio", "selftest_answer_ratio", "module_block_ratio",
-                "case_module_ratio", "overall"):
+                "case_module_ratio", "template_repeat_ratio", "template_max_repeat", "overall"):
         if key in s:
             value = s[key]
             if isinstance(value, dict):
@@ -792,7 +1058,7 @@ def render_md(report: dict) -> str:
                   "- 本报告不能替代现有正式发布门禁。", ""]
         return "\n".join(lines)
     lines += ["", "## 3. 卡片缺口（Top 20）", "",
-              "| 卡片 | 层级 | 字符 | 单元 | 缺失槽位 | 其他缺口 |",
+              "| 卡片 | 层级 | 字符 | 单元 | 缺失要素/槽位 | 其他缺口 |",
               "|---|---|---:|---:|---|---|"]
     bad = [c for c in report.get("cards", []) if not c["pass"]][:20]
     for c in bad:
@@ -814,6 +1080,17 @@ def render_md(report: dict) -> str:
         "",
         "## 5. 判定口径",
         "",
+    ]
+    if report.get("mode") == "condensed":
+        lines += [
+            "- TKC 考点块要素：原文锚点、定义段、为什么重要、第一性原理（掌握级）、视觉断点。",
+            "- 模块核心件套：前置知识、高收益摘要、结构化笔记、主动回忆、原文锚点、节奏（≥2 表 / ≥4 Callout / ≥2 展开）。",
+            "- 反模板复读：长行重复 ≥3 次计入，占比 ≤5%，且单句不得 ≥8 次。",
+            "- 本报告只读产物，不修改复习资料。",
+            "",
+        ]
+        return "\n".join(lines)
+    lines += [
         "- 九个学习槽位：定位、机制、识别、诊断、处置、鉴别、易错、记忆钩子、自测；掌握级另需案例。",
         "- 详细 ≠ 字数：正文/信息单元是下限，超长会提示拆分（认知负荷）。",
         "- 自测必须能在附录中找到答案；无答案不算通过。",
@@ -831,12 +1108,13 @@ def main() -> int:
     _configure_stdio()
     ap = argparse.ArgumentParser(description="复习资料详细度契约门禁（HC-26）")
     ap.add_argument("--md", required=True, help="主复习资料 MD")
-    ap.add_argument("--mode", choices=["auto", "teacher_keypoint", "course_schedule", "module"],
+    ap.add_argument("--mode", choices=["auto", "teacher_keypoint", "course_schedule", "module", "condensed"],
                     default="auto")
     ap.add_argument("--detail-standard", choices=["legacy", "adaptive"], default="legacy",
                     help="adaptive 仅供人工审核预检，不替代正式发布门禁")
     ap.add_argument("--profile", default="release_teacher_keypoint",
-                    choices=["pilot", "release_teacher_keypoint", "release_teaching_plan"])
+                    choices=["pilot", "release_teacher_keypoint", "release_teaching_plan",
+                             "release_teacher_keypoint_condensed"])
     ap.add_argument("--policy", default=str(BASE / "scripts/quality_policy.json"))
     ap.add_argument("--subject", default="ent")
     ap.add_argument("--json-out", default="")
@@ -853,6 +1131,8 @@ def main() -> int:
 
     md_text = read_text(md_path)
     mode = detect_mode(md_text, args.mode)
+    if args.profile == "release_teacher_keypoint_condensed":
+        mode = "condensed"
     th = load_thresholds(args.profile, Path(args.policy))
 
     if args.detail_standard == "adaptive":
@@ -861,7 +1141,10 @@ def main() -> int:
         cards, modules = parse_cards(md_text)
         units = parse_schedule_units(md_text) if mode == "course_schedule" else []
         answer_keys = selftest_answer_keys(md_text)
-        report = evaluate(cards, modules, units, mode, th, answer_keys)
+        if mode == "condensed":
+            report = evaluate_condensed(cards, modules, th, md_text)
+        else:
+            report = evaluate(cards, modules, units, mode, th, answer_keys)
     report.update({
         "schema_version": SCHEMA_VERSION,
         "generated_at": datetime.now().isoformat(timespec="seconds"),

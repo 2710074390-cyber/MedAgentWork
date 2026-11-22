@@ -419,6 +419,17 @@ def _find_review_md(batch_data: dict):
     return hits[0] if hits else None
 
 
+def _review_profile(md) -> str:
+    """TKC v1.0 产物走 condensed 档；历史 BPA 产物继续走旧 profile。"""
+    try:
+        head = Path(md).read_text(encoding="utf-8", errors="replace")[:3000]
+    except Exception:
+        head = ""
+    if "教师重点浓缩版" in head or "TKC" in head:
+        return "release_teacher_keypoint_condensed"
+    return "release_teacher_keypoint"
+
+
 # ── 归一化器（SA-5 形状契约，纯函数，可 selftest）─────────────
 BLOOM_KEYS = ("记忆", "理解", "应用", "分析")
 
@@ -768,7 +779,7 @@ def boundary_a5(ctx):
                            evidence={"reason": "无教师重点输入"}))
     out = ctx.tmp / "review_detail.json"
     argv = _py("scripts/check_review_detail.py", "--md", md, "--mode", "auto",
-               "--profile", "release_teacher_keypoint", "--json-out", out)
+               "--profile", _review_profile(md), "--json-out", out)
     rc, text, ms = _run(argv, ctx.timeout)
     payload = _load_json(out)
     status = _mapped("check_review_detail", rc)
@@ -787,7 +798,9 @@ def boundary_quality(ctx, stage):
     if ctx.dry_run:
         return [_result(f"QUALITY-{stage.upper()}", "SKIP", code="DRY_RUN", evidence={"dry_run": True})]
     mode = "enforce" if stage == "r3" else "advisory"
-    profile = "release_teacher_keypoint" if stage == "r3" else "pilot"
+    md = _find_review_md(ctx.data)
+    profile = (_review_profile(md) if (stage == "r3" and md) else
+               ("release_teacher_keypoint" if stage == "r3" else "pilot"))
     out = ctx.tmp / f"quality_{stage}.json"
     argv = _py("scripts/quality_gate.py", "--stage", stage, "--batch", ctx.batch,
                "--profile", profile, "--mode", mode, "--out", out)
