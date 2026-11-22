@@ -1,0 +1,3463 @@
+{
+  "batch": "batch049",
+  "subject": "眼科学",
+  "target": 250,
+  "keypoints_file": "输入素材/大四上/眼科学/眼科学_教师重点_锚定清单_20261116.md",
+  "blueprint_file": "中间产物/batch049/出题蓝图_batch049.md",
+  "quotas": {
+    "kaoyan": 3250,
+    "zhiyi": 12500
+  },
+  "quota_policy": {
+    "family": "kaoyan / zhiyi",
+    "zhiyi_tiers": [
+      "zhiyi_pdf（历年真题 PDF）",
+      "zhiyi（CMExam 题库补位）"
+    ],
+    "shortfall": "reduced=按可用量减量；cancelled=无候选取消配额；deferred=候选存在但人类专属核验未完成（HC-28）；均由原创补齐，禁止无关题凑数"
+  },
+  "counts": {
+    "selected": 0,
+    "kaoyan": 0,
+    "zhiyi": 0,
+    "zhiyi_pdf": 0,
+    "zhiyi_cmexam": 0,
+    "remaining_slots": 250
+  },
+  "quota_status": {
+    "kaoyan": {
+      "requested": 7,
+      "selected": 0,
+      "available": 7,
+      "effective_quota": 0,
+      "status": "deferred",
+      "reason": "human_verification_deferred",
+      "ratio_of_target": 0.0
+    },
+    "zhiyi": {
+      "requested": 50,
+      "selected": 0,
+      "available": 90,
+      "effective_quota": 0,
+      "status": "deferred",
+      "reason": "human_verification_deferred",
+      "ratio_of_target": 0.0
+    }
+  },
+  "tier_status": {
+    "pdf": {
+      "selected": 15,
+      "available": 90,
+      "requested": 12500,
+      "role": "primary"
+    },
+    "cmexam": {
+      "selected": 60,
+      "role": "fallback"
+    }
+  },
+  "keypoint_coverage": {
+    "total": 44,
+    "covered_by_plan": 29,
+    "uncovered": [
+      "第14条",
+      "第21条",
+      "第27条",
+      "第31条",
+      "第32条",
+      "第33条",
+      "第34条",
+      "第35条",
+      "第37条",
+      "第39条",
+      "第41条",
+      "第42条",
+      "第4条",
+      "第5条",
+      "第9条"
+    ]
+  },
+  "modules": [
+    {
+      "module_id": "M01",
+      "name": "葡萄膜炎",
+      "target": 24,
+      "selected": 24,
+      "keypoints": [
+        "第1条",
+        "第2条",
+        "第3条",
+        "第4条",
+        "第5条",
+        "第11条",
+        "第18条",
+        "第19条",
+        "第20条",
+        "第21条",
+        "第22条",
+        "第23条",
+        "第24条",
+        "第25条",
+        "第26条",
+        "第27条",
+        "第28条",
+        "第29条",
+        "第30条",
+        "第31条",
+        "第32条",
+        "第33条",
+        "第34条",
+        "第35条",
+        "第36条",
+        "第37条",
+        "第38条",
+        "第39条",
+        "第40条",
+        "第41条",
+        "第42条",
+        "第43条",
+        "第44条"
+      ]
+    },
+    {
+      "module_id": "M02",
+      "name": "青光眼",
+      "target": 40,
+      "selected": 35,
+      "keypoints": [
+        "第6条",
+        "第7条",
+        "第8条",
+        "第9条",
+        "第10条",
+        "第12条"
+      ]
+    },
+    {
+      "module_id": "M03",
+      "name": "白内障",
+      "target": 28,
+      "selected": 6,
+      "keypoints": [
+        "第13条",
+        "第14条",
+        "第15条",
+        "第16条",
+        "第17条"
+      ]
+    },
+    {
+      "module_id": "M04",
+      "name": "视网膜疾病",
+      "target": 42,
+      "selected": 10,
+      "keypoints": []
+    },
+    {
+      "module_id": "M05",
+      "name": "眼表与角膜病",
+      "target": 30,
+      "selected": 0,
+      "keypoints": []
+    },
+    {
+      "module_id": "M06",
+      "name": "屈光与眼肌",
+      "target": 22,
+      "selected": 0,
+      "keypoints": []
+    },
+    {
+      "module_id": "M07",
+      "name": "眼外伤",
+      "target": 18,
+      "selected": 1,
+      "keypoints": []
+    },
+    {
+      "module_id": "M08",
+      "name": "眼睑、泪器、眼眶",
+      "target": 18,
+      "selected": 2,
+      "keypoints": []
+    },
+    {
+      "module_id": "M09",
+      "name": "视神经与视路",
+      "target": 14,
+      "selected": 4,
+      "keypoints": []
+    },
+    {
+      "module_id": "M10",
+      "name": "眼科基础、检查与用药",
+      "target": 14,
+      "selected": 0,
+      "keypoints": []
+    }
+  ],
+  "selected": [
+    {
+      "item_id": "ZY-R-37282",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-37282",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第22条",
+        "第24条"
+      ],
+      "stem": "男，59岁。2型糖尿病病史7年，口服格列本脲15mg/d和二甲双胍2.0g/d治疗。8个月前眼底检查可见微血管瘤、出血和硬性渗出。近1个月来视力明显减退，眼底检查可见视网膜新生血管形成和玻璃体积血。BP160/100mmHg，BMI28.4空腹血糖7.1mmmol/L，餐后2小时血糖14.6mmol/L，糖化血红蛋白7.6%。对该患者糖尿病视网膜病变最合适的治疗为",
+      "options": [
+        "降血压治疗",
+        "抗纤溶治疗",
+        "激光治疗",
+        "扩血管治疗",
+        "抗凝治疗"
+      ],
+      "answer": "C",
+      "explanation": "中老年男性患者，2型糖尿病7年病史，近一个月来视力明显减退，眼底检查可见视网膜新生血管形成和玻璃体积血，依据2002年国际临床分级标准，本例患者眼底检查符合糖尿病视网膜病变Ⅳ期，对该患者糖尿病视网膜病变最合适的治疗为视网膜激光治疗（C对）。糖尿病视网膜病变致盲的原因是严重的增殖性视网膜病变导致的玻璃体出血和牵拉性视网膜脱离。及时的激光治疗可以改善视网膜缺血缺氧状态，促使新生血管萎缩，增殖性视网膜病变停止或消退，从而防止发生玻璃体出血及视网膜脱离。降血压治疗（A错）、扩血管治疗（D错）都是高血压的对症治疗，不能改善糖尿病视网膜病变。抗纤溶治疗（B错）、抗凝治疗（E错）主要用于糖尿病大血管病变—动脉粥样硬化的预防。",
+      "question_type": "A2",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.047938,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "ZP-2015-3-6-53",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2015年临床执业医师考试_第三单元_真题及答案#3-6",
+      "exam": "执业医师",
+      "year": 2015,
+      "question_no": 6,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第26条",
+        "第28条",
+        "第40条"
+      ],
+      "stem": "女，30岁。因头痛3个月，加重伴呕吐、间断抽搐、视物模糊1个月就诊。近2年来，喜食生肉。眼底检查发现视神经盘水肿。最可能的诊断是（）。",
+      "options": [
+        "病毒性脑炎",
+        "脑肿瘤",
+        "脑囊尾病",
+        "结核性脑膜炎",
+        "隐球菌性脑膜炎"
+      ],
+      "answer": "C",
+      "explanation": "患者有典型喜食生肉病史，结合临床症状及检查可诊断为脑囊尾病。",
+      "question_type": "A2",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.013889,
+      "matched_queries": [
+        "细菌性、真菌性、单纯疱疹病毒性角膜炎特征对比；HSK 的复发性"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34629",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34629",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第18条",
+        "第19条",
+        "第44条"
+      ],
+      "stem": "眼轴为",
+      "options": [
+        "眼球前面角膜正中点和后面巩膜正中点的连线",
+        "视网膜中央凹到瞳孔中央的连线",
+        "眶口正中点与视神经管的连线",
+        "角膜正中点与视神经盘正中点的连线",
+        "玻璃体中轴的延长线"
+      ],
+      "answer": "A",
+      "explanation": "眼轴为眼球前面正中点的前极和后面正中点的后极的连线，即眼球前面角膜正中点和后面巩膜正中点的连线（A对）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.014706,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "KY-GS-2007-017",
+      "source": "kaoyan",
+      "family": "kaoyan",
+      "tier": "kaoyan",
+      "source_id": "GS-2007-017",
+      "exam": "306西综",
+      "year": 2007,
+      "question_no": 17,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第29条",
+        "第30条"
+      ],
+      "stem": "视远物和近物都需要眼进行调节的折光异常是",
+      "options": [
+        "近视",
+        "远视",
+        "散光",
+        "老视"
+      ],
+      "answer": "B",
+      "explanation": "①远视是由眼球的前后径过短(轴性远视)或折光系统的折光能力过弱(屈光性远视)所致,来自远物的平行光线聚集在视网膜后方,不能清晰地成像在视网膜上。因此,远视眼在看远物时,就要使用眼自身的调节能力,使平行光线的成像位置前移,落在视网膜上。看近物时,需作更大程度的调节(晶状体极度凸出)才能看清物体。因此远视眼无论看近物,还是看远物都需要进行调节,故易发生调节疲劳。②近视眼是由眼球前后径过长,或折光能力过强所致,看近物时不需作调节或仅需作较小的调节就能看清物体。散光眼是由角膜表面不同经线上的曲率不等所致,与调节无关。老视眼是由晶状体弹性降低,导致眼的调节能力下降所致。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "考研真题；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.016393,
+      "matched_queries": [
+        "近视、远视、散光成像特点；调节"
+      ]
+    },
+    {
+      "item_id": "ZP-2007-3-15-14",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2007年临床执业医师考试_第三单元_真题及答案#3-15",
+      "exam": "执业医师",
+      "year": 2007,
+      "question_no": 15,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第23条",
+        "第24条",
+        "第2条"
+      ],
+      "stem": "Henoch型过敏性紫癜的临床表现中，除皮肤紫癫外，还有（）。",
+      "options": [
+        "关节肿痛",
+        "便血",
+        "尿血",
+        "视网膜出血",
+        "虹膜炎"
+      ],
+      "answer": "B",
+      "explanation": "Henoch型过敏性紫癜即腹型紫癜，除皮疹外，最常见的表现是腹痛，有时伴呕吐，约半数患者便潜血阳性，甚至出现血便或呕血。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.014085,
+      "matched_queries": [
+        "前葡萄膜炎＝虹膜炎、虹膜睫状体炎；典型主诉与体征"
+      ]
+    },
+    {
+      "item_id": "ZY-R-46727",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-46727",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第11条",
+        "第43条"
+      ],
+      "stem": "会导致眼压升高出现青光眼，也可能出现白内障的药物是",
+      "options": [
+        "β-内酰胺类抗生素",
+        "氨基糖苷类抗生素",
+        "喹诺酮类抗菌药",
+        "糖皮质激素类药物",
+        "非甾体抗炎药"
+      ],
+      "answer": "D",
+      "explanation": "本题考查糖皮质激素类药物。会导致眼压升高出现青光眼，也可能出现白内障的药物是糖皮质激素类药物（D对）。长期大剂量糖皮质激素类药物应用可引起骨质疏松症、高血压、糖尿病、下丘脑垂体与肾上腺轴的抑制、肥胖症、白内障、青光眼、肌无力、皮肤变薄导致皮纹和瘀斑。β-内酰胺类抗生素（A错）不良反应有过敏反应、胃肠道反应、药物热、二重感染、肾损害等。氨基糖苷类抗生素（B错）的不良反应有耳毒性、肾毒性、神经肌肉阻断、少见皮疹、发热、血管神经性水肿及剥脱性皮炎等。喹诺酮类抗菌药（C错）的不良反应有影响软骨发育、胃肠道反应、中枢反应和诱发癫痫等。非甾体抗炎药（E错）的不良反应有胃肠道反应、变态反应、肝肾损害等。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.016393,
+      "matched_queries": [
+        "常用降眼压药物类别及大致作用方向"
+      ]
+    },
+    {
+      "item_id": "ZY-T-6462",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-6462",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第36条"
+      ],
+      "stem": "下列说法错误的是",
+      "options": [
+        "房水循环障碍导致青光眼",
+        "晶状体浑浊，临床上称为白内障",
+        "玻璃体浑浊，可影响视力",
+        "老年人晶状体逐渐失去弹性改变曲度的能力逐渐减弱",
+        "睑板腺排泄受阻，导致麦粒肿"
+      ],
+      "answer": "E",
+      "explanation": "房水循环障碍是导致青光眼的原因之一（A对）；晶状体因疾病或创伤而浑浊，临床上称为白内障（B对）；玻璃体具有屈光作用，故浑浊可影响视力（C对）；老年人晶状体逐渐失去弹性改变曲度的能力逐渐减弱（D错），即老视；麦粒肿是睫毛毛囊或睫毛腺的急性炎症，而非睑板腺排泄受阻（E错，为本题正确答案）。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.032787,
+      "matched_queries": [
+        "睑腺炎（麦粒肿）、睑板腺囊肿（霰粒肿）鉴别",
+        "睑腺炎 、睑板腺囊肿 鉴别"
+      ]
+    },
+    {
+      "item_id": "ZY-R-22420",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-22420",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第24条",
+        "第25条"
+      ],
+      "stem": "微波对眼的主要危害是",
+      "options": [
+        "结膜炎",
+        "晶体混浊",
+        "角膜炎",
+        "视网膜灼伤",
+        "视网膜剥离"
+      ],
+      "answer": "B",
+      "explanation": "本题考查微波对眼的危害。微波是波长在1mm～1m的电磁波，微波对于眼部的影响主要是微波辐射引起的眼晶状体浑浊（B对ACDE错），少数接触大功率微波辐射者，甚至可发展为白内障。此外，职业性微波辐射暴露人群一般主诉非特性性类神经征和心悸、心前区疼痛或胸闷感等。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.024691,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "ZY-T-6714",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-6714",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第19条",
+        "第24条",
+        "第3条"
+      ],
+      "stem": "以下结构，属于眼球的屈光系统的是",
+      "options": [
+        "视网膜",
+        "葡萄膜",
+        "巩膜",
+        "角膜",
+        "虹膜"
+      ],
+      "answer": "D",
+      "explanation": "属于眼球的屈光系统的是房水、晶状体、玻璃体和角膜（D对）。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.016393,
+      "matched_queries": [
+        "按解剖位置：前、中间、后、全葡萄膜炎各自累及组织、典型临床表现"
+      ]
+    },
+    {
+      "item_id": "KY-GS-2016-174",
+      "source": "kaoyan",
+      "family": "kaoyan",
+      "tier": "kaoyan",
+      "source_id": "GS-2016-174",
+      "exam": "306西综",
+      "year": 2016,
+      "question_no": 174,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第38条"
+      ],
+      "stem": "判断Graves病眼病活动期的指标有",
+      "options": [
+        "眼球运动时疼痛",
+        "复视",
+        "结膜充血",
+        "突眼度"
+      ],
+      "answer": "AC",
+      "explanation": "判断 Graves 病眼病是否处于活动期的指标包括: ①自发性球后疼痛; ②眼球运动时疼痛;\n③眼睑充血；④结膜充血；⑤眼睑肿胀；⑥球结膜水肿；⑦泪阜肿胀；⑧突眼度增加≥2mm；⑨任一方向眼球运动减少≥8°；⑩视力下降≥1行。以上10项，每项1分，总评分≥3分提示Graves病眼病处于活动期。",
+      "question_type": "X",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "考研真题；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.016393,
+      "matched_queries": [
+        "突眼：甲状腺相关眼病典型特点"
+      ]
+    },
+    {
+      "item_id": "ZP-2018-1-24-21",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2018年临床执业医师考试真题及答案#1-24",
+      "exam": "执业医师",
+      "year": 2018,
+      "question_no": 24,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第1条"
+      ],
+      "stem": "关于Craves病非浸润性突眼的描述下列正确的是",
+      "options": [
+        "病变常与甲亢治疗好转无关",
+        "突眼是由于病变累及球后组织引起的",
+        "患者常有视力疲劳、异物感、怕光、流泪等表现",
+        "突眼一般 <18 mm",
+        "常有眼球胀痛、复视等"
+      ],
+      "answer": "D",
+      "explanation": "",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.016129,
+      "matched_queries": [
+        "按解剖位置：前、中间、后、全葡萄膜炎各自累及组织、典型临床表现"
+      ]
+    },
+    {
+      "item_id": "ZP-2023-0-415-407",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2023年全国执业医师考试真题及答案#0-415",
+      "exam": "执业医师",
+      "year": 2023,
+      "question_no": 415,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第22条",
+        "第24条"
+      ],
+      "stem": "女，65岁，糖尿病12年，视物模糊3月。眼底检查：眼底微血管瘤，少量出血伴棉絮状软性渗出。患者糖尿病视网膜病变分期是",
+      "options": [
+        "2期",
+        "4期",
+        "3期",
+        "1期",
+        "5期"
+      ],
+      "answer": "C",
+      "explanation": "",
+      "question_type": "A2",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.044663,
+      "matched_queries": [
+        "视网膜中央静脉阻塞：分型与风险"
+      ]
+    },
+    {
+      "item_id": "ZP-2014-2-1-112",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2014年临床执业医师考试_第二单元_真题及答案#2-1",
+      "exam": "执业医师",
+      "year": 2014,
+      "question_no": 1,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第22条",
+        "第24条"
+      ],
+      "stem": "3.男，59岁。2型糖尿病病史7年，口服格列本脲15mg/d和二甲双胍2.0g/d治疗。8个月前眼底检查可见微血管瘤、出血和硬性渗出。近1个月来视力明显减退，眼底检查可见视网膜新生血管形成和玻璃体积血。 BP性160／100mmHg，BMI28.4kg/m²，空腹血糖7.1mmol/L，餐后2小时血糖14.6mmol/L，糖化血红蛋白7.6%。目前该患者糖尿病视网膜病变的分期为（",
+      "options": [
+        "I期",
+        "V期",
+        "II期",
+        "IⅢI期",
+        "IV期"
+      ],
+      "answer": "E",
+      "explanation": "",
+      "question_type": "A3/A4",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.044007,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "ZP-2023-0-105-102",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2023年全国执业医师考试真题及答案#0-105",
+      "exam": "执业医师",
+      "year": 2023,
+      "question_no": 105,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第19条",
+        "第20条",
+        "第24条"
+      ],
+      "stem": "高血压眼底病变IV期的表现是",
+      "options": [
+        "视网膜静脉交叉",
+        "视盘水肿",
+        "视网膜动脉反光增强",
+        "视网膜棉絮状渗出",
+        "视网膜动脉变细"
+      ],
+      "answer": "B",
+      "explanation": "",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.031746,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "ZY-R-37204",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-37204",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第22条",
+        "第24条"
+      ],
+      "stem": "男，59岁。2型糖尿病病史7年，口服格列本脲15mg/d和二甲双胍2.0g/d治疗。8个月前眼底检查可见微血管瘤、出血和硬性渗出。近1个月来视力明显减退，眼底检查可见视网膜新生血管形成和玻璃体积血。BP160/100mmHg，BMI28.4空腹血糖7.1mmmol/L，餐后2小时血糖14.6mmol/L，糖化血红蛋白7.6%。目前该患者糖尿病视网膜病变的分期为",
+      "options": [
+        "Ⅰ期",
+        "Ⅴ期",
+        "Ⅲ期",
+        "Ⅱ期",
+        "Ⅳ期"
+      ],
+      "answer": "E",
+      "explanation": "中老年男性患者，2型糖尿病7年病史，近一个月来视力明显减退，眼底检查可见视网膜新生血管形成和玻璃体积血，依据2002年国际临床分级标准，本例患者眼底检查符合糖尿病视网膜病变Ⅳ期（E对）。2002年国际临床分级标准依据散瞳后检眼镜检查，将糖尿病视网膜改变分为两大类、六期。Ⅰ期（A错）：微血管瘤、小出血点；Ⅱ期（D错）：出现硬性渗出；Ⅲ期（C错）：出现棉絮状软性渗出；Ⅳ期：新生血管形成、玻璃体积血；Ⅴ期（B错）：纤维血管增殖、玻璃体机化；Ⅵ期：牵拉性视网膜脱离、失明。以上Ⅰ-III期为非增殖期视网膜病变（NPDR），Ⅳ-Ⅵ期为增殖期视网膜病变（PDR）。",
+      "question_type": "A2",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.048652,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "ZP-2014-2-3-114",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2014年临床执业医师考试_第二单元_真题及答案#2-3",
+      "exam": "执业医师",
+      "year": 2014,
+      "question_no": 3,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第22条",
+        "第24条"
+      ],
+      "stem": "3.男，59岁。2型糖尿病病史7年，口服格列本脲15mg/d和二甲双胍2.0g/d治疗。8个月前眼底检查可见微血管瘤、出血和硬性渗出。近1个月来视力明显减退，眼底检查可见视网膜新生血管形成和玻璃体积血。 BP性160／100mmHg，BMI28.4kg/m²，空腹血糖7.1mmol/L，餐后2小时血糖14.6mmol/L，糖化血红蛋白7.6%。对该患者糖尿病视网膜病变最合适的治疗为（)。",
+      "options": [
+        "降血压治疗",
+        "抗纤溶治疗",
+        "激光治疗",
+        "扩血管治疗",
+        "抗凝治疗"
+      ],
+      "answer": "C",
+      "explanation": "糖尿病视网膜病变分为6期：①I期：微血管瘤，出血；②ⅡI期：微血管瘤，出血并有硬性渗出； ③Ⅲ期：出现棉絮状软性渗出。④IV期：新生血管形成，玻璃体出血；③V期：机化物增生；③VI期：继发性视网膜脱离，失明。口服降糖药，仍有糖化血红蛋白>7%应该用胰岛素治疗。对于视网膜渗出及新生血管形成，应采用激光治疗。",
+      "question_type": "A3/A4",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.030118,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "ZP-2008-1-93-92",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2008年临床执业医师考试_第一单元_真题及答案#1-93",
+      "exam": "执业医师",
+      "year": 2008,
+      "question_no": 93,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第22条",
+        "第24条"
+      ],
+      "stem": "男，59岁，2型糖尿病12年。空腹血糖5.6mmol/L，餐后2小时血糖14.6mmol/L，糖化血红蛋白7.6%。3年前眼底检查可见微血管瘤和出血，近2月来视力明显减退，眼底检查可见新生血管和玻璃体出血，目前糖尿病视网膜病变已进展为（）。",
+      "options": [
+        "2期",
+        "3期",
+        "4期",
+        "5期",
+        "6期"
+      ],
+      "answer": "C",
+      "explanation": "糖尿病视网膜病变分六期，分别为：1期微血管瘤出血；2期微血管瘤出血并有硬性渗出；3期出现棉絮状软性渗出； 4期新生血管形成，玻璃体出血；5期机化物形成；6期继发性视网膜脱落。血糖7.2mmo1/L，三餐后血糖分别为9.2mmo1/L，8.7mmol/L，8.6mmol/L。控制糖尿病的最佳治疗方案应选择（）。 A.增加二甲双胍剂量B.加用胰岛素制剂C.加用磺脲类口服降糖药D.加用a-葡糖糖苷酶抑制剂E.加用噻唑烷二酮类药【答案】B ",
+      "question_type": "A2",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.026847,
+      "matched_queries": [
+        "糖尿病视网膜病变：分期要点、黄斑水肿危害；高血压视网膜病变分级",
+        "糖尿病视网膜病变：分期要点、黄斑水肿危害；高血压视网膜病变分级 DM 高血糖 血压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-37264",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-37264",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第23条",
+        "第24条"
+      ],
+      "stem": "男，59岁。2型糖尿病病史7年，口服格列本脲15mg/d和二甲双胍2.0g/d治疗。8个月前眼底检查可见微血管瘤、出血和硬性渗出。近1个月来视力明显减退，眼底检查可见视网膜新生血管形成和玻璃体积血。BP160/100mmHg，BMI28.4空腹血糖7.1mmmol/L，餐后2小时血糖14.6mmol/L，糖化血红蛋白7.6%。对该患者糖尿病的治疗应调整为",
+      "options": [
+        "格列本脲加量",
+        "改用胰岛素",
+        "二甲双胍加量",
+        "加用噻唑烷二酮类药",
+        "加用α葡萄糖苷酶抑制剂"
+      ],
+      "answer": "B",
+      "explanation": "中老年男性患者，2型糖尿病7年病史，近一个月来视力明显减退，眼底检查可见视网膜新生血管形成和玻璃体积血，依据2002年国际临床分级标准，本例患者眼底检查符合糖尿病视网膜病变Ⅳ期，糖尿病视网膜病变属于糖尿病微血管病变，为糖尿病特异性慢性并发症。糖尿病出现慢性并发症时，应改用胰岛素治疗（B对）。患者联合应用口服降糖药物最大量依然不能使血糖达标，且已发生微血管并发症，说明患者胰岛功能已严重受损，必须改用胰岛素治疗。并且患者格列本脲（P737）和二甲双胍服用量均已达到最大剂量，不能再加用格列本脲（A错）和二甲双胍（C错）。加用噻唑烷二酮类药（D错）、α葡萄糖苷酶抑制剂（E错）亦不能有效降低血糖。",
+      "question_type": "A2",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.042972,
+      "matched_queries": [
+        "糖尿病视网膜病变：分期要点、黄斑水肿危害；高血压视网膜病变分级",
+        "分期 分级",
+        "糖尿病视网膜病变：分期要点、黄斑水肿危害；高血压视网膜病变分级 DM 高血糖 血压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-T-4669",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-4669",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第19条",
+        "第23条",
+        "第24条"
+      ],
+      "stem": "视网膜",
+      "options": [
+        "色素层与神经层不易分离",
+        "内层由3层神经细胞组成，都有感光作用",
+        "睫状体部和虹膜部也有感光作用",
+        "以上都不是",
+        "无"
+      ],
+      "answer": "D",
+      "explanation": "视网膜分虹膜部、睫状体部和脉络膜部，其中虹膜部和睫状体部因为无感光作用（C错），故被称为视网膜盲部。视网膜分两层，分别是色素层和神经层，两层之间有一潜在性间隙，故易分离（A错）。其中，神经层又可分为三层，外层的感光细胞有感光作用，中层为的双极细胞层和内层的节细胞层均无感光作用（C错，故D为本题正确答案）。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.025,
+      "matched_queries": [
+        "前葡萄膜炎＝虹膜炎、虹膜睫状体炎；典型主诉与体征"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34624",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34624",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第19条",
+        "第23条",
+        "第24条"
+      ],
+      "stem": "视网膜",
+      "options": [
+        "外层为视神经细胞层",
+        "内层为色素上皮层",
+        "盲部包括视网膜的睫状体部和虹膜部",
+        "视神经盘是感光最敏锐的部位",
+        "无"
+      ],
+      "answer": "C",
+      "explanation": "视网膜分两部，分别是视部和盲部，其中视网膜盲部包括无感光作用的虹膜部和睫状体部（C对）。视网膜也分两层，分别是外层的色素上皮层（A错）和内层的视神经细胞层（B错）。视神经盘因无感光细胞分布，故无感光功能，被成称为生理性盲点，而黄斑中央凹因无血管走行，且视锥细胞密集，故为感光最敏锐处（D错）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.027984,
+      "matched_queries": [
+        "前葡萄膜炎＝虹膜炎、虹膜睫状体炎；典型主诉与体征"
+      ]
+    },
+    {
+      "item_id": "ZY-R-37237",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-37237",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第22条",
+        "第24条"
+      ],
+      "stem": "男，59岁，2型糖尿病12年。空腹血糖5.6mmol/L，餐后2小时血糖14.6mmol/L，糖化血红蛋白7.06%。3年前眼底检查可见微血管瘤和出血，近2月来视力明显减退，眼底检查可见棉絮状软性渗出，目前糖尿病视网膜病变已进展为",
+      "options": [
+        "Ⅱ期",
+        "Ⅲ期",
+        "Ⅳ期",
+        "Ⅴ期",
+        "Ⅰ期"
+      ],
+      "answer": "B",
+      "explanation": "糖尿病视网膜改变可分六期。Ⅰ期：微血管瘤、小出血点（E错）；Ⅱ期：出现硬性渗出（A错）；Ⅲ期：出现棉絮状软性渗出（B对）；Ⅳ期；新生血管形成、玻璃体积血（C错）；V期：纤维血管增殖、玻璃体机化（D错）；Ⅵ期：牵拉性视网膜脱离、失明。",
+      "question_type": "A2",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.02901,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "KY-GS-1997-097",
+      "source": "kaoyan",
+      "family": "kaoyan",
+      "tier": "kaoyan",
+      "source_id": "GS-1997-097",
+      "exam": "306西综",
+      "year": 1997,
+      "question_no": 97,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第18条",
+        "第19条",
+        "第24条"
+      ],
+      "stem": "视网膜上既无视锥也无视杆细胞的部位是",
+      "options": [
+        "视盘",
+        "视盘的周边部",
+        "中央凹",
+        "中央凹周边部",
+        "视网膜周边部"
+      ],
+      "answer": "A",
+      "explanation": "98. ABCDE ①视盘为视神经起始处,此处既无视锥细胞,也无视杆细胞,不能感光,称盲点。视网膜中央动、静脉由此穿出后,分上、下两支分布于视网膜。②中央凹仅有视锥细胞分布,而无视杆细胞分布。参阅【2004NO13】。",
+      "question_type": "B",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "考研真题；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.026847,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "ZY-T-4112",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-4112",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第20条",
+        "第22条",
+        "第24条"
+      ],
+      "stem": "微波对眼睛的主要损害",
+      "options": [
+        "角膜结膜炎",
+        "晶体混浊",
+        "视网膜脉络膜勺伤",
+        "视网膜剥离",
+        "视神经乳头水肿"
+      ],
+      "answer": "B",
+      "explanation": "本题考查微波对眼的危害。微波是波长在1mm～1m的电磁波，微波对于眼部的影响主要是微波辐射引起的眼晶状体浑浊（B对ACDE错），少数接触大功率微波辐射者，甚至可发展为白内障。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.026316,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "ZY-T-5810",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-5810",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M01",
+      "module_name": "葡萄膜炎",
+      "keypoint_refs": [
+        "第18条",
+        "第19条",
+        "第24条"
+      ],
+      "stem": "视神经盘",
+      "options": [
+        "位于眼球后极",
+        "视网膜中央动脉在此穿过",
+        "对光线特别敏感",
+        "此处由3层神经细胞组成",
+        "无"
+      ],
+      "answer": "B",
+      "explanation": "视神经盘位于眼球后部鼻侧（A错），并非眼球后极。视神经盘有视网膜中央动脉在此穿过（B对），且无感光细胞分布，所以对光线不敏感（C错）。对光线敏感的是视神经盘颞侧的黄斑中央凹。视网膜视部由3层神经细胞构成，分别是感光细胞层、双极细胞层和节细胞层，但是视神经盘因无感光细胞分布，故此处仅由2层神经细胞组成（D错）。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.025974,
+      "matched_queries": [
+        "视网膜中央动脉阻塞：抢救要点"
+      ]
+    },
+    {
+      "item_id": "ZY-T-19",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-19",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条",
+        "第12条",
+        "第7条"
+      ],
+      "stem": "眼球各结构的描述，哪项不妥",
+      "options": [
+        "角膜炎症、溃疡可致角膜混浊影响视觉",
+        "巩膜黄色表示黄疽",
+        "眼内压增高临床称继发性青光眼",
+        "晶状体病损变混浊，称为白内障",
+        "晶状体核变硬，导致近视"
+      ],
+      "answer": "E",
+      "explanation": "角膜炎症、溃疡可致角膜混浊，失去透明性，从而影响视觉（A对）。巩膜呈黄色是黄疸的重要体征，即表示黄疸（B对）。眼内压增高临床称继发性青光眼（C对）。晶状体病损变混浊，称为白内障（E对）。晶状体核变硬，导致的是老视，而非近视（E错，为本题正确答案）。近视是眼轴较长或屈光装置的屈光率过强导致的物像落在视网膜前。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.032266,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-T-5445",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-5445",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第8条"
+      ],
+      "stem": "用于青光眼急性发作及手术前降低眼压的药物是",
+      "options": [
+        "呋塞米",
+        "氢氯噻嗪",
+        "甘露醇",
+        "螺内酯",
+        "氨苯蝶啶"
+      ],
+      "answer": "C",
+      "explanation": "本题考查甘露醇。甘露醇（C对）可用于青光眼急性发作及手术前降低眼压。甘露醇临床用于（1）组织脱水药。用于治疗各种原因引起的脑水肿，降低颅内压，防止脑疝。（2）降低眼内压。可有效降低眼内压，应用于其它降眼内压药无效时或眼内手术前准备。（3）渗透性利尿药。用于鉴别肾前性因素或急性肾功能衰竭引起的少尿。亦可应用于预防各种原因引起的急性肾小管坏死。（4）作为辅助性利尿措施治疗肾病综合征、肝硬化腹水，尤其是当伴有低蛋白血症时。（5）对某些药物逾量或毒物中毒（如巴比妥类药物、锂、水杨酸盐和溴化物等），本药可促进上述物质的排泄，并防止肾毒性。（6）作为冲洗剂，应用于经尿道内作前列腺切除术。（7）术前肠道准备。呋塞米（A错）用于治疗心脏性水肿、肾性水肿、肝硬化腹水、机能障碍或血管障碍所引起的周围性水肿。氢氯噻嗪（B错）适用于心源性水肿、肝源性水肿和肾性水肿；高血压；尿崩症。螺内酯（D错）可用于水肿性疾病，原发性醛固酮增多症的诊断和治疗。氨苯蝶啶（E错）用于慢性心力衰竭、肝硬化腹水、肾病综合征、糖皮质激素治疗过程中发生的水钠潴留，特发性水肿等。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.030769,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "KY-GS-2021-140",
+      "source": "kaoyan",
+      "family": "kaoyan",
+      "tier": "kaoyan",
+      "source_id": "GS-2021-140",
+      "exam": "306西综",
+      "year": 2021,
+      "question_no": 140,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第8条"
+      ],
+      "stem": "眼科检查时,用后马托品滴眼后引起的效应有",
+      "options": [
+        "扩瞳",
+        "复视",
+        "视觉模糊",
+        "青光眼症状缓解"
+      ],
+      "answer": "AC",
+      "explanation": "①后马托品为 M 受体阻断药,可阻断瞳孔括约肌上的 M 受体使其松弛,产生扩瞳效应,临床上常作为扩瞳药用于眼科检查。②由于睫状肌与虹膜环形肌都受副交感神经支配,后马托品在阻断虹膜环形肌收缩的同时,也阻断了睫状肌收缩,因而可阻碍晶状体变凸,不能将近物清晰地成像于\n视网膜上,而造成视近物模糊。③复视是指在眼外肌瘫痪或眼球内肿瘤压迫等情况下,物像落在两眼视网膜的非对称点上,在主观上产生有一定程度互相重叠的两个物体的感觉,与后马托品的药理作用无关,故不答 B。④后马托品可造成瞳孔扩大,前房角间隙变窄,阻碍房水回流进入巩膜静脉窦,导致眼内压升高,加重青光眼病情,故临床上对青光眼患者禁用 M 受体阻断药。",
+      "question_type": "X",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "考研真题；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.031754,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-16017",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-16017",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条",
+        "第12条",
+        "第6条"
+      ],
+      "stem": "毛果芸香碱的主要适应证是",
+      "options": [
+        "青光眼",
+        "角膜炎",
+        "结膜炎",
+        "视神经水肿",
+        "晶状体浑浊"
+      ],
+      "answer": "A",
+      "explanation": "毛果芸香碱能直接作用于副交感神经（包括支配汗腺交感神经）节后纤维支配的效应器官的M胆碱受体，尤其对眼和腺体作用明显。对眼的作用有：缩瞳、降低眼内压和调节痉挛；对腺体：促进腺体分泌。临床应用于：青光眼（A对）、虹膜睫状体炎。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.031754,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-T-5949",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-5949",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "右侧视神经断离可导致",
+      "options": [
+        "两眼鼻侧视野缺失",
+        "右眼全盲",
+        "右眼鼻侧视野缺失",
+        "两眼颞侧视野缺失",
+        "左眼颞侧视野缺失"
+      ],
+      "answer": "B",
+      "explanation": "右侧视神经断离可导致右眼全盲（B对）。两眼鼻侧视野缺失（A错）为双侧视交叉外侧部的不交叉纤维损伤。右眼鼻侧视野缺失（C错）为一侧视交叉外侧部的不交叉纤维损伤。两眼颞侧视野缺失（D错）为视交叉中交叉纤维损伤。左眼颞侧视野缺失（E错）为右侧视交叉中交叉纤维损伤。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.03009,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34694",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34694",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第7条"
+      ],
+      "stem": "某患者因右眼球胀痛、视物模糊入院诊治，检查发现右眼球变硬，眼压升高（7.8kPa），诊断为青光眼。其诊断依据是",
+      "options": [
+        "晶状体混浊",
+        "虹膜炎症",
+        "睫状体分泌房水受阻",
+        "巩膜静脉窦回流房水受阻",
+        "玻璃体混浊"
+      ],
+      "answer": "D",
+      "explanation": "患者因右眼胀痛、视物模糊就诊，检查发现眼压升高（7.9kPa），提示巩膜静脉窦回流房水受阻（D对），故诊断为青光眼。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.032258,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-29058",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-29058",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "引起病人右侧眼睑下垂，右侧瞳孔散大的最可能原因是",
+      "options": [
+        "面神经麻痹",
+        "动眼神经麻痹",
+        "小脑幕切迹疝",
+        "糖尿病眼底病",
+        "右侧视神经损害"
+      ],
+      "answer": "B",
+      "explanation": "动眼神经是支配眼肌的主要神经，其外侧核支配上睑提肌、上直肌、内直肌、下斜肌、下直肌，E-W核支配瞳孔括约肌和睫状肌。故动眼神经麻痹（B对）表现为眼睑下垂、瞳孔散大及光反射及调节反射均消失。面神经麻痹（A错）表现为面瘫。小脑幕切迹疝（C错）除可表现为动眼神经麻痹症状外，还伴有明显颅内压增高、意识障碍进行性恶化。糖尿病眼底病（D错）有糖尿病史，眼部表现主要为眼底微小血管病变，无眼睑下垂及瞳孔缩小表现。右侧视神经损害（E错）主要表现为视力障碍和视野缺损。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.031025,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZP-2020-4-50-105",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2020年临床执业医师考试真题及答案_第二部分#4-50",
+      "exam": "执业医师",
+      "year": 2020,
+      "question_no": 50,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第8条"
+      ],
+      "stem": "不支持重症肌无力诊断的临床依据是",
+      "options": [
+        "运动后四肢易疲劳",
+        "波动性眼睑下垂和复视",
+        "四肢肌无力晨轻暮重",
+        "低频电刺激电位衰减>10%",
+        "疲劳试验休息后症状无改善A2 型选择题(51~100 题)答题说明：每一道考题下面是以一个小案例出现的，其下面都有A、B、C、D、E五个备选答案，请从中选择一个最佳答案，并在答题卡上将相应题号的相应字母所属的方框涂黑"
+      ],
+      "answer": "E",
+      "explanation": "",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.025004,
+      "matched_queries": [
+        "急性闭角型青光眼大发作：典型症状、体征、应急处理、用药选择",
+        "急性闭角型青光眼大发作：典型症状、体征、应急处理、用药选择 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-46983",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-46983",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第7条"
+      ],
+      "stem": "散瞳药阿托品滴眼液的禁用人群是",
+      "options": [
+        "青光眼患者",
+        "眼底检查者",
+        "虹膜睫状体炎患者",
+        "睫状肌麻痹患者",
+        "角膜炎患者"
+      ],
+      "answer": "A",
+      "explanation": "本题考查阿托品的禁忌症。阿托品类散瞳药对眼压异常或窄前房角、浅前房的患者应用后可使眼压明显升高，有激发青光眼急性发作的危险，因此青光眼患者（A对）不用阿托品滴眼。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.032787,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34607",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34607",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第7条"
+      ],
+      "stem": "下列关于晶状体的描述,不正确的是",
+      "options": [
+        "位于虹膜与玻璃体之间",
+        "呈双凸透镜状，且后面较前面隆凸",
+        "为无色透明状，有良好的弹性",
+        "为眼内折光系统的重要结构之一",
+        "创伤后变混浊，称为青光眼"
+      ],
+      "answer": "E",
+      "explanation": "晶状体位于虹膜与玻璃体之间（A对），呈双凸透镜状，且后面较前面隆凸（B对），为无色透明状，有良好的弹性（C对），为眼内折光系统的重要结构之一（D对）。创伤后变浑浊，称为白内障，而非青光眼（E错，为本题正确答案）。青光眼由房水代谢紊乱或循环不畅造成。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.031281,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34612",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34612",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第7条"
+      ],
+      "stem": "以下眼疾，与晶状体病变关系最为密切的是",
+      "options": [
+        "白内障",
+        "青光眼",
+        "斜视",
+        "色盲",
+        "视网膜剥离"
+      ],
+      "answer": "A",
+      "explanation": "白内障（A对）是指晶状体若因疾病或创伤而变混浊，即与晶状体病变关系最为密切。青光眼（B错）是指房水代谢紊乱或循环不畅而造成的眼内压增高。视网膜剥离（E错）由于玻璃体的支撑作用减弱而导致。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.030798,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34671",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34671",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第7条"
+      ],
+      "stem": "以下眼疾与玻璃体病变关系最为密切的是",
+      "options": [
+        "白内障",
+        "青光眼",
+        "视网膜剥离",
+        "色盲",
+        "斜视"
+      ],
+      "answer": "C",
+      "explanation": "白内障（A错）是指晶状体若因疾病或创伤而变混浊。青光眼（B错）是指房水代谢紊乱或循环不畅而造成的眼内压增高。视网膜剥离（C对）由于玻璃体的支撑作用减弱而导致，即与玻璃体病变关系最为密切。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.030331,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-T-2783",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-2783",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第8条"
+      ],
+      "stem": "患者，男，36岁，近期因看电脑时间过长出现眼睛干涩、酸困等症状，该患者适宜选用药物是",
+      "options": [
+        "左氧氟沙星滴眼液",
+        "毛果芸香碱滴眼液",
+        "玻璃酸钠滴眼液",
+        "色甘酸钠滴眼液",
+        "阿昔洛韦滴眼液"
+      ],
+      "answer": "C",
+      "explanation": "本题考查玻璃酸钠滴眼液。患者出现眼睛干涩、酸困等症状，适宜选用药物是玻璃酸钠滴眼液（C对）。使用人工泪液（玻璃酸钠滴眼液、羟甲基纤维素钠滴眼液、聚乙醇滴眼液等）可改善眼部干燥症状。左氧氟沙星滴眼液（A错）可用于治疗由细菌所致的结膜炎。毛果芸香碱滴眼液（B错）可用于治疗青光眼。醋酸可的松、醋酸氢化可的松或色甘酸钠滴眼液（D错）和眼膏用于过敏性结膜炎。阿昔洛韦滴眼液（E错）用于单纯疱疹性角膜炎。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.026491,
+      "matched_queries": [
+        "急性闭角型青光眼大发作：典型症状、体征、应急处理、用药选择",
+        "急性闭角型青光眼大发作：典型症状、体征、应急处理、用药选择 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34552",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34552",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第7条"
+      ],
+      "stem": "房水回流受阻，眼内压增高，视力下降称",
+      "options": [
+        "青光眼",
+        "白内障",
+        "近视眼",
+        "远视眼",
+        "散光眼"
+      ],
+      "answer": "A",
+      "explanation": "青光眼（A对）是指房水回流受阻，眼内压增高，视力下降；白内障（B错）是指晶状体因疾病或创伤而变混浊；近视眼（C错）是指眼轴较长或屈光装置的屈光率过强，使物像落在视网膜前；远视眼（D错）眼轴较短或屈光装置的屈光率过弱，使物像则落在视网膜后。散光眼（E错）是指角膜表面各径线曲率不相等称。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.02879,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34535",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34535",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第7条"
+      ],
+      "stem": "关于房水的描述，错误的是",
+      "options": [
+        "充满于角膜与晶状体之间腔隙中",
+        "有维持眼内压的作用",
+        "除屈光作用外，还有营养角膜和晶状体的作用",
+        "其循环途径是眼后房→瞳孔→虹膜角膜角→前房→巩膜静脉窦，最后汇入眼静脉",
+        "房水产生过多或循环受阻,可导致青光眼"
+      ],
+      "answer": "D",
+      "explanation": "房水充满于角膜与晶状体之间腔隙（即眼房）中（A对），有维持眼内压的多用（B对），屈光作用，还有营养角膜和晶状体的作用（C对），其循环途径是眼后房→瞳孔→前房→虹膜角膜角→巩膜静脉窦，最后汇入眼静脉（D错，为本题正确答案）。房水过多或循环受阻，可导致青光眼（E对）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.028382,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-T-4435",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-4435",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "不通过眶上裂的神经是",
+      "options": [
+        "眼神经",
+        "视神经",
+        "动眼神经",
+        "滑车神经",
+        "展神经"
+      ],
+      "answer": "B",
+      "explanation": "不通过眶上裂的神经是视神经（B对），视神经进出颅腔的部位为视神经管。眼神经（A错）、动眼神经（C错）、滑车神经（D错）、展神经（E错）进出颅腔部位均为眶上裂。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.025479,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34627",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34627",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第12条",
+        "第6条",
+        "第7条"
+      ],
+      "stem": "物像落在视网膜前，形成模糊的物像，通常被称为",
+      "options": [
+        "青光眼",
+        "近视眼",
+        "白内障",
+        "远视",
+        "老视"
+      ],
+      "answer": "B",
+      "explanation": "青光眼（A错）是指房水代谢紊乱或循环不畅而造成的眼内压增高。物像落在视网膜前，形成模糊的物像，通常被称为近视眼（B对）。远视（D错）是指物像落在视网膜后，形成模糊的物像。白内障（C错）是指晶状体若因疾病或创伤而变混浊。老视（E错）是指随年龄增长，晶状体核逐渐增大变硬、弹性减退，睫状肌逐渐萎缩，晶状体的调节能力逐渐减弱，近距离视物困难。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.027984,
+      "matched_queries": [
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼",
+        "眼压、正常眼压范围、视盘损害、视野缺损三大核心要素；高眼压症 vs 青光眼 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-22421",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-22421",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "紫外线对眼眼睛的主要损害为",
+      "options": [
+        "急性角膜结膜炎",
+        "晶体混浊",
+        "视网膜脉络膜灼伤",
+        "视网膜剥离",
+        "视神经乳头水肿"
+      ],
+      "answer": "A",
+      "explanation": "本题考查紫外线对眼睛的损害。波长为250～320㎚的紫外线，可被角膜和结膜上皮大量吸收，引起急性角膜结膜炎（A对BCDE错），称为“电光性眼炎”，常见于电焊工及接触其他强紫外线辐射的作业者。电焊弧所产生的紫外线是导致眼紫外线损伤最多、最直接的原因。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.021739,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "KY-GS-2005-082",
+      "source": "kaoyan",
+      "family": "kaoyan",
+      "tier": "kaoyan",
+      "source_id": "GS-2005-082",
+      "exam": "306西综",
+      "year": 2005,
+      "question_no": 82,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第8条"
+      ],
+      "stem": "下列选项中,符合 Graves 病眼征分级标准 4 级的是",
+      "options": [
+        "有症状和体征,软组织受累",
+        "突眼(>18mm)",
+        "眼外肌受累",
+        "角膜受累",
+        "有视力丧失"
+      ],
+      "answer": "C",
+      "explanation": "Graves 病眼征的分级标准如下。①0级:无症状或体征;②1级:仅有体征,无症状,体征仅有上睑挛缩、凝视,突眼度18mm);⑤4级:眼外肌受累;⑥5级:角膜受累;⑦6级:视力丧失。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "考研真题；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.025645,
+      "matched_queries": [
+        "急性闭角型青光眼大发作：典型症状、体征、应急处理、用药选择",
+        "急性闭角型青光眼大发作：典型症状、体征、应急处理、用药选择 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-T-5881",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-5881",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "患者角膜反射消失，可能是损伤了",
+      "options": [
+        "面神经或三叉神经",
+        "视神经或动眼神经",
+        "动眼神经或三叉神经",
+        "视神经或三叉神经",
+        "面神经或动眼神经"
+      ],
+      "answer": "A",
+      "explanation": "角膜反射的通路为：角膜→三叉神经眼支→三叉神经半月神经节→三叉神经感觉主核→两侧面神经核→面神经→眼轮匝肌（出现闭眼反应）。根据上述反射通路可知角膜反射依靠三叉神经的眼神经传入、面神经传出，因而患者角膜反射消失，可能是损伤了传出的面神经或传入的三叉神经（A对）。视神经（BD错）损伤可导致同侧视力下降或全盲。动眼神经（CE错）损伤可导致上睑下垂、眼球向外下斜视。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.022727,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-T-4935",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-4935",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "视辐射是由下列何结构发出的纤维组成",
+      "options": [
+        "内侧膝状体",
+        "外侧膝状体",
+        "视神经",
+        "双极细胞",
+        "无"
+      ],
+      "answer": "B",
+      "explanation": "视辐射是由外侧膝状体（B对）发出的纤维构成。内侧膝状体（A错）构成听辐射。视神经（C错）为瞳孔对光反射通路的组成部分之一。双极细胞（D错）为视觉传导通路的第一级神经元。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.022222,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34638",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34638",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "视神经起始处形成的结构是",
+      "options": [
+        "瞳孔",
+        "巩膜静脉窦",
+        "虹膜角膜角",
+        "视神经盘",
+        "黄斑中央凹"
+      ],
+      "answer": "D",
+      "explanation": "视神经起始处形成的结构是视神经盘（D对）",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.025808,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-24068",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-24068",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "主要侵害视神经，导致视网膜受损，视神经萎缩，视力减退和双目失明的是",
+      "options": [
+        "甲醇",
+        "甲醛",
+        "铅",
+        "锰",
+        "氢氰酸"
+      ],
+      "answer": "A",
+      "explanation": "本题考查甲醇中毒。甲醇（A对BCDE错）主要侵害视神经，导致视网膜受损、视神经萎缩、视力减退和双目失明。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.025,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34722",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34722",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "有关视神经盘(视神经乳头)的叙述正确的是",
+      "options": [
+        "位于眼球后极",
+        "位于黄斑颞侧稍下方区域",
+        "此处无感光细胞，称生理性盲点",
+        "是视力最敏锐的部位"
+      ],
+      "answer": "C",
+      "explanation": "视神经盘位于眼球后方偏鼻侧，而非眼球后极（A错），位于黄斑鼻侧稍下方区域，而非黄斑颞侧下方（B错）。视神经盘有视网膜中央动、静脉走行，且无感光细胞，故为生理性盲点（C对）。视力最敏锐的部位（D错）是黄斑，而非视神经盘。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.024691,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-28669",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-28669",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "男，25岁。头部摔伤，着力点位于右侧颞枕部，就医时出现“熊猫眼”征，鼻孔流出血性液体。最可能的诊断是",
+      "options": [
+        "双侧视神经损伤",
+        "脑震荡",
+        "颅前窝底骨折",
+        "双眼结膜出血",
+        "双眼眼睑挫伤"
+      ],
+      "answer": "C",
+      "explanation": "患者男，25岁，头部摔伤，着力点位于右侧颞枕（有颅底水平外伤史），就医时出现“熊猫眼”征，鼻孔流出血性液体（颅前窝骨折特征表现），根据患者病史、体征，诊断考虑为颅前窝底骨折（C对）。双侧视神经损伤（A错）会出现视力障碍及视野缺损表现。脑震荡（P188）（B错） 表现为伤后即刻发生短暂的意识障碍和近事遗忘。患者没有眼部外伤史，故双眼结膜出血（D错）和双眼眼睑挫伤（E错）不考虑。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.024096,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34545",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34545",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "视神经盘（视神经乳头）",
+      "options": [
+        "在眼球的后极",
+        "有视网膜中央动脉穿过",
+        "为光敏感区",
+        "在黄斑的外侧",
+        "此处由视网膜3层细胞组成"
+      ],
+      "answer": "B",
+      "explanation": "视神经盘在眼球后部偏颞侧，而非眼球的后极（A错），在黄斑的内侧，而非黄斑的外侧（D错），有视网膜中央动脉穿过（B对），此处因无感光细胞分布，故该处的视网膜仅有2层细胞组成，而非3层（E错）。光敏感区（C错）是黄斑，而非视神经盘。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.02381,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34659",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34659",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "感光最敏锐的部位是",
+      "options": [
+        "瞳孔",
+        "巩膜静脉窦",
+        "虹膜角膜角",
+        "视神经盘",
+        "黄斑中央凹"
+      ],
+      "answer": "E",
+      "explanation": "感光最敏锐的部位是黄斑中央凹（E对），视神经盘（D错）是生理性盲点。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.023529,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34603",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34603",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "关于视神经盘的描述哪项错误？",
+      "options": [
+        "该处视神经纤维集中，故视力极敏感",
+        "位于黄斑的内侧",
+        "视网膜中央动脉、静脉经此出入",
+        "位于眼球后极的内侧",
+        "为节细胞轴突汇聚处"
+      ],
+      "answer": "A",
+      "explanation": "视神经盘位于黄斑鼻侧，即位于黄斑内侧（B对），眼球后极的内侧（D对），视神经中央动脉、静脉经此出入（C对），且该处无感光细胞分布，是节细胞轴突汇聚处（E对），故视力极不敏锐（A错，为本题正确答案）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.022989,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34611",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34611",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "有关黄斑的描述，错误的是",
+      "options": [
+        "是视力敏锐的地点",
+        "位于视神经盘颞侧",
+        "此处无感光细胞，称生理性盲点",
+        "此处中央部凹陷，称中央凹，视力最敏锐",
+        "此处主要由视锥细胞占据"
+      ],
+      "answer": "C",
+      "explanation": "黄斑位于视神经盘颞侧（B对），主要由视锥细胞占据（E对），且其中央凹陷，称中央凹，无血管走形，是视力最敏锐的地方（AD对）。视神经盘的中央凹陷因无感光细胞分布，且有视网膜中央动、静走行，故被称为生理性盲点（C错，为本题正确答案）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.022472,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34667",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34667",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "感光细胞是",
+      "options": [
+        "视神经盘",
+        "视网膜的视锥细胞和视杆细胞",
+        "视网膜的双极细胞",
+        "黄斑",
+        "视网膜节细胞"
+      ],
+      "answer": "B",
+      "explanation": "感光细胞是视网膜的视锥细胞和视杆细胞（B对）。视网膜的双极细胞（C错）负责传递神经冲动给节细胞，并非感光细胞；视网膜的节细胞（E错）构成视神经，也非感光细胞。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.021505,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34618",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34618",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "视网膜后部被称为“生理盲点”是",
+      "options": [
+        "视神经盘",
+        "视盘陷凹",
+        "黄斑",
+        "黄斑区的中央凹",
+        "黄斑外侧的部分"
+      ],
+      "answer": "A",
+      "explanation": "视神经盘（A对）的视盘凹陷（B错）无感光细胞，且视网膜中央动、静脉穿过，被称为生理性盲点。黄斑（C错）的中央凹（D错）由密集的视锥细胞构成，且无血管走行，是视网膜感光最敏锐的部分。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.021053,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-29150",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-29150",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "病人男性，58岁，突然头疼呕吐，伴意识丧失30分钟。查体神志清楚，颈部抵抗，克氏征阳性。右侧眼睑下垂，右侧瞳孔4毫米，光反应消失。最好的诊断措施是",
+      "options": [
+        "腰椎穿刺",
+        "脑电图",
+        "视力检查",
+        "头颅CT",
+        "视神经孔像"
+      ],
+      "answer": "D",
+      "explanation": "患者已初步诊断为蛛网膜下腔出血（SAH），CT对于颅内早期出血敏感性很高，对于疑诊蛛网膜下腔出血的患者应首选头颅CT（D对）。蛛网膜下腔出血患者颅内压常增高，因此不宜做腰椎穿刺（A错），以免诱发脑疝。脑电图（B错）常用于癫痫的诊断，对蛛网膜下腔出血诊断意义不大。视力检查（C错）和视神经孔像（E错）只能作为对眼部症状的检查，对诊断仅有提示作用。",
+      "question_type": "A2",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.020833,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34655",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34655",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "视网膜感光最敏锐的部分是",
+      "options": [
+        "视神经盘",
+        "视盘陷凹",
+        "黄斑",
+        "黄斑区的中央凹",
+        "黄斑外侧的部分"
+      ],
+      "answer": "D",
+      "explanation": "黄斑的中央凹（D对）由密集的视锥细胞构成，且无血管走行，是视网膜感光最敏锐的部分，而非黄斑（C错）或黄斑外侧的部分（E错）。视神经盘（A错）的视盘凹陷（B错）无感光细胞，且视网膜中央动、静脉穿过，被称为生理性盲点。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.020619,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34560",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34560",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "调节进入眼内光线量的是",
+      "options": [
+        "瞳孔",
+        "巩膜静脉窦",
+        "虹膜角膜角",
+        "视神经盘",
+        "黄斑中央凹"
+      ],
+      "answer": "A",
+      "explanation": "调节进入眼内光线量的是瞳孔（A对）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.020408,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34615",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34615",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M02",
+      "module_name": "青光眼",
+      "keypoint_refs": [
+        "第10条"
+      ],
+      "stem": "有关玻璃体的叙述何者错误",
+      "options": [
+        "为无色透明的胶状物质",
+        "位于晶状体和视网膜之间",
+        "表面覆被玻璃体膜",
+        "邻近视神经盘处凹陷称玻璃体凹",
+        "无"
+      ],
+      "answer": "D",
+      "explanation": "玻璃体是无色透明的胶状物质（A对），表面覆被玻璃体膜（C对），位于晶状体与视网膜之间（B对）。玻璃体凹是玻璃体邻近晶状体处的凹陷（D错，为本题正确答案），而非临近视神经盘处的凹陷。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.020101,
+      "matched_queries": [
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变",
+        "原发性开角型青光眼：房角开放、进行性视神经损害、早期视野改变 眼压升高"
+      ]
+    },
+    {
+      "item_id": "ZY-T-5140",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-test-5140",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M03",
+      "module_name": "白内障",
+      "keypoint_refs": [
+        "第13条",
+        "第15条",
+        "第16条"
+      ],
+      "stem": "麝珠明目滴眼液的主治病证是",
+      "options": [
+        "暴发火眼",
+        "青少年假性近视",
+        "老年性初期白内障",
+        "肝肾亏虚，夜视不见",
+        "上焦热盛，两眼红肿"
+      ],
+      "answer": "C",
+      "explanation": "",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.027056,
+      "matched_queries": [
+        "年龄相关性白内障皮质性：各期特点",
+        "年龄相关性白内障皮质性：各期特点 晶状体混浊"
+      ]
+    },
+    {
+      "item_id": "ZY-R-22144",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-22144",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M03",
+      "module_name": "白内障",
+      "keypoint_refs": [
+        "第13条",
+        "第16条",
+        "第17条"
+      ],
+      "stem": "工人王某，是东北某地炼铁厂炉前工，上班时定期开炉观察冶炼状态并采集分析，工龄25年，一年来感到视物模糊，逐渐加重，前来就医。所患疾病最可能是",
+      "options": [
+        "视网膜退化",
+        "视网膜灼伤",
+        "电光性眼炎",
+        "白内障",
+        "老年性视力减退"
+      ],
+      "answer": "D",
+      "explanation": "",
+      "question_type": "A2",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.028783,
+      "matched_queries": [
+        "年龄相关性白内障皮质性：各期特点",
+        "年龄相关性白内障皮质性：各期特点 晶状体混浊"
+      ]
+    },
+    {
+      "item_id": "ZY-R-22373",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-22373",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M03",
+      "module_name": "白内障",
+      "keypoint_refs": [
+        "第13条",
+        "第15条",
+        "第16条"
+      ],
+      "stem": "红外线对眼睛的损伤不包括",
+      "options": [
+        "角膜的热损伤",
+        "热性白内障",
+        "急性角膜结膜炎",
+        "慢性充血性睑缘炎",
+        "视网膜灼伤"
+      ],
+      "answer": "C",
+      "explanation": "本题考查红外线对眼睛的损害。红外线对眼睛的损害主要表现在，长期暴露于低能量红外线下，可致眼的慢性损伤，常见为慢性充血性睑缘炎（D对）、角膜虹膜损伤、白内障和视网膜损伤（BE对）。短波红外线能被角膜吸收产生角膜的热损伤（A对），并能透过角膜伤及虹膜，而白内障多见于工龄长的工人。早期，病人除自觉视力逐渐减退外，无其他主诉。最终导致晶状体全部浑浊，与老年性白内障相似。上述改变一般两眼同时发生，但进展缓慢。红外线不会引起急性角膜结膜炎（C错，为本题正确答案）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.030478,
+      "matched_queries": [
+        "年龄相关性白内障皮质性：各期特点",
+        "年龄相关性白内障皮质性：各期特点 晶状体混浊"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34570",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34570",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M03",
+      "module_name": "白内障",
+      "keypoint_refs": [
+        "第13条",
+        "第15条",
+        "第16条"
+      ],
+      "stem": "眼球",
+      "options": [
+        "角膜有丰富的神经末梢和毛细血管",
+        "内膜呈棕黑色，故称色素膜",
+        "内在肌均由副交感神经支配",
+        "中膜分巩膜、虹膜、脉络膜3部分",
+        "晶状体因疾病或创伤而变混浊称为白内障"
+      ],
+      "answer": "E",
+      "explanation": "角膜有丰富的神经末梢，但无毛细血管（A错）；呈棕黑色，故称色素膜的是中膜，即眼球血管膜，而非内膜（B错）；眼球内在肌中，瞳孔开大肌由交感纤维支配，并非所有内在肌均由副交感神经支配（C错）；中膜（即眼球血管膜）分虹膜、睫状体和脉络膜3部分，而非巩膜、虹膜、脉络膜3部分（D错）；晶状体因疾病或创伤而变混浊称为白内障（E对）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.030118,
+      "matched_queries": [
+        "年龄相关性白内障皮质性：各期特点",
+        "年龄相关性白内障皮质性：各期特点 晶状体混浊"
+      ]
+    },
+    {
+      "item_id": "ZY-R-24037",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-24037",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M03",
+      "module_name": "白内障",
+      "keypoint_refs": [
+        "第13条",
+        "第15条",
+        "第16条"
+      ],
+      "stem": "儿童维生素A缺乏最重要的临床诊断体征是",
+      "options": [
+        "白内障",
+        "比奥斑",
+        "角膜溃疡",
+        "结膜溃疡",
+        "眼球突出"
+      ],
+      "answer": "B",
+      "explanation": "",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.02782,
+      "matched_queries": [
+        "年龄相关性白内障皮质性：各期特点",
+        "年龄相关性白内障皮质性：各期特点 晶状体混浊"
+      ]
+    },
+    {
+      "item_id": "ZP-2014-4-19-66",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2014年临床执业医师考试_第四单元_真题及答案#4-19",
+      "exam": "执业医师",
+      "year": 2014,
+      "question_no": 19,
+      "subject": "眼科学",
+      "module": "M03",
+      "module_name": "白内障",
+      "keypoint_refs": [
+        "第17条"
+      ],
+      "stem": "患者，男，35岁。突发剧烈头痛伴恶心、呕吐、烦躁不安1天。查体：双眼视力重度减退、双题侧偏盲。急诊CT示鞍区椭圆形占位性病变3cm×2cm×2cm大小，内呈高密度影，可见液平面，幕上脑室扩大。应采取的有效治疗措施是（)。殊",
+      "options": [
+        "立即给予糖皮质激素治疗",
+        "立即给予神经营养药",
+        "保守治疗，病情稳定后手术治疗",
+        "迅速给予镇静处理",
+        "急症手术视神经减压"
+      ],
+      "answer": "E",
+      "explanation": "患者鞍区椭圆形占位性病变，双眼视力重度减退、双题侧偏盲，为防止视力进一步不可逆性恶化，应急症手术视神经减压。",
+      "question_type": "A2",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.023191,
+      "matched_queries": [
+        "先天性白内障：影响视力的关键处理原则",
+        "先天性白内障：影响视力的关键处理原则 晶状体混浊"
+      ]
+    },
+    {
+      "item_id": "KY-GS-2015-018",
+      "source": "kaoyan",
+      "family": "kaoyan",
+      "tier": "kaoyan",
+      "source_id": "GS-2015-018",
+      "exam": "306西综",
+      "year": 2015,
+      "question_no": 18,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "在设计视力表时,考虑判断人眼视力高低的标准是",
+      "options": [
+        "人眼所能看清楚物体的距离",
+        "视网膜中央凹处最小的清晰像大小",
+        "视网膜中央凹以外最小的清晰像大小",
+        "人眼所能看清楚的物体大小"
+      ],
+      "answer": "C",
+      "explanation": "①眼对物体细小结构的分辨能力,称为视敏度。正常人眼的视力是有限度的,这个限度是视网膜像不小于中央凹处一个视锥细胞的平均直径(4.5μm)。如果物体在视网膜上的成像<4.5μm,一般不能产生清晰的视觉。视力表就是根据这个原理设计的(B)。②视力的量度通常以视角的倒数来表示,视角是指物体上两个点发出的光线入眼后通过节点所形成的夹角。视角的大小与视网膜像的大小成正比。在眼前5m处,两个相距1.5mm的光点所发出的光线入眼后形成的视角正好为1分角,此时的视网膜像约4.5μm,正相当于一个视锥细胞的平均直径。国际标准视力表上视力为1.0(1/1分角)的那一行正是表达了这种情况。我国普遍使用的对数视力表各行间的增减程度相等。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "考研真题；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.012821,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "ZP-2020-4-22-82",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2020年临床执业医师考试真题及答案_第二部分#4-22",
+      "exam": "执业医师",
+      "year": 2020,
+      "question_no": 22,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "倾前窝骨折造成的熊猫眼征指的是",
+      "options": [
+        "双侧视神经盘水肿",
+        "眶周广泛性瘀斑",
+        "乳突部皮下瘀斑",
+        ". 双眼视网膜出血",
+        "双额部皮肤表面淤血"
+      ],
+      "answer": "B",
+      "explanation": "",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.010753,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "KY-GS-2005-016",
+      "source": "kaoyan",
+      "family": "kaoyan",
+      "tier": "kaoyan",
+      "source_id": "GS-2005-016",
+      "exam": "306西综",
+      "year": 2005,
+      "question_no": 16,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "下列关于正常人眼调节的叙述, 正确的是",
+      "options": [
+        "视远物时需调节才能清晰成像于视网膜",
+        "晶状体变凸有助于消除球面像差和色像差",
+        "瞳孔缩小可避免强光对视网膜的有害刺激",
+        "双眼球会聚可避免复视而形成单视视觉",
+        "调节能力随年龄的增长而得到加强"
+      ],
+      "answer": "C",
+      "explanation": "①当眼在看远处(6m 以外)物体时,从物体上发出的所有进入眼内的光线可被认为是平行光线,对正常眼来说,不需作任何调节即可在视网膜上形成清晰的物像。②眼的折光系统包括:角膜→房水→晶状体→玻璃体,其中起主要调节作用的是晶状体。看远物时→睫状肌松弛→悬韧带紧张→晶状体变扁→物像后移→成像在视网膜上;看近物时→睫状肌紧张→悬韧带松弛→晶状体变凸→物像前移→成像在视网膜上。晶状体变凸可使其前表面曲率增加,折光能力增强,从而使物像前移而成像在视网膜上。③视近物时,可反射性引起双眼瞳孔缩小,称为瞳孔近反射。瞳孔缩小的意义在于减少折光系统的球面像差和色像差。④双眼注视一个由远移近的物体时,两眼视轴向鼻侧会聚的现象,称为双眼球会聚,其意义在于双眼同时看一近物时,物像仍可落在两眼视网膜的对称点上,因此不会发生复视。⑤随着年龄的增长,晶状体的弹性逐渐减弱,导致眼的调节能力降低。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "考研真题；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.012987,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34708",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34708",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "属眼球壁中膜的结构是",
+      "options": [
+        "角膜",
+        "视网膜",
+        "虹膜",
+        "巩膜"
+      ],
+      "answer": "C",
+      "explanation": "角膜（A错）和巩膜（D错）属于眼球纤维膜，即眼球外膜。虹膜（C对）属于眼球中膜。视网膜（B错）是眼球内膜。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.013889,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34574",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34574",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "眼的屈光系统包括",
+      "options": [
+        "角膜",
+        "巩膜",
+        "虹膜",
+        "脉络膜",
+        "视网膜虹膜部"
+      ],
+      "answer": "A",
+      "explanation": "角膜（A对）、房水、晶状体和玻璃体合称眼的屈光系统，但巩膜（B错）、虹膜（C错）、脉络膜（D错）和视网膜虹膜部（E错）不包括在其中。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.013158,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34534",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34534",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "瞳孔开大肌位于",
+      "options": [
+        "角膜",
+        "巩膜",
+        "虹膜",
+        "脉络膜",
+        "视网膜虹膜部"
+      ],
+      "answer": "C",
+      "explanation": "瞳孔开大肌位于虹膜（C对）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.011494,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34556",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34556",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "眼球壁中含平滑肌的结构是",
+      "options": [
+        "角膜",
+        "巩膜",
+        "虹膜",
+        "脉络膜",
+        "视网膜"
+      ],
+      "answer": "C",
+      "explanation": "眼球壁中含平滑肌的结构是睫状体和虹膜（C对）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.011236,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "ZY-R-8808",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-8808",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "下列何项不是重度子痫前期的标志",
+      "options": [
+        "血压＞21.3/14，7kPa（160/110mmHg）",
+        "24小时尿蛋白定量大于等于5g",
+        "头痛，视力障碍",
+        "下肢水肿（+++）",
+        "眼底动脉痉挛伴有视网膜水肿"
+      ],
+      "answer": "D",
+      "explanation": "水肿不是重度子痫前期的必备表现，有时轻度子痫前期也可能有高度的水肿。掌握“娠期高血压疾病”知识点。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.010204,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34723",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34723",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "眼球壁中乳白色不透明的膜是",
+      "options": [
+        "视网膜",
+        "脉络膜",
+        "角膜",
+        "虹膜",
+        "巩膜"
+      ],
+      "answer": "E",
+      "explanation": "脉络膜（B错）富含血管及色素，角膜（C错）无色透明，虹膜（D错）呈棕黑色，巩膜（E对）乳白色不透明。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.010101,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "ZY-R-22146",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-22146",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M04",
+      "module_name": "视网膜疾病",
+      "keypoint_refs": [],
+      "stem": "一电焊学徒工，无防护条件下电焊操作半天后，次日出现眼痛、流泪、怕光。检查见球结膜充血水肿。此患者应诊断为",
+      "options": [
+        "电光性虹膜炎",
+        "电焊工角膜炎",
+        "电光性眼炎",
+        "视网膜灼伤",
+        "急性眼炎"
+      ],
+      "answer": "C",
+      "explanation": "",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.01,
+      "matched_queries": [
+        "视网膜疾病"
+      ]
+    },
+    {
+      "item_id": "ZY-R-22430",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-22430",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M07",
+      "module_name": "眼外伤",
+      "keypoint_refs": [],
+      "stem": "某电焊辅助工，工作4小时后，突然感到眼发干、异物感，并肿胀而被送医院就诊。此工人可能患哪种疾病",
+      "options": [
+        "眼损伤",
+        "眼外伤",
+        "眼炎",
+        "急性角膜结膜炎",
+        "结膜炎"
+      ],
+      "answer": "D",
+      "explanation": "",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.016393,
+      "matched_queries": [
+        "眼外伤"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34678",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34678",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M08",
+      "module_name": "眼睑、泪器、眼眶",
+      "keypoint_refs": [],
+      "stem": "眼副器包括",
+      "options": [
+        "眼睑、结膜、泪器、眼肌、眶脂体和眶筋膜",
+        "结膜、睫状体、泪器和眼肌",
+        "眼睑、眶脂体、睫状体和泪器",
+        "眼睑、结膜和眼肌",
+        "蜗窗"
+      ],
+      "answer": "A",
+      "explanation": "眼副器包括眼睑、结膜、泪器、眼肌、眶脂体和眶筋膜（A对）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.016393,
+      "matched_queries": [
+        "眼睑、泪器、眼眶"
+      ]
+    },
+    {
+      "item_id": "ZY-R-34542",
+      "source": "zhiyi",
+      "family": "zhiyi",
+      "tier": "cmexam",
+      "source_id": "CMExam-train-34542",
+      "exam": "执业医师",
+      "year": null,
+      "question_no": null,
+      "subject": "眼科学",
+      "module": "M08",
+      "module_name": "眼睑、泪器、眼眶",
+      "keypoint_refs": [],
+      "stem": "眼副器，不包括",
+      "options": [
+        "眼睑、泪器",
+        "睫状体",
+        "结膜、眼球外肌",
+        "眶脂体",
+        "眶筋膜"
+      ],
+      "answer": "B",
+      "explanation": "眼睑、泪器（A对）、结膜、眼球外肌（C对）、眶脂体（D对）、眶筋膜（E对）均属于眼副器，但不包括睫状体（B错，为本题正确答案）。",
+      "question_type": "A1",
+      "answer_confidence": "medium",
+      "license": "public_noncommercial",
+      "license_note": "CMExam 学术数据集；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.016129,
+      "matched_queries": [
+        "眼睑、泪器、眼眶"
+      ]
+    },
+    {
+      "item_id": "ZP-2018-4-41-353",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2018年临床执业医师考试真题及答案#4-41",
+      "exam": "执业医师",
+      "year": 2018,
+      "question_no": 41,
+      "subject": "眼科学",
+      "module": "M09",
+      "module_name": "视神经与视路",
+      "keypoint_refs": [],
+      "stem": "男，28岁。头部摔伤，着力点位于右侧颞枕，就医时出现“熊猫眼”征，鼻孔流出血性液体。最可能的诊断是",
+      "options": [
+        "颅前窝骨折",
+        "脑震荡",
+        "双眼睑挫伤",
+        "双侧视神经损伤",
+        "双眼结膜出血"
+      ],
+      "answer": "A",
+      "explanation": "",
+      "question_type": "A2",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.011905,
+      "matched_queries": [
+        "视神经与视路"
+      ]
+    },
+    {
+      "item_id": "ZP-2012-2-47-100",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2012年临床执业医师考试_第二单元_真题及答案#2-47",
+      "exam": "执业医师",
+      "year": 2012,
+      "question_no": 47,
+      "subject": "眼科学",
+      "module": "M09",
+      "module_name": "视神经与视路",
+      "keypoint_refs": [],
+      "stem": "女，40岁。头痛3个月，加重伴间断性呕吐、抽搐、视物模糊1个月。查体：右上肢可见2个活动良好的椭圆形结节，眼底检查有视神经乳头水肿。最可能的诊断是（)。E",
+      "options": [
+        "癫痫",
+        "隐球菌性脑膜炎",
+        "脑肿瘤",
+        "囊尾病",
+        "结核性脑膜炎"
+      ],
+      "answer": "D",
+      "explanation": "患者出现头痛、间断性呕吐、抽搐、视物模糊及右上肢椭圆形结节表现，结合眼底视神经乳头水肿检查，考虑诊断为囊尾病。",
+      "question_type": "A2",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.0125,
+      "matched_queries": [
+        "视神经与视路"
+      ]
+    },
+    {
+      "item_id": "ZP-2015-4-18-17",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2015年临床执业医师考试_第四单元_真题及答案#4-18",
+      "exam": "执业医师",
+      "year": 2015,
+      "question_no": 18,
+      "subject": "眼科学",
+      "module": "M09",
+      "module_name": "视神经与视路",
+      "keypoint_refs": [],
+      "stem": "颅前窝骨折造成的熊猫眼征指的是（）。",
+      "options": [
+        "双侧视神经盘水肿",
+        "眶周广泛性瘀斑",
+        "乳突部皮下瘀斑",
+        "双眼视网膜出血",
+        "双额部皮肤表面淤血"
+      ],
+      "answer": "B",
+      "explanation": "颅前窝骨折造成的熊猫眼征是指骨折累及眶顶和筛骨，出现眶周广泛性血斑的表现。",
+      "question_type": "A1",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.011628,
+      "matched_queries": [
+        "视神经与视路"
+      ]
+    },
+    {
+      "item_id": "ZP-2016-4-3-52",
+      "source": "zhiyi_pdf",
+      "family": "zhiyi",
+      "tier": "pdf",
+      "source_id": "2016年临床执业医师考试_第四单元_真题及答案#4-3",
+      "exam": "执业医师",
+      "year": 2016,
+      "question_no": 3,
+      "subject": "眼科学",
+      "module": "M09",
+      "module_name": "视神经与视路",
+      "keypoint_refs": [],
+      "stem": "男，25岁，头部摔伤，着力点位于右侧颞枕，就医时出现“熊猫眼”征，鼻孔流出血性液体，最可能的诊断是（)。",
+      "options": [
+        "脑震荡",
+        "双眼眼脸挫伤",
+        "双侧视神经损伤",
+        "双眼结膜出血",
+        "颅前窝底骨折"
+      ],
+      "answer": "E",
+      "explanation": "颅前窝底骨折会产生熊猫眼；颅中窝底骨折会产生耳漏；颅后窝底骨折会产生Battle征。女，36岁，结婚8年未孕，月经规律，周期22天，经期5～6天。无痛经，基础体温为双向型，高温相为8天，月经来潮后6小时子宫内膜活检，病理检查结果最可能是（ )。 0 A.分泌期子宫内膜腺体分泌不良B．增殖期子宫内膜C．分泌期及增殖期内膜并存D．萎缩型子宫内膜E.子宫内膜单纯性增生【答案】A ",
+      "question_type": "A2",
+      "answer_confidence": "high",
+      "license": "public_noncommercial",
+      "license_note": "执业医师历年真题（扫描册 OCR）；用户声明仅非商业个人刷题使用",
+      "mode": "原题",
+      "score": 0.010638,
+      "matched_queries": [
+        "视神经与视路"
+      ]
+    }
+  ],
+  "search_log": [
+    {
+      "module": "M01",
+      "keypoint": "第1条",
+      "queries": 2,
+      "hits": 21
+    },
+    {
+      "module": "M01",
+      "keypoint": "第2条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第3条",
+      "queries": 2,
+      "hits": 4
+    },
+    {
+      "module": "M01",
+      "keypoint": "第4条",
+      "queries": 1,
+      "hits": 39
+    },
+    {
+      "module": "M01",
+      "keypoint": "第5条",
+      "queries": 1,
+      "hits": 6
+    },
+    {
+      "module": "M01",
+      "keypoint": "第11条",
+      "queries": 1,
+      "hits": 26
+    },
+    {
+      "module": "M01",
+      "keypoint": "第18条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第19条",
+      "queries": 2,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第20条",
+      "queries": 3,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第21条",
+      "queries": 2,
+      "hits": 16
+    },
+    {
+      "module": "M01",
+      "keypoint": "第22条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第23条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第24条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第25条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第26条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第27条",
+      "queries": 2,
+      "hits": 15
+    },
+    {
+      "module": "M01",
+      "keypoint": "第28条",
+      "queries": 1,
+      "hits": 34
+    },
+    {
+      "module": "M01",
+      "keypoint": "第29条",
+      "queries": 1,
+      "hits": 19
+    },
+    {
+      "module": "M01",
+      "keypoint": "第30条",
+      "queries": 1,
+      "hits": 6
+    },
+    {
+      "module": "M01",
+      "keypoint": "第31条",
+      "queries": 2,
+      "hits": 2
+    },
+    {
+      "module": "M01",
+      "keypoint": "第32条",
+      "queries": 1,
+      "hits": 10
+    },
+    {
+      "module": "M01",
+      "keypoint": "第33条",
+      "queries": 1,
+      "hits": 35
+    },
+    {
+      "module": "M01",
+      "keypoint": "第34条",
+      "queries": 1,
+      "hits": 33
+    },
+    {
+      "module": "M01",
+      "keypoint": "第35条",
+      "queries": 1,
+      "hits": 0
+    },
+    {
+      "module": "M01",
+      "keypoint": "第36条",
+      "queries": 2,
+      "hits": 2
+    },
+    {
+      "module": "M01",
+      "keypoint": "第37条",
+      "queries": 2,
+      "hits": 4
+    },
+    {
+      "module": "M01",
+      "keypoint": "第38条",
+      "queries": 1,
+      "hits": 10
+    },
+    {
+      "module": "M01",
+      "keypoint": "第39条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第40条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M01",
+      "keypoint": "第41条",
+      "queries": 1,
+      "hits": 9
+    },
+    {
+      "module": "M01",
+      "keypoint": "第42条",
+      "queries": 1,
+      "hits": 14
+    },
+    {
+      "module": "M01",
+      "keypoint": "第43条",
+      "queries": 1,
+      "hits": 27
+    },
+    {
+      "module": "M01",
+      "keypoint": "第44条",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M02",
+      "keypoint": "第6条",
+      "queries": 2,
+      "hits": 33
+    },
+    {
+      "module": "M02",
+      "keypoint": "第7条",
+      "queries": 2,
+      "hits": 26
+    },
+    {
+      "module": "M02",
+      "keypoint": "第8条",
+      "queries": 2,
+      "hits": 36
+    },
+    {
+      "module": "M02",
+      "keypoint": "第9条",
+      "queries": 2,
+      "hits": 26
+    },
+    {
+      "module": "M02",
+      "keypoint": "第10条",
+      "queries": 2,
+      "hits": 40
+    },
+    {
+      "module": "M02",
+      "keypoint": "第12条",
+      "queries": 2,
+      "hits": 23
+    },
+    {
+      "module": "M03",
+      "keypoint": "第13条",
+      "queries": 2,
+      "hits": 40
+    },
+    {
+      "module": "M03",
+      "keypoint": "第14条",
+      "queries": 2,
+      "hits": 40
+    },
+    {
+      "module": "M03",
+      "keypoint": "第15条",
+      "queries": 2,
+      "hits": 40
+    },
+    {
+      "module": "M03",
+      "keypoint": "第16条",
+      "queries": 3,
+      "hits": 40
+    },
+    {
+      "module": "M03",
+      "keypoint": "第17条",
+      "queries": 2,
+      "hits": 40
+    },
+    {
+      "module": "M04",
+      "keypoint": "",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M05",
+      "keypoint": "",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M06",
+      "keypoint": "",
+      "queries": 1,
+      "hits": 20
+    },
+    {
+      "module": "M07",
+      "keypoint": "",
+      "queries": 1,
+      "hits": 2
+    },
+    {
+      "module": "M08",
+      "keypoint": "",
+      "queries": 1,
+      "hits": 15
+    },
+    {
+      "module": "M09",
+      "keypoint": "",
+      "queries": 1,
+      "hits": 40
+    },
+    {
+      "module": "M10",
+      "keypoint": "",
+      "queries": 1,
+      "hits": 6
+    }
+  ],
+  "hc28_update": {
+    "placed_candidates": 0,
+    "reason": "候选以基础解剖题和含非眼科污染文本的扫描题为主；原卷/答案需人工核验，按 HC-28 延后落位",
+    "review_queue": "最终产物/batch049/review_queue.json"
+  }
+}

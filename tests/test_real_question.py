@@ -178,6 +178,24 @@ def test_dedupe_exact_and_near():
     assert removed == 1
 
 
+def test_near_dup_requires_stem_similarity():
+    """simhash 只粗筛；词面 Jaccard < 0.5 的不同题不得判近重复（batch049 误伤）。"""
+    from real_question.check import _stem_jaccard
+
+    assert _stem_jaccard(
+        "正常人双眼眼压差异不应超过",
+        "正常人24小时眼压波动范围不应超过",
+    ) < 0.5
+    assert _stem_jaccard(
+        "颅内压增高所致视盘水肿的典型视野改变是",
+        "眼调节作用的实现主要依靠",
+    ) < 0.5
+    assert _stem_jaccard(
+        "急性闭角型青光眼大发作时不宜使用的药物是",
+        "急性闭角型青光眼大发作时禁忌使用的药物是",
+    ) >= 0.5
+
+
 # ── 选题 ──
 
 def _write_index(tmp_path):

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "policy_version": "1.2.0",
-  "updated_at": "2026-10-27",
+  "policy_version": "1.3.0",
+  "updated_at": "2026-11-16",
   "owner": "MedMaster",
   "source": "SOUL.md#HC-25 · docs/质量管控规范.md",
   "profiles": {
@@ -82,6 +82,37 @@
           "source_paths",
           "source_sha256"
         ]
+      }
+    },
+    "release_teacher_keypoint_condensed": {
+      "description": "教师重点浓缩版（TKC v1.0）：教材浓缩型结构，不查九槽位；卡片要素/模块节奏/反模板复读 enforce。",
+      "required_checks": [
+        "item_learning_value",
+        "review_detail",
+        "review_visual",
+        "source_concepts",
+        "concept_graph",
+        "produce_rules"
+      ],
+      "thresholds": {
+        "review_detail_core_min_chars": 600,
+        "review_detail_familiar_min_chars": 320,
+        "review_detail_aware_min_chars": 140,
+        "review_detail_core_min_units": 6,
+        "review_detail_familiar_min_units": 4,
+        "review_detail_aware_min_units": 2,
+        "review_detail_core_max_chars": 2400,
+        "review_detail_familiar_max_chars": 1800,
+        "review_detail_aware_max_chars": 900,
+        "review_detail_overall_pass": 0.9,
+        "review_detail_overall_warn": 0.75,
+        "review_detail_core_slot_min": 0.9,
+        "review_detail_card_pass_min": 0.9,
+        "review_detail_selftest_answer_min": 1.0,
+        "review_detail_module_block_min": 1.0,
+        "review_detail_case_module_min": 1.0,
+        "review_detail_template_repeat_max": 0.05,
+        "keypoint_coverage": 1.0
       }
     },
     "release_teacher_keypoint": {

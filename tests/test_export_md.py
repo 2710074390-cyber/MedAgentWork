@@ -322,6 +322,85 @@ def test_gate_a4_md_blocks_without_md():
             gate_check.BASE = orig_base
 
 
+# ── 解析模板（schema 2.3 · 2026-11-16）──
+
+def _template_question(explanation='', takeaway=None):
+    return {
+        'id': 'T1', 'module': 'M1', 'type': 'A1', 'bloom_level': '理解',
+        'stem': '急性前葡萄膜炎的典型体征组合是',
+        'options': [
+            {'label': 'A', 'text': '结膜充血、水样分泌物、瞳孔散大、眼压升高'},
+            {'label': 'B', 'text': '睫状充血、尘状KP、前房闪辉、前房细胞、瞳孔缩小'},
+        ],
+        'answer': 'B',
+        'source_pages': 'P108',
+        'topic': '急性前葡萄膜炎体征组合',
+        'explanation': explanation,
+        'concepts': [{'role': 'primary', 'title': '急性前葡萄膜炎体征组合'}],
+        'competing_dx': ['急性前葡萄膜炎', '急性结膜炎', '急性闭角型青光眼'],
+        'learning_value': {
+            'correct_rationale': '急性前葡萄膜炎的体征围绕前房炎症展开，睫状充血、尘状KP、前房闪辉、前房细胞并伴瞳孔缩小。',
+            'per_option': [
+                {'label': 'A', 'truth': False,
+                 'why': '该选项是急性结膜炎的表现，分泌物与瞳孔散大都与葡萄膜炎不符。',
+                 'misconception': '把结膜炎当成葡萄膜炎'},
+                {'label': 'B', 'truth': True,
+                 'why': '该选项逐项对应急性前葡萄膜炎的典型体征，瞳孔缩小与前房炎症伴随。',
+                 'misconception': None},
+            ],
+            'key_takeaway': takeaway if takeaway is not None else
+            '红眼鉴别先看瞳孔与前房：前葡萄膜炎瞳孔小、有KP和细胞；急性闭角型青光眼瞳孔散大、前房浅、眼压高。',
+            'source_quote': '检查时可见睫状充血、尘状KP、前房闪辉明显、大量前房细胞，可伴有瞳孔缩小。',
+        },
+    }
+
+
+def test_export_md_renders_learning_value_blocks():
+    """schema 2.3 解析模板：考点/解析/逐选项/鉴别/记忆要点/原文六块齐全。"""
+    with tempfile.TemporaryDirectory() as tmp:
+        src = _mk(tmp, 'q.json', [_template_question()])
+        out = str(Path(tmp) / 'q.md')
+        outpath, n = qbank.export_md(str(src), out, title='模板测试')
+        assert n == 1
+        md = Path(outpath).read_text(encoding='utf-8')
+        assert '> 模块：M1｜页码：P108｜考点：急性前葡萄膜炎体征组合' in md
+        assert '> 解析：急性前葡萄膜炎的体征围绕前房炎症展开' in md
+        assert '> 逐选项：' in md
+        assert '> - A：该选项是急性结膜炎的表现' in md
+        assert '（误区：把结膜炎当成葡萄膜炎）' in md
+        assert '> - B：该选项逐项对应' in md
+        assert '> 鉴别：① 急性前葡萄膜炎；② 急性结膜炎；③ 急性闭角型青光眼' in md
+        assert '> 记忆要点：红眼鉴别先看瞳孔与前房' in md
+        assert '> 原文：检查时可见睫状充血' in md
+
+
+def test_export_md_splits_option_lines_without_duplication():
+    """explanation 已含 A：… 行时拆成逐选项，不再叠加 per_option。"""
+    q = _template_question(
+        explanation='整题解析正文。\nA：选项A错在把结膜炎当葡萄膜炎。\nB：选项B对。')
+    with tempfile.TemporaryDirectory() as tmp:
+        src = _mk(tmp, 'q.json', [q])
+        out = str(Path(tmp) / 'q.md')
+        outpath, _ = qbank.export_md(str(src), out, title='模板测试')
+        md = Path(outpath).read_text(encoding='utf-8')
+        assert md.count('> - A：') == 1
+        assert '> - A：选项A错在把结膜炎当葡萄膜炎。' in md
+        assert '把结膜炎当成葡萄膜炎' not in md  # per_option 的误区未重复渲染
+
+
+def test_export_md_cleans_takeaway_filler():
+    """历史填充句只在导出层清理，不改源 JSON。"""
+    q = _template_question(
+        takeaway='红眼鉴别先看瞳孔与前房：前葡萄膜炎瞳孔小、有KP和细胞；这是本题的核心鉴别点，需结合题干条件掌握。')
+    with tempfile.TemporaryDirectory() as tmp:
+        src = _mk(tmp, 'q.json', [q])
+        out = str(Path(tmp) / 'q.md')
+        outpath, _ = qbank.export_md(str(src), out, title='模板测试')
+        md = Path(outpath).read_text(encoding='utf-8')
+        assert '这是本题的核心鉴别点' not in md
+        assert '> 记忆要点：红眼鉴别先看瞳孔与前房：前葡萄膜炎瞳孔小、有KP和细胞。' in md
+
+
 def test_gate_a4_md_passes_with_md():
     """GATE-A4: JSON + MD 齐全且含 ✅ 答案标记 → PASS。"""
     import gate_check

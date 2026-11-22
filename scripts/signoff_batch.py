@@ -41,6 +41,7 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BASE / 'scripts'))
+sys.path.insert(0, str(BASE))  # gate_check.py 在仓库根，signoff 的发布前置契约要 import 它
 import workflow_state as ws  # noqa: E402
 
 REQUIRED_GATES = ('GATE-A2', 'GATE-A3', 'GATE-A4', 'GATE-FINAL')

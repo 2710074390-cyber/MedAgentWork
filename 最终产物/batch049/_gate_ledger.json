@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0",
+  "batch": "batch049",
+  "created_at": "2026-11-16T19:36:53",
+  "head": "sha256:3a63cd2a52ca0011ac5d514689bf72275b45932a4b4aafb909f03c8f978dc29a",
+  "stamps": [
+    {
+      "seq": 1,
+      "stage": "a2",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-16T19:36:53",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "中间产物/batch049/ALL_questions.json",
+          "sha256": "efb13bc63e37a75e57ad1efce4c73feaf29170abd7636bc410aafc771b2c5466",
+          "bytes": 1385177
+        }
+      ],
+      "gate_reports": [
+        {
+          "path": "reports/validate/validate_options_report_batch049.json",
+          "sha256": "6f9fd7837ef35d9abe3daa58c78b4de8d257c4477221e0c98c5e524d2a6ed3e2"
+        }
+      ],
+      "gates": [
+        "GATE-A2"
+      ],
+      "note": null,
+      "chain_prev": null,
+      "hash": "sha256:c4b4fa77ab8285ffa62bcdeec5bd96cb9b217cfba82d71af0de8600a20b0113b"
+    },
+    {
+      "seq": 2,
+      "stage": "a3",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-16T19:36:53",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "质检报告/batch049/A3_质检报告.json",
+          "sha256": "5a6116db8951b3499c2bc6b047ea870be47d349cbb998981846a9ec6ae1097ae",
+          "bytes": 10663
+        }
+      ],
+      "gate_reports": [],
+      "gates": [
+        "CHAIN-a2",
+        "SHAPE-BLOOM",
+        "GATE-A3"
+      ],
+      "note": null,
+      "chain_prev": "sha256:c4b4fa77ab8285ffa62bcdeec5bd96cb9b217cfba82d71af0de8600a20b0113b",
+      "hash": "sha256:ca8d57d5def57f456716fc497b3da8762a297e52a0d4d079b88b8759c79082e3"
+    },
+    {
+      "seq": 3,
+      "stage": "a4",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-16T19:36:54",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "最终产物/batch049/ALL_questions_FIXED.json",
+          "sha256": "fcf9ea37c60576588db113dc0055c925b6c06fa2b1ff9384919e2227302d149a",
+          "bytes": 1374123
+        },
+        {
+          "path": "最终产物/batch049/ALL_questions_FIXED.md",
+          "sha256": "11b9872e3f382f8bc066699bf3f9e4c49f8ecd358ef6d8addcee77247cd00bd5",
+          "bytes": 389808
+        }
+      ],
+      "gate_reports": [],
+      "gates": [
+        "CHAIN-a2",
+        "CHAIN-a3",
+        "SHAPE-SYNCED",
+        "GATE-A4-PATCH",
+        "GATE-A4"
+      ],
+      "note": null,
+      "chain_prev": "sha256:ca8d57d5def57f456716fc497b3da8762a297e52a0d4d079b88b8759c79082e3",
+      "hash": "sha256:2ca0b71799aa4d7424a3d91771a4dfd1dac9b4bc7da879ba5f8377c9b44bcfe9"
+    },
+    {
+      "seq": 4,
+      "stage": "lv",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-16T19:36:55",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "最终产物/batch049/ALL_questions_FIXED.json",
+          "sha256": "fcf9ea37c60576588db113dc0055c925b6c06fa2b1ff9384919e2227302d149a",
+          "bytes": 1374123
+        }
+      ],
+      "gate_reports": [],
+      "gates": [
+        "CHAIN-a2",
+        "CHAIN-a3",
+        "CHAIN-a4",
+        "GATE-LV",
+        "GATE-LV"
+      ],
+      "note": null,
+      "chain_prev": "sha256:2ca0b71799aa4d7424a3d91771a4dfd1dac9b4bc7da879ba5f8377c9b44bcfe9",
+      "hash": "sha256:3e2fedd0b30cfd54be4cbfc77cc7f16d43771991f00f45d4c9d2a7ecf8311faa"
+    },
+    {
+      "seq": 5,
+      "stage": "a5",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-16T19:36:56",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "复习资料/眼科学_2026秋教师重点版/眼科学_2026秋教师重点版_主复习资料.md",
+          "sha256": "36fca7e3fd5bbe598c31a8e7d9b87e110952b5f9a0ed44535e5d8fd396cde6c0",
+          "bytes": 142541
+        }
+      ],
+      "gate_reports": [],
+      "gates": [
+        "CHAIN-a2",
+        "CHAIN-a3",
+        "CHAIN-a4",
+        "CHAIN-lv",
+        "GATE-A5-KP",
+        "GATE-A5-DETAIL"
+      ],
+      "note": null,
+      "chain_prev": "sha256:3e2fedd0b30cfd54be4cbfc77cc7f16d43771991f00f45d4c9d2a7ecf8311faa",
+      "hash": "sha256:95801a7d8bace7f5de093d0ebfd5e42ecd2fed5ca78ca7da209f0da4285c376c"
+    },
+    {
+      "seq": 6,
+      "stage": "final",
+      "verdict": "PASS",
+      "provenance": "driver",
+      "ts": "2026-11-16T19:36:58",
+      "driver_version": "batch_driver/2026-11-04",
+      "artifacts": [
+        {
+          "path": "最终产物/batch049/ALL_questions_FIXED.json",
+          "sha256": "fcf9ea37c60576588db113dc0055c925b6c06fa2b1ff9384919e2227302d149a",
+          "bytes": 1374123
+        }
+      ],
+      "gate_reports": [],
+      "gates": [
+        "CHAIN-a2",
+        "CHAIN-a3",
+        "CHAIN-a4",
+        "CHAIN-lv",
+        "CHAIN-a5",
+        "GATE-REALQ",
+        "GATE-FINAL"
+      ],
+      "note": null,
+      "chain_prev": "sha256:95801a7d8bace7f5de093d0ebfd5e42ecd2fed5ca78ca7da209f0da4285c376c",
+      "hash": "sha256:3a63cd2a52ca0011ac5d514689bf72275b45932a4b4aafb909f03c8f978dc29a"
+    }
+  ]
+}

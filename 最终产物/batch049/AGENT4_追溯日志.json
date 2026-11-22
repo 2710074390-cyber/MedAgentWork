@@ -1,0 +1,59 @@
+{
+  "batch_id": "batch049",
+  "agent": "MedFix",
+  "generated_at": "2026-11-16T19:35:00",
+  "source_file": "中间产物/batch049/ALL_questions.json",
+  "output_file": "最终产物/batch049/ALL_questions_FIXED.json",
+  "source_file_synced": true,
+  "source_files_synced": [
+    "中间产物/batch049/ALL_questions.json"
+  ],
+  "source_sha256": "efb13bc63e37a75e57ad1efce4c73feaf29170abd7636bc410aafc771b2c5466",
+  "output_sha256": "fcf9ea37c60576588db113dc0055c925b6c06fa2b1ff9384919e2227302d149a",
+  "patches": [
+    {
+      "patch_id": "batch049-P001",
+      "type": "learning_value.key_takeaway",
+      "scope": "all",
+      "changed": 235,
+      "source_file_synced": true,
+      "reason": "清理模板填充句；短要点按题目正确项/解析/鉴别关系补足到 ≥30 字"
+    }
+  ],
+  "patch_count": 1,
+  "noop": false,
+  "execution_metadata": {
+    "mode": "PATCH",
+    "reason": "按 docs/产物格式规范.md §2.1 清理 learning_value.key_takeaway；不改题干/选项/答案/解析/锚点。",
+    "precondition_checks": [
+      "A2/A3 回执存在",
+      "只改 learning_value.key_takeaway"
+    ],
+    "post_checks": [
+      "JSON 可解析",
+      "题数 250",
+      "ID 连续",
+      "答案键未变",
+      "key_takeaway ≥30 字",
+      "无模板填充句",
+      "签收后字节重建，内容语义未变"
+    ]
+  },
+  "consistency_scan": {
+    "scanned": 250,
+    "residual_conflicts": 0
+  },
+  "polarity_violations": [],
+  "rollback": [],
+  "independent_findings": [],
+  "report_metadata": {
+    "batch_id": "batch049",
+    "stage": "A4",
+    "source_file": "最终产物/batch049/ALL_questions_FIXED.json",
+    "source_sha256": "fcf9ea37c60576588db113dc0055c925b6c06fa2b1ff9384919e2227302d149a",
+    "a2_input_file": "中间产物/batch049/ALL_questions.json",
+    "a2_input_sha256": "efb13bc63e37a75e57ad1efce4c73feaf29170abd7636bc410aafc771b2c5466",
+    "a3_report_file": "质检报告/batch049/A3_质检报告.json",
+    "a3_report_sha256": "5a6116db8951b3499c2bc6b047ea870be47d349cbb998981846a9ec6ae1097ae"
+  }
+}

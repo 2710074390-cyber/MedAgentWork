@@ -654,7 +654,11 @@ def check_review_detail(args, profile: dict, mode: str) -> dict:
 def check_review_detail_obsidian(args, profile: dict, mode: str) -> dict:
     """HC-26 对 Obsidian 交付件复检：用户实际打开的那份也必须达标。"""
     subject = _batch_subject(args.batch)
-    path = BASE / "Obsidian产物" / "教师重点蓝图版" / f"{subject}_教师重点蓝图版_主复习资料.md"
+    candidates = [
+        BASE / "Obsidian产物" / "教师重点浓缩版" / f"{subject}_教师重点浓缩版_主复习资料.md",
+        BASE / "Obsidian产物" / "教师重点蓝图版" / f"{subject}_教师重点蓝图版_主复习资料.md",
+    ]
+    path = next((p for p in candidates if p.exists()), candidates[-1])
     if not subject or not path.exists():
         return check_item("r2.review_detail_obsidian", "SKIP",
                           f"无 Obsidian 教师重点交付件：{path}", required=False)
