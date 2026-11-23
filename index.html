@@ -1183,6 +1183,7 @@ const REVIEWS_S1=[
   {name:'口腔科学',pdf:'大四上/复习资料/口腔科学_主复习资料.pdf',format:'PDF',size:'17.0 MB',tags:['教学计划版','新增'],desc:'龋病 · 牙髓病 · 牙周病 · 口腔黏膜病 · 颌面外科'},
   {name:'眼科学',pdf:'大四上/复习资料/眼科学_主复习资料.pdf',format:'PDF',size:'21.3 MB',tags:['教学计划版','新增'],desc:'白内障 · 青光眼 · 葡萄膜病 · 视网膜病 · 屈光'},
   {name:'眼科学（教师重点浓缩版）',pdf:'大四上/复习资料/眼科学教师重点浓缩版_主复习资料.pdf',format:'PDF',size:'5.6 MB',tags:['教师重点版','浓缩版'],desc:'教师重点浓缩版 · 44 条锚定 · 10 模块 · 高频考点/对照表/自测 · 250 题配套'},
+  {name:'眼科卡通图集（解剖示意图 22 张）',pdf:'大四上/复习资料/眼科卡通图集/眼科学_解剖示意图集.pdf',html:'大四上/复习资料/眼科卡通图集/眼科学_解剖示意图集.html',format:'PDF+网页',size:'19.4 MB',tags:['眼科卡通图','示意图集'],desc:'22 张统一画风 · 16 章节 · 编号圆点＋图例零引线 · 在线看图册 / 下载 PDF'},
   {name:'传染病学',pdf:'大四上/复习资料/传染病学_主复习资料.pdf',format:'PDF',size:'9.1 MB',tags:['教学计划版','新增'],desc:'总论 · 病毒性肝炎 · 麻疹水痘 · 狂犬病艾滋病 · 伤寒 · 菌痢霍乱 · 疟疾 · 血吸虫（8 模块）'},
 ];
 const BANKS_S1=[
@@ -1247,6 +1248,7 @@ function resRow(x){
   let acts='';
   if(it.pdf){
     acts+='<button class="btn btn-pri btn-sm" data-act="download" data-path="'+esc(it.pdf)+'" data-size="'+esc(it.size||'')+'">'+icon('i-download')+'<span>下载 PDF</span></button>';
+    if(it.html)acts+='<button class="icon-act" data-act="view" data-path="'+esc(it.html)+'" title="打开网页版图册" aria-label="打开网页版图册">'+icon('i-external')+'</button>';
   }
   if(it.md){
     acts+='<button class="btn btn-pri btn-sm" data-act="preview" data-path="'+esc(it.md)+'" data-name="'+esc(it.name)+'">'+icon('i-book')+'<span>在线阅读</span></button>';
