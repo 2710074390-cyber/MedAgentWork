@@ -209,3 +209,55 @@ def test_batch046_a4_is_noop():
     r = cpi.audit(b, a, tag='batch046')
     r['noop'] = cpi.detect_noop(r)
     assert r['noop']['status'] == 'NOOP', 'A4 交付与 A2 输入字节相同，应判 no-op'
+
+
+# ── 2026-11-25：纯追加改选项（batch049 事故入口）──────────────
+
+def _padded(text='乙', tail='等临床情况需鉴别'):
+    return [{'label': 'A', 'text': '甲'}, {'label': 'B', 'text': text + tail}]
+
+
+def test_option_append_is_detected():
+    b = _write([_q()])
+    a = _write([_q(options=_padded())])
+    r = cpi.audit(b, a, tag='t')
+    assert r['counts']['option_padding_items'] == 1
+    assert r['counts']['option_padding_boilerplate'] == 1
+    assert r['option_padding'][0]['appends'][0]['added'] == '等临床情况需鉴别'
+
+
+def test_option_append_not_blocking_for_old_batch():
+    b = _write([_q()])
+    a = _write([_q(options=_padded())])
+    r = cpi.audit(b, a, tag='batch049', batch='batch049')
+    assert r['padding_blocking'] is False
+    assert r['result'] == 'PASS', r['result']
+
+
+def test_option_append_blocking_for_new_batch():
+    b = _write([_q()])
+    a = _write([_q(options=_padded())])
+    r = cpi.audit(b, a, tag='batch051', batch='batch051')
+    assert r['padding_blocking'] is True
+    assert r['result'] == 'FAIL'
+
+
+def test_meaningful_option_rewrite_is_not_padding():
+    """改写干扰项实质内容（不是追加）不算补丁。"""
+    b = _write([_q()])
+    a = _write([_q(options=[{'label': 'A', 'text': '甲'},
+                            {'label': 'B', 'text': '乙型病毒性肝炎'}])])
+    r = cpi.audit(b, a, tag='batch051', batch='batch051')
+    # 「乙」→「乙型病毒性肝炎」是前缀式追加，但追加内容是实质术语、不含套话词
+    appends = r['option_padding'][0]['appends'] if r['option_padding'] else []
+    assert appends and appends[0]['boilerplate'] is False
+    assert r['padding_blocking'] is False, '实质补全不该阻断'
+    assert r['result'] == 'PASS'
+
+
+def test_short_unit_append_not_boilerplate():
+    b = _write([_q()])
+    a = _write([_q(options=[{'label': 'A', 'text': '甲mmHg'},
+                            {'label': 'B', 'text': '乙'}])])
+    r = cpi.audit(b, a, tag='batch051', batch='batch051')
+    assert r['counts']['option_padding_boilerplate'] == 0

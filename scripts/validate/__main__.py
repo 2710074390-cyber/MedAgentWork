@@ -38,17 +38,21 @@ def _write(p: Path, text: str) -> str:
     return str(p)
 
 
-def _run_batch_mode(path: str, enforce: bool, out_json: str = '', out_md: str = '') -> int:
+def _run_batch_mode(path: str, enforce: bool, out_json: str = '', out_md: str = '',
+                    batch: str = '', suffix: str = '') -> int:
     from .rules_batch import audit_batch, load_items, render_md
 
     items = load_items(path)
-    rep = audit_batch(items, enforce=enforce)
+    # batch 决定 X7/X8/X9/X10 是否阻断（≥ x_enforce_since）；缺省按路径里的批次号推断。
+    rep = audit_batch(items, enforce=enforce, batch=batch or _report_stem(path))
     rep['path'] = str(path)
 
-    stem = _report_stem(path)
+    # suffix 让同一批次的不同阶段（a2 / a4）各写各的证据文件：
+    # 共用一份会覆盖 a2 回执里记录的 gate_reports sha。
+    stem = batch or _report_stem(path)   # 显式 --batch 优先：文件名必须与 gates 读的路径一致
     outdir = BASE / 'reports' / 'validate'
-    jp = out_json or str(outdir / f'{stem}_batch_rules.json')
-    mp = out_md or str(outdir / f'{stem}_batch_rules.md')
+    jp = out_json or str(outdir / f'{stem}_batch_rules{suffix}.json')
+    mp = out_md or str(outdir / f'{stem}_batch_rules{suffix}.md')
     _write(Path(jp), json.dumps(rep, ensure_ascii=False, indent=2))
     _write(Path(mp), render_md(rep, title=f'{stem} 批次规则回测（{rep["mode"]}）'))
 
@@ -98,6 +102,10 @@ def main(argv=None):
     parser.add_argument("--verbose", "-v", action="store_true", help="显示通过题目")
     parser.add_argument("--batch-mode", action="store_true",
                         help="额外跑批次级规则 X1/X2/X6 + 结构覆盖率（默认 advisory）")
+    parser.add_argument("--batch-rules-only", action="store_true",
+                        help="只跑批次规则，跳过单题校验（供门禁侧只管 X 系列时使用）")
+    parser.add_argument("--report-suffix", default="",
+                        help="批次规则证据文件名的后缀（如 _a4），避免覆盖别阶段的同名证据")
     parser.add_argument("--batch-enforce", action="store_true",
                         help="批次规则违例即 FAIL（需先完成历史回测与误伤确认）")
     parser.add_argument("--no-report", action="store_true", help="不落 reports/validate 证据文件")
@@ -115,10 +123,12 @@ def main(argv=None):
 
     exit_status = 0
 
-    if args.file:
+    if args.batch_rules_only:
+        pass  # 只跑批次规则：不重跑单题校验，也不重写 validate_options_report
+    elif args.file:
         summary = validate_file(args.file, mode=args.mode, verbose=args.verbose)
         exit_status = max(exit_status, exit_code(summary, strict_warn=args.strict_warn))
-        if not args.no_report:
+        if not args.no_report and not args.batch_rules_only:
             try:
                 sp = _run_structural(args.file)
                 print(f'  结构字段覆盖证据: {sp}')
@@ -129,7 +139,8 @@ def main(argv=None):
         exit_status = max(exit_status, exit_code(summary, strict_warn=args.strict_warn))
 
     if args.batch_mode and args.file:
-        if _run_batch_mode(args.file, enforce=args.batch_enforce) != 0:
+        if _run_batch_mode(args.file, enforce=args.batch_enforce, batch=args.batch or '',
+                           suffix=args.report_suffix) != 0:
             exit_status = 1
 
     sys.exit(exit_status)

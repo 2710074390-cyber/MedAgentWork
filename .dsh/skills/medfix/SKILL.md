@@ -44,8 +44,19 @@ python scripts/gate_verify.py --batch {batchID} --stage a3 --quiet   # exit 0 �
 3. **修复纪律**：
    - 只扩充短选项（加领域限定词），**绝不 `text[:n]` 暴力截断**（batch014 教训）
    - 禁止"（相关表现）""（相关类型）"等无意义后缀凑长度，干扰项修复必须增加实质性区分信息
+   - **禁止纯追加补丁（batch051 起阻断）**：不得用「旧文本 + 尾巴」的方式修任何指标。
+     `check_patch_integrity.py` 会逐选项比对，`新文本 == 旧文本 + 追加` 且追加内容含
+     `等/需/情况/鉴别/临床` 或 ≥6 字 → 判 `PADDING_PATCH`，GATE-A4 直接 FAIL。
+     batch049 就是这样被污染的：133 题 298 个选项被追加 `等临床情况需鉴别`，24 个正确项在列。
+     正确修法：改写干扰项的**实质内容**（换成同层同类的错误陈述），或把正确项改短。
+   - **重排选项必须同步解析**：若改了选项顺序，`explanation` 里「A：…」逐选项行要一起改标号
+     **并重排顺序**，否则 X11 判 `VIOLATED`（机器读 answer 永远对，人读解析永远错）。
+     需要机械重排时用 `python scripts/shuffle_option_positions.py --file <JSON> --in-place`（自动同步）。
    - 反向题极性不可翻转；答案键联动检查
 4. **复检**：修改后运行 `python -m scripts.validate --file <ALL_questions_FIXED.json>` 或 `python validate_options.py --file <ALL_questions_FIXED.json>`，FAIL==0 才交付；再运行 `python scripts/check_learning_value.py --file <ALL_questions_FIXED.json> --batch {batchID} --out reports/validate/learning_value_{batchID}_final.json`，`FAIL>0` 不得交付。
+   之后跑批次规则 `python -m scripts.validate --file <ALL_questions_FIXED.json> --batch-mode --batch {batchID}`：
+   **batch051 起 X7/X8/X9/X10/X11/X12 任一 VIOLATED → A4 门禁 FAIL**（多选答案分布、难度-题型解耦、
+   选项尾部套话、答案位置周期、解析标号同步、难度自述自洽）。这些不是"建议"，是交付前提。
 5. **MD 交付**：复检通过后运行 `python scripts/qbank.py export-md --file <ALL_questions_FIXED.json> --out <同目录 .md> --review-queue-out <同目录 review_queue.json>` 生成最终交付 MD + 复核队列（见第 2 节命令）。
 6. **学习价值层补丁（HC-24/LV-1）**：仅按质检报告的 `learning_value` patch 修改 `correct_rationale/per_option.why/misconception/key_takeaway/source_quote`；不得改题干/选项/答案键；`source_quote` 必须逐字来自教师重点/教材/RAG，无法逐字 → `must_escalate`，禁止编造。
 7. **复核队列（HC-28）**：`must_escalate` patch 不执行，但必须写入 `review_queue`/`escalations_for_human.md` 并继续；同时把 A3 `review_queue` 的处置写回每题 `release` 对象（不改题干/答案）。修正后运行 `qbank.py export-md ... --review-queue-out 最终产物/{batchID}/review_queue.json`，最终 MD 末尾自动附人工复核队列。

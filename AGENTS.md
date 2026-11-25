@@ -52,9 +52,12 @@ python scripts/ctx_fetch.py --id '§SOUL#HC-22'
 这四条**不依赖你是否读了规则**：跳过门禁，下游就拒收；伪造回执，CI 重跑门禁就会红。
 「写了规则」≠「会执行」——本仓库只信能机械判定的东西。
 
-## 3. 四个自检命令
+## 3. 五个自检命令
 
 ```bash
+# 锚定清单有没有漏掉教师原文里的主题（写复习资料之前；只报候选，--strict 才 exit 1）
+python scripts/anchor_coverage_check.py --source <教师原文> --anchors <锚定清单>
+
 # 上游门禁真的跑过吗（消费上游产物之前）
 python scripts/gate_verify.py --batch batchNNN --stage a3 --quiet
 
@@ -66,9 +69,16 @@ python scripts/batch_artifacts.py check --batch batchNNN
 
 # 即将提交的内容里，批次证据是否完整（pre-commit 同款口径）
 python scripts/gate_audit.py --staged --require-tracked
+
+# 答案位置是否可预测（X1/X7/X10；--in-place 可按内容无关的顺序打散，不改一个字）
+python scripts/shuffle_option_positions.py --file <题库JSON> --check
 ```
 
 退出码 `0` 才继续；`1` 表示有具体阻断项，按输出的「下一步命令」处理；`2` 是参数/环境错误。
+
+> 第一条是**唯一能发现「清单本身少一条」的检查**：复习资料门禁的覆盖分母就是锚定清单自身
+> （N/N），清单漏条时它仍显示 100%。2026-11-24 眼科学 `睑缘炎、结膜炎` 标题行只立了结膜炎一条、
+> 睑缘炎整条丢失，就是靠人工比对才发现——立条后先跑这条，再写正文。
 
 > `gate_verify` 对「不属于本批计划」的阶段返回 `SKIP NOT_APPLICABLE`（exit 0）——这是机械判定的
 > 「本批没有这个阶段」（如纯复习资料批次无 a2–a4/lv），不是漏检；新批次缺回执仍然是 exit 1。
@@ -92,6 +102,39 @@ python scripts/gate_audit.py --staged --require-tracked
 
 三条纪律：① 不要把宿主工具名写进交接包或任务描述；② `write_scope=question_bank`（`parallel_safe=false`）的阶段
 **任何宿主都不许并发写**；③ 包里 `inputs_fingerprint` 与当前产物不符即视为过期，必须重跑 `check` 后再用。
+
+## 3.6 检索通道（双通道 · 2026-11-07）
+
+教材检索有两条通道，**资料库优先、`search_kb` 回落**。协议两端都在 `scripts/kb_library.py`，
+检索动作本身由宿主提供，脚本只负责生成查询与归一化结果：
+
+```bash
+python scripts/kb_library.py status    # 双通道是否就绪（节点绑定 / 本地教材 / 依赖）
+python scripts/kb_library.py calibrate # 标定印刷页偏移（页眉 + 目录/锚点互证），--apply 写入
+python scripts/kb_library.py plan   --batch batchNNN --subject <code> --keypoints <锚定清单>
+python scripts/kb_library.py ingest --batch batchNNN --responses <检索结果.json>
+python scripts/kb_library.py merge  --batch batchNNN --search-kb <search_kb 输出.json>
+```
+
+- 节点绑定与印刷页偏移在 `知识库素材/library_nodes.json`（数据，不是代码）。
+- 资料库只回片段、**不给页码**；页码由片段自带的 `===== 第 N 页 =====` 反查，印刷页 = TXT 页 + 学科偏移。
+- 偏移不靠猜：`calibrate` 走三条互相独立的路径——全书页眉标定（主导比 ≥10x）、目录页码反算、
+  教师清单锚点反算。页眉主导 + 任一条反算同值 → `verified`；仅页眉主导 → `calibrated`。
+- **`unverified` 页码不得写入产物**（PG-11）；`calibrated` 可写但附录须注明标定方式。
+- 宿主无资料库能力（DSH / Trae / 手工）时直接走 `知识库素材/search_kb.py --subject <code> --hybrid`，
+  两条通道产出的片段格式同构，下游不需要分叉。
+
+**内容落库**用 `scripts/kb_upload.py`（与检索协议分开，它只管传）：
+
+```bash
+python scripts/kb_upload.py plan   --show-excluded   # 传什么、不传什么及原因
+python scripts/kb_upload.py push   --yes             # 批量上传（默认 dry-run）
+python scripts/kb_upload.py status                   # 各分组落库进度
+```
+
+- 分组与「故意不传」的目录写在脚本 `GROUPS` / `EXCLUDED_NOTE` 里，改清单改脚本，别手工一个个传。
+- 幂等靠 `知识库素材/library_uploads.json`（路径 → sha256 → node_id）：字节没变就跳过，变了重传。
+- 上传后索引有 **1–2 分钟延迟**，立刻搜空不是失败。
 
 ## 4. 不要做的事
 

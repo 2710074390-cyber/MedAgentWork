@@ -334,10 +334,18 @@ def _mk(qid, answer='A', opts=None, mc_id=None, mechanism=None, truth=True, **ex
 
 
 def _balanced(n=25):
-    """答案字母均匀分布、正确项不是最长、错误认知复用充分。"""
+    """答案字母均匀分布、正确项不是最长、错误认知复用充分、答案位置无周期。
+
+    答案字母用固定种子的乱序，而不是 `i % 5`：机械轮转虽然总量均匀，
+    但位置可预测，会被 X10 判 VIOLATED（这正是 batch049 的缺陷）。
+    """
+    import random
+    rnd = random.Random(20261125)
+    seq = list('ABCDE') * n
+    rnd.shuffle(seq)
     out = []
     for i in range(n * 5):
-        lab = 'ABCDE'[i % 5]
+        lab = seq[i]
         # 正确项 8 字、干扰项 9 字 → 正确项永不唯一最长（X2 不误报）
         opts = {k: ('正确答案内容文字' if k == lab else '干扰项内容文字长度') for k in 'ABCDE'}
         out.append(_mk(f'BAL-{i:03d}', lab, opts, mc_id=f'MC-{i % 3}'))
@@ -647,3 +655,324 @@ def test_warn_only_does_not_fail_exit_code():
     assert exit_code({'fail': 0, 'warn': 3}, strict_warn=True) == 1
     assert exit_code({'fail': 1, 'warn': 0}) == 1
     assert exit_code(None) == 0
+
+
+# ── 2026-11-25：X7 多选答案分布 / X8 难度-题型解耦 / X9 选项尾部模板 ──
+#
+# 三条规则的共同背景：batch049 的 250 题里，多选 18 题有 16 题答案是 ABCD、
+# E 一次没当过答案；89 道 A2 有 88 道被标 L3/L4（难度成了题型的代理变量）；
+# 133 题的选项被贴上同一句「等临床情况需鉴别」——为了压 X2「唯一最长」。
+
+def _xq(i, ans, texts=None):
+    texts = texts or {k: f'{k}项陈述内容{chr(65+i%26)}' for k in 'ABCDE'}
+    return {'id': f'X{i:03d}', 'type': 'X', 'stem': f'多选题{i}',
+            'options': {k: texts[k] for k in 'ABCDE'}, 'answer': ans,
+            'difficulty_tier': 'L3', 'schema_version': '2.2'}
+
+
+def test_x7_prefix_cluster_violates():
+    """18 题全 ABCD / ABC：正确项永远是开头几位 → 盲选「ABCD」就能过。"""
+    items = [_xq(i, 'ABCD') for i in range(16)] + [_xq(i, 'ABC') for i in range(16, 18)]
+    r = rb.check_multi_answer_distribution(items, _TH)
+    assert r['status'] == 'VIOLATED'
+    assert r['prefix_cluster_share'] == 1.0
+    assert any(v.get('letter') == 'E' for v in r['violations']), 'E 从不作答案必须点名'
+
+
+def test_x7_balanced_passes():
+    """正确项个数 2/3/4 混合、五个字母都被用到、组合各不相同。"""
+    ans = ['AB', 'CD', 'AE', 'BD',
+           'ACE', 'BDE', 'ACD', 'BCE', 'ABD', 'CDE', 'ABE', 'BCD',
+           'ABCD', 'ABCE', 'ABDE', 'ACDE']
+    r = rb.check_multi_answer_distribution([_xq(i, a) for i, a in enumerate(ans)], _TH)
+    assert r['status'] == 'PASS', r['violations']
+
+
+def test_x7_skips_small_sample():
+    r = rb.check_multi_answer_distribution([_xq(i, 'ABCD') for i in range(3)], _TH)
+    assert r['status'] == 'SKIP' and r['applicable'] is False
+
+
+def _dq(i, qtype, tier, answer='A'):
+    return {'id': f'D{i:04d}', 'type': qtype, 'stem': '题干', 'answer': answer,
+            'options': {k: f'{k}选项内容{i}' for k in 'ABCDE'}, 'difficulty_tier': tier}
+
+
+def test_x8_difficulty_collinear_with_type_violates():
+    """A2 全难、A1 全易：难度不携带任何信息，看到题型就知道难度。"""
+    items = ([_dq(i, 'A1', 'L1') for i in range(15)] + [_dq(i, 'A1', 'L2') for i in range(15)]
+             + [_dq(i, 'A2', 'L3') for i in range(15)] + [_dq(i, 'A2', 'L4') for i in range(15)])
+    r = rb.check_difficulty_type_decoupling(items, _TH)
+    assert r['status'] == 'VIOLATED'
+    assert any(v['metric'] == 'tier_min_share' and v['type'] == 'A2' and v['side'] == 'easy'
+               for v in r['violations']), 'A2 没有简单题必须点名'
+
+
+def test_x8_decoupled_passes():
+    """每种题型都横跨四档（题量按全局目标配比），TVD 低即「难度独立于题型」。"""
+    tiers = ['L1', 'L1', 'L2', 'L2', 'L2', 'L3', 'L3', 'L3', 'L3', 'L4', 'L4', 'L3']
+    items = []
+    for t in ('A1', 'A2'):
+        for j, tier in enumerate(tiers * 2):
+            items.append(_dq(len(items), t, tier))
+    r = rb.check_difficulty_type_decoupling(items, _TH)
+    assert r['status'] == 'PASS', r['violations']
+
+
+def test_x8_skips_without_labels():
+    items = [{'id': f'N{i}', 'type': 'A1', 'stem': 'q', 'answer': 'A',
+              'options': {k: 'x' for k in 'ABCDE'}} for i in range(30)]
+    r = rb.check_difficulty_type_decoupling(items, _TH)
+    assert r['status'] == 'SKIP'
+
+
+def test_x9_enum_tail_padding_violates():
+    """为压 X2 给干扰项尾巴贴同一句套话：133/250 题的真实缺陷。"""
+    items = []
+    for i in range(30):
+        opts = {k: f'{k}选项主体内容{i}' for k in 'ABCDE'}
+        for k in 'ABCD':
+            opts[k] = opts[k] + '等临床情况需鉴别'
+        items.append({'id': f'P{i}', 'type': 'A1', 'stem': 'q', 'answer': 'A',
+                      'options': opts, 'difficulty_tier': 'L2'})
+    r = rb.check_option_template_pollution(items, _TH)
+    assert r['status'] == 'VIOLATED'
+    assert r['top_templates'][0]['template'] == '等:等临床情况需鉴别'
+    assert r['correct_option_hits'] == 30, '正确项被污染必须单独计数'
+
+
+def test_x9_disease_name_tail_is_not_template():
+    """真实病名在几百题里必然重复尾巴，不能当套话误判。"""
+    names = ['急性前葡萄膜炎', '慢性前葡萄膜炎', '肉芽肿性前葡萄膜炎']
+    items = []
+    for i in range(40):
+        opts = {k: f'{k}项' + names[i % 3] for k in 'ABCDE'}
+        items.append({'id': f'P{i}', 'type': 'A1', 'stem': 'q', 'answer': 'A',
+                      'options': opts, 'difficulty_tier': 'L2'})
+    r = rb.check_option_template_pollution(items, _TH)
+    assert r['status'] == 'PASS', r['top_templates']
+
+
+def test_x9_short_options_have_no_fingerprint():
+    """「3个月」「正确」这类短选项不能塌成一个空指纹。"""
+    items = [{'id': f'S{i}', 'type': 'A1', 'stem': 'q', 'answer': 'A',
+              'options': {'A': '3个月', 'B': '6个月', 'C': '1年', 'D': '2年', 'E': '正确'}}
+             for i in range(40)]
+    r = rb.check_option_template_pollution(items, _TH)
+    assert r['status'] == 'PASS'
+
+
+def test_x1_binary_items_excluded_from_denominator():
+    """判断题的 A/B 不是五选一偏倚，不能进单选分母。"""
+    items = [{'id': f'T{i}', 'type': '判断', 'stem': 'q', 'answer': 'A',
+              'options': {'A': '正确', 'B': '错误'}} for i in range(20)]
+    items += [_mk(f'Q{i}', 'ABCDE'[i % 5]) for i in range(10)]
+    r = rb.check_answer_distribution(items, _TH)
+    assert r['denominator'] == 10
+    assert r['excluded_binary'] == 20
+
+
+def test_options_normalizer_labels_plain_string_list():
+    """batch044 押题卷的形态：选项是无标号纯文本，按位置补 A–E。"""
+    q = {'options': ['甲项内容', '乙项内容', '丙项内容', '丁项内容', '戊项内容'], 'answer': 'ABE'}
+    assert rb.options(q)['C'] == '丙项内容'
+
+
+def test_x10_letter_cycle_violates():
+    """单选答案按 ABCDE 轮转：总量完美均匀，但位置完全可预测。"""
+    qs = [{'id': f'C{i}', 'type': 'A1', 'stem': 'q', 'answer': 'ABCDE'[i % 5],
+           'options': {k: f'{k}{i}' for k in 'ABCDE'}} for i in range(40)]
+    r = rb.check_answer_position_periodicity(qs, _TH)
+    assert r['status'] == 'VIOLATED'
+    assert r['letter_cycle_fit'] == 1.0
+
+
+def test_x10_binary_alternation_violates():
+    """判断题 ABAB 交替：第 1、3、5 题永远是「正确」。"""
+    qs = [{'id': f'T{i}', 'type': '判断', 'stem': 'q', 'answer': 'AB'[i % 2],
+           'options': {'A': '正确', 'B': '错误'}} for i in range(30)]
+    r = rb.check_answer_position_periodicity(qs, _TH)
+    assert r['status'] == 'VIOLATED'
+    assert r['binary_alternation_fit'] == 1.0
+
+
+def test_x10_random_sequence_passes():
+    import random
+    rnd = random.Random(7)
+    qs = [{'id': f'R{i}', 'type': 'A1', 'stem': 'q', 'answer': rnd.choice('ABCDE'),
+           'options': {k: f'{k}{i}' for k in 'ABCDE'}} for i in range(120)]
+    r = rb.check_answer_position_periodicity(qs, _TH)
+    assert r['status'] == 'PASS', r['violations']
+
+
+# ── 2026-11-25：新批次阻断（x_enforce_since）──
+
+def _bad_multi_batch(n=16):
+    """复刻 batch049 形态：多选答案恒 ABCD、选项贴同一句套话、单选字母轮转。"""
+    items = []
+    for i in range(n):
+        opts = {k: f'{k}选项主体内容{i}' for k in 'ABCDE'}
+        for k in 'ABCD':
+            opts[k] = opts[k] + '等临床情况需鉴别'
+        items.append({'id': f'X{i}', 'type': 'X', 'stem': 'q', 'answer': 'ABCD',
+                      'options': opts, 'difficulty_tier': 'L3'})
+    for i in range(30):
+        items.append({'id': f'S{i}', 'type': 'A1', 'stem': 'q', 'answer': 'ABCDE'[i % 5],
+                      'options': {k: f'{k}内容{i}' for k in 'ABCDE'}, 'difficulty_tier': 'L1'})
+    return items
+
+
+def test_blocking_rules_only_from_enforce_since():
+    """同一份坏数据：batch049 只记录，batch051 起必须 FAIL。"""
+    items = _bad_multi_batch()
+    old = rb.audit_batch(items, batch='batch049')
+    new = rb.audit_batch(items, batch='batch051')
+    assert old['status'] == 'ADVISORY', old['violated_rules']
+    assert old['blocking_rules'] == []
+    assert new['status'] == 'FAIL'
+    assert set(new['blocking_rules']) >= {'X7', 'X9', 'X10'}
+
+
+def test_batch_number_parsing():
+    assert rb.batch_number('batch051') == 51
+    assert rb.batch_number('最终产物/batch052/x.json') == 52
+    assert rb.batch_number('') is None
+
+
+def test_x8_global_deviation_alone_does_not_block():
+    """X8 的全局配比偏差属于理想值，不该卡住交付；只有 TVD/两侧占比阻断。"""
+    check = {'rule': 'X8', 'status': 'VIOLATED',
+             'violations': [{'metric': 'global_share', 'tier': 'L4'}]}
+    assert rb._is_blocking(check, 'batch051', _TH) is False
+    check2 = {'rule': 'X8', 'status': 'VIOLATED',
+              'violations': [{'metric': 'type_tvd', 'type': 'A2'}]}
+    assert rb._is_blocking(check2, 'batch051', _TH) is True
+
+
+def test_enforce_flag_still_forces_fail_on_old_batch():
+    rep = rb.audit_batch(_bad_multi_batch(), enforce=True, batch='batch049')
+    assert rep['status'] == 'FAIL'
+
+
+# ── 2026-11-25：X11 解析标号同步 / X12 难度自述自洽 ──
+
+def _expl_q(i, ans='A', expl=None):
+    opts = {k: f'{k}项内容{i}' for k in 'ABCDE'}
+    expl = expl if expl is not None else (
+        '解析正文。\n' + '\n'.join(f'{k}：该选项说明{i}' for k in 'ABCDE'))
+    return {'id': f'E{i:03d}', 'question_id': f'E{i:03d}', 'type': 'A1', 'stem': 'q',
+            'answer': ans, 'options': opts, 'explanation': expl,
+            'difficulty_tier': 'L2', 'step_count': 1}
+
+
+def test_x11_synced_passes():
+    r = rb.check_explanation_labels([_expl_q(i) for i in range(20)], _TH)
+    assert r['status'] == 'PASS', r['violations']
+
+
+def test_x11_unordered_labels_violates():
+    """重排了选项、解析行没跟着重排：标号序列变成 CABDE（结构层）。"""
+    qs = [_expl_q(i) for i in range(20)]
+    qs[0]['explanation'] = '解析正文。\nC：内容C\nA：内容A\nB：内容B\nD：内容D\nE：内容E'
+    r = rb.check_explanation_labels(qs, _TH)
+    assert r['status'] == 'VIOLATED'
+    assert r['sample'][0]['qid'] == 'E000'
+    assert r['sample'][0]['found'] == 'CABDE'
+
+
+def test_x11_duplicate_label_violates():
+    qs = [_expl_q(i) for i in range(20)]
+    qs[1]['explanation'] = '解析正文。\nA：甲\nA：乙\nB：丙\nD：丁\nE：戊'
+    r = rb.check_explanation_labels(qs, _TH)
+    assert r['status'] == 'VIOLATED' and r['sample'][0]['qid'] == 'E001'
+
+
+def test_x11_stale_per_option_violates_content_layer():
+    """标号序列没问题，但解析正文与 per_option 绑定的选项对不上（内容层）。
+
+    典型形态：只改了 explanation 的标号、漏改 learning_value.per_option。
+    结构检查全过，只有把正文与 why 逐项比对才发现错位。
+    """
+    q = _expl_q(0)
+    q['learning_value'] = {'per_option': [
+        {'label': 'A', 'why': 'A 项的说明文字，讲的是甲内容'},
+        {'label': 'B', 'why': 'B 项的说明文字，讲的是乙内容'},
+        {'label': 'C', 'why': 'C 项的说明文字，讲的是丙内容'},
+        {'label': 'D', 'why': 'D 项的说明文字，讲的是丁内容'},
+        {'label': 'E', 'why': 'E 项的说明文字，讲的是戊内容'},
+    ]}
+    q['explanation'] = ('解析正文。\nA：C 项的说明文字，讲的是丙内容\n'
+                        'B：B 项的说明文字，讲的是乙内容\nC：A 项的说明文字，讲的是甲内容\n'
+                        'D：D 项的说明文字，讲的是丁内容\nE：E 项的说明文字，讲的是戊内容')
+    qs = [q] + [_expl_q(i) for i in range(1, 20)]
+    r = rb.check_explanation_labels(qs, _TH)
+    assert r['status'] == 'VIOLATED'
+    assert any(v.get('label') == 'A' for v in r['violations']), r['violations']
+
+
+
+def test_x11_skips_when_no_per_option_lines():
+    qs = [_expl_q(i, expl='只有一段解析，没有逐选项行。') for i in range(20)]
+    r = rb.check_explanation_labels(qs, _TH)
+    assert r['status'] == 'SKIP' and r['applicable'] is False
+
+
+def test_x12_l1_with_three_steps_violates():
+    qs = [_expl_q(i) for i in range(20)]
+    qs[0]['difficulty_tier'] = 'L1'
+    qs[0]['step_count'] = 3
+    r = rb.check_difficulty_consistency(qs, _TH)
+    assert r['status'] == 'VIOLATED' and r['contradictions'] == 1
+
+
+def test_x12_l4_without_steps_or_cross_violates():
+    qs = [_expl_q(i) for i in range(20)]
+    qs[1]['difficulty_tier'] = 'L4'
+    qs[1]['step_count'] = 2
+    r = rb.check_difficulty_consistency(qs, _TH)
+    assert r['status'] == 'VIOLATED'
+
+
+def test_x12_l4_with_cross_concepts_passes():
+    """L4 = 2 步但两个考点交叉：合法，不判矛盾。"""
+    qs = [_expl_q(i) for i in range(20)]
+    qs[1]['difficulty_tier'] = 'L4'
+    qs[1]['step_count'] = 2
+    qs[1]['concepts'] = [{'role': 'primary'}, {'role': 'differential'}]
+    r = rb.check_difficulty_consistency(qs, _TH)
+    assert r['status'] == 'PASS', r['violations']
+
+
+def test_x9_boilerplate_phrase_tail_violates_single_item():
+    """「…需鉴别」「…需结合临床」收尾：单条即判，不要求跨题复用。
+
+    这类尾短语是解析语气，不是选项内容——学生看到的选项变成「请结合临床判断」，
+    题目就不成立了。batch049 的 298 个选项就是这个形态。
+    """
+    qs = []
+    for i in range(12):
+        opts = {k: f'{k}选项内容{i}' for k in 'ABCDE'}
+        if i == 0:
+            opts['C'] = '过敏性结膜炎等临床情况需鉴别'
+        if i == 1:
+            opts['E'] = '需结合临床鉴别'
+        qs.append({'id': f'B{i}', 'type': 'A1', 'stem': 'q', 'answer': 'A',
+                   'options': opts, 'difficulty_tier': 'L2'})
+    r = rb.check_option_template_pollution(qs, _TH)
+    assert r['status'] == 'VIOLATED'
+    assert r['boilerplate_tail_items'] == 2
+    phrases = {p['phrase'] for p in r['boilerplate_tail_sample']}
+    assert phrases & {'临床情况需鉴别', '结合临床鉴别'}, phrases
+
+
+def test_x9_specific_differential_is_not_boilerplate():
+    """「需与急性闭角型青光眼鉴别」带具体病名，是有效内容，不得误判。"""
+    qs = []
+    for i in range(12):
+        opts = {k: f'{k}选项内容{i}' for k in 'ABCDE'}
+        if i == 0:
+            opts['B'] = '需与急性闭角型青光眼鉴别'
+        qs.append({'id': f'C{i}', 'type': 'A1', 'stem': 'q', 'answer': 'A',
+                   'options': opts, 'difficulty_tier': 'L2'})
+    r = rb.check_option_template_pollution(qs, _TH)
+    assert r['status'] == 'PASS', r['boilerplate_tail_sample']
