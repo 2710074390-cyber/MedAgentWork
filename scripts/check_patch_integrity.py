@@ -131,6 +131,41 @@ def load_items(path) -> list:
     return data
 
 
+#: 追加内容里出现这些词，基本可以判定是"为凑长度贴的套话"而不是补信息
+PADDING_TOKENS = ('等', '情况', '需', '应当', '注意', '鉴别', '考虑', '包括', '以及', '临床')
+
+
+def appended_text(before: dict, after: dict) -> list[dict]:
+    """找出「新选项文本 = 旧文本 + 尾巴」的改动。
+
+    batch049 的根因就是这个模式：装配器为了让「正确项不是唯一最长」达标，给干扰项
+    尾巴追加 `等临床情况需鉴别`，250 题里 133 题、298 个选项被污染，24 个正确项在列。
+    纯追加是**最容易机械识别、也最没有教学意义**的改法：它不改变选项承载的知识，
+    只改变长度。所以这里单独识别，A4 阶段直接拦。
+    """
+    out = []
+    b_opts = before.get('options') or {}
+    a_opts = after.get('options') or {}
+    if isinstance(b_opts, list):
+        b_opts = {str(o.get('label', '')).strip().upper(): str(o.get('text') or '')
+                  for o in b_opts if isinstance(o, dict)}
+    if isinstance(a_opts, list):
+        a_opts = {str(o.get('label', '')).strip().upper(): str(o.get('text') or '')
+                  for o in a_opts if isinstance(o, dict)}
+    for lab, b_txt in b_opts.items():
+        a_txt = a_opts.get(lab)
+        if not isinstance(b_txt, str) or not isinstance(a_txt, str):
+            continue
+        if len(a_txt) > len(b_txt) and a_txt.startswith(b_txt):
+            added = a_txt[len(b_txt):]
+            # 判定「套话」只看语素，不只看长度：补单位/补限定词（「乙」→「乙型病毒性肝炎」）
+            # 是正当修复，长到 8 字以上又没有这些语素才按套话算，避免误伤实质补全。
+            boilerplate = any(t in added for t in PADDING_TOKENS) or len(added) >= 8
+            out.append({'label': lab, 'added': added, 'boilerplate': boilerplate,
+                        'before': b_txt[-24:], 'after': a_txt[-24:]})
+    return out
+
+
 def index_by_id(items: list) -> dict:
     out, dup = {}, []
     for i, q in enumerate(items):
@@ -150,7 +185,8 @@ def changed_fields(before: dict, after: dict) -> list[str]:
 
 # ── 核心审计 ───────────────────────────────────────────────
 
-def audit(before_path, after_path, declared: dict | None = None, tag: str = '') -> dict:
+def audit(before_path, after_path, declared: dict | None = None, tag: str = '',
+          batch: str = '') -> dict:
     before_items = load_items(before_path)
     after_items = load_items(after_path)
     b_idx, b_dup = index_by_id(before_items)
@@ -161,6 +197,7 @@ def audit(before_path, after_path, declared: dict | None = None, tag: str = '') 
 
     records = []
     violations = []
+    padding_violations = []
     undeclared = []
     unclassified = []
 
@@ -188,10 +225,17 @@ def audit(before_path, after_path, declared: dict | None = None, tag: str = '') 
             if extra:
                 undeclared.append({'id': qid, 'fields': extra, 'declared': decl})
 
+        padding = []
+        if 'options' in fields:
+            padding = appended_text(b, a)
+            if padding:
+                padding_violations.append({'id': qid, 'appends': padding})
+
         records.append({
             'id': qid,
             'is_real_question': real,
             'changed_fields': fields,
+            'appended_option_text': padding,
             'immutable_violations': immutable_hit,
             'allowed_changes': allowed_hit,
             'declared_fields': decl,
@@ -217,18 +261,32 @@ def audit(before_path, after_path, declared: dict | None = None, tag: str = '') 
             'changed': len(changed_records),
             'items_patched': len(changed_records) + len(added),
             'immutable_violations': len(violations),
+            'option_padding_items': len(padding_violations),
+            'option_padding_boilerplate': sum(
+                1 for p in padding_violations for a in p['appends'] if a['boilerplate']),
             'undeclared_changes': len(undeclared),
             'unclassified_fields': len(unclassified),
         },
         'added_ids': added, 'removed_ids': removed,
         'duplicate_ids': sorted(set(b_dup) | set(a_dup)),
         'violations': violations,
+        'option_padding': padding_violations,
         'undeclared': undeclared,
         'unclassified': unclassified,
         'records': records,
     }
-    report['result'] = 'FAIL' if (violations or undeclared
-                                   or (unclassified and UNCLASSIFIED_POLICY == 'reject')) else 'PASS'
+    # 纯追加式改选项：新批次（≥ x_enforce_since）直接 FAIL，旧批次只记录
+    # （旧批次已签收，按「不追溯」原则不能因为新规则变红；CI 的 --recheck 会重跑本脚本）
+    from validate.rules_batch import batch_number, ENFORCE_SINCE_DEFAULT
+    since = batch_number(ENFORCE_SINCE_DEFAULT)
+    cur = batch_number(batch)
+    padding_boilerplate = [p for p in padding_violations
+                           if any(a['boilerplate'] for a in p['appends'])]
+    padding_blocking = bool(padding_boilerplate) and since is not None and cur is not None and cur >= since
+    report['padding_blocking'] = padding_blocking
+    report['batch'] = batch or None
+    report['result'] = 'FAIL' if (violations or undeclared or padding_blocking
+                                  or (unclassified and UNCLASSIFIED_POLICY == 'reject')) else 'PASS'
     return report
 
 
@@ -416,6 +474,7 @@ def main(argv=None) -> int:
     ap.add_argument('--after', required=True, help='修复后题库 JSON')
     ap.add_argument('--declared', default='', help='声明文件：{"题目ID": ["允许变更字段", ...]}')
     ap.add_argument('--tag', default='', help='标签（批次/版本）')
+    ap.add_argument('--batch', default='', help='批次号；≥ x_enforce_since 时「纯追加改选项」判 FAIL')
     ap.add_argument('--json', default='', help='JSON 证据输出路径')
     ap.add_argument('--md', default='', help='Markdown diff 报告输出路径')
     ap.add_argument('--noop', action='store_true', help='只做 no-op 检测')
@@ -430,7 +489,8 @@ def main(argv=None) -> int:
         return 2
 
     try:
-        report = audit(args.before, args.after, declared=declared, tag=args.tag)
+        report = audit(args.before, args.after, declared=declared, tag=args.tag,
+                       batch=args.batch or args.tag)
     except Exception as e:
         print(f'[FAIL] {type(e).__name__}: {e}', file=sys.stderr)
         return 2
@@ -453,6 +513,10 @@ def main(argv=None) -> int:
               f"　新增 {c['added']} / 删除 {c['removed']} / 变更 {c['changed']} / 未变 {c['unchanged']}")
         print(f"  不可变违例 {c['immutable_violations']}　未声明变化 {c['undeclared_changes']}"
               f"　未分类字段 {c['unclassified_fields']}")
+        if c.get('option_padding_items'):
+            extra = '（阻断）' if report.get('padding_blocking') else '（仅记录）'
+            print(f"  ⚠ 纯追加改选项 {c['option_padding_items']} 题、套话式追加 "
+                  f"{c['option_padding_boilerplate']} 处 {extra}")
         if report['file_identical']:
             print('  ⚠ 文件哈希完全相同 → no-op 修复')
         for v in report['violations'][:10]:

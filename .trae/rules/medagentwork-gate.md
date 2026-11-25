@@ -2,7 +2,7 @@
 description: MedAgentWork 批次门禁与防跳过硬约束（始终生效；由 scripts/host_bootstrap.py 生成）
 alwaysApply: true
 ---
-<!-- medagentwork-host-stub v2 source=AGENTS.md sha256=92edd85ba21bfe8ab395dc20b655c2a3e0763c51ed3f8198635f9b6bb8e96a63 level=L1 -->
+<!-- medagentwork-host-stub v2 source=AGENTS.md sha256=e94ed7e20f89705bd5a99e316c30c21ddcc7bacf23bf7638c5392ea04024bcdb level=L1 -->
 # MedAgentWork · 项目规则（路由，勿手改）
 
 本文件只做路由，规则正文在仓库 `AGENTS.md` 与 `.dsh/skills/`。

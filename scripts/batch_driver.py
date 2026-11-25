@@ -585,11 +585,19 @@ def parse_patch_integrity(payload):
     result = str(payload.get("result") or "").upper()
     if result == "PASS":
         return [_result("GATE-A4-PATCH", "PASS", evidence={"noop": payload.get("noop")})]
-    raw = json.dumps({k: payload.get(k) for k in ("violations", "undeclared", "noop", "file_identical")},
+    padding = payload.get("option_padding") or []
+    code = "PADDING_PATCH" if (padding and payload.get("padding_blocking")) else "HC13"
+    raw = json.dumps({k: payload.get(k) for k in
+                      ("violations", "undeclared", "noop", "file_identical", "option_padding")},
                      ensure_ascii=False)
-    return [_result("GATE-A4-PATCH", "FAIL", code="HC13", owner="MedFix", fix_hint=_hint("HC13"),
-                    evidence={"file_identical": payload.get("file_identical"), "noop": payload.get("noop")},
-                    raw=raw)]
+    return [_result("GATE-A4-PATCH", "FAIL", code=code, owner="MedFix",
+                    fix_hint=("A4 不得用「给选项追加文字」的方式修指标（等…需鉴别 / 加长）；"
+                              "改干扰项的实质内容，或把正确项改短" if code == "PADDING_PATCH"
+                              else _hint("HC13")),
+                    evidence={"file_identical": payload.get("file_identical"),
+                              "noop": payload.get("noop"),
+                              "option_padding_items": (payload.get("counts") or {}).get("option_padding_items")},
+                    raw=raw[:2000])]
 
 
 # ── 门禁执行适配器 ───────────────────────────────────────
@@ -666,7 +674,62 @@ def boundary_a2(ctx):
     res = parse_validate_report(payload)
     for r in res:
         r["evidence"].update({"report": str(rep.relative_to(BASE)), "exit_code": rc, "duration_ms": ms})
+    _attach_batch_rules(res, p, ctx)
     return res
+
+
+def _attach_batch_rules(res, artifact, ctx, suffix=""):
+    """批次级规则（X1–X10）附到门禁结果：老批次只记证据，新批次真拦。
+
+    2026-11-25 之前 `--batch-mode` 只有人手敲才会执行，于是 X1/X2 常年不跑：
+    batch049 的「X2 唯一最长」超标是靠在干扰项尾巴上加一句套话刷过去的，
+    没有任何门禁知道——报告全绿，题目全废。
+
+    现在的分工：
+      · 证据：每次 A2/A4 门禁都跑一遍，把 status / violated_rules 写进 evidence；
+      · 判定：`blocking_rules` 非空（批次 ≥ x_enforce_since）时追加一条 FAIL，
+        让阶段直接 BLOCKED。旧批次 blocking 恒为空，行为不变。
+
+    A2 与 A4 用不同 suffix 落证据文件，避免 A4 覆盖 a2 回执里记的 gate_reports sha。
+    任何异常都吞掉：这批规则失败不应让门禁变成 ERROR。
+    """
+    try:
+        out = BASE / "reports" / "validate" / f"{ctx.batch}_batch_rules{suffix}.json"
+        out.unlink(missing_ok=True)   # 先删旧证据，免得本轮失败时读到上一轮的结论
+        argv = _py("-m", "scripts.validate", "--file", artifact, "--batch-mode",
+                   "--batch-rules-only", "--no-report", "--batch", ctx.batch)
+        if suffix:
+            argv += ["--report-suffix", suffix]
+        rc, text, _ = _run(argv, ctx.timeout)
+        payload = _load_json(out)
+        if payload is None:
+            return
+        violated = payload.get("violated_rules") or []
+        blocking = payload.get("blocking_rules") or []
+        summary = {
+            "status": payload.get("status"),
+            "mode": payload.get("mode"),
+            "violated_rules": violated,
+            "blocking_rules": blocking,
+            "report": str(out.relative_to(BASE)),
+            "exit_code": rc,
+        }
+        for r in res:
+            r["evidence"]["batch_rules"] = summary
+        if blocking:
+            # 新批次（≥ x_enforce_since）的硬缺陷必须真拦：A2 是产物进入下游的唯一闸口，
+            # 只记证据不拦，等于把「以后不再产出这种题」交给纪律而不是脚本。
+            res.append(_result(
+                f"GATE-{'A4' if suffix else 'A2'}-X", "FAIL", code=blocking[0],
+                severity="FAIL", owner="MedGen" if not suffix else "MedFix",
+                fix_hint=f"批次规则 {', '.join(blocking)} 未通过：见 {summary['report']}；"
+                         f"按同目录 .md 的违例明细改题（改内容，不是加字/轮转），"
+                         f"修完重跑本阶段",
+                evidence=summary,
+            ))
+    except Exception as exc:  # pragma: no cover - 证据失败不得改变门禁结论
+        for r in res:
+            r["evidence"]["batch_rules"] = {"status": "ERROR", "detail": str(exc)[:200]}
 
 
 def boundary_a3(ctx):
@@ -708,6 +771,7 @@ def boundary_a4(ctx):
     if not ctx.dry_run and paths["a2"].exists():
         out = ctx.tmp / "patch_integrity.json"
         argv = _py("scripts/check_patch_integrity.py", "--before", paths["a2"], "--after", fixed,
+                   "--batch", ctx.batch, "--tag", ctx.batch,
                    "--json", out, "--quiet")
         rc, text, ms = _run(argv, ctx.timeout)
         payload = _load_json(out)
@@ -717,6 +781,9 @@ def boundary_a4(ctx):
         else:
             res += parse_patch_integrity(payload)
     res += _gate_check(ctx, "agent4_done")
+    # A4 允许改 options（ALLOWED_FIELDS 含 options），所以 A2 过了不等于交付态干净：
+    # batch049 的 13 个被污染选项就是 A4 阶段补上去的。这里再判一次。
+    _attach_batch_rules(res, fixed, ctx, suffix="_a4")
     return res
 
 

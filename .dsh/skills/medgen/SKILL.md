@@ -36,6 +36,18 @@ whenToUse: 编排者（MedMaster）下发某批次出题任务时加载；任务
    - **HC-27 概念标注自检**：再运行 `python scripts/check_source_concepts.py --file <你的JSON路径> --batch {batchID}`；`FAIL>0` 必须修正后再交付。新批次（batch047 起）每题必须带 `"schema_version": "2.2"` 与 `concepts`：**恰好 1 条 `role=primary`（其 `keypoint` 必须等于本题 `keypoint_ref`）**，A2/A3/A4/X **至少 2 条**（另 1 条写 `differential`，说明哪个干扰项在考什么），每条 `evidence` ≥8 字且要具体到题干或选项，写「相关」不算。
    - **P9 模式元数据（batch048 起强制）**：每题输出 `"p9_mode"`，取值 `teacher_keypoint`（有教师重点）、`course_schedule`（有课程安排）、`module`（常规模块版）；`gate_check --stage final` 会校验 100% 覆盖，缺失即 BLOCKED。
    - **HC-29 结构自检（2.2 起强制）**：每题补齐 `difficulty_tier`(L1–L4) / `step_count`(1–8) / `competing_dx`(≥1，按可能性降序，第 1 条用作干扰项①) / `negative_cues` / `conditionals`；`learning_value.per_option[].distractor_mechanism` 必须取 8 类枚举之一（正确项为 null）。再运行 `python scripts/validate/rules_batch.py --file <你的JSON路径>`，`S-STRUCT` 必须 PASS；`X1/X2/X5/X5-A/X6` 为 advisory，违例要在交付说明里如实写出数值。
+   - **X7–X10 硬闸（batch051 起阻断）**：`python -m scripts.validate --file <你的JSON路径> --batch-mode --batch {batchID}`。
+     `X7` 多选答案分布 / `X8` 难度-题型解耦（只判 `type_tvd`、`tier_min_share`）/ `X9` 选项尾部套话 /
+     `X10` 答案位置周期 / `X11` 解析标号与选项同步 / `X12` 难度自述自洽，
+     任一 VIOLATED → **GATE-A2 直接 FAIL**，产物不进下游。旧批次（≤batch050）仍只记录不阻断。
+     规则依据见 `docs/research/选项位置与难度定档_规则依据_20261125.md`。
+   - **难度不许用题型代替**：`difficulty_tier` 按 `Prompt版本/MedGen_current_prompt.md` 的**四要素**定档
+     （考点粒度／推理步数／干扰项贴近度／交叉度），每种题型都要横跨 L1–L4（易/难两侧各 ≥15%）。
+     A1 可以出 L4（考细节边界），A2 也可以出 L1（典型表现直问诊断）。整批偏 L1 10 / L2 30 / L3 40 / L4 20。
+   - **禁止指标补丁**：不得为压 R2/X2/R8/R10 给选项加字或贴套话（`等…需鉴别`、`等治疗方案`）；多选正确项个数
+     2/3/4 混合、五个字母都要当过答案、不得恒为 `ABCD`。需要机械打散位置时用
+     `python scripts/shuffle_option_positions.py --file <你的JSON路径> --in-place`——它**只换位置、不改一个字**，
+     并自动同步解析里的字母引用（不同步会被 X11 判 VIOLATED）。
 5. **数值纪律**：所有数值型选项必须带完整单位（次/分、mmHg、%、个月）；诊断/疾病名不可截断，使用完整标准术语（batch014 教训）。
 6. **真题双族配额（HC-22 · 2026-10-26 修订）**：题库中约 1/5 考研 + 1/5 执业医师（各 15%–25%）。优先读取编排者提供的 `中间产物/{batchID}/real_question_plan.json` 的 `selected`：
    - 考研：`kaoyan_origin{gs_id,year,source,mode,answer_confidence}` + `[源:考研真题 GS-XXX]`；

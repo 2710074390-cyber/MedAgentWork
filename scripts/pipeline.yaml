@@ -454,3 +454,29 @@ thresholds:
   x2_unique_longest_max: 0.30      # X2 正确项「唯一最长」占比上限
   x6_misconception_reuse_min: 0.20 # X6 被复用的 misconception_id 占干扰项最低比例
   x5_reverse_max: 0.15             # X5 反选题占比上限（分母只含已标注 polarity 的题，P2-S4）
+  # X7 多选答案分布（2026-11-25）：X1 的分母只含单选，多选长期无规则覆盖
+  x7_max_combo_share: 0.40          # 单一答案组合占全部多选题的上限
+  x7_letter_min: 0.12               # 单字母作为正确项的最低占比（5 字母均等 = 20%）
+  x7_letter_max: 0.32
+  x7_prefix_cluster_max: 0.60       # 正确项恰为开头连续几位的题占比上限
+  x7_max_same_n_share: 0.60         # 正确项个数为同一取值的题占比上限
+  x7_min_items: 5                   # 多选少于此数不判定
+  # X8 难度-题型解耦（2026-11-25）：难度由考点粒度定，题型不参与
+  x8_type_tvd_max: 0.30             # 题型内难度分布 vs 全局的 TVD 上限
+  x8_tier_min_share: 0.15           # 每种题型在易（L1+L2）/ 难（L3+L4）两侧的最低占比
+  x8_min_items_per_type: 10
+  x8_global_l1: 0.10                # 全局目标：L1 10 / L2 30 / L3 40 / L4 20
+  x8_global_l2: 0.30
+  x8_global_l3: 0.40
+  x8_global_l4: 0.20
+  x8_global_dev_max: 0.08           # 全局各档与目标的偏差上限
+  # X9 选项尾部模板复用（2026-11-25）：为压 X2 而给干扰项贴套话
+  x9_template_tail: 6
+  x9_template_q_share: 0.05         # 同一枚举概括尾覆盖的题占比上限
+  x9_template_min_questions: 3
+  # X10 答案位置周期性（2026-11-25）：答案按题号轮转 = 位置泄漏
+  x10_periodicity_max: 0.90         # 与理想轮转序列一致率的上限（随机约 0.20）
+  x10_min_items: 20                 # 样本下限
+  # 新批次阻断生效点（2026-11-25）：≥ 该批次时 X7/X9/X10 与 X8 的
+  # type_tvd / tier_min_share 判 FAIL；旧批次维持 advisory 不追溯
+  x_enforce_since: batch051
